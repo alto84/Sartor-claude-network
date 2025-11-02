@@ -15,14 +15,116 @@
             background: #000;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
             font-family: 'Courier New', monospace;
             color: #0f0;
+            padding: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1400px;
+            width: 100%;
         }
 
         .game-container {
             text-align: center;
+            flex: 0 0 auto;
+        }
+
+        .dashboard {
+            flex: 1;
+            min-width: 350px;
+            max-width: 500px;
+        }
+
+        .dashboard-panel {
+            background: #001100;
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .dashboard-panel h3 {
+            color: #0ff;
+            margin-bottom: 10px;
+            font-size: 18px;
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 5px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 14px;
+        }
+
+        .stat-label {
+            color: #0f0;
+        }
+
+        .stat-value {
+            color: #ff0;
+            font-weight: bold;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .status-running { background: #0f0; }
+        .status-paused { background: #ff0; }
+        .status-gameover { background: #f00; }
+
+        .event-log {
+            max-height: 200px;
+            overflow-y: auto;
+            background: #000;
+            border: 1px solid #0f0;
+            border-radius: 3px;
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        .event-entry {
+            padding: 3px 0;
+            border-bottom: 1px solid #003300;
+        }
+
+        .event-time {
+            color: #666;
+            margin-right: 5px;
+        }
+
+        .event-kill { color: #0ff; }
+        .event-hit { color: #f00; }
+        .event-level { color: #ff0; }
+        .event-game { color: #0f0; }
+
+        .alien-grid {
+            display: grid;
+            grid-template-columns: repeat(11, 1fr);
+            gap: 2px;
+            margin-top: 10px;
+        }
+
+        .alien-cell {
+            width: 20px;
+            height: 15px;
+            background: #0f0;
+            border-radius: 2px;
+        }
+
+        .alien-cell.dead {
+            background: #330;
         }
 
         canvas {
@@ -72,21 +174,141 @@
         button:hover {
             background: #0d0;
         }
+
+        .progress-bar {
+            background: #003300;
+            height: 20px;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #0f0, #0ff);
+            height: 100%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #000;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <div class="game-container">
-        <div class="info">
-            <div>Score: <span id="score">0</span></div>
-            <div>Lives: <span id="lives">3</span></div>
-            <div>Level: <span id="level">1</span></div>
+    <div class="main-container">
+        <div class="game-container">
+            <div class="info">
+                <div>Score: <span id="score">0</span></div>
+                <div>Lives: <span id="lives">3</span></div>
+                <div>Level: <span id="level">1</span></div>
+            </div>
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <div class="game-over" id="gameOver">GAME OVER</div>
+            <div class="controls">
+                <p>← → Arrow Keys: Move | SPACE: Shoot</p>
+                <button id="startBtn">Start Game</button>
+                <button id="restartBtn" style="display:none;">Restart</button>
+            </div>
         </div>
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div class="game-over" id="gameOver">GAME OVER</div>
-        <div class="controls">
-            <p>← → Arrow Keys: Move | SPACE: Shoot</p>
-            <button id="startBtn">Start Game</button>
-            <button id="restartBtn" style="display:none;">Restart</button>
+
+        <div class="dashboard">
+            <!-- Game Status Panel -->
+            <div class="dashboard-panel">
+                <h3>Game Status</h3>
+                <div class="stat-row">
+                    <span class="stat-label">Status:</span>
+                    <span class="stat-value">
+                        <span class="status-indicator" id="statusIndicator"></span>
+                        <span id="gameStatus">Not Started</span>
+                    </span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Uptime:</span>
+                    <span class="stat-value" id="uptime">0s</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">FPS:</span>
+                    <span class="stat-value" id="fps">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Frame Time:</span>
+                    <span class="stat-value" id="frameTime">0ms</span>
+                </div>
+            </div>
+
+            <!-- Live Stats Panel -->
+            <div class="dashboard-panel">
+                <h3>Live Statistics</h3>
+                <div class="stat-row">
+                    <span class="stat-label">Aliens Remaining:</span>
+                    <span class="stat-value" id="aliensRemaining">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Aliens Destroyed:</span>
+                    <span class="stat-value" id="aliensDestroyed">0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="alienProgress" style="width: 100%">100%</div>
+                </div>
+                <div class="stat-row" style="margin-top: 10px;">
+                    <span class="stat-label">Player Bullets:</span>
+                    <span class="stat-value" id="playerBullets">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Alien Bullets:</span>
+                    <span class="stat-value" id="alienBullets">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Shots Fired:</span>
+                    <span class="stat-value" id="shotsFired">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Accuracy:</span>
+                    <span class="stat-value" id="accuracy">0%</span>
+                </div>
+            </div>
+
+            <!-- Player Info Panel -->
+            <div class="dashboard-panel">
+                <h3>Player Info</h3>
+                <div class="stat-row">
+                    <span class="stat-label">Position X:</span>
+                    <span class="stat-value" id="playerX">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Position Y:</span>
+                    <span class="stat-value" id="playerY">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Speed:</span>
+                    <span class="stat-value" id="playerSpeed">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Alien Speed:</span>
+                    <span class="stat-value" id="alienSpeed">0</span>
+                </div>
+            </div>
+
+            <!-- Alien Formation Panel -->
+            <div class="dashboard-panel">
+                <h3>Alien Formation</h3>
+                <div class="alien-grid" id="alienGrid">
+                    <!-- Grid will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Event Log Panel -->
+            <div class="dashboard-panel">
+                <h3>Event Log</h3>
+                <div class="event-log" id="eventLog">
+                    <div class="event-entry event-game">
+                        <span class="event-time">00:00:00</span>
+                        System ready
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

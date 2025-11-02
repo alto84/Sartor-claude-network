@@ -46,6 +46,168 @@ const scoreSpan = document.getElementById('score');
 const livesSpan = document.getElementById('lives');
 const levelSpan = document.getElementById('level');
 
+// Dashboard elements
+const dashboardElements = {
+    gameStatus: document.getElementById('gameStatus'),
+    statusIndicator: document.getElementById('statusIndicator'),
+    uptime: document.getElementById('uptime'),
+    fps: document.getElementById('fps'),
+    frameTime: document.getElementById('frameTime'),
+    aliensRemaining: document.getElementById('aliensRemaining'),
+    aliensDestroyed: document.getElementById('aliensDestroyed'),
+    alienProgress: document.getElementById('alienProgress'),
+    playerBullets: document.getElementById('playerBullets'),
+    alienBullets: document.getElementById('alienBullets'),
+    shotsFired: document.getElementById('shotsFired'),
+    accuracy: document.getElementById('accuracy'),
+    playerX: document.getElementById('playerX'),
+    playerY: document.getElementById('playerY'),
+    playerSpeed: document.getElementById('playerSpeed'),
+    alienSpeed: document.getElementById('alienSpeed'),
+    alienGrid: document.getElementById('alienGrid'),
+    eventLog: document.getElementById('eventLog')
+};
+
+// Statistics tracking
+const stats = {
+    gameStartTime: 0,
+    totalAliensKilled: 0,
+    totalShotsFired: 0,
+    lastFrameTime: performance.now(),
+    frameCount: 0,
+    fps: 0,
+    fpsUpdateTime: 0
+};
+
+// Event logging
+function logEvent(message, type = 'game') {
+    const now = Date.now();
+    const elapsed = stats.gameStartTime > 0 ? now - stats.gameStartTime : 0;
+    const hours = Math.floor(elapsed / 3600000);
+    const minutes = Math.floor((elapsed % 3600000) / 60000);
+    const seconds = Math.floor((elapsed % 60000) / 1000);
+    const timeStr = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+    const entry = document.createElement('div');
+    entry.className = `event-entry event-${type}`;
+    entry.innerHTML = `<span class="event-time">${timeStr}</span>${message}`;
+
+    dashboardElements.eventLog.insertBefore(entry, dashboardElements.eventLog.firstChild);
+
+    // Keep only last 50 entries
+    while (dashboardElements.eventLog.children.length > 50) {
+        dashboardElements.eventLog.removeChild(dashboardElements.eventLog.lastChild);
+    }
+}
+
+// Update dashboard
+function updateDashboard() {
+    // Update game status
+    if (gameRunning) {
+        dashboardElements.gameStatus.textContent = 'Running';
+        dashboardElements.statusIndicator.className = 'status-indicator status-running';
+    } else {
+        if (lives <= 0) {
+            dashboardElements.gameStatus.textContent = 'Game Over';
+            dashboardElements.statusIndicator.className = 'status-indicator status-gameover';
+        } else {
+            dashboardElements.gameStatus.textContent = 'Paused';
+            dashboardElements.statusIndicator.className = 'status-indicator status-paused';
+        }
+    }
+
+    // Update uptime
+    if (stats.gameStartTime > 0 && gameRunning) {
+        const elapsed = Date.now() - stats.gameStartTime;
+        const seconds = Math.floor(elapsed / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+
+        if (hours > 0) {
+            dashboardElements.uptime.textContent = `${hours}h ${minutes % 60}m ${seconds % 60}s`;
+        } else if (minutes > 0) {
+            dashboardElements.uptime.textContent = `${minutes}m ${seconds % 60}s`;
+        } else {
+            dashboardElements.uptime.textContent = `${seconds}s`;
+        }
+    }
+
+    // Update FPS
+    stats.frameCount++;
+    const now = performance.now();
+    const deltaTime = now - stats.lastFrameTime;
+    stats.lastFrameTime = now;
+
+    if (now - stats.fpsUpdateTime > 500) { // Update FPS every 500ms
+        stats.fps = Math.round(stats.frameCount * 1000 / (now - stats.fpsUpdateTime));
+        stats.frameCount = 0;
+        stats.fpsUpdateTime = now;
+        dashboardElements.fps.textContent = stats.fps;
+    }
+
+    dashboardElements.frameTime.textContent = `${deltaTime.toFixed(2)}ms`;
+
+    // Update alien stats
+    const aliveAliens = aliens.filter(a => a.alive).length;
+    const totalAliens = aliens.length;
+    dashboardElements.aliensRemaining.textContent = aliveAliens;
+    dashboardElements.aliensDestroyed.textContent = stats.totalAliensKilled;
+
+    const alienPercent = totalAliens > 0 ? Math.round((aliveAliens / totalAliens) * 100) : 0;
+    dashboardElements.alienProgress.style.width = alienPercent + '%';
+    dashboardElements.alienProgress.textContent = alienPercent + '%';
+
+    // Update bullet counts
+    dashboardElements.playerBullets.textContent = bullets.length;
+    dashboardElements.alienBullets.textContent = alienBullets.length;
+    dashboardElements.shotsFired.textContent = stats.totalShotsFired;
+
+    // Update accuracy
+    const accuracy = stats.totalShotsFired > 0
+        ? Math.round((stats.totalAliensKilled / stats.totalShotsFired) * 100)
+        : 0;
+    dashboardElements.accuracy.textContent = accuracy + '%';
+
+    // Update player info
+    dashboardElements.playerX.textContent = Math.round(player.x);
+    dashboardElements.playerY.textContent = Math.round(player.y);
+    dashboardElements.playerSpeed.textContent = player.speed;
+
+    const currentAlienSpeed = alienSpeed * (1 + level * 0.2);
+    dashboardElements.alienSpeed.textContent = currentAlienSpeed.toFixed(2);
+
+    // Update alien grid
+    updateAlienGrid();
+}
+
+// Update alien formation grid
+function updateAlienGrid() {
+    if (aliens.length === 0) return;
+
+    // Only update if grid is not yet created or alien count changed
+    if (dashboardElements.alienGrid.children.length !== aliens.length) {
+        dashboardElements.alienGrid.innerHTML = '';
+        aliens.forEach((alien, index) => {
+            const cell = document.createElement('div');
+            cell.className = 'alien-cell';
+            cell.dataset.index = index;
+            dashboardElements.alienGrid.appendChild(cell);
+        });
+    }
+
+    // Update cell states
+    aliens.forEach((alien, index) => {
+        const cell = dashboardElements.alienGrid.children[index];
+        if (cell) {
+            if (alien.alive) {
+                cell.classList.remove('dead');
+            } else {
+                cell.classList.add('dead');
+            }
+        }
+    });
+}
+
 // Initialize aliens
 function createAliens() {
     aliens = [];
@@ -227,8 +389,13 @@ function checkCollisions() {
 
                 alien.alive = false;
                 bullets.splice(bulletIndex, 1);
-                score += (5 - alien.type) * 10;
+                const points = (5 - alien.type) * 10;
+                score += points;
                 updateScore();
+
+                // Log alien kill
+                stats.totalAliensKilled++;
+                logEvent(`Alien destroyed! +${points} points`, 'kill');
             }
         });
     });
@@ -243,6 +410,7 @@ function checkCollisions() {
             alienBullets.splice(index, 1);
             lives--;
             updateLives();
+            logEvent(`Player hit! Lives remaining: ${lives}`, 'hit');
 
             if (lives <= 0) {
                 gameOver();
@@ -253,6 +421,7 @@ function checkCollisions() {
     // Check if aliens reached player
     aliens.forEach(alien => {
         if (alien.alive && alien.y + alien.height >= player.y) {
+            logEvent('Aliens reached player position!', 'hit');
             gameOver();
         }
     });
@@ -271,6 +440,7 @@ function nextLevel() {
     createAliens();
     bullets.length = 0;
     alienBullets.length = 0;
+    logEvent(`Level ${level} started! Alien speed increased.`, 'level');
 }
 
 // Game over
@@ -279,6 +449,8 @@ function gameOver() {
     gameOverDiv.classList.add('show');
     startBtn.style.display = 'none';
     restartBtn.style.display = 'inline-block';
+    logEvent(`Game Over! Final Score: ${score}, Level: ${level}`, 'hit');
+    updateDashboard();
 }
 
 // Update UI
@@ -313,6 +485,9 @@ function gameLoop() {
     drawAliens();
     drawBullets();
 
+    // Update dashboard
+    updateDashboard();
+
     // Continue loop
     animationId = requestAnimationFrame(gameLoop);
 }
@@ -329,6 +504,15 @@ function startGame() {
     player.x = canvas.width / 2 - 20;
     player.y = canvas.height - 60;
 
+    // Initialize stats
+    stats.gameStartTime = Date.now();
+    stats.totalAliensKilled = 0;
+    stats.totalShotsFired = 0;
+    stats.frameCount = 0;
+    stats.fps = 0;
+    stats.fpsUpdateTime = performance.now();
+    stats.lastFrameTime = performance.now();
+
     createAliens();
 
     updateScore();
@@ -338,6 +522,9 @@ function startGame() {
     gameOverDiv.classList.remove('show');
     startBtn.style.display = 'none';
     restartBtn.style.display = 'none';
+
+    logEvent('Game started! Good luck!', 'game');
+    updateDashboard();
 
     gameLoop();
 }
@@ -359,6 +546,7 @@ document.addEventListener('keydown', (e) => {
             x: player.x + player.width / 2 - bulletWidth / 2,
             y: player.y
         });
+        stats.totalShotsFired++;
     }
 });
 
