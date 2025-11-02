@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Home</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome Home</h1>
+            <div id="time" class="time"></div>
+        </div>
+
+        <div class="house-container">
+            <div class="house-visual">
+                <!-- SVG House Illustration -->
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Sky background -->
+                    <rect x="0" y="0" width="400" height="400" fill="#87CEEB"/>
+
+                    <!-- Sun -->
+                    <circle cx="350" cy="50" r="30" fill="#FFD700"/>
+
+                    <!-- Ground -->
+                    <rect x="0" y="300" width="400" height="100" fill="#228B22"/>
+
+                    <!-- House body -->
+                    <rect x="100" y="200" width="200" height="150" fill="#DEB887"/>
+
+                    <!-- Roof -->
+                    <polygon points="200,120 80,200 320,200" fill="#8B4513"/>
+
+                    <!-- Chimney -->
+                    <rect x="240" y="140" width="30" height="60" fill="#A0522D"/>
+
+                    <!-- Door -->
+                    <rect x="170" y="270" width="60" height="80" fill="#654321"/>
+                    <circle cx="220" cy="310" r="4" fill="#FFD700"/>
+
+                    <!-- Windows -->
+                    <rect x="120" y="230" width="40" height="40" fill="#87CEEB"/>
+                    <line x1="140" y1="230" x2="140" y2="270" stroke="#333" stroke-width="2"/>
+                    <line x1="120" y1="250" x2="160" y2="250" stroke="#333" stroke-width="2"/>
+
+                    <rect x="240" y="230" width="40" height="40" fill="#87CEEB"/>
+                    <line x1="260" y1="230" x2="260" y2="270" stroke="#333" stroke-width="2"/>
+                    <line x1="240" y1="250" x2="280" y2="250" stroke="#333" stroke-width="2"/>
+
+                    <!-- Tree -->
+                    <rect x="320" y="260" width="20" height="40" fill="#654321"/>
+                    <circle cx="330" cy="255" r="25" fill="#228B22"/>
+                    <circle cx="320" cy="240" r="20" fill="#2E7D32"/>
+                    <circle cx="340" cy="245" r="22" fill="#2E7D32"/>
+
+                    <!-- Path -->
+                    <path d="M 200 350 L 200 300 Q 200 290 190 290 L 170 290"
+                          fill="none" stroke="#A9A9A9" stroke-width="20"/>
+                </svg>
+            </div>
+
+            <div class="upload-section">
+                <p class="hint">Want to see your actual house?</p>
+                <input type="file" id="housePhoto" accept="image/*" hidden>
+                <button id="uploadBtn" class="upload-btn">Upload Your House Photo</button>
+                <button id="resetBtn" class="reset-btn" style="display: none;">Show Default House</button>
+            </div>
+        </div>
+
+        <div class="status">
+            <p id="statusText">You're home!</p>
+        </div>
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>
