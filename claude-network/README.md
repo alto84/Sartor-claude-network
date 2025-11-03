@@ -7,6 +7,7 @@ Your Claude Network is live with enterprise-grade components!
 ## What We Built
 
 A distributed multi-agent coordination system with:
+- **MCP Gateway System** ⭐ **NEW** - Universal agent connection protocol
 - **Multi-computer connectivity** - Connect Claude instances across devices
 - **Robust message protocol** - MACS (Multi-Agent Communication System)
 - **Task management** - Intelligent task distribution and tracking
@@ -17,7 +18,18 @@ A distributed multi-agent coordination system with:
 
 ## System Components
 
-### 1. MACS Protocol (Multi-Agent Communication System)
+### 1. MCP Gateway System ⭐ NEW
+Universal connection protocol for Claude agents with:
+- Zero-dependency bootstrap installer
+- WebSocket and HTTP transports
+- 22+ built-in tools for agent operations
+- Auto-discovery across network
+- One-file onboarding (gateway.yaml)
+
+**Files**: `mcp/mcp_server.py`, `mcp/gateway_client.py`, `mcp/bootstrap.py`
+**Docs**: `MCP-DEPLOYMENT-GUIDE.md`, `QUICK-START-MCP.md`, `mcp/MCP-SYSTEM-OVERVIEW.md`
+
+### 2. MACS Protocol (Multi-Agent Communication System)
 Robust, production-ready communication layer with:
 - Message signing and validation
 - Automatic retry with exponential backoff
@@ -27,7 +39,7 @@ Robust, production-ready communication layer with:
 
 **Files**: `macs.py`, `tests/test_macs.py`
 
-### 2. Task Management System
+### 3. Task Management System
 Intelligent task distribution with:
 - Priority queue system
 - Dependency resolution
@@ -38,7 +50,7 @@ Intelligent task distribution with:
 **Files**: `task_manager.py`, `task_cli.py`, `tests/test_task_manager.py`
 **Docs**: `TASK_MANAGER_README.md`, `task-management-architecture.md`
 
-### 3. Skill Engine
+### 4. Skill Engine
 Modular skill composition system with:
 - 40+ built-in skills
 - Skill discovery and search
@@ -49,7 +61,7 @@ Modular skill composition system with:
 **Files**: `skill_engine.py`, `tests/test_skill_engine.py`, `skills/`
 **Docs**: `SKILL-GUIDE.md`, `SKILL-QUICKSTART.md`
 
-### 4. Agent Registry & Heartbeat
+### 5. Agent Registry & Heartbeat
 Agent discovery and health monitoring with:
 - Agent registration with capabilities
 - 15-second heartbeat system
@@ -60,7 +72,7 @@ Agent discovery and health monitoring with:
 **Files**: `agent_registry.py`, `tests/test_agent_registry.py`
 **Docs**: `CONFIG_REGISTRY_README.md`
 
-### 5. Configuration Management
+### 6. Configuration Management
 Hierarchical configuration system with:
 - Multi-source loading (env vars, YAML files, defaults)
 - Type-safe configuration with dataclasses
@@ -70,7 +82,7 @@ Hierarchical configuration system with:
 **Files**: `config_manager.py`, `tests/test_config_manager.py`
 **Docs**: `CONFIG_REGISTRY_README.md`
 
-### 6. Testing Framework
+### 7. Testing Framework
 Comprehensive test coverage with:
 - Unit tests for all major components
 - Mock Firebase for testing
@@ -81,7 +93,26 @@ Comprehensive test coverage with:
 
 ## Quick Start
 
-### 1. First Time Setup
+### Option A: MCP Gateway (5 Minutes) ⭐ NEW
+
+```bash
+# Clone and enter
+git clone https://github.com/alto84/Sartor-claude-network.git
+cd Sartor-claude-network/claude-network
+
+# Bootstrap everything (zero dependencies!)
+python3 mcp/bootstrap.py
+
+# Verify it's working
+curl http://localhost:8080/mcp/health
+
+# Connect first agent
+python3 mcp/test_gateway.py
+```
+
+See [QUICK-START-MCP.md](QUICK-START-MCP.md) for detailed 5-minute setup.
+
+### Option B: Traditional Setup (15 Minutes)
 
 ```bash
 cd /home/alton/vayu-learning-project/claude-network
@@ -94,7 +125,7 @@ python3 setup_agent.py
 # Edit config.yaml with your Firebase credentials
 ```
 
-### 2. Connect to Network
+### Connect to Network
 
 ```bash
 # View agent status
@@ -107,7 +138,7 @@ python3 monitor.py
 python3 -c "from macs import MACSClient; m = MACSClient('my-agent'); m.send_message('Hello!', 'broadcast')"
 ```
 
-### 3. Run Tests
+### Run Tests
 
 ```bash
 # Run all tests
@@ -119,7 +150,7 @@ pytest tests/test_task_manager.py -v
 pytest tests/test_skill_engine.py -v
 ```
 
-### 4. Use Task Management
+### Use Task Management
 
 ```bash
 # Create a task
@@ -132,7 +163,7 @@ python3 task_cli.py list
 python3 task_cli.py monitor
 ```
 
-### 5. Execute Skills
+### Execute Skills
 
 ```python
 from skill_engine import SkillEngine, SkillContext
@@ -196,6 +227,9 @@ claude-network/
 
 | Document | Purpose |
 |----------|---------|
+| **QUICK-START-MCP.md** ⭐ | 5-minute MCP Gateway setup |
+| **MCP-DEPLOYMENT-GUIDE.md** | Complete deployment instructions |
+| **mcp/MCP-SYSTEM-OVERVIEW.md** | MCP architecture and components |
 | **SECOND-COMPUTER-SETUP.md** | Step-by-step guide for connecting 2nd computer |
 | **ARCHITECTURE-OVERVIEW.md** | System architecture and data flows |
 | **SKILL-GUIDE.md** | Complete skill system documentation |

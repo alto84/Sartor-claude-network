@@ -15,13 +15,19 @@ Welcome to the Claude Network documentation! This index provides a comprehensive
    - Quick start commands
    - Troubleshooting basics
 
-2. **[QUICK-START-CHECKLIST.md](QUICK-START-CHECKLIST.md)** - Interactive setup checklist
+2. **[QUICK-START-MCP.md](QUICK-START-MCP.md)** ⭐ **NEW** - MCP Gateway 5-minute setup
+   - Zero-dependency bootstrap
+   - Instant agent connection
+   - Verification steps
+   - Quick troubleshooting
+
+3. **[QUICK-START-CHECKLIST.md](QUICK-START-CHECKLIST.md)** - Interactive setup checklist
    - Prerequisites verification
    - Step-by-step setup (15 minutes)
    - Command reference card
    - Success criteria
 
-3. **[CLAUDE.md](CLAUDE.md)** - Philosophy and core principles
+4. **[CLAUDE.md](CLAUDE.md)** - Philosophy and core principles
    - Anti-fabrication protocols (CRITICAL)
    - System philosophy and vision
    - Evidence-based practices
@@ -55,6 +61,34 @@ Welcome to the Claude Network documentation! This index provides a comprehensive
   - Priority queue system
   - Dependency resolution
   - Load balancing
+
+---
+
+## 🌐 MCP Gateway System (NEW!)
+
+### Core MCP Documentation
+- **[MCP-DEPLOYMENT-GUIDE.md](MCP-DEPLOYMENT-GUIDE.md)** ⭐ - Complete deployment guide
+  - Prerequisites and requirements
+  - 4 installation methods
+  - Security configuration
+  - Troubleshooting and rollback
+
+- **[mcp/MCP-SYSTEM-OVERVIEW.md](mcp/MCP-SYSTEM-OVERVIEW.md)** ⭐ - Architecture and components
+  - System architecture diagrams
+  - Component relationships
+  - Data flow patterns
+  - Integration points
+
+- **[mcp/README.md](mcp/README.md)** - MCP quick reference
+  - Installation options
+  - Tool catalog
+  - Connection methods
+  - Performance metrics
+
+### MCP Components
+- **[mcp/MCP-TOOLS-SPEC.md](mcp/MCP-TOOLS-SPEC.md)** - Tool specifications
+- **[mcp/GATEWAY-ARCHITECTURE.md](mcp/GATEWAY-ARCHITECTURE.md)** - Gateway design
+- **[mcp/MCP-SERVER-README.md](mcp/MCP-SERVER-README.md)** - Server documentation
 
 ---
 
@@ -158,9 +192,10 @@ Welcome to the Claude Network documentation! This index provides a comprehensive
 
 ### For New Users
 1. [README.md](README.md) - Understand the system
-2. [QUICK-START-CHECKLIST.md](QUICK-START-CHECKLIST.md) - Get set up
-3. [ARCHITECTURE-OVERVIEW.md](ARCHITECTURE-OVERVIEW.md) - Learn the architecture
-4. [SKILL-QUICKSTART.md](SKILL-QUICKSTART.md) - Start using skills
+2. **[QUICK-START-MCP.md](QUICK-START-MCP.md)** - 5-minute MCP setup ⭐
+3. [QUICK-START-CHECKLIST.md](QUICK-START-CHECKLIST.md) - Full setup checklist
+4. [ARCHITECTURE-OVERVIEW.md](ARCHITECTURE-OVERVIEW.md) - Learn the architecture
+5. [SKILL-QUICKSTART.md](SKILL-QUICKSTART.md) - Start using skills
 
 ### For Developers
 1. [CLAUDE.md](CLAUDE.md) - Understand philosophy

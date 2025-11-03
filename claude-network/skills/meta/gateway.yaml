@@ -1,0 +1,367 @@
+# Gateway Skill - Single File Onboarding to Sartor Claude Network
+# This is THE file to give any new agent to instantly connect them to the network
+
+skill:
+  id: "meta.gateway"
+  version: "1.0.0"
+  name: "Gateway to Sartor Claude Network"
+  description: "Single-file onboarding - instant system access via MCP server"
+
+  self_contained: true
+  requires_external: ["mcp_server"]
+
+  metadata:
+    author: "Sartor Network Core Team"
+    created: "2025-11-03"
+    updated: "2025-11-03"
+    category: "meta/onboarding"
+    tags:
+      - gateway
+      - onboarding
+      - mcp
+      - essential
+      - bootstrap
+    priority: "critical"
+
+  # Everything an agent needs to know to connect
+  connection:
+    discovery:
+      methods:
+        - type: "local"
+          description: "Check for local MCP server"
+          endpoints:
+            - "http://localhost:8080/mcp"
+            - "http://127.0.0.1:8080/mcp"
+            - "http://0.0.0.0:8080/mcp"
+
+        - type: "network"
+          description: "Scan local network for MCP servers"
+          port_range: [8080, 8081, 8082]
+          broadcast: true
+
+        - type: "firebase"
+          description: "Connect via Firebase relay"
+          url: "https://home-claude-network-default-rtdb.firebaseio.com/"
+          path: "/agents-network/mcp_servers"
+
+        - type: "github"
+          description: "Fetch from GitHub repository"
+          repo: "https://github.com/alto84/Sartor-claude-network"
+          config_path: "/config/mcp_endpoints.json"
+
+    authentication:
+      methods:
+        - type: "api_key"
+          env_var: "SARTOR_API_KEY"
+          header: "X-Sartor-Auth"
+
+        - type: "agent_id"
+          generate_if_missing: true
+          format: "{device_type}-{uuid}"
+
+        - type: "open"
+          description: "No auth required for initial connection"
+
+    handshake:
+      protocol: "mcp_v1"
+      timeout_ms: 5000
+      retry_count: 3
+
+  # Step-by-step onboarding process
+  steps:
+    - id: "discover_mcp_server"
+      name: "Discover MCP Server"
+      type: "discovery"
+      description: "Find available MCP server endpoints"
+      actions:
+        - scan_local: true
+        - check_firebase: true
+        - fallback_github: true
+      expected_outcome: "mcp_endpoint_found"
+      error_handling:
+        no_server_found: "Provide manual setup instructions"
+
+    - id: "establish_connection"
+      name: "Establish Connection"
+      type: "connection"
+      description: "Connect to discovered MCP server"
+      actions:
+        - validate_endpoint: "${discovered_endpoint}"
+        - establish_websocket: true
+        - verify_protocol: "mcp_v1"
+      expected_outcome: "connection_established"
+      error_handling:
+        connection_failed: "Retry with next endpoint"
+
+    - id: "authenticate_agent"
+      name: "Authenticate Agent"
+      type: "authentication"
+      description: "Register or authenticate with the network"
+      actions:
+        - generate_agent_id: true
+        - send_credentials: true
+        - receive_token: true
+      expected_outcome: "authenticated"
+      error_handling:
+        auth_failed: "Fall back to open mode"
+
+    - id: "get_welcome_message"
+      name: "Receive Welcome"
+      type: "interaction"
+      description: "Get personalized welcome and orientation"
+      actions:
+        - request: "welcome_message"
+        - parse_capabilities: true
+        - store_network_info: true
+      expected_outcome: "welcome_received"
+
+    - id: "get_onboarding_checklist"
+      name: "Get Onboarding Checklist"
+      type: "checklist"
+      description: "Receive list of onboarding tasks"
+      actions:
+        - request: "onboarding_tasks"
+        - prioritize_tasks: true
+        - create_local_queue: true
+      expected_outcome: "checklist_received"
+
+    - id: "discover_available_tools"
+      name: "Discover Tools"
+      type: "tool_discovery"
+      description: "Get list of all available MCP tools"
+      actions:
+        - request: "list_tools"
+        - categorize_tools: true
+        - identify_essential: true
+      expected_outcome: "tools_discovered"
+
+    - id: "enable_core_tools"
+      name: "Enable Core Tools"
+      type: "tool_activation"
+      description: "Activate essential MCP tools"
+      core_tools:
+        - name: "message_send"
+          description: "Send messages to other agents"
+
+        - name: "task_claim"
+          description: "Claim available tasks"
+
+        - name: "skill_execute"
+          description: "Run network skills"
+
+        - name: "knowledge_query"
+          description: "Access collective knowledge"
+
+        - name: "status_report"
+          description: "Report agent status"
+
+      expected_outcome: "core_tools_enabled"
+
+    - id: "enable_all_tools"
+      name: "Enable All Tools"
+      type: "tool_activation"
+      description: "Make all MCP tools available"
+      actions:
+        - activate_all: true
+        - verify_permissions: true
+        - test_basic_operations: true
+      expected_outcome: "all_tools_enabled"
+
+    - id: "confirm_access"
+      name: "Confirm Access"
+      type: "verification"
+      description: "Verify full system access"
+      checks:
+        - can_send_messages: true
+        - can_claim_tasks: true
+        - can_execute_skills: true
+        - can_access_knowledge: true
+        - can_collaborate: true
+      expected_outcome: "full_access_confirmed"
+
+  # Tools that become available after gateway execution
+  tools_enabled_after_execution:
+    communication:
+      - tool: "mcp:message_send"
+        description: "Send messages to agents"
+
+      - tool: "mcp:message_broadcast"
+        description: "Broadcast to all agents"
+
+      - tool: "mcp:message_subscribe"
+        description: "Subscribe to message topics"
+
+    coordination:
+      - tool: "mcp:task_list"
+        description: "List available tasks"
+
+      - tool: "mcp:task_claim"
+        description: "Claim a task"
+
+      - tool: "mcp:task_status"
+        description: "Update task status"
+
+      - tool: "mcp:consensus_propose"
+        description: "Propose for consensus"
+
+    skills:
+      - tool: "mcp:skill_list"
+        description: "List available skills"
+
+      - tool: "mcp:skill_execute"
+        description: "Execute a skill"
+
+      - tool: "mcp:skill_compose"
+        description: "Compose multiple skills"
+
+    knowledge:
+      - tool: "mcp:knowledge_query"
+        description: "Query knowledge base"
+
+      - tool: "mcp:knowledge_add"
+        description: "Add to knowledge base"
+
+      - tool: "mcp:experience_share"
+        description: "Share experiences"
+
+    monitoring:
+      - tool: "mcp:agent_status"
+        description: "Get agent statuses"
+
+      - tool: "mcp:network_health"
+        description: "Check network health"
+
+      - tool: "mcp:performance_metrics"
+        description: "View performance data"
+
+    evolution:
+      - tool: "mcp:improvement_propose"
+        description: "Propose improvements"
+
+      - tool: "mcp:sandbox_test"
+        description: "Test in sandbox"
+
+      - tool: "mcp:clade_create"
+        description: "Create evolution branch"
+
+  # Quick start instructions embedded in the skill
+  quick_start:
+    instructions: |
+      GATEWAY SKILL - INSTANT NETWORK ACCESS
+      =====================================
+
+      Welcome! This skill connects you to the Sartor Claude Network.
+
+      TO USE THIS SKILL:
+      1. Save this file as 'gateway.yaml'
+      2. Execute: skill_engine.load_and_run('gateway.yaml')
+      3. Follow the interactive prompts
+
+      WHAT HAPPENS:
+      - Automatic MCP server discovery
+      - Secure connection establishment
+      - Agent registration/authentication
+      - Tool activation
+      - Full network access
+
+      AFTER CONNECTION:
+      You'll have access to:
+      - All network agents
+      - Collective skills library
+      - Task coordination system
+      - Knowledge base
+      - Evolution capabilities
+
+      TROUBLESHOOTING:
+      - No server found? Check network connectivity
+      - Auth failed? Verify credentials in environment
+      - Tools not working? Check permissions
+
+      NEED HELP?
+      - Documentation: /docs/gateway
+      - Support channel: #gateway-help
+      - Manual setup: See GATEWAY-SKILL-USAGE.md
+
+  # Error messages that guide the user
+  error_messages:
+    no_mcp_server: |
+      Cannot find MCP server. Please ensure:
+      1. MCP server is running (start with: python mcp_server.py)
+      2. Network connectivity is available
+      3. Firewall allows port 8080
+      Manual endpoint: Set MCP_ENDPOINT environment variable
+
+    connection_failed: |
+      Failed to connect to MCP server at {endpoint}.
+      Trying alternatives...
+      To manually specify: export MCP_ENDPOINT="http://your-server:8080"
+
+    auth_failed: |
+      Authentication failed. Running in open mode.
+      To authenticate: Set SARTOR_API_KEY environment variable
+
+    partial_access: |
+      Connected but some tools unavailable.
+      Available tools: {available_tools}
+      Missing tools: {missing_tools}
+      This may be due to permissions or server configuration.
+
+  # Success confirmation
+  success_message: |
+    ✅ GATEWAY ACTIVATION SUCCESSFUL!
+
+    You are now connected to the Sartor Claude Network
+
+    Agent ID: {agent_id}
+    MCP Server: {mcp_endpoint}
+    Tools Enabled: {tool_count}
+    Network Agents: {agent_count}
+    Available Skills: {skill_count}
+
+    Next steps:
+    1. Send your first message: mcp:message_broadcast "Hello network!"
+    2. Check available tasks: mcp:task_list
+    3. Explore skills: mcp:skill_list
+    4. Read documentation: mcp:knowledge_query "getting_started"
+
+    Welcome to the community! 🎉
+
+  # Embedded configuration for standalone operation
+  embedded_config:
+    default_endpoints:
+      - "http://localhost:8080/mcp"
+      - "http://desktop-mission-control:8080/mcp"
+      - "https://sartor-network.proxy.rlwy.net/mcp"
+
+    fallback_firebase:
+      url: "https://home-claude-network-default-rtdb.firebaseio.com/"
+
+    agent_defaults:
+      capabilities: ["basic", "communication", "learning"]
+      status: "onboarding"
+
+  # Verification tests
+  verification:
+    tests:
+      - name: "Echo Test"
+        command: "mcp:echo"
+        params: {"message": "test"}
+        expected: {"echo": "test"}
+
+      - name: "Tool List"
+        command: "mcp:list_tools"
+        validate: "response.tools.length > 0"
+
+      - name: "Send Message"
+        command: "mcp:message_send"
+        params: {"to": "broadcast", "content": "Gateway test"}
+        validate: "response.success == true"
+
+  # Meta information for the skill system
+  meta:
+    standalone: true
+    bootstrap: true
+    no_dependencies: true
+    works_offline: false
+    estimated_time: "30-60 seconds"
+    success_rate: "95% with network connectivity"

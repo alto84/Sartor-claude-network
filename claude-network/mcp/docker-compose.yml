@@ -1,0 +1,109 @@
+version: '3.8'
+
+services:
+  mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sartor-mcp-server:latest
+    container_name: sartor-mcp-server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=8080
+      - LOG_LEVEL=INFO
+      - FIREBASE_URL=${FIREBASE_URL:-https://home-claude-network-default-rtdb.firebaseio.com/}
+      - GITHUB_REPO=${GITHUB_REPO:-alto84/Sartor-claude-network}
+      - SARTOR_API_KEY=${SARTOR_API_KEY:-development-key}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config:ro
+    networks:
+      - sartor-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  mcp-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sartor-mcp-server:latest
+    container_name: sartor-mcp-test
+    command: python tests/run_all_tests.py
+    environment:
+      - TEST_MODE=true
+      - LOG_LEVEL=DEBUG
+    volumes:
+      - ./tests:/app/tests
+      - ./tests/results:/app/tests/results
+    networks:
+      - sartor-network
+    profiles:
+      - test
+
+  gateway-client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sartor-mcp-server:latest
+    container_name: sartor-gateway-client
+    command: python -c "from gateway_client import GatewayClient; import asyncio; client = GatewayClient(); asyncio.run(client.interactive_onboarding())"
+    environment:
+      - MCP_ENDPOINT=http://mcp-server:8080
+      - LOG_LEVEL=INFO
+      - AGENT_NAME=${AGENT_NAME:-docker-agent}
+    networks:
+      - sartor-network
+    depends_on:
+      mcp-server:
+        condition: service_healthy
+    profiles:
+      - client
+
+networks:
+  sartor-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+# Usage Instructions:
+#
+# 1. Build the images:
+#    docker-compose build
+#
+# 2. Start the MCP server:
+#    docker-compose up -d mcp-server
+#
+# 3. View server logs:
+#    docker-compose logs -f mcp-server
+#
+# 4. Run tests (optional):
+#    docker-compose --profile test up mcp-test
+#
+# 5. Run gateway client (optional):
+#    docker-compose --profile client run gateway-client
+#
+# 6. Stop all services:
+#    docker-compose down
+#
+# 7. Remove all data (careful!):
+#    docker-compose down -v
+#
+# Environment Variables:
+# - FIREBASE_URL: Firebase Realtime Database URL
+# - GITHUB_REPO: GitHub repository for config
+# - SARTOR_API_KEY: API key for authentication
+# - AGENT_NAME: Name for the gateway client agent
+#
+# Profiles:
+# - default: Only runs mcp-server
+# - test: Runs test suite
+# - client: Runs gateway client for testing
