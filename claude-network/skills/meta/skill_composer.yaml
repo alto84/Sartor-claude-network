@@ -1,0 +1,247 @@
+metadata:
+  name: skill_composer
+  version: 1.0.0
+  description: Meta-skill for dynamically composing and orchestrating other skills based on requirements
+  category: meta
+  tags:
+    - orchestration
+    - composition
+    - dynamic
+    - meta-skill
+  author: Sartor Network Meta
+  created: 2025-11-03
+  updated: 2025-11-03
+  dependencies: []
+  permissions:
+    - skill_execution
+    - skill_discovery
+    - dynamic_composition
+
+parameters:
+  - name: goal
+    type: string
+    description: High-level goal to achieve
+    required: true
+
+  - name: available_resources
+    type: dict
+    description: Resources available for execution
+    required: false
+    default: {}
+
+  - name: constraints
+    type: dict
+    description: Constraints on execution (time, resources, etc)
+    required: false
+    default: {}
+
+  - name: strategy
+    type: string
+    description: Composition strategy to use
+    required: false
+    default: adaptive
+    validation:
+      enum:
+        - adaptive      # Choose best strategy dynamically
+        - fastest       # Prioritize speed
+        - thorough      # Prioritize completeness
+        - efficient     # Balance speed and resources
+        - exploratory   # Try multiple approaches
+
+outputs:
+  - name: execution_plan
+    type: dict
+    description: Generated execution plan with skills and flow
+    schema:
+      properties:
+        skills:
+          type: array
+          description: List of skills to execute
+        execution_mode:
+          type: string
+          description: How to execute (sequential, parallel, etc)
+        estimated_duration:
+          type: integer
+          description: Estimated time in seconds
+        resource_requirements:
+          type: dict
+
+  - name: results
+    type: dict
+    description: Results from executing the composed workflow
+
+  - name: performance_metrics
+    type: dict
+    description: Metrics about the execution
+
+execution:
+  type: workflow
+  steps:
+    - name: analyze_goal
+      description: Parse and understand the goal
+      actions:
+        - type: decompose_goal
+          description: Break down into sub-tasks
+        - type: identify_requirements
+          description: Determine what's needed
+        - type: assess_complexity
+          description: Evaluate difficulty level
+
+    - name: discover_candidates
+      description: Find relevant skills
+      parallel: true
+      branches:
+        - name: search_by_category
+          actions:
+            - type: identify_categories
+            - type: search_skills
+
+        - name: search_by_capability
+          actions:
+            - type: extract_capabilities
+            - type: match_skills
+
+        - name: search_by_similarity
+          actions:
+            - type: find_similar_goals
+            - type: retrieve_successful_plans
+
+    - name: evaluate_skills
+      description: Assess each candidate skill
+      actions:
+        - type: check_availability
+        - type: verify_permissions
+        - type: estimate_performance
+        - type: calculate_fit_score
+
+    - name: design_composition
+      description: Create optimal skill composition
+      condition:
+        strategy_equals: adaptive
+      actions:
+        - type: determine_dependencies
+        - type: identify_parallelization
+        - type: optimize_sequence
+        - type: add_error_handling
+
+    - name: generate_plan
+      description: Generate final execution plan
+      actions:
+        - type: structure_workflow
+        - type: assign_resources
+        - type: add_monitoring
+        - type: validate_plan
+
+    - name: execute_composition
+      description: Execute the composed workflow
+      dynamic: true  # Execution based on generated plan
+      monitor:
+        - performance_metrics
+        - error_rate
+        - resource_usage
+
+    - name: adaptive_adjustment
+      description: Adjust plan during execution if needed
+      condition:
+        performance_below_threshold: true
+      actions:
+        - type: analyze_bottleneck
+        - type: recompose_remaining
+        - type: apply_adjustments
+
+composition_strategies:
+  adaptive:
+    description: Dynamically adapt based on real-time feedback
+    features:
+      - runtime_optimization
+      - fallback_paths
+      - resource_balancing
+
+  fastest:
+    description: Maximum parallelization for speed
+    features:
+      - aggressive_parallelization
+      - skip_optional_steps
+      - use_cached_results
+
+  thorough:
+    description: Complete analysis with validation
+    features:
+      - all_validation_steps
+      - redundant_checking
+      - comprehensive_logging
+
+  efficient:
+    description: Balance between speed and resource usage
+    features:
+      - smart_parallelization
+      - resource_pooling
+      - lazy_evaluation
+
+  exploratory:
+    description: Try multiple approaches simultaneously
+    features:
+      - multi_path_execution
+      - A/B_testing
+      - learning_capture
+
+optimization_rules:
+  - name: parallelize_independent
+    description: Run independent skills in parallel
+    condition: no_data_dependencies
+
+  - name: cache_expensive
+    description: Cache results of expensive operations
+    condition: execution_time > 10s
+
+  - name: fail_fast
+    description: Stop early if critical skill fails
+    condition: skill_marked_critical
+
+  - name: batch_similar
+    description: Batch similar operations together
+    condition: same_resource_type
+
+learning_capabilities:
+  capture_patterns:
+    - successful_compositions
+    - failure_modes
+    - performance_characteristics
+
+  improve_over_time:
+    - refine_skill_selection
+    - optimize_sequences
+    - predict_durations
+
+  share_knowledge:
+    - broadcast_new_patterns
+    - update_skill_ratings
+    - contribute_to_knowledge_base
+
+examples:
+  - name: analyze_and_report
+    description: Analyze data and generate report
+    inputs:
+      goal: "Analyze system logs and generate daily report"
+      strategy: efficient
+      constraints:
+        max_duration: 300
+        output_format: markdown
+
+  - name: multi_source_aggregation
+    description: Aggregate data from multiple sources
+    inputs:
+      goal: "Collect and merge data from network, files, and APIs"
+      strategy: thorough
+      available_resources:
+        api_keys: ["key1", "key2"]
+        file_paths: ["/data/source1", "/data/source2"]
+
+  - name: exploratory_problem_solving
+    description: Explore multiple solution approaches
+    inputs:
+      goal: "Find optimal configuration for system performance"
+      strategy: exploratory
+      constraints:
+        max_attempts: 5
+        time_budget: 600

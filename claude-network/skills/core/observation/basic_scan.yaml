@@ -1,0 +1,289 @@
+metadata:
+  name: basic_scan
+  version: 1.0.0
+  description: Perform basic observation and scanning of environment, systems, or data
+  category: core/observation
+  tags:
+    - observation
+    - scanning
+    - analysis
+    - essential
+  author: Sartor Network Core
+  created: 2025-11-03
+  updated: 2025-11-03
+  dependencies: []
+  permissions:
+    - read_environment
+    - access_sensors
+
+parameters:
+  - name: target
+    type: string
+    description: What to scan (environment, network, system, data)
+    required: true
+    validation:
+      enum:
+        - environment
+        - network_status
+        - system_health
+        - data_structure
+        - agent_status
+        - task_queue
+        - file_system
+        - resource_usage
+
+  - name: depth
+    type: string
+    description: Depth of scan
+    required: false
+    default: standard
+    validation:
+      enum:
+        - summary
+        - standard
+        - detailed
+        - comprehensive
+
+  - name: filters
+    type: list
+    description: Filters to apply during scan
+    required: false
+    default: []
+
+  - name: timeout
+    type: integer
+    description: Maximum time for scan in seconds
+    required: false
+    default: 60
+    validation:
+      min: 1
+      max: 300
+
+  - name: include_metrics
+    type: boolean
+    description: Include performance metrics in results
+    required: false
+    default: true
+
+outputs:
+  - name: scan_id
+    type: string
+    description: Unique identifier for this scan
+
+  - name: timestamp
+    type: string
+    description: When the scan was performed
+
+  - name: observations
+    type: dict
+    description: Main observation results
+    schema:
+      properties:
+        summary:
+          type: string
+        details:
+          type: dict
+        anomalies:
+          type: array
+        patterns:
+          type: array
+
+  - name: metrics
+    type: dict
+    description: Performance and statistical metrics
+    schema:
+      properties:
+        items_scanned:
+          type: integer
+        scan_duration_ms:
+          type: integer
+        coverage_percent:
+          type: float
+        confidence_score:
+          type: float
+
+  - name: recommendations
+    type: list
+    description: Recommended actions based on observations
+
+execution:
+  type: workflow
+  steps:
+    - name: initialize_scan
+      description: Set up scan parameters and environment
+      actions:
+        - type: validate_target
+        - type: setup_sensors
+        - type: allocate_resources
+
+    - name: perform_scan
+      description: Execute the actual scanning
+      parallel: true
+      branches:
+        - name: primary_scan
+          actions:
+            - type: collect_data
+            - type: apply_filters
+            - type: validate_data
+
+        - name: context_scan
+          actions:
+            - type: gather_context
+            - type: check_dependencies
+            - type: identify_relationships
+
+    - name: analyze_results
+      description: Process and analyze scan data
+      actions:
+        - type: aggregate_data
+        - type: detect_patterns
+        - type: identify_anomalies
+        - type: calculate_metrics
+
+    - name: generate_insights
+      description: Generate insights and recommendations
+      condition:
+        depth_not: summary
+      actions:
+        - type: correlate_findings
+        - type: assess_significance
+        - type: formulate_recommendations
+
+    - name: format_output
+      description: Format results for output
+      actions:
+        - type: structure_data
+        - type: add_visualizations
+        - type: prepare_summary
+
+scan_types:
+  network_status:
+    checks:
+      - active_agents
+      - message_queue_depth
+      - latency_metrics
+      - error_rates
+      - throughput
+
+  system_health:
+    checks:
+      - cpu_usage
+      - memory_usage
+      - disk_space
+      - process_status
+      - service_availability
+
+  agent_status:
+    checks:
+      - online_status
+      - current_tasks
+      - capability_status
+      - performance_metrics
+      - error_logs
+
+  task_queue:
+    checks:
+      - pending_tasks
+      - assigned_tasks
+      - completion_rate
+      - average_duration
+      - bottlenecks
+
+analysis_patterns:
+  anomaly_detection:
+    - statistical_outliers
+    - unusual_patterns
+    - missing_data
+    - unexpected_values
+
+  trend_analysis:
+    - increasing_trends
+    - decreasing_trends
+    - cyclical_patterns
+    - seasonal_variations
+
+  correlation_analysis:
+    - related_events
+    - cause_effect_relationships
+    - dependency_chains
+
+examples:
+  - name: quick_network_check
+    description: Quick scan of network status
+    inputs:
+      target: network_status
+      depth: summary
+      timeout: 10
+
+  - name: comprehensive_system_scan
+    description: Detailed system health check
+    inputs:
+      target: system_health
+      depth: comprehensive
+      include_metrics: true
+      filters:
+        - critical_services_only: false
+        - include_historical: true
+
+  - name: agent_readiness_check
+    description: Check if agents are ready for tasks
+    inputs:
+      target: agent_status
+      depth: standard
+      filters:
+        - status: online
+        - available_for_tasks: true
+
+performance:
+  typical_duration:
+    summary: 1-5 seconds
+    standard: 5-30 seconds
+    detailed: 30-60 seconds
+    comprehensive: 60-300 seconds
+
+  resource_usage:
+    cpu: low to medium
+    memory: low
+    network: minimal
+    disk_io: minimal
+
+error_handling:
+  - error: target_unavailable
+    action: fallback_to_cached
+    message: "Target not accessible, using cached data"
+
+  - error: timeout_exceeded
+    action: return_partial_results
+    message: "Scan timeout, returning partial results"
+
+  - error: insufficient_permissions
+    action: scan_accessible_only
+    message: "Limited scan due to permissions"
+
+quality_checks:
+  data_validation:
+    - check_completeness
+    - verify_accuracy
+    - ensure_consistency
+
+  result_validation:
+    - verify_no_false_positives
+    - check_confidence_thresholds
+    - validate_recommendations
+
+testing:
+  unit_tests:
+    - test_each_target_type
+    - test_depth_levels
+    - test_filter_application
+    - test_timeout_handling
+
+  integration_tests:
+    - test_live_scanning
+    - test_multi_target_scans
+    - test_parallel_execution
+
+  validation_tests:
+    - test_result_accuracy
+    - test_anomaly_detection
+    - test_recommendation_quality
