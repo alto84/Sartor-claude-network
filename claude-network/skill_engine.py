@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Skill Engine for Sartor Claude Network
 Implements skill definition, discovery, execution, validation, and composition
@@ -8,7 +9,7 @@ import yaml
 import os
 import re
 import asyncio
-from typing import Dict, List, Any, Optional, Union, Callable
+from typing import Dict, List, Any, Optional, Union, Callable, Tuple
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
@@ -196,7 +197,7 @@ class Skill:
         # Execution definition
         self.execution = definition.get('execution', {})
 
-    def validate_inputs(self, inputs: Dict[str, Any]) -> tuple[bool, List[str]]:
+    def validate_inputs(self, inputs: Dict[str, Any]) -> Tuple[bool, List[str]]:
         """Validate input parameters"""
         errors = []
 

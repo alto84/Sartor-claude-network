@@ -7,6 +7,7 @@ Implements task lifecycle, queue management, and assignment algorithms
 import json
 import uuid
 import logging
+import os
 from datetime import datetime, timedelta
 from enum import Enum, auto
 from typing import Dict, List, Optional, Set, Any, Tuple
@@ -20,8 +21,14 @@ from collections import defaultdict
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Firebase configuration
-FIREBASE_URL = "https://home-claude-network-default-rtdb.firebaseio.com"
+# Firebase configuration - load from environment or use None
+FIREBASE_URL = os.environ.get("CLAUDE_FIREBASE_URL", None)
+
+def get_firebase_url() -> str:
+    """Get Firebase URL, raise error if not configured"""
+    if not FIREBASE_URL:
+        raise ValueError("Firebase URL not configured. Set CLAUDE_FIREBASE_URL environment variable.")
+    return FIREBASE_URL
 
 class TaskStatus(Enum):
     """Task lifecycle states"""
@@ -467,12 +474,21 @@ class TaskQueue:
 class TaskManager:
     """Main task management system"""
 
-    def __init__(self, firebase_url: str = FIREBASE_URL):
-        self.firebase_url = firebase_url
+    def __init__(self, firebase_url: Optional[str] = None):
+        """
+        Initialize task manager
+
+        Args:
+            firebase_url: Firebase URL (defaults to environment variable)
+        """
+        self.firebase_url = firebase_url or os.environ.get("CLAUDE_FIREBASE_URL")
         self.queue = TaskQueue()
-        self.firebase_sync_enabled = True
+        self.firebase_sync_enabled = bool(self.firebase_url)
         self._sync_thread = None
         self._stop_sync = threading.Event()
+
+        if not self.firebase_url:
+            logger.warning("Firebase URL not configured - Firebase sync disabled")
 
     def start(self):
         """Start the task manager"""

@@ -18,6 +18,7 @@ import hashlib
 import logging
 import threading
 import queue
+import os
 from typing import Dict, List, Optional, Any, Callable, Union, Set, Tuple
 from dataclasses import dataclass, asdict, field
 from datetime import datetime, timedelta
@@ -56,8 +57,18 @@ class MACSConfig:
     OFFLINE_CACHE_PATH = Path.home() / ".claude-network" / "offline-queue.json"
 
     # Security configuration
-    SHARED_SECRET = "MACS-SECRET-KEY-CHANGE-IN-PRODUCTION"  # TODO: Move to env var
+    SHARED_SECRET = os.environ.get("MACS_SHARED_SECRET", None)
     SIGNATURE_ALGORITHM = "sha256"
+
+    @classmethod
+    def validate_security_config(cls) -> bool:
+        """Validate security configuration is properly set"""
+        if not cls.SHARED_SECRET:
+            logger.error("MACS_SHARED_SECRET environment variable not set. Message signing disabled.")
+            return False
+        if len(cls.SHARED_SECRET) < 32:
+            logger.warning("MACS_SHARED_SECRET should be at least 32 characters for security")
+        return True
 
     # Heartbeat configuration
     HEARTBEAT_INTERVAL = 30  # seconds
@@ -537,8 +548,12 @@ class MessageSigner:
     """Handle message signing and verification"""
 
     @staticmethod
-    def sign_message(message: Message, agent_id: str) -> MessageSecurity:
+    def sign_message(message: Message, agent_id: str) -> Optional[MessageSecurity]:
         """Sign a message with HMAC-SHA256"""
+        if not MACSConfig.SHARED_SECRET:
+            logger.warning("Cannot sign message - MACS_SHARED_SECRET not configured")
+            return None
+
         # Create signing payload (header + routing + payload)
         signing_data = json.dumps({
             "header": message.header.to_dict(),
@@ -565,6 +580,10 @@ class MessageSigner:
         """Verify message signature"""
         if not message.security:
             logger.warning(f"Message {message.header.message_id} has no signature")
+            return False
+
+        if not MACSConfig.SHARED_SECRET:
+            logger.warning("Cannot verify signature - MACS_SHARED_SECRET not configured")
             return False
 
         # Recreate signing payload
@@ -636,10 +655,14 @@ class OfflineQueue:
         # Save to disk
         try:
             with open(self.cache_path, 'w') as f:
-                json.dump(messages, f)
+                json.dump(messages, f, indent=2)
             logger.debug(f"Saved {len(messages)} messages to cache")
+        except (IOError, OSError) as e:
+            logger.error(f"Failed to save offline cache - I/O error: {e}")
+        except json.JSONEncodeError as e:
+            logger.error(f"Failed to save offline cache - JSON encoding error: {e}")
         except Exception as e:
-            logger.error(f"Failed to save offline cache: {e}")
+            logger.error(f"Unexpected error saving offline cache: {e}")
 
     def add(self, message: Message) -> bool:
         """Add message to offline queue"""
@@ -1041,8 +1064,10 @@ class MACSClient:
                 json={"status": "offline", "last_seen": datetime.now().isoformat()},
                 timeout=5
             )
-        except:
-            pass
+        except requests.RequestException as e:
+            logger.debug(f"Failed to update offline status during cleanup: {e}")
+        except Exception as e:
+            logger.debug(f"Unexpected error during cleanup status update: {e}")
 
         # Save offline queue
         self.offline_queue._save_to_cache()
