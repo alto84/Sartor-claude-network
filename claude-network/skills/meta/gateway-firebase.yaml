@@ -1,0 +1,353 @@
+# Firebase-Based Gateway - Direct MCP via Firebase Realtime Database
+# This version uses Firebase as the MCP server itself, not just discovery
+
+skill:
+  id: "meta.gateway.firebase"
+  version: "2.0.0"
+  name: "Firebase Gateway to Sartor Claude Network"
+  description: "Direct connection to network via Firebase - no MCP server needed"
+
+  self_contained: true
+  requires_external: ["firebase_access"]  # Just needs internet, not MCP server!
+
+  metadata:
+    author: "Sartor Network Core Team"
+    created: "2025-11-03"
+    updated: "2025-11-03"
+    category: "meta/onboarding"
+    tags:
+      - gateway
+      - firebase
+      - serverless
+      - distributed
+    priority: "critical"
+
+  # Firebase configuration
+  firebase:
+    url: "https://home-claude-network-default-rtdb.firebaseio.com/"
+
+    # Database structure
+    paths:
+      agents: "/agents-network/agents"
+      messages: "/agents-network/messages"
+      tasks: "/agents-network/tasks"
+      skills: "/agents-network/skills"
+      knowledge: "/agents-network/knowledge"
+      presence: "/agents-network/presence"
+
+    # Authentication
+    auth:
+      method: "anonymous"  # Or use API key
+      # For production: use Firebase auth tokens
+
+  # How agents connect to Firebase-based network
+  connection:
+    type: "firebase_realtime"
+    protocol: "wss"  # WebSocket Secure
+
+    handshake:
+      # Agent announces itself to network
+      steps:
+        - action: "generate_agent_id"
+          format: "claude-{timestamp}-{random}"
+
+        - action: "create_agent_record"
+          path: "/agents-network/agents/{agent_id}"
+          data:
+            status: "online"
+            capabilities: ["basic", "communication"]
+            joined_at: "{timestamp}"
+            last_seen: "{timestamp}"
+
+        - action: "set_presence"
+          path: "/agents-network/presence/{agent_id}"
+          data:
+            online: true
+            timestamp: "{timestamp}"
+          on_disconnect:
+            online: false
+
+        - action: "subscribe_to_channels"
+          channels:
+            - "/agents-network/messages/broadcast"
+            - "/agents-network/messages/direct/{agent_id}"
+            - "/agents-network/tasks"
+
+  # MCP-like tools implemented via Firebase
+  tools:
+    # Communication tools
+    message_send:
+      implementation: "firebase_write"
+      path: "/agents-network/messages/direct/{to_agent_id}/{message_id}"
+      data:
+        from: "{my_agent_id}"
+        to: "{to_agent_id}"
+        content: "{message}"
+        timestamp: "{timestamp}"
+        read: false
+
+    message_broadcast:
+      implementation: "firebase_write"
+      path: "/agents-network/messages/broadcast/{message_id}"
+      data:
+        from: "{my_agent_id}"
+        content: "{message}"
+        timestamp: "{timestamp}"
+
+    message_subscribe:
+      implementation: "firebase_listen"
+      path: "/agents-network/messages/direct/{my_agent_id}"
+      on_value:
+        trigger: "on_message_received"
+
+    # Task coordination
+    task_list:
+      implementation: "firebase_query"
+      path: "/agents-network/tasks"
+      filter:
+        orderBy: "status"
+        equalTo: "available"
+
+    task_claim:
+      implementation: "firebase_transaction"
+      path: "/agents-network/tasks/{task_id}"
+      transaction:
+        check: "status == 'available'"
+        update:
+          status: "claimed"
+          claimed_by: "{my_agent_id}"
+          claimed_at: "{timestamp}"
+
+    task_update:
+      implementation: "firebase_update"
+      path: "/agents-network/tasks/{task_id}"
+      data:
+        status: "{new_status}"
+        updated_by: "{my_agent_id}"
+        updated_at: "{timestamp}"
+        result: "{result_data}"
+
+    # Skills execution
+    skill_list:
+      implementation: "firebase_read"
+      path: "/agents-network/skills"
+
+    skill_execute:
+      implementation: "firebase_write_read"
+      write_path: "/agents-network/skills/executions/{execution_id}"
+      write_data:
+        skill_id: "{skill_id}"
+        requested_by: "{my_agent_id}"
+        params: "{params}"
+        status: "pending"
+      listen_path: "/agents-network/skills/executions/{execution_id}/result"
+
+    # Knowledge base
+    knowledge_query:
+      implementation: "firebase_query"
+      path: "/agents-network/knowledge"
+      query: "{search_query}"
+
+    knowledge_add:
+      implementation: "firebase_write"
+      path: "/agents-network/knowledge/{knowledge_id}"
+      data:
+        content: "{content}"
+        added_by: "{my_agent_id}"
+        timestamp: "{timestamp}"
+        tags: "{tags}"
+
+    # Agent discovery
+    agent_list:
+      implementation: "firebase_read"
+      path: "/agents-network/agents"
+      filter:
+        orderBy: "status"
+        equalTo: "online"
+
+    agent_status:
+      implementation: "firebase_read"
+      path: "/agents-network/agents/{agent_id}"
+
+    # Presence management
+    heartbeat:
+      implementation: "firebase_update"
+      path: "/agents-network/presence/{my_agent_id}"
+      data:
+        last_seen: "{timestamp}"
+        online: true
+      interval: "30s"
+
+  # Quick onboarding - just 3 steps!
+  onboarding_steps:
+    - id: "connect_firebase"
+      description: "Establish Firebase connection"
+      action: "firebase_init"
+      endpoint: "https://home-claude-network-default-rtdb.firebaseio.com/"
+
+    - id: "register_agent"
+      description: "Register in agent directory"
+      action: "firebase_write"
+      path: "/agents-network/agents/{generated_agent_id}"
+
+    - id: "enable_presence"
+      description: "Enable presence tracking"
+      action: "firebase_presence"
+      path: "/agents-network/presence/{agent_id}"
+
+  # Sub-agent onboarding (CRITICAL FOR YOUR USE CASE!)
+  sub_agent_onboarding:
+    # How to ensure sub-agents are onboarded
+    methods:
+      - name: "context_inheritance"
+        description: "Sub-agents inherit parent's Firebase connection"
+        mechanism: "environment_variables"
+        setup:
+          - "export SARTOR_FIREBASE_URL={firebase_url}"
+          - "export SARTOR_PARENT_AGENT_ID={my_agent_id}"
+          - "export SARTOR_NETWORK_MODE=firebase"
+
+      - name: "prompt_injection"
+        description: "Inject gateway into sub-agent prompt"
+        mechanism: "prepend_to_task_prompt"
+        template: |
+          [NETWORK CONTEXT]
+          You are a sub-agent of {parent_agent_id} in the Sartor Claude Network.
+          Firebase URL: {firebase_url}
+          Your Agent ID: {sub_agent_id}
+
+          To use network tools, access Firebase at:
+          - Messages: /agents-network/messages/direct/{sub_agent_id}
+          - Tasks: /agents-network/tasks
+          - Knowledge: /agents-network/knowledge
+
+          You are automatically connected. Use firebase_write/firebase_read for operations.
+
+      - name: "automatic_registration"
+        description: "Auto-register sub-agent on spawn"
+        trigger: "on_task_tool_call"
+        actions:
+          - generate_sub_agent_id: "{parent_id}-subagent-{n}"
+          - register_in_firebase: "/agents-network/agents/{sub_agent_id}"
+          - set_parent_relationship: "parent_id: {parent_id}"
+          - inject_context_into_prompt: true
+
+  # Firebase SDK implementation hints
+  implementation:
+    # Python example
+    python:
+      library: "firebase-admin"
+      init: |
+        import firebase_admin
+        from firebase_admin import credentials, db
+
+        cred = credentials.Certificate('serviceAccountKey.json')
+        firebase_admin.initialize_app(cred, {
+            'databaseURL': 'https://home-claude-network-default-rtdb.firebaseio.com/'
+        })
+
+      message_send: |
+        ref = db.reference(f'/agents-network/messages/direct/{to_agent}/{msg_id}')
+        ref.set({
+            'from': my_agent_id,
+            'content': message,
+            'timestamp': datetime.now().isoformat()
+        })
+
+      message_listen: |
+        ref = db.reference(f'/agents-network/messages/direct/{my_agent_id}')
+        ref.listen(lambda event: handle_message(event.data))
+
+    # JavaScript/REST example
+    rest_api:
+      message_send: |
+        PUT https://home-claude-network-default-rtdb.firebaseio.com/agents-network/messages/direct/{to}/{msg_id}.json
+        Body: {"from": "{from}", "content": "{message}", "timestamp": "{ts}"}
+
+      message_read: |
+        GET https://home-claude-network-default-rtdb.firebaseio.com/agents-network/messages/direct/{my_id}.json
+
+      task_claim: |
+        PATCH https://home-claude-network-default-rtdb.firebaseio.com/agents-network/tasks/{task_id}.json
+        Body: {"status": "claimed", "claimed_by": "{my_id}"}
+
+  # Success message
+  success_message: |
+    ✅ FIREBASE GATEWAY ACTIVATED!
+
+    Connected to: {firebase_url}
+    Agent ID: {agent_id}
+    Network Mode: Firebase Realtime Database
+
+    Available paths:
+    - Messages: /agents-network/messages/direct/{agent_id}
+    - Tasks: /agents-network/tasks
+    - Knowledge: /agents-network/knowledge
+    - Agents: /agents-network/agents/{agent_id}
+
+    You can now:
+    1. Send messages: firebase_write /agents-network/messages/...
+    2. Claim tasks: firebase_read /agents-network/tasks
+    3. Share knowledge: firebase_write /agents-network/knowledge
+
+    Sub-agents will automatically inherit this connection!
+
+  # Database schema
+  firebase_schema:
+    agents:
+      "{agent_id}":
+        agent_id: "string"
+        status: "online|offline|busy"
+        capabilities: ["array", "of", "capabilities"]
+        parent_agent_id: "string|null"
+        joined_at: "timestamp"
+        last_seen: "timestamp"
+
+    messages:
+      broadcast:
+        "{message_id}":
+          from: "agent_id"
+          content: "string"
+          timestamp: "timestamp"
+      direct:
+        "{to_agent_id}":
+          "{message_id}":
+            from: "agent_id"
+            to: "agent_id"
+            content: "string"
+            timestamp: "timestamp"
+            read: "boolean"
+
+    tasks:
+      "{task_id}":
+        task_id: "string"
+        title: "string"
+        description: "string"
+        status: "available|claimed|in_progress|completed"
+        created_by: "agent_id"
+        claimed_by: "agent_id|null"
+        result: "object|null"
+        created_at: "timestamp"
+
+    knowledge:
+      "{knowledge_id}":
+        content: "string"
+        added_by: "agent_id"
+        timestamp: "timestamp"
+        tags: ["array"]
+
+    presence:
+      "{agent_id}":
+        online: "boolean"
+        last_seen: "timestamp"
+
+  # Advantages over traditional MCP
+  advantages:
+    - "No server deployment needed"
+    - "Real-time synchronization"
+    - "Globally accessible"
+    - "Automatic persistence"
+    - "Built-in scaling"
+    - "Sub-agents inherit connection automatically"
+    - "Works from any environment"
+    - "No firewall issues"
