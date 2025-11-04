@@ -1,18 +1,7 @@
 #!/usr/bin/env python3
 """
-Sartor Network Bootstrap - Single File Agent Onboarding
-
-USAGE FOR A FRESH LLM:
-    Just run: python3 sartor-network-bootstrap.py
-
-This single file contains everything needed to connect a new Claude agent
-to the Sartor Claude Network. No other dependencies required (except requests).
-
-WHAT IT DOES:
-    1. Connects you to the Firebase-based MCP network
-    2. Gives you access to all MCP tools
-    3. Enables sub-agent auto-onboarding
-    4. Provides examples and documentation
+Firebase MCP Client - Implements MCP protocol using Firebase Realtime Database
+This allows Claude agents to communicate without a dedicated MCP server
 """
 
 import json
@@ -21,7 +10,8 @@ import time
 import uuid
 import requests
 from datetime import datetime
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, Optional, Callable, List
+from urllib.parse import urljoin
 
 
 def requires_connection(func):
@@ -36,35 +26,24 @@ def requires_connection(func):
     return wrapper
 
 
-class SartorNetworkClient:
+class FirebaseMCPClient:
     """
-    Complete Firebase MCP client in a single class.
-
-    This is all you need to connect to the Sartor Claude Network.
+    MCP Client that uses Firebase Realtime Database as the transport layer.
+    No separate MCP server needed - Firebase IS the MCP.
     """
 
     def __init__(
         self,
         firebase_url: str = "https://home-claude-network-default-rtdb.firebaseio.com/",
         agent_id: Optional[str] = None,
-        agent_name: Optional[str] = None,
+        parent_agent_id: Optional[str] = None,
     ):
-        """
-        Initialize network client.
-
-        Args:
-            firebase_url: Firebase Realtime Database URL
-            agent_id: Your agent ID (auto-generated if not provided)
-            agent_name: Friendly name for your agent (optional)
-        """
         self.firebase_url = firebase_url.rstrip("/")
         self.agent_id = agent_id or self._generate_agent_id()
-        self.agent_name = agent_name or f"Agent-{self.agent_id[:12]}"
+        self.parent_agent_id = parent_agent_id
+        self.base_path = "/agents-network"
+        self.message_callbacks: Dict[str, Callable] = {}
         self.is_connected = False
-
-        print(f"🤖 Sartor Network Client initialized")
-        print(f"   Agent ID: {self.agent_id}")
-        print(f"   Agent Name: {self.agent_name}")
 
     def _validate_agent_id(self, agent_id: str, param_name: str = "agent_id") -> None:
         """Validate agent ID format"""
@@ -92,11 +71,15 @@ class SartorNetworkClient:
         random_id = str(uuid.uuid4())[:8]
         return f"claude-{timestamp}-{random_id}"
 
+    def _firebase_path(self, path: str) -> str:
+        """Construct full Firebase path"""
+        return f"{self.base_path}{path}.json"
+
     def _firebase_request(
         self, method: str, path: str, data: Optional[Dict] = None
     ) -> Optional[Dict]:
         """Make HTTP request to Firebase REST API"""
-        url = f"{self.firebase_url}/agents-network{path}.json"
+        url = f"{self.firebase_url}{self._firebase_path(path)}"
 
         try:
             if method == "GET":
@@ -116,24 +99,22 @@ class SartorNetworkClient:
             return response.json()
 
         except requests.exceptions.RequestException as e:
-            print(f"⚠️  Firebase request failed: {e}")
+            print(f"Firebase request failed: {e}")
             return None
 
     def connect(self) -> bool:
         """
-        Connect to the Sartor Claude Network.
-
-        Returns:
-            True if connection successful, False otherwise
+        Connect to Firebase network and register agent.
+        This is the equivalent of connecting to an MCP server.
         """
-        print(f"\n🌐 Connecting to Sartor Claude Network...")
+        print(f"Connecting agent {self.agent_id} to Firebase network...")
 
-        # Register agent
+        # Register agent in the network
         agent_data = {
             "agent_id": self.agent_id,
-            "agent_name": self.agent_name,
             "status": "online",
             "capabilities": ["communication", "tasks", "skills", "knowledge"],
+            "parent_agent_id": self.parent_agent_id,
             "joined_at": datetime.now().isoformat(),
             "last_seen": datetime.now().isoformat(),
         }
@@ -142,47 +123,39 @@ class SartorNetworkClient:
 
         if result:
             # Set presence
-            presence_data = {
-                "online": True,
-                "last_seen": datetime.now().isoformat()
-            }
+            presence_data = {"online": True, "last_seen": datetime.now().isoformat()}
             self._firebase_request("PUT", f"/presence/{self.agent_id}", presence_data)
 
             self.is_connected = True
-            print(f"✅ Connected to Sartor Claude Network!")
-            print(f"   Firebase: {self.firebase_url}")
-            print(f"   Status: Online")
-
-            # Show network status
-            agents = self.agent_list()
-            print(f"   Network: {len(agents)} agents online")
-
+            print(f"✅ Agent {self.agent_id} connected to Firebase network")
             return True
         else:
-            print(f"❌ Connection failed")
+            print(f"❌ Failed to connect agent {self.agent_id}")
             return False
 
     def disconnect(self):
-        """Disconnect from network"""
+        """Disconnect from network and mark agent offline"""
         if not self.is_connected:
             return
 
+        # Update status
         self._firebase_request(
             "PATCH",
             f"/agents/{self.agent_id}",
-            {"status": "offline", "last_seen": datetime.now().isoformat()}
+            {"status": "offline", "last_seen": datetime.now().isoformat()},
         )
 
+        # Update presence
         self._firebase_request(
             "PATCH",
             f"/presence/{self.agent_id}",
-            {"online": False, "last_seen": datetime.now().isoformat()}
+            {"online": False, "last_seen": datetime.now().isoformat()},
         )
 
         self.is_connected = False
-        print(f"👋 Disconnected from network")
+        print(f"Agent {self.agent_id} disconnected")
 
-    # === Communication Tools ===
+    # === MCP Tool Implementations ===
 
     @requires_connection
     def message_send(self, to_agent_id: str, content: str) -> bool:
@@ -213,15 +186,13 @@ class SartorNetworkClient:
         }
 
         result = self._firebase_request(
-            "PUT",
-            f"/messages/direct/{to_agent_id}/{message_id}",
-            message_data
+            "PUT", f"/messages/direct/{to_agent_id}/{message_id}", message_data
         )
 
-        if result:
+        success = result is not None
+        if success:
             print(f"📤 Message sent to {to_agent_id}")
-            return True
-        return False
+        return success
 
     @requires_connection
     def message_broadcast(self, content: str) -> bool:
@@ -242,15 +213,13 @@ class SartorNetworkClient:
         }
 
         result = self._firebase_request(
-            "PUT",
-            f"/messages/broadcast/{message_id}",
-            message_data
+            "PUT", f"/messages/broadcast/{message_id}", message_data
         )
 
-        if result:
+        success = result is not None
+        if success:
             print(f"📢 Broadcast sent: {content}")
-            return True
-        return False
+        return success
 
     def message_read(self, count: int = 10) -> List[Dict]:
         """Read messages for this agent"""
@@ -259,39 +228,26 @@ class SartorNetworkClient:
         if not messages:
             return []
 
+        # Convert to list and sort by timestamp
         message_list = []
         for msg_id, msg_data in messages.items():
             if isinstance(msg_data, dict):
                 msg_data["message_id"] = msg_id
                 message_list.append(msg_data)
 
-        message_list.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
+        message_list.sort(
+            key=lambda x: x.get("timestamp", ""), reverse=True
+        )
         return message_list[:count]
 
-    # === Task Coordination Tools ===
-
-    def task_list(self, status: str = "available", claim_timeout_minutes: int = 10) -> List[Dict]:
-        """
-        List tasks with given status.
-
-        Automatically releases stale claimed tasks before listing to ensure
-        the task list is always current (BUG-002 fix).
-
-        Args:
-            status: Task status to filter by (default: "available")
-            claim_timeout_minutes: Timeout in minutes for claimed tasks (default: 10)
-
-        Returns:
-            List of tasks matching the status
-        """
-        # Release stale tasks before listing
-        self._release_stale_tasks(timeout_minutes=claim_timeout_minutes)
-
+    def task_list(self, status: str = "available") -> List[Dict]:
+        """List tasks with given status"""
         tasks = self._firebase_request("GET", "/tasks")
 
         if not tasks:
             return []
 
+        # Filter by status
         task_list = []
         for task_id, task_data in tasks.items():
             if isinstance(task_data, dict) and task_data.get("status") == status:
@@ -364,7 +320,7 @@ class SartorNetworkClient:
 
             # Check if we are the owner
             if verification.get("claimed_by") == self.agent_id:
-                print(f"✅ Successfully claimed task: {task.get('title', task_id)}")
+                print(f"✅ Successfully claimed task {task_id}")
                 return True
 
             # Another agent claimed it - retry with exponential backoff
@@ -377,7 +333,9 @@ class SartorNetworkClient:
         return False
 
     @requires_connection
-    def task_create(self, title: str, description: str, task_data: Optional[Dict] = None) -> str:
+    def task_create(
+        self, title: str, description: str, task_data: Optional[Dict] = None
+    ) -> str:
         """Create a new task"""
         # BUG-007: Empty field validation
         if not title or not title.strip():
@@ -437,9 +395,7 @@ class SartorNetworkClient:
             update_data["result"] = result
 
         self._firebase_request("PATCH", f"/tasks/{task_id}", update_data)
-        print(f"📊 Updated task to {status}")
-
-    # === Knowledge Base Tools ===
+        print(f"📊 Updated task {task_id} to {status}")
 
     @requires_connection
     def knowledge_add(self, content: str, tags: List[str] = None) -> str:
@@ -460,7 +416,9 @@ class SartorNetworkClient:
             "tags": tags or [],
         }
 
-        result = self._firebase_request("PUT", f"/knowledge/{knowledge_id}", knowledge_data)
+        result = self._firebase_request(
+            "PUT", f"/knowledge/{knowledge_id}", knowledge_data
+        )
 
         if result:
             print(f"🧠 Added knowledge: {content[:50]}...")
@@ -474,11 +432,13 @@ class SartorNetworkClient:
         if not knowledge:
             return []
 
+        # Convert to list
         knowledge_list = []
         for k_id, k_data in knowledge.items():
             if isinstance(k_data, dict):
                 k_data["knowledge_id"] = k_id
 
+                # Simple text search if query provided
                 if query:
                     content = k_data.get("content", "").lower()
                     if query.lower() in content:
@@ -488,8 +448,103 @@ class SartorNetworkClient:
 
         return knowledge_list
 
+    def agent_list(self) -> List[Dict]:
+        """List all online agents"""
+        agents = self._firebase_request("GET", "/agents")
+
+        if not agents:
+            return []
+
+        # Filter online agents
+        agent_list = []
+        for agent_id, agent_data in agents.items():
+            if isinstance(agent_data, dict):
+                agent_data["agent_id"] = agent_id
+                agent_list.append(agent_data)
+
+        return agent_list
+
+    def heartbeat(self):
+        """Send heartbeat to maintain presence"""
+        if not self.is_connected:
+            return
+
+        presence_data = {
+            "online": True,
+            "last_seen": datetime.now().isoformat(),
+        }
+
+        self._firebase_request("PATCH", f"/presence/{self.agent_id}", presence_data)
+
+    # === Sub-Agent Support ===
+
+    def create_sub_agent_context(self, task_description: str = "") -> Dict[str, str]:
+        """
+        Create context for a sub-agent to inherit network connection.
+        This enables automatic onboarding of sub-agents.
+        """
+        return {
+            "SARTOR_FIREBASE_URL": self.firebase_url,
+            "SARTOR_PARENT_AGENT_ID": self.agent_id,
+            "SARTOR_NETWORK_MODE": "firebase",
+            "SARTOR_TASK_DESCRIPTION": task_description,
+        }
+
+    def get_sub_agent_prompt_injection(self, sub_agent_id: str = None) -> str:
+        """
+        Get prompt text to inject into sub-agent for automatic onboarding.
+        This is the KEY to ensuring sub-agents are network-aware!
+        """
+        if not sub_agent_id:
+            sub_agent_id = f"{self.agent_id}-subagent-{int(time.time())}"
+
+        return f"""
+[SARTOR NETWORK CONTEXT - AUTO-ONBOARDING]
+
+You are a sub-agent in the Sartor Claude Network.
+Parent Agent: {self.agent_id}
+Your Agent ID: {sub_agent_id}
+Firebase URL: {self.firebase_url}
+
+NETWORK ACCESS:
+You are automatically connected to the network via Firebase.
+Use the FirebaseMCPClient to interact with the network:
+
+```python
+from firebase_mcp_client import FirebaseMCPClient
+
+# Initialize (you're already registered!)
+client = FirebaseMCPClient(
+    firebase_url="{self.firebase_url}",
+    agent_id="{sub_agent_id}",
+    parent_agent_id="{self.agent_id}"
+)
+
+# Connect to network
+client.connect()
+
+# Use network tools
+client.message_broadcast("Sub-agent reporting!")
+client.task_list()
+client.knowledge_query("relevant information")
+```
+
+AVAILABLE MCP TOOLS:
+- message_send(to, content) - Send direct message
+- message_broadcast(content) - Broadcast to all agents
+- task_list(status) - List tasks
+- task_claim(task_id) - Claim a task
+- knowledge_query(query) - Search knowledge
+- knowledge_add(content, tags) - Share knowledge
+- agent_list() - See all agents
+
+You have full network access. Coordinate with other agents as needed.
+"""
+
+
     # === Agent Mail System ===
 
+    @requires_connection
     def mail_send(
         self, to_agent_id: str, subject: str, body: str, priority: str = "normal"
     ) -> Optional[str]:
@@ -505,28 +560,22 @@ class SartorNetworkClient:
         Returns:
             mail_id if successful, None otherwise
         """
-        if not self.is_connected:
-            print("❌ Not connected to network. Call connect() first.")
-            return None
-
         # Validate inputs
+        self._validate_agent_id(to_agent_id, "to_agent_id")
+
         if not isinstance(subject, str) or not subject.strip():
-            print("❌ Subject must be a non-empty string")
-            return None
+            raise ValueError("Subject must be a non-empty string")
 
         if not isinstance(body, str) or not body.strip():
-            print("❌ Body must be a non-empty string")
-            return None
+            raise ValueError("Body must be a non-empty string")
 
         if priority not in ["normal", "high", "urgent"]:
-            print("❌ Priority must be one of: normal, high, urgent")
-            return None
+            raise ValueError("Priority must be one of: normal, high, urgent")
 
         # Verify recipient exists
         recipient = self._firebase_request("GET", f"/agents/{to_agent_id}")
         if recipient is None:
-            print(f"❌ Agent '{to_agent_id}' does not exist or is not registered")
-            return None
+            raise ValueError(f"Agent '{to_agent_id}' does not exist or is not registered")
 
         mail_id = str(uuid.uuid4())
         mail_data = {
@@ -558,6 +607,7 @@ class SartorNetworkClient:
             return mail_id
         return None
 
+    @requires_connection
     def mail_read(self, mail_id: str) -> Optional[Dict]:
         """
         Read a mail and mark it as read.
@@ -568,13 +618,8 @@ class SartorNetworkClient:
         Returns:
             Mail content if found, None otherwise
         """
-        if not self.is_connected:
-            print("❌ Not connected to network. Call connect() first.")
-            return None
-
         if not mail_id or not isinstance(mail_id, str):
-            print("❌ mail_id must be a non-empty string")
-            return None
+            raise ValueError("mail_id must be a non-empty string")
 
         # Check inbox first
         mail = self._firebase_request("GET", f"/mail/{self.agent_id}/inbox/{mail_id}")
@@ -600,6 +645,7 @@ class SartorNetworkClient:
         print(f"❌ Mail {mail_id} not found")
         return None
 
+    @requires_connection
     def mail_list(
         self, folder: str = "inbox", unread_only: bool = False
     ) -> List[Dict]:
@@ -613,13 +659,8 @@ class SartorNetworkClient:
         Returns:
             List of mails sorted by timestamp (newest first)
         """
-        if not self.is_connected:
-            print("❌ Not connected to network. Call connect() first.")
-            return []
-
         if folder not in ["inbox", "sent", "archive"]:
-            print("❌ Folder must be one of: inbox, sent, archive")
-            return []
+            raise ValueError("Folder must be one of: inbox, sent, archive")
 
         mails = self._firebase_request("GET", f"/mail/{self.agent_id}/{folder}")
 
@@ -643,6 +684,7 @@ class SartorNetworkClient:
 
         return mail_list
 
+    @requires_connection
     def mail_reply(self, mail_id: str, body: str) -> Optional[str]:
         """
         Reply to a mail (creates thread).
@@ -654,13 +696,8 @@ class SartorNetworkClient:
         Returns:
             New mail_id if successful, None otherwise
         """
-        if not self.is_connected:
-            print("❌ Not connected to network. Call connect() first.")
-            return None
-
         if not isinstance(body, str) or not body.strip():
-            print("❌ Body must be a non-empty string")
-            return None
+            raise ValueError("Body must be a non-empty string")
 
         # Get original mail
         original = self.mail_read(mail_id)
@@ -699,6 +736,7 @@ class SartorNetworkClient:
             return reply_id
         return None
 
+    @requires_connection
     def mail_archive(self, mail_id: str) -> bool:
         """
         Move mail from inbox to archive folder.
@@ -709,13 +747,8 @@ class SartorNetworkClient:
         Returns:
             True if successful, False otherwise
         """
-        if not self.is_connected:
-            print("❌ Not connected to network. Call connect() first.")
-            return False
-
         if not mail_id or not isinstance(mail_id, str):
-            print("❌ mail_id must be a non-empty string")
-            return False
+            raise ValueError("mail_id must be a non-empty string")
 
         # Get mail from inbox
         mail = self._firebase_request("GET", f"/mail/{self.agent_id}/inbox/{mail_id}")
@@ -739,350 +772,95 @@ class SartorNetworkClient:
             return True
 
         return False
-
-    # === Agent Discovery Tools ===
-
-    def agent_list(self) -> List[Dict]:
-        """List all agents"""
-        agents = self._firebase_request("GET", "/agents")
-
-        if not agents:
-            return []
-
-        agent_list = []
-        for agent_id, agent_data in agents.items():
-            if isinstance(agent_data, dict):
-                agent_data["agent_id"] = agent_id
-                agent_list.append(agent_data)
-
-        return agent_list
-
-    def agent_status(self, agent_id: str) -> Optional[Dict]:
-        """Get status of specific agent"""
-        return self._firebase_request("GET", f"/agents/{agent_id}")
-
-
-    def _release_stale_tasks(self, timeout_minutes: int = 10) -> int:
+    def spawn_network_aware_subagent(
+        self, task_prompt: str, agent_type: str = "general-purpose"
+    ) -> str:
         """
-        Release tasks that have been claimed but not updated within timeout period.
-
-        This method prevents task deadlock when agents crash or disconnect without
-        releasing their claimed tasks (BUG-002 fix).
-
-        Args:
-            timeout_minutes: Number of minutes before a claimed task is considered stale
-
-        Returns:
-            Number of tasks released
+        Helper to spawn a sub-agent with automatic network onboarding.
+        Returns the sub-agent ID.
         """
-        tasks = self._firebase_request("GET", "/tasks")
+        sub_agent_id = f"{self.agent_id}-subagent-{int(time.time())}"
 
-        if not tasks:
-            return 0
-
-        released_count = 0
-        now = datetime.now()
-
-        for task_id, task_data in tasks.items():
-            if not isinstance(task_data, dict):
-                continue
-
-            # Only check claimed tasks
-            if task_data.get("status") != "claimed":
-                continue
-
-            # Check if claimed_at timestamp exists
-            claimed_at_str = task_data.get("claimed_at")
-            if not claimed_at_str:
-                # Task is claimed but has no timestamp - release it
-                print(f"⚠️  Task {task_id} has no claimed_at timestamp, releasing...")
-                self._firebase_request("PATCH", f"/tasks/{task_id}", {
-                    "status": "available",
-                    "claimed_by": None,
-                    "claimed_at": None,
-                    "released_reason": "missing_timestamp",
-                    "released_at": now.isoformat()
-                })
-                released_count += 1
-                continue
-
-            try:
-                # Parse the claimed_at timestamp
-                claimed_at = datetime.fromisoformat(claimed_at_str.replace('Z', '+00:00'))
-
-                # Calculate how long the task has been claimed
-                time_claimed = now - claimed_at.replace(tzinfo=None)
-
-                # Check if it exceeds timeout
-                if time_claimed.total_seconds() > (timeout_minutes * 60):
-                    claimed_by = task_data.get("claimed_by", "unknown")
-                    task_title = task_data.get("title", task_id)
-
-                    print(f"🔓 Releasing stale task '{task_title}' (claimed {int(time_claimed.total_seconds() / 60)} min ago by {claimed_by})")
-
-                    # Release the task
-                    self._firebase_request("PATCH", f"/tasks/{task_id}", {
-                        "status": "available",
-                        "claimed_by": None,
-                        "claimed_at": None,
-                        "released_reason": "timeout",
-                        "released_at": now.isoformat(),
-                        "previous_owner": claimed_by
-                    })
-                    released_count += 1
-
-            except (ValueError, AttributeError) as e:
-                # Invalid timestamp format - release the task
-                print(f"⚠️  Task {task_id} has invalid timestamp, releasing...")
-                self._firebase_request("PATCH", f"/tasks/{task_id}", {
-                    "status": "available",
-                    "claimed_by": None,
-                    "claimed_at": None,
-                    "released_reason": "invalid_timestamp",
-                    "released_at": now.isoformat()
-                })
-                released_count += 1
-
-        if released_count > 0:
-            print(f"✅ Released {released_count} stale task(s)")
-
-        return released_count
-
-    def task_heartbeat(self, task_id: str) -> bool:
-        """
-        Send heartbeat for a task to extend its claim timeout.
-
-        Call this periodically while working on long-running tasks to prevent
-        them from being released as stale.
-
-        Args:
-            task_id: ID of the task to send heartbeat for
-
-        Returns:
-            True if heartbeat was successful, False otherwise
-        """
-        task = self._firebase_request("GET", f"/tasks/{task_id}")
-
-        if not task:
-            print(f"❌ Task {task_id} not found")
-            return False
-
-        # Verify we own this task
-        if task.get("claimed_by") != self.agent_id:
-            print(f"❌ Cannot send heartbeat for task {task_id} - not owned by this agent")
-            return False
-
-        # Update the claimed_at timestamp
-        heartbeat_data = {
-            "claimed_at": datetime.now().isoformat(),
-            "last_heartbeat": datetime.now().isoformat()
+        # Register sub-agent in Firebase
+        sub_agent_data = {
+            "agent_id": sub_agent_id,
+            "status": "spawning",
+            "parent_agent_id": self.agent_id,
+            "capabilities": ["communication", "tasks"],
+            "joined_at": datetime.now().isoformat(),
         }
 
-        result = self._firebase_request("PATCH", f"/tasks/{task_id}", heartbeat_data)
+        self._firebase_request("PUT", f"/agents/{sub_agent_id}", sub_agent_data)
 
-        if result:
-            print(f"💓 Heartbeat sent for task {task_id}")
-            return True
-        return False
-    # === Sub-Agent Support ===
+        # Create enhanced prompt with network context
+        enhanced_prompt = (
+            self.get_sub_agent_prompt_injection(sub_agent_id) + "\n\n" + task_prompt
+        )
 
-    def get_sub_agent_context(self) -> Dict[str, str]:
-        """
-        Get environment variables for sub-agent.
-        Use this when spawning sub-agents to give them network access.
-        """
-        return {
-            "SARTOR_FIREBASE_URL": self.firebase_url,
-            "SARTOR_PARENT_AGENT_ID": self.agent_id,
-            "SARTOR_NETWORK_MODE": "firebase",
-        }
+        print(f"🚀 Spawning network-aware sub-agent: {sub_agent_id}")
+        print(f"📝 Enhanced prompt includes Firebase onboarding")
 
-    def get_sub_agent_prompt(self, sub_agent_id: str = None) -> str:
-        """
-        Get prompt text to inject into sub-agent for automatic onboarding.
-
-        CRITICAL: Add this to your Task tool prompts to ensure sub-agents
-        have network access!
-        """
-        if not sub_agent_id:
-            sub_agent_id = f"{self.agent_id}-subagent-{int(time.time())}"
-
-        return f"""
-╔═══════════════════════════════════════════════════════════╗
-║        SARTOR NETWORK - AUTOMATIC SUB-AGENT ONBOARDING    ║
-╚═══════════════════════════════════════════════════════════╝
-
-You are a sub-agent in the Sartor Claude Network with full network access.
-
-YOUR IDENTITY:
-  • Agent ID: {sub_agent_id}
-  • Parent Agent: {self.agent_id}
-  • Network: Firebase MCP
-  • Status: ✅ AUTOMATICALLY CONNECTED
-
-NETWORK ACCESS CODE:
-```python
-# Copy this bootstrap file or use inline client:
-import requests, uuid, time
-from datetime import datetime
-
-class QuickClient:
-    def __init__(self, agent_id="{sub_agent_id}", parent_id="{self.agent_id}"):
-        self.firebase = "{self.firebase_url}"
-        self.agent_id = agent_id
-        self.parent_id = parent_id
-
-    def connect(self):
-        data = {{"agent_id": self.agent_id, "parent_agent_id": self.parent_id,
-                "status": "online", "joined_at": datetime.now().isoformat()}}
-        requests.put(f"{{self.firebase}}/agents-network/agents/{{self.agent_id}}.json", json=data)
-        return True
-
-    def broadcast(self, msg):
-        data = {{"from": self.agent_id, "content": msg, "timestamp": datetime.now().isoformat()}}
-        msg_id = str(uuid.uuid4())
-        requests.put(f"{{self.firebase}}/agents-network/messages/broadcast/{{msg_id}}.json", json=data)
-
-client = QuickClient()
-client.connect()
-client.broadcast("Sub-agent ready!")
-```
-
-AVAILABLE TOOLS:
-  • message_send(to, content) - Send direct message
-  • message_broadcast(content) - Broadcast to all
-  • task_list() / task_claim(id) - Task coordination
-  • knowledge_query(q) / knowledge_add(content) - Knowledge sharing
-  • agent_list() - See all agents
-
-You have FULL network access. Use it to coordinate with other agents!
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Your assigned task follows below:
-
-"""
+        return sub_agent_id
 
 
-def demo_usage():
-    """
-    Demo: How to use the Sartor Network Client
+def example_usage():
+    """Example of how to use the Firebase MCP Client"""
 
-    This shows everything a fresh agent needs to know.
-    """
-    print("=" * 70)
-    print("  SARTOR NETWORK CLIENT - DEMO USAGE")
-    print("=" * 70)
+    # Parent agent connects
+    print("=== Parent Agent Onboarding ===")
+    parent = FirebaseMCPClient()
+    parent.connect()
 
-    # Step 1: Create client and connect
-    print("\n📌 STEP 1: Connect to Network")
-    print("-" * 70)
-    client = SartorNetworkClient(agent_name="Demo-Agent")
-    client.connect()
+    # Send a message
+    parent.message_broadcast("Parent agent online!")
 
-    time.sleep(1)
+    # Add knowledge
+    parent.knowledge_add("Firebase can be used as MCP transport", ["mcp", "firebase"])
 
-    # Step 2: Broadcast announcement
-    print("\n📌 STEP 2: Announce Yourself")
-    print("-" * 70)
-    client.message_broadcast("Hello network! I'm a new agent.")
-
-    time.sleep(1)
-
-    # Step 3: Share knowledge
-    print("\n📌 STEP 3: Share Knowledge")
-    print("-" * 70)
-    client.knowledge_add(
-        "This is a demo of the Sartor Network bootstrap file",
-        tags=["demo", "bootstrap", "documentation"]
+    # Create a task
+    task_id = parent.task_create(
+        "Analyze codebase", "Find all TODO comments", {"path": "/src"}
     )
 
-    time.sleep(1)
+    # === SUB-AGENT SPAWNING WITH AUTO-ONBOARDING ===
+    print("\n=== Spawning Sub-Agent with Network Access ===")
 
-    # Step 4: Check network
-    print("\n📌 STEP 4: Explore Network")
-    print("-" * 70)
+    # Get the prompt injection for sub-agent
+    sub_agent_prompt = parent.get_sub_agent_prompt_injection()
 
-    agents = client.agent_list()
-    print(f"👥 Found {len(agents)} agents")
-    for agent in agents[-3:]:  # Show last 3
-        print(f"   • {agent.get('agent_id')[:30]}: {agent.get('status')}")
+    print("Sub-agent will receive this onboarding context:")
+    print(sub_agent_prompt)
 
-    knowledge = client.knowledge_query()
-    print(f"\n🧠 Found {len(knowledge)} knowledge entries")
-    for k in knowledge[-2:]:  # Show last 2
-        print(f"   • {k.get('content')[:60]}...")
+    # In practice, you would use Task tool with this prompt:
+    # Task(
+    #     description="Analyze code",
+    #     prompt=sub_agent_prompt + "\n\nYour actual task...",
+    #     subagent_type="Explore"
+    # )
 
-    tasks = client.task_list()
-    print(f"\n📋 Found {len(tasks)} available tasks")
+    # Simulate sub-agent connecting
+    print("\n=== Sub-Agent Auto-Connecting ===")
+    sub_agent_id = f"{parent.agent_id}-subagent-1"
+    sub_agent = FirebaseMCPClient(
+        agent_id=sub_agent_id, parent_agent_id=parent.agent_id
+    )
+    sub_agent.connect()
 
-    time.sleep(1)
+    # Sub-agent uses network
+    sub_agent.message_broadcast("Sub-agent reporting for duty!")
+    sub_agent.task_claim(task_id)
 
-    # Step 5: Sub-agent prep
-    print("\n📌 STEP 5: Prepare for Sub-Agents")
-    print("-" * 70)
-    print("When spawning sub-agents, use this prompt:")
-    print()
-    sub_prompt = client.get_sub_agent_prompt()
-    print(sub_prompt[:300] + "...")
+    # List all agents
+    print("\n=== Network Agents ===")
+    agents = parent.agent_list()
+    for agent in agents:
+        print(f"  - {agent.get('agent_id')}: {agent.get('status')}")
 
-    time.sleep(1)
-
-    # Step 6: Cleanup
-    print("\n📌 STEP 6: Disconnect")
-    print("-" * 70)
-    client.disconnect()
-
-    print("\n" + "=" * 70)
-    print("  ✅ DEMO COMPLETE - You're ready to use the network!")
-    print("=" * 70)
-    print()
-    print("Next steps:")
-    print("  1. Copy this file to your agent environment")
-    print("  2. Import: from sartor_network_bootstrap import SartorNetworkClient")
-    print("  3. Connect: client = SartorNetworkClient(); client.connect()")
-    print("  4. Use the tools!")
-    print()
+    # Cleanup
+    print("\n=== Disconnecting ===")
+    sub_agent.disconnect()
+    parent.disconnect()
 
 
 if __name__ == "__main__":
-    print("""
-╔════════════════════════════════════════════════════════════════╗
-║                                                                ║
-║            SARTOR CLAUDE NETWORK - BOOTSTRAP FILE              ║
-║                                                                ║
-║  Single-file agent onboarding for the Sartor Network          ║
-║                                                                ║
-╚════════════════════════════════════════════════════════════════╝
-
-WHAT IS THIS?
-  This is ALL you need to connect a fresh Claude agent to the
-  Sartor Claude Network. No other dependencies required.
-
-USAGE OPTIONS:
-
-  1. Run as standalone script:
-     $ python3 sartor-network-bootstrap.py
-
-  2. Import and use in code:
-     from sartor_network_bootstrap import SartorNetworkClient
-     client = SartorNetworkClient()
-     client.connect()
-
-  3. Copy-paste the QuickClient from get_sub_agent_prompt()
-     for minimal inline usage
-
-WHAT YOU GET:
-  • Full MCP tool access (messages, tasks, knowledge, agents)
-  • Automatic sub-agent onboarding
-  • Firebase-based serverless operation
-  • Real-time synchronization
-  • Global network access
-
-════════════════════════════════════════════════════════════════
-
-Running demo in 3 seconds...
-""")
-
-    time.sleep(3)
-    demo_usage()
+    example_usage()

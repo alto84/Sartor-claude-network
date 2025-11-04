@@ -1,0 +1,1020 @@
+{
+  "agent_name": "Load-Generator",
+  "agent_id": "claude-1762263196-cb135e12",
+  "start_time": "2025-11-04T13:33:16.484619",
+  "end_time": "2025-11-04T13:43:21.962190",
+  "duration_minutes": 10.09129285,
+  "statistics": {
+    "messages_sent": 41,
+    "broadcasts_sent": 14,
+    "tasks_created": 22,
+    "tasks_claimed": 11,
+    "tasks_updated": 11,
+    "knowledge_added": 20,
+    "status_queries": 8,
+    "errors": 1,
+    "operations": [
+      {
+        "timestamp": "2025-11-04T13:34:43.348274",
+        "type": "task_create",
+        "details": {
+          "task_id": "9261764c-ffef-420e-a",
+          "priority": "high"
+        },
+        "latency_ms": 85.3,
+        "elapsed_minutes": 1.45
+      },
+      {
+        "timestamp": "2025-11-04T13:34:45.927789",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "5ddabff9-9fd1-4c8b-8",
+          "tags": 3
+        },
+        "latency_ms": 91.27,
+        "elapsed_minutes": 1.49
+      },
+      {
+        "timestamp": "2025-11-04T13:34:52.067257",
+        "type": "direct_message",
+        "details": {
+          "to": "parallel-test-agent-",
+          "length": 30
+        },
+        "latency_ms": 177.05,
+        "elapsed_minutes": 1.59
+      },
+      {
+        "timestamp": "2025-11-04T13:34:56.046560",
+        "type": "task_create",
+        "details": {
+          "task_id": "cb778d0a-000d-4861-a",
+          "priority": "low"
+        },
+        "latency_ms": 82.65,
+        "elapsed_minutes": 1.66
+      },
+      {
+        "timestamp": "2025-11-04T13:35:01.796881",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262887-0e",
+          "length": 29
+        },
+        "latency_ms": 177.21,
+        "elapsed_minutes": 1.76
+      },
+      {
+        "timestamp": "2025-11-04T13:35:09.758313",
+        "type": "status_query",
+        "details": {
+          "agents": 126,
+          "tasks": 9,
+          "knowledge": 407
+        },
+        "latency_ms": 279.25,
+        "elapsed_minutes": 1.89
+      },
+      {
+        "timestamp": "2025-11-04T13:35:12.496872",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262970-43",
+          "length": 27
+        },
+        "latency_ms": 184.39,
+        "elapsed_minutes": 1.93
+      },
+      {
+        "timestamp": "2025-11-04T13:35:19.989278",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262943-8c",
+          "length": 28
+        },
+        "latency_ms": 170.53,
+        "elapsed_minutes": 2.06
+      },
+      {
+        "timestamp": "2025-11-04T13:35:27.464295",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262932-b9",
+          "length": 31
+        },
+        "latency_ms": 171.12,
+        "elapsed_minutes": 2.18
+      },
+      {
+        "timestamp": "2025-11-04T13:35:35.279974",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262930-00",
+          "length": 38
+        },
+        "latency_ms": 180.0,
+        "elapsed_minutes": 2.31
+      },
+      {
+        "timestamp": "2025-11-04T13:35:41.691630",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "40634525-5169-4774-8",
+          "tags": 3
+        },
+        "latency_ms": 88.29,
+        "elapsed_minutes": 2.42
+      },
+      {
+        "timestamp": "2025-11-04T13:35:49.207570",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "48b9a34e-5c92-4a72-9",
+          "tags": 3
+        },
+        "latency_ms": 84.99,
+        "elapsed_minutes": 2.55
+      },
+      {
+        "timestamp": "2025-11-04T13:35:56.929954",
+        "type": "broadcast",
+        "details": {
+          "length": 50
+        },
+        "latency_ms": 86.53,
+        "elapsed_minutes": 2.67
+      },
+      {
+        "timestamp": "2025-11-04T13:36:02.174658",
+        "type": "task_create",
+        "details": {
+          "task_id": "ab008695-8058-4a4f-8",
+          "priority": "low"
+        },
+        "latency_ms": 104.15,
+        "elapsed_minutes": 2.76
+      },
+      {
+        "timestamp": "2025-11-04T13:36:04.825742",
+        "type": "direct_message",
+        "details": {
+          "to": "status-test-agent",
+          "length": 31
+        },
+        "latency_ms": 174.24,
+        "elapsed_minutes": 2.81
+      },
+      {
+        "timestamp": "2025-11-04T13:36:08.247441",
+        "type": "direct_message",
+        "details": {
+          "to": "alice-verification-a",
+          "length": 28
+        },
+        "latency_ms": 173.11,
+        "elapsed_minutes": 2.86
+      },
+      {
+        "timestamp": "2025-11-04T13:36:15.878120",
+        "type": "broadcast",
+        "details": {
+          "length": 39
+        },
+        "latency_ms": 87.61,
+        "elapsed_minutes": 2.99
+      },
+      {
+        "timestamp": "2025-11-04T13:36:22.965574",
+        "type": "task_create",
+        "details": {
+          "task_id": "9256f24d-2e6f-4c13-a",
+          "priority": "low"
+        },
+        "latency_ms": 88.75,
+        "elapsed_minutes": 3.11
+      },
+      {
+        "timestamp": "2025-11-04T13:36:28.002794",
+        "type": "direct_message",
+        "details": {
+          "to": "parallel-test-agent-",
+          "length": 28
+        },
+        "latency_ms": 172.04,
+        "elapsed_minutes": 3.19
+      },
+      {
+        "timestamp": "2025-11-04T13:36:36.706990",
+        "type": "direct_message",
+        "details": {
+          "to": "integration-tester-b",
+          "length": 25
+        },
+        "latency_ms": 171.79,
+        "elapsed_minutes": 3.34
+      },
+      {
+        "timestamp": "2025-11-04T13:36:41.597377",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "7d29f011-af04-4261-8",
+          "tags": 3
+        },
+        "latency_ms": 87.61,
+        "elapsed_minutes": 3.42
+      },
+      {
+        "timestamp": "2025-11-04T13:36:50.426897",
+        "type": "task_claim_update",
+        "details": {
+          "task_id": "2a604aec-ac53-4c7b-a",
+          "status": "completed"
+        },
+        "latency_ms": 1754.39,
+        "elapsed_minutes": 3.57
+      },
+      {
+        "timestamp": "2025-11-04T13:36:53.336401",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "03e7643e-b8ca-4d96-a",
+          "tags": 3
+        },
+        "latency_ms": 84.96,
+        "elapsed_minutes": 3.61
+      },
+      {
+        "timestamp": "2025-11-04T13:36:59.674143",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262972-23",
+          "length": 28
+        },
+        "latency_ms": 178.4,
+        "elapsed_minutes": 3.72
+      },
+      {
+        "timestamp": "2025-11-04T13:37:03.881774",
+        "type": "task_create",
+        "details": {
+          "task_id": "0a2eab99-81b0-482e-8",
+          "priority": "medium"
+        },
+        "latency_ms": 84.52,
+        "elapsed_minutes": 3.79
+      },
+      {
+        "timestamp": "2025-11-04T13:37:07.356411",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262941-de",
+          "length": 29
+        },
+        "latency_ms": 246.15,
+        "elapsed_minutes": 3.85
+      },
+      {
+        "timestamp": "2025-11-04T13:37:12.628605",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "ef106e21-a622-4c58-a",
+          "tags": 3
+        },
+        "latency_ms": 84.68,
+        "elapsed_minutes": 3.94
+      },
+      {
+        "timestamp": "2025-11-04T13:37:15.915968",
+        "type": "task_claim_update",
+        "details": {
+          "task_id": "3629aa7d-f684-4392-b",
+          "status": "completed"
+        },
+        "latency_ms": 962.55,
+        "elapsed_minutes": 3.99
+      },
+      {
+        "timestamp": "2025-11-04T13:37:19.586249",
+        "type": "task_create",
+        "details": {
+          "task_id": "8529966c-bce5-4cf4-b",
+          "priority": "high"
+        },
+        "latency_ms": 87.07,
+        "elapsed_minutes": 4.05
+      },
+      {
+        "timestamp": "2025-11-04T13:37:28.264858",
+        "type": "task_claim_update",
+        "details": {
+          "task_id": "ab008695-8058-4a4f-8",
+          "status": "completed"
+        },
+        "latency_ms": 1146.31,
+        "elapsed_minutes": 4.2
+      },
+      {
+        "timestamp": "2025-11-04T13:37:33.943738",
+        "type": "direct_message",
+        "details": {
+          "to": "integration-tester-b",
+          "length": 31
+        },
+        "latency_ms": 169.0,
+        "elapsed_minutes": 4.29
+      },
+      {
+        "timestamp": "2025-11-04T13:37:37.177769",
+        "type": "broadcast",
+        "details": {
+          "length": 50
+        },
+        "latency_ms": 82.51,
+        "elapsed_minutes": 4.34
+      },
+      {
+        "timestamp": "2025-11-04T13:37:40.363463",
+        "type": "broadcast",
+        "details": {
+          "length": 50
+        },
+        "latency_ms": 87.63,
+        "elapsed_minutes": 4.4
+      },
+      {
+        "timestamp": "2025-11-04T13:37:43.464829",
+        "type": "direct_message",
+        "details": {
+          "to": "parallel-test-agent-",
+          "length": 28
+        },
+        "latency_ms": 178.74,
+        "elapsed_minutes": 4.45
+      },
+      {
+        "timestamp": "2025-11-04T13:37:47.455461",
+        "type": "direct_message",
+        "details": {
+          "to": "status-test-agent",
+          "length": 28
+        },
+        "latency_ms": 176.4,
+        "elapsed_minutes": 4.52
+      },
+      {
+        "timestamp": "2025-11-04T13:37:51.048292",
+        "type": "task_create",
+        "details": {
+          "task_id": "74154152-fcbc-4b0a-9",
+          "priority": "urgent"
+        },
+        "latency_ms": 87.41,
+        "elapsed_minutes": 4.58
+      },
+      {
+        "timestamp": "2025-11-04T13:37:57.022346",
+        "type": "broadcast",
+        "details": {
+          "length": 22
+        },
+        "latency_ms": 104.56,
+        "elapsed_minutes": 4.68
+      },
+      {
+        "timestamp": "2025-11-04T13:38:02.718930",
+        "type": "task_claim_update",
+        "details": {
+          "task_id": "0a2eab99-81b0-482e-8",
+          "status": "in-progress"
+        },
+        "latency_ms": 881.15,
+        "elapsed_minutes": 4.77
+      },
+      {
+        "timestamp": "2025-11-04T13:38:07.156184",
+        "type": "task_create",
+        "details": {
+          "task_id": "1b3da805-93aa-48e8-9",
+          "priority": "low"
+        },
+        "latency_ms": 84.41,
+        "elapsed_minutes": 4.84
+      },
+      {
+        "timestamp": "2025-11-04T13:38:14.577156",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262934-cd",
+          "length": 28
+        },
+        "latency_ms": 164.55,
+        "elapsed_minutes": 4.97
+      },
+      {
+        "timestamp": "2025-11-04T13:38:18.370107",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "fb4480bb-64c5-4f1a-9",
+          "tags": 3
+        },
+        "latency_ms": 86.02,
+        "elapsed_minutes": 5.03
+      },
+      {
+        "timestamp": "2025-11-04T13:38:23.742716",
+        "type": "task_claim_update",
+        "details": {
+          "task_id": "1b3da805-93aa-48e8-9",
+          "status": "in-progress"
+        },
+        "latency_ms": 1737.99,
+        "elapsed_minutes": 5.12
+      },
+      {
+        "timestamp": "2025-11-04T13:38:26.999340",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "41ad17e8-e8cf-41fa-b",
+          "tags": 3
+        },
+        "latency_ms": 82.83,
+        "elapsed_minutes": 5.18
+      },
+      {
+        "timestamp": "2025-11-04T13:38:34.521268",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262942-d7",
+          "length": 29
+        },
+        "latency_ms": 177.79,
+        "elapsed_minutes": 5.3
+      },
+      {
+        "timestamp": "2025-11-04T13:38:41.247288",
+        "type": "task_create",
+        "details": {
+          "task_id": "e6e3c6f8-8cb1-45f6-8",
+          "priority": "low"
+        },
+        "latency_ms": 86.58,
+        "elapsed_minutes": 5.41
+      },
+      {
+        "timestamp": "2025-11-04T13:38:45.904895",
+        "type": "task_claim_update",
+        "details": {
+          "task_id": "8529966c-bce5-4cf4-b",
+          "status": "completed"
+        },
+        "latency_ms": 1651.07,
+        "elapsed_minutes": 5.49
+      },
+      {
+        "timestamp": "2025-11-04T13:38:50.618931",
+        "type": "broadcast",
+        "details": {
+          "length": 50
+        },
+        "latency_ms": 87.96,
+        "elapsed_minutes": 5.57
+      },
+      {
+        "timestamp": "2025-11-04T13:38:57.254830",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262887-0e",
+          "length": 24
+        },
+        "latency_ms": 170.5,
+        "elapsed_minutes": 5.68
+      },
+      {
+        "timestamp": "2025-11-04T13:39:04.382955",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262871-00",
+          "length": 24
+        },
+        "latency_ms": 173.89,
+        "elapsed_minutes": 5.8
+      },
+      {
+        "timestamp": "2025-11-04T13:39:08.255098",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "193ce11a-282a-4cb6-9",
+          "tags": 3
+        },
+        "latency_ms": 88.61,
+        "elapsed_minutes": 5.86
+      },
+      {
+        "timestamp": "2025-11-04T13:39:12.855689",
+        "type": "task_create",
+        "details": {
+          "task_id": "badd06d6-c77e-4906-8",
+          "priority": "high"
+        },
+        "latency_ms": 91.87,
+        "elapsed_minutes": 5.94
+      },
+      {
+        "timestamp": "2025-11-04T13:39:20.686174",
+        "type": "direct_message",
+        "details": {
+          "to": "integration-tester-b",
+          "length": 28
+        },
+        "latency_ms": 165.43,
+        "elapsed_minutes": 6.07
+      },
+      {
+        "timestamp": "2025-11-04T13:39:24.713734",
+        "type": "task_create",
+        "details": {
+          "task_id": "95ede816-6cf5-414c-9",
+          "priority": "low"
+        },
+        "latency_ms": 87.6,
+        "elapsed_minutes": 6.14
+      },
+      {
+        "timestamp": "2025-11-04T13:39:27.884877",
+        "type": "task_claim_update",
+        "details": {
+          "task_id": "badd06d6-c77e-4906-8",
+          "status": "completed"
+        },
+        "latency_ms": 1121.55,
+        "elapsed_minutes": 6.19
+      },
+      {
+        "timestamp": "2025-11-04T13:39:33.896024",
+        "type": "task_create",
+        "details": {
+          "task_id": "9a4f0c1b-acdc-4682-a",
+          "priority": "low"
+        },
+        "latency_ms": 88.82,
+        "elapsed_minutes": 6.29
+      },
+      {
+        "timestamp": "2025-11-04T13:39:36.640662",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "9f2569e8-7803-434e-b",
+          "tags": 3
+        },
+        "latency_ms": 91.86,
+        "elapsed_minutes": 6.34
+      },
+      {
+        "timestamp": "2025-11-04T13:39:42.033492",
+        "type": "task_claim_update",
+        "details": {
+          "task_id": "74154152-fcbc-4b0a-9",
+          "status": "completed"
+        },
+        "latency_ms": 1843.4,
+        "elapsed_minutes": 6.43
+      },
+      {
+        "timestamp": "2025-11-04T13:39:49.992339",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262971-4e",
+          "length": 40
+        },
+        "latency_ms": 177.38,
+        "elapsed_minutes": 6.56
+      },
+      {
+        "timestamp": "2025-11-04T13:39:52.471155",
+        "type": "broadcast",
+        "details": {
+          "length": 32
+        },
+        "latency_ms": 87.75,
+        "elapsed_minutes": 6.6
+      },
+      {
+        "timestamp": "2025-11-04T13:39:54.706637",
+        "type": "broadcast",
+        "details": {
+          "length": 23
+        },
+        "latency_ms": 83.16,
+        "elapsed_minutes": 6.64
+      },
+      {
+        "timestamp": "2025-11-04T13:39:59.514066",
+        "type": "direct_message",
+        "details": {
+          "to": "race-agent-2",
+          "length": 29
+        },
+        "latency_ms": 177.08,
+        "elapsed_minutes": 6.72
+      },
+      {
+        "timestamp": "2025-11-04T13:40:03.568513",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "ec088ea8-9411-4016-a",
+          "tags": 3
+        },
+        "latency_ms": 94.78,
+        "elapsed_minutes": 6.78
+      },
+      {
+        "timestamp": "2025-11-04T13:40:09.673411",
+        "type": "task_claim_update",
+        "details": {
+          "task_id": "6a7212f9-22cd-41e9-b",
+          "status": "completed"
+        },
+        "latency_ms": 1353.54,
+        "elapsed_minutes": 6.89
+      },
+      {
+        "timestamp": "2025-11-04T13:40:13.183833",
+        "type": "broadcast",
+        "details": {
+          "length": 32
+        },
+        "latency_ms": 96.79,
+        "elapsed_minutes": 6.94
+      },
+      {
+        "timestamp": "2025-11-04T13:40:18.788626",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262959-75",
+          "length": 35
+        },
+        "latency_ms": 172.29,
+        "elapsed_minutes": 7.04
+      },
+      {
+        "timestamp": "2025-11-04T13:40:26.493766",
+        "type": "direct_message",
+        "details": {
+          "to": "integration-tester-b",
+          "length": 31
+        },
+        "latency_ms": 172.1,
+        "elapsed_minutes": 7.17
+      },
+      {
+        "timestamp": "2025-11-04T13:40:32.194911",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262970-43",
+          "length": 35
+        },
+        "latency_ms": 184.81,
+        "elapsed_minutes": 7.26
+      },
+      {
+        "timestamp": "2025-11-04T13:40:39.409089",
+        "type": "status_query",
+        "details": {
+          "agents": 126,
+          "tasks": 10,
+          "knowledge": 417
+        },
+        "latency_ms": 282.67,
+        "elapsed_minutes": 7.38
+      },
+      {
+        "timestamp": "2025-11-04T13:40:42.118315",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "6cadc7bf-44b7-4332-b",
+          "tags": 3
+        },
+        "latency_ms": 93.77,
+        "elapsed_minutes": 7.43
+      },
+      {
+        "timestamp": "2025-11-04T13:40:49.809303",
+        "type": "task_create",
+        "details": {
+          "task_id": "eddc8d2b-018f-4d82-b",
+          "priority": "medium"
+        },
+        "latency_ms": 88.76,
+        "elapsed_minutes": 7.56
+      },
+      {
+        "timestamp": "2025-11-04T13:40:54.331685",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "bc58afc4-b447-411c-9",
+          "tags": 3
+        },
+        "latency_ms": 90.32,
+        "elapsed_minutes": 7.63
+      },
+      {
+        "timestamp": "2025-11-04T13:41:02.371956",
+        "type": "task_create",
+        "details": {
+          "task_id": "cab286d4-3dbf-4dd8-9",
+          "priority": "low"
+        },
+        "latency_ms": 105.38,
+        "elapsed_minutes": 7.76
+      },
+      {
+        "timestamp": "2025-11-04T13:41:08.872098",
+        "type": "direct_message",
+        "details": {
+          "to": "parallel-test-agent-",
+          "length": 22
+        },
+        "latency_ms": 176.82,
+        "elapsed_minutes": 7.87
+      },
+      {
+        "timestamp": "2025-11-04T13:41:14.593399",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262887-0e",
+          "length": 31
+        },
+        "latency_ms": 176.08,
+        "elapsed_minutes": 7.97
+      },
+      {
+        "timestamp": "2025-11-04T13:41:17.352255",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262955-6f",
+          "length": 31
+        },
+        "latency_ms": 178.18,
+        "elapsed_minutes": 8.01
+      },
+      {
+        "timestamp": "2025-11-04T13:41:24.237255",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "cb587a63-8840-4b86-b",
+          "tags": 3
+        },
+        "latency_ms": 94.62,
+        "elapsed_minutes": 8.13
+      },
+      {
+        "timestamp": "2025-11-04T13:41:28.041937",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262974-7d",
+          "length": 35
+        },
+        "latency_ms": 176.19,
+        "elapsed_minutes": 8.19
+      },
+      {
+        "timestamp": "2025-11-04T13:41:35.528624",
+        "type": "task_create",
+        "details": {
+          "task_id": "80527c67-db21-4012-8",
+          "priority": "low"
+        },
+        "latency_ms": 123.24,
+        "elapsed_minutes": 8.32
+      },
+      {
+        "timestamp": "2025-11-04T13:41:41.345295",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762263049-b6",
+          "length": 25
+        },
+        "latency_ms": 183.28,
+        "elapsed_minutes": 8.41
+      },
+      {
+        "timestamp": "2025-11-04T13:41:44.829285",
+        "type": "task_create",
+        "details": {
+          "task_id": "ce7258a3-c220-4894-a",
+          "priority": "medium"
+        },
+        "latency_ms": 99.31,
+        "elapsed_minutes": 8.47
+      },
+      {
+        "timestamp": "2025-11-04T13:41:50.905314",
+        "type": "status_query",
+        "details": {
+          "agents": 126,
+          "tasks": 14,
+          "knowledge": 420
+        },
+        "latency_ms": 281.78,
+        "elapsed_minutes": 8.57
+      },
+      {
+        "timestamp": "2025-11-04T13:41:53.736649",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "fc1c87e9-1ced-458d-b",
+          "tags": 3
+        },
+        "latency_ms": 89.79,
+        "elapsed_minutes": 8.62
+      },
+      {
+        "timestamp": "2025-11-04T13:41:58.284675",
+        "type": "direct_message",
+        "details": {
+          "to": "integration-tester-b",
+          "length": 33
+        },
+        "latency_ms": 176.95,
+        "elapsed_minutes": 8.7
+      },
+      {
+        "timestamp": "2025-11-04T13:42:02.186638",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "b1bf3d15-83fc-4ee0-9",
+          "tags": 3
+        },
+        "latency_ms": 93.67,
+        "elapsed_minutes": 8.76
+      },
+      {
+        "timestamp": "2025-11-04T13:42:09.500339",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "e8c40c2c-1feb-4b9c-a",
+          "tags": 3
+        },
+        "latency_ms": 84.3,
+        "elapsed_minutes": 8.88
+      },
+      {
+        "timestamp": "2025-11-04T13:42:12.299975",
+        "type": "broadcast",
+        "details": {
+          "length": 50
+        },
+        "latency_ms": 89.56,
+        "elapsed_minutes": 8.93
+      },
+      {
+        "timestamp": "2025-11-04T13:42:15.461276",
+        "type": "task_create",
+        "details": {
+          "task_id": "15acfbd8-ce5d-4f45-a",
+          "priority": "high"
+        },
+        "latency_ms": 89.6,
+        "elapsed_minutes": 8.98
+      },
+      {
+        "timestamp": "2025-11-04T13:42:21.193966",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262956-b3",
+          "length": 31
+        },
+        "latency_ms": 188.96,
+        "elapsed_minutes": 9.08
+      },
+      {
+        "timestamp": "2025-11-04T13:42:23.461341",
+        "type": "knowledge_add",
+        "details": {
+          "knowledge_id": "ffb1dbd1-5528-47b2-b",
+          "tags": 3
+        },
+        "latency_ms": 87.26,
+        "elapsed_minutes": 9.12
+      },
+      {
+        "timestamp": "2025-11-04T13:42:26.784005",
+        "type": "status_query",
+        "details": {
+          "agents": 126,
+          "tasks": 15,
+          "knowledge": 424
+        },
+        "latency_ms": 300.0,
+        "elapsed_minutes": 9.17
+      },
+      {
+        "timestamp": "2025-11-04T13:42:32.082768",
+        "type": "status_query",
+        "details": {
+          "agents": 126,
+          "tasks": 15,
+          "knowledge": 424
+        },
+        "latency_ms": 278.56,
+        "elapsed_minutes": 9.26
+      },
+      {
+        "timestamp": "2025-11-04T13:42:37.426979",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762262936-18",
+          "length": 35
+        },
+        "latency_ms": 172.27,
+        "elapsed_minutes": 9.35
+      },
+      {
+        "timestamp": "2025-11-04T13:42:41.766924",
+        "type": "task_create",
+        "details": {
+          "task_id": "c1510a97-d961-4cac-b",
+          "priority": "medium"
+        },
+        "latency_ms": 92.5,
+        "elapsed_minutes": 9.42
+      },
+      {
+        "timestamp": "2025-11-04T13:42:46.408411",
+        "type": "task_create",
+        "details": {
+          "task_id": "05c6e0a6-d42d-4213-8",
+          "priority": "low"
+        },
+        "latency_ms": 106.43,
+        "elapsed_minutes": 9.5
+      },
+      {
+        "timestamp": "2025-11-04T13:42:52.095838",
+        "type": "direct_message",
+        "details": {
+          "to": "integration-tester-b",
+          "length": 25
+        },
+        "latency_ms": 173.6,
+        "elapsed_minutes": 9.59
+      },
+      {
+        "timestamp": "2025-11-04T13:42:54.672967",
+        "type": "broadcast",
+        "details": {
+          "length": 41
+        },
+        "latency_ms": 85.01,
+        "elapsed_minutes": 9.64
+      },
+      {
+        "timestamp": "2025-11-04T13:42:59.340766",
+        "type": "direct_message",
+        "details": {
+          "to": "status-test-agent",
+          "length": 28
+        },
+        "latency_ms": 188.99,
+        "elapsed_minutes": 9.71
+      },
+      {
+        "timestamp": "2025-11-04T13:43:05.122214",
+        "type": "task_create",
+        "details": {
+          "task_id": "a3483cda-cd7e-4c99-b",
+          "priority": "low"
+        },
+        "latency_ms": 89.42,
+        "elapsed_minutes": 9.81
+      },
+      {
+        "timestamp": "2025-11-04T13:43:08.980400",
+        "type": "direct_message",
+        "details": {
+          "to": "claude-1762201161-17",
+          "length": 25
+        },
+        "latency_ms": 176.65,
+        "elapsed_minutes": 9.87
+      },
+      {
+        "timestamp": "2025-11-04T13:43:14.862255",
+        "type": "broadcast",
+        "details": {
+          "length": 23
+        },
+        "latency_ms": 90.96,
+        "elapsed_minutes": 9.97
+      }
+    ]
+  },
+  "latency_by_type": {
+    "task_create": 92.69,
+    "knowledge_add": 88.87,
+    "direct_message": 177.89,
+    "status_query": 284.45,
+    "broadcast": 89.17,
+    "task_claim_update": 1383.55
+  }
+}

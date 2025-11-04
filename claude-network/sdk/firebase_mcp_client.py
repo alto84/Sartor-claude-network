@@ -5,12 +5,25 @@ This allows Claude agents to communicate without a dedicated MCP server
 """
 
 import json
+import re
 import time
 import uuid
 import requests
 from datetime import datetime
 from typing import Dict, Any, Optional, Callable, List
 from urllib.parse import urljoin
+
+
+def requires_connection(func):
+    """Decorator to ensure operation requires active connection"""
+    def wrapper(self, *args, **kwargs):
+        if not self.is_connected:
+            raise ConnectionError(
+                f"Cannot execute {func.__name__}: client is not connected. "
+                "Call connect() first."
+            )
+        return func(self, *args, **kwargs)
+    return wrapper
 
 
 class FirebaseMCPClient:
@@ -31,6 +44,26 @@ class FirebaseMCPClient:
         self.base_path = "/agents-network"
         self.message_callbacks: Dict[str, Callable] = {}
         self.is_connected = False
+
+    def _validate_agent_id(self, agent_id: str, param_name: str = "agent_id") -> None:
+        """Validate agent ID format"""
+        if not agent_id:
+            raise ValueError(f"{param_name} cannot be empty")
+
+        # Allow: alphanumeric, hyphens, underscores, dots
+        # Format: letters/numbers followed by optional hyphens/underscores/dots
+        pattern = r'^[a-zA-Z0-9][a-zA-Z0-9._-]*$'
+
+        if not re.match(pattern, agent_id):
+            raise ValueError(
+                f"Invalid {param_name} format: '{agent_id}'. "
+                "Must contain only alphanumeric characters, hyphens, underscores, and dots. "
+                "Cannot start with special characters."
+            )
+
+        # Additional length check
+        if len(agent_id) > 128:
+            raise ValueError(f"{param_name} too long (max 128 characters)")
 
     def _generate_agent_id(self) -> str:
         """Generate unique agent ID"""
@@ -124,8 +157,25 @@ class FirebaseMCPClient:
 
     # === MCP Tool Implementations ===
 
+    @requires_connection
     def message_send(self, to_agent_id: str, content: str) -> bool:
         """Send direct message to another agent"""
+        # BUG-003: Input type validation
+        if content is None:
+            raise ValueError("Message content cannot be None")
+        if not isinstance(content, str):
+            raise TypeError(f"Message content must be a string, not {type(content).__name__}")
+        if not content.strip():
+            raise ValueError("Message content cannot be empty or whitespace only")
+
+        # BUG-006: Agent ID validation
+        self._validate_agent_id(to_agent_id, "to_agent_id")
+
+        # BUG-004: Recipient validation
+        recipient = self._firebase_request("GET", f"/agents/{to_agent_id}")
+        if recipient is None:
+            raise ValueError(f"Agent '{to_agent_id}' does not exist or is not registered")
+
         message_id = str(uuid.uuid4())
         message_data = {
             "from": self.agent_id,
@@ -144,8 +194,17 @@ class FirebaseMCPClient:
             print(f"📤 Message sent to {to_agent_id}")
         return success
 
+    @requires_connection
     def message_broadcast(self, content: str) -> bool:
         """Broadcast message to all agents"""
+        # BUG-003: Input type validation
+        if content is None:
+            raise ValueError("Message content cannot be None")
+        if not isinstance(content, str):
+            raise TypeError(f"Message content must be a string, not {type(content).__name__}")
+        if not content.strip():
+            raise ValueError("Message content cannot be empty or whitespace only")
+
         message_id = str(uuid.uuid4())
         message_data = {
             "from": self.agent_id,
@@ -181,8 +240,23 @@ class FirebaseMCPClient:
         )
         return message_list[:count]
 
-    def task_list(self, status: str = "available") -> List[Dict]:
-        """List tasks with given status"""
+    def task_list(self, status: str = "available", claim_timeout_minutes: int = 10) -> List[Dict]:
+        """
+        List tasks with given status.
+
+        Automatically releases stale claimed tasks before listing to ensure
+        the task list is always current (BUG-002 fix).
+
+        Args:
+            status: Task status to filter by (default: "available")
+            claim_timeout_minutes: Timeout in minutes for claimed tasks (default: 10)
+
+        Returns:
+            List of tasks matching the status
+        """
+        # Release stale tasks before listing
+        self._release_stale_tasks(timeout_minutes=claim_timeout_minutes)
+
         tasks = self._firebase_request("GET", "/tasks")
 
         if not tasks:
@@ -197,33 +271,103 @@ class FirebaseMCPClient:
 
         return task_list
 
-    def task_claim(self, task_id: str) -> bool:
-        """Claim an available task"""
-        # First check if task is available
-        task = self._firebase_request("GET", f"/tasks/{task_id}")
+    @requires_connection
+    def task_claim(self, task_id: str, max_retries: int = 5) -> bool:
+        """
+        Claim an available task using optimistic locking.
 
-        if not task or task.get("status") != "available":
-            print(f"❌ Task {task_id} not available")
-            return False
+        This method implements a race-condition-safe claim mechanism:
+        1. Read task with current lock_version
+        2. Write claim with incremented lock_version
+        3. Verify we actually own the task after write
+        4. Retry with exponential backoff if another agent claimed it
 
-        # Claim the task
-        claim_data = {
-            "status": "claimed",
-            "claimed_by": self.agent_id,
-            "claimed_at": datetime.now().isoformat(),
-        }
+        Args:
+            task_id: The task ID to claim
+            max_retries: Maximum number of retry attempts (default: 5)
 
-        result = self._firebase_request("PATCH", f"/tasks/{task_id}", claim_data)
+        Returns:
+            True if successfully claimed, False otherwise
+        """
+        import random
 
-        success = result is not None
-        if success:
-            print(f"✅ Claimed task {task_id}")
-        return success
+        for attempt in range(max_retries):
+            # Step 1: Read current task state
+            task = self._firebase_request("GET", f"/tasks/{task_id}")
 
+            if not task:
+                if attempt == 0:
+                    print(f"❌ Task {task_id} not found")
+                return False
+
+            if task.get("status") != "available":
+                # Task is already claimed, completed, or cancelled
+                if attempt == 0:
+                    print(f"❌ Task {task_id} not available (status: {task.get('status')})")
+                return False
+
+            # Get current lock version (initialize to 0 if not present)
+            current_version = task.get("lock_version", 0)
+
+            # Step 2: Attempt to claim with optimistic lock
+            claim_data = {
+                "status": "claimed",
+                "claimed_by": self.agent_id,
+                "claimed_at": datetime.now().isoformat(),
+                "lock_version": current_version + 1,  # Increment version
+            }
+
+            result = self._firebase_request("PATCH", f"/tasks/{task_id}", claim_data)
+
+            if not result:
+                print(f"❌ Failed to write claim for task {task_id}")
+                return False
+
+            # Step 3: VERIFY we actually own the task (critical for race condition fix!)
+            # Small delay to let Firebase propagate the write
+            time.sleep(0.05)
+
+            verification = self._firebase_request("GET", f"/tasks/{task_id}")
+
+            if not verification:
+                print(f"❌ Failed to verify claim for task {task_id}")
+                return False
+
+            # Check if we are the owner
+            if verification.get("claimed_by") == self.agent_id:
+                print(f"✅ Successfully claimed task {task_id}")
+                return True
+
+            # Another agent claimed it - retry with exponential backoff
+            if attempt < max_retries - 1:
+                backoff = (0.1 * (2 ** attempt)) + (random.random() * 0.1)
+                print(f"⚠️  Task {task_id} claimed by another agent, retrying in {backoff:.2f}s (attempt {attempt + 1}/{max_retries})")
+                time.sleep(backoff)
+
+        print(f"❌ Failed to claim task {task_id} after {max_retries} attempts")
+        return False
+
+    @requires_connection
     def task_create(
         self, title: str, description: str, task_data: Optional[Dict] = None
     ) -> str:
         """Create a new task"""
+        # BUG-007: Empty field validation
+        if not title or not title.strip():
+            raise ValueError("Task title cannot be empty")
+        if not description or not description.strip():
+            raise ValueError("Task description cannot be empty")
+
+        # Trim whitespace
+        title = title.strip()
+        description = description.strip()
+
+        # Optional: length limits
+        if len(title) > 200:
+            raise ValueError("Task title too long (max 200 characters)")
+        if len(description) > 5000:
+            raise ValueError("Task description too long (max 5000 characters)")
+
         task_id = str(uuid.uuid4())
         task = {
             "task_id": task_id,
@@ -233,6 +377,7 @@ class FirebaseMCPClient:
             "created_by": self.agent_id,
             "created_at": datetime.now().isoformat(),
             "data": task_data or {},
+            "lock_version": 0,  # Initialize lock version for optimistic locking (BUG-001 fix)
         }
 
         result = self._firebase_request("PUT", f"/tasks/{task_id}", task)
@@ -242,8 +387,19 @@ class FirebaseMCPClient:
             return task_id
         return ""
 
+    @requires_connection
     def task_update(self, task_id: str, status: str, result: Optional[Dict] = None):
         """Update task status"""
+        # Check if task exists
+        task = self._firebase_request("GET", f"/tasks/{task_id}")
+        if not task:
+            raise ValueError(f"Task '{task_id}' does not exist")
+
+        # Validate status
+        valid_statuses = ["available", "claimed", "in_progress", "completed", "failed", "cancelled"]
+        if status not in valid_statuses:
+            raise ValueError(f"Invalid status '{status}'. Must be one of: {', '.join(valid_statuses)}")
+
         update_data = {
             "status": status,
             "updated_by": self.agent_id,
@@ -256,8 +412,17 @@ class FirebaseMCPClient:
         self._firebase_request("PATCH", f"/tasks/{task_id}", update_data)
         print(f"📊 Updated task {task_id} to {status}")
 
+    @requires_connection
     def knowledge_add(self, content: str, tags: List[str] = None) -> str:
         """Add knowledge to collective knowledge base"""
+        # Input validation
+        if content is None:
+            raise ValueError("Knowledge content cannot be None")
+        if not isinstance(content, str):
+            raise TypeError(f"Knowledge content must be a string, not {type(content).__name__}")
+        if not content.strip():
+            raise ValueError("Knowledge content cannot be empty or whitespace only")
+
         knowledge_id = str(uuid.uuid4())
         knowledge_data = {
             "content": content,
@@ -326,6 +491,129 @@ class FirebaseMCPClient:
 
         self._firebase_request("PATCH", f"/presence/{self.agent_id}", presence_data)
 
+
+    def _release_stale_tasks(self, timeout_minutes: int = 10) -> int:
+        """
+        Release tasks that have been claimed but not updated within timeout period.
+
+        This method prevents task deadlock when agents crash or disconnect without
+        releasing their claimed tasks (BUG-002 fix).
+
+        Args:
+            timeout_minutes: Number of minutes before a claimed task is considered stale
+
+        Returns:
+            Number of tasks released
+        """
+        tasks = self._firebase_request("GET", "/tasks")
+
+        if not tasks:
+            return 0
+
+        released_count = 0
+        now = datetime.now()
+
+        for task_id, task_data in tasks.items():
+            if not isinstance(task_data, dict):
+                continue
+
+            # Only check claimed tasks
+            if task_data.get("status") != "claimed":
+                continue
+
+            # Check if claimed_at timestamp exists
+            claimed_at_str = task_data.get("claimed_at")
+            if not claimed_at_str:
+                # Task is claimed but has no timestamp - release it
+                print(f"⚠️  Task {task_id} has no claimed_at timestamp, releasing...")
+                self._firebase_request("PATCH", f"/tasks/{task_id}", {
+                    "status": "available",
+                    "claimed_by": None,
+                    "claimed_at": None,
+                    "released_reason": "missing_timestamp",
+                    "released_at": now.isoformat()
+                })
+                released_count += 1
+                continue
+
+            try:
+                # Parse the claimed_at timestamp
+                claimed_at = datetime.fromisoformat(claimed_at_str.replace('Z', '+00:00'))
+
+                # Calculate how long the task has been claimed
+                time_claimed = now - claimed_at.replace(tzinfo=None)
+
+                # Check if it exceeds timeout
+                if time_claimed.total_seconds() > (timeout_minutes * 60):
+                    claimed_by = task_data.get("claimed_by", "unknown")
+                    task_title = task_data.get("title", task_id)
+
+                    print(f"🔓 Releasing stale task '{task_title}' (claimed {int(time_claimed.total_seconds() / 60)} min ago by {claimed_by})")
+
+                    # Release the task
+                    self._firebase_request("PATCH", f"/tasks/{task_id}", {
+                        "status": "available",
+                        "claimed_by": None,
+                        "claimed_at": None,
+                        "released_reason": "timeout",
+                        "released_at": now.isoformat(),
+                        "previous_owner": claimed_by
+                    })
+                    released_count += 1
+
+            except (ValueError, AttributeError) as e:
+                # Invalid timestamp format - release the task
+                print(f"⚠️  Task {task_id} has invalid timestamp, releasing...")
+                self._firebase_request("PATCH", f"/tasks/{task_id}", {
+                    "status": "available",
+                    "claimed_by": None,
+                    "claimed_at": None,
+                    "released_reason": "invalid_timestamp",
+                    "released_at": now.isoformat()
+                })
+                released_count += 1
+
+        if released_count > 0:
+            print(f"✅ Released {released_count} stale task(s)")
+
+        return released_count
+
+    def task_heartbeat(self, task_id: str) -> bool:
+        """
+        Send heartbeat for a task to extend its claim timeout.
+
+        Call this periodically while working on long-running tasks to prevent
+        them from being released as stale.
+
+        Args:
+            task_id: ID of the task to send heartbeat for
+
+        Returns:
+            True if heartbeat was successful, False otherwise
+        """
+        task = self._firebase_request("GET", f"/tasks/{task_id}")
+
+        if not task:
+            print(f"❌ Task {task_id} not found")
+            return False
+
+        # Verify we own this task
+        if task.get("claimed_by") != self.agent_id:
+            print(f"❌ Cannot send heartbeat for task {task_id} - not owned by this agent")
+            return False
+
+        # Update the claimed_at timestamp
+        heartbeat_data = {
+            "claimed_at": datetime.now().isoformat(),
+            "last_heartbeat": datetime.now().isoformat()
+        }
+
+        result = self._firebase_request("PATCH", f"/tasks/{task_id}", heartbeat_data)
+
+        if result:
+            print(f"💓 Heartbeat sent for task {task_id}")
+            return True
+        return False
     # === Sub-Agent Support ===
 
     def create_sub_agent_context(self, task_description: str = "") -> Dict[str, str]:
@@ -391,6 +679,237 @@ AVAILABLE MCP TOOLS:
 You have full network access. Coordinate with other agents as needed.
 """
 
+
+    # === Agent Mail System ===
+
+    @requires_connection
+    def mail_send(
+        self, to_agent_id: str, subject: str, body: str, priority: str = "normal"
+    ) -> Optional[str]:
+        """
+        Send mail to another agent's inbox.
+
+        Args:
+            to_agent_id: Recipient agent ID
+            subject: Mail subject
+            body: Mail body content
+            priority: Priority level (normal|high|urgent)
+
+        Returns:
+            mail_id if successful, None otherwise
+        """
+        # Validate inputs
+        self._validate_agent_id(to_agent_id, "to_agent_id")
+
+        if not isinstance(subject, str) or not subject.strip():
+            raise ValueError("Subject must be a non-empty string")
+
+        if not isinstance(body, str) or not body.strip():
+            raise ValueError("Body must be a non-empty string")
+
+        if priority not in ["normal", "high", "urgent"]:
+            raise ValueError("Priority must be one of: normal, high, urgent")
+
+        # Verify recipient exists
+        recipient = self._firebase_request("GET", f"/agents/{to_agent_id}")
+        if recipient is None:
+            raise ValueError(f"Agent '{to_agent_id}' does not exist or is not registered")
+
+        mail_id = str(uuid.uuid4())
+        mail_data = {
+            "mail_id": mail_id,
+            "from": self.agent_id,
+            "to": to_agent_id,
+            "subject": subject,
+            "body": body,
+            "priority": priority,
+            "thread_id": mail_id,  # New thread
+            "in_reply_to": None,
+            "read": False,
+            "timestamp": datetime.now().isoformat(),
+            "archived": False,
+        }
+
+        # Store in recipient's inbox
+        result = self._firebase_request(
+            "PUT", f"/mail/{to_agent_id}/inbox/{mail_id}", mail_data
+        )
+
+        # Also store in sender's sent folder
+        sent_data = mail_data.copy()
+        sent_data["read"] = True  # Sender has "read" it
+        self._firebase_request("PUT", f"/mail/{self.agent_id}/sent/{mail_id}", sent_data)
+
+        if result:
+            print(f"📧 Mail sent to {to_agent_id}: {subject}")
+            return mail_id
+        return None
+
+    @requires_connection
+    def mail_read(self, mail_id: str) -> Optional[Dict]:
+        """
+        Read a mail and mark it as read.
+
+        Args:
+            mail_id: Mail ID to read
+
+        Returns:
+            Mail content if found, None otherwise
+        """
+        if not mail_id or not isinstance(mail_id, str):
+            raise ValueError("mail_id must be a non-empty string")
+
+        # Check inbox first
+        mail = self._firebase_request("GET", f"/mail/{self.agent_id}/inbox/{mail_id}")
+
+        if mail:
+            # Mark as read
+            self._firebase_request(
+                "PATCH", f"/mail/{self.agent_id}/inbox/{mail_id}", {"read": True}
+            )
+            print(f"📬 Read mail: {mail.get('subject', mail_id)}")
+            return mail
+
+        # Check sent folder
+        mail = self._firebase_request("GET", f"/mail/{self.agent_id}/sent/{mail_id}")
+        if mail:
+            return mail
+
+        # Check archive
+        mail = self._firebase_request("GET", f"/mail/{self.agent_id}/archive/{mail_id}")
+        if mail:
+            return mail
+
+        print(f"❌ Mail {mail_id} not found")
+        return None
+
+    @requires_connection
+    def mail_list(
+        self, folder: str = "inbox", unread_only: bool = False
+    ) -> List[Dict]:
+        """
+        List mails in a folder.
+
+        Args:
+            folder: Folder to list (inbox|sent|archive)
+            unread_only: Only show unread mails
+
+        Returns:
+            List of mails sorted by timestamp (newest first)
+        """
+        if folder not in ["inbox", "sent", "archive"]:
+            raise ValueError("Folder must be one of: inbox, sent, archive")
+
+        mails = self._firebase_request("GET", f"/mail/{self.agent_id}/{folder}")
+
+        if not mails:
+            return []
+
+        # Convert to list
+        mail_list = []
+        for mail_id, mail_data in mails.items():
+            if isinstance(mail_data, dict):
+                mail_data["mail_id"] = mail_id
+
+                # Filter by read status if requested
+                if unread_only and mail_data.get("read", False):
+                    continue
+
+                mail_list.append(mail_data)
+
+        # Sort by timestamp, newest first
+        mail_list.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
+
+        return mail_list
+
+    @requires_connection
+    def mail_reply(self, mail_id: str, body: str) -> Optional[str]:
+        """
+        Reply to a mail (creates thread).
+
+        Args:
+            mail_id: Original mail ID to reply to
+            body: Reply body content
+
+        Returns:
+            New mail_id if successful, None otherwise
+        """
+        if not isinstance(body, str) or not body.strip():
+            raise ValueError("Body must be a non-empty string")
+
+        # Get original mail
+        original = self.mail_read(mail_id)
+        if not original:
+            print(f"❌ Cannot reply: Original mail {mail_id} not found")
+            return None
+
+        # Create reply
+        reply_id = str(uuid.uuid4())
+        reply_data = {
+            "mail_id": reply_id,
+            "from": self.agent_id,
+            "to": original.get("from"),  # Reply to sender
+            "subject": f"Re: {original.get('subject', '')}",
+            "body": body,
+            "priority": original.get("priority", "normal"),
+            "thread_id": original.get("thread_id", mail_id),  # Same thread
+            "in_reply_to": mail_id,
+            "read": False,
+            "timestamp": datetime.now().isoformat(),
+            "archived": False,
+        }
+
+        # Store in recipient's inbox
+        result = self._firebase_request(
+            "PUT", f"/mail/{reply_data['to']}/inbox/{reply_id}", reply_data
+        )
+
+        # Store in sender's sent folder
+        sent_data = reply_data.copy()
+        sent_data["read"] = True
+        self._firebase_request("PUT", f"/mail/{self.agent_id}/sent/{reply_id}", sent_data)
+
+        if result:
+            print(f"↩️  Replied to mail {mail_id}")
+            return reply_id
+        return None
+
+    @requires_connection
+    def mail_archive(self, mail_id: str) -> bool:
+        """
+        Move mail from inbox to archive folder.
+
+        Args:
+            mail_id: Mail ID to archive
+
+        Returns:
+            True if successful, False otherwise
+        """
+        if not mail_id or not isinstance(mail_id, str):
+            raise ValueError("mail_id must be a non-empty string")
+
+        # Get mail from inbox
+        mail = self._firebase_request("GET", f"/mail/{self.agent_id}/inbox/{mail_id}")
+
+        if not mail:
+            print(f"❌ Mail {mail_id} not found in inbox")
+            return False
+
+        # Update archived flag
+        mail["archived"] = True
+
+        # Move to archive
+        result = self._firebase_request(
+            "PUT", f"/mail/{self.agent_id}/archive/{mail_id}", mail
+        )
+
+        if result:
+            # Delete from inbox
+            self._firebase_request("DELETE", f"/mail/{self.agent_id}/inbox/{mail_id}")
+            print(f"📦 Archived mail: {mail.get('subject', mail_id)}")
+            return True
+
+        return False
     def spawn_network_aware_subagent(
         self, task_prompt: str, agent_type: str = "general-purpose"
     ) -> str:

@@ -1,0 +1,96 @@
+[
+  {
+    "test_id": "T4.1",
+    "description": "Add knowledge entry",
+    "status": "PASS",
+    "execution_time_ms": 843.27,
+    "timestamp": "2025-11-04T13:27:53.426601",
+    "metrics": {
+      "entries_added": 3,
+      "total_in_db": 15
+    },
+    "errors": []
+  },
+  {
+    "test_id": "T4.2",
+    "description": "Query knowledge by keyword",
+    "status": "PASS",
+    "execution_time_ms": 407.95,
+    "timestamp": "2025-11-04T13:27:54.835495",
+    "metrics": {
+      "firebase_results": 5,
+      "communication_results": 2,
+      "nonexistent_results": 0,
+      "case_insensitive": true
+    },
+    "errors": []
+  },
+  {
+    "test_id": "T4.3",
+    "description": "Query knowledge by tags",
+    "status": "PASS",
+    "execution_time_ms": 86.65,
+    "timestamp": "2025-11-04T13:27:55.922669",
+    "metrics": {
+      "network_tagged": 1,
+      "messaging_tagged": 1,
+      "multi_tagged": 2,
+      "test_entries_with_tags": 2
+    },
+    "errors": []
+  },
+  {
+    "test_id": "T4.4",
+    "description": "Knowledge versioning/updates",
+    "status": "PASS",
+    "execution_time_ms": 1255.58,
+    "timestamp": "2025-11-04T13:27:58.178970",
+    "metrics": {
+      "version_entries": 2,
+      "note": "Current implementation adds new entries rather than versioning"
+    },
+    "errors": []
+  },
+  {
+    "test_id": "T4.5",
+    "description": "Knowledge deletion",
+    "status": "PASS",
+    "execution_time_ms": 1427.02,
+    "timestamp": "2025-11-04T13:28:00.606469",
+    "metrics": {
+      "deletion_successful": true
+    },
+    "errors": []
+  },
+  {
+    "test_id": "T4.6",
+    "description": "Large knowledge entries (>100KB)",
+    "status": "PASS",
+    "execution_time_ms": 1156.15,
+    "timestamp": "2025-11-04T13:28:02.763658",
+    "metrics": {
+      "entry_size_bytes": 110000,
+      "entry_size_kb": 107.421875,
+      "retrieval_time_ms": 90.27266502380371
+    },
+    "errors": []
+  },
+  {
+    "test_id": "T4.7",
+    "description": "Knowledge search performance",
+    "status": "PASS",
+    "execution_time_ms": 3005.61,
+    "timestamp": "2025-11-04T13:28:06.769956",
+    "metrics": {
+      "entries_added": 20,
+      "add_time_ms": 1731.727123260498,
+      "query_all_time_ms": 88.0119800567627,
+      "query_keyword_time_ms": 92.14377403259277,
+      "query_specific_time_ms": 93.13774108886719,
+      "avg_query_time_ms": 91.09783172607422,
+      "total_entries_in_db": 40,
+      "performance_acceptable": true
+    },
+    "errors": []
+  }
+]

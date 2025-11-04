@@ -270,23 +270,8 @@ class SartorNetworkClient:
 
     # === Task Coordination Tools ===
 
-    def task_list(self, status: str = "available", claim_timeout_minutes: int = 10) -> List[Dict]:
-        """
-        List tasks with given status.
-
-        Automatically releases stale claimed tasks before listing to ensure
-        the task list is always current (BUG-002 fix).
-
-        Args:
-            status: Task status to filter by (default: "available")
-            claim_timeout_minutes: Timeout in minutes for claimed tasks (default: 10)
-
-        Returns:
-            List of tasks matching the status
-        """
-        # Release stale tasks before listing
-        self._release_stale_tasks(timeout_minutes=claim_timeout_minutes)
-
+    def task_list(self, status: str = "available") -> List[Dict]:
+        """List tasks with given status"""
         tasks = self._firebase_request("GET", "/tasks")
 
         if not tasks:
@@ -468,25 +453,6 @@ class SartorNetworkClient:
         return ""
 
     def knowledge_query(self, query: str = None) -> List[Dict]:
-        """Query knowledge base"""
-        knowledge = self._firebase_request("GET", "/knowledge")
-
-        if not knowledge:
-            return []
-
-        knowledge_list = []
-        for k_id, k_data in knowledge.items():
-            if isinstance(k_data, dict):
-                k_data["knowledge_id"] = k_id
-
-                if query:
-                    content = k_data.get("content", "").lower()
-                    if query.lower() in content:
-                        knowledge_list.append(k_data)
-                else:
-                    knowledge_list.append(k_data)
-
-        return knowledge_list
 
     # === Agent Mail System ===
 
@@ -739,6 +705,25 @@ class SartorNetworkClient:
             return True
 
         return False
+        """Query knowledge base"""
+        knowledge = self._firebase_request("GET", "/knowledge")
+
+        if not knowledge:
+            return []
+
+        knowledge_list = []
+        for k_id, k_data in knowledge.items():
+            if isinstance(k_data, dict):
+                k_data["knowledge_id"] = k_id
+
+                if query:
+                    content = k_data.get("content", "").lower()
+                    if query.lower() in content:
+                        knowledge_list.append(k_data)
+                else:
+                    knowledge_list.append(k_data)
+
+        return knowledge_list
 
     # === Agent Discovery Tools ===
 
@@ -761,129 +746,6 @@ class SartorNetworkClient:
         """Get status of specific agent"""
         return self._firebase_request("GET", f"/agents/{agent_id}")
 
-
-    def _release_stale_tasks(self, timeout_minutes: int = 10) -> int:
-        """
-        Release tasks that have been claimed but not updated within timeout period.
-
-        This method prevents task deadlock when agents crash or disconnect without
-        releasing their claimed tasks (BUG-002 fix).
-
-        Args:
-            timeout_minutes: Number of minutes before a claimed task is considered stale
-
-        Returns:
-            Number of tasks released
-        """
-        tasks = self._firebase_request("GET", "/tasks")
-
-        if not tasks:
-            return 0
-
-        released_count = 0
-        now = datetime.now()
-
-        for task_id, task_data in tasks.items():
-            if not isinstance(task_data, dict):
-                continue
-
-            # Only check claimed tasks
-            if task_data.get("status") != "claimed":
-                continue
-
-            # Check if claimed_at timestamp exists
-            claimed_at_str = task_data.get("claimed_at")
-            if not claimed_at_str:
-                # Task is claimed but has no timestamp - release it
-                print(f"⚠️  Task {task_id} has no claimed_at timestamp, releasing...")
-                self._firebase_request("PATCH", f"/tasks/{task_id}", {
-                    "status": "available",
-                    "claimed_by": None,
-                    "claimed_at": None,
-                    "released_reason": "missing_timestamp",
-                    "released_at": now.isoformat()
-                })
-                released_count += 1
-                continue
-
-            try:
-                # Parse the claimed_at timestamp
-                claimed_at = datetime.fromisoformat(claimed_at_str.replace('Z', '+00:00'))
-
-                # Calculate how long the task has been claimed
-                time_claimed = now - claimed_at.replace(tzinfo=None)
-
-                # Check if it exceeds timeout
-                if time_claimed.total_seconds() > (timeout_minutes * 60):
-                    claimed_by = task_data.get("claimed_by", "unknown")
-                    task_title = task_data.get("title", task_id)
-
-                    print(f"🔓 Releasing stale task '{task_title}' (claimed {int(time_claimed.total_seconds() / 60)} min ago by {claimed_by})")
-
-                    # Release the task
-                    self._firebase_request("PATCH", f"/tasks/{task_id}", {
-                        "status": "available",
-                        "claimed_by": None,
-                        "claimed_at": None,
-                        "released_reason": "timeout",
-                        "released_at": now.isoformat(),
-                        "previous_owner": claimed_by
-                    })
-                    released_count += 1
-
-            except (ValueError, AttributeError) as e:
-                # Invalid timestamp format - release the task
-                print(f"⚠️  Task {task_id} has invalid timestamp, releasing...")
-                self._firebase_request("PATCH", f"/tasks/{task_id}", {
-                    "status": "available",
-                    "claimed_by": None,
-                    "claimed_at": None,
-                    "released_reason": "invalid_timestamp",
-                    "released_at": now.isoformat()
-                })
-                released_count += 1
-
-        if released_count > 0:
-            print(f"✅ Released {released_count} stale task(s)")
-
-        return released_count
-
-    def task_heartbeat(self, task_id: str) -> bool:
-        """
-        Send heartbeat for a task to extend its claim timeout.
-
-        Call this periodically while working on long-running tasks to prevent
-        them from being released as stale.
-
-        Args:
-            task_id: ID of the task to send heartbeat for
-
-        Returns:
-            True if heartbeat was successful, False otherwise
-        """
-        task = self._firebase_request("GET", f"/tasks/{task_id}")
-
-        if not task:
-            print(f"❌ Task {task_id} not found")
-            return False
-
-        # Verify we own this task
-        if task.get("claimed_by") != self.agent_id:
-            print(f"❌ Cannot send heartbeat for task {task_id} - not owned by this agent")
-            return False
-
-        # Update the claimed_at timestamp
-        heartbeat_data = {
-            "claimed_at": datetime.now().isoformat(),
-            "last_heartbeat": datetime.now().isoformat()
-        }
-
-        result = self._firebase_request("PATCH", f"/tasks/{task_id}", heartbeat_data)
-
-        if result:
-            print(f"💓 Heartbeat sent for task {task_id}")
-            return True
-        return False
     # === Sub-Agent Support ===
 
     def get_sub_agent_context(self) -> Dict[str, str]:

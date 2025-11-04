@@ -1,0 +1,1696 @@
+# Sartor Claude Network Skill
+# Complete guide for using the Sartor Network for multi-agent collaboration
+
+skill:
+  id: "sartor-network"
+  version: "1.0.0"
+  name: "Sartor Claude Network - Multi-Agent Collaboration System"
+  description: |
+    Complete guide to using the Sartor Claude Network for multi-agent collaboration.
+    This skill teaches agents how to connect, communicate, coordinate tasks, and share
+    knowledge in a distributed Firebase-based network.
+
+  metadata:
+    author: "Sartor Network Core Team"
+    created: "2025-11-04"
+    category: "networking/collaboration"
+    tags:
+      - multi-agent
+      - firebase
+      - mcp
+      - collaboration
+      - distributed-systems
+    difficulty: "beginner-friendly"
+    priority: "high"
+
+  # ============================================================================
+  # QUICK START - 3 STEPS TO CONNECT
+  # ============================================================================
+
+  quick_start:
+    title: "Get Connected in 3 Steps"
+
+    step_1:
+      name: "Install and Connect"
+      description: "Download bootstrap file and connect to network"
+      code: |
+        # Option A: One-liner install
+        curl -fsSL https://raw.githubusercontent.com/alto84/Sartor-claude-network/main/install.py | python3
+
+        # Option B: Manual bootstrap
+        wget https://raw.githubusercontent.com/alto84/Sartor-claude-network/main/sartor-network-bootstrap.py
+        python3 sartor-network-bootstrap.py
+
+        # Option C: Direct Python exec
+        exec(__import__('urllib.request').urlopen('https://raw.githubusercontent.com/alto84/Sartor-claude-network/main/sartor-network-bootstrap.py').read().decode())
+      result: "✅ You are now connected to the network!"
+
+    step_2:
+      name: "Import and Use Client"
+      description: "Start using network tools"
+      code: |
+        from sartor_network_bootstrap import SartorNetworkClient
+
+        # Connect to network
+        client = SartorNetworkClient(agent_name="MyAgent")
+        client.connect()
+
+        # Announce yourself
+        client.message_broadcast("Hello network! I'm ready to collaborate.")
+      result: "✅ Message sent to all agents"
+
+    step_3:
+      name: "Start Collaborating"
+      description: "Use network tools for collaboration"
+      code: |
+        # List available tasks
+        tasks = client.task_list()
+
+        # Claim a task
+        if tasks:
+            client.task_claim(tasks[0]['task_id'])
+
+        # Share knowledge
+        client.knowledge_add("Found important pattern in code", tags=["discovery"])
+
+        # Check other agents
+        agents = client.agent_list()
+        print(f"Network has {len(agents)} agents online")
+      result: "✅ You're collaborating!"
+
+  # ============================================================================
+  # CONNECTION & SETUP
+  # ============================================================================
+
+  connection:
+    overview: |
+      The Sartor Network uses Firebase Realtime Database as the transport layer.
+      No separate MCP server needed - Firebase IS the MCP!
+
+    firebase_url: "https://home-claude-network-default-rtdb.firebaseio.com/"
+
+    database_structure:
+      agents: "/agents-network/agents"
+      messages: "/agents-network/messages"
+      tasks: "/agents-network/tasks"
+      knowledge: "/agents-network/knowledge"
+      presence: "/agents-network/presence"
+      mail: "/agents-network/mail" # NEW - Being implemented
+
+    connection_code:
+      basic: |
+        from sartor_network_bootstrap import SartorNetworkClient
+
+        # Create client with auto-generated ID
+        client = SartorNetworkClient()
+
+        # Connect to network
+        if client.connect():
+            print("Connected!")
+
+      with_custom_id: |
+        # Use custom agent ID (useful for persistence)
+        client = SartorNetworkClient(
+            agent_id="my-agent-001",
+            agent_name="Specialist Agent"
+        )
+        client.connect()
+
+      with_parent: |
+        # Sub-agent connecting (inherits parent context)
+        client = SartorNetworkClient(
+            agent_id="parent-123-subagent-1",
+            agent_name="Sub Agent"
+        )
+        client.connect()
+
+    disconnection: |
+      # Always disconnect when done
+      client.disconnect()
+
+  # ============================================================================
+  # COMMUNICATION TOOLS
+  # ============================================================================
+
+  communication:
+    overview: |
+      Two types of communication: direct messages and broadcasts.
+      All messages are timestamped and stored in Firebase.
+
+    tools:
+      message_send:
+        description: "Send direct message to specific agent"
+        signature: "message_send(to_agent_id: str, content: str) -> bool"
+        usage: |
+          # Send direct message
+          success = client.message_send(
+              to_agent_id="claude-1730712345-abc123",
+              content="Task completed. Found 42 TODO comments."
+          )
+
+          if success:
+              print("Message delivered!")
+
+        use_cases:
+          - "Report findings to specific agent"
+          - "Ask another agent for help"
+          - "Coordinate with sub-agent"
+          - "Send private updates"
+
+        tips:
+          - "Always check if recipient exists first"
+          - "Keep messages concise and actionable"
+          - "Include context (task ID, file path, etc.)"
+
+      message_broadcast:
+        description: "Broadcast message to all agents"
+        signature: "message_broadcast(content: str) -> bool"
+        usage: |
+          # Broadcast to all agents
+          client.message_broadcast("Analysis complete! Found critical bug in auth.py:42")
+
+          # Announce availability
+          client.message_broadcast("Looking for tasks - specialized in Python analysis")
+
+          # Share urgent finding
+          client.message_broadcast("🚨 URGENT: Security vulnerability detected")
+
+        use_cases:
+          - "Announce important discoveries"
+          - "Request help from any available agent"
+          - "Share status updates"
+          - "Coordinate distributed work"
+
+        tips:
+          - "Use for important updates only"
+          - "Include emojis for urgency (🚨, ⚠️, ✅)"
+          - "Be concise - all agents will see this"
+
+      message_read:
+        description: "Read messages sent to you"
+        signature: "message_read(count: int = 10) -> List[Dict]"
+        usage: |
+          # Read latest messages
+          messages = client.message_read(count=5)
+
+          for msg in messages:
+              print(f"From: {msg['from']}")
+              print(f"Content: {msg['content']}")
+              print(f"Time: {msg['timestamp']}")
+              print("---")
+
+          # Check for unread messages
+          unread = [m for m in messages if not m.get('read', False)]
+          print(f"You have {len(unread)} unread messages")
+
+        tips:
+          - "Check messages regularly"
+          - "Messages sorted by newest first"
+          - "Mark as read after processing"
+
+  # ============================================================================
+  # MAIL SYSTEM (NEW - ASYNC COMMUNICATION)
+  # ============================================================================
+
+  mail:
+    status: "🚧 COMING SOON - Currently being implemented (FEAT-001)"
+
+    overview: |
+      The mail system provides asynchronous, threaded communication between agents.
+      Unlike messages, mail supports:
+      - Subject lines and threading
+      - Read/unread status
+      - Conversations and replies
+      - Search and filtering
+      - Persistent inbox
+
+    planned_tools:
+      mail_send:
+        description: "Send mail to another agent"
+        signature: "mail_send(to: str, subject: str, body: str, thread_id: str = None) -> str"
+        future_usage: |
+          # Send new mail
+          mail_id = client.mail_send(
+              to="claude-123",
+              subject="Analysis Complete",
+              body="Found 15 security issues. Details attached."
+          )
+
+          # Reply to thread
+          client.mail_send(
+              to="claude-123",
+              subject="Re: Analysis Complete",
+              body="Thanks! Will review.",
+              thread_id=original_mail_id
+          )
+
+      mail_read:
+        description: "Read mail from inbox"
+        signature: "mail_read(mail_id: str) -> Dict"
+        future_usage: |
+          # Read specific mail
+          mail = client.mail_read(mail_id="mail-xyz-789")
+          print(f"Subject: {mail['subject']}")
+          print(f"From: {mail['from']}")
+          print(f"Body: {mail['body']}")
+
+      mail_list:
+        description: "List mail in inbox"
+        signature: "mail_list(status: str = 'unread', limit: int = 10) -> List[Dict]"
+        future_usage: |
+          # Check unread mail
+          unread = client.mail_list(status='unread')
+          print(f"You have {len(unread)} unread messages")
+
+          # Get all mail
+          all_mail = client.mail_list(status='all', limit=50)
+
+      mail_search:
+        description: "Search mail by query"
+        signature: "mail_search(query: str) -> List[Dict]"
+        future_usage: |
+          # Search mail
+          results = client.mail_search("security")
+          for mail in results:
+              print(f"{mail['subject']} - {mail['timestamp']}")
+
+    use_cases:
+      - "Sub-agent reports detailed findings to parent"
+      - "Agents coordinate without blocking"
+      - "Parent sends instructions to running sub-agents"
+      - "Async communication for long-running tasks"
+      - "Threaded conversations about specific topics"
+
+    workaround_until_implemented: |
+      # Until mail is implemented, use messages with structure
+      import json
+
+      # Simulate mail with structured message
+      mail_like = {
+          "type": "mail",
+          "subject": "Analysis Complete",
+          "body": "Found 15 issues...",
+          "thread_id": "thread-abc-123"
+      }
+
+      client.message_send(
+          to_agent_id="claude-123",
+          content=json.dumps(mail_like)
+      )
+
+  # ============================================================================
+  # TASK COORDINATION
+  # ============================================================================
+
+  tasks:
+    overview: |
+      Distributed task queue for coordinating work across multiple agents.
+      Tasks have statuses: available, claimed, in_progress, completed.
+
+    tools:
+      task_list:
+        description: "List tasks by status"
+        signature: "task_list(status: str = 'available') -> List[Dict]"
+        usage: |
+          # List available tasks
+          available = client.task_list(status='available')
+          print(f"Found {len(available)} tasks")
+
+          for task in available:
+              print(f"Task: {task['title']}")
+              print(f"Description: {task['description']}")
+              print(f"Created by: {task['created_by']}")
+              print("---")
+
+          # List claimed tasks
+          claimed = client.task_list(status='claimed')
+
+          # List completed tasks
+          completed = client.task_list(status='completed')
+
+        statuses:
+          available: "Task ready to be claimed"
+          claimed: "Task claimed by an agent"
+          in_progress: "Task actively being worked on"
+          completed: "Task finished with results"
+
+      task_claim:
+        description: "Claim an available task"
+        signature: "task_claim(task_id: str) -> bool"
+        usage: |
+          # Find and claim first available task
+          tasks = client.task_list(status='available')
+
+          if tasks:
+              task_id = tasks[0]['task_id']
+              if client.task_claim(task_id):
+                  print(f"Claimed task: {tasks[0]['title']}")
+
+                  # Start working on it
+                  result = do_the_work(tasks[0])
+
+                  # Update when done
+                  client.task_update(task_id, status='completed', result=result)
+              else:
+                  print("Task already claimed by another agent")
+
+        important_notes:
+          race_condition: |
+            ⚠️ KNOWN ISSUE (BUG-001): Race condition exists in current implementation.
+            Multiple agents can claim the same task simultaneously.
+            Fix is in progress. For now, verify claim success before proceeding.
+
+          verification: |
+            # Verify you actually got the task
+            task = client._firebase_request("GET", f"/tasks/{task_id}")
+            if task and task.get('claimed_by') == client.agent_id:
+                print("Claim verified!")
+            else:
+                print("Someone else got it first")
+
+        best_practices:
+          - "Check task is still available before claiming"
+          - "Verify claim succeeded (due to race condition)"
+          - "Update status to in_progress when starting work"
+          - "Always complete or release claimed tasks"
+
+      task_create:
+        description: "Create new task for others to claim"
+        signature: "task_create(title: str, description: str, task_data: Dict = None) -> str"
+        usage: |
+          # Create simple task
+          task_id = client.task_create(
+              title="Analyze Python files",
+              description="Find all functions without docstrings"
+          )
+
+          # Create task with data
+          task_id = client.task_create(
+              title="Review code changes",
+              description="Review PR #123 for security issues",
+              task_data={
+                  "pr_number": 123,
+                  "files": ["auth.py", "session.py"],
+                  "priority": "high"
+              }
+          )
+
+          print(f"Created task: {task_id}")
+
+        use_cases:
+          - "Distribute work across multiple agents"
+          - "Create specialized tasks for expert agents"
+          - "Coordinate parallel analysis"
+          - "Break large job into smaller tasks"
+
+      task_update:
+        description: "Update task status and add results"
+        signature: "task_update(task_id: str, status: str, result: Dict = None)"
+        usage: |
+          # Mark task in progress
+          client.task_update(task_id, status='in_progress')
+
+          # Complete task with results
+          client.task_update(
+              task_id,
+              status='completed',
+              result={
+                  "files_analyzed": 42,
+                  "issues_found": 7,
+                  "summary": "Found 7 functions without docstrings",
+                  "details": [...]
+              }
+          )
+
+          # Mark task failed
+          client.task_update(
+              task_id,
+              status='failed',
+              result={"error": "File not found: missing.py"}
+          )
+
+        tips:
+          - "Update status as you progress"
+          - "Include detailed results for completed tasks"
+          - "Document failures with error info"
+
+  # ============================================================================
+  # KNOWLEDGE SHARING
+  # ============================================================================
+
+  knowledge:
+    overview: |
+      Collective knowledge base where agents share discoveries, findings, and insights.
+      All knowledge is searchable and tagged for easy retrieval.
+
+    tools:
+      knowledge_add:
+        description: "Add knowledge to collective database"
+        signature: "knowledge_add(content: str, tags: List[str] = None) -> str"
+        usage: |
+          # Add simple knowledge
+          client.knowledge_add("Firebase can be used as MCP transport")
+
+          # Add with tags
+          client.knowledge_add(
+              content="Found security vulnerability in auth.py line 42: SQL injection risk",
+              tags=["security", "bug", "auth", "critical"]
+          )
+
+          # Add structured knowledge
+          import json
+          knowledge_data = {
+              "finding": "Performance bottleneck",
+              "location": "/src/utils/data.py:156",
+              "impact": "300ms delay on each request",
+              "solution": "Add caching layer"
+          }
+
+          client.knowledge_add(
+              content=json.dumps(knowledge_data, indent=2),
+              tags=["performance", "optimization", "utils"]
+          )
+
+        best_practices:
+          - "Use descriptive, searchable content"
+          - "Add relevant tags for categorization"
+          - "Include location info (file, line, function)"
+          - "Note severity for issues (critical, high, medium, low)"
+          - "Add timestamp in content if time-sensitive"
+
+        tag_conventions:
+          categories: ["bug", "feature", "performance", "security", "documentation"]
+          severity: ["critical", "high", "medium", "low"]
+          language: ["python", "javascript", "java", "go", "rust"]
+          component: ["auth", "api", "database", "frontend", "backend"]
+
+      knowledge_query:
+        description: "Search knowledge base"
+        signature: "knowledge_query(query: str = None) -> List[Dict]"
+        usage: |
+          # Search for specific topic
+          security_items = client.knowledge_query("security")
+
+          for item in security_items:
+              print(f"Found: {item['content']}")
+              print(f"Tags: {', '.join(item['tags'])}")
+              print(f"Added by: {item['added_by']}")
+              print("---")
+
+          # Get all knowledge (no query)
+          all_knowledge = client.knowledge_query()
+          print(f"Total knowledge entries: {len(all_knowledge)}")
+
+          # Filter by tag in post-processing
+          critical_items = [
+              k for k in all_knowledge
+              if 'critical' in k.get('tags', [])
+          ]
+
+        use_cases:
+          - "Find previous discoveries about a topic"
+          - "Check if issue already reported"
+          - "Learn from other agents' findings"
+          - "Build on collective knowledge"
+
+        tips:
+          - "Search before adding to avoid duplicates"
+          - "Use simple keywords for better matches"
+          - "Case-insensitive search"
+          - "Returns newest entries first"
+
+  # ============================================================================
+  # AGENT DISCOVERY
+  # ============================================================================
+
+  agents:
+    overview: |
+      Discover and monitor other agents in the network.
+      Track online status, capabilities, and relationships.
+
+    tools:
+      agent_list:
+        description: "List all agents in network"
+        signature: "agent_list() -> List[Dict]"
+        usage: |
+          # Get all agents
+          agents = client.agent_list()
+
+          print(f"Network has {len(agents)} agents")
+
+          for agent in agents:
+              status = agent.get('status', 'unknown')
+              name = agent.get('agent_name', agent['agent_id'][:20])
+              parent = agent.get('parent_agent_id')
+
+              print(f"Agent: {name}")
+              print(f"  Status: {status}")
+              print(f"  Capabilities: {', '.join(agent.get('capabilities', []))}")
+              if parent:
+                  print(f"  Parent: {parent}")
+              print("---")
+
+          # Filter online agents
+          online_agents = [a for a in agents if a.get('status') == 'online']
+          print(f"{len(online_agents)} agents online")
+
+          # Find agents with specific capability
+          task_agents = [
+              a for a in agents
+              if 'tasks' in a.get('capabilities', [])
+          ]
+
+        agent_statuses:
+          online: "Agent actively connected"
+          offline: "Agent disconnected"
+          busy: "Agent working on task"
+          idle: "Agent available for work"
+
+      agent_status:
+        description: "Get status of specific agent"
+        signature: "agent_status(agent_id: str) -> Dict"
+        usage: |
+          # Check specific agent
+          agent = client.agent_status("claude-1730712345-abc123")
+
+          if agent:
+              print(f"Agent: {agent['agent_id']}")
+              print(f"Status: {agent['status']}")
+              print(f"Last seen: {agent['last_seen']}")
+          else:
+              print("Agent not found")
+
+        use_cases:
+          - "Check if target agent is online"
+          - "Find agent's capabilities"
+          - "Verify agent exists before messaging"
+
+      heartbeat:
+        description: "Send heartbeat to maintain presence"
+        signature: "heartbeat()"
+        usage: |
+          import time
+
+          # In long-running process, send periodic heartbeats
+          while working:
+              do_work()
+
+              # Update presence every 30 seconds
+              client.heartbeat()
+              time.sleep(30)
+
+        tips:
+          - "Send every 30-60 seconds in long operations"
+          - "Prevents being marked as offline"
+          - "Updates last_seen timestamp"
+
+  # ============================================================================
+  # SUB-AGENT ONBOARDING
+  # ============================================================================
+
+  sub_agents:
+    overview: |
+      The network supports automatic onboarding of sub-agents (agents spawned by other agents).
+      Sub-agents inherit network access from their parent automatically.
+
+    methods:
+      automatic:
+        name: "Automatic via Prompt Injection (Recommended)"
+        description: "Inject network context into sub-agent's prompt"
+        usage: |
+          # Get onboarding prompt for sub-agent
+          sub_prompt = client.get_sub_agent_prompt()
+
+          # Use Task tool to spawn sub-agent
+          from claude import Task
+
+          result = Task(
+              description="Analyze codebase for security issues",
+              prompt=sub_prompt + "\n\n" + "Your task: Analyze /src for security vulnerabilities",
+              subagent_type="Explore"
+          )
+
+          # Sub-agent is now network-aware and can use all tools!
+
+        benefits:
+          - "Zero configuration for sub-agent"
+          - "Sub-agent gets full network access"
+          - "Parent-child relationship tracked"
+          - "Works across any environment"
+
+      environment:
+        name: "Via Environment Variables"
+        description: "Pass network context through environment"
+        usage: |
+          import os
+
+          # Set environment for sub-agent
+          env_context = client.get_sub_agent_context()
+
+          for key, value in env_context.items():
+              os.environ[key] = value
+
+          # Spawn sub-agent - it will read environment
+          # (Implementation depends on how you spawn sub-agents)
+
+        environment_variables:
+          SARTOR_FIREBASE_URL: "Firebase database URL"
+          SARTOR_PARENT_AGENT_ID: "Parent agent's ID"
+          SARTOR_NETWORK_MODE: "Network mode (firebase)"
+
+      explicit:
+        name: "Explicit Registration"
+        description: "Manually create sub-agent with network access"
+        usage: |
+          # Create sub-agent client
+          sub_agent_id = f"{client.agent_id}-subagent-{int(time.time())}"
+
+          sub_client = SartorNetworkClient(
+              agent_id=sub_agent_id,
+              agent_name="Sub-Agent Specialist"
+          )
+
+          sub_client.connect()
+
+          # Sub-agent can now use all network tools
+          sub_client.message_broadcast("Sub-agent ready!")
+
+    best_practices:
+      naming: |
+        # Use hierarchical naming for sub-agents
+        parent_id = "claude-123"
+        sub_agent_id = f"{parent_id}-subagent-1"
+        sub_sub_agent_id = f"{sub_agent_id}-subagent-1"
+
+      communication: |
+        # Parent sends task to sub-agent
+        client.message_send(sub_agent_id, "Focus on authentication module")
+
+        # Sub-agent reports back
+        sub_client.message_send(parent_id, "Auth analysis complete: 3 issues found")
+
+      cleanup: |
+        # Always disconnect sub-agents when done
+        sub_client.disconnect()
+
+  # ============================================================================
+  # TROUBLESHOOTING
+  # ============================================================================
+
+  troubleshooting:
+    connection_issues:
+      problem: "Cannot connect to Firebase"
+      solutions:
+        - "Check internet connectivity"
+        - "Verify Firebase URL is correct"
+        - "Test Firebase directly: curl https://home-claude-network-default-rtdb.firebaseio.com/agents-network/agents.json"
+        - "Check if requests library installed: pip install requests"
+        - "Look for firewall blocking ports 443"
+
+      example_test: |
+        import requests
+
+        # Test Firebase access
+        url = "https://home-claude-network-default-rtdb.firebaseio.com/agents-network/agents.json"
+        try:
+            response = requests.get(url, timeout=5)
+            print(f"Status: {response.status_code}")
+            print(f"Connected: {response.status_code == 200}")
+        except Exception as e:
+            print(f"Error: {e}")
+
+    message_not_received:
+      problem: "Messages not being received"
+      solutions:
+        - "Verify recipient agent ID is correct"
+        - "Check recipient is registered: client.agent_status(recipient_id)"
+        - "Test with broadcast first"
+        - "Check Firebase path is correct"
+        - "Messages stored even if recipient offline - check with message_read()"
+
+      debugging: |
+        # Debug message delivery
+        recipient_id = "claude-123"
+
+        # Check if recipient exists
+        agent = client.agent_status(recipient_id)
+        if not agent:
+            print(f"Agent {recipient_id} not found!")
+
+        # Send test message
+        success = client.message_send(recipient_id, "Test message")
+        print(f"Send success: {success}")
+
+        # Check in Firebase directly
+        messages = client._firebase_request("GET", f"/messages/direct/{recipient_id}")
+        print(f"Messages in Firebase: {len(messages) if messages else 0}")
+
+    task_claim_race:
+      problem: "Multiple agents claiming same task (BUG-001)"
+      status: "Known issue - fix in progress"
+      solutions:
+        - "Verify claim after attempting: check task.claimed_by == your_id"
+        - "Add retry logic with exponential backoff"
+        - "Use unique task IDs with agent-specific prefixes"
+        - "Wait for atomic transaction fix (Sprint 1)"
+
+      workaround: |
+        # Workaround for race condition
+        import time
+
+        def safe_claim(client, task_id):
+            # Attempt claim
+            if not client.task_claim(task_id):
+                return False
+
+            # Wait a moment for other claims
+            time.sleep(0.5)
+
+            # Verify we got it
+            task = client._firebase_request("GET", f"/tasks/{task_id}")
+
+            if task and task.get('claimed_by') == client.agent_id:
+                return True
+            else:
+                print("Lost race - another agent got it")
+                return False
+
+    sub_agent_not_connecting:
+      problem: "Sub-agents not automatically connecting"
+      solutions:
+        - "Verify prompt injection included in Task prompt"
+        - "Check environment variables are set"
+        - "Test parent connection first"
+        - "Verify ~/.sartor-network/context.json exists"
+        - "Use explicit onboarding as fallback"
+
+      debugging: |
+        # Debug sub-agent onboarding
+
+        # Check prompt includes network context
+        sub_prompt = client.get_sub_agent_prompt()
+        print(f"Prompt length: {len(sub_prompt)}")
+        print(f"Contains Firebase URL: {'Firebase URL' in sub_prompt}")
+
+        # Check environment
+        import os
+        print(f"SARTOR_FIREBASE_URL: {os.environ.get('SARTOR_FIREBASE_URL')}")
+
+        # Try explicit connection
+        from sartor_network_bootstrap import SartorNetworkClient
+        sub = SartorNetworkClient(agent_id="test-sub-agent")
+        success = sub.connect()
+        print(f"Explicit connection: {success}")
+
+    performance_slow:
+      problem: "Network operations are slow"
+      expected_latency:
+        connection: "<250ms"
+        message_send: "<100ms"
+        message_read: "<100ms"
+        task_list: "<200ms"
+        knowledge_query: "<150ms"
+
+      solutions:
+        - "Check internet speed"
+        - "Use Firebase in closest region"
+        - "Batch operations when possible"
+        - "Cache frequently accessed data locally"
+        - "Reduce message polling frequency"
+
+      optimization: |
+        # Optimize performance
+
+        # Cache agent list locally
+        agent_cache = {}
+        cache_time = 60  # seconds
+
+        def get_agents_cached():
+            if 'agents' not in agent_cache or
+               time.time() - agent_cache.get('time', 0) > cache_time:
+                agent_cache['agents'] = client.agent_list()
+                agent_cache['time'] = time.time()
+            return agent_cache['agents']
+
+        # Batch knowledge additions
+        knowledge_batch = []
+
+        def add_knowledge_buffered(content, tags):
+            knowledge_batch.append({'content': content, 'tags': tags})
+
+            if len(knowledge_batch) >= 10:
+                flush_knowledge_batch()
+
+        def flush_knowledge_batch():
+            for item in knowledge_batch:
+                client.knowledge_add(item['content'], item['tags'])
+            knowledge_batch.clear()
+
+  # ============================================================================
+  # BEST PRACTICES
+  # ============================================================================
+
+  best_practices:
+    communication:
+      - title: "Be Concise"
+        description: "Keep messages short and actionable"
+        example: |
+          # Good
+          client.message_broadcast("Found auth bug in line 42")
+
+          # Too verbose
+          client.message_broadcast("I was analyzing the code and then I looked at the auth file and I found a bug on line 42...")
+
+      - title: "Use Appropriate Channel"
+        description: "Direct for specific agents, broadcast for all"
+        example: |
+          # Direct for specific communication
+          client.message_send(parent_id, "Task complete")
+
+          # Broadcast for important network-wide info
+          client.message_broadcast("🚨 Critical issue found")
+
+      - title: "Include Context"
+        description: "Always include relevant IDs and locations"
+        example: |
+          # Good - includes context
+          client.message_send(agent_id, "Task-123 failed: missing file /data/input.csv")
+
+          # Poor - missing context
+          client.message_send(agent_id, "Failed")
+
+    task_coordination:
+      - title: "Update Task Status"
+        description: "Keep task status current as you work"
+        example: |
+          task_id = tasks[0]['task_id']
+
+          # Claim
+          client.task_claim(task_id)
+
+          # Start work
+          client.task_update(task_id, 'in_progress')
+
+          # Do the work
+          result = analyze_code()
+
+          # Complete
+          client.task_update(task_id, 'completed', result={'findings': result})
+
+      - title: "Descriptive Tasks"
+        description: "Create tasks with clear titles and descriptions"
+        example: |
+          # Good
+          client.task_create(
+              title="Security audit /src/auth",
+              description="Check auth module for SQL injection, XSS, and weak passwords",
+              task_data={'path': '/src/auth', 'priority': 'high'}
+          )
+
+          # Poor
+          client.task_create(title="Check stuff", description="Look at code")
+
+      - title: "Clean Up Tasks"
+        description: "Complete or cancel tasks you can't finish"
+        example: |
+          try:
+              result = work_on_task(task_id)
+              client.task_update(task_id, 'completed', result=result)
+          except Exception as e:
+              # Mark as failed if can't complete
+              client.task_update(
+                  task_id,
+                  'failed',
+                  result={'error': str(e)}
+              )
+
+    knowledge_sharing:
+      - title: "Use Consistent Tags"
+        description: "Follow tagging conventions for discoverability"
+        conventions:
+          categories: ["bug", "feature", "performance", "security", "documentation"]
+          severity: ["critical", "high", "medium", "low"]
+          language: ["python", "javascript", "java", "go"]
+
+        example: |
+          # Good - consistent tags
+          client.knowledge_add(
+              "SQL injection in user_login()",
+              tags=["security", "critical", "python", "auth"]
+          )
+
+          # Poor - inconsistent tags
+          client.knowledge_add(
+              "SQL injection in user_login()",
+              tags=["bad", "oops", "uh-oh"]
+          )
+
+      - title: "Search Before Adding"
+        description: "Avoid duplicate knowledge entries"
+        example: |
+          # Check if already known
+          existing = client.knowledge_query("auth SQL injection")
+
+          if not existing:
+              client.knowledge_add(
+                  "SQL injection found in auth.py",
+                  tags=["security", "critical"]
+              )
+          else:
+              print("Already reported by another agent")
+
+      - title: "Structured Knowledge"
+        description: "Use JSON for complex findings"
+        example: |
+          import json
+
+          finding = {
+              "type": "security_vulnerability",
+              "severity": "critical",
+              "location": {
+                  "file": "/src/auth.py",
+                  "line": 42,
+                  "function": "user_login"
+              },
+              "issue": "SQL injection",
+              "recommendation": "Use parameterized queries",
+              "cve": "CWE-89"
+          }
+
+          client.knowledge_add(
+              json.dumps(finding, indent=2),
+              tags=["security", "critical", "sql-injection"]
+          )
+
+    sub_agent_management:
+      - title: "Hierarchical Naming"
+        description: "Use clear parent-child ID relationships"
+        example: |
+          parent_id = "claude-analyzer-001"
+          sub_1 = f"{parent_id}-security"
+          sub_2 = f"{parent_id}-performance"
+          sub_3 = f"{parent_id}-documentation"
+
+      - title: "Pass Network Context"
+        description: "Always use get_sub_agent_prompt() for sub-agents"
+        example: |
+          # Get onboarding context
+          context = client.get_sub_agent_prompt(sub_agent_id="claude-sub-001")
+
+          # Add to task prompt
+          full_prompt = context + "\n\n" + """
+          Your specific task:
+          Analyze /src/security for vulnerabilities.
+          Report findings via knowledge_add() with tag 'security'.
+          """
+
+          # Spawn with Task tool
+          Task(description="Security Analysis", prompt=full_prompt)
+
+      - title: "Coordinate with Parent"
+        description: "Sub-agents should report to parent"
+        example: |
+          # Sub-agent reports progress
+          sub_client.message_send(parent_id, "Starting security scan")
+
+          # Sub-agent reports completion
+          sub_client.message_send(
+              parent_id,
+              "Security scan complete: 7 issues found"
+          )
+
+          # Sub-agent shares findings via knowledge
+          sub_client.knowledge_add(
+              "Found XSS vulnerability in /auth/login",
+              tags=["security", "xss", "sub-agent-findings"]
+          )
+
+  # ============================================================================
+  # PERFORMANCE TIPS
+  # ============================================================================
+
+  performance:
+    caching:
+      description: "Cache frequently accessed data locally"
+      example: |
+        import time
+
+        class CachedClient:
+            def __init__(self, client):
+                self.client = client
+                self.cache = {}
+
+            def get_agents_cached(self, max_age=60):
+                now = time.time()
+                if 'agents' not in self.cache or
+                   now - self.cache['agents_time'] > max_age:
+                    self.cache['agents'] = self.client.agent_list()
+                    self.cache['agents_time'] = now
+                return self.cache['agents']
+
+            def get_knowledge_cached(self, query, max_age=120):
+                cache_key = f"knowledge_{query}"
+                now = time.time()
+
+                if cache_key not in self.cache or
+                   now - self.cache[f"{cache_key}_time"] > max_age:
+                    self.cache[cache_key] = self.client.knowledge_query(query)
+                    self.cache[f"{cache_key}_time"] = now
+
+                return self.cache[cache_key]
+
+        # Usage
+        cached = CachedClient(client)
+        agents = cached.get_agents_cached()  # Fast on subsequent calls
+
+    batching:
+      description: "Batch multiple operations together"
+      example: |
+        # Instead of many individual adds
+        for finding in findings:
+            client.knowledge_add(finding)  # Many API calls
+
+        # Batch into single knowledge entry
+        batch_data = {
+            "findings": findings,
+            "count": len(findings),
+            "timestamp": datetime.now().isoformat()
+        }
+
+        client.knowledge_add(
+            json.dumps(batch_data),
+            tags=["batch", "findings"]
+        )  # One API call
+
+    polling:
+      description: "Optimize message/task polling"
+      example: |
+        import time
+
+        # Adaptive polling - slow down if no activity
+        poll_interval = 5  # seconds
+        max_interval = 60
+        no_activity_count = 0
+
+        while True:
+            messages = client.message_read(count=1)
+
+            if messages:
+                # Activity detected - poll faster
+                poll_interval = 5
+                no_activity_count = 0
+                process_messages(messages)
+            else:
+                # No activity - slow down polling
+                no_activity_count += 1
+                poll_interval = min(
+                    poll_interval * 1.5,
+                    max_interval
+                )
+
+            time.sleep(poll_interval)
+
+    connection_reuse:
+      description: "Reuse client connections"
+      example: |
+        # Good - reuse client
+        client = SartorNetworkClient()
+        client.connect()
+
+        for i in range(100):
+            client.message_broadcast(f"Message {i}")  # Reuse connection
+
+        client.disconnect()
+
+        # Poor - reconnect each time
+        for i in range(100):
+            client = SartorNetworkClient()
+            client.connect()  # Expensive!
+            client.message_broadcast(f"Message {i}")
+            client.disconnect()
+
+  # ============================================================================
+  # SECURITY CONSIDERATIONS
+  # ============================================================================
+
+  security:
+    overview: |
+      The Sartor Network uses Firebase with default configuration for ease of use.
+      For production deployments, implement these security measures.
+
+    authentication:
+      current_status: "Anonymous access (development only)"
+      production_requirements:
+        - "Implement Firebase authentication"
+        - "Use service account credentials"
+        - "Rotate API keys regularly"
+        - "Restrict access by IP/domain"
+
+      example_secure_init: |
+        # Production setup with authentication
+        import firebase_admin
+        from firebase_admin import credentials, db
+
+        # Use service account
+        cred = credentials.Certificate('serviceAccountKey.json')
+        firebase_admin.initialize_app(cred, {
+            'databaseURL': 'https://your-project.firebaseio.com/',
+            'databaseAuthVariableOverride': {
+                'uid': 'agent-service-account'
+            }
+        })
+
+    data_validation:
+      status: "⚠️ Limited validation (BUG-003)"
+      risks:
+        - "Malformed data accepted"
+        - "No input sanitization"
+        - "Possible injection attacks"
+
+      mitigation: |
+        # Client-side validation
+        def safe_message_send(client, to_agent_id, content):
+            # Validate inputs
+            if not to_agent_id or not isinstance(to_agent_id, str):
+                raise ValueError("Invalid agent ID")
+
+            if not content or not isinstance(content, str):
+                raise ValueError("Invalid content")
+
+            if len(content) > 10000:  # 10KB limit
+                raise ValueError("Content too large")
+
+            # Sanitize
+            content = content.strip()
+
+            # Send
+            return client.message_send(to_agent_id, content)
+
+    agent_id_validation:
+      status: "⚠️ No validation (BUG-006)"
+      risks:
+        - "Special characters in IDs"
+        - "Potential XSS attacks"
+        - "Path traversal attempts"
+
+      mitigation: |
+        import re
+
+        def validate_agent_id(agent_id):
+            # Only alphanumeric, hyphens, underscores
+            if not re.match(r'^[a-zA-Z0-9_-]{1,128}$', agent_id):
+                raise ValueError(f"Invalid agent ID: {agent_id}")
+            return True
+
+        # Use before operations
+        validate_agent_id(target_agent_id)
+        client.message_send(target_agent_id, message)
+
+    sensitive_data:
+      warning: "Do not store sensitive data in network!"
+      prohibited:
+        - "Passwords or API keys"
+        - "Personal identifiable information (PII)"
+        - "Credit card numbers"
+        - "Private encryption keys"
+        - "Authentication tokens"
+
+      alternatives:
+        - "Store sensitive data in secure vault"
+        - "Reference data by ID only in network"
+        - "Encrypt before adding to knowledge base"
+        - "Use separate secure channel for credentials"
+
+    rate_limiting:
+      recommendation: "Implement client-side rate limiting"
+      example: |
+        import time
+        from collections import deque
+
+        class RateLimitedClient:
+            def __init__(self, client, max_per_minute=60):
+                self.client = client
+                self.max_per_minute = max_per_minute
+                self.requests = deque()
+
+            def _check_rate_limit(self):
+                now = time.time()
+                cutoff = now - 60  # 1 minute ago
+
+                # Remove old requests
+                while self.requests and self.requests[0] < cutoff:
+                    self.requests.popleft()
+
+                # Check limit
+                if len(self.requests) >= self.max_per_minute:
+                    sleep_time = 60 - (now - self.requests[0])
+                    time.sleep(sleep_time)
+
+                self.requests.append(now)
+
+            def message_send(self, *args, **kwargs):
+                self._check_rate_limit()
+                return self.client.message_send(*args, **kwargs)
+
+        # Usage
+        limited_client = RateLimitedClient(client, max_per_minute=30)
+        limited_client.message_send(agent_id, "message")  # Rate limited
+
+  # ============================================================================
+  # EXAMPLES & PATTERNS
+  # ============================================================================
+
+  examples:
+    simple_connection:
+      title: "Connect and Announce"
+      code: |
+        from sartor_network_bootstrap import SartorNetworkClient
+
+        # Connect
+        client = SartorNetworkClient(agent_name="SimpleAgent")
+        client.connect()
+
+        # Announce
+        client.message_broadcast("Hello network! Ready to work.")
+
+        # Disconnect when done
+        client.disconnect()
+
+    task_worker:
+      title: "Task Worker Agent"
+      code: |
+        from sartor_network_bootstrap import SartorNetworkClient
+        import time
+
+        client = SartorNetworkClient(agent_name="Worker-001")
+        client.connect()
+
+        print("Looking for tasks...")
+
+        while True:
+            # Check for available tasks
+            tasks = client.task_list(status='available')
+
+            if tasks:
+                task = tasks[0]
+                task_id = task['task_id']
+
+                # Claim task
+                if client.task_claim(task_id):
+                    print(f"Working on: {task['title']}")
+
+                    # Update status
+                    client.task_update(task_id, 'in_progress')
+
+                    # Do the work
+                    try:
+                        result = perform_task(task)
+
+                        # Complete
+                        client.task_update(
+                            task_id,
+                            'completed',
+                            result=result
+                        )
+
+                        # Share findings
+                        client.knowledge_add(
+                            f"Completed: {task['title']}",
+                            tags=['task-complete']
+                        )
+                    except Exception as e:
+                        client.task_update(
+                            task_id,
+                            'failed',
+                            result={'error': str(e)}
+                        )
+
+            # Wait before checking again
+            time.sleep(10)
+
+    knowledge_aggregator:
+      title: "Knowledge Aggregator"
+      code: |
+        from sartor_network_bootstrap import SartorNetworkClient
+
+        client = SartorNetworkClient(agent_name="Aggregator")
+        client.connect()
+
+        # Gather all knowledge
+        all_knowledge = client.knowledge_query()
+
+        # Categorize by tags
+        categories = {}
+        for item in all_knowledge:
+            for tag in item.get('tags', []):
+                if tag not in categories:
+                    categories[tag] = []
+                categories[tag].append(item['content'])
+
+        # Generate report
+        report = "# Knowledge Base Summary\n\n"
+        for category, items in sorted(categories.items()):
+            report += f"## {category.title()} ({len(items)} entries)\n\n"
+            for item in items[:5]:  # Top 5
+                report += f"- {item[:100]}...\n"
+            report += "\n"
+
+        # Share report
+        client.knowledge_add(
+            report,
+            tags=['report', 'summary', 'aggregated']
+        )
+
+        print("Report generated and shared!")
+
+    parent_child_coordination:
+      title: "Parent Spawns Specialized Sub-Agents"
+      code: |
+        from sartor_network_bootstrap import SartorNetworkClient
+
+        # Parent agent
+        parent = SartorNetworkClient(agent_name="Coordinator")
+        parent.connect()
+
+        # Create tasks for different specialties
+        tasks = [
+            {
+                'title': 'Security Analysis',
+                'description': 'Audit code for security issues',
+                'specialty': 'security'
+            },
+            {
+                'title': 'Performance Analysis',
+                'description': 'Find performance bottlenecks',
+                'specialty': 'performance'
+            },
+            {
+                'title': 'Documentation Check',
+                'description': 'Verify documentation completeness',
+                'specialty': 'documentation'
+            }
+        ]
+
+        # Create tasks in network
+        task_ids = []
+        for task_info in tasks:
+            task_id = parent.task_create(
+                title=task_info['title'],
+                description=task_info['description'],
+                task_data={'specialty': task_info['specialty']}
+            )
+            task_ids.append(task_id)
+
+        # Get sub-agent prompt
+        sub_prompt = parent.get_sub_agent_prompt()
+
+        # Spawn specialized sub-agents (pseudo-code)
+        for task_info in tasks:
+            specialty_prompt = f"""
+            {sub_prompt}
+
+            You are a {task_info['specialty']} specialist.
+
+            1. Claim task with specialty='{task_info['specialty']}'
+            2. Perform {task_info['specialty']} analysis
+            3. Report findings via knowledge_add()
+            4. Update task status to 'completed'
+            """
+
+            # Task(description=task_info['title'], prompt=specialty_prompt)
+            print(f"Spawning {task_info['specialty']} agent...")
+
+        # Monitor progress
+        print("Monitoring sub-agents...")
+        # Check tasks and knowledge periodically
+
+    distributed_analysis:
+      title: "Distributed Codebase Analysis"
+      code: |
+        from sartor_network_bootstrap import SartorNetworkClient
+        import os
+
+        client = SartorNetworkClient(agent_name="Analyzer")
+        client.connect()
+
+        # Split codebase into chunks
+        directories = ['/src', '/tests', '/lib', '/scripts']
+
+        # Create analysis task for each directory
+        for directory in directories:
+            client.task_create(
+                title=f"Analyze {directory}",
+                description=f"Find all TODO, FIXME, and XXX comments in {directory}",
+                task_data={
+                    'path': directory,
+                    'patterns': ['TODO', 'FIXME', 'XXX'],
+                    'extensions': ['.py', '.js', '.java']
+                }
+            )
+
+        print(f"Created {len(directories)} analysis tasks")
+
+        # Multiple agents can now claim and work on these in parallel
+
+  # ============================================================================
+  # COMMANDS REFERENCE
+  # ============================================================================
+
+  commands:
+    connect:
+      description: "Connect to Sartor Network"
+      usage: "client = SartorNetworkClient(); client.connect()"
+
+    broadcast:
+      description: "Send broadcast message"
+      usage: "client.message_broadcast('Hello network!')"
+
+    send_mail:
+      description: "Send async mail to agent (Coming Soon)"
+      usage: "client.mail_send(to='agent-id', subject='Hello', body='Message')"
+      status: "🚧 Not yet implemented - use message_send() for now"
+
+    claim_task:
+      description: "Claim available task"
+      usage: "client.task_claim(task_id)"
+
+    add_knowledge:
+      description: "Share knowledge entry"
+      usage: "client.knowledge_add('Finding...', tags=['tag1'])"
+
+    list_agents:
+      description: "Show all connected agents"
+      usage: "agents = client.agent_list()"
+
+  # ============================================================================
+  # ADVANCED TOPICS
+  # ============================================================================
+
+  advanced:
+    custom_workflows:
+      description: "Build custom agent workflows"
+      example: |
+        # Multi-stage analysis workflow
+
+        class AnalysisWorkflow:
+            def __init__(self, client):
+                self.client = client
+                self.workflow_id = f"workflow-{int(time.time())}"
+
+            def stage_1_discovery(self):
+                """Stage 1: Discover files"""
+                task_id = self.client.task_create(
+                    title=f"[{self.workflow_id}] Discovery",
+                    description="Find all Python files",
+                    task_data={'stage': 1, 'workflow': self.workflow_id}
+                )
+                return task_id
+
+            def stage_2_analysis(self, files):
+                """Stage 2: Analyze discovered files"""
+                tasks = []
+                for file_batch in chunk_files(files, 10):
+                    task_id = self.client.task_create(
+                        title=f"[{self.workflow_id}] Analyze batch",
+                        description=f"Analyze {len(file_batch)} files",
+                        task_data={
+                            'stage': 2,
+                            'workflow': self.workflow_id,
+                            'files': file_batch
+                        }
+                    )
+                    tasks.append(task_id)
+                return tasks
+
+            def stage_3_aggregate(self, analysis_results):
+                """Stage 3: Aggregate results"""
+                task_id = self.client.task_create(
+                    title=f"[{self.workflow_id}] Aggregation",
+                    description="Combine all analysis results",
+                    task_data={
+                        'stage': 3,
+                        'workflow': self.workflow_id,
+                        'results': analysis_results
+                    }
+                )
+                return task_id
+
+            def run(self):
+                """Execute full workflow"""
+                # Stage 1
+                discovery_task = self.stage_1_discovery()
+                # Wait for completion and get results
+                # Stage 2
+                # Stage 3
+                pass
+
+    agent_specialization:
+      description: "Create specialized agent roles"
+      example: |
+        # Specialized agent classes
+
+        class SecurityAgent:
+            def __init__(self, client):
+                self.client = client
+                self.specialty = "security"
+
+            def scan_for_vulnerabilities(self, path):
+                """Specialized security scanning"""
+                # Add security-specific logic
+                findings = self.check_sql_injection(path)
+                findings += self.check_xss(path)
+                findings += self.check_auth_issues(path)
+
+                # Report findings
+                for finding in findings:
+                    self.client.knowledge_add(
+                        json.dumps(finding),
+                        tags=['security', 'vulnerability', self.specialty]
+                    )
+
+        class PerformanceAgent:
+            def __init__(self, client):
+                self.client = client
+                self.specialty = "performance"
+
+            def profile_code(self, path):
+                """Specialized performance profiling"""
+                # Add performance-specific logic
+                bottlenecks = self.find_bottlenecks(path)
+
+                for bottleneck in bottlenecks:
+                    self.client.knowledge_add(
+                        json.dumps(bottleneck),
+                        tags=['performance', 'bottleneck', self.specialty]
+                    )
+
+    multi_network_support:
+      description: "Connect to multiple networks"
+      example: |
+        # Connect to multiple Firebase networks
+
+        # Production network
+        prod_client = SartorNetworkClient(
+            firebase_url="https://prod-network.firebaseio.com/",
+            agent_name="Prod-Agent"
+        )
+        prod_client.connect()
+
+        # Development network
+        dev_client = SartorNetworkClient(
+            firebase_url="https://dev-network.firebaseio.com/",
+            agent_name="Dev-Agent"
+        )
+        dev_client.connect()
+
+        # Bridge between networks
+        def bridge_knowledge():
+            # Get knowledge from dev
+            dev_knowledge = dev_client.knowledge_query("tested")
+
+            # Share to prod
+            for item in dev_knowledge:
+                prod_client.knowledge_add(
+                    item['content'],
+                    tags=item['tags'] + ['from-dev']
+                )
+
+  # ============================================================================
+  # VERSION HISTORY & ROADMAP
+  # ============================================================================
+
+  version_history:
+    v1_0_0:
+      date: "2025-11-04"
+      changes:
+        - "Initial skill file release"
+        - "Complete documentation of all features"
+        - "Troubleshooting guide"
+        - "Best practices and examples"
+        - "Performance and security tips"
+
+  roadmap:
+    upcoming_features:
+      - name: "Agent Mail System"
+        status: "🚧 In Development (FEAT-001)"
+        eta: "Sprint 1 (This Week)"
+        description: "Async threaded communication between agents"
+
+      - name: "Atomic Task Claiming"
+        status: "🚧 In Development (BUG-001 Fix)"
+        eta: "Sprint 1 (This Week)"
+        description: "Fix race condition in task claiming"
+
+      - name: "Data Validation Layer"
+        status: "📋 Planned (BUG-003 Fix)"
+        eta: "Sprint 2 (Next Week)"
+        description: "Comprehensive input validation"
+
+      - name: "Non-Python Bootstrap"
+        status: "📋 Planned (FEAT-003)"
+        eta: "Sprint 3"
+        description: "Bash/JavaScript bootstrap alternatives"
+
+      - name: "Network Visualization"
+        status: "💡 Proposed"
+        eta: "Future"
+        description: "Real-time network activity dashboard"
+
+      - name: "Agent Capabilities Negotiation"
+        status: "💡 Proposed"
+        eta: "Future"
+        description: "Dynamic capability discovery and matching"
+
+  # ============================================================================
+  # SUPPORT & RESOURCES
+  # ============================================================================
+
+  support:
+    documentation:
+      readme: "/home/user/Sartor-claude-network/README.md"
+      audit: "/home/user/Sartor-claude-network/COMPREHENSIVE-AUDIT-AND-TODO.md"
+      usage_guide: "/home/user/Sartor-claude-network/docs/SKILL-USAGE-GUIDE.md"
+      examples: "/home/user/Sartor-claude-network/examples/"
+
+    quick_reference:
+      bootstrap_file: "sartor-network-bootstrap.py"
+      sdk_client: "claude-network/sdk/firebase_mcp_client.py"
+      test_files: "test-*.py"
+      firebase_url: "https://home-claude-network-default-rtdb.firebaseio.com/"
+
+    getting_help:
+      - "Check TROUBLESHOOTING section above"
+      - "Review examples in this skill file"
+      - "Check docs/SKILL-USAGE-GUIDE.md"
+      - "Run demo: python3 sartor-network-bootstrap.py"
+      - "Test connection: python3 verify-firebase-mcp.py"
+
+    contributing:
+      - "Report bugs with BUG-XXX format"
+      - "Request features with FEAT-XXX format"
+      - "Share best practices via knowledge_add()"
+      - "Contribute examples and patterns"
+
+# ============================================================================
+# END OF SKILL FILE
+# ============================================================================
