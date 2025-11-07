@@ -631,8 +631,12 @@ class OfflineQueue:
                         if not self.queue.full():
                             self.queue.put(message)
                     logger.info(f"Loaded {len(cached_messages)} messages from cache")
-            except Exception as e:
-                logger.error(f"Failed to load offline cache: {e}")
+            except (IOError, OSError) as e:
+                logger.error(f"Failed to load offline cache - I/O error: {e}")
+            except json.JSONDecodeError as e:
+                logger.error(f"Failed to load offline cache - Invalid JSON: {e}")
+            except (KeyError, TypeError, ValueError) as e:
+                logger.error(f"Failed to load offline cache - Data format error: {e}")
 
     def _save_to_cache(self):
         """Save current queue to disk cache"""
@@ -701,6 +705,40 @@ class OfflineQueue:
 class MACSClient:
     """Main client for MACS protocol communication"""
 
+    @staticmethod
+    def _is_valid_firebase_key_static(key: str) -> bool:
+        """Static version of Firebase key validation for use in __init__
+
+        Args:
+            key: Firebase key to validate
+
+        Returns:
+            bool: True if key is safe, False otherwise
+        """
+        if not key:
+            return False
+
+        # Check for dangerous patterns
+        dangerous_patterns = ['..',  '/', '\\', '\x00', '\n', '\r', '\t', '$', '#', '[', ']']
+        for pattern in dangerous_patterns:
+            if pattern in key:
+                return False
+
+        # Check if key starts or ends with period (Firebase restriction)
+        if key.startswith('.') or key.endswith('.'):
+            return False
+
+        # Only allow alphanumeric, underscore, and hyphen
+        import re
+        if not re.match(r'^[a-zA-Z0-9_-]+$', key):
+            return False
+
+        # Limit length to prevent DoS
+        if len(key) > 768:  # Firebase max key length
+            return False
+
+        return True
+
     def __init__(
         self,
         agent_id: str,
@@ -717,6 +755,9 @@ class MACSClient:
             capabilities: List of agent capabilities
             auto_heartbeat: Whether to automatically send heartbeats
         """
+        # SECURITY FIX: Validate agent_id early to prevent path injection throughout the system
+        if not self._is_valid_firebase_key_static(agent_id):
+            raise ValueError(f"Invalid agent_id for Firebase: {agent_id}")
         self.agent_id = agent_id
         self.agent_profile = AgentProfile(
             agent_id=agent_id,
@@ -750,6 +791,39 @@ class MACSClient:
         if auto_heartbeat:
             self.start_heartbeat()
 
+    def _is_valid_firebase_key(self, key: str) -> bool:
+        """Validate Firebase key to prevent path injection attacks
+
+        Args:
+            key: Firebase key to validate
+
+        Returns:
+            bool: True if key is safe, False otherwise
+        """
+        if not key:
+            return False
+
+        # Check for dangerous patterns
+        dangerous_patterns = ['..',  '/', '\\', '\x00', '\n', '\r', '\t', '$', '#', '[', ']']
+        for pattern in dangerous_patterns:
+            if pattern in key:
+                return False
+
+        # Check if key starts or ends with period (Firebase restriction)
+        if key.startswith('.') or key.endswith('.'):
+            return False
+
+        # Only allow alphanumeric, underscore, and hyphen
+        import re
+        if not re.match(r'^[a-zA-Z0-9_-]+$', key):
+            return False
+
+        # Limit length to prevent DoS
+        if len(key) > 768:  # Firebase max key length
+            return False
+
+        return True
+
     def _test_connection(self) -> bool:
         """Test Firebase connection"""
         try:
@@ -761,14 +835,23 @@ class MACSClient:
             if self.is_online:
                 logger.info(f"Connected to Firebase")
             return self.is_online
+        except requests.RequestException as e:
+            logger.warning(f"Firebase connection test failed - Network error: {e}")
+            self.is_online = False
+            return False
         except Exception as e:
-            logger.warning(f"Firebase connection test failed: {e}")
+            logger.error(f"Unexpected error during connection test: {e}")
             self.is_online = False
             return False
 
     def register(self) -> bool:
         """Register agent with the network"""
         try:
+            # SECURITY FIX: Validate agent_id to prevent path injection
+            if not self._is_valid_firebase_key(self.agent_id):
+                logger.error(f"Invalid agent_id for Firebase: {self.agent_id}")
+                return False
+
             self.agent_profile.status = "online"
             self.agent_profile.last_seen = datetime.now().isoformat()
 
@@ -784,8 +867,11 @@ class MACSClient:
             else:
                 logger.error(f"Failed to register agent: {response.status_code}")
                 return False
-        except Exception as e:
-            logger.error(f"Registration failed: {e}")
+        except requests.RequestException as e:
+            logger.error(f"Registration failed - Network error: {e}")
+            return False
+        except (ValueError, TypeError) as e:
+            logger.error(f"Registration failed - Data error: {e}")
             return False
 
     def send_message(
@@ -805,14 +891,29 @@ class MACSClient:
         Returns:
             Tuple of (success, message_id)
         """
+        # SECURITY FIX: Check message size BEFORE serialization to prevent memory exhaustion
+        # Estimate size based on payload to catch oversized messages early
+        if message.payload:
+            # Quick size estimation - check payload string representation
+            payload_estimate = len(str(message.payload))
+            if payload_estimate > MACSConfig.MAX_MESSAGE_SIZE:
+                logger.error(f"Message {message.header.message_id} payload exceeds size limit (estimate: {payload_estimate} bytes)")
+                return False, None
+
         # Sign message if requested
         if sign:
             message.security = self.signer.sign_message(message, self.agent_id)
 
-        # Check message size
-        message_size = len(message.to_json())
+        # Final check after serialization (defense in depth)
+        try:
+            message_json = message.to_json()
+        except (ValueError, TypeError, RecursionError) as e:
+            logger.error(f"Message {message.header.message_id} serialization failed: {e}")
+            return False, None
+
+        message_size = len(message_json)
         if message_size > MACSConfig.MAX_MESSAGE_SIZE:
-            logger.error(f"Message {message.header.message_id} exceeds size limit")
+            logger.error(f"Message {message.header.message_id} exceeds size limit ({message_size} bytes)")
             return False, None
 
         # Try to send online
@@ -821,7 +922,12 @@ class MACSClient:
                 try:
                     # Determine Firebase path based on routing
                     if message.routing.routing_type == RoutingType.DIRECT:
-                        path = f"messages/direct/{message.routing.recipients[0]}"
+                        # SECURITY FIX: Validate recipient ID to prevent path injection
+                        recipient = message.routing.recipients[0] if message.routing.recipients else None
+                        if not recipient or not self._is_valid_firebase_key(recipient):
+                            logger.error(f"Invalid recipient ID for Firebase: {recipient}")
+                            return False, None
+                        path = f"messages/direct/{recipient}"
                     elif message.routing.routing_type == RoutingType.BROADCAST:
                         path = "messages/broadcast"
                     elif message.routing.routing_type == RoutingType.MULTICAST:
@@ -829,10 +935,11 @@ class MACSClient:
                     else:
                         path = "messages/system"
 
-                    # Send to Firebase
+                    # Send to Firebase (use pre-serialized JSON for consistency)
                     response = self.session.post(
                         f"{MACSConfig.FIREBASE_URL}/agents-network/{path}.json",
-                        json=message.to_dict(),
+                        data=message_json,
+                        headers={'Content-Type': 'application/json'},
                         timeout=MACSConfig.FIREBASE_TIMEOUT
                     )
 

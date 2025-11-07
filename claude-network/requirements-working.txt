@@ -1,0 +1,43 @@
+# Sartor Claude Network - Working Requirements File
+# Created to get tests actually running
+# Date: 2025-11-07
+
+# Core Python Dependencies
+requests>=2.31.0
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+
+# Async Support
+aiohttp>=3.9.0
+websockets>=12.0
+asyncio-mqtt>=0.16.0  # If MQTT is used
+
+# Flask Web Framework (for proxy/API)
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# Testing Framework - Essential
+pytest>=7.4.3
+pytest-asyncio>=0.21.1
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+pytest-timeout>=2.2.0
+
+# Mocking for Tests
+responses>=0.24.1  # For mocking HTTP requests
+requests-mock>=1.11.0
+
+# Firebase (using REST API, not admin SDK for now)
+# firebase-admin>=6.1.0  # Uncomment if needed
+
+# Code Quality (optional but useful)
+black>=23.11.0
+flake8>=6.1.0
+
+# Monitoring/Logging
+structlog>=23.2.0
+colorlog>=6.8.0
+
+# Utilities
+faker>=20.1.0  # For generating test data
+freezegun>=1.2.2  # For time mocking in tests

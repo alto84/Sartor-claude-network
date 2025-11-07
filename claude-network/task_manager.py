@@ -456,14 +456,20 @@ class TaskQueue:
             }
 
     def _get_priority_breakdown(self) -> Dict[str, int]:
-        """Get task count by priority"""
+        """Get task count by priority
+
+        SECURITY NOTE: This method must be called with lock held
+        """
         breakdown = defaultdict(int)
         for task in self.available:
             breakdown[task.priority.value] += 1
         return dict(breakdown)
 
     def _get_type_breakdown(self) -> Dict[str, int]:
-        """Get task count by type"""
+        """Get task count by type
+
+        SECURITY NOTE: This method must be called with lock held
+        """
         breakdown = defaultdict(int)
         all_tasks = (self.available + list(self.assigned.values()) +
                     self.blocked)
@@ -503,6 +509,55 @@ class TaskManager:
             self._stop_sync.set()
             self._sync_thread.join()
 
+    def _is_valid_firebase_key(self, key: str) -> bool:
+        """Validate Firebase key to prevent path injection attacks
+
+        SECURITY: Prevents path traversal and injection attacks by validating keys
+
+        Args:
+            key: Firebase key to validate
+
+        Returns:
+            bool: True if key is safe, False otherwise
+        """
+        if not key:
+            return False
+
+        # Check for dangerous patterns
+        dangerous_patterns = [
+            '..',  # Path traversal
+            '/',   # Path separator
+            '\\',  # Windows path separator
+            '\x00',  # Null byte
+            '\n',  # Newline
+            '\r',  # Carriage return
+            '\t',  # Tab
+            '$',  # Firebase special char
+            '#',  # Firebase special char
+            '[',  # Firebase special char
+            ']',  # Firebase special char
+            '.',  # Firebase special char (at start/end)
+        ]
+
+        for pattern in dangerous_patterns:
+            if pattern in key:
+                return False
+
+        # Check if key starts or ends with period (Firebase restriction)
+        if key.startswith('.') or key.endswith('.'):
+            return False
+
+        # Only allow alphanumeric, underscore, and hyphen
+        import re
+        if not re.match(r'^[a-zA-Z0-9_-]+$', key):
+            return False
+
+        # Limit length to prevent DoS
+        if len(key) > 768:  # Firebase max key length
+            return False
+
+        return True
+
     def _start_firebase_sync(self):
         """Start Firebase synchronization"""
         self._sync_thread = threading.Thread(target=self._firebase_sync_loop)
@@ -518,8 +573,12 @@ class TaskManager:
                 self._sync_to_firebase()
                 # Pull new tasks from Firebase
                 self._pull_from_firebase()
+            except requests.RequestException as e:
+                logger.error(f"Firebase sync error - Network issue: {e}")
+            except (ValueError, TypeError, KeyError) as e:
+                logger.error(f"Firebase sync error - Data issue: {e}")
             except Exception as e:
-                logger.error(f"Firebase sync error: {e}")
+                logger.error(f"Firebase sync error - Unexpected: {e}")
             self._stop_sync.wait(5)  # Sync every 5 seconds
 
     def _sync_to_firebase(self):
@@ -540,8 +599,10 @@ class TaskManager:
             metrics = self.queue.get_metrics()
             requests.put(f"{self.firebase_url}/tasks/metrics.json", json=metrics)
 
-        except Exception as e:
-            logger.error(f"Error syncing to Firebase: {e}")
+        except requests.RequestException as e:
+            logger.error(f"Error syncing to Firebase - Network issue: {e}")
+        except (ValueError, TypeError, json.JSONEncodeError) as e:
+            logger.error(f"Error syncing to Firebase - Data serialization issue: {e}")
 
     def _pull_from_firebase(self):
         """Pull new tasks from Firebase"""
@@ -551,15 +612,22 @@ class TaskManager:
             submissions = r.json() or {}
 
             for sub_id, task_data in submissions.items():
+                # SECURITY FIX: Validate Firebase path component to prevent path injection
+                if not self._is_valid_firebase_key(sub_id):
+                    logger.warning(f"Invalid Firebase key detected, skipping: {sub_id}")
+                    continue
+
                 # Create appropriate task type
                 task = self._create_task_from_data(task_data)
                 if task and not self.queue._find_task(task.id):
                     self.queue.add_task(task)
-                    # Remove from submissions
+                    # Remove from submissions (path now validated)
                     requests.delete(f"{self.firebase_url}/tasks/submissions/{sub_id}.json")
 
-        except Exception as e:
-            logger.error(f"Error pulling from Firebase: {e}")
+        except requests.RequestException as e:
+            logger.error(f"Error pulling from Firebase - Network issue: {e}")
+        except (ValueError, TypeError, KeyError, json.JSONDecodeError) as e:
+            logger.error(f"Error pulling from Firebase - Data parsing issue: {e}")
 
     def _create_task_from_data(self, data: Dict[str, Any]) -> Optional[BaseTask]:
         """Create appropriate task type from data"""
@@ -608,12 +676,14 @@ class TaskManager:
         return self.queue.update_task_status(task_id, status, result, error)
 
     def update_task_progress(self, task_id: str, progress: float) -> bool:
-        """Update task progress percentage"""
-        task = self.queue.get_task(task_id)
-        if task:
-            task.metrics.progress_percentage = progress
-            task.updated_at = datetime.now()
-            return True
+        """Update task progress percentage - THREAD SAFE"""
+        # SECURITY FIX: Use proper lock protection for shared state modification
+        with self.queue._lock:
+            task = self.queue._find_task(task_id)
+            if task:
+                task.metrics.progress_percentage = progress
+                task.updated_at = datetime.now()
+                return True
         return False
 
     def get_task(self, task_id: str) -> Optional[BaseTask]:
