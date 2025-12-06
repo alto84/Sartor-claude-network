@@ -9,6 +9,55 @@ This repository contains:
 1. **Cognitive Memory Schema** - TypeScript interfaces for four memory types (Episodic, Semantic, Procedural, Working)
 2. **Storage Architecture** - Three-tier data management system (Hot/Warm/Cold)
 3. **Complete Implementation** - Ready-to-deploy system with automatic tiering, semantic search, and version control
+4. **Uplifted Skills Library** - Evidence-based validation, engineering, and multi-agent orchestration
+5. **Executive Claude Pattern** - Master orchestration for coordinating specialized agents
+
+## Quick Navigation
+
+**For Agents:**
+- **[Agent Quickstart](./docs/AGENT_QUICKSTART.md)** - ONE-PAGE reference: current status, skills, how to use
+- **[Documentation Index](./docs/INDEX.md)** - Complete navigation hub for all documentation
+- **[Executive Claude](./EXECUTIVE_CLAUDE.md)** - Master orchestration pattern and delegation strategies
+
+**For Developers:**
+- **[Implementation Guide](./docs/implementation-guide.md)** - Step-by-step production setup
+- **[Architecture Specification](./ARCHITECTURE.md)** - Complete technical specification
+- **[Memory Schema Guide](./MEMORY_SCHEMA_GUIDE.md)** - Cognitive memory design philosophy
+
+---
+
+## Getting Started
+
+### For AI Agents
+
+If you're an AI agent tasked with understanding or working with this system, **start with the [Agent Quickstart](./docs/AGENT_QUICKSTART.md)**. It's a single-page reference that includes:
+
+- Current implementation status
+- What the system does (in plain language)
+- Available skills and how to use them
+- Quick start commands
+- Links to detailed documentation
+
+The quickstart is designed to be loaded in a single context window and provides everything you need to get oriented.
+
+### For Human Developers
+
+1. Read the **[README](./README.md)** (this file) for project overview
+2. Review the **[Architecture](./ARCHITECTURE.md)** for technical design
+3. Follow the **[Implementation Guide](./docs/implementation-guide.md)** for setup
+4. Explore the **[Documentation Index](./docs/INDEX.md)** for deep dives
+
+### For Executive Claude Instances
+
+If you're orchestrating multi-agent workflows:
+
+1. Review **[Executive Claude](./EXECUTIVE_CLAUDE.md)** for orchestration patterns
+2. Load **[Agent Quickstart](./docs/AGENT_QUICKSTART.md)** to understand available skills
+3. Use **intent-based delegation** (not step-by-step instructions)
+4. Apply **context distillation** (84% token reduction)
+5. Implement **quality gates** for validation
+
+---
 
 ### Memory Types (Cognitive Layer)
 
@@ -57,17 +106,26 @@ sartor-claude-network/
 
 ### Key Documents
 
+**Quick Access:**
+- **[Agent Quickstart](./docs/AGENT_QUICKSTART.md)** - ONE-PAGE reference for agents (start here!)
+- **[Documentation Index](./docs/INDEX.md)** - Complete navigation hub for all documentation
+
 **Storage Architecture:**
-- **`ARCHITECTURE.md`** - Complete multi-tier storage specification with diagrams, schemas, and code
-- **`docs/synchronization-strategy.md`** - Data flow, promotion/demotion rules, conflict resolution
-- **`docs/implementation-guide.md`** - Production deployment guide
-- **`docs/cost-analysis.md`** - Detailed cost breakdown and optimization ($47-$515/month)
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - Complete multi-tier storage specification with diagrams, schemas, and code
+- **[Synchronization Strategy](./docs/synchronization-strategy.md)** - Data flow, promotion/demotion rules, conflict resolution
+- **[Implementation Guide](./docs/implementation-guide.md)** - Production deployment guide
+- **[Cost Analysis](./docs/cost-analysis.md)** - Detailed cost breakdown and optimization ($47-$515/month)
 
 **Cognitive Memory Schema:**
-- **`memory-schema.ts`** - TypeScript interfaces for episodic, semantic, procedural, and working memory
-- **`MEMORY_SCHEMA_GUIDE.md`** - Design philosophy, usage patterns, testing
-- **`memory-implementation-example.ts`** - Complete implementation with storage backends
-- **`mcp-server-config.json`** - MCP tools for memory operations
+- **[memory-schema.ts](./memory-schema.ts)** - TypeScript interfaces for episodic, semantic, procedural, and working memory
+- **[MEMORY_SCHEMA_GUIDE.md](./MEMORY_SCHEMA_GUIDE.md)** - Design philosophy, usage patterns, testing
+- **[memory-implementation-example.ts](./memory-implementation-example.ts)** - Complete implementation with storage backends
+- **[mcp-server-config.json](./mcp-server-config.json)** - MCP tools for memory operations
+
+**Skills & Orchestration:**
+- **[Executive Claude](./EXECUTIVE_CLAUDE.md)** - Master orchestration pattern (intent-based delegation, context distillation)
+- **[Skill Manifest](./src/skills/skill-manifest.ts)** - Six uplifted skills (validation, engineering, orchestration, debugging)
+- **[Skill Types](./src/skills/skill-types.ts)** - TypeScript interfaces for skills architecture
 
 ## Key Features
 

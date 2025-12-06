@@ -1547,13 +1547,1773 @@ export const MULTI_AGENT_ORCHESTRATION: SkillManifest = {
 };
 
 /**
+ * MCP Server Development Skill
+ *
+ * Builds MCP servers with proper patterns, error handling,
+ * and protocol compliance.
+ */
+export const MCP_SERVER_DEVELOPMENT: SkillManifest = {
+  // Identity
+  id: 'mcp-server-development',
+  name: 'MCP Server Development',
+  version: '1.0.0',
+
+  // Level 1: Summary (always loaded, ~50 tokens)
+  summary: 'Build Model Context Protocol servers with proper stdio discipline, input validation, error handling, and security checks. Validates servers against MCP quality standards.',
+
+  triggers: [
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'mcp server|mcp tool|model context protocol',
+      confidence: 0.9,
+      priority: 11
+    },
+    {
+      type: TriggerType.PATTERN,
+      pattern: /(build|create|develop|validate) (mcp|model context protocol) (server|tool)/i,
+      confidence: 0.95,
+      priority: 12
+    },
+    {
+      type: TriggerType.SEMANTIC,
+      pattern: 'need to build an MCP server',
+      confidence: 0.85,
+      priority: 10
+    },
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'stdio|json-rpc|tool handler|mcp validation',
+      confidence: 0.75,
+      priority: 8
+    }
+  ],
+
+  tier: SkillTier.SPECIALIST,
+
+  // Relationships
+  dependencies: [
+    {
+      skillId: 'evidence-based-validation',
+      version: '^1.0.0',
+      required: true,
+      loadTiming: 'eager'
+    }
+  ],
+
+  conflicts: [],
+
+  alternatives: [
+    'generic-api-development',
+    'sdk-development'
+  ],
+
+  // Level 2: Instructions (~500 tokens)
+  instructions: {
+    description: `MCP Server Development provides tools and validation for building Model Context Protocol servers
+    that reliably expose tools and resources to AI assistants. It enforces critical patterns like stdio discipline
+    (stdout for protocol only, stderr for logging), comprehensive input validation, proper error handling with MCP
+    error codes, and security checks for common vulnerabilities. Helps prevent protocol corruption and ensures
+    servers are production-ready.`,
+
+    useCases: [
+      'Building new MCP servers for custom integrations',
+      'Validating existing MCP servers for protocol compliance',
+      'Generating typed handler code from JSON schemas',
+      'Testing MCP tools with comprehensive test cases',
+      'Analyzing handlers for security vulnerabilities',
+      'Debugging MCP communication failures',
+      'Implementing proper error handling and validation'
+    ],
+
+    antiPatterns: [
+      'Using console.log() instead of console.error() (corrupts stdio)',
+      'Skipping input validation against schemas',
+      'Returning thrown exceptions instead of structured errors',
+      'Implementing tools without security considerations',
+      'Writing to stdout directly outside JSON-RPC protocol'
+    ],
+
+    interface: {
+      inputs: [
+        {
+          name: 'config',
+          type: 'MCPServerConfig',
+          description: 'Complete server configuration with tools, resources, and prompts',
+          required: true,
+          examples: [
+            '{ name: "filesystem", version: "1.0.0", tools: [...] }'
+          ]
+        },
+        {
+          name: 'tool',
+          type: 'MCPToolDefinition',
+          description: 'Individual tool definition to validate',
+          required: false,
+          examples: []
+        },
+        {
+          name: 'handlerCode',
+          type: 'string',
+          description: 'Handler source code to analyze for security issues',
+          required: false,
+          examples: []
+        },
+        {
+          name: 'testCases',
+          type: 'TestCase[]',
+          description: 'Test cases for validating tool behavior',
+          required: false,
+          examples: []
+        }
+      ],
+
+      outputs: [
+        {
+          name: 'validationReport',
+          type: 'ValidationReport',
+          description: 'Validation results with errors, warnings, and suggestions',
+          required: true,
+          examples: []
+        },
+        {
+          name: 'securityReport',
+          type: 'SecurityReport',
+          description: 'Security analysis with vulnerabilities and risk score',
+          required: false,
+          examples: []
+        },
+        {
+          name: 'testReport',
+          type: 'TestReport',
+          description: 'Test execution results with coverage analysis',
+          required: false,
+          examples: []
+        },
+        {
+          name: 'generatedCode',
+          type: 'string',
+          description: 'Generated handler code skeleton',
+          required: false,
+          examples: []
+        }
+      ],
+
+      sideEffects: [
+        {
+          type: 'none',
+          description: 'Pure validation and code generation, no side effects',
+          reversible: true
+        }
+      ],
+
+      idempotent: true
+    },
+
+    procedure: {
+      steps: [
+        {
+          order: 1,
+          action: 'validate-server-config',
+          description: 'Validate server metadata and overall structure',
+          optional: false
+        },
+        {
+          order: 2,
+          action: 'validate-tools',
+          description: 'Validate each tool definition, schema, and naming',
+          optional: false
+        },
+        {
+          order: 3,
+          action: 'analyze-stdio-discipline',
+          description: 'Check for console.log() and stdout violations',
+          optional: false
+        },
+        {
+          order: 4,
+          action: 'analyze-security',
+          description: 'Scan for command injection, path traversal, and other vulnerabilities',
+          optional: false
+        },
+        {
+          order: 5,
+          action: 'validate-error-handling',
+          description: 'Ensure proper try-catch and isError usage',
+          optional: false
+        },
+        {
+          order: 6,
+          action: 'generate-recommendations',
+          description: 'Provide actionable suggestions for improvements',
+          optional: false
+        }
+      ],
+      parallelizable: true,
+      estimatedDuration: '1-5 seconds',
+      retryStrategy: {
+        maxAttempts: 1,
+        backoffMs: 0,
+        backoffMultiplier: 1,
+        maxBackoffMs: 0,
+        retryableErrors: []
+      }
+    },
+
+    examples: [
+      {
+        title: 'Validate MCP Server',
+        description: 'Validate complete server configuration',
+        input: {
+          config: {
+            name: 'filesystem-server',
+            version: '1.0.0',
+            tools: [
+              {
+                name: 'read_file',
+                description: 'Read contents of a file',
+                inputSchema: {
+                  type: 'object',
+                  properties: {
+                    path: { type: 'string', description: 'File path' }
+                  },
+                  required: ['path']
+                },
+                handler: async () => ({ content: [] })
+              }
+            ]
+          }
+        },
+        output: {
+          validationReport: {
+            valid: true,
+            errors: [],
+            warnings: [],
+            suggestions: ['Consider adding output schema'],
+            score: 0.95
+          }
+        }
+      },
+      {
+        title: 'Security Analysis',
+        description: 'Analyze handler for security vulnerabilities',
+        input: {
+          handlerCode: 'const result = exec(input.command); console.log(result);'
+        },
+        output: {
+          securityReport: {
+            safe: false,
+            vulnerabilities: [
+              {
+                type: 'command-injection',
+                severity: 'critical',
+                location: 'handler code',
+                description: 'Potential command injection via exec',
+                remediation: 'Validate and sanitize inputs'
+              },
+              {
+                type: 'command-injection',
+                severity: 'critical',
+                location: 'handler code',
+                description: 'console.log() corrupts stdio',
+                remediation: 'Use console.error() instead'
+              }
+            ],
+            riskScore: 0.5,
+            recommendations: []
+          }
+        }
+      }
+    ],
+
+    errorHandling: [
+      {
+        errorCode: 'INVALID_SCHEMA',
+        description: 'JSON Schema is malformed or incomplete',
+        recoverable: true,
+        recovery: 'Fix schema structure and required fields',
+        fallback: 'Return validation errors with specific fixes needed'
+      },
+      {
+        errorCode: 'STDIO_VIOLATION',
+        description: 'Found console.log() or stdout writes',
+        recoverable: true,
+        recovery: 'Replace with console.error() for logging',
+        fallback: 'Flag as critical error preventing deployment'
+      },
+      {
+        errorCode: 'SECURITY_VULNERABILITY',
+        description: 'Detected potential security issue',
+        recoverable: true,
+        recovery: 'Implement input validation and sanitization',
+        fallback: 'Block deployment until fixed'
+      }
+    ]
+  },
+
+  // Level 3: Resources
+  resources: [
+    {
+      id: 'mcp-specification',
+      type: ResourceType.DOCUMENTATION,
+      name: 'MCP Protocol Specification',
+      description: 'Official Model Context Protocol specification',
+      path: 'resources/mcp-spec.md',
+      size: 51200,
+      format: 'text/markdown',
+      loadStrategy: 'lazy'
+    },
+    {
+      id: 'security-patterns',
+      type: ResourceType.REFERENCE_DATA,
+      name: 'Security Vulnerability Patterns',
+      description: 'Common security vulnerabilities to check for',
+      path: 'resources/security-patterns.json',
+      size: 10240,
+      format: 'application/json',
+      loadStrategy: 'immediate'
+    },
+    {
+      id: 'handler-templates',
+      type: ResourceType.CODE_TEMPLATE,
+      name: 'Tool Handler Templates',
+      description: 'Code templates for common handler patterns',
+      path: 'resources/handler-templates/',
+      size: 20480,
+      format: 'text/typescript',
+      loadStrategy: 'lazy'
+    },
+    {
+      id: 'test-templates',
+      type: ResourceType.CODE_TEMPLATE,
+      name: 'Test Case Templates',
+      description: 'Templates for comprehensive tool testing',
+      path: 'resources/test-templates/',
+      size: 15360,
+      format: 'text/typescript',
+      loadStrategy: 'lazy'
+    }
+  ],
+
+  // Metadata
+  metadata: {
+    author: 'Sartor Architecture Team',
+    created: '2025-12-06',
+    updated: '2025-12-06',
+    status: SkillStatus.STABLE,
+    tags: [
+      'mcp',
+      'protocol',
+      'validation',
+      'security',
+      'server-development',
+      'stdio'
+    ],
+    category: SkillCategory.CODE,
+    modelCompatibility: [
+      {
+        modelId: 'claude-sonnet-4-5',
+        features: ['code-analysis', 'security', 'validation'],
+        degradationStrategy: 'limited'
+      }
+    ],
+    estimatedTokens: {
+      level1: 49,
+      level2: 580,
+      level3Avg: 3000
+    }
+  },
+
+  // Performance
+  performance: {
+    averageExecutionMs: 2000,
+    successRate: 0.98,
+    executionCount: 0,
+    failureCount: 0
+  },
+
+  // Memory integration
+  memory: {
+    stateRetention: 'session',
+    cacheStrategy: {
+      type: 'lru',
+      maxSize: 5242880, // 5MB
+      ttl: 3600000, // 1 hour
+      evictionPolicy: 'age'
+    },
+    maxStateSize: 524288 // 512KB
+  }
+};
+
+/**
+ * Distributed Systems Debugging Skill
+ *
+ * Systematically investigates distributed system failures through
+ * evidence-based hypothesis testing and isolation.
+ */
+export const DISTRIBUTED_SYSTEMS_DEBUGGING: SkillManifest = {
+  // Identity
+  id: 'distributed-systems-debugging',
+  name: 'Distributed Systems Debugging',
+  version: '1.0.0',
+
+  // Level 1: Summary (always loaded, ~50 tokens)
+  summary: 'Systematically investigates distributed system failures by reconstructing causal chains, isolating failure domains, and testing hypotheses with evidence rather than assumptions.',
+
+  triggers: [
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'debug|failure|distributed|race condition|timeout|partition',
+      confidence: 0.8,
+      priority: 9
+    },
+    {
+      type: TriggerType.PATTERN,
+      pattern: /(debug|investigate|diagnose) (distributed|multi-agent|coordination) (failure|issue|problem)/i,
+      confidence: 0.9,
+      priority: 10
+    },
+    {
+      type: TriggerType.SEMANTIC,
+      pattern: 'need to debug a distributed system failure',
+      confidence: 0.85,
+      priority: 9
+    },
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'non-deterministic|reproduce|causal chain|root cause',
+      confidence: 0.75,
+      priority: 8
+    }
+  ],
+
+  tier: SkillTier.SPECIALIST,
+
+  // Relationships
+  dependencies: [
+    {
+      skillId: 'evidence-based-validation',
+      version: '^1.0.0',
+      required: true,
+      loadTiming: 'eager'
+    }
+  ],
+
+  conflicts: [],
+
+  alternatives: [
+    'quick-debug',
+    'log-analysis'
+  ],
+
+  // Level 2: Instructions (~500 tokens)
+  instructions: {
+    description: `Distributed Systems Debugging applies systematic methodology to investigate failures in
+    distributed systems. It reconstructs causal chains from observations, isolates failure domains through
+    controlled experiments, and validates hypotheses using failure injection. Unlike traditional debugging,
+    this skill acknowledges non-determinism and requires evidence-based reasoning rather than assumptions.`,
+
+    useCases: [
+      'Investigating race conditions or timing-dependent failures',
+      'Diagnosing network partition or communication failures',
+      'Analyzing coordination failures between agents',
+      'Debugging non-deterministic behavior',
+      'Finding root cause in multi-component failures',
+      'Reproducing intermittent failures',
+      'Understanding cascade failures'
+    ],
+
+    antiPatterns: [
+      'Debugging single-component systems (use traditional debugging)',
+      'Quick fixes without understanding root cause',
+      'Assuming deterministic behavior',
+      'Debugging production without reproduction environment',
+      'Jumping to conclusions without evidence'
+    ],
+
+    interface: {
+      inputs: [
+        {
+          name: 'symptoms',
+          type: 'string[]',
+          description: 'Observed symptoms of the failure',
+          required: true,
+          examples: [
+            'Agent A times out when communicating with Agent B',
+            'Messages delivered out of order 20% of the time'
+          ]
+        },
+        {
+          name: 'dataSources',
+          type: 'DataSource[]',
+          description: 'Sources of observational data (logs, metrics, traces)',
+          required: true,
+          examples: []
+        },
+        {
+          name: 'components',
+          type: 'string[]',
+          description: 'Components involved in the system',
+          required: false,
+          examples: ['agent-a', 'agent-b', 'message-bus', 'coordinator']
+        }
+      ],
+
+      outputs: [
+        {
+          name: 'report',
+          type: 'DebugReport',
+          description: 'Comprehensive debug report with hypotheses and recommendations',
+          required: true,
+          examples: []
+        },
+        {
+          name: 'rootCause',
+          type: 'Hypothesis',
+          description: 'Root cause if identified with high confidence',
+          required: false,
+          examples: []
+        },
+        {
+          name: 'unknowns',
+          type: 'string[]',
+          description: 'What could not be determined',
+          required: true,
+          examples: []
+        }
+      ],
+
+      sideEffects: [
+        {
+          type: 'testing',
+          description: 'May inject failures into test environment',
+          reversible: true
+        },
+        {
+          type: 'data-collection',
+          description: 'Collects and stores observational data',
+          reversible: false
+        }
+      ],
+
+      idempotent: true
+    },
+
+    procedure: {
+      steps: [
+        {
+          order: 1,
+          action: 'collect-observations',
+          description: 'Gather evidence from all data sources systematically',
+          optional: false
+        },
+        {
+          order: 2,
+          action: 'reconstruct-causal-chains',
+          description: 'Build timeline of events to understand sequence',
+          optional: false
+        },
+        {
+          order: 3,
+          action: 'form-hypotheses',
+          description: 'Generate testable hypotheses based on evidence',
+          requiredSkills: ['evidence-based-validation'],
+          optional: false
+        },
+        {
+          order: 4,
+          action: 'rank-hypotheses',
+          description: 'Order hypotheses by evidence strength',
+          optional: false
+        },
+        {
+          order: 5,
+          action: 'test-hypotheses',
+          description: 'Validate top hypotheses using controlled experiments',
+          optional: false
+        },
+        {
+          order: 6,
+          action: 'perform-isolation',
+          description: 'Isolate minimal reproduction case',
+          optional: true
+        },
+        {
+          order: 7,
+          action: 'generate-report',
+          description: 'Generate comprehensive report with unknowns',
+          optional: false
+        }
+      ],
+      parallelizable: false,
+      estimatedDuration: '5-30 minutes',
+      retryStrategy: {
+        maxAttempts: 1,
+        backoffMs: 0,
+        backoffMultiplier: 1,
+        maxBackoffMs: 0,
+        retryableErrors: []
+      }
+    },
+
+    examples: [
+      {
+        title: 'Debug Race Condition',
+        description: 'Investigate timing-dependent message delivery failure',
+        input: {
+          symptoms: [
+            'Messages sometimes delivered out of order',
+            'Only occurs under high load'
+          ],
+          dataSources: [
+            { type: 'logs', components: ['agent-a', 'agent-b', 'message-bus'] },
+            { type: 'traces', components: ['message-bus'] }
+          ],
+          components: ['agent-a', 'agent-b', 'message-bus']
+        },
+        output: {
+          report: {
+            symptoms: ['Messages sometimes delivered out of order', 'Only occurs under high load'],
+            hypotheses: [
+              {
+                description: 'Race condition in message bus queuing',
+                confidence: 0.85,
+                testable: true,
+                test: 'Inject delays to alter timing'
+              }
+            ],
+            rootCause: { description: 'Race condition in message bus queuing', confidence: 0.85 },
+            unknowns: [],
+            recommendations: ['Add sequence numbers to messages', 'Implement total ordering']
+          }
+        }
+      }
+    ],
+
+    errorHandling: [
+      {
+        errorCode: 'NO_OBSERVATIONS',
+        description: 'No observational data could be collected',
+        recoverable: false,
+        recovery: 'Enable logging/tracing and reproduce failure',
+        fallback: 'Return error indicating insufficient data'
+      },
+      {
+        errorCode: 'CANNOT_REPRODUCE',
+        description: 'Failure cannot be reproduced',
+        recoverable: true,
+        recovery: 'Collect more observations during natural occurrence',
+        fallback: 'Acknowledge non-determinism, provide best-effort analysis'
+      },
+      {
+        errorCode: 'ISOLATION_FAILED',
+        description: 'Cannot isolate minimal reproduction',
+        recoverable: true,
+        recovery: 'Document full reproduction case',
+        fallback: 'Provide analysis based on complete system'
+      }
+    ]
+  },
+
+  // Level 3: Resources
+  resources: [
+    {
+      id: 'failure-patterns',
+      type: ResourceType.REFERENCE_DATA,
+      name: 'Common Distributed System Failure Patterns',
+      description: 'Library of common failure patterns and their signatures',
+      path: 'resources/failure-patterns.json',
+      size: 51200,
+      format: 'application/json',
+      loadStrategy: 'lazy'
+    },
+    {
+      id: 'hypothesis-templates',
+      type: ResourceType.CODE_TEMPLATE,
+      name: 'Hypothesis Templates',
+      description: 'Templates for generating testable hypotheses',
+      path: 'resources/hypothesis-templates.json',
+      size: 20480,
+      format: 'application/json',
+      loadStrategy: 'lazy'
+    },
+    {
+      id: 'failure-injection-library',
+      type: ResourceType.CODE_TEMPLATE,
+      name: 'Failure Injection Library',
+      description: 'Pre-built failure injection scenarios',
+      path: 'resources/failure-injections.ts',
+      size: 40960,
+      format: 'text/typescript',
+      loadStrategy: 'on_request'
+    }
+  ],
+
+  // Metadata
+  metadata: {
+    author: 'Sartor Architecture Team',
+    created: '2025-12-06',
+    updated: '2025-12-06',
+    status: SkillStatus.STABLE,
+    tags: [
+      'debugging',
+      'distributed-systems',
+      'failure-analysis',
+      'evidence-based',
+      'hypothesis-testing',
+      'isolation',
+      'root-cause'
+    ],
+    category: SkillCategory.ANALYSIS,
+    modelCompatibility: [
+      {
+        modelId: 'claude-sonnet-4-5',
+        features: ['reasoning', 'analysis', 'debugging'],
+        degradationStrategy: 'limited'
+      }
+    ],
+    estimatedTokens: {
+      level1: 49,
+      level2: 560,
+      level3Avg: 3500
+    }
+  },
+
+  // Performance
+  performance: {
+    averageExecutionMs: 180000, // 3 minutes
+    successRate: 0.87,
+    executionCount: 0,
+    failureCount: 0
+  },
+
+  // Memory integration
+  memory: {
+    stateRetention: 'session',
+    cacheStrategy: {
+      type: 'lru',
+      maxSize: 20971520, // 20MB
+      ttl: 3600000, // 1 hour
+      evictionPolicy: 'age'
+    },
+    maxStateSize: 2097152 // 2MB
+  }
+};
+
+/**
+ * Refinement Loop Skill
+ *
+ * Core refinement mechanism based on Poetiq's approach.
+ * Iteratively refines outputs through generate-evaluate-refine cycles.
+ */
+export const REFINEMENT_LOOP: SkillManifest = {
+  // Identity
+  id: 'refinement-loop',
+  name: 'Refinement Loop',
+  version: '1.0.0',
+
+  // Level 1: Summary (always loaded, ~50 tokens)
+  summary: 'Core iterative refinement mechanism using generate-evaluate-refine cycles. Self-auditing with confidence tracking, process supervision, and cost awareness. Foundation for any non-trivial task.',
+
+  triggers: [
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'refine|iterate|improve|polish|enhance quality',
+      confidence: 0.75,
+      priority: 7
+    },
+    {
+      type: TriggerType.PATTERN,
+      pattern: /(iteratively|repeatedly) (refine|improve|enhance)/i,
+      confidence: 0.85,
+      priority: 9
+    },
+    {
+      type: TriggerType.SEMANTIC,
+      pattern: 'need to iteratively improve the output quality',
+      confidence: 0.8,
+      priority: 8
+    },
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'generate-evaluate-refine|self-audit|confidence threshold',
+      confidence: 0.8,
+      priority: 8
+    }
+  ],
+
+  tier: SkillTier.FOUNDATION,
+
+  // Relationships
+  dependencies: [],
+
+  conflicts: [],
+
+  alternatives: [
+    'single-pass-generation',
+    'manual-refinement'
+  ],
+
+  // Level 2: Instructions (~500 tokens)
+  instructions: {
+    description: `Refinement Loop implements Poetiq's generate-evaluate-refine pattern for iterative quality improvement.
+    It generates an initial candidate, evaluates it for quality, and refines it based on feedback until a confidence
+    threshold is reached. Features self-auditing (knows when to stop), process supervision (tracks every step for
+    learning), cost awareness (respects budget limits), and confidence tracking (stops when good enough). This is
+    THE standard mechanism for executing any non-trivial task that requires quality assurance.`,
+
+    useCases: [
+      'Generating high-quality code that meets specific requirements',
+      'Creating comprehensive documentation with iterative improvements',
+      'Designing system architectures with refinement cycles',
+      'Writing research reports with evidence-based validation',
+      'Developing test suites with coverage improvement',
+      'Crafting API designs with quality gates',
+      'Any task where quality matters more than speed'
+    ],
+
+    antiPatterns: [
+      'Using for trivial tasks that don\'t need refinement',
+      'Setting confidenceThreshold too high (>0.95) causing infinite loops',
+      'Ignoring cost budget leading to runaway expenses',
+      'Not providing meaningful evaluation functions',
+      'Using when first-draft quality is sufficient'
+    ],
+
+    interface: {
+      inputs: [
+        {
+          name: 'generate',
+          type: '() => Promise<T>',
+          description: 'Function to generate initial candidate',
+          required: true,
+          examples: [
+            'async () => generateCode(requirements)',
+            'async () => createArchitectureDesign(specs)'
+          ]
+        },
+        {
+          name: 'evaluate',
+          type: '(candidate: T) => Promise<EvaluationResult>',
+          description: 'Function to evaluate candidate quality and provide feedback',
+          required: true,
+          examples: [
+            'async (code) => runLinterAndTests(code)',
+            'async (design) => validateAgainstRequirements(design)'
+          ]
+        },
+        {
+          name: 'refine',
+          type: '(candidate: T, feedback: Feedback) => Promise<T>',
+          description: 'Function to refine candidate based on feedback',
+          required: true,
+          examples: [
+            'async (code, feedback) => applyFixes(code, feedback)',
+            'async (design, feedback) => incorporateFeedback(design, feedback)'
+          ]
+        },
+        {
+          name: 'config',
+          type: 'RefinementConfig',
+          description: 'Configuration for the refinement loop',
+          required: true,
+          examples: [
+            '{ maxIterations: 5, confidenceThreshold: 0.9, processSupervision: true }'
+          ]
+        }
+      ],
+
+      outputs: [
+        {
+          name: 'candidate',
+          type: 'T',
+          description: 'Final refined candidate',
+          required: true,
+          examples: []
+        },
+        {
+          name: 'confidence',
+          type: 'number',
+          description: 'Final confidence score (0-1)',
+          required: true,
+          examples: [0.92, 0.85, 0.78]
+        },
+        {
+          name: 'iterations',
+          type: 'number',
+          description: 'Total iterations performed',
+          required: true,
+          examples: [3, 5, 2]
+        },
+        {
+          name: 'converged',
+          type: 'boolean',
+          description: 'Whether confidence threshold was reached',
+          required: true,
+          examples: [true, false]
+        },
+        {
+          name: 'stopReason',
+          type: 'string',
+          description: 'Why the loop stopped',
+          required: true,
+          examples: ['confidence', 'maxIterations', 'budget', 'timeout', 'noImprovement']
+        },
+        {
+          name: 'processTrace',
+          type: 'ProcessStep[]',
+          description: 'Detailed process trace (if supervision enabled)',
+          required: false,
+          examples: []
+        }
+      ],
+
+      sideEffects: [
+        {
+          type: 'computation',
+          description: 'Executes generate/evaluate/refine functions multiple times',
+          reversible: false
+        },
+        {
+          type: 'cost',
+          description: 'May incur API costs based on iterations',
+          reversible: false
+        }
+      ],
+
+      idempotent: false
+    },
+
+    procedure: {
+      steps: [
+        {
+          order: 1,
+          action: 'generate-initial',
+          description: 'Generate initial candidate using generate function',
+          optional: false
+        },
+        {
+          order: 2,
+          action: 'evaluate-initial',
+          description: 'Evaluate initial candidate for quality and feedback',
+          optional: false
+        },
+        {
+          order: 3,
+          action: 'check-continuation',
+          description: 'Check if refinement should continue (self-audit)',
+          optional: false
+        },
+        {
+          order: 4,
+          action: 'refine-candidate',
+          description: 'Refine candidate based on feedback',
+          optional: true
+        },
+        {
+          order: 5,
+          action: 'evaluate-refined',
+          description: 'Evaluate refined candidate',
+          optional: true
+        },
+        {
+          order: 6,
+          action: 'repeat-or-finish',
+          description: 'Repeat steps 3-5 or finish if stopping criteria met',
+          optional: false
+        }
+      ],
+      parallelizable: false,
+      estimatedDuration: 'Variable (depends on iterations and function complexity)',
+      retryStrategy: {
+        maxAttempts: 1,
+        backoffMs: 0,
+        backoffMultiplier: 1,
+        maxBackoffMs: 0,
+        retryableErrors: []
+      }
+    },
+
+    examples: [
+      {
+        title: 'Refine Code Quality',
+        description: 'Iteratively improve code until it passes quality gates',
+        input: {
+          generate: 'async () => generateFunction(requirements)',
+          evaluate: 'async (code) => ({ score: runLinter(code), feedback: getIssues(code) })',
+          refine: 'async (code, fb) => applyFix(code, fb)',
+          config: { maxIterations: 5, confidenceThreshold: 0.9, processSupervision: true }
+        },
+        output: {
+          candidate: '// High-quality code...',
+          confidence: 0.92,
+          iterations: 3,
+          converged: true,
+          stopReason: 'confidence',
+          totalCost: 150
+        }
+      },
+      {
+        title: 'Architecture Design Refinement',
+        description: 'Refine architecture design based on requirements validation',
+        input: {
+          generate: 'async () => createInitialDesign()',
+          evaluate: 'async (design) => validateRequirements(design)',
+          refine: 'async (design, fb) => improveDesign(design, fb)',
+          config: { maxIterations: 3, confidenceThreshold: 0.85, costBudget: 500 }
+        },
+        output: {
+          candidate: '// Refined architecture...',
+          confidence: 0.87,
+          iterations: 2,
+          converged: true,
+          stopReason: 'confidence',
+          totalCost: 320
+        }
+      }
+    ],
+
+    errorHandling: [
+      {
+        errorCode: 'TIMEOUT',
+        description: 'Refinement loop exceeded timeout',
+        recoverable: false,
+        recovery: 'Return best candidate so far',
+        fallback: 'Return partial result with timeout indication'
+      },
+      {
+        errorCode: 'BUDGET_EXCEEDED',
+        description: 'Cost budget exceeded',
+        recoverable: false,
+        recovery: 'Stop and return best candidate',
+        fallback: 'Return result with budget exceeded warning'
+      },
+      {
+        errorCode: 'NO_IMPROVEMENT',
+        description: 'Multiple iterations without improvement',
+        recoverable: false,
+        recovery: 'Stop refinement and return current candidate',
+        fallback: 'Return result indicating plateau reached'
+      },
+      {
+        errorCode: 'GENERATION_FAILED',
+        description: 'Generate function failed',
+        recoverable: true,
+        recovery: 'Retry generation with backoff',
+        fallback: 'Throw error to caller'
+      },
+      {
+        errorCode: 'EVALUATION_FAILED',
+        description: 'Evaluate function failed',
+        recoverable: true,
+        recovery: 'Retry evaluation or skip iteration',
+        fallback: 'Use previous evaluation score'
+      }
+    ]
+  },
+
+  // Level 3: Resources
+  resources: [
+    {
+      id: 'refinement-patterns',
+      type: ResourceType.DOCUMENTATION,
+      name: 'Refinement Patterns Guide',
+      description: 'Common patterns for effective refinement loops',
+      path: 'resources/refinement-patterns.md',
+      size: 20480,
+      format: 'text/markdown',
+      loadStrategy: 'lazy'
+    },
+    {
+      id: 'evaluation-strategies',
+      type: ResourceType.CODE_TEMPLATE,
+      name: 'Evaluation Strategy Templates',
+      description: 'Templates for building effective evaluators',
+      path: 'resources/evaluation-strategies.ts',
+      size: 15360,
+      format: 'text/typescript',
+      loadStrategy: 'lazy'
+    },
+    {
+      id: 'refinement-examples',
+      type: ResourceType.EXAMPLES,
+      name: 'Refinement Loop Examples',
+      description: 'Real-world examples of refinement loops',
+      path: 'resources/refinement-examples/',
+      size: 30720,
+      format: 'text/typescript',
+      loadStrategy: 'on_request'
+    }
+  ],
+
+  // Metadata
+  metadata: {
+    author: 'Sartor Architecture Team',
+    created: '2025-12-06',
+    updated: '2025-12-06',
+    status: SkillStatus.STABLE,
+    tags: [
+      'refinement',
+      'iteration',
+      'quality',
+      'self-audit',
+      'confidence',
+      'process-supervision',
+      'cost-aware'
+    ],
+    category: SkillCategory.INFRASTRUCTURE,
+    modelCompatibility: [
+      {
+        modelId: 'claude-sonnet-4-5',
+        features: ['reasoning', 'iteration', 'self-audit'],
+        degradationStrategy: 'limited'
+      }
+    ],
+    estimatedTokens: {
+      level1: 50,
+      level2: 580,
+      level3Avg: 2000
+    }
+  },
+
+  // Performance
+  performance: {
+    averageExecutionMs: 0, // Variable based on functions
+    successRate: 0.95,
+    executionCount: 0,
+    failureCount: 0
+  },
+
+  // Memory integration
+  memory: {
+    stateRetention: 'session',
+    cacheStrategy: {
+      type: 'lru',
+      maxSize: 5242880, // 5MB
+      ttl: 1800000, // 30 minutes
+      evictionPolicy: 'age'
+    },
+    maxStateSize: 524288 // 512KB
+  }
+};
+
+/**
+ * Safety Research Workflow Skill (placeholder for export compatibility)
+ */
+export const SAFETY_RESEARCH_WORKFLOW: SkillManifest = {
+  id: 'safety-research-workflow',
+  name: 'Safety Research Workflow',
+  version: '1.0.0',
+  summary: 'Placeholder manifest - see safety-research-workflow.ts for implementation',
+  triggers: [],
+  tier: SkillTier.SPECIALIST,
+  dependencies: [],
+  conflicts: [],
+  alternatives: [],
+  instructions: {
+    description: 'See safety-research-workflow.ts',
+    useCases: [],
+    antiPatterns: [],
+    interface: {
+      inputs: [],
+      outputs: [],
+      sideEffects: [],
+      idempotent: true
+    },
+    procedure: {
+      steps: [],
+      parallelizable: false,
+      estimatedDuration: '0',
+      retryStrategy: {
+        maxAttempts: 1,
+        backoffMs: 0,
+        backoffMultiplier: 1,
+        maxBackoffMs: 0,
+        retryableErrors: []
+      }
+    },
+    examples: [],
+    errorHandling: []
+  },
+  resources: [],
+  metadata: {
+    author: 'Sartor Architecture Team',
+    created: '2025-12-06',
+    updated: '2025-12-06',
+    status: SkillStatus.STABLE,
+    tags: ['placeholder'],
+    category: SkillCategory.RESEARCH,
+    modelCompatibility: [],
+    estimatedTokens: { level1: 0, level2: 0, level3Avg: 0 }
+  },
+  performance: {
+    averageExecutionMs: 0,
+    successRate: 1,
+    executionCount: 0,
+    failureCount: 0
+  },
+  memory: {
+    stateRetention: 'session',
+    cacheStrategy: {
+      type: 'lru',
+      maxSize: 0,
+      ttl: 0,
+      evictionPolicy: 'age'
+    },
+    maxStateSize: 0
+  }
+};
+
+/**
+ * Self-Improvement Feedback Mechanism
+ *
+ * Learns from execution outcomes to extract patterns, refine strategies,
+ * and continuously improve performance through lifelong memory.
+ */
+export const SELF_IMPROVEMENT: SkillManifest = {
+  // Identity
+  id: 'self-improvement',
+  name: 'Self-Improvement Feedback Mechanism',
+  version: '1.0.0',
+
+  // Level 1: Summary (always loaded, ~50 tokens)
+  summary: 'Learns from every execution by extracting patterns from successful outcomes, maintaining lifelong memory of strategies, and continuously refining skills based on accumulated evidence and feedback.',
+
+  triggers: [
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'learn|improve|pattern|feedback|refine skill',
+      confidence: 0.75,
+      priority: 7
+    },
+    {
+      type: TriggerType.PATTERN,
+      pattern: /(learn from|extract patterns from) (execution|outcome|feedback)/i,
+      confidence: 0.85,
+      priority: 9
+    },
+    {
+      type: TriggerType.SEMANTIC,
+      pattern: 'need to learn from past executions and improve',
+      confidence: 0.8,
+      priority: 8
+    }
+  ],
+
+  tier: SkillTier.FOUNDATION,
+
+  // Relationships
+  dependencies: [
+    {
+      skillId: 'evidence-based-validation',
+      version: '^1.0.0',
+      required: true,
+      loadTiming: 'lazy'
+    }
+  ],
+
+  conflicts: [],
+
+  alternatives: [
+    'manual-improvement',
+    'static-patterns'
+  ],
+
+  // Level 2: Instructions (~500 tokens)
+  instructions: {
+    description: `Self-Improvement Feedback Mechanism implements a learning system that extracts patterns from
+    execution outcomes, maintains lifelong memory of learned strategies, and continuously refines skills based on
+    accumulated evidence. Based on Reflexion (verbal RL in episodic memory), SOAR (learning from search traces),
+    and ArcMemo (lifelong memory). Enables continuous improvement through evidence-based pattern extraction.`,
+
+    useCases: [
+      'Learning from successful task executions',
+      'Extracting reusable patterns from process traces',
+      'Refining skills based on accumulated feedback',
+      'Recommending strategies based on context',
+      'Maintaining lifelong learning across sessions',
+      'Identifying optimization opportunities',
+      'Building institutional knowledge'
+    ],
+
+    antiPatterns: [
+      'Learning from single data points',
+      'Applying patterns without context validation',
+      'Ignoring negative feedback',
+      'Over-generalizing from limited evidence',
+      'Failing to track confidence levels'
+    ],
+
+    interface: {
+      inputs: [
+        {
+          name: 'outcome',
+          type: 'ExecutionOutcome',
+          description: 'Record of task execution with process trace',
+          required: true,
+          examples: []
+        },
+        {
+          name: 'context',
+          type: 'string',
+          description: 'Context for pattern matching and recommendations',
+          required: false,
+          examples: []
+        },
+        {
+          name: 'feedback',
+          type: 'Feedback[]',
+          description: 'Feedback for skill refinement',
+          required: false,
+          examples: []
+        }
+      ],
+
+      outputs: [
+        {
+          name: 'patterns',
+          type: 'LearnedPattern[]',
+          description: 'Extracted patterns with evidence and success rates',
+          required: true,
+          examples: []
+        },
+        {
+          name: 'recommendations',
+          type: 'PatternRecommendation[]',
+          description: 'Context-relevant strategy recommendations',
+          required: false,
+          examples: []
+        },
+        {
+          name: 'updates',
+          type: 'SkillUpdate[]',
+          description: 'Proposed skill refinements',
+          required: false,
+          examples: []
+        }
+      ],
+
+      sideEffects: [
+        {
+          type: 'state',
+          description: 'Persists patterns to memory system',
+          reversible: false
+        }
+      ],
+
+      idempotent: false
+    },
+
+    procedure: {
+      steps: [
+        {
+          order: 1,
+          action: 'record-outcome',
+          description: 'Record execution outcome with complete process trace',
+          optional: false
+        },
+        {
+          order: 2,
+          action: 'extract-patterns',
+          description: 'Extract patterns from successful executions',
+          optional: false
+        },
+        {
+          order: 3,
+          action: 'validate-patterns',
+          description: 'Validate patterns against evidence and calculate confidence',
+          optional: false
+        },
+        {
+          order: 4,
+          action: 'persist-memory',
+          description: 'Persist patterns to lifelong memory system',
+          optional: false
+        },
+        {
+          order: 5,
+          action: 'generate-recommendations',
+          description: 'Generate context-relevant recommendations',
+          optional: true
+        }
+      ],
+      parallelizable: false,
+      estimatedDuration: '1-5 seconds',
+      retryStrategy: {
+        maxAttempts: 2,
+        backoffMs: 1000,
+        backoffMultiplier: 2,
+        maxBackoffMs: 5000,
+        retryableErrors: ['PERSISTENCE_ERROR']
+      }
+    },
+
+    examples: [
+      {
+        title: 'Learn from Successful Execution',
+        description: 'Extract patterns from successful task completion',
+        input: {
+          outcome: {
+            taskId: 'task_001',
+            skillUsed: 'code-analysis',
+            success: true,
+            processTrace: []
+          }
+        },
+        output: {
+          patterns: [
+            {
+              context: 'analyzing TypeScript code',
+              strategy: 'Start with type checking, then static analysis',
+              successRate: 0.9,
+              evidence: ['task_001', 'task_002']
+            }
+          ]
+        }
+      }
+    ],
+
+    errorHandling: [
+      {
+        errorCode: 'INSUFFICIENT_EVIDENCE',
+        description: 'Not enough data to extract reliable patterns',
+        recoverable: true,
+        recovery: 'Continue collecting outcomes until threshold reached',
+        fallback: 'Return empty pattern set with notification'
+      },
+      {
+        errorCode: 'PERSISTENCE_ERROR',
+        description: 'Failed to persist patterns to memory',
+        recoverable: true,
+        recovery: 'Retry with exponential backoff',
+        fallback: 'Keep patterns in-memory for current session'
+      }
+    ]
+  },
+
+  // Level 3: Resources
+  resources: [
+    {
+      id: 'pattern-library',
+      type: ResourceType.REFERENCE_DATA,
+      name: 'Learned Pattern Library',
+      description: 'Repository of learned patterns with evidence',
+      path: 'resources/patterns/',
+      size: 102400,
+      format: 'application/json',
+      loadStrategy: 'lazy'
+    }
+  ],
+
+  // Metadata
+  metadata: {
+    author: 'Sartor Architecture Team',
+    created: '2025-12-06',
+    updated: '2025-12-06',
+    status: SkillStatus.STABLE,
+    tags: [
+      'learning',
+      'improvement',
+      'patterns',
+      'feedback',
+      'memory',
+      'reflexion',
+      'lifelong-learning'
+    ],
+    category: SkillCategory.INFRASTRUCTURE,
+    modelCompatibility: [
+      {
+        modelId: 'claude-sonnet-4-5',
+        features: ['reasoning', 'pattern-recognition', 'learning'],
+        degradationStrategy: 'limited'
+      }
+    ],
+    estimatedTokens: {
+      level1: 52,
+      level2: 550,
+      level3Avg: 2000
+    }
+  },
+
+  // Performance
+  performance: {
+    averageExecutionMs: 2000,
+    successRate: 0.94,
+    executionCount: 0,
+    failureCount: 0
+  },
+
+  // Memory integration
+  memory: {
+    stateRetention: 'persistent',
+    cacheStrategy: {
+      type: 'lru',
+      maxSize: 20971520, // 20MB
+      ttl: 7200000, // 2 hours
+      evictionPolicy: 'age'
+    },
+    maxStateSize: 2097152 // 2MB
+  }
+};
+
+/**
+ * Roadmap Skill - Dynamic Implementation Plan Access
+ *
+ * Provides progressive access to the implementation roadmap,
+ * allowing any agent to query "What should I work on?"
+ */
+export const ROADMAP_SKILL: SkillManifest = {
+  // Identity
+  id: 'roadmap-skill',
+  name: 'Dynamic Roadmap Skill',
+  version: '1.0.0',
+
+  // Level 1: Summary (always loaded, ~50 tokens)
+  summary: 'Provides dynamic access to implementation roadmap. Any agent can query current phase, next tasks, and progress. Tracks task status automatically with hooks integration.',
+
+  triggers: [
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'what should I work on|next task|roadmap|current phase|implementation plan',
+      confidence: 0.9,
+      priority: 10
+    },
+    {
+      type: TriggerType.PATTERN,
+      pattern: /(what|which) (task|work|phase)/i,
+      confidence: 0.7,
+      priority: 7
+    },
+    {
+      type: TriggerType.SEMANTIC,
+      pattern: 'show me the implementation status',
+      confidence: 0.8,
+      priority: 8
+    }
+  ],
+
+  tier: SkillTier.FOUNDATION,
+
+  // Relationships
+  dependencies: [],
+  conflicts: [],
+  alternatives: ['static-documentation'],
+
+  // Level 2: Instructions (~400 tokens)
+  instructions: {
+    description: `Roadmap Skill provides dynamic, stateful access to the implementation plan defined in IMPLEMENTATION_ORDER.md.
+    It enables any subagent to query "What should I work on?" and receive context-aware task recommendations. The skill
+    tracks progress automatically through hooks integration, maintaining a persistent state file that records task completions,
+    agent assignments, and refinement loops. This ensures all agents have a shared understanding of project status and priorities.`,
+
+    useCases: [
+      'Agent queries "What should I work on next?"',
+      'Displaying current phase and progress at session start',
+      'Tracking task completions across multiple agents',
+      'Identifying blockers and unmet entry conditions',
+      'Generating progress reports for stakeholders',
+      'Coordinating parallel work across agent teams'
+    ],
+
+    antiPatterns: [
+      'Manually updating roadmap state without using the API',
+      'Skipping phases without meeting exit criteria',
+      'Marking tasks complete without validation',
+      'Ignoring entry conditions for phases'
+    ],
+
+    interface: {
+      inputs: [
+        {
+          name: 'query',
+          type: 'string',
+          description: 'Optional query type: "next-tasks" | "current-phase" | "summary" | "all-phases"',
+          required: false,
+          examples: ['next-tasks', 'current-phase', 'summary']
+        }
+      ],
+
+      outputs: [
+        {
+          name: 'summary',
+          type: 'string',
+          description: 'Quick roadmap summary (~100 tokens) for agent context',
+          required: true,
+          examples: ['📍 Current: Phase 4...']
+        },
+        {
+          name: 'nextTasks',
+          type: 'RoadmapTask[]',
+          description: 'Array of next tasks to work on',
+          required: false,
+          examples: []
+        },
+        {
+          name: 'currentPhase',
+          type: 'RoadmapPhase',
+          description: 'Current phase details',
+          required: false,
+          examples: []
+        }
+      ],
+
+      sideEffects: [
+        {
+          type: 'file-system',
+          description: 'Reads/writes roadmap state to .claude/roadmap-state.json',
+          reversible: true
+        }
+      ],
+
+      idempotent: false
+    },
+
+    procedure: {
+      steps: [
+        {
+          order: 1,
+          action: 'load-state',
+          description: 'Load current roadmap state from persistent file',
+          optional: false
+        },
+        {
+          order: 2,
+          action: 'determine-phase',
+          description: 'Identify current phase based on completion status',
+          optional: false
+        },
+        {
+          order: 3,
+          action: 'filter-tasks',
+          description: 'Filter pending tasks by priority and phase',
+          optional: false
+        },
+        {
+          order: 4,
+          action: 'generate-summary',
+          description: 'Create concise summary for agent context',
+          optional: false
+        }
+      ],
+      parallelizable: false,
+      estimatedDuration: '<50ms',
+      retryStrategy: {
+        maxAttempts: 3,
+        backoffMs: 100,
+        backoffMultiplier: 2,
+        maxBackoffMs: 1000,
+        retryableErrors: ['FILE_READ_ERROR']
+      }
+    },
+
+    examples: [
+      {
+        title: 'Query Next Tasks',
+        description: 'Agent asks what to work on',
+        input: {},
+        output: {
+          summary: '📍 Current: Phase 4 - Memory System Implementation...',
+          nextTasks: [
+            { id: 'task-4-1', description: 'Implement Hot Tier...' }
+          ]
+        }
+      }
+    ],
+
+    errorHandling: [
+      {
+        errorCode: 'STATE_FILE_NOT_FOUND',
+        description: 'Roadmap state file does not exist',
+        recoverable: true,
+        recovery: 'Initialize default state from ROADMAP_PHASES',
+        fallback: 'Use fallback static roadmap'
+      },
+      {
+        errorCode: 'INVALID_STATE',
+        description: 'State file is corrupted',
+        recoverable: true,
+        recovery: 'Reinitialize from defaults',
+        fallback: 'Log error and use defaults'
+      }
+    ]
+  },
+
+  // Level 3: Resources
+  resources: [
+    {
+      id: 'implementation-order',
+      type: ResourceType.DOCUMENTATION,
+      name: 'Implementation Order Document',
+      description: 'Source of truth for roadmap phases and tasks',
+      path: '/home/user/Sartor-claude-network/IMPLEMENTATION_ORDER.md',
+      size: 36000,
+      format: 'text/markdown',
+      loadStrategy: 'eager'
+    }
+  ],
+
+  // Metadata
+  metadata: {
+    author: 'Sartor Architecture Team',
+    created: '2025-12-06',
+    updated: '2025-12-06',
+    status: SkillStatus.STABLE,
+    tags: [
+      'roadmap',
+      'planning',
+      'coordination',
+      'progress-tracking',
+      'task-management'
+    ],
+    category: SkillCategory.INFRASTRUCTURE,
+    modelCompatibility: [
+      {
+        modelId: 'claude-sonnet-4-5',
+        features: ['context-awareness', 'task-coordination'],
+        degradationStrategy: 'full'
+      }
+    ],
+    estimatedTokens: {
+      level1: 35,
+      level2: 400,
+      level3Avg: 1000
+    }
+  },
+
+  // Performance
+  performance: {
+    averageExecutionMs: 25,
+    successRate: 0.99,
+    executionCount: 0,
+    failureCount: 0
+  },
+
+  // Memory integration
+  memory: {
+    stateRetention: 'persistent',
+    cacheStrategy: {
+      type: 'lru',
+      maxSize: 102400, // 100KB
+      ttl: 300000, // 5 minutes
+      evictionPolicy: 'age'
+    },
+    maxStateSize: 51200 // 50KB
+  }
+};
+
+/**
  * All skill manifests
  */
 export const SKILL_MANIFESTS: SkillManifest[] = [
   EVIDENCE_BASED_VALIDATION,
   EVIDENCE_BASED_ENGINEERING,
   AGENT_COMMUNICATION,
-  MULTI_AGENT_ORCHESTRATION
+  MULTI_AGENT_ORCHESTRATION,
+  MCP_SERVER_DEVELOPMENT,
+  DISTRIBUTED_SYSTEMS_DEBUGGING,
+  REFINEMENT_LOOP,
+  SAFETY_RESEARCH_WORKFLOW,
+  SELF_IMPROVEMENT,
+  ROADMAP_SKILL
 ];
 
 /**

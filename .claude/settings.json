@@ -1,18 +1,48 @@
 {
   "$schema": "https://anthropic.com/schemas/claude-code/settings-v1.json",
   "hooks": {
+    "sessionStart": {
+      "script": "/home/user/Sartor-claude-network/.claude/hooks/inject-roadmap.sh",
+      "description": "Inject roadmap context into every agent session for awareness",
+      "enabled": true
+    },
     "postToolUse": {
-      "Edit": {
-        "script": "/home/user/Sartor-claude-network/.claude/hooks/quality-check.sh",
-        "args": ["${file_path}"],
-        "description": "Validate TypeScript compilation and evidence-based principles after edits",
-        "enabled": true,
-        "blocking": false
-      },
-      "Write": {
-        "script": "/home/user/Sartor-claude-network/.claude/hooks/quality-check.sh",
-        "args": ["${file_path}"],
-        "description": "Validate TypeScript compilation and evidence-based principles after writes",
+      "Edit": [
+        {
+          "script": "/home/user/Sartor-claude-network/.claude/hooks/quality-check.sh",
+          "args": ["${file_path}"],
+          "description": "Validate TypeScript compilation and evidence-based principles after edits",
+          "enabled": true,
+          "blocking": false
+        },
+        {
+          "script": "/home/user/Sartor-claude-network/.claude/hooks/record-completion.sh",
+          "args": ["Edit", "${file_path}"],
+          "description": "Detect and record task completion for self-improvement",
+          "enabled": true,
+          "blocking": false
+        }
+      ],
+      "Write": [
+        {
+          "script": "/home/user/Sartor-claude-network/.claude/hooks/quality-check.sh",
+          "args": ["${file_path}"],
+          "description": "Validate TypeScript compilation and evidence-based principles after writes",
+          "enabled": true,
+          "blocking": false
+        },
+        {
+          "script": "/home/user/Sartor-claude-network/.claude/hooks/record-completion.sh",
+          "args": ["Write", "${file_path}"],
+          "description": "Detect and record task completion for self-improvement",
+          "enabled": true,
+          "blocking": false
+        }
+      ],
+      "Bash": {
+        "script": "/home/user/Sartor-claude-network/.claude/hooks/record-completion.sh",
+        "args": ["Bash", "${command}"],
+        "description": "Detect and record task completion from bash commands",
         "enabled": true,
         "blocking": false
       }
@@ -29,8 +59,8 @@
   },
   "enforcementLevel": "warn",
   "metadata": {
-    "version": "1.0.0",
-    "description": "Evidence-Based Validation hooks for Sartor Claude Network",
+    "version": "2.0.0",
+    "description": "Evidence-Based Validation + Roadmap Context hooks for Sartor Claude Network",
     "principles": [
       "No metric fabrication",
       "Measurement over opinion",
@@ -39,6 +69,13 @@
       "Language precision"
     ],
     "created": "2025-12-06",
-    "lastModified": "2025-12-06"
+    "lastModified": "2025-12-06",
+    "features": [
+      "Automatic roadmap context injection at session start",
+      "Task completion detection and recording",
+      "Self-improvement learning capture",
+      "Quality enforcement on file operations",
+      "Safety checks on bash commands"
+    ]
   }
 }
