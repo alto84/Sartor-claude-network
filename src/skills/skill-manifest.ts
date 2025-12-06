@@ -1,9 +1,11 @@
 /**
- * Skill Manifests - Evidence-Based Skills
+ * Skill Manifests - Evidence-Based Skills & Agent Coordination
  *
  * Defines manifests for:
  * - Evidence-Based Validation
  * - Evidence-Based Engineering
+ * - Agent Communication System
+ * - Multi-Agent Orchestration
  *
  * @version 1.0.0
  * @date 2025-12-06
@@ -722,11 +724,836 @@ export const EVIDENCE_BASED_ENGINEERING: SkillManifest = {
 };
 
 /**
+ * Agent Communication System Skill
+ *
+ * Handles inter-agent messaging with quality gates,
+ * delivery confirmation, and failure recovery.
+ */
+export const AGENT_COMMUNICATION: SkillManifest = {
+  // Identity
+  id: 'agent-communication',
+  name: 'Agent Communication System',
+  version: '1.0.0',
+
+  // Level 1: Summary (always loaded, ~50 tokens)
+  summary: 'Handles inter-agent messaging with quality gates, delivery confirmation, and failure recovery. Ensures reliable communication between specialized agents with validation and retry mechanisms.',
+
+  triggers: [
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'message|communicate|send|broadcast|channel',
+      confidence: 0.8,
+      priority: 9
+    },
+    {
+      type: TriggerType.PATTERN,
+      pattern: /(send|broadcast|communicate) (to|with) (agent|worker|specialist)/i,
+      confidence: 0.85,
+      priority: 10
+    },
+    {
+      type: TriggerType.SEMANTIC,
+      pattern: 'need to communicate with another agent',
+      confidence: 0.75,
+      priority: 8
+    },
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'inter-agent|agent-to-agent|message queue|event bus',
+      confidence: 0.8,
+      priority: 7
+    }
+  ],
+
+  tier: SkillTier.FOUNDATION,
+
+  // Relationships
+  dependencies: [
+    {
+      skillId: 'evidence-based-validation',
+      version: '^1.0.0',
+      required: true,
+      loadTiming: 'eager'
+    }
+  ],
+
+  conflicts: [],
+
+  alternatives: [
+    'direct-invocation',
+    'event-driven-messaging'
+  ],
+
+  // Level 2: Instructions (~500 tokens)
+  instructions: {
+    description: `Agent Communication System provides reliable, validated messaging between specialized agents.
+    It implements quality gates to ensure messages are well-formed, delivery confirmation to guarantee receipt,
+    and failure recovery mechanisms to handle network issues or agent unavailability. All messages are validated
+    against schemas before transmission, ensuring type safety and preventing downstream errors.`,
+
+    useCases: [
+      'Sending tasks from orchestrator to worker agents',
+      'Broadcasting status updates to multiple agents',
+      'Requesting specialized processing from expert agents',
+      'Coordinating multi-agent workflows',
+      'Publishing events to subscribed agents',
+      'Implementing request-response patterns',
+      'Managing agent lifecycle notifications'
+    ],
+
+    antiPatterns: [
+      'Using for synchronous blocking calls (use direct invocation)',
+      'Sending unvalidated or unstructured messages',
+      'Broadcasting to all agents without filtering',
+      'Ignoring delivery confirmation or error responses',
+      'Creating circular message dependencies'
+    ],
+
+    interface: {
+      inputs: [
+        {
+          name: 'message',
+          type: 'AgentMessage',
+          description: 'The message to send with metadata and payload',
+          required: true,
+          examples: [
+            '{ type: "TASK", to: "code-analyzer", payload: {...}, priority: "high" }'
+          ]
+        },
+        {
+          name: 'deliveryMode',
+          type: '"unicast" | "multicast" | "broadcast"',
+          description: 'Message delivery mode',
+          required: false,
+          default: 'unicast',
+          examples: ['unicast', 'multicast', 'broadcast']
+        },
+        {
+          name: 'reliability',
+          type: '"at-most-once" | "at-least-once" | "exactly-once"',
+          description: 'Delivery guarantee level',
+          required: false,
+          default: 'at-least-once',
+          examples: ['at-most-once', 'at-least-once', 'exactly-once']
+        },
+        {
+          name: 'timeout',
+          type: 'number',
+          description: 'Timeout in milliseconds for delivery confirmation',
+          required: false,
+          default: 5000,
+          examples: [5000, 10000, 30000]
+        }
+      ],
+
+      outputs: [
+        {
+          name: 'messageId',
+          type: 'string',
+          description: 'Unique identifier for the sent message',
+          required: true,
+          examples: ['msg_abc123', 'msg_xyz789']
+        },
+        {
+          name: 'delivered',
+          type: 'boolean',
+          description: 'Whether message was successfully delivered',
+          required: true,
+          examples: [true, false]
+        },
+        {
+          name: 'confirmations',
+          type: 'DeliveryConfirmation[]',
+          description: 'Delivery confirmations from recipient agents',
+          required: true,
+          examples: []
+        },
+        {
+          name: 'errors',
+          type: 'MessageError[]',
+          description: 'Any errors encountered during delivery',
+          required: false,
+          examples: []
+        }
+      ],
+
+      sideEffects: [
+        {
+          type: 'messaging',
+          description: 'Sends messages to other agents via message bus',
+          reversible: false
+        },
+        {
+          type: 'state',
+          description: 'Updates message delivery tracking state',
+          reversible: false
+        }
+      ],
+
+      idempotent: false
+    },
+
+    procedure: {
+      steps: [
+        {
+          order: 1,
+          action: 'validate-message',
+          description: 'Validate message format, schema, and required fields',
+          requiredSkills: ['evidence-based-validation'],
+          optional: false
+        },
+        {
+          order: 2,
+          action: 'assign-message-id',
+          description: 'Assign unique message ID and timestamp',
+          optional: false
+        },
+        {
+          order: 3,
+          action: 'apply-quality-gates',
+          description: 'Check message quality gates (size, priority, rate limits)',
+          optional: false
+        },
+        {
+          order: 4,
+          action: 'route-message',
+          description: 'Route message to appropriate channel or recipient(s)',
+          optional: false
+        },
+        {
+          order: 5,
+          action: 'wait-for-confirmation',
+          description: 'Wait for delivery confirmation within timeout',
+          optional: false
+        },
+        {
+          order: 6,
+          action: 'handle-failures',
+          description: 'Apply retry logic or failure recovery if needed',
+          optional: true
+        }
+      ],
+      parallelizable: true,
+      estimatedDuration: '100-500 milliseconds',
+      retryStrategy: {
+        maxAttempts: 3,
+        backoffMs: 500,
+        backoffMultiplier: 2,
+        maxBackoffMs: 5000,
+        retryableErrors: ['TIMEOUT', 'NETWORK_ERROR', 'AGENT_BUSY']
+      }
+    },
+
+    examples: [
+      {
+        title: 'Send Task to Worker',
+        description: 'Send analysis task to code analyzer agent',
+        input: {
+          message: {
+            type: 'TASK',
+            to: 'code-analyzer',
+            from: 'orchestrator',
+            payload: {
+              action: 'analyze',
+              files: ['/src/app.ts']
+            },
+            priority: 'high'
+          },
+          deliveryMode: 'unicast',
+          reliability: 'at-least-once',
+          timeout: 10000
+        },
+        output: {
+          messageId: 'msg_task_001',
+          delivered: true,
+          confirmations: [
+            {
+              agentId: 'code-analyzer',
+              timestamp: '2025-12-06T10:00:01Z',
+              status: 'RECEIVED'
+            }
+          ],
+          errors: []
+        }
+      },
+      {
+        title: 'Broadcast Status Update',
+        description: 'Broadcast completion status to all interested agents',
+        input: {
+          message: {
+            type: 'STATUS_UPDATE',
+            from: 'build-agent',
+            payload: {
+              event: 'BUILD_COMPLETE',
+              buildId: 'build_123',
+              status: 'success'
+            }
+          },
+          deliveryMode: 'broadcast',
+          reliability: 'at-most-once'
+        },
+        output: {
+          messageId: 'msg_broadcast_001',
+          delivered: true,
+          confirmations: [
+            { agentId: 'monitoring', status: 'RECEIVED' },
+            { agentId: 'deployment', status: 'RECEIVED' }
+          ],
+          errors: []
+        }
+      }
+    ],
+
+    errorHandling: [
+      {
+        errorCode: 'MESSAGE_VALIDATION_FAILED',
+        description: 'Message failed schema or quality validation',
+        recoverable: false,
+        recovery: 'Fix message format and retry',
+        fallback: 'Return validation errors to sender'
+      },
+      {
+        errorCode: 'AGENT_NOT_FOUND',
+        description: 'Target agent does not exist or is unavailable',
+        recoverable: true,
+        recovery: 'Retry after backoff or route to alternative agent',
+        fallback: 'Return error to sender with alternative suggestions'
+      },
+      {
+        errorCode: 'DELIVERY_TIMEOUT',
+        description: 'No confirmation received within timeout period',
+        recoverable: true,
+        recovery: 'Retry with exponential backoff',
+        fallback: 'Mark as failed and notify sender'
+      },
+      {
+        errorCode: 'MESSAGE_TOO_LARGE',
+        description: 'Message exceeds maximum size limits',
+        recoverable: false,
+        recovery: 'Split message into chunks or use reference pattern',
+        fallback: 'Return size limit error to sender'
+      }
+    ]
+  },
+
+  // Level 3: Resources
+  resources: [
+    {
+      id: 'message-schemas',
+      type: ResourceType.SCHEMA,
+      name: 'Message Type Schemas',
+      description: 'JSON schemas for all supported message types',
+      path: 'resources/message-schemas.json',
+      size: 15360,
+      format: 'application/json',
+      loadStrategy: 'immediate'
+    },
+    {
+      id: 'routing-rules',
+      type: ResourceType.REFERENCE_DATA,
+      name: 'Message Routing Rules',
+      description: 'Rules for routing messages to appropriate agents',
+      path: 'resources/routing-rules.json',
+      size: 8192,
+      format: 'application/json',
+      loadStrategy: 'immediate'
+    },
+    {
+      id: 'delivery-patterns',
+      type: ResourceType.DOCUMENTATION,
+      name: 'Delivery Pattern Examples',
+      description: 'Common messaging patterns and best practices',
+      path: 'resources/delivery-patterns.md',
+      size: 20480,
+      format: 'text/markdown',
+      loadStrategy: 'lazy'
+    }
+  ],
+
+  // Metadata
+  metadata: {
+    author: 'Sartor Architecture Team',
+    created: '2025-12-06',
+    updated: '2025-12-06',
+    status: SkillStatus.STABLE,
+    tags: [
+      'communication',
+      'messaging',
+      'agents',
+      'reliability',
+      'coordination'
+    ],
+    category: SkillCategory.INFRASTRUCTURE,
+    modelCompatibility: [
+      {
+        modelId: 'claude-sonnet-4-5',
+        features: ['messaging', 'validation', 'error-handling'],
+        degradationStrategy: 'limited'
+      }
+    ],
+    estimatedTokens: {
+      level1: 52,
+      level2: 540,
+      level3Avg: 1500
+    }
+  },
+
+  // Performance
+  performance: {
+    averageExecutionMs: 250,
+    successRate: 0.96,
+    executionCount: 0,
+    failureCount: 0
+  },
+
+  // Memory integration
+  memory: {
+    stateRetention: 'session',
+    cacheStrategy: {
+      type: 'lru',
+      maxSize: 5242880, // 5MB
+      ttl: 1800000, // 30 minutes
+      evictionPolicy: 'age'
+    },
+    maxStateSize: 524288 // 512KB
+  }
+};
+
+/**
+ * Multi-Agent Orchestration Skill
+ *
+ * Coordinates specialized workers using intent-based delegation
+ * with result synthesis and failure recovery.
+ */
+export const MULTI_AGENT_ORCHESTRATION: SkillManifest = {
+  // Identity
+  id: 'multi-agent-orchestration',
+  name: 'Multi-Agent Orchestration',
+  version: '1.0.0',
+
+  // Level 1: Summary (always loaded, ~50 tokens)
+  summary: 'Coordinates specialized workers using intent-based delegation with result synthesis. Manages parallel execution, dependency resolution, and failure recovery across multiple agents.',
+
+  triggers: [
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'orchestrate|delegate|coordinate|parallelize|synthesize',
+      confidence: 0.85,
+      priority: 10
+    },
+    {
+      type: TriggerType.PATTERN,
+      pattern: /(coordinate|orchestrate|manage) (multiple|several|parallel) (agents|workers|tasks)/i,
+      confidence: 0.9,
+      priority: 11
+    },
+    {
+      type: TriggerType.SEMANTIC,
+      pattern: 'need to coordinate work across specialized agents',
+      confidence: 0.8,
+      priority: 9
+    },
+    {
+      type: TriggerType.KEYWORD,
+      pattern: 'multi-agent|worker pool|task distribution|result aggregation',
+      confidence: 0.75,
+      priority: 8
+    }
+  ],
+
+  tier: SkillTier.INFRASTRUCTURE,
+
+  // Relationships
+  dependencies: [
+    {
+      skillId: 'agent-communication',
+      version: '^1.0.0',
+      required: true,
+      loadTiming: 'eager'
+    },
+    {
+      skillId: 'evidence-based-validation',
+      version: '^1.0.0',
+      required: true,
+      loadTiming: 'eager'
+    }
+  ],
+
+  conflicts: [],
+
+  alternatives: [
+    'sequential-processing',
+    'monolithic-agent'
+  ],
+
+  // Level 2: Instructions (~500 tokens)
+  instructions: {
+    description: `Multi-Agent Orchestration coordinates specialized worker agents to accomplish complex tasks
+    that require diverse expertise. It uses intent-based delegation to assign work to the most appropriate agents,
+    manages parallel execution with dependency resolution, synthesizes results from multiple workers, and implements
+    failure recovery to handle agent errors or timeouts. This enables scalable, resilient multi-agent systems.`,
+
+    useCases: [
+      'Coordinating code analysis across multiple file types',
+      'Parallelizing test execution across test suites',
+      'Distributing build tasks to specialized build agents',
+      'Orchestrating multi-step workflows with dependencies',
+      'Managing data processing pipelines with parallel stages',
+      'Coordinating research across multiple data sources',
+      'Synthesizing reports from multiple specialist agents'
+    ],
+
+    antiPatterns: [
+      'Using for simple, single-agent tasks',
+      'Over-fragmenting tasks into too many micro-agents',
+      'Creating tight coupling between orchestrator and workers',
+      'Ignoring agent failures or partial results',
+      'Failing to handle dependency cycles in task graphs'
+    ],
+
+    interface: {
+      inputs: [
+        {
+          name: 'intent',
+          type: 'string',
+          description: 'High-level intent describing the goal to accomplish',
+          required: true,
+          examples: [
+            'Analyze entire codebase for security vulnerabilities',
+            'Run all tests and generate coverage report'
+          ]
+        },
+        {
+          name: 'tasks',
+          type: 'Task[]',
+          description: 'Decomposed tasks with dependencies and requirements',
+          required: false,
+          examples: []
+        },
+        {
+          name: 'constraints',
+          type: 'object',
+          description: 'Constraints (timeout, max parallelism, resource limits)',
+          required: false,
+          examples: [
+            '{ maxParallelism: 5, timeout: 60000, maxMemory: "2GB" }'
+          ]
+        },
+        {
+          name: 'synthesisStrategy',
+          type: '"merge" | "aggregate" | "reduce" | "custom"',
+          description: 'Strategy for combining worker results',
+          required: false,
+          default: 'merge',
+          examples: ['merge', 'aggregate', 'reduce']
+        }
+      ],
+
+      outputs: [
+        {
+          name: 'result',
+          type: 'SynthesizedResult',
+          description: 'Synthesized result from all workers',
+          required: true,
+          examples: []
+        },
+        {
+          name: 'workerResults',
+          type: 'WorkerResult[]',
+          description: 'Individual results from each worker',
+          required: true,
+          examples: []
+        },
+        {
+          name: 'execution',
+          type: 'ExecutionMetrics',
+          description: 'Execution metrics (duration, parallelism, failures)',
+          required: true,
+          examples: []
+        },
+        {
+          name: 'errors',
+          type: 'OrchestratorError[]',
+          description: 'Errors encountered during orchestration',
+          required: false,
+          examples: []
+        }
+      ],
+
+      sideEffects: [
+        {
+          type: 'agent-invocation',
+          description: 'Invokes multiple worker agents',
+          reversible: false
+        },
+        {
+          type: 'state',
+          description: 'Updates orchestration state and task tracking',
+          reversible: false
+        }
+      ],
+
+      idempotent: false
+    },
+
+    procedure: {
+      steps: [
+        {
+          order: 1,
+          action: 'decompose-intent',
+          description: 'Decompose intent into concrete, assignable tasks',
+          optional: false
+        },
+        {
+          order: 2,
+          action: 'build-task-graph',
+          description: 'Build task dependency graph and identify parallelizable tasks',
+          optional: false
+        },
+        {
+          order: 3,
+          action: 'assign-workers',
+          description: 'Assign tasks to appropriate specialized workers',
+          optional: false
+        },
+        {
+          order: 4,
+          action: 'execute-tasks',
+          description: 'Execute tasks respecting dependencies and parallelism limits',
+          requiredSkills: ['agent-communication'],
+          optional: false
+        },
+        {
+          order: 5,
+          action: 'monitor-progress',
+          description: 'Monitor worker progress and handle failures',
+          optional: false
+        },
+        {
+          order: 6,
+          action: 'synthesize-results',
+          description: 'Synthesize worker results using specified strategy',
+          requiredSkills: ['evidence-based-validation'],
+          optional: false
+        }
+      ],
+      parallelizable: true,
+      estimatedDuration: '5-60 seconds',
+      retryStrategy: {
+        maxAttempts: 2,
+        backoffMs: 1000,
+        backoffMultiplier: 2,
+        maxBackoffMs: 10000,
+        retryableErrors: ['WORKER_TIMEOUT', 'WORKER_FAILURE', 'PARTIAL_FAILURE']
+      }
+    },
+
+    examples: [
+      {
+        title: 'Parallel Code Analysis',
+        description: 'Analyze codebase using specialized analyzers',
+        input: {
+          intent: 'Analyze codebase for quality, security, and performance issues',
+          tasks: [
+            { id: 'lint', worker: 'linter', input: 'all-files' },
+            { id: 'security', worker: 'security-scanner', input: 'all-files' },
+            { id: 'perf', worker: 'performance-analyzer', input: 'all-files', dependencies: [] }
+          ],
+          constraints: {
+            maxParallelism: 3,
+            timeout: 60000
+          },
+          synthesisStrategy: 'merge'
+        },
+        output: {
+          result: {
+            issues: [],
+            summary: 'Found 5 lint issues, 2 security vulnerabilities, 3 performance problems'
+          },
+          workerResults: [
+            { worker: 'linter', status: 'success', issues: 5 },
+            { worker: 'security-scanner', status: 'success', issues: 2 },
+            { worker: 'performance-analyzer', status: 'success', issues: 3 }
+          ],
+          execution: {
+            duration: 12500,
+            parallelism: 3,
+            failures: 0
+          },
+          errors: []
+        }
+      },
+      {
+        title: 'Multi-Stage Pipeline',
+        description: 'Execute build, test, and deploy pipeline',
+        input: {
+          intent: 'Build, test, and deploy application',
+          tasks: [
+            { id: 'build', worker: 'builder' },
+            { id: 'unit-test', worker: 'test-runner', dependencies: ['build'] },
+            { id: 'integration-test', worker: 'test-runner', dependencies: ['build'] },
+            { id: 'deploy', worker: 'deployer', dependencies: ['unit-test', 'integration-test'] }
+          ],
+          synthesisStrategy: 'aggregate'
+        },
+        output: {
+          result: {
+            deployed: true,
+            version: 'v1.2.3',
+            tests: { passed: 145, failed: 0 }
+          },
+          workerResults: [],
+          execution: {
+            duration: 45000,
+            parallelism: 2,
+            failures: 0
+          },
+          errors: []
+        }
+      }
+    ],
+
+    errorHandling: [
+      {
+        errorCode: 'WORKER_NOT_AVAILABLE',
+        description: 'Required worker agent is not available',
+        recoverable: true,
+        recovery: 'Assign task to alternative worker or queue for retry',
+        fallback: 'Return partial results with missing worker notification'
+      },
+      {
+        errorCode: 'DEPENDENCY_CYCLE',
+        description: 'Task dependencies contain a cycle',
+        recoverable: false,
+        recovery: 'Break cycle by removing or reordering dependencies',
+        fallback: 'Return error with cycle details'
+      },
+      {
+        errorCode: 'WORKER_TIMEOUT',
+        description: 'Worker exceeded timeout limit',
+        recoverable: true,
+        recovery: 'Retry with different worker or increased timeout',
+        fallback: 'Continue with partial results, mark task as failed'
+      },
+      {
+        errorCode: 'SYNTHESIS_FAILED',
+        description: 'Unable to synthesize results from workers',
+        recoverable: true,
+        recovery: 'Try alternative synthesis strategy',
+        fallback: 'Return raw worker results without synthesis'
+      },
+      {
+        errorCode: 'PARTIAL_FAILURE',
+        description: 'Some workers succeeded, others failed',
+        recoverable: true,
+        recovery: 'Retry failed workers or continue with partial results',
+        fallback: 'Return successful results with failure notifications'
+      }
+    ]
+  },
+
+  // Level 3: Resources
+  resources: [
+    {
+      id: 'worker-registry',
+      type: ResourceType.REFERENCE_DATA,
+      name: 'Worker Agent Registry',
+      description: 'Registry of available worker agents and their capabilities',
+      path: 'resources/worker-registry.json',
+      size: 20480,
+      format: 'application/json',
+      loadStrategy: 'immediate'
+    },
+    {
+      id: 'delegation-patterns',
+      type: ResourceType.DOCUMENTATION,
+      name: 'Delegation Pattern Library',
+      description: 'Common delegation and orchestration patterns',
+      path: 'resources/delegation-patterns.md',
+      size: 30720,
+      format: 'text/markdown',
+      loadStrategy: 'lazy'
+    },
+    {
+      id: 'task-graph-engine',
+      type: ResourceType.CODE_TEMPLATE,
+      name: 'Task Graph Engine',
+      description: 'Engine for building and executing task dependency graphs',
+      path: 'resources/task-graph-engine.ts',
+      size: 51200,
+      format: 'text/typescript',
+      loadStrategy: 'lazy'
+    },
+    {
+      id: 'synthesis-strategies',
+      type: ResourceType.CODE_TEMPLATE,
+      name: 'Result Synthesis Strategies',
+      description: 'Strategies for combining results from multiple workers',
+      path: 'resources/synthesis-strategies.ts',
+      size: 25600,
+      format: 'text/typescript',
+      loadStrategy: 'lazy'
+    }
+  ],
+
+  // Metadata
+  metadata: {
+    author: 'Sartor Architecture Team',
+    created: '2025-12-06',
+    updated: '2025-12-06',
+    status: SkillStatus.STABLE,
+    tags: [
+      'orchestration',
+      'coordination',
+      'multi-agent',
+      'parallel',
+      'delegation',
+      'synthesis'
+    ],
+    category: SkillCategory.INFRASTRUCTURE,
+    modelCompatibility: [
+      {
+        modelId: 'claude-sonnet-4-5',
+        features: ['reasoning', 'coordination', 'parallel-processing'],
+        degradationStrategy: 'limited'
+      }
+    ],
+    estimatedTokens: {
+      level1: 51,
+      level2: 580,
+      level3Avg: 4500
+    }
+  },
+
+  // Performance
+  performance: {
+    averageExecutionMs: 15000,
+    successRate: 0.91,
+    executionCount: 0,
+    failureCount: 0
+  },
+
+  // Memory integration
+  memory: {
+    stateRetention: 'session',
+    cacheStrategy: {
+      type: 'lru',
+      maxSize: 15728640, // 15MB
+      ttl: 3600000, // 1 hour
+      evictionPolicy: 'age'
+    },
+    maxStateSize: 1048576 // 1MB
+  }
+};
+
+/**
  * All skill manifests
  */
 export const SKILL_MANIFESTS: SkillManifest[] = [
   EVIDENCE_BASED_VALIDATION,
-  EVIDENCE_BASED_ENGINEERING
+  EVIDENCE_BASED_ENGINEERING,
+  AGENT_COMMUNICATION,
+  MULTI_AGENT_ORCHESTRATION
 ];
 
 /**

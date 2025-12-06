@@ -46,3 +46,49 @@ export {
   type ErrorHandlingAnalysis,
   type DocumentationAnalysis
 } from './evidence-based-engineering';
+
+// Agent Communication System Skill
+export {
+  AgentCommunicationSystem,
+  createAgentCommunicationSystem,
+  createMessage,
+  formatMessageResult,
+  formatBroadcastResult,
+  type AgentMessage,
+  type MessageMetadata,
+  type MessageResult,
+  type BroadcastResult,
+  type DeliveryStatus,
+  type ErrorDetails,
+  type DeliveryMetrics,
+  type BroadcastMetrics,
+  type ValidationResult as MessageValidationResult,
+  type ValidationError as MessageValidationError,
+  type MessageChannel,
+  type QueryOptions,
+  type CircuitBreakerState,
+} from './agent-communication';
+
+export { default as agentCommunication } from './agent-communication';
+
+// Multi-Agent Orchestration Skill
+export {
+  createOrchestrator,
+  createMockWorker,
+  createTask,
+  MultiAgentOrchestrator,
+  DelegationPattern,
+  type Orchestrator,
+  type Task,
+  type WorkerStatus,
+  type WorkerMetrics,
+  type Worker,
+  type TaskResult,
+  type DelegationResult,
+  type WorkerAssignment,
+  type SynthesizedOutput,
+  type Conflict,
+  type RecoveryAction,
+  type OrchestratorConfig,
+  type DelegationStrategy,
+} from './multi-agent-orchestration';
