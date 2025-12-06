@@ -1,0 +1,62 @@
+{
+  "firebaseConfig": {
+    "apiKey": "YOUR_API_KEY",
+    "authDomain": "sartor-memories.firebaseapp.com",
+    "databaseURL": "https://sartor-memories-default-rtdb.firebaseio.com",
+    "projectId": "sartor-memories",
+    "storageBucket": "sartor-memories.appspot.com",
+    "messagingSenderId": "123456789",
+    "appId": "1:123456789:web:abcdef"
+  },
+
+  "realtimeDatabase": {
+    "databaseURL": "https://sartor-memories-default-rtdb.firebaseio.com",
+    "persistence": {
+      "enabled": true,
+      "cacheSizeBytes": 10485760
+    },
+    "ttlPolicies": {
+      "sessions": {
+        "defaultTTL": 86400000,
+        "maxTTL": 604800000,
+        "cleanupInterval": 3600000
+      },
+      "memories": {
+        "defaultTTL": 21600000,
+        "accessBasedExtension": 10800000,
+        "maxTTL": 86400000,
+        "demotionThreshold": 5,
+        "sizeLimit": 104857600
+      },
+      "cache": {
+        "queryTTL": 3600000,
+        "aggregationTTL": 1800000,
+        "maxEntries": 1000
+      }
+    }
+  },
+
+  "firestore": {
+    "settings": {
+      "cacheSizeBytes": 41943040,
+      "experimentalForceLongPolling": false,
+      "experimentalAutoDetectLongPolling": true,
+      "ignoreUndefinedProperties": false
+    },
+    "collections": {
+      "memories": {
+        "maxDocumentSize": 1048576,
+        "maxBatchSize": 500
+      },
+      "embeddings": {
+        "maxDocumentSize": 1048576,
+        "compression": true
+      }
+    }
+  },
+
+  "storage": {
+    "maxUploadSizeBytes": 5242880,
+    "allowedFileTypes": ["image/jpeg", "image/png", "application/pdf"]
+  }
+}

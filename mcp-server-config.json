@@ -1,0 +1,483 @@
+{
+  "name": "memory-system-mcp-server",
+  "version": "1.0.0",
+  "description": "Multi-tier AI memory system MCP server implementation",
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true
+  },
+  "tools": [
+    {
+      "name": "store_episodic_memory",
+      "description": "Store a new episodic memory (conversation episode)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Title or summary of the episode"
+          },
+          "description": {
+            "type": "string",
+            "description": "Full description of what happened"
+          },
+          "messages": {
+            "type": "array",
+            "description": "Conversation messages in the episode",
+            "items": {
+              "type": "object",
+              "properties": {
+                "role": { "enum": ["user", "assistant"] },
+                "content": { "type": "string" },
+                "timestamp": { "type": "string" }
+              }
+            }
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the episode started"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the episode ended"
+          },
+          "participants": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "role": { "enum": ["user", "assistant"] }
+              }
+            }
+          },
+          "importance": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Initial importance score"
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Tags for categorization"
+          }
+        },
+        "required": ["title", "description", "messages"]
+      }
+    },
+    {
+      "name": "store_semantic_memory",
+      "description": "Store a new semantic memory (fact, preference, or knowledge)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject of the knowledge (e.g., 'user', 'project_x')"
+          },
+          "predicate": {
+            "type": "string",
+            "description": "Property or relationship (e.g., 'prefers', 'knows', 'is')"
+          },
+          "object": {
+            "type": "string",
+            "description": "Value or related entity"
+          },
+          "statement": {
+            "type": "string",
+            "description": "Full statement of the knowledge"
+          },
+          "knowledgeType": {
+            "enum": ["fact", "preference", "belief", "rule", "definition", "relationship", "attribute", "capability", "limitation", "goal"],
+            "description": "Type of semantic knowledge"
+          },
+          "confidence": {
+            "enum": [0.2, 0.4, 0.6, 0.8, 1.0],
+            "description": "Confidence level in this knowledge"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": { "enum": ["episodic", "explicit_statement", "inferred", "external"] },
+                "sourceId": { "type": "string" },
+                "description": { "type": "string" },
+                "strength": { "type": "number", "minimum": 0, "maximum": 1 }
+              }
+            }
+          },
+          "isPreference": {
+            "type": "boolean",
+            "description": "Whether this is a user preference vs objective fact"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Domain or subject area (e.g., 'programming', 'personal')"
+          }
+        },
+        "required": ["subject", "predicate", "object", "statement"]
+      }
+    },
+    {
+      "name": "store_procedural_memory",
+      "description": "Store a new procedural memory (how-to knowledge, workflow, or pattern)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the procedure"
+          },
+          "purpose": {
+            "type": "string",
+            "description": "What this procedure accomplishes"
+          },
+          "description": {
+            "type": "string",
+            "description": "Overall description of the procedure"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "order": { "type": "number" },
+                "description": { "type": "string" },
+                "action": { "type": "string" },
+                "expectedResult": { "type": "string" },
+                "optional": { "type": "boolean" }
+              }
+            }
+          },
+          "whenToUse": {
+            "type": "string",
+            "description": "Conditions for applying this procedure"
+          },
+          "prerequisites": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": { "enum": ["knowledge", "skill", "resource", "state"] },
+                "description": { "type": "string" },
+                "required": { "type": "boolean" }
+              }
+            }
+          }
+        },
+        "required": ["name", "purpose", "steps"]
+      }
+    },
+    {
+      "name": "recall_memories",
+      "description": "Retrieve relevant memories based on a query",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Text query for semantic search"
+          },
+          "types": {
+            "type": "array",
+            "items": {
+              "enum": ["episodic", "semantic", "procedural", "working"]
+            },
+            "description": "Types of memories to search"
+          },
+          "limit": {
+            "type": "number",
+            "default": 10,
+            "description": "Maximum number of results"
+          },
+          "minSimilarity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Minimum similarity threshold (0-1)"
+          },
+          "minImportance": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Minimum importance score (0-1)"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Filter memories created after this date"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Filter memories created before this date"
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Filter by tags"
+          },
+          "relatedTo": {
+            "type": "string",
+            "description": "Find memories related to this memory ID"
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "update_memory",
+      "description": "Update an existing memory's metadata or content",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "memoryId": {
+            "type": "string",
+            "description": "ID of the memory to update"
+          },
+          "updates": {
+            "type": "object",
+            "description": "Fields to update"
+          },
+          "incrementAccessCount": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to increment access count and update last accessed time"
+          }
+        },
+        "required": ["memoryId", "updates"]
+      }
+    },
+    {
+      "name": "consolidate_memories",
+      "description": "Consolidate multiple related memories into one",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "memoryIds": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "IDs of memories to consolidate"
+          },
+          "strategy": {
+            "enum": ["merge", "summarize", "abstract", "pattern_extract"],
+            "description": "Consolidation strategy to use"
+          }
+        },
+        "required": ["memoryIds", "strategy"]
+      }
+    },
+    {
+      "name": "apply_decay",
+      "description": "Apply decay algorithm to all memories (typically run as background job)",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dryRun": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, return what would be changed without applying"
+          }
+        }
+      }
+    },
+    {
+      "name": "get_memory_stats",
+      "description": "Get statistics about the memory system",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "detect_conflicts",
+      "description": "Detect contradictory or conflicting memories",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "autoResolve": {
+            "type": "boolean",
+            "default": false,
+            "description": "Automatically resolve conflicts using default strategy"
+          }
+        }
+      }
+    },
+    {
+      "name": "archive_memories",
+      "description": "Archive old or low-importance memories",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "maxImportance": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Archive memories with importance below this threshold"
+          },
+          "olderThan": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Archive memories created before this date"
+          },
+          "notAccessedSince": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Archive memories not accessed since this date"
+          }
+        }
+      }
+    }
+  ],
+  "resources": [
+    {
+      "uri": "memory://episodic/{memoryId}",
+      "name": "Episodic Memory",
+      "description": "Access a specific episodic memory by ID",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "memory://semantic/{memoryId}",
+      "name": "Semantic Memory",
+      "description": "Access a specific semantic memory by ID",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "memory://procedural/{memoryId}",
+      "name": "Procedural Memory",
+      "description": "Access a specific procedural memory by ID",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "memory://working/current",
+      "name": "Current Working Memory",
+      "description": "Access the current session's working memory",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "memory://stats",
+      "name": "Memory Statistics",
+      "description": "View overall memory system statistics",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "memory://search?q={query}",
+      "name": "Memory Search",
+      "description": "Search memories by query string",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "memory://timeline?start={startDate}&end={endDate}",
+      "name": "Memory Timeline",
+      "description": "View memories within a time range",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "memory://graph/{memoryId}",
+      "name": "Memory Graph",
+      "description": "View a memory and its relationships as a graph",
+      "mimeType": "application/json"
+    }
+  ],
+  "prompts": [
+    {
+      "name": "summarize_session",
+      "description": "Summarize the current session and create episodic memory",
+      "arguments": [
+        {
+          "name": "sessionId",
+          "description": "ID of the session to summarize",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "extract_knowledge",
+      "description": "Extract semantic knowledge from episodic memories",
+      "arguments": [
+        {
+          "name": "episodeId",
+          "description": "ID of the episode to extract knowledge from",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "identify_patterns",
+      "description": "Identify recurring patterns and create procedural memories",
+      "arguments": [
+        {
+          "name": "timeframe",
+          "description": "Time period to analyze (e.g., 'last_week', 'last_month')",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "memory_health_check",
+      "description": "Analyze memory system health and suggest optimizations",
+      "arguments": []
+    }
+  ],
+  "configuration": {
+    "storage": {
+      "type": "firestore",
+      "collection": "memories",
+      "indexes": [
+        "id",
+        "type",
+        "status",
+        "temporal.createdAt",
+        "temporal.lastAccessedAt",
+        "importance.importance",
+        "source.userId",
+        "source.sessionId",
+        "tags.tags",
+        "tags.categories"
+      ]
+    },
+    "vectorStore": {
+      "type": "pinecone",
+      "index": "memory-embeddings",
+      "dimensions": 1536,
+      "metric": "cosine"
+    },
+    "cache": {
+      "type": "redis",
+      "ttl": 3600,
+      "maxSize": 1000
+    },
+    "embedding": {
+      "model": "text-embedding-3-small",
+      "dimensions": 1536,
+      "batchSize": 100
+    },
+    "decay": {
+      "enabled": true,
+      "intervalHours": 24,
+      "thresholds": {
+        "episodic": 0.1,
+        "semantic": 0.05,
+        "procedural": 0.05,
+        "working": 0.3
+      }
+    },
+    "consolidation": {
+      "enabled": true,
+      "minSimilarity": 0.85,
+      "minEpisodes": 3,
+      "intervalHours": 168
+    },
+    "limits": {
+      "maxMemoriesPerUser": 100000,
+      "maxWorkingMemoryTTL": 86400000,
+      "maxQueryResults": 100,
+      "maxBatchSize": 1000
+    }
+  }
+}

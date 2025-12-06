@@ -1,0 +1,122 @@
+{
+  "provider": "pinecone",
+
+  "pinecone": {
+    "apiKey": "YOUR_PINECONE_API_KEY",
+    "environment": "us-west1-gcp",
+    "indexName": "sartor-memories",
+    "dimension": 1536,
+    "metric": "cosine",
+    "pods": 1,
+    "replicas": 1,
+    "podType": "s1.x1",
+    "metadataConfig": {
+      "indexed": [
+        "userId",
+        "type",
+        "tags",
+        "createdAt",
+        "accessCount"
+      ]
+    },
+    "namespace": "production"
+  },
+
+  "weaviate": {
+    "url": "https://sartor-memories.weaviate.network",
+    "apiKey": "YOUR_WEAVIATE_API_KEY",
+    "scheme": "https",
+    "className": "Memory",
+    "vectorizer": "none",
+    "properties": [
+      {
+        "name": "content",
+        "dataType": ["text"],
+        "indexInverted": true
+      },
+      {
+        "name": "summary",
+        "dataType": ["text"]
+      },
+      {
+        "name": "userId",
+        "dataType": ["string"],
+        "indexInverted": true
+      },
+      {
+        "name": "type",
+        "dataType": ["string"],
+        "indexInverted": true
+      },
+      {
+        "name": "tags",
+        "dataType": ["string[]"],
+        "indexInverted": true
+      },
+      {
+        "name": "createdAt",
+        "dataType": ["date"]
+      },
+      {
+        "name": "accessCount",
+        "dataType": ["int"]
+      }
+    ]
+  },
+
+  "qdrant": {
+    "url": "https://qdrant.sartor-memories.io",
+    "apiKey": "YOUR_QDRANT_API_KEY",
+    "collectionName": "memories",
+    "vectorSize": 1536,
+    "distance": "Cosine",
+    "onDiskPayload": true,
+    "hnswConfig": {
+      "m": 16,
+      "efConstruct": 100,
+      "fullScanThreshold": 10000
+    },
+    "optimizerConfig": {
+      "deletedThreshold": 0.2,
+      "vacuumMinVectorNumber": 1000,
+      "defaultSegmentNumber": 0,
+      "maxSegmentSize": null,
+      "memmapThreshold": null,
+      "indexingThreshold": 20000,
+      "flushIntervalSec": 5,
+      "maxOptimizationThreads": 1
+    }
+  },
+
+  "embedding": {
+    "provider": "openai",
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "batchSize": 100,
+    "maxTokens": 8191,
+    "rateLimit": {
+      "requestsPerMinute": 3000,
+      "tokensPerMinute": 1000000
+    },
+    "retryConfig": {
+      "maxRetries": 3,
+      "backoffMs": 1000,
+      "backoffMultiplier": 2
+    }
+  },
+
+  "search": {
+    "defaultTopK": 10,
+    "maxTopK": 100,
+    "minScore": 0.7,
+    "hybridSearch": {
+      "enabled": true,
+      "semanticWeight": 0.7,
+      "keywordWeight": 0.3
+    },
+    "filters": {
+      "maxTagFilters": 10,
+      "maxDateRange": "365d"
+    }
+  }
+}
