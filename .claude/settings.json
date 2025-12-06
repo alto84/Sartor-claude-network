@@ -1,0 +1,44 @@
+{
+  "$schema": "https://anthropic.com/schemas/claude-code/settings-v1.json",
+  "hooks": {
+    "postToolUse": {
+      "Edit": {
+        "script": "/home/user/Sartor-claude-network/.claude/hooks/quality-check.sh",
+        "args": ["${file_path}"],
+        "description": "Validate TypeScript compilation and evidence-based principles after edits",
+        "enabled": true,
+        "blocking": false
+      },
+      "Write": {
+        "script": "/home/user/Sartor-claude-network/.claude/hooks/quality-check.sh",
+        "args": ["${file_path}"],
+        "description": "Validate TypeScript compilation and evidence-based principles after writes",
+        "enabled": true,
+        "blocking": false
+      }
+    },
+    "preToolUse": {
+      "Bash": {
+        "script": "/home/user/Sartor-claude-network/.claude/hooks/safety-check.sh",
+        "args": ["${command}"],
+        "description": "Block dangerous bash operations before execution",
+        "enabled": true,
+        "blocking": true
+      }
+    }
+  },
+  "enforcementLevel": "warn",
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Evidence-Based Validation hooks for Sartor Claude Network",
+    "principles": [
+      "No metric fabrication",
+      "Measurement over opinion",
+      "Uncertainty acknowledgment",
+      "Skepticism as default",
+      "Language precision"
+    ],
+    "created": "2025-12-06",
+    "lastModified": "2025-12-06"
+  }
+}

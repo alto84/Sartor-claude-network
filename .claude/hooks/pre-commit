@@ -1,0 +1,208 @@
+#!/usr/bin/env node
+
+/**
+ * Pre-Commit Hook
+ * Runs all quality gates before allowing commits
+ *
+ * This hook enforces evidence-based practices and prevents
+ * fabrication, overclaiming, and poor error handling.
+ */
+
+import { MetricsValidator } from './validators/metrics-validator';
+import { EvidenceValidator } from './validators/evidence-validator';
+import { ErrorHandlingValidator } from './validators/error-handling-validator';
+import { CompletionValidator } from './validators/completion-validator';
+import { execSync } from 'child_process';
+import { readFileSync } from 'fs';
+import * as path from 'path';
+
+interface HookResult {
+  passed: boolean;
+  errors: number;
+  warnings: number;
+  details: string[];
+}
+
+class PreCommitHook {
+  private metricsValidator = new MetricsValidator();
+  private evidenceValidator = new EvidenceValidator();
+  private errorHandlingValidator = new ErrorHandlingValidator();
+  private completionValidator = new CompletionValidator();
+
+  async run(): Promise<HookResult> {
+    console.log('🔍 Running pre-commit quality gates...\n');
+
+    const stagedFiles = this.getStagedFiles();
+
+    if (stagedFiles.length === 0) {
+      console.log('No files staged for commit.');
+      return { passed: true, errors: 0, warnings: 0, details: [] };
+    }
+
+    console.log(`Checking ${stagedFiles.length} file(s):\n`);
+
+    let totalErrors = 0;
+    let totalWarnings = 0;
+    const allDetails: string[] = [];
+
+    // Run validators on each file
+    for (const file of stagedFiles) {
+      const ext = path.extname(file);
+      const content = readFileSync(file, 'utf-8');
+
+      console.log(`📄 ${file}`);
+
+      // 1. Metrics Validation
+      const metricsResult = this.metricsValidator.validate(content, file);
+      if (!metricsResult.valid) {
+        console.log('  ❌ Metrics validation failed');
+        totalErrors += metricsResult.issues.length;
+        this.printIssues(metricsResult.issues);
+        allDetails.push(...metricsResult.issues.map(i => i.message));
+      } else {
+        console.log('  ✅ Metrics validation passed');
+      }
+
+      // 2. Evidence Validation
+      const evidenceResult = this.evidenceValidator.validate(content, file);
+      if (!evidenceResult.valid) {
+        console.log('  ❌ Evidence validation failed');
+        totalErrors += evidenceResult.issues.length;
+        this.printIssues(evidenceResult.issues);
+        allDetails.push(...evidenceResult.issues.map(i => i.message));
+      } else {
+        console.log('  ✅ Evidence validation passed');
+      }
+
+      // 3. Error Handling Validation (for code files)
+      if (this.isCodeFile(file)) {
+        const language = this.detectLanguage(file);
+        if (language) {
+          const errorResult = this.errorHandlingValidator.validate(content, file, language);
+          if (!errorResult.valid) {
+            console.log('  ❌ Error handling validation failed');
+            totalErrors += errorResult.issues.length;
+            this.printIssues(errorResult.issues);
+            allDetails.push(...errorResult.issues.map(i => i.message));
+          } else {
+            console.log('  ✅ Error handling validation passed');
+          }
+
+          if (errorResult.warnings.length > 0) {
+            totalWarnings += errorResult.warnings.length;
+            this.printWarnings(errorResult.warnings);
+          }
+        }
+      }
+
+      // 4. Completion Status Validation
+      const completionResult = this.completionValidator.validate(content, file);
+      if (!completionResult.valid) {
+        console.log('  ❌ Completion status validation failed');
+        totalErrors += completionResult.issues.length;
+        this.printIssues(completionResult.issues);
+        allDetails.push(...completionResult.issues.map(i => i.message));
+      } else {
+        console.log('  ✅ Completion status validation passed');
+      }
+
+      if (completionResult.warnings.length > 0) {
+        totalWarnings += completionResult.warnings.length;
+        this.printWarnings(completionResult.warnings);
+      }
+
+      console.log('');
+    }
+
+    // Summary
+    console.log('═══════════════════════════════════════');
+    if (totalErrors === 0) {
+      console.log('✅ All quality gates passed!');
+      if (totalWarnings > 0) {
+        console.log(`⚠️  ${totalWarnings} warning(s) - please review`);
+      }
+      console.log('═══════════════════════════════════════\n');
+      return { passed: true, errors: 0, warnings: totalWarnings, details: allDetails };
+    } else {
+      console.log(`❌ Quality gates failed with ${totalErrors} error(s) and ${totalWarnings} warning(s)`);
+      console.log('═══════════════════════════════════════\n');
+      console.log('Commit blocked. Please fix the issues above and try again.\n');
+      console.log('Quality Principles:');
+      console.log('  • Truth over speed - no fabricated metrics or citations');
+      console.log('  • Evidence-based claims - measurements, not opinions');
+      console.log('  • Proper error handling - handle failures gracefully');
+      console.log('  • Honest progress tracking - implementation ≠ completion');
+      console.log('');
+      return { passed: false, errors: totalErrors, warnings: totalWarnings, details: allDetails };
+    }
+  }
+
+  private getStagedFiles(): string[] {
+    try {
+      const output = execSync('git diff --cached --name-only', { encoding: 'utf-8' });
+      return output
+        .trim()
+        .split('\n')
+        .filter(f => f.length > 0)
+        .filter(f => !this.shouldSkipFile(f));
+    } catch (error) {
+      console.error('Error getting staged files:', error);
+      return [];
+    }
+  }
+
+  private shouldSkipFile(file: string): boolean {
+    const skipPatterns = [
+      /node_modules\//,
+      /\.git\//,
+      /dist\//,
+      /build\//,
+      /\.min\.js$/,
+      /\.map$/,
+      /package-lock\.json$/,
+      /yarn\.lock$/,
+    ];
+
+    return skipPatterns.some(pattern => pattern.test(file));
+  }
+
+  private isCodeFile(file: string): boolean {
+    const codeExtensions = ['.ts', '.tsx', '.js', '.jsx', '.py', '.go', '.rs', '.java'];
+    return codeExtensions.some(ext => file.endsWith(ext));
+  }
+
+  private detectLanguage(file: string): 'typescript' | 'python' | null {
+    if (file.endsWith('.ts') || file.endsWith('.tsx') || file.endsWith('.js') || file.endsWith('.jsx')) {
+      return 'typescript';
+    }
+    if (file.endsWith('.py')) {
+      return 'python';
+    }
+    return null;
+  }
+
+  private printIssues(issues: Array<{ severity: string; message: string; location: string; suggestion: string }>): void {
+    issues.forEach(issue => {
+      console.log(`    🚫 ${issue.message}`);
+      console.log(`       📍 ${issue.location}`);
+      console.log(`       💡 ${issue.suggestion}`);
+    });
+  }
+
+  private printWarnings(warnings: Array<{ severity: string; message: string; location: string; suggestion: string }>): void {
+    warnings.forEach(warning => {
+      console.log(`    ⚠️  ${warning.message}`);
+      console.log(`       📍 ${warning.location}`);
+      console.log(`       💡 ${warning.suggestion}`);
+    });
+  }
+}
+
+// Run the hook
+const hook = new PreCommitHook();
+hook.run().then(result => {
+  process.exit(result.passed ? 0 : 1);
+}).catch(error => {
+  console.error('Pre-commit hook error:', error);
+  process.exit(1);
+});
