@@ -48,7 +48,9 @@ export enum MemoryType {
   EPISODIC = 'episodic',
   SEMANTIC = 'semantic',
   PROCEDURAL = 'procedural',
-  WORKING = 'working'
+  WORKING = 'working',
+  EMOTIONAL = 'emotional',
+  SYSTEM = 'system'
 }
 
 /**

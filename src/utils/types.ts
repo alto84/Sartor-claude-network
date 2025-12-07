@@ -1,24 +1,81 @@
 /**
  * Type definitions for the Memory Importance Scoring and Decay System
+ *
+ * Re-exports canonical types from memory-schema.ts
+ * This file serves as the primary import point for memory-related types
  */
 
-// ============================================================================
-// Core Memory Types
-// ============================================================================
+// Re-export all canonical memory types from memory-schema
+export {
+  // Base types
+  type MemoryId,
+  type Timestamp,
+  type Embedding,
+  type ImportanceScore,
+  type DecayRate,
 
-export enum MemoryType {
-  EPISODIC = 'episodic',       // Specific events and experiences
-  SEMANTIC = 'semantic',       // Facts and general knowledge
-  PROCEDURAL = 'procedural',   // How-to knowledge and skills
-  EMOTIONAL = 'emotional',     // Emotionally significant content
-  SYSTEM = 'system'            // System configuration and metadata
-}
+  // Core enums
+  MemoryType,
+  MemoryStatus,
+  ClaudeSurface,
+  ConfidenceLevel,
+  RelationType,
+  EntityType,
+  KnowledgeType,
 
-export enum MemoryStatus {
-  ACTIVE = 'active',
-  ARCHIVED = 'archived',
-  DELETED = 'deleted'
-}
+  // Metadata interfaces
+  type TemporalMetadata,
+  type ImportanceMetadata,
+  type SourceContext,
+  type MemoryRelation,
+  type EmbeddingMetadata,
+  type TagMetadata,
+  type SyncMetadata,
+
+  // Base and specific memory interfaces
+  type BaseMemory,
+  type EpisodicMemory,
+  type SemanticMemory,
+  type ProceduralMemory,
+  type WorkingMemory,
+  type AnyMemory,
+
+  // Memory operation types
+  type MemoryQuery,
+  type MemoryQueryResult,
+  type MemoryIndex,
+  type MemoryConsolidation,
+  type DecayCalculation,
+  type MemoryConflict,
+
+  // Storage interfaces
+  type MemoryStorage,
+  type VectorStore,
+  type MemoryCache,
+  type MemorySystem,
+  type MemorySystemStats,
+
+  // Utility types
+  type MemoryUpdate,
+  type MemoryInput,
+
+  // Type guards
+  isEpisodicMemory,
+  isSemanticMemory,
+  isProceduralMemory,
+  isWorkingMemory,
+
+  // Index configuration
+  SUGGESTED_INDEXES
+} from '../memory/memory-schema';
+
+// ============================================================================
+// LEGACY TYPE DEFINITIONS (for backward compatibility)
+// ============================================================================
+//
+// These types are kept for compatibility with existing memory system modules
+// (decay, consolidation, forgetting, spaced-repetition, importance-scoring).
+// They may be deprecated in the future in favor of memory-schema types.
 
 export interface Memory {
   id: string;
