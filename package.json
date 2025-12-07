@@ -12,6 +12,7 @@
     "test:memory-system": "ts-node example-usage.ts",
     "build": "tsc",
     "benchmark": "ts-node scripts/benchmark.ts",
+    "demo": "ts-node scripts/demonstrate-self-improvement.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,json,md,ts}\"",
