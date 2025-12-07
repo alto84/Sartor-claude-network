@@ -131,4 +131,14 @@ Use MemorySystem from src/memory/memory-system.ts:
 - Output: Score (1-10), issues list, recommendations
 ```
 
+### For agents needing persistent memory:
+```
+## Skill: MCP Memory Tools
+If you have memory_create/memory_get/memory_search tools available:
+- memory_create: Store learnings (type: procedural, importance: 0-1)
+- memory_search: Find past patterns before starting
+- memory_get: Retrieve specific memories
+Use PROCEDURAL type for successful approaches worth remembering.
+```
+
 **The rule:** If you want an agent to HAVE a skill, paste the skill content into their prompt. File references alone don't work.

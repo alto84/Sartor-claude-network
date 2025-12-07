@@ -16,6 +16,17 @@ When spawning subagents, assign one of these roles:
 - **Refinement**: Generate → Evaluate → Refine (max 3 iterations)
 - **Learning**: Every execution feeds the improvement loop
 
+## MCP Memory Tools
+When MCP (Model Context Protocol) is available, you can persist and retrieve memories:
+- **memory_create**: Create a new memory entry (stores learnings, patterns)
+- **memory_get**: Retrieve a memory by ID
+- **memory_search**: Search memories by query (semantic search)
+- **memory_stats**: Get memory system statistics
+
+**Checking MCP Availability:**
+- Look for tools prefixed with `mcp__` or `memory_` in your available tools
+- Not all environments have MCP enabled - gracefully degrade if unavailable
+
 ## Key Files
 - `MASTER_PLAN.md` - Living roadmap (Executive only edits full plan)
 - `src/executive/` - ExecutiveClaude, SelfImprovingLoop, LearningPipeline
