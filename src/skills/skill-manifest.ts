@@ -3158,7 +3158,7 @@ export const ROADMAP_SKILL: SkillManifest = {
 
       sideEffects: [
         {
-          type: 'file-system',
+          type: 'file_system',
           description: 'Reads/writes roadmap state to .claude/roadmap-state.json',
           reversible: true
         }

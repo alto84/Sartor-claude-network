@@ -27,9 +27,11 @@ export type Timestamp = string;
  * Skill tier classification
  */
 export enum SkillTier {
-  EXECUTIVE = 'executive',    // High-level orchestration (e.g., project-manager)
-  SPECIALIST = 'specialist',  // Domain expertise (e.g., data-analyst)
-  UTILITY = 'utility'         // Support functions (e.g., file-reader)
+  EXECUTIVE = 'executive',        // High-level orchestration (e.g., project-manager)
+  SPECIALIST = 'specialist',      // Domain expertise (e.g., data-analyst)
+  UTILITY = 'utility',            // Support functions (e.g., file-reader)
+  FOUNDATION = 'foundation',      // Core foundational skills
+  INFRASTRUCTURE = 'infrastructure' // Infrastructure-level skills
 }
 
 /**
@@ -56,7 +58,8 @@ export enum SkillCategory {
   ANALYSIS = 'analysis',
   AUTOMATION = 'automation',
   INTEGRATION = 'integration',
-  SYSTEM = 'system'
+  SYSTEM = 'system',
+  INFRASTRUCTURE = 'infrastructure'
 }
 
 /**
@@ -191,7 +194,7 @@ export interface ParameterDefinition {
 }
 
 export interface SideEffect {
-  type: 'file_system' | 'network' | 'memory' | 'state';
+  type: 'file_system' | 'network' | 'memory' | 'state' | 'messaging' | 'agent-invocation' | 'none' | 'testing' | 'data-collection' | 'computation' | 'cost';
   description: string;
   reversible: boolean;
 }
@@ -242,7 +245,7 @@ export interface ResourceManifest {
   path: string;                // Relative path or URL
   size: number;                // Bytes
   format: string;              // MIME type or file extension
-  loadStrategy: 'immediate' | 'lazy' | 'on_request';
+  loadStrategy: 'immediate' | 'lazy' | 'on_request' | 'eager';
   cacheDuration?: number;      // Milliseconds, undefined = session
   compression?: 'gzip' | 'brotli' | 'none';
 }
@@ -273,7 +276,7 @@ export interface ModelVersion {
   minVersion?: string;
   maxVersion?: string;
   features?: string[];
-  degradationStrategy?: 'disable' | 'fallback' | 'limited';
+  degradationStrategy?: 'disable' | 'fallback' | 'limited' | 'full';
 }
 
 /**
@@ -1007,7 +1010,7 @@ export interface CacheEntry {
 export class SkillCacheManager implements SkillCache {
   private l1Cache: Map<string, CacheEntry>;
   private l2Cache: Map<string, CacheEntry>;
-  private stats: CacheStats;
+  private _stats: CacheStats;
 
   constructor(
     private hotMemory: HotMemoryInterface,
@@ -1015,7 +1018,7 @@ export class SkillCacheManager implements SkillCache {
   ) {
     this.l1Cache = new Map();
     this.l2Cache = new Map();
-    this.stats = {
+    this._stats = {
       hits: 0,
       misses: 0,
       hitRate: 0,
@@ -1029,18 +1032,18 @@ export class SkillCacheManager implements SkillCache {
     // Try L1 cache
     const l1Entry = this.l1Cache.get(key);
     if (l1Entry && !this.isExpired(l1Entry)) {
-      this.stats.hits++;
+      this._stats.hits++;
       return l1Entry.value;
     }
 
     // Try L2 cache
     const l2Entry = this.l2Cache.get(key);
     if (l2Entry && !this.isExpired(l2Entry)) {
-      this.stats.hits++;
+      this._stats.hits++;
       return l2Entry.value;
     }
 
-    this.stats.misses++;
+    this._stats.misses++;
     return null;
   }
 
@@ -1082,7 +1085,7 @@ export class SkillCacheManager implements SkillCache {
   }
 
   async stats(): Promise<CacheStats> {
-    return this.stats;
+    return this._stats;
   }
 
   private isExpired(entry: CacheEntry): boolean {

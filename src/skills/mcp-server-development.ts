@@ -941,11 +941,38 @@ export function validateInput(input: any, schema: JSONSchema): { valid: boolean;
 }
 
 // ============================================================================
+// Compatibility Aliases (for test expectations)
+// ============================================================================
+
+// Type aliases for backwards compatibility
+export type ToolDefinition = MCPToolDefinition;
+export type ToolValidationResult = ValidationReport;
+export type SecurityAnalysisResult = SecurityReport;
+export type ServerConfigValidation = ValidationReport;
+
+// Class alias
+export const MCPServerDevelopment = MCPServerValidator;
+
+// Factory function
+export function createMCPServerDevelopment(): MCPServerValidator {
+  return new MCPServerValidator();
+}
+
+// Server validation function
+export function validateMCPServer(config: MCPServerConfig): ValidationReport {
+  const validator = new MCPServerValidator();
+  return validator.validateServerConfig(config);
+}
+
+// ============================================================================
 // Exports
 // ============================================================================
 
 export default {
   MCPServerValidator,
+  MCPServerDevelopment,
+  createMCPServerDevelopment,
+  validateMCPServer,
   validateToolDefinition,
   validateServerConfig,
   generateToolHandler,

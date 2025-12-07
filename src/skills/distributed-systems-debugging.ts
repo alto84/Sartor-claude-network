@@ -1001,6 +1001,28 @@ export function createFailureInjection(
 }
 
 // ============================================================================
+// Compatibility Aliases (for test expectations)
+// ============================================================================
+
+// Type aliases for backwards compatibility
+export type DistributedSystemsDebugging = DistributedSystemsDebugger;
+export type RootCauseAnalysis = DebugReport;
+export type ObservationSet = SystemObservation[];
+export type FailureReport = DebugReport;
+export type IsolationResult = IsolationStep;
+
+// Factory function alias
+export function createDistributedSystemsDebugging(): DistributedSystemsDebugger {
+  return new DistributedSystemsDebugger();
+}
+
+// Debug function wrapper
+export function debugDistributedSystem(symptoms: string[], sources: DataSource[] = []): DebugSession {
+  const dbg = new DistributedSystemsDebugger();
+  return dbg.createSession(symptoms, sources);
+}
+
+// ============================================================================
 // Export Default Instance
 // ============================================================================
 

@@ -8,6 +8,12 @@
  * @date 2025-12-06
  */
 
+// Import types needed locally
+import type {
+  SkillError,
+  ExecutionMetrics
+} from '../skill-types';
+
 // Re-export core types from skill-types.ts
 export type {
   SkillId,
