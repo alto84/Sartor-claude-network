@@ -16,83 +16,10 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
+import { FileStore, MemoryType } from './file-store.js';
 
-// Inline minimal types to avoid external dependencies with iteration issues
-enum MemoryType {
-  EPISODIC = 'episodic',
-  SEMANTIC = 'semantic',
-  PROCEDURAL = 'procedural',
-  WORKING = 'working',
-}
-
-interface Memory {
-  id: string;
-  content: string;
-  type: MemoryType;
-  importance_score: number;
-  tags: string[];
-  created_at: string;
-}
-
-// Simple in-memory storage (simplified for MCP)
-class SimpleMemoryStore {
-  private memories: Map<string, Memory> = new Map();
-  private idCounter = 0;
-
-  createMemory(content: string, type: MemoryType, options: { importance_score?: number; tags?: string[] }): Memory {
-    const id = `mem_${Date.now()}_${this.idCounter++}`;
-    const memory: Memory = {
-      id,
-      content,
-      type,
-      importance_score: options.importance_score ?? 0.5,
-      tags: options.tags ?? [],
-      created_at: new Date().toISOString(),
-    };
-    this.memories.set(id, memory);
-    return memory;
-  }
-
-  getMemory(id: string): Memory | undefined {
-    return this.memories.get(id);
-  }
-
-  searchMemories(filters: { type?: MemoryType[]; min_importance?: number }, limit: number): Memory[] {
-    const results: Memory[] = [];
-
-    // Manual iteration to avoid downlevelIteration issues
-    this.memories.forEach((mem) => {
-      if (filters.type && !filters.type.includes(mem.type)) return;
-      if (filters.min_importance !== undefined && mem.importance_score < filters.min_importance) return;
-      results.push(mem);
-    });
-
-    return results.slice(0, limit);
-  }
-
-  getStats() {
-    return {
-      total: this.memories.size,
-      by_type: {
-        episodic: this.countByType(MemoryType.EPISODIC),
-        semantic: this.countByType(MemoryType.SEMANTIC),
-        procedural: this.countByType(MemoryType.PROCEDURAL),
-        working: this.countByType(MemoryType.WORKING),
-      },
-    };
-  }
-
-  private countByType(type: MemoryType): number {
-    let count = 0;
-    this.memories.forEach((mem) => {
-      if (mem.type === type) count++;
-    });
-    return count;
-  }
-}
-
-// Initialize memory system
-const memory = new SimpleMemoryStore();
+// Initialize file-based memory system
+const memory = new FileStore();
 
 // Create MCP server
 const server = new Server(

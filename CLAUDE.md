@@ -35,7 +35,8 @@ npm run demo      # See self-improvement in action
 npm run benchmark # Check performance metrics
 npm test          # Run test suite
 npm run build     # Compile TypeScript
-npm run mcp       # Start MCP server for memory system integration
+npm run mcp       # Start MCP server (stdio, for Claude Desktop)
+npm run mcp:http  # Start MCP HTTP server (port 3001, for agents)
 ```
 
 ## MCP Server (Memory Context Protocol)
@@ -44,11 +45,17 @@ The project includes an MCP server that exposes the memory system as callable to
 
 ### Starting the Server
 
+**For Claude Desktop (stdio):**
 ```bash
 npm run mcp
 ```
 
-The server runs on stdio and provides real-time access to the 3-tier memory system.
+**For Agents (HTTP):**
+```bash
+npm run mcp:http
+```
+
+The HTTP server runs on `http://localhost:3001/mcp` and provides JSON-RPC access to the memory system for agents and other HTTP clients.
 
 ### Available Tools
 
@@ -90,6 +97,40 @@ To use the MCP server with Claude Desktop:
 
 3. Restart Claude Desktop
 4. The memory tools will be automatically available in conversations
+
+### Using HTTP Server (For Agents)
+
+The HTTP server provides the same memory tools via HTTP transport, allowing agents to access the memory system directly:
+
+1. Start the server: `npm run mcp:http`
+2. Server runs on: `http://localhost:3001/mcp`
+3. Protocol: MCP Streamable HTTP with JSON responses
+4. Session-based: Server manages sessions with unique IDs
+
+**Example HTTP Request:**
+```javascript
+// Initialize session
+const response = await fetch('http://localhost:3001/mcp', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json, text/event-stream'
+  },
+  body: JSON.stringify({
+    jsonrpc: '2.0',
+    id: 1,
+    method: 'initialize',
+    params: {
+      protocolVersion: '2024-11-05',
+      capabilities: {},
+      clientInfo: { name: 'my-agent', version: '1.0.0' }
+    }
+  })
+});
+
+const sessionId = response.headers.get('mcp-session-id');
+// Use sessionId in subsequent requests
+```
 
 ## Available Skills
 
