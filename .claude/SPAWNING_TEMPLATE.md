@@ -84,3 +84,51 @@ Audit the executive module for completeness and correctness.
 3. **State the phase** - Keeps work aligned with roadmap
 4. **Define constraints** - CAN/CANNOT makes boundaries clear
 5. **Specify output format** - Gets consistent, usable responses
+6. **Inject skills inline** - Don't just reference files, include the content
+
+## CRITICAL: Skill Injection
+
+Skills in `.claude/skills/*.md` are just files. Agents don't automatically inherit them.
+
+**To actually give an agent a skill, include it in the prompt:**
+
+```
+**Role: IMPLEMENTER**
+
+## Skill: Refinement Protocol
+Before completing, use this loop:
+1. Generate initial solution
+2. Self-audit: Does it meet the goal?
+3. Score confidence (0-1)
+4. If score < 0.8, refine and repeat (max 3 times)
+
+## Task
+[Your task here]
+```
+
+**Quick skill summaries to inject:**
+
+### For any agent needing refinement:
+```
+## Protocol: Refinement Loop
+Generate → Self-Audit → Score → Refine if <0.8 (max 3 iterations)
+```
+
+### For agents working with memory:
+```
+## Skill: Memory Access
+Use MemorySystem from src/memory/memory-system.ts:
+- createMemory(content, type, {importance_score, tags})
+- getMemory(id), searchMemories({filters, limit})
+- Types: EPISODIC, SEMANTIC, PROCEDURAL, WORKING
+```
+
+### For role enforcement:
+```
+## Role: AUDITOR
+- CAN: Read files, run tests, check types, score quality
+- CANNOT: Modify ANY files (this is a hard constraint)
+- Output: Score (1-10), issues list, recommendations
+```
+
+**The rule:** If you want an agent to HAVE a skill, paste the skill content into their prompt. File references alone don't work.
