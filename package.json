@@ -11,6 +11,7 @@
     "test:coverage": "jest --coverage",
     "test:memory-system": "ts-node example-usage.ts",
     "build": "tsc",
+    "benchmark": "ts-node scripts/benchmark.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,json,md,ts}\"",
