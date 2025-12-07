@@ -526,7 +526,7 @@ export class EvidenceBasedEngineering {
     }
 
     // Method definitions in classes
-    const methods = code.matchAll(/(?:public|private|protected)?\s*(?:async\s+)?(\w+)\s*\([^)]*\)\s*[:{]/g);
+    const methods = code.matchAll(/(?:public|private|protected)?\s*(?:async\s+)?(\w+)\s*\([^)]*\)\s*[:]/g);
     for (const match of methods) {
       if (!['constructor', 'if', 'for', 'while', 'switch'].includes(match[1])) {
         functions.push(match[1]);

@@ -222,7 +222,7 @@ const SECURITY_PATTERNS = {
   // Path traversal risks
   pathTraversal: [
     /\.\.[\/\\]/g, // ../ or ..\
-    /path\.join\([^)]*\$\{/g, // path.join with template literals
+    /path\.join\([^)]*\$\{\}/g, // path.join with template literals
   ],
 
   // Unsafe evaluation
@@ -239,7 +239,7 @@ const SECURITY_PATTERNS = {
 
   // SQL injection (if using SQL)
   sqlInjection: [
-    /query\([^)]*\$\{/g, // SQL with template literals
+    /query\([^)]*\$\{\}/g, // SQL with template literals
     /execute\([^)]*\+/g, // String concatenation in SQL
   ],
 };
