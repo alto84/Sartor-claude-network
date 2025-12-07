@@ -1,31 +1,67 @@
 #!/bin/bash
 
-# inject-roadmap.sh - SessionStart hook to inject roadmap context
-# Delegates to roadmap-context.sh for dynamic roadmap tracking
-# Falls back to static parsing if TypeScript compilation unavailable
+# inject-roadmap.sh - SessionStart hook to initialize agents with role context
+# Detects agent role and loads role-specific context from AGENT_ROLES.md
+# Shows relevant section of REVISED_ROADMAP.md for that role
 
 set -euo pipefail
 
-# Use the dynamic roadmap-context.sh which uses the TypeScript skill
-ROADMAP_CONTEXT_SCRIPT="/home/user/Sartor-claude-network/.claude/hooks/roadmap-context.sh"
+REPO_ROOT="/home/user/Sartor-claude-network"
+AGENT_ROLES_FILE="$REPO_ROOT/.claude/AGENT_ROLES.md"
+ROADMAP_FILE="$REPO_ROOT/REVISED_ROADMAP.md"
 
-if [[ -x "$ROADMAP_CONTEXT_SCRIPT" ]]; then
-    exec "$ROADMAP_CONTEXT_SCRIPT"
-else
-    # Fallback to static roadmap display
-    >&2 echo ""
-    >&2 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    >&2 echo "[ROADMAP CONTEXT]"
-    >&2 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    >&2 echo "📍 Current Phase: Phase 4 - Memory System Implementation"
-    >&2 echo "🎯 Objective: Implement tiered memory architecture"
-    >&2 echo ""
-    >&2 echo "🔜 Next Tasks:"
-    >&2 echo "  1. Implement Hot Tier (Firebase Realtime Database)"
-    >&2 echo "  2. Implement Warm Tier (Firestore + Vector Database)"
-    >&2 echo "  3. Implement Cold Tier (GitHub Storage)"
-    >&2 echo ""
-    >&2 echo "For detailed roadmap, see: /home/user/Sartor-claude-network/IMPLEMENTATION_ORDER.md"
-    >&2 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    >&2 echo ""
+# Detect agent role from environment or first argument
+AGENT_ROLE="${AGENT_ROLE:-${1:-}}"
+
+# Default to Implementer if no role detected
+if [[ -z "$AGENT_ROLE" ]]; then
+    AGENT_ROLE="Implementer"
 fi
+
+# Normalize role name (capitalize first letter)
+AGENT_ROLE="$(echo "$AGENT_ROLE" | sed 's/^./\U&/')"
+
+print_context() {
+    local role="$1"
+
+    >&2 echo ""
+    >&2 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    >&2 echo "[AGENT CONTEXT: $role]"
+    >&2 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+    # Extract role section from AGENT_ROLES.md (approx 50 tokens)
+    if [[ -f "$AGENT_ROLES_FILE" ]]; then
+        awk "
+            /^## [0-9]+\. $role/,/^---/ {
+                if (/^---/) exit
+                print
+            }
+        " "$AGENT_ROLES_FILE" | head -20 | sed 's/^/  /'
+    fi
+
+    >&2 echo ""
+    >&2 echo "[RELEVANT ROADMAP SECTION]"
+
+    # Show current phase from roadmap (first non-completed phase)
+    if [[ -f "$ROADMAP_FILE" ]]; then
+        awk '
+            /^## Phase [0-9]/ {
+                if (found) exit
+                if (/✓/) next  # Skip completed phases
+                found=1
+                print
+            }
+            found && !/^---/ {
+                if (NR > 10) exit
+                print
+            }
+        ' "$ROADMAP_FILE" | sed 's/^/  /'
+    fi
+
+    >&2 echo ""
+    >&2 echo "Run with AGENT_ROLE=Planner|Implementer|Auditor|Cleaner"
+    >&2 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    >&2 echo ""
+}
+
+print_context "$AGENT_ROLE"
