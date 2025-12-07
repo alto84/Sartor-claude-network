@@ -40,7 +40,7 @@ export type {
   LoadedSkill,
   LoadedResource,
   SkillExecutionContext
-} from '../../skill-types';
+} from '../skill-types';
 
 /**
  * Skill execution result

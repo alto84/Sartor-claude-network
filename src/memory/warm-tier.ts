@@ -31,7 +31,6 @@ export class FirestoreWarmTier implements WarmTier {
     // Enable offline persistence for reduced latency
     this.db.settings({
       ignoreUndefinedProperties: true,
-      cacheSizeBytes: admin.firestore.CACHE_SIZE_UNLIMITED,
     });
   }
 

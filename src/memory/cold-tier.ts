@@ -36,6 +36,7 @@ export class GitHubColdTier implements ColdTier {
       });
 
       if (Array.isArray(response.data)) throw new Error(`Directory: ${path}`);
+      if (!('content' in response.data) || !response.data.content) throw new Error(`No content: ${path}`);
       const content = Buffer.from(response.data.content, 'base64').toString('utf-8');
       return JSON.parse(content);
     } catch (error: any) {

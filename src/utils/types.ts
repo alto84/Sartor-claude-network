@@ -5,16 +5,8 @@
  * This file serves as the primary import point for memory-related types
  */
 
-// Re-export all canonical memory types from memory-schema
-export {
-  // Base types
-  type MemoryId,
-  type Timestamp,
-  type Embedding,
-  type ImportanceScore,
-  type DecayRate,
-
-  // Core enums
+// Import and re-export enums (values) from memory-schema
+import {
   MemoryType,
   MemoryStatus,
   ClaudeSurface,
@@ -22,51 +14,61 @@ export {
   RelationType,
   EntityType,
   KnowledgeType,
-
-  // Metadata interfaces
-  type TemporalMetadata,
-  type ImportanceMetadata,
-  type SourceContext,
-  type MemoryRelation,
-  type EmbeddingMetadata,
-  type TagMetadata,
-  type SyncMetadata,
-
-  // Base and specific memory interfaces
-  type BaseMemory,
-  type EpisodicMemory,
-  type SemanticMemory,
-  type ProceduralMemory,
-  type WorkingMemory,
-  type AnyMemory,
-
-  // Memory operation types
-  type MemoryQuery,
-  type MemoryQueryResult,
-  type MemoryIndex,
-  type MemoryConsolidation,
-  type DecayCalculation,
-  type MemoryConflict,
-
-  // Storage interfaces
-  type MemoryStorage,
-  type VectorStore,
-  type MemoryCache,
-  type MemorySystem,
-  type MemorySystemStats,
-
-  // Utility types
-  type MemoryUpdate,
-  type MemoryInput,
-
-  // Type guards
   isEpisodicMemory,
   isSemanticMemory,
   isProceduralMemory,
   isWorkingMemory,
-
-  // Index configuration
   SUGGESTED_INDEXES
+} from '../memory/memory-schema';
+
+export {
+  MemoryType,
+  MemoryStatus,
+  ClaudeSurface,
+  ConfidenceLevel,
+  RelationType,
+  EntityType,
+  KnowledgeType,
+  isEpisodicMemory,
+  isSemanticMemory,
+  isProceduralMemory,
+  isWorkingMemory,
+  SUGGESTED_INDEXES
+};
+
+// Re-export types
+export type {
+  MemoryId,
+  Timestamp,
+  Embedding,
+  ImportanceScore,
+  DecayRate,
+  TemporalMetadata,
+  ImportanceMetadata,
+  SourceContext,
+  MemoryRelation,
+  EmbeddingMetadata,
+  TagMetadata,
+  SyncMetadata,
+  BaseMemory,
+  EpisodicMemory,
+  SemanticMemory,
+  ProceduralMemory,
+  WorkingMemory,
+  AnyMemory,
+  MemoryQuery as MemoryQuerySchema,
+  MemoryQueryResult,
+  MemoryIndex,
+  MemoryConsolidation,
+  DecayCalculation,
+  MemoryConflict,
+  MemoryStorage,
+  VectorStore,
+  MemoryCache,
+  MemorySystem,
+  MemorySystemStats,
+  MemoryUpdate,
+  MemoryInput
 } from '../memory/memory-schema';
 
 // ============================================================================

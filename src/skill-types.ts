@@ -13,7 +13,7 @@ import {
   MemoryType,
   BaseMemory,
   MemoryId
-} from './memory-schema';
+} from './memory/memory-schema';
 
 // ============================================================================
 // CORE TYPES

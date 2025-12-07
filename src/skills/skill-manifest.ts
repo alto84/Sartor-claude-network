@@ -18,7 +18,7 @@ import {
   SkillCategory,
   TriggerType,
   ResourceType
-} from '../../skill-types';
+} from '../skill-types';
 
 /**
  * Evidence-Based Validation Skill

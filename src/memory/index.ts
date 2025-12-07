@@ -5,7 +5,6 @@
 
 // Memory Service
 export { MemoryService } from './memory-service';
-export { createMemoryService } from './memory-service';
 
 // Memory Tiers
 export type { HotTier } from './hot-tier';

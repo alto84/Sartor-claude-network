@@ -84,7 +84,8 @@ export enum MemoryStatus {
   ARCHIVED = 'archived',
   DECAYED = 'decayed',
   CONFLICTED = 'conflicted',
-  PENDING_CONSOLIDATION = 'pending_consolidation'
+  PENDING_CONSOLIDATION = 'pending_consolidation',
+  DELETED = 'deleted'
 }
 
 // ============================================================================

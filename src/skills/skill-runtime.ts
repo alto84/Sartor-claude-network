@@ -19,7 +19,7 @@ import {
   SkillInput,
   SkillOutput,
   ExecutionMetrics
-} from '../../skill-types';
+} from '../skill-types';
 
 import {
   SkillResult,
