@@ -1,16 +1,16 @@
 {
   "firebaseConfig": {
     "apiKey": "YOUR_API_KEY",
-    "authDomain": "sartor-memories.firebaseapp.com",
-    "databaseURL": "https://sartor-memories-default-rtdb.firebaseio.com",
-    "projectId": "sartor-memories",
-    "storageBucket": "sartor-memories.appspot.com",
+    "authDomain": "december-2025-memory-mcp.firebaseapp.com",
+    "databaseURL": "https://december-2025-memory-mcp-default-rtdb.firebaseio.com",
+    "projectId": "december-2025-memory-mcp",
+    "storageBucket": "december-2025-memory-mcp.appspot.com",
     "messagingSenderId": "123456789",
     "appId": "1:123456789:web:abcdef"
   },
 
   "realtimeDatabase": {
-    "databaseURL": "https://sartor-memories-default-rtdb.firebaseio.com",
+    "databaseURL": "https://december-2025-memory-mcp-default-rtdb.firebaseio.com",
     "persistence": {
       "enabled": true,
       "cacheSizeBytes": 10485760
