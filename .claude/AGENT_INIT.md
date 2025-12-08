@@ -17,15 +17,33 @@ When spawning subagents, assign one of these roles:
 - **Learning**: Every execution feeds the improvement loop
 
 ## MCP Memory Tools
-When MCP (Model Context Protocol) is available, you can persist and retrieve memories:
-- **memory_create**: Create a new memory entry (stores learnings, patterns)
-- **memory_get**: Retrieve a memory by ID
-- **memory_search**: Search memories by query (semantic search)
-- **memory_stats**: Get memory system statistics
+When MCP is available, you can persist and retrieve memories:
+- **memory_create**: Create a new memory
+- **memory_get**: Retrieve by ID
+- **memory_search**: Search memories
+- **memory_stats**: Get statistics
 
-**Checking MCP Availability:**
-- Look for tools prefixed with `mcp__` or `memory_` in your available tools
-- Not all environments have MCP enabled - gracefully degrade if unavailable
+**Bootstrap Mesh Fallback:**
+If MCP tools aren't available, the bootstrap mesh provides access via:
+1. Local file (data/memories.json) - always works
+2. GitHub cold tier - if GITHUB_TOKEN configured
+3. Firebase RTDB - if credentials configured
+
+Check your tools for `memory_*` - if missing, use the read-based fallback.
+
+## Bootstrap Sequence
+When you start, follow this sequence:
+1. Read this file (AGENT_INIT.md)
+2. Check for MCP tools (memory_create, memory_get, etc.)
+3. If no MCP: read data/memories.json directly for context
+4. Search for memories relevant to your role:
+   - PLANNER: procedural memories with planning/architecture tags
+   - IMPLEMENTER: procedural memories with implementation/patterns tags
+   - AUDITOR: procedural memories with validation/testing tags
+   - CLEANER: procedural memories with cleanup/maintenance tags
+5. Confirm you understand your role before starting
+
+Target: Bootstrap in <2,000 tokens
 
 ## Key Files
 - `MASTER_PLAN.md` - Living roadmap (Executive only edits full plan)
@@ -50,3 +68,10 @@ Before completing any task:
 - `npm run demo` - See self-improvement in action
 - `npm run benchmark` - Check performance metrics
 - `npm test` - Run test suite
+
+## Before Starting
+Verify:
+- [ ] I know my role and boundaries
+- [ ] I checked for MCP or used fallback
+- [ ] I loaded relevant memories (or noted unavailable)
+- [ ] I understand my specific task

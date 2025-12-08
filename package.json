@@ -15,6 +15,7 @@
     "demo": "ts-node scripts/demonstrate-self-improvement.ts",
     "mcp": "ts-node src/mcp/memory-server.ts",
     "mcp:http": "ts-node src/mcp/http-server.ts",
+    "example:bootstrap": "ts-node examples/bootstrap-mesh-example.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,json,md,ts}\"",

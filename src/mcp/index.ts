@@ -50,3 +50,25 @@ export const MCP_SERVER_PATH = './memory-server.ts';
 // Export MemorySystem for programmatic use
 export { MemorySystem, type Memory } from '../memory/memory-system';
 export { MemoryType } from '../memory/memory-schema';
+
+// Export MCP HTTP Client for agent communication
+export { MCPHttpClient } from './mcp-http-client';
+
+// Export Bootstrap Mesh for unified multi-source memory access
+export {
+  BootstrapMesh,
+  createBootstrapMesh,
+  type Memory as BootstrapMemory,
+  type LoadOptions,
+  type BackendStatus,
+  type BootstrapMeshConfig,
+} from './bootstrap-mesh';
+
+// Export Local Memory Reader for direct file access (no server required)
+export {
+  LocalMemoryReader,
+  quickLoadMemories,
+  type Memory as LocalMemory,
+  type SearchOptions,
+  type MemoryStats as LocalMemoryStats,
+} from './local-memory-reader';

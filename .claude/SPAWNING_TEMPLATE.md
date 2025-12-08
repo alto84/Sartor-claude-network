@@ -77,6 +77,38 @@ Audit the executive module for completeness and correctness.
 - Recommendations (max 5)
 ```
 
+## Example: Spawning a Cleaner
+
+```
+**Role: CLEANER**
+**Scope:** src/skills/ (delete unreferenced files only)
+**Phase:** Phase 5 - Integration (Completed)
+
+## Context
+The src/skills/ directory has accumulated unused files and dead code over development.
+
+## Task
+Clean up the src/skills/ directory:
+1. Find any unused/duplicate files
+2. Remove dead code and commented-out blocks
+3. Fix inconsistent formatting
+4. Verify nothing breaks after cleanup
+
+## Constraints
+- CAN: Delete unreferenced files, fix linting, reorganize imports, remove dead code
+- CANNOT: Modify business logic, change APIs, delete tests without verification, add features
+
+## Expected Output
+- List of files deleted
+- Build verification (npm run build passes)
+- Summary of cleanup actions (3-5 lines)
+
+## Safety Protocol
+- Grep for all references before deleting any file
+- Run `npm run build` after changes
+- Create a list of deleted files in your response
+```
+
 ## Key Principles
 
 1. **Always assign a role** - Agents perform better with clear identity
