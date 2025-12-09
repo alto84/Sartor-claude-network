@@ -625,39 +625,20 @@ describe('Phase 2 Infrastructure Integration Tests', () => {
     });
 
     it('should execute linear dependency chain in order', async () => {
-      const task1Id = await system.submitTask({
-        type: 'processing',
-        priority: 'high',
-        payload: { step: 1 },
-      });
-
-      const task2Id = await system.submitTask({
-        type: 'analysis',
-        priority: 'high',
-        payload: { step: 2 },
-        dependencies: [task1Id],
-      });
-
-      const task3Id = await system.submitTask({
-        type: 'validation',
-        priority: 'high',
-        payload: { step: 3 },
-        dependencies: [task2Id],
-      });
-
+      // Linear chain: task-1 -> task-2 -> task-3
       const results = await system.executeWorkflow([
         { type: 'processing', priority: 'high', payload: { step: 1 } },
         {
           type: 'analysis',
           priority: 'high',
           payload: { step: 2 },
-          dependencies: [task1Id],
+          dependencies: ['task-1'],
         },
         {
           type: 'validation',
           priority: 'high',
           payload: { step: 3 },
-          dependencies: [task2Id],
+          dependencies: ['task-2'],
         },
       ]);
 

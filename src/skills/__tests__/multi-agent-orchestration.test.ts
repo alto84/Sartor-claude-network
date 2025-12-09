@@ -243,18 +243,52 @@ const createMockOrchestrator = (config: OrchestratorConfig = {}): MultiAgentOrch
         taskDataArray.map(taskData => this.submitTask(taskData))
       );
 
-      // Execute in parallel with concurrency limit
-      const executePromises = taskIds.map(async (taskId) => {
-        try {
-          const result = await this.executeTask(taskId);
-          results.set(taskId, result);
-        } catch (error) {
-          const errorMsg = error instanceof Error ? error.message : 'Unknown error';
-          failures.set(taskId, errorMsg);
-        }
-      });
+      // Execute with proper concurrency limiting (wait for workers)
+      const maxConcurrent = orchestratorConfig.maxParallelTasks || taskIds.length;
+      let active = 0;
+      let taskIndex = 0;
 
-      await Promise.all(executePromises);
+      const executeNext = async (): Promise<void> => {
+        while (taskIndex < taskIds.length) {
+          if (active >= maxConcurrent) {
+            await new Promise(resolve => setTimeout(resolve, 10));
+            continue;
+          }
+
+          const currentIndex = taskIndex++;
+          const taskId = taskIds[currentIndex];
+          active++;
+
+          // Wait for an available worker
+          let retries = 0;
+          while (retries < 20) {
+            try {
+              const result = await this.executeTask(taskId);
+              results.set(taskId, result);
+              break;
+            } catch (error) {
+              const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+              if (errorMsg.includes('No available worker') && retries < 19) {
+                retries++;
+                await new Promise(resolve => setTimeout(resolve, 50));
+              } else {
+                failures.set(taskId, errorMsg);
+                break;
+              }
+            }
+          }
+
+          active--;
+        }
+      };
+
+      // Start worker threads for concurrent execution
+      const workerPromises = Array.from(
+        { length: Math.min(maxConcurrent, taskIds.length) },
+        () => executeNext()
+      );
+
+      await Promise.all(workerPromises);
 
       return {
         success: failures.size === 0,

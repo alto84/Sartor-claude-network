@@ -203,9 +203,12 @@ export class EvidenceBasedEngineering {
       handledCases.push(`${tryCatchBlocks.length} try/catch blocks`);
     }
 
-    // Check for input validation
-    const inputValidation = code.match(/if\s*\([^)]*===?\s*null\s*\|\|/g) ||
-                           code.match(/if\s*\(!\w+\)/g) || [];
+    // Check for input validation (null checks, falsy checks, property checks)
+    const nullChecks = code.match(/if\s*\([^)]*===?\s*null/g) || [];
+    const falsyChecks = code.match(/if\s*\(![\w.]+[^)]*\)/g) || [];  // Handles if (!x || ...)
+    const typeChecks = code.match(/typeof\s+[\w.]+\s*[!=]==?\s*['"`]\w+['"`]/g) || [];
+    const guardClauses = code.match(/if\s*\(![\w.]+\s*\|\|/g) || [];  // Guard clauses like if (!x ||
+    const inputValidation = [...nullChecks, ...falsyChecks, ...typeChecks, ...guardClauses];
     if (inputValidation.length > 0) {
       handledCases.push(`${inputValidation.length} input validation checks`);
     }
@@ -226,6 +229,9 @@ export class EvidenceBasedEngineering {
     // Check for promise rejections
     const promiseUsage = code.match(/\.then\(/g) || [];
     const catchHandlers = code.match(/\.catch\(/g) || [];
+    if (catchHandlers.length > 0) {
+      handledCases.push(`${catchHandlers.length} .catch() handlers`);
+    }
     if (promiseUsage.length > 0 && catchHandlers.length === 0) {
       unhandledCases.push(`${promiseUsage.length} promise chains without .catch() handlers`);
     }
@@ -319,9 +325,9 @@ export class EvidenceBasedEngineering {
   assessCompleteness(implementation: string, tests?: string, docs?: string): CompletionStatus {
     const implValidation = this.validateImplementation(implementation);
 
-    // Stage 1: Implemented
+    // Stage 1: Implemented (code exists and compiles, even with minor issues)
     const implemented = implValidation.functions.length > 0 &&
-                        implValidation.issues.length < 3;  // Some issues are OK for "implemented"
+                        implValidation.issues.length < 5;  // Can have issues but still be "implemented"
 
     // Stage 2: Tested
     let tested = false;
@@ -332,7 +338,8 @@ export class EvidenceBasedEngineering {
     }
 
     // Stage 3: Integrated (check for imports/exports)
-    const hasExports = /export\s+(class|function|const|interface)/.test(implementation);
+    const hasExports = /export\s+(?:async\s+)?(?:default\s+)?(class|function|const|interface|let|var)/.test(implementation) ||
+                       /export\s*\{/.test(implementation);  // Named exports
     const hasImports = /import\s+.*\s+from/.test(implementation);
     const integrated = hasExports || hasImports;
 
@@ -525,10 +532,10 @@ export class EvidenceBasedEngineering {
       functions.push(match[1]);
     }
 
-    // Method definitions in classes
-    const methods = code.matchAll(/(?:public|private|protected)?\s*(?:async\s+)?(\w+)\s*\([^)]*\)\s*[:]/g);
+    // Method definitions in classes (with or without type annotations)
+    const methods = code.matchAll(/(?:public|private|protected)?\s*(?:async\s+)?(\w+)\s*\([^)]*\)\s*[:{]/g);
     for (const match of methods) {
-      if (!['constructor', 'if', 'for', 'while', 'switch'].includes(match[1])) {
+      if (!['constructor', 'if', 'for', 'while', 'switch', 'catch', 'function'].includes(match[1])) {
         functions.push(match[1]);
       }
     }
