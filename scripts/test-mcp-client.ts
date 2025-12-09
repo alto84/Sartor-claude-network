@@ -9,7 +9,7 @@
  * 2. In another terminal: npx ts-node test-mcp-client.ts
  */
 
-import { MCPHttpClient } from './src/mcp/mcp-http-client';
+import { MCPHttpClient } from '../src/mcp/mcp-http-client';
 
 async function main() {
   console.log('=== MCP HTTP Client Test ===\n');
