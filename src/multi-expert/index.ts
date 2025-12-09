@@ -74,3 +74,30 @@ export {
   quickScore,
   rankResults,
 } from './soft-scorer';
+
+// Sandbox Executor
+export {
+  SandboxExecutor,
+  SandboxResult,
+  SandboxConfig,
+  DEFAULT_SANDBOX_CONFIG,
+  createJsonSandbox,
+  sandboxExecute,
+  sandboxCommand,
+} from './sandbox-executor';
+
+// Feedback Loop
+export {
+  FeedbackLoop,
+  FeedbackItem,
+  FeedbackSource,
+  FeedbackType,
+  FeedbackSeverity,
+  FeedbackCollection,
+  IterationResult,
+  FeedbackLoopConfig,
+  DEFAULT_FEEDBACK_LOOP_CONFIG,
+  FeedbackProvider,
+  createFeedbackLoop,
+  collectFeedback,
+} from './feedback-loop';
