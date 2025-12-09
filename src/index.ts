@@ -15,11 +15,7 @@ export type { WarmTier } from './memory/warm-tier';
 export type { ColdTier } from './memory/cold-tier';
 
 // Executive System
-export {
-  ExecutiveClaude,
-  createExecutive,
-  AgentRole
-} from './executive';
+export { ExecutiveClaude, createExecutive, AgentRole } from './executive';
 export { SelfImprovingLoop, createSelfImprovingLoop } from './executive';
 export { LearningPipeline, createLearningPipeline } from './executive';
 

@@ -68,7 +68,9 @@ async function testLocalFile(): Promise<boolean> {
     if (fs.existsSync(dataFile)) {
       const content = fs.readFileSync(dataFile, 'utf-8');
       const parsed = JSON.parse(content);
-      success(`Local file exists and is readable (${Object.keys(parsed.memories || {}).length} memories)`);
+      success(
+        `Local file exists and is readable (${Object.keys(parsed.memories || {}).length} memories)`
+      );
     } else {
       info('Local file does not exist, creating...');
       const store = new FileStore();
@@ -98,7 +100,7 @@ async function testMcpHttp(): Promise<boolean> {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify({
           jsonrpc: '2.0',
@@ -133,7 +135,7 @@ async function testMcpHttp(): Promise<boolean> {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          Accept: 'application/json',
           'mcp-session-id': sessionId,
         },
         body: JSON.stringify({
@@ -223,7 +225,9 @@ async function testFirebase(): Promise<boolean> {
 
     if (!hasCredentials) {
       info('Firebase credentials not configured');
-      info('Set one of: GOOGLE_APPLICATION_CREDENTIALS, FIREBASE_SERVICE_ACCOUNT_BASE64, or config/service-account.json');
+      info(
+        'Set one of: GOOGLE_APPLICATION_CREDENTIALS, FIREBASE_SERVICE_ACCOUNT_BASE64, or config/service-account.json'
+      );
       return false;
     }
 
@@ -303,7 +307,9 @@ async function testBootstrapMesh(): Promise<{ success: boolean; backend: string;
     info(`Available backends: ${availableBackends.join(', ')}`);
     info(`Primary backend: ${primaryBackend}`);
     info(`Total memories accessible: ${stats.total}`);
-    info(`By tier: hot=${stats.by_tier.hot}, warm=${stats.by_tier.warm}, cold=${stats.by_tier.cold}`);
+    info(
+      `By tier: hot=${stats.by_tier.hot}, warm=${stats.by_tier.warm}, cold=${stats.by_tier.cold}`
+    );
 
     return { success: true, backend: primaryBackend, count: stats.total };
   } catch (error) {
@@ -365,16 +371,22 @@ async function main() {
 
   if (backends.length === 0) {
     console.log(`${colors.red}${colors.bright}⚠ No backends are operational!${colors.reset}`);
-    console.log(`${colors.yellow}At minimum, file storage should work. Check permissions.${colors.reset}`);
+    console.log(
+      `${colors.yellow}At minimum, file storage should work. Check permissions.${colors.reset}`
+    );
   } else {
-    console.log(`${colors.green}${colors.bright}✓ ${backends.length} backend(s) available${colors.reset}`);
-    backends.forEach(b => console.log(`  • ${b}`));
+    console.log(
+      `${colors.green}${colors.bright}✓ ${backends.length} backend(s) available${colors.reset}`
+    );
+    backends.forEach((b) => console.log(`  • ${b}`));
   }
 
   console.log();
   console.log(`${colors.cyan}Primary backend:${colors.reset} ${results.primaryBackend}`);
   console.log(`${colors.cyan}Total memories:${colors.reset} ${results.memoriesCount}`);
-  console.log(`${colors.cyan}MCP HTTP server:${colors.reset} ${results.mcpHttp ? `${colors.green}running${colors.reset}` : `${colors.yellow}not running${colors.reset}`}`);
+  console.log(
+    `${colors.cyan}MCP HTTP server:${colors.reset} ${results.mcpHttp ? `${colors.green}running${colors.reset}` : `${colors.yellow}not running${colors.reset}`}`
+  );
 
   console.log();
 
@@ -387,7 +399,9 @@ async function main() {
   }
 
   if (!results.mcpHttp) {
-    console.log(`${colors.yellow}Note:${colors.reset} MCP HTTP server not running. Start with: npm run mcp:http`);
+    console.log(
+      `${colors.yellow}Note:${colors.reset} MCP HTTP server not running. Start with: npm run mcp:http`
+    );
   }
 
   console.log();

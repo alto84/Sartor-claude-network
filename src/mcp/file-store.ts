@@ -113,7 +113,11 @@ export class FileStore {
   /**
    * Create a new memory
    */
-  createMemory(content: string, type: MemoryType, options: { importance_score?: number; tags?: string[] }): Memory {
+  createMemory(
+    content: string,
+    type: MemoryType,
+    options: { importance_score?: number; tags?: string[] }
+  ): Memory {
     const id = `mem_${Date.now()}_${this.idCounter++}`;
     const memory: Memory = {
       id,
@@ -140,13 +144,17 @@ export class FileStore {
   /**
    * Search memories by filters
    */
-  searchMemories(filters: { type?: MemoryType[]; min_importance?: number }, limit: number): Memory[] {
+  searchMemories(
+    filters: { type?: MemoryType[]; min_importance?: number },
+    limit: number
+  ): Memory[] {
     const results: Memory[] = [];
 
     // Manual iteration to avoid downlevelIteration issues
     this.memories.forEach((mem) => {
       if (filters.type && !filters.type.includes(mem.type)) return;
-      if (filters.min_importance !== undefined && mem.importance_score < filters.min_importance) return;
+      if (filters.min_importance !== undefined && mem.importance_score < filters.min_importance)
+        return;
       results.push(mem);
     });
 

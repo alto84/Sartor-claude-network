@@ -51,7 +51,9 @@ function loadUser() {
     .then(data => processData(data));
 }`;
         const result = validator.validateErrorHandling(code);
-        expect(result.unhandledCases.some(c => c.includes('promise chains without .catch()'))).toBe(true);
+        expect(
+          result.unhandledCases.some((c) => c.includes('promise chains without .catch()'))
+        ).toBe(true);
       });
 
       it('should fail for network operations without error handling', () => {
@@ -62,7 +64,7 @@ async function callApi() {
 }`;
         const result = validator.validateErrorHandling(code);
         expect(result.hasErrorHandling).toBe(false);
-        expect(result.unhandledCases.some(c => c.includes('network operations'))).toBe(true);
+        expect(result.unhandledCases.some((c) => c.includes('network operations'))).toBe(true);
       });
 
       it('should identify multiple async functions without handling', () => {
@@ -94,7 +96,7 @@ async function fetchData() {
 }`;
         const result = validator.validateErrorHandling(code);
         expect(result.hasErrorHandling).toBe(true);
-        expect(result.handledCases.some(c => c.includes('try/catch'))).toBe(true);
+        expect(result.handledCases.some((c) => c.includes('try/catch'))).toBe(true);
       });
 
       it('should pass for promise with .catch() handler', () => {
@@ -143,7 +145,7 @@ function validateUser(user) {
 }`;
         const result = validator.validateErrorHandling(code);
         expect(result.hasErrorHandling).toBe(true);
-        expect(result.handledCases.some(c => c.includes('input validation'))).toBe(true);
+        expect(result.handledCases.some((c) => c.includes('input validation'))).toBe(true);
       });
 
       it('should handle multiple error handling patterns', () => {
@@ -517,8 +519,8 @@ class Calculator {
 }`;
 
       const result = validator.assess(code);
-      expect(result.implemented.some(i => i.includes('add'))).toBe(true);
-      expect(result.implemented.some(i => i.includes('Calculator'))).toBe(true);
+      expect(result.implemented.some((i) => i.includes('add'))).toBe(true);
+      expect(result.implemented.some((i) => i.includes('Calculator'))).toBe(true);
     });
 
     it('should track incomplete work via TODOs', () => {
@@ -531,7 +533,7 @@ function process() {
 
       const result = validator.assess(code);
       expect(result.notImplemented.length).toBe(2);
-      expect(result.risks.some(r => r.category === 'completeness')).toBe(true);
+      expect(result.risks.some((r) => r.category === 'completeness')).toBe(true);
     });
 
     it('should report critical risk for missing tests', () => {
@@ -542,7 +544,9 @@ function criticalOperation() {
 
       const result = validator.assess(code);
       expect(result.notTested).toContain('criticalOperation');
-      expect(result.risks.some(r => r.severity === 'critical' && r.category === 'testing')).toBe(true);
+      expect(result.risks.some((r) => r.severity === 'critical' && r.category === 'testing')).toBe(
+        true
+      );
     });
 
     it('should track tested and untested functions', () => {
@@ -568,8 +572,8 @@ async function fetchData() {
 }`;
 
       const result = validator.assess(code);
-      expect(result.risks.some(r => r.category === 'error-handling')).toBe(true);
-      expect(result.risks.some(r => r.severity === 'critical')).toBe(true);
+      expect(result.risks.some((r) => r.category === 'error-handling')).toBe(true);
+      expect(result.risks.some((r) => r.severity === 'critical')).toBe(true);
     });
 
     it('should provide specific recommendations', () => {
@@ -581,7 +585,7 @@ async function loadUser() {
 
       const result = validator.assess(code);
       expect(result.recommendations.length).toBeGreaterThan(0);
-      expect(result.recommendations.some(r => r.includes('TODO'))).toBe(true);
+      expect(result.recommendations.some((r) => r.includes('TODO'))).toBe(true);
     });
 
     it('should validate documentation matches code', () => {
@@ -596,7 +600,7 @@ This function does something.
 `;
 
       const result = validator.assess(code, undefined, docs);
-      expect(result.risks.some(r => r.category === 'documentation')).toBe(true);
+      expect(result.risks.some((r) => r.category === 'documentation')).toBe(true);
     });
 
     it('should include completion status in assessment', () => {
@@ -652,8 +656,8 @@ function foo() {
       const result = validator.validateImplementation(code);
       expect(result.todos.length).toBe(1);
       expect(result.fixmes.length).toBe(1);
-      expect(result.issues.some(i => i.includes('TODO'))).toBe(true);
-      expect(result.issues.some(i => i.includes('FIXME'))).toBe(true);
+      expect(result.issues.some((i) => i.includes('TODO'))).toBe(true);
+      expect(result.issues.some((i) => i.includes('FIXME'))).toBe(true);
     });
 
     it('should detect console.log statements', () => {
@@ -664,7 +668,7 @@ function debug() {
 }`;
 
       const result = validator.validateImplementation(code);
-      expect(result.issues.some(i => i.includes('console.log'))).toBe(true);
+      expect(result.issues.some((i) => i.includes('console.log'))).toBe(true);
     });
 
     it('should detect empty catch blocks', () => {
@@ -675,7 +679,7 @@ try {
 }`;
 
       const result = validator.validateImplementation(code);
-      expect(result.issues.some(i => i.includes('empty catch'))).toBe(true);
+      expect(result.issues.some((i) => i.includes('empty catch'))).toBe(true);
     });
 
     it('should warn about excessive "any" usage', () => {
@@ -687,7 +691,7 @@ function test(a: any, b: any, c: any, d: any, e: any, f: any) {
 }`;
 
       const result = validator.validateImplementation(code);
-      expect(result.issues.some(i => i.includes("'any' type"))).toBe(true);
+      expect(result.issues.some((i) => i.includes("'any' type"))).toBe(true);
     });
   });
 
@@ -763,7 +767,7 @@ async function saveUser(user) {
 
       expect(assessment.completionStatus.implemented).toBe(true);
       expect(assessment.completionStatus.validated).toBe(false);
-      expect(assessment.risks.some(r => r.severity === 'critical')).toBe(true);
+      expect(assessment.risks.some((r) => r.severity === 'critical')).toBe(true);
       expect(assessment.notImplemented.length).toBeGreaterThan(0);
     });
   });

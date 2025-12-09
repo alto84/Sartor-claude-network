@@ -58,6 +58,7 @@ const task = createTask(
 ### 2. Four Delegation Patterns
 
 #### Pattern 1: Parallel Fan-Out
+
 Independent tasks execute simultaneously.
 
 ```typescript
@@ -67,16 +68,14 @@ const tasks = [
   createTask('database-task', 'database', 'Optimize queries'),
 ];
 
-const result = await orchestrator.executeWithPattern(
-  tasks,
-  DelegationPattern.PARALLEL_FAN_OUT
-);
+const result = await orchestrator.executeWithPattern(tasks, DelegationPattern.PARALLEL_FAN_OUT);
 ```
 
 **Use when:** Tasks are independent and can run simultaneously
 **Benefit:** Massive parallelization speedup
 
 #### Pattern 2: Serial Chain
+
 Dependent tasks execute in sequence.
 
 ```typescript
@@ -86,16 +85,14 @@ const tasks = [
   createTask('test', 'qa', 'Validate implementation', { dependencies: ['implement'] }),
 ];
 
-const result = await orchestrator.executeWithPattern(
-  tasks,
-  DelegationPattern.SERIAL_CHAIN
-);
+const result = await orchestrator.executeWithPattern(tasks, DelegationPattern.SERIAL_CHAIN);
 ```
 
 **Use when:** Tasks have dependencies (B needs A's output)
 **Benefit:** Ensures correct execution order
 
 #### Pattern 3: Recursive Decomposition
+
 Complex tasks broken into manageable subtasks.
 
 ```typescript
@@ -109,6 +106,7 @@ const result = await orchestrator.executeWithPattern(
 **Benefit:** Handles complexity through decomposition
 
 #### Pattern 4: Competitive Exploration
+
 Multiple approaches explored in parallel, then compared.
 
 ```typescript
@@ -130,6 +128,7 @@ const result = await orchestrator.executeWithPattern(
 ### 3. Intelligent Worker Assignment
 
 Workers are matched to tasks based on:
+
 - **Specialization match** (50% of score)
 - **Capability overlap** (30% of score)
 - **Success rate** (20% of score)
@@ -158,15 +157,15 @@ const assignment = orchestrator.assignWorker(task, workers);
 // Two workers assess the same system
 const results = [
   { workerId: 'optimist', confidence: 0.9, output: 'Ready for production' },
-  { workerId: 'pessimist', confidence: 0.3, output: 'Needs more testing' }
+  { workerId: 'pessimist', confidence: 0.3, output: 'Needs more testing' },
 ];
 
 const synthesis = orchestrator.synthesizeResults(results);
 
 // Conflicts are PRESERVED, not averaged
-synthesis.conflicts.length > 0  // true
-synthesis.conflicts[0].preserved // true - indicates legitimate boundary
-synthesis.confidence < 0.9       // true - penalized for disagreement
+synthesis.conflicts.length > 0; // true
+synthesis.conflicts[0].preserved; // true - indicates legitimate boundary
+synthesis.confidence < 0.9; // true - penalized for disagreement
 ```
 
 **Principle:** Disagreement signals uncertainty boundaries - preserve it for transparency.
@@ -185,6 +184,7 @@ const recovery = orchestrator.handleWorkerFailure(workerId, error);
 ```
 
 **Measured Failure Rate:**
+
 ```
 failureRate = taskseFailed / (tasksCompleted + taskseFailed)
 
@@ -210,12 +210,14 @@ const synthesis = orchestrator.synthesizeResults(results);
 ```
 
 **Insight Extraction:**
+
 - Identifies common patterns across workers
 - Detects complementary findings
 - Reveals areas of uncertainty
 - Surfaces issues mentioned by multiple workers
 
 **Confidence Calculation:**
+
 ```
 confidence = avgConfidence - (conflicts × 0.1) + (successRate × 0.2)
             [base score]     [uncertainty penalty]  [reliability bonus]
@@ -226,19 +228,23 @@ confidence = avgConfidence - (conflicts × 0.1) + (successRate × 0.2)
 ## Quality Gates
 
 ### 1. Intent Validation (Before Delegation)
+
 - Checks intent is outcome-focused (not step-by-step)
 - Validates minimum intent length (> 10 chars)
 - Rejects instructional language ("first", "then", "step 1")
 
 ### 2. Dependency Check (Before Execution)
+
 - Verifies all prerequisite tasks completed successfully
 - Prevents execution with unmet dependencies
 
 ### 3. Capacity Check (Before Assignment)
+
 - Validates worker is available
 - Queues task if worker busy (with estimated start time)
 
 ### 4. Result Validation (After Execution)
+
 - Confirms output matches task intent
 - Tracks confidence levels
 - Documents failure reasons
@@ -273,7 +279,7 @@ const task = createTask(
   {
     priority: 'critical',
     constraints: ['Focus on JWT handling', 'Check session management'],
-    successCriteria: ['Identify specific vulnerabilities', 'Provide severity assessment']
+    successCriteria: ['Identify specific vulnerabilities', 'Provide severity assessment'],
   }
 );
 
@@ -294,10 +300,7 @@ const tasks = [
   createTask('security', 'security', 'Check for common security vulnerabilities'),
 ];
 
-const result = await orchestrator.executeWithPattern(
-  tasks,
-  DelegationPattern.PARALLEL_FAN_OUT
-);
+const result = await orchestrator.executeWithPattern(tasks, DelegationPattern.PARALLEL_FAN_OUT);
 
 console.log('Synthesis:', result.synthesis);
 console.log('Insights:', result.insights);
@@ -321,11 +324,12 @@ const orchestrator = createOrchestrator({
     maxRetries: 3,
     retryDelayMs: 1000,
     deliveryGuarantee: 'at-least-once',
-  }
+  },
 });
 ```
 
 **Message Bus Features:**
+
 - Retry with exponential backoff
 - Circuit breaker pattern (stops hammering failed destinations)
 - Delivery guarantees (at-most-once, at-least-once, exactly-once)
@@ -334,34 +338,43 @@ const orchestrator = createOrchestrator({
 ## Principles from UPLIFTED_SKILLS.md
 
 ### 1. Specialization Over Uniformity
+
 Different agents bring different perspectives. Workers assigned based on actual capability differences.
 
 ### 2. Disagreement Preservation
+
 Conflicts indicate legitimate uncertainty - preserved, not resolved artificially.
 
 ### 3. Coordination Overhead is Real
+
 Measured and tracked (not assumed negligible). Parallelism factor calculated for each pattern.
 
 ### 4. Independence Validates Findings
+
 Workers execute independently, then results synthesized. True disagreement only emerges from independent analysis.
 
 ## Principles from EXECUTIVE_CLAUDE.md
 
 ### 1. Delegate Outcomes, Not Steps
+
 Tasks specify WHAT outcome is needed (intent), not HOW to achieve it (steps).
 
 ### 2. Context Minimalism
+
 Only essential context passed to workers. Three-tier model: Intent (always), Constraints (when relevant), Background (sparingly).
 
 ### 3. Quality Without Micromanagement
+
 Validate deliverables thoroughly, but trust workers on methodology.
 
 ### 4. Synthesis Creates Insights
+
 Combining outputs reveals emergent patterns beyond individual results.
 
 ## Metrics and Observability
 
 ### Orchestrator Status
+
 ```typescript
 const status = orchestrator.getStatus();
 
@@ -376,26 +389,28 @@ const status = orchestrator.getStatus();
 ```
 
 ### Worker Metrics
+
 ```typescript
 interface WorkerMetrics {
-  tasksCompleted: number,
-  taskseFailed: number,
-  averageCompletionTimeMs: number,  // Measured (not estimated)
-  successRate: number,              // Calculated: completed / (completed + failed)
-  lastActiveAt: number
+  tasksCompleted: number;
+  taskseFailed: number;
+  averageCompletionTimeMs: number; // Measured (not estimated)
+  successRate: number; // Calculated: completed / (completed + failed)
+  lastActiveAt: number;
 }
 ```
 
 ### Task Result Metrics
+
 ```typescript
 interface TaskResult {
   // ... other fields
-  confidence: number,  // Worker's confidence (0-1)
+  confidence: number; // Worker's confidence (0-1)
   metrics: {
-    startedAt: number,
-    completedAt: number,
-    durationMs: number    // Measured execution time
-  }
+    startedAt: number;
+    completedAt: number;
+    durationMs: number; // Measured execution time
+  };
 }
 ```
 
@@ -417,6 +432,7 @@ Comprehensive test suite in `multi-agent-orchestration.test.ts`:
 - Status tracking
 
 **Run tests:**
+
 ```bash
 npm test src/skills/multi-agent-orchestration.test.ts
 ```
@@ -434,6 +450,7 @@ Detailed examples in `multi-agent-orchestration.example.ts`:
 7. **Orchestrator Status** - Metrics and observability
 
 **Run examples:**
+
 ```bash
 npx ts-node src/skills/multi-agent-orchestration.example.ts
 ```
@@ -443,63 +460,79 @@ npx ts-node src/skills/multi-agent-orchestration.example.ts
 ### Core Functions
 
 #### `createOrchestrator(config: OrchestratorConfig): MultiAgentOrchestrator`
+
 Create a new orchestrator instance.
 
 #### `orchestrator.registerWorker(worker: Worker): void`
+
 Register a worker with the orchestrator.
 
 #### `orchestrator.delegateTask(task: Task): Promise<DelegationResult>`
+
 Delegate a task with intent-based delegation.
 
 #### `orchestrator.assignWorker(task: Task, workers: Worker[]): WorkerAssignment | null`
+
 Find best worker for a task.
 
 #### `orchestrator.synthesizeResults(results: TaskResult[]): SynthesizedOutput`
+
 Combine worker outputs into coherent insights.
 
 #### `orchestrator.handleWorkerFailure(workerId: string, error: Error): RecoveryAction`
+
 Gracefully recover from worker failures.
 
 #### `orchestrator.executeWithPattern(tasks: Task[], pattern: DelegationPattern): Promise<SynthesizedOutput>`
+
 Execute tasks using a specific delegation pattern.
 
 #### `orchestrator.getStatus(): OrchestratorStatus`
+
 Get current orchestrator state and metrics.
 
 ### Helper Functions
 
 #### `createMockWorker(id: string, specialization: string, capabilities: string[]): Worker`
+
 Create a mock worker for testing.
 
 #### `createTask(id: string, type: string, intent: string, options?: Partial<Task>): Task`
+
 Create a task with intent-based delegation.
 
 ## Anti-Patterns Avoided
 
 ### ❌ The Consensus Fabrication
+
 Three agents assess quality as 7/10, 8/10, 9/10, report "consensus of 8/10".
 ✅ **Instead:** Report range and preserve disagreement.
 
 ### ❌ The Rubber-Stamp Validator
+
 Validator agent always approves primary agent's work.
 ✅ **Instead:** Independent validation with actual rejection capability.
 
 ### ❌ Communication Pretense
+
 Agents supposedly collaborating but actually just sequential execution.
 ✅ **Instead:** Explicit message passing via message bus.
 
 ### ❌ The Micromanager
+
 Giving step-by-step instructions to workers.
 ✅ **Instead:** Specify outcomes, let workers determine approach.
 
 ## Performance Characteristics
 
 **Measured (from research in EXECUTIVE_CLAUDE.md):**
+
 - Context efficiency: 84% token reduction through minimalism
 - First-pass success rate: 85% with intent-based delegation
 - Time to completion: 37% faster with parallelization
 
 **Coordination Overhead (by pattern):**
+
 - Parallel Fan-Out: 0.2 (20% overhead)
 - Serial Chain: 0.1 (10% overhead)
 - Recursive Decomposition: 0.3 (30% overhead - highest)
@@ -526,6 +559,7 @@ Giving step-by-step instructions to workers.
 ## Version History
 
 **1.0.0** (2025-12-06)
+
 - Initial implementation
 - All four delegation patterns
 - Intent-based task validation

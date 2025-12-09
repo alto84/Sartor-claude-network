@@ -23,26 +23,31 @@ Based on cutting-edge AI research:
 ## Key Features
 
 ### 1. Pattern Extraction from Successful Executions
+
 - Analyzes process traces to identify successful strategies
 - Finds common sequences across multiple executions
 - Extracts context-strategy pairs with evidence
 
 ### 2. Evidence-Based Learning
+
 - Every pattern backed by concrete task examples
 - Success rates calculated from real outcomes
 - Confidence scores using Wilson interval statistics
 
 ### 3. Memory Persistence
+
 - Integrates with Firebase for lifelong learning
 - Patterns survive across sessions
 - Warm-tier storage (100-500ms latency) via Firestore
 
 ### 4. Skill Refinement
+
 - Analyzes feedback to propose skill updates
 - Identifies common issues and improvement opportunities
 - Tracks impact with estimated success rate improvements
 
 ### 5. Context-Based Recommendations
+
 - Matches patterns to current context
 - Provides ranked recommendations with alternatives
 - Includes caveats based on confidence and evidence
@@ -63,7 +68,9 @@ ExecutionOutcome → Pattern Extraction → Learned Patterns
 ## Files Created
 
 ### `/src/skills/self-improvement.ts` (33 KB)
+
 Main implementation containing:
+
 - Core interfaces (ExecutionOutcome, LearnedPattern, Feedback, etc.)
 - SelfImprovementLoop class with all learning algorithms
 - Pattern extraction, validation, and recommendation logic
@@ -72,7 +79,9 @@ Main implementation containing:
 - Factory functions and default export
 
 ### `/src/skills/self-improvement.example.ts` (11 KB)
+
 Comprehensive examples demonstrating:
+
 - Recording successful executions
 - Extracting patterns from multiple outcomes
 - Getting context-based recommendations
@@ -83,7 +92,9 @@ Comprehensive examples demonstrating:
 ### Updated Files
 
 #### `/src/skills/index.ts`
+
 Added exports:
+
 ```typescript
 export {
   SelfImprovementLoop,
@@ -104,7 +115,9 @@ export { default as selfImprovement } from './self-improvement';
 ```
 
 #### `/src/skills/skill-manifest.ts`
+
 Added SELF_IMPROVEMENT manifest with:
+
 - Skill metadata and triggers
 - Progressive loading configuration (Level 1, 2, 3)
 - Usage patterns and anti-patterns
@@ -130,7 +143,7 @@ const processTrace: ProcessStep[] = [
     duration: 1500,
     timestamp: Date.now(),
     context: {},
-    metrics: { accuracy: 0.95, efficiency: 0.8 }
+    metrics: { accuracy: 0.95, efficiency: 0.8 },
   },
   // ... more steps
 ];
@@ -157,7 +170,7 @@ const outcomes = [
 
 const patterns = loop.extractPatterns(outcomes);
 
-patterns.forEach(pattern => {
+patterns.forEach((pattern) => {
   console.log(`Context: ${pattern.context}`);
   console.log(`Strategy: ${pattern.strategy}`);
   console.log(`Success Rate: ${(pattern.successRate * 100).toFixed(0)}%`);
@@ -189,13 +202,10 @@ recommendations.forEach((rec, index) => {
 import { createFeedback } from '@/skills';
 
 const feedbackList = [
-  createFeedback(
-    'task_001',
-    'test-runner',
-    'failure',
-    'Tests timed out after 30 seconds',
-    ['Increase timeout threshold', 'Add timeout configuration']
-  ),
+  createFeedback('task_001', 'test-runner', 'failure', 'Tests timed out after 30 seconds', [
+    'Increase timeout threshold',
+    'Add timeout configuration',
+  ]),
   // ... more feedback
 ];
 
@@ -205,7 +215,7 @@ console.log(`Update Type: ${update.updateType}`);
 console.log(`Description: ${update.description}`);
 console.log(`Rationale: ${update.rationale}`);
 
-update.proposedChanges.forEach(change => {
+update.proposedChanges.forEach((change) => {
   console.log(`${change.area}: ${change.before} → ${change.after}`);
   console.log(`Confidence: ${(change.confidence * 100).toFixed(0)}%`);
 });
@@ -219,7 +229,9 @@ const stats = loop.getPatternStatistics(patternId);
 if (stats) {
   console.log(`Total Executions: ${stats.totalExecutions}`);
   console.log(`Success Rate: ${(stats.successRate * 100).toFixed(1)}%`);
-  console.log(`Confidence Interval (95%): ${(stats.confidenceInterval.lower * 100).toFixed(1)}% - ${(stats.confidenceInterval.upper * 100).toFixed(1)}%`);
+  console.log(
+    `Confidence Interval (95%): ${(stats.confidenceInterval.lower * 100).toFixed(1)}% - ${(stats.confidenceInterval.upper * 100).toFixed(1)}%`
+  );
   console.log(`Trend: ${stats.trendDirection}`);
 }
 ```
@@ -243,6 +255,7 @@ const loadedPatterns = await loop.loadFromMemory();
 Main class implementing the learning system.
 
 **Methods:**
+
 - `recordOutcome(outcome: ExecutionOutcome): void` - Record task execution outcome
 - `extractPatterns(outcomes: ExecutionOutcome[]): LearnedPattern[]` - Extract patterns from outcomes
 - `getRecommendations(context: string): PatternRecommendation[]` - Get context-based recommendations
@@ -254,6 +267,7 @@ Main class implementing the learning system.
 ### Core Interfaces
 
 #### `ExecutionOutcome`
+
 ```typescript
 interface ExecutionOutcome {
   taskId: string;
@@ -275,14 +289,15 @@ interface ExecutionOutcome {
 ```
 
 #### `LearnedPattern`
+
 ```typescript
 interface LearnedPattern {
   id: string;
-  context: string;  // When this applies
-  strategy: string;  // What to do
-  evidence: string[];  // Task IDs that validate this
-  successRate: number;  // 0-1
-  confidenceScore: number;  // 0-1
+  context: string; // When this applies
+  strategy: string; // What to do
+  evidence: string[]; // Task IDs that validate this
+  successRate: number; // 0-1
+  confidenceScore: number; // 0-1
   applicableSkills: string[];
   extractedAt: number;
   lastValidatedAt: number;
@@ -298,6 +313,7 @@ interface LearnedPattern {
 ```
 
 #### `ProcessStep`
+
 ```typescript
 interface ProcessStep {
   stepId: string;
@@ -316,6 +332,7 @@ interface ProcessStep {
 ```
 
 #### `Feedback`
+
 ```typescript
 interface Feedback {
   feedbackId: string;
@@ -323,7 +340,7 @@ interface Feedback {
   skillId: string;
   type: 'success' | 'failure' | 'partial' | 'user-correction';
   content: string;
-  rating?: number;  // 1-5
+  rating?: number; // 1-5
   timestamp: number;
   actionable: string[];
   metadata?: Record<string, unknown>;
@@ -331,6 +348,7 @@ interface Feedback {
 ```
 
 #### `SkillUpdate`
+
 ```typescript
 interface SkillUpdate {
   skillId: string;
@@ -365,16 +383,19 @@ interface SkillUpdate {
 The Self-Improvement Feedback Mechanism integrates with the three-tier memory architecture:
 
 ### Hot Tier (Firebase RTDB)
+
 - Active learning state (<100ms latency)
 - Currently executing patterns
 - Real-time pattern updates
 
 ### Warm Tier (Firestore)
+
 - Persisted learned patterns (100-500ms latency)
 - Pattern library with evidence
 - Historical performance data
 
 ### Cold Tier (GitHub)
+
 - Long-term pattern evolution (1-5s latency)
 - Skill update history
 - Institutional knowledge
@@ -382,19 +403,25 @@ The Self-Improvement Feedback Mechanism integrates with the three-tier memory ar
 ## Pattern Extraction Algorithms
 
 ### 1. Common Sequence Detection
+
 Identifies action sequences that appear across multiple successful executions:
+
 - Minimum sequence length: 2 steps
 - Requires appearance in at least 2 executions
 - Deduplication of identical sequences
 
 ### 2. Context-Strategy Mapping
+
 Maps contexts to successful strategies:
+
 - Groups outcomes by context similarity (>60% similarity)
 - Identifies strategies with ≥70% success rate
 - Requires minimum 2 successes
 
 ### 3. Optimization Pattern Discovery
+
 Finds patterns that minimize refinement loops:
+
 - Analyzes outcomes with multiple refinement iterations
 - Extracts common factors from low-refinement outcomes
 - Threshold: Factor must appear in 70% of outcomes
@@ -402,6 +429,7 @@ Finds patterns that minimize refinement loops:
 ## Statistical Confidence
 
 Uses Wilson score interval for confidence calculation:
+
 - Provides more accurate confidence bounds than normal approximation
 - Works well even with small sample sizes
 - 95% confidence level by default
@@ -411,7 +439,7 @@ Uses Wilson score interval for confidence calculation:
 const confidenceInterval = calculateWilsonInterval(
   successes,
   total,
-  0.95  // 95% confidence
+  0.95 // 95% confidence
 );
 
 // Returns { lower, upper, confidenceLevel }
@@ -428,27 +456,32 @@ const confidenceInterval = calculateWilsonInterval(
 ## Best Practices
 
 ### 1. Recording Outcomes
+
 - Always include complete process traces
 - Mark outcomes as success/failure accurately
 - Provide detailed context strings
 - Include relevant metrics in steps
 
 ### 2. Pattern Extraction
+
 - Collect at least 5-10 outcomes before extracting patterns
 - Use outcomes from similar contexts for better patterns
 - Review extracted patterns for accuracy
 
 ### 3. Using Recommendations
+
 - Consider relevance score and success rate together
 - Read caveats carefully before applying patterns
 - Validate patterns in your specific context
 
 ### 4. Feedback Collection
+
 - Provide specific, actionable feedback
 - Include both successes and failures
 - Be consistent in feedback categorization
 
 ### 5. Memory Management
+
 - Enable persistence for production use
 - Periodically review and prune outdated patterns
 - Monitor pattern statistics for degradation
@@ -456,6 +489,7 @@ const confidenceInterval = calculateWilsonInterval(
 ## Future Enhancements
 
 ### Planned Features
+
 1. **Active Learning**: Suggest experiments to validate uncertain patterns
 2. **Transfer Learning**: Apply patterns across related skills
 3. **Collaborative Learning**: Share patterns across team/organization
@@ -463,6 +497,7 @@ const confidenceInterval = calculateWilsonInterval(
 5. **Multi-Modal Evidence**: Support for visual/audio execution traces
 
 ### Firebase Integration
+
 To fully enable memory persistence, implement:
 
 ```typescript

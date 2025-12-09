@@ -164,7 +164,7 @@ export class BootstrapMesh {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify({
           jsonrpc: '2.0',
@@ -200,7 +200,7 @@ export class BootstrapMesh {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json, text/event-stream',
+          Accept: 'application/json, text/event-stream',
         },
         body: JSON.stringify({
           jsonrpc: '2.0',
@@ -250,7 +250,7 @@ export class BootstrapMesh {
 
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
+      Accept: 'application/json',
     };
 
     if (this.mcpSession.sessionId) {
@@ -275,7 +275,7 @@ export class BootstrapMesh {
       throw new Error(`MCP call failed: ${response.statusText}`);
     }
 
-    const data = await response.json() as any;
+    const data = (await response.json()) as any;
 
     if (data.error) {
       throw new Error(`MCP error: ${data.error.message}`);
@@ -288,12 +288,7 @@ export class BootstrapMesh {
    * Load memories from available backends (tries in priority order)
    */
   async loadMemories(options: LoadOptions = {}): Promise<Memory[]> {
-    const {
-      type,
-      minImportance,
-      limit = 10,
-      tags = [],
-    } = options;
+    const { type, minImportance, limit = 10, tags = [] } = options;
 
     // Try MCP HTTP first
     if (this.mcpAvailable) {
@@ -312,9 +307,7 @@ export class BootstrapMesh {
           // Filter by tags if specified
           let memories = result.memories;
           if (tags.length > 0) {
-            memories = memories.filter((m: Memory) =>
-              tags.some(tag => m.tags?.includes(tag))
-            );
+            memories = memories.filter((m: Memory) => tags.some((tag) => m.tags?.includes(tag)));
           }
 
           return memories;
@@ -342,9 +335,7 @@ export class BootstrapMesh {
 
         // Filter by tags if specified
         if (tags.length > 0) {
-          memories = memories.filter(m =>
-            tags.some(tag => m.tags.includes(tag))
-          );
+          memories = memories.filter((m) => tags.some((tag) => m.tags.includes(tag)));
         }
 
         if (memories.length > 0) {
@@ -375,7 +366,7 @@ export class BootstrapMesh {
               if (minImportance !== undefined && memory.importance_score < minImportance) {
                 continue;
               }
-              if (tags.length > 0 && !tags.some(tag => memory.tags?.includes(tag))) {
+              if (tags.length > 0 && !tags.some((tag) => memory.tags?.includes(tag))) {
                 continue;
               }
 
@@ -413,7 +404,7 @@ export class BootstrapMesh {
             // Apply filters
             if (type && mem.type !== type) return;
             if (minImportance !== undefined && mem.importance_score < minImportance) return;
-            if (tags.length > 0 && !tags.some(tag => mem.tags?.includes(tag))) return;
+            if (tags.length > 0 && !tags.some((tag) => mem.tags?.includes(tag))) return;
 
             memories.push(mem);
           });
@@ -522,14 +513,10 @@ export class BootstrapMesh {
 
     // Try Local File
     if (this.fileAvailable) {
-      const created = this.fileStore.createMemory(
-        memory.content,
-        memoryType,
-        {
-          importance_score: memory.importance_score,
-          tags: memory.tags,
-        }
-      );
+      const created = this.fileStore.createMemory(memory.content, memoryType, {
+        importance_score: memory.importance_score,
+        tags: memory.tags,
+      });
       console.error(`[BootstrapMesh] ✓ Saved memory to local file: ${created.id}`);
       return created.id;
     }

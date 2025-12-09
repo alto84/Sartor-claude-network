@@ -5,11 +5,7 @@
  * and follows the principles from UPLIFTED_SKILLS.md
  */
 
-import {
-  EvidenceBasedValidator,
-  quickValidate,
-  validateClaim,
-} from './evidence-based-validation';
+import { EvidenceBasedValidator, quickValidate, validateClaim } from './evidence-based-validation';
 
 describe('EvidenceBasedValidator', () => {
   let validator: EvidenceBasedValidator;
@@ -80,18 +76,13 @@ describe('EvidenceBasedValidator', () => {
 
   describe('validateEvidence', () => {
     it('should flag claims without sources', () => {
-      const result = validator.validateEvidence(
-        'Performance improved by 50%',
-        []
-      );
+      const result = validator.validateEvidence('Performance improved by 50%', []);
       expect(result.valid).toBe(false);
       expect(result.issues[0].category).toBe('evidence');
     });
 
     it('should flag placeholder sources', () => {
-      const result = validator.validateEvidence('Test claim', [
-        'TODO: add source',
-      ]);
+      const result = validator.validateEvidence('Test claim', ['TODO: add source']);
       expect(result.valid).toBe(false);
       expect(result.issues[0].message).toContain('placeholder');
     });
@@ -105,10 +96,7 @@ describe('EvidenceBasedValidator', () => {
     });
 
     it('should require evidence for quantitative claims', () => {
-      const result = validator.validateEvidence(
-        'Improved performance by 75%',
-        []
-      );
+      const result = validator.validateEvidence('Improved performance by 75%', []);
       expect(result.valid).toBe(false);
       expect(result.issues[0].type).toBe('error');
     });
@@ -116,27 +104,19 @@ describe('EvidenceBasedValidator', () => {
 
   describe('validateCompleteness', () => {
     it('should flag "complete" without full evidence', () => {
-      const result = validator.validateCompleteness('Feature is complete', [
-        'Implemented',
-      ]);
+      const result = validator.validateCompleteness('Feature is complete', ['Implemented']);
       expect(result.valid).toBe(false);
       expect(result.issues.length).toBeGreaterThan(0);
     });
 
     it('should flag "production ready" without deployment evidence', () => {
-      const result = validator.validateCompleteness('Production ready', [
-        'Code written',
-      ]);
+      const result = validator.validateCompleteness('Production ready', ['Code written']);
       expect(result.valid).toBe(false);
-      expect(result.issues.some((i) => i.message.includes('deployed'))).toBe(
-        true
-      );
+      expect(result.issues.some((i) => i.message.includes('deployed'))).toBe(true);
     });
 
     it('should flag vague completion language', () => {
-      const result = validator.validateCompleteness('Mostly done', [
-        'Some work',
-      ]);
+      const result = validator.validateCompleteness('Mostly done', ['Some work']);
       expect(result.issues.some((i) => i.message.includes('Vague'))).toBe(true);
     });
 
@@ -149,9 +129,7 @@ describe('EvidenceBasedValidator', () => {
     });
 
     it('should flag percentage claims without enumeration', () => {
-      const result = validator.validateCompleteness('80% complete', [
-        'Made progress',
-      ]);
+      const result = validator.validateCompleteness('80% complete', ['Made progress']);
       expect(result.valid).toBe(false);
       expect(result.issues[0].message).toContain('enumeration');
     });
@@ -196,18 +174,14 @@ describe('EvidenceBasedValidator', () => {
     });
 
     it('validateClaim should validate evidence', () => {
-      const result = validateClaim('Test claim with 50% improvement', [
-        'https://example.com',
-      ]);
+      const result = validateClaim('Test claim with 50% improvement', ['https://example.com']);
       expect(result.issues.length).toBeGreaterThan(-1);
     });
   });
 
   describe('anti-patterns from UPLIFTED_SKILLS.md', () => {
     it('should detect The Rounding Trap', () => {
-      const result = validator.validateMetrics(
-        '67% becomes roughly three-quarters'
-      );
+      const result = validator.validateMetrics('67% becomes roughly three-quarters');
       expect(result.valid).toBe(false);
     });
 
@@ -218,17 +192,13 @@ describe('EvidenceBasedValidator', () => {
     });
 
     it('should detect Confidence Inflation language', () => {
-      const result = validator.validateLanguage(
-        'This is proven to be reliable'
-      );
+      const result = validator.validateLanguage('This is proven to be reliable');
       expect(result.valid).toBe(false);
       expect(result.issues[0].message).toContain('confidenceInflation');
     });
 
     it('should detect The Completion Illusion', () => {
-      const result = validator.validateCompleteness('Complete', [
-        'Code exists',
-      ]);
+      const result = validator.validateCompleteness('Complete', ['Code exists']);
       expect(result.valid).toBe(false);
       expect(
         result.issues.some(

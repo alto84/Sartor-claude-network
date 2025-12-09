@@ -9,7 +9,7 @@ export {
   createExecutive,
   AgentRole,
   type AgentTask,
-  type TaskResult
+  type TaskResult,
 } from './executive-claude';
 
 // Self-Improving Loop
@@ -17,7 +17,7 @@ export {
   SelfImprovingLoop,
   createSelfImprovingLoop,
   type ImprovementCandidate,
-  type ValidationResult
+  type ValidationResult,
 } from './self-improving-loop';
 
 // Learning Pipeline
@@ -25,5 +25,5 @@ export {
   LearningPipeline,
   createLearningPipeline,
   type Pattern,
-  type LearningStats
+  type LearningStats,
 } from './learning-pipeline';

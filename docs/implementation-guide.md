@@ -49,6 +49,7 @@ NODE_ENV=production
 ### Firebase Setup
 
 1. **Create Firebase Project**
+
 ```bash
 npm install -g firebase-tools
 firebase login
@@ -56,6 +57,7 @@ firebase init
 ```
 
 2. **Enable Services**
+
 - Realtime Database
 - Firestore
 - Authentication
@@ -63,11 +65,13 @@ firebase init
 - Cloud Storage
 
 3. **Deploy Security Rules**
+
 ```bash
 firebase deploy --only database,firestore:rules
 ```
 
 4. **Initialize Database Structure**
+
 ```bash
 node scripts/init-firebase.js
 ```
@@ -75,6 +79,7 @@ node scripts/init-firebase.js
 ### GitHub Repository Setup
 
 1. **Create Memory Repository**
+
 ```bash
 gh repo create sartor-memories --private
 cd sartor-memories
@@ -82,6 +87,7 @@ mkdir -p memories/{2025,archive,embeddings} indexes schemas scripts .github/work
 ```
 
 2. **Set Up GitHub Actions**
+
 ```bash
 # Copy workflow files
 cp ../claude-network/workflows/*.yml .github/workflows/
@@ -92,6 +98,7 @@ gh secret set FIRESTORE_PROJECT_ID -b "sartor-memories"
 ```
 
 3. **Initialize Structure**
+
 ```bash
 git add .
 git commit -m "Initial commit: memory system structure"
@@ -115,7 +122,7 @@ async function setup() {
   const pinecone = new PineconeClient();
   await pinecone.init({
     apiKey: process.env.PINECONE_API_KEY,
-    environment: process.env.PINECONE_ENVIRONMENT
+    environment: process.env.PINECONE_ENVIRONMENT,
   });
 
   await pinecone.createIndex({
@@ -124,8 +131,8 @@ async function setup() {
       dimension: 1536,
       metric: 'cosine',
       pods: 1,
-      podType: 's1.x1'
-    }
+      podType: 's1.x1',
+    },
   });
 
   console.log('Pinecone index created');
@@ -160,9 +167,9 @@ admin.initializeApp({
   credential: admin.credential.cert({
     projectId: process.env.FIREBASE_PROJECT_ID,
     privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-    clientEmail: process.env.FIREBASE_CLIENT_EMAIL
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
   }),
-  databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}-default-rtdb.firebaseio.com`
+  databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}-default-rtdb.firebaseio.com`,
 });
 
 const db = admin.database();
@@ -182,7 +189,7 @@ class HotTier {
       lastActive: Date.now(),
       ttl: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
       context: sessionData.context || {},
-      preferences: sessionData.preferences || {}
+      preferences: sessionData.preferences || {},
     });
 
     return sessionId;
@@ -196,7 +203,7 @@ class HotTier {
   async updateSession(sessionId, updates) {
     await this.db.ref(`hot_memory/sessions/${sessionId}`).update({
       ...updates,
-      lastActive: Date.now()
+      lastActive: Date.now(),
     });
   }
 
@@ -206,7 +213,7 @@ class HotTier {
     await memoryRef.set({
       ...memoryData,
       promotedAt: Date.now(),
-      ttl: Date.now() + 6 * 60 * 60 * 1000 // 6 hours
+      ttl: Date.now() + 6 * 60 * 60 * 1000, // 6 hours
     });
   }
 
@@ -223,13 +230,13 @@ class HotTier {
       const current = snapshot.val();
       const newTTL = Math.min(
         Date.now() + 24 * 60 * 60 * 1000, // Max 24 hours
-        current.ttl + 3 * 60 * 60 * 1000   // +3 hours
+        current.ttl + 3 * 60 * 60 * 1000 // +3 hours
       );
 
       await memoryRef.update({
         lastAccessed: Date.now(),
         accessCount: (current.accessCount || 0) + 1,
-        ttl: newTTL
+        ttl: newTTL,
       });
     }
   }
@@ -252,14 +259,14 @@ class WarmTier {
     this.pinecone = new PineconeClient();
     this.embeddings = new EmbeddingService({
       openaiApiKey: process.env.OPENAI_API_KEY,
-      embeddingModel: 'text-embedding-3-small'
+      embeddingModel: 'text-embedding-3-small',
     });
   }
 
   async initialize() {
     await this.pinecone.init({
       apiKey: process.env.PINECONE_API_KEY,
-      environment: process.env.PINECONE_ENVIRONMENT
+      environment: process.env.PINECONE_ENVIRONMENT,
     });
 
     this.index = this.pinecone.Index('sartor-memories');
@@ -278,14 +285,14 @@ class WarmTier {
         createdAt: Firestore.Timestamp.now(),
         updatedAt: Firestore.Timestamp.now(),
         accessCount: 0,
-        lastAccessed: Firestore.Timestamp.now()
+        lastAccessed: Firestore.Timestamp.now(),
       });
 
     // Generate and store embedding
-    const embedding = await this.embeddings.generateEmbedding(
-      memoryData.content,
-      { memoryId, userId: memoryData.userId }
-    );
+    const embedding = await this.embeddings.generateEmbedding(memoryData.content, {
+      memoryId,
+      userId: memoryData.userId,
+    });
 
     await this.embeddings.storeEmbedding(memoryId, embedding);
 
@@ -293,10 +300,7 @@ class WarmTier {
   }
 
   async getMemory(memoryId) {
-    const doc = await this.firestore
-      .collection('memories')
-      .doc(memoryId)
-      .get();
+    const doc = await this.firestore.collection('memories').doc(memoryId).get();
 
     if (!doc.exists) {
       return null;
@@ -308,19 +312,14 @@ class WarmTier {
       .doc(memoryId)
       .update({
         lastAccessed: Firestore.Timestamp.now(),
-        accessCount: Firestore.FieldValue.increment(1)
+        accessCount: Firestore.FieldValue.increment(1),
       });
 
     return { id: doc.id, ...doc.data() };
   }
 
   async searchMemories(query, options = {}) {
-    const {
-      userId = null,
-      topK = 10,
-      filter = {},
-      searchType = 'hybrid'
-    } = options;
+    const { userId = null, topK = 10, filter = {}, searchType = 'hybrid' } = options;
 
     if (searchType === 'semantic' || searchType === 'hybrid') {
       // Generate query embedding
@@ -331,11 +330,11 @@ class WarmTier {
         vector: queryEmbedding.vector,
         topK: topK * 2,
         filter: userId ? { userId } : {},
-        includeMetadata: true
+        includeMetadata: true,
       });
 
       // Fetch full memories from Firestore
-      const memoryIds = results.matches.map(m => m.id);
+      const memoryIds = results.matches.map((m) => m.id);
       const memories = await this.fetchMemoriesByIds(memoryIds);
 
       return memories;
@@ -356,7 +355,7 @@ class WarmTier {
         .where(Firestore.FieldPath.documentId(), 'in', chunk)
         .get();
 
-      snapshot.docs.forEach(doc => {
+      snapshot.docs.forEach((doc) => {
         memories.push({ id: doc.id, ...doc.data() });
       });
     }
@@ -399,7 +398,7 @@ class SyncEngine {
       hotDemotion: this.hotToWarm,
       warmDemotion: this.warmToCold,
       coldPromotion: this.coldToWarm,
-      warmPromotion: this.warmToHot
+      warmPromotion: this.warmToHot,
     });
   }
 
@@ -445,7 +444,7 @@ app.post('/api/query', async (req, res) => {
     const warmResults = await warmTier.searchMemories(query, {
       userId,
       topK: 10,
-      searchType: 'hybrid'
+      searchType: 'hybrid',
     });
 
     // 3. Optionally check cold tier (via GitHub API)
@@ -454,7 +453,7 @@ app.post('/api/query', async (req, res) => {
     // 4. Aggregate and return
     res.json({
       results: warmResults,
-      sessionContext
+      sessionContext,
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -470,7 +469,7 @@ app.post('/api/memories', async (req, res) => {
       content,
       type,
       userId,
-      tags
+      tags,
     });
 
     res.json({ memoryId });
@@ -547,18 +546,16 @@ class MetricsCollector {
       tiers: {
         hot: await this.getHotTierMetrics(),
         warm: await this.getWarmTierMetrics(),
-        cold: await this.getColdTierMetrics()
+        cold: await this.getColdTierMetrics(),
       },
       sync: await this.getSyncMetrics(),
-      costs: await this.getCostMetrics()
+      costs: await this.getCostMetrics(),
     };
   }
 
   async getHotTierMetrics() {
     // Query Firebase RTDB
-    const snapshot = await admin.database()
-      .ref('hot_memory/memories')
-      .once('value');
+    const snapshot = await admin.database().ref('hot_memory/memories').once('value');
 
     const memories = snapshot.val() || {};
     const count = Object.keys(memories).length;
@@ -569,14 +566,11 @@ class MetricsCollector {
 
   async getWarmTierMetrics() {
     // Query Firestore
-    const snapshot = await firestore
-      .collection('memories')
-      .count()
-      .get();
+    const snapshot = await firestore.collection('memories').count().get();
 
     return {
       count: snapshot.data().count,
-      vectorCount: await this.getVectorCount()
+      vectorCount: await this.getVectorCount(),
     };
   }
 
@@ -584,12 +578,12 @@ class MetricsCollector {
     // Query GitHub API
     const { data } = await github.repos.get({
       owner: 'sartor',
-      repo: 'memories'
+      repo: 'memories',
     });
 
     return {
       size: data.size,
-      commits: data.commits || 0
+      commits: data.commits || 0,
     };
   }
 }

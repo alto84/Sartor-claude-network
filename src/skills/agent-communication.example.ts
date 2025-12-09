@@ -26,11 +26,16 @@ async function basicMessageExample() {
   const system = new AgentCommunicationSystem();
 
   // Create a message with validation
-  const message = createMessage('agent-1', 'agent-2', { task: 'analyze-data' }, {
-    priority: 'high',
-    ttl: 5000,
-    requiresAck: true,
-  });
+  const message = createMessage(
+    'agent-1',
+    'agent-2',
+    { task: 'analyze-data' },
+    {
+      priority: 'high',
+      ttl: 5000,
+      requiresAck: true,
+    }
+  );
 
   // Send message with automatic validation and retry
   const result = await system.sendMessage(message);
@@ -47,13 +52,18 @@ async function basicMessageExample() {
 async function broadcastExample() {
   const system = new AgentCommunicationSystem();
 
-  const message = createMessage('coordinator', 'worker-1', {
-    command: 'start-task',
-    taskId: 'task-123',
-  }, {
-    type: 'broadcast',
-    priority: 'normal',
-  });
+  const message = createMessage(
+    'coordinator',
+    'worker-1',
+    {
+      command: 'start-task',
+      taskId: 'task-123',
+    },
+    {
+      type: 'broadcast',
+      priority: 'normal',
+    }
+  );
 
   // Broadcast to multiple targets with individual tracking
   const targets = ['worker-1', 'worker-2', 'worker-3', 'worker-4'];
@@ -118,8 +128,10 @@ async function messageHistoryExample() {
   });
 
   console.log('Message History for agent-1:');
-  history.forEach(msg => {
-    console.log(`  ${msg.id}: ${msg.from} -> ${msg.to} at ${new Date(msg.timestamp).toISOString()}`);
+  history.forEach((msg) => {
+    console.log(
+      `  ${msg.id}: ${msg.from} -> ${msg.to} at ${new Date(msg.timestamp).toISOString()}`
+    );
   });
   console.log('');
 }
@@ -150,7 +162,7 @@ async function circuitBreakerExample() {
   // Check circuit breaker states
   const breakers = system.getCircuitBreakerStates();
   console.log('\nCircuit Breaker States:');
-  breakers.forEach(breaker => {
+  breakers.forEach((breaker) => {
     console.log(`  ${breaker.destination}: ${breaker.state} (failures: ${breaker.failureCount})`);
   });
   console.log('');
@@ -164,12 +176,17 @@ async function deadLetterQueueExample() {
   const system = new AgentCommunicationSystem();
 
   // Create an expired message (will fail permanently)
-  const expiredMessage = createMessage('agent-1', 'agent-2', { data: 'old-task' }, {
-    ttl: 1, // 1ms TTL - will expire immediately
-  });
+  const expiredMessage = createMessage(
+    'agent-1',
+    'agent-2',
+    { data: 'old-task' },
+    {
+      ttl: 1, // 1ms TTL - will expire immediately
+    }
+  );
 
   // Wait to ensure expiration
-  await new Promise(resolve => setTimeout(resolve, 10));
+  await new Promise((resolve) => setTimeout(resolve, 10));
 
   // Try to send expired message
   await system.sendMessage(expiredMessage);
@@ -179,7 +196,7 @@ async function deadLetterQueueExample() {
 
   console.log('Dead Letter Queue:');
   console.log(`Total messages: ${deadLetters.length}`);
-  deadLetters.forEach(msg => {
+  deadLetters.forEach((msg) => {
     const status = system.getDeliveryStatus(msg.id);
     console.log(`  ${msg.id}: ${status?.failureReason || 'Unknown failure'}`);
   });
@@ -212,12 +229,12 @@ async function validationExample() {
   console.log('Message Validation:');
   console.log(`Valid: ${validation.valid}`);
   console.log('\nErrors:');
-  validation.errors.forEach(error => {
+  validation.errors.forEach((error) => {
     console.log(`  [${error.code}] ${error.field}: ${error.message}`);
   });
   if (validation.warnings.length > 0) {
     console.log('\nWarnings:');
-    validation.warnings.forEach(warning => {
+    validation.warnings.forEach((warning) => {
       console.log(`  ${warning}`);
     });
   }

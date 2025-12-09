@@ -91,8 +91,8 @@
         "description": "New code must have corresponding tests",
         "check": "test-coverage",
         "config": {
-          "minimum_line_coverage": 0.80,
-          "minimum_branch_coverage": 0.70,
+          "minimum_line_coverage": 0.8,
+          "minimum_branch_coverage": 0.7,
           "require_integration_tests": true,
           "require_unit_tests": true,
           "measurement_required": true,

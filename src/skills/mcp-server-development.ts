@@ -212,30 +212,19 @@ const STDIO_VIOLATIONS = {
  */
 const SECURITY_PATTERNS = {
   // Command injection risks
-  commandInjection: [
-    /exec\(/g,
-    /execSync\(/g,
-    /spawn\(/g,
-    /child_process/g,
-  ],
+  commandInjection: [/exec\(/g, /execSync\(/g, /spawn\(/g, /child_process/g],
 
   // Path traversal risks
   pathTraversal: [
-    /\.\.[\/\\]/g, // ../ or ..\
+    /\.\.[/\\]/g, // ../ or ..\
     /path\.join\([^)]*\$\{\}/g, // path.join with template literals
   ],
 
   // Unsafe evaluation
-  unsafeEval: [
-    /\beval\(/g,
-    /Function\(/g,
-    /new Function/g,
-  ],
+  unsafeEval: [/\beval\(/g, /Function\(/g, /new Function/g],
 
   // Environment variable leaks
-  envLeak: [
-    /process\.env/g,
-  ],
+  envLeak: [/process\.env/g],
 
   // SQL injection (if using SQL)
   sqlInjection: [
@@ -301,7 +290,7 @@ export class MCPServerValidator {
         const toolReport = this.validateToolDefinition(tool);
         errors.push(...toolReport.errors);
         warnings.push(...toolReport.warnings);
-        suggestions.push(...toolReport.suggestions.map(s => `Tool "${tool.name}": ${s}`));
+        suggestions.push(...toolReport.suggestions.map((s) => `Tool "${tool.name}": ${s}`));
       });
     }
 
@@ -333,7 +322,7 @@ export class MCPServerValidator {
 
     // Calculate score
     const totalChecks = 5 + config.tools.length * 8;
-    const passedChecks = totalChecks - errors.length - (warnings.length * 0.5);
+    const passedChecks = totalChecks - errors.length - warnings.length * 0.5;
     const score = Math.max(0, Math.min(1, passedChecks / totalChecks));
 
     return {
@@ -422,7 +411,7 @@ export class MCPServerValidator {
 
     // Calculate score
     const totalChecks = 8;
-    const passedChecks = totalChecks - errors.length - (warnings.length * 0.5);
+    const passedChecks = totalChecks - errors.length - warnings.length * 0.5;
     const score = Math.max(0, Math.min(1, passedChecks / totalChecks));
 
     return {
@@ -463,7 +452,7 @@ export class MCPServerValidator {
 
       // Check for required fields
       if (schema.required && schema.required.length > 0) {
-        schema.required.forEach(field => {
+        schema.required.forEach((field) => {
           if (!schema.properties || !schema.properties[field]) {
             errors.push({
               type: 'error',
@@ -532,35 +521,37 @@ export class MCPServerValidator {
     }
 
     // Check for command injection
-    SECURITY_PATTERNS.commandInjection.forEach(pattern => {
+    SECURITY_PATTERNS.commandInjection.forEach((pattern) => {
       if (pattern.test(handlerCode)) {
         vulnerabilities.push({
           type: 'command-injection',
           severity: 'critical',
           location: 'handler code',
           description: 'Potential command injection via exec/spawn',
-          remediation: 'Validate and sanitize all inputs before executing commands. Use allowlists.',
+          remediation:
+            'Validate and sanitize all inputs before executing commands. Use allowlists.',
           cwe: 'CWE-78',
         });
       }
     });
 
     // Check for path traversal
-    SECURITY_PATTERNS.pathTraversal.forEach(pattern => {
+    SECURITY_PATTERNS.pathTraversal.forEach((pattern) => {
       if (pattern.test(handlerCode)) {
         vulnerabilities.push({
           type: 'path-traversal',
           severity: 'high',
           location: 'handler code',
           description: 'Potential path traversal vulnerability',
-          remediation: 'Validate file paths against allowed directories. Use path.resolve() and check results.',
+          remediation:
+            'Validate file paths against allowed directories. Use path.resolve() and check results.',
           cwe: 'CWE-22',
         });
       }
     });
 
     // Check for unsafe eval
-    SECURITY_PATTERNS.unsafeEval.forEach(pattern => {
+    SECURITY_PATTERNS.unsafeEval.forEach((pattern) => {
       if (pattern.test(handlerCode)) {
         vulnerabilities.push({
           type: 'unsafe-eval',
@@ -580,13 +571,14 @@ export class MCPServerValidator {
         severity: 'medium',
         location: 'handler code',
         description: 'Accessing environment variables',
-        remediation: 'Ensure environment variables are not leaked in responses. Sanitize before returning.',
+        remediation:
+          'Ensure environment variables are not leaked in responses. Sanitize before returning.',
         cwe: 'CWE-200',
       });
     }
 
     // Check for SQL injection
-    SECURITY_PATTERNS.sqlInjection.forEach(pattern => {
+    SECURITY_PATTERNS.sqlInjection.forEach((pattern) => {
       if (pattern.test(handlerCode)) {
         vulnerabilities.push({
           type: 'sql-injection',
@@ -618,10 +610,10 @@ export class MCPServerValidator {
     }
 
     // Calculate risk score
-    const criticalCount = vulnerabilities.filter(v => v.severity === 'critical').length;
-    const highCount = vulnerabilities.filter(v => v.severity === 'high').length;
-    const mediumCount = vulnerabilities.filter(v => v.severity === 'medium').length;
-    const riskScore = Math.min(1, (criticalCount * 0.5 + highCount * 0.3 + mediumCount * 0.1));
+    const criticalCount = vulnerabilities.filter((v) => v.severity === 'critical').length;
+    const highCount = vulnerabilities.filter((v) => v.severity === 'high').length;
+    const mediumCount = vulnerabilities.filter((v) => v.severity === 'medium').length;
+    const riskScore = Math.min(1, criticalCount * 0.5 + highCount * 0.3 + mediumCount * 0.1);
 
     return {
       safe: vulnerabilities.length === 0,
@@ -688,12 +680,14 @@ function generateTypeScriptInterface(schema: JSONSchema, interfaceName: string):
   const properties = schema.properties || {};
   const required = schema.required || [];
 
-  const fields = Object.entries(properties).map(([key, prop]: [string, any]) => {
-    const optional = !required.includes(key) ? '?' : '';
-    const description = prop.description ? `  /** ${prop.description} */\n` : '';
-    const type = jsonSchemaTypeToTS(prop);
-    return `${description}  ${key}${optional}: ${type};`;
-  }).join('\n');
+  const fields = Object.entries(properties)
+    .map(([key, prop]: [string, any]) => {
+      const optional = !required.includes(key) ? '?' : '';
+      const description = prop.description ? `  /** ${prop.description} */\n` : '';
+      const type = jsonSchemaTypeToTS(prop);
+      return `${description}  ${key}${optional}: ${type};`;
+    })
+    .join('\n');
 
   return `interface ${interfaceName} {
 ${fields}
@@ -706,7 +700,7 @@ ${fields}
 function jsonSchemaTypeToTS(schema: JSONSchema): string {
   switch (schema.type) {
     case 'string':
-      return schema.enum ? schema.enum.map(v => `'${v}'`).join(' | ') : 'string';
+      return schema.enum ? schema.enum.map((v) => `'${v}'`).join(' | ') : 'string';
     case 'number':
     case 'integer':
       return 'number';
@@ -725,9 +719,10 @@ function jsonSchemaTypeToTS(schema: JSONSchema): string {
  * Convert snake_case to PascalCase
  */
 function toPascalCase(str: string): string {
-  return str.split('_').map(word =>
-    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-  ).join('');
+  return str
+    .split('_')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join('');
 }
 
 /**
@@ -816,15 +811,14 @@ export async function testToolHandler(
   }
 
   // Analyze coverage
-  const hasInputValidationTest = testCases.some(tc =>
-    tc.name.toLowerCase().includes('invalid') || tc.shouldFail
+  const hasInputValidationTest = testCases.some(
+    (tc) => tc.name.toLowerCase().includes('invalid') || tc.shouldFail
   );
-  const hasErrorHandlingTest = testCases.some(tc =>
-    tc.name.toLowerCase().includes('error') || tc.shouldFail
+  const hasErrorHandlingTest = testCases.some(
+    (tc) => tc.name.toLowerCase().includes('error') || tc.shouldFail
   );
-  const hasEdgeCasesTest = testCases.some(tc =>
-    tc.name.toLowerCase().includes('edge') ||
-    tc.name.toLowerCase().includes('boundary')
+  const hasEdgeCasesTest = testCases.some(
+    (tc) => tc.name.toLowerCase().includes('edge') || tc.name.toLowerCase().includes('boundary')
   );
 
   return {
@@ -871,16 +865,14 @@ export function analyzeInputValidation(handler: string): SecurityReport {
 /**
  * Create a basic MCP error response
  */
-export function createErrorResponse(
-  code: number,
-  message: string,
-  data?: any
-): ToolResult {
+export function createErrorResponse(code: number, message: string, data?: any): ToolResult {
   return {
-    content: [{
-      type: 'text',
-      text: message,
-    }],
+    content: [
+      {
+        type: 'text',
+        text: message,
+      },
+    ],
     isError: true,
     _meta: {
       errorCode: code,
@@ -892,7 +884,10 @@ export function createErrorResponse(
 /**
  * Validate input against JSON Schema
  */
-export function validateInput(input: any, schema: JSONSchema): { valid: boolean; errors: string[] } {
+export function validateInput(
+  input: any,
+  schema: JSONSchema
+): { valid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   // Basic type checking
@@ -904,7 +899,7 @@ export function validateInput(input: any, schema: JSONSchema): { valid: boolean;
 
   // Required fields for objects
   if (schema.type === 'object' && schema.required) {
-    schema.required.forEach(field => {
+    schema.required.forEach((field) => {
       if (!(field in input)) {
         errors.push(`Missing required field: ${field}`);
       }

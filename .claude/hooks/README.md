@@ -5,6 +5,7 @@ This directory contains hook scripts that enforce Evidence-Based Validation prin
 ## Overview
 
 The hooks system integrates with Claude Code's tool lifecycle to:
+
 - **Validate** TypeScript compilation after edits
 - **Detect** anti-patterns in generated code (fabricated metrics, vague language, missing error handling)
 - **Block** dangerous bash operations before execution
@@ -39,6 +40,7 @@ The main configuration file that defines when hooks run:
 ```
 
 **Hook Triggers:**
+
 - `postToolUse.Edit` - Runs after Claude edits a file
 - `postToolUse.Write` - Runs after Claude writes a new file
 - `preToolUse.Bash` - Runs BEFORE executing bash commands
@@ -48,6 +50,7 @@ The main configuration file that defines when hooks run:
 **Purpose:** Validates code quality and evidence-based practices after file modifications.
 
 **Exit Codes:**
+
 - `0` - Success (all checks passed)
 - `1` - Warnings (should review, but not blocking)
 - `2` - Errors (blocking issues found)
@@ -102,6 +105,7 @@ The main configuration file that defines when hooks run:
 **Purpose:** Blocks dangerous bash operations BEFORE execution.
 
 **Exit Codes:**
+
 - `0` - Safe to proceed
 - `1` - Blocked (dangerous operation detected)
 
@@ -147,11 +151,11 @@ Edit `/home/user/Sartor-claude-network/.claude/settings.json`:
 
 ```json
 {
-  "enforcementLevel": "warn",  // Options: "warn" | "error" | "off"
+  "enforcementLevel": "warn", // Options: "warn" | "error" | "off"
   "hooks": {
     "postToolUse": {
       "Edit": {
-        "blocking": false  // Set to true to block commits on warnings
+        "blocking": false // Set to true to block commits on warnings
       }
     }
   }
@@ -190,7 +194,7 @@ To temporarily disable a hook:
   "hooks": {
     "postToolUse": {
       "Edit": {
-        "enabled": false  // Disable this hook
+        "enabled": false // Disable this hook
       }
     }
   }
@@ -239,16 +243,19 @@ bash -x ./.claude/hooks/quality-check.sh file.ts 2>&1 | less
 ### Common Issues
 
 **Issue: Hook not running**
+
 - Check that hook script has execute permissions: `chmod +x .claude/hooks/*.sh`
 - Verify `settings.json` has correct paths (must be absolute)
 - Check `enabled: true` in settings.json
 
 **Issue: TypeScript check fails**
+
 - Ensure `tsc` is in PATH: `which tsc`
 - Check that `tsconfig.json` exists in project root
 - Try manual compilation: `tsc --noEmit yourfile.ts`
 
 **Issue: False positives**
+
 - Adjust pattern matching in quality-check.sh
 - Add exceptions for specific cases
 - Change `blocking: false` to get warnings instead of errors
@@ -270,10 +277,12 @@ DEBUG=true
 This project also has pre-commit hooks in `/home/user/Sartor-claude-network/.claude/hooks/pre-commit`.
 
 **Relationship:**
+
 - **Claude Code hooks** (quality-check.sh) - Run during AI sessions when Claude edits files
 - **Git pre-commit hooks** (pre-commit) - Run when YOU commit changes via git
 
 Both enforce the same principles but at different times:
+
 - Claude Code hooks: Real-time validation during AI edits
 - Git hooks: Final validation before commits
 
@@ -321,6 +330,7 @@ const coverage = 0.87;
 ```
 
 **Why it passes:**
+
 - Includes timestamp
 - Specifies tool used
 - Shows exact command
@@ -334,6 +344,7 @@ const coverage = 0.95;
 ```
 
 **Why it fails:**
+
 - No timestamp
 - No tool specified
 - Hedging language ("probably")
@@ -355,6 +366,7 @@ const coverage = 0.95;
 ```
 
 **Why it passes:**
+
 - Enumerates what IS complete
 - Enumerates what IS NOT complete
 - Admits unknowns explicitly
@@ -370,6 +382,7 @@ const coverage = 0.95;
 ```
 
 **Why it fails:**
+
 - Claims "done" without enumeration
 - Claims "production ready" without validation
 - No listing of untested scenarios
@@ -391,6 +404,7 @@ const coverage = 0.95;
 ## Support
 
 For issues or improvements:
+
 1. Check this README for debugging steps
 2. Review hook output for specific errors
 3. Test hooks manually to isolate issues

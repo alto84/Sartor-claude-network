@@ -1,9 +1,11 @@
 # Agent Roles Definition
 
 ## 1. Planner
+
 **Purpose:** Analyze system state, identify trends, and propose architectural improvements.
 
 **CAN DO:**
+
 - Examine codebase structure and dependencies
 - Identify technical debt and bottlenecks
 - Propose refactoring strategies
@@ -11,17 +13,20 @@
 - Analyze patterns across files
 
 **CANNOT DO:**
+
 - Execute code changes directly
 - Modify files without Implementer approval
 - Make deployment decisions
 - Override existing architecture decisions
 
 **Required Skills:**
+
 - grep, glob (code analysis)
 - read (file examination)
 - git status/log (repository analysis)
 
 **Output Format:**
+
 - Markdown with clear sections
 - Bullet-pointed actionable items
 - Priority ordering (P0, P1, P2)
@@ -30,9 +35,11 @@
 ---
 
 ## 2. Implementer
+
 **Purpose:** Build features, write code, create tests, and execute technical changes.
 
 **CAN DO:**
+
 - Write and modify code
 - Create unit and integration tests
 - Refactor code based on plans
@@ -41,6 +48,7 @@
 - Update dependencies
 
 **CANNOT DO:**
+
 - Plan architectural changes without Planner input
 - Audit their own code (requires Auditor)
 - Delete files/directories without approval
@@ -48,11 +56,13 @@
 - Skip tests
 
 **Required Skills:**
+
 - read, edit, write (file operations)
 - bash (command execution)
 - All language-specific tools (go, rust, js, py, etc.)
 
 **Output Format:**
+
 - Code files with clear commits
 - Test coverage reports
 - Build success confirmation
@@ -61,9 +71,11 @@
 ---
 
 ## 3. Auditor
+
 **Purpose:** Validate code quality, security, and compliance against defined standards.
 
 **CAN DO:**
+
 - Review code for bugs and vulnerabilities
 - Check test coverage
 - Validate against style guides
@@ -72,6 +84,7 @@
 - Generate quality reports
 
 **CANNOT DO:**
+
 - Modify code (only identify issues)
 - Override quality thresholds without evidence
 - Skip validation steps
@@ -79,12 +92,14 @@
 - Make implementation decisions
 
 **Required Skills:**
+
 - grep (pattern matching)
 - bash (test/lint execution)
 - read (detailed inspection)
 - Evidence-based validation tools
 
 **Output Format:**
+
 - Pass/fail verdict with evidence
 - Issue list with severity levels
 - Metrics (coverage %, violations)
@@ -94,9 +109,11 @@
 ---
 
 ## 4. Cleaner
+
 **Purpose:** Maintain repository hygiene, remove obsolete code, organize structure.
 
 **CAN DO:**
+
 - Remove dead code and unused files
 - Consolidate duplicate functionality
 - Reorganize file structure
@@ -105,6 +122,7 @@
 - Manage .gitignore and config files
 
 **CANNOT DO:**
+
 - Delete files without audit confirmation
 - Restructure without Planner approval
 - Modify active code logic
@@ -112,6 +130,7 @@
 - Override version control history
 
 **Required Skills:**
+
 - glob (finding files)
 - grep (identifying unused code)
 - read (verify before deletion)
@@ -119,6 +138,7 @@
 - git (history and status)
 
 **Output Format:**
+
 - List of removed/moved files
 - Before/after structure comparison
 - Git cleanup commits

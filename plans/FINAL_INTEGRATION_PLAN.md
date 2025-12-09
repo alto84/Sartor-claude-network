@@ -72,17 +72,17 @@ This document provides the comprehensive, actionable plan for building a multi-t
 
 ### How Components Connect
 
-| Component | Connects To | Connection Type | Purpose |
-|-----------|-------------|-----------------|---------|
-| **MCP Server** | All Claude surfaces | Streamable HTTP / stdio | Unified memory API |
-| **MCP Server** | Firebase RTDB | Firebase SDK (WebSocket) | Real-time hot memory |
-| **MCP Server** | Firestore | Firebase Admin SDK | Warm memory storage |
-| **MCP Server** | Qdrant | REST API / gRPC | Vector similarity search |
-| **MCP Server** | GitHub | REST API / Git CLI | Archival storage |
-| **MCP Server** | OpenAI | REST API | Embedding generation |
-| **Firebase RTDB** | Firestore | Cloud Functions | Promotion/demotion triggers |
-| **Firestore** | GitHub | GitHub Actions | Scheduled archival |
-| **Qdrant** | Firestore | Sync process | Embedding updates |
+| Component         | Connects To         | Connection Type          | Purpose                     |
+| ----------------- | ------------------- | ------------------------ | --------------------------- |
+| **MCP Server**    | All Claude surfaces | Streamable HTTP / stdio  | Unified memory API          |
+| **MCP Server**    | Firebase RTDB       | Firebase SDK (WebSocket) | Real-time hot memory        |
+| **MCP Server**    | Firestore           | Firebase Admin SDK       | Warm memory storage         |
+| **MCP Server**    | Qdrant              | REST API / gRPC          | Vector similarity search    |
+| **MCP Server**    | GitHub              | REST API / Git CLI       | Archival storage            |
+| **MCP Server**    | OpenAI              | REST API                 | Embedding generation        |
+| **Firebase RTDB** | Firestore           | Cloud Functions          | Promotion/demotion triggers |
+| **Firestore**     | GitHub              | GitHub Actions           | Scheduled archival          |
+| **Qdrant**        | Firestore           | Sync process             | Embedding updates           |
 
 ---
 
@@ -194,6 +194,7 @@ Uses your existing **home-claude-network-default-rtdb**:
 ### 3. Firestore + Qdrant (Tier 2: Warm Memory)
 
 **Firestore collections**:
+
 ```
 memories/
   ├── {memoryId}/
@@ -224,6 +225,7 @@ semanticDetails/
 ```
 
 **Qdrant collection**:
+
 ```python
 # Qdrant collection configuration
 {
@@ -246,6 +248,7 @@ semanticDetails/
 ### 4. GitHub (Tier 3: Cold Memory)
 
 **Repository structure**:
+
 ```
 alto84/claude-memory-archive/
 ├── README.md
@@ -273,6 +276,7 @@ alto84/claude-memory-archive/
 ```
 
 **Memory file format**:
+
 ```markdown
 ---
 id: mem_abc123
@@ -288,19 +292,23 @@ source_surface: claude_code
 # Conversation: Successful Deployment
 
 ## Summary
+
 User successfully deployed the application to production after debugging
 the authentication issue.
 
 ## Key Points
+
 - Fixed JWT token expiration bug
 - Deployed to AWS ECS
 - User expressed satisfaction with the result
 
 ## Emotional Context
+
 - Valence: 0.8 (positive)
 - Sentiment: relieved, accomplished
 
 ## Related Memories
+
 - mem_def456 (previous debugging session)
 - mem_ghi789 (AWS setup)
 ```
@@ -376,7 +384,7 @@ import {
   SemanticMemory,
   WorkingMemory,
   MemoryQuery,
-  MemoryType
+  MemoryType,
 } from './memory-schema';
 
 // Create episodic memory from conversation
@@ -384,14 +392,14 @@ const episode: EpisodicMemory = {
   id: generateId(),
   type: MemoryType.EPISODIC,
   content: {
-    title: "Deployment debugging session",
+    title: 'Deployment debugging session',
     messages: [...conversationHistory],
-    summary: await summarize(conversationHistory)
+    summary: await summarize(conversationHistory),
   },
   emotionalContext: {
     valence: 0.8,
     arousal: 0.5,
-    sentiment: 'positive'
+    sentiment: 'positive',
   },
   // ... full schema fields
 };
@@ -548,6 +556,7 @@ const resolveConflict = (local: Memory, remote: Memory): Memory => {
 ### Phase 1: Foundation (Weeks 1-2)
 
 **Deliverables:**
+
 - [ ] Update Firebase security rules (production-ready)
 - [ ] Create MCP server skeleton with FastMCP
 - [ ] Implement `store_memory` and `recall_memories` tools
@@ -555,6 +564,7 @@ const resolveConflict = (local: Memory, remote: Memory): Memory => {
 - [ ] Configure stdio transport for Claude Code
 
 **Files to Create:**
+
 ```
 claude-memory-server/
 ├── src/index.ts
@@ -568,12 +578,14 @@ claude-memory-server/
 ### Phase 2: Vector Search (Weeks 3-4)
 
 **Deliverables:**
+
 - [ ] Deploy Qdrant (self-hosted or cloud)
 - [ ] Implement embedding generation pipeline
 - [ ] Build hybrid retrieval (semantic + keyword)
 - [ ] Implement multi-factor ranking algorithm
 
 **Files to Create:**
+
 ```
 src/storage/warm/qdrant.ts
 src/algorithms/retrieval.ts
@@ -584,12 +596,14 @@ src/embedding/openai.ts
 ### Phase 3: Hot Memory (Weeks 5-6)
 
 **Deliverables:**
+
 - [ ] Implement Firebase RTDB hot tier
 - [ ] Build promotion/demotion logic
 - [ ] Add real-time sync between tiers
 - [ ] Implement working memory for sessions
 
 **Files to Create:**
+
 ```
 src/storage/hot/firebase-rtdb.ts
 src/sync/promoter.ts
@@ -599,12 +613,14 @@ src/sync/demoter.ts
 ### Phase 4: Cold Storage & Archives (Weeks 7-8)
 
 **Deliverables:**
+
 - [ ] Create GitHub repository structure
 - [ ] Implement archive/restore tools
 - [ ] Set up GitHub Actions for automation
 - [ ] Build skill repository system
 
 **Files to Create:**
+
 ```
 src/storage/cold/github.ts
 src/mcp/tools/archive.ts
@@ -616,12 +632,14 @@ src/mcp/tools/restore.ts
 ### Phase 5: Advanced Features (Weeks 9-10)
 
 **Deliverables:**
+
 - [ ] Implement memory consolidation with LLM
 - [ ] Build decay and forgetting system
 - [ ] Add spaced repetition for important memories
 - [ ] Implement cross-surface sync
 
 **Files to Create:**
+
 ```
 src/algorithms/consolidation.ts
 src/algorithms/decay.ts
@@ -632,6 +650,7 @@ src/sync/cross-surface.ts
 ### Phase 6: Production (Weeks 11-12)
 
 **Deliverables:**
+
 - [ ] Deploy Streamable HTTP transport
 - [ ] Implement OAuth 2.1 authentication
 - [ ] Set up monitoring and alerting
@@ -644,11 +663,11 @@ src/sync/cross-surface.ts
 
 ### Monthly Costs by Scale
 
-| Scale | Users | Firebase | Qdrant | OpenAI | GitHub | Total |
-|-------|-------|----------|--------|--------|--------|-------|
-| Starter | 10-100 | $5 | $0 (self-hosted) | $10 | $0 | **$15** |
-| Growth | 100-1K | $25 | $25 (cloud) | $50 | $0 | **$100** |
-| Scale | 1K-10K | $100 | $100 | $200 | $4 | **$404** |
+| Scale   | Users  | Firebase | Qdrant           | OpenAI | GitHub | Total    |
+| ------- | ------ | -------- | ---------------- | ------ | ------ | -------- |
+| Starter | 10-100 | $5       | $0 (self-hosted) | $10    | $0     | **$15**  |
+| Growth  | 100-1K | $25      | $25 (cloud)      | $50    | $0     | **$100** |
+| Scale   | 1K-10K | $100     | $100             | $200   | $4     | **$404** |
 
 ### Cost Optimization Strategies
 
@@ -736,14 +755,14 @@ Claude Surface
 
 ## Success Metrics
 
-| Metric | Target | Measurement |
-|--------|--------|-------------|
-| Hot tier hit rate | >70% | % of recalls served from RTDB |
-| Recall latency (p95) | <500ms | Time from query to results |
-| Memory accuracy | >90% | Relevance of recalled memories |
-| Cross-surface sync | <30s | Time for memory to propagate |
-| Storage efficiency | 80% in cold tier | % of memories in cheapest tier |
-| Consolidation rate | 10% monthly | Memories consolidated/total |
+| Metric               | Target           | Measurement                    |
+| -------------------- | ---------------- | ------------------------------ |
+| Hot tier hit rate    | >70%             | % of recalls served from RTDB  |
+| Recall latency (p95) | <500ms           | Time from query to results     |
+| Memory accuracy      | >90%             | Relevance of recalled memories |
+| Cross-surface sync   | <30s             | Time for memory to propagate   |
+| Storage efficiency   | 80% in cold tier | % of memories in cheapest tier |
+| Consolidation rate   | 10% monthly      | Memories consolidated/total    |
 
 ---
 

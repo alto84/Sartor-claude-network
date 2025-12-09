@@ -31,7 +31,7 @@ export interface AgentMessage {
 
 export interface MessageMetadata {
   priority: 'low' | 'normal' | 'high' | 'critical';
-  ttl?: number;  // Time to live in ms
+  ttl?: number; // Time to live in ms
   retryCount?: number;
   requiresAck?: boolean;
 }
@@ -189,7 +189,7 @@ export class AgentCommunicationSystem {
           status: 'failed',
           attemptCount: 0,
           lastAttemptTimestamp: Date.now(),
-          failureReason: `Validation failed: ${validation.errors.map(e => e.message).join(', ')}`,
+          failureReason: `Validation failed: ${validation.errors.map((e) => e.message).join(', ')}`,
         },
         error: {
           code: 'VALIDATION_FAILED',
@@ -255,10 +255,7 @@ export class AgentCommunicationSystem {
    *
    * Anti-pattern avoided: Assuming broadcast is free (measure overhead)
    */
-  async broadcastMessage(
-    message: AgentMessage,
-    targets: string[]
-  ): Promise<BroadcastResult> {
+  async broadcastMessage(message: AgentMessage, targets: string[]): Promise<BroadcastResult> {
     const startTime = Date.now();
     const results = new Map<string, MessageResult>();
 
@@ -278,16 +275,17 @@ export class AgentCommunicationSystem {
     await Promise.allSettled(sendPromises);
 
     // Calculate metrics
-    const successCount = Array.from(results.values()).filter(r => r.success).length;
+    const successCount = Array.from(results.values()).filter((r) => r.success).length;
     const failureCount = targets.length - successCount;
 
     const latencies = Array.from(results.values())
-      .map(r => r.metrics.totalLatency)
+      .map((r) => r.metrics.totalLatency)
       .filter((l): l is number => l !== undefined);
 
     const metrics: BroadcastMetrics = {
       totalTime: Date.now() - startTime,
-      averageLatency: latencies.length > 0 ? latencies.reduce((a, b) => a + b, 0) / latencies.length : 0,
+      averageLatency:
+        latencies.length > 0 ? latencies.reduce((a, b) => a + b, 0) / latencies.length : 0,
       maxLatency: latencies.length > 0 ? Math.max(...latencies) : 0,
       minLatency: latencies.length > 0 ? Math.min(...latencies) : 0,
     };
@@ -377,7 +375,9 @@ export class AgentCommunicationSystem {
             code: 'INVALID_TTL',
           });
         } else if (message.metadata.ttl > DEFAULT_CONFIG.MAX_TTL) {
-          warnings.push(`TTL ${message.metadata.ttl}ms exceeds maximum ${DEFAULT_CONFIG.MAX_TTL}ms`);
+          warnings.push(
+            `TTL ${message.metadata.ttl}ms exceeds maximum ${DEFAULT_CONFIG.MAX_TTL}ms`
+          );
         }
       }
     }
@@ -434,7 +434,9 @@ export class AgentCommunicationSystem {
         }
 
         if ((from !== agentA && from !== agentB) || (to !== agentA && to !== agentB)) {
-          throw new Error(`Invalid agents for channel ${channelId}. Expected ${agentA} or ${agentB}`);
+          throw new Error(
+            `Invalid agents for channel ${channelId}. Expected ${agentA} or ${agentB}`
+          );
         }
 
         const message: AgentMessage = {
@@ -480,7 +482,7 @@ export class AgentCommunicationSystem {
     } = options;
 
     // Filter messages
-    let messages = Array.from(this.messageHistory.values()).filter(msg => {
+    let messages = Array.from(this.messageHistory.values()).filter((msg) => {
       if (msg.from !== agentId && msg.to !== agentId) return false;
       if (startTime && msg.timestamp < startTime) return false;
       if (endTime && msg.timestamp > endTime) return false;
@@ -496,7 +498,7 @@ export class AgentCommunicationSystem {
 
     // Remove payload if not requested
     if (!includePayload) {
-      messages = messages.map(msg => ({
+      messages = messages.map((msg) => ({
         ...msg,
         payload: '[REDACTED]',
       }));
@@ -566,9 +568,10 @@ export class AgentCommunicationSystem {
     message: AgentMessage,
     startTime: number
   ): Promise<MessageResult> {
-    const maxAttempts = message.metadata.retryCount !== undefined
-      ? message.metadata.retryCount + 1
-      : DEFAULT_CONFIG.MAX_RETRY_ATTEMPTS;
+    const maxAttempts =
+      message.metadata.retryCount !== undefined
+        ? message.metadata.retryCount + 1
+        : DEFAULT_CONFIG.MAX_RETRY_ATTEMPTS;
 
     let attemptCount = 0;
     let lastError: ErrorDetails | undefined;
@@ -613,7 +616,8 @@ export class AgentCommunicationSystem {
 
         // Calculate backoff with exponential increase
         const backoffTime = Math.min(
-          DEFAULT_CONFIG.INITIAL_BACKOFF_MS * Math.pow(DEFAULT_CONFIG.BACKOFF_MULTIPLIER, attemptCount - 1),
+          DEFAULT_CONFIG.INITIAL_BACKOFF_MS *
+            Math.pow(DEFAULT_CONFIG.BACKOFF_MULTIPLIER, attemptCount - 1),
           DEFAULT_CONFIG.MAX_BACKOFF_MS
         );
 
@@ -821,7 +825,7 @@ export class AgentCommunicationSystem {
    * Sleep utility for backoff
    */
   private _sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
 
@@ -906,8 +910,12 @@ export function formatBroadcastResult(result: BroadcastResult): string {
 
   lines.push(`Broadcast Message ID: ${result.messageId}`);
   lines.push(`Total Targets: ${result.totalTargets}`);
-  lines.push(`Successful: ${result.successCount} (${((result.successCount / result.totalTargets) * 100).toFixed(1)}%)`);
-  lines.push(`Failed: ${result.failureCount} (${((result.failureCount / result.totalTargets) * 100).toFixed(1)}%)`);
+  lines.push(
+    `Successful: ${result.successCount} (${((result.successCount / result.totalTargets) * 100).toFixed(1)}%)`
+  );
+  lines.push(
+    `Failed: ${result.failureCount} (${((result.failureCount / result.totalTargets) * 100).toFixed(1)}%)`
+  );
   lines.push('');
   lines.push('Metrics (measured):');
   lines.push(`  Total Time: ${result.metrics.totalTime}ms`);

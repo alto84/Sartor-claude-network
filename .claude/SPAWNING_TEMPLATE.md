@@ -141,12 +141,14 @@ Before completing, use this loop:
 **Quick skill summaries to inject:**
 
 ### For any agent needing refinement:
+
 ```
 ## Protocol: Refinement Loop
 Generate → Self-Audit → Score → Refine if <0.8 (max 3 iterations)
 ```
 
 ### For agents working with memory:
+
 ```
 ## Skill: Memory Access
 Use MemorySystem from src/memory/memory-system.ts:
@@ -156,6 +158,7 @@ Use MemorySystem from src/memory/memory-system.ts:
 ```
 
 ### For role enforcement:
+
 ```
 ## Role: AUDITOR
 - CAN: Read files, run tests, check types, score quality
@@ -164,6 +167,7 @@ Use MemorySystem from src/memory/memory-system.ts:
 ```
 
 ### For agents needing persistent memory:
+
 ```
 ## Skill: MCP Memory Tools
 If you have memory_create/memory_get/memory_search tools available:

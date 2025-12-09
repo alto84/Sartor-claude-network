@@ -14,19 +14,51 @@ interface EvidenceRequirement {
 
 export class EvidenceValidator {
   private readonly FORBIDDEN_PHRASES = [
-    { phrase: 'should work', reason: 'Untested claim', replacement: 'tested to work under conditions X' },
-    { phrase: 'probably works', reason: 'Uncertain claim', replacement: 'works in tested scenarios A, B, C; untested for D, E' },
+    {
+      phrase: 'should work',
+      reason: 'Untested claim',
+      replacement: 'tested to work under conditions X',
+    },
+    {
+      phrase: 'probably works',
+      reason: 'Uncertain claim',
+      replacement: 'works in tested scenarios A, B, C; untested for D, E',
+    },
     { phrase: 'appears to work', reason: 'Unvalidated claim', replacement: 'passes tests X, Y, Z' },
     { phrase: 'seems correct', reason: 'Unverified claim', replacement: 'verified by check X' },
-    { phrase: 'mostly complete', reason: 'Vague status', replacement: 'implemented X/Y features, remaining: Z' },
-    { phrase: 'almost done', reason: 'Vague status', replacement: 'completed items A, B, C; remaining: D, E' },
-    { phrase: 'basically finished', reason: 'Vague status', replacement: 'specific completion status' },
-    { phrase: 'production ready', reason: 'Overconfident claim', replacement: 'passes tests X; deployment checklist: Y% complete' },
+    {
+      phrase: 'mostly complete',
+      reason: 'Vague status',
+      replacement: 'implemented X/Y features, remaining: Z',
+    },
+    {
+      phrase: 'almost done',
+      reason: 'Vague status',
+      replacement: 'completed items A, B, C; remaining: D, E',
+    },
+    {
+      phrase: 'basically finished',
+      reason: 'Vague status',
+      replacement: 'specific completion status',
+    },
+    {
+      phrase: 'production ready',
+      reason: 'Overconfident claim',
+      replacement: 'passes tests X; deployment checklist: Y% complete',
+    },
   ];
 
   private readonly EVIDENCE_HIERARCHY = [
-    { level: 'empirical', weight: 1.0, examples: ['measured', 'benchmarked', 'profiled', 'tested'] },
-    { level: 'documented', weight: 0.7, examples: ['documented in', 'per documentation', 'according to spec'] },
+    {
+      level: 'empirical',
+      weight: 1.0,
+      examples: ['measured', 'benchmarked', 'profiled', 'tested'],
+    },
+    {
+      level: 'documented',
+      weight: 0.7,
+      examples: ['documented in', 'per documentation', 'according to spec'],
+    },
     { level: 'inferred', weight: 0.4, examples: ['likely', 'expected', 'should', 'probably'] },
     { level: 'assumed', weight: 0.2, examples: ['assuming', 'presumably', 'appears'] },
   ];
@@ -195,7 +227,7 @@ export class EvidenceValidator {
       /\b\d+(\.\d+)?\s*(ms|seconds|MB|GB|%)\b/i, // Measurements with units
     ];
 
-    contextLines.forEach(line => {
+    contextLines.forEach((line) => {
       for (const pattern of evidencePatterns) {
         if (pattern.test(line)) {
           evidence.push(line.trim());

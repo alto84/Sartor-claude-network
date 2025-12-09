@@ -50,7 +50,7 @@ export enum MemoryType {
   PROCEDURAL = 'procedural',
   WORKING = 'working',
   EMOTIONAL = 'emotional',
-  SYSTEM = 'system'
+  SYSTEM = 'system',
 }
 
 /**
@@ -62,7 +62,7 @@ export enum ClaudeSurface {
   API = 'api',
   MOBILE = 'mobile',
   DESKTOP = 'desktop',
-  TERMINAL = 'terminal'
+  TERMINAL = 'terminal',
 }
 
 /**
@@ -73,7 +73,7 @@ export enum ConfidenceLevel {
   LOW = 0.4,
   MEDIUM = 0.6,
   HIGH = 0.8,
-  VERY_HIGH = 1.0
+  VERY_HIGH = 1.0,
 }
 
 /**
@@ -85,7 +85,7 @@ export enum MemoryStatus {
   DECAYED = 'decayed',
   CONFLICTED = 'conflicted',
   PENDING_CONSOLIDATION = 'pending_consolidation',
-  DELETED = 'deleted'
+  DELETED = 'deleted',
 }
 
 // ============================================================================
@@ -226,7 +226,7 @@ export enum RelationType {
 
   // Procedural relationships
   PREREQUISITE_FOR = 'prerequisite_for',
-  ALTERNATIVE_TO = 'alternative_to'
+  ALTERNATIVE_TO = 'alternative_to',
 }
 
 /**
@@ -286,7 +286,7 @@ export enum EntityType {
   EVENT = 'event',
   SKILL = 'skill',
   TECHNOLOGY = 'technology',
-  CONCEPT = 'concept'
+  CONCEPT = 'concept',
 }
 
 /**
@@ -663,7 +663,7 @@ export enum KnowledgeType {
   ATTRIBUTE = 'attribute',
   CAPABILITY = 'capability',
   LIMITATION = 'limitation',
-  GOAL = 'goal'
+  GOAL = 'goal',
 }
 
 /**
@@ -1186,42 +1186,42 @@ export const SUGGESTED_INDEXES: MemoryIndex[] = [
     name: 'memory_id',
     type: 'hash',
     fields: ['id'],
-    options: { unique: true }
+    options: { unique: true },
   },
   {
     name: 'memory_type_status',
     type: 'btree',
-    fields: ['type', 'status']
+    fields: ['type', 'status'],
   },
   {
     name: 'created_at',
     type: 'btree',
-    fields: ['temporal.createdAt']
+    fields: ['temporal.createdAt'],
   },
   {
     name: 'last_accessed_at',
     type: 'btree',
-    fields: ['temporal.lastAccessedAt']
+    fields: ['temporal.lastAccessedAt'],
   },
   {
     name: 'importance_score',
     type: 'btree',
-    fields: ['importance.importance']
+    fields: ['importance.importance'],
   },
   {
     name: 'user_session',
     type: 'btree',
-    fields: ['source.userId', 'source.sessionId']
+    fields: ['source.userId', 'source.sessionId'],
   },
   {
     name: 'tags',
     type: 'btree',
-    fields: ['tags.tags']
+    fields: ['tags.tags'],
   },
   {
     name: 'categories',
     type: 'btree',
-    fields: ['tags.categories']
+    fields: ['tags.categories'],
   },
   {
     name: 'embedding_vector',
@@ -1229,14 +1229,14 @@ export const SUGGESTED_INDEXES: MemoryIndex[] = [
     fields: ['embedding.vector'],
     options: {
       vectorDimensions: 1536,
-      vectorMetric: 'cosine'
-    }
+      vectorMetric: 'cosine',
+    },
   },
   {
     name: 'content_fulltext',
     type: 'fulltext',
-    fields: ['content']
-  }
+    fields: ['content'],
+  },
 ];
 
 // ============================================================================
@@ -1347,10 +1347,16 @@ export interface MemoryStorage {
  */
 export interface VectorStore {
   /** Add vectors to the store */
-  addVectors(vectors: Array<{ id: MemoryId; vector: Embedding; metadata?: Record<string, unknown> }>): Promise<void>;
+  addVectors(
+    vectors: Array<{ id: MemoryId; vector: Embedding; metadata?: Record<string, unknown> }>
+  ): Promise<void>;
 
   /** Search for similar vectors */
-  searchSimilar(query: Embedding, limit: number, filter?: Record<string, unknown>): Promise<Array<{ id: MemoryId; score: number }>>;
+  searchSimilar(
+    query: Embedding,
+    limit: number,
+    filter?: Record<string, unknown>
+  ): Promise<Array<{ id: MemoryId; score: number }>>;
 
   /** Update a vector */
   updateVector(id: MemoryId, vector: Embedding): Promise<void>;
@@ -1415,14 +1421,20 @@ export interface MemorySystem {
   updateMemoryMetadata(id: MemoryId, metadata: Partial<BaseMemory>): Promise<void>;
 
   /** Consolidate multiple memories into one */
-  consolidate(memoryIds: MemoryId[], strategy: MemoryConsolidation['strategy']): Promise<MemoryConsolidation>;
+  consolidate(
+    memoryIds: MemoryId[],
+    strategy: MemoryConsolidation['strategy']
+  ): Promise<MemoryConsolidation>;
 
   /** Apply decay to memories */
   applyDecay(): Promise<DecayCalculation[]>;
 
   /** Detect and resolve conflicts */
   detectConflicts(): Promise<MemoryConflict[]>;
-  resolveConflict(conflictId: string, strategy: MemoryConflict['resolutionStrategy']): Promise<void>;
+  resolveConflict(
+    conflictId: string,
+    strategy: MemoryConflict['resolutionStrategy']
+  ): Promise<void>;
 
   /** Sync memories across surfaces */
   sync(surface: ClaudeSurface): Promise<{ synced: number; conflicts: number }>;

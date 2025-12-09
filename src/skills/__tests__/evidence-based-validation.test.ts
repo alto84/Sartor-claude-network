@@ -56,7 +56,9 @@ describe('Evidence-Based Validation', () => {
       });
 
       it('should pass for metric with tool name and date', () => {
-        const result = validateMetric('Performance: 142ms (measured with benchmark tool on 2024/12/06)');
+        const result = validateMetric(
+          'Performance: 142ms (measured with benchmark tool on 2024/12/06)'
+        );
         expect(result.isValid).toBe(true);
         expect(result.violations.length).toBe(0);
       });
@@ -94,43 +96,43 @@ describe('Evidence-Based Validation', () => {
       it('should fail for "should work"', () => {
         const result = validateLanguage('This should work');
         expect(result.isValid).toBe(false);
-        expect(result.violations.some(v => v.includes('should work'))).toBe(true);
+        expect(result.violations.some((v) => v.includes('should work'))).toBe(true);
       });
 
       it('should fail for "excellent" superlative', () => {
         const result = validateLanguage('The code is excellent');
         expect(result.isValid).toBe(false);
-        expect(result.violations.some(v => v.includes('excellent'))).toBe(true);
+        expect(result.violations.some((v) => v.includes('excellent'))).toBe(true);
       });
 
       it('should fail for "perfect" superlative', () => {
         const result = validateLanguage('This implementation is perfect');
         expect(result.isValid).toBe(false);
-        expect(result.violations.some(v => v.includes('perfect'))).toBe(true);
+        expect(result.violations.some((v) => v.includes('perfect'))).toBe(true);
       });
 
       it('should fail for "probably works"', () => {
         const result = validateLanguage('The function probably works correctly');
         expect(result.isValid).toBe(false);
-        expect(result.violations.some(v => v.includes('probably works'))).toBe(true);
+        expect(result.violations.some((v) => v.includes('probably works'))).toBe(true);
       });
 
       it('should fail for "best" superlative', () => {
         const result = validateLanguage('This is the best approach');
         expect(result.isValid).toBe(false);
-        expect(result.violations.some(v => v.includes('best'))).toBe(true);
+        expect(result.violations.some((v) => v.includes('best'))).toBe(true);
       });
 
       it('should fail for "optimal" superlative', () => {
         const result = validateLanguage('The algorithm is optimal');
         expect(result.isValid).toBe(false);
-        expect(result.violations.some(v => v.includes('optimal'))).toBe(true);
+        expect(result.violations.some((v) => v.includes('optimal'))).toBe(true);
       });
 
       it('should fail for "might work"', () => {
         const result = validateLanguage('This approach might work for our use case');
         expect(result.isValid).toBe(false);
-        expect(result.violations.some(v => v.includes('might work'))).toBe(true);
+        expect(result.violations.some((v) => v.includes('might work'))).toBe(true);
       });
 
       it('should fail for multiple violations', () => {
@@ -148,7 +150,9 @@ describe('Evidence-Based Validation', () => {
       });
 
       it('should pass for specific observations', () => {
-        const result = validateLanguage('The function validates input and returns errors for invalid data');
+        const result = validateLanguage(
+          'The function validates input and returns errors for invalid data'
+        );
         expect(result.isValid).toBe(true);
         expect(result.violations.length).toBe(0);
       });
@@ -170,19 +174,19 @@ describe('Evidence-Based Validation', () => {
       it('should warn for "very"', () => {
         const result = validateLanguage('The code is very clear');
         expect(result.isValid).toBe(true);
-        expect(result.warnings.some(w => w.includes('very'))).toBe(true);
+        expect(result.warnings.some((w) => w.includes('very'))).toBe(true);
       });
 
       it('should warn for "mostly"', () => {
         const result = validateLanguage('The feature is mostly complete');
         expect(result.isValid).toBe(true);
-        expect(result.warnings.some(w => w.includes('mostly'))).toBe(true);
+        expect(result.warnings.some((w) => w.includes('mostly'))).toBe(true);
       });
 
       it('should warn for "generally"', () => {
         const result = validateLanguage('The system generally works well');
         expect(result.isValid).toBe(true);
-        expect(result.warnings.some(w => w.includes('generally'))).toBe(true);
+        expect(result.warnings.some((w) => w.includes('generally'))).toBe(true);
       });
     });
   });
@@ -208,12 +212,14 @@ describe('Evidence-Based Validation', () => {
       });
 
       it('should fail for sources in invalid format', () => {
-        const result = validateEvidence(
-          'Research shows this is effective',
-          ['some reference', 'another source']
-        );
+        const result = validateEvidence('Research shows this is effective', [
+          'some reference',
+          'another source',
+        ]);
         expect(result.isValid).toBe(false);
-        expect(result.violations).toContain('Sources provided but none are in valid format (URL, DOI, PMID, etc.)');
+        expect(result.violations).toContain(
+          'Sources provided but none are in valid format (URL, DOI, PMID, etc.)'
+        );
       });
 
       it('should fail for "demonstrated" without evidence', () => {
@@ -224,50 +230,39 @@ describe('Evidence-Based Validation', () => {
 
     describe('PASS cases - claims with verifiable sources', () => {
       it('should pass for claim with URL source', () => {
-        const result = validateEvidence(
-          'Research shows this approach works',
-          ['https://example.com/research-paper']
-        );
+        const result = validateEvidence('Research shows this approach works', [
+          'https://example.com/research-paper',
+        ]);
         expect(result.isValid).toBe(true);
         expect(result.violations.length).toBe(0);
       });
 
       it('should pass for claim with DOI', () => {
-        const result = validateEvidence(
-          'Studies indicate this is effective',
-          ['doi: 10.1234/example.2024']
-        );
+        const result = validateEvidence('Studies indicate this is effective', [
+          'doi: 10.1234/example.2024',
+        ]);
         expect(result.isValid).toBe(true);
         expect(result.violations.length).toBe(0);
       });
 
       it('should pass for claim with PMID', () => {
-        const result = validateEvidence(
-          'Data shows significant correlation',
-          ['PMID: 12345678']
-        );
+        const result = validateEvidence('Data shows significant correlation', ['PMID: 12345678']);
         expect(result.isValid).toBe(true);
         expect(result.violations.length).toBe(0);
       });
 
       it('should pass for claim with ArXiv ID', () => {
-        const result = validateEvidence(
-          'According to recent findings',
-          ['arxiv: 2024.12345']
-        );
+        const result = validateEvidence('According to recent findings', ['arxiv: 2024.12345']);
         expect(result.isValid).toBe(true);
         expect(result.violations.length).toBe(0);
       });
 
       it('should pass for claim with multiple valid sources', () => {
-        const result = validateEvidence(
-          'Research shows this is effective',
-          [
-            'https://example.com/paper1',
-            'doi: 10.1234/example.2024',
-            'PMID: 87654321'
-          ]
-        );
+        const result = validateEvidence('Research shows this is effective', [
+          'https://example.com/paper1',
+          'doi: 10.1234/example.2024',
+          'PMID: 87654321',
+        ]);
         expect(result.isValid).toBe(true);
         expect(result.violations.length).toBe(0);
       });
@@ -281,15 +276,14 @@ describe('Evidence-Based Validation', () => {
       });
 
       it('should warn about mixed valid and invalid sources', () => {
-        const result = validateEvidence(
-          'Research shows this works',
-          [
-            'https://example.com/paper',
-            'some book reference'
-          ]
-        );
+        const result = validateEvidence('Research shows this works', [
+          'https://example.com/paper',
+          'some book reference',
+        ]);
         expect(result.isValid).toBe(true);
-        expect(result.warnings.some(w => w.includes('may not be in verifiable format'))).toBe(true);
+        expect(result.warnings.some((w) => w.includes('may not be in verifiable format'))).toBe(
+          true
+        );
       });
     });
   });
@@ -299,31 +293,41 @@ describe('Evidence-Based Validation', () => {
       it('should fail for "feature is complete" without enumeration', () => {
         const result = validateCompleteness('Feature is complete');
         expect(result.isValid).toBe(false);
-        expect(result.violations).toContain('Completeness claim lacks enumeration - list what is and is not complete');
+        expect(result.violations).toContain(
+          'Completeness claim lacks enumeration - list what is and is not complete'
+        );
       });
 
       it('should fail for "implementation is finished" without details', () => {
         const result = validateCompleteness('The implementation is finished');
         expect(result.isValid).toBe(false);
-        expect(result.violations).toContain('Completeness claim lacks enumeration - list what is and is not complete');
+        expect(result.violations).toContain(
+          'Completeness claim lacks enumeration - list what is and is not complete'
+        );
       });
 
       it('should fail for "all features done" without listing', () => {
         const result = validateCompleteness('All features are done');
         expect(result.isValid).toBe(false);
-        expect(result.violations).toContain('Completeness claim lacks enumeration - list what is and is not complete');
+        expect(result.violations).toContain(
+          'Completeness claim lacks enumeration - list what is and is not complete'
+        );
       });
 
       it('should fail for "ready for production" without specifics', () => {
         const result = validateCompleteness('The system is ready for deployment');
         expect(result.isValid).toBe(false);
-        expect(result.violations).toContain('Completeness claim lacks enumeration - list what is and is not complete');
+        expect(result.violations).toContain(
+          'Completeness claim lacks enumeration - list what is and is not complete'
+        );
       });
     });
 
     describe('PASS cases - proper enumeration', () => {
       it('should pass for "Implemented: X, Y. Not implemented: Z"', () => {
-        const result = validateCompleteness('Implemented: authentication, validation. Not implemented: caching');
+        const result = validateCompleteness(
+          'Implemented: authentication, validation. Not implemented: caching'
+        );
         expect(result.isValid).toBe(true);
         expect(result.violations.length).toBe(0);
       });
@@ -347,7 +351,9 @@ describe('Evidence-Based Validation', () => {
       });
 
       it('should pass for explicit sections', () => {
-        const result = validateCompleteness('Completed: API endpoints, database schema. Remaining: documentation, deployment scripts');
+        const result = validateCompleteness(
+          'Completed: API endpoints, database schema. Remaining: documentation, deployment scripts'
+        );
         expect(result.isValid).toBe(true);
         expect(result.violations.length).toBe(0);
       });
@@ -363,13 +369,13 @@ describe('Evidence-Based Validation', () => {
       it('should warn when only positive items listed', () => {
         const result = validateCompleteness('Implemented: feature A, feature B, feature C');
         expect(result.isValid).toBe(true);
-        expect(result.warnings.some(w => w.includes('not what remains'))).toBe(true);
+        expect(result.warnings.some((w) => w.includes('not what remains'))).toBe(true);
       });
 
       it('should not warn when both positive and negative listed', () => {
         const result = validateCompleteness('Implemented: A, B. Not implemented: C, D');
         expect(result.isValid).toBe(true);
-        expect(result.warnings.every(w => !w.includes('not what remains'))).toBe(true);
+        expect(result.warnings.every((w) => !w.includes('not what remains'))).toBe(true);
       });
     });
 
@@ -390,28 +396,24 @@ describe('Evidence-Based Validation', () => {
     });
 
     it('should skip validations when requested', () => {
-      const result = validateClaim(
-        'Coverage is 95%',
-        { skipLanguageValidation: true }
-      );
-      expect(result.violations.some(v => v.includes('methodology'))).toBe(true);
+      const result = validateClaim('Coverage is 95%', { skipLanguageValidation: true });
+      expect(result.violations.some((v) => v.includes('methodology'))).toBe(true);
     });
 
     it('should validate evidence when sources provided', () => {
-      const result = validateClaim(
-        'Research shows this works',
-        { sources: ['https://example.com/paper'] }
-      );
+      const result = validateClaim('Research shows this works', {
+        sources: ['https://example.com/paper'],
+      });
       // Should not fail for missing sources
-      expect(result.violations.every(v => !v.includes('no sources provided'))).toBe(true);
+      expect(result.violations.every((v) => !v.includes('no sources provided'))).toBe(true);
     });
 
     it('should aggregate violations from multiple validators', () => {
       const result = validateClaim('This excellent feature is complete with 95% coverage');
       expect(result.violations.length).toBeGreaterThan(1);
-      expect(result.violations.some(v => v.includes('excellent'))).toBe(true);
-      expect(result.violations.some(v => v.includes('methodology'))).toBe(true);
-      expect(result.violations.some(v => v.includes('enumeration'))).toBe(true);
+      expect(result.violations.some((v) => v.includes('excellent'))).toBe(true);
+      expect(result.violations.some((v) => v.includes('methodology'))).toBe(true);
+      expect(result.violations.some((v) => v.includes('enumeration'))).toBe(true);
     });
 
     it('should pass for well-formed claims', () => {
@@ -469,7 +471,9 @@ describe('Evidence-Based Validation', () => {
       });
 
       it('should accept well-documented performance claims', () => {
-        const result = validateMetric('Response time: 42ms baseline, 14ms optimized (Apache Bench, 2024-12-06)');
+        const result = validateMetric(
+          'Response time: 42ms baseline, 14ms optimized (Apache Bench, 2024-12-06)'
+        );
         expect(result.isValid).toBe(true);
       });
     });

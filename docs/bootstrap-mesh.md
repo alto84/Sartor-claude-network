@@ -111,10 +111,10 @@ Load memories from available backends (tries in priority order).
 
 ```typescript
 interface LoadOptions {
-  type?: string;           // episodic, semantic, procedural, working
-  minImportance?: number;  // 0-1
-  limit?: number;          // max results (default: 10)
-  tags?: string[];         // filter by tags
+  type?: string; // episodic, semantic, procedural, working
+  minImportance?: number; // 0-1
+  limit?: number; // max results (default: 10)
+  tags?: string[]; // filter by tags
 }
 
 const memories = await mesh.loadMemories({
@@ -184,10 +184,10 @@ console.log(`Used backend: ${mesh.getActiveBackend()}`);
 interface Memory {
   id: string;
   content: string;
-  type: string;              // episodic, semantic, procedural, working
-  importance_score: number;  // 0-1
+  type: string; // episodic, semantic, procedural, working
+  importance_score: number; // 0-1
   tags: string[];
-  created_at: string;        // ISO 8601 timestamp
+  created_at: string; // ISO 8601 timestamp
 }
 ```
 
@@ -202,7 +202,7 @@ const importantMemories = await mesh.loadMemories({
   limit: 20,
 });
 
-importantMemories.forEach(mem => {
+importantMemories.forEach((mem) => {
   console.log(`[${mem.importance_score}] ${mem.content}`);
 });
 ```
@@ -313,7 +313,7 @@ if (mesh.getActiveBackend() === 'none') {
 ## Performance Characteristics
 
 | Backend  | Latency | Reliability | Persistence |
-|----------|---------|-------------|-------------|
+| -------- | ------- | ----------- | ----------- |
 | MCP HTTP | <100ms  | Medium      | Session     |
 | Local    | <200ms  | High        | File        |
 | GitHub   | 1-5s    | Medium      | Permanent   |
@@ -334,11 +334,13 @@ npm run example:bootstrap
 The bootstrap mesh works seamlessly with the MCP HTTP server:
 
 1. Start the MCP HTTP server:
+
    ```bash
    npm run mcp:http
    ```
 
 2. Bootstrap mesh automatically connects:
+
    ```typescript
    const mesh = createBootstrapMesh();
    // Automatically uses MCP HTTP when available
@@ -367,6 +369,7 @@ The bootstrap mesh works seamlessly with the MCP HTTP server:
 ```
 
 **Solution**: Start the MCP HTTP server:
+
 ```bash
 npm run mcp:http
 ```
@@ -378,6 +381,7 @@ npm run mcp:http
 ```
 
 **Solution**: Set environment variables:
+
 ```bash
 export GITHUB_TOKEN=your_token_here
 export GITHUB_OWNER=your_org
@@ -391,6 +395,7 @@ export GITHUB_REPO=your_repo
 ```
 
 **Solution**: Set Firebase credentials:
+
 ```bash
 export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
 export FIREBASE_DATABASE_URL=https://your-project.firebaseio.com

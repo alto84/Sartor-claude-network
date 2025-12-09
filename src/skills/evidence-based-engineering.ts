@@ -18,29 +18,35 @@
 
 export interface Risk {
   severity: 'low' | 'medium' | 'high' | 'critical';
-  category: 'error-handling' | 'testing' | 'security' | 'performance' | 'completeness' | 'documentation';
+  category:
+    | 'error-handling'
+    | 'testing'
+    | 'security'
+    | 'performance'
+    | 'completeness'
+    | 'documentation';
   description: string;
   mitigation: string;
 }
 
 export interface EngineeringAssessment {
-  implemented: string[];  // What IS done
-  notImplemented: string[];  // What IS NOT done
-  tested: string[];  // What has tests
-  notTested: string[];  // What lacks tests
-  risks: Risk[];  // Identified risks
+  implemented: string[]; // What IS done
+  notImplemented: string[]; // What IS NOT done
+  tested: string[]; // What has tests
+  notTested: string[]; // What lacks tests
+  risks: Risk[]; // Identified risks
   recommendations: string[];
   completionStatus: CompletionStatus;
 }
 
 export interface CompletionStatus {
-  implemented: boolean;  // Code exists and compiles
-  tested: boolean;  // Has passing tests
-  integrated: boolean;  // Works with other components
-  validated: boolean;  // Meets requirements in realistic conditions
-  documented: boolean;  // Has documentation
-  deployed: boolean;  // In production or ready for production
-  complete: boolean;  // All above are true
+  implemented: boolean; // Code exists and compiles
+  tested: boolean; // Has passing tests
+  integrated: boolean; // Works with other components
+  validated: boolean; // Meets requirements in realistic conditions
+  documented: boolean; // Has documentation
+  deployed: boolean; // In production or ready for production
+  complete: boolean; // All above are true
 }
 
 export interface TestAnalysis {
@@ -71,7 +77,6 @@ export interface DocumentationAnalysis {
  * Focuses on measurable evidence over aspirational claims.
  */
 export class EvidenceBasedEngineering {
-
   /**
    * Validate implementation quality and completeness
    * Checks for:
@@ -116,7 +121,8 @@ export class EvidenceBasedEngineering {
 
     // Check for any/unknown usage (weak typing)
     const anyUsage = code.match(/:\s*any\b/g) || [];
-    if (anyUsage.length > 5) {  // Some any usage is reasonable, but too much indicates weak typing
+    if (anyUsage.length > 5) {
+      // Some any usage is reasonable, but too much indicates weak typing
       issues.push(`Found ${anyUsage.length} uses of 'any' type (weak typing)`);
     }
 
@@ -128,7 +134,7 @@ export class EvidenceBasedEngineering {
       classes,
       todos,
       fixmes,
-      issues
+      issues,
     };
   }
 
@@ -148,9 +154,10 @@ export class EvidenceBasedEngineering {
     const untestedFunctions: string[] = [];
 
     for (const func of codeFunctions) {
-      const hasTest = testFunctions.some(test =>
-        test.toLowerCase().includes(func.toLowerCase()) ||
-        func.toLowerCase().includes(test.toLowerCase())
+      const hasTest = testFunctions.some(
+        (test) =>
+          test.toLowerCase().includes(func.toLowerCase()) ||
+          func.toLowerCase().includes(test.toLowerCase())
       );
 
       if (hasTest) {
@@ -180,7 +187,7 @@ export class EvidenceBasedEngineering {
       testedFunctions,
       untestedFunctions,
       coverageType,
-      coverageEvidence
+      coverageEvidence,
     };
   }
 
@@ -205,9 +212,9 @@ export class EvidenceBasedEngineering {
 
     // Check for input validation (null checks, falsy checks, property checks)
     const nullChecks = code.match(/if\s*\([^)]*===?\s*null/g) || [];
-    const falsyChecks = code.match(/if\s*\(![\w.]+[^)]*\)/g) || [];  // Handles if (!x || ...)
+    const falsyChecks = code.match(/if\s*\(![\w.]+[^)]*\)/g) || []; // Handles if (!x || ...)
     const typeChecks = code.match(/typeof\s+[\w.]+\s*[!=]==?\s*['"`]\w+['"`]/g) || [];
-    const guardClauses = code.match(/if\s*\(![\w.]+\s*\|\|/g) || [];  // Guard clauses like if (!x ||
+    const guardClauses = code.match(/if\s*\(![\w.]+\s*\|\|/g) || []; // Guard clauses like if (!x ||
     const inputValidation = [...nullChecks, ...falsyChecks, ...typeChecks, ...guardClauses];
     if (inputValidation.length > 0) {
       handledCases.push(`${inputValidation.length} input validation checks`);
@@ -223,7 +230,9 @@ export class EvidenceBasedEngineering {
     const asyncFunctions = code.match(/async\s+function/g) || code.match(/async\s+\(/g) || [];
     const awaitCalls = code.match(/await\s+/g) || [];
     if (asyncFunctions.length > 0 && tryCatchBlocks.length === 0 && awaitCalls.length > 0) {
-      unhandledCases.push(`${asyncFunctions.length} async functions without try/catch for await calls`);
+      unhandledCases.push(
+        `${asyncFunctions.length} async functions without try/catch for await calls`
+      );
     }
 
     // Check for promise rejections
@@ -256,7 +265,7 @@ export class EvidenceBasedEngineering {
       hasErrorHandling: handledCases.length > 0,
       handledCases,
       unhandledCases,
-      severity
+      severity,
     };
   }
 
@@ -283,7 +292,9 @@ export class EvidenceBasedEngineering {
     const totalFunctions = functions.length + classes.length;
 
     if (documentedInCode < totalFunctions) {
-      missingDocs.push(`${totalFunctions - documentedInCode} functions/classes lack JSDoc comments`);
+      missingDocs.push(
+        `${totalFunctions - documentedInCode} functions/classes lack JSDoc comments`
+      );
     }
 
     // Check if external docs mention the functions
@@ -308,7 +319,7 @@ export class EvidenceBasedEngineering {
     return {
       matchesImplementation: discrepancies.length === 0 && missingDocs.length === 0,
       discrepancies,
-      missingDocs
+      missingDocs,
     };
   }
 
@@ -326,28 +337,31 @@ export class EvidenceBasedEngineering {
     const implValidation = this.validateImplementation(implementation);
 
     // Stage 1: Implemented (code exists and compiles, even with minor issues)
-    const implemented = implValidation.functions.length > 0 &&
-                        implValidation.issues.length < 5;  // Can have issues but still be "implemented"
+    const implemented = implValidation.functions.length > 0 && implValidation.issues.length < 5; // Can have issues but still be "implemented"
 
     // Stage 2: Tested
     let tested = false;
     if (tests) {
       const testAnalysis = this.validateTesting(implementation, tests);
-      tested = testAnalysis.testedFunctions.length > 0 &&
-               testAnalysis.testedFunctions.length >= implValidation.functions.length * 0.7;  // 70% coverage threshold
+      tested =
+        testAnalysis.testedFunctions.length > 0 &&
+        testAnalysis.testedFunctions.length >= implValidation.functions.length * 0.7; // 70% coverage threshold
     }
 
     // Stage 3: Integrated (check for imports/exports)
-    const hasExports = /export\s+(?:async\s+)?(?:default\s+)?(class|function|const|interface|let|var)/.test(implementation) ||
-                       /export\s*\{/.test(implementation);  // Named exports
+    const hasExports =
+      /export\s+(?:async\s+)?(?:default\s+)?(class|function|const|interface|let|var)/.test(
+        implementation
+      ) || /export\s*\{/.test(implementation); // Named exports
     const hasImports = /import\s+.*\s+from/.test(implementation);
     const integrated = hasExports || hasImports;
 
     // Stage 4: Validated (check for production-ready patterns)
     const errorHandling = this.validateErrorHandling(implementation);
-    const validated = errorHandling.severity === 'adequate' &&
-                      implValidation.todos.length === 0 &&
-                      implValidation.fixmes.length === 0;
+    const validated =
+      errorHandling.severity === 'adequate' &&
+      implValidation.todos.length === 0 &&
+      implValidation.fixmes.length === 0;
 
     // Stage 5: Documented
     let documented = false;
@@ -373,7 +387,7 @@ export class EvidenceBasedEngineering {
       validated,
       documented,
       deployed,
-      complete
+      complete,
     };
   }
 
@@ -410,7 +424,7 @@ export class EvidenceBasedEngineering {
         severity: 'medium',
         category: 'completeness',
         description: `${implValidation.todos.length} TODO markers indicate incomplete implementation`,
-        mitigation: 'Complete all TODO items before marking as done'
+        mitigation: 'Complete all TODO items before marking as done',
       });
     }
 
@@ -425,7 +439,7 @@ export class EvidenceBasedEngineering {
           severity: 'high',
           category: 'testing',
           description: `${testAnalysis.untestedFunctions.length} functions lack test coverage`,
-          mitigation: `Add tests for: ${testAnalysis.untestedFunctions.join(', ')}`
+          mitigation: `Add tests for: ${testAnalysis.untestedFunctions.join(', ')}`,
         });
       }
 
@@ -438,7 +452,7 @@ export class EvidenceBasedEngineering {
         severity: 'critical',
         category: 'testing',
         description: 'No tests provided - cannot verify functionality',
-        mitigation: 'Add comprehensive test suite before deployment'
+        mitigation: 'Add comprehensive test suite before deployment',
       });
     }
 
@@ -449,14 +463,14 @@ export class EvidenceBasedEngineering {
         severity: 'critical',
         category: 'error-handling',
         description: 'No error handling found',
-        mitigation: 'Add try/catch blocks, input validation, and error propagation'
+        mitigation: 'Add try/catch blocks, input validation, and error propagation',
       });
     } else if (errorHandling.severity === 'minimal') {
       risks.push({
         severity: 'high',
         category: 'error-handling',
         description: 'Minimal error handling - may fail in production',
-        mitigation: 'Add comprehensive error handling for all failure modes'
+        mitigation: 'Add comprehensive error handling for all failure modes',
       });
     }
 
@@ -472,15 +486,19 @@ export class EvidenceBasedEngineering {
           severity: 'medium',
           category: 'documentation',
           description: 'Documentation does not match implementation',
-          mitigation: 'Update documentation to reflect actual code behavior'
+          mitigation: 'Update documentation to reflect actual code behavior',
         });
 
         if (docAnalysis.discrepancies.length > 0) {
-          recommendations.push(`Fix documentation discrepancies: ${docAnalysis.discrepancies.join('; ')}`);
+          recommendations.push(
+            `Fix documentation discrepancies: ${docAnalysis.discrepancies.join('; ')}`
+          );
         }
       }
     } else {
-      recommendations.push('Add external documentation (README, API docs) to improve maintainability');
+      recommendations.push(
+        'Add external documentation (README, API docs) to improve maintainability'
+      );
     }
 
     // Check for other quality issues
@@ -511,7 +529,7 @@ export class EvidenceBasedEngineering {
       notTested,
       risks,
       recommendations,
-      completionStatus
+      completionStatus,
     };
   }
 
@@ -527,20 +545,26 @@ export class EvidenceBasedEngineering {
     }
 
     // Arrow functions assigned to const/let
-    const arrowFunctions = code.matchAll(/(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s*)?\([^)]*\)\s*=>/g);
+    const arrowFunctions = code.matchAll(
+      /(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s*)?\([^)]*\)\s*=>/g
+    );
     for (const match of arrowFunctions) {
       functions.push(match[1]);
     }
 
     // Method definitions in classes (with or without type annotations)
-    const methods = code.matchAll(/(?:public|private|protected)?\s*(?:async\s+)?(\w+)\s*\([^)]*\)\s*[:{]/g);
+    const methods = code.matchAll(
+      /(?:public|private|protected)?\s*(?:async\s+)?(\w+)\s*\([^)]*\)\s*[:{]/g
+    );
     for (const match of methods) {
-      if (!['constructor', 'if', 'for', 'while', 'switch', 'catch', 'function'].includes(match[1])) {
+      if (
+        !['constructor', 'if', 'for', 'while', 'switch', 'catch', 'function'].includes(match[1])
+      ) {
         functions.push(match[1]);
       }
     }
 
-    return [...new Set(functions)];  // Remove duplicates
+    return [...new Set(functions)]; // Remove duplicates
   }
 
   private extractClasses(code: string): string[] {

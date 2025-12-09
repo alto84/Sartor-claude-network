@@ -22,11 +22,11 @@ import { SoftScore } from './soft-scorer';
  * Memory types for expert system
  */
 export type ExpertMemoryType =
-  | 'solution'        // Successful solution
-  | 'failure'         // Failed attempt (for learning)
-  | 'pattern'         // Recognized pattern
-  | 'feedback'        // Feedback received
-  | 'performance';    // Expert performance metrics
+  | 'solution' // Successful solution
+  | 'failure' // Failed attempt (for learning)
+  | 'pattern' // Recognized pattern
+  | 'feedback' // Feedback received
+  | 'performance'; // Expert performance metrics
 
 /**
  * Memory entry for expert system
@@ -193,11 +193,7 @@ export class MemoryIntegration {
       },
       score: result.score,
       confidence: result.confidence,
-      tags: [
-        ...this.config.defaultTags,
-        memoryType,
-        result.expertConfig.archetype,
-      ],
+      tags: [...this.config.defaultTags, memoryType, result.expertConfig.archetype],
       metadata: {
         expertConfigId: result.expertConfig.id,
         strategy: result.expertConfig.strategy,
@@ -234,11 +230,7 @@ export class MemoryIntegration {
         },
         score: result.summary.avgScore,
         confidence: result.summary.avgConfidence,
-        tags: [
-          ...this.config.defaultTags,
-          'pattern',
-          'multi-expert-result',
-        ],
+        tags: [...this.config.defaultTags, 'pattern', 'multi-expert-result'],
         metadata: {
           totalDurationMs: result.totalDurationMs,
           agreementLevel: result.summary.agreementLevel,
@@ -323,18 +315,19 @@ export class MemoryIntegration {
     const performance: ExpertPerformance = {
       expertId,
       totalExecutions: expertMemories.length,
-      avgScore: expertMemories.length > 0
-        ? expertMemories.reduce((sum, m) => sum + m.score, 0) / expertMemories.length
-        : 0,
-      avgConfidence: expertMemories.length > 0
-        ? expertMemories.reduce((sum, m) => sum + m.confidence, 0) / expertMemories.length
-        : 0,
-      successRate: expertMemories.length > 0
-        ? expertMemories.filter((m) => m.score >= 60).length / expertMemories.length
-        : 0,
-      lastExecuted: expertMemories.length > 0
-        ? expertMemories[0].timestamp
-        : undefined,
+      avgScore:
+        expertMemories.length > 0
+          ? expertMemories.reduce((sum, m) => sum + m.score, 0) / expertMemories.length
+          : 0,
+      avgConfidence:
+        expertMemories.length > 0
+          ? expertMemories.reduce((sum, m) => sum + m.confidence, 0) / expertMemories.length
+          : 0,
+      successRate:
+        expertMemories.length > 0
+          ? expertMemories.filter((m) => m.score >= 60).length / expertMemories.length
+          : 0,
+      lastExecuted: expertMemories.length > 0 ? expertMemories[0].timestamp : undefined,
     };
 
     this.performanceCache.set(expertId, performance);
@@ -352,12 +345,15 @@ export class MemoryIntegration {
     const updated: ExpertPerformance = {
       expertId: result.expertId,
       totalExecutions: existing.totalExecutions + 1,
-      avgScore: (existing.avgScore * existing.totalExecutions + result.score) /
+      avgScore:
+        (existing.avgScore * existing.totalExecutions + result.score) /
         (existing.totalExecutions + 1),
-      avgConfidence: (existing.avgConfidence * existing.totalExecutions + result.confidence) /
+      avgConfidence:
+        (existing.avgConfidence * existing.totalExecutions + result.confidence) /
         (existing.totalExecutions + 1),
-      successRate: (existing.successRate * existing.totalExecutions +
-        (result.success && result.score >= 60 ? 1 : 0)) /
+      successRate:
+        (existing.successRate * existing.totalExecutions +
+          (result.success && result.score >= 60 ? 1 : 0)) /
         (existing.totalExecutions + 1),
       lastExecuted: new Date().toISOString(),
     };
@@ -401,9 +397,7 @@ export class MemoryIntegration {
     }
 
     // Sort by score and return top N
-    return performances
-      .sort((a, b) => b.avgScore - a.avgScore)
-      .slice(0, limit);
+    return performances.sort((a, b) => b.avgScore - a.avgScore).slice(0, limit);
   }
 
   /**
@@ -480,9 +474,7 @@ export class InMemoryMemoryClient implements MemoryClient {
     }
 
     if (query.tags && query.tags.length > 0) {
-      results = results.filter((m) =>
-        query.tags!.some((tag) => m.tags.includes(tag))
-      );
+      results = results.filter((m) => query.tags!.some((tag) => m.tags.includes(tag)));
     }
 
     if (query.minScore !== undefined) {

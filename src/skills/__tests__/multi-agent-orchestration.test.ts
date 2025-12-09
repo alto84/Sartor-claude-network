@@ -81,7 +81,9 @@ interface MultiAgentOrchestrator {
   submitTask(task: Omit<Task, 'id' | 'status' | 'createdAt'>): Promise<string>;
   executeTask(taskId: string): Promise<any>;
   executeTasks(taskIds: string[]): Promise<OrchestrationResult>;
-  executeTasksParallel(tasks: Omit<Task, 'id' | 'status' | 'createdAt'>[]): Promise<OrchestrationResult>;
+  executeTasksParallel(
+    tasks: Omit<Task, 'id' | 'status' | 'createdAt'>[]
+  ): Promise<OrchestrationResult>;
   getTaskStatus(taskId: string): Task | undefined;
   getWorkerStats(): OrchestratorStats;
   getAvailableWorkers(taskType?: string): Worker[];
@@ -114,8 +116,9 @@ const createMockOrchestrator = (config: OrchestratorConfig = {}): MultiAgentOrch
   };
 
   const selectWorkerForTask = (task: Task): Worker | undefined => {
-    const availableWorkers = Array.from(workers.values())
-      .filter(w => w.status === 'idle' && w.specialization.includes(task.type));
+    const availableWorkers = Array.from(workers.values()).filter(
+      (w) => w.status === 'idle' && w.specialization.includes(task.type)
+    );
 
     if (availableWorkers.length === 0) {
       return undefined;
@@ -136,7 +139,7 @@ const createMockOrchestrator = (config: OrchestratorConfig = {}): MultiAgentOrch
     task.assignedTo = worker.id;
 
     // Simulate task execution
-    await new Promise(resolve => setTimeout(resolve, 50));
+    await new Promise((resolve) => setTimeout(resolve, 50));
 
     // Mock result based on task type
     const result = {
@@ -239,9 +242,7 @@ const createMockOrchestrator = (config: OrchestratorConfig = {}): MultiAgentOrch
       const failures = new Map<string, string>();
 
       // Submit all tasks
-      const taskIds = await Promise.all(
-        taskDataArray.map(taskData => this.submitTask(taskData))
-      );
+      const taskIds = await Promise.all(taskDataArray.map((taskData) => this.submitTask(taskData)));
 
       // Execute with proper concurrency limiting (wait for workers)
       const maxConcurrent = orchestratorConfig.maxParallelTasks || taskIds.length;
@@ -251,7 +252,7 @@ const createMockOrchestrator = (config: OrchestratorConfig = {}): MultiAgentOrch
       const executeNext = async (): Promise<void> => {
         while (taskIndex < taskIds.length) {
           if (active >= maxConcurrent) {
-            await new Promise(resolve => setTimeout(resolve, 10));
+            await new Promise((resolve) => setTimeout(resolve, 10));
             continue;
           }
 
@@ -270,7 +271,7 @@ const createMockOrchestrator = (config: OrchestratorConfig = {}): MultiAgentOrch
               const errorMsg = error instanceof Error ? error.message : 'Unknown error';
               if (errorMsg.includes('No available worker') && retries < 19) {
                 retries++;
-                await new Promise(resolve => setTimeout(resolve, 50));
+                await new Promise((resolve) => setTimeout(resolve, 50));
               } else {
                 failures.set(taskId, errorMsg);
                 break;
@@ -283,9 +284,8 @@ const createMockOrchestrator = (config: OrchestratorConfig = {}): MultiAgentOrch
       };
 
       // Start worker threads for concurrent execution
-      const workerPromises = Array.from(
-        { length: Math.min(maxConcurrent, taskIds.length) },
-        () => executeNext()
+      const workerPromises = Array.from({ length: Math.min(maxConcurrent, taskIds.length) }, () =>
+        executeNext()
       );
 
       await Promise.all(workerPromises);
@@ -304,10 +304,10 @@ const createMockOrchestrator = (config: OrchestratorConfig = {}): MultiAgentOrch
     },
 
     getWorkerStats(): OrchestratorStats {
-      const activeWorkers = Array.from(workers.values()).filter(w => w.status === 'busy');
-      const idleWorkers = Array.from(workers.values()).filter(w => w.status === 'idle');
+      const activeWorkers = Array.from(workers.values()).filter((w) => w.status === 'busy');
+      const idleWorkers = Array.from(workers.values()).filter((w) => w.status === 'idle');
 
-      const completedTasks = Array.from(tasks.values()).filter(t => t.status === 'completed');
+      const completedTasks = Array.from(tasks.values()).filter((t) => t.status === 'completed');
       const totalTime = completedTasks.reduce((sum, t) => {
         return sum + (t.completedAt ? t.completedAt - t.createdAt : 0);
       }, 0);
@@ -316,17 +316,15 @@ const createMockOrchestrator = (config: OrchestratorConfig = {}): MultiAgentOrch
         ...stats,
         workersActive: activeWorkers.length,
         workersIdle: idleWorkers.length,
-        averageExecutionTimeMs: completedTasks.length > 0
-          ? totalTime / completedTasks.length
-          : 0,
+        averageExecutionTimeMs: completedTasks.length > 0 ? totalTime / completedTasks.length : 0,
       };
     },
 
     getAvailableWorkers(taskType?: string): Worker[] {
-      let available = Array.from(workers.values()).filter(w => w.status === 'idle');
+      let available = Array.from(workers.values()).filter((w) => w.status === 'idle');
 
       if (taskType) {
-        available = available.filter(w => w.specialization.includes(taskType));
+        available = available.filter((w) => w.specialization.includes(taskType));
       }
 
       return available;
@@ -496,8 +494,7 @@ describe('Multi-Agent Orchestration System', () => {
           payload: {},
         });
 
-        await expect(orchestrator.executeTask(taskId))
-          .rejects.toThrow(/No available worker/);
+        await expect(orchestrator.executeTask(taskId)).rejects.toThrow(/No available worker/);
       });
 
       it('should throw error when no workers match specialization', async () => {
@@ -515,8 +512,9 @@ describe('Multi-Agent Orchestration System', () => {
           payload: {},
         });
 
-        await expect(orchestrator.executeTask(taskId))
-          .rejects.toThrow(/No available worker for task type: image-processing/);
+        await expect(orchestrator.executeTask(taskId)).rejects.toThrow(
+          /No available worker for task type: image-processing/
+        );
       });
 
       it('should queue task when all workers busy', async () => {
@@ -535,8 +533,7 @@ describe('Multi-Agent Orchestration System', () => {
           payload: {},
         });
 
-        await expect(orchestrator.executeTask(taskId))
-          .rejects.toThrow(/No available worker/);
+        await expect(orchestrator.executeTask(taskId)).rejects.toThrow(/No available worker/);
 
         const task = orchestrator.getTaskStatus(taskId);
         expect(task?.status).toBe('pending');
@@ -569,8 +566,9 @@ describe('Multi-Agent Orchestration System', () => {
         });
 
         // Should fail if trying to execute task2 before task1
-        await expect(orchestrator.executeTask(task2Id))
-          .rejects.toThrow(/Dependency.*not completed/);
+        await expect(orchestrator.executeTask(task2Id)).rejects.toThrow(
+          /Dependency.*not completed/
+        );
 
         // Execute task1 first
         await orchestrator.executeTask(task1Id);
@@ -692,9 +690,7 @@ describe('Multi-Agent Orchestration System', () => {
 
         // Verify different workers were used
         const taskIds = Array.from(result.results.keys());
-        const workers = new Set(
-          taskIds.map(id => orchestrator.getTaskStatus(id)?.assignedTo)
-        );
+        const workers = new Set(taskIds.map((id) => orchestrator.getTaskStatus(id)?.assignedTo));
         expect(workers.size).toBeGreaterThan(1);
       });
 
@@ -742,10 +738,11 @@ describe('Multi-Agent Orchestration System', () => {
         expect(result.results.size).toBe(3);
         expect(result.failures.size).toBe(0);
 
-        const taskStatuses = Array.from(result.results.keys())
-          .map(id => orchestrator.getTaskStatus(id)?.status);
+        const taskStatuses = Array.from(result.results.keys()).map(
+          (id) => orchestrator.getTaskStatus(id)?.status
+        );
 
-        expect(taskStatuses.every(status => status === 'completed')).toBe(true);
+        expect(taskStatuses.every((status) => status === 'completed')).toBe(true);
       });
 
       it('should collect results in correct structure', async () => {
@@ -780,9 +777,7 @@ describe('Multi-Agent Orchestration System', () => {
       });
 
       it('should handle single result without synthesis', () => {
-        const results = new Map([
-          ['task-1', { output: 'single result', value: 42 }],
-        ]);
+        const results = new Map([['task-1', { output: 'single result', value: 42 }]]);
 
         const synthesized = orchestrator.synthesizeResults(results);
 
@@ -798,7 +793,7 @@ describe('Multi-Agent Orchestration System', () => {
       });
     });
 
-    describe('Preserve disagreements (don\'t force consensus)', () => {
+    describe("Preserve disagreements (don't force consensus)", () => {
       it('should preserve disagreements when workers produce different results', () => {
         const orch = createMockOrchestrator({ preserveDisagreements: true });
 

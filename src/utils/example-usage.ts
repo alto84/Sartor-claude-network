@@ -9,15 +9,9 @@
  * - Privacy and compliance
  */
 
-import {
-  createMemorySystem,
-  createOptimizedMemorySystem
-} from '../memory/memory-system';
+import { createMemorySystem, createOptimizedMemorySystem } from '../memory/memory-system';
 
-import {
-  Memory,
-  MemoryType
-} from './types';
+import { Memory, MemoryType } from './types';
 
 // ============================================================================
 // Example 1: Basic Memory Operations
@@ -34,7 +28,7 @@ async function basicMemoryOperations() {
     'User prefers dark mode for the UI',
     MemoryType.SEMANTIC,
     {
-      tags: ['user_preference', 'ui', 'explicitly_saved']
+      tags: ['user_preference', 'ui', 'explicitly_saved'],
     }
   );
   console.log('Created memory 1:', memory1.id);
@@ -43,7 +37,7 @@ async function basicMemoryOperations() {
     'User mentioned they work as a software engineer at Google',
     MemoryType.EPISODIC,
     {
-      tags: ['personal_fact', 'career']
+      tags: ['personal_fact', 'career'],
     }
   );
   console.log('Created memory 2:', memory2.id);
@@ -52,7 +46,7 @@ async function basicMemoryOperations() {
     'User asked how to implement a binary search tree',
     MemoryType.EPISODIC,
     {
-      tags: ['question', 'programming']
+      tags: ['question', 'programming'],
     }
   );
   console.log('Created memory 3:', memory3.id);
@@ -66,11 +60,11 @@ async function basicMemoryOperations() {
   // Search memories by tag
   const searchResults = await memorySystem.searchMemories({
     filters: {
-      tags: ['personal_fact']
-    }
+      tags: ['personal_fact'],
+    },
   });
   console.log('\nSearch results for "personal_fact" tag:');
-  searchResults.forEach(result => {
+  searchResults.forEach((result) => {
     console.log(`- ${result.memory.content} (score: ${result.score.toFixed(3)})`);
   });
 
@@ -96,7 +90,7 @@ async function memoryDecayExample() {
     'Temporary note: Meeting scheduled for tomorrow',
     MemoryType.EPISODIC,
     {
-      tags: ['temporary', 'meeting']
+      tags: ['temporary', 'meeting'],
     }
   );
 
@@ -136,7 +130,7 @@ async function spacedRepetitionExample() {
     MemoryType.PROCEDURAL,
     {
       tags: ['procedural_knowledge', 'typescript', 'debugging'],
-      importance_score: 0.85 // High importance
+      importance_score: 0.85, // High importance
     }
   );
 
@@ -144,7 +138,10 @@ async function spacedRepetitionExample() {
   console.log(`Importance: ${memory.importance_score}`);
 
   // Calculate review intervals
-  const { calculateNextReviewDate, getIntervalProgression } = require('../memory/spaced-repetition');
+  const {
+    calculateNextReviewDate,
+    getIntervalProgression,
+  } = require('../memory/spaced-repetition');
 
   const intervals = getIntervalProgression(memory.importance_score, 8);
   console.log('\nReview schedule (days):');
@@ -173,7 +170,7 @@ async function consolidationExample() {
     'User implemented useState in their component',
     'User debugged useEffect dependency array',
     'User learned about custom hooks',
-    'User created a useLocalStorage hook'
+    'User created a useLocalStorage hook',
   ];
 
   console.log('Creating related memories about React hooks...');
@@ -181,7 +178,7 @@ async function consolidationExample() {
     await memorySystem.createMemory(content, MemoryType.EPISODIC, {
       tags: ['react', 'programming'],
       // Mock embedding (in production: use real embeddings)
-      embedding: Array.from({ length: 768 }, () => Math.random())
+      embedding: Array.from({ length: 768 }, () => Math.random()),
     });
   }
 
@@ -214,7 +211,7 @@ async function privacyExample() {
     'User email is john.doe@example.com and phone is 555-123-4567',
     MemoryType.EPISODIC,
     {
-      tags: ['contact_info']
+      tags: ['contact_info'],
     }
   );
 
@@ -235,7 +232,7 @@ async function privacyExample() {
     'User commitment: Will deliver the project by Friday',
     MemoryType.SEMANTIC,
     {
-      tags: ['commitment', 'explicitly_saved']
+      tags: ['commitment', 'explicitly_saved'],
     }
   );
 
@@ -247,7 +244,11 @@ async function privacyExample() {
   const { handleRightToErasure } = require('../memory/forgetting-strategy');
 
   const allMemories = memorySystem.exportMemories();
-  const erasureReport = handleRightToErasure('user123', allMemories, memorySystem.getConfig().forgetting);
+  const erasureReport = handleRightToErasure(
+    'user123',
+    allMemories,
+    memorySystem.getConfig().forgetting
+  );
 
   console.log('Erasure report:');
   console.log(`Total memories: ${erasureReport.total_memories}`);
@@ -270,27 +271,19 @@ async function contextAwareRetrievalExample() {
     MemoryType.SEMANTIC,
     {
       tags: ['preference', 'python', 'data_science'],
-      embedding: [0.8, 0.6, 0.3, 0.9, 0.2] // Mock embedding
+      embedding: [0.8, 0.6, 0.3, 0.9, 0.2], // Mock embedding
     }
   );
 
-  await memorySystem.createMemory(
-    'User uses pandas and numpy frequently',
-    MemoryType.EPISODIC,
-    {
-      tags: ['python', 'tools'],
-      embedding: [0.75, 0.65, 0.25, 0.85, 0.15]
-    }
-  );
+  await memorySystem.createMemory('User uses pandas and numpy frequently', MemoryType.EPISODIC, {
+    tags: ['python', 'tools'],
+    embedding: [0.75, 0.65, 0.25, 0.85, 0.15],
+  });
 
-  await memorySystem.createMemory(
-    'User asked about JavaScript async/await',
-    MemoryType.EPISODIC,
-    {
-      tags: ['javascript', 'question'],
-      embedding: [0.2, 0.3, 0.9, 0.1, 0.8]
-    }
-  );
+  await memorySystem.createMemory('User asked about JavaScript async/await', MemoryType.EPISODIC, {
+    tags: ['javascript', 'question'],
+    embedding: [0.2, 0.3, 0.9, 0.1, 0.8],
+  });
 
   console.log('Created diverse memories');
 
@@ -327,30 +320,30 @@ async function customConfigurationExample() {
   const customSystem = createMemorySystem({
     importance: {
       weights: {
-        recency: 0.30,
-        frequency: 0.30,
-        salience: 0.20,
-        relevance: 0.20
+        recency: 0.3,
+        frequency: 0.3,
+        salience: 0.2,
+        relevance: 0.2,
       },
       recency_lambda: 0.03, // Slower recency decay
-      max_expected_accesses: 200
+      max_expected_accesses: 200,
     },
     decay: {
       base_rate: 0.05, // Slower decay
-      reinforcement_boost: 0.20, // Stronger reinforcement
+      reinforcement_boost: 0.2, // Stronger reinforcement
       thresholds: {
         soft_delete: 0.25,
-        archive: 0.10,
-        permanent_delete: 0.03
+        archive: 0.1,
+        permanent_delete: 0.03,
       },
       type_modifiers: {
         episodic: 0.8,
         semantic: 0.5,
         procedural: 0.3,
         emotional: 0.4,
-        system: 0.1
-      }
-    }
+        system: 0.1,
+      },
+    },
   });
 
   console.log('\nCreated custom memory system');
@@ -381,7 +374,7 @@ async function dailyMaintenanceExample() {
       Math.random() > 0.5 ? MemoryType.SEMANTIC : MemoryType.EPISODIC,
       {
         tags: Math.random() > 0.7 ? ['important'] : ['casual'],
-        importance_score: Math.random()
+        importance_score: Math.random(),
       }
     );
   }
@@ -444,7 +437,7 @@ export {
   contextAwareRetrievalExample,
   customConfigurationExample,
   dailyMaintenanceExample,
-  runAllExamples
+  runAllExamples,
 };
 
 // Run if executed directly

@@ -8,10 +8,7 @@
  */
 
 import { SkillRuntime } from './skill-runtime';
-import {
-  EVIDENCE_BASED_VALIDATION,
-  EVIDENCE_BASED_ENGINEERING
-} from './skill-manifest';
+import { EVIDENCE_BASED_VALIDATION, EVIDENCE_BASED_ENGINEERING } from './skill-manifest';
 
 /**
  * Example: Initialize and use the skill runtime
@@ -28,7 +25,10 @@ async function example() {
   await runtime.registerSkill(EVIDENCE_BASED_ENGINEERING);
 
   console.log('\n=== Skill Runtime Initialized ===');
-  console.log('Available skills:', runtime.listSkills().map(s => s.id));
+  console.log(
+    'Available skills:',
+    runtime.listSkills().map((s) => s.id)
+  );
 
   // Example 1: Execute Evidence-Based Validation
   console.log('\n=== Example 1: Evidence-Based Validation ===');
@@ -36,18 +36,15 @@ async function example() {
   const validationInput = {
     claim: 'TypeScript reduces bugs by 15% compared to JavaScript',
     context: 'Considering TypeScript adoption for our project',
-    evidenceLevel: 'high'
+    evidenceLevel: 'high',
   };
 
-  const validationResult = await runtime.executeSkill(
-    'evidence-based-validation',
-    validationInput
-  );
+  const validationResult = await runtime.executeSkill('evidence-based-validation', validationInput);
 
   console.log('Validation Result:', {
     success: validationResult.success,
     confidence: validationResult.data?.confidence,
-    duration: validationResult.metrics.durationMs + 'ms'
+    duration: validationResult.metrics.durationMs + 'ms',
   });
 
   // Example 2: Execute Evidence-Based Engineering
@@ -58,9 +55,9 @@ async function example() {
     requirements: {
       realTime: true,
       scale: '10k concurrent users',
-      consistency: 'eventual ok'
+      consistency: 'eventual ok',
     },
-    alternatives: ['Firebase RTDB', 'Firestore', 'MongoDB', 'PostgreSQL']
+    alternatives: ['Firebase RTDB', 'Firestore', 'MongoDB', 'PostgreSQL'],
   };
 
   const engineeringResult = await runtime.executeSkill(
@@ -71,7 +68,7 @@ async function example() {
   console.log('Engineering Result:', {
     success: engineeringResult.success,
     recommendation: engineeringResult.data?.recommendation,
-    duration: engineeringResult.metrics.durationMs + 'ms'
+    duration: engineeringResult.metrics.durationMs + 'ms',
   });
 
   // Check runtime statistics
@@ -91,7 +88,7 @@ if (require.main === module) {
       console.log('\n=== Example completed successfully ===');
       process.exit(0);
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Example failed:', error);
       process.exit(1);
     });

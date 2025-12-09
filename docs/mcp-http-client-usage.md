@@ -18,7 +18,7 @@ const result = await client.createMemory({
   content: 'My first memory',
   type: 'episodic',
   importance: 0.8,
-  tags: ['example']
+  tags: ['example'],
 });
 
 // Clean up
@@ -28,6 +28,7 @@ await client.close();
 ## Prerequisites
 
 1. **Start the MCP HTTP Server**
+
    ```bash
    npm run mcp:http
    ```
@@ -79,6 +80,7 @@ if (!isAvailable) {
 Create a new memory in the system.
 
 **Parameters:**
+
 - `content` (string): The content to remember
 - `type` ('episodic' | 'semantic' | 'procedural' | 'working'): Memory type
 - `importance` (number, optional): Importance score 0-1 (default 0.5)
@@ -91,7 +93,7 @@ const result = await client.createMemory({
   content: 'Learned how to use the MCP client',
   type: 'procedural',
   importance: 0.9,
-  tags: ['learning', 'mcp']
+  tags: ['learning', 'mcp'],
 });
 
 if (result) {
@@ -119,6 +121,7 @@ if (memory) {
 Search memories by filters.
 
 **Parameters:**
+
 - `type` (string, optional): Filter by memory type
 - `min_importance` (number, optional): Minimum importance score
 - `limit` (number, optional): Max results (default 10)
@@ -129,11 +132,11 @@ Search memories by filters.
 const memories = await client.searchMemories({
   type: 'episodic',
   min_importance: 0.7,
-  limit: 5
+  limit: 5,
 });
 
 console.log(`Found ${memories.length} memories`);
-memories.forEach(m => console.log(`- ${m.content}`));
+memories.forEach((m) => console.log(`- ${m.content}`));
 ```
 
 #### `getStats(): Promise<Stats | null>`
@@ -185,7 +188,7 @@ async function example() {
       content: 'Example memory for documentation',
       type: 'semantic',
       importance: 0.8,
-      tags: ['example', 'docs']
+      tags: ['example', 'docs'],
     });
 
     if (!created) {
@@ -201,14 +204,13 @@ async function example() {
     // Search for similar memories
     const results = await client.searchMemories({
       type: 'semantic',
-      min_importance: 0.5
+      min_importance: 0.5,
     });
     console.log(`Found ${results.length} semantic memories`);
 
     // Get stats
     const stats = await client.getStats();
     console.log('System stats:', stats);
-
   } finally {
     // Always close the session
     await client.close();
@@ -249,6 +251,7 @@ npx ts-node test-mcp-client.ts
 ```
 
 Expected output:
+
 ```
 === MCP HTTP Client Test ===
 

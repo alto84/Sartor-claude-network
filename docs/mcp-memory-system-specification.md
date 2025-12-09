@@ -1,9 +1,11 @@
 # MCP Memory System Tool Interface Specification
 
 ## Overview
+
 This document defines the Model Context Protocol (MCP) tool interface for a comprehensive AI memory system. The system supports storing, retrieving, managing, and analyzing conversational memories with semantic search, automatic categorization, and lifecycle management.
 
 ## Design Principles
+
 - **Snake_case naming**: All tool names use snake_case convention
 - **Self-contained operations**: Each tool performs a complete, atomic operation
 - **Minimal tool budget**: Tools are designed to minimize the number of calls needed
@@ -19,6 +21,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 **Description**: Store new information with automatic categorization, tagging, and metadata enrichment.
 
 **Input Schema**:
+
 ```json
 {
   "type": "object",
@@ -59,12 +62,22 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
         "category": {
           "type": "string",
           "description": "Manual category override (auto-detected if not provided)",
-          "enum": ["fact", "preference", "instruction", "context", "relationship", "skill", "goal", "event", "custom"]
+          "enum": [
+            "fact",
+            "preference",
+            "instruction",
+            "context",
+            "relationship",
+            "skill",
+            "goal",
+            "event",
+            "custom"
+          ]
         },
         "tags": {
           "type": "array",
           "description": "User-defined tags",
-          "items": {"type": "string"},
+          "items": { "type": "string" },
           "maxItems": 20
         },
         "importance": {
@@ -89,7 +102,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
     "related_memory_ids": {
       "type": "array",
       "description": "IDs of related memories to link",
-      "items": {"type": "string"}
+      "items": { "type": "string" }
     }
   },
   "required": ["content"]
@@ -97,6 +110,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Output Format**:
+
 ```json
 {
   "success": true,
@@ -112,6 +126,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Example Usage**:
+
 ```json
 {
   "content": "User is learning Spanish and wants conversational practice",
@@ -127,6 +142,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Error Handling**:
+
 - `400`: Invalid input (content too long, invalid enum values)
 - `409`: Duplicate memory detected (returns existing memory_id)
 - `500`: Storage failure (database unavailable, embedding service error)
@@ -139,6 +155,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 **Description**: Semantic search across memories with multi-factor ranking based on relevance, recency, importance, and context.
 
 **Input Schema**:
+
 ```json
 {
   "type": "object",
@@ -158,19 +175,29 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
           "description": "Filter by categories",
           "items": {
             "type": "string",
-            "enum": ["fact", "preference", "instruction", "context", "relationship", "skill", "goal", "event", "custom"]
+            "enum": [
+              "fact",
+              "preference",
+              "instruction",
+              "context",
+              "relationship",
+              "skill",
+              "goal",
+              "event",
+              "custom"
+            ]
           }
         },
         "tags": {
           "type": "array",
           "description": "Filter by tags (OR operation)",
-          "items": {"type": "string"}
+          "items": { "type": "string" }
         },
         "date_range": {
           "type": "object",
           "properties": {
-            "start": {"type": "string", "format": "date-time"},
-            "end": {"type": "string", "format": "date-time"}
+            "start": { "type": "string", "format": "date-time" },
+            "end": { "type": "string", "format": "date-time" }
           }
         },
         "min_importance": {
@@ -203,10 +230,10 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
           "type": "object",
           "description": "Weights for ranking factors (must sum to 1.0)",
           "properties": {
-            "semantic_similarity": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.5},
-            "recency": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.2},
-            "importance": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.2},
-            "access_frequency": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.1}
+            "semantic_similarity": { "type": "number", "minimum": 0, "maximum": 1, "default": 0.5 },
+            "recency": { "type": "number", "minimum": 0, "maximum": 1, "default": 0.2 },
+            "importance": { "type": "number", "minimum": 0, "maximum": 1, "default": 0.2 },
+            "access_frequency": { "type": "number", "minimum": 0, "maximum": 1, "default": 0.1 }
           }
         },
         "recency_decay": {
@@ -241,6 +268,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Output Format**:
+
 ```json
 {
   "success": true,
@@ -260,7 +288,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
       "scores": {
         "semantic_similarity": 0.92,
         "recency": 0.85,
-        "importance": 0.90,
+        "importance": 0.9,
         "access_frequency": 0.67,
         "combined": 0.88
       },
@@ -275,6 +303,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Example Usage**:
+
 ```json
 {
   "query": "user's dietary restrictions",
@@ -294,6 +323,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Error Handling**:
+
 - `400`: Invalid input (weights don't sum to 1.0, invalid date range)
 - `413`: Query too complex (too many filters)
 - `500`: Search service unavailable
@@ -306,6 +336,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 **Description**: Modify existing memory content, metadata, or relationships with full version history tracking.
 
 **Input Schema**:
+
 ```json
 {
   "type": "object",
@@ -326,14 +357,24 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
         },
         "category": {
           "type": "string",
-          "enum": ["fact", "preference", "instruction", "context", "relationship", "skill", "goal", "event", "custom"]
+          "enum": [
+            "fact",
+            "preference",
+            "instruction",
+            "context",
+            "relationship",
+            "skill",
+            "goal",
+            "event",
+            "custom"
+          ]
         },
         "tags": {
           "type": "object",
           "properties": {
-            "add": {"type": "array", "items": {"type": "string"}},
-            "remove": {"type": "array", "items": {"type": "string"}},
-            "replace": {"type": "array", "items": {"type": "string"}}
+            "add": { "type": "array", "items": { "type": "string" } },
+            "remove": { "type": "array", "items": { "type": "string" } },
+            "replace": { "type": "array", "items": { "type": "string" } }
           }
         },
         "importance": {
@@ -369,6 +410,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Output Format**:
+
 ```json
 {
   "success": true,
@@ -382,6 +424,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Example Usage**:
+
 ```json
 {
   "memory_id": "mem_a1b2c3d4e5f6",
@@ -399,6 +442,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Error Handling**:
+
 - `400`: Invalid input (no updates provided, invalid field values)
 - `404`: Memory not found
 - `403`: Unauthorized (user doesn't have permission to update)
@@ -413,6 +457,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 **Description**: Soft delete a memory with reason tracking, allowing for potential recovery and audit trails.
 
 **Input Schema**:
+
 ```json
 {
   "type": "object",
@@ -455,6 +500,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Output Format**:
+
 ```json
 {
   "success": true,
@@ -468,6 +514,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Example Usage**:
+
 ```json
 {
   "memory_id": "mem_a1b2c3d4e5f6",
@@ -479,6 +526,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Error Handling**:
+
 - `400`: Invalid input (invalid memory_id format)
 - `404`: Memory not found or already deleted
 - `403`: Unauthorized (user doesn't have permission to delete)
@@ -492,6 +540,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 **Description**: Merge related or duplicate memories into a single, coherent memory with preserved provenance.
 
 **Input Schema**:
+
 ```json
 {
   "type": "object",
@@ -499,7 +548,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
     "memory_ids": {
       "type": "array",
       "description": "IDs of memories to consolidate",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "minItems": 2,
       "maxItems": 50
     },
@@ -522,10 +571,10 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
       "type": "object",
       "description": "Which metadata to preserve",
       "properties": {
-        "earliest_timestamp": {"type": "boolean", "default": true},
-        "highest_importance": {"type": "boolean", "default": true},
-        "all_tags": {"type": "boolean", "default": true},
-        "all_links": {"type": "boolean", "default": true}
+        "earliest_timestamp": { "type": "boolean", "default": true },
+        "highest_importance": { "type": "boolean", "default": true },
+        "all_tags": { "type": "boolean", "default": true },
+        "all_links": { "type": "boolean", "default": true }
       }
     },
     "keep_originals": {
@@ -539,6 +588,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Output Format**:
+
 ```json
 {
   "success": true,
@@ -546,7 +596,14 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
   "source_memory_ids": ["mem_a1b2c3", "mem_d4e5f6", "mem_g7h8i9"],
   "content": "User is learning Spanish at intermediate level, prefers conversational practice over grammar, and uses language learning apps daily for 30 minutes",
   "category": "preference",
-  "tags": ["language", "learning", "spanish", "intermediate", "conversation-focused", "daily-routine"],
+  "tags": [
+    "language",
+    "learning",
+    "spanish",
+    "intermediate",
+    "conversation-focused",
+    "daily-routine"
+  ],
   "importance": 0.95,
   "created_at": "2025-11-15T14:20:00Z",
   "consolidated_at": "2025-12-06T10:45:00Z",
@@ -560,6 +617,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Example Usage**:
+
 ```json
 {
   "memory_ids": ["mem_a1b2c3", "mem_d4e5f6", "mem_g7h8i9"],
@@ -575,6 +633,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Error Handling**:
+
 - `400`: Invalid input (too few memories, missing primary_memory_id when required)
 - `404`: One or more memories not found
 - `403`: Unauthorized (user doesn't have permission for all memories)
@@ -589,6 +648,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 **Description**: Browse memories with comprehensive filtering, sorting, and pagination capabilities.
 
 **Input Schema**:
+
 ```json
 {
   "type": "object",
@@ -600,29 +660,39 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["fact", "preference", "instruction", "context", "relationship", "skill", "goal", "event", "custom"]
+            "enum": [
+              "fact",
+              "preference",
+              "instruction",
+              "context",
+              "relationship",
+              "skill",
+              "goal",
+              "event",
+              "custom"
+            ]
           }
         },
         "tags": {
           "type": "array",
-          "items": {"type": "string"}
+          "items": { "type": "string" }
         },
         "date_range": {
           "type": "object",
           "properties": {
-            "start": {"type": "string", "format": "date-time"},
-            "end": {"type": "string", "format": "date-time"}
+            "start": { "type": "string", "format": "date-time" },
+            "end": { "type": "string", "format": "date-time" }
           }
         },
         "importance_range": {
           "type": "object",
           "properties": {
-            "min": {"type": "number", "minimum": 0, "maximum": 1},
-            "max": {"type": "number", "minimum": 0, "maximum": 1}
+            "min": { "type": "number", "minimum": 0, "maximum": 1 },
+            "max": { "type": "number", "minimum": 0, "maximum": 1 }
           }
         },
-        "user_id": {"type": "string"},
-        "conversation_id": {"type": "string"},
+        "user_id": { "type": "string" },
+        "conversation_id": { "type": "string" },
         "access_level": {
           "type": "array",
           "items": {
@@ -645,7 +715,14 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
       "properties": {
         "field": {
           "type": "string",
-          "enum": ["created_at", "updated_at", "last_accessed", "importance", "access_count", "content_length"],
+          "enum": [
+            "created_at",
+            "updated_at",
+            "last_accessed",
+            "importance",
+            "access_count",
+            "content_length"
+          ],
           "default": "created_at"
         },
         "order": {
@@ -690,6 +767,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Output Format**:
+
 ```json
 {
   "success": true,
@@ -729,6 +807,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Example Usage**:
+
 ```json
 {
   "filters": {
@@ -750,6 +829,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Error Handling**:
+
 - `400`: Invalid input (invalid date range, min > max in ranges)
 - `403`: Unauthorized (requesting memories user doesn't have access to)
 - `500`: Query failed (database error)
@@ -761,6 +841,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 **Description**: Retrieve usage metrics, health indicators, and analytics about the memory system.
 
 **Input Schema**:
+
 ```json
 {
   "type": "object",
@@ -778,8 +859,8 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
     "time_range": {
       "type": "object",
       "properties": {
-        "start": {"type": "string", "format": "date-time"},
-        "end": {"type": "string", "format": "date-time"}
+        "start": { "type": "string", "format": "date-time" },
+        "end": { "type": "string", "format": "date-time" }
       }
     },
     "metrics": {
@@ -817,6 +898,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Output Format**:
+
 ```json
 {
   "success": true,
@@ -890,12 +972,12 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
   },
   "trends": {
     "memory_count": [
-      {"date": "2025-12-01", "value": 1150},
-      {"date": "2025-12-02", "value": 1175},
-      {"date": "2025-12-03", "value": 1198},
-      {"date": "2025-12-04", "value": 1220},
-      {"date": "2025-12-05", "value": 1235},
-      {"date": "2025-12-06", "value": 1247}
+      { "date": "2025-12-01", "value": 1150 },
+      { "date": "2025-12-02", "value": 1175 },
+      { "date": "2025-12-03", "value": 1198 },
+      { "date": "2025-12-04", "value": 1220 },
+      { "date": "2025-12-05", "value": 1235 },
+      { "date": "2025-12-06", "value": 1247 }
     ]
   },
   "generated_at": "2025-12-06T10:50:00Z"
@@ -903,6 +985,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Example Usage**:
+
 ```json
 {
   "scope": "user",
@@ -918,6 +1001,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Error Handling**:
+
 - `400`: Invalid input (invalid time range, missing scope_id when required)
 - `403`: Unauthorized (user doesn't have permission for requested scope)
 - `404`: Scope not found (invalid user_id or conversation_id)
@@ -930,6 +1014,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 **Description**: Force synchronization of memories across different surfaces, devices, or storage backends.
 
 **Input Schema**:
+
 ```json
 {
   "type": "object",
@@ -956,10 +1041,10 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
       "properties": {
         "categories": {
           "type": "array",
-          "items": {"type": "string"}
+          "items": { "type": "string" }
         },
-        "user_id": {"type": "string"},
-        "conversation_id": {"type": "string"},
+        "user_id": { "type": "string" },
+        "conversation_id": { "type": "string" },
         "modified_since": {
           "type": "string",
           "format": "date-time"
@@ -987,6 +1072,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Output Format**:
+
 ```json
 {
   "success": true,
@@ -1020,6 +1106,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Example Usage**:
+
 ```json
 {
   "sync_type": "incremental",
@@ -1035,6 +1122,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Error Handling**:
+
 - `400`: Invalid input (invalid source/destination, conflicting options)
 - `403`: Unauthorized (user doesn't have permission to sync)
 - `404`: Source or destination not found
@@ -1050,6 +1138,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 **Description**: Move memories to cold storage for long-term retention with reduced access costs and performance.
 
 **Input Schema**:
+
 ```json
 {
   "type": "object",
@@ -1061,7 +1150,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
     "memory_ids": {
       "type": "array",
       "description": "IDs of memories to archive in batch",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "maxItems": 1000
     },
     "auto_archive_criteria": {
@@ -1082,7 +1171,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
         "categories": {
           "type": "array",
           "description": "Archive memories in these categories",
-          "items": {"type": "string"}
+          "items": { "type": "string" }
         },
         "before_date": {
           "type": "string",
@@ -1115,14 +1204,15 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
     }
   },
   "oneOf": [
-    {"required": ["memory_id"]},
-    {"required": ["memory_ids"]},
-    {"required": ["auto_archive_criteria"]}
+    { "required": ["memory_id"] },
+    { "required": ["memory_ids"] },
+    { "required": ["auto_archive_criteria"] }
   ]
 }
 ```
 
 **Output Format**:
+
 ```json
 {
   "success": true,
@@ -1139,13 +1229,14 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
     }
   ],
   "storage_saved_bytes": 2621440,
-  "estimated_monthly_savings": 12.50,
+  "estimated_monthly_savings": 12.5,
   "embeddings_retained": false,
   "total_cost": 0.05
 }
 ```
 
 **Example Usage**:
+
 ```json
 {
   "auto_archive_criteria": {
@@ -1161,6 +1252,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Error Handling**:
+
 - `400`: Invalid input (no criteria provided, invalid tier)
 - `403`: Unauthorized (user doesn't have permission to archive)
 - `404`: Memory not found
@@ -1176,6 +1268,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 **Description**: Retrieve archived memories from cold storage back to active status.
 
 **Input Schema**:
+
 ```json
 {
   "type": "object",
@@ -1191,7 +1284,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
     "memory_ids": {
       "type": "array",
       "description": "Batch restore multiple memories",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "maxItems": 100
     },
     "restore_mode": {
@@ -1218,14 +1311,15 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
     }
   },
   "oneOf": [
-    {"required": ["memory_id"]},
-    {"required": ["archive_id"]},
-    {"required": ["memory_ids"]}
+    { "required": ["memory_id"] },
+    { "required": ["archive_id"] },
+    { "required": ["memory_ids"] }
   ]
 }
 ```
 
 **Output Format**:
+
 ```json
 {
   "success": true,
@@ -1248,6 +1342,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Example Usage**:
+
 ```json
 {
   "memory_id": "mem_a1b2c3d4e5f6",
@@ -1259,6 +1354,7 @@ This document defines the Model Context Protocol (MCP) tool interface for a comp
 ```
 
 **Error Handling**:
+
 - `400`: Invalid input (invalid mode or priority)
 - `403`: Unauthorized (user doesn't have permission to restore)
 - `404`: Memory or archive not found
@@ -1306,6 +1402,7 @@ All tools are subject to rate limiting:
 - **restore_memory**: 20 requests/minute
 
 Rate limit headers are included in all responses:
+
 - `X-RateLimit-Limit`: Total requests allowed
 - `X-RateLimit-Remaining`: Requests remaining
 - `X-RateLimit-Reset`: Unix timestamp when limit resets
@@ -1315,6 +1412,7 @@ Rate limit headers are included in all responses:
 This specification is version **1.0.0** following semantic versioning.
 
 API version is included in all responses:
+
 ```json
 {
   "api_version": "1.0.0",
@@ -1326,6 +1424,7 @@ API version is included in all responses:
 ## Authentication
 
 All tools require authentication via:
+
 - Bearer token in `Authorization` header
 - API key in `X-API-Key` header (alternative)
 - Session cookie for web applications

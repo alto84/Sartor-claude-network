@@ -10,11 +10,13 @@ npm install  # or yarn install
 ## Basic Usage (3 Steps)
 
 ### 1. Import
+
 ```typescript
 import { SkillRuntime, SKILL_MANIFESTS } from './src/skills';
 ```
 
 ### 2. Initialize
+
 ```typescript
 const runtime = new SkillRuntime();
 await runtime.initialize();
@@ -26,14 +28,12 @@ for (const manifest of SKILL_MANIFESTS) {
 ```
 
 ### 3. Execute
+
 ```typescript
-const result = await runtime.executeSkill(
-  'evidence-based-validation',
-  {
-    claim: 'Your claim here',
-    evidenceLevel: 'high'
-  }
-);
+const result = await runtime.executeSkill('evidence-based-validation', {
+  claim: 'Your claim here',
+  evidenceLevel: 'high',
+});
 
 console.log(result);
 ```
@@ -41,15 +41,13 @@ console.log(result);
 ## Common Patterns
 
 ### Validate a Technical Claim
+
 ```typescript
-const result = await runtime.executeSkill(
-  'evidence-based-validation',
-  {
-    claim: 'Firebase RTDB is faster than Firestore for real-time updates',
-    context: 'Building a chat app with 1000+ users',
-    evidenceLevel: 'high'
-  }
-);
+const result = await runtime.executeSkill('evidence-based-validation', {
+  claim: 'Firebase RTDB is faster than Firestore for real-time updates',
+  context: 'Building a chat app with 1000+ users',
+  evidenceLevel: 'high',
+});
 
 if (result.success && result.data.validated) {
   console.log('Claim is supported by evidence!');
@@ -58,25 +56,24 @@ if (result.success && result.data.validated) {
 ```
 
 ### Make an Engineering Decision
+
 ```typescript
-const result = await runtime.executeSkill(
-  'evidence-based-engineering',
-  {
-    problem: 'Choose between REST and GraphQL for our API',
-    requirements: {
-      flexibility: 'high',
-      performance: 'critical',
-      clientTypes: ['web', 'mobile']
-    },
-    alternatives: ['REST', 'GraphQL', 'gRPC']
-  }
-);
+const result = await runtime.executeSkill('evidence-based-engineering', {
+  problem: 'Choose between REST and GraphQL for our API',
+  requirements: {
+    flexibility: 'high',
+    performance: 'critical',
+    clientTypes: ['web', 'mobile'],
+  },
+  alternatives: ['REST', 'GraphQL', 'gRPC'],
+});
 
 console.log('Recommendation:', result.data.recommendation);
 console.log('Tradeoffs:', result.data.tradeoffs);
 ```
 
 ### Check Skill Status
+
 ```typescript
 const status = runtime.getSkillStatus('evidence-based-validation');
 console.log(status);
@@ -90,6 +87,7 @@ console.log(status);
 ```
 
 ### Get Statistics
+
 ```typescript
 const stats = runtime.getStatistics();
 console.log(stats);
@@ -105,11 +103,13 @@ console.log(stats);
 ## Available Skills
 
 ### evidence-based-validation
+
 **When to use:** Need to validate a claim or verify facts  
 **Input:** claim, context, evidenceLevel  
 **Output:** validated, confidence, evidence, conclusion
 
 ### evidence-based-engineering
+
 **When to use:** Making technical decisions or choosing between alternatives  
 **Input:** problem, requirements, constraints, alternatives  
 **Output:** recommendation, evaluation, tradeoffs, evidence
@@ -118,17 +118,17 @@ console.log(stats);
 
 ### SkillRuntime Methods
 
-| Method | Description |
-|--------|-------------|
-| `initialize()` | Initialize runtime |
-| `registerSkill(manifest)` | Register a skill |
-| `loadSkill(skillId, options?)` | Load Level 2 instructions |
-| `executeSkill(skillId, input, options?)` | Execute a skill |
-| `listSkills()` | List all skills |
-| `getSkillStatus(skillId)` | Get skill status |
-| `getSummaries()` | Get Level 1 summaries |
-| `unloadSkill(skillId)` | Unload Level 2 |
-| `getStatistics()` | Get runtime stats |
+| Method                                   | Description               |
+| ---------------------------------------- | ------------------------- |
+| `initialize()`                           | Initialize runtime        |
+| `registerSkill(manifest)`                | Register a skill          |
+| `loadSkill(skillId, options?)`           | Load Level 2 instructions |
+| `executeSkill(skillId, input, options?)` | Execute a skill           |
+| `listSkills()`                           | List all skills           |
+| `getSkillStatus(skillId)`                | Get skill status          |
+| `getSummaries()`                         | Get Level 1 summaries     |
+| `unloadSkill(skillId)`                   | Unload Level 2            |
+| `getStatistics()`                        | Get runtime stats         |
 
 ### Execution Options
 
@@ -156,11 +156,13 @@ console.log(stats);
 ## Testing
 
 Run the example:
+
 ```bash
 npx ts-node src/skills/example.ts
 ```
 
 Or compile and run:
+
 ```bash
 npx tsc src/skills/example.ts
 node src/skills/example.js
@@ -171,7 +173,7 @@ node src/skills/example.js
 ```typescript
 try {
   const result = await runtime.executeSkill(skillId, input);
-  
+
   if (!result.success) {
     console.error('Execution failed:', result.error);
     // result.error.code
@@ -194,12 +196,14 @@ try {
 ## Debugging
 
 Enable debug logging:
+
 ```typescript
 // The runtime logs to console automatically
 // Look for lines starting with [SkillRuntime]
 ```
 
 Check skill state:
+
 ```typescript
 const summaries = runtime.getSummaries();
 console.log('Registered skills:', Array.from(summaries.keys()));
@@ -210,11 +214,11 @@ console.log('Current state:', status.state);
 
 ## Token Usage
 
-| Level | Per Skill | Both Skills |
-|-------|-----------|-------------|
-| Level 1 (Always) | ~50 tokens | 94 tokens |
+| Level               | Per Skill   | Both Skills  |
+| ------------------- | ----------- | ------------ |
+| Level 1 (Always)    | ~50 tokens  | 94 tokens    |
 | Level 2 (On-demand) | ~500 tokens | 1,030 tokens |
-| Level 3 (Lazy) | N/A | N/A |
+| Level 3 (Lazy)      | N/A         | N/A          |
 
 ## Next Steps
 

@@ -9,10 +9,7 @@
  */
 
 // Import types needed locally
-import type {
-  SkillError,
-  ExecutionMetrics
-} from '../skill-types';
+import type { SkillError, ExecutionMetrics } from '../skill-types';
 
 // Re-export core types from skill-types.ts
 export type {
@@ -45,7 +42,7 @@ export type {
   ActiveSkillState,
   LoadedSkill,
   LoadedResource,
-  SkillExecutionContext
+  SkillExecutionContext,
 } from '../skill-types';
 
 /**
@@ -98,7 +95,7 @@ export interface SkillExecutionOptions {
  */
 export interface SkillRegistryEntry {
   manifest: any; // SkillManifest
-  summary: any;  // SkillSummary
+  summary: any; // SkillSummary
   loaded: boolean;
   instructionsLoaded: boolean;
   resourcesLoaded: string[];

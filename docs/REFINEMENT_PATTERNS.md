@@ -1,4 +1,5 @@
 # Refinement Patterns for Claude Agents
+
 **Practical Reference for Implementing Iterative Improvement Cycles**
 
 **Version:** 1.0
@@ -14,6 +15,7 @@ This document synthesizes research findings on refinement loops with practical i
 **Core Finding:** Iterative refinement with self-auditing produces better outcomes than single-shot execution, with improvements of 23+ percentage points across diverse tasks when agents can determine when solutions are satisfactory.
 
 **Key Metrics:**
+
 - **Poetiq Improvement:** 31% → 54% accuracy through refinement harness
 - **Code Agent Efficiency:** 30% fewer steps using code-based vs JSON approaches
 - **Process Supervision:** Per-step feedback outperforms outcome-only evaluation
@@ -151,16 +153,19 @@ async function executeRefinementLoop<T>(
 ### Key Principles
 
 **1. Iteration is Cheap, Getting it Right is Valuable**
+
 - Single-shot execution: 31% accuracy (baseline)
 - With refinement: 54% accuracy (+23 percentage points)
 - Cost of 2-3 refinement iterations << cost of wrong answer
 
 **2. Track Everything**
+
 - History enables learning from iteration patterns
 - Cost accumulation prevents runaway refinement
 - Termination reasons inform future optimization
 
 **3. Diminishing Returns are Real**
+
 - First refinement: ~15-20% improvement
 - Second refinement: ~5-10% improvement
 - Third+ refinement: ~1-3% improvement
@@ -177,7 +182,7 @@ const codeRefinementLoop = {
       id: generateId(),
       output: code,
       confidence: 0.6,
-      reasoning: "Initial implementation based on prompt",
+      reasoning: 'Initial implementation based on prompt',
     };
   },
 
@@ -187,28 +192,27 @@ const codeRefinementLoop = {
     const syntaxCheck = await checkSyntax(candidate.output);
     const qualityMetrics = await analyzeCodeQuality(candidate.output);
 
-    const score = (
+    const score =
       testResults.passRate * 0.5 +
       (syntaxCheck.valid ? 0.3 : 0) +
-      qualityMetrics.normalizedScore * 0.2
-    );
+      qualityMetrics.normalizedScore * 0.2;
 
     return {
       score,
       strengths: [
-        ...testResults.passingTests.map(t => `Test passed: ${t}`),
-        ...(syntaxCheck.valid ? ["Valid syntax"] : []),
+        ...testResults.passingTests.map((t) => `Test passed: ${t}`),
+        ...(syntaxCheck.valid ? ['Valid syntax'] : []),
       ],
       weaknesses: [
-        ...testResults.failingTests.map(t => `Test failed: ${t}`),
+        ...testResults.failingTests.map((t) => `Test failed: ${t}`),
         ...syntaxCheck.errors,
         ...qualityMetrics.issues,
       ],
       suggestions: [
-        ...testResults.failingTests.map(t => `Fix failing test: ${t}`),
+        ...testResults.failingTests.map((t) => `Fix failing test: ${t}`),
         ...qualityMetrics.suggestions,
       ],
-      criticalIssues: syntaxCheck.errors.filter(e => e.severity === 'error'),
+      criticalIssues: syntaxCheck.errors.filter((e) => e.severity === 'error'),
       confidence: 0.9, // High confidence in evaluation
     };
   },
@@ -299,11 +303,7 @@ async function selfAudit(
   const hasCriticalIssues = (feedback.criticalIssues?.length ?? 0) > 0;
 
   // 6. Calculate cost-benefit of refinement
-  const improvementPotential = estimateImprovementPotential(
-    candidate,
-    feedback,
-    gaps
-  );
+  const improvementPotential = estimateImprovementPotential(candidate, feedback, gaps);
   const costOfRefinement = config.costPerRefinement;
   const benefitOfRefinement = improvementPotential * valueOfImprovement(task);
 
@@ -316,9 +316,7 @@ async function selfAudit(
     !hasCriticalIssues &&
     (gaps.length === 0 || !worthRefining);
 
-  const shouldRefine =
-    !isSatisfactory &&
-    hasCriticalIssues || worthRefining;
+  const shouldRefine = (!isSatisfactory && hasCriticalIssues) || worthRefining;
 
   return {
     isSatisfactory,
@@ -348,15 +346,15 @@ function generateAuditReasoning(params: {
   const reasons: string[] = [];
 
   if (!params.meetsQualityThreshold) {
-    reasons.push("Quality score below satisfaction threshold");
+    reasons.push('Quality score below satisfaction threshold');
   }
 
   if (!params.hasHighConfidence) {
-    reasons.push("Confidence level insufficient");
+    reasons.push('Confidence level insufficient');
   }
 
   if (params.hasCriticalIssues) {
-    reasons.push("Critical issues must be resolved");
+    reasons.push('Critical issues must be resolved');
   }
 
   if (params.gaps.length > 0 && params.worthRefining) {
@@ -368,10 +366,10 @@ function generateAuditReasoning(params: {
   }
 
   if (reasons.length === 0) {
-    return "Solution meets quality threshold with high confidence and no critical issues";
+    return 'Solution meets quality threshold with high confidence and no critical issues';
   }
 
-  return reasons.join("; ");
+  return reasons.join('; ');
 }
 ```
 
@@ -403,58 +401,52 @@ async function auditResearchReport(
   // Check citation quality
   const citations = extractCitations(report.output);
   if (citations.length === 0) {
-    gaps.push("No citations provided for claims");
+    gaps.push('No citations provided for claims');
   }
-  if (citations.some(c => !c.hasIdentifier)) {
-    gaps.push("Some citations lack PMID/DOI/URL identifiers");
+  if (citations.some((c) => !c.hasIdentifier)) {
+    gaps.push('Some citations lack PMID/DOI/URL identifiers');
   }
 
   // Check for fabrication risk
-  const suspiciousCitations = citations.filter(c =>
-    c.title.includes("Example") ||
-    c.title.includes("et al., 2024") ||
-    !c.isVerified
+  const suspiciousCitations = citations.filter(
+    (c) => c.title.includes('Example') || c.title.includes('et al., 2024') || !c.isVerified
   );
   if (suspiciousCitations.length > 0) {
     risks.push(`${suspiciousCitations.length} citations may be fabricated (need verification)`);
   }
 
   // Check evidence strength
-  const hasLimitations = report.output.includes("Limitations:");
+  const hasLimitations = report.output.includes('Limitations:');
   if (!hasLimitations) {
-    gaps.push("No limitations section (required for honest research)");
+    gaps.push('No limitations section (required for honest research)');
   }
 
   // Check for false consensus
-  const hasConflictingEvidence = report.output.includes("conflicting") ||
-                                 report.output.includes("disagreement");
+  const hasConflictingEvidence =
+    report.output.includes('conflicting') || report.output.includes('disagreement');
   const multipleSourcesCited = citations.length >= 3;
   if (multipleSourcesCited && !hasConflictingEvidence) {
-    risks.push("Multiple sources cited with no conflicts noted (possible false consensus)");
+    risks.push('Multiple sources cited with no conflicts noted (possible false consensus)');
   }
 
   // Estimate improvement potential
   const qualityGaps = gaps.length + risks.length;
   const currentQuality = feedback.score;
-  const potentialQuality = Math.min(1.0, currentQuality + (qualityGaps * 0.05));
+  const potentialQuality = Math.min(1.0, currentQuality + qualityGaps * 0.05);
   const improvementPotential = potentialQuality - currentQuality;
 
   return {
     isSatisfactory:
-      feedback.score >= 0.85 &&
-      report.confidence >= 0.8 &&
-      gaps.length === 0 &&
-      risks.length === 0,
+      feedback.score >= 0.85 && report.confidence >= 0.8 && gaps.length === 0 && risks.length === 0,
     confidence: Math.min(report.confidence, feedback.confidence),
     gaps,
     risks,
-    shouldRefine:
-      (gaps.length > 0 || risks.length > 0) &&
-      improvementPotential > 0.1,
-    reasoning: `Quality: ${(feedback.score * 100).toFixed(0)}%, ` +
-               `Confidence: ${(report.confidence * 100).toFixed(0)}%, ` +
-               `Gaps: ${gaps.length}, Risks: ${risks.length}, ` +
-               `Improvement potential: ${(improvementPotential * 100).toFixed(0)}%`,
+    shouldRefine: (gaps.length > 0 || risks.length > 0) && improvementPotential > 0.1,
+    reasoning:
+      `Quality: ${(feedback.score * 100).toFixed(0)}%, ` +
+      `Confidence: ${(report.confidence * 100).toFixed(0)}%, ` +
+      `Gaps: ${gaps.length}, Risks: ${risks.length}, ` +
+      `Improvement potential: ${(improvementPotential * 100).toFixed(0)}%`,
   };
 }
 ```
@@ -462,6 +454,7 @@ async function auditResearchReport(
 ### Anti-Patterns to Avoid
 
 **❌ The Infinite Refiner**
+
 ```typescript
 // BAD: No stopping condition
 while (true) {
@@ -471,6 +464,7 @@ while (true) {
 ```
 
 **✅ GOOD: Clear termination criteria**
+
 ```typescript
 while (
   !selfAudit.isSatisfactory &&
@@ -483,17 +477,16 @@ while (
 ```
 
 **❌ The Perfectionist**
+
 ```typescript
 // BAD: Impossible standard
-isComplete: (c, f) => f.score === 1.0 && c.confidence === 1.0
+isComplete: (c, f) => f.score === 1.0 && c.confidence === 1.0;
 ```
 
 **✅ GOOD: Realistic threshold**
+
 ```typescript
-isComplete: (c, f) =>
-  f.score >= 0.85 &&
-  c.confidence >= 0.8 &&
-  criticalIssues.length === 0
+isComplete: (c, f) => f.score >= 0.85 && c.confidence >= 0.8 && criticalIssues.length === 0;
 ```
 
 ---
@@ -599,7 +592,6 @@ async function executeWithProcessSupervision<T>(
       }
 
       currentInput = stepOutput;
-
     } catch (error) {
       const step: ProcessStep = {
         stepId: `step-${i}`,
@@ -620,7 +612,7 @@ async function executeWithProcessSupervision<T>(
   }
 
   // If all steps succeeded
-  if (trace.steps.every(s => s.success)) {
+  if (trace.steps.every((s) => s.success)) {
     trace.overallSuccess = true;
     trace.overallConfidence =
       trace.steps.reduce((sum, s) => sum + s.confidence, 0) / trace.steps.length;
@@ -634,15 +626,12 @@ async function executeWithProcessSupervision<T>(
   return trace;
 }
 
-function assignCredit(
-  steps: ProcessStep[],
-  overallSuccess: boolean
-): Map<string, number> {
+function assignCredit(steps: ProcessStep[], overallSuccess: boolean): Map<string, number> {
   const creditMap = new Map<string, number>();
 
   if (!overallSuccess) {
     // Negative credit: which step caused failure?
-    const firstFailure = steps.find(s => !s.success);
+    const firstFailure = steps.find((s) => !s.success);
     if (firstFailure) {
       creditMap.set(firstFailure.stepId, -1.0);
     }
@@ -651,13 +640,13 @@ function assignCredit(
 
   // Positive credit: distribute based on confidence and impact
   let totalConfidence = 0;
-  steps.forEach(step => {
+  steps.forEach((step) => {
     if (step.success) {
       totalConfidence += step.confidence;
     }
   });
 
-  steps.forEach(step => {
+  steps.forEach((step) => {
     if (step.success) {
       // Normalized contribution
       const credit = step.confidence / totalConfidence;
@@ -672,9 +661,7 @@ function assignCredit(
 ### Practical Example: API Integration Task
 
 ```typescript
-async function integrateAPIWithSupervision(
-  apiConfig: APIConfig
-): Promise<ProcessTrace> {
+async function integrateAPIWithSupervision(apiConfig: APIConfig): Promise<ProcessTrace> {
   const steps = [
     // Step 1: Validate configuration
     async (input) => {
@@ -696,10 +683,7 @@ async function integrateAPIWithSupervision(
 
     // Step 4: Test request
     async (input) => {
-      const testResponse = await makeTestRequest(
-        input.connection,
-        input.authToken
-      );
+      const testResponse = await makeTestRequest(input.connection, input.authToken);
       return { ...input, testResponse };
     },
 
@@ -721,8 +705,7 @@ async function integrateAPIWithSupervision(
   );
 
   // Analyze which step was most critical
-  const criticalStep = Array.from(trace.creditAssignment.entries())
-    .sort((a, b) => b[1] - a[1])[0];
+  const criticalStep = Array.from(trace.creditAssignment.entries()).sort((a, b) => b[1] - a[1])[0];
 
   console.log(`Most critical step: ${criticalStep?.[0]} (credit: ${criticalStep?.[1].toFixed(2)})`);
 
@@ -732,19 +715,20 @@ async function integrateAPIWithSupervision(
 
 ### Outcome vs Process Supervision Comparison
 
-| Aspect | Outcome Supervision (ORM) | Process Supervision (PRM) |
-|--------|---------------------------|---------------------------|
-| **Feedback Timing** | After task completion | During each step |
-| **Error Detection** | Only knows final failure | Identifies failing step |
-| **Learning** | "This approach didn't work" | "Step 3 caused the failure" |
-| **Recovery** | Must restart entire task | Can retry/fix specific step |
-| **Credit Assignment** | All-or-nothing | Proportional to contribution |
-| **Debugging** | Opaque | Transparent reasoning chain |
-| **Best For** | Simple, atomic tasks | Multi-step, complex tasks |
+| Aspect                | Outcome Supervision (ORM)   | Process Supervision (PRM)    |
+| --------------------- | --------------------------- | ---------------------------- |
+| **Feedback Timing**   | After task completion       | During each step             |
+| **Error Detection**   | Only knows final failure    | Identifies failing step      |
+| **Learning**          | "This approach didn't work" | "Step 3 caused the failure"  |
+| **Recovery**          | Must restart entire task    | Can retry/fix specific step  |
+| **Credit Assignment** | All-or-nothing              | Proportional to contribution |
+| **Debugging**         | Opaque                      | Transparent reasoning chain  |
+| **Best For**          | Simple, atomic tasks        | Multi-step, complex tasks    |
 
 ### When to Use Process Supervision
 
 ✅ **Use Process Supervision When:**
+
 - Task has multiple distinct steps (3+)
 - Steps have dependencies (output of step N → input of step N+1)
 - Intermediate failures are recoverable
@@ -752,6 +736,7 @@ async function integrateAPIWithSupervision(
 - Debugging and learning from failures is important
 
 ❌ **Skip Process Supervision When:**
+
 - Task is atomic (single operation)
 - Steps are trivial or fast
 - Overhead of per-step evaluation > value of insight
@@ -803,20 +788,20 @@ class TestTimeAdapter {
 
   selectStrategy(task: Task, priorExamples?: TaskExample[]): AdaptationStrategy {
     // 1. Calculate applicability scores for each strategy
-    const scores = Array.from(this.strategies.values()).map(strategy => {
+    const scores = Array.from(this.strategies.values()).map((strategy) => {
       let score = strategy.applicability(task);
 
       // Boost score based on past performance
       const history = this.performanceHistory.get(strategy.name) || [];
       if (history.length > 0) {
         const avgPerformance = history.reduce((sum, v) => sum + v, 0) / history.length;
-        score *= (0.7 + 0.3 * avgPerformance); // Weight current applicability 70%, history 30%
+        score *= 0.7 + 0.3 * avgPerformance; // Weight current applicability 70%, history 30%
       }
 
       // Boost score if similar examples succeeded with this strategy
       if (priorExamples) {
-        const similarExamples = priorExamples.filter(ex =>
-          this.isSimilar(task, ex) && ex.approach === strategy.name
+        const similarExamples = priorExamples.filter(
+          (ex) => this.isSimilar(task, ex) && ex.approach === strategy.name
         );
         if (similarExamples.length > 0) {
           score *= 1.2; // 20% boost for proven success on similar tasks
@@ -855,9 +840,7 @@ class TestTimeAdapter {
       input: task,
       expectedOutput: result.output,
       approach: strategy.name,
-      feedback: result.success
-        ? `Success in ${duration}ms`
-        : `Failed: ${result.error}`,
+      feedback: result.success ? `Success in ${duration}ms` : `Failed: ${result.error}`,
     };
 
     this.learnFromExample(example);
@@ -884,14 +867,13 @@ class TestTimeAdapter {
     const taskType = task.type.toLowerCase();
     const exampleType = (example.input as Task).type?.toLowerCase() || '';
 
-    return taskType === exampleType ||
-           taskType.includes(exampleType) ||
-           exampleType.includes(taskType);
+    return (
+      taskType === exampleType || taskType.includes(exampleType) || exampleType.includes(taskType)
+    );
   }
 
   private getDefaultStrategy(): AdaptationStrategy {
-    return this.strategies.get('balanced-default') ||
-           Array.from(this.strategies.values())[0];
+    return this.strategies.get('balanced-default') || Array.from(this.strategies.values())[0];
   }
 }
 ```
@@ -929,8 +911,8 @@ codeAdapter.registerStrategy({
   name: 'thorough-refinement',
   applicability: (task) => {
     const complexity = estimateComplexity(task);
-    const hasCriticalRequirements = task.constraints.some(c =>
-      c.includes('security') || c.includes('performance')
+    const hasCriticalRequirements = task.constraints.some(
+      (c) => c.includes('security') || c.includes('performance')
     );
     return complexity > 0.6 || hasCriticalRequirements ? 0.9 : 0.3;
   },
@@ -942,9 +924,7 @@ codeAdapter.registerStrategy({
       evaluator: (c) => comprehensiveEvaluation(c),
       refiner: (c, f) => thoroughRefinement(c, f),
       completionCriteria: (c, f) =>
-        f.score >= 0.9 &&
-        c.confidence >= 0.85 &&
-        (f.criticalIssues?.length ?? 0) === 0,
+        f.score >= 0.9 && c.confidence >= 0.85 && (f.criticalIssues?.length ?? 0) === 0,
     });
   },
   examples: [],
@@ -954,8 +934,7 @@ codeAdapter.registerStrategy({
 codeAdapter.registerStrategy({
   name: 'competitive-exploration',
   applicability: (task) => {
-    const hasMultipleApproaches = task.context?.includes('multiple') ||
-                                  task.constraints.length > 3;
+    const hasMultipleApproaches = task.context?.includes('multiple') || task.constraints.length > 3;
     return hasMultipleApproaches ? 0.8 : 0.2;
   },
   execute: async (task) => {
@@ -967,9 +946,7 @@ codeAdapter.registerStrategy({
     ];
 
     const candidates = await Promise.all(approaches);
-    const evaluations = await Promise.all(
-      candidates.map(c => comprehensiveEvaluation(c))
-    );
+    const evaluations = await Promise.all(candidates.map((c) => comprehensiveEvaluation(c)));
 
     // Select best candidate
     const scored = candidates.map((c, i) => ({
@@ -1069,14 +1046,14 @@ function allocateCompute(
   const BASE_BUDGETS = {
     low: { maxTokens: 2000, maxIterations: 1, maxCostUSD: 0.01, maxLatencyMs: 5000 },
     medium: { maxTokens: 8000, maxIterations: 3, maxCostUSD: 0.05, maxLatencyMs: 15000 },
-    high: { maxTokens: 20000, maxIterations: 5, maxCostUSD: 0.20, maxLatencyMs: 45000 },
-    critical: { maxTokens: 50000, maxIterations: 10, maxCostUSD: 1.00, maxLatencyMs: 120000 },
+    high: { maxTokens: 20000, maxIterations: 5, maxCostUSD: 0.2, maxLatencyMs: 45000 },
+    critical: { maxTokens: 50000, maxIterations: 10, maxCostUSD: 1.0, maxLatencyMs: 120000 },
   };
 
   let baseBudget = BASE_BUDGETS[value.stakesLevel];
 
   // Adjust based on difficulty
-  const difficultyMultiplier = 0.5 + (difficulty * 1.5); // Range: 0.5x to 2x
+  const difficultyMultiplier = 0.5 + difficulty * 1.5; // Range: 0.5x to 2x
   const allocatedBudget = {
     maxTokens: Math.round(baseBudget.maxTokens * difficultyMultiplier),
     maxIterations: Math.round(baseBudget.maxIterations * difficultyMultiplier),
@@ -1103,12 +1080,7 @@ function allocateCompute(
 
   return {
     allocatedBudget,
-    reasoning: generateAllocationReasoning(
-      value,
-      difficulty,
-      baseBudget,
-      allocatedBudget
-    ),
+    reasoning: generateAllocationReasoning(value, difficulty, baseBudget, allocatedBudget),
     expectedQuality,
     expectedLatency,
   };
@@ -1156,8 +1128,8 @@ function generateAllocationReasoning(
 
   reasons.push(
     `Allocated: ${allocated.maxIterations} iterations, ` +
-    `$${allocated.maxCostUSD.toFixed(2)} budget, ` +
-    `${(allocated.maxLatencyMs / 1000).toFixed(0)}s latency`
+      `$${allocated.maxCostUSD.toFixed(2)} budget, ` +
+      `${(allocated.maxLatencyMs / 1000).toFixed(0)}s latency`
   );
 
   return reasons.join('. ');
@@ -1167,10 +1139,7 @@ function generateAllocationReasoning(
 ### Practical Example: Dynamic Research Allocation
 
 ```typescript
-async function conductResearch(
-  query: string,
-  context: ResearchContext
-): Promise<ResearchResult> {
+async function conductResearch(query: string, context: ResearchContext): Promise<ResearchResult> {
   // Assess task characteristics
   const difficulty = estimateResearchDifficulty(query, context);
   const value: TaskValue = {
@@ -1202,9 +1171,7 @@ async function conductResearch(
         // Stricter criteria for high-stakes research
         const qualityThreshold = value.errorCost > 0.8 ? 0.9 : 0.8;
         return (
-          f.score >= qualityThreshold &&
-          c.confidence >= 0.85 &&
-          !hasFabricatedCitations(c.output)
+          f.score >= qualityThreshold && c.confidence >= 0.85 && !hasFabricatedCitations(c.output)
         );
       },
     }
@@ -1213,10 +1180,7 @@ async function conductResearch(
   return result;
 }
 
-function estimateResearchDifficulty(
-  query: string,
-  context: ResearchContext
-): number {
+function estimateResearchDifficulty(query: string, context: ResearchContext): number {
   let difficulty = 0.5; // Base
 
   // Increase for broad/vague queries
@@ -1226,7 +1190,7 @@ function estimateResearchDifficulty(
 
   // Increase for specialized domains
   const specializedTerms = ['quantum', 'neuroscience', 'cryptography', 'genomics'];
-  if (specializedTerms.some(term => query.toLowerCase().includes(term))) {
+  if (specializedTerms.some((term) => query.toLowerCase().includes(term))) {
     difficulty += 0.3;
   }
 
@@ -1304,7 +1268,7 @@ function calculateRefinementROI(
 
 // Example usage
 const currentQuality = 0.75;
-const expectedImprovement = 0.10; // One more iteration might improve by 10%
+const expectedImprovement = 0.1; // One more iteration might improve by 10%
 const taskValue = {
   stakesLevel: 'high' as const,
   userValue: 0.8,
@@ -1313,12 +1277,7 @@ const taskValue = {
 };
 const refinementCost = 0.05; // $0.05
 
-const roi = calculateRefinementROI(
-  currentQuality,
-  expectedImprovement,
-  taskValue,
-  refinementCost
-);
+const roi = calculateRefinementROI(currentQuality, expectedImprovement, taskValue, refinementCost);
 
 if (roi > 2.0) {
   console.log(`Strong ROI (${roi.toFixed(1)}x) - refine!`);
@@ -1450,8 +1409,7 @@ const result = await executeRefinementLoop(task, {
     return feedback;
   },
   refiner: (c, f) => improveResult(c, f),
-  completionCriteria: (c, f) =>
-    f.metadata?.audit?.isSatisfactory ?? false,
+  completionCriteria: (c, f) => f.metadata?.audit?.isSatisfactory ?? false,
 });
 ```
 
@@ -1460,11 +1418,7 @@ const result = await executeRefinementLoop(task, {
 ```typescript
 const trace = await executeWithProcessSupervision(
   task,
-  [
-    step1Function,
-    step2Function,
-    step3Function,
-  ],
+  [step1Function, step2Function, step3Function],
   {
     trackReasoningChain: true,
     provideStepFeedback: true,
@@ -1473,8 +1427,9 @@ const trace = await executeWithProcessSupervision(
 );
 
 // Use credit assignment to improve future executions
-const criticalSteps = Array.from(trace.creditAssignment.entries())
-  .filter(([_, credit]) => credit > 0.3);
+const criticalSteps = Array.from(trace.creditAssignment.entries()).filter(
+  ([_, credit]) => credit > 0.3
+);
 
 console.log('Focus optimization on:', criticalSteps);
 ```
@@ -1496,12 +1451,16 @@ const result = await adapter.executeTask(task, priorExamples);
 **5. Add Cost-Accuracy Optimization**
 
 ```typescript
-const allocation = allocateCompute(task, {
-  stakesLevel: determineStakes(task),
-  userValue: estimateUserValue(task),
-  errorCost: estimateErrorCost(task),
-  timeValue: determineTimeValue(task),
-}, estimateDifficulty(task));
+const allocation = allocateCompute(
+  task,
+  {
+    stakesLevel: determineStakes(task),
+    userValue: estimateUserValue(task),
+    errorCost: estimateErrorCost(task),
+    timeValue: determineTimeValue(task),
+  },
+  estimateDifficulty(task)
+);
 
 const result = await executeRefinementLoop(task, {
   maxIterations: allocation.allocatedBudget.maxIterations,
@@ -1546,7 +1505,8 @@ async function executeWithFullRefinement(
         confidenceThreshold: 0.8,
         satisfactionThreshold: value.errorCost > 0.8 ? 0.9 : 0.8,
         maxRefinements: allocation.allocatedBudget.maxIterations,
-        costPerRefinement: allocation.allocatedBudget.maxCostUSD / allocation.allocatedBudget.maxIterations,
+        costPerRefinement:
+          allocation.allocatedBudget.maxCostUSD / allocation.allocatedBudget.maxIterations,
       });
 
       feedback.metadata = { audit };
@@ -1627,8 +1587,7 @@ class RefinementMetricsTracker {
     // Track iterations to complete
     if (result.terminationReason === 'complete') {
       const currentAvg = this.metrics.averageIterationsToComplete;
-      this.metrics.averageIterationsToComplete =
-        (currentAvg + result.iterations) / 2;
+      this.metrics.averageIterationsToComplete = (currentAvg + result.iterations) / 2;
     }
 
     // Track cost efficiency
@@ -1654,21 +1613,15 @@ class RefinementMetricsTracker {
     const recs: string[] = [];
 
     if (this.metrics.averageIterationsToComplete > 4) {
-      recs.push(
-        'High average iterations - consider improving initial generation quality'
-      );
+      recs.push('High average iterations - consider improving initial generation quality');
     }
 
     if (this.metrics.firstPassSuccessRate < 0.3) {
-      recs.push(
-        'Low first-pass success rate - investigate why initial outputs fail'
-      );
+      recs.push('Low first-pass success rate - investigate why initial outputs fail');
     }
 
     if (this.metrics.costEfficiency < 0.5) {
-      recs.push(
-        'Low cost efficiency - refinement may not be worth the cost'
-      );
+      recs.push('Low cost efficiency - refinement may not be worth the cost');
     }
 
     return recs;
@@ -1683,31 +1636,37 @@ class RefinementMetricsTracker {
 ### Common Mistakes to Avoid
 
 **❌ Anti-Pattern 1: The Infinite Refiner**
+
 - Symptom: Refinement loops never terminate
 - Cause: No clear completion criteria or budget limits
 - Fix: Always set `maxIterations` and `costBudget`
 
 **❌ Anti-Pattern 2: The False Improvement**
+
 - Symptom: Quality score increases but actual quality doesn't
 - Cause: Evaluation function is too lenient or gameable
 - Fix: Use objective metrics, external validation, real tests
 
 **❌ Anti-Pattern 3: The Premature Stopper**
+
 - Symptom: Refinement stops after 1 iteration even when quality is low
 - Cause: Completion criteria too loose
 - Fix: Require both score threshold AND confidence threshold AND no critical issues
 
 **❌ Anti-Pattern 4: The Cost Ignorer**
+
 - Symptom: Refinement runs forever, massive token consumption
 - Cause: No cost tracking or budget enforcement
 - Fix: Track costs in real-time, stop when budget exhausted
 
 **❌ Anti-Pattern 5: The Strategy Ignorer**
+
 - Symptom: Same approach for all tasks regardless of characteristics
 - Cause: No test-time adaptation
 - Fix: Implement strategy selection based on task properties
 
 **❌ Anti-Pattern 6: The Memory Amnesiac**
+
 - Symptom: Making the same mistakes repeatedly
 - Cause: Not storing refinement learnings
 - Fix: Record what worked/didn't work in memory system
@@ -1800,6 +1759,6 @@ When implementing refinement for any task:
 
 ---
 
-*"The best solution isn't the first solution - it's the solution you've refined until it's actually good enough."*
+_"The best solution isn't the first solution - it's the solution you've refined until it's actually good enough."_
 
-*- Refinement Patterns Philosophy*
+_- Refinement Patterns Philosophy_

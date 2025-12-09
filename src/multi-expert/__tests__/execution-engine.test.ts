@@ -210,7 +210,13 @@ describe('Execution Engine', () => {
     };
 
     // Try to run 5 experts but should be limited to 3
-    const experts = createExpertPool('task-6', ['balanced', 'balanced', 'balanced', 'balanced', 'balanced']);
+    const experts = createExpertPool('task-6', [
+      'balanced',
+      'balanced',
+      'balanced',
+      'balanced',
+      'balanced',
+    ]);
     await engine.executeWithExperts(task, experts);
 
     expect(maxConcurrent).toBeLessThanOrEqual(3);

@@ -123,9 +123,8 @@ export class EvidenceBasedValidator {
       for (const match of numberMatches) {
         const metricText = match[0];
         const value = parseFloat(match[1]);
-        const hasMethodology = METHODOLOGY_INDICATORS.some(pattern =>
-          line.match(pattern) ||
-          (lineIndex > 0 && lines[lineIndex - 1].match(pattern))
+        const hasMethodology = METHODOLOGY_INDICATORS.some(
+          (pattern) => line.match(pattern) || (lineIndex > 0 && lines[lineIndex - 1].match(pattern))
         );
 
         // Check if it's a suspiciously round number without methodology
@@ -155,10 +154,10 @@ export class EvidenceBasedValidator {
       }
     });
 
-    const score = issues.length === 0 ? 1.0 : Math.max(0, 1 - (issues.length * 0.2));
+    const score = issues.length === 0 ? 1.0 : Math.max(0, 1 - issues.length * 0.2);
 
     return {
-      valid: issues.filter(i => i.type === 'error').length === 0,
+      valid: issues.filter((i) => i.type === 'error').length === 0,
       score,
       issues,
       suggestions: this._generateMetricSuggestions(issues),
@@ -178,7 +177,7 @@ export class EvidenceBasedValidator {
 
     // Check each prohibited pattern category
     Object.entries(PROHIBITED_PATTERNS).forEach(([category, patterns]) => {
-      patterns.forEach(pattern => {
+      patterns.forEach((pattern) => {
         lines.forEach((line, lineIndex) => {
           const matches = line.matchAll(pattern);
           for (const match of matches) {
@@ -197,10 +196,10 @@ export class EvidenceBasedValidator {
       });
     });
 
-    const score = issues.length === 0 ? 1.0 : Math.max(0, 1 - (issues.length * 0.15));
+    const score = issues.length === 0 ? 1.0 : Math.max(0, 1 - issues.length * 0.15);
 
     return {
-      valid: issues.filter(i => i.type === 'error').length === 0,
+      valid: issues.filter((i) => i.type === 'error').length === 0,
       score,
       issues,
       suggestions: this._generateLanguageSuggestions(issues),
@@ -218,7 +217,9 @@ export class EvidenceBasedValidator {
 
     // Check if claim contains numbers/metrics
     const hasNumbers = /\d+/.test(claim);
-    const hasComparison = /\b(faster|slower|better|worse|improved|increased|decreased)\b/i.test(claim);
+    const hasComparison = /\b(faster|slower|better|worse|improved|increased|decreased)\b/i.test(
+      claim
+    );
     const hasStrongClaim = /\b(proven|guaranteed|always|never|all|every|completely)\b/i.test(claim);
 
     if (sources.length === 0) {
@@ -262,12 +263,13 @@ export class EvidenceBasedValidator {
       }
     });
 
-    const score = sources.length > 0 ?
-      Math.max(0, 1 - (issues.filter(i => i.type === 'error').length * 0.3)) :
-      0.3;
+    const score =
+      sources.length > 0
+        ? Math.max(0, 1 - issues.filter((i) => i.type === 'error').length * 0.3)
+        : 0.3;
 
     return {
-      valid: issues.filter(i => i.type === 'error').length === 0,
+      valid: issues.filter((i) => i.type === 'error').length === 0,
       score,
       issues,
       suggestions: this._generateEvidenceSuggestions(claim, sources, issues),
@@ -285,11 +287,11 @@ export class EvidenceBasedValidator {
 
     // Map status claims to required evidence
     const statusRequirements: Record<string, string[]> = {
-      'complete': ['implemented', 'tested', 'integrated', 'validated', 'documented'],
+      complete: ['implemented', 'tested', 'integrated', 'validated', 'documented'],
       'production ready': ['tested', 'performance validated', 'error handling', 'deployed'],
       'fully tested': ['test count', 'coverage', 'edge cases'],
-      'optimized': ['baseline', 'after', 'benchmark'],
-      'validated': ['test results', 'verification method'],
+      optimized: ['baseline', 'after', 'benchmark'],
+      validated: ['test results', 'verification method'],
     };
 
     const normalizedStatus = status.toLowerCase();
@@ -297,8 +299,8 @@ export class EvidenceBasedValidator {
     // Check if status makes strong completion claim
     Object.entries(statusRequirements).forEach(([statusPattern, requirements]) => {
       if (normalizedStatus.includes(statusPattern)) {
-        requirements.forEach(requirement => {
-          const hasRequirement = details.some(detail =>
+        requirements.forEach((requirement) => {
+          const hasRequirement = details.some((detail) =>
             detail.toLowerCase().includes(requirement)
           );
 
@@ -318,9 +320,10 @@ export class EvidenceBasedValidator {
     const percentageMatch = status.match(/(\d+)%\s*(?:complete|done|finished)/i);
     if (percentageMatch) {
       const percentage = parseInt(percentageMatch[1]);
-      const hasEnumeration = details.some(d =>
-        /\d+\s+(?:out of|\/)\s+\d+/.test(d) || // "5 out of 10"
-        /(?:completed|done|finished).*:\s*\d+/.test(d) // "completed: 5"
+      const hasEnumeration = details.some(
+        (d) =>
+          /\d+\s+(?:out of|\/)\s+\d+/.test(d) || // "5 out of 10"
+          /(?:completed|done|finished).*:\s*\d+/.test(d) // "completed: 5"
       );
 
       if (!hasEnumeration) {
@@ -328,7 +331,8 @@ export class EvidenceBasedValidator {
           type: 'error',
           category: 'completeness',
           message: `Completion percentage "${percentage}%" lacks enumeration of what's counted`,
-          suggestion: 'Provide specific breakdown: "X out of Y features implemented, Z out of Y tested"',
+          suggestion:
+            'Provide specific breakdown: "X out of Y features implemented, Z out of Y tested"',
         });
       }
     }
@@ -343,10 +347,10 @@ export class EvidenceBasedValidator {
       });
     }
 
-    const score = issues.length === 0 ? 1.0 : Math.max(0, 1 - (issues.length * 0.25));
+    const score = issues.length === 0 ? 1.0 : Math.max(0, 1 - issues.length * 0.25);
 
     return {
-      valid: issues.filter(i => i.type === 'error').length === 0,
+      valid: issues.filter((i) => i.type === 'error').length === 0,
       score,
       issues,
       suggestions: this._generateCompletenessSuggestions(status, details, issues),
@@ -378,8 +382,8 @@ export class EvidenceBasedValidator {
     }
 
     // Combine results
-    const allIssues = results.flatMap(r => r.issues);
-    const allSuggestions = Array.from(new Set(results.flatMap(r => r.suggestions)));
+    const allIssues = results.flatMap((r) => r.issues);
+    const allSuggestions = Array.from(new Set(results.flatMap((r) => r.suggestions)));
 
     // Calculate overall score (weighted average based on number of checks)
     const totalScore = results.reduce((sum, r) => sum + r.score, 0);
@@ -389,7 +393,7 @@ export class EvidenceBasedValidator {
     const score = Math.round(avgScore * 100) / 100;
 
     return {
-      valid: allIssues.filter(i => i.type === 'error').length === 0,
+      valid: allIssues.filter((i) => i.type === 'error').length === 0,
       score,
       issues: allIssues,
       suggestions: allSuggestions,
@@ -406,7 +410,9 @@ export class EvidenceBasedValidator {
     if (issues.length > 0) {
       suggestions.push('Include measurement methodology for all metrics');
       suggestions.push('Use format: "Tool X reported Y on date Z" for measured values');
-      suggestions.push('Use format: "Estimated approximately Y based on Z (not measured)" for estimates');
+      suggestions.push(
+        'Use format: "Estimated approximately Y based on Z (not measured)" for estimates'
+      );
       suggestions.push('Distinguish measured vs estimated vs assumed vs unknown');
     }
 
@@ -415,7 +421,7 @@ export class EvidenceBasedValidator {
 
   private _generateLanguageSuggestions(issues: ValidationIssue[]): string[] {
     const suggestions: string[] = [];
-    const categories = new Set(issues.map(i => i.message.match(/Prohibited (\w+)/)?.[1]));
+    const categories = new Set(issues.map((i) => i.message.match(/Prohibited (\w+)/)?.[1]));
 
     if (categories.has('vague')) {
       suggestions.push('Replace "should work" with "tested to work" or "not yet tested"');
@@ -424,7 +430,9 @@ export class EvidenceBasedValidator {
 
     if (categories.has('superlatives')) {
       suggestions.push('Replace superlatives with specific observations');
-      suggestions.push('Example: "excellent" → "follows standard patterns, no obvious defects observed"');
+      suggestions.push(
+        'Example: "excellent" → "follows standard patterns, no obvious defects observed"'
+      );
     }
 
     if (categories.has('confidenceInflation')) {
@@ -447,11 +455,13 @@ export class EvidenceBasedValidator {
       suggestions.push('Or rephrase as observation/hypothesis rather than conclusion');
     }
 
-    if (issues.some(i => i.message.includes('placeholder'))) {
-      suggestions.push('Remove placeholder sources - incomplete evidence is better than fabricated evidence');
+    if (issues.some((i) => i.message.includes('placeholder'))) {
+      suggestions.push(
+        'Remove placeholder sources - incomplete evidence is better than fabricated evidence'
+      );
     }
 
-    if (issues.some(i => i.message.includes('lacks identifier'))) {
+    if (issues.some((i) => i.message.includes('lacks identifier'))) {
       suggestions.push('Include DOI, PMID, or URL for each source');
       suggestions.push('For measurements, describe methodology instead');
     }
@@ -467,9 +477,13 @@ export class EvidenceBasedValidator {
     const suggestions: string[] = [];
 
     if (issues.length > 0) {
-      suggestions.push('Use precise status levels: implemented → tested → integrated → validated → complete');
+      suggestions.push(
+        'Use precise status levels: implemented → tested → integrated → validated → complete'
+      );
       suggestions.push('Enumerate what is complete and what remains');
-      suggestions.push('For percentages, show the calculation: "5 out of 10 features implemented (50%)"');
+      suggestions.push(
+        'For percentages, show the calculation: "5 out of 10 features implemented (50%)"'
+      );
     }
 
     return suggestions;
@@ -482,15 +496,17 @@ export class EvidenceBasedValidator {
     const replacements: Record<string, string> = {
       'should work': 'Replace with "tested to work" or "not yet tested"',
       'might work': 'Replace with "tested to work" or "not yet tested"',
-      'probably': 'Replace with specific evidence or acknowledge uncertainty explicitly',
-      'possibly': 'Replace with specific evidence or acknowledge uncertainty explicitly',
-      'excellent': 'Replace with specific observations: "follows standard patterns, no obvious defects observed"',
-      'perfect': 'Replace with specific observations about what works and what doesn\'t',
-      'best': 'Replace with comparative data: "performed X% better than Y on benchmark Z"',
-      'optimal': 'Replace with measurement: "selected based on benchmark showing X"',
-      'proven': 'Replace with "observed in tests" or "validated under conditions X"',
-      'guaranteed': 'Replace with "observed reliability of X% under test conditions"',
-      'production ready': 'Replace with specific status: "passes tests, production behavior not validated"',
+      probably: 'Replace with specific evidence or acknowledge uncertainty explicitly',
+      possibly: 'Replace with specific evidence or acknowledge uncertainty explicitly',
+      excellent:
+        'Replace with specific observations: "follows standard patterns, no obvious defects observed"',
+      perfect: "Replace with specific observations about what works and what doesn't",
+      best: 'Replace with comparative data: "performed X% better than Y on benchmark Z"',
+      optimal: 'Replace with measurement: "selected based on benchmark showing X"',
+      proven: 'Replace with "observed in tests" or "validated under conditions X"',
+      guaranteed: 'Replace with "observed reliability of X% under test conditions"',
+      'production ready':
+        'Replace with specific status: "passes tests, production behavior not validated"',
     };
 
     for (const [pattern, suggestion] of Object.entries(replacements)) {
@@ -536,7 +552,9 @@ export function validateClaim(claim: string, sources: string[]): ValidationResul
 export function formatValidationResult(result: ValidationResult): string {
   const lines: string[] = [];
 
-  lines.push(`Validation Score: ${result.score.toFixed(2)} (based on ${result.issues.length} checks)`);
+  lines.push(
+    `Validation Score: ${result.score.toFixed(2)} (based on ${result.issues.length} checks)`
+  );
   lines.push(`Status: ${result.valid ? 'VALID' : 'INVALID'}`);
   lines.push('');
 

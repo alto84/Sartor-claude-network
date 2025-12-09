@@ -1,4 +1,5 @@
 # Multi-Tier Storage Architecture Specification
+
 ## Firebase + GitHub + Vector Database
 
 Version: 1.0.0
@@ -8,6 +9,7 @@ Author: Technical Architecture Team
 ---
 
 ## Table of Contents
+
 1. [System Overview](#system-overview)
 2. [Architecture Diagram](#architecture-diagram)
 3. [Tier 1: Hot Memory (Firebase Realtime DB)](#tier-1-hot-memory)
@@ -252,48 +254,48 @@ User Query: "Find memories about project X"
 
 const TTL_POLICIES = {
   sessions: {
-    defaultTTL: 24 * 60 * 60 * 1000,      // 24 hours
-    maxTTL: 7 * 24 * 60 * 60 * 1000,      // 7 days (for pinned sessions)
-    cleanupInterval: 60 * 60 * 1000        // Check every hour
+    defaultTTL: 24 * 60 * 60 * 1000, // 24 hours
+    maxTTL: 7 * 24 * 60 * 60 * 1000, // 7 days (for pinned sessions)
+    cleanupInterval: 60 * 60 * 1000, // Check every hour
   },
   memories: {
-    defaultTTL: 6 * 60 * 60 * 1000,       // 6 hours
-    accessBasedExtension: 3 * 60 * 60 * 1000,  // +3 hours per access
-    maxTTL: 24 * 60 * 60 * 1000,          // 24 hours max
-    demotionThreshold: 5,                  // Demote if <5 accesses in TTL period
-    sizeLimit: 100 * 1024 * 1024          // 100MB total size limit
+    defaultTTL: 6 * 60 * 60 * 1000, // 6 hours
+    accessBasedExtension: 3 * 60 * 60 * 1000, // +3 hours per access
+    maxTTL: 24 * 60 * 60 * 1000, // 24 hours max
+    demotionThreshold: 5, // Demote if <5 accesses in TTL period
+    sizeLimit: 100 * 1024 * 1024, // 100MB total size limit
   },
   cache: {
-    queryTTL: 60 * 60 * 1000,             // 1 hour
-    aggregationTTL: 30 * 60 * 1000,       // 30 minutes
-    maxEntries: 1000                       // Max cached queries
+    queryTTL: 60 * 60 * 1000, // 1 hour
+    aggregationTTL: 30 * 60 * 1000, // 30 minutes
+    maxEntries: 1000, // Max cached queries
   },
   presence: {
-    disconnectTimeout: 5 * 60 * 1000      // 5 minutes
-  }
+    disconnectTimeout: 5 * 60 * 1000, // 5 minutes
+  },
 };
 
 // Eviction Strategy
 const EVICTION_STRATEGY = {
   // LRU + Access Frequency hybrid
-  algorithm: "LRU_ACCESS_WEIGHTED",
+  algorithm: 'LRU_ACCESS_WEIGHTED',
 
   // Scoring function for eviction candidates
   scoreMemory: (memory) => {
     const now = Date.now();
     const ageHours = (now - memory.lastAccessed) / (60 * 60 * 1000);
     const accessRate = memory.accessCount / Math.max(1, ageHours);
-    const recencyBonus = Math.exp(-ageHours / 6);  // Exponential decay
+    const recencyBonus = Math.exp(-ageHours / 6); // Exponential decay
 
     return accessRate * recencyBonus;
   },
 
   // Size-based eviction when limit reached
-  onSizeLimitReached: "evict_lowest_score",
+  onSizeLimitReached: 'evict_lowest_score',
 
   // Batch eviction to avoid thrashing
   evictionBatchSize: 10,
-  evictionThreshold: 0.9  // Trigger at 90% capacity
+  evictionThreshold: 0.9, // Trigger at 90% capacity
 };
 ```
 
@@ -306,7 +308,7 @@ const realtimeConfig = {
   // Connection settings
   persistence: {
     enabled: true,
-    cacheSizeBytes: 10 * 1024 * 1024  // 10MB local cache
+    cacheSizeBytes: 10 * 1024 * 1024, // 10MB local cache
   },
 
   // Sync configuration
@@ -316,7 +318,7 @@ const realtimeConfig = {
       '/hot_memory/sessions/${userId}',
       '/hot_memory/memories',
       '/hot_memory/cache/queries',
-      '/hot_memory/presence/${userId}'
+      '/hot_memory/presence/${userId}',
     ],
 
     // Keep-alive for real-time listeners
@@ -327,23 +329,23 @@ const realtimeConfig = {
     // Bandwidth optimization
     compression: true,
     batchWrites: true,
-    batchInterval: 50  // ms
+    batchInterval: 50, // ms
   },
 
   // Listener priorities
   listenerPriorities: {
-    'sessions': 'high',
-    'presence': 'high',
-    'memories': 'medium',
-    'cache': 'low'
+    sessions: 'high',
+    presence: 'high',
+    memories: 'medium',
+    cache: 'low',
   },
 
   // Offline behavior
   offline: {
     persistQueries: true,
     queueWrites: true,
-    maxQueueSize: 100
-  }
+    maxQueueSize: 100,
+  },
 };
 
 // Example: Initialize with sync
@@ -372,7 +374,7 @@ const initializeRealtimeDB = (firebase, userId) => {
       presenceRef.onDisconnect().remove();
       presenceRef.set({
         online: true,
-        lastSeen: firebase.database.ServerValue.TIMESTAMP
+        lastSeen: firebase.database.ServerValue.TIMESTAMP,
       });
     }
   });
@@ -475,34 +477,33 @@ const hotTierMetrics = {
     storageBytes: 0,
     readOps: 0,
     writeOps: 0,
-    evictionCount: 0
+    evictionCount: 0,
   },
 
   // Alert thresholds
   alerts: {
     storageBytes: {
-      warning: 80 * 1024 * 1024,   // 80MB
-      critical: 95 * 1024 * 1024   // 95MB
+      warning: 80 * 1024 * 1024, // 80MB
+      critical: 95 * 1024 * 1024, // 95MB
     },
     cacheHitRate: {
-      warning: 0.6,   // Below 60%
-      critical: 0.4   // Below 40%
+      warning: 0.6, // Below 60%
+      critical: 0.4, // Below 40%
     },
     avgAccessLatency: {
-      warning: 100,   // 100ms
-      critical: 200   // 200ms
-    }
+      warning: 100, // 100ms
+      critical: 200, // 200ms
+    },
   },
 
   // Cost tracking
   costs: {
-    storagePerGB: 5.00,      // $5/GB/month
-    readsPer100k: 0.36,      // $0.36 per 100k reads
-    writesPer100k: 1.08,     // $1.08 per 100k writes
-    downloadPerGB: 0.12      // $0.12 per GB downloaded
-  }
+    storagePerGB: 5.0, // $5/GB/month
+    readsPer100k: 0.36, // $0.36 per 100k reads
+    writesPer100k: 1.08, // $1.08 per 100k writes
+    downloadPerGB: 0.12, // $0.12 per GB downloaded
+  },
 };
 ```
 
 ---
-

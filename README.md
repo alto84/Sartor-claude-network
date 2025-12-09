@@ -15,11 +15,13 @@ This repository contains:
 ## Quick Navigation
 
 **For Agents:**
+
 - **[Agent Quickstart](./docs/AGENT_QUICKSTART.md)** - ONE-PAGE reference: current status, skills, how to use
 - **[Documentation Index](./docs/INDEX.md)** - Complete navigation hub for all documentation
 - **[Executive Claude](./EXECUTIVE_CLAUDE.md)** - Master orchestration pattern and delegation strategies
 
 **For Developers:**
+
 - **[Implementation Guide](./docs/implementation-guide.md)** - Step-by-step production setup
 - **[Architecture Specification](./ARCHITECTURE.md)** - Complete technical specification
 - **[Memory Schema Guide](./MEMORY_SCHEMA_GUIDE.md)** - Cognitive memory design philosophy
@@ -74,7 +76,7 @@ If you're orchestrating multi-agent workflows:
 
 ## Repository Structure
 
-```
+````
 sartor-claude-network/
 ├── docs/
 │   ├── tier2-warm-memory.md          # Firestore + Vector DB specification
@@ -244,7 +246,7 @@ npm run setup:vector-db    # Set up Pinecone/Weaviate/Qdrant
 # 4. Deploy
 npm run deploy:firebase    # Deploy security rules
 npm start                  # Start API server
-```
+````
 
 ### Using the Memory System
 
@@ -255,9 +257,9 @@ import warmTier from './services/warm-tier';
 
 // Initialize with multi-tier backend
 const memorySystem = new MemorySystemImpl(
-  warmTier,      // Firestore + Vector DB
-  warmTier,      // Uses Pinecone/Weaviate/Qdrant
-  hotTier        // Firebase RTDB cache
+  warmTier, // Firestore + Vector DB
+  warmTier, // Uses Pinecone/Weaviate/Qdrant
+  hotTier // Firebase RTDB cache
 );
 
 // Create a semantic memory (automatically stored in warm tier)
@@ -266,17 +268,17 @@ const preference = await memorySystem.createSemanticMemory({
     subject: 'user_123',
     predicate: 'prefers',
     object: 'dark mode',
-    statement: 'User prefers dark mode for coding'
+    statement: 'User prefers dark mode for coding',
   },
   knowledgeType: KnowledgeType.PREFERENCE,
-  confidence: ConfidenceLevel.HIGH
+  confidence: ConfidenceLevel.HIGH,
 });
 
 // Query with semantic search (searches across all tiers)
 const memories = await memorySystem.recall({
-  query: 'What are the user\'s UI preferences?',
+  query: "What are the user's UI preferences?",
   types: [MemoryType.SEMANTIC],
-  limit: 5
+  limit: 5,
 });
 // Automatically promotes frequently accessed memories to hot tier
 ```
@@ -371,6 +373,7 @@ Data Flow Example:
 ### Monthly Pricing (Optimized Configuration)
 
 **Starter (100-1,000 users): $47/month**
+
 ```
 Hot Tier (Firebase RTDB):        $8/month
 Warm Tier (Firestore + Qdrant):  $35/month
@@ -379,6 +382,7 @@ Embeddings (OpenAI):              $0.01/month
 ```
 
 **Growth (1,000-10,000 users): $95/month**
+
 ```
 Hot Tier:    $25/month
 Warm Tier:   $66/month
@@ -386,6 +390,7 @@ Cold Tier:   $4/month
 ```
 
 **Scale (10,000+ users): $350/month**
+
 ```
 Hot Tier:    $120/month
 Warm Tier:   $226/month
@@ -393,6 +398,7 @@ Cold Tier:   $4/month
 ```
 
 **Cost per User:**
+
 - 100 users: $0.47/user/month
 - 1,000 users: $0.095/user/month
 - 10,000 users: $0.035/user/month
@@ -402,10 +408,12 @@ See [docs/cost-analysis.md](./docs/cost-analysis.md) for detailed breakdown and 
 ## Technology Stack
 
 ### Hot Tier
+
 - **Firebase Realtime Database** - Sub-100ms latency, real-time sync
 - TTL-based eviction, size limits, LRU caching
 
 ### Warm Tier
+
 - **Firestore** - Scalable document database with rich queries
 - **Vector Database** (choose one):
   - Pinecone: $70/month (managed, 100K vectors)
@@ -413,32 +421,37 @@ See [docs/cost-analysis.md](./docs/cost-analysis.md) for detailed breakdown and 
   - Weaviate: $50/month (self-hosted, unlimited)
 
 ### Cold Tier
+
 - **GitHub** - Version control, unlimited storage, $4/month private repo
 - **GitHub Actions** - Automated consolidation, 2,000 min/month free
 
 ### Embeddings
+
 - **OpenAI text-embedding-3-small** - $0.020 per 1M tokens
 - 1536 dimensions, cosine similarity
 
 ## Key Algorithms
 
 ### Importance Calculation
+
 ```typescript
 importance = weighted_sum([
   recency_factor * 0.25,
-  frequency_factor * 0.20,
-  user_explicit * 0.30,
+  frequency_factor * 0.2,
+  user_explicit * 0.3,
   emotional_factor * 0.15,
-  novelty_factor * 0.10
-])
+  novelty_factor * 0.1,
+]);
 ```
 
 ### Exponential Decay
+
 ```typescript
-new_importance = current_importance * exp(-decay_rate * time_since_access)
+new_importance = current_importance * exp(-decay_rate * time_since_access);
 ```
 
 ### Memory Consolidation
+
 - **Merge** - Combine similar memories
 - **Summarize** - Create abstract summary
 - **Abstract** - Extract general pattern
@@ -462,17 +475,20 @@ The schema is designed to work with these MCP tools:
 ## Performance Metrics
 
 **Latency Targets (p95):**
+
 - Hot tier reads: <100ms
 - Warm tier semantic search: <500ms
 - Cold tier retrieval: <5s
 - Cross-tier queries: <800ms
 
 **Throughput:**
+
 - Queries: 1,000 req/s
 - Writes: 500 req/s
 - Synchronization: 100 memories/s
 
 **Storage Limits:**
+
 - Hot tier: 100MB (enforced)
 - Warm tier: Unlimited (Firestore), up to 2M vectors
 - Cold tier: Unlimited (GitHub)
@@ -500,11 +516,13 @@ See `MEMORY_SCHEMA_GUIDE.md` for comprehensive testing recommendations.
 ## Monitoring & Observability
 
 View real-time metrics:
+
 ```bash
 curl http://localhost:3000/api/metrics
 ```
 
 Response:
+
 ```json
 {
   "tiers": {
@@ -519,8 +537,8 @@ Response:
   },
   "costs": {
     "daily": 2.35,
-    "monthly": 67.50,
-    "projected": 75.00
+    "monthly": 67.5,
+    "projected": 75.0
   },
   "performance": {
     "hotLatencyP95": 87,
@@ -533,6 +551,7 @@ Response:
 ## Future Enhancements
 
 **Storage Architecture:**
+
 - [ ] Multi-region support
 - [ ] Edge caching with Cloudflare
 - [ ] Self-hosted vector DB option
@@ -540,6 +559,7 @@ Response:
 - [ ] Mobile SDKs (iOS/Android)
 
 **Cognitive Features:**
+
 - [ ] Emotional memory tier
 - [ ] Meta-memory (memories about memories)
 - [ ] Collaborative memory (shared across users)
@@ -548,6 +568,7 @@ Response:
 - [ ] Memory export in standard formats
 
 **AI/ML:**
+
 - [ ] ML-based promotion scoring
 - [ ] Automatic summarization
 - [ ] Conflict prediction
@@ -556,6 +577,7 @@ Response:
 ## References
 
 This schema is inspired by:
+
 - Human memory psychology (Tulving's memory systems)
 - Spreading activation theory
 - ACT-R cognitive architecture
@@ -565,6 +587,7 @@ This schema is inspired by:
 ## Production Deployment
 
 ### Prerequisites Checklist
+
 - [ ] Firebase project created
 - [ ] Firestore indexes deployed
 - [ ] Firebase security rules deployed
@@ -579,6 +602,7 @@ This schema is inspired by:
 - [ ] Monitoring dashboard configured
 
 ### Deployment Steps
+
 ```bash
 # 1. Deploy Firebase
 firebase deploy --only firestore,database,functions
@@ -621,6 +645,7 @@ MIT License - see [LICENSE](./LICENSE) for details.
 ## Contributing
 
 Contributions welcome! Areas for improvement:
+
 - Additional storage backend implementations
 - Embedding model integrations (Cohere, Anthropic, etc.)
 - Advanced consolidation strategies
@@ -634,12 +659,14 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 ## Credits
 
 **Built with:**
+
 - [Firebase](https://firebase.google.com/) - Google Cloud
 - [GitHub](https://github.com/) - Microsoft
 - [Pinecone](https://www.pinecone.io/) / [Weaviate](https://weaviate.io/) / [Qdrant](https://qdrant.tech/) - Vector Databases
 - [OpenAI](https://openai.com/) - Embeddings API
 
 **Inspired by:**
+
 - Human memory psychology (Tulving's memory systems)
 - Spreading activation theory
 - ACT-R cognitive architecture

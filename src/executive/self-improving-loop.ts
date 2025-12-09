@@ -34,7 +34,7 @@ export class SelfImprovingLoop {
     // Query memory for patterns
     const results = await this.memory.searchMemories({
       filters: { min_importance: 0.5 },
-      limit: 20
+      limit: 20,
     });
 
     const candidates: ImprovementCandidate[] = [];
@@ -48,7 +48,7 @@ export class SelfImprovingLoop {
           description: `Underutilized pattern: ${memory.content.substring(0, 50)}`,
           evidence: ['Low access count', 'High importance score'],
           expectedGain: 0.1,
-          risk: 'low'
+          risk: 'low',
         });
       }
     }
@@ -58,11 +58,10 @@ export class SelfImprovingLoop {
 
   async propose(candidate: ImprovementCandidate): Promise<boolean> {
     // Store proposal in memory
-    await this.memory.createMemory(
-      JSON.stringify(candidate),
-      MemoryType.PROCEDURAL,
-      { importance_score: candidate.expectedGain, tags: ['improvement', candidate.area] }
-    );
+    await this.memory.createMemory(JSON.stringify(candidate), MemoryType.PROCEDURAL, {
+      importance_score: candidate.expectedGain,
+      tags: ['improvement', candidate.area],
+    });
 
     this.improvements.set(candidate.id, candidate);
     return true;
@@ -98,7 +97,7 @@ export class SelfImprovingLoop {
       candidateId,
       passed,
       testResults: tests,
-      actualGain: passed ? candidate.expectedGain * 0.8 : 0
+      actualGain: passed ? candidate.expectedGain * 0.8 : 0,
     };
   }
 
@@ -110,11 +109,10 @@ export class SelfImprovingLoop {
     if (!candidate) return false;
 
     // Mark as implemented
-    await this.memory.createMemory(
-      `Implemented: ${candidate.description}`,
-      MemoryType.PROCEDURAL,
-      { importance_score: 0.9, tags: ['implemented', 'improvement'] }
-    );
+    await this.memory.createMemory(`Implemented: ${candidate.description}`, MemoryType.PROCEDURAL, {
+      importance_score: 0.9,
+      tags: ['implemented', 'improvement'],
+    });
 
     this.improvements.delete(candidateId);
     return true;

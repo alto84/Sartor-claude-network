@@ -211,8 +211,7 @@ export class SoftScorer {
 
   constructor(config: Partial<SoftScorerConfig> = {}) {
     this.config = { ...DEFAULT_SOFT_SCORER_CONFIG, ...config };
-    this.criteria =
-      this.config.criteria.length > 0 ? this.config.criteria : DEFAULT_CRITERIA;
+    this.criteria = this.config.criteria.length > 0 ? this.config.criteria : DEFAULT_CRITERIA;
   }
 
   /**
@@ -227,10 +226,7 @@ export class SoftScorer {
     const criterionScores = this.scoreCriteria(result, context);
 
     // Calculate weighted sum
-    const rawScore = criterionScores.reduce(
-      (sum, cs) => sum + cs.contribution,
-      0
-    );
+    const rawScore = criterionScores.reduce((sum, cs) => sum + cs.contribution, 0);
 
     // Calculate bonuses and penalties
     const bonuses = this.calculateBonuses(result, rawScore);
@@ -279,7 +275,10 @@ export class SoftScorer {
   /**
    * Score all results and rank
    */
-  scoreAll(results: ExpertResult[], context?: unknown): Array<{ result: ExpertResult; score: SoftScore }> {
+  scoreAll(
+    results: ExpertResult[],
+    context?: unknown
+  ): Array<{ result: ExpertResult; score: SoftScore }> {
     return results
       .map((result) => ({
         result,
@@ -301,9 +300,7 @@ export class SoftScorer {
    */
   getPassingResults(results: ExpertResult[], context?: unknown): ExpertResult[] {
     const scored = this.scoreAll(results, context);
-    return scored
-      .filter((s) => s.score.passed)
-      .map((s) => s.result);
+    return scored.filter((s) => s.score.passed).map((s) => s.result);
   }
 
   /**
@@ -329,8 +326,7 @@ export class SoftScorer {
     const minScore = Math.min(...scores);
     const maxScore = Math.max(...scores);
 
-    const variance =
-      scores.reduce((sum, s) => sum + Math.pow(s - avgScore, 2), 0) / scores.length;
+    const variance = scores.reduce((sum, s) => sum + Math.pow(s - avgScore, 2), 0) / scores.length;
     const stdDev = Math.sqrt(variance);
 
     const passCount = scored.filter((s) => s.score.passed).length;
@@ -514,7 +510,9 @@ export function quickScore(result: ExpertResult): SoftScore {
 /**
  * Score and rank results
  */
-export function rankResults(results: ExpertResult[]): Array<{ result: ExpertResult; score: SoftScore }> {
+export function rankResults(
+  results: ExpertResult[]
+): Array<{ result: ExpertResult; score: SoftScore }> {
   const scorer = new SoftScorer();
   return scorer.scoreAll(results);
 }

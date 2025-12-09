@@ -160,13 +160,10 @@ function example4_RefineSkill() {
 
   // Collect feedback from multiple task executions
   const feedbackList = [
-    createFeedback(
-      'task_001',
-      'test-runner',
-      'failure',
-      'Tests timed out after 30 seconds',
-      ['Increase timeout threshold', 'Add timeout configuration']
-    ),
+    createFeedback('task_001', 'test-runner', 'failure', 'Tests timed out after 30 seconds', [
+      'Increase timeout threshold',
+      'Add timeout configuration',
+    ]),
     createFeedback(
       'task_002',
       'test-runner',
@@ -175,13 +172,9 @@ function example4_RefineSkill() {
       ['Increase timeout threshold']
     ),
     createFeedback('task_003', 'test-runner', 'success', 'Tests completed successfully', []),
-    createFeedback(
-      'task_004',
-      'test-runner',
-      'partial',
-      'Some tests timed out',
-      ['Make timeout configurable']
-    ),
+    createFeedback('task_004', 'test-runner', 'partial', 'Some tests timed out', [
+      'Make timeout configurable',
+    ]),
   ];
 
   // Refine skill based on feedback
@@ -203,9 +196,7 @@ function example4_RefineSkill() {
   console.error(
     `  Success Rate Improvement: +${(update.estimatedImpact.successRateImprovement * 100).toFixed(0)}%`
   );
-  console.error(
-    `  Efficiency Gain: +${(update.estimatedImpact.efficiencyGain * 100).toFixed(0)}%`
-  );
+  console.error(`  Efficiency Gain: +${(update.estimatedImpact.efficiencyGain * 100).toFixed(0)}%`);
   console.error(`  Risk Level: ${update.estimatedImpact.riskLevel}`);
 }
 
@@ -238,7 +229,9 @@ function example5_PatternStatistics() {
       console.error(`Successful: ${stats.successfulExecutions}`);
       console.error(`Failed: ${stats.failedExecutions}`);
       console.error(`Success Rate: ${(stats.successRate * 100).toFixed(1)}%`);
-      console.error(`\nConfidence Interval (${(stats.confidenceInterval.confidenceLevel * 100).toFixed(0)}% confidence):`);
+      console.error(
+        `\nConfidence Interval (${(stats.confidenceInterval.confidenceLevel * 100).toFixed(0)}% confidence):`
+      );
       console.error(
         `  ${(stats.confidenceInterval.lower * 100).toFixed(1)}% - ${(stats.confidenceInterval.upper * 100).toFixed(1)}%`
       );

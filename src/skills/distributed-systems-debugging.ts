@@ -30,24 +30,24 @@ export interface SystemObservation {
   component: string;
   type: 'log' | 'metric' | 'trace' | 'event';
   data: unknown;
-  source: string;  // Where this came from
+  source: string; // Where this came from
 }
 
 export interface Hypothesis {
   description: string;
   supportingEvidence: SystemObservation[];
   contradictingEvidence: SystemObservation[];
-  confidence: number;  // Based on evidence ratio (0-1)
+  confidence: number; // Based on evidence ratio (0-1)
   testable: boolean;
-  test?: string;  // How to test this hypothesis
+  test?: string; // How to test this hypothesis
 }
 
 export interface DebugReport {
   symptoms: string[];
   observations: SystemObservation[];
   hypotheses: Hypothesis[];
-  rootCause?: Hypothesis;  // Only if confident (confidence >= 0.8)
-  unknowns: string[];  // What we couldn't determine
+  rootCause?: Hypothesis; // Only if confident (confidence >= 0.8)
+  unknowns: string[]; // What we couldn't determine
   recommendations: string[];
 }
 
@@ -67,7 +67,7 @@ export interface Test {
 export interface TestResult {
   success: boolean;
   observations: SystemObservation[];
-  symptomReproduced: boolean;  // Did the test reproduce the symptom?
+  symptomReproduced: boolean; // Did the test reproduce the symptom?
   timestamp: number;
   error?: string;
 }
@@ -77,7 +77,7 @@ export interface RankedHypotheses {
   ranking: {
     hypothesis: Hypothesis;
     rank: number;
-    score: number;  // Based on evidence strength
+    score: number; // Based on evidence strength
     reasoning: string;
   }[];
 }
@@ -97,9 +97,9 @@ export interface DebugSession {
 
 export interface IsolationStep {
   description: string;
-  variables: string[];  // What variables were present
-  removed: string[];    // What was removed in this step
-  symptomPresent: boolean;  // Was symptom still present after removal?
+  variables: string[]; // What variables were present
+  removed: string[]; // What was removed in this step
+  symptomPresent: boolean; // Was symptom still present after removal?
   timestamp: number;
 }
 
@@ -107,7 +107,13 @@ export interface FailureInjection {
   id: string;
   description: string;
   targetComponent: string;
-  failureType: 'network_delay' | 'network_partition' | 'timeout' | 'resource_exhaustion' | 'crash' | 'data_corruption';
+  failureType:
+    | 'network_delay'
+    | 'network_partition'
+    | 'timeout'
+    | 'resource_exhaustion'
+    | 'crash'
+    | 'data_corruption';
   parameters: Record<string, unknown>;
   inject: () => Promise<void>;
   cleanup: () => Promise<void>;
@@ -115,9 +121,9 @@ export interface FailureInjection {
 
 export interface CausalChain {
   events: SystemObservation[];
-  timelineMs: number[];  // Relative timestamps from first event
-  components: string[];  // Components involved in order
-  confidence: number;    // How confident we are in this chain
+  timelineMs: number[]; // Relative timestamps from first event
+  components: string[]; // Components involved in order
+  confidence: number; // How confident we are in this chain
 }
 
 // ============================================================================
@@ -131,7 +137,7 @@ const DEFAULT_CONFIG = {
 
   // Evidence requirements
   MIN_SUPPORTING_EVIDENCE: 2,
-  MAX_CONTRADICTING_EVIDENCE_RATIO: 0.3,  // Max 30% contradicting
+  MAX_CONTRADICTING_EVIDENCE_RATIO: 0.3, // Max 30% contradicting
 
   // Observation limits
   MAX_OBSERVATIONS_PER_SOURCE: 10000,
@@ -141,7 +147,7 @@ const DEFAULT_CONFIG = {
   MAX_ISOLATION_ITERATIONS: 10,
 
   // Correlation
-  CORRELATION_TIME_WINDOW_MS: 1000,  // Events within 1s are considered related
+  CORRELATION_TIME_WINDOW_MS: 1000, // Events within 1s are considered related
 };
 
 // ============================================================================
@@ -179,7 +185,7 @@ export class DistributedSystemsDebugger {
         if (sourceObservations.length > DEFAULT_CONFIG.MAX_OBSERVATIONS_PER_SOURCE) {
           console.error(
             `Warning: Source ${source.id} returned ${sourceObservations.length} observations, ` +
-            `limited to ${DEFAULT_CONFIG.MAX_OBSERVATIONS_PER_SOURCE}`
+              `limited to ${DEFAULT_CONFIG.MAX_OBSERVATIONS_PER_SOURCE}`
           );
         }
 
@@ -221,10 +227,11 @@ export class DistributedSystemsDebugger {
 
     // Pattern 1: Component-specific errors
     for (const [component, obs] of byComponent.entries()) {
-      const errorObs = obs.filter(o =>
-        o.type === 'log' &&
-        typeof o.data === 'string' &&
-        (o.data.toLowerCase().includes('error') || o.data.toLowerCase().includes('fail'))
+      const errorObs = obs.filter(
+        (o) =>
+          o.type === 'log' &&
+          typeof o.data === 'string' &&
+          (o.data.toLowerCase().includes('error') || o.data.toLowerCase().includes('fail'))
       );
 
       if (errorObs.length >= DEFAULT_CONFIG.MIN_SUPPORTING_EVIDENCE) {
@@ -240,16 +247,18 @@ export class DistributedSystemsDebugger {
     }
 
     // Pattern 2: Network/communication issues
-    const networkRelatedObs = observations.filter(o => {
+    const networkRelatedObs = observations.filter((o) => {
       const dataStr = JSON.stringify(o.data).toLowerCase();
-      return dataStr.includes('timeout') ||
-             dataStr.includes('connection') ||
-             dataStr.includes('network') ||
-             dataStr.includes('unreachable');
+      return (
+        dataStr.includes('timeout') ||
+        dataStr.includes('connection') ||
+        dataStr.includes('network') ||
+        dataStr.includes('unreachable')
+      );
     });
 
     if (networkRelatedObs.length >= DEFAULT_CONFIG.MIN_SUPPORTING_EVIDENCE) {
-      const components = [...new Set(networkRelatedObs.map(o => o.component))];
+      const components = [...new Set(networkRelatedObs.map((o) => o.component))];
       hypotheses.push({
         description: `Network connectivity issues between components: ${components.join(', ')}`,
         supportingEvidence: networkRelatedObs,
@@ -261,13 +270,15 @@ export class DistributedSystemsDebugger {
     }
 
     // Pattern 3: Resource exhaustion
-    const resourceObs = observations.filter(o => {
+    const resourceObs = observations.filter((o) => {
       if (o.type !== 'metric') return false;
       const dataStr = JSON.stringify(o.data).toLowerCase();
-      return dataStr.includes('memory') ||
-             dataStr.includes('cpu') ||
-             dataStr.includes('disk') ||
-             dataStr.includes('connection pool');
+      return (
+        dataStr.includes('memory') ||
+        dataStr.includes('cpu') ||
+        dataStr.includes('disk') ||
+        dataStr.includes('connection pool')
+      );
     });
 
     if (resourceObs.length >= DEFAULT_CONFIG.MIN_SUPPORTING_EVIDENCE) {
@@ -283,9 +294,11 @@ export class DistributedSystemsDebugger {
 
     // Pattern 4: Temporal/timing issues (race conditions, ordering)
     if (temporalPatterns.length > 0) {
-      const raceCandidates = temporalPatterns.filter(p =>
-        p.events.length >= 2 &&
-        (p.timelineMs[p.timelineMs.length - 1] - p.timelineMs[0]) < DEFAULT_CONFIG.CORRELATION_TIME_WINDOW_MS
+      const raceCandidates = temporalPatterns.filter(
+        (p) =>
+          p.events.length >= 2 &&
+          p.timelineMs[p.timelineMs.length - 1] - p.timelineMs[0] <
+            DEFAULT_CONFIG.CORRELATION_TIME_WINDOW_MS
       );
 
       if (raceCandidates.length > 0) {
@@ -302,7 +315,7 @@ export class DistributedSystemsDebugger {
     }
 
     // Filter out low-confidence hypotheses
-    return hypotheses.filter(h => h.confidence >= DEFAULT_CONFIG.MIN_HYPOTHESIS_CONFIDENCE);
+    return hypotheses.filter((h) => h.confidence >= DEFAULT_CONFIG.MIN_HYPOTHESIS_CONFIDENCE);
   }
 
   /**
@@ -366,14 +379,14 @@ export class DistributedSystemsDebugger {
       const confidenceScore = hypothesis.confidence;
 
       // Weighted combination
-      const score = (evidenceScore * 0.5) + (confidenceScore * 0.3) + (testabilityScore * 0.2);
+      const score = evidenceScore * 0.5 + confidenceScore * 0.3 + testabilityScore * 0.2;
 
       // Generate reasoning
       const reasoning = this._generateRankingReasoning(hypothesis, score, evidenceScore);
 
       return {
         hypothesis,
-        rank: 0,  // Will be set after sorting
+        rank: 0, // Will be set after sorting
         score,
         reasoning,
       };
@@ -407,9 +420,10 @@ export class DistributedSystemsDebugger {
     const topHypothesis = ranked.ranking[0]?.hypothesis;
 
     // Only declare root cause if confidence is high enough
-    const rootCause = topHypothesis && topHypothesis.confidence >= DEFAULT_CONFIG.ROOT_CAUSE_CONFIDENCE_THRESHOLD
-      ? topHypothesis
-      : undefined;
+    const rootCause =
+      topHypothesis && topHypothesis.confidence >= DEFAULT_CONFIG.ROOT_CAUSE_CONFIDENCE_THRESHOLD
+        ? topHypothesis
+        : undefined;
 
     // Identify unknowns
     const unknowns = this._identifyUnknowns(session);
@@ -650,7 +664,9 @@ export class DistributedSystemsDebugger {
     reasons.push(`Supporting evidence: ${hypothesis.supportingEvidence.length} observations`);
 
     if (hypothesis.contradictingEvidence.length > 0) {
-      reasons.push(`Contradicting evidence: ${hypothesis.contradictingEvidence.length} observations`);
+      reasons.push(
+        `Contradicting evidence: ${hypothesis.contradictingEvidence.length} observations`
+      );
     }
 
     if (!hypothesis.testable) {
@@ -671,7 +687,7 @@ export class DistributedSystemsDebugger {
     const unknowns: string[] = [];
 
     // Check for missing data sources
-    const componentsCovered = new Set(session.observations.map(o => o.component));
+    const componentsCovered = new Set(session.observations.map((o) => o.component));
     const componentsInSymptoms = this._extractComponentsFromSymptoms(session.symptoms);
 
     for (const component of componentsInSymptoms) {
@@ -681,9 +697,12 @@ export class DistributedSystemsDebugger {
     }
 
     // Check for untested hypotheses
-    const untestedHypotheses = session.hypotheses.filter(h => {
-      return h.testable && !Array.from(session.tests.keys()).some(testId =>
-        testId.includes(h.description.substring(0, 20))
+    const untestedHypotheses = session.hypotheses.filter((h) => {
+      return (
+        h.testable &&
+        !Array.from(session.tests.keys()).some((testId) =>
+          testId.includes(h.description.substring(0, 20))
+        )
       );
     });
 
@@ -692,7 +711,7 @@ export class DistributedSystemsDebugger {
     }
 
     // Check for low observation types
-    const observationTypes = new Set(session.observations.map(o => o.type));
+    const observationTypes = new Set(session.observations.map((o) => o.type));
     const expectedTypes: Array<SystemObservation['type']> = ['log', 'metric', 'trace', 'event'];
 
     for (const type of expectedTypes) {
@@ -704,13 +723,17 @@ export class DistributedSystemsDebugger {
     // Check for non-deterministic behavior
     if (session.isolationSteps.length > 0) {
       const inconsistentResults = session.isolationSteps.filter((step, idx, arr) => {
-        return idx > 0 &&
-               step.variables.length === arr[idx - 1].variables.length &&
-               step.symptomPresent !== arr[idx - 1].symptomPresent;
+        return (
+          idx > 0 &&
+          step.variables.length === arr[idx - 1].variables.length &&
+          step.symptomPresent !== arr[idx - 1].symptomPresent
+        );
       });
 
       if (inconsistentResults.length > 0) {
-        unknowns.push('Non-deterministic behavior detected (same conditions produced different results)');
+        unknowns.push(
+          'Non-deterministic behavior detected (same conditions produced different results)'
+        );
       }
     }
 
@@ -741,7 +764,7 @@ export class DistributedSystemsDebugger {
       if (topHypothesis) {
         recommendations.push(
           `MODERATE CONFIDENCE: Most likely cause - ${topHypothesis.description} ` +
-          `(confidence: ${(topHypothesis.confidence * 100).toFixed(1)}%)`
+            `(confidence: ${(topHypothesis.confidence * 100).toFixed(1)}%)`
         );
 
         if (topHypothesis.test) {
@@ -753,12 +776,14 @@ export class DistributedSystemsDebugger {
     }
 
     // Suggest additional data collection
-    const observationTypes = new Set(session.observations.map(o => o.type));
+    const observationTypes = new Set(session.observations.map((o) => o.type));
     if (!observationTypes.has('trace')) {
       recommendations.push('Enable distributed tracing to capture request flow');
     }
     if (!observationTypes.has('metric')) {
-      recommendations.push('Collect system metrics (CPU, memory, network) during symptom occurrence');
+      recommendations.push(
+        'Collect system metrics (CPU, memory, network) during symptom occurrence'
+      );
     }
 
     // Suggest isolation if not performed
@@ -798,16 +823,17 @@ export class DistributedSystemsDebugger {
    */
   private _buildCausalChain(events: SystemObservation[], components: string[]): CausalChain {
     const startTime = events[0].timestamp;
-    const timelineMs = events.map(e => e.timestamp - startTime);
+    const timelineMs = events.map((e) => e.timestamp - startTime);
 
     // Calculate confidence based on:
     // - Number of components involved (more = higher confidence in distributed issue)
     // - Temporal proximity (tighter clustering = higher confidence)
     // - Evidence diversity (different observation types = higher confidence)
 
-    const componentDiversity = components.length / 5;  // Normalize to 0-1
-    const typeDiversity = new Set(events.map(e => e.type)).size / 4;  // 4 types max
-    const temporalTightness = 1 - (timelineMs[timelineMs.length - 1] / DEFAULT_CONFIG.CORRELATION_TIME_WINDOW_MS);
+    const componentDiversity = components.length / 5; // Normalize to 0-1
+    const typeDiversity = new Set(events.map((e) => e.type)).size / 4; // 4 types max
+    const temporalTightness =
+      1 - timelineMs[timelineMs.length - 1] / DEFAULT_CONFIG.CORRELATION_TIME_WINDOW_MS;
 
     const confidence = Math.min(1, (componentDiversity + typeDiversity + temporalTightness) / 3);
 
@@ -831,7 +857,7 @@ export class DistributedSystemsDebugger {
       // Look for quoted component names
       const quoted = symptom.match(/"([^"]+)"/g);
       if (quoted) {
-        quoted.forEach(q => components.add(q.replace(/"/g, '')));
+        quoted.forEach((q) => components.add(q.replace(/"/g, '')));
       }
 
       // Look for common component keywords
@@ -918,7 +944,7 @@ export function formatDebugReport(report: DebugReport): string {
 
   // Symptoms
   lines.push('SYMPTOMS:');
-  report.symptoms.forEach(s => lines.push(`  - ${s}`));
+  report.symptoms.forEach((s) => lines.push(`  - ${s}`));
   lines.push('');
 
   // Observations
@@ -964,7 +990,7 @@ export function formatDebugReport(report: DebugReport): string {
   // Unknowns
   lines.push(`UNKNOWNS: ${report.unknowns.length}`);
   if (report.unknowns.length > 0) {
-    report.unknowns.forEach(u => lines.push(`  - ${u}`));
+    report.unknowns.forEach((u) => lines.push(`  - ${u}`));
   } else {
     lines.push('  (none)');
   }
@@ -972,7 +998,7 @@ export function formatDebugReport(report: DebugReport): string {
 
   // Recommendations
   lines.push('RECOMMENDATIONS:');
-  report.recommendations.forEach(r => lines.push(`  - ${r}`));
+  report.recommendations.forEach((r) => lines.push(`  - ${r}`));
 
   return lines.join('\n');
 }
@@ -1017,7 +1043,10 @@ export function createDistributedSystemsDebugging(): DistributedSystemsDebugger 
 }
 
 // Debug function wrapper
-export function debugDistributedSystem(symptoms: string[], sources: DataSource[] = []): DebugSession {
+export function debugDistributedSystem(
+  symptoms: string[],
+  sources: DataSource[] = []
+): DebugSession {
   const dbg = new DistributedSystemsDebugger();
   return dbg.createSession(symptoms, sources);
 }

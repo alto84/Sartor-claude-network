@@ -5,9 +5,11 @@
 ### 1. Core Hook Scripts
 
 #### `/home/user/Sartor-claude-network/.claude/hooks/inject-roadmap.sh`
+
 **Purpose:** SessionStart hook that injects roadmap context into every agent session
 
 **Features:**
+
 - Reads `IMPLEMENTATION_ORDER.md` roadmap file
 - Automatically detects current phase based on checkbox completion
 - Counts completed vs. total tasks
@@ -16,6 +18,7 @@
 - Supports manual phase override via `.roadmap-state` file
 
 **Output Example:**
+
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [ROADMAP CONTEXT]
@@ -28,9 +31,11 @@ Key Pattern: Quality gates → Hooks → Standards → Enforcement
 ```
 
 #### `/home/user/Sartor-claude-network/.claude/hooks/record-completion.sh`
+
 **Purpose:** PostToolUse hook that detects task completion and records learnings
 
 **Features:**
+
 - Monitors Write, Edit, and Bash tool usage
 - Detects task completion via heuristics:
   - New skill/test/source file creation
@@ -42,6 +47,7 @@ Key Pattern: Quality gates → Hooks → Standards → Enforcement
 - Suggests next tasks
 
 **Detection Patterns:**
+
 - Skill files: `.claude/skills/*/*.md`
 - Test files: `tests/**/*.test.{js,ts}`
 - Source files: `src/**/*.{js,ts}`
@@ -51,6 +57,7 @@ Key Pattern: Quality gates → Hooks → Standards → Enforcement
 ### 2. Configuration Updates
 
 #### `/home/user/Sartor-claude-network/.claude/settings.json`
+
 Updated to register both hooks:
 
 ```json
@@ -91,7 +98,9 @@ Updated to register both hooks:
 ### 3. Documentation
 
 #### `/home/user/Sartor-claude-network/.claude/hooks/ROADMAP_HOOKS_README.md`
+
 Comprehensive documentation covering:
+
 - Architecture overview
 - Hook details and operation
 - Configuration guide
@@ -102,7 +111,9 @@ Comprehensive documentation covering:
 - Extension points
 
 #### `/home/user/Sartor-claude-network/.claude/hooks/test-hooks-demo.sh`
+
 Interactive demonstration script showing:
+
 - SessionStart context injection
 - Task completion detection
 - Learning data accumulation
@@ -112,20 +123,31 @@ Interactive demonstration script showing:
 ### 4. Data Files (Created Automatically)
 
 #### `.claude/.task-completion-log`
+
 CSV format log of all task completions:
+
 ```
 timestamp|tool|task|outcome
 2025-12-06T21:46:15Z|Bash|Test execution completed|success
 ```
 
 #### `.claude/.learnings.jsonl`
+
 JSON Lines format for machine learning analysis:
+
 ```json
-{"timestamp":"2025-12-06T21:46:15Z","tool":"Bash","task":"Test execution completed","outcome":"success"}
+{
+  "timestamp": "2025-12-06T21:46:15Z",
+  "tool": "Bash",
+  "task": "Test execution completed",
+  "outcome": "success"
+}
 ```
 
 #### `.claude/.roadmap-state` (Optional)
+
 Manual phase override file:
+
 ```
 0
 ```
@@ -133,11 +155,13 @@ Manual phase override file:
 ## Installation Verification
 
 ### Check Hook Scripts
+
 ```bash
 ls -lh /home/user/Sartor-claude-network/.claude/hooks/*.sh
 ```
 
 Expected output:
+
 - `inject-roadmap.sh` (executable)
 - `record-completion.sh` (executable)
 - `test-hooks-demo.sh` (executable)
@@ -145,21 +169,25 @@ Expected output:
 ### Test Hooks Manually
 
 **Test inject-roadmap.sh:**
+
 ```bash
 /home/user/Sartor-claude-network/.claude/hooks/inject-roadmap.sh 2>&1
 ```
 
 **Test record-completion.sh:**
+
 ```bash
 /home/user/Sartor-claude-network/.claude/hooks/record-completion.sh Bash "npm test"
 ```
 
 **Run full demonstration:**
+
 ```bash
 /home/user/Sartor-claude-network/.claude/hooks/test-hooks-demo.sh
 ```
 
 ### Verify Settings Registration
+
 ```bash
 grep -A 5 "sessionStart" /home/user/Sartor-claude-network/.claude/settings.json
 ```
@@ -212,27 +240,34 @@ Capture → Analyze → Learn → Improve → Validate → Deploy
 ## Benefits
 
 ### Context-Aware Agents
+
 Every agent automatically knows:
+
 - Current implementation phase
 - Progress on tasks (X/Y complete)
 - Next task to tackle
 - Key patterns for current phase
 
 ### Continuous Learning
+
 System accumulates knowledge:
+
 - Task completion patterns
 - Tool usage statistics
 - Success/failure rates
 - Temporal trends
 
 ### Data-Driven Improvement
+
 JSONL format enables:
+
 - Machine learning analysis
 - Pattern recognition
 - Predictive task suggestion
 - Performance optimization
 
 ### Minimal Overhead
+
 - SessionStart: Runs once per session (~100ms)
 - PostToolUse: Non-blocking, ~50ms per tool use
 - No impact on agent performance
@@ -240,21 +275,25 @@ JSONL format enables:
 ## Usage Examples
 
 ### View Current Roadmap Context
+
 ```bash
 /home/user/Sartor-claude-network/.claude/hooks/inject-roadmap.sh 2>&1
 ```
 
 ### Manually Set Phase
+
 ```bash
 echo "2" > /home/user/Sartor-claude-network/.claude/.roadmap-state
 ```
 
 ### View Task Completions
+
 ```bash
 cat /home/user/Sartor-claude-network/.claude/.task-completion-log
 ```
 
 ### Analyze Learnings with jq
+
 ```bash
 # Count by tool
 cat /home/user/Sartor-claude-network/.claude/.learnings.jsonl | jq -r '.tool' | sort | uniq -c
@@ -271,31 +310,41 @@ echo "scale=2; ($success / $total) * 100" | bc
 ## Next Steps
 
 ### 1. Start Using the System
+
 Simply start a new Claude Code session. The hooks will automatically:
+
 - Inject roadmap context
 - Track task completions
 - Accumulate learning data
 
 ### 2. Monitor Learning Data
+
 Periodically check:
+
 ```bash
 tail -20 /home/user/Sartor-claude-network/.claude/.task-completion-log
 ```
 
 ### 3. Analyze Patterns
+
 Use jq to find insights:
+
 ```bash
 cat /home/user/Sartor-claude-network/.claude/.learnings.jsonl | jq -r '.task' | sort | uniq -c | sort -rn
 ```
 
 ### 4. Update Roadmap
+
 As tasks complete, mark checkboxes in `IMPLEMENTATION_ORDER.md`:
+
 ```markdown
-- [x] Git repository initialized  ← Mark with [x]
+- [x] Git repository initialized ← Mark with [x]
 ```
 
 ### 5. Phase Transitions
+
 When all tasks in a phase complete:
+
 - Verify exit criteria met
 - Update `.roadmap-state` if needed
 - Hook automatically detects new phase
@@ -303,16 +352,19 @@ When all tasks in a phase complete:
 ## Troubleshooting
 
 ### Hook Not Running
+
 1. Check executable: `ls -l .claude/hooks/*.sh`
 2. Verify settings: `grep sessionStart .claude/settings.json`
 3. Check enabled: `"enabled": true`
 
 ### Wrong Phase Detected
+
 1. Check manual override: `cat .claude/.roadmap-state`
 2. Verify checkbox format in roadmap: `- [x]` or `- [ ]`
 3. Test detection: `.claude/hooks/inject-roadmap.sh 2>&1`
 
 ### No Learning Data
+
 1. Check permissions: `touch .claude/.learnings.jsonl`
 2. Trigger completion: `.claude/hooks/record-completion.sh Bash "npm test"`
 3. View logs: `cat .claude/.learnings.jsonl`
@@ -320,33 +372,40 @@ When all tasks in a phase complete:
 ## File Locations
 
 ### Hook Scripts
+
 - `/home/user/Sartor-claude-network/.claude/hooks/inject-roadmap.sh`
 - `/home/user/Sartor-claude-network/.claude/hooks/record-completion.sh`
 - `/home/user/Sartor-claude-network/.claude/hooks/test-hooks-demo.sh`
 
 ### Configuration
+
 - `/home/user/Sartor-claude-network/.claude/settings.json`
 
 ### Data Files
+
 - `/home/user/Sartor-claude-network/.claude/.task-completion-log`
 - `/home/user/Sartor-claude-network/.claude/.learnings.jsonl`
 - `/home/user/Sartor-claude-network/.claude/.roadmap-state` (optional)
 
 ### Documentation
+
 - `/home/user/Sartor-claude-network/.claude/hooks/ROADMAP_HOOKS_README.md`
 - `/home/user/Sartor-claude-network/.claude/hooks/INSTALLATION_SUMMARY.md` (this file)
 
 ### Roadmap Reference
+
 - `/home/user/Sartor-claude-network/IMPLEMENTATION_ORDER.md`
 
 ## Support
 
 For detailed information:
+
 - **Usage Guide:** Read `ROADMAP_HOOKS_README.md`
 - **Run Demo:** Execute `test-hooks-demo.sh`
 - **Test Hooks:** Run hooks manually with sample data
 
 For issues:
+
 1. Check troubleshooting section in README
 2. Run demo script to verify installation
 3. Test hooks manually to isolate issues

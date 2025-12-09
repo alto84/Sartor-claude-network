@@ -7,6 +7,7 @@ Multi-tier episodic memory system with refinement-powered executive orchestratio
 ## Quick Start
 
 When starting a session in this project:
+
 1. Check `MASTER_PLAN.md` for current phase and priorities
 2. Review `.claude/AGENT_INIT.md` for role definitions
 3. Use `.claude/SPAWNING_TEMPLATE.md` when delegating to subagents
@@ -46,11 +47,13 @@ The project includes an MCP server that exposes the memory system as callable to
 ### Starting the Server
 
 **For Claude Desktop (stdio):**
+
 ```bash
 npm run mcp
 ```
 
 **For Agents (HTTP):**
+
 ```bash
 npm run mcp:http
 ```
@@ -108,13 +111,14 @@ The HTTP server provides the same memory tools via HTTP transport, allowing agen
 4. Session-based: Server manages sessions with unique IDs
 
 **Example HTTP Request:**
+
 ```javascript
 // Initialize session
 const response = await fetch('http://localhost:3001/mcp', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Accept': 'application/json, text/event-stream'
+    Accept: 'application/json, text/event-stream',
   },
   body: JSON.stringify({
     jsonrpc: '2.0',
@@ -123,9 +127,9 @@ const response = await fetch('http://localhost:3001/mcp', {
     params: {
       protocolVersion: '2024-11-05',
       capabilities: {},
-      clientInfo: { name: 'my-agent', version: '1.0.0' }
-    }
-  })
+      clientInfo: { name: 'my-agent', version: '1.0.0' },
+    },
+  }),
 });
 
 const sessionId = response.headers.get('mcp-session-id');
@@ -135,6 +139,7 @@ const sessionId = response.headers.get('mcp-session-id');
 ## Available Skills
 
 Skills in `.claude/skills/`:
+
 - `memory-access.md` - Use the 3-tier memory system
 - `refinement-protocol.md` - Execute with iterative refinement
 - `agent-roles.md` - Understand the 4 agent roles
@@ -142,6 +147,7 @@ Skills in `.claude/skills/`:
 ## Spawning Subagents
 
 When using the Task tool, always include:
+
 1. **Role** (Planner/Implementer/Auditor/Cleaner)
 2. **Scope** (files they can touch)
 3. **Context** (current phase, relevant background)

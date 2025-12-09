@@ -12,14 +12,18 @@ This schema defines a comprehensive memory system for AI agents with four distin
 ## Design Principles
 
 ### 1. Temporal Awareness
+
 Every memory tracks:
+
 - Creation time
 - Last access time
 - Last modification time
 - Full access history for temporal analysis
 
 ### 2. Importance-Based Retention
+
 Memories have importance scores that decay over time based on:
+
 - Recency of access
 - Access frequency
 - User explicit importance
@@ -27,13 +31,17 @@ Memories have importance scores that decay over time based on:
 - Novelty
 
 ### 3. Semantic Search
+
 All memories include:
+
 - Vector embeddings for semantic similarity search
 - Full-text search capabilities
 - Tag and category based filtering
 
 ### 4. Cross-Surface Synchronization
+
 Built-in support for syncing memories across:
+
 - Web interface
 - Slack
 - API
@@ -42,7 +50,9 @@ Built-in support for syncing memories across:
 - Terminal/CLI
 
 ### 5. Relational Structure
+
 Memories can be linked through various relationship types:
+
 - Temporal (preceded by, followed by)
 - Semantic (similar to, contradicts, supports)
 - Structural (part of, contains, derived from)
@@ -56,6 +66,7 @@ Memories can be linked through various relationship types:
 **Purpose**: Store specific conversation episodes with rich contextual detail.
 
 **Key Features**:
+
 - Full message history with timestamps
 - Narrative structure (beginning, middle, end)
 - Emotional context and sentiment
@@ -64,12 +75,14 @@ Memories can be linked through various relationship types:
 - Outcomes and follow-ups
 
 **Example Use Cases**:
+
 - Recalling a previous conversation about a specific topic
 - Understanding the context of a decision made earlier
 - Identifying patterns in user behavior over time
 - Providing continuity across sessions
 
 **Typical Lifecycle**:
+
 1. Created at end of conversation or major topic shift
 2. High initial importance based on length and engagement
 3. Decays slowly if never referenced
@@ -81,6 +94,7 @@ Memories can be linked through various relationship types:
 **Purpose**: Store decontextualized facts and knowledge.
 
 **Key Features**:
+
 - Subject-predicate-object structure
 - Confidence levels
 - Evidence tracking
@@ -88,6 +102,7 @@ Memories can be linked through various relationship types:
 - Preference vs. fact distinction
 
 **Example Use Cases**:
+
 - User preferences ("prefers dark mode")
 - Personal information ("lives in San Francisco")
 - Domain knowledge ("expert in Python")
@@ -95,6 +110,7 @@ Memories can be linked through various relationship types:
 - Capabilities and limitations ("has access to GPU")
 
 **Typical Lifecycle**:
+
 1. Extracted from episodic memories
 2. Validated against existing knowledge
 3. Merged with similar facts
@@ -106,6 +122,7 @@ Memories can be linked through various relationship types:
 **Purpose**: Store learned procedures and workflows.
 
 **Key Features**:
+
 - Step-by-step instructions
 - Applicability conditions
 - Prerequisites and dependencies
@@ -114,12 +131,14 @@ Memories can be linked through various relationship types:
 - Variations and alternatives
 
 **Example Use Cases**:
+
 - "How to set up a Python project"
 - "User's preferred code review workflow"
 - "Debugging process for React applications"
 - "Steps for deploying to production"
 
 **Typical Lifecycle**:
+
 1. Created when a pattern is detected (3+ similar episodes)
 2. Refined each time the procedure is executed
 3. Success rate updated based on outcomes
@@ -131,6 +150,7 @@ Memories can be linked through various relationship types:
 **Purpose**: Maintain active session context.
 
 **Key Features**:
+
 - Current conversation focus
 - Active goals and tasks
 - Context stack for nested topics
@@ -139,12 +159,14 @@ Memories can be linked through various relationship types:
 - Consolidation candidates flagged
 
 **Example Use Cases**:
+
 - Tracking current topic during multi-turn conversation
 - Maintaining context when user switches topics
 - Managing active goals and sub-goals
 - Quick access to recently discussed information
 
 **Typical Lifecycle**:
+
 1. Created at session start
 2. Updated continuously during conversation
 3. Very short decay (minutes to hours)
@@ -159,12 +181,12 @@ Importance is calculated from multiple factors:
 
 ```typescript
 importance = weighted_sum([
-  recency_factor,      // Recent memories are more important
-  frequency_factor,    // Frequently accessed memories retained
-  user_explicit,       // User-indicated importance
-  emotional_factor,    // Emotional moments are memorable
-  novelty_factor       // Novel information is important
-])
+  recency_factor, // Recent memories are more important
+  frequency_factor, // Frequently accessed memories retained
+  user_explicit, // User-indicated importance
+  emotional_factor, // Emotional moments are memorable
+  novelty_factor, // Novel information is important
+]);
 ```
 
 ### Decay Algorithm
@@ -172,10 +194,10 @@ importance = weighted_sum([
 Memories decay over time using an exponential decay function:
 
 ```typescript
-new_importance = current_importance * exp(-decay_rate * time_since_access)
+new_importance = current_importance * exp(-decay_rate * time_since_access);
 
 if (new_importance < decay_threshold && !protected_from_decay) {
-  status = ARCHIVED
+  status = ARCHIVED;
 }
 ```
 
@@ -196,6 +218,7 @@ When contradictory memories are detected:
 Multiple related memories can be consolidated:
 
 **Strategies**:
+
 - **Merge**: Combine similar memories into one
 - **Summarize**: Create abstract summary of multiple episodes
 - **Abstract**: Extract general pattern from specific instances
@@ -206,12 +229,14 @@ Multiple related memories can be consolidated:
 Each memory includes an embedding for semantic search:
 
 **Embedding Sources**:
+
 - Full text of episodic memories
 - Statement text for semantic memories
 - Procedure description for procedural memories
 - Conversation summary for working memories
 
 **Search Process**:
+
 1. Embed query text
 2. Find k-nearest neighbors in vector space
 3. Filter by metadata (type, date, importance)
@@ -222,6 +247,7 @@ Each memory includes an embedding for semantic search:
 ### Primary Storage
 
 Use a document database (MongoDB, Firestore, DynamoDB) with:
+
 - Fast lookups by ID
 - Flexible schema for different memory types
 - Support for nested objects
@@ -230,6 +256,7 @@ Use a document database (MongoDB, Firestore, DynamoDB) with:
 ### Vector Storage
 
 Use a specialized vector database (Pinecone, Weaviate, Qdrant) for:
+
 - Efficient k-NN search
 - Filtered vector search
 - High-dimensional indexing
@@ -237,6 +264,7 @@ Use a specialized vector database (Pinecone, Weaviate, Qdrant) for:
 ### Caching Layer
 
 Use Redis or Memcached for:
+
 - Recently accessed memories
 - Current working memory
 - Session state
@@ -359,36 +387,36 @@ See `SUGGESTED_INDEXES` in the schema for optimal index configuration.
 ```typescript
 const episodic = await memorySystem.createEpisodicMemory({
   content: {
-    title: "Discussion about TypeScript best practices",
-    description: "User asked about TypeScript patterns for API clients",
-    summary: "Discussed factory pattern, error handling, and type guards",
+    title: 'Discussion about TypeScript best practices',
+    description: 'User asked about TypeScript patterns for API clients',
+    summary: 'Discussed factory pattern, error handling, and type guards',
     keyQuotes: [
-      "I prefer using zod for runtime validation",
-      "Always use discriminated unions for API responses"
+      'I prefer using zod for runtime validation',
+      'Always use discriminated unions for API responses',
     ],
-    messages: conversationMessages
+    messages: conversationMessages,
   },
   temporalStructure: {
-    startTime: "2025-01-15T10:00:00Z",
-    endTime: "2025-01-15T10:45:00Z",
+    startTime: '2025-01-15T10:00:00Z',
+    endTime: '2025-01-15T10:45:00Z',
     duration: 2700000,
     temporalContext: {
-      timeOfDay: "morning",
-      dayOfWeek: "Monday",
-      isWeekend: false
-    }
+      timeOfDay: 'morning',
+      dayOfWeek: 'Monday',
+      isWeekend: false,
+    },
   },
   participants: [
-    { id: "user_123", role: "user", participationLevel: 0.6 },
-    { id: "assistant", role: "assistant", participationLevel: 0.4 }
+    { id: 'user_123', role: 'user', participationLevel: 0.6 },
+    { id: 'assistant', role: 'assistant', participationLevel: 0.4 },
   ],
   emotionalContext: {
     valence: 0.7,
     arousal: 0.5,
-    emotions: [{ emotion: "curious", intensity: 0.8 }],
-    sentiment: "positive",
-    userSatisfaction: 0.9
-  }
+    emotions: [{ emotion: 'curious', intensity: 0.8 }],
+    sentiment: 'positive',
+    userSatisfaction: 0.9,
+  },
 });
 ```
 
@@ -399,22 +427,24 @@ const episodic = await memorySystem.createEpisodicMemory({
 const semanticMemories = [
   await memorySystem.createSemanticMemory({
     content: {
-      subject: "user_123",
-      predicate: "prefers",
-      object: "zod for runtime validation",
-      statement: "User prefers zod for runtime validation in TypeScript",
-      qualifiers: ["always"]
+      subject: 'user_123',
+      predicate: 'prefers',
+      object: 'zod for runtime validation',
+      statement: 'User prefers zod for runtime validation in TypeScript',
+      qualifiers: ['always'],
     },
     knowledgeType: KnowledgeType.PREFERENCE,
     confidence: ConfidenceLevel.HIGH,
-    evidence: [{
-      type: "explicit_statement",
-      sourceId: episodic.id,
-      description: "User stated preference in conversation",
-      strength: 0.9,
-      timestamp: "2025-01-15T10:15:00Z"
-    }]
-  })
+    evidence: [
+      {
+        type: 'explicit_statement',
+        sourceId: episodic.id,
+        description: 'User stated preference in conversation',
+        strength: 0.9,
+        timestamp: '2025-01-15T10:15:00Z',
+      },
+    ],
+  }),
 ];
 ```
 
@@ -426,32 +456,32 @@ const procedural = await memorySystem.createProceduralMemory({
   content: {
     name: "User's TypeScript project setup",
     purpose: "Initialize a new TypeScript project with user's preferences",
-    description: "Standard TypeScript setup with pnpm, vitest, and zod",
-    whenToUse: "When starting any new TypeScript project"
+    description: 'Standard TypeScript setup with pnpm, vitest, and zod',
+    whenToUse: 'When starting any new TypeScript project',
   },
   steps: [
     {
       order: 1,
-      description: "Initialize with pnpm",
-      action: "pnpm init",
-      expectedResult: "package.json created",
-      optional: false
+      description: 'Initialize with pnpm',
+      action: 'pnpm init',
+      expectedResult: 'package.json created',
+      optional: false,
     },
     {
       order: 2,
-      description: "Install TypeScript and tools",
-      action: "pnpm add -D typescript @types/node vitest",
-      optional: false
+      description: 'Install TypeScript and tools',
+      action: 'pnpm add -D typescript @types/node vitest',
+      optional: false,
     },
     {
       order: 3,
-      description: "Add zod for validation",
-      action: "pnpm add zod",
-      optional: false
-    }
+      description: 'Add zod for validation',
+      action: 'pnpm add zod',
+      optional: false,
+    },
   ],
   successRate: 1.0,
-  executionCount: 5
+  executionCount: 5,
 });
 ```
 
@@ -461,31 +491,31 @@ const procedural = await memorySystem.createProceduralMemory({
 // At session start
 const working = await memorySystem.createWorkingMemory({
   content: {
-    currentTopic: "Setting up a new project",
-    conversationSummary: "User wants to create a TypeScript API client",
-    keyPoints: ["Must use zod", "Prefer functional approach"],
-    openQuestions: ["Which API are we calling?"]
+    currentTopic: 'Setting up a new project',
+    conversationSummary: 'User wants to create a TypeScript API client',
+    keyPoints: ['Must use zod', 'Prefer functional approach'],
+    openQuestions: ['Which API are we calling?'],
   },
   attentionFocus: {
-    primary: "Project structure",
-    secondary: ["Error handling", "Type safety"],
-    trigger: "User question",
+    primary: 'Project structure',
+    secondary: ['Error handling', 'Type safety'],
+    trigger: 'User question',
     duration: 0,
-    importance: 0.8
+    importance: 0.8,
   },
   activeGoals: [
     {
-      id: "goal_1",
-      description: "Set up TypeScript project",
-      type: "user_requested",
+      id: 'goal_1',
+      description: 'Set up TypeScript project',
+      type: 'user_requested',
       priority: 1.0,
       progress: 0.3,
       completed: false,
-      establishedAt: "2025-01-15T11:00:00Z"
-    }
+      establishedAt: '2025-01-15T11:00:00Z',
+    },
   ],
   ttl: 3600000, // 1 hour
-  consolidationCandidate: true
+  consolidationCandidate: true,
 });
 ```
 
@@ -494,17 +524,17 @@ const working = await memorySystem.createWorkingMemory({
 ```typescript
 // Find relevant memories
 const results = await memorySystem.recall({
-  textQuery: "How does the user like to handle errors?",
+  textQuery: 'How does the user like to handle errors?',
   types: [MemoryType.SEMANTIC, MemoryType.PROCEDURAL],
   limit: 5,
   minSimilarity: 0.7,
   importance: {
-    minImportance: 0.5
-  }
+    minImportance: 0.5,
+  },
 });
 
 // Results are ranked by combined score
-results.forEach(result => {
+results.forEach((result) => {
   console.log(`Memory: ${result.memory.id}`);
   console.log(`Score: ${result.score}`);
   console.log(`Semantic: ${result.relevanceFactors.semantic}`);
@@ -519,12 +549,12 @@ results.forEach(result => {
 const recentEpisodes = await memorySystem.recall({
   types: [MemoryType.EPISODIC],
   temporal: {
-    startDate: "2025-01-08T00:00:00Z",
-    endDate: "2025-01-15T23:59:59Z"
+    startDate: '2025-01-08T00:00:00Z',
+    endDate: '2025-01-15T23:59:59Z',
   },
   importance: {
-    minImportance: 0.6
-  }
+    minImportance: 0.6,
+  },
 });
 ```
 

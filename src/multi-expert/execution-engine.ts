@@ -208,10 +208,7 @@ export class ExecutionEngine {
   private executor: ExpertExecutor;
   private activeExecutions: Map<string, Promise<ExpertResult>>;
 
-  constructor(
-    executor: ExpertExecutor,
-    config: Partial<ExecutionEngineConfig> = {}
-  ) {
+  constructor(executor: ExpertExecutor, config: Partial<ExecutionEngineConfig> = {}) {
     this.config = { ...DEFAULT_ENGINE_CONFIG, ...config };
     this.executor = executor;
     this.activeExecutions = new Map();
@@ -231,24 +228,19 @@ export class ExecutionEngine {
 
     // Create timeout promise
     const timeoutPromise = new Promise<never>((_, reject) => {
-      setTimeout(
-        () => reject(new Error('Global timeout exceeded')),
-        this.config.globalTimeout
-      );
+      setTimeout(() => reject(new Error('Global timeout exceeded')), this.config.globalTimeout);
     });
 
     // Execute all experts in parallel
-    const executionPromises = experts.map((expert) =>
-      this.executeExpert(task, expert)
-    );
+    const executionPromises = experts.map((expert) => this.executeExpert(task, expert));
 
     // Wait for all with timeout
     let results: ExpertResult[];
     try {
-      results = await Promise.race([
+      results = (await Promise.race([
         Promise.all(executionPromises),
         timeoutPromise,
-      ]) as ExpertResult[];
+      ])) as ExpertResult[];
     } catch (error) {
       // On global timeout, collect partial results
       results = await this.collectPartialResults(executionPromises);
@@ -259,11 +251,10 @@ export class ExecutionEngine {
     const summary = this.calculateSummary(successfulResults);
 
     // Find best result
-    const bestResult = successfulResults.length > 0
-      ? successfulResults.reduce((best, current) =>
-          current.score > best.score ? current : best
-        )
-      : undefined;
+    const bestResult =
+      successfulResults.length > 0
+        ? successfulResults.reduce((best, current) => (current.score > best.score ? current : best))
+        : undefined;
 
     return {
       taskId: task.id,
@@ -279,10 +270,7 @@ export class ExecutionEngine {
   /**
    * Execute task with a single expert
    */
-  private async executeExpert(
-    task: ExpertTask,
-    expertConfig: ExpertConfig
-  ): Promise<ExpertResult> {
+  private async executeExpert(task: ExpertTask, expertConfig: ExpertConfig): Promise<ExpertResult> {
     const startTime = Date.now();
     const trace: ExecutionTrace = {
       startedAt: new Date().toISOString(),
@@ -295,10 +283,7 @@ export class ExecutionEngine {
     try {
       // Create timeout for this expert
       const timeoutPromise = new Promise<never>((_, reject) => {
-        setTimeout(
-          () => reject(new Error('Expert timeout')),
-          expertConfig.totalTimeout
-        );
+        setTimeout(() => reject(new Error('Expert timeout')), expertConfig.totalTimeout);
       });
 
       // Execute with timeout
@@ -413,9 +398,7 @@ export class ExecutionEngine {
   /**
    * Collect partial results from timed-out execution
    */
-  private async collectPartialResults(
-    promises: Promise<ExpertResult>[]
-  ): Promise<ExpertResult[]> {
+  private async collectPartialResults(promises: Promise<ExpertResult>[]): Promise<ExpertResult[]> {
     const results: ExpertResult[] = [];
 
     for (const promise of promises) {
@@ -482,12 +465,9 @@ export class ExecutionEngine {
     baseSeed?: number
   ): Promise<MultiExpertResult> {
     const experts = archetypes.map((archetype, index) =>
-      createExpertConfig(
-        `${task.id}-expert-${index}`,
-        `${archetype} Expert`,
-        archetype,
-        { seed: baseSeed !== undefined ? baseSeed + index : undefined }
-      )
+      createExpertConfig(`${task.id}-expert-${index}`, `${archetype} Expert`, archetype, {
+        seed: baseSeed !== undefined ? baseSeed + index : undefined,
+      })
     );
 
     return this.executeWithExperts(task, experts);

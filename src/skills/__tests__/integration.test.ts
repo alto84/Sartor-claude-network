@@ -109,7 +109,7 @@ const createIntegratedSystem = (): IntegratedSystem => {
     }
     messageQueues.get(recipient)!.push(message);
 
-    await new Promise(resolve => setTimeout(resolve, 5));
+    await new Promise((resolve) => setTimeout(resolve, 5));
 
     return {
       messageId: message.id,
@@ -128,7 +128,7 @@ const createIntegratedSystem = (): IntegratedSystem => {
 
   const selectWorker = (taskType: string): Worker | undefined => {
     return Array.from(workers.values())
-      .filter(w => w.status === 'idle' && w.specialization.includes(taskType))
+      .filter((w) => w.status === 'idle' && w.specialization.includes(taskType))
       .sort((a, b) => {
         const scoreA = a.tasksCompleted / Math.max(1, a.tasksCompleted + a.tasksFailed);
         const scoreB = b.tasksCompleted / Math.max(1, b.tasksCompleted + b.tasksFailed);
@@ -152,7 +152,7 @@ const createIntegratedSystem = (): IntegratedSystem => {
     task.assignedTo = worker.id;
 
     // Simulate work
-    await new Promise(resolve => setTimeout(resolve, 20));
+    await new Promise((resolve) => setTimeout(resolve, 20));
 
     const result = {
       taskId: task.id,
@@ -234,25 +234,23 @@ const createIntegratedSystem = (): IntegratedSystem => {
       const results = new Map<string, any>();
 
       // Submit all tasks
-      const taskIds = await Promise.all(
-        taskDataArray.map(taskData => this.submitTask(taskData))
-      );
+      const taskIds = await Promise.all(taskDataArray.map((taskData) => this.submitTask(taskData)));
 
       // Build dependency graph
-      const taskMap = new Map(taskIds.map(id => [id, tasks.get(id)!]));
+      const taskMap = new Map(taskIds.map((id) => [id, tasks.get(id)!]));
       const completed = new Set<string>();
 
       const canExecute = (task: Task): boolean => {
         if (!task.dependencies || task.dependencies.length === 0) {
           return true;
         }
-        return task.dependencies.every(depId => completed.has(depId));
+        return task.dependencies.every((depId) => completed.has(depId));
       };
 
       // Execute tasks respecting dependencies
       while (completed.size < taskIds.length) {
         const executable = taskIds.filter(
-          id => !completed.has(id) && canExecute(taskMap.get(id)!)
+          (id) => !completed.has(id) && canExecute(taskMap.get(id)!)
         );
 
         if (executable.length === 0 && completed.size < taskIds.length) {
@@ -277,12 +275,14 @@ const createIntegratedSystem = (): IntegratedSystem => {
     },
 
     getSystemHealth() {
-      const activeWorkers = Array.from(workers.values()).filter(w => w.status === 'busy');
+      const activeWorkers = Array.from(workers.values()).filter((w) => w.status === 'busy');
       const activeTasks = Array.from(tasks.values()).filter(
-        t => t.status === 'running' || t.status === 'assigned'
+        (t) => t.status === 'running' || t.status === 'assigned'
       );
-      const messagesInFlight = Array.from(messageQueues.values())
-        .reduce((sum, queue) => sum + queue.length, 0);
+      const messagesInFlight = Array.from(messageQueues.values()).reduce(
+        (sum, queue) => sum + queue.length,
+        0
+      );
 
       return {
         communicationActive: true,
@@ -559,7 +559,7 @@ describe('Phase 2 Infrastructure Integration Tests', () => {
 
       const acks = await Promise.all(sendPromises);
       expect(acks).toHaveLength(3);
-      acks.forEach(ack => expect(ack.status).toBe('received'));
+      acks.forEach((ack) => expect(ack.status).toBe('received'));
 
       // Each worker should have their message
       const analyzerMsg = await system.receiveMessage('analyzer');
@@ -667,7 +667,7 @@ describe('Phase 2 Infrastructure Integration Tests', () => {
       expect(results.size).toBe(4);
 
       // Verify execution order through timestamps
-      const timestamps = Array.from(results.values()).map(r => r.timestamp);
+      const timestamps = Array.from(results.values()).map((r) => r.timestamp);
       // Task 1 should complete before tasks 2 and 3
       // Tasks 2 and 3 should complete before task 4
       expect(timestamps[0]).toBeLessThan(timestamps[1]);
@@ -742,19 +742,28 @@ describe('Phase 2 Infrastructure Integration Tests', () => {
       });
 
       // Should detect and reject circular dependency
-      await expect(system.executeWorkflow([
-        { type: 'processing', priority: 'high', payload: { id: 1 }, dependencies: ['task-2'] },
-        { type: 'processing', priority: 'high', payload: { id: 2 }, dependencies: ['task-1'] },
-      ])).rejects.toThrow(/circular dependency|unresolvable dependencies/i);
+      await expect(
+        system.executeWorkflow([
+          { type: 'processing', priority: 'high', payload: { id: 1 }, dependencies: ['task-2'] },
+          { type: 'processing', priority: 'high', payload: { id: 2 }, dependencies: ['task-1'] },
+        ])
+      ).rejects.toThrow(/circular dependency|unresolvable dependencies/i);
     });
 
     it('should propagate errors in dependency chain', async () => {
       // Create dependency chain where middle task will fail
-      await expect(system.executeWorkflow([
-        { type: 'processing', priority: 'high', payload: { step: 1 } },
-        { type: 'invalid-type', priority: 'high', payload: { step: 2 }, dependencies: ['task-1'] },
-        { type: 'validation', priority: 'high', payload: { step: 3 }, dependencies: ['task-2'] },
-      ])).rejects.toThrow();
+      await expect(
+        system.executeWorkflow([
+          { type: 'processing', priority: 'high', payload: { step: 1 } },
+          {
+            type: 'invalid-type',
+            priority: 'high',
+            payload: { step: 2 },
+            dependencies: ['task-1'],
+          },
+          { type: 'validation', priority: 'high', payload: { step: 3 }, dependencies: ['task-2'] },
+        ])
+      ).rejects.toThrow();
     });
   });
 
@@ -879,7 +888,7 @@ describe('Phase 2 Infrastructure Integration Tests', () => {
       }));
 
       // Send all messages
-      await Promise.all(messages.map(msg => system.sendMessage(msg)));
+      await Promise.all(messages.map((msg) => system.sendMessage(msg)));
 
       // Receive all messages
       const received = [];
@@ -891,7 +900,7 @@ describe('Phase 2 Infrastructure Integration Tests', () => {
       expect(received).toHaveLength(100);
 
       // Verify ordering
-      const sequences = received.map(msg => msg.payload.seq);
+      const sequences = received.map((msg) => msg.payload.seq);
       expect(sequences).toEqual(Array.from({ length: 100 }, (_, i) => i));
     });
 

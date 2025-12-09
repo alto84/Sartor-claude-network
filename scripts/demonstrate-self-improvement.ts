@@ -25,16 +25,36 @@ async function demonstrateSelfImprovement(): Promise<void> {
   console.log('--------------------------------');
 
   const initialTasks = [
-    { id: 'demo-1', role: AgentRole.IMPLEMENTER, description: 'Build login form', context: '', maxIterations: 3 },
-    { id: 'demo-2', role: AgentRole.IMPLEMENTER, description: 'Build login form', context: '', maxIterations: 3 },
-    { id: 'demo-3', role: AgentRole.IMPLEMENTER, description: 'Build login form', context: '', maxIterations: 3 },
+    {
+      id: 'demo-1',
+      role: AgentRole.IMPLEMENTER,
+      description: 'Build login form',
+      context: '',
+      maxIterations: 3,
+    },
+    {
+      id: 'demo-2',
+      role: AgentRole.IMPLEMENTER,
+      description: 'Build login form',
+      context: '',
+      maxIterations: 3,
+    },
+    {
+      id: 'demo-3',
+      role: AgentRole.IMPLEMENTER,
+      description: 'Build login form',
+      context: '',
+      maxIterations: 3,
+    },
   ];
 
   const results1 = await executive.orchestrate(initialTasks);
   const avgIterations1 = results1.reduce((sum, r) => sum + r.iterations, 0) / results1.length;
   console.log(`  Tasks completed: ${results1.length}`);
   console.log(`  Average iterations: ${avgIterations1.toFixed(2)}`);
-  console.log(`  Success rate: ${(results1.filter(r => r.success).length / results1.length * 100).toFixed(0)}%`);
+  console.log(
+    `  Success rate: ${((results1.filter((r) => r.success).length / results1.length) * 100).toFixed(0)}%`
+  );
 
   // Phase 2: Learn from executions
   console.log('\nPhase 2: Learning from Executions');
@@ -58,16 +78,36 @@ async function demonstrateSelfImprovement(): Promise<void> {
   console.log('---------------------------------');
 
   const postLearningTasks = [
-    { id: 'demo-4', role: AgentRole.IMPLEMENTER, description: 'Build login form', context: 'Using learned patterns', maxIterations: 3 },
-    { id: 'demo-5', role: AgentRole.IMPLEMENTER, description: 'Build login form', context: 'Using learned patterns', maxIterations: 3 },
-    { id: 'demo-6', role: AgentRole.IMPLEMENTER, description: 'Build login form', context: 'Using learned patterns', maxIterations: 3 },
+    {
+      id: 'demo-4',
+      role: AgentRole.IMPLEMENTER,
+      description: 'Build login form',
+      context: 'Using learned patterns',
+      maxIterations: 3,
+    },
+    {
+      id: 'demo-5',
+      role: AgentRole.IMPLEMENTER,
+      description: 'Build login form',
+      context: 'Using learned patterns',
+      maxIterations: 3,
+    },
+    {
+      id: 'demo-6',
+      role: AgentRole.IMPLEMENTER,
+      description: 'Build login form',
+      context: 'Using learned patterns',
+      maxIterations: 3,
+    },
   ];
 
   const results2 = await executive.orchestrate(postLearningTasks);
   const avgIterations2 = results2.reduce((sum, r) => sum + r.iterations, 0) / results2.length;
   console.log(`  Tasks completed: ${results2.length}`);
   console.log(`  Average iterations: ${avgIterations2.toFixed(2)}`);
-  console.log(`  Success rate: ${(results2.filter(r => r.success).length / results2.length * 100).toFixed(0)}%`);
+  console.log(
+    `  Success rate: ${((results2.filter((r) => r.success).length / results2.length) * 100).toFixed(0)}%`
+  );
 
   // Phase 5: Summary
   console.log('\n=== Summary ===');
@@ -81,13 +121,14 @@ async function demonstrateSelfImprovement(): Promise<void> {
   console.log(`  Learned patterns: ${learnedPatterns.length}`);
 
   // Calculate improvement (simulated)
-  const improvement = avgIterations1 > avgIterations2
-    ? ((avgIterations1 - avgIterations2) / avgIterations1 * 100).toFixed(1)
-    : '0';
+  const improvement =
+    avgIterations1 > avgIterations2
+      ? (((avgIterations1 - avgIterations2) / avgIterations1) * 100).toFixed(1)
+      : '0';
   console.log(`\n  🎯 Iteration reduction: ${improvement}%`);
   console.log('  ✅ Self-improvement demonstrated');
 }
 
 demonstrateSelfImprovement()
   .then(() => console.log('\nDemonstration complete.'))
-  .catch(err => console.error('Demo failed:', err));
+  .catch((err) => console.error('Demo failed:', err));

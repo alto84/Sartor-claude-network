@@ -62,13 +62,16 @@ src/memory/
 ## Risks and Mitigations
 
 **Risk 1: Memory queries slow down refinement loops**
-- *Mitigation:* Aggressive caching layer, async queries don't block execution, index optimization, load testing
+
+- _Mitigation:_ Aggressive caching layer, async queries don't block execution, index optimization, load testing
 
 **Risk 2: Pattern extraction creates noise (false positives)**
-- *Mitigation:* Minimum success thresholds (80%+ rate, 5+ occurrences), evidence validation required, manual review for high-impact patterns
+
+- _Mitigation:_ Minimum success thresholds (80%+ rate, 5+ occurrences), evidence validation required, manual review for high-impact patterns
 
 **Risk 3: Process traces consume excessive storage**
-- *Mitigation:* Aggressive hot tier TTL (1 hour), compress warm tier data, extract only significant patterns to cold tier, monitor usage
+
+- _Mitigation:_ Aggressive hot tier TTL (1 hour), compress warm tier data, extract only significant patterns to cold tier, monitor usage
 
 ## Success Criteria
 

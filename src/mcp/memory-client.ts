@@ -4,7 +4,11 @@
  */
 
 export interface MemoryClient {
-  create(content: string, type: string, options?: { importance?: number; tags?: string[] }): Promise<{ id: string }>;
+  create(
+    content: string,
+    type: string,
+    options?: { importance?: number; tags?: string[] }
+  ): Promise<{ id: string }>;
   get(id: string): Promise<any>;
   search(options?: { type?: string; min_importance?: number; limit?: number }): Promise<any[]>;
   stats(): Promise<{ total_memories: number; by_type: Record<string, number> }>;

@@ -38,7 +38,7 @@ console.log(summary);
 
 // Get specific next tasks
 const nextTasks = getNextTasks(3);
-nextTasks.forEach(task => {
+nextTasks.forEach((task) => {
   console.log(`${task.id}: ${task.description}`);
   console.log(`  Priority: ${task.priority}, Estimated: ${task.estimatedHours}h`);
 });
@@ -72,7 +72,7 @@ const manager = new RoadmapManager();
 
 // Get all phases
 const allPhases = manager.getAllPhases();
-allPhases.forEach(phase => {
+allPhases.forEach((phase) => {
   console.log(`${phase.id}: ${phase.name} - ${phase.status}`);
 });
 
@@ -90,7 +90,7 @@ manager.addTask({
   description: 'Custom Firebase optimization task',
   status: 'pending',
   priority: 5,
-  estimatedHours: 10
+  estimatedHours: 10,
 });
 
 // Increment refinement loops
@@ -224,27 +224,33 @@ For detailed roadmap, see: /home/user/Sartor-claude-network/IMPLEMENTATION_ORDER
 ### Functions
 
 #### `getRoadmapSummary(): string`
+
 Returns a quick roadmap summary (~100 tokens) for agent context.
 
 **Returns:** Formatted string with current phase, progress, and next tasks.
 
 #### `getNextTasks(limit?: number): RoadmapTask[]`
+
 Gets the next tasks to work on (up to `limit`, default 5).
 
 **Parameters:**
+
 - `limit` (optional): Maximum number of tasks to return (default: 5)
 
 **Returns:** Array of pending tasks sorted by priority.
 
 #### `getCurrentPhase(): RoadmapPhase | null`
+
 Gets the current phase details.
 
 **Returns:** Current phase object or null if no phase found.
 
 #### `updateTaskStatus(taskId: string, status: TaskStatus, assignedAgent?: string): void`
+
 Updates task status and optionally assigns an agent.
 
 **Parameters:**
+
 - `taskId`: Task identifier
 - `status`: 'pending' | 'in_progress' | 'completed'
 - `assignedAgent` (optional): Agent identifier
@@ -252,6 +258,7 @@ Updates task status and optionally assigns an agent.
 **Side Effects:** Saves state to disk, may trigger phase completion check.
 
 #### `getRoadmapSummaryObject(): RoadmapSummary`
+
 Gets detailed roadmap summary as structured object.
 
 **Returns:** Object with currentPhase, nextTasks, progress, blockers.
@@ -261,11 +268,13 @@ Gets detailed roadmap summary as structured object.
 #### `RoadmapManager`
 
 **Constructor:**
+
 ```typescript
 new RoadmapManager(stateFilePath?: string)
 ```
 
 **Methods:**
+
 - `getCurrentPhase(): RoadmapPhase | null`
 - `getAllPhases(): RoadmapPhase[]`
 - `getNextTasks(limit?: number): RoadmapTask[]`
@@ -327,15 +336,19 @@ Total overhead for always-loaded context: **35 tokens**
 ## Integration with Other Skills
 
 ### Evidence-Based Validation
+
 Roadmap tasks are validated against documented phases in IMPLEMENTATION_ORDER.md.
 
 ### Multi-Agent Orchestration
+
 Orchestrator can query roadmap to assign tasks to worker agents based on current phase priorities.
 
 ### Self-Improvement Loop
+
 Task completion patterns and refinement loops are tracked for learning and optimization.
 
 ### Refinement Loop
+
 The `refinementLoops` counter tracks how many times a task has been refined, enabling quality metrics.
 
 ## Usage Patterns
@@ -375,9 +388,9 @@ const report = `
 
 ## Next Priorities
 
-${summary.nextTasks.map((task, idx) =>
-  `${idx + 1}. ${task.description} (${task.estimatedHours}h)`
-).join('\n')}
+${summary.nextTasks
+  .map((task, idx) => `${idx + 1}. ${task.description} (${task.estimatedHours}h)`)
+  .join('\n')}
 
 ${summary.blockers.length > 0 ? `## Blockers\n${summary.blockers.join('\n')}` : ''}
 `;
@@ -447,6 +460,7 @@ fs.unlinkSync('/tmp/test-roadmap-state.json');
 **Symptoms:** No roadmap context shown at session start
 
 **Solutions:**
+
 1. Check hook is enabled in `.claude/settings.json`
 2. Verify script has execute permissions: `chmod +x .claude/hooks/*.sh`
 3. Check Node.js is installed: `which node`
@@ -457,6 +471,7 @@ fs.unlinkSync('/tmp/test-roadmap-state.json');
 **Symptoms:** Task status changes don't persist
 
 **Solutions:**
+
 1. Check write permissions: `.claude/` directory must be writable
 2. Verify state file path: default is `.claude/roadmap-state.json`
 3. Check for file system errors in logs
@@ -467,6 +482,7 @@ fs.unlinkSync('/tmp/test-roadmap-state.json');
 **Symptoms:** Hook shows fallback summary instead of dynamic roadmap
 
 **Solutions:**
+
 1. Install TypeScript: `npm install -g typescript`
 2. Check tsconfig exists: `cat tsconfig.json`
 3. Compile manually: `npx tsc src/skills/roadmap-skill.ts --outDir dist --module commonjs`
@@ -505,6 +521,7 @@ The Roadmap Skill is designed for extensibility:
 ## Support
 
 For issues or questions:
+
 1. Check this documentation
 2. Review implementation in `roadmap-skill.ts`
 3. Test hooks manually

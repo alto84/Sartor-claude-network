@@ -14,6 +14,7 @@
 This roadmap consolidates evidence-based principles, multi-agent infrastructure, and refinement-first architecture. Every component is designed around iterative improvement through process supervision, self-auditing, and continuous learning.
 
 **Core Philosophy:**
+
 - Refinement loops are the architecture, not a feature
 - Quality gates before capability gates
 - Process supervision over outcome supervision
@@ -25,6 +26,7 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Critical Path:** Phase 0 → Phase 1 → Phase 2 → Phase 3 → Phase 3.5 → Phase 4 → Phase 5 → **Phase 6**
 
 **New in Phase 6 (Poetiq Integration):**
+
 - Multi-expert parallel execution with voting
 - Diversity-first solution selection
 - Soft scoring (0-100) vs binary pass/fail
@@ -41,6 +43,7 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Duration:** 1-2 days
 
 ### Deliverables Completed
+
 - [x] Claude Code Hooks (`pre-commit.sh`, `pre-push.sh`, `session-start.sh`)
 - [x] Test Infrastructure (`tests/unit`, `tests/integration`, `tests/e2e`)
 - [x] Quality Standards (`.claude/QUALITY_STANDARDS.md`)
@@ -57,6 +60,7 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Duration:** 3-5 days
 
 ### Deliverables Completed
+
 - [x] Evidence-Based Validation Skill (`.claude/skills/evidence-based-validation/skill.md`)
 - [x] Evidence-Based Engineering Skill (`.claude/skills/evidence-based-engineering/skill.md`)
 - [x] Skill Testing Framework (`tests/helpers/skill-tester.js`)
@@ -75,6 +79,7 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Duration:** 5-7 days
 
 ### Deliverables Completed
+
 - [x] Agent Communication System (`.claude/skills/agent-communication-system/skill.md`)
 - [x] Multi-Agent Orchestration (`.claude/skills/multi-agent-orchestration/skill.md`)
 - [x] Integration Test Suite (`tests/integration/skills-composition.test.js`)
@@ -93,24 +98,30 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Duration:** 5-7 days (parallel tracks)
 
 ### Track A: MCP Server Development Skill
+
 **Owner:** TBD
 **File:** `.claude/skills/mcp-server-dev/skill.md`
+
 - [x] Generate MCP server boilerplate
 - [x] Implement MCP protocol
 - [x] Create tool definitions
 - [x] 85%+ test coverage
 
 ### Track B: Safety Research Workflow Skill
+
 **Owner:** TBD
 **File:** `.claude/skills/safety-research/skill.md`
+
 - [x] Design safety test scenarios
 - [x] Execute safety experiments
 - [x] Generate safety reports
 - [x] 85%+ test coverage
 
 ### Track C: Distributed Systems Debugging Skill
+
 **Owner:** TBD
 **File:** `.claude/skills/distributed-debugging/skill.md`
+
 - [x] Correlate logs across agents
 - [x] Trace requests through system
 - [x] Generate debugging reports
@@ -129,7 +140,9 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Priority:** CRITICAL - Foundation for Phase 4-5
 
 ### Deliverable 1: Core Refinement Loop
+
 **File:** `src/refinement/core-loop.js`
+
 - [x] Execute with process supervision
 - [x] Self-audit results
 - [x] Evaluate against success criteria
@@ -140,14 +153,18 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Expected Gain:** 40-60% error reduction
 
 ### Deliverable 2: Process Supervision Engine
+
 **File:** `src/refinement/process-supervisor.js`
+
 - [x] Monitor each execution step
 - [x] Capture intermediate states
 - [x] Detect early failure signals
 - [x] Provide real-time feedback
 
 ### Deliverable 3: Self-Auditing Framework
+
 **File:** `src/refinement/self-audit.js`
+
 - [x] Correctness checks
 - [x] Efficiency validation (code actions preferred)
 - [x] Safety verification
@@ -157,7 +174,9 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Expected Detection Rate:** 85%+ pre-commit error detection
 
 ### Deliverable 4: Test-Time Adaptation
+
 **File:** `src/refinement/test-time-adapter.js`
+
 - [x] Retrieve similar past tasks
 - [x] Extract successful patterns
 - [x] Optimize iterations, timeout, strategy
@@ -166,7 +185,9 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Expected Gain:** 25% performance improvement
 
 ### Deliverable 5: Code-First Action Engine
+
 **File:** `src/refinement/code-actions.js`
+
 - [x] Prefer code actions over CLI (Grep, Read, Edit, Write, Glob, not grep/cat/sed)
 - [x] Direct file manipulation
 - [x] Batch operations
@@ -175,6 +196,7 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Expected Gain:** 30% step reduction vs. CLI baseline
 
 ### Deliverable 6: Retrofit All Skills with Self-Auditing
+
 - [x] Evidence-Based Validation (self-audit)
 - [x] Evidence-Based Engineering (self-audit)
 - [x] Agent Communication System (self-audit)
@@ -184,7 +206,9 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 - [x] Distributed Systems Debugging (self-audit)
 
 ### Deliverable 7: Process Trace Storage
+
 **File:** `src/refinement/process-tracer.js`
+
 - [x] Capture complete execution traces
 - [x] Store per-step state and feedback
 - [x] Enable learning from failures
@@ -193,6 +217,7 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Storage Tiers:** Hot (active), Warm (30 days), Cold (extracted patterns)
 
 **Exit Criteria:**
+
 - [x] Refinement loop executes and refines failing tasks
 - [x] Process supervision catches errors mid-execution
 - [x] Self-auditing detects 85%+ of errors before commit
@@ -214,18 +239,21 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Progress:** All tiers implemented
 
 ### Week 1: Hot Tier (Firebase Realtime)
+
 - [x] Store active refinement loop states
 - [x] <100ms latency for state operations
 - [x] Real-time synchronization
 - [x] Automatic TTL cleanup
 
 ### Week 2: Warm Tier (Firestore + Vector DB)
+
 - [x] Store complete process traces
 - [x] Semantic search over traces
 - [x] <500ms latency for queries
 - [x] Automatic archival from hot tier
 
 ### Week 3: Cold Tier (GitHub)
+
 - [x] Extract and version successful patterns
 - [x] Store as executable templates
 - [x] <2s latency for knowledge retrieval
@@ -245,11 +273,13 @@ This roadmap consolidates evidence-based principles, multi-agent infrastructure,
 **Next Priority:** Integration and self-improving feedback loop
 
 ### Week 1: Unified Integration
+
 - [x] Refinement-Powered Executive Claude (uses memory + refinement loops)
 - [x] Self-Improving Feedback Loop (identify → propose → validate → implement)
 - [x] Continuous Learning Pipeline (extract patterns → generalize → validate → store)
 
 ### Week 2: Production Readiness
+
 - [x] End-to-end refinement system tests
 - [x] Performance benchmarks verified
 - [x] Production documentation complete
@@ -275,7 +305,9 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 ### Week 1: Core Infrastructure
 
 #### Deliverable 1: Multi-Expert Execution Engine
+
 **File:** `src/multi-expert/execution-engine.ts`
+
 - [ ] Spawn N configurable experts in parallel
 - [ ] Distribute task to all experts simultaneously
 - [ ] Collect results with timeout enforcement
@@ -283,7 +315,9 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 - [ ] 85%+ test coverage
 
 #### Deliverable 2: Expert Configuration System
+
 **File:** `src/multi-expert/expert-config.ts`
+
 - [ ] Define expert parameters (temperature, strategy, constraints)
 - [ ] Support expert archetypes (Performance, Safety, Simplicity, Robustness)
 - [ ] Store successful configurations in cold memory
@@ -292,7 +326,9 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 ### Week 2: Voting and Diversity
 
 #### Deliverable 3: Voting and Consensus System
+
 **File:** `src/multi-expert/voting-system.ts`
+
 - [ ] Implement weighted voting
 - [ ] Support voting strategies: majority, ranked-choice, Borda count
 - [ ] Tie-breaking mechanisms
@@ -300,7 +336,9 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 - [ ] 85%+ test coverage
 
 #### Deliverable 4: Diversity Scoring Engine
+
 **File:** `src/multi-expert/diversity-scorer.ts`
+
 - [ ] Calculate semantic diversity between solutions
 - [ ] Penalize near-duplicate solutions
 - [ ] Reward orthogonal approaches
@@ -308,7 +346,9 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 - [ ] 85%+ test coverage
 
 #### Deliverable 5: Soft Scoring Framework
+
 **File:** `src/multi-expert/soft-scorer.ts`
+
 - [ ] Replace binary pass/fail with 0-100 scores
 - [ ] Multi-dimensional scoring (quality, safety, efficiency)
 - [ ] Confidence intervals for scores
@@ -317,7 +357,9 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 ### Week 3: Resource Management
 
 #### Deliverable 6: Sandboxed Execution Environment
+
 **File:** `src/multi-expert/sandbox.ts`
+
 - [ ] Isolate expert execution contexts
 - [ ] Resource limits per sandbox (CPU, memory, time)
 - [ ] Safe failure handling (expert crash isolation)
@@ -325,14 +367,18 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 - [ ] 85%+ test coverage
 
 #### Deliverable 7: Rate Limiter for Parallel LLM Calls
+
 **File:** `src/multi-expert/rate-limiter.ts`
+
 - [ ] Token bucket algorithm for API rate limiting
 - [ ] Priority-based request scheduling
 - [ ] Cost tracking across all experts
 - [ ] 85%+ test coverage
 
 #### Deliverable 8: Enhanced Memory Types
+
 **File:** `src/mcp/memory-server.ts` (extend)
+
 - [ ] Add REFINEMENT_TRACE memory type
 - [ ] Add EXPERT_CONSENSUS memory type
 - [ ] Add memory_create_refinement_trace tool
@@ -342,7 +388,9 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 ### Week 4: Integration and Validation
 
 #### Deliverable 9: Multi-Expert Orchestration Layer
+
 **File:** `src/multi-expert/orchestrator.ts`
+
 - [ ] Integrate with existing ExecutiveClaude
 - [ ] Dispatch tasks to multi-expert system
 - [ ] Hybrid mode (multi-expert for high-stakes, single for low-stakes)
@@ -350,6 +398,7 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 - [ ] 85%+ test coverage
 
 #### Deliverable 10: Integration Tests and Documentation
+
 - [ ] End-to-end multi-expert execution tests
 - [ ] Voting produces better results than single best expert (15%+ improvement)
 - [ ] Diversity scoring selects varied solutions
@@ -358,17 +407,20 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 ### Exit Criteria
 
 **Functional:**
+
 - [ ] 3+ experts execute in parallel without conflicts
 - [ ] Voting system produces consensus within 5 seconds
 - [ ] Diversity scoring identifies orthogonal approaches
 - [ ] Sandboxing prevents cascade failures
 
 **Performance:**
+
 - [ ] Multi-expert (N=3) completes in <1.5x time of single expert
 - [ ] Ensemble accuracy 15-25% better than single best expert
 - [ ] <20% computational overhead from orchestration
 
 **Quality:**
+
 - [ ] 85%+ test coverage across all components
 - [ ] All integration tests pass
 - [ ] Zero cross-expert state pollution
@@ -394,11 +446,13 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 ## Success Metrics
 
 ### Phase 1-5 Metrics (Achieved)
+
 **Quality:** 85%+ test coverage. 40-60% error reduction. 85%+ pre-commit detection.
 **Performance:** <20% refinement overhead. 30% code action efficiency. 25% adaptation gain.
 **Process:** 90%+ refinement success rate. <1 hour self-improvement cycle.
 
 ### Phase 6 Metrics (Target)
+
 **Multi-Expert Quality:** 15-25% accuracy improvement over single best expert
 **Diversity:** 3+ genuinely different approaches per task (>70% semantic distance)
 **Parallel Efficiency:** N experts in <1.5x time of 1 expert
@@ -410,23 +464,24 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 
 ## Risk Management
 
-| Phase | Risk | Mitigation |
-|-------|------|-----------|
-| 3.5 | Refinement adds latency | Benchmark <20% overhead. Max 3 iterations. |
-| 3.5 | Self-audit too strict | Evidence-based criteria. Override mechanism. |
-| 4 | Memory queries slow refinement | Aggressive caching. Async queries. Index optimization. |
-| 5 | Self-improvement causes regressions | Tests required. Validation. Automatic rollback. |
-| 6 | API Rate Limiting | Token bucket rate limiter. Test with 10 experts. |
-| 6 | Cost Explosion | Strict budget caps. Real-time monitoring. Auto-shutdown. |
-| 6 | Expert Consensus Failure | Fallback to highest-scoring expert. >50% agreement threshold. |
-| 6 | Sandbox Overhead | Lightweight process isolation. Benchmark overhead <10%. |
-| 6 | Diversity vs Quality Tradeoff | Weight diversity with quality. Never select diverse-but-terrible. |
+| Phase | Risk                                | Mitigation                                                        |
+| ----- | ----------------------------------- | ----------------------------------------------------------------- |
+| 3.5   | Refinement adds latency             | Benchmark <20% overhead. Max 3 iterations.                        |
+| 3.5   | Self-audit too strict               | Evidence-based criteria. Override mechanism.                      |
+| 4     | Memory queries slow refinement      | Aggressive caching. Async queries. Index optimization.            |
+| 5     | Self-improvement causes regressions | Tests required. Validation. Automatic rollback.                   |
+| 6     | API Rate Limiting                   | Token bucket rate limiter. Test with 10 experts.                  |
+| 6     | Cost Explosion                      | Strict budget caps. Real-time monitoring. Auto-shutdown.          |
+| 6     | Expert Consensus Failure            | Fallback to highest-scoring expert. >50% agreement threshold.     |
+| 6     | Sandbox Overhead                    | Lightweight process isolation. Benchmark overhead <10%.           |
+| 6     | Diversity vs Quality Tradeoff       | Weight diversity with quality. Never select diverse-but-terrible. |
 
 ---
 
 ## Adaptation Guidelines
 
 **Never Compromise:**
+
 1. Process supervision over outcome supervision
 2. Self-auditing in every skill
 3. Evidence-based improvements
@@ -434,6 +489,7 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 5. Test-time adaptation
 
 **Always Maintain:**
+
 1. Refinement loop as core architecture
 2. Process traces for learning
 3. Self-improvement safety gates
@@ -453,4 +509,3 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
   - Results: 31% → 54% accuracy through refinement harness
 
 **Next Priority:** Phase 6 Week 1 - Multi-Expert Execution Engine and Expert Configuration System.
-

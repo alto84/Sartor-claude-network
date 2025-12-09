@@ -63,12 +63,14 @@ The synchronization engine manages data flow between three tiers, ensuring optim
 #### Cold → Warm Promotion
 
 **Trigger Conditions:**
+
 - Memory accessed via GitHub search
 - Manual promotion request
 - Part of active project/topic
 - Referenced by recently accessed memory
 
 **Process:**
+
 ```javascript
 // File: services/sync/cold-to-warm-promotion.js
 
@@ -108,33 +110,30 @@ class ColdToWarmPromotion {
         source: 'cold_tier',
         sourceId: githubMemory.sha,
         promotedAt: new Date(),
-        promotionReason: reason
+        promotionReason: reason,
       },
       promotion: {
         eligibleForHot: false,
         hotScore: 0,
         lastPromotedAt: null,
-        promotionCount: (frontmatter.promotion?.promotionCount || 0)
+        promotionCount: frontmatter.promotion?.promotionCount || 0,
       },
       archival: {
         eligibleForCold: false,
         coldScore: 0,
         archivedInGitHub: true,
         githubPath: githubMemory.path,
-        githubSha: githubMemory.sha
-      }
+        githubSha: githubMemory.sha,
+      },
     };
 
     // 4. Store in Firestore
-    await this.firestore
-      .collection('memories')
-      .doc(memoryId)
-      .set(firestoreDoc);
+    await this.firestore.collection('memories').doc(memoryId).set(firestoreDoc);
 
     // 5. Generate and store embedding
     const embedding = await this.embeddings.generateEmbedding(content, {
       memoryId: memoryId,
-      userId: frontmatter.userId
+      userId: frontmatter.userId,
     });
 
     await this.embeddings.storeEmbedding(memoryId, embedding);
@@ -143,7 +142,7 @@ class ColdToWarmPromotion {
     await this.updateGitHubMetadata(githubMemory.path, {
       'promotion.lastPromotedTo': 'warm',
       'promotion.promotedAt': new Date().toISOString(),
-      'promotion.promotionCount': firestoreDoc.promotion.promotionCount + 1
+      'promotion.promotionCount': firestoreDoc.promotion.promotionCount + 1,
     });
 
     // 7. Track metric
@@ -156,7 +155,7 @@ class ColdToWarmPromotion {
     // Use GitHub API to search for file by memory ID
     const searchResults = await this.github.search.code({
       q: `${memoryId} in:file repo:sartor-memories`,
-      per_page: 1
+      per_page: 1,
     });
 
     if (searchResults.data.items.length === 0) {
@@ -169,13 +168,13 @@ class ColdToWarmPromotion {
     const content = await this.github.repos.getContent({
       owner: 'sartor',
       repo: 'memories',
-      path: file.path
+      path: file.path,
     });
 
     return {
       path: file.path,
       sha: content.data.sha,
-      content: Buffer.from(content.data.content, 'base64').toString('utf8')
+      content: Buffer.from(content.data.content, 'base64').toString('utf8'),
     };
   }
 
@@ -198,14 +197,12 @@ class ColdToWarmPromotion {
   }
 
   async trackPromotion(type, memoryId, reason) {
-    await this.firestore
-      .collection('sync_metrics')
-      .add({
-        type: type,
-        memoryId: memoryId,
-        reason: reason,
-        timestamp: new Date()
-      });
+    await this.firestore.collection('sync_metrics').add({
+      type: type,
+      memoryId: memoryId,
+      reason: reason,
+      timestamp: new Date(),
+    });
   }
 }
 
@@ -215,12 +212,14 @@ module.exports = ColdToWarmPromotion;
 #### Warm → Hot Promotion
 
 **Trigger Conditions:**
+
 - Access count > 10 in last 24 hours
 - Accessed in active session
 - Manually pinned by user
 - Part of current context/topic
 
 **Scoring Function:**
+
 ```javascript
 // File: services/sync/scoring.js
 
@@ -230,9 +229,9 @@ class PromotionScoring {
     const weights = {
       accessFrequency: 0.35,
       recency: 0.25,
-      sessionRelevance: 0.20,
+      sessionRelevance: 0.2,
       userPreference: 0.15,
-      contentSize: 0.05
+      contentSize: 0.05,
     };
 
     const now = Date.now();
@@ -246,10 +245,7 @@ class PromotionScoring {
     const recencyScore = 10 * Math.exp(-ageHours / 24);
 
     // Session relevance (0-10)
-    const sessionScore = this.calculateSessionRelevance(
-      memory,
-      sessionContext
-    );
+    const sessionScore = this.calculateSessionRelevance(memory, sessionContext);
 
     // User preference (0-10)
     const prefScore = memory.pinned ? 10 : 0;
@@ -273,18 +269,15 @@ class PromotionScoring {
     let score = 0;
 
     // Topic match
-    if (memory.tags.some(tag => sessionContext.currentTopic?.includes(tag))) {
+    if (memory.tags.some((tag) => sessionContext.currentTopic?.includes(tag))) {
       score += 5;
     }
 
     // Recent queries match
-    const queryTerms = sessionContext.recentQueries
-      .flatMap(q => q.toLowerCase().split(' '));
+    const queryTerms = sessionContext.recentQueries.flatMap((q) => q.toLowerCase().split(' '));
 
     const contentTerms = memory.content.toLowerCase().split(' ');
-    const matchCount = queryTerms.filter(term =>
-      contentTerms.includes(term)
-    ).length;
+    const matchCount = queryTerms.filter((term) => contentTerms.includes(term)).length;
 
     score += Math.min(5, matchCount / 2);
 
@@ -297,7 +290,7 @@ class PromotionScoring {
       age: 0.4,
       accessFrequency: 0.3,
       completeness: 0.2,
-      archivalFlag: 0.1
+      archivalFlag: 0.1,
     };
 
     const now = Date.now();
@@ -570,7 +563,7 @@ class WarmToColdDemotion {
       'archival.githubPath': filePath,
       'archival.githubSha': commit.sha,
       'archival.archivedAt': new Date(),
-      'archival.archivalReason': reason
+      'archival.archivalReason': reason,
     });
 
     // 6. Optionally remove from Firestore (keep metadata)
@@ -600,8 +593,8 @@ class WarmToColdDemotion {
       archival: {
         archivedAt: new Date().toISOString(),
         archivedBy: 'sync-service',
-        verified: false
-      }
+        verified: false,
+      },
     };
 
     return `---\n${yaml.dump(frontmatter)}---\n\n${memory.content}`;
@@ -628,7 +621,7 @@ class WarmToColdDemotion {
         owner,
         repo,
         path: filePath,
-        ref: branch
+        ref: branch,
       });
       existingSha = existing.data.sha;
     } catch (error) {
@@ -643,7 +636,7 @@ class WarmToColdDemotion {
       message: `chore: archive memory ${memory.id}`,
       content: Buffer.from(content).toString('base64'),
       branch: branch,
-      sha: existingSha
+      sha: existingSha,
     });
 
     return result.data.content;
@@ -691,9 +684,8 @@ class ConflictResolver {
     const losers = sorted.slice(1);
 
     // Check if this is a true conflict (versions diverged)
-    const isDivergent = losers.some(loser =>
-      loser.version === winner.version &&
-      loser.contentHash !== winner.contentHash
+    const isDivergent = losers.some(
+      (loser) => loser.version === winner.version && loser.contentHash !== winner.contentHash
     );
 
     if (isDivergent) {
@@ -702,7 +694,7 @@ class ConflictResolver {
       return {
         resolved: false,
         requiresManualReview: true,
-        versions
+        versions,
       };
     }
 
@@ -742,13 +734,13 @@ class ConflictResolver {
         versions,
         queuedAt: new Date(),
         status: 'pending',
-        priority: this.calculatePriority(versions)
+        priority: this.calculatePriority(versions),
       });
   }
 
   calculatePriority(versions) {
     // Higher access count = higher priority
-    const maxAccess = Math.max(...versions.map(v => v.accessCount || 0));
+    const maxAccess = Math.max(...versions.map((v) => v.accessCount || 0));
     return Math.min(10, Math.floor(maxAccess / 10));
   }
 
@@ -834,7 +826,9 @@ class SyncScheduler {
       await this.warmDemotion.demote(candidate.id, 'low_access_old_age');
     }
 
-    console.log(`Promoted ${hotCandidates.length} to hot, demoted ${coldCandidates.length} to cold`);
+    console.log(
+      `Promoted ${hotCandidates.length} to hot, demoted ${coldCandidates.length} to cold`
+    );
   }
 
   async coldConsolidation() {

@@ -200,7 +200,7 @@ export class RefinementLoop<T> {
       costBudget: config.costBudget ?? Infinity,
       processSupervision: config.processSupervision,
       timeout: config.timeout ?? Infinity,
-      minImprovementDelta: config.minImprovementDelta ?? 0.01
+      minImprovementDelta: config.minImprovementDelta ?? 0.01,
     };
   }
 
@@ -221,17 +221,14 @@ export class RefinementLoop<T> {
 
     try {
       // Step 1: Generate initial candidate
-      const initialCandidate = await this.executeWithTimeout(
-        generate(),
-        'generate-initial'
-      );
+      const initialCandidate = await this.executeWithTimeout(generate(), 'generate-initial');
 
       this.recordStep({
         action: 'generate-initial',
         result: initialCandidate,
         score: 0,
         reasoning: 'Generated initial candidate',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
 
       // Step 2: Evaluate initial candidate
@@ -246,10 +243,10 @@ export class RefinementLoop<T> {
         candidate: initialCandidate,
         feedback: initialEval.feedback,
         confidence: initialEval.score,
-        cost: (initialEval.cost ?? 0),
+        cost: initialEval.cost ?? 0,
         processTrace: [],
         lastUpdated: new Date().toISOString(),
-        confidenceHistory: [initialEval.score]
+        confidenceHistory: [initialEval.score],
       };
 
       this.recordStep({
@@ -258,7 +255,7 @@ export class RefinementLoop<T> {
         score: initialEval.score,
         reasoning: initialEval.reasoning ?? 'Initial evaluation',
         timestamp: new Date().toISOString(),
-        cost: initialEval.cost
+        cost: initialEval.cost,
       });
 
       // Step 3: Refinement loop
@@ -267,10 +264,13 @@ export class RefinementLoop<T> {
 
         // Refine based on feedback
         const refinedCandidate = await this.executeWithTimeout(
-          refine(this.state.candidate, this.state.feedback[0] ?? {
-            issue: 'General improvement needed',
-            severity: 'minor'
-          }),
+          refine(
+            this.state.candidate,
+            this.state.feedback[0] ?? {
+              issue: 'General improvement needed',
+              severity: 'minor',
+            }
+          ),
           `refine-iteration-${this.state.iteration}`
         );
 
@@ -279,7 +279,7 @@ export class RefinementLoop<T> {
           result: refinedCandidate,
           score: 0,
           reasoning: `Refined candidate based on ${this.state.feedback.length} feedback items`,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
 
         // Evaluate refined candidate
@@ -294,7 +294,7 @@ export class RefinementLoop<T> {
           score: refinedEval.score,
           reasoning: refinedEval.reasoning ?? 'Evaluation of refined candidate',
           timestamp: new Date().toISOString(),
-          cost: refinedEval.cost
+          cost: refinedEval.cost,
         });
 
         // Update state
@@ -302,7 +302,7 @@ export class RefinementLoop<T> {
         this.state.candidate = refinedCandidate;
         this.state.feedback = refinedEval.feedback;
         this.state.confidence = refinedEval.score;
-        this.state.cost += (refinedEval.cost ?? 0);
+        this.state.cost += refinedEval.cost ?? 0;
         this.state.lastUpdated = new Date().toISOString();
         this.state.confidenceHistory.push(refinedEval.score);
 
@@ -323,7 +323,6 @@ export class RefinementLoop<T> {
       }
 
       return this.buildResult(stopReason);
-
     } catch (error) {
       if (error instanceof TimeoutError) {
         return this.buildResult('timeout');
@@ -430,10 +429,7 @@ export class RefinementLoop<T> {
   /**
    * Execute a promise with timeout
    */
-  private async executeWithTimeout<R>(
-    promise: Promise<R>,
-    stepName: string
-  ): Promise<R> {
+  private async executeWithTimeout<R>(promise: Promise<R>, stepName: string): Promise<R> {
     const remainingTime = this.config.timeout - (Date.now() - this.startTime);
 
     if (remainingTime <= 0) {
@@ -443,8 +439,11 @@ export class RefinementLoop<T> {
     return Promise.race([
       promise,
       new Promise<R>((_, reject) =>
-        setTimeout(() => reject(new TimeoutError(`Timeout during step: ${stepName}`)), remainingTime)
-      )
+        setTimeout(
+          () => reject(new TimeoutError(`Timeout during step: ${stepName}`)),
+          remainingTime
+        )
+      ),
     ]);
   }
 
@@ -468,7 +467,7 @@ export class RefinementLoop<T> {
       processTrace: this.config.processSupervision ? this.state.processTrace : undefined,
       remainingFeedback: this.state.feedback,
       confidenceHistory: this.state.confidenceHistory,
-      durationMs
+      durationMs,
     };
   }
 }
@@ -498,7 +497,7 @@ export async function withRefinement<T>(
     maxIterations: 3,
     confidenceThreshold: 0.8,
     processSupervision: false,
-    ...config
+    ...config,
   };
 
   const loop = new RefinementLoop<T>(defaultConfig);
@@ -508,11 +507,12 @@ export async function withRefinement<T>(
     const score = await evaluator(candidate);
     return {
       score,
-      feedback: score < defaultConfig.confidenceThreshold
-        ? [{ issue: 'Quality below threshold', severity: 'major' }]
-        : [],
+      feedback:
+        score < defaultConfig.confidenceThreshold
+          ? [{ issue: 'Quality below threshold', severity: 'major' }]
+          : [],
       acceptable: score >= defaultConfig.confidenceThreshold,
-      reasoning: `Score: ${score.toFixed(2)}`
+      reasoning: `Score: ${score.toFixed(2)}`,
     };
   };
 
@@ -558,7 +558,7 @@ export function createEvaluation(
     feedback,
     acceptable: score >= 0.7, // Default threshold
     reasoning,
-    cost
+    cost,
   };
 }
 
@@ -588,7 +588,7 @@ export function formatRefinementResult<T>(result: RefinementResult<T>): string {
     `Stop Reason: ${result.stopReason}`,
     `Duration: ${result.durationMs}ms`,
     `Total Cost: ${result.totalCost}`,
-    ''
+    '',
   ];
 
   if (result.confidenceHistory.length > 0) {
@@ -601,7 +601,7 @@ export function formatRefinementResult<T>(result: RefinementResult<T>): string {
 
   if (result.remainingFeedback.length > 0) {
     lines.push('Remaining Issues:');
-    result.remainingFeedback.forEach(fb => {
+    result.remainingFeedback.forEach((fb) => {
       lines.push(`  [${fb.severity.toUpperCase()}] ${fb.issue}`);
       if (fb.suggestion) {
         lines.push(`    → ${fb.suggestion}`);
@@ -612,7 +612,7 @@ export function formatRefinementResult<T>(result: RefinementResult<T>): string {
 
   if (result.processTrace && result.processTrace.length > 0) {
     lines.push('Process Trace:');
-    result.processTrace.forEach(step => {
+    result.processTrace.forEach((step) => {
       lines.push(`  ${step.action}: ${step.reasoning} (score: ${step.score})`);
     });
   }
@@ -629,5 +629,5 @@ export default {
   createRefinementLoop,
   createFeedback,
   createEvaluation,
-  formatRefinementResult
+  formatRefinementResult,
 };

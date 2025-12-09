@@ -189,9 +189,7 @@ describe('SoftScorer', () => {
       const highScore = scorer.score(highConf);
       const lowScore = scorer.score(lowConf);
 
-      expect(highScore.breakdown.bonuses.length).toBeGreaterThan(
-        lowScore.breakdown.bonuses.length
-      );
+      expect(highScore.breakdown.bonuses.length).toBeGreaterThan(lowScore.breakdown.bonuses.length);
     });
 
     test('applies low confidence penalty', () => {
@@ -200,9 +198,7 @@ describe('SoftScorer', () => {
 
       const score = scorer.score(result);
 
-      const lowConfPenalty = score.breakdown.penalties.find(
-        (p) => p.name === 'low-confidence'
-      );
+      const lowConfPenalty = score.breakdown.penalties.find((p) => p.name === 'low-confidence');
       expect(lowConfPenalty).toBeDefined();
     });
 
@@ -212,9 +208,7 @@ describe('SoftScorer', () => {
 
       const score = scorer.score(result);
 
-      const earlyBonus = score.breakdown.bonuses.find(
-        (p) => p.name === 'early-completion'
-      );
+      const earlyBonus = score.breakdown.bonuses.find((p) => p.name === 'early-completion');
       expect(earlyBonus).toBeDefined();
     });
   });
@@ -312,10 +306,7 @@ describe('SoftScorer', () => {
     });
 
     test('rankResults works', () => {
-      const results = [
-        createMockResult(60, 0.7, 2, 10000),
-        createMockResult(90, 0.9, 1, 5000),
-      ];
+      const results = [createMockResult(60, 0.7, 2, 10000), createMockResult(90, 0.9, 1, 5000)];
 
       const ranked = rankResults(results);
 

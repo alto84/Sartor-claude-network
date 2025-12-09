@@ -34,10 +34,7 @@ async function exampleParallelFanOut() {
     'components',
   ]);
   const backendWorker = createMockWorker('backend-agent', 'backend', ['api', 'database']);
-  const securityWorker = createMockWorker('security-agent', 'security', [
-    'auth',
-    'encryption',
-  ]);
+  const securityWorker = createMockWorker('security-agent', 'security', ['auth', 'encryption']);
 
   orchestrator.registerWorker(frontendWorker);
   orchestrator.registerWorker(backendWorker);
@@ -120,7 +117,10 @@ async function exampleSerialChain() {
   const result = await orchestrator.executeWithPattern(tasks, DelegationPattern.SERIAL_CHAIN);
 
   console.log('Synthesis:', result.synthesis);
-  console.log('Results:', result.results.map(r => ({ taskId: r.taskId, success: r.success })));
+  console.log(
+    'Results:',
+    result.results.map((r) => ({ taskId: r.taskId, success: r.success }))
+  );
 
   return result;
 }
@@ -145,24 +145,14 @@ async function exampleCompetitiveExploration() {
 
   // Create tasks exploring different approaches to same problem
   const tasks: Task[] = [
-    createTask(
-      'approach-sql',
-      'database',
-      'Design data model using relational SQL database',
-      {
-        priority: 'normal',
-        context: 'E-commerce platform with users, products, orders',
-      }
-    ),
-    createTask(
-      'approach-nosql',
-      'database',
-      'Design data model using NoSQL document database',
-      {
-        priority: 'normal',
-        context: 'E-commerce platform with users, products, orders',
-      }
-    ),
+    createTask('approach-sql', 'database', 'Design data model using relational SQL database', {
+      priority: 'normal',
+      context: 'E-commerce platform with users, products, orders',
+    }),
+    createTask('approach-nosql', 'database', 'Design data model using NoSQL document database', {
+      priority: 'normal',
+      context: 'E-commerce platform with users, products, orders',
+    }),
     createTask('approach-graph', 'database', 'Design data model using graph database', {
       priority: 'normal',
       context: 'E-commerce platform with users, products, orders',
@@ -178,7 +168,7 @@ async function exampleCompetitiveExploration() {
   console.log('Synthesis:', result.synthesis);
   console.log(
     'Compare approaches:',
-    result.results.map(r => ({ worker: r.workerId, confidence: r.confidence }))
+    result.results.map((r) => ({ worker: r.workerId, confidence: r.confidence }))
   );
 
   return result;
@@ -200,7 +190,7 @@ function exampleWorkerAssignment() {
     createMockWorker('devops-specialist', 'devops', ['docker', 'kubernetes', 'ci-cd']),
   ];
 
-  workers.forEach(w => orchestrator.registerWorker(w));
+  workers.forEach((w) => orchestrator.registerWorker(w));
 
   // Create a task and find best worker
   const task = createTask(
@@ -295,10 +285,7 @@ async function exampleConflictPreservation() {
     createTask('eval-2', 'analysis', 'Evaluate system readiness for production deployment'),
   ];
 
-  const result = await orchestrator.executeWithPattern(
-    tasks,
-    DelegationPattern.PARALLEL_FAN_OUT
-  );
+  const result = await orchestrator.executeWithPattern(tasks, DelegationPattern.PARALLEL_FAN_OUT);
 
   console.log('\n** Disagreement Preserved (Not Forced to Consensus) **');
   console.log('Synthesis:', result.synthesis);

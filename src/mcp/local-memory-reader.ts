@@ -107,12 +107,15 @@ export class LocalMemoryReader {
       const data: MemoriesFile = JSON.parse(fileContent);
 
       if (!data.memories || typeof data.memories !== 'object') {
-        this.logError('Invalid memories file structure', new Error('Missing or invalid memories object'));
+        this.logError(
+          'Invalid memories file structure',
+          new Error('Missing or invalid memories object')
+        );
         return [];
       }
 
       // Convert stored memories to Memory objects
-      return Object.values(data.memories).map(mem => this.normalizeMemory(mem));
+      return Object.values(data.memories).map((mem) => this.normalizeMemory(mem));
     } catch (error) {
       this.logError('Error loading memories', error);
       return [];
@@ -129,19 +132,17 @@ export class LocalMemoryReader {
 
     // Filter by type
     if (options.type) {
-      memories = memories.filter(m => m.type === options.type);
+      memories = memories.filter((m) => m.type === options.type);
     }
 
     // Filter by minimum importance
     if (options.minImportance !== undefined) {
-      memories = memories.filter(m => m.importance_score >= options.minImportance!);
+      memories = memories.filter((m) => m.importance_score >= options.minImportance!);
     }
 
     // Filter by tags
     if (options.tags && options.tags.length > 0) {
-      memories = memories.filter(m =>
-        options.tags!.some(tag => m.tags.includes(tag))
-      );
+      memories = memories.filter((m) => options.tags!.some((tag) => m.tags.includes(tag)));
     }
 
     // Sort by importance descending
@@ -188,13 +189,13 @@ export class LocalMemoryReader {
     const memories = this.loadAll();
     const byType: Record<string, number> = {};
 
-    memories.forEach(mem => {
+    memories.forEach((mem) => {
       byType[mem.type] = (byType[mem.type] || 0) + 1;
     });
 
     return {
       total: memories.length,
-      byType
+      byType,
     };
   }
 

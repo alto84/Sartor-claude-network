@@ -86,10 +86,7 @@ async function debugRaceCondition() {
 
   // Create a debug session
   const session: DebugSession = debuggerInstance.createSession(
-    [
-      'Messages sometimes delivered out of order',
-      'Only occurs under high load (CPU > 90%)',
-    ],
+    ['Messages sometimes delivered out of order', 'Only occurs under high load (CPU > 90%)'],
     [logDataSource, metricsDataSource]
   );
 
@@ -112,7 +109,7 @@ async function debugRaceCondition() {
   const ranked = debuggerInstance.rankHypotheses(hypotheses);
 
   console.log('\nRanked hypotheses:');
-  ranked.ranking.forEach(r => {
+  ranked.ranking.forEach((r) => {
     console.log(`  Rank ${r.rank}: ${r.hypothesis.description}`);
     console.log(`    Score: ${r.score.toFixed(3)}`);
     console.log(`    Reasoning: ${r.reasoning}`);
@@ -195,22 +192,18 @@ async function performSystematicIsolation() {
   };
 
   // Perform isolation
-  const isolationSteps = await debuggerInstance.performIsolation(
-    session,
-    components,
-    checkSymptom
-  );
+  const isolationSteps = await debuggerInstance.performIsolation(session, components, checkSymptom);
 
   console.log('\nIsolation complete!');
   console.log(`Performed ${isolationSteps.length} isolation steps`);
 
   // Find minimal reproduction
   const necessaryComponents = isolationSteps
-    .filter(step => !step.symptomPresent)
-    .map(step => step.removed[0]);
+    .filter((step) => !step.symptomPresent)
+    .map((step) => step.removed[0]);
 
   console.log(`\nNecessary components for symptom:`);
-  console.log(components.filter(c => !necessaryComponents.includes(c)).join(', '));
+  console.log(components.filter((c) => !necessaryComponents.includes(c)).join(', '));
 }
 
 // Example 3: Creating failure injection tests

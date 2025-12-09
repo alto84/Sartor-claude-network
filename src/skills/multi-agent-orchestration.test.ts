@@ -98,7 +98,7 @@ describe('Multi-Agent Orchestration', () => {
         createMockWorker('devops-worker', 'devops', ['docker', 'kubernetes']),
       ];
 
-      workers.forEach(w => orchestrator.registerWorker(w));
+      workers.forEach((w) => orchestrator.registerWorker(w));
 
       const task = createTask('task-1', 'frontend', 'Optimize React component rendering');
 
@@ -184,7 +184,7 @@ describe('Multi-Agent Orchestration', () => {
         createMockWorker('worker-3', 'database', ['sql']),
       ];
 
-      workers.forEach(w => orchestrator.registerWorker(w));
+      workers.forEach((w) => orchestrator.registerWorker(w));
 
       const tasks = [
         createTask('task-1', 'frontend', 'Analyze React components'),
@@ -224,7 +224,7 @@ describe('Multi-Agent Orchestration', () => {
       const result = await orchestrator.executeWithPattern(tasks, DelegationPattern.SERIAL_CHAIN);
 
       expect(result.results).toHaveLength(3);
-      expect(result.results.every(r => r.success)).toBe(true);
+      expect(result.results.every((r) => r.success)).toBe(true);
     });
 
     it('should execute tasks with Competitive Exploration pattern', async () => {
@@ -236,7 +236,7 @@ describe('Multi-Agent Orchestration', () => {
         createMockWorker('approach-c', 'architecture', ['graph']),
       ];
 
-      workers.forEach(w => orchestrator.registerWorker(w));
+      workers.forEach((w) => orchestrator.registerWorker(w));
 
       const tasks = [
         createTask('explore-1', 'architecture', 'Design data model using SQL'),
@@ -337,7 +337,7 @@ describe('Multi-Agent Orchestration', () => {
       const synthesis = orchestrator.synthesizeResults(results);
 
       expect(synthesis.insights.length).toBeGreaterThan(0);
-      expect(synthesis.insights.some(i => i.includes('Performance'))).toBe(true);
+      expect(synthesis.insights.some((i) => i.includes('Performance'))).toBe(true);
     });
   });
 

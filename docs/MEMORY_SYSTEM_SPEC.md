@@ -1,14 +1,17 @@
 # Memory Importance Scoring and Decay System Specification
 
 ## Overview
+
 This document specifies a biologically-inspired memory management system for AI agents, implementing importance scoring, decay functions, consolidation, spaced repetition, and forgetting strategies.
 
 ## 1. Importance Score Calculation
 
 ### 1.1 Recency Factor
+
 Uses exponential decay to prioritize recent memories.
 
 **Formula:**
+
 ```
 recency_score = e^(-λ * t)
 where:
@@ -19,13 +22,16 @@ where:
 **Rationale:** Recent memories are more likely to be relevant. Exponential decay models natural forgetting curves (Ebbinghaus).
 
 **Parameters:**
+
 - `lambda`: 0.05 (half-life ~14 days)
 - Range: [0, 1]
 
 ### 1.2 Frequency Factor
+
 Uses logarithmic scaling to value frequent access without over-weighting.
 
 **Formula:**
+
 ```
 frequency_score = log(1 + access_count) / log(1 + max_expected_accesses)
 where:
@@ -36,24 +42,29 @@ where:
 **Rationale:** Logarithmic scaling prevents memories accessed thousands of times from dominating, while still rewarding frequency.
 
 **Parameters:**
+
 - `max_expected_accesses`: 100
 - Range: [0, 1]
 
 ### 1.3 Emotional/Semantic Salience
+
 LLM-scored importance based on content analysis.
 
 **Scoring Criteria:**
+
 - Emotional intensity (0-10)
 - Novelty/uniqueness (0-10)
 - Actionable insights (0-10)
 - Personal significance (0-10)
 
 **Formula:**
+
 ```
 salience_score = (emotional + novelty + actionable + personal) / 40
 ```
 
 **LLM Prompt Template:**
+
 ```
 Analyze this memory for importance on a scale of 0-10 for each criterion:
 1. Emotional Intensity: How emotionally charged is this content?
@@ -67,13 +78,16 @@ Respond with JSON: {"emotional": X, "novelty": Y, "actionable": Z, "personal": W
 ```
 
 **Parameters:**
+
 - Range: [0, 1]
 - Cache results to avoid repeated LLM calls
 
 ### 1.4 Contextual Relevance
+
 Measures similarity to current context using embedding cosine similarity.
 
 **Formula:**
+
 ```
 relevance_score = cosine_similarity(memory_embedding, context_embedding)
 where:
@@ -81,17 +95,20 @@ where:
 ```
 
 **Implementation:**
+
 - Use sentence/paragraph embeddings (e.g., OpenAI embeddings, all-MiniLM-L6-v2)
 - Compare memory embedding to current conversation context
 - Dynamic score that changes with context
 
 **Parameters:**
+
 - Range: [-1, 1], normalized to [0, 1]
 - Context window: Last 5 messages or 2048 tokens
 
 ### 1.5 Combined Weighted Formula
 
 **Master Formula:**
+
 ```
 importance_score = (w1 * recency) +
                    (w2 * frequency) +
@@ -108,6 +125,7 @@ where default weights:
 ```
 
 **Adaptive Weighting:**
+
 - Increase `w1` for time-sensitive applications
 - Increase `w3` for content-heavy applications
 - Increase `w4` for context-aware assistants
@@ -115,9 +133,11 @@ where default weights:
 ## 2. Memory Decay Function
 
 ### 2.1 Base Decay Rate
+
 All memories decay over time unless reinforced.
 
 **Formula:**
+
 ```
 decay_rate = base_decay * (1 - importance_score)^2
 
@@ -131,12 +151,14 @@ where:
 ### 2.2 Decay Modifiers
 
 **Importance-Based Modifier:**
+
 ```
 importance_modifier = 1 - (importance_score * 0.9)
 Final decay rate = base_decay * importance_modifier
 ```
 
 **Access Pattern Modifier:**
+
 ```
 If accessed in last 24h: decay_rate *= 0.5
 If accessed in last 7d:  decay_rate *= 0.7
@@ -144,6 +166,7 @@ If never accessed:       decay_rate *= 1.5
 ```
 
 **Memory Type Modifier:**
+
 ```
 Type                Modifier
 --------------------------------
@@ -159,6 +182,7 @@ System/Meta         0.3  (minimal decay)
 When a memory is accessed, it receives reinforcement.
 
 **Formula:**
+
 ```
 new_strength = min(1.0, current_strength + reinforcement_boost)
 
@@ -169,6 +193,7 @@ where:
 **Rationale:** Stronger memories receive less boost (diminishing returns).
 
 **Side Effects:**
+
 - Reset recency factor (t = 0)
 - Increment access count (affects frequency)
 - Update last_accessed timestamp
@@ -176,17 +201,20 @@ where:
 ### 2.4 Threshold for Forgetting
 
 **Hard Threshold:**
+
 ```
 If strength < 0.05: Mark for deletion
 ```
 
 **Soft Threshold:**
+
 ```
 If strength < 0.15: Move to archive (compressed)
 If strength < 0.30: Reduce embedding dimensions (compression)
 ```
 
 **Grace Period:**
+
 - Memories < 7 days old: Never auto-delete
 - Memories with importance > 0.7: Never auto-delete
 - System-tagged memories: Never auto-delete
@@ -196,6 +224,7 @@ If strength < 0.30: Reduce embedding dimensions (compression)
 ### 3.1 Trigger Conditions
 
 Run consolidation when:
+
 1. Memory count > threshold (e.g., 10,000 memories)
 2. Nightly/scheduled batch (e.g., 2 AM daily)
 3. Manual trigger by user/system
@@ -204,6 +233,7 @@ Run consolidation when:
 ### 3.2 Identifying Related Memories
 
 **Clustering Approach:**
+
 ```
 1. Compute embeddings for all memories (if not cached)
 2. Use hierarchical clustering or HDBSCAN
@@ -212,6 +242,7 @@ Run consolidation when:
 ```
 
 **Criteria for Related Memories:**
+
 - Semantic similarity > 0.7
 - Temporal proximity < 1 hour
 - Same conversation thread
@@ -220,6 +251,7 @@ Run consolidation when:
 ### 3.3 Merge Strategy
 
 **Decision Tree:**
+
 ```
 If cluster_size == 2-3:
   → Link memories (preserve both, add references)
@@ -236,6 +268,7 @@ If temporal sequence detected:
 ```
 
 **Summarization Prompt:**
+
 ```
 Consolidate these related memories into a concise summary:
 
@@ -262,6 +295,7 @@ Output format:
 ### 3.4 Compression Ratio Targets
 
 **Goals:**
+
 ```
 Light consolidation:  10-20% reduction
 Medium consolidation: 30-50% reduction
@@ -269,6 +303,7 @@ Aggressive:           60-80% reduction
 ```
 
 **Preservation Rules:**
+
 - Always keep memories with importance > 0.8
 - Preserve at least 1 memory per day for episodic continuity
 - Keep full content for last 7 days
@@ -281,6 +316,7 @@ Aggressive:           60-80% reduction
 Based on SuperMemo SM-2 algorithm, adapted for AI:
 
 **Formula:**
+
 ```
 next_review = current_time + interval
 
@@ -294,6 +330,7 @@ easiness_factor = 1.3 + (importance_score * 1.7)
 ```
 
 **Interval Progression Example:**
+
 ```
 Importance 0.5 (EF = 2.15):
   Review 1: 1 day
@@ -313,6 +350,7 @@ Importance 0.9 (EF = 2.83):
 ### 4.2 Surfacing Important Memories
 
 **Daily Review Queue:**
+
 ```
 1. Select memories due for review (next_review <= now)
 2. Sort by: (importance_score * 0.6) + (days_overdue * 0.4)
@@ -321,6 +359,7 @@ Importance 0.9 (EF = 2.83):
 ```
 
 **Context-Triggered Recall:**
+
 ```
 On new user message:
   1. Compute message embedding
@@ -333,6 +372,7 @@ On new user message:
 ### 4.3 Active Recall Testing Patterns
 
 **For AI Systems:**
+
 ```
 1. Connection Testing:
    - Given memory A, can the system recall related memory B?
@@ -348,6 +388,7 @@ On new user message:
 ```
 
 **Implementation:**
+
 ```
 Periodic self-tests:
   - Random sampling of memories
@@ -362,6 +403,7 @@ Periodic self-tests:
 ### 5.1 Deletion Tiers
 
 **Tier 1: Soft Delete (Strength < 0.30)**
+
 - Mark as `archived: true`
 - Reduce embedding dimensions (768 → 128 via PCA)
 - Remove from active search index
@@ -369,6 +411,7 @@ Periodic self-tests:
 - Recoverable if re-accessed
 
 **Tier 2: Archive (Strength < 0.15)**
+
 - Compress to minimal representation
 - Store only: summary, timestamp, importance, key tags
 - Remove full content and embeddings
@@ -376,6 +419,7 @@ Periodic self-tests:
 - Recoverable but slow
 
 **Tier 3: Permanent Delete (Strength < 0.05)**
+
 - Complete removal from database
 - Only if: age > 90 days AND importance < 0.2 AND access_count < 2
 - Log deletion for audit trail
@@ -384,6 +428,7 @@ Periodic self-tests:
 ### 5.2 Never Forget Categories
 
 **Permanent Retention:**
+
 ```
 1. System Memories:
    - User preferences
@@ -407,6 +452,7 @@ Periodic self-tests:
 ```
 
 **Tags for Permanent Retention:**
+
 ```typescript
 const NEVER_FORGET_TAGS = [
   'user_preference',
@@ -419,13 +465,14 @@ const NEVER_FORGET_TAGS = [
   'high_importance',
   'legal',
   'privacy',
-  'procedural_knowledge'
+  'procedural_knowledge',
 ];
 ```
 
 ### 5.3 Privacy-Driven Expiration
 
 **Auto-Expiration Rules:**
+
 ```
 1. Sensitive Information:
    - PII (Personally Identifiable Information): 30-day max
@@ -444,6 +491,7 @@ const NEVER_FORGET_TAGS = [
 ```
 
 **Privacy Scoring:**
+
 ```
 privacy_risk = (pii_score * 0.4) +
                (sensitivity_score * 0.4) +
@@ -453,6 +501,7 @@ If privacy_risk > 0.7: Force expiration regardless of importance
 ```
 
 **Compliance Integration:**
+
 ```
 GDPR Right to Erasure:
   - User requests deletion
@@ -469,17 +518,20 @@ CCPA Data Retention:
 ## Performance Targets
 
 **Latency:**
+
 - Importance calculation: < 10ms per memory
 - Retrieval (top-K): < 50ms
 - Consolidation (1000 memories): < 5 seconds
 - Decay update (bulk): < 100ms per 1000 memories
 
 **Storage:**
+
 - Active memories: Full embeddings (768-dim)
 - Archived memories: Compressed embeddings (128-dim)
 - Cold storage: Metadata only (~1KB per memory)
 
 **Accuracy:**
+
 - Recall of important memories: > 95%
 - False positive rate: < 5%
 - Consolidation quality: Human-rated > 4/5
@@ -491,37 +543,37 @@ const DEFAULT_CONFIG = {
   importance: {
     weights: {
       recency: 0.25,
-      frequency: 0.20,
+      frequency: 0.2,
       salience: 0.35,
-      relevance: 0.20
+      relevance: 0.2,
     },
     recency_lambda: 0.05,
-    max_expected_accesses: 100
+    max_expected_accesses: 100,
   },
   decay: {
     base_rate: 0.1,
     reinforcement_boost: 0.15,
     thresholds: {
-      soft_delete: 0.30,
+      soft_delete: 0.3,
       archive: 0.15,
-      permanent_delete: 0.05
-    }
+      permanent_delete: 0.05,
+    },
   },
   consolidation: {
     trigger_count: 10000,
     similarity_threshold: 0.7,
-    compression_target: 0.5
+    compression_target: 0.5,
   },
   spaced_repetition: {
     initial_interval: 1,
     second_interval: 6,
     min_easiness: 1.3,
-    max_easiness: 3.0
+    max_easiness: 3.0,
   },
   privacy: {
     pii_max_days: 30,
     financial_max_days: 90,
-    casual_max_days: 180
-  }
+    casual_max_days: 180,
+  },
 };
 ```

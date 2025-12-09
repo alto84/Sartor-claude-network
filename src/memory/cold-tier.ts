@@ -32,11 +32,12 @@ export class GitHubColdTier implements ColdTier {
       const response = await this.client.repos.getContent({
         owner: this.owner,
         repo: this.repo,
-        path: fullPath
+        path: fullPath,
       });
 
       if (Array.isArray(response.data)) throw new Error(`Directory: ${path}`);
-      if (!('content' in response.data) || !response.data.content) throw new Error(`No content: ${path}`);
+      if (!('content' in response.data) || !response.data.content)
+        throw new Error(`No content: ${path}`);
       const content = Buffer.from(response.data.content, 'base64').toString('utf-8');
       return JSON.parse(content);
     } catch (error: any) {
@@ -56,7 +57,7 @@ export class GitHubColdTier implements ColdTier {
         const existing = await this.client.repos.getContent({
           owner: this.owner,
           repo: this.repo,
-          path: fullPath
+          path: fullPath,
         });
         if (!Array.isArray(existing.data)) sha = existing.data.sha;
       } catch {
@@ -69,7 +70,7 @@ export class GitHubColdTier implements ColdTier {
         path: fullPath,
         message,
         content: base64Content,
-        ...(sha && { sha })
+        ...(sha && { sha }),
       });
     } catch (error: any) {
       throw new Error(`Set failed: ${error.message}`);
@@ -82,7 +83,7 @@ export class GitHubColdTier implements ColdTier {
       const response = await this.client.repos.getContent({
         owner: this.owner,
         repo: this.repo,
-        path: fullPath
+        path: fullPath,
       });
 
       if (Array.isArray(response.data)) throw new Error(`Directory: ${path}`);
@@ -91,7 +92,7 @@ export class GitHubColdTier implements ColdTier {
         repo: this.repo,
         path: fullPath,
         message,
-        sha: response.data.sha
+        sha: response.data.sha,
       });
     } catch (error: any) {
       if (error.status === 404) return;
@@ -105,13 +106,13 @@ export class GitHubColdTier implements ColdTier {
       const response = await this.client.repos.getContent({
         owner: this.owner,
         repo: this.repo,
-        path: fullPath
+        path: fullPath,
       });
 
       if (!Array.isArray(response.data)) throw new Error(`Not a directory: ${directory}`);
       return response.data
-        .filter(item => item.type === 'file' && item.name.endsWith('.json'))
-        .map(item => item.name);
+        .filter((item) => item.type === 'file' && item.name.endsWith('.json'))
+        .map((item) => item.name);
     } catch (error: any) {
       if (error.status === 404) return [];
       throw new Error(`List failed: ${error.message}`);
@@ -119,17 +120,22 @@ export class GitHubColdTier implements ColdTier {
   }
 
   private joinPath(...parts: string[]): string {
-    return parts.filter(p => p).join('/').replace(/\/+/g, '/');
+    return parts
+      .filter((p) => p)
+      .join('/')
+      .replace(/\/+/g, '/');
   }
 
   async ensureBaseDirectory(): Promise<void> {
     try {
       const keepPath = this.joinPath(this.basePath, '.gitkeep');
-      const existing = await this.client.repos.getContent({
-        owner: this.owner,
-        repo: this.repo,
-        path: keepPath
-      }).catch(() => null);
+      const existing = await this.client.repos
+        .getContent({
+          owner: this.owner,
+          repo: this.repo,
+          path: keepPath,
+        })
+        .catch(() => null);
 
       if (!existing) {
         await this.client.repos.createOrUpdateFileContents({
@@ -137,7 +143,7 @@ export class GitHubColdTier implements ColdTier {
           repo: this.repo,
           path: keepPath,
           message: 'Initialize cold tier base directory',
-          content: Buffer.from('').toString('base64')
+          content: Buffer.from('').toString('base64'),
         });
       }
     } catch (error: any) {

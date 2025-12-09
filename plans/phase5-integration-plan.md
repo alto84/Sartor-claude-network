@@ -5,6 +5,7 @@
 ## Integration Points
 
 ### 1. Skills Library + Memory System
+
 - Retrieve similar skill executions from warm tier before task start
 - Store skill performance metrics (success rate, latency, error patterns)
 - Create skill profiles: common failures, optimization flags, prerequisites
@@ -12,6 +13,7 @@
 - Cache hot skills in Firebase for <100ms retrieval
 
 ### 2. Refinement Loops + Memory Persistence
+
 - Store each refinement iteration in hot tier (active execution state)
 - Promote successful refinement paths to warm tier (pattern extraction)
 - Link process traces to skill executions (impact analysis)
@@ -19,6 +21,7 @@
 - Archive 3+ iteration patterns to cold tier as "learned skills"
 
 ### 3. Self-Improvement + Pattern Storage
+
 - Extract patterns from 80%+ success traces (qualified learning)
 - Generate executable skill templates from patterns (cold tier)
 - Validate patterns against evidence standards before storage
@@ -46,6 +49,7 @@ Pattern Repo → generate new skills (feedback loop)
 3. **End-to-End Proof:** System demonstrates learning from 10+ patterns, validates against evidence
 
 ## Success Criteria
+
 - Pattern retrieval <500ms (warm tier)
 - 90%+ qualified learning rate (patterns that improve performance)
 - Self-improvement cycle <1 hour

@@ -7,16 +7,20 @@
 Execute in order when spawned:
 
 ### 1. Read AGENT_INIT.md
+
 ```bash
 Read /home/user/Sartor-claude-network/.claude/AGENT_INIT.md
 ```
+
 Understand your role and system architecture.
 
 ### 2. Check for MCP Tools
+
 Look for `memory_*` tools (memory_create, memory_get, memory_search, memory_stats).
 If available, proceed to Step 4. If not, use fallback.
 
 ### 3. Bootstrap Mesh Fallback
+
 If MCP tools unavailable, access memories via:
 
 ```
@@ -27,11 +31,13 @@ If MCP tools unavailable, access memories via:
 ```
 
 **Example:**
+
 ```bash
 curl -s http://localhost:3001/mcp || cat data/memories.json
 ```
 
 ### 4. Load Role-Specific Memories
+
 Query 5-10 relevant memories based on role tags:
 
 - **PLANNER**: `["planning", "architecture"]`
@@ -40,7 +46,9 @@ Query 5-10 relevant memories based on role tags:
 - **CLEANER**: `["cleanup", "maintenance"]`
 
 ### 5. Verify Understanding
+
 Before executing:
+
 ```
 ✓ My role: [Planner/Implementer/Auditor/Cleaner]
 ✓ My task: [1-sentence summary]

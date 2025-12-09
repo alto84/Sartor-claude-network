@@ -19,7 +19,7 @@ describe('Executive System E2E', () => {
         id: 'task-1',
         role: AgentRole.IMPLEMENTER,
         description: 'Test task',
-        context: 'Unit test context'
+        context: 'Unit test context',
       });
 
       expect(result.success).toBe(true);
@@ -31,13 +31,13 @@ describe('Executive System E2E', () => {
         { id: 't1', role: AgentRole.PLANNER, description: 'Plan', context: '' },
         { id: 't2', role: AgentRole.IMPLEMENTER, description: 'Build', context: '' },
         { id: 't3', role: AgentRole.AUDITOR, description: 'Review', context: '' },
-        { id: 't4', role: AgentRole.CLEANER, description: 'Clean', context: '' }
+        { id: 't4', role: AgentRole.CLEANER, description: 'Clean', context: '' },
       ];
 
       const results = await executive.orchestrate(tasks);
 
       expect(results).toHaveLength(4);
-      expect(results.every(r => r.success)).toBe(true);
+      expect(results.every((r) => r.success)).toBe(true);
     });
   });
 
@@ -48,7 +48,7 @@ describe('Executive System E2E', () => {
         id: 'learn-1',
         role: AgentRole.IMPLEMENTER,
         description: 'Learning task 1',
-        context: ''
+        context: '',
       });
 
       const patterns = await executive.learnFromHistory();

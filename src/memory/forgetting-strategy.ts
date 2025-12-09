@@ -13,7 +13,7 @@ import {
   MemoryStatus,
   MemoryType,
   ForgettingConfig,
-  DeletionCandidate
+  DeletionCandidate,
 } from '../utils/types';
 
 // ============================================================================
@@ -34,21 +34,21 @@ const DEFAULT_FORGETTING_CONFIG: ForgettingConfig = {
     'high_importance',
     'legal',
     'privacy',
-    'procedural_knowledge'
+    'procedural_knowledge',
   ],
 
   privacy: {
-    pii_max_days: 30,        // Personal Identifiable Information
-    financial_max_days: 90,   // Financial data
-    health_max_days: 180,     // Health information
-    casual_max_days: 180      // Casual conversation
+    pii_max_days: 30, // Personal Identifiable Information
+    financial_max_days: 90, // Financial data
+    health_max_days: 180, // Health information
+    casual_max_days: 180, // Casual conversation
   },
 
   minimum_retention: {
-    age_days: 7,              // Don't delete if younger than 7 days
-    importance: 0.7,          // Don't delete if importance > 0.7
-    access_count: 10          // Don't delete if accessed 10+ times
-  }
+    age_days: 7, // Don't delete if younger than 7 days
+    importance: 0.7, // Don't delete if importance > 0.7
+    access_count: 10, // Don't delete if accessed 10+ times
+  },
 };
 
 // ============================================================================
@@ -81,7 +81,7 @@ export function determineDeletionTier(
     return 'permanent';
   } else if (memory.strength < 0.15) {
     return 'archive';
-  } else if (memory.strength < 0.30) {
+  } else if (memory.strength < 0.3) {
     return 'soft';
   }
 
@@ -91,10 +91,7 @@ export function determineDeletionTier(
 /**
  * Check if memory meets minimum retention requirements
  */
-function meetsMinimumRetention(
-  memory: Memory,
-  config: ForgettingConfig
-): boolean {
+function meetsMinimumRetention(memory: Memory, config: ForgettingConfig): boolean {
   const now = new Date();
   const created = new Date(memory.created_at);
   const ageInDays = (now.getTime() - created.getTime()) / (1000 * 60 * 60 * 24);
@@ -190,7 +187,7 @@ export function performPermanentDelete(
     deleted_id: memory.id,
     deleted_at: new Date(),
     reason: `Strength ${memory.strength.toFixed(3)}, Importance ${memory.importance_score.toFixed(3)}`,
-    recoverable: false
+    recoverable: false,
   };
 
   // Mark as deleted
@@ -243,9 +240,7 @@ export function isNeverForget(
   }
 
   // Check for protected tags
-  const hasProtectedTag = memory.tags.some(tag =>
-    config.never_forget_tags.includes(tag)
-  );
+  const hasProtectedTag = memory.tags.some((tag) => config.never_forget_tags.includes(tag));
 
   if (hasProtectedTag) {
     return true;
@@ -274,9 +269,12 @@ export function addNeverForgetProtection(
   memory: Memory,
   reason: 'user_request' | 'system_critical' | 'high_importance' = 'user_request'
 ): void {
-  const tag = reason === 'user_request' ? 'explicitly_saved' :
-              reason === 'system_critical' ? 'system_config' :
-              'high_importance';
+  const tag =
+    reason === 'user_request'
+      ? 'explicitly_saved'
+      : reason === 'system_critical'
+        ? 'system_config'
+        : 'high_importance';
 
   if (!memory.tags.includes(tag)) {
     memory.tags.push(tag);
@@ -292,13 +290,9 @@ export function addNeverForgetProtection(
  * @param memory - Memory to unprotect
  */
 export function removeNeverForgetProtection(memory: Memory): void {
-  const protectedTags = [
-    'explicitly_saved',
-    'user_preference',
-    'high_importance'
-  ];
+  const protectedTags = ['explicitly_saved', 'user_preference', 'high_importance'];
 
-  memory.tags = memory.tags.filter(tag => !protectedTags.includes(tag));
+  memory.tags = memory.tags.filter((tag) => !protectedTags.includes(tag));
 }
 
 // ============================================================================
@@ -368,8 +362,17 @@ export function detectFinancialData(memory: Memory): number {
   let score = 0;
 
   const financialKeywords = [
-    'salary', 'income', 'tax', 'account number', 'routing number',
-    'investment', 'portfolio', 'bank', 'credit', 'debit', 'payment'
+    'salary',
+    'income',
+    'tax',
+    'account number',
+    'routing number',
+    'investment',
+    'portfolio',
+    'bank',
+    'credit',
+    'debit',
+    'payment',
   ];
 
   for (const keyword of financialKeywords) {
@@ -399,9 +402,9 @@ export function calculatePrivacyRisk(memory: Memory): number {
   const now = new Date();
   const created = new Date(memory.created_at);
   const ageInDays = (now.getTime() - created.getTime()) / (1000 * 60 * 60 * 24);
-  const ageScore = Math.max(0, 1 - (ageInDays / 365)); // Decay over 1 year
+  const ageScore = Math.max(0, 1 - ageInDays / 365); // Decay over 1 year
 
-  const privacyRisk = (piiScore * 0.4) + (financialScore * 0.4) + (ageScore * 0.2);
+  const privacyRisk = piiScore * 0.4 + financialScore * 0.4 + ageScore * 0.2;
 
   return Math.min(1.0, privacyRisk);
 }
@@ -434,9 +437,11 @@ export function shouldExpireForPrivacy(
   }
 
   // Check casual conversation expiration
-  if (memory.type === MemoryType.EPISODIC &&
-      memory.importance_score < 0.3 &&
-      ageInDays > config.privacy.casual_max_days) {
+  if (
+    memory.type === MemoryType.EPISODIC &&
+    memory.importance_score < 0.3 &&
+    ageInDays > config.privacy.casual_max_days
+  ) {
     return true;
   }
 
@@ -506,14 +511,14 @@ export function handleRightToErasure(
   retained: number;
   deletion_ids: string[];
 } {
-  const userMemories = memories.filter(m => m.user_id === userId);
+  const userMemories = memories.filter((m) => m.user_id === userId);
 
   const report = {
     total_memories: userMemories.length,
     deleted: 0,
     anonymized: 0,
     retained: 0,
-    deletion_ids: [] as string[]
+    deletion_ids: [] as string[],
   };
 
   for (const memory of userMemories) {
@@ -598,7 +603,7 @@ export function findDeletionCandidates(
         reason: 'Privacy policy expiration',
         tier: 'permanent',
         scheduled_for: new Date(),
-        recoverable: false
+        recoverable: false,
       });
       continue;
     }
@@ -610,7 +615,7 @@ export function findDeletionCandidates(
         reason: 'Scheduled expiration reached',
         tier: 'permanent',
         scheduled_for: new Date(),
-        recoverable: false
+        recoverable: false,
       });
       continue;
     }
@@ -628,7 +633,7 @@ export function findDeletionCandidates(
         reason: `Low strength (${memory.strength.toFixed(3)})`,
         tier,
         scheduled_for: scheduledFor,
-        recoverable: tier !== 'permanent'
+        recoverable: tier !== 'permanent',
       });
     }
   }
@@ -642,9 +647,7 @@ export function findDeletionCandidates(
  * @param candidates - Deletion candidates
  * @returns Execution results
  */
-export function executeForgettingProcess(
-  candidates: DeletionCandidate[]
-): {
+export function executeForgettingProcess(candidates: DeletionCandidate[]): {
   soft_deleted: number;
   archived: number;
   permanently_deleted: number;
@@ -654,7 +657,7 @@ export function executeForgettingProcess(
     soft_deleted: 0,
     archived: 0,
     permanently_deleted: 0,
-    audit_records: [] as any[]
+    audit_records: [] as any[],
   };
 
   for (const candidate of candidates) {

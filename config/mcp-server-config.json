@@ -92,7 +92,18 @@
             "description": "Full statement of the knowledge"
           },
           "knowledgeType": {
-            "enum": ["fact", "preference", "belief", "rule", "definition", "relationship", "attribute", "capability", "limitation", "goal"],
+            "enum": [
+              "fact",
+              "preference",
+              "belief",
+              "rule",
+              "definition",
+              "relationship",
+              "attribute",
+              "capability",
+              "limitation",
+              "goal"
+            ],
             "description": "Type of semantic knowledge"
           },
           "confidence": {

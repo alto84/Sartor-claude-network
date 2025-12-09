@@ -5,12 +5,14 @@
 ### Tier 1: Hot Memory (Firebase Realtime Database)
 
 **Pricing Model:**
+
 - Storage: $5/GB/month
 - Downloads: $1/GB
 - Reads: $0.36 per 100K operations
 - Writes: $1.08 per 100K operations
 
 **Expected Usage (Medium Scale):**
+
 ```
 Storage:      100 MB  × $5/GB       = $0.50/month
 Downloads:    5 GB    × $1/GB       = $5.00/month
@@ -21,6 +23,7 @@ Total Hot Tier:                      $14.50/month
 ```
 
 **Optimization Strategies:**
+
 1. Aggressive TTL policies (6-hour default)
 2. Size limit enforcement (100MB max)
 3. Batch writes where possible
@@ -28,6 +31,7 @@ Total Hot Tier:                      $14.50/month
 5. Use OnDisconnect() for cleanup
 
 **Cost vs Scale:**
+
 ```
 Users         Storage    Ops/month   Cost/month
 ─────────────────────────────────────────────
@@ -44,12 +48,14 @@ Users         Storage    Ops/month   Cost/month
 #### Firestore
 
 **Pricing Model:**
+
 - Storage: $0.18/GB/month
 - Reads: $0.36 per 100K documents
 - Writes: $1.08 per 100K documents
 - Deletes: $0.02 per 100K documents
 
 **Expected Usage (Medium Scale):**
+
 ```
 Storage:      10 GB   × $0.18/GB       = $1.80/month
 Reads:        5M docs × $0.36/100K     = $18.00/month
@@ -62,11 +68,13 @@ Total Firestore:                        $30.62/month
 #### Pinecone (Vector Database)
 
 **Pricing Model:**
+
 - s1.x1 pod: $70/month (100K vectors)
 - s1.x2 pod: $140/month (500K vectors)
 - s1.x4 pod: $280/month (2M vectors)
 
 **Expected Usage:**
+
 ```
 Starter:      s1.x1 (100K vectors)    = $70/month
 Growth:       s1.x2 (500K vectors)    = $140/month
@@ -76,6 +84,7 @@ Total Pinecone (Starter):               $70/month
 ```
 
 **Alternative: Weaviate (Self-hosted)**
+
 ```
 Cloud Server: 8GB RAM, 4 vCPU          = $40/month
 Storage:      100 GB SSD               = $10/month
@@ -84,6 +93,7 @@ Total Weaviate:                         $50/month
 ```
 
 **Alternative: Qdrant (Managed)**
+
 ```
 1GB cluster:  1M vectors               = $25/month
 4GB cluster:  4M vectors               = $95/month
@@ -92,6 +102,7 @@ Total Qdrant (1GB):                     $25/month
 ```
 
 **Warm Tier Total (Firestore + Qdrant):**
+
 ```
 $30.62 + $25 = $55.62/month
 ```
@@ -101,12 +112,14 @@ $30.62 + $25 = $55.62/month
 ### Tier 3: Cold Memory (GitHub)
 
 **Pricing Model:**
+
 - Free for public repositories
 - Private: $4/month (unlimited storage)
 - GitHub Actions: 2,000 minutes/month free
 - Additional: $0.008/minute
 
 **Expected Usage:**
+
 ```
 Repository:   Private                  = $4.00/month
 Actions:      500 minutes              = $0.00/month (within free tier)
@@ -120,10 +133,12 @@ Total Cold Tier:                        $4.00/month
 ### Embedding Generation (OpenAI)
 
 **Pricing Model:**
+
 - text-embedding-3-small: $0.020 per 1M tokens
 - text-embedding-3-large: $0.130 per 1M tokens
 
 **Expected Usage (text-embedding-3-small):**
+
 ```
 Initial batch:    10K memories × 500 tokens = 5M tokens
 Monthly updates:  1K memories × 500 tokens  = 500K tokens
@@ -139,6 +154,7 @@ Total Embeddings:                           $0.01/month (after initial)
 ### Total Monthly Cost Summary
 
 **Starter Configuration (100-1,000 users):**
+
 ```
 Hot Tier (Firebase RTDB):               $15/month
 Warm Tier (Firestore + Qdrant):         $56/month
@@ -149,6 +165,7 @@ TOTAL:                                  $75/month
 ```
 
 **Growth Configuration (1,000-10,000 users):**
+
 ```
 Hot Tier (Firebase RTDB):               $50/month
 Warm Tier (Firestore + Qdrant 4GB):    $126/month
@@ -159,6 +176,7 @@ TOTAL:                                  $180/month
 ```
 
 **Scale Configuration (10,000+ users):**
+
 ```
 Hot Tier (Firebase RTDB):               $200/month
 Warm Tier (Firestore + Pinecone s1.x4): $311/month
@@ -175,11 +193,12 @@ TOTAL:                                  $515/month
 ### 1. Hot Tier Optimization
 
 **Aggressive TTL Policies:**
+
 ```javascript
 const TTL_CONFIG = {
-  sessions: 6 * 60 * 60 * 1000,      // 6 hours (instead of 24)
-  memories: 3 * 60 * 60 * 1000,      // 3 hours (instead of 6)
-  cache: 30 * 60 * 1000              // 30 minutes (instead of 1 hour)
+  sessions: 6 * 60 * 60 * 1000, // 6 hours (instead of 24)
+  memories: 3 * 60 * 60 * 1000, // 3 hours (instead of 6)
+  cache: 30 * 60 * 1000, // 30 minutes (instead of 1 hour)
 };
 
 // Potential savings: -40% on storage and reads
@@ -187,10 +206,11 @@ const TTL_CONFIG = {
 ```
 
 **Size-based Eviction:**
+
 ```javascript
 const SIZE_LIMITS = {
-  maxHotTierSize: 50 * 1024 * 1024,  // 50MB (instead of 100MB)
-  evictionThreshold: 0.85             // Evict at 85% (instead of 90%)
+  maxHotTierSize: 50 * 1024 * 1024, // 50MB (instead of 100MB)
+  evictionThreshold: 0.85, // Evict at 85% (instead of 90%)
 };
 
 // Potential savings: -50% on storage
@@ -198,6 +218,7 @@ const SIZE_LIMITS = {
 ```
 
 **Batch Operations:**
+
 ```javascript
 // Instead of:
 for (const memory of memories) {
@@ -206,9 +227,7 @@ for (const memory of memories) {
 }
 
 // Use:
-await db.ref('memories').update(
-  Object.fromEntries(memories.map(m => [m.id, m]))
-);
+await db.ref('memories').update(Object.fromEntries(memories.map((m) => [m.id, m])));
 // Cost: 1 write op
 
 // Potential savings: -90% on writes
@@ -218,6 +237,7 @@ await db.ref('memories').update(
 ### 2. Warm Tier Optimization
 
 **Selective Embedding Storage:**
+
 ```javascript
 // Don't store embeddings in Firestore (1536 floats × 4 bytes = 6KB per doc)
 // Only store embedding reference
@@ -241,6 +261,7 @@ await db.ref('memories').update(
 ```
 
 **Lazy Embedding Generation:**
+
 ```javascript
 // Generate embeddings on-demand instead of immediately
 // Only for memories that will be searched
@@ -253,6 +274,7 @@ await db.ref('memories').update(
 ```
 
 **Vector Database Choice:**
+
 ```
 Pinecone s1.x1:   $70/month  (100K vectors, managed)
 Qdrant 1GB:       $25/month  (1M vectors, managed)
@@ -265,6 +287,7 @@ Savings: $45/month vs Pinecone
 ### 3. Cold Tier Optimization
 
 **Compression:**
+
 ```javascript
 // Compress old embeddings
 // Before: 1536 floats × 4 bytes = 6KB per embedding
@@ -274,12 +297,13 @@ Savings: $45/month vs Pinecone
 ```
 
 **Archival Frequency:**
+
 ```javascript
 // Instead of daily consolidation:
 const ARCHIVAL_POLICY = {
-  frequency: 'weekly',              // Weekly instead of daily
-  minAccessCount: 10,               // Only archive if <10 accesses
-  minAge: 90 * 24 * 60 * 60 * 1000 // 90 days instead of 30
+  frequency: 'weekly', // Weekly instead of daily
+  minAccessCount: 10, // Only archive if <10 accesses
+  minAge: 90 * 24 * 60 * 60 * 1000, // 90 days instead of 30
 };
 
 // Savings: -70% on GitHub Actions minutes
@@ -289,16 +313,17 @@ const ARCHIVAL_POLICY = {
 ### 4. Overall Architecture Optimization
 
 **Tiering Thresholds:**
+
 ```javascript
 const PROMOTION_THRESHOLDS = {
   coldToWarm: {
-    minAccessCount: 5,      // Increase from 3
-    minRecency: 48          // Increase from 24 hours
+    minAccessCount: 5, // Increase from 3
+    minRecency: 48, // Increase from 24 hours
   },
   warmToHot: {
-    minAccessCount: 20,     // Increase from 10
-    minRecency: 12          // Decrease to 12 hours
-  }
+    minAccessCount: 20, // Increase from 10
+    minRecency: 12, // Decrease to 12 hours
+  },
 };
 
 // Result: Fewer promotions = less storage in expensive tiers
@@ -306,12 +331,13 @@ const PROMOTION_THRESHOLDS = {
 ```
 
 **Caching Strategy:**
+
 ```javascript
 // Client-side caching reduces read operations
 const CACHE_CONFIG = {
   enabled: true,
-  ttl: 5 * 60 * 1000,       // 5 minutes
-  maxSize: 50               // 50 memories per client
+  ttl: 5 * 60 * 1000, // 5 minutes
+  maxSize: 50, // 50 memories per client
 };
 
 // Savings: -50% on Firestore reads
@@ -323,6 +349,7 @@ const CACHE_CONFIG = {
 ## Cost Projections
 
 ### Optimized Starter Configuration
+
 ```
 Hot Tier (optimized):                   $8/month
 Warm Tier (Firestore + Qdrant):         $35/month
@@ -334,6 +361,7 @@ Savings vs baseline:                    -37%
 ```
 
 ### Cost per User
+
 ```
 100 users:      $47 / 100    = $0.47/user/month
 1,000 users:    $95 / 1,000  = $0.095/user/month
@@ -341,6 +369,7 @@ Savings vs baseline:                    -37%
 ```
 
 ### Break-even Analysis
+
 ```
 Development cost:     $10,000 (one-time)
 Monthly operating:    $47-$350/month
@@ -359,13 +388,13 @@ If charging $5/user/month:
 // Cost monitoring thresholds
 const COST_ALERTS = {
   daily: {
-    warning: 3,    // $3/day
-    critical: 5    // $5/day
+    warning: 3, // $3/day
+    critical: 5, // $5/day
   },
   monthly: {
-    warning: 75,   // $75/month
-    critical: 100  // $100/month
-  }
+    warning: 75, // $75/month
+    critical: 100, // $100/month
+  },
 };
 
 // Set up Cloud Monitoring alerts
@@ -374,14 +403,14 @@ async function setupCostAlerts() {
   await monitoring.createAlert({
     metric: 'firebase.database.network.sent_bytes',
     threshold: 5 * 1024 * 1024 * 1024, // 5GB/day
-    notification: 'email@example.com'
+    notification: 'email@example.com',
   });
 
   // Monitor Firestore reads
   await monitoring.createAlert({
     metric: 'firestore.document_reads',
     threshold: 2000000, // 2M reads/day
-    notification: 'email@example.com'
+    notification: 'email@example.com',
   });
 }
 ```

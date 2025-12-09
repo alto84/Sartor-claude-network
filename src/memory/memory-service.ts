@@ -26,7 +26,7 @@ export class MemoryService {
     this.config = {
       hotMaxSize: config.hotMaxSize ?? 50,
       warmMaxSize: config.warmMaxSize ?? 500,
-      promotionThreshold: config.promotionThreshold ?? 5
+      promotionThreshold: config.promotionThreshold ?? 5,
     };
   }
 
@@ -51,7 +51,7 @@ export class MemoryService {
       value,
       accessCount: 1,
       lastAccessed: now,
-      createdAt: now
+      createdAt: now,
     };
 
     const tier = options.tier ?? 'warm';
@@ -103,7 +103,7 @@ export class MemoryService {
     }
   }
 
-  async search(pattern: string | RegExp): Promise<Array<{key: string; value: any}>> {
+  async search(pattern: string | RegExp): Promise<Array<{ key: string; value: any }>> {
     const regex = pattern instanceof RegExp ? pattern : new RegExp(pattern);
     const results = [];
     for (const tier of [this.hot, this.warm, this.cold]) {
@@ -114,7 +114,11 @@ export class MemoryService {
     return results;
   }
 
-  private evictIfNeeded(tier: Map<string, TierItem<any>>, maxSize: number, fallback: Map<string, TierItem<any>>): void {
+  private evictIfNeeded(
+    tier: Map<string, TierItem<any>>,
+    maxSize: number,
+    fallback: Map<string, TierItem<any>>
+  ): void {
     if (tier.size > maxSize) {
       let lruKey: string | null = null;
       let lruTime = Infinity;

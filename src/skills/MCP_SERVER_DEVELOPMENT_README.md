@@ -7,24 +7,28 @@ The **MCP Server Development** skill provides comprehensive tools for building M
 ## Core Principles
 
 ### 1. Stdio Discipline is Non-Negotiable
+
 - **stdout** is for MCP protocol messages only (JSON-RPC)
 - **stderr** is for all logging, debugging, errors
 - One `console.log()` call corrupts the entire communication channel
 - Violations are detected as **CRITICAL** security issues
 
 ### 2. Input Validation Prevents Cascade
+
 - JSON schema defines the contract
 - Schema validation happens before execution
 - Invalid input returns structured error, doesn't throw exception
 - Trust nothing from the client
 
 ### 3. Error Handling is User Experience
+
 - Errors as JSON in response, not thrown exceptions
 - Error messages guide recovery (what was wrong, what to fix)
 - `isError` flag distinguishes failure from success
 - Stack traces in logs (stderr), not in responses
 
 ### 4. Security is Built-In
+
 - Command injection detection (exec, spawn, eval)
 - Path traversal prevention
 - Environment variable leak detection
@@ -57,11 +61,11 @@ import {
 
 ```typescript
 interface MCPToolDefinition {
-  name: string;                // snake_case (e.g., "read_file")
-  description: string;          // Clear description (>20 chars recommended)
-  inputSchema: JSONSchema;      // JSON Schema for inputs
-  outputSchema?: JSONSchema;    // Optional output schema
-  handler: ToolHandler;         // Async function that processes inputs
+  name: string; // snake_case (e.g., "read_file")
+  description: string; // Clear description (>20 chars recommended)
+  inputSchema: JSONSchema; // JSON Schema for inputs
+  outputSchema?: JSONSchema; // Optional output schema
+  handler: ToolHandler; // Async function that processes inputs
 }
 ```
 
@@ -69,11 +73,11 @@ interface MCPToolDefinition {
 
 ```typescript
 interface MCPServerConfig {
-  name: string;                     // Server name (e.g., "filesystem-server")
-  version: string;                  // Semver version (e.g., "1.0.0")
-  tools: MCPToolDefinition[];       // Array of tool definitions
-  resources?: MCPResourceDefinition[];  // Optional resources
-  prompts?: MCPPromptDefinition[];      // Optional prompts
+  name: string; // Server name (e.g., "filesystem-server")
+  version: string; // Semver version (e.g., "1.0.0")
+  tools: MCPToolDefinition[]; // Array of tool definitions
+  resources?: MCPResourceDefinition[]; // Optional resources
+  prompts?: MCPPromptDefinition[]; // Optional prompts
 }
 ```
 
@@ -81,11 +85,11 @@ interface MCPServerConfig {
 
 ```typescript
 interface ValidationReport {
-  valid: boolean;                   // Overall validity
-  errors: ValidationError[];        // Critical issues
-  warnings: ValidationWarning[];    // Best practice violations
-  suggestions: string[];            // Improvement recommendations
-  score: number;                    // Quality score (0-1)
+  valid: boolean; // Overall validity
+  errors: ValidationError[]; // Critical issues
+  warnings: ValidationWarning[]; // Best practice violations
+  suggestions: string[]; // Improvement recommendations
+  score: number; // Quality score (0-1)
 }
 ```
 
@@ -93,10 +97,10 @@ interface ValidationReport {
 
 ```typescript
 interface SecurityReport {
-  safe: boolean;                           // Overall safety status
+  safe: boolean; // Overall safety status
   vulnerabilities: SecurityVulnerability[]; // Detected vulnerabilities
-  riskScore: number;                       // Risk score (0-1, higher = riskier)
-  recommendations: string[];               // Security recommendations
+  riskScore: number; // Risk score (0-1, higher = riskier)
+  recommendations: string[]; // Security recommendations
 }
 ```
 
@@ -107,6 +111,7 @@ interface SecurityReport {
 Validates a single tool definition against MCP standards.
 
 **Checks:**
+
 - Name follows snake_case convention
 - Description is present and meaningful
 - Input schema is valid JSON Schema
@@ -114,6 +119,7 @@ Validates a single tool definition against MCP standards.
 - All required fields are present
 
 **Example:**
+
 ```typescript
 const tool: MCPToolDefinition = {
   name: 'read_file',
@@ -121,16 +127,16 @@ const tool: MCPToolDefinition = {
   inputSchema: {
     type: 'object',
     properties: {
-      path: { type: 'string', description: 'File path' }
+      path: { type: 'string', description: 'File path' },
     },
-    required: ['path']
+    required: ['path'],
   },
-  handler: async (input) => ({ content: [{type: 'text', text: '...'}] })
+  handler: async (input) => ({ content: [{ type: 'text', text: '...' }] }),
 };
 
 const report = validateToolDefinition(tool);
-console.log(report.valid);  // true
-console.log(report.score);  // 0.95
+console.log(report.valid); // true
+console.log(report.score); // 0.95
 ```
 
 ### 2. validateServerConfig(config: MCPServerConfig): ValidationReport
@@ -138,23 +144,25 @@ console.log(report.score);  // 0.95
 Validates complete server configuration including all tools and resources.
 
 **Checks:**
+
 - Server name and version are valid
 - All tools pass individual validation
 - Resources have required fields
 - No duplicate tool names
 
 **Example:**
+
 ```typescript
 const config: MCPServerConfig = {
   name: 'filesystem-server',
   version: '1.0.0',
   tools: [readFileTool, writeFileTool],
-  resources: [workspaceResource]
+  resources: [workspaceResource],
 };
 
 const report = validateServerConfig(config);
 if (!report.valid) {
-  report.errors.forEach(err => console.error(err.message));
+  report.errors.forEach((err) => console.error(err.message));
 }
 ```
 
@@ -163,6 +171,7 @@ if (!report.valid) {
 Analyzes handler source code for security vulnerabilities.
 
 **Detects:**
+
 - **CRITICAL**: `console.log()` calls (stdio corruption)
 - **CRITICAL**: Command injection (exec, spawn, eval)
 - **HIGH**: Path traversal vulnerabilities
@@ -170,6 +179,7 @@ Analyzes handler source code for security vulnerabilities.
 - **MEDIUM**: Environment variable leaks
 
 **Example:**
+
 ```typescript
 const handlerCode = `
   async function handler(input) {
@@ -180,8 +190,8 @@ const handlerCode = `
 `;
 
 const report = analyzeInputValidation(handlerCode);
-console.log(report.safe);  // false
-console.log(report.vulnerabilities);  // 2 critical issues
+console.log(report.safe); // false
+console.log(report.vulnerabilities); // 2 critical issues
 ```
 
 ### 4. generateToolHandler(schema: JSONSchema, toolName: string): string
@@ -189,6 +199,7 @@ console.log(report.vulnerabilities);  // 2 critical issues
 Generates typed handler skeleton from JSON Schema.
 
 **Output:**
+
 - TypeScript interface from schema
 - Handler function with proper structure
 - Try-catch error handling
@@ -196,14 +207,15 @@ Generates typed handler skeleton from JSON Schema.
 - Proper logging (stderr only)
 
 **Example:**
+
 ```typescript
 const schema = {
   type: 'object',
   properties: {
     query: { type: 'string', description: 'Search query' },
-    limit: { type: 'number', description: 'Result limit' }
+    limit: { type: 'number', description: 'Result limit' },
   },
-  required: ['query']
+  required: ['query'],
 };
 
 const code = generateToolHandler(schema, 'search_items');
@@ -215,17 +227,19 @@ const code = generateToolHandler(schema, 'search_items');
 Tests tool handler with comprehensive test cases.
 
 **Features:**
+
 - Runs all test cases
 - Measures execution time
 - Detects expected vs unexpected failures
 - Analyzes test coverage (input validation, error handling, edge cases)
 
 **Example:**
+
 ```typescript
 const testCases = [
   { name: 'Valid input', input: { a: 5, b: 3 } },
   { name: 'Invalid - missing field', input: { a: 5 }, shouldFail: true },
-  { name: 'Edge case - zero', input: { a: 0, b: 0 } }
+  { name: 'Edge case - zero', input: { a: 0, b: 0 } },
 ];
 
 const report = await testToolHandler(addNumbersTool, testCases);
@@ -238,6 +252,7 @@ console.log('Coverage:', report.coverage);
 Runtime input validation against JSON Schema.
 
 **Validates:**
+
 - Type checking
 - Required fields
 - String length constraints
@@ -245,6 +260,7 @@ Runtime input validation against JSON Schema.
 - Enum value constraints
 
 **Example:**
+
 ```typescript
 const validation = validateInput(
   { path: '/home/user/file.txt' },
@@ -261,6 +277,7 @@ if (!validation.valid) {
 Creates properly structured MCP error response.
 
 **MCP Error Codes:**
+
 - `-32700`: Parse error
 - `-32600`: Invalid request
 - `-32601`: Method not found
@@ -268,6 +285,7 @@ Creates properly structured MCP error response.
 - `-32603`: Internal error
 
 **Example:**
+
 ```typescript
 return createErrorResponse(-32602, 'Missing required field: path');
 ```
@@ -286,10 +304,10 @@ const readFileTool: MCPToolDefinition = {
       path: {
         type: 'string',
         description: 'Absolute path to the file',
-        minLength: 1
-      }
+        minLength: 1,
+      },
     },
-    required: ['path']
+    required: ['path'],
   },
   handler: async (input: any) => {
     try {
@@ -307,20 +325,19 @@ const readFileTool: MCPToolDefinition = {
 
       // 4. Return success response
       return {
-        content: [{
-          type: 'text',
-          text: content
-        }]
+        content: [
+          {
+            type: 'text',
+            text: content,
+          },
+        ],
       };
     } catch (error) {
       // 5. Handle errors gracefully
       console.error('[read_file] Error:', error);
-      return createErrorResponse(
-        -32603,
-        error instanceof Error ? error.message : 'Unknown error'
-      );
+      return createErrorResponse(-32603, error instanceof Error ? error.message : 'Unknown error');
     }
-  }
+  },
 };
 ```
 
@@ -328,19 +345,16 @@ const readFileTool: MCPToolDefinition = {
 
 ```typescript
 // 1. Validate individual tools
-const toolReports = tools.map(tool => validateToolDefinition(tool));
+const toolReports = tools.map((tool) => validateToolDefinition(tool));
 
 // 2. Validate complete server config
 const serverReport = validateServerConfig(config);
 
 // 3. Analyze security
-const securityReports = tools.map(tool =>
-  analyzeInputValidation(tool.handler.toString())
-);
+const securityReports = tools.map((tool) => analyzeInputValidation(tool.handler.toString()));
 
 // 4. Check results
-const allValid = serverReport.valid &&
-  securityReports.every(r => r.safe);
+const allValid = serverReport.valid && securityReports.every((r) => r.safe);
 
 if (!allValid) {
   console.error('Server has issues - fix before deployment');
@@ -350,33 +364,39 @@ if (!allValid) {
 ## Validation Checks
 
 ### Tool Naming
+
 - ✅ `read_file` (snake_case)
 - ❌ `readFile` (camelCase)
 - ❌ `ReadFile` (PascalCase)
 
 ### Description Quality
+
 - ✅ "Read the contents of a file from the filesystem"
 - ⚠️ "Read file" (too short)
 - ❌ "" (missing)
 
 ### Schema Validation
+
 - ✅ All properties have descriptions
 - ✅ Required fields are defined in properties
 - ❌ Empty properties object
 - ❌ Missing type field
 
 ### Stdio Discipline
+
 - ✅ `console.error('Debug info')`
 - ❌ `console.log('Debug info')` (corrupts protocol)
 - ❌ `process.stdout.write(...)` (corrupts protocol)
 
 ### Error Handling
+
 - ✅ Try-catch with structured error response
 - ✅ `isError: true` in error responses
 - ❌ Throwing unhandled exceptions
 - ❌ Returning success when operation failed
 
 ### Security
+
 - ✅ Input validation before execution
 - ✅ Parameterized queries
 - ✅ Path validation against allowlist
@@ -389,16 +409,19 @@ if (!allValid) {
 ### Test Coverage Areas
 
 1. **Input Validation**: Test with invalid inputs
+
    ```typescript
    { name: 'Invalid - missing field', input: {}, shouldFail: true }
    ```
 
 2. **Error Handling**: Test error conditions
+
    ```typescript
    { name: 'Error - file not found', input: { path: '/nonexistent' }, shouldFail: true }
    ```
 
 3. **Edge Cases**: Test boundary conditions
+
    ```typescript
    { name: 'Edge - empty file', input: { path: '/empty.txt' } }
    { name: 'Edge - large file', input: { path: '/10mb.txt' } }
@@ -434,6 +457,7 @@ export {
 ### Skill Manifest
 
 Added to `/home/user/Sartor-claude-network/src/skills/skill-manifest.ts`:
+
 - **ID**: `mcp-server-development`
 - **Tier**: Specialist
 - **Dependencies**: `evidence-based-validation`
@@ -477,7 +501,9 @@ import { MCPServerValidator, validateServerConfig } from './skills';
 const myServer: MCPServerConfig = {
   name: 'my-mcp-server',
   version: '1.0.0',
-  tools: [/* your tools */]
+  tools: [
+    /* your tools */
+  ],
 };
 
 // Validate before deployment
@@ -488,7 +514,7 @@ if (report.valid && report.score > 0.9) {
   console.log('Server is production-ready!');
 } else {
   console.log('Issues found:');
-  report.errors.forEach(e => console.error(`- ${e.message}`));
+  report.errors.forEach((e) => console.error(`- ${e.message}`));
 }
 ```
 

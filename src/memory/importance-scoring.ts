@@ -16,7 +16,7 @@ import {
   FrequencyConfig,
   SalienceScores,
   LLMSalienceRequest,
-  LLMSalienceResponse
+  LLMSalienceResponse,
 } from '../utils/types';
 
 // ============================================================================
@@ -25,17 +25,17 @@ import {
 
 const DEFAULT_WEIGHTS: ImportanceWeights = {
   recency: 0.25,
-  frequency: 0.20,
+  frequency: 0.2,
   salience: 0.35,
-  relevance: 0.20
+  relevance: 0.2,
 };
 
 const DEFAULT_RECENCY_CONFIG: RecencyConfig = {
-  lambda: 0.05  // Half-life ~14 days
+  lambda: 0.05, // Half-life ~14 days
 };
 
 const DEFAULT_FREQUENCY_CONFIG: FrequencyConfig = {
-  max_expected_accesses: 100
+  max_expected_accesses: 100,
 };
 
 // ============================================================================
@@ -216,7 +216,7 @@ export function parseSalienceResponse(response: string): SalienceScores {
       emotional: Math.max(0, Math.min(10, parsed.emotional || 0)),
       novelty: Math.max(0, Math.min(10, parsed.novelty || 0)),
       actionable: Math.max(0, Math.min(10, parsed.actionable || 0)),
-      personal: Math.max(0, Math.min(10, parsed.personal || 0))
+      personal: Math.max(0, Math.min(10, parsed.personal || 0)),
     };
   } catch (error) {
     console.error('Failed to parse salience response:', error);
@@ -242,12 +242,12 @@ export async function scoreSalienceWithLLM(
     emotional: 5,
     novelty: 5,
     actionable: 5,
-    personal: 5
+    personal: 5,
   };
 
   return {
     scores: mockResponse,
-    cached: false
+    cached: false,
   };
 }
 
@@ -320,7 +320,7 @@ export function calculateMultiContextRelevance(
     return 0.5; // Neutral relevance if no context
   }
 
-  const similarities = contextEmbeddings.map(contextEmb =>
+  const similarities = contextEmbeddings.map((contextEmb) =>
     calculateRelevanceScore(memoryEmbedding, contextEmb)
   );
 
@@ -398,16 +398,15 @@ export function calculateCombinedImportance(
       recency: weights.recency * scale,
       frequency: weights.frequency * scale,
       salience: weights.salience * scale,
-      relevance: weights.relevance * scale
+      relevance: weights.relevance * scale,
     };
   }
 
-  const score = (
+  const score =
     weights.recency * factors.recency +
     weights.frequency * factors.frequency +
     weights.salience * factors.salience +
-    weights.relevance * factors.relevance
-  );
+    weights.relevance * factors.relevance;
 
   return Math.max(0, Math.min(1, score));
 }
@@ -452,7 +451,7 @@ export async function batchCalculateImportance(
   contextEmbedding?: number[],
   weights: ImportanceWeights = DEFAULT_WEIGHTS
 ): Promise<number[]> {
-  const promises = memories.map(memory =>
+  const promises = memories.map((memory) =>
     updateMemoryImportance(memory, contextEmbedding, weights)
   );
 
@@ -462,14 +461,16 @@ export async function batchCalculateImportance(
 /**
  * Get adaptive weights based on use case
  */
-export function getAdaptiveWeights(useCase: 'time_sensitive' | 'content_heavy' | 'context_aware'): ImportanceWeights {
+export function getAdaptiveWeights(
+  useCase: 'time_sensitive' | 'content_heavy' | 'context_aware'
+): ImportanceWeights {
   switch (useCase) {
     case 'time_sensitive':
-      return { recency: 0.40, frequency: 0.20, salience: 0.25, relevance: 0.15 };
+      return { recency: 0.4, frequency: 0.2, salience: 0.25, relevance: 0.15 };
     case 'content_heavy':
-      return { recency: 0.15, frequency: 0.15, salience: 0.50, relevance: 0.20 };
+      return { recency: 0.15, frequency: 0.15, salience: 0.5, relevance: 0.2 };
     case 'context_aware':
-      return { recency: 0.20, frequency: 0.15, salience: 0.25, relevance: 0.40 };
+      return { recency: 0.2, frequency: 0.15, salience: 0.25, relevance: 0.4 };
     default:
       return DEFAULT_WEIGHTS;
   }

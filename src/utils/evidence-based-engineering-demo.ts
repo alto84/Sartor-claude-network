@@ -5,7 +5,10 @@
  * to validate code quality, test coverage, and completeness.
  */
 
-import { assessEngineering, EvidenceBasedEngineering } from '../src/skills/evidence-based-engineering';
+import {
+  assessEngineering,
+  EvidenceBasedEngineering,
+} from '../src/skills/evidence-based-engineering';
 
 // Example 1: Assessing incomplete code
 const incompleteCode = `
@@ -138,7 +141,7 @@ const implValidation = validator.validateImplementation(betterCode);
 console.log('Implementation Validation:', {
   isValid: implValidation.isValid,
   functionsFound: implValidation.functions,
-  issuesFound: implValidation.issues
+  issuesFound: implValidation.issues,
 });
 
 const testAnalysis = validator.validateTesting(betterCode, testsForBetterCode);
@@ -147,7 +150,7 @@ console.log('\nTest Analysis:', {
   testedFunctions: testAnalysis.testedFunctions,
   untestedFunctions: testAnalysis.untestedFunctions,
   coverageType: testAnalysis.coverageType,
-  evidence: testAnalysis.coverageEvidence
+  evidence: testAnalysis.coverageEvidence,
 });
 
 const errorAnalysis = validator.validateErrorHandling(betterCode);
@@ -155,7 +158,7 @@ console.log('\nError Handling Analysis:', {
   hasErrorHandling: errorAnalysis.hasErrorHandling,
   handledCases: errorAnalysis.handledCases,
   unhandledCases: errorAnalysis.unhandledCases,
-  severity: errorAnalysis.severity
+  severity: errorAnalysis.severity,
 });
 
 // Example 4: Documentation validation
@@ -173,7 +176,7 @@ const docAnalysis = validator.validateDocumentation(betterCode, docs);
 console.log('\nDocumentation Analysis:', {
   matchesImplementation: docAnalysis.matchesImplementation,
   discrepancies: docAnalysis.discrepancies,
-  missingDocs: docAnalysis.missingDocs
+  missingDocs: docAnalysis.missingDocs,
 });
 
 // Example 5: Completeness assessment

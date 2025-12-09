@@ -13,19 +13,22 @@ async function test() {
   // Create all types
   const types = ['episodic', 'procedural', 'semantic'];
   for (const type of types) {
-    const result = await client.callTool({ name: 'memory_create', arguments: {
-      content: `Test ${type} memory at ${new Date().toISOString()}`,
-      type,
-      importance: 0.85,
-      tags: ['test', type]
-    }});
+    const result = await client.callTool({
+      name: 'memory_create',
+      arguments: {
+        content: `Test ${type} memory at ${new Date().toISOString()}`,
+        type,
+        importance: 0.85,
+        tags: ['test', type],
+      },
+    });
     const data = JSON.parse((result.content as any)[0].text);
     console.log(`CREATE ${type}:`, data.id);
   }
 
   // Search
   console.log('\n--- Search Results ---');
-  const search = await client.callTool({ name: 'memory_search', arguments: { limit: 5 }});
+  const search = await client.callTool({ name: 'memory_search', arguments: { limit: 5 } });
   const results = JSON.parse((search.content as any)[0].text);
   console.log('Found:', results.length, 'memories');
 
@@ -40,4 +43,4 @@ async function test() {
   console.log('\n✓ MEMORY SYSTEM FULLY OPERATIONAL');
 }
 
-test().catch(e => console.error('ERROR:', e.message));
+test().catch((e) => console.error('ERROR:', e.message));

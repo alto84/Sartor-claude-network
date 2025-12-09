@@ -24,7 +24,7 @@ async function main() {
   });
 
   // Wait a moment for MCP availability check
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   // Check backend status
   console.log('Backend Status:');
@@ -130,7 +130,7 @@ async function main() {
 }
 
 // Run the example
-main().catch(error => {
+main().catch((error) => {
   console.error('Example failed:', error);
   process.exit(1);
 });

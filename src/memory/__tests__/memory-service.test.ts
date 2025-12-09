@@ -10,7 +10,9 @@ jest.mock('@octokit/rest', () => ({
   Octokit: jest.fn(() => ({
     repos: {
       getContent: jest.fn().mockResolvedValue({ data: { content: '' } }),
-      createOrUpdateFileContents: jest.fn().mockResolvedValue({ data: { commit: { sha: 'abc123' } } }),
+      createOrUpdateFileContents: jest
+        .fn()
+        .mockResolvedValue({ data: { commit: { sha: 'abc123' } } }),
     },
   })),
 }));
@@ -92,7 +94,7 @@ describe('MemoryService Tier Tests', () => {
     const results = await memorySystem.searchMemories({
       filters: { type: [MemoryType.SEMANTIC] },
     });
-    expect(results.every(r => r.memory.type === MemoryType.SEMANTIC)).toBe(true);
+    expect(results.every((r) => r.memory.type === MemoryType.SEMANTIC)).toBe(true);
   });
 
   test('should run daily maintenance and process decay', async () => {

@@ -39,7 +39,7 @@ describe('Calculator', () => {
 `;
 
 console.log('Evidence-Based Engineering Skill - Validation');
-console.log('=' .repeat(60));
+console.log('='.repeat(60));
 console.log('\nSample Code Analysis:');
 console.log('- Contains 2 functions: add (complete), divide (incomplete with TODO)');
 console.log('- Has error handling for add() function');

@@ -11,21 +11,21 @@
  * Expert archetype - predefined optimization strategies
  */
 export type ExpertArchetype =
-  | 'performance'    // Optimize for speed and efficiency
-  | 'safety'         // Prioritize correctness and error handling
-  | 'simplicity'     // Favor clear, maintainable solutions
-  | 'robustness'     // Handle edge cases and failures gracefully
-  | 'creative'       // Explore unconventional approaches
-  | 'balanced';      // Default balanced approach
+  | 'performance' // Optimize for speed and efficiency
+  | 'safety' // Prioritize correctness and error handling
+  | 'simplicity' // Favor clear, maintainable solutions
+  | 'robustness' // Handle edge cases and failures gracefully
+  | 'creative' // Explore unconventional approaches
+  | 'balanced'; // Default balanced approach
 
 /**
  * Strategy for how the expert approaches problems
  */
 export type ExpertStrategy =
-  | 'analytical'     // Systematic, step-by-step approach
-  | 'exploratory'    // Try multiple approaches
-  | 'conservative'   // Stick to proven patterns
-  | 'aggressive';    // Push boundaries, accept more risk
+  | 'analytical' // Systematic, step-by-step approach
+  | 'exploratory' // Try multiple approaches
+  | 'conservative' // Stick to proven patterns
+  | 'aggressive'; // Push boundaries, accept more risk
 
 /**
  * Configuration for a single expert instance
@@ -129,8 +129,8 @@ export const DEFAULT_EXPERT_CONFIG: Omit<ExpertConfig, 'id' | 'name'> = {
   iterationTiebreak: true,
   preferLowIterations: true,
   temperature: 0.5,
-  taskTimeout: 30000,      // 30 seconds
-  totalTimeout: 120000,    // 2 minutes
+  taskTimeout: 30000, // 30 seconds
+  totalTimeout: 120000, // 2 minutes
   maxTimeoutErrors: 3,
   retriesPerIteration: 2,
   confidenceThreshold: 0.7,
@@ -262,11 +262,15 @@ export function validateExpertConfig(config: ExpertConfig): { valid: boolean; er
   if (!config.name) errors.push('name is required');
   if (config.temperature < 0 || config.temperature > 1) errors.push('temperature must be 0-1');
   if (config.maxIterations < 1) errors.push('maxIterations must be >= 1');
-  if (config.minIterations > config.maxIterations) errors.push('minIterations cannot exceed maxIterations');
-  if (config.confidenceThreshold < 0 || config.confidenceThreshold > 1) errors.push('confidenceThreshold must be 0-1');
-  if (config.satisfactionThreshold < 0 || config.satisfactionThreshold > 1) errors.push('satisfactionThreshold must be 0-1');
+  if (config.minIterations > config.maxIterations)
+    errors.push('minIterations cannot exceed maxIterations');
+  if (config.confidenceThreshold < 0 || config.confidenceThreshold > 1)
+    errors.push('confidenceThreshold must be 0-1');
+  if (config.satisfactionThreshold < 0 || config.satisfactionThreshold > 1)
+    errors.push('satisfactionThreshold must be 0-1');
   if (config.votingWeight < 0 || config.votingWeight > 1) errors.push('votingWeight must be 0-1');
-  if (config.selectionProbability < 0 || config.selectionProbability > 1) errors.push('selectionProbability must be 0-1');
+  if (config.selectionProbability < 0 || config.selectionProbability > 1)
+    errors.push('selectionProbability must be 0-1');
   if (config.taskTimeout < 1000) errors.push('taskTimeout must be >= 1000ms');
   if (config.totalTimeout < config.taskTimeout) errors.push('totalTimeout must be >= taskTimeout');
 

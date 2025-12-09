@@ -46,12 +46,14 @@
 ### Foundation Skills
 
 **evidence-based-validation** (`SkillTier.SPECIALIST`)
+
 - Validates claims using empirical evidence and research
 - Prevents assumption-driven errors
 - Use when: Validating technical decisions, checking assumptions
 - Estimated execution: 10-30 seconds
 
 **evidence-based-engineering** (`SkillTier.SPECIALIST`)
+
 - Applies empirical evidence to engineering decisions
 - Evaluates choices using benchmarks and case studies
 - Use when: Choosing technologies, architectural patterns
@@ -60,12 +62,14 @@
 ### Agent Coordination Skills
 
 **agent-communication** (`SkillTier.FOUNDATION`)
+
 - Inter-agent messaging with quality gates
 - Delivery confirmation and failure recovery
 - Use when: Sending tasks, coordinating workflows
 - Estimated execution: 100-500ms
 
 **multi-agent-orchestration** (`SkillTier.INFRASTRUCTURE`)
+
 - Coordinates specialized workers with intent-based delegation
 - Manages parallel execution and dependency resolution
 - Use when: Complex multi-step workflows, parallel tasks
@@ -74,12 +78,14 @@
 ### Specialist Skills
 
 **mcp-server-development** (`SkillTier.SPECIALIST`)
+
 - Build MCP servers with proper stdio discipline
 - Validates protocol compliance and security
 - Use when: Building/validating MCP tools
 - Estimated execution: 1-5 seconds
 
 **distributed-systems-debugging** (`SkillTier.SPECIALIST`)
+
 - Systematic investigation of distributed failures
 - Hypothesis testing with evidence-based reasoning
 - Use when: Race conditions, coordination failures
@@ -115,11 +121,11 @@ const result = await sendMessage({
     to: 'code-analyzer',
     from: 'orchestrator',
     payload: { action: 'analyze', files: ['/src/app.ts'] },
-    priority: 'high'
+    priority: 'high',
   },
   deliveryMode: 'unicast',
   reliability: 'at-least-once',
-  timeout: 10000
+  timeout: 10000,
 });
 ```
 
@@ -128,21 +134,18 @@ const result = await sendMessage({
 ```typescript
 // Delegate with INTENT, not instructions
 const delegation = {
-  intent: "Analyze authentication security",
+  intent: 'Analyze authentication security',
   scope: {
-    in: "Session management and token handling",
-    out: "Frontend UI components"
+    in: 'Session management and token handling',
+    out: 'Frontend UI components',
   },
   context: "We're migrating from JWT to sessions",
   successCriteria: [
-    "Identify security vulnerabilities",
-    "Assess session timeout configuration",
-    "Review CSRF protection"
+    'Identify security vulnerabilities',
+    'Assess session timeout configuration',
+    'Review CSRF protection',
   ],
-  constraints: [
-    "Analysis only (don't modify code)",
-    "Focus on production impact"
-  ]
+  constraints: ["Analysis only (don't modify code)", 'Focus on production impact'],
 };
 
 // Executive validates, synthesizes, and iterates
@@ -158,23 +161,23 @@ const memorySystem = new MemorySystemImpl(warmTier, warmTier, hotTier);
 // Three-tier memory model
 const fastMemory = {
   // Current task context (<500 tokens)
-  intent: "Fix authentication bug",
-  constraints: "Backward compatible",
-  hypothesis: "Session timeout config wrong"
+  intent: 'Fix authentication bug',
+  constraints: 'Backward compatible',
+  hypothesis: 'Session timeout config wrong',
 };
 
 const slowMemory = {
   // Session-level learnings (5-10K tokens)
-  decisions: ["Chose REST over GraphQL"],
-  patterns: ["Repository pattern used consistently"],
-  userPreferences: ["Prefers explicit over clever"]
+  decisions: ['Chose REST over GraphQL'],
+  patterns: ['Repository pattern used consistently'],
+  userPreferences: ['Prefers explicit over clever'],
 };
 
 const archiveMemory = {
   // Persistent knowledge (50K+ tokens)
-  architecture: "Microservices with event-driven communication",
-  conventions: "API versioning in URL path",
-  pitfalls: ["Don't use database triggers"]
+  architecture: 'Microservices with event-driven communication',
+  conventions: 'API versioning in URL path',
+  pitfalls: ["Don't use database triggers"],
 };
 ```
 
@@ -276,11 +279,13 @@ npm run test:integration   # Integration tests
 ## Cost Overview
 
 **Starter (100-1,000 users): $47/month**
+
 - Hot Tier (Firebase RTDB): $8/month
 - Warm Tier (Firestore + Qdrant): $35/month
 - Cold Tier (GitHub): $4/month
 
 **Per-user cost decreases with scale:**
+
 - 100 users: $0.47/user/month
 - 1,000 users: $0.095/user/month
 - 10,000 users: $0.035/user/month

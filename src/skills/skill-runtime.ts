@@ -18,7 +18,7 @@ import {
   LoadedResource,
   SkillInput,
   SkillOutput,
-  ExecutionMetrics
+  ExecutionMetrics,
 } from '../skill-types';
 
 import {
@@ -26,7 +26,7 @@ import {
   SkillRuntimeStatus,
   SkillLoaderOptions,
   SkillExecutionOptions,
-  SkillRegistryEntry
+  SkillRegistryEntry,
 } from './types';
 
 /**
@@ -70,8 +70,8 @@ export class SkillRuntime {
       summary: manifest.summary,
       triggers: manifest.triggers,
       tier: manifest.tier,
-      dependencies: manifest.dependencies.map(d => d.skillId),
-      estimatedTokens: manifest.metadata.estimatedTokens.level1
+      dependencies: manifest.dependencies.map((d) => d.skillId),
+      estimatedTokens: manifest.metadata.estimatedTokens.level1,
     };
 
     this.registry.set(manifest.id, {
@@ -79,7 +79,7 @@ export class SkillRuntime {
       summary,
       loaded: false,
       instructionsLoaded: false,
-      resourcesLoaded: []
+      resourcesLoaded: [],
     });
 
     this.summaries.set(manifest.id, summary);
@@ -91,10 +91,7 @@ export class SkillRuntime {
    * Load a skill by ID
    * Loads Level 2 instructions if not already loaded
    */
-  async loadSkill(
-    skillId: SkillId,
-    options: SkillLoaderOptions = {}
-  ): Promise<SkillManifest> {
+  async loadSkill(skillId: SkillId, options: SkillLoaderOptions = {}): Promise<SkillManifest> {
     const entry = this.registry.get(skillId);
 
     if (!entry) {
@@ -175,7 +172,7 @@ export class SkillRuntime {
         data: output.result,
         error: output.error,
         metrics: output.metrics,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
     } catch (error) {
       const endTime = Date.now();
@@ -188,7 +185,7 @@ export class SkillRuntime {
         error: {
           code: 'EXECUTION_ERROR',
           message: error instanceof Error ? error.message : String(error),
-          recoverable: false
+          recoverable: false,
         },
         metrics: {
           startTime,
@@ -196,9 +193,9 @@ export class SkillRuntime {
           durationMs,
           tokensUsed: 0,
           resourcesLoaded: 0,
-          dependenciesInvoked: 0
+          dependenciesInvoked: 0,
         },
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
     }
   }
@@ -207,7 +204,7 @@ export class SkillRuntime {
    * List all available skills
    */
   listSkills(): SkillManifest[] {
-    return Array.from(this.registry.values()).map(entry => entry.manifest);
+    return Array.from(this.registry.values()).map((entry) => entry.manifest);
   }
 
   /**
@@ -245,7 +242,7 @@ export class SkillRuntime {
    * Load skill dependencies
    */
   private async loadDependencies(manifest: SkillManifest): Promise<void> {
-    const requiredDeps = manifest.dependencies.filter(d => d.required);
+    const requiredDeps = manifest.dependencies.filter((d) => d.required);
 
     for (const dep of requiredDeps) {
       if (!this.registry.has(dep.skillId)) {
@@ -284,10 +281,7 @@ export class SkillRuntime {
   /**
    * Invoke skill logic (placeholder for actual implementation)
    */
-  private async invokeSkill(
-    manifest: SkillManifest,
-    input: unknown
-  ): Promise<SkillOutput> {
+  private async invokeSkill(manifest: SkillManifest, input: unknown): Promise<SkillOutput> {
     // This is where the actual skill execution would happen
     // In a real implementation, this would:
     // 1. Load Level 3 resources if needed
@@ -302,7 +296,7 @@ export class SkillRuntime {
     console.log(`[SkillRuntime] Input:`, input);
 
     // Simulate execution
-    await new Promise(resolve => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 100));
 
     const endTime = Date.now();
 
@@ -310,7 +304,7 @@ export class SkillRuntime {
       success: true,
       result: {
         message: `Skill ${manifest.id} executed successfully`,
-        input
+        input,
       },
       sideEffects: [],
       metrics: {
@@ -319,24 +313,21 @@ export class SkillRuntime {
         durationMs: endTime - startTime,
         tokensUsed: 0,
         resourcesLoaded: 0,
-        dependenciesInvoked: 0
-      }
+        dependenciesInvoked: 0,
+      },
     };
   }
 
   /**
    * Set skill status
    */
-  private setSkillStatus(
-    skillId: SkillId,
-    state: SkillRuntimeStatus['state']
-  ): void {
+  private setSkillStatus(skillId: SkillId, state: SkillRuntimeStatus['state']): void {
     const current = this.activeSkills.get(skillId) || {
       skillId,
       state: 'idle',
       executionCount: 0,
       errorCount: 0,
-      averageExecutionMs: 0
+      averageExecutionMs: 0,
     };
 
     current.state = state;
@@ -351,11 +342,7 @@ export class SkillRuntime {
   /**
    * Update skill metrics after execution
    */
-  private updateSkillMetrics(
-    skillId: SkillId,
-    durationMs: number,
-    success: boolean
-  ): void {
+  private updateSkillMetrics(skillId: SkillId, durationMs: number, success: boolean): void {
     const status = this.activeSkills.get(skillId);
     if (!status) return;
 
@@ -404,7 +391,7 @@ export class SkillRuntime {
       loadedSkills: loaded,
       activeSkills: active,
       totalExecutions,
-      totalErrors
+      totalErrors,
     };
   }
 }

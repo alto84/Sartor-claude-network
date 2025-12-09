@@ -8,35 +8,29 @@
  * 4. Threshold-based state transitions
  */
 
-import {
-  Memory,
-  MemoryType,
-  MemoryStatus,
-  DecayConfig,
-  DecayModifiers
-} from '../utils/types';
+import { Memory, MemoryType, MemoryStatus, DecayConfig, DecayModifiers } from '../utils/types';
 
 // ============================================================================
 // Configuration
 // ============================================================================
 
 const DEFAULT_DECAY_CONFIG: DecayConfig = {
-  base_rate: 0.1,              // 10% decay per day
-  reinforcement_boost: 0.15,   // 15% boost on access
+  base_rate: 0.1, // 10% decay per day
+  reinforcement_boost: 0.15, // 15% boost on access
 
   thresholds: {
-    soft_delete: 0.30,         // Archive threshold
-    archive: 0.15,             // Compression threshold
-    permanent_delete: 0.05     // Deletion threshold
+    soft_delete: 0.3, // Archive threshold
+    archive: 0.15, // Compression threshold
+    permanent_delete: 0.05, // Deletion threshold
   },
 
   type_modifiers: {
-    [MemoryType.EPISODIC]: 1.0,    // Normal decay
-    [MemoryType.SEMANTIC]: 0.7,    // 30% slower decay
-    [MemoryType.PROCEDURAL]: 0.5,  // 50% slower decay
-    [MemoryType.EMOTIONAL]: 0.6,   // 40% slower decay
-    [MemoryType.SYSTEM]: 0.3       // 70% slower decay
-  }
+    [MemoryType.EPISODIC]: 1.0, // Normal decay
+    [MemoryType.SEMANTIC]: 0.7, // 30% slower decay
+    [MemoryType.PROCEDURAL]: 0.5, // 50% slower decay
+    [MemoryType.EMOTIONAL]: 0.6, // 40% slower decay
+    [MemoryType.SYSTEM]: 0.3, // 70% slower decay
+  },
 };
 
 // ============================================================================
@@ -79,7 +73,7 @@ export function getImportanceModifier(importance: number): number {
   // importance 0.0 → modifier 1.0 (no reduction)
   // importance 0.5 → modifier 0.55
   // importance 1.0 → modifier 0.1 (90% reduction)
-  return 1 - (importance * 0.9);
+  return 1 - importance * 0.9;
 }
 
 /**
@@ -94,14 +88,14 @@ export function getAccessPatternModifier(memory: Memory): number {
   const hoursSinceAccess = (now.getTime() - lastAccessed.getTime()) / (1000 * 60 * 60);
 
   if (hoursSinceAccess < 24) {
-    return 0.5;  // 50% slower decay if accessed in last 24h
+    return 0.5; // 50% slower decay if accessed in last 24h
   } else if (hoursSinceAccess < 24 * 7) {
-    return 0.7;  // 30% slower decay if accessed in last 7 days
+    return 0.7; // 30% slower decay if accessed in last 7 days
   } else if (memory.access_count === 0) {
-    return 1.5;  // 50% faster decay if never accessed
+    return 1.5; // 50% faster decay if never accessed
   }
 
-  return 1.0;  // Normal decay
+  return 1.0; // Normal decay
 }
 
 /**
@@ -132,7 +126,7 @@ export function calculateDecayModifiers(
   return {
     importance: getImportanceModifier(memory.importance_score),
     access_pattern: getAccessPatternModifier(memory),
-    type: getTypeModifier(memory.type, config)
+    type: getTypeModifier(memory.type, config),
   };
 }
 
@@ -245,12 +239,8 @@ export function updateMemoryStrength(
  * @param config - Decay configuration
  * @returns True if should be archived
  */
-export function shouldArchive(
-  memory: Memory,
-  config: DecayConfig = DEFAULT_DECAY_CONFIG
-): boolean {
-  return memory.strength < config.thresholds.soft_delete &&
-         memory.status === MemoryStatus.ACTIVE;
+export function shouldArchive(memory: Memory, config: DecayConfig = DEFAULT_DECAY_CONFIG): boolean {
+  return memory.strength < config.thresholds.soft_delete && memory.status === MemoryStatus.ACTIVE;
 }
 
 /**
@@ -310,12 +300,10 @@ export function shouldDelete(
     'explicitly_saved',
     'commitment',
     'promise',
-    'personal_fact'
+    'personal_fact',
   ];
 
-  const hasProtectedTag = memory.tags.some(tag =>
-    neverForgetTags.includes(tag)
-  );
+  const hasProtectedTag = memory.tags.some((tag) => neverForgetTags.includes(tag));
 
   if (hasProtectedTag) {
     return false;
@@ -358,10 +346,10 @@ export function isProtectedMemory(memory: Memory): boolean {
     'high_importance',
     'legal',
     'privacy',
-    'procedural_knowledge'
+    'procedural_knowledge',
   ];
 
-  return memory.tags.some(tag => neverForgetTags.includes(tag));
+  return memory.tags.some((tag) => neverForgetTags.includes(tag));
 }
 
 /**
@@ -436,9 +424,9 @@ export function getDecayStats(memories: Memory[]): {
 
   return {
     averageStrength: memories.length > 0 ? totalStrength / memories.length : 0,
-    needsArchive: memories.filter(m => shouldArchive(m)).length,
-    needsDelete: memories.filter(m => shouldDelete(m)).length,
-    protected: memories.filter(m => isProtectedMemory(m)).length
+    needsArchive: memories.filter((m) => shouldArchive(m)).length,
+    needsDelete: memories.filter((m) => shouldDelete(m)).length,
+    protected: memories.filter((m) => isProtectedMemory(m)).length,
   };
 }
 

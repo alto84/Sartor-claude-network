@@ -561,7 +561,9 @@ export class SelfImprovementLoop {
             id: this.generatePatternId(),
             context,
             strategy,
-            evidence: group.filter((o) => this.extractStrategy(o) === strategy).map((o) => o.taskId),
+            evidence: group
+              .filter((o) => this.extractStrategy(o) === strategy)
+              .map((o) => o.taskId),
             successRate,
             confidenceScore: this.calculateConfidence(scores.total, successRate),
             applicableSkills: [...new Set(group.map((o) => o.skillUsed))],
@@ -721,7 +723,9 @@ export class SelfImprovementLoop {
     }
 
     if (pattern.successRate < 0.8) {
-      caveats.push(`Success rate is ${(pattern.successRate * 100).toFixed(0)}% - not always reliable`);
+      caveats.push(
+        `Success rate is ${(pattern.successRate * 100).toFixed(0)}% - not always reliable`
+      );
     }
 
     if (pattern.metadata.generalizability < 0.5) {
@@ -741,9 +745,11 @@ export class SelfImprovementLoop {
     context: string,
     relevanceScore: number
   ): string {
-    return `This pattern matches your context with ${(relevanceScore * 100).toFixed(0)}% relevance. ` +
+    return (
+      `This pattern matches your context with ${(relevanceScore * 100).toFixed(0)}% relevance. ` +
       `It has been successful in ${pattern.evidence.length} similar situations ` +
-      `with a ${(pattern.successRate * 100).toFixed(0)}% success rate.`;
+      `with a ${(pattern.successRate * 100).toFixed(0)}% success rate.`
+    );
   }
 
   private analyzeFeedback(skillId: string, feedbackList: Feedback[]): any {

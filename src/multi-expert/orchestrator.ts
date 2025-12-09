@@ -16,13 +16,30 @@
  * @module multi-expert/orchestrator
  */
 
-import { ExecutionEngine, ExpertTask, ExpertResult, MultiExpertResult, createMockExecutor, ExpertExecutor } from './execution-engine';
-import { ExpertConfig, createExpertPool, ExpertArchetype, createExpertConfig } from './expert-config';
+import {
+  ExecutionEngine,
+  ExpertTask,
+  ExpertResult,
+  MultiExpertResult,
+  createMockExecutor,
+  ExpertExecutor,
+} from './execution-engine';
+import {
+  ExpertConfig,
+  createExpertPool,
+  ExpertArchetype,
+  createExpertConfig,
+} from './expert-config';
 import { VotingSystem, quickVote, VotingResult } from './voting-system';
 import { DiversityScorer, selectDiverseResults, calculatePoolDiversity } from './diversity-scorer';
 import { SoftScorer, rankResults, SoftScore, PoolStats } from './soft-scorer';
 import { FeedbackLoop, FeedbackCollection, createFeedbackLoop } from './feedback-loop';
-import { MemoryIntegration, ExpertMemory, InMemoryMemoryClient, MemoryClient } from './memory-integration';
+import {
+  MemoryIntegration,
+  ExpertMemory,
+  InMemoryMemoryClient,
+  MemoryClient,
+} from './memory-integration';
 
 /**
  * Orchestrator configuration
@@ -209,9 +226,10 @@ export class Orchestrator {
     }
 
     // 7. Determine winner
-    let winner = expertResults.bestResult!;
-    let winnerScore = scoredResults.find((s) => s.result.expertId === winner.expertId)?.score
-      || this.softScorer.score(winner);
+    const winner = expertResults.bestResult!;
+    const winnerScore =
+      scoredResults.find((s) => s.result.expertId === winner.expertId)?.score ||
+      this.softScorer.score(winner);
 
     // 8. Run feedback loop if enabled
     let feedback: FeedbackCollection[] | undefined;
@@ -274,10 +292,7 @@ export class Orchestrator {
   /**
    * Execute with custom experts
    */
-  async executeWithExperts(
-    task: ExpertTask,
-    experts: ExpertConfig[]
-  ): Promise<OrchestratedResult> {
+  async executeWithExperts(task: ExpertTask, experts: ExpertConfig[]): Promise<OrchestratedResult> {
     const startTime = Date.now();
     const memoryIds: string[] = [];
 
@@ -372,9 +387,7 @@ export class Orchestrator {
 /**
  * Create orchestrator with mock executor (for testing)
  */
-export function createTestOrchestrator(
-  config?: Partial<OrchestratorConfig>
-): Orchestrator {
+export function createTestOrchestrator(config?: Partial<OrchestratorConfig>): Orchestrator {
   return new Orchestrator(createMockExecutor(), config);
 }
 

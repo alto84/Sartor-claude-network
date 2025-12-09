@@ -55,7 +55,10 @@ interface CommunicationStats {
 // Mock implementation interfaces (actual implementation will replace these)
 interface AgentCommunicationSystem {
   send(message: Omit<Message, 'id' | 'timestamp'>): Promise<MessageAcknowledgment>;
-  broadcast(message: Omit<Message, 'id' | 'timestamp' | 'to'>, targets: string[]): Promise<MessageAcknowledgment[]>;
+  broadcast(
+    message: Omit<Message, 'id' | 'timestamp' | 'to'>,
+    targets: string[]
+  ): Promise<MessageAcknowledgment[]>;
   receive(agentId: string): Promise<Message | null>;
   validateMessage(message: any): { valid: boolean; errors: string[] };
   getStats(): CommunicationStats;
@@ -65,7 +68,9 @@ interface AgentCommunicationSystem {
 }
 
 // Mock factory function
-const createMockCommunicationSystem = (config: CommunicationConfig = {}): AgentCommunicationSystem => {
+const createMockCommunicationSystem = (
+  config: CommunicationConfig = {}
+): AgentCommunicationSystem => {
   const messages: Map<string, Message[]> = new Map();
   const deadLetterQueue: Message[] = [];
   let stats: CommunicationStats = {
@@ -109,7 +114,7 @@ const createMockCommunicationSystem = (config: CommunicationConfig = {}): AgentC
       };
 
       // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 10));
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
       // Store message for recipient
       const recipient = fullMessage.to as string;
@@ -284,7 +289,7 @@ describe('Agent Communication System', () => {
         // Mock a slow send operation
         const originalSend = slowCommSystem.send.bind(slowCommSystem);
         slowCommSystem.send = jest.fn(async (msg) => {
-          await new Promise(resolve => setTimeout(resolve, 200));
+          await new Promise((resolve) => setTimeout(resolve, 200));
           return originalSend(msg);
         });
 
@@ -300,9 +305,7 @@ describe('Agent Communication System', () => {
         try {
           await Promise.race([
             slowCommSystem.send(message),
-            new Promise((_, reject) =>
-              setTimeout(() => reject(new Error('Timeout')), 100)
-            ),
+            new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 100)),
           ]);
           fail('Should have timed out');
         } catch (error) {
@@ -352,7 +355,7 @@ describe('Agent Communication System', () => {
             lastError = error as Error;
             if (i < maxRetries) {
               const backoff = 50 * Math.pow(2, i);
-              await new Promise(resolve => setTimeout(resolve, backoff));
+              await new Promise((resolve) => setTimeout(resolve, backoff));
             }
           }
         }
@@ -397,7 +400,7 @@ describe('Agent Communication System', () => {
             }
             lastTime = now;
             const backoff = 100 * Math.pow(2, i);
-            await new Promise(resolve => setTimeout(resolve, backoff));
+            await new Promise((resolve) => setTimeout(resolve, backoff));
           }
         }
 
@@ -521,7 +524,7 @@ describe('Agent Communication System', () => {
 
         const result = commSystem.validateMessage(message);
         expect(result.valid).toBe(false);
-        expect(result.errors.some(e => e.includes('must be a string'))).toBe(true);
+        expect(result.errors.some((e) => e.includes('must be a string'))).toBe(true);
       });
     });
   });
@@ -539,7 +542,7 @@ describe('Agent Communication System', () => {
         const acknowledgments = await commSystem.broadcast(message, targets);
 
         expect(acknowledgments).toHaveLength(3);
-        acknowledgments.forEach(ack => {
+        acknowledgments.forEach((ack) => {
           expect(ack.status).toBe('received');
           expect(ack.messageId).toBeDefined();
         });
@@ -599,8 +602,8 @@ describe('Agent Communication System', () => {
 
         expect(acknowledgments).toHaveLength(3);
 
-        const successful = acknowledgments.filter(ack => ack.status === 'received');
-        const failed = acknowledgments.filter(ack => ack.status === 'failed');
+        const successful = acknowledgments.filter((ack) => ack.status === 'received');
+        const failed = acknowledgments.filter((ack) => ack.status === 'failed');
 
         expect(successful).toHaveLength(2);
         expect(failed).toHaveLength(1);
@@ -628,8 +631,8 @@ describe('Agent Communication System', () => {
         const acknowledgments = await failingCommSystem.broadcast(message, targets);
 
         const failedTargets = acknowledgments
-          .filter(ack => ack.status === 'failed')
-          .map(ack => ack.messageId.replace('failed-', ''));
+          .filter((ack) => ack.status === 'failed')
+          .map((ack) => ack.messageId.replace('failed-', ''));
 
         expect(failedTargets).toContain('agent-2');
         expect(failedTargets).toContain('agent-4');
@@ -739,8 +742,7 @@ describe('Agent Communication System', () => {
         };
 
         // Send invalid message
-        await expect(commSystem.send({ ...message, from: undefined as any }))
-          .rejects.toThrow();
+        await expect(commSystem.send({ ...message, from: undefined as any })).rejects.toThrow();
 
         // System should still work after error
         const ack = await commSystem.send(message);
@@ -769,11 +771,11 @@ describe('Agent Communication System', () => {
         payload: { index: i },
       }));
 
-      const sendPromises = messages.map(msg => commSystem.send(msg));
+      const sendPromises = messages.map((msg) => commSystem.send(msg));
       const acknowledgments = await Promise.all(sendPromises);
 
       expect(acknowledgments).toHaveLength(100);
-      acknowledgments.forEach(ack => {
+      acknowledgments.forEach((ack) => {
         expect(ack.status).toBe('received');
       });
 

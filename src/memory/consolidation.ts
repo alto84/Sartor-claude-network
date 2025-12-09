@@ -15,7 +15,7 @@ import {
   ConsolidationStrategy,
   ConsolidatedMemory,
   LLMConsolidationRequest,
-  LLMConsolidationResponse
+  LLMConsolidationResponse,
 } from '../utils/types';
 import { cosineSimilarity } from './importance-scoring';
 
@@ -24,10 +24,10 @@ import { cosineSimilarity } from './importance-scoring';
 // ============================================================================
 
 const DEFAULT_CONSOLIDATION_CONFIG: ConsolidationConfig = {
-  trigger_count: 10000,          // Consolidate when memory count exceeds this
-  similarity_threshold: 0.7,     // Cosine similarity threshold for clustering
-  temporal_proximity_hours: 1,   // Memories within 1 hour are related
-  compression_target: 0.5        // Target 50% reduction
+  trigger_count: 10000, // Consolidate when memory count exceeds this
+  similarity_threshold: 0.7, // Cosine similarity threshold for clustering
+  temporal_proximity_hours: 1, // Memories within 1 hour are related
+  compression_target: 0.5, // Target 50% reduction
 };
 
 // ============================================================================
@@ -226,7 +226,7 @@ export function clusterMemories(
 
     // Create cluster
     const clusterMemories = [memory, ...related];
-    clusterMemories.forEach(m => processed.add(m.id));
+    clusterMemories.forEach((m) => processed.add(m.id));
 
     // Calculate centroid (average embedding)
     const centroid = calculateCentroid(clusterMemories);
@@ -235,10 +235,10 @@ export function clusterMemories(
     const avgSimilarity = calculateAverageSimilarity(clusterMemories);
 
     // Get time span
-    const timestamps = clusterMemories.map(m => new Date(m.created_at).getTime());
+    const timestamps = clusterMemories.map((m) => new Date(m.created_at).getTime());
     const timeSpan = {
       start: new Date(Math.min(...timestamps)),
-      end: new Date(Math.max(...timestamps))
+      end: new Date(Math.max(...timestamps)),
     };
 
     clusters.push({
@@ -246,7 +246,7 @@ export function clusterMemories(
       memories: clusterMemories,
       centroid,
       similarity_score: avgSimilarity,
-      time_span: timeSpan
+      time_span: timeSpan,
     });
   }
 
@@ -258,7 +258,7 @@ export function clusterMemories(
  */
 function calculateCentroid(memories: Memory[]): number[] | undefined {
   const validEmbeddings = memories
-    .map(m => m.embedding)
+    .map((m) => m.embedding)
     .filter((e): e is number[] => e !== undefined);
 
   if (validEmbeddings.length === 0) {
@@ -315,9 +315,7 @@ function calculateAverageSimilarity(memories: Memory[]): number {
  * @param cluster - Memory cluster to consolidate
  * @returns Consolidation strategy
  */
-export function determineConsolidationStrategy(
-  cluster: MemoryCluster
-): ConsolidationStrategy {
+export function determineConsolidationStrategy(cluster: MemoryCluster): ConsolidationStrategy {
   const size = cluster.memories.length;
 
   // Singleton - no consolidation needed
@@ -325,7 +323,7 @@ export function determineConsolidationStrategy(
     return {
       action: 'skip',
       cluster,
-      reason: 'Single memory, no consolidation needed'
+      reason: 'Single memory, no consolidation needed',
     };
   }
 
@@ -334,21 +332,21 @@ export function determineConsolidationStrategy(
     return {
       action: 'link',
       cluster,
-      reason: 'Small cluster, preserve all memories with links'
+      reason: 'Small cluster, preserve all memories with links',
     };
   }
 
   // Check importance distribution
-  const importanceScores = cluster.memories.map(m => m.importance_score);
+  const importanceScores = cluster.memories.map((m) => m.importance_score);
   const avgImportance = importanceScores.reduce((a, b) => a + b, 0) / size;
-  const highImportance = importanceScores.filter(s => s > 0.6);
+  const highImportance = importanceScores.filter((s) => s > 0.6);
 
   // All low importance - summarize everything
   if (avgImportance < 0.4) {
     return {
       action: 'summarize',
       cluster,
-      reason: 'Low average importance, safe to summarize all'
+      reason: 'Low average importance, safe to summarize all',
     };
   }
 
@@ -357,7 +355,7 @@ export function determineConsolidationStrategy(
     return {
       action: 'keep_and_summarize',
       cluster,
-      reason: 'Mixed importance, keep important memories and summarize others'
+      reason: 'Mixed importance, keep important memories and summarize others',
     };
   }
 
@@ -367,7 +365,7 @@ export function determineConsolidationStrategy(
     return {
       action: 'summarize',
       cluster,
-      reason: 'Temporal sequence detected, create narrative summary'
+      reason: 'Temporal sequence detected, create narrative summary',
     };
   }
 
@@ -375,7 +373,7 @@ export function determineConsolidationStrategy(
   return {
     action: 'summarize',
     cluster,
-    reason: 'Large cluster with similar content'
+    reason: 'Large cluster with similar content',
   };
 }
 
@@ -397,8 +395,9 @@ function isTemporalSequence(cluster: MemoryCluster): boolean {
 
   const gaps: number[] = [];
   for (let i = 1; i < sortedByTime.length; i++) {
-    const gap = new Date(sortedByTime[i].created_at).getTime() -
-                new Date(sortedByTime[i - 1].created_at).getTime();
+    const gap =
+      new Date(sortedByTime[i].created_at).getTime() -
+      new Date(sortedByTime[i - 1].created_at).getTime();
     gaps.push(gap);
   }
 
@@ -423,11 +422,11 @@ function isTemporalSequence(cluster: MemoryCluster): boolean {
  * @returns Updated memories
  */
 export function linkMemories(cluster: MemoryCluster): Memory[] {
-  const memoryIds = cluster.memories.map(m => m.id);
+  const memoryIds = cluster.memories.map((m) => m.id);
 
   // Add bidirectional links
   for (const memory of cluster.memories) {
-    const otherIds = memoryIds.filter(id => id !== memory.id);
+    const otherIds = memoryIds.filter((id) => id !== memory.id);
     memory.links = [...new Set([...memory.links, ...otherIds])];
   }
 
@@ -441,10 +440,12 @@ export function generateConsolidationPrompt(
   memories: Memory[],
   strategy: 'summarize' | 'narrative'
 ): string {
-  const memoryTexts = memories.map((m, idx) => {
-    const date = new Date(m.created_at).toISOString();
-    return `[${idx + 1}] (${date})\n${m.content}`;
-  }).join('\n\n');
+  const memoryTexts = memories
+    .map((m, idx) => {
+      const date = new Date(m.created_at).toISOString();
+      return `[${idx + 1}] (${date})\n${m.content}`;
+    })
+    .join('\n\n');
 
   if (strategy === 'narrative') {
     return `Consolidate these related memories into a cohesive narrative summary:
@@ -497,18 +498,18 @@ export async function consolidateWithLLM(
   );
 
   // Mock response
-  const summary = request.memories.map(m => m.content).join(' ');
+  const summary = request.memories.map((m) => m.content).join(' ');
   const consolidated: ConsolidatedMemory = {
     summary: `Consolidated: ${summary.substring(0, 200)}...`,
     key_points: ['Point 1', 'Point 2'],
-    original_ids: request.memories.map(m => m.id),
+    original_ids: request.memories.map((m) => m.id),
     time_span: 'Recent',
-    importance_score: Math.max(...request.memories.map(m => m.importance_score))
+    importance_score: Math.max(...request.memories.map((m) => m.importance_score)),
   };
 
   return {
     consolidated,
-    tokens_used: 500
+    tokens_used: 500,
   };
 }
 
@@ -531,33 +532,30 @@ export async function executeConsolidation(
     case 'summarize': {
       const response = await consolidateWithLLM({
         memories: strategy.cluster.memories,
-        strategy: 'summarize'
+        strategy: 'summarize',
       });
 
       // Create new consolidated memory
-      const consolidated = createConsolidatedMemory(
-        response.consolidated,
-        strategy.cluster
-      );
+      const consolidated = createConsolidatedMemory(response.consolidated, strategy.cluster);
 
       return consolidated;
     }
 
     case 'keep_and_summarize': {
       // Keep high-importance memories
-      const toKeep = strategy.cluster.memories.filter(m => m.importance_score > 0.6);
-      const toSummarize = strategy.cluster.memories.filter(m => m.importance_score <= 0.6);
+      const toKeep = strategy.cluster.memories.filter((m) => m.importance_score > 0.6);
+      const toSummarize = strategy.cluster.memories.filter((m) => m.importance_score <= 0.6);
 
       if (toSummarize.length > 0) {
         const response = await consolidateWithLLM({
           memories: toSummarize,
-          strategy: 'summarize'
+          strategy: 'summarize',
         });
 
-        const summary = createConsolidatedMemory(
-          response.consolidated,
-          { ...strategy.cluster, memories: toSummarize }
-        );
+        const summary = createConsolidatedMemory(response.consolidated, {
+          ...strategy.cluster,
+          memories: toSummarize,
+        });
 
         return [...toKeep, summary];
       }
@@ -596,12 +594,12 @@ function createConsolidatedMemory(
     embedding: cluster.centroid,
     embedding_model: cluster.memories[0].embedding_model,
 
-    tags: [...new Set(cluster.memories.flatMap(m => m.tags)), 'consolidated'],
+    tags: [...new Set(cluster.memories.flatMap((m) => m.tags)), 'consolidated'],
     conversation_id: cluster.memories[0].conversation_id,
     user_id: cluster.memories[0].user_id,
 
     links: [],
-    consolidated_from: consolidated.original_ids
+    consolidated_from: consolidated.original_ids,
   };
 }
 
@@ -619,7 +617,7 @@ export function calculateCompressionRatio(
     return 0;
   }
 
-  return 1 - (consolidatedSize / originalSize);
+  return 1 - consolidatedSize / originalSize;
 }
 
 // ============================================================================

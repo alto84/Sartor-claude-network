@@ -4,5 +4,5 @@
 export {
   RefinementMemoryBridge,
   createBridge,
-  type RefinementRecord
+  type RefinementRecord,
 } from './refinement-memory-bridge';

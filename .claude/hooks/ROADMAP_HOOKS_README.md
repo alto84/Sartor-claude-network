@@ -33,6 +33,7 @@ Loop Continues...
 **Purpose:** Automatically inject roadmap context into every agent session
 
 **How it works:**
+
 1. Reads `/home/user/Sartor-claude-network/IMPLEMENTATION_ORDER.md`
 2. Determines current phase by checking task completion checkboxes
 3. Counts completed vs. total tasks in current phase
@@ -40,6 +41,7 @@ Loop Continues...
 5. Outputs formatted context to stderr for agent awareness
 
 **Output Format:**
+
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [ROADMAP CONTEXT]
@@ -52,11 +54,13 @@ Key Pattern: Quality gates → Hooks → Standards → Enforcement
 ```
 
 **State Management:**
+
 - Checks `.claude/.roadmap-state` file for manually set phase
 - Falls back to automatic detection based on checkbox status
 - Can be overridden by creating `.claude/.roadmap-state` with phase number (0-5)
 
 **Key Patterns by Phase:**
+
 - Phase 0: Quality gates → Hooks → Standards → Enforcement
 - Phase 1: Evidence-Based Validation → Self-Validating Skills
 - Phase 2: Communication → Orchestration → Coordination
@@ -69,6 +73,7 @@ Key Pattern: Quality gates → Hooks → Standards → Enforcement
 **Purpose:** Detect task completion and record outcomes for self-improvement
 
 **How it works:**
+
 1. Monitors Write, Edit, and Bash tool usage
 2. Applies heuristics to detect task completion:
    - **Write tool:** New skill files, test files, source files
@@ -79,6 +84,7 @@ Key Pattern: Quality gates → Hooks → Standards → Enforcement
 5. Suggests next task from roadmap
 
 **Output Format:**
+
 ```
 [COMPLETION] Detected potential task completion: Test execution completed
 [COMPLETION] To mark complete, manually edit: /home/user/Sartor-claude-network/IMPLEMENTATION_ORDER.md
@@ -95,6 +101,7 @@ Logged to: /home/user/Sartor-claude-network/.claude/.task-completion-log
 **Data Files:**
 
 #### `.task-completion-log` (CSV format)
+
 ```
 timestamp|tool|task|outcome
 2025-12-06T21:46:15Z|Bash|Test execution completed|success
@@ -102,12 +109,14 @@ timestamp|tool|task|outcome
 ```
 
 #### `.learnings.jsonl` (JSON Lines format)
+
 ```json
 {"timestamp":"2025-12-06T21:46:15Z","tool":"Bash","task":"Test execution completed","outcome":"success"}
 {"timestamp":"2025-12-06T21:50:32Z","tool":"Write","task":"Created deliverable: skill.md","outcome":"success"}
 ```
 
 **Task Detection Heuristics:**
+
 - Skill file creation: `*.claude/skills/*/*.md`
 - Test file creation: `tests/**/*.test.{js,ts}`
 - Source file creation: `src/**/*.{js,ts}`
@@ -116,6 +125,7 @@ timestamp|tool|task|outcome
 - Milestone commits: `git commit`
 
 **Learning Extraction:**
+
 - Write tool → "Created new file - verify tests and documentation added"
 - Edit tool → "Modified existing file - verify quality hooks passed"
 - Bash (test) → "Tests executed - verify coverage maintained at 85%+"
@@ -171,6 +181,7 @@ The hooks are registered in `.claude/settings.json`:
 ### Automatic Operation
 
 Hooks run automatically:
+
 - **SessionStart:** Runs when Claude Code session starts
 - **PostToolUse:** Runs after Write, Edit, or Bash tool usage
 
@@ -191,27 +202,32 @@ rm .claude/.roadmap-state
 ### Viewing Logs
 
 **Task completion log:**
+
 ```bash
 cat .claude/.task-completion-log
 ```
 
 **Learnings (JSONL):**
+
 ```bash
 cat .claude/.learnings.jsonl
 ```
 
 **Parse learnings with jq:**
+
 ```bash
 cat .claude/.learnings.jsonl | jq .
 ```
 
 **Filter by tool:**
+
 ```bash
 grep "Bash" .claude/.task-completion-log
 cat .claude/.learnings.jsonl | jq 'select(.tool == "Bash")'
 ```
 
 **Count completions by tool:**
+
 ```bash
 cat .claude/.learnings.jsonl | jq -r '.tool' | sort | uniq -c
 ```
@@ -219,11 +235,13 @@ cat .claude/.learnings.jsonl | jq -r '.tool' | sort | uniq -c
 ### Testing Hooks
 
 **Test inject-roadmap.sh:**
+
 ```bash
 /home/user/Sartor-claude-network/.claude/hooks/inject-roadmap.sh 2>&1
 ```
 
 **Test record-completion.sh:**
+
 ```bash
 # Simulate Write tool
 /home/user/Sartor-claude-network/.claude/hooks/record-completion.sh Write /path/to/file.md
@@ -246,11 +264,13 @@ The system enables continuous learning:
 ### Example Analysis
 
 **Find most common task types:**
+
 ```bash
 cat .claude/.learnings.jsonl | jq -r '.task' | sort | uniq -c | sort -rn
 ```
 
 **Calculate success rate:**
+
 ```bash
 total=$(cat .claude/.learnings.jsonl | wc -l)
 success=$(cat .claude/.learnings.jsonl | jq -r 'select(.outcome == "success")' | wc -l)
@@ -258,6 +278,7 @@ echo "scale=2; ($success / $total) * 100" | bc
 ```
 
 **Time series analysis:**
+
 ```bash
 cat .claude/.learnings.jsonl | jq -r '[.timestamp, .tool, .outcome] | @csv'
 ```
@@ -265,18 +286,21 @@ cat .claude/.learnings.jsonl | jq -r '[.timestamp, .tool, .outcome] | @csv'
 ## Benefits
 
 ### For Agents
+
 - **Context Awareness:** Every agent knows current phase and priorities
 - **Alignment:** All agents work toward same roadmap goals
 - **Learning:** Agents contribute to collective knowledge
 - **Efficiency:** No need to ask "what should I work on?"
 
 ### For Users
+
 - **Transparency:** See what agents are learning
 - **Progress Tracking:** Automatic task completion logging
 - **Data-Driven:** JSONL format enables analysis
 - **Continuous Improvement:** System gets better over time
 
 ### For System
+
 - **Self-Documenting:** Learnings create audit trail
 - **Pattern Recognition:** Data reveals successful approaches
 - **Quality Feedback:** Detect recurring issues
@@ -302,6 +326,7 @@ cp .claude/.learnings.jsonl .claude/.learnings.jsonl.$timestamp
 ### Performance
 
 Hooks are designed for minimal overhead:
+
 - **inject-roadmap.sh:** <100ms (runs once per session)
 - **record-completion.sh:** <50ms (runs after tool use)
 - **Non-blocking:** Don't delay agent operations
@@ -316,6 +341,7 @@ set -x  # Print commands as they execute
 ```
 
 Check hook execution:
+
 ```bash
 # Claude Code logs show hook output
 # Look for [ROADMAP CONTEXT] and [TASK COMPLETION RECORDED] markers
@@ -390,6 +416,7 @@ get_key_pattern() {
 ## Future Enhancements
 
 Potential improvements:
+
 - **ML-based learning:** Train model on `.learnings.jsonl` data
 - **Predictive suggestions:** Recommend tasks based on patterns
 - **Automated roadmap updates:** Mark checkboxes automatically (with validation)

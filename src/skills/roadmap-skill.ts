@@ -72,16 +72,16 @@ const ROADMAP_PHASES: RoadmapPhase[] = [
       'Git repository initialized',
       'Claude Code CLI available',
       'Project structure defined',
-      'Research documentation complete'
+      'Research documentation complete',
     ],
     exitConditions: [
       'All hooks executable and tested',
       'Hooks successfully block bad commits',
       'Test infrastructure runs successfully',
       'Quality standards documented and agreed upon',
-      'Team can explain quality philosophy'
+      'Team can explain quality philosophy',
     ],
-    tasks: []
+    tasks: [],
   },
   {
     id: 'phase-1',
@@ -93,7 +93,7 @@ const ROADMAP_PHASES: RoadmapPhase[] = [
     entryConditions: [
       'Phase 0 complete (hooks active)',
       'Test infrastructure functional',
-      'Quality standards defined'
+      'Quality standards defined',
     ],
     exitConditions: [
       'Evidence-Based Validation skill fully implemented and tested',
@@ -101,9 +101,9 @@ const ROADMAP_PHASES: RoadmapPhase[] = [
       'Skills successfully validate each other',
       'All tests pass with 85%+ coverage',
       'Skills used to validate their own implementation',
-      'Documentation complete with examples'
+      'Documentation complete with examples',
     ],
-    tasks: []
+    tasks: [],
   },
   {
     id: 'phase-2',
@@ -115,7 +115,7 @@ const ROADMAP_PHASES: RoadmapPhase[] = [
     entryConditions: [
       'Phase 1 complete (foundation skills active)',
       'Foundation skills successfully validate test cases',
-      'Team confident in Evidence-Based Validation'
+      'Team confident in Evidence-Based Validation',
     ],
     exitConditions: [
       'Agent Communication System fully implemented and tested',
@@ -123,9 +123,9 @@ const ROADMAP_PHASES: RoadmapPhase[] = [
       'Integration tests demonstrate skills working together',
       'Documentation includes workflow diagrams',
       'Performance benchmarks established',
-      'All tests pass with 85%+ coverage'
+      'All tests pass with 85%+ coverage',
     ],
-    tasks: []
+    tasks: [],
   },
   {
     id: 'phase-3',
@@ -137,7 +137,7 @@ const ROADMAP_PHASES: RoadmapPhase[] = [
     entryConditions: [
       'Phase 2 complete (infrastructure skills active)',
       'Orchestration successfully coordinates test agents',
-      'Communication system proven reliable'
+      'Communication system proven reliable',
     ],
     exitConditions: [
       'All three tracks complete and tested',
@@ -145,9 +145,9 @@ const ROADMAP_PHASES: RoadmapPhase[] = [
       'Integration test orchestrates all skills successfully',
       'Documentation complete for each skill',
       'Performance benchmarks recorded',
-      'All tests pass with 85%+ coverage'
+      'All tests pass with 85%+ coverage',
     ],
-    tasks: []
+    tasks: [],
   },
   {
     id: 'phase-4',
@@ -160,7 +160,7 @@ const ROADMAP_PHASES: RoadmapPhase[] = [
       'Phases 1-3 complete (all skills operational)',
       'Skills successfully orchestrated in integration tests',
       'Firebase project created and configured',
-      'Vector database selected and provisioned'
+      'Vector database selected and provisioned',
     ],
     exitConditions: [
       'All three tiers implemented and tested',
@@ -169,9 +169,9 @@ const ROADMAP_PHASES: RoadmapPhase[] = [
       'Automatic archival working',
       'Performance meets requirements (<100ms hot, <500ms warm, <2s cold)',
       'All tests pass with 85%+ coverage',
-      'Validated by all 7 skills'
+      'Validated by all 7 skills',
     ],
-    tasks: []
+    tasks: [],
   },
   {
     id: 'phase-5',
@@ -184,7 +184,7 @@ const ROADMAP_PHASES: RoadmapPhase[] = [
       'All skills operational (Phase 1-3)',
       'Memory system complete (Phase 4)',
       'System integration tests passing',
-      'Performance benchmarks established'
+      'Performance benchmarks established',
     ],
     exitConditions: [
       'Skills integrated with memory system',
@@ -194,10 +194,10 @@ const ROADMAP_PHASES: RoadmapPhase[] = [
       'Performance meets requirements',
       'Self-improvement successfully improves system',
       'All components validated by foundation skills',
-      'Documentation complete'
+      'Documentation complete',
     ],
-    tasks: []
-  }
+    tasks: [],
+  },
 ];
 
 // Define specific tasks for each phase
@@ -209,15 +209,16 @@ const ROADMAP_TASKS: RoadmapTask[] = [
     description: 'Implement Hot Tier (Firebase Realtime Database) - Active agent state storage',
     status: 'pending',
     priority: 1,
-    estimatedHours: 40
+    estimatedHours: 40,
   },
   {
     id: 'task-4-2',
     phaseId: 'phase-4',
-    description: 'Implement Warm Tier (Firestore + Vector Database) - Conversation history and semantic search',
+    description:
+      'Implement Warm Tier (Firestore + Vector Database) - Conversation history and semantic search',
     status: 'pending',
     priority: 2,
-    estimatedHours: 60
+    estimatedHours: 60,
   },
   {
     id: 'task-4-3',
@@ -225,7 +226,7 @@ const ROADMAP_TASKS: RoadmapTask[] = [
     description: 'Implement Cold Tier (GitHub Storage) - Long-term knowledge storage',
     status: 'pending',
     priority: 3,
-    estimatedHours: 40
+    estimatedHours: 40,
   },
   {
     id: 'task-4-4',
@@ -233,7 +234,7 @@ const ROADMAP_TASKS: RoadmapTask[] = [
     description: 'Create memory system integration tests - Test data flow Hot → Warm → Cold',
     status: 'pending',
     priority: 4,
-    estimatedHours: 20
+    estimatedHours: 20,
   },
   // Phase 5 Tasks
   {
@@ -242,15 +243,16 @@ const ROADMAP_TASKS: RoadmapTask[] = [
     description: 'Integrate skills with memory system - Enable skills to query and store in memory',
     status: 'pending',
     priority: 1,
-    estimatedHours: 30
+    estimatedHours: 30,
   },
   {
     id: 'task-5-2',
     phaseId: 'phase-5',
-    description: 'Implement Executive Claude orchestration - Task decomposition and skill selection',
+    description:
+      'Implement Executive Claude orchestration - Task decomposition and skill selection',
     status: 'pending',
     priority: 2,
-    estimatedHours: 40
+    estimatedHours: 40,
   },
   {
     id: 'task-5-3',
@@ -258,7 +260,7 @@ const ROADMAP_TASKS: RoadmapTask[] = [
     description: 'Activate self-improvement loop - Performance monitoring and pattern extraction',
     status: 'pending',
     priority: 3,
-    estimatedHours: 50
+    estimatedHours: 50,
   },
   {
     id: 'task-5-4',
@@ -266,8 +268,8 @@ const ROADMAP_TASKS: RoadmapTask[] = [
     description: 'Create end-to-end system tests - Full workflow validation',
     status: 'pending',
     priority: 4,
-    estimatedHours: 30
-  }
+    estimatedHours: 30,
+  },
 ];
 
 // ============================================================================
@@ -279,11 +281,7 @@ export class RoadmapManager {
   private stateFilePath: string;
 
   constructor(stateFilePath?: string) {
-    this.stateFilePath = stateFilePath || path.join(
-      process.cwd(),
-      '.claude',
-      'roadmap-state.json'
-    );
+    this.stateFilePath = stateFilePath || path.join(process.cwd(), '.claude', 'roadmap-state.json');
     this.state = this.loadState();
   }
 
@@ -301,7 +299,7 @@ export class RoadmapManager {
           currentPhase: parsed.currentPhase,
           phases: new Map(Object.entries(parsed.phases || {})),
           tasks: new Map(Object.entries(parsed.tasks || {})),
-          lastUpdated: parsed.lastUpdated
+          lastUpdated: parsed.lastUpdated,
         };
       }
     } catch (error) {
@@ -346,7 +344,7 @@ export class RoadmapManager {
       currentPhase,
       phases: phasesMap,
       tasks: tasksMap,
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
     };
   }
 
@@ -364,14 +362,10 @@ export class RoadmapManager {
         currentPhase: this.state.currentPhase,
         phases: Object.fromEntries(this.state.phases),
         tasks: Object.fromEntries(this.state.tasks),
-        lastUpdated: new Date().toISOString()
+        lastUpdated: new Date().toISOString(),
       };
 
-      fs.writeFileSync(
-        this.stateFilePath,
-        JSON.stringify(data, null, 2),
-        'utf-8'
-      );
+      fs.writeFileSync(this.stateFilePath, JSON.stringify(data, null, 2), 'utf-8');
     } catch (error) {
       console.error('Failed to save roadmap state:', error);
     }
@@ -403,7 +397,7 @@ export class RoadmapManager {
 
     // Get pending tasks from current phase
     const pendingTasks = currentPhase.tasks
-      .filter(task => task.status === 'pending')
+      .filter((task) => task.status === 'pending')
       .sort((a, b) => (a.priority || 999) - (b.priority || 999))
       .slice(0, limit);
 
@@ -444,7 +438,7 @@ export class RoadmapManager {
     // Update task in phase
     const phase = this.state.phases.get(task.phaseId);
     if (phase) {
-      const phaseTask = phase.tasks.find(t => t.id === taskId);
+      const phaseTask = phase.tasks.find((t) => t.id === taskId);
       if (phaseTask) {
         phaseTask.status = status;
         if (assignedAgent !== undefined) {
@@ -467,15 +461,13 @@ export class RoadmapManager {
     const phase = this.state.phases.get(phaseId);
     if (!phase) return;
 
-    const allTasksCompleted = phase.tasks.every(
-      task => task.status === 'completed'
-    );
+    const allTasksCompleted = phase.tasks.every((task) => task.status === 'completed');
 
     if (allTasksCompleted && phase.status !== 'completed') {
       phase.status = 'completed';
 
       // Move to next phase if available
-      const phaseIndex = ROADMAP_PHASES.findIndex(p => p.id === phaseId);
+      const phaseIndex = ROADMAP_PHASES.findIndex((p) => p.id === phaseId);
       if (phaseIndex >= 0 && phaseIndex < ROADMAP_PHASES.length - 1) {
         const nextPhase = ROADMAP_PHASES[phaseIndex + 1];
         this.state.currentPhase = nextPhase.id;
@@ -497,8 +489,9 @@ export class RoadmapManager {
     }
 
     const totalTasks = Array.from(this.state.tasks.values()).length;
-    const completedTasks = Array.from(this.state.tasks.values())
-      .filter(t => t.status === 'completed').length;
+    const completedTasks = Array.from(this.state.tasks.values()).filter(
+      (t) => t.status === 'completed'
+    ).length;
     const progressPct = Math.round((completedTasks / totalTasks) * 100);
 
     const nextTasks = this.getNextTasks(3);
@@ -510,7 +503,7 @@ export class RoadmapManager {
 
     if (inProgressTasks.length > 0) {
       summary += `⚡ In Progress (${inProgressTasks.length}):\n`;
-      inProgressTasks.forEach(task => {
+      inProgressTasks.forEach((task) => {
         const agent = task.assignedAgent ? ` [${task.assignedAgent}]` : '';
         summary += `  • ${task.description}${agent}\n`;
       });
@@ -535,14 +528,15 @@ export class RoadmapManager {
   getRoadmapSummaryObject(): RoadmapSummary {
     const currentPhase = this.getCurrentPhase();
     const totalTasks = Array.from(this.state.tasks.values()).length;
-    const completedTasks = Array.from(this.state.tasks.values())
-      .filter(t => t.status === 'completed').length;
+    const completedTasks = Array.from(this.state.tasks.values()).filter(
+      (t) => t.status === 'completed'
+    ).length;
 
     const blockers: string[] = [];
     if (currentPhase) {
       // Check entry conditions
       const unmetConditions = currentPhase.entryConditions.filter(
-        condition => !this.isConditionMet(condition)
+        (condition) => !this.isConditionMet(condition)
       );
       blockers.push(...unmetConditions);
     }
@@ -554,7 +548,7 @@ export class RoadmapManager {
       completedTasks,
       totalTasks,
       progressPercentage: Math.round((completedTasks / totalTasks) * 100),
-      blockers
+      blockers,
     };
   }
 
@@ -667,5 +661,5 @@ export default {
   getNextTasks,
   updateTaskStatus,
   getRoadmapSummary,
-  getRoadmapSummaryObject
+  getRoadmapSummaryObject,
 };

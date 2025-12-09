@@ -103,7 +103,7 @@ class EmbeddingService {
       const response = await this.openai.embeddings.create({
         model: this.model,
         input: truncated,
-        encoding_format: 'float'
+        encoding_format: 'float',
       });
 
       return {
@@ -114,8 +114,8 @@ class EmbeddingService {
           ...metadata,
           originalLength: text.length,
           truncated: text.length !== truncated.length,
-          tokensUsed: response.usage.total_tokens
-        }
+          tokensUsed: response.usage.total_tokens,
+        },
       };
     } catch (error) {
       console.error('Embedding generation failed:', error);
@@ -130,13 +130,13 @@ class EmbeddingService {
     // Process in batches to avoid rate limits
     for (let i = 0; i < memories.length; i += this.batchSize) {
       const batch = memories.slice(i, i + this.batchSize);
-      const texts = batch.map(m => this.truncateText(m.content, 8000));
+      const texts = batch.map((m) => this.truncateText(m.content, 8000));
 
       try {
         const response = await this.openai.embeddings.create({
           model: this.model,
           input: texts,
-          encoding_format: 'float'
+          encoding_format: 'float',
         });
 
         response.data.forEach((embedding, idx) => {
@@ -144,7 +144,7 @@ class EmbeddingService {
             memoryId: batch[idx].id,
             vector: embedding.embedding,
             model: this.model,
-            dimensions: embedding.embedding.length
+            dimensions: embedding.embedding.length,
           });
         });
 
@@ -166,9 +166,7 @@ class EmbeddingService {
     const batch = this.firestore.batch();
 
     // Store in Firestore
-    const embeddingRef = this.firestore
-      .collection('embeddings')
-      .doc(memoryId);
+    const embeddingRef = this.firestore.collection('embeddings').doc(memoryId);
 
     batch.set(embeddingRef, {
       id: memoryId,
@@ -176,34 +174,34 @@ class EmbeddingService {
       vector: embedding.vector,
       model: embedding.model,
       generatedAt: Firestore.Timestamp.now(),
-      metadata: embedding.metadata
+      metadata: embedding.metadata,
     });
 
     // Update memory document
-    const memoryRef = this.firestore
-      .collection('memories')
-      .doc(memoryId);
+    const memoryRef = this.firestore.collection('memories').doc(memoryId);
 
     batch.update(memoryRef, {
       'embedding.id': memoryId,
       'embedding.model': embedding.model,
       'embedding.dimensions': embedding.dimensions,
-      'embedding.generated_at': Firestore.Timestamp.now()
+      'embedding.generated_at': Firestore.Timestamp.now(),
     });
 
     await batch.commit();
 
     // Store in Pinecone
     const index = this.pinecone.Index('sartor-memories');
-    await index.upsert([{
-      id: memoryId,
-      values: embedding.vector,
-      metadata: {
-        memoryId: memoryId,
-        model: embedding.model,
-        ...embedding.metadata
-      }
-    }]);
+    await index.upsert([
+      {
+        id: memoryId,
+        values: embedding.vector,
+        metadata: {
+          memoryId: memoryId,
+          model: embedding.model,
+          ...embedding.metadata,
+        },
+      },
+    ]);
 
     return { success: true, memoryId };
   }
@@ -215,7 +213,7 @@ class EmbeddingService {
   }
 
   sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
 
@@ -236,12 +234,7 @@ class SemanticSearchService {
 
   // Semantic search using vector similarity
   async semanticSearch(query, options = {}) {
-    const {
-      userId = null,
-      topK = 10,
-      filter = {},
-      minScore = 0.7
-    } = options;
+    const { userId = null, topK = 10, filter = {}, minScore = 0.7 } = options;
 
     // Generate query embedding
     const queryEmbedding = await this.embeddings.generateEmbedding(query);
@@ -253,33 +246,27 @@ class SemanticSearchService {
 
     const results = await index.query({
       vector: queryEmbedding.vector,
-      topK: topK * 2,  // Fetch more, filter later
+      topK: topK * 2, // Fetch more, filter later
       filter: searchFilter,
-      includeMetadata: true
+      includeMetadata: true,
     });
 
     // Filter by minimum score and fetch full data from Firestore
-    const matches = results.matches
-      .filter(m => m.score >= minScore)
-      .slice(0, topK);
+    const matches = results.matches.filter((m) => m.score >= minScore).slice(0, topK);
 
-    const memoryIds = matches.map(m => m.id);
+    const memoryIds = matches.map((m) => m.id);
     const memories = await this.fetchMemoriesById(memoryIds);
 
-    return matches.map(match => ({
+    return matches.map((match) => ({
       ...memories[match.id],
       score: match.score,
-      searchType: 'semantic'
+      searchType: 'semantic',
     }));
   }
 
   // Keyword search using Firestore
   async keywordSearch(query, options = {}) {
-    const {
-      userId = null,
-      limit = 10,
-      type = null
-    } = options;
+    const { userId = null, limit = 10, type = null } = options;
 
     let firestoreQuery = this.firestore.collection('memories');
 
@@ -294,30 +281,24 @@ class SemanticSearchService {
     // Firestore doesn't support full-text search natively
     // Use tags or implement with Algolia/Elasticsearch
     const words = query.toLowerCase().split(' ');
-    const tagMatches = firestoreQuery
-      .where('tags', 'array-contains-any', words)
-      .limit(limit);
+    const tagMatches = firestoreQuery.where('tags', 'array-contains-any', words).limit(limit);
 
     const snapshot = await tagMatches.get();
-    return snapshot.docs.map(doc => ({
+    return snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
-      searchType: 'keyword'
+      searchType: 'keyword',
     }));
   }
 
   // Hybrid search: combine semantic + keyword
   async hybridSearch(query, options = {}) {
-    const {
-      semanticWeight = 0.7,
-      keywordWeight = 0.3,
-      topK = 10
-    } = options;
+    const { semanticWeight = 0.7, keywordWeight = 0.3, topK = 10 } = options;
 
     // Run both searches in parallel
     const [semanticResults, keywordResults] = await Promise.all([
       this.semanticSearch(query, { ...options, topK: topK * 2 }),
-      this.keywordSearch(query, { ...options, limit: topK * 2 })
+      this.keywordSearch(query, { ...options, limit: topK * 2 }),
     ]);
 
     // Merge and re-rank
@@ -342,7 +323,7 @@ class SemanticSearchService {
         ...result,
         combinedScore: score,
         semanticRank: idx + 1,
-        keywordRank: null
+        keywordRank: null,
       });
     });
 
@@ -360,14 +341,13 @@ class SemanticSearchService {
           ...result,
           combinedScore: score,
           semanticRank: null,
-          keywordRank: idx + 1
+          keywordRank: idx + 1,
         });
       }
     });
 
     // Sort by combined score
-    return Array.from(scoreMap.values())
-      .sort((a, b) => b.combinedScore - a.combinedScore);
+    return Array.from(scoreMap.values()).sort((a, b) => b.combinedScore - a.combinedScore);
   }
 
   // Fetch memories from Firestore by IDs
@@ -383,7 +363,7 @@ class SemanticSearchService {
         .where(Firestore.FieldPath.documentId(), 'in', chunk)
         .get();
 
-      snapshot.docs.forEach(doc => {
+      snapshot.docs.forEach((doc) => {
         memories[doc.id] = { id: doc.id, ...doc.data() };
       });
     }
@@ -408,46 +388,40 @@ module.exports = SemanticSearchService;
 ```javascript
 // Pinecone Configuration
 const pineconeConfig = {
-  indexName: "sartor-memories",
-  dimension: 1536,  // text-embedding-3-small
-  metric: "cosine",
+  indexName: 'sartor-memories',
+  dimension: 1536, // text-embedding-3-small
+  metric: 'cosine',
   pods: 1,
   replicas: 1,
-  podType: "s1.x1",
+  podType: 's1.x1',
 
   // Metadata filtering
   metadataConfig: {
-    indexed: [
-      "userId",
-      "type",
-      "tags",
-      "createdAt",
-      "accessCount"
-    ]
-  }
+    indexed: ['userId', 'type', 'tags', 'createdAt', 'accessCount'],
+  },
 };
 
 // Weaviate Schema (Alternative)
 const weaviateSchema = {
-  class: "Memory",
-  vectorizer: "none",  // We provide vectors
+  class: 'Memory',
+  vectorizer: 'none', // We provide vectors
   properties: [
     {
-      name: "content",
-      dataType: ["text"],
-      indexInverted: true
+      name: 'content',
+      dataType: ['text'],
+      indexInverted: true,
     },
     {
-      name: "userId",
-      dataType: ["string"],
-      indexInverted: true
+      name: 'userId',
+      dataType: ['string'],
+      indexInverted: true,
     },
     {
-      name: "tags",
-      dataType: ["string[]"],
-      indexInverted: true
-    }
-  ]
+      name: 'tags',
+      dataType: ['string[]'],
+      indexInverted: true,
+    },
+  ],
 };
 ```
 

@@ -1,9 +1,11 @@
 # Refinement Protocol Skill
 
 ## Summary
+
 Execute tasks using iterative refinement: Generate → Evaluate → Refine until quality threshold met.
 
 ## When to Use
+
 - Any non-trivial task (more than simple lookup)
 - When quality matters more than speed
 - When the first attempt might not be perfect
@@ -26,11 +28,13 @@ Execute tasks using iterative refinement: Generate → Evaluate → Refine until
 ## Instructions
 
 ### Before Starting
+
 1. Define success criteria (what does "good enough" look like?)
 2. Set confidence threshold (default: 0.8)
 3. Set max iterations (default: 3)
 
 ### During Each Iteration
+
 1. **Generate/Refine**: Produce or improve the solution
 2. **Self-Audit**: Check against criteria
    - Correctness: Does it work?
@@ -41,6 +45,7 @@ Execute tasks using iterative refinement: Generate → Evaluate → Refine until
 4. **Decide**: Continue or complete
 
 ### After Completion
+
 1. Record the refinement trace
 2. Note what improvements were made
 3. Store successful patterns for future use
@@ -48,6 +53,7 @@ Execute tasks using iterative refinement: Generate → Evaluate → Refine until
 ## Example: Refining a Function
 
 **Iteration 1:**
+
 ```
 Generated: Basic implementation
 Self-audit: Works but doesn't handle edge cases
@@ -56,6 +62,7 @@ Decision: Refine
 ```
 
 **Iteration 2:**
+
 ```
 Refined: Added null checks, error handling
 Self-audit: Handles edge cases, but no tests
@@ -64,6 +71,7 @@ Decision: Refine
 ```
 
 **Iteration 3:**
+
 ```
 Refined: Added test cases
 Self-audit: Complete, tested, documented
@@ -74,6 +82,7 @@ Decision: Complete ✓
 ## Self-Audit Checklist
 
 Before marking complete, verify:
+
 - [ ] Meets all stated requirements
 - [ ] Handles error cases
 - [ ] Based on evidence (not assumptions)
@@ -90,13 +99,14 @@ Before marking complete, verify:
 ## Integration with Memory
 
 After successful refinement:
+
 ```typescript
 await bridge.recordRefinement({
   task: 'Description of task',
   iterations: 3,
   initialScore: 0.5,
   finalScore: 0.9,
-  improvements: ['Added error handling', 'Added tests', 'Improved docs']
+  improvements: ['Added error handling', 'Added tests', 'Improved docs'],
 });
 ```
 

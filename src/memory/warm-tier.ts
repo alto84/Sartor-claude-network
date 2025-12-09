@@ -37,10 +37,7 @@ export class FirestoreWarmTier implements WarmTier {
   /** Retrieve document (50-150ms latency) */
   async get(collection: string, id: string): Promise<any> {
     const docRef = this.db.collection(collection).doc(id);
-    const snapshot = await Promise.race([
-      docRef.get(),
-      this.timeoutPromise(this.readTimeout),
-    ]);
+    const snapshot = await Promise.race([docRef.get(), this.timeoutPromise(this.readTimeout)]);
 
     if (!snapshot || !snapshot.exists) {
       return null;
@@ -80,12 +77,7 @@ export class FirestoreWarmTier implements WarmTier {
   }
 
   /** Query by field with operators: ==, <, <=, >, >=, !=, array-contains, in (150-500ms) */
-  async query(
-    collection: string,
-    field: string,
-    op: string,
-    value: any,
-  ): Promise<any[]> {
+  async query(collection: string, field: string, op: string, value: any): Promise<any[]> {
     let query: admin.firestore.Query = this.db.collection(collection);
 
     // Map operator strings to Firestore operators
@@ -98,7 +90,7 @@ export class FirestoreWarmTier implements WarmTier {
       '!=': '!=',
       'array-contains': 'array-contains',
       'array-contains-any': 'array-contains-any',
-      'in': 'in',
+      in: 'in',
     };
 
     const firestoreOp = operatorMap[op] || '==';
@@ -108,10 +100,7 @@ export class FirestoreWarmTier implements WarmTier {
     query = query.orderBy('_warmMeta.accessCount', 'desc').limit(100);
 
     try {
-      const snapshot = await Promise.race([
-        query.get(),
-        this.timeoutPromise(this.readTimeout),
-      ]);
+      const snapshot = await Promise.race([query.get(), this.timeoutPromise(this.readTimeout)]);
 
       return snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -124,10 +113,7 @@ export class FirestoreWarmTier implements WarmTier {
   }
 
   /** Batch set for bulk inserts (useful for embeddings) */
-  async batchSet(
-    collection: string,
-    items: Array<{ id: string; data: any }>,
-  ): Promise<void> {
+  async batchSet(collection: string, items: Array<{ id: string; data: any }>): Promise<void> {
     const batch = this.db.batch();
     const timestamp = new Date().toISOString();
 
@@ -152,7 +138,7 @@ export class FirestoreWarmTier implements WarmTier {
     collection: string,
     id: string,
     embedding: number[],
-    metadata: any,
+    metadata: any
   ): Promise<void> {
     await this.set(collection, id, {
       ...metadata,
@@ -164,7 +150,7 @@ export class FirestoreWarmTier implements WarmTier {
   /** Timeout utility for latency-aware operations */
   private timeoutPromise(ms: number): Promise<never> {
     return new Promise((_, reject) =>
-      setTimeout(() => reject(new Error(`Operation timeout after ${ms}ms`)), ms),
+      setTimeout(() => reject(new Error(`Operation timeout after ${ms}ms`)), ms)
     );
   }
 }

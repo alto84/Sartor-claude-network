@@ -35,7 +35,7 @@ export class LearningPipeline {
   async extract(): Promise<Pattern[]> {
     const results = await this.memory.searchMemories({
       filters: { type: [MemoryType.PROCEDURAL] },
-      limit: 100
+      limit: 100,
     });
 
     const patternMap = new Map<string, { successes: number; total: number }>();
@@ -63,7 +63,7 @@ export class LearningPipeline {
           trigger,
           action: 'Apply learned approach',
           successRate,
-          occurrences: stats.total
+          occurrences: stats.total,
         });
       }
     }
@@ -76,24 +76,19 @@ export class LearningPipeline {
     return {
       ...pattern,
       trigger: pattern.trigger.replace(/specific/gi, 'general'),
-      name: `Generalized: ${pattern.name}`
+      name: `Generalized: ${pattern.name}`,
     };
   }
 
   async validate(pattern: Pattern): Promise<boolean> {
-    return pattern.successRate >= this.minSuccessRate &&
-           pattern.occurrences >= this.minOccurrences;
+    return pattern.successRate >= this.minSuccessRate && pattern.occurrences >= this.minOccurrences;
   }
 
   async store(pattern: Pattern): Promise<string> {
-    const mem = await this.memory.createMemory(
-      JSON.stringify(pattern),
-      MemoryType.SEMANTIC,
-      {
-        importance_score: pattern.successRate,
-        tags: ['pattern', 'learned']
-      }
-    );
+    const mem = await this.memory.createMemory(JSON.stringify(pattern), MemoryType.SEMANTIC, {
+      importance_score: pattern.successRate,
+      tags: ['pattern', 'learned'],
+    });
     this.patterns.set(pattern.id, pattern);
     return mem.id;
   }
@@ -119,7 +114,7 @@ export class LearningPipeline {
       patternsExtracted: extracted.length,
       patternsValidated: validated,
       patternsStored: stored,
-      totalOccurrences
+      totalOccurrences,
     };
   }
 

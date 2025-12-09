@@ -53,7 +53,7 @@ describe('Safety Research Workflow', () => {
 
         const result = validator.evaluateClaim(claim);
         expect(result.isValid).toBe(false);
-        expect(result.issues.some(i => i.includes('Quantitative claim'))).toBe(true);
+        expect(result.issues.some((i) => i.includes('Quantitative claim'))).toBe(true);
       });
 
       it('should fail when claim references study without identifier', () => {
@@ -98,7 +98,7 @@ describe('Safety Research Workflow', () => {
 
         const result = validator.evaluateClaim(claim);
         expect(result.isValid).toBe(false);
-        expect(result.issues.some(i => i.includes('more specific than source'))).toBe(true);
+        expect(result.issues.some((i) => i.includes('more specific than source'))).toBe(true);
       });
     });
 
@@ -124,7 +124,7 @@ describe('Safety Research Workflow', () => {
 
         const result = await validator.validateCitation(citation);
         expect(result.isValid).toBe(false);
-        expect(result.issues.some(i => i.includes('DOI not found'))).toBe(true);
+        expect(result.issues.some((i) => i.includes('DOI not found'))).toBe(true);
       });
 
       it('should fail when citation details do not match retrieved metadata', async () => {
@@ -188,7 +188,7 @@ describe('Safety Research Workflow', () => {
 
         const result = await validator.validateCitation(citation);
         expect(result.isValid).toBe(false);
-        expect(result.issues.some(i => i.includes('arXiv'))).toBe(true);
+        expect(result.issues.some((i) => i.includes('arXiv'))).toBe(true);
       });
     });
 
@@ -543,15 +543,11 @@ describe('Safety Research Workflow', () => {
         const claims = [
           {
             statement: 'Method A is more effective',
-            sources: [
-              { pmid: '11111', quote: 'Method A showed 80% success rate' },
-            ],
+            sources: [{ pmid: '11111', quote: 'Method A showed 80% success rate' }],
           },
           {
             statement: 'Method B is more effective',
-            sources: [
-              { pmid: '22222', quote: 'Method B showed 85% success rate' },
-            ],
+            sources: [{ pmid: '22222', quote: 'Method B showed 85% success rate' }],
           },
         ];
 

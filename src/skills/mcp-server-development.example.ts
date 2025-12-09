@@ -59,14 +59,19 @@ async function example1_ValidateToolDefinition() {
         console.error('[read_file] Reading file:', input.path);
 
         return {
-          content: [{
-            type: 'text' as const,
-            text: 'File contents here...',
-          }],
+          content: [
+            {
+              type: 'text' as const,
+              text: 'File contents here...',
+            },
+          ],
         };
       } catch (error) {
         console.error('[read_file] Error:', error);
-        return createErrorResponse(-32603, error instanceof Error ? error.message : 'Unknown error');
+        return createErrorResponse(
+          -32603,
+          error instanceof Error ? error.message : 'Unknown error'
+        );
       }
     },
   };
@@ -105,7 +110,7 @@ async function example2_DetectMistakes() {
   console.log('Validation Report for Bad Tool:');
   console.log('  Valid:', report.valid);
   console.log('  Errors:');
-  report.errors.forEach(err => {
+  report.errors.forEach((err) => {
     console.log(`    - [${err.severity}] ${err.message}`);
     console.log(`      Suggestion: ${err.suggestion}`);
   });
@@ -140,13 +145,13 @@ async function example3_SecurityAnalysis() {
   console.log('  Safe:', securityReport.safe);
   console.log('  Risk Score:', securityReport.riskScore);
   console.log('\n  Vulnerabilities:');
-  securityReport.vulnerabilities.forEach(vuln => {
+  securityReport.vulnerabilities.forEach((vuln) => {
     console.log(`    - [${vuln.severity}] ${vuln.type}`);
     console.log(`      ${vuln.description}`);
     console.log(`      Remediation: ${vuln.remediation}`);
   });
   console.log('\n  Recommendations:');
-  securityReport.recommendations.forEach(rec => {
+  securityReport.recommendations.forEach((rec) => {
     console.log(`    - ${rec}`);
   });
 }
@@ -222,17 +227,21 @@ async function example5_TestHandler() {
 
         const sum = input.a + input.b;
         return {
-          content: [{
-            type: 'text' as const,
-            text: `Result: ${sum}`,
-          }],
+          content: [
+            {
+              type: 'text' as const,
+              text: `Result: ${sum}`,
+            },
+          ],
         };
       } catch (error) {
         return {
-          content: [{
-            type: 'text' as const,
-            text: error instanceof Error ? error.message : 'Unknown error',
-          }],
+          content: [
+            {
+              type: 'text' as const,
+              text: error instanceof Error ? error.message : 'Unknown error',
+            },
+          ],
           isError: true,
         };
       }
@@ -277,8 +286,10 @@ async function example5_TestHandler() {
   console.log('    Error Handling:', testReport.coverage.errorHandling);
   console.log('    Edge Cases:', testReport.coverage.edgeCases);
   console.log('\n  Results:');
-  testReport.results.forEach(result => {
-    console.log(`    ${result.passed ? '✓' : '✗'} ${result.testName} (${result.executionTimeMs}ms)`);
+  testReport.results.forEach((result) => {
+    console.log(
+      `    ${result.passed ? '✓' : '✗'} ${result.testName} (${result.executionTimeMs}ms)`
+    );
     if (!result.passed && result.error) {
       console.log(`      Error: ${result.error.message}`);
     }
@@ -347,21 +358,21 @@ async function example6_ValidateServerConfig() {
 
   if (report.errors.length > 0) {
     console.log('\n  Errors:');
-    report.errors.forEach(err => {
+    report.errors.forEach((err) => {
       console.log(`    - [${err.severity}] ${err.category}: ${err.message}`);
     });
   }
 
   if (report.warnings.length > 0) {
     console.log('\n  Warnings:');
-    report.warnings.forEach(warn => {
+    report.warnings.forEach((warn) => {
       console.log(`    - ${warn.category}: ${warn.message}`);
     });
   }
 
   if (report.suggestions.length > 0) {
     console.log('\n  Suggestions:');
-    report.suggestions.forEach(suggestion => {
+    report.suggestions.forEach((suggestion) => {
       console.log(`    - ${suggestion}`);
     });
   }

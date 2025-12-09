@@ -31,7 +31,9 @@ function loadCredentials(): admin.ServiceAccount | null {
         return creds as admin.ServiceAccount;
       }
     } catch (error) {
-      console.error(`[Firebase Init] Error loading credentials from GOOGLE_APPLICATION_CREDENTIALS: ${error}`);
+      console.error(
+        `[Firebase Init] Error loading credentials from GOOGLE_APPLICATION_CREDENTIALS: ${error}`
+      );
     }
   }
 
@@ -43,7 +45,9 @@ function loadCredentials(): admin.ServiceAccount | null {
       console.error('[Firebase Init] Loaded credentials from config/service-account.json');
       return creds as admin.ServiceAccount;
     } catch (error) {
-      console.error(`[Firebase Init] Error loading credentials from config/service-account.json: ${error}`);
+      console.error(
+        `[Firebase Init] Error loading credentials from config/service-account.json: ${error}`
+      );
     }
   }
 
@@ -56,7 +60,9 @@ function loadCredentials(): admin.ServiceAccount | null {
       console.error('[Firebase Init] Loaded credentials from FIREBASE_SERVICE_ACCOUNT_BASE64');
       return creds as admin.ServiceAccount;
     } catch (error) {
-      console.error(`[Firebase Init] Error loading credentials from FIREBASE_SERVICE_ACCOUNT_BASE64: ${error}`);
+      console.error(
+        `[Firebase Init] Error loading credentials from FIREBASE_SERVICE_ACCOUNT_BASE64: ${error}`
+      );
     }
   }
 

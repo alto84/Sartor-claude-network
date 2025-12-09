@@ -6,11 +6,11 @@
  */
 
 export enum CompletionStatus {
-  IMPLEMENTED = 'implemented',   // Code exists and compiles
-  TESTED = 'tested',              // Code passes defined tests
-  INTEGRATED = 'integrated',      // Code works with other components
-  VALIDATED = 'validated',        // Code meets requirements in realistic conditions
-  COMPLETE = 'complete',          // All above + documented + deployed
+  IMPLEMENTED = 'implemented', // Code exists and compiles
+  TESTED = 'tested', // Code passes defined tests
+  INTEGRATED = 'integrated', // Code works with other components
+  VALIDATED = 'validated', // Code meets requirements in realistic conditions
+  COMPLETE = 'complete', // All above + documented + deployed
 }
 
 interface StatusClaim {
@@ -39,9 +39,17 @@ export class CompletionValidator {
       requires_prior: [CompletionStatus.IMPLEMENTED, CompletionStatus.TESTED],
     },
     [CompletionStatus.VALIDATED]: {
-      required: ['meets requirements', 'validated in realistic conditions', 'acceptance criteria met'],
+      required: [
+        'meets requirements',
+        'validated in realistic conditions',
+        'acceptance criteria met',
+      ],
       evidence_keywords: ['validated', 'verified', 'confirmed', 'acceptance'],
-      requires_prior: [CompletionStatus.IMPLEMENTED, CompletionStatus.TESTED, CompletionStatus.INTEGRATED],
+      requires_prior: [
+        CompletionStatus.IMPLEMENTED,
+        CompletionStatus.TESTED,
+        CompletionStatus.INTEGRATED,
+      ],
     },
     [CompletionStatus.COMPLETE]: {
       required: ['all prior stages', 'documented', 'deployed/ready for deployment'],
@@ -99,12 +107,14 @@ export class CompletionValidator {
       }
 
       if (validation.warnings.length > 0) {
-        warnings.push(...validation.warnings.map(w => ({
-          severity: 'warning' as const,
-          message: w,
-          location: `${filename}:${claim.lineNumber}`,
-          suggestion: 'Provide additional evidence or downgrade status claim',
-        })));
+        warnings.push(
+          ...validation.warnings.map((w) => ({
+            severity: 'warning' as const,
+            message: w,
+            location: `${filename}:${claim.lineNumber}`,
+            suggestion: 'Provide additional evidence or downgrade status claim',
+          }))
+        );
       }
     }
 
@@ -200,7 +210,7 @@ export class CompletionValidator {
 
   private hasEvidenceFor(content: string, keywords: string[]): boolean {
     const lowerContent = content.toLowerCase();
-    return keywords.some(keyword => lowerContent.includes(keyword.toLowerCase()));
+    return keywords.some((keyword) => lowerContent.includes(keyword.toLowerCase()));
   }
 
   private compareStatuses(actual: CompletionStatus, claimed: CompletionStatus): number {
@@ -224,7 +234,7 @@ export class CompletionValidator {
     return [
       `Current evidence supports status: "${actual}"`,
       `To reach "${claimed}", provide evidence of:`,
-      ...requirements.required.map(r => `  - ${r}`),
+      ...requirements.required.map((r) => `  - ${r}`),
       '',
       'Or update status claim to match actual progress.',
     ].join('\n');

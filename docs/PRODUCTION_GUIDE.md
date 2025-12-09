@@ -60,6 +60,7 @@ curl https://YOUR-REGION-YOUR-PROJECT.cloudfunctions.net/health
 ## Monitoring & Health Checks
 
 **Key Metrics**:
+
 - Realtime Database: connections, data usage
 - Firestore: read/write ops, document count
 - Functions: execution time, error rate, memory

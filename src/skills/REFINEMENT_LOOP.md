@@ -9,7 +9,9 @@ The Refinement Loop is the **CENTRAL mechanism** for iterative quality improveme
 ## Key Features
 
 ### 1. Self-Auditing
+
 Automatically determines when to stop refinement based on:
+
 - Confidence threshold reached
 - Maximum iterations exhausted
 - Cost budget exceeded
@@ -17,7 +19,9 @@ Automatically determines when to stop refinement based on:
 - Timeout reached
 
 ### 2. Process Supervision
+
 Optionally records every step of the refinement process:
+
 - Action taken
 - Result produced
 - Score achieved
@@ -27,14 +31,18 @@ Optionally records every step of the refinement process:
 This creates a complete process trace for learning and debugging.
 
 ### 3. Cost Awareness
+
 Tracks and respects budget constraints:
+
 - Total cost accumulation
 - Remaining budget calculation
 - Estimated cost to completion
 - Automatic stop when budget exceeded
 
 ### 4. Confidence Tracking
+
 Monitors confidence scores across iterations:
+
 - Confidence history tracking
 - Improvement delta calculation
 - Plateau detection (no improvement)
@@ -43,51 +51,55 @@ Monitors confidence scores across iterations:
 ## Core Interfaces
 
 ### RefinementConfig
+
 ```typescript
 interface RefinementConfig {
-  maxIterations: number;           // Stop after N iterations
-  confidenceThreshold: number;     // Stop when score >= threshold (0-1)
-  costBudget?: number;             // Optional cost limit
-  processSupervision: boolean;     // Enable process trace recording
-  timeout?: number;                // Optional timeout in ms
-  minImprovementDelta?: number;    // Minimum improvement required (0-1)
+  maxIterations: number; // Stop after N iterations
+  confidenceThreshold: number; // Stop when score >= threshold (0-1)
+  costBudget?: number; // Optional cost limit
+  processSupervision: boolean; // Enable process trace recording
+  timeout?: number; // Optional timeout in ms
+  minImprovementDelta?: number; // Minimum improvement required (0-1)
 }
 ```
 
 ### Feedback
+
 ```typescript
 interface Feedback {
-  issue: string;                              // What needs improvement
-  severity: 'critical' | 'major' | 'minor';  // How important
-  suggestion?: string;                        // How to fix
-  aspect?: string;                            // Which aspect this relates to
+  issue: string; // What needs improvement
+  severity: 'critical' | 'major' | 'minor'; // How important
+  suggestion?: string; // How to fix
+  aspect?: string; // Which aspect this relates to
 }
 ```
 
 ### EvaluationResult
+
 ```typescript
 interface EvaluationResult {
-  score: number;            // Confidence score (0-1)
-  feedback: Feedback[];     // Issues found
-  acceptable: boolean;      // Passes minimum quality bar?
-  reasoning?: string;       // Why this score?
-  cost?: number;           // Cost of evaluation
+  score: number; // Confidence score (0-1)
+  feedback: Feedback[]; // Issues found
+  acceptable: boolean; // Passes minimum quality bar?
+  reasoning?: string; // Why this score?
+  cost?: number; // Cost of evaluation
 }
 ```
 
 ### RefinementResult
+
 ```typescript
 interface RefinementResult<T> {
-  candidate: T;                    // Final refined result
-  confidence: number;              // Final confidence score
-  iterations: number;              // Total iterations performed
-  totalCost: number;              // Total cost incurred
-  converged: boolean;             // Reached confidence threshold?
-  stopReason: string;             // Why we stopped
-  processTrace?: ProcessStep[];   // Process trace if enabled
-  remainingFeedback: Feedback[];  // Any unresolved issues
-  confidenceHistory: number[];    // Score progression
-  durationMs: number;             // Total time taken
+  candidate: T; // Final refined result
+  confidence: number; // Final confidence score
+  iterations: number; // Total iterations performed
+  totalCost: number; // Total cost incurred
+  converged: boolean; // Reached confidence threshold?
+  stopReason: string; // Why we stopped
+  processTrace?: ProcessStep[]; // Process trace if enabled
+  remainingFeedback: Feedback[]; // Any unresolved issues
+  confidenceHistory: number[]; // Score progression
+  durationMs: number; // Total time taken
 }
 ```
 
@@ -103,7 +115,7 @@ const config = {
   maxIterations: 5,
   confidenceThreshold: 0.9,
   processSupervision: true,
-  costBudget: 500
+  costBudget: 500,
 };
 
 const loop = new RefinementLoop<CodeCandidate>(config);
@@ -111,7 +123,7 @@ const loop = new RefinementLoop<CodeCandidate>(config);
 // Generate: Create initial candidate
 const generate = async () => ({
   code: 'function add(a, b) { return a + b; }',
-  language: 'javascript'
+  language: 'javascript',
 });
 
 // Evaluate: Check quality
@@ -120,11 +132,7 @@ const evaluate = async (candidate) => {
   let score = 1.0;
 
   if (!candidate.code.includes('/**')) {
-    issues.push(createFeedback(
-      'Missing documentation',
-      'minor',
-      'Add JSDoc comment'
-    ));
+    issues.push(createFeedback('Missing documentation', 'minor', 'Add JSDoc comment'));
     score -= 0.2;
   }
 
@@ -136,7 +144,7 @@ const refine = async (candidate, feedback) => {
   if (feedback.issue.includes('documentation')) {
     return {
       ...candidate,
-      code: `/** Adds two numbers */\n${candidate.code}`
+      code: `/** Adds two numbers */\n${candidate.code}`,
     };
   }
   return candidate;
@@ -163,7 +171,7 @@ const result = await withRefinement(
   async (solution) => evaluateQuality(solution), // Returns 0-1 score
   {
     maxIterations: 3,
-    confidenceThreshold: 0.85
+    confidenceThreshold: 0.85,
   }
 );
 ```
@@ -196,7 +204,7 @@ async function generateHighQualityCode(requirements: string) {
   const loop = createRefinementLoop({
     maxIterations: 5,
     confidenceThreshold: 0.9,
-    processSupervision: true
+    processSupervision: true,
   });
 
   return loop.run(
@@ -217,7 +225,7 @@ async function designArchitecture(specs: ArchitectureSpecs) {
     maxIterations: 4,
     confidenceThreshold: 0.85,
     costBudget: 1000,
-    processSupervision: true
+    processSupervision: true,
   };
 
   const loop = new RefinementLoop<ArchitectureDesign>(config);
@@ -244,7 +252,7 @@ const result = await loop.run(generate, evaluate, refine);
 // Get complete process trace
 const trace = loop.getProcessTrace();
 
-trace.forEach(step => {
+trace.forEach((step) => {
   console.log(`Action: ${step.action}`);
   console.log(`Score: ${step.score}`);
   console.log(`Reasoning: ${step.reasoning}`);
@@ -260,7 +268,7 @@ Track and manage costs throughout refinement:
 const loop = new RefinementLoop({
   maxIterations: 10,
   confidenceThreshold: 0.9,
-  costBudget: 500
+  costBudget: 500,
 });
 
 // During execution
@@ -284,26 +292,29 @@ result.confidenceHistory.forEach((score, i) => {
 ## Helper Functions
 
 ### createFeedback()
+
 ```typescript
 const feedback = createFeedback(
   'Issue description',
-  'critical',           // severity
-  'How to fix it',      // suggestion
-  'aspect-name'         // aspect
+  'critical', // severity
+  'How to fix it', // suggestion
+  'aspect-name' // aspect
 );
 ```
 
 ### createEvaluation()
+
 ```typescript
 const evaluation = createEvaluation(
-  0.85,                 // score
+  0.85, // score
   [feedback1, feedback2], // feedback
-  'Good progress',      // reasoning
-  20                    // cost
+  'Good progress', // reasoning
+  20 // cost
 );
 ```
 
 ### formatRefinementResult()
+
 ```typescript
 const result = await loop.run(...);
 console.log(formatRefinementResult(result));
@@ -320,6 +331,7 @@ console.log(formatRefinementResult(result));
 ## Best Practices
 
 ### 1. Choose Appropriate Thresholds
+
 ```typescript
 // For production code
 { confidenceThreshold: 0.95, maxIterations: 5 }
@@ -332,6 +344,7 @@ console.log(formatRefinementResult(result));
 ```
 
 ### 2. Provide Meaningful Feedback
+
 ```typescript
 // Good - actionable feedback
 createFeedback(
@@ -346,6 +359,7 @@ createFeedback('Code could be better', 'minor');
 ```
 
 ### 3. Track Costs
+
 ```typescript
 const evaluate = async (candidate) => {
   const startTime = Date.now();
@@ -357,11 +371,12 @@ const evaluate = async (candidate) => {
 ```
 
 ### 4. Handle Plateaus
+
 ```typescript
 const config = {
   maxIterations: 10,
   confidenceThreshold: 0.9,
-  minImprovementDelta: 0.05  // Stop if improvement < 5%
+  minImprovementDelta: 0.05, // Stop if improvement < 5%
 };
 ```
 
@@ -370,6 +385,7 @@ const config = {
 See `/home/user/Sartor-claude-network/src/skills/refinement-loop.test.ts` for comprehensive test suite.
 
 Run tests:
+
 ```bash
 npm test refinement-loop.test.ts
 ```
@@ -384,6 +400,7 @@ See `/home/user/Sartor-claude-network/src/skills/refinement-loop.example.ts` for
 4. Cost-Aware Refinement
 
 Run examples:
+
 ```bash
 npx ts-node src/skills/refinement-loop.example.ts
 ```
@@ -411,6 +428,7 @@ console.log(manifest.summary);
 ## Future Enhancements
 
 Potential improvements:
+
 - [ ] Multi-objective optimization (multiple evaluation criteria)
 - [ ] Adaptive refinement strategies (learn which refinements work best)
 - [ ] Parallel candidate exploration (evaluate multiple variants)

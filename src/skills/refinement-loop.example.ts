@@ -15,7 +15,7 @@ import {
   formatRefinementResult,
   type RefinementConfig,
   type EvaluationResult,
-  type Feedback
+  type Feedback,
 } from './refinement-loop';
 
 // ============================================================================
@@ -34,7 +34,7 @@ async function example1_CodeQualityRefinement() {
     maxIterations: 5,
     confidenceThreshold: 0.9,
     processSupervision: true,
-    timeout: 30000
+    timeout: 30000,
   };
 
   const loop = new RefinementLoop<CodeCandidate>(config);
@@ -47,7 +47,7 @@ function add(a, b) {
   return a + b;
 }
       `.trim(),
-      language: 'javascript'
+      language: 'javascript',
     };
   };
 
@@ -58,31 +58,37 @@ function add(a, b) {
 
     // Check for type annotations
     if (!candidate.code.includes('number')) {
-      issues.push(createFeedback(
-        'Missing type annotations',
-        'major',
-        'Add TypeScript type annotations for parameters and return type'
-      ));
+      issues.push(
+        createFeedback(
+          'Missing type annotations',
+          'major',
+          'Add TypeScript type annotations for parameters and return type'
+        )
+      );
       score -= 0.3;
     }
 
     // Check for documentation
     if (!candidate.code.includes('/**')) {
-      issues.push(createFeedback(
-        'Missing JSDoc documentation',
-        'minor',
-        'Add JSDoc comment explaining the function'
-      ));
+      issues.push(
+        createFeedback(
+          'Missing JSDoc documentation',
+          'minor',
+          'Add JSDoc comment explaining the function'
+        )
+      );
       score -= 0.2;
     }
 
     // Check for input validation
     if (!candidate.code.includes('if') && !candidate.code.includes('typeof')) {
-      issues.push(createFeedback(
-        'No input validation',
-        'major',
-        'Add validation to check if inputs are numbers'
-      ));
+      issues.push(
+        createFeedback(
+          'No input validation',
+          'major',
+          'Add validation to check if inputs are numbers'
+        )
+      );
       score -= 0.3;
     }
 
@@ -95,10 +101,7 @@ function add(a, b) {
   };
 
   // Refine: Improve code based on feedback
-  const refine = async (
-    candidate: CodeCandidate,
-    feedback: Feedback
-  ): Promise<CodeCandidate> => {
+  const refine = async (candidate: CodeCandidate, feedback: Feedback): Promise<CodeCandidate> => {
     let improvedCode = candidate.code;
 
     // Apply improvements based on feedback
@@ -165,15 +168,11 @@ async function example2_SimpleRefinement() {
     return Math.min(1.0, score);
   };
 
-  const result = await withRefinement(
-    generateGreeting,
-    evaluateGreeting,
-    {
-      maxIterations: 3,
-      confidenceThreshold: 0.8,
-      processSupervision: false
-    }
-  );
+  const result = await withRefinement(generateGreeting, evaluateGreeting, {
+    maxIterations: 3,
+    confidenceThreshold: 0.8,
+    processSupervision: false,
+  });
 
   console.log(`Final greeting: "${result}"`);
   console.log('\n');
@@ -198,7 +197,7 @@ async function example3_ArchitectureRefinement() {
     confidenceThreshold: 0.85,
     processSupervision: true,
     costBudget: 500,
-    minImprovementDelta: 0.05
+    minImprovementDelta: 0.05,
   };
 
   const loop = new RefinementLoop<ArchitectureDesign>(config);
@@ -209,7 +208,7 @@ async function example3_ArchitectureRefinement() {
       components: ['web-server', 'database'],
       patterns: ['MVC'],
       scalability: 0.4,
-      reliability: 0.5
+      reliability: 0.5,
     };
   };
 
@@ -220,36 +219,42 @@ async function example3_ArchitectureRefinement() {
 
     // Check scalability
     if (design.scalability < 0.7) {
-      issues.push(createFeedback(
-        'Low scalability score',
-        'critical',
-        'Add load balancer and caching layer',
-        'scalability'
-      ));
+      issues.push(
+        createFeedback(
+          'Low scalability score',
+          'critical',
+          'Add load balancer and caching layer',
+          'scalability'
+        )
+      );
     } else {
       score += 0.25;
     }
 
     // Check reliability
     if (design.reliability < 0.8) {
-      issues.push(createFeedback(
-        'Reliability needs improvement',
-        'major',
-        'Add database replication and health checks',
-        'reliability'
-      ));
+      issues.push(
+        createFeedback(
+          'Reliability needs improvement',
+          'major',
+          'Add database replication and health checks',
+          'reliability'
+        )
+      );
     } else {
       score += 0.25;
     }
 
     // Check patterns
     if (!design.patterns.includes('Circuit Breaker')) {
-      issues.push(createFeedback(
-        'Missing resilience patterns',
-        'major',
-        'Implement Circuit Breaker pattern',
-        'patterns'
-      ));
+      issues.push(
+        createFeedback(
+          'Missing resilience patterns',
+          'major',
+          'Implement Circuit Breaker pattern',
+          'patterns'
+        )
+      );
     } else {
       score += 0.25;
     }
@@ -301,7 +306,7 @@ async function example4_CostAwareRefinement() {
     maxIterations: 10,
     confidenceThreshold: 0.95,
     processSupervision: true,
-    costBudget: 100 // Stop if cost exceeds 100 tokens
+    costBudget: 100, // Stop if cost exceeds 100 tokens
   };
 
   const loop = new RefinementLoop<number>(config);
@@ -367,5 +372,5 @@ export {
   example2_SimpleRefinement,
   example3_ArchitectureRefinement,
   example4_CostAwareRefinement,
-  runAllExamples
+  runAllExamples,
 };

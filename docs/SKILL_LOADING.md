@@ -1,4 +1,5 @@
 # Progressive Skill Loading Architecture
+
 ## Dynamic Skills Library with Three-Level Loading
 
 Version: 1.0.0
@@ -70,6 +71,7 @@ The Progressive Skill Loading Architecture implements a three-level lazy loading
 **Token Budget**: ~50 tokens per skill summary
 
 **Content**:
+
 - Skill ID and version
 - One-line description
 - Trigger keywords/patterns
@@ -77,6 +79,7 @@ The Progressive Skill Loading Architecture implements a three-level lazy loading
 - Dependency hints
 
 **Example**:
+
 ```yaml
 # data-analysis-skill v2.1.0 [specialist]
 # Triggers: "analyze data", "statistical", "visualization"
@@ -97,6 +100,7 @@ The Progressive Skill Loading Architecture implements a three-level lazy loading
 **Token Budget**: ~500 tokens per skill instruction set
 
 **Content**:
+
 - Detailed description and use cases
 - Input/output specifications
 - Step-by-step procedures
@@ -105,28 +109,33 @@ The Progressive Skill Loading Architecture implements a three-level lazy loading
 - Integration points with other skills
 
 **Example Structure**:
+
 ```markdown
 ## Data Analysis Skill v2.1.0
 
 ### Description
+
 Performs comprehensive data analysis on structured datasets including
 statistical analysis, trend detection, outlier identification, and
 visualization generation.
 
 ### When to Use
+
 - User requests data insights or analysis
 - Pattern: "analyze", "statistics", "trends", "correlations"
 - Applicable to: CSV, JSON, Excel, SQL query results
 
 ### Input Specification
+
 {
-  "dataset": DataSource,
-  "analysisType": "descriptive" | "inferential" | "exploratory",
-  "visualizations": boolean,
-  "outputFormat": "report" | "interactive" | "summary"
+"dataset": DataSource,
+"analysisType": "descriptive" | "inferential" | "exploratory",
+"visualizations": boolean,
+"outputFormat": "report" | "interactive" | "summary"
 }
 
 ### Execution Steps
+
 1. Validate and load dataset (Level 3: data-loader)
 2. Perform statistical analysis (Level 3: stats-engine)
 3. Generate insights narrative
@@ -134,13 +143,16 @@ visualization generation.
 5. Format output according to specification
 
 ### Examples
+
 [Detailed examples here]
 
 ### Error Handling
+
 [Error scenarios and recovery]
 ```
 
 **Loading Triggers**:
+
 - Keyword/pattern match in user input
 - Explicit skill invocation
 - Dependency chain activation
@@ -157,6 +169,7 @@ visualization generation.
 **Token Budget**: Unlimited (streamed/cached dynamically)
 
 **Content**:
+
 - Reference documentation
 - Large code examples and templates
 - Schema definitions
@@ -166,6 +179,7 @@ visualization generation.
 - Integration guides
 
 **Loading Triggers**:
+
 - Skill enters "executing" state
 - Specific resource requested by skill logic
 - Error recovery requiring documentation
@@ -174,14 +188,15 @@ visualization generation.
 **Storage**: Cold memory (GitHub) with lazy loading and caching.
 
 **Resource Types**:
+
 ```typescript
 enum ResourceType {
-  DOCUMENTATION = 'docs',      // Markdown/HTML documentation
-  CODE_TEMPLATE = 'template',  // Reusable code patterns
-  SCHEMA = 'schema',           // Data/API schemas
-  REFERENCE_DATA = 'data',     // Lookup tables, constants
-  EXAMPLES = 'examples',       // Detailed examples
-  INTEGRATION = 'integration'  // Third-party integration specs
+  DOCUMENTATION = 'docs', // Markdown/HTML documentation
+  CODE_TEMPLATE = 'template', // Reusable code patterns
+  SCHEMA = 'schema', // Data/API schemas
+  REFERENCE_DATA = 'data', // Lookup tables, constants
+  EXAMPLES = 'examples', // Detailed examples
+  INTEGRATION = 'integration', // Third-party integration specs
 }
 ```
 
@@ -197,26 +212,26 @@ enum ResourceType {
  */
 interface SkillManifest {
   // Identity
-  id: string;                    // Unique skill identifier (kebab-case)
-  name: string;                  // Human-readable name
-  version: string;               // Semantic version (MAJOR.MINOR.PATCH)
+  id: string; // Unique skill identifier (kebab-case)
+  name: string; // Human-readable name
+  version: string; // Semantic version (MAJOR.MINOR.PATCH)
 
   // Level 1: Summary (always loaded)
-  summary: string;               // 1-2 sentence description (~50 tokens)
+  summary: string; // 1-2 sentence description (~50 tokens)
   triggers: TriggerDefinition[]; // When to activate this skill
-  tier: SkillTier;              // Skill classification
+  tier: SkillTier; // Skill classification
 
   // Relationships
   dependencies: SkillDependency[]; // Required/optional skills
-  conflicts: string[];           // Incompatible skill IDs
-  alternatives: string[];        // Alternative skill IDs
+  conflicts: string[]; // Incompatible skill IDs
+  alternatives: string[]; // Alternative skill IDs
 
   // Level 2: Instructions (on-demand)
   instructions: {
-    description: string;         // Detailed description
-    useCases: string[];         // When to use this skill
-    antiPatterns: string[];     // When NOT to use
-    interface: SkillInterface;  // I/O specifications
+    description: string; // Detailed description
+    useCases: string[]; // When to use this skill
+    antiPatterns: string[]; // When NOT to use
+    interface: SkillInterface; // I/O specifications
     procedure: ExecutionProcedure;
     examples: Example[];
     errorHandling: ErrorStrategy[];
@@ -228,8 +243,8 @@ interface SkillManifest {
   // Metadata
   metadata: {
     author: string;
-    created: string;            // ISO 8601
-    updated: string;            // ISO 8601
+    created: string; // ISO 8601
+    updated: string; // ISO 8601
     status: SkillStatus;
     tags: string[];
     category: SkillCategory;
@@ -254,7 +269,7 @@ interface SkillManifest {
   memory: {
     stateRetention: 'session' | 'persistent' | 'none';
     cacheStrategy: CacheStrategy;
-    maxStateSize: number;        // Max bytes for skill state
+    maxStateSize: number; // Max bytes for skill state
   };
 }
 
@@ -262,9 +277,9 @@ interface SkillManifest {
  * Skill tier classification
  */
 enum SkillTier {
-  EXECUTIVE = 'executive',    // High-level orchestration (e.g., project-manager)
-  SPECIALIST = 'specialist',  // Domain expertise (e.g., data-analyst)
-  UTILITY = 'utility'         // Support functions (e.g., file-reader)
+  EXECUTIVE = 'executive', // High-level orchestration (e.g., project-manager)
+  SPECIALIST = 'specialist', // Domain expertise (e.g., data-analyst)
+  UTILITY = 'utility', // Support functions (e.g., file-reader)
 }
 
 /**
@@ -273,18 +288,18 @@ enum SkillTier {
 interface TriggerDefinition {
   type: TriggerType;
   pattern: string | RegExp;
-  confidence: number;          // 0-1, threshold for activation
-  context?: string[];          // Required contextual markers
-  priority: number;            // Higher = checked first
+  confidence: number; // 0-1, threshold for activation
+  context?: string[]; // Required contextual markers
+  priority: number; // Higher = checked first
 }
 
 enum TriggerType {
-  KEYWORD = 'keyword',         // Simple keyword match
-  PATTERN = 'pattern',         // Regex pattern
-  SEMANTIC = 'semantic',       // Embedding similarity
-  EXPLICIT = 'explicit',       // User invokes by name
-  DEPENDENCY = 'dependency',   // Another skill requires this
-  SCHEDULED = 'scheduled'      // Time-based activation
+  KEYWORD = 'keyword', // Simple keyword match
+  PATTERN = 'pattern', // Regex pattern
+  SEMANTIC = 'semantic', // Embedding similarity
+  EXPLICIT = 'explicit', // User invokes by name
+  DEPENDENCY = 'dependency', // Another skill requires this
+  SCHEDULED = 'scheduled', // Time-based activation
 }
 
 /**
@@ -292,10 +307,10 @@ enum TriggerType {
  */
 interface SkillDependency {
   skillId: string;
-  version?: string;            // SemVer range (e.g., "^2.0.0")
-  required: boolean;           // Hard vs soft dependency
+  version?: string; // SemVer range (e.g., "^2.0.0")
+  required: boolean; // Hard vs soft dependency
   loadTiming: 'eager' | 'lazy' | 'parallel';
-  fallback?: string;           // Alternative skill if unavailable
+  fallback?: string; // Alternative skill if unavailable
 }
 
 /**
@@ -310,7 +325,7 @@ interface SkillInterface {
 
 interface ParameterDefinition {
   name: string;
-  type: string;                // TypeScript type
+  type: string; // TypeScript type
   description: string;
   required: boolean;
   default?: any;
@@ -330,7 +345,7 @@ interface SideEffect {
 interface ExecutionProcedure {
   steps: ProcedureStep[];
   parallelizable: boolean;
-  estimatedDuration: string;   // Human-readable (e.g., "2-5 seconds")
+  estimatedDuration: string; // Human-readable (e.g., "2-5 seconds")
   retryStrategy?: RetryStrategy;
 }
 
@@ -338,7 +353,7 @@ interface ProcedureStep {
   order: number;
   action: string;
   description: string;
-  requiredSkills?: string[];   // Other skills needed for this step
+  requiredSkills?: string[]; // Other skills needed for this step
   optional: boolean;
   conditions?: Condition[];
 }
@@ -351,11 +366,11 @@ interface ResourceManifest {
   type: ResourceType;
   name: string;
   description: string;
-  path: string;                // Relative path or URL
-  size: number;                // Bytes
-  format: string;              // MIME type or file extension
+  path: string; // Relative path or URL
+  size: number; // Bytes
+  format: string; // MIME type or file extension
   loadStrategy: 'immediate' | 'lazy' | 'on_request';
-  cacheDuration?: number;      // Milliseconds, undefined = session
+  cacheDuration?: number; // Milliseconds, undefined = session
   compression?: 'gzip' | 'brotli' | 'none';
 }
 
@@ -363,11 +378,11 @@ interface ResourceManifest {
  * Skill status
  */
 enum SkillStatus {
-  STABLE = 'stable',           // Production-ready
-  BETA = 'beta',               // Testing phase
-  ALPHA = 'alpha',             // Early development
-  DEPRECATED = 'deprecated',   // Scheduled for removal
-  EXPERIMENTAL = 'experimental' // Experimental feature
+  STABLE = 'stable', // Production-ready
+  BETA = 'beta', // Testing phase
+  ALPHA = 'alpha', // Early development
+  DEPRECATED = 'deprecated', // Scheduled for removal
+  EXPERIMENTAL = 'experimental', // Experimental feature
 }
 
 /**
@@ -383,17 +398,17 @@ enum SkillCategory {
   ANALYSIS = 'analysis',
   AUTOMATION = 'automation',
   INTEGRATION = 'integration',
-  SYSTEM = 'system'
+  SYSTEM = 'system',
 }
 
 /**
  * Model compatibility
  */
 interface ModelVersion {
-  modelId: string;             // e.g., "claude-sonnet-4-5"
+  modelId: string; // e.g., "claude-sonnet-4-5"
   minVersion?: string;
   maxVersion?: string;
-  features?: string[];         // Required model features
+  features?: string[]; // Required model features
   degradationStrategy?: 'disable' | 'fallback' | 'limited';
 }
 ```
@@ -412,7 +427,6 @@ async function initializeSkillSystem(
   sessionId: string,
   userContext: UserContext
 ): Promise<SkillSystemState> {
-
   // PHASE 1: Load Level 1 (Summaries) - Always
   const summaries = await loadLevel1Summaries();
 
@@ -429,7 +443,7 @@ async function initializeSkillSystem(
     loadedSummaries: summaries,
     preloadedInstructions: preloaded,
     memoryState,
-    userContext
+    userContext,
   });
 
   return {
@@ -439,8 +453,8 @@ async function initializeSkillSystem(
       level1Tokens: calculateTokens(summaries),
       level2PreloadCount: preloaded.length,
       level2Tokens: calculateTokens(preloaded),
-      initDurationMs: performance.now()
-    }
+      initDurationMs: performance.now(),
+    },
   };
 }
 ```
@@ -456,7 +470,6 @@ async function loadSkillOnTrigger(
   context: SkillExecutionContext,
   trigger: TriggerMatch
 ): Promise<LoadedSkill> {
-
   // Check if already loaded
   const cached = context.cache.get(skillId, 'level2');
   if (cached && !needsRefresh(cached)) {
@@ -467,16 +480,13 @@ async function loadSkillOnTrigger(
   const instructions = await loadLevel2Instructions(skillId);
 
   // Load dependencies
-  const deps = await loadDependencies(
-    instructions.dependencies,
-    context
-  );
+  const deps = await loadDependencies(instructions.dependencies, context);
 
   // Cache in warm memory
   await context.memory.warm.set(skillId, instructions, {
     ttl: 3600000, // 1 hour
     tags: ['skill', 'instructions', instructions.tier],
-    importance: calculateSkillImportance(trigger)
+    importance: calculateSkillImportance(trigger),
   });
 
   // Update context
@@ -484,14 +494,14 @@ async function loadSkillOnTrigger(
     instructions,
     dependencies: deps,
     loadedAt: Date.now(),
-    trigger
+    trigger,
   });
 
   return {
     skillId,
     instructions,
     dependencies: deps,
-    loadDurationMs: performance.now()
+    loadDurationMs: performance.now(),
   };
 }
 ```
@@ -507,7 +517,6 @@ async function loadSkillResources(
   resourceIds: string[],
   context: SkillExecutionContext
 ): Promise<LoadedResource[]> {
-
   const skill = context.activeSkills.get(skillId);
   if (!skill) {
     throw new Error(`Skill ${skillId} not active`);
@@ -516,25 +525,21 @@ async function loadSkillResources(
   const resources = await Promise.all(
     resourceIds.map(async (resourceId) => {
       // Check cache first
-      const cached = await context.memory.hot.get(
-        `resource:${skillId}:${resourceId}`
-      );
+      const cached = await context.memory.hot.get(`resource:${skillId}:${resourceId}`);
 
       if (cached) {
         return cached;
       }
 
       // Load from cold storage
-      const resource = await loadFromColdStorage(
-        skillId,
-        resourceId
-      );
+      const resource = await loadFromColdStorage(skillId, resourceId);
 
       // Decompress if needed
       const data = await decompressResource(resource);
 
       // Cache in hot memory if small enough
-      if (data.size < 1024 * 1024) { // < 1MB
+      if (data.size < 1024 * 1024) {
+        // < 1MB
         await context.memory.hot.set(
           `resource:${skillId}:${resourceId}`,
           data,
@@ -545,7 +550,7 @@ async function loadSkillResources(
       return {
         resourceId,
         data,
-        loadedAt: Date.now()
+        loadedAt: Date.now(),
       };
     })
   );
@@ -564,11 +569,10 @@ async function unloadInactiveSkills(
   context: SkillExecutionContext,
   aggressiveness: 'gentle' | 'moderate' | 'aggressive'
 ): Promise<UnloadResult> {
-
   const thresholds = {
-    gentle: 300000,      // 5 minutes idle
-    moderate: 120000,    // 2 minutes idle
-    aggressive: 30000    // 30 seconds idle
+    gentle: 300000, // 5 minutes idle
+    moderate: 120000, // 2 minutes idle
+    aggressive: 30000, // 30 seconds idle
   };
 
   const threshold = thresholds[aggressiveness];
@@ -592,7 +596,7 @@ async function unloadInactiveSkills(
     const skill = context.activeSkills.get(skillId);
     await context.memory.warm.set(skillId, skill, {
       ttl: 3600000,
-      importance: skill.performance.successRate
+      importance: skill.performance.successRate,
     });
 
     // Remove from active context
@@ -602,7 +606,7 @@ async function unloadInactiveSkills(
   return {
     unloadedCount: toUnload.length,
     freedTokens: calculateFreedTokens(toUnload),
-    remainingActive: context.activeSkills.size
+    remainingActive: context.activeSkills.size,
   };
 }
 ```
@@ -618,7 +622,6 @@ async function unloadInactiveSkills(
  * Skill data mapped to three-tier memory architecture
  */
 interface SkillMemoryMapping {
-
   // HOT MEMORY (Firebase RTDB)
   hot: {
     // Active skill execution state
@@ -711,8 +714,8 @@ interface SkillUsagePattern {
   userId: string;
 
   // Temporal patterns
-  timeOfDay: Map<number, number>;      // Hour -> usage count
-  dayOfWeek: Map<number, number>;      // Day -> usage count
+  timeOfDay: Map<number, number>; // Hour -> usage count
+  dayOfWeek: Map<number, number>; // Day -> usage count
 
   // Context patterns
   commonTriggers: Array<{
@@ -721,7 +724,7 @@ interface SkillUsagePattern {
   }>;
 
   // Co-occurrence with other skills
-  coActivated: Map<string, number>;    // SkillId -> count
+  coActivated: Map<string, number>; // SkillId -> count
 
   // User preferences
   preferredParameters: Record<string, any>;
@@ -747,18 +750,13 @@ async function predictLikelySkills(
   userContext: UserContext,
   memorySystem: MemorySystem
 ): Promise<SkillPrediction[]> {
-
   const predictions: SkillPrediction[] = [];
 
   // 1. Check hot memory for recent session patterns
-  const recentSkills = await memorySystem.hot.getSessionSkills(
-    userContext.sessionId
-  );
+  const recentSkills = await memorySystem.hot.getSessionSkills(userContext.sessionId);
 
   // 2. Query warm memory for user usage patterns
-  const userPatterns = await memorySystem.warm.getUserPatterns(
-    userContext.userId
-  );
+  const userPatterns = await memorySystem.warm.getUserPatterns(userContext.userId);
 
   // 3. Temporal predictions
   const now = new Date();
@@ -766,47 +764,43 @@ async function predictLikelySkills(
   const day = now.getDay();
 
   for (const pattern of userPatterns) {
-    const temporalScore =
-      (pattern.timeOfDay.get(hour) || 0) +
-      (pattern.dayOfWeek.get(day) || 0);
+    const temporalScore = (pattern.timeOfDay.get(hour) || 0) + (pattern.dayOfWeek.get(day) || 0);
 
     predictions.push({
       skillId: pattern.skillId,
       confidence: normalizeScore(temporalScore),
-      reason: 'temporal-pattern'
+      reason: 'temporal-pattern',
     });
   }
 
   // 4. Semantic predictions from conversation context
   if (userContext.conversationSummary) {
-    const embedding = await generateEmbedding(
-      userContext.conversationSummary
-    );
+    const embedding = await generateEmbedding(userContext.conversationSummary);
 
-    const similarSkills = await memorySystem.warm.searchSimilarSkills(
-      embedding,
-      { limit: 5, minSimilarity: 0.7 }
-    );
+    const similarSkills = await memorySystem.warm.searchSimilarSkills(embedding, {
+      limit: 5,
+      minSimilarity: 0.7,
+    });
 
-    predictions.push(...similarSkills.map(s => ({
-      skillId: s.skillId,
-      confidence: s.similarity,
-      reason: 'semantic-match'
-    })));
+    predictions.push(
+      ...similarSkills.map((s) => ({
+        skillId: s.skillId,
+        confidence: s.similarity,
+        reason: 'semantic-match',
+      }))
+    );
   }
 
   // 5. Co-activation predictions
   for (const activeSkill of recentSkills) {
-    const coActivated = userPatterns
-      .find(p => p.skillId === activeSkill)
-      ?.coActivated;
+    const coActivated = userPatterns.find((p) => p.skillId === activeSkill)?.coActivated;
 
     if (coActivated) {
       for (const [skillId, count] of coActivated) {
         predictions.push({
           skillId,
           confidence: Math.min(count / 100, 1.0),
-          reason: 'co-activation'
+          reason: 'co-activation',
         });
       }
     }
@@ -814,9 +808,7 @@ async function predictLikelySkills(
 
   // Deduplicate and sort by confidence
   const unique = deduplicatePredictions(predictions);
-  return unique
-    .sort((a, b) => b.confidence - a.confidence)
-    .slice(0, 5); // Top 5 predictions
+  return unique.sort((a, b) => b.confidence - a.confidence).slice(0, 5); // Top 5 predictions
 }
 ```
 
@@ -831,37 +823,25 @@ async function persistSkillState(
   state: SkillState,
   context: SkillExecutionContext
 ): Promise<void> {
-
   const manifest = await getSkillManifest(skillId);
 
   switch (manifest.memory.stateRetention) {
     case 'session':
       // Store in hot memory (expires with session)
-      await context.memory.hot.set(
-        `skill:state:${skillId}`,
-        state,
-        { ttl: context.sessionTTL }
-      );
+      await context.memory.hot.set(`skill:state:${skillId}`, state, { ttl: context.sessionTTL });
       break;
 
     case 'persistent':
       // Store in warm memory (long-term)
-      await context.memory.warm.set(
-        `skill:state:${skillId}`,
-        state,
-        {
-          ttl: 30 * 24 * 60 * 60 * 1000, // 30 days
-          tags: ['skill-state', skillId],
-          importance: 0.7
-        }
-      );
+      await context.memory.warm.set(`skill:state:${skillId}`, state, {
+        ttl: 30 * 24 * 60 * 60 * 1000, // 30 days
+        tags: ['skill-state', skillId],
+        importance: 0.7,
+      });
 
       // Also backup to cold storage periodically
       if (shouldBackupToCold(state)) {
-        await context.memory.cold.backup(
-          `skills/${skillId}/state.json`,
-          state
-        );
+        await context.memory.cold.backup(`skills/${skillId}/state.json`, state);
       }
       break;
 
@@ -878,35 +858,24 @@ async function restoreSkillState(
   skillId: string,
   context: SkillExecutionContext
 ): Promise<SkillState | null> {
-
   // Try hot memory first
-  const hotState = await context.memory.hot.get(
-    `skill:state:${skillId}`
-  );
+  const hotState = await context.memory.hot.get(`skill:state:${skillId}`);
 
   if (hotState) {
     return hotState;
   }
 
   // Try warm memory
-  const warmState = await context.memory.warm.get(
-    `skill:state:${skillId}`
-  );
+  const warmState = await context.memory.warm.get(`skill:state:${skillId}`);
 
   if (warmState) {
     // Promote to hot memory
-    await context.memory.hot.set(
-      `skill:state:${skillId}`,
-      warmState,
-      { ttl: context.sessionTTL }
-    );
+    await context.memory.hot.set(`skill:state:${skillId}`, warmState, { ttl: context.sessionTTL });
     return warmState;
   }
 
   // Try cold storage
-  const coldState = await context.memory.cold.read(
-    `skills/${skillId}/state.json`
-  );
+  const coldState = await context.memory.cold.read(`skills/${skillId}/state.json`);
 
   if (coldState) {
     // Promote through the tiers
@@ -938,16 +907,16 @@ interface SkillVersion {
   major: number;
   minor: number;
   patch: number;
-  prerelease?: string;  // e.g., "alpha.1", "beta.2"
-  build?: string;       // e.g., "20251206"
+  prerelease?: string; // e.g., "alpha.1", "beta.2"
+  build?: string; // e.g., "20251206"
 }
 
 /**
  * Version compatibility checker
  */
 function isCompatible(
-  required: string,     // SemVer range (e.g., "^2.0.0", ">=1.5.0 <2.0.0")
-  available: string     // Actual version (e.g., "2.1.3")
+  required: string, // SemVer range (e.g., "^2.0.0", ">=1.5.0 <2.0.0")
+  available: string // Actual version (e.g., "2.1.3")
 ): boolean {
   return semver.satisfies(available, required);
 }
@@ -960,9 +929,9 @@ interface CompatibilityMatrix {
   version: string;
 
   compatibleWith: {
-    skills: Map<string, string>;      // SkillId -> Version range
-    models: Map<string, string>;      // ModelId -> Version range
-    apis: Map<string, string>;        // API -> Version range
+    skills: Map<string, string>; // SkillId -> Version range
+    models: Map<string, string>; // ModelId -> Version range
+    apis: Map<string, string>; // API -> Version range
   };
 
   deprecations: Deprecation[];
@@ -971,9 +940,9 @@ interface CompatibilityMatrix {
 
 interface Deprecation {
   feature: string;
-  since: string;                // Version when deprecated
-  removedIn: string;            // Version when removed
-  replacement?: string;         // Alternative to use
+  since: string; // Version when deprecated
+  removedIn: string; // Version when removed
+  replacement?: string; // Alternative to use
   reason: string;
 }
 
@@ -998,22 +967,22 @@ async function handleVersionIncompatibility(
   availableVersion: string,
   context: SkillExecutionContext
 ): Promise<DegradationStrategy> {
-
   const manifest = await getSkillManifest(skillId, availableVersion);
 
   // Check degradation strategy
-  const strategy = manifest.metadata.modelCompatibility
-    .find(m => m.modelId === context.modelId)
-    ?.degradationStrategy;
+  const strategy = manifest.metadata.modelCompatibility.find(
+    (m) => m.modelId === context.modelId
+  )?.degradationStrategy;
 
   switch (strategy) {
     case 'disable':
       // Skill unavailable
       return {
         action: 'disable',
-        message: `Skill ${skillId} requires version ${requiredVersion}, ` +
-                 `but ${availableVersion} is available. Skill disabled.`,
-        alternatives: manifest.alternatives
+        message:
+          `Skill ${skillId} requires version ${requiredVersion}, ` +
+          `but ${availableVersion} is available. Skill disabled.`,
+        alternatives: manifest.alternatives,
       };
 
     case 'fallback':
@@ -1023,34 +992,25 @@ async function handleVersionIncompatibility(
         return {
           action: 'fallback',
           fallbackSkill: fallback,
-          message: `Using ${fallback} as fallback for ${skillId}`
+          message: `Using ${fallback} as fallback for ${skillId}`,
         };
       }
       return { action: 'disable' };
 
     case 'limited':
       // Run with limited functionality
-      const limitedFeatures = await detectSupportedFeatures(
-        skillId,
-        availableVersion,
-        context
-      );
+      const limitedFeatures = await detectSupportedFeatures(skillId, availableVersion, context);
 
       return {
         action: 'limited',
         supportedFeatures: limitedFeatures,
-        unsupportedFeatures: manifest.metadata.features
-          .filter(f => !limitedFeatures.includes(f)),
-        message: `Running ${skillId} with limited features`
+        unsupportedFeatures: manifest.metadata.features.filter((f) => !limitedFeatures.includes(f)),
+        message: `Running ${skillId} with limited features`,
       };
 
     default:
       // Try to auto-upgrade
-      return await attemptAutoUpgrade(
-        skillId,
-        requiredVersion,
-        context
-      );
+      return await attemptAutoUpgrade(skillId, requiredVersion, context);
   }
 }
 ```
@@ -1062,14 +1022,10 @@ async function handleVersionIncompatibility(
  * Automatic skill update system
  */
 class SkillUpdateManager {
-
   /**
    * Check for skill updates
    */
-  async checkUpdates(
-    context: SkillExecutionContext
-  ): Promise<SkillUpdate[]> {
-
+  async checkUpdates(context: SkillExecutionContext): Promise<SkillUpdate[]> {
     const installedSkills = await this.getInstalledSkills();
     const updates: SkillUpdate[] = [];
 
@@ -1081,16 +1037,10 @@ class SkillUpdateManager {
           skillId: skill.id,
           currentVersion: skill.version,
           latestVersion: latest.version,
-          updateType: this.classifyUpdate(
-            skill.version,
-            latest.version
-          ),
+          updateType: this.classifyUpdate(skill.version, latest.version),
           changelog: latest.changelog,
           breakingChanges: latest.breakingChanges,
-          autoUpdateSafe: this.isAutoUpdateSafe(
-            skill,
-            latest
-          )
+          autoUpdateSafe: this.isAutoUpdateSafe(skill, latest),
         });
       }
     }
@@ -1106,17 +1056,13 @@ class SkillUpdateManager {
     targetVersion: string,
     context: SkillExecutionContext
   ): Promise<UpdateResult> {
-
     const current = await this.getSkillManifest(skillId);
     const target = await this.fetchSkillVersion(skillId, targetVersion);
 
     // Check for breaking changes
     if (this.hasBreakingChanges(current.version, targetVersion)) {
       // Run migration
-      const migration = await this.getMigration(
-        current.version,
-        targetVersion
-      );
+      const migration = await this.getMigration(current.version, targetVersion);
 
       if (migration.automated) {
         await this.runMigration(migration, context);
@@ -1124,7 +1070,7 @@ class SkillUpdateManager {
         return {
           success: false,
           requiresManualMigration: true,
-          migrationSteps: migration.steps
+          migrationSteps: migration.steps,
         };
       }
     }
@@ -1153,7 +1099,7 @@ class SkillUpdateManager {
       return {
         success: false,
         error: 'Tests failed',
-        testResults
+        testResults,
       };
     }
 
@@ -1161,17 +1107,14 @@ class SkillUpdateManager {
       success: true,
       previousVersion: current.version,
       newVersion: targetVersion,
-      testResults
+      testResults,
     };
   }
 
   /**
    * Classify update type
    */
-  private classifyUpdate(
-    current: string,
-    latest: string
-  ): UpdateType {
+  private classifyUpdate(current: string, latest: string): UpdateType {
     const currentVer = semver.parse(current);
     const latestVer = semver.parse(latest);
 
@@ -1187,15 +1130,12 @@ class SkillUpdateManager {
   /**
    * Check if auto-update is safe
    */
-  private isAutoUpdateSafe(
-    current: SkillManifest,
-    latest: SkillManifest
-  ): boolean {
+  private isAutoUpdateSafe(current: SkillManifest, latest: SkillManifest): boolean {
     // Only auto-update patch versions
-    return this.classifyUpdate(
-      current.version,
-      latest.version
-    ) === 'patch' && latest.breakingChanges.length === 0;
+    return (
+      this.classifyUpdate(current.version, latest.version) === 'patch' &&
+      latest.breakingChanges.length === 0
+    );
   }
 }
 ```
@@ -1318,12 +1258,12 @@ export class SkillRegistry {
  * Skill index for fast lookups
  */
 export interface SkillIndex {
-  byId: Map<SkillId, SkillManifest[]>;      // Multiple versions
+  byId: Map<SkillId, SkillManifest[]>; // Multiple versions
   byTier: Map<SkillTier, Set<SkillId>>;
   byCategory: Map<SkillCategory, Set<SkillId>>;
-  byTrigger: Map<string, Set<SkillId>>;     // Keyword/pattern -> Skills
+  byTrigger: Map<string, Set<SkillId>>; // Keyword/pattern -> Skills
   byTag: Map<string, Set<SkillId>>;
-  embeddings: Map<SkillId, number[]>;       // For semantic search
+  embeddings: Map<SkillId, number[]>; // For semantic search
 }
 
 /**
@@ -1703,12 +1643,12 @@ summary: >
 
 triggers:
   - type: keyword
-    pattern: "analyze data|statistics|visualization|dataset"
+    pattern: 'analyze data|statistics|visualization|dataset'
     confidence: 0.8
     priority: 10
 
   - type: semantic
-    pattern: "I want to understand patterns in my data"
+    pattern: 'I want to understand patterns in my data'
     confidence: 0.75
     priority: 5
 
@@ -1716,19 +1656,19 @@ tier: specialist
 
 dependencies:
   - skillId: python-executor
-    version: "^3.0.0"
+    version: '^3.0.0'
     required: true
     loadTiming: eager
 
   - skillId: chart-renderer
-    version: "^1.5.0"
+    version: '^1.5.0'
     required: false
     loadTiming: lazy
 
 metadata:
   author: Skills Team
-  created: "2024-08-15"
-  updated: "2025-12-06"
+  created: '2024-08-15'
+  updated: '2025-12-06'
   status: stable
   tags:
     - data
@@ -1738,7 +1678,7 @@ metadata:
   category: data
 
   modelCompatibility:
-    - modelId: "claude-sonnet-4-5"
+    - modelId: 'claude-sonnet-4-5'
       features:
         - statistical-reasoning
         - code-execution
@@ -1759,14 +1699,14 @@ memory:
   stateRetention: session
   cacheStrategy:
     type: lru
-    maxSize: 10485760  # 10MB
-    ttl: 3600000       # 1 hour
-  maxStateSize: 1048576  # 1MB
+    maxSize: 10485760 # 10MB
+    ttl: 3600000 # 1 hour
+  maxStateSize: 1048576 # 1MB
 ```
 
 ### Step 3: Create Level 2 Instructions
 
-```markdown
+````markdown
 <!-- skills/instructions/specialist/data-analysis.md -->
 
 # Data Analysis Skill v2.1.0
@@ -1774,6 +1714,7 @@ memory:
 ## Description
 
 Performs comprehensive data analysis on structured datasets including:
+
 - Descriptive statistics (mean, median, mode, variance, etc.)
 - Inferential statistics (hypothesis testing, confidence intervals)
 - Exploratory data analysis (correlations, distributions, outliers)
@@ -1783,18 +1724,21 @@ Performs comprehensive data analysis on structured datasets including:
 ## When to Use
 
 **Triggers:**
+
 - User uploads or references a dataset
 - User asks for "analysis", "statistics", "trends", "correlations"
 - User wants to "understand", "explore", or "visualize" data
 - User provides structured data (CSV, JSON, Excel, SQL results)
 
 **Applicable To:**
+
 - Tabular data with clear column structure
 - Time series data
 - Categorical and numerical data
 - Datasets from 10 rows to 1M+ rows
 
 **Not Applicable To:**
+
 - Unstructured text (use text-analysis skill)
 - Images or videos (use vision skills)
 - Real-time streaming data (use stream-analysis skill)
@@ -1808,15 +1752,15 @@ interface DataAnalysisInput {
 
   // Optional
   analysisType?: 'descriptive' | 'inferential' | 'exploratory' | 'predictive';
-  columns?: string[];              // Specific columns to analyze
-  visualizations?: boolean;        // Generate charts
+  columns?: string[]; // Specific columns to analyze
+  visualizations?: boolean; // Generate charts
   outputFormat?: 'report' | 'interactive' | 'summary' | 'raw';
-  statisticalTests?: string[];     // Specific tests to run
+  statisticalTests?: string[]; // Specific tests to run
 
   // Advanced
-  confidenceLevel?: number;        // Default: 0.95
-  outlierDetection?: boolean;      // Default: true
-  correlationThreshold?: number;   // Default: 0.7
+  confidenceLevel?: number; // Default: 0.95
+  outlierDetection?: boolean; // Default: true
+  correlationThreshold?: number; // Default: 0.7
 }
 
 type DataSource =
@@ -1825,6 +1769,7 @@ type DataSource =
   | { type: 'url'; url: string }
   | { type: 'sql'; query: string; connection: ConnectionInfo };
 ```
+````
 
 ## Output Specification
 
@@ -1915,7 +1860,7 @@ interface DataAnalysisOutput {
 const input = {
   dataset: { type: 'csv', path: './sales_data.csv' },
   analysisType: 'descriptive',
-  outputFormat: 'summary'
+  outputFormat: 'summary',
 };
 
 const output = await executeSkill('data-analysis', input);
@@ -1930,7 +1875,7 @@ const input = {
   analysisType: 'exploratory',
   visualizations: true,
   outputFormat: 'report',
-  columns: ['revenue', 'quantity', 'category', 'date']
+  columns: ['revenue', 'quantity', 'category', 'date'],
 };
 
 const output = await executeSkill('data-analysis', input);
@@ -1944,7 +1889,7 @@ const input = {
   dataset: { type: 'sql', query: 'SELECT * FROM experiments', connection: db },
   analysisType: 'inferential',
   statisticalTests: ['t-test', 'anova', 'chi-square'],
-  confidenceLevel: 0.95
+  confidenceLevel: 0.95,
 };
 
 const output = await executeSkill('data-analysis', input);
@@ -1988,17 +1933,20 @@ const output = await executeSkill('data-analysis', input);
 ## Integration Points
 
 ### Upstream Skills (can invoke this skill)
+
 - `research-assistant`: For research data analysis
 - `code-reviewer`: For performance metrics analysis
 - `report-generator`: For data-driven reports
 
 ### Downstream Skills (this skill invokes)
+
 - `python-executor`: Code execution
 - `chart-renderer`: Visualization generation
 - `data-loader`: Data import and preprocessing
 - `statistical-engine`: Advanced statistics
 
 ### Resource Loading
+
 - **On Activation**: Load schemas and validation rules
 - **During Execution**: Load templates and examples as needed
 - **On Error**: Load troubleshooting guides
@@ -2016,7 +1964,8 @@ const output = await executeSkill('data-analysis', input);
 - **2.0.0** (2025-10-15): Redesigned with new statistical engine
 - **1.5.2** (2025-08-20): Bug fixes in correlation calculations
 - **1.5.0** (2025-07-10): Added inferential statistics support
-```
+
+````
 
 ### Step 4: Initialize Skill System
 
@@ -2097,7 +2046,7 @@ export async function initializeSkillSystem(
     metrics
   };
 }
-```
+````
 
 ---
 
@@ -2133,7 +2082,7 @@ class TokenBudgetOptimizer {
       level3,
       total,
       limit: this.maxTokens,
-      utilizationPercent: (total / this.maxTokens) * 100
+      utilizationPercent: (total / this.maxTokens) * 100,
     };
   }
 
@@ -2142,7 +2091,7 @@ class TokenBudgetOptimizer {
    */
   canLoad(estimatedTokens: number): boolean {
     const current = this.getCurrentUsage();
-    return (current.total + estimatedTokens) <= this.maxTokens;
+    return current.total + estimatedTokens <= this.maxTokens;
   }
 
   /**
@@ -2162,7 +2111,7 @@ class TokenBudgetOptimizer {
       .map(([skillId, state]) => ({
         skillId,
         state,
-        score: this.calculateSkillValue(state)
+        score: this.calculateSkillValue(state),
       }))
       .sort((a, b) => a.score - b.score); // Lowest value first
 
@@ -2185,7 +2134,7 @@ class TokenBudgetOptimizer {
     const frequencyScore = Math.min(state.executionCount / 10, 1.0);
     const successScore = state.performance.successRate;
 
-    return (recencyScore * 0.4) + (frequencyScore * 0.3) + (successScore * 0.3);
+    return recencyScore * 0.4 + frequencyScore * 0.3 + successScore * 0.3;
   }
 }
 ```
@@ -2197,8 +2146,8 @@ class TokenBudgetOptimizer {
  * Multi-level caching for skills
  */
 class SkillCacheManager implements SkillCache {
-  private l1Cache: Map<string, CacheEntry>;  // In-memory, < 1MB
-  private l2Cache: Map<string, CacheEntry>;  // Hot memory, < 10MB
+  private l1Cache: Map<string, CacheEntry>; // In-memory, < 1MB
+  private l2Cache: Map<string, CacheEntry>; // Hot memory, < 10MB
   private stats: CacheStats;
 
   constructor(
@@ -2213,7 +2162,7 @@ class SkillCacheManager implements SkillCache {
       hitRate: 0,
       size: 0,
       maxSize: config.maxSize,
-      evictions: 0
+      evictions: 0,
     };
   }
 
@@ -2270,14 +2219,16 @@ class SkillCacheManager implements SkillCache {
       ttl: ttl || this.config.ttl,
       createdAt: Date.now(),
       lastAccessedAt: Date.now(),
-      accessCount: 0
+      accessCount: 0,
     };
 
     // Determine which cache level
-    if (entry.size < 1024 * 1024) { // < 1MB -> L1
+    if (entry.size < 1024 * 1024) {
+      // < 1MB -> L1
       await this.evictIfNeeded(this.l1Cache, entry.size);
       this.l1Cache.set(key, entry);
-    } else if (entry.size < 10 * 1024 * 1024) { // < 10MB -> L2
+    } else if (entry.size < 10 * 1024 * 1024) {
+      // < 10MB -> L2
       await this.evictIfNeeded(this.l2Cache, entry.size);
       this.l2Cache.set(key, entry);
     }
@@ -2286,10 +2237,7 @@ class SkillCacheManager implements SkillCache {
     await this.hotMemory.set(key, value, ttl);
   }
 
-  private async evictIfNeeded(
-    cache: Map<string, CacheEntry>,
-    requiredSize: number
-  ): Promise<void> {
+  private async evictIfNeeded(cache: Map<string, CacheEntry>, requiredSize: number): Promise<void> {
     const currentSize = this.calculateCacheSize(cache);
 
     if (currentSize + requiredSize <= this.config.maxSize) {
@@ -2301,7 +2249,7 @@ class SkillCacheManager implements SkillCache {
       .map(([key, entry]) => ({
         key,
         entry,
-        score: this.calculateEvictionScore(entry)
+        score: this.calculateEvictionScore(entry),
       }))
       .sort((a, b) => a.score - b.score); // Lowest score evicted first
 
@@ -2320,7 +2268,7 @@ class SkillCacheManager implements SkillCache {
     const recency = 1.0 / (1 + (Date.now() - entry.lastAccessedAt) / 60000);
     const frequency = Math.min(entry.accessCount / 100, 1.0);
 
-    return (recency * 0.6) + (frequency * 0.4);
+    return recency * 0.6 + frequency * 0.4;
   }
 }
 ```
@@ -2378,21 +2326,15 @@ async function verifySkill(
   manifest: SkillManifest,
   verificationConfig: VerificationConfig
 ): Promise<VerificationResult> {
-
   const checks: VerificationCheck[] = [];
 
   // 1. Signature verification
   if (verificationConfig.requireSignature) {
-    const signatureValid = await verifySignature(
-      manifest,
-      verificationConfig.publicKey
-    );
+    const signatureValid = await verifySignature(manifest, verificationConfig.publicKey);
     checks.push({
       name: 'signature',
       passed: signatureValid,
-      message: signatureValid
-        ? 'Signature valid'
-        : 'Invalid or missing signature'
+      message: signatureValid ? 'Signature valid' : 'Invalid or missing signature',
     });
   }
 
@@ -2401,9 +2343,7 @@ async function verifySkill(
   checks.push({
     name: 'checksum',
     passed: checksumValid,
-    message: checksumValid
-      ? 'Checksum valid'
-      : 'Checksum mismatch'
+    message: checksumValid ? 'Checksum valid' : 'Checksum mismatch',
   });
 
   // 3. Permission audit
@@ -2411,9 +2351,7 @@ async function verifySkill(
   checks.push({
     name: 'permissions',
     passed: permissionsOk,
-    message: permissionsOk
-      ? 'Permissions acceptable'
-      : 'Excessive permissions requested'
+    message: permissionsOk ? 'Permissions acceptable' : 'Excessive permissions requested',
   });
 
   // 4. Dependency safety
@@ -2421,17 +2359,15 @@ async function verifySkill(
   checks.push({
     name: 'dependencies',
     passed: depsOk,
-    message: depsOk
-      ? 'Dependencies verified'
-      : 'Unsafe dependencies detected'
+    message: depsOk ? 'Dependencies verified' : 'Unsafe dependencies detected',
   });
 
   return {
     skillId: manifest.id,
     version: manifest.version,
     checks,
-    passed: checks.every(c => c.passed),
-    riskLevel: calculateRiskLevel(checks)
+    passed: checks.every((c) => c.passed),
+    riskLevel: calculateRiskLevel(checks),
   };
 }
 ```

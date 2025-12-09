@@ -70,13 +70,10 @@ console.log('\n');
 
 // Example 6: Claims with proper evidence
 console.log('=== Example 6: Claims With Evidence ===');
-const claimWithEvidence = validateClaim(
-  'Performance improved by 50% after optimization',
-  [
-    'Measured using Apache Bench on 2024-12-06',
-    'https://github.com/example/benchmarks/blob/main/results.md',
-  ]
-);
+const claimWithEvidence = validateClaim('Performance improved by 50% after optimization', [
+  'Measured using Apache Bench on 2024-12-06',
+  'https://github.com/example/benchmarks/blob/main/results.md',
+]);
 console.log(formatValidationResult(claimWithEvidence));
 console.log('\n');
 
@@ -84,23 +81,19 @@ console.log('\n');
 console.log('=== Example 7: Completion Claims ===');
 const validator = new EvidenceBasedValidator();
 
-const badCompletion = validator.validateCompleteness(
-  'Feature is production ready',
-  ['Implemented the core functionality']
-);
+const badCompletion = validator.validateCompleteness('Feature is production ready', [
+  'Implemented the core functionality',
+]);
 console.log('Bad completion claim:');
 console.log(formatValidationResult(badCompletion));
 console.log('\n');
 
-const goodCompletion = validator.validateCompleteness(
-  'Feature is implemented',
-  [
-    'Implemented: 5 out of 7 core functions',
-    'Tested: 3 out of 7 functions have unit tests',
-    'Not yet integrated with main system',
-    'Performance validation pending',
-  ]
-);
+const goodCompletion = validator.validateCompleteness('Feature is implemented', [
+  'Implemented: 5 out of 7 core functions',
+  'Tested: 3 out of 7 functions have unit tests',
+  'Not yet integrated with main system',
+  'Performance validation pending',
+]);
 console.log('Good completion status:');
 console.log(formatValidationResult(goodCompletion));
 console.log('\n');

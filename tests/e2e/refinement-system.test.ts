@@ -26,7 +26,7 @@ describe('Refinement System E2E', () => {
         iterations: 3,
         initialScore: 0.4,
         finalScore: 0.9,
-        improvements: ['Fixed logic', 'Optimized performance', 'Added validation']
+        improvements: ['Fixed logic', 'Optimized performance', 'Added validation'],
       });
 
       expect(memoryId).toBeDefined();
@@ -45,7 +45,7 @@ describe('Refinement System E2E', () => {
         iterations: 2,
         initialScore: 0.5,
         finalScore: 0.85,
-        improvements: ['Improvement A1']
+        improvements: ['Improvement A1'],
       });
 
       await bridge.recordRefinement({
@@ -53,7 +53,7 @@ describe('Refinement System E2E', () => {
         iterations: 3,
         initialScore: 0.3,
         finalScore: 0.95,
-        improvements: ['Improvement B1', 'Improvement B2']
+        improvements: ['Improvement B1', 'Improvement B2'],
       });
 
       const patterns = await bridge.getTopPatterns(5);
@@ -68,7 +68,7 @@ describe('Refinement System E2E', () => {
       // Seed some memories
       await memory.createMemory('Test pattern', MemoryType.PROCEDURAL, {
         importance_score: 0.7,
-        tags: ['test']
+        tags: ['test'],
       });
 
       const candidates = await loop.identify();
@@ -134,11 +134,11 @@ describe('Refinement System E2E', () => {
       const results = await executive.orchestrate([
         { id: 'e2e-1', role: AgentRole.PLANNER, description: 'Plan feature', context: '' },
         { id: 'e2e-2', role: AgentRole.IMPLEMENTER, description: 'Build feature', context: '' },
-        { id: 'e2e-3', role: AgentRole.AUDITOR, description: 'Review feature', context: '' }
+        { id: 'e2e-3', role: AgentRole.AUDITOR, description: 'Review feature', context: '' },
       ]);
 
       expect(results).toHaveLength(3);
-      expect(results.every(r => r.success)).toBe(true);
+      expect(results.every((r) => r.success)).toBe(true);
 
       // Verify learning captured
       const patterns = await executive.learnFromHistory();

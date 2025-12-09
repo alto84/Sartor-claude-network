@@ -15,7 +15,7 @@ import {
   formatRefinementResult,
   type RefinementConfig,
   type EvaluationResult,
-  type Feedback
+  type Feedback,
 } from './refinement-loop';
 
 // ============================================================================
@@ -27,7 +27,7 @@ function createMockConfig(overrides?: Partial<RefinementConfig>): RefinementConf
     maxIterations: 3,
     confidenceThreshold: 0.9,
     processSupervision: true,
-    ...overrides
+    ...overrides,
   };
 }
 
@@ -79,16 +79,13 @@ describe('RefinementLoop', () => {
     test('should stop at max iterations if confidence not reached', async () => {
       const config = createMockConfig({
         maxIterations: 3,
-        confidenceThreshold: 0.99
+        confidenceThreshold: 0.99,
       });
       const loop = new RefinementLoop<number>(config);
 
       const generate = async () => 0.5;
       const evaluate = async (value: number) => {
-        return createEvaluation(
-          Math.min(0.9, value),
-          [createFeedback('Not good enough', 'minor')]
-        );
+        return createEvaluation(Math.min(0.9, value), [createFeedback('Not good enough', 'minor')]);
       };
       const refine = async (value: number) => value + 0.05;
 
@@ -104,7 +101,7 @@ describe('RefinementLoop', () => {
     test('should stop when cost budget is exceeded', async () => {
       const config = createMockConfig({
         costBudget: 50,
-        maxIterations: 10
+        maxIterations: 10,
       });
       const loop = new RefinementLoop<number>(config);
 
@@ -176,12 +173,12 @@ describe('RefinementLoop', () => {
     test('should timeout if execution exceeds limit', async () => {
       const config = createMockConfig({
         timeout: 100, // 100ms timeout
-        maxIterations: 10
+        maxIterations: 10,
       });
       const loop = new RefinementLoop<number>(config);
 
       const generate = async () => {
-        await new Promise(resolve => setTimeout(resolve, 150));
+        await new Promise((resolve) => setTimeout(resolve, 150));
         return 0.5;
       };
       const evaluate = async () => createEvaluation(0.5, []);
@@ -197,7 +194,7 @@ describe('RefinementLoop', () => {
     test('should stop when no significant improvement', async () => {
       const config = createMockConfig({
         minImprovementDelta: 0.1,
-        maxIterations: 10
+        maxIterations: 10,
       });
       const loop = new RefinementLoop<number>(config);
 
@@ -224,18 +221,15 @@ describe('RefinementLoop', () => {
       const loop = new RefinementLoop<number>(config);
 
       const generate = async () => 0.3;
-      const evaluate = async (value: number) => createEvaluation(
-        Math.min(1.0, value),
-        value < 0.9 ? [createFeedback('Low', 'minor')] : []
-      );
+      const evaluate = async (value: number) =>
+        createEvaluation(Math.min(1.0, value), value < 0.9 ? [createFeedback('Low', 'minor')] : []);
       const refine = async (value: number) => value + 0.3;
 
       const result = await loop.run(generate, evaluate, refine);
 
       expect(result.confidenceHistory.length).toBeGreaterThan(0);
       expect(result.confidenceHistory[0]).toBe(0.3); // Initial confidence
-      expect(result.confidenceHistory[result.confidenceHistory.length - 1])
-        .toBe(result.confidence); // Final confidence
+      expect(result.confidenceHistory[result.confidenceHistory.length - 1]).toBe(result.confidence); // Final confidence
     });
   });
 });
@@ -251,7 +245,7 @@ describe('withRefinement', () => {
 
     const result = await withRefinement(task, evaluator, {
       maxIterations: 2,
-      confidenceThreshold: 0.8
+      confidenceThreshold: 0.8,
     });
 
     expect(result).toBeDefined();
@@ -307,7 +301,7 @@ describe('formatRefinementResult', () => {
       stopReason: 'confidence' as const,
       remainingFeedback: [],
       confidenceHistory: [0.5, 0.7, 0.95],
-      durationMs: 1000
+      durationMs: 1000,
     };
 
     const formatted = formatRefinementResult(result);
@@ -338,14 +332,14 @@ describe('Integration Tests', () => {
       maxIterations: 5,
       confidenceThreshold: 0.85,
       processSupervision: true,
-      costBudget: 200
+      costBudget: 200,
     });
 
     const loop = new RefinementLoop<ComplexData>(config);
 
     const generate = async (): Promise<ComplexData> => ({
       value: 0.4,
-      metadata: { quality: 0.4, attempts: 0 }
+      metadata: { quality: 0.4, attempts: 0 },
     });
 
     const evaluate = async (data: ComplexData): Promise<EvaluationResult> => {
@@ -366,8 +360,8 @@ describe('Integration Tests', () => {
       value: data.value + 0.2,
       metadata: {
         quality: data.metadata.quality + 0.2,
-        attempts: data.metadata.attempts + 1
-      }
+        attempts: data.metadata.attempts + 1,
+      },
     });
 
     const result = await loop.run(generate, evaluate, refine);

@@ -35,7 +35,7 @@ async function benchmarkMemoryOperations(): Promise<BenchmarkResult> {
     avgLatencyMs: avg,
     p95LatencyMs: p95,
     throughput: iterations / (latencies.reduce((a, b) => a + b, 0) / 1000),
-    passed: avg < 100 // Target: <100ms average
+    passed: avg < 100, // Target: <100ms average
   };
 }
 
@@ -51,7 +51,7 @@ async function benchmarkTaskDelegation(): Promise<BenchmarkResult> {
       role: AgentRole.IMPLEMENTER,
       description: 'Benchmark task',
       context: '',
-      maxIterations: 2
+      maxIterations: 2,
     });
     latencies.push(Date.now() - start);
   }
@@ -65,17 +65,14 @@ async function benchmarkTaskDelegation(): Promise<BenchmarkResult> {
     avgLatencyMs: avg,
     p95LatencyMs: p95,
     throughput: iterations / (latencies.reduce((a, b) => a + b, 0) / 1000),
-    passed: avg < 500 // Target: <500ms per task
+    passed: avg < 500, // Target: <500ms per task
   };
 }
 
 async function runBenchmarks(): Promise<void> {
   console.log('Running Performance Benchmarks...\n');
 
-  const results = await Promise.all([
-    benchmarkMemoryOperations(),
-    benchmarkTaskDelegation()
-  ]);
+  const results = await Promise.all([benchmarkMemoryOperations(), benchmarkTaskDelegation()]);
 
   console.log('Results:');
   console.log('=========');
@@ -87,7 +84,7 @@ async function runBenchmarks(): Promise<void> {
     console.log(`  Status: ${result.passed ? '✅ PASS' : '❌ FAIL'}`);
   }
 
-  const allPassed = results.every(r => r.passed);
+  const allPassed = results.every((r) => r.passed);
   console.log(`\nOverall: ${allPassed ? '✅ ALL BENCHMARKS PASSED' : '❌ SOME BENCHMARKS FAILED'}`);
 }
 

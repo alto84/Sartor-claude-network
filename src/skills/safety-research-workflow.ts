@@ -141,8 +141,8 @@ export interface Synthesis {
  */
 const SOURCE_CREDIBILITY_WEIGHTS: Record<Source['type'], number> = {
   'peer-reviewed': 1.0,
-  'documentation': 0.7,
-  'measurement': 0.9,
+  documentation: 0.7,
+  measurement: 0.9,
   'expert-opinion': 0.6,
   'ai-generated': 0.3,
 };
@@ -151,10 +151,10 @@ const SOURCE_CREDIBILITY_WEIGHTS: Record<Source['type'], number> = {
  * Evidence level hierarchy (higher is better)
  */
 const EVIDENCE_LEVEL_WEIGHTS: Record<EvidenceLevel, number> = {
-  'empirical': 1.0,
-  'documented': 0.7,
-  'inferred': 0.4,
-  'hypothetical': 0.2,
+  empirical: 1.0,
+  documented: 0.7,
+  inferred: 0.4,
+  hypothetical: 0.2,
 };
 
 // ============================================================================
@@ -188,9 +188,7 @@ export const TruthOverSpeedGate: QualityGate = {
 
       // Check for claims with no sources but high confidence
       if (claim.sources.length === 0 && claim.confidence > 0.3) {
-        issues.push(
-          `Claim "${claim.id}" has no sources but confidence ${claim.confidence} > 0.3`
-        );
+        issues.push(`Claim "${claim.id}" has no sources but confidence ${claim.confidence} > 0.3`);
       }
 
       // Check for empirical claims without empirical sources
@@ -809,7 +807,9 @@ export class SafetyResearchWorkflow {
 
     // Evidence quantity limitations
     if (evidence.length < 3) {
-      limitations.push(`Limited evidence base (${evidence.length} sources) - additional sources needed`);
+      limitations.push(
+        `Limited evidence base (${evidence.length} sources) - additional sources needed`
+      );
     }
 
     // Recency limitations

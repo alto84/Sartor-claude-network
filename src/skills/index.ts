@@ -20,7 +20,7 @@ export {
   ROADMAP_SKILL,
   SKILL_MANIFESTS,
   getSkillManifest,
-  getAllSkillSummaries
+  getAllSkillSummaries,
 } from './skill-manifest';
 
 export * from './types';
@@ -50,7 +50,7 @@ export {
   type CompletionStatus,
   type TestAnalysis,
   type ErrorHandlingAnalysis,
-  type DocumentationAnalysis
+  type DocumentationAnalysis,
 } from './evidence-based-engineering';
 
 // Agent Communication System Skill

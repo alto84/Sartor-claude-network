@@ -48,32 +48,32 @@ export interface FeedbackItem {
  * Source of feedback
  */
 export type FeedbackSource =
-  | 'validator'      // Automated validation
-  | 'scorer'         // Soft scorer
-  | 'expert'         // Another expert
-  | 'oracle'         // Ground truth comparison
-  | 'user'           // Human feedback
-  | 'self';          // Self-assessment
+  | 'validator' // Automated validation
+  | 'scorer' // Soft scorer
+  | 'expert' // Another expert
+  | 'oracle' // Ground truth comparison
+  | 'user' // Human feedback
+  | 'self'; // Self-assessment
 
 /**
  * Type of feedback
  */
 export type FeedbackType =
-  | 'correctness'    // Correctness issues
-  | 'completeness'   // Missing elements
-  | 'quality'        // Quality improvements
-  | 'efficiency'     // Performance issues
-  | 'style'          // Style/formatting
-  | 'general';       // General feedback
+  | 'correctness' // Correctness issues
+  | 'completeness' // Missing elements
+  | 'quality' // Quality improvements
+  | 'efficiency' // Performance issues
+  | 'style' // Style/formatting
+  | 'general'; // General feedback
 
 /**
  * Severity of feedback
  */
 export type FeedbackSeverity =
-  | 'critical'       // Must fix
-  | 'major'          // Should fix
-  | 'minor'          // Nice to fix
-  | 'suggestion';    // Optional improvement
+  | 'critical' // Must fix
+  | 'major' // Should fix
+  | 'minor' // Nice to fix
+  | 'suggestion'; // Optional improvement
 
 /**
  * Feedback collection for a result
@@ -272,9 +272,7 @@ export class FeedbackLoop {
     const items: FeedbackItem[] = [];
 
     for (const source of this.config.feedbackProviders) {
-      const provider = Array.from(this.providers.values()).find(
-        (p) => p.source === source
-      );
+      const provider = Array.from(this.providers.values()).find((p) => p.source === source);
 
       if (provider) {
         try {
@@ -380,32 +378,38 @@ export class FeedbackLoop {
 
         // Generate feedback based on score components
         if (score.correctness < 60) {
-          items.push(this.createFeedback(
-            'scorer',
-            'correctness',
-            'major',
-            `Correctness score is low (${score.correctness}). Review solution logic.`
-          ));
+          items.push(
+            this.createFeedback(
+              'scorer',
+              'correctness',
+              'major',
+              `Correctness score is low (${score.correctness}). Review solution logic.`
+            )
+          );
         }
 
         if (score.efficiency < 50) {
-          items.push(this.createFeedback(
-            'scorer',
-            'efficiency',
-            'minor',
-            `Efficiency score is low (${score.efficiency}). Consider optimization.`
-          ));
+          items.push(
+            this.createFeedback(
+              'scorer',
+              'efficiency',
+              'minor',
+              `Efficiency score is low (${score.efficiency}). Consider optimization.`
+            )
+          );
         }
 
         // Check penalties
         for (const penalty of score.breakdown.penalties) {
-          items.push(this.createFeedback(
-            'scorer',
-            'general',
-            'minor',
-            `Penalty: ${penalty.reason}`,
-            penalty.name
-          ));
+          items.push(
+            this.createFeedback(
+              'scorer',
+              'general',
+              'minor',
+              `Penalty: ${penalty.reason}`,
+              penalty.name
+            )
+          );
         }
 
         return items;
@@ -422,26 +426,30 @@ export class FeedbackLoop {
 
           // Low confidence self-assessment
           if (result.confidence < 0.7) {
-            items.push(this.createFeedback(
-              'self',
-              'quality',
-              'minor',
-              `Expert expressed low confidence (${Math.round(result.confidence * 100)}%).`,
-              undefined,
-              'Consider alternative approaches.'
-            ));
+            items.push(
+              this.createFeedback(
+                'self',
+                'quality',
+                'minor',
+                `Expert expressed low confidence (${Math.round(result.confidence * 100)}%).`,
+                undefined,
+                'Consider alternative approaches.'
+              )
+            );
           }
 
           // Max iterations self-assessment
           if (result.iterations >= result.expertConfig.maxIterations) {
-            items.push(this.createFeedback(
-              'self',
-              'completeness',
-              'minor',
-              'Maximum iterations reached without full satisfaction.',
-              undefined,
-              'Problem may require different approach.'
-            ));
+            items.push(
+              this.createFeedback(
+                'self',
+                'completeness',
+                'minor',
+                'Maximum iterations reached without full satisfaction.',
+                undefined,
+                'Problem may require different approach.'
+              )
+            );
           }
 
           return items;
@@ -458,26 +466,30 @@ export class FeedbackLoop {
 
         // Check for failed execution
         if (!result.success) {
-          items.push(this.createFeedback(
-            'validator',
-            'correctness',
-            'critical',
-            `Execution failed: ${result.error || 'Unknown error'}`,
-            undefined,
-            'Fix execution error before proceeding.'
-          ));
+          items.push(
+            this.createFeedback(
+              'validator',
+              'correctness',
+              'critical',
+              `Execution failed: ${result.error || 'Unknown error'}`,
+              undefined,
+              'Fix execution error before proceeding.'
+            )
+          );
         }
 
         // Check for empty output
         if (result.success && !result.output) {
-          items.push(this.createFeedback(
-            'validator',
-            'completeness',
-            'major',
-            'Execution succeeded but produced no output.',
-            undefined,
-            'Verify solution generates proper output.'
-          ));
+          items.push(
+            this.createFeedback(
+              'validator',
+              'completeness',
+              'major',
+              'Execution succeeded but produced no output.',
+              undefined,
+              'Verify solution generates proper output.'
+            )
+          );
         }
 
         return items;

@@ -78,7 +78,7 @@ export class FirebaseStore {
   async getMemory(id: string): Promise<Memory | undefined> {
     if (this.useFirebase && this.db) {
       const snapshot = await this.db.ref(`${this.basePath}/${id}`).get();
-      return snapshot.exists() ? snapshot.val() as Memory : undefined;
+      return snapshot.exists() ? (snapshot.val() as Memory) : undefined;
     } else if (this.fallbackStore) {
       return this.fallbackStore.getMemory(id);
     }
@@ -97,7 +97,8 @@ export class FirebaseStore {
       snapshot.forEach((child) => {
         const mem = child.val() as Memory;
         if (filters.type && !filters.type.includes(mem.type)) return;
-        if (filters.min_importance !== undefined && mem.importance_score < filters.min_importance) return;
+        if (filters.min_importance !== undefined && mem.importance_score < filters.min_importance)
+          return;
         memories.push(mem);
       });
 

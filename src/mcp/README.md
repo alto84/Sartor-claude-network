@@ -48,6 +48,7 @@ This server provides HTTP access to the same memory tools, allowing agents and H
 See `/home/user/Sartor-claude-network/test-mcp-http.ts` for a complete working example.
 
 Basic flow:
+
 1. POST to `/mcp` with `initialize` method to create session
 2. Server returns `mcp-session-id` in response headers
 3. Use session ID in subsequent requests

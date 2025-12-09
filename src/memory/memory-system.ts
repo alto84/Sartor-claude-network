@@ -97,14 +97,16 @@ export class MemorySystem {
     return memory;
   }
 
-  async searchMemories(options: {
-    filters?: {
-      type?: MemoryType[];
-      min_importance?: number;
-      status?: MemoryStatus[];
-    };
-    limit?: number;
-  } = {}): Promise<Array<{ memory: Memory; score: number }>> {
+  async searchMemories(
+    options: {
+      filters?: {
+        type?: MemoryType[];
+        min_importance?: number;
+        status?: MemoryStatus[];
+      };
+      limit?: number;
+    } = {}
+  ): Promise<Array<{ memory: Memory; score: number }>> {
     const results: Array<{ memory: Memory; score: number }> = [];
 
     for (const memory of this.memories.values()) {
@@ -113,7 +115,10 @@ export class MemorySystem {
       if (options.filters?.type && !options.filters.type.includes(memory.type)) {
         match = false;
       }
-      if (options.filters?.min_importance && memory.importance_score < options.filters.min_importance) {
+      if (
+        options.filters?.min_importance &&
+        memory.importance_score < options.filters.min_importance
+      ) {
         match = false;
       }
       if (options.filters?.status && !options.filters.status.includes(memory.status)) {

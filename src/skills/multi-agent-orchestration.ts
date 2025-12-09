@@ -16,10 +16,7 @@
  * - Iterative Refinement Over Single-Shot Execution
  */
 
-import {
-  createAgentCommunicationSystem,
-  type AgentMessage,
-} from './agent-communication';
+import { createAgentCommunicationSystem, type AgentMessage } from './agent-communication';
 
 // ============================================================================
 // Refinement Loop Interfaces
@@ -441,7 +438,7 @@ export class MultiAgentOrchestrator {
   assignWorker(task: Task, workers: Worker[]): WorkerAssignment | null {
     if (workers.length === 0) return null;
 
-    const scores = workers.map(worker => {
+    const scores = workers.map((worker) => {
       const score = this._calculateWorkerMatchScore(task, worker);
       return { worker, score };
     });
@@ -455,9 +452,7 @@ export class MultiAgentOrchestrator {
       return null;
     }
 
-    const alternatives = scores
-      .slice(1, 4)
-      .map(s => ({ workerId: s.worker.id, score: s.score }));
+    const alternatives = scores.slice(1, 4).map((s) => ({ workerId: s.worker.id, score: s.score }));
 
     return {
       worker: best.worker,
@@ -514,11 +509,7 @@ export class MultiAgentOrchestrator {
    * Principle: Coordination overhead is real - measure and handle failures
    * Core mechanism: Use failure feedback to refine approach
    */
-  async handleWorkerFailure(
-    workerId: string,
-    error: Error,
-    task?: Task
-  ): Promise<RecoveryAction> {
+  async handleWorkerFailure(workerId: string, error: Error, task?: Task): Promise<RecoveryAction> {
     const worker = this.workers.get(workerId);
     if (!worker) {
       return {
@@ -542,7 +533,8 @@ export class MultiAgentOrchestrator {
     };
 
     // Determine recovery strategy based on failure pattern
-    const failureRate = worker.status.metrics.taskseFailed /
+    const failureRate =
+      worker.status.metrics.taskseFailed /
       (worker.status.metrics.tasksCompleted + worker.status.metrics.taskseFailed);
 
     if (failureRate > 0.5) {
@@ -578,19 +570,14 @@ export class MultiAgentOrchestrator {
   /**
    * Execute a task with a delegation pattern
    */
-  async executeWithPattern(
-    tasks: Task[],
-    pattern: DelegationPattern
-  ): Promise<SynthesizedOutput> {
+  async executeWithPattern(tasks: Task[], pattern: DelegationPattern): Promise<SynthesizedOutput> {
     const strategy = this._createDelegationStrategy(tasks, pattern);
     const results: TaskResult[] = [];
 
     switch (pattern) {
       case DelegationPattern.PARALLEL_FAN_OUT:
         // Execute all tasks in parallel
-        const parallelResults = await Promise.all(
-          tasks.map(task => this._executeTask(task))
-        );
+        const parallelResults = await Promise.all(tasks.map((task) => this._executeTask(task)));
         results.push(...parallelResults);
         break;
 
@@ -623,9 +610,7 @@ export class MultiAgentOrchestrator {
 
       case DelegationPattern.COMPETITIVE_EXPLORATION:
         // Execute all tasks in parallel and compare approaches
-        const competitiveResults = await Promise.all(
-          tasks.map(task => this._executeTask(task))
-        );
+        const competitiveResults = await Promise.all(tasks.map((task) => this._executeTask(task)));
         results.push(...competitiveResults);
         break;
     }
@@ -646,7 +631,7 @@ export class MultiAgentOrchestrator {
     return {
       orchestratorId: this.orchestrator.id,
       activeWorkers: Array.from(this.orchestrator.activeWorkers.values()).filter(
-        w => w.status === 'busy'
+        (w) => w.status === 'busy'
       ).length,
       queuedTasks: this.orchestrator.taskQueue.length,
       completedTasks: this.orchestrator.completedTasks.length,
@@ -777,10 +762,7 @@ export class MultiAgentOrchestrator {
   /**
    * Execute a task with refinement loop
    */
-  private async _executeTaskWithRefinement(
-    task: Task,
-    worker: Worker
-  ): Promise<RefinementResult> {
+  private async _executeTaskWithRefinement(task: Task, worker: Worker): Promise<RefinementResult> {
     const processTrace: ProcessTrace = {
       taskId: task.id,
       steps: [],
@@ -861,10 +843,7 @@ export class MultiAgentOrchestrator {
         const refinedTask: Task = {
           ...task,
           context: `${task.context || ''}\n\nRefinement feedback:\n${feedback.suggestions.join('\n')}`,
-          constraints: [
-            ...task.constraints,
-            ...feedback.weaknesses.map(w => `Address: ${w}`),
-          ],
+          constraints: [...task.constraints, ...feedback.weaknesses.map((w) => `Address: ${w}`)],
         };
 
         const result = await worker.execute(refinedTask);
@@ -967,11 +946,10 @@ export class MultiAgentOrchestrator {
         const hasInsights = synthesis.insights.length > 0;
         const hasRecommendations = synthesis.recommendations.length > 0;
 
-        const score = (
+        const score =
           (hasInsights ? 0.4 : 0) +
           (hasRecommendations ? 0.3 : 0) +
-          (synthesis.confidence > 0.7 ? 0.3 : 0)
-        );
+          (synthesis.confidence > 0.7 ? 0.3 : 0);
 
         const weaknesses: string[] = [];
         if (!hasInsights) weaknesses.push('Missing emergent insights from results');
@@ -986,7 +964,7 @@ export class MultiAgentOrchestrator {
             hasRecommendations && 'Provides recommendations',
           ].filter(Boolean) as string[],
           weaknesses,
-          suggestions: weaknesses.map(w => `Improve: ${w}`),
+          suggestions: weaknesses.map((w) => `Improve: ${w}`),
           confidence: 0.8,
         };
       },
@@ -1001,10 +979,7 @@ export class MultiAgentOrchestrator {
         ];
 
         // Refine recommendations
-        const refinedRecommendations = [
-          ...synthesis.recommendations,
-          ...feedback.suggestions,
-        ];
+        const refinedRecommendations = [...synthesis.recommendations, ...feedback.suggestions];
 
         return {
           id: `synthesis-${Date.now()}`,
@@ -1033,9 +1008,10 @@ export class MultiAgentOrchestrator {
 
     // Check success criteria
     if (task.successCriteria) {
-      task.successCriteria.forEach(criterion => {
+      task.successCriteria.forEach((criterion) => {
         // Simple heuristic: check if criterion appears in result
-        const criterionMet = result.reasoning?.includes(criterion) ||
+        const criterionMet =
+          result.reasoning?.includes(criterion) ||
           JSON.stringify(result.output).includes(criterion);
         if (!criterionMet) {
           gaps.push(`Success criterion not met: ${criterion}`);
@@ -1054,12 +1030,13 @@ export class MultiAgentOrchestrator {
       gaps.push(`Confidence below threshold: ${result.confidence.toFixed(2)}`);
     }
 
-    const isSatisfactory = result.success &&
+    const isSatisfactory =
+      result.success &&
       gaps.length === 0 &&
       result.confidence >= this.auditConfig.confidenceThreshold;
 
-    const shouldRefine = !isSatisfactory &&
-      result.confidence >= this.auditConfig.confidenceThreshold * 0.5; // Refinable
+    const shouldRefine =
+      !isSatisfactory && result.confidence >= this.auditConfig.confidenceThreshold * 0.5; // Refinable
 
     return {
       isSatisfactory,
@@ -1082,7 +1059,7 @@ export class MultiAgentOrchestrator {
     // Simple credit assignment: steps with higher confidence get more credit
     const totalConfidence = trace.steps.reduce((sum, step) => sum + step.confidence, 0);
 
-    trace.steps.forEach(step => {
+    trace.steps.forEach((step) => {
       const credit = totalConfidence > 0 ? step.confidence / totalConfidence : 0;
       trace.creditAssignment.set(step.stepId, credit);
     });
@@ -1133,8 +1110,8 @@ export class MultiAgentOrchestrator {
       selectStrategy: (task: Task, examples?: TaskExample[]) => {
         // Learn from examples if provided
         if (examples) {
-          examples.forEach(ex => {
-            const strategy = strategies.find(s => s.name === ex.approach);
+          examples.forEach((ex) => {
+            const strategy = strategies.find((s) => s.name === ex.approach);
             if (strategy) {
               strategy.examples.push(ex);
             }
@@ -1142,7 +1119,7 @@ export class MultiAgentOrchestrator {
         }
 
         // Select strategy with highest applicability
-        const scores = strategies.map(s => ({
+        const scores = strategies.map((s) => ({
           strategy: s,
           score: s.applicability(task),
         }));
@@ -1151,7 +1128,7 @@ export class MultiAgentOrchestrator {
         return scores[0].strategy;
       },
       learnFromExample: (example: TaskExample) => {
-        const strategy = strategies.find(s => s.name === example.approach);
+        const strategy = strategies.find((s) => s.name === example.approach);
         if (strategy) {
           strategy.examples.push(example);
         }
@@ -1182,9 +1159,9 @@ export class MultiAgentOrchestrator {
     const insights: string[] = [];
 
     // Analyze conflict patterns
-    const disagreementCount = conflicts.filter(c => c.type === 'disagreement').length;
-    const contradictionCount = conflicts.filter(c => c.type === 'contradiction').length;
-    const uncertaintyCount = conflicts.filter(c => c.type === 'uncertainty').length;
+    const disagreementCount = conflicts.filter((c) => c.type === 'disagreement').length;
+    const contradictionCount = conflicts.filter((c) => c.type === 'contradiction').length;
+    const uncertaintyCount = conflicts.filter((c) => c.type === 'uncertainty').length;
 
     if (disagreementCount > 0 && contradictionCount === 0) {
       insights.push('Disagreements indicate multiple valid perspectives rather than errors');
@@ -1195,11 +1172,13 @@ export class MultiAgentOrchestrator {
     }
 
     // Analyze confidence patterns
-    const confidences = results.map(r => r.confidence);
+    const confidences = results.map((r) => r.confidence);
     const variance = this._calculateVariance(confidences);
 
     if (variance > 0.1) {
-      insights.push('High confidence variance suggests different workers have different quality of information');
+      insights.push(
+        'High confidence variance suggests different workers have different quality of information'
+      );
     }
 
     return insights;
@@ -1211,7 +1190,7 @@ export class MultiAgentOrchestrator {
   private _calculateVariance(values: number[]): number {
     if (values.length === 0) return 0;
     const mean = values.reduce((sum, v) => sum + v, 0) / values.length;
-    const squaredDiffs = values.map(v => Math.pow(v - mean, 2));
+    const squaredDiffs = values.map((v) => Math.pow(v - mean, 2));
     return squaredDiffs.reduce((sum, d) => sum + d, 0) / values.length;
   }
 
@@ -1266,7 +1245,7 @@ export class MultiAgentOrchestrator {
 
     // Check for step-by-step instructions (anti-pattern)
     const stepIndicators = ['first', 'then', 'next', 'finally', 'step 1', 'step 2'];
-    const hasSteps = stepIndicators.some(indicator =>
+    const hasSteps = stepIndicators.some((indicator) =>
       task.intent.toLowerCase().includes(indicator)
     );
     if (hasSteps) {
@@ -1282,7 +1261,7 @@ export class MultiAgentOrchestrator {
     const missing: string[] = [];
 
     for (const depId of task.dependencies) {
-      const completed = this.orchestrator.completedTasks.find(t => t.taskId === depId);
+      const completed = this.orchestrator.completedTasks.find((t) => t.taskId === depId);
       if (!completed || !completed.success) {
         missing.push(depId);
       }
@@ -1309,12 +1288,13 @@ export class MultiAgentOrchestrator {
     let score = 0;
 
     // Match on specialization (primary factor)
-    const taskTypeMatch = worker.specialization.toLowerCase().includes(task.type.toLowerCase()) ||
+    const taskTypeMatch =
+      worker.specialization.toLowerCase().includes(task.type.toLowerCase()) ||
       task.type.toLowerCase().includes(worker.specialization.toLowerCase());
     if (taskTypeMatch) score += 0.5;
 
     // Match on capabilities
-    const capabilityMatches = worker.capabilities.filter(cap =>
+    const capabilityMatches = worker.capabilities.filter((cap) =>
       task.intent.toLowerCase().includes(cap.toLowerCase())
     ).length;
     score += Math.min(0.3, capabilityMatches * 0.1);
@@ -1338,9 +1318,7 @@ export class MultiAgentOrchestrator {
     }
 
     if (worker.status.metrics.successRate > 0.8) {
-      reasons.push(
-        `High success rate (${(worker.status.metrics.successRate * 100).toFixed(0)}%)`
-      );
+      reasons.push(`High success rate (${(worker.status.metrics.successRate * 100).toFixed(0)}%)`);
     }
 
     if (worker.status.status === 'idle') {
@@ -1356,42 +1334,45 @@ export class MultiAgentOrchestrator {
     if (results.length < 2) return conflicts;
 
     // Check for disagreements in confidence levels
-    const confidenceLevels = results.map(r => r.confidence);
+    const confidenceLevels = results.map((r) => r.confidence);
     const avgConfidence = confidenceLevels.reduce((sum, c) => sum + c, 0) / confidenceLevels.length;
-    const hasLowConfidence = confidenceLevels.some(c => c < 0.5);
-    const hasHighConfidence = confidenceLevels.some(c => c > 0.8);
+    const hasLowConfidence = confidenceLevels.some((c) => c < 0.5);
+    const hasHighConfidence = confidenceLevels.some((c) => c > 0.8);
 
     if (hasLowConfidence && hasHighConfidence) {
       conflicts.push({
         type: 'disagreement',
-        workers: results.map(r => r.workerId),
+        workers: results.map((r) => r.workerId),
         description: 'Workers have significantly different confidence levels in their results',
         preserved: true, // Preserve - indicates uncertainty boundary
       });
     }
 
     // Check for contradictory outputs (simple heuristic)
-    const successCount = results.filter(r => r.success).length;
+    const successCount = results.filter((r) => r.success).length;
     const failureCount = results.length - successCount;
 
     if (successCount > 0 && failureCount > 0) {
       conflicts.push({
         type: 'contradiction',
-        workers: results.map(r => r.workerId),
+        workers: results.map((r) => r.workerId),
         description: 'Some workers succeeded while others failed on similar tasks',
         preserved: true,
       });
     }
 
     // Check for uncertainty markers in issues
-    const hasUncertainty = results.some(r =>
-      r.issues?.some(issue => issue.toLowerCase().includes('uncertain') || issue.toLowerCase().includes('unclear'))
+    const hasUncertainty = results.some((r) =>
+      r.issues?.some(
+        (issue) =>
+          issue.toLowerCase().includes('uncertain') || issue.toLowerCase().includes('unclear')
+      )
     );
 
     if (hasUncertainty) {
       conflicts.push({
         type: 'uncertainty',
-        workers: results.filter(r => r.issues?.length).map(r => r.workerId),
+        workers: results.filter((r) => r.issues?.length).map((r) => r.workerId),
         description: 'Workers expressed uncertainty in their analysis',
         preserved: true,
       });
@@ -1406,20 +1387,18 @@ export class MultiAgentOrchestrator {
     // Emergent insight: Common patterns across workers
     const commonIssues = this._findCommonIssues(results);
     if (commonIssues.length > 0) {
-      insights.push(
-        `Common concerns across workers: ${commonIssues.join(', ')}`
-      );
+      insights.push(`Common concerns across workers: ${commonIssues.join(', ')}`);
     }
 
     // Emergent insight: Complementary findings
     if (results.length > 1) {
       insights.push(
-        `Multiple perspectives reveal: ${results.map(r => r.workerId).join(', ')} examined different aspects`
+        `Multiple perspectives reveal: ${results.map((r) => r.workerId).join(', ')} examined different aspects`
       );
     }
 
     // Emergent insight: Confidence patterns
-    const highConfidenceResults = results.filter(r => r.confidence > 0.8);
+    const highConfidenceResults = results.filter((r) => r.confidence > 0.8);
     if (highConfidenceResults.length > 0 && highConfidenceResults.length < results.length) {
       insights.push(
         `High confidence in ${highConfidenceResults.length}/${results.length} results - examine low-confidence results for risks`
@@ -1432,8 +1411,8 @@ export class MultiAgentOrchestrator {
   private _findCommonIssues(results: TaskResult[]): string[] {
     const issueMap = new Map<string, number>();
 
-    results.forEach(result => {
-      result.issues?.forEach(issue => {
+    results.forEach((result) => {
+      result.issues?.forEach((issue) => {
         const count = issueMap.get(issue) || 0;
         issueMap.set(issue, count + 1);
       });
@@ -1453,7 +1432,7 @@ export class MultiAgentOrchestrator {
     const parts: string[] = [];
 
     // Summary of results
-    const successCount = results.filter(r => r.success).length;
+    const successCount = results.filter((r) => r.success).length;
     parts.push(
       `Synthesized ${results.length} worker results: ${successCount} successful, ${results.length - successCount} failed`
     );
@@ -1473,10 +1452,7 @@ export class MultiAgentOrchestrator {
     return parts.join('. ');
   }
 
-  private _calculateSynthesisConfidence(
-    results: TaskResult[],
-    conflicts: Conflict[]
-  ): number {
+  private _calculateSynthesisConfidence(results: TaskResult[], conflicts: Conflict[]): number {
     if (results.length === 0) return 0;
 
     // NOT a simple average - calculate based on agreement and evidence
@@ -1486,7 +1462,7 @@ export class MultiAgentOrchestrator {
     const conflictPenalty = conflicts.length * 0.1;
 
     // Penalize for low success rate
-    const successRate = results.filter(r => r.success).length / results.length;
+    const successRate = results.filter((r) => r.success).length / results.length;
     const successBonus = successRate * 0.2;
 
     return Math.max(0, Math.min(1, avgConfidence - conflictPenalty + successBonus));
@@ -1507,7 +1483,7 @@ export class MultiAgentOrchestrator {
     }
 
     // Recommend based on success rate
-    const successRate = results.filter(r => r.success).length / results.length;
+    const successRate = results.filter((r) => r.success).length / results.length;
     if (successRate < 0.5) {
       recommendations.push(
         'Low success rate - consider revising task requirements or worker assignments'
@@ -1515,7 +1491,7 @@ export class MultiAgentOrchestrator {
     }
 
     // Recommend based on confidence
-    const lowConfidenceResults = results.filter(r => r.confidence < 0.5);
+    const lowConfidenceResults = results.filter((r) => r.confidence < 0.5);
     if (lowConfidenceResults.length > 0) {
       recommendations.push(
         `${lowConfidenceResults.length} workers expressed low confidence - validate their concerns`
@@ -1530,7 +1506,7 @@ export class MultiAgentOrchestrator {
     specialization: string
   ): string | undefined {
     const alternatives = Array.from(this.workers.values()).filter(
-      w =>
+      (w) =>
         w.id !== currentWorkerId &&
         w.specialization === specialization &&
         w.status.status === 'idle'
@@ -1539,10 +1515,7 @@ export class MultiAgentOrchestrator {
     return alternatives.length > 0 ? alternatives[0].id : undefined;
   }
 
-  private _createDelegationStrategy(
-    tasks: Task[],
-    pattern: DelegationPattern
-  ): DelegationStrategy {
+  private _createDelegationStrategy(tasks: Task[], pattern: DelegationPattern): DelegationStrategy {
     let expectedParallelism = 1;
     let coordinationOverhead = 0.1;
 

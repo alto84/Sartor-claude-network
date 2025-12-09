@@ -33,12 +33,14 @@
 ### Memory System
 
 **[Memory Schema Guide](../MEMORY_SCHEMA_GUIDE.md)**
+
 - Cognitive memory types (Episodic, Semantic, Procedural, Working)
 - Design philosophy and usage patterns
 - Testing and validation strategies
 - MCP integration patterns
 
 **Memory Implementation**
+
 - TypeScript interfaces: `memory-schema.ts`
 - Example implementation: `memory-implementation-example.ts`
 - MCP server configuration: `mcp-server-config.json`
@@ -66,6 +68,7 @@
    - Git-based workflows
 
 **[Synchronization Strategy](./synchronization-strategy.md)**
+
 - Data flow between tiers
 - Promotion and demotion rules
 - Conflict resolution
@@ -78,12 +81,14 @@
 ### Setup & Deployment
 
 **[Implementation Guide](./implementation-guide.md)**
+
 - Step-by-step production setup
 - Environment configuration
 - Service initialization
 - Security rules deployment
 
 **Prerequisites Checklist:**
+
 ```bash
 # Required Services
 - Firebase project (Realtime Database + Firestore)
@@ -103,18 +108,21 @@ npm run deploy:firebase
 ### Cost & Performance
 
 **[Cost Analysis](./cost-analysis.md)**
+
 - Detailed pricing breakdown by tier
 - Optimization strategies
 - Scaling scenarios
 - Per-user cost calculations
 
 **Performance Targets:**
+
 - Hot tier: <100ms (p95)
 - Warm tier: <500ms semantic search
 - Cold tier: <5s retrieval
 - Throughput: 1,000 queries/sec
 
 **Cost Summary:**
+
 - Starter (100 users): $47/month ($0.47/user)
 - Growth (1,000 users): $95/month ($0.095/user)
 - Scale (10,000+ users): $350/month ($0.035/user)
@@ -128,6 +136,7 @@ npm run deploy:firebase
 **[Executive Claude: Master Orchestration](../EXECUTIVE_CLAUDE.md)**
 
 **Core Philosophy:**
+
 1. **Intent-Based Leadership** - Delegate outcomes, not steps
 2. **Context Minimalism** - 84% token reduction through distillation
 3. **Quality Gates** - Validate without micromanaging
@@ -135,6 +144,7 @@ npm run deploy:firebase
 5. **Continuous Learning** - Every session improves the next
 
 **Key Patterns:**
+
 - Parallel fan-out for independent tasks
 - Serial chains for dependent workflows
 - Recursive decomposition for complex problems
@@ -148,23 +158,28 @@ npm run deploy:firebase
 **Available Skills:**
 
 #### Foundation Skills
+
 - `evidence-based-validation` - Validate claims with empirical evidence
 - `evidence-based-engineering` - Apply research to engineering decisions
 - `agent-communication` - Inter-agent messaging with quality gates
 
 #### Infrastructure Skills
+
 - `multi-agent-orchestration` - Coordinate specialized workers
 - `distributed-systems-debugging` - Systematic failure investigation
 
 #### Specialist Skills
+
 - `mcp-server-development` - Build MCP servers with best practices
 
 **Skill Architecture:**
+
 - **Level 1:** Summary (always loaded, ~50 tokens)
 - **Level 2:** Instructions (loaded on trigger, ~500 tokens)
 - **Level 3:** Resources (lazy-loaded, ~2-5K tokens)
 
 **Progressive Loading:**
+
 ```
 Agent sees task → Level 1 triggers → Level 2 loads → Level 3 on demand
 ```
@@ -176,6 +191,7 @@ Agent sees task → Level 1 triggers → Level 2 loads → Level 3 on demand
 ### API & Schemas
 
 **MCP Tools:**
+
 - `store_episodic_memory` - Store conversation episodes
 - `store_semantic_memory` - Store facts and preferences
 - `store_procedural_memory` - Store workflows
@@ -186,6 +202,7 @@ Agent sees task → Level 1 triggers → Level 2 loads → Level 3 on demand
 - `get_memory_stats` - System statistics
 
 **TypeScript Interfaces:**
+
 ```typescript
 // Core types
 interface MemorySystem {
@@ -207,6 +224,7 @@ interface SkillManifest {
 ### Configuration Files
 
 **Environment Variables:**
+
 ```bash
 # Firebase
 FIREBASE_API_KEY=
@@ -226,15 +244,18 @@ GITHUB_REPO=
 ```
 
 **Firebase Configuration:**
+
 - `firebase-config.json` - Firebase project settings
 - `firestore.rules` - Security rules
 - `database.rules.json` - RTDB security rules
 
 **Vector Database:**
+
 - `vector-db-config.json` - Vector DB settings
 - Supported: Qdrant (recommended), Pinecone, Weaviate
 
 **Synchronization:**
+
 - `sync-config.json` - Sync rules and schedules
 
 ---
@@ -262,11 +283,13 @@ npm run test:load
 ### Quality Assurance
 
 **Validation Levels:**
+
 1. **Automated Checks** - Tests pass, builds succeed, constraints met
 2. **Semantic Review** - Intent aligned, quality acceptable, no obvious gaps
 3. **User Value Check** - Solves the actual problem
 
 **Evidence-Based Validation:**
+
 - All claims backed by empirical evidence
 - Research papers and benchmarks cited
 - Quantitative analysis preferred
@@ -366,6 +389,7 @@ gh pr create --title "Add refinement loop skill" --body "..."
 5. Submit PR
 
 **Skill Template:**
+
 ```typescript
 export const NEW_SKILL: SkillManifest = {
   id: 'new-skill',
@@ -390,21 +414,25 @@ export const NEW_SKILL: SkillManifest = {
 ### Common Issues
 
 **Firebase Connection Issues:**
+
 - Verify `FIREBASE_API_KEY` in `.env`
 - Check Firebase project permissions
 - Ensure security rules are deployed
 
 **Vector DB Issues:**
+
 - Confirm API key is valid
 - Check index exists and is initialized
 - Verify embedding dimensions match (1536 for OpenAI)
 
 **Synchronization Issues:**
+
 - Check sync-config.json schedules
 - Review GitHub Actions workflow logs
 - Verify GitHub token permissions
 
 **Performance Issues:**
+
 - Enable performance monitoring in Firebase
 - Check vector DB index performance
 - Review query patterns and optimize
@@ -475,6 +503,7 @@ npm run validate:sync-config
 ## Version History
 
 **1.0.0** (2025-12-06)
+
 - Initial production release
 - Multi-tier storage architecture
 - Six foundation skills
@@ -488,6 +517,7 @@ npm run validate:sync-config
 **License:** MIT License
 
 **Built with:**
+
 - Firebase (Google Cloud)
 - GitHub (Microsoft)
 - Qdrant / Pinecone / Weaviate (Vector Databases)
@@ -498,6 +528,7 @@ npm run validate:sync-config
 ---
 
 **Need Help?**
+
 - Check [Agent Quickstart](./AGENT_QUICKSTART.md) for common tasks
 - Review [Executive Claude](../EXECUTIVE_CLAUDE.md) for orchestration patterns
 - Consult [Implementation Guide](./implementation-guide.md) for setup issues

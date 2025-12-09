@@ -29,7 +29,7 @@ import {
   MemoryConsolidation,
   DecayCalculation,
   MemoryConflict,
-  MemorySystemStats
+  MemorySystemStats,
 } from './memory-schema';
 
 // ============================================================================
@@ -62,10 +62,10 @@ function calculateImportance(factors: {
 }): ImportanceScore {
   const weights = {
     recency: 0.25,
-    frequency: 0.20,
-    userExplicit: 0.30,
+    frequency: 0.2,
+    userExplicit: 0.3,
     emotional: 0.15,
-    novelty: 0.10
+    novelty: 0.1,
   };
 
   return (
@@ -89,10 +89,10 @@ function calculateDecayRate(memory: BaseMemory): DecayRate {
 
   // Base decay rate varies by memory type
   const baseDecayRates: Record<MemoryType, number> = {
-    [MemoryType.WORKING]: 0.9,      // Very fast decay
-    [MemoryType.EPISODIC]: 0.5,     // Moderate decay
-    [MemoryType.SEMANTIC]: 0.2,     // Slow decay
-    [MemoryType.PROCEDURAL]: 0.1    // Very slow decay
+    [MemoryType.WORKING]: 0.9, // Very fast decay
+    [MemoryType.EPISODIC]: 0.5, // Moderate decay
+    [MemoryType.SEMANTIC]: 0.2, // Slow decay
+    [MemoryType.PROCEDURAL]: 0.1, // Very slow decay
   };
 
   const baseRate = baseDecayRates[memory.type];
@@ -108,7 +108,7 @@ function applyDecay(
   timeSinceAccessMs: number
 ): DecayCalculation {
   const hoursSinceAccess = timeSinceAccessMs / (1000 * 60 * 60);
-  const decayFactor = Math.exp(-decayRate * hoursSinceAccess / 24); // Daily decay
+  const decayFactor = Math.exp((-decayRate * hoursSinceAccess) / 24); // Daily decay
 
   const newImportance = currentImportance * decayFactor;
   const shouldArchive = newImportance < 0.1;
@@ -119,7 +119,7 @@ function applyDecay(
     timeSinceAccess: timeSinceAccessMs,
     frequencyModifier: 1.0,
     newImportance,
-    shouldArchive
+    shouldArchive,
   };
 }
 
@@ -132,7 +132,7 @@ function hashContent(content: unknown): string {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
     const char = str.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
+    hash = (hash << 5) - hash + char;
     hash = hash & hash;
   }
   return hash.toString(36);
@@ -160,7 +160,7 @@ function createBaseMemory(
     frequency: 0.0,
     userExplicit: 0.5,
     emotional: 0.5,
-    novelty: 0.7
+    novelty: 0.7,
   };
 
   return {
@@ -173,7 +173,7 @@ function createBaseMemory(
       lastModifiedAt: currentTime,
       accessCount: 0,
       accessFrequency: 0,
-      accessHistory: [currentTime]
+      accessHistory: [currentTime],
     },
     importance: {
       importance: initialImportance,
@@ -181,14 +181,14 @@ function createBaseMemory(
       decayRate: 0.5,
       protectedFromDecay: false,
       decayThreshold: 0.1,
-      importanceFactors
+      importanceFactors,
     },
     source: {
       surface,
       userId,
       sessionId,
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-      locale: navigator?.language || 'en-US'
+      locale: navigator?.language || 'en-US',
     },
     embedding: {
       vector: [], // Will be populated by embedding service
@@ -196,13 +196,13 @@ function createBaseMemory(
       modelVersion: '1.0',
       dimensions: 1536,
       generatedAt: currentTime,
-      needsRefresh: true
+      needsRefresh: true,
     },
     tags: {
       tags: [],
       categories: [],
       topics: [],
-      entities: []
+      entities: [],
     },
     relations: [],
     sync: {
@@ -212,9 +212,9 @@ function createBaseMemory(
       syncEnabled: true,
       availableSurfaces: [surface],
       pendingSync: false,
-      conflictResolution: 'latest_wins'
+      conflictResolution: 'latest_wins',
     },
-    metadata: {}
+    metadata: {},
   };
 }
 
@@ -253,25 +253,21 @@ class InMemoryStorage implements MemoryStorage {
 
     // Filter by type
     if (query.types) {
-      results = results.filter(m => query.types!.includes(m.type));
+      results = results.filter((m) => query.types!.includes(m.type));
     }
 
     // Filter by status
     if (query.status) {
-      results = results.filter(m => query.status!.includes(m.status));
+      results = results.filter((m) => query.status!.includes(m.status));
     }
 
     // Filter by temporal
     if (query.temporal) {
       if (query.temporal.startDate) {
-        results = results.filter(
-          m => m.temporal.createdAt >= query.temporal!.startDate!
-        );
+        results = results.filter((m) => m.temporal.createdAt >= query.temporal!.startDate!);
       }
       if (query.temporal.endDate) {
-        results = results.filter(
-          m => m.temporal.createdAt <= query.temporal!.endDate!
-        );
+        results = results.filter((m) => m.temporal.createdAt <= query.temporal!.endDate!);
       }
     }
 
@@ -279,20 +275,20 @@ class InMemoryStorage implements MemoryStorage {
     if (query.importance) {
       if (query.importance.minImportance !== undefined) {
         results = results.filter(
-          m => m.importance.importance >= query.importance!.minImportance!
+          (m) => m.importance.importance >= query.importance!.minImportance!
         );
       }
       if (query.importance.maxImportance !== undefined) {
         results = results.filter(
-          m => m.importance.importance <= query.importance!.maxImportance!
+          (m) => m.importance.importance <= query.importance!.maxImportance!
         );
       }
     }
 
     // Filter by tags
     if (query.tags?.includeTags) {
-      results = results.filter(m =>
-        query.tags!.includeTags!.some(tag => m.tags.tags.includes(tag))
+      results = results.filter((m) =>
+        query.tags!.includeTags!.some((tag) => m.tags.tags.includes(tag))
       );
     }
 
@@ -301,7 +297,7 @@ class InMemoryStorage implements MemoryStorage {
       results = results.slice(0, query.limit);
     }
 
-    return results.map(memory => ({
+    return results.map((memory) => ({
       memory,
       score: 0.8, // Simplified scoring
       retrievalReason: 'matched query filters',
@@ -309,8 +305,8 @@ class InMemoryStorage implements MemoryStorage {
         semantic: 0.8,
         temporal: 0.7,
         importance: memory.importance.importance,
-        relational: 0.5
-      }
+        relational: 0.5,
+      },
     }));
   }
 
@@ -321,7 +317,7 @@ class InMemoryStorage implements MemoryStorage {
   }
 
   async batchRetrieve<T extends BaseMemory>(ids: MemoryId[]): Promise<(T | null)[]> {
-    return Promise.all(ids.map(id => this.retrieve<T>(id)));
+    return Promise.all(ids.map((id) => this.retrieve<T>(id)));
   }
 
   async createIndex(): Promise<void> {
@@ -337,9 +333,12 @@ class InMemoryStorage implements MemoryStorage {
  * Simple in-memory vector store (for demonstration)
  */
 class SimpleVectorStore implements VectorStore {
-  private vectors: Map<MemoryId, { vector: number[]; metadata?: Record<string, unknown> }> = new Map();
+  private vectors: Map<MemoryId, { vector: number[]; metadata?: Record<string, unknown> }> =
+    new Map();
 
-  async addVectors(vectors: Array<{ id: MemoryId; vector: number[]; metadata?: Record<string, unknown> }>): Promise<void> {
+  async addVectors(
+    vectors: Array<{ id: MemoryId; vector: number[]; metadata?: Record<string, unknown> }>
+  ): Promise<void> {
     for (const { id, vector, metadata } of vectors) {
       this.vectors.set(id, { vector, metadata });
     }
@@ -357,9 +356,7 @@ class SimpleVectorStore implements VectorStore {
       results.push({ id, score: similarity });
     }
 
-    return results
-      .sort((a, b) => b.score - a.score)
-      .slice(0, limit);
+    return results.sort((a, b) => b.score - a.score).slice(0, limit);
   }
 
   async updateVector(id: MemoryId, vector: number[]): Promise<void> {
@@ -409,7 +406,7 @@ class SimpleCache implements MemoryCache {
   async set<T extends BaseMemory>(id: MemoryId, memory: T, ttl: number = 3600000): Promise<void> {
     this.cache.set(id, {
       memory,
-      expires: Date.now() + ttl
+      expires: Date.now() + ttl,
     });
   }
 
@@ -427,7 +424,7 @@ class SimpleCache implements MemoryCache {
     return {
       hits: this.hits,
       misses: this.misses,
-      size: this.cache.size
+      size: this.cache.size,
     };
   }
 }
@@ -440,11 +437,7 @@ export class MemorySystemImpl implements MemorySystem {
   vectorStore: VectorStore;
   cache: MemoryCache;
 
-  constructor(
-    storage?: MemoryStorage,
-    vectorStore?: VectorStore,
-    cache?: MemoryCache
-  ) {
+  constructor(storage?: MemoryStorage, vectorStore?: VectorStore, cache?: MemoryCache) {
     this.storage = storage || new InMemoryStorage();
     this.vectorStore = vectorStore || new SimpleVectorStore();
     this.cache = cache || new SimpleCache();
@@ -461,7 +454,7 @@ export class MemorySystemImpl implements MemorySystem {
     const memory: EpisodicMemory = {
       ...base,
       ...content,
-      type: MemoryType.EPISODIC
+      type: MemoryType.EPISODIC,
     } as EpisodicMemory;
 
     // Update content hash
@@ -490,7 +483,7 @@ export class MemorySystemImpl implements MemorySystem {
       evidence: content.evidence || [],
       contradictions: content.contradictions || [],
       isPreference: content.isPreference || false,
-      domain: content.domain || 'general'
+      domain: content.domain || 'general',
     } as SemanticMemory;
 
     memory.sync.contentHash = hashContent(memory.content);
@@ -520,7 +513,7 @@ export class MemorySystemImpl implements MemorySystem {
       successRate: content.successRate || 0,
       executionCount: content.executionCount || 0,
       variations: content.variations || [],
-      failureModes: content.failureModes || []
+      failureModes: content.failureModes || [],
     } as ProceduralMemory;
 
     memory.sync.contentHash = hashContent(memory.content);
@@ -549,7 +542,7 @@ export class MemorySystemImpl implements MemorySystem {
         secondary: [],
         trigger: '',
         duration: 0,
-        importance: 0.5
+        importance: 0.5,
       },
       activeGoals: content.activeGoals || [],
       contextStack: content.contextStack || [],
@@ -561,10 +554,10 @@ export class MemorySystemImpl implements MemorySystem {
         lastActivityAt: now(),
         turnCount: 0,
         engagementLevel: 'medium',
-        phase: 'exploration'
+        phase: 'exploration',
       },
       ttl: content.ttl || 3600000, // 1 hour default
-      consolidationCandidate: false
+      consolidationCandidate: false,
     } as WorkingMemory;
 
     memory.sync.contentHash = hashContent(memory.content);
@@ -583,9 +576,7 @@ export class MemorySystemImpl implements MemorySystem {
         query.limit || 10
       );
 
-      const memories = await this.storage.batchRetrieve(
-        vectorResults.map(r => r.id)
-      );
+      const memories = await this.storage.batchRetrieve(vectorResults.map((r) => r.id));
 
       return memories
         .filter((m): m is BaseMemory => m !== null)
@@ -597,8 +588,8 @@ export class MemorySystemImpl implements MemorySystem {
             semantic: vectorResults[idx].score,
             temporal: this.calculateTemporalRelevance(memory),
             importance: memory.importance.importance,
-            relational: 0.5
-          }
+            relational: 0.5,
+          },
         }));
     }
 
@@ -621,13 +612,13 @@ export class MemorySystemImpl implements MemorySystem {
         ...metadata.temporal,
         lastAccessedAt: currentTime,
         accessCount: memory.temporal.accessCount + 1,
-        accessHistory: [...memory.temporal.accessHistory, currentTime]
+        accessHistory: [...memory.temporal.accessHistory, currentTime],
       },
       sync: {
         ...memory.sync,
         version: memory.sync.version + 1,
-        lastSyncedAt: currentTime
-      }
+        lastSyncedAt: currentTime,
+      },
     };
 
     await this.storage.update(id, updatedMetadata);
@@ -673,8 +664,8 @@ export class MemorySystemImpl implements MemorySystem {
         status: MemoryStatus.ARCHIVED,
         metadata: {
           ...memory.metadata,
-          consolidatedInto: consolidated.id
-        }
+          consolidatedInto: consolidated.id,
+        },
       } as Partial<BaseMemory>);
     }
 
@@ -683,7 +674,7 @@ export class MemorySystemImpl implements MemorySystem {
       consolidatedMemoryId: consolidated.id,
       strategy,
       consolidatedAt: now(),
-      preservationScore: 0.85 // Simplified
+      preservationScore: 0.85, // Simplified
     };
   }
 
@@ -710,9 +701,9 @@ export class MemorySystemImpl implements MemorySystem {
       await this.storage.update(memory.id, {
         importance: {
           ...memory.importance,
-          importance: decay.newImportance
+          importance: decay.newImportance,
         },
-        status: decay.shouldArchive ? MemoryStatus.ARCHIVED : memory.status
+        status: decay.shouldArchive ? MemoryStatus.ARCHIVED : memory.status,
       } as Partial<BaseMemory>);
     }
 
@@ -725,7 +716,10 @@ export class MemorySystemImpl implements MemorySystem {
     return [];
   }
 
-  async resolveConflict(conflictId: string, strategy?: MemoryConflict['resolutionStrategy']): Promise<void> {
+  async resolveConflict(
+    conflictId: string,
+    strategy?: MemoryConflict['resolutionStrategy']
+  ): Promise<void> {
     // Implementation for conflict resolution
     throw new Error('Not implemented');
   }
@@ -741,7 +735,7 @@ export class MemorySystemImpl implements MemorySystem {
 
     for (const { memory } of results) {
       await this.storage.update(memory.id, {
-        status: MemoryStatus.ARCHIVED
+        status: MemoryStatus.ARCHIVED,
       } as Partial<BaseMemory>);
       archived.push(memory.id);
     }
@@ -757,14 +751,14 @@ export class MemorySystemImpl implements MemorySystem {
       [MemoryType.EPISODIC]: 0,
       [MemoryType.SEMANTIC]: 0,
       [MemoryType.PROCEDURAL]: 0,
-      [MemoryType.WORKING]: 0
+      [MemoryType.WORKING]: 0,
     };
 
     const importanceSums: Record<MemoryType, number> = {
       [MemoryType.EPISODIC]: 0,
       [MemoryType.SEMANTIC]: 0,
       [MemoryType.PROCEDURAL]: 0,
-      [MemoryType.WORKING]: 0
+      [MemoryType.WORKING]: 0,
     };
 
     for (const { memory } of allMemories) {
@@ -773,10 +767,13 @@ export class MemorySystemImpl implements MemorySystem {
     }
 
     const averageImportance: Record<MemoryType, number> = {
-      [MemoryType.EPISODIC]: importanceSums[MemoryType.EPISODIC] / (counts[MemoryType.EPISODIC] || 1),
-      [MemoryType.SEMANTIC]: importanceSums[MemoryType.SEMANTIC] / (counts[MemoryType.SEMANTIC] || 1),
-      [MemoryType.PROCEDURAL]: importanceSums[MemoryType.PROCEDURAL] / (counts[MemoryType.PROCEDURAL] || 1),
-      [MemoryType.WORKING]: importanceSums[MemoryType.WORKING] / (counts[MemoryType.WORKING] || 1)
+      [MemoryType.EPISODIC]:
+        importanceSums[MemoryType.EPISODIC] / (counts[MemoryType.EPISODIC] || 1),
+      [MemoryType.SEMANTIC]:
+        importanceSums[MemoryType.SEMANTIC] / (counts[MemoryType.SEMANTIC] || 1),
+      [MemoryType.PROCEDURAL]:
+        importanceSums[MemoryType.PROCEDURAL] / (counts[MemoryType.PROCEDURAL] || 1),
+      [MemoryType.WORKING]: importanceSums[MemoryType.WORKING] / (counts[MemoryType.WORKING] || 1),
     };
 
     return {
@@ -794,15 +791,16 @@ export class MemorySystemImpl implements MemorySystem {
         [ClaudeSurface.API]: now(),
         [ClaudeSurface.MOBILE]: now(),
         [ClaudeSurface.DESKTOP]: now(),
-        [ClaudeSurface.TERMINAL]: now()
-      }
+        [ClaudeSurface.TERMINAL]: now(),
+      },
     };
   }
 
   // Private helper methods
 
   private calculateTemporalRelevance(memory: BaseMemory): number {
-    const hoursSinceCreation = (Date.now() - new Date(memory.temporal.createdAt).getTime()) / (1000 * 60 * 60);
+    const hoursSinceCreation =
+      (Date.now() - new Date(memory.temporal.createdAt).getTime()) / (1000 * 60 * 60);
     return Math.exp(-hoursSinceCreation / 168); // Decay over one week
   }
 
@@ -812,13 +810,13 @@ export class MemorySystemImpl implements MemorySystem {
     return {
       ...primary,
       id: generateMemoryId(),
-      relations: memories.slice(1).map(m => ({
+      relations: memories.slice(1).map((m) => ({
         type: 'CONSOLIDATED_INTO' as any,
         targetMemoryId: m.id,
         targetMemoryType: m.type,
         strength: 1.0,
-        establishedAt: now()
-      }))
+        establishedAt: now(),
+      })),
     };
   }
 
@@ -848,7 +846,7 @@ export class MemorySystemImpl implements MemorySystem {
         name: 'Extracted pattern',
         purpose: 'Pattern extracted from repeated behaviors',
         description: 'Auto-generated procedural memory',
-        whenToUse: 'When similar conditions arise'
+        whenToUse: 'When similar conditions arise',
       },
       steps: [],
       applicabilityConditions: [],
@@ -857,7 +855,7 @@ export class MemorySystemImpl implements MemorySystem {
       successRate: 0,
       executionCount: 0,
       variations: [],
-      failureModes: []
+      failureModes: [],
     } as ProceduralMemory;
   }
 }
@@ -885,16 +883,16 @@ async function exampleUsage() {
           role: 'user',
           content: 'How do I use generics in TypeScript?',
           timestamp: now(),
-          importance: 0.8
+          importance: 0.8,
         },
         {
           id: 'msg_2',
           role: 'assistant',
           content: 'Generics allow you to create reusable components...',
           timestamp: now(),
-          importance: 0.7
-        }
-      ]
+          importance: 0.7,
+        },
+      ],
     },
     temporalStructure: {
       startTime: now(),
@@ -903,19 +901,19 @@ async function exampleUsage() {
       temporalContext: {
         timeOfDay: 'afternoon',
         dayOfWeek: 'Monday',
-        isWeekend: false
-      }
+        isWeekend: false,
+      },
     },
     participants: [
       { id: 'user_1', role: 'user', participationLevel: 0.5 },
-      { id: 'assistant', role: 'assistant', participationLevel: 0.5 }
+      { id: 'assistant', role: 'assistant', participationLevel: 0.5 },
     ],
     emotionalContext: {
       valence: 0.8,
       arousal: 0.6,
       emotions: [{ emotion: 'curious', intensity: 0.9 }],
       sentiment: 'positive',
-      userSatisfaction: 0.9
+      userSatisfaction: 0.9,
     },
     narrative: {
       beginning: 'User asked about generics',
@@ -923,10 +921,10 @@ async function exampleUsage() {
       end: 'User understood the concept',
       turningPoints: [],
       themes: ['TypeScript', 'Generics', 'Type Safety'],
-      problemSolutions: []
+      problemSolutions: [],
     },
     keyMoments: [],
-    outcomes: []
+    outcomes: [],
   });
 
   console.log('Created episodic memory:', episode.id);
@@ -938,7 +936,7 @@ async function exampleUsage() {
       predicate: 'is_interested_in',
       object: 'TypeScript generics',
       statement: 'User is interested in learning TypeScript generics',
-      qualifiers: ['high_interest']
+      qualifiers: ['high_interest'],
     },
     knowledgeType: KnowledgeType.PREFERENCE,
     confidence: ConfidenceLevel.HIGH,
@@ -948,11 +946,11 @@ async function exampleUsage() {
         sourceId: episode.id,
         description: 'User asked about generics in conversation',
         strength: 0.9,
-        timestamp: now()
-      }
+        timestamp: now(),
+      },
     ],
     isPreference: true,
-    domain: 'programming'
+    domain: 'programming',
   });
 
   console.log('Created semantic memory:', semantic.id);
@@ -962,8 +960,8 @@ async function exampleUsage() {
     types: [MemoryType.EPISODIC, MemoryType.SEMANTIC],
     limit: 10,
     importance: {
-      minImportance: 0.5
-    }
+      minImportance: 0.5,
+    },
   });
 
   console.log(`Found ${results.length} memories`);
@@ -985,5 +983,5 @@ export {
   calculateDecayRate,
   applyDecay,
   hashContent,
-  createBaseMemory
+  createBaseMemory,
 };

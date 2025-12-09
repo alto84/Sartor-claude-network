@@ -172,7 +172,10 @@ export class ErrorHandlingValidator {
     return suggestions[language][operationType] || 'Add appropriate error handling';
   }
 
-  private suggestSpecificErrorHandling(operationType: string, language: 'typescript' | 'python'): string {
+  private suggestSpecificErrorHandling(
+    operationType: string,
+    language: 'typescript' | 'python'
+  ): string {
     if (language === 'typescript') {
       return 'Use specific error types (e.g., catch (error: NetworkError)) instead of generic catch';
     } else {

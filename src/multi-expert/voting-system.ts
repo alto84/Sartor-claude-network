@@ -144,9 +144,7 @@ export class VotingSystem {
    */
   createVotesFromResults(results: ExpertResult[]): ExpertVote[] {
     // Sort results by score to create rankings
-    const sortedResults = [...results]
-      .filter((r) => r.success)
-      .sort((a, b) => b.score - a.score);
+    const sortedResults = [...results].filter((r) => r.success).sort((a, b) => b.score - a.score);
 
     return results
       .filter((r) => r.success)
@@ -194,7 +192,7 @@ export class VotingSystem {
   private rankedChoiceVote(votes: ExpertVote[], options: string[]): VotingResult {
     const rounds: VotingRound[] = [];
     let remainingOptions = [...options];
-    let workingVotes = votes.map((v) => ({ ...v, rankings: [...v.rankings] }));
+    const workingVotes = votes.map((v) => ({ ...v, rankings: [...v.rankings] }));
     const totalVotes = this.config.useWeights
       ? votes.reduce((sum, v) => sum + v.weight, 0)
       : votes.length;
@@ -290,9 +288,9 @@ export class VotingSystem {
     }
 
     const winner = this.findWinner(voteCounts, votes);
-    const maxPossiblePoints = (n - 1) * (this.config.useWeights
-      ? votes.reduce((sum, v) => sum + v.weight, 0)
-      : votes.length);
+    const maxPossiblePoints =
+      (n - 1) *
+      (this.config.useWeights ? votes.reduce((sum, v) => sum + v.weight, 0) : votes.length);
 
     return {
       winner,

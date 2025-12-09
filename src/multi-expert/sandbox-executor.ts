@@ -215,10 +215,10 @@ export class SandboxExecutor {
           error: timedOut
             ? 'Execution timed out'
             : memoryExceeded
-            ? 'Memory limit exceeded'
-            : code !== 0
-            ? `Process exited with code ${code}`
-            : undefined,
+              ? 'Memory limit exceeded'
+              : code !== 0
+                ? `Process exited with code ${code}`
+                : undefined,
           parsedOutput,
         });
       });
@@ -261,10 +261,7 @@ export class SandboxExecutor {
   /**
    * Execute task using expert config
    */
-  async executeTask(
-    task: ExpertTask,
-    config: ExpertConfig
-  ): Promise<SandboxResult> {
+  async executeTask(task: ExpertTask, config: ExpertConfig): Promise<SandboxResult> {
     // Build execution command based on task type
     const code = this.buildTaskCode(task);
 

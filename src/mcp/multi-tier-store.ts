@@ -84,7 +84,12 @@ export class MultiTierStore {
     }
 
     // Check environment for GitHub config
-    if (!this.useGitHub && process.env.GITHUB_TOKEN && process.env.GITHUB_OWNER && process.env.GITHUB_REPO) {
+    if (
+      !this.useGitHub &&
+      process.env.GITHUB_TOKEN &&
+      process.env.GITHUB_OWNER &&
+      process.env.GITHUB_REPO
+    ) {
       try {
         this.githubStore = new GitHubColdTier(
           process.env.GITHUB_TOKEN,
@@ -159,8 +164,12 @@ export class MultiTierStore {
         if (snapshot.exists()) {
           const memory = snapshot.val() as Memory;
           // Update access count
-          await this.firebaseDb.ref(`${this.basePath}/${id}/access_count`).set((memory.access_count || 0) + 1);
-          await this.firebaseDb.ref(`${this.basePath}/${id}/last_accessed`).set(new Date().toISOString());
+          await this.firebaseDb
+            .ref(`${this.basePath}/${id}/access_count`)
+            .set((memory.access_count || 0) + 1);
+          await this.firebaseDb
+            .ref(`${this.basePath}/${id}/last_accessed`)
+            .set(new Date().toISOString());
           return memory;
         }
       } catch (error) {
@@ -202,7 +211,11 @@ export class MultiTierStore {
           snapshot.forEach((child) => {
             const mem = child.val() as Memory;
             if (filters.type && !filters.type.includes(mem.type)) return;
-            if (filters.min_importance !== undefined && mem.importance_score < filters.min_importance) return;
+            if (
+              filters.min_importance !== undefined &&
+              mem.importance_score < filters.min_importance
+            )
+              return;
             results.push({ ...mem, tier: 'hot' });
           });
         }
@@ -214,7 +227,7 @@ export class MultiTierStore {
     // Search warm tier
     const fileResults = this.fileStore.searchMemories(filters, limit);
     for (const mem of fileResults) {
-      if (!results.find(r => r.id === mem.id)) {
+      if (!results.find((r) => r.id === mem.id)) {
         results.push({ ...mem, tier: 'warm' });
       }
     }
@@ -291,11 +304,7 @@ export class MultiTierStore {
     }
 
     try {
-      await this.githubStore.set(
-        `${memory.type}/${id}.json`,
-        memory,
-        `Archive memory: ${id}`
-      );
+      await this.githubStore.set(`${memory.type}/${id}.json`, memory, `Archive memory: ${id}`);
       return true;
     } catch (error) {
       console.error('[MultiTierStore] Archive failed:', error);

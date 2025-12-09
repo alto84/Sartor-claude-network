@@ -10,7 +10,7 @@ export enum AgentRole {
   PLANNER = 'planner',
   IMPLEMENTER = 'implementer',
   AUDITOR = 'auditor',
-  CLEANER = 'cleaner'
+  CLEANER = 'cleaner',
 }
 
 export interface AgentTask {
@@ -59,7 +59,7 @@ export class ExecutiveClaude {
       iterations,
       initialScore: 0.4,
       finalScore: score,
-      improvements
+      improvements,
     });
 
     this.activeTasks.delete(task.id);
@@ -69,22 +69,22 @@ export class ExecutiveClaude {
       success: score >= 0.8,
       output: `Completed ${task.role} task: ${task.description}`,
       iterations,
-      improvements
+      improvements,
     };
   }
 
   async orchestrate(tasks: AgentTask[]): Promise<TaskResult[]> {
     // Group by role priority
-    const planners = tasks.filter(t => t.role === AgentRole.PLANNER);
-    const implementers = tasks.filter(t => t.role === AgentRole.IMPLEMENTER);
-    const auditors = tasks.filter(t => t.role === AgentRole.AUDITOR);
-    const cleaners = tasks.filter(t => t.role === AgentRole.CLEANER);
+    const planners = tasks.filter((t) => t.role === AgentRole.PLANNER);
+    const implementers = tasks.filter((t) => t.role === AgentRole.IMPLEMENTER);
+    const auditors = tasks.filter((t) => t.role === AgentRole.AUDITOR);
+    const cleaners = tasks.filter((t) => t.role === AgentRole.CLEANER);
 
     // Execute in order: Plan → Implement → Audit → Clean
     const results: TaskResult[] = [];
 
     for (const group of [planners, implementers, auditors, cleaners]) {
-      const groupResults = await Promise.all(group.map(t => this.delegateTask(t)));
+      const groupResults = await Promise.all(group.map((t) => this.delegateTask(t)));
       results.push(...groupResults);
     }
 

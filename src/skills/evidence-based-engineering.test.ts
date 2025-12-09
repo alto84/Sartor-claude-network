@@ -7,7 +7,7 @@
 import {
   EvidenceBasedEngineering,
   assessEngineering,
-  createEvidenceBasedEngineering
+  createEvidenceBasedEngineering,
 } from './evidence-based-engineering';
 
 describe('EvidenceBasedEngineering', () => {
@@ -354,9 +354,9 @@ describe('EvidenceBasedEngineering', () => {
 
       const result = validator.assess(code);
 
-      const criticalRisks = result.risks.filter(r => r.severity === 'critical');
+      const criticalRisks = result.risks.filter((r) => r.severity === 'critical');
       expect(criticalRisks.length).toBeGreaterThan(0);
-      expect(criticalRisks.some(r => r.category === 'testing')).toBe(true);
+      expect(criticalRisks.some((r) => r.category === 'testing')).toBe(true);
     });
   });
 

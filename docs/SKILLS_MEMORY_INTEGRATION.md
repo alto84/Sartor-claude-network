@@ -7,11 +7,13 @@ This document specifies how the dynamic skills library integrates with the three
 ## Architecture Summary
 
 ### Three-Tier Memory System
+
 - **Hot Tier** (Firebase RTDB): <100ms latency, working memory, active skill state
 - **Warm Tier** (Firestore + Qdrant): 100-500ms latency, recent skill invocations, semantic search
 - **Cold Tier** (GitHub): 1-5s latency, skill evolution history, long-term patterns
 
 ### Skills Hierarchy
+
 - **Executive Claude**: Orchestrator that delegates to specialist skills
 - **7 Specialist Skills**: Domain experts (coding, debugging, testing, architecture, etc.)
 - **Progressive Loading**: Skills loaded on-demand based on context
@@ -89,7 +91,7 @@ export enum SkillId {
   ARCHITECT = 'architect_specialist',
   REVIEWER = 'reviewer_specialist',
   RESEARCHER = 'researcher_specialist',
-  DOCUMENTER = 'documenter_specialist'
+  DOCUMENTER = 'documenter_specialist',
 }
 
 /**
@@ -103,7 +105,7 @@ export enum SkillState {
   WAITING = 'waiting',
   CONSOLIDATING = 'consolidating',
   COMPLETED = 'completed',
-  ERROR = 'error'
+  ERROR = 'error',
 }
 
 /**
@@ -184,9 +186,7 @@ export interface SkillObservation {
               "failingTests": 3,
               "testFramework": "jest"
             },
-            "hypotheses": [
-              "Auth token expiration causing failures"
-            ],
+            "hypotheses": ["Auth token expiration causing failures"],
             "decisions": [
               {
                 "decision": "Delegate to Debugger specialist",
@@ -219,19 +219,13 @@ export interface SkillObservation {
             "startedAt": "2025-12-06T10:01:30Z"
           },
           "context": {
-            "activeFiles": [
-              "test/auth.test.ts",
-              "src/auth/tokenManager.ts"
-            ],
+            "activeFiles": ["test/auth.test.ts", "src/auth/tokenManager.ts"],
             "repositories": ["sartor-claude-network"],
             "variables": {
               "tokenExpirationMs": 3600000,
               "currentTime": 1733486400000
             },
-            "hypotheses": [
-              "Token expiration timing issue",
-              "Mock date not being set correctly"
-            ],
+            "hypotheses": ["Token expiration timing issue", "Mock date not being set correctly"],
             "decisions": [
               {
                 "decision": "Check token expiration logic",
@@ -419,7 +413,7 @@ export enum TaskCategory {
   DOCUMENTATION = 'documentation',
   RESEARCH = 'research',
   PLANNING = 'planning',
-  EXECUTION = 'execution'
+  EXECUTION = 'execution',
 }
 
 /**
@@ -691,6 +685,7 @@ refinementReason: |
 ## Core Capabilities
 
 You are the Debugger Specialist, an expert at identifying and fixing bugs in code. You excel at:
+
 - Root cause analysis
 - Systematic debugging approaches
 - Error reproduction
@@ -700,12 +695,14 @@ You are the Debugger Specialist, an expert at identifying and fixing bugs in cod
 ## Behavioral Instructions
 
 ### Initial Assessment
+
 1. Read the error message or failing test output completely
 2. Identify the error type (syntax, runtime, logic, timing, etc.)
 3. Locate the relevant source files
 4. Form initial hypotheses about the root cause
 
 ### Investigation Strategy
+
 1. **For Test Failures**:
    - Read the test file to understand what's being tested
    - Check for time-dependent logic (dates, timeouts, race conditions)
@@ -728,12 +725,14 @@ You are the Debugger Specialist, an expert at identifying and fixing bugs in cod
 ### Common Patterns (Learned from Experience)
 
 #### Success Patterns
+
 - Always read test files completely before running tests
 - Run tests multiple times to check for flakiness
 - Verify fixes with the exact reproduction steps
 - Check for similar issues in related code
 
 #### Anti-Patterns to Avoid
+
 - Don't assume error messages are always accurate
 - Don't fix symptoms without understanding root cause
 - Don't skip verification after making a fix
@@ -741,12 +740,14 @@ You are the Debugger Specialist, an expert at identifying and fixing bugs in cod
 #### Context-Specific Guidance
 
 **Jest/Testing Frameworks**:
+
 - **CRITICAL**: Always check if date/time mocking is needed
 - Use `jest.setSystemTime()` or `jest.useFakeTimers()` for time-dependent tests
 - Verify mocks are properly reset in afterEach hooks
 - Check for async race conditions in asynchronous tests
 
 **TypeScript/JavaScript**:
+
 - Check for `undefined` vs `null` distinctions
 - Verify async/await usage is correct
 - Look for missing error handling in promises
@@ -754,22 +755,26 @@ You are the Debugger Specialist, an expert at identifying and fixing bugs in cod
 ### Performance Metrics
 
 #### Historical Performance (v1.1.0)
+
 - Average task completion time: 8.5 minutes
 - Success rate: 87%
 - User satisfaction: 0.82
 
 #### Current Performance (v1.2.0)
+
 - Average task completion time: 7.5 minutes
 - Success rate: 92%
 - User satisfaction: 0.88
 - **Improvement**: +5% success rate, -12% time, +7% satisfaction
 
 ### Known Limitations
+
 - Complex race conditions may require multiple iterations
 - Legacy code without tests is harder to debug
 - Third-party library bugs may be beyond scope
 
 ### Version History
+
 - v1.0.0 (2025-11-01): Initial specialist skill
 - v1.1.0 (2025-11-15): Added async debugging guidance
 - v1.2.0 (2025-12-06): Added time-mocking guidance for tests
@@ -809,7 +814,7 @@ export interface SkillFeedback {
   sources: {
     /** Explicit user feedback */
     explicit?: {
-      rating: number;        // 1-5 stars
+      rating: number; // 1-5 stars
       comment?: string;
       corrections?: string[];
       praise?: string[];
@@ -884,7 +889,7 @@ export enum LearningCategory {
   EFFICIENCY = 'efficiency',
   COMMUNICATION = 'communication',
   DOMAIN_KNOWLEDGE = 'domain_knowledge',
-  CONTEXT_AWARENESS = 'context_awareness'
+  CONTEXT_AWARENESS = 'context_awareness',
 }
 ```
 
@@ -993,21 +998,18 @@ export class SkillPatternExtractor {
       skillId,
       timeRange,
       outcomeStatus: 'success',
-      minUserSatisfaction: 0.7
+      minUserSatisfaction: 0.7,
     });
 
     // 2. Query failed invocations for anti-patterns
     const failedInvocations = await this.queryInvocations({
       skillId,
       timeRange,
-      outcomeStatus: 'failure'
+      outcomeStatus: 'failure',
     });
 
     // 3. Group by task category and context
-    const groups = this.groupByTaskAndContext([
-      ...successfulInvocations,
-      ...failedInvocations
-    ]);
+    const groups = this.groupByTaskAndContext([...successfulInvocations, ...failedInvocations]);
 
     // 4. For each group, extract common sequences
     const patterns: SkillPattern[] = [];
@@ -1020,11 +1022,11 @@ export class SkillPatternExtractor {
 
       // Calculate success rates
       for (const sequence of sequences) {
-        const withPattern = group.invocations.filter(inv =>
+        const withPattern = group.invocations.filter((inv) =>
           this.invocationFollowsSequence(inv, sequence)
         );
-        const withoutPattern = group.invocations.filter(inv =>
-          !this.invocationFollowsSequence(inv, sequence)
+        const withoutPattern = group.invocations.filter(
+          (inv) => !this.invocationFollowsSequence(inv, sequence)
         );
 
         const successRateWith = this.calculateSuccessRate(withPattern);
@@ -1032,22 +1034,22 @@ export class SkillPatternExtractor {
 
         // If significant improvement, it's a success pattern
         if (successRateWith - successRateWithout > 0.15) {
-          patterns.push(this.createSuccessPattern(
-            skillId,
-            sequence,
-            withPattern,
-            { with: successRateWith, without: successRateWithout }
-          ));
+          patterns.push(
+            this.createSuccessPattern(skillId, sequence, withPattern, {
+              with: successRateWith,
+              without: successRateWithout,
+            })
+          );
         }
 
         // If significant degradation, it's an anti-pattern
         if (successRateWithout - successRateWith > 0.15) {
-          patterns.push(this.createAntiPattern(
-            skillId,
-            sequence,
-            withPattern,
-            { with: successRateWith, without: successRateWithout }
-          ));
+          patterns.push(
+            this.createAntiPattern(skillId, sequence, withPattern, {
+              with: successRateWith,
+              without: successRateWithout,
+            })
+          );
         }
       }
     }
@@ -1079,7 +1081,7 @@ export class SkillPatternExtractor {
       // Generate all subsequences of length 2-5
       for (let len = 2; len <= Math.min(5, steps.length); len++) {
         for (let i = 0; i <= steps.length - len; i++) {
-          const subseq = steps.slice(i, i + len).map(s => s.action);
+          const subseq = steps.slice(i, i + len).map((s) => s.action);
           const key = JSON.stringify(subseq);
           sequences.set(key, (sequences.get(key) || 0) + 1);
         }
@@ -1127,7 +1129,7 @@ export class SkillRefinementEngine {
           section: this.determineRelevantSection(pattern),
           content: this.generateGuidanceText(pattern),
           reasoning: `Pattern observed in ${pattern.evidence.sampleSize} invocations with ${(pattern.evidence.successRateWith * 100).toFixed(1)}% success rate`,
-          confidence: pattern.evidence.confidence
+          confidence: pattern.evidence.confidence,
         });
       } else if (pattern.type === 'anti_pattern') {
         refinements.push({
@@ -1135,7 +1137,7 @@ export class SkillRefinementEngine {
           section: 'anti_patterns',
           content: this.generateWarningText(pattern),
           reasoning: `Anti-pattern reduces success rate by ${((pattern.evidence.successRateWithout - pattern.evidence.successRateWith) * 100).toFixed(1)}%`,
-          confidence: pattern.evidence.confidence
+          confidence: pattern.evidence.confidence,
         });
       }
     }
@@ -1145,10 +1147,7 @@ export class SkillRefinementEngine {
     const refinedSkill = this.applyRefinements(currentSkill, refinements);
 
     // 4. Estimate performance improvement
-    const estimatedImprovement = this.estimatePerformanceImpact(
-      patterns,
-      refinements
-    );
+    const estimatedImprovement = this.estimatePerformanceImpact(patterns, refinements);
 
     return {
       skillId,
@@ -1157,7 +1156,7 @@ export class SkillRefinementEngine {
       refinements,
       refinedDefinition: refinedSkill,
       estimatedImprovement,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
   }
 
@@ -1237,11 +1236,14 @@ export interface SkillSurfaceConfig {
   availableTools: string[];
 
   /** Tool restrictions or limitations */
-  toolLimitations: Record<string, {
-    restricted: boolean;
-    reason?: string;
-    alternative?: string;
-  }>;
+  toolLimitations: Record<
+    string,
+    {
+      restricted: boolean;
+      reason?: string;
+      alternative?: string;
+    }
+  >;
 
   /** UI/UX adaptations */
   presentation: {
@@ -1298,77 +1300,77 @@ export const SURFACE_CONFIGS: Record<ClaudeSurface, SkillSurfaceConfig> = {
       supportsProgressUpdates: true,
       supportsRichFormatting: true,
       supportsInteractiveInput: true,
-      outputFormat: 'markdown'
+      outputFormat: 'markdown',
     },
     performance: {
       typicalLatencyMs: 2000,
       optimizeFor: 'completeness',
-      maxExecutionMs: 600000  // 10 minutes
+      maxExecutionMs: 600000, // 10 minutes
     },
     context: {
       hasFileSystemAccess: true,
       hasGitAccess: true,
       hasTerminalAccess: true,
-      hasWebAccess: false
-    }
+      hasWebAccess: false,
+    },
   },
 
   [ClaudeSurface.WEB]: {
     surface: ClaudeSurface.WEB,
     availableTools: ['web_search', 'web_fetch'],
     toolLimitations: {
-      'bash': {
+      bash: {
         restricted: true,
         reason: 'No terminal access in web interface',
-        alternative: 'Provide instructions for user to run commands'
+        alternative: 'Provide instructions for user to run commands',
       },
-      'read': {
+      read: {
         restricted: true,
         reason: 'No file system access',
-        alternative: 'Ask user to paste file contents'
-      }
+        alternative: 'Ask user to paste file contents',
+      },
     },
     presentation: {
       supportsProgressUpdates: true,
       supportsRichFormatting: true,
       supportsInteractiveInput: true,
-      outputFormat: 'markdown'
+      outputFormat: 'markdown',
     },
     performance: {
       typicalLatencyMs: 1500,
       optimizeFor: 'balanced',
-      maxExecutionMs: 300000  // 5 minutes
+      maxExecutionMs: 300000, // 5 minutes
     },
     context: {
       hasFileSystemAccess: false,
       hasGitAccess: false,
       hasTerminalAccess: false,
-      hasWebAccess: true
-    }
+      hasWebAccess: true,
+    },
   },
 
   [ClaudeSurface.API]: {
     surface: ClaudeSurface.API,
-    availableTools: [],  // Depends on client implementation
+    availableTools: [], // Depends on client implementation
     toolLimitations: {},
     presentation: {
       supportsProgressUpdates: false,
       supportsRichFormatting: false,
       supportsInteractiveInput: false,
-      outputFormat: 'structured_json'
+      outputFormat: 'structured_json',
     },
     performance: {
       typicalLatencyMs: 1000,
       optimizeFor: 'speed',
-      maxExecutionMs: 120000  // 2 minutes
+      maxExecutionMs: 120000, // 2 minutes
     },
     context: {
       hasFileSystemAccess: false,
       hasGitAccess: false,
       hasTerminalAccess: false,
-      hasWebAccess: false
-    }
-  }
+      hasWebAccess: false,
+    },
+  },
 };
 ```
 
@@ -1394,15 +1396,10 @@ export class SkillMemorySyncService {
     const surfacePatterns = new Map<ClaudeSurface, SkillPattern[]>();
 
     for (const surface of Object.values(ClaudeSurface)) {
-      const surfaceInvocations = invocations.filter(
-        inv => inv.source.surface === surface
-      );
+      const surfaceInvocations = invocations.filter((inv) => inv.source.surface === surface);
 
       if (surfaceInvocations.length >= 5) {
-        const patterns = await this.patternExtractor.extractPatterns(
-          skillId,
-          surfaceInvocations
-        );
+        const patterns = await this.patternExtractor.extractPatterns(skillId, surfaceInvocations);
         surfacePatterns.set(surface, patterns);
       }
     }
@@ -1411,22 +1408,18 @@ export class SkillMemorySyncService {
     const universalPatterns = this.findUniversalPatterns(surfacePatterns);
 
     // 4. Identify surface-specific patterns
-    const surfaceSpecificPatterns = this.findSurfaceSpecificPatterns(
-      surfacePatterns
-    );
+    const surfaceSpecificPatterns = this.findSurfaceSpecificPatterns(surfacePatterns);
 
     // 5. Update skill definition with both types
-    await this.updateSkillWithPatterns(
-      skillId,
-      universalPatterns,
-      surfaceSpecificPatterns
-    );
+    await this.updateSkillWithPatterns(skillId, universalPatterns, surfaceSpecificPatterns);
 
     return {
       universalPatterns: universalPatterns.length,
-      surfaceSpecificPatterns: Array.from(surfaceSpecificPatterns.entries())
-        .reduce((sum, [_, patterns]) => sum + patterns.length, 0),
-      syncedAt: new Date().toISOString()
+      surfaceSpecificPatterns: Array.from(surfaceSpecificPatterns.entries()).reduce(
+        (sum, [_, patterns]) => sum + patterns.length,
+        0
+      ),
+      syncedAt: new Date().toISOString(),
     };
   }
 
@@ -1448,9 +1441,7 @@ export class SkillMemorySyncService {
       for (const [surface, patterns] of surfacePatterns.entries()) {
         if (surface === firstSurface) continue;
 
-        const hasSimilar = patterns.some(p =>
-          this.arePatternsEquivalent(pattern, p)
-        );
+        const hasSimilar = patterns.some((p) => this.arePatternsEquivalent(pattern, p));
 
         if (!hasSimilar) {
           isUniversal = false;
@@ -1505,7 +1496,7 @@ export interface LoadSkillOutput {
   state: SkillState;
   availableTools: string[];
   surfaceConfig: SkillSurfaceConfig;
-  recentLearnings: string[];  // Recent patterns to be aware of
+  recentLearnings: string[]; // Recent patterns to be aware of
   activatedAt: Timestamp;
 }
 
@@ -1522,7 +1513,7 @@ export interface UnloadSkillInput {
 export interface UnloadSkillOutput {
   success: boolean;
   skillSessionId: string;
-  consolidatedTo: MemoryId;  // Warm memory ID
+  consolidatedTo: MemoryId; // Warm memory ID
   duration: number;
   observationsPersisted: number;
   learningsExtracted: number;
@@ -1572,7 +1563,7 @@ export interface RecordSkillOutcomeOutput {
   success: boolean;
   feedbackRecorded: boolean;
   invocationMemoryId: MemoryId;
-  patternsTriggered: number;  // Number of patterns this confirms/refutes
+  patternsTriggered: number; // Number of patterns this confirms/refutes
 }
 
 /**
@@ -1624,7 +1615,7 @@ async function executeSkillWithMemory(
     userId: context.userId,
     conversationId: context.conversationId,
     surface: context.surface,
-    task
+    task,
   });
 
   // 2. Execute task (skill updates hot memory in real-time)
@@ -1634,14 +1625,14 @@ async function executeSkillWithMemory(
   const outcomeResult = await mcpTools.record_skill_outcome({
     skillSessionId: loadResult.skillSessionId,
     outcome: executionResult.outcome,
-    feedback: executionResult.userFeedback
+    feedback: executionResult.userFeedback,
   });
 
   // 4. Unload skill (consolidates to warm memory)
   await mcpTools.unload_skill({
     skillSessionId: loadResult.skillSessionId,
     reason: 'completed',
-    summary: executionResult.summary
+    summary: executionResult.summary,
   });
 
   // 5. If significant learnings, also create semantic memory
@@ -1652,14 +1643,14 @@ async function executeSkillWithMemory(
         context: {
           conversation_id: context.conversationId,
           user_id: context.userId,
-          session_id: context.sessionId
+          session_id: context.sessionId,
         },
         metadata: {
           category: 'skill',
           tags: [skillId, 'learning', 'best_practice'],
-          importance: 0.8
+          importance: 0.8,
         },
-        related_memory_ids: [outcomeResult.invocationMemoryId]
+        related_memory_ids: [outcomeResult.invocationMemoryId],
       });
     }
   }
@@ -1733,7 +1724,7 @@ Next invocation: Debugger v1.2.0 with improved guidance
 
 ```typescript
 // 1. User makes request
-const request = "Fix the failing tests and update the documentation";
+const request = 'Fix the failing tests and update the documentation';
 
 // 2. Executive Claude receives and analyzes
 const executiveSkill = await mcpTools.load_skill({
@@ -1742,34 +1733,34 @@ const executiveSkill = await mcpTools.load_skill({
   userId: user.id,
   conversationId: conversation.id,
   surface: ClaudeSurface.TERMINAL,
-  task: request
+  task: request,
 });
 
 // Executive's analysis (stored in hot memory)
 await updateSkillState(executiveSkill.skillSessionId, {
   observations: [
     {
-      observation: "Request contains two distinct tasks: fix tests + update docs",
+      observation: 'Request contains two distinct tasks: fix tests + update docs',
       type: 'finding',
       importance: 0.8,
-      shouldPersist: true
-    }
+      shouldPersist: true,
+    },
   ],
   context: {
     decisions: [
       {
-        decision: "Delegate testing task to Debugger specialist",
-        reasoning: "Test failures require debugging expertise",
-        timestamp: new Date().toISOString()
+        decision: 'Delegate testing task to Debugger specialist',
+        reasoning: 'Test failures require debugging expertise',
+        timestamp: new Date().toISOString(),
       },
       {
-        decision: "After debugging complete, delegate to Documenter specialist",
-        reasoning: "Documentation updates should reflect test changes",
-        timestamp: new Date().toISOString()
-      }
-    ]
+        decision: 'After debugging complete, delegate to Documenter specialist',
+        reasoning: 'Documentation updates should reflect test changes',
+        timestamp: new Date().toISOString(),
+      },
+    ],
   },
-  state: SkillState.DELEGATING
+  state: SkillState.DELEGATING,
 });
 
 // 3. Executive delegates to Debugger
@@ -1779,23 +1770,23 @@ const debuggerSkill = await mcpTools.load_skill({
   userId: user.id,
   conversationId: conversation.id,
   surface: ClaudeSurface.TERMINAL,
-  task: "Fix the failing tests"
+  task: 'Fix the failing tests',
 });
 
 // Debugger executes (updates hot memory throughout)
 const debuggerResult = await debuggerSpecialist.execute({
   skillSessionId: debuggerSkill.skillSessionId,
-  task: "Fix the failing tests",
+  task: 'Fix the failing tests',
   onProgress: async (update) => {
     // Real-time updates to hot memory
     await updateSkillState(debuggerSkill.skillSessionId, {
       currentTask: {
         ...debuggerSkill.currentTask,
-        progress: update.progress
+        progress: update.progress,
       },
-      observations: update.observations
+      observations: update.observations,
     });
-  }
+  },
 });
 
 // 4. Debugger completes - record outcome
@@ -1804,13 +1795,11 @@ await mcpTools.record_skill_outcome({
   outcome: {
     status: 'success',
     accomplishments: [
-      "Fixed 3 failing auth tests",
-      "Identified and corrected unmocked Date.now() usage"
+      'Fixed 3 failing auth tests',
+      'Identified and corrected unmocked Date.now() usage',
     ],
-    learnings: [
-      "Jest tests require explicit time mocking for date-dependent logic"
-    ]
-  }
+    learnings: ['Jest tests require explicit time mocking for date-dependent logic'],
+  },
 });
 
 // This creates SkillInvocationMemory in Firestore (warm memory)
@@ -1823,17 +1812,17 @@ const documenterSkill = await mcpTools.load_skill({
   userId: user.id,
   conversationId: conversation.id,
   surface: ClaudeSurface.TERMINAL,
-  task: "Update documentation for the test fixes"
+  task: 'Update documentation for the test fixes',
 });
 
 // Documenter can access the debugger's invocation memory for context
 const debuggerContext = await mcpTools.recall_memories({
-  query: "recent test fixes in this session",
+  query: 'recent test fixes in this session',
   filters: {
-    categories: ["skill"],
-    conversation_id: conversation.id
+    categories: ['skill'],
+    conversation_id: conversation.id,
   },
-  limit: 5
+  limit: 5,
 });
 
 // ... Documenter executes and completes
@@ -1842,7 +1831,8 @@ const debuggerContext = await mcpTools.recall_memories({
 await mcpTools.unload_skill({
   skillSessionId: executiveSkill.skillSessionId,
   reason: 'completed',
-  summary: "Successfully fixed tests and updated documentation using Debugger and Documenter specialists"
+  summary:
+    'Successfully fixed tests and updated documentation using Debugger and Documenter specialists',
 });
 ```
 
@@ -1891,86 +1881,92 @@ Skill Refinement (Weekly)
 // Initial attempt
 const coderSkill = await mcpTools.load_skill({
   skillId: SkillId.CODER,
-  task: "Add authentication to the API"
+  task: 'Add authentication to the API',
 });
 
 // Coder executes first approach
 await updateSkillState(coderSkill.skillSessionId, {
   context: {
-    hypotheses: ["JWT with bcrypt will provide secure authentication"],
-    decisions: [{
-      decision: "Use bcrypt for password hashing",
-      reasoning: "Industry standard, very secure"
-    }]
-  }
+    hypotheses: ['JWT with bcrypt will provide secure authentication'],
+    decisions: [
+      {
+        decision: 'Use bcrypt for password hashing',
+        reasoning: 'Industry standard, very secure',
+      },
+    ],
+  },
 });
 
 // Tests fail
 await updateSkillState(coderSkill.skillSessionId, {
-  observations: [{
-    observation: "Tests failing with timeout errors",
-    type: 'error',
-    importance: 0.9,
-    shouldPersist: true
-  }],
+  observations: [
+    {
+      observation: 'Tests failing with timeout errors',
+      type: 'error',
+      importance: 0.9,
+      shouldPersist: true,
+    },
+  ],
   context: {
-    blockers: [{
-      description: "Test timeouts when running auth tests",
-      severity: 'high'
-    }]
-  }
+    blockers: [
+      {
+        description: 'Test timeouts when running auth tests',
+        severity: 'high',
+      },
+    ],
+  },
 });
 
 // User provides correction
 const userFeedback = {
   explicit: {
-    comment: "The tests are timing out",
-    corrections: ["Tests need faster execution"]
+    comment: 'The tests are timing out',
+    corrections: ['Tests need faster execution'],
   },
   implicit: {
     acceptedAsIs: false,
-    followUpCorrections: 1
-  }
+    followUpCorrections: 1,
+  },
 };
 
 // Coder adapts
 await updateSkillState(coderSkill.skillSessionId, {
   context: {
     hypotheses: [
-      "Bcrypt is too slow for test environment",
-      "Can use faster hashing for tests, bcrypt for production"
+      'Bcrypt is too slow for test environment',
+      'Can use faster hashing for tests, bcrypt for production',
     ],
-    decisions: [{
-      decision: "Use environment-based hashing strategy",
-      reasoning: "User feedback indicates performance issue in tests"
-    }]
-  }
+    decisions: [
+      {
+        decision: 'Use environment-based hashing strategy',
+        reasoning: 'User feedback indicates performance issue in tests',
+      },
+    ],
+  },
 });
 
 // Second attempt succeeds
 await mcpTools.record_skill_outcome({
   skillSessionId: coderSkill.skillSessionId,
   outcome: {
-    status: 'partial_success',  // Needed correction
-    accomplishments: [
-      "Added JWT authentication",
-      "Implemented environment-aware hashing"
-    ],
+    status: 'partial_success', // Needed correction
+    accomplishments: ['Added JWT authentication', 'Implemented environment-aware hashing'],
     learnings: [
-      "Test environment performance matters for crypto operations",
-      "Use faster alternatives in tests when security isn't critical"
-    ]
+      'Test environment performance matters for crypto operations',
+      "Use faster alternatives in tests when security isn't critical",
+    ],
   },
-  feedback: userFeedback
+  feedback: userFeedback,
 });
 
 // This creates a learning opportunity
 const invocationMemory = await getInvocationMemory(coderSkill.skillSessionId);
 invocationMemory.feedback.learningOpportunities.push({
-  description: "Add guidance about test performance for crypto operations",
+  description: 'Add guidance about test performance for crypto operations',
   category: LearningCategory.DOMAIN_KNOWLEDGE,
   priority: 'high',
-  suggestedRefinement: "In 'Authentication Implementation' section, add note about test environment performance"
+  suggestedRefinement:
+    "In 'Authentication Implementation' section, add note about test environment performance",
 });
 ```
 
@@ -2101,10 +2097,10 @@ async function getSkillPerformanceReport(
       tags: [skillId],
       date_range: {
         start: startDate.toISOString(),
-        end: endDate.toISOString()
-      }
+        end: endDate.toISOString(),
+      },
     },
-    limit: 1000
+    limit: 1000,
   });
 
   // Calculate metrics
@@ -2114,10 +2110,7 @@ async function getSkillPerformanceReport(
   const evolution = await getSkillEvolutionHistory(skillId);
 
   // Compare current vs previous version
-  const comparison = compareVersions(
-    evolution.currentVersion,
-    evolution.previousVersion
-  );
+  const comparison = compareVersions(evolution.currentVersion, evolution.previousVersion);
 
   return {
     skillId,
@@ -2125,7 +2118,7 @@ async function getSkillPerformanceReport(
     metrics,
     evolution,
     comparison,
-    recommendations: generateRecommendations(metrics, evolution)
+    recommendations: generateRecommendations(metrics, evolution),
   };
 }
 ```
@@ -2137,31 +2130,37 @@ async function getSkillPerformanceReport(
 ### 7.1 Rollout Phases
 
 **Phase 1: Foundation** (Week 1-2)
+
 - Implement hot memory structure in Firebase RTDB
 - Create basic skill state tracking
 - Deploy for Executive Claude only
 
 **Phase 2: Warm Memory** (Week 3-4)
+
 - Implement SkillInvocationMemory in Firestore
 - Add feedback collection
 - Deploy for 2-3 specialist skills (Coder, Debugger)
 
 **Phase 3: Pattern Extraction** (Week 5-6)
+
 - Implement pattern extraction algorithms
 - Set up daily GitHub Actions workflow
 - Begin collecting patterns
 
 **Phase 4: Refinement** (Week 7-8)
+
 - Implement refinement engine
 - Create first refined skill versions
 - Deploy to GitHub cold storage
 
 **Phase 5: Cross-Surface** (Week 9-10)
+
 - Implement surface-specific adaptations
 - Test on multiple surfaces
 - Sync learnings across surfaces
 
 **Phase 6: Full Deployment** (Week 11-12)
+
 - Deploy all specialist skills
 - Enable automatic refinement
 - Monitor and optimize

@@ -8,12 +8,7 @@
  * @date 2025-12-06
  */
 
-import {
-  MemorySystem,
-  MemoryType,
-  BaseMemory,
-  MemoryId
-} from './memory/memory-schema';
+import { MemorySystem, MemoryType, BaseMemory, MemoryId } from './memory/memory-schema';
 
 // ============================================================================
 // CORE TYPES
@@ -27,22 +22,22 @@ export type Timestamp = string;
  * Skill tier classification
  */
 export enum SkillTier {
-  EXECUTIVE = 'executive',        // High-level orchestration (e.g., project-manager)
-  SPECIALIST = 'specialist',      // Domain expertise (e.g., data-analyst)
-  UTILITY = 'utility',            // Support functions (e.g., file-reader)
-  FOUNDATION = 'foundation',      // Core foundational skills
-  INFRASTRUCTURE = 'infrastructure' // Infrastructure-level skills
+  EXECUTIVE = 'executive', // High-level orchestration (e.g., project-manager)
+  SPECIALIST = 'specialist', // Domain expertise (e.g., data-analyst)
+  UTILITY = 'utility', // Support functions (e.g., file-reader)
+  FOUNDATION = 'foundation', // Core foundational skills
+  INFRASTRUCTURE = 'infrastructure', // Infrastructure-level skills
 }
 
 /**
  * Skill status
  */
 export enum SkillStatus {
-  STABLE = 'stable',           // Production-ready
-  BETA = 'beta',               // Testing phase
-  ALPHA = 'alpha',             // Early development
-  DEPRECATED = 'deprecated',   // Scheduled for removal
-  EXPERIMENTAL = 'experimental' // Experimental feature
+  STABLE = 'stable', // Production-ready
+  BETA = 'beta', // Testing phase
+  ALPHA = 'alpha', // Early development
+  DEPRECATED = 'deprecated', // Scheduled for removal
+  EXPERIMENTAL = 'experimental', // Experimental feature
 }
 
 /**
@@ -59,31 +54,31 @@ export enum SkillCategory {
   AUTOMATION = 'automation',
   INTEGRATION = 'integration',
   SYSTEM = 'system',
-  INFRASTRUCTURE = 'infrastructure'
+  INFRASTRUCTURE = 'infrastructure',
 }
 
 /**
  * Resource types for Level 3
  */
 export enum ResourceType {
-  DOCUMENTATION = 'docs',      // Markdown/HTML documentation
-  CODE_TEMPLATE = 'template',  // Reusable code patterns
-  SCHEMA = 'schema',           // Data/API schemas
-  REFERENCE_DATA = 'data',     // Lookup tables, constants
-  EXAMPLES = 'examples',       // Detailed examples
-  INTEGRATION = 'integration'  // Third-party integration specs
+  DOCUMENTATION = 'docs', // Markdown/HTML documentation
+  CODE_TEMPLATE = 'template', // Reusable code patterns
+  SCHEMA = 'schema', // Data/API schemas
+  REFERENCE_DATA = 'data', // Lookup tables, constants
+  EXAMPLES = 'examples', // Detailed examples
+  INTEGRATION = 'integration', // Third-party integration specs
 }
 
 /**
  * Trigger types for skill activation
  */
 export enum TriggerType {
-  KEYWORD = 'keyword',         // Simple keyword match
-  PATTERN = 'pattern',         // Regex pattern
-  SEMANTIC = 'semantic',       // Embedding similarity
-  EXPLICIT = 'explicit',       // User invokes by name
-  DEPENDENCY = 'dependency',   // Another skill requires this
-  SCHEDULED = 'scheduled'      // Time-based activation
+  KEYWORD = 'keyword', // Simple keyword match
+  PATTERN = 'pattern', // Regex pattern
+  SEMANTIC = 'semantic', // Embedding similarity
+  EXPLICIT = 'explicit', // User invokes by name
+  DEPENDENCY = 'dependency', // Another skill requires this
+  SCHEDULED = 'scheduled', // Time-based activation
 }
 
 // ============================================================================
@@ -134,7 +129,7 @@ export interface SkillSummary {
   summary: string;
   triggers: TriggerDefinition[];
   tier: SkillTier;
-  dependencies: string[];  // Just IDs for summary
+  dependencies: string[]; // Just IDs for summary
   estimatedTokens: number;
 }
 
@@ -157,9 +152,9 @@ export interface SkillInstructions {
 export interface TriggerDefinition {
   type: TriggerType;
   pattern: string | RegExp;
-  confidence: number;          // 0-1, threshold for activation
-  context?: string[];          // Required contextual markers
-  priority: number;            // Higher = checked first
+  confidence: number; // 0-1, threshold for activation
+  context?: string[]; // Required contextual markers
+  priority: number; // Higher = checked first
 }
 
 /**
@@ -167,10 +162,10 @@ export interface TriggerDefinition {
  */
 export interface SkillDependency {
   skillId: SkillId;
-  version?: string;            // SemVer range (e.g., "^2.0.0")
-  required: boolean;           // Hard vs soft dependency
+  version?: string; // SemVer range (e.g., "^2.0.0")
+  required: boolean; // Hard vs soft dependency
   loadTiming: 'eager' | 'lazy' | 'parallel';
-  fallback?: SkillId;          // Alternative skill if unavailable
+  fallback?: SkillId; // Alternative skill if unavailable
 }
 
 /**
@@ -185,7 +180,7 @@ export interface SkillInterface {
 
 export interface ParameterDefinition {
   name: string;
-  type: string;                // TypeScript type
+  type: string; // TypeScript type
   description: string;
   required: boolean;
   default?: any;
@@ -194,7 +189,18 @@ export interface ParameterDefinition {
 }
 
 export interface SideEffect {
-  type: 'file_system' | 'network' | 'memory' | 'state' | 'messaging' | 'agent-invocation' | 'none' | 'testing' | 'data-collection' | 'computation' | 'cost';
+  type:
+    | 'file_system'
+    | 'network'
+    | 'memory'
+    | 'state'
+    | 'messaging'
+    | 'agent-invocation'
+    | 'none'
+    | 'testing'
+    | 'data-collection'
+    | 'computation'
+    | 'cost';
   description: string;
   reversible: boolean;
 }
@@ -205,7 +211,7 @@ export interface SideEffect {
 export interface ExecutionProcedure {
   steps: ProcedureStep[];
   parallelizable: boolean;
-  estimatedDuration: string;   // Human-readable (e.g., "2-5 seconds")
+  estimatedDuration: string; // Human-readable (e.g., "2-5 seconds")
   retryStrategy?: RetryStrategy;
 }
 
@@ -242,11 +248,11 @@ export interface ResourceManifest {
   type: ResourceType;
   name: string;
   description: string;
-  path: string;                // Relative path or URL
-  size: number;                // Bytes
-  format: string;              // MIME type or file extension
+  path: string; // Relative path or URL
+  size: number; // Bytes
+  format: string; // MIME type or file extension
   loadStrategy: 'immediate' | 'lazy' | 'on_request' | 'eager';
-  cacheDuration?: number;      // Milliseconds, undefined = session
+  cacheDuration?: number; // Milliseconds, undefined = session
   compression?: 'gzip' | 'brotli' | 'none';
 }
 
@@ -296,7 +302,7 @@ export interface SkillPerformance {
 export interface SkillMemoryConfig {
   stateRetention: 'session' | 'persistent' | 'none';
   cacheStrategy: CacheStrategy;
-  maxStateSize: number;        // Max bytes for skill state
+  maxStateSize: number; // Max bytes for skill state
 }
 
 // ============================================================================
@@ -375,7 +381,7 @@ export class SkillExecutionContext {
     this.cache = new SkillCacheManager(config.memory.hot, {
       type: 'lru',
       maxSize: 100 * 1024 * 1024, // 100MB
-      evictionPolicy: 'access_count'
+      evictionPolicy: 'access_count',
     });
   }
 
@@ -410,7 +416,7 @@ export class SkillExecutionContext {
       level3,
       total: level1 + level2,
       limit: 200000,
-      utilizationPercent: ((level1 + level2) / 200000) * 100
+      utilizationPercent: ((level1 + level2) / 200000) * 100,
     };
   }
 }
@@ -583,7 +589,11 @@ export interface SkillMetrics {
  * Memory integration interface
  */
 export interface MemoryIntegration {
-  persistSkillState(skillId: SkillId, state: SkillState, context: SkillExecutionContext): Promise<void>;
+  persistSkillState(
+    skillId: SkillId,
+    state: SkillState,
+    context: SkillExecutionContext
+  ): Promise<void>;
   restoreSkillState(skillId: SkillId, context: SkillExecutionContext): Promise<SkillState | null>;
   recordUsagePattern(skillId: SkillId, trigger: TriggerMatch): Promise<void>;
   predictLikelySkills(userContext: UserContext): Promise<SkillPrediction[]>;
@@ -601,16 +611,23 @@ export interface HotMemoryInterface {
 
 export interface WarmMemoryInterface {
   get(key: string): Promise<any | null>;
-  set(key: string, value: any, options: {
-    ttl?: number;
-    tags?: string[];
-    importance?: number;
-  }): Promise<void>;
+  set(
+    key: string,
+    value: any,
+    options: {
+      ttl?: number;
+      tags?: string[];
+      importance?: number;
+    }
+  ): Promise<void>;
   getUserPatterns(userId: string): Promise<SkillUsagePattern[]>;
-  searchSimilarSkills(embedding: number[], options: {
-    limit: number;
-    minSimilarity: number;
-  }): Promise<Array<{ skillId: SkillId; similarity: number }>>;
+  searchSimilarSkills(
+    embedding: number[],
+    options: {
+      limit: number;
+      minSimilarity: number;
+    }
+  ): Promise<Array<{ skillId: SkillId; similarity: number }>>;
 }
 
 export interface ColdMemoryInterface {
@@ -638,7 +655,7 @@ export class SkillRegistry {
       byCategory: new Map(),
       byTrigger: new Map(),
       byTag: new Map(),
-      embeddings: new Map()
+      embeddings: new Map(),
     };
   }
 
@@ -667,7 +684,7 @@ export class SkillRegistry {
     }
 
     if (version) {
-      return versions.find(v => v.version === version) || null;
+      return versions.find((v) => v.version === version) || null;
     }
 
     // Return latest version
@@ -814,7 +831,7 @@ export class SkillLoader {
         loadedLevels: [1, 2], // Simplified
         tokenUsage: 550,
         lastAccessedAt: state.lastAccessedAt,
-        executionCount: state.executionCount
+        executionCount: state.executionCount,
       });
     }
     return infos;
@@ -1024,7 +1041,7 @@ export class SkillCacheManager implements SkillCache {
       hitRate: 0,
       size: 0,
       maxSize: config.maxSize,
-      evictions: 0
+      evictions: 0,
     };
   }
 
@@ -1047,7 +1064,12 @@ export class SkillCacheManager implements SkillCache {
     return null;
   }
 
-  async set(key: string, value: any, level: 'level1' | 'level2' | 'level3', ttl?: number): Promise<void> {
+  async set(
+    key: string,
+    value: any,
+    level: 'level1' | 'level2' | 'level3',
+    ttl?: number
+  ): Promise<void> {
     const entry: CacheEntry = {
       key,
       value,
@@ -1056,7 +1078,7 @@ export class SkillCacheManager implements SkillCache {
       ttl: ttl || this.config.ttl,
       createdAt: Date.now(),
       lastAccessedAt: Date.now(),
-      accessCount: 0
+      accessCount: 0,
     };
 
     if (entry.size < 1024 * 1024) {

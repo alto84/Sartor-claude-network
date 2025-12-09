@@ -28,25 +28,46 @@ interface ValidationIssue {
 export class MetricsValidator {
   private readonly SUSPICIOUS_PATTERNS = [
     // Percentages without evidence
-    { pattern: /(\d+)%\s+(coverage|complete|done|tested)/gi, message: 'Percentage claim requires measurement evidence' },
+    {
+      pattern: /(\d+)%\s+(coverage|complete|done|tested)/gi,
+      message: 'Percentage claim requires measurement evidence',
+    },
 
     // Scores without rubric
-    { pattern: /score:?\s*(\d+)\/(\d+)/gi, message: 'Score requires defined rubric and calculation methodology' },
+    {
+      pattern: /score:?\s*(\d+)\/(\d+)/gi,
+      message: 'Score requires defined rubric and calculation methodology',
+    },
 
     // Quality superlatives
-    { pattern: /quality:?\s*(excellent|perfect|optimal|superior)/gi, message: 'Quality claim requires specific observations, not superlatives' },
+    {
+      pattern: /quality:?\s*(excellent|perfect|optimal|superior)/gi,
+      message: 'Quality claim requires specific observations, not superlatives',
+    },
 
     // Confidence without basis
-    { pattern: /(high|low|medium)\s+confidence/gi, message: 'Confidence level requires explanation of basis' },
+    {
+      pattern: /(high|low|medium)\s+confidence/gi,
+      message: 'Confidence level requires explanation of basis',
+    },
 
     // Vague approximations
-    { pattern: /approximately\s+\d+/gi, message: 'Approximation requires error margin or precision bounds' },
+    {
+      pattern: /approximately\s+\d+/gi,
+      message: 'Approximation requires error margin or precision bounds',
+    },
 
     // Round numbers (often fabricated)
-    { pattern: /\b100%\b|\b0%\b|\bexactly\s+\d+0\b/gi, message: 'Suspiciously round number - is this measured or estimated?' },
+    {
+      pattern: /\b100%\b|\b0%\b|\bexactly\s+\d+0\b/gi,
+      message: 'Suspiciously round number - is this measured or estimated?',
+    },
 
     // Performance claims
-    { pattern: /\b(\d+)x\s+(faster|slower|better|worse)/gi, message: 'Performance claim requires baseline and measurement data' },
+    {
+      pattern: /\b(\d+)x\s+(faster|slower|better|worse)/gi,
+      message: 'Performance claim requires baseline and measurement data',
+    },
   ];
 
   private readonly REQUIRED_EVIDENCE_KEYWORDS = [
@@ -140,9 +161,7 @@ export class MetricsValidator {
     const contextLines = lines.slice(startLine, endLine).join('\n').toLowerCase();
 
     // Check for evidence keywords
-    return this.REQUIRED_EVIDENCE_KEYWORDS.some(keyword =>
-      contextLines.includes(keyword)
-    );
+    return this.REQUIRED_EVIDENCE_KEYWORDS.some((keyword) => contextLines.includes(keyword));
   }
 
   private detectFabrication(claim: MetricClaim): string[] {
@@ -208,7 +227,7 @@ export async function validateMetrics(files: string[]): Promise<boolean> {
 
     if (!result.valid) {
       console.error(`\n❌ Metrics validation failed for ${file}:`);
-      result.issues.forEach(issue => {
+      result.issues.forEach((issue) => {
         console.error(`  ${issue.severity.toUpperCase()}: ${issue.message}`);
         console.error(`    Location: ${issue.location}`);
         console.error(`    Suggestion: ${issue.suggestion}`);
@@ -218,7 +237,7 @@ export async function validateMetrics(files: string[]): Promise<boolean> {
 
     if (result.warnings.length > 0) {
       console.warn(`\n⚠️  Warnings for ${file}:`);
-      result.warnings.forEach(warning => {
+      result.warnings.forEach((warning) => {
         console.warn(`  ${warning.message}`);
       });
     }

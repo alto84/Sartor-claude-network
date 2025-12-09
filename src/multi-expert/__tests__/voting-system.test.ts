@@ -140,9 +140,7 @@ describe('VotingSystem', () => {
     test('throws on insufficient votes', () => {
       const voting = new VotingSystem({ minVotes: 3 });
 
-      const votes: ExpertVote[] = [
-        { expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 },
-      ];
+      const votes: ExpertVote[] = [{ expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 }];
 
       expect(() => voting.vote(votes, ['A', 'B'])).toThrow('Minimum 3 votes required');
     });
@@ -150,9 +148,7 @@ describe('VotingSystem', () => {
     test('handles single option', () => {
       const voting = new VotingSystem({ method: 'majority' });
 
-      const votes: ExpertVote[] = [
-        { expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 },
-      ];
+      const votes: ExpertVote[] = [{ expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 }];
 
       const result = voting.vote(votes, ['A']);
 

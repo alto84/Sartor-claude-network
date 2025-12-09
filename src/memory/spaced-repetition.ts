@@ -10,12 +10,7 @@
  * 4. Review queue management
  */
 
-import {
-  Memory,
-  SpacedRepetitionConfig,
-  ReviewSchedule,
-  ReviewQueue
-} from '../utils/types';
+import { Memory, SpacedRepetitionConfig, ReviewSchedule, ReviewQueue } from '../utils/types';
 import { cosineSimilarity } from './importance-scoring';
 
 // ============================================================================
@@ -23,10 +18,10 @@ import { cosineSimilarity } from './importance-scoring';
 // ============================================================================
 
 const DEFAULT_SPACED_REPETITION_CONFIG: SpacedRepetitionConfig = {
-  initial_interval: 1,      // Days until first review
-  second_interval: 6,       // Days until second review
-  min_easiness: 1.3,        // Minimum easiness factor
-  max_easiness: 3.0         // Maximum easiness factor
+  initial_interval: 1, // Days until first review
+  second_interval: 6, // Days until second review
+  min_easiness: 1.3, // Minimum easiness factor
+  max_easiness: 3.0, // Maximum easiness factor
 };
 
 // ============================================================================
@@ -49,7 +44,7 @@ export function calculateEasinessFactor(
   importance: number,
   config: SpacedRepetitionConfig = DEFAULT_SPACED_REPETITION_CONFIG
 ): number {
-  const ef = config.min_easiness + (importance * (config.max_easiness - config.min_easiness));
+  const ef = config.min_easiness + importance * (config.max_easiness - config.min_easiness);
   return Math.max(config.min_easiness, Math.min(config.max_easiness, ef));
 }
 
@@ -123,7 +118,7 @@ export function createReviewSchedule(
     next_review: nextReview,
     interval: intervalDays,
     easiness_factor: easinessFactor,
-    review_count: reviewCount
+    review_count: reviewCount,
   };
 }
 
@@ -161,7 +156,7 @@ export function updateReviewSchedule(
     next_review: nextReview,
     interval: newInterval,
     easiness_factor: newEasinessFactor,
-    review_count: newReviewCount
+    review_count: newReviewCount,
   };
 }
 
@@ -206,10 +201,7 @@ export function getIntervalProgression(
  * @param reviewSchedule - Review schedule for memory
  * @returns Priority score (higher = more urgent)
  */
-export function calculateReviewPriority(
-  memory: Memory,
-  reviewSchedule: ReviewSchedule
-): number {
+export function calculateReviewPriority(memory: Memory, reviewSchedule: ReviewSchedule): number {
   const now = new Date();
   const nextReview = new Date(reviewSchedule.next_review);
 
@@ -218,9 +210,10 @@ export function calculateReviewPriority(
   const daysOverdue = (now.getTime() - nextReview.getTime()) / millisPerDay;
 
   // Overdue component: exponential increase for overdue items
-  const overdueScore = daysOverdue > 0 ?
-    Math.min(1.0, Math.log(1 + daysOverdue) / Math.log(30)) : // Cap at 30 days
-    0;
+  const overdueScore =
+    daysOverdue > 0
+      ? Math.min(1.0, Math.log(1 + daysOverdue) / Math.log(30)) // Cap at 30 days
+      : 0;
 
   // Importance component
   const importanceScore = memory.importance_score;
@@ -229,7 +222,7 @@ export function calculateReviewPriority(
   const weaknessScore = 1 - memory.strength;
 
   // Combined priority (weights: 40% overdue, 30% importance, 30% weakness)
-  const priority = (0.4 * overdueScore) + (0.3 * importanceScore) + (0.3 * weaknessScore);
+  const priority = 0.4 * overdueScore + 0.3 * importanceScore + 0.3 * weaknessScore;
 
   return priority;
 }
@@ -250,19 +243,16 @@ export function buildReviewQueue(
   const now = new Date();
 
   // Filter memories due for review
-  const dueMemories = memories.filter(memory => {
+  const dueMemories = memories.filter((memory) => {
     const schedule = createReviewSchedule(memory, config);
     return schedule.next_review <= now;
   });
 
   // Calculate priorities
-  const withPriorities = dueMemories.map(memory => ({
+  const withPriorities = dueMemories.map((memory) => ({
     memory,
     schedule: createReviewSchedule(memory, config),
-    priority: calculateReviewPriority(
-      memory,
-      createReviewSchedule(memory, config)
-    )
+    priority: calculateReviewPriority(memory, createReviewSchedule(memory, config)),
   }));
 
   // Sort by priority (descending)
@@ -272,9 +262,9 @@ export function buildReviewQueue(
   const topItems = withPriorities.slice(0, limit);
 
   return {
-    memories: topItems.map(item => item.memory),
-    priority_scores: topItems.map(item => item.priority),
-    due_dates: topItems.map(item => item.schedule.next_review)
+    memories: topItems.map((item) => item.memory),
+    priority_scores: topItems.map((item) => item.priority),
+    due_dates: topItems.map((item) => item.schedule.next_review),
   };
 }
 
@@ -299,8 +289,8 @@ export function getContextTriggeredMemories(
 ): Array<{ memory: Memory; relevance: number; priority: number }> {
   // Calculate relevance for each memory
   const withRelevance = memories
-    .filter(m => m.embedding !== undefined)
-    .map(memory => {
+    .filter((m) => m.embedding !== undefined)
+    .map((memory) => {
       const relevance = cosineSimilarity(contextEmbedding, memory.embedding!);
       const schedule = createReviewSchedule(memory, config);
       const priority = calculateReviewPriority(memory, schedule);
@@ -313,15 +303,15 @@ export function getContextTriggeredMemories(
       return {
         memory,
         relevance,
-        priority: finalPriority
+        priority: finalPriority,
       };
     })
-    .filter(item => item.relevance > relevanceThreshold);
+    .filter((item) => item.relevance > relevanceThreshold);
 
   // Sort by combined score: relevance (60%) + priority (40%)
   withRelevance.sort((a, b) => {
-    const scoreA = (0.6 * a.relevance) + (0.4 * a.priority);
-    const scoreB = (0.6 * b.relevance) + (0.4 * b.priority);
+    const scoreA = 0.6 * a.relevance + 0.4 * a.priority;
+    const scoreB = 0.6 * b.relevance + 0.4 * b.priority;
     return scoreB - scoreA;
   });
 
@@ -345,7 +335,7 @@ export function testConnectionRecall(
   targetMemory: Memory,
   retrievedMemories: Memory[]
 ): boolean {
-  return retrievedMemories.some(m => m.id === targetMemory.id);
+  return retrievedMemories.some((m) => m.id === targetMemory.id);
 }
 
 /**
@@ -357,10 +347,7 @@ export function testConnectionRecall(
  * @param scenario - New scenario to apply to
  * @returns Application quality score [0, 1]
  */
-export async function testApplicationRecall(
-  memory: Memory,
-  scenario: string
-): Promise<number> {
+export async function testApplicationRecall(memory: Memory, scenario: string): Promise<number> {
   // TODO: Implement with LLM
   // Prompt: "Given this knowledge: {memory.content}, how would you handle: {scenario}"
   // Evaluate if response correctly applies the knowledge
@@ -412,7 +399,7 @@ export async function performSelfTest(
     tested: sample.length,
     successful: 0,
     failed: [] as Memory[],
-    averageConfidence: 0
+    averageConfidence: 0,
   };
 
   let totalConfidence = 0;
@@ -498,7 +485,7 @@ export async function processDailyReviews(
   const results = {
     reviewed: 0,
     strengthened: 0,
-    flagged: 0
+    flagged: 0,
   };
 
   for (const memory of queue.memories) {

@@ -70,7 +70,7 @@ describe('MCP Server Development', () => {
 
         const result = validator.validateToolDefinition(tool);
         expect(result.isValid).toBe(false);
-        expect(result.issues.some(i => i.includes('missing type'))).toBe(true);
+        expect(result.issues.some((i) => i.includes('missing type'))).toBe(true);
       });
 
       it('should fail when required fields not specified', () => {
@@ -101,7 +101,7 @@ describe('MCP Server Development', () => {
 
         const result = validator.validateToolDefinition(tool);
         expect(result.isValid).toBe(false);
-        expect(result.issues.some(i => i.includes('Invalid JSON Schema'))).toBe(true);
+        expect(result.issues.some((i) => i.includes('Invalid JSON Schema'))).toBe(true);
       });
     });
 
@@ -130,7 +130,9 @@ async function handler(params) {
 }`;
 
         const result = validator.validateHandlerErrorHandling(code);
-        expect(result.issues).toContain('Handler throws exception instead of returning error object');
+        expect(result.issues).toContain(
+          'Handler throws exception instead of returning error object'
+        );
         expect(result.severity).toBe('high');
       });
 
@@ -145,7 +147,7 @@ async function handler(params) {
 }`;
 
         const result = validator.validateHandlerErrorHandling(code);
-        expect(result.issues.some(i => i.includes('isError'))).toBe(true);
+        expect(result.issues.some((i) => i.includes('isError'))).toBe(true);
       });
 
       it('should fail when handler has empty catch block', () => {
@@ -295,7 +297,7 @@ function handler(params) {
 
         const result = validator.analyzeSecurityVulnerabilities(code);
         expect(result.isSecure).toBe(false);
-        expect(result.vulnerabilities.some(v => v.type === 'code-injection')).toBe(true);
+        expect(result.vulnerabilities.some((v) => v.type === 'code-injection')).toBe(true);
       });
 
       it('should fail when constructing shell commands from input', () => {
@@ -307,7 +309,7 @@ async function handler(params) {
 
         const result = validator.analyzeSecurityVulnerabilities(code);
         expect(result.isSecure).toBe(false);
-        expect(result.vulnerabilities.some(v => v.severity === 'critical')).toBe(true);
+        expect(result.vulnerabilities.some((v) => v.severity === 'critical')).toBe(true);
       });
 
       it('should fail when using template literals with unsanitized input in commands', () => {
@@ -317,7 +319,7 @@ function runScript(params) {
 }`;
 
         const result = validator.analyzeSecurityVulnerabilities(code);
-        expect(result.vulnerabilities.some(v => v.type === 'command-injection')).toBe(true);
+        expect(result.vulnerabilities.some((v) => v.type === 'command-injection')).toBe(true);
       });
     });
 
@@ -346,7 +348,7 @@ function handler(params) {
 }`;
 
         const result = validator.analyzeSecurityVulnerabilities(code);
-        expect(result.vulnerabilities.some(v => v.type === 'path-traversal')).toBe(true);
+        expect(result.vulnerabilities.some((v) => v.type === 'path-traversal')).toBe(true);
       });
 
       it('should fail when path.join used without validation', () => {
@@ -370,7 +372,7 @@ async function handler(params) {
 
         const result = validator.analyzeSecurityVulnerabilities(code);
         expect(result.isSecure).toBe(false);
-        expect(result.vulnerabilities.some(v => v.severity === 'critical')).toBe(true);
+        expect(result.vulnerabilities.some((v) => v.severity === 'critical')).toBe(true);
       });
     });
 
@@ -621,7 +623,7 @@ process.stdout.write('Status update\\n');
 
       const result = validator.validateStdioDiscipline(code);
       expect(result.isValid).toBe(false);
-      expect(result.violations.some(v => v.includes('stdout'))).toBe(true);
+      expect(result.violations.some((v) => v.includes('stdout'))).toBe(true);
     });
 
     it('should pass when only console.error used', () => {
@@ -653,7 +655,9 @@ function handler(params) {
 
       const result = validator.validateStdioDiscipline(code);
       expect(result.isValid).toBe(true);
-      expect(result.warnings).toContain('Commented console.log found - ensure removed before production');
+      expect(result.warnings).toContain(
+        'Commented console.log found - ensure removed before production'
+      );
     });
   });
 

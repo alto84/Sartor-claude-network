@@ -44,7 +44,7 @@ export class RefinementMemoryBridge {
       limit: 5,
     });
 
-    return results.map(r => JSON.parse(r.memory.content));
+    return results.map((r) => JSON.parse(r.memory.content));
   }
 
   async getTopPatterns(limit = 10): Promise<string[]> {
@@ -53,7 +53,7 @@ export class RefinementMemoryBridge {
       limit,
     });
 
-    return results.flatMap(r => {
+    return results.flatMap((r) => {
       try {
         const data = JSON.parse(r.memory.content);
         return data.improvements || [];
