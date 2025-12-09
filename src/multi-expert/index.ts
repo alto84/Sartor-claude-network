@@ -101,3 +101,27 @@ export {
   createFeedbackLoop,
   collectFeedback,
 } from './feedback-loop';
+
+// Memory Integration
+export {
+  MemoryIntegration,
+  ExpertMemory,
+  ExpertMemoryType,
+  MemoryQuery,
+  MemoryClient,
+  MemoryIntegrationConfig,
+  DEFAULT_MEMORY_INTEGRATION_CONFIG,
+  ExpertPerformance,
+  InMemoryMemoryClient,
+  createTestMemoryIntegration,
+} from './memory-integration';
+
+// Orchestrator
+export {
+  Orchestrator,
+  OrchestratorConfig,
+  DEFAULT_ORCHESTRATOR_CONFIG,
+  OrchestratedResult,
+  createTestOrchestrator,
+  orchestrateTask,
+} from './orchestrator';
