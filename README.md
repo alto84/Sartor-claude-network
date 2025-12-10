@@ -129,6 +129,12 @@ sartor-claude-network/
 - **[Skill Manifest](./src/skills/skill-manifest.ts)** - Six uplifted skills (validation, engineering, orchestration, debugging)
 - **[Skill Types](./src/skills/skill-types.ts)** - TypeScript interfaces for skills architecture
 
+**Mesh Architecture (NEW):**
+- **[Memory Safety](./src/mcp/memory-safety.ts)** - Injection detection, trust levels, audit logging
+- **[WebSocket Sync](./src/mcp/websocket-sync.ts)** - CRDT-based real-time mesh synchronization
+- **[Knowledge Graph](./src/mcp/knowledge-graph.ts)** - Entity relationships, semantic links, graph queries
+- **[Architecture Research](./docs/MESH_ARCHITECTURE_RESEARCH.md)** - Research findings and design proposals
+
 ## Key Features
 
 ### Temporal Awareness
@@ -161,6 +167,30 @@ Memories can be linked through various relationship types:
 - Structural (part of, contains, derived from)
 - Causal (caused by, causes)
 - Procedural (prerequisite for, alternative to)
+
+### Mesh Architecture (Multi-Instance Support)
+
+Real-time synchronization across multiple Claude instances with:
+
+**Safety Layer:**
+- Prompt injection detection with 20+ threat patterns
+- Trust levels: VERIFIED, TRUSTED, UNTRUSTED, QUARANTINED
+- Full audit logging for all memory operations
+- Human oversight hooks for suspicious content review
+
+**CRDT-Based Sync:**
+- G-Counter, PN-Counter for distributed counting
+- LWW-Register for last-writer-wins values
+- OR-Set for observed-remove sets
+- LWW-Map for distributed key-value storage
+- Vector clocks for causal ordering
+
+**Knowledge Graph:**
+- Entity types: MEMORY, CONCEPT, PERSON, PROJECT, etc.
+- Relationship types: RELATED_TO, DERIVED_FROM, DEPENDS_ON, etc.
+- BFS path finding and neighbor queries
+- Semantic similarity detection
+- Full-text search with reverse indexing
 
 ## Memory Types
 
