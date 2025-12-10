@@ -245,7 +245,7 @@ const createMockOrchestrator = (config: OrchestratorConfig = {}): MultiAgentOrch
       const taskIds = await Promise.all(taskDataArray.map((taskData) => this.submitTask(taskData)));
 
       // Execute with proper concurrency limiting (wait for workers)
-      const maxConcurrent = orchestratorConfig.maxParallelTasks || taskIds.length;
+      const maxConcurrent = defaultConfig.maxParallelTasks || taskIds.length;
       let active = 0;
       let taskIndex = 0;
 
@@ -379,6 +379,7 @@ const createMockOrchestrator = (config: OrchestratorConfig = {}): MultiAgentOrch
       task.status = 'pending';
       task.assignedTo = undefined;
       stats.tasksReassigned++;
+      stats.tasksFailed++;
 
       // Try to execute on different worker
       try {

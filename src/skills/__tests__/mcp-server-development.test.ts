@@ -230,7 +230,7 @@ async function handler(params) {
             },
             required: ['values', 'operation'],
           },
-          handler: async (params: any) => ({ result: 0 }),
+          handler: async (params: any) => ({ content: [{ type: 'text' as const, text: '0' }] }),
         };
 
         const result = validator.validateToolDefinition(tool);
@@ -750,9 +750,9 @@ async function toolHandler(params) {
         version: '1.0.0',
         tools: [],
       };
-      const result = validateMCPServer(config, '');
+      const result = validateMCPServer(config);
       expect(result).toBeDefined();
-      expect(result.configValidation).toBeDefined();
+      expect(result.valid).toBeDefined();
     });
   });
 });

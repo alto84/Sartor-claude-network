@@ -247,7 +247,8 @@ export class LWWRegister<T> {
 
   set(value: T, nodeId: string, timestamp?: number): void {
     const ts = timestamp ?? Date.now();
-    if (ts > this.timestamp_ || (ts === this.timestamp_ && nodeId > this.nodeId_)) {
+    // Use >= for nodeId comparison so same node can update at same timestamp
+    if (ts > this.timestamp_ || (ts === this.timestamp_ && nodeId >= this.nodeId_)) {
       this.value_ = value;
       this.timestamp_ = ts;
       this.nodeId_ = nodeId;
@@ -271,6 +272,8 @@ export class LWWRegister<T> {
     const otherTs = other.getTimestamp();
     const otherNodeId = other.getNodeId();
 
+    // Use > for nodeId in merge (not >=) since these are from different sources
+    // On true tie, prefer 'other' only if its nodeId is strictly greater
     if (
       otherTs > this.timestamp_ ||
       (otherTs === this.timestamp_ && otherNodeId > this.nodeId_)

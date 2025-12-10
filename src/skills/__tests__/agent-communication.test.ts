@@ -190,7 +190,7 @@ const createMockCommunicationSystem = (
 
     getStats(): CommunicationStats {
       stats.deadLetterQueueSize = deadLetterQueue.length;
-      return { ...stats };
+      return stats; // Return actual object so tests can modify it
     },
 
     resetCircuitBreaker(): void {
@@ -274,11 +274,11 @@ describe('Agent Communication System', () => {
           payload: { task: 'test' },
         };
 
-        const statsBefore = commSystem.getStats();
+        const sentBefore = commSystem.getStats().sent;
         await commSystem.send(message);
-        const statsAfter = commSystem.getStats();
+        const sentAfter = commSystem.getStats().sent;
 
-        expect(statsAfter.sent).toBe(statsBefore.sent + 1);
+        expect(sentAfter).toBe(sentBefore + 1);
       });
     });
 
@@ -288,7 +288,7 @@ describe('Agent Communication System', () => {
 
         // Mock a slow send operation
         const originalSend = slowCommSystem.send.bind(slowCommSystem);
-        slowCommSystem.send = jest.fn(async (msg) => {
+        slowCommSystem.send = jest.fn(async (msg: Omit<Message, 'id' | 'timestamp'>) => {
           await new Promise((resolve) => setTimeout(resolve, 200));
           return originalSend(msg);
         });
@@ -326,7 +326,7 @@ describe('Agent Communication System', () => {
 
         // Mock send to fail first 2 times
         const originalSend = failingCommSystem.send.bind(failingCommSystem);
-        failingCommSystem.send = jest.fn(async (msg) => {
+        failingCommSystem.send = jest.fn(async (msg: Omit<Message, 'id' | 'timestamp'>) => {
           attemptCount++;
           if (attemptCount < 3) {
             throw new Error('Network error');
@@ -374,7 +374,7 @@ describe('Agent Communication System', () => {
         });
 
         const originalSend = failingCommSystem.send.bind(failingCommSystem);
-        failingCommSystem.send = jest.fn(async (msg) => {
+        failingCommSystem.send = jest.fn(async (msg: Omit<Message, 'id' | 'timestamp'>) => {
           attemptCount++;
           if (attemptCount <= 3) {
             throw new Error('Network error');
@@ -584,7 +584,7 @@ describe('Agent Communication System', () => {
 
         // Mock send to fail for specific target
         const originalSend = failingCommSystem.send.bind(failingCommSystem);
-        failingCommSystem.send = jest.fn(async (msg) => {
+        failingCommSystem.send = jest.fn(async (msg: Omit<Message, 'id' | 'timestamp'>) => {
           if (msg.to === 'failing-agent') {
             throw new Error('Agent unreachable');
           }
@@ -614,7 +614,7 @@ describe('Agent Communication System', () => {
         const failingCommSystem = createMockCommunicationSystem();
 
         const originalSend = failingCommSystem.send.bind(failingCommSystem);
-        failingCommSystem.send = jest.fn(async (msg) => {
+        failingCommSystem.send = jest.fn(async (msg: Omit<Message, 'id' | 'timestamp'>) => {
           if (msg.to === 'agent-2' || msg.to === 'agent-4') {
             throw new Error('Network timeout');
           }
