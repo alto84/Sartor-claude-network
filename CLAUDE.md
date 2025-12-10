@@ -21,12 +21,117 @@ When starting a session in this project:
 ├─────────────────────────────────────────────────────┤
 │  Planner  │  Implementer  │  Auditor  │  Cleaner   │
 ├─────────────────────────────────────────────────────┤
+│              Subagent Coordination                   │
+│   Bootstrap │ Registry │ Messaging │ Distribution  │
+├─────────────────────────────────────────────────────┤
+│              Experience Enhancement                  │
+│   Auto-Discovery │ Relevance │ Intelligence         │
+├─────────────────────────────────────────────────────┤
 │                   Memory System                      │
 │   Hot (<100ms)  │  Warm (<500ms)  │  Cold (<2s)    │
 ├─────────────────────────────────────────────────────┤
 │                 Skills Library                       │
 │  (7 skills with self-auditing + refinement)         │
 └─────────────────────────────────────────────────────┘
+```
+
+## Subagent System
+
+The subagent system provides infrastructure for spawning, managing, and coordinating autonomous agents.
+
+### Modules
+
+- **bootstrap.ts** - Subagent onboarding with capability validation
+- **registry.ts** - Agent discovery, heartbeat monitoring, status tracking
+- **messaging.ts** - Priority-based message queuing with pub/sub topics
+
+### Usage
+
+```typescript
+import {
+  createSubagent,
+  createRegistry,
+  createMessageBus,
+  AgentRole,
+  AgentStatus
+} from './subagent';
+
+// Bootstrap a subagent
+const subagent = await createSubagent({
+  role: AgentRole.IMPLEMENTER,
+  name: 'code-writer',
+  capabilities: ['typescript', 'testing']
+});
+
+// Register and track agents
+const registry = createRegistry();
+registry.registerSubagent(subagent.id, { role: subagent.role });
+registry.heartbeat(subagent.id, AgentStatus.ACTIVE);
+```
+
+## Coordination System
+
+CRDT-based coordination for conflict-free multi-agent collaboration.
+
+### Modules
+
+- **plan-sync.ts** - CRDT-powered plan synchronization with LWW registers
+- **work-distribution.ts** - Optimistic locking task assignment
+- **progress.ts** - Multi-agent progress tracking with milestones
+
+### Usage
+
+```typescript
+import {
+  createPlanSyncService,
+  createDistributor,
+  createProgressTracker
+} from './coordination';
+
+// Create synchronized plan
+const planSync = createPlanSyncService('agent-1');
+const plan = planSync.createPlan('Project', 'Description');
+
+// Distribute work
+const distributor = createDistributor(registry);
+const task = distributor.createTask('Implement feature');
+const claim = distributor.claimTask(task.id, 'agent-1');
+
+// Track progress
+const tracker = createProgressTracker();
+tracker.reportProgress('agent-1', task.id, 50, ProgressStatus.IN_PROGRESS);
+```
+
+## Experience Enhancement
+
+Intelligent context discovery and adaptive learning for subagents.
+
+### Modules
+
+- **auto-discover.ts** - File/code discovery with relevance scoring
+- **relevance.ts** - Multi-signal relevance filtering with usage tracking
+- **intelligence.ts** - Pattern learning and success prediction
+
+### Usage
+
+```typescript
+import {
+  createContextDiscoverer,
+  createRelevanceFilter,
+  createIntelligence
+} from './experience';
+
+// Discover relevant context
+const discoverer = createContextDiscoverer({ rootPath: '/project' });
+const context = await discoverer.discover({ keywords: ['api', 'client'] });
+
+// Filter by relevance
+const filter = createRelevanceFilter({ threshold: 0.5 });
+const ranked = filter.filter(items, signalExtractor);
+
+// Predict task success
+const intelligence = createIntelligence();
+const prediction = intelligence.predict('code_review', { complexity: 0.3 });
 ```
 
 ## Key Commands

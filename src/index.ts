@@ -22,5 +22,14 @@ export { LearningPipeline, createLearningPipeline } from './executive';
 // Integration
 export { RefinementMemoryBridge, createBridge } from './integration';
 
+// Subagent System
+export * from './subagent';
+
+// Coordination System
+export * from './coordination';
+
+// Experience Enhancement
+export * from './experience';
+
 // Version
 export const VERSION = '1.0.0';
