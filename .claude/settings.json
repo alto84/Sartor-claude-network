@@ -56,18 +56,18 @@
         "blocking": true
       },
       "Edit": {
-        "script": "/home/alton/Sartor-claude-network/.claude/hooks/delegation-reminder.sh",
+        "script": "/home/alton/.claude/hooks/delegation-enforcer.sh",
         "args": ["Edit", "${file_path}"],
-        "description": "Remind orchestrator to delegate before substantial edits",
+        "description": "BLOCK orchestrator from editing implementation files - must delegate",
         "enabled": true,
-        "blocking": false
+        "blocking": true
       },
       "Write": {
-        "script": "/home/alton/Sartor-claude-network/.claude/hooks/delegation-reminder.sh",
+        "script": "/home/alton/.claude/hooks/delegation-enforcer.sh",
         "args": ["Write", "${file_path}"],
-        "description": "Remind orchestrator to delegate before substantial writes",
+        "description": "BLOCK orchestrator from writing implementation files - must delegate",
         "enabled": true,
-        "blocking": false
+        "blocking": true
       },
       "Grep": {
         "script": "/home/alton/Sartor-claude-network/.claude/hooks/delegation-reminder.sh",

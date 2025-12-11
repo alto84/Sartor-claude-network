@@ -124,13 +124,79 @@ describe('TokenBucketRateLimiter', () => {
   });
 
   describe('Priority Queue', () => {
-    // Note: Priority ordering test is timing-sensitive and skipped.
-    // The priority queue implementation is structurally correct - requests are
-    // placed in priority-indexed arrays and processQueue iterates highest first.
-    test.skip('processes higher priority requests first', async () => {
-      // Test skipped: timing-sensitive, requires precise token availability control
-      expect(true).toBe(true);
-    });
+    test('processes higher priority requests first', async () => {
+      // Create a paused limiter and fill it with a low-priority request first
+      const limiter = new TokenBucketRateLimiter({
+        tokensPerSecond: 100,
+        maxBurst: 50,
+        priorityLevels: 5,
+      });
+
+      // Pause to prevent any processing
+      limiter.pause();
+
+      const executionOrder: number[] = [];
+
+      // Submit all requests while paused - they will all queue
+      const lowPromise = limiter.submit({
+        id: 'low',
+        priority: 0,
+        estimatedTokens: 20,
+        callback: async () => {
+          executionOrder.push(0);
+          return 'low';
+        },
+      });
+
+      const highPromise = limiter.submit({
+        id: 'high',
+        priority: 4,
+        estimatedTokens: 20,
+        callback: async () => {
+          executionOrder.push(4);
+          return 'high';
+        },
+      });
+
+      const mediumPromise = limiter.submit({
+        id: 'medium',
+        priority: 2,
+        estimatedTokens: 20,
+        callback: async () => {
+          executionOrder.push(2);
+          return 'medium';
+        },
+      });
+
+      // Small delay to ensure all are queued
+      await new Promise((resolve) => setTimeout(resolve, 50));
+
+      // Verify all are queued
+      expect(limiter.getQueueLength()).toBe(3);
+
+      // Resume processing - now they will execute in priority order
+      limiter.resume();
+
+      await Promise.all([lowPromise, highPromise, mediumPromise]);
+
+      // Verify all executed
+      expect(executionOrder.length).toBe(3);
+
+      // Priority order: higher priority should come before lower priority
+      const highPos = executionOrder.indexOf(4);
+      const mediumPos = executionOrder.indexOf(2);
+      const lowPos = executionOrder.indexOf(0);
+
+      // High priority (4) should execute before medium (2) and low (0)
+      expect(highPos).toBeLessThan(mediumPos);
+      expect(highPos).toBeLessThan(lowPos);
+
+      // Medium priority (2) should execute before low (0)
+      expect(mediumPos).toBeLessThan(lowPos);
+
+      // Clean up to stop background timers
+      limiter.pause();
+    }, 10000);
 
     test('clamps priority to max level', async () => {
       const limiter = new TokenBucketRateLimiter({ priorityLevels: 3 });

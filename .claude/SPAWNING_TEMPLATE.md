@@ -2,6 +2,25 @@
 
 Use this template when delegating to subagents via the Task tool.
 
+## CRITICAL: Subagent Exemption from Delegation Enforcement
+
+**BEFORE doing ANY Edit/Write operations, subagents MUST set their role:**
+
+```bash
+export CLAUDE_AGENT_ROLE=[PLANNER|IMPLEMENTER|AUDITOR|CLEANER]
+```
+
+This environment variable exempts subagents from the orchestrator's delegation enforcement hooks, allowing them to edit src/ files directly. Without this variable set, the preToolUse hooks will BLOCK all Edit/Write operations on implementation files.
+
+**Implementation Pattern:**
+1. First action in your session: `export CLAUDE_AGENT_ROLE=<your-role>`
+2. Verify it's set: `echo $CLAUDE_AGENT_ROLE`
+3. Then proceed with file operations
+
+The delegation enforcer script (`~/.claude/hooks/delegation-enforcer.sh`) checks for this variable and exits with code 0 (allow) if set, or code 2 (block) if not set.
+
+---
+
 ## MANDATORY: Full System Context for ALL Subagents
 
 **Every subagent MUST understand the whole system, not just their narrow task.**
@@ -77,6 +96,12 @@ Store your findings for future agents:
 **Scope:** [What files/directories they can touch]
 **Phase:** [Current phase from MASTER_PLAN.md]
 
+## IMPORTANT: Agent Role Identification
+You are a SUBAGENT. Set this environment variable in your context:
+- CLAUDE_AGENT_ROLE=[PLANNER|IMPLEMENTER|AUDITOR|CLEANER]
+
+This exempts you from orchestrator delegation enforcement, allowing you to edit implementation files.
+
 ## Context
 [Brief context about the current state]
 
@@ -102,6 +127,12 @@ Store your findings for future agents:
 **Role: IMPLEMENTER**
 **Scope:** src/memory/ only
 **Phase:** Phase 5 - Integration
+
+## IMPORTANT: Agent Role Identification
+You are a SUBAGENT. Set this environment variable in your context:
+- CLAUDE_AGENT_ROLE=IMPLEMENTER
+
+This exempts you from orchestrator delegation enforcement, allowing you to edit implementation files.
 
 ## Context
 We're adding a new method to MemorySystem for batch operations.
@@ -129,6 +160,12 @@ Add a `batchCreate` method to src/memory/memory-system.ts that creates multiple 
 **Scope:** Full codebase (read-only)
 **Phase:** Phase 5 - Integration
 
+## IMPORTANT: Agent Role Identification
+You are a SUBAGENT. Set this environment variable in your context:
+- CLAUDE_AGENT_ROLE=AUDITOR
+
+This exempts you from orchestrator delegation enforcement (though auditors shouldn't edit anyway).
+
 ## Context
 Phase 5 is complete. Need validation.
 
@@ -151,6 +188,12 @@ Audit the executive module for completeness and correctness.
 **Role: CLEANER**
 **Scope:** src/skills/ (delete unreferenced files only)
 **Phase:** Phase 5 - Integration (Completed)
+
+## IMPORTANT: Agent Role Identification
+You are a SUBAGENT. Set this environment variable in your context:
+- CLAUDE_AGENT_ROLE=CLEANER
+
+This exempts you from orchestrator delegation enforcement, allowing you to edit implementation files.
 
 ## Context
 The src/skills/ directory has accumulated unused files and dead code over development.
