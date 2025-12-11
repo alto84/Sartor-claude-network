@@ -1,0 +1,200 @@
+{
+  "sync": {
+    "enabled": true,
+    "mode": "automatic",
+    "intervals": {
+      "hotTierCleanup": "0 * * * *",
+      "warmTierEvaluation": "0 */6 * * *",
+      "coldConsolidation": "0 2 * * *",
+      "embeddingRegeneration": "0 3 * * 0",
+      "archival": "0 3 1 * *"
+    }
+  },
+
+  "promotion": {
+    "coldToWarm": {
+      "enabled": true,
+      "triggers": {
+        "userAccess": true,
+        "searchHit": true,
+        "manualRequest": true,
+        "relatedAccess": true
+      },
+      "batchSize": 10,
+      "concurrency": 3
+    },
+    "warmToHot": {
+      "enabled": true,
+      "scoreThreshold": 7.0,
+      "triggers": {
+        "highAccessFrequency": {
+          "enabled": true,
+          "threshold": 10,
+          "timeWindow": "24h"
+        },
+        "sessionActive": {
+          "enabled": true
+        },
+        "userPinned": {
+          "enabled": true,
+          "priority": "high"
+        },
+        "contextRelevance": {
+          "enabled": true,
+          "threshold": 0.8
+        }
+      },
+      "limits": {
+        "maxPerUser": 50,
+        "maxTotal": 1000
+      }
+    }
+  },
+
+  "demotion": {
+    "hotToWarm": {
+      "enabled": true,
+      "scoreThreshold": 3.0,
+      "triggers": {
+        "ttlExpired": {
+          "enabled": true,
+          "priority": "high"
+        },
+        "sizeLimitReached": {
+          "enabled": true,
+          "threshold": 0.9,
+          "batchSize": 10
+        },
+        "sessionEnded": {
+          "enabled": true,
+          "gracePeriod": "1h"
+        },
+        "lowAccessFrequency": {
+          "enabled": true,
+          "threshold": 5,
+          "timeWindow": "24h"
+        }
+      }
+    },
+    "warmToCold": {
+      "enabled": true,
+      "scoreThreshold": 7.0,
+      "triggers": {
+        "lowAccessFrequency": {
+          "enabled": true,
+          "threshold": 5,
+          "timeWindow": "30d"
+        },
+        "ageBased": {
+          "enabled": true,
+          "threshold": "90d"
+        },
+        "costThreshold": {
+          "enabled": true,
+          "maxMonthlyCost": 100
+        },
+        "manualArchive": {
+          "enabled": true
+        }
+      },
+      "archivalPolicy": {
+        "consolidationDay": "daily",
+        "verificationPeriod": "7d",
+        "keepInFirestore": true,
+        "deleteAfterArchive": false
+      }
+    }
+  },
+
+  "conflictResolution": {
+    "strategy": "last-write-wins",
+    "versionTracking": true,
+    "manualReviewQueue": {
+      "enabled": true,
+      "priorityLevels": 10,
+      "autoResolveAfter": "7d"
+    },
+    "mergePolicies": {
+      "metadata": "merge",
+      "content": "latest",
+      "tags": "union",
+      "accessCount": "max"
+    }
+  },
+
+  "background": {
+    "queue": {
+      "provider": "cloud-tasks",
+      "maxConcurrent": 10,
+      "maxRetries": 3,
+      "retryDelay": "30s",
+      "timeout": "300s"
+    },
+    "jobs": [
+      {
+        "name": "hot-tier-cleanup",
+        "schedule": "0 * * * *",
+        "handler": "services/sync/hot-to-warm-demotion.js",
+        "method": "cleanupExpired",
+        "enabled": true
+      },
+      {
+        "name": "enforce-size-limit",
+        "schedule": "30 * * * *",
+        "handler": "services/sync/hot-to-warm-demotion.js",
+        "method": "enforceSizeLimit",
+        "enabled": true
+      },
+      {
+        "name": "warm-tier-evaluation",
+        "schedule": "0 */6 * * *",
+        "handler": "services/sync/scheduler.js",
+        "method": "warmTierEvaluation",
+        "enabled": true
+      },
+      {
+        "name": "embedding-update",
+        "schedule": "0 3 * * 0",
+        "handler": "services/embedding-service.js",
+        "method": "updateStaleEmbeddings",
+        "enabled": true
+      }
+    ]
+  },
+
+  "monitoring": {
+    "enabled": true,
+    "metrics": {
+      "tierSizes": true,
+      "promotionRates": true,
+      "demotionRates": true,
+      "syncLatencies": true,
+      "conflictRates": true,
+      "queueDepth": true,
+      "costs": true
+    },
+    "alerts": {
+      "queueDepthThreshold": 100,
+      "syncLatencyThreshold": 5000,
+      "conflictRateThreshold": 0.05,
+      "costThresholdDaily": 10
+    }
+  },
+
+  "performance": {
+    "caching": {
+      "enabled": true,
+      "ttl": 300,
+      "maxSize": 1000
+    },
+    "batching": {
+      "enabled": true,
+      "batchSize": 50,
+      "batchDelay": 100
+    },
+    "parallelization": {
+      "enabled": true,
+      "maxConcurrent": 5
+    }
+  }
+}

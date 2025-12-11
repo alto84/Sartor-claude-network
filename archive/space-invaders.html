@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Invaders</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Courier New', monospace;
+            color: #0f0;
+        }
+
+        .game-container {
+            text-align: center;
+        }
+
+        canvas {
+            border: 2px solid #0f0;
+            background: #000;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .controls {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #0f0;
+        }
+
+        .game-over {
+            font-size: 48px;
+            color: #f00;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .game-over.show {
+            display: block;
+        }
+
+        button {
+            background: #0f0;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #0d0;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="info">
+            <div>Score: <span id="score">0</span></div>
+            <div>Lives: <span id="lives">3</span></div>
+            <div>Level: <span id="level">1</span></div>
+        </div>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div class="game-over" id="gameOver">GAME OVER</div>
+        <div class="controls">
+            <p>← → Arrow Keys: Move | SPACE: Shoot</p>
+            <button id="startBtn">Start Game</button>
+            <button id="restartBtn" style="display:none;">Restart</button>
+        </div>
+    </div>
+
+    <script src="space-invaders.js"></script>
+</body>
+</html>

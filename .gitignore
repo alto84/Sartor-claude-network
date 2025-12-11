@@ -1,0 +1,18 @@
+/dist/
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Firebase credentials (NEVER commit these!)
+config/service-account.json
+config/service-account-*.json
+
+# Local data storage
+data/
+*.db
+*.sqlite
+config/firebase-credentials.json
+config/firebase-credentials.json

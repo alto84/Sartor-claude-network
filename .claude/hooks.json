@@ -1,0 +1,446 @@
+{
+  "$schema": "https://claude.ai/schemas/hooks-v1.json",
+  "version": "1.0.0",
+  "description": "Quality gates for code generation enforcing evidence-based practices",
+
+  "pre_commit": {
+    "enabled": true,
+    "description": "Validates code quality before allowing commits",
+    "gates": [
+      {
+        "id": "no-fabricated-metrics",
+        "name": "No Fabricated Metrics",
+        "severity": "error",
+        "description": "Ensures all quantitative claims have verifiable sources",
+        "check": "metrics-validation",
+        "config": {
+          "patterns_to_flag": [
+            "(?i)(\\d+)%\\s+(coverage|complete|done|tested)",
+            "(?i)score:?\\s*\\d+/\\d+",
+            "(?i)quality:?\\s*(excellent|perfect|optimal)",
+            "(?i)(high|low|medium)\\s+confidence",
+            "(?i)approximately\\s+\\d+"
+          ],
+          "requires_evidence": [
+            "test_output",
+            "measurement_data",
+            "calculation_methodology",
+            "timestamp_of_measurement"
+          ]
+        }
+      },
+      {
+        "id": "evidence-based-claims",
+        "name": "Evidence-Based Claims Only",
+        "severity": "error",
+        "description": "All technical claims must be backed by verifiable evidence",
+        "check": "claims-validation",
+        "config": {
+          "forbidden_phrases": [
+            "should work",
+            "probably works",
+            "appears to work",
+            "seems correct",
+            "mostly complete",
+            "almost done",
+            "basically finished"
+          ],
+          "required_replacements": {
+            "should work": "tested to work under conditions X",
+            "probably works": "works in tested scenarios A, B, C; untested for D, E",
+            "appears to work": "passes tests X, Y, Z",
+            "mostly complete": "implemented X/Y features, remaining: Z",
+            "high quality": "follows standards A, B; passes lint; complexity score N"
+          }
+        }
+      },
+      {
+        "id": "error-handling-required",
+        "name": "Error Handling Required",
+        "severity": "error",
+        "description": "All new functions must include error handling",
+        "check": "error-handling-coverage",
+        "config": {
+          "languages": {
+            "typescript": {
+              "requires": ["try-catch", "error-types", "error-propagation"],
+              "patterns": {
+                "async_functions": "must have try-catch or .catch()",
+                "api_calls": "must handle network errors",
+                "file_operations": "must handle file errors",
+                "database_operations": "must handle connection/query errors"
+              }
+            },
+            "python": {
+              "requires": ["try-except", "specific-exceptions", "error-logging"],
+              "patterns": {
+                "async_functions": "must have try-except",
+                "api_calls": "must handle requests.exceptions",
+                "file_operations": "must handle IOError/OSError"
+              }
+            }
+          },
+          "minimum_coverage": 0.95,
+          "allow_exceptions": ["test files", "example code"]
+        }
+      },
+      {
+        "id": "test-coverage-validation",
+        "name": "Test Coverage Validation",
+        "severity": "warning",
+        "description": "New code must have corresponding tests",
+        "check": "test-coverage",
+        "config": {
+          "minimum_line_coverage": 0.8,
+          "minimum_branch_coverage": 0.7,
+          "require_integration_tests": true,
+          "require_unit_tests": true,
+          "measurement_required": true,
+          "report_format": "Must include: tool used, timestamp, exact percentage, what was NOT tested"
+        }
+      },
+      {
+        "id": "completion-status-accuracy",
+        "name": "Completion Status Accuracy",
+        "severity": "error",
+        "description": "Implementation status must distinguish implemented/tested/integrated/validated",
+        "check": "completion-tracking",
+        "config": {
+          "status_levels": {
+            "implemented": "Code exists and compiles/runs",
+            "tested": "Code passes defined unit tests",
+            "integrated": "Code works with other components",
+            "validated": "Code meets requirements in realistic conditions",
+            "complete": "All four stages + documented + deployed"
+          },
+          "forbidden_shortcuts": [
+            "claiming 'complete' when only 'implemented'",
+            "claiming 'tested' without test output",
+            "claiming 'validated' without validation evidence"
+          ],
+          "required_documentation": [
+            "What status level has been achieved",
+            "Evidence for that status (test output, integration results, etc.)",
+            "What remains to reach next level"
+          ]
+        }
+      },
+      {
+        "id": "documentation-standards",
+        "name": "Documentation Standards",
+        "severity": "warning",
+        "description": "New code must include proper documentation",
+        "check": "documentation-coverage",
+        "config": {
+          "required_for": ["public functions", "classes", "modules", "APIs"],
+          "must_include": [
+            "Purpose/intent of the code",
+            "Parameters and their types",
+            "Return values and types",
+            "Error conditions and exceptions",
+            "Example usage",
+            "Known limitations or edge cases"
+          ],
+          "forbidden_patterns": [
+            "TODO without ticket reference",
+            "FIXME without description",
+            "Magic numbers without explanation",
+            "Commented-out code"
+          ]
+        }
+      },
+      {
+        "id": "no-citation-fabrication",
+        "name": "No Citation Fabrication",
+        "severity": "error",
+        "description": "All citations must be verifiable (no fake PMIDs, DOIs, URLs)",
+        "check": "citation-validation",
+        "config": {
+          "validate_identifiers": true,
+          "identifier_types": ["PMID", "DOI", "arXiv", "URL"],
+          "require_accessibility_check": true,
+          "forbidden": [
+            "Example citations",
+            "Placeholder citations",
+            "Citations with suspicious patterns (e.g., 'PMID: 12345678')"
+          ],
+          "validation_tools": ["crossref", "pubmed-api", "doi-checker"]
+        }
+      }
+    ]
+  },
+
+  "user_prompt_submit": {
+    "enabled": true,
+    "description": "Checks to perform when user submits a prompt requesting code",
+    "gates": [
+      {
+        "id": "intent-clarification",
+        "name": "Intent Clarification",
+        "severity": "info",
+        "description": "Ensure clear understanding of desired outcome before generating code",
+        "check": "intent-extraction",
+        "config": {
+          "required_clarity": {
+            "what": "What specific outcome is needed?",
+            "why": "Why does this matter / what problem does it solve?",
+            "success_criteria": "How will we know if this succeeded?",
+            "constraints": "What are the non-negotiable requirements?"
+          },
+          "ask_before_proceeding_if_unclear": true,
+          "questions_to_ask": [
+            "What's the real problem we're solving? (vs stated request)",
+            "What could go wrong with this approach?",
+            "How will this integrate with existing code?",
+            "What scale/performance requirements exist?",
+            "What error conditions must be handled?"
+          ]
+        }
+      },
+      {
+        "id": "scope-boundary-check",
+        "name": "Scope Boundary Check",
+        "severity": "info",
+        "description": "Define clear scope boundaries before implementation",
+        "check": "scope-definition",
+        "config": {
+          "must_define": {
+            "in_scope": "What features/behaviors ARE included",
+            "out_of_scope": "What features/behaviors are NOT included",
+            "assumptions": "What are we assuming?",
+            "unknowns": "What don't we know yet?"
+          },
+          "prefer_minimal_scope": true,
+          "warn_on_scope_creep": true
+        }
+      },
+      {
+        "id": "evidence-availability",
+        "name": "Evidence Availability Check",
+        "severity": "warning",
+        "description": "Verify we have access to evidence needed for claims",
+        "check": "evidence-check",
+        "config": {
+          "if_claiming_performance": "Require access to benchmarking tools",
+          "if_claiming_quality": "Require access to linting/analysis tools",
+          "if_claiming_coverage": "Require access to coverage measurement tools",
+          "if_making_comparisons": "Require baseline measurements",
+          "allow_estimates_if": "Clearly labeled as estimates with methodology"
+        }
+      },
+      {
+        "id": "anti-pattern-detection",
+        "name": "Anti-Pattern Detection in Request",
+        "severity": "warning",
+        "description": "Detect if user request contains problematic patterns",
+        "check": "anti-pattern-scan",
+        "config": {
+          "flag_if_requesting": {
+            "score_without_rubric": "Request to generate quality/performance scores without defined rubric",
+            "metrics_without_measurement": "Request for metrics without access to measurement tools",
+            "completion_estimate_without_enumeration": "Request for % complete without enumerable checklist",
+            "fabricated_examples": "Request to create example citations/data/sources"
+          },
+          "suggest_alternatives": true
+        }
+      }
+    ]
+  },
+
+  "post_tool_use": {
+    "enabled": true,
+    "description": "Validates generated code before presenting to user",
+    "gates": [
+      {
+        "id": "output-evidence-validation",
+        "name": "Output Evidence Validation",
+        "severity": "error",
+        "description": "Validate all quantitative claims in generated output",
+        "check": "output-metrics-check",
+        "config": {
+          "scan_for_metrics": true,
+          "metrics_must_include": [
+            "Measurement methodology (what tool, what command)",
+            "Timestamp of measurement",
+            "Exact values (not rounded to look better)",
+            "Conditions under which measured",
+            "What was NOT measured/tested"
+          ],
+          "flag_suspicious_patterns": [
+            "Round numbers (100%, 0%, exactly 50%)",
+            "Metrics without timestamps",
+            "Percentages without denominators",
+            "Scores without rubric reference",
+            "Improvement claims without baseline"
+          ]
+        }
+      },
+      {
+        "id": "language-precision-check",
+        "name": "Language Precision Check",
+        "severity": "warning",
+        "description": "Ensure precise language in technical claims",
+        "check": "language-audit",
+        "config": {
+          "flag_superlatives": {
+            "excellent": "Replace with specific observations",
+            "perfect": "Replace with measured attributes",
+            "optimal": "Replace with comparison data",
+            "best": "Replace with criteria and evaluation",
+            "production-ready": "Replace with specific checklist status"
+          },
+          "flag_vague_quantifiers": {
+            "mostly": "Replace with exact percentage",
+            "approximately": "Replace with range or error margin",
+            "about": "Replace with specific number",
+            "roughly": "Replace with precision bounds",
+            "almost": "Replace with exact measurement"
+          },
+          "require_precision": true
+        }
+      },
+      {
+        "id": "uncertainty-documentation",
+        "name": "Uncertainty Documentation",
+        "severity": "warning",
+        "description": "Ensure unknowns and limitations are documented",
+        "check": "uncertainty-check",
+        "config": {
+          "every_output_must_include": {
+            "limitations_section": "What are the known limitations?",
+            "untested_section": "What hasn't been tested?",
+            "assumptions_section": "What assumptions were made?",
+            "confidence_level": "How confident are we in this solution?"
+          },
+          "flag_if_missing": [
+            "No limitations mentioned",
+            "No 'I don't know' statements",
+            "100% confidence claims",
+            "No edge cases identified"
+          ],
+          "healthy_signs": [
+            "Explicit 'unknown' statements",
+            "Confidence qualifiers",
+            "Edge case enumeration",
+            "Alternative approaches mentioned"
+          ]
+        }
+      },
+      {
+        "id": "implementation-vs-completion",
+        "name": "Implementation vs Completion Distinction",
+        "severity": "error",
+        "description": "Ensure we don't claim completion when only implemented",
+        "check": "status-accuracy",
+        "config": {
+          "check_for_overclaims": {
+            "implemented_but_claiming_complete": "Code exists but not tested/integrated/validated",
+            "tested_but_claiming_validated": "Unit tests pass but not integration tested",
+            "works_locally_but_claiming_production_ready": "Works on dev machine but not deployed"
+          },
+          "require_explicit_status": true,
+          "status_must_match_evidence": true
+        }
+      },
+      {
+        "id": "error-handling-presence",
+        "name": "Error Handling Presence Check",
+        "severity": "error",
+        "description": "Verify generated code includes proper error handling",
+        "check": "error-handling-audit",
+        "config": {
+          "scan_generated_code": true,
+          "verify_present": {
+            "try_catch_blocks": "For async operations and external calls",
+            "error_types": "Specific error types, not generic catch-all",
+            "error_propagation": "Errors bubble up appropriately",
+            "error_logging": "Errors are logged with context",
+            "graceful_degradation": "Failures don't crash system"
+          },
+          "failure_modes_documented": true
+        }
+      },
+      {
+        "id": "test-generation-validation",
+        "name": "Test Generation Validation",
+        "severity": "error",
+        "description": "If tests were generated, validate they actually test the code",
+        "check": "test-quality",
+        "config": {
+          "tests_must_not": [
+            "Always pass (no real assertions)",
+            "Test implementation details (instead of behavior)",
+            "Have unclear assertions",
+            "Lack error case testing"
+          ],
+          "tests_must": [
+            "Test specified behavior",
+            "Include failure cases",
+            "Be runnable (not pseudo-code)",
+            "Have clear assertion messages"
+          ],
+          "require_test_execution": true,
+          "flag_if_no_tests_generated": "When new functionality added"
+        }
+      },
+      {
+        "id": "citation-verification",
+        "name": "Citation Verification",
+        "severity": "error",
+        "description": "If output includes citations, verify they're real",
+        "check": "citation-authenticity",
+        "config": {
+          "auto_verify": true,
+          "verification_methods": {
+            "PMID": "Query PubMed API",
+            "DOI": "Query CrossRef API",
+            "URL": "HTTP HEAD request to verify existence",
+            "arXiv": "Query arXiv API"
+          },
+          "on_verification_failure": "error",
+          "allow_unverified_if": "Explicitly marked as unverified with reason"
+        }
+      }
+    ]
+  },
+
+  "quality_metrics": {
+    "description": "How to measure if hooks are working",
+    "track": {
+      "hook_trigger_rate": "How often does each hook trigger?",
+      "false_positive_rate": "How often are hooks triggered incorrectly?",
+      "issue_prevention_count": "How many issues were caught before commit?",
+      "time_overhead": "How much time do hooks add to workflow?"
+    },
+    "thresholds": {
+      "acceptable_overhead_ms": 5000,
+      "target_issue_prevention_rate": 0.95,
+      "acceptable_false_positive_rate": 0.05
+    }
+  },
+
+  "hook_implementation": {
+    "description": "How these hooks are executed",
+    "execution_model": "claude-validates-before-action",
+    "validation_sequence": [
+      "1. User submits prompt → user_prompt_submit hooks run",
+      "2. Claude generates code → internal quality check",
+      "3. Before presenting to user → post_tool_use hooks run",
+      "4. Before git commit → pre_commit hooks run"
+    ],
+    "override_mechanism": {
+      "allowed": true,
+      "requires": "explicit user approval with understanding of risk",
+      "logged": true
+    }
+  },
+
+  "meta_principles": {
+    "truth_over_speed": "Better to acknowledge gaps than fabricate evidence",
+    "measurement_over_opinion": "Claims require data, not just assessment",
+    "precision_over_approximation": "Exact numbers with error bars, not rounded estimates",
+    "uncertainty_is_honest": "I don't know is a valid answer",
+    "evidence_hierarchy": "Empirical > peer-reviewed > expert opinion > inference",
+    "implementation_ne_completion": "Working code is one checkpoint, not the finish line"
+  }
+}

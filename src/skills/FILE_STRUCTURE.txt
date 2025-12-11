@@ -1,0 +1,177 @@
+Skill Runtime System - File Structure
+=====================================
+
+/home/user/Sartor-claude-network/src/skills/
+│
+├── Core Implementation (3 files, ~34 KB)
+│   ├── types.ts                    (1.9 KB)  - Type definitions
+│   ├── skill-runtime.ts           (11 KB)   - Runtime loader/executor
+│   └── skill-manifest.ts          (21 KB)   - Skill definitions
+│
+├── Module Interface (2 files, ~4 KB)
+│   ├── index.ts                   (1.1 KB)  - Public exports
+│   └── example.ts                 (2.8 KB)  - Usage examples
+│
+└── Documentation (3 files, ~21 KB)
+    ├── README.md                  (6.1 KB)  - User guide
+    ├── IMPLEMENTATION.md          (10 KB)   - Architecture details
+    └── QUICK_START.md            (5.3 KB)  - Quick reference
+
+Total: 8 files, ~59 KB
+
+
+Dependency Graph
+================
+
+                    ┌──────────────────┐
+                    │   index.ts       │
+                    │  (Entry Point)   │
+                    └────────┬─────────┘
+                             │
+           ┌─────────────────┼─────────────────┐
+           │                 │                 │
+           ▼                 ▼                 ▼
+    ┌──────────┐    ┌───────────────┐   ┌──────────┐
+    │ types.ts │◄───│ skill-runtime │   │ skill-   │
+    │          │    │    .ts        │◄──│ manifest │
+    │          │    │               │   │  .ts     │
+    └──────────┘    └───────┬───────┘   └────┬─────┘
+         ▲                  │                 │
+         │                  │                 │
+         └──────────────────┴─────────────────┘
+                            │
+                            ▼
+                    ┌──────────────┐
+                    │ example.ts   │
+                    │  (Demo)      │
+                    └──────────────┘
+
+
+External Dependencies
+=====================
+
+skill-types.ts (Root level)
+├── SkillManifest
+├── SkillSummary
+├── SkillInstructions
+├── SkillTier
+├── SkillStatus
+├── SkillCategory
+└── ... (50+ types)
+
+SKILL_LOADING.md (Root level)
+└── Three-level loading protocol specification
+
+
+Component Responsibilities
+===========================
+
+types.ts
+├── Re-exports from skill-types.ts
+├── SkillResult interface
+├── SkillRuntimeStatus interface
+└── Configuration types
+
+skill-runtime.ts (410 lines)
+├── SkillRuntime class
+│   ├── Skill registration
+│   ├── Level 1-3 loading
+│   ├── Execution engine
+│   ├── Dependency resolution
+│   ├── Metrics tracking
+│   └── Error handling
+└── Private helper methods
+
+skill-manifest.ts (752 lines)
+├── EVIDENCE_BASED_VALIDATION
+│   ├── Level 1: Summary (48 tokens)
+│   ├── Level 2: Instructions (520 tokens)
+│   └── Level 3: Resources (3 definitions)
+├── EVIDENCE_BASED_ENGINEERING
+│   ├── Level 1: Summary (46 tokens)
+│   ├── Level 2: Instructions (510 tokens)
+│   └── Level 3: Resources (3 definitions)
+└── Helper functions
+    ├── getSkillManifest()
+    └── getAllSkillSummaries()
+
+index.ts
+└── Public API exports
+    ├── SkillRuntime
+    ├── Skill manifests
+    └── Types
+
+example.ts
+└── Working demonstrations
+    ├── Runtime initialization
+    ├── Skill registration
+    ├── Validation example
+    └── Engineering example
+
+
+Data Flow
+=========
+
+1. Import & Initialize
+   index.ts → SkillRuntime.initialize()
+
+2. Register Skills (Level 1: ~94 tokens total)
+   SKILL_MANIFESTS → runtime.registerSkill()
+   → Summaries stored in memory
+
+3. Execute Skill (Level 2: ~520 tokens on-demand)
+   User input → runtime.executeSkill()
+   → Load instructions if needed
+   → Validate input
+   → Invoke skill logic
+   → Return SkillResult
+
+4. Load Resources (Level 3: Lazy)
+   Skill execution → Load resources as needed
+   → Stream from storage
+   → Cache temporarily
+
+
+Token Budget Analysis
+=====================
+
+ALWAYS LOADED (Level 1):
+  Evidence-Based Validation:    48 tokens
+  Evidence-Based Engineering:   46 tokens
+  ──────────────────────────────────────
+  Total:                        94 tokens  ✓
+
+ON-DEMAND (Level 2):
+  Per skill average:           ~515 tokens
+  Both loaded:               1,030 tokens  ✓
+  
+LAZY (Level 3):
+  Not counted in token budget
+  Loaded during execution only
+
+
+Quality Metrics
+===============
+
+Lines of Code:        1,631
+Files:                    8
+Documentation:      ~21 KB
+Code Coverage:     Ready for tests
+Type Safety:       100% TypeScript
+Error Handling:    Comprehensive
+Performance:       Metrics built-in
+Extensibility:     Easy to add skills
+
+
+Integration Points
+==================
+
+Current:
+├── /skill-types.ts      (Type definitions)
+└── /SKILL_LOADING.md    (Architecture spec)
+
+Future:
+├── Memory System        (Hot/Warm/Cold tiers)
+├── Executive Claude     (Orchestration layer)
+├── Trigger Matcher      (Auto skill selection)
+└── Resource Loader      (GitHub integration)

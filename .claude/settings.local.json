@@ -1,0 +1,11 @@
+{
+  "model": "claude-opus-4-5-20251101",
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "cat .claude/AGENT_INIT.md 2>/dev/null || echo 'No init file'"
+      }
+    ]
+  }
+}
