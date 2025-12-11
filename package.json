@@ -10,6 +10,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:memory-system": "ts-node example-usage.ts",
+    "test:firestore": "ts-node src/mcp/test-firestore.ts",
+    "test:firebase-backends": "ts-node src/mcp/check-firebase-backends.ts",
     "build": "tsc",
     "benchmark": "ts-node scripts/benchmark.ts",
     "demo": "ts-node scripts/demonstrate-self-improvement.ts",

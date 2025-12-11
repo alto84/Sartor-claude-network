@@ -177,6 +177,77 @@ Clean up the src/skills/ directory:
 - Create a list of deleted files in your response
 ```
 
+## Subagent Output Format (REQUIRED)
+
+**ALL subagents MUST use this format when reporting back to the orchestrator.**
+
+When completing your task, structure your response as:
+
+```markdown
+### Status
+[SUCCESS | BLOCKED | FAILED]
+
+### Summary
+[2-3 sentence summary of what was done]
+
+### Findings
+[Detailed findings, evidence, or deliverables]
+
+### Memory Candidates
+[Any findings that should be persisted to Memory MCP - orchestrator will store these]
+- Content: [what to store]
+- Type: [semantic|procedural|episodic]
+- Importance: [0.0-1.0]
+- Tags: [relevant tags]
+
+### Blockers (if any)
+[What blocked progress, what's needed to unblock]
+
+### Recommendations
+[Next steps, follow-up tasks suggested]
+```
+
+**Status Definitions:**
+- **SUCCESS**: Task completed as specified, all deliverables met
+- **BLOCKED**: Cannot proceed without external input/decision/resource
+- **FAILED**: Attempted but could not complete (include why in Blockers)
+
+**Memory Candidates Guidelines:**
+- Only include findings worth persisting across sessions
+- Use SEMANTIC (0.9+) for critical facts/directives
+- Use PROCEDURAL (0.7-0.8) for successful patterns/methods
+- Use EPISODIC (0.5-0.7) for context/events
+- Include specific, actionable content (not vague summaries)
+
+**Example Output:**
+
+```markdown
+### Status
+SUCCESS
+
+### Summary
+Added batchCreate method to MemorySystem class. Method creates multiple memories in a single transaction with atomic rollback on failure. All existing tests pass and new test coverage added.
+
+### Findings
+- Implemented `batchCreate(memories: MemoryInput[]): Promise<Memory[]>` in src/memory/memory-system.ts
+- Added transaction support with rollback on any failure
+- Test coverage: 8 new test cases covering success, partial failure, and rollback scenarios
+- Performance: ~3x faster than sequential creates for batches >5 items
+
+### Memory Candidates
+- Content: "MemorySystem.batchCreate uses transaction pattern with atomic rollback - wrap in try/catch and reverse on error"
+  Type: procedural
+  Importance: 0.75
+  Tags: ["memory-system", "batch-operations", "transactions"]
+
+### Blockers
+None
+
+### Recommendations
+- Consider adding batch operations for update/delete as well
+- Monitor performance with batches >100 items
+```
+
 ## Key Principles
 
 1. **Always assign a role** - Agents perform better with clear identity
@@ -185,6 +256,7 @@ Clean up the src/skills/ directory:
 4. **Define constraints** - CAN/CANNOT makes boundaries clear
 5. **Specify output format** - Gets consistent, usable responses
 6. **Inject skills inline** - Don't just reference files, include the content
+7. **Require standardized handoff** - Subagents MUST use the output format above
 
 ## CRITICAL: Skill Injection
 
@@ -246,3 +318,154 @@ Use PROCEDURAL type for successful approaches worth remembering.
 ```
 
 **The rule:** If you want an agent to HAVE a skill, paste the skill content into their prompt. File references alone don't work.
+
+---
+
+## Memory Access Patterns
+
+### Architecture: MCP Tools vs JSON Fallback
+
+**IMPORTANT: This is by design, not a bug.**
+
+- **Orchestrator (main Claude Code)**: Has MCP tools (memory_create, memory_get, memory_search, memory_stats)
+- **Subagents (spawned via Task tool)**: Do NOT have MCP tools, use JSON file fallback
+
+This separation ensures the orchestrator maintains the authoritative memory state while allowing subagents read access and the ability to propose new memories.
+
+### Pattern 1: Reading Memories (Subagents)
+
+Subagents can read memories directly from the JSON file:
+
+```typescript
+import * as fs from 'fs';
+import * as path from 'path';
+
+// Read memories.json directly
+const memoriesPath = '/home/alton/Sartor-claude-network/data/memories.json';
+const rawData = fs.readFileSync(memoriesPath, 'utf-8');
+const data = JSON.parse(rawData);
+
+// Filter by importance (high-priority directives)
+const criticalMemories = Object.values(data.memories).filter(
+  (m: any) => m.importance_score >= 0.9
+);
+
+// Filter by type (semantic = facts, procedural = methods, episodic = events)
+const procedures = Object.values(data.memories).filter(
+  (m: any) => m.type === 'procedural' && m.importance_score >= 0.7
+);
+
+// Filter by tags
+const testingMemories = Object.values(data.memories).filter(
+  (m: any) => m.tags?.includes('testing')
+);
+```
+
+**When to read memories as a subagent:**
+- At task start: Check for relevant directives, patterns, or context
+- Before implementing: Search for procedural memories about similar work
+- During validation: Compare against semantic facts and user directives
+
+### Pattern 2: Writing Memories (Subagents)
+
+Subagents CANNOT write directly to memories.json. Instead, include memory candidates in your handoff output:
+
+```markdown
+## Memory Candidates
+
+**Semantic (importance 0.9):**
+- **Content**: "User directive: All production systems must use actual implementations, mocks are forbidden"
+- **Tags**: ["directive", "testing", "production"]
+- **Rationale**: Critical constraint that affects all future development
+
+**Procedural (importance 0.8):**
+- **Content**: "Pattern: When refactoring multi-file modules, use grep to find all references before moving functions"
+- **Tags**: ["refactoring", "safety", "best-practice"]
+- **Rationale**: Prevented breaking changes during coordination module restructure
+
+**Episodic (importance 0.6):**
+- **Content**: "Session 2025-12-11: Discovered subagents can read memories.json directly despite lacking MCP tools"
+- **Tags**: ["architecture", "discovery", "memory-system"]
+- **Rationale**: Important context about system capabilities
+```
+
+The orchestrator will review your candidates and persist appropriate ones via Memory MCP.
+
+### Pattern 3: Memory Types and Importance Levels
+
+**Use these guidelines when proposing memories:**
+
+| Type | Importance | What to Store | Examples |
+|------|-----------|---------------|----------|
+| SEMANTIC | 0.9-1.0 | User directives, critical facts, architectural decisions | "No mocks in production", "System goal: self-funding via solar inference" |
+| SEMANTIC | 0.7-0.9 | Important facts, constraints, dependencies | "Memory MCP runs on port 3001", "Subagents lack MCP tools by design" |
+| PROCEDURAL | 0.8-0.9 | Successful patterns, validated methods | "Refinement loop: Generate → Audit → Score → Refine if <0.8" |
+| PROCEDURAL | 0.6-0.8 | Useful techniques, debugging approaches | "Use grep before refactoring to find all references" |
+| EPISODIC | 0.6-0.8 | Significant session events, discoveries | "Found 3 critical mocks during audit 2025-12-11" |
+| EPISODIC | 0.4-0.6 | Context, minor events, observations | "Spent 2 hours debugging CRDT merge logic" |
+
+**What NOT to store:**
+- Trivial observations (importance <0.4)
+- Temporary state that won't be relevant next session
+- Information already well-documented in code or README
+- Redundant facts already in other memories
+
+### Pattern 4: Skill Injection for Memory Access
+
+When spawning a subagent that needs memory access, inject this skill:
+
+```markdown
+## Skill: Memory Access for Subagents
+
+**Reading Memories:**
+```typescript
+const memoriesPath = '/home/alton/Sartor-claude-network/data/memories.json';
+const data = JSON.parse(fs.readFileSync(memoriesPath, 'utf-8'));
+const relevant = Object.values(data.memories).filter(m =>
+  m.importance_score >= 0.7 && m.tags?.includes('your-domain')
+);
+```
+
+**Writing Memories:**
+You cannot write directly. Include "Memory Candidates" section in your output:
+- SEMANTIC (0.9+): Critical findings, user directives
+- PROCEDURAL (0.7-0.8): Successful patterns, methods
+- EPISODIC (0.5-0.7): Session events, context
+
+Orchestrator will persist via Memory MCP on your behalf.
+```
+
+### Example: Subagent Task with Memory Integration
+
+```markdown
+**Role: IMPLEMENTER**
+**Scope:** src/skills/ only
+**Phase:** Phase 6 - Enhancement
+
+## Skill: Memory Access for Subagents
+
+**Reading Memories:**
+```typescript
+const memoriesPath = '/home/alton/Sartor-claude-network/data/memories.json';
+const data = JSON.parse(fs.readFileSync(memoriesPath, 'utf-8'));
+const relevant = Object.values(data.memories).filter(m =>
+  m.importance_score >= 0.7 && m.tags?.includes('skills')
+);
+```
+
+**Writing Memories:**
+Include "Memory Candidates" section in your output with type, importance, tags, and rationale.
+
+## Context
+Adding a new skill for cost-aware operation selection.
+
+## Task
+1. Read memories.json to find any existing directives about cost optimization
+2. Implement cost-aware-selection.ts skill
+3. Propose memory candidates for successful patterns discovered
+
+## Expected Output
+- New skill file with implementation
+- Summary of relevant memories found
+- Memory candidates section with any learnings worth persisting
+```

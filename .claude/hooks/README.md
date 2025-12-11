@@ -10,6 +10,7 @@ The hooks system integrates with Claude Code's tool lifecycle to:
 - **Detect** anti-patterns in generated code (fabricated metrics, vague language, missing error handling)
 - **Block** dangerous bash operations before execution
 - **Enforce** the five core principles from UPLIFTED_SKILLS.md
+- **Remind** orchestrator to delegate work to subagents (NEW)
 
 ## Core Principles Enforced
 
@@ -41,9 +42,12 @@ The main configuration file that defines when hooks run:
 
 **Hook Triggers:**
 
-- `postToolUse.Edit` - Runs after Claude edits a file
-- `postToolUse.Write` - Runs after Claude writes a new file
-- `preToolUse.Bash` - Runs BEFORE executing bash commands
+- `sessionStart` - Runs when session starts (roadmap context injection)
+- `preToolUse.Bash` - Runs BEFORE executing bash commands (safety check)
+- `preToolUse.Edit/Write/Grep` - Runs BEFORE substantial work (delegation reminder)
+- `postToolUse.Edit` - Runs after Claude edits a file (quality validation)
+- `postToolUse.Write` - Runs after Claude writes a new file (quality validation)
+- `postToolUse.Bash` - Runs after bash commands (completion detection)
 
 ### `/home/user/Sartor-claude-network/.claude/hooks/quality-check.sh`
 
@@ -142,6 +146,45 @@ The main configuration file that defines when hooks run:
   Command: firebase database:remove /users
   Ensure you have backups before proceeding
 ```
+
+### `/home/user/Sartor-claude-network/.claude/hooks/delegation-reminder.sh`
+
+**Purpose:** Reminds orchestrator to delegate substantial work to subagents.
+
+**Exit Codes:**
+
+- `0` - Always (non-blocking reminder)
+
+**When It Triggers:**
+
+- Editing files in `src/`, `lib/`, or `services/` directories
+- Writing new files in implementation directories
+- After 3+ consecutive searches (research pattern detected)
+- Max once every 5 minutes (cooldown system)
+
+**Example Reminder:**
+
+```
+╔════════════════════════════════════════════════════════════════╗
+║              ORCHESTRATOR DELEGATION REMINDER                  ║
+╠════════════════════════════════════════════════════════════════╣
+║  You are the ORCHESTRATOR. Your role is COORDINATION.         ║
+║                                                                ║
+║  Before doing substantial work directly, ask:                 ║
+║  • Can a subagent do this?                                    ║
+║  • Could this be parallelized?                                ║
+║                                                                ║
+║  DELEGATE to subagents for:                                   ║
+║  ✓ Codebase searches (Explore agent)                          ║
+║  ✓ Implementation work (IMPLEMENTER agent)                    ║
+║  ✓ Code audits (AUDITOR agent)                                ║
+║                                                                ║
+║  Use Task tool to spawn subagents.                            ║
+║  See: .claude/SPAWNING_TEMPLATE.md                            ║
+╚════════════════════════════════════════════════════════════════╝
+```
+
+See [DELEGATION_REMINDER.md](DELEGATION_REMINDER.md) for full documentation.
 
 ## Customization
 

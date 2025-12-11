@@ -2,21 +2,21 @@
   "$schema": "https://anthropic.com/schemas/claude-code/settings-v1.json",
   "hooks": {
     "sessionStart": {
-      "script": "/home/user/Sartor-claude-network/.claude/hooks/inject-roadmap.sh",
+      "script": "/home/alton/Sartor-claude-network/.claude/hooks/inject-roadmap.sh",
       "description": "Inject roadmap context into every agent session for awareness",
       "enabled": true
     },
     "postToolUse": {
       "Edit": [
         {
-          "script": "/home/user/Sartor-claude-network/.claude/hooks/quality-check.sh",
+          "script": "/home/alton/Sartor-claude-network/.claude/hooks/quality-check.sh",
           "args": ["${file_path}"],
           "description": "Validate TypeScript compilation and evidence-based principles after edits",
           "enabled": true,
           "blocking": false
         },
         {
-          "script": "/home/user/Sartor-claude-network/.claude/hooks/record-completion.sh",
+          "script": "/home/alton/Sartor-claude-network/.claude/hooks/record-completion.sh",
           "args": ["Edit", "${file_path}"],
           "description": "Detect and record task completion for self-improvement",
           "enabled": true,
@@ -25,14 +25,14 @@
       ],
       "Write": [
         {
-          "script": "/home/user/Sartor-claude-network/.claude/hooks/quality-check.sh",
+          "script": "/home/alton/Sartor-claude-network/.claude/hooks/quality-check.sh",
           "args": ["${file_path}"],
           "description": "Validate TypeScript compilation and evidence-based principles after writes",
           "enabled": true,
           "blocking": false
         },
         {
-          "script": "/home/user/Sartor-claude-network/.claude/hooks/record-completion.sh",
+          "script": "/home/alton/Sartor-claude-network/.claude/hooks/record-completion.sh",
           "args": ["Write", "${file_path}"],
           "description": "Detect and record task completion for self-improvement",
           "enabled": true,
@@ -49,11 +49,32 @@
     },
     "preToolUse": {
       "Bash": {
-        "script": "/home/user/Sartor-claude-network/.claude/hooks/safety-check.sh",
+        "script": "/home/alton/Sartor-claude-network/.claude/hooks/safety-check.sh",
         "args": ["${command}"],
         "description": "Block dangerous bash operations before execution",
         "enabled": true,
         "blocking": true
+      },
+      "Edit": {
+        "script": "/home/alton/Sartor-claude-network/.claude/hooks/delegation-reminder.sh",
+        "args": ["Edit", "${file_path}"],
+        "description": "Remind orchestrator to delegate before substantial edits",
+        "enabled": true,
+        "blocking": false
+      },
+      "Write": {
+        "script": "/home/alton/Sartor-claude-network/.claude/hooks/delegation-reminder.sh",
+        "args": ["Write", "${file_path}"],
+        "description": "Remind orchestrator to delegate before substantial writes",
+        "enabled": true,
+        "blocking": false
+      },
+      "Grep": {
+        "script": "/home/alton/Sartor-claude-network/.claude/hooks/delegation-reminder.sh",
+        "args": ["Grep", "${pattern}"],
+        "description": "Remind orchestrator to delegate after multiple searches",
+        "enabled": true,
+        "blocking": false
       }
     }
   },
