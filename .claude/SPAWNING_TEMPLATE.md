@@ -102,6 +102,51 @@ You are a SUBAGENT. Set this environment variable in your context:
 
 This exempts you from orchestrator delegation enforcement, allowing you to edit implementation files.
 
+## Memory Write Pattern (NEW - Subagent Memory Access)
+
+Since subagents don't have MCP tools, use the bash wrapper to write memories:
+
+### Writing Memories
+```bash
+# Create a memory
+./scripts/memory-write.sh "Your finding or learning" "episodic" "0.8" '["tag1","tag2"]'
+
+# Memory types: episodic (events), semantic (facts), procedural (patterns), working (temp)
+# Importance: 0.0-1.0 (0.9+ for critical, 0.7-0.8 for important, 0.5 for routine)
+```
+
+### Reading Memories (existing pattern)
+```bash
+# Read recent high-importance memories
+cat data/memories.json | jq '.memories | to_entries | map(.value) | map(select(.importance_score >= 0.8))'
+```
+
+## Status Coordination (NEW - Real-time Visibility)
+
+Keep the OBSERVER and orchestrator informed of your progress:
+
+### Report Your Status
+```bash
+# Set your agent ID at start
+export AGENT_ID="agent-$(echo $RANDOM)-$ROLE"
+
+# Update status throughout your work
+./scripts/status-update.sh "$AGENT_ID" "role" "$ROLE"
+./scripts/status-update.sh "$AGENT_ID" "currentTask" "Description of what you're doing"
+./scripts/status-update.sh "$AGENT_ID" "progress" "0.5"
+
+# Add findings as you discover them
+./scripts/status-update.sh "$AGENT_ID" "findings" "Found X in Y"
+
+# Mark complete when done
+./scripts/status-update.sh "$AGENT_ID" "status" "complete"
+```
+
+### Read Other Agent Status
+```bash
+./scripts/status-read.sh
+```
+
 ## Context
 [Brief context about the current state]
 
@@ -134,6 +179,15 @@ You are a SUBAGENT. Set this environment variable in your context:
 
 This exempts you from orchestrator delegation enforcement, allowing you to edit implementation files.
 
+**At Task Start:**
+```bash
+export AGENT_ID="agent-$RANDOM-IMPLEMENTER"
+export CLAUDE_AGENT_ROLE=IMPLEMENTER
+./scripts/status-update.sh "$AGENT_ID" "role" "IMPLEMENTER"
+./scripts/status-update.sh "$AGENT_ID" "currentTask" "Starting implementation of batchCreate method"
+./scripts/status-update.sh "$AGENT_ID" "status" "active"
+```
+
 ## Context
 We're adding a new method to MemorySystem for batch operations.
 
@@ -151,6 +205,19 @@ Add a `batchCreate` method to src/memory/memory-system.ts that creates multiple 
 ## Available Resources
 - Read existing MemorySystem class first
 - Follow existing patterns for error handling
+
+**During Work:**
+```bash
+./scripts/status-update.sh "$AGENT_ID" "progress" "0.5"
+./scripts/memory-write.sh "Discovered pattern X works well for Y" "procedural" "0.7" '["pattern","learning"]'
+```
+
+**At Completion:**
+```bash
+./scripts/status-update.sh "$AGENT_ID" "status" "complete"
+./scripts/status-update.sh "$AGENT_ID" "findings" "Implemented batchCreate with transaction support"
+./scripts/memory-write.sh "Completed implementation of batchCreate with approach Y" "episodic" "0.8" '["completion","implementation"]'
+```
 ```
 
 ## Example: Spawning an Auditor

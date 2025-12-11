@@ -8,6 +8,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import * as lockfile from 'proper-lockfile';
 
 enum MemoryType {
   EPISODIC = 'episodic',
@@ -60,8 +61,12 @@ export class FileStore {
     if (fs.existsSync(this.dataFile)) {
       this.loadFromFile();
     } else {
-      // Create empty file
-      this.saveToFile();
+      // Create empty file synchronously during initialization
+      const data: FileData = {
+        memories: {},
+        idCounter: 0,
+      };
+      fs.writeFileSync(this.dataFile, JSON.stringify(data, null, 2), 'utf-8');
     }
   }
 
@@ -90,10 +95,22 @@ export class FileStore {
   }
 
   /**
-   * Save memories to file
+   * Save memories to file with file locking to prevent race conditions
    */
-  private saveToFile(): void {
+  private async saveToFileWithLock(): Promise<void> {
+    let release: (() => Promise<void>) | undefined;
+
     try {
+      // Acquire lock on the file with retry logic
+      release = await lockfile.lock(this.dataFile, {
+        retries: {
+          retries: 5,
+          minTimeout: 100,
+          maxTimeout: 1000
+        },
+        stale: 10000 // Consider lock stale after 10 seconds
+      });
+
       // Convert Map to plain object for JSON serialization
       const memoriesObj: Record<string, Memory> = {};
       this.memories.forEach((memory, id) => {
@@ -109,17 +126,22 @@ export class FileStore {
     } catch (error) {
       console.error('Error saving memories to file:', error);
       throw error;
+    } finally {
+      // Always release the lock, even if write failed
+      if (release) {
+        await release();
+      }
     }
   }
 
   /**
    * Create a new memory
    */
-  createMemory(
+  async createMemory(
     content: string,
     type: MemoryType,
     options: { importance_score?: number; tags?: string[] }
-  ): Memory {
+  ): Promise<Memory> {
     const id = `mem_${Date.now()}_${this.idCounter++}`;
     const memory: Memory = {
       id,
@@ -131,7 +153,7 @@ export class FileStore {
     };
 
     this.memories.set(id, memory);
-    this.saveToFile();
+    await this.saveToFileWithLock();
 
     return memory;
   }

@@ -140,10 +140,10 @@ function createMemoryServer(): Server {
             tags: (args.tags as string[]) || [],
           };
 
-          // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+          // Use MultiTierStore (async) if available, otherwise FileStore (now also async)
           const mem = isMultiTier()
             ? await multiTierStore!.createMemory(args.content as string, memType, memOptions)
-            : fileStore.createMemory(args.content as string, memType, memOptions);
+            : await fileStore.createMemory(args.content as string, memType, memOptions);
 
           return {
             content: [

@@ -513,7 +513,7 @@ export class BootstrapMesh {
 
     // Try Local File
     if (this.fileAvailable) {
-      const created = this.fileStore.createMemory(memory.content, memoryType, {
+      const created = await this.fileStore.createMemory(memory.content, memoryType, {
         importance_score: memory.importance_score,
         tags: memory.tags,
       });

@@ -191,10 +191,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           tags: (args.tags as string[]) || [],
         };
 
-        // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+        // Use MultiTierStore (async) if available, otherwise FileStore (now also async)
         const mem = isMultiTier()
           ? await multiTierStore!.createMemory(args.content as string, memType, memOptions)
-          : fileStore.createMemory(args.content as string, memType, memOptions);
+          : await fileStore.createMemory(args.content as string, memType, memOptions);
 
         return {
           content: [
@@ -282,10 +282,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           tags: ['refinement', `task:${args.task_id}`, `iterations:${args.iterations}`],
         };
 
-        // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+        // Use MultiTierStore (async) if available, otherwise FileStore (now also async)
         const mem = isMultiTier()
           ? await multiTierStore!.createMemory(content, MemoryType.REFINEMENT_TRACE, traceOptions)
-          : fileStore.createMemory(content, MemoryType.REFINEMENT_TRACE, traceOptions);
+          : await fileStore.createMemory(content, MemoryType.REFINEMENT_TRACE, traceOptions);
 
         return {
           content: [

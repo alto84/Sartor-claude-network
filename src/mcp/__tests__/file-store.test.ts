@@ -23,8 +23,8 @@ describe('FileStore', () => {
   });
 
   describe('Basic Memory Operations', () => {
-    test('should create memory with EPISODIC type', () => {
-      const mem = store.createMemory('Test episodic memory', MemoryType.EPISODIC, {
+    test('should create memory with EPISODIC type', async () => {
+      const mem = await store.createMemory('Test episodic memory', MemoryType.EPISODIC, {
         importance_score: 0.8,
         tags: ['test'],
       });
@@ -36,8 +36,8 @@ describe('FileStore', () => {
       expect(mem.tags).toEqual(['test']);
     });
 
-    test('should retrieve memory by ID', () => {
-      const created = store.createMemory('Test content', MemoryType.SEMANTIC, {});
+    test('should retrieve memory by ID', async () => {
+      const created = await store.createMemory('Test content', MemoryType.SEMANTIC, {});
       const retrieved = store.getMemory(created.id);
 
       expect(retrieved).toBeDefined();
@@ -52,7 +52,7 @@ describe('FileStore', () => {
   });
 
   describe('Phase 6: REFINEMENT_TRACE Memory Type', () => {
-    test('should create REFINEMENT_TRACE memory', () => {
+    test('should create REFINEMENT_TRACE memory', async () => {
       const traceData = {
         task_id: 'task-123',
         iterations: 3,
@@ -61,7 +61,7 @@ describe('FileStore', () => {
         duration_ms: 1500,
       };
 
-      const mem = store.createMemory(
+      const mem = await store.createMemory(
         JSON.stringify(traceData),
         MemoryType.REFINEMENT_TRACE,
         {
@@ -80,15 +80,15 @@ describe('FileStore', () => {
       expect(content.success).toBe(true);
     });
 
-    test('should search REFINEMENT_TRACE memories', () => {
+    test('should search REFINEMENT_TRACE memories', async () => {
       // Create multiple refinement traces
-      store.createMemory(
+      await store.createMemory(
         JSON.stringify({ task_id: 't1', iterations: 2, success: true }),
         MemoryType.REFINEMENT_TRACE,
         { importance_score: 0.7 }
       );
 
-      store.createMemory(
+      await store.createMemory(
         JSON.stringify({ task_id: 't2', iterations: 5, success: false }),
         MemoryType.REFINEMENT_TRACE,
         { importance_score: 0.5 }
@@ -105,10 +105,10 @@ describe('FileStore', () => {
       expect(content.task_id).toBe('t1');
     });
 
-    test('should track refinement traces in stats', () => {
-      store.createMemory('trace1', MemoryType.REFINEMENT_TRACE, {});
-      store.createMemory('trace2', MemoryType.REFINEMENT_TRACE, {});
-      store.createMemory('other', MemoryType.EPISODIC, {});
+    test('should track refinement traces in stats', async () => {
+      await store.createMemory('trace1', MemoryType.REFINEMENT_TRACE, {});
+      await store.createMemory('trace2', MemoryType.REFINEMENT_TRACE, {});
+      await store.createMemory('other', MemoryType.EPISODIC, {});
 
       const stats = store.getStats();
       expect(stats.by_type.refinement_trace).toBe(2);
@@ -118,7 +118,7 @@ describe('FileStore', () => {
   });
 
   describe('Phase 6: EXPERT_CONSENSUS Memory Type', () => {
-    test('should create EXPERT_CONSENSUS memory', () => {
+    test('should create EXPERT_CONSENSUS memory', async () => {
       const consensusData = {
         task_type: 'code_review',
         votes: [
@@ -130,7 +130,7 @@ describe('FileStore', () => {
         agreement_level: 0.9,
       };
 
-      const mem = store.createMemory(
+      const mem = await store.createMemory(
         JSON.stringify(consensusData),
         MemoryType.EXPERT_CONSENSUS,
         {
@@ -148,23 +148,23 @@ describe('FileStore', () => {
       expect(content.agreement_level).toBe(0.9);
     });
 
-    test('should search EXPERT_CONSENSUS with min_agreement filter', () => {
+    test('should search EXPERT_CONSENSUS with min_agreement filter', async () => {
       // High agreement consensus
-      store.createMemory(
+      await store.createMemory(
         JSON.stringify({ task_type: 'design', agreement_level: 0.95 }),
         MemoryType.EXPERT_CONSENSUS,
         { importance_score: 0.95 }
       );
 
       // Medium agreement consensus
-      store.createMemory(
+      await store.createMemory(
         JSON.stringify({ task_type: 'implementation', agreement_level: 0.6 }),
         MemoryType.EXPERT_CONSENSUS,
         { importance_score: 0.6 }
       );
 
       // Low agreement consensus
-      store.createMemory(
+      await store.createMemory(
         JSON.stringify({ task_type: 'testing', agreement_level: 0.4 }),
         MemoryType.EXPERT_CONSENSUS,
         { importance_score: 0.4 }
@@ -181,10 +181,10 @@ describe('FileStore', () => {
       expect(content.task_type).toBe('design');
     });
 
-    test('should track expert consensus in stats', () => {
-      store.createMemory('consensus1', MemoryType.EXPERT_CONSENSUS, {});
-      store.createMemory('consensus2', MemoryType.EXPERT_CONSENSUS, {});
-      store.createMemory('consensus3', MemoryType.EXPERT_CONSENSUS, {});
+    test('should track expert consensus in stats', async () => {
+      await store.createMemory('consensus1', MemoryType.EXPERT_CONSENSUS, {});
+      await store.createMemory('consensus2', MemoryType.EXPERT_CONSENSUS, {});
+      await store.createMemory('consensus3', MemoryType.EXPERT_CONSENSUS, {});
 
       const stats = store.getStats();
       expect(stats.by_type.expert_consensus).toBe(3);
@@ -192,14 +192,14 @@ describe('FileStore', () => {
   });
 
   describe('Memory Search with Multiple Types', () => {
-    test('should search across all Phase 6 memory types', () => {
-      store.createMemory('refinement1', MemoryType.REFINEMENT_TRACE, {
+    test('should search across all Phase 6 memory types', async () => {
+      await store.createMemory('refinement1', MemoryType.REFINEMENT_TRACE, {
         importance_score: 0.8,
       });
-      store.createMemory('consensus1', MemoryType.EXPERT_CONSENSUS, {
+      await store.createMemory('consensus1', MemoryType.EXPERT_CONSENSUS, {
         importance_score: 0.9,
       });
-      store.createMemory('episodic1', MemoryType.EPISODIC, { importance_score: 0.7 });
+      await store.createMemory('episodic1', MemoryType.EPISODIC, { importance_score: 0.7 });
 
       // Search for both new types
       const results = store.searchMemories(
@@ -218,9 +218,9 @@ describe('FileStore', () => {
   });
 
   describe('Persistence', () => {
-    test('should persist new memory types to file', () => {
-      const mem1 = store.createMemory('trace', MemoryType.REFINEMENT_TRACE, {});
-      const mem2 = store.createMemory('consensus', MemoryType.EXPERT_CONSENSUS, {});
+    test('should persist new memory types to file', async () => {
+      const mem1 = await store.createMemory('trace', MemoryType.REFINEMENT_TRACE, {});
+      const mem2 = await store.createMemory('consensus', MemoryType.EXPERT_CONSENSUS, {});
 
       // Create a new store instance (simulates restart)
       const newStore = new FileStore(testDataDir);
@@ -232,10 +232,10 @@ describe('FileStore', () => {
       expect(retrieved2?.type).toBe(MemoryType.EXPERT_CONSENSUS);
     });
 
-    test('should restore stats correctly after reload', () => {
-      store.createMemory('trace1', MemoryType.REFINEMENT_TRACE, {});
-      store.createMemory('trace2', MemoryType.REFINEMENT_TRACE, {});
-      store.createMemory('consensus1', MemoryType.EXPERT_CONSENSUS, {});
+    test('should restore stats correctly after reload', async () => {
+      await store.createMemory('trace1', MemoryType.REFINEMENT_TRACE, {});
+      await store.createMemory('trace2', MemoryType.REFINEMENT_TRACE, {});
+      await store.createMemory('consensus1', MemoryType.EXPERT_CONSENSUS, {});
 
       // Reload from file
       const newStore = new FileStore(testDataDir);
