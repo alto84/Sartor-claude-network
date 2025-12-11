@@ -1,11 +1,19 @@
 {
   "$schema": "https://anthropic.com/schemas/claude-code/settings-v1.json",
   "hooks": {
-    "sessionStart": {
-      "script": "/home/alton/Sartor-claude-network/.claude/hooks/inject-roadmap.sh",
-      "description": "Inject roadmap context into every agent session for awareness",
-      "enabled": true
-    },
+    "sessionStart": [
+      {
+        "script": "/home/alton/Sartor-claude-network/.claude/hooks/inject-roadmap.sh",
+        "description": "Inject roadmap context into every agent session for awareness",
+        "enabled": true
+      },
+      {
+        "script": "/home/alton/Sartor-claude-network/.claude/hooks/swarm-summary.sh",
+        "description": "Display swarm status summary at session start",
+        "enabled": true,
+        "blocking": false
+      }
+    ],
     "postToolUse": {
       "Edit": [
         {
@@ -39,13 +47,41 @@
           "blocking": false
         }
       ],
-      "Bash": {
-        "script": "/home/user/Sartor-claude-network/.claude/hooks/record-completion.sh",
-        "args": ["Bash", "${command}"],
-        "description": "Detect and record task completion from bash commands",
-        "enabled": true,
-        "blocking": false
-      }
+      "Bash": [
+        {
+          "script": "/home/user/Sartor-claude-network/.claude/hooks/record-completion.sh",
+          "args": ["Bash", "${command}"],
+          "description": "Detect and record task completion from bash commands",
+          "enabled": true,
+          "blocking": false
+        },
+        {
+          "script": "/home/alton/Sartor-claude-network/.claude/hooks/wake-monitor.sh",
+          "description": "Check for wake messages from background agents",
+          "enabled": true,
+          "blocking": false
+        },
+        {
+          "script": "/home/alton/Sartor-claude-network/.claude/hooks/agent-health.sh",
+          "description": "Monitor agent health via checkpoints",
+          "enabled": true,
+          "blocking": false
+        }
+      ],
+      "Task": [
+        {
+          "script": "/home/alton/Sartor-claude-network/.claude/hooks/wake-monitor.sh",
+          "description": "Check for wake messages after spawning tasks",
+          "enabled": true,
+          "blocking": false
+        },
+        {
+          "script": "/home/alton/Sartor-claude-network/.claude/hooks/agent-health.sh",
+          "description": "Check agent health after task operations",
+          "enabled": true,
+          "blocking": false
+        }
+      ]
     },
     "preToolUse": {
       "Bash": {
@@ -93,6 +129,9 @@
     "lastModified": "2025-12-06",
     "features": [
       "Automatic roadmap context injection at session start",
+      "Swarm status summary at session start",
+      "Wake message monitoring for background agents",
+      "Agent health monitoring via checkpoints",
       "Task completion detection and recording",
       "Self-improvement learning capture",
       "Quality enforcement on file operations",

@@ -132,6 +132,8 @@ When working as part of the executive system, operate within your assigned role'
 - Detect anti-pattern emergence
 - Record observations for continuous improvement
 - Analyze memory usage patterns across sessions
+- Monitor background agent swarms (status files, progress tracking)
+- Detect agent failures, timeouts, blocks in distributed systems
 
 **CANNOT DO:**
 
@@ -148,6 +150,7 @@ When working as part of the executive system, operate within your assigned role'
 - Coordination efficiency notes
 - Recommendations for system evolution
 - Anti-pattern alerts
+- Agent swarm health reports
 
 **When to Spawn OBSERVER:**
 
@@ -156,6 +159,70 @@ When working as part of the executive system, operate within your assigned role'
 - For system health audits
 - To validate bootstrap effectiveness
 - For continuous improvement cycles
+- When orchestrating background agent swarms (3-5+ agents)
+
+---
+
+## Agent Hierarchy: Lead Agent vs Subagent
+
+### Lead Agent
+
+**Definition:** Orchestrator-level agent that delegates work and coordinates multiple subagents.
+
+**Characteristics:**
+- Spawns and manages subagents via Task tool
+- Monitors subagent health and progress
+- Aggregates results from parallel subagents
+- Resolves conflicts between subagents
+- Synthesizes learnings and updates Memory MCP
+- Responsible for overall task success
+
+**Typical Roles:** Usually PLANNER or OBSERVER, but any role can be lead agent
+
+**Responsibilities:**
+1. Task decomposition into parallelizable units
+2. Subagent spawning with clear scopes
+3. Progress monitoring via status files
+4. Failure detection and recovery
+5. Result aggregation and synthesis
+6. Learning capture and system improvement
+
+### Subagent
+
+**Definition:** Specialized agent spawned by lead agent to execute a scoped task.
+
+**Characteristics:**
+- Receives delegated task with defined scope
+- Works independently within boundaries (CAN/CANNOT)
+- Reports progress via checkpoint milestones
+- Writes deliverables to handoff files
+- Proposes memory candidates (can't write directly)
+- Signals completion, blocker, or failure clearly
+
+**Typical Roles:** IMPLEMENTER, AUDITOR, CLEANER (sometimes PLANNER for sub-planning)
+
+**Responsibilities:**
+1. Execute assigned task within scope
+2. Report progress at semantic milestones
+3. Document findings and deliverables
+4. Identify and signal blockers
+5. Propose learnings for Memory MCP
+6. Hand off results to lead agent
+
+### Background Agent
+
+**Definition:** Subagent that runs asynchronously without blocking lead agent.
+
+**Characteristics:**
+- Spawned via Task tool (non-blocking)
+- Runs independently while lead agent continues
+- Updates status files periodically
+- No direct communication with lead during execution
+- Signals completion via handoff file
+
+**When to Use:** Long-running tasks (>5 minutes), parallelizable work, independent research
+
+**Monitoring:** Lead agent polls status files every 30-60s, detects timeouts/failures
 
 ---
 
