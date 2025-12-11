@@ -13,6 +13,8 @@ export enum MemoryType {
   SEMANTIC = 'semantic',
   PROCEDURAL = 'procedural',
   WORKING = 'working',
+  REFINEMENT_TRACE = 'refinement_trace',
+  EXPERT_CONSENSUS = 'expert_consensus',
 }
 
 interface Memory {
@@ -111,12 +113,12 @@ export class FirebaseStore {
 
   async getStats(): Promise<{
     total: number;
-    by_type: { episodic: number; semantic: number; procedural: number; working: number };
+    by_type: { episodic: number; semantic: number; procedural: number; working: number; refinement_trace: number; expert_consensus: number };
     storage: string;
   }> {
     const stats = {
       total: 0,
-      by_type: { episodic: 0, semantic: 0, procedural: 0, working: 0 },
+      by_type: { episodic: 0, semantic: 0, procedural: 0, working: 0, refinement_trace: 0, expert_consensus: 0 },
       storage: this.useFirebase ? 'firebase' : 'file',
     };
 

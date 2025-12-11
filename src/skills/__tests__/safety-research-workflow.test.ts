@@ -26,6 +26,7 @@ import {
   QualityGateResult,
   ConflictAnalysis,
   ResearchReport,
+  validateResearch,
 } from '../safety-research-workflow';
 
 describe('Safety Research Workflow', () => {

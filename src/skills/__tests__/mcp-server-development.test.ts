@@ -23,7 +23,7 @@ import {
 } from '../mcp-server-development';
 
 describe('MCP Server Development', () => {
-  let validator: MCPServerDevelopment;
+  let validator: InstanceType<typeof MCPServerDevelopment>;
 
   beforeEach(() => {
     validator = createMCPServerDevelopment();
@@ -35,7 +35,8 @@ describe('MCP Server Development', () => {
         const tool: ToolDefinition = {
           name: 'calculateSum',
           description: 'Calculates sum of numbers',
-          handler: async (params: any) => params.a + params.b,
+          inputSchema: {} as any,
+          handler: async (params: any) => ({ content: [{ type: 'text' as const, text: String(params.a + params.b) }] }),
         };
 
         const result = validator.validateToolDefinition(tool);
@@ -48,8 +49,8 @@ describe('MCP Server Development', () => {
         const tool: ToolDefinition = {
           name: 'processData',
           description: 'Process data',
-          inputSchema: {},
-          handler: async (params: any) => params,
+          inputSchema: {} as any,
+          handler: async (params: any) => ({ content: [{ type: 'text' as const, text: JSON.stringify(params) }] }),
         };
 
         const result = validator.validateToolDefinition(tool);
@@ -60,12 +61,13 @@ describe('MCP Server Development', () => {
       it('should fail when schema missing type definitions', () => {
         const tool: ToolDefinition = {
           name: 'validateEmail',
+          description: 'Validate email address',
           inputSchema: {
             properties: {
               email: { description: 'Email address' },
             },
-          },
-          handler: async (params: any) => true,
+          } as any,
+          handler: async (params: any) => ({ content: [{ type: 'text' as const, text: 'true' }] }),
         };
 
         const result = validator.validateToolDefinition(tool);
@@ -76,6 +78,7 @@ describe('MCP Server Development', () => {
       it('should fail when required fields not specified', () => {
         const tool: ToolDefinition = {
           name: 'createUser',
+          description: 'Create a new user',
           inputSchema: {
             type: 'object',
             properties: {
@@ -83,7 +86,7 @@ describe('MCP Server Development', () => {
               email: { type: 'string' },
             },
           },
-          handler: async (params: any) => params,
+          handler: async (params: any) => ({ content: [{ type: 'text' as const, text: JSON.stringify(params) }] }),
         };
 
         const result = validator.validateToolDefinition(tool);
@@ -93,10 +96,11 @@ describe('MCP Server Development', () => {
       it('should fail when schema does not match JSON Schema spec', () => {
         const tool: ToolDefinition = {
           name: 'invalidTool',
+          description: 'Invalid tool for testing',
           inputSchema: {
             properties: 'invalid', // Should be object
-          },
-          handler: async (params: any) => null,
+          } as any,
+          handler: async (params: any) => ({ content: [{ type: 'text' as const, text: 'null' }] }),
         };
 
         const result = validator.validateToolDefinition(tool);
@@ -197,11 +201,11 @@ async function handler(params) {
           handler: async (params: any) => {
             try {
               if (!params.query) {
-                return { isError: true, message: 'Query required' };
+                return { content: [{ type: 'text' as const, text: 'Query required' }], isError: true };
               }
-              return { results: [] };
+              return { content: [{ type: 'text' as const, text: JSON.stringify({ results: [] }) }] };
             } catch (error) {
-              return { isError: true, message: error.message };
+              return { content: [{ type: 'text' as const, text: (error as Error).message }], isError: true };
             }
           },
         };
@@ -214,6 +218,7 @@ async function handler(params) {
       it('should pass for tool with proper type constraints', () => {
         const tool: ToolDefinition = {
           name: 'processNumbers',
+          description: 'Process array of numbers with specified operation',
           inputSchema: {
             type: 'object',
             properties: {
@@ -752,7 +757,7 @@ async function toolHandler(params) {
       };
       const result = validateMCPServer(config);
       expect(result).toBeDefined();
-      expect(result.valid).toBeDefined();
+      expect(result.isValid).toBeDefined();
     });
   });
 });

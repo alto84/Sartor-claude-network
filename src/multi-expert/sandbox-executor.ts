@@ -233,28 +233,38 @@ export class SandboxExecutor {
     language: 'javascript' | 'typescript' | 'python' = 'javascript',
     executionId?: string
   ): Promise<SandboxResult> {
-    switch (language) {
-      case 'javascript':
-        return this.execute('node', ['-e', code], executionId);
+    // Save original shell config and disable it for code execution
+    // Shell interpretation causes issues with special characters in code
+    const originalShell = this.config.shell;
+    this.config.shell = false;
 
-      case 'typescript':
-        // Use ts-node if available, otherwise transpile first
-        return this.execute('npx', ['ts-node', '-e', code], executionId);
+    try {
+      switch (language) {
+        case 'javascript':
+          return await this.execute('node', ['-e', code], executionId);
 
-      case 'python':
-        return this.execute('python3', ['-c', code], executionId);
+        case 'typescript':
+          // Use ts-node if available, otherwise transpile first
+          return await this.execute('npx', ['ts-node', '-e', code], executionId);
 
-      default:
-        return {
-          success: false,
-          exitCode: null,
-          stdout: '',
-          stderr: '',
-          durationMs: 0,
-          timedOut: false,
-          memoryExceeded: false,
-          error: `Unsupported language: ${language}`,
-        };
+        case 'python':
+          return await this.execute('python3', ['-c', code], executionId);
+
+        default:
+          return {
+            success: false,
+            exitCode: null,
+            stdout: '',
+            stderr: '',
+            durationMs: 0,
+            timedOut: false,
+            memoryExceeded: false,
+            error: `Unsupported language: ${language}`,
+          };
+      }
+    } finally {
+      // Restore original shell config
+      this.config.shell = originalShell;
     }
   }
 

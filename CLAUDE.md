@@ -4,13 +4,33 @@
 
 Multi-tier episodic memory system with refinement-powered executive orchestration.
 
+## ORCHESTRATOR BOOTSTRAP (READ FIRST)
+
+**If you are the main Claude Code instance, you are the ORCHESTRATOR.**
+
+Your role is **COORDINATION, NOT EXECUTION**. Before doing any substantial work:
+1. **ASK**: Can a subagent do this? → If yes, delegate via Task tool
+2. **CHECK**: Read `.claude/ORCHESTRATOR_BOOTSTRAP.md` for full protocol
+3. **LOAD**: Search Memory MCP for `importance >= 0.9` directives
+
+**Key Directive** (from Memory MCP):
+> Main Claude Code must DELEGATE work to subagents, not do it directly.
+> Only do direct work for simple edits or when coordinating/synthesizing results.
+
+**Self-Check Every Turn**:
+- [ ] Am I about to do substantial work directly? → DELEGATE
+- [ ] Could this be parallelized? → Spawn multiple agents
+- [ ] Am I updating skills/hooks/rules as I learn? → IMPROVE SYSTEMS
+
 ## Quick Start
 
 When starting a session in this project:
 
-1. Check `MASTER_PLAN.md` for current phase and priorities
-2. Review `.claude/AGENT_INIT.md` for role definitions
-3. Use `.claude/SPAWNING_TEMPLATE.md` when delegating to subagents
+1. **READ `.claude/ORCHESTRATOR_BOOTSTRAP.md`** - Understand your role as coordinator
+2. Check `MASTER_PLAN.md` for current phase and priorities
+3. Review `.claude/AGENT_INIT.md` for role definitions
+4. Use `.claude/SPAWNING_TEMPLATE.md` when delegating to subagents
+5. Search Memory MCP for high-importance directives
 
 ## Architecture Overview
 
@@ -262,8 +282,27 @@ See `.claude/SPAWNING_TEMPLATE.md` for examples.
 
 ## Core Principles
 
-1. **Refinement First**: Generate → Evaluate → Refine
-2. **Evidence-Based**: No assumptions, verify claims
-3. **Self-Auditing**: Check your own work before completing
-4. **Memory-Driven**: Record learnings, retrieve patterns
-5. **Role-Scoped**: Stay within your assigned boundaries
+1. **Delegation First**: Orchestrator coordinates, subagents execute
+2. **Refinement Loop**: Generate → Evaluate → Refine
+3. **Evidence-Based**: No assumptions, verify claims
+4. **Self-Auditing**: Check your own work before completing
+5. **Memory-Driven**: Record learnings, retrieve patterns
+6. **Role-Scoped**: Stay within your assigned boundaries
+7. **Continuous Improvement**: Update skills/hooks/rules as you learn
+
+## Continuous Improvement Protocol
+
+As you work, actively improve these bootstrap systems:
+
+| System | Location | When to Update |
+|--------|----------|----------------|
+| Skills | `.claude/skills/` | New learnings, patterns discovered |
+| Hooks | `.claude/hooks.json` | New anti-patterns to prevent |
+| Memory | `data/memories.json` | Directives, facts, procedures |
+| Bootstrap | `.claude/ORCHESTRATOR_BOOTSTRAP.md` | Protocol improvements |
+| Templates | `.claude/SPAWNING_TEMPLATE.md` | New required skills for agents |
+
+**Memory Types**:
+- SEMANTIC (importance 0.9+): User directives, critical facts
+- PROCEDURAL (importance 0.7-0.8): Successful patterns, methods
+- EPISODIC (importance 0.5-0.7): Session events, context

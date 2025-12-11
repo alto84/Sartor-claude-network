@@ -14,9 +14,16 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { FileStore, MemoryType } from './file-store.js';
+import { MultiTierStore } from './multi-tier-store.js';
 
-// Initialize file-based memory system
-const memory = new FileStore();
+// Use MultiTierStore for Firebase integration, with FileStore fallback
+// MultiTierStore automatically falls back to file storage if Firebase is unavailable
+const useMultiTier = process.env.USE_MULTI_TIER !== 'false';
+const multiTierStore = useMultiTier ? new MultiTierStore() : null;
+const fileStore = new FileStore();
+
+// Helper to check if we're using multi-tier storage
+const isMultiTier = () => multiTierStore !== null;
 
 // Create MCP server
 const server = new Server(
@@ -47,7 +54,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             },
             type: {
               type: 'string',
-              enum: ['episodic', 'semantic', 'procedural', 'working'],
+              enum: ['episodic', 'semantic', 'procedural', 'working', 'refinement_trace', 'expert_consensus'],
               description: 'Type of memory',
             },
             importance: {
@@ -85,7 +92,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           properties: {
             type: {
               type: 'string',
-              enum: ['episodic', 'semantic', 'procedural', 'working'],
+              enum: ['episodic', 'semantic', 'procedural', 'working', 'refinement_trace', 'expert_consensus'],
               description: 'Filter by memory type',
             },
             min_importance: {
@@ -107,6 +114,57 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           properties: {},
         },
       },
+      {
+        name: 'memory_create_refinement_trace',
+        description: 'Create a refinement trace memory to track iterative improvement loops',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            task_id: {
+              type: 'string',
+              description: 'The task ID this refinement trace is associated with',
+            },
+            iterations: {
+              type: 'number',
+              description: 'Number of refinement iterations performed',
+            },
+            final_result: {
+              type: 'string',
+              description: 'The final result after refinement',
+            },
+            success: {
+              type: 'boolean',
+              description: 'Whether the refinement process succeeded',
+            },
+            duration_ms: {
+              type: 'number',
+              description: 'Duration of the refinement process in milliseconds',
+            },
+          },
+          required: ['task_id', 'iterations', 'final_result', 'success', 'duration_ms'],
+        },
+      },
+      {
+        name: 'memory_search_expert_consensus',
+        description: 'Search for expert consensus memories from multi-agent voting',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            task_type: {
+              type: 'string',
+              description: 'Filter by task type (optional)',
+            },
+            min_agreement: {
+              type: 'number',
+              description: 'Minimum agreement level (0-1, default 0.5)',
+            },
+            limit: {
+              type: 'number',
+              description: 'Max results (default 10)',
+            },
+          },
+        },
+      },
     ],
   };
 });
@@ -123,29 +181,36 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           semantic: MemoryType.SEMANTIC,
           procedural: MemoryType.PROCEDURAL,
           working: MemoryType.WORKING,
+          refinement_trace: MemoryType.REFINEMENT_TRACE,
+          expert_consensus: MemoryType.EXPERT_CONSENSUS,
         };
 
-        const mem = memory.createMemory(
-          args.content as string,
-          typeMap[args.type as string] || MemoryType.WORKING,
-          {
-            importance_score: (args.importance as number) || 0.5,
-            tags: (args.tags as string[]) || [],
-          }
-        );
+        const memType = typeMap[args.type as string] || MemoryType.WORKING;
+        const memOptions = {
+          importance_score: (args.importance as number) || 0.5,
+          tags: (args.tags as string[]) || [],
+        };
+
+        // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+        const mem = isMultiTier()
+          ? await multiTierStore!.createMemory(args.content as string, memType, memOptions)
+          : fileStore.createMemory(args.content as string, memType, memOptions);
 
         return {
           content: [
             {
               type: 'text',
-              text: JSON.stringify({ success: true, id: mem.id, type: mem.type }, null, 2),
+              text: JSON.stringify({ success: true, id: mem.id, type: mem.type, tier: isMultiTier() ? 'multi' : 'file' }, null, 2),
             },
           ],
         };
       }
 
       case 'memory_get': {
-        const mem = memory.getMemory(args.id as string);
+        // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+        const mem = isMultiTier()
+          ? await multiTierStore!.getMemory(args.id as string)
+          : fileStore.getMemory(args.id as string);
 
         if (!mem) {
           return {
@@ -164,15 +229,20 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           semantic: MemoryType.SEMANTIC,
           procedural: MemoryType.PROCEDURAL,
           working: MemoryType.WORKING,
+          refinement_trace: MemoryType.REFINEMENT_TRACE,
+          expert_consensus: MemoryType.EXPERT_CONSENSUS,
         };
 
-        const results = memory.searchMemories(
-          {
-            type: args.type ? [typeMap[args.type as string]] : undefined,
-            min_importance: args.min_importance as number,
-          },
-          (args.limit as number) || 10
-        );
+        const searchFilters = {
+          type: args.type ? [typeMap[args.type as string]] : undefined,
+          min_importance: args.min_importance as number,
+        };
+        const searchLimit = (args.limit as number) || 10;
+
+        // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+        const results = isMultiTier()
+          ? await multiTierStore!.searchMemories(searchFilters, searchLimit)
+          : fileStore.searchMemories(searchFilters, searchLimit);
 
         return {
           content: [
@@ -189,9 +259,86 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       case 'memory_stats': {
-        const stats = memory.getStats();
+        // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+        const stats = isMultiTier()
+          ? await multiTierStore!.getStats()
+          : fileStore.getStats();
         return {
           content: [{ type: 'text', text: JSON.stringify(stats, null, 2) }],
+        };
+      }
+
+      case 'memory_create_refinement_trace': {
+        const content = JSON.stringify({
+          task_id: args.task_id,
+          iterations: args.iterations,
+          final_result: args.final_result,
+          success: args.success,
+          duration_ms: args.duration_ms,
+        });
+
+        const traceOptions = {
+          importance_score: args.success ? 0.8 : 0.6,
+          tags: ['refinement', `task:${args.task_id}`, `iterations:${args.iterations}`],
+        };
+
+        // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+        const mem = isMultiTier()
+          ? await multiTierStore!.createMemory(content, MemoryType.REFINEMENT_TRACE, traceOptions)
+          : fileStore.createMemory(content, MemoryType.REFINEMENT_TRACE, traceOptions);
+
+        return {
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify({ success: true, trace_id: mem.id }, null, 2),
+            },
+          ],
+        };
+      }
+
+      case 'memory_search_expert_consensus': {
+        const minAgreement = (args.min_agreement as number) ?? 0.5;
+        const limit = (args.limit as number) || 10;
+
+        const consensusFilters = {
+          type: [MemoryType.EXPERT_CONSENSUS],
+          min_importance: minAgreement,
+        };
+
+        // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+        const results = isMultiTier()
+          ? await multiTierStore!.searchMemories(consensusFilters, limit)
+          : fileStore.searchMemories(consensusFilters, limit);
+
+        // Filter by task_type if provided
+        const filtered = args.task_type
+          ? results.filter((mem) => {
+              try {
+                const content = JSON.parse(mem.content);
+                return content.task_type === args.task_type;
+              } catch {
+                return false;
+              }
+            })
+          : results;
+
+        return {
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify(
+                filtered.map((mem) => ({
+                  id: mem.id,
+                  content: JSON.parse(mem.content),
+                  agreement: mem.importance_score,
+                  created_at: mem.created_at,
+                })),
+                null,
+                2
+              ),
+            },
+          ],
         };
       }
 

@@ -40,6 +40,8 @@ import {
   InMemoryMemoryClient,
   MemoryClient,
 } from './memory-integration';
+import { RateLimiter, createRateLimiter, RateLimitConfig } from './rate-limiter';
+import { SandboxManager, createSandboxManager, ManagedSandboxConfig } from './sandbox';
 
 /**
  * Orchestrator configuration
@@ -80,6 +82,18 @@ export interface OrchestratorConfig {
 
   /** Global timeout (ms) */
   timeout: number;
+
+  /** Whether to use rate limiter */
+  useRateLimiter: boolean;
+
+  /** Rate limit configuration */
+  rateLimitConfig?: Partial<RateLimitConfig>;
+
+  /** Whether to use sandboxed execution */
+  useSandbox: boolean;
+
+  /** Sandbox configuration */
+  sandboxConfig?: Partial<ManagedSandboxConfig>;
 }
 
 /**
@@ -98,6 +112,8 @@ export const DEFAULT_ORCHESTRATOR_CONFIG: OrchestratorConfig = {
   diverseResultCount: 3,
   maxConcurrent: 10,
   timeout: 300000,
+  useRateLimiter: false, // Disabled by default for backward compatibility
+  useSandbox: false, // Disabled by default for backward compatibility
 };
 
 /**
@@ -150,6 +166,8 @@ export interface OrchestratedResult {
     votingMethod?: string;
     feedbackIterations?: number;
     targetReached: boolean;
+    rateLimiterUsed?: boolean;
+    sandboxUsed?: boolean;
   };
 }
 
@@ -165,6 +183,8 @@ export class Orchestrator {
   private diversityScorer: DiversityScorer;
   private softScorer: SoftScorer;
   private feedbackLoop: FeedbackLoop;
+  private rateLimiter?: RateLimiter;
+  private sandboxManager?: SandboxManager;
 
   constructor(
     executor: ExpertExecutor,
@@ -188,6 +208,16 @@ export class Orchestrator {
     this.diversityScorer = new DiversityScorer();
     this.softScorer = new SoftScorer();
     this.feedbackLoop = createFeedbackLoop(this.config.targetScore);
+
+    // Initialize rate limiter if enabled
+    if (this.config.useRateLimiter) {
+      this.rateLimiter = createRateLimiter(this.config.rateLimitConfig);
+    }
+
+    // Initialize sandbox manager if enabled
+    if (this.config.useSandbox) {
+      this.sandboxManager = createSandboxManager();
+    }
   }
 
   /**
@@ -285,6 +315,8 @@ export class Orchestrator {
         votingMethod: this.config.useVoting ? this.config.votingMethod : undefined,
         feedbackIterations: feedback?.length,
         targetReached: winnerScore.overall >= this.config.targetScore,
+        rateLimiterUsed: this.config.useRateLimiter,
+        sandboxUsed: this.config.useSandbox,
       },
     };
   }
@@ -332,6 +364,8 @@ export class Orchestrator {
         expertCount: experts.length,
         archetypesUsed: experts.map((e) => e.archetype),
         targetReached: winnerScore.overall >= this.config.targetScore,
+        rateLimiterUsed: this.config.useRateLimiter,
+        sandboxUsed: this.config.useSandbox,
       },
     };
   }
@@ -374,6 +408,21 @@ export class Orchestrator {
     });
     this.votingSystem = new VotingSystem({ method: this.config.votingMethod });
     this.feedbackLoop = createFeedbackLoop(this.config.targetScore);
+
+    // Reinitialize rate limiter if enabled
+    if (this.config.useRateLimiter && !this.rateLimiter) {
+      this.rateLimiter = createRateLimiter(this.config.rateLimitConfig);
+    } else if (!this.config.useRateLimiter && this.rateLimiter) {
+      this.rateLimiter = undefined;
+    }
+
+    // Reinitialize sandbox manager if enabled
+    if (this.config.useSandbox && !this.sandboxManager) {
+      this.sandboxManager = createSandboxManager();
+    } else if (!this.config.useSandbox && this.sandboxManager) {
+      this.sandboxManager?.destroy();
+      this.sandboxManager = undefined;
+    }
   }
 
   /**
@@ -381,6 +430,29 @@ export class Orchestrator {
    */
   getConfig(): OrchestratorConfig {
     return { ...this.config };
+  }
+
+  /**
+   * Get rate limiter instance (if enabled)
+   */
+  getRateLimiter(): RateLimiter | undefined {
+    return this.rateLimiter;
+  }
+
+  /**
+   * Get sandbox manager instance (if enabled)
+   */
+  getSandboxManager(): SandboxManager | undefined {
+    return this.sandboxManager;
+  }
+
+  /**
+   * Cleanup resources (sandboxes, etc.)
+   */
+  cleanup(): void {
+    if (this.sandboxManager) {
+      this.sandboxManager.destroy();
+    }
   }
 }
 

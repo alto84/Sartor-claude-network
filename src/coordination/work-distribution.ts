@@ -18,6 +18,7 @@ import {
   AgentStatus,
   RegisteredAgent,
 } from '../subagent/registry';
+import { AgentMessageBus } from '../subagent/messaging';
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -212,10 +213,32 @@ export class WorkDistributor extends EventEmitter {
   private tasks: Map<string, Task> = new Map();
   private claimTimeoutTimers: Map<string, NodeJS.Timeout> = new Map();
   private completionTimes: number[] = [];
+  private messageBus?: AgentMessageBus;
 
-  constructor(registry?: SubagentRegistry) {
+  constructor(registry?: SubagentRegistry, messageBus?: AgentMessageBus) {
     super();
     this.registry = registry || getGlobalRegistry();
+    this.messageBus = messageBus;
+  }
+
+  /**
+   * Publish task status event to message bus if connected
+   */
+  private publishTaskEvent(
+    eventType: string,
+    taskId: string,
+    status: TaskStatus,
+    agentId?: string,
+    extra?: Record<string, unknown>
+  ): void {
+    if (this.messageBus) {
+      this.messageBus.publishToTopic(
+        'work-distributor',
+        'task.status',
+        eventType,
+        { taskId, status, agentId, timestamp: new Date().toISOString(), ...extra }
+      );
+    }
   }
 
   /**
@@ -287,6 +310,7 @@ export class WorkDistributor extends EventEmitter {
 
     this.tasks.set(id, task);
     this.emit('taskCreated', task);
+    this.publishTaskEvent('Task Created', id, task.status, undefined, { title: task.title });
 
     return task;
   }
@@ -365,6 +389,7 @@ export class WorkDistributor extends EventEmitter {
     this.setClaimTimeout(taskId);
 
     this.emit('taskClaimed', { task, agentId });
+    this.publishTaskEvent('Task Claimed', task.id, task.status, agentId);
 
     return { success: true, task };
   }
@@ -397,6 +422,7 @@ export class WorkDistributor extends EventEmitter {
     this.setProgressTimeout(taskId);
 
     this.emit('taskStarted', { task, agentId });
+    this.publishTaskEvent('Task Started', task.id, task.status, agentId);
 
     return task;
   }
@@ -447,6 +473,7 @@ export class WorkDistributor extends EventEmitter {
     this.unblockDependentTasks(taskId);
 
     this.emit('taskCompleted', { task, agentId, result });
+    this.publishTaskEvent('Task Completed', task.id, task.status, agentId);
 
     return task;
   }
@@ -486,6 +513,7 @@ export class WorkDistributor extends EventEmitter {
       task.error = error;
 
       this.emit('taskFailed', { task, agentId, error });
+      this.publishTaskEvent('Task Failed', task.id, task.status, agentId, { error });
     }
 
     // Clear timeout

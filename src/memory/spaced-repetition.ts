@@ -405,18 +405,19 @@ export async function performSelfTest(
   let totalConfidence = 0;
 
   for (const memory of sample) {
-    // Test recall without using embeddings
-    // In production: use LLM to test understanding
-    const recallSuccess = Math.random() > 0.2; // Mock: 80% success rate
-    const confidence = Math.random() * 0.5 + 0.5; // Mock: 0.5-1.0
-
-    totalConfidence += confidence;
-
-    if (recallSuccess && confidence > 0.6) {
-      results.successful++;
-    } else {
-      results.failed.push(memory);
-    }
+    // TODO: BLOCKER - Real recall testing mechanism needed
+    // Math.random() is NOT a valid measure of memory recall
+    // Options for actual implementation:
+    //   1. LLM-based testing: Prompt Claude to recall/apply the memory
+    //   2. Human-in-the-loop: Surface memories for human validation
+    //   3. Usage tracking: Measure if memory was actually retrieved and used
+    //   4. Cross-validation: Test against related memories for consistency
+    //
+    // Until implemented, this function should not be used in production
+    throw new Error(
+      'performSelfTest() requires real recall testing mechanism. ' +
+      'Math.random() is not a valid measure. See TODO comment for options.'
+    );
   }
 
   results.averageConfidence = results.tested > 0 ? totalConfidence / results.tested : 0;
@@ -489,18 +490,14 @@ export async function processDailyReviews(
   };
 
   for (const memory of queue.memories) {
-    // Perform self-test
-    const confidence = Math.random(); // Mock: replace with actual test
-
-    results.reviewed++;
-
-    if (confidence > 0.6) {
-      reinforceOnRecall(memory, confidence);
-      results.strengthened++;
-    } else {
-      flagForReview(memory);
-      results.flagged++;
-    }
+    // TODO: BLOCKER - Real recall testing needed (see performSelfTest)
+    // Math.random() is NOT a valid confidence measure
+    // This function cannot be used in production until actual recall testing is implemented
+    throw new Error(
+      'processDailyReviews() requires real recall testing mechanism. ' +
+      'Math.random() is not a valid confidence measure. ' +
+      'Implement actual LLM-based or human-validated recall testing first.'
+    );
   }
 
   return results;

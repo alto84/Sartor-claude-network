@@ -44,5 +44,16 @@ export class MockMemoryClient implements MemoryClient {
 }
 
 export function createMemoryClient(): MemoryClient {
-  return new MockMemoryClient();
+  // TODO: BLOCKER - Real MCP client implementation needed
+  // This should connect to actual MCP server or FileStore
+  // Current MockMemoryClient is NOT production-ready
+  // Options:
+  //   1. Integrate with FileStore (src/storage/file-store.ts)
+  //   2. Implement real MCP protocol client
+  //   3. Use stdio/HTTP transport to MCP server (src/mcp/server.ts)
+  throw new Error(
+    'createMemoryClient() requires real implementation. ' +
+    'MockMemoryClient should only be used in tests. ' +
+    'See TODO comment for integration options.'
+  );
 }

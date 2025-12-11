@@ -14,6 +14,8 @@ enum MemoryType {
   SEMANTIC = 'semantic',
   PROCEDURAL = 'procedural',
   WORKING = 'working',
+  REFINEMENT_TRACE = 'refinement_trace',
+  EXPERT_CONSENSUS = 'expert_consensus',
 }
 
 interface Memory {
@@ -172,6 +174,8 @@ export class FileStore {
         semantic: this.countByType(MemoryType.SEMANTIC),
         procedural: this.countByType(MemoryType.PROCEDURAL),
         working: this.countByType(MemoryType.WORKING),
+        refinement_trace: this.countByType(MemoryType.REFINEMENT_TRACE),
+        expert_consensus: this.countByType(MemoryType.EXPERT_CONSENSUS),
       },
     };
   }

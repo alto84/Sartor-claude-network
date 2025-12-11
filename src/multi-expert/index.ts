@@ -73,6 +73,11 @@ export {
   PoolStats,
   quickScore,
   rankResults,
+  // Phase 6 enhancements
+  ScoreDimension,
+  DimensionScore,
+  EnhancedSoftScore,
+  ScoringConfig,
 } from './soft-scorer';
 
 // Sandbox Executor
@@ -85,6 +90,25 @@ export {
   sandboxExecute,
   sandboxCommand,
 } from './sandbox-executor';
+
+// Sandbox (High-level sandbox management)
+export {
+  Sandbox,
+  SandboxManager,
+  ManagedSandboxConfig,
+  ExecutionTrace as SandboxExecutionTrace,
+  TraceStep,
+  ResourceUsage,
+  ResourceLimits,
+  ExecutionOptions,
+  SandboxStats,
+  DEFAULT_LIMITS,
+  DEFAULT_MANAGED_SANDBOX_CONFIG,
+  createSandbox,
+  createSandboxManager,
+  sandboxedExecute,
+  parallelSandboxedExecute,
+} from './sandbox';
 
 // Feedback Loop
 export {
@@ -125,3 +149,25 @@ export {
   createTestOrchestrator,
   orchestrateTask,
 } from './orchestrator';
+
+// Rate Limiter
+export {
+  RateLimiter,
+  RateLimitConfig,
+  Request,
+  RateLimitStats,
+  CostTracker,
+  TokenBucketRateLimiter,
+  SimpleCostTracker,
+  DEFAULT_RATE_LIMIT_CONFIG,
+  createRateLimiter,
+  createCostTracker,
+} from './rate-limiter';
+
+// Claude Executor (Real LLM Integration)
+export {
+  createClaudeExecutor,
+  createRateLimitedClaudeExecutor,
+  ClaudeExecutorConfig,
+  CostTracker as ClaudeCostTracker,
+} from './claude-executor';

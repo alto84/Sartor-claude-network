@@ -15,9 +15,16 @@ import { createMcpExpressApp } from '@modelcontextprotocol/sdk/server/express.js
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { isInitializeRequest } from '@modelcontextprotocol/sdk/types.js';
 import { FileStore, MemoryType } from './file-store';
+import { MultiTierStore } from './multi-tier-store';
 
-// Initialize file-based memory system (persisted to data/memories.json)
-const memory = new FileStore();
+// Use MultiTierStore for Firebase integration, with FileStore fallback
+// MultiTierStore automatically falls back to file storage if Firebase is unavailable
+const useMultiTier = process.env.USE_MULTI_TIER !== 'false';
+const multiTierStore = useMultiTier ? new MultiTierStore() : null;
+const fileStore = new FileStore();
+
+// Helper to check if we're using multi-tier storage
+const isMultiTier = () => multiTierStore !== null;
 
 // Create MCP server setup function
 function createMemoryServer(): Server {
@@ -127,27 +134,32 @@ function createMemoryServer(): Server {
             working: MemoryType.WORKING,
           };
 
-          const mem = memory.createMemory(
-            args.content as string,
-            typeMap[args.type as string] || MemoryType.WORKING,
-            {
-              importance_score: (args.importance as number) || 0.5,
-              tags: (args.tags as string[]) || [],
-            }
-          );
+          const memType = typeMap[args.type as string] || MemoryType.WORKING;
+          const memOptions = {
+            importance_score: (args.importance as number) || 0.5,
+            tags: (args.tags as string[]) || [],
+          };
+
+          // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+          const mem = isMultiTier()
+            ? await multiTierStore!.createMemory(args.content as string, memType, memOptions)
+            : fileStore.createMemory(args.content as string, memType, memOptions);
 
           return {
             content: [
               {
                 type: 'text',
-                text: JSON.stringify({ success: true, id: mem.id, type: mem.type }, null, 2),
+                text: JSON.stringify({ success: true, id: mem.id, type: mem.type, tier: isMultiTier() ? 'multi' : 'file' }, null, 2),
               },
             ],
           };
         }
 
         case 'memory_get': {
-          const mem = memory.getMemory(args.id as string);
+          // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+          const mem = isMultiTier()
+            ? await multiTierStore!.getMemory(args.id as string)
+            : fileStore.getMemory(args.id as string);
 
           if (!mem) {
             return {
@@ -168,13 +180,16 @@ function createMemoryServer(): Server {
             working: MemoryType.WORKING,
           };
 
-          const results = memory.searchMemories(
-            {
-              type: args.type ? [typeMap[args.type as string]] : undefined,
-              min_importance: args.min_importance as number,
-            },
-            (args.limit as number) || 10
-          );
+          const searchFilters = {
+            type: args.type ? [typeMap[args.type as string]] : undefined,
+            min_importance: args.min_importance as number,
+          };
+          const searchLimit = (args.limit as number) || 10;
+
+          // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+          const results = isMultiTier()
+            ? await multiTierStore!.searchMemories(searchFilters, searchLimit)
+            : fileStore.searchMemories(searchFilters, searchLimit);
 
           return {
             content: [
@@ -191,7 +206,10 @@ function createMemoryServer(): Server {
         }
 
         case 'memory_stats': {
-          const stats = memory.getStats();
+          // Use MultiTierStore (async) if available, otherwise FileStore (sync)
+          const stats = isMultiTier()
+            ? await multiTierStore!.getStats()
+            : fileStore.getStats();
           return {
             content: [{ type: 'text', text: JSON.stringify(stats, null, 2) }],
           };

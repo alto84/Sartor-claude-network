@@ -13,6 +13,7 @@
  */
 
 import { ExpertResult } from './execution-engine';
+import { ExpertPerformance } from './memory-integration';
 
 /**
  * Vote cast by an expert
@@ -94,6 +95,12 @@ export interface VotingConfig {
 
   /** Tie-breaking strategy */
   tieBreaker: 'random' | 'first' | 'highest-confidence';
+
+  /** Whether to track voting history for learning */
+  trackHistory: boolean;
+
+  /** Maximum history entries to retain */
+  maxHistorySize: number;
 }
 
 /**
@@ -105,6 +112,8 @@ export const DEFAULT_VOTING_CONFIG: VotingConfig = {
   majorityThreshold: 0.5,
   useWeights: true,
   tieBreaker: 'highest-confidence',
+  trackHistory: true,
+  maxHistorySize: 100,
 };
 
 /**
@@ -112,9 +121,11 @@ export const DEFAULT_VOTING_CONFIG: VotingConfig = {
  */
 export class VotingSystem {
   private config: VotingConfig;
+  private votingHistory: VotingResult[];
 
   constructor(config: Partial<VotingConfig> = {}) {
     this.config = { ...DEFAULT_VOTING_CONFIG, ...config };
+    this.votingHistory = [];
   }
 
   /**
@@ -125,18 +136,31 @@ export class VotingSystem {
       throw new Error(`Minimum ${this.config.minVotes} votes required, got ${votes.length}`);
     }
 
+    let result: VotingResult;
+
     switch (this.config.method) {
       case 'majority':
-        return this.majorityVote(votes, options);
+        result = this.majorityVote(votes, options);
+        break;
       case 'ranked-choice':
-        return this.rankedChoiceVote(votes, options);
+        result = this.rankedChoiceVote(votes, options);
+        break;
       case 'borda':
-        return this.bordaCount(votes, options);
+        result = this.bordaCount(votes, options);
+        break;
       case 'weighted':
-        return this.weightedVote(votes, options);
+        result = this.weightedVote(votes, options);
+        break;
       default:
         throw new Error(`Unknown voting method: ${this.config.method}`);
     }
+
+    // Record history if enabled
+    if (this.config.trackHistory) {
+      this.recordVotingHistory(result);
+    }
+
+    return result;
   }
 
   /**
@@ -211,7 +235,7 @@ export class VotingSystem {
       }
 
       // Check for majority winner
-      for (const [option, count] of counts) {
+      for (const [option, count] of Array.from(counts.entries())) {
         if (count / totalVotes > this.config.majorityThreshold) {
           rounds.push({
             round: rounds.length + 1,
@@ -233,7 +257,7 @@ export class VotingSystem {
       // Eliminate lowest option
       let minCount = Infinity;
       let eliminated = '';
-      for (const [option, count] of counts) {
+      for (const [option, count] of Array.from(counts.entries())) {
         if (count < minCount) {
           minCount = count;
           eliminated = option;
@@ -336,7 +360,7 @@ export class VotingSystem {
     let maxVotes = -1;
     const winners: string[] = [];
 
-    for (const [option, count] of voteCounts) {
+    for (const [option, count] of Array.from(voteCounts.entries())) {
       if (count > maxVotes) {
         maxVotes = count;
         winners.length = 0;
@@ -388,6 +412,117 @@ export class VotingSystem {
 
     // Consensus = winner's share of votes
     return maxCount / totalVotes;
+  }
+
+  /**
+   * Calculate vote weights from expert performance history
+   *
+   * Uses a scoring formula that combines:
+   * - Success rate (40% weight)
+   * - Average score (40% weight)
+   * - Average confidence (20% weight)
+   *
+   * Normalized to 0-1 range with baseline weight of 0.5 for unknown experts
+   */
+  calculateWeights(expertHistory: ExpertPerformance[]): Map<string, number> {
+    const weights = new Map<string, number>();
+
+    if (expertHistory.length === 0) {
+      return weights;
+    }
+
+    // Find max values for normalization
+    const maxScore = Math.max(...expertHistory.map((h) => h.avgScore), 1);
+    const maxConfidence = Math.max(...expertHistory.map((h) => h.avgConfidence), 1);
+
+    for (const history of expertHistory) {
+      // Weighted combination of metrics
+      const successComponent = history.successRate * 0.4;
+      const scoreComponent = (history.avgScore / maxScore) * 0.4;
+      const confidenceComponent = (history.avgConfidence / maxConfidence) * 0.2;
+
+      // Combine and clamp to 0-1
+      const weight = Math.max(0, Math.min(1, successComponent + scoreComponent + confidenceComponent));
+
+      weights.set(history.expertId, weight);
+    }
+
+    return weights;
+  }
+
+  /**
+   * Record voting result to history
+   */
+  recordVotingHistory(result: VotingResult): void {
+    this.votingHistory.push(result);
+
+    // Trim history if exceeds max size
+    if (this.votingHistory.length > this.config.maxHistorySize) {
+      this.votingHistory = this.votingHistory.slice(-this.config.maxHistorySize);
+    }
+  }
+
+  /**
+   * Get voting history
+   */
+  getVotingHistory(): VotingResult[] {
+    return [...this.votingHistory];
+  }
+
+  /**
+   * Clear voting history
+   */
+  clearVotingHistory(): void {
+    this.votingHistory = [];
+  }
+
+  /**
+   * Get voting statistics from history
+   */
+  getVotingStats(): {
+    totalVotes: number;
+    averageConsensus: number;
+    methodCounts: Record<VotingMethod, number>;
+    winnerFrequency: Map<string, number>;
+  } {
+    if (this.votingHistory.length === 0) {
+      return {
+        totalVotes: 0,
+        averageConsensus: 0,
+        methodCounts: {
+          majority: 0,
+          'ranked-choice': 0,
+          borda: 0,
+          weighted: 0,
+        },
+        winnerFrequency: new Map(),
+      };
+    }
+
+    const methodCounts: Record<VotingMethod, number> = {
+      majority: 0,
+      'ranked-choice': 0,
+      borda: 0,
+      weighted: 0,
+    };
+
+    const winnerFrequency = new Map<string, number>();
+    let totalConsensus = 0;
+
+    for (const result of this.votingHistory) {
+      methodCounts[result.method]++;
+      totalConsensus += result.consensusLevel;
+
+      const currentCount = winnerFrequency.get(result.winner) || 0;
+      winnerFrequency.set(result.winner, currentCount + 1);
+    }
+
+    return {
+      totalVotes: this.votingHistory.length,
+      averageConsensus: totalConsensus / this.votingHistory.length,
+      methodCounts,
+      winnerFrequency,
+    };
   }
 }
 

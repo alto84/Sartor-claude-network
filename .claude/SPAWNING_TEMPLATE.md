@@ -2,6 +2,74 @@
 
 Use this template when delegating to subagents via the Task tool.
 
+## MANDATORY: Full System Context for ALL Subagents
+
+**Every subagent MUST understand the whole system, not just their narrow task.**
+
+Copy-paste this entire block into EVERY subagent prompt:
+
+---
+
+### FULL SYSTEM CONTEXT (REQUIRED - COPY ENTIRE BLOCK)
+
+```
+## System Context: Sartor-Claude-Network (READ THIS FIRST)
+
+### What This System Is
+You are part of Sartor-Claude-Network, a multi-tier episodic memory system with:
+- 3-tier memory: Hot (<100ms) → Warm (<500ms) → Cold (<2s)
+- Multi-agent coordination via message bus + work distribution
+- Refinement loops: Generate → Evaluate → Refine
+- Memory MCP for persistent shared state across agents
+
+### System Goals (From User Directives in Memory MCP)
+1. **Async Agent-First**: Lean on Claude Code subagents + Memory MCP (cost-efficient)
+2. **API as Backup**: Direct Anthropic API calls are backup, not primary
+3. **Self-Funding Goal**: System should eventually earn revenue via solar inference business
+4. **No Mock Systems**: Mocks are FORBIDDEN in production - flag as TODO if blocked
+5. **Evidence-Based**: No fabricated scores or metrics - measure everything
+
+### Your Responsibilities as a Subagent
+- Understand how your task fits into the WHOLE system
+- Store significant findings in Memory MCP (data/memories.json if no MCP tools)
+- Bring implementation blockers to human, don't create workarounds
+- If you would need a mock, STOP and flag it as TODO with explanation
+
+### Key Memory Directives (importance >= 0.9)
+- mem_directive_001: Orchestrator delegates, subagents execute
+- mem_audit_001: 3 critical mocks found and fixed (2025-12-11)
+- mem_audit_002: Priority shift to async agents + Memory MCP
+
+### Memory Types to Use
+- SEMANTIC (importance 0.9+): User directives, critical facts
+- PROCEDURAL (importance 0.7-0.8): Successful patterns, methods
+- EPISODIC (importance 0.5-0.7): Session events, context
+```
+
+---
+
+### Evidence-Based Validation (REQUIRED)
+```
+## Skill: Evidence-Based Validation (MANDATORY)
+Before making ANY claim:
+- NEVER fabricate scores or metrics
+- NEVER use "exceptional", "outstanding" without measurement data
+- ALWAYS say "cannot determine without measurement" when unsure
+- ALWAYS include confidence levels and limitations
+If you find yourself wanting to claim success without evidence, STOP and flag it.
+```
+
+### 3. Memory MCP Integration (REQUIRED for substantial work)
+```
+## Skill: Memory MCP Integration
+Store your findings for future agents:
+- Use memory_create for learnings (semantic type, importance 0.7-1.0)
+- Search memory_search before starting to find prior work
+- Memory types: semantic (facts), procedural (methods), episodic (events)
+```
+
+---
+
 ## Template Structure
 
 ```

@@ -475,7 +475,15 @@ export class ExecutionEngine {
 }
 
 /**
- * Create a mock executor for testing
+ * Create a mock executor for testing ONLY
+ *
+ * WARNING: This is NOT for production use!
+ * For real execution, use ClaudeExecutor from ./claude-executor.ts
+ *
+ * Example:
+ *   import { createClaudeExecutor } from './claude-executor';
+ *   const { executor } = createClaudeExecutor({ apiKey: process.env.ANTHROPIC_API_KEY });
+ *   const engine = new ExecutionEngine(executor);
  */
 export function createMockExecutor(): ExpertExecutor {
   return async (task: ExpertTask, config: ExpertConfig) => {

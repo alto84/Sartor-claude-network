@@ -11,6 +11,7 @@ import {
   createMockExecutor,
   ExecutionEngine,
   ExpertTask,
+  ExpertPerformance,
 } from '../index';
 
 describe('VotingSystem', () => {
@@ -180,6 +181,196 @@ describe('VotingSystem', () => {
 
       expect(voteResult.winner).toBeDefined();
       expect(voteResult.totalVotes).toBe(execResult.successCount);
+    });
+  });
+
+  describe('Voting History', () => {
+    test('records voting history when enabled', () => {
+      const voting = new VotingSystem({ method: 'majority', trackHistory: true });
+
+      const votes: ExpertVote[] = [
+        { expertId: 'e1', rankings: ['A', 'B'], weight: 1, confidence: 0.9 },
+        { expertId: 'e2', rankings: ['B', 'A'], weight: 1, confidence: 0.8 },
+      ];
+
+      const result1 = voting.vote(votes, ['A', 'B']);
+      const result2 = voting.vote(votes, ['A', 'B']);
+
+      const history = voting.getVotingHistory();
+      expect(history).toHaveLength(2);
+      expect(history[0]).toEqual(result1);
+      expect(history[1]).toEqual(result2);
+    });
+
+    test('does not record history when disabled', () => {
+      const voting = new VotingSystem({ method: 'majority', trackHistory: false });
+
+      const votes: ExpertVote[] = [
+        { expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 },
+      ];
+
+      voting.vote(votes, ['A']);
+      const history = voting.getVotingHistory();
+
+      expect(history).toHaveLength(0);
+    });
+
+    test('respects max history size', () => {
+      const voting = new VotingSystem({
+        method: 'majority',
+        trackHistory: true,
+        maxHistorySize: 2,
+      });
+
+      const votes: ExpertVote[] = [
+        { expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 },
+      ];
+
+      voting.vote(votes, ['A']);
+      voting.vote(votes, ['A']);
+      voting.vote(votes, ['A']);
+
+      const history = voting.getVotingHistory();
+      expect(history).toHaveLength(2);
+    });
+
+    test('clears history', () => {
+      const voting = new VotingSystem({ method: 'majority', trackHistory: true });
+
+      const votes: ExpertVote[] = [
+        { expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 },
+      ];
+
+      voting.vote(votes, ['A']);
+      expect(voting.getVotingHistory()).toHaveLength(1);
+
+      voting.clearVotingHistory();
+      expect(voting.getVotingHistory()).toHaveLength(0);
+    });
+
+    test('calculates voting statistics', () => {
+      const voting = new VotingSystem({ method: 'majority', trackHistory: true });
+
+      const votes: ExpertVote[] = [
+        { expertId: 'e1', rankings: ['A', 'B'], weight: 1, confidence: 0.9 },
+        { expertId: 'e2', rankings: ['A', 'B'], weight: 1, confidence: 0.8 },
+      ];
+
+      voting.vote(votes, ['A', 'B']);
+      voting.vote(votes, ['A', 'B']);
+
+      const stats = voting.getVotingStats();
+
+      expect(stats.totalVotes).toBe(2);
+      expect(stats.averageConsensus).toBeGreaterThan(0);
+      expect(stats.methodCounts.majority).toBe(2);
+      expect(stats.winnerFrequency.get('A')).toBe(2);
+    });
+  });
+
+  describe('Weight Calculation', () => {
+    test('calculates weights from expert performance', () => {
+      const voting = new VotingSystem();
+
+      const expertHistory: ExpertPerformance[] = [
+        {
+          expertId: 'e1',
+          totalExecutions: 10,
+          avgScore: 85,
+          avgConfidence: 0.9,
+          successRate: 0.9,
+        },
+        {
+          expertId: 'e2',
+          totalExecutions: 10,
+          avgScore: 65,
+          avgConfidence: 0.7,
+          successRate: 0.6,
+        },
+        {
+          expertId: 'e3',
+          totalExecutions: 10,
+          avgScore: 50,
+          avgConfidence: 0.5,
+          successRate: 0.4,
+        },
+      ];
+
+      const weights = voting.calculateWeights(expertHistory);
+
+      expect(weights.size).toBe(3);
+      expect(weights.get('e1')).toBeGreaterThan(weights.get('e2')!);
+      expect(weights.get('e2')).toBeGreaterThan(weights.get('e3')!);
+
+      // All weights should be in 0-1 range
+      for (const weight of weights.values()) {
+        expect(weight).toBeGreaterThanOrEqual(0);
+        expect(weight).toBeLessThanOrEqual(1);
+      }
+    });
+
+    test('handles empty expert history', () => {
+      const voting = new VotingSystem();
+      const weights = voting.calculateWeights([]);
+
+      expect(weights.size).toBe(0);
+    });
+
+    test('normalizes weights correctly', () => {
+      const voting = new VotingSystem();
+
+      const expertHistory: ExpertPerformance[] = [
+        {
+          expertId: 'e1',
+          totalExecutions: 5,
+          avgScore: 100,
+          avgConfidence: 1.0,
+          successRate: 1.0,
+        },
+        {
+          expertId: 'e2',
+          totalExecutions: 5,
+          avgScore: 0,
+          avgConfidence: 0,
+          successRate: 0,
+        },
+      ];
+
+      const weights = voting.calculateWeights(expertHistory);
+
+      // Best performer should get high weight
+      expect(weights.get('e1')).toBeGreaterThan(0.8);
+
+      // Worst performer should get low weight
+      expect(weights.get('e2')).toBeLessThan(0.3);
+    });
+
+    test('combines success rate, score, and confidence', () => {
+      const voting = new VotingSystem();
+
+      // Expert with high score but low success rate
+      const expertHistory: ExpertPerformance[] = [
+        {
+          expertId: 'e1',
+          totalExecutions: 10,
+          avgScore: 90,
+          avgConfidence: 0.9,
+          successRate: 0.3,
+        },
+        {
+          expertId: 'e2',
+          totalExecutions: 10,
+          avgScore: 70,
+          avgConfidence: 0.7,
+          successRate: 0.9,
+        },
+      ];
+
+      const weights = voting.calculateWeights(expertHistory);
+
+      // Both should have reasonable weights since they excel in different areas
+      expect(weights.get('e1')).toBeGreaterThan(0.3);
+      expect(weights.get('e2')).toBeGreaterThan(0.5);
     });
   });
 });
