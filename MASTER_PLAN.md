@@ -544,4 +544,62 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
   - Key patterns: Parallel experts, voting, diversity-first selection, soft scoring
   - Results: 31% → 54% accuracy through refinement harness
 
-**Next Priority:** Phase 6 Week 1 - Multi-Expert Execution Engine and Expert Configuration System.
+**Phase 6 Status:** ✅ COMPLETE - All deliverables implemented, 1058 tests passing.
+
+---
+
+## Phase 7: Infrastructure Activation & Evolution Systems
+
+<!-- AGENT:executive-claude CAN EDIT -->
+
+**Status:** 🔜 PLANNED
+**Duration:** 2-3 weeks
+**Dependency:** Phase 6 complete
+
+### Week 1: Firebase Full Activation
+
+**Goal:** Connect the existing Firebase infrastructure to live database
+
+- [ ] Set up Firebase credentials (service account JSON)
+- [ ] Configure environment variables (FIREBASE_DATABASE_URL)
+- [ ] Test MultiTierStore with live Firebase
+- [ ] Validate hot tier latency (<100ms)
+- [ ] Enable MCP servers to use Firebase as primary
+
+**Files:**
+- `src/mcp/firebase-init.ts` (exists, needs credentials)
+- `src/mcp/multi-tier-store.ts` (exists, ready)
+- `config/service-account.json` (needs creation)
+
+### Week 2: Ways of Working Evolution System
+
+**Goal:** Systematic evolution of patterns as capabilities change
+
+- [ ] Deploy ways-of-working-evolution skill
+- [ ] Implement template lifecycle management (prevent proliferation)
+- [ ] Set up periodic evolution audits
+- [ ] Track pattern usage via Memory MCP
+- [ ] Create template registry with deprecation metadata
+
+**Files:**
+- `.claude/skills/ways-of-working-evolution/SKILL.md` (exists)
+- `.claude/TEMPLATE_REGISTRY.md` (new)
+- Memory MCP tracking for template usage
+
+### Week 3: Production Hardening
+
+**Goal:** Ready for sustained autonomous operation
+
+- [ ] Fix flaky rate-limiter priority test
+- [ ] Clean up unused files (based on audit results)
+- [ ] Remove skipped tests or enable them
+- [ ] Performance benchmarking with real workloads
+- [ ] Documentation consolidation
+
+### Exit Criteria
+
+- [ ] Firebase hot tier active with <100ms latency
+- [ ] Template proliferation under control
+- [ ] All tests passing (no skipped, no flaky)
+- [ ] Evolution system actively tracking patterns
+- [ ] System can self-fund via solar inference (stretch goal)

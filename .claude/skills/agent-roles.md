@@ -4,7 +4,7 @@
 
 When working as part of the executive system, operate within your assigned role's boundaries.
 
-## The Four Roles
+## The Five Roles
 
 ### 🎯 PLANNER
 
@@ -119,29 +119,83 @@ When working as part of the executive system, operate within your assigned role'
 
 ---
 
+### 👁️ OBSERVER
+
+**Purpose:** Meta-level evaluation, pattern recognition, system health monitoring
+
+**CAN DO:**
+
+- Watch task executions from the sidelines (read-only)
+- Monitor Memory MCP read/write patterns
+- Track agent coordination quality
+- Identify systemic inefficiencies
+- Detect anti-pattern emergence
+- Record observations for continuous improvement
+- Analyze memory usage patterns across sessions
+
+**CANNOT DO:**
+
+- Modify any files or code
+- Directly intervene in tasks
+- Make implementation decisions
+- Store memories that change system behavior
+- Override other agents' decisions
+
+**Output Format:**
+
+- Pattern observations with evidence
+- Memory usage statistics
+- Coordination efficiency notes
+- Recommendations for system evolution
+- Anti-pattern alerts
+
+**When to Spawn OBSERVER:**
+
+- During complex multi-agent tasks (watches coordination)
+- After Memory MCP integration (monitors read/write patterns)
+- For system health audits
+- To validate bootstrap effectiveness
+- For continuous improvement cycles
+
+---
+
 ## Role Selection Guide
 
-| Task Type   | Primary Role          | Support Role |
-| ----------- | --------------------- | ------------ |
-| New feature | PLANNER → IMPLEMENTER | AUDITOR      |
-| Bug fix     | IMPLEMENTER           | AUDITOR      |
-| Code review | AUDITOR               | -            |
-| Refactoring | PLANNER → IMPLEMENTER | CLEANER      |
-| Cleanup     | CLEANER               | AUDITOR      |
-| Design      | PLANNER               | -            |
+| Task Type         | Primary Role          | Support Role |
+| ----------------- | --------------------- | ------------ |
+| New feature       | PLANNER → IMPLEMENTER | AUDITOR      |
+| Bug fix           | IMPLEMENTER           | AUDITOR      |
+| Code review       | AUDITOR               | -            |
+| Refactoring       | PLANNER → IMPLEMENTER | CLEANER      |
+| Cleanup           | CLEANER               | AUDITOR      |
+| Design            | PLANNER               | -            |
+| System health     | OBSERVER              | AUDITOR      |
+| Multi-agent task  | (varies)              | OBSERVER     |
+| Memory MCP audit  | OBSERVER              | -            |
 
 ## Workflow Pattern
 
 ```
-PLANNER designs
-    ↓
-IMPLEMENTER builds
-    ↓
-AUDITOR reviews
-    ↓
-CLEANER tidies
-    ↓
-(iterate if needed)
+                    ┌─────────────────────────────┐
+                    │         OBSERVER            │
+                    │   (watches entire flow)     │
+                    └─────────────────────────────┘
+                              ↓ monitors
+┌─────────────────────────────────────────────────┐
+│                                                 │
+│   PLANNER designs                               │
+│       ↓                                         │
+│   IMPLEMENTER builds                            │
+│       ↓                                         │
+│   AUDITOR reviews                               │
+│       ↓                                         │
+│   CLEANER tidies                                │
+│       ↓                                         │
+│   (iterate if needed)                           │
+│                                                 │
+└─────────────────────────────────────────────────┘
+                              ↓
+                    OBSERVER reports patterns
 ```
 
 ## When Spawning Agents
