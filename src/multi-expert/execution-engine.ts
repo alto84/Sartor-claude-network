@@ -73,6 +73,9 @@ export interface ExpertResult {
 
   /** Detailed execution trace */
   trace?: ExecutionTrace;
+
+  /** Cost metrics for this execution */
+  costMetrics?: ExpertCostMetrics;
 }
 
 /**
@@ -159,6 +162,9 @@ export interface MultiExpertResult {
 
   /** Execution summary */
   summary: ExecutionSummary;
+
+  /** Cost summary for this execution */
+  executionCosts?: ExpertCostMetrics;
 }
 
 /**
@@ -179,6 +185,52 @@ export interface ExecutionSummary {
 
   /** Agreement level (0-1, higher = more consensus) */
   agreementLevel: number;
+}
+
+/**
+ * Cost metrics for a single expert execution
+ */
+export interface ExpertCostMetrics {
+  /** Estimated input tokens consumed */
+  inputTokens: number;
+
+  /** Estimated output tokens generated */
+  outputTokens: number;
+
+  /** Total tokens used */
+  totalTokens: number;
+
+  /** Estimated cost in USD */
+  estimatedCostUSD: number;
+
+  /** Tokens saved from early termination (if applicable) */
+  tokensSavedByEarlyTermination?: number;
+
+  /** Cost saved from early termination (if applicable) */
+  costSavedByEarlyTerminationUSD?: number;
+}
+
+/**
+ * Aggregated cost information across all executions
+ */
+export interface AccumulatedCosts {
+  /** Total tokens used across all experts and executions */
+  totalTokensUsed: number;
+
+  /** Total estimated cost in USD */
+  totalCostUSD: number;
+
+  /** Tokens saved across all early terminations */
+  totalTokensSaved: number;
+
+  /** Cost saved across all early terminations */
+  totalCostSavedUSD: number;
+
+  /** Per-expert cost breakdown */
+  perExpertCosts: Map<string, ExpertCostMetrics>;
+
+  /** Cost efficiency metric (output quality per dollar) */
+  costEfficiency: number;
 }
 
 /**
@@ -221,17 +273,38 @@ export type ExpertExecutor = (
 ) => Promise<{ output: unknown; score: number; confidence: number; iterations: number }>;
 
 /**
+ * Token pricing per 1M tokens for different Claude models (in USD)
+ */
+const TOKEN_PRICING: Record<string, { input: number; output: number }> = {
+  'claude-3-opus': { input: 15, output: 75 },
+  'claude-3-sonnet': { input: 3, output: 15 },
+  'claude-3-haiku': { input: 0.25, output: 1.25 },
+  'claude-3.5-sonnet': { input: 3, output: 15 },
+  'claude-3.5-haiku': { input: 0.25, output: 1.25 },
+  default: { input: 3, output: 15 }, // Fallback pricing
+};
+
+/**
  * Multi-Expert Execution Engine
  */
 export class ExecutionEngine {
   private config: ExecutionEngineConfig;
   private executor: ExpertExecutor;
   private activeExecutions: Map<string, Promise<ExpertResult>>;
+  private accumulatedCosts: AccumulatedCosts;
 
   constructor(executor: ExpertExecutor, config: Partial<ExecutionEngineConfig> = {}) {
     this.config = { ...DEFAULT_ENGINE_CONFIG, ...config };
     this.executor = executor;
     this.activeExecutions = new Map();
+    this.accumulatedCosts = {
+      totalTokensUsed: 0,
+      totalCostUSD: 0,
+      totalTokensSaved: 0,
+      totalCostSavedUSD: 0,
+      perExpertCosts: new Map(),
+      costEfficiency: 0,
+    };
   }
 
   /**

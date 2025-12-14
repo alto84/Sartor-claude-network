@@ -44,6 +44,78 @@ import { RateLimiter, createRateLimiter, RateLimitConfig } from './rate-limiter'
 import { SandboxManager, createSandboxManager, ManagedSandboxConfig } from './sandbox';
 
 /**
+ * Problem type categories for task routing
+ */
+export type ProblemType =
+  | 'algorithmic' // Algorithm design, optimization
+  | 'design' // Architecture, system design
+  | 'debugging' // Bug fixing, troubleshooting
+  | 'refactoring' // Code improvement, cleanup
+  | 'testing' // Test writing, QA
+  | 'documentation' // Docs, comments
+  | 'integration' // API integration, connection
+  | 'performance' // Optimization, scaling
+  | 'security' // Security concerns, validation
+  | 'general'; // General purpose tasks
+
+/**
+ * Complexity assessment for a task
+ */
+export enum Complexity {
+  TRIVIAL = 'trivial', // Simple, straightforward
+  LOW = 'low', // Basic problem
+  MEDIUM = 'medium', // Moderate difficulty
+  HIGH = 'high', // Complex problem
+  CRITICAL = 'critical', // Very complex, high stakes
+}
+
+/**
+ * Task analysis result from Poetiq pattern
+ */
+export interface TaskAnalysis {
+  /** Unique analysis ID */
+  id: string;
+
+  /** Identified problem type */
+  problemType: ProblemType;
+
+  /** Assessed complexity */
+  complexity: Complexity;
+
+  /** Domain/category tags */
+  domains: string[];
+
+  /** Key characteristics identified */
+  characteristics: string[];
+
+  /** Expert archetypes ranked by suitability */
+  recommendedArchetypes: Array<{
+    archetype: ExpertArchetype;
+    score: number; // 0-1, based on domain fit and historical performance
+    reasoning: string;
+  }>;
+
+  /** Confidence in analysis (0-1) */
+  confidence: number;
+
+  /** Relevant past memories for this problem type */
+  relevantMemories: ExpertMemory[];
+
+  /** Expert performance history for this problem type */
+  expertPerformance: Map<ExpertArchetype, { avgScore: number; attempts: number }>;
+}
+
+/**
+ * Scoring weights for analysis (configurable)
+ */
+interface AnalysisWeights {
+  domainFit: number; // How well archetype fits domain
+  historicalPerformance: number; // Past success rate
+  complexityMatch: number; // How well archetype handles complexity
+  recentSuccess: number; // Recent task success
+}
+
+/**
  * Orchestrator configuration
  */
 export interface OrchestratorConfig {

@@ -101,6 +101,102 @@ export interface VotingConfig {
 
   /** Maximum history entries to retain */
   maxHistorySize: number;
+
+  /** Whether to track detailed metrics */
+  trackMetrics?: boolean;
+
+  /** Whether to log voting distribution */
+  logVotingDistribution?: boolean;
+}
+
+/**
+ * Per-vote consensus tracking
+ */
+export interface VoteConsensusMetric {
+  /** Consensus level for this vote */
+  consensusLevel: number;
+
+  /** Method used */
+  method: VotingMethod;
+
+  /** Winner */
+  winner: string;
+
+  /** Total votes cast */
+  totalVotes: number;
+
+  /** Timestamp of vote */
+  timestamp: number;
+}
+
+/**
+ * Strategy performance metrics
+ */
+export interface StrategyMetrics {
+  /** Number of times this strategy was used */
+  usage: number;
+
+  /** Average consensus level achieved */
+  avgConsensus: number;
+
+  /** Min consensus level */
+  minConsensus: number;
+
+  /** Max consensus level */
+  maxConsensus: number;
+
+  /** Standard deviation of consensus */
+  stdDevConsensus: number;
+
+  /** Winners produced by this strategy */
+  winners: Map<string, number>;
+}
+
+/**
+ * Voting distribution metrics
+ */
+export interface VotingDistribution {
+  /** Option ID */
+  option: string;
+
+  /** Vote count or weight */
+  votes: number;
+
+  /** Percentage of total */
+  percentage: number;
+
+  /** Experts who voted for this option */
+  expertIds: string[];
+}
+
+/**
+ * Complete voting metrics
+ */
+export interface VotingMetrics {
+  /** Total voting rounds tracked */
+  totalRounds: number;
+
+  /** Metrics per voting strategy */
+  strategyMetrics: Record<VotingMethod, StrategyMetrics>;
+
+  /** All consensus levels recorded */
+  consensusHistogram: VoteConsensusMetric[];
+
+  /** Latest voting distribution */
+  latestDistribution: VotingDistribution[];
+
+  /** Overall average consensus */
+  overallAvgConsensus: number;
+
+  /** Distribution of consensus levels (buckets 0-1 in 0.1 increments) */
+  consensusBuckets: Record<string, number>;
+
+  /** Strategy effectiveness ranking */
+  strategyRanking: Array<{
+    method: VotingMethod;
+    avgConsensus: number;
+    winRate: number;
+  }>;
 }
 
 /**
@@ -114,6 +210,8 @@ export const DEFAULT_VOTING_CONFIG: VotingConfig = {
   tieBreaker: 'highest-confidence',
   trackHistory: true,
   maxHistorySize: 100,
+  trackMetrics: true,
+  logVotingDistribution: true,
 };
 
 /**
@@ -122,6 +220,42 @@ export const DEFAULT_VOTING_CONFIG: VotingConfig = {
 export class VotingSystem {
   private config: VotingConfig;
   private votingHistory: VotingResult[];
+  private consensusMetrics: VoteConsensusMetric[] = [];
+  private strategyMetrics: Record<VotingMethod, StrategyMetrics> = {
+    majority: {
+      usage: 0,
+      avgConsensus: 0,
+      minConsensus: 1,
+      maxConsensus: 0,
+      stdDevConsensus: 0,
+      winners: new Map(),
+    },
+    'ranked-choice': {
+      usage: 0,
+      avgConsensus: 0,
+      minConsensus: 1,
+      maxConsensus: 0,
+      stdDevConsensus: 0,
+      winners: new Map(),
+    },
+    borda: {
+      usage: 0,
+      avgConsensus: 0,
+      minConsensus: 1,
+      maxConsensus: 0,
+      stdDevConsensus: 0,
+      winners: new Map(),
+    },
+    weighted: {
+      usage: 0,
+      avgConsensus: 0,
+      minConsensus: 1,
+      maxConsensus: 0,
+      stdDevConsensus: 0,
+      winners: new Map(),
+    },
+  };
+  private latestDistribution: VotingDistribution[] = [];
 
   constructor(config: Partial<VotingConfig> = {}) {
     this.config = { ...DEFAULT_VOTING_CONFIG, ...config };
@@ -158,6 +292,17 @@ export class VotingSystem {
     // Record history if enabled
     if (this.config.trackHistory) {
       this.recordVotingHistory(result);
+    }
+
+    // Track metrics if enabled
+    if (this.config.trackMetrics !== false) {
+      this.trackConsensusMetric(result);
+      this.trackStrategyPerformance(result, votes, options);
+    }
+
+    // Log voting distribution if enabled
+    if (this.config.logVotingDistribution !== false) {
+      this.logVotingDistribution(result, votes);
     }
 
     return result;
@@ -474,6 +619,56 @@ export class VotingSystem {
    */
   clearVotingHistory(): void {
     this.votingHistory = [];
+  }
+
+  /**
+   * Track consensus metric from voting result
+   */
+  private trackConsensusMetric(result: VotingResult): void {
+    // Stub implementation - tracks voting consensus metrics
+    this.consensusMetrics.push({
+      consensusLevel: result.consensusLevel,
+      method: result.method,
+      winner: result.winner,
+      totalVotes: result.totalVotes,
+      timestamp: Date.now(),
+    });
+  }
+
+  /**
+   * Track strategy performance metrics
+   */
+  private trackStrategyPerformance(
+    result: VotingResult,
+    votes: ExpertVote[],
+    options: string[]
+  ): void {
+    // Stub implementation - tracks strategy performance
+    const metrics = this.strategyMetrics[result.method];
+    if (metrics) {
+      metrics.usage++;
+      metrics.avgConsensus = (metrics.avgConsensus * (metrics.usage - 1) + result.consensusLevel) / metrics.usage;
+      metrics.maxConsensus = Math.max(metrics.maxConsensus, result.consensusLevel);
+      metrics.minConsensus = Math.min(metrics.minConsensus, result.consensusLevel);
+
+      const currentCount = metrics.winners.get(result.winner) || 0;
+      metrics.winners.set(result.winner, currentCount + 1);
+    }
+  }
+
+  /**
+   * Log voting distribution
+   */
+  private logVotingDistribution(result: VotingResult, votes: ExpertVote[]): void {
+    // Stub implementation - logs voting distribution
+    this.latestDistribution = Array.from(result.voteCounts.entries()).map(([option, count]) => ({
+      option,
+      votes: count,
+      percentage: (count / result.totalVotes) * 100,
+      expertIds: votes
+        .filter((vote) => vote.rankings[0] === option)
+        .map((vote) => vote.expertId),
+    }));
   }
 
   /**

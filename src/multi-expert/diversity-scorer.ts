@@ -77,6 +77,54 @@ export interface DiversityScorerConfig {
 }
 
 /**
+ * Diversity statistics and metrics
+ */
+export interface DiversityStats {
+  /** Total number of scoring operations */
+  totalScores: number;
+
+  /** Average diversity score over time */
+  avgDiversityScore: number;
+
+  /** Minimum diversity score recorded */
+  minDiversityScore: number;
+
+  /** Maximum diversity score recorded */
+  maxDiversityScore: number;
+
+  /** Frequency of each archetype being selected */
+  archetypeFrequency: Record<string, number>;
+
+  /** Most frequently selected archetype */
+  mostSelectedArchetype?: string;
+
+  /** Least frequently selected archetype */
+  leastSelectedArchetype?: string;
+
+  /** Archetype pair combinations and their average score */
+  archetypePairPerformance: Record<string, { count: number; avgScore: number }>;
+
+  /** Top performing archetype combinations */
+  topPairCombinations: Array<{ pair: string; count: number; avgScore: number }>;
+
+  /** Score trend (latest 10 scores) */
+  recentScores: number[];
+
+  /** Timestamp of last update */
+  lastUpdated: number;
+}
+
+/**
+ * Score history entry
+ */
+interface ScoreHistoryEntry {
+  timestamp: number;
+  score: number;
+  archetype: ExpertArchetype;
+  selectedArchetypes?: ExpertArchetype[];
+}
+
+/**
  * Default diversity scorer configuration
  */
 export const DEFAULT_DIVERSITY_CONFIG: DiversityScorerConfig = {
@@ -93,6 +141,13 @@ export const DEFAULT_DIVERSITY_CONFIG: DiversityScorerConfig = {
 export class DiversityScorer {
   private config: DiversityScorerConfig;
   private seenSolutions: Map<string, string>; // id -> output fingerprint
+
+  // Metrics tracking
+  private scoreHistory: ScoreHistoryEntry[] = [];
+  private archetypeFrequency: Map<string, number> = new Map();
+  private archetypePairs: Map<string, { scores: number[]; count: number }> = new Map();
+  private recentScores: number[] = [];
+  private readonly MAX_RECENT_SCORES = 10;
 
   constructor(config: Partial<DiversityScorerConfig> = {}) {
     this.config = { ...DEFAULT_DIVERSITY_CONFIG, ...config };
@@ -130,8 +185,13 @@ export class DiversityScorer {
     // Track this solution
     this.seenSolutions.set(result.expertId, this.getOutputFingerprint(result));
 
+    const finalScore = Math.round(overallScore);
+
+    // Update metrics
+    this.recordScore(finalScore, result.expertConfig.archetype, this.getUniqueArchetypes(pool));
+
     return {
-      score: Math.round(overallScore),
+      score: finalScore,
       archetypeScore: Math.round(archetypeScore),
       similarityScore: Math.round(similarityScore),
       noveltyScore: Math.round(noveltyScore),
@@ -184,9 +244,13 @@ export class DiversityScorer {
         if (selected.length >= count) break;
         if (!selected.includes(result)) {
           selected.push(result);
+          usedArchetypes.add(result.expertConfig.archetype);
         }
       }
     }
+
+    // Track the archetype combination that was selected
+    this.recordArchetypeCombination(selected);
 
     return selected;
   }
@@ -289,10 +353,131 @@ export class DiversityScorer {
   }
 
   /**
-   * Reset seen solutions (for new problem)
+   * Record a score for metrics tracking
    */
-  reset(): void {
+  private recordScore(score: number, archetype: ExpertArchetype, selectedArchetypes: ExpertArchetype[]): void {
+    const entry: ScoreHistoryEntry = {
+      timestamp: Date.now(),
+      score,
+      archetype,
+      selectedArchetypes,
+    };
+
+    this.scoreHistory.push(entry);
+
+    // Track recent scores
+    this.recentScores.push(score);
+    if (this.recentScores.length > this.MAX_RECENT_SCORES) {
+      this.recentScores.shift();
+    }
+
+    // Track archetype frequency
+    const freq = this.archetypeFrequency.get(archetype) ?? 0;
+    this.archetypeFrequency.set(archetype, freq + 1);
+  }
+
+  /**
+   * Record archetype combinations that were selected together
+   */
+  private recordArchetypeCombination(selected: ExpertResult[]): void {
+    if (selected.length < 2) return;
+
+    // Create sorted pairs to normalize combinations
+    const archetypes = selected.map((r) => r.expertConfig.archetype).sort();
+
+    // Record all pairs
+    for (let i = 0; i < archetypes.length; i++) {
+      for (let j = i + 1; j < archetypes.length; j++) {
+        const pair = `${archetypes[i]}+${archetypes[j]}`;
+        const avgScore = selected.reduce((sum, r) => sum + r.score, 0) / selected.length;
+
+        const pairData = this.archetypePairs.get(pair) ?? { scores: [], count: 0 };
+        pairData.scores.push(avgScore);
+        pairData.count += 1;
+        this.archetypePairs.set(pair, pairData);
+      }
+    }
+  }
+
+  /**
+   * Get comprehensive diversity statistics
+   */
+  getDiversityStats(): DiversityStats {
+    let minScore = Infinity;
+    let maxScore = -Infinity;
+    let totalScore = 0;
+
+    for (const entry of this.scoreHistory) {
+      minScore = Math.min(minScore, entry.score);
+      maxScore = Math.max(maxScore, entry.score);
+      totalScore += entry.score;
+    }
+
+    const totalScores = this.scoreHistory.length;
+    const avgScore = totalScores > 0 ? totalScore / totalScores : 0;
+
+    // Find most and least selected archetypes
+    let mostSelected: string | undefined;
+    let leastSelected: string | undefined;
+    let maxFreq = 0;
+    let minFreq = Infinity;
+
+    for (const [archetype, freq] of this.archetypeFrequency.entries()) {
+      if (freq > maxFreq) {
+        maxFreq = freq;
+        mostSelected = archetype;
+      }
+      if (freq < minFreq) {
+        minFreq = freq;
+        leastSelected = archetype;
+      }
+    }
+
+    // Calculate archetype pair performance
+    const pairPerformance: Record<string, { count: number; avgScore: number }> = {};
+    const topPairs: Array<{ pair: string; count: number; avgScore: number }> = [];
+
+    for (const [pair, data] of this.archetypePairs.entries()) {
+      const avgScore = data.scores.reduce((a, b) => a + b, 0) / data.scores.length;
+      pairPerformance[pair] = { count: data.count, avgScore: Math.round(avgScore) };
+      topPairs.push({ pair, count: data.count, avgScore: Math.round(avgScore) });
+    }
+
+    // Sort by average score descending
+    topPairs.sort((a, b) => b.avgScore - a.avgScore);
+
+    const archetypeFrequencyRecord: Record<string, number> = {};
+    for (const [archetype, freq] of this.archetypeFrequency.entries()) {
+      archetypeFrequencyRecord[archetype] = freq;
+    }
+
+    return {
+      totalScores,
+      avgDiversityScore: Math.round(avgScore),
+      minDiversityScore: minScore === Infinity ? 0 : minScore,
+      maxDiversityScore: maxScore === -Infinity ? 0 : maxScore,
+      archetypeFrequency: archetypeFrequencyRecord,
+      mostSelectedArchetype: mostSelected,
+      leastSelectedArchetype: leastSelected,
+      archetypePairPerformance: pairPerformance,
+      topPairCombinations: topPairs.slice(0, 5),
+      recentScores: [...this.recentScores],
+      lastUpdated: Date.now(),
+    };
+  }
+
+  /**
+   * Reset seen solutions and optionally clear metrics (for new problem)
+   */
+  reset(clearMetrics: boolean = false): void {
     this.seenSolutions.clear();
+
+    if (clearMetrics) {
+      this.scoreHistory = [];
+      this.archetypeFrequency.clear();
+      this.archetypePairs.clear();
+      this.recentScores = [];
+    }
   }
 }
 
