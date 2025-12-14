@@ -831,7 +831,7 @@ export class SoftScorer {
   private scoreEfficiency(solution: ExpertResult): DimensionScore {
     const evidence: string[] = [];
     let score = 0;
-    let confidence = 0.9; // Very confident - efficiency is directly measurable
+    const confidence = 0.9; // Very confident - efficiency is directly measurable
 
     // Factor 1: Time efficiency (50 points max)
     const timeout = solution.expertConfig.taskTimeout;

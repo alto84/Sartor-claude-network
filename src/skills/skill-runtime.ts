@@ -54,7 +54,7 @@ export class SkillRuntime {
   async initialize(): Promise<void> {
     // Load all skill manifests (from manifest registry)
     // This would typically load from the skill-manifest.ts file
-    console.log('[SkillRuntime] Initializing skill runtime...');
+    console.error('[SkillRuntime] Initializing skill runtime...');
 
     // For now, this is a placeholder - manifests will be registered externally
     // via registerSkill()
@@ -84,7 +84,7 @@ export class SkillRuntime {
 
     this.summaries.set(manifest.id, summary);
 
-    console.log(`[SkillRuntime] Registered skill: ${manifest.id} v${manifest.version}`);
+    console.error(`[SkillRuntime] Registered skill: ${manifest.id} v${manifest.version}`);
   }
 
   /**
@@ -116,7 +116,7 @@ export class SkillRuntime {
       entry.loaded = true;
       this.setSkillStatus(skillId, 'ready');
 
-      console.log(`[SkillRuntime] Loaded skill: ${skillId}`);
+      console.error(`[SkillRuntime] Loaded skill: ${skillId}`);
       return entry.manifest;
     } catch (error) {
       this.setSkillStatus(skillId, 'error');
@@ -235,7 +235,7 @@ export class SkillRuntime {
     entry.loaded = false;
 
     this.setSkillStatus(skillId, 'idle');
-    console.log(`[SkillRuntime] Unloaded skill: ${skillId}`);
+    console.error(`[SkillRuntime] Unloaded skill: ${skillId}`);
   }
 
   /**
@@ -249,7 +249,7 @@ export class SkillRuntime {
         console.warn(`[SkillRuntime] Dependency not found: ${dep.skillId}`);
 
         if (dep.fallback && this.registry.has(dep.fallback)) {
-          console.log(`[SkillRuntime] Using fallback: ${dep.fallback}`);
+          console.error(`[SkillRuntime] Using fallback: ${dep.fallback}`);
           await this.loadSkill(dep.fallback);
         }
       } else {
@@ -292,8 +292,8 @@ export class SkillRuntime {
     const startTime = Date.now();
 
     // Placeholder implementation
-    console.log(`[SkillRuntime] Executing skill: ${manifest.id}`);
-    console.log(`[SkillRuntime] Input:`, input);
+    console.error(`[SkillRuntime] Executing skill: ${manifest.id}`);
+    console.error(`[SkillRuntime] Input:`, input);
 
     // Simulate execution
     await new Promise((resolve) => setTimeout(resolve, 100));

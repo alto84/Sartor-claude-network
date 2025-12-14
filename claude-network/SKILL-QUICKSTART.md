@@ -132,6 +132,7 @@ claude-network/
 ## 🎯 Common Use Cases
 
 ### Send a Notification
+
 ```python
 await engine.execute_skill("send_message", context, {
     "recipient": "@target_agent",
@@ -142,6 +143,7 @@ await engine.execute_skill("send_message", context, {
 ```
 
 ### Store Data
+
 ```python
 await engine.execute_skill("data_store", context, {
     "operation": "store",
@@ -152,6 +154,7 @@ await engine.execute_skill("data_store", context, {
 ```
 
 ### Scan Environment
+
 ```python
 await engine.execute_skill("basic_scan", context, {
     "target": "system_health",
@@ -161,6 +164,7 @@ await engine.execute_skill("basic_scan", context, {
 ```
 
 ### Retrieve Stored Data
+
 ```python
 result = await engine.execute_skill("data_store", context, {
     "operation": "retrieve",
@@ -201,12 +205,14 @@ execution:
 ## 🐛 Debugging Tips
 
 ### Enable Logging
+
 ```python
 import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
 
 ### Check Skill Validation
+
 ```python
 valid, errors = engine.validate_skill("path/to/skill.yaml")
 if not valid:
@@ -214,6 +220,7 @@ if not valid:
 ```
 
 ### View Execution History
+
 ```python
 history = engine.get_execution_history(limit=10)
 for record in history:
@@ -221,6 +228,7 @@ for record in history:
 ```
 
 ### Access Context Variables
+
 ```python
 context.set_variable("debug", True)
 value = context.get_variable("debug")
@@ -272,4 +280,4 @@ find skills -name "*.yaml" | cut -d'/' -f2-3 | sort | uniq -c
 
 ---
 
-*Happy skill building! 🎯*
+_Happy skill building! 🎯_

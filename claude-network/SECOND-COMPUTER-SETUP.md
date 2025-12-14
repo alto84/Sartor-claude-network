@@ -68,6 +68,7 @@ env | grep FIREBASE
 ```
 
 You need:
+
 - Firebase database URL
 - Firebase project ID
 - Service account key (if available) or API key
@@ -116,17 +117,17 @@ Example `config.yaml`:
 
 ```yaml
 firebase:
-  url: "https://home-claude-network-default-rtdb.firebaseio.com"
-  project_id: "home-claude-network"
+  url: 'https://home-claude-network-default-rtdb.firebaseio.com'
+  project_id: 'home-claude-network'
   timeout: 30
   max_retries: 3
 
 agent:
-  name: "Claude-Agent-Laptop"
+  name: 'Claude-Agent-Laptop'
   capabilities:
-    - "communication"
-    - "task_execution"
-    - "monitoring"
+    - 'communication'
+    - 'task_execution'
+    - 'monitoring'
 
 network:
   heartbeat_interval: 30
@@ -158,6 +159,7 @@ python3 setup_agent.py
 ```
 
 This wizard will:
+
 - Ask for your agent name
 - Configure Firebase connection
 - Set up agent capabilities
@@ -278,6 +280,7 @@ python3 monitor.py
 ```
 
 You should see:
+
 - Your new agent appearing
 - Status updates every 15 seconds
 - Other connected agents
@@ -441,6 +444,7 @@ except Exception as e:
 ```
 
 **Solution:**
+
 - Verify Firebase URL is correct
 - Check internet connection
 - Verify Firebase database is accessible
@@ -470,6 +474,7 @@ print(f'Total agents: {len(agents)}')
 ```
 
 **Solution:**
+
 - Make sure `setup_agent.py` was run
 - Verify config.yaml or environment variables are set
 - Check Firebase connectivity (see above)
@@ -496,6 +501,7 @@ print(f'Heartbeat active: {registry._heartbeat_active if hasattr(registry, \"_he
 ```
 
 **Solution:**
+
 - Run `start_heartbeat()` explicitly
 - Check for exceptions in heartbeat thread
 - Verify Firebase connectivity
@@ -527,6 +533,7 @@ except Exception as e:
 ```
 
 **Solution:**
+
 - Verify recipient agent exists
 - Check message size (max 256KB)
 - Review offline queue

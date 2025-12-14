@@ -101,7 +101,7 @@ describe('utils', () => {
       });
 
       expect(results.length).toBeGreaterThan(0);
-      expect(results.some(r => r.path.includes('utils'))).toBe(true);
+      expect(results.some((r) => r.path.includes('utils'))).toBe(true);
     });
 
     it('should filter by file pattern', async () => {
@@ -111,7 +111,7 @@ describe('utils', () => {
         maxResults: 10,
       });
 
-      expect(results.every(r => r.path.endsWith('.ts'))).toBe(true);
+      expect(results.every((r) => r.path.endsWith('.ts'))).toBe(true);
     });
 
     it('should filter by context type', async () => {
@@ -121,7 +121,7 @@ describe('utils', () => {
         maxResults: 10,
       });
 
-      expect(results.every(r => r.type === ContextType.TEST)).toBe(true);
+      expect(results.every((r) => r.type === ContextType.TEST)).toBe(true);
     });
 
     it('should assign relevance scores', async () => {
@@ -179,7 +179,7 @@ describe('utils', () => {
         maxResults: 5,
       });
 
-      const withContent = results.filter(r => r.content !== undefined);
+      const withContent = results.filter((r) => r.content !== undefined);
       expect(withContent.length).toBeGreaterThan(0);
     });
 
@@ -211,14 +211,11 @@ describe('utils', () => {
       const results = await discoverer.discoverRelated(apiPath);
 
       // api.ts imports utils.ts
-      expect(results.some(r => r.path.includes('utils'))).toBe(true);
+      expect(results.some((r) => r.path.includes('utils'))).toBe(true);
     });
 
     it('should respect max depth', async () => {
-      const results = await discoverer.discoverRelated(
-        path.join(tempDir, 'src', 'api.ts'),
-        1
-      );
+      const results = await discoverer.discoverRelated(path.join(tempDir, 'src', 'api.ts'), 1);
 
       // All results should be depth 1 (direct imports only)
       for (const result of results) {
@@ -227,18 +224,15 @@ describe('utils', () => {
     });
 
     it('should decrease relevance with depth', async () => {
-      const results = await discoverer.discoverRelated(
-        path.join(tempDir, 'src', 'api.ts'),
-        2
-      );
+      const results = await discoverer.discoverRelated(path.join(tempDir, 'src', 'api.ts'), 2);
 
       // Depth 1 items should have higher relevance than depth 2
-      const depth1 = results.filter(r => r.metadata.depth === 1);
-      const depth2 = results.filter(r => r.metadata.depth === 2);
+      const depth1 = results.filter((r) => r.metadata.depth === 1);
+      const depth2 = results.filter((r) => r.metadata.depth === 2);
 
       if (depth1.length > 0 && depth2.length > 0) {
-        expect(Math.min(...depth1.map(r => r.relevance))).toBeGreaterThanOrEqual(
-          Math.max(...depth2.map(r => r.relevance))
+        expect(Math.min(...depth1.map((r) => r.relevance))).toBeGreaterThanOrEqual(
+          Math.max(...depth2.map((r) => r.relevance))
         );
       }
     });
@@ -250,7 +244,7 @@ describe('utils', () => {
       const results = await discoverer.discoverTests(utilsPath);
 
       expect(results.length).toBeGreaterThan(0);
-      expect(results.some(r => r.path.includes('utils.test'))).toBe(true);
+      expect(results.some((r) => r.path.includes('utils.test'))).toBe(true);
     });
 
     it('should mark results as TEST type', async () => {
@@ -283,7 +277,7 @@ describe('utils', () => {
       const utilsPath = path.join(tempDir, 'src', 'utils.ts');
       const results = await discoverer.discoverDocs(utilsPath);
 
-      expect(results.some(r => r.path.includes('utils.md'))).toBe(true);
+      expect(results.some((r) => r.path.includes('utils.md'))).toBe(true);
     });
 
     it('should mark results as DOCUMENTATION type', async () => {
@@ -346,10 +340,7 @@ describe('utils', () => {
       await discoverer.discover({ keywords: ['utils'], maxResults: 10 });
 
       // Add a new file
-      fs.writeFileSync(
-        path.join(tempDir, 'src', 'newfile.ts'),
-        'export const newThing = "test";'
-      );
+      fs.writeFileSync(path.join(tempDir, 'src', 'newfile.ts'), 'export const newThing = "test";');
 
       await discoverer.reindex();
 
@@ -358,7 +349,7 @@ describe('utils', () => {
         maxResults: 10,
       });
 
-      expect(results.some(r => r.path.includes('newfile'))).toBe(true);
+      expect(results.some((r) => r.path.includes('newfile'))).toBe(true);
     });
   });
 

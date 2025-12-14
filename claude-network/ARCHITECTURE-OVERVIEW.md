@@ -62,6 +62,7 @@ The Claude Network is a distributed multi-agent coordination system designed for
 The robust communication backbone of the network.
 
 **Responsibilities:**
+
 - Message formatting and validation
 - Message signing for security
 - Automatic retry with exponential backoff
@@ -70,6 +71,7 @@ The robust communication backbone of the network.
 - Multi-channel fallback (Firebase → GitHub)
 
 **Key Classes:**
+
 - `MACSClient` - Main API for sending messages
 - `MACSConfig` - Configuration and constants
 - `Message` - Typed message container
@@ -77,6 +79,7 @@ The robust communication backbone of the network.
 - `OfflineQueue` - Persists messages when offline
 
 **Message Flow:**
+
 ```
 Agent A                 MACS Layer              Firebase              Agent B
   │                        │                       │                   │
@@ -100,6 +103,7 @@ Agent A                 MACS Layer              Firebase              Agent B
 Manages agent discovery, registration, and health monitoring.
 
 **Responsibilities:**
+
 - Agent registration with capabilities
 - Heartbeat sending (every 15 seconds)
 - Health status tracking (healthy/warning/critical/dead)
@@ -108,6 +112,7 @@ Manages agent discovery, registration, and health monitoring.
 - Local caching for offline resilience
 
 **Data Structure (Firebase):**
+
 ```
 /agents
   └── agent-001
@@ -125,6 +130,7 @@ Manages agent discovery, registration, and health monitoring.
 ```
 
 **Agent Lifecycle:**
+
 ```
 REGISTERED ──heartbeat──► HEALTHY ──silence──► WARNING ──timeout──► DEAD
                              │                      │
@@ -138,6 +144,7 @@ REGISTERED ──heartbeat──► HEALTHY ──silence──► WARNING ─�
 Intelligent task distribution and tracking.
 
 **Responsibilities:**
+
 - Task lifecycle management (CREATED → COMPLETED)
 - Priority queue with dependency resolution
 - Capability-based assignment
@@ -146,6 +153,7 @@ Intelligent task distribution and tracking.
 - Task history and completion tracking
 
 **Task State Machine:**
+
 ```
        create()
          │
@@ -170,6 +178,7 @@ Intelligent task distribution and tracking.
 ```
 
 **Data Structure (Firebase):**
+
 ```
 /tasks
   ├── available
@@ -194,6 +203,7 @@ Intelligent task distribution and tracking.
 Modular skill composition and execution.
 
 **Responsibilities:**
+
 - Skill discovery and cataloging
 - Skill validation
 - Sequential and parallel execution
@@ -202,6 +212,7 @@ Modular skill composition and execution.
 - Performance metrics
 
 **Skill Library Structure:**
+
 ```
 skills/
 ├── core/
@@ -229,6 +240,7 @@ skills/
 ```
 
 **Skill Execution Flow:**
+
 ```
 User Request
     │
@@ -259,6 +271,7 @@ SkillEngine.execute_skill()
 Hierarchical configuration with validation.
 
 **Configuration Priority (highest to lowest):**
+
 ```
 ┌──────────────────────────────────────────┐
 │ Environment Variables (highest priority)  │
@@ -287,17 +300,18 @@ Hierarchical configuration with validation.
 ```
 
 **Configuration Sections:**
+
 ```yaml
 firebase:
-  url: "https://..."
-  project_id: "..."
+  url: 'https://...'
+  project_id: '...'
   timeout: 30
   max_retries: 3
 
 agent:
-  name: "my-agent"
-  capabilities: ["communication", "analysis"]
-  surface: "desktop"
+  name: 'my-agent'
+  capabilities: ['communication', 'analysis']
+  surface: 'desktop'
 
 network:
   heartbeat_interval: 30
@@ -305,7 +319,7 @@ network:
 
 security:
   use_message_signing: true
-  shared_secret: "..."
+  shared_secret: '...'
 ```
 
 ### 6. Testing Framework
@@ -315,6 +329,7 @@ security:
 Comprehensive test coverage with mocks.
 
 **Test Structure:**
+
 ```
 tests/
 ├── __init__.py
@@ -330,6 +345,7 @@ tests/
 ```
 
 **Test Approach:**
+
 - Unit tests for all components
 - Integration tests for component interactions
 - Mock Firebase to avoid external dependencies
@@ -553,28 +569,31 @@ Message destination
 
 ## Performance Characteristics
 
-| Component | Throughput | Latency | Notes |
-|-----------|-----------|---------|-------|
-| MACS Protocol | 100+ msg/sec | 100-500ms | With retry overhead |
-| Task Manager | 1000+ tasks | 50-200ms | Per assignment |
-| Skill Engine | 50 parallel | 100-1000ms | Per skill execution |
-| Agent Registry | 1000 agents | 10-50ms | Per query |
-| Firebase | API limit | 100-500ms | Network dependent |
+| Component      | Throughput   | Latency    | Notes               |
+| -------------- | ------------ | ---------- | ------------------- |
+| MACS Protocol  | 100+ msg/sec | 100-500ms  | With retry overhead |
+| Task Manager   | 1000+ tasks  | 50-200ms   | Per assignment      |
+| Skill Engine   | 50 parallel  | 100-1000ms | Per skill execution |
+| Agent Registry | 1000 agents  | 10-50ms    | Per query           |
+| Firebase       | API limit    | 100-500ms  | Network dependent   |
 
 ## Scalability Considerations
 
 ### Vertical Scaling (more CPUs/memory on one computer)
+
 - Increase task manager queue size
 - More parallel skill executions
 - More concurrent MACS connections
 
 ### Horizontal Scaling (more computers)
+
 - Add agents via SECOND-COMPUTER-SETUP.md
 - Registry automatically discovers new agents
 - Task manager distributes across agents
 - MACS protocol handles message routing
 
 ### Database Scaling
+
 - Firebase Realtime Database auto-scales
 - Consider migration to Firestore for larger systems
 - Implement local caching for high-frequency reads
@@ -582,16 +601,19 @@ Message destination
 ## Security Considerations
 
 ### Message Signing
+
 - MACS signs all messages with SHA256-HMAC
 - Verifies signature on receipt
 - Prevents message tampering
 
 ### Authentication
+
 - Firebase rules restrict access
 - Agent credentials stored securely
 - Environment variables for sensitive config
 
 ### Rate Limiting
+
 - MACS throttles message sending
 - Task manager prioritizes work
 - Prevents resource exhaustion
@@ -599,6 +621,7 @@ Message destination
 ## Monitoring and Observability
 
 ### Key Metrics
+
 - Agent health (heartbeat status)
 - Message delivery rate
 - Task completion rate
@@ -606,11 +629,13 @@ Message destination
 - Database performance
 
 ### Logging
+
 - Structured JSON logging
 - Timestamps for all events
 - Separate log files per component
 
 ### Debugging
+
 - Network status monitor (`monitor.py`)
 - Task status CLI (`task_cli.py`)
 - Execution history tracking

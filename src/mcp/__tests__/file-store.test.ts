@@ -61,14 +61,10 @@ describe('FileStore', () => {
         duration_ms: 1500,
       };
 
-      const mem = await store.createMemory(
-        JSON.stringify(traceData),
-        MemoryType.REFINEMENT_TRACE,
-        {
-          importance_score: 0.8,
-          tags: ['refinement', 'task:task-123', 'iterations:3'],
-        }
-      );
+      const mem = await store.createMemory(JSON.stringify(traceData), MemoryType.REFINEMENT_TRACE, {
+        importance_score: 0.8,
+        tags: ['refinement', 'task:task-123', 'iterations:3'],
+      });
 
       expect(mem.type).toBe(MemoryType.REFINEMENT_TRACE);
       expect(mem.importance_score).toBe(0.8);

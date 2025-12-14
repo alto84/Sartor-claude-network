@@ -19,17 +19,8 @@ import {
   type Plan,
   type PlanItem,
 } from '../plan-sync';
-import {
-  ProgressTracker,
-  createProgressTracker,
-  ProgressStatus,
-} from '../progress';
-import {
-  WorkDistributor,
-  createDistributor,
-  TaskStatus,
-  TaskPriority,
-} from '../work-distribution';
+import { ProgressTracker, createProgressTracker, ProgressStatus } from '../progress';
+import { WorkDistributor, createDistributor, TaskStatus, TaskPriority } from '../work-distribution';
 import {
   SubagentRegistry,
   createRegistry,
@@ -249,8 +240,7 @@ class MockGitHubAdapter {
  */
 class MockLocalFSAdapter {
   private files: Map<string, string> = new Map();
-  private watchCallbacks: Map<string, ((event: string, filename: string) => void)[]> =
-    new Map();
+  private watchCallbacks: Map<string, ((event: string, filename: string) => void)[]> = new Map();
 
   readFile(path: string): string {
     const content = this.files.get(path);
@@ -432,11 +422,7 @@ describe('Cross-Surface Validation', () => {
     it('should handle optimistic locking with SHA', async () => {
       // Create initial file
       const content1 = JSON.stringify({ version: 1 });
-      const result1 = await github.createOrUpdateFile(
-        'test.json',
-        content1,
-        'v1'
-      );
+      const result1 = await github.createOrUpdateFile('test.json', content1, 'v1');
 
       // Update with correct SHA
       const content2 = JSON.stringify({ version: 2 });
@@ -464,11 +450,7 @@ describe('Cross-Surface Validation', () => {
       github.switchBranch('feature/test');
 
       // Modify on feature branch
-      await github.createOrUpdateFile(
-        'plan.json',
-        '{"branch": "feature"}',
-        'feature'
-      );
+      await github.createOrUpdateFile('plan.json', '{"branch": "feature"}', 'feature');
 
       const featureFile = await github.getFile('plan.json');
       expect(JSON.parse(featureFile.content).branch).toBe('feature');
@@ -617,12 +599,7 @@ describe('Cross-Surface Validation', () => {
       const content3 = JSON.stringify({ version: 3 });
 
       // First modification succeeds
-      const result2 = await github.createOrUpdateFile(
-        'state.json',
-        content2,
-        'v2',
-        result.sha
-      );
+      const result2 = await github.createOrUpdateFile('state.json', content2, 'v2', result.sha);
 
       // Second modification fails (conflict)
       await expect(

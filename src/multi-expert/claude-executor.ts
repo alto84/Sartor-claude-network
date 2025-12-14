@@ -226,7 +226,9 @@ export function createClaudeExecutor(config: ClaudeExecutorConfig = {}): {
     const userPrompt = formatTaskPrompt(task);
 
     if (verbose) {
-      console.log(`[ClaudeExecutor] Expert ${expertConfig.id} (${expertConfig.archetype}) starting task ${task.id}`);
+      console.log(
+        `[ClaudeExecutor] Expert ${expertConfig.id} (${expertConfig.archetype}) starting task ${task.id}`
+      );
     }
 
     let iterations = 0;
@@ -272,7 +274,9 @@ export function createClaudeExecutor(config: ClaudeExecutorConfig = {}): {
 
         // Extract response content
         const content =
-          response.content[0].type === 'text' ? response.content[0].text : JSON.stringify(response.content[0]);
+          response.content[0].type === 'text'
+            ? response.content[0].text
+            : JSON.stringify(response.content[0]);
 
         const parsed = parseResponse(content);
 
@@ -288,12 +292,18 @@ export function createClaudeExecutor(config: ClaudeExecutorConfig = {}): {
         }
 
         // Check for early termination (satisfactionThreshold is 0-1, score is 0-100)
-        if (parsed.score >= expertConfig.satisfactionThreshold * 100 && i >= expertConfig.minIterations - 1) {
+        if (
+          parsed.score >= expertConfig.satisfactionThreshold * 100 &&
+          i >= expertConfig.minIterations - 1
+        ) {
           break;
         }
       } catch (error) {
         if (verbose) {
-          console.error(`[ClaudeExecutor] Expert ${expertConfig.id} iteration ${i + 1} failed:`, error);
+          console.error(
+            `[ClaudeExecutor] Expert ${expertConfig.id} iteration ${i + 1} failed:`,
+            error
+          );
         }
 
         // Continue to next iteration on error

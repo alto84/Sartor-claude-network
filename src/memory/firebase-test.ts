@@ -29,7 +29,7 @@ async function testFirebaseConnection(): Promise<void> {
       `https://${serviceAccount.project_id}-default-rtdb.firebaseio.com`,
       `https://${serviceAccount.project_id}-default-rtdb.europe-west1.firebasedatabase.app`,
       `https://${serviceAccount.project_id}-default-rtdb.asia-southeast1.firebasedatabase.app`,
-      `https://${serviceAccount.project_id}.firebaseio.com`
+      `https://${serviceAccount.project_id}.firebaseio.com`,
     ];
 
     console.log('Attempting RTDB URL:', possibleURLs[0]);
@@ -37,7 +37,7 @@ async function testFirebaseConnection(): Promise<void> {
     if (!admin.apps.length) {
       admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
-        databaseURL: possibleURLs[0]
+        databaseURL: possibleURLs[0],
       });
     }
     console.log('✓ Firebase Admin initialized');
@@ -51,7 +51,7 @@ async function testFirebaseConnection(): Promise<void> {
     const testData = {
       timestamp: Date.now(),
       message: 'Connection test from Sartor-Claude-Network',
-      agent: 'executive'
+      agent: 'executive',
     };
 
     const startWrite = Date.now();
@@ -75,7 +75,7 @@ async function testFirebaseConnection(): Promise<void> {
     await firestore.collection('connection_test').doc('test').set({
       timestamp: admin.firestore.FieldValue.serverTimestamp(),
       message: 'Firestore connection test',
-      agent: 'executive'
+      agent: 'executive',
     });
     const firestoreWriteLatency = Date.now() - firestoreStartWrite;
     console.log(`✓ Firestore write successful (latency: ${firestoreWriteLatency}ms)`);
@@ -88,10 +88,18 @@ async function testFirebaseConnection(): Promise<void> {
 
     // Summary
     console.log('\n=== Connection Test Summary ===');
-    console.log(`RTDB Write Latency: ${writeLatency}ms ${writeLatency < 100 ? '(MEETS <100ms target)' : '(EXCEEDS target)'}`);
-    console.log(`RTDB Read Latency: ${readLatency}ms ${readLatency < 100 ? '(MEETS <100ms target)' : '(EXCEEDS target)'}`);
-    console.log(`Firestore Write Latency: ${firestoreWriteLatency}ms ${firestoreWriteLatency < 500 ? '(MEETS <500ms target)' : '(EXCEEDS target)'}`);
-    console.log(`Firestore Read Latency: ${firestoreReadLatency}ms ${firestoreReadLatency < 500 ? '(MEETS <500ms target)' : '(EXCEEDS target)'}`);
+    console.log(
+      `RTDB Write Latency: ${writeLatency}ms ${writeLatency < 100 ? '(MEETS <100ms target)' : '(EXCEEDS target)'}`
+    );
+    console.log(
+      `RTDB Read Latency: ${readLatency}ms ${readLatency < 100 ? '(MEETS <100ms target)' : '(EXCEEDS target)'}`
+    );
+    console.log(
+      `Firestore Write Latency: ${firestoreWriteLatency}ms ${firestoreWriteLatency < 500 ? '(MEETS <500ms target)' : '(EXCEEDS target)'}`
+    );
+    console.log(
+      `Firestore Read Latency: ${firestoreReadLatency}ms ${firestoreReadLatency < 500 ? '(MEETS <500ms target)' : '(EXCEEDS target)'}`
+    );
 
     // Clean up
     await testRef.remove();

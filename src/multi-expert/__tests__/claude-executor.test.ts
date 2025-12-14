@@ -108,7 +108,9 @@ describe('ClaudeExecutor', () => {
         input: { data: 'test' },
       };
 
-      const config = createExpertConfig('test-expert', 'Test Expert', 'balanced', { maxIterations: 1 });
+      const config = createExpertConfig('test-expert', 'Test Expert', 'balanced', {
+        maxIterations: 1,
+      });
 
       const result = await executor(task, config);
 
@@ -153,7 +155,9 @@ describe('ClaudeExecutor', () => {
         input: {},
       };
 
-      const config = createExpertConfig('test-expert', 'Test Expert', 'balanced', { maxIterations: 1 });
+      const config = createExpertConfig('test-expert', 'Test Expert', 'balanced', {
+        maxIterations: 1,
+      });
 
       const result = await executor(task, config);
 
@@ -176,7 +180,9 @@ describe('ClaudeExecutor', () => {
         input: {},
       };
 
-      const config = createExpertConfig('test-expert', 'Test Expert', 'balanced', { maxIterations: 1 });
+      const config = createExpertConfig('test-expert', 'Test Expert', 'balanced', {
+        maxIterations: 1,
+      });
 
       // First call should succeed
       await executor(task, config);
@@ -207,7 +213,9 @@ describe('ClaudeExecutor', () => {
         input: {},
       };
 
-      const config = createExpertConfig('test-expert', 'Test Expert', 'balanced', { maxIterations: 1 });
+      const config = createExpertConfig('test-expert', 'Test Expert', 'balanced', {
+        maxIterations: 1,
+      });
 
       const result = await executor(task, config);
       expect(result).toBeDefined();
@@ -232,7 +240,14 @@ describe('Archetype Prompts', () => {
     // but we can verify the executor works with all archetypes
 
     const { executor } = createClaudeExecutor();
-    const archetypes: ExpertArchetype[] = ['performance', 'safety', 'simplicity', 'robustness', 'creative', 'balanced'];
+    const archetypes: ExpertArchetype[] = [
+      'performance',
+      'safety',
+      'simplicity',
+      'robustness',
+      'creative',
+      'balanced',
+    ];
 
     const task = {
       id: 'test-task',
@@ -242,7 +257,9 @@ describe('Archetype Prompts', () => {
     };
 
     for (const archetype of archetypes) {
-      const config = createExpertConfig(`${archetype}-expert`, `${archetype} Expert`, archetype, { maxIterations: 1 });
+      const config = createExpertConfig(`${archetype}-expert`, `${archetype} Expert`, archetype, {
+        maxIterations: 1,
+      });
 
       const result = await executor(task, config);
       expect(result).toBeDefined();

@@ -1,6 +1,7 @@
 # Long-Running Agent Harness Skill
 
 ## Purpose
+
 Guidelines for building effective harnesses that keep long-running agents productive and prevent context rot, confusion, and degradation.
 
 Based on: https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
@@ -8,14 +9,17 @@ Based on: https://www.anthropic.com/engineering/effective-harnesses-for-long-run
 ## Core Principles
 
 ### 1. Context Management
+
 - **Summarize, don't accumulate**: Periodically compress context
 - **Checkpoint state**: Save recovery points frequently
 - **Delegate reading**: Let subagents read large files
 - **Track what matters**: Keep IDs and status, not full content
 
 ### 2. Error Recovery
+
 ```markdown
 ## Recovery Protocol
+
 1. Detect failure (timeout, error, confusion)
 2. Save current state to checkpoint
 3. Analyze failure cause
@@ -24,14 +28,18 @@ Based on: https://www.anthropic.com/engineering/effective-harnesses-for-long-run
 ```
 
 ### 3. Progress Tracking
+
 Every long-running operation should:
+
 - Update status at regular intervals
 - Write intermediate results to disk
 - Maintain a "last known good" state
 - Log decisions and rationale
 
 ### 4. Confusion Detection
+
 Watch for signs of agent confusion:
+
 - Repeating the same action
 - Contradicting previous statements
 - Making claims without evidence
@@ -39,7 +47,9 @@ Watch for signs of agent confusion:
 - Creating workarounds for non-existent problems
 
 ### 5. Context Refresh Protocol
+
 When context is getting stale:
+
 ```markdown
 1. Save current todo list and agent registry
 2. Write summary of accomplishments
@@ -51,6 +61,7 @@ When context is getting stale:
 ## Harness Patterns
 
 ### Pattern 1: Batch Processing
+
 ```
 For each batch of N items:
   1. Process batch
@@ -61,6 +72,7 @@ For each batch of N items:
 ```
 
 ### Pattern 2: Agent Swarm
+
 ```
 While work remains:
   1. Spawn agents (max 10-15)
@@ -72,6 +84,7 @@ While work remains:
 ```
 
 ### Pattern 3: Iterative Refinement
+
 ```
 For max N iterations:
   1. Generate solution
@@ -84,30 +97,34 @@ For max N iterations:
 ## Anti-Patterns to Avoid
 
 ### Context Rot
+
 - ❌ Accumulating all agent outputs in context
 - ❌ Reading large files directly instead of delegating
 - ❌ Not checkpointing progress
 - ✅ Summarize and store, keep context lean
 
 ### Agent Confusion
+
 - ❌ Letting agents run indefinitely without check-ins
 - ❌ Ignoring signs of repetition or contradiction
 - ❌ Not providing clear scope boundaries
 - ✅ Regular status checks, clear task boundaries
 
 ### Resource Exhaustion
+
 - ❌ Spawning unlimited agents
 - ❌ Not tracking API costs
 - ❌ Ignoring rate limits
 - ✅ Budget tracking, rate limiting, agent caps
 
 ## Checkpoint Format
+
 ```json
 {
   "timestamp": "ISO-8601",
   "phase": "current phase",
   "completed_tasks": ["list"],
-  "active_agents": [{"id": "...", "task": "...", "status": "..."}],
+  "active_agents": [{ "id": "...", "task": "...", "status": "..." }],
   "pending_tasks": ["list"],
   "key_learnings": ["list"],
   "blockers": ["list"],
@@ -116,6 +133,7 @@ For max N iterations:
 ```
 
 ## Recovery From Checkpoint
+
 1. Read CONTEXT_CHECKPOINT.md
 2. Read data/memories.json for procedural knowledge
 3. Check reports/agents/ for recent agent outputs
@@ -123,7 +141,9 @@ For max N iterations:
 5. Re-spawn any failed agents
 
 ## Self-Monitoring Checklist
+
 Every 10-15 minutes of work:
+
 - [ ] Are agents making progress?
 - [ ] Is my context still coherent?
 - [ ] Have I checkpointed recently?

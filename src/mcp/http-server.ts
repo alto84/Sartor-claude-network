@@ -149,7 +149,16 @@ function createMemoryServer(): Server {
             content: [
               {
                 type: 'text',
-                text: JSON.stringify({ success: true, id: mem.id, type: mem.type, tier: isMultiTier() ? 'multi' : 'file' }, null, 2),
+                text: JSON.stringify(
+                  {
+                    success: true,
+                    id: mem.id,
+                    type: mem.type,
+                    tier: isMultiTier() ? 'multi' : 'file',
+                  },
+                  null,
+                  2
+                ),
               },
             ],
           };
@@ -207,9 +216,7 @@ function createMemoryServer(): Server {
 
         case 'memory_stats': {
           // Use MultiTierStore (async) if available, otherwise FileStore (sync)
-          const stats = isMultiTier()
-            ? await multiTierStore!.getStats()
-            : fileStore.getStats();
+          const stats = isMultiTier() ? await multiTierStore!.getStats() : fileStore.getStats();
           return {
             content: [{ type: 'text', text: JSON.stringify(stats, null, 2) }],
           };

@@ -205,9 +205,7 @@ describe('VotingSystem', () => {
     test('does not record history when disabled', () => {
       const voting = new VotingSystem({ method: 'majority', trackHistory: false });
 
-      const votes: ExpertVote[] = [
-        { expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 },
-      ];
+      const votes: ExpertVote[] = [{ expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 }];
 
       voting.vote(votes, ['A']);
       const history = voting.getVotingHistory();
@@ -222,9 +220,7 @@ describe('VotingSystem', () => {
         maxHistorySize: 2,
       });
 
-      const votes: ExpertVote[] = [
-        { expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 },
-      ];
+      const votes: ExpertVote[] = [{ expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 }];
 
       voting.vote(votes, ['A']);
       voting.vote(votes, ['A']);
@@ -237,9 +233,7 @@ describe('VotingSystem', () => {
     test('clears history', () => {
       const voting = new VotingSystem({ method: 'majority', trackHistory: true });
 
-      const votes: ExpertVote[] = [
-        { expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 },
-      ];
+      const votes: ExpertVote[] = [{ expertId: 'e1', rankings: ['A'], weight: 1, confidence: 0.9 }];
 
       voting.vote(votes, ['A']);
       expect(voting.getVotingHistory()).toHaveLength(1);

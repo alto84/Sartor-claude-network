@@ -38,11 +38,9 @@ describe('SubagentBootstrap', () => {
 
   describe('getBootstrapContext', () => {
     it('should return onboarding payload with minimal depth', async () => {
-      const payload = await bootstrap.getBootstrapContext(
-        'agent-1',
-        AgentRole.IMPLEMENTER,
-        { depth: OnboardingDepth.MINIMAL }
-      );
+      const payload = await bootstrap.getBootstrapContext('agent-1', AgentRole.IMPLEMENTER, {
+        depth: OnboardingDepth.MINIMAL,
+      });
 
       expect(payload.context).toBeDefined();
       expect(payload.context.agentId).toBe('agent-1');
@@ -52,22 +50,18 @@ describe('SubagentBootstrap', () => {
     });
 
     it('should return onboarding payload with standard depth', async () => {
-      const payload = await bootstrap.getBootstrapContext(
-        'agent-2',
-        AgentRole.PLANNER,
-        { depth: OnboardingDepth.STANDARD }
-      );
+      const payload = await bootstrap.getBootstrapContext('agent-2', AgentRole.PLANNER, {
+        depth: OnboardingDepth.STANDARD,
+      });
 
       expect(payload.context.bootstrapDepth).toBe(OnboardingDepth.STANDARD);
       expect(payload.quickReference).toBeDefined();
     });
 
     it('should return onboarding payload with full depth', async () => {
-      const payload = await bootstrap.getBootstrapContext(
-        'agent-3',
-        AgentRole.AUDITOR,
-        { depth: OnboardingDepth.FULL }
-      );
+      const payload = await bootstrap.getBootstrapContext('agent-3', AgentRole.AUDITOR, {
+        depth: OnboardingDepth.FULL,
+      });
 
       expect(payload.context.bootstrapDepth).toBe(OnboardingDepth.FULL);
     });
@@ -151,11 +145,9 @@ describe('SubagentBootstrap', () => {
         confidence: 0.2,
       });
 
-      const payload = await bootstrap.getBootstrapContext(
-        'agent-9',
-        AgentRole.IMPLEMENTER,
-        { minSkillConfidence: 0.5 }
-      );
+      const payload = await bootstrap.getBootstrapContext('agent-9', AgentRole.IMPLEMENTER, {
+        minSkillConfidence: 0.5,
+      });
 
       expect(payload.context.skills.some((s) => s.id === 'high-conf')).toBe(true);
       expect(payload.context.skills.some((s) => s.id === 'low-conf')).toBe(false);
@@ -176,11 +168,9 @@ describe('SubagentBootstrap', () => {
 
       bootstrap.registerMemory(memory);
 
-      const payload = await bootstrap.getBootstrapContext(
-        'agent-10',
-        AgentRole.COORDINATOR,
-        { depth: OnboardingDepth.STANDARD }
-      );
+      const payload = await bootstrap.getBootstrapContext('agent-10', AgentRole.COORDINATOR, {
+        depth: OnboardingDepth.STANDARD,
+      });
 
       expect(payload.context.recentMemories.some((m) => m.id === 'mem-1')).toBe(true);
     });
@@ -206,11 +196,10 @@ describe('SubagentBootstrap', () => {
         tags: [],
       });
 
-      const payload = await bootstrap.getBootstrapContext(
-        'agent-11',
-        AgentRole.RESEARCHER,
-        { minImportance: 0.5, depth: OnboardingDepth.FULL }
-      );
+      const payload = await bootstrap.getBootstrapContext('agent-11', AgentRole.RESEARCHER, {
+        minImportance: 0.5,
+        depth: OnboardingDepth.FULL,
+      });
 
       expect(payload.context.recentMemories.some((m) => m.id === 'important')).toBe(true);
       expect(payload.context.recentMemories.some((m) => m.id === 'trivial')).toBe(false);

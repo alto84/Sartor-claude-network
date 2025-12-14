@@ -7,6 +7,7 @@ This document contains actual debugging scenarios encountered during SKG Agent P
 **Context**: During scalability testing with 500 agents, consensus operations started timing out.
 
 ### Symptoms
+
 - Consensus operations timing out after 30 seconds
 - Timeout rate increasing with agent count
 - Started at ~300 agents
@@ -15,6 +16,7 @@ This document contains actual debugging scenarios encountered during SKG Agent P
 ### Initial Evidence
 
 **From run-scalability-test.ts output:**
+
 ```
 Agent Count: 300 - Consensus Time: 2,341ms - Success Rate: 98%
 Agent Count: 350 - Consensus Time: 5,678ms - Success Rate: 92%
@@ -23,6 +25,7 @@ Agent Count: 450 - Consensus Time: TIMEOUT - Success Rate: 45%
 ```
 
 **Metrics collected:**
+
 - Discovery latency: Growing as O(log n) - normal
 - Message throughput: Decreasing - abnormal
 - Memory per agent: Constant - normal
@@ -31,10 +34,12 @@ Agent Count: 450 - Consensus Time: TIMEOUT - Success Rate: 45%
 ### Investigation Process
 
 **Hypothesis 1: Network bandwidth exhaustion**
+
 - Test: Checked network metrics
 - Result: Only 60% utilization - REJECTED
 
 **Hypothesis 2: O(n²) message pattern**
+
 - Test: Analyzed message count growth
 - From scalability test framework:
   ```typescript
@@ -48,6 +53,7 @@ Agent Count: 450 - Consensus Time: TIMEOUT - Success Rate: 45%
 - Result: CONFIRMED - Found the issue
 
 **Root Cause Analysis:**
+
 ```typescript
 // Problematic code in ConsensusMemory.ts
 async broadcastProposal(proposal: Proposal) {
@@ -58,6 +64,7 @@ async broadcastProposal(proposal: Proposal) {
 ```
 
 Problems:
+
 1. Sequential broadcasting (slow)
 2. Broadcasting to ALL agents including self (unnecessary)
 3. No message aggregation
@@ -65,6 +72,7 @@ Problems:
 ### Resolution
 
 **Fixed code:**
+
 ```typescript
 // Improved version
 async broadcastProposal(proposal: Proposal) {
@@ -85,6 +93,7 @@ async broadcastProposal(proposal: Proposal) {
 ```
 
 **Results after fix:**
+
 ```
 Agent Count: 400 - Consensus Time: 1,234ms - Success Rate: 100%
 Agent Count: 500 - Consensus Time: 1,456ms - Success Rate: 100%
@@ -94,6 +103,7 @@ Agent Count: 1000 - Consensus Time: 2,345ms - Success Rate: 99%
 Complexity improved from O(n²) to O(n).
 
 ### Lessons Learned
+
 1. **Monitor complexity**: Use scalability tests to detect O(n²) patterns
 2. **Parallel operations**: Use Promise.all for independent operations
 3. **Unnecessary work**: Exclude self from broadcasts
@@ -104,6 +114,7 @@ Complexity improved from O(n²) to O(n).
 **Context**: Consensus failing intermittently with error rate ~10%.
 
 ### Symptoms
+
 - Random consensus failures (no pattern)
 - Some proposals succeed, some fail
 - Byzantine agent count: 0 (no malicious agents)
@@ -112,6 +123,7 @@ Complexity improved from O(n²) to O(n).
 ### Initial Evidence
 
 **From consensus test logs:**
+
 ```
 [INFO] Proposal submitted: prop-123
 [INFO] Votes received: 7/10 agents
@@ -122,6 +134,7 @@ Complexity improved from O(n²) to O(n).
 Confusing: Got required quorum (7/10) but still failed.
 
 **Vote distribution:**
+
 ```
 Agent 1: APPROVE
 Agent 2: APPROVE
@@ -136,12 +149,14 @@ Agent 8-10: NO VOTE (silent)
 ### Investigation Process
 
 **Hypothesis 1: Vote counting bug**
+
 - Test: Manually counted votes from logs
 - Result: 5 approve, 2 reject = 7 total votes
 - With quorum of 7, should have decided
 - CONFIRMED: Decision logic bug
 
 **Root cause in ConsensusMemory.ts:**
+
 ```typescript
 // Buggy code
 async decideConsensus(votes: Vote[]): Promise<Decision> {
@@ -158,11 +173,13 @@ async decideConsensus(votes: Vote[]): Promise<Decision> {
 ```
 
 **The bug:**
+
 - Required approveCount to EQUAL quorumSize (7)
 - Got 5 approves (less than 7) → REJECTED
 - Should have used: approveCount > rejectCount for majority
 
 **Hypothesis 2: Why silent agents?**
+
 - Agents 8-10 not voting at all
 - Checked network logs - messages delivered
 - Checked agent health - all running
@@ -186,6 +203,7 @@ Agents encountering errors during voting were failing silently.
 ### Resolution
 
 **Fix 1: Consensus decision logic**
+
 ```typescript
 // Fixed code
 async decideConsensus(votes: Vote[]): Promise<Decision> {
@@ -205,6 +223,7 @@ async decideConsensus(votes: Vote[]): Promise<Decision> {
 ```
 
 **Fix 2: Silent failure handling**
+
 ```typescript
 // Fixed vote handler
 async handleVoteRequest(request: VoteRequest) {
@@ -229,11 +248,13 @@ async handleVoteRequest(request: VoteRequest) {
 ```
 
 **Results:**
+
 - Consensus success rate: 10% → 99.9%
 - Silent failures eliminated
 - Better error visibility
 
 ### Lessons Learned
+
 1. **Never fail silently**: Always log and report errors
 2. **Test decision logic carefully**: Edge cases matter
 3. **Monitor participation rates**: Detect silent agents early
@@ -244,6 +265,7 @@ async handleVoteRequest(request: VoteRequest) {
 **Context**: After simulated network partition, nodes had inconsistent state that persisted.
 
 ### Symptoms
+
 - Partition: Nodes 1-5 in group A, Nodes 6-10 in group B
 - Both groups made decisions during partition
 - After partition healed, state remained inconsistent
@@ -252,6 +274,7 @@ async handleVoteRequest(request: VoteRequest) {
 ### Initial Evidence
 
 **State comparison after partition healed:**
+
 ```
 Group A state:
   { key1: "value-A1", key2: "value-A2", version: 5 }
@@ -263,6 +286,7 @@ Group B state:
 Both groups had modified key1 independently.
 
 **From network partition test:**
+
 ```typescript
 // From ConsensusIntegration.test.ts
 {
@@ -281,10 +305,12 @@ Test expected recovery within 10 seconds, but state never reconciled.
 ### Investigation Process
 
 **Hypothesis 1: No reconciliation logic**
+
 - Test: Checked for state sync after partition heal
 - Result: CONFIRMED - No automatic reconciliation
 
 **Code inspection:**
+
 ```typescript
 // No reconciliation in partition recovery
 async handlePartitionHealed() {
@@ -297,6 +323,7 @@ async handlePartitionHealed() {
 ```
 
 **Hypothesis 2: Vector clock not used for reconciliation**
+
 - Vector clocks were tracked but not used for merging
 - No CRDT implementation
 - No conflict resolution strategy
@@ -305,7 +332,7 @@ async handlePartitionHealed() {
 // Vector clock tracked but unused
 interface AgentState {
   data: Map<string, any>;
-  vectorClock: VectorClock;  // Tracked but not used!
+  vectorClock: VectorClock; // Tracked but not used!
   version: number;
 }
 ```
@@ -415,6 +442,7 @@ private async resolveConflict(conflict: Conflict): Promise<ResolvedValue> {
 ```
 
 **Results:**
+
 ```
 Partition Test Results:
 - Before fix: State divergence persisted indefinitely
@@ -424,6 +452,7 @@ Partition Test Results:
 ```
 
 ### Lessons Learned
+
 1. **Design for partitions**: Assume network will partition
 2. **Use vector clocks**: Essential for causality tracking and conflict detection
 3. **Automatic reconciliation**: Don't require manual intervention
@@ -435,6 +464,7 @@ Partition Test Results:
 **Context**: Memory usage growing linearly over time during long-running tests.
 
 ### Symptoms
+
 - Memory usage increasing 100MB/hour
 - Eventually hitting OOM after ~8 hours
 - More agents = faster growth
@@ -443,6 +473,7 @@ Partition Test Results:
 ### Initial Evidence
 
 **From scalability test:**
+
 ```
 Hour 0: 512 MB
 Hour 1: 612 MB (+100 MB)
@@ -453,6 +484,7 @@ Hour 8: 1312 MB → OOM
 ```
 
 **Memory profile showed:**
+
 - Most memory in message queues
 - Old messages never being cleared
 - Event listeners accumulating
@@ -460,22 +492,24 @@ Hour 8: 1312 MB → OOM
 ### Investigation Process
 
 **Hypothesis 1: Message queues not being cleared**
+
 - Inspected message queue implementation
 - Found: Messages added but never removed
 
 ```typescript
 // Buggy code in MCPHub.ts
 class MCPHub {
-  private messageHistory: Message[] = [];  // Grows forever!
+  private messageHistory: Message[] = []; // Grows forever!
 
   async sendMessage(message: Message) {
-    this.messageHistory.push(message);  // Never cleared
+    this.messageHistory.push(message); // Never cleared
     await this.deliver(message);
   }
 }
 ```
 
 **Hypothesis 2: Event listener leaks**
+
 - Found: Event listeners added but never removed
 
 ```typescript
@@ -493,10 +527,11 @@ Each time agent joins consensus (which happens frequently in tests), new listene
 ### Resolution
 
 **Fix 1: Bounded message history**
+
 ```typescript
 class MCPHub {
   private messageHistory: Message[] = [];
-  private maxHistorySize = 1000;  // Limit size
+  private maxHistorySize = 1000; // Limit size
 
   async sendMessage(message: Message) {
     this.messageHistory.push(message);
@@ -515,6 +550,7 @@ class MCPHub {
 ```
 
 **Fix 2: Cleanup event listeners**
+
 ```typescript
 class Agent {
   private consensusListeners = new Map<string, Function>();
@@ -549,11 +585,13 @@ class Agent {
 ```
 
 **Results:**
+
 - Memory growth: 100MB/hour → 0MB/hour (stable)
 - Long-running tests: Now run indefinitely
 - GC working properly
 
 ### Lessons Learned
+
 1. **Bound all collections**: Arrays, maps, caches - all need size limits
 2. **Clean up resources**: Event listeners, timers, connections
 3. **Monitor memory over time**: Catch leaks early

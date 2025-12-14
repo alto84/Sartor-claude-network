@@ -388,12 +388,12 @@ esac
 ```markdown
 **Timeout Configuration:**
 
-| Agent Role | Expected Duration | Timeout Threshold | Max Retries |
-|-----------|------------------|-------------------|-------------|
-| PLANNER | 5-10 minutes | 15 minutes | 1 |
-| IMPLEMENTER | 10-20 minutes | 30 minutes | 2 |
-| AUDITOR | 5-15 minutes | 20 minutes | 1 |
-| CLEANER | 3-5 minutes | 10 minutes | 1 |
+| Agent Role  | Expected Duration | Timeout Threshold | Max Retries |
+| ----------- | ----------------- | ----------------- | ----------- |
+| PLANNER     | 5-10 minutes      | 15 minutes        | 1           |
+| IMPLEMENTER | 10-20 minutes     | 30 minutes        | 2           |
+| AUDITOR     | 5-15 minutes      | 20 minutes        | 1           |
+| CLEANER     | 3-5 minutes       | 10 minutes        | 1           |
 
 **Retry Logic:**
 
@@ -510,6 +510,7 @@ done
 **Scenario:** Retry only for specific failure types.
 
 **Logic:**
+
 - Transient failures (network, rate limit) → Retry automatically
 - Missing context failures → Retry with enhanced context
 - Code errors, environment issues → Escalate immediately
@@ -525,6 +526,7 @@ Parse failure reason from agent findings, apply conditional retry logic.
 **Scenario:** Some agents complete, others timeout.
 
 **Logic:**
+
 1. Aggregate results from successful agents
 2. Document which agents failed/timed out
 3. Retry failed agents or escalate
@@ -540,6 +542,7 @@ Parse failure reason from agent findings, apply conditional retry logic.
 **Scenario:** Increase timeout threshold after first retry.
 
 **Logic:**
+
 - First spawn: Standard timeout (e.g., 15 minutes)
 - First retry: Extended timeout (e.g., 30 minutes)
 - Second retry: Maximum timeout (e.g., 45 minutes)
@@ -553,6 +556,7 @@ Parse failure reason from agent findings, apply conditional retry logic.
 **Scenario:** Don't spawn new agents if system unhealthy.
 
 **Health Checks:**
+
 1. Current agent count < max capacity (5 agents)
 2. No recent cascade failures (3+ failures in 5 minutes)
 3. System resources available (memory, CPU)
@@ -567,6 +571,7 @@ If unhealthy, queue spawn requests until health improves.
 ### Spawning (from `background-agent-patterns.md`)
 
 Async coordination enhances spawning with:
+
 - Timeout configuration per agent role
 - Retry logic for failed spawns
 - Health checks before spawning
@@ -574,6 +579,7 @@ Async coordination enhances spawning with:
 ### Monitoring (from `background-agent-patterns.md`)
 
 Async coordination enhances monitoring with:
+
 - Timeout detection
 - Stale agent detection
 - Failure type classification
@@ -581,6 +587,7 @@ Async coordination enhances monitoring with:
 ### Aggregation (from `background-agent-patterns.md`)
 
 Async coordination enhances aggregation with:
+
 - Handling agents completing out of order
 - Partial aggregation for incomplete sets
 - Conflict resolution for inconsistent results

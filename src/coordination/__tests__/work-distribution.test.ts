@@ -11,11 +11,7 @@ import {
   TaskPriority,
   type Task,
 } from '..//work-distribution';
-import {
-  SubagentRegistry,
-  createRegistry,
-  AgentStatus,
-} from '../../s../../subagent/registry';
+import { SubagentRegistry, createRegistry, AgentStatus } from '../../s../../subagent/registry';
 import { AgentRole } from '../../s../../subagent/bootstrap';
 
 describe('WorkDistributor', () => {
@@ -29,21 +25,15 @@ describe('WorkDistributor', () => {
     // Register agents
     registry.registerSubagent('impl-1', {
       role: AgentRole.IMPLEMENTER,
-      capabilities: [
-        { name: 'coding', description: 'Write code', proficiency: 0.9 },
-      ],
+      capabilities: [{ name: 'coding', description: 'Write code', proficiency: 0.9 }],
     });
     registry.registerSubagent('impl-2', {
       role: AgentRole.IMPLEMENTER,
-      capabilities: [
-        { name: 'coding', description: 'Write code', proficiency: 0.8 },
-      ],
+      capabilities: [{ name: 'coding', description: 'Write code', proficiency: 0.8 }],
     });
     registry.registerSubagent('planner-1', {
       role: AgentRole.PLANNER,
-      capabilities: [
-        { name: 'planning', description: 'Plan tasks', proficiency: 0.95 },
-      ],
+      capabilities: [{ name: 'planning', description: 'Plan tasks', proficiency: 0.95 }],
     });
 
     registry.heartbeat('impl-1', AgentStatus.ACTIVE);
@@ -58,10 +48,7 @@ describe('WorkDistributor', () => {
 
   describe('createTask', () => {
     it('should create a new task', () => {
-      const task = distributor.createTask(
-        'Implement Feature',
-        'Build the new feature'
-      );
+      const task = distributor.createTask('Implement Feature', 'Build the new feature');
 
       expect(task).toBeDefined();
       expect(task.title).toBe('Implement Feature');

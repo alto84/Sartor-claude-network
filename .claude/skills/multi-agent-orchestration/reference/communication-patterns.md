@@ -13,21 +13,25 @@ The A2A Protocol is a comprehensive peer-to-peer collaboration framework enablin
 ### Core Capabilities
 
 **Stateful Multi-Turn Interactions**:
+
 - Persistent session management across agent conversations
 - Context preservation between messages
 - Session lifecycle: creation → active → closing → closed
 
 **Complex Task Management**:
+
 - Automatic task decomposition into subtasks
 - Dynamic task allocation based on agent capabilities
 - Progress tracking and milestone reporting
 
 **Reasoning and Planning**:
+
 - Collaborative problem-solving sessions
 - Shared reasoning state across agents
 - Planning coordination with dependency management
 
 **Negotiation and Consensus**:
+
 - Resource allocation negotiation
 - Priority-based bidding mechanisms
 - Consensus building with configurable thresholds
@@ -62,13 +66,14 @@ Eight message classes for structured communication:
 
 **Throughput** (messages per second):
 
-| Session Size | Throughput | Latency | CPU Usage |
-|--------------|-----------|---------|-----------|
-| 2-3 agents | 500-1000 msg/s | 5-20ms | 15-25% |
-| 4-6 agents | 200-500 msg/s | 20-50ms | 25-40% |
-| 7-10 agents | 100-200 msg/s | 50-100ms | 40-60% |
+| Session Size | Throughput     | Latency  | CPU Usage |
+| ------------ | -------------- | -------- | --------- |
+| 2-3 agents   | 500-1000 msg/s | 5-20ms   | 15-25%    |
+| 4-6 agents   | 200-500 msg/s  | 20-50ms  | 25-40%    |
+| 7-10 agents  | 100-200 msg/s  | 50-100ms | 40-60%    |
 
 **Scaling Analysis**:
+
 - Linear degradation up to 6 participants
 - Quadratic overhead beyond 8 participants (O(n²) state sync)
 - Byzantine tolerance maintained up to 1/3 participants
@@ -76,31 +81,35 @@ Eight message classes for structured communication:
 
 ### Failure Mode Analysis
 
-| Failure Type | Recovery Time | Data Loss | Prevention Strategy |
-|--------------|---------------|-----------|---------------------|
-| Network Partition | 2-10 seconds | No | Circuit breakers, graceful degradation |
-| Byzantine Agent | 1-5 seconds | No | Trust scoring, isolation |
-| Consensus Timeout | 30-60 seconds | No | Adaptive timeouts, retry mechanisms |
-| Resource Exhaustion | Variable | Possible | Priority queues, resource limits |
+| Failure Type        | Recovery Time | Data Loss | Prevention Strategy                    |
+| ------------------- | ------------- | --------- | -------------------------------------- |
+| Network Partition   | 2-10 seconds  | No        | Circuit breakers, graceful degradation |
+| Byzantine Agent     | 1-5 seconds   | No        | Trust scoring, isolation               |
+| Consensus Timeout   | 30-60 seconds | No        | Adaptive timeouts, retry mechanisms    |
+| Resource Exhaustion | Variable      | Possible  | Priority queues, resource limits       |
 
 ### Security Features
 
 **Cryptographic Message Signing**:
+
 - RSA-2048 signatures for message authenticity
 - Prevents message forgery and tampering
 - Enables non-repudiation
 
 **Proof-of-Work**:
+
 - Applied to critical consensus decisions
 - Prevents Sybil attacks
 - Configurable difficulty
 
 **Trust Scoring**:
+
 - Historical behavior-based reputation
 - Trust decay for inactivity
 - Isolation threshold for low-trust agents
 
 **Replay Attack Prevention**:
+
 - Timestamp validation with configurable skew tolerance
 - Sequence number tracking per agent pair
 - Nonce-based challenge-response
@@ -109,14 +118,14 @@ Eight message classes for structured communication:
 
 ```typescript
 interface A2AProtocolConfig {
-  maxSessions: number;              // Default: 100
-  sessionTimeout: number;           // Default: 300000 (5 minutes)
-  consensusTimeout: number;         // Default: 60000 (1 minute)
-  trustThreshold: number;           // Default: 0.6
-  maxByzantineRatio: number;        // Default: 0.33 (1/3)
-  performanceMonitoring: boolean;   // Default: true
-  signatureRequired: boolean;       // Default: true
-  encryptionEnabled: boolean;       // Default: true
+  maxSessions: number; // Default: 100
+  sessionTimeout: number; // Default: 300000 (5 minutes)
+  consensusTimeout: number; // Default: 60000 (1 minute)
+  trustThreshold: number; // Default: 0.6
+  maxByzantineRatio: number; // Default: 0.33 (1/3)
+  performanceMonitoring: boolean; // Default: true
+  signatureRequired: boolean; // Default: true
+  encryptionEnabled: boolean; // Default: true
 }
 ```
 
@@ -135,21 +144,21 @@ const sessionId = await protocol.createSession(
   SessionType.TASK_COLLABORATION,
   {
     objective: 'Solve distributed system design problem',
-    consensusThreshold: 0.67  // 2/3 majority
+    consensusThreshold: 0.67, // 2/3 majority
   }
 );
 
 // Send task assignment
 await protocol.sendSessionMessage(
   sessionId,
-  'agent1',          // from
-  'agent2',          // to
+  'agent1', // from
+  'agent2', // to
   A2AMessageClass.TASK_MANAGEMENT,
   {
     action: 'assign_task',
     taskId: 'task-1',
     description: 'Analyze consensus algorithms',
-    deadline: Date.now() + 3600000
+    deadline: Date.now() + 3600000,
   }
 );
 
@@ -159,14 +168,10 @@ protocol.on('session:message', (message) => {
 });
 
 // Achieve consensus
-const consensusResult = await protocol.reachConsensus(
-  sessionId,
-  'agent1',
-  {
-    proposal: 'Use Raft consensus',
-    requiredVotes: 2
-  }
-);
+const consensusResult = await protocol.reachConsensus(sessionId, 'agent1', {
+  proposal: 'Use Raft consensus',
+  requiredVotes: 2,
+});
 ```
 
 ### Limitations
@@ -212,16 +217,19 @@ Vector embedding-based routing that understands message intent and routes based 
 ### Core Capabilities
 
 **Vector Embedding-Based Similarity**:
+
 - Converts message intent to vector embeddings
 - Calculates cosine similarity between vectors
 - Routes based on semantic understanding
 
 **Semantic Cache**:
+
 - Similarity-based cache lookups (threshold: 0.85 default)
 - Finds cached entries without exact match
 - Tracks cache hit ratios and performance
 
 **Content-Aware Routing**:
+
 - Understands message domain and intent
 - Routes to agents with matching capabilities
 - Combines capability matching with semantic scoring
@@ -230,22 +238,24 @@ Vector embedding-based routing that understands message intent and routes based 
 
 Compared to baseline (random/round-robin routing):
 
-| Metric | Baseline | Semantic Routing | Improvement |
-|--------|----------|------------------|-------------|
-| Latency | ~5000ms | <200ms | >90% reduction |
-| Cache Hit Ratio | N/A | >60% | Significant overhead reduction |
-| Routing Accuracy | ~50% | >85% | >35% improvement |
-| Embedding Overhead | N/A | <50ms | Acceptable overhead |
+| Metric             | Baseline | Semantic Routing | Improvement                    |
+| ------------------ | -------- | ---------------- | ------------------------------ |
+| Latency            | ~5000ms  | <200ms           | >90% reduction                 |
+| Cache Hit Ratio    | N/A      | >60%             | Significant overhead reduction |
+| Routing Accuracy   | ~50%     | >85%             | >35% improvement               |
+| Embedding Overhead | N/A      | <50ms            | Acceptable overhead            |
 
 ### Routing Strategy
 
 **Route Scoring Algorithm**:
+
 ```typescript
 // Combined score: traditional capability matching + semantic similarity
-const combinedScore = (routeScore * 0.6) + (semanticScore * 0.4);
+const combinedScore = routeScore * 0.6 + semanticScore * 0.4;
 ```
 
 **Route Selection Process**:
+
 1. Extract intent from message
 2. Check semantic cache for similar intents (>0.85 similarity)
 3. If cache miss, compute embedding and calculate similarities
@@ -263,7 +273,7 @@ const combinedScore = (routeScore * 0.6) + (semanticScore * 0.4);
     "fallback_strategy": "capability_matching",
     "similarityThreshold": 0.85,
     "cacheSize": 1000,
-    "cacheTTL": 1800000  // 30 minutes
+    "cacheTTL": 1800000 // 30 minutes
   },
   "compression": {
     "enabled": true,
@@ -339,7 +349,7 @@ const message: MCPMessage = {
   type: MessageType.TASK_ASSIGNMENT,
   payload: {
     type: 'research',
-    description: 'search academic literature for machine learning papers on consensus algorithms'
+    description: 'search academic literature for machine learning papers on consensus algorithms',
   },
   // ... other properties
 };
@@ -363,7 +373,7 @@ console.log({
   cacheHitRatio: metrics.cacheHitRatio,
   routingAccuracy: metrics.routingAccuracy,
   totalRequests: metrics.totalRequests,
-  failedRoutes: metrics.failedRoutes
+  failedRoutes: metrics.failedRoutes,
 });
 
 // Get embedding computation metrics
@@ -372,18 +382,20 @@ console.log({
   computationTime: embeddingMetrics.computationTime,
   cacheHitRatio: embeddingMetrics.cacheHitRatio,
   averageSimilarity: embeddingMetrics.averageSimilarity,
-  totalComputations: embeddingMetrics.totalComputations
+  totalComputations: embeddingMetrics.totalComputations,
 });
 ```
 
 ### Limitations
 
 **Current Implementation**:
+
 - Uses hash-based embeddings for demonstration (production should use real models)
 - Similarity threshold is static (could be adaptive)
 - Single-modal embeddings only (no multi-modal support)
 
 **Recommendations for Production**:
+
 1. Replace with sentence transformers (e.g., all-MiniLM-L6-v2)
 2. Use OpenAI embeddings API or custom domain models
 3. Implement adaptive similarity thresholds
@@ -397,16 +409,19 @@ console.log({
 **Pattern**: Point-to-point communication between specific agents
 
 **Characteristics**:
+
 - Lowest latency
 - No coordination overhead
 - Tight coupling between sender and receiver
 
 **When to Use**:
+
 - Known target agent
 - Low-level coordination
 - Performance-critical paths
 
 **Implementation**:
+
 ```typescript
 await messagePool.sendDirect(fromAgent, toAgent, message);
 ```
@@ -416,16 +431,19 @@ await messagePool.sendDirect(fromAgent, toAgent, message);
 **Pattern**: Message sent to all agents in system/domain
 
 **Characteristics**:
+
 - Simple implementation
 - High bandwidth usage (O(n) messages)
 - All agents receive regardless of interest
 
 **When to Use**:
+
 - System-wide announcements
 - Small agent populations
 - Critical updates that must reach everyone
 
 **Implementation**:
+
 ```typescript
 await messagePool.broadcast(fromAgent, domain, message);
 ```
@@ -435,16 +453,19 @@ await messagePool.broadcast(fromAgent, domain, message);
 **Pattern**: Topic-based message distribution
 
 **Characteristics**:
+
 - Decouples publishers from subscribers
 - Agents subscribe to topics of interest
 - Scalable to large populations
 
 **When to Use**:
+
 - Event distribution
 - Loosely coupled systems
 - Multiple consumers for same message
 
 **Implementation**:
+
 ```typescript
 // Subscribe to topic
 await messagePool.subscribe(agent, 'consensus-decisions');
@@ -458,16 +479,19 @@ await messagePool.publish('consensus-decisions', message);
 **Pattern**: Route based on understanding of message intent
 
 **Characteristics**:
+
 - Content-aware routing
 - High accuracy (>85%)
 - Moderate overhead (<200ms)
 
 **When to Use**:
+
 - Complex task allocation
 - Capability-based routing
 - Intent understanding critical
 
 **Implementation**:
+
 ```typescript
 const result = await semanticRouter.routeMessage(message);
 // Routes to agents with relevant capabilities
@@ -498,10 +522,10 @@ Prevent cascade failures when agents become unresponsive or overloaded.
 
 ```typescript
 interface CircuitBreakerConfig {
-  failureThreshold: number;      // Default: 5 failures
-  recoveryTimeout: number;       // Default: 60000 (1 minute)
-  halfOpenRequests: number;      // Default: 3
-  monitoringWindow: number;      // Default: 60000 (1 minute)
+  failureThreshold: number; // Default: 5 failures
+  recoveryTimeout: number; // Default: 60000 (1 minute)
+  halfOpenRequests: number; // Default: 3
+  monitoringWindow: number; // Default: 60000 (1 minute)
 }
 ```
 
@@ -512,7 +536,7 @@ import { CircuitBreaker } from './src/core/routing/CircuitBreaker';
 
 const breaker = new CircuitBreaker({
   failureThreshold: 5,
-  recoveryTimeout: 60000
+  recoveryTimeout: 60000,
 });
 
 // Protected call
@@ -539,8 +563,8 @@ breaker.on('state:change', (newState) => {
 const loadBalancer = new IntelligentLoadBalancer({
   circuitBreaker: {
     failureThreshold: 5,
-    recoveryTimeout: 60000
-  }
+    recoveryTimeout: 60000,
+  },
 });
 
 // Failed requests automatically trip circuit breaker
@@ -549,17 +573,18 @@ const loadBalancer = new IntelligentLoadBalancer({
 
 ## Performance Comparison
 
-| Pattern | Latency | Throughput | Scalability | Coupling |
-|---------|---------|------------|-------------|----------|
-| Direct | Lowest (~5ms) | Highest | Poor | Tight |
-| Broadcast | Low (~10ms) | Low (O(n)) | Poor | Loose |
-| Pub-Sub | Medium (~20ms) | Medium | Good | Very Loose |
-| Semantic | Higher (~200ms) | Medium | Good | Loose |
-| Load Balanced | Medium (~50ms) | High | Excellent | Loose |
+| Pattern       | Latency         | Throughput | Scalability | Coupling   |
+| ------------- | --------------- | ---------- | ----------- | ---------- |
+| Direct        | Lowest (~5ms)   | Highest    | Poor        | Tight      |
+| Broadcast     | Low (~10ms)     | Low (O(n)) | Poor        | Loose      |
+| Pub-Sub       | Medium (~20ms)  | Medium     | Good        | Very Loose |
+| Semantic      | Higher (~200ms) | Medium     | Good        | Loose      |
+| Load Balanced | Medium (~50ms)  | High       | Excellent   | Loose      |
 
 ## Evidence Sources
 
 All performance numbers and patterns extracted from:
+
 - `/home/alton/SKG Agent Prototype 2/src/core/protocols/A2AProtocol.ts`
 - `/home/alton/SKG Agent Prototype 2/src/core/routing/SemanticRouter.ts`
 - `/home/alton/SKG Agent Prototype 2/src/core/routing/CircuitBreaker.ts`

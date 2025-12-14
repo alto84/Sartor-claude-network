@@ -34,6 +34,7 @@ Real architectural patterns extracted from SKG Agent Prototype 2 and related pro
 **Core Components**:
 
 1. **Agent Registry**:
+
 ```typescript
 interface AgentManifest {
   id: string;
@@ -55,19 +56,22 @@ class AgentRegistry {
   }
 
   findAgentsByCapability(capability: string): AgentManifest[] {
-    return Array.from(this.agents.values())
-      .filter(agent => agent.capabilities.includes(capability));
+    return Array.from(this.agents.values()).filter((agent) =>
+      agent.capabilities.includes(capability)
+    );
   }
 
   async getHealthyAgents(): Promise<AgentManifest[]> {
     const health = await this.healthMonitor.getHealthStatus();
-    return Array.from(this.agents.values())
-      .filter(agent => health.get(agent.id)?.healthy === true);
+    return Array.from(this.agents.values()).filter(
+      (agent) => health.get(agent.id)?.healthy === true
+    );
   }
 }
 ```
 
 2. **Request Router** (with semantic routing):
+
 ```typescript
 class IntelligentRouter {
   private semanticRouter: SemanticRouter;
@@ -79,38 +83,29 @@ class IntelligentRouter {
     const intent = await this.semanticRouter.extractIntent(request);
 
     // 2. Find capable agents
-    const capableAgents = this.registry.findAgentsByCapability(
-      intent.requiredCapability
-    );
+    const capableAgents = this.registry.findAgentsByCapability(intent.requiredCapability);
 
     // 3. Filter by health
-    const healthyAgents = capableAgents.filter(agent =>
-      this.isHealthy(agent.id)
-    );
+    const healthyAgents = capableAgents.filter((agent) => this.isHealthy(agent.id));
 
     // 4. Score and rank routes
-    const routes = await this.semanticRouter.scoreRoutes(
-      intent,
-      healthyAgents
-    );
+    const routes = await this.semanticRouter.scoreRoutes(intent, healthyAgents);
 
     // 5. Apply load balancing
-    const selectedAgent = await this.loadBalancer.selectAgent(
-      routes,
-      request
-    );
+    const selectedAgent = await this.loadBalancer.selectAgent(routes, request);
 
     return {
       targetAgent: selectedAgent,
       routing: routes,
       confidence: routes[0].semanticScore,
-      latency: Date.now() - request.timestamp
+      latency: Date.now() - request.timestamp,
     };
   }
 }
 ```
 
 3. **Execution Coordinator**:
+
 ```typescript
 class ExecutionCoordinator {
   async executeTask(task: Task): Promise<ExecutionResult> {
@@ -122,7 +117,7 @@ class ExecutionCoordinator {
 
     // Execute independent subtasks in parallel
     const parallelResults = await Promise.all(
-      independent.map(subtask => this.executeSubtask(subtask))
+      independent.map((subtask) => this.executeSubtask(subtask))
     );
 
     // Execute dependent subtasks respecting dependencies
@@ -132,16 +127,14 @@ class ExecutionCoordinator {
     return this.aggregateResults([...parallelResults, ...dependentResults]);
   }
 
-  private async executeDependencyChain(
-    tasks: DependencyGraph
-  ): Promise<Result[]> {
+  private async executeDependencyChain(tasks: DependencyGraph): Promise<Result[]> {
     const results: Result[] = [];
     const completed = new Set<string>();
 
     while (completed.size < tasks.nodes.length) {
       // Find tasks with all dependencies completed
-      const ready = tasks.nodes.filter(task =>
-        task.dependencies.every(dep => completed.has(dep.id))
+      const ready = tasks.nodes.filter((task) =>
+        task.dependencies.every((dep) => completed.has(dep.id))
       );
 
       if (ready.length === 0 && completed.size < tasks.nodes.length) {
@@ -149,12 +142,10 @@ class ExecutionCoordinator {
       }
 
       // Execute ready tasks in parallel
-      const batchResults = await Promise.all(
-        ready.map(task => this.executeSubtask(task))
-      );
+      const batchResults = await Promise.all(ready.map((task) => this.executeSubtask(task)));
 
       results.push(...batchResults);
-      ready.forEach(task => completed.add(task.id));
+      ready.forEach((task) => completed.add(task.id));
     }
 
     return results;
@@ -165,22 +156,26 @@ class ExecutionCoordinator {
 ### Design Decisions and Tradeoffs
 
 **Why Centralized Orchestrator**:
+
 - Simpler reasoning about system state
 - Single point for monitoring and debugging
 - Easier to implement complex routing logic
 - Natural fit for hierarchical organizations
 
 **Tradeoffs**:
+
 - Orchestrator is single point of failure (mitigate with HA setup)
 - Can become bottleneck at high scale (mitigate with horizontal scaling)
 - Higher latency than direct agent-to-agent (added hop)
 
 **Measured Performance**:
+
 - Routing overhead: 50-200ms (semantic routing with caching)
 - Throughput: Limited by orchestrator capacity (~1000-5000 req/s per instance)
 - Scalability: Horizontal scaling of orchestrator instances
 
 **When to Use**:
+
 - Need centralized control and monitoring
 - Complex routing logic required
 - Heterogeneous agent capabilities
@@ -203,6 +198,7 @@ class ExecutionCoordinator {
 **Source**: `/home/alton/SKG Agent Prototype 2/src/core/protocols/A2AProtocol.ts`
 
 **A2A Protocol Session**:
+
 ```typescript
 class A2ASession {
   private participants: Map<string, AgentInfo>;
@@ -227,7 +223,7 @@ class A2ASession {
           agentId: assignment.agentId,
           taskId: assignment.taskId,
           status: 'COMPLETED',
-          result
+          result,
         });
 
         return result;
@@ -237,20 +233,18 @@ class A2ASession {
     // 4. Reach consensus on combined result
     const consensus = await this.consensusEngine.reachConsensus({
       proposal: this.combineResults(results),
-      requiredVotes: Math.ceil(this.participants.size * 0.67)
+      requiredVotes: Math.ceil(this.participants.size * 0.67),
     });
 
     return {
       result: consensus.agreedValue,
       participants: Array.from(this.participants.keys()),
       votes: consensus.votes,
-      dissent: consensus.dissenting
+      dissent: consensus.dissenting,
     };
   }
 
-  private async negotiateAllocation(
-    subtasks: Subtask[]
-  ): Promise<TaskAllocation[]> {
+  private async negotiateAllocation(subtasks: Subtask[]): Promise<TaskAllocation[]> {
     const bids: Map<string, Bid[]> = new Map();
 
     // Each agent bids on tasks based on capability and load
@@ -266,12 +260,10 @@ class A2ASession {
 ```
 
 **Direct Agent-to-Agent Communication**:
+
 ```typescript
 class DirectA2ACommunication {
-  async sendDirectMessage(
-    targetAgent: string,
-    message: A2AMessage
-  ): Promise<A2AResponse> {
+  async sendDirectMessage(targetAgent: string, message: A2AMessage): Promise<A2AResponse> {
     // Add vector clock for causal ordering
     message.vectorClock = this.vectorClock.tick().clone();
 
@@ -289,7 +281,7 @@ class DirectA2ACommunication {
 
   async handleIncomingMessage(message: A2AMessage): Promise<void> {
     // Verify signature
-    if (!await this.verifySignature(message)) {
+    if (!(await this.verifySignature(message))) {
       throw new Error('Invalid message signature');
     }
 
@@ -313,23 +305,27 @@ class DirectA2ACommunication {
 ### Design Decisions and Tradeoffs
 
 **Why Peer-to-Peer**:
+
 - No single point of failure
 - Lower latency (direct communication)
 - Better fault tolerance
 - Scalable for large networks
 
 **Tradeoffs**:
+
 - More complex coordination logic
 - O(n²) message complexity for full mesh
 - Harder to reason about global state
 - Byzantine tolerance requires BFT (expensive)
 
 **Measured Performance**:
+
 - Latency: 5-20ms for 2-3 agents (vs 50-200ms for orchestrator)
 - Message throughput: 500-1000 msg/s for small sessions
 - Scaling: Linear degradation to 6 agents, quadratic beyond 8
 
 **When to Use**:
+
 - High fault tolerance required
 - Low latency critical
 - No natural coordinator
@@ -357,6 +353,7 @@ class DirectA2ACommunication {
 **Source**: `/home/alton/SKG Agent Prototype 2/src/core/consensus/RaftConsensus.ts`
 
 **Raft-Based Coordination**:
+
 ```typescript
 class RaftCoordinatedAgents {
   private raftNode: RaftConsensus;
@@ -376,7 +373,7 @@ class RaftCoordinatedAgents {
       type: CommandType.DECISION,
       data: decision,
       clientId: this.agentId,
-      sequenceNumber: this.sequenceNumber++
+      sequenceNumber: this.sequenceNumber++,
     };
 
     // Replicate to followers (requires majority)
@@ -409,34 +406,32 @@ class RaftCoordinatedAgents {
 ```
 
 **Leader Election Coordination**:
+
 ```typescript
 class LeaderElectionCoordinator {
   async electLeader(candidates: Agent[]): Promise<Agent> {
     // Use Raft for leader election
     const raft = new RaftConsensus({
-      nodes: candidates.map(c => ({
+      nodes: candidates.map((c) => ({
         id: c.id,
         address: c.address,
         port: c.port,
-        active: true
+        active: true,
       })),
       electionTimeoutMin: 150,
-      electionTimeoutMax: 300
+      electionTimeoutMax: 300,
     });
 
     await raft.initialize();
 
     // Wait for leader election
-    await this.waitForLeader(raft, 5000);  // 5s timeout
+    await this.waitForLeader(raft, 5000); // 5s timeout
 
     const leaderId = raft.getLeaderId();
-    return candidates.find(c => c.id === leaderId)!;
+    return candidates.find((c) => c.id === leaderId)!;
   }
 
-  private async waitForLeader(
-    raft: RaftConsensus,
-    timeout: number
-  ): Promise<void> {
+  private async waitForLeader(raft: RaftConsensus, timeout: number): Promise<void> {
     const startTime = Date.now();
 
     while (!raft.getLeaderId() && Date.now() - startTime < timeout) {
@@ -453,23 +448,27 @@ class LeaderElectionCoordinator {
 ### Design Decisions and Tradeoffs
 
 **Why Leader-Based**:
+
 - Strong consistency guarantees
 - Total ordering of operations
 - Simpler than full P2P consensus
 - Well-understood semantics (Raft/BFT)
 
 **Tradeoffs**:
+
 - Leader is throughput bottleneck
 - Requires majority for progress
 - Election downtime (50-200ms for Raft)
 - More complex than centralized orchestrator
 
 **Measured Performance**:
+
 - Election time: 50-200ms (Raft), 200-500ms (BFT)
 - Command throughput: 100-1000 cmd/s (Raft), 10-50 req/s (BFT)
 - Fault tolerance: f failures in 2f+1 nodes (Raft), f Byzantine in 3f+1 (BFT)
 
 **When to Use**:
+
 - Strong consistency required
 - Total ordering needed
 - Cluster size small to medium (3-20 nodes)
@@ -515,9 +514,7 @@ class HierarchicalCoordination {
         const agentTasks = await coordinator.decompose(regionalTask);
 
         // Agents execute in parallel
-        const agentResults = await Promise.all(
-          agentTasks.map(t => this.executeAgentTask(t))
-        );
+        const agentResults = await Promise.all(agentTasks.map((t) => this.executeAgentTask(t)));
 
         // Regional coordinator aggregates agent results
         return coordinator.aggregate(agentResults);
@@ -533,23 +530,27 @@ class HierarchicalCoordination {
 ### Design Decisions and Tradeoffs
 
 **Why Hierarchical**:
+
 - Scales to very large agent populations
 - Natural for geographically distributed systems
 - Reduces coordination overhead (logarithmic)
 - Matches organizational hierarchies
 
 **Tradeoffs**:
+
 - Higher latency (multiple coordination layers)
 - More complex overall architecture
 - Harder to maintain consistency across levels
 - Requires careful partition design
 
 **Measured Performance**:
-- Latency: Base + (levels * 50-100ms)
+
+- Latency: Base + (levels \* 50-100ms)
 - Scalability: Logarithmic in agent count
 - Throughput: Aggregate of regional throughputs
 
 **When to Use**:
+
 - Very large agent populations (>100)
 - Geographic distribution
 - Natural hierarchical structure
@@ -557,16 +558,17 @@ class HierarchicalCoordination {
 
 ## Pattern Comparison Matrix
 
-| Pattern | Latency | Scalability | Fault Tolerance | Complexity | Use Case |
-|---------|---------|-------------|-----------------|------------|----------|
-| Orchestrator | Medium (50-200ms) | Medium (horizontal scale) | Medium (HA setup) | Low | Centralized control needed |
-| P2P | Low (5-20ms) | Medium (up to 20) | High | High | No natural leader, Byzantine possible |
-| Leader-Based | Low-Medium (10-50ms) | Medium (up to 20) | High | Medium | Strong consistency, total ordering |
-| Hierarchical | High (multi-level) | Very High (100+) | Medium | Very High | Large scale, geographic distribution |
+| Pattern      | Latency              | Scalability               | Fault Tolerance   | Complexity | Use Case                              |
+| ------------ | -------------------- | ------------------------- | ----------------- | ---------- | ------------------------------------- |
+| Orchestrator | Medium (50-200ms)    | Medium (horizontal scale) | Medium (HA setup) | Low        | Centralized control needed            |
+| P2P          | Low (5-20ms)         | Medium (up to 20)         | High              | High       | No natural leader, Byzantine possible |
+| Leader-Based | Low-Medium (10-50ms) | Medium (up to 20)         | High              | Medium     | Strong consistency, total ordering    |
+| Hierarchical | High (multi-level)   | Very High (100+)          | Medium            | Very High  | Large scale, geographic distribution  |
 
 ## Evidence Sources
 
 All patterns extracted from:
+
 - `/home/alton/AGENTIC_HARNESS_ARCHITECTURE.md` - Orchestrator architecture
 - `/home/alton/MCP_ORCHESTRATOR_DESIGN.md` - Detailed orchestrator design
 - `/home/alton/SKG Agent Prototype 2/src/core/protocols/A2AProtocol.ts` - P2P implementation

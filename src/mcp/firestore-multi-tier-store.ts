@@ -115,7 +115,9 @@ export class FirestoreMultiTierStore {
     }
 
     if (!this.useFirestore && !this.useGitHub) {
-      console.error('[FirestoreMultiTierStore] Using file storage only (no cloud backends configured)');
+      console.error(
+        '[FirestoreMultiTierStore] Using file storage only (no cloud backends configured)'
+      );
     }
   }
 
@@ -141,7 +143,10 @@ export class FirestoreMultiTierStore {
       try {
         await this.firestoreDb.collection(this.collectionName).doc(id).set(memory);
       } catch (error) {
-        console.error('[FirestoreMultiTierStore] Firestore write failed, falling back to file:', error);
+        console.error(
+          '[FirestoreMultiTierStore] Firestore write failed, falling back to file:',
+          error
+        );
         return this.fileStore.createMemory(content, type, options);
       }
     } else {
@@ -174,10 +179,13 @@ export class FirestoreMultiTierStore {
         if (doc.exists) {
           const memory = doc.data() as Memory;
           // Update access count and timestamp
-          await this.firestoreDb.collection(this.collectionName).doc(id).update({
-            access_count: (memory.access_count || 0) + 1,
-            last_accessed: new Date().toISOString(),
-          });
+          await this.firestoreDb
+            .collection(this.collectionName)
+            .doc(id)
+            .update({
+              access_count: (memory.access_count || 0) + 1,
+              last_accessed: new Date().toISOString(),
+            });
           return memory;
         }
       } catch (error) {
@@ -193,7 +201,14 @@ export class FirestoreMultiTierStore {
     if (this.useGitHub && this.githubStore) {
       try {
         // Search across type directories
-        for (const type of ['episodic', 'semantic', 'procedural', 'working', 'refinement_trace', 'expert_consensus']) {
+        for (const type of [
+          'episodic',
+          'semantic',
+          'procedural',
+          'working',
+          'refinement_trace',
+          'expert_consensus',
+        ]) {
           const result = await this.githubStore.get(`${type}/${id}.json`);
           if (result) return result as Memory;
         }

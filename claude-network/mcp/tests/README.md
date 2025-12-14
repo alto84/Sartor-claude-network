@@ -114,12 +114,14 @@ open htmlcov/index.html
 Tests each tool independently with mocked dependencies.
 
 **Coverage:**
+
 - Firebase tools: read, write, delete, query
 - GitHub tools: read_file, search, get_history, list_files
 - Onboarding tools: welcome, checklist, setup_guide, verify_setup
 - Navigation tools: list_agents, list_skills, list_tasks, get_system_status, find_expert
 
 **Example:**
+
 ```bash
 pytest test_unit.py::TestFirebaseTools::test_write_merge -v
 ```
@@ -129,6 +131,7 @@ pytest test_unit.py::TestFirebaseTools::test_write_merge -v
 Tests the complete MCP server with tool integration.
 
 **Coverage:**
+
 - Server initialization and configuration
 - Tool registration and loading
 - Request handling (initialize, list_tools, call_tool, shutdown)
@@ -137,6 +140,7 @@ Tests the complete MCP server with tool integration.
 - Session management
 
 **Example:**
+
 ```bash
 pytest test_integration.py::TestRequestHandling -v
 ```
@@ -146,6 +150,7 @@ pytest test_integration.py::TestRequestHandling -v
 Tests all 5 discovery methods and connection workflows.
 
 **Coverage:**
+
 - Discovery methods: local, network, Firebase, GitHub, environment
 - Connection establishment
 - Tool activation
@@ -154,6 +159,7 @@ Tests all 5 discovery methods and connection workflows.
 - Connection resilience
 
 **Example:**
+
 ```bash
 pytest test_gateway_comprehensive.py::TestDiscoveryMethods -v
 ```
@@ -163,6 +169,7 @@ pytest test_gateway_comprehensive.py::TestDiscoveryMethods -v
 Tests complete workflows from start to finish.
 
 **Coverage:**
+
 - Complete agent lifecycle
 - Multi-agent scenarios
 - Concurrent operations
@@ -172,6 +179,7 @@ Tests complete workflows from start to finish.
 - Error recovery
 
 **Example:**
+
 ```bash
 pytest test_e2e.py::TestMultiAgentScenarios -v
 ```
@@ -181,6 +189,7 @@ pytest test_e2e.py::TestMultiAgentScenarios -v
 Measures actual performance metrics.
 
 **Metrics:**
+
 - Connection speed (discovery, establishment)
 - Tool execution latency (Firebase, GitHub)
 - Multi-agent load capacity
@@ -189,11 +198,13 @@ Measures actual performance metrics.
 - Scalability
 
 **Example:**
+
 ```bash
 pytest test_performance.py -v -s  # -s to show performance output
 ```
 
 **Sample Output:**
+
 ```
 Local discovery: 12.34ms
 Full discovery: 156.78ms for 4 endpoints
@@ -207,6 +218,7 @@ Firebase read latency: avg=8.92ms, max=23.45ms
 Tests security measures and attack prevention.
 
 **Coverage:**
+
 - Authentication and authorization
 - Input validation and sanitization
 - SQL injection prevention
@@ -219,6 +231,7 @@ Tests security measures and attack prevention.
 - Data integrity
 
 **Example:**
+
 ```bash
 pytest test_security.py::TestInputValidation -v
 ```
@@ -316,24 +329,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.10
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-        pip install pytest pytest-asyncio pytest-cov psutil
-    - name: Run tests
-      run: |
-        cd claude-network/mcp/tests
-        python run_all_tests.py
-    - name: Generate coverage
-      run: |
-        pytest --cov=../tools --cov-report=xml
-    - name: Upload coverage
-      uses: codecov/codecov-action@v2
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest pytest-asyncio pytest-cov psutil
+      - name: Run tests
+        run: |
+          cd claude-network/mcp/tests
+          python run_all_tests.py
+      - name: Generate coverage
+        run: |
+          pytest --cov=../tools --cov-report=xml
+      - name: Upload coverage
+        uses: codecov/codecov-action@v2
 ```
 
 ## Test Results
@@ -374,23 +387,27 @@ Test results are saved to `test_results.json` after each run:
 ### Common Issues
 
 **Issue**: `ModuleNotFoundError: No module named 'pytest'`
+
 ```bash
 pip install pytest pytest-asyncio
 ```
 
 **Issue**: `ModuleNotFoundError: No module named 'fixtures'`
+
 ```bash
 # Make sure you're in the tests directory
 cd /home/alton/vayu-learning-project/claude-network/mcp/tests
 ```
 
 **Issue**: Tests timeout
+
 ```bash
 # Increase timeout in pytest.ini or run with custom timeout
 pytest --timeout=600
 ```
 
 **Issue**: Performance tests fail on slow machines
+
 - Performance thresholds are aggressive
 - Adjust thresholds in test_performance.py if needed
 - Mock delay times can be adjusted in fixture files
@@ -430,6 +447,7 @@ This test suite is part of the Sartor Claude Network project.
 ## Support
 
 For questions or issues:
+
 - Check the test output for detailed error messages
 - Review the test code for examples
 - Consult the main project documentation: `/claude-network/CLAUDE.md`

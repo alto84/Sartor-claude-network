@@ -56,7 +56,7 @@ describe('Relevance Filtering', () => {
       const results = filter.filter(items, signalExtractor);
 
       expect(results.length).toBeGreaterThan(0);
-      expect(results.every(r => r.score >= 0)).toBe(true);
+      expect(results.every((r) => r.score >= 0)).toBe(true);
     });
 
     it('should rank items by score', () => {
@@ -95,7 +95,7 @@ describe('Relevance Filtering', () => {
 
       const results = filter.filter(items, signalExtractor);
 
-      expect(results.every(r => r.score >= 0.5)).toBe(true);
+      expect(results.every((r) => r.score >= 0.5)).toBe(true);
     });
 
     it('should respect maxResults', () => {
@@ -132,7 +132,7 @@ describe('Relevance Filtering', () => {
       const results = lowThresholdFilter.filter(items, signalExtractor);
 
       expect(results[0].signals.length).toBeGreaterThan(0);
-      expect(results[0].signals.some(s => s.signal === RelevanceSignal.KEYWORD_MATCH)).toBe(true);
+      expect(results[0].signals.some((s) => s.signal === RelevanceSignal.KEYWORD_MATCH)).toBe(true);
     });
   });
 
@@ -158,8 +158,8 @@ describe('Relevance Filtering', () => {
 
       const results = boostFilter.filter(items, signalExtractor);
 
-      const importantResult = results.find(r => r.item.name.includes('important'));
-      const normalResult = results.find(r => r.item.name.includes('normal'));
+      const importantResult = results.find((r) => r.item.name.includes('important'));
+      const normalResult = results.find((r) => r.item.name.includes('normal'));
 
       expect(importantResult!.score).toBeGreaterThan(normalResult!.score);
     });
@@ -185,8 +185,8 @@ describe('Relevance Filtering', () => {
 
       const results = penaltyFilter.filter(items, signalExtractor);
 
-      const deprecatedResult = results.find(r => r.item.name.includes('deprecated'));
-      const currentResult = results.find(r => r.item.name.includes('current'));
+      const deprecatedResult = results.find((r) => r.item.name.includes('deprecated'));
+      const currentResult = results.find((r) => r.item.name.includes('current'));
 
       expect(deprecatedResult!.score).toBeLessThan(currentResult!.score);
     });
@@ -368,10 +368,7 @@ describe('Relevance Filtering', () => {
 
     describe('calculateSemanticSimilarity', () => {
       it('should calculate Jaccard similarity', () => {
-        const score = calculateSemanticSimilarity(
-          'the quick brown fox',
-          'the quick red fox'
-        );
+        const score = calculateSemanticSimilarity('the quick brown fox', 'the quick red fox');
         expect(score).toBeGreaterThan(0);
         expect(score).toBeLessThan(1);
       });

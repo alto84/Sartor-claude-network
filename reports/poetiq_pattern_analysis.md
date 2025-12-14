@@ -18,6 +18,7 @@ The poetiq-arc-agi-solver repository implements a multi-model reasoning system f
 ## Repository Structure Overview
 
 ### Core Architecture
+
 ```
 poetiq-arc-agi-solver/
 ├── arc_agi/
@@ -71,12 +72,14 @@ results: list[ARCAGIResult] = await asyncio.gather(*tasks)
 ```
 
 **Key Patterns:**
+
 - Uses `asyncio.gather()` for true parallel execution
 - Each expert receives a unique seed: `cfg["seed"] += it * cfg["max_iterations"]`
 - No dependency between expert executions (fully independent)
 - Results collected into a flat list structure
 
 **Configuration:** `config.py`
+
 - 1, 2, or 8 experts (configurable via NUM_EXPERTS)
 - Temperature: 1.0 (maximum diversity)
 - Shuffle examples: True
@@ -121,6 +124,7 @@ failure_buckets    # Failing solutions, grouped by output signature
 ```
 
 **Selection Algorithm:**
+
 1. Group passing solutions by identical test outputs
 2. Sort groups by size (most common output wins)
 3. Within each group, optionally select by lowest iterations
@@ -128,6 +132,7 @@ failure_buckets    # Failing solutions, grouped by output signature
 5. Failures ranked by mean soft score, then group size
 
 **Configuration Parameters:** `config.py`
+
 - `new_voting`: True (enable new voting mode)
 - `count_failed_matches`: True (include failures matching candidate outputs)
 - `select_first_iteration_from_bucket`: False
@@ -138,6 +143,7 @@ failure_buckets    # Failing solutions, grouped by output signature
 **Sartor Current Implementation:** `/home/alton/Sartor-claude-network/src/multi-expert/voting-system.ts`
 
 Sartor implements **traditional voting methods**:
+
 - Majority voting (plurality)
 - Ranked-choice voting (instant runoff)
 - Borda count (positional scoring)
@@ -150,6 +156,7 @@ Poetiq's "voting" is actually **consensus detection via output clustering**. Thi
 Sartor's voting is appropriate for **subjective solution ranking** where multiple valid solutions exist.
 
 **Recommendation:**
+
 - **KEEP Sartor's voting system** - It's more general-purpose
 - **ADD output clustering** as a separate feature for specific use cases
 - **DO NOT replace** existing voting with Poetiq's approach
@@ -164,6 +171,7 @@ Sartor's voting is appropriate for **subjective solution ranking** where multipl
 **CRITICAL FINDING:** Poetiq has NO diversity scorer as Sartor understands it.
 
 **What Poetiq's "diversity-first" means:**
+
 - Solutions are bucketed by output similarity
 - "Diversity-first" = select from DIFFERENT output buckets before same bucket
 - NOT archetype diversity
@@ -171,6 +179,7 @@ Sartor's voting is appropriate for **subjective solution ranking** where multipl
 - NOT multi-dimensional scoring
 
 **Evidence:** Analysis of `solve_parallel_coding.py` shows:
+
 - No diversity scoring module
 - No archetype variation tracking
 - No solution approach clustering
@@ -181,6 +190,7 @@ Sartor's voting is appropriate for **subjective solution ranking** where multipl
 **Sartor Current Implementation:** `/home/alton/Sartor-claude-network/src/multi-expert/diversity-scorer.ts`
 
 Sartor's diversity scorer implements:
+
 - Archetype uniqueness scoring
 - Output similarity detection (Jaccard-like)
 - Novelty tracking against previously seen solutions
@@ -189,6 +199,7 @@ Sartor's diversity scorer implements:
 **Alignment:** ✗ NO OVERLAP
 
 **Recommendation:**
+
 - **KEEP Sartor's diversity scorer** - It's more sophisticated
 - **DO NOT modify** based on Poetiq patterns
 - Sartor's approach is superior for multi-expert coordination
@@ -212,6 +223,7 @@ correct / max(len(gt_outputs), 1)  # Produces 0.0-1.0 range
 ```
 
 **Scoring Characteristics:**
+
 - Binary outcomes only (correct=1, incorrect=0)
 - Dual attempt allowance (two chances per input)
 - No ranking mechanism
@@ -226,6 +238,7 @@ correct / max(len(gt_outputs), 1)  # Produces 0.0-1.0 range
 **Sartor Current Implementation:** `/home/alton/Sartor-claude-network/src/multi-expert/soft-scorer.ts`
 
 Sartor implements true soft scoring:
+
 - 0-100 range with partial credit
 - Multi-dimensional (correctness, completeness, quality, efficiency)
 - Confidence weighting
@@ -235,6 +248,7 @@ Sartor implements true soft scoring:
 **Alignment:** ✗ COMPLETE MISMATCH
 
 **Recommendation:**
+
 - **KEEP Sartor's soft scorer** - It's far more sophisticated
 - **DO NOT adopt** Poetiq's binary approach
 - Poetiq's binary scoring is appropriate for puzzle-solving only
@@ -269,6 +283,7 @@ PYTHONHASHSEED=0  # Deterministic execution
 ```
 
 **Limitations (per analysis):**
+
 - No OS-level sandboxing (no containers, seccomp, resource limits)
 - "A determined adversary could potentially escape via Python vulnerabilities"
 - "Could consume excessive system resources before timeout triggers"
@@ -299,6 +314,7 @@ spawn(command, args, {
 Both implementations use similar subprocess isolation patterns.
 
 **Recommendation:**
+
 - **KEEP Sartor's sandbox executor** - Already equivalent
 - **CONSIDER ADDING:**
   - Deterministic seeding (PYTHONHASHSEED=0 equivalent)
@@ -308,6 +324,7 @@ Both implementations use similar subprocess isolation patterns.
 - Both systems share same fundamental limitation (no OS-level containerization)
 
 **Enhancement Ideas:**
+
 - Add Docker container option for true isolation
 - Implement resource cgroups (Linux)
 - Add seccomp filters for syscall restrictions
@@ -350,6 +367,7 @@ limiters = {
 **Alignment:** ⚠️ GAP IDENTIFIED
 
 **Recommendation:**
+
 - **ADD rate limiting** to Sartor's LLM integration layer
 - **ADD retry logic** with exponential backoff
 - **IMPLEMENT per-model limiters** for different API providers
@@ -385,6 +403,7 @@ for iteration in range(max_iterations):
 ```
 
 **Key Patterns:**
+
 - Iterative improvement loop (up to 10 iterations)
 - Training data validation at each step
 - Detailed diagnostic feedback generation
@@ -400,6 +419,7 @@ Sartor implements feedback collection and refinement loops with similar patterns
 **Alignment:** ✓ STRONG
 
 **Recommendation:**
+
 - **KEEP existing feedback loop** - Already well-designed
 - **CONSIDER ADDING:**
   - Training data validation pattern (if applicable to tasks)
@@ -428,17 +448,17 @@ Sartor implements feedback collection and refinement loops with similar patterns
 
 ### Component Alignment Matrix
 
-| Sartor Component | Poetiq Equivalent | Alignment | Action |
-|------------------|-------------------|-----------|--------|
-| orchestrator.ts | solve.py | ✓ Similar | Keep |
-| execution-engine.ts | solve_parallel_coding.py | ✓ Strong | Keep |
-| expert-config.ts | config.py | ✓ Similar | Keep |
-| voting-system.ts | solve_parallel_coding.py (bucketing) | ✗ Different | Keep Sartor's |
-| diversity-scorer.ts | (Not present) | ✗ No equivalent | Keep |
-| soft-scorer.ts | scoring.py | ✗ Opposite | Keep Sartor's |
-| sandbox-executor.ts | sandbox.py | ✓ Strong | Keep, enhance |
-| feedback-loop.ts | solve_coding.py | ✓ Similar | Keep, enhance |
-| memory-integration.ts | (Not present) | ✗ No equivalent | Keep |
+| Sartor Component      | Poetiq Equivalent                    | Alignment       | Action        |
+| --------------------- | ------------------------------------ | --------------- | ------------- |
+| orchestrator.ts       | solve.py                             | ✓ Similar       | Keep          |
+| execution-engine.ts   | solve_parallel_coding.py             | ✓ Strong        | Keep          |
+| expert-config.ts      | config.py                            | ✓ Similar       | Keep          |
+| voting-system.ts      | solve_parallel_coding.py (bucketing) | ✗ Different     | Keep Sartor's |
+| diversity-scorer.ts   | (Not present)                        | ✗ No equivalent | Keep          |
+| soft-scorer.ts        | scoring.py                           | ✗ Opposite      | Keep Sartor's |
+| sandbox-executor.ts   | sandbox.py                           | ✓ Strong        | Keep, enhance |
+| feedback-loop.ts      | solve_coding.py                      | ✓ Similar       | Keep, enhance |
+| memory-integration.ts | (Not present)                        | ✗ No equivalent | Keep          |
 
 ---
 
@@ -559,18 +579,19 @@ export async function validateAgainstTraining(
 
 ### Pattern Adoption Risks
 
-| Pattern | Risk Level | Description | Mitigation |
-|---------|-----------|-------------|------------|
-| Parallel Execution | 🟢 Low | Already aligned | None needed |
-| Output Bucketing | 🟡 Medium | Could oversimplify voting | Add as separate feature, don't replace |
-| Binary Scoring | 🔴 High | Would eliminate nuance | Do not adopt |
-| Subprocess Sandbox | 🟢 Low | Similar to existing | Enhance with determinism |
-| Rate Limiting | 🟢 Low | Missing feature | Add to integration layer |
-| Feedback Iteration | 🟢 Low | Already similar | Enhance with validation pattern |
+| Pattern            | Risk Level | Description               | Mitigation                             |
+| ------------------ | ---------- | ------------------------- | -------------------------------------- |
+| Parallel Execution | 🟢 Low     | Already aligned           | None needed                            |
+| Output Bucketing   | 🟡 Medium  | Could oversimplify voting | Add as separate feature, don't replace |
+| Binary Scoring     | 🔴 High    | Would eliminate nuance    | Do not adopt                           |
+| Subprocess Sandbox | 🟢 Low     | Similar to existing       | Enhance with determinism               |
+| Rate Limiting      | 🟢 Low     | Missing feature           | Add to integration layer               |
+| Feedback Iteration | 🟢 Low     | Already similar           | Enhance with validation pattern        |
 
 ### Complexity Risks
 
 **Poetiq's Simplicity vs Sartor's Sophistication:**
+
 - Poetiq is optimized for ARC-AGI puzzles (discrete, verifiable outputs)
 - Sartor is designed for general-purpose multi-agent coordination
 - Adopting Poetiq's simpler patterns could regress Sartor's capabilities
@@ -640,6 +661,7 @@ See separate file: `/home/alton/Sartor-claude-network/reports/agents/auditor_poe
 The poetiq-arc-agi-solver repository provides **validation** for Sartor's existing architecture (parallel execution, sandboxing, feedback loops) but does NOT provide sophisticated patterns for voting, diversity, or soft scoring as initially expected.
 
 **Key Insights:**
+
 1. Sartor's multi-expert system is already MORE sophisticated than Poetiq's
 2. Poetiq's "diversity-first" is a misnomer - it's output deduplication
 3. Poetiq uses binary scoring, NOT soft scoring (0-100)

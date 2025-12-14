@@ -11,11 +11,7 @@
           "agent_name": "Desktop Mission Control",
           "status": "online",
           "health": "healthy",
-          "capabilities": [
-            "coordinate",
-            "analyze",
-            "execute"
-          ],
+          "capabilities": ["coordinate", "analyze", "execute"],
           "specialization": "coordination",
           "surface": "desktop",
           "location": "main-computer",
@@ -57,10 +53,7 @@
             "task_id": "task-001",
             "type": "analysis",
             "priority": "high",
-            "requirements": [
-              "analyze",
-              "report"
-            ],
+            "requirements": ["analyze", "report"],
             "created_at": "2025-01-01T12:00:00",
             "deadline": "2025-01-01T13:00:00",
             "data": {}
@@ -103,9 +96,7 @@
           "category": "core",
           "version": "1.0.0",
           "description": "Analyze images and visual data",
-          "requirements": [
-            "vision"
-          ],
+          "requirements": ["vision"],
           "github_path": "/skills/core/observation/visual.yaml"
         }
       }
@@ -145,9 +136,7 @@
           "agent_id": "agent-001",
           "created_at": "2025-01-01T12:00:00",
           "branch_name": "feature/improved-routing",
-          "changes": [
-            "Updated message routing algorithm"
-          ],
+          "changes": ["Updated message routing algorithm"],
           "performance": {
             "benchmark_score": 85,
             "success_rate": 0.92
@@ -167,10 +156,7 @@
           "description": "Successfully coordinated multi-agent task",
           "lesson": "Use consensus for complex decisions",
           "timestamp": "2025-01-01T12:00:00",
-          "tags": [
-            "coordination",
-            "consensus"
-          ]
+          "tags": ["coordination", "consensus"]
         }
       }
     },
@@ -240,42 +226,25 @@
         }
       },
       "messages": {
-        ".indexOn": [
-          "timestamp",
-          "from",
-          "to",
-          "type"
-        ],
+        ".indexOn": ["timestamp", "from", "to", "type"],
         "$message_id": {
           ".validate": "newData.hasChildren(['from', 'type', 'timestamp'])"
         }
       },
       "tasks": {
         "available": {
-          ".indexOn": [
-            "priority",
-            "created_at"
-          ]
+          ".indexOn": ["priority", "created_at"]
         },
         "assigned": {
-          ".indexOn": [
-            "agent_id",
-            "status"
-          ]
+          ".indexOn": ["agent_id", "status"]
         },
         "completed": {
-          ".indexOn": [
-            "completed_at",
-            "agent_id"
-          ]
+          ".indexOn": ["completed_at", "agent_id"]
         }
       },
       "consensus": {
         "active": {
-          ".indexOn": [
-            "deadline",
-            "type"
-          ]
+          ".indexOn": ["deadline", "type"]
         }
       },
       "metrics": {

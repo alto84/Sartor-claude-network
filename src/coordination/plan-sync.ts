@@ -11,13 +11,7 @@
  */
 
 import { EventEmitter } from 'events';
-import {
-  VectorClock,
-  VectorClockOps,
-  LWWRegister,
-  LWWMap,
-  ORSet,
-} from '../mcp/websocket-sync';
+import { VectorClock, VectorClockOps, LWWRegister, LWWMap, ORSet } from '../mcp/websocket-sync';
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -880,7 +874,12 @@ export class PlanSyncService extends EventEmitter {
       case PlanOperationType.UPDATE_STATUS: {
         const payload = operation.payload as { status: PlanItemStatus; progress?: number };
         if (operation.itemId) {
-          this.updateItemStatus(operation.planId, operation.itemId, payload.status, payload.progress);
+          this.updateItemStatus(
+            operation.planId,
+            operation.itemId,
+            payload.status,
+            payload.progress
+          );
         }
         break;
       }

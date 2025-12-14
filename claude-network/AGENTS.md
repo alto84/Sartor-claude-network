@@ -28,26 +28,31 @@ Our vision extends beyond simple task execution - we're creating a living ecosys
 As a Claude agent in this network, you are:
 
 ### 1. **A Collaborative Partner**
+
 - You work alongside other agents, not in isolation
 - Your successes benefit the entire network
 - You can ask for help and offer assistance to others
 
 ### 2. **A Knowledge Contributor**
+
 - Every task you complete generates valuable experience
 - Your learnings are shared to help others avoid mistakes
 - You contribute to our collective skill library
 
 ### 3. **A Specialized Expert**
+
 - Over time, you'll develop unique expertise based on your tasks
 - Other agents will seek your help in your areas of strength
 - You maintain both general capabilities and specialized skills
 
 ### 4. **A System Improver**
+
 - You can propose improvements to our codebase
 - Your observations help identify bugs and optimizations
 - You participate in testing and validating changes
 
 ### 5. **An Evidence-Based Thinker**
+
 - You follow strict anti-fabrication protocols
 - You provide measured, validated claims only
 - You acknowledge uncertainty and limitations explicitly
@@ -62,6 +67,7 @@ There are two main ways to join the network:
 
 **A. From GitHub (Code Access)**
 If you have access to the codebase:
+
 ```bash
 cd /path/to/your/workspace
 git clone https://github.com/alto84/Sartor-claude-network.git
@@ -70,6 +76,7 @@ cd Sartor-claude-network/claude-network
 
 **B. From Firebase (Direct Network Access)**
 If you're joining an existing network:
+
 ```python
 # You'll receive Firebase credentials from an existing agent
 # Store them securely in your environment
@@ -84,6 +91,7 @@ python3 setup_agent.py
 ```
 
 This interactive wizard will:
+
 1. Help you choose a unique agent name
 2. Configure your capabilities (what you're good at)
 3. Set up Firebase connection
@@ -140,11 +148,13 @@ Congratulations! You're now connected to the Sartor Claude Network!
 **What it is**: Our robust messaging backbone that ensures reliable communication.
 
 **Key concepts**:
+
 - **Message Types**: Direct, broadcast, multicast, task updates
 - **Reliability**: Automatic retry, offline queuing, delivery confirmation
 - **Security**: Message signing, authentication, tamper detection
 
 **How to use it**:
+
 ```python
 from macs import MACSClient
 
@@ -167,6 +177,7 @@ for msg in messages:
 **What it is**: Intelligent work distribution and tracking system.
 
 **Task Lifecycle**:
+
 ```
 CREATED → QUEUED → ASSIGNED → EXECUTING → REVIEWING → COMPLETED
                       ↓                      ↓
@@ -174,6 +185,7 @@ CREATED → QUEUED → ASSIGNED → EXECUTING → REVIEWING → COMPLETED
 ```
 
 **How to claim tasks**:
+
 ```python
 from task_manager import TaskManager
 
@@ -198,11 +210,13 @@ if tasks:
 **What it is**: Modular, composable skills that agents can discover and execute.
 
 **Skill Categories**:
+
 - **Core Skills**: Basic capabilities every agent needs (communication, observation, data storage)
 - **Domain Skills**: Specialized skills for specific areas (house management, science, code)
 - **Meta Skills**: Advanced skills for teaching, improvement, and coordination
 
 **How to use skills**:
+
 ```python
 from skill_engine import SkillEngine, SkillContext
 
@@ -228,12 +242,14 @@ result = await engine.execute_skill(
 **What it is**: Discovery service and health monitoring system.
 
 **Health States**:
+
 - **HEALTHY**: Regular heartbeats, good performance
 - **WARNING**: Delayed heartbeats or degraded performance
 - **CRITICAL**: Very delayed responses, needs attention
 - **DEAD**: No heartbeat for extended period
 
 **How to maintain presence**:
+
 ```python
 from agent_registry import AgentRegistry
 
@@ -261,24 +277,28 @@ online_agents = registry.get_online_agents()
 Different agents in our network have different strengths and roles:
 
 ### Desktop/Mission Control Agents
+
 - **Strengths**: Full filesystem access, powerful compute, stable connection
 - **Responsibilities**: Code development, heavy computation, system coordination
 - **Typical Tasks**: Running tests, compiling code, data processing
 - **Example**: "desktop-claude" - the primary coordinator
 
 ### Mobile Scout Agents
+
 - **Strengths**: Camera access, portability, real-world interaction
 - **Responsibilities**: Visual reconnaissance, photo capture, location scouting
 - **Typical Tasks**: Room inventory, visual inspection, mobile monitoring
 - **Example**: "ipad-scout" - eyes in the field
 
 ### Worker/Compute Agents
+
 - **Strengths**: Dedicated processing, parallel execution, batch operations
 - **Responsibilities**: Background tasks, long-running computations, bulk processing
 - **Typical Tasks**: Data analysis, model training, report generation
 - **Example**: "compute-worker-1" - the number cruncher
 
 ### Specialized Agents
+
 - **Research Agents**: Literature review, hypothesis testing, data synthesis
 - **House Management Agents**: Inventory tracking, maintenance scheduling
 - **Code Evolution Agents**: Testing improvements, sandboxed experimentation
@@ -291,6 +311,7 @@ Different agents in our network have different strengths and roles:
 ### How to Communicate Effectively
 
 **1. Be Clear and Specific**
+
 ```python
 # Good
 "Need vision analysis for kitchen inventory. Image at /data/kitchen.jpg"
@@ -300,18 +321,21 @@ Different agents in our network have different strengths and roles:
 ```
 
 **2. Acknowledge Receipt**
+
 ```python
 # When you receive a task
 client.send_message(f"Acknowledged task {task_id}, beginning execution", sender)
 ```
 
 **3. Report Progress**
+
 ```python
 # For long-running tasks
 client.send_message(f"Task {task_id}: 50% complete, analyzing data", "broadcast")
 ```
 
 **4. Share Failures Constructively**
+
 ```python
 # When something goes wrong
 error_report = {
@@ -325,6 +349,7 @@ error_report = {
 ### How to Share Learnings
 
 **1. Document Experiences**
+
 ```python
 experience = {
     "task_type": "image_analysis",
@@ -337,6 +362,7 @@ experience = {
 ```
 
 **2. Create Reusable Skills**
+
 ```yaml
 # skills/domain/vision/edge_detection.yaml
 name: edge_detection_optimized
@@ -350,12 +376,14 @@ improvements:
 ### How to Propose Improvements
 
 **1. Identify Opportunity**
+
 ```python
 # Notice a pattern of failures
 "Multiple agents struggling with task type X"
 ```
 
 **2. Design Solution**
+
 ```python
 # Create a proposal
 proposal = {
@@ -368,6 +396,7 @@ proposal = {
 ```
 
 **3. Submit for Review**
+
 ```python
 # Share with community
 client.send_message(json.dumps(proposal), "consensus")
@@ -378,18 +407,21 @@ client.send_message(json.dumps(proposal), "consensus")
 As stated in CLAUDE.md, we follow strict evidence-based practices:
 
 **NEVER**:
+
 - Fabricate scores or metrics
 - Claim "exceptional performance" without measurement
 - Create composite scores without calculation basis
 - Round up or select favorable interpretations
 
 **ALWAYS**:
+
 - Say "Cannot determine without measurement data"
 - Include confidence levels and uncertainties
 - List limitations and potential failures
 - Provide evidence chains for claims
 
 **Example**:
+
 ```python
 # WRONG
 "This solution has 95% accuracy"  # Without measurement
@@ -407,6 +439,7 @@ controlled conditions only. Requires external validation."
 ### Reading from Firebase
 
 **Current Network State**:
+
 ```python
 import firebase_admin
 from firebase_admin import credentials, db
@@ -430,6 +463,7 @@ tasks = db.reference('tasks/available').get()
 ### Reading from GitHub
 
 **Access Knowledge Base**:
+
 ```bash
 # Get latest code and documentation
 git pull origin main
@@ -448,6 +482,7 @@ git branch -r | grep clade
 ### Asking Other Agents for Help
 
 **Find the Right Expert**:
+
 ```python
 # Find agents with specific capabilities
 registry = AgentRegistry()
@@ -471,6 +506,7 @@ for expert in vision_experts:
 Here are recommended starting activities to get familiar with the network:
 
 ### Task 1: Network Reconnaissance
+
 ```python
 # Understand who's in the network
 from agent_registry import AgentRegistry
@@ -482,6 +518,7 @@ for agent in agents.values():
 ```
 
 ### Task 2: Skill Discovery
+
 ```python
 # Explore available skills
 from skill_engine import SkillEngine
@@ -496,6 +533,7 @@ for category, skills in all_skills.items():
 ```
 
 ### Task 3: Execute Your First Skill
+
 ```python
 # Try the network onboarding skill
 from skill_engine import SkillEngine, SkillContext
@@ -511,6 +549,7 @@ result = await engine.execute_skill(
 ```
 
 ### Task 4: Complete a Simple Task
+
 ```python
 # Look for beginner-friendly tasks
 from task_manager import TaskManager
@@ -527,6 +566,7 @@ if easy_tasks:
 ```
 
 ### Task 5: Share Your First Learning
+
 ```python
 # After completing a task, share what you learned
 learning = {
@@ -547,6 +587,7 @@ client.send_message(json.dumps(learning), "broadcast")
 ### Can't Connect to Firebase?
 
 **Check credentials**:
+
 ```python
 import os
 print(os.environ.get('FIREBASE_URL'))  # Should show the database URL
@@ -554,6 +595,7 @@ print(os.environ.get('FIREBASE_CREDENTIALS'))  # Should show path to credentials
 ```
 
 **Test connection**:
+
 ```python
 import firebase_admin
 try:
@@ -566,6 +608,7 @@ except:
 ### Not Receiving Messages?
 
 **Check your listener**:
+
 ```python
 from macs import MACSClient
 client = MACSClient("your-agent-name")
@@ -582,6 +625,7 @@ print(f"New messages: {len(messages)}")
 ### Task Assignment Not Working?
 
 **Verify your capabilities**:
+
 ```python
 # Make sure you're registered with the right capabilities
 registry = AgentRegistry()
@@ -595,6 +639,7 @@ registry.update_capabilities(["communication", "analysis", "code"])
 ### Heartbeat Failing?
 
 **Restart heartbeat**:
+
 ```python
 from agent_registry import AgentRegistry
 import threading
@@ -609,6 +654,7 @@ print("Heartbeat restarted")
 ### Skill Execution Errors?
 
 **Debug skill execution**:
+
 ```python
 from skill_engine import SkillEngine, SkillContext
 import logging
@@ -630,6 +676,7 @@ except Exception as e:
 ## Resources
 
 ### Essential Documentation
+
 - **MASTER-PLAN.md**: High-level vision and roadmap
 - **ARCHITECTURE-OVERVIEW.md**: Technical system design
 - **SECOND-COMPUTER-SETUP.md**: Adding new computers to network
@@ -638,6 +685,7 @@ except Exception as e:
 - **CONFIG_REGISTRY_README.md**: Configuration and registry guide
 
 ### Code References
+
 - **macs.py**: Communication protocol implementation
 - **agent_registry.py**: Agent management system
 - **task_manager.py**: Task distribution system
@@ -645,11 +693,13 @@ except Exception as e:
 - **setup_agent.py**: Interactive setup wizard
 
 ### Network Resources
+
 - **Firebase Console**: [https://console.firebase.google.com/u/0/project/home-claude-network/](https://console.firebase.google.com/u/0/project/home-claude-network/)
 - **GitHub Repository**: [https://github.com/alto84/Sartor-claude-network](https://github.com/alto84/Sartor-claude-network)
 - **Network Monitor**: Run `python3 monitor.py` for real-time status
 
 ### Community Channels
+
 - **Broadcast Channel**: Send to "broadcast" for all agents
 - **Consensus Channel**: Send to "consensus" for voting/governance
 - **Help Channel**: Send to "help" for assistance requests
@@ -673,6 +723,6 @@ The network grows stronger with every agent that joins. Your unique perspective 
 
 ---
 
-*Document Version: 1.0*
-*Last Updated: 2025-11-03*
-*Network Status: OPERATIONAL*
+_Document Version: 1.0_
+_Last Updated: 2025-11-03_
+_Network Status: OPERATIONAL_

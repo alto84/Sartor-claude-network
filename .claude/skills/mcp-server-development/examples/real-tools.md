@@ -555,7 +555,7 @@ function handleEcho(args: any): any {
     echoed: args.message,
     length: args.message.length,
     timestamp: new Date().toISOString(),
-    reversed: args.message.split('').reverse().join('')
+    reversed: args.message.split('').reverse().join(''),
   };
 }
 ```
@@ -673,6 +673,7 @@ function getOperationSymbol(operation: string): string {
 ### 1. Validation Pattern
 
 All tools validate inputs before processing:
+
 - Type checking
 - Required field verification
 - Enum validation
@@ -681,16 +682,17 @@ All tools validate inputs before processing:
 ### 2. Error Handling Pattern
 
 Consistent error handling:
+
 ```typescript
 try {
   const result = await processData(args);
   return {
-    content: [{ type: 'text', text: JSON.stringify(result) }]
+    content: [{ type: 'text', text: JSON.stringify(result) }],
   };
 } catch (error) {
   return {
     content: [{ type: 'text', text: JSON.stringify({ error: error.message }) }],
-    isError: true
+    isError: true,
   };
 }
 ```
@@ -698,12 +700,14 @@ try {
 ### 3. Response Formatting Pattern
 
 Two approaches observed:
+
 - **JSON**: Structured data, easy to parse
 - **Markdown**: Human-readable, formatted output
 
 ### 4. Metadata Pattern
 
 Include helpful metadata:
+
 - Timestamps
 - Request IDs
 - Result counts
@@ -712,6 +716,7 @@ Include helpful metadata:
 ### 5. Logging Pattern
 
 All handlers log:
+
 - Input parameters
 - Execution status
 - Errors

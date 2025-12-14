@@ -15,6 +15,7 @@ This document chronicles the actual research workflow used to create the ADC-ILD
 ### Research Question Formulation
 
 **PICO Framework:**
+
 - **P**opulation: Patients receiving ADC therapy
 - **I**ntervention/Exposure: Antibody-drug conjugates (multiple agents)
 - **C**omparison: Different ADC platforms, monitoring strategies
@@ -23,31 +24,37 @@ This document chronicles the actual research workflow used to create the ADC-ILD
 ### Agent Assignment
 
 **Agent A - Clinical Evidence:**
+
 - Search clinical trials for ILD incidence data
 - Extract epidemiology, risk factors, outcomes
 - Target: 30-50 clinical trial sources
 
 **Agent B - Treatment Research:**
+
 - Search for management protocols
 - Extract treatment approaches and outcomes
 - Target: 20-30 treatment-focused sources
 
 **Agent C - Mechanistic Studies:**
+
 - Search preclinical and translational studies
 - Extract molecular mechanisms, pathophysiology
 - Target: 15-25 mechanistic papers
 
 **Agent D - Regulatory & Guidelines:**
+
 - Retrieve prescribing information, safety alerts
 - Extract regulatory guidance and expert consensus
 - Target: 10-15 regulatory/guideline documents
 
 **Agent E - Bibliography Completion:**
+
 - Fill gaps identified by other agents
 - Focus on recent 2023-2025 publications
 - Target: Complete bibliography to 150-200 sources
 
 **Agent F - Validation & QA:**
+
 - Validate all sources for authenticity
 - Verify data accuracy
 - Check CLAUDE.md compliance
@@ -56,10 +63,11 @@ This document chronicles the actual research workflow used to create the ADC-ILD
 ### Quality Standards
 
 **Acceptance Criteria:**
+
 - 100% sources with valid identifiers (PMID, DOI, or URL)
 - 0 fabricated sources
-- >80% with PMID
-- >90% with DOI
+- > 80% with PMID
+- > 90% with DOI
 - 100% claims with citations
 - CLAUDE.md compliant (0 violations)
 - Comprehensive limitations section
@@ -71,6 +79,7 @@ This document chronicles the actual research workflow used to create the ADC-ILD
 **Databases:** PubMed, ClinicalTrials.gov
 
 **Search Strategy:**
+
 ```
 PubMed:
 ("antibody-drug conjugate*"[Title/Abstract] OR "ADC"[Title/Abstract] OR
@@ -87,6 +96,7 @@ Results: 89 articles
 ```
 
 **Screening:**
+
 - Title/abstract screen: 89 → 47 potentially relevant
 - Full-text assessment: 47 → 32 included
 - Reasons for exclusion: wrong intervention (8), insufficient data (5), duplicate (2)
@@ -98,6 +108,7 @@ Results: 89 articles
 **Focus:** Management, treatment, outcomes
 
 **Search Strategy:**
+
 - Keywords: ADC pneumonitis treatment, corticosteroids, ILD management
 - Filters: 2018-2025 (included older landmark papers)
 - Sources: PubMed, oncology journals, guidelines
@@ -109,6 +120,7 @@ Results: 89 articles
 **Focus:** Molecular mechanisms, pathophysiology, preclinical models
 
 **Search Strategy:**
+
 - Keywords: ADC mechanism, Fcγ receptor, payload toxicity, macrophage uptake, bystander effect
 - Included preclinical studies and translational research
 - Date range: 2015-2025
@@ -118,6 +130,7 @@ Results: 89 articles
 ### Agent D: Regulatory Documents
 
 **Sources:**
+
 - FDA prescribing information (ENHERTU, Dato-DXd, Trodelvy, etc.)
 - EMA product information
 - FDA safety alerts
@@ -132,6 +145,7 @@ Results: 89 articles
 ### Agent E: Bibliography Gap Filling
 
 **Identified Gaps:**
+
 1. Landmark clinical trials (DESTINY series, TROPION, EV series)
 2. Recent 2023-2025 publications
 3. Biomarker studies
@@ -139,6 +153,7 @@ Results: 89 articles
 5. Expert consensus statements
 
 **Targeted Searches:**
+
 ```
 # Landmark trials by name
 DESTINY-Breast01, DESTINY-Breast03, DESTINY-Breast04
@@ -164,11 +179,13 @@ Fcγ receptor mechanisms, SPP1 macrophages, linker chemistry
 **Validation Process:**
 
 **Step 1: Automated Validation**
+
 ```bash
 python scripts/validate-bibliography.py bibliography.md
 ```
 
 **Initial Results:**
+
 - Total sources: 165
 - With PMID: 143 (86.7%)
 - With DOI: 162 (98.2%)
@@ -178,16 +195,19 @@ python scripts/validate-bibliography.py bibliography.md
   - Ref 134: Incomplete citation (missing volume/pages)
 
 **Step 2: Fix Critical Issues**
+
 - Ref 67: Found alternative URL via DOI
 - Ref 89: Located PMID via PubMed search
 - Ref 134: Retrieved complete citation from journal website
 
 **Step 3: Re-validation**
+
 ```bash
 python scripts/validate-bibliography.py bibliography.md
 ```
 
 **Final Results:**
+
 - Total sources: 165
 - With PMID: 146 (88.5%)
 - With DOI: 165 (100%)
@@ -196,6 +216,7 @@ python scripts/validate-bibliography.py bibliography.md
 - **STATUS: PASS**
 
 **Quality Metrics:**
+
 - 0 fabricated PMIDs detected
 - 0 placeholder sources detected
 - 0 inaccessible URLs
@@ -206,6 +227,7 @@ python scripts/validate-bibliography.py bibliography.md
 ### Systematic Data Extraction
 
 **Extraction Tables Created:**
+
 1. ILD Incidence by ADC (12 ADCs, 47 studies)
 2. ILD Severity and Outcomes (grade distribution, mortality)
 3. Risk Factors (patient, treatment, monitoring)
@@ -215,12 +237,13 @@ python scripts/validate-bibliography.py bibliography.md
 
 **Example Extraction:**
 
-| Study | PMID | ADC | ILD Any Grade | Grade 3-4 | Grade 5 | n | Monitoring |
-|-------|------|-----|---------------|-----------|---------|---|------------|
-| Modi 2022 | 35665782 | T-DXd 5.4mg/kg | 15.2% (85/557) | 3.7% (21/557) | 0.7% (4/557) | 557 | Active |
-| Shitara 2020 | 32469182 | T-DXd 6.4mg/kg | 13.1% (25/188) | 1.6% (3/188) | 2.1% (4/188) | 188 | Standard |
+| Study        | PMID     | ADC            | ILD Any Grade  | Grade 3-4     | Grade 5      | n   | Monitoring |
+| ------------ | -------- | -------------- | -------------- | ------------- | ------------ | --- | ---------- |
+| Modi 2022    | 35665782 | T-DXd 5.4mg/kg | 15.2% (85/557) | 3.7% (21/557) | 0.7% (4/557) | 557 | Active     |
+| Shitara 2020 | 32469182 | T-DXd 6.4mg/kg | 13.1% (25/188) | 1.6% (3/188)  | 2.1% (4/188) | 188 | Standard   |
 
 **Validation:**
+
 - Every number has source citation
 - Context preserved (n, CI, study design)
 - Conflicting data noted
@@ -231,12 +254,14 @@ python scripts/validate-bibliography.py bibliography.md
 ### Agent F: Data Accuracy Verification
 
 **Spot Check Protocol:**
+
 - Randomly selected 30 extracted data points
 - Located in original sources
 - Verified numbers match exactly
 - Checked context preservation
 
 **Results:**
+
 - 28/30 exact matches ✓
 - 2/30 needed minor correction:
   - Extraction said "13.6%", source specified "investigator-assessed 13.6%, adjudicated 15.2%"
@@ -249,23 +274,27 @@ python scripts/validate-bibliography.py bibliography.md
 ### Multi-Domain Integration
 
 **Section 1: Epidemiology**
+
 - Integrated ILD incidence across 12 ADC platforms
 - Reported ranges (0.4% to 28.1%) with heterogeneity acknowledgment
 - Stratified by ADC platform, dose, monitoring intensity
 - Cited 47 clinical trial sources
 
 **Section 2: Mechanisms**
+
 - Synthesized preclinical and clinical mechanistic data
 - Three primary mechanisms identified (Fcγ uptake, bystander toxicity, immune-mediated)
 - Acknowledged translational gaps (preclinical vs. clinical discrepancies)
 - Cited 18 mechanistic sources
 
 **Section 3-12:** [Clinical presentation, diagnosis, prevention, treatment, etc.]
+
 - Each section integrated relevant evidence
 - Conflicting evidence discussed explicitly
 - Limitations acknowledged section by section
 
 **Synthesis Quality Checks:**
+
 - All major conclusions supported by ≥3 sources
 - Conflicting evidence discussed (not hidden)
 - Confidence levels justified by evidence quality
@@ -281,6 +310,7 @@ python scripts/research-quality-check.py manuscript.md --check-all
 ```
 
 **Results:**
+
 - **Score fabrication:** 0 violations ✓
 - **Banned language:** 0 violations ✓
 - **Unsupported claims:** 0 (all 127 numerical claims have citations) ✓
@@ -290,6 +320,7 @@ python scripts/research-quality-check.py manuscript.md --check-all
 **Status:** PASS
 
 **Manual CLAUDE.md Review:**
+
 - No "exceptional" or "outstanding" language without evidence
 - Appropriate hedging ("suggests", "indicates", "may")
 - Uncertainties acknowledged
@@ -300,24 +331,29 @@ python scripts/research-quality-check.py manuscript.md --check-all
 ### Comprehensive QA Audit
 
 **Bibliography QA:**
+
 ```bash
 python scripts/validate-bibliography.py bibliography.md --check-all
 ```
+
 - 165 sources, 100% with valid identifiers ✓
 - 0 fabricated sources ✓
 - 88.5% with PMID, 100% with DOI ✓
 - Format consistency: 100% ✓
 
 **Manuscript QA:**
+
 ```bash
 python scripts/research-quality-check.py manuscript.md --check-all
 ```
+
 - CLAUDE.md compliant ✓
 - All claims cited ✓
 - Limitations comprehensive ✓
 - Methodology reproducible ✓
 
 **Manual Review:**
+
 - PRISMA checklist (adapted): Complete
 - All sections present and comprehensive
 - Executive summary accurate
@@ -331,6 +367,7 @@ python scripts/research-quality-check.py manuscript.md --check-all
 ### ADC_ILD_COMPREHENSIVE_REVIEW_2025_FINAL.md
 
 **Specifications:**
+
 - Length: 19,000 words (2,340 lines)
 - References: 165 complete citations
 - Tables: 5 comprehensive tables
@@ -338,6 +375,7 @@ python scripts/research-quality-check.py manuscript.md --check-all
 - Sections: 12 major sections
 
 **Quality Metrics:**
+
 - Source authenticity: 100% (0 fabricated)
 - Citation completeness: 100%
 - CLAUDE.md compliance: 100%
@@ -347,6 +385,7 @@ python scripts/research-quality-check.py manuscript.md --check-all
 ### Supporting Materials
 
 **Delivered:**
+
 1. Main manuscript (ADC_ILD_COMPREHENSIVE_REVIEW_2025_FINAL.md)
 2. Bibliography completion summary (BIBLIOGRAPHY_COMPLETION_SUMMARY.md)
 3. Search strategy documentation (embedded in methods)
@@ -358,21 +397,25 @@ python scripts/research-quality-check.py manuscript.md --check-all
 ### What Worked Well
 
 **1. Multi-Agent Specialization:**
+
 - Dividing search by domain (clinical, mechanistic, regulatory) increased coverage
 - Specialized agents brought unique perspectives
 - Parallel execution saved time
 
 **2. Quality Gates:**
+
 - Early validation caught 3 critical issues before synthesis
 - Prevented downstream errors
 - Automated checks saved manual review time
 
 **3. CLAUDE.md Integration:**
+
 - Anti-fabrication rules prevented placeholder sources
 - Banned language checks improved scientific rigor
 - Limitations requirement ensured balanced presentation
 
 **4. Automated Validation:**
+
 - `validate-bibliography.py` caught all format and authenticity issues
 - `research-quality-check.py` verified compliance
 - Saved hours of manual checking
@@ -380,14 +423,17 @@ python scripts/research-quality-check.py manuscript.md --check-all
 ### Challenges Overcome
 
 **Challenge 1: Source Inaccessibility**
+
 - Some URLs became inaccessible
 - Solution: Used DOI links (more stable) or found alternative sources
 
 **Challenge 2: Conflicting Data**
+
 - Different studies reported different ILD rates for same ADC
 - Solution: Reported ranges, discussed heterogeneity, cited all sources
 
 **Challenge 3: Incomplete Citations**
+
 - Some regulatory documents lacked traditional citation elements
 - Solution: Used regulatory-specific format with access dates and URLs
 
@@ -404,6 +450,7 @@ python scripts/research-quality-check.py manuscript.md --check-all
 ### To Replicate This Workflow:
 
 **Prerequisites:**
+
 1. Access to PubMed, Embase (or similar databases)
 2. Python 3.7+ with scripts from safety-research-workflow skill
 3. CLAUDE.md protocols loaded
@@ -423,6 +470,7 @@ python scripts/research-quality-check.py manuscript.md --check-all
 10. **Deliver** (manuscript + supporting materials)
 
 **Timeline:**
+
 - Planning: 0.5 days
 - Search: 2 days
 - Gap filling: 1.5 days
@@ -433,6 +481,7 @@ python scripts/research-quality-check.py manuscript.md --check-all
 - **Total: ~8 days**
 
 **Quality Assurance:**
+
 - Run automated validation at each stage
 - Enforce quality gates strictly
 - Document methodology continuously

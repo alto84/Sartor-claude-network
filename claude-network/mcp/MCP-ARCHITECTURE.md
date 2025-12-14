@@ -33,6 +33,7 @@ MCP defines five core primitives:
 ### Communication Protocol
 
 MCP uses JSON-RPC 2.0 over various transport mechanisms:
+
 - **stdio**: Standard input/output streams (recommended for local servers)
 - **HTTP/SSE**: Server-Sent Events for web-based implementations
 - **WebSocket**: For bidirectional real-time communication
@@ -76,11 +77,13 @@ MCP uses JSON-RPC 2.0 over various transport mechanisms:
 ### Component Architecture
 
 #### 1. Transport Layer
+
 - **Primary**: stdio transport for local development and secure environments
 - **Secondary**: HTTP/SSE for cloud deployments
 - **Protocol**: JSON-RPC 2.0 with date-versioned specification
 
 #### 2. Authentication & Authorization
+
 - OAuth 2.1 compliant authentication flow
 - JWT-based session management
 - Resource-scoped access tokens (RFC 8707)
@@ -89,6 +92,7 @@ MCP uses JSON-RPC 2.0 over various transport mechanisms:
 #### 3. Service Modules
 
 **Firebase Service Module**
+
 - Real-time database operations
 - Firestore document management
 - Firebase Authentication integration
@@ -96,6 +100,7 @@ MCP uses JSON-RPC 2.0 over various transport mechanisms:
 - Real-time subscriptions via Firebase listeners
 
 **GitHub Service Module**
+
 - Repository file access
 - Issue and PR management
 - GitHub Actions workflow monitoring
@@ -103,6 +108,7 @@ MCP uses JSON-RPC 2.0 over various transport mechanisms:
 - Code search capabilities
 
 **Onboarding Service Module**
+
 - Agent registration workflow
 - Welcome message generation
 - System documentation access
@@ -110,6 +116,7 @@ MCP uses JSON-RPC 2.0 over various transport mechanisms:
 - Skill discovery interface
 
 **System Navigation Module**
+
 - Active agent discovery
 - Task queue management
 - Skill registry access
@@ -119,12 +126,14 @@ MCP uses JSON-RPC 2.0 over various transport mechanisms:
 #### 4. Infrastructure Components
 
 **Error Handler**
+
 - Standardized JSON-RPC error responses
 - Error categorization and severity levels
 - Secure error messages (no sensitive data leakage)
 - Error recovery strategies
 
 **Logger**
+
 - Structured logging to stderr
 - Log levels: ERROR, WARN, INFO, DEBUG
 - Request/response tracking
@@ -132,12 +141,14 @@ MCP uses JSON-RPC 2.0 over various transport mechanisms:
 - Security event logging
 
 **Rate Limiter**
+
 - Per-client rate limiting
 - Adaptive throttling based on load
 - Priority queue for critical operations
 - Graceful degradation under load
 
 **Cache Layer**
+
 - Redis-based caching for frequently accessed data
 - TTL-based cache invalidation
 - Cache warming strategies
@@ -148,24 +159,28 @@ MCP uses JSON-RPC 2.0 over various transport mechanisms:
 ### Firebase Tools
 
 #### 1. firebase.read
+
 - **Purpose**: Read data from Firebase Realtime Database
 - **Inputs**: path (string), query parameters (optional)
 - **Output**: JSON data
 - **Error Handling**: Permission errors, invalid paths, connection failures
 
 #### 2. firebase.write
+
 - **Purpose**: Write data to Firebase Realtime Database
 - **Inputs**: path (string), data (JSON), merge (boolean)
 - **Output**: Success confirmation with timestamp
 - **Error Handling**: Validation errors, permission denied, quota exceeded
 
 #### 3. firebase.subscribe
+
 - **Purpose**: Subscribe to real-time updates
 - **Inputs**: path (string), event type (value/child_added/child_changed)
 - **Output**: Stream of updates
 - **Error Handling**: Subscription failures, connection drops
 
 #### 4. firebase.query
+
 - **Purpose**: Query Firebase with filters
 - **Inputs**: collection (string), filters (array), orderBy (string), limit (number)
 - **Output**: Filtered result set
@@ -174,24 +189,28 @@ MCP uses JSON-RPC 2.0 over various transport mechanisms:
 ### GitHub Tools
 
 #### 1. github.readFile
+
 - **Purpose**: Read repository files
 - **Inputs**: owner (string), repo (string), path (string), ref (string)
 - **Output**: File content (text or base64)
 - **Error Handling**: File not found, permission denied, rate limits
 
 #### 2. github.searchCode
+
 - **Purpose**: Search code across repositories
 - **Inputs**: query (string), filters (object), page (number)
 - **Output**: Search results with file paths and matches
 - **Error Handling**: Invalid query, API limits
 
 #### 3. github.getIssue
+
 - **Purpose**: Retrieve issue details
 - **Inputs**: owner (string), repo (string), number (integer)
 - **Output**: Issue metadata and comments
 - **Error Handling**: Issue not found, access denied
 
 #### 4. github.createPR
+
 - **Purpose**: Create pull request
 - **Inputs**: owner (string), repo (string), title (string), body (string), head (string), base (string)
 - **Output**: PR URL and number
@@ -200,18 +219,21 @@ MCP uses JSON-RPC 2.0 over various transport mechanisms:
 ### Onboarding Tools
 
 #### 1. onboarding.getWelcome
+
 - **Purpose**: Get personalized welcome message
 - **Inputs**: agentName (string), role (string)
 - **Output**: Welcome message and quick start guide
 - **Error Handling**: Template errors
 
 #### 2. onboarding.registerAgent
+
 - **Purpose**: Register new agent in system
 - **Inputs**: agentInfo (object), capabilities (array)
 - **Output**: Agent ID and credentials
 - **Error Handling**: Duplicate registration, validation failures
 
 #### 3. onboarding.getChecklist
+
 - **Purpose**: Get onboarding checklist
 - **Inputs**: agentId (string)
 - **Output**: Checklist with completion status
@@ -220,18 +242,21 @@ MCP uses JSON-RPC 2.0 over various transport mechanisms:
 ### System Navigation Tools
 
 #### 1. system.listSkills
+
 - **Purpose**: List available skills
 - **Inputs**: category (string, optional), search (string, optional)
 - **Output**: Skill registry with descriptions
 - **Error Handling**: Invalid category
 
 #### 2. system.getAgents
+
 - **Purpose**: List active agents
 - **Inputs**: status (string, optional)
 - **Output**: Agent list with status and capabilities
 - **Error Handling**: Permission errors
 
 #### 3. system.getTaskQueue
+
 - **Purpose**: Get pending tasks
 - **Inputs**: agentId (string, optional), priority (string, optional)
 - **Output**: Task queue with priorities
@@ -459,30 +484,35 @@ GitHub Integration:
 ## Implementation Roadmap
 
 ### Phase 1: Core Infrastructure (Week 1-2)
+
 - JSON-RPC server setup
 - Basic authentication
 - Error handling framework
 - Logging infrastructure
 
 ### Phase 2: Firebase Integration (Week 3-4)
+
 - Firebase SDK integration
 - Real-time database tools
 - Firestore operations
 - Authentication integration
 
 ### Phase 3: GitHub Integration (Week 5-6)
+
 - GitHub App setup
 - Repository operations
 - Issue/PR management
 - Code search implementation
 
 ### Phase 4: Advanced Features (Week 7-8)
+
 - Onboarding workflow
 - System navigation tools
 - Caching layer
 - Performance optimization
 
 ### Phase 5: Security & Production (Week 9-10)
+
 - OAuth 2.1 implementation
 - Security audit
 - Load testing

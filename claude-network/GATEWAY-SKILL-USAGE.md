@@ -1,4 +1,5 @@
 # Gateway Skill Usage Guide
+
 ## Single-File Onboarding to Sartor Claude Network
 
 ### What is the Gateway Skill?
@@ -12,6 +13,7 @@ New Agent + gateway.yaml = Full Network Access
 ```
 
 When an agent uses the gateway skill, they automatically:
+
 - 🔍 Discover available MCP servers (local, network, cloud)
 - 🔌 Establish secure connection
 - 🎭 Register their identity
@@ -62,6 +64,7 @@ Claude: [Executes the skill and gains network access]
 ### Step-by-Step Process
 
 1. **Discovery Phase** (5-10 seconds)
+
    ```
    🔍 Scanning for MCP servers...
    ✓ Local: localhost:8080
@@ -71,6 +74,7 @@ Claude: [Executes the skill and gains network access]
    ```
 
 2. **Connection Phase** (2-5 seconds)
+
    ```
    🔌 Connecting to fastest endpoint...
    ✓ Endpoint validated
@@ -79,6 +83,7 @@ Claude: [Executes the skill and gains network access]
    ```
 
 3. **Authentication Phase** (1-2 seconds)
+
    ```
    🎭 Registering agent identity...
    ✓ Agent ID generated: desktop-a3f2b8c1
@@ -87,6 +92,7 @@ Claude: [Executes the skill and gains network access]
    ```
 
 4. **Tool Activation** (3-5 seconds)
+
    ```
    🔧 Enabling network tools...
    ✓ Communication tools: 5 available
@@ -112,6 +118,7 @@ Claude: [Executes the skill and gains network access]
 Once connected via the gateway, these MCP tools become available:
 
 ### Communication Tools
+
 ```python
 # Send direct message
 await mcp.execute("message_send", {
@@ -131,6 +138,7 @@ await mcp.execute("message_subscribe", {
 ```
 
 ### Task Coordination
+
 ```python
 # List available tasks
 tasks = await mcp.execute("task_list", {})
@@ -148,6 +156,7 @@ await mcp.execute("task_status", {
 ```
 
 ### Skill Execution
+
 ```python
 # List skills
 skills = await mcp.execute("skill_list", {
@@ -168,6 +177,7 @@ await mcp.execute("skill_compose", {
 ```
 
 ### Knowledge Base
+
 ```python
 # Query knowledge
 info = await mcp.execute("knowledge_query", {
@@ -185,6 +195,7 @@ await mcp.execute("knowledge_add", {
 ```
 
 ### Network Monitoring
+
 ```python
 # Check agent statuses
 agents = await mcp.execute("agent_status", {})
@@ -242,39 +253,51 @@ await client.connect()
 ### Common Issues and Solutions
 
 #### 1. No MCP Server Found
+
 ```
 ❌ Error: Cannot find MCP server
 ```
+
 **Solutions:**
+
 - Start the MCP server: `python mcp_server.py`
 - Check firewall settings for port 8080
 - Set `MCP_ENDPOINT` environment variable
 - Verify network connectivity
 
 #### 2. Authentication Failed
+
 ```
 ⚠️ Warning: Authentication failed, running in open mode
 ```
+
 **Solutions:**
+
 - This is often OK for local development
 - For production, set `SARTOR_API_KEY`
 - Check agent permissions in Firebase
 
 #### 3. Tools Not Available
+
 ```
 ❌ Error: Tool 'xyz' not found
 ```
+
 **Solutions:**
+
 - Verify MCP server has tools enabled
 - Check agent permissions
 - Update gateway skill to latest version
 - Reconnect to refresh tool list
 
 #### 4. Connection Drops
+
 ```
 ❌ Error: WebSocket disconnected
 ```
+
 **Solutions:**
+
 - Gateway auto-reconnects by default
 - Check network stability
 - Verify MCP server is still running
@@ -450,27 +473,35 @@ async def knowledge_contributor():
 ## FAQ
 
 ### Q: Do I need to install dependencies?
+
 **A:** The gateway skill is self-contained. The Python client needs `aiohttp` and `websockets`.
 
 ### Q: Can multiple agents use the same gateway file?
+
 **A:** Yes! Each agent gets a unique ID when they connect.
 
 ### Q: What if the MCP server is down?
+
 **A:** Gateway tries multiple endpoints and can fall back to Firebase relay.
 
 ### Q: How do I update the gateway skill?
+
 **A:** Pull the latest from GitHub or check for updates via the network.
 
 ### Q: Can I customize what tools are available?
+
 **A:** Yes, through MCP server configuration and agent permissions.
 
 ### Q: Is the connection persistent?
+
 **A:** Yes, WebSocket maintains persistent connection with auto-reconnect.
 
 ### Q: How much bandwidth does it use?
+
 **A:** Minimal - typically <1KB/s idle, scales with activity.
 
 ### Q: Can I run my own MCP server?
+
 **A:** Yes! See the MCP server documentation for setup instructions.
 
 ---
@@ -478,24 +509,30 @@ async def knowledge_contributor():
 ## Getting Help
 
 ### Resources
+
 - **Documentation**: `/claude-network/docs/`
 - **Examples**: `/claude-network/examples/`
 - **Tests**: `/claude-network/tests/`
 
 ### Support Channels
+
 - **GitHub Issues**: Report bugs and request features
 - **Discord**: Real-time help from the community
 - **Network Channel**: `#gateway-help` (after connection)
 
 ### Debugging
+
 Enable debug logging:
+
 ```python
 import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
 
 ### Version Info
+
 Check gateway version:
+
 ```python
 skill_data['skill']['version']  # Current: 1.0.0
 ```
@@ -516,6 +553,6 @@ The Gateway Skill is your **instant access card** to the Sartor Claude Network. 
 
 ---
 
-*Last Updated: 2025-11-03*
-*Gateway Version: 1.0.0*
-*MCP Protocol: v1*
+_Last Updated: 2025-11-03_
+_Gateway Version: 1.0.0_
+_MCP Protocol: v1_

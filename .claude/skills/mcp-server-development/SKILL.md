@@ -15,6 +15,7 @@ This skill provides guidance for building Model Context Protocol (MCP) servers b
 ## When to Use This Skill
 
 Activate this skill when:
+
 - Building a new MCP server from scratch
 - Implementing MCP tools with proper schemas
 - Debugging MCP stdio communication issues
@@ -53,7 +54,7 @@ await server.connect(transport);
 
 // IMPORTANT: Use console.error for logging, never console.log
 console.error('Server started'); // ✓ Correct
-console.log('Server started');   // ✗ Wrong - corrupts stdio protocol
+console.log('Server started'); // ✗ Wrong - corrupts stdio protocol
 ```
 
 ### Server Initialization Pattern
@@ -63,13 +64,13 @@ const server = new Server(
   {
     name: 'your-server-name',
     version: '1.0.0',
-    description: 'Clear description of server purpose'
+    description: 'Clear description of server purpose',
   },
   {
     capabilities: {
-      tools: {},      // Enable tool support
-      resources: {}   // Enable resource support (optional)
-    }
+      tools: {}, // Enable tool support
+      resources: {}, // Enable resource support (optional)
+    },
   }
 );
 ```
@@ -79,6 +80,7 @@ const server = new Server(
 ### Basic Tool Structure
 
 Every MCP tool requires:
+
 1. Tool definition with JSON schema
 2. Request handler implementation
 3. Input validation
@@ -99,17 +101,17 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           properties: {
             param1: {
               type: 'string',
-              description: 'Clear parameter description'
+              description: 'Clear parameter description',
             },
             param2: {
               type: 'number',
-              description: 'Another parameter'
-            }
+              description: 'Another parameter',
+            },
           },
-          required: ['param1']
-        }
-      }
-    ]
+          required: ['param1'],
+        },
+      },
+    ],
   };
 });
 ```
@@ -123,11 +125,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   // Input validation
   if (!args) {
     return {
-      content: [{
-        type: 'text',
-        text: JSON.stringify({ error: 'No arguments provided' }, null, 2)
-      }],
-      isError: true
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({ error: 'No arguments provided' }, null, 2),
+        },
+      ],
+      isError: true,
     };
   }
 
@@ -136,10 +140,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       case 'your_tool':
         const result = await executeYourTool(args);
         return {
-          content: [{
-            type: 'text',
-            text: JSON.stringify(result, null, 2)
-          }]
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify(result, null, 2),
+            },
+          ],
         };
 
       default:
@@ -148,11 +154,13 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     return {
-      content: [{
-        type: 'text',
-        text: JSON.stringify({ error: errorMessage }, null, 2)
-      }],
-      isError: true
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({ error: errorMessage }, null, 2),
+        },
+      ],
+      isError: true,
     };
   }
 });
@@ -213,7 +221,7 @@ import { z } from 'zod';
 
 const ToolArgsSchema = z.object({
   query: z.string().min(1, 'Query cannot be empty'),
-  limit: z.number().min(1).max(100).optional().default(20)
+  limit: z.number().min(1).max(100).optional().default(20),
 });
 
 // In tool handler
@@ -223,11 +231,13 @@ try {
 } catch (error) {
   if (error instanceof z.ZodError) {
     return {
-      content: [{
-        type: 'text',
-        text: `Validation error: ${error.message}`
-      }],
-      isError: true
+      content: [
+        {
+          type: 'text',
+          text: `Validation error: ${error.message}`,
+        },
+      ],
+      isError: true,
     };
   }
 }
@@ -313,9 +323,9 @@ server.setRequestHandler(ListResourcesRequestSchema, async () => {
         uri: 'custom://resource/id',
         name: 'Resource Name',
         description: 'What this resource provides',
-        mimeType: 'text/plain'
-      }
-    ]
+        mimeType: 'text/plain',
+      },
+    ],
   };
 });
 
@@ -326,11 +336,13 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
   const data = await fetchResourceData(uri);
 
   return {
-    contents: [{
-      uri,
-      mimeType: 'text/plain',
-      text: data
-    }]
+    contents: [
+      {
+        uri,
+        mimeType: 'text/plain',
+        text: data,
+      },
+    ],
   };
 });
 ```
@@ -346,7 +358,7 @@ describe('Tool Logic', () => {
   it('should process valid input', async () => {
     const result = await processTool({
       query: 'test query',
-      limit: 10
+      limit: 10,
     });
 
     expect(result).toHaveProperty('data');
@@ -354,9 +366,7 @@ describe('Tool Logic', () => {
   });
 
   it('should handle errors gracefully', async () => {
-    await expect(
-      processTool({ query: '' })
-    ).rejects.toThrow('Query cannot be empty');
+    await expect(processTool({ query: '' })).rejects.toThrow('Query cannot be empty');
   });
 });
 ```
@@ -387,7 +397,7 @@ describe('MCP Server Integration', () => {
 
   it('should execute tool successfully', async () => {
     const result = await server.callTool('tool_name', {
-      param1: 'value'
+      param1: 'value',
     });
 
     expect(result.content).toBeDefined();
@@ -442,11 +452,13 @@ async function toolHandler(args) {
     return { content: [{ type: 'text', text: JSON.stringify(result) }] };
   } catch (error) {
     return {
-      content: [{
-        type: 'text',
-        text: JSON.stringify({ error: error.message })
-      }],
-      isError: true
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({ error: error.message }),
+        },
+      ],
+      isError: true,
     };
   }
 }
@@ -461,7 +473,7 @@ async function toolHandler(args) {
 ```typescript
 // Schema says required
 inputSchema: {
-  required: ['param1']
+  required: ['param1'];
 }
 
 // But handler doesn't check
@@ -507,11 +519,7 @@ process.on('SIGTERM', async () => {
 class CacheService {
   private cache = new Map<string, CachedItem>();
 
-  async getOrSet<T>(
-    key: string,
-    fetcher: () => Promise<T>,
-    options: { ttl: number }
-  ): Promise<T> {
+  async getOrSet<T>(key: string, fetcher: () => Promise<T>, options: { ttl: number }): Promise<T> {
     const cached = this.cache.get(key);
 
     if (cached && !this.isExpired(cached, options.ttl)) {
@@ -544,7 +552,7 @@ class RateLimiter {
 
   async checkLimit(): Promise<void> {
     const now = Date.now();
-    this.requests = this.requests.filter(time => now - time < this.windowMs);
+    this.requests = this.requests.filter((time) => now - time < this.windowMs);
 
     if (this.requests.length >= this.maxRequests) {
       const oldestRequest = this.requests[0];
@@ -642,7 +650,7 @@ Based on actual implementations examined:
 
 ## Memory MCP Integration Patterns
 
-This section documents how MCP servers integrate with multi-tier memory systems, based on the actual implementation in `/home/alton/Sartor-claude-network/src/mcp/`.
+This section documents how MCP servers integrate with multi-tier memory systems, based on the actual implementation in `/home/user/Sartor-claude-network/src/mcp/`.
 
 ### Memory System Architecture
 
@@ -659,7 +667,7 @@ MCP servers can expose this memory system through tools, allowing Claude and oth
 #### Tool Definitions for Memory Operations
 
 ```typescript
-// Based on /home/alton/Sartor-claude-network/src/mcp/memory-server.ts
+// Based on /home/user/Sartor-claude-network/src/mcp/memory-server.ts
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
@@ -671,26 +679,32 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           properties: {
             content: {
               type: 'string',
-              description: 'The content to remember'
+              description: 'The content to remember',
             },
             type: {
               type: 'string',
-              enum: ['episodic', 'semantic', 'procedural', 'working',
-                     'refinement_trace', 'expert_consensus'],
-              description: 'Type of memory'
+              enum: [
+                'episodic',
+                'semantic',
+                'procedural',
+                'working',
+                'refinement_trace',
+                'expert_consensus',
+              ],
+              description: 'Type of memory',
             },
             importance: {
               type: 'number',
-              description: 'Importance score 0-1 (default 0.5)'
+              description: 'Importance score 0-1 (default 0.5)',
             },
             tags: {
               type: 'array',
               items: { type: 'string' },
-              description: 'Tags for categorization'
-            }
+              description: 'Tags for categorization',
+            },
           },
-          required: ['content', 'type']
-        }
+          required: ['content', 'type'],
+        },
       },
       {
         name: 'memory_search',
@@ -701,20 +715,20 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             type: {
               type: 'string',
               enum: ['episodic', 'semantic', 'procedural', 'working'],
-              description: 'Filter by memory type'
+              description: 'Filter by memory type',
             },
             min_importance: {
               type: 'number',
-              description: 'Minimum importance score'
+              description: 'Minimum importance score',
             },
             limit: {
               type: 'number',
-              description: 'Max results (default 10)'
-            }
-          }
-        }
-      }
-    ]
+              description: 'Max results (default 10)',
+            },
+          },
+        },
+      },
+    ],
   };
 });
 ```
@@ -722,7 +736,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 #### Multi-Tier Storage Integration
 
 ```typescript
-// Based on /home/alton/Sartor-claude-network/src/mcp/memory-server.ts
+// Based on /home/user/Sartor-claude-network/src/mcp/memory-server.ts
 import { FileStore, MemoryType } from './file-store.js';
 import { MultiTierStore } from './multi-tier-store.js';
 
@@ -742,7 +756,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const memType = typeMap[args.type] || MemoryType.WORKING;
       const memOptions = {
         importance_score: args.importance || 0.5,
-        tags: args.tags || []
+        tags: args.tags || [],
       };
 
       // Use MultiTierStore (async) if available, otherwise FileStore (sync)
@@ -751,15 +765,21 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         : fileStore.createMemory(args.content, memType, memOptions);
 
       return {
-        content: [{
-          type: 'text',
-          text: JSON.stringify({
-            success: true,
-            id: mem.id,
-            type: mem.type,
-            tier: isMultiTier() ? 'multi' : 'file'
-          }, null, 2)
-        }]
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(
+              {
+                success: true,
+                id: mem.id,
+                type: mem.type,
+                tier: isMultiTier() ? 'multi' : 'file',
+              },
+              null,
+              2
+            ),
+          },
+        ],
       };
     }
   }
@@ -773,7 +793,7 @@ In addition to stdio transport (for Claude Desktop), MCP servers can expose memo
 #### HTTP Server Pattern
 
 ```typescript
-// Based on /home/alton/Sartor-claude-network/src/mcp/http-server.ts
+// Based on /home/user/Sartor-claude-network/src/mcp/http-server.ts
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { createMcpExpressApp } from '@modelcontextprotocol/sdk/server/express.js';
 
@@ -799,7 +819,7 @@ const mcpPostHandler = async (req, res) => {
       onsessioninitialized: (newSessionId) => {
         console.error(`Session initialized: ${newSessionId}`);
         transports[newSessionId] = transport;
-      }
+      },
     });
 
     const server = createMemoryServer();
@@ -819,7 +839,7 @@ Agents can access the memory system through an HTTP client that wraps MCP protoc
 #### Client Implementation Pattern
 
 ```typescript
-// Based on /home/alton/Sartor-claude-network/src/mcp/mcp-http-client.ts
+// Based on /home/user/Sartor-claude-network/src/mcp/mcp-http-client.ts
 export class MCPHttpClient {
   private baseUrl: string;
   private sessionId: string | null = null;
@@ -837,19 +857,22 @@ export class MCPHttpClient {
       params: {
         protocolVersion: '2024-11-05',
         capabilities: {},
-        clientInfo: { name: 'mcp-http-client', version: '1.0.0' }
-      }
+        clientInfo: { name: 'mcp-http-client', version: '1.0.0' },
+      },
     };
 
     const response = await this.sendRequest(request, null);
     if (!this.sessionId) return false;
 
     // Send initialized notification
-    await this.sendRequest({
-      jsonrpc: '2.0',
-      id: ++this.requestId,
-      method: 'notifications/initialized'
-    }, this.sessionId);
+    await this.sendRequest(
+      {
+        jsonrpc: '2.0',
+        id: ++this.requestId,
+        method: 'notifications/initialized',
+      },
+      this.sessionId
+    );
 
     return true;
   }
@@ -868,8 +891,8 @@ export class MCPHttpClient {
       method: 'tools/call',
       params: {
         name: 'memory_create',
-        arguments: params
-      }
+        arguments: params,
+      },
     };
 
     const response = await this.sendRequest(request, this.sessionId);
@@ -882,7 +905,7 @@ export class MCPHttpClient {
   private async sendRequest(request: any, sessionId: string | null) {
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json, text/event-stream'
+      Accept: 'application/json, text/event-stream',
     };
 
     if (sessionId) {
@@ -892,7 +915,7 @@ export class MCPHttpClient {
     const response = await fetch(this.baseUrl, {
       method: 'POST',
       headers,
-      body: JSON.stringify(request)
+      body: JSON.stringify(request),
     });
 
     // Extract session ID from response headers
@@ -913,7 +936,7 @@ For agents that need unified access to multiple memory sources, the Bootstrap Me
 #### Multi-Source Memory Access
 
 ```typescript
-// Based on /home/alton/Sartor-claude-network/src/mcp/bootstrap-mesh.ts
+// Based on /home/user/Sartor-claude-network/src/mcp/bootstrap-mesh.ts
 export class BootstrapMesh {
   private mcpUrl: string;
   private fileStore: FileStore;
@@ -988,7 +1011,7 @@ export class BootstrapMesh {
       mcp: this.mcpAvailable,
       local: this.fileAvailable,
       github: this.githubAvailable,
-      firebase: this.firebaseAvailable
+      firebase: this.firebaseAvailable,
     };
   }
 }
@@ -1010,12 +1033,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         iterations: args.iterations,
         final_result: args.final_result,
         success: args.success,
-        duration_ms: args.duration_ms
+        duration_ms: args.duration_ms,
       });
 
       const traceOptions = {
         importance_score: args.success ? 0.8 : 0.6,
-        tags: ['refinement', `task:${args.task_id}`, `iterations:${args.iterations}`]
+        tags: ['refinement', `task:${args.task_id}`, `iterations:${args.iterations}`],
       };
 
       const mem = await multiTierStore.createMemory(
@@ -1025,10 +1048,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       );
 
       return {
-        content: [{
-          type: 'text',
-          text: JSON.stringify({ success: true, trace_id: mem.id }, null, 2)
-        }]
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify({ success: true, trace_id: mem.id }, null, 2),
+          },
+        ],
       };
     }
   }
@@ -1091,11 +1116,7 @@ Route memories to appropriate tiers based on importance:
 ```typescript
 // High-importance memories (≥0.8) automatically archived to GitHub
 if (memory.importance_score >= 0.8 && githubStore) {
-  await githubStore.set(
-    `${type}/${id}.json`,
-    memory,
-    `Archive high-importance memory: ${id}`
-  );
+  await githubStore.set(`${type}/${id}.json`, memory, `Archive high-importance memory: ${id}`);
 }
 ```
 
@@ -1129,12 +1150,12 @@ console.log('Firebase available:', status.firebase);
 
 ### Reference Implementation Files
 
-- **Memory Server (stdio)**: `/home/alton/Sartor-claude-network/src/mcp/memory-server.ts`
-- **Memory Server (HTTP)**: `/home/alton/Sartor-claude-network/src/mcp/http-server.ts`
-- **HTTP Client**: `/home/alton/Sartor-claude-network/src/mcp/mcp-http-client.ts`
-- **Bootstrap Mesh**: `/home/alton/Sartor-claude-network/src/mcp/bootstrap-mesh.ts`
-- **Multi-Tier Store**: `/home/alton/Sartor-claude-network/src/mcp/multi-tier-store.ts`
-- **File Store**: `/home/alton/Sartor-claude-network/src/mcp/file-store.ts`
+- **Memory Server (stdio)**: `/home/user/Sartor-claude-network/src/mcp/memory-server.ts`
+- **Memory Server (HTTP)**: `/home/user/Sartor-claude-network/src/mcp/http-server.ts`
+- **HTTP Client**: `/home/user/Sartor-claude-network/src/mcp/mcp-http-client.ts`
+- **Bootstrap Mesh**: `/home/user/Sartor-claude-network/src/mcp/bootstrap-mesh.ts`
+- **Multi-Tier Store**: `/home/user/Sartor-claude-network/src/mcp/multi-tier-store.ts`
+- **File Store**: `/home/user/Sartor-claude-network/src/mcp/file-store.ts`
 
 ### Memory MCP Limitations
 

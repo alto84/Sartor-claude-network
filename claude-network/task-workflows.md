@@ -3,9 +3,11 @@
 ## 1. User-Initiated Task Workflow
 
 ### Workflow Definition
+
 User requests are the primary driver of the agent community, requiring careful handling to ensure satisfaction.
 
 ### Process Flow
+
 ```mermaid
 graph TD
     A[User Request] --> B{Validate Request}
@@ -34,6 +36,7 @@ graph TD
 ### Key Components
 
 #### Request Validation
+
 ```python
 validation_rules = {
     "has_clear_objective": True,
@@ -45,11 +48,13 @@ validation_rules = {
 ```
 
 #### Complexity Estimation
+
 - **Simple** (<30 min): Single file edit, quick answer
 - **Moderate** (30 min - 2 hrs): Multi-file changes, research needed
 - **Complex** (2+ hrs): System design, extensive implementation
 
 #### User Interaction Points
+
 1. **Initial Clarification**: Missing requirements
 2. **Progress Updates**: Milestones reached
 3. **Decision Points**: Multiple valid approaches
@@ -57,29 +62,30 @@ validation_rules = {
 5. **Completion Confirmation**: Task closure
 
 ### Example Task Flow
+
 ```yaml
 task:
   type: user_request
-  request: "Build a web scraper for news articles"
+  request: 'Build a web scraper for news articles'
 
 flow:
   - validate: Check if web scraping is allowed
   - parse: Identify target sites, data needed
   - estimate: Complex task (3-4 hours)
   - requirements:
-    - Web scraping library
-    - HTML parsing
-    - Data storage
-    - Error handling
+      - Web scraping library
+      - HTML parsing
+      - Data storage
+      - Error handling
   - team:
-    - Research Agent: Find best practices
-    - Implementation Agent: Build scraper
-    - Testing Agent: Validate output
+      - Research Agent: Find best practices
+      - Implementation Agent: Build scraper
+      - Testing Agent: Validate output
   - execution:
-    - Research phase (30 min)
-    - Design phase (30 min)
-    - Implementation (2 hrs)
-    - Testing (1 hr)
+      - Research phase (30 min)
+      - Design phase (30 min)
+      - Implementation (2 hrs)
+      - Testing (1 hr)
   - review: Code review, test results
   - delivery: Working scraper with documentation
 ```
@@ -87,9 +93,11 @@ flow:
 ## 2. System Maintenance Workflow
 
 ### Workflow Definition
+
 Automated tasks that keep the agent ecosystem healthy and optimized.
 
 ### Process Flow
+
 ```mermaid
 graph TD
     A[Scheduled Trigger/Event] --> B[System Health Check]
@@ -114,6 +122,7 @@ graph TD
 ### Maintenance Categories
 
 #### Performance Optimization
+
 ```yaml
 trigger: CPU usage > 80% for 5 minutes
 actions:
@@ -127,6 +136,7 @@ verification:
 ```
 
 #### Data Cleanup
+
 ```yaml
 trigger: Daily at 2 AM
 actions:
@@ -140,6 +150,7 @@ verification:
 ```
 
 #### Security Patching
+
 ```yaml
 trigger: Security advisory received
 actions:
@@ -153,6 +164,7 @@ verification:
 ```
 
 ### Example Maintenance Task
+
 ```json
 {
   "type": "maintenance",
@@ -178,9 +190,11 @@ verification:
 ## 3. Scheduled Task Workflow (House Management)
 
 ### Workflow Definition
+
 Recurring tasks for physical environment monitoring and management.
 
 ### Process Flow
+
 ```mermaid
 graph TD
     A[Cron Schedule Trigger] --> B[Load Task Template]
@@ -204,8 +218,9 @@ graph TD
 ### House Management Tasks
 
 #### Environmental Monitoring
+
 ```yaml
-schedule: "*/15 * * * *"  # Every 15 minutes
+schedule: '*/15 * * * *' # Every 15 minutes
 agents:
   - Desktop: Central coordination
   - iPad: Mobile sensing
@@ -222,8 +237,9 @@ outputs:
 ```
 
 #### Learning Environment Check
+
 ```yaml
-schedule: "0 9,15,20 * * *"  # 9 AM, 3 PM, 8 PM
+schedule: '0 9,15,20 * * *' # 9 AM, 3 PM, 8 PM
 agents:
   - Desktop: Analysis and recommendations
 tasks:
@@ -238,6 +254,7 @@ outputs:
 ```
 
 ### Example House Task
+
 ```json
 {
   "type": "scheduled",
@@ -277,9 +294,11 @@ outputs:
 ## 4. Research Task Workflow
 
 ### Workflow Definition
+
 Complex investigative tasks requiring systematic exploration and validation.
 
 ### Process Flow
+
 ```mermaid
 graph TD
     A[Research Question] --> B[Define Scope]
@@ -305,6 +324,7 @@ graph TD
 ### Research Methodology
 
 #### Literature Review Protocol
+
 ```python
 literature_review = {
     "sources": ["academic_papers", "technical_docs", "code_repos"],
@@ -324,17 +344,20 @@ literature_review = {
 ```
 
 #### Evidence Validation Framework
+
 Following CLAUDE.md anti-fabrication protocols:
+
 - No fabricated metrics or scores
 - Evidence-based conclusions only
 - Clear limitation statements
 - External validation required for claims
 
 ### Example Research Task
+
 ```yaml
 task:
   type: research
-  question: "Optimal agent coordination strategies for distributed systems"
+  question: 'Optimal agent coordination strategies for distributed systems'
 
 phases:
   literature_review:
@@ -373,9 +396,11 @@ phases:
 ## 5. Learning Task Workflow
 
 ### Workflow Definition
+
 Skill development and knowledge acquisition tasks for agent improvement.
 
 ### Process Flow
+
 ```mermaid
 graph TD
     A[Skill Gap Identified] --> B[Assess Current Level]
@@ -397,6 +422,7 @@ graph TD
 ### Learning Frameworks
 
 #### Skill Progression Levels
+
 ```yaml
 levels:
   beginner:
@@ -421,6 +447,7 @@ levels:
 ```
 
 #### Practice Methodologies
+
 ```python
 practice_methods = {
     "scaffolded_learning": {
@@ -442,6 +469,7 @@ practice_methods = {
 ```
 
 ### Example Learning Task
+
 ```json
 {
   "type": "learning",
@@ -452,29 +480,17 @@ practice_methods = {
     {
       "module": "Basic Concepts",
       "duration": "2 hours",
-      "activities": [
-        "Read Raft paper",
-        "Watch visualization",
-        "Answer quiz"
-      ]
+      "activities": ["Read Raft paper", "Watch visualization", "Answer quiz"]
     },
     {
       "module": "Implementation",
       "duration": "4 hours",
-      "activities": [
-        "Code simple leader election",
-        "Handle network partitions",
-        "Test edge cases"
-      ]
+      "activities": ["Code simple leader election", "Handle network partitions", "Test edge cases"]
     },
     {
       "module": "Optimization",
       "duration": "3 hours",
-      "activities": [
-        "Performance profiling",
-        "Implement improvements",
-        "Benchmark results"
-      ]
+      "activities": ["Performance profiling", "Implement improvements", "Benchmark results"]
     }
   ],
   "assessment": {
@@ -492,6 +508,7 @@ practice_methods = {
 ## Workflow Integration Points
 
 ### Cross-Workflow Dependencies
+
 ```yaml
 dependencies:
   user_request:
@@ -516,6 +533,7 @@ dependencies:
 ```
 
 ### Workflow Orchestration
+
 ```python
 class WorkflowOrchestrator:
     def process_task(self, task):
@@ -548,30 +566,35 @@ class WorkflowOrchestrator:
 ## Performance Metrics by Workflow
 
 ### User Request Metrics
+
 - Time to first response
 - User satisfaction score
 - Iteration count before satisfaction
 - Task completion time
 
 ### Maintenance Metrics
+
 - Issues prevented vs reacted
 - System availability improvement
 - Resource optimization percentage
 - Maintenance overhead time
 
 ### Scheduled Task Metrics
+
 - On-time execution rate
 - Coverage completeness
 - Pattern detection accuracy
 - Report generation time
 
 ### Research Metrics
+
 - Knowledge gaps identified
 - Hypotheses validated ratio
 - Evidence quality score
 - Time to insight
 
 ### Learning Metrics
+
 - Skill acquisition rate
 - Retention after 30 days
 - Application success rate
@@ -579,4 +602,4 @@ class WorkflowOrchestrator:
 
 ---
 
-*These detailed workflows ensure consistent, efficient task processing across all types while maintaining quality and meeting user expectations.*
+_These detailed workflows ensure consistent, efficient task processing across all types while maintaining quality and meeting user expectations._

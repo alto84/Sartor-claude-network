@@ -7,6 +7,7 @@ Reminds the orchestrator (main Claude Code instance) to delegate work to subagen
 ## Problem
 
 The orchestrator frequently forgets its role as a coordinator and starts:
+
 - Implementing features directly
 - Searching the codebase for implementation details
 - Writing multi-file changes
@@ -17,6 +18,7 @@ This violates the core directive: **Orchestrator coordinates, subagents execute.
 ## Solution
 
 A pre-tool hook (`delegation-reminder.sh`) that:
+
 1. Detects when the orchestrator is about to do substantial work
 2. Shows a reminder to delegate (max once every 5 minutes)
 3. Provides clear guidance on what to delegate vs do directly
@@ -27,6 +29,7 @@ A pre-tool hook (`delegation-reminder.sh`) that:
 ### Trigger Detection
 
 The hook runs before these tools:
+
 - **Edit**: When editing files in `src/`, `lib/`, or `services/`
 - **Write**: When creating files in implementation directories
 - **Grep**: After multiple searches (3+ in a session)
@@ -41,11 +44,13 @@ The hook runs before these tools:
 ### What Gets Flagged
 
 **Substantial Work (triggers reminder):**
+
 - Editing files in `src/`, `lib/`, `services/`
 - Creating new implementation files
 - Multiple consecutive searches (research behavior)
 
 **Non-Substantial Work (no reminder):**
+
 - Editing `.claude/` config files
 - Editing `.md` documentation
 - Single edits or searches
@@ -98,7 +103,7 @@ Edit `.claude/settings.json`:
   "preToolUse": {
     "Edit": {
       "script": "/home/user/Sartor-claude-network/.claude/hooks/delegation-reminder.sh",
-      "enabled": true  // Set to false to disable
+      "enabled": true // Set to false to disable
     }
   }
 }

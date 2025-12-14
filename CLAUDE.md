@@ -9,15 +9,18 @@ Multi-tier episodic memory system with refinement-powered executive orchestratio
 **If you are the main Claude Code instance, you are the ORCHESTRATOR.**
 
 Your role is **COORDINATION, NOT EXECUTION**. Before doing any substantial work:
+
 1. **ASK**: Can a subagent do this? → If yes, delegate via Task tool
 2. **CHECK**: Read `.claude/ORCHESTRATOR_BOOTSTRAP.md` for full protocol
 3. **LOAD**: Search Memory MCP for `importance >= 0.9` directives
 
 **Key Directive** (from Memory MCP):
+
 > Main Claude Code must DELEGATE work to subagents, not do it directly.
 > Only do direct work for simple edits or when coordinating/synthesizing results.
 
 **Self-Check Every Turn**:
+
 - [ ] Am I about to do substantial work directly? → DELEGATE
 - [ ] Could this be parallelized? → Spawn multiple agents
 - [ ] Am I updating skills/hooks/rules as I learn? → IMPROVE SYSTEMS
@@ -73,14 +76,14 @@ import {
   createRegistry,
   createMessageBus,
   AgentRole,
-  AgentStatus
+  AgentStatus,
 } from './subagent';
 
 // Bootstrap a subagent
 const subagent = await createSubagent({
   role: AgentRole.IMPLEMENTER,
   name: 'code-writer',
-  capabilities: ['typescript', 'testing']
+  capabilities: ['typescript', 'testing'],
 });
 
 // Register and track agents
@@ -102,11 +105,7 @@ CRDT-based coordination for conflict-free multi-agent collaboration.
 ### Usage
 
 ```typescript
-import {
-  createPlanSyncService,
-  createDistributor,
-  createProgressTracker
-} from './coordination';
+import { createPlanSyncService, createDistributor, createProgressTracker } from './coordination';
 
 // Create synchronized plan
 const planSync = createPlanSyncService('agent-1');
@@ -135,11 +134,7 @@ Intelligent context discovery and adaptive learning for subagents.
 ### Usage
 
 ```typescript
-import {
-  createContextDiscoverer,
-  createRelevanceFilter,
-  createIntelligence
-} from './experience';
+import { createContextDiscoverer, createRelevanceFilter, createIntelligence } from './experience';
 
 // Discover relevant context
 const discoverer = createContextDiscoverer({ rootPath: '/project' });
@@ -294,15 +289,16 @@ See `.claude/SPAWNING_TEMPLATE.md` for examples.
 
 As you work, actively improve these bootstrap systems:
 
-| System | Location | When to Update |
-|--------|----------|----------------|
-| Skills | `.claude/skills/` | New learnings, patterns discovered |
-| Hooks | `.claude/hooks.json` | New anti-patterns to prevent |
-| Memory | `data/memories.json` | Directives, facts, procedures |
-| Bootstrap | `.claude/ORCHESTRATOR_BOOTSTRAP.md` | Protocol improvements |
-| Templates | `.claude/SPAWNING_TEMPLATE.md` | New required skills for agents |
+| System    | Location                            | When to Update                     |
+| --------- | ----------------------------------- | ---------------------------------- |
+| Skills    | `.claude/skills/`                   | New learnings, patterns discovered |
+| Hooks     | `.claude/hooks.json`                | New anti-patterns to prevent       |
+| Memory    | `data/memories.json`                | Directives, facts, procedures      |
+| Bootstrap | `.claude/ORCHESTRATOR_BOOTSTRAP.md` | Protocol improvements              |
+| Templates | `.claude/SPAWNING_TEMPLATE.md`      | New required skills for agents     |
 
 **Memory Types**:
+
 - SEMANTIC (importance 0.9+): User directives, critical facts
 - PROCEDURAL (importance 0.7-0.8): Successful patterns, methods
 - EPISODIC (importance 0.5-0.7): Session events, context

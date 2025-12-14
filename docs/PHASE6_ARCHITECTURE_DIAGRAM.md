@@ -197,6 +197,7 @@ EPISODIC  SEMANTIC  PROCEDURAL  WORKING  REFINEMENT_TRACE  EXPERT_CONSENSUS
 ## Data Structure Comparison
 
 ### Refinement Trace Memory
+
 ```json
 {
   "id": "mem_1702234567890_a1b2c3",
@@ -219,6 +220,7 @@ EPISODIC  SEMANTIC  PROCEDURAL  WORKING  REFINEMENT_TRACE  EXPERT_CONSENSUS
 ```
 
 ### Expert Consensus Memory
+
 ```json
 {
   "id": "mem_1702234567890_x9y8z7",

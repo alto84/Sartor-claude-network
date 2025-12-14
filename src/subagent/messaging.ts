@@ -176,9 +176,7 @@ export type MessageHandler = (message: AgentMessage) => void | Promise<void>;
 /**
  * Request handler function (returns response body)
  */
-export type RequestHandler = (
-  message: AgentMessage
-) => unknown | Promise<unknown>;
+export type RequestHandler = (message: AgentMessage) => unknown | Promise<unknown>;
 
 /**
  * Messaging statistics
@@ -232,11 +230,14 @@ export class AgentMessageBus extends EventEmitter {
   private subscriptions: Map<string, TopicSubscription[]> = new Map();
   private messageHandlers: Map<string, MessageHandler[]> = new Map();
   private requestHandlers: Map<string, RequestHandler> = new Map();
-  private pendingRequests: Map<string, {
-    resolve: (value: unknown) => void;
-    reject: (reason: unknown) => void;
-    timeout: NodeJS.Timeout;
-  }> = new Map();
+  private pendingRequests: Map<
+    string,
+    {
+      resolve: (value: unknown) => void;
+      reject: (reason: unknown) => void;
+      timeout: NodeJS.Timeout;
+    }
+  > = new Map();
   private messageLog: AgentMessage[] = [];
   private stats: MessagingStats;
   private processInterval?: NodeJS.Timeout;
@@ -267,13 +268,7 @@ export class AgentMessageBus extends EventEmitter {
     body: unknown,
     options: SendOptions = {}
   ): AgentMessage {
-    const message = this.createMessage(
-      MessageType.DIRECT,
-      senderId,
-      subject,
-      body,
-      options
-    );
+    const message = this.createMessage(MessageType.DIRECT, senderId, subject, body, options);
     message.recipientId = recipientId;
 
     return this.queueMessage(message);
@@ -294,13 +289,7 @@ export class AgentMessageBus extends EventEmitter {
     body: unknown,
     options: SendOptions = {}
   ): AgentMessage {
-    const message = this.createMessage(
-      MessageType.BROADCAST,
-      senderId,
-      subject,
-      body,
-      options
-    );
+    const message = this.createMessage(MessageType.BROADCAST, senderId, subject, body, options);
 
     // Queue for all active agents
     const agents = this.registry.discoverPeers({
@@ -337,13 +326,7 @@ export class AgentMessageBus extends EventEmitter {
     body: unknown,
     options: SendOptions = {}
   ): AgentMessage {
-    const message = this.createMessage(
-      MessageType.TOPIC,
-      senderId,
-      subject,
-      body,
-      options
-    );
+    const message = this.createMessage(MessageType.TOPIC, senderId, subject, body, options);
     message.topic = topic;
 
     // Get topic subscribers
@@ -381,13 +364,10 @@ export class AgentMessageBus extends EventEmitter {
     body: unknown,
     options: SendOptions = {}
   ): Promise<unknown> {
-    const message = this.createMessage(
-      MessageType.REQUEST,
-      senderId,
-      subject,
-      body,
-      { ...options, requiresAck: true }
-    );
+    const message = this.createMessage(MessageType.REQUEST, senderId, subject, body, {
+      ...options,
+      requiresAck: true,
+    });
     message.recipientId = recipientId;
 
     const timeout = options.timeout || DEFAULT_REQUEST_TIMEOUT_MS;
@@ -416,11 +396,7 @@ export class AgentMessageBus extends EventEmitter {
    * @param body - Response body
    * @returns Created response message
    */
-  sendResponse(
-    senderId: string,
-    requestMessage: AgentMessage,
-    body: unknown
-  ): AgentMessage {
+  sendResponse(senderId: string, requestMessage: AgentMessage, body: unknown): AgentMessage {
     const message = this.createMessage(
       MessageType.RESPONSE,
       senderId,
@@ -597,14 +573,16 @@ export class AgentMessageBus extends EventEmitter {
    * @param options - Filter options
    * @returns Messages matching filter
    */
-  getHistory(options: {
-    senderId?: string;
-    recipientId?: string;
-    type?: MessageType;
-    topic?: string;
-    since?: Date;
-    limit?: number;
-  } = {}): AgentMessage[] {
+  getHistory(
+    options: {
+      senderId?: string;
+      recipientId?: string;
+      type?: MessageType;
+      topic?: string;
+      since?: Date;
+      limit?: number;
+    } = {}
+  ): AgentMessage[] {
     let messages = [...this.messageLog];
 
     if (options.senderId) {

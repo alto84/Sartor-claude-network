@@ -17,6 +17,7 @@ Created Firestore-backed storage implementations. Firestore is often auto-enable
 ### 1. Core Implementations
 
 #### `/src/mcp/firestore-store.ts`
+
 - Drop-in replacement for `firebase-store.ts`
 - Uses Firestore collections instead of Realtime Database paths
 - Same interface: `createMemory()`, `getMemory()`, `searchMemories()`, `getStats()`
@@ -24,12 +25,14 @@ Created Firestore-backed storage implementations. Firestore is often auto-enable
 - 218 lines of code
 
 **Key differences from firebase-store.ts:**
+
 - Uses `getFirestore()` instead of `getDatabase()`
 - Uses `.collection().doc()` instead of `.ref()`
 - Uses `.set()` and `.get()` instead of Realtime Database equivalents
 - Supports Firestore query operators (`where`, `in`)
 
 #### `/src/mcp/firestore-multi-tier-store.ts`
+
 - Multi-tier store using Firestore as hot tier
 - Hot tier: Firestore (<100ms)
 - Warm tier: File storage (<500ms)
@@ -38,6 +41,7 @@ Created Firestore-backed storage implementations. Firestore is often auto-enable
 - 357 lines of code
 
 **Features:**
+
 - Automatic tier selection based on availability
 - Access count tracking for memory promotion/demotion
 - Graceful degradation if Firestore unavailable
@@ -46,12 +50,14 @@ Created Firestore-backed storage implementations. Firestore is often auto-enable
 ### 2. Testing & Validation
 
 #### `/src/mcp/test-firestore.ts`
+
 - Standalone test script for Firestore connectivity
 - Tests initialization, write, read, and stats operations
 - Provides clear diagnostic messages
 - Run with: `npm run test:firestore`
 
 **Test flow:**
+
 1. Initialize FirestoreStore
 2. Create test memory
 3. Read it back
@@ -61,7 +67,9 @@ Created Firestore-backed storage implementations. Firestore is often auto-enable
 ### 3. Documentation
 
 #### `/docs/FIRESTORE_INTEGRATION.md` (2,000+ lines)
+
 Comprehensive integration guide covering:
+
 - Why Firestore vs Realtime Database
 - Three integration options (direct switch, conditional, env-based)
 - Configuration requirements
@@ -72,7 +80,9 @@ Comprehensive integration guide covering:
 - API compatibility reference
 
 #### `/FIRESTORE_QUICKSTART.md`
+
 Quick reference for immediate integration:
+
 - 3-step switch process
 - Quick test command
 - Common troubleshooting
@@ -81,6 +91,7 @@ Quick reference for immediate integration:
 ### 4. Build System Integration
 
 Modified `/package.json`:
+
 - Added `"test:firestore": "ts-node src/mcp/test-firestore.ts"` script
 - Enables quick connectivity testing with `npm run test:firestore`
 
@@ -92,10 +103,10 @@ Both FirestoreStore and FirebaseStore implement the same interface:
 
 ```typescript
 interface MemoryStore {
-  createMemory(content: string, type: MemoryType, options): Promise<Memory>
-  getMemory(id: string): Promise<Memory | undefined>
-  searchMemories(filters, limit: number): Promise<Memory[]>
-  getStats(): Promise<Stats>
+  createMemory(content: string, type: MemoryType, options): Promise<Memory>;
+  getMemory(id: string): Promise<Memory | undefined>;
+  searchMemories(filters, limit: number): Promise<Memory[]>;
+  getStats(): Promise<Stats>;
 }
 ```
 
@@ -104,6 +115,7 @@ This allows swapping implementations without changing calling code.
 ### Configuration
 
 Uses same service account credentials as Realtime Database:
+
 - `GOOGLE_APPLICATION_CREDENTIALS` environment variable
 - `config/service-account.json` file
 - `FIREBASE_SERVICE_ACCOUNT_BASE64` environment variable
@@ -135,11 +147,13 @@ const store = new FirestoreMultiTierStore();
 ```
 
 **Pros:**
+
 - One line change
 - Immediate functionality
 - Cleaner codebase
 
 **Cons:**
+
 - Loses Realtime Database if already using it
 - Need to migrate existing data
 
@@ -150,17 +164,17 @@ const store = new FirestoreMultiTierStore();
 const firestoreStore = new FirestoreMultiTierStore();
 const rtdbStore = new MultiTierStore();
 
-const store = firestoreStore.getBackendStatus().firestore
-  ? firestoreStore
-  : rtdbStore;
+const store = firestoreStore.getBackendStatus().firestore ? firestoreStore : rtdbStore;
 ```
 
 **Pros:**
+
 - Works with either backend
 - No data migration needed
 - Automatic selection of best available option
 
 **Cons:**
+
 - Slightly more complex
 - Need to maintain both implementations
 
@@ -168,23 +182,24 @@ const store = firestoreStore.getBackendStatus().firestore
 
 ```typescript
 const BACKEND = process.env.FIREBASE_BACKEND || 'firestore';
-const store = BACKEND === 'firestore'
-  ? new FirestoreMultiTierStore()
-  : new MultiTierStore();
+const store = BACKEND === 'firestore' ? new FirestoreMultiTierStore() : new MultiTierStore();
 ```
 
 **Pros:**
+
 - Explicit control
 - Easy A/B testing
 - Can override in production
 
 **Cons:**
+
 - Requires environment configuration
 - Another configuration point to manage
 
 ## Testing Results
 
 All implementations have been:
+
 - ✅ Type-checked with TypeScript (no errors)
 - ✅ Interface-compatible with existing stores
 - ✅ Use same credentials and initialization
@@ -193,17 +208,20 @@ All implementations have been:
 ## Next Steps for User
 
 1. **Test connectivity:**
+
    ```bash
    npm run test:firestore
    ```
 
 2. **If test passes**, update `memory-server.ts`:
+
    ```typescript
    import { FirestoreMultiTierStore } from './firestore-multi-tier-store.js';
    const multiTierStore = new FirestoreMultiTierStore();
    ```
 
 3. **Restart MCP server:**
+
    ```bash
    npm run mcp        # or npm run mcp:http
    ```
@@ -216,7 +234,7 @@ All implementations have been:
 ## File Locations
 
 ```
-/home/alton/Sartor-claude-network/
+/home/user/Sartor-claude-network/
 ├── src/mcp/
 │   ├── firestore-store.ts                    # NEW: Firestore store
 │   ├── firestore-multi-tier-store.ts         # NEW: Multi-tier with Firestore
@@ -233,29 +251,29 @@ All implementations have been:
 
 ## Compatibility Matrix
 
-| Feature | FirebaseStore | FirestoreStore | Multi-Tier | Firestore Multi-Tier |
-|---------|--------------|----------------|------------|---------------------|
-| Create Memory | ✅ | ✅ | ✅ | ✅ |
-| Get Memory | ✅ | ✅ | ✅ | ✅ |
-| Search Memories | ✅ | ✅ | ✅ | ✅ |
-| Get Stats | ✅ | ✅ | ✅ | ✅ |
-| Type Filtering | ✅ | ✅ | ✅ | ✅ |
-| Importance Filtering | ✅ | ✅ | ✅ | ✅ |
-| Access Tracking | ❌ | ❌ | ✅ | ✅ |
-| GitHub Archive | ❌ | ❌ | ✅ | ✅ |
-| File Fallback | ✅ | ✅ | ✅ | ✅ |
-| Manual Setup Required | ✅ Yes | ❌ No | ✅ Yes | ❌ No |
+| Feature               | FirebaseStore | FirestoreStore | Multi-Tier | Firestore Multi-Tier |
+| --------------------- | ------------- | -------------- | ---------- | -------------------- |
+| Create Memory         | ✅            | ✅             | ✅         | ✅                   |
+| Get Memory            | ✅            | ✅             | ✅         | ✅                   |
+| Search Memories       | ✅            | ✅             | ✅         | ✅                   |
+| Get Stats             | ✅            | ✅             | ✅         | ✅                   |
+| Type Filtering        | ✅            | ✅             | ✅         | ✅                   |
+| Importance Filtering  | ✅            | ✅             | ✅         | ✅                   |
+| Access Tracking       | ❌            | ❌             | ✅         | ✅                   |
+| GitHub Archive        | ❌            | ❌             | ✅         | ✅                   |
+| File Fallback         | ✅            | ✅             | ✅         | ✅                   |
+| Manual Setup Required | ✅ Yes        | ❌ No          | ✅ Yes     | ❌ No                |
 
 ## Performance Characteristics
 
 Based on typical Firestore vs Realtime Database performance:
 
-| Operation | Realtime DB | Firestore | Delta |
-|-----------|-------------|-----------|-------|
-| Write (hot) | 30-60ms | 40-80ms | +10-20ms |
-| Read (hot) | 20-50ms | 30-60ms | +10ms |
-| Query | 50-100ms | 50-100ms | ~same |
-| Batch write | N/A | 40-80ms | Firestore advantage |
+| Operation   | Realtime DB | Firestore | Delta               |
+| ----------- | ----------- | --------- | ------------------- |
+| Write (hot) | 30-60ms     | 40-80ms   | +10-20ms            |
+| Read (hot)  | 20-50ms     | 30-60ms   | +10ms               |
+| Query       | 50-100ms    | 50-100ms  | ~same               |
+| Batch write | N/A         | 40-80ms   | Firestore advantage |
 
 **Verdict:** Firestore is suitable for hot-tier storage. Small latency increase is acceptable given the benefits.
 
@@ -270,10 +288,12 @@ Based on typical Firestore vs Realtime Database performance:
 ## Cost Implications
 
 At small scale (<1M operations/month):
+
 - **Realtime Database:** ~$1-5/month (charged by bandwidth + storage)
 - **Firestore:** ~$1-5/month (charged by operations + storage)
 
 At scale, costs diverge based on:
+
 - Read/write patterns (RTDB: bandwidth, Firestore: operations)
 - Data structure (RTDB: better for nested, Firestore: better for flat)
 - Query complexity (Firestore: more efficient for complex queries)

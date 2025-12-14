@@ -7,6 +7,7 @@ Your Claude Network is live with enterprise-grade components!
 ## What We Built
 
 A distributed multi-agent coordination system with:
+
 - **MCP Gateway System** ⭐ **NEW** - Universal agent connection protocol
 - **Multi-computer connectivity** - Connect Claude instances across devices
 - **Robust message protocol** - MACS (Multi-Agent Communication System)
@@ -19,7 +20,9 @@ A distributed multi-agent coordination system with:
 ## System Components
 
 ### 1. MCP Gateway System ⭐ NEW
+
 Universal connection protocol for Claude agents with:
+
 - Zero-dependency bootstrap installer
 - WebSocket and HTTP transports
 - 22+ built-in tools for agent operations
@@ -30,7 +33,9 @@ Universal connection protocol for Claude agents with:
 **Docs**: `MCP-DEPLOYMENT-GUIDE.md`, `QUICK-START-MCP.md`, `mcp/MCP-SYSTEM-OVERVIEW.md`
 
 ### 2. MACS Protocol (Multi-Agent Communication System)
+
 Robust, production-ready communication layer with:
+
 - Message signing and validation
 - Automatic retry with exponential backoff
 - Offline queue support
@@ -40,7 +45,9 @@ Robust, production-ready communication layer with:
 **Files**: `macs.py`, `tests/test_macs.py`
 
 ### 3. Task Management System
+
 Intelligent task distribution with:
+
 - Priority queue system
 - Dependency resolution
 - Capability-based assignment
@@ -51,7 +58,9 @@ Intelligent task distribution with:
 **Docs**: `TASK_MANAGER_README.md`, `task-management-architecture.md`
 
 ### 4. Skill Engine
+
 Modular skill composition system with:
+
 - 40+ built-in skills
 - Skill discovery and search
 - Sequential and parallel execution
@@ -62,7 +71,9 @@ Modular skill composition system with:
 **Docs**: `SKILL-GUIDE.md`, `SKILL-QUICKSTART.md`
 
 ### 5. Agent Registry & Heartbeat
+
 Agent discovery and health monitoring with:
+
 - Agent registration with capabilities
 - 15-second heartbeat system
 - Health status tracking (healthy/warning/critical/dead)
@@ -73,7 +84,9 @@ Agent discovery and health monitoring with:
 **Docs**: `CONFIG_REGISTRY_README.md`
 
 ### 6. Configuration Management
+
 Hierarchical configuration system with:
+
 - Multi-source loading (env vars, YAML files, defaults)
 - Type-safe configuration with dataclasses
 - Secure credential storage
@@ -83,7 +96,9 @@ Hierarchical configuration system with:
 **Docs**: `CONFIG_REGISTRY_README.md`
 
 ### 7. Testing Framework
+
 Comprehensive test coverage with:
+
 - Unit tests for all major components
 - Mock Firebase for testing
 - Fixture management
@@ -225,22 +240,23 @@ claude-network/
 
 ## Documentation Map
 
-| Document | Purpose |
-|----------|---------|
-| **QUICK-START-MCP.md** ⭐ | 5-minute MCP Gateway setup |
-| **MCP-DEPLOYMENT-GUIDE.md** | Complete deployment instructions |
-| **mcp/MCP-SYSTEM-OVERVIEW.md** | MCP architecture and components |
-| **SECOND-COMPUTER-SETUP.md** | Step-by-step guide for connecting 2nd computer |
-| **ARCHITECTURE-OVERVIEW.md** | System architecture and data flows |
-| **SKILL-GUIDE.md** | Complete skill system documentation |
-| **SKILL-QUICKSTART.md** | Quick start for skill system (5-minute intro) |
-| **TASK_MANAGER_README.md** | Task management system overview |
-| **CONFIG_REGISTRY_README.md** | Config management and agent registry |
-| **MACS Protocol** | (Documented in macs.py source) |
+| Document                       | Purpose                                        |
+| ------------------------------ | ---------------------------------------------- |
+| **QUICK-START-MCP.md** ⭐      | 5-minute MCP Gateway setup                     |
+| **MCP-DEPLOYMENT-GUIDE.md**    | Complete deployment instructions               |
+| **mcp/MCP-SYSTEM-OVERVIEW.md** | MCP architecture and components                |
+| **SECOND-COMPUTER-SETUP.md**   | Step-by-step guide for connecting 2nd computer |
+| **ARCHITECTURE-OVERVIEW.md**   | System architecture and data flows             |
+| **SKILL-GUIDE.md**             | Complete skill system documentation            |
+| **SKILL-QUICKSTART.md**        | Quick start for skill system (5-minute intro)  |
+| **TASK_MANAGER_README.md**     | Task management system overview                |
+| **CONFIG_REGISTRY_README.md**  | Config management and agent registry           |
+| **MACS Protocol**              | (Documented in macs.py source)                 |
 
 ## Teaching Moments for Vayu
 
 This project demonstrates:
+
 1. **Distributed Systems** - Multiple agents working together
 2. **Message Passing** - How computers communicate reliably
 3. **Task Management** - Work distribution and load balancing
@@ -265,6 +281,7 @@ To connect a second computer to the network:
 ## Troubleshooting
 
 ### Agent not appearing in registry?
+
 ```bash
 # Check heartbeat is running
 python3 -c "from agent_registry import AgentRegistry; r = AgentRegistry(); r.start_heartbeat()"
@@ -274,6 +291,7 @@ python3 -c "import firebase_admin; print('Firebase OK')"
 ```
 
 ### Messages not being delivered?
+
 ```bash
 # Check message queue
 python3 -c "from macs import MACSClient; m = MACSClient('test'); m.get_offline_queue()"
@@ -283,6 +301,7 @@ python3 -c "from macs import MACSConfig; print(f'Retries: {MACSConfig.MAX_RETRIE
 ```
 
 ### Configuration issues?
+
 ```bash
 # Validate config file
 python3 -c "from config_manager import ConfigManager; c = ConfigManager(); print(c.config)"

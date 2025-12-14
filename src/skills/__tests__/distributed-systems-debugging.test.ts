@@ -96,16 +96,13 @@ describe('Distributed Systems Debugging', () => {
       it('should fail when hypothesis not based on actual observations', () => {
         const hypothesis: Hypothesis = {
           statement: 'The cache is not working',
-          evidence: [
-            'Cache should improve performance',
-            'Performance is bad',
-          ],
+          evidence: ['Cache should improve performance', 'Performance is bad'],
           observationBased: false,
         };
 
         const result = systemDebugger.validateHypothesis(hypothesis);
         expect(result.isValid).toBe(false);
-        expect(result.issues.some(i => i.includes('not based on observations'))).toBe(true);
+        expect(result.issues.some((i) => i.includes('not based on observations'))).toBe(true);
       });
 
       it('should fail when hypothesis changes to fit new evidence without testing', () => {
@@ -210,7 +207,7 @@ describe('Distributed Systems Debugging', () => {
           },
         ];
 
-        const results = hypotheses.map(h => systemDebugger.validateHypothesis(h));
+        const results = hypotheses.map((h) => systemDebugger.validateHypothesis(h));
         expect(results[0].isValid).toBe(true);
         expect(results[1].isValid).toBe(true);
         expect(results[0].confidence).toBe('appropriate');
@@ -279,11 +276,7 @@ describe('Distributed Systems Debugging', () => {
 
       it('should fail when root cause does not explain all symptoms', () => {
         const analysis: RootCauseAnalysis = {
-          symptoms: [
-            'High latency',
-            'Memory usage growing',
-            'CPU spikes',
-          ],
+          symptoms: ['High latency', 'Memory usage growing', 'CPU spikes'],
           rootCause: 'Slow database query',
           explains: ['High latency'], // Only explains 1 of 3 symptoms
         };
@@ -321,7 +314,7 @@ describe('Distributed Systems Debugging', () => {
 
         const result = systemDebugger.validateRootCauseAnalysis(analysis);
         expect(result.isValid).toBe(false);
-        expect(result.issues.some(i => i.includes('gaps in evidence chain'))).toBe(true);
+        expect(result.issues.some((i) => i.includes('gaps in evidence chain'))).toBe(true);
       });
     });
 
@@ -401,11 +394,7 @@ describe('Distributed Systems Debugging', () => {
 
       it('should pass when root cause explains all symptoms', () => {
         const analysis: RootCauseAnalysis = {
-          symptoms: [
-            'High CPU usage',
-            'Slow response times',
-            'Error rate increases under load',
-          ],
+          symptoms: ['High CPU usage', 'Slow response times', 'Error rate increases under load'],
           rootCause: 'Inefficient algorithm with O(n²) complexity',
           explanations: {
             'High CPU': 'O(n²) algorithm consumes CPU',
@@ -590,7 +579,7 @@ describe('Distributed Systems Debugging', () => {
 
         const result = systemDebugger.validateFailureReport(report);
         expect(result.isValid).toBe(false);
-        expect(result.issues.some(i => i.includes('non-determinism'))).toBe(true);
+        expect(result.issues.some((i) => i.includes('non-determinism'))).toBe(true);
       });
     });
   });

@@ -53,7 +53,7 @@ export function createMemoryClient(): MemoryClient {
   //   3. Use stdio/HTTP transport to MCP server (src/mcp/server.ts)
   throw new Error(
     'createMemoryClient() requires real implementation. ' +
-    'MockMemoryClient should only be used in tests. ' +
-    'See TODO comment for integration options.'
+      'MockMemoryClient should only be used in tests. ' +
+      'See TODO comment for integration options.'
   );
 }

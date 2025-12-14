@@ -23,7 +23,13 @@ export type EvidenceLevel = 'empirical' | 'documented' | 'inferred' | 'hypotheti
 
 export interface Source {
   identifier?: string; // DOI, PMID, URL, or methodology description
-  type?: 'peer-reviewed' | 'documentation' | 'measurement' | 'expert-opinion' | 'ai-generated' | 'primary';
+  type?:
+    | 'peer-reviewed'
+    | 'documentation'
+    | 'measurement'
+    | 'expert-opinion'
+    | 'ai-generated'
+    | 'primary';
   title?: string;
   authors?: string | string[];
   year?: number | string;
@@ -590,7 +596,8 @@ export class SafetyResearchWorkflow {
     }
 
     // Check claim specificity vs source specificity
-    const hasExactNumber = /\d+\.\d+%/.test(statement) || /exactly\s+\d+/.test(statement.toLowerCase());
+    const hasExactNumber =
+      /\d+\.\d+%/.test(statement) || /exactly\s+\d+/.test(statement.toLowerCase());
     const hasVagueSource = sources.some((s) => {
       const quote = (s as any).quote || '';
       return quote && !/\d+/.test(quote);
@@ -602,7 +609,9 @@ export class SafetyResearchWorkflow {
 
     // Determine source quality
     const hasVerifiableIdentifier = sources.some((s) => s.pmid || s.doi || s.url);
-    const sourceQuality = sources.some((s) => s.type === 'peer-reviewed' || s.pmid) ? 'high' : 'medium';
+    const sourceQuality = sources.some((s) => s.type === 'peer-reviewed' || s.pmid)
+      ? 'high'
+      : 'medium';
     const archivalStatus = sources.some((s) => (s as any).archiveUrl) ? 'archived' : undefined;
     const sourceType = sources.some((s) => (s as any).type === 'primary') ? 'primary' : undefined;
 
@@ -614,10 +623,13 @@ export class SafetyResearchWorkflow {
     });
 
     // Check for conflict documentation
-    const conflictDocumentation = sources.length > 2 ? {
-      sources,
-      synthesisApproach: 'preserved',
-    } : undefined;
+    const conflictDocumentation =
+      sources.length > 2
+        ? {
+            sources,
+            synthesisApproach: 'preserved',
+          }
+        : undefined;
 
     return {
       id,
@@ -683,9 +695,7 @@ export class SafetyResearchWorkflow {
         // Check if evidence from one claim contradicts the other
         const evidence1 = claim1.evidence || [];
         const evidence2 = claim2.evidence || [];
-        const contradictingEvidence = evidence1.filter((e) =>
-          e.contradicts?.includes(claim2.id)
-        );
+        const contradictingEvidence = evidence1.filter((e) => e.contradicts?.includes(claim2.id));
 
         if (contradictingEvidence.length > 0) {
           conflicts.push({
@@ -840,7 +850,11 @@ export class SafetyResearchWorkflow {
    */
   runQualityGate(report: ResearchReport): QualityGateResult {
     const claims = report.claims || report.findings || [];
-    const limitations = Array.isArray(report.limitations) ? report.limitations : (report.limitations ? [report.limitations] : []);
+    const limitations = Array.isArray(report.limitations)
+      ? report.limitations
+      : report.limitations
+        ? [report.limitations]
+        : [];
     const conflicts = report.conflicts || [];
 
     const failedChecks: string[] = [];
@@ -859,16 +873,16 @@ export class SafetyResearchWorkflow {
     }
 
     // Check for sources missing verifiable identifiers
-    const sourcesWithoutIds = claims.flatMap((c) => c.sources || []).filter(
-      (s) => !s.pmid && !s.doi && !s.url && !s.identifier
-    );
+    const sourcesWithoutIds = claims
+      .flatMap((c) => c.sources || [])
+      .filter((s) => !s.pmid && !s.doi && !s.url && !s.identifier);
     if (sourcesWithoutIds.length > 0) {
       failedChecks.push('Sources missing verifiable identifiers');
     }
 
     // Check limitations quality
-    const genericLimitations = limitations.filter((lim) =>
-      /\b(more research|further|additional)\b/i.test(lim) && lim.length < 50
+    const genericLimitations = limitations.filter(
+      (lim) => /\b(more research|further|additional)\b/i.test(lim) && lim.length < 50
     );
     if (genericLimitations.length > 0) {
       warnings.push('Limitations too generic');
@@ -883,7 +897,12 @@ export class SafetyResearchWorkflow {
     // Check confidence vs evidence strength
     const overconfidentClaims = claims.filter((c) => {
       const sources = c.sources || [];
-      const hasWeakSources = sources.every((s) => s.type === 'expert-opinion' || s.type === 'ai-generated' || (s as any).type === 'blog-post');
+      const hasWeakSources = sources.every(
+        (s) =>
+          s.type === 'expert-opinion' ||
+          s.type === 'ai-generated' ||
+          (s as any).type === 'blog-post'
+      );
       return (c as any).confidence === 'certain' && hasWeakSources;
     });
     if (overconfidentClaims.length > 0) {
@@ -901,7 +920,8 @@ export class SafetyResearchWorkflow {
     const verificationRate = claims.length > 0 ? verifiedClaims.length / claims.length : 0;
 
     // Assess limitations quality
-    const limitationsQuality = genericLimitations.length === 0 && limitations.length > 0 ? 'specific' : 'needs-improvement';
+    const limitationsQuality =
+      genericLimitations.length === 0 && limitations.length > 0 ? 'specific' : 'needs-improvement';
 
     // Assess honesty score
     const honestyScore = report.unknowns && report.unknowns.length > 0 ? 'high' : 'medium';
@@ -917,7 +937,11 @@ export class SafetyResearchWorkflow {
     }
 
     // Check fabrication risk
-    const fabricationRisk = failedChecks.includes('Citations not validated') || failedChecks.includes('Sources missing verifiable identifiers') ? 'high' : 'low';
+    const fabricationRisk =
+      failedChecks.includes('Citations not validated') ||
+      failedChecks.includes('Sources missing verifiable identifiers')
+        ? 'high'
+        : 'low';
 
     // Determine meets standard
     const meetsStandard: string[] = [];
@@ -1059,7 +1083,8 @@ export class SafetyResearchWorkflow {
       }
     }
 
-    const fabricationRisk: 'low' | 'medium' | 'high' = suspiciousPatterns.length > 0 ? 'medium' : 'low';
+    const fabricationRisk: 'low' | 'medium' | 'high' =
+      suspiciousPatterns.length > 0 ? 'medium' : 'low';
 
     return { suspiciousPatterns, fabricationRisk };
   }
@@ -1074,7 +1099,9 @@ export class SafetyResearchWorkflow {
       let evidenceLevel: string;
 
       // Determine granular evidence level - check most specific first
-      const hasEmpiricalMeasurement = sources.some((s) => (s as any).type === 'empirical-measurement');
+      const hasEmpiricalMeasurement = sources.some(
+        (s) => (s as any).type === 'empirical-measurement'
+      );
       const hasPeerReviewedStudy = sources.some((s) => (s as any).type === 'peer-reviewed-study');
       const hasPeerReviewed = sources.some((s) => s.type === 'peer-reviewed');
       const hasExpertOpinion = sources.some((s) => s.type === 'expert-opinion');
@@ -1100,13 +1127,20 @@ export class SafetyResearchWorkflow {
       // Use switch instead of dictionary lookup to avoid any weird lookup issues
       const getOrder = (level: string): number => {
         switch (level) {
-          case 'empirical': return 0;
-          case 'peer-reviewed': return 1;
-          case 'documented': return 2;
-          case 'inferred': return 3;
-          case 'expert-opinion': return 3;
-          case 'hypothetical': return 4;
-          default: return 99;
+          case 'empirical':
+            return 0;
+          case 'peer-reviewed':
+            return 1;
+          case 'documented':
+            return 2;
+          case 'inferred':
+            return 3;
+          case 'expert-opinion':
+            return 3;
+          case 'hypothetical':
+            return 4;
+          default:
+            return 99;
         }
       };
 
@@ -1152,7 +1186,10 @@ export class SafetyResearchWorkflow {
       isValid = false;
     }
 
-    const minorityViewsPreserved = analysis.synthesisApproach === 'inclusive' || !analysis.treatment || analysis.treatment !== 'dismissed';
+    const minorityViewsPreserved =
+      analysis.synthesisApproach === 'inclusive' ||
+      !analysis.treatment ||
+      analysis.treatment !== 'dismissed';
 
     const quality = isValid && minorityViewsPreserved ? 'excellent' : 'poor';
 
@@ -1186,7 +1223,8 @@ export class SafetyResearchWorkflow {
     return {
       disagreementLevel,
       interpretation: disagreementLevel === 'high' ? 'uncertainty-signal' : 'consensus',
-      recommendation: disagreementLevel === 'high' ? 'preserve range of estimates' : 'report consensus',
+      recommendation:
+        disagreementLevel === 'high' ? 'preserve range of estimates' : 'report consensus',
     };
   }
 
@@ -1218,8 +1256,8 @@ export class SafetyResearchWorkflow {
 
     // Check if synthesis claims agreement despite disagreeing sources
     if (report.originalFindings && report.synthesis) {
-      const hasDisagreement = report.originalFindings.some((f: string) =>
-        f.includes('false') || f.includes('unknown')
+      const hasDisagreement = report.originalFindings.some(
+        (f: string) => f.includes('false') || f.includes('unknown')
       );
       const claimsAgreement = report.synthesis.toLowerCase().includes('agree');
 
@@ -1340,7 +1378,7 @@ export class SafetyResearchWorkflow {
 
   private _generateClaimId(statement: string | any): string {
     // Simple ID generation - production would use better hashing
-    const text = typeof statement === 'string' ? statement : (statement?.statement || 'unknown');
+    const text = typeof statement === 'string' ? statement : statement?.statement || 'unknown';
     return `claim_${text.substring(0, 20).replace(/\s+/g, '_')}_${Date.now()}`;
   }
 
@@ -1351,9 +1389,14 @@ export class SafetyResearchWorkflow {
 
     // Check for empirical sources
     const hasEmpirical = sources.some(
-      (s) => s.type === 'measurement' || s.type === 'peer-reviewed' || s.type === 'primary' ||
-             (s as any).type === 'empirical-measurement' || (s as any).type === 'peer-reviewed-study' ||
-             s.pmid || s.doi  // Sources with PMID/DOI are typically peer-reviewed
+      (s) =>
+        s.type === 'measurement' ||
+        s.type === 'peer-reviewed' ||
+        s.type === 'primary' ||
+        (s as any).type === 'empirical-measurement' ||
+        (s as any).type === 'peer-reviewed-study' ||
+        s.pmid ||
+        s.doi // Sources with PMID/DOI are typically peer-reviewed
     );
     if (hasEmpirical) {
       return 'empirical';
@@ -1463,7 +1506,8 @@ export class SafetyResearchWorkflow {
 
     // Check for competing claims (e.g., "Method A is better" vs "Method B is better")
     // Extract subjects from statements
-    const subjectPattern = /^([a-z0-9\s]+)\s+(?:is|are|has|shows?|demonstrates?)\s+(?:more|better|faster|superior)/i;
+    const subjectPattern =
+      /^([a-z0-9\s]+)\s+(?:is|are|has|shows?|demonstrates?)\s+(?:more|better|faster|superior)/i;
     const match1 = statement1.match(subjectPattern);
     const match2 = statement2.match(subjectPattern);
 
@@ -1472,9 +1516,11 @@ export class SafetyResearchWorkflow {
       const subject2 = match2[1].trim();
 
       // If different subjects making similar superlative claims, they conflict
-      if (subject1 !== subject2 &&
-          (s1Lower.includes('more') || s1Lower.includes('better') || s1Lower.includes('effective')) &&
-          (s2Lower.includes('more') || s2Lower.includes('better') || s2Lower.includes('effective'))) {
+      if (
+        subject1 !== subject2 &&
+        (s1Lower.includes('more') || s1Lower.includes('better') || s1Lower.includes('effective')) &&
+        (s2Lower.includes('more') || s2Lower.includes('better') || s2Lower.includes('effective'))
+      ) {
         return true;
       }
     }

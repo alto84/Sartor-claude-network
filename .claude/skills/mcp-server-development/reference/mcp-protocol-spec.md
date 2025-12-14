@@ -9,6 +9,7 @@ This document describes the Model Context Protocol as observed in working implem
 **Observed in**: claude-code-mcp-server, research-mcp-server
 
 MCP uses stdio (standard input/output) for communication:
+
 - **Input**: JSON-RPC messages via stdin
 - **Output**: JSON-RPC responses via stdout
 - **Logging**: Server logs via stderr (critical - stdout must be clean)
@@ -41,6 +42,7 @@ All MCP messages use JSON-RPC 2.0 format:
 **Method**: `tools/list`
 
 **Request**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -51,6 +53,7 @@ All MCP messages use JSON-RPC 2.0 format:
 ```
 
 **Response**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -72,10 +75,13 @@ All MCP messages use JSON-RPC 2.0 format:
 ```
 
 **Implementation pattern** (from both servers):
+
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
-    tools: [/* tool definitions */]
+    tools: [
+      /* tool definitions */
+    ],
   };
 });
 ```
@@ -85,6 +91,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 **Method**: `tools/call`
 
 **Request**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -100,6 +107,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 ```
 
 **Success Response**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -116,6 +124,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 ```
 
 **Error Response**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -133,6 +142,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 ```
 
 **Implementation pattern**:
+
 ```typescript
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
@@ -141,18 +151,22 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     // Execute tool
     const result = await executeTool(name, args);
     return {
-      content: [{
-        type: 'text',
-        text: JSON.stringify(result, null, 2)
-      }]
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(result, null, 2),
+        },
+      ],
     };
   } catch (error) {
     return {
-      content: [{
-        type: 'text',
-        text: JSON.stringify({ error: error.message }, null, 2)
-      }],
-      isError: true
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({ error: error.message }, null, 2),
+        },
+      ],
+      isError: true,
     };
   }
 });
@@ -165,6 +179,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 **Observed in**: claude-code-mcp-server (not all servers implement this)
 
 **Request**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -175,6 +190,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ```
 
 **Response**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -197,6 +213,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 **Method**: `resources/read`
 
 **Request**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -209,6 +226,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ```
 
 **Response**:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -233,18 +251,19 @@ Servers declare capabilities during initialization:
 const server = new Server(
   {
     name: 'server-name',
-    version: '1.0.0'
+    version: '1.0.0',
   },
   {
     capabilities: {
-      tools: {},      // Indicates tool support
-      resources: {}   // Indicates resource support (optional)
-    }
+      tools: {}, // Indicates tool support
+      resources: {}, // Indicates resource support (optional)
+    },
   }
 );
 ```
 
 **Observed capabilities**:
+
 - `tools`: All examined servers support tools
 - `resources`: Only claude-code-mcp-server implements resources
 - Other capabilities may exist but were not observed
@@ -254,6 +273,7 @@ const server = new Server(
 Tool schemas use JSON Schema format:
 
 ### Required Fields
+
 - `name`: String identifier for the tool
 - `description`: Human-readable description
 - `inputSchema`: JSON Schema object
@@ -319,11 +339,13 @@ Returns error response with `isError: true`
 ```typescript
 if (!args) {
   return {
-    content: [{
-      type: 'text',
-      text: JSON.stringify({ error: 'No arguments provided' })
-    }],
-    isError: true
+    content: [
+      {
+        type: 'text',
+        text: JSON.stringify({ error: 'No arguments provided' }),
+      },
+    ],
+    isError: true,
   };
 }
 ```
@@ -331,17 +353,20 @@ if (!args) {
 ### Pattern 3: Validation Failure
 
 **Using Zod** (observed in research-mcp-server):
+
 ```typescript
 try {
   const validated = Schema.parse(args);
 } catch (error) {
   if (error instanceof z.ZodError) {
     return {
-      content: [{
-        type: 'text',
-        text: `Validation error: ${error.message}`
-      }],
-      isError: true
+      content: [
+        {
+          type: 'text',
+          text: `Validation error: ${error.message}`,
+        },
+      ],
+      isError: true,
     };
   }
 }
@@ -356,11 +381,13 @@ try {
 } catch (error) {
   const errorMessage = error instanceof Error ? error.message : String(error);
   return {
-    content: [{
-      type: 'text',
-      text: JSON.stringify({ error: errorMessage })
-    }],
-    isError: true
+    content: [
+      {
+        type: 'text',
+        text: JSON.stringify({ error: errorMessage }),
+      },
+    ],
+    isError: true,
   };
 }
 ```
@@ -421,6 +448,7 @@ process.on('unhandledRejection', (reason, promise) => {
 ```
 
 Used for:
+
 - JSON responses (stringified)
 - Markdown formatted output
 - Plain text messages
@@ -458,10 +486,12 @@ Not observed in examined implementations. The SDK may support other types, but t
 ## Limitations of This Reference
 
 This specification is based on two working MCP server implementations:
+
 1. claude-code-mcp-server (orchestrator pattern)
 2. research-mcp-server (plugin-based pattern)
 
 **Not covered**:
+
 - Prompts capability (not observed)
 - Sampling capability (not observed)
 - HTTP or WebSocket transports (only stdio observed)

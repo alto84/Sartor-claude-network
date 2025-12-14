@@ -24,6 +24,7 @@ grep -r "tool_name" .
 ### Step 2: Extract the Pattern
 
 Read the actual implementation:
+
 - Tool definition (schema)
 - Handler implementation
 - Supporting code
@@ -67,6 +68,7 @@ grep -i "limitation\|not tested\|may need" your-new-file.md
 ```
 
 Required:
+
 - 0 matches for prohibited language
 - Multiple evidence markers
 - Clear limitations section
@@ -76,12 +78,14 @@ Required:
 ### Acceptable Sources
 
 ✓ **Acceptable**:
+
 - Actual MCP server implementations you can examine
 - Code you wrote and tested
 - Open source MCP servers with visible code
 - Patterns verified through testing
 
 ✗ **Not Acceptable**:
+
 - Theoretical designs not implemented
 - Examples from AI outputs
 - Patterns you "think would work"
@@ -122,6 +126,7 @@ Required:
 ### When to Add
 
 Only add debugging advice when you have:
+
 1. Encountered the actual issue
 2. Verified the solution works
 3. Tested the fix
@@ -132,6 +137,7 @@ Only add debugging advice when you have:
 ### Issue: [Descriptive Name]
 
 **Symptoms**:
+
 - [Observed behavior]
 - [Error messages]
 - [System state]
@@ -146,6 +152,7 @@ Only add debugging advice when you have:
 [Verified fix]
 
 **Verification**:
+
 - Tested in: [environment]
 - Result: [what happened after fix]
 - Confirmed by: [how you know it works]
@@ -158,6 +165,7 @@ Only add debugging advice when you have:
 Every example must include:
 
 1. **Source attribution**
+
    ```markdown
    **Source**: research-mcp-server/src/plugins/pubmed/pubmed-plugin.ts
    **Lines**: 31-67
@@ -231,6 +239,7 @@ npm test
 **Deprecated**: [List any warnings]
 
 **Pattern changes**:
+
 - [Pattern name]: [What changed]
 
 **Verification**: [How you tested]
@@ -253,6 +262,7 @@ npm test
 
 ```markdown
 <!-- Bad -->
+
 This pattern is the best approach for MCP servers.
 This will scale to millions of requests.
 This architecture is production-ready.
@@ -262,6 +272,7 @@ This architecture is production-ready.
 
 ```markdown
 <!-- Good -->
+
 This pattern is used in research-mcp-server for handling search requests.
 This implementation handled [measured amount] requests in testing.
 This architecture runs in [specific deployment].
@@ -271,6 +282,7 @@ This architecture runs in [specific deployment].
 
 ```markdown
 <!-- Bad -->
+
 This server has 95% test coverage.
 This implementation is highly performant.
 This code quality scores 8/10.
@@ -280,6 +292,7 @@ This code quality scores 8/10.
 
 ```markdown
 <!-- Good -->
+
 This server has 78% test coverage (measured with vitest).
 This implementation processes 100 requests/second (measured with ab).
 This code has 3 linter warnings (measured with eslint).
@@ -289,6 +302,7 @@ This code has 3 linter warnings (measured with eslint).
 
 ```markdown
 <!-- Bad -->
+
 This exceptional implementation guarantees perfect performance.
 This world-class architecture eliminates all errors.
 ```
@@ -297,6 +311,7 @@ This world-class architecture eliminates all errors.
 
 ```markdown
 <!-- Good -->
+
 This implementation demonstrated reliable operation in testing.
 This architecture reduced errors by 40% compared to previous version (measured).
 ```
@@ -384,6 +399,7 @@ grep -i "limitation\|not tested\|may need\|requires" your-new-file.md
 ```
 
 This is evidence-based because:
+
 - ✓ Source code location specified
 - ✓ Actual measurements included
 - ✓ Tested conditions documented

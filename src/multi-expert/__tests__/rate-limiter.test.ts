@@ -381,12 +381,14 @@ describe('TokenBucketRateLimiter', () => {
       const promises = [];
       for (let i = 0; i < 5; i++) {
         promises.push(
-          limiter.submit({
-            id: `req-${i}`,
-            priority: 0,
-            estimatedTokens: 50,
-            callback: async () => `result-${i}`,
-          }).catch(() => null)
+          limiter
+            .submit({
+              id: `req-${i}`,
+              priority: 0,
+              estimatedTokens: 50,
+              callback: async () => `result-${i}`,
+            })
+            .catch(() => null)
         );
       }
 
@@ -498,14 +500,16 @@ describe('TokenBucketRateLimiter', () => {
     test('continues processing after error', async () => {
       const limiter = new TokenBucketRateLimiter();
 
-      await limiter.submit({
-        id: 'error',
-        priority: 0,
-        estimatedTokens: 100,
-        callback: async () => {
-          throw new Error('Failed');
-        },
-      }).catch(() => null);
+      await limiter
+        .submit({
+          id: 'error',
+          priority: 0,
+          estimatedTokens: 100,
+          callback: async () => {
+            throw new Error('Failed');
+          },
+        })
+        .catch(() => null);
 
       // Should still be able to process next request
       const result = await limiter.submit({
@@ -533,7 +537,7 @@ describe('SimpleCostTracker', () => {
     test('tracks cost for multiple experts', () => {
       const tracker = new SimpleCostTracker();
       tracker.trackCost('expert-1', 1000, 0.05);
-      tracker.trackCost('expert-2', 2000, 0.10);
+      tracker.trackCost('expert-2', 2000, 0.1);
       tracker.trackCost('expert-3', 1500, 0.075);
 
       expect(tracker.getTotalCost()).toBeCloseTo(0.225, 3);
@@ -552,7 +556,7 @@ describe('SimpleCostTracker', () => {
     test('tracks tokens separately from cost', () => {
       const tracker = new SimpleCostTracker();
       tracker.trackCost('expert-1', 1000, 0.05);
-      tracker.trackCost('expert-2', 2000, 0.10);
+      tracker.trackCost('expert-2', 2000, 0.1);
 
       expect(tracker.getTotalTokens()).toBe(3000);
     });
@@ -599,7 +603,7 @@ describe('SimpleCostTracker', () => {
     test('resets all tracking', () => {
       const tracker = new SimpleCostTracker();
       tracker.trackCost('expert-1', 1000, 0.05);
-      tracker.trackCost('expert-2', 2000, 0.10);
+      tracker.trackCost('expert-2', 2000, 0.1);
 
       tracker.reset();
 
@@ -613,7 +617,7 @@ describe('SimpleCostTracker', () => {
       tracker.trackCost('expert-1', 1000, 0.05);
 
       const costs = tracker.getCostByExpert();
-      costs.set('expert-2', 0.10);
+      costs.set('expert-2', 0.1);
 
       expect(tracker.getCostByExpert().size).toBe(1);
     });
@@ -621,7 +625,7 @@ describe('SimpleCostTracker', () => {
     test('getTokensByExpert returns token breakdown', () => {
       const tracker = new SimpleCostTracker();
       tracker.trackCost('expert-1', 1000, 0.05);
-      tracker.trackCost('expert-2', 2000, 0.10);
+      tracker.trackCost('expert-2', 2000, 0.1);
 
       const tokens = tracker.getTokensByExpert();
       expect(tokens.get('expert-1')).toBe(1000);

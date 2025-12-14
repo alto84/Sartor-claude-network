@@ -587,7 +587,10 @@ export class VotingSystem {
       const confidenceComponent = (history.avgConfidence / maxConfidence) * 0.2;
 
       // Combine and clamp to 0-1
-      const weight = Math.max(0, Math.min(1, successComponent + scoreComponent + confidenceComponent));
+      const weight = Math.max(
+        0,
+        Math.min(1, successComponent + scoreComponent + confidenceComponent)
+      );
 
       weights.set(history.expertId, weight);
     }
@@ -647,7 +650,8 @@ export class VotingSystem {
     const metrics = this.strategyMetrics[result.method];
     if (metrics) {
       metrics.usage++;
-      metrics.avgConsensus = (metrics.avgConsensus * (metrics.usage - 1) + result.consensusLevel) / metrics.usage;
+      metrics.avgConsensus =
+        (metrics.avgConsensus * (metrics.usage - 1) + result.consensusLevel) / metrics.usage;
       metrics.maxConsensus = Math.max(metrics.maxConsensus, result.consensusLevel);
       metrics.minConsensus = Math.min(metrics.minConsensus, result.consensusLevel);
 
@@ -665,9 +669,7 @@ export class VotingSystem {
       option,
       votes: count,
       percentage: (count / result.totalVotes) * 100,
-      expertIds: votes
-        .filter((vote) => vote.rankings[0] === option)
-        .map((vote) => vote.expertId),
+      expertIds: votes.filter((vote) => vote.rankings[0] === option).map((vote) => vote.expertId),
     }));
   }
 

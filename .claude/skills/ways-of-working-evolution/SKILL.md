@@ -27,46 +27,48 @@ OBSERVE → EVALUATE → PROPOSE → TEST → ADOPT → DOCUMENT
 ### 1. OBSERVE - What's happening?
 
 Collect evidence about current patterns:
+
 - Which skills are being used frequently?
 - Which templates produce good results?
 - What friction points exist?
 - What new capabilities are available but unused?
 
 **Memory Integration:**
+
 ```typescript
 // Search for pattern usage
 memory_search({
-  type: "episodic",
-  tags: ["skill-usage", "pattern-outcome"],
-  min_importance: 0.6
-})
+  type: 'episodic',
+  tags: ['skill-usage', 'pattern-outcome'],
+  min_importance: 0.6,
+});
 
 // Record observations
 memory_create({
   content: JSON.stringify({
-    observation: "Async Task tool enables 10x parallelism",
-    current_usage: "Spawning 3-5 agents at a time",
-    potential: "Could spawn 10-20 for large tasks",
-    evidence: "Skills uplift completed 7 tasks in parallel"
+    observation: 'Async Task tool enables 10x parallelism',
+    current_usage: 'Spawning 3-5 agents at a time',
+    potential: 'Could spawn 10-20 for large tasks',
+    evidence: 'Skills uplift completed 7 tasks in parallel',
   }),
-  type: "semantic",
+  type: 'semantic',
   importance: 0.8,
-  tags: ["ways-of-working", "observation", "capability-gap"]
-})
+  tags: ['ways-of-working', 'observation', 'capability-gap'],
+});
 ```
 
 ### 2. EVALUATE - What's working?
 
 Score current patterns against criteria:
 
-| Criterion | Question |
-|-----------|----------|
-| Effectiveness | Does it achieve the goal? |
-| Efficiency | Could it be faster/cheaper? |
-| Capability Utilization | Are we using available features? |
-| Delegation Quality | Do subagents get enough context? |
-| Learning Persistence | Are learnings being stored? |
-| Bootstrap Quality | Can fresh instances pick this up? |
+| Criterion              | Question                          |
+| ---------------------- | --------------------------------- |
+| Effectiveness          | Does it achieve the goal?         |
+| Efficiency             | Could it be faster/cheaper?       |
+| Capability Utilization | Are we using available features?  |
+| Delegation Quality     | Do subagents get enough context?  |
+| Learning Persistence   | Are learnings being stored?       |
+| Bootstrap Quality      | Can fresh instances pick this up? |
 
 **Anti-Fabrication:** Don't score without evidence. Use actual outcomes.
 
@@ -88,6 +90,7 @@ Generate improvement hypotheses:
 ### 4. TEST - Does it work?
 
 Small-scale validation before adoption:
+
 - Test on non-critical task first
 - Compare outcomes to baseline
 - Collect feedback from affected workflows
@@ -96,6 +99,7 @@ Small-scale validation before adoption:
 ### 5. ADOPT - Roll out the change
 
 If test succeeds:
+
 - Update relevant skill/template files
 - Update SPAWNING_TEMPLATE if affects subagents
 - Update ORCHESTRATOR_BOOTSTRAP if affects coordination
@@ -106,43 +110,48 @@ If test succeeds:
 ```typescript
 memory_create({
   content: JSON.stringify({
-    change: "Increased parallel agent spawning from 5 to 15",
-    rationale: "Async Task tool handles concurrency well",
-    outcome: "50% faster for large tasks, no quality loss",
-    adoption_date: "2025-12-11",
-    affected_files: ["SPAWNING_TEMPLATE.md", "ORCHESTRATOR_BOOTSTRAP.md"]
+    change: 'Increased parallel agent spawning from 5 to 15',
+    rationale: 'Async Task tool handles concurrency well',
+    outcome: '50% faster for large tasks, no quality loss',
+    adoption_date: '2025-12-11',
+    affected_files: ['SPAWNING_TEMPLATE.md', 'ORCHESTRATOR_BOOTSTRAP.md'],
   }),
-  type: "procedural",
+  type: 'procedural',
   importance: 0.9,
-  tags: ["ways-of-working", "evolution", "adopted-change"]
-})
+  tags: ['ways-of-working', 'evolution', 'adopted-change'],
+});
 ```
 
 ## Key Areas to Evolve
 
 ### 1. Agent Spawning Patterns
+
 - How many agents to spawn in parallel?
 - What context to include?
 - When to use background vs blocking?
 - How to collect and synthesize results?
 
 ### 2. Memory Usage Patterns
+
 - What to store vs discard?
 - Importance score calibration
 - Tag taxonomy evolution
 - Cross-session learning effectiveness
 
 ### 3. Delegation Boundaries
+
 - What should orchestrator do directly?
 - What always goes to subagents?
 - How to handle edge cases?
 
 ### 4. Quality Gates
+
 - What checks should be automatic?
 - When to involve human?
 - How to prevent fabrication at scale?
 
 ### 5. Bootstrap Efficiency
+
 - How fast can fresh instance become productive?
 - What context is essential vs nice-to-have?
 - How to minimize token overhead?
@@ -153,11 +162,12 @@ Store these as semantic memories so future sessions check for them:
 
 ```typescript
 memory_create({
-  content: "EVOLUTION TRIGGER: When Claude Code releases new Task tool features, spawn an evolution-audit agent to assess impact on ways of working",
-  type: "semantic",
+  content:
+    'EVOLUTION TRIGGER: When Claude Code releases new Task tool features, spawn an evolution-audit agent to assess impact on ways of working',
+  type: 'semantic',
   importance: 1.0,
-  tags: ["evolution-trigger", "capability-change", "persistent-directive"]
-})
+  tags: ['evolution-trigger', 'capability-change', 'persistent-directive'],
+});
 ```
 
 ## Spawning an Evolution Auditor

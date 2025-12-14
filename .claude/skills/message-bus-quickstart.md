@@ -5,6 +5,7 @@
 The message bus provides inter-agent communication with priority queuing, pub/sub topics, and request/response patterns. It's already implemented (989 lines in `src/subagent/messaging.ts`) and ready to use.
 
 **What it does:**
+
 - Send direct messages between specific agents
 - Broadcast to all active agents
 - Subscribe to topics for filtered updates
@@ -19,7 +20,7 @@ import {
   getGlobalMessageBus,
   MessagePriority,
   MessageType,
-  type AgentMessage
+  type AgentMessage,
 } from './src/subagent/messaging';
 
 const messageBus = getGlobalMessageBus();
@@ -32,13 +33,13 @@ const messageBus = getGlobalMessageBus();
 ```typescript
 // Send a direct message
 const message = messageBus.sendToAgent(
-  'agent-1',              // Your agent ID
-  'agent-2',              // Recipient agent ID
-  'Task Assignment',      // Subject
-  { task: 'review-pr' },  // Body (any data)
+  'agent-1', // Your agent ID
+  'agent-2', // Recipient agent ID
+  'Task Assignment', // Subject
+  { task: 'review-pr' }, // Body (any data)
   {
-    priority: MessagePriority.HIGH,  // Optional: HIGH, NORMAL, LOW, CRITICAL
-    requiresAck: true                 // Optional: require acknowledgment
+    priority: MessagePriority.HIGH, // Optional: HIGH, NORMAL, LOW, CRITICAL
+    requiresAck: true, // Optional: require acknowledgment
   }
 );
 
@@ -72,22 +73,23 @@ const broadcast = messageBus.broadcastToAll(
 ```typescript
 // Subscribe to a topic
 messageBus.subscribe(
-  'agent-3',              // Your agent ID
-  'code-reviews',         // Topic name
-  (message) => {          // Optional filter
+  'agent-3', // Your agent ID
+  'code-reviews', // Topic name
+  (message) => {
+    // Optional filter
     return message.metadata?.language === 'typescript';
   }
 );
 
 // Publish to topic
 messageBus.publishToTopic(
-  'agent-1',              // Your agent ID
-  'code-reviews',         // Topic name
-  'New PR Ready',         // Subject
-  { prId: 123 },          // Body
+  'agent-1', // Your agent ID
+  'code-reviews', // Topic name
+  'New PR Ready', // Subject
+  { prId: 123 }, // Body
   {
     priority: MessagePriority.NORMAL,
-    metadata: { language: 'typescript' }
+    metadata: { language: 'typescript' },
   }
 );
 
@@ -97,6 +99,7 @@ messageBus.publishToTopic(
 ## When to Use
 
 **Use the message bus when:**
+
 - Agents need to coordinate on shared tasks
 - Broadcasting status updates to all agents
 - Publishing events that multiple agents care about (topics)
@@ -104,6 +107,7 @@ messageBus.publishToTopic(
 - Priority matters (critical messages jump the queue)
 
 **Don't use when:**
+
 - Simple function calls within same agent suffice
 - Synchronous return values are needed immediately (use `sendRequest()` instead)
 - Communicating with external systems (use HTTP/IPC)
@@ -112,24 +116,30 @@ messageBus.publishToTopic(
 ## Advanced Features
 
 **Request/Response:**
+
 ```typescript
 // Send request and wait for response
 const response = await messageBus.sendRequest(
-  'agent-1', 'agent-2', 'Get Status', {},
-  { timeout: 5000 }  // 5 second timeout
+  'agent-1',
+  'agent-2',
+  'Get Status',
+  {},
+  { timeout: 5000 } // 5 second timeout
 );
 ```
 
 **Check Message History:**
+
 ```typescript
 // Get messages sent by an agent
 const history = messageBus.getHistory({
   senderId: 'agent-1',
-  limit: 10
+  limit: 10,
 });
 ```
 
 **View Statistics:**
+
 ```typescript
 const stats = messageBus.getStats();
 // Returns: messagesSent, messagesReceived, byType, byPriority, etc.

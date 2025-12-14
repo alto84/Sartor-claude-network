@@ -396,10 +396,7 @@ export class SubagentBootstrap {
     const memories: BootstrapMemory[] = [];
 
     this.memoriesCache.forEach((memory) => {
-      if (
-        memory.importance >= config.minImportance &&
-        config.memoryTypes.includes(memory.type)
-      ) {
+      if (memory.importance >= config.minImportance && config.memoryTypes.includes(memory.type)) {
         memories.push(memory);
       }
     });
@@ -466,7 +463,11 @@ export class SubagentBootstrap {
     const roleCapabilities: Record<AgentRole, AgentCapability[]> = {
       [AgentRole.PLANNER]: [
         { name: 'task_decomposition', description: 'Break down complex tasks', proficiency: 0.9 },
-        { name: 'dependency_analysis', description: 'Identify task dependencies', proficiency: 0.85 },
+        {
+          name: 'dependency_analysis',
+          description: 'Identify task dependencies',
+          proficiency: 0.85,
+        },
         { name: 'resource_allocation', description: 'Assign tasks to agents', proficiency: 0.8 },
       ],
       [AgentRole.IMPLEMENTER]: [

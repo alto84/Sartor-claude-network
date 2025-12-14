@@ -72,6 +72,7 @@ graph TB
 **Purpose**: Central coordination hub for all agent connections
 
 **Key Responsibilities**:
+
 - WebSocket connection management
 - HTTP REST API endpoints
 - Tool registration and discovery
@@ -79,6 +80,7 @@ graph TB
 - Health monitoring and metrics
 
 **Interfaces**:
+
 ```python
 # WebSocket endpoint
 ws://localhost:8080/mcp
@@ -96,6 +98,7 @@ GET  /mcp/metrics       # Performance metrics
 **Purpose**: Agent-side library for MCP connection
 
 **Key Features**:
+
 - Auto-discovery of MCP servers
 - WebSocket connection with reconnection logic
 - Tool execution framework
@@ -103,6 +106,7 @@ GET  /mcp/metrics       # Performance metrics
 - Identity management
 
 **Usage Pattern**:
+
 ```python
 from mcp.gateway_client import GatewayClient
 
@@ -121,6 +125,7 @@ async with GatewayClient() as client:
 **Tool Categories**:
 
 #### Communication Tools (5)
+
 - `message_send` - Direct agent messaging
 - `message_broadcast` - Network-wide announcements
 - `message_subscribe` - Topic subscriptions
@@ -128,6 +133,7 @@ async with GatewayClient() as client:
 - `message_acknowledge` - Receipt confirmation
 
 #### Coordination Tools (7)
+
 - `task_create` - Create new tasks
 - `task_list` - View available tasks
 - `task_claim` - Claim task ownership
@@ -137,21 +143,25 @@ async with GatewayClient() as client:
 - `consensus_vote` - Cast vote on proposal
 
 #### Skill Tools (3)
+
 - `skill_list` - Browse available skills
 - `skill_execute` - Run skill by name
 - `skill_compose` - Chain multiple skills
 
 #### Knowledge Tools (3)
+
 - `knowledge_query` - Search knowledge base
 - `knowledge_add` - Add new knowledge
 - `experience_share` - Share learned patterns
 
 #### Monitoring Tools (3)
+
 - `agent_status` - Check agent health
 - `network_health` - System-wide status
 - `performance_metrics` - Resource usage
 
 #### Evolution Tools (2)
+
 - `improvement_propose` - Suggest enhancements
 - `sandbox_test` - Test in isolation
 
@@ -162,6 +172,7 @@ async with GatewayClient() as client:
 **Discovery Methods**:
 
 1. **Local Check** (5-10ms)
+
    ```python
    endpoints = [
        "http://localhost:8080/mcp",
@@ -171,6 +182,7 @@ async with GatewayClient() as client:
    ```
 
 2. **Network Scan** (2-5 seconds)
+
    ```python
    # Scan local subnet
    for ip in range(1, 255):
@@ -178,6 +190,7 @@ async with GatewayClient() as client:
    ```
 
 3. **Firebase Registry** (100-500ms)
+
    ```python
    # Query cloud registry
    servers = firebase.get("/mcp_servers")
@@ -268,6 +281,7 @@ Agent                  MCP Server            Tool Handler
 **Purpose**: Cloud persistence and cross-internet connectivity
 
 **Schema**:
+
 ```javascript
 {
   "mcp_servers": {
@@ -303,6 +317,7 @@ Agent                  MCP Server            Tool Handler
 **Purpose**: Code repository and knowledge storage
 
 **Structure**:
+
 ```
 /Sartor-claude-network/
 ├── /claude-network/
@@ -314,11 +329,13 @@ Agent                  MCP Server            Tool Handler
 ### Local Network Integration
 
 **Network Requirements**:
+
 - Port 8080 (configurable) for MCP server
 - WebSocket support for real-time communication
 - Optional: mDNS/Bonjour for auto-discovery
 
 **Security Considerations**:
+
 - Authentication via API keys (production)
 - Rate limiting per agent
 - SSL/TLS for internet exposure
@@ -328,21 +345,21 @@ Agent                  MCP Server            Tool Handler
 
 ### Latency Metrics
 
-| Operation | Local Network | Internet | Firebase Relay |
-|-----------|--------------|----------|----------------|
-| Discovery | 5-10ms | 100-500ms | 200-1000ms |
-| Connection | <10ms | 50-200ms | 100-500ms |
-| Tool Execution | 10-50ms | 100-500ms | 200-1000ms |
-| Message Send | <10ms | 50-200ms | 100-500ms |
+| Operation      | Local Network | Internet  | Firebase Relay |
+| -------------- | ------------- | --------- | -------------- |
+| Discovery      | 5-10ms        | 100-500ms | 200-1000ms     |
+| Connection     | <10ms         | 50-200ms  | 100-500ms      |
+| Tool Execution | 10-50ms       | 100-500ms | 200-1000ms     |
+| Message Send   | <10ms         | 50-200ms  | 100-500ms      |
 
 ### Throughput Capabilities
 
-| Metric | Development | Production | Scaled |
-|--------|------------|------------|---------|
-| Concurrent Connections | 10-50 | 100-500 | 1000+ |
-| Messages/Second | 100 | 1000 | 10,000+ |
-| Tool Executions/Second | 50 | 500 | 5000+ |
-| Memory Usage | 50MB | 200MB | 1GB+ |
+| Metric                 | Development | Production | Scaled  |
+| ---------------------- | ----------- | ---------- | ------- |
+| Concurrent Connections | 10-50       | 100-500    | 1000+   |
+| Messages/Second        | 100         | 1000       | 10,000+ |
+| Tool Executions/Second | 50          | 500        | 5000+   |
+| Memory Usage           | 50MB        | 200MB      | 1GB+    |
 
 ### Scalability Patterns
 
@@ -370,13 +387,13 @@ Agent → MCP Server
 ### Authorization Matrix
 
 | Tool Category | Anonymous | Authenticated | Admin |
-|--------------|-----------|---------------|--------|
-| Communication | ❌ | ✅ | ✅ |
-| Coordination | ❌ | ✅ | ✅ |
-| Skills | ❌ | ✅ | ✅ |
-| Knowledge | ❌ | ✅ | ✅ |
-| Monitoring | ❌ | Read-only | ✅ |
-| Evolution | ❌ | ❌ | ✅ |
+| ------------- | --------- | ------------- | ----- |
+| Communication | ❌        | ✅            | ✅    |
+| Coordination  | ❌        | ✅            | ✅    |
+| Skills        | ❌        | ✅            | ✅    |
+| Knowledge     | ❌        | ✅            | ✅    |
+| Monitoring    | ❌        | Read-only     | ✅    |
+| Evolution     | ❌        | ❌            | ✅    |
 
 ### Security Best Practices
 
@@ -456,6 +473,7 @@ CRITICAL: System-wide problems
 ### Adding New Tools
 
 1. **Define Tool Specification**:
+
 ```python
 # tools/custom_tool.py
 TOOL_SPEC = {
@@ -469,6 +487,7 @@ TOOL_SPEC = {
 ```
 
 2. **Implement Handler**:
+
 ```python
 async def execute_custom_tool(params):
     # Tool implementation
@@ -476,6 +495,7 @@ async def execute_custom_tool(params):
 ```
 
 3. **Register with Server**:
+
 ```python
 tool_registry.register("custom_tool", TOOL_SPEC, execute_custom_tool)
 ```
@@ -485,6 +505,7 @@ tool_registry.register("custom_tool", TOOL_SPEC, execute_custom_tool)
 Beyond WebSocket and HTTP:
 
 1. **gRPC Transport**:
+
 ```python
 class GRPCTransport(Transport):
     async def connect(self):
@@ -493,6 +514,7 @@ class GRPCTransport(Transport):
 ```
 
 2. **Message Queue Transport**:
+
 ```python
 class RabbitMQTransport(Transport):
     async def connect(self):
@@ -527,6 +549,7 @@ class ExamplePlugin:
 ```
 
 Best for:
+
 - Development and testing
 - Small teams (<10 agents)
 - Local network only
@@ -538,6 +561,7 @@ Best for:
 ```
 
 Best for:
+
 - Production environments
 - Medium scale (10-100 agents)
 - High availability required
@@ -549,6 +573,7 @@ Best for:
 ```
 
 Best for:
+
 - Global deployments
 - Large scale (100+ agents)
 - Multi-region requirements
@@ -557,13 +582,13 @@ Best for:
 
 ### Common Issues
 
-| Issue | Cause | Solution |
-|-------|-------|----------|
-| Connection refused | Server not running | Start MCP server |
-| WebSocket timeout | Firewall blocking | Open port 8080 |
-| Tools not loading | Version mismatch | Update gateway.yaml |
-| High latency | Network congestion | Use local server |
-| Memory growth | Connection leak | Restart server |
+| Issue              | Cause              | Solution            |
+| ------------------ | ------------------ | ------------------- |
+| Connection refused | Server not running | Start MCP server    |
+| WebSocket timeout  | Firewall blocking  | Open port 8080      |
+| Tools not loading  | Version mismatch   | Update gateway.yaml |
+| High latency       | Network congestion | Use local server    |
+| Memory growth      | Connection leak    | Restart server      |
 
 ### Debug Checklist
 
@@ -576,18 +601,21 @@ Best for:
 ## Future Roadmap
 
 ### Version 1.1 (Q1 2025)
+
 - [ ] GraphQL API support
 - [ ] Advanced caching with Redis
 - [ ] Tool versioning system
 - [ ] Agent capability negotiation
 
 ### Version 1.2 (Q2 2025)
+
 - [ ] Federation protocol
 - [ ] End-to-end encryption
 - [ ] Tool marketplace
 - [ ] Performance profiling
 
 ### Version 2.0 (Q3 2025)
+
 - [ ] Multi-protocol support (gRPC, MQTT)
 - [ ] Advanced consensus mechanisms
 - [ ] Machine learning integration
@@ -638,6 +666,6 @@ WS   /mcp                 # WebSocket connection
 
 ---
 
-*System Overview Version: 1.0*
-*Last Updated: 2025-11-03*
-*MCP Protocol Version: 1.0*
+_System Overview Version: 1.0_
+_Last Updated: 2025-11-03_
+_MCP Protocol Version: 1.0_

@@ -24,6 +24,7 @@ After thorough investigation of the codebase (~44,000 LOC across 86 TypeScript f
 | Multi-Expert | "IN PROGRESS" | ~30% functional | Voting logic exists, no real LLM integration |
 
 **Critical Gaps:**
+
 1. **No working memory persistence** - Agents cannot communicate across sessions
 2. **No agent-to-agent messaging** - "Mail system" does not exist
 3. **No validation enforcement** - Building without evidence-based checks
@@ -43,20 +44,24 @@ After thorough investigation of the codebase (~44,000 LOC across 86 TypeScript f
 ### 1.1 Memory System Deep Dive
 
 **What Exists:**
+
 - `src/mcp/file-store.ts` (268 LOC) - Working JSON file persistence
 - `src/mcp/memory-server.ts` (218 LOC) - Working MCP stdio server with 4 tools
 - `src/memory/memory-schema.ts` (1,192 LOC) - Comprehensive type definitions
 - `src/memory/hot-tier.ts`, `warm-tier.ts`, `cold-tier.ts` - Skeleton implementations
 
 **What Works:**
+
 ```
 MCP Server (stdio) → FileStore → data/memories.json
 ```
+
 - Can create, get, search, stats memories
 - Persists to JSON file
 - Works with Claude Desktop via MCP
 
 **What Doesn't Work:**
+
 - Firebase RTDB integration (declared, not implemented)
 - Firestore warm tier (schema exists, no connection)
 - GitHub cold tier (Octokit in package.json, not used)
@@ -64,6 +69,7 @@ MCP Server (stdio) → FileStore → data/memories.json
 - Memory decay/promotion (algorithms exist, not running)
 
 **Evidence:**
+
 - `data/memories.json` file not found (never created)
 - Firebase credentials not configured
 - No actual Firebase imports in hot-tier.ts implementation
@@ -71,18 +77,21 @@ MCP Server (stdio) → FileStore → data/memories.json
 ### 1.2 Messaging System Deep Dive
 
 **What Exists:**
+
 - `src/subagent/messaging.ts` (878 LOC) - Type definitions and interfaces
 - `MessagePriority`, `MessageType`, `DeliveryStatus` enums
 - `AgentMessage` interface with full schema
 - `TopicSubscription` for pub/sub
 
 **What Works:**
+
 - Nothing functional - all interfaces, no implementation
 - Cannot send messages between agents
 - No queue processing
 - No delivery mechanism
 
 **What's Missing for "Mail System":**
+
 1. Persistent message storage (use memory system)
 2. Inbox/outbox per agent
 3. Message routing
@@ -92,6 +101,7 @@ MCP Server (stdio) → FileStore → data/memories.json
 ### 1.3 Skills Library Analysis
 
 **In Sartor-Claude-Network:**
+
 ```
 .claude/skills/
 ├── agent-bootstrap.md      # Documentation only
@@ -109,6 +119,7 @@ src/skills/
 ```
 
 **In Public Skills Repo (alto84/Sartor-Public-Claude-Skills):**
+
 ```
 skills/
 ├── safety-research-workflow/     # Full skill with references, templates, examples
@@ -121,6 +132,7 @@ skills/
 ```
 
 **Gap:**
+
 - Public skills are comprehensive with validation scripts
 - Network skills are stub implementations
 - No mechanism to load/invoke skills at runtime
@@ -200,18 +212,18 @@ The mail system enables agent-to-agent communication via persistent memory:
 ```typescript
 // Mail message stored in memory system
 interface MailMessage {
-  id: string;                    // Unique message ID
+  id: string; // Unique message ID
   type: 'TASK' | 'RESPONSE' | 'NOTIFICATION' | 'QUERY';
 
   // Addressing
-  from: string;                  // Sender agent ID
-  to: string;                    // Recipient agent ID (or '*' for broadcast)
-  replyTo?: string;              // Original message ID for responses
+  from: string; // Sender agent ID
+  to: string; // Recipient agent ID (or '*' for broadcast)
+  replyTo?: string; // Original message ID for responses
 
   // Content
   subject: string;
   body: any;
-  attachments?: string[];        // Memory IDs of related data
+  attachments?: string[]; // Memory IDs of related data
 
   // Task delegation
   subtask?: {
@@ -246,6 +258,7 @@ interface MailTools {
 ```
 
 **Storage Strategy:**
+
 - Active messages → Hot Tier (Firebase RTDB for real-time)
 - Completed messages → Warm Tier (Firestore for search)
 - Archived messages → Cold Tier (GitHub for patterns)
@@ -314,6 +327,7 @@ Every agent spawned MUST complete this sequence:
 ### 3.1 Agent Role Definitions
 
 Each agent has:
+
 - **Role**: Primary function
 - **Scope**: What they CAN and CANNOT do
 - **Skills**: Which skills they must have injected
@@ -409,20 +423,25 @@ When the Executive spawns an agent, use this template:
 ## Mandatory Skills
 
 ### Skill: Evidence-Based Validation (ALWAYS INCLUDED)
+
 {FULL TEXT OF evidence-based-validation/SKILL.md}
 
 ### Skill: Evidence-Based Engineering (ALWAYS INCLUDED)
+
 {FULL TEXT OF evidence-based-engineering/SKILL.md}
 
 ### Skill: {Role-Specific Skill}
+
 {FULL TEXT OF relevant skill}
 
 ## Scope Constraints
 
 **CAN:**
+
 - {List from taxonomy}
 
 **CANNOT:**
+
 - {List from taxonomy}
 
 ## Task Assignment
@@ -442,6 +461,7 @@ When the Executive spawns an agent, use this template:
 ## Completion Protocol
 
 Before marking complete:
+
 1. Self-audit using evidence-based-validation rules
 2. Ensure all claims have evidence
 3. Report limitations and unknowns
@@ -459,6 +479,7 @@ Before marking complete:
 #### A.1: Fix Memory System
 
 **Tasks:**
+
 1. **Verify file-store works** (Tester)
    - Run MCP server: `npm run mcp`
    - Test all 4 tools: memory_create, memory_get, memory_search, memory_stats
@@ -483,6 +504,7 @@ Before marking complete:
    - Validation: Auditor verifies with evidence
 
 **Deliverables:**
+
 - [ ] Memory system connects to all 3 backends (measured, not claimed)
 - [ ] Latency tests pass (actual measurements provided)
 - [ ] MCP tools work with real persistence
@@ -490,6 +512,7 @@ Before marking complete:
 #### A.2: Integrate Validation Skills
 
 **Tasks:**
+
 1. **Copy public skills to network** (Integrator)
    - Copy from `/tmp/public-skills/skills/` to `.claude/skills/`
    - Preserve full directory structure
@@ -506,6 +529,7 @@ Before marking complete:
    - Document bypass protocol (requires explicit approval)
 
 **Deliverables:**
+
 - [ ] All 7 public skills copied to network
 - [ ] Validation hook blocks fabricated claims
 - [ ] Every agent receives validation skills
@@ -517,6 +541,7 @@ Before marking complete:
 #### B.1: Implement Mail Tools
 
 **Tasks:**
+
 1. **Design mail schema** (Planner)
    - Define MailMessage interface
    - Define storage strategy (which tier for what)
@@ -543,6 +568,7 @@ Before marking complete:
    - Track delegation chain
 
 **Deliverables:**
+
 - [ ] 6 mail MCP tools implemented
 - [ ] Messages persist in memory system
 - [ ] Subtask delegation works
@@ -550,6 +576,7 @@ Before marking complete:
 #### B.2: Test Multi-Agent Communication
 
 **Tasks:**
+
 1. **Write communication tests** (Tester)
    - Test send/receive between agents
    - Test broadcast messages
@@ -563,6 +590,7 @@ Before marking complete:
    - Implementer reports to Executive
 
 **Deliverables:**
+
 - [ ] Tests demonstrate working communication (evidence)
 - [ ] Measured latency data provided
 - [ ] Full delegation chain tested
@@ -574,6 +602,7 @@ Before marking complete:
 #### C.1: Update Executive System
 
 **Tasks:**
+
 1. **Implement agent spawning** (Implementer)
    - Use Task tool with spawning template
    - Inject mandatory skills
@@ -590,6 +619,7 @@ Before marking complete:
    - Require audit for significant changes
 
 **Deliverables:**
+
 - [ ] Executive can spawn all 10 agent types
 - [ ] Task queue persists in memory
 - [ ] Quality gates enforce validation
@@ -597,6 +627,7 @@ Before marking complete:
 #### C.2: Test 10-Agent Workflow
 
 **Tasks:**
+
 1. **Design test scenario** (Planner)
    - Multi-step task requiring multiple agents
    - Include validation checkpoints
@@ -614,6 +645,7 @@ Before marking complete:
    - Document actual vs expected behavior
 
 **Deliverables:**
+
 - [ ] 10-agent workflow demonstrated
 - [ ] All handoffs logged and traceable
 - [ ] Validation passes (with evidence)
@@ -625,6 +657,7 @@ Before marking complete:
 #### D.1: Skill Loading Infrastructure
 
 **Tasks:**
+
 1. **Create skill loader** (Implementer)
    - Read SKILL.md files
    - Parse frontmatter for metadata
@@ -636,6 +669,7 @@ Before marking complete:
    - Execute validation scripts
 
 **Deliverables:**
+
 - [ ] Skills can be loaded at runtime
 - [ ] Reference materials accessible
 - [ ] Validation scripts executable
@@ -674,6 +708,7 @@ For each of the 7 skills:
    - Citation management
 
 **Deliverables:**
+
 - [ ] All 7 skills integrated and testable
 - [ ] Each skill has usage example
 - [ ] Validation skills actively enforced
@@ -733,17 +768,20 @@ Every piece of work MUST pass through validation:
 Any output containing these patterns is automatically rejected:
 
 **CRITICAL (Hard Block):**
+
 - "perfect", "flawless", "100%", "guaranteed"
 - "best in class", "world-class", "industry-leading"
 - Scores >80% without measurement data
 - "X times better" without baseline
 
 **HIGH (Requires Evidence):**
+
 - "revolutionary", "breakthrough", "game-changing"
 - "dramatically improved", "exponentially better"
 - Any percentage claim without methodology
 
 **MEDIUM (Warning):**
+
 - "excellent", "outstanding", "exceptional"
 - "highly optimized", "extremely efficient"
 - Vague superlatives without specifics
@@ -773,6 +811,7 @@ Use: "Core features implemented. Tested: [list]. Untested: [list]. Production re
 ### 6.1 Phase A Success (Foundation)
 
 **Measured Requirements:**
+
 - [ ] Memory create/get/search latency measured (report actual numbers)
 - [ ] Firebase RTDB connected (verified by test, not claimed)
 - [ ] Firestore connected (verified by test, not claimed)
@@ -782,6 +821,7 @@ Use: "Core features implemented. Tested: [list]. Untested: [list]. Production re
 ### 6.2 Phase B Success (Communication)
 
 **Measured Requirements:**
+
 - [ ] Mail send/receive works (demonstrated)
 - [ ] Message latency measured (report actual numbers)
 - [ ] Subtask delegation works (demonstrated)
@@ -790,6 +830,7 @@ Use: "Core features implemented. Tested: [list]. Untested: [list]. Production re
 ### 6.3 Phase C Success (Orchestration)
 
 **Measured Requirements:**
+
 - [ ] All 10 agent types can be spawned
 - [ ] Each agent completes onboarding sequence
 - [ ] Multi-agent workflow executed successfully
@@ -798,6 +839,7 @@ Use: "Core features implemented. Tested: [list]. Untested: [list]. Production re
 ### 6.4 Phase D Success (Skills)
 
 **Measured Requirements:**
+
 - [ ] All 7 skills loadable at runtime
 - [ ] Validation skills actively reject fabricated claims
 - [ ] Each skill has working example
@@ -809,20 +851,20 @@ Use: "Core features implemented. Tested: [list]. Untested: [list]. Production re
 
 ### 7.1 Technical Risks
 
-| Risk | Impact | Likelihood | Mitigation |
-|------|--------|------------|------------|
-| Firebase connection fails | High | Medium | File-store fallback always available |
-| Validation too strict | Medium | Medium | Override with explicit justification |
-| Agent spawning overhead | Medium | Low | Optimize template injection |
-| Memory latency exceeds targets | High | Medium | Tier selection based on actual measurement |
+| Risk                           | Impact | Likelihood | Mitigation                                 |
+| ------------------------------ | ------ | ---------- | ------------------------------------------ |
+| Firebase connection fails      | High   | Medium     | File-store fallback always available       |
+| Validation too strict          | Medium | Medium     | Override with explicit justification       |
+| Agent spawning overhead        | Medium | Low        | Optimize template injection                |
+| Memory latency exceeds targets | High   | Medium     | Tier selection based on actual measurement |
 
 ### 7.2 Process Risks
 
-| Risk | Impact | Likelihood | Mitigation |
-|------|--------|------------|------------|
-| Validation slows development | Medium | High | Accept slower pace for quality |
-| Agents ignore validation skills | High | Medium | Mandatory injection, cannot bypass |
-| Fabrication creeps back in | High | Medium | Continuous audit, pattern detection |
+| Risk                            | Impact | Likelihood | Mitigation                          |
+| ------------------------------- | ------ | ---------- | ----------------------------------- |
+| Validation slows development    | Medium | High       | Accept slower pace for quality      |
+| Agents ignore validation skills | High   | Medium     | Mandatory injection, cannot bypass  |
+| Fabrication creeps back in      | High   | Medium     | Continuous audit, pattern detection |
 
 ---
 
@@ -840,10 +882,12 @@ Use: "Core features implemented. Tested: [list]. Untested: [list]. Production re
 **Task:** Verify Memory System Functionality
 
 **Agent Assignment:**
+
 - Auditor: Read-only investigation
 - Tester: Execute verification tests
 
 **Expected Output:**
+
 - Actual latency measurements
 - List of what works vs what doesn't
 - Evidence for all claims
@@ -853,6 +897,7 @@ Use: "Core features implemented. Tested: [list]. Untested: [list]. Production re
 ## Appendix A: File Locations
 
 ### Current Network
+
 ```
 /home/alton/Sartor-claude-network/
 ├── .claude/
@@ -870,6 +915,7 @@ Use: "Core features implemented. Tested: [list]. Untested: [list]. Production re
 ```
 
 ### Public Skills
+
 ```
 /tmp/public-skills/skills/
 ├── evidence-based-validation/   # PRIORITY - copy first
@@ -891,29 +937,34 @@ Use this for every task completion:
 ## Validation Checklist for Task: {TASK_ID}
 
 ### Evidence Requirements
+
 - [ ] All quantitative claims have measurement data
 - [ ] Methodology documented for any metrics
 - [ ] Limitations explicitly stated
 - [ ] Unknowns acknowledged
 
 ### Language Check
+
 - [ ] No prohibited patterns (perfect, flawless, best-in-class)
 - [ ] No fabricated scores
 - [ ] No unsupported comparisons
 - [ ] Uncertainty expressed appropriately
 
 ### Deliverable Verification
+
 - [ ] Deliverable matches task description
 - [ ] Success criteria addressed
 - [ ] Evidence provided for each claim
 - [ ] Limitations documented
 
 ### Memory Update
+
 - [ ] Learnings stored as PROCEDURAL memory
 - [ ] Relevant patterns identified
 - [ ] Failures documented for learning
 
 ### Sign-off
+
 - [ ] Self-audit completed by: {AGENT_ID}
 - [ ] Validator review by: {VALIDATOR_ID}
 - [ ] Executive approval by: {EXECUTIVE_ID}
@@ -926,6 +977,7 @@ Use this for every task completion:
 **To proceed:** User must approve this plan or request modifications.
 
 **Estimated effort:** Cannot estimate time without measurement - this depends on:
+
 - Current codebase state (needs verification)
 - Firebase/GitHub credential availability
 - Integration complexity (unknown until attempted)

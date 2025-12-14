@@ -56,10 +56,7 @@ describe('Sandbox', () => {
         isolateErrors: false,
       });
 
-      const result = await sandbox.executeCode(
-        'console.log("result")',
-        'javascript'
-      );
+      const result = await sandbox.executeCode('console.log("result")', 'javascript');
 
       expect(result).toContain('result');
       sandbox.cleanup();
@@ -86,10 +83,7 @@ describe('Sandbox', () => {
         isolateErrors: true,
       });
 
-      const result = await sandbox.executeCode(
-        'throw new Error("test error")',
-        'javascript'
-      );
+      const result = await sandbox.executeCode('throw new Error("test error")', 'javascript');
 
       // With error isolation, should return null instead of throwing
       expect(result).toBeNull();
@@ -105,9 +99,7 @@ describe('Sandbox', () => {
         isolateErrors: false,
       });
 
-      await expect(
-        sandbox.executeCode('process.exit(1)', 'javascript')
-      ).rejects.toThrow();
+      await expect(sandbox.executeCode('process.exit(1)', 'javascript')).rejects.toThrow();
 
       sandbox.cleanup();
     });
@@ -270,9 +262,9 @@ describe('Sandbox', () => {
 
       sandbox.cleanup();
 
-      await expect(
-        sandbox.executeCode('console.log("test")', 'javascript')
-      ).rejects.toThrow('not active');
+      await expect(sandbox.executeCode('console.log("test")', 'javascript')).rejects.toThrow(
+        'not active'
+      );
     });
 
     test('finalizes trace on cleanup', () => {
@@ -520,10 +512,9 @@ describe('SandboxManager', () => {
 
 describe('sandboxedExecute', () => {
   test('executes code in one-off sandbox', async () => {
-    const { result, trace } = await sandboxedExecute(
-      'console.log("one-off test")',
-      { language: 'javascript' }
-    );
+    const { result, trace } = await sandboxedExecute('console.log("one-off test")', {
+      language: 'javascript',
+    });
 
     expect(result).toContain('one-off test');
     expect(trace).toBeTruthy();
@@ -531,28 +522,21 @@ describe('sandboxedExecute', () => {
   });
 
   test('applies custom timeout', async () => {
-    const { result } = await sandboxedExecute(
-      'console.log("custom timeout")',
-      { timeout: 5000 }
-    );
+    const { result } = await sandboxedExecute('console.log("custom timeout")', { timeout: 5000 });
 
     expect(result).toContain('custom timeout');
   });
 
   test('applies custom memory limit', async () => {
-    const { result } = await sandboxedExecute(
-      'console.log("custom memory")',
-      { maxMemory: 256 }
-    );
+    const { result } = await sandboxedExecute('console.log("custom memory")', { maxMemory: 256 });
 
     expect(result).toContain('custom memory');
   });
 
   test('can disable tracing', async () => {
-    const { result, trace } = await sandboxedExecute(
-      'console.log("no trace")',
-      { captureTrace: false }
-    );
+    const { result, trace } = await sandboxedExecute('console.log("no trace")', {
+      captureTrace: false,
+    });
 
     expect(result).toContain('no trace');
     expect(trace).toBeUndefined();
@@ -665,10 +649,7 @@ describe('integration tests', () => {
     });
 
     // Execute tasks
-    const result1 = await sandbox1.executeCode(
-      'console.log("workflow 1")',
-      'javascript'
-    );
+    const result1 = await sandbox1.executeCode('console.log("workflow 1")', 'javascript');
 
     const result2 = await sandbox2.executeCommand('echo', {
       args: ['workflow 2'],
@@ -711,10 +692,7 @@ describe('integration tests', () => {
     });
 
     // Execute successful task
-    const success = await sandbox.executeCode(
-      'console.log("success")',
-      'javascript'
-    );
+    const success = await sandbox.executeCode('console.log("success")', 'javascript');
 
     // Execute failing task
     const failure = await sandbox.executeCode(
@@ -723,10 +701,7 @@ describe('integration tests', () => {
     );
 
     // Execute another successful task
-    const success2 = await sandbox.executeCode(
-      'console.log("recovered")',
-      'javascript'
-    );
+    const success2 = await sandbox.executeCode('console.log("recovered")', 'javascript');
 
     expect(success).toBeTruthy();
     expect(failure).toBeNull(); // Error isolated

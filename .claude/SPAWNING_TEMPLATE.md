@@ -17,6 +17,7 @@ This marker file exempts subagents from the orchestrator's delegation enforcemen
 Environment variables set with `export` do NOT persist across separate bash commands in Claude Code. Each command runs in a fresh shell. The marker file persists on disk.
 
 **Implementation Pattern:**
+
 1. First action in your session: `mkdir -p .claude && echo "ROLE=$(date +%s)" > .claude/.subagent-active`
 2. Proceed with file operations
 3. Marker expires after 5 minutes of inactivity (re-run the command for long sessions)
@@ -72,6 +73,7 @@ You are part of Sartor-Claude-Network, a multi-tier episodic memory system with:
 ---
 
 ### Evidence-Based Validation (REQUIRED)
+
 ```
 ## Skill: Evidence-Based Validation (MANDATORY)
 Before making ANY claim:
@@ -83,6 +85,7 @@ If you find yourself wanting to claim success without evidence, STOP and flag it
 ```
 
 ### 3. Memory MCP Integration (REQUIRED for substantial work)
+
 ```
 ## Skill: Memory MCP Integration
 Store your findings for future agents:
@@ -100,12 +103,14 @@ Store your findings for future agents:
 ### When to Use Background Execution
 
 Use `run_in_background: true` when:
+
 - Task will take >30 seconds to complete
 - You need to spawn multiple agents in parallel
 - Agent's work is independent from your current focus
 - You want to continue working while agent executes
 
 Do NOT use background execution when:
+
 - You need the agent's output immediately
 - Next steps depend on agent's results
 - Task is quick (<30 seconds)
@@ -137,7 +142,7 @@ Wake message types:
 - BLOCKED: Cannot proceed without input
 - FINDING: Important discovery needs immediate attention
 - ERROR: Critical failure occurred
-`
+`,
 });
 ```
 
@@ -170,12 +175,12 @@ ls -lt data/wake-messages/*.json | head -5
 
 ### Wake Message Types
 
-| Type | When to Send | Priority | Example |
-|------|--------------|----------|---------|
-| **COMPLETE** | Task finished successfully | Normal | "Implemented feature with tests passing" |
-| **BLOCKED** | Cannot proceed without input/decision | High | "Need clarification on API design" |
-| **FINDING** | Important discovery needs immediate attention | High | "Found critical security vulnerability" |
-| **ERROR** | Critical failure occurred | Urgent | "Build failed, cannot continue" |
+| Type         | When to Send                                  | Priority | Example                                  |
+| ------------ | --------------------------------------------- | -------- | ---------------------------------------- |
+| **COMPLETE** | Task finished successfully                    | Normal   | "Implemented feature with tests passing" |
+| **BLOCKED**  | Cannot proceed without input/decision         | High     | "Need clarification on API design"       |
+| **FINDING**  | Important discovery needs immediate attention | High     | "Found critical security vulnerability"  |
+| **ERROR**    | Critical failure occurred                     | Urgent   | "Build failed, cannot continue"          |
 
 ### Sending Wake Messages
 
@@ -335,7 +340,7 @@ Use handoff files and status updates for coordination.
 
 ### Completion Criteria:
 Wait for COMPLETE wake messages from all subagents, then synthesize results.
-`
+`,
 });
 ```
 
@@ -347,18 +352,18 @@ const agents = [
   {
     role: 'IMPLEMENTER',
     scope: 'src/module-a/',
-    task: 'Implement feature A components'
+    task: 'Implement feature A components',
   },
   {
     role: 'IMPLEMENTER',
     scope: 'src/module-b/',
-    task: 'Implement feature B components'
+    task: 'Implement feature B components',
   },
   {
     role: 'AUDITOR',
     scope: 'src/',
-    task: 'Test integration between modules A and B'
-  }
+    task: 'Test integration between modules A and B',
+  },
 ];
 
 // Spawn all agents in parallel
@@ -382,7 +387,7 @@ Report progress at semantic milestones:
 \`\`\`bash
 ./scripts/checkpoint.sh "swarm-agent-${idx}-${agent.role}" "implementation" "code_written" "Details"
 \`\`\`
-`
+`,
   });
 });
 
@@ -396,7 +401,7 @@ Task({
 Monitor agents: swarm-agent-0-IMPLEMENTER, swarm-agent-1-IMPLEMENTER, swarm-agent-2-AUDITOR
 
 See OBSERVER role section below for full responsibilities.
-`
+`,
 });
 ```
 
@@ -456,6 +461,7 @@ fi
 ### When to Spawn an OBSERVER
 
 Spawn an OBSERVER when:
+
 - You have a swarm of 3+ parallel agents
 - Complex coordination requires monitoring
 - Long-running background agents need health checks
@@ -548,7 +554,7 @@ When all agents complete, send:
 \`\`\`bash
 ./scripts/wake.sh "COMPLETE" "$AGENT_ID" "All swarm agents completed. Agent 0: SUCCESS, Agent 1: SUCCESS, Agent 2: SUCCESS"
 \`\`\`
-`
+`,
 });
 ```
 
@@ -574,7 +580,7 @@ OBSERVER should store coordination insights:
 
 ## Template Structure
 
-```
+````
 **Role: [PLANNER|IMPLEMENTER|AUDITOR|CLEANER|OBSERVER]**
 **Scope:** [What files/directories they can touch]
 **Phase:** [Current phase from MASTER_PLAN.md]
@@ -596,9 +602,10 @@ Since subagents don't have MCP tools, use the bash wrapper to write memories:
 
 # Memory types: episodic (events), semantic (facts), procedural (patterns), working (temp)
 # Importance: 0.0-1.0 (0.9+ for critical, 0.7-0.8 for important, 0.5 for routine)
-```
+````
 
 ### Reading Memories (existing pattern)
+
 ```bash
 # Read recent high-importance memories
 cat data/memories.json | jq '.memories | to_entries | map(.value) | map(select(.importance_score >= 0.8))'
@@ -609,6 +616,7 @@ cat data/memories.json | jq '.memories | to_entries | map(.value) | map(select(.
 Keep the OBSERVER and orchestrator informed of your progress:
 
 ### Report Your Status
+
 ```bash
 # Set your agent ID at start
 export AGENT_ID="agent-$(echo $RANDOM)-$ROLE"
@@ -626,6 +634,7 @@ export AGENT_ID="agent-$(echo $RANDOM)-$ROLE"
 ```
 
 ### Read Other Agent Status
+
 ```bash
 ./scripts/status-read.sh
 ```
@@ -637,6 +646,7 @@ Report progress at semantic milestones, not fixed time intervals. Inspired by ST
 ### When to Report Checkpoints
 
 **Report checkpoints when you complete meaningful work units:**
+
 - NOT: "I've been working for 5 minutes"
 - YES: "I've identified all relevant files"
 - NOT: "50% done"
@@ -670,13 +680,13 @@ Report progress at semantic milestones, not fixed time intervals. Inspired by ST
 
 The checkpoint system automatically maps phases to progress values:
 
-| Phase | Progress | Typical Milestones |
-|-------|----------|-------------------|
-| **research** | 0.2 | `task_received`, `files_identified`, `dependencies_mapped`, `approach_selected` |
-| **planning** | 0.4 | `design_drafted`, `interfaces_defined`, `risks_identified`, `plan_approved` |
-| **implementation** | 0.6 | `scaffold_created`, `core_logic_written`, `code_written`, `integration_complete` |
-| **testing** | 0.8 | `tests_written`, `tests_passing`, `edge_cases_covered`, `coverage_verified` |
-| **cleanup** | 1.0 | `formatting_fixed`, `dead_code_removed`, `docs_updated`, `ready_for_review` |
+| Phase              | Progress | Typical Milestones                                                               |
+| ------------------ | -------- | -------------------------------------------------------------------------------- |
+| **research**       | 0.2      | `task_received`, `files_identified`, `dependencies_mapped`, `approach_selected`  |
+| **planning**       | 0.4      | `design_drafted`, `interfaces_defined`, `risks_identified`, `plan_approved`      |
+| **implementation** | 0.6      | `scaffold_created`, `core_logic_written`, `code_written`, `integration_complete` |
+| **testing**        | 0.8      | `tests_written`, `tests_passing`, `edge_cases_covered`, `coverage_verified`      |
+| **cleanup**        | 1.0      | `formatting_fixed`, `dead_code_removed`, `docs_updated`, `ready_for_review`      |
 
 ### Checkpoint Data Stored
 
@@ -800,6 +810,7 @@ When completing your work, you must signal handoff readiness to enable the next 
 ### Handoff Signaling
 
 **Signal handoff when:**
+
 - Your assigned work is complete
 - You need to pass deliverables to another specialized agent
 - You've reached a natural workflow boundary (e.g., PLANNER → IMPLEMENTER, IMPLEMENTER → AUDITOR)
@@ -852,8 +863,8 @@ cat > "$HANDOFF_FILE" <<'EOF'
   "status": "ready_for_implementation",
   "deliverables": {
     "files": [
-      "/home/alton/Sartor-claude-network/docs/feature-spec.md",
-      "/home/alton/Sartor-claude-network/plans/implementation-approach.md"
+      "/home/user/Sartor-claude-network/docs/feature-spec.md",
+      "/home/user/Sartor-claude-network/plans/implementation-approach.md"
     ],
     "findings": [
       "Identified 3 integration points with existing memory system",
@@ -906,8 +917,8 @@ cat > "data/handoffs/${HANDOFF_ID}.json" <<'EOF'
   "status": "ready_for_implementation",
   "deliverables": {
     "files": [
-      "/home/alton/Sartor-claude-network/plans/feature-plan.md",
-      "/home/alton/Sartor-claude-network/docs/architecture-decision.md"
+      "/home/user/Sartor-claude-network/plans/feature-plan.md",
+      "/home/user/Sartor-claude-network/docs/architecture-decision.md"
     ],
     "findings": [
       "Existing memory tier can support new feature without changes",
@@ -953,8 +964,8 @@ cat > "data/handoffs/${HANDOFF_ID}.json" <<'EOF'
   "status": "ready_for_audit",
   "deliverables": {
     "files": [
-      "/home/alton/Sartor-claude-network/src/skills/cost-aware-selection.ts",
-      "/home/alton/Sartor-claude-network/src/skills/__tests__/cost-aware-selection.test.ts"
+      "/home/user/Sartor-claude-network/src/skills/cost-aware-selection.ts",
+      "/home/user/Sartor-claude-network/src/skills/__tests__/cost-aware-selection.test.ts"
     ],
     "findings": [
       "Implemented strategy pattern with 3 cost levels (low/medium/high)",
@@ -1004,7 +1015,7 @@ cat > "data/handoffs/${HANDOFF_ID}.json" <<'EOF'
   "status": "ready_for_cleanup",
   "deliverables": {
     "files": [
-      "/home/alton/Sartor-claude-network/docs/audit-report.md"
+      "/home/user/Sartor-claude-network/docs/audit-report.md"
     ],
     "findings": [
       "Implementation quality: acceptable (8/10)",
@@ -1070,28 +1081,35 @@ When using the standardized output format (see "Subagent Output Format" section)
 
 ```markdown
 ### Status
+
 SUCCESS
 
 ### Summary
+
 [Your work summary]
 
 ### Findings
+
 [Detailed findings]
 
 ### Handoff
+
 - **Handoff ID**: handoff-1234567890-agent-12345-PLANNER-to-IMPLEMENTER
 - **To Role**: IMPLEMENTER
 - **Status**: ready_for_implementation
-- **Handoff File**: /home/alton/Sartor-claude-network/data/handoffs/handoff-1234567890-agent-12345-PLANNER-to-IMPLEMENTER.json
+- **Handoff File**: /home/user/Sartor-claude-network/data/handoffs/handoff-1234567890-agent-12345-PLANNER-to-IMPLEMENTER.json
 
 ### Memory Candidates
+
 [Memory candidates as usual]
 
 ### Recommendations
+
 [Next steps for receiving agent]
 ```
 
 **Key Principles:**
+
 1. **Explicit Handoff**: Always create handoff file, don't assume next agent will find your work
 2. **Complete Context**: Include enough context for recipient to work independently
 3. **Traceable Chain**: Handoff IDs create audit trail of work flow
@@ -1099,38 +1117,48 @@ SUCCESS
 5. **Evidence-Based**: Include actual deliverables and findings, not aspirational claims
 
 ## Context
+
 [Brief context about the current state]
 
 ## Task
+
 [Clear, specific task description]
 
 ## Constraints
+
 - CAN: [What they're allowed to do]
 - CANNOT: [What they must not do]
 
 ## Expected Output
+
 [What format their response should take]
 
 ## Available Resources
+
 - Memory: src/memory/memory-system.ts (MemorySystem class)
-- Skills: src/skills/*.ts
-- Executive: src/executive/*.ts
+- Skills: src/skills/\*.ts
+- Executive: src/executive/\*.ts
+
 ```
 
 ## Example: Spawning an Implementer (Foreground)
 
 ```
+
 **Role: IMPLEMENTER**
 **Scope:** src/memory/ only
 **Phase:** Phase 5 - Integration
 
 ## IMPORTANT: Agent Role Identification
+
 You are a SUBAGENT. Set this environment variable in your context:
+
 - CLAUDE_AGENT_ROLE=IMPLEMENTER
 
 This exempts you from orchestrator delegation enforcement, allowing you to edit implementation files.
 
 **At Task Start:**
+
 ```bash
 export AGENT_ID="agent-$RANDOM-IMPLEMENTER"
 export CLAUDE_AGENT_ROLE=IMPLEMENTER
@@ -1138,48 +1166,58 @@ export CLAUDE_AGENT_ROLE=IMPLEMENTER
 ```
 
 ## Context
+
 We're adding a new method to MemorySystem for batch operations.
 
 ## Task
+
 Add a `batchCreate` method to src/memory/memory-system.ts that creates multiple memories in one call.
 
 ## Constraints
+
 - CAN: Edit memory-system.ts, add tests
 - CANNOT: Modify other files, change existing method signatures
 
 ## Expected Output
+
 - Updated memory-system.ts with new method
 - Brief summary of changes (2-3 lines)
 
 ## Available Resources
+
 - Read existing MemorySystem class first
 - Follow existing patterns for error handling
 
 **During Work:**
+
 ```bash
 ./scripts/checkpoint.sh "$AGENT_ID" "implementation" "code_written" "Implemented batchCreate with transaction support"
 ./scripts/memory-write.sh "Discovered pattern X works well for Y" "procedural" "0.7" '["pattern","learning"]'
 ```
 
 **At Completion:**
+
 ```bash
 ./scripts/checkpoint.sh "$AGENT_ID" "testing" "tests_passing" "All 8 unit tests pass"
 ./scripts/memory-write.sh "Completed implementation of batchCreate with approach Y" "episodic" "0.8" '["completion","implementation"]'
 ```
+
 ```
 
 ## Example: Spawning an Implementer (Background)
 
 ```
+
 Task({
-  run_in_background: true,
-  instructions: `
+run_in_background: true,
+instructions: `
 **Role: IMPLEMENTER**
 **Agent ID**: agent-${Date.now()}-IMPLEMENTER
 **Scope:** src/memory/ only
 **Phase:** Phase 5 - Integration
 
 ## IMPORTANT: Agent Role Identification
+
 You are a SUBAGENT running in BACKGROUND mode. Set this environment variable:
 \`\`\`bash
 export CLAUDE_AGENT_ROLE=IMPLEMENTER
@@ -1187,20 +1225,25 @@ export AGENT_ID="agent-${Date.now()}-IMPLEMENTER"
 \`\`\`
 
 ## Context
+
 We're adding a new method to MemorySystem for batch operations.
 
 ## Task
+
 Add a \`batchCreate\` method to src/memory/memory-system.ts that creates multiple memories in one call.
 
 ## Constraints
+
 - CAN: Edit memory-system.ts, add tests
 - CANNOT: Modify other files, change existing method signatures
 
 ## Expected Output
+
 - Updated memory-system.ts with new method
 - Brief summary of changes (2-3 lines)
 
 ## Checkpoint Reporting
+
 Report progress at semantic milestones:
 \`\`\`bash
 ./scripts/checkpoint.sh "$AGENT_ID" "research" "files_identified" "Found memory-system.ts and test file"
@@ -1209,6 +1252,7 @@ Report progress at semantic milestones:
 \`\`\`
 
 ## CRITICAL: Wake Message at Completion
+
 When you complete your work, send a wake message:
 \`\`\`bash
 ./scripts/wake.sh "COMPLETE" "$AGENT_ID" "Implemented batchCreate with 8 passing tests"
@@ -1220,22 +1264,27 @@ If you encounter blockers:
 \`\`\`
 `
 });
+
 ```
 
 ## Example: Spawning an Auditor (Foreground)
 
 ```
+
 **Role: AUDITOR**
 **Scope:** Full codebase (read-only)
 **Phase:** Phase 5 - Integration
 
 ## IMPORTANT: Agent Role Identification
+
 You are a SUBAGENT. Set this environment variable in your context:
+
 - CLAUDE_AGENT_ROLE=AUDITOR
 
 This exempts you from orchestrator delegation enforcement (though auditors shouldn't edit anyway).
 
 **At Task Start:**
+
 ```bash
 export AGENT_ID="agent-$RANDOM-AUDITOR"
 export CLAUDE_AGENT_ROLE=AUDITOR
@@ -1243,40 +1292,48 @@ export CLAUDE_AGENT_ROLE=AUDITOR
 ```
 
 ## Context
+
 Phase 5 is complete. Need validation.
 
 ## Task
+
 Audit the executive module for completeness and correctness.
 
 ## Constraints
+
 - CAN: Read any file, run tests, check types
 - CANNOT: Modify any files
 
 ## Expected Output
+
 - Evidence-based assessment (no fabricated scores without measurement)
 - List of issues found with specific file/line references
 - Recommendations (max 5)
 
 ## Checkpoint Reporting
+
 ```bash
 ./scripts/checkpoint.sh "$AGENT_ID" "research" "code_reviewed" "Reviewed 12 implementation files"
 ./scripts/checkpoint.sh "$AGENT_ID" "planning" "issues_catalogued" "Found 3 minor issues"
 ./scripts/checkpoint.sh "$AGENT_ID" "planning" "report_drafted" "Audit report complete"
 ```
+
 ```
 
 ## Example: Spawning an Auditor (Background with Wake Messages)
 
 ```
+
 Task({
-  run_in_background: true,
-  instructions: `
+run_in_background: true,
+instructions: `
 **Role: AUDITOR**
 **Agent ID**: agent-${Date.now()}-AUDITOR
 **Scope:** Full codebase (read-only)
 **Phase:** Phase 5 - Integration
 
 ## IMPORTANT: Agent Role Identification
+
 You are a SUBAGENT running in BACKGROUND mode. Set this environment variable:
 \`\`\`bash
 export CLAUDE_AGENT_ROLE=AUDITOR
@@ -1284,21 +1341,26 @@ export AGENT_ID="agent-${Date.now()}-AUDITOR"
 \`\`\`
 
 ## Context
+
 Phase 5 is complete. Need validation before proceeding to Phase 6.
 
 ## Task
+
 Audit the executive module for completeness and correctness.
 
 ## Constraints
+
 - CAN: Read any file, run tests, check types
 - CANNOT: Modify any files
 
 ## Expected Output
+
 - Evidence-based assessment (no fabricated scores without measurement)
 - List of issues found with specific file/line references
 - Recommendations (max 5)
 
 ## Checkpoint Reporting
+
 \`\`\`bash
 ./scripts/checkpoint.sh "$AGENT_ID" "research" "code_reviewed" "Reviewed executive module files"
 ./scripts/checkpoint.sh "$AGENT_ID" "planning" "issues_catalogued" "Found X issues"
@@ -1306,36 +1368,46 @@ Audit the executive module for completeness and correctness.
 \`\`\`
 
 ## CRITICAL: Wake Messages
+
 Send wake messages for important findings:
 
 \`\`\`bash
+
 # If critical issue found
+
 ./scripts/wake.sh "FINDING" "$AGENT_ID" "Found mock in production code at src/executive/orchestrator.ts:45"
 
 # If blocked (e.g., tests won't run)
+
 ./scripts/wake.sh "BLOCKED" "$AGENT_ID" "Cannot run integration tests, Memory MCP not available"
 
 # When complete
+
 ./scripts/wake.sh "COMPLETE" "$AGENT_ID" "Audit complete, found 3 minor issues, no blockers"
 \`\`\`
 `
 });
+
 ```
 
 ## Example: Spawning a Cleaner (Foreground)
 
 ```
+
 **Role: CLEANER**
 **Scope:** src/skills/ (delete unreferenced files only)
 **Phase:** Phase 5 - Integration (Completed)
 
 ## IMPORTANT: Agent Role Identification
+
 You are a SUBAGENT. Set this environment variable in your context:
+
 - CLAUDE_AGENT_ROLE=CLEANER
 
 This exempts you from orchestrator delegation enforcement, allowing you to edit implementation files.
 
 **At Task Start:**
+
 ```bash
 export AGENT_ID="agent-$RANDOM-CLEANER"
 export CLAUDE_AGENT_ROLE=CLEANER
@@ -1343,49 +1415,59 @@ export CLAUDE_AGENT_ROLE=CLEANER
 ```
 
 ## Context
+
 The src/skills/ directory has accumulated unused files and dead code over development.
 
 ## Task
+
 Clean up the src/skills/ directory:
+
 1. Find any unused/duplicate files
 2. Remove dead code and commented-out blocks
 3. Fix inconsistent formatting
 4. Verify nothing breaks after cleanup
 
 ## Constraints
+
 - CAN: Delete unreferenced files, fix linting, reorganize imports, remove dead code
 - CANNOT: Modify business logic, change APIs, delete tests without verification, add features
 
 ## Expected Output
+
 - List of files deleted
 - Build verification (npm run build passes)
 - Summary of cleanup actions (3-5 lines)
 
 ## Safety Protocol
+
 - Grep for all references before deleting any file
 - Run `npm run build` after changes
 - Create a list of deleted files in your response
 
 ## Checkpoint Reporting
+
 ```bash
 ./scripts/checkpoint.sh "$AGENT_ID" "cleanup" "dead_code_removed" "Removed 5 unused imports"
 ./scripts/checkpoint.sh "$AGENT_ID" "cleanup" "formatting_fixed" "Standardized indentation"
 ./scripts/checkpoint.sh "$AGENT_ID" "cleanup" "ready_for_review" "Code cleanup complete, build passes"
 ```
+
 ```
 
 ## Example: Spawning a Cleaner (Background with Safety Checks)
 
 ```
+
 Task({
-  run_in_background: true,
-  instructions: `
+run_in_background: true,
+instructions: `
 **Role: CLEANER**
 **Agent ID**: agent-${Date.now()}-CLEANER
 **Scope:** src/skills/ (delete unreferenced files only)
 **Phase:** Phase 5 - Integration (Completed)
 
 ## IMPORTANT: Agent Role Identification
+
 You are a SUBAGENT running in BACKGROUND mode. Set this environment variable:
 \`\`\`bash
 export CLAUDE_AGENT_ROLE=CLEANER
@@ -1393,30 +1475,37 @@ export AGENT_ID="agent-${Date.now()}-CLEANER"
 \`\`\`
 
 ## Context
+
 The src/skills/ directory has accumulated unused files and dead code over development.
 
 ## Task
+
 Clean up the src/skills/ directory:
+
 1. Find any unused/duplicate files
 2. Remove dead code and commented-out blocks
 3. Fix inconsistent formatting
 4. Verify nothing breaks after cleanup
 
 ## Constraints
+
 - CAN: Delete unreferenced files, fix linting, reorganize imports, remove dead code
 - CANNOT: Modify business logic, change APIs, delete tests without verification, add features
 
 ## Expected Output
+
 - List of files deleted
 - Build verification (npm run build passes)
 - Summary of cleanup actions (3-5 lines)
 
 ## Safety Protocol
+
 - Grep for all references before deleting any file
 - Run \`npm run build\` after changes
 - If build fails, send ERROR wake message immediately
 
 ## Checkpoint Reporting
+
 \`\`\`bash
 ./scripts/checkpoint.sh "$AGENT_ID" "cleanup" "dead_code_removed" "Removed X unused files"
 ./scripts/checkpoint.sh "$AGENT_ID" "cleanup" "formatting_fixed" "Standardized code style"
@@ -1424,32 +1513,40 @@ Clean up the src/skills/ directory:
 \`\`\`
 
 ## CRITICAL: Wake Messages
+
 \`\`\`bash
+
 # If unexpected issue found during cleanup
+
 ./scripts/wake.sh "FINDING" "$AGENT_ID" "Found 5 files marked TODO but still referenced in code"
 
 # If build fails after cleanup
+
 ./scripts/wake.sh "ERROR" "$AGENT_ID" "Build failed after cleanup, reverting changes"
 
 # When complete and verified
+
 ./scripts/wake.sh "COMPLETE" "$AGENT_ID" "Removed 8 unused files, build passes, tests pass"
 \`\`\`
 `
 });
+
 ```
 
 ## Example: Spawning a PLANNER (Background for Lead Agent)
 
 ```
+
 Task({
-  run_in_background: true,
-  instructions: `
+run_in_background: true,
+instructions: `
 **Role: PLANNER (Lead Agent)**
 **Agent ID**: lead-${Date.now()}-PLANNER
 **Scope:** Planning and coordination only (no implementation)
 **Phase:** Phase 6 - Enhancement
 
 ## IMPORTANT: Agent Role Identification
+
 You are a LEAD AGENT running in BACKGROUND mode. Set this environment variable:
 \`\`\`bash
 export CLAUDE_AGENT_ROLE=PLANNER
@@ -1457,10 +1554,13 @@ export AGENT_ID="lead-${Date.now()}-PLANNER"
 \`\`\`
 
 ## Context
+
 We need to implement a cost-aware operation selection feature that spans multiple modules.
 
 ## Task
+
 You are the LEAD AGENT coordinating a swarm of subagents:
+
 1. Break down the feature into 3-4 parallel workstreams
 2. Spawn IMPLEMENTER subagents for each module
 3. Spawn an AUDITOR for integration testing
@@ -1469,6 +1569,7 @@ You are the LEAD AGENT coordinating a swarm of subagents:
 6. Synthesize results and create final handoff
 
 ## Your Responsibilities
+
 - Define clear, non-overlapping scopes for each subagent
 - Provide full context to each subagent
 - Monitor wake messages and status updates
@@ -1476,6 +1577,7 @@ You are the LEAD AGENT coordinating a swarm of subagents:
 - Synthesize final results when all agents complete
 
 ## Expected Swarm Composition
+
 - Subagent 1 (IMPLEMENTER): Cost calculation module
 - Subagent 2 (IMPLEMENTER): Selection strategy module
 - Subagent 3 (IMPLEMENTER): Integration with skill registry
@@ -1483,6 +1585,7 @@ You are the LEAD AGENT coordinating a swarm of subagents:
 - OBSERVER: Monitor all agents, report issues
 
 ## Checkpoint Reporting
+
 \`\`\`bash
 ./scripts/checkpoint.sh "$AGENT_ID" "planning" "design_drafted" "Feature broken into 3 modules"
 ./scripts/checkpoint.sh "$AGENT_ID" "planning" "swarm_spawned" "Spawned 4 subagents and OBSERVER"
@@ -1491,19 +1594,26 @@ You are the LEAD AGENT coordinating a swarm of subagents:
 \`\`\`
 
 ## CRITICAL: Wake Messages
+
 \`\`\`bash
+
 # When swarm is spawned
+
 ./scripts/wake.sh "COMPLETE" "$AGENT_ID" "Swarm spawned with 4 agents and OBSERVER, monitoring progress"
 
 # If coordination issue arises
+
 ./scripts/wake.sh "FINDING" "$AGENT_ID" "Agent 2 blocked on Agent 1's output, adjusting coordination"
 
 # When all agents complete
+
 ./scripts/wake.sh "COMPLETE" "$AGENT_ID" "All swarm agents complete, feature implemented with 85% test coverage"
 \`\`\`
 
 ## Memory Isolation
+
 Remember: Each subagent has isolated memory. They coordinate via:
+
 - Handoff files in data/handoffs/
 - Status updates in data/agent-status/
 - Wake messages in data/wake-messages/
@@ -1511,7 +1621,8 @@ Remember: Each subagent has isolated memory. They coordinate via:
 You must read these files to monitor progress.
 `
 });
-```
+
+````
 
 ## Example: Complete Swarm Execution
 
@@ -1525,7 +1636,7 @@ Task({
   run_in_background: true,
   instructions: `[... PLANNER instructions from above ...]`
 });
-```
+````
 
 ### Step 2: Lead Agent Spawns Swarm
 
@@ -1538,30 +1649,30 @@ const swarmAgents = [
     role: 'IMPLEMENTER',
     agentId: 'swarm-agent-0-IMPLEMENTER',
     scope: 'src/skills/cost-calculation.ts',
-    task: 'Implement cost calculation logic for different operation types'
+    task: 'Implement cost calculation logic for different operation types',
   },
   {
     role: 'IMPLEMENTER',
     agentId: 'swarm-agent-1-IMPLEMENTER',
     scope: 'src/skills/selection-strategy.ts',
-    task: 'Implement selection strategy based on cost thresholds'
+    task: 'Implement selection strategy based on cost thresholds',
   },
   {
     role: 'IMPLEMENTER',
     agentId: 'swarm-agent-2-IMPLEMENTER',
     scope: 'src/skills/cost-aware-selection.ts',
-    task: 'Integrate cost calculation and selection with skill registry'
+    task: 'Integrate cost calculation and selection with skill registry',
   },
   {
     role: 'AUDITOR',
     agentId: 'swarm-agent-3-AUDITOR',
     scope: 'src/skills/',
-    task: 'Test integration across all three modules'
-  }
+    task: 'Test integration across all three modules',
+  },
 ];
 
 // Spawn all agents in parallel
-swarmAgents.forEach(agent => {
+swarmAgents.forEach((agent) => {
   Task({
     run_in_background: true,
     instructions: `
@@ -1581,14 +1692,14 @@ ${agent.task}
 \`\`\`bash
 ./scripts/wake.sh "COMPLETE" "${agent.agentId}" "Brief summary of work"
 \`\`\`
-`
+`,
   });
 });
 
 // Spawn OBSERVER
 Task({
   run_in_background: true,
-  instructions: `[... OBSERVER instructions monitoring swarm-agent-0,1,2,3 ...]`
+  instructions: `[... OBSERVER instructions monitoring swarm-agent-0,1,2,3 ...]`,
 });
 ```
 
@@ -1676,40 +1787,50 @@ When completing your task, structure your response as:
 
 ```markdown
 ### Status
+
 [SUCCESS | BLOCKED | FAILED]
 
 ### Summary
+
 [2-3 sentence summary of what was done]
 
 ### Findings
+
 [Detailed findings, evidence, or deliverables]
 
 ### Handoff (if passing work to another agent)
+
 - **Handoff ID**: [handoff ID from created handoff file]
 - **To Role**: [PLANNER|IMPLEMENTER|AUDITOR|CLEANER]
 - **Status**: [ready_for_implementation|ready_for_audit|ready_for_cleanup]
 - **Handoff File**: [absolute path to handoff JSON file]
 
 ### Memory Candidates
+
 [Any findings that should be persisted to Memory MCP - orchestrator will store these]
+
 - Content: [what to store]
 - Type: [semantic|procedural|episodic]
 - Importance: [0.0-1.0]
 - Tags: [relevant tags]
 
 ### Blockers (if any)
+
 [What blocked progress, what's needed to unblock]
 
 ### Recommendations
+
 [Next steps, follow-up tasks suggested]
 ```
 
 **Status Definitions:**
+
 - **SUCCESS**: Task completed as specified, all deliverables met
 - **BLOCKED**: Cannot proceed without external input/decision/resource
 - **FAILED**: Attempted but could not complete (include why in Blockers)
 
 **Memory Candidates Guidelines:**
+
 - Only include findings worth persisting across sessions
 - Use SEMANTIC (0.9+) for critical facts/directives
 - Use PROCEDURAL (0.7-0.8) for successful patterns/methods
@@ -1720,33 +1841,40 @@ When completing your task, structure your response as:
 
 ```markdown
 ### Status
+
 SUCCESS
 
 ### Summary
+
 Added batchCreate method to MemorySystem class. Method creates multiple memories in a single transaction with atomic rollback on failure. All existing tests pass and new test coverage added.
 
 ### Findings
+
 - Implemented `batchCreate(memories: MemoryInput[]): Promise<Memory[]>` in src/memory/memory-system.ts
 - Added transaction support with rollback on any failure
 - Test coverage: 8 new test cases covering success, partial failure, and rollback scenarios
 - Performance: ~3x faster than sequential creates for batches >5 items
 
 ### Handoff
+
 - **Handoff ID**: handoff-1733925600-agent-23456-IMPLEMENTER-to-AUDITOR
 - **To Role**: AUDITOR
 - **Status**: ready_for_audit
-- **Handoff File**: /home/alton/Sartor-claude-network/data/handoffs/handoff-1733925600-agent-23456-IMPLEMENTER-to-AUDITOR.json
+- **Handoff File**: /home/user/Sartor-claude-network/data/handoffs/handoff-1733925600-agent-23456-IMPLEMENTER-to-AUDITOR.json
 
 ### Memory Candidates
+
 - Content: "MemorySystem.batchCreate uses transaction pattern with atomic rollback - wrap in try/catch and reverse on error"
   Type: procedural
   Importance: 0.75
   Tags: ["memory-system", "batch-operations", "transactions"]
 
 ### Blockers
+
 None
 
 ### Recommendations
+
 - Consider adding batch operations for update/delete as well
 - Monitor performance with batches >100 items
 ```
@@ -1844,14 +1972,12 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 // Read memories.json directly
-const memoriesPath = '/home/alton/Sartor-claude-network/data/memories.json';
+const memoriesPath = '/home/user/Sartor-claude-network/data/memories.json';
 const rawData = fs.readFileSync(memoriesPath, 'utf-8');
 const data = JSON.parse(rawData);
 
 // Filter by importance (high-priority directives)
-const criticalMemories = Object.values(data.memories).filter(
-  (m: any) => m.importance_score >= 0.9
-);
+const criticalMemories = Object.values(data.memories).filter((m: any) => m.importance_score >= 0.9);
 
 // Filter by type (semantic = facts, procedural = methods, episodic = events)
 const procedures = Object.values(data.memories).filter(
@@ -1859,12 +1985,13 @@ const procedures = Object.values(data.memories).filter(
 );
 
 // Filter by tags
-const testingMemories = Object.values(data.memories).filter(
-  (m: any) => m.tags?.includes('testing')
+const testingMemories = Object.values(data.memories).filter((m: any) =>
+  m.tags?.includes('testing')
 );
 ```
 
 **When to read memories as a subagent:**
+
 - At task start: Check for relevant directives, patterns, or context
 - Before implementing: Search for procedural memories about similar work
 - During validation: Compare against semantic facts and user directives
@@ -1877,16 +2004,19 @@ Subagents CANNOT write directly to memories.json. Instead, include memory candid
 ## Memory Candidates
 
 **Semantic (importance 0.9):**
+
 - **Content**: "User directive: All production systems must use actual implementations, mocks are forbidden"
 - **Tags**: ["directive", "testing", "production"]
 - **Rationale**: Critical constraint that affects all future development
 
 **Procedural (importance 0.8):**
+
 - **Content**: "Pattern: When refactoring multi-file modules, use grep to find all references before moving functions"
 - **Tags**: ["refactoring", "safety", "best-practice"]
 - **Rationale**: Prevented breaking changes during coordination module restructure
 
 **Episodic (importance 0.6):**
+
 - **Content**: "Session 2025-12-11: Discovered subagents can read memories.json directly despite lacking MCP tools"
 - **Tags**: ["architecture", "discovery", "memory-system"]
 - **Rationale**: Important context about system capabilities
@@ -1898,16 +2028,17 @@ The orchestrator will review your candidates and persist appropriate ones via Me
 
 **Use these guidelines when proposing memories:**
 
-| Type | Importance | What to Store | Examples |
-|------|-----------|---------------|----------|
-| SEMANTIC | 0.9-1.0 | User directives, critical facts, architectural decisions | "No mocks in production", "System goal: self-funding via solar inference" |
-| SEMANTIC | 0.7-0.9 | Important facts, constraints, dependencies | "Memory MCP runs on port 3001", "Subagents lack MCP tools by design" |
-| PROCEDURAL | 0.8-0.9 | Successful patterns, validated methods | "Refinement loop: Generate → Audit → Score → Refine if <0.8" |
-| PROCEDURAL | 0.6-0.8 | Useful techniques, debugging approaches | "Use grep before refactoring to find all references" |
-| EPISODIC | 0.6-0.8 | Significant session events, discoveries | "Found 3 critical mocks during audit 2025-12-11" |
-| EPISODIC | 0.4-0.6 | Context, minor events, observations | "Spent 2 hours debugging CRDT merge logic" |
+| Type       | Importance | What to Store                                            | Examples                                                                  |
+| ---------- | ---------- | -------------------------------------------------------- | ------------------------------------------------------------------------- |
+| SEMANTIC   | 0.9-1.0    | User directives, critical facts, architectural decisions | "No mocks in production", "System goal: self-funding via solar inference" |
+| SEMANTIC   | 0.7-0.9    | Important facts, constraints, dependencies               | "Memory MCP runs on port 3001", "Subagents lack MCP tools by design"      |
+| PROCEDURAL | 0.8-0.9    | Successful patterns, validated methods                   | "Refinement loop: Generate → Audit → Score → Refine if <0.8"              |
+| PROCEDURAL | 0.6-0.8    | Useful techniques, debugging approaches                  | "Use grep before refactoring to find all references"                      |
+| EPISODIC   | 0.6-0.8    | Significant session events, discoveries                  | "Found 3 critical mocks during audit 2025-12-11"                          |
+| EPISODIC   | 0.4-0.6    | Context, minor events, observations                      | "Spent 2 hours debugging CRDT merge logic"                                |
 
 **What NOT to store:**
+
 - Trivial observations (importance <0.4)
 - Temporary state that won't be relevant next session
 - Information already well-documented in code or README
@@ -1917,26 +2048,30 @@ The orchestrator will review your candidates and persist appropriate ones via Me
 
 When spawning a subagent that needs memory access, inject this skill:
 
-```markdown
+````markdown
 ## Skill: Memory Access for Subagents
 
 **Reading Memories:**
+
 ```typescript
-const memoriesPath = '/home/alton/Sartor-claude-network/data/memories.json';
+const memoriesPath = '/home/user/Sartor-claude-network/data/memories.json';
 const data = JSON.parse(fs.readFileSync(memoriesPath, 'utf-8'));
-const relevant = Object.values(data.memories).filter(m =>
-  m.importance_score >= 0.7 && m.tags?.includes('your-domain')
+const relevant = Object.values(data.memories).filter(
+  (m) => m.importance_score >= 0.7 && m.tags?.includes('your-domain')
 );
 ```
+````
 
 **Writing Memories:**
 You cannot write directly. Include "Memory Candidates" section in your output:
+
 - SEMANTIC (0.9+): Critical findings, user directives
 - PROCEDURAL (0.7-0.8): Successful patterns, methods
 - EPISODIC (0.5-0.7): Session events, context
 
 Orchestrator will persist via Memory MCP on your behalf.
-```
+
+````
 
 ### Example: Subagent Task with Memory Integration
 
@@ -1949,26 +2084,32 @@ Orchestrator will persist via Memory MCP on your behalf.
 
 **Reading Memories:**
 ```typescript
-const memoriesPath = '/home/alton/Sartor-claude-network/data/memories.json';
+const memoriesPath = '/home/user/Sartor-claude-network/data/memories.json';
 const data = JSON.parse(fs.readFileSync(memoriesPath, 'utf-8'));
 const relevant = Object.values(data.memories).filter(m =>
   m.importance_score >= 0.7 && m.tags?.includes('skills')
 );
-```
+````
 
 **Writing Memories:**
 Include "Memory Candidates" section in your output with type, importance, tags, and rationale.
 
 ## Context
+
 Adding a new skill for cost-aware operation selection.
 
 ## Task
+
 1. Read memories.json to find any existing directives about cost optimization
 2. Implement cost-aware-selection.ts skill
 3. Propose memory candidates for successful patterns discovered
 
 ## Expected Output
+
 - New skill file with implementation
 - Summary of relevant memories found
 - Memory candidates section with any learnings worth persisting
+
+```
+
 ```

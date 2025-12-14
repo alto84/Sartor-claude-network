@@ -7,21 +7,25 @@ Quality assurance (QA) in research ensures that outputs meet rigorous standards 
 ## QA Principles
 
 ### 1. Multi-Layer Validation
+
 - Automated checks catch objective issues (fake PMIDs, format errors)
 - Manual review catches subjective issues (interpretation accuracy, context)
 - Peer review catches domain-specific issues (scientific accuracy)
 
 ### 2. Early and Continuous
+
 - Check quality at each workflow stage, not just at end
 - Quality gates between stages prevent error propagation
 - Continuous validation reduces rework
 
 ### 3. Evidence-Based Standards
+
 - QA criteria based on established research standards (PRISMA, GRADE, etc.)
 - CLAUDE.md anti-fabrication protocols mandatory
 - Quantitative metrics where possible (% with PMID, etc.)
 
 ### 4. Transparent Documentation
+
 - Document QA process and results
 - Track issues and resolutions
 - Create audit trail for accountability
@@ -33,6 +37,7 @@ Quality assurance (QA) in research ensures that outputs meet rigorous standards 
 **Objective:** Ensure research is properly designed before execution
 
 **Checklist:**
+
 - [ ] Research question is specific and answerable
 - [ ] PICO/PECO framework complete (if applicable)
 - [ ] Inclusion/exclusion criteria clearly defined
@@ -43,12 +48,14 @@ Quality assurance (QA) in research ensures that outputs meet rigorous standards 
 - [ ] Timeline and resources realistic
 
 **Common Issues:**
+
 - Research question too broad or vague
 - Inclusion criteria not specific enough
 - Search strategy not reproducible
 - No plan for quality assessment
 
 **Fix Before Proceeding:**
+
 - Refine research question using PICO
 - Make criteria operational (specific, measurable)
 - Document exact search strings
@@ -59,11 +66,13 @@ Quality assurance (QA) in research ensures that outputs meet rigorous standards 
 **Objective:** Ensure search was systematic and complete
 
 **Automated Checks:**
+
 ```bash
 python scripts/validate-bibliography.py search-results.md
 ```
 
 **Manual Checks:**
+
 - [ ] All planned databases searched
 - [ ] Search strings documented with exact syntax
 - [ ] Search date recorded
@@ -74,6 +83,7 @@ python scripts/validate-bibliography.py search-results.md
 - [ ] No fabricated or placeholder sources
 
 **Common Issues:**
+
 - Fake PMIDs (12345678, sequential patterns)
 - Placeholder titles ("Example Study")
 - Inaccessible URLs (404 errors)
@@ -81,10 +91,12 @@ python scripts/validate-bibliography.py search-results.md
 - Inconsistent format
 
 **Validation Results:**
+
 - PASS: All sources have valid, verified identifiers
 - FAIL: Any fabricated sources detected → must fix
 
 **Example QA Report:**
+
 ```
 Literature Search QA Report
 ============================
@@ -109,11 +121,13 @@ Action Required: Fix 5 critical issues before proceeding to extraction
 **Objective:** Ensure extracted data is accurate and complete
 
 **Automated Checks:**
+
 ```bash
 python scripts/research-quality-check.py extraction-tables.md
 ```
 
 **Manual Checks:**
+
 - [ ] Every extracted data point has source citation
 - [ ] Numerical data includes context (n, CI, units)
 - [ ] Study methodology documented
@@ -122,6 +136,7 @@ python scripts/research-quality-check.py extraction-tables.md
 - [ ] Extractions verifiable against sources (spot check 10-20%)
 
 **Verification Protocol:**
+
 1. Randomly select 10-20% of extractions
 2. Locate in original source
 3. Verify numbers match exactly
@@ -129,6 +144,7 @@ python scripts/research-quality-check.py extraction-tables.md
 5. Check methodology description correct
 
 **Common Issues:**
+
 - Missing source citations
 - Numbers without denominators
 - Data out of context
@@ -136,6 +152,7 @@ python scripts/research-quality-check.py extraction-tables.md
 - Conflicting evidence ignored
 
 **Example Verification:**
+
 ```
 Extraction: "ILD incidence: 15.2%"
 Source Check (Modi 2022, PMID 35665782):
@@ -157,6 +174,7 @@ Source Check (Shitara 2020, PMID 32469182):
 **Objective:** Verify all evidence is authentic and properly attributed
 
 **Automated Checks:**
+
 ```bash
 # Validate bibliography
 python scripts/validate-bibliography.py bibliography.md
@@ -166,6 +184,7 @@ python scripts/research-quality-check.py manuscript.md --check-claims
 ```
 
 **Manual Checks:**
+
 - [ ] All PMIDs valid (verified in PubMed spot check)
 - [ ] All DOIs resolve to correct articles
 - [ ] All URLs accessible
@@ -175,12 +194,14 @@ python scripts/research-quality-check.py manuscript.md --check-claims
 
 **Source Authenticity Audit:**
 Sample 20-30 sources randomly:
+
 1. Verify PMID in PubMed → article matches
 2. Verify DOI resolves → correct article
 3. Verify URL accessible → reaches article
 4. Check title, authors, year match exactly
 
 **CLAUDE.md Compliance Check:**
+
 - [ ] No fabricated scores (>80% without validation)
 - [ ] No banned language without evidence
 - [ ] All confidence levels justified
@@ -189,6 +210,7 @@ Sample 20-30 sources randomly:
 - [ ] Evidence chains complete
 
 **Example Audit Result:**
+
 ```
 Source Authenticity Audit (Sample: 30/165 sources)
 ====================================================
@@ -220,6 +242,7 @@ Recommend: Proceed to synthesis stage
 **Objective:** Ensure synthesis is evidence-based and proportional to evidence quality
 
 **Manual Checks:**
+
 - [ ] Conclusions supported by multiple sources (cite at least 2-3)
 - [ ] Conflicting evidence acknowledged
 - [ ] Confidence levels justified by evidence quality
@@ -228,6 +251,7 @@ Recommend: Proceed to synthesis stage
 - [ ] No overgeneralization from limited data
 
 **CLAUDE.md Synthesis Compliance:**
+
 - [ ] No fabricated consensus scores (averaging agent opinions)
 - [ ] No composite metrics without calculation basis
 - [ ] Disagreements preserved (not hidden)
@@ -235,6 +259,7 @@ Recommend: Proceed to synthesis stage
 - [ ] Evidence base cited for each major conclusion
 
 **Red Flags:**
+
 - Single source for major conclusion
 - Conflicting evidence not discussed
 - High confidence claimed with weak evidence
@@ -242,6 +267,7 @@ Recommend: Proceed to synthesis stage
 - Banned language used without justification
 
 **Example Synthesis Audit:**
+
 ```
 Synthesis QA Report
 ===================
@@ -271,6 +297,7 @@ Conclusion 3: "Corticosteroid treatment is highly effective"
 **Objective:** Comprehensive check before finalization
 
 **Automated Checks:**
+
 ```bash
 # Run all automated checks
 python scripts/validate-bibliography.py bibliography.md
@@ -278,6 +305,7 @@ python scripts/research-quality-check.py manuscript.md
 ```
 
 **Manual Comprehensive Review:**
+
 - [ ] Title and abstract accurate summary
 - [ ] Introduction provides context and rationale
 - [ ] Methods fully reproducible
@@ -290,6 +318,7 @@ python scripts/research-quality-check.py manuscript.md
 - [ ] Format consistent throughout
 
 **Completeness Metrics:**
+
 ```
 Bibliography Completeness:
 - Total references: 165
@@ -316,6 +345,7 @@ CLAUDE.md Compliance:
 ### Research Report Completeness Checklist
 
 **Abstract:**
+
 - [ ] Background/rationale
 - [ ] Methods summary
 - [ ] Results summary (quantitative)
@@ -323,6 +353,7 @@ CLAUDE.md Compliance:
 - [ ] Word count appropriate (typically 250-300)
 
 **Introduction:**
+
 - [ ] Context and background
 - [ ] Knowledge gap identified
 - [ ] Research question stated
@@ -330,6 +361,7 @@ CLAUDE.md Compliance:
 - [ ] Significance explained
 
 **Methods:**
+
 - [ ] Search strategy fully documented
 - [ ] Databases and dates specified
 - [ ] Inclusion/exclusion criteria clear
@@ -340,6 +372,7 @@ CLAUDE.md Compliance:
 - [ ] PRISMA flow diagram included (if systematic review)
 
 **Results:**
+
 - [ ] Study selection described (with numbers)
 - [ ] Study characteristics table
 - [ ] Quality assessment results
@@ -348,6 +381,7 @@ CLAUDE.md Compliance:
 - [ ] Statistical results reported with CI and p-values
 
 **Discussion:**
+
 - [ ] Summary of main findings
 - [ ] Comparison with existing literature
 - [ ] Strengths acknowledged
@@ -356,12 +390,14 @@ CLAUDE.md Compliance:
 - [ ] Future research suggested
 
 **Conclusions:**
+
 - [ ] Evidence-based summary
 - [ ] Proportional to evidence quality
 - [ ] Appropriate confidence level
 - [ ] Actionable (if applicable)
 
 **References:**
+
 - [ ] Complete bibliographic information
 - [ ] Format consistent
 - [ ] All cited sources included
@@ -372,12 +408,14 @@ CLAUDE.md Compliance:
 ### CLAUDE.md Compliance Checklist
 
 **Score Fabrication:**
+
 - [ ] No scores >80% without external validation data
 - [ ] No composite scores without measurement basis
 - [ ] No weighted averages without documented calculations
 - [ ] All quantitative claims have source citations
 
 **Banned Language:**
+
 - [ ] No "exceptional" without extraordinary evidence
 - [ ] No "outstanding" without comparative data
 - [ ] No "world-class" or "industry-leading"
@@ -385,6 +423,7 @@ CLAUDE.md Compliance:
 - [ ] No "X times better" without baseline measurements
 
 **Required Language:**
+
 - [ ] Limitations explicitly stated
 - [ ] Uncertainty acknowledged
 - [ ] Confidence levels qualified
@@ -392,12 +431,14 @@ CLAUDE.md Compliance:
 - [ ] "Requires validation" for preliminary findings
 
 **Evidence Standards:**
+
 - [ ] Primary sources only (no AI outputs cited)
 - [ ] Measurement data for claims
 - [ ] Statistical rigor (n, CI, methodology)
 - [ ] External validation for high-confidence claims
 
 **Skepticism:**
+
 - [ ] Limitations listed before strengths
 - [ ] Failure modes considered
 - [ ] Confidence intervals included
@@ -410,6 +451,7 @@ CLAUDE.md Compliance:
 **Purpose:** Detect fabricated sources and format issues
 
 **Usage:**
+
 ```bash
 python scripts/validate-bibliography.py <file> [options]
 
@@ -420,6 +462,7 @@ Options:
 ```
 
 **Detection Capabilities:**
+
 1. **Fabricated PMIDs:**
    - Sequential patterns (12345678, 23456789)
    - Repetitive patterns (11111111, 99999999)
@@ -441,6 +484,7 @@ Options:
    - Invalid DOI format
 
 **Output Example:**
+
 ```
 === Bibliography Validation Report ===
 
@@ -473,6 +517,7 @@ Recommendation: Address warnings for completeness
 **Purpose:** Validate research claims and CLAUDE.md compliance
 
 **Usage:**
+
 ```bash
 python scripts/research-quality-check.py <file> [options]
 
@@ -484,6 +529,7 @@ Options:
 ```
 
 **Detection Capabilities:**
+
 1. **Unsupported Claims:**
    - Quantitative assertions without citations
    - Definitive statements without evidence
@@ -506,6 +552,7 @@ Options:
    - No confidence statement
 
 **Output Example:**
+
 ```
 === Research Quality Check Report ===
 
@@ -549,24 +596,28 @@ Recommendation: Address 2 minor issues for publication quality, but acceptable a
 ### Bibliography Quality Metrics
 
 **Metric 1: Identifier Completeness**
+
 - % with PMID
 - % with DOI
 - % with accessible URL
 - Target: >80% PMID, >90% DOI for medical research
 
 **Metric 2: Recency**
+
 - % from last 2 years
 - % from last 5 years
 - Median publication year
 - Target: >30% from last 5 years for current topic
 
 **Metric 3: Source Diversity**
+
 - Number of unique journals
 - Number of unique first authors
 - Geographic diversity
 - Target: Varies by topic, avoid single-source dominance
 
 **Metric 4: Evidence Level**
+
 - % systematic reviews/meta-analyses
 - % RCTs
 - % observational studies
@@ -576,18 +627,21 @@ Recommendation: Address 2 minor issues for publication quality, but acceptable a
 ### Claim Quality Metrics
 
 **Metric 1: Citation Coverage**
+
 - % claims with citations
 - % claims with multiple sources
 - % claims with high-quality sources (RCT, systematic review)
 - Target: 100% cited, >50% multiple sources for key claims
 
 **Metric 2: Context Completeness**
+
 - % numerical claims with sample size
 - % with confidence intervals
 - % with methodology noted
 - Target: >95% with complete context
 
 **Metric 3: Uncertainty Expression**
+
 - Presence of limitations section
 - Number of limitations documented
 - % claims with qualified language (suggests, indicates, etc.)
@@ -596,12 +650,14 @@ Recommendation: Address 2 minor issues for publication quality, but acceptable a
 ### Compliance Metrics
 
 **CLAUDE.md Compliance:**
+
 - Score fabrications detected: Target = 0
 - Banned language violations: Target = 0
 - Unsupported claims: Target = 0
 - Limitations documented: Target = Yes
 
 **Research Standards Compliance:**
+
 - PRISMA checklist items met: Target = 100% (systematic reviews)
 - Reproducibility: Can methodology be replicated? Target = Yes
 - Transparency: Are methods fully documented? Target = Yes
@@ -611,22 +667,26 @@ Recommendation: Address 2 minor issues for publication quality, but acceptable a
 ### Issue 1: Incomplete Bibliography
 
 **Symptoms:**
+
 - Missing identifiers (no PMID/DOI/URL)
 - Placeholder sources
 - Inaccessible references
 
 **Root Causes:**
+
 - Rushed literature search
 - Incomplete source retrieval
 - Fabrication to meet citation count targets
 
 **Fixes:**
+
 1. Run `validate-bibliography.py` to identify incomplete sources
 2. Search PubMed/databases for missing identifiers
 3. Remove sources that cannot be verified
 4. Document any genuinely inaccessible sources with explanation
 
 **Prevention:**
+
 - Extract complete metadata during initial search
 - Verify sources immediately, not at end
 - Use citation management software
@@ -634,22 +694,26 @@ Recommendation: Address 2 minor issues for publication quality, but acceptable a
 ### Issue 2: Unsupported Claims
 
 **Symptoms:**
+
 - Quantitative assertions without citations
 - Definitive statements lacking evidence
 - "Clearly shows" language without supporting data
 
 **Root Causes:**
+
 - Assertions based on memory, not sources
 - Synthesis creates new claims not in sources
 - Overclaiming from limited evidence
 
 **Fixes:**
+
 1. Run `research-quality-check.py --check-claims`
 2. Locate supporting source for each flagged claim
 3. Add citation or soften claim language
 4. Remove unsupported assertions
 
 **Prevention:**
+
 - Cite as you write, not retrospectively
 - Every quantitative claim gets immediate citation
 - Synthesis stays within bounds of source evidence
@@ -657,17 +721,20 @@ Recommendation: Address 2 minor issues for publication quality, but acceptable a
 ### Issue 3: CLAUDE.md Violations
 
 **Symptoms:**
+
 - Fabricated confidence scores (85% confidence)
 - Banned language (exceptional, outstanding)
 - Missing limitations section
 - Overly certain conclusions
 
 **Root Causes:**
+
 - Desire to present positive findings
 - Unaware of anti-fabrication rules
 - Copy-pasting from non-compliant sources
 
 **Fixes:**
+
 1. Run `research-quality-check.py --check-claude`
 2. Replace scores with qualitative assessments
 3. Replace banned language with evidence-based terms
@@ -675,6 +742,7 @@ Recommendation: Address 2 minor issues for publication quality, but acceptable a
 5. Qualify conclusions appropriately
 
 **Prevention:**
+
 - Review CLAUDE.md before starting research
 - Use required language patterns
 - Build in skepticism from start
@@ -682,23 +750,27 @@ Recommendation: Address 2 minor issues for publication quality, but acceptable a
 ### Issue 4: Methodology Not Reproducible
 
 **Symptoms:**
+
 - Search strategy not documented
 - Inclusion criteria vague
 - Screening process not described
 - No PRISMA diagram
 
 **Root Causes:**
+
 - Methods written after fact, not during
 - Insufficient documentation during execution
 - Not following systematic review standards
 
 **Fixes:**
+
 1. Document exact search strings from search history
 2. Make inclusion/exclusion criteria specific
 3. Create PRISMA flow diagram with actual numbers
 4. Add methodology details for reproducibility
 
 **Prevention:**
+
 - Document as you go, not retrospectively
 - Use research protocol template
 - Follow PRISMA checklist
@@ -754,16 +826,19 @@ Each QA gate must PASS before proceeding to next stage.
 ## Resources
 
 **Automated Tools:**
+
 - `scripts/validate-bibliography.py` - Bibliography validation
 - `scripts/research-quality-check.py` - Claim and compliance checking
 
 **Quality Standards:**
+
 - PRISMA 2020 Checklist
 - GRADE Handbook
 - CLAUDE.md Anti-Fabrication Protocols
 - Evidence-Based Validation Skill
 
 **Checklists:**
+
 - Research Report Completeness Checklist (this document)
 - CLAUDE.md Compliance Checklist (this document)
 - Bibliography Quality Checklist (citation-management.md)

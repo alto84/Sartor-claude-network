@@ -29,13 +29,15 @@ The `memory-write.sh` script provides a simple bash interface for subagents to w
 ### Output
 
 Returns JSON with the created memory ID and status:
+
 ```json
-{"id":"mem_1765477479985_2a4c455b","status":"created"}
+{ "id": "mem_1765477479985_2a4c455b", "status": "created" }
 ```
 
 Or if queued for later processing:
+
 ```json
-{"id":"mem_1765477479985_2a4c455b","status":"queued"}
+{ "id": "mem_1765477479985_2a4c455b", "status": "queued" }
 ```
 
 ## Examples
@@ -57,6 +59,7 @@ Or if queued for later processing:
 ### Memory Types
 
 #### Episodic (Events)
+
 ```bash
 ./scripts/memory-write.sh \
   "Subagent IMPLEMENTER completed file write task at 2025-12-11" \
@@ -66,6 +69,7 @@ Or if queued for later processing:
 ```
 
 #### Semantic (Facts/Directives)
+
 ```bash
 ./scripts/memory-write.sh \
   "DIRECTIVE: Always validate JSON before writing to shared files" \
@@ -75,6 +79,7 @@ Or if queued for later processing:
 ```
 
 #### Procedural (How-to)
+
 ```bash
 ./scripts/memory-write.sh \
   "Procedure: Use flock for thread-safe file writes in bash" \
@@ -84,6 +89,7 @@ Or if queued for later processing:
 ```
 
 #### Working (Temporary)
+
 ```bash
 ./scripts/memory-write.sh \
   "Currently processing batch #42 with 15 items" \
@@ -128,6 +134,7 @@ This prevents race conditions when multiple subagents write simultaneously.
 ### ID Generation
 
 Memory IDs are generated using:
+
 - Current timestamp (milliseconds since epoch, first 13 digits)
 - 8 random hex characters from `/dev/urandom`
 
@@ -171,6 +178,7 @@ Subagents can use this script to:
 4. **Track temporary state** (working memories)
 
 Example in a subagent task:
+
 ```bash
 # After completing a task
 ./scripts/memory-write.sh \
@@ -183,25 +191,32 @@ Example in a subagent task:
 ## Troubleshooting
 
 ### Permission Denied
+
 ```bash
 chmod +x scripts/memory-write.sh
 ```
 
 ### Python Not Found
+
 Ensure Python 3 is installed:
+
 ```bash
 which python3
 python3 --version
 ```
 
 ### Lock File Issues
+
 Remove stale lock file:
+
 ```bash
 rm data/memories.json.lock
 ```
 
 ### Queue Processing
+
 If memories are being queued, check:
+
 1. File permissions on `data/memories.json`
 2. Disk space availability
 3. JSON file corruption (validate with `python3 -m json.tool data/memories.json`)
@@ -223,6 +238,7 @@ If memories are being queued, check:
 ## Future Enhancements
 
 Potential improvements:
+
 - [ ] Add retry logic for failed writes
 - [ ] Implement exponential backoff for lock contention
 - [ ] Add memory compression for large content

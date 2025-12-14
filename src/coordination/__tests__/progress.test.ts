@@ -14,15 +14,8 @@ import {
   type ProgressEntry,
   type Milestone,
 } from '..//progress';
-import {
-  SubagentRegistry,
-  createRegistry,
-  AgentStatus,
-} from '../../s../../subagent/registry';
-import {
-  AgentMessageBus,
-  createMessageBus,
-} from '../../s../../subagent/messaging';
+import { SubagentRegistry, createRegistry, AgentStatus } from '../../s../../subagent/registry';
+import { AgentMessageBus, createMessageBus } from '../../s../../subagent/messaging';
 import { AgentRole } from '../../s../../subagent/bootstrap';
 
 describe('ProgressTracker', () => {
@@ -54,12 +47,7 @@ describe('ProgressTracker', () => {
 
   describe('reportProgress', () => {
     it('should create progress entry', () => {
-      const entry = tracker.reportProgress(
-        'agent-1',
-        'task-1',
-        50,
-        ProgressStatus.IN_PROGRESS
-      );
+      const entry = tracker.reportProgress('agent-1', 'task-1', 50, ProgressStatus.IN_PROGRESS);
 
       expect(entry).toBeDefined();
       expect(entry.agentId).toBe('agent-1');
@@ -77,41 +65,27 @@ describe('ProgressTracker', () => {
     });
 
     it('should include message and details', () => {
-      const entry = tracker.reportProgress(
-        'agent-1',
-        'task-1',
-        75,
-        ProgressStatus.IN_PROGRESS,
-        {
-          message: 'Almost done',
-          details: 'Finishing up edge cases',
-        }
-      );
+      const entry = tracker.reportProgress('agent-1', 'task-1', 75, ProgressStatus.IN_PROGRESS, {
+        message: 'Almost done',
+        details: 'Finishing up edge cases',
+      });
 
       expect(entry.message).toBe('Almost done');
       expect(entry.details).toBe('Finishing up edge cases');
     });
 
     it('should track time spent', () => {
-      const entry = tracker.reportProgress(
-        'agent-1',
-        'task-1',
-        50,
-        ProgressStatus.IN_PROGRESS,
-        { timeSpentMinutes: 30 }
-      );
+      const entry = tracker.reportProgress('agent-1', 'task-1', 50, ProgressStatus.IN_PROGRESS, {
+        timeSpentMinutes: 30,
+      });
 
       expect(entry.timeSpentMinutes).toBe(30);
     });
 
     it('should record blockers', () => {
-      const entry = tracker.reportProgress(
-        'agent-1',
-        'task-1',
-        25,
-        ProgressStatus.BLOCKED,
-        { blockers: ['Missing API key', 'Waiting for review'] }
-      );
+      const entry = tracker.reportProgress('agent-1', 'task-1', 25, ProgressStatus.BLOCKED, {
+        blockers: ['Missing API key', 'Waiting for review'],
+      });
 
       expect(entry.blockers).toContain('Missing API key');
       expect(entry.blockers).toContain('Waiting for review');
@@ -128,7 +102,12 @@ describe('ProgressTracker', () => {
 
     it('should use default message based on status', () => {
       const pending = tracker.reportProgress('agent-1', 'task-1', 0, ProgressStatus.NOT_STARTED);
-      const inProgress = tracker.reportProgress('agent-1', 'task-2', 50, ProgressStatus.IN_PROGRESS);
+      const inProgress = tracker.reportProgress(
+        'agent-1',
+        'task-2',
+        50,
+        ProgressStatus.IN_PROGRESS
+      );
       const completed = tracker.reportProgress('agent-1', 'task-3', 100, ProgressStatus.COMPLETED);
 
       expect(pending.message).toContain('not started');
@@ -264,10 +243,7 @@ describe('ProgressTracker', () => {
 
   describe('createMilestone', () => {
     it('should create a milestone', () => {
-      const milestone = tracker.createMilestone(
-        'MVP Complete',
-        'Minimum viable product is ready'
-      );
+      const milestone = tracker.createMilestone('MVP Complete', 'Minimum viable product is ready');
 
       expect(milestone).toBeDefined();
       expect(milestone.name).toBe('MVP Complete');
@@ -319,10 +295,7 @@ describe('ProgressTracker', () => {
     it('should update milestone status', () => {
       const milestone = tracker.createMilestone('Updatable', 'Test');
 
-      const updated = tracker.updateMilestoneStatus(
-        milestone.id,
-        MilestoneStatus.IN_PROGRESS
-      );
+      const updated = tracker.updateMilestoneStatus(milestone.id, MilestoneStatus.IN_PROGRESS);
 
       expect(updated?.status).toBe(MilestoneStatus.IN_PROGRESS);
     });
@@ -330,10 +303,7 @@ describe('ProgressTracker', () => {
     it('should set completion date when achieved', () => {
       const milestone = tracker.createMilestone('Achievable', 'Test');
 
-      const updated = tracker.updateMilestoneStatus(
-        milestone.id,
-        MilestoneStatus.ACHIEVED
-      );
+      const updated = tracker.updateMilestoneStatus(milestone.id, MilestoneStatus.ACHIEVED);
 
       expect(updated?.completedDate).toBeDefined();
       expect(updated?.progress).toBe(100);

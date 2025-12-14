@@ -7,6 +7,7 @@ Detailed analysis of consensus mechanisms extracted from SKG Agent Prototype 2 i
 ### When to Use Raft
 
 **Optimal Scenarios**:
+
 - Crash-fault tolerant environments (non-Byzantine)
 - Leader-based coordination needed
 - Strong consistency requirements
@@ -15,6 +16,7 @@ Detailed analysis of consensus mechanisms extracted from SKG Agent Prototype 2 i
 - Small to medium clusters (3-7 nodes)
 
 **Avoid Raft When**:
+
 - Byzantine faults possible (use BFT instead)
 - Need more than 50% fault tolerance (Raft requires majority)
 - Very large networks (>20 nodes, consider hierarchical approaches)
@@ -25,6 +27,7 @@ Detailed analysis of consensus mechanisms extracted from SKG Agent Prototype 2 i
 **Source**: `/home/alton/SKG Agent Prototype 2/src/core/consensus/RaftConsensus.ts`
 
 **Core Components**:
+
 ```typescript
 interface RaftNode {
   id: string;
@@ -48,13 +51,13 @@ interface RaftCommand {
 
 From actual implementation testing:
 
-| Metric | Value | Configuration |
-|--------|-------|---------------|
-| Leader Election Time | 50-200ms average | electionTimeout: 150-300ms |
-| Log Replication Latency | 10-50ms per command | Local network, 3 nodes |
-| Throughput | 100-1000 commands/second | Depends on network, batching |
-| Split-brain Recovery | 200-500ms | Automatic partition healing |
-| Membership Changes | 100-300ms | Joint consensus protocol |
+| Metric                  | Value                    | Configuration                |
+| ----------------------- | ------------------------ | ---------------------------- |
+| Leader Election Time    | 50-200ms average         | electionTimeout: 150-300ms   |
+| Log Replication Latency | 10-50ms per command      | Local network, 3 nodes       |
+| Throughput              | 100-1000 commands/second | Depends on network, batching |
+| Split-brain Recovery    | 200-500ms                | Automatic partition healing  |
+| Membership Changes      | 100-300ms                | Joint consensus protocol     |
 
 ### Safety Properties (Enforced)
 
@@ -68,15 +71,15 @@ From actual implementation testing:
 
 ```typescript
 const raftConfig = {
-  electionTimeoutMin: 150,      // Minimum election timeout (ms)
-  electionTimeoutMax: 300,      // Maximum election timeout (ms)
-  heartbeatInterval: 50,        // Leader heartbeat frequency (ms)
-  maxEntriesPerRequest: 100,    // Batch size for log replication
-  performanceMonitoring: true,  // Enable metrics collection
-  splitBrainDetection: true,    // Enable split-brain monitoring
-  enablePreVote: true,          // Use pre-vote optimization
-  enablePipeline: true,         // Enable request pipelining
-  enableBatching: true          // Enable command batching
+  electionTimeoutMin: 150, // Minimum election timeout (ms)
+  electionTimeoutMax: 300, // Maximum election timeout (ms)
+  heartbeatInterval: 50, // Leader heartbeat frequency (ms)
+  maxEntriesPerRequest: 100, // Batch size for log replication
+  performanceMonitoring: true, // Enable metrics collection
+  splitBrainDetection: true, // Enable split-brain monitoring
+  enablePreVote: true, // Use pre-vote optimization
+  enablePipeline: true, // Enable request pipelining
+  enableBatching: true, // Enable command batching
 };
 ```
 
@@ -92,35 +95,39 @@ const raftConfig = {
 
 ### Raft vs BFT Comparison (Measured)
 
-| Metric | Raft | BFT | Advantage |
-|--------|------|-----|-----------|
-| Election Time | ~150ms | ~375ms | Raft 2.5x faster |
-| Throughput | ~500 cmd/s | ~350 cmd/s | Raft 43% higher |
-| Latency | ~25ms | ~45ms | Raft 44% lower |
-| Scalability | Good (3-7 nodes) | Poor (>4 nodes) | Raft better |
-| Split-brain Recovery | ~250ms | ~750ms | Raft 3x faster |
-| Byzantine Tolerance | None | f < n/3 | BFT only option |
+| Metric               | Raft             | BFT             | Advantage        |
+| -------------------- | ---------------- | --------------- | ---------------- |
+| Election Time        | ~150ms           | ~375ms          | Raft 2.5x faster |
+| Throughput           | ~500 cmd/s       | ~350 cmd/s      | Raft 43% higher  |
+| Latency              | ~25ms            | ~45ms           | Raft 44% lower   |
+| Scalability          | Good (3-7 nodes) | Poor (>4 nodes) | Raft better      |
+| Split-brain Recovery | ~250ms           | ~750ms          | Raft 3x faster   |
+| Byzantine Tolerance  | None             | f < n/3         | BFT only option  |
 
 **Decision Rule**: Use Raft unless Byzantine faults are possible. In trusted environments, Raft provides 2-3x better performance.
 
 ### Failure Scenarios and Recovery
 
 **Network Partition**:
+
 - Detection: Heartbeat timeout (~300ms)
 - Behavior: Majority partition continues, minority blocks
 - Recovery: Automatic when partition heals (100-500ms)
 
 **Leader Failure**:
+
 - Detection: Election timeout (150-300ms)
 - Recovery: New leader elected within 200ms average
 - Data loss: None (committed entries preserved)
 
 **Follower Failure**:
+
 - Impact: Minimal if majority available
 - Recovery: Rejoins and catches up via log replication
 - Catch-up time: Depends on log divergence
 
 **Cascading Failures**:
+
 - Tolerance: Operates with majority alive
 - Example: 5-node cluster tolerates 2 failures
 - Limitation: Requires 3+ nodes for progress
@@ -134,7 +141,7 @@ import { createRaftConsensus, RaftNode, CommandType } from './src/core/consensus
 const nodes: RaftNode[] = [
   { id: 'node1', address: '127.0.0.1', port: 3001, active: true },
   { id: 'node2', address: '127.0.0.1', port: 3002, active: true },
-  { id: 'node3', address: '127.0.0.1', port: 3003, active: true }
+  { id: 'node3', address: '127.0.0.1', port: 3003, active: true },
 ];
 
 // Create Raft instance
@@ -143,7 +150,7 @@ const raft = createRaftConsensus({
   nodes,
   electionTimeoutMin: 150,
   electionTimeoutMax: 300,
-  performanceMonitoring: true
+  performanceMonitoring: true,
 });
 
 // Initialize
@@ -155,7 +162,7 @@ const command = {
   type: CommandType.DATA_UPDATE,
   data: { key: 'value' },
   clientId: 'client-1',
-  sequenceNumber: 1
+  sequenceNumber: 1,
 };
 
 await raft.submitCommand(command);
@@ -171,6 +178,7 @@ console.log('Throughput:', metrics.throughput);
 ### When to Use BFT
 
 **Optimal Scenarios**:
+
 - Untrusted or adversarial environments
 - Financial systems (blockchain, cryptocurrency)
 - Security-critical coordination
@@ -178,6 +186,7 @@ console.log('Throughput:', metrics.throughput);
 - Systems with regulatory requirements for Byzantine tolerance
 
 **Avoid BFT When**:
+
 - Only crash faults expected (Raft is 2-3x faster)
 - High throughput needed (BFT has O(n²) message overhead)
 - Large networks (>30 nodes become impractical)
@@ -188,6 +197,7 @@ console.log('Throughput:', metrics.throughput);
 **Source**: `/home/alton/SKG Agent Prototype 2/src/core/consensus/BFTConsensus.ts`
 
 **Three-Phase Protocol**:
+
 1. **Pre-prepare**: Primary broadcasts request proposal
 2. **Prepare**: Replicas validate and vote (requires 2f+1 votes)
 3. **Commit**: Final commitment with 2f+1 confirmations
@@ -196,35 +206,37 @@ console.log('Throughput:', metrics.throughput);
 
 ### Measured Performance Characteristics
 
-| Metric | Value | Configuration |
-|--------|-------|---------------|
-| Consensus Latency (4 nodes) | 45ms average (15-120ms range) | Local network |
-| Consensus Latency (7 nodes) | 75ms average (25-200ms range) | Local network |
-| Consensus Latency (10 nodes) | 120ms average (40-350ms range) | Local network |
-| Throughput (Small) | 10-20 req/s | 4-7 nodes |
-| Throughput (Medium) | 5-15 req/s | 7-10 nodes |
-| View Change Time | 2-6 seconds | Detection + recovery |
-| Message Complexity | O(n²) confirmed | Matches theoretical analysis |
+| Metric                       | Value                          | Configuration                |
+| ---------------------------- | ------------------------------ | ---------------------------- |
+| Consensus Latency (4 nodes)  | 45ms average (15-120ms range)  | Local network                |
+| Consensus Latency (7 nodes)  | 75ms average (25-200ms range)  | Local network                |
+| Consensus Latency (10 nodes) | 120ms average (40-350ms range) | Local network                |
+| Throughput (Small)           | 10-20 req/s                    | 4-7 nodes                    |
+| Throughput (Medium)          | 5-15 req/s                     | 7-10 nodes                   |
+| View Change Time             | 2-6 seconds                    | Detection + recovery         |
+| Message Complexity           | O(n²) confirmed                | Matches theoretical analysis |
 
 ### Fault Tolerance Validation
 
 | Network Size | Total Nodes | Byzantine Tolerance | Percentage |
-|--------------|-------------|---------------------|------------|
-| Small | 4 | 1 | 25% |
-| Medium | 7 | 2 | 28.6% |
-| Large | 10 | 3 | 30% |
+| ------------ | ----------- | ------------------- | ---------- |
+| Small        | 4           | 1                   | 25%        |
+| Medium       | 7           | 2                   | 28.6%      |
+| Large        | 10          | 3                   | 30%        |
 
 **Formula**: f < n/3, where f = maximum Byzantine faults, n = total nodes
 
 ### Message Authentication and Security
 
 **Cryptographic Features**:
+
 - RSA-2048 digital signatures for message authenticity
 - SHA-256 message hashing for integrity verification
 - Timestamp validation for replay protection
 - Sequence numbers prevent message reordering attacks
 
 **Byzantine Detection**:
+
 - Invalid signature detection and node isolation
 - Behavior anomaly tracking
 - Trust scoring based on historical behavior
@@ -232,11 +244,13 @@ console.log('Throughput:', metrics.throughput);
 ### View Change Protocol
 
 **Automatic Detection**:
+
 - Monitors primary node health and performance
 - Timeout-based failure detection (2-5 seconds)
 - Suspicion threshold triggers view change
 
 **View Change Process**:
+
 ```
 1. Detect primary failure
 2. Initiate view change protocol
@@ -284,11 +298,13 @@ await bftNode.processRequest(request);
 ### Scalability Limits
 
 **Recommended Maximum**: 20-30 nodes
+
 - Beyond 30 nodes, O(n²) message overhead becomes prohibitive
 - Each node must communicate with every other node
 - Network bandwidth becomes bottleneck
 
 **Theoretical Limit**: 50+ nodes with optimization
+
 - Requires hierarchical BFT or sharding
 - Performance degrades gracefully
 - Consider alternative consensus for very large networks
@@ -304,11 +320,13 @@ await bftNode.processRequest(request);
 ### Tradeoffs and Limitations
 
 **Strengths**:
+
 - Tolerates Byzantine (malicious) failures
 - Cryptographically secure
 - Deterministic guarantees (no probabilistic consensus)
 
 **Limitations**:
+
 - O(n²) message complexity limits scalability
 - High computational cost (cryptographic operations)
 - Requires 3f+1 nodes (50% more than Raft)
@@ -320,12 +338,14 @@ await bftNode.processRequest(request);
 ### When to Use
 
 **Optimal Scenarios**:
+
 - Very large networks (>30 nodes)
 - Geographically distributed agents
 - Hierarchical organizational structure
 - Need to balance scalability and consistency
 
 **Pattern**:
+
 ```
 Global Coordinator (BFT/Raft)
 ├── Regional Coordinator 1 (Raft)
@@ -343,6 +363,7 @@ Global Coordinator (BFT/Raft)
 ```
 
 **Tradeoffs**:
+
 - Improved scalability (logarithmic message growth)
 - Increased latency (multi-level coordination)
 - Complexity in cross-region coordination
@@ -353,18 +374,21 @@ Global Coordinator (BFT/Raft)
 ### When to Use
 
 **Optimal Scenarios**:
+
 - Very large networks (>100 nodes)
 - Eventual consistency acceptable
 - Membership changes frequent
 - Decentralized architecture
 
 **Characteristics**:
+
 - No leader required
 - Scales to thousands of nodes
 - Probabilistic guarantees
 - Unpredictable convergence time
 
 **Limitations**:
+
 - No strong consistency
 - Cannot guarantee ordering
 - Duplicate message handling required
@@ -387,12 +411,14 @@ Need Byzantine tolerance?
 ## Evidence and Measurements
 
 All performance numbers in this document are derived from actual implementations in:
+
 - `/home/alton/SKG Agent Prototype 2/src/core/consensus/RaftConsensus.ts`
 - `/home/alton/SKG Agent Prototype 2/src/core/consensus/BFTConsensus.ts`
 - `/home/alton/SKG Agent Prototype 2/RAFT_IMPLEMENTATION_SUMMARY.md`
 - `/home/alton/SKG Agent Prototype 2/BFT_CONSENSUS_IMPLEMENTATION_SUMMARY.md`
 
 Performance characteristics are based on:
+
 - Test environment: Local network, modern hardware
 - Measurement methodology: Comprehensive test suites with performance monitoring
 - Sample sizes: 100+ iterations per benchmark

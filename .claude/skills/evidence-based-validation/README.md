@@ -39,18 +39,21 @@ python ~/.claude/skills/evidence-based-validation/scripts/validate_claims.py --d
 ## What This Skill Prevents
 
 ### Score Fabrication
+
 - Invented percentages (e.g., "95% test coverage" without measurement)
 - Fabricated metrics (e.g., "response time under 100ms" without benchmarks)
 - Letter grades without defined rubrics
 - Composite scores without calculation basis
 
 ### Prohibited Language
+
 - Impossible claims: "perfect", "flawless", "zero-error"
 - Absolute supremacy: "best-in-class", "world-class", "industry-leading"
 - Exaggerated performance: "revolutionary", "breakthrough", "unprecedented"
 - Vague excellence: "exceptional", "outstanding", "highly optimized"
 
 ### Unsupported Claims
+
 - Quality assessments without testing
 - Performance claims without profiling
 - Security claims without audits
@@ -59,18 +62,21 @@ python ~/.claude/skills/evidence-based-validation/scripts/validate_claims.py --d
 ## What This Skill Enforces
 
 ### Evidence-Based Analysis
+
 - State only observable facts
 - Provide specific evidence (file names, line numbers)
 - Cite measurement data when available
 - Acknowledge when measurement is needed
 
 ### Proper Uncertainty Expression
+
 - "Cannot determine without measurement data"
 - "Requires testing to verify"
 - "Based on code inspection, [observation]. Not tested."
 - "Preliminary observation suggests..."
 
 ### Limitation Disclosure
+
 - List what cannot be validated
 - Identify evidence gaps
 - Specify required measurements
@@ -97,6 +103,7 @@ python validate_claims.py myfile.txt
 ```
 
 Output:
+
 ```
 ======================================================================
 VALIDATION REPORT
@@ -140,23 +147,27 @@ cat analysis.txt | python validate_claims.py -
 ## Integration with Analysis Workflow
 
 ### Step 1: Pre-Analysis
+
 - Acknowledge evidence-based protocols will be followed
 - Identify what evidence is available
 - List limitations upfront
 
 ### Step 2: Analysis
+
 - Focus on observable facts
 - Avoid quality judgments
 - Note potential issues
 - Express uncertainty appropriately
 
 ### Step 3: Validation (Optional)
+
 - Write analysis to file
 - Run validation script
 - Address any detected violations
 - Revise and re-validate
 
 ### Step 4: Delivery
+
 - Provide evidence-based analysis
 - Include limitations section
 - List evidence gaps
@@ -175,14 +186,18 @@ See `/home/alton/.claude/skills/evidence-based-validation/examples/good-vs-bad-a
 ## Reference Materials
 
 ### Prohibited Patterns
+
 See `reference/prohibited-patterns.md` for comprehensive list of:
+
 - CRITICAL level patterns (never use)
 - HIGH level patterns (avoid without evidence)
 - MEDIUM level patterns (use with caution)
 - Compliant alternatives for each
 
 ### Evidence Standards
+
 See `reference/evidence-standards.md` for:
+
 - Evidence hierarchy (Tier 1-4)
 - Requirements by claim type
 - Measurement methodology requirements
@@ -192,6 +207,7 @@ See `reference/evidence-standards.md` for:
 ## Skill Activation
 
 This skill should be **automatically activated** when:
+
 - Analyzing code quality
 - Reviewing architecture
 - Assessing performance
@@ -225,6 +241,7 @@ If prohibited patterns are detected:
 This skill embodies the principle that **truth over positivity** and **evidence over opinion** are paramount. Your value comes from honest, accurate assessment based on evidence, not from generating impressive-sounding but unfounded scores or claims.
 
 When in doubt:
+
 - Describe what you observe
 - State what you cannot determine
 - List what measurements would be needed

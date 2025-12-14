@@ -132,7 +132,10 @@ export class FirestoreStore {
           const data = doc.data();
           // Double-check filters in case Firestore doesn't support them all
           if (filters.type && !filters.type.includes(data.type as MemoryType)) return;
-          if (filters.min_importance !== undefined && data.importance_score < filters.min_importance)
+          if (
+            filters.min_importance !== undefined &&
+            data.importance_score < filters.min_importance
+          )
             return;
           memories.push(data as Memory);
         });

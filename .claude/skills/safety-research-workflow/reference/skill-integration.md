@@ -30,21 +30,25 @@ Evidence-Based Validation is the **foundation** of research quality. Every resea
 ### Integration Points
 
 **1. Source Validation:**
+
 - Apply Evidence-Based Validation to detect fabricated PMIDs
 - Validate bibliography authenticity using anti-fabrication protocols
 - Verify all sources before proceeding to extraction
 
 **2. Claim Verification:**
+
 - Every extracted data point validated against source material
 - Numerical claims must include evidence chain (source → extraction → synthesis)
 - Confidence calibration based on evidence quality, not opinion
 
 **3. CLAUDE.md Compliance:**
+
 - Score fabrication prohibition enforced throughout research
 - Banned language detection during synthesis
 - Mandatory limitations documentation
 
 **4. Quality Gates:**
+
 - Research cannot proceed if Evidence-Based Validation fails
 - Each workflow stage has validation checkpoint
 - Final QA uses Evidence-Based Validation extensively
@@ -83,11 +87,13 @@ for source in bibliography:
 ### Example from ADC/ILD Research
 
 **Before Evidence-Based Validation:**
+
 - 165 sources cited in review
 - Unknown authenticity
 - Potential for fabricated PMIDs
 
 **After Evidence-Based Validation:**
+
 - All 165 sources validated for authenticity
 - 146/165 (88.5%) have verified PMIDs
 - 165/165 (100%) have verified DOIs
@@ -105,17 +111,20 @@ MCP enables research tools and agents to communicate via standardized protocol, 
 ### Integration Points
 
 **1. Research Tools as MCP Servers:**
+
 - Bibliography validation exposed as MCP tool
 - PubMed search as MCP server
 - Citation formatter as MCP tool
 - Quality checker as MCP service
 
 **2. Agent Communication:**
+
 - Research agents communicate via MCP protocol
 - Handoffs between agents use structured MCP messages
 - Progress tracking through MCP notifications
 
 **3. External Service Integration:**
+
 - PubMed API accessed via MCP server
 - DOI resolution service via MCP
 - Full-text retrieval via MCP tools
@@ -174,6 +183,7 @@ result = mcp_client.call_tool(
 ### Example Use Case
 
 **Research Coordination via MCP:**
+
 1. Literature Agent searches PubMed via MCP PubMed server
 2. Returns sources to Orchestrator via MCP response
 3. Validation Agent validates sources via MCP validation server
@@ -189,6 +199,7 @@ Multi-Agent Orchestration patterns structure how specialized research agents col
 ### Integration Points
 
 **1. Research Agent Specialization:**
+
 - Literature Search Agent (comprehensive source identification)
 - Evidence Extraction Agent (detailed data extraction)
 - Validation Agent (quality control and authenticity)
@@ -196,17 +207,20 @@ Multi-Agent Orchestration patterns structure how specialized research agents col
 - QA Agent (final compliance and quality audit)
 
 **2. Coordination Patterns:**
+
 - Sequential Pipeline: Search → Extract → Validate → Synthesize → QA
 - Parallel Specialization: Multiple domains researched simultaneously
 - Iterative Refinement: Executor ↔ Validator loop until quality gates pass
 - Cross-Validation: Independent agents verify findings
 
 **3. Quality Gates:**
+
 - Each agent transition has quality gate
 - Downstream agent validates upstream outputs
 - Failures trigger revision or escalation
 
 **4. CLAUDE.md Parallel Agent Protocols:**
+
 - Distinct persona adoption (each agent has specialized perspective)
 - Complementary analysis (agents provide unique contributions)
 - Cross-validation (agents verify each other's work)
@@ -274,6 +288,7 @@ if not result.all_gates_passed:
 ### Example from ADC/ILD Research
 
 **Multi-Agent Coordination:**
+
 - Agent A: Clinical trials and outcomes (47 sources)
 - Agent B: Mechanistic studies (15 sources)
 - Agent C: Treatment protocols (23 sources)
@@ -281,6 +296,7 @@ if not result.all_gates_passed:
 - Agent E: Recent 2023-2025 updates (73 sources)
 
 **Quality Gates:**
+
 - After Agent A: Validator checks all sources authentic → PASS (0 fabricated)
 - After Agent B: Validator checks data accuracy → 2 corrections needed → REVISED → PASS
 - After Synthesis (Agent D integrates): QA checks CLAUDE.md compliance → PASS
@@ -297,21 +313,25 @@ Debugging methodology helps validate research processes, trace evidence chains, 
 ### Integration Points
 
 **1. Research Process Validation:**
+
 - Trace how evidence flows from source → extraction → synthesis
 - Identify where quality degraded
 - Debug multi-agent coordination issues
 
 **2. Evidence Chain Tracing:**
+
 - Track claim back to original source
 - Verify transformations preserve accuracy
 - Identify where context lost
 
 **3. Quality Issue Diagnosis:**
+
 - When validation fails, debug why
 - Systematic investigation of root causes
 - Identify process improvements
 
 **4. Performance Optimization:**
+
 - Identify bottlenecks in research workflow
 - Optimize agent coordination
 - Reduce rework through better quality gates
@@ -382,6 +402,7 @@ else:
 **Problem:** Final QA flags potential unsupported claim
 
 **Investigation:**
+
 1. Use EvidenceTracer to map claim to source
 2. Source found: Modi 2022, PMID 35665782
 3. Extraction shows: "15.2% (85/557)"
@@ -403,12 +424,14 @@ else:
 **Skills Integration:**
 
 **Phase 1: Planning (All Skills)**
+
 - Define research question (PICO framework)
 - Assign specialized agents (Skill #3: Multi-Agent Orchestration)
 - Set quality standards (Skill #1: Evidence-Based Validation)
 - Document methodology for reproducibility
 
 **Phase 2: Literature Search (Skills #1, #2, #3)**
+
 - Agent A searches PubMed via MCP server (Skill #2: MCP)
 - Returns 127 sources
 - Agent B (Validator) runs Evidence-Based Validation (Skill #1)
@@ -416,6 +439,7 @@ else:
 - Quality gate enforced by Orchestrator (Skill #3)
 
 **Phase 3: Evidence Extraction (Skills #1, #3, #4)**
+
 - Agent C extracts ILD incidence data systematically
 - Agent B validates extractions against sources (Skill #1)
 - 2 discrepancies found → debugged using evidence tracing (Skill #4)
@@ -423,6 +447,7 @@ else:
 - Quality gate: All data has citations and context → PASS
 
 **Phase 4: Synthesis (Skills #1, #3)**
+
 - Agent D integrates findings across 165 sources
 - Preserves disagreements (CLAUDE.md protocol via Skill #3)
 - Agent B validates CLAUDE.md compliance (Skill #1)
@@ -430,6 +455,7 @@ else:
 - Quality gate: CLAUDE.md compliant → PASS
 
 **Phase 5: Final QA (All Skills)**
+
 - Agent E (QA) runs comprehensive validation
 - Bibliography check (Skill #1): 165 sources, 0 fabricated → PASS
 - Claim check (Skill #4): Traced 127 claims to sources → ALL supported
@@ -437,6 +463,7 @@ else:
 - Process validation (Skill #3): All quality gates passed → PASS
 
 **Deliverable:**
+
 - Comprehensive ADC/ILD review with 165 validated citations
 - All claims supported by primary evidence
 - CLAUDE.md compliant
@@ -444,6 +471,7 @@ else:
 - Methodology fully documented and reproducible
 
 **Quality Metrics:**
+
 - 0 fabricated sources (Skill #1)
 - 100% claim-source mapping (Skill #4)
 - 0 CLAUDE.md violations (Skill #1)
@@ -455,6 +483,7 @@ else:
 ### Benefit 1: Layered Quality Assurance
 
 Each skill provides quality layer:
+
 - Skill #1: Prevents fabrication and enforces evidence standards
 - Skill #2: Enables tool accessibility and agent communication
 - Skill #3: Structures coordination and enforces quality gates
@@ -465,6 +494,7 @@ Each skill provides quality layer:
 ### Benefit 2: Systematic Methodology
 
 Integration provides:
+
 - Clear workflow stages (Skill #3 orchestration)
 - Quality gates between stages (Skill #1 validation)
 - Traceable processes (Skill #4 debugging)
@@ -475,6 +505,7 @@ Integration provides:
 ### Benefit 3: Evidence Integrity
 
 All skills reinforce evidence integrity:
+
 - Sources validated for authenticity (Skill #1)
 - Extraction verified against sources (Skill #4)
 - Synthesis faithful to evidence (Skill #1 CLAUDE.md)
@@ -493,15 +524,15 @@ All skills reinforce evidence integrity:
 
 ## Skill Dependency Matrix
 
-| Research Activity | Skill #1 | Skill #2 | Skill #3 | Skill #4 |
-|-------------------|----------|----------|----------|----------|
-| Source validation | ✓✓✓ | ✓ | - | ✓ |
-| Literature search | ✓ | ✓✓ | ✓✓ | - |
-| Evidence extraction | ✓✓ | - | ✓✓ | ✓✓ |
-| Agent coordination | ✓ | ✓✓ | ✓✓✓ | ✓ |
-| Synthesis | ✓✓✓ | - | ✓✓ | ✓ |
-| Quality assurance | ✓✓✓ | ✓ | ✓ | ✓✓ |
-| Process debugging | ✓ | - | ✓ | ✓✓✓ |
+| Research Activity   | Skill #1 | Skill #2 | Skill #3 | Skill #4 |
+| ------------------- | -------- | -------- | -------- | -------- |
+| Source validation   | ✓✓✓      | ✓        | -        | ✓        |
+| Literature search   | ✓        | ✓✓       | ✓✓       | -        |
+| Evidence extraction | ✓✓       | -        | ✓✓       | ✓✓       |
+| Agent coordination  | ✓        | ✓✓       | ✓✓✓      | ✓        |
+| Synthesis           | ✓✓✓      | -        | ✓✓       | ✓        |
+| Quality assurance   | ✓✓✓      | ✓        | ✓        | ✓✓       |
+| Process debugging   | ✓        | -        | ✓        | ✓✓✓      |
 
 ✓✓✓ = Primary skill for this activity
 ✓✓ = Important supporting skill
@@ -518,6 +549,7 @@ The Safety Research Workflow skill achieves research quality through integration
 4. **Distributed Systems Debugging** enables process validation and evidence tracing
 
 Together, these skills create a research system with:
+
 - Zero fabrication tolerance
 - Systematic methodology
 - Multi-layer quality assurance

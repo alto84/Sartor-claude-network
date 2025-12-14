@@ -255,8 +255,9 @@ export class MemorySystem {
 
     // Evict least frequently accessed entries if cache exceeds max size
     if (this.searchCache.size > this.cacheMaxSize) {
-      const sorted = Array.from(this.searchCache.entries())
-        .sort((a, b) => a[1].accessCount - b[1].accessCount);
+      const sorted = Array.from(this.searchCache.entries()).sort(
+        (a, b) => a[1].accessCount - b[1].accessCount
+      );
       const toRemove = sorted.slice(0, Math.ceil(this.cacheMaxSize * 0.2)); // Remove 20% of cache
       for (const [key] of toRemove) {
         this.searchCache.delete(key);
@@ -297,10 +298,16 @@ export class MemorySystem {
       }
 
       // Importance range filter (min_importance and max_importance)
-      if (options.filters?.min_importance && memory.importance_score < options.filters.min_importance) {
+      if (
+        options.filters?.min_importance &&
+        memory.importance_score < options.filters.min_importance
+      ) {
         match = false;
       }
-      if (options.filters?.max_importance && memory.importance_score > options.filters.max_importance) {
+      if (
+        options.filters?.max_importance &&
+        memory.importance_score > options.filters.max_importance
+      ) {
         match = false;
       }
 
@@ -311,7 +318,7 @@ export class MemorySystem {
 
       // Tag-based filtering
       if (options.filters?.tags && options.filters.tags.length > 0) {
-        const hasAllTags = options.filters.tags.every(tag => memory.tags.includes(tag));
+        const hasAllTags = options.filters.tags.every((tag) => memory.tags.includes(tag));
         if (!hasAllTags) {
           match = false;
         }
@@ -328,7 +335,7 @@ export class MemorySystem {
           match = false;
         } else {
           // Combine importance score with fuzzy match score
-          score = (score * 0.5) + (fuzzyScore * 0.5);
+          score = score * 0.5 + fuzzyScore * 0.5;
         }
       }
 

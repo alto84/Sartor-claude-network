@@ -1,6 +1,7 @@
 # User Interaction Model & Interface Design
 
 ## Overview
+
 A multi-modal interaction system enabling users to create, monitor, and manage tasks through various interfaces while maintaining a consistent and intuitive experience.
 
 ## 1. User Personas & Use Cases
@@ -8,6 +9,7 @@ A multi-modal interaction system enabling users to create, monitor, and manage t
 ### Primary User Personas
 
 #### Alton (Father/Administrator)
+
 ```yaml
 profile:
   technical_level: Advanced
@@ -26,6 +28,7 @@ profile:
 ```
 
 #### Vayu (Son/Learner)
+
 ```yaml
 profile:
   technical_level: Beginner to Intermediate
@@ -44,6 +47,7 @@ profile:
 ```
 
 #### General Users
+
 ```yaml
 profile:
   technical_level: Varied
@@ -66,6 +70,7 @@ profile:
 ### Command Line Interface (CLI)
 
 #### Basic Commands
+
 ```bash
 # Task Management
 vayu task create "Build a weather app"
@@ -87,6 +92,7 @@ vayu system config --show
 ```
 
 #### Advanced CLI Features
+
 ```bash
 # Batch Operations
 vayu task create --from tasks.yaml
@@ -110,6 +116,7 @@ vayu interactive
 ```
 
 #### CLI Configuration
+
 ```yaml
 # ~/.vayu/config.yaml
 defaults:
@@ -135,6 +142,7 @@ notifications:
 ### Web Dashboard Interface
 
 #### Dashboard Components
+
 ```html
 <!-- Main Navigation -->
 <nav class="main-nav">
@@ -199,6 +207,7 @@ notifications:
 ```
 
 #### Real-Time Updates
+
 ```javascript
 // WebSocket connection for real-time updates
 class DashboardConnection {
@@ -209,10 +218,12 @@ class DashboardConnection {
 
   subscribe(eventType, callback) {
     this.subscriptions.set(eventType, callback);
-    this.ws.send(JSON.stringify({
-      action: 'subscribe',
-      events: [eventType]
-    }));
+    this.ws.send(
+      JSON.stringify({
+        action: 'subscribe',
+        events: [eventType],
+      })
+    );
   }
 
   handleMessage(event) {
@@ -234,6 +245,7 @@ connection.subscribe('task_status_change', (data) => {
 ### Natural Language Interface
 
 #### Conversation Patterns
+
 ```yaml
 task_creation:
   user: "I need help building a Python web scraper"
@@ -257,6 +269,7 @@ multi_task:
 ```
 
 #### Intent Recognition
+
 ```python
 class IntentRecognizer:
     intents = {
@@ -283,16 +296,17 @@ class IntentRecognizer:
 ```
 
 ### Voice Interface (Future)
+
 ```yaml
 voice_commands:
-  activation: "Hey Vayu"
+  activation: 'Hey Vayu'
 
   commands:
-    - "Create a new task"
+    - 'Create a new task'
     - "What's my task status?"
-    - "Show me active agents"
-    - "Cancel current task"
-    - "Generate daily report"
+    - 'Show me active agents'
+    - 'Cancel current task'
+    - 'Generate daily report'
 
   feedback:
     audio: true
@@ -308,6 +322,7 @@ voice_commands:
 ## 3. User Interaction Flows
 
 ### Task Creation Flow
+
 ```mermaid
 graph TD
     A[User Intent] --> B{Interface}
@@ -330,6 +345,7 @@ graph TD
 ```
 
 ### Task Monitoring Flow
+
 ```mermaid
 graph TD
     A[User Requests Status] --> B{Level of Detail}
@@ -351,6 +367,7 @@ graph TD
 ## 4. Notification System
 
 ### Notification Channels
+
 ```yaml
 channels:
   in_app:
@@ -377,6 +394,7 @@ channels:
 ```
 
 ### Notification Preferences
+
 ```json
 {
   "user_preferences": {
@@ -405,6 +423,7 @@ channels:
 ## 5. Access Control & Permissions
 
 ### Role-Based Access Control
+
 ```yaml
 roles:
   admin:
@@ -440,6 +459,7 @@ roles:
 ```
 
 ### Authentication Methods
+
 ```python
 class AuthenticationManager:
     methods = {
@@ -470,25 +490,21 @@ class AuthenticationManager:
 ## 6. Feedback Mechanisms
 
 ### User Feedback Collection
+
 ```yaml
 feedback_points:
   task_completion:
-    prompt: "How satisfied are you with the result?"
+    prompt: 'How satisfied are you with the result?'
     options: [1-5 stars]
     optional_comment: true
 
   task_failure:
-    prompt: "What went wrong?"
-    options: [
-      "Incorrect result",
-      "Too slow",
-      "Incomplete",
-      "Other"
-    ]
+    prompt: 'What went wrong?'
+    options: ['Incorrect result', 'Too slow', 'Incomplete', 'Other']
     required_comment: true
 
   agent_interaction:
-    prompt: "How was your experience?"
+    prompt: 'How was your experience?'
     metrics:
       - Helpfulness
       - Clarity
@@ -496,7 +512,7 @@ feedback_points:
       - Accuracy
 
   system_usability:
-    prompt: "Rate the interface"
+    prompt: 'Rate the interface'
     metrics:
       - Ease of use
       - Performance
@@ -505,6 +521,7 @@ feedback_points:
 ```
 
 ### Feedback Processing
+
 ```python
 class FeedbackProcessor:
     def process_feedback(self, feedback):
@@ -537,6 +554,7 @@ class FeedbackProcessor:
 ## 7. Help & Documentation
 
 ### In-App Help System
+
 ```yaml
 help_system:
   contextual_help:
@@ -565,28 +583,29 @@ help_system:
 ```
 
 ### Interactive Tutorial System
+
 ```javascript
 class TutorialSystem {
   tutorials = {
-    'first_task': {
+    first_task: {
       steps: [
         {
           element: '#create-task-button',
           message: 'Click here to create your first task',
-          position: 'bottom'
+          position: 'bottom',
         },
         {
           element: '#task-type-selector',
           message: 'Select the type of task you want to create',
-          position: 'right'
+          position: 'right',
         },
         {
           element: '#task-description',
           message: 'Describe what you want to accomplish',
-          position: 'top'
-        }
-      ]
-    }
+          position: 'top',
+        },
+      ],
+    },
   };
 
   startTutorial(name) {
@@ -600,6 +619,7 @@ class TutorialSystem {
 ## 8. Personalization
 
 ### User Preferences
+
 ```json
 {
   "personalization": {
@@ -630,6 +650,7 @@ class TutorialSystem {
 ```
 
 ### Adaptive Interface
+
 ```python
 class AdaptiveInterface:
     def adapt_to_user(self, user_id):
@@ -662,6 +683,7 @@ class AdaptiveInterface:
 ## 9. Mobile Responsiveness
 
 ### Responsive Design
+
 ```css
 /* Mobile-first approach */
 .task-card {
@@ -696,6 +718,7 @@ class AdaptiveInterface:
 ```
 
 ### Mobile-Specific Features
+
 ```yaml
 mobile_features:
   gestures:
@@ -720,6 +743,7 @@ mobile_features:
 ## 10. Accessibility
 
 ### Accessibility Standards
+
 ```yaml
 wcag_compliance:
   level: AA
@@ -749,16 +773,17 @@ wcag_compliance:
 ```
 
 ### Accessibility Implementation
+
 ```javascript
 class AccessibilityManager {
   enableScreenReader() {
     // Add ARIA labels
-    document.querySelectorAll('[data-label]').forEach(el => {
+    document.querySelectorAll('[data-label]').forEach((el) => {
       el.setAttribute('aria-label', el.dataset.label);
     });
 
     // Add role attributes
-    document.querySelectorAll('[data-role]').forEach(el => {
+    document.querySelectorAll('[data-role]').forEach((el) => {
       el.setAttribute('role', el.dataset.role);
     });
 
@@ -771,7 +796,7 @@ class AccessibilityManager {
 
   enableKeyboardNav() {
     document.addEventListener('keydown', (e) => {
-      switch(e.key) {
+      switch (e.key) {
         case 'Tab':
           this.handleTabNavigation(e);
           break;
@@ -789,4 +814,4 @@ class AccessibilityManager {
 
 ---
 
-*This user interaction model ensures intuitive, accessible, and efficient task management across all user types and interaction preferences while maintaining consistency and supporting both simple and complex workflows.*
+_This user interaction model ensures intuitive, accessible, and efficient task management across all user types and interaction preferences while maintaining consistency and supporting both simple and complex workflows._

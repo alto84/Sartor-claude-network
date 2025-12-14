@@ -567,6 +567,7 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 - [ ] Enable MCP servers to use Firebase as primary
 
 **Files:**
+
 - `src/mcp/firebase-init.ts` (exists, needs credentials)
 - `src/mcp/multi-tier-store.ts` (exists, ready)
 - `config/service-account.json` (needs creation)
@@ -582,6 +583,7 @@ Phase 5 implemented **sequential refinement** (single solution path, iterative i
 - [ ] Create template registry with deprecation metadata
 
 **Files:**
+
 - `.claude/skills/ways-of-working-evolution/SKILL.md` (exists)
 - `.claude/TEMPLATE_REGISTRY.md` (new)
 - Memory MCP tracking for template usage

@@ -66,13 +66,13 @@ export class ExecutiveClaude {
 
       // Apply learned patterns from memory
       if (hasPriorExperience && iterations === 1) {
-        const avgPastScore = similarTasks.reduce((sum, t) => {
-          // t is already a RefinementRecord object, not a string
-          const improvement = typeof t === 'object' && t !== null
-            ? (t as any).improvement || 0
-            : 0;
-          return sum + improvement;
-        }, 0) / similarTasks.length;
+        const avgPastScore =
+          similarTasks.reduce((sum, t) => {
+            // t is already a RefinementRecord object, not a string
+            const improvement =
+              typeof t === 'object' && t !== null ? (t as any).improvement || 0 : 0;
+            return sum + improvement;
+          }, 0) / similarTasks.length;
 
         if (avgPastScore > 0) {
           iterationGain += Math.min(0.2, avgPastScore * 0.5);

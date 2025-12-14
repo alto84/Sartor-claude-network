@@ -8,6 +8,7 @@ description: Enforces evidence-based claims, prevents metric fabrication, and en
 **Purpose**: Prevent fabricated metrics, unverified claims, and over-promising that erodes trust and creates technical debt.
 
 **When to Use**: ALWAYS when:
+
 - Making quantitative claims (percentages, counts, performance metrics)
 - Assessing code quality or completeness
 - Estimating performance or reliability
@@ -22,6 +23,7 @@ description: Enforces evidence-based claims, prevents metric fabrication, and en
 ### Rule 1: NEVER Fabricate Scores or Metrics
 
 **BANNED WITHOUT MEASUREMENT**:
+
 ```
 ❌ "85/100 quality score"
 ❌ "99% delivery rate"
@@ -33,6 +35,7 @@ description: Enforces evidence-based claims, prevents metric fabrication, and en
 ```
 
 **REQUIRED INSTEAD**:
+
 ```
 ✅ "Cannot assess quality without running static analysis tools"
 ✅ "Delivery rate not yet measured - need monitoring infrastructure"
@@ -43,6 +46,7 @@ description: Enforces evidence-based claims, prevents metric fabrication, and en
 ### Rule 2: Distinguish Between Measured vs Estimated
 
 **Always Specify**:
+
 - **Measured**: "Executed 45 tests, 42 passed (93.3% measured pass rate)"
 - **Counted**: "Found 23 files with issues (counted via grep)"
 - **Estimated**: "Approximately 1000 lines (rough count, not measured)"
@@ -52,6 +56,7 @@ description: Enforces evidence-based claims, prevents metric fabrication, and en
 ### Rule 3: Default to Skepticism
 
 **When in doubt, be skeptical**:
+
 ```
 DON'T: "This should work fine in production"
 DO:     "This works in basic testing. Production readiness unknown without:
@@ -64,12 +69,14 @@ DO:     "This works in basic testing. Production readiness unknown without:
 ### Rule 4: Evidence Chain Required
 
 **Every quantitative claim needs**:
+
 1. **What was measured**: Specific metric
 2. **How it was measured**: Methodology/tool
 3. **When it was measured**: Timestamp or context
 4. **Confidence level**: High/Medium/Low/Unknown
 
 **Example**:
+
 ```
 ✅ "Message delivery: 47/50 messages delivered (94% measured)
     Method: Manual count in Firebase console
@@ -85,6 +92,7 @@ DO:     "This works in basic testing. Production readiness unknown without:
 ### Expressing Uncertainty
 
 **Use these patterns freely**:
+
 - "Cannot determine without..."
 - "Measurement would require..."
 - "Preliminary observation suggests (with caveats)..."
@@ -96,6 +104,7 @@ DO:     "This works in basic testing. Production readiness unknown without:
 ### Reporting Limitations
 
 **Always include**:
+
 - What you don't know
 - What you can't test
 - What you assumed
@@ -103,6 +112,7 @@ DO:     "This works in basic testing. Production readiness unknown without:
 - What needs verification
 
 **Example**:
+
 ```
 ✅ "The function works correctly for:
     - Valid JSON inputs (tested with 5 examples)
@@ -130,6 +140,7 @@ DO:     "This works in basic testing. Production readiness unknown without:
 ### Never Say "Complete" Without Evidence
 
 **BANNED**:
+
 ```
 ❌ "Implementation complete"
 ❌ "Testing complete"
@@ -138,6 +149,7 @@ DO:     "This works in basic testing. Production readiness unknown without:
 ```
 
 **REQUIRED - Specific Evidence**:
+
 ```
 ✅ "Implementation status:
     - Core features: Implemented (5/5)
@@ -150,6 +162,7 @@ DO:     "This works in basic testing. Production readiness unknown without:
 ### Progress Reporting Template
 
 Use this structure:
+
 ```
 Component: [name]
 Status: [In Progress / Blocked / Complete]
@@ -179,6 +192,7 @@ Confidence: [High/Medium/Low]
 ## 🚫 Banned Phrases Without Extraordinary Evidence
 
 ### Superlatives (Require External Validation)
+
 ```
 ❌ "Exceptional"
 ❌ "Outstanding"
@@ -191,6 +205,7 @@ Confidence: [High/Medium/Low]
 ```
 
 ### Confident Assertions (Require Measurement)
+
 ```
 ❌ "This is production ready"
 ❌ "Fully tested"
@@ -201,6 +216,7 @@ Confidence: [High/Medium/Low]
 ```
 
 ### Vague Improvements (Require Baseline + Measurement)
+
 ```
 ❌ "10x faster"
 ❌ "Significantly improved"
@@ -210,6 +226,7 @@ Confidence: [High/Medium/Low]
 ```
 
 **Instead, use**:
+
 ```
 ✅ "Faster than baseline (need to measure both)"
 ✅ "Appears to improve X (requires benchmarking)"
@@ -242,6 +259,7 @@ Before making ANY quantitative claim:
 ### Test Result Reporting
 
 **WRONG**:
+
 ```
 ❌ "All tests passing"
 ❌ "Comprehensive test coverage"
@@ -249,6 +267,7 @@ Before making ANY quantitative claim:
 ```
 
 **RIGHT**:
+
 ```
 ✅ "Test Results (2025-11-07 14:00):
     - Tests attempted: 50
@@ -273,6 +292,7 @@ Before making ANY quantitative claim:
 ### Test Quality Assessment
 
 Don't say "good test coverage" - be specific:
+
 ```
 ✅ "Test coverage:
     - Core message sending: 5 tests (happy path + 2 error cases)
@@ -291,6 +311,7 @@ Don't say "good test coverage" - be specific:
 ### Never Use Letter Grades Without Rubric
 
 **BANNED**:
+
 ```
 ❌ "A+ quality code"
 ❌ "85/100 score"
@@ -298,6 +319,7 @@ Don't say "good test coverage" - be specific:
 ```
 
 **REQUIRED**:
+
 ```
 ✅ "Code quality observations (subjective):
     - Positive: Clear function names, consistent style, good separation of concerns
@@ -310,11 +332,13 @@ Don't say "good test coverage" - be specific:
 ### Static Analysis - Only if Actually Run
 
 **WRONG**:
+
 ```
 ❌ "Code quality: 85/100"
 ```
 
 **RIGHT**:
+
 ```
 ✅ "Static analysis not run. Manual review observations:
     - 5 functions missing type hints
@@ -332,6 +356,7 @@ Don't say "good test coverage" - be specific:
 ### Never Claim "Secure" Without Audit
 
 **BANNED**:
+
 ```
 ❌ "Production secure"
 ❌ "Fully hardened"
@@ -339,6 +364,7 @@ Don't say "good test coverage" - be specific:
 ```
 
 **REQUIRED**:
+
 ```
 ✅ "Security status:
     - Audit performed: No
@@ -364,6 +390,7 @@ Don't say "good test coverage" - be specific:
 ### Benchmark Before Claiming
 
 **WRONG**:
+
 ```
 ❌ "Handles 100+ messages per second"
 ❌ "Sub-10ms latency"
@@ -371,6 +398,7 @@ Don't say "good test coverage" - be specific:
 ```
 
 **RIGHT**:
+
 ```
 ✅ "Performance: Not benchmarked
 
@@ -390,11 +418,13 @@ Don't say "good test coverage" - be specific:
 ### Don't Extrapolate Without Basis
 
 **WRONG**:
+
 ```
 ❌ "Works with 10 items, so should handle 1000"
 ```
 
 **RIGHT**:
+
 ```
 ✅ "Tested with 10 items (works correctly)
     Behavior with 1000 items: Unknown
@@ -415,6 +445,7 @@ Don't say "good test coverage" - be specific:
 ### How to Calculate Honest Completion %
 
 **Formula**:
+
 ```
 Completion % = (Features Working / Features Planned) × 100
 
@@ -426,6 +457,7 @@ Where "Working" means:
 ```
 
 **Example**:
+
 ```
 Planned Features: 10
 - Implemented: 7
@@ -441,6 +473,7 @@ NOT: 70% (7 implemented / 10 planned) ← This inflates completion
 ### Status Levels
 
 Use these precise definitions:
+
 - **0-20%**: Proof of concept / Prototype
 - **20-40%**: Alpha (core features partially working)
 - **40-60%**: Beta (most features work, not fully tested)
@@ -472,11 +505,13 @@ Watch for these warning signs that you're fabricating:
 ### Example 1: Test Results
 
 **❌ BAD**:
+
 ```
 "Testing complete. All 170+ tests passing. 100% coverage achieved."
 ```
 
 **✅ GOOD**:
+
 ```
 "Test Status (2025-11-07):
 
@@ -502,11 +537,13 @@ Current completion: 10% (6 verified / 60 total)"
 ### Example 2: Performance Claims
 
 **❌ BAD**:
+
 ```
 "System handles 100+ messages/second with 99% delivery rate and <10ms latency."
 ```
 
 **✅ GOOD**:
+
 ```
 "Performance: Not benchmarked
 
@@ -534,11 +571,13 @@ Current assessment: Works for basic use. Scalability unknown."
 ### Example 3: Code Quality
 
 **❌ BAD**:
+
 ```
 "Code quality: 85/100. Production-ready with excellent architecture."
 ```
 
 **✅ GOOD**:
+
 ```
 "Code quality (manual review, 2025-11-07):
 
@@ -572,24 +611,28 @@ To improve:
 Before submitting work, ask yourself:
 
 ### Measurement Questions
+
 1. Did I actually measure what I'm claiming?
 2. Can I show someone the raw data?
 3. Could another person reproduce my measurements?
 4. Have I clearly stated my measurement method?
 
 ### Uncertainty Questions
+
 5. What don't I know about this system?
 6. What haven't I tested?
 7. What assumptions am I making?
 8. Where could this break?
 
 ### Honesty Questions
+
 9. Am I being more confident than my evidence supports?
 10. Would I bet money on this claim?
 11. Would this hold up under peer review?
 12. Am I saying "complete" when I mean "implemented"?
 
 ### Language Questions
+
 13. Did I use any banned superlatives?
 14. Did I fabricate any scores or percentages?
 15. Did I distinguish estimated vs measured?
@@ -604,6 +647,7 @@ Before submitting work, ask yourself:
 ### Scenario: Implementing a Feature
 
 **After coding, report**:
+
 ```
 Feature: Message sending
 
@@ -632,6 +676,7 @@ Completion: 30% (basic feature works, missing resilience features)
 **Don't say**: "Fixed all bugs"
 
 **Do say**:
+
 ```
 Bug Fix Session (2025-11-07):
 
@@ -661,6 +706,7 @@ Assessment: Critical issues fixed. Comprehensive bug list unknown."
 **Don't say**: "Improved performance by 3x"
 
 **Do say**:
+
 ```
 Performance Work (2025-11-07):
 
@@ -691,18 +737,22 @@ Current status: Code changed, improvement unverified"
 ## 📚 Reference Materials
 
 This skill is based on:
+
 - Project's anti-fabrication protocol (CLAUDE.md)
 - Anthropic prompt engineering best practices
 - Evidence-based engineering principles
 - Lessons from audit findings (COMPREHENSIVE-GAPS-ANALYSIS.md)
 
 ### Related Skills
+
 - `testing-validation` - How to write and run good tests
 - `code-review` - Systematic code quality assessment
 - `documentation-standards` - Writing accurate documentation
 
 ### When to Escalate
+
 If you're:
+
 - Unsure whether a claim requires evidence
 - Tempted to round up or estimate without stating it
 - Feeling pressure to oversell
@@ -736,6 +786,7 @@ You're using this skill correctly when:
 **This isn't a burden - it's professional excellence.**
 
 Evidence-based engineering:
+
 - Builds trust (people believe your claims)
 - Prevents technical debt (no false "complete" markers)
 - Enables better decisions (based on reality)

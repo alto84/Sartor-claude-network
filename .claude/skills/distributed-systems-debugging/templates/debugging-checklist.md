@@ -411,28 +411,34 @@ After debugging, document your findings:
 **Status**: Resolved/Mitigated/Monitoring
 
 ### Symptoms
+
 - What was observed
 - Impact (users affected, services down, etc.)
 
 ### Root Cause
+
 - Actual cause of the issue
 - Why it happened
 
 ### Investigation Process
+
 1. Evidence collected
 2. Hypotheses tested
 3. How root cause was identified
 
 ### Resolution
+
 - What was done to fix
 - Verification steps
 
 ### Prevention
+
 - Changes to prevent recurrence
 - Monitoring added
 - Tests added
 
 ### References
+
 - Relevant logs, traces, metrics
 - Related tickets, documentation
 ```
@@ -440,6 +446,7 @@ After debugging, document your findings:
 ## Quick Reference
 
 **Run automated analysis:**
+
 ```bash
 # Check for common issues
 python scripts/debug-distributed-system.py --logs ./logs/*.log --check all --report report.md
@@ -449,6 +456,7 @@ python scripts/trace-analyzer.py --logs ./logs/*.log --trace-id abc123 --visuali
 ```
 
 **Key metrics to check:**
+
 - Consensus time (should be <5s)
 - Error rate (should be <1%)
 - Response time p99 (should be <1s)

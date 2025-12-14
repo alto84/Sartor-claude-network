@@ -199,7 +199,11 @@ export interface Sandbox {
   execute(fn: () => Promise<any>, options?: ExecutionOptions): Promise<any>;
 
   /** Execute code string */
-  executeCode(code: string, language?: 'javascript' | 'typescript' | 'python', options?: ExecutionOptions): Promise<any>;
+  executeCode(
+    code: string,
+    language?: 'javascript' | 'typescript' | 'python',
+    options?: ExecutionOptions
+  ): Promise<any>;
 
   /** Execute command */
   executeCommand(command: string, options?: ExecutionOptions): Promise<any>;
@@ -452,11 +456,7 @@ class SandboxImpl implements Sandbox {
     const executionId = `${this.id}-cmd-${this.executionCount++}`;
 
     try {
-      const result = await this.executor.execute(
-        command,
-        options?.args || [],
-        executionId
-      );
+      const result = await this.executor.execute(command, options?.args || [], executionId);
 
       this.updateResourceUsage(result);
 
@@ -669,10 +669,7 @@ export function createSandboxManager(): SandboxManager {
 /**
  * Create a sandbox with default configuration
  */
-export function createSandbox(
-  id: string,
-  overrides?: Partial<ManagedSandboxConfig>
-): Sandbox {
+export function createSandbox(id: string, overrides?: Partial<ManagedSandboxConfig>): Sandbox {
   const manager = createSandboxManager();
   const config: ManagedSandboxConfig = {
     ...DEFAULT_MANAGED_SANDBOX_CONFIG,

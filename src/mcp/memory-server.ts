@@ -54,7 +54,14 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             },
             type: {
               type: 'string',
-              enum: ['episodic', 'semantic', 'procedural', 'working', 'refinement_trace', 'expert_consensus'],
+              enum: [
+                'episodic',
+                'semantic',
+                'procedural',
+                'working',
+                'refinement_trace',
+                'expert_consensus',
+              ],
               description: 'Type of memory',
             },
             importance: {
@@ -92,7 +99,14 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           properties: {
             type: {
               type: 'string',
-              enum: ['episodic', 'semantic', 'procedural', 'working', 'refinement_trace', 'expert_consensus'],
+              enum: [
+                'episodic',
+                'semantic',
+                'procedural',
+                'working',
+                'refinement_trace',
+                'expert_consensus',
+              ],
               description: 'Filter by memory type',
             },
             min_importance: {
@@ -200,7 +214,16 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: 'text',
-              text: JSON.stringify({ success: true, id: mem.id, type: mem.type, tier: isMultiTier() ? 'multi' : 'file' }, null, 2),
+              text: JSON.stringify(
+                {
+                  success: true,
+                  id: mem.id,
+                  type: mem.type,
+                  tier: isMultiTier() ? 'multi' : 'file',
+                },
+                null,
+                2
+              ),
             },
           ],
         };
@@ -260,9 +283,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
       case 'memory_stats': {
         // Use MultiTierStore (async) if available, otherwise FileStore (sync)
-        const stats = isMultiTier()
-          ? await multiTierStore!.getStats()
-          : fileStore.getStats();
+        const stats = isMultiTier() ? await multiTierStore!.getStats() : fileStore.getStats();
         return {
           content: [{ type: 'text', text: JSON.stringify(stats, null, 2) }],
         };

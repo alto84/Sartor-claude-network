@@ -29,10 +29,10 @@ import {
 
 ```typescript
 enum MemoryTrustLevel {
-  VERIFIED = 'verified',      // Human reviewed or trusted source
-  TRUSTED = 'trusted',        // Authenticated agent, not yet verified
-  UNTRUSTED = 'untrusted',    // Unknown source
-  QUARANTINED = 'quarantined' // Potentially malicious, awaiting review
+  VERIFIED = 'verified', // Human reviewed or trusted source
+  TRUSTED = 'trusted', // Authenticated agent, not yet verified
+  UNTRUSTED = 'untrusted', // Unknown source
+  QUARANTINED = 'quarantined', // Potentially malicious, awaiting review
 }
 ```
 
@@ -68,13 +68,10 @@ Full audit trail for memory operations.
 const logger = new AuditLogger({ consoleOutput: true });
 
 // Log an operation
-const entry = logger.log(
-  MemoryOperation.CREATE,
-  memoryId,
-  agentId,
-  MemoryTrustLevel.TRUSTED,
-  { newState: { content: '...' }, scanResult }
-);
+const entry = logger.log(MemoryOperation.CREATE, memoryId, agentId, MemoryTrustLevel.TRUSTED, {
+  newState: { content: '...' },
+  scanResult,
+});
 
 // Query entries
 logger.getEntriesForMemory(memoryId);
@@ -250,20 +247,25 @@ const stats = server.getStats();
 ### Import
 
 ```typescript
-import {
-  KnowledgeGraph,
-  EntityType,
-  RelationType,
-} from './src/mcp/knowledge-graph';
+import { KnowledgeGraph, EntityType, RelationType } from './src/mcp/knowledge-graph';
 ```
 
 ### EntityType Enum
 
 ```typescript
 enum EntityType {
-  MEMORY, CONCEPT, PERSON, ORGANIZATION,
-  LOCATION, EVENT, PROJECT, TASK,
-  SKILL, DOCUMENT, CODE, CUSTOM
+  MEMORY,
+  CONCEPT,
+  PERSON,
+  ORGANIZATION,
+  LOCATION,
+  EVENT,
+  PROJECT,
+  TASK,
+  SKILL,
+  DOCUMENT,
+  CODE,
+  CUSTOM,
 }
 ```
 
@@ -272,18 +274,34 @@ enum EntityType {
 ```typescript
 enum RelationType {
   // Hierarchical
-  PARENT_OF, CHILD_OF, CONTAINS, PART_OF,
+  PARENT_OF,
+  CHILD_OF,
+  CONTAINS,
+  PART_OF,
   // Associative
-  RELATED_TO, SIMILAR_TO, OPPOSITE_OF, DERIVED_FROM,
+  RELATED_TO,
+  SIMILAR_TO,
+  OPPOSITE_OF,
+  DERIVED_FROM,
   // Temporal
-  PRECEDES, FOLLOWS, CONCURRENT_WITH,
+  PRECEDES,
+  FOLLOWS,
+  CONCURRENT_WITH,
   // Causal
-  CAUSES, CAUSED_BY, ENABLES, PREVENTS,
+  CAUSES,
+  CAUSED_BY,
+  ENABLES,
+  PREVENTS,
   // Ownership
-  CREATED_BY, OWNED_BY, ASSIGNED_TO,
+  CREATED_BY,
+  OWNED_BY,
+  ASSIGNED_TO,
   // References
-  REFERENCES, IMPLEMENTS, EXTENDS, DEPENDS_ON,
-  CUSTOM
+  REFERENCES,
+  IMPLEMENTS,
+  EXTENDS,
+  DEPENDS_ON,
+  CUSTOM,
 }
 ```
 
@@ -387,8 +405,8 @@ const links = graph.findSimilar(entityId, {
 
 // Auto-create semantic links
 const linksCreated = graph.createSemanticLinks(
-  0.3,  // minSimilarity
-  0.5   // relationWeight
+  0.3, // minSimilarity
+  0.5 // relationWeight
 );
 ```
 
@@ -504,11 +522,11 @@ try {
 
 ## Performance Considerations
 
-- **InjectionScanner**: O(n*p) where n = content length, p = pattern count
+- **InjectionScanner**: O(n\*p) where n = content length, p = pattern count
 - **Knowledge Graph**: BFS is O(V + E), graph queries are O(E)
 - **CRDTs**: Merge operations are O(n) where n = entries
 - **Vector Clocks**: Compare is O(k) where k = node count
 
 ---
 
-*Last updated: December 2024*
+_Last updated: December 2024_

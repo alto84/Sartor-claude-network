@@ -402,18 +402,21 @@ pytest --html=report.html --self-contained-html
 ### Common Issues
 
 1. **Import Errors**
+
    ```bash
    # Ensure PYTHONPATH includes project root
    export PYTHONPATH="${PYTHONPATH}:$(pwd)"
    ```
 
 2. **Fixture Not Found**
+
    ```bash
    # Check fixture scope and availability
    pytest --fixtures
    ```
 
 3. **Slow Tests**
+
    ```bash
    # Skip slow tests
    pytest -m "not slow"
@@ -458,6 +461,7 @@ pytest --html=report.html --self-contained-html
 ## Contact
 
 For questions about testing:
+
 - Create an issue in the repository
 - Check existing test examples
 - Refer to pytest documentation

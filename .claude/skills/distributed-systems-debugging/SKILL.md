@@ -27,64 +27,68 @@ This skill integrates with the Memory MCP server to persist debugging patterns, 
 ### Memory Usage for Debugging
 
 **Store debugging patterns found:**
+
 ```typescript
 // When you identify a failure pattern
 memory_create({
   content: JSON.stringify({
-    pattern: "consensus-timeout",
-    symptom: "Timeouts at 300+ agents",
-    rootCause: "O(n²) message broadcast",
-    location: "src/coordination/plan-sync.ts",
-    detectionMethod: "Message count growth analysis"
+    pattern: 'consensus-timeout',
+    symptom: 'Timeouts at 300+ agents',
+    rootCause: 'O(n²) message broadcast',
+    location: 'src/coordination/plan-sync.ts',
+    detectionMethod: 'Message count growth analysis',
   }),
-  type: "procedural",
+  type: 'procedural',
   importance: 0.9,
-  tags: ["consensus", "performance", "pattern"]
-})
+  tags: ['consensus', 'performance', 'pattern'],
+});
 ```
 
 **Store resolution strategies:**
+
 ```typescript
 // When you successfully resolve an issue
 memory_create({
   content: JSON.stringify({
-    issue: "State divergence after partition",
-    resolution: "Added vector clock reconciliation",
-    files: ["src/coordination/plan-sync.ts"],
-    testAdded: "cross-surface-validation.test.ts",
-    recoveryTime: "<2s"
+    issue: 'State divergence after partition',
+    resolution: 'Added vector clock reconciliation',
+    files: ['src/coordination/plan-sync.ts'],
+    testAdded: 'cross-surface-validation.test.ts',
+    recoveryTime: '<2s',
   }),
-  type: "procedural",
+  type: 'procedural',
   importance: 0.95,
-  tags: ["state-sync", "resolution", "partition-recovery"]
-})
+  tags: ['state-sync', 'resolution', 'partition-recovery'],
+});
 ```
 
 **Cross-reference with coordination code:**
+
 ```typescript
 // Link debugging sessions to specific modules
 memory_create({
   content: JSON.stringify({
-    module: "work-distribution.ts",
-    debugSession: "2024-12-11-task-claim-race",
-    finding: "Optimistic locking allows double claims",
-    fix: "Added version check before claim",
-    relatedFiles: ["src/coordination/work-distribution.ts", "__tests__/work-distribution.test.ts"]
+    module: 'work-distribution.ts',
+    debugSession: '2024-12-11-task-claim-race',
+    finding: 'Optimistic locking allows double claims',
+    fix: 'Added version check before claim',
+    relatedFiles: ['src/coordination/work-distribution.ts', '__tests__/work-distribution.test.ts'],
   }),
-  type: "episodic",
+  type: 'episodic',
   importance: 0.8,
-  tags: ["work-distribution", "race-condition", "coordination"]
-})
+  tags: ['work-distribution', 'race-condition', 'coordination'],
+});
 ```
 
 **Search for similar past issues:**
+
 ```typescript
 // Before debugging, check if similar issue was seen
 memory_search({
-  type: "procedural",
+  type: 'procedural',
   min_importance: 0.7,
-  limit: 5
-})
+  limit: 5,
+});
 // Parse results to find relevant patterns and resolutions
 ```
 
@@ -134,6 +138,7 @@ When debugging coordination issues, always cross-reference with stored memories 
 - **Check timestamps** - Clock skew can hide or create issues
 
 **Example from SKG:**
+
 ```bash
 # Consensus test framework collects comprehensive metrics
 # From run-consensus-tests.ts
@@ -149,6 +154,7 @@ When debugging coordination issues, always cross-reference with stored memories 
 Based on evidence, form testable hypotheses about root causes.
 
 **Common hypothesis patterns:**
+
 - **Message ordering**: "Messages arrive out of order causing state divergence"
 - **Network partition**: "Two groups of nodes can't communicate, creating split-brain"
 - **Byzantine behavior**: "Malicious/faulty node sending conflicting messages"
@@ -157,6 +163,7 @@ Based on evidence, form testable hypotheses about root causes.
 - **Resource exhaustion**: "Memory/connections/threads depleted under load"
 
 **From SKG consensus tests:**
+
 - Silent failures detected through absence of expected votes
 - Vote manipulation detected by comparing expected vs actual consensus
 - Partition recovery measured by time to re-establish quorum
@@ -166,6 +173,7 @@ Based on evidence, form testable hypotheses about root causes.
 Design experiments to confirm or reject hypotheses.
 
 **Techniques:**
+
 - **Isolate components**: Test each node/service independently
 - **Inject failures**: Deliberately create suspected conditions
 - **Replay scenarios**: Use captured traces to reproduce issues
@@ -174,15 +182,16 @@ Design experiments to confirm or reject hypotheses.
 - **Controlled chaos**: Systematic fault injection (from SKG fault-monitor-demo.ts)
 
 **Example fault injection from SKG:**
+
 ```typescript
 // From ConsensusIntegration.test.ts
 enum ByzantineFailureType {
-  SILENT_FAILURE,           // Node stops responding
-  VOTE_MANIPULATION,        // Sends incorrect votes
-  DOUBLE_VOTING,           // Votes multiple times
-  CONFLICTING_PROPOSALS,   // Sends different proposals to different nodes
+  SILENT_FAILURE, // Node stops responding
+  VOTE_MANIPULATION, // Sends incorrect votes
+  DOUBLE_VOTING, // Votes multiple times
+  CONFLICTING_PROPOSALS, // Sends different proposals to different nodes
   TRUST_SCORE_MANIPULATION, // Lies about trust scores
-  FALSE_CONSENSUS_CLAIMS   // Claims consensus when none exists
+  FALSE_CONSENSUS_CLAIMS, // Claims consensus when none exists
 }
 ```
 
@@ -197,26 +206,27 @@ Once you believe you've found the issue:
 - **Store in Memory**: Persist the complete debugging session for future reference
 
 **Memory Storage Example:**
+
 ```typescript
 memory_create({
   content: JSON.stringify({
-    timestamp: "2024-12-11T10:30:00Z",
-    symptom: "Consensus never reached with 5+ agents",
+    timestamp: '2024-12-11T10:30:00Z',
+    symptom: 'Consensus never reached with 5+ agents',
     investigation: [
-      "Checked quorum size: OK",
-      "Analyzed message delivery: Found missing ACKs",
-      "Traced vote collection: Byzantine agent sending conflicting votes"
+      'Checked quorum size: OK',
+      'Analyzed message delivery: Found missing ACKs',
+      'Traced vote collection: Byzantine agent sending conflicting votes',
     ],
-    rootCause: "Silent Byzantine failure in vote manipulation",
-    fix: "Added vote validation and conflict detection",
-    filesModified: ["src/coordination/plan-sync.ts"],
-    testsAdded: ["cross-surface-validation.test.ts:45-78"],
-    verificationMethod: "Consensus success rate: 10% → 99.9%"
+    rootCause: 'Silent Byzantine failure in vote manipulation',
+    fix: 'Added vote validation and conflict detection',
+    filesModified: ['src/coordination/plan-sync.ts'],
+    testsAdded: ['cross-surface-validation.test.ts:45-78'],
+    verificationMethod: 'Consensus success rate: 10% → 99.9%',
   }),
-  type: "episodic",
+  type: 'episodic',
   importance: 0.95,
-  tags: ["consensus", "byzantine", "debugging-session", "plan-sync"]
-})
+  tags: ['consensus', 'byzantine', 'debugging-session', 'plan-sync'],
+});
 ```
 
 ## Common Distributed System Failure Patterns
@@ -226,29 +236,34 @@ See `reference/failure-patterns.md` for detailed catalog extracted from SKG deve
 ### Quick Reference
 
 **Consensus Failures:**
+
 - Split-brain: Multiple leaders elected simultaneously
 - Starvation: Some proposals never reach consensus
 - Livelock: System keeps changing state without progress
 - Byzantine corruption: Malicious nodes corrupt consensus
 
 **Message Ordering Issues:**
+
 - Causal ordering violations: Effect arrives before cause
 - Total ordering violations: Nodes see different message orders
 - Message loss: Network drops messages silently
 - Message duplication: Same message processed multiple times
 
 **State Synchronization:**
+
 - Divergent state: Nodes have different values for same key
 - Dirty reads: Reading uncommitted/inconsistent state
 - Lost updates: Concurrent updates overwrite each other
 - State corruption: Invalid state due to failed partial updates
 
 **Network Partitions:**
+
 - Split-brain: Partitioned groups both claim authority
 - Slow recovery: Long time to detect and heal partition
 - Cascading failures: Partition triggers overload in remaining nodes
 
 **Performance Degradation:**
+
 - Latency spikes: Sudden increase in response time
 - Throughput collapse: System can't handle normal load
 - Resource exhaustion: Memory leaks, connection pool depletion
@@ -259,6 +274,7 @@ See `reference/failure-patterns.md` for detailed catalog extracted from SKG deve
 ### Log Analysis
 
 **Structured logging is essential:**
+
 ```typescript
 // From SKG metrics-initialization.ts
 logger.info('Consensus reached', {
@@ -266,11 +282,12 @@ logger.info('Consensus reached', {
   consensusTime: duration,
   approvalRate: approveCount / totalVotes,
   byzantineAgentsDetected: byzantineDetections,
-  timestamp: Date.now()
+  timestamp: Date.now(),
 });
 ```
 
 **Key log analysis patterns:**
+
 - Correlation IDs: Track single request across services
 - Vector clocks: Establish causal relationships
 - Structured fields: Enable filtering and aggregation
@@ -281,6 +298,7 @@ See `reference/logging-patterns.md` for detailed examples.
 ### Distributed Tracing
 
 **Reconstruct causal chains:**
+
 - Trace IDs propagate through system
 - Spans represent operations with timing
 - Tags provide context (node ID, operation type)
@@ -291,13 +309,14 @@ See `scripts/trace-analyzer.py` for analysis tools.
 ### Metrics Collection
 
 **Essential metrics from SKG:**
+
 ```typescript
 // From metrics-initialization.ts
 interface Metrics {
   // Latency metrics
-  agentToAgent: number;           // Agent communication latency
-  taskAssignment: number;         // Task assignment latency
-  consensusTime: number;          // Time to reach consensus
+  agentToAgent: number; // Agent communication latency
+  taskAssignment: number; // Task assignment latency
+  consensusTime: number; // Time to reach consensus
 
   // Throughput metrics
   messagesPerSecond: number;
@@ -335,13 +354,14 @@ Use `templates/debugging-checklist.md` for step-by-step guidance.
 ### Initial Investigation
 
 1. **Search Memory for Similar Issues**
+
    ```typescript
    // Check if this symptom has been seen before
    const pastIssues = await memory_search({
-     type: "episodic",
+     type: 'episodic',
      min_importance: 0.7,
-     limit: 10
-   })
+     limit: 10,
+   });
    // Review for matching symptoms and resolutions
    ```
 
@@ -390,6 +410,7 @@ python scripts/debug-distributed-system.py \
 See `examples/real-debugging-sessions.md` for detailed case studies from SKG development.
 
 **Scenario 1: Consensus never reached**
+
 - Check quorum size vs. active nodes
 - Look for Byzantine agents manipulating votes
 - Verify message delivery to all voters
@@ -397,6 +418,7 @@ See `examples/real-debugging-sessions.md` for detailed case studies from SKG dev
 - **Memory Integration**: Search for `tags: ["consensus", "quorum"]` to find similar past issues
 
 **Scenario 2: State divergence between nodes**
+
 - Compare vector clocks to find divergence point
 - Check for concurrent updates without coordination
 - Verify merge/conflict resolution logic
@@ -404,6 +426,7 @@ See `examples/real-debugging-sessions.md` for detailed case studies from SKG dev
 - **Memory Integration**: Check `src/coordination/plan-sync.ts` debugging history
 
 **Scenario 3: Performance degradation under load**
+
 - Profile to find hot paths
 - Check for resource exhaustion (memory, connections)
 - Look for head-of-line blocking
@@ -415,80 +438,81 @@ See `examples/real-debugging-sessions.md` for detailed case studies from SKG dev
 Every debugging session should be tracked for future reference:
 
 **Session Start Template:**
+
 ```typescript
 const sessionId = `debug-${Date.now()}-${issueType}`;
 memory_create({
   content: JSON.stringify({
     sessionId,
     startTime: new Date().toISOString(),
-    symptom: "Describe observed behavior",
-    affectedModules: ["plan-sync", "work-distribution", "progress"],
-    initialHypotheses: []
+    symptom: 'Describe observed behavior',
+    affectedModules: ['plan-sync', 'work-distribution', 'progress'],
+    initialHypotheses: [],
   }),
-  type: "working",  // Start as working memory
+  type: 'working', // Start as working memory
   importance: 0.5,
-  tags: ["debug-session", "active", issueType]
-})
+  tags: ['debug-session', 'active', issueType],
+});
 ```
 
 **Hypothesis Tracking:**
+
 ```typescript
 // Record each hypothesis tested
 memory_create({
   content: JSON.stringify({
     sessionId,
-    hypothesis: "Network partition causing split-brain",
-    testMethod: "Checked node connectivity logs",
-    result: "REJECTED - all nodes communicating",
-    timestamp: new Date().toISOString()
+    hypothesis: 'Network partition causing split-brain',
+    testMethod: 'Checked node connectivity logs',
+    result: 'REJECTED - all nodes communicating',
+    timestamp: new Date().toISOString(),
   }),
-  type: "working",
+  type: 'working',
   importance: 0.6,
-  tags: ["hypothesis", sessionId]
-})
+  tags: ['hypothesis', sessionId],
+});
 ```
 
 **Session Resolution:**
+
 ```typescript
 // Convert working memory to episodic when resolved
 memory_create({
   content: JSON.stringify({
     sessionId,
     endTime: new Date().toISOString(),
-    duration: "45 minutes",
-    rootCause: "Race condition in work-distribution task claims",
-    fix: "Added version check in claimTask()",
-    filesModified: ["src/coordination/work-distribution.ts:127-135"],
-    testAdded: "work-distribution.test.ts:234-267",
-    preventionStrategy: "Add optimistic locking validation",
-    successMetric: "Zero double-claims in 1000 task test"
+    duration: '45 minutes',
+    rootCause: 'Race condition in work-distribution task claims',
+    fix: 'Added version check in claimTask()',
+    filesModified: ['src/coordination/work-distribution.ts:127-135'],
+    testAdded: 'work-distribution.test.ts:234-267',
+    preventionStrategy: 'Add optimistic locking validation',
+    successMetric: 'Zero double-claims in 1000 task test',
   }),
-  type: "episodic",  // Promoted to episodic
+  type: 'episodic', // Promoted to episodic
   importance: 0.9,
-  tags: ["debug-session", "resolved", "work-distribution", "race-condition"]
-})
+  tags: ['debug-session', 'resolved', 'work-distribution', 'race-condition'],
+});
 ```
 
 **Cross-Referencing Coordination Modules:**
+
 ```typescript
 // Link debugging session to specific coordination files
 memory_create({
   content: JSON.stringify({
-    file: "src/coordination/plan-sync.ts",
+    file: 'src/coordination/plan-sync.ts',
     debugSessions: [sessionId],
     knownIssues: [
-      "CRDT merge conflicts at lines 156-178",
-      "Vector clock synchronization lag line 203"
+      'CRDT merge conflicts at lines 156-178',
+      'Vector clock synchronization lag line 203',
     ],
-    mitigations: [
-      "Added conflict resolution in merge()",
-      "Implemented clock drift detection"
-    ]
+    mitigations: ['Added conflict resolution in merge()', 'Implemented clock drift detection'],
   }),
-  type: "semantic",
+  type: 'semantic',
   importance: 0.85,
-  tags: ["plan-sync", "coordination", "knowledge-base"]
-})
+  tags: ['plan-sync', 'coordination', 'knowledge-base'],
+});
 ```
 
 ## Performance Debugging
@@ -502,22 +526,23 @@ See `reference/performance-debugging.md` for comprehensive guide.
 // Measure complexity as system scales
 interface ComplexityAnalysis {
   discoveryLatency: {
-    actualComplexity: string;      // Measured: O(log n)
-    expectedComplexity: string;    // Expected: O(log n)
-    rSquared: number;              // Goodness of fit
+    actualComplexity: string; // Measured: O(log n)
+    expectedComplexity: string; // Expected: O(log n)
+    rSquared: number; // Goodness of fit
   };
   messageThroughput: {
     actualComplexity: string;
     expectedComplexity: string;
   };
   memoryUsage: {
-    actualComplexity: string;      // Should be O(n)
+    actualComplexity: string; // Should be O(n)
     expectedComplexity: string;
   };
 }
 ```
 
 **Performance debugging workflow:**
+
 1. Establish baseline metrics (normal operation)
 2. Identify deviation (what changed?)
 3. Profile to find bottleneck (CPU? Memory? Network? I/O?)
@@ -528,6 +553,7 @@ interface ComplexityAnalysis {
 ## Limitations and Caveats
 
 **This skill cannot:**
+
 - Automatically fix all distributed system bugs
 - Guarantee root cause identification in all cases
 - Replace domain knowledge of your specific system
@@ -535,12 +561,14 @@ interface ComplexityAnalysis {
 - Solve issues caused by hardware failures without diagnostics
 
 **Distributed debugging is inherently difficult because:**
+
 - Heisenberg effect: Observing can change behavior (probe effect)
 - Non-reproducibility: Timing-dependent bugs may not reproduce
 - Incomplete information: Can't observe all nodes simultaneously
 - Emergent complexity: System behavior not predictable from components
 
 **Best practices:**
+
 - Instrument early: Add logging/metrics before you need them
 - Test failure modes: Don't just test happy path
 - Use feature flags: Enable safer rollouts and faster rollbacks
@@ -572,21 +600,21 @@ As you debug, accumulate a searchable library of failure patterns:
 // Pattern detection
 memory_create({
   content: JSON.stringify({
-    patternName: "Split-Brain During Network Partition",
+    patternName: 'Split-Brain During Network Partition',
     symptoms: [
-      "Multiple leaders elected",
-      "Conflicting decisions for same proposal",
-      "Quorum cannot be reached"
+      'Multiple leaders elected',
+      'Conflicting decisions for same proposal',
+      'Quorum cannot be reached',
     ],
-    detectionMethod: "Monitor for multiple agents claiming leader status",
-    affectedModules: ["plan-sync"],
-    prevention: "Implement partition detection with quorum verification",
-    recoveryStrategy: "Force re-election with majority partition"
+    detectionMethod: 'Monitor for multiple agents claiming leader status',
+    affectedModules: ['plan-sync'],
+    prevention: 'Implement partition detection with quorum verification',
+    recoveryStrategy: 'Force re-election with majority partition',
   }),
-  type: "procedural",
+  type: 'procedural',
   importance: 0.95,
-  tags: ["pattern", "split-brain", "network-partition", "consensus"]
-})
+  tags: ['pattern', 'split-brain', 'network-partition', 'consensus'],
+});
 ```
 
 ### Pattern 2: Resolution Strategy Knowledge Base
@@ -597,24 +625,24 @@ Build a knowledge base of successful resolutions:
 // Successful resolution
 memory_create({
   content: JSON.stringify({
-    problem: "O(n²) message broadcast causing timeouts",
+    problem: 'O(n²) message broadcast causing timeouts',
     investigation: [
-      "Measured message count growth",
-      "Found O(n²) pattern instead of expected O(n)",
-      "Identified sequential broadcasting"
+      'Measured message count growth',
+      'Found O(n²) pattern instead of expected O(n)',
+      'Identified sequential broadcasting',
     ],
-    solution: "Parallel message sending with Promise.all",
-    codeChange: "work-distribution.ts:89-103",
+    solution: 'Parallel message sending with Promise.all',
+    codeChange: 'work-distribution.ts:89-103',
     performance: {
-      before: "2500ms at 500 agents",
-      after: "150ms at 500 agents",
-      improvement: "16.7x faster"
-    }
+      before: '2500ms at 500 agents',
+      after: '150ms at 500 agents',
+      improvement: '16.7x faster',
+    },
   }),
-  type: "procedural",
+  type: 'procedural',
   importance: 0.95,
-  tags: ["resolution", "performance", "broadcast", "scalability"]
-})
+  tags: ['resolution', 'performance', 'broadcast', 'scalability'],
+});
 ```
 
 ### Pattern 3: Coordination Module Health Tracking
@@ -625,30 +653,30 @@ Track known issues per coordination module:
 // Module health tracking
 memory_create({
   content: JSON.stringify({
-    module: "src/coordination/work-distribution.ts",
+    module: 'src/coordination/work-distribution.ts',
     knownIssues: {
-      "task-claim-race": {
-        status: "RESOLVED",
-        fix: "Added version check at line 127",
-        testCoverage: "work-distribution.test.ts:234-267"
+      'task-claim-race': {
+        status: 'RESOLVED',
+        fix: 'Added version check at line 127',
+        testCoverage: 'work-distribution.test.ts:234-267',
       },
-      "task-expiry-cleanup": {
-        status: "MONITORING",
-        notes: "Occasional stale tasks after agent crash",
-        workaround: "Manual cleanup in progress.ts"
-      }
+      'task-expiry-cleanup': {
+        status: 'MONITORING',
+        notes: 'Occasional stale tasks after agent crash',
+        workaround: 'Manual cleanup in progress.ts',
+      },
     },
     healthMetrics: {
-      doubleClaimRate: "0.0%",
-      taskCompletionRate: "99.8%",
-      averageClaimLatency: "12ms"
+      doubleClaimRate: '0.0%',
+      taskCompletionRate: '99.8%',
+      averageClaimLatency: '12ms',
     },
-    lastUpdated: "2024-12-11"
+    lastUpdated: '2024-12-11',
   }),
-  type: "semantic",
+  type: 'semantic',
   importance: 0.9,
-  tags: ["module-health", "work-distribution", "coordination"]
-})
+  tags: ['module-health', 'work-distribution', 'coordination'],
+});
 ```
 
 ### Pattern 4: Pre-Debug Memory Search
@@ -658,25 +686,25 @@ Always search memory before starting investigation:
 ```typescript
 // Search for similar symptoms
 const relevantMemories = await memory_search({
-  type: "procedural",  // Get past resolutions
+  type: 'procedural', // Get past resolutions
   min_importance: 0.7,
-  limit: 10
-})
+  limit: 10,
+});
 
 // Filter by tags if symptom is specific
 const consensusIssues = await memory_search({
-  type: "episodic",
+  type: 'episodic',
   min_importance: 0.8,
-  limit: 5
-})
+  limit: 5,
+});
 // Then manually filter by tags: ["consensus", "timeout"]
 
 // Check module-specific issues
 const planSyncHistory = await memory_search({
-  type: "semantic",
+  type: 'semantic',
   min_importance: 0.7,
-  limit: 3
-})
+  limit: 3,
+});
 // Filter for plan-sync module memories
 ```
 
@@ -686,7 +714,7 @@ Use memory stats to track debugging effectiveness:
 
 ```typescript
 // Check debugging history
-const stats = await memory_stats()
+const stats = await memory_stats();
 
 // Analyze:
 // - How many debug sessions stored?
@@ -698,21 +726,25 @@ const stats = await memory_stats()
 ### Memory Type Guide for Debugging
 
 **EPISODIC**: Complete debugging sessions with timeline
+
 - Use for: Full debug session from start to resolution
 - Importance: 0.8-0.95 (based on severity and novelty)
 - Tags: ["debug-session", issueType, moduleName, "resolved"]
 
 **SEMANTIC**: Knowledge about system and modules
+
 - Use for: Module health tracking, known issues, architecture facts
 - Importance: 0.7-0.9 (based on criticality)
 - Tags: ["module-health", moduleName, "knowledge-base"]
 
 **PROCEDURAL**: Patterns and resolutions
+
 - Use for: Failure patterns, resolution strategies, debugging techniques
 - Importance: 0.8-0.95 (based on reusability)
 - Tags: ["pattern", "resolution", problemType]
 
 **WORKING**: Active debugging session state
+
 - Use for: Hypotheses being tested, temporary findings
 - Importance: 0.5-0.7 (temporary, will be promoted or discarded)
 - Tags: ["hypothesis", "active", sessionId]
@@ -731,6 +763,7 @@ const stats = await memory_stats()
 ## References
 
 All examples and patterns extracted from:
+
 - SKG Agent Prototype 2 test suite
 - Consensus integration tests
 - Scalability test framework

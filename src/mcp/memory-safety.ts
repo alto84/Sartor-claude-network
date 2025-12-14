@@ -630,7 +630,7 @@ export class AuditLogger {
     const threatCount = entry.scanResult?.threats?.length ?? 0;
     const status = entry.trustLevel === MemoryTrustLevel.QUARANTINED ? '[QUARANTINED]' : '';
 
-    console.log(
+    console.error(
       `[AUDIT] ${entry.timestamp.toISOString()} | ` +
         `${entry.operation.toUpperCase()} | ` +
         `Memory: ${entry.memoryId} | ` +
@@ -818,7 +818,7 @@ export class DefaultOversightHook implements HumanOversightHook {
   }
 
   async onQuarantine(memoryId: string, reason: string): Promise<void> {
-    console.log(`[OVERSIGHT] Memory ${memoryId} quarantined: ${reason}`);
+    console.error(`[OVERSIGHT] Memory ${memoryId} quarantined: ${reason}`);
   }
 
   async checkRelease(memoryId: string): Promise<boolean> {
@@ -849,7 +849,8 @@ export class DefaultOversightHook implements HumanOversightHook {
       throw new Error(`Action ${actionId} not found`);
     }
 
-    action.status = decision === 'approve' ? 'approved' : decision === 'reject' ? 'rejected' : 'escalated';
+    action.status =
+      decision === 'approve' ? 'approved' : decision === 'reject' ? 'rejected' : 'escalated';
     action.reviewedBy = reviewerId;
     action.reviewedAt = new Date();
     action.notes = notes;
@@ -871,10 +872,7 @@ export class MemorySafetyManager {
   private oversightHook: HumanOversightHook;
   private quarantinedMemories: Set<string> = new Set();
 
-  constructor(
-    auditConfig?: Partial<AuditLoggerConfig>,
-    oversightHook?: HumanOversightHook
-  ) {
+  constructor(auditConfig?: Partial<AuditLoggerConfig>, oversightHook?: HumanOversightHook) {
     this.scanner = new InjectionScanner();
     this.auditLogger = new AuditLogger(auditConfig);
     this.oversightHook = oversightHook ?? new DefaultOversightHook();
@@ -940,9 +938,15 @@ export class MemorySafetyManager {
     const canRelease = await this.oversightHook.checkRelease(memoryId);
     if (canRelease) {
       this.quarantinedMemories.delete(memoryId);
-      this.auditLogger.log(MemoryOperation.RELEASE, memoryId, reviewerId, MemoryTrustLevel.TRUSTED, {
-        metadata: { releasedBy: reviewerId },
-      });
+      this.auditLogger.log(
+        MemoryOperation.RELEASE,
+        memoryId,
+        reviewerId,
+        MemoryTrustLevel.TRUSTED,
+        {
+          metadata: { releasedBy: reviewerId },
+        }
+      );
       return true;
     }
 

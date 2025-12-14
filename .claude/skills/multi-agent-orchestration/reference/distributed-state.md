@@ -13,6 +13,7 @@ CRDTs enable eventually consistent distributed state without requiring coordinat
 ### When to Use CRDTs
 
 **Optimal Scenarios**:
+
 - Eventually consistent state acceptable
 - High availability required (no blocking operations)
 - Network partitions common
@@ -21,6 +22,7 @@ CRDTs enable eventually consistent distributed state without requiring coordinat
 - Distributed counters and sets
 
 **Avoid CRDTs When**:
+
 - Strong consistency required (use consensus instead)
 - Arbitrary computations needed (CRDTs support limited operations)
 - Immediate consistency critical
@@ -33,19 +35,22 @@ CRDTs enable eventually consistent distributed state without requiring coordinat
 **Purpose**: Monotonically increasing counter across replicas
 
 **Operations**:
+
 - `increment()`: Increase local counter
 - `value()`: Get current count
 - `merge(other)`: Combine two counters
 
 **Properties**:
+
 - Commutative: `a ⊔ b = b ⊔ a`
 - Associative: `(a ⊔ b) ⊔ c = a ⊔ (b ⊔ c)`
 - Idempotent: `a ⊔ a = a`
 
 **Implementation**:
+
 ```typescript
 class GCounter implements StateCRDT<number> {
-  private counts: Map<string, number>;  // replica_id -> count
+  private counts: Map<string, number>; // replica_id -> count
   private replicaId: string;
 
   increment(amount: number = 1): void {
@@ -66,10 +71,7 @@ class GCounter implements StateCRDT<number> {
 
     // Take maximum count from each replica
     for (const [replicaId, count] of this.counts.entries()) {
-      merged.counts.set(replicaId, Math.max(
-        count,
-        other.counts.get(replicaId) || 0
-      ));
+      merged.counts.set(replicaId, Math.max(count, other.counts.get(replicaId) || 0));
     }
 
     return merged;
@@ -78,6 +80,7 @@ class GCounter implements StateCRDT<number> {
 ```
 
 **Use Cases**:
+
 - Page view counters across CDN edge servers
 - Event counting in distributed systems
 - Like/upvote counters
@@ -89,17 +92,20 @@ class GCounter implements StateCRDT<number> {
 **Implementation**: Uses two G-Counters (positive and negative)
 
 **Operations**:
+
 - `increment()`: Increase positive counter
 - `decrement()`: Increase negative counter
 - `value()`: Positive count - negative count
 - `merge(other)`: Merge both positive and negative counters
 
 **Use Cases**:
+
 - Shopping cart item quantities (add/remove items)
 - Inventory management across warehouses
 - Resource allocation tracking
 
 **Example**:
+
 ```typescript
 class PNCounter implements StateCRDT<number> {
   private positive: GCounter;
@@ -131,16 +137,19 @@ class PNCounter implements StateCRDT<number> {
 **Purpose**: Single-value register with conflict resolution via timestamps
 
 **Conflict Resolution**:
+
 1. Compare timestamps
 2. Select value with later timestamp
 3. If timestamps equal, use replica ID as tiebreaker
 
 **Operations**:
+
 - `set(value)`: Update value with current timestamp
 - `get()`: Retrieve current value
 - `merge(other)`: Select value with later timestamp
 
 **Implementation**:
+
 ```typescript
 interface LWWValue<T> {
   value: T;
@@ -155,7 +164,7 @@ class LWWRegister<T> implements StateCRDT<T> {
     this.data = {
       value,
       timestamp: Date.now(),
-      replicaId: this.replicaId
+      replicaId: this.replicaId,
     };
   }
 
@@ -173,9 +182,8 @@ class LWWRegister<T> implements StateCRDT<T> {
       merged.data = { ...other.data };
     } else {
       // Timestamps equal, use replica ID tiebreaker
-      merged.data = this.data.replicaId > other.data.replicaId
-        ? { ...this.data }
-        : { ...other.data };
+      merged.data =
+        this.data.replicaId > other.data.replicaId ? { ...this.data } : { ...other.data };
     }
 
     return merged;
@@ -184,6 +192,7 @@ class LWWRegister<T> implements StateCRDT<T> {
 ```
 
 **Use Cases**:
+
 - User profile fields
 - Configuration values
 - Document titles/metadata
@@ -196,6 +205,7 @@ class LWWRegister<T> implements StateCRDT<T> {
 Operation-based CRDTs require operations to be delivered in causal order. This is achieved using vector clocks.
 
 **Vector Clock Integration**:
+
 ```typescript
 class OpBasedCRDT {
   private vectorClock: VectorClock;
@@ -221,7 +231,7 @@ class OpBasedCRDT {
     // Check if all causal dependencies are satisfied
     for (const [replicaId, timestamp] of op.vectorClock.entries()) {
       if (this.vectorClock.get(replicaId) < timestamp - 1) {
-        return false;  // Missing dependency
+        return false; // Missing dependency
       }
     }
     return true;
@@ -240,6 +250,7 @@ Reduce bandwidth by sending only state changes (deltas) instead of full state.
 **Measured Bandwidth Reduction**: 50-90% depending on delta size
 
 **When to Use Delta vs Full Sync**:
+
 ```typescript
 class CRDTManager {
   private shouldUseDelta(delta: any, fullState: any): boolean {
@@ -247,7 +258,7 @@ class CRDTManager {
     const fullSize = this.estimateSize(fullState);
 
     // Use delta if <30% of full state size
-    return deltaSize < (fullSize * 0.3);
+    return deltaSize < fullSize * 0.3;
   }
 }
 ```
@@ -268,7 +279,7 @@ class DeltaCRDT extends StateCRDT {
     const delta: DeltaState = {
       changes: new Map(),
       vectorClock: this.vectorClock.clone(),
-      sequenceNumber: this.sequenceCounter++
+      sequenceNumber: this.sequenceCounter++,
     };
 
     // Include only changes since 'since' vector clock
@@ -296,13 +307,13 @@ class DeltaCRDT extends StateCRDT {
 
 From actual testing:
 
-| Replica Count | Convergence Time | Network | Notes |
-|---------------|------------------|---------|-------|
-| 2 | <100ms | Local | Near-instant |
-| 5 | <300ms | Local | Sub-second |
-| 10 | <500ms | Local | Still fast |
-| 20 | <800ms | Local | Acceptable |
-| 64 | <1000ms | Local | Sub-second even at scale |
+| Replica Count | Convergence Time | Network | Notes                    |
+| ------------- | ---------------- | ------- | ------------------------ |
+| 2             | <100ms           | Local   | Near-instant             |
+| 5             | <300ms           | Local   | Sub-second               |
+| 10            | <500ms           | Local   | Still fast               |
+| 20            | <800ms           | Local   | Acceptable               |
+| 64            | <1000ms          | Local   | Sub-second even at scale |
 
 **Throughput**: ~277,778 operations/second demonstrated in testing
 
@@ -310,12 +321,12 @@ From actual testing:
 
 **Delta-State vs Full-State Synchronization**:
 
-| Scenario | Full State Size | Delta Size | Reduction |
-|----------|----------------|------------|-----------|
-| Single update | 10 KB | 500 B | 95% |
-| 10 updates | 10 KB | 2 KB | 80% |
-| 50 updates | 10 KB | 6 KB | 40% |
-| 100 updates | 10 KB | 9 KB | 10% |
+| Scenario      | Full State Size | Delta Size | Reduction |
+| ------------- | --------------- | ---------- | --------- |
+| Single update | 10 KB           | 500 B      | 95%       |
+| 10 updates    | 10 KB           | 2 KB       | 80%       |
+| 50 updates    | 10 KB           | 6 KB       | 40%       |
+| 100 updates   | 10 KB           | 9 KB       | 10%       |
 
 **Decision Rule**: Use delta-state when changes <30% of full state
 
@@ -324,6 +335,7 @@ From actual testing:
 **Theoretical**: O(n) where n = number of replicas
 
 **Measured**:
+
 - 100 CRDTs synchronized in 3ms
 - Linear scaling confirmed up to 1000 elements
 - Memory usage: O(n) per CRDT instance
@@ -348,6 +360,7 @@ the merged state s₁ ⊔ s₂ satisfies:
 ```
 
 **Verification Method**: Comprehensive test suite validates:
+
 - Commutativity across 10 random merge orders
 - Associativity with complex multi-replica scenarios
 - Idempotency through self-merge operations
@@ -379,9 +392,10 @@ Vector clocks provide logical time for distributed events, enabling causality de
 **Lamport Timestamps**: Sequential logical time per process
 
 **Vector Clock**: Map of process_id → timestamp
+
 ```typescript
 interface VectorClock {
-  clocks: Map<string, number>;  // process_id -> logical_time
+  clocks: Map<string, number>; // process_id -> logical_time
   processId: string;
 }
 ```
@@ -389,6 +403,7 @@ interface VectorClock {
 ### Operations
 
 **1. Local Event (Tick)**:
+
 ```typescript
 class VectorClock {
   tick(): VectorClock {
@@ -400,6 +415,7 @@ class VectorClock {
 ```
 
 **2. Receive Event (Merge)**:
+
 ```typescript
 class VectorClock {
   receive(otherClock: VectorClock): VectorClock {
@@ -418,6 +434,7 @@ class VectorClock {
 ```
 
 **3. Compare Clocks (Causality Detection)**:
+
 ```typescript
 class VectorClock {
   // Returns true if this happens-before other
@@ -450,10 +467,12 @@ class VectorClock {
 ### Measured Characteristics
 
 **Memory Overhead**: O(n) where n = number of nodes
+
 - ~50-200 bytes per node
 - ~200 bytes per event
 
 **Clock Drift Impact**:
+
 - 50ms drift: 0 impact (below default threshold)
 - 100ms drift: 0 impact (at threshold)
 - 200ms drift: Detectable ordering impact
@@ -462,6 +481,7 @@ class VectorClock {
 **Causality Detection Rate**: >95% accuracy under normal conditions
 
 **Synchronization Overhead**:
+
 - 10-50ms per sync operation (network dependent)
 - Frequency configurable (tradeoff: freshness vs overhead)
 
@@ -479,7 +499,7 @@ class DistributedState {
       key,
       value,
       vectorClock: this.vectorClock.tick().clone(),
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
 
     // Apply locally
@@ -504,8 +524,10 @@ class DistributedState {
 
   private canApplyEvent(event: Event): boolean {
     // Event can be applied if all causal dependencies satisfied
-    return event.vectorClock.happensBefore(this.vectorClock) ||
-           event.vectorClock.concurrent(this.vectorClock);
+    return (
+      event.vectorClock.happensBefore(this.vectorClock) ||
+      event.vectorClock.concurrent(this.vectorClock)
+    );
   }
 }
 ```
@@ -515,16 +537,19 @@ class DistributedState {
 ### Conflict Types
 
 **1. Write-Write Conflicts**:
+
 - Multiple replicas update same key concurrently
 - Detected via vector clock comparison (concurrent events)
 - Resolution: LWW, application-specific merge, or user intervention
 
 **2. Read-Write Conflicts**:
+
 - Read based on stale data, then write
 - Detected via dependency tracking
 - Resolution: Retry read, merge strategies
 
 **3. Semantic Conflicts**:
+
 - Operations don't conflict structurally but semantically inconsistent
 - Example: Book same resource from different replicas
 - Requires application-level detection and resolution
@@ -532,6 +557,7 @@ class DistributedState {
 ### Resolution Strategies
 
 **Automatic Resolution**:
+
 ```typescript
 interface ConflictResolutionStrategy {
   // Last-Writer-Wins using timestamps
@@ -549,6 +575,7 @@ interface ConflictResolutionStrategy {
 ```
 
 **Manual Resolution**:
+
 - Present conflict to user/administrator
 - Collect resolution decision
 - Apply resolution and propagate
@@ -566,15 +593,12 @@ const edgeServer2 = new GCounter('edge-2');
 const edgeServer3 = new GCounter('edge-3');
 
 // Servers independently count views
-edgeServer1.increment(1000);  // 1000 views
-edgeServer2.increment(1500);  // 1500 views
-edgeServer3.increment(800);   // 800 views
+edgeServer1.increment(1000); // 1000 views
+edgeServer2.increment(1500); // 1500 views
+edgeServer3.increment(800); // 800 views
 
 // Periodic synchronization
-const totalViews = edgeServer1
-  .merge(edgeServer2)
-  .merge(edgeServer3)
-  .value();  // 3300 total views
+const totalViews = edgeServer1.merge(edgeServer2).merge(edgeServer3).value(); // 3300 total views
 ```
 
 ### Pattern 2: Collaborative Editing
@@ -594,7 +618,7 @@ setTimeout(() => {
 
 // Merge: User 2's update wins (later timestamp)
 const merged = doc1.merge(doc2);
-console.log(merged.get().title);  // 'Final Title'
+console.log(merged.get().title); // 'Final Title'
 ```
 
 ### Pattern 3: Shopping Cart Synchronization
@@ -616,11 +640,9 @@ tabletCart.increment(1);
 tabletCart.decrement(1);
 
 // Synchronize all devices
-const finalCart = mobileCart
-  .merge(webCart)
-  .merge(tabletCart);
+const finalCart = mobileCart.merge(webCart).merge(tabletCart);
 
-console.log(finalCart.value());  // 8 items total
+console.log(finalCart.value()); // 8 items total
 ```
 
 ## Best Practices
@@ -666,12 +688,14 @@ console.log(finalCart.value());  // 8 items total
 ### CRDT Limitations
 
 **Cannot Provide**:
+
 - Strong consistency (only eventual)
 - Arbitrary transaction support
 - Total ordering of operations (without consensus)
 - Prevention of semantic conflicts
 
 **Tradeoffs**:
+
 - Memory overhead: O(n) per replica
 - Limited operation types vs flexibility
 - Eventual vs immediate consistency
@@ -680,12 +704,14 @@ console.log(finalCart.value());  // 8 items total
 ### Vector Clock Limitations
 
 **Challenges**:
+
 - O(n) memory growth with nodes
 - Clock drift affects accuracy
 - No Byzantine fault protection
 - Garbage collection complexity
 
 **Mitigation Strategies**:
+
 - Node grouping for large networks
 - Periodic clock synchronization (NTP)
 - Hybrid logical clocks (combine physical + logical)
@@ -694,6 +720,7 @@ console.log(finalCart.value());  // 8 items total
 ## Evidence Sources
 
 All patterns and measurements from:
+
 - `/home/alton/SKG Agent Prototype 2/src/core/crdt/CRDTManager.ts`
 - `/home/alton/SKG Agent Prototype 2/src/core/consensus/VectorClock.ts`
 - `/home/alton/SKG Agent Prototype 2/CRDT_IMPLEMENTATION_SUMMARY.md`

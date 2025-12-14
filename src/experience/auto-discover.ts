@@ -565,8 +565,7 @@ export class ContextDiscoverer {
 
   private extractCodeInfo(content: string, entry: FileIndexEntry): void {
     // Extract imports (TypeScript/JavaScript)
-    const importRegex =
-      /import\s+(?:(?:\{[^}]*\}|\*\s+as\s+\w+|\w+)\s+from\s+)?['"]([^'"]+)['"]/g;
+    const importRegex = /import\s+(?:(?:\{[^}]*\}|\*\s+as\s+\w+|\w+)\s+from\s+)?['"]([^'"]+)['"]/g;
     let match;
     while ((match = importRegex.exec(content)) !== null) {
       entry.imports.add(match[1]);
@@ -712,7 +711,7 @@ export class ContextDiscoverer {
     }
 
     const baseDir = path.dirname(fromPath);
-    let resolved = path.resolve(baseDir, importPath);
+    const resolved = path.resolve(baseDir, importPath);
 
     // Try with extensions
     for (const ext of ['.ts', '.tsx', '.js', '.jsx', '']) {

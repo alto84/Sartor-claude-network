@@ -13,25 +13,32 @@ Desktop Claude responds → Alton/Vayu relay → iPad Claude acts
 ## Process
 
 ### Step 1: Vayu Explores with iPad
+
 1. Vayu takes iPad to a room
 2. Opens Claude app
 3. Asks iPad Claude: "Describe this room in detail"
 4. iPad Claude responds with observations
 
 ### Step 2: Vayu Reports to Alton
+
 Vayu tells you what iPad Claude said (or shows you the screen)
 
 ### Step 3: Alton Relays to Desktop Claude (me)
+
 You tell me what iPad Claude observed, like:
+
 > "iPad Claude says: I'm in the kitchen. I can see a stainless steel refrigerator,
 > a gas stove with 4 burners, a sink with a window above it, and a small dining table."
 
 ### Step 4: Desktop Claude Analyzes & Responds
+
 I'll process the information and give you instructions/questions, like:
+
 > "Excellent scouting! Kitchen mapped. Next: Have iPad Claude count how many
 > cabinets there are and check if there's a pantry. Then proceed to the living room."
 
 ### Step 5: Relay Back to iPad Claude
+
 You/Vayu tell iPad Claude the new instructions
 
 ### Repeat!
@@ -43,6 +50,7 @@ You/Vayu tell iPad Claude the new instructions
 **Current Status**: Awaiting first room report
 
 **Protocol**:
+
 1. Pick a room
 2. iPad Claude describes it
 3. Report to me

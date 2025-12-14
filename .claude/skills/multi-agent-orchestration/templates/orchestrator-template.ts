@@ -74,7 +74,7 @@ class AgentRegistry {
     this.healthStatus.set(manifest.id, {
       healthy: true,
       lastCheck: Date.now(),
-      errorCount: 0
+      errorCount: 0,
     });
 
     console.log(`Agent registered: ${manifest.id} (${manifest.name})`);
@@ -91,13 +91,13 @@ class AgentRegistry {
   }
 
   findAgentsByCapability(capability: string): AgentManifest[] {
-    return Array.from(this.agents.values()).filter(agent =>
-      agent.capabilities.some(c => c.name === capability)
+    return Array.from(this.agents.values()).filter((agent) =>
+      agent.capabilities.some((c) => c.name === capability)
     );
   }
 
   getHealthyAgents(): AgentManifest[] {
-    return Array.from(this.agents.values()).filter(agent => {
+    return Array.from(this.agents.values()).filter((agent) => {
       const health = this.healthStatus.get(agent.id);
       return health?.healthy === true;
     });
@@ -120,7 +120,7 @@ class AgentRegistry {
         healthy: isHealthy,
         lastCheck: Date.now(),
         responseTime,
-        errorCount: isHealthy ? 0 : (this.healthStatus.get(agentId)?.errorCount || 0) + 1
+        errorCount: isHealthy ? 0 : (this.healthStatus.get(agentId)?.errorCount || 0) + 1,
       });
 
       return isHealthy;
@@ -128,7 +128,7 @@ class AgentRegistry {
       this.healthStatus.set(agentId, {
         healthy: false,
         lastCheck: Date.now(),
-        errorCount: (this.healthStatus.get(agentId)?.errorCount || 0) + 1
+        errorCount: (this.healthStatus.get(agentId)?.errorCount || 0) + 1,
       });
       return false;
     }
@@ -136,7 +136,7 @@ class AgentRegistry {
 
   private async simulateHealthCheck(agent: AgentManifest): Promise<boolean> {
     // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, Math.random() * 100));
+    await new Promise((resolve) => setTimeout(resolve, Math.random() * 100));
     // 95% success rate for simulation
     return Math.random() > 0.05;
   }
@@ -159,7 +159,7 @@ class TaskQueue {
     ['critical', []],
     ['high', []],
     ['normal', []],
-    ['low', []]
+    ['low', []],
   ]);
 
   private priorityOrder = ['critical', 'high', 'normal', 'low'];
@@ -224,7 +224,7 @@ class TaskExecutor {
         status: 'failure',
         error: 'No capable agent available',
         executionTime: Date.now() - startTime,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
     }
 
@@ -238,7 +238,7 @@ class TaskExecutor {
         status: 'success',
         result,
         executionTime: Date.now() - startTime,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
     } catch (error: any) {
       return {
@@ -247,16 +247,17 @@ class TaskExecutor {
         status: 'failure',
         error: error.message,
         executionTime: Date.now() - startTime,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
     }
   }
 
   private async selectAgent(task: Task): Promise<AgentManifest | null> {
     // Find agents with required capabilities
-    const capableAgents = task.requiredCapabilities.length > 0
-      ? this.findCapableAgents(task.requiredCapabilities)
-      : this.registry.getHealthyAgents();
+    const capableAgents =
+      task.requiredCapabilities.length > 0
+        ? this.findCapableAgents(task.requiredCapabilities)
+        : this.registry.getHealthyAgents();
 
     if (capableAgents.length === 0) {
       return null;
@@ -270,11 +271,9 @@ class TaskExecutor {
   private findCapableAgents(requiredCapabilities: string[]): AgentManifest[] {
     const agents = this.registry.getHealthyAgents();
 
-    return agents.filter(agent => {
-      const agentCapabilities = agent.capabilities.map(c => c.name);
-      return requiredCapabilities.every(required =>
-        agentCapabilities.includes(required)
-      );
+    return agents.filter((agent) => {
+      const agentCapabilities = agent.capabilities.map((c) => c.name);
+      return requiredCapabilities.every((required) => agentCapabilities.includes(required));
     });
   }
 
@@ -294,7 +293,7 @@ class TaskExecutor {
       if (attempt < maxRetries) {
         // Exponential backoff
         const delay = Math.pow(2, attempt) * 1000;
-        await new Promise(resolve => setTimeout(resolve, delay));
+        await new Promise((resolve) => setTimeout(resolve, delay));
 
         // Retry
         return this.executeWithRetry(task, agent, attempt + 1);
@@ -331,7 +330,7 @@ class TaskExecutor {
   private async simulateTaskExecution(task: Task, agent: AgentManifest): Promise<any> {
     // Simulate task execution delay
     const executionTime = Math.random() * 2000 + 500; // 500-2500ms
-    await new Promise(resolve => setTimeout(resolve, executionTime));
+    await new Promise((resolve) => setTimeout(resolve, executionTime));
 
     // 90% success rate for simulation
     if (Math.random() > 0.1) {
@@ -339,7 +338,7 @@ class TaskExecutor {
         taskType: task.type,
         processedBy: agent.id,
         result: `Completed: ${task.description}`,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
     } else {
       throw new Error('Simulated task execution failure');
@@ -416,18 +415,19 @@ export class AgentOrchestrator extends EventEmitter {
         const task = this.taskQueue.dequeue();
 
         if (task) {
-          this.executor.executeTask(task)
-            .then(result => {
+          this.executor
+            .executeTask(task)
+            .then((result) => {
               this.emit('task:completed', result);
               console.log(`Task completed: ${task.id} - Status: ${result.status}`);
             })
-            .catch(error => {
+            .catch((error) => {
               console.error(`Task failed: ${task.id} - Error: ${error.message}`);
             });
         }
       }
 
-      await new Promise(resolve => setTimeout(resolve, this.processingInterval));
+      await new Promise((resolve) => setTimeout(resolve, this.processingInterval));
     }
   }
 
@@ -455,9 +455,9 @@ async function exampleUsage() {
     version: '1.0.0',
     capabilities: [
       { name: 'data-transform', version: '1.0' },
-      { name: 'data-validate', version: '1.0' }
+      { name: 'data-validate', version: '1.0' },
     ],
-    endpoint: 'http://localhost:3001'
+    endpoint: 'http://localhost:3001',
   });
 
   await orchestrator.registerAgent({
@@ -466,9 +466,9 @@ async function exampleUsage() {
     version: '1.0.0',
     capabilities: [
       { name: 'data-analyze', version: '1.0' },
-      { name: 'report-generate', version: '1.0' }
+      { name: 'report-generate', version: '1.0' },
     ],
-    endpoint: 'http://localhost:3002'
+    endpoint: 'http://localhost:3002',
   });
 
   // Submit tasks
@@ -479,7 +479,7 @@ async function exampleUsage() {
     requiredCapabilities: ['data-transform'],
     priority: 'high',
     timeout: 5000,
-    retries: 2
+    retries: 2,
   };
 
   const task2: Task = {
@@ -488,7 +488,7 @@ async function exampleUsage() {
     description: 'Analyze sales trends',
     requiredCapabilities: ['data-analyze'],
     priority: 'normal',
-    timeout: 10000
+    timeout: 10000,
   };
 
   // Execute tasks
@@ -505,7 +505,7 @@ async function exampleUsage() {
     description: 'Generate monthly report',
     requiredCapabilities: ['report-generate'],
     priority: 'low',
-    timeout: 30000
+    timeout: 30000,
   });
 
   // Listen for events

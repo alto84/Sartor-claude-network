@@ -36,7 +36,9 @@ describe('MCP Server Development', () => {
           name: 'calculateSum',
           description: 'Calculates sum of numbers',
           inputSchema: {} as any,
-          handler: async (params: any) => ({ content: [{ type: 'text' as const, text: String(params.a + params.b) }] }),
+          handler: async (params: any) => ({
+            content: [{ type: 'text' as const, text: String(params.a + params.b) }],
+          }),
         };
 
         const result = validator.validateToolDefinition(tool);
@@ -50,7 +52,9 @@ describe('MCP Server Development', () => {
           name: 'processData',
           description: 'Process data',
           inputSchema: {} as any,
-          handler: async (params: any) => ({ content: [{ type: 'text' as const, text: JSON.stringify(params) }] }),
+          handler: async (params: any) => ({
+            content: [{ type: 'text' as const, text: JSON.stringify(params) }],
+          }),
         };
 
         const result = validator.validateToolDefinition(tool);
@@ -86,7 +90,9 @@ describe('MCP Server Development', () => {
               email: { type: 'string' },
             },
           },
-          handler: async (params: any) => ({ content: [{ type: 'text' as const, text: JSON.stringify(params) }] }),
+          handler: async (params: any) => ({
+            content: [{ type: 'text' as const, text: JSON.stringify(params) }],
+          }),
         };
 
         const result = validator.validateToolDefinition(tool);
@@ -201,11 +207,19 @@ async function handler(params) {
           handler: async (params: any) => {
             try {
               if (!params.query) {
-                return { content: [{ type: 'text' as const, text: 'Query required' }], isError: true };
+                return {
+                  content: [{ type: 'text' as const, text: 'Query required' }],
+                  isError: true,
+                };
               }
-              return { content: [{ type: 'text' as const, text: JSON.stringify({ results: [] }) }] };
+              return {
+                content: [{ type: 'text' as const, text: JSON.stringify({ results: [] }) }],
+              };
             } catch (error) {
-              return { content: [{ type: 'text' as const, text: (error as Error).message }], isError: true };
+              return {
+                content: [{ type: 'text' as const, text: (error as Error).message }],
+                isError: true,
+              };
             }
           },
         };

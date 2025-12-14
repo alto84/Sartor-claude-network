@@ -249,10 +249,7 @@ export class KnowledgeGraph {
   /**
    * Update an entity
    */
-  updateEntity(
-    id: string,
-    updates: Partial<Omit<Entity, 'id' | 'createdAt'>>
-  ): Entity | undefined {
+  updateEntity(id: string, updates: Partial<Omit<Entity, 'id' | 'createdAt'>>): Entity | undefined {
     const entity = this.entities.get(id);
     if (!entity) return undefined;
 
@@ -526,10 +523,7 @@ export class KnowledgeGraph {
   /**
    * Get neighbors of an entity
    */
-  getNeighbors(
-    entityId: string,
-    options: QueryOptions = {}
-  ): Entity[] {
+  getNeighbors(entityId: string, options: QueryOptions = {}): Entity[] {
     const relationships = this.getRelationshipsForEntity(entityId, 'both');
     const neighborIds = new Set<string>();
 
@@ -641,11 +635,7 @@ export class KnowledgeGraph {
   /**
    * Find all paths between two entities
    */
-  findAllPaths(
-    startId: string,
-    endId: string,
-    options: QueryOptions = {}
-  ): GraphPath[] {
+  findAllPaths(startId: string, endId: string, options: QueryOptions = {}): GraphPath[] {
     if (!this.entities.has(startId) || !this.entities.has(endId)) {
       return [];
     }
@@ -654,11 +644,7 @@ export class KnowledgeGraph {
     const maxDepth = options.maxDepth ?? 5;
     const maxResults = options.maxResults ?? 100;
 
-    const dfs = (
-      currentId: string,
-      path: GraphPath,
-      visited: Set<string>
-    ): void => {
+    const dfs = (currentId: string, path: GraphPath, visited: Set<string>): void => {
       if (paths.length >= maxResults) return;
       if (path.length >= maxDepth) return;
 
@@ -717,10 +703,7 @@ export class KnowledgeGraph {
   /**
    * Execute a graph traversal query
    */
-  traverse(
-    startId: string,
-    options: QueryOptions = {}
-  ): QueryResult {
+  traverse(startId: string, options: QueryOptions = {}): QueryResult {
     const startTime = Date.now();
     const maxDepth = options.maxDepth ?? 3;
     const entities: Entity[] = [];
@@ -849,10 +832,7 @@ export class KnowledgeGraph {
   /**
    * Create semantic links based on similarity
    */
-  createSemanticLinks(
-    minSimilarity: number = 0.3,
-    relationWeight: number = 0.5
-  ): number {
+  createSemanticLinks(minSimilarity: number = 0.3, relationWeight: number = 0.5): number {
     let linksCreated = 0;
 
     const entityIds: string[] = [];
@@ -868,9 +848,7 @@ export class KnowledgeGraph {
         // Check if relationship already exists
         const existingRels = this.getRelationshipsForEntity(link.sourceId, 'outgoing');
         const exists = existingRels.some(
-          (rel) =>
-            rel.targetId === link.targetId &&
-            rel.type === RelationType.SIMILAR_TO
+          (rel) => rel.targetId === link.targetId && rel.type === RelationType.SIMILAR_TO
         );
 
         if (!exists) {
@@ -962,12 +940,63 @@ export class KnowledgeGraph {
    */
   private isStopWord(word: string): boolean {
     const stopWords = new Set([
-      'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
-      'of', 'with', 'by', 'from', 'as', 'is', 'was', 'are', 'were', 'been',
-      'be', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would',
-      'could', 'should', 'may', 'might', 'must', 'this', 'that', 'these',
-      'those', 'it', 'its', 'they', 'them', 'their', 'we', 'us', 'our',
-      'you', 'your', 'he', 'him', 'his', 'she', 'her', 'not', 'all', 'any',
+      'the',
+      'a',
+      'an',
+      'and',
+      'or',
+      'but',
+      'in',
+      'on',
+      'at',
+      'to',
+      'for',
+      'of',
+      'with',
+      'by',
+      'from',
+      'as',
+      'is',
+      'was',
+      'are',
+      'were',
+      'been',
+      'be',
+      'have',
+      'has',
+      'had',
+      'do',
+      'does',
+      'did',
+      'will',
+      'would',
+      'could',
+      'should',
+      'may',
+      'might',
+      'must',
+      'this',
+      'that',
+      'these',
+      'those',
+      'it',
+      'its',
+      'they',
+      'them',
+      'their',
+      'we',
+      'us',
+      'our',
+      'you',
+      'your',
+      'he',
+      'him',
+      'his',
+      'she',
+      'her',
+      'not',
+      'all',
+      'any',
     ]);
     return stopWords.has(word);
   }

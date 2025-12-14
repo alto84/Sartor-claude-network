@@ -61,6 +61,7 @@ if __name__ == "__main__":
 ### Capabilities
 
 Your local inference node can:
+
 - Run models locally (no API calls needed)
 - Process sensitive data offline
 - Provide backup/redundancy

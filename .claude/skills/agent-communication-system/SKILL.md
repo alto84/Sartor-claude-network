@@ -13,8 +13,9 @@ This skill provides practical implementation guidance for building inter-agent c
 **Complements**: `multi-agent-orchestration` skill (theoretical patterns) with practical implementation guidance.
 
 **Key Integration**: This skill covers communication in the Sartor-Claude-Network system, which uses:
-- Message bus at `/home/alton/Sartor-claude-network/src/subagent/messaging.ts`
-- Work distribution at `/home/alton/Sartor-claude-network/src/coordination/work-distribution.ts`
+
+- Message bus at `/home/user/Sartor-claude-network/src/subagent/messaging.ts`
+- Work distribution at `/home/user/Sartor-claude-network/src/coordination/work-distribution.ts`
 - Memory MCP for persistent agent memory and shared state
 
 ## When to Use This Skill
@@ -61,11 +62,12 @@ The Sartor-Claude-Network system provides a complete implementation of agent com
 
 ### 1. Message Bus (AgentMessageBus)
 
-**Location**: `/home/alton/Sartor-claude-network/src/subagent/messaging.ts`
+**Location**: `/home/user/Sartor-claude-network/src/subagent/messaging.ts`
 
 The message bus provides the core communication infrastructure for agents.
 
 **Key Features**:
+
 - **Priority-based message queuing** (CRITICAL, HIGH, NORMAL, LOW)
 - **Multiple message types** (DIRECT, BROADCAST, TOPIC, REQUEST, RESPONSE, PROGRESS, SYSTEM, ERROR)
 - **Delivery tracking** (QUEUED, SENT, DELIVERED, READ, FAILED, EXPIRED)
@@ -74,6 +76,7 @@ The message bus provides the core communication infrastructure for agents.
 - **Automatic message processing** with retry and acknowledgment
 
 **Message Structure**:
+
 ```typescript
 interface AgentMessage {
   id: string;
@@ -109,20 +112,14 @@ bus.sendToAgent(
 );
 
 // 2. Broadcasting to all agents
-bus.broadcastToAll(
-  'coordinator',
-  'System update',
-  { event: 'new-task-available' }
-);
+bus.broadcastToAll('coordinator', 'System update', { event: 'new-task-available' });
 
 // 3. Topic-based pub/sub
 bus.subscribe('agent-1', 'task.status');
-bus.publishToTopic(
-  'work-distributor',
-  'task.status',
-  'Task Created',
-  { taskId: 'task-123', status: 'AVAILABLE' }
-);
+bus.publishToTopic('work-distributor', 'task.status', 'Task Created', {
+  taskId: 'task-123',
+  status: 'AVAILABLE',
+});
 
 // 4. Request/response with timeout
 const response = await bus.sendRequest(
@@ -135,6 +132,7 @@ const response = await bus.sendRequest(
 ```
 
 **Message Handler Registration**:
+
 ```typescript
 // Register message handler
 bus.registerHandler('agent-1', async (message) => {
@@ -151,7 +149,7 @@ bus.registerRequestHandler('agent-2', async (message) => {
 
 ### 2. Work Distribution with Message Bus Integration
 
-**Location**: `/home/alton/Sartor-claude-network/src/coordination/work-distribution.ts`
+**Location**: `/home/user/Sartor-claude-network/src/coordination/work-distribution.ts`
 
 The work distributor manages task assignment and integrates with the message bus to broadcast task status updates.
 
@@ -183,6 +181,7 @@ distributor.completeTask(task.id, 'agent-1', result);
 ```
 
 **Task Status Events Published to `task.status` Topic**:
+
 - Task Created
 - Task Claimed
 - Task Started
@@ -190,6 +189,7 @@ distributor.completeTask(task.id, 'agent-1', result);
 - Task Failed (includes error details)
 
 **Event Payload Structure**:
+
 ```typescript
 {
   taskId: string;
@@ -206,6 +206,7 @@ distributor.completeTask(task.id, 'agent-1', result);
 **Purpose**: Memory MCP provides persistent, queryable storage for agent experiences, learnings, and shared knowledge. Unlike transient messages, memory persists across sessions and enables agents to learn from past interactions.
 
 **Available via MCP Tools**:
+
 - `memory_create` - Store new memories
 - `memory_get` - Retrieve specific memory by ID
 - `memory_search` - Query memories with filters
@@ -214,35 +215,41 @@ distributor.completeTask(task.id, 'agent-1', result);
 **Memory Types for Agent Communication**:
 
 1. **Episodic Memory** - Record specific agent interactions
+
    ```typescript
    // Example: Store a successful collaboration
    memory_create({
-     content: "Agent-2 provided web search assistance for task-123. Query: 'latest React docs'. Found 5 relevant sources in 2.3s.",
-     type: "episodic",
+     content:
+       "Agent-2 provided web search assistance for task-123. Query: 'latest React docs'. Found 5 relevant sources in 2.3s.",
+     type: 'episodic',
      importance: 0.7,
-     tags: ["collaboration", "web-search", "agent-2", "task-123"]
+     tags: ['collaboration', 'web-search', 'agent-2', 'task-123'],
    });
    ```
 
 2. **Semantic Memory** - Capture learned facts about agents
+
    ```typescript
    // Example: Store agent capability knowledge
    memory_create({
-     content: "Agent-2 specializes in web search with 95% success rate. Best for queries requiring current information.",
-     type: "semantic",
+     content:
+       'Agent-2 specializes in web search with 95% success rate. Best for queries requiring current information.',
+     type: 'semantic',
      importance: 0.8,
-     tags: ["agent-capabilities", "agent-2", "web-search"]
+     tags: ['agent-capabilities', 'agent-2', 'web-search'],
    });
    ```
 
 3. **Procedural Memory** - Record successful communication patterns
+
    ```typescript
    // Example: Store effective workflow pattern
    memory_create({
-     content: "For research tasks: (1) Agent-1 searches local knowledge, (2) if insufficient, request Agent-2 web search, (3) Agent-3 synthesizes results. Avg completion: 45s.",
-     type: "procedural",
+     content:
+       'For research tasks: (1) Agent-1 searches local knowledge, (2) if insufficient, request Agent-2 web search, (3) Agent-3 synthesizes results. Avg completion: 45s.',
+     type: 'procedural',
      importance: 0.9,
-     tags: ["workflow-pattern", "research-pipeline", "multi-agent"]
+     tags: ['workflow-pattern', 'research-pipeline', 'multi-agent'],
    });
    ```
 
@@ -250,10 +257,11 @@ distributor.completeTask(task.id, 'agent-1', result);
    ```typescript
    // Example: Store current task context
    memory_create({
-     content: "Task-456 in progress. Agent-1 completed search (3 sources). Waiting for Agent-2 synthesis. Expected completion: 2min.",
-     type: "working",
+     content:
+       'Task-456 in progress. Agent-1 completed search (3 sources). Waiting for Agent-2 synthesis. Expected completion: 2min.',
+     type: 'working',
      importance: 0.6,
-     tags: ["task-456", "active", "coordination-state"]
+     tags: ['task-456', 'active', 'coordination-state'],
    });
    ```
 
@@ -262,30 +270,25 @@ distributor.completeTask(task.id, 'agent-1', result);
 ```typescript
 // Before requesting assistance, check if agent is capable
 const memories = memory_search({
-  type: "semantic",
-  tags: ["agent-capabilities", "web-search"],
-  limit: 5
+  type: 'semantic',
+  tags: ['agent-capabilities', 'web-search'],
+  limit: 5,
 });
 
 // Find the best agent based on past success
-const bestAgent = memories.find(m =>
-  m.content.includes("95% success rate")
-);
+const bestAgent = memories.find((m) => m.content.includes('95% success rate'));
 
 // Request assistance from the proven agent
-await messageBus.sendRequest(
-  'requesting-agent',
-  bestAgent.agentId,
-  'Web search assistance',
-  { query: 'latest docs' }
-);
+await messageBus.sendRequest('requesting-agent', bestAgent.agentId, 'Web search assistance', {
+  query: 'latest docs',
+});
 
 // After successful collaboration, record the experience
 memory_create({
   content: `Successful collaboration with ${bestAgent.agentId}. Task completed in 2.5s with 5 quality sources.`,
-  type: "episodic",
+  type: 'episodic',
   importance: 0.7,
-  tags: ["collaboration", "success", bestAgent.agentId]
+  tags: ['collaboration', 'success', bestAgent.agentId],
 });
 ```
 
@@ -294,15 +297,15 @@ memory_create({
 ```typescript
 // Query past task performance to inform assignment
 const pastPerformance = memory_search({
-  type: "episodic",
-  tags: ["task-completion", "agent-1"],
-  limit: 10
+  type: 'episodic',
+  tags: ['task-completion', 'agent-1'],
+  limit: 10,
 });
 
 // Calculate success rate
-const successRate = pastPerformance.filter(m =>
-  m.content.includes("completed successfully")
-).length / pastPerformance.length;
+const successRate =
+  pastPerformance.filter((m) => m.content.includes('completed successfully')).length /
+  pastPerformance.length;
 
 // Assign task based on historical performance
 if (successRate > 0.8) {
@@ -311,24 +314,25 @@ if (successRate > 0.8) {
   // Store the assignment decision
   memory_create({
     content: `Assigned task-${taskId} to agent-1 based on 80%+ historical success rate.`,
-    type: "procedural",
+    type: 'procedural',
     importance: 0.5,
-    tags: ["task-assignment", "agent-1", "decision-rationale"]
+    tags: ['task-assignment', 'agent-1', 'decision-rationale'],
   });
 }
 ```
 
 **Shared Data vs Memory Trade-offs**:
 
-| Feature | Message Bus | Shared Data Pool | Memory MCP |
-|---------|-------------|------------------|------------|
-| **Persistence** | Transient (log only) | Session-scoped | Permanent |
-| **Query** | By ID, topic | By key, tag | Rich search filters |
-| **Use Case** | Real-time coordination | Active task data | Learning, history |
-| **Access Pattern** | Push (delivery) | Pull (request) | Query (search) |
-| **Latency** | Low (<100ms) | Low (<100ms) | Medium (<500ms) |
+| Feature            | Message Bus            | Shared Data Pool | Memory MCP          |
+| ------------------ | ---------------------- | ---------------- | ------------------- |
+| **Persistence**    | Transient (log only)   | Session-scoped   | Permanent           |
+| **Query**          | By ID, topic           | By key, tag      | Rich search filters |
+| **Use Case**       | Real-time coordination | Active task data | Learning, history   |
+| **Access Pattern** | Push (delivery)        | Pull (request)   | Query (search)      |
+| **Latency**        | Low (<100ms)           | Low (<100ms)     | Medium (<500ms)     |
 
 **Best Practices**:
+
 - Use **message bus** for real-time coordination and task assignment
 - Use **shared data pool** for active task data that multiple agents need
 - Use **memory MCP** for experiences, patterns, and learnings that should persist
@@ -343,6 +347,7 @@ if (successRate > 0.8) {
 **Purpose**: Central coordination system for managing multi-agent message passing, request routing, and shared data pools.
 
 **Key Responsibilities**:
+
 - Message queue management (priority-based)
 - Agent request/response orchestration
 - Shared data pool with access tracking
@@ -357,9 +362,9 @@ if (successRate > 0.8) {
 ```typescript
 // Coordination Planning
 interface CoordinationPlan {
-  executionPhases: AgentPhase[];        // Sequential/parallel execution
-  dataFlowDesign: DataFlow[];           // Data dependencies between agents
-  qualityGates: QualityGate[];          // Validation checkpoints
+  executionPhases: AgentPhase[]; // Sequential/parallel execution
+  dataFlowDesign: DataFlow[]; // Data dependencies between agents
+  qualityGates: QualityGate[]; // Validation checkpoints
 }
 
 // Shared Data Pool
@@ -370,8 +375,8 @@ interface SharedDataEntry {
     sourceAgent: string;
     timestamp: Date;
     citations?: string[];
-    accessedBy: string[];              // Audit trail
-  }
+    accessedBy: string[]; // Audit trail
+  };
 }
 
 // Agent Request/Response
@@ -387,6 +392,7 @@ interface AgentRequest {
 ```
 
 **Usage Pattern**:
+
 ```typescript
 // 1. Create coordinator
 const coordinator = new InterAgentCoordinator();
@@ -399,8 +405,8 @@ coordinator.registerAgent({ id: 'agent-2', capabilities: ['synthesis', 'writing'
 const plan = coordinator.planCoordination({
   phases: [
     { agents: ['agent-1'], type: 'parallel', dependencies: [] },
-    { agents: ['agent-2'], type: 'sequential', dependencies: ['agent-1'] }
-  ]
+    { agents: ['agent-2'], type: 'sequential', dependencies: ['agent-1'] },
+  ],
 });
 
 // 4. Execute with shared data
@@ -408,6 +414,7 @@ await coordinator.executeWithCoordination(plan);
 ```
 
 **Evidence-Based Performance**:
+
 - Cannot determine exact throughput without load testing
 - Requires measurement for latency claims
 - Coordination overhead depends on message count and agent complexity
@@ -417,6 +424,7 @@ await coordinator.executeWithCoordination(plan);
 **Purpose**: Standard base class for agents that need communication capabilities with orchestrators and peers.
 
 **Key Features**:
+
 - Step-based execution with progress reporting
 - Assistance request protocols
 - Citation tracking
@@ -459,11 +467,13 @@ interface StepResult {
 ```
 
 **Progress Reporting**:
+
 - **Throttling**: Reports throttled to prevent spam (default: max 1 update per 5 seconds)
 - **Status Types**: started, progress, completed, needs_assistance, error
 - **Detail Levels**: High-level milestones vs fine-grained steps
 
 **Usage Pattern**:
+
 ```typescript
 class ResearchAgent extends CommunicativeAgent {
   async execute(context: AgentContext): Promise<AgentResult> {
@@ -497,6 +507,7 @@ class ResearchAgent extends CommunicativeAgent {
 **Purpose**: Standardized message protocol for agent-to-agent communication with routing, acknowledgments, and delivery guarantees.
 
 **Implementation Locations**:
+
 - `/home/alton/SKG Agent Prototype 2/docs/communication-protocols.md`
 - `/home/alton/mcp_communication_protocol.js`
 
@@ -505,22 +516,22 @@ class ResearchAgent extends CommunicativeAgent {
 ```typescript
 interface MCPMessage {
   // Core fields
-  id: string;                           // Unique message identifier
-  type: MessageType;                    // Message category
-  priority: Priority;                   // CRITICAL | HIGH | NORMAL | LOW
+  id: string; // Unique message identifier
+  type: MessageType; // Message category
+  priority: Priority; // CRITICAL | HIGH | NORMAL | LOW
 
   // Routing
-  from: string;                         // Sender agent ID
-  to: string | string[];                // Recipient(s)
-  channel?: string;                     // Topic/channel for pub-sub
+  from: string; // Sender agent ID
+  to: string | string[]; // Recipient(s)
+  channel?: string; // Topic/channel for pub-sub
 
   // Content
-  payload: any;                         // Message content
+  payload: any; // Message content
   metadata: {
     timestamp: Date;
-    correlationId?: string;             // For request-response pairing
-    replyTo?: string;                   // Response channel
-    ttl?: number;                       // Time to live (ms)
+    correlationId?: string; // For request-response pairing
+    replyTo?: string; // Response channel
+    ttl?: number; // Time to live (ms)
   };
 
   // Delivery
@@ -606,7 +617,7 @@ const msg = {
 ```typescript
 class MCPHub {
   private agents: Map<string, Agent>;
-  private channels: Map<string, Set<string>>;  // Topic → Subscriber IDs
+  private channels: Map<string, Set<string>>; // Topic → Subscriber IDs
   private messageQueue: PriorityQueue<MCPMessage>;
 
   async send(message: MCPMessage): Promise<void> {
@@ -648,6 +659,7 @@ class MCPHub {
 ```
 
 **Evidence-Based Performance**:
+
 - Requires actual load testing to determine throughput
 - Retry overhead depends on network conditions (cannot estimate without measurement)
 - Priority queue implementation affects latency distribution
@@ -699,11 +711,13 @@ communication/
 ```
 
 **Progress Updates**:
+
 - Required at 25%, 50%, 75% completion
 - Must include evidence of progress (files changed, tests passing)
 - Status: Created → Assigned → In Progress → Testing → Completed → Archived
 
 **Workflow States**:
+
 1. **Created**: Task file written to `instructions/`
 2. **Assigned**: Agent acknowledges by writing to `progress/`
 3. **In Progress**: Updates at milestones
@@ -712,11 +726,13 @@ communication/
 6. **Archived**: Moved to historical record
 
 **Polling vs Watching**:
+
 - Simple: Poll directories every N seconds
 - Efficient: Use filesystem watchers (inotify on Linux)
 - Hybrid: Watch for new files, poll for updates
 
 **Evidence-Based Performance**:
+
 - File I/O latency varies by filesystem (cannot claim specific times)
 - Polling interval affects responsiveness (tradeoff: latency vs CPU)
 - Not suitable for high-frequency communication (measurement needed for threshold)
@@ -738,14 +754,14 @@ interface DataPool {
 interface DataEntry {
   key: string;
   value: any;
-  type: DataType;                       // 'string' | 'object' | 'array' | 'number'
+  type: DataType; // 'string' | 'object' | 'array' | 'number'
   metadata: {
-    sourceAgent: string;                // Who created it
-    timestamp: Date;                    // When created
-    citations: string[];                // Evidence sources
-    accessedBy: string[];               // Audit trail
-    version: number;                    // For conflict detection
-    tags: string[];                     // Searchability
+    sourceAgent: string; // Who created it
+    timestamp: Date; // When created
+    citations: string[]; // Evidence sources
+    accessedBy: string[]; // Audit trail
+    version: number; // For conflict detection
+    tags: string[]; // Searchability
   };
 }
 
@@ -762,11 +778,15 @@ interface AccessRecord {
 ```typescript
 class SharedDataPool {
   // Write data with metadata
-  set(key: string, value: any, metadata: {
-    sourceAgent: string,
-    citations?: string[],
-    tags?: string[]
-  }): void {
+  set(
+    key: string,
+    value: any,
+    metadata: {
+      sourceAgent: string;
+      citations?: string[];
+      tags?: string[];
+    }
+  ): void {
     this.entries.set(key, {
       key,
       value,
@@ -774,8 +794,8 @@ class SharedDataPool {
         ...metadata,
         timestamp: new Date(),
         accessedBy: [metadata.sourceAgent],
-        version: 1
-      }
+        version: 1,
+      },
     });
     this.logAccess(metadata.sourceAgent, key, 'WRITE');
   }
@@ -793,8 +813,7 @@ class SharedDataPool {
 
   // Search by tags
   findByTag(tag: string): DataEntry[] {
-    return Array.from(this.entries.values())
-      .filter(entry => entry.metadata.tags.includes(tag));
+    return Array.from(this.entries.values()).filter((entry) => entry.metadata.tags.includes(tag));
   }
 
   // Get citation graph
@@ -816,18 +835,21 @@ class SharedDataPool {
 4. **Tag-Based Discovery**: Find related data by semantic tags
 
 **Conflict Resolution**:
+
 - Version numbers detect concurrent writes
 - Last-Write-Wins (LWW) default strategy
 - Custom merge functions for CRDTs
 - Conflict notification to source agents
 
 **Memory Management**:
+
 - TTL (time to live) for automatic cleanup
 - Size limits with LRU eviction
 - Compression for large entries
 - Offload to disk for historical data
 
 **Evidence-Based Performance**:
+
 - Memory usage scales with entry count (requires measurement)
 - Access log growth rate depends on read frequency
 - Compression ratio varies by data type (cannot estimate without testing)
@@ -845,25 +867,25 @@ interface QualityGate {
   name: string;
   type: 'CITATION_CHECK' | 'PEER_REVIEW' | 'FORMAT_VALIDATION' | 'CONFIDENCE_THRESHOLD' | 'CUSTOM';
   criteria: GateCriteria;
-  blocking: boolean;                    // Fail task if gate fails
-  enforceFor: string[];                 // Agent IDs to enforce
+  blocking: boolean; // Fail task if gate fails
+  enforceFor: string[]; // Agent IDs to enforce
 }
 
 interface GateCriteria {
   // Citation requirements
-  minCitations?: number;                // e.g., 3 sources minimum
-  citationTypes?: string[];             // e.g., ['pubmed', 'arxiv']
+  minCitations?: number; // e.g., 3 sources minimum
+  citationTypes?: string[]; // e.g., ['pubmed', 'arxiv']
 
   // Peer review
-  minReviewers?: number;                // e.g., 2 agents must review
-  reviewerCapabilities?: string[];      // Required reviewer skills
+  minReviewers?: number; // e.g., 2 agents must review
+  reviewerCapabilities?: string[]; // Required reviewer skills
 
   // Format validation
-  schema?: JSONSchema;                  // Expected output structure
-  requiredFields?: string[];            // Must-have fields
+  schema?: JSONSchema; // Expected output structure
+  requiredFields?: string[]; // Must-have fields
 
   // Confidence scoring
-  minConfidence?: number;               // 0.0-1.0 threshold
+  minConfidence?: number; // 0.0-1.0 threshold
 
   // Custom validation
   validationFunction?: (output: any) => ValidationResult;
@@ -901,20 +923,20 @@ class QualityGateSystem {
       return {
         passed: false,
         reason: `Insufficient citations: ${citations.length} < ${criteria.minCitations}`,
-        suggestedAction: 'Add more sources to support claims'
+        suggestedAction: 'Add more sources to support claims',
       };
     }
 
     // Type check
     if (criteria.citationTypes) {
-      const hasRequiredTypes = criteria.citationTypes.every(type =>
-        citations.some(c => c.startsWith(type))
+      const hasRequiredTypes = criteria.citationTypes.every((type) =>
+        citations.some((c) => c.startsWith(type))
       );
       if (!hasRequiredTypes) {
         return {
           passed: false,
           reason: `Missing required citation types: ${criteria.citationTypes.join(', ')}`,
-          suggestedAction: 'Include citations from specified sources'
+          suggestedAction: 'Include citations from specified sources',
         };
       }
     }
@@ -924,17 +946,15 @@ class QualityGateSystem {
 
   private async conductPeerReview(criteria: GateCriteria, output: any): Promise<GateResult> {
     const reviewers = this.selectReviewers(criteria.reviewerCapabilities, criteria.minReviewers);
-    const reviews = await Promise.all(
-      reviewers.map(r => r.review(output))
-    );
+    const reviews = await Promise.all(reviewers.map((r) => r.review(output)));
 
-    const approvals = reviews.filter(r => r.approved).length;
+    const approvals = reviews.filter((r) => r.approved).length;
     const required = criteria.minReviewers || 1;
 
     return {
       passed: approvals >= required,
       reason: `Peer review: ${approvals}/${reviewers.length} approved (need ${required})`,
-      details: reviews
+      details: reviews,
     };
   }
 }
@@ -958,6 +978,7 @@ class QualityGateSystem {
    - Contradictions identified
 
 **Gate Execution Flow**:
+
 ```
 Agent Completes Task
     ↓
@@ -975,6 +996,7 @@ Accept Output
 ```
 
 **Evidence-Based Performance**:
+
 - Gate evaluation time varies by complexity (measurement needed)
 - Peer review latency depends on reviewer availability
 - Cannot estimate without actual gate execution data
@@ -989,9 +1011,9 @@ Accept Output
 interface AssistanceRequest {
   requestId: string;
   fromAgent: string;
-  type: string;                         // 'web-search', 'code-review', 'synthesis', etc.
-  context: any;                         // Request-specific data
-  requiredCapabilities?: string[];      // Must-have skills
+  type: string; // 'web-search', 'code-review', 'synthesis', etc.
+  context: any; // Request-specific data
+  requiredCapabilities?: string[]; // Must-have skills
   urgency: 'BLOCKING' | 'HIGH' | 'NORMAL';
   timeout?: number;
 }
@@ -1001,11 +1023,11 @@ class AssistanceRouter {
 
   findBestAssistant(request: AssistanceRequest): string | null {
     // 1. Filter by required capabilities
-    let candidates = Array.from(this.agentRegistry.entries())
-      .filter(([id, caps]) =>
+    let candidates = Array.from(this.agentRegistry.entries()).filter(
+      ([id, caps]) =>
         !request.requiredCapabilities ||
-        request.requiredCapabilities.every(req => caps.capabilities.includes(req))
-      );
+        request.requiredCapabilities.every((req) => caps.capabilities.includes(req))
+    );
 
     // 2. Filter by availability
     candidates = candidates.filter(([id, caps]) => caps.status === 'AVAILABLE');
@@ -1013,7 +1035,7 @@ class AssistanceRouter {
     // 3. Score by relevance
     candidates = candidates.map(([id, caps]) => ({
       id,
-      score: this.scoreRelevance(request, caps)
+      score: this.scoreRelevance(request, caps),
     }));
 
     // 4. Select highest scoring
@@ -1032,7 +1054,7 @@ class AssistanceRouter {
     // Historical success
     const history = caps.assistanceHistory[request.type] || { success: 0, total: 0 };
     if (history.total > 0) {
-      score += (history.success / history.total) * 5;  // Up to +5 for perfect record
+      score += (history.success / history.total) * 5; // Up to +5 for perfect record
     }
 
     // Current load (prefer less busy agents)
@@ -1049,6 +1071,7 @@ class AssistanceRouter {
 ```
 
 **Assistance Flow**:
+
 ```
 Agent Needs Help
     ↓
@@ -1068,6 +1091,7 @@ Requesting Agent Continues
 ```
 
 **Fallback Strategies**:
+
 - No capable agent: Return error to requester
 - Timeout: Cancel request, log failure
 - Assistance fails: Retry with different assistant or escalate to orchestrator
@@ -1091,12 +1115,14 @@ EnhancedOrchestrator
 ```
 
 **When to Use**:
+
 - Clear hierarchy (orchestrator → workers)
 - Centralized coordination needed
 - Quality gates required
 - Shared data management
 
 **Tradeoffs**:
+
 - Single point of coordination (not failure)
 - Simpler than P2P for small teams
 - Bottleneck for very large scale (measurement needed)
@@ -1116,12 +1142,14 @@ Read: completions/task.json     Write: completions/task.json
 ```
 
 **When to Use**:
+
 - Asynchronous workflows
 - Need audit trail
 - Simple infrastructure (no network dependencies)
 - Long-running tasks
 
 **Tradeoffs**:
+
 - Higher latency than direct messaging (measurement needed)
 - Filesystem I/O limits throughput
 - Excellent for debugging (human-readable files)
@@ -1138,12 +1166,14 @@ Read: completions/task.json     Write: completions/task.json
 ```
 
 **When to Use**:
+
 - Multiple agent types
 - Topic-based subscriptions
 - Need delivery guarantees
 - Network-based communication
 
 **Tradeoffs**:
+
 - Hub is potential bottleneck
 - Retry logic adds complexity
 - Message ordering guarantees require careful implementation
@@ -1160,9 +1190,9 @@ class MessageTracer {
     const trace = {
       messageId: message.id,
       timestamp: new Date(),
-      event: event.type,  // 'SENT' | 'RECEIVED' | 'ROUTED' | 'DELIVERED' | 'FAILED'
+      event: event.type, // 'SENT' | 'RECEIVED' | 'ROUTED' | 'DELIVERED' | 'FAILED'
       agentId: event.agentId,
-      details: event.details
+      details: event.details,
     };
 
     if (!this.traces.has(message.id)) {
@@ -1185,6 +1215,7 @@ tracer.trace(msg, { type: 'DELIVERED', agentId: 'agent-2', details: { latency: '
 ### 2. Coordination Flow Analysis
 
 **Check**:
+
 - Message delivery success rate
 - Average routing latency
 - Queue depths (detect backpressure)
@@ -1192,37 +1223,42 @@ tracer.trace(msg, { type: 'DELIVERED', agentId: 'agent-2', details: { latency: '
 - Failed assistance requests
 
 **Metrics to Track**:
+
 ```typescript
 interface CoordinationMetrics {
   messagesPerSecond: number;
-  averageLatency: number;                // End-to-end delivery time
-  queueDepths: Map<string, number>;      // Per-agent queue size
-  assistanceSuccessRate: number;         // Successful assistance / total requests
-  qualityGatePassRate: number;           // Gates passed / total evaluations
+  averageLatency: number; // End-to-end delivery time
+  queueDepths: Map<string, number>; // Per-agent queue size
+  assistanceSuccessRate: number; // Successful assistance / total requests
+  qualityGatePassRate: number; // Gates passed / total evaluations
 }
 ```
 
 ### 3. Common Issues
 
 **Issue**: Messages not delivered
+
 - Check: Agent availability status
 - Check: Message routing logic
 - Check: Network connectivity (if applicable)
 - Check: Message TTL expiration
 
 **Issue**: Slow coordination
+
 - Check: Queue depths (backpressure?)
 - Check: Quality gate evaluation time
 - Check: Shared data pool size
 - Check: Number of concurrent agents
 
 **Issue**: Quality gates failing
+
 - Check: Gate criteria too strict?
 - Check: Agent output format
 - Check: Citation availability
 - Check: Peer reviewer availability
 
 **Issue**: Deadlock (no progress)
+
 - Check: Circular dependencies in coordination plan
 - Check: All agents waiting for assistance
 - Check: Blocking quality gates with no retry
@@ -1238,12 +1274,14 @@ interface CoordinationMetrics {
 ## Limitations and Open Questions
 
 **Known Limitations**:
+
 - Throughput claims require load testing (not estimated)
 - Latency varies by infrastructure (measurement needed)
 - Scalability limits unknown without stress testing
 - Optimal quality gate thresholds need empirical tuning
 
 **Requires Measurement**:
+
 - Message throughput for different patterns
 - End-to-end latency distributions
 - Memory usage scaling with agent count
@@ -1251,12 +1289,14 @@ interface CoordinationMetrics {
 - Quality gate evaluation time
 
 **Language to Avoid**:
+
 - "Guaranteed delivery" (all systems have failure modes)
 - "Zero-latency communication" (physics exists)
 - "Perfect coordination" (distributed systems have limits)
 - "Eliminates all conflicts" (conflicts are inherent to distributed state)
 
 **Language to Use**:
+
 - "Delivery with retry and timeout"
 - "Measured latency: requires testing"
 - "Best-effort coordination with quality gates"
@@ -1265,14 +1305,16 @@ interface CoordinationMetrics {
 ## References
 
 **Sartor-Claude-Network Implementation** (Primary):
-- `/home/alton/Sartor-claude-network/src/subagent/messaging.ts` - Message bus with pub/sub
-- `/home/alton/Sartor-claude-network/src/coordination/work-distribution.ts` - Task distribution with message bus integration
-- `/home/alton/Sartor-claude-network/src/subagent/registry.ts` - Agent registration and discovery
-- `/home/alton/Sartor-claude-network/src/subagent/bootstrap.ts` - Agent bootstrapping
-- `/home/alton/Sartor-claude-network/src/mcp/server.ts` - Memory MCP server
-- `/home/alton/Sartor-claude-network/CLAUDE.md` - Project overview
+
+- `/home/user/Sartor-claude-network/src/subagent/messaging.ts` - Message bus with pub/sub
+- `/home/user/Sartor-claude-network/src/coordination/work-distribution.ts` - Task distribution with message bus integration
+- `/home/user/Sartor-claude-network/src/subagent/registry.ts` - Agent registration and discovery
+- `/home/user/Sartor-claude-network/src/subagent/bootstrap.ts` - Agent bootstrapping
+- `/home/user/Sartor-claude-network/src/mcp/server.ts` - Memory MCP server
+- `/home/user/Sartor-claude-network/CLAUDE.md` - Project overview
 
 **Reference Implementations** (Historical):
+
 - `/home/alton/SKG-Agent-Prototype-Private/src/ai/communication/inter-agent-coordinator.ts`
 - `/home/alton/SKG-Agent-Prototype-Private/src/ai/communication/communicative-agent.ts`
 - `/home/alton/SKG-Agent-Prototype-Private/src/ai/communication/enhanced-orchestrator.ts`
@@ -1281,6 +1323,7 @@ interface CoordinationMetrics {
 - `/home/alton/mcp_communication_protocol.js`
 
 **Design Documents**:
+
 - `/home/alton/SKG Agent Prototype 2/attentional-communication-protocol.json`
 - `/home/alton/AGENTIC_HARNESS_ARCHITECTURE.md`
 - `/home/alton/MCP_ORCHESTRATOR_DESIGN.md`

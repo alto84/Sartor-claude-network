@@ -274,10 +274,7 @@ export class LWWRegister<T> {
 
     // Use > for nodeId in merge (not >=) since these are from different sources
     // On true tie, prefer 'other' only if its nodeId is strictly greater
-    if (
-      otherTs > this.timestamp_ ||
-      (otherTs === this.timestamp_ && otherNodeId > this.nodeId_)
-    ) {
+    if (otherTs > this.timestamp_ || (otherTs === this.timestamp_ && otherNodeId > this.nodeId_)) {
       merged.value_ = other.get();
       merged.timestamp_ = otherTs;
       merged.nodeId_ = otherNodeId;
@@ -298,7 +295,11 @@ export class LWWRegister<T> {
     };
   }
 
-  static fromJSON<T>(json: { value: T | undefined; timestamp: number; nodeId: string }): LWWRegister<T> {
+  static fromJSON<T>(json: {
+    value: T | undefined;
+    timestamp: number;
+    nodeId: string;
+  }): LWWRegister<T> {
     const register = new LWWRegister<T>();
     register.value_ = json.value;
     register.timestamp_ = json.timestamp;

@@ -3,18 +3,22 @@
 ## New Memory Types
 
 ### REFINEMENT_TRACE
+
 Tracks iterative refinement loops and their outcomes.
 
 **Use Cases:**
+
 - Recording multi-iteration improvement processes
 - Tracking refinement success rates
 - Analyzing iteration patterns
 - Learning optimal iteration counts
 
 ### EXPERT_CONSENSUS
+
 Stores multi-agent voting results and consensus decisions.
 
 **Use Cases:**
+
 - Recording expert panel decisions
 - Tracking agreement levels
 - Finding similar past decisions
@@ -27,6 +31,7 @@ Stores multi-agent voting results and consensus decisions.
 **Purpose:** Create a structured trace of a refinement loop execution.
 
 **Parameters:**
+
 ```json
 {
   "task_id": "string (required)",
@@ -38,6 +43,7 @@ Stores multi-agent voting results and consensus decisions.
 ```
 
 **Returns:**
+
 ```json
 {
   "success": true,
@@ -46,19 +52,21 @@ Stores multi-agent voting results and consensus decisions.
 ```
 
 **Example Usage:**
+
 ```javascript
 const trace = await mcpClient.callTool('memory_create_refinement_trace', {
   task_id: 'implement-feature-x',
   iterations: 3,
   final_result: 'Feature X implemented with validation',
   success: true,
-  duration_ms: 4500
+  duration_ms: 4500,
 });
 
 console.log(`Trace stored: ${trace.trace_id}`);
 ```
 
 **Auto-Generated Metadata:**
+
 - **Importance Score:** 0.8 if success=true, 0.6 if success=false
 - **Tags:**
   - `refinement`
@@ -66,6 +74,7 @@ console.log(`Trace stored: ${trace.trace_id}`);
   - `iterations:{iterations}`
 
 **Storage Format:**
+
 ```json
 {
   "task_id": "implement-feature-x",
@@ -83,6 +92,7 @@ console.log(`Trace stored: ${trace.trace_id}`);
 **Purpose:** Search for expert consensus memories with optional filtering.
 
 **Parameters:**
+
 ```json
 {
   "task_type": "string (optional)",
@@ -92,6 +102,7 @@ console.log(`Trace stored: ${trace.trace_id}`);
 ```
 
 **Returns:**
+
 ```json
 [
   {
@@ -109,26 +120,28 @@ console.log(`Trace stored: ${trace.trace_id}`);
 ```
 
 **Example Usage:**
+
 ```javascript
 // Find high-agreement code reviews
 const consensus = await mcpClient.callTool('memory_search_expert_consensus', {
   task_type: 'code_review',
   min_agreement: 0.8,
-  limit: 5
+  limit: 5,
 });
 
-consensus.forEach(c => {
+consensus.forEach((c) => {
   console.log(`Decision: ${c.content.consensus_decision} (${c.agreement * 100}% agreement)`);
 });
 
 // Find all consensus decisions with >70% agreement
 const highConsensus = await mcpClient.callTool('memory_search_expert_consensus', {
   min_agreement: 0.7,
-  limit: 20
+  limit: 20,
 });
 ```
 
 **Filtering Logic:**
+
 1. Filters by `EXPERT_CONSENSUS` memory type
 2. Filters by `min_importance` (maps to agreement level)
 3. If `task_type` provided, parses JSON content and filters by task type
@@ -141,11 +154,12 @@ const highConsensus = await mcpClient.callTool('memory_search_expert_consensus',
 Use the generic `memory_create` tool with type `expert_consensus`:
 
 **Example:**
+
 ```javascript
 const votes = [
   { agent: 'auditor-1', decision: 'approve', confidence: 0.95 },
   { agent: 'auditor-2', decision: 'approve', confidence: 0.85 },
-  { agent: 'auditor-3', decision: 'reject', confidence: 0.7 }
+  { agent: 'auditor-3', decision: 'reject', confidence: 0.7 },
 ];
 
 const agreementLevel = calculateAgreement(votes); // 0.73
@@ -157,20 +171,16 @@ const consensusMemory = await mcpClient.callTool('memory_create', {
     consensus_decision: 'approve',
     agreement_level: agreementLevel,
     total_voters: 3,
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   }),
   type: 'expert_consensus',
   importance: agreementLevel,
-  tags: [
-    'consensus',
-    'task:security_audit',
-    'decision:approve',
-    `voters:${votes.length}`
-  ]
+  tags: ['consensus', 'task:security_audit', 'decision:approve', `voters:${votes.length}`],
 });
 ```
 
 **Recommended JSON Schema:**
+
 ```typescript
 {
   task_type: string;           // Type of task being voted on
@@ -193,6 +203,7 @@ const consensusMemory = await mcpClient.callTool('memory_create', {
 ## Integration Patterns
 
 ### Refinement Loop Pattern
+
 ```typescript
 async function executeWithRefinement(task) {
   const startTime = Date.now();
@@ -220,7 +231,7 @@ async function executeWithRefinement(task) {
     iterations,
     final_result: JSON.stringify(result),
     success,
-    duration_ms: duration
+    duration_ms: duration,
   });
 
   return { result, success, iterations };
@@ -228,13 +239,12 @@ async function executeWithRefinement(task) {
 ```
 
 ### Expert Voting Pattern
+
 ```typescript
 async function expertVote(task, experts) {
-  const votes = await Promise.all(
-    experts.map(expert => expert.vote(task))
-  );
+  const votes = await Promise.all(experts.map((expert) => expert.vote(task)));
 
-  const decisions = votes.map(v => v.decision);
+  const decisions = votes.map((v) => v.decision);
   const agreementLevel = calculateAgreement(votes);
   const consensusDecision = majorityDecision(decisions);
 
@@ -244,15 +254,11 @@ async function expertVote(task, experts) {
       task_type: task.type,
       votes,
       consensus_decision: consensusDecision,
-      agreement_level: agreementLevel
+      agreement_level: agreementLevel,
     }),
     type: 'expert_consensus',
     importance: agreementLevel,
-    tags: [
-      'consensus',
-      `task:${task.type}`,
-      `decision:${consensusDecision}`
-    ]
+    tags: ['consensus', `task:${task.type}`, `decision:${consensusDecision}`],
   });
 
   return { consensusDecision, agreementLevel };
@@ -260,30 +266,28 @@ async function expertVote(task, experts) {
 ```
 
 ### Learning from History Pattern
+
 ```typescript
 async function shouldRefine(task) {
   // Find similar refinement traces
   const traces = await mcpClient.callTool('memory_search', {
     type: 'refinement_trace',
     min_importance: 0.5,
-    limit: 100
+    limit: 100,
   });
 
   // Filter by similar task type
-  const similarTraces = traces.filter(t => {
+  const similarTraces = traces.filter((t) => {
     const content = JSON.parse(t.content);
     return content.task_id.includes(task.category);
   });
 
   // Calculate average iterations for successful refinements
-  const successful = similarTraces.filter(t =>
-    JSON.parse(t.content).success
-  );
+  const successful = similarTraces.filter((t) => JSON.parse(t.content).success);
 
   if (successful.length > 0) {
-    const avgIterations = successful.reduce((sum, t) =>
-      sum + JSON.parse(t.content).iterations, 0
-    ) / successful.length;
+    const avgIterations =
+      successful.reduce((sum, t) => sum + JSON.parse(t.content).iterations, 0) / successful.length;
 
     console.log(`Similar tasks typically need ${avgIterations.toFixed(1)} iterations`);
   }
@@ -294,11 +298,11 @@ async function findSimilarDecisions(taskType) {
   const consensus = await mcpClient.callTool('memory_search_expert_consensus', {
     task_type: taskType,
     min_agreement: 0.75,
-    limit: 10
+    limit: 10,
   });
 
   console.log(`Found ${consensus.length} high-confidence precedents:`);
-  consensus.forEach(c => {
+  consensus.forEach((c) => {
     console.log(`- ${c.content.consensus_decision} (${c.agreement * 100}% agreement)`);
   });
 
@@ -311,6 +315,7 @@ async function findSimilarDecisions(taskType) {
 ## Statistics and Monitoring
 
 ### Checking Memory Distribution
+
 ```javascript
 const stats = await mcpClient.callTool('memory_stats', {});
 
@@ -320,20 +325,21 @@ console.log(`Expert consensus: ${stats.by_type.expert_consensus}`);
 ```
 
 ### Analyzing Refinement Patterns
+
 ```javascript
 const allTraces = await mcpClient.callTool('memory_search', {
   type: 'refinement_trace',
-  limit: 1000
+  limit: 1000,
 });
 
 const stats = {
   total: allTraces.length,
   successful: 0,
   avgIterations: 0,
-  avgDuration: 0
+  avgDuration: 0,
 };
 
-allTraces.forEach(trace => {
+allTraces.forEach((trace) => {
   const data = JSON.parse(trace.content);
   if (data.success) stats.successful++;
   stats.avgIterations += data.iterations;
@@ -348,20 +354,21 @@ console.log('Refinement Statistics:', stats);
 ```
 
 ### Analyzing Consensus Patterns
+
 ```javascript
 const allConsensus = await mcpClient.callTool('memory_search_expert_consensus', {
   min_agreement: 0,
-  limit: 1000
+  limit: 1000,
 });
 
 const byTaskType = {};
-allConsensus.forEach(c => {
+allConsensus.forEach((c) => {
   const taskType = c.content.task_type;
   if (!byTaskType[taskType]) {
     byTaskType[taskType] = {
       count: 0,
       avgAgreement: 0,
-      decisions: {}
+      decisions: {},
     };
   }
 
@@ -369,12 +376,11 @@ allConsensus.forEach(c => {
   byTaskType[taskType].avgAgreement += c.agreement;
 
   const decision = c.content.consensus_decision;
-  byTaskType[taskType].decisions[decision] =
-    (byTaskType[taskType].decisions[decision] || 0) + 1;
+  byTaskType[taskType].decisions[decision] = (byTaskType[taskType].decisions[decision] || 0) + 1;
 });
 
 // Calculate averages
-Object.keys(byTaskType).forEach(type => {
+Object.keys(byTaskType).forEach((type) => {
   byTaskType[type].avgAgreement /= byTaskType[type].count;
 });
 
@@ -386,18 +392,21 @@ console.log('Consensus by Task Type:', byTaskType);
 ## Best Practices
 
 ### Refinement Traces
+
 1. **Always record both success and failure** - Failures teach patterns too
 2. **Use consistent task_id naming** - Enables pattern detection
 3. **Store meaningful final_result** - Include what was learned
 4. **Track duration** - Helps identify performance issues
 
 ### Expert Consensus
+
 1. **Store all votes, not just decision** - Enables deeper analysis
 2. **Use importance_score = agreement_level** - Natural filtering
 3. **Include reasoning in votes** - Builds knowledge base
 4. **Tag by task type and decision** - Enables quick retrieval
 
 ### General
+
 1. **Search before creating** - Leverage existing knowledge
 2. **Use structured JSON** - Maintains schema flexibility
 3. **Monitor memory growth** - Implement cleanup if needed
@@ -408,16 +417,19 @@ console.log('Consensus by Task Type:', byTaskType);
 ## Testing
 
 ### Verify Refinement Trace Creation
+
 ```bash
 npm test -- file-store.test.ts -t "REFINEMENT_TRACE"
 ```
 
 ### Verify Expert Consensus Search
+
 ```bash
 npm test -- file-store.test.ts -t "EXPERT_CONSENSUS"
 ```
 
 ### Full Test Suite
+
 ```bash
 npm test -- file-store.test.ts
 ```
@@ -427,11 +439,13 @@ npm test -- file-store.test.ts
 ## MCP Server Configuration
 
 ### Starting the Server (stdio mode)
+
 ```bash
 npm run mcp
 ```
 
 ### Starting the HTTP Server
+
 ```bash
 npm run mcp:http
 ```
@@ -443,28 +457,34 @@ The HTTP server runs on `http://localhost:3001/mcp` and supports both new tools.
 ## Troubleshooting
 
 ### Tool not found error
+
 **Cause:** Server not restarted after code changes
 **Solution:** Rebuild and restart MCP server
+
 ```bash
 npm run build
 npm run mcp
 ```
 
 ### Empty search results
+
 **Cause:** Wrong memory type or filters too restrictive
 **Solution:** Check memory type and lower min_agreement/min_importance
+
 ```javascript
 // Try broader search first
 const all = await mcpClient.callTool('memory_search', {
   type: 'expert_consensus',
-  limit: 100
+  limit: 100,
 });
 console.log(`Found ${all.length} total consensus memories`);
 ```
 
 ### JSON parse errors in consensus search
+
 **Cause:** Invalid JSON in memory content
 **Solution:** Validate JSON before storing
+
 ```javascript
 // Always validate before storing
 const content = JSON.stringify(consensusData);
@@ -485,6 +505,7 @@ try {
 ## Future Enhancements
 
 Potential improvements for consideration:
+
 - Aggregation queries (avg agreement by task type)
 - Time-based filtering (recent consensus only)
 - Trend analysis (agreement improving over time?)

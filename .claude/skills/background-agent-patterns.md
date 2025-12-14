@@ -24,6 +24,7 @@ The Task tool supports background execution, allowing the orchestrator to contin
 **Pattern: Non-Blocking Agent Spawn**
 
 When spawning agents for tasks that don't require immediate results:
+
 1. Use Task tool with appropriate delegation context
 2. Agent runs independently without blocking orchestrator
 3. Orchestrator can spawn multiple agents in parallel
@@ -46,6 +47,7 @@ Expected Output: [standard subagent format]
 ```
 
 **Key Characteristics:**
+
 - Orchestrator continues immediately after spawn
 - No blocking wait for agent completion
 - Agent writes progress to data/agent-status/{agent-id}.json
@@ -106,6 +108,7 @@ When work can be parallelized across multiple agents:
 
 ```markdown
 **Steps:**
+
 1. Identify independent work units (no shared file writes)
 2. Spawn 3-5 agents with distinct scopes
 3. Each agent works on isolated subset
@@ -121,6 +124,7 @@ Agent 4: AUDITOR - Review all features (read-only)
 Agent 5: CLEANER - Clean up shared utilities (src/utils/)
 
 **Coordination:**
+
 - Each agent updates data/agent-status/{agent-id}.json independently
 - No file conflicts due to scope separation
 - Lead agent monitors: ./scripts/status-read.sh
@@ -155,6 +159,7 @@ Agent 5: CLEANER - Clean up shared utilities (src/utils/)
 
 ```markdown
 **Lead Agent Responsibilities:**
+
 - Decompose complex tasks into parallelizable subtasks
 - Spawn subagents with clear scopes and constraints
 - Monitor subagent progress via status files
@@ -163,6 +168,7 @@ Agent 5: CLEANER - Clean up shared utilities (src/utils/)
 - Synthesize learnings and update system memory
 
 **Subagent Responsibilities:**
+
 - Accept delegated task with defined scope
 - Execute within boundaries (CAN/CANNOT constraints)
 - Report progress via checkpoint milestones
@@ -289,11 +295,13 @@ cat data/memories.json | jq '.memories | to_entries | map(.value) | map(select(.
 ### Memory Candidates
 
 **Semantic (importance 0.9):**
+
 - **Content**: "Discovered pattern X prevents issue Y in distributed coordination"
 - **Tags**: ["coordination", "pattern", "distributed"]
 - **Rationale**: Critical pattern that affects all future agent coordination work
 
 **Procedural (importance 0.8):**
+
 - **Content**: "When implementing feature Z, use approach A before approach B"
 - **Tags**: ["implementation", "feature-z", "best-practice"]
 - **Rationale**: Successful pattern that reduced implementation time by 50%
@@ -375,6 +383,7 @@ cat data/memories.json | jq '.memories | to_entries | map(.value) | map(select(.
 **Scenario:** Lead agent spawns subagent, subagent spawns sub-subagent.
 
 **Rules:**
+
 1. Maximum 2 levels of delegation (lead → subagent → sub-subagent)
 2. Each level inherits CAN/CANNOT constraints from parent
 3. Each level reports status to immediate parent
@@ -390,6 +399,7 @@ cat data/memories.json | jq '.memories | to_entries | map(.value) | map(select(.
 **Scenario:** Lead agent spawns subagent conditionally based on prior results.
 
 **Workflow:**
+
 1. Spawn Agent 1 (PLANNER) to assess feasibility
 2. Wait for Agent 1 completion
 3. If feasible: Spawn Agent 2 (IMPLEMENTER)
@@ -404,6 +414,7 @@ cat data/memories.json | jq '.memories | to_entries | map(.value) | map(select(.
 **Scenario:** Single task parallelized across N agents, results merged.
 
 **Workflow:**
+
 1. Decompose task into N independent subtasks
 2. Spawn N agents (fan-out)
 3. Monitor all N agents via status files

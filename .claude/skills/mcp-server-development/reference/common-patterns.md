@@ -9,6 +9,7 @@ This document describes recurring patterns extracted from working MCP server imp
 **When to use**: Simple servers with few tools (< 5)
 
 **Structure**:
+
 ```
 mcp-server/
 ├── src/
@@ -20,11 +21,13 @@ mcp-server/
 **Example**: claude-code-mcp-server (5 tools, ~270 lines)
 
 **Pros**:
+
 - Simple to understand
 - Easy to deploy
 - Minimal abstraction
 
 **Cons**:
+
 - Grows unwieldy beyond 5-10 tools
 - Hard to test individual tools
 - No code reuse
@@ -34,6 +37,7 @@ mcp-server/
 **When to use**: Extensible servers with multiple capabilities
 
 **Structure**:
+
 ```
 mcp-server/
 ├── src/
@@ -59,12 +63,14 @@ mcp-server/
 **Example**: research-mcp-server (3 plugins, extensible)
 
 **Pros**:
+
 - Scales to many tools
 - Clear separation of concerns
 - Easy to add new capabilities
 - Shared services (cache, logging)
 
 **Cons**:
+
 - More complex initial setup
 - Overhead for simple servers
 
@@ -109,6 +115,7 @@ class PluginManager {
 **When to use**: Managing multiple child agents/processes
 
 **Structure**:
+
 ```
 mcp-server/
 ├── src/
@@ -146,7 +153,7 @@ class Orchestrator {
       name: config.name,
       process,
       status: 'starting',
-      outputBuffer: []
+      outputBuffer: [],
     };
 
     this.setupProcessHandlers(agent);
@@ -208,7 +215,7 @@ class CacheService {
 
     this.cache.set(key, {
       value,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     });
   }
 
@@ -216,7 +223,7 @@ class CacheService {
     const size = JSON.stringify(Array.from(this.cache.entries())).length;
     return {
       entries: this.cache.size,
-      size
+      size,
     };
   }
 }
@@ -229,11 +236,15 @@ class PubMedPlugin {
   async search(query: SearchQuery): Promise<SearchResult[]> {
     const cacheKey = `pubmed:${JSON.stringify(query)}`;
 
-    return this.cache.getOrSet(cacheKey, async () => {
-      // Expensive API call
-      const results = await this.client.search(query);
-      return results;
-    }, { ttl: 3600 });
+    return this.cache.getOrSet(
+      cacheKey,
+      async () => {
+        // Expensive API call
+        const results = await this.client.search(query);
+        return results;
+      },
+      { ttl: 3600 }
+    );
   }
 }
 ```
@@ -264,7 +275,7 @@ class RateLimiter {
     const now = Date.now();
 
     // Remove old requests outside the window
-    this.requests = this.requests.filter(time => now - time < this.windowMs);
+    this.requests = this.requests.filter((time) => now - time < this.windowMs);
 
     // If at limit, wait
     if (this.requests.length >= this.maxRequests) {
@@ -272,7 +283,7 @@ class RateLimiter {
       const waitTime = this.windowMs - (now - oldestRequest);
 
       if (waitTime > 0) {
-        await new Promise(resolve => setTimeout(resolve, waitTime));
+        await new Promise((resolve) => setTimeout(resolve, waitTime));
         return this.checkAndWait(); // Recheck after waiting
       }
     }
@@ -318,17 +329,17 @@ class ConfigurationService {
     return {
       server: {
         name: process.env.SERVER_NAME || 'mcp-server',
-        version: '1.0.0'
+        version: '1.0.0',
       },
       plugins: {
         pubmed: {
           apiKey: process.env.PUBMED_API_KEY,
-          rateLimitPerSecond: 10
-        }
+          rateLimitPerSecond: 10,
+        },
       },
       logging: {
-        level: (process.env.LOG_LEVEL as any) || 'info'
-      }
+        level: (process.env.LOG_LEVEL as any) || 'info',
+      },
     };
   }
 
@@ -411,12 +422,15 @@ async function executeWithRetry<T>(
       }
 
       // Log retry attempt
-      console.error(`[RETRY] ${operationName} failed (${attempt + 1}/${maxRetries}):`, error.message);
+      console.error(
+        `[RETRY] ${operationName} failed (${attempt + 1}/${maxRetries}):`,
+        error.message
+      );
 
       // Wait with exponential backoff
       if (attempt < maxRetries - 1) {
         const backoffMs = Math.pow(2, attempt) * 1000;
-        await new Promise(resolve => setTimeout(resolve, backoffMs));
+        await new Promise((resolve) => setTimeout(resolve, backoffMs));
       }
     }
   }
@@ -425,10 +439,7 @@ async function executeWithRetry<T>(
 }
 
 // Usage
-const results = await executeWithRetry(
-  () => this.client.search(query),
-  'PubMed search'
-);
+const results = await executeWithRetry(() => this.client.search(query), 'PubMed search');
 ```
 
 ### Circuit Breaker Pattern
@@ -447,10 +458,7 @@ class CircuitBreaker {
   private failureThreshold = 5;
   private resetTimeout = 60000; // 1 minute
 
-  async execute<T>(
-    serviceId: string,
-    operation: () => Promise<T>
-  ): Promise<T> {
+  async execute<T>(serviceId: string, operation: () => Promise<T>): Promise<T> {
     const state = this.getState(serviceId);
 
     if (state.status === 'open') {
@@ -476,7 +484,7 @@ class CircuitBreaker {
       this.states.set(serviceId, {
         failures: 0,
         lastFailTime: 0,
-        status: 'closed'
+        status: 'closed',
       });
     }
     return this.states.get(serviceId)!;
@@ -527,7 +535,7 @@ class AgentRegistry {
   }
 
   findByStatus(status: AgentStatus): Agent[] {
-    return this.list().filter(agent => agent.status === status);
+    return this.list().filter((agent) => agent.status === status);
   }
 }
 ```
@@ -565,7 +573,7 @@ class PluginRegistry {
       } catch (error) {
         results[name] = {
           healthy: false,
-          message: error.message
+          message: error.message,
         };
       }
     }
@@ -590,7 +598,7 @@ describe('Plugin', () => {
     mockClient = {
       search: jest.fn(),
       getSummaries: jest.fn(),
-      getAbstracts: jest.fn()
+      getAbstracts: jest.fn(),
     } as any;
 
     plugin = new PubMedPlugin();
@@ -599,15 +607,13 @@ describe('Plugin', () => {
 
   it('should search and return results', async () => {
     mockClient.search.mockResolvedValue({
-      esearchresult: { idlist: ['12345'] }
+      esearchresult: { idlist: ['12345'] },
     });
 
-    mockClient.getSummaries.mockResolvedValue([
-      { uid: '12345', title: 'Test Article' }
-    ]);
+    mockClient.getSummaries.mockResolvedValue([{ uid: '12345', title: 'Test Article' }]);
 
     const results = await plugin.search({
-      query: 'test query'
+      query: 'test query',
     });
 
     expect(results).toHaveLength(1);
@@ -640,9 +646,9 @@ describe('MCP Server Integration', () => {
         name: 'search_literature',
         arguments: {
           query: 'test',
-          sources: ['pubmed']
-        }
-      }
+          sources: ['pubmed'],
+        },
+      },
     };
 
     const response = await server.handleRequest(request);
@@ -665,9 +671,7 @@ async function searchMultipleSources(
   query: SearchQuery
 ): Promise<SearchResult[]> {
   // Execute searches in parallel
-  const searchPromises = sources.map(source =>
-    this.plugins.get(source)!.search(query)
-  );
+  const searchPromises = sources.map((source) => this.plugins.get(source)!.search(query));
 
   const results = await Promise.all(searchPromises);
 
@@ -739,6 +743,7 @@ class BasePlugin {
 ## Summary
 
 These patterns are extracted from two production MCP servers:
+
 - **claude-code-mcp-server**: Orchestrator pattern, agent management
 - **research-mcp-server**: Plugin architecture, service layer, caching
 

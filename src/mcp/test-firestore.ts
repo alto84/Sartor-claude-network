@@ -70,7 +70,6 @@ async function testFirestore() {
     console.log('\n=== ✓ All tests passed! ===');
     console.log('\nFirestore is working correctly and can be used as hot tier storage.');
     console.log('You can now switch to FirestoreMultiTierStore in your application.');
-
   } catch (error) {
     console.error('\n=== ❌ Test failed ===');
     console.error('Error:', error);
@@ -82,9 +81,11 @@ async function testFirestore() {
 }
 
 // Run test
-testFirestore().then(() => {
-  process.exit(0);
-}).catch((error) => {
-  console.error('Unexpected error:', error);
-  process.exit(1);
-});
+testFirestore()
+  .then(() => {
+    process.exit(0);
+  })
+  .catch((error) => {
+    console.error('Unexpected error:', error);
+    process.exit(1);
+  });

@@ -170,6 +170,7 @@ When working as part of the executive system, operate within your assigned role'
 **Definition:** Orchestrator-level agent that delegates work and coordinates multiple subagents.
 
 **Characteristics:**
+
 - Spawns and manages subagents via Task tool
 - Monitors subagent health and progress
 - Aggregates results from parallel subagents
@@ -180,6 +181,7 @@ When working as part of the executive system, operate within your assigned role'
 **Typical Roles:** Usually PLANNER or OBSERVER, but any role can be lead agent
 
 **Responsibilities:**
+
 1. Task decomposition into parallelizable units
 2. Subagent spawning with clear scopes
 3. Progress monitoring via status files
@@ -192,6 +194,7 @@ When working as part of the executive system, operate within your assigned role'
 **Definition:** Specialized agent spawned by lead agent to execute a scoped task.
 
 **Characteristics:**
+
 - Receives delegated task with defined scope
 - Works independently within boundaries (CAN/CANNOT)
 - Reports progress via checkpoint milestones
@@ -202,6 +205,7 @@ When working as part of the executive system, operate within your assigned role'
 **Typical Roles:** IMPLEMENTER, AUDITOR, CLEANER (sometimes PLANNER for sub-planning)
 
 **Responsibilities:**
+
 1. Execute assigned task within scope
 2. Report progress at semantic milestones
 3. Document findings and deliverables
@@ -214,6 +218,7 @@ When working as part of the executive system, operate within your assigned role'
 **Definition:** Subagent that runs asynchronously without blocking lead agent.
 
 **Characteristics:**
+
 - Spawned via Task tool (non-blocking)
 - Runs independently while lead agent continues
 - Updates status files periodically
@@ -228,17 +233,17 @@ When working as part of the executive system, operate within your assigned role'
 
 ## Role Selection Guide
 
-| Task Type         | Primary Role          | Support Role |
-| ----------------- | --------------------- | ------------ |
-| New feature       | PLANNER → IMPLEMENTER | AUDITOR      |
-| Bug fix           | IMPLEMENTER           | AUDITOR      |
-| Code review       | AUDITOR               | -            |
-| Refactoring       | PLANNER → IMPLEMENTER | CLEANER      |
-| Cleanup           | CLEANER               | AUDITOR      |
-| Design            | PLANNER               | -            |
-| System health     | OBSERVER              | AUDITOR      |
-| Multi-agent task  | (varies)              | OBSERVER     |
-| Memory MCP audit  | OBSERVER              | -            |
+| Task Type        | Primary Role          | Support Role |
+| ---------------- | --------------------- | ------------ |
+| New feature      | PLANNER → IMPLEMENTER | AUDITOR      |
+| Bug fix          | IMPLEMENTER           | AUDITOR      |
+| Code review      | AUDITOR               | -            |
+| Refactoring      | PLANNER → IMPLEMENTER | CLEANER      |
+| Cleanup          | CLEANER               | AUDITOR      |
+| Design           | PLANNER               | -            |
+| System health    | OBSERVER              | AUDITOR      |
+| Multi-agent task | (varies)              | OBSERVER     |
+| Memory MCP audit | OBSERVER              | -            |
 
 ## Workflow Pattern
 

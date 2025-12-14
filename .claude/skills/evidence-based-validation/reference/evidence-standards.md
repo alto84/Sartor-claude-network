@@ -15,6 +15,7 @@ Claims without supporting evidence must be explicitly marked as uncertain or unk
 ### Tier 1: Primary Measurement Data (Strongest)
 
 **What qualifies:**
+
 - Direct execution of tests with captured output
 - Profiling data from actual runs
 - Benchmark results with methodology
@@ -25,6 +26,7 @@ Claims without supporting evidence must be explicitly marked as uncertain or unk
 - Database query execution plans
 
 **How to cite:**
+
 - Include the full command used
 - Show relevant output
 - Specify tool versions
@@ -32,6 +34,7 @@ Claims without supporting evidence must be explicitly marked as uncertain or unk
 - Include timestamps
 
 **Example:**
+
 ```
 Test execution results:
 $ pytest tests/ -v --cov=src
@@ -53,6 +56,7 @@ at 73% by pytest-cov. Integration tests not included.
 ### Tier 2: Direct Code Observation (Strong)
 
 **What qualifies:**
+
 - Structure visible in files
 - Patterns evident in code review
 - Documentation that exists
@@ -62,12 +66,14 @@ at 73% by pytest-cov. Integration tests not included.
 - Database schema definitions
 
 **How to cite:**
+
 - Quote specific code sections
 - Reference file paths
 - Count observable instances
 - Describe patterns seen
 
 **Example:**
+
 ```
 Error handling observation:
 - Module auth.py: 5 try/except blocks covering authentication flows
@@ -83,18 +89,21 @@ in some areas but not consistently applied across all modules.
 ### Tier 3: Inference from Code Patterns (Moderate)
 
 **What qualifies:**
+
 - Likely behavior based on code structure
 - Expected performance based on algorithms
 - Probable issues based on common patterns
 - Architectural characteristics
 
 **How to cite:**
+
 - State the assumption explicitly
 - Explain the reasoning
 - Note that verification is needed
 - List what could invalidate the inference
 
 **Example:**
+
 ```
 Performance inference:
 The user listing endpoint performs a database query inside a loop
@@ -115,17 +124,20 @@ small dataset sizes mitigate the impact.
 ### Tier 4: General Knowledge (Weak)
 
 **What qualifies:**
+
 - Standard practices in field
 - Known characteristics of tools/frameworks
 - Common patterns and their tradeoffs
 - Documented limitations of technologies
 
 **How to cite:**
+
 - Acknowledge this is general knowledge
 - Don't claim it applies specifically to this code
 - Suggest verification
 
 **Example:**
+
 ```
 General observation:
 The code uses bcrypt for password hashing (requirements.txt, line 23).
@@ -143,6 +155,7 @@ vulnerabilities.
 ### Not Acceptable: Opinion or Assumption
 
 **What does NOT qualify as evidence:**
+
 - Personal opinion ("I think this is good")
 - Assumptions ("This probably works well")
 - Other AI assessments ("Another model rated this highly")
@@ -158,6 +171,7 @@ vulnerabilities.
 **To claim:** "Response time is X milliseconds"
 
 **Required evidence:**
+
 - Benchmark with specified conditions
 - Sample size (number of requests)
 - Statistical measures (mean, median, p95, p99)
@@ -175,6 +189,7 @@ vulnerabilities.
 **To claim:** "Accuracy is X%"
 
 **Required evidence:**
+
 - Labeled test dataset
 - Evaluation methodology
 - Confusion matrix or similar metrics
@@ -192,6 +207,7 @@ vulnerabilities.
 **To claim:** "Test coverage is X%"
 
 **Required evidence:**
+
 - Coverage tool output
 - Tool name and version
 - Which types of coverage (line, branch, etc.)
@@ -208,6 +224,7 @@ vulnerabilities.
 **To claim:** "This is secure against X"
 
 **Required evidence:**
+
 - Security audit report
 - Penetration testing results
 - Automated security scanning output
@@ -224,6 +241,7 @@ vulnerabilities.
 **To claim:** "X is faster/better than Y"
 
 **Required evidence:**
+
 - Controlled benchmarks of both X and Y
 - Identical test conditions
 - Statistical significance testing
@@ -240,6 +258,7 @@ vulnerabilities.
 ### Strong Evidence
 
 **Sufficient to support claims:**
+
 - Multiple independent measurements
 - Large sample sizes (n > 30 for statistics)
 - Controlled conditions
@@ -250,6 +269,7 @@ vulnerabilities.
 ### Weak Evidence
 
 **Insufficient alone, but can support qualified statements:**
+
 - Single measurement
 - Small sample size (n < 10)
 - Uncontrolled conditions
@@ -311,12 +331,14 @@ When citing measurement data, include:
 ### When Providing Statistics
 
 **Minimum requirements:**
+
 - Sample size (n)
 - Measure of central tendency (mean or median)
 - Measure of spread (std dev or range)
 - Confidence level (if applicable)
 
 **Example compliant statement:**
+
 ```
 "Load test results (n=100 requests):
 - Mean response time: 245ms

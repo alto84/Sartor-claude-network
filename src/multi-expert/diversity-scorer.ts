@@ -355,7 +355,11 @@ export class DiversityScorer {
   /**
    * Record a score for metrics tracking
    */
-  private recordScore(score: number, archetype: ExpertArchetype, selectedArchetypes: ExpertArchetype[]): void {
+  private recordScore(
+    score: number,
+    archetype: ExpertArchetype,
+    selectedArchetypes: ExpertArchetype[]
+  ): void {
     const entry: ScoreHistoryEntry = {
       timestamp: Date.now(),
       score,

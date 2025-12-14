@@ -40,13 +40,17 @@ async function main() {
   const { executor, getCosts } = createClaudeExecutor({
     model: 'claude-sonnet-4-20250514',
     maxTokens: 2048,
-    budgetLimit: 0.50, // $0.50 max spend for demo
+    budgetLimit: 0.5, // $0.50 max spend for demo
     verbose: true,
   });
 
   // Create diverse expert pool
   console.log('[2/5] Creating expert pool with diverse archetypes...');
-  const archetypes: Array<'performance' | 'safety' | 'creative'> = ['performance', 'safety', 'creative'];
+  const archetypes: Array<'performance' | 'safety' | 'creative'> = [
+    'performance',
+    'safety',
+    'creative',
+  ];
   const expertPool = createExpertPool('demo', archetypes);
 
   console.log('Expert pool:');
@@ -71,7 +75,8 @@ async function main() {
   // Define a real task
   const task: ExpertTask = {
     id: 'demo-task-001',
-    description: 'Write a Python function to find the longest palindromic substring in a given string',
+    description:
+      'Write a Python function to find the longest palindromic substring in a given string',
     type: 'code_generation',
     input: {
       language: 'python',
@@ -125,7 +130,9 @@ async function main() {
     // Display all expert results from expertResults
     console.log('All Expert Results:');
     result.expertResults.results.forEach((r, i) => {
-      console.log(`  ${i + 1}. ${r.expertId}: score=${r.score.toFixed(1)}, confidence=${(r.confidence * 100).toFixed(1)}%`);
+      console.log(
+        `  ${i + 1}. ${r.expertId}: score=${r.score.toFixed(1)}, confidence=${(r.confidence * 100).toFixed(1)}%`
+      );
     });
     console.log();
 
@@ -139,14 +146,15 @@ async function main() {
 
     console.log('Cost by Expert:');
     Object.entries(costs.byExpert).forEach(([expertId, expertCosts]) => {
-      console.log(`  ${expertId}: $${expertCosts.cost.toFixed(4)} (${expertCosts.inputTokens + expertCosts.outputTokens} tokens)`);
+      console.log(
+        `  ${expertId}: $${expertCosts.cost.toFixed(4)} (${expertCosts.inputTokens + expertCosts.outputTokens} tokens)`
+      );
     });
     console.log();
 
     console.log(`Total execution time: ${durationMs}ms`);
     console.log();
     console.log('Demo completed successfully!');
-
   } catch (error) {
     console.error('Execution failed:', error);
 

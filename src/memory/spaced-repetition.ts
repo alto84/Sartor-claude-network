@@ -402,7 +402,7 @@ export async function performSelfTest(
     averageConfidence: 0,
   };
 
-  let totalConfidence = 0;
+  const totalConfidence = 0;
 
   for (const memory of sample) {
     // TODO: BLOCKER - Real recall testing mechanism needed
@@ -416,7 +416,7 @@ export async function performSelfTest(
     // Until implemented, this function should not be used in production
     throw new Error(
       'performSelfTest() requires real recall testing mechanism. ' +
-      'Math.random() is not a valid measure. See TODO comment for options.'
+        'Math.random() is not a valid measure. See TODO comment for options.'
     );
   }
 
@@ -495,8 +495,8 @@ export async function processDailyReviews(
     // This function cannot be used in production until actual recall testing is implemented
     throw new Error(
       'processDailyReviews() requires real recall testing mechanism. ' +
-      'Math.random() is not a valid confidence measure. ' +
-      'Implement actual LLM-based or human-validated recall testing first.'
+        'Math.random() is not a valid confidence measure. ' +
+        'Implement actual LLM-based or human-validated recall testing first.'
     );
   }
 

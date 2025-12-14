@@ -106,9 +106,9 @@ export class FileStore {
         retries: {
           retries: 5,
           minTimeout: 100,
-          maxTimeout: 1000
+          maxTimeout: 1000,
         },
-        stale: 10000 // Consider lock stale after 10 seconds
+        stale: 10000, // Consider lock stale after 10 seconds
       });
 
       // Convert Map to plain object for JSON serialization

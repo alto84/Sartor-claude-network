@@ -1,4 +1,5 @@
 # Documentation Audit Report - Sartor Claude Network
+
 **Date**: 2025-11-07
 **Auditor**: Documentation Auditor Agent
 **Scope**: All markdown documentation in claude-network/
@@ -12,13 +13,13 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 
 ### Overall Scores
 
-| Category | Score | Status |
-|----------|-------|--------|
-| **Accuracy** | 65/100 | ⚠️ Mixed - Some outdated claims |
+| Category         | Score  | Status                           |
+| ---------------- | ------ | -------------------------------- |
+| **Accuracy**     | 65/100 | ⚠️ Mixed - Some outdated claims  |
 | **Completeness** | 80/100 | ✅ Good - Comprehensive coverage |
 | **Organization** | 55/100 | ❌ Poor - Significant redundancy |
-| **Quality** | 70/100 | ⚠️ Good but inconsistent |
-| **Usability** | 60/100 | ⚠️ Challenging for new users |
+| **Quality**      | 70/100 | ⚠️ Good but inconsistent         |
+| **Usability**    | 60/100 | ⚠️ Challenging for new users     |
 
 **Overall Assessment**: 66/100 - Substantial cleanup and consolidation required
 
@@ -31,6 +32,7 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 **Issue**: Multiple "completion" and "success" documents create false impression of production readiness.
 
 **Files**:
+
 - `IMPLEMENTATION-COMPLETE.md` - Claims Phase 1-3 "Fully Implemented"
 - `READY-TO-PUSH.md` - Claims "ALL WORK COMPLETE - 12 Commits Ready"
 - `SESSION-COMPLETE.md` - Claims "EVERYTHING COMPLETE"
@@ -39,6 +41,7 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 - `MCP-COMPLETION-REPORT.md` - Claims MCP system complete
 
 **Reality Check**: While substantial work has been done, these documents give a misleading impression:
+
 - No evidence of actual multi-computer deployment
 - No evidence of tested cross-device communication
 - No evidence of Firebase actually being used in practice
@@ -48,6 +51,7 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 **Impact**: HIGH - New users will be confused when promised features don't work as documented
 
 **Recommendation**:
+
 1. Create a single `STATUS.md` with honest current state
 2. Move completion documents to `archive/session-reports/`
 3. Add disclaimer that these are aspirational/planning documents
@@ -59,6 +63,7 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 ### 1. Documentation Redundancy (SEVERE)
 
 #### Quick Start Duplication
+
 **Problem**: FIVE different "quick start" documents with overlapping but inconsistent content:
 
 1. `QUICK-START.md` (Original)
@@ -68,6 +73,7 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 5. `AGENTS.md` (Contains "Quick Start Guide" section)
 
 **Evidence of inconsistency**:
+
 - `QUICK-START-MCP.md` claims "5 minutes" setup
 - `QUICK-START-CHECKLIST.md` claims "15 minutes" setup
 - Commands differ between documents
@@ -76,11 +82,13 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 **Impact**: Users don't know which to follow. Confusion guaranteed.
 
 **Recommendation**:
+
 - Keep ONE authoritative quick start in `README.md`
 - Delete or consolidate others
 - If keeping multiple, clearly label which is for which audience
 
 #### MCP Documentation Duplication
+
 **Problem**: EIGHT documents about MCP system:
 
 1. `mcp/README.md`
@@ -99,12 +107,14 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 **Impact**: Information is scattered. No single source of truth.
 
 **Recommendation**:
+
 - `mcp/README.md` - Quick start and overview
 - `mcp/ARCHITECTURE.md` - Technical details only
 - `mcp/DEPLOYMENT.md` - Deployment guide only
 - Delete completion/summary docs or move to archive/
 
 #### Setup Documentation Duplication
+
 **Problem**: Multiple overlapping setup guides:
 
 1. `setup-instructions.md`
@@ -115,11 +125,13 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 6. `AGENTS.md` (has setup sections)
 
 **Recommendation**: Consolidate to 3 docs maximum:
+
 - `SETUP.md` - Primary setup guide
 - `SECOND-COMPUTER-SETUP.md` - Multi-computer specific
 - `FIREBASE-SETUP.md` - Firebase configuration only
 
 #### Session/Status Report Clutter
+
 **Problem**: NINE session/completion/status documents creating noise:
 
 1. `IMPLEMENTATION-COMPLETE.md`
@@ -139,6 +151,7 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 #### Performance Claims (README.md, ARCHITECTURE-OVERVIEW.md)
 
 **Claimed**:
+
 ```
 - MACS protocol handles 100+ messages/second reliably
 - Task manager supports 1000+ concurrent tasks
@@ -152,6 +165,7 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 **Anti-Fabrication Protocol Violation**: Claims "measured" without showing measurement data.
 
 **Recommendation**:
+
 - Remove specific numbers unless actual benchmarks exist
 - Change to: "Designed to handle high throughput (actual performance dependent on hardware and network)"
 - Or add actual benchmark scripts and results
@@ -159,11 +173,13 @@ The Sartor Claude Network has **extensive documentation** (61 .md files, ~25,000
 #### Test Coverage Claims
 
 **Claimed** (multiple files):
+
 - "80%+ coverage target"
 - "Comprehensive test coverage"
 - "~3,800 lines of test code"
 
 **Reality Check**:
+
 ```bash
 $ wc -l tests/*.py
   345 tests/test_agent_registry.py
@@ -194,9 +210,11 @@ firebase_tools.py  github_tools.py  navigation_tools.py  onboarding_tools.py
 ### 3. Missing or Incomplete Documentation
 
 #### Missing: Actual Usage Examples
+
 **Problem**: Despite 527 code blocks, very few show actual tested workflows.
 
 **Examples Needed**:
+
 - End-to-end: User creates task → Agent claims → Agent completes → User sees result
 - Multi-agent: Two actual computers communicating
 - Skill execution: Real skill running with real output
@@ -205,6 +223,7 @@ firebase_tools.py  github_tools.py  navigation_tools.py  onboarding_tools.py
 **Recommendation**: Create `EXAMPLES.md` with tested, working examples.
 
 #### Missing: Troubleshooting for Real Issues
+
 **Problem**: Troubleshooting sections assume everything works. Real issues:
 
 - What if Firebase credentials don't work?
@@ -218,25 +237,31 @@ firebase_tools.py  github_tools.py  navigation_tools.py  onboarding_tools.py
 **Recommendation**: Add real troubleshooting from actual deployment attempts.
 
 #### Missing: Prerequisites Verification
+
 **Problem**: Docs assume Python 3.10+, but don't help users verify or install.
 
 **Recommendation**: Add verification script:
+
 ```bash
 python3 scripts/verify_prerequisites.py
 # Checks Python version, dependencies, network access, etc.
 ```
 
 #### Missing: Architecture Diagrams
+
 **Problem**: ASCII art diagrams are present but crude and hard to parse.
 
 **Recommendation**:
+
 - Convert key diagrams to Mermaid (supported by GitHub)
 - Or create actual `.png` diagrams
 
 ### 4. Organizational Issues
 
 #### Problem: No Clear Entry Point
+
 **Files that claim to be the entry point**:
+
 - `README.md`
 - `INDEX.md`
 - `AGENTS.md`
@@ -246,12 +271,15 @@ python3 scripts/verify_prerequisites.py
 **New user experience**: "Where do I start?" → Unclear.
 
 **Recommendation**:
+
 - `README.md` - 30-second pitch + quick start only
 - `INDEX.md` - Navigation hub (as intended)
 - Everything else referenced from these two
 
 #### Problem: Inconsistent File Naming
+
 **Patterns observed**:
+
 - `UPPERCASE-WITH-DASHES.md` (most files)
 - `lowercase-with-dashes.md` (some files)
 - `TitleCase.md` (config files)
@@ -262,6 +290,7 @@ python3 scripts/verify_prerequisites.py
 #### Problem: Unclear File Organization
 
 **Current structure** (61 files scattered):
+
 ```
 claude-network/
 ├── AGENTS.md
@@ -277,6 +306,7 @@ claude-network/
 ```
 
 **Recommendation**: Organize into subdirectories:
+
 ```
 docs/
 ├── README.md -> ../README.md (symlink)
@@ -304,7 +334,9 @@ docs/
 ### 5. Cross-Reference Issues
 
 #### Broken Internal Links (Potential)
+
 **Examples found**:
+
 - `AGENTS.md` references `CLAUDE.md` ✅ (exists)
 - `INDEX.md` references multiple files ✅ (most exist)
 - `README.md` references `SECOND-COMPUTER-SETUP.md` ✅ (exists)
@@ -312,13 +344,16 @@ docs/
 **Not tested**: Whether links work when rendered on GitHub.
 
 **Recommendation**: Add link checker script:
+
 ```bash
 npm install -g markdown-link-check
 find . -name "*.md" -exec markdown-link-check {} \;
 ```
 
 #### External Links Not Verified
+
 **Examples**:
+
 - Firebase Console URLs
 - GitHub repository URLs
 - Discord/Forum links (in MCP-DEPLOYMENT-GUIDE.md) - likely invalid
@@ -328,7 +363,9 @@ find . -name "*.md" -exec markdown-link-check {} \;
 ### 6. Content Quality Issues
 
 #### Inconsistent Tone
+
 **Problem**: Documentation switches between:
+
 - Academic/technical (`ARCHITECTURE-OVERVIEW.md`)
 - Conversational/encouraging (`AGENTS.md`)
 - Marketing/promotional (`LAUNCH-SUCCESS.md`)
@@ -337,18 +374,23 @@ find . -name "*.md" -exec markdown-link-check {} \;
 **Recommendation**: Define tone for each doc type and be consistent.
 
 #### Verbose vs. Terse Imbalance
+
 **Examples**:
+
 - `CLAUDE.md` - Extremely verbose (726 lines for philosophy)
 - `SKILL-QUICKSTART.md` - Too terse (incomplete information)
 - `AGENTS.md` - Appropriate balance (comprehensive but organized)
 
 **Recommendation**:
+
 - Philosophy docs can be verbose
 - Quick starts must be concise
 - Reference docs should be complete but scannable
 
 #### Teaching Vayu Scattered Throughout
+
 **Problem**: "Teaching Vayu" sections appear in multiple files:
+
 - `README.md`
 - `CLAUDE.md`
 - `READY-TO-PUSH.md`
@@ -363,18 +405,22 @@ find . -name "*.md" -exec markdown-link-check {} \;
 ### Code Examples
 
 #### ✅ Working Examples (Verified)
+
 - Basic imports work: `from config_manager import ConfigManager`
 - Module structure is correct
 - 527 code blocks across 49 files
 
 #### ⚠️ Unverified Examples
+
 **Cannot verify without running**:
+
 - Firebase connection examples (need credentials)
 - Multi-agent communication examples
 - Task creation and execution
 - Skill execution
 
 **Recommendation**: Add comment to each example:
+
 ```python
 # TESTED: 2025-11-07 - Works with Python 3.10
 # OR
@@ -384,6 +430,7 @@ find . -name "*.md" -exec markdown-link-check {} \;
 ### Commands
 
 #### Verifiable Commands
+
 ```bash
 ✅ git clone https://github.com/alto84/Sartor-claude-network.git
 ✅ cd Sartor-claude-network/claude-network
@@ -392,6 +439,7 @@ find . -name "*.md" -exec markdown-link-check {} \;
 ```
 
 #### Unverifiable Commands (No Evidence These Work)
+
 ```bash
 ❓ curl http://localhost:8080/mcp/health  # No evidence server actually runs
 ❓ python3 setup_agent.py  # No evidence this works as documented
@@ -404,16 +452,19 @@ find . -name "*.md" -exec markdown-link-check {} \;
 ### Configuration Examples
 
 #### Firebase Configuration
+
 **In multiple files, credentials format differs**:
 
 `FIREBASE-SETUP.md`:
+
 ```yaml
 firebase:
-  url: "https://..."
-  project_id: "..."
+  url: 'https://...'
+  project_id: '...'
 ```
 
 `config.example.yaml` (if it exists):
+
 ```yaml
 # Unknown if matches docs
 ```
@@ -459,6 +510,7 @@ firebase:
 #### Recommended File Structure (After Consolidation)
 
 **Keep** (Core Documentation - 15 files):
+
 ```
 /
 ├── README.md (100 lines max - overview + quick start)
@@ -494,6 +546,7 @@ firebase:
 ```
 
 **Delete or Archive** (46 files):
+
 - All `*-COMPLETE.md`, `*-SUCCESS.md`, `*-READY.md` files → archive/
 - Redundant quick starts → consolidate to README.md
 - Duplicate MCP docs → consolidate to mcp/
@@ -503,6 +556,7 @@ firebase:
 ### PRIORITY 2: Fix Accuracy Issues
 
 #### Action Items:
+
 1. Remove or qualify all performance numbers without benchmarks
 2. Update test coverage claims to match reality
 3. Add "Status: Aspirational" warnings to completion documents
@@ -512,6 +566,7 @@ firebase:
 ### PRIORITY 3: Improve Organization
 
 #### Action Items:
+
 1. Create clear `README.md` entry point (100 lines max)
 2. Use `INDEX.md` as navigation hub
 3. Standardize file naming convention
@@ -521,6 +576,7 @@ firebase:
 ### PRIORITY 4: Fill Documentation Gaps
 
 #### Action Items:
+
 1. Create `EXAMPLES.md` with tested end-to-end examples
 2. Expand troubleshooting with real issues
 3. Add `TESTING.md` guide
@@ -534,8 +590,10 @@ firebase:
 ### High Priority Changes
 
 #### README.md
+
 **Current**: 326 lines, tries to do too much
 **Recommended**: 100 lines max
+
 ```markdown
 # Claude Network
 
@@ -555,10 +613,13 @@ See STATUS.md for current implementation status.
 ```
 
 #### INDEX.md
+
 **Current**: Good structure
 **Recommended**: Enhance with status indicators
+
 ```markdown
 ## Quick Start (START HERE!)
+
 - [ ] README.md - Overview
 - [ ] QUICK-START.md - 5-minute setup
 - [x] ARCHITECTURE.md - Technical details (complete)
@@ -566,22 +627,28 @@ See STATUS.md for current implementation status.
 ```
 
 #### AGENTS.md
+
 **Current**: Excellent comprehensive guide (3000+ lines)
 **Recommended**: Keep but add:
+
 - Table of contents with anchors
 - "Quick reference" section at top
 - Clear "Start here" markers
 
 #### CLAUDE.md
+
 **Current**: Good philosophy + mechanics
 **Recommended**: Keep but split:
+
 - `PHILOSOPHY.md` - Vision and principles
 - `CLAUDE.md` - Mechanics and how-to
 - Or keep combined but improve navigation
 
 #### ARCHITECTURE-OVERVIEW.md
+
 **Current**: Good technical overview
 **Recommended**:
+
 - Move to `docs/architecture/OVERVIEW.md`
 - Remove unverified performance claims
 - Add "last verified" dates
@@ -589,21 +656,27 @@ See STATUS.md for current implementation status.
 ### Medium Priority Changes
 
 #### Skill Documentation
+
 **Files**: `SKILL-GUIDE.md`, `SKILL-QUICKSTART.md`
 **Recommended**:
+
 - Consolidate to `docs/guides/SKILLS.md`
 - Add tested examples
 - Show actual skill execution output
 
 #### Task Documentation
+
 **Files**: `TASK_MANAGER_README.md`, `task-*.md` (4 files)
 **Recommended**:
+
 - Consolidate to `docs/guides/TASKS.md`
 - Include real task lifecycle example
 
 #### MCP Documentation
+
 **Files**: 13 MCP-related files
 **Recommended**: Consolidate to:
+
 - `mcp/README.md` - Quick start only
 - `mcp/ARCHITECTURE.md` - Technical details
 - `mcp/DEPLOYMENT.md` - Production deployment
@@ -612,15 +685,19 @@ See STATUS.md for current implementation status.
 ### Low Priority Changes
 
 #### Planning Documents
+
 **Files**: `MASTER-PLAN.md`, `task-management-architecture.md`, etc.
 **Recommended**:
+
 - Move to `docs/archive/planning/`
 - Keep accessible but not in main docs
 - Add "Historical document" disclaimer
 
 #### Test Documentation
+
 **Files**: `tests/README.md`, `mcp/tests/README.md`, test reports
 **Recommended**:
+
 - Consolidate test reports to `docs/archive/test-reports/`
 - Create single `docs/TESTING.md` guide
 - Show how to run tests and interpret results
@@ -667,6 +744,7 @@ See STATUS.md for current implementation status.
 ## Testing Documentation
 
 ### Test Files Found
+
 ```
 tests/
 ├── test_agent_registry.py (345 lines)
@@ -692,7 +770,8 @@ mcp/tests/
 4. **CI/CD**: Mentioned in docs but no `.github/workflows/` directory found
 
 **Recommendation**: Create `docs/TESTING.md`:
-```markdown
+
+````markdown
 # Testing Guide
 
 ## Running Tests
@@ -707,16 +786,21 @@ pytest tests/test_macs.py -v
 # With coverage
 pytest --cov=. --cov-report=html
 ```
+````
 
 ## Test Organization
+
 [Explain test structure]
 
 ## Current Coverage
+
 [Actual measured coverage]
 
 ## Adding Tests
+
 [How to write new tests]
-```
+
+````
 
 ---
 
@@ -747,9 +831,10 @@ async def main():
         print(f"Connected as: {client.identity.id}")
 
 asyncio.run(main())
-```
+````
 
 #### ⚠️ Questionable Examples
+
 ```python
 # From SECOND-COMPUTER-SETUP.md - May not work
 python3 -c "
@@ -762,17 +847,22 @@ stats = schema.get_stats()
 print(f'Database size: {stats}')
 "
 ```
+
 **Issues**:
+
 - Assumes Firebase configured
 - No error handling shown
 - Output format unclear
 
 #### ❌ Problematic Examples
+
 ```bash
 # From MASTER-PLAN.md - Aspirational, not real
 docker-compose up -d
 ```
+
 **Issues**:
+
 - No `docker-compose.yml` file exists
 - Presented as if it works
 - No indication it's future/planned
@@ -780,6 +870,7 @@ docker-compose up -d
 ### Example Improvements Needed
 
 1. **Add Status Indicators**:
+
 ```python
 # ✅ TESTED: Works with Python 3.10+
 # Requirements: pip install firebase-admin
@@ -788,6 +879,7 @@ from firebase_admin import credentials
 ```
 
 2. **Show Expected Output**:
+
 ```bash
 $ python3 mcp/bootstrap.py
 
@@ -798,6 +890,7 @@ Expected output:
 ```
 
 3. **Include Error Handling**:
+
 ```python
 try:
     config = ConfigManager()
@@ -817,6 +910,7 @@ except FileNotFoundError:
 **Sample Findings**:
 
 #### ✅ Valid Links (Spot Check)
+
 - `INDEX.md` → `README.md` ✅
 - `INDEX.md` → `CLAUDE.md` ✅
 - `INDEX.md` → `ARCHITECTURE-OVERVIEW.md` ✅
@@ -824,11 +918,13 @@ except FileNotFoundError:
 - `README.md` → `SECOND-COMPUTER-SETUP.md` ✅
 
 #### ⚠️ Links to Check
+
 - Links to `mcp/` subdirectory files
 - Links to test documentation
 - Links in archived/completion documents
 
 #### External Links (Not Verified)
+
 - https://github.com/alto84/Sartor-claude-network
 - https://home-claude-network-default-rtdb.firebaseio.com/
 - https://console.firebase.google.com/...
@@ -836,6 +932,7 @@ except FileNotFoundError:
 - https://forum.claude-network.org (likely fake)
 
 **Recommendation**:
+
 1. Run link checker: `markdown-link-check`
 2. Mark placeholder links as `https://example.com (placeholder)`
 3. Verify all GitHub URLs point to correct repo/branch
@@ -845,25 +942,30 @@ except FileNotFoundError:
 #### Inconsistent Information Found
 
 **Firebase URL**:
+
 - Most docs: `https://home-claude-network-default-rtdb.firebaseio.com/`
 - Consistent ✅
 
 **Repository URL**:
+
 - Most docs: `https://github.com/alto84/Sartor-claude-network.git`
 - Some: `git@github.com:alto84/Sartor-claude-network.git`
 - Both valid but choose one for examples ⚠️
 
 **Setup Time Claims**:
+
 - "5 minutes" (`QUICK-START-MCP.md`)
 - "15 minutes" (`QUICK-START-CHECKLIST.md`)
 - "15-20 minutes" (`SECOND-COMPUTER-SETUP.md`)
 - Inconsistent ❌
 
 **Tool Count**:
+
 - "22+ built-in tools" (multiple MCP docs)
 - Not verified - actual count unknown ⚠️
 
 **Port Numbers**:
+
 - Port 8080 (consistent) ✅
 
 ---
@@ -912,6 +1014,7 @@ except FileNotFoundError:
 ## Metrics
 
 ### Current State
+
 - **Total Files**: 61 markdown files
 - **Total Words**: ~30,000+ words
 - **Code Blocks**: 527 across 49 files
@@ -920,6 +1023,7 @@ except FileNotFoundError:
 - **Missing Files**: 5-7 (CONTRIBUTING, TESTING, etc.)
 
 ### Target State (After Cleanup)
+
 - **Total Files**: ~25-30 well-organized files
 - **Redundant Files**: 0
 - **Outdated Files**: Archived, not deleted
@@ -928,6 +1032,7 @@ except FileNotFoundError:
 - **Accuracy**: All claims verified or qualified
 
 ### Estimated Effort
+
 - **Consolidation**: 16-24 hours
 - **Accuracy fixes**: 8-12 hours
 - **Organization**: 8-12 hours
@@ -941,6 +1046,7 @@ except FileNotFoundError:
 The Sartor Claude Network documentation demonstrates **high ambition and comprehensive effort**, with 61 files covering a sophisticated multi-agent AI system. However, it suffers from:
 
 ### Strengths
+
 ✅ Comprehensive coverage of vision and philosophy
 ✅ Detailed technical architecture documentation
 ✅ Extensive code examples (527 blocks)
@@ -948,6 +1054,7 @@ The Sartor Claude Network documentation demonstrates **high ambition and compreh
 ✅ Clear roadmap and planning (`MASTER-PLAN.md`)
 
 ### Critical Weaknesses
+
 ❌ Misleading "completion" and "success" documentation
 ❌ Severe redundancy (5 quick starts, 12 MCP docs, etc.)
 ❌ Unverified performance and testing claims
@@ -955,9 +1062,11 @@ The Sartor Claude Network documentation demonstrates **high ambition and compreh
 ❌ Missing practical examples and troubleshooting
 
 ### Overall Assessment
+
 **Score: 66/100** - Substantial work needed
 
 The documentation would **significantly benefit from**:
+
 1. Honest status reporting (not "complete" when aspirational)
 2. Aggressive consolidation (61 → ~25-30 files)
 3. Removal of unverified claims
@@ -965,6 +1074,7 @@ The documentation would **significantly benefit from**:
 5. Tested, working examples
 
 ### Impact on Users
+
 **Current**: New users will be overwhelmed, confused, and likely fail to set up the system successfully.
 
 **After Cleanup**: New users will have clear path to success with realistic expectations.
@@ -974,6 +1084,7 @@ The documentation would **significantly benefit from**:
 ## Appendix A: File Categorization
 
 ### User-Facing Documentation (Keep/Consolidate)
+
 - README.md ✅ Keep (simplify)
 - INDEX.md ✅ Keep (enhance)
 - AGENTS.md ✅ Keep (excellent)
@@ -985,12 +1096,14 @@ The documentation would **significantly benefit from**:
 - FIREBASE-SETUP.md ✅ Keep
 
 ### Technical Reference (Consolidate)
+
 - CONFIG_REGISTRY_README.md → docs/reference/CONFIG.md
 - TASK_MANAGER_README.md → docs/guides/TASKS.md
 - SKILL-GUIDE.md → docs/guides/SKILLS.md
 - SKILL-QUICKSTART.md → Consolidate to SKILLS.md
 
 ### MCP Documentation (Consolidate to mcp/)
+
 - MCP-DEPLOYMENT-GUIDE.md → mcp/DEPLOYMENT.md
 - QUICK-START-MCP.md → mcp/README.md
 - mcp/MCP-SYSTEM-OVERVIEW.md → mcp/ARCHITECTURE.md
@@ -998,9 +1111,10 @@ The documentation would **significantly benefit from**:
 - mcp/MCP-TOOLS-SPEC.md → mcp/TOOLS.md
 - mcp/MCP-SERVER-README.md → Delete/merge
 - mcp/README.md → Keep/enhance
-- GATEWAY-*.md (4 files) → Consolidate or delete
+- GATEWAY-\*.md (4 files) → Consolidate or delete
 
 ### Session Reports (Archive All)
+
 - IMPLEMENTATION-COMPLETE.md → archive/
 - READY-TO-PUSH.md → archive/
 - SESSION-COMPLETE.md → archive/
@@ -1011,6 +1125,7 @@ The documentation would **significantly benefit from**:
 - MCP-COMPLETION-REPORT.md → archive/
 
 ### Planning/Design Documents (Archive)
+
 - MASTER-PLAN.md → docs/archive/planning/
 - task-management-architecture.md → docs/archive/planning/
 - task-workflows.md → docs/archive/planning/
@@ -1019,17 +1134,20 @@ The documentation would **significantly benefit from**:
 - AGENT-CONSENSUS-REPORT.md → docs/archive/
 
 ### Status/Network Documents (Replace with STATUS.md)
+
 - NETWORK-STATUS.md → Delete
 - GATEWAY-IMPLEMENTATION-SUMMARY.md → archive/
 - GATEWAY-QUICK-REFERENCE.md → Delete or consolidate
 
 ### Connection Guides (Keep Necessary)
+
 - CONNECT-IPAD.md ✅ Keep
 - CONNECT-LOCAL-INFERENCE.md ⚠️ Review (may be outdated)
 - CONNECT-VIA-PROXY.md ⚠️ Review (may be outdated)
 - MANUAL-RELAY.md ⚠️ Review (may be outdated)
 
 ### Other Files (Review)
+
 - AUDIT-REPORT.md → docs/archive/audits/
 - DOC-AUDIT-REPORT.md → Will be superseded by this document
 - README-GITHUB.md → Unclear purpose, likely delete
@@ -1040,9 +1158,10 @@ The documentation would **significantly benefit from**:
 - setup-instructions.md → Consolidate to SETUP.md
 
 ### Test Documentation (Consolidate)
+
 - tests/README.md → docs/TESTING.md
 - mcp/tests/README.md → Merge to docs/TESTING.md
-- mcp/tests/*-TEST-REPORT.md → archive/test-reports/
+- mcp/tests/\*-TEST-REPORT.md → archive/test-reports/
 - mcp/tests/REMEDIATION-REPORT.md → archive/
 
 ---
@@ -1050,11 +1169,13 @@ The documentation would **significantly benefit from**:
 ## Appendix B: Documentation Standards (Recommended)
 
 ### File Naming Convention
+
 - User documentation: `UPPERCASE-WITH-DASHES.md`
 - Technical reference: `lowercase-with-dashes.md`
 - All directories: `lowercase-with-dashes/`
 
 ### File Structure Template
+
 ```markdown
 # Title
 
@@ -1063,23 +1184,29 @@ The documentation would **significantly benefit from**:
 **Maintainer**: @username
 
 ## Quick Summary
+
 [30-second summary]
 
 ## Table of Contents
+
 [For files >100 lines]
 
 ## Content
+
 [Main content]
 
 ## See Also
+
 - [Related Doc 1](link)
 - [Related Doc 2](link)
 
 ---
-*Documentation Version: X.Y.Z*
+
+_Documentation Version: X.Y.Z_
 ```
 
 ### Code Example Template
+
 ```python
 # Status: ✅ TESTED (2025-11-07) | ⚠️ UNTESTED | ❌ DEPRECATED
 # Requirements: pip install package-name
@@ -1092,6 +1219,7 @@ The documentation would **significantly benefit from**:
 ```
 
 ### Tone Guidelines
+
 - **README**: Professional, concise, welcoming
 - **Guides**: Tutorial, encouraging, step-by-step
 - **Reference**: Technical, complete, scannable
@@ -1101,7 +1229,7 @@ The documentation would **significantly benefit from**:
 
 **End of Audit Report**
 
-*Auditor: Documentation Auditor Agent*
-*Date: 2025-11-07*
-*Files Audited: 61*
-*Time Spent: Comprehensive review*
+_Auditor: Documentation Auditor Agent_
+_Date: 2025-11-07_
+_Files Audited: 61_
+_Time Spent: Comprehensive review_

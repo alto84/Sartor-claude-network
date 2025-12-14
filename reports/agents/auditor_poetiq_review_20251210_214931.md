@@ -1,4 +1,5 @@
 # AUDITOR Agent Introspection Report
+
 ## Poetiq Pattern Analysis Review
 
 **Agent Role:** AUDITOR
@@ -13,17 +14,20 @@
 ### 1. Information Gathering Phase
 
 **Sources Used:**
+
 - GitHub repository main page (WebFetch)
 - Raw source files attempted (404 errors encountered)
 - Indirect code analysis via WebFetch with targeted prompts
 - Sartor codebase examination for comparison
 
 **Tools Used:**
+
 - WebFetch: 9 calls
 - Read: 4 files from Sartor codebase
 - Bash: 5 commands for directory exploration
 
 **Challenges Encountered:**
+
 - Direct raw file access failed (404 errors on main branch)
 - Had to rely on WebFetch with specific prompts instead of reading actual code
 - Cannot verify claims without running the code
@@ -31,17 +35,20 @@
 ### 2. Pattern Identification Phase
 
 **Clear Patterns (High Confidence):**
+
 - ✓ Parallel execution with asyncio (very clear from code snippets)
 - ✓ Binary scoring implementation (explicit in scoring.py analysis)
 - ✓ Subprocess sandboxing (detailed implementation visible)
 - ✓ LLM retry logic (clear description with code examples)
 
 **Ambiguous Patterns (Medium Confidence):**
+
 - ⚠️ "Diversity-first" terminology - code shows output bucketing, not archetype diversity
 - ⚠️ "Voting" mechanism - actually consensus detection, not traditional voting
 - ⚠️ Configuration options - some parameters unclear without runtime testing
 
 **Unclear Patterns (Low Confidence):**
+
 - ✗ Actual performance impact of each pattern
 - ✗ Why certain design choices were made
 - ✗ Production deployment considerations
@@ -52,42 +59,49 @@
 ## Confidence Assessment by Pattern
 
 ### Pattern 1: Parallel Execution
+
 **Confidence:** 95%
 **Reasoning:** Direct code examination via WebFetch, clear asyncio.gather() pattern
 **Evidence Quality:** Strong - actual code snippets reviewed
 **Potential Bias:** None identified
 
 ### Pattern 2: Voting/Consensus
+
 **Confidence:** 85%
 **Reasoning:** Code shows bucketing logic, but "voting" terminology is misleading
 **Evidence Quality:** Good - implementation visible, but naming creates confusion
 **Potential Bias:** May have initially assumed traditional voting due to project description
 
 ### Pattern 3: Diversity Scoring
+
 **Confidence:** 90%
 **Reasoning:** No diversity scorer module found, "diversity-first" is output grouping
 **Evidence Quality:** Strong - absence of feature is clear from file listing
 **Potential Bias:** Expected sophisticated diversity due to project claims
 
 ### Pattern 4: Soft Scoring
+
 **Confidence:** 95%
 **Reasoning:** Explicit statement: "No soft scoring" in analysis, binary only
 **Evidence Quality:** Very strong - direct code examination and clear scoring logic
 **Potential Bias:** Initially expected soft scoring based on task description
 
 ### Pattern 5: Sandboxing
+
 **Confidence:** 90%
 **Reasoning:** Subprocess implementation clearly described with security limitations
 **Evidence Quality:** Strong - detailed code analysis with error handling
 **Potential Bias:** None identified
 
 ### Pattern 6: Rate Limiting
+
 **Confidence:** 85%
 **Reasoning:** Limiter implementation visible, but token bucket details not fully verified
 **Evidence Quality:** Good - pattern clear, implementation details partially inferred
 **Potential Bias:** None identified
 
 ### Pattern 7: Feedback Loop
+
 **Confidence:** 80%
 **Reasoning:** Iteration pattern clear, but full refinement logic not completely visible
 **Evidence Quality:** Good - overall pattern clear, some details inferred
@@ -179,17 +193,17 @@
 
 ### Confidence Level by Section
 
-| Section | Confidence | Reason |
-|---------|-----------|---------|
-| Repository Structure | 90% | File listing clearly visible |
-| Parallel Execution | 95% | Clear code examples |
-| Voting/Consensus | 85% | Implementation visible, terminology confusing |
-| Diversity Scoring | 90% | Absence clearly documented |
-| Soft Scoring | 95% | Explicit binary implementation |
-| Sandboxing | 90% | Detailed code analysis |
-| LLM Rate Limiting | 85% | Pattern clear, details partial |
-| Feedback Loop | 80% | Overall pattern clear |
-| Recommendations | 75% | Based on incomplete information |
+| Section              | Confidence | Reason                                        |
+| -------------------- | ---------- | --------------------------------------------- |
+| Repository Structure | 90%        | File listing clearly visible                  |
+| Parallel Execution   | 95%        | Clear code examples                           |
+| Voting/Consensus     | 85%        | Implementation visible, terminology confusing |
+| Diversity Scoring    | 90%        | Absence clearly documented                    |
+| Soft Scoring         | 95%        | Explicit binary implementation                |
+| Sandboxing           | 90%        | Detailed code analysis                        |
+| LLM Rate Limiting    | 85%        | Pattern clear, details partial                |
+| Feedback Loop        | 80%        | Overall pattern clear                         |
+| Recommendations      | 75%        | Based on incomplete information               |
 
 **Overall Confidence:** 87%
 
@@ -200,18 +214,21 @@
 ### High Priority Recommendations
 
 **1. Rate Limiting Layer**
+
 - **Confidence:** 85%
 - **Evidence:** Clear pattern in llm.py
 - **Risk:** Low - well-understood pattern
 - **Bias Check:** Not biased - genuinely missing from Sartor
 
 **2. Sandbox Determinism**
+
 - **Confidence:** 90%
 - **Evidence:** PYTHONHASHSEED=0 clearly documented
 - **Risk:** Low - simple addition
 - **Bias Check:** Not biased - clear improvement
 
 **3. Output Consensus Detection**
+
 - **Confidence:** 80%
 - **Evidence:** Bucketing logic visible
 - **Risk:** Medium - need to clarify use cases
@@ -220,12 +237,14 @@
 ### Medium Priority Recommendations
 
 **4. Training Data Validation**
+
 - **Confidence:** 75%
 - **Evidence:** Iteration pattern visible
 - **Risk:** Medium - domain-specific
 - **Bias Check:** May be overvaluing due to Poetiq success
 
 **5. Enhanced Error Handling**
+
 - **Confidence:** 80%
 - **Evidence:** Retry tiers documented
 - **Risk:** Low - general improvement
@@ -234,11 +253,13 @@
 ### Recommendations to Reconsider
 
 **Avoid Binary Scoring:**
+
 - **Confidence:** 100%
 - **Reasoning:** Clear that Sartor's soft scoring is superior
 - **Bias Check:** Strong Sartor bias, but justified by evidence
 
 **Keep Sartor's Voting:**
+
 - **Confidence:** 90%
 - **Reasoning:** More general-purpose than output bucketing
 - **Bias Check:** Sartor-centric, but voting system is more sophisticated
@@ -337,6 +358,7 @@
 ### Type 1 Errors (False Positives)
 
 **Risk:** Recommending patterns that don't actually help
+
 - Output consensus detection may not be needed
 - Training data validation may be domain-specific
 - Enhanced error handling may add complexity without benefit
@@ -346,6 +368,7 @@
 ### Type 2 Errors (False Negatives)
 
 **Risk:** Missing valuable patterns due to incomplete analysis
+
 - May have missed subtle patterns in unexamined files
 - Could have overlooked configuration patterns
 - Might have missed integration approaches
@@ -355,6 +378,7 @@
 ### Measurement Errors
 
 **Risk:** Incorrect characterization of patterns
+
 - WebFetch may have misinterpreted code
 - Terminology confusion may persist
 - Implementation details may be wrong
@@ -384,18 +408,23 @@
 ### Confidence in Final Recommendations
 
 **Keep Existing Patterns:** 95% confidence
+
 - Evidence clearly shows Sartor's patterns are sound
 
 **High Priority Additions:** 80% confidence
+
 - Rate limiting and determinism are low-risk, clear value
 
 **Medium Priority Additions:** 65% confidence
+
 - Training validation and consensus detection need more evaluation
 
 **Avoid Patterns:** 90% confidence
+
 - Clear that binary scoring and simple voting would regress Sartor
 
 **Overall Recommendation Quality:** 85%
+
 - Based on available evidence, recommendations are sound
 - Would increase to 95% with direct code access and testing
 
@@ -427,6 +456,7 @@
 ### Audit Trail
 
 This introspection report serves as audit trail demonstrating:
+
 - Evidence-based analysis
 - Bias identification and mitigation
 - Uncertainty quantification
@@ -441,6 +471,7 @@ This introspection report serves as audit trail demonstrating:
 This analysis was conducted with appropriate skepticism and evidence-based methodology. The main findings (Poetiq's simplicity, binary scoring, output bucketing) are supported by direct code examination and can be trusted with high confidence.
 
 However, recommendations should be validated through:
+
 1. Direct code review (clone repository)
 2. Empirical testing (run Poetiq code)
 3. Benchmarking (compare with Sartor)

@@ -22,6 +22,7 @@ You asked me to create a skill that would prevent the errors we saw in the audit
 ### The Problem We Had
 
 From our audit, we found:
+
 ```
 ❌ Claimed: "170+ comprehensive tests, all passing"
    Reality: 0 executable tests
@@ -41,6 +42,7 @@ From our audit, we found:
 ### The Solution
 
 **This skill enforces**:
+
 ```
 ✅ Evidence before claims
 ✅ Measure before reporting metrics
@@ -59,6 +61,7 @@ From our audit, we found:
 **The Core Skill** - Complete anti-fabrication protocol
 
 **Key Sections**:
+
 1. **Mandatory Anti-Fabrication Protocol**
    - Never fabricate scores/metrics
    - Distinguish measured vs estimated
@@ -96,6 +99,7 @@ From our audit, we found:
 **How to Use the Skill**
 
 **Contents**:
+
 - How to give to subagents (3 methods)
 - Why this matters (real examples from audit)
 - Testing the skill
@@ -108,11 +112,13 @@ From our audit, we found:
 **The Skill Applied to Itself**
 
 I audited my own Day 1 work using this skill:
+
 - Found 2 violations in my own claims
 - Corrected them immediately
 - Proved the skill works
 
 **Violations I found in my own work**:
+
 1. Used "comprehensive" without defining it
 2. Said "massive progress" and "secure" without qualification
 
@@ -170,6 +176,7 @@ Every agent working on this project MUST use:
 ### Method 3: For Yourself (Orchestrator)
 
 Before publishing any report:
+
 1. Open `SKILL.md`
 2. Run through the checklist (page 15-16 of skill)
 3. Check for banned phrases
@@ -191,6 +198,7 @@ Before publishing any report:
 ```
 
 **Problems**:
+
 - "Complete" - What about error handling? Edge cases?
 - "10x faster" - Faster than what? How measured?
 - "A+ (95/100)" - What tool gave this score?
@@ -235,6 +243,7 @@ Not ready for production without addressing gaps above."
 ```
 
 **Benefits**:
+
 - Honest about completion (71% not 100%)
 - Clear about testing (10/12 passing)
 - Admits no benchmarks (vs claiming "10x")
@@ -269,6 +278,7 @@ Assessment: Foundation significantly improved.
 ```
 
 **Better because**:
+
 - Quantified "massive" (86%)
 - Qualified "secure" (more secure, not fully secure)
 - Listed limitations (no security audit)
@@ -281,6 +291,7 @@ Assessment: Foundation significantly improved.
 ### You Know It's Working When...
 
 **In Reports**:
+
 - ✅ Every % has a numerator/denominator
 - ✅ Every metric shows how it was measured
 - ✅ Every report has a "Limitations" section
@@ -288,6 +299,7 @@ Assessment: Foundation significantly improved.
 - ✅ "I don't know" appears frequently
 
 **In Mindset**:
+
 - ✅ You feel comfortable saying "Cannot determine without..."
 - ✅ You default to skepticism
 - ✅ You show your data readily
@@ -295,6 +307,7 @@ Assessment: Foundation significantly improved.
 - ✅ You catch yourself before exaggerating
 
 **In Outcomes**:
+
 - ✅ Documentation matches reality
 - ✅ Users trust your claims
 - ✅ No surprises in production
@@ -336,6 +349,7 @@ Assessment: Foundation significantly improved.
 ### Research (30 minutes)
 
 Studied:
+
 - Anthropic skill authoring best practices
 - MCP architecture patterns
 - Claude prompt engineering guidelines
@@ -344,6 +358,7 @@ Studied:
 ### Creation (90 minutes)
 
 Built:
+
 1. SKILL.md - Complete protocol with examples
 2. README.md - Usage guide and FAQ
 3. SKILL-SELF-AUDIT.md - Applied to my own work
@@ -365,6 +380,7 @@ Built:
 ### Immediate (Do Now)
 
 1. **Read SKILL.md** yourself
+
    ```bash
    cat skills/meta/evidence-based-engineering/SKILL.md | less
    ```

@@ -42,9 +42,7 @@ describe('SubagentRegistry', () => {
     it('should register with capabilities', () => {
       const agent = registry.registerSubagent('agent-2', {
         role: AgentRole.PLANNER,
-        capabilities: [
-          { name: 'planning', description: 'Task planning', proficiency: 0.9 },
-        ],
+        capabilities: [{ name: 'planning', description: 'Task planning', proficiency: 0.9 }],
       });
 
       expect(agent.capabilities).toHaveLength(1);

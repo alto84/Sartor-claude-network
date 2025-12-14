@@ -9,14 +9,17 @@ The status system provides thread-safe, file-based coordination for tracking age
 ## Components
 
 ### 1. status-update.sh
+
 Creates or updates agent status files with atomic writes using flock.
 
 **Usage:**
+
 ```bash
 ./scripts/status-update.sh <agentId> <key> <value>
 ```
 
 **Examples:**
+
 ```bash
 # Set current task
 ./scripts/status-update.sh "agent-planner-001" "currentTask" "Designing memory architecture"
@@ -36,20 +39,24 @@ Creates or updates agent status files with atomic writes using flock.
 ```
 
 **Special Behavior:**
+
 - `findings` key: Appends to array instead of replacing
 - `lastUpdate`: Automatically updated on every write
 - Thread-safe: Uses flock for atomic operations
 - Auto-creates: Directory and file created if missing
 
 ### 2. status-read.sh
+
 Displays all active agent statuses in human-readable format.
 
 **Usage:**
+
 ```bash
 ./scripts/status-read.sh
 ```
 
 **Output:**
+
 ```
 === AGENT STATUS ===
 [active] agent-planner-001: Designing memory architecture
@@ -58,14 +65,17 @@ Displays all active agent statuses in human-readable format.
 ```
 
 ### 3. status-cleanup.sh
+
 Removes status files older than 1 hour (for session cleanup).
 
 **Usage:**
+
 ```bash
 ./scripts/status-cleanup.sh
 ```
 
 **When to run:**
+
 - End of multi-agent session
 - Before starting new session
 - Automated via cron for long-running systems
@@ -75,6 +85,7 @@ Removes status files older than 1 hour (for session cleanup).
 Located in: `/home/alton/Sartor-claude-network/data/agent-status/<agentId>.json`
 
 **Structure:**
+
 ```json
 {
   "agentId": "agent-planner-001",
@@ -83,14 +94,12 @@ Located in: `/home/alton/Sartor-claude-network/data/agent-status/<agentId>.json`
   "currentTask": "Designing memory architecture",
   "progress": "0.75",
   "lastUpdate": "2025-12-11T20:30:00Z",
-  "findings": [
-    "Identified optimal tiering strategy",
-    "Performance tests show 95% hit rate"
-  ]
+  "findings": ["Identified optimal tiering strategy", "Performance tests show 95% hit rate"]
 }
 ```
 
 **Standard Fields:**
+
 - `agentId` (string): Unique agent identifier
 - `role` (string): Agent role (PLANNER, IMPLEMENTER, AUDITOR, CLEANER)
 - `status` (string): Current status (active, idle, blocked, completed, error)
@@ -101,6 +110,7 @@ Located in: `/home/alton/Sartor-claude-network/data/agent-status/<agentId>.json`
 
 **Custom Fields:**
 You can add any custom fields via status-update.sh. Examples:
+
 - `assignedFiles`: Array of files agent is working on
 - `blockedBy`: Agent ID that must complete first
 - `estimatedCompletion`: Projected finish time
@@ -109,6 +119,7 @@ You can add any custom fields via status-update.sh. Examples:
 ## Integration with Subagents
 
 ### Initialization
+
 When spawning a subagent, create its status file:
 
 ```bash
@@ -119,6 +130,7 @@ When spawning a subagent, create its status file:
 ```
 
 ### During Execution
+
 Update status at key milestones:
 
 ```bash
@@ -138,6 +150,7 @@ Update status at key milestones:
 ```
 
 ### Error Handling
+
 When errors occur:
 
 ```bash
@@ -147,6 +160,7 @@ When errors occur:
 ```
 
 ### Coordination Between Agents
+
 Orchestrator can read statuses to coordinate:
 
 ```bash
@@ -160,6 +174,7 @@ fi
 ## Thread Safety
 
 All operations use `flock` for atomic file updates:
+
 - Multiple agents can update different status files simultaneously
 - Multiple updates to the same agent status are serialized
 - Lock files (`.json.lock`) prevent race conditions
@@ -175,6 +190,7 @@ All operations use `flock` for atomic file updates:
 ## Monitoring and Debugging
 
 ### Watch Mode
+
 Monitor status in real-time:
 
 ```bash
@@ -182,11 +198,13 @@ watch -n 1 ./scripts/status-read.sh
 ```
 
 ### View Specific Agent
+
 ```bash
 cat data/agent-status/agent-planner-001.json | python3 -m json.tool
 ```
 
 ### Audit Trail
+
 Status files include timestamps for debugging:
 
 ```bash
@@ -202,11 +220,13 @@ done
 ### Troubleshooting
 
 **Problem: Lock file remains after crash**
+
 ```bash
 rm data/agent-status/*.lock
 ```
 
 **Problem: Malformed JSON**
+
 ```bash
 # Validate all status files
 for f in data/agent-status/*.json; do
@@ -215,6 +235,7 @@ done
 ```
 
 **Problem: Old files accumulating**
+
 ```bash
 # Manual cleanup of files older than 2 hours
 find data/agent-status -name "*.json" -mmin +120 -delete
@@ -232,6 +253,7 @@ find data/agent-status -name "*.json" -mmin +120 -delete
 ## Future Enhancements
 
 Potential improvements (not yet implemented):
+
 - WebSocket-based real-time status streaming
 - Redis/SQLite backend for higher concurrency
 - Status history/versioning

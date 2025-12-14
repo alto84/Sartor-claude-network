@@ -23,12 +23,14 @@ npm run test:firestore
 ### Step 2: Update memory-server.ts
 
 Replace this:
+
 ```typescript
 import { MultiTierStore } from './multi-tier-store.js';
 const multiTierStore = new MultiTierStore();
 ```
 
 With this:
+
 ```typescript
 import { FirestoreMultiTierStore } from './firestore-multi-tier-store.js';
 const multiTierStore = new FirestoreMultiTierStore();
@@ -52,6 +54,7 @@ npm run mcp:http   # for HTTP (agents)
 ## Requirements
 
 Same as before:
+
 - Service account credentials configured (one of):
   - `GOOGLE_APPLICATION_CREDENTIALS` env var
   - `config/service-account.json` file
@@ -60,10 +63,12 @@ Same as before:
 ## No Additional Config Needed
 
 Unlike Realtime Database which requires:
+
 - ❌ Manual database creation in Firebase Console
 - ❌ Database URL configuration
 
 Firestore just needs:
+
 - ✅ Service account credentials (already have this)
 - ✅ Firestore enabled (often auto-enabled on new projects)
 
@@ -82,13 +87,15 @@ Firestore just needs:
 ### Still not working?
 
 Check:
+
 - Service account credentials are valid
 - Service account has "Cloud Datastore User" role
 - Internet connectivity to firestore.googleapis.com
 
 ## Full Documentation
 
-See `/home/alton/Sartor-claude-network/docs/FIRESTORE_INTEGRATION.md` for complete details on:
+See `/home/user/Sartor-claude-network/docs/FIRESTORE_INTEGRATION.md` for complete details on:
+
 - Integration options
 - Migration strategies
 - Performance considerations

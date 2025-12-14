@@ -35,11 +35,13 @@ init_logging(level=logging.DEBUG)
 ## Features
 
 ### 1. Automatic File Rotation
+
 - Log files automatically rotate at 10MB
 - Keeps 5 backup files
 - Stored in `~/.claude-network/logs/`
 
 ### 2. Color-Coded Console Output
+
 - **DEBUG**: Cyan
 - **INFO**: Green
 - **WARNING**: Yellow
@@ -47,6 +49,7 @@ init_logging(level=logging.DEBUG)
 - **CRITICAL**: Magenta
 
 ### 3. Module-Specific Logging
+
 ```python
 from logging_config import setup_module_logger
 
@@ -55,6 +58,7 @@ logger = setup_module_logger('my_module', level=logging.DEBUG)
 ```
 
 ### 4. Temporary Log Level Changes
+
 ```python
 from logging_config import LogLevel
 import logging
@@ -65,6 +69,7 @@ with LogLevel(logging.DEBUG):
 ```
 
 ### 5. Function Call Tracing
+
 ```python
 from logging_config import log_function_call
 
@@ -75,6 +80,7 @@ def process_data(data):
 ```
 
 ### 6. Exception Logging
+
 ```python
 from logging_config import log_exception
 
@@ -87,21 +93,25 @@ with log_exception(logger, "Processing failed"):
 Use appropriate log levels:
 
 - **DEBUG**: Detailed diagnostic information
+
   ```python
   logger.debug("Variable state: x=%s, y=%s", x, y)
   ```
 
 - **INFO**: Confirmation of normal operation
+
   ```python
   logger.info("Connected to server at %s", url)
   ```
 
 - **WARNING**: Unexpected but recoverable situation
+
   ```python
   logger.warning("Retry attempt %d of %d", attempt, max_attempts)
   ```
 
 - **ERROR**: Error preventing a specific operation
+
   ```python
   logger.error("Failed to save file %s: %s", filename, error)
   ```
@@ -114,6 +124,7 @@ Use appropriate log levels:
 ## When to Use print() vs logging
 
 ### Use logging for:
+
 - Operational events
 - Debugging information
 - Error tracking
@@ -121,6 +132,7 @@ Use appropriate log levels:
 - Application state changes
 
 ### Use print() for:
+
 - CLI tool output
 - Interactive prompts
 - User-facing messages
@@ -130,6 +142,7 @@ Use appropriate log levels:
 ## File Locations
 
 ### Log Directory
+
 ```
 ~/.claude-network/logs/
 ├── claude-network.log      # Main log file
@@ -140,12 +153,14 @@ Use appropriate log levels:
 ```
 
 ### Configuration
+
 - **Module**: `logging_config.py`
 - **Report**: `LOGGING-MIGRATION.md`
 
 ## Advanced Usage
 
 ### Custom Formatter
+
 ```python
 from logging_config import setup_logging
 
@@ -157,6 +172,7 @@ logger = setup_logging(
 ```
 
 ### Disable Logging Temporarily
+
 ```python
 from logging_config import disable_logging, enable_logging
 
@@ -167,6 +183,7 @@ enable_logging()
 ```
 
 ### Change Global Log Level
+
 ```python
 from logging_config import set_level
 import logging
@@ -177,6 +194,7 @@ set_level(logging.DEBUG)  # Enable debug logging everywhere
 ## Best Practices
 
 1. **Include Context**: Add relevant information to log messages
+
    ```python
    # Good
    logger.error("Failed to process order %s for customer %s: %s",
@@ -187,6 +205,7 @@ set_level(logging.DEBUG)  # Enable debug logging everywhere
    ```
 
 2. **Use String Formatting**: Let logging handle string interpolation
+
    ```python
    # Good
    logger.info("User %s logged in", username)
@@ -196,6 +215,7 @@ set_level(logging.DEBUG)  # Enable debug logging everywhere
    ```
 
 3. **Log Exceptions Properly**: Include traceback
+
    ```python
    try:
        risky_operation()
@@ -211,23 +231,27 @@ set_level(logging.DEBUG)  # Enable debug logging everywhere
 ## Troubleshooting
 
 ### Logs Not Appearing
+
 - Check log level: `logger.setLevel(logging.DEBUG)`
 - Verify handlers: `logger.handlers`
 - Check if logging is disabled: `logging.root.disabled`
 
 ### Too Much Output
+
 ```python
 # Reduce verbosity
 set_level(logging.WARNING)
 ```
 
 ### Log Files Too Large
+
 - Rotation happens automatically at 10MB
 - Adjust in `logging_config.py`: `max_bytes` parameter
 
 ## Examples
 
 See the test section in `logging_config.py` for complete examples:
+
 ```bash
 python3 logging_config.py
 ```

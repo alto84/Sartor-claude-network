@@ -232,12 +232,13 @@ export class WorkDistributor extends EventEmitter {
     extra?: Record<string, unknown>
   ): void {
     if (this.messageBus) {
-      this.messageBus.publishToTopic(
-        'work-distributor',
-        'task.status',
-        eventType,
-        { taskId, status, agentId, timestamp: new Date().toISOString(), ...extra }
-      );
+      this.messageBus.publishToTopic('work-distributor', 'task.status', eventType, {
+        taskId,
+        status,
+        agentId,
+        timestamp: new Date().toISOString(),
+        ...extra,
+      });
     }
   }
 
@@ -323,11 +324,7 @@ export class WorkDistributor extends EventEmitter {
    * @param expectedVersion - Expected claim version (for optimistic locking)
    * @returns Claim result
    */
-  claimTask(
-    taskId: string,
-    agentId: string,
-    expectedVersion?: number
-  ): ClaimResult {
+  claimTask(taskId: string, agentId: string, expectedVersion?: number): ClaimResult {
     const task = this.tasks.get(taskId);
     if (!task) {
       return { success: false, reason: 'Task not found' };
@@ -631,9 +628,7 @@ export class WorkDistributor extends EventEmitter {
     }
 
     // Sort by priority
-    tasks.sort(
-      (a, b) => PRIORITY_WEIGHTS[b.priority] - PRIORITY_WEIGHTS[a.priority]
-    );
+    tasks.sort((a, b) => PRIORITY_WEIGHTS[b.priority] - PRIORITY_WEIGHTS[a.priority]);
 
     if (filter.limit) {
       tasks = tasks.slice(0, filter.limit);
@@ -662,9 +657,7 @@ export class WorkDistributor extends EventEmitter {
 
       // Check capabilities
       if (task.requiredCapabilities.length > 0) {
-        const hasAll = task.requiredCapabilities.every((cap) =>
-          agentCapabilities.includes(cap)
-        );
+        const hasAll = task.requiredCapabilities.every((cap) => agentCapabilities.includes(cap));
         if (!hasAll) return false;
       }
 
@@ -872,19 +865,13 @@ export class WorkDistributor extends EventEmitter {
   /**
    * Check agent eligibility for task
    */
-  private checkEligibility(
-    task: Task,
-    agentId: string
-  ): { eligible: boolean; reason?: string } {
+  private checkEligibility(task: Task, agentId: string): { eligible: boolean; reason?: string } {
     const agent = this.registry.getAgent(agentId);
     if (!agent) {
       return { eligible: false, reason: 'Agent not found' };
     }
 
-    if (
-      agent.status !== AgentStatus.ACTIVE &&
-      agent.status !== AgentStatus.IDLE
-    ) {
+    if (agent.status !== AgentStatus.ACTIVE && agent.status !== AgentStatus.IDLE) {
       return { eligible: false, reason: 'Agent not available' };
     }
 

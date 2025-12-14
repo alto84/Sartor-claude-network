@@ -75,7 +75,7 @@ await orchestrator.registerAgent({
   id: 'agent-1',
   name: 'Data Agent',
   capabilities: [{ name: 'data-processing', version: '1.0' }],
-  endpoint: 'http://localhost:3001'
+  endpoint: 'http://localhost:3001',
 });
 
 // Execute tasks
@@ -83,7 +83,7 @@ const result = await orchestrator.executeTask({
   id: 'task-1',
   type: 'data-processing',
   requiredCapabilities: ['data-processing'],
-  priority: 'high'
+  priority: 'high',
 });
 ```
 
@@ -92,11 +92,13 @@ const result = await orchestrator.executeTask({
 ### Consensus Mechanisms
 
 **Raft** - For crash-fault tolerance:
+
 - When: Trusted agents, configuration management, leader election
 - Performance: 100-1000 cmd/s, 150ms election time
 - Tradeoff: Requires majority, vulnerable to Byzantine faults
 
 **BFT** - For Byzantine fault tolerance:
+
 - When: Untrusted agents, adversarial environments, security-critical
 - Performance: 10-50 req/s, O(n²) message complexity
 - Tradeoff: High overhead, expensive but secure
@@ -104,16 +106,19 @@ const result = await orchestrator.executeTask({
 ### Communication Patterns
 
 **A2A Protocol** - Peer-to-peer collaboration:
+
 - Throughput: 500-1000 msg/s for 2-3 agents
 - Scaling: Linear to 6 agents, quadratic beyond 8
 - Use for: Complex coordination, reasoning, negotiation
 
 **Semantic Routing** - Intent-based routing:
+
 - Latency reduction: >90% vs baseline
 - Cache hit ratio: >60%
 - Use for: Capability matching, content-aware routing
 
 **Message Bus** - Topic-based pub/sub:
+
 - Priority queuing: URGENT > HIGH > NORMAL > LOW
 - Throughput: ~1000 msg/s (bottleneck with >10 agents)
 - Use for: Event broadcasting, task notifications, coordination signals
@@ -121,11 +126,13 @@ const result = await orchestrator.executeTask({
 ### Distributed State
 
 **CRDTs** - Conflict-free replicated data types:
+
 - Convergence: <1s for up to 64 replicas
 - Bandwidth: 50-90% reduction via delta-state
 - Use for: Eventually consistent state, high availability
 
 **Vector Clocks** - Causal ordering:
+
 - Detection accuracy: >95%
 - Sync overhead: 10-50ms
 - Use for: Event ordering, concurrent operation detection
@@ -133,11 +140,13 @@ const result = await orchestrator.executeTask({
 ### Work Distribution
 
 **Task Claiming** - Optimistic locking for work assignment:
+
 - Claim latency: 10-50ms (registry lookup + lock)
 - Conflict rate: <5% with up to 10 concurrent agents
 - Use for: Dynamic task distribution, load balancing
 
 **Assignment Recommendations** - Capability-based scoring:
+
 - Factors: Role match, capability proficiency, agent load, recent activity
 - Performance: O(agents × tasks) scoring complexity
 - Use for: Intelligent task routing, workload optimization
@@ -145,11 +154,13 @@ const result = await orchestrator.executeTask({
 ### Progress Tracking
 
 **Progress Entries** - Hierarchical progress reporting:
+
 - Update latency: 5-20ms (tracker + message bus)
 - Aggregation: Task → Milestone → Plan hierarchy
 - Use for: Real-time status monitoring, bottleneck detection
 
 **Milestones** - Goal-oriented progress tracking:
+
 - Progress calculation: Automatic from required tasks
 - Status transitions: PENDING → IN_PROGRESS → ACHIEVED
 - Use for: Phase management, deadline tracking
@@ -157,17 +168,20 @@ const result = await orchestrator.executeTask({
 ### Memory MCP Integration
 
 **3-Tier Memory System** - Persistent coordination state:
+
 - Hot tier (<100ms): Active tasks, current assignments
 - Warm tier (<500ms): Recent progress, agent status
 - Cold tier (<2s): Historical patterns, refinements
 - Use for: Shared state, decision history, learning
 
 **Refinement Traces** - Iterative improvement tracking:
+
 - Store: Task iterations, success/failure, duration
 - Retrieve: Past attempts, similar tasks, optimization patterns
 - Use for: Learning from experience, avoiding repeated mistakes
 
 **Expert Consensus** - Multi-agent decision recording:
+
 - Store: Voting outcomes, participant agreements, rationales
 - Retrieve: Past decisions, conflict resolutions, consensus patterns
 - Use for: Distributed decision-making, Byzantine fault tolerance
@@ -177,12 +191,14 @@ const result = await orchestrator.executeTask({
 This skill follows the anti-fabrication protocols from CLAUDE.md:
 
 **What We Provide**:
+
 - Actual measurements from implementations
 - Documented limitations and tradeoffs
 - Real failure modes encountered and debugged
 - Performance characteristics from testing
 
 **What We DON'T Provide**:
+
 - Fabricated performance scores
 - Claims without measurement basis
 - "Perfect" or "guaranteed" solutions (everything has tradeoffs)
@@ -192,18 +208,19 @@ This skill follows the anti-fabrication protocols from CLAUDE.md:
 
 ### Pattern Comparison
 
-| Pattern | Latency | Scalability | Fault Tolerance | When to Use |
-|---------|---------|-------------|-----------------|-------------|
-| Orchestrator | 50-200ms | Medium | Medium | Centralized control needed |
-| P2P | 5-20ms | Medium (20) | High | No natural leader, Byzantine possible |
-| Leader-Based | 10-50ms | Medium (20) | High | Strong consistency, total ordering |
-| Hierarchical | Multi-level | Very High (100+) | Medium | Large scale, geographic distribution |
+| Pattern      | Latency     | Scalability      | Fault Tolerance | When to Use                           |
+| ------------ | ----------- | ---------------- | --------------- | ------------------------------------- |
+| Orchestrator | 50-200ms    | Medium           | Medium          | Centralized control needed            |
+| P2P          | 5-20ms      | Medium (20)      | High            | No natural leader, Byzantine possible |
+| Leader-Based | 10-50ms     | Medium (20)      | High            | Strong consistency, total ordering    |
+| Hierarchical | Multi-level | Very High (100+) | Medium          | Large scale, geographic distribution  |
 
 See `examples/architecture-patterns.md` for detailed implementations.
 
 ## Common Debugging Scenarios
 
 ### Split-Brain
+
 ```bash
 # Detect multiple leaders
 grep "became_leader" logs/* | awk '{print $1, $2}' | sort | uniq -c
@@ -215,6 +232,7 @@ done
 ```
 
 ### Message Ordering
+
 ```bash
 # Check for causality violations
 grep "causality_violation" logs/*
@@ -224,6 +242,7 @@ grep "happens_before\|concurrent" logs/*
 ```
 
 ### Cascading Failures
+
 ```bash
 # Monitor circuit breaker states
 grep "circuit_breaker" logs/* | grep "state_change"
@@ -256,18 +275,21 @@ See `reference/debugging-coordination.md` for comprehensive debugging guide.
 From CLAUDE.md, mandatory for multi-agent tasks:
 
 ### Persona Adoption
+
 - Each agent maintains distinct specialized role
 - Stay within domain expertise
 - Bring unique perspective
 - Avoid homogenization
 
 ### Collaborative Framework
+
 - Work toward shared objective
 - Contribute complementary analysis
 - Cross-validate with evidence
 - Synthesize without fabricating metrics
 
 ### Anti-Fabrication in Teams
+
 - No metric averaging
 - Preserve disagreement
 - Evidence multiplication doesn't equal stronger claims
@@ -278,11 +300,13 @@ See `reference/coordination-protocols.md` for detailed guidance.
 ## Integration with Other Skills
 
 **Evidence-Based Validation** (Skill #1):
+
 - Use to verify orchestration performance claims
 - Check for fabricated metrics
 - Validate measurement methodology
 
 **MCP Server Development** (Skill #2):
+
 - Apply MCP communication patterns to agent messaging
 - Use MCP tools for agent-to-agent communication
 - Reference MCP resource patterns for agent discovery
@@ -299,24 +323,23 @@ import { WorkDistributor, TaskPriority, TaskStatus } from './coordination/work-d
 const distributor = new WorkDistributor();
 
 // Create task
-const task = distributor.createTask(
-  "Implement feature X",
-  "Add new functionality",
-  { priority: TaskPriority.HIGH }
-);
+const task = distributor.createTask('Implement feature X', 'Add new functionality', {
+  priority: TaskPriority.HIGH,
+});
 
 // Claim task (optimistic locking)
-const claim = distributor.claimTask(task.id, "agent-1");
+const claim = distributor.claimTask(task.id, 'agent-1');
 
 // Track progress
 if (claim.success) {
-  distributor.startTask(task.id, "agent-1");
+  distributor.startTask(task.id, 'agent-1');
   // ... do work ...
-  distributor.completeTask(task.id, "agent-1", result);
+  distributor.completeTask(task.id, 'agent-1', result);
 }
 ```
 
 **Features**:
+
 - Optimistic locking with version checking
 - Automatic dependency resolution
 - Retry logic with configurable limits
@@ -331,23 +354,24 @@ import { PlanSyncService, PlanItemStatus } from './coordination/plan-sync';
 const planSync = new PlanSyncService('agent-1');
 
 // Create plan
-const plan = planSync.createPlan("Project X", "Build feature");
+const plan = planSync.createPlan('Project X', 'Build feature');
 
 // Add items (CRDT-based, conflict-free)
 const item = planSync.addItem(plan.id, {
-  title: "Design API",
+  title: 'Design API',
   status: PlanItemStatus.PENDING,
-  priority: PlanItemPriority.HIGH
+  priority: PlanItemPriority.HIGH,
 });
 
 // Update from multiple agents (merges automatically)
 planSync.updateItem(plan.id, item.id, {
   status: PlanItemStatus.IN_PROGRESS,
-  progress: 50
+  progress: 50,
 });
 ```
 
 **Features**:
+
 - CRDT-based conflict-free merging
 - Vector clock versioning
 - Operation-based synchronization
@@ -362,31 +386,26 @@ import { ProgressTracker, ProgressStatus } from './coordination/progress';
 const tracker = new ProgressTracker();
 
 // Report progress
-tracker.reportProgress(
-  "agent-1",
-  "task-123",
-  75,
-  ProgressStatus.IN_PROGRESS,
-  {
-    message: "Nearly complete",
-    timeSpentMinutes: 45,
-    estimatedRemainingMinutes: 15
-  }
-);
+tracker.reportProgress('agent-1', 'task-123', 75, ProgressStatus.IN_PROGRESS, {
+  message: 'Nearly complete',
+  timeSpentMinutes: 45,
+  estimatedRemainingMinutes: 15,
+});
 
 // Create milestone
 const milestone = tracker.createMilestone({
-  name: "Phase 1 Complete",
-  description: "All foundation tasks done",
-  requiredTaskIds: ["task-1", "task-2", "task-3"]
+  name: 'Phase 1 Complete',
+  description: 'All foundation tasks done',
+  requiredTaskIds: ['task-1', 'task-2', 'task-3'],
 });
 
 // Get summary
-const summary = tracker.getSummary("task-123");
-const agentStats = tracker.getAgentSummary("agent-1");
+const summary = tracker.getSummary('task-123');
+const agentStats = tracker.getAgentSummary('agent-1');
 ```
 
 **Features**:
+
 - Hierarchical progress aggregation
 - Milestone tracking with auto-calculation
 - Agent performance statistics
@@ -397,7 +416,7 @@ const agentStats = tracker.getAgentSummary("agent-1");
 
 All patterns, measurements, and guidance extracted from:
 
-- `/home/alton/Sartor-claude-network/` - Production coordination system
+- `/home/user/Sartor-claude-network/` - Production coordination system
   - `src/coordination/work-distribution.ts` - Task distribution (1,000 lines)
   - `src/coordination/plan-sync.ts` - CRDT plan sync (800+ lines)
   - `src/coordination/progress.ts` - Progress tracking (800+ lines)
@@ -427,18 +446,22 @@ All performance numbers from actual test results, not theoretical estimates.
 This skill documents what has been implemented and measured:
 
 **Consensus**:
+
 - Raft: Tested up to 7 nodes, crash faults only
 - BFT: Tested up to 10 nodes, expensive beyond 30
 
 **Communication**:
+
 - A2A: Linear to 6 agents, quadratic beyond 8
 - Semantic routing: Requires real embedding models in production
 
 **State Management**:
+
 - CRDTs: Tested up to 64 replicas, O(n) memory per replica
 - Vector clocks: >95% accuracy, O(n) memory per node
 
 **Not Covered**:
+
 - Unbounded agent populations (>100)
 - Hostile adversarial environments (advanced Byzantine scenarios)
 - Real-time hard deadlines (<10ms)
@@ -454,6 +477,7 @@ This skill is based on actual implementations. To improve it:
 4. Provide evidence-based performance comparisons
 
 Do NOT:
+
 - Add theoretical patterns without implementation
 - Claim performance without measurements
 - Fabricate scores or metrics
@@ -466,6 +490,7 @@ This skill documentation extracts patterns from open implementations in the SKG 
 ## Support
 
 For questions or issues:
+
 1. Consult the reference documentation first
 2. Run the analysis script on your codebase
 3. Check the debugging guide for common issues

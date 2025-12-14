@@ -392,11 +392,7 @@ export class SubagentRegistry extends EventEmitter {
    * @param taskId - Optional current task ID
    * @returns Heartbeat response
    */
-  heartbeat(
-    agentId: string,
-    status?: AgentStatus,
-    taskId?: string
-  ): HeartbeatResponse | undefined {
+  heartbeat(agentId: string, status?: AgentStatus, taskId?: string): HeartbeatResponse | undefined {
     const agent = this.agents.get(agentId);
     if (!agent) {
       return undefined;

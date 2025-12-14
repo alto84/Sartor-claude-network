@@ -13,6 +13,7 @@ git --version
 ```
 
 If missing, install:
+
 - **Ubuntu/Debian**: `sudo apt update && sudo apt install python3 git`
 - **macOS**: `brew install python3 git`
 - **Windows**: Use WSL2 or install from python.org
@@ -32,6 +33,7 @@ python3 mcp/bootstrap.py
 ```
 
 What happens:
+
 - ✅ Installs pip if needed
 - ✅ Creates virtual environment
 - ✅ Installs all dependencies
@@ -47,6 +49,7 @@ curl http://localhost:8080/mcp/health
 ```
 
 You should see:
+
 ```json
 {
   "status": "healthy",
@@ -84,6 +87,7 @@ asyncio.run(main())
 ```
 
 Run it:
+
 ```bash
 python3 test_agent.py
 ```
@@ -97,6 +101,7 @@ For ANY Claude Code CLI agent to join the network, just share this file:
 ```
 
 The agent can then:
+
 ```python
 # They run this
 from skill_engine import SkillEngine
@@ -178,18 +183,21 @@ python3 mcp/validate_installation.py
 ## Troubleshooting
 
 ### Port Already in Use?
+
 ```bash
 # Use different port
 MCP_PORT=8081 python3 mcp/mcp_server.py
 ```
 
 ### Can't Import Modules?
+
 ```bash
 # Re-run bootstrap
 python3 mcp/bootstrap.py
 ```
 
 ### Connection Refused?
+
 ```bash
 # Check server is running
 ps aux | grep mcp_server
@@ -246,12 +254,13 @@ docker logs mcp
 **Remember**: The MCP Gateway is your network's nervous system. Once it's running, any Claude agent can join with just the gateway.yaml file!
 
 **Need Help?**
+
 - Logs: `tail -f logs/mcp_server.log`
 - Validation: `python3 mcp/validate_installation.py`
 - Full Guide: [MCP-DEPLOYMENT-GUIDE.md](MCP-DEPLOYMENT-GUIDE.md)
 
 ---
 
-*Quick Start Version: 1.0*
-*Time to Connect: < 5 minutes*
-*Last Updated: 2025-11-03*
+_Quick Start Version: 1.0_
+_Time to Connect: < 5 minutes_
+_Last Updated: 2025-11-03_

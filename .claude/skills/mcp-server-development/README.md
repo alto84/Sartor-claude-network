@@ -93,6 +93,7 @@ npm install
 ### 3. Customize Your Server
 
 Edit `src/index.ts`:
+
 - Change server name and version
 - Add your tools to the tools array
 - Implement tool handlers
@@ -115,6 +116,7 @@ npm run inspector
 ### Building a Simple MCP Server
 
 Start with `templates/basic-mcp-server.ts`. It includes:
+
 - Two working tools (echo, calculate)
 - Proper error handling
 - Stdio transport setup
@@ -123,6 +125,7 @@ Start with `templates/basic-mcp-server.ts`. It includes:
 ### Adding Tools
 
 See `templates/tool-implementations.md` for patterns:
+
 - Simple data retrieval
 - Search with filters
 - Process orchestration
@@ -131,6 +134,7 @@ See `templates/tool-implementations.md` for patterns:
 ### Implementing Plugins
 
 Check `reference/common-patterns.md` for:
+
 - Plugin architecture
 - Plugin manager implementation
 - Service layer patterns
@@ -138,6 +142,7 @@ Check `reference/common-patterns.md` for:
 ### Debugging Issues
 
 Refer to `reference/debugging-guide.md` for:
+
 - Common error solutions
 - Stdio protocol troubleshooting
 - Performance profiling
@@ -159,11 +164,11 @@ This skill is based on actual working MCP servers:
    - Caching and rate limiting
    - SDK version: 0.5.0
 
-3. **MCP protocol utilities** (/home/alton/mcp_*.js)
+3. **MCP protocol utilities** (/home/alton/mcp\_\*.js)
    - Communication patterns
    - Agent coordination examples
 
-4. **Sartor Memory MCP System** (/home/alton/Sartor-claude-network/src/mcp/)
+4. **Sartor Memory MCP System** (/home/user/Sartor-claude-network/src/mcp/)
    - Multi-tier memory storage (Firebase/File/GitHub)
    - HTTP transport for agent access
    - Bootstrap mesh with automatic fallback
@@ -176,6 +181,7 @@ This skill is based on actual working MCP servers:
 This skill follows evidence-based development principles:
 
 **What we know works**:
+
 - Stdio transport with @modelcontextprotocol/sdk
 - HTTP transport with StreamableHTTPServerTransport
 - JSON-RPC 2.0 message format
@@ -186,6 +192,7 @@ This skill follows evidence-based development principles:
 - Bootstrap mesh pattern for multi-source access
 
 **What we don't claim**:
+
 - WebSocket transport - not tested
 - SDK versions outside 0.5.0 - latest range - may differ
 - Capabilities beyond tools/resources - not observed
@@ -193,6 +200,7 @@ This skill follows evidence-based development principles:
 - Vector search or semantic embeddings - not implemented
 
 **Limitations stated**:
+
 - All patterns are TypeScript/Node.js
 - Based on four server implementations
 - May need adaptation for specific use cases

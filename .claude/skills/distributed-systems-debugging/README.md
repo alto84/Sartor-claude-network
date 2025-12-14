@@ -7,6 +7,7 @@ Comprehensive skill for debugging distributed systems, multi-agent coordination,
 ### Invoke the Skill
 
 Claude automatically invokes this skill when you encounter distributed systems debugging tasks:
+
 - Debugging consensus failures
 - Investigating message ordering issues
 - Resolving state synchronization bugs
@@ -18,12 +19,15 @@ Claude automatically invokes this skill when you encounter distributed systems d
 **If you're debugging right now:**
 
 1. **Use the debugging checklist:**
+
    ```
    See templates/debugging-checklist.md
    ```
+
    Follow the systematic checklist for your issue type (consensus, messaging, state sync, etc.)
 
 2. **Run automated analysis:**
+
    ```bash
    # Analyze logs for common issues
    python scripts/debug-distributed-system.py \
@@ -57,24 +61,28 @@ This skill now integrates with the Memory MCP server to provide:
 ### Quick Memory Usage
 
 **Before debugging:**
+
 ```bash
 # Search for similar issues
 memory_search --type procedural --min-importance 0.7 --limit 10
 ```
 
 **During debugging:**
+
 ```bash
 # Store hypotheses and findings
 memory_create --content "Hypothesis: Network partition..." --type working --importance 0.6
 ```
 
 **After resolution:**
+
 ```bash
 # Store complete debugging session
 memory_create --content "Full debug session..." --type episodic --importance 0.9 --tags "resolved,consensus,plan-sync"
 ```
 
 See SKILL.md sections:
+
 - "Memory MCP Integration" (line 23)
 - "Tracking Debug Sessions with Memory MCP" (line 413)
 - "Memory MCP Usage Patterns for Debugging" (line 565)
@@ -84,6 +92,7 @@ See SKILL.md sections:
 ### 1. Systematic Debugging Methodology
 
 **Four-step process** (from `reference/debugging-methodology.md`):
+
 1. **Observe**: Collect evidence from all nodes, logs, metrics, traces
 2. **Hypothesize**: Form testable theories about root cause
 3. **Test**: Design experiments to validate hypotheses
@@ -96,33 +105,39 @@ See SKILL.md sections:
 **27 documented failure patterns** (from `reference/failure-patterns.md`):
 
 **Consensus failures:**
+
 - Split-brain scenarios
 - Byzantine silent failures
 - Vote manipulation
 - Consensus timeouts
 
 **Message ordering:**
+
 - Causal ordering violations
 - Message loss and duplication
 - Message delay and reordering
 
 **State synchronization:**
+
 - Concurrent update conflicts
 - Dirty reads
 - State divergence
 
 **Network partitions:**
+
 - Partition detection delays
 - Cascading failures
 - Split-brain recovery
 
 **Performance:**
+
 - Latency spikes
 - Throughput collapse
 - Resource exhaustion
 - Deadlock/livelock
 
 Each pattern includes:
+
 - Detection strategy
 - Test code from SKG
 - Mitigation approaches
@@ -131,6 +146,7 @@ Each pattern includes:
 ### 3. Debugging Tools and Scripts
 
 **`scripts/debug-distributed-system.py`**
+
 - Analyzes logs for consensus issues
 - Detects message ordering problems
 - Identifies state synchronization bugs
@@ -138,6 +154,7 @@ Each pattern includes:
 - Generates markdown debug report
 
 **`scripts/trace-analyzer.py`**
+
 - Reconstructs distributed traces
 - Analyzes message flows
 - Identifies bottlenecks
@@ -145,6 +162,7 @@ Each pattern includes:
 - Detects anomalies
 
 **Usage examples:**
+
 ```bash
 # Check all issue types
 python scripts/debug-distributed-system.py --logs ./logs/*.log --check all
@@ -164,6 +182,7 @@ python scripts/trace-analyzer.py --logs ./logs/*.log --analyze-flow
 **From SKG metrics-initialization.ts** (`reference/monitoring-strategies.md`):
 
 **Essential metrics:**
+
 - Latency (agent-to-agent, consensus, discovery)
 - Throughput (messages/second, tasks/second)
 - Resources (CPU, memory, network)
@@ -171,6 +190,7 @@ python scripts/trace-analyzer.py --logs ./logs/*.log --analyze-flow
 - Consistency (state divergence, sync lag, violations)
 
 **Monitoring patterns:**
+
 - Baseline and deviation detection
 - Multi-level aggregation (node, cluster, global)
 - Health checks
@@ -178,6 +198,7 @@ python scripts/trace-analyzer.py --logs ./logs/*.log --analyze-flow
 - Alert thresholds
 
 **Performance analysis:**
+
 - Complexity analysis (O(log n) vs O(n) vs O(n²))
 - Percentile tracking (p50, p95, p99)
 - Correlation detection
@@ -211,6 +232,7 @@ python scripts/trace-analyzer.py --logs ./logs/*.log --analyze-flow
    - Result: Stable memory usage
 
 Each session shows:
+
 - Investigation process
 - Hypotheses tested
 - Root cause found
@@ -229,6 +251,7 @@ Each session shows:
 - Network partitions
 
 Each checklist includes:
+
 - Evidence to collect
 - Common causes to check
 - Resolution steps
@@ -336,18 +359,21 @@ This skill specifically supports debugging the Sartor coordination modules:
 ### Supported Modules
 
 **src/coordination/plan-sync.ts**
+
 - CRDT-based plan synchronization
 - Vector clock management
 - Merge conflict resolution
 - Common issues: CRDT merge conflicts, clock drift, state divergence
 
 **src/coordination/work-distribution.ts**
+
 - Optimistic locking task assignment
 - Task claim/release lifecycle
 - Version-based conflict detection
 - Common issues: Double claims, task expiry, race conditions
 
 **src/coordination/progress.ts**
+
 - Multi-agent progress tracking
 - Milestone management
 - Status aggregation
@@ -361,21 +387,21 @@ Track known issues per module using Memory MCP:
 // Example: Track work-distribution health
 memory_create({
   content: JSON.stringify({
-    module: "src/coordination/work-distribution.ts",
+    module: 'src/coordination/work-distribution.ts',
     knownIssues: {
-      "task-claim-race": "RESOLVED - Added version check",
-      "task-expiry-cleanup": "MONITORING - Occasional stale tasks"
+      'task-claim-race': 'RESOLVED - Added version check',
+      'task-expiry-cleanup': 'MONITORING - Occasional stale tasks',
     },
     healthMetrics: {
-      doubleClaimRate: "0.0%",
-      taskCompletionRate: "99.8%"
+      doubleClaimRate: '0.0%',
+      taskCompletionRate: '99.8%',
     },
-    lastChecked: "2024-12-11"
+    lastChecked: '2024-12-11',
   }),
-  type: "semantic",
+  type: 'semantic',
   importance: 0.9,
-  tags: ["module-health", "work-distribution"]
-})
+  tags: ['module-health', 'work-distribution'],
+});
 ```
 
 ### Cross-Referencing Debugging Sessions
@@ -386,16 +412,16 @@ Link debugging sessions to coordination modules:
 // After resolving a plan-sync issue
 memory_create({
   content: JSON.stringify({
-    sessionId: "debug-1702317000-plan-sync",
-    module: "src/coordination/plan-sync.ts",
-    issue: "Vector clock drift detection",
-    resolution: "Implemented clock sync validation",
-    testAdded: "plan-sync.test.ts:156-189"
+    sessionId: 'debug-1702317000-plan-sync',
+    module: 'src/coordination/plan-sync.ts',
+    issue: 'Vector clock drift detection',
+    resolution: 'Implemented clock sync validation',
+    testAdded: 'plan-sync.test.ts:156-189',
   }),
-  type: "episodic",
+  type: 'episodic',
   importance: 0.9,
-  tags: ["debug-session", "plan-sync", "resolved"]
-})
+  tags: ['debug-session', 'plan-sync', 'resolved'],
+});
 ```
 
 ## Integration with Other Skills
@@ -410,6 +436,7 @@ This skill complements and references:
 ## Limitations
 
 This skill **cannot**:
+
 - Automatically fix all distributed system bugs
 - Guarantee root cause identification in all cases
 - Replace domain knowledge of your specific system
@@ -417,6 +444,7 @@ This skill **cannot**:
 - Solve issues caused by hardware failures without diagnostics
 
 **Distributed debugging is inherently difficult because:**
+
 - Heisenberg effect: Observing can change behavior
 - Non-reproducibility: Timing-dependent bugs may not reproduce
 - Incomplete information: Can't observe all nodes simultaneously
@@ -425,6 +453,7 @@ This skill **cannot**:
 ## Evidence-Based Approach
 
 All content in this skill is based on:
+
 - **Real debugging experiences** from SKG Agent Prototype 2 development
 - **Actual test code** from consensus testing framework
 - **Measured metrics** from scalability tests
@@ -433,6 +462,7 @@ All content in this skill is based on:
 **No fabricated scenarios or theoretical-only patterns.**
 
 Claims are supported by:
+
 - References to specific SKG source files
 - Test results with actual numbers
 - Code examples from implementations
@@ -441,18 +471,21 @@ Claims are supported by:
 ## Quick Reference
 
 **Most common issues:**
+
 1. Consensus timeouts → Check `reference/failure-patterns.md` consensus section
 2. State divergence → See `examples/real-debugging-sessions.md` session 3
 3. Performance degradation → See `reference/monitoring-strategies.md` performance section
 4. Network partitions → Check `reference/failure-patterns.md` partition section
 
 **Most useful tools:**
+
 1. `scripts/debug-distributed-system.py` - First line of automated analysis
 2. `templates/debugging-checklist.md` - Systematic debugging process
 3. `reference/failure-patterns.md` - Pattern matching for your symptoms
 4. `examples/real-debugging-sessions.md` - Learn from real cases
 
 **Key methodology:**
+
 1. **Collect evidence from ALL nodes** (not just failing ones)
 2. **Form multiple hypotheses** (don't fixate on first idea)
 3. **Test systematically** (eliminate possibilities)
@@ -470,12 +503,14 @@ Claims are supported by:
 ## Contributing
 
 This skill is based on real experiences. To improve it:
+
 - Document new debugging sessions with full investigation process
 - Add new failure patterns with test code
 - Enhance scripts with additional analyses
 - Update monitoring strategies with new metrics
 
 All additions should be:
+
 - Based on actual experiences (not theoretical)
 - Include code examples or references
 - Document what worked and what didn't

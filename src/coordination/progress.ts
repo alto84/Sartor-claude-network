@@ -13,11 +13,7 @@
 
 import { EventEmitter } from 'events';
 import { AgentRole } from '../subagent/bootstrap';
-import {
-  SubagentRegistry,
-  getGlobalRegistry,
-  RegisteredAgent,
-} from '../subagent/registry';
+import { SubagentRegistry, getGlobalRegistry, RegisteredAgent } from '../subagent/registry';
 import {
   AgentMessageBus,
   getGlobalMessageBus,
@@ -240,12 +236,15 @@ export class ProgressTracker extends EventEmitter {
   private latestProgress: Map<string, ProgressEntry> = new Map();
   private milestones: Map<string, Milestone> = new Map();
   private taskTimeTracking: Map<string, { started: Date; totalMinutes: number }> = new Map();
-  private agentStats: Map<string, {
-    tasksCompleted: number;
-    tasksFailed: number;
-    totalTimeMinutes: number;
-    completionTimes: number[];
-  }> = new Map();
+  private agentStats: Map<
+    string,
+    {
+      tasksCompleted: number;
+      tasksFailed: number;
+      totalTimeMinutes: number;
+      completionTimes: number[];
+    }
+  > = new Map();
 
   constructor(registry?: SubagentRegistry, messageBus?: AgentMessageBus) {
     super();
@@ -375,7 +374,7 @@ export class ProgressTracker extends EventEmitter {
     let itemsInProgress = 0;
     let itemsBlocked = 0;
     let timeSpent = 0;
-    let estimatedTotal = 0;
+    const estimatedTotal = 0;
     const activeAgents = new Set<string>();
     let lastUpdate = new Date(0);
 
@@ -411,7 +410,12 @@ export class ProgressTracker extends EventEmitter {
     return {
       id: taskIds.join(','),
       overallProgress: Math.round(overallProgress),
-      status: this.determineOverallStatus(itemsCompleted, itemsInProgress, itemsBlocked, taskIds.length),
+      status: this.determineOverallStatus(
+        itemsCompleted,
+        itemsInProgress,
+        itemsBlocked,
+        taskIds.length
+      ),
       itemsCompleted,
       totalItems: taskIds.length,
       itemsInProgress,
@@ -815,13 +819,9 @@ export class ProgressTracker extends EventEmitter {
    * Broadcast progress to other agents
    */
   private broadcastProgress(entry: ProgressEntry): void {
-    this.messageBus.publishToTopic(
-      entry.agentId,
-      PROGRESS_TOPIC,
-      'Progress Update',
-      entry,
-      { priority: MessagePriority.LOW }
-    );
+    this.messageBus.publishToTopic(entry.agentId, PROGRESS_TOPIC, 'Progress Update', entry, {
+      priority: MessagePriority.LOW,
+    });
   }
 
   /**

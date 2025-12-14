@@ -7,6 +7,7 @@ A comprehensive task management system designed for the Claude Network multi-age
 ## Features
 
 ### Core Functionality
+
 - **Task Lifecycle Management**: Complete state machine from creation to completion
 - **Priority Queue System**: Tasks sorted by priority and creation time
 - **Dependency Resolution**: Automatic blocking/unblocking based on task dependencies
@@ -15,6 +16,7 @@ A comprehensive task management system designed for the Claude Network multi-age
 - **Progress Tracking**: Real-time progress updates and metrics
 
 ### Task Types
+
 1. **UserTask**: User-initiated requests (default high priority)
 2. **MaintenanceTask**: System upkeep and maintenance
 3. **ScheduledTask**: Recurring tasks with cron-like scheduling
@@ -22,6 +24,7 @@ A comprehensive task management system designed for the Claude Network multi-age
 5. **LearningTask**: Skill development and training
 
 ### Task States
+
 - `CREATED`: Initial state
 - `QUEUED`: Ready for assignment
 - `ASSIGNED`: Assigned to an agent
@@ -37,15 +40,18 @@ A comprehensive task management system designed for the Claude Network multi-age
 ### Components
 
 #### 1. Task Manager (`task_manager.py`)
+
 The core system managing task lifecycle, queues, and assignments.
 
 **Key Classes:**
+
 - `TaskManager`: Main orchestrator
 - `TaskQueue`: Priority queue with dependency resolution
 - `BaseTask`: Base task definition
 - Task type classes (UserTask, MaintenanceTask, etc.)
 
 **Key Methods:**
+
 - `create_task()`: Create new tasks
 - `assign_task()`: Assign tasks to agents
 - `update_task_status()`: Update task state
@@ -53,9 +59,11 @@ The core system managing task lifecycle, queues, and assignments.
 - `get_metrics()`: System metrics
 
 #### 2. CLI Tool (`task_cli.py`)
+
 Command-line interface for task management.
 
 **Commands:**
+
 - `create`: Create new tasks
 - `list`: List tasks with filters
 - `monitor`: Real-time task monitoring
@@ -65,6 +73,7 @@ Command-line interface for task management.
 ### Data Structures
 
 #### Task Definition
+
 ```python
 {
     "id": "uuid",
@@ -92,6 +101,7 @@ Command-line interface for task management.
 ## Usage
 
 ### Basic Task Creation (Python)
+
 ```python
 from task_manager import TaskManager, UserTask, TaskPriority, TaskCapability
 
@@ -123,6 +133,7 @@ tm.update_task_status(task.id, TaskStatus.COMPLETED)
 ```
 
 ### CLI Usage
+
 ```bash
 # Create a user task
 python3 task_cli.py create user "Fix authentication bug" \
@@ -152,6 +163,7 @@ python3 task_cli.py metrics
 The system integrates with Firebase for distributed operation:
 
 ### Firebase Structure
+
 ```
 /tasks/
   /available/      # Tasks ready for assignment
@@ -164,6 +176,7 @@ The system integrates with Firebase for distributed operation:
 ```
 
 ### Remote Task Creation
+
 ```bash
 # Create task remotely via Firebase
 python3 task_cli.py create user "Remote task" --remote
@@ -180,6 +193,7 @@ python3 task_cli.py create user "Remote task" --remote
 ## Metrics and Monitoring
 
 ### Available Metrics
+
 - Queue counts (available, assigned, completed, failed, blocked)
 - Priority distribution
 - Type distribution
@@ -188,16 +202,19 @@ python3 task_cli.py create user "Remote task" --remote
 - Execution times
 
 ### Real-time Monitoring
+
 The CLI provides real-time task monitoring with progress bars and status updates.
 
 ## Testing
 
 ### Run the Demo
+
 ```bash
 python3 task_demo.py
 ```
 
 This demonstrates:
+
 - Task creation with different types
 - Priority-based assignment
 - Capability matching
@@ -206,6 +223,7 @@ This demonstrates:
 - Work stealing
 
 ### Unit Testing
+
 ```bash
 python3 -m pytest test_task_manager.py -v
 ```
@@ -222,6 +240,7 @@ The task manager integrates with the Multi-Agent Communication System:
 ## Best Practices
 
 ### Task Creation
+
 - Provide clear titles and descriptions
 - Specify accurate capability requirements
 - Set realistic duration estimates
@@ -229,12 +248,14 @@ The task manager integrates with the Multi-Agent Communication System:
 - Add relevant tags for filtering
 
 ### Agent Implementation
+
 - Report progress regularly
 - Handle errors gracefully
 - Update status promptly
 - Release tasks if unable to complete
 
 ### System Operation
+
 - Monitor queue metrics
 - Balance agent workload
 - Review failed tasks
@@ -243,6 +264,7 @@ The task manager integrates with the Multi-Agent Communication System:
 ## Error Handling
 
 The system handles various error conditions:
+
 - Network failures: Local queue with Firebase sync
 - Agent failures: Automatic task reassignment
 - Dependency cycles: Detection and prevention

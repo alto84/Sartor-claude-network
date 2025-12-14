@@ -1,6 +1,7 @@
 # MCP Gateway System - Complete Deployment Guide
 
 ## Table of Contents
+
 1. [Overview](#overview)
 2. [Prerequisites](#prerequisites)
 3. [Installation Methods](#installation-methods)
@@ -16,6 +17,7 @@
 The MCP (Model Context Protocol) Gateway System provides a unified interface for Claude agents to connect and collaborate across your network. This guide covers production deployment from scratch to full operation.
 
 ### Architecture Summary
+
 - **MCP Server**: Central coordination hub (Python/WebSocket)
 - **Gateway Client**: Agent connection library
 - **Tool Registry**: 22+ built-in tools for agent operations
@@ -23,6 +25,7 @@ The MCP (Model Context Protocol) Gateway System provides a unified interface for
 - **Firebase Integration**: Cloud persistence and relay
 
 ### Deployment Time: 15-30 minutes
+
 ### Difficulty Level: Intermediate
 
 ## Prerequisites
@@ -30,12 +33,14 @@ The MCP (Model Context Protocol) Gateway System provides a unified interface for
 ### System Requirements
 
 #### Hardware
+
 - **RAM**: Minimum 2GB, Recommended 4GB+
 - **Storage**: 500MB free space
 - **Network**: Stable internet connection
 - **CPU**: Any x64/ARM processor
 
 #### Operating Systems
+
 - Linux (Ubuntu 20.04+, Debian 10+, RHEL 8+)
 - macOS (11.0 Big Sur+)
 - Windows 10/11 with WSL2
@@ -44,6 +49,7 @@ The MCP (Model Context Protocol) Gateway System provides a unified interface for
 ### Software Requirements
 
 #### Required
+
 ```bash
 # Check Python version (3.10+ required)
 python3 --version
@@ -56,6 +62,7 @@ git --version
 ```
 
 #### Optional but Recommended
+
 ```bash
 # Docker (for containerized deployment)
 docker --version
@@ -69,11 +76,13 @@ ufw --version || iptables --version
 ```
 
 ### Network Requirements
+
 - **Port 8080**: Default MCP server port (configurable)
 - **WebSocket support**: For real-time communication
 - **Outbound HTTPS**: For Firebase integration (optional)
 
 ### Account Requirements
+
 - **GitHub access**: To clone repository
 - **Firebase account** (optional): For cloud relay features
   - Free tier sufficient for <100 agents
@@ -97,6 +106,7 @@ python3 mcp/bootstrap.py
 ```
 
 The bootstrap script will:
+
 1. Install pip if missing
 2. Set up virtual environment
 3. Install all dependencies
@@ -104,6 +114,7 @@ The bootstrap script will:
 5. Start MCP server
 
 **Expected output**:
+
 ```
 🚀 MCP Gateway Bootstrap
 =======================
@@ -135,13 +146,14 @@ docker-compose logs mcp-server
 ```
 
 **Docker Compose Configuration** (`docker-compose.yml`):
+
 ```yaml
 version: '3.8'
 services:
   mcp-server:
     build: ./mcp
     ports:
-      - "8080:8080"
+      - '8080:8080'
     environment:
       - MCP_HOST=0.0.0.0
       - MCP_PORT=8080
@@ -151,7 +163,7 @@ services:
       - ./logs:/app/logs
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/mcp/health"]
+      test: ['CMD', 'curl', '-f', 'http://localhost:8080/mcp/health']
       interval: 30s
       timeout: 10s
       retries: 3
@@ -173,6 +185,7 @@ bash install.sh
 ```
 
 The installer will:
+
 1. Check system compatibility
 2. Install Python dependencies
 3. Configure environment
@@ -241,7 +254,7 @@ ENABLE_DISCOVERY=true      # Auto-discovery protocol
 ```yaml
 # MCP Gateway Configuration
 server:
-  host: "0.0.0.0"
+  host: '0.0.0.0'
   port: 8080
   ssl:
     enabled: false
@@ -255,8 +268,8 @@ authentication:
 
 firebase:
   enabled: true
-  project_id: "home-claude-network"
-  database_url: "https://home-claude-network-default-rtdb.firebaseio.com"
+  project_id: 'home-claude-network'
+  database_url: 'https://home-claude-network-default-rtdb.firebaseio.com'
 
 tools:
   enabled_categories:
@@ -267,7 +280,7 @@ tools:
     - monitoring
 
   rate_limits:
-    default: 100  # requests per minute
+    default: 100 # requests per minute
     by_tool:
       message_broadcast: 10
       consensus_propose: 5
@@ -292,6 +305,7 @@ monitoring:
 ### Firebase Configuration
 
 1. **Create Firebase Project**:
+
    ```bash
    # Visit https://console.firebase.google.com
    # Create new project: "home-claude-network"
@@ -299,6 +313,7 @@ monitoring:
    ```
 
 2. **Get Service Account Key**:
+
    ```bash
    # Project Settings > Service Accounts
    # Generate New Private Key
@@ -521,6 +536,7 @@ asyncio.run(test())
 #### Server Won't Start
 
 **Error**: `Address already in use`
+
 ```bash
 # Find process using port
 lsof -i :8080
@@ -535,6 +551,7 @@ MCP_PORT=8081 python mcp/mcp_server.py
 ```
 
 **Error**: `ModuleNotFoundError`
+
 ```bash
 # Reinstall dependencies
 pip install -r mcp/requirements-complete.txt
@@ -546,6 +563,7 @@ python3 mcp/bootstrap.py
 #### Connection Issues
 
 **Error**: `Connection refused`
+
 ```bash
 # Check server is running
 ps aux | grep mcp_server
@@ -559,6 +577,7 @@ curl http://localhost:8080/mcp/health
 ```
 
 **Error**: `WebSocket connection failed`
+
 ```bash
 # Enable debug logging
 export MCP_LOG_LEVEL=DEBUG
@@ -583,6 +602,7 @@ asyncio.run(test())
 #### Performance Issues
 
 **Symptom**: Slow response times
+
 ```bash
 # Check system resources
 top
@@ -597,6 +617,7 @@ export WORKER_THREADS=8
 ```
 
 **Symptom**: Memory leak
+
 ```bash
 # Monitor memory usage
 watch -n 1 'ps aux | grep mcp_server'
@@ -625,6 +646,7 @@ python -u mcp/mcp_server.py 2>&1 | tee debug.log
 ### Quick Rollback (< 5 minutes)
 
 1. **Stop current server**:
+
    ```bash
    # Find and kill process
    pkill -f mcp_server
@@ -634,6 +656,7 @@ python -u mcp/mcp_server.py 2>&1 | tee debug.log
    ```
 
 2. **Restore previous version**:
+
    ```bash
    # Using git
    git checkout <previous-commit>
@@ -652,6 +675,7 @@ python -u mcp/mcp_server.py 2>&1 | tee debug.log
 ### Full Rollback with Data
 
 1. **Create backup before changes**:
+
    ```bash
    # Backup code and config
    tar -czf backup-$(date +%Y%m%d).tar.gz claude-network/
@@ -661,6 +685,7 @@ python -u mcp/mcp_server.py 2>&1 | tee debug.log
    ```
 
 2. **Document current state**:
+
    ```bash
    # Save configuration
    cp .env .env.backup
@@ -671,6 +696,7 @@ python -u mcp/mcp_server.py 2>&1 | tee debug.log
    ```
 
 3. **Rollback procedure**:
+
    ```bash
    # Stop all services
    docker-compose down  # if using Docker
@@ -716,11 +742,13 @@ python3 claude-network/mcp/bootstrap.py
 ### Daily Tasks
 
 1. **Check health**:
+
    ```bash
    curl http://localhost:8080/mcp/health
    ```
 
 2. **Review logs**:
+
    ```bash
    tail -f logs/mcp_server.log
    ```
@@ -733,11 +761,13 @@ python3 claude-network/mcp/bootstrap.py
 ### Weekly Tasks
 
 1. **Backup configuration**:
+
    ```bash
    tar -czf weekly-backup-$(date +%Y%m%d).tar.gz config/ .env
    ```
 
 2. **Check for updates**:
+
    ```bash
    git fetch origin
    git log HEAD..origin/main --oneline
@@ -752,12 +782,14 @@ python3 claude-network/mcp/bootstrap.py
 ### Monthly Tasks
 
 1. **Update dependencies**:
+
    ```bash
    pip list --outdated
    pip install --upgrade -r requirements-complete.txt
    ```
 
 2. **Rotate logs**:
+
    ```bash
    # Archive old logs
    tar -czf logs-$(date +%Y%m).tar.gz logs/*.log
@@ -765,6 +797,7 @@ python3 claude-network/mcp/bootstrap.py
    ```
 
 3. **Security audit**:
+
    ```bash
    # Check for vulnerabilities
    pip install safety
@@ -848,6 +881,7 @@ WantedBy=multi-user.target
 ```
 
 Enable and start:
+
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable mcp-gateway
@@ -858,18 +892,21 @@ sudo systemctl status mcp-gateway
 ## Support Resources
 
 ### Documentation
+
 - [Quick Start Guide](QUICK-START-MCP.md)
 - [System Overview](mcp/MCP-SYSTEM-OVERVIEW.md)
 - [API Reference](mcp/MCP-TOOLS-SPEC.md)
 - [Architecture Documentation](CLAUDE.md)
 
 ### Getting Help
+
 1. Check server logs: `logs/mcp_server.log`
 2. Run diagnostics: `python mcp/validate_installation.py`
 3. Test reports: `mcp/tests/*-TEST-REPORT.md`
 4. GitHub Issues: https://github.com/alto84/Sartor-claude-network/issues
 
 ### Community
+
 - Discord: [Join Server](https://discord.gg/claude-network)
 - Forum: https://forum.claude-network.org
 - Email: support@claude-network.org
@@ -890,6 +927,6 @@ sudo systemctl status mcp-gateway
 
 ---
 
-*Last Updated: 2025-11-03*
-*MCP Gateway Version: 1.0.0*
-*Documentation Version: 1.0*
+_Last Updated: 2025-11-03_
+_MCP Gateway Version: 1.0.0_
+_Documentation Version: 1.0_

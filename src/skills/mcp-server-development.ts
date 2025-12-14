@@ -171,7 +171,13 @@ export interface TestReport {
  * Security vulnerability
  */
 export interface SecurityVulnerability {
-  type: 'command-injection' | 'path-traversal' | 'unsafe-eval' | 'env-leak' | 'sql-injection' | 'code-injection';
+  type:
+    | 'command-injection'
+    | 'path-traversal'
+    | 'unsafe-eval'
+    | 'env-leak'
+    | 'sql-injection'
+    | 'code-injection';
   severity: 'critical' | 'high' | 'medium' | 'low';
   description: string;
   location?: string;
@@ -235,7 +241,7 @@ export interface ServerConfigValidationResult {
 export interface ToolValidationResultExtended extends Omit<ValidationReport, 'warnings'> {
   isValid?: boolean;
   issues?: string[];
-  warnings?: string[];  // Override parent type to use strings instead of objects
+  warnings?: string[]; // Override parent type to use strings instead of objects
   severity?: 'critical' | 'high' | 'medium' | 'low';
   quality?: string;
 }
@@ -638,8 +644,9 @@ export class MCPServerValidator {
     const fileOpsPattern = /fs\.(readFile|writeFile|readFileSync|writeFileSync)\s*\(\s*params\./;
     if (fileOpsPattern.test(handlerCode)) {
       // Check if there's path validation (startsWith, resolve, etc.)
-      const hasPathValidation = /startsWith\(/.test(handlerCode) ||
-                                /path\.resolve/.test(handlerCode) && /startsWith/.test(handlerCode);
+      const hasPathValidation =
+        /startsWith\(/.test(handlerCode) ||
+        (/path\.resolve/.test(handlerCode) && /startsWith/.test(handlerCode));
 
       if (!hasPathValidation) {
         const isWrite = /writeFile/.test(handlerCode);
@@ -652,8 +659,14 @@ export class MCPServerValidator {
     }
 
     // Check for command injection
-    const hasShellCommand = /exec[A-Za-z]*\(/.test(handlerCode) || /spawn[A-Za-z]*\(/.test(handlerCode) || /child_process/.test(handlerCode);
-    const isSafeSpawn = /spawn[A-Za-z]*\(/.test(handlerCode) && /spawn[A-Za-z]*\([^)]*\[/.test(handlerCode) && /shell:\s*false/.test(handlerCode);
+    const hasShellCommand =
+      /exec[A-Za-z]*\(/.test(handlerCode) ||
+      /spawn[A-Za-z]*\(/.test(handlerCode) ||
+      /child_process/.test(handlerCode);
+    const isSafeSpawn =
+      /spawn[A-Za-z]*\(/.test(handlerCode) &&
+      /spawn[A-Za-z]*\([^)]*\[/.test(handlerCode) &&
+      /shell:\s*false/.test(handlerCode);
 
     if (hasShellCommand && !isSafeSpawn) {
       // Check if it mentions shell execution with user input
@@ -661,9 +674,9 @@ export class MCPServerValidator {
       vulnerabilities.push({
         type: 'command-injection',
         severity: 'critical',
-        description: hasUserInput ?
-          'Potential command injection via shell execution with user input' :
-          'Potential command injection via exec/spawn',
+        description: hasUserInput
+          ? 'Potential command injection via shell execution with user input'
+          : 'Potential command injection via exec/spawn',
       });
     }
 
@@ -762,7 +775,8 @@ export class MCPServerValidator {
     const hasStructuredErrors = codeWithoutComments.includes('isError: true');
     const hasErrorReturn = /catch.*{[\s\S]*return[\s\S]*}/.test(code);
     const hasThrow = code.includes('throw error');
-    const hasEmptyCatch = /catch[\s\S]*{\s*}/.test(code) || /catch[\s\S]*{\s*\/\/[\s\S]*?\s*}/.test(code);
+    const hasEmptyCatch =
+      /catch[\s\S]*{\s*}/.test(code) || /catch[\s\S]*{\s*\/\/[\s\S]*?\s*}/.test(code);
 
     let severity: 'critical' | 'high' | 'medium' | 'low' = 'low';
 
@@ -794,7 +808,8 @@ export class MCPServerValidator {
       warnings.push('No input validation detected');
     }
 
-    const quality = (hasTryCatch && hasInputValidation && hasStructuredErrors) ? 'excellent' : 'basic';
+    const quality =
+      hasTryCatch && hasInputValidation && hasStructuredErrors ? 'excellent' : 'basic';
 
     return {
       hasErrorHandling: hasTryCatch,
@@ -864,7 +879,7 @@ export class MCPServerValidator {
       securityMeasures.push('Input sanitization');
     }
 
-    const quality = (report.safe && securityMeasures.length > 0) ? 'excellent' : 'basic';
+    const quality = report.safe && securityMeasures.length > 0 ? 'excellent' : 'basic';
 
     return {
       ...report,
@@ -914,13 +929,13 @@ export class MCPServerValidator {
     }
 
     // Combine with base result
-    issues.push(...baseResult.errors.map(e => e.message));
-    warnings.push(...baseResult.warnings.map(w => w.message));
+    issues.push(...baseResult.errors.map((e) => e.message));
+    warnings.push(...baseResult.warnings.map((w) => w.message));
 
     const severity: 'critical' | 'high' | 'medium' | 'low' | undefined =
       missingFields.length > 0 ? 'critical' : issues.length > 0 ? 'high' : undefined;
 
-    const quality = (baseResult.valid && warnings.length === 0) ? 'excellent' : 'basic';
+    const quality = baseResult.valid && warnings.length === 0 ? 'excellent' : 'basic';
 
     return {
       isValid: baseResult.valid && missingFields.length === 0,
@@ -938,16 +953,21 @@ export class MCPServerValidator {
    */
   validateToolDefinition(tool: MCPToolDefinition): ToolValidationResultExtended {
     const baseResult = this._validateToolDefinitionInternal(tool);
-    const issues = baseResult.errors.map(e => e.message);
-    const warnings = baseResult.warnings.map(w => w.message);
+    const issues = baseResult.errors.map((e) => e.message);
+    const warnings = baseResult.warnings.map((w) => w.message);
 
-    const severity: 'critical' | 'high' | 'medium' | 'low' | undefined =
-      baseResult.errors.some(e => e.severity === 'critical') ? 'critical' :
-      baseResult.errors.some(e => e.severity === 'high') ? 'high' :
-      baseResult.errors.some(e => e.severity === 'medium') ? 'medium' : undefined;
+    const severity: 'critical' | 'high' | 'medium' | 'low' | undefined = baseResult.errors.some(
+      (e) => e.severity === 'critical'
+    )
+      ? 'critical'
+      : baseResult.errors.some((e) => e.severity === 'high')
+        ? 'high'
+        : baseResult.errors.some((e) => e.severity === 'medium')
+          ? 'medium'
+          : undefined;
 
-    const quality = (baseResult.valid && warnings.length === 0) ? 'excellent' :
-                    (baseResult.valid) ? 'good' : 'poor';
+    const quality =
+      baseResult.valid && warnings.length === 0 ? 'excellent' : baseResult.valid ? 'good' : 'poor';
 
     return {
       ...baseResult,
@@ -958,7 +978,6 @@ export class MCPServerValidator {
       quality,
     };
   }
-
 }
 
 // ============================================================================

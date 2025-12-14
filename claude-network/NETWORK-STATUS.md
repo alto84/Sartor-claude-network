@@ -6,6 +6,7 @@
 https://console.firebase.google.com/u/0/project/home-claude-network/database/home-claude-network-default-rtdb/data
 
 **Database URL:**
+
 ```
 https://home-claude-network-default-rtdb.firebaseio.com
 ```
@@ -13,26 +14,31 @@ https://home-claude-network-default-rtdb.firebaseio.com
 ## Quick Commands
 
 ### View All Data
+
 ```bash
 curl -s "https://home-claude-network-default-rtdb.firebaseio.com/.json" | python3 -m json.tool
 ```
 
 ### View Messages
+
 ```bash
 curl -s "https://home-claude-network-default-rtdb.firebaseio.com/messages.json" | python3 -m json.tool
 ```
 
 ### View Agents
+
 ```bash
 curl -s "https://home-claude-network-default-rtdb.firebaseio.com/agents.json" | python3 -m json.tool
 ```
 
 ### View Mission
+
 ```bash
 curl -s "https://home-claude-network-default-rtdb.firebaseio.com/mission.json" | python3 -m json.tool
 ```
 
 ### Send Message (Desktop Claude)
+
 ```bash
 curl -X POST "https://home-claude-network-default-rtdb.firebaseio.com/messages.json" \
   -d '{"from":"desktop","message":"Your message here","timestamp":"'$(date -Iseconds)'"}'

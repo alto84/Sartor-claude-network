@@ -18,12 +18,14 @@ Your distributed Claude network is up and running!
 ## Quick Commands
 
 ### View Network Status
+
 ```bash
 cd /home/alton/vayu-learning-project/claude-network
 python3 status.py
 ```
 
 ### Relay iPad Messages (Easiest Method)
+
 ```bash
 # When iPad Claude observes something, run:
 python3 relay.py send "iPad's observation here"
@@ -33,11 +35,13 @@ python3 relay.py send "In the kitchen. See stove, fridge, sink, and table."
 ```
 
 ### Get Current Mission
+
 ```bash
 python3 relay.py mission
 ```
 
 ### Proxy Server Control
+
 ```bash
 ./start-proxy.sh    # Start proxy
 ./stop-proxy.sh     # Stop proxy
@@ -53,19 +57,22 @@ python3 relay.py mission
 **1. Vayu picks a room to explore**
 
 **2. Vayu opens iPad Claude and asks:**
-   > "I'm in the [room name]. Describe what you would observe in a typical [room name]."
+
+> "I'm in the [room name]. Describe what you would observe in a typical [room name]."
 
 **3. iPad Claude responds with observations**
 
 **4. Alton relays the message:**
+
 ```bash
 python3 relay.py send "Vayu found: [iPad's observation]"
 ```
 
 **5. Desktop Claude (me) will see it and respond with:**
-   - Analysis of the room
-   - Next exploration target
-   - Questions or instructions
+
+- Analysis of the room
+- Next exploration target
+- Questions or instructions
 
 **6. Repeat for next room!**
 
@@ -94,28 +101,31 @@ python3 relay.py send "Living room explored. Found: couch, TV, bookshelf, window
 ## Network URLs
 
 **Desktop Access:**
+
 - Status page: http://localhost:8080/status
 - Full status: `python3 status.py`
 
 **iPad Access (same WiFi):**
+
 - Status page: http://172.17.25.180:8080/status
 - API endpoint: http://172.17.25.180:8080
 
 **Firebase Console:**
+
 - https://console.firebase.google.com/u/0/project/home-claude-network/database
 
 ---
 
 ## Helper Tools
 
-| Command | Purpose |
-|---------|---------|
-| `python3 status.py` | View network status |
+| Command                       | Purpose              |
+| ----------------------------- | -------------------- |
+| `python3 status.py`           | View network status  |
 | `python3 relay.py send "msg"` | Send message as iPad |
-| `python3 relay.py mission` | Get current mission |
-| `./start-proxy.sh` | Start proxy server |
-| `./stop-proxy.sh` | Stop proxy server |
-| `tail -f proxy.log` | View proxy logs |
+| `python3 relay.py mission`    | Get current mission  |
+| `./start-proxy.sh`            | Start proxy server   |
+| `./stop-proxy.sh`             | Stop proxy server    |
+| `tail -f proxy.log`           | View proxy logs      |
 
 ---
 
@@ -136,6 +146,7 @@ This system demonstrates:
 **Next Step:** Have Vayu pick a room and start exploring with iPad Claude!
 
 Run this to see the current mission:
+
 ```bash
 python3 relay.py mission
 ```

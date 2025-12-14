@@ -12,6 +12,7 @@ This document provides patterns, protocols, and examples for coordinating multip
 
 **Distinct Identity:**
 Each research agent must fully adopt their specialized role:
+
 - **Literature Search Agent:** Systematic, comprehensive, methodical database querying
 - **Evidence Extraction Agent:** Detail-oriented, precise, careful data recording
 - **Validation Agent:** Skeptical, critical, quality-focused auditor
@@ -19,6 +20,7 @@ Each research agent must fully adopt their specialized role:
 - **Quality Assurance Agent:** Systematic, thorough, compliance-focused
 
 **Expertise Boundaries:**
+
 - Literature Search Agent does NOT synthesize findings (stays within search domain)
 - Evidence Extraction Agent does NOT validate sources (leaves to Validation Agent)
 - Validation Agent does NOT create new evidence (only checks existing)
@@ -26,6 +28,7 @@ Each research agent must fully adopt their specialized role:
 - Each agent respects their domain expertise limits
 
 **Perspective Diversity:**
+
 - Literature Agent brings breadth perspective (cast wide net)
 - Extraction Agent brings depth perspective (detailed data)
 - Validation Agent brings skepticism perspective (what's wrong?)
@@ -33,6 +36,7 @@ Each research agent must fully adopt their specialized role:
 - QA Agent brings compliance perspective (what are the risks?)
 
 **No Homogenization:**
+
 - Agents maintain distinct viewpoints
 - Do NOT converge to generic "AI assistant" responses
 - Preserve unique analytical approaches
@@ -42,11 +46,13 @@ Each research agent must fully adopt their specialized role:
 
 **Shared Objective:**
 All agents work toward common research goal defined at task launch:
+
 - Example: "Characterize the mechanistic basis for ADC-associated ILD with comprehensive evidence"
 - All agents understand this ultimate objective
 - Individual tasks contribute to shared goal
 
 **Complementary Analysis:**
+
 - Literature Agent provides comprehensive source coverage
 - Extraction Agent provides detailed quantitative/qualitative data
 - Validation Agent provides quality control and authenticity checking
@@ -57,6 +63,7 @@ Each agent's contribution is necessary but not sufficient alone.
 
 **Cross-Validation:**
 Agents verify each other's findings with evidence:
+
 - Validation Agent checks Literature Agent's sources for authenticity
 - Synthesis Agent checks Extraction Agent's data against original sources
 - QA Agent checks Synthesis Agent's conclusions against CLAUDE.md rules
@@ -64,6 +71,7 @@ Agents verify each other's findings with evidence:
 
 **Synthesis Protocol:**
 When combining insights from multiple agents:
+
 - Do NOT fabricate consensus metrics or scores
 - Preserve disagreements explicitly
 - Document conflicting findings
@@ -73,12 +81,14 @@ When combining insights from multiple agents:
 ### Coordination Standards
 
 **Information Sharing:**
+
 - Pass specific, actionable findings between agents
 - Include evidence with every claim
 - Provide enough context for downstream agents
 - Document methodology used
 
 **Example Handoff (Literature → Extraction):**
+
 ```
 FROM: Literature Search Agent
 TO: Evidence Extraction Agent
@@ -103,12 +113,14 @@ Next Steps for Extraction Agent:
 ```
 
 **Dependency Awareness:**
+
 - Understand which agents need your output
 - Complete work to quality standard before handoff
 - Don't pass incomplete or low-quality outputs downstream
 - Escalate blockers that prevent quality work
 
 **Example Dependencies:**
+
 ```
 Literature Search → Evidence Extraction
                 ↓
@@ -122,6 +134,7 @@ Literature Search → Evidence Extraction
 ```
 
 **Parallel Efficiency:**
+
 - Work simultaneously when tasks are independent
 - Example: While Literature Agent searches Database A, another searches Database B
 - Example: Validation Agent can check sources while Extraction Agent processes them
@@ -129,12 +142,14 @@ Literature Search → Evidence Extraction
 
 **Conflict Resolution:**
 Different findings between agents are valuable, not problems:
+
 - Document disagreements explicitly
 - Provide evidence for each perspective
 - Let downstream agents (synthesis, QA) integrate thoughtfully
 - Do NOT hide conflicts to create false consensus
 
 **Example Conflict Documentation:**
+
 ```
 CONFLICT IDENTIFIED:
 
@@ -158,6 +173,7 @@ SYNTHESIS:
 ### Anti-Fabrication in Research Teams
 
 **No Metric Averaging:**
+
 - Do NOT average evidence quality scores from multiple agents
 - Do NOT create consensus confidence scores by averaging
 - Report range or individual assessments
@@ -169,11 +185,13 @@ SYNTHESIS:
 "Study assessed independently by two reviewers using Newcastle-Ottawa Scale. Reviewer A: 7/9 stars (low risk of bias). Reviewer B: 8/9 stars (low risk of bias). Consensus (after discussion): 8/9 stars."
 
 **Preserve Disagreement:**
+
 - Report differing assessments honestly
 - Provide evidence for each perspective
 - Don't fabricate consensus
 
 **Evidence Multiplication:**
+
 - More agents researching does NOT automatically increase confidence
 - Each agent must provide INDEPENDENT evidence
 - Agents reviewing same sources are not independent evidence
@@ -185,6 +203,7 @@ SYNTHESIS:
 "Three independent reviewers assessed study quality using validated tool. All rated low risk of bias. However, confidence in findings is moderate due to small sample size and industry sponsorship noted by all reviewers."
 
 **Independent Validation:**
+
 - Each agent must verify claims against primary sources
 - Agent B cannot just trust Agent A's extraction
 - Validation requires independent checking
@@ -196,6 +215,7 @@ SYNTHESIS:
 **Role:** Systematic identification and retrieval of relevant sources
 
 **Responsibilities:**
+
 - Execute database searches systematically
 - Apply inclusion/exclusion criteria to screen results
 - Retrieve full-text articles or abstracts
@@ -204,6 +224,7 @@ SYNTHESIS:
 - Identify gaps in literature coverage
 
 **Quality Standards:**
+
 - Search strategy is reproducible
 - All databases specified in protocol are searched
 - Inclusion/exclusion criteria applied consistently
@@ -212,22 +233,26 @@ SYNTHESIS:
 - Search documented with exact strings, dates, results counts
 
 **Outputs:**
+
 - List of included sources with complete bibliographic data
 - Search strategy documentation
 - PRISMA flow diagram (searches, screening, exclusions)
 - Source files (PDFs or abstracts) if retrievable
 
 **Anti-Fabrication Rules:**
+
 - NEVER create fake PMIDs to fill gaps
 - NEVER include placeholder sources
 - NEVER report sources without valid identifiers
 - If relevant source lacks PMID, use DOI or URL (must be accessible)
 
 **Example Output:**
+
 ```markdown
 ## Literature Search Results
 
 ### Search Strategy
+
 Databases: PubMed, Embase, Web of Science
 Date Range: 2020-01-01 to 2025-01-31
 Search Date: 2025-01-15
@@ -240,6 +265,7 @@ AND ("2020"[PDAT] : "2025"[PDAT])
 Results: 89 records
 
 ### Screening Results
+
 - Total records identified: 127 (PubMed: 89, Embase: 32, Web of Science: 6)
 - Duplicates removed: 34
 - Title/abstract screened: 93
@@ -249,6 +275,7 @@ Results: 89 records
 - **Final included: 39 sources**
 
 ### Included Sources (excerpt)
+
 1. Modi S, Jacot W, Yamashita T, et al. Trastuzumab Deruxtecan in Previously Treated HER2-Low Advanced Breast Cancer. N Engl J Med. 2022;387(1):9-20. PMID: 35665782. DOI: 10.1056/NEJMoa2203690
 
 2. Shitara K, Bang YJ, Iwasa S, et al. Trastuzumab Deruxtecan in Previously Treated HER2-Positive Gastric Cancer. N Engl J Med. 2020;382(25):2419-2430. PMID: 32469182. DOI: 10.1056/NEJMoa2004413
@@ -256,6 +283,7 @@ Results: 89 records
 [... complete list of 39 sources ...]
 
 ### Search Limitations
+
 - English-language publications only
 - Three databases (did not search CINAHL, grey literature)
 - May have missed very recent publications (search date: Jan 2025)
@@ -266,6 +294,7 @@ Results: 89 records
 **Role:** Systematic extraction of data and findings from sources
 
 **Responsibilities:**
+
 - Read sources systematically
 - Extract relevant data points (quantitative and qualitative)
 - Record evidence with source attribution
@@ -274,6 +303,7 @@ Results: 89 records
 - Create structured data tables
 
 **Quality Standards:**
+
 - Every extracted claim has source citation
 - Numerical data includes context (n, CI, study design)
 - Methodology is documented
@@ -282,6 +312,7 @@ Results: 89 records
 - Extractions are verifiable against source
 
 **Outputs:**
+
 - Evidence extraction tables
 - Summary of key findings by topic
 - Documentation of study characteristics
@@ -289,6 +320,7 @@ Results: 89 records
 - Gaps or uncertainties identified
 
 **Anti-Fabrication Rules:**
+
 - NEVER extract data without source citation
 - NEVER round or modify numerical values without documentation
 - NEVER ignore conflicting evidence
@@ -296,17 +328,19 @@ Results: 89 records
 - If data unclear in source, note as "not reported" or "unclear"
 
 **Example Output:**
+
 ```markdown
 ## Evidence Extraction: ILD Incidence in ADC Trials
 
-| Study | PMID | Design | N | ADC | ILD Any Grade | ILD Grade 3-4 | ILD Grade 5 | Monitoring | Notes |
-|-------|------|--------|---|-----|---------------|---------------|-------------|------------|-------|
-| Modi 2022 | 35665782 | Phase 3 RCT | 557 | T-DXd 5.4mg/kg | 15.2% (n=85/557) | 3.7% (n=21/557) | 0.7% (n=4/557) | Active surveillance | Adjudicated ILD |
-| Shitara 2020 | 32469182 | Phase 2 | 188 | T-DXd 6.4mg/kg | 13.1% (n=25/188) | 1.6% (n=3/188) | 2.1% (n=4/188) | Standard monitoring | Higher dose |
+| Study        | PMID     | Design      | N   | ADC            | ILD Any Grade    | ILD Grade 3-4   | ILD Grade 5    | Monitoring          | Notes           |
+| ------------ | -------- | ----------- | --- | -------------- | ---------------- | --------------- | -------------- | ------------------- | --------------- |
+| Modi 2022    | 35665782 | Phase 3 RCT | 557 | T-DXd 5.4mg/kg | 15.2% (n=85/557) | 3.7% (n=21/557) | 0.7% (n=4/557) | Active surveillance | Adjudicated ILD |
+| Shitara 2020 | 32469182 | Phase 2     | 188 | T-DXd 6.4mg/kg | 13.1% (n=25/188) | 1.6% (n=3/188)  | 2.1% (n=4/188) | Standard monitoring | Higher dose     |
 
 ### Key Findings - ILD Incidence
 
 **Trastuzumab Deruxtecan:**
+
 - Across studies (n=5 trials, 1,234 patients total), any-grade ILD: 10.8% to 15.6%
 - Grade 3-4 ILD: 2.4% to 3.7%
 - Grade 5 (fatal) ILD: 0.8% to 2.7%
@@ -314,17 +348,20 @@ Results: 89 records
 - No clear cumulative dose relationship observed
 
 **Datopotamab Deruxtecan:**
+
 - TROPION-Lung01 (PMID: 39250535): Any-grade ILD: 8.8%, Grade 3-4: 3.4%, Grade 5: 2.4%
 - Qualitatively similar to T-DXd (shared deruxtecan platform)
 
 ### Conflicting Evidence
 
 **Time to Onset:**
+
 - Modi 2022: Median 5.6 months (range 1.1-20.8)
 - Powell 2022 (PMID: 35303587): Median 4.2 months (range 0.7-22.3)
 - Heterogeneity may reflect differences in monitoring intensity
 
 **Corticosteroid Response:**
+
 - Kumagai 2020 (PMID: 33051938): 90% resolution with corticosteroids in preclinical model
 - Powell 2022: 42% mortality in patients with DAD pattern despite corticosteroids
 - Suggests heterogeneity in ILD pathology and treatment responsiveness
@@ -335,6 +372,7 @@ Results: 89 records
 **Role:** Verify authenticity, quality, and accuracy of research outputs
 
 **Responsibilities:**
+
 - Validate source identifiers (PMIDs, DOIs, URLs)
 - Detect fabricated or placeholder sources
 - Verify extracted data matches source material
@@ -344,6 +382,7 @@ Results: 89 records
 - Generate validation reports with specific issues
 
 **Quality Standards:**
+
 - All sources validated for authenticity
 - No fake PMIDs, placeholder text, or fabricated URLs
 - Extracted data verified against sources
@@ -352,6 +391,7 @@ Results: 89 records
 - Issues documented with severity and fix suggestions
 
 **Outputs:**
+
 - Source validation report (authenticity check)
 - Data accuracy verification (extraction vs. source comparison)
 - Study quality assessment
@@ -359,6 +399,7 @@ Results: 89 records
 - List of issues by severity (critical, warning, info)
 
 **Anti-Fabrication Rules:**
+
 - FAIL validation if any fake PMIDs detected
 - FAIL validation if placeholder sources found
 - FAIL validation if data mismatches sources
@@ -366,6 +407,7 @@ Results: 89 records
 - Provide specific fix instructions for every issue
 
 **Example Output:**
+
 ```markdown
 ## Validation Report
 
@@ -432,6 +474,7 @@ Results: 89 records
    - **Fix:** Remove score or replace with qualitative statement like "Evidence from 5 RCTs suggests moderate to high confidence"
 
 ### Summary
+
 - **Critical Issues:** 4 (must fix before proceeding)
 - **Warnings:** 3 (should fix)
 - **Info:** 1 (nice to fix)
@@ -444,6 +487,7 @@ Results: 89 records
 **Role:** Integrate findings from multiple sources into coherent conclusions
 
 **Responsibilities:**
+
 - Identify patterns and themes across sources
 - Synthesize quantitative findings (ranges, trends)
 - Reconcile conflicting evidence
@@ -453,6 +497,7 @@ Results: 89 records
 - Acknowledge uncertainties
 
 **Quality Standards:**
+
 - Synthesis supported by multiple sources
 - Conflicting evidence acknowledged explicitly
 - Conclusions proportional to evidence strength
@@ -461,6 +506,7 @@ Results: 89 records
 - No fabrication of consensus where disagreement exists
 
 **Outputs:**
+
 - Integrated synthesis of findings by topic
 - Evidence-based conclusions
 - Confidence assessment with justification
@@ -468,6 +514,7 @@ Results: 89 records
 - Comprehensive limitations section
 
 **Anti-Fabrication Rules:**
+
 - NEVER create consensus scores by averaging
 - NEVER overstate confidence beyond evidence
 - NEVER ignore conflicting evidence
@@ -475,6 +522,7 @@ Results: 89 records
 - Report ranges and heterogeneity honestly
 
 **Example Output:**
+
 ```markdown
 ## Synthesis: ADC-Associated ILD Mechanisms
 
@@ -483,6 +531,7 @@ Results: 89 records
 **Evidence Base:** 12 mechanistic studies (7 preclinical, 5 translational clinical studies)
 
 **Mechanism 1: Non-Specific Macrophage Uptake**
+
 - Evidence: Ogitani 2016 (PMID: 27780853), Kumagai 2020 (PMID: 33051938), Iwata 2022 (PMID: 35790243)
 - Alveolar macrophages express Fcγ receptors (FcγRI, FcγRIIa, FcγRIII)
 - ADCs bind via Fc portion, internalized independent of target antigen
@@ -490,24 +539,28 @@ Results: 89 records
 - Payload released intracellularly → macrophage death → inflammation
 
 **Mechanism 2: Bystander Cytotoxicity**
+
 - Evidence: Ogitani 2016 (PMID: 27780853), Nakada 2019 (PMID: 30799310)
 - Membrane-permeable payloads (e.g., deruxtecan) diffuse to adjacent cells
 - Pneumocytes adjacent to macrophages exposed to cytotoxic payload
 - Preclinical evidence: Bystander killing radius ~50-100 μm for deruxtecan
 
 **Mechanism 3: Immune-Mediated Inflammation**
+
 - Evidence: SPP1 macrophage study (PMID: 39509324), clinical correlation studies
 - Dying cells release damage-associated molecular patterns (DAMPs)
 - SPP1+ macrophage recruitment and pro-inflammatory signaling
 - Cytokine cascade (IL-6, IL-8, TNF-α) → tissue injury amplification
 
 **Conflicting Evidence:**
+
 - **Dose Dependency:** Kumagai 2020 shows dose-dependent ILD in monkeys, but clinical trials (Modi 2022) show no clear cumulative dose relationship
 - **Resolution:** Preclinical findings may not fully translate to humans; individual susceptibility likely plays role
 
 ### Conclusions
 
 **Confidence Level: MODERATE**
+
 - Basis: Multiple independent preclinical studies with consistent findings
 - Limitation: Translational clinical evidence is limited
 - Limitation: Exact contribution of each mechanism unclear
@@ -540,6 +593,7 @@ Current evidence from preclinical models and limited clinical studies suggests A
 **Role:** Comprehensive audit of research outputs before finalization
 
 **Responsibilities:**
+
 - Audit bibliography completeness and formatting
 - Verify all claims have source citations
 - Check CLAUDE.md anti-fabrication compliance
@@ -549,6 +603,7 @@ Current evidence from preclinical models and limited clinical studies suggests A
 - Generate compliance reports
 
 **Quality Standards:**
+
 - All automated checks pass
 - No unsupported claims
 - CLAUDE.md fully compliant
@@ -557,6 +612,7 @@ Current evidence from preclinical models and limited clinical studies suggests A
 - Limitations comprehensive
 
 **Outputs:**
+
 - Bibliography quality report
 - Claims-citation mapping audit
 - CLAUDE.md compliance report
@@ -565,6 +621,7 @@ Current evidence from preclinical models and limited clinical studies suggests A
 - Issues list with recommended fixes
 
 **Anti-Fabrication Rules:**
+
 - FLAG any scores >80% without external validation
 - FLAG banned language without evidence
 - FLAG unsupported claims
@@ -572,13 +629,16 @@ Current evidence from preclinical models and limited clinical studies suggests A
 - FAIL QA if critical issues unresolved
 
 **Example Output:**
+
 ```markdown
 ## Quality Assurance Report - Final
 
 ### Executive Summary
+
 **Overall Status:** PASS (with 3 minor recommendations)
 
 ### Bibliography Audit
+
 **Status:** PASS
 
 - Total references: 165
@@ -592,6 +652,7 @@ Current evidence from preclinical models and limited clinical studies suggests A
 **Recommendation:** Bibliography meets publication standards.
 
 ### Claims-Citation Audit
+
 **Status:** PASS
 
 - Total quantitative claims: 127
@@ -599,13 +660,16 @@ Current evidence from preclinical models and limited clinical studies suggests A
 - Claims with sufficient context: 125 (98.4%)
 
 **Minor Issues:**
+
 1. Claim on page 12: "Higher rates with intensive monitoring" - suggest adding specific studies
 2. Claim on page 23: "No clear relationship" - clarify which studies examined this
 
 ### CLAUDE.md Compliance
+
 **Status:** PASS
 
 **Checks Performed:**
+
 - Score fabrication: NONE DETECTED
 - Banned language: NONE DETECTED
 - Evidence chains: ALL COMPLETE
@@ -614,6 +678,7 @@ Current evidence from preclinical models and limited clinical studies suggests A
 - Mandatory skepticism: APPROPRIATE
 
 **Positive Findings:**
+
 - All numerical claims sourced from published studies
 - Confidence levels justified by evidence quality
 - Uncertainties explicitly acknowledged
@@ -621,6 +686,7 @@ Current evidence from preclinical models and limited clinical studies suggests A
 - Limitations section is thorough (8 major limitations documented)
 
 ### Methodology Documentation
+
 **Status:** PASS
 
 - Search strategy: FULLY DOCUMENTED
@@ -639,6 +705,7 @@ Current evidence from preclinical models and limited clinical studies suggests A
 3. **Enhancement (Discussion):** Consider adding section on future research priorities
 
 ### Final Assessment
+
 **Publication Readiness:** APPROVED
 
 This research report meets rigorous quality standards for medical/pharmaceutical research. Bibliography is complete with validated sources. All claims are properly cited. CLAUDE.md anti-fabrication protocols fully satisfied. Methodology is reproducible. Limitations are comprehensively acknowledged.
@@ -655,6 +722,7 @@ This research report meets rigorous quality standards for medical/pharmaceutical
 **When to Use:** Research stages have clear dependencies
 
 **Workflow:**
+
 ```
 Plan → Search → Extract → Validate → Synthesize → QA → Deliver
         ↓        ↓         ↓           ↓         ↓
@@ -664,6 +732,7 @@ Plan → Search → Extract → Validate → Synthesize → QA → Deliver
 
 **Quality Gates:**
 Each stage must pass quality criteria before proceeding to next:
+
 - **Search Gate:** Reproducible strategy, valid sources only
 - **Extract Gate:** All data has citations, context provided
 - **Validate Gate:** Sources authentic, data accurate
@@ -671,6 +740,7 @@ Each stage must pass quality criteria before proceeding to next:
 - **QA Gate:** All compliance checks pass
 
 **Handoff Protocol:**
+
 ```
 1. Upstream agent completes work
 2. Upstream agent self-checks against quality criteria
@@ -686,6 +756,7 @@ Each stage must pass quality criteria before proceeding to next:
 **When to Use:** Different domains can be researched simultaneously
 
 **Workflow:**
+
 ```
                     ┌→ Agent A: Clinical Evidence ──┐
                     │                                ↓
@@ -695,12 +766,14 @@ Research Question ──┼→ Agent B: Mechanistic Studies─→ Synthesis Agen
 ```
 
 **Synchronization Points:**
+
 1. **Launch:** All agents receive common research question and protocol
 2. **Mid-Point Check:** Agents sync to identify overlaps or gaps
 3. **Completion:** All agents deliver to synthesis agent
 4. **Integration:** Synthesis agent combines findings
 
 **Communication Protocol:**
+
 - Agents work independently initially (minimize coordination overhead)
 - Optional mid-point sync to identify gaps
 - Final deliverables include methodology documentation
@@ -711,6 +784,7 @@ Research Question ──┼→ Agent B: Mechanistic Studies─→ Synthesis Agen
 **When to Use:** Quality requires multiple revision cycles
 
 **Workflow:**
+
 ```
 Executor Agent → Draft Output → Validator Agent → Issues Found?
      ↑                                                   │
@@ -722,6 +796,7 @@ Executor Agent → Draft Output → Validator Agent → Issues Found?
 ```
 
 **Iteration Protocol:**
+
 1. Executor produces initial output
 2. Validator audits comprehensively
 3. If issues found:
@@ -733,6 +808,7 @@ Executor Agent → Draft Output → Validator Agent → Issues Found?
    - Document remaining minor issues
 
 **Convergence Criteria:**
+
 - No critical issues remaining
 - All CLAUDE.md violations resolved
 - All sources validated
@@ -743,6 +819,7 @@ Executor Agent → Draft Output → Validator Agent → Issues Found?
 **When to Use:** Maximum rigor required, high-stakes research
 
 **Workflow:**
+
 ```
 Research Question
        ↓
@@ -764,6 +841,7 @@ Reconciliation Agent
 ```
 
 **Independence Protocol:**
+
 - Both agents receive identical research question
 - NO communication between agents during research
 - Both complete independently
@@ -774,6 +852,7 @@ Reconciliation Agent
   - Does NOT fabricate consensus
 
 **Reporting:**
+
 - Agreement: "Both independent reviewers found..."
 - Disagreement: "Reviewer A found..., while Reviewer B found... This discrepancy may reflect..."
 
@@ -782,11 +861,13 @@ Reconciliation Agent
 ### No Consensus Fabrication
 
 **Prohibited:**
+
 - Averaging quality scores from multiple agents
 - Creating composite confidence metrics
 - Hiding disagreements to present unified front
 
 **Required:**
+
 - Report individual agent assessments
 - Document conflicts explicitly
 - Explain disagreement sources
@@ -795,11 +876,13 @@ Reconciliation Agent
 ### Evidence Independence
 
 **Prohibited:**
+
 - Claiming higher confidence because "multiple agents agreed"
 - Counting agent consensus as independent evidence
 - Using agent count as evidence multiplier
 
 **Required:**
+
 - Recognize agents reviewing same sources = NOT independent evidence
 - Base confidence on evidence quality, not agent count
 - Validate claims against primary sources independently
@@ -807,11 +890,13 @@ Reconciliation Agent
 ### Disagreement Preservation
 
 **Prohibited:**
+
 - Hiding conflicts between agents
 - Choosing "easier" finding when agents disagree
 - Fabricating middle-ground compromise
 
 **Required:**
+
 - Document all substantive disagreements
 - Investigate root causes of conflicts
 - Report both perspectives with evidence
@@ -824,12 +909,14 @@ Reconciliation Agent
 **Research Question:** "What is the incidence and severity of ILD across different ADC platforms?"
 
 **Agent Assignments:**
+
 - **Agent A (Literature):** Systematic search for clinical trials and observational studies
 - **Agent B (Extraction):** Extract ILD incidence data, severity grading, outcomes
 - **Agent C (Validation):** Verify sources authentic, data accurate, quality assessment
 - **Agent D (Synthesis):** Integrate findings, compare across ADC platforms
 
 **Coordination:**
+
 1. Agent A completes systematic search → 47 sources identified
 2. Agent C validates Agent A's sources (parallel) → all sources authentic
 3. Agent B extracts data from validated sources → ILD data for 12 ADCs
@@ -845,12 +932,14 @@ Reconciliation Agent
 **Research Question:** "What are the molecular mechanisms underlying ADC-associated ILD?"
 
 **Agent Assignments:**
+
 - **Agent A:** Preclinical mechanistic studies
 - **Agent B:** Clinical correlative studies
 - **Agent C:** Pathology/biomarker studies
 - **Agent D:** Synthesis and mechanistic model development
 
 **Coordination (Parallel):**
+
 1. All agents search their domains simultaneously
 2. Agent A identifies 7 preclinical mechanism papers
 3. Agent B identifies 5 clinical correlative studies
@@ -861,6 +950,7 @@ Reconciliation Agent
 8. Validation: All agents check model against their evidence
 
 **Conflict Resolution:**
+
 - Agent A (preclinical): dose-dependent ILD in monkeys
 - Agent B (clinical): no clear dose relationship in humans
 - Resolution: Document both, hypothesize individual susceptibility factors
@@ -872,12 +962,14 @@ Reconciliation Agent
 **Task:** Complete bibliography for comprehensive review (starting with 47 references)
 
 **Agent Assignments:**
+
 - **Agent A:** Search for landmark clinical trials
 - **Agent B:** Search for recent 2023-2025 publications
 - **Agent C:** Search for mechanistic/preclinical papers
 - **Agent D:** Validate all sources for authenticity and formatting
 
 **Coordination (Sequential):**
+
 1. Agents A, B, C work in parallel → 118 additional sources identified
 2. Agent D validates all 165 total sources:
    - Checks PMIDs against PubMed
@@ -889,6 +981,7 @@ Reconciliation Agent
 5. Final bibliography: 165 complete, validated citations
 
 **Quality Metrics:**
+
 - 146/165 with PMIDs (88.5%)
 - 165/165 with DOIs (100%)
 - 0 fabricated sources
@@ -898,43 +991,52 @@ Reconciliation Agent
 ## Coordination Anti-Patterns (Avoid These)
 
 ### Anti-Pattern 1: Homogenization
+
 **Problem:** All agents sound the same, lose specialized perspectives
 **Fix:** Enforce distinct personas, value unique viewpoints
 
 ### Anti-Pattern 2: False Consensus
+
 **Problem:** Agents fabricate agreement to seem unified
 **Fix:** Preserve and document disagreements explicitly
 
 ### Anti-Pattern 3: Evidence Multiplication
+
 **Problem:** Claiming high confidence because "5 agents agreed"
 **Fix:** Recognize agents reviewing same sources are not independent evidence
 
 ### Anti-Pattern 4: Validation Bypass
+
 **Problem:** Skipping quality gates to save time
 **Fix:** Enforce quality gates strictly; quality over speed
 
 ### Anti-Pattern 5: Context Loss
+
 **Problem:** Handoffs lose critical context or methodology
 **Fix:** Require documentation with every handoff
 
 ### Anti-Pattern 6: Circular Validation
+
 **Problem:** Agent A validates Agent B, Agent B validates Agent A (no independence)
 **Fix:** Use independent validation against primary sources
 
 ## Resources
 
 **CLAUDE.md Protocols:**
+
 - Persona Adoption Requirements
 - Collaborative Framework
 - Coordination Standards
 - Anti-Fabrication in Teams
 
 **Research Workflow Examples:**
+
 - ADC/ILD Comprehensive Review (safety-research-system)
 - Bibliography Completion (165 sources validated)
 - Multi-Domain Evidence Synthesis
 
 **Quality Standards:**
+
 - Evidence-Based Validation skill
 - Multi-Agent Orchestration skill
 - Research Methodology reference

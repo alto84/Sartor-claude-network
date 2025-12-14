@@ -33,9 +33,7 @@ describe('ExpertConfig', () => {
     test('has valid timeout values', () => {
       expect(DEFAULT_EXPERT_CONFIG.taskTimeout).toBe(30000);
       expect(DEFAULT_EXPERT_CONFIG.totalTimeout).toBe(120000);
-      expect(DEFAULT_EXPERT_CONFIG.totalTimeout).toBeGreaterThan(
-        DEFAULT_EXPERT_CONFIG.taskTimeout
-      );
+      expect(DEFAULT_EXPERT_CONFIG.totalTimeout).toBeGreaterThan(DEFAULT_EXPERT_CONFIG.taskTimeout);
     });
 
     test('has valid threshold values', () => {
@@ -453,11 +451,7 @@ describe('ExpertConfig', () => {
 
   describe('Integration Scenarios', () => {
     test('creates and validates diverse expert pool', () => {
-      const pool = createExpertPool('integration-1', [
-        'performance',
-        'safety',
-        'robustness',
-      ]);
+      const pool = createExpertPool('integration-1', ['performance', 'safety', 'robustness']);
       pool.forEach((expert) => {
         const validation = validateExpertConfig(expert);
         expect(validation.valid).toBe(true);

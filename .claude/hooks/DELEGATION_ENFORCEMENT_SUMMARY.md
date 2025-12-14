@@ -27,14 +27,14 @@ Successfully implemented permanent delegation enforcement system that **BLOCKS**
 
 ### 2. Project-Level Enforcement (Sartor-Claude-Network)
 
-**File:** `/home/alton/Sartor-claude-network/.claude/hooks/delegation-enforcer.sh`
+**File:** `/home/user/Sartor-claude-network/.claude/hooks/delegation-enforcer.sh`
 
 - Upgraded from `delegation-reminder.sh` (exit 0) to `delegation-enforcer.sh` (exit 2)
 - Blocks orchestrator from editing src/, lib/, or services/ directories
 - Allows config files (.claude/, README.md, etc.)
 - Clear error messages explaining why operation was blocked
 
-**Referenced in:** `/home/alton/Sartor-claude-network/.claude/settings.json`
+**Referenced in:** `/home/user/Sartor-claude-network/.claude/settings.json`
 
 ### 3. User-Level Hook Script (Backup)
 
@@ -46,7 +46,7 @@ Successfully implemented permanent delegation enforcement system that **BLOCKS**
 
 ### 4. Updated Documentation
 
-**File:** `/home/alton/Sartor-claude-network/.claude/SPAWNING_TEMPLATE.md`
+**File:** `/home/user/Sartor-claude-network/.claude/SPAWNING_TEMPLATE.md`
 
 - Added "IMPORTANT: Agent Role Identification" section to template
 - Instructs subagents to set `CLAUDE_AGENT_ROLE` environment variable
@@ -66,6 +66,7 @@ fi
 ```
 
 **Exit Code Behavior:**
+
 - `exit 0` = Success, allow operation (non-blocking reminder)
 - `exit 1` = Error, but may allow operation depending on hook config
 - `exit 2` = BLOCK, prevents tool execution entirely (hard enforcement)
@@ -87,7 +88,9 @@ When spawning a subagent, include this in the prompt:
 
 ```markdown
 ## IMPORTANT: Agent Role Identification
+
 You are a SUBAGENT. Set this environment variable in your context:
+
 - CLAUDE_AGENT_ROLE=IMPLEMENTER
 
 This exempts you from orchestrator delegation enforcement, allowing you to edit implementation files.
@@ -96,11 +99,13 @@ This exempts you from orchestrator delegation enforcement, allowing you to edit 
 ### Blocked Directories
 
 The enforcement applies to these patterns:
+
 - `src/` - Source code implementation
 - `lib/` - Library code
 - `services/` - Service implementations
 
 **Allowed:**
+
 - `.claude/` - Configuration and bootstrap files
 - `docs/`, `*.md` - Documentation
 - Root-level config files (package.json, tsconfig.json, etc.)
@@ -110,6 +115,7 @@ The enforcement applies to these patterns:
 ## Testing Results
 
 ### Test 1: Orchestrator Blocked
+
 ```bash
 $ ./.claude/hooks/delegation-enforcer.sh Edit "src/test.ts"
 Exit code 2
@@ -121,20 +127,25 @@ Exit code 2
 ║  ...
 ╚════════════════════════════════════════════════════════════════╝
 ```
+
 **Result:** ✓ BLOCKED as expected
 
 ### Test 2: Subagent Allowed
+
 ```bash
 $ CLAUDE_AGENT_ROLE=IMPLEMENTER ./.claude/hooks/delegation-enforcer.sh Edit "src/test.ts"
 (no output, exit 0)
 ```
+
 **Result:** ✓ ALLOWED as expected
 
 ### Test 3: Config Files Allowed
+
 ```bash
 $ ./.claude/hooks/delegation-enforcer.sh Edit ".claude/settings.json"
 (no output, exit 0)
 ```
+
 **Result:** ✓ ALLOWED as expected
 
 ---
@@ -142,10 +153,12 @@ $ ./.claude/hooks/delegation-enforcer.sh Edit ".claude/settings.json"
 ## File Locations
 
 ### Global (User-Level)
+
 - `~/.claude/settings.json` - User-level hooks configuration
 - `~/.claude/hooks/delegation-enforcer.sh` - User-level enforcer script
 
 ### Project-Level
+
 - `./.claude/settings.json` - Project hooks configuration (uses relative paths)
 - `./.claude/hooks/delegation-enforcer.sh` - Project enforcer script
 - `./.claude/hooks/delegation-reminder.sh` - Old reminder (kept for Grep hook)
@@ -160,11 +173,13 @@ $ ./.claude/hooks/delegation-enforcer.sh Edit ".claude/settings.json"
 ### From Reminder to Enforcer
 
 **Old behavior (delegation-reminder.sh):**
+
 - Used `exit 0` (non-blocking)
 - Showed reminder message but allowed operation
 - Could be ignored by orchestrator
 
 **New behavior (delegation-enforcer.sh):**
+
 - Uses `exit 2` (blocking)
 - **Prevents** operation from proceeding
 - Cannot be ignored - hard enforcement
@@ -172,6 +187,7 @@ $ ./.claude/hooks/delegation-enforcer.sh Edit ".claude/settings.json"
 ### Coexistence
 
 Both files exist in the project:
+
 - `delegation-reminder.sh` - Still used for Grep hook (soft reminder after multiple searches)
 - `delegation-enforcer.sh` - Used for Edit/Write hooks (hard block for implementation files)
 
@@ -191,17 +207,21 @@ When you need to edit implementation files:
 4. **Include the template section** from SPAWNING_TEMPLATE.md
 
 Example:
+
 ```markdown
 **Role: IMPLEMENTER**
 **Scope:** src/memory/ only
 
 ## IMPORTANT: Agent Role Identification
+
 You are a SUBAGENT. Set this environment variable in your context:
+
 - CLAUDE_AGENT_ROLE=IMPLEMENTER
 
 This exempts you from orchestrator delegation enforcement.
 
 ## Task
+
 [Your task here]
 ```
 
@@ -219,8 +239,9 @@ When receiving a delegated task:
 ## What Can Still Be Done Directly
 
 Orchestrators CAN still:
-- Edit configuration files (.claude/*, package.json, tsconfig.json)
-- Update documentation (README.md, docs/*)
+
+- Edit configuration files (.claude/\*, package.json, tsconfig.json)
+- Update documentation (README.md, docs/\*)
 - Modify hook scripts and templates
 - Update todo lists
 - Synthesize subagent results
@@ -228,6 +249,7 @@ Orchestrators CAN still:
 - Use Grep/Glob for discovery (soft reminder only)
 
 Orchestrators CANNOT:
+
 - Edit files in src/, lib/, or services/ directories
 - Write new files to src/, lib/, or services/ directories
 - Do implementation work that should be delegated
@@ -247,20 +269,25 @@ Orchestrators CANNOT:
 **Cause:** The `CLAUDE_AGENT_ROLE` environment variable is not set.
 
 **Solution:** Ensure the spawning prompt includes:
+
 ```markdown
 ## IMPORTANT: Agent Role Identification
+
 You are a SUBAGENT. Set this environment variable in your context:
+
 - CLAUDE_AGENT_ROLE=[YOUR_ROLE]
 ```
 
 ### Need to Bypass for Testing
 
 **Temporary bypass:** Set the environment variable manually:
+
 ```bash
 export CLAUDE_AGENT_ROLE=TESTING
 ```
 
 **Permanent bypass (not recommended):** Disable the hook in `.claude/settings.json`:
+
 ```json
 "Edit": {
   "script": "...",
@@ -335,12 +362,14 @@ chmod +x .claude/hooks/*.sh
 To verify hooks are being triggered during actual Claude Code usage:
 
 1. **Add logging to hooks** (temporary debugging):
+
    ```bash
    # Add to top of delegation-enforcer.sh
    echo "[HOOK] delegation-enforcer.sh called with: $1 $2" >> /tmp/hook-debug.log
    ```
 
 2. **Monitor hook execution**:
+
    ```bash
    # In another terminal
    tail -f /tmp/hook-debug.log
@@ -365,8 +394,9 @@ To verify hooks are being triggered during actual Claude Code usage:
 ### Extension Points
 
 The enforcement system can be extended:
+
 - Add more blocked directories (test/, dist/, etc.)
-- Add file pattern matching (block *.test.ts even outside src/)
+- Add file pattern matching (block \*.test.ts even outside src/)
 - Add role-specific rules (AUDITOR can read but not write)
 - Add session-based tracking (block after N attempts in one session)
 
@@ -377,6 +407,7 @@ The enforcement system can be extended:
 ### When to Update
 
 Update the enforcement system when:
+
 1. New implementation directories are added (e.g., backend/, frontend/)
 2. Project structure changes (move from src/ to packages/)
 3. New agent roles are defined (need new CLAUDE_AGENT_ROLE values)
@@ -385,6 +416,7 @@ Update the enforcement system when:
 ### Files to Update
 
 When modifying enforcement:
+
 1. **Both enforcer scripts** (~/.claude/hooks/ AND .claude/hooks/)
 2. **Both settings.json files** (~/.claude/ AND .claude/)
 3. **SPAWNING_TEMPLATE.md** (update instructions for subagents)
@@ -395,6 +427,7 @@ When modifying enforcement:
 ## Research Findings Reference
 
 This implementation is based on research documented in:
+
 - `.claude/hooks/DELEGATION_REMINDER_SUMMARY.md` - Discovery of exit code 2 behavior
 - `.claude/hooks/DELEGATION_REMINDER.md` - Original investigation notes
 

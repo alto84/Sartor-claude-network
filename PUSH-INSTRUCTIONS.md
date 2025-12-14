@@ -26,6 +26,7 @@ git config credential.helper store
 ```
 
 Then when you push, it will ask for:
+
 - Username: `alto84`
 - Password: `YOUR_TOKEN_HERE` (paste the PAT, not your GitHub password)
 

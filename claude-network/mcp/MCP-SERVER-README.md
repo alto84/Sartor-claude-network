@@ -5,6 +5,7 @@ Production-grade Model Context Protocol (MCP) server implementation providing co
 ## Overview
 
 This MCP server enables Claude agents to:
+
 - **Interact with Firebase**: Read, write, query, and subscribe to real-time data
 - **Access GitHub**: Read files, search code, view history, and navigate repositories
 - **Onboard new agents**: Welcome messages, setup guides, and verification
@@ -28,6 +29,7 @@ mcp/
 ## Features
 
 ### Firebase Tools (5 tools)
+
 - `firebase.read` - Read data from Firebase Realtime Database
 - `firebase.write` - Write/merge data to Firebase
 - `firebase.delete` - Delete data from Firebase
@@ -35,18 +37,21 @@ mcp/
 - `firebase.subscribe` - Real-time subscriptions to data changes
 
 ### GitHub Tools (4 tools)
+
 - `github.read_file` - Read files from repository
 - `github.search` - Search code, issues, commits, and files
 - `github.list_files` - List directory contents (recursive option)
 - `github.get_history` - Get commit history for paths
 
 ### Onboarding Tools (4 tools)
+
 - `onboarding.welcome` - Welcome message with setup info
 - `onboarding.checklist` - Role-specific setup checklists
 - `onboarding.setup_guide` - Detailed component setup guides
 - `onboarding.verify_setup` - Verify agent configuration
 
 ### Navigation Tools (5 tools)
+
 - `navigation.list_agents` - List all network agents
 - `navigation.list_skills` - Discover available skills
 - `navigation.list_tasks` - Browse tasks by status
@@ -58,6 +63,7 @@ mcp/
 ## Installation
 
 ### Prerequisites
+
 - Python 3.10+
 - Access to Firebase Realtime Database
 - Access to GitHub repository (optional token for private repos)
@@ -65,15 +71,17 @@ mcp/
 ### Setup
 
 1. **Install dependencies**:
+
 ```bash
 cd /home/alton/vayu-learning-project/claude-network
 pip install -r requirements.txt
 ```
 
 2. **Configure the server**:
-Edit `mcp/config.json` to set your Firebase URL, GitHub repo, and other settings.
+   Edit `mcp/config.json` to set your Firebase URL, GitHub repo, and other settings.
 
 3. **Set environment variables** (optional):
+
 ```bash
 # For GitHub private repos or higher rate limits
 export GITHUB_TOKEN="your-github-token"
@@ -85,21 +93,25 @@ export MACS_SHARED_SECRET="your-secret-key"
 ## Running the Server
 
 ### Standalone Mode
+
 ```bash
 python mcp/server.py
 ```
 
 ### With Configuration File
+
 ```bash
 python mcp/server.py --config /path/to/config.json
 ```
 
 ### Debug Mode
+
 ```bash
 python mcp/server.py --debug
 ```
 
 ### As MCP Server (for Claude)
+
 The server uses stdio transport and can be integrated with Claude Code or other MCP clients:
 
 ```json
@@ -121,6 +133,7 @@ The server uses stdio transport and can be integrated with Claude Code or other 
 ### Firebase Operations
 
 **Read data**:
+
 ```json
 {
   "tool": "firebase.read",
@@ -131,6 +144,7 @@ The server uses stdio transport and can be integrated with Claude Code or other 
 ```
 
 **Write data**:
+
 ```json
 {
   "tool": "firebase.write",
@@ -146,6 +160,7 @@ The server uses stdio transport and can be integrated with Claude Code or other 
 ```
 
 **Query with filters**:
+
 ```json
 {
   "tool": "firebase.query",
@@ -166,6 +181,7 @@ The server uses stdio transport and can be integrated with Claude Code or other 
 ### GitHub Operations
 
 **Read a file**:
+
 ```json
 {
   "tool": "github.read_file",
@@ -176,6 +192,7 @@ The server uses stdio transport and can be integrated with Claude Code or other 
 ```
 
 **Search code**:
+
 ```json
 {
   "tool": "github.search",
@@ -189,6 +206,7 @@ The server uses stdio transport and can be integrated with Claude Code or other 
 ### Onboarding Operations
 
 **Welcome new agent**:
+
 ```json
 {
   "tool": "onboarding.welcome",
@@ -202,6 +220,7 @@ The server uses stdio transport and can be integrated with Claude Code or other 
 ### Navigation Operations
 
 **List agents**:
+
 ```json
 {
   "tool": "navigation.list_agents",
@@ -212,6 +231,7 @@ The server uses stdio transport and can be integrated with Claude Code or other 
 ```
 
 **Get system status**:
+
 ```json
 {
   "tool": "navigation.get_status",
@@ -224,6 +244,7 @@ The server uses stdio transport and can be integrated with Claude Code or other 
 ## Integration with Existing Code
 
 The MCP server integrates with existing Claude Network components:
+
 - `config_manager.py` - Configuration loading
 - `macs.py` - MACS communication protocol
 - `firebase_schema.py` - Firebase database schema
@@ -234,15 +255,18 @@ The MCP server integrates with existing Claude Network components:
 ## Security
 
 ### Authentication
+
 - Message signing via MACS protocol
 - Optional GitHub token for private repos
 - Environment variable-based secrets
 
 ### Rate Limiting
+
 - Configurable requests per minute/hour
 - Burst protection
 
 ### Input Validation
+
 - JSON schema validation for all tools
 - Path sanitization
 - Size limits on requests/responses
@@ -250,6 +274,7 @@ The MCP server integrates with existing Claude Network components:
 ## Support
 
 For issues, questions, or contributions:
+
 - GitHub Issues: https://github.com/alto84/Sartor-claude-network/issues
 - Documentation: `/claude-network/CLAUDE.md`
 - Master Plan: `/claude-network/MASTER-PLAN.md`

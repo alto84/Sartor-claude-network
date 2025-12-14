@@ -18,14 +18,14 @@ Before starting, verify you have:
 
 ## 2. Setup Steps (15 min total)
 
-| Step | Action | Time |
-|------|--------|------|
-| 1 | Clone repository: `git clone https://github.com/alton-ai/claude-network.git` | 2 min |
-| 2 | Navigate to project: `cd claude-network` | 1 min |
-| 3 | Run setup wizard: `python3 setup_agent.py` | 5 min |
-| 4 | Verify Firebase: `python3 -c "import firebase_admin; print('Firebase OK')"` | 2 min |
-| 5 | Test connection: `python3 status.py` | 2 min |
-| 6 | Register with network: `python3 -c "from agent_registry import AgentRegistry; r = AgentRegistry(); r.register()"` | 3 min |
+| Step | Action                                                                                                            | Time  |
+| ---- | ----------------------------------------------------------------------------------------------------------------- | ----- |
+| 1    | Clone repository: `git clone https://github.com/alton-ai/claude-network.git`                                      | 2 min |
+| 2    | Navigate to project: `cd claude-network`                                                                          | 1 min |
+| 3    | Run setup wizard: `python3 setup_agent.py`                                                                        | 5 min |
+| 4    | Verify Firebase: `python3 -c "import firebase_admin; print('Firebase OK')"`                                       | 2 min |
+| 5    | Test connection: `python3 status.py`                                                                              | 2 min |
+| 6    | Register with network: `python3 -c "from agent_registry import AgentRegistry; r = AgentRegistry(); r.register()"` | 3 min |
 
 ---
 
@@ -47,19 +47,24 @@ After setup, verify each component is working:
 Pick one task to get familiar with the system:
 
 - [ ] **Run Onboarding**
+
   ```bash
   python3 setup_agent.py
   ```
-  *Walks you through first-time configuration (5 min)*
+
+  _Walks you through first-time configuration (5 min)_
 
 - [ ] **Complete Simple Task**
+
   ```bash
   python3 task_cli.py create "Explore kitchen" --priority 1
   python3 task_cli.py monitor
   ```
-  *Create and track your first task (3 min)*
+
+  _Create and track your first task (3 min)_
 
 - [ ] **Execute a Skill**
+
   ```bash
   python3 -c "
   from skill_engine import SkillEngine, SkillContext
@@ -68,49 +73,54 @@ Pick one task to get familiar with the system:
   print(list(engine.skills.keys())[:5])
   "
   ```
-  *Explore available skills (2 min)*
+
+  _Explore available skills (2 min)_
 
 - [ ] **Send a Network Message**
   ```bash
   python3 relay.py send "Hello from my agent!"
   ```
-  *Test message broadcasting (2 min)*
+  _Test message broadcasting (2 min)_
 
 ---
 
 ## 5. Quick Command Reference
 
-| Command | Purpose |
-|---------|---------|
-| `python3 status.py` | View network status and connected agents |
-| `python3 monitor.py` | Real-time network monitoring (live dashboard) |
-| `python3 task_cli.py create "Task name"` | Create a new task |
-| `python3 task_cli.py list` | List all tasks |
-| `python3 task_cli.py monitor` | Monitor task progress |
-| `python3 relay.py send "message"` | Send message to network |
-| `python3 relay.py mission` | Get current mission |
-| `./start-proxy.sh` | Start proxy server |
-| `./stop-proxy.sh` | Stop proxy server |
-| `pytest tests/ -v` | Run all tests |
+| Command                                  | Purpose                                       |
+| ---------------------------------------- | --------------------------------------------- |
+| `python3 status.py`                      | View network status and connected agents      |
+| `python3 monitor.py`                     | Real-time network monitoring (live dashboard) |
+| `python3 task_cli.py create "Task name"` | Create a new task                             |
+| `python3 task_cli.py list`               | List all tasks                                |
+| `python3 task_cli.py monitor`            | Monitor task progress                         |
+| `python3 relay.py send "message"`        | Send message to network                       |
+| `python3 relay.py mission`               | Get current mission                           |
+| `./start-proxy.sh`                       | Start proxy server                            |
+| `./stop-proxy.sh`                        | Stop proxy server                             |
+| `pytest tests/ -v`                       | Run all tests                                 |
 
 ---
 
 ## 6. Documentation Quick Links
 
 **Getting Started:**
+
 - [README.md](README.md) - Project overview
 - [SECOND-COMPUTER-SETUP.md](SECOND-COMPUTER-SETUP.md) - Connect additional computers
 
 **Core Systems:**
+
 - [ARCHITECTURE-OVERVIEW.md](ARCHITECTURE-OVERVIEW.md) - System design and data flows
 - [CONFIG_REGISTRY_README.md](CONFIG_REGISTRY_README.md) - Configuration & agent registry
 
 **Features:**
+
 - [SKILL-QUICKSTART.md](SKILL-QUICKSTART.md) - Learn skills system (5 min)
 - [SKILL-GUIDE.md](SKILL-GUIDE.md) - Complete skill documentation
 - [TASK_MANAGER_README.md](TASK_MANAGER_README.md) - Task management system
 
 **Troubleshooting:**
+
 - [setup-instructions.md](setup-instructions.md) - Firebase setup help
 - [QUICK-START.md](QUICK-START.md) - Original quick start guide
 
@@ -119,12 +129,15 @@ Pick one task to get familiar with the system:
 ## 7. Troubleshooting Quick Links
 
 ### "Agent not appearing in registry?"
+
 ```bash
 python3 -c "from agent_registry import AgentRegistry; r = AgentRegistry(); r.start_heartbeat()"
 ```
+
 [Full troubleshooting → README.md](README.md#troubleshooting)
 
 ### "Firebase connection issues?"
+
 ```bash
 python3 -c "
 from config_manager import ConfigManager
@@ -132,26 +145,29 @@ c = ConfigManager()
 print(f'Firebase DB: {c.config.firebase_db_url}')
 "
 ```
+
 [Full troubleshooting → README.md](README.md#troubleshooting)
 
 ### "Messages not delivering?"
+
 ```bash
 python3 -c "from macs import MACSClient; m = MACSClient('test'); print(m.get_offline_queue())"
 ```
+
 [Full troubleshooting → README.md](README.md#troubleshooting)
 
 ---
 
 ## 8. Getting Help
 
-| Question | Where to Look |
-|----------|---------------|
-| How do I set up on a second computer? | [SECOND-COMPUTER-SETUP.md](SECOND-COMPUTER-SETUP.md) |
-| How does the system architecture work? | [ARCHITECTURE-OVERVIEW.md](ARCHITECTURE-OVERVIEW.md) |
-| How do I create custom skills? | [SKILL-GUIDE.md](SKILL-GUIDE.md) |
-| How do I manage tasks? | [TASK_MANAGER_README.md](TASK_MANAGER_README.md) |
-| How do I configure the system? | [CONFIG_REGISTRY_README.md](CONFIG_REGISTRY_README.md) |
-| What's wrong? (Troubleshooting) | [README.md](README.md#troubleshooting) |
+| Question                               | Where to Look                                          |
+| -------------------------------------- | ------------------------------------------------------ |
+| How do I set up on a second computer?  | [SECOND-COMPUTER-SETUP.md](SECOND-COMPUTER-SETUP.md)   |
+| How does the system architecture work? | [ARCHITECTURE-OVERVIEW.md](ARCHITECTURE-OVERVIEW.md)   |
+| How do I create custom skills?         | [SKILL-GUIDE.md](SKILL-GUIDE.md)                       |
+| How do I manage tasks?                 | [TASK_MANAGER_README.md](TASK_MANAGER_README.md)       |
+| How do I configure the system?         | [CONFIG_REGISTRY_README.md](CONFIG_REGISTRY_README.md) |
+| What's wrong? (Troubleshooting)        | [README.md](README.md#troubleshooting)                 |
 
 ---
 

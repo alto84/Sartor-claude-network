@@ -1,4 +1,5 @@
 # Gateway Skill Architecture
+
 ## Visual Guide to Single-File Onboarding
 
 ## The Gateway Concept
@@ -474,6 +475,7 @@ Manual steps: Many                   Manual steps: 1
 ## Why This Architecture Works
 
 ### 1. Self-Contained
+
 ```
 Traditional:                 Gateway:
 Multiple files     →        Single file
@@ -482,6 +484,7 @@ Manual discovery   →        Auto-discovery
 ```
 
 ### 2. Resilient
+
 ```
 Discovery tries 5 methods:
 ├─ Local (fastest)
@@ -494,6 +497,7 @@ If one fails, try next!
 ```
 
 ### 3. Zero Configuration
+
 ```
 Agent needs:
 ├─ gateway.yaml (this file)
@@ -503,6 +507,7 @@ That's it!
 ```
 
 ### 4. Future-Proof
+
 ```
 Update gateway.yaml:
 ├─ Add new endpoints
@@ -517,4 +522,4 @@ Agents automatically get updates!
 
 **The Gateway Skill**: One file to rule them all! 🎯
 
-*Last Updated: 2025-11-03*
+_Last Updated: 2025-11-03_

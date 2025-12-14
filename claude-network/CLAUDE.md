@@ -1,4 +1,5 @@
 # CLAUDE.md - Sartor Claude Network Documentation
+
 ## Philosophy, Architecture, and Implementation Guide
 
 **Date**: 2025-11-03
@@ -16,30 +17,35 @@ Imagine a community of Claude agents, each running on different devices througho
 ### Core Principles
 
 #### 1. **Evidence-Based Reality**
+
 - No fabricated metrics or invented scores
 - Every claim must be measurable and verifiable
 - "Cannot determine without measurement data" is better than a guess
 - Truth over optimism, always
 
 #### 2. **Collaborative Community**
+
 - The whole is greater than the sum of its parts
 - Agents share knowledge and experiences
 - Specialization emerges naturally through practice
 - Consensus drives major decisions
 
 #### 3. **Continuous Evolution**
+
 - Inspired by HGM (Hypothesis-Guided Memoization) and clade-based evolution
 - The system writes better versions of itself
 - Metaproductivity: judge success by lineage, not individuals
 - Safe experimentation in sandboxed environments
 
 #### 4. **Educational Mission**
+
 - Teaching Vayu about programming and AI systems
 - Making complex concepts accessible
 - Learning through building and experimentation
 - Father-son collaboration at the core
 
 #### 5. **Safety Through Layers**
+
 - Multiple validation checkpoints
 - Sandbox testing before production
 - Community review of changes
@@ -57,12 +63,14 @@ This project draws inspiration from:
 ### Goals: What We're Building Toward
 
 #### Immediate Goals
+
 1. **Run the House**: Automate daily routines, track inventory, maintain schedules
 2. **Solve Science Problems**: Collaborate on research, analysis, and computation
 3. **Build Projects Together**: Create software, games, and tools as a community
 4. **Learn Continuously**: Each agent gets better at what it does
 
 #### Long-term Vision
+
 - 24/7 autonomous operation
 - Self-healing and self-improving codebase
 - Emergent specializations and expertise
@@ -85,6 +93,7 @@ High Stakes Decisions (Byzantine Fault Tolerant)
 ```
 
 **Conflict Resolution**:
+
 1. **Automatic**: Version conflicts, simple disagreements
 2. **Mediated**: Peer review by other agents
 3. **Escalated**: Human intervention for critical issues
@@ -94,6 +103,7 @@ High Stakes Decisions (Byzantine Fault Tolerant)
 **Why It Matters**: Trust is the foundation of any community. By refusing to fabricate metrics or scores, we ensure every decision is based on reality, not wishful thinking.
 
 **The Rules**:
+
 - Never invent scores or percentages
 - Always provide measurement methodology
 - Express uncertainty clearly
@@ -101,11 +111,13 @@ High Stakes Decisions (Byzantine Fault Tolerant)
 - Evidence chain for all claims
 
 **Banned Language** (without extraordinary evidence):
+
 - "Exceptional performance"
 - "95% success rate" (unless actually measured)
 - "10x improvement" (without baseline data)
 
 **Required Language Patterns**:
+
 - "Measured at X with methodology Y"
 - "Cannot determine without data"
 - "Preliminary observation suggests"
@@ -178,6 +190,7 @@ INFRASTRUCTURE LAYER (Foundation)
 **MACS (Multi-Agent Communication System)** is the nervous system of our community.
 
 #### Message Format
+
 ```json
 {
   "header": {
@@ -204,6 +217,7 @@ INFRASTRUCTURE LAYER (Foundation)
 #### Communication Patterns
 
 **Direct Messaging**: Agent-to-agent communication
+
 ```python
 macs.send_message(
     to="laptop-claude",
@@ -213,6 +227,7 @@ macs.send_message(
 ```
 
 **Broadcasting**: Announce to all agents
+
 ```python
 macs.broadcast(
     type="alert",
@@ -221,6 +236,7 @@ macs.broadcast(
 ```
 
 **Pub/Sub**: Topic-based subscriptions
+
 ```python
 macs.subscribe("house.kitchen.events")
 macs.publish("house.kitchen.events", {"fridge": "opened"})
@@ -251,24 +267,26 @@ Task Lifecycle:
 ```
 
 **Task Definition Structure**:
+
 ```yaml
 task:
-  id: "task-2025-11-03-001"
-  type: "house.kitchen.inventory"
-  priority: "medium"
+  id: 'task-2025-11-03-001'
+  type: 'house.kitchen.inventory'
+  priority: 'medium'
   requirements:
-    skills: ["vision.object_detection", "data.inventory"]
-    capabilities: ["camera_access"]
+    skills: ['vision.object_detection', 'data.inventory']
+    capabilities: ['camera_access']
   dependencies: []
-  deadline: "2025-11-03T18:00:00Z"
+  deadline: '2025-11-03T18:00:00Z'
   success_criteria:
-    - "inventory_updated"
-    - "photos_captured"
+    - 'inventory_updated'
+    - 'photos_captured'
 ```
 
 ### How Skills Work: Discovery, Execution, Composition
 
 #### Skill Architecture
+
 ```
 Skills are the building blocks of agent capabilities:
 
@@ -292,36 +310,37 @@ Meta-Skills (Self-Improvement)
 ```
 
 #### Skill Definition Format
+
 ```yaml
 skill:
-  id: "house.kitchen.inventory_check"
-  version: "1.2.0"
-  description: "Check and update kitchen inventory"
+  id: 'house.kitchen.inventory_check'
+  version: '1.2.0'
+  description: 'Check and update kitchen inventory'
 
   inputs:
-    - name: "location"
-      type: "string"
-      default: "kitchen"
+    - name: 'location'
+      type: 'string'
+      default: 'kitchen'
 
   outputs:
-    - name: "inventory"
-      type: "object"
-    - name: "photos"
-      type: "array"
+    - name: 'inventory'
+      type: 'object'
+    - name: 'photos'
+      type: 'array'
 
   requirements:
-    skills: ["core.vision.capture", "core.data.update"]
-    capabilities: ["camera"]
+    skills: ['core.vision.capture', 'core.data.update']
+    capabilities: ['camera']
 
   execution:
-    type: "sequential"
+    type: 'sequential'
     steps:
-      - skill: "core.vision.capture"
-        params: {location: "${location}"}
-      - skill: "core.vision.object_detection"
-        params: {images: "${step1.output}"}
-      - skill: "core.data.inventory_update"
-        params: {items: "${step2.output}"}
+      - skill: 'core.vision.capture'
+        params: { location: '${location}' }
+      - skill: 'core.vision.object_detection'
+        params: { images: '${step1.output}' }
+      - skill: 'core.data.inventory_update'
+        params: { items: '${step2.output}' }
 ```
 
 ### How Learning Happens: Experience Sharing
@@ -343,6 +362,7 @@ Learning Cycle:
 ```
 
 **Experience Record**:
+
 ```json
 {
   "experience_id": "exp-2025-11-03-001",
@@ -358,7 +378,7 @@ Learning Cycle:
   "execution": {
     "skills_used": ["vision.capture", "object.detection"],
     "duration_ms": 3500,
-    "resources": {"api_calls": 2, "memory_mb": 150}
+    "resources": { "api_calls": 2, "memory_mb": 150 }
   },
 
   "outcome": {
@@ -398,6 +418,7 @@ Evolution Tree (Clade Structure):
 ```
 
 **Metaproductivity Scoring**:
+
 - Don't just measure individual performance
 - Measure the success of descendants
 - Reward exploration that leads to breakthroughs
@@ -408,6 +429,7 @@ Evolution Tree (Clade Structure):
 #### Consensus Mechanisms
 
 **Optimistic Consensus** (Default for routine operations):
+
 ```python
 def optimistic_consensus(proposal, timeout=5):
     broadcast(proposal)
@@ -419,6 +441,7 @@ def optimistic_consensus(proposal, timeout=5):
 ```
 
 **Byzantine Fault Tolerant** (For critical decisions):
+
 ```python
 def bft_consensus(proposal, quorum=0.67):
     votes = collect_votes(proposal, timeout=30)
@@ -429,6 +452,7 @@ def bft_consensus(proposal, quorum=0.67):
 ```
 
 #### Conflict Resolution Protocol
+
 ```
 Conflict Detected
       ↓
@@ -444,6 +468,7 @@ Data  Logic  Resource
 ### Technical Stack
 
 #### Required Components
+
 - **Python 3.10+**: Core implementation language
 - **Firebase Realtime Database**: Real-time synchronization
 - **GitHub Repository**: Code and knowledge storage
@@ -451,6 +476,7 @@ Data  Logic  Resource
 - **Docker**: Sandboxed testing environment
 
 #### Optional/Future
+
 - **Redis**: High-performance caching
 - **PostgreSQL**: Analytics and long-term storage
 - **WebSocket Server**: Direct agent-to-agent communication
@@ -459,6 +485,7 @@ Data  Logic  Resource
 ### Data Flow Diagrams
 
 #### Message Flow
+
 ```
 Agent A → Firebase → Agent B
    ↓         ↓         ↓
@@ -469,6 +496,7 @@ Agent A → Firebase → Agent B
 ```
 
 #### Task Distribution
+
 ```
 User Request
      ↓
@@ -489,6 +517,7 @@ Execution
 ```
 
 #### Knowledge Synthesis
+
 ```
 Individual Experiences
     ↓    ↓    ↓
@@ -508,6 +537,7 @@ Community Library
 ### Integration Points
 
 #### Firebase Schema
+
 ```
 /agents-network/
 ├── /registry/
@@ -535,6 +565,7 @@ Community Library
 ```
 
 #### GitHub Repository Structure
+
 ```
 /Sartor-claude-network/
 ├── /claude-network/
@@ -568,17 +599,20 @@ Community Library
 ### Prerequisites
 
 #### Hardware
+
 - At least 2 computers/devices with Claude Code CLI
 - Network connectivity between devices
 - (Optional) iPad or mobile device for scouting
 
 #### Software
+
 - Python 3.10 or higher
 - Git for version control
 - Docker for sandboxing (Phase 5+)
 - Firebase account (free tier works initially)
 
 #### Knowledge
+
 - Basic Python programming
 - Understanding of Git workflows
 - Familiarity with JSON/YAML
@@ -587,6 +621,7 @@ Community Library
 ### Setup Process
 
 #### Step 1: Environment Preparation
+
 ```bash
 # Clone the repository on each computer
 git clone https://github.com/alto84/Sartor-claude-network.git
@@ -601,6 +636,7 @@ cp config.template.json config.json
 ```
 
 #### Step 2: First Agent Registration
+
 ```python
 # On your primary computer (Mission Control)
 from claude_network import Agent
@@ -616,6 +652,7 @@ agent.send_message("broadcast", "Mission Control online!")
 ```
 
 #### Step 3: Multi-Agent Setup
+
 ```python
 # On second computer
 agent2 = Agent(
@@ -629,6 +666,7 @@ agent2.send_message("Mission Control", "Worker-1 reporting for duty!")
 ```
 
 #### Step 4: Verify Communication
+
 ```python
 # Test bidirectional messaging
 response = agent.send_message(
@@ -643,18 +681,21 @@ print(f"Communication established: {response}")
 ### First Contribution
 
 #### For Developers
+
 1. **Add a Skill**: Create a new skill in `/skills/`
 2. **Improve Communication**: Enhance MACS protocol
 3. **Write Tests**: Add test coverage
 4. **Document**: Improve documentation
 
 #### For Learners (like Vayu!)
+
 1. **Read the Code**: Start with `macs.py`
 2. **Run Examples**: Try the sample scripts
 3. **Ask Questions**: Use comments and discussions
 4. **Experiment**: Make small changes and see what happens
 
 #### Quick Win Projects
+
 - Create a "Hello World" skill
 - Add a new message type
 - Build a simple monitoring dashboard
@@ -663,36 +704,42 @@ print(f"Communication established: {response}")
 ### Learning Path
 
 #### Week 1: Foundation
+
 - Understand the architecture
 - Set up your first agent
 - Send messages between agents
 - Read about MACS protocol
 
 #### Week 2: Communication
+
 - Implement a custom message type
 - Create a message filter
 - Build a simple chat between agents
 - Add message persistence
 
 #### Week 3: Coordination
+
 - Create your first task
 - Implement task assignment
 - Add status tracking
 - Build consensus voting
 
 #### Week 4: Skills
+
 - Write a basic skill
 - Compose existing skills
 - Add skill discovery
 - Create skill documentation
 
 #### Week 5: Integration
+
 - Connect multiple agents
 - Implement heartbeat monitoring
 - Add failure recovery
 - Create a monitoring dashboard
 
 #### Beyond: Specialization
+
 - Choose an area of focus:
   - House management
   - Scientific computing
@@ -713,6 +760,7 @@ This is a learning journey for all of us - Alton, Vayu, and the Claude agents th
 The system starts simple but has no ceiling on its complexity. Today, agents send messages. Tomorrow, they might be designing their own protocols. Next month, they could be teaching each other new skills we haven't imagined yet.
 
 **Remember the Core Values**:
+
 - Truth over fabrication
 - Community over isolation
 - Evolution over stagnation
@@ -724,6 +772,7 @@ Welcome to the Sartor Claude Network. Let's build something extraordinary togeth
 ---
 
 **Resources**:
+
 - GitHub: https://github.com/alto84/Sartor-claude-network
 - Firebase: https://home-claude-network-default-rtdb.firebaseio.com/
 - Master Plan: `/claude-network/MASTER-PLAN.md`
@@ -733,6 +782,6 @@ Welcome to the Sartor Claude Network. Let's build something extraordinary togeth
 
 ---
 
-*Created: 2025-11-03*
-*By: Philosophy & Mechanics Documentation Specialist*
-*For: The Sartor Claude Network Community*
+_Created: 2025-11-03_
+_By: Philosophy & Mechanics Documentation Specialist_
+_For: The Sartor Claude Network Community_

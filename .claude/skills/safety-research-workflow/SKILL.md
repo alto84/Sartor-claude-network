@@ -17,6 +17,7 @@ Safety research requires the highest standards of evidence and methodology, part
 ## When to Use This Skill
 
 Use this skill when:
+
 - Planning or executing systematic literature reviews
 - Conducting pharmaceutical or medical safety assessments
 - Coordinating multiple research agents with specialized roles
@@ -29,12 +30,14 @@ Use this skill when:
 ## Core Principles
 
 ### 1. Evidence-Based Only
+
 - All claims must be supported by primary sources with valid identifiers (PMID, DOI, URL)
 - No fabricated scores, metrics, or confidence levels without measurement data
 - Apply CLAUDE.md anti-fabrication protocols throughout research lifecycle
 - Maintain evidence chains from observation to conclusion
 
 ### 2. Systematic Methodology
+
 - Define research questions clearly before execution
 - Establish inclusion/exclusion criteria upfront
 - Document search strategies and data sources
@@ -42,6 +45,7 @@ Use this skill when:
 - Track methodology decisions for reproducibility
 
 ### 3. Multi-Agent Coordination
+
 - Specialize agents by research task (literature search, evidence extraction, validation, synthesis)
 - Apply parallel agent coordination protocols from CLAUDE.md
 - Implement quality gates between research stages
@@ -49,6 +53,7 @@ Use this skill when:
 - Preserve disagreement rather than fabricating consensus
 
 ### 4. Quality Assurance
+
 - Validate sources for authenticity (detect fake PMIDs, placeholder text, fabricated URLs)
 - Check citation completeness and format consistency
 - Verify claims against source material
@@ -56,6 +61,7 @@ Use this skill when:
 - Document limitations explicitly
 
 ### 5. Transparency
+
 - Document uncertainties and knowledge gaps
 - Acknowledge conflicting evidence
 - Specify confidence levels with justification
@@ -69,6 +75,7 @@ This skill leverages the Memory MCP system to persist and retrieve research know
 ### Memory Types for Research
 
 **SEMANTIC Memories - Research Findings:**
+
 - Key findings from literature reviews
 - Validated evidence chains (e.g., "Drug X associated with outcome Y in N studies")
 - Source quality assessments
@@ -76,6 +83,7 @@ This skill leverages the Memory MCP system to persist and retrieve research know
 - Domain-specific knowledge (e.g., "ILD mechanisms", "ADC toxicity profiles")
 
 **PROCEDURAL Memories - Methodology Patterns:**
+
 - Successful search strategies (databases, keywords, filters)
 - Effective agent coordination patterns
 - Quality gate implementations that caught errors
@@ -83,6 +91,7 @@ This skill leverages the Memory MCP system to persist and retrieve research know
 - Synthesis methodologies that produced high-quality outputs
 
 **EPISODIC Memories - Research Iterations:**
+
 - Complete research project histories
 - Quality issues encountered and how they were resolved
 - Multi-agent coordination successes/failures
@@ -92,6 +101,7 @@ This skill leverages the Memory MCP system to persist and retrieve research know
 ### When to Create Memories
 
 **During Literature Search (Stage 2):**
+
 ```
 memory_create({
   content: "Search strategy for ADC safety: PubMed with keywords 'antibody-drug conjugate AND (safety OR toxicity OR adverse events)' limited to 2015-2024, retrieved 847 results, 165 relevant after screening",
@@ -102,6 +112,7 @@ memory_create({
 ```
 
 **After Evidence Extraction (Stage 3):**
+
 ```
 memory_create({
   content: "ADC-associated ILD incidence: Range 2-15% across 8 studies (n=2,450), higher in trastuzumab deruxtecan (15%) vs other ADCs (2-5%). Source: PMID 34567890, 35678901",
@@ -112,6 +123,7 @@ memory_create({
 ```
 
 **After Validation Success (Stage 4):**
+
 ```
 memory_create({
   content: "Bibliography validation for ADC project: validate-bibliography.py detected 3 fabricated PMIDs by pattern matching (sequential 12345678), saved 6 hours of manual checking. Always run automated checks before manual validation.",
@@ -122,6 +134,7 @@ memory_create({
 ```
 
 **After Synthesis (Stage 5):**
+
 ```
 memory_create({
   content: "Synthesized ADC-ILD mechanisms from 12 mechanistic studies: Primary pathway is antibody-mediated immune activation in lung tissue. Conflicting evidence on whether payload or antibody drives toxicity. Confidence: moderate (mechanistic data, limited direct evidence).",
@@ -132,6 +145,7 @@ memory_create({
 ```
 
 **Recording Research Project Completion (Stage 7):**
+
 ```
 memory_create({
   content: JSON.stringify({
@@ -157,6 +171,7 @@ memory_create({
 ### Retrieving Research Context
 
 **Before Starting New Research (Stage 1 Planning):**
+
 ```
 // Find similar past research
 const similar_research = await memory_search({
@@ -181,6 +196,7 @@ const domain_knowledge = await memory_search({
 ```
 
 **During Evidence Extraction (Stage 3):**
+
 ```
 // Check if similar findings already documented
 const existing_findings = await memory_search({
@@ -192,6 +208,7 @@ const existing_findings = await memory_search({
 ```
 
 **During Validation (Stage 4):**
+
 ```
 // Find validation patterns that worked before
 const validation_patterns = await memory_search({
@@ -205,18 +222,21 @@ const validation_patterns = await memory_search({
 ### Memory-Driven Quality Improvement
 
 **Pattern Recognition:**
+
 - Identify recurring validation failures → Update quality gates
 - Track which search strategies yield high-quality sources
 - Learn which agent coordination patterns produce best results
 - Recognize domain-specific evidence patterns
 
 **Continuous Learning:**
+
 - Each research project improves future research
 - Failed approaches are documented to avoid repetition
 - Successful patterns are reinforced and reused
 - Quality metrics improve over time
 
 **Cross-Project Insights:**
+
 - Similar research questions benefit from past findings
 - Domain expertise accumulates across projects
 - Methodology improvements persist beyond single projects
@@ -236,9 +256,11 @@ const validation_patterns = await memory_search({
 ## Research Workflow Stages
 
 ### Stage 1: Planning
+
 **Objective:** Define research scope, questions, methodology, and agent assignments
 
 **Activities:**
+
 - **Retrieve past research context** using memory_search for similar projects
 - Formulate specific, answerable research questions
 - Define search strategy (databases, keywords, date ranges)
@@ -248,6 +270,7 @@ const validation_patterns = await memory_search({
 - Create research plan document
 
 **Memory Integration:**
+
 ```
 // Search for similar past research projects
 memory_search({
@@ -272,6 +295,7 @@ memory_search({
 ```
 
 **Quality Gates:**
+
 - Research questions are specific and measurable
 - Methodology is reproducible
 - Success criteria are defined
@@ -279,15 +303,18 @@ memory_search({
 - Past research context has been reviewed
 
 **Integration Points:**
+
 - Use Multi-Agent Orchestration skill to assign agent roles
 - Apply Evidence-Based Validation skill to define quality criteria
 - Reference Distributed Systems Debugging for process validation
 - **Use Memory MCP to retrieve proven methodologies from past research**
 
 ### Stage 2: Literature Search & Collection
+
 **Objective:** Systematically identify and retrieve relevant sources
 
 **Activities:**
+
 - Execute search strategy across defined databases
 - Screen results against inclusion/exclusion criteria
 - Retrieve full-text articles or abstracts
@@ -295,6 +322,7 @@ memory_search({
 - Track search results and decisions
 
 **Quality Gates:**
+
 - Search strategy is systematic and reproducible
 - Inclusion/exclusion criteria applied consistently
 - All sources have valid identifiers (PMID, DOI, or accessible URL)
@@ -302,6 +330,7 @@ memory_search({
 - Search coverage is adequate for research question
 
 **Common Pitfalls:**
+
 - Using fabricated PMIDs (e.g., 12345678, sequential patterns)
 - Including placeholder titles ("Example Study", "Sample Research")
 - Missing source identifiers
@@ -309,11 +338,13 @@ memory_search({
 - Inadequate documentation of search strategy
 
 **Agent Specialization:**
+
 - Agent A: Execute database searches, retrieve sources
 - Agent B: Screen for relevance, apply inclusion/exclusion criteria
 - Agent C: Extract and validate bibliographic metadata
 
 **Memory Integration:**
+
 ```
 // After successful search, store strategy
 memory_create({
@@ -333,9 +364,11 @@ memory_create({
 ```
 
 ### Stage 3: Evidence Extraction
+
 **Objective:** Extract relevant data points, findings, and evidence from sources
 
 **Activities:**
+
 - Read full-text sources systematically
 - Extract numerical data, study findings, methodology details
 - Record evidence with source attribution
@@ -343,6 +376,7 @@ memory_create({
 - Track conflicting evidence
 
 **Quality Gates:**
+
 - Every extracted claim has source citation
 - Numerical data includes context (sample size, confidence intervals, study population)
 - Methodology of source studies is documented
@@ -350,6 +384,7 @@ memory_create({
 - Conflicting evidence is preserved
 
 **Common Pitfalls:**
+
 - Extracting data without source attribution
 - Ignoring study limitations
 - Cherry-picking favorable results
@@ -357,12 +392,14 @@ memory_create({
 - Losing context for numerical claims
 
 **Agent Specialization:**
+
 - Agent A: Extract quantitative findings (incidence rates, effect sizes)
 - Agent B: Extract qualitative findings (mechanisms, clinical observations)
 - Agent C: Extract methodology and study quality indicators
 - Agent D: Cross-validate extracted data against sources
 
 **Memory Integration:**
+
 ```
 // Store key research findings as semantic memories
 memory_create({
@@ -390,9 +427,11 @@ memory_search({
 ```
 
 ### Stage 4: Evidence Validation
+
 **Objective:** Verify authenticity, quality, and proper attribution of all evidence
 
 **Activities:**
+
 - Validate source identifiers (check PMIDs, verify URLs accessible)
 - Detect fabricated or placeholder sources
 - Verify extracted data matches source material
@@ -401,6 +440,7 @@ memory_search({
 - Identify evidence gaps or weaknesses
 
 **Quality Gates:**
+
 - All sources validated as authentic (no fake PMIDs, placeholder text)
 - Extracted data matches source claims
 - Citations are properly formatted and complete
@@ -408,6 +448,7 @@ memory_search({
 - Limitations are explicitly stated
 
 **Automated Checks:**
+
 - Run bibliography validation script to detect fabricated sources
 - Check citation format consistency
 - Verify URL accessibility
@@ -415,17 +456,20 @@ memory_search({
 - Validate PMID/DOI formats
 
 **Agent Specialization:**
+
 - Agent A: Source authenticity validation
 - Agent B: Data accuracy verification (check against sources)
 - Agent C: Study quality assessment
 - Agent D: Anti-fabrication compliance audit (apply CLAUDE.md rules)
 
 **Integration Points:**
+
 - Use Evidence-Based Validation skill extensively
 - Apply source verification patterns from safety-research-system
 - Use automated validation scripts
 
 **Memory Integration:**
+
 ```
 // Store successful validation patterns
 memory_create({
@@ -452,9 +496,11 @@ memory_search({
 ```
 
 ### Stage 5: Synthesis & Analysis
+
 **Objective:** Integrate findings into coherent conclusions with proper attribution
 
 **Activities:**
+
 - Identify patterns and themes across sources
 - Synthesize quantitative findings (e.g., incidence ranges across studies)
 - Reconcile conflicting evidence
@@ -463,6 +509,7 @@ memory_search({
 - Acknowledge uncertainties
 
 **Quality Gates:**
+
 - Synthesis supported by multiple sources
 - Conflicting evidence acknowledged
 - Conclusions proportional to evidence strength
@@ -470,6 +517,7 @@ memory_search({
 - Limitations explicitly documented
 
 **Common Pitfalls:**
+
 - Overgeneralizing from limited evidence
 - Creating fabricated "consensus" scores
 - Ignoring conflicting evidence
@@ -477,17 +525,20 @@ memory_search({
 - Failing to acknowledge gaps
 
 **Agent Specialization:**
+
 - Agent A: Synthesize quantitative findings
 - Agent B: Synthesize qualitative/mechanistic findings
 - Agent C: Identify conflicts and uncertainties
 - Agent D: Validate synthesis against CLAUDE.md anti-fabrication rules
 
 **Integration Points:**
+
 - Apply Multi-Agent Orchestration for synthesis coordination
 - Use Evidence-Based Validation for claim verification
 - Apply confidence calibration methodology
 
 **Memory Integration:**
+
 ```
 // Store synthesized findings as semantic memories
 memory_create({
@@ -515,9 +566,11 @@ memory_create({
 ```
 
 ### Stage 6: Quality Assurance
+
 **Objective:** Comprehensive validation before finalizing research outputs
 
 **Activities:**
+
 - Run automated quality checks on bibliography
 - Verify all claims have source citations
 - Check for CLAUDE.md compliance (no fabricated scores, banned language)
@@ -526,6 +579,7 @@ memory_create({
 - Peer review simulation (if using multiple agents)
 
 **Quality Gates:**
+
 - All automated quality checks pass
 - No unsupported claims
 - CLAUDE.md anti-fabrication compliance verified
@@ -534,6 +588,7 @@ memory_create({
 - Methodology is reproducible
 
 **Automated Checks:**
+
 - Run `validate-bibliography.py` for source authenticity
 - Run `research-quality-check.py` for claim validation
 - Check for banned language patterns
@@ -541,17 +596,20 @@ memory_create({
 - Validate numerical claims have methodology documentation
 
 **Agent Specialization:**
+
 - Agent A: Bibliography completeness audit
 - Agent B: Claim-source mapping verification
 - Agent C: CLAUDE.md compliance audit
 - Agent D: Methodology reproducibility check
 
 **Integration Points:**
+
 - Use Evidence-Based Validation skill for comprehensive audit
 - Apply Distributed Systems Debugging for process validation
 - Use automated quality scripts
 
 **Memory Integration:**
+
 ```
 // Store QA findings and improvements
 memory_create({
@@ -571,9 +629,11 @@ memory_create({
 ```
 
 ### Stage 7: Documentation & Delivery
+
 **Objective:** Package research findings with complete methodology and supporting materials
 
 **Activities:**
+
 - Compile final research report
 - Format bibliography to required standard
 - Document search strategy and methodology
@@ -582,6 +642,7 @@ memory_create({
 - Archive source materials
 
 **Quality Gates:**
+
 - Report structure is complete
 - All sections have proper citations
 - Bibliography is complete and correctly formatted
@@ -590,6 +651,7 @@ memory_create({
 - Supporting materials are organized
 
 **Deliverables:**
+
 - Final research report with complete bibliography
 - Methodology documentation
 - Executive summary
@@ -598,6 +660,7 @@ memory_create({
 - Quality assurance report
 
 **Memory Integration:**
+
 ```
 // Record complete research project as episodic memory
 memory_create({
@@ -638,14 +701,17 @@ memory_create({
 ### Coordination Patterns
 
 #### Pattern 1: Sequential Pipeline
+
 **Use when:** Research stages have clear dependencies
 
 **Structure:**
+
 ```
 Agent A (Search) → Agent B (Extraction) → Agent C (Validation) → Agent D (Synthesis)
 ```
 
 **Coordination:**
+
 - Each agent completes fully before next begins
 - Quality gates between agents
 - Handoff includes methodology documentation
@@ -654,9 +720,11 @@ Agent A (Search) → Agent B (Extraction) → Agent C (Validation) → Agent D (
 **Example:** Systematic literature review where search must complete before extraction
 
 #### Pattern 2: Parallel Specialization
+
 **Use when:** Different research domains can be explored simultaneously
 
 **Structure:**
+
 ```
                     ┌→ Agent A (Clinical Evidence)
 Research Question ──┼→ Agent B (Mechanistic Studies)
@@ -666,6 +734,7 @@ Research Question ──┼→ Agent B (Mechanistic Studies)
 ```
 
 **Coordination:**
+
 - Agents work simultaneously on different domains
 - Regular sync points for integration
 - Cross-validation between agents
@@ -674,9 +743,11 @@ Research Question ──┼→ Agent B (Mechanistic Studies)
 **Example:** Multi-domain safety assessment (clinical, mechanistic, regulatory)
 
 #### Pattern 3: Validator-Executor Loop
+
 **Use when:** Quality assurance requires iterative refinement
 
 **Structure:**
+
 ```
 Agent A (Executor) ←→ Agent B (Validator)
         ↓
@@ -684,6 +755,7 @@ Agent A (Executor) ←→ Agent B (Validator)
 ```
 
 **Coordination:**
+
 - Executor produces research output
 - Validator audits for quality and compliance
 - Executor revises based on validator feedback
@@ -692,9 +764,11 @@ Agent A (Executor) ←→ Agent B (Validator)
 **Example:** Research report development with quality assurance
 
 #### Pattern 4: Cross-Validation Matrix
+
 **Use when:** Maximum rigor required, multiple independent validations needed
 
 **Structure:**
+
 ```
 Agent A (Primary) → Agent B (Validator 1) ↘
                                            Agent D (Synthesis)
@@ -702,6 +776,7 @@ Agent C (Independent) → (no cross-talk) ↗
 ```
 
 **Coordination:**
+
 - Multiple agents research same question independently
 - No communication between primary agents
 - Synthesis agent reconciles findings
@@ -712,6 +787,7 @@ Agent C (Independent) → (no cross-talk) ↗
 ### Agent Role Specializations
 
 **Literature Search Agent:**
+
 - Execute database queries
 - Screen for relevance
 - Retrieve full-text sources
@@ -719,6 +795,7 @@ Agent C (Independent) → (no cross-talk) ↗
 - Document search strategy
 
 **Evidence Extraction Agent:**
+
 - Read sources systematically
 - Extract numerical and qualitative data
 - Record evidence with citations
@@ -726,6 +803,7 @@ Agent C (Independent) → (no cross-talk) ↗
 - Track conflicting evidence
 
 **Validation Agent:**
+
 - Verify source authenticity
 - Check data accuracy against sources
 - Validate citations
@@ -733,6 +811,7 @@ Agent C (Independent) → (no cross-talk) ↗
 - Apply anti-fabrication rules
 
 **Synthesis Agent:**
+
 - Integrate findings across sources
 - Reconcile conflicting evidence
 - Draw evidence-based conclusions
@@ -740,6 +819,7 @@ Agent C (Independent) → (no cross-talk) ↗
 - Document limitations
 
 **Quality Assurance Agent:**
+
 - Audit bibliography completeness
 - Verify claim-source mapping
 - Check CLAUDE.md compliance
@@ -749,29 +829,34 @@ Agent C (Independent) → (no cross-talk) ↗
 ### CLAUDE.md Parallel Agent Coordination Applied to Research
 
 **Persona Adoption:**
+
 - Each research agent adopts distinct specialized identity
 - Literature Agent focuses on comprehensive source identification
 - Validation Agent maintains skeptical, critical perspective
 - Synthesis Agent integrates without fabricating consensus
 
 **Complementary Analysis:**
+
 - Literature Agent provides breadth of sources
 - Evidence Extraction Agent provides depth of data
 - Validation Agent provides quality control
 - Synthesis Agent provides integration
 
 **Cross-Validation:**
+
 - Validation Agent checks Literature Agent's sources for authenticity
 - Synthesis Agent verifies Evidence Extraction Agent's data against sources
 - Quality Assurance Agent audits all agents' outputs
 
 **Synthesis Protocol:**
+
 - Combine insights without fabricating consensus metrics
 - Preserve disagreements between agents
 - Document where evidence conflicts
 - Avoid averaging or creating composite scores without justification
 
 **Anti-Fabrication in Teams:**
+
 - No metric averaging without measurement basis
 - Report differing assessments honestly
 - Each agent independently validates claims
@@ -782,6 +867,7 @@ Agent C (Independent) → (no cross-talk) ↗
 ### Citation Standards
 
 **Required Elements:**
+
 - Authors (all or "et al." for >3)
 - Title (complete, no placeholders)
 - Journal/source name
@@ -791,6 +877,7 @@ Agent C (Independent) → (no cross-talk) ↗
 - At least one of: PMID, DOI, or accessible URL
 
 **Prohibited:**
+
 - Fabricated PMIDs (sequential like 12345678, repetitive like 11111111)
 - Placeholder titles ("Example Study", "Sample Research", "Test Paper")
 - Placeholder authors ("Smith et al.", "Doe et al." without full citation)
@@ -801,16 +888,19 @@ Agent C (Independent) → (no cross-talk) ↗
 ### Citation Formats
 
 **Medical/Clinical Research:**
+
 ```
 Author A, Author B, Author C. Title of the article. Journal Name. Year;Volume(Issue):Pages. PMID: 12345678. DOI: 10.1234/journal.2024.56789
 ```
 
 **Technical/Engineering:**
+
 ```
 Author A, Author B (Year). Title of the article. Journal Name, Volume(Issue), Pages. https://doi.org/10.1234/journal.2024.56789
 ```
 
 **Regulatory Documents:**
+
 ```
 Regulatory Agency. Document Title. Publication Date. Accessed: Date. URL
 ```
@@ -818,6 +908,7 @@ Regulatory Agency. Document Title. Publication Date. Accessed: Date. URL
 ### Bibliography Quality Checks
 
 Use `validate-bibliography.py` to check:
+
 - PMID format validity and fabrication detection
 - URL accessibility and placeholder detection
 - Title/author placeholder pattern detection
@@ -828,18 +919,21 @@ Use `validate-bibliography.py` to check:
 ### Source Verification Patterns
 
 **Valid PMID Characteristics:**
+
 - 1-8 digits only
 - Not sequential (12345678, 23456789)
 - Not repetitive (11111111, 99999999)
 - Not obviously fabricated
 
 **Valid URL Characteristics:**
+
 - Starts with http:// or https://
 - Has valid domain (not example.com, test.com, localhost)
 - Resolves to accessible resource (HTTP 200/300 status)
 - Not containing "placeholder", "fake", "dummy", "test"
 
 **Valid DOI Characteristics:**
+
 - Starts with "10."
 - Has proper format: 10.XXXX/identifier
 
@@ -850,6 +944,7 @@ Use `validate-bibliography.py` to check:
 **Purpose:** Detect fabricated or incomplete sources
 
 **Checks:**
+
 - PMID format and authenticity patterns
 - URL accessibility
 - Title/author placeholder detection
@@ -857,11 +952,13 @@ Use `validate-bibliography.py` to check:
 - Identifier completeness
 
 **Usage:**
+
 ```bash
 python scripts/validate-bibliography.py <bibliography_file>
 ```
 
 **Output:**
+
 - List of validation issues by source
 - Severity classification (critical, warning, info)
 - Suggested fixes
@@ -872,6 +969,7 @@ python scripts/validate-bibliography.py <bibliography_file>
 **Purpose:** Validate research claims and CLAUDE.md compliance
 
 **Checks:**
+
 - Unsupported claims (assertions without citations)
 - Banned language (without evidence)
 - Score fabrication
@@ -880,11 +978,13 @@ python scripts/validate-bibliography.py <bibliography_file>
 - Limitations completeness
 
 **Usage:**
+
 ```bash
 python scripts/research-quality-check.py <research_report>
 ```
 
 **Output:**
+
 - List of compliance issues
 - CLAUDE.md violations
 - Unsupported claims
@@ -894,6 +994,7 @@ python scripts/research-quality-check.py <research_report>
 ## Common Research Pitfalls
 
 ### Fabrication Pitfalls
+
 - Creating fake PMIDs to fill citation gaps
 - Using placeholder sources ("Example Study")
 - Fabricating consensus scores without measurement
@@ -901,6 +1002,7 @@ python scripts/research-quality-check.py <research_report>
 - Claiming higher confidence than evidence supports
 
 ### Methodology Pitfalls
+
 - Inconsistent application of inclusion criteria
 - Cherry-picking favorable results
 - Ignoring conflicting evidence
@@ -908,6 +1010,7 @@ python scripts/research-quality-check.py <research_report>
 - Missing limitations section
 
 ### Citation Pitfalls
+
 - Incomplete bibliographic information
 - Inaccessible URLs
 - Format inconsistency across citations
@@ -915,6 +1018,7 @@ python scripts/research-quality-check.py <research_report>
 - Duplicate citations with different numbering
 
 ### Synthesis Pitfalls
+
 - Overgeneralizing from limited evidence
 - Misrepresenting study findings
 - Losing context for numerical claims
@@ -924,7 +1028,9 @@ python scripts/research-quality-check.py <research_report>
 ## Integration with Other Skills
 
 ### Memory MCP Integration (Primary)
+
 **How it integrates:**
+
 - Persist research findings across sessions as semantic memories
 - Store successful methodology patterns as procedural memories
 - Track complete research projects as episodic memories
@@ -933,6 +1039,7 @@ python scripts/research-quality-check.py <research_report>
 
 **Example:**
 Before starting ADC toxicity research:
+
 ```
 // Search for past ADC research
 memory_search({
@@ -955,7 +1062,9 @@ memory_search({
 ```
 
 ### Skill #1: Evidence-Based Validation
+
 **How it integrates:**
+
 - Apply rigorous validation to all research claims
 - Use anti-fabrication protocols throughout research lifecycle
 - Validate sources for authenticity
@@ -964,6 +1073,7 @@ memory_search({
 
 **Example:**
 When validating bibliography, use Evidence-Based Validation skill to:
+
 1. Check each PMID for fabrication patterns
 2. Verify URLs are accessible
 3. Detect placeholder text in titles/authors
@@ -971,7 +1081,9 @@ When validating bibliography, use Evidence-Based Validation skill to:
 5. Validate confidence levels against evidence quality
 
 ### Skill #2: MCP Server Development
+
 **How it integrates:**
+
 - Create research tools accessible via MCP
 - Enable research agents to communicate via MCP protocol
 - Build bibliography management MCP servers
@@ -979,13 +1091,16 @@ When validating bibliography, use Evidence-Based Validation skill to:
 
 **Example:**
 Build MCP server for bibliography validation:
+
 - Tool: `validate_sources` - check source authenticity
 - Tool: `check_citation_format` - verify citation consistency
 - Tool: `verify_pmid` - validate PMID against PubMed API
 - Tool: `assess_evidence_quality` - evaluate study quality indicators
 
 ### Skill #3: Multi-Agent Orchestration
+
 **How it integrates:**
+
 - Apply coordination patterns to research agent teams
 - Implement quality gates between research stages
 - Enable parallel research execution with synthesis
@@ -993,6 +1108,7 @@ Build MCP server for bibliography validation:
 
 **Example:**
 For systematic literature review:
+
 1. Orchestrator assigns search to Agent A
 2. Agent A completes, passes to Agent B (extraction)
 3. Agent C validates Agent A's sources (parallel with Agent B)
@@ -1000,7 +1116,9 @@ For systematic literature review:
 5. Quality gates enforce validation before proceeding
 
 ### Skill #4: Distributed Systems Debugging
+
 **How it integrates:**
+
 - Debug multi-agent research processes
 - Validate research workflow execution
 - Trace evidence chains through research pipeline
@@ -1008,6 +1126,7 @@ For systematic literature review:
 
 **Example:**
 When research quality is insufficient:
+
 1. Trace which agent produced problematic output
 2. Check inputs/outputs at each stage
 3. Validate agent coordination worked correctly
@@ -1017,9 +1136,11 @@ When research quality is insufficient:
 ## Advanced Research Patterns
 
 ### Systematic Literature Review
+
 Full workflow in `workflows/systematic-literature-review.md`
 
 **Stages:**
+
 1. Protocol development (research question, criteria, search strategy)
 2. Systematic search execution
 3. Screening (title/abstract, then full-text)
@@ -1029,6 +1150,7 @@ Full workflow in `workflows/systematic-literature-review.md`
 7. Report generation
 
 **Quality Standards:**
+
 - PRISMA compliance (Preferred Reporting Items for Systematic Reviews)
 - Pre-registered protocol
 - Reproducible search strategy
@@ -1037,9 +1159,11 @@ Full workflow in `workflows/systematic-literature-review.md`
 - Comprehensive bibliography
 
 ### Multi-Agent Research Project
+
 Full workflow in `workflows/multi-agent-research-project.md`
 
 **Phases:**
+
 1. Planning: Define research questions, assign agent roles
 2. Parallel execution: Agents work on specialized domains
 3. Cross-validation: Agents verify each other's findings
@@ -1048,6 +1172,7 @@ Full workflow in `workflows/multi-agent-research-project.md`
 6. Delivery: Package with methodology documentation
 
 **Coordination:**
+
 - Clear agent role definitions
 - Quality gates between phases
 - Regular sync points
@@ -1055,9 +1180,11 @@ Full workflow in `workflows/multi-agent-research-project.md`
 - Final synthesis with preserved disagreements
 
 ### Evidence-Based Safety Assessment
+
 Pattern from safety-research-system ADC/ILD project
 
 **Structure:**
+
 1. Research Question: "What is the mechanistic basis for ADC-associated ILD?"
 2. Agent Assignments:
    - Agent A: Clinical evidence (incidence, outcomes, risk factors)
@@ -1074,6 +1201,7 @@ Pattern from safety-research-system ADC/ILD project
 ## Limitations of This Skill
 
 This skill does NOT:
+
 - Replace domain expertise in research topics
 - Automatically execute research (requires human judgment)
 - Guarantee research validity (depends on source quality)
@@ -1083,6 +1211,7 @@ This skill does NOT:
 - Automatically sync memories across distributed agents (manual coordination required)
 
 This skill DOES:
+
 - Provide systematic methodology to reduce errors
 - Enable quality automation to catch common pitfalls
 - Structure multi-agent research coordination
@@ -1096,6 +1225,7 @@ This skill DOES:
 ### Memory System Considerations
 
 **What Gets Stored:**
+
 - Research findings with source attribution (semantic)
 - Successful methodology patterns (procedural)
 - Complete project histories (episodic)
@@ -1103,12 +1233,14 @@ This skill DOES:
 - Domain knowledge (semantic)
 
 **What Does NOT Get Stored:**
+
 - Raw bibliographies (too large, use files instead)
 - Complete research reports (use files, store summaries in memory)
 - Individual citation details (store key findings only)
 - Temporary working memory (use WORKING type, low importance)
 
 **Memory Quality Standards:**
+
 - All semantic memories must include source citations
 - Procedural memories must include success/failure context
 - Episodic memories should use JSON for structured data
@@ -1118,6 +1250,7 @@ This skill DOES:
 ## References & Resources
 
 **Internal Resources:**
+
 - `reference/research-methodology.md` - Detailed research methods
 - `reference/multi-agent-research.md` - Agent coordination patterns
 - `reference/citation-management.md` - Citation standards and validation
@@ -1132,6 +1265,7 @@ This skill DOES:
 - `scripts/research-quality-check.py` - Quality assurance automation
 
 **External Standards:**
+
 - PRISMA: Systematic review reporting standard
 - CLAUDE.md: Anti-fabrication protocols (mandatory compliance)
 - Evidence-Based Medicine hierarchy
@@ -1143,13 +1277,14 @@ This skill DOES:
 **Created:** 2025-10-18
 **Updated:** 2025-12-11 (Memory MCP Integration)
 **Dependencies:**
+
 - Memory MCP (memory_create, memory_search, memory_get, memory_stats)
 - Evidence-Based Validation
 - Multi-Agent Orchestration
 - MCP Server Development (optional)
 - Distributed Systems Debugging (optional)
-**Skill Level:** Advanced
-**Domain:** Research methodology, safety assessment, evidence synthesis
-**Quality Standard:** Medical/pharmaceutical research grade
-**Memory Integration:** Full (semantic, procedural, episodic)
-**Cross-Session Learning:** Enabled via Memory MCP
+  **Skill Level:** Advanced
+  **Domain:** Research methodology, safety assessment, evidence synthesis
+  **Quality Standard:** Medical/pharmaceutical research grade
+  **Memory Integration:** Full (semantic, procedural, episodic)
+  **Cross-Session Learning:** Enabled via Memory MCP

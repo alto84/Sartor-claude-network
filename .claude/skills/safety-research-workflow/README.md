@@ -14,6 +14,7 @@ The Safety Research Workflow skill provides comprehensive guidance for conductin
 ## When to Use This Skill
 
 Use this skill when you need to:
+
 - Conduct systematic literature reviews
 - Perform pharmaceutical or medical safety assessments
 - Coordinate multiple research agents with specialized roles
@@ -63,30 +64,35 @@ safety-research-workflow/
 ## Key Features
 
 ### 1. Evidence-Based Methodology
+
 - Systematic literature search with documented strategy
 - Rigorous source validation (detect fake PMIDs, placeholders)
 - Evidence extraction with proper attribution
 - Synthesis based on actual evidence, not fabrication
 
 ### 2. Multi-Agent Coordination
+
 - Specialized research agents (search, extract, validate, synthesize, QA)
 - Coordination patterns from CLAUDE.md protocols
 - Quality gates between workflow stages
 - Cross-validation and disagreement preservation
 
 ### 3. Quality Assurance
+
 - Automated validation scripts for bibliography and compliance
 - CLAUDE.md anti-fabrication enforcement
 - Multi-layer quality checks (automated + manual)
 - Comprehensive limitations documentation
 
 ### 4. Memory MCP Integration (NEW in v2.0)
+
 - **Persistent Learning:** Store research findings, methodologies, and project histories
 - **Cross-Session Knowledge:** Build domain expertise that accumulates over time
 - **Pattern Recognition:** Learn from past successes and failures
 - **Continuous Improvement:** Each research project improves future research
 
 ### 5. Integration of All Skills
+
 - **Memory MCP:** Persist knowledge across sessions
 - **Skill #1 (Evidence-Based Validation):** Validate all claims and sources
 - **Skill #2 (MCP Server Development):** Research tools via MCP
@@ -100,11 +106,13 @@ safety-research-workflow/
 **Purpose:** Detect fabricated sources and format issues
 
 **Usage:**
+
 ```bash
 python scripts/validate-bibliography.py bibliography.md [--check-access] [--strict]
 ```
 
 **Checks:**
+
 - PMID format and authenticity (detects fake PMIDs)
 - DOI format and validity
 - URL accessibility and placeholder detection
@@ -112,6 +120,7 @@ python scripts/validate-bibliography.py bibliography.md [--check-access] [--stri
 - Citation completeness
 
 **Example Output:**
+
 ```
 === Bibliography Validation Report ===
 
@@ -130,17 +139,20 @@ OVERALL STATUS: PASS
 **Purpose:** Validate research quality and CLAUDE.md compliance
 
 **Usage:**
+
 ```bash
 python scripts/research-quality-check.py manuscript.md [--check-all]
 ```
 
 **Checks:**
+
 - Unsupported claims (assertions without citations)
 - CLAUDE.md violations (score fabrication, banned language)
 - Confidence level justifications
 - Limitations section presence
 
 **Example Output:**
+
 ```
 === Research Quality Check Report ===
 
@@ -173,19 +185,22 @@ Status: PASS
 ## Quality Standards
 
 ### Bibliography Requirements
+
 - 100% of sources have valid identifier (PMID, DOI, or URL)
 - 0 fabricated sources (no fake PMIDs, no placeholders)
-- >80% with PMID (medical research)
-- >90% with DOI
+- > 80% with PMID (medical research)
+- > 90% with DOI
 - Format consistency across all citations
 
 ### Evidence Requirements
+
 - 100% of claims have source citations
-- >95% of numerical claims have context (n, CI)
+- > 95% of numerical claims have context (n, CI)
 - Conflicting evidence documented
 - Limitations comprehensively stated
 
 ### CLAUDE.md Requirements
+
 - 0 score fabrications (no scores >80% without validation)
 - 0 banned language violations
 - 0 unsupported claims
@@ -203,6 +218,7 @@ See `examples/adc-ild-research-workflow.md` for complete real-world example:
 **Outcome:** Publication-ready comprehensive review
 
 **Key Metrics:**
+
 - 146/165 (88.5%) with verified PMIDs
 - 165/165 (100%) with DOIs
 - 127/127 (100%) claims cited
@@ -212,6 +228,7 @@ See `examples/adc-ild-research-workflow.md` for complete real-world example:
 ## Integration with Other Skills
 
 ### Memory MCP (Primary Integration)
+
 - **Semantic memories:** Store research findings with source citations
 - **Procedural memories:** Store successful methodology patterns
 - **Episodic memories:** Track complete research project histories
@@ -220,24 +237,28 @@ See `examples/adc-ild-research-workflow.md` for complete real-world example:
 - **Use at every stage of research workflow**
 
 ### Evidence-Based Validation (Skill #1)
+
 - Validates all sources for authenticity
 - Enforces CLAUDE.md anti-fabrication protocols
 - Checks claim-source mapping
 - **Use throughout research lifecycle**
 
 ### MCP Server Development (Skill #2)
+
 - Research tools accessible via MCP
 - Agent communication via MCP protocol
 - External services (PubMed, DOI) via MCP
 - **Use for tool infrastructure**
 
 ### Multi-Agent Orchestration (Skill #3)
+
 - Coordinates specialized research agents
 - Implements quality gates between stages
 - Applies CLAUDE.md coordination protocols
 - **Use for agent coordination**
 
 ### Distributed Systems Debugging (Skill #4)
+
 - Traces evidence chains
 - Validates research processes
 - Debugs quality issues
@@ -246,16 +267,19 @@ See `examples/adc-ild-research-workflow.md` for complete real-world example:
 ## Common Research Pitfalls (Avoided)
 
 **Fabrication:**
+
 - Creating fake PMIDs → Detected by validate-bibliography.py
 - Using placeholder sources → Detected by pattern matching
 - Fabricating consensus scores → Prevented by CLAUDE.md checks
 
 **Methodology:**
+
 - Inconsistent inclusion criteria → Prevented by documented protocol
 - Cherry-picking results → Prevented by comprehensive search
 - Inadequate limitations → Required by quality gates
 
 **Citation:**
+
 - Incomplete bibliographic info → Detected by completeness checks
 - Inaccessible URLs → Detected by accessibility checks
 - Missing source identifiers → Flagged as critical issue
@@ -295,6 +319,7 @@ See `examples/adc-ild-research-workflow.md` for complete real-world example:
 ## Success Metrics
 
 Research using this skill should achieve:
+
 - ✓ 0 fabricated sources
 - ✓ 100% claim-source mapping
 - ✓ 0 CLAUDE.md violations
@@ -305,39 +330,45 @@ Research using this skill should achieve:
 ## Support & Resources
 
 **Documentation:**
+
 - SKILL.md - Complete methodology
 - reference/ - Detailed guides
 - workflows/ - Step-by-step processes
 - examples/ - Real research demonstrations
 
 **Tools:**
+
 - validate-bibliography.py - Source validation
 - research-quality-check.py - Quality checking
 
 **Standards:**
+
 - PRISMA 2020 - Systematic review reporting
 - GRADE - Evidence certainty assessment
 - CLAUDE.md - Anti-fabrication protocols
 
 ## Version History
 
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0.0 | 2025-10-18 | Initial release |
-| 2.0.0 | 2025-12-11 | Added Memory MCP integration for persistent learning |
+| Version | Date       | Changes                                              |
+| ------- | ---------- | ---------------------------------------------------- |
+| 1.0.0   | 2025-10-18 | Initial release                                      |
+| 2.0.0   | 2025-12-11 | Added Memory MCP integration for persistent learning |
 
 ## Dependencies
 
 **Required:**
+
 - Memory MCP (memory_create, memory_search, memory_get, memory_stats)
 - Evidence-Based Validation (Skill #1)
 - Multi-Agent Orchestration (Skill #3)
 
 **Optional:**
+
 - MCP Server Development (Skill #2) - for tool infrastructure
 - Distributed Systems Debugging (Skill #4) - for process validation
 
 **External Standards:**
+
 - CLAUDE.md protocols (mandatory)
 - PRISMA guidelines (recommended for systematic reviews)
 
@@ -346,6 +377,7 @@ Research using this skill should achieve:
 ### Quick Examples
 
 **Store a research finding:**
+
 ```
 memory_create({
   content: "ADC-ILD incidence: 2-15% across 8 studies (n=2,450). Sources: PMID 34567890, 35678901",
@@ -356,6 +388,7 @@ memory_create({
 ```
 
 **Store a successful methodology:**
+
 ```
 memory_create({
   content: "Search strategy: PubMed 'ADC AND toxicity' 2015-2024, yielded 165 relevant from 847 total",
@@ -366,6 +399,7 @@ memory_create({
 ```
 
 **Retrieve past research:**
+
 ```
 memory_search({
   type: "episodic",

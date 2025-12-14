@@ -23,70 +23,86 @@ npm run test:firestore
 ### Core Implementations
 
 #### `firebase-init.ts`
+
 Firebase Admin SDK initialization with multi-source credential loading.
 
 **Features:**
+
 - Loads credentials from 3 sources (env var, config file, base64 env)
 - Supports both Firestore and Realtime Database
 - Safe to call multiple times (idempotent)
 - Logs to stderr to maintain MCP protocol compliance
 
 #### `firebase-store.ts`
+
 Realtime Database-backed memory store.
 
 **Use when:**
+
 - You already have Realtime Database set up
 - You need the lowest latency (20-50ms)
 - You have complex nested data structures
 
 **Requires:**
+
 - Service account credentials
 - `FIREBASE_DATABASE_URL` environment variable OR `config/firebase-config.json`
 - Manual database creation in Firebase Console
 
 #### `firestore-store.ts`
+
 Firestore-backed memory store (NEW).
 
 **Use when:**
+
 - You're starting fresh (recommended)
 - Realtime Database is not yet set up
 - You want better scalability
 - You need advanced query capabilities
 
 **Requires:**
+
 - Service account credentials only (no additional config!)
 - Firestore enabled (often auto-enabled)
 
 #### `multi-tier-store.ts`
+
 Multi-tier store using Realtime Database as hot tier.
 
 **Tiers:**
+
 - Hot: Realtime Database (<100ms)
 - Warm: File storage (<500ms)
 - Cold: GitHub (1-5s, optional)
 
 #### `firestore-multi-tier-store.ts`
+
 Multi-tier store using Firestore as hot tier (NEW).
 
 **Tiers:**
+
 - Hot: Firestore (<100ms)
 - Warm: File storage (<500ms)
 - Cold: GitHub (1-5s, optional)
 
 **Advantages:**
+
 - No database URL configuration needed
 - Works immediately on most Firebase projects
 - Same interface as `multi-tier-store.ts`
 
 #### `file-store.ts`
+
 File-based memory store (fallback).
 
 **Use when:**
+
 - Firebase is not configured
 - Testing locally without cloud dependencies
 - Development without Firebase credentials
 
 **Storage:**
+
 - Location: `data/memories.json`
 - Auto-creates directory if needed
 - Synchronous operations
@@ -94,22 +110,26 @@ File-based memory store (fallback).
 ### Testing & Utilities
 
 #### `test-firestore.ts`
+
 Test Firestore connectivity and operations.
 
 **Run:** `npm run test:firestore`
 
 **Tests:**
+
 1. Firestore initialization
 2. Memory creation
 3. Memory retrieval
 4. Statistics gathering
 
 #### `check-firebase-backends.ts`
+
 Compare availability of both Firebase backends.
 
 **Run:** `npm run test:firebase-backends`
 
 **Outputs:**
+
 - Availability status for each backend
 - Latency measurements
 - Error diagnostics
@@ -118,11 +138,13 @@ Compare availability of both Firebase backends.
 ### Integration
 
 #### `memory-server.ts`
+
 MCP server exposing memory operations as tools.
 
 **Current:** Uses `MultiTierStore` (Realtime Database)
 
 **To switch to Firestore:**
+
 ```typescript
 // Replace this:
 import { MultiTierStore } from './multi-tier-store.js';
@@ -134,6 +156,7 @@ const multiTierStore = new FirestoreMultiTierStore();
 ```
 
 #### `http-server.ts`
+
 HTTP transport for MCP server (for agents).
 
 **Port:** 3001 (default)
@@ -148,11 +171,13 @@ HTTP transport for MCP server (for agents).
 Choose one method:
 
 1. **Environment Variable (Recommended):**
+
    ```bash
    export GOOGLE_APPLICATION_CREDENTIALS="/path/to/service-account.json"
    ```
 
 2. **Config File:**
+
    ```bash
    cp your-service-account.json config/service-account.json
    ```
@@ -167,12 +192,14 @@ Choose one method:
 **Required:** Database URL
 
 **Option 1 - Environment Variable:**
+
 ```bash
 export FIREBASE_DATABASE_URL="https://your-project.firebaseio.com"
 ```
 
 **Option 2 - Config File:**
 Create `config/firebase-config.json`:
+
 ```json
 {
   "realtimeDatabase": {
@@ -235,14 +262,10 @@ console.log('Backends:', status);
 // { firestore: true, github: false, file: true }
 
 // Create high-importance memory (auto-archived to GitHub if enabled)
-const memory = await store.createMemory(
-  'Critical system directive',
-  MemoryType.SEMANTIC,
-  {
-    importance_score: 0.95, // Will auto-archive to GitHub if score >= 0.8
-    tags: ['directive', 'high-priority'],
-  }
-);
+const memory = await store.createMemory('Critical system directive', MemoryType.SEMANTIC, {
+  importance_score: 0.95, // Will auto-archive to GitHub if score >= 0.8
+  tags: ['directive', 'high-priority'],
+});
 
 // Manual archive to GitHub
 await store.archiveToGitHub(memory.id);
@@ -258,20 +281,18 @@ import { MultiTierStore } from './multi-tier-store';
 const firestoreStore = new FirestoreMultiTierStore();
 const rtdbStore = new MultiTierStore();
 
-const store = firestoreStore.getBackendStatus().firestore
-  ? firestoreStore
-  : rtdbStore;
+const store = firestoreStore.getBackendStatus().firestore ? firestoreStore : rtdbStore;
 
 console.log(`Using: ${store.constructor.name}`);
 ```
 
 ## Performance Comparison
 
-| Backend | Read Latency | Write Latency | Query Complexity | Scalability |
-|---------|-------------|---------------|------------------|-------------|
-| Firestore | 30-60ms | 40-80ms | Advanced | Excellent |
-| Realtime DB | 20-50ms | 30-60ms | Basic | Good |
-| File Storage | <5ms | <10ms | Limited | Poor |
+| Backend      | Read Latency | Write Latency | Query Complexity | Scalability |
+| ------------ | ------------ | ------------- | ---------------- | ----------- |
+| Firestore    | 30-60ms      | 40-80ms       | Advanced         | Excellent   |
+| Realtime DB  | 20-50ms      | 30-60ms       | Basic            | Good        |
+| File Storage | <5ms         | <10ms         | Limited          | Poor        |
 
 ## Troubleshooting
 
@@ -280,6 +301,7 @@ console.log(`Using: ${store.constructor.name}`);
 **Cause:** Firestore not enabled or credentials invalid
 
 **Fix:**
+
 1. Go to Firebase Console → Firestore Database
 2. Click "Create database" if not already created
 3. Verify service account has "Cloud Datastore User" role
@@ -289,6 +311,7 @@ console.log(`Using: ${store.constructor.name}`);
 **Cause:** Realtime Database not created or URL not configured
 
 **Fix:**
+
 1. Go to Firebase Console → Realtime Database
 2. Click "Create database"
 3. Set `FIREBASE_DATABASE_URL` environment variable
@@ -298,6 +321,7 @@ console.log(`Using: ${store.constructor.name}`);
 **Cause:** Service account lacks required roles
 
 **Fix:**
+
 1. Go to Google Cloud Console → IAM & Admin
 2. Find your service account
 3. Add role: "Cloud Datastore User" (for Firestore)
@@ -308,6 +332,7 @@ console.log(`Using: ${store.constructor.name}`);
 **Cause:** Service account file not found or invalid JSON
 
 **Fix:**
+
 1. Verify file path in `GOOGLE_APPLICATION_CREDENTIALS`
 2. Check file exists and is readable
 3. Validate JSON syntax: `cat config/service-account.json | jq`
@@ -342,14 +367,10 @@ async function migrate() {
 
   // Copy to Firestore
   for (const mem of memories) {
-    await firestoreStore.createMemory(
-      mem.content,
-      mem.type,
-      {
-        importance_score: mem.importance_score,
-        tags: mem.tags,
-      }
-    );
+    await firestoreStore.createMemory(mem.content, mem.type, {
+      importance_score: mem.importance_score,
+      tags: mem.tags,
+    });
   }
 
   console.log(`Migrated ${memories.length} memories`);
@@ -368,14 +389,10 @@ async function migrate() {
   const memories = await rtdbStore.searchMemories({}, 10000);
 
   for (const mem of memories) {
-    await firestoreStore.createMemory(
-      mem.content,
-      mem.type,
-      {
-        importance_score: mem.importance_score,
-        tags: mem.tags,
-      }
-    );
+    await firestoreStore.createMemory(mem.content, mem.type, {
+      importance_score: mem.importance_score,
+      tags: mem.tags,
+    });
   }
 
   console.log(`Migrated ${memories.length} memories`);
@@ -394,6 +411,7 @@ async function migrate() {
 ## Support
 
 For issues or questions:
+
 1. Check Firebase Console for backend status
 2. Run `npm run test:firebase-backends` for diagnostics
 3. Review logs in stderr (MCP protocol compliance)

@@ -1,6 +1,7 @@
 # Sartor Claude Network - Skill Development Guide
 
 ## Table of Contents
+
 1. [Overview](#overview)
 2. [Skill Architecture](#skill-architecture)
 3. [Creating Skills](#creating-skills)
@@ -19,6 +20,7 @@ Skills are the fundamental building blocks of the Sartor Claude Network, represe
 ### What is a Skill?
 
 A skill is a self-contained unit of functionality that:
+
 - **Encapsulates** specific capabilities or knowledge
 - **Exposes** clear inputs and outputs
 - **Validates** parameters and ensures safe execution
@@ -66,41 +68,41 @@ Skills are defined in YAML format with the following structure:
 
 ```yaml
 metadata:
-  name: skill_name           # Unique identifier
-  version: 1.0.0             # Semantic version
-  description: "..."         # Clear description
-  category: core/type        # Hierarchical category
-  tags: []                   # Searchable tags
-  author: "..."              # Creator
-  created: "2025-11-03"      # Creation date
-  updated: "2025-11-03"      # Last update
-  dependencies: []           # Required skills
-  permissions: []            # Required permissions
+  name: skill_name # Unique identifier
+  version: 1.0.0 # Semantic version
+  description: '...' # Clear description
+  category: core/type # Hierarchical category
+  tags: [] # Searchable tags
+  author: '...' # Creator
+  created: '2025-11-03' # Creation date
+  updated: '2025-11-03' # Last update
+  dependencies: [] # Required skills
+  permissions: [] # Required permissions
 
-parameters:                  # Input parameters
+parameters: # Input parameters
   - name: param_name
-    type: string            # string|integer|float|boolean|list|dict
-    description: "..."
+    type: string # string|integer|float|boolean|list|dict
+    description: '...'
     required: true
     default: null
-    validation:             # Optional validation rules
+    validation: # Optional validation rules
       min: 0
       max: 100
-      pattern: "regex"
+      pattern: 'regex'
       enum: [...]
 
-outputs:                    # Output specification
+outputs: # Output specification
   - name: output_name
     type: string
-    description: "..."
-    schema:                 # Optional JSON schema
+    description: '...'
+    schema: # Optional JSON schema
       properties:
         field:
           type: string
 
-execution:                  # How the skill executes
-  type: workflow           # workflow|function|external
-  steps: []                # Execution steps
+execution: # How the skill executes
+  type: workflow # workflow|function|external
+  steps: [] # Execution steps
 ```
 
 ### Execution Types
@@ -164,7 +166,7 @@ execution:
 
     - name: process_data
       description: Main processing logic
-      parallel: true  # Execute branches in parallel
+      parallel: true # Execute branches in parallel
       branches:
         - name: analyze
           actions:
@@ -191,7 +193,7 @@ Define how your skill handles errors:
 error_handling:
   - error: invalid_input
     action: return_error
-    message: "Input validation failed"
+    message: 'Input validation failed'
 
   - error: timeout
     action: retry_with_backoff
@@ -384,7 +386,7 @@ execution:
       skill: data_store
       inputs:
         operation: retrieve
-        key: "$input.data_key"
+        key: '$input.data_key'
       outputs_to_inputs:
         - from: data
           to: raw_data
@@ -392,7 +394,7 @@ execution:
     - name: process_data
       skill: data_processor
       inputs:
-        data: "$previous.raw_data"
+        data: '$previous.raw_data'
       outputs_to_inputs:
         - from: processed
           to: clean_data
@@ -400,7 +402,7 @@ execution:
     - name: analyze_data
       skill: data_analyzer
       inputs:
-        data: "$previous.clean_data"
+        data: '$previous.clean_data'
 ```
 
 ### Pattern 2: Recursive Skills
@@ -418,10 +420,10 @@ execution:
     - name: check_more_items
       condition:
         items_remaining: true
-      skill: $self  # Recursive call
+      skill: $self # Recursive call
       inputs:
-        items: "$remaining_items"
-        depth: "$input.depth - 1"
+        items: '$remaining_items'
+        depth: '$input.depth - 1'
 ```
 
 ### Pattern 3: Dynamic Skill Selection
@@ -438,9 +440,9 @@ execution:
         - type: select_best_skill
 
     - name: execute_selected
-      dynamic_skill: "$previous.selected_skill"
+      dynamic_skill: '$previous.selected_skill'
       inputs:
-        data: "$input.data"
+        data: '$input.data'
 ```
 
 ### Pattern 4: Fallback Chains
@@ -702,18 +704,18 @@ execution:
         - name: fetch_primary
           skill: data_fetcher
           inputs:
-            source: "$input.data_source"
+            source: '$input.data_source'
 
         - name: fetch_context
           skill: context_gatherer
           inputs:
-            source: "$input.data_source"
+            source: '$input.data_source'
 
     - name: preprocessing
       skill: data_preprocessor
       inputs:
-        raw_data: "$previous.fetch_primary.data"
-        context: "$previous.fetch_context.context"
+        raw_data: '$previous.fetch_primary.data'
+        context: '$previous.fetch_context.context'
 
     - name: analysis_pipeline
       condition:
@@ -731,14 +733,14 @@ execution:
     - name: generate_insights
       skill: insight_generator
       inputs:
-        analysis_data: "$previous"
-        depth: "$input.analysis_depth"
+        analysis_data: '$previous'
+        depth: '$input.analysis_depth'
 
     - name: format_output
       skill: report_formatter
       inputs:
-        data: "$previous.insights"
-        format: "$input.output_format"
+        data: '$previous.insights'
+        format: '$input.output_format'
 
 error_handling:
   - error: data_source_unavailable
@@ -815,7 +817,7 @@ execution:
       skill: data_store
       inputs:
         operation: retrieve
-        key: "learning/optimizer/$input.problem_definition.type"
+        key: 'learning/optimizer/$input.problem_definition.type'
 
     - name: apply_learning
       description: Apply previously learned optimizations
@@ -828,8 +830,8 @@ execution:
       description: Run optimization with current knowledge
       skill: base_optimizer
       inputs:
-        problem: "$input.problem_definition"
-        initial_params: "$previous.adjusted_params"
+        problem: '$input.problem_definition'
+        initial_params: '$previous.adjusted_params'
 
     - name: evaluate_performance
       description: Measure how well we did
@@ -845,11 +847,11 @@ execution:
       skill: data_store
       inputs:
         operation: update
-        key: "learning/optimizer/$input.problem_definition.type"
+        key: 'learning/optimizer/$input.problem_definition.type'
         data:
-          parameters: "$optimization.best_params"
-          performance: "$evaluation.metrics"
-          timestamp: "$current_time"
+          parameters: '$optimization.best_params'
+          performance: '$evaluation.metrics'
+          timestamp: '$current_time'
 
     - name: share_learning
       description: Share improvements with network
@@ -859,7 +861,7 @@ execution:
       inputs:
         recipient: broadcast
         message_type: knowledge
-        message: "Improved optimization for $input.problem_definition.type"
+        message: 'Improved optimization for $input.problem_definition.type'
 
 meta_learning:
   track_metrics:
@@ -867,9 +869,9 @@ meta_learning:
     - solution_quality
     - resource_usage
 
-  improvement_threshold: 0.05  # 5% improvement triggers learning
+  improvement_threshold: 0.05 # 5% improvement triggers learning
 
-  share_threshold: 0.20  # 20% improvement shared with network
+  share_threshold: 0.20 # 20% improvement shared with network
 ```
 
 ---
@@ -890,5 +892,5 @@ For questions or contributions, please refer to the main project documentation o
 
 ---
 
-*Last updated: 2025-11-03*
-*Version: 1.0.0*
+_Last updated: 2025-11-03_
+_Version: 1.0.0_

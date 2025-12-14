@@ -130,7 +130,7 @@ describe('Adaptive Intelligence', () => {
       }
 
       const patterns = intelligence.getPatterns();
-      expect(patterns.some(p => p.trigger.taskTypes?.includes('code_review'))).toBe(true);
+      expect(patterns.some((p) => p.trigger.taskTypes?.includes('code_review'))).toBe(true);
     });
 
     it('should learn complexity patterns', () => {
@@ -146,7 +146,7 @@ describe('Adaptive Intelligence', () => {
       }
 
       const patterns = intelligence.getPatterns();
-      expect(patterns.some(p => p.type === PatternType.COMPLEXITY_PATTERN)).toBe(true);
+      expect(patterns.some((p) => p.type === PatternType.COMPLEXITY_PATTERN)).toBe(true);
     });
 
     it('should learn sequence patterns', () => {
@@ -162,7 +162,7 @@ describe('Adaptive Intelligence', () => {
       }
 
       const patterns = intelligence.getPatterns();
-      expect(patterns.some(p => p.type === PatternType.TASK_SEQUENCE)).toBe(true);
+      expect(patterns.some((p) => p.type === PatternType.TASK_SEQUENCE)).toBe(true);
     });
 
     it('should learn error patterns', () => {
@@ -179,7 +179,7 @@ describe('Adaptive Intelligence', () => {
       }
 
       const patterns = intelligence.getPatterns();
-      expect(patterns.some(p => p.type === PatternType.ERROR_CORRELATION)).toBe(true);
+      expect(patterns.some((p) => p.type === PatternType.ERROR_CORRELATION)).toBe(true);
     });
 
     it('should emit pattern detected event', () => {
@@ -419,7 +419,7 @@ describe('Adaptive Intelligence', () => {
       }
 
       const strategies = intelligence.getStrategies();
-      const strategy = strategies.find(s => s.id === 'strategy-1');
+      const strategy = strategies.find((s) => s.id === 'strategy-1');
 
       expect(strategy!.usageCount).toBeGreaterThan(0);
     });

@@ -10,6 +10,7 @@
 ## What This Skill Does
 
 Prevents the exact problems we found in our audit:
+
 - ❌ "170+ tests passing" when 0 can run
 - ❌ "99% delivery rate" without measurement
 - ❌ "Production ready" when 30% complete
@@ -17,6 +18,7 @@ Prevents the exact problems we found in our audit:
 - ❌ Fabricated performance metrics
 
 By enforcing:
+
 - ✅ Evidence before claims
 - ✅ Measurement before metrics
 - ✅ Honesty about unknowns
@@ -69,6 +71,7 @@ Task(
 ### The Problem We Had
 
 From audit findings (2025-11-07):
+
 ```
 Claimed: "170+ comprehensive tests, all passing"
 Reality: 0 executable tests
@@ -85,6 +88,7 @@ Impact: Misleading documentation, frustrated users, technical debt
 ### The Solution
 
 **Evidence-based engineering**:
+
 ```
 Report: "Test Status: 60 tests exist, 0 executable (missing pytest),
          6 manually verified. Need pip install to run full suite.
@@ -100,12 +104,14 @@ Result: Honest baseline, clear next steps, accurate expectations
 ### 1. Anti-Fabrication Protocol
 
 **Banned without measurement**:
+
 - Scores (85/100, A+)
 - Percentages (99%, 95%)
 - Performance metrics (100 msg/sec, <10ms)
 - Superlatives (exceptional, world-class)
 
 **Required instead**:
+
 - Evidence chain (what, how, when, confidence)
 - Clear limitations
 - Unknowns explicitly stated
@@ -115,6 +121,7 @@ Result: Honest baseline, clear next steps, accurate expectations
 **Wrong**: "Implementation complete"
 
 **Right**:
+
 ```
 Component: Message sending
 - Implemented: 5/10 features
@@ -130,6 +137,7 @@ Completion: 20% (2 fully working / 10 planned)
 **Wrong**: "All tests passing"
 
 **Right**:
+
 ```
 Test Results (2025-11-07 14:00):
 - Tests found: 60
@@ -144,6 +152,7 @@ Untested: Error paths, concurrent operations, large data
 ### 4. Self-Audit Checklist
 
 Before every report, check:
+
 - [ ] Can I show the raw data?
 - [ ] Did I measure or estimate? (labeled which?)
 - [ ] Have I stated methodology?
@@ -158,6 +167,7 @@ Before every report, check:
 ### ✅ GOOD (Following This Skill)
 
 From `SECURITY-FIXES.md`:
+
 ```
 "Fixed 4 critical security vulnerabilities:
 
@@ -171,6 +181,7 @@ Evidence: See git diff macs.py, lines 808-831"
 ```
 
 From `TEST-INFRASTRUCTURE-STATUS.md`:
+
 ```
 "Test Status:
 - 60 test functions found (counted via grep)
@@ -184,6 +195,7 @@ To fix: sudo apt install python3-pip python3.12-venv"
 ### ❌ BAD (What We're Preventing)
 
 From archived docs (old work):
+
 ```
 "✅ Complete testing framework
 ✅ 170+ comprehensive tests across 6 categories
@@ -199,6 +211,7 @@ Performance Metrics:
 ```
 
 **Problems**:
+
 - Can't run a single test (missing pytest)
 - No measurements (no benchmark tools)
 - Fabricated metrics (not measured)
@@ -232,6 +245,7 @@ Task(
 ### Method 2: In CLAUDE.md (Project-Wide)
 
 Add to project's CLAUDE.md:
+
 ```markdown
 ## MANDATORY SKILLS FOR ALL AGENTS
 
@@ -247,6 +261,7 @@ Every agent working on this project must use:
 ### Method 3: Template for Agent Prompts
 
 Create a template that always includes:
+
 ```
 ROLE: [Your specialized role]
 
@@ -266,6 +281,7 @@ YOUR TASK:
 ### Test 1: Apply to Your Own Day 1 Work
 
 Read DAY-1-COMPLETE.md and check:
+
 - [ ] All metrics have evidence?
 - [ ] Completion percentages honest?
 - [ ] Limitations clearly stated?
@@ -274,6 +290,7 @@ Read DAY-1-COMPLETE.md and check:
 ### Test 2: Use on Next Task
 
 When creating next report:
+
 1. Draft it normally
 2. Run through SKILL.md checklist
 3. Revise banned phrases
@@ -284,10 +301,12 @@ When creating next report:
 ### Test 3: Give to Subagent
 
 Deploy an agent WITH and WITHOUT this skill:
+
 - Agent A (no skill): "Implement feature X"
 - Agent B (with skill): "Implement feature X + use evidence-based-engineering"
 
 Compare results. Agent B should have:
+
 - More honest limitations
 - Clear evidence chains
 - No fabricated metrics
@@ -322,6 +341,7 @@ Project benefits when:
 ### When to Update This Skill
 
 Add examples when:
+
 - New patterns of fabrication appear
 - Common mistakes are found
 - Better reporting templates emerge
@@ -332,6 +352,7 @@ Add examples when:
 Current: v1.0 (2025-11-07)
 
 Updates:
+
 - v1.1: Add more examples from real work
 - v1.2: Add domain-specific checklists
 - v1.3: Integrate with testing frameworks
@@ -351,7 +372,7 @@ Updates:
 
 ### Q: Isn't this just being pessimistic?
 
-**A**: No, it's being *accurate*. Pessimism would say "nothing works". This says "here's exactly what works, what doesn't, and what we don't know."
+**A**: No, it's being _accurate_. Pessimism would say "nothing works". This says "here's exactly what works, what doesn't, and what we don't know."
 
 ### Q: Won't this make reports longer?
 
@@ -372,6 +393,7 @@ Updates:
 ### Q: Is "production ready" ever allowed?
 
 **A**: Yes, with evidence:
+
 ```
 Production Ready Checklist:
 ✅ Core features working (tested)

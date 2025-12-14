@@ -425,10 +425,6 @@ export class SelfImprovementLoop {
     console.error('[Self-Improvement] Loading patterns from memory');
 
     // TODO: Implement actual Firebase retrieval
-    // const doc = await firestore.collection('learned_patterns').doc('latest').get();
-    // if (!doc.exists) return [];
-    // return doc.data().patterns || [];
-
     return [];
   }
 

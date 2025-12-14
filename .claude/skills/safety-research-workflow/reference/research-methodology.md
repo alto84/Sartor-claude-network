@@ -3,12 +3,15 @@
 ## Systematic Literature Review Process
 
 ### Overview
+
 Systematic literature review is a rigorous methodology for identifying, evaluating, and synthesizing research evidence. Unlike narrative reviews, systematic reviews follow predefined protocols to minimize bias and maximize reproducibility.
 
 ### PRISMA Framework
+
 The Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) provides the gold standard for systematic review methodology and reporting.
 
 **Key Components:**
+
 1. Protocol registration (pre-specify methods)
 2. Systematic search strategy
 3. Explicit inclusion/exclusion criteria
@@ -21,18 +24,21 @@ The Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 
 ### Research Question Formulation
 
 **PICO Framework (Clinical Research):**
+
 - **P**opulation: Who is being studied?
 - **I**ntervention: What treatment/exposure?
 - **C**omparison: What is the comparison group?
 - **O**utcome: What outcomes are measured?
 
 **Example:**
+
 - Population: Patients with HER2+ breast cancer
 - Intervention: Trastuzumab deruxtecan
 - Comparison: Standard chemotherapy
 - Outcome: Interstitial lung disease incidence
 
 **PECO Framework (Observational Research):**
+
 - **P**opulation
 - **E**xposure
 - **C**omparison
@@ -41,6 +47,7 @@ The Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 
 ### Search Strategy Development
 
 **Components:**
+
 1. **Database Selection:**
    - PubMed/MEDLINE (biomedical)
    - Embase (pharmaceutical)
@@ -69,6 +76,7 @@ The Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 
    - Track any modifications to strategy
 
 **Example Search String:**
+
 ```
 ("antibody-drug conjugate*" OR "ADC" OR "trastuzumab deruxtecan" OR "T-DXd" OR "enhertu")
 AND
@@ -80,6 +88,7 @@ AND
 ### Inclusion/Exclusion Criteria
 
 **Inclusion Criteria (Specify):**
+
 - Study design (RCT, cohort, case series, etc.)
 - Population characteristics
 - Intervention/exposure
@@ -89,6 +98,7 @@ AND
 - Publication type
 
 **Exclusion Criteria (Specify):**
+
 - Wrong population
 - Wrong intervention
 - Irrelevant outcomes
@@ -102,12 +112,14 @@ AND
 ### Screening Process
 
 **Stage 1: Title/Abstract Screening**
+
 - Rapid assessment of relevance
 - Liberal inclusion (when in doubt, include)
 - Document exclusion reasons
 - Dual independent review recommended
 
 **Stage 2: Full-Text Review**
+
 - Detailed assessment against criteria
 - Extract key data for decision
 - Document exclusion reasons with specificity
@@ -115,6 +127,7 @@ AND
 - Resolve conflicts through discussion or third reviewer
 
 **Documentation:**
+
 - PRISMA flow diagram showing:
   - Records identified through database search
   - Records after duplicates removed
@@ -127,6 +140,7 @@ AND
 ### Data Extraction
 
 **Create Standardized Extraction Form:**
+
 - Study identifiers (authors, year, PMID, DOI)
 - Study design and methods
 - Population characteristics (n, demographics, baseline)
@@ -138,6 +152,7 @@ AND
 - Risk of bias indicators
 
 **Best Practices:**
+
 - Extract data into structured table/database
 - Use dual independent extraction (recommended)
 - Resolve discrepancies through discussion
@@ -155,18 +170,22 @@ AND
 **Tools by Study Type:**
 
 **Randomized Controlled Trials:**
+
 - Cochrane Risk of Bias tool (RoB 2)
 - Assess: randomization, allocation concealment, blinding, incomplete data, selective reporting
 
 **Cohort Studies:**
+
 - Newcastle-Ottawa Scale
 - Assess: selection, comparability, outcome assessment
 
 **Case Series:**
+
 - IHE Quality Appraisal Tool
 - Assess: study objective, design, population, intervention, outcome measurement
 
 **Assessment Domains:**
+
 - Selection bias
 - Performance bias
 - Detection bias
@@ -175,6 +194,7 @@ AND
 - Other biases (funding, conflicts)
 
 **Critical for Safety Research:**
+
 - Passive vs. active surveillance (detection bias)
 - Completeness of follow-up (attrition bias)
 - Standardized outcome definitions (measurement bias)
@@ -183,6 +203,7 @@ AND
 ### Evidence Synthesis
 
 **Narrative Synthesis:**
+
 - Describe studies qualitatively
 - Group by common characteristics
 - Identify patterns and themes
@@ -191,6 +212,7 @@ AND
 - Appropriate when meta-analysis not feasible
 
 **Quantitative Synthesis (Meta-Analysis):**
+
 - Combine effect estimates statistically
 - Calculate pooled estimates
 - Assess heterogeneity (I² statistic)
@@ -199,6 +221,7 @@ AND
 - Requires specialized statistical expertise
 
 **For Safety Research:**
+
 - Report incidence ranges across studies
 - Note heterogeneity in definitions, populations, monitoring
 - Do NOT average rates without considering heterogeneity
@@ -206,6 +229,7 @@ AND
 - Acknowledge uncertainty
 
 **Example Synthesis:**
+
 ```
 "Across 5 clinical trials (n=1,234), drug-related ILD incidence ranged from 10.8%
 to 15.6% (any grade). Grade 3-4 ILD occurred in 2.4% to 3.7% of patients, while
@@ -219,17 +243,20 @@ enables intervention."
 ### Confidence/Certainty Assessment
 
 **GRADE Framework (Grading of Recommendations Assessment):**
+
 - Start with study design (RCT = high, observational = low)
 - Downgrade for: risk of bias, inconsistency, indirectness, imprecision, publication bias
 - Upgrade for: large effect size, dose-response, residual confounding opposes effect
 
 **Confidence Levels:**
+
 - **High:** Very confident true effect is close to estimated effect
 - **Moderate:** Moderately confident; true effect likely close but could be substantially different
 - **Low:** Limited confidence; true effect may be substantially different
 - **Very Low:** Very uncertain about estimated effect
 
 **Critical for CLAUDE.md Compliance:**
+
 - Do NOT fabricate confidence scores
 - Base confidence on evidence quality, not wishful thinking
 - Acknowledge limitations explicitly
@@ -242,6 +269,7 @@ enables intervention."
 ### Hypothesis Testing
 
 **Null Hypothesis Significance Testing:**
+
 - State null and alternative hypotheses
 - Set significance level (α, typically 0.05)
 - Calculate test statistic
@@ -249,12 +277,14 @@ enables intervention."
 - Note: p < 0.05 does not mean "important" or "clinically significant"
 
 **Critical Interpretation:**
+
 - Statistical significance ≠ clinical significance
 - Absence of evidence ≠ evidence of absence
 - Correlation ≠ causation
 - Association ≠ causation
 
 **For Safety Research:**
+
 - Small effects can be clinically important (e.g., 1% fatal toxicity rate)
 - Wide confidence intervals indicate uncertainty
 - Multiple testing increases false positive risk
@@ -263,6 +293,7 @@ enables intervention."
 ### Reporting Standards
 
 **Required Sections:**
+
 1. **Abstract:** Structured summary (background, methods, results, conclusions)
 2. **Introduction:** Rationale, objectives, research question
 3. **Methods:** Protocol, search strategy, selection criteria, data extraction, quality assessment, synthesis approach
@@ -272,6 +303,7 @@ enables intervention."
 7. **References:** Complete bibliography with identifiers
 
 **Transparency Requirements:**
+
 - Pre-specified protocol (ideally registered)
 - Complete search strategy
 - PRISMA flow diagram
@@ -282,6 +314,7 @@ enables intervention."
 ### Limitations Disclosure
 
 **Always Acknowledge:**
+
 - Search limitations (databases, date range, language)
 - Study quality issues (high risk of bias)
 - Heterogeneity in study designs, populations, outcomes
@@ -291,6 +324,7 @@ enables intervention."
 - Conflicts of interest
 
 **Example Limitations Section:**
+
 ```
 ## Limitations
 
@@ -313,36 +347,43 @@ emerge that alters conclusions.
 ### Levels of Evidence (Oxford Centre for Evidence-Based Medicine)
 
 **Level 1: Systematic Reviews & Meta-Analyses**
+
 - Highest quality synthesis of multiple studies
 - Provides strongest evidence when well-conducted
 - Subject to publication bias, heterogeneity
 
 **Level 2: Randomized Controlled Trials**
+
 - Gold standard for intervention efficacy
 - Minimizes bias through randomization
 - May have limited generalizability
 
 **Level 3: Cohort Studies**
+
 - Observational, follows groups over time
 - Good for rare exposures or long-term outcomes
 - Subject to confounding
 
 **Level 4: Case-Control Studies**
+
 - Retrospective comparison
 - Good for rare outcomes
 - More prone to bias than cohort studies
 
 **Level 5: Case Series/Case Reports**
+
 - Descriptive, no comparison group
 - Hypothesis-generating
 - Cannot establish causation
 
 **Level 6: Expert Opinion**
+
 - Lowest evidence level
 - Based on experience, not systematic evidence
 - High variability
 
 **For Safety Research:**
+
 - Rare adverse events may only have case series evidence
 - Pharmacovigilance databases provide real-world evidence
 - Lower evidence level ≠ unimportant
@@ -351,6 +392,7 @@ emerge that alters conclusions.
 ## Common Methodology Pitfalls
 
 ### Search Strategy Pitfalls
+
 - Overly narrow search (missing relevant studies)
 - Overly broad search (unmanageable results)
 - Not documenting exact search strings
@@ -359,6 +401,7 @@ emerge that alters conclusions.
 - Not hand-searching references of key papers
 
 ### Selection Pitfalls
+
 - Inconsistent application of inclusion/exclusion criteria
 - Selection bias (choosing studies supporting hypothesis)
 - Language bias (English-only when relevant non-English studies exist)
@@ -366,6 +409,7 @@ emerge that alters conclusions.
 - Duplicate publication counting same patients multiple times
 
 ### Extraction Pitfalls
+
 - Extracting data out of context
 - Misinterpreting statistical results
 - Copying errors
@@ -374,6 +418,7 @@ emerge that alters conclusions.
 - Ignoring study limitations
 
 ### Synthesis Pitfalls
+
 - Inappropriate averaging of heterogeneous data
 - Ignoring outliers without justification
 - Creating false consensus
@@ -382,6 +427,7 @@ emerge that alters conclusions.
 - Not acknowledging conflicting evidence
 
 ### Reporting Pitfalls
+
 - Incomplete methods (not reproducible)
 - Missing PRISMA flow diagram
 - Not reporting excluded studies
@@ -394,23 +440,27 @@ emerge that alters conclusions.
 ### Anti-Fabrication in Research Methodology
 
 **Score Fabrication Prohibition:**
+
 - Do NOT create composite quality scores without documented rubric
 - Do NOT average evidence quality across studies without justification
 - Do NOT assign confidence percentages without measurement basis
 - Report ranges and heterogeneity, not fabricated consensus
 
 **Evidence Requirements:**
+
 - Every claim must have primary source citation
 - Numerical data must include context (sample size, CI, study design)
 - Show actual measurements, not theoretical estimates
 
 **Mandatory Skepticism:**
+
 - Default position: findings are preliminary until validated
 - List limitations before implications
 - Express uncertainty explicitly
 - Acknowledge what cannot be determined from available evidence
 
 **Required Language:**
+
 - "Evidence from X studies (n=Y) suggests..."
 - "Across Z trials, incidence ranged from A% to B%..."
 - "Limitations include..."
@@ -418,6 +468,7 @@ emerge that alters conclusions.
 - "Requires external validation before..."
 
 **Banned Language (without extraordinary evidence):**
+
 - "Exceptional safety profile" (say: "Lower incidence compared to...")
 - "Clearly demonstrates causation" (say: "Associated with...")
 - "Definitive evidence" (say: "Multiple studies suggest...")
@@ -427,6 +478,7 @@ emerge that alters conclusions.
 ## Research Methodology Checklist
 
 ### Planning Phase
+
 - [ ] Research question is specific and answerable
 - [ ] PICO/PECO framework defined
 - [ ] Inclusion/exclusion criteria specified
@@ -439,6 +491,7 @@ emerge that alters conclusions.
 - [ ] Timeline and resources allocated
 
 ### Execution Phase
+
 - [ ] Search executed and documented
 - [ ] Results exported and deduplicated
 - [ ] Screening performed consistently
@@ -449,6 +502,7 @@ emerge that alters conclusions.
 - [ ] Confidence assessment done
 
 ### Reporting Phase
+
 - [ ] All required sections present
 - [ ] Methods fully reproducible
 - [ ] PRISMA flow diagram included
@@ -463,17 +517,20 @@ emerge that alters conclusions.
 ## Resources
 
 **Methodological Guidelines:**
+
 - PRISMA 2020 Statement
 - Cochrane Handbook for Systematic Reviews
 - GRADE Handbook
 - Oxford Centre for Evidence-Based Medicine Levels
 
 **Quality Assessment Tools:**
+
 - Cochrane Risk of Bias tool (RoB 2)
 - Newcastle-Ottawa Scale
 - GRADE approach
 
 **Reporting Standards:**
+
 - PRISMA 2020 Checklist
 - CONSORT (for RCTs)
 - STROBE (for observational studies)

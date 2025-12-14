@@ -2,11 +2,7 @@
  * Knowledge Graph Tests
  */
 
-import {
-  KnowledgeGraph,
-  EntityType,
-  RelationType,
-} from '../knowledge-graph';
+import { KnowledgeGraph, EntityType, RelationType } from '../knowledge-graph';
 
 describe('KnowledgeGraph', () => {
   let graph: KnowledgeGraph;
@@ -133,11 +129,7 @@ describe('KnowledgeGraph', () => {
 
     describe('createRelationship', () => {
       it('should create a relationship between entities', () => {
-        const rel = graph.createRelationship(
-          alice.id,
-          bob.id,
-          RelationType.RELATED_TO
-        );
+        const rel = graph.createRelationship(alice.id, bob.id, RelationType.RELATED_TO);
 
         expect(rel).toBeDefined();
         expect(rel?.sourceId).toBe(alice.id);
@@ -146,33 +138,23 @@ describe('KnowledgeGraph', () => {
       });
 
       it('should fail for non-existent entities', () => {
-        const rel = graph.createRelationship(
-          'fake-id',
-          bob.id,
-          RelationType.RELATED_TO
-        );
+        const rel = graph.createRelationship('fake-id', bob.id, RelationType.RELATED_TO);
 
         expect(rel).toBeUndefined();
       });
 
       it('should support bidirectional relationships', () => {
-        const rel = graph.createRelationship(
-          alice.id,
-          bob.id,
-          RelationType.SIMILAR_TO,
-          { bidirectional: true }
-        );
+        const rel = graph.createRelationship(alice.id, bob.id, RelationType.SIMILAR_TO, {
+          bidirectional: true,
+        });
 
         expect(rel?.bidirectional).toBe(true);
       });
 
       it('should support custom weights', () => {
-        const rel = graph.createRelationship(
-          alice.id,
-          bob.id,
-          RelationType.RELATED_TO,
-          { weight: 0.9 }
-        );
+        const rel = graph.createRelationship(alice.id, bob.id, RelationType.RELATED_TO, {
+          weight: 0.9,
+        });
 
         expect(rel?.weight).toBe(0.9);
       });
@@ -201,11 +183,7 @@ describe('KnowledgeGraph', () => {
 
     describe('deleteRelationship', () => {
       it('should remove relationship', () => {
-        const rel = graph.createRelationship(
-          alice.id,
-          bob.id,
-          RelationType.RELATED_TO
-        );
+        const rel = graph.createRelationship(alice.id, bob.id, RelationType.RELATED_TO);
 
         const deleted = graph.deleteRelationship(rel!.id);
         expect(deleted).toBe(true);

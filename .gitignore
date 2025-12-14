@@ -15,4 +15,30 @@ data/
 *.db
 *.sqlite
 config/firebase-credentials.json
-config/firebase-credentials.json
+
+# Test artifacts
+*.log
+coverage/
+.nyc_output/
+
+# Python
+test_env/
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Runtime markers
+.claude/.subagent-active
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

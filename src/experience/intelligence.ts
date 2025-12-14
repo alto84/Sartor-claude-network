@@ -243,7 +243,8 @@ export class AdaptiveIntelligence {
     const similarTasks = this.findSimilarTasks(context);
     if (similarTasks.length > 0) {
       const successRate = similarTasks.filter((t) => t.success).length / similarTasks.length;
-      const avgDuration = similarTasks.reduce((sum, t) => sum + t.duration, 0) / similarTasks.length;
+      const avgDuration =
+        similarTasks.reduce((sum, t) => sum + t.duration, 0) / similarTasks.length;
       const weight = Math.min(similarTasks.length / 5, 1) * 0.25;
 
       factors.push({
@@ -760,8 +761,8 @@ export class AdaptiveIntelligence {
 
       // Adjust confidence based on prediction accuracy
       const wasAccurate =
-        (pattern.outcome.predictedSuccess >= 0.5) === outcome.success ||
-        (pattern.outcome.predictedSuccess < 0.5) !== outcome.success;
+        pattern.outcome.predictedSuccess >= 0.5 === outcome.success ||
+        pattern.outcome.predictedSuccess < 0.5 !== outcome.success;
 
       if (wasAccurate) {
         pattern.confidence = Math.min(pattern.confidence + 0.05, 1);

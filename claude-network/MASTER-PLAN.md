@@ -1,4 +1,5 @@
 # Sartor Claude Network: Master Implementation Plan
+
 ## Self-Improving Multi-Agent Community System
 
 **Vision**: A distributed community of Claude agents across multiple surfaces (CLI, web, mobile) that communicate, collaborate, learn from each other, self-improve their codebase, and work together to manage your house, solve scientific problems, and build projects.
@@ -27,6 +28,7 @@ This master plan integrates seven specialized architectural designs into a unifi
 ### What Already Exists ✅
 
 **Infrastructure**:
+
 - Firebase Realtime Database at `https://home-claude-network-default-rtdb.firebaseio.com/`
 - GitHub repository at `https://github.com/alto84/Sartor-claude-network`
 - Proxy server (port 8080) for restricted surfaces
@@ -34,12 +36,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 - Message monitoring and status tools
 
 **Agent System**:
+
 - Desktop Claude (Mission Control) - online and operational
 - iPad Claude (Mobile Scout) - registered, awaiting connection
 - Agent registry with capabilities and roles
 - Basic message passing via Firebase
 
 **Communication**:
+
 - Real-time messaging via Firebase
 - Alternative GitHub-based messaging
 - Manual relay fallback
@@ -177,6 +181,7 @@ This master plan integrates seven specialized architectural designs into a unifi
 - **Secure**: Message signing and agent authentication
 
 **Message Types**:
+
 - Task assignment and status updates
 - Learning and experience sharing
 - Code patches and improvements
@@ -186,16 +191,19 @@ This master plan integrates seven specialized architectural designs into a unifi
 ### 2. Coordination Framework
 
 **Hybrid Consensus Model**:
+
 - **Optimistic**: Low-stakes decisions (timeout-based)
 - **Byzantine Fault Tolerant**: High-stakes decisions (2/3 quorum)
 
 **Task Distribution**:
+
 - Market-based allocation with capability matching
 - Intelligent load balancing
 - Work stealing for idle agents
 - Priority queuing
 
 **Conflict Resolution**:
+
 - Automatic: Version conflicts, data merges
 - Mediated: Peer review for decision conflicts
 - Escalated: Human intervention for critical issues
@@ -203,12 +211,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 ### 3. HGM Self-Improvement Engine
 
 **Clade-Based Evolution**:
+
 - Tree of agent variants exploring different improvements
 - Metaproductivity scoring (lineage success, not just individual)
 - Distributed exploration across multiple agents
 - Safe sandboxed testing before adoption
 
 **Evolution Cycle**:
+
 1. Monitor current performance
 2. Identify improvement opportunities
 3. Generate code modifications
@@ -219,11 +229,13 @@ This master plan integrates seven specialized architectural designs into a unifi
 ### 4. Skill Library System
 
 **Three-Layer Skill Model**:
+
 - **Core Skills**: Observation, communication, reasoning, data
 - **Domain Skills**: House management, science, code maintenance
 - **Meta-Skills**: Teaching, skill improvement, coordination
 
 **Skill Features**:
+
 - Composable (sequential, parallel, conditional)
 - Evolvable (version-tracked improvements)
 - Discoverable (semantic search, tags, recommendations)
@@ -234,6 +246,7 @@ This master plan integrates seven specialized architectural designs into a unifi
 **Task Lifecycle**: Created → Queued → Assigned → Executing → Reviewing → Completed
 
 **Task Types**:
+
 - User-initiated (your requests)
 - System maintenance (code health, updates)
 - Scheduled (daily house routines)
@@ -241,6 +254,7 @@ This master plan integrates seven specialized architectural designs into a unifi
 - Learning (skill development)
 
 **Features**:
+
 - Dependency management
 - Progress tracking
 - Quality assurance
@@ -249,11 +263,13 @@ This master plan integrates seven specialized architectural designs into a unifi
 ### 6. Knowledge Management
 
 **Experience Capture**:
+
 - Automatic learning extraction from sessions
 - Success patterns and failure lessons
 - Cross-agent knowledge synthesis
 
 **Specialization Emergence**:
+
 - Agents naturally develop expertise
 - Reputation based on measured performance
 - Mentorship relationships
@@ -264,9 +280,11 @@ This master plan integrates seven specialized architectural designs into a unifi
 ## Implementation Roadmap
 
 ### Phase 0: Foundation Setup (Week 1)
+
 **Goal**: Prepare second computer and enhance existing infrastructure
 
 **Tasks**:
+
 - [ ] Set up second computer with Claude Code CLI
 - [ ] Clone repository to both computers
 - [ ] Configure Firebase credentials on all surfaces
@@ -275,6 +293,7 @@ This master plan integrates seven specialized architectural designs into a unifi
 - [ ] Create shared configuration management
 
 **Deliverables**:
+
 - Two computers fully operational
 - All surfaces can send/receive basic messages
 - Unified configuration system
@@ -282,9 +301,11 @@ This master plan integrates seven specialized architectural designs into a unifi
 ---
 
 ### Phase 1: Enhanced Communication (Weeks 2-3)
+
 **Goal**: Implement MACS protocol for robust multi-agent messaging
 
 **Tasks**:
+
 - [ ] Design and implement extended message format
 - [ ] Add message signing and verification
 - [ ] Create routing system (direct, broadcast, multicast)
@@ -294,12 +315,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 - [ ] Create monitoring dashboard for message flow
 
 **Deliverables**:
+
 - MACS protocol library (`macs.py`)
 - Extended Firebase schema
 - Message monitoring dashboard
 - Offline queue system
 
 **Success Criteria**:
+
 - Messages delivered in < 100ms (measured)
 - 99% delivery success rate
 - Graceful offline/online transitions
@@ -307,9 +330,11 @@ This master plan integrates seven specialized architectural designs into a unifi
 ---
 
 ### Phase 2: Basic Coordination (Weeks 4-5)
+
 **Goal**: Enable agents to coordinate on simple tasks
 
 **Tasks**:
+
 - [ ] Implement task definition format
 - [ ] Create task queue in Firebase
 - [ ] Build basic task assignment (capability matching)
@@ -319,12 +344,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 - [ ] Add failure detection and task reassignment
 
 **Deliverables**:
+
 - Task management core (`task_manager.py`)
 - Firebase task schema
 - Basic coordination protocols
 - Health monitoring system
 
 **Success Criteria**:
+
 - Agents successfully claim and complete tasks
 - Failed tasks automatically reassigned
 - All agents maintain heartbeat
@@ -332,9 +359,11 @@ This master plan integrates seven specialized architectural designs into a unifi
 ---
 
 ### Phase 3: Skill Foundation (Weeks 6-7)
+
 **Goal**: Build initial skill library and discovery system
 
 **Tasks**:
+
 - [ ] Define skill representation format (YAML/JSON)
 - [ ] Create skill storage system (GitHub + Firebase)
 - [ ] Implement basic skill discovery (tags, search)
@@ -348,12 +377,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 - [ ] Create skill validation system
 
 **Deliverables**:
+
 - Skill library structure in GitHub
 - 5+ core skills operational
 - Skill discovery API
 - Execution engine
 
 **Success Criteria**:
+
 - Agents can discover and execute skills
 - Skills compose successfully
 - Validation catches errors
@@ -361,9 +392,11 @@ This master plan integrates seven specialized architectural designs into a unifi
 ---
 
 ### Phase 4: House Management Pilot (Weeks 8-9)
+
 **Goal**: First real-world application - basic house tasks
 
 **Tasks**:
+
 - [ ] Define house management knowledge base
   - [ ] Room layouts and typical contents
   - [ ] Daily/weekly maintenance schedules
@@ -378,12 +411,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 - [ ] Add user notification system
 
 **Deliverables**:
+
 - House knowledge base (YAML files)
 - Scheduled task engine
 - House management skills
 - Daily routine automation
 
 **Success Criteria**:
+
 - Daily kitchen check completes automatically
 - iPad successfully scouts and reports
 - User receives actionable summaries
@@ -391,9 +426,11 @@ This master plan integrates seven specialized architectural designs into a unifi
 ---
 
 ### Phase 5: Self-Improvement Foundation (Weeks 10-11)
+
 **Goal**: Implement basic HGM-style self-improvement
 
 **Tasks**:
+
 - [ ] Create sandbox environment (Docker containers)
 - [ ] Implement clade tracking system
 - [ ] Build code modification proposal system
@@ -404,12 +441,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 - [ ] Build community review process
 
 **Deliverables**:
+
 - Sandbox system
 - Clade evolution framework
 - Benchmark suite
 - Patch management system
 
 **Success Criteria**:
+
 - Agents can propose code changes
 - Changes tested in isolation
 - Successful improvements adopted
@@ -418,9 +457,11 @@ This master plan integrates seven specialized architectural designs into a unifi
 ---
 
 ### Phase 6: Advanced Coordination (Weeks 12-13)
+
 **Goal**: Sophisticated multi-agent collaboration
 
 **Tasks**:
+
 - [ ] Implement Byzantine fault tolerant consensus
 - [ ] Add conflict resolution mechanisms
 - [ ] Create collaborative task patterns (team formation)
@@ -430,12 +471,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 - [ ] Create reputation tracking
 
 **Deliverables**:
+
 - Full consensus implementation
 - Conflict resolution protocols
 - Team collaboration support
 - Governance framework
 
 **Success Criteria**:
+
 - Multiple agents coordinate on complex tasks
 - Conflicts resolved automatically (>80%)
 - Community evolves its own practices
@@ -443,9 +486,11 @@ This master plan integrates seven specialized architectural designs into a unifi
 ---
 
 ### Phase 7: Knowledge & Learning (Weeks 14-15)
+
 **Goal**: Enable collective learning and specialization
 
 **Tasks**:
+
 - [ ] Implement experience capture system
 - [ ] Create knowledge synthesis pipeline
 - [ ] Build agent specialization tracking
@@ -455,12 +500,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 - [ ] Build teaching/learning workflows
 
 **Deliverables**:
+
 - Experience database
 - Specialization profiles
 - Meta-learning capabilities
 - Knowledge synthesis engine
 
 **Success Criteria**:
+
 - Agents learn from each other's experiences
 - Specializations emerge naturally (measured)
 - Success rates improve over time
@@ -468,9 +515,11 @@ This master plan integrates seven specialized architectural designs into a unifi
 ---
 
 ### Phase 8: Scientific Computing (Weeks 16-17)
+
 **Goal**: Enable solving science problems
 
 **Tasks**:
+
 - [ ] Create scientific computation knowledge base
 - [ ] Build science-specific skills:
   - [ ] Data analysis and visualization
@@ -483,12 +532,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 - [ ] Create scientific skill library
 
 **Deliverables**:
+
 - Science knowledge base
 - Research workflow system
 - Scientific computing skills
 - Evidence validation framework
 
 **Success Criteria**:
+
 - Agents solve sample science problems
 - Results verified and reproducible
 - No fabricated data or metrics
@@ -496,9 +547,11 @@ This master plan integrates seven specialized architectural designs into a unifi
 ---
 
 ### Phase 9: Continuous Evolution (Weeks 18-19)
+
 **Goal**: Full 24/7 self-improving operation
 
 **Tasks**:
+
 - [ ] Implement continuous evolution scheduler
 - [ ] Add distributed clade exploration
 - [ ] Create metaproductivity tracking
@@ -508,12 +561,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 - [ ] Create evolution dashboard
 
 **Deliverables**:
+
 - 24/7 evolution system
 - Metaproductivity metrics
 - Safety monitoring
 - Evolution visualization
 
 **Success Criteria**:
+
 - System improves autonomously
 - No manual intervention needed for days
 - Measurable capability growth
@@ -521,9 +576,11 @@ This master plan integrates seven specialized architectural designs into a unifi
 ---
 
 ### Phase 10: Polish & Scale (Weeks 20+)
+
 **Goal**: Production-ready multi-agent community
 
 **Tasks**:
+
 - [ ] Performance optimization
 - [ ] User interface refinement
 - [ ] Documentation completion
@@ -534,12 +591,14 @@ This master plan integrates seven specialized architectural designs into a unifi
 - [ ] Community practice codification
 
 **Deliverables**:
+
 - Polished user experience
 - Comprehensive documentation
 - Scalable architecture
 - Stable 24/7 operation
 
 **Success Criteria**:
+
 - System handles 10+ agents
 - Week-long autonomous operation
 - User satisfaction metrics
@@ -551,6 +610,7 @@ This master plan integrates seven specialized architectural designs into a unifi
 ### Cross-Cutting Concerns
 
 **1. Firebase Schema**
+
 ```
 /agents-network/
 ├── /registry/           # Agent capabilities & status
@@ -570,6 +630,7 @@ This master plan integrates seven specialized architectural designs into a unifi
 ```
 
 **2. GitHub Repository Structure**
+
 ```
 /Sartor-claude-network/
 ├── /claude-network/     # Core system code
@@ -593,6 +654,7 @@ This master plan integrates seven specialized architectural designs into a unifi
 ```
 
 **3. Local Storage (Each Surface)**
+
 ```
 ~/.claude-network/
 ├── config.json          # Local configuration
@@ -607,6 +669,7 @@ This master plan integrates seven specialized architectural designs into a unifi
 ## Technology Stack
 
 ### Required
+
 - **Python 3.10+**: Core language
 - **Firebase Realtime Database**: Real-time sync
 - **GitHub**: Version control & knowledge storage
@@ -615,6 +678,7 @@ This master plan integrates seven specialized architectural designs into a unifi
 - **Claude API**: AI capabilities
 
 ### Optional/Future
+
 - **Redis**: Fast caching layer
 - **PostgreSQL**: Long-term analytics
 - **WebSocket**: Real-time web interface
@@ -625,40 +689,44 @@ This master plan integrates seven specialized architectural designs into a unifi
 
 ## Risk Management
 
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Firebase quota exceeded | High | Monitor usage, implement tiering, add Redis cache |
-| Runaway self-improvement | Critical | Sandbox isolation, safety validators, human approval gates |
-| Network partition | Medium | Offline queue, eventual consistency, conflict resolution |
-| Agent misbehavior | High | Byzantine fault tolerance, reputation system, quarantine |
-| Data loss | High | Regular backups to GitHub, multi-region Firebase, local caching |
-| Performance degradation | Medium | Continuous monitoring, automatic rollback, load shedding |
-| Security breach | Critical | Encryption, authentication, access control, audit logs |
-| Cost overrun | Medium | Budget alerts, usage caps, local inference for bulk work |
+| Risk                     | Impact   | Mitigation                                                      |
+| ------------------------ | -------- | --------------------------------------------------------------- |
+| Firebase quota exceeded  | High     | Monitor usage, implement tiering, add Redis cache               |
+| Runaway self-improvement | Critical | Sandbox isolation, safety validators, human approval gates      |
+| Network partition        | Medium   | Offline queue, eventual consistency, conflict resolution        |
+| Agent misbehavior        | High     | Byzantine fault tolerance, reputation system, quarantine        |
+| Data loss                | High     | Regular backups to GitHub, multi-region Firebase, local caching |
+| Performance degradation  | Medium   | Continuous monitoring, automatic rollback, load shedding        |
+| Security breach          | Critical | Encryption, authentication, access control, audit logs          |
+| Cost overrun             | Medium   | Budget alerts, usage caps, local inference for bulk work        |
 
 ---
 
 ## Success Metrics (Evidence-Based)
 
 ### System Health
+
 - **Uptime**: % of time at least one agent is operational (measured)
 - **Message latency**: 95th percentile delivery time (measured)
 - **Task completion rate**: % of assigned tasks completed successfully (measured)
 - **Failure recovery time**: Time from failure detection to recovery (measured)
 
 ### Learning & Improvement
+
 - **Skill adoption rate**: New skills created per week (counted)
 - **Performance trends**: Task completion time over time (measured)
 - **Specialization diversity**: Number of distinct expertise areas (counted)
 - **Knowledge accumulation**: Experiences captured per week (counted)
 
 ### User Value
+
 - **Task success rate**: % of user requests completed satisfactorily (measured via feedback)
 - **Response time**: Time from request to completion (measured)
 - **Automation coverage**: % of routine tasks fully automated (calculated)
 - **Error rate**: Mistakes requiring human correction (counted)
 
 ### Self-Improvement
+
 - **Clade diversity**: Active evolution branches (counted)
 - **Improvement adoption rate**: % of proposed changes accepted (measured)
 - **Benchmark trends**: Performance on standard tests over time (measured)
@@ -710,6 +778,7 @@ This master plan provides a comprehensive roadmap for building a self-improving 
 - **Ambitious**: Achieves the vision of collaborative AI community
 
 The system will enable Claude agents to:
+
 - Communicate seamlessly across all your devices
 - Coordinate on complex tasks autonomously
 - Learn from each other's experiences

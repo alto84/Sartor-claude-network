@@ -19,6 +19,7 @@
 ## Step 3: Get Database URL
 
 You'll see something like:
+
 ```
 https://claude-house-network-default-rtdb.firebaseio.com/
 ```
@@ -28,6 +29,7 @@ Copy this URL - it's your coordination endpoint!
 ## Step 4: Set Security Rules (Important!)
 
 In the "Rules" tab, use:
+
 ```json
 {
   "rules": {

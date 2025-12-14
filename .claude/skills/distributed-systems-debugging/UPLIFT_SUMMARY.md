@@ -12,7 +12,7 @@ Successfully uplifted the `distributed-systems-debugging` skill with comprehensi
 
 ### 1. SKILL.md Updates
 
-**File**: `/home/alton/Sartor-claude-network/.claude/skills/distributed-systems-debugging/SKILL.md`
+**File**: `/home/user/Sartor-claude-network/.claude/skills/distributed-systems-debugging/SKILL.md`
 **Lines**: 743 (increased from ~356)
 
 **Key Additions**:
@@ -43,7 +43,7 @@ Successfully uplifted the `distributed-systems-debugging` skill with comprehensi
 
 ### 2. README.md Updates
 
-**File**: `/home/alton/Sartor-claude-network/.claude/skills/distributed-systems-debugging/README.md`
+**File**: `/home/user/Sartor-claude-network/.claude/skills/distributed-systems-debugging/README.md`
 **Lines**: 486 (increased from ~382)
 
 **Key Additions**:
@@ -59,7 +59,7 @@ Successfully uplifted the `distributed-systems-debugging` skill with comprehensi
 
 ### 3. New File: MEMORY_INTEGRATION.md
 
-**File**: `/home/alton/Sartor-claude-network/.claude/skills/distributed-systems-debugging/MEMORY_INTEGRATION.md`
+**File**: `/home/user/Sartor-claude-network/.claude/skills/distributed-systems-debugging/MEMORY_INTEGRATION.md`
 **Lines**: 669 (NEW)
 
 **Complete documentation** for Memory MCP integration:
@@ -114,6 +114,7 @@ Successfully uplifted the `distributed-systems-debugging` skill with comprehensi
 - **progress.ts**: Progress tracking, milestone sync, status aggregation
 
 **Module Health Tracking:**
+
 - Known issues per module
 - Health metrics (consistency rate, latency, error rates)
 - Test coverage references
@@ -131,6 +132,7 @@ Successfully uplifted the `distributed-systems-debugging` skill with comprehensi
 ### 5. Comprehensive Tagging
 
 **Consistent tag vocabulary:**
+
 - Issue types: consensus, state-sync, performance, network-partition, race-condition
 - Modules: plan-sync, work-distribution, progress, coordination
 - Status: active, resolved, monitoring, confirmed, rejected
@@ -143,10 +145,10 @@ Successfully uplifted the `distributed-systems-debugging` skill with comprehensi
 ```typescript
 // 1. Search memory for similar issues
 const similar = await memory_search({
-  type: "episodic",
+  type: 'episodic',
   min_importance: 0.7,
-  limit: 10
-})
+  limit: 10,
+});
 
 // 2. Create session tracking
 const sessionId = `debug-${Date.now()}-consensus-timeout`;
@@ -154,13 +156,13 @@ memory_create({
   content: JSON.stringify({
     sessionId,
     startTime: new Date().toISOString(),
-    symptom: "Consensus timeouts at 300+ agents",
-    affectedModules: ["plan-sync"]
+    symptom: 'Consensus timeouts at 300+ agents',
+    affectedModules: ['plan-sync'],
   }),
-  type: "working",
+  type: 'working',
   importance: 0.5,
-  tags: ["active", "consensus", "timeout", "plan-sync"]
-})
+  tags: ['active', 'consensus', 'timeout', 'plan-sync'],
+});
 ```
 
 ### Example 2: Tracking Hypotheses
@@ -170,15 +172,15 @@ memory_create({
 memory_create({
   content: JSON.stringify({
     sessionId,
-    hypothesis: "O(n²) message broadcast causing timeouts",
-    testMethod: "Message count growth analysis",
-    result: "CONFIRMED",
-    evidence: "300 agents: 900 msgs, 400 agents: 1600 msgs, 500 agents: 2500 msgs"
+    hypothesis: 'O(n²) message broadcast causing timeouts',
+    testMethod: 'Message count growth analysis',
+    result: 'CONFIRMED',
+    evidence: '300 agents: 900 msgs, 400 agents: 1600 msgs, 500 agents: 2500 msgs',
   }),
-  type: "working",
+  type: 'working',
   importance: 0.7,
-  tags: ["hypothesis", sessionId, "confirmed"]
-})
+  tags: ['hypothesis', sessionId, 'confirmed'],
+});
 ```
 
 ### Example 3: Storing Resolution
@@ -188,20 +190,20 @@ memory_create({
 memory_create({
   content: JSON.stringify({
     sessionId,
-    symptom: "Consensus timeouts at 300+ agents",
-    rootCause: "O(n²) message broadcast in plan-sync.ts",
-    fix: "Parallel message sending with Promise.all",
-    filesModified: ["src/coordination/plan-sync.ts:156-178"],
+    symptom: 'Consensus timeouts at 300+ agents',
+    rootCause: 'O(n²) message broadcast in plan-sync.ts',
+    fix: 'Parallel message sending with Promise.all',
+    filesModified: ['src/coordination/plan-sync.ts:156-178'],
     performance: {
-      before: "Timeout at 450 agents",
-      after: "150ms at 500 agents",
-      improvement: "200x faster"
-    }
+      before: 'Timeout at 450 agents',
+      after: '150ms at 500 agents',
+      improvement: '200x faster',
+    },
   }),
-  type: "episodic",
+  type: 'episodic',
   importance: 0.95,
-  tags: ["debug-session", "resolved", "consensus", "plan-sync"]
-})
+  tags: ['debug-session', 'resolved', 'consensus', 'plan-sync'],
+});
 ```
 
 ### Example 4: Module Health Tracking
@@ -210,22 +212,22 @@ memory_create({
 // Track work-distribution module health
 memory_create({
   content: JSON.stringify({
-    module: "src/coordination/work-distribution.ts",
+    module: 'src/coordination/work-distribution.ts',
     knownIssues: {
-      "task-claim-race": {
-        status: "RESOLVED",
-        fix: "Added version check at line 127"
-      }
+      'task-claim-race': {
+        status: 'RESOLVED',
+        fix: 'Added version check at line 127',
+      },
     },
     healthMetrics: {
-      doubleClaimRate: "0.0%",
-      taskCompletionRate: "99.8%"
-    }
+      doubleClaimRate: '0.0%',
+      taskCompletionRate: '99.8%',
+    },
   }),
-  type: "semantic",
+  type: 'semantic',
   importance: 0.9,
-  tags: ["module-health", "work-distribution"]
-})
+  tags: ['module-health', 'work-distribution'],
+});
 ```
 
 ## Benefits
@@ -311,17 +313,20 @@ memory_search --type procedural --min-importance 0.7 --limit 10
 ### Cross-References
 
 **Coordination Modules**:
-- `/home/alton/Sartor-claude-network/src/coordination/plan-sync.ts`
-- `/home/alton/Sartor-claude-network/src/coordination/work-distribution.ts`
-- `/home/alton/Sartor-claude-network/src/coordination/progress.ts`
+
+- `/home/user/Sartor-claude-network/src/coordination/plan-sync.ts`
+- `/home/user/Sartor-claude-network/src/coordination/work-distribution.ts`
+- `/home/user/Sartor-claude-network/src/coordination/progress.ts`
 
 **Memory System**:
-- `/home/alton/Sartor-claude-network/src/memory/memory-system.ts`
-- `/home/alton/Sartor-claude-network/src/mcp/`
+
+- `/home/user/Sartor-claude-network/src/memory/memory-system.ts`
+- `/home/user/Sartor-claude-network/src/mcp/`
 
 **Related Skills**:
-- `/home/alton/Sartor-claude-network/.claude/skills/memory-access.md`
-- `/home/alton/Sartor-claude-network/.claude/skills/mcp-memory-tools.md`
+
+- `/home/user/Sartor-claude-network/.claude/skills/memory-access.md`
+- `/home/user/Sartor-claude-network/.claude/skills/mcp-memory-tools.md`
 
 ## File Summary
 
@@ -370,6 +375,7 @@ distributed-systems-debugging/
 ### Evidence-Based
 
 All integration follows evidence-based principles:
+
 - No fabricated scores or metrics
 - Examples based on actual SKG debugging sessions
 - Real coordination module references
@@ -378,6 +384,7 @@ All integration follows evidence-based principles:
 ### Anti-Fabrication
 
 Memory integration enforces:
+
 - Actual data storage (no synthetic scores)
 - Evidence chain from symptom to resolution
 - Verifiable file paths and line numbers
@@ -386,6 +393,7 @@ Memory integration enforces:
 ### Limitations
 
 Memory integration **cannot**:
+
 - Automatically fix bugs (human analysis required)
 - Guarantee pattern match accuracy (similarity is fuzzy)
 - Replace domain knowledge (memory aids, not replaces)

@@ -29,10 +29,7 @@ describe('PlanSyncService', () => {
 
   describe('createPlan', () => {
     it('should create a new plan', () => {
-      const plan = syncService.createPlan(
-        'Test Plan',
-        'A test plan description'
-      );
+      const plan = syncService.createPlan('Test Plan', 'A test plan description');
 
       expect(plan).toBeDefined();
       expect(plan.id).toBeDefined();
@@ -174,9 +171,9 @@ describe('PlanSyncService', () => {
 
       expect(child?.parentId).toBe(parent!.id);
 
-      const updatedParent = Array.from(
-        syncService.getPlan(plan.id)!.items.values()
-      ).find((i) => i.id === parent!.id);
+      const updatedParent = Array.from(syncService.getPlan(plan.id)!.items.values()).find(
+        (i) => i.id === parent!.id
+      );
       expect(updatedParent?.subtaskIds).toContain(child!.id);
     });
 
@@ -228,11 +225,7 @@ describe('PlanSyncService', () => {
     });
 
     it('should update item status', () => {
-      const updated = syncService.updateItemStatus(
-        plan.id,
-        item.id,
-        PlanItemStatus.IN_PROGRESS
-      );
+      const updated = syncService.updateItemStatus(plan.id, item.id, PlanItemStatus.IN_PROGRESS);
 
       expect(updated?.status).toBe(PlanItemStatus.IN_PROGRESS);
     });
@@ -249,11 +242,7 @@ describe('PlanSyncService', () => {
     });
 
     it('should set progress to 100 on completion', () => {
-      const updated = syncService.updateItemStatus(
-        plan.id,
-        item.id,
-        PlanItemStatus.COMPLETED
-      );
+      const updated = syncService.updateItemStatus(plan.id, item.id, PlanItemStatus.COMPLETED);
 
       expect(updated?.progress).toBe(100);
     });
@@ -318,9 +307,9 @@ describe('PlanSyncService', () => {
 
       syncService.deleteItem(plan.id, child.id);
 
-      const updatedParent = Array.from(
-        syncService.getPlan(plan.id)!.items.values()
-      ).find((i) => i.id === parent.id);
+      const updatedParent = Array.from(syncService.getPlan(plan.id)!.items.values()).find(
+        (i) => i.id === parent.id
+      );
       expect(updatedParent?.subtaskIds).not.toContain(child.id);
     });
   });

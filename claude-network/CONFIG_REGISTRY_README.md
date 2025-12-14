@@ -17,6 +17,7 @@ A hierarchical configuration system that loads settings from multiple sources in
 5. **Default values** (lowest priority)
 
 **Features:**
+
 - Type-safe configuration with dataclasses
 - Automatic validation with detailed error messages
 - Secure credential storage
@@ -24,6 +25,7 @@ A hierarchical configuration system that loads settings from multiple sources in
 - YAML-based configuration files
 
 **Configuration Sections:**
+
 - `firebase`: Firebase connection settings
 - `agent`: Agent identity and capabilities
 - `network`: Communication parameters
@@ -34,6 +36,7 @@ A hierarchical configuration system that loads settings from multiple sources in
 Manages agent registration, discovery, and health monitoring.
 
 **Key Features:**
+
 - **Agent Registration**: Register agents with capabilities and metadata
 - **Heartbeat System**: Automatic heartbeat sending every 15 seconds
 - **Health Monitoring**: Track agent health (healthy/warning/critical/dead)
@@ -43,6 +46,7 @@ Manages agent registration, discovery, and health monitoring.
 - **Local Caching**: Offline resilience with local agent cache
 
 **Agent Information Tracked:**
+
 - Identity (ID, name, location)
 - Capabilities and specialization
 - Surface type (CLI, web, mobile, desktop)
@@ -55,6 +59,7 @@ Manages agent registration, discovery, and health monitoring.
 Initializes and manages the Firebase database structure.
 
 **Database Structure:**
+
 ```
 /agents         - Agent registry
 /messages       - Real-time messages
@@ -69,6 +74,7 @@ Initializes and manages the Firebase database structure.
 ```
 
 **Features:**
+
 - Schema initialization and validation
 - Database statistics and monitoring
 - Schema documentation export
@@ -79,6 +85,7 @@ Initializes and manages the Firebase database structure.
 User-friendly wizard for setting up new agents.
 
 **Setup Steps:**
+
 1. Check existing configuration
 2. Configure Firebase connection
 3. Set up agent identity and capabilities
@@ -91,6 +98,7 @@ User-friendly wizard for setting up new agents.
 10. Start services
 
 **Features:**
+
 - Color-coded terminal output
 - Input validation
 - Default value suggestions
@@ -160,17 +168,17 @@ export CLAUDE_LOG_LEVEL="DEBUG"
 
 ```yaml
 firebase:
-  url: "https://home-claude-network-default-rtdb.firebaseio.com"
+  url: 'https://home-claude-network-default-rtdb.firebaseio.com'
 
 agent:
-  agent_id: "desktop-001"
-  agent_name: "Desktop Mission Control"
+  agent_id: 'desktop-001'
+  agent_name: 'Desktop Mission Control'
   capabilities:
     - coordinate
     - analyze
     - execute
-  specialization: "coordination"
-  surface: "desktop"
+  specialization: 'coordination'
+  surface: 'desktop'
   heartbeat_interval: 15
 
 network:
@@ -285,7 +293,7 @@ python3 agent_registry.py
 Enable debug logging:
 
 ```yaml
-log_level: "DEBUG"
+log_level: 'DEBUG'
 debug_mode: true
 ```
 
@@ -299,17 +307,20 @@ export CLAUDE_DEBUG="true"
 ## Architecture Benefits
 
 ### Reliability
+
 - **Hierarchical Config**: Multiple fallback sources
 - **Local Caching**: Works offline
 - **Automatic Retries**: Resilient to network issues
 - **Health Monitoring**: Automatic failure detection
 
 ### Scalability
+
 - **Efficient Discovery**: Find agents by capability
 - **Load Distribution**: Based on agent status
 - **Heartbeat Optimization**: Configurable intervals
 
 ### Maintainability
+
 - **Type Safety**: Dataclass validation
 - **Clear Separation**: Config, registry, schema
 - **Comprehensive Logging**: Easy debugging

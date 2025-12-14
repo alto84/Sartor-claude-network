@@ -20,6 +20,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Read data from Firebase Realtime Database or Firestore
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -69,6 +70,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -85,9 +87,9 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     "metadata": {
       "type": "object",
       "properties": {
-        "path": {"type": "string"},
-        "timestamp": {"type": "string", "format": "date-time"},
-        "count": {"type": "integer"}
+        "path": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "count": { "type": "integer" }
       }
     }
   }
@@ -95,6 +97,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Example Usage**:
+
 ```json
 // Request
 {
@@ -132,6 +135,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Error Scenarios**:
+
 - `PERMISSION_DENIED`: User lacks read permissions
 - `NOT_FOUND`: Path doesn't exist
 - `INVALID_PATH`: Malformed path syntax
@@ -143,6 +147,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Write data to Firebase Realtime Database or Firestore
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -184,6 +189,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -200,9 +206,9 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     "metadata": {
       "type": "object",
       "properties": {
-        "path": {"type": "string"},
-        "timestamp": {"type": "string", "format": "date-time"},
-        "operation": {"type": "string"}
+        "path": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "operation": { "type": "string" }
       }
     }
   }
@@ -210,6 +216,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Example Usage**:
+
 ```json
 // Request
 {
@@ -246,6 +253,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Error Scenarios**:
+
 - `PERMISSION_DENIED`: User lacks write permissions
 - `VALIDATION_ERROR`: Data doesn't match schema
 - `CONFLICT`: Transaction conflict
@@ -257,6 +265,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Subscribe to real-time updates from Firebase
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -280,7 +289,15 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     },
     "eventType": {
       "type": "string",
-      "enum": ["value", "child_added", "child_changed", "child_removed", "document_added", "document_modified", "document_deleted"],
+      "enum": [
+        "value",
+        "child_added",
+        "child_changed",
+        "child_removed",
+        "document_added",
+        "document_modified",
+        "document_deleted"
+      ],
       "default": "value",
       "description": "Type of events to listen for"
     },
@@ -294,6 +311,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema (Initial)**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -315,6 +333,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Event Notification Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -347,6 +366,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Example Usage**:
+
 ```json
 // Subscribe Request
 {
@@ -385,6 +405,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Cancel an active Firebase subscription
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -406,6 +427,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Read a file from a GitHub repository
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -442,6 +464,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -455,11 +478,11 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     "metadata": {
       "type": "object",
       "properties": {
-        "path": {"type": "string"},
-        "size": {"type": "integer"},
-        "sha": {"type": "string"},
-        "encoding": {"type": "string"},
-        "type": {"type": "string", "enum": ["file", "symlink", "submodule"]}
+        "path": { "type": "string" },
+        "size": { "type": "integer" },
+        "sha": { "type": "string" },
+        "encoding": { "type": "string" },
+        "type": { "type": "string", "enum": ["file", "symlink", "submodule"] }
       }
     }
   }
@@ -467,6 +490,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Example Usage**:
+
 ```json
 // Request
 {
@@ -499,6 +523,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Error Scenarios**:
+
 - `FILE_NOT_FOUND`: File doesn't exist at specified path
 - `REPO_NOT_FOUND`: Repository doesn't exist
 - `ACCESS_DENIED`: Private repository without access
@@ -510,6 +535,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Search for code across GitHub repositories
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -525,12 +551,12 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     "filters": {
       "type": "object",
       "properties": {
-        "owner": {"type": "string"},
-        "repo": {"type": "string"},
-        "language": {"type": "string"},
-        "path": {"type": "string"},
-        "filename": {"type": "string"},
-        "extension": {"type": "string"}
+        "owner": { "type": "string" },
+        "repo": { "type": "string" },
+        "language": { "type": "string" },
+        "path": { "type": "string" },
+        "filename": { "type": "string" },
+        "extension": { "type": "string" }
       }
     },
     "sort": {
@@ -554,6 +580,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -568,21 +595,21 @@ This document provides detailed specifications for all MCP tools in the Sartor C
           "repository": {
             "type": "object",
             "properties": {
-              "owner": {"type": "string"},
-              "name": {"type": "string"},
-              "description": {"type": "string"},
-              "stars": {"type": "integer"}
+              "owner": { "type": "string" },
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "stars": { "type": "integer" }
             }
           },
-          "path": {"type": "string"},
+          "path": { "type": "string" },
           "matches": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "line": {"type": "integer"},
-                "text": {"type": "string"},
-                "highlight": {"type": "string"}
+                "line": { "type": "integer" },
+                "text": { "type": "string" },
+                "highlight": { "type": "string" }
               }
             }
           }
@@ -608,6 +635,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Create a new issue in a GitHub repository
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -634,12 +662,12 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     },
     "labels": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "description": "Labels to apply"
     },
     "assignees": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "description": "Users to assign"
     },
     "milestone": {
@@ -655,6 +683,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Create a pull request
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -705,6 +734,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Get GitHub Actions workflow runs
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -723,7 +753,21 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     },
     "status": {
       "type": "string",
-      "enum": ["completed", "action_required", "cancelled", "failure", "neutral", "skipped", "stale", "success", "timed_out", "in_progress", "queued", "requested", "waiting"]
+      "enum": [
+        "completed",
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "skipped",
+        "stale",
+        "success",
+        "timed_out",
+        "in_progress",
+        "queued",
+        "requested",
+        "waiting"
+      ]
     },
     "branch": {
       "type": "string"
@@ -745,6 +789,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Generate personalized welcome message for new agents
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -764,7 +809,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     },
     "specializations": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "description": "Areas of specialization"
     },
     "language": {
@@ -777,6 +822,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -786,9 +832,9 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     "welcome": {
       "type": "object",
       "properties": {
-        "message": {"type": "string"},
-        "systemOverview": {"type": "string"},
-        "roleDescription": {"type": "string"}
+        "message": { "type": "string" },
+        "systemOverview": { "type": "string" },
+        "roleDescription": { "type": "string" }
       }
     },
     "quickStart": {
@@ -796,19 +842,19 @@ This document provides detailed specifications for all MCP tools in the Sartor C
       "items": {
         "type": "object",
         "properties": {
-          "step": {"type": "integer"},
-          "title": {"type": "string"},
-          "description": {"type": "string"},
-          "action": {"type": "string"}
+          "step": { "type": "integer" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "action": { "type": "string" }
         }
       }
     },
     "resources": {
       "type": "object",
       "properties": {
-        "documentation": {"type": "array", "items": {"type": "string"}},
-        "tutorials": {"type": "array", "items": {"type": "string"}},
-        "contacts": {"type": "array", "items": {"type": "string"}}
+        "documentation": { "type": "array", "items": { "type": "string" } },
+        "tutorials": { "type": "array", "items": { "type": "string" } },
+        "contacts": { "type": "array", "items": { "type": "string" } }
       }
     }
   }
@@ -820,6 +866,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Register a new agent in the system
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -859,9 +906,9 @@ This document provides detailed specifications for all MCP tools in the Sartor C
         "type": "object",
         "required": ["name", "category"],
         "properties": {
-          "name": {"type": "string"},
-          "category": {"type": "string"},
-          "parameters": {"type": "object"}
+          "name": { "type": "string" },
+          "category": { "type": "string" },
+          "parameters": { "type": "object" }
         }
       },
       "minItems": 1
@@ -869,13 +916,13 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     "configuration": {
       "type": "object",
       "properties": {
-        "maxConcurrentTasks": {"type": "integer", "minimum": 1, "default": 5},
-        "timeout": {"type": "integer", "minimum": 1000, "default": 30000},
+        "maxConcurrentTasks": { "type": "integer", "minimum": 1, "default": 5 },
+        "timeout": { "type": "integer", "minimum": 1000, "default": 30000 },
         "retryPolicy": {
           "type": "object",
           "properties": {
-            "maxRetries": {"type": "integer", "default": 3},
-            "backoffMs": {"type": "integer", "default": 1000}
+            "maxRetries": { "type": "integer", "default": 3 },
+            "backoffMs": { "type": "integer", "default": 1000 }
           }
         }
       }
@@ -885,6 +932,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -898,17 +946,17 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     "credentials": {
       "type": "object",
       "properties": {
-        "apiKey": {"type": "string"},
-        "secret": {"type": "string"},
-        "expiresAt": {"type": "string", "format": "date-time"}
+        "apiKey": { "type": "string" },
+        "secret": { "type": "string" },
+        "expiresAt": { "type": "string", "format": "date-time" }
       }
     },
     "endpoints": {
       "type": "object",
       "properties": {
-        "messages": {"type": "string", "format": "uri"},
-        "tasks": {"type": "string", "format": "uri"},
-        "status": {"type": "string", "format": "uri"}
+        "messages": { "type": "string", "format": "uri" },
+        "tasks": { "type": "string", "format": "uri" },
+        "status": { "type": "string", "format": "uri" }
       }
     },
     "registeredAt": {
@@ -924,6 +972,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Get onboarding checklist with completion status
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -944,6 +993,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -955,25 +1005,25 @@ This document provides detailed specifications for all MCP tools in the Sartor C
       "items": {
         "type": "object",
         "properties": {
-          "id": {"type": "string"},
-          "category": {"type": "string"},
-          "title": {"type": "string"},
-          "description": {"type": "string"},
-          "required": {"type": "boolean"},
-          "completed": {"type": "boolean"},
-          "completedAt": {"type": "string", "format": "date-time"},
-          "dependencies": {"type": "array", "items": {"type": "string"}},
-          "resources": {"type": "array", "items": {"type": "string"}}
+          "id": { "type": "string" },
+          "category": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "required": { "type": "boolean" },
+          "completed": { "type": "boolean" },
+          "completedAt": { "type": "string", "format": "date-time" },
+          "dependencies": { "type": "array", "items": { "type": "string" } },
+          "resources": { "type": "array", "items": { "type": "string" } }
         }
       }
     },
     "progress": {
       "type": "object",
       "properties": {
-        "completed": {"type": "integer"},
-        "total": {"type": "integer"},
-        "percentage": {"type": "number"},
-        "requiredRemaining": {"type": "integer"}
+        "completed": { "type": "integer" },
+        "total": { "type": "integer" },
+        "percentage": { "type": "number" },
+        "requiredRemaining": { "type": "integer" }
       }
     }
   }
@@ -987,6 +1037,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: List available skills in the system
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -1020,6 +1071,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -1031,18 +1083,18 @@ This document provides detailed specifications for all MCP tools in the Sartor C
       "items": {
         "type": "object",
         "properties": {
-          "id": {"type": "string"},
-          "name": {"type": "string"},
-          "category": {"type": "string"},
-          "description": {"type": "string"},
-          "version": {"type": "string"},
-          "author": {"type": "string"},
-          "requirements": {"type": "array", "items": {"type": "string"}},
-          "parameters": {"type": "object"},
-          "examples": {"type": "array", "items": {"type": "object"}},
-          "deprecated": {"type": "boolean"},
-          "successRate": {"type": "number"},
-          "lastUsed": {"type": "string", "format": "date-time"}
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "category": { "type": "string" },
+          "description": { "type": "string" },
+          "version": { "type": "string" },
+          "author": { "type": "string" },
+          "requirements": { "type": "array", "items": { "type": "string" } },
+          "parameters": { "type": "object" },
+          "examples": { "type": "array", "items": { "type": "object" } },
+          "deprecated": { "type": "boolean" },
+          "successRate": { "type": "number" },
+          "lastUsed": { "type": "string", "format": "date-time" }
         }
       }
     },
@@ -1051,7 +1103,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     },
     "categories": {
       "type": "array",
-      "items": {"type": "string"}
+      "items": { "type": "string" }
     }
   }
 }
@@ -1062,6 +1114,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: List active agents in the system
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -1078,7 +1131,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     },
     "capabilities": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "description": "Filter by required capabilities"
     },
     "includeMetrics": {
@@ -1090,6 +1143,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -1101,21 +1155,21 @@ This document provides detailed specifications for all MCP tools in the Sartor C
       "items": {
         "type": "object",
         "properties": {
-          "id": {"type": "string"},
-          "name": {"type": "string"},
-          "type": {"type": "string"},
-          "status": {"type": "string"},
-          "capabilities": {"type": "array", "items": {"type": "string"}},
-          "currentTasks": {"type": "integer"},
-          "maxTasks": {"type": "integer"},
-          "lastSeen": {"type": "string", "format": "date-time"},
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "status": { "type": "string" },
+          "capabilities": { "type": "array", "items": { "type": "string" } },
+          "currentTasks": { "type": "integer" },
+          "maxTasks": { "type": "integer" },
+          "lastSeen": { "type": "string", "format": "date-time" },
           "metrics": {
             "type": "object",
             "properties": {
-              "tasksCompleted": {"type": "integer"},
-              "successRate": {"type": "number"},
-              "avgResponseTime": {"type": "number"},
-              "uptime": {"type": "integer"}
+              "tasksCompleted": { "type": "integer" },
+              "successRate": { "type": "number" },
+              "avgResponseTime": { "type": "number" },
+              "uptime": { "type": "integer" }
             }
           }
         }
@@ -1124,11 +1178,11 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     "summary": {
       "type": "object",
       "properties": {
-        "total": {"type": "integer"},
-        "active": {"type": "integer"},
-        "idle": {"type": "integer"},
-        "busy": {"type": "integer"},
-        "offline": {"type": "integer"}
+        "total": { "type": "integer" },
+        "active": { "type": "integer" },
+        "idle": { "type": "integer" },
+        "busy": { "type": "integer" },
+        "offline": { "type": "integer" }
       }
     }
   }
@@ -1140,6 +1194,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Get pending tasks from the task queue
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -1179,6 +1234,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -1190,31 +1246,31 @@ This document provides detailed specifications for all MCP tools in the Sartor C
       "items": {
         "type": "object",
         "properties": {
-          "id": {"type": "string"},
-          "type": {"type": "string"},
-          "priority": {"type": "string"},
-          "status": {"type": "string"},
-          "title": {"type": "string"},
-          "description": {"type": "string"},
-          "requiredCapabilities": {"type": "array", "items": {"type": "string"}},
-          "assignedTo": {"type": "string"},
-          "createdAt": {"type": "string", "format": "date-time"},
-          "deadline": {"type": "string", "format": "date-time"},
-          "dependencies": {"type": "array", "items": {"type": "string"}},
-          "metadata": {"type": "object"}
+          "id": { "type": "string" },
+          "type": { "type": "string" },
+          "priority": { "type": "string" },
+          "status": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "requiredCapabilities": { "type": "array", "items": { "type": "string" } },
+          "assignedTo": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "deadline": { "type": "string", "format": "date-time" },
+          "dependencies": { "type": "array", "items": { "type": "string" } },
+          "metadata": { "type": "object" }
         }
       }
     },
     "queueStats": {
       "type": "object",
       "properties": {
-        "total": {"type": "integer"},
-        "pending": {"type": "integer"},
-        "assigned": {"type": "integer"},
-        "inProgress": {"type": "integer"},
-        "blocked": {"type": "integer"},
-        "avgWaitTime": {"type": "number"},
-        "oldestTask": {"type": "string", "format": "date-time"}
+        "total": { "type": "integer" },
+        "pending": { "type": "integer" },
+        "assigned": { "type": "integer" },
+        "inProgress": { "type": "integer" },
+        "blocked": { "type": "integer" },
+        "avgWaitTime": { "type": "number" },
+        "oldestTask": { "type": "string", "format": "date-time" }
       }
     }
   }
@@ -1226,6 +1282,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 **Description**: Get overall system status and health
 
 **Input Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -1248,6 +1305,7 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 ```
 
 **Output Schema**:
+
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -1271,17 +1329,17 @@ This document provides detailed specifications for all MCP tools in the Sartor C
         "firebase": {
           "type": "object",
           "properties": {
-            "status": {"type": "string"},
-            "latency": {"type": "number"},
-            "errors": {"type": "integer"}
+            "status": { "type": "string" },
+            "latency": { "type": "number" },
+            "errors": { "type": "integer" }
           }
         },
         "github": {
           "type": "object",
           "properties": {
-            "status": {"type": "string"},
-            "rateLimit": {"type": "object"},
-            "latency": {"type": "number"}
+            "status": { "type": "string" },
+            "rateLimit": { "type": "object" },
+            "latency": { "type": "number" }
           }
         }
       }
@@ -1289,13 +1347,13 @@ This document provides detailed specifications for all MCP tools in the Sartor C
     "metrics": {
       "type": "object",
       "properties": {
-        "activeAgents": {"type": "integer"},
-        "tasksInQueue": {"type": "integer"},
-        "avgResponseTime": {"type": "number"},
-        "successRate": {"type": "number"},
-        "uptime": {"type": "integer"},
-        "memoryUsage": {"type": "number"},
-        "cpuUsage": {"type": "number"}
+        "activeAgents": { "type": "integer" },
+        "tasksInQueue": { "type": "integer" },
+        "avgResponseTime": { "type": "number" },
+        "successRate": { "type": "number" },
+        "uptime": { "type": "integer" },
+        "memoryUsage": { "type": "number" },
+        "cpuUsage": { "type": "number" }
       }
     },
     "alerts": {
@@ -1303,9 +1361,9 @@ This document provides detailed specifications for all MCP tools in the Sartor C
       "items": {
         "type": "object",
         "properties": {
-          "level": {"type": "string"},
-          "message": {"type": "string"},
-          "timestamp": {"type": "string", "format": "date-time"}
+          "level": { "type": "string" },
+          "message": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" }
         }
       }
     }
@@ -1335,10 +1393,10 @@ This document provides detailed specifications for all MCP tools in the Sartor C
       "type": "object",
       "description": "Additional error context",
       "properties": {
-        "field": {"type": "string"},
+        "field": { "type": "string" },
         "value": {},
-        "reason": {"type": "string"},
-        "suggestion": {"type": "string"}
+        "reason": { "type": "string" },
+        "suggestion": { "type": "string" }
       }
     }
   }
@@ -1383,43 +1441,43 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 
 ### Standard JSON-RPC Error Codes
 
-| Code | Message | Description |
-|------|---------|-------------|
-| -32700 | Parse error | Invalid JSON |
-| -32600 | Invalid Request | Not a valid Request object |
-| -32601 | Method not found | Method does not exist |
-| -32602 | Invalid params | Invalid method parameters |
-| -32603 | Internal error | Internal JSON-RPC error |
+| Code   | Message          | Description                |
+| ------ | ---------------- | -------------------------- |
+| -32700 | Parse error      | Invalid JSON               |
+| -32600 | Invalid Request  | Not a valid Request object |
+| -32601 | Method not found | Method does not exist      |
+| -32602 | Invalid params   | Invalid method parameters  |
+| -32603 | Internal error   | Internal JSON-RPC error    |
 
 ### Custom MCP Error Codes
 
-| Code Range | Category | Description |
-|------------|----------|-------------|
-| -32000 to -32099 | Server errors | General server errors |
-| -32100 to -32199 | Authentication | Auth/permission errors |
-| -32200 to -32299 | Resource errors | Resource not found/conflicts |
-| -32300 to -32399 | Validation errors | Input validation failures |
-| -32400 to -32499 | Rate limiting | Rate limit/quota errors |
-| -32500 to -32599 | External service | Third-party service errors |
+| Code Range       | Category          | Description                  |
+| ---------------- | ----------------- | ---------------------------- |
+| -32000 to -32099 | Server errors     | General server errors        |
+| -32100 to -32199 | Authentication    | Auth/permission errors       |
+| -32200 to -32299 | Resource errors   | Resource not found/conflicts |
+| -32300 to -32399 | Validation errors | Input validation failures    |
+| -32400 to -32499 | Rate limiting     | Rate limit/quota errors      |
+| -32500 to -32599 | External service  | Third-party service errors   |
 
 ### Specific Error Codes
 
-| Code | Name | Description |
-|------|------|-------------|
-| -32100 | UNAUTHORIZED | Missing or invalid authentication |
-| -32101 | FORBIDDEN | Authenticated but lacks permission |
-| -32102 | TOKEN_EXPIRED | Authentication token expired |
-| -32200 | NOT_FOUND | Resource not found |
-| -32201 | CONFLICT | Resource conflict (e.g., duplicate) |
-| -32202 | GONE | Resource permanently deleted |
-| -32300 | VALIDATION_ERROR | Input validation failed |
-| -32301 | REQUIRED_FIELD | Required field missing |
-| -32302 | INVALID_FORMAT | Invalid data format |
-| -32400 | RATE_LIMITED | Rate limit exceeded |
-| -32401 | QUOTA_EXCEEDED | Usage quota exceeded |
-| -32500 | FIREBASE_ERROR | Firebase service error |
-| -32501 | GITHUB_ERROR | GitHub API error |
-| -32502 | TIMEOUT | Operation timeout |
+| Code   | Name             | Description                         |
+| ------ | ---------------- | ----------------------------------- |
+| -32100 | UNAUTHORIZED     | Missing or invalid authentication   |
+| -32101 | FORBIDDEN        | Authenticated but lacks permission  |
+| -32102 | TOKEN_EXPIRED    | Authentication token expired        |
+| -32200 | NOT_FOUND        | Resource not found                  |
+| -32201 | CONFLICT         | Resource conflict (e.g., duplicate) |
+| -32202 | GONE             | Resource permanently deleted        |
+| -32300 | VALIDATION_ERROR | Input validation failed             |
+| -32301 | REQUIRED_FIELD   | Required field missing              |
+| -32302 | INVALID_FORMAT   | Invalid data format                 |
+| -32400 | RATE_LIMITED     | Rate limit exceeded                 |
+| -32401 | QUOTA_EXCEEDED   | Usage quota exceeded                |
+| -32500 | FIREBASE_ERROR   | Firebase service error              |
+| -32501 | GITHUB_ERROR     | GitHub API error                    |
+| -32502 | TIMEOUT          | Operation timeout                   |
 
 ## Implementation Notes
 
@@ -1474,9 +1532,9 @@ This document provides detailed specifications for all MCP tools in the Sartor C
 
 ## Version History
 
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0.0 | 2025-11-03 | Initial specification |
+| Version | Date       | Changes               |
+| ------- | ---------- | --------------------- |
+| 1.0.0   | 2025-11-03 | Initial specification |
 
 ## Future Enhancements
 

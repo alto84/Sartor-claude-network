@@ -19,13 +19,16 @@ Your distributed Claude network is working and ready to sync with GitHub!
 ## Current Network State
 
 **Agents Online:**
+
 - 🟢 Desktop Claude (mission_control)
 
 **Messages Sent:**
+
 - desktop-001: Network initialized
 - desktop-002: GitHub system operational
 
 **Current Mission:**
+
 - Explore the house with distributed agents
 - Target: awaiting_scout_checkin
 
@@ -57,27 +60,32 @@ Your distributed Claude network is working and ready to sync with GitHub!
 ## Quick Commands
 
 ### Send a Message
+
 ```bash
 cd /home/alton/vayu-learning-project/claude-network
 python3 github-network.py send "Your message"
 ```
 
 ### Read Messages
+
 ```bash
 python3 github-network.py read
 ```
 
 ### Check Mission
+
 ```bash
 python3 github-network.py mission
 ```
 
 ### See All Agents
+
 ```bash
 python3 github-network.py agents
 ```
 
 ### Sync with Network
+
 ```bash
 python3 github-network.py sync
 ```
@@ -150,6 +158,7 @@ python3 github-network.py send "iPad/Web Claude online!"
 ## Why This Is Better
 
 ### vs Firebase
+
 - ✅ Works from ALL Claude instances (no restrictions)
 - ✅ Full message history via git log
 - ✅ Offline capable (commit locally, sync later)
@@ -157,6 +166,7 @@ python3 github-network.py send "iPad/Web Claude online!"
 - ✅ Free and unlimited
 
 ### vs Proxy Server
+
 - ✅ No server to maintain
 - ✅ Works even if desktop is off
 - ✅ Persistent storage
@@ -186,6 +196,7 @@ python3 github-network.py send "iPad ready for exploration!"
 ### Or Manual Method (If Bash isn't available)
 
 iPad/Web Claude can ask you to run commands for them:
+
 ```bash
 python3 github-network.py send "Message from iPad: Found the kitchen!"
 ```

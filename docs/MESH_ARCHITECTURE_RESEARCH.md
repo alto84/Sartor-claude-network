@@ -15,9 +15,11 @@ Poetiq achieved 54% on ARC-AGI-2 (first to break 50%) by orchestrating existing 
 #### Core Architectural Patterns
 
 1. **Refinement Loop Architecture**
+
    ```
    Generate Solution → Receive Feedback → Analyze → Refine → Repeat
    ```
+
    - Not chain-of-thought, but iterative refinement
    - Multi-step self-improving loop
    - Builds correct solutions incrementally
@@ -43,6 +45,7 @@ Poetiq achieved 54% on ARC-AGI-2 (first to break 50%) by orchestrating existing 
 ### Relevance to Our System
 
 Our `src/multi-expert/` already implements similar patterns:
+
 - `orchestrator.ts` - Multi-expert execution
 - `feedback-loop.ts` - Iterative refinement
 - `soft-scorer.ts` - Self-auditing via scoring
@@ -56,28 +59,29 @@ Our `src/multi-expert/` already implements similar patterns:
 
 ### Official Reference Implementations
 
-| Server | Description | Relevance |
-|--------|-------------|-----------|
-| **Memory** | Knowledge graph-based persistent memory | Direct competitor/reference |
-| **Filesystem** | Secure file operations | Potential storage backend |
-| **Git** | Repository tools | Version control for memories |
-| **Sequential Thinking** | Dynamic problem-solving | Similar to our refinement |
+| Server                  | Description                             | Relevance                    |
+| ----------------------- | --------------------------------------- | ---------------------------- |
+| **Memory**              | Knowledge graph-based persistent memory | Direct competitor/reference  |
+| **Filesystem**          | Secure file operations                  | Potential storage backend    |
+| **Git**                 | Repository tools                        | Version control for memories |
+| **Sequential Thinking** | Dynamic problem-solving                 | Similar to our refinement    |
 
 ### Community Memory-Related MCPs
 
-| Server | Description | Key Feature |
-|--------|-------------|-------------|
-| **Qdrant** | Vector search semantic memory | Semantic layer |
-| **Neo4j** | Graph database | Relationship queries |
-| **Fireproof** | Immutable ledger DB | **Live synchronization** |
-| **InstantDB** | Real-time database | **Real-time capabilities** |
-| **Supabase** | Database + auth + edge | Full backend |
+| Server        | Description                   | Key Feature                |
+| ------------- | ----------------------------- | -------------------------- |
+| **Qdrant**    | Vector search semantic memory | Semantic layer             |
+| **Neo4j**     | Graph database                | Relationship queries       |
+| **Fireproof** | Immutable ledger DB           | **Live synchronization**   |
+| **InstantDB** | Real-time database            | **Real-time capabilities** |
+| **Supabase**  | Database + auth + edge        | Full backend               |
 
 ### Official MCP Memory Server Patterns
 
 From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers):
 
 **Data Model:**
+
 - **Entities** - Primary nodes with name, type, observations
 - **Relations** - Directed edges between entities (active voice)
 - **Observations** - Atomic facts attached to entities
@@ -85,6 +89,7 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 **Storage:** JSONL file-based (`memory.jsonl`)
 
 **9 Core Tools:**
+
 1. `create_entities` - Batch create, skip duplicates
 2. `create_relations` - Batch create relationships
 3. `add_observations` - Append facts
@@ -104,11 +109,13 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 ### Operational Transform (OT)
 
 **Pros:**
+
 - Better user intent preservation
 - Lower complexity for simple cases O(n)
 - Performance-critical path optimization
 
 **Cons:**
+
 - Requires central server coordination
 - Higher complexity for distributed O(n²)
 - Active server connection required
@@ -118,6 +125,7 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 ### CRDTs (Conflict-free Replicated Data Types)
 
 **Pros:**
+
 - Works peer-to-peer
 - Offline-capable
 - Resilient to network issues
@@ -126,11 +134,13 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 - Horizontal scaling friendly
 
 **Cons:**
+
 - Loses some user intent
 - Can produce unexpected merges
 - More complex data structures
 
 **Used by:**
+
 - League of Legends chat (7.5M concurrent, 11K msg/sec)
 - Apple Notes (offline sync)
 - Facebook Apollo & FlightTracker
@@ -151,12 +161,14 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 ### Recommendation for Mesh Memory
 
 **Use CRDT (CmRDT)** for our mesh because:
+
 - Claude instances may go offline
 - P2P architecture preferred
 - No single point of failure
 - Memories must eventually converge
 
 **Hybrid Approach:**
+
 - CRDTs for memory replication
 - OT for real-time collaborative editing (if needed)
 
@@ -181,6 +193,7 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 ```
 
 ### Strengths
+
 - Three-tier memory with appropriate latency targets
 - Multi-expert parallel execution
 - Feedback loops and scoring
@@ -188,14 +201,14 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 
 ### Gaps for Mesh Architecture
 
-| Gap | Description |
-|-----|-------------|
-| **No Instance Discovery** | Instances can't find each other |
-| **No Sync Protocol** | No way to replicate memories |
-| **Single Writer** | No concurrent write handling |
-| **No Conflict Resolution** | No CRDT or OT implementation |
-| **No Skills Sharing** | Skills local to each instance |
-| **No Cross-Agent Comms** | Agents can't communicate |
+| Gap                        | Description                     |
+| -------------------------- | ------------------------------- |
+| **No Instance Discovery**  | Instances can't find each other |
+| **No Sync Protocol**       | No way to replicate memories    |
+| **Single Writer**          | No concurrent write handling    |
+| **No Conflict Resolution** | No CRDT or OT implementation    |
+| **No Skills Sharing**      | Skills local to each instance   |
+| **No Cross-Agent Comms**   | Agents can't communicate        |
 
 ---
 
@@ -235,30 +248,35 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 ### Implementation Phases
 
 #### Phase 1: WebSocket Real-Time Layer
+
 - Add WebSocket server alongside HTTP
 - Server-Sent Events (SSE) for subscriptions
 - Memory change notifications
 - Instance heartbeats
 
 #### Phase 2: CRDT Memory Replication
+
 - Implement CmRDT for memory operations
 - Operation log for sync
 - Conflict-free merge
 - Offline queue + reconciliation
 
 #### Phase 3: Instance Discovery & Registration
+
 - Agent registry service
 - Capability advertisement
 - Health monitoring
 - Load balancing
 
 #### Phase 4: Shared Skills Library
+
 - Central skill repository
 - Version management
 - Hot-reload capabilities
 - Skill discovery API
 
 #### Phase 5: Cross-Agent Orchestration
+
 - Task delegation protocol
 - Result aggregation
 - Multi-agent workflows
@@ -271,6 +289,7 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 ### Short-Term (This Sprint)
 
 1. **Add WebSocket Support**
+
    ```typescript
    // Extend http-server.ts
    import { WebSocketServer } from 'ws';
@@ -283,6 +302,7 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
    ```
 
 2. **Memory Change Events**
+
    ```typescript
    interface MemoryEvent {
      type: 'create' | 'update' | 'delete';
@@ -301,6 +321,7 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 ### Medium-Term
 
 4. **Operation Log**
+
    ```typescript
    interface OperationLog {
      operations: CRDTOperation[];
@@ -324,15 +345,18 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 ## 7. Key Sources
 
 ### Poetiq
+
 - [Poetiq ARC-AGI Solver](https://github.com/poetiq-ai/poetiq-arc-agi-solver)
 - [Traversing the Frontier of Superintelligence](https://poetiq.ai/posts/arcagi_announcement/)
 
 ### MCP Servers
+
 - [Official MCP Servers](https://github.com/modelcontextprotocol/servers)
 - [Awesome MCP Servers](https://github.com/wong2/awesome-mcp-servers)
 - [MCP Examples](https://modelcontextprotocol.io/examples)
 
 ### Real-Time Sync
+
 - [CRDTs and OT Handbook](https://gaurav789.hashnode.dev/mastering-distributed-collaboration-the-crdt-and-ot-handbook)
 - [OT vs CRDT Comparison](https://www.tiny.cloud/blog/real-time-collaboration-ot-vs-crdt/)
 - [Redis CRDT Deep Dive](https://redis.io/blog/diving-into-crdts/)
@@ -351,5 +375,5 @@ From [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/serv
 
 ---
 
-*Document created: 2025-12-09*
-*Author: Claude Code Assistant*
+_Document created: 2025-12-09_
+_Author: Claude Code Assistant_

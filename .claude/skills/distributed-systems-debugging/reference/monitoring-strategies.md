@@ -5,6 +5,7 @@ This document provides monitoring strategies extracted from SKG Agent Prototype 
 ## Overview
 
 Effective monitoring enables:
+
 - **Early detection**: Find issues before they become critical
 - **Root cause analysis**: Provide data for debugging
 - **Performance tracking**: Identify degradation trends
@@ -22,24 +23,26 @@ Based on SKG metrics-initialization.ts and monitoring implementations.
 // From SKG metrics-initialization.ts
 interface LatencyMetrics {
   // Communication latency
-  agentToAgent: number;           // Time for agent-to-agent message
-  agentToOrchestrator: number;    // Time for agent-orchestrator message
-  mcpMessageLatency: number;      // MCP protocol overhead
-  taskAssignmentLatency: number;  // Time to assign task to agent
+  agentToAgent: number; // Time for agent-to-agent message
+  agentToOrchestrator: number; // Time for agent-orchestrator message
+  mcpMessageLatency: number; // MCP protocol overhead
+  taskAssignmentLatency: number; // Time to assign task to agent
 
   // Operation latency
-  consensusTime: number;          // Time to reach consensus
-  discoveryLatency: number;       // Time to discover agents
-  responseTime: number;           // End-to-end request time
+  consensusTime: number; // Time to reach consensus
+  discoveryLatency: number; // Time to discover agents
+  responseTime: number; // End-to-end request time
 }
 ```
 
 **Why these matter:**
+
 - Agent-to-agent latency: Detects network issues between nodes
 - Consensus time: Indicates coordination overhead
 - Response time: User-visible performance
 
 **Collection strategy:**
+
 ```typescript
 // Record latency for each operation
 function recordLatency(operation: string, startTime: number) {
@@ -49,7 +52,7 @@ function recordLatency(operation: string, startTime: number) {
     metric: `latency.${operation}`,
     value: duration,
     timestamp: Date.now(),
-    tags: { operation, nodeId: getNodeId() }
+    tags: { operation, nodeId: getNodeId() },
   });
 }
 
@@ -60,12 +63,13 @@ recordLatency('consensus', startTime);
 ```
 
 **Alert thresholds from SKG:**
+
 ```typescript
 const alertThresholds = {
-  latencySpike: 1000,  // Alert if latency >1 second
+  latencySpike: 1000, // Alert if latency >1 second
   // p95 and p99 thresholds
-  p95Threshold: 500,   // 95th percentile should be <500ms
-  p99Threshold: 1000   // 99th percentile should be <1s
+  p95Threshold: 500, // 95th percentile should be <500ms
+  p99Threshold: 1000, // 99th percentile should be <1s
 };
 ```
 
@@ -76,24 +80,26 @@ const alertThresholds = {
 ```typescript
 // From SKG
 interface ThroughputMetrics {
-  messagesPerSecond: number;      // Message rate
-  tasksPerSecond: number;         // Task processing rate
-  operationsPerSecond: number;    // General ops rate
-  bytesPerSecond: number;         // Network throughput
+  messagesPerSecond: number; // Message rate
+  tasksPerSecond: number; // Task processing rate
+  operationsPerSecond: number; // General ops rate
+  bytesPerSecond: number; // Network throughput
 }
 ```
 
 **Why these matter:**
+
 - Detect throughput collapse (system can't handle load)
 - Identify bottlenecks (which operations are slow)
 - Track capacity (how much load can system handle)
 
 **Collection strategy:**
+
 ```typescript
 // Count operations in sliding window
 class ThroughputTracker {
   private operations: number[] = [];
-  private windowMs: number = 60000;  // 1 minute window
+  private windowMs: number = 60000; // 1 minute window
 
   recordOperation(timestamp: number = Date.now()) {
     this.operations.push(timestamp);
@@ -102,7 +108,7 @@ class ThroughputTracker {
 
   private cleanOldOperations(now: number) {
     const cutoff = now - this.windowMs;
-    this.operations = this.operations.filter(t => t > cutoff);
+    this.operations = this.operations.filter((t) => t > cutoff);
   }
 
   getOperationsPerSecond(): number {
@@ -114,15 +120,16 @@ class ThroughputTracker {
 ```
 
 **From SKG scalability tests:**
+
 ```typescript
 // Track throughput at different scales
 interface ScalabilityMetric {
   agentCount: number;
-  messageThroughput: number;  // Messages/second
-  taskThroughput: number;     // Tasks/second
+  messageThroughput: number; // Messages/second
+  taskThroughput: number; // Tasks/second
 
   // Expected: Should scale linearly or better
-  throughputPerAgent: number;  // Should stay constant
+  throughputPerAgent: number; // Should stay constant
 }
 ```
 
@@ -134,28 +141,30 @@ interface ScalabilityMetric {
 // From SKG
 interface ResourceMetrics {
   // Memory
-  memoryPerAgent: number;        // MB per agent
-  totalMemoryUsage: number;      // Total MB
-  heapUsed: number;              // JS heap usage
+  memoryPerAgent: number; // MB per agent
+  totalMemoryUsage: number; // Total MB
+  heapUsed: number; // JS heap usage
 
   // CPU
-  cpuUtilization: number;        // Percentage
-  cpuPerAgent: number;           // CPU per agent
+  cpuUtilization: number; // Percentage
+  cpuPerAgent: number; // CPU per agent
 
   // Network
-  networkUtilization: number;    // Bandwidth usage
-  connectionCount: number;       // Active connections
-  messageQueueDepth: number;     // Queued messages
+  networkUtilization: number; // Bandwidth usage
+  connectionCount: number; // Active connections
+  messageQueueDepth: number; // Queued messages
 }
 ```
 
 **Why these matter:**
+
 - Memory leaks: memoryPerAgent increasing over time
 - CPU bottlenecks: High utilization limiting throughput
 - Network saturation: Bandwidth or connection limits
 - Queue buildup: Backpressure issues
 
 **Collection strategy:**
+
 ```typescript
 // From SKG metrics-initialization.ts
 function collectResourceMetrics(): ResourceMetrics {
@@ -166,23 +175,24 @@ function collectResourceMetrics(): ResourceMetrics {
     totalMemoryUsage: memUsage.heapUsed / 1024 / 1024,
     heapUsed: memUsage.heapUsed,
 
-    cpuUtilization: process.cpuUsage().system / 1000000,  // Convert to %
+    cpuUtilization: process.cpuUsage().system / 1000000, // Convert to %
     cpuPerAgent: cpuUtilization / agentCount,
 
     networkUtilization: getNetworkStats().bytesPerSecond,
     connectionCount: getActiveConnections(),
-    messageQueueDepth: getQueueDepth()
+    messageQueueDepth: getQueueDepth(),
   };
 }
 ```
 
 **Alert thresholds:**
+
 ```typescript
 const alertThresholds = {
-  memoryUsage: 512,        // Alert if >512 MB
-  cpuUtilization: 80,      // Alert if >80%
-  connectionCount: 1000,   // Alert if >1000 connections
-  queueDepth: 10000        // Alert if >10k queued messages
+  memoryUsage: 512, // Alert if >512 MB
+  cpuUtilization: 80, // Alert if >80%
+  connectionCount: 1000, // Alert if >1000 connections
+  queueDepth: 10000, // Alert if >10k queued messages
 };
 ```
 
@@ -193,29 +203,31 @@ const alertThresholds = {
 ```typescript
 // From SKG
 interface ErrorMetrics {
-  errorRate: number;              // Errors per 1000 operations
-  errorCount: number;             // Total errors
-  errorsByType: Map<string, number>;  // Categorized errors
+  errorRate: number; // Errors per 1000 operations
+  errorCount: number; // Total errors
+  errorsByType: Map<string, number>; // Categorized errors
 
   // Distributed system specific
-  byzantineDetections: number;    // Byzantine behavior detected
-  consensusFailures: number;      // Failed consensus attempts
-  timeoutRate: number;            // Operations timing out
-  partitionEvents: number;        // Network partition events
+  byzantineDetections: number; // Byzantine behavior detected
+  consensusFailures: number; // Failed consensus attempts
+  timeoutRate: number; // Operations timing out
+  partitionEvents: number; // Network partition events
 
   // Recovery metrics
-  averageRecoveryTime: number;    // Time to recover from failures
-  failedRecoveries: number;       // Recoveries that failed
+  averageRecoveryTime: number; // Time to recover from failures
+  failedRecoveries: number; // Recoveries that failed
 }
 ```
 
 **Why these matter:**
+
 - Error rate spikes: Something is failing
 - Byzantine detections: Faulty/malicious nodes present
 - Timeout rate: Coordination or network issues
 - Recovery time: System resilience
 
 **Collection strategy:**
+
 ```typescript
 // Track errors with categorization
 class ErrorTracker {
@@ -230,7 +242,7 @@ class ErrorTracker {
       errorType,
       count: count + 1,
       context,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     });
   }
 
@@ -239,10 +251,9 @@ class ErrorTracker {
   }
 
   getErrorRate(): number {
-    const totalErrors = Array.from(this.errors.values())
-      .reduce((sum, count) => sum + count, 0);
+    const totalErrors = Array.from(this.errors.values()).reduce((sum, count) => sum + count, 0);
 
-    return (totalErrors / this.totalOperations) * 1000;  // Per 1000 ops
+    return (totalErrors / this.totalOperations) * 1000; // Per 1000 ops
   }
 
   getMostCommonErrors(limit: number = 5): Array<[string, number]> {
@@ -254,15 +265,16 @@ class ErrorTracker {
 ```
 
 **From SKG consensus tests:**
+
 ```typescript
 // Measure Byzantine resistance
 interface ConsensusMetrics {
-  byzantineResistanceRate: number;  // 0.0 to 1.0
+  byzantineResistanceRate: number; // 0.0 to 1.0
   // Calculated as: (successful consensus) / (total attempts)
   // with Byzantine agents present
 
-  safetyViolationRate: number;      // Should be 0.0
-  livenessViolationRate: number;    // How often system makes no progress
+  safetyViolationRate: number; // Should be 0.0
+  livenessViolationRate: number; // How often system makes no progress
 }
 ```
 
@@ -273,9 +285,9 @@ interface ConsensusMetrics {
 ```typescript
 interface ConsistencyMetrics {
   // State divergence
-  stateHashMismatch: number;        // Nodes with different state
-  vectorClockDivergence: number;    // Max divergence in vector clocks
-  conflictRate: number;             // Concurrent updates requiring resolution
+  stateHashMismatch: number; // Nodes with different state
+  vectorClockDivergence: number; // Max divergence in vector clocks
+  conflictRate: number; // Concurrent updates requiring resolution
 
   // Consistency checks
   linearizabilityViolations: number;
@@ -283,29 +295,31 @@ interface ConsistencyMetrics {
   causalityViolations: number;
 
   // Synchronization
-  avgSyncLag: number;               // Average replication lag
-  maxSyncLag: number;               // Maximum replication lag
+  avgSyncLag: number; // Average replication lag
+  maxSyncLag: number; // Maximum replication lag
 }
 ```
 
 **Why these matter:**
+
 - State divergence: Nodes have inconsistent data
 - Sync lag: How far behind replicas are
 - Violations: Consistency guarantees broken
 
 **Collection strategy:**
+
 ```typescript
 // Periodically compare state across nodes
 async function checkConsistency(nodes: Node[]): Promise<ConsistencyMetrics> {
-  const states = await Promise.all(nodes.map(n => n.getState()));
-  const hashes = states.map(s => hashState(s));
+  const states = await Promise.all(nodes.map((n) => n.getState()));
+  const hashes = states.map((s) => hashState(s));
 
   // Check for state divergence
   const uniqueHashes = new Set(hashes);
   const stateHashMismatch = uniqueHashes.size > 1 ? uniqueHashes.size - 1 : 0;
 
   // Check vector clock divergence
-  const vectorClocks = states.map(s => s.vectorClock);
+  const vectorClocks = states.map((s) => s.vectorClock);
   const divergence = calculateMaxDivergence(vectorClocks);
 
   return {
@@ -325,10 +339,10 @@ async function checkConsistency(nodes: Node[]): Promise<ConsistencyMetrics> {
 ```typescript
 const MONITORING_CONFIG = {
   baseline: {
-    warmupPeriod: 30000,        // 30 seconds to establish baseline
+    warmupPeriod: 30000, // 30 seconds to establish baseline
     measurementDuration: 120000, // 2 minutes of measurement
-    stabilityThreshold: 0.05,    // 5% variance acceptable
-  }
+    stabilityThreshold: 0.05, // 5% variance acceptable
+  },
 };
 
 class BaselineMonitor {
@@ -340,9 +354,7 @@ class BaselineMonitor {
     await this.warmup(MONITORING_CONFIG.baseline.warmupPeriod);
 
     // Collect baseline metrics
-    const samples = await this.collectSamples(
-      MONITORING_CONFIG.baseline.measurementDuration
-    );
+    const samples = await this.collectSamples(MONITORING_CONFIG.baseline.measurementDuration);
 
     this.baseline = this.calculateBaseline(samples);
   }
@@ -359,7 +371,7 @@ class BaselineMonitor {
         severity: 'high',
         message: `Latency increased ${((current.latency / this.baseline.latency - 1) * 100).toFixed(1)}%`,
         baseline: this.baseline.latency,
-        current: current.latency
+        current: current.latency,
       });
     }
 
@@ -370,7 +382,7 @@ class BaselineMonitor {
         severity: 'high',
         message: `Throughput decreased ${((1 - current.throughput / this.baseline.throughput) * 100).toFixed(1)}%`,
         baseline: this.baseline.throughput,
-        current: current.throughput
+        current: current.throughput,
       });
     }
 
@@ -380,6 +392,7 @@ class BaselineMonitor {
 ```
 
 **Usage:**
+
 ```typescript
 // Establish baseline during normal operation
 await monitor.establishBaseline();
@@ -392,7 +405,7 @@ setInterval(async () => {
   for (const alert of alerts) {
     logger.warn('Deviation detected', alert);
   }
-}, 5000);  // Check every 5 seconds
+}, 5000); // Check every 5 seconds
 ```
 
 ### Pattern 2: Multi-Level Aggregation
@@ -419,35 +432,35 @@ class MetricsAggregator {
       latency: measureNodeLatency(nodeId),
       throughput: measureNodeThroughput(nodeId),
       errorRate: getNodeErrorRate(nodeId),
-      resourceUsage: getNodeResources(nodeId)
+      resourceUsage: getNodeResources(nodeId),
     };
   }
 
   aggregateClusterMetrics(cluster: string): ClusterMetrics {
     const nodes = getNodesInCluster(cluster);
-    const nodeMetrics = nodes.map(n => this.collectNodeMetrics(n));
+    const nodeMetrics = nodes.map((n) => this.collectNodeMetrics(n));
 
     return {
       cluster,
       nodeCount: nodes.length,
-      avgLatency: average(nodeMetrics.map(m => m.latency)),
-      totalThroughput: sum(nodeMetrics.map(m => m.throughput)),
-      maxErrorRate: max(nodeMetrics.map(m => m.errorRate)),
-      healthyNodes: nodeMetrics.filter(m => m.healthy).length
+      avgLatency: average(nodeMetrics.map((m) => m.latency)),
+      totalThroughput: sum(nodeMetrics.map((m) => m.throughput)),
+      maxErrorRate: max(nodeMetrics.map((m) => m.errorRate)),
+      healthyNodes: nodeMetrics.filter((m) => m.healthy).length,
     };
   }
 
   aggregateGlobalMetrics(): GlobalMetrics {
     const clusters = getAllClusters();
-    const clusterMetrics = clusters.map(c => this.aggregateClusterMetrics(c));
+    const clusterMetrics = clusters.map((c) => this.aggregateClusterMetrics(c));
 
     return {
-      totalNodes: sum(clusterMetrics.map(c => c.nodeCount)),
-      systemThroughput: sum(clusterMetrics.map(c => c.totalThroughput)),
-      p50Latency: percentile(getAllLatencies(), 0.50),
+      totalNodes: sum(clusterMetrics.map((c) => c.nodeCount)),
+      systemThroughput: sum(clusterMetrics.map((c) => c.totalThroughput)),
+      p50Latency: percentile(getAllLatencies(), 0.5),
       p95Latency: percentile(getAllLatencies(), 0.95),
       p99Latency: percentile(getAllLatencies(), 0.99),
-      overallHealth: calculateOverallHealth(clusterMetrics)
+      overallHealth: calculateOverallHealth(clusterMetrics),
     };
   }
 }
@@ -466,7 +479,7 @@ class HealthChecker {
       resourcesOk: await this.checkResources(nodeId),
       noErrors: await this.checkErrorRate(nodeId),
       consensus: await this.checkConsensusParticipation(nodeId),
-      synchronized: await this.checkStateSynchronization(nodeId)
+      synchronized: await this.checkStateSynchronization(nodeId),
     };
 
     const passed = Object.values(checks).filter(Boolean).length;
@@ -477,7 +490,7 @@ class HealthChecker {
       healthy: passed === total,
       healthScore: passed / total,
       checks,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
   }
 
@@ -486,7 +499,7 @@ class HealthChecker {
       const start = Date.now();
       await ping(nodeId);
       const latency = Date.now() - start;
-      return latency < 1000;  // Should respond within 1s
+      return latency < 1000; // Should respond within 1s
     } catch {
       return false;
     }
@@ -501,20 +514,21 @@ class HealthChecker {
 ```
 
 **Health scoring:**
+
 ```typescript
 function calculateOverallHealth(nodes: HealthStatus[]): number {
   if (nodes.length === 0) return 0;
 
-  const healthyCount = nodes.filter(n => n.healthy).length;
-  const avgHealthScore = average(nodes.map(n => n.healthScore));
+  const healthyCount = nodes.filter((n) => n.healthy).length;
+  const avgHealthScore = average(nodes.map((n) => n.healthScore));
 
   // System is healthy if >70% nodes healthy and avg score >0.8
   if (healthyCount / nodes.length > 0.7 && avgHealthScore > 0.8) {
-    return 1.0;  // Fully healthy
+    return 1.0; // Fully healthy
   } else if (healthyCount / nodes.length > 0.5) {
-    return 0.5;  // Degraded
+    return 0.5; // Degraded
   } else {
-    return 0.0;  // Unhealthy
+    return 0.0; // Unhealthy
   }
 }
 ```
@@ -532,7 +546,7 @@ app.get('/metrics', (req, res) => {
     global: metrics.global,
     clusters: metrics.clusters,
     nodes: metrics.nodes,
-    alerts: getActiveAlerts()
+    alerts: getActiveAlerts(),
   });
 });
 
@@ -541,10 +555,11 @@ setInterval(async () => {
   const response = await fetch('/metrics');
   const metrics = await response.json();
   updateDashboard(metrics);
-}, 5000);  // Update every 5 seconds
+}, 5000); // Update every 5 seconds
 ```
 
 **Dashboard layout (from SKG):**
+
 ```
 +------------------+------------------+------------------+
 | Throughput       | Latency (p95)    | Error Rate       |
@@ -575,21 +590,21 @@ Trending Issues:
 ```typescript
 const alertThresholds = {
   // Performance thresholds
-  memoryUsage: 512,           // MB
-  cpuUtilization: 80,         // Percentage
-  latencySpike: 1000,         // ms
-  latencyP95: 500,            // ms
-  latencyP99: 1000,           // ms
+  memoryUsage: 512, // MB
+  cpuUtilization: 80, // Percentage
+  latencySpike: 1000, // ms
+  latencyP95: 500, // ms
+  latencyP99: 1000, // ms
 
   // Reliability thresholds
-  errorRate: 10,              // Errors per 1000 ops
-  byzantineDetectionRate: 5,  // Detections per hour
+  errorRate: 10, // Errors per 1000 ops
+  byzantineDetectionRate: 5, // Detections per hour
   consensusFailureRate: 0.01, // 1% of consensus attempts
-  timeoutRate: 0.05,          // 5% timeout rate
+  timeoutRate: 0.05, // 5% timeout rate
 
   // Efficiency thresholds (from SKG efficiency targets)
-  efficiencyDrop: 0.10,       // Alert if efficiency drops >10%
-  throughputDrop: 0.30        // Alert if throughput drops >30%
+  efficiencyDrop: 0.1, // Alert if efficiency drops >10%
+  throughputDrop: 0.3, // Alert if throughput drops >30%
 };
 ```
 
@@ -597,10 +612,10 @@ const alertThresholds = {
 
 ```typescript
 enum AlertSeverity {
-  INFO = 'info',        // Informational, no action needed
-  WARNING = 'warning',  // Should investigate, not urgent
-  HIGH = 'high',        // Requires attention soon
-  CRITICAL = 'critical' // Immediate action required
+  INFO = 'info', // Informational, no action needed
+  WARNING = 'warning', // Should investigate, not urgent
+  HIGH = 'high', // Requires attention soon
+  CRITICAL = 'critical', // Immediate action required
 }
 
 interface Alert {
@@ -651,42 +666,40 @@ function classifyAlert(metric: string, value: number, baseline: number): Alert {
 // Measure how metrics scale with system size
 interface ComplexityAnalysis {
   metric: string;
-  actualComplexity: string;      // Measured: O(log n), O(n), O(n²)
-  expectedComplexity: string;    // Designed for
-  rSquared: number;              // Goodness of fit
+  actualComplexity: string; // Measured: O(log n), O(n), O(n²)
+  expectedComplexity: string; // Designed for
+  rSquared: number; // Goodness of fit
   recommendation: string;
 }
 
-function analyzeComplexity(
-  agentCounts: number[],
-  metricValues: number[]
-): ComplexityAnalysis {
+function analyzeComplexity(agentCounts: number[], metricValues: number[]): ComplexityAnalysis {
   // Fit to different complexity models
   const fits = {
     'O(1)': fitConstant(agentCounts, metricValues),
     'O(log n)': fitLogarithmic(agentCounts, metricValues),
     'O(n)': fitLinear(agentCounts, metricValues),
     'O(n log n)': fitNLogN(agentCounts, metricValues),
-    'O(n²)': fitQuadratic(agentCounts, metricValues)
+    'O(n²)': fitQuadratic(agentCounts, metricValues),
   };
 
   // Find best fit
-  const bestFit = Object.entries(fits)
-    .sort((a, b) => b[1].rSquared - a[1].rSquared)[0];
+  const bestFit = Object.entries(fits).sort((a, b) => b[1].rSquared - a[1].rSquared)[0];
 
   return {
     metric: 'discoveryLatency',
     actualComplexity: bestFit[0],
     expectedComplexity: 'O(log n)',
     rSquared: bestFit[1].rSquared,
-    recommendation: bestFit[0] === 'O(log n)'
-      ? 'Performance scales as expected'
-      : `Performance worse than expected. Investigate bottlenecks.`
+    recommendation:
+      bestFit[0] === 'O(log n)'
+        ? 'Performance scales as expected'
+        : `Performance worse than expected. Investigate bottlenecks.`,
   };
 }
 ```
 
 **Usage:**
+
 ```bash
 # From run-scalability-test.ts
 ./run-scalability-test.ts \
@@ -737,11 +750,9 @@ From SKG winston configuration:
 const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.timestamp(),
-    winston.format.json()  // Structured format
+    winston.format.json() // Structured format
   ),
-  transports: [
-    new winston.transports.File({ filename: 'app.log' })
-  ]
+  transports: [new winston.transports.File({ filename: 'app.log' })],
 });
 
 // Logs are machine-parseable
@@ -751,7 +762,7 @@ logger.info('Consensus reached', {
   duration: 45,
   approvalRate: 0.87,
   byzantineDetected: 0,
-  timestamp: Date.now()
+  timestamp: Date.now(),
 });
 ```
 
@@ -765,9 +776,9 @@ interface LatencyDistribution {
   mean: number;
   median: number;
   p50: number;
-  p95: number;   // 95% of requests faster than this
-  p99: number;   // 99% of requests faster than this
-  p999: number;  // 99.9% of requests faster than this
+  p95: number; // 95% of requests faster than this
+  p99: number; // 99% of requests faster than this
+  p999: number; // 99.9% of requests faster than this
   max: number;
 }
 
@@ -810,12 +821,12 @@ describe('Monitoring alerts', () => {
     monitor.on('alert', alertListener);
 
     // Inject high latency
-    await simulateHighLatency(2000);  // 2s latency
+    await simulateHighLatency(2000); // 2s latency
 
     expect(alertListener).toHaveBeenCalledWith(
       expect.objectContaining({
         type: 'latency_spike',
-        severity: 'high'
+        severity: 'high',
       })
     );
   });

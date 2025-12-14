@@ -7,6 +7,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 ### Issue 1: Server Starts But No Response
 
 **Symptoms**:
+
 - Server process runs without errors
 - No responses to MCP requests
 - Client appears to hang
@@ -14,6 +15,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 **Common Causes**:
 
 1. **Stdio protocol corruption**
+
    ```typescript
    // ✗ Wrong - corrupts protocol
    console.log('Server started');
@@ -27,12 +29,14 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
    **Why**: MCP uses stdout for protocol messages. Any `console.log()` corrupts the JSON-RPC stream.
 
 2. **Buffering issues**
+
    ```typescript
    // Ensure output is flushed
    process.stdout.write(JSON.stringify(response) + '\n');
    ```
 
 3. **Not using StdioServerTransport**
+
    ```typescript
    // ✗ Wrong
    const transport = new CustomTransport();
@@ -45,12 +49,14 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 **Debugging Steps**:
 
 1. Check stderr output:
+
    ```bash
    node server.js 2>error.log
    # Check error.log for server logs
    ```
 
 2. Test with simple request:
+
    ```bash
    echo '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | node server.js
    ```
@@ -63,6 +69,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 ### Issue 2: Tool Execution Fails
 
 **Symptoms**:
+
 - `tools/list` works
 - `tools/call` returns errors
 - Specific tools fail
@@ -70,6 +77,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 **Common Causes**:
 
 1. **Missing argument validation**
+
    ```typescript
    // ✗ Wrong - crashes if args is null
    const result = await processTool(args.query);
@@ -78,19 +86,20 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
    if (!args) {
      return {
        content: [{ type: 'text', text: JSON.stringify({ error: 'No arguments provided' }) }],
-       isError: true
+       isError: true,
      };
    }
 
    if (!args.query) {
      return {
        content: [{ type: 'text', text: JSON.stringify({ error: 'query is required' }) }],
-       isError: true
+       isError: true,
      };
    }
    ```
 
 2. **Schema mismatch**
+
    ```typescript
    // Schema says optional, but code requires it
    inputSchema: {
@@ -105,6 +114,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
    ```
 
 3. **Unhandled promise rejections**
+
    ```typescript
    // ✗ Wrong - error escapes
    async function toolHandler(args) {
@@ -120,7 +130,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
      } catch (error) {
        return {
          content: [{ type: 'text', text: JSON.stringify({ error: error.message }) }],
-         isError: true
+         isError: true,
        };
      }
    }
@@ -129,6 +139,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 **Debugging Steps**:
 
 1. Add verbose logging:
+
    ```typescript
    server.setRequestHandler(CallToolRequestSchema, async (request) => {
      console.error('[CALL_TOOL]', JSON.stringify(request.params, null, 2));
@@ -145,6 +156,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
    ```
 
 2. Test tool directly:
+
    ```typescript
    // Add a test function
    async function testTool() {
@@ -167,6 +179,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 ### Issue 3: Intermittent Failures
 
 **Symptoms**:
+
 - Tools work sometimes, fail other times
 - Timeout errors
 - Rate limit errors
@@ -174,6 +187,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 **Common Causes**:
 
 1. **No retry logic**
+
    ```typescript
    // ✗ Wrong - fails on first error
    const response = await fetch(apiUrl);
@@ -185,7 +199,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
          return await fetch(url);
        } catch (error) {
          if (i === maxRetries - 1) throw error;
-         await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
+         await new Promise((resolve) => setTimeout(resolve, Math.pow(2, i) * 1000));
        }
      }
      throw new Error('Max retries exceeded');
@@ -193,6 +207,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
    ```
 
 2. **Missing rate limiting**
+
    ```typescript
    // Track request times
    class RateLimiter {
@@ -200,10 +215,10 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 
      async acquire(): Promise<void> {
        const now = Date.now();
-       this.requests = this.requests.filter(t => now - t < 1000);
+       this.requests = this.requests.filter((t) => now - t < 1000);
 
        if (this.requests.length >= 10) {
-         await new Promise(resolve => setTimeout(resolve, 1000));
+         await new Promise((resolve) => setTimeout(resolve, 1000));
        }
 
        this.requests.push(now);
@@ -212,17 +227,15 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
    ```
 
 3. **Timeout issues**
+
    ```typescript
    // Add timeouts to async operations
-   async function withTimeout<T>(
-     promise: Promise<T>,
-     timeoutMs: number
-   ): Promise<T> {
+   async function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
      return Promise.race([
        promise,
        new Promise<T>((_, reject) =>
          setTimeout(() => reject(new Error('Operation timed out')), timeoutMs)
-       )
+       ),
      ]);
    }
 
@@ -236,11 +249,9 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 **Debugging Steps**:
 
 1. Add operation timing:
+
    ```typescript
-   async function timedOperation<T>(
-     name: string,
-     operation: () => Promise<T>
-   ): Promise<T> {
+   async function timedOperation<T>(name: string, operation: () => Promise<T>): Promise<T> {
      const start = Date.now();
      try {
        const result = await operation();
@@ -254,6 +265,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
    ```
 
 2. Monitor rate limits:
+
    ```typescript
    let requestCount = 0;
    setInterval(() => {
@@ -268,6 +280,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 ### Issue 4: Memory Leaks
 
 **Symptoms**:
+
 - Server memory grows over time
 - Eventually crashes with OOM
 - Slow performance after running for hours
@@ -275,6 +288,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 **Common Causes**:
 
 1. **Unbounded caches**
+
    ```typescript
    // ✗ Wrong - cache grows forever
    class Cache {
@@ -301,6 +315,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
    ```
 
 2. **Event listener leaks**
+
    ```typescript
    // ✗ Wrong - listeners accumulate
    function setupAgent(agent: Agent) {
@@ -324,6 +339,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
    ```
 
 3. **Unreleased resources**
+
    ```typescript
    // Track cleanup
    class ResourceManager {
@@ -352,18 +368,20 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
 **Debugging Steps**:
 
 1. Monitor memory usage:
+
    ```typescript
    setInterval(() => {
      const usage = process.memoryUsage();
      console.error('[MEMORY]', {
        heapUsed: Math.round(usage.heapUsed / 1024 / 1024) + 'MB',
        heapTotal: Math.round(usage.heapTotal / 1024 / 1024) + 'MB',
-       rss: Math.round(usage.rss / 1024 / 1024) + 'MB'
+       rss: Math.round(usage.rss / 1024 / 1024) + 'MB',
      });
    }, 60000);
    ```
 
 2. Take heap snapshots:
+
    ```bash
    # Start with --inspect
    node --inspect dist/index.js
@@ -374,6 +392,7 @@ A practical guide to debugging MCP servers based on real troubleshooting experie
    ```
 
 3. Track object counts:
+
    ```typescript
    class MetricsCollector {
      private counts = new Map<string, number>();
@@ -412,6 +431,7 @@ npx @modelcontextprotocol/inspector dist/index.js
 ```
 
 **Features**:
+
 - Interactive tool testing
 - Request/response inspection
 - Schema validation
@@ -430,7 +450,7 @@ const server = spawn('node', [serverPath]);
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 // Pipe server stderr to console
@@ -472,7 +492,7 @@ class DebugLogger {
     const entry = {
       timestamp: new Date().toISOString(),
       type: 'request',
-      data: request
+      data: request,
     };
     this.logFile.write(JSON.stringify(entry) + '\n');
   }
@@ -481,7 +501,7 @@ class DebugLogger {
     const entry = {
       timestamp: new Date().toISOString(),
       type: 'response',
-      data: response
+      data: response,
     };
     this.logFile.write(JSON.stringify(entry) + '\n');
   }
@@ -492,8 +512,8 @@ class DebugLogger {
       type: 'error',
       data: {
         message: error.message,
-        stack: error.stack
-      }
+        stack: error.stack,
+      },
     };
     this.logFile.write(JSON.stringify(entry) + '\n');
   }
@@ -537,7 +557,7 @@ class RequestTracer {
     this.traces.set(requestId, {
       id: requestId,
       start: Date.now(),
-      spans: []
+      spans: [],
     });
   }
 

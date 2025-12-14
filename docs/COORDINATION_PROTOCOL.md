@@ -109,13 +109,8 @@ All handoffs follow this standardized structure:
     }
   ],
   "memory": {
-    "created": [
-      "mem_1702311000_abc123",
-      "mem_1702311001_def456"
-    ],
-    "referenced": [
-      "mem_1702200000_xyz789"
-    ]
+    "created": ["mem_1702311000_abc123", "mem_1702311001_def456"],
+    "referenced": ["mem_1702200000_xyz789"]
   }
 }
 ```
@@ -123,6 +118,7 @@ All handoffs follow this standardized structure:
 ### Field Definitions
 
 #### handoff
+
 - **from**: Role initiating the handoff (PLANNER | IMPLEMENTER | AUDITOR | CLEANER)
 - **to**: Role receiving the handoff (IMPLEMENTER | AUDITOR | CLEANER | ORCHESTRATOR)
 - **timestamp**: ISO 8601 timestamp of handoff creation
@@ -131,29 +127,35 @@ All handoffs follow this standardized structure:
 - **handoffId**: Unique identifier (`handoff_<timestamp>_<random>`)
 
 #### context
+
 - **taskId**: Unique task identifier for tracking
 - **phase**: Current project phase (from MASTER_PLAN.md)
 - **scope**: Brief description of work scope
 - **dependencies**: Array of files/resources required
 
 #### deliverable
+
 - **type**: Category of deliverable (plan | implementation | audit_report | cleanup_report)
 - **location**: Primary file path for deliverable
 - **summary**: One-sentence description
 - **artifacts**: All files created/modified
 
 #### nextSteps
+
 - **instructions**: Ordered list of specific actions
 - **constraints**: CAN/CANNOT boundaries
 - **acceptanceCriteria**: How to verify success
 
 #### issues
+
 Array of identified problems:
+
 - **severity**: critical | high | medium | low
 - **description**: What the issue is
 - **recommendation**: Suggested resolution
 
 #### memory
+
 - **created**: Memory IDs written during this work
 - **referenced**: Memory IDs consulted during this work
 
@@ -168,12 +170,14 @@ Array of identified problems:
 **Trigger:** Planning complete, implementation roadmap created
 
 **Requirements:**
+
 - Clear implementation plan in deliverable
 - File scope defined in context.dependencies
 - Architecture decisions documented
 - Success criteria specified
 
 **Example:**
+
 ```json
 {
   "handoff": {
@@ -206,12 +210,14 @@ Array of identified problems:
 **Trigger:** Implementation complete, tests passing
 
 **Requirements:**
+
 - All code committed to version control
 - Tests written and passing
 - Build successful
 - Documentation updated
 
 **Example:**
+
 ```json
 {
   "handoff": {
@@ -255,12 +261,14 @@ Array of identified problems:
 **Trigger:** Audit passed, no blocking issues
 
 **Requirements:**
+
 - Audit report generated
 - All critical/high issues resolved
 - Quality metrics met
 - Approval given
 
 **Example:**
+
 ```json
 {
   "handoff": {
@@ -300,12 +308,14 @@ Array of identified problems:
 **Trigger:** Cleanup finished, repository hygiene restored
 
 **Requirements:**
+
 - Cleanup report generated
 - All temporary files removed
 - Documentation updated
 - Git history clean
 
 **Example:**
+
 ```json
 {
   "handoff": {
@@ -346,6 +356,7 @@ Array of identified problems:
 **Can be initiated by:** IMPLEMENTER | AUDITOR | CLEANER
 
 **Example:**
+
 ```json
 {
   "handoff": {
@@ -402,16 +413,19 @@ Handoffs extend the agent status system with additional fields:
 ### New Status Fields
 
 #### handoffId
+
 - **Type:** string | null
 - **Purpose:** Links status to active handoff
 - **Value:** Current handoff ID or null if no active handoff
 
 #### nextRole
+
 - **Type:** "PLANNER" | "IMPLEMENTER" | "AUDITOR" | "CLEANER" | "ORCHESTRATOR" | null
 - **Purpose:** Indicates expected next transition
 - **Value:** Role that should receive next handoff
 
 #### waitingFor
+
 - **Type:** string | null
 - **Purpose:** Indicates if agent is blocked
 - **Values:**
@@ -422,6 +436,7 @@ Handoffs extend the agent status system with additional fields:
   - "clarification": Waiting for question to be answered
 
 #### blockedBy
+
 - **Type:** array of strings
 - **Purpose:** Lists specific blocking issues
 - **Example:** `["Firebase credentials not configured", "Awaiting PLANNER approval on architecture"]`
@@ -455,11 +470,13 @@ Use the existing `status-update.sh` script with new fields:
 **Purpose:** Update agent status files with handoff metadata
 
 **Usage:**
+
 ```bash
 ./scripts/status-update.sh <agentId> <key> <value>
 ```
 
 **Handoff-Specific Updates:**
+
 ```bash
 # Start new handoff
 ./scripts/status-update.sh agent-impl-001 handoffId "handoff_1702311000000_a1b2c3d4"
@@ -481,11 +498,13 @@ Use the existing `status-update.sh` script with new fields:
 **Purpose:** Store handoff metadata and learnings in memory system
 
 **Usage:**
+
 ```bash
 ./scripts/memory-write.sh <content> <type> <importance> <tags>
 ```
 
 **Handoff Memory Examples:**
+
 ```bash
 # Store handoff completion
 ./scripts/memory-write.sh \
@@ -516,6 +535,7 @@ Use the existing `status-update.sh` script with new fields:
 **Location:** `/home/alton/Sartor-claude-network/data/handoffs/`
 
 **Structure:**
+
 ```
 data/handoffs/
 ├── 2025-12-11/
@@ -528,6 +548,7 @@ data/handoffs/
 ```
 
 **Chain File Format** (links related handoffs):
+
 ```json
 {
   "chainId": "chain_task_20251211_001",
@@ -572,6 +593,7 @@ data/handoffs/
 ```
 
 **Index File** (for quick lookup):
+
 ```json
 {
   "last_updated": "2025-12-11T16:30:00Z",
@@ -632,27 +654,32 @@ cat /home/alton/Sartor-claude-network/data/handoffs/*/chain_*.json | \
 ### OBSERVER Reports
 
 **Daily Handoff Report:**
+
 ```markdown
 # Handoff Pipeline Report - 2025-12-11
 
 ## Summary
+
 - Total handoffs: 12
 - Completed chains: 3
 - Active handoffs: 2
 - Stuck handoffs: 0
 
 ## Performance
+
 - Avg PLANNER→IMPLEMENTER: 85 min
 - Avg IMPLEMENTER→AUDITOR: 32 min
 - Avg AUDITOR→CLEANER: 18 min
 - Avg CLEANER→ORCHESTRATOR: 12 min
 
 ## Issues
+
 - 2 requires_replanning events (architecture misalignment)
 - 1 high-severity issue in audit (resolved)
 - 0 critical blockers
 
 ## Recommendations
+
 - IMPLEMENTER could benefit from more detailed plans (reduce replanning)
 - AUDITOR turnaround excellent (<30min avg)
 - Consider automating CLEANER→ORCHESTRATOR transition
@@ -667,6 +694,7 @@ cat /home/alton/Sartor-claude-network/data/handoffs/*/chain_*.json | \
 **Actor:** Source role (e.g., PLANNER)
 
 **Steps:**
+
 1. Complete assigned work
 2. Generate handoff JSON with all required fields
 3. Write handoff to `data/handoffs/<date>/handoff_<id>.json`
@@ -674,6 +702,7 @@ cat /home/alton/Sartor-claude-network/data/handoffs/*/chain_*.json | \
 5. Store completion in memory system
 
 **Shell Commands:**
+
 ```bash
 # Generate unique handoff ID
 HANDOFF_ID="handoff_$(date +%s%N | cut -c1-13)_$(head -c 8 /dev/urandom | xxd -p | cut -c1-8)"
@@ -707,6 +736,7 @@ EOF
 **Actor:** Target role (e.g., IMPLEMENTER)
 
 **Steps:**
+
 1. Read handoff JSON from archive
 2. Validate completeness and clarity
 3. Update handoff status to "accepted"
@@ -714,6 +744,7 @@ EOF
 5. Begin work on nextSteps
 
 **Shell Commands:**
+
 ```bash
 # Read handoff
 HANDOFF_FILE="/home/alton/Sartor-claude-network/data/handoffs/2025-12-11/${HANDOFF_ID}.json"
@@ -736,6 +767,7 @@ mv "${HANDOFF_FILE}.tmp" "$HANDOFF_FILE"
 **Actor:** Target role
 
 **Steps:**
+
 1. Follow instructions in nextSteps
 2. Respect constraints
 3. Track progress in status file
@@ -743,6 +775,7 @@ mv "${HANDOFF_FILE}.tmp" "$HANDOFF_FILE"
 5. Create deliverables
 
 **Shell Commands:**
+
 ```bash
 # Update progress
 ./scripts/status-update.sh agent-impl-001 progress "0.5"
@@ -759,6 +792,7 @@ mv "${HANDOFF_FILE}.tmp" "$HANDOFF_FILE"
 **Actor:** Target role
 
 **Steps:**
+
 1. Verify acceptanceCriteria met
 2. Update handoff status to "completed"
 3. Create next handoff for downstream role
@@ -766,6 +800,7 @@ mv "${HANDOFF_FILE}.tmp" "$HANDOFF_FILE"
 5. Store learnings in memory
 
 **Shell Commands:**
+
 ```bash
 # Mark handoff complete
 jq '.handoff.status = "completed"' "$HANDOFF_FILE" > "${HANDOFF_FILE}.tmp"
@@ -794,6 +829,7 @@ NEXT_HANDOFF_ID="handoff_$(date +%s%N | cut -c1-13)_$(head -c 8 /dev/urandom | x
 **Actor:** CLEANER or ORCHESTRATOR
 
 **Steps:**
+
 1. Collect all handoffs in chain
 2. Generate chain summary JSON
 3. Archive to date-based directory
@@ -801,6 +837,7 @@ NEXT_HANDOFF_ID="handoff_$(date +%s%N | cut -c1-13)_$(head -c 8 /dev/urandom | x
 5. Store high-level learnings in memory
 
 **Shell Commands:**
+
 ```bash
 # Create chain file
 CHAIN_ID="chain_task_20251211_001"
@@ -837,6 +874,7 @@ mv index.tmp /home/alton/Sartor-claude-network/data/handoffs/index.json
 **Detection:** Target role validates on acceptance
 
 **Resolution:**
+
 ```bash
 # Reject handoff
 jq '.handoff.status = "rejected"' "$HANDOFF_FILE" > "${HANDOFF_FILE}.tmp"
@@ -864,6 +902,7 @@ mv "${HANDOFF_FILE}.tmp" "$HANDOFF_FILE"
 **Detection:** Agent encounters blocker during execution
 
 **Resolution:**
+
 ```bash
 # Update own status
 ./scripts/status-update.sh agent-impl-001 waitingFor "dependency"
@@ -894,6 +933,7 @@ mv "${HANDOFF_FILE}.tmp" "$HANDOFF_FILE"
 **Detection:** Agent identifies additional requirements during execution
 
 **Resolution:**
+
 ```bash
 # Create escalation handoff back to PLANNER
 ESCALATION_ID="handoff_$(date +%s%N | cut -c1-13)_$(head -c 8 /dev/urandom | xxd -p | cut -c1-8)"
@@ -937,6 +977,7 @@ EOF
 ### 1. Handoff Creation
 
 **DO:**
+
 - ✅ Be specific in nextSteps.instructions (file paths, function names)
 - ✅ Include realistic acceptanceCriteria with measurable outcomes
 - ✅ Document all assumptions in context
@@ -944,6 +985,7 @@ EOF
 - ✅ List concrete constraints (file patterns, APIs to avoid)
 
 **DON'T:**
+
 - ❌ Use vague instructions ("improve the code")
 - ❌ Skip constraints section
 - ❌ Omit issue severity levels
@@ -953,6 +995,7 @@ EOF
 ### 2. Handoff Acceptance
 
 **DO:**
+
 - ✅ Validate handoff completeness before accepting
 - ✅ Ask questions if instructions unclear
 - ✅ Reject politely with specific feedback if inadequate
@@ -960,6 +1003,7 @@ EOF
 - ✅ Review referenced memories for context
 
 **DON'T:**
+
 - ❌ Accept incomplete handoffs
 - ❌ Make assumptions about missing information
 - ❌ Start work before updating status
@@ -969,6 +1013,7 @@ EOF
 ### 3. Execution
 
 **DO:**
+
 - ✅ Update progress regularly (every 30-60 min)
 - ✅ Log findings as you discover them
 - ✅ Flag blockers immediately
@@ -976,6 +1021,7 @@ EOF
 - ✅ Verify acceptanceCriteria before completing
 
 **DON'T:**
+
 - ❌ Go silent for hours with no status updates
 - ❌ Violate constraints without approval
 - ❌ Skip tests or validation
@@ -985,6 +1031,7 @@ EOF
 ### 4. Memory Integration
 
 **DO:**
+
 - ✅ Store key decisions (importance 0.8-0.9)
 - ✅ Log successful patterns (importance 0.7-0.8)
 - ✅ Reference relevant past handoffs
@@ -992,6 +1039,7 @@ EOF
 - ✅ Include memory IDs in handoff JSON
 
 **DON'T:**
+
 - ❌ Store every minor detail (noise)
 - ❌ Use vague content ("worked on stuff")
 - ❌ Forget to tag memories
@@ -1020,10 +1068,7 @@ EOF
     "taskId": "task_20251211_add_handoff_stats",
     "phase": "Phase 7: Infrastructure Activation",
     "scope": "Add statistics endpoint to handoff system",
-    "dependencies": [
-      "data/handoffs/index.json",
-      "src/coordination/handoff-manager.ts"
-    ]
+    "dependencies": ["data/handoffs/index.json", "src/coordination/handoff-manager.ts"]
   },
   "deliverable": {
     "type": "implementation_plan",
@@ -1140,18 +1185,13 @@ EOF
     "taskId": "task_20251211_add_handoff_stats",
     "phase": "Phase 7: Infrastructure Activation",
     "scope": "Audit complete, minor issues resolved",
-    "dependencies": [
-      "src/coordination/handoff-manager.ts",
-      "tests/unit/coordination/"
-    ]
+    "dependencies": ["src/coordination/handoff-manager.ts", "tests/unit/coordination/"]
   },
   "deliverable": {
     "type": "audit_report",
     "location": "reports/audit-handoff-stats-20251211.md",
     "summary": "PASS - 92% coverage, 2 low-severity issues found and fixed",
-    "artifacts": [
-      "reports/audit-handoff-stats-20251211.md"
-    ]
+    "artifacts": ["reports/audit-handoff-stats-20251211.md"]
   },
   "nextSteps": {
     "instructions": [
@@ -1211,19 +1251,13 @@ EOF
     "taskId": "task_20251211_firebase_activation",
     "phase": "Phase 7: Infrastructure Activation",
     "scope": "Firebase connection implementation blocked",
-    "dependencies": [
-      "src/mcp/firebase-init.ts",
-      "src/mcp/multi-tier-store.ts"
-    ]
+    "dependencies": ["src/mcp/firebase-init.ts", "src/mcp/multi-tier-store.ts"]
   },
   "deliverable": {
     "type": "implementation",
     "location": "src/mcp/firebase-init.ts",
     "summary": "Partial implementation: connection logic complete, but rate limiting issue discovered",
-    "artifacts": [
-      "src/mcp/firebase-init.ts",
-      "docs/firebase-rate-limit-analysis.md"
-    ]
+    "artifacts": ["src/mcp/firebase-init.ts", "docs/firebase-rate-limit-analysis.md"]
   },
   "nextSteps": {
     "instructions": [
@@ -1257,14 +1291,8 @@ EOF
     }
   ],
   "memory": {
-    "created": [
-      "mem_1702305900_firebase_issue",
-      "mem_1702305901_rate_limit_needed"
-    ],
-    "referenced": [
-      "mem_1702285200_firebase_plan",
-      "mem_1702100000_rate_limiter_design"
-    ]
+    "created": ["mem_1702305900_firebase_issue", "mem_1702305901_rate_limit_needed"],
+    "referenced": ["mem_1702285200_firebase_plan", "mem_1702100000_rate_limiter_design"]
   }
 }
 ```
@@ -1282,6 +1310,7 @@ This coordination protocol provides a structured, observable, and auditable way 
 - **Progress is observable** via status files and archives
 
 The protocol integrates seamlessly with existing infrastructure:
+
 - `scripts/status-update.sh` for status management
 - `scripts/memory-write.sh` for knowledge capture
 - `data/handoffs/` for archival and analysis

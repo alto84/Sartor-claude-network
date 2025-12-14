@@ -5,12 +5,14 @@ This document provides a systematic approach to debugging distributed systems, e
 ## Overview: Why Distributed Debugging is Different
 
 Traditional debugging assumes:
+
 - Single process with predictable execution
 - Reproducible behavior from same inputs
 - Complete visibility into state
 - Deterministic execution order
 
 Distributed systems have:
+
 - Multiple independent processes
 - Non-deterministic timing and ordering
 - Partial visibility (can't see all state at once)
@@ -28,6 +30,7 @@ Distributed systems have:
 #### What to Collect
 
 **Logs from ALL involved nodes:**
+
 ```bash
 # Don't just look at the node that appears to be failing
 # Collect from entire cluster
@@ -37,6 +40,7 @@ done
 ```
 
 **Distributed traces:**
+
 ```typescript
 // From SKG: Correlation IDs track requests across services
 logger.info('Processing request', {
@@ -44,18 +48,19 @@ logger.info('Processing request', {
   spanId: generateSpanId(),
   parentSpanId: request.parentSpanId,
   operation: 'consensus_vote',
-  timestamp: Date.now()
+  timestamp: Date.now(),
 });
 ```
 
 **Metrics at multiple granularities:**
+
 ```typescript
 // From SKG metrics-initialization.ts
 // System-wide metrics
 const globalMetrics = {
   totalAgents: agentCount,
   systemThroughput: messagesPerSecond,
-  averageLatency: meanLatency
+  averageLatency: meanLatency,
 };
 
 // Per-node metrics
@@ -64,7 +69,7 @@ const nodeMetrics = {
   cpuUtilization: 45.2,
   memoryUsage: 512,
   messageRate: 15.3,
-  errorCount: 0
+  errorCount: 0,
 };
 
 // Per-operation metrics
@@ -74,11 +79,12 @@ const operationMetrics = {
   averageDuration: 45,
   p95Duration: 120,
   p99Duration: 250,
-  errorRate: 0.02
+  errorRate: 0.02,
 };
 ```
 
 **Network information:**
+
 - Message flows (who sent what to whom)
 - Message timing (send time, receive time, processing time)
 - Network topology (which nodes can reach which)
@@ -86,6 +92,7 @@ const operationMetrics = {
 - Packet loss rates
 
 **System state snapshots:**
+
 ```typescript
 // From SKG: Capture state at critical points
 interface SystemSnapshot {
@@ -98,6 +105,7 @@ interface SystemSnapshot {
 ```
 
 **Recent changes:**
+
 - Code deployments
 - Configuration changes
 - Infrastructure changes
@@ -106,6 +114,7 @@ interface SystemSnapshot {
 #### How to Organize Evidence
 
 **Timeline reconstruction:**
+
 ```
 T0: Node A receives request (traceId: xyz)
 T1: Node A sends message to Node B
@@ -118,6 +127,7 @@ T6: Node A completes request
 ```
 
 **From SKG vector clock tests:**
+
 ```javascript
 // test-vector-clock-simple.js
 // Use logical clocks to establish causality
@@ -130,6 +140,7 @@ const relation = clockB.getCausalRelation(eventA, eventB);
 ```
 
 **State comparison:**
+
 ```
 Node A state: { key1: "value1", key2: "value2", version: 5 }
 Node B state: { key1: "value1", key2: "value2", version: 5 }
@@ -140,12 +151,14 @@ Node C state: { key1: "value1", key2: "value3", version: 4 }
 #### Tools for Evidence Collection
 
 **Log aggregation:**
+
 ```bash
 # Collect and merge logs with timestamps
 cat logs/*.log | sort -t',' -k1 > merged_timeline.log
 ```
 
 **Distributed tracing:**
+
 ```python
 # From scripts/trace-analyzer.py (created in this skill)
 def reconstruct_trace(trace_id, log_files):
@@ -159,6 +172,7 @@ def reconstruct_trace(trace_id, log_files):
 ```
 
 **Metrics visualization:**
+
 ```bash
 # From SKG monitoring
 npx ts-node metrics-initialization.ts status
@@ -219,45 +233,48 @@ Hypothesis: Bug in new code version
 #### Example Hypotheses from SKG Testing
 
 **Consensus failure hypothesis:**
+
 ```typescript
 // From ConsensusIntegration.test.ts
 // If consensus fails despite healthy nodes:
 
 // Hypothesis 1: Message loss preventing quorum
 if (votesReceived < quorumSize && networkMetrics.messageLossRate > 0) {
-  return "Suspected message loss preventing consensus";
+  return 'Suspected message loss preventing consensus';
 }
 
 // Hypothesis 2: Byzantine agents manipulating votes
 if (voteDistribution.unexpected && byzantineCount > 0) {
-  return "Suspected Byzantine vote manipulation";
+  return 'Suspected Byzantine vote manipulation';
 }
 
 // Hypothesis 3: Network partition
 if (partitionDetected && votesReceived < quorumSize) {
-  return "Network partition preventing quorum";
+  return 'Network partition preventing quorum';
 }
 ```
 
 **Performance degradation hypothesis:**
+
 ```typescript
 // From run-scalability-test.ts
 // If latency increases:
 
 // Check complexity - is it scaling worse than expected?
-if (actualComplexity === "O(n²)" && expectedComplexity === "O(n)") {
-  return "Algorithm has quadratic complexity, worse than designed";
+if (actualComplexity === 'O(n²)' && expectedComplexity === 'O(n)') {
+  return 'Algorithm has quadratic complexity, worse than designed';
 }
 
 // Check resource exhaustion
 if (memoryPerAgent > threshold || cpuUtilization > 90) {
-  return "Resource exhaustion causing slowdown";
+  return 'Resource exhaustion causing slowdown';
 }
 ```
 
 #### Hypothesis Prioritization
 
 Order hypotheses by:
+
 1. **Evidence strength**: How well does evidence support it?
 2. **Impact**: Would this cause observed symptoms?
 3. **Likelihood**: How common is this type of failure?
@@ -272,6 +289,7 @@ From most to least likely to test first.
 #### Testing Strategies
 
 **Isolation testing:**
+
 ```bash
 # Test components independently
 # From SKG integration-test.js pattern
@@ -287,6 +305,7 @@ From most to least likely to test first.
 ```
 
 **Failure injection:**
+
 ```typescript
 // From SKG ConsensusIntegration.test.ts
 class ByzantineFailureSimulator {
@@ -312,6 +331,7 @@ const result = await testConsensusWithByzantineAgents(
 ```
 
 **Replay testing:**
+
 ```python
 # Replay captured message sequence
 def replay_scenario(trace_file, target_system):
@@ -326,6 +346,7 @@ def replay_scenario(trace_file, target_system):
 ```
 
 **Load testing:**
+
 ```typescript
 // From SKG run-scalability-test.ts
 // Test hypothesis: "System degrades under load"
@@ -335,8 +356,8 @@ const result = await runScalabilityTest({
   maxAgents: 1000,
   stepSize: 50,
   testDurationMs: 30000,
-  taskGenerationRate: 10,  // Ops/second
-  messageGenerationRate: 50
+  taskGenerationRate: 10, // Ops/second
+  messageGenerationRate: 50,
 });
 
 // Check where degradation starts
@@ -348,6 +369,7 @@ for (const metric of result.metrics) {
 ```
 
 **Code inspection:**
+
 ```bash
 # If hypothesis involves code bug, inspect relevant code
 git diff v1.0..v1.1 src/consensus/  # What changed?
@@ -356,6 +378,7 @@ git blame src/consensus/vote.ts  # Who wrote this?
 ```
 
 **Network simulation:**
+
 ```typescript
 // From SKG NetworkPartitionSimulator
 class NetworkPartitionSimulator {
@@ -379,7 +402,7 @@ class NetworkPartitionSimulator {
     while (!systemHealthy()) {
       await sleep(100);
     }
-    return Date.now() - startTime;  // Recovery time
+    return Date.now() - startTime; // Recovery time
   }
 }
 ```
@@ -387,14 +410,17 @@ class NetworkPartitionSimulator {
 #### What Good Tests Show
 
 **Positive confirmation:**
+
 - "When I inject silent failures, consensus times out (as observed)"
 - Hypothesis is consistent with evidence
 
 **Negative rejection:**
+
 - "When I inject message delay, consensus still works (unlike observed failure)"
 - Hypothesis doesn't explain symptoms, move to next hypothesis
 
 **Unexpected finding:**
+
 - "When testing partition, discovered unrelated memory leak"
 - Document and investigate separately
 
@@ -405,6 +431,7 @@ class NetworkPartitionSimulator {
 #### Verification Steps
 
 **1. Reproduce reliably:**
+
 ```bash
 # Can you trigger the issue consistently?
 for i in {1..10}; do
@@ -418,6 +445,7 @@ echo "Issue reproduces reliably"
 ```
 
 **2. Fix and validate:**
+
 ```typescript
 // From SKG error handling patterns
 
@@ -425,35 +453,36 @@ echo "Issue reproduces reliably"
 async function proposeWithTimeout(proposal, timeout) {
   return await Promise.race([
     consensus.propose(proposal),
-    timeoutPromise(timeout)  // Times out if agents don't respond
+    timeoutPromise(timeout), // Times out if agents don't respond
   ]);
 }
 
 // After fix: Proceed with quorum, don't wait for all
 async function proposeWithQuorum(proposal, timeout) {
   const votes = [];
-  const votePromises = agents.map(a => a.vote(proposal));
+  const votePromises = agents.map((a) => a.vote(proposal));
 
   // Collect votes as they arrive
   for await (const vote of raceIterator(votePromises)) {
     votes.push(vote);
     if (votes.length >= quorumSize) {
-      return decide(votes);  // Don't wait for stragglers
+      return decide(votes); // Don't wait for stragglers
     }
   }
 
   // Timeout only if quorum not reached
   if (votes.length < quorumSize) {
-    throw new TimeoutError("Quorum not reached");
+    throw new TimeoutError('Quorum not reached');
   }
 }
 
 // Validate: Issue should not occur with fix
 const result = await testConsensusWithSilentFailures(3);
-assert(result.consensusReached, "Consensus should reach with quorum");
+assert(result.consensusReached, 'Consensus should reach with quorum');
 ```
 
 **3. Regression testing:**
+
 ```typescript
 // From SKG testing patterns
 // Add test to prevent recurrence
@@ -472,7 +501,7 @@ describe('Consensus with silent failures', () => {
 
     const result = await runConsensusTest({
       agents: totalAgents,
-      byzantineSimulator: simulator
+      byzantineSimulator: simulator,
     });
 
     expect(result.consensusReached).toBe(true);
@@ -482,23 +511,24 @@ describe('Consensus with silent failures', () => {
 ```
 
 **4. Monitor in production:**
+
 ```typescript
 // From SKG metrics-initialization.ts
 // Add monitoring for this specific issue
 
 const monitor = new MonitoringIntegration({
   alertThresholds: {
-    consensusTimeout: 5000,  // Alert if consensus takes >5s
-    silentAgentRate: 0.1,    // Alert if >10% agents silent
-    quorumFailureRate: 0.01  // Alert if quorum failures >1%
-  }
+    consensusTimeout: 5000, // Alert if consensus takes >5s
+    silentAgentRate: 0.1, // Alert if >10% agents silent
+    quorumFailureRate: 0.01, // Alert if quorum failures >1%
+  },
 });
 
 monitor.on('alert', (alert) => {
   logger.error('Consensus issue detected', {
     type: alert.type,
     severity: alert.severity,
-    details: alert.details
+    details: alert.details,
   });
 
   // Automatic mitigation
@@ -509,6 +539,7 @@ monitor.on('alert', (alert) => {
 ```
 
 **5. Document findings:**
+
 ```markdown
 ## Issue: Consensus Timeouts Under Byzantine Failures
 
@@ -517,31 +548,37 @@ monitor.on('alert', (alert) => {
 **Status**: Resolved
 
 ### Symptoms
+
 - Consensus operations timing out
 - 30% of agents not responding
 - No error messages in logs
 
 ### Root Cause
+
 Silent Byzantine failures: 3 agents stopped responding to vote requests
 due to network connectivity issues, but system waited for all agents
 before making decision.
 
 ### Investigation
+
 1. Observed: Consensus timeouts, missing votes
 2. Hypothesized: Silent failures preventing quorum
 3. Tested: Injected silent failures - reproduced issue
 4. Verified: Fixed by using quorum-based decision
 
 ### Fix
+
 Changed consensus to proceed with quorum (2f+1) rather than waiting
 for all agents. Implemented in commit abc123.
 
 ### Prevention
+
 - Added alerting for silent agent detection
 - Added regression test
 - Updated runbook with detection/mitigation steps
 
 ### Metrics
+
 - Before: 15% consensus timeout rate
 - After: 0.1% consensus timeout rate
 - Recovery: Automatic with quorum logic
@@ -670,6 +707,7 @@ def find_anomalous_nodes(metrics):
 **Problem**: Adding logging/monitoring changes behavior.
 
 **Example**:
+
 ```typescript
 // Adding this logging...
 logger.debug('Voting on proposal', { proposalId, vote });
@@ -678,6 +716,7 @@ logger.debug('Voting on proposal', { proposalId, vote });
 ```
 
 **Solution**:
+
 - Use asynchronous logging
 - Minimize instrumentation overhead
 - Be aware that observation can change behavior
@@ -688,6 +727,7 @@ logger.debug('Voting on proposal', { proposalId, vote });
 **Problem**: Only looking for evidence that supports your hypothesis.
 
 **Example**:
+
 ```
 Hypothesis: "Node 5 is Byzantine"
 Only look at Node 5's logs
@@ -695,6 +735,7 @@ Miss evidence that network partition affected multiple nodes
 ```
 
 **Solution**:
+
 - Actively look for contradictory evidence
 - Test multiple hypotheses in parallel
 - Have someone else review your findings
@@ -705,6 +746,7 @@ Miss evidence that network partition affected multiple nodes
 **Problem**: Assuming correlation implies causation.
 
 **Example**:
+
 ```
 Evidence: High CPU always present when consensus fails
 Hypothesis: High CPU causes consensus failures
@@ -713,6 +755,7 @@ Reality: Both are caused by Byzantine attack overwhelming system
 ```
 
 **Solution**:
+
 - Look for temporal causality (which came first?)
 - Test causation (does changing one affect the other?)
 - Consider confounding variables
@@ -722,17 +765,19 @@ Reality: Both are caused by Byzantine attack overwhelming system
 **Problem**: Assuming you can see complete state.
 
 **Example**:
+
 ```typescript
 // Debugging locally
 const state = getLocalState();
-console.log('System state:', state);  // Only seeing local node!
+console.log('System state:', state); // Only seeing local node!
 
 // Reality: Each node has different state
-const allStates = await Promise.all(nodes.map(n => n.getState()));
+const allStates = await Promise.all(nodes.map((n) => n.getState()));
 console.log('State divergence detected:', compareStates(allStates));
 ```
 
 **Solution**:
+
 - Always collect from all nodes
 - Use distributed state comparison
 - Be aware of partial visibility
@@ -757,6 +802,7 @@ See `templates/debugging-checklist.md` for detailed checklist.
 ## Summary
 
 Distributed systems debugging requires:
+
 1. **Systematic evidence collection** across all nodes
 2. **Hypothesis-driven investigation** with testable theories
 3. **Rigorous testing** to confirm root causes

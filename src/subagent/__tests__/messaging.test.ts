@@ -15,11 +15,7 @@ import {
   DeliveryStatus,
   type AgentMessage,
 } from '..//messaging';
-import {
-  SubagentRegistry,
-  createRegistry,
-  AgentStatus,
-} from '..//registry';
+import { SubagentRegistry, createRegistry, AgentStatus } from '..//registry';
 import { AgentRole } from '..//bootstrap';
 
 describe('AgentMessageBus', () => {
@@ -46,12 +42,9 @@ describe('AgentMessageBus', () => {
 
   describe('sendToAgent', () => {
     it('should create and queue a direct message', () => {
-      const message = messageBus.sendToAgent(
-        'sender',
-        'receiver',
-        'Test Subject',
-        { data: 'test' }
-      );
+      const message = messageBus.sendToAgent('sender', 'receiver', 'Test Subject', {
+        data: 'test',
+      });
 
       expect(message).toBeDefined();
       expect(message.type).toBe(MessageType.DIRECT);
@@ -111,11 +104,9 @@ describe('AgentMessageBus', () => {
 
   describe('broadcastToAll', () => {
     it('should create broadcast messages for all active agents', () => {
-      const message = messageBus.broadcastToAll(
-        'sender',
-        'Broadcast Subject',
-        { announcement: 'Hello all!' }
-      );
+      const message = messageBus.broadcastToAll('sender', 'Broadcast Subject', {
+        announcement: 'Hello all!',
+      });
 
       expect(message.type).toBe(MessageType.BROADCAST);
 
@@ -142,12 +133,9 @@ describe('AgentMessageBus', () => {
     });
 
     it('should publish to topic subscribers', () => {
-      const message = messageBus.publishToTopic(
-        'sender',
-        'news',
-        'Breaking News',
-        { headline: 'Test' }
-      );
+      const message = messageBus.publishToTopic('sender', 'news', 'Breaking News', {
+        headline: 'Test',
+      });
 
       expect(message.type).toBe(MessageType.TOPIC);
       expect(message.topic).toBe('news');
@@ -168,8 +156,10 @@ describe('AgentMessageBus', () => {
     });
 
     it('should apply subscriber filter', () => {
-      messageBus.subscribe('receiver', 'filtered', (msg) =>
-        (msg.body as { important: boolean }).important === true
+      messageBus.subscribe(
+        'receiver',
+        'filtered',
+        (msg) => (msg.body as { important: boolean }).important === true
       );
 
       messageBus.publishToTopic('sender', 'filtered', 'Important', {
@@ -286,15 +276,33 @@ describe('AgentMessageBus', () => {
     });
 
     it('should order by priority', () => {
-      messageBus.sendToAgent('sender', 'receiver', 'Low', {}, {
-        priority: MessagePriority.LOW,
-      });
-      messageBus.sendToAgent('sender', 'receiver', 'Critical', {}, {
-        priority: MessagePriority.CRITICAL,
-      });
-      messageBus.sendToAgent('sender', 'receiver', 'Normal', {}, {
-        priority: MessagePriority.NORMAL,
-      });
+      messageBus.sendToAgent(
+        'sender',
+        'receiver',
+        'Low',
+        {},
+        {
+          priority: MessagePriority.LOW,
+        }
+      );
+      messageBus.sendToAgent(
+        'sender',
+        'receiver',
+        'Critical',
+        {},
+        {
+          priority: MessagePriority.CRITICAL,
+        }
+      );
+      messageBus.sendToAgent(
+        'sender',
+        'receiver',
+        'Normal',
+        {},
+        {
+          priority: MessagePriority.NORMAL,
+        }
+      );
 
       const messages = messageBus.getMessages('receiver');
 
@@ -318,12 +326,7 @@ describe('AgentMessageBus', () => {
 
   describe('markAsRead', () => {
     it('should mark message as read', () => {
-      const message = messageBus.sendToAgent(
-        'sender',
-        'receiver',
-        'Read Test',
-        {}
-      );
+      const message = messageBus.sendToAgent('sender', 'receiver', 'Read Test', {});
 
       messageBus.markAsRead(message.id, 'receiver');
 

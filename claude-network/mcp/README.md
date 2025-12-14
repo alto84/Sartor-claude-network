@@ -11,22 +11,27 @@
 ### Installation (Choose One)
 
 #### Option 1: Zero-Dependency Bootstrap (Recommended)
+
 ```bash
 python3 bootstrap.py
 ```
+
 This uses ONLY Python standard library - no external tools needed!
 
 #### Option 2: Automated Installer
+
 ```bash
 bash install.sh
 ```
 
 #### Option 3: Docker (Easiest)
+
 ```bash
 docker-compose up -d
 ```
 
 #### Option 4: Manual Installation
+
 ```bash
 pip install -r requirements-complete.txt
 python validate_installation.py
@@ -35,6 +40,7 @@ python validate_installation.py
 ### The One-File Solution
 
 After installation, give ANY Claude agent this single file to connect them to the network:
+
 ```
 /claude-network/skills/meta/gateway.yaml
 ```
@@ -107,12 +113,14 @@ await skill.execute()
 ## 🔧 Starting the MCP Server
 
 ### Basic Start
+
 ```bash
 cd /home/alton/vayu-learning-project/claude-network
 python mcp/mcp_server.py
 ```
 
 ### With Options
+
 ```bash
 # Custom port
 MCP_PORT=8081 python mcp/mcp_server.py
@@ -125,6 +133,7 @@ MCP_HOST=192.168.1.100 MCP_PORT=8082 python mcp/mcp_server.py
 ```
 
 ### Keep Running in Background
+
 ```bash
 # Using nohup
 nohup python mcp/mcp_server.py > mcp.log 2>&1 &
@@ -143,12 +152,14 @@ python mcp/mcp_server.py
 ## 🧪 Testing the Gateway
 
 ### Run Test Suite
+
 ```bash
 cd /home/alton/vayu-learning-project/claude-network
 python mcp/test_gateway.py
 ```
 
 Expected output:
+
 ```
 🧪 GATEWAY SKILL TEST
 ==============================================================
@@ -163,6 +174,7 @@ Expected output:
 ```
 
 ### Interactive Testing
+
 ```bash
 # Start Python
 python
@@ -203,13 +215,17 @@ asyncio.run(test())
 ### Common Issues and Solutions
 
 #### Issue: "No module named 'pip'"
+
 **Solution**: Run the bootstrap script which installs pip automatically:
+
 ```bash
 python3 bootstrap.py
 ```
 
 #### Issue: "ModuleNotFoundError: No module named 'aiohttp'"
+
 **Solution**: Dependencies not installed. Run:
+
 ```bash
 pip install -r requirements-complete.txt
 # OR use the bootstrap script
@@ -217,19 +233,25 @@ python3 bootstrap.py
 ```
 
 #### Issue: Tests won't run - "pytest not found"
+
 **Solution**: Install test dependencies:
+
 ```bash
 pip install pytest pytest-asyncio psutil
 ```
 
 #### Issue: "Connection refused on port 8080"
+
 **Solution**: MCP server not running. Start it:
+
 ```bash
 python mcp_server.py
 ```
 
 #### Issue: Gateway discovery times out
+
 **Solution**: Check firewall settings and ensure port 8080 is open:
+
 ```bash
 # Linux
 sudo ufw allow 8080
@@ -238,7 +260,9 @@ netsh advfirewall firewall add rule name="MCP Server" dir=in action=allow protoc
 ```
 
 #### Issue: Docker build fails
+
 **Solution**: Ensure Docker is installed and running:
+
 ```bash
 docker --version
 docker-compose --version
@@ -248,11 +272,13 @@ docker-compose --version
 ### Validation Commands
 
 Check if everything is installed correctly:
+
 ```bash
 python validate_installation.py
 ```
 
 This will check:
+
 - Python version
 - All required dependencies
 - MCP files present
@@ -270,6 +296,7 @@ This will check:
 ## 🔌 Connection Methods
 
 ### 1. Local Connection (Fastest)
+
 ```python
 # Automatically tries:
 - http://localhost:8080/mcp
@@ -278,6 +305,7 @@ This will check:
 ```
 
 ### 2. Network Scan (Auto-discovery)
+
 ```python
 # Scans local network:
 - 192.168.1.1-254:8080-8082
@@ -286,6 +314,7 @@ This will check:
 ```
 
 ### 3. Firebase Relay (Internet)
+
 ```python
 # Via cloud:
 - https://firebase.../mcp_servers
@@ -294,6 +323,7 @@ This will check:
 ```
 
 ### 4. Manual Endpoint (Override)
+
 ```bash
 export MCP_ENDPOINT="http://192.168.1.100:8080/mcp"
 python gateway_client.py
@@ -302,38 +332,45 @@ python gateway_client.py
 ## 📊 Available Tools After Connection
 
 ### Communication (5 tools)
+
 - `message_send` - Direct messages
 - `message_broadcast` - Network-wide
 - `message_subscribe` - Topic subscriptions
 
 ### Coordination (7 tools)
+
 - `task_list` - Available tasks
 - `task_claim` - Claim work
 - `task_status` - Update progress
 - `consensus_propose` - Proposals
 
 ### Skills (3 tools)
+
 - `skill_list` - Browse skills
 - `skill_execute` - Run skills
 - `skill_compose` - Chain skills
 
 ### Knowledge (3 tools)
+
 - `knowledge_query` - Search
 - `knowledge_add` - Contribute
 - `experience_share` - Share lessons
 
 ### Monitoring (3 tools)
+
 - `agent_status` - Who's online
 - `network_health` - System status
 - `performance_metrics` - Stats
 
 ### Evolution (2 tools)
+
 - `improvement_propose` - Suggest changes
 - `sandbox_test` - Safe testing
 
 ## 🛠️ Troubleshooting
 
 ### Server Won't Start
+
 ```bash
 # Check port in use
 lsof -i :8080
@@ -346,6 +383,7 @@ MCP_PORT=8081 python mcp/mcp_server.py
 ```
 
 ### Can't Connect
+
 ```bash
 # Check server is running
 curl http://localhost:8080/mcp/health
@@ -361,6 +399,7 @@ curl -X POST http://localhost:8080/mcp/execute \
 ```
 
 ### WebSocket Issues
+
 ```python
 # Enable debug logging
 import logging
@@ -378,6 +417,7 @@ async def test():
 ## 📈 Performance
 
 ### Typical Metrics
+
 - Discovery: 2-5 seconds
 - Connection: <1 second (local)
 - Tool loading: 2-3 seconds
@@ -386,6 +426,7 @@ async def test():
 - CPU usage: <5% idle, 10-20% active
 
 ### Scaling
+
 - Single server: 50-100 agents
 - With Redis: 500+ agents
 - Clustered: Unlimited
@@ -393,11 +434,13 @@ async def test():
 ## 🔐 Security
 
 ### Development Mode (Default)
+
 - No authentication required
 - Full tool access
 - Local network only
 
 ### Production Mode
+
 ```bash
 # Set API key requirement
 export REQUIRE_AUTH=true
@@ -409,6 +452,7 @@ python gateway_client.py
 ```
 
 ### Best Practices
+
 - ✅ Use authentication in production
 - ✅ Run behind firewall
 - ✅ Use HTTPS/WSS for internet
@@ -419,6 +463,7 @@ python gateway_client.py
 ## 🎓 Examples
 
 ### Example 1: Minimal Connection
+
 ```python
 from mcp.gateway_client import GatewayClient
 import asyncio
@@ -432,6 +477,7 @@ asyncio.run(connect())
 ```
 
 ### Example 2: Custom Agent
+
 ```python
 client = GatewayClient()
 client.identity.device_type = "researcher"
@@ -442,6 +488,7 @@ print(f"Researcher agent {client.identity.id} online")
 ```
 
 ### Example 3: Tool Discovery
+
 ```python
 async with GatewayClient() as client:
     # List all tools
@@ -479,6 +526,6 @@ async with GatewayClient() as client:
 
 **Remember**: The gateway skill is the key to the kingdom. One file, instant access, unlimited possibilities! 🚀
 
-*Last Updated: 2025-11-03*
-*Gateway Version: 1.0.0*
-*MCP Protocol: v1*
+_Last Updated: 2025-11-03_
+_Gateway Version: 1.0.0_
+_MCP Protocol: v1_

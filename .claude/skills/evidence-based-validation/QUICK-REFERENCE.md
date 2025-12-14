@@ -3,6 +3,7 @@
 ## When to Use This Skill
 
 ✅ **Use when:**
+
 - Analyzing code quality
 - Reviewing architecture
 - Assessing performance
@@ -12,6 +13,7 @@
 - Comparing solutions
 
 ❌ **Don't use for:**
+
 - Simple factual questions
 - Code implementation without assessment
 - Straightforward debugging
@@ -19,6 +21,7 @@
 ## Core Rules
 
 ### 🚫 NEVER Fabricate Scores
+
 - ❌ "95% test coverage" (without measurement)
 - ❌ "Response time under 100ms" (without benchmark)
 - ❌ "Quality score: 9/10" (fabricated)
@@ -27,17 +30,20 @@
 ### 🚫 NEVER Use These Words
 
 **CRITICAL (Never):**
+
 - perfect, flawless, error-free, 100%
 - bulletproof, foolproof, guaranteed
 - best-in-class, world-class, industry-leading
 - zero-error, zero-variance, infinite
 
 **HIGH (Avoid):**
+
 - revolutionary, breakthrough, unprecedented
 - dramatically, exponentially, massively
 - outperforms all, exceeds every, superior to all
 
 **MEDIUM (Caution):**
+
 - exceptional, outstanding, amazing
 - cutting-edge, state-of-the-art
 - highly accurate, extremely efficient
@@ -78,35 +84,39 @@ Before submitting analysis, ask:
 
 ## Language Substitution Guide
 
-| ❌ Instead of... | ✅ Say... |
-|-----------------|-----------|
-| "Excellent code quality" | "Code follows standard patterns. No obvious issues observed." |
-| "95% test coverage" | "Coverage not measured. Test files exist for most modules." |
-| "Best-in-class performance" | "Performance unknown without benchmarks." |
-| "Perfect error handling" | "Error handling present in observed cases. Coverage unknown." |
-| "Highly optimized" | "Uses standard algorithms. Optimization not measured." |
-| "Revolutionary approach" | "This approach differs from typical pattern in [way]." |
+| ❌ Instead of...            | ✅ Say...                                                     |
+| --------------------------- | ------------------------------------------------------------- |
+| "Excellent code quality"    | "Code follows standard patterns. No obvious issues observed." |
+| "95% test coverage"         | "Coverage not measured. Test files exist for most modules."   |
+| "Best-in-class performance" | "Performance unknown without benchmarks."                     |
+| "Perfect error handling"    | "Error handling present in observed cases. Coverage unknown." |
+| "Highly optimized"          | "Uses standard algorithms. Optimization not measured."        |
+| "Revolutionary approach"    | "This approach differs from typical pattern in [way]."        |
 
 ## Evidence Tiers
 
 **Tier 1 (Strong):** Actual measurements
+
 - Test execution output
 - Benchmark results
 - Coverage reports
 - Profiling data
 
 **Tier 2 (Moderate):** Direct observation
+
 - Code structure
 - File counts
 - Patterns visible
 - Documentation exists
 
 **Tier 3 (Weak):** Inference
+
 - Likely behavior based on code
 - Expected characteristics
 - Common pattern implications
 
 **Tier 4 (Weakest):** General knowledge
+
 - Standard practices
 - Known tool characteristics
 

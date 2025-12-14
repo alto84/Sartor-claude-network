@@ -53,6 +53,7 @@ https://home-claude-network-default-rtdb.firebaseio.com/
 **Path**: `/agents/{agent_id}`
 
 **Structure**:
+
 ```json
 {
   "agent_id": "agent-001",
@@ -76,6 +77,7 @@ https://home-claude-network-default-rtdb.firebaseio.com/
 **Path**: `/messages/{message_id}`
 
 **Structure**:
+
 ```json
 {
   "id": "msg-001",
@@ -93,6 +95,7 @@ https://home-claude-network-default-rtdb.firebaseio.com/
 ```
 
 **Message Types**:
+
 - `task` - Task assignment
 - `query` - Information request
 - `response` - Query response
@@ -462,5 +465,5 @@ python firebase_schema.py --stats
 
 ---
 
-*Last Updated: 2025-01-01*
-*Version: 1.0.0*
+_Last Updated: 2025-01-01_
+_Version: 1.0.0_

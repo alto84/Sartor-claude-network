@@ -47,11 +47,13 @@ Use the multi-expert system for:
 **Purpose:** Top-level coordinator that integrates all multi-expert components into a unified pipeline.
 
 **Key Functions:**
+
 - `execute(task)` - Run full orchestration pipeline
 - `executeWithExperts(task, experts)` - Use custom expert configurations
 - `quickExecute(task)` - Fast execution without full pipeline
 
 **Interfaces:**
+
 ```typescript
 interface OrchestratorConfig {
   expertCount: number;
@@ -74,12 +76,14 @@ interface OrchestratorConfig {
 **Purpose:** Spawns N configurable experts in parallel, distributes tasks, and collects results with timeout enforcement.
 
 **Key Features:**
+
 - Parallel expert execution with configurable concurrency
 - Timeout enforcement at task and global levels
 - Retry logic with iteration support
 - Execution trace capture for debugging
 
 **Interfaces:**
+
 ```typescript
 interface ExpertTask {
   id: string;
@@ -111,6 +115,7 @@ interface ExpertResult {
 **Purpose:** Defines parameterized expert configurations with 18+ configurable parameters for diverse problem-solving strategies.
 
 **Expert Archetypes:**
+
 - **Performance** - Optimizes for speed and efficiency (low temperature, fewer iterations)
 - **Safety** - Prioritizes correctness and error handling (high confidence threshold)
 - **Simplicity** - Favors clear, maintainable solutions (conservative strategy)
@@ -119,6 +124,7 @@ interface ExpertResult {
 - **Balanced** - Default balanced approach (moderate settings)
 
 **Key Parameters:**
+
 ```typescript
 interface ExpertConfig {
   // Identity
@@ -132,7 +138,7 @@ interface ExpertConfig {
   minIterations: number;
 
   // Randomness
-  temperature: number;  // 0.0 = deterministic, 1.0 = creative
+  temperature: number; // 0.0 = deterministic, 1.0 = creative
   seed?: number;
 
   // Timeouts
@@ -153,12 +159,14 @@ interface ExpertConfig {
 **Purpose:** Implements multiple voting strategies for expert consensus.
 
 **Voting Methods:**
+
 - **Majority** - Simple plurality (most first-choice votes wins)
 - **Ranked-Choice** - Instant runoff voting (eliminates losers iteratively)
 - **Borda Count** - Positional scoring (points based on ranking)
 - **Weighted** - Combines vote weight and confidence
 
 **Tie-Breaking:**
+
 - Random selection
 - First-come-first-serve
 - Highest confidence
@@ -168,17 +176,19 @@ interface ExpertConfig {
 **Purpose:** Evaluates solution diversity to promote varied approaches and prevent groupthink.
 
 **Scoring Dimensions:**
+
 - **Archetype Diversity** - How unique is this expert's archetype?
 - **Output Uniqueness** - How different is the solution output?
 - **Novelty** - How different from previously seen solutions?
 
 **Key Functions:**
+
 ```typescript
 interface DiversityScore {
-  score: number;              // Overall diversity (0-100)
-  archetypeScore: number;     // Archetype uniqueness
-  similarityScore: number;    // Output similarity (lower = more unique)
-  noveltyScore: number;       // Novelty vs seen solutions
+  score: number; // Overall diversity (0-100)
+  archetypeScore: number; // Archetype uniqueness
+  similarityScore: number; // Output similarity (lower = more unique)
+  noveltyScore: number; // Novelty vs seen solutions
   breakdown: DiversityBreakdown;
 }
 ```
@@ -188,25 +198,28 @@ interface DiversityScore {
 **Purpose:** Implements 0-100 soft scoring with partial credit and multi-dimensional evaluation.
 
 **Scoring Dimensions:**
+
 - **Correctness** - How correct is the solution?
 - **Completeness** - Are all requirements met?
 - **Quality** - Is the solution high quality?
 - **Efficiency** - How efficient was the process?
 
 **Phase 6 Enhancements:**
+
 - Multi-dimensional scoring with evidence tracking
 - Confidence intervals for statistical rigor
 - No fabrication - all scores derived from measured data
 - Configurable dimension weights
 
 **Anti-Fabrication Compliance:**
+
 ```typescript
 // All scores include evidence array with specific data points
 interface DimensionScore {
   dimension: ScoreDimension;
   score: number;
   confidence: number;
-  evidence: string[];  // REQUIRED - no fabrication!
+  evidence: string[]; // REQUIRED - no fabrication!
 }
 ```
 
@@ -215,6 +228,7 @@ interface DimensionScore {
 **Purpose:** Integrates iterative refinement with multi-expert execution through structured feedback collection and application.
 
 **Feedback Sources:**
+
 - Validator - Automated validation
 - Scorer - Soft scorer analysis
 - Expert - Cross-expert feedback
@@ -223,6 +237,7 @@ interface DimensionScore {
 - Self - Self-assessment
 
 **Severity Levels:**
+
 - Critical - Must fix
 - Major - Should fix
 - Minor - Nice to fix
@@ -233,6 +248,7 @@ interface DimensionScore {
 **Purpose:** Connects expert execution with the memory system to enable learning from past executions.
 
 **Memory Types:**
+
 - **Solution** - Successful solutions
 - **Failure** - Failed attempts (for learning)
 - **Pattern** - Recognized patterns
@@ -240,6 +256,7 @@ interface DimensionScore {
 - **Performance** - Expert performance metrics
 
 **Key Functions:**
+
 - Store expert results
 - Retrieve relevant past solutions
 - Track expert performance over time
@@ -250,6 +267,7 @@ interface DimensionScore {
 **Purpose:** Provides isolated execution contexts with resource limits and safe failure handling.
 
 **Features:**
+
 - Resource limits (CPU, memory, time)
 - Crash isolation
 - Execution trace capture
@@ -260,6 +278,7 @@ interface DimensionScore {
 **Purpose:** Implements token bucket algorithm to prevent API throttling during parallel execution.
 
 **Features:**
+
 - Token bucket rate limiting
 - Priority-based request scheduling
 - Cost tracking across experts
@@ -300,11 +319,7 @@ console.log('Consensus:', result.votingResult);
 import { createExpertPool, Orchestrator } from './multi-expert';
 
 // Create diverse expert pool
-const experts = createExpertPool('custom-task', [
-  'performance',
-  'safety',
-  'creative',
-]);
+const experts = createExpertPool('custom-task', ['performance', 'safety', 'creative']);
 
 // Execute with custom experts
 const result = await orchestrator.executeWithExperts(task, experts);
@@ -317,7 +332,15 @@ import { Orchestrator, createMockExecutor } from './multi-expert';
 
 const orchestrator = new Orchestrator(createMockExecutor(), {
   expertCount: 7,
-  archetypes: ['performance', 'safety', 'simplicity', 'robustness', 'creative', 'balanced', 'balanced'],
+  archetypes: [
+    'performance',
+    'safety',
+    'simplicity',
+    'robustness',
+    'creative',
+    'balanced',
+    'balanced',
+  ],
   useMemory: true,
   useFeedbackLoop: true,
   targetScore: 90,
@@ -401,39 +424,40 @@ console.log('Target reached:', result.metadata.targetReached);
 
 ### Expert Archetypes
 
-| Archetype | Temperature | Max Iterations | Strategy | Best For |
-|-----------|-------------|----------------|----------|----------|
-| **Performance** | 0.3 | 2 | Aggressive | Speed-critical tasks |
-| **Safety** | 0.2 | 5 | Conservative | Correctness-critical tasks |
-| **Simplicity** | 0.4 | 3 | Conservative | Maintainability |
-| **Robustness** | 0.4 | 4 | Analytical | Edge case handling |
-| **Creative** | 0.8 | 4 | Exploratory | Novel problems |
-| **Balanced** | 0.5 | 3 | Analytical | General use |
+| Archetype       | Temperature | Max Iterations | Strategy     | Best For                   |
+| --------------- | ----------- | -------------- | ------------ | -------------------------- |
+| **Performance** | 0.3         | 2              | Aggressive   | Speed-critical tasks       |
+| **Safety**      | 0.2         | 5              | Conservative | Correctness-critical tasks |
+| **Simplicity**  | 0.4         | 3              | Conservative | Maintainability            |
+| **Robustness**  | 0.4         | 4              | Analytical   | Edge case handling         |
+| **Creative**    | 0.8         | 4              | Exploratory  | Novel problems             |
+| **Balanced**    | 0.5         | 3              | Analytical   | General use                |
 
 ### Scoring Dimensions
 
-| Dimension | Weight | Evidence Sources |
-|-----------|--------|------------------|
-| **Quality** | 30% | Expert confidence, iterations, errors |
-| **Safety** | 20% | Success status, errors, timeout compliance |
-| **Efficiency** | 20% | Duration vs timeout, iterations used |
-| **Correctness** | 20% | Result score, expert confidence |
-| **Readability** | 10% | Output structure, documentation |
+| Dimension       | Weight | Evidence Sources                           |
+| --------------- | ------ | ------------------------------------------ |
+| **Quality**     | 30%    | Expert confidence, iterations, errors      |
+| **Safety**      | 20%    | Success status, errors, timeout compliance |
+| **Efficiency**  | 20%    | Duration vs timeout, iterations used       |
+| **Correctness** | 20%    | Result score, expert confidence            |
+| **Readability** | 10%    | Output structure, documentation            |
 
 ### Voting Strategies
 
-| Method | Description | Use When |
-|--------|-------------|----------|
-| **Majority** | Simple plurality | Quick decisions, clear preferences |
-| **Ranked-Choice** | Instant runoff | Avoiding vote splitting |
-| **Borda Count** | Positional scoring | Valuing consensus |
-| **Weighted** | By confidence | Trusting expert confidence |
+| Method            | Description        | Use When                           |
+| ----------------- | ------------------ | ---------------------------------- |
+| **Majority**      | Simple plurality   | Quick decisions, clear preferences |
+| **Ranked-Choice** | Instant runoff     | Avoiding vote splitting            |
+| **Borda Count**   | Positional scoring | Valuing consensus                  |
+| **Weighted**      | By confidence      | Trusting expert confidence         |
 
 ## Best Practices
 
 ### When to Use Multi-Expert vs Single
 
 **Use Multi-Expert:**
+
 - High-stakes decisions (production code, critical analysis)
 - Complex problems with multiple approaches
 - Need for diverse perspectives
@@ -441,6 +465,7 @@ console.log('Target reached:', result.metadata.targetReached);
 - Budget allows for parallel API calls
 
 **Use Single Expert:**
+
 - Simple, well-defined tasks
 - Time-sensitive operations
 - Resource-constrained environments
@@ -450,6 +475,7 @@ console.log('Target reached:', result.metadata.targetReached);
 ### Resource Management
 
 **Optimize Concurrency:**
+
 ```typescript
 // Low-resource environment
 const config = {
@@ -467,18 +493,20 @@ const config = {
 ```
 
 **Enable Rate Limiting:**
+
 ```typescript
 // Prevent API throttling
 const config = {
   useRateLimiter: true,
   rateLimitConfig: {
-    tokensPerSecond: 1000,  // Adjust to your API limits
+    tokensPerSecond: 1000, // Adjust to your API limits
     maxBurst: 5000,
   },
 };
 ```
 
 **Use Memory Wisely:**
+
 ```typescript
 // Enable memory for learning
 const config = {
@@ -495,6 +523,7 @@ const config = {
 ### Error Handling
 
 **Graceful Degradation:**
+
 ```typescript
 try {
   const result = await orchestrator.execute(task);
@@ -509,7 +538,6 @@ try {
   } else {
     // Consider manual review
   }
-
 } catch (error) {
   console.error('Orchestration failed:', error);
   // Fallback to single expert or manual approach
@@ -517,6 +545,7 @@ try {
 ```
 
 **Check Quality Metrics:**
+
 ```typescript
 const result = await orchestrator.execute(task);
 
@@ -538,6 +567,7 @@ if (result.poolStats.passRate < 50) {
 ```
 
 **Monitor Resource Usage:**
+
 ```typescript
 // Check rate limiter
 const rateLimiter = orchestrator.getRateLimiter();
@@ -559,6 +589,7 @@ if (sandbox) {
 ### Cleanup
 
 **Always cleanup after execution:**
+
 ```typescript
 const orchestrator = new Orchestrator(executor);
 
@@ -578,6 +609,7 @@ try {
 Multi-expert execution time = `max(expert_durations) + overhead`
 
 **Overhead includes:**
+
 - Expert pool creation: ~10-50ms
 - Scoring all results: ~50-200ms
 - Voting: ~10-50ms
@@ -590,14 +622,16 @@ Multi-expert execution time = `max(expert_durations) + overhead`
 **Token consumption:** `expertCount * avgTokensPerExpert`
 
 Example with 5 experts averaging 2000 tokens each:
+
 - Total: 10,000 tokens
 - Cost (GPT-4): ~$0.30 per execution
 
 **Use cost tracking:**
+
 ```typescript
 import { createCostTracker } from './multi-expert';
 
-const costTracker = createCostTracker(10.00); // $10 budget
+const costTracker = createCostTracker(10.0); // $10 budget
 
 // Track each expert
 costTracker.trackCost('expert-1', 2000, 0.06);
@@ -614,11 +648,13 @@ console.log('Total tokens:', costTracker.getTotalTokens());
 ### Memory Usage
 
 **In-memory storage:**
+
 - Each expert result: ~1-10KB
 - Execution trace: ~5-50KB
 - Total for 5 experts: ~30-300KB
 
 **Memory integration:**
+
 - Stored memories: unlimited (persisted to disk/DB)
 - Performance cache: ~100KB per 100 experts
 
@@ -627,15 +663,17 @@ console.log('Total tokens:', costTracker.getTotalTokens());
 ### Common Issues
 
 **Issue: All experts timeout**
+
 ```typescript
 // Solution: Increase timeout or reduce task complexity
 const config = {
   timeout: 600000, // Increase to 10 minutes
-  expertCount: 3,  // Reduce expert count
+  expertCount: 3, // Reduce expert count
 };
 ```
 
 **Issue: Low consensus**
+
 ```typescript
 // Solution: Use more similar experts or adjust voting
 const config = {
@@ -645,17 +683,19 @@ const config = {
 ```
 
 **Issue: Poor quality scores**
+
 ```typescript
 // Solution: Adjust expert configurations
 const config = {
   archetypes: ['safety', 'safety', 'robustness'], // Quality-focused
-  targetScore: 85,  // Raise quality bar
+  targetScore: 85, // Raise quality bar
   useFeedbackLoop: true, // Enable refinement
   maxFeedbackIterations: 5,
 };
 ```
 
 **Issue: High API costs**
+
 ```typescript
 // Solution: Enable rate limiting and reduce expert count
 const config = {
@@ -670,9 +710,11 @@ const config = {
 ## File Paths Reference
 
 All multi-expert components are located in:
+
 - `/home/alton/Sartor-claude-network/src/multi-expert/`
 
 **Core Files:**
+
 - `orchestrator.ts` - Top-level coordinator
 - `execution-engine.ts` - Parallel expert execution
 - `expert-config.ts` - Expert archetypes and configuration
@@ -686,6 +728,7 @@ All multi-expert components are located in:
 - `index.ts` - Module exports
 
 **Tests:**
+
 - `__tests__/` - Component tests
 
 ## Next Steps

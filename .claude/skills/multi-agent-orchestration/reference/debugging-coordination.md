@@ -7,12 +7,14 @@ Practical guide to debugging coordination issues in multi-agent systems, based o
 ### 1. Split-Brain Scenarios
 
 **Symptoms**:
+
 - Multiple leaders elected simultaneously
 - Conflicting decisions being executed
 - Agents disagree on current state
 - Duplicate task execution
 
 **Root Causes**:
+
 - Network partition splitting cluster
 - Asymmetric failures (A can't reach B, but B can reach A)
 - Clock skew causing election timing issues
@@ -40,6 +42,7 @@ grep "election_started" logs/* | awk '{print $1}' | uniq -c
 **Debugging Steps**:
 
 1. **Verify Network Connectivity**:
+
 ```bash
 # Test connectivity between all agent pairs
 for agent in agent1 agent2 agent3; do
@@ -53,6 +56,7 @@ done
 ```
 
 2. **Check Quorum Configuration**:
+
 ```typescript
 // Verify quorum size calculation
 const expectedQuorum = Math.floor(nodeCount / 2) + 1;
@@ -64,6 +68,7 @@ if (expectedQuorum !== actualQuorum) {
 ```
 
 3. **Analyze Vector Clocks**:
+
 ```typescript
 // Check for concurrent events that should be ordered
 const events = getEventLog();
@@ -79,6 +84,7 @@ for (let i = 0; i < events.length; i++) {
 **Resolution**:
 
 **For Raft**:
+
 ```typescript
 // Majority partition continues, minority blocks
 if (reachableNodes.length < quorum) {
@@ -89,15 +95,17 @@ if (reachableNodes.length < quorum) {
 ```
 
 **For BFT**:
+
 ```typescript
 // Requires 2f+1 for progress
-if (responsiveNodes.length < (2 * faultTolerance + 1)) {
+if (responsiveNodes.length < 2 * faultTolerance + 1) {
   this.initiateViewChange();
   throw new Error('Insufficient responsive nodes for BFT consensus');
 }
 ```
 
 **Prevention**:
+
 - Use network partition detection (heartbeats, failure detectors)
 - Configure appropriate timeouts (not too aggressive)
 - Implement proper quorum checks
@@ -106,12 +114,14 @@ if (responsiveNodes.length < (2 * faultTolerance + 1)) {
 ### 2. Message Ordering Problems
 
 **Symptoms**:
+
 - Operations applied out of order
 - Causality violations (effect before cause)
 - Inconsistent state across replicas
 - Dependency errors
 
 **Root Causes**:
+
 - Network reordering of messages
 - Missing vector clock implementation
 - Buffering without causal ordering
@@ -145,7 +155,7 @@ class MessageOrderDebugger {
 
       for (const dep of dependencies) {
         // Check if dependency was delivered before this message
-        const depIndex = messages.findIndex(m => m.id === dep.id);
+        const depIndex = messages.findIndex((m) => m.id === dep.id);
 
         if (depIndex > i) {
           violations.push({
@@ -153,7 +163,7 @@ class MessageOrderDebugger {
             dependency: dep.id,
             issue: 'Dependency delivered after dependent message',
             messageVectorClock: msg.vectorClock,
-            dependencyVectorClock: dep.vectorClock
+            dependencyVectorClock: dep.vectorClock,
           });
         }
       }
@@ -162,7 +172,7 @@ class MessageOrderDebugger {
     return {
       totalMessages: messages.length,
       violations: violations,
-      severity: violations.length > 0 ? 'CRITICAL' : 'OK'
+      severity: violations.length > 0 ? 'CRITICAL' : 'OK',
     };
   }
 }
@@ -171,6 +181,7 @@ class MessageOrderDebugger {
 **Resolution**:
 
 **Implement Causal Delivery**:
+
 ```typescript
 class CausalDeliveryBuffer {
   private buffer: Message[] = [];
@@ -196,11 +207,11 @@ class CausalDeliveryBuffer {
       // Can deliver if our clock >= message clock - 1 for sender
       if (processId === msg.senderId) {
         if (ourTimestamp + 1 !== timestamp) {
-          return false;  // Missing intermediate message
+          return false; // Missing intermediate message
         }
       } else {
         if (ourTimestamp < timestamp) {
-          return false;  // Missing dependency from another process
+          return false; // Missing dependency from another process
         }
       }
     }
@@ -210,6 +221,7 @@ class CausalDeliveryBuffer {
 ```
 
 **Prevention**:
+
 - Always use vector clocks for causal ordering
 - Implement message buffering for out-of-order delivery
 - Set sequence numbers per sender
@@ -218,12 +230,14 @@ class CausalDeliveryBuffer {
 ### 3. State Synchronization Bugs
 
 **Symptoms**:
+
 - Replicas diverge over time
 - Merge operations fail
 - Inconsistent query results across replicas
 - State hash mismatches
 
 **Root Causes**:
+
 - Non-commutative merge functions
 - Missing updates during synchronization
 - Byzantine agent sending incorrect state
@@ -264,12 +278,7 @@ class CRDTPropertyVerifier {
     return true;
   }
 
-  verifyAssociative<T>(
-    crdt: CRDT<T>,
-    state1: T,
-    state2: T,
-    state3: T
-  ): boolean {
+  verifyAssociative<T>(crdt: CRDT<T>, state1: T, state2: T, state3: T): boolean {
     const left = crdt.merge(crdt.merge(state1, state2), state3);
     const right = crdt.merge(state1, crdt.merge(state2, state3));
 
@@ -299,12 +308,13 @@ class CRDTPropertyVerifier {
 **Resolution**:
 
 **Fix Non-Commutative Merge**:
+
 ```typescript
 // WRONG: Non-commutative merge
 class BadCounter {
   merge(other: BadCounter): BadCounter {
     // This is NOT commutative if states differ
-    this.count = other.count;  // Last one wins arbitrarily
+    this.count = other.count; // Last one wins arbitrarily
     return this;
   }
 }
@@ -323,6 +333,7 @@ class GoodCounter {
 ```
 
 **Prevention**:
+
 - Verify CRDT properties (commutative, associative, idempotent)
 - Use well-tested CRDT implementations
 - Implement state hash validation
@@ -331,12 +342,14 @@ class GoodCounter {
 ### 4. Cascading Failures
 
 **Symptoms**:
+
 - Single agent failure triggers widespread outages
 - Exponential growth in retry attempts
 - Resource exhaustion across cluster
 - Domino effect of circuit breakers opening
 
 **Root Causes**:
+
 - No circuit breakers
 - Unbounded retries
 - No backpressure mechanisms
@@ -372,13 +385,14 @@ class CascadeFailureDetector {
     for (const window of windows) {
       const failureRate = window.length / 10; // failures per second
 
-      if (failureRate > 5) {  // Threshold: 5 failures/sec
+      if (failureRate > 5) {
+        // Threshold: 5 failures/sec
         cascades.push({
           startTime: window[0].timestamp,
           endTime: window[window.length - 1].timestamp,
-          affectedAgents: new Set(window.map(e => e.agentId)).size,
+          affectedAgents: new Set(window.map((e) => e.agentId)).size,
           failureCount: window.length,
-          pattern: this.analyzeFailurePattern(window)
+          pattern: this.analyzeFailurePattern(window),
         });
       }
     }
@@ -386,7 +400,7 @@ class CascadeFailureDetector {
     return {
       cascades,
       severity: cascades.length > 0 ? 'CRITICAL' : 'OK',
-      recommendation: this.generateRecommendation(cascades)
+      recommendation: this.generateRecommendation(cascades),
     };
   }
 
@@ -408,11 +422,12 @@ class CascadeFailureDetector {
 **Resolution**:
 
 **Implement Circuit Breakers**:
+
 ```typescript
 const circuitBreaker = new CircuitBreaker({
-  failureThreshold: 5,        // Open after 5 failures
-  recoveryTimeout: 60000,     // Try to recover after 1 minute
-  halfOpenRequests: 3         // Test with 3 requests in half-open
+  failureThreshold: 5, // Open after 5 failures
+  recoveryTimeout: 60000, // Try to recover after 1 minute
+  halfOpenRequests: 3, // Test with 3 requests in half-open
 });
 
 try {
@@ -429,6 +444,7 @@ try {
 ```
 
 **Implement Backpressure**:
+
 ```typescript
 class BackpressureQueue {
   private maxQueueDepth = 1000;
@@ -452,6 +468,7 @@ class BackpressureQueue {
 ```
 
 **Prevention**:
+
 - Always use circuit breakers for agent-to-agent calls
 - Implement exponential backoff with jitter
 - Set resource limits (memory, connections, queue depth)
@@ -460,6 +477,7 @@ class BackpressureQueue {
 ### 5. Deadlock and Livelock
 
 **Symptoms**:
+
 - System stuck, no progress
 - Agents active but not completing tasks
 - Circular dependencies detected
@@ -484,11 +502,7 @@ grep "retry_attempt" logs/* | grep -v "succeeded"
 
 ```typescript
 class DeadlockDetector {
-  detectDeadlock(
-    tasks: Map<string, Task>,
-    dependencies: Map<string, string[]>
-  ): DeadlockAnalysis {
-
+  detectDeadlock(tasks: Map<string, Task>, dependencies: Map<string, string[]>): DeadlockAnalysis {
     // Build dependency graph
     const graph = this.buildGraph(dependencies);
 
@@ -498,11 +512,11 @@ class DeadlockDetector {
     if (cycles.length > 0) {
       return {
         detected: true,
-        cycles: cycles.map(cycle => ({
+        cycles: cycles.map((cycle) => ({
           tasks: cycle,
-          agentsInvolved: cycle.map(taskId => tasks.get(taskId)?.agentId),
-          breakSuggestion: this.suggestCycleBreaker(cycle, tasks)
-        }))
+          agentsInvolved: cycle.map((taskId) => tasks.get(taskId)?.agentId),
+          breakSuggestion: this.suggestCycleBreaker(cycle, tasks),
+        })),
       };
     }
 
@@ -512,7 +526,7 @@ class DeadlockDetector {
     return {
       detected: livelockCandidates.length > 0,
       livelocks: livelockCandidates,
-      recommendation: 'Implement timeout-based progress enforcement'
+      recommendation: 'Implement timeout-based progress enforcement',
     };
   }
 
@@ -523,14 +537,7 @@ class DeadlockDetector {
 
     for (const node of graph.nodes) {
       if (!visited.has(node)) {
-        this.dfsCycleDetection(
-          node,
-          graph,
-          visited,
-          recursionStack,
-          [],
-          cycles
-        );
+        this.dfsCycleDetection(node, graph, visited, recursionStack, [], cycles);
       }
     }
 
@@ -542,13 +549,14 @@ class DeadlockDetector {
 **Resolution**:
 
 **Break Deadlocks with Priorities**:
+
 ```typescript
 class PriorityBasedDeadlockBreaker {
   resolveDeadlock(cycle: string[], tasks: Map<string, Task>): void {
     // Abort lowest priority task in cycle
-    const priorities = cycle.map(taskId => ({
+    const priorities = cycle.map((taskId) => ({
       taskId,
-      priority: tasks.get(taskId)?.priority || 0
+      priority: tasks.get(taskId)?.priority || 0,
     }));
 
     priorities.sort((a, b) => a.priority - b.priority);
@@ -561,13 +569,10 @@ class PriorityBasedDeadlockBreaker {
 ```
 
 **Prevent Livelock with Randomization**:
+
 ```typescript
 class LivelockPrevention {
-  async retryWithBackoff<T>(
-    operation: () => Promise<T>,
-    maxAttempts: number = 5
-  ): Promise<T> {
-
+  async retryWithBackoff<T>(operation: () => Promise<T>, maxAttempts: number = 5): Promise<T> {
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
       try {
         return await operation();
@@ -587,6 +592,7 @@ class LivelockPrevention {
 ```
 
 **Prevention**:
+
 - Use dependency ordering (topological sort)
 - Implement timeout-based deadlock detection
 - Apply priority-based conflict resolution
@@ -595,6 +601,7 @@ class LivelockPrevention {
 ### 6. Byzantine Failures
 
 **Symptoms**:
+
 - Invalid messages from agents
 - State corruption
 - Signature verification failures
@@ -617,16 +624,12 @@ grep "anomaly_detected\|suspicious_behavior" logs/*
 
 ```typescript
 class ByzantineDetector {
-  async detectByzantineAgent(
-    agent: Agent,
-    messages: Message[]
-  ): Promise<ByzantineAnalysis> {
-
+  async detectByzantineAgent(agent: Agent, messages: Message[]): Promise<ByzantineAnalysis> {
     const issues: string[] = [];
 
     // Check signature validity
-    const signatureFailures = messages.filter(m =>
-      !this.verifySignature(m, agent.publicKey)
+    const signatureFailures = messages.filter(
+      (m) => !this.verifySignature(m, agent.publicKey)
     ).length;
 
     if (signatureFailures > 0) {
@@ -655,10 +658,8 @@ class ByzantineDetector {
       agentId: agent.id,
       suspicious: issues.length > 0,
       issues,
-      recommendation: issues.length > 2
-        ? 'ISOLATE_AGENT'
-        : 'MONITOR_CLOSELY',
-      trustScore: this.calculateTrustScore(agent, issues)
+      recommendation: issues.length > 2 ? 'ISOLATE_AGENT' : 'MONITOR_CLOSELY',
+      trustScore: this.calculateTrustScore(agent, issues),
     };
   }
 }
@@ -667,6 +668,7 @@ class ByzantineDetector {
 **Resolution**:
 
 **Isolate Byzantine Agent**:
+
 ```typescript
 class ByzantineIsolation {
   async isolateAgent(agentId: string, reason: string): Promise<void> {
@@ -680,7 +682,7 @@ class ByzantineIsolation {
     await this.broadcastAgentIsolation({
       agentId,
       reason,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     });
 
     // Log incident
@@ -690,6 +692,7 @@ class ByzantineIsolation {
 ```
 
 **Prevention**:
+
 - Use BFT consensus for untrusted environments
 - Implement cryptographic signatures
 - Monitor trust scores
@@ -735,6 +738,7 @@ grep "signature_verification_failed\|suspicious_behavior" logs/* | wc -l
 ## Evidence Sources
 
 All debugging patterns and failure modes documented from:
+
 - `/home/alton/SKG Agent Prototype 2/` - Actual implementation debugging
 - Consensus mechanisms: Raft, BFT implementations and test results
 - Communication protocols: A2A Protocol failure mode testing

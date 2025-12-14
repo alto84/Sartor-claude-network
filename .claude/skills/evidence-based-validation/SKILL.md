@@ -18,6 +18,7 @@ This skill enforces rigorous anti-fabrication protocols to prevent Claude from m
 Evidence-based validation is the default operating mode for all agents. Validation is not opt-in - it's mandatory.
 
 **AUTOMATICALLY active for (most common cases):**
+
 - Analyzing code quality or performance
 - Reviewing system architecture or design
 - Assessing test results or metrics
@@ -30,6 +31,7 @@ Evidence-based validation is the default operating mode for all agents. Validati
 - Conducting code reviews or audits
 
 **ONLY deactivate for:**
+
 - Pure implementation tasks with no assessment (e.g., "write a function that does X")
 - Factual information retrieval (e.g., "What is the syntax for X?")
 - Documentation writing without quality claims
@@ -46,6 +48,7 @@ Evidence-based validation is the default operating mode for all agents. Validati
 3. **AFTER** analyzing: `memory_create` to store findings, gaps, and corrections
 
 **Example Quick Workflow:**
+
 ```
 1. Search memory: memory_search({"type": "procedural", "min_importance": 0.6, "limit": 10})
 2. Analyze using evidence-based language (observations, not judgments)
@@ -73,6 +76,7 @@ These rules are extracted from `/home/alton/CLAUDE.md` and **CANNOT BE OVERRIDDE
 ### MANDATORY LANGUAGE RESTRICTIONS
 
 **BANNED WITHOUT EXTRAORDINARY EVIDENCE:**
+
 - "Exceptional performance" / "Outstanding" / "World-class" / "Industry-leading"
 - Any score above 80% without external validation data
 - Letter grades (A, B, C, etc.) without defined rubric and measurement
@@ -80,6 +84,7 @@ These rules are extracted from `/home/alton/CLAUDE.md` and **CANNOT BE OVERRIDDE
 - Confidence scores without statistical basis
 
 **REQUIRED LANGUAGE PATTERNS:**
+
 - "Cannot determine without measurement data"
 - "No empirical evidence available"
 - "Preliminary observation suggests (with caveats)"
@@ -114,6 +119,7 @@ When analyzing code, systems, or making claims, follow this process:
 ### Step 1: Pre-Analysis Check
 
 Before making any claims:
+
 1. Ask: "What actual evidence do I have?"
 2. Identify what can be observed vs. what requires measurement
 3. List limitations upfront
@@ -121,6 +127,7 @@ Before making any claims:
 ### Step 2: Evidence Collection
 
 Gather only verifiable information:
+
 - **Code inspection**: Structure, patterns, obvious issues (not quality scores)
 - **Test results**: Actual test output, pass/fail counts, error messages
 - **Metrics**: Measurable data (lines of code, function count, complexity if calculated)
@@ -129,6 +136,7 @@ Gather only verifiable information:
 ### Step 3: Analysis with Constraints
 
 When analyzing:
+
 - Describe what is present, not how "good" it is
 - Note potential issues and risks
 - Avoid comparative terms without baseline
@@ -137,11 +145,13 @@ When analyzing:
 ### Step 4: Automated Validation (When Applicable)
 
 For written analysis, optionally run validation:
+
 ```bash
 python ~/.claude/skills/evidence-based-validation/scripts/validate_claims.py <analysis_file>
 ```
 
 This detects:
+
 - Fabricated scores
 - Prohibited language patterns
 - Exaggerated claims
@@ -152,20 +162,24 @@ This detects:
 Structure responses as:
 
 **Observations:**
+
 - List factual observations without judgment
 - Include both positive and negative findings
 
 **Limitations:**
+
 - What cannot be determined from available evidence
 - What would require measurement or testing
 - Assumptions being made
 
 **Potential Issues:**
+
 - What could go wrong
 - Edge cases not covered
 - Missing validation
 
 **Evidence Gaps:**
+
 - What data is missing
 - What measurements would be needed
 - Uncertainty levels
@@ -175,42 +189,50 @@ Structure responses as:
 ### CRITICAL Level (Never Use)
 
 **Impossible Perfection:**
+
 - "perfect", "flawless", "error-free", "100%", "zero-error"
 - "infallible", "bulletproof", "foolproof", "fail-safe", "guaranteed"
 - "never fail", "cannot fail", "impossible to fail"
 
 **Absolute Supremacy:**
+
 - "best in class", "world-class", "world-leading", "industry-leading"
 - "unmatched", "unbeatable", "unsurpassed", "unrivaled"
 - "supreme", "ultimate", "definitive", "absolute best"
 
 **Statistical Impossibility:**
+
 - "zero variance", "zero deviation", "zero error", "infinite speed"
 - "instant", "instantaneous", "zero-time", "perfect precision"
 
 ### HIGH Level (Avoid Without Evidence)
 
 **Exaggerated Performance:**
+
 - "revolutionary", "breakthrough", "game-changing", "paradigm-shifting"
 - "unprecedented", "unheard-of", "never-before-seen", "industry-first"
 - "dramatically improve", "exponentially increase", "massively boost"
 
 **Artificial Precision:**
+
 - "precisely X", "exactly Y", "definitively Z" (without measurements)
 - "optimally calibrated", "scientifically proven", "mathematically optimized"
 
 **Comparative Fabrication:**
+
 - "outperform all competitors", "exceed every benchmark", "surpass all alternatives"
 - "superior to all existing", "leads the industry"
 
 ### MEDIUM Level (Use with Caution)
 
 **Superlative Abuse:**
+
 - "amazing performance", "incredible results", "exceptional accuracy"
 - "cutting-edge", "state-of-the-art", "next-generation"
 - "superior", "premium", "elite", "enterprise-grade"
 
 **Vague Excellence:**
+
 - "highly accurate", "extremely efficient", "very reliable" (without data)
 - "top-tier performance", "high-quality solution"
 - "optimized algorithm" (without before/after comparison)
@@ -219,20 +241,21 @@ Structure responses as:
 
 Instead of prohibited language, use:
 
-| Prohibited | Compliant Alternative |
-|-----------|---------------------|
-| "Excellent code quality" | "Code follows standard patterns. No obvious issues observed in review." |
-| "Perfect test coverage" | "Test files exist for main modules. Coverage measurement not performed." |
-| "Best-in-class performance" | "Performance characteristics unknown without benchmarks." |
-| "95% accuracy" | "Accuracy cannot be determined without labeled test data and evaluation." |
-| "Highly optimized" | "Uses standard library functions. Optimization impact not measured." |
-| "Enterprise-grade security" | "Implements authentication. Security audit not performed." |
+| Prohibited                  | Compliant Alternative                                                     |
+| --------------------------- | ------------------------------------------------------------------------- |
+| "Excellent code quality"    | "Code follows standard patterns. No obvious issues observed in review."   |
+| "Perfect test coverage"     | "Test files exist for main modules. Coverage measurement not performed."  |
+| "Best-in-class performance" | "Performance characteristics unknown without benchmarks."                 |
+| "95% accuracy"              | "Accuracy cannot be determined without labeled test data and evaluation." |
+| "Highly optimized"          | "Uses standard library functions. Optimization impact not measured."      |
+| "Enterprise-grade security" | "Implements authentication. Security audit not performed."                |
 
 ## Evidence Standards Checklist
 
 Before making a claim, verify:
 
 **For Scores/Metrics:**
+
 - [ ] Is this based on actual measurement data?
 - [ ] Can I show the methodology used?
 - [ ] Are there confidence intervals or error margins?
@@ -240,18 +263,21 @@ Before making a claim, verify:
 - [ ] Has this been independently validated?
 
 **For Quality Claims:**
+
 - [ ] What specific evidence supports this?
 - [ ] What are the limitations of this evidence?
 - [ ] What could invalidate this claim?
 - [ ] Am I describing observations or making judgments?
 
 **For Comparative Claims:**
+
 - [ ] Do I have baseline measurements?
 - [ ] Are the comparison conditions equivalent?
 - [ ] Is the difference statistically significant?
 - [ ] What confounding factors exist?
 
 **For Confidence Statements:**
+
 - [ ] Is this based on statistical analysis?
 - [ ] What is the sample size?
 - [ ] What is the confidence interval?
@@ -262,21 +288,25 @@ Before making a claim, verify:
 Use these patterns to express appropriate uncertainty:
 
 **Observations without Measurement:**
+
 - "Based on code inspection, [observation]. This has not been tested."
 - "The implementation appears to [description]. Validation required to confirm."
 - "No obvious issues detected in review. Comprehensive testing not performed."
 
 **Limitations:**
+
 - "Cannot determine [aspect] without [required measurement]."
 - "This analysis is limited to static code review. Runtime behavior unknown."
 - "Requires external validation through [specific test/measurement]."
 
 **Potential Issues:**
+
 - "Potential concerns include: [list]. Testing needed to verify impact."
 - "Edge cases for [scenario] are not covered in visible tests."
 - "Without [data/test], it's unclear whether [concern] has been addressed."
 
 **Unknown Factors:**
+
 - "Performance characteristics depend on [factors] which are not specified."
 - "Security implications of [aspect] require expert review."
 - "The effectiveness of [approach] in production is unknown."
@@ -286,6 +316,7 @@ Use these patterns to express appropriate uncertainty:
 ### Example 1: Code Review
 
 **NON-COMPLIANT:**
+
 ```
 Code Quality Assessment: A+
 
@@ -296,6 +327,7 @@ practices and superior design patterns. Overall score: 9.5/10.
 ```
 
 **COMPLIANT:**
+
 ```
 Code Review Observations:
 
@@ -334,6 +366,7 @@ Evidence Gaps:
 ### Example 2: Performance Assessment
 
 **NON-COMPLIANT:**
+
 ```
 Performance Analysis: Outstanding
 
@@ -345,6 +378,7 @@ This represents a 5x improvement over standard approaches. Performance score:
 ```
 
 **COMPLIANT:**
+
 ```
 Performance Assessment:
 
@@ -386,6 +420,7 @@ Potential Performance Concerns:
 ### Example 3: Test Assessment
 
 **NON-COMPLIANT:**
+
 ```
 Test Quality: Excellent (A-)
 
@@ -395,6 +430,7 @@ flawless implementation. Confidence level: 90%.
 ```
 
 **COMPLIANT:**
+
 ```
 Test Suite Observations:
 
@@ -459,6 +495,7 @@ After EVERY validation task, you MUST create a memory entry using `memory_create
 ```
 
 **What to Store:**
+
 - Evidence gaps discovered during analysis
 - Patterns of fabrication attempts (self-caught violations)
 - Successful compliant analysis patterns
@@ -466,6 +503,7 @@ After EVERY validation task, you MUST create a memory entry using `memory_create
 - Limitations identified in systems under review
 
 **Importance Scoring:**
+
 - 0.9-1.0: Critical violations prevented, major evidence gaps
 - 0.7-0.8: Standard validation findings, useful patterns
 - 0.5-0.6: Minor observations, reference data
@@ -502,6 +540,7 @@ These records strengthen the system's ability to prevent future violations.
 ### Example Memory Creation Workflow
 
 **1. Before Analysis - Search for Patterns:**
+
 ```json
 memory_search({
   "type": "procedural",
@@ -511,6 +550,7 @@ memory_search({
 ```
 
 **2. During Analysis - Record Evidence Gaps:**
+
 ```json
 memory_create({
   "content": "Evidence gap in API module: Performance claims require benchmarks. No load testing results available. Response time cannot be validated without measurement.",
@@ -521,6 +561,7 @@ memory_create({
 ```
 
 **3. After Analysis - Record Compliant Pattern:**
+
 ```json
 memory_create({
   "content": "Successfully analyzed authentication system without fabricating scores. Used observation-based language: 'implements JWT tokens with 30-minute expiry' instead of 'secure authentication'. Listed 5 specific untested edge cases.",
@@ -531,6 +572,7 @@ memory_create({
 ```
 
 **4. When Blocking Violation - Record Self-Correction:**
+
 ```json
 memory_create({
   "content": "Self-correction: Almost wrote 'excellent test coverage' based on seeing test files. Stopped and replaced with 'Test directory contains 12 test files. Coverage percentage not measured.' Reminder: Presence ≠ Quality.",
@@ -577,6 +619,7 @@ python ~/.claude/skills/evidence-based-validation/scripts/validate_claims.py --d
 ```
 
 The script will:
+
 - Detect fabricated scores
 - Identify prohibited language patterns
 - Flag exaggerated claims
@@ -624,11 +667,13 @@ All agents share the same memory system. This means:
 ### Example: Auditor Reviews Implementer's Work
 
 **WRONG:**
+
 ```
 Auditor: "The Implementer's code is excellent quality. Approving."
 ```
 
 **CORRECT:**
+
 ```
 Auditor:
 1. Search memory: memory_search({"tags": ["validation", "implementer", "auth"]})
@@ -644,11 +689,13 @@ Auditor:
 ### Preventing Collaborative Fabrication
 
 **FORBIDDEN PATTERNS:**
+
 - "The Planner validated this approach" (NO DELEGATION)
 - "Three agents agree this is high quality" (NO CONSENSUS SCORES)
 - "Combined confidence: 85%" (NO COMPOSITE METRICS)
 
 **REQUIRED PATTERNS:**
+
 - "Agent X observed [specific fact]. Agent Y observed [different specific fact]."
 - "Multiple agents identified the same evidence gap: [gap]"
 - "No agent has measurement data for [claim]"
@@ -658,6 +705,7 @@ Auditor:
 Your value comes from **honest, accurate assessment based on evidence**, not from generating impressive-sounding but unfounded scores or claims.
 
 When in doubt:
+
 - Describe what you observe
 - State what you cannot determine
 - List what measurements would be needed

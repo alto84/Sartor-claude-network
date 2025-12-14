@@ -58,6 +58,7 @@ ${formatHealthStatus(health.components)}
 ```
 
 **Key points**:
+
 - No required parameters
 - Aggregates data from multiple sources
 - Formats output as readable text
@@ -159,6 +160,7 @@ async function handleSearch(args: any): Promise<any> {
 ```
 
 **Key points**:
+
 - Complex nested parameters
 - Optional parameters with defaults
 - Input validation with Zod
@@ -263,6 +265,7 @@ async function handleLaunchAgent(args: any): Promise<any> {
 ```
 
 **Key points**:
+
 - Process lifecycle management
 - Asynchronous initialization
 - State tracking
@@ -365,6 +368,7 @@ ${analysis.topFindings.map((f: any, i: number) =>
 ```
 
 **Key points**:
+
 - Multi-step workflow
 - Type-specific processing
 - Data aggregation
@@ -402,7 +406,9 @@ function validateTypes(args: any, schema: Record<string, string>): void {
 ```typescript
 function validateEnum(value: any, allowedValues: string[], fieldName: string): void {
   if (!allowedValues.includes(value)) {
-    throw new Error(`Invalid ${fieldName}: '${value}'. Must be one of: ${allowedValues.join(', ')}`);
+    throw new Error(
+      `Invalid ${fieldName}: '${value}'. Must be one of: ${allowedValues.join(', ')}`
+    );
   }
 }
 ```
@@ -464,10 +470,12 @@ function validateEnum(value: any, allowedValues: string[], fieldName: string): v
 
 ```typescript
 {
-  content: [{
-    type: 'text',
-    text: JSON.stringify({ result: 'success', data: processedData }, null, 2)
-  }]
+  content: [
+    {
+      type: 'text',
+      text: JSON.stringify({ result: 'success', data: processedData }, null, 2),
+    },
+  ];
 }
 ```
 
@@ -475,10 +483,12 @@ function validateEnum(value: any, allowedValues: string[], fieldName: string): v
 
 ```typescript
 {
-  content: [{
-    type: 'text',
-    text: formatAsMarkdown(data)
-  }]
+  content: [
+    {
+      type: 'text',
+      text: formatAsMarkdown(data),
+    },
+  ];
 }
 ```
 
@@ -486,17 +496,23 @@ function validateEnum(value: any, allowedValues: string[], fieldName: string): v
 
 ```typescript
 {
-  content: [{
-    type: 'text',
-    text: JSON.stringify({
-      success: true,
-      data: results,
-      metadata: {
-        count: results.length,
-        timestamp: new Date().toISOString(),
-        cached: fromCache
-      }
-    }, null, 2)
-  }]
+  content: [
+    {
+      type: 'text',
+      text: JSON.stringify(
+        {
+          success: true,
+          data: results,
+          metadata: {
+            count: results.length,
+            timestamp: new Date().toISOString(),
+            cached: fromCache,
+          },
+        },
+        null,
+        2
+      ),
+    },
+  ];
 }
 ```

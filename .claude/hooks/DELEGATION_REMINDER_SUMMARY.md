@@ -11,6 +11,7 @@ A subtle reminder system that prompts the orchestrator to delegate work to subag
 A bash script that runs **before** the orchestrator uses Edit, Write, or Grep tools.
 
 **Key Features:**
+
 - ✓ Detects substantial work (editing `src/`, `lib/`, `services/` files)
 - ✓ Shows reminder max once every 5 minutes (configurable cooldown)
 - ✓ Non-blocking (doesn't prevent work, just reminds)
@@ -20,6 +21,7 @@ A bash script that runs **before** the orchestrator uses Edit, Write, or Grep to
 ### 2. Enhanced Bootstrap File
 
 Updated `ORCHESTRATOR_BOOTSTRAP.md` with:
+
 - ⚠️ Visual warnings and emojis for attention
 - 🚨 Stronger "STOP BEFORE EVERY ACTION" language
 - Clear lists of what NOT to do vs what TO do
@@ -28,6 +30,7 @@ Updated `ORCHESTRATOR_BOOTSTRAP.md` with:
 ### 3. Configuration
 
 Updated `.claude/settings.json` to enable hooks on:
+
 - `preToolUse.Edit` - Before editing files
 - `preToolUse.Write` - Before creating files
 - `preToolUse.Grep` - Before searching (after 3+ searches)
@@ -70,26 +73,28 @@ When triggered, shows this in the terminal:
 ## Files Created/Modified
 
 ### Created:
-1. `/home/alton/Sartor-claude-network/.claude/hooks/delegation-reminder.sh` (executable)
+
+1. `/home/user/Sartor-claude-network/.claude/hooks/delegation-reminder.sh` (executable)
    - Main hook script with detection and reminder logic
 
-2. `/home/alton/Sartor-claude-network/.claude/hooks/DELEGATION_REMINDER.md`
+2. `/home/user/Sartor-claude-network/.claude/hooks/DELEGATION_REMINDER.md`
    - Comprehensive documentation with rationale, configuration, testing
 
-3. `/home/alton/Sartor-claude-network/.claude/hooks/DELEGATION_REMINDER_SUMMARY.md`
+3. `/home/user/Sartor-claude-network/.claude/hooks/DELEGATION_REMINDER_SUMMARY.md`
    - This summary file
 
 ### Modified:
-1. `/home/alton/Sartor-claude-network/.claude/settings.json`
-   - Added preToolUse hooks for Edit, Write, Grep
-   - Fixed all paths from `/home/user/` to `/home/alton/`
 
-2. `/home/alton/Sartor-claude-network/.claude/ORCHESTRATOR_BOOTSTRAP.md`
+1. `/home/user/Sartor-claude-network/.claude/settings.json`
+   - Added preToolUse hooks for Edit, Write, Grep
+   - Updated all paths to use `/home/user/Sartor-claude-network`
+
+2. `/home/user/Sartor-claude-network/.claude/ORCHESTRATOR_BOOTSTRAP.md`
    - Enhanced with stronger visual language
    - Added explicit "STOP BEFORE EVERY ACTION" section
    - Clear DO/DON'T lists
 
-3. `/home/alton/Sartor-claude-network/.claude/hooks/README.md`
+3. `/home/user/Sartor-claude-network/.claude/hooks/README.md`
    - Added delegation reminder to overview
    - Updated hook triggers list
    - Added delegation-reminder section with examples
@@ -108,6 +113,7 @@ All tests passed:
 ### Adjust Cooldown Period
 
 Edit `delegation-reminder.sh`:
+
 ```bash
 COOLDOWN_SECONDS=300  # Change to desired seconds (default: 5 minutes)
 ```
@@ -115,11 +121,12 @@ COOLDOWN_SECONDS=300  # Change to desired seconds (default: 5 minutes)
 ### Disable Reminder
 
 Edit `.claude/settings.json`:
+
 ```json
 {
   "preToolUse": {
     "Edit": {
-      "enabled": false  // Set to false
+      "enabled": false // Set to false
     }
   }
 }
@@ -140,11 +147,13 @@ Edit `is_substantial_work()` function in `delegation-reminder.sh` to add/remove 
 ## Expected Behavior Change
 
 **Before:**
+
 - Orchestrator forgets to delegate
 - Does implementation work directly
 - Researches and implements without subagents
 
 **After:**
+
 - Reminded every 5-10 minutes when attempting substantial work
 - Sees clear delegation guidance at decision points
 - More likely to spawn subagents for appropriate tasks
@@ -160,6 +169,7 @@ Edit `is_substantial_work()` function in `delegation-reminder.sh` to add/remove 
 ## Future Enhancements
 
 Possible improvements:
+
 1. Track override rate (when reminder is ignored)
 2. Adapt detection based on compliance patterns
 3. Integration with Task tool to suggest delegation templates
@@ -169,6 +179,7 @@ Possible improvements:
 ## Success Metrics
 
 To measure effectiveness, track:
+
 1. **Agent spawn rate**: Number of subagents spawned per session (should increase)
 2. **Direct work ratio**: % of edits done directly vs delegated (should decrease)
 3. **Reminder frequency**: How often shown per session (should stabilize at 2-4 per hour)
@@ -186,6 +197,7 @@ To measure effectiveness, track:
 The system is **already enabled** and will start working in the next Claude Code session.
 
 To test manually:
+
 ```bash
 # Show reminder (implementation file)
 ./.claude/hooks/delegation-reminder.sh "Edit" "src/memory/test.ts"

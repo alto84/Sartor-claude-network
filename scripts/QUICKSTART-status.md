@@ -17,6 +17,7 @@
 ## Common Patterns
 
 ### Initialize New Agent
+
 ```bash
 AGENT_ID="agent-planner-001"
 ./scripts/status-update.sh "$AGENT_ID" "role" "PLANNER"
@@ -26,6 +27,7 @@ AGENT_ID="agent-planner-001"
 ```
 
 ### Update Progress
+
 ```bash
 ./scripts/status-update.sh "$AGENT_ID" "progress" "0.25"  # 25% done
 ./scripts/status-update.sh "$AGENT_ID" "progress" "0.50"  # 50% done
@@ -33,6 +35,7 @@ AGENT_ID="agent-planner-001"
 ```
 
 ### Record Findings
+
 ```bash
 # Each call appends to findings array
 ./scripts/status-update.sh "$AGENT_ID" "findings" "Found optimal solution"
@@ -40,12 +43,14 @@ AGENT_ID="agent-planner-001"
 ```
 
 ### Mark Complete
+
 ```bash
 ./scripts/status-update.sh "$AGENT_ID" "status" "completed"
 ./scripts/status-update.sh "$AGENT_ID" "progress" "1.0"
 ```
 
 ### Handle Errors
+
 ```bash
 ./scripts/status-update.sh "$AGENT_ID" "status" "error"
 ./scripts/status-update.sh "$AGENT_ID" "errorMessage" "TypeScript compilation failed"
@@ -55,6 +60,7 @@ AGENT_ID="agent-planner-001"
 ## Status Values
 
 **Recommended status values:**
+
 - `active` - Currently working
 - `idle` - Waiting for work
 - `blocked` - Waiting for dependency
@@ -64,21 +70,25 @@ AGENT_ID="agent-planner-001"
 ## Monitoring
 
 ### Real-time Watch
+
 ```bash
 watch -n 1 ./scripts/status-read.sh
 ```
 
 ### Check Specific Agent
+
 ```bash
 cat data/agent-status/agent-planner-001.json
 ```
 
 ### Find Active Agents
+
 ```bash
 grep -l '"status": "active"' data/agent-status/*.json
 ```
 
 ### Coordination Example
+
 ```bash
 # Wait for planner to finish
 while ! grep -q '"status": "completed"' data/agent-status/agent-planner-001.json; do
@@ -104,11 +114,13 @@ done
 ## Troubleshooting
 
 **Stale lock files?**
+
 ```bash
 rm data/agent-status/*.lock
 ```
 
 **Invalid JSON?**
+
 ```bash
 for f in data/agent-status/*.json; do
   python3 -m json.tool "$f" > /dev/null 2>&1 || echo "Invalid: $f"
@@ -116,6 +128,7 @@ done
 ```
 
 **Clean everything?**
+
 ```bash
 rm -rf data/agent-status/*
 ```

@@ -7,11 +7,13 @@ This project now includes Firestore as an alternative hot-tier storage backend t
 ## Why Firestore?
 
 **Problem with Realtime Database:**
+
 - Requires manual creation in Firebase Console
 - User must explicitly enable it before it can be used
 - Blocks the entire Firebase integration until database is created
 
 **Advantages of Firestore:**
+
 - Often automatically enabled on new Firebase projects
 - No manual database creation required
 - Same authentication and service account credentials
@@ -20,18 +22,22 @@ This project now includes Firestore as an alternative hot-tier storage backend t
 ## Files Created
 
 ### 1. `/src/mcp/firestore-store.ts`
+
 A drop-in replacement for `firebase-store.ts` that uses Firestore instead of Realtime Database.
 
 **Key features:**
+
 - Implements the same interface as `FirebaseStore`
 - Uses Firestore collections instead of Realtime Database paths
 - Automatic fallback to file storage if Firestore unavailable
 - Same Memory interface and MemoryType enum
 
 ### 2. `/src/mcp/firestore-multi-tier-store.ts`
+
 A multi-tier store implementation using Firestore as the hot tier.
 
 **Key features:**
+
 - Hot tier: Firestore (<100ms)
 - Warm tier: File storage (<500ms)
 - Cold tier: GitHub (1-5s)
@@ -39,9 +45,11 @@ A multi-tier store implementation using Firestore as the hot tier.
 - Same interface as `MultiTierStore`
 
 ### 3. `/src/mcp/test-firestore.ts`
+
 A test script to verify Firestore connectivity.
 
 **Usage:**
+
 ```bash
 npx ts-node src/mcp/test-firestore.ts
 ```
@@ -117,9 +125,7 @@ import { FirestoreStore } from './firestore-store';
 
 const BACKEND = process.env.FIREBASE_BACKEND || 'firestore'; // 'firestore' or 'realtime'
 
-const store = BACKEND === 'firestore'
-  ? new FirestoreStore()
-  : new FirebaseStore();
+const store = BACKEND === 'firestore' ? new FirestoreStore() : new FirebaseStore();
 ```
 
 ## Configuration
@@ -131,11 +137,13 @@ Both Firestore and Realtime Database use the same configuration:
 One of the following (in priority order):
 
 1. **GOOGLE_APPLICATION_CREDENTIALS** environment variable:
+
    ```bash
    export GOOGLE_APPLICATION_CREDENTIALS="/path/to/service-account.json"
    ```
 
 2. **config/service-account.json** file:
+
    ```bash
    cp your-service-account.json config/service-account.json
    ```
@@ -148,11 +156,13 @@ One of the following (in priority order):
 ### Firestore vs Realtime Database
 
 **Firestore:**
+
 - No additional configuration needed
 - Automatically uses Firestore if service account has access
 - Check: Go to Firebase Console → Firestore Database
 
 **Realtime Database:**
+
 - Requires database URL configuration
 - Set via `FIREBASE_DATABASE_URL` environment variable OR
 - Configure in `config/firebase-config.json`:
@@ -173,6 +183,7 @@ npx ts-node src/mcp/test-firestore.ts
 ```
 
 This will:
+
 - Initialize Firestore
 - Create a test memory
 - Read it back
@@ -229,14 +240,10 @@ async function migrate() {
 
   // Copy to Firestore
   for (const mem of memories) {
-    await firestore.createMemory(
-      mem.content,
-      mem.type,
-      {
-        importance_score: mem.importance_score,
-        tags: mem.tags,
-      }
-    );
+    await firestore.createMemory(mem.content, mem.type, {
+      importance_score: mem.importance_score,
+      tags: mem.tags,
+    });
   }
 
   console.log(`Migrated ${memories.length} memories`);
@@ -270,11 +277,13 @@ class DualStore {
 ### Firestore Not Available
 
 **Symptoms:**
+
 ```
 [FirestoreStore] Firestore unavailable, falling back to file storage
 ```
 
 **Solutions:**
+
 1. Check Firebase Console → Firestore Database
 2. Enable Firestore if not already enabled
 3. Verify service account has Firestore permissions
@@ -283,11 +292,13 @@ class DualStore {
 ### Permission Denied
 
 **Symptoms:**
+
 ```
 Error: 7 PERMISSION_DENIED: Missing or insufficient permissions
 ```
 
 **Solutions:**
+
 1. Verify service account has "Cloud Datastore User" role
 2. Check Firestore security rules (should allow service account access)
 3. Regenerate service account key if needed
@@ -295,11 +306,13 @@ Error: 7 PERMISSION_DENIED: Missing or insufficient permissions
 ### Network Issues
 
 **Symptoms:**
+
 ```
 Error: DEADLINE_EXCEEDED or UNAVAILABLE
 ```
 
 **Solutions:**
+
 1. Check internet connectivity
 2. Verify firewall allows connections to firestore.googleapis.com
 3. Check if behind a proxy (may need proxy configuration)
@@ -308,14 +321,14 @@ Error: DEADLINE_EXCEEDED or UNAVAILABLE
 
 ### Firestore vs Realtime Database
 
-| Metric | Realtime Database | Firestore |
-|--------|-------------------|-----------|
-| Read latency | 20-50ms | 30-60ms |
-| Write latency | 30-60ms | 40-80ms |
-| Query flexibility | Limited | Advanced |
-| Scalability | Good | Excellent |
-| Offline support | Yes | Yes |
-| Cost (small scale) | Similar | Similar |
+| Metric             | Realtime Database | Firestore |
+| ------------------ | ----------------- | --------- |
+| Read latency       | 20-50ms           | 30-60ms   |
+| Write latency      | 30-60ms           | 40-80ms   |
+| Query flexibility  | Limited           | Advanced  |
+| Scalability        | Good              | Excellent |
+| Offline support    | Yes               | Yes       |
+| Cost (small scale) | Similar           | Similar   |
 
 ### Optimization Tips
 

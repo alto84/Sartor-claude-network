@@ -18,6 +18,7 @@ This document designs the migration of Sartor-Claude-Network to leverage new Ant
 5. **Context Persistence** - Memory shared across session resumes
 
 **Key Benefits:**
+
 - Reduce orchestrator blocking time by 80-90%
 - Enable true parallel agent execution (current: sequential)
 - Replace brittle file-based coordination with session-based state
@@ -149,16 +150,16 @@ Benefits:
 
 ### Side-by-Side Comparison
 
-| Aspect | Current (File-Based) | New (Session-Based) |
-|--------|---------------------|---------------------|
-| **Agent Execution** | Sequential (one at a time) | Parallel (3-5 simultaneous) |
-| **Orchestrator** | Blocked during agent work | Non-blocking, monitors wake messages |
-| **State Tracking** | File-based (status-update.sh) | Session-based + file fallback |
-| **Context Persistence** | Lost on interruption | Retained via named sessions |
-| **Completion Signal** | Task tool return value | Wake message + session resume |
-| **Handoffs** | File-based JSON | Session + file hybrid |
-| **Recovery** | Manual restart from scratch | Session resume from checkpoint |
-| **Coordination Overhead** | High (file I/O, polling) | Low (session state, events) |
+| Aspect                    | Current (File-Based)          | New (Session-Based)                  |
+| ------------------------- | ----------------------------- | ------------------------------------ |
+| **Agent Execution**       | Sequential (one at a time)    | Parallel (3-5 simultaneous)          |
+| **Orchestrator**          | Blocked during agent work     | Non-blocking, monitors wake messages |
+| **State Tracking**        | File-based (status-update.sh) | Session-based + file fallback        |
+| **Context Persistence**   | Lost on interruption          | Retained via named sessions          |
+| **Completion Signal**     | Task tool return value        | Wake message + session resume        |
+| **Handoffs**              | File-based JSON               | Session + file hybrid                |
+| **Recovery**              | Manual restart from scratch   | Session resume from checkpoint       |
+| **Coordination Overhead** | High (file I/O, polling)      | Low (session state, events)          |
 
 ---
 
@@ -167,36 +168,41 @@ Benefits:
 ### Feature 1: Background Agents (run_in_background)
 
 **Anthropic Documentation:**
+
 > The Task tool now supports `run_in_background=true` parameter. When set, the task executes asynchronously and returns immediately, allowing the orchestrator to continue working.
 
 **Current Limitation:**
+
 ```typescript
 // Current: Orchestrator blocks
 const result = await Task({
-  prompt: "Implement feature X",
+  prompt: 'Implement feature X',
   // Blocks until complete
 });
 // Orchestrator idle during execution
 ```
 
 **New Capability:**
+
 ```typescript
 // New: Orchestrator continues working
 const backgroundTask = await Task({
-  prompt: "Implement feature X",
+  prompt: 'Implement feature X',
   run_in_background: true,
-  session_id: "implementer-001"
+  session_id: 'implementer-001',
 });
 // Returns immediately with session ID
 // Orchestrator can spawn more agents or do other work
 ```
 
 **Integration Points:**
+
 - `.claude/SPAWNING_TEMPLATE.md` - Add background execution pattern
 - `scripts/checkpoint.sh` - Track background agent checkpoints
 - New: `scripts/monitor-background-agents.sh` - Poll background task status
 
 **Migration Steps:**
+
 1. Update spawning template to include `run_in_background` option
 2. Modify orchestrator to track multiple in-flight background tasks
 3. Create monitoring loop for background agent status
@@ -209,23 +215,26 @@ const backgroundTask = await Task({
 ### Feature 2: Wake Messaging
 
 **Anthropic Documentation:**
+
 > Background agents can send "wake messages" to the orchestrator when they complete work. The orchestrator receives these messages asynchronously via a message queue.
 
 **Current Limitation:**
+
 - No notification mechanism when agent finishes
 - Orchestrator must poll status files or wait for Task return
 - No way to know which of N parallel agents completed first
 
 **New Capability:**
+
 ```typescript
 // Agent sends wake message on completion
 await sendWakeMessage({
-  session_id: "implementer-001",
-  status: "complete",
+  session_id: 'implementer-001',
+  status: 'complete',
   deliverables: {
-    files: ["/path/to/output.ts"],
-    handoff_id: "handoff-123"
-  }
+    files: ['/path/to/output.ts'],
+    handoff_id: 'handoff-123',
+  },
 });
 
 // Orchestrator receives message
@@ -236,11 +245,13 @@ orchestrator.onWakeMessage((message) => {
 ```
 
 **Integration Points:**
+
 - New: `src/coordination/wake-messaging.ts` - Wake message handling
 - `.claude/SPAWNING_TEMPLATE.md` - Agents must send wake message on completion
 - `scripts/status-update.sh` - Deprecated in favor of wake messages
 
 **Wake Message Format:**
+
 ```json
 {
   "session_id": "implementer-001",
@@ -258,6 +269,7 @@ orchestrator.onWakeMessage((message) => {
 ```
 
 **Migration Steps:**
+
 1. Create `wake-messaging.ts` module with message queue
 2. Update spawning template to require wake message on completion
 3. Add wake message handler to orchestrator bootstrap
@@ -270,31 +282,35 @@ orchestrator.onWakeMessage((message) => {
 ### Feature 3: Named Sessions
 
 **Anthropic Documentation:**
+
 > Sessions can now be assigned unique IDs and resumed later. Context is preserved across session suspend/resume cycles.
 
 **Current Limitation:**
+
 - Each Task invocation is stateless
 - No context recovery if agent interrupted
 - No way to resume partially completed work
 
 **New Capability:**
+
 ```typescript
 // Start session with named ID
 const session = await Task({
-  prompt: "Implement feature X",
-  session_id: "implementer-feature-x-001",
-  run_in_background: true
+  prompt: 'Implement feature X',
+  session_id: 'implementer-feature-x-001',
+  run_in_background: true,
 });
 
 // Later: Resume session if interrupted
 const resumed = await Task({
-  session_id: "implementer-feature-x-001",
-  action: "resume"
+  session_id: 'implementer-feature-x-001',
+  action: 'resume',
 });
 // Agent has full context from before interruption
 ```
 
 **Session Naming Convention:**
+
 ```
 <role>-<task-type>-<unique-id>
 
@@ -305,11 +321,13 @@ Examples:
 ```
 
 **Integration Points:**
+
 - Replace `data/agent-status/<agent-id>.json` with session-based tracking
 - `scripts/checkpoint.sh` - Associate checkpoints with session IDs
 - New: `scripts/session-manager.sh` - Create, list, resume sessions
 
 **Migration Steps:**
+
 1. Define session naming convention
 2. Create session manager utilities
 3. Update checkpoint.sh to tag with session_id
@@ -323,26 +341,27 @@ Examples:
 ### Feature 4: Parallel Execution
 
 **Anthropic Documentation:**
+
 > With background agents and wake messaging, orchestrators can spawn 3-5 subagents in parallel and synthesize results as they complete.
 
 **Current Limitation:**
+
 - Agents run sequentially (PLANNER → IMPLEMENTER → AUDITOR → CLEANER)
 - Total time = sum of agent times
 - Orchestrator idle during each agent's execution
 
 **New Capability:**
+
 ```typescript
 // Spawn parallel agents
 const sessions = await Promise.all([
-  Task({ prompt: "Audit security", session_id: "auditor-sec-001", run_in_background: true }),
-  Task({ prompt: "Audit performance", session_id: "auditor-perf-001", run_in_background: true }),
-  Task({ prompt: "Audit accessibility", session_id: "auditor-a11y-001", run_in_background: true })
+  Task({ prompt: 'Audit security', session_id: 'auditor-sec-001', run_in_background: true }),
+  Task({ prompt: 'Audit performance', session_id: 'auditor-perf-001', run_in_background: true }),
+  Task({ prompt: 'Audit accessibility', session_id: 'auditor-a11y-001', run_in_background: true }),
 ]);
 
 // Wait for wake messages from all three
-const results = await Promise.all(
-  sessions.map(s => waitForWakeMessage(s.session_id))
-);
+const results = await Promise.all(sessions.map((s) => waitForWakeMessage(s.session_id)));
 
 // Synthesize parallel results
 const synthesis = synthesizeAuditResults(results);
@@ -350,12 +369,13 @@ const synthesis = synthesizeAuditResults(results);
 
 **Parallelization Opportunities:**
 
-| Current Sequential Flow | New Parallel Flow |
-|------------------------|-------------------|
+| Current Sequential Flow                                  | New Parallel Flow                                                                                                        |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | PLANNER (90min) → IMPLEMENTER (120min) → AUDITOR (30min) | PLANNER (90min) → [IMPLEMENTER-1 (120min) ‖ IMPLEMENTER-2 (120min) ‖ IMPLEMENTER-3 (120min)] → AUDITOR-synthesis (15min) |
-| **Total: 240 min** | **Total: 225 min** (7% savings, but 3x work done) |
+| **Total: 240 min**                                       | **Total: 225 min** (7% savings, but 3x work done)                                                                        |
 
 **Better Example - Independent Tasks:**
+
 ```
 Current Sequential:
   Security Audit (60min) → Performance Audit (45min) → Accessibility Audit (30min)
@@ -367,12 +387,14 @@ New Parallel:
 ```
 
 **Integration Points:**
+
 - `.claude/SPAWNING_TEMPLATE.md` - Patterns for parallel agent spawning
 - New: `src/coordination/parallel-executor.ts` - Parallel task management
 - New: `src/coordination/result-synthesizer.ts` - Merge parallel outputs
 - Existing: `src/skills/multi-agent-orchestration.ts` - Already has parallel patterns!
 
 **Migration Steps:**
+
 1. Identify parallelizable tasks in current workflow
 2. Create parallel executor utility
 3. Update multi-agent-orchestration.ts to use background tasks
@@ -386,40 +408,46 @@ New Parallel:
 ### Feature 5: Context Persistence
 
 **Anthropic Documentation:**
+
 > Named sessions preserve conversation context across suspend/resume. Agents can be interrupted and resumed without losing context.
 
 **Current Limitation:**
+
 - Agent interrupted = start from scratch
 - No memory of prior conversation within Task invocation
 - Handoffs require complete context re-transmission
 
 **New Capability:**
+
 ```typescript
 // Session maintains context
 const session1 = await Task({
-  prompt: "Analyze this codebase structure",
-  session_id: "analyzer-001"
+  prompt: 'Analyze this codebase structure',
+  session_id: 'analyzer-001',
 });
 
 // Later: Session remembers prior analysis
 const session2 = await Task({
-  session_id: "analyzer-001",
-  prompt: "Now optimize the structure you analyzed"
+  session_id: 'analyzer-001',
+  prompt: 'Now optimize the structure you analyzed',
 });
 // Agent has context from session1, no need to re-analyze
 ```
 
 **Integration Points:**
+
 - `.claude/SPAWNING_TEMPLATE.md` - Session-based context patterns
 - `docs/COORDINATION_PROTOCOL.md` - Update handoff to leverage session context
 - Memory MCP - Session context can reference shared memories
 
 **Use Cases:**
+
 1. **Iterative Refinement:** Agent refines output across multiple Task calls
 2. **Interrupted Work:** Resume agent if orchestrator restarts
 3. **Handoff Continuity:** Receiving agent can query prior session context
 
 **Migration Steps:**
+
 1. Design session context strategy (what to persist)
 2. Update handoff protocol to include session_id references
 3. Create session context query utilities
@@ -436,6 +464,7 @@ const session2 = await Task({
 **Goal:** Infrastructure for background agents and wake messaging
 
 **Tasks:**
+
 1. Create `src/coordination/wake-messaging.ts`
    - Message queue for wake messages
    - Event handlers for completion notifications
@@ -456,17 +485,20 @@ const session2 = await Task({
    - Add session ID usage
 
 **Deliverables:**
+
 - `src/coordination/wake-messaging.ts` (with tests)
 - `src/coordination/session-manager.ts` (with tests)
 - `scripts/session-manager.sh`
 - Updated spawning template
 
 **Acceptance Criteria:**
+
 - Wake message queue handles 10+ messages without loss
 - Sessions can be created, listed, and resumed
 - Template includes clear background agent pattern
 
 **Risk Mitigation:**
+
 - Build with backward compatibility (file fallback)
 - Extensive unit tests for message queue
 - Manual testing with 2-3 test agents
@@ -478,6 +510,7 @@ const session2 = await Task({
 **Goal:** Enable 3-5 agents to run simultaneously
 
 **Tasks:**
+
 1. Create `src/coordination/parallel-executor.ts`
    - Spawn N background tasks with session IDs
    - Track in-flight tasks
@@ -501,18 +534,21 @@ const session2 = await Task({
    - 5 agents (max parallel capacity test)
 
 **Deliverables:**
+
 - `src/coordination/parallel-executor.ts` (with tests)
 - `src/coordination/result-synthesizer.ts` (with tests)
 - Updated multi-agent-orchestration.ts
 - Parallel execution test suite
 
 **Acceptance Criteria:**
+
 - 3 agents execute in parallel without blocking orchestrator
 - Result synthesis preserves conflicts
 - Orchestrator handles agent failures gracefully
 - 80%+ reduction in orchestrator idle time
 
 **Risk Mitigation:**
+
 - Start with 2 agents, scale incrementally
 - Extensive conflict handling tests
 - Timeout mechanisms for stuck agents
@@ -525,6 +561,7 @@ const session2 = await Task({
 **Goal:** Leverage session context for improved handoffs
 
 **Tasks:**
+
 1. Update `docs/COORDINATION_PROTOCOL.md`
    - Add session-based handoff pattern
    - Include session_id in handoff JSON
@@ -544,18 +581,21 @@ const session2 = await Task({
    - AUDITOR → CLEANER (resume for issue context)
 
 **Deliverables:**
+
 - Updated COORDINATION_PROTOCOL.md
 - Updated checkpoint.sh
 - `scripts/session-handoff.sh`
 - Migrated handoff workflows
 
 **Acceptance Criteria:**
+
 - Handoffs include session_id references
 - Receiving agents can resume prior session context
 - Context retention reduces handoff overhead by 50%+
 - Backward compatible with file-based handoffs
 
 **Risk Mitigation:**
+
 - Hybrid mode: session + file handoffs
 - Gradual migration (one handoff type at a time)
 - Fallback to file-based if session unavailable
@@ -567,6 +607,7 @@ const session2 = await Task({
 **Goal:** Validate new architecture in production workflows
 
 **Tasks:**
+
 1. Run end-to-end workflow with new architecture:
    - PLANNER (background) → 3x IMPLEMENTER (parallel) → AUDITOR (synthesis) → CLEANER
    - Measure time savings, orchestrator availability, context retention
@@ -589,18 +630,21 @@ const session2 = await Task({
    - Create migration guide for future workflows
 
 **Deliverables:**
+
 - End-to-end test results
 - Stress test report
 - Performance benchmark comparison
 - Updated documentation
 
 **Acceptance Criteria:**
+
 - 70%+ reduction in workflow time for parallelizable tasks
 - 80%+ reduction in orchestrator idle time
 - Zero data loss in wake message queue
 - 100% backward compatibility maintained
 
 **Risk Mitigation:**
+
 - Run in parallel with legacy system (gradual cutover)
 - Keep file-based fallback for 1-2 sprints
 - Monitor for regressions
@@ -664,8 +708,9 @@ const session2 = await Task({
 9. **`src/coordination/__tests__/session-manager.test.ts`**
 10. **`src/coordination/__tests__/parallel-executor.test.ts`**
 11. **`src/coordination/__tests__/result-synthesizer.test.ts`**
-   - Comprehensive test suites (80%+ coverage)
-   - ~1000-1500 lines total
+
+- Comprehensive test suites (80%+ coverage)
+- ~1000-1500 lines total
 
 #### Documentation
 
@@ -734,14 +779,14 @@ const session2 = await Task({
 
 ### File Change Summary
 
-| Category | New Files | Modified Files | Deprecated Files |
-|----------|-----------|----------------|------------------|
-| **Code** | 4 coordination modules | multi-agent-orchestration.ts, index.ts | - |
-| **Scripts** | 3 scripts | checkpoint.sh, status-update.sh | status-update.sh (future) |
-| **Docs** | 3 guides | 4 docs (SPAWNING_TEMPLATE, COORDINATION_PROTOCOL, etc.) | - |
-| **Tests** | 4 test suites | - | - |
-| **Data** | - | - | agent-status/*.json (future) |
-| **Total** | **14 new** | **8 modified** | **2 deprecated** |
+| Category    | New Files              | Modified Files                                          | Deprecated Files              |
+| ----------- | ---------------------- | ------------------------------------------------------- | ----------------------------- |
+| **Code**    | 4 coordination modules | multi-agent-orchestration.ts, index.ts                  | -                             |
+| **Scripts** | 3 scripts              | checkpoint.sh, status-update.sh                         | status-update.sh (future)     |
+| **Docs**    | 3 guides               | 4 docs (SPAWNING_TEMPLATE, COORDINATION_PROTOCOL, etc.) | -                             |
+| **Tests**   | 4 test suites          | -                                                       | -                             |
+| **Data**    | -                      | -                                                       | agent-status/\*.json (future) |
+| **Total**   | **14 new**             | **8 modified**                                          | **2 deprecated**              |
 
 ---
 
@@ -757,12 +802,14 @@ const session2 = await Task({
 **Impact:** High (agents complete but orchestrator never notified)
 
 **Mitigation:**
+
 1. Persistent message queue (write to disk before processing)
 2. Message acknowledgment system (agent retries if no ack)
 3. Fallback to file polling if no wake message received within timeout
 4. Extensive load testing (100+ messages)
 
 **Indicators:**
+
 - Agents stuck in "complete" state but orchestrator not notified
 - Missing wake messages in queue
 - Orchestrator timeout events
@@ -777,12 +824,14 @@ const session2 = await Task({
 **Impact:** Medium (workflow blocked, requires manual intervention)
 
 **Mitigation:**
+
 1. Preserve conflicts (don't force consensus) - already in multi-agent-orchestration.ts
 2. Confidence penalties for high-conflict results
 3. Escalation to human orchestrator if conflict unresolvable
 4. Test with intentionally conflicting agent outputs
 
 **Indicators:**
+
 - High conflict counts in synthesis results
 - Low aggregate confidence scores (<0.5)
 - Frequent escalations to human
@@ -797,12 +846,14 @@ const session2 = await Task({
 **Impact:** High (agent loses all context, must restart)
 
 **Mitigation:**
+
 1. Checkpoint session state frequently (every 5 minutes)
 2. Versioned session state (can roll back)
 3. Graceful degradation: if session corrupt, fallback to file-based handoff
 4. Session state validation before resume
 
 **Indicators:**
+
 - Session resume errors
 - Context loss reports from agents
 - Checkpoints missing or incomplete
@@ -819,12 +870,14 @@ const session2 = await Task({
 **Impact:** Medium (legacy workflows fail)
 
 **Mitigation:**
+
 1. Hybrid mode: support both session-based and file-based
 2. Feature flags for gradual rollout
 3. Extensive regression testing
 4. Maintain file-based fallback for 2-3 sprints
 
 **Indicators:**
+
 - Legacy workflow failures
 - File-based handoffs not processed
 - Scripts expecting old format fail
@@ -839,12 +892,14 @@ const session2 = await Task({
 **Impact:** Medium (orchestrator unresponsive)
 
 **Mitigation:**
+
 1. Rate limiting on wake message processing
 2. Queue with bounded size (max 100 messages)
 3. Load shedding if queue full (reject new agents)
 4. Monitoring and alerting for queue depth
 
 **Indicators:**
+
 - Wake message queue depth >50
 - Orchestrator response time >5s
 - Agent spawn rejections
@@ -861,11 +916,13 @@ const session2 = await Task({
 **Impact:** Low-Medium (agents interfere with each other)
 
 **Mitigation:**
+
 1. UUID-based session IDs (collision probability ~0)
 2. Session ID registry (check before assignment)
 3. Validation on session creation
 
 **Indicators:**
+
 - Session ID collision errors
 - Agents resuming wrong session context
 
@@ -879,11 +936,13 @@ const session2 = await Task({
 **Impact:** Low (slower agent startup)
 
 **Mitigation:**
+
 1. Context size limits (max 100KB)
 2. Context pruning after N turns
 3. Selective context (only relevant parts)
 
 **Indicators:**
+
 - Session resume time >10s
 - Large session state files (>100KB)
 
@@ -891,15 +950,15 @@ const session2 = await Task({
 
 ### Risk Summary Table
 
-| Risk | Likelihood | Impact | Severity | Mitigation Priority |
-|------|-----------|--------|----------|---------------------|
-| Wake Message Queue Reliability | Medium | High | **HIGH** | P0 |
-| Parallel Agent Result Conflicts | Medium | Medium | **MEDIUM** | P1 |
-| Session State Corruption | Low-Med | High | **MEDIUM** | P1 |
-| Backward Compatibility Breakage | Low | Medium | **LOW-MED** | P2 |
-| Orchestrator Overwhelm | Medium | Medium | **MEDIUM** | P2 |
-| Session ID Collisions | Very Low | Low-Med | **LOW** | P3 |
-| Context Bloat | Low | Low | **LOW** | P3 |
+| Risk                            | Likelihood | Impact  | Severity    | Mitigation Priority |
+| ------------------------------- | ---------- | ------- | ----------- | ------------------- |
+| Wake Message Queue Reliability  | Medium     | High    | **HIGH**    | P0                  |
+| Parallel Agent Result Conflicts | Medium     | Medium  | **MEDIUM**  | P1                  |
+| Session State Corruption        | Low-Med    | High    | **MEDIUM**  | P1                  |
+| Backward Compatibility Breakage | Low        | Medium  | **LOW-MED** | P2                  |
+| Orchestrator Overwhelm          | Medium     | Medium  | **MEDIUM**  | P2                  |
+| Session ID Collisions           | Very Low   | Low-Med | **LOW**     | P3                  |
+| Context Bloat                   | Low        | Low     | **LOW**     | P3                  |
 
 ---
 
@@ -910,6 +969,7 @@ const session2 = await Task({
 #### Wake Messaging (`wake-messaging.test.ts`)
 
 **Test Cases:**
+
 1. Message enqueue/dequeue
 2. Event emission on message arrival
 3. Message validation (schema)
@@ -925,6 +985,7 @@ const session2 = await Task({
 #### Session Manager (`session-manager.test.ts`)
 
 **Test Cases:**
+
 1. Session ID generation (uniqueness)
 2. Session creation with metadata
 3. Session state save/load
@@ -941,6 +1002,7 @@ const session2 = await Task({
 #### Parallel Executor (`parallel-executor.test.ts`)
 
 **Test Cases:**
+
 1. Spawn 2 background tasks
 2. Spawn 5 background tasks (max capacity)
 3. Track in-flight tasks
@@ -956,6 +1018,7 @@ const session2 = await Task({
 #### Result Synthesizer (`result-synthesizer.test.ts`)
 
 **Test Cases:**
+
 1. Merge 2 agent outputs (no conflicts)
 2. Merge 5 agent outputs (max capacity)
 3. Detect and preserve conflicts
@@ -975,6 +1038,7 @@ const session2 = await Task({
 **Scenario:** PLANNER → 3x IMPLEMENTER (parallel) → AUDITOR (synthesis)
 
 **Steps:**
+
 1. Spawn PLANNER (background)
 2. Wait for PLANNER wake message
 3. Spawn 3x IMPLEMENTER (parallel, background)
@@ -984,6 +1048,7 @@ const session2 = await Task({
 7. Wait for AUDITOR wake message
 
 **Assertions:**
+
 - Total time < sequential time (135min vs 240min target)
 - All wake messages received
 - Synthesis includes insights from all 3 implementers
@@ -997,6 +1062,7 @@ const session2 = await Task({
 **Scenario:** Agent interrupted mid-work, resumed with context
 
 **Steps:**
+
 1. Spawn IMPLEMENTER (background, session_id="impl-001")
 2. Wait 30s (partial work)
 3. Kill agent process (simulate crash)
@@ -1004,6 +1070,7 @@ const session2 = await Task({
 5. Agent completes work with prior context
 
 **Assertions:**
+
 - Session resume succeeds
 - Agent has context from before interruption
 - Work continues from checkpoint (not restarted)
@@ -1015,11 +1082,13 @@ const session2 = await Task({
 **Scenario:** 10 agents complete simultaneously, send wake messages
 
 **Steps:**
+
 1. Spawn 10 background tasks
 2. All complete within 1s window
 3. Orchestrator receives all 10 wake messages
 
 **Assertions:**
+
 - All 10 messages received (zero loss)
 - Messages processed in FIFO order
 - Orchestrator responsive (<1s per message)
@@ -1033,12 +1102,14 @@ const session2 = await Task({
 **Workflow:** Security Audit + Performance Audit + Accessibility Audit
 
 **Current (Sequential):**
+
 ```
 Security (60min) → Performance (45min) → Accessibility (30min)
 Total: 135 min
 ```
 
 **New (Parallel):**
+
 ```
 Security (60min) ‖ Performance (45min) ‖ Accessibility (30min)
 Total: 60 min (44% time savings)
@@ -1051,12 +1122,14 @@ Total: 60 min (44% time savings)
 #### Benchmark 2: Orchestrator Idle Time
 
 **Current (Blocked):**
+
 ```
 Orchestrator idle during each agent execution
 Idle time: ~90% of total workflow time
 ```
 
 **New (Non-Blocking):**
+
 ```
 Orchestrator available during agent execution
 Idle time: <10% of total workflow time
@@ -1069,12 +1142,14 @@ Idle time: <10% of total workflow time
 #### Benchmark 3: Handoff Overhead
 
 **Current (File-Based):**
+
 ```
 Handoff time: 30s (write file + poll + read)
 Context transmission: Full context re-sent
 ```
 
 **New (Session-Based):**
+
 ```
 Handoff time: 5s (wake message + session reference)
 Context transmission: Session ID reference (context persisted)
@@ -1173,13 +1248,13 @@ npm run orchestrator:restart
 
 ### Rollback Impact Analysis
 
-| Aspect | Impact | Recovery Time |
-|--------|--------|---------------|
-| **In-Flight Work** | Lost (sessions abandoned) | Manual restart required |
-| **Completed Work** | Preserved (handoff files intact) | No recovery needed |
-| **Orchestrator State** | Reset | 5 min (restart) |
-| **Agent Sessions** | Abandoned | Manual cleanup |
-| **Performance** | Back to baseline (sequential) | N/A |
+| Aspect                 | Impact                           | Recovery Time           |
+| ---------------------- | -------------------------------- | ----------------------- |
+| **In-Flight Work**     | Lost (sessions abandoned)        | Manual restart required |
+| **Completed Work**     | Preserved (handoff files intact) | No recovery needed      |
+| **Orchestrator State** | Reset                            | 5 min (restart)         |
+| **Agent Sessions**     | Abandoned                        | Manual cleanup          |
+| **Performance**        | Back to baseline (sequential)    | N/A                     |
 
 ---
 
@@ -1215,6 +1290,7 @@ npm run orchestrator:restart
 **Target:** 150 minutes (38% reduction) for workflows with parallelizable tasks
 
 **Measurement:**
+
 ```bash
 # Before migration
 time ./scripts/run-full-workflow.sh
@@ -1238,6 +1314,7 @@ time ./scripts/run-full-workflow.sh
 **Target:** <10% (orchestrator available, monitoring agents)
 
 **Measurement:**
+
 ```typescript
 // Track orchestrator state
 const idleTime = totalTime - (timeSpentMonitoring + timeSpentSynthesizing);
@@ -1257,6 +1334,7 @@ const idlePercentage = (idleTime / totalTime) * 100;
 **Target:** 95%+ (sessions resume with full context)
 
 **Measurement:**
+
 ```typescript
 // Track session resumes
 const successfulResumes = sessionsResumedWithContext;
@@ -1277,6 +1355,7 @@ const retentionRate = (successfulResumes / totalResumes) * 100;
 **Target:** 99.9%+ (zero loss acceptable)
 
 **Measurement:**
+
 ```typescript
 const deliveryRate = (messagesReceived / messagesSent) * 100;
 ```
@@ -1292,6 +1371,7 @@ const deliveryRate = (messagesReceived / messagesSent) * 100;
 **Target:** 5 (max parallel capacity)
 
 **Measurement:**
+
 ```typescript
 const maxConcurrent = Math.max(...parallelAgentCounts);
 ```
@@ -1307,6 +1387,7 @@ const maxConcurrent = Math.max(...parallelAgentCounts);
 **Target:** <15s per handoff (50% reduction)
 
 **Measurement:**
+
 ```typescript
 const handoffTime = handoffComplete - handoffStart;
 ```
@@ -1320,6 +1401,7 @@ const handoffTime = handoffComplete - handoffStart;
 **Target:** 100% (zero breakage)
 
 **Measurement:**
+
 ```bash
 # Run legacy test suite
 npm run test:legacy
@@ -1330,15 +1412,15 @@ npm run test:legacy
 
 ### Success Criteria Summary
 
-| Metric | Current | Target | Success Threshold |
-|--------|---------|--------|-------------------|
-| **Workflow Time** | 240 min | 150 min | <180 min (25% reduction) |
-| **Orchestrator Idle** | 90% | <10% | <20% (78% reduction) |
-| **Context Retention** | 0% | 95%+ | >90% |
-| **Wake Message Delivery** | N/A | 99.9% | >99% |
-| **Parallel Capacity** | 1 | 5 | ≥3 |
-| **Handoff Overhead** | 30s | <15s | <20s (33% reduction) |
-| **Backward Compatibility** | N/A | 100% | 100% |
+| Metric                     | Current | Target  | Success Threshold        |
+| -------------------------- | ------- | ------- | ------------------------ |
+| **Workflow Time**          | 240 min | 150 min | <180 min (25% reduction) |
+| **Orchestrator Idle**      | 90%     | <10%    | <20% (78% reduction)     |
+| **Context Retention**      | 0%      | 95%+    | >90%                     |
+| **Wake Message Delivery**  | N/A     | 99.9%   | >99%                     |
+| **Parallel Capacity**      | 1       | 5       | ≥3                       |
+| **Handoff Overhead**       | 30s     | <15s    | <20s (33% reduction)     |
+| **Backward Compatibility** | N/A     | 100%    | 100%                     |
 
 **Overall Success:** 5 out of 7 metrics meet success threshold
 
@@ -1389,6 +1471,7 @@ npm run test:legacy
 This architecture uplift plan leverages Anthropic's December 2025 features to transform Sartor-Claude-Network from a sequential, file-based coordination system to a parallel, session-based, non-blocking architecture.
 
 **Key Improvements:**
+
 1. **80-90% reduction** in orchestrator idle time (non-blocking execution)
 2. **30-50% reduction** in workflow time (parallel agent execution)
 3. **100% context retention** across session interruptions (session persistence)
@@ -1400,12 +1483,14 @@ This architecture uplift plan leverages Anthropic's December 2025 features to tr
 **Risk Level:** Medium (mitigated with extensive testing, rollback plan, hybrid mode)
 
 **Next Steps:**
+
 1. Review and approve this design
 2. Begin Phase 1 implementation (foundation)
 3. Validate each phase before proceeding
 4. Measure success metrics throughout
 
 **Questions for Review:**
+
 - Is the 3-week timeline realistic?
 - Are the success criteria appropriate?
 - Should we start with 2-3 agents before scaling to 5?
