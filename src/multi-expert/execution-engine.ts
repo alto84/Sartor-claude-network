@@ -76,6 +76,23 @@ export interface ExpertResult {
 }
 
 /**
+ * Early termination decision
+ */
+export interface EarlyTerminationDecision {
+  /** Whether to terminate early */
+  shouldTerminate: boolean;
+
+  /** Reason for termination */
+  reason: string;
+
+  /** Confidence in the decision (0-1) */
+  confidence: number;
+
+  /** Number of iterations saved */
+  iterationsSaved: number;
+}
+
+/**
  * Execution trace for debugging and learning
  */
 export interface ExecutionTrace {
@@ -93,6 +110,9 @@ export interface ExecutionTrace {
 
   /** Timeout errors encountered */
   timeoutErrors: number;
+
+  /** Early termination decision (if applicable) */
+  earlyTermination?: EarlyTerminationDecision;
 }
 
 /**
@@ -364,6 +384,22 @@ export class ExecutionEngine {
             bestResult = result;
           }
 
+          // Evaluate early termination
+          const terminationDecision = this.evaluateEarlyTermination(
+            result,
+            iteration,
+            trace.iterations,
+            config
+          );
+
+          if (terminationDecision.shouldTerminate && iteration >= config.minIterations) {
+            trace.earlyTermination = terminationDecision;
+            console.log(
+              `[ExecutionEngine] ${terminationDecision.reason} (saved ${terminationDecision.iterationsSaved} iterations)`
+            );
+            return { ...result, iterations: iteration };
+          }
+
           // Continue to next iteration
           break;
         } catch (error) {
@@ -454,6 +490,94 @@ export class ExecutionEngine {
       scoreStdDev,
       agreementLevel,
     };
+  }
+
+  /**
+   * Evaluate whether to terminate early based on multiple criteria
+   */
+  private evaluateEarlyTermination(
+    result: { score: number; confidence: number },
+    iteration: number,
+    history: IterationTrace[],
+    config: ExpertConfig
+  ): EarlyTerminationDecision {
+    const checks = {
+      // 1. Confidence threshold met
+      highConfidence: result.confidence >= 0.9,
+
+      // 2. Score plateau (no improvement in last iteration)
+      plateau:
+        iteration > 1 &&
+        history.length > 0 &&
+        Math.abs(result.score - history[history.length - 1].score) < 0.01,
+
+      // 3. Already at satisfactory level
+      satisfactory: result.score >= 80,
+
+      // 4. Diminishing returns (improvement rate declining)
+      diminishingReturns: this.detectDiminishingReturns(history),
+    };
+
+    const passedChecks = Object.values(checks).filter(Boolean).length;
+    const shouldTerminate = passedChecks >= 2; // 2+ checks triggers termination
+
+    return {
+      shouldTerminate,
+      reason: this.explainTermination(checks),
+      confidence: passedChecks / Object.keys(checks).length,
+      iterationsSaved: shouldTerminate ? config.maxIterations - iteration : 0,
+    };
+  }
+
+  /**
+   * Detect diminishing returns in iteration history
+   */
+  private detectDiminishingReturns(history: IterationTrace[]): boolean {
+    if (history.length < 3) return false;
+
+    // Look at last 3 iterations
+    const recent = history.slice(-3);
+    const improvements = [];
+
+    for (let i = 1; i < recent.length; i++) {
+      improvements.push(recent[i].score - recent[i - 1].score);
+    }
+
+    // Check if improvements are declining
+    const firstImprovement = improvements[0];
+    const lastImprovement = improvements[improvements.length - 1];
+
+    // Diminishing returns: each improvement is smaller than the last
+    return (
+      improvements.every((imp) => imp >= 0) && // All positive (no regression)
+      lastImprovement < firstImprovement * 0.5 // Latest improvement is less than half of first
+    );
+  }
+
+  /**
+   * Explain termination decision with human-readable reason
+   */
+  private explainTermination(checks: Record<string, boolean>): string {
+    const reasons: string[] = [];
+
+    if (checks.highConfidence) {
+      reasons.push('high confidence (≥0.9)');
+    }
+    if (checks.plateau) {
+      reasons.push('score plateau (no improvement)');
+    }
+    if (checks.satisfactory) {
+      reasons.push('satisfactory score (≥80)');
+    }
+    if (checks.diminishingReturns) {
+      reasons.push('diminishing returns detected');
+    }
+
+    if (reasons.length === 0) {
+      return 'continuing iteration';
+    }
+
+    return `Terminating early: ${reasons.join(', ')}`;
   }
 
   /**
