@@ -3,12 +3,12 @@
   "hooks": {
     "sessionStart": [
       {
-        "script": "/home/alton/Sartor-claude-network/.claude/hooks/inject-roadmap.sh",
+        "script": "./.claude/hooks/inject-roadmap.sh",
         "description": "Inject roadmap context into every agent session for awareness",
         "enabled": true
       },
       {
-        "script": "/home/alton/Sartor-claude-network/.claude/hooks/swarm-summary.sh",
+        "script": "./.claude/hooks/swarm-summary.sh",
         "description": "Display swarm status summary at session start",
         "enabled": true,
         "blocking": false
@@ -17,14 +17,14 @@
     "postToolUse": {
       "Edit": [
         {
-          "script": "/home/alton/Sartor-claude-network/.claude/hooks/quality-check.sh",
+          "script": "./.claude/hooks/quality-check.sh",
           "args": ["${file_path}"],
           "description": "Validate TypeScript compilation and evidence-based principles after edits",
           "enabled": true,
           "blocking": false
         },
         {
-          "script": "/home/alton/Sartor-claude-network/.claude/hooks/record-completion.sh",
+          "script": "./.claude/hooks/record-completion.sh",
           "args": ["Edit", "${file_path}"],
           "description": "Detect and record task completion for self-improvement",
           "enabled": true,
@@ -33,14 +33,14 @@
       ],
       "Write": [
         {
-          "script": "/home/alton/Sartor-claude-network/.claude/hooks/quality-check.sh",
+          "script": "./.claude/hooks/quality-check.sh",
           "args": ["${file_path}"],
           "description": "Validate TypeScript compilation and evidence-based principles after writes",
           "enabled": true,
           "blocking": false
         },
         {
-          "script": "/home/alton/Sartor-claude-network/.claude/hooks/record-completion.sh",
+          "script": "./.claude/hooks/record-completion.sh",
           "args": ["Write", "${file_path}"],
           "description": "Detect and record task completion for self-improvement",
           "enabled": true,
@@ -49,20 +49,20 @@
       ],
       "Bash": [
         {
-          "script": "/home/user/Sartor-claude-network/.claude/hooks/record-completion.sh",
+          "script": "./.claude/hooks/record-completion.sh",
           "args": ["Bash", "${command}"],
           "description": "Detect and record task completion from bash commands",
           "enabled": true,
           "blocking": false
         },
         {
-          "script": "/home/alton/Sartor-claude-network/.claude/hooks/wake-monitor.sh",
+          "script": "./.claude/hooks/wake-monitor.sh",
           "description": "Check for wake messages from background agents",
           "enabled": true,
           "blocking": false
         },
         {
-          "script": "/home/alton/Sartor-claude-network/.claude/hooks/agent-health.sh",
+          "script": "./.claude/hooks/agent-health.sh",
           "description": "Monitor agent health via checkpoints",
           "enabled": true,
           "blocking": false
@@ -70,13 +70,13 @@
       ],
       "Task": [
         {
-          "script": "/home/alton/Sartor-claude-network/.claude/hooks/wake-monitor.sh",
+          "script": "./.claude/hooks/wake-monitor.sh",
           "description": "Check for wake messages after spawning tasks",
           "enabled": true,
           "blocking": false
         },
         {
-          "script": "/home/alton/Sartor-claude-network/.claude/hooks/agent-health.sh",
+          "script": "./.claude/hooks/agent-health.sh",
           "description": "Check agent health after task operations",
           "enabled": true,
           "blocking": false
@@ -85,28 +85,28 @@
     },
     "preToolUse": {
       "Bash": {
-        "script": "/home/alton/Sartor-claude-network/.claude/hooks/safety-check.sh",
+        "script": "./.claude/hooks/safety-check.sh",
         "args": ["${command}"],
         "description": "Block dangerous bash operations before execution",
         "enabled": true,
         "blocking": true
       },
       "Edit": {
-        "script": "/home/alton/.claude/hooks/delegation-enforcer.sh",
+        "script": "./.claude/hooks/delegation-enforcer.sh",
         "args": ["Edit", "${file_path}"],
         "description": "BLOCK orchestrator from editing implementation files - must delegate",
         "enabled": true,
         "blocking": true
       },
       "Write": {
-        "script": "/home/alton/.claude/hooks/delegation-enforcer.sh",
+        "script": "./.claude/hooks/delegation-enforcer.sh",
         "args": ["Write", "${file_path}"],
         "description": "BLOCK orchestrator from writing implementation files - must delegate",
         "enabled": true,
         "blocking": true
       },
       "Grep": {
-        "script": "/home/alton/Sartor-claude-network/.claude/hooks/delegation-reminder.sh",
+        "script": "./.claude/hooks/delegation-reminder.sh",
         "args": ["Grep", "${pattern}"],
         "description": "Remind orchestrator to delegate after multiple searches",
         "enabled": true,

@@ -4,6 +4,8 @@
  */
 
 import { MemoryType, MemoryStatus } from './memory-schema';
+import * as fs from 'fs';
+import * as path from 'path';
 
 /** Minimal Memory interface for the system */
 export interface Memory {
@@ -30,18 +32,74 @@ export interface MemorySystemConfig {
   hotTtl?: number;
   promotionThreshold?: number;
   demotionThreshold?: number;
+  persistencePath?: string;
+}
+
+interface MemoryFileFormat {
+  version: string;
+  created_at: string;
+  memories: Record<string, Memory>;
 }
 
 export class MemorySystem {
   private memories: Map<string, Memory> = new Map();
   private config: Required<MemorySystemConfig>;
+  private persistencePath: string;
 
   constructor(config: MemorySystemConfig = {}) {
     this.config = {
       hotTtl: config.hotTtl ?? 3600000,
       promotionThreshold: config.promotionThreshold ?? 5,
       demotionThreshold: config.demotionThreshold ?? 0.2,
+      persistencePath: config.persistencePath ?? path.join(process.cwd(), 'data', 'memories.json'),
     };
+    this.persistencePath = this.config.persistencePath;
+    this.loadFromDisk();
+  }
+
+  private loadFromDisk(): void {
+    try {
+      if (fs.existsSync(this.persistencePath)) {
+        const data = fs.readFileSync(this.persistencePath, 'utf8');
+        const parsed: MemoryFileFormat = JSON.parse(data);
+
+        // Load memories from the file format
+        if (parsed.memories) {
+          for (const [id, memory] of Object.entries(parsed.memories)) {
+            this.memories.set(id, memory);
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load memories from disk:', error);
+      // Continue with empty memory map if load fails
+    }
+  }
+
+  private saveToDisk(): void {
+    try {
+      // Ensure directory exists
+      const dir = path.dirname(this.persistencePath);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+
+      // Convert Map to object for JSON serialization
+      const memoriesObj: Record<string, Memory> = {};
+      for (const [id, memory] of this.memories.entries()) {
+        memoriesObj[id] = memory;
+      }
+
+      const fileData: MemoryFileFormat = {
+        version: '1.0.0',
+        created_at: new Date().toISOString(),
+        memories: memoriesObj,
+      };
+
+      fs.writeFileSync(this.persistencePath, JSON.stringify(fileData, null, 2), 'utf8');
+    } catch (error) {
+      console.error('Failed to save memories to disk:', error);
+    }
   }
 
   async createMemory(
@@ -69,6 +127,7 @@ export class MemorySystem {
     };
 
     this.memories.set(id, memory);
+    this.saveToDisk();
     return memory;
   }
 
@@ -85,7 +144,11 @@ export class MemorySystem {
   }
 
   deleteMemory(id: string): boolean {
-    return this.memories.delete(id);
+    const result = this.memories.delete(id);
+    if (result) {
+      this.saveToDisk();
+    }
+    return result;
   }
 
   async updateMemory(id: string, updates: Partial<Memory>): Promise<Memory | null> {
@@ -94,6 +157,7 @@ export class MemorySystem {
 
     Object.assign(memory, updates);
     memory.last_accessed = new Date().toISOString();
+    this.saveToDisk();
     return memory;
   }
 
@@ -150,6 +214,7 @@ export class MemorySystem {
       }
     }
 
+    this.saveToDisk();
     return { decay_updated, consolidations };
   }
 

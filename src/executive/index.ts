@@ -27,3 +27,12 @@ export {
   type Pattern,
   type LearningStats,
 } from './learning-pipeline';
+
+// Session Progress Tracker
+export {
+  SessionProgressTracker,
+  createProgressTracker,
+  type SessionProgress,
+  type TaskRecord,
+  type PatternLearned,
+} from './session-progress';

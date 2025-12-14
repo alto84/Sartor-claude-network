@@ -146,10 +146,12 @@ $ ./.claude/hooks/delegation-enforcer.sh Edit ".claude/settings.json"
 - `~/.claude/hooks/delegation-enforcer.sh` - User-level enforcer script
 
 ### Project-Level
-- `/home/alton/Sartor-claude-network/.claude/settings.json` - Project hooks configuration
-- `/home/alton/Sartor-claude-network/.claude/hooks/delegation-enforcer.sh` - Project enforcer script
-- `/home/alton/Sartor-claude-network/.claude/hooks/delegation-reminder.sh` - Old reminder (kept for Grep hook)
-- `/home/alton/Sartor-claude-network/.claude/SPAWNING_TEMPLATE.md` - Updated with subagent instructions
+- `./.claude/settings.json` - Project hooks configuration (uses relative paths)
+- `./.claude/hooks/delegation-enforcer.sh` - Project enforcer script
+- `./.claude/hooks/delegation-reminder.sh` - Old reminder (kept for Grep hook)
+- `./.claude/SPAWNING_TEMPLATE.md` - Updated with subagent instructions
+
+**Note:** Project-level settings use relative paths (e.g., `./.claude/hooks/delegation-enforcer.sh`) to ensure portability across different user environments and deployment locations.
 
 ---
 
@@ -266,6 +268,87 @@ export CLAUDE_AGENT_ROLE=TESTING
   "blocking": true
 }
 ```
+
+---
+
+## Verifying Hooks Are Working
+
+### Path Configuration Check
+
+Ensure all hook paths in `.claude/settings.json` use relative paths or correct absolute paths:
+
+```bash
+# Check that paths are correct
+grep -E "script.*hooks" .claude/settings.json
+
+# Should show relative paths like:
+# "script": "./.claude/hooks/delegation-enforcer.sh"
+# NOT absolute paths with hardcoded usernames like:
+# "script": "/home/alton/..."
+```
+
+**Common Issue:** If hooks reference non-existent paths (e.g., `/home/alton/` when running as `/home/user/`), enforcement will silently fail.
+
+**Solution:** Use relative paths starting with `./` for portability across environments.
+
+### Manual Hook Testing
+
+Test the delegation-enforcer.sh script directly:
+
+```bash
+# Test 1: Orchestrator blocked from editing src/ files
+./.claude/hooks/delegation-enforcer.sh Edit "src/test.ts"
+# Expected: Exit code 2 with blocking message
+
+# Test 2: Subagent allowed to edit src/ files
+CLAUDE_AGENT_ROLE=IMPLEMENTER ./.claude/hooks/delegation-enforcer.sh Edit "src/test.ts"
+# Expected: Exit code 0 (silent success)
+
+# Test 3: Orchestrator allowed to edit config files
+./.claude/hooks/delegation-enforcer.sh Edit ".claude/settings.json"
+# Expected: Exit code 0 (silent success)
+
+# Test 4: All implementation directories blocked
+./.claude/hooks/delegation-enforcer.sh Write "src/memory/new.ts"    # Exit 2
+./.claude/hooks/delegation-enforcer.sh Edit "lib/utils.ts"          # Exit 2
+./.claude/hooks/delegation-enforcer.sh Write "services/api.ts"      # Exit 2
+
+# Test 5: Documentation allowed
+./.claude/hooks/delegation-enforcer.sh Edit "README.md"             # Exit 0
+```
+
+### Hook Script Existence
+
+Verify all referenced hook scripts exist and are executable:
+
+```bash
+# List all hook scripts
+ls -la .claude/hooks/*.sh
+
+# All scripts should have execute permissions (rwxr-xr-x)
+# If not, make them executable:
+chmod +x .claude/hooks/*.sh
+```
+
+### Hook Trigger Verification
+
+To verify hooks are being triggered during actual Claude Code usage:
+
+1. **Add logging to hooks** (temporary debugging):
+   ```bash
+   # Add to top of delegation-enforcer.sh
+   echo "[HOOK] delegation-enforcer.sh called with: $1 $2" >> /tmp/hook-debug.log
+   ```
+
+2. **Monitor hook execution**:
+   ```bash
+   # In another terminal
+   tail -f /tmp/hook-debug.log
+   ```
+
+3. **Trigger the hook** by attempting an Edit operation in Claude Code
+
+4. **Remove logging** after verification
 
 ---
 

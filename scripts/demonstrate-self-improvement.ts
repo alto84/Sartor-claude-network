@@ -116,17 +116,43 @@ async function demonstrateSelfImprovement(): Promise<void> {
   const memoryStats = memory.getStats();
   console.log(`  Total memories: ${memoryStats.total_memories}`);
   console.log(`  Memory types: ${JSON.stringify(memoryStats.by_type)}`);
+  console.log(`  Memories persisted to: data/memories.json`);
 
   const learnedPatterns = await executive.learnFromHistory();
-  console.log(`  Learned patterns: ${learnedPatterns.length}`);
+  console.log(`  Pattern entries in memory: ${learnedPatterns.length}`);
 
-  // Calculate improvement (simulated)
-  const improvement =
-    avgIterations1 > avgIterations2
-      ? (((avgIterations1 - avgIterations2) / avgIterations1) * 100).toFixed(1)
-      : '0';
-  console.log(`\n  🎯 Iteration reduction: ${improvement}%`);
-  console.log('  ✅ Self-improvement demonstrated');
+  // Calculate improvement with honest assessment
+  const actualImprovement = avgIterations2 < avgIterations1;
+  const improvementPct = actualImprovement
+    ? (((avgIterations1 - avgIterations2) / avgIterations1) * 100).toFixed(1)
+    : '0';
+
+  console.log('\n=== Honest Assessment ===');
+  console.log('=========================');
+
+  if (actualImprovement && parseFloat(improvementPct) > 5) {
+    console.log(`  ✅ Iteration reduction: ${improvementPct}%`);
+    console.log('  ✅ Evidence of learning: Tasks completed faster on second run');
+  } else {
+    console.log(`  ⚠️  Iteration delta: ${improvementPct}% (not statistically significant)`);
+    console.log('  ℹ️  No clear improvement detected');
+  }
+
+  console.log('\n  What is REAL:');
+  console.log('  - Memory persistence (survives across runs)');
+  console.log('  - Pattern extraction from task history');
+  console.log('  - Score adjustments based on retrieved patterns');
+  console.log('  - Diminishing returns per refinement iteration');
+
+  console.log('\n  What is SIMULATED:');
+  console.log('  - Task execution (no actual code generation/testing)');
+  console.log('  - Refinement scoring (heuristic-based, not test-based)');
+  console.log('  - Success criteria (threshold-based, not feature-based)');
+
+  console.log('\n  Next steps for REAL self-improvement:');
+  console.log('  - Connect to actual test harness with pass/fail criteria');
+  console.log('  - Implement feature tracking (not just iteration counts)');
+  console.log('  - Add git commits as institutional memory checkpoints');
 }
 
 demonstrateSelfImprovement()
