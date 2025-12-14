@@ -51,7 +51,7 @@ When starting a session in this project:
 │   Hot (<100ms)  │  Warm (<500ms)  │  Cold (<2s)    │
 ├─────────────────────────────────────────────────────┤
 │                 Skills Library                       │
-│  (7 skills with self-auditing + refinement)         │
+│  (11 skills with self-auditing + refinement)        │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -69,7 +69,7 @@ The subagent system provides infrastructure for spawning, managing, and coordina
 
 ```typescript
 import {
-  createSubagent,
+  quickBootstrap,
   createRegistry,
   createMessageBus,
   AgentRole,
@@ -77,7 +77,7 @@ import {
 } from './subagent';
 
 // Bootstrap a subagent
-const subagent = await createSubagent({
+const context = await quickBootstrap({
   role: AgentRole.IMPLEMENTER,
   name: 'code-writer',
   capabilities: ['typescript', 'testing']
@@ -85,8 +85,8 @@ const subagent = await createSubagent({
 
 // Register and track agents
 const registry = createRegistry();
-registry.registerSubagent(subagent.id, { role: subagent.role });
-registry.heartbeat(subagent.id, AgentStatus.ACTIVE);
+registry.registerAgent(context.agentId, { role: AgentRole.IMPLEMENTER });
+registry.sendHeartbeat(context.agentId, AgentStatus.ACTIVE);
 ```
 
 ## Coordination System
