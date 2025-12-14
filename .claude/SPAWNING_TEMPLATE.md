@@ -4,20 +4,24 @@ Use this template when delegating to subagents via the Task tool.
 
 ## CRITICAL: Subagent Exemption from Delegation Enforcement
 
-**BEFORE doing ANY Edit/Write operations, subagents MUST set their role:**
+**BEFORE doing ANY Edit/Write operations, subagents MUST register as active:**
 
 ```bash
-export CLAUDE_AGENT_ROLE=[PLANNER|IMPLEMENTER|AUDITOR|CLEANER]
+# Create marker file to identify as subagent (persists across shell commands)
+mkdir -p .claude && echo "ROLE=$(date +%s)" > .claude/.subagent-active
 ```
 
-This environment variable exempts subagents from the orchestrator's delegation enforcement hooks, allowing them to edit src/ files directly. Without this variable set, the preToolUse hooks will BLOCK all Edit/Write operations on implementation files.
+This marker file exempts subagents from the orchestrator's delegation enforcement hooks, allowing them to edit src/ files directly. Without this marker, the preToolUse hooks will BLOCK all Edit/Write operations on implementation files.
+
+**Why marker file instead of environment variable?**
+Environment variables set with `export` do NOT persist across separate bash commands in Claude Code. Each command runs in a fresh shell. The marker file persists on disk.
 
 **Implementation Pattern:**
-1. First action in your session: `export CLAUDE_AGENT_ROLE=<your-role>`
-2. Verify it's set: `echo $CLAUDE_AGENT_ROLE`
-3. Then proceed with file operations
+1. First action in your session: `mkdir -p .claude && echo "ROLE=$(date +%s)" > .claude/.subagent-active`
+2. Proceed with file operations
+3. Marker expires after 5 minutes of inactivity (re-run the command for long sessions)
 
-The delegation enforcer script (`~/.claude/hooks/delegation-enforcer.sh`) checks for this variable and exits with code 0 (allow) if set, or code 2 (block) if not set.
+The delegation enforcer script (`.claude/hooks/delegation-enforcer.sh`) checks for this marker and exits with code 0 (allow) if found and recent, or code 2 (block) if not.
 
 ---
 

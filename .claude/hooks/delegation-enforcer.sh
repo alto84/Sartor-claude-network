@@ -14,10 +14,30 @@ TOOL_CONTEXT="${2:-}"
 
 # Function to check if this is a subagent (exempted from enforcement)
 is_subagent() {
-    # Subagents have CLAUDE_AGENT_ROLE set in their environment
+    # Method 1: Environment variable (works if set in same shell)
     if [[ -n "${CLAUDE_AGENT_ROLE:-}" ]]; then
         return 0  # Is subagent
     fi
+
+    # Method 2: Marker file (works across shell invocations)
+    # Subagents create this file as their first action
+    local marker_file="${REPO_ROOT}/.claude/.subagent-active"
+    if [[ -f "$marker_file" ]]; then
+        # Check if marker is recent (within last 5 minutes)
+        local now=$(date +%s)
+        local file_time=$(stat -c %Y "$marker_file" 2>/dev/null || echo 0)
+        local age=$((now - file_time))
+        if [[ $age -lt 300 ]]; then
+            return 0  # Is active subagent
+        fi
+    fi
+
+    # Method 3: Check for Task-spawned context indicators
+    # Claude Code Task tool may set specific variables
+    if [[ -n "${CLAUDE_TASK_ID:-}" ]] || [[ -n "${ANTHROPIC_AGENT_ID:-}" ]]; then
+        return 0  # Is subagent in Task context
+    fi
+
     return 1  # Is orchestrator
 }
 
