@@ -1592,3 +1592,21 @@ Coordinator status:
 ⏰ Agent full-cyc timed out after 120s
 ❌ Agent full-cyc failed (exit null) in 122.5s
 📊 Active: 0 | Completed: 17 | Failed: 22
+
+--- 2025-12-15 22:48:39 ---
+Active agents: 0
+Requests pending: 1
+Results completed: 100
+Coordinator status:
+📊 Active: 2 | Completed: 17 | Failed: 22
+✅ Agent quick-im completed in 34.6s
+📊 Active: 1 | Completed: 18 | Failed: 22
+
+--- 2025-12-15 22:50:44 ---
+Active agents: 0
+Requests pending: 1
+Results completed: 101
+Coordinator status:
+📥 Request: validato (validator)
+🚀 Spawning agent: validator (validato...)
+📊 Active: 3 | Completed: 18 | Failed: 23
