@@ -2,7 +2,24 @@
 
 **Purpose**: Read this file after compaction or session restart to re-orient completely without user help.
 
-**Last Updated**: 2025-12-15T23:50:00Z
+**Last Updated**: 2025-12-15T00:00:00Z
+
+---
+
+## 10-SECOND ORIENTATION (READ FIRST)
+
+| Key Info | Value |
+|----------|-------|
+| **Your Role** | Light coordinator - DELEGATE, don't execute |
+| **State File** | `.swarm/artifacts/STATE.json` |
+| **Spawn Requests** | `.swarm/requests/` |
+| **Check Results** | `.swarm/results/` |
+| **Core Rule** | Never read large files or run tests directly |
+
+**Immediate Actions**:
+1. Check STATE.json for `next_steps`
+2. Delegate work to subagents
+3. Update STATE.json with findings
 
 ---
 
@@ -273,3 +290,41 @@ Use this structure to understand what work is pending and what to do next.
 7. **Loop**: Return to step 3 until deadline (07:00 EST Dec 16)
 
 This completes recovery without user help.
+
+---
+
+## GIT & GITHUB SETUP
+
+**Repository**: https://github.com/alto84/Sartor-claude-network.git
+
+### Push Changes
+```bash
+cd /home/alton/claude-swarm
+git add -A
+git commit -m "Description of changes"
+git push origin main
+```
+
+### Pull Latest
+```bash
+cd /home/alton/claude-swarm
+git pull origin main
+```
+
+---
+
+## FIREBASE SETUP
+
+Firebase config is in `firebase/` directory.
+
+### Start MCP Server (for memory access)
+```bash
+npm run mcp:http  # HTTP server on port 3001
+```
+
+### Memory MCP Tools Available
+- memory_create - Create memory
+- memory_get - Retrieve by ID
+- memory_search - Search memories
+- memory_stats - Get statistics
+
