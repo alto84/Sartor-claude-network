@@ -1,0 +1,45 @@
+{
+  "agentRole": "mission-orchestrator",
+  "task": {
+    "objective": "Execute and manage a multi-phase mission from the mission file",
+    "context": {
+      "mission_file": ".swarm/instructions/EXAMPLE_OVERNIGHT_MISSION.json",
+      "results_dir": ".swarm/results/",
+      "artifacts_dir": ".swarm/artifacts/"
+    },
+    "requirements": [
+      "STEP 1: Read the mission file and understand current state",
+      "STEP 2: Check mission status - if 'ready', update to 'active' and set started_at",
+      "STEP 3: Identify current_phase and check if dependencies are met",
+      "STEP 4: For current phase, spawn required worker agents",
+      "STEP 5: Check results_dir for completed agent work from current phase",
+      "STEP 6: If phase complete, update mission file progress and advance phase",
+      "STEP 7: If all phases complete, set status='completed' and stop",
+      "STEP 8: CRITICAL: 3 minutes before your timeout, spawn successor orchestrator",
+      "STEP 9: Write orchestrator log to artifacts/orchestrator-log.txt"
+    ],
+    "spawn_template_for_workers": {
+      "agentRole": "{phase.agent_role}",
+      "parentRequestId": "$SWARM_REQUEST_ID",
+      "task": {
+        "objective": "Execute phase {phase.phase_id}: {phase.name}",
+        "context": {
+          "phase": "{phase object}",
+          "mission_id": "{mission_id}"
+        },
+        "requirements": "{phase.requirements}"
+      }
+    },
+    "spawn_template_for_successor": {
+      "agentRole": "mission-orchestrator",
+      "parentRequestId": "$SWARM_REQUEST_ID",
+      "task": {
+        "objective": "Continue managing mission (iteration N+1)",
+        "context": {
+          "mission_file": ".swarm/instructions/EXAMPLE_OVERNIGHT_MISSION.json",
+          "iteration": "N+1"
+        }
+      }
+    }
+  }
+}

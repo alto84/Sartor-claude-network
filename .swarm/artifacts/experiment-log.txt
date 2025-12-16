@@ -1,0 +1,1594 @@
+=== Experiment Monitor Started Mon Dec 15 16:47:06 EST 2025 ===
+
+--- 2025-12-15 16:47:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 6
+Coordinator status:
+⏰ Agent req-1765 timed out after 600s
+❌ Agent req-1765 failed (exit null) in 600.0s
+📊 Active: 0 | Completed: 0 | Failed: 3
+
+--- 2025-12-15 16:49:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 6
+Coordinator status:
+🔍 Waiting for agent requests...
+   Drop JSON files in: .swarm/requests/
+
+
+--- 2025-12-15 16:51:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 6
+Coordinator status:
+📥 Request: req-1765 (codebase-documenter)
+🚀 Spawning agent: codebase-documenter (req-1765...)
+📊 Active: 2 | Completed: 0 | Failed: 0
+
+--- 2025-12-15 16:53:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 6
+Coordinator status:
+📥 Request: req-1765 (codebase-documenter)
+🚀 Spawning agent: codebase-documenter (req-1765...)
+📊 Active: 2 | Completed: 0 | Failed: 0
+
+--- 2025-12-15 16:55:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 6
+Coordinator status:
+📥 Request: req-1765 (codebase-documenter)
+🚀 Spawning agent: codebase-documenter (req-1765...)
+📊 Active: 2 | Completed: 0 | Failed: 0
+
+--- 2025-12-15 16:57:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 6
+Coordinator status:
+📥 Request: req-1765 (codebase-documenter)
+🚀 Spawning agent: codebase-documenter (req-1765...)
+📊 Active: 2 | Completed: 0 | Failed: 0
+
+--- 2025-12-15 16:59:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 6
+Coordinator status:
+📥 Request: req-1765 (codebase-documenter)
+🚀 Spawning agent: codebase-documenter (req-1765...)
+📊 Active: 2 | Completed: 0 | Failed: 0
+
+--- 2025-12-15 17:01:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 6
+Coordinator status:
+⏳ Queue full (3/3), will retry...
+📥 Request: req-1765 (subagent-spawned-test)
+⏳ Queue full (3/3), will retry...
+
+--- 2025-12-15 17:03:06 ---
+Active agents: 0
+Requests pending: 1
+Results completed: 6
+Coordinator status:
+⏳ Queue full (3/3), will retry...
+📥 Request: req-1765 (subagent-spawned-test)
+⏳ Queue full (3/3), will retry...
+
+--- 2025-12-15 17:05:06 ---
+Active agents: 1
+Requests pending: 0
+Results completed: 6
+Coordinator status:
+⏳ Queue full (3/3), will retry...
+📥 Request: req-1765 (subagent-spawned-test)
+⏳ Queue full (3/3), will retry...
+
+--- 2025-12-15 17:07:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 6
+Coordinator status:
+⏳ Queue full (3/3), will retry...
+📥 Request: req-1765 (subagent-spawned-test)
+⏳ Queue full (3/3), will retry...
+
+--- 2025-12-15 17:09:06 ---
+Active agents: 0
+Requests pending: 1
+Results completed: 7
+Coordinator status:
+📊 Active: 1 | Completed: 0 | Failed: 0
+✅ Agent req-1765 completed in 11.1s
+📊 Active: 0 | Completed: 1 | Failed: 0
+
+--- 2025-12-15 17:11:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:13:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:15:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:17:06 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:19:07 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:21:08 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:23:08 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:25:09 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:27:11 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:29:13 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:31:15 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:33:17 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📊 Active: 1 | Completed: 2 | Failed: 0
+✅ Agent req-1765 completed in 14.1s
+📊 Active: 0 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:35:18 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 9
+Coordinator status:
+📥 Request: req-1765 (research-synthesizer)
+🚀 Spawning agent: research-synthesizer (req-1765...)
+📊 Active: 2 | Completed: 3 | Failed: 0
+
+--- 2025-12-15 17:37:20 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 10
+Coordinator status:
+📥 Request: req-1765 (mission-coordinator)
+🚀 Spawning agent: mission-coordinator (req-1765...)
+📊 Active: 2 | Completed: 4 | Failed: 0
+
+--- 2025-12-15 17:39:22 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 11
+Coordinator status:
+⏰ Agent req-1765 timed out after 300s
+❌ Agent req-1765 failed (exit null) in 303.8s
+📊 Active: 1 | Completed: 4 | Failed: 1
+
+--- 2025-12-15 17:41:24 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 12
+Coordinator status:
+📊 Active: 2 | Completed: 4 | Failed: 1
+✅ Agent req-1765 completed in 220.7s
+📊 Active: 1 | Completed: 5 | Failed: 1
+
+--- 2025-12-15 17:43:26 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 12
+Coordinator status:
+📊 Active: 2 | Completed: 4 | Failed: 1
+✅ Agent req-1765 completed in 220.7s
+📊 Active: 1 | Completed: 5 | Failed: 1
+
+--- 2025-12-15 17:45:28 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 14
+Coordinator status:
+📊 Active: 2 | Completed: 5 | Failed: 2
+✅ Agent req-1765 completed in 87.5s
+📊 Active: 1 | Completed: 6 | Failed: 2
+
+--- 2025-12-15 17:47:29 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 16
+Coordinator status:
+📊 Active: 2 | Completed: 6 | Failed: 2
+✅ Agent req-1765 completed in 49.0s
+📊 Active: 1 | Completed: 7 | Failed: 2
+
+--- 2025-12-15 17:49:32 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 17
+Coordinator status:
+📊 Active: 2 | Completed: 7 | Failed: 2
+✅ Agent req-1765 completed in 200.9s
+📊 Active: 1 | Completed: 8 | Failed: 2
+
+--- 2025-12-15 17:51:34 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 18
+Coordinator status:
+📊 Active: 2 | Completed: 8 | Failed: 2
+✅ Agent req-1765 completed in 166.7s
+📊 Active: 1 | Completed: 9 | Failed: 2
+
+--- 2025-12-15 17:53:36 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 18
+Coordinator status:
+📊 Active: 2 | Completed: 8 | Failed: 2
+✅ Agent req-1765 completed in 166.7s
+📊 Active: 1 | Completed: 9 | Failed: 2
+
+--- 2025-12-15 17:55:38 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 19
+Coordinator status:
+📊 Active: 2 | Completed: 9 | Failed: 2
+✅ Agent req-1765 completed in 231.4s
+📊 Active: 1 | Completed: 10 | Failed: 2
+
+--- 2025-12-15 17:57:40 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 20
+Coordinator status:
+📊 Active: 2 | Completed: 10 | Failed: 2
+✅ Agent req-1765 completed in 150.7s
+📊 Active: 1 | Completed: 11 | Failed: 2
+
+--- 2025-12-15 17:59:42 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 21
+Coordinator status:
+📊 Active: 2 | Completed: 11 | Failed: 2
+✅ Agent req-1765 completed in 153.7s
+📊 Active: 1 | Completed: 12 | Failed: 2
+
+--- 2025-12-15 18:01:44 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 22
+Coordinator status:
+📊 Active: 2 | Completed: 12 | Failed: 2
+✅ Agent req-1765 completed in 173.0s
+📊 Active: 1 | Completed: 13 | Failed: 2
+
+--- 2025-12-15 18:03:46 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 22
+Coordinator status:
+📊 Active: 2 | Completed: 12 | Failed: 2
+✅ Agent req-1765 completed in 173.0s
+📊 Active: 1 | Completed: 13 | Failed: 2
+
+--- 2025-12-15 18:05:48 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 23
+Coordinator status:
+📊 Active: 2 | Completed: 13 | Failed: 2
+✅ Agent req-1765 completed in 174.6s
+📊 Active: 1 | Completed: 14 | Failed: 2
+
+--- 2025-12-15 18:07:50 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 23
+Coordinator status:
+📥 Request: req-1765 (mission-coordinator)
+🚀 Spawning agent: mission-coordinator (req-1765...)
+📊 Active: 2 | Completed: 14 | Failed: 2
+
+--- 2025-12-15 18:09:53 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 24
+Coordinator status:
+📊 Active: 2 | Completed: 14 | Failed: 2
+✅ Agent req-1765 completed in 231.3s
+📊 Active: 1 | Completed: 15 | Failed: 2
+
+--- 2025-12-15 18:11:55 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 24
+Coordinator status:
+📊 Active: 2 | Completed: 14 | Failed: 2
+✅ Agent req-1765 completed in 231.3s
+📊 Active: 1 | Completed: 15 | Failed: 2
+
+--- 2025-12-15 18:13:58 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 25
+Coordinator status:
+⏰ Agent req-1765 timed out after 300s
+❌ Agent req-1765 failed (exit null) in 305.7s
+📊 Active: 0 | Completed: 15 | Failed: 3
+
+--- 2025-12-15 18:16:00 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 26
+Coordinator status:
+📊 Active: 1 | Completed: 15 | Failed: 3
+✅ Agent req-gene completed in 19.8s
+📊 Active: 0 | Completed: 16 | Failed: 3
+
+--- 2025-12-15 18:18:02 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 26
+Coordinator status:
+📥 Request: req-gene (mission-coordinator)
+🚀 Spawning agent: mission-coordinator (req-gene...)
+📊 Active: 1 | Completed: 16 | Failed: 3
+
+--- 2025-12-15 18:20:04 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 27
+Coordinator status:
+📊 Active: 1 | Completed: 16 | Failed: 3
+✅ Agent req-gene completed in 196.2s
+📊 Active: 0 | Completed: 17 | Failed: 3
+
+--- 2025-12-15 18:22:07 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 28
+Coordinator status:
+📊 Active: 1 | Completed: 17 | Failed: 3
+✅ Agent req-gene completed in 8.8s
+📊 Active: 0 | Completed: 18 | Failed: 3
+
+--- 2025-12-15 18:24:09 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 28
+Coordinator status:
+📊 Active: 1 | Completed: 17 | Failed: 3
+✅ Agent req-gene completed in 8.8s
+📊 Active: 0 | Completed: 18 | Failed: 3
+
+--- 2025-12-15 18:26:11 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 28
+Coordinator status:
+📥 Request: req-gene (mission-coordinator)
+🚀 Spawning agent: mission-coordinator (req-gene...)
+📊 Active: 1 | Completed: 18 | Failed: 3
+
+--- 2025-12-15 18:28:14 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 28
+Coordinator status:
+📥 Request: req-gene (mission-coordinator)
+🚀 Spawning agent: mission-coordinator (req-gene...)
+📊 Active: 1 | Completed: 18 | Failed: 3
+
+--- 2025-12-15 18:30:16 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 29
+Coordinator status:
+📊 Active: 2 | Completed: 18 | Failed: 3
+✅ Agent req-gene completed in 227.5s
+📊 Active: 1 | Completed: 19 | Failed: 3
+
+--- 2025-12-15 18:32:19 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 30
+Coordinator status:
+📊 Active: 2 | Completed: 19 | Failed: 3
+✅ Agent req-1765 completed in 164.7s
+📊 Active: 1 | Completed: 20 | Failed: 3
+
+--- 2025-12-15 18:34:21 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 30
+Coordinator status:
+📊 Active: 2 | Completed: 19 | Failed: 3
+✅ Agent req-1765 completed in 164.7s
+📊 Active: 1 | Completed: 20 | Failed: 3
+
+--- 2025-12-15 18:36:24 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 31
+Coordinator status:
+📊 Active: 2 | Completed: 20 | Failed: 3
+✅ Agent req-1765 completed in 175.7s
+📊 Active: 1 | Completed: 21 | Failed: 3
+
+--- 2025-12-15 18:38:26 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 32
+Coordinator status:
+📊 Active: 2 | Completed: 21 | Failed: 3
+✅ Agent req-1765 completed in 186.1s
+📊 Active: 1 | Completed: 22 | Failed: 3
+
+--- 2025-12-15 18:40:28 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 32
+Coordinator status:
+📊 Active: 2 | Completed: 21 | Failed: 3
+✅ Agent req-1765 completed in 186.1s
+📊 Active: 1 | Completed: 22 | Failed: 3
+
+--- 2025-12-15 18:42:28 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 32
+Coordinator status:
+📊 Active: 2 | Completed: 21 | Failed: 3
+✅ Agent req-1765 completed in 186.1s
+📊 Active: 1 | Completed: 22 | Failed: 3
+
+--- 2025-12-15 18:44:30 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 33
+Coordinator status:
+⏰ Agent req-1765 timed out after 300s
+❌ Agent req-1765 failed (exit null) in 303.0s
+📊 Active: 0 | Completed: 22 | Failed: 4
+
+--- 2025-12-15 18:46:32 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 33
+Coordinator status:
+⏰ Agent req-1765 timed out after 300s
+❌ Agent req-1765 failed (exit null) in 303.0s
+📊 Active: 0 | Completed: 22 | Failed: 4
+
+--- 2025-12-15 18:48:34 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 33
+Coordinator status:
+⏰ Agent req-1765 timed out after 300s
+❌ Agent req-1765 failed (exit null) in 303.0s
+📊 Active: 0 | Completed: 22 | Failed: 4
+
+--- 2025-12-15 18:50:36 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 33
+Coordinator status:
+⏰ Agent req-1765 timed out after 300s
+❌ Agent req-1765 failed (exit null) in 303.0s
+📊 Active: 0 | Completed: 22 | Failed: 4
+
+--- 2025-12-15 18:52:38 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 33
+Coordinator status:
+⏰ Agent req-1765 timed out after 300s
+❌ Agent req-1765 failed (exit null) in 303.0s
+📊 Active: 0 | Completed: 22 | Failed: 4
+
+--- 2025-12-15 18:54:40 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 33
+Coordinator status:
+⏰ Agent req-1765 timed out after 300s
+❌ Agent req-1765 failed (exit null) in 303.0s
+📊 Active: 0 | Completed: 22 | Failed: 4
+
+--- 2025-12-15 18:56:43 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 33
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: req-1765 (coordinator-test-gen-21)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 18:58:46 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 36
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:00:47 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 42
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:02:49 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 48
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:04:51 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 58
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:06:52 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:08:54 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:10:57 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:12:59 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:15:01 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:17:04 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:19:07 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:21:09 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:23:11 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+⏳ Queue full (2/2), will retry...
+📥 Request: test-sim (simple-tester)
+⏳ Queue full (2/2), will retry...
+
+--- 2025-12-15 19:25:14 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+🔍 Waiting for agent requests...
+   Drop JSON files in: .swarm/requests/
+
+
+--- 2025-12-15 19:27:16 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+🔍 Waiting for agent requests...
+   Drop JSON files in: .swarm/requests/
+
+
+--- 2025-12-15 19:29:18 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+🔍 Waiting for agent requests...
+   Drop JSON files in: .swarm/requests/
+
+
+--- 2025-12-15 19:31:21 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+🔍 Waiting for agent requests...
+   Drop JSON files in: .swarm/requests/
+
+
+--- 2025-12-15 19:33:24 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+🔍 Waiting for agent requests...
+   Drop JSON files in: .swarm/requests/
+
+
+--- 2025-12-15 19:35:26 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 59
+Coordinator status:
+📥 Request: spawner- (task-spawner)
+🚀 Spawning agent: task-spawner (spawner-...)
+📊 Active: 1 | Completed: 0 | Failed: 0
+
+--- 2025-12-15 19:37:29 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 62
+Coordinator status:
+📊 Active: 3 | Completed: 1 | Failed: 1
+✅ Agent req-1765 completed in 86.4s
+📊 Active: 2 | Completed: 2 | Failed: 1
+
+--- 2025-12-15 19:39:32 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 19:41:35 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 19:43:38 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 19:45:41 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 19:47:44 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 19:49:47 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 19:51:49 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 19:53:52 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 19:55:56 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 19:57:58 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:00:02 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:02:05 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:04:09 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:06:11 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:08:14 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:10:18 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:12:20 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:14:24 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:16:27 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:18:31 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:20:34 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:22:37 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:24:40 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 64
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 2 | Failed: 3
+
+--- 2025-12-15 20:26:42 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 70
+Coordinator status:
+📊 Active: 1 | Completed: 6 | Failed: 3
+✅ Agent req-1765 completed in 60.0s
+📊 Active: 0 | Completed: 7 | Failed: 3
+
+--- 2025-12-15 20:28:44 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 70
+Coordinator status:
+⏳ Queue full (5/5), will retry...
+📥 Request: req-1765 (validation-framework-researcher)
+⏳ Queue full (5/5), will retry...
+
+--- 2025-12-15 20:30:45 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 76
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.7s
+📊 Active: 1 | Completed: 9 | Failed: 7
+
+--- 2025-12-15 20:32:47 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:34:49 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:36:52 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:38:55 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:40:58 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:43:01 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:45:04 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:47:07 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:49:10 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:51:13 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:53:16 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:55:19 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:57:22 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 20:59:26 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:01:29 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:03:33 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:05:36 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:07:40 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:09:43 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:11:46 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:13:50 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:15:53 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:17:57 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:20:00 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:22:04 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:24:08 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:26:11 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:28:15 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:30:19 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:32:22 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:34:24 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:36:29 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:38:32 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:40:36 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:42:39 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:44:43 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:46:48 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:48:51 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:50:55 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:53:00 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:55:04 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:57:07 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 21:59:12 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:01:16 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:03:20 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:05:24 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:07:29 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:09:33 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:11:37 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:13:41 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:15:46 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:17:49 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:19:54 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:21:58 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:24:03 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:26:05 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 77
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 121.6s
+📊 Active: 0 | Completed: 9 | Failed: 8
+
+--- 2025-12-15 22:28:09 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 80
+Coordinator status:
+✅ Agent loop completed in 35.1s
+✅ Agent req-1765 completed in 7.4s
+📊 Active: 2 | Completed: 12 | Failed: 8
+
+--- 2025-12-15 22:30:12 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 82
+Coordinator status:
+⏰ Agent req-1765 timed out after 120s
+❌ Agent req-1765 failed (exit null) in 123.3s
+📊 Active: 1 | Completed: 13 | Failed: 9
+
+--- 2025-12-15 22:32:15 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 83
+Coordinator status:
+⏰ Agent real-wor timed out after 120s
+❌ Agent real-wor failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 13 | Failed: 10
+
+--- 2025-12-15 22:34:17 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 83
+Coordinator status:
+⏰ Agent real-wor timed out after 120s
+❌ Agent real-wor failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 13 | Failed: 10
+
+--- 2025-12-15 22:36:21 ---
+Active agents: 0
+Requests pending: 0
+Results completed: 83
+Coordinator status:
+⏰ Agent real-wor timed out after 120s
+❌ Agent real-wor failed (exit null) in 123.2s
+📊 Active: 0 | Completed: 13 | Failed: 10
+
+--- 2025-12-15 22:38:23 ---
+Active agents: 0
+Requests pending: 1
+Results completed: 83
+Coordinator status:
+⏳ Queue full (5/5), will retry...
+📥 Request: req-1765 (review-agent)
+⏳ Queue full (5/5), will retry...
+
+--- 2025-12-15 22:40:25 ---
+Active agents: 0
+Requests pending: 1
+Results completed: 89
+Coordinator status:
+⏳ Queue full (5/5), will retry...
+📥 Request: req-1765 (review-agent)
+⏳ Queue full (5/5), will retry...
+
+--- 2025-12-15 22:42:28 ---
+Active agents: 0
+Requests pending: 1
+Results completed: 96
+Coordinator status:
+📥 Request: git-push (git-push-agent)
+🚀 Spawning agent: git-push-agent (git-push...)
+📊 Active: 3 | Completed: 16 | Failed: 20
+
+--- 2025-12-15 22:44:32 ---
+Active agents: 0
+Requests pending: 1
+Results completed: 99
+Coordinator status:
+⏰ Agent full-cyc timed out after 120s
+❌ Agent full-cyc failed (exit null) in 122.5s
+📊 Active: 0 | Completed: 17 | Failed: 22
+
+--- 2025-12-15 22:46:36 ---
+Active agents: 0
+Requests pending: 1
+Results completed: 99
+Coordinator status:
+⏰ Agent full-cyc timed out after 120s
+❌ Agent full-cyc failed (exit null) in 122.5s
+📊 Active: 0 | Completed: 17 | Failed: 22

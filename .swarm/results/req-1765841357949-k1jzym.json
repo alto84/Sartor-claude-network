@@ -1,0 +1,8 @@
+{
+  "requestId": "req-1765841357949-k1jzym",
+  "status": "success",
+  "output": "**Task Complete - Generation 17 Summary**\n\nI have successfully implemented Hypothesis 4 (Output Streaming with Heartbeat Detection) from the coordinator improvements research:\n\n**Created: `coordinator/local-only-streaming.js`**\n\nKey features implemented:\n1. **Real-time output streaming** - Output chunks are tracked and logged as they arrive\n2. **45s silence warning** - Emits warning when agent hasn't produced output for 45s\n3. **90s heartbeat timeout** - Kills agents that haven't produced output for 90s (25% faster than 120s fixed timeout)\n4. **Incremental output logging** - Saves output to `.swarm/logs/{requestId}.stream.txt` for debugging\n5. **Output statistics** - Tracks totalBytes, outputBursts, timeToFirstOutput, avgTimeBetweenBursts\n6. **Configurable via environment variables**:\n   - `HEARTBEAT_CHECK_INTERVAL_MS` (default 15000)\n   - `SILENCE_WARNING_MS` (default 45000)\n   - `HEARTBEAT_TIMEOUT_MS` (default 90000)\n   - `LOG_AGENT_OUTPUT=true` for real-time console output\n   - `ENABLE_INCREMENTAL_FILES` (default true)\n\n**Expected improvements:**\n- 25% faster stuck agent detection (90s vs 120s)\n- Real-time visibility into agent progress\n- Better debugging via incremental output logs\n- Preserved partial output when agents fail\n\n**Generation 18 spawned** to implement Hypothesis 3 (Progressive Timeout Adaptation).\n",
+  "durationMs": 164668,
+  "exitCode": 0,
+  "completedAt": "2025-12-15T23:32:02.617Z"
+}

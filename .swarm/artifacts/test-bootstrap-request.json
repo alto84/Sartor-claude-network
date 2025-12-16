@@ -1,0 +1,21 @@
+{
+  "agentRole": "bootstrap-test",
+  "task": {
+    "objective": "Test bootstrap system - verify you can access memory and skills",
+    "context": {
+      "test_type": "bootstrap_verification",
+      "expected_actions": [
+        "Confirm you received this request",
+        "Check if .swarm/memory/ exists",
+        "Check if framework/skills/ exists",
+        "Report findings to .swarm/artifacts/bootstrap-test-result.md"
+      ]
+    },
+    "requirements": [
+      "Verify memory directory accessibility",
+      "Verify skills framework accessibility",
+      "Write a brief report confirming bootstrap works",
+      "Do NOT use superlatives or fabricate scores"
+    ]
+  }
+}

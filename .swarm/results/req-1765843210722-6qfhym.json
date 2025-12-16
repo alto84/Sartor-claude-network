@@ -1,0 +1,29 @@
+{
+  "requestId": "req-1765843210722-6qfhym",
+  "status": "success",
+  "output": "I notice that I'm configured as a \"worker\" agent in a multi-agent swarm, but no specific task objective has been specified. The task objective shows \"No objective specified.\"\n\nI'm ready to help, but I need to know what you'd like me to work on. Could you please provide:\n\n1. **A specific task or objective** - What would you like me to accomplish?\n2. **Any relevant context** - Files to examine, code to write, bugs to fix, features to implement, etc.\n\nI have access to various tools for:\n- Reading and editing files\n- Running bash commands\n- Searching codebases\n- Web searches and fetches\n- Spawning child agents for parallel work\n\nWhat would you like me to do?\n",
+  "durationMs": 8830,
+  "exitCode": 0,
+  "failureReason": null,
+  "stats": {
+    "healthCheckMs": 5578,
+    "contextMode": "full",
+    "contextSizeChars": 4,
+    "contextLoadedFromFile": false,
+    "contextEfficiency": "inline-full",
+    "complexity": "simple",
+    "complexityScore": 0,
+    "initialTimeoutMs": 60000,
+    "finalTimeoutMs": 60000,
+    "extensionsApplied": 0,
+    "wastedTimeMs": 51170,
+    "startupLatencyMs": 8565,
+    "actualDurationMs": 8830,
+    "totalOutputBytes": 663,
+    "outputBursts": 1,
+    "avgTimeBetweenBurstsMs": null,
+    "timeToFirstOutputMs": 8565
+  },
+  "completedAt": "2025-12-16T00:00:25.131Z",
+  "coordinator": "local-only-optimized"
+}

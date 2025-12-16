@@ -1,0 +1,24 @@
+{
+  "agentRole": "h2-lazy-large-validator",
+  "parentRequestId": "req-coordinator-validation",
+  "task": {
+    "objective": "Validate H2: Lazy Context Loading - LARGE context test (should defer to context file)",
+    "context": {
+      "hypothesis": "H2",
+      "size": "large",
+      "note": "This context is intentionally large to test lazy loading behavior",
+      "padding_data_1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "padding_data_2": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "padding_data_3": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+      "padding_data_4": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.",
+      "padding_data_5": "Additional padding to ensure context exceeds the 500 character threshold for lazy loading activation. This should result in the coordinator saving context to a file and providing the agent with instructions to load it on demand if needed.",
+      "critical_value": "FIND_THIS_VALUE_IN_CONTEXT_FILE"
+    },
+    "requirements": [
+      "Report if you see a context file path reference",
+      "Report if lazy loading instructions are present",
+      "Search for and report the 'critical_value' field",
+      "Note whether you had to load a context file to find it"
+    ]
+  }
+}

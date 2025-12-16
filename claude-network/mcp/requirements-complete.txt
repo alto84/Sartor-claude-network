@@ -1,0 +1,147 @@
+# Complete Requirements for Sartor Claude Network MCP Server
+# This file includes ALL dependencies needed for full functionality
+# Generated: 2025-11-03
+# Install with: pip install -r requirements-complete.txt
+
+# ============================================
+# CORE RUNTIME DEPENDENCIES
+# ============================================
+
+# Async HTTP/WebSocket Communication
+aiohttp>=3.9.0          # Async HTTP client/server framework
+websockets>=12.0        # WebSocket protocol implementation
+
+# Data Formats
+pyyaml>=6.0             # YAML parsing for gateway.yaml and configs
+ujson>=5.8.0            # Fast JSON parsing (optional but recommended)
+
+# Environment & Configuration
+python-dotenv>=1.0.0    # Environment variable management
+
+# HTTP Requests (synchronous)
+requests>=2.31.0        # HTTP library for sync operations
+urllib3>=2.0.0          # HTTP client (dependency of requests)
+
+# ============================================
+# EXTERNAL SERVICE INTEGRATIONS
+# ============================================
+
+# Firebase Integration (if using Firebase discovery)
+firebase-admin>=6.1.0   # Firebase Admin SDK
+google-cloud-firestore>=2.11.0  # Firestore support
+
+# GitHub Integration (if using GitHub discovery)
+PyGithub>=2.1.0         # GitHub API v3 wrapper
+gitpython>=3.1.40       # Git operations
+
+# ============================================
+# TESTING DEPENDENCIES
+# ============================================
+
+# Test Framework
+pytest>=7.4.0           # Testing framework
+pytest-asyncio>=0.21.0  # Async test support
+pytest-timeout>=2.2.0   # Test timeout support
+pytest-cov>=4.1.0       # Coverage reporting
+pytest-mock>=3.12.0     # Mocking support
+pytest-xdist>=3.5.0     # Parallel test execution
+
+# System Monitoring (for performance tests)
+psutil>=5.9.0           # System and process utilities
+
+# Test Data Generation
+faker>=20.1.0           # Generate fake test data
+factory-boy>=3.3.0      # Test fixtures
+
+# Mocking
+responses>=0.24.1       # Mock HTTP requests
+
+# ============================================
+# DEVELOPMENT TOOLS (Optional but Recommended)
+# ============================================
+
+# Code Quality
+black>=23.11.0          # Code formatting
+isort>=5.13.0           # Import sorting
+flake8>=6.1.0           # Linting
+mypy>=1.7.1             # Type checking
+pylint>=3.0.3           # Additional linting
+
+# Documentation
+sphinx>=7.2.6           # Documentation generator
+sphinx-rtd-theme>=2.0.0 # ReadTheDocs theme
+sphinx-autodoc-typehints>=1.25.2  # Type hints in docs
+
+# Performance
+uvloop>=0.18.0          # Faster event loop (Linux/Mac only)
+
+# ============================================
+# UTILITY LIBRARIES
+# ============================================
+
+# Data Validation
+jsonschema>=4.19.0      # JSON schema validation
+pydantic>=2.5.0         # Data validation using Python type annotations
+
+# Logging
+colorlog>=6.7.0         # Colored logging output
+python-json-logger>=2.0.7  # JSON formatted logs
+
+# Retry Logic
+tenacity>=8.2.3         # Retry library with various backoff strategies
+
+# ============================================
+# PYTHON VERSION REQUIREMENTS
+# ============================================
+# Requires Python 3.10 or higher
+# Tested with Python 3.12.3
+
+# ============================================
+# PLATFORM SPECIFIC NOTES
+# ============================================
+# - uvloop is not available on Windows (use default asyncio loop)
+# - Some packages may require build tools on Linux/Mac:
+#   sudo apt-get install python3-dev build-essential (Ubuntu/Debian)
+#   brew install python3 (macOS with Homebrew)
+
+# ============================================
+# INSTALLATION INSTRUCTIONS
+# ============================================
+# 1. Ensure Python 3.10+ is installed:
+#    python3 --version
+#
+# 2. Install pip if not available:
+#    python3 -m ensurepip --upgrade
+#    OR
+#    curl https://bootstrap.pypa.io/get-pip.py | python3
+#
+# 3. Create virtual environment (recommended):
+#    python3 -m venv venv
+#    source venv/bin/activate  # Linux/Mac
+#    venv\Scripts\activate     # Windows
+#
+# 4. Install all dependencies:
+#    pip install -r requirements-complete.txt
+#
+# 5. Verify installation:
+#    python3 validate_installation.py
+
+# ============================================
+# MINIMAL REQUIREMENTS (For Quick Start)
+# ============================================
+# If you only need basic functionality, install:
+# - aiohttp>=3.9.0
+# - websockets>=12.0
+# - pyyaml>=6.0
+# - requests>=2.31.0
+# These are sufficient for gateway client to run
+
+# ============================================
+# TROUBLESHOOTING
+# ============================================
+# If installation fails:
+# 1. Upgrade pip: pip install --upgrade pip
+# 2. Install wheel: pip install wheel
+# 3. On Ubuntu/Debian: sudo apt-get install python3-pip python3-dev
+# 4. On macOS: Install Xcode Command Line Tools
+# 5. On Windows: Use Python from python.org (not Microsoft Store)

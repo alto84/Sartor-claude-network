@@ -1,0 +1,33 @@
+{
+  "requestId": "req-1765842998676-l7k5sl",
+  "agentRole": "complex-researcher",
+  "objective": "Research the entire framework directory, then implement a test utility that validates coordinator metrics",
+  "context": {
+    "test_type": "complex_multi_step",
+    "expected_timeout": "complex/180s",
+    "research_scope": "full",
+    "implementation_target": ".swarm/test-results/metric-validator.js",
+    "framework_location": "framework/",
+    "coordinator_location": "coordinator/local-only-optimized.js",
+    "validation_criteria": {
+      "health_check": "verify pass/fail tracking",
+      "lazy_context": "verify context efficiency calculation",
+      "progressive_timeout": "verify extension counting",
+      "streaming": "verify heartbeat tracking"
+    },
+    "extended_context_data": "This is complex task context that should trigger lazy loading. It contains research requirements, implementation specifications, and multi-step validation criteria. The agent may spawn child agents to parallelize work. Step 1: research framework. Step 2: analyze coordinator. Step 3: implement validator. Step 4: test validator. Phase one involves understanding. Phase two involves building."
+  },
+  "requirements": [
+    "Research framework directory structure",
+    "Analyze coordinator metrics collection",
+    "Implement metric validator utility in JavaScript",
+    "Test that validator correctly parses result files",
+    "Document validator usage",
+    "Write comprehensive output to .swarm/test-results/complex-output.md"
+  ],
+  "savedAt": "2025-12-15T23:56:42.442Z",
+  "relatedFiles": {
+    "parentResult": null,
+    "memoryTopics": []
+  }
+}

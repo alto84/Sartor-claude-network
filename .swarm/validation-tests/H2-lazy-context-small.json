@@ -1,0 +1,16 @@
+{
+  "agentRole": "h2-lazy-small-validator",
+  "parentRequestId": "req-coordinator-validation",
+  "task": {
+    "objective": "Validate H2: Lazy Context Loading - SMALL context test (should use inline context)",
+    "context": {
+      "hypothesis": "H2",
+      "size": "small",
+      "note": "This context is intentionally small (<500 chars) to test inline behavior"
+    },
+    "requirements": [
+      "Report if you see inline context or a context file reference",
+      "Complete quickly to measure startup time"
+    ]
+  }
+}

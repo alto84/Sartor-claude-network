@@ -1,0 +1,3519 @@
+{
+  "entries": [
+    {
+      "id": "mem-1765856636765-u55d8t",
+      "type": "semantic",
+      "content": "Test memory entry 4: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T19:27:56.765Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636766-co4q2u",
+      "type": "semantic",
+      "content": "Test memory entry 16: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T19:39:56.766Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636767-ajx2e7",
+      "type": "semantic",
+      "content": "Test memory entry 28: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T19:51:56.767Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636768-b8786g",
+      "type": "semantic",
+      "content": "Test memory entry 40: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:03:56.768Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636768-76stzz",
+      "type": "semantic",
+      "content": "Test memory entry 52: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:15:56.768Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636769-ko4fou",
+      "type": "semantic",
+      "content": "Test memory entry 64: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:27:56.769Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636770-5ydoee",
+      "type": "semantic",
+      "content": "Test memory entry 76: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:39:56.770Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636771-zz22bf",
+      "type": "semantic",
+      "content": "Test memory entry 88: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:51:56.771Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636772-6iqw98",
+      "type": "semantic",
+      "content": "Test memory entry 100: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:03:56.772Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636773-bt2tng",
+      "type": "semantic",
+      "content": "Test memory entry 112: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:15:56.773Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636774-p7ao1f",
+      "type": "semantic",
+      "content": "Test memory entry 124: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:27:56.774Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636775-hdtjr1",
+      "type": "semantic",
+      "content": "Test memory entry 136: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:39:56.775Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636776-axo6if",
+      "type": "semantic",
+      "content": "Test memory entry 148: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:51:56.776Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636779-snc6yd",
+      "type": "semantic",
+      "content": "Test memory entry 160: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:03:56.779Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636780-a7rmlf",
+      "type": "semantic",
+      "content": "Test memory entry 172: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:15:56.780Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636781-mirlmg",
+      "type": "semantic",
+      "content": "Test memory entry 184: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:27:56.781Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636783-ytp6tm",
+      "type": "semantic",
+      "content": "Test memory entry 196: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:39:56.783Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636784-ycfgig",
+      "type": "semantic",
+      "content": "Test memory entry 208: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:51:56.784Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636785-8r0xt7",
+      "type": "semantic",
+      "content": "Test memory entry 220: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:03:56.785Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636787-y1leb8",
+      "type": "semantic",
+      "content": "Test memory entry 232: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:15:56.787Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636789-otxz0m",
+      "type": "semantic",
+      "content": "Test memory entry 244: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:27:56.789Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636790-5w9558",
+      "type": "semantic",
+      "content": "Test memory entry 256: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:39:56.790Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636792-v5lhkp",
+      "type": "semantic",
+      "content": "Test memory entry 268: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:51:56.792Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636794-oalkkc",
+      "type": "semantic",
+      "content": "Test memory entry 280: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:03:56.794Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636797-gnb2f3",
+      "type": "semantic",
+      "content": "Test memory entry 292: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:15:56.797Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636799-0ckogg",
+      "type": "semantic",
+      "content": "Test memory entry 304: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:27:56.799Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636803-vzdfo2",
+      "type": "semantic",
+      "content": "Test memory entry 316: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:39:56.803Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636806-6pcmjo",
+      "type": "semantic",
+      "content": "Test memory entry 328: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:51:56.806Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636809-32v0e6",
+      "type": "semantic",
+      "content": "Test memory entry 340: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:03:56.809Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636812-o54vq4",
+      "type": "semantic",
+      "content": "Test memory entry 352: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:15:56.812Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636815-bp64w9",
+      "type": "semantic",
+      "content": "Test memory entry 364: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:27:56.815Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636818-r5reov",
+      "type": "semantic",
+      "content": "Test memory entry 376: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:39:56.818Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636822-0zrv9k",
+      "type": "semantic",
+      "content": "Test memory entry 388: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:51:56.822Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636826-b9z4nv",
+      "type": "semantic",
+      "content": "Test memory entry 400: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:03:56.826Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636830-sqhmpl",
+      "type": "semantic",
+      "content": "Test memory entry 412: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:15:56.830Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636834-3n8rt7",
+      "type": "semantic",
+      "content": "Test memory entry 424: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:27:56.834Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636838-hel81l",
+      "type": "semantic",
+      "content": "Test memory entry 436: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:39:56.838Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636843-0etwjp",
+      "type": "semantic",
+      "content": "Test memory entry 448: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:51:56.843Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636847-eivy9i",
+      "type": "semantic",
+      "content": "Test memory entry 460: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:03:56.847Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636850-278023",
+      "type": "semantic",
+      "content": "Test memory entry 472: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:15:56.850Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636855-2yb4sk",
+      "type": "semantic",
+      "content": "Test memory entry 484: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:27:56.855Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856636859-jnse6r",
+      "type": "semantic",
+      "content": "Test memory entry 496: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:39:56.859Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638254-vu0ln0",
+      "type": "semantic",
+      "content": "Test memory entry 4: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T18:27:58.254Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638257-vn6zhi",
+      "type": "semantic",
+      "content": "Test memory entry 16: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T18:39:58.257Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638259-2zfa9u",
+      "type": "semantic",
+      "content": "Test memory entry 28: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T18:51:58.259Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638261-hvbe1q",
+      "type": "semantic",
+      "content": "Test memory entry 40: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T19:03:58.261Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638264-idh885",
+      "type": "semantic",
+      "content": "Test memory entry 52: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T19:15:58.264Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638267-4n1284",
+      "type": "semantic",
+      "content": "Test memory entry 64: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T19:27:58.267Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638269-d6jhl2",
+      "type": "semantic",
+      "content": "Test memory entry 76: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T19:39:58.269Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638271-rrv3db",
+      "type": "semantic",
+      "content": "Test memory entry 88: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T19:51:58.271Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638273-0fpubz",
+      "type": "semantic",
+      "content": "Test memory entry 100: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T20:03:58.273Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638276-zh407n",
+      "type": "semantic",
+      "content": "Test memory entry 112: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T20:15:58.276Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638279-xasu47",
+      "type": "semantic",
+      "content": "Test memory entry 124: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T20:27:58.279Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638281-8ylu6y",
+      "type": "semantic",
+      "content": "Test memory entry 136: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T20:39:58.281Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638284-st5we8",
+      "type": "semantic",
+      "content": "Test memory entry 148: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T20:51:58.284Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638287-8rqj7v",
+      "type": "semantic",
+      "content": "Test memory entry 160: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T21:03:58.287Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638289-wxwswp",
+      "type": "semantic",
+      "content": "Test memory entry 172: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T21:15:58.289Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638292-1t4nrc",
+      "type": "semantic",
+      "content": "Test memory entry 184: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T21:27:58.292Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638294-ly4hgy",
+      "type": "semantic",
+      "content": "Test memory entry 196: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T21:39:58.294Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638297-lo8hq4",
+      "type": "semantic",
+      "content": "Test memory entry 208: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T21:51:58.297Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638300-78z0r3",
+      "type": "semantic",
+      "content": "Test memory entry 220: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T22:03:58.300Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638303-dakzhi",
+      "type": "semantic",
+      "content": "Test memory entry 232: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T22:15:58.303Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638305-7mmmfo",
+      "type": "semantic",
+      "content": "Test memory entry 244: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T22:27:58.305Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638308-fuyndh",
+      "type": "semantic",
+      "content": "Test memory entry 256: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T22:39:58.308Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638312-vrp2et",
+      "type": "semantic",
+      "content": "Test memory entry 268: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T22:51:58.312Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638314-6fb2ml",
+      "type": "semantic",
+      "content": "Test memory entry 280: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T23:03:58.314Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638318-kpeotj",
+      "type": "semantic",
+      "content": "Test memory entry 292: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T23:15:58.318Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638321-kehrix",
+      "type": "semantic",
+      "content": "Test memory entry 304: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T23:27:58.321Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638324-7vclax",
+      "type": "semantic",
+      "content": "Test memory entry 316: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T23:39:58.324Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638328-pfvxfa",
+      "type": "semantic",
+      "content": "Test memory entry 328: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-14T23:51:58.328Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638332-pqlpqw",
+      "type": "semantic",
+      "content": "Test memory entry 340: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T00:03:58.332Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638336-wiuruz",
+      "type": "semantic",
+      "content": "Test memory entry 352: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T00:15:58.336Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638339-fllwoi",
+      "type": "semantic",
+      "content": "Test memory entry 364: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T00:27:58.339Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638343-2kut1y",
+      "type": "semantic",
+      "content": "Test memory entry 376: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T00:39:58.343Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638346-7shyja",
+      "type": "semantic",
+      "content": "Test memory entry 388: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T00:51:58.346Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638350-b62if9",
+      "type": "semantic",
+      "content": "Test memory entry 400: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T01:03:58.350Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638353-2cg5qv",
+      "type": "semantic",
+      "content": "Test memory entry 412: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T01:15:58.353Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638356-jhs2gn",
+      "type": "semantic",
+      "content": "Test memory entry 424: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T01:27:58.356Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638360-9319ac",
+      "type": "semantic",
+      "content": "Test memory entry 436: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T01:39:58.360Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638364-wjdssu",
+      "type": "semantic",
+      "content": "Test memory entry 448: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T01:51:58.364Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638368-cxnoi5",
+      "type": "semantic",
+      "content": "Test memory entry 460: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T02:03:58.368Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638372-9kjath",
+      "type": "semantic",
+      "content": "Test memory entry 472: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T02:15:58.372Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638376-9720v0",
+      "type": "semantic",
+      "content": "Test memory entry 484: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T02:27:58.376Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638380-uyzxrz",
+      "type": "semantic",
+      "content": "Test memory entry 496: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T02:39:58.380Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638384-0xtx7j",
+      "type": "semantic",
+      "content": "Test memory entry 508: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T02:51:58.384Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638388-zu8oas",
+      "type": "semantic",
+      "content": "Test memory entry 520: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T03:03:58.388Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638392-18hooc",
+      "type": "semantic",
+      "content": "Test memory entry 532: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T03:15:58.392Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638398-h175ay",
+      "type": "semantic",
+      "content": "Test memory entry 544: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T03:27:58.398Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638408-54b6fx",
+      "type": "semantic",
+      "content": "Test memory entry 556: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T03:39:58.408Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638412-uc7otq",
+      "type": "semantic",
+      "content": "Test memory entry 568: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T03:51:58.412Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638417-mbys3p",
+      "type": "semantic",
+      "content": "Test memory entry 580: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T04:03:58.417Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638422-6cicio",
+      "type": "semantic",
+      "content": "Test memory entry 592: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T04:15:58.422Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638426-4p1f9v",
+      "type": "semantic",
+      "content": "Test memory entry 604: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T04:27:58.426Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638430-h4y8rf",
+      "type": "semantic",
+      "content": "Test memory entry 616: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T04:39:58.430Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638435-1k3qyj",
+      "type": "semantic",
+      "content": "Test memory entry 628: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T04:51:58.435Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638439-4rr5wm",
+      "type": "semantic",
+      "content": "Test memory entry 640: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T05:03:58.439Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638445-hveqjt",
+      "type": "semantic",
+      "content": "Test memory entry 652: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T05:15:58.445Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638450-zxuxny",
+      "type": "semantic",
+      "content": "Test memory entry 664: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T05:27:58.450Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638454-87sk5d",
+      "type": "semantic",
+      "content": "Test memory entry 676: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T05:39:58.454Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638459-rn23mb",
+      "type": "semantic",
+      "content": "Test memory entry 688: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T05:51:58.459Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638464-ubscc6",
+      "type": "semantic",
+      "content": "Test memory entry 700: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T06:03:58.464Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638468-yvnk0d",
+      "type": "semantic",
+      "content": "Test memory entry 712: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T06:15:58.468Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638473-zs8ddg",
+      "type": "semantic",
+      "content": "Test memory entry 724: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T06:27:58.473Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638478-ssdqfe",
+      "type": "semantic",
+      "content": "Test memory entry 736: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T06:39:58.478Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638483-r2aeyk",
+      "type": "semantic",
+      "content": "Test memory entry 748: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T06:51:58.483Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638489-n40nb3",
+      "type": "semantic",
+      "content": "Test memory entry 760: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T07:03:58.489Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638494-ua2q9s",
+      "type": "semantic",
+      "content": "Test memory entry 772: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T07:15:58.494Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638499-38cvia",
+      "type": "semantic",
+      "content": "Test memory entry 784: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T07:27:58.499Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638505-iovfu2",
+      "type": "semantic",
+      "content": "Test memory entry 796: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T07:39:58.505Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638510-v4ium1",
+      "type": "semantic",
+      "content": "Test memory entry 808: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T07:51:58.510Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638515-644qsh",
+      "type": "semantic",
+      "content": "Test memory entry 820: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T08:03:58.515Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638520-z8sd16",
+      "type": "semantic",
+      "content": "Test memory entry 832: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T08:15:58.520Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638526-4h51iv",
+      "type": "semantic",
+      "content": "Test memory entry 844: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T08:27:58.525Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638531-9wia0d",
+      "type": "semantic",
+      "content": "Test memory entry 856: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T08:39:58.531Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638537-hwns1x",
+      "type": "semantic",
+      "content": "Test memory entry 868: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T08:51:58.537Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638543-n04jta",
+      "type": "semantic",
+      "content": "Test memory entry 880: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T09:03:58.543Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638550-1d22z0",
+      "type": "semantic",
+      "content": "Test memory entry 892: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T09:15:58.550Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638556-zpbsdh",
+      "type": "semantic",
+      "content": "Test memory entry 904: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T09:27:58.556Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638562-ikgi54",
+      "type": "semantic",
+      "content": "Test memory entry 916: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T09:39:58.562Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638569-kyz4ny",
+      "type": "semantic",
+      "content": "Test memory entry 928: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T09:51:58.569Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638574-wmx29v",
+      "type": "semantic",
+      "content": "Test memory entry 940: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T10:03:58.574Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638580-5nsiza",
+      "type": "semantic",
+      "content": "Test memory entry 952: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T10:15:58.580Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638586-1a102q",
+      "type": "semantic",
+      "content": "Test memory entry 964: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T10:27:58.586Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638592-vk6o5d",
+      "type": "semantic",
+      "content": "Test memory entry 976: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T10:39:58.592Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638598-6tdr51",
+      "type": "semantic",
+      "content": "Test memory entry 988: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T10:51:58.598Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638605-lyml3o",
+      "type": "semantic",
+      "content": "Test memory entry 1000: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T11:03:58.605Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638610-940c29",
+      "type": "semantic",
+      "content": "Test memory entry 1012: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T11:15:58.610Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638619-se5znr",
+      "type": "semantic",
+      "content": "Test memory entry 1024: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T11:27:58.619Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638625-kqyurz",
+      "type": "semantic",
+      "content": "Test memory entry 1036: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T11:39:58.625Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638632-zpd46l",
+      "type": "semantic",
+      "content": "Test memory entry 1048: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T11:51:58.632Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638639-xpnpo9",
+      "type": "semantic",
+      "content": "Test memory entry 1060: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T12:03:58.639Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638646-6xhryc",
+      "type": "semantic",
+      "content": "Test memory entry 1072: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T12:15:58.646Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638654-e2h2ua",
+      "type": "semantic",
+      "content": "Test memory entry 1084: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T12:27:58.654Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638661-0caj2l",
+      "type": "semantic",
+      "content": "Test memory entry 1096: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T12:39:58.661Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638670-3ab48o",
+      "type": "semantic",
+      "content": "Test memory entry 1108: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T12:51:58.670Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638677-mc3pet",
+      "type": "semantic",
+      "content": "Test memory entry 1120: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T13:03:58.677Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638683-v1ia5h",
+      "type": "semantic",
+      "content": "Test memory entry 1132: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T13:15:58.683Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638690-rzeqw4",
+      "type": "semantic",
+      "content": "Test memory entry 1144: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T13:27:58.690Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638697-htn27b",
+      "type": "semantic",
+      "content": "Test memory entry 1156: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T13:39:58.697Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638704-zio2zm",
+      "type": "semantic",
+      "content": "Test memory entry 1168: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T13:51:58.704Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638711-hcrl2t",
+      "type": "semantic",
+      "content": "Test memory entry 1180: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T14:03:58.711Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638718-i82ogh",
+      "type": "semantic",
+      "content": "Test memory entry 1192: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T14:15:58.718Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638725-ifcwsq",
+      "type": "semantic",
+      "content": "Test memory entry 1204: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T14:27:58.725Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638732-fsclef",
+      "type": "semantic",
+      "content": "Test memory entry 1216: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T14:39:58.732Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638739-04l9iw",
+      "type": "semantic",
+      "content": "Test memory entry 1228: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T14:51:58.739Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638746-u40mck",
+      "type": "semantic",
+      "content": "Test memory entry 1240: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T15:03:58.746Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638755-lx9i9r",
+      "type": "semantic",
+      "content": "Test memory entry 1252: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T15:15:58.755Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638762-m0v8e1",
+      "type": "semantic",
+      "content": "Test memory entry 1264: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T15:27:58.762Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638771-ut3d83",
+      "type": "semantic",
+      "content": "Test memory entry 1276: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T15:39:58.771Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638777-hdnveo",
+      "type": "semantic",
+      "content": "Test memory entry 1288: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T15:51:58.777Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638785-wlrnd2",
+      "type": "semantic",
+      "content": "Test memory entry 1300: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T16:03:58.785Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638792-e8nddk",
+      "type": "semantic",
+      "content": "Test memory entry 1312: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T16:15:58.792Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638800-xzcbmj",
+      "type": "semantic",
+      "content": "Test memory entry 1324: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T16:27:58.800Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638807-ec1gwx",
+      "type": "semantic",
+      "content": "Test memory entry 1336: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T16:39:58.807Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638814-11gacs",
+      "type": "semantic",
+      "content": "Test memory entry 1348: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T16:51:58.814Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638822-ba6yj0",
+      "type": "semantic",
+      "content": "Test memory entry 1360: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T17:03:58.822Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638829-sfg7uw",
+      "type": "semantic",
+      "content": "Test memory entry 1372: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T17:15:58.829Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638836-uz1uxn",
+      "type": "semantic",
+      "content": "Test memory entry 1384: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T17:27:58.836Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638844-706q7a",
+      "type": "semantic",
+      "content": "Test memory entry 1396: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T17:39:58.844Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638852-vqs7kt",
+      "type": "semantic",
+      "content": "Test memory entry 1408: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T17:51:58.852Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638860-i9f8em",
+      "type": "semantic",
+      "content": "Test memory entry 1420: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T18:03:58.859Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638868-1uun2g",
+      "type": "semantic",
+      "content": "Test memory entry 1432: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T18:15:58.868Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638875-6ttlc6",
+      "type": "semantic",
+      "content": "Test memory entry 1444: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T18:27:58.875Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638886-7d3cwz",
+      "type": "semantic",
+      "content": "Test memory entry 1456: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T18:39:58.886Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638894-i4wnd6",
+      "type": "semantic",
+      "content": "Test memory entry 1468: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T18:51:58.894Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638902-p2ioc6",
+      "type": "semantic",
+      "content": "Test memory entry 1480: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T19:03:58.902Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638916-x1l50w",
+      "type": "semantic",
+      "content": "Test memory entry 1492: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T19:15:58.916Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638926-0ersny",
+      "type": "semantic",
+      "content": "Test memory entry 1504: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T19:27:58.926Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638934-bgq8x4",
+      "type": "semantic",
+      "content": "Test memory entry 1516: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T19:39:58.934Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638942-uxgapp",
+      "type": "semantic",
+      "content": "Test memory entry 1528: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T19:51:58.942Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638950-vyjtid",
+      "type": "semantic",
+      "content": "Test memory entry 1540: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:03:58.950Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638958-z63lf8",
+      "type": "semantic",
+      "content": "Test memory entry 1552: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:15:58.958Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638966-vyfaxk",
+      "type": "semantic",
+      "content": "Test memory entry 1564: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:27:58.966Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638975-fwjh6v",
+      "type": "semantic",
+      "content": "Test memory entry 1576: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:39:58.975Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638982-6k53ye",
+      "type": "semantic",
+      "content": "Test memory entry 1588: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:51:58.982Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856638991-0famiv",
+      "type": "semantic",
+      "content": "Test memory entry 1600: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:03:58.991Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639000-pv9xlg",
+      "type": "semantic",
+      "content": "Test memory entry 1612: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:15:59.000Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639009-fqimb9",
+      "type": "semantic",
+      "content": "Test memory entry 1624: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:27:59.009Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639017-e0ssxp",
+      "type": "semantic",
+      "content": "Test memory entry 1636: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:39:59.017Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639025-k67k83",
+      "type": "semantic",
+      "content": "Test memory entry 1648: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:51:59.025Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639034-lys2vq",
+      "type": "semantic",
+      "content": "Test memory entry 1660: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:03:59.034Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639043-v2he23",
+      "type": "semantic",
+      "content": "Test memory entry 1672: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:15:59.043Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639051-jfhl73",
+      "type": "semantic",
+      "content": "Test memory entry 1684: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:27:59.051Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639059-fpxg7o",
+      "type": "semantic",
+      "content": "Test memory entry 1696: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:39:59.059Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639068-69r2g7",
+      "type": "semantic",
+      "content": "Test memory entry 1708: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:51:59.068Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639076-dgekaj",
+      "type": "semantic",
+      "content": "Test memory entry 1720: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:03:59.076Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639086-nl85xo",
+      "type": "semantic",
+      "content": "Test memory entry 1732: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:15:59.086Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639094-qoc3ow",
+      "type": "semantic",
+      "content": "Test memory entry 1744: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:27:59.094Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639103-d252ow",
+      "type": "semantic",
+      "content": "Test memory entry 1756: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:39:59.103Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639112-a89hgq",
+      "type": "semantic",
+      "content": "Test memory entry 1768: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:51:59.112Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639120-rq1k2p",
+      "type": "semantic",
+      "content": "Test memory entry 1780: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:03:59.120Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639128-1ubk6d",
+      "type": "semantic",
+      "content": "Test memory entry 1792: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:15:59.128Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639136-t770s1",
+      "type": "semantic",
+      "content": "Test memory entry 1804: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:27:59.136Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639144-p2yxjq",
+      "type": "semantic",
+      "content": "Test memory entry 1816: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:39:59.144Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639152-nydyy6",
+      "type": "semantic",
+      "content": "Test memory entry 1828: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:51:59.152Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639160-20wfzi",
+      "type": "semantic",
+      "content": "Test memory entry 1840: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:03:59.160Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639168-2itt2t",
+      "type": "semantic",
+      "content": "Test memory entry 1852: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:15:59.168Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639176-jfpm74",
+      "type": "semantic",
+      "content": "Test memory entry 1864: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:27:59.176Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639183-t4zt0e",
+      "type": "semantic",
+      "content": "Test memory entry 1876: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:39:59.183Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639192-wuzvx5",
+      "type": "semantic",
+      "content": "Test memory entry 1888: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:51:59.192Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639199-ul40ah",
+      "type": "semantic",
+      "content": "Test memory entry 1900: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:03:59.199Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639209-y5h2l6",
+      "type": "semantic",
+      "content": "Test memory entry 1912: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:15:59.209Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639216-9ew127",
+      "type": "semantic",
+      "content": "Test memory entry 1924: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:27:59.216Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639226-j84v6j",
+      "type": "semantic",
+      "content": "Test memory entry 1936: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:39:59.226Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639234-vanf06",
+      "type": "semantic",
+      "content": "Test memory entry 1948: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:51:59.234Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639242-6j7tyh",
+      "type": "semantic",
+      "content": "Test memory entry 1960: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:03:59.242Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639250-578kc1",
+      "type": "semantic",
+      "content": "Test memory entry 1972: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:15:59.250Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639259-97iey9",
+      "type": "semantic",
+      "content": "Test memory entry 1984: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:27:59.259Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856639267-u3243a",
+      "type": "semantic",
+      "content": "Test memory entry 1996: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:39:59.267Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640188-xzspsq",
+      "type": "semantic",
+      "content": "Test memory entry 4: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T19:28:00.188Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640197-f5hamv",
+      "type": "semantic",
+      "content": "Test memory entry 16: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T19:40:00.197Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640208-2flbc3",
+      "type": "semantic",
+      "content": "Test memory entry 28: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T19:52:00.208Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640218-usyr60",
+      "type": "semantic",
+      "content": "Test memory entry 40: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:04:00.218Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640227-ygpcz1",
+      "type": "semantic",
+      "content": "Test memory entry 52: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:16:00.227Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640239-7krzo9",
+      "type": "semantic",
+      "content": "Test memory entry 64: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:28:00.239Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640248-0xfpaz",
+      "type": "semantic",
+      "content": "Test memory entry 76: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:40:00.248Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640258-efr5o3",
+      "type": "semantic",
+      "content": "Test memory entry 88: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T20:52:00.258Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640270-1ct2s7",
+      "type": "semantic",
+      "content": "Test memory entry 100: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:04:00.270Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640279-qvgauc",
+      "type": "semantic",
+      "content": "Test memory entry 112: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:16:00.279Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640290-vf7uaz",
+      "type": "semantic",
+      "content": "Test memory entry 124: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:28:00.290Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640300-y5837o",
+      "type": "semantic",
+      "content": "Test memory entry 136: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:40:00.300Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640310-49oyu1",
+      "type": "semantic",
+      "content": "Test memory entry 148: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T21:52:00.310Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640322-q85f13",
+      "type": "semantic",
+      "content": "Test memory entry 160: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:04:00.322Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640332-6z9w0f",
+      "type": "semantic",
+      "content": "Test memory entry 172: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:16:00.332Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640342-g0x5rt",
+      "type": "semantic",
+      "content": "Test memory entry 184: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:28:00.342Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640353-vobi59",
+      "type": "semantic",
+      "content": "Test memory entry 196: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:40:00.353Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640363-q5e2n3",
+      "type": "semantic",
+      "content": "Test memory entry 208: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T22:52:00.363Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640374-xw5wmi",
+      "type": "semantic",
+      "content": "Test memory entry 220: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:04:00.374Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640385-bb8x3d",
+      "type": "semantic",
+      "content": "Test memory entry 232: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:16:00.385Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640395-9txyx7",
+      "type": "semantic",
+      "content": "Test memory entry 244: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:28:00.395Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640406-d3ysls",
+      "type": "semantic",
+      "content": "Test memory entry 256: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:40:00.406Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640416-gf1rln",
+      "type": "semantic",
+      "content": "Test memory entry 268: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-15T23:52:00.416Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640427-7g6rd7",
+      "type": "semantic",
+      "content": "Test memory entry 280: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:04:00.427Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640436-5mr0tg",
+      "type": "semantic",
+      "content": "Test memory entry 292: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:16:00.436Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640445-yc38oy",
+      "type": "semantic",
+      "content": "Test memory entry 304: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:28:00.445Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640456-6hzaov",
+      "type": "semantic",
+      "content": "Test memory entry 316: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:40:00.456Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640465-a0hrnb",
+      "type": "semantic",
+      "content": "Test memory entry 328: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T00:52:00.465Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640474-su0250",
+      "type": "semantic",
+      "content": "Test memory entry 340: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:04:00.474Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640486-ocylaf",
+      "type": "semantic",
+      "content": "Test memory entry 352: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:16:00.486Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640495-abrgmq",
+      "type": "semantic",
+      "content": "Test memory entry 364: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:28:00.495Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640505-rcfyhz",
+      "type": "semantic",
+      "content": "Test memory entry 376: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:40:00.505Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640516-1gl2c8",
+      "type": "semantic",
+      "content": "Test memory entry 388: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T01:52:00.516Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640526-fafpp2",
+      "type": "semantic",
+      "content": "Test memory entry 400: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:04:00.526Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640536-vd73yq",
+      "type": "semantic",
+      "content": "Test memory entry 412: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:16:00.536Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640546-utt8jo",
+      "type": "semantic",
+      "content": "Test memory entry 424: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:28:00.546Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640557-iaofs5",
+      "type": "semantic",
+      "content": "Test memory entry 436: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:40:00.557Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640567-cx6ggm",
+      "type": "semantic",
+      "content": "Test memory entry 448: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T02:52:00.567Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-8"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640577-xjxq2v",
+      "type": "semantic",
+      "content": "Test memory entry 460: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:04:00.577Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-0"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640587-5raoiv",
+      "type": "semantic",
+      "content": "Test memory entry 472: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:16:00.587Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-2"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640598-bdet4m",
+      "type": "semantic",
+      "content": "Test memory entry 484: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:28:00.598Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-4"
+        ]
+      }
+    },
+    {
+      "id": "mem-1765856640608-w9jd8g",
+      "type": "semantic",
+      "content": "Test memory entry 496: This is a medium-length memory entry that contains several sentences.\nIt simulates typical agent memories captured during a session.\nThe memory system should handle this size efficiently.",
+      "metadata": {
+        "timestamp": "2025-12-16T03:40:00.608Z",
+        "topic": "research",
+        "agent_id": "agent-2",
+        "tags": [
+          "benchmark",
+          "entry-6"
+        ]
+      }
+    }
+  ],
+  "last_updated": "2025-12-16T03:44:00.608Z"
+}

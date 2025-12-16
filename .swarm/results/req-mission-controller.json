@@ -1,0 +1,29 @@
+{
+  "requestId": "req-mission-controller",
+  "status": "failed",
+  "output": "",
+  "durationMs": 61074,
+  "exitCode": null,
+  "failureReason": null,
+  "stats": {
+    "healthCheckMs": 4530,
+    "contextMode": "full",
+    "contextSizeChars": 64,
+    "contextLoadedFromFile": false,
+    "contextEfficiency": "inline-full",
+    "complexity": "simple",
+    "complexityScore": 0,
+    "initialTimeoutMs": 60000,
+    "finalTimeoutMs": 60000,
+    "extensionsApplied": 0,
+    "wastedTimeMs": -1074,
+    "startupLatencyMs": null,
+    "actualDurationMs": 61074,
+    "totalOutputBytes": 0,
+    "outputBursts": 0,
+    "avgTimeBetweenBurstsMs": null,
+    "timeToFirstOutputMs": null
+  },
+  "completedAt": "2025-12-16T00:00:24.628Z",
+  "coordinator": "local-only-optimized"
+}

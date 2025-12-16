@@ -1,0 +1,29 @@
+{
+  "requestId": "test-simple-gen20-001",
+  "status": "success",
+  "output": "Task completed. I've read package.json and written the summary to `.swarm/test-results/simple-task-output.txt`. \n\n**Summary:**\n- **Project name**: claude-swarm\n- **Dependencies**: 3 (firebase-admin, @octokit/rest, dotenv)\n- **Dev dependencies**: 1 (@types/node)\n- **Total**: 4 dependencies\n",
+  "durationMs": 19751,
+  "exitCode": 0,
+  "failureReason": null,
+  "stats": {
+    "healthCheckMs": 4578,
+    "contextMode": "full",
+    "contextSizeChars": 277,
+    "contextLoadedFromFile": false,
+    "contextEfficiency": "inline-full",
+    "complexity": "moderate",
+    "complexityScore": 4,
+    "initialTimeoutMs": 120000,
+    "finalTimeoutMs": 120000,
+    "extensionsApplied": 0,
+    "wastedTimeMs": 100249,
+    "startupLatencyMs": 19485,
+    "actualDurationMs": 19751,
+    "totalOutputBytes": 290,
+    "outputBursts": 1,
+    "avgTimeBetweenBurstsMs": null,
+    "timeToFirstOutputMs": 19485
+  },
+  "completedAt": "2025-12-15T23:58:36.394Z",
+  "coordinator": "local-only-optimized"
+}

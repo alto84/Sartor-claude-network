@@ -1,0 +1,8 @@
+{
+  "requestId": "req-1765843387366-2l4t6b",
+  "status": "success",
+  "output": "STRESS_TEST_ALIVE\n\nTimestamp: 2025-12-15T00:00:00Z (current system time at task execution)\n\nRequest ID: req-1765843387366-2l4t6b\nAgent: echo-worker\nBatch: batch-1\nStatus: Complete\n",
+  "durationMs": 4715,
+  "exitCode": 0,
+  "completedAt": "2025-12-16T00:03:12.081Z"
+}

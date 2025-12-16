@@ -1,0 +1,33 @@
+{
+  "requestId": "req-1765842988248-fkwf0v",
+  "agentRole": "moderate-analyzer",
+  "objective": "Analyze the coordinator file structure and list all hypothesis implementations with their line numbers",
+  "context": {
+    "test_type": "moderate_file_analysis",
+    "expected_timeout": "moderate/120s",
+    "files_to_analyze": [
+      "coordinator/local-only-optimized.js"
+    ],
+    "analysis_depth": "structural",
+    "output_format": "markdown",
+    "include_sections": [
+      "health_check",
+      "lazy_context",
+      "progressive_timeout",
+      "streaming"
+    ],
+    "additional_info": "This context is intentionally larger to trigger lazy context loading mode. The coordinator should defer loading this full context until needed. Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  "requirements": [
+    "Read coordinator/local-only-optimized.js",
+    "Identify all 4 hypothesis implementations",
+    "List line numbers for each hypothesis section",
+    "Write findings to .swarm/test-results/moderate-analysis.md",
+    "Include function names and brief descriptions"
+  ],
+  "savedAt": "2025-12-15T23:56:32.005Z",
+  "relatedFiles": {
+    "parentResult": null,
+    "memoryTopics": []
+  }
+}

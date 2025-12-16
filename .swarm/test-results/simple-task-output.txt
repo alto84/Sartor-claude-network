@@ -1,0 +1,9 @@
+Project Summary
+===============
+Project Name: claude-swarm
+Description: Multi-agent coordination system for Claude Code with Firebase + GitHub
+
+Dependencies Count:
+- dependencies: 3 (firebase-admin, @octokit/rest, dotenv)
+- devDependencies: 1 (@types/node)
+- Total: 4

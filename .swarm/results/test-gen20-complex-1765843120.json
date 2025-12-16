@@ -1,0 +1,8 @@
+{
+  "requestId": "test-gen20-complex-1765843120",
+  "status": "success",
+  "output": "## Task Complete\n\nI've completed all requirements:\n\n1. **Researched framework directory** - Analyzed the structure with memory, validation, skills, and bootstrap subsystems\n\n2. **Analyzed result JSON formats** - Identified three distinct formats: benchmark files, request results, and validation results\n\n3. **Implemented metrics aggregator** - Created `.swarm/test-results/metrics-aggregator.js` with:\n   - Recursive JSON file scanning\n   - Statistics calculation (min, max, mean, median, stdDev)\n   - Three metric categories: health_check_duration, complexity_scores, timeout_extensions\n   - Both formatted report and JSON output\n\n4. **Tested with sample data** - Successfully processed 113 files, extracting metrics from 59 of them with zero parse errors\n\n5. **Documented results** - Wrote comprehensive report to `.swarm/test-results/complex-result.md`\n\n### Files Created\n- `.swarm/test-results/metrics-aggregator.js` - The aggregator implementation\n- `.swarm/test-results/complex-result.md` - Documentation and test results\n",
+  "durationMs": 101307,
+  "exitCode": 0,
+  "completedAt": "2025-12-16T00:00:25.739Z"
+}

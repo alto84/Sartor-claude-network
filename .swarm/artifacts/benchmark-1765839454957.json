@@ -1,0 +1,92 @@
+{
+  "name": "validation-benchmark",
+  "timestamp": "2025-12-15T22:57:34.957Z",
+  "nodeVersion": "v22.16.0",
+  "results": [
+    {
+      "name": "small-content",
+      "iterations": 5000,
+      "totalTimeMs": 24.722697000002768,
+      "avgTimeMs": 0.004944539400000554,
+      "minTimeMs": 0.00324599999999009,
+      "maxTimeMs": 0.5366069999999752,
+      "contentLength": 28,
+      "opsPerSecond": 202243.30703075964
+    },
+    {
+      "name": "medium-content",
+      "iterations": 3000,
+      "totalTimeMs": 14.844699999998966,
+      "avgTimeMs": 0.004948233333332989,
+      "minTimeMs": 0.004328000000015209,
+      "maxTimeMs": 0.2341199999999901,
+      "contentLength": 205,
+      "opsPerSecond": 202092.3292488369
+    },
+    {
+      "name": "large-content",
+      "iterations": 2000,
+      "totalTimeMs": 18.22378199999929,
+      "avgTimeMs": 0.009111890999999645,
+      "minTimeMs": 0.008165000000019518,
+      "maxTimeMs": 0.21218300000001022,
+      "contentLength": 822,
+      "opsPerSecond": 109746.70351083425
+    },
+    {
+      "name": "problematic-content",
+      "iterations": 2000,
+      "totalTimeMs": 17.645049999997326,
+      "avgTimeMs": 0.008822524999998664,
+      "minTimeMs": 0.005901999999991858,
+      "maxTimeMs": 0.3021919999999909,
+      "contentLength": 220,
+      "opsPerSecond": 113346.2359132053
+    },
+    {
+      "name": "clean-content",
+      "iterations": 2000,
+      "totalTimeMs": 13.80077899999867,
+      "avgTimeMs": 0.006900389499999335,
+      "minTimeMs": 0.005312000000003536,
+      "maxTimeMs": 0.2624500000000012,
+      "contentLength": 310,
+      "opsPerSecond": 144919.35563928622
+    },
+    {
+      "name": "stress-test-large",
+      "iterations": 500,
+      "totalTimeMs": 38.77803100000034,
+      "avgTimeMs": 0.07755606200000068,
+      "minTimeMs": 0.07358099999999013,
+      "maxTimeMs": 0.3053399999999442,
+      "contentLength": 10448,
+      "opsPerSecond": 12893.89860975653
+    },
+    {
+      "name": "stress-test-extreme",
+      "iterations": 100,
+      "totalTimeMs": 30.41994500000004,
+      "avgTimeMs": 0.3041994500000004,
+      "minTimeMs": 0.29373199999997723,
+      "maxTimeMs": 0.48417599999999084,
+      "contentLength": 41798,
+      "opsPerSecond": 3287.316923156826
+    },
+    {
+      "name": "validate-and-suggest",
+      "iterations": 1000,
+      "totalTimeMs": 7.164957000000356,
+      "avgTimeMs": 0.007164957000000356,
+      "minTimeMs": 0.005507999999963431,
+      "maxTimeMs": 0.27209000000004835,
+      "contentLength": 220,
+      "opsPerSecond": 139568.17884600707
+    }
+  ],
+  "summary": {
+    "totalBenchmarks": 8,
+    "totalIterations": 15600,
+    "totalTimeMs": 165.59994099999776
+  }
+}

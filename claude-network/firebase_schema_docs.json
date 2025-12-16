@@ -1,0 +1,286 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2025-11-03T11:51:26.245198",
+  "firebase_url": "https://your-project-default-rtdb.firebaseio.com",
+  "structure": {
+    "agents": {
+      "_description": "Registry of all agents in the network",
+      "_example": {
+        "agent-001": {
+          "agent_id": "agent-001",
+          "agent_name": "Desktop Mission Control",
+          "status": "online",
+          "health": "healthy",
+          "capabilities": [
+            "coordinate",
+            "analyze",
+            "execute"
+          ],
+          "specialization": "coordination",
+          "surface": "desktop",
+          "location": "main-computer",
+          "last_heartbeat": "2025-01-01T12:00:00",
+          "registered_at": "2025-01-01T10:00:00",
+          "last_seen": "2025-01-01T12:00:00",
+          "metadata": {},
+          "task_count": 0,
+          "error_count": 0,
+          "success_rate": 0.0
+        }
+      }
+    },
+    "messages": {
+      "_description": "Real-time message queue",
+      "_example": {
+        "-NxYz123abc": {
+          "id": "msg-001",
+          "from": "agent-001",
+          "to": "agent-002",
+          "type": "task",
+          "priority": "normal",
+          "content": {
+            "task": "analyze",
+            "data": {}
+          },
+          "timestamp": "2025-01-01T12:00:00",
+          "status": "delivered",
+          "retries": 0
+        }
+      }
+    },
+    "tasks": {
+      "_description": "Task queue and assignments",
+      "available": {
+        "_description": "Tasks waiting to be claimed",
+        "_example": {
+          "task-001": {
+            "task_id": "task-001",
+            "type": "analysis",
+            "priority": "high",
+            "requirements": [
+              "analyze",
+              "report"
+            ],
+            "created_at": "2025-01-01T12:00:00",
+            "deadline": "2025-01-01T13:00:00",
+            "data": {}
+          }
+        }
+      },
+      "assigned": {
+        "_description": "Tasks currently being worked on",
+        "_example": {
+          "task-002": {
+            "task_id": "task-002",
+            "agent_id": "agent-001",
+            "assigned_at": "2025-01-01T12:00:00",
+            "status": "in_progress",
+            "progress": 50
+          }
+        }
+      },
+      "completed": {
+        "_description": "Completed tasks (archived after 7 days)",
+        "_example": {
+          "task-003": {
+            "task_id": "task-003",
+            "agent_id": "agent-001",
+            "completed_at": "2025-01-01T12:00:00",
+            "result": {
+              "status": "success"
+            },
+            "duration_seconds": 120
+          }
+        }
+      }
+    },
+    "skills": {
+      "_description": "Skill library metadata (full definitions in GitHub)",
+      "_example": {
+        "core.observation.visual": {
+          "skill_id": "core.observation.visual",
+          "name": "Visual Observation",
+          "category": "core",
+          "version": "1.0.0",
+          "description": "Analyze images and visual data",
+          "requirements": [
+            "vision"
+          ],
+          "github_path": "/skills/core/observation/visual.yaml"
+        }
+      }
+    },
+    "consensus": {
+      "_description": "Voting and governance decisions",
+      "active": {
+        "_description": "Active votes requiring consensus",
+        "_example": {
+          "vote-001": {
+            "vote_id": "vote-001",
+            "type": "code_change",
+            "proposer": "agent-001",
+            "proposal": {
+              "change": "update algorithm"
+            },
+            "votes": {
+              "agent-001": "yes",
+              "agent-002": "no"
+            },
+            "deadline": "2025-01-01T12:00:00",
+            "quorum": 0.66
+          }
+        }
+      },
+      "completed": {
+        "_description": "Completed votes (archived)",
+        "_example": {}
+      }
+    },
+    "clades": {
+      "_description": "Evolution tracking for self-improvement",
+      "_example": {
+        "clade-001": {
+          "clade_id": "clade-001",
+          "parent_id": "root",
+          "agent_id": "agent-001",
+          "created_at": "2025-01-01T12:00:00",
+          "branch_name": "feature/improved-routing",
+          "changes": [
+            "Updated message routing algorithm"
+          ],
+          "performance": {
+            "benchmark_score": 85,
+            "success_rate": 0.92
+          },
+          "status": "testing"
+        }
+      }
+    },
+    "experiences": {
+      "_description": "Shared learning and experiences",
+      "_example": {
+        "exp-001": {
+          "experience_id": "exp-001",
+          "agent_id": "agent-001",
+          "type": "success",
+          "category": "task_execution",
+          "description": "Successfully coordinated multi-agent task",
+          "lesson": "Use consensus for complex decisions",
+          "timestamp": "2025-01-01T12:00:00",
+          "tags": [
+            "coordination",
+            "consensus"
+          ]
+        }
+      }
+    },
+    "metrics": {
+      "_description": "Performance and system metrics",
+      "system": {
+        "_description": "System-wide metrics",
+        "_example": {
+          "message_latency_ms": 45,
+          "active_agents": 3,
+          "tasks_completed_today": 12,
+          "uptime_hours": 168,
+          "last_updated": "2025-01-01T12:00:00"
+        }
+      },
+      "agents": {
+        "_description": "Per-agent metrics",
+        "_example": {
+          "agent-001": {
+            "tasks_completed": 42,
+            "success_rate": 0.95,
+            "avg_response_time_ms": 120,
+            "specialization_score": 0.85
+          }
+        }
+      }
+    },
+    "config": {
+      "_description": "Shared configuration and settings",
+      "global": {
+        "_description": "Network-wide settings",
+        "_example": {
+          "schema_version": "1.0.0",
+          "min_consensus_quorum": 0.66,
+          "heartbeat_timeout_seconds": 60,
+          "message_retention_days": 7
+        }
+      },
+      "features": {
+        "_description": "Feature flags",
+        "_example": {
+          "enable_self_improvement": false,
+          "enable_consensus_voting": true,
+          "enable_skill_sharing": true
+        }
+      }
+    },
+    "presence": {
+      "_description": "Real-time presence tracking",
+      "_example": {
+        "agent-001": {
+          "online": true,
+          "last_activity": "2025-01-01T12:00:00",
+          "current_task": "task-002",
+          "connection_quality": "good"
+        }
+      }
+    }
+  },
+  "database_rules": {
+    "rules": {
+      ".read": true,
+      ".write": true,
+      "agents": {
+        "$agent_id": {
+          ".validate": "newData.hasChildren(['agent_id', 'agent_name'])"
+        }
+      },
+      "messages": {
+        ".indexOn": [
+          "timestamp",
+          "from",
+          "to",
+          "type"
+        ],
+        "$message_id": {
+          ".validate": "newData.hasChildren(['from', 'type', 'timestamp'])"
+        }
+      },
+      "tasks": {
+        "available": {
+          ".indexOn": [
+            "priority",
+            "created_at"
+          ]
+        },
+        "assigned": {
+          ".indexOn": [
+            "agent_id",
+            "status"
+          ]
+        },
+        "completed": {
+          ".indexOn": [
+            "completed_at",
+            "agent_id"
+          ]
+        }
+      },
+      "consensus": {
+        "active": {
+          ".indexOn": [
+            "deadline",
+            "type"
+          ]
+        }
+      },
+      "metrics": {
+        ".write": "auth != null || true"
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+Claude Swarm is a multi-agent coordination system that enables unlimited nested agent hierarchies for Claude Code through external file-based coordination, bypassing the Task tool's limitation of not being able to spawn subagents.

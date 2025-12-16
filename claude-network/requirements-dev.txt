@@ -1,0 +1,71 @@
+# Development and Testing Dependencies for Sartor Claude Network
+
+# Testing Framework
+pytest==7.4.3
+pytest-cov==4.1.0
+pytest-xdist==3.5.0  # For parallel test execution
+pytest-timeout==2.2.0
+pytest-mock==3.12.0
+pytest-asyncio==0.21.1  # For async test support
+
+# Code Coverage
+coverage[toml]==7.3.2
+codecov==2.1.13
+
+# Mocking and Fixtures
+responses==0.24.1  # For mocking HTTP requests
+faker==20.1.0  # For generating test data
+factory-boy==3.3.0  # For test fixtures
+
+# Code Quality
+black==23.11.0  # Code formatting
+flake8==6.1.0  # Linting
+isort==5.13.0  # Import sorting
+mypy==1.7.1  # Type checking
+pylint==3.0.3  # Additional linting
+
+# Documentation
+sphinx==7.2.6
+sphinx-rtd-theme==2.0.0
+sphinx-autodoc-typehints==1.25.2
+
+# Performance Testing
+locust==2.17.0  # For load testing
+memory-profiler==0.61.0
+line-profiler==4.1.1
+
+# Security Testing
+bandit==1.7.5  # Security linting
+safety==3.0.1  # Check for known vulnerabilities
+
+# Debugging
+ipdb==0.13.13  # Interactive debugger
+pdbpp==0.10.3  # Enhanced debugger
+
+# Test Data
+hypothesis==6.92.1  # Property-based testing
+freezegun==1.2.2  # Time mocking
+
+# Automation
+pre-commit==3.5.0  # Git hooks
+tox==4.11.4  # Test automation
+
+# Additional Testing Tools
+testfixtures==7.2.2
+sure==2.0.1  # Assertion library
+expects==0.9.0  # BDD-style assertions
+
+# Network Testing
+httpretty==1.1.4  # HTTP mocking
+requests-mock==1.11.0
+
+# Firebase Testing (if needed)
+# firebase-admin==6.1.0  # Uncomment if testing with real Firebase
+
+# Monitoring and Logging
+structlog==23.2.0
+colorlog==6.8.0
+
+# CI/CD Support
+python-dotenv==1.0.0  # Environment variables
+pyyaml==6.0.1  # YAML parsing

@@ -1,0 +1,19 @@
+{
+  "agentRole": "h3-complex-task-validator",
+  "parentRequestId": "req-coordinator-validation",
+  "task": {
+    "objective": "Validate H3: Progressive Timeout - COMPLEX task: Research, analyze, implement, and then coordinate with child agents to verify the distributed state management system works correctly after refactoring the core components",
+    "context": {
+      "hypothesis": "H3",
+      "expected_complexity": "complex",
+      "expected_initial_timeout": "180000ms",
+      "note": "This objective contains keywords like research, analyze, implement, coordinate, child agents to trigger high complexity score"
+    },
+    "requirements": [
+      "Report what complexity level you expect the coordinator assigned",
+      "Report whether timeout extension mechanisms are mentioned",
+      "Complete this validation task",
+      "Note your understanding of the progressive timeout system"
+    ]
+  }
+}

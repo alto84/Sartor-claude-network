@@ -1,0 +1,29 @@
+{
+  "requestId": "test-moderate-gen20-001",
+  "agentRole": "analysis-agent",
+  "objective": "Analyze the coordinator/local-only-optimized.js file and create a summary of all four hypothesis implementations including their configuration options and expected behavior",
+  "context": {
+    "test_type": "moderate",
+    "expected_timeout": "120s",
+    "focus_areas": [
+      "Health Check implementation",
+      "Lazy Context loading mechanism",
+      "Progressive Timeout calculation",
+      "Streaming Output with heartbeat"
+    ],
+    "large_context_data": "This is extra context data that would typically be loaded via lazy loading. The purpose is to test whether the lazy context system works correctly by providing enough data that the context exceeds the inline threshold. Additional filler text to ensure we exceed 500 characters for testing purposes. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  "requirements": [
+    "Read and analyze coordinator/local-only-optimized.js",
+    "Identify the health check implementation (Hypothesis 1)",
+    "Document the lazy context loading mechanism (Hypothesis 2)",
+    "Explain the progressive timeout system (Hypothesis 3)",
+    "Describe the streaming output with heartbeat (Hypothesis 4)",
+    "Write analysis to .swarm/test-results/moderate-task-output.md"
+  ],
+  "savedAt": "2025-12-15T23:58:37.801Z",
+  "relatedFiles": {
+    "parentResult": null,
+    "memoryTopics": []
+  }
+}

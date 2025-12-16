@@ -1,0 +1,76 @@
+{
+  "server": {
+    "name": "sartor-claude-network",
+    "version": "1.0.0",
+    "description": "MCP Server for Sartor Claude Network - Provides Firebase, GitHub, onboarding, and navigation tools for Claude agents",
+    "max_concurrent_requests": 10,
+    "request_timeout": 60
+  },
+  "firebase": {
+    "url": "https://home-claude-network-default-rtdb.firebaseio.com",
+    "timeout": 30,
+    "max_retries": 3,
+    "api_key": null,
+    "auth_domain": null,
+    "project_id": null
+  },
+  "github": {
+    "repo": "alto84/Sartor-claude-network",
+    "default_branch": "main",
+    "api_timeout": 30,
+    "max_results": 100
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "/tmp/mcp-server.log",
+    "max_size": 10485760,
+    "backup_count": 5,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  },
+  "rate_limiting": {
+    "enabled": true,
+    "max_requests_per_minute": 60,
+    "max_requests_per_hour": 1000,
+    "burst_size": 10
+  },
+  "security": {
+    "require_authentication": false,
+    "allowed_origins": ["*"],
+    "max_message_size": 1048576
+  },
+  "features": {
+    "firebase_subscriptions": true,
+    "github_search": true,
+    "onboarding_assistance": true,
+    "system_navigation": true,
+    "metrics_collection": true
+  },
+  "tools": {
+    "firebase": {
+      "enabled": true,
+      "operations": ["read", "write", "delete", "query", "subscribe"]
+    },
+    "github": {
+      "enabled": true,
+      "operations": ["read_file", "search", "list_files", "get_history"]
+    },
+    "onboarding": {
+      "enabled": true,
+      "operations": ["welcome", "checklist", "setup_guide", "verify_setup"]
+    },
+    "navigation": {
+      "enabled": true,
+      "operations": ["list_agents", "list_skills", "list_tasks", "get_status", "find_expert"]
+    }
+  },
+  "caching": {
+    "enabled": false,
+    "ttl_seconds": 300,
+    "max_cache_size_mb": 100
+  },
+  "monitoring": {
+    "enabled": true,
+    "metrics_interval_seconds": 60,
+    "health_check_interval_seconds": 30
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "requestId": "req-1765843374667-36g5yr",
+  "status": "success",
+  "output": "## Result\n\n```json\n{\n  \"agent\": \"compute-worker\",\n  \"request_id\": \"req-1765843374667-36g5yr\",\n  \"task\": \"fibonacci(20)\",\n  \"result\": 6765,\n  \"computation_time_ms\": 0.783,\n  \"status\": \"completed\"\n}\n```\n\n**Summary:**\n- **fibonacci(20) = 6765**\n- Computation time: ~0.78ms (recursive implementation)\n- Task completed successfully\n",
+  "durationMs": 11824,
+  "exitCode": 0,
+  "completedAt": "2025-12-16T00:03:06.491Z"
+}

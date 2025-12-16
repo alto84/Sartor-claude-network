@@ -1,0 +1,29 @@
+{
+  "requestId": "test-simple-1765843033117",
+  "status": "success",
+  "output": "Task complete. I've read the README.md and written a one-line summary to `.swarm/test-results/simple-test.txt`. The summary captures the core purpose: Claude Swarm enables unlimited nested multi-agent hierarchies via file-based coordination, solving the limitation that Claude Code subagents cannot spawn other subagents.\n",
+  "durationMs": 22181,
+  "exitCode": 0,
+  "failureReason": null,
+  "stats": {
+    "healthCheckMs": 4036,
+    "contextMode": "full",
+    "contextSizeChars": 251,
+    "contextLoadedFromFile": false,
+    "contextEfficiency": "inline-full",
+    "complexity": "moderate",
+    "complexityScore": 4,
+    "initialTimeoutMs": 120000,
+    "finalTimeoutMs": 120000,
+    "extensionsApplied": 0,
+    "wastedTimeMs": 97819,
+    "startupLatencyMs": 21944,
+    "actualDurationMs": 22181,
+    "totalOutputBytes": 322,
+    "outputBursts": 1,
+    "avgTimeBetweenBurstsMs": null,
+    "timeToFirstOutputMs": 21944
+  },
+  "completedAt": "2025-12-15T23:58:31.742Z",
+  "coordinator": "local-only-optimized"
+}

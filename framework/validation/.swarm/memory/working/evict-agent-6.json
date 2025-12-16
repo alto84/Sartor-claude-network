@@ -1,0 +1,50 @@
+{
+  "entries": [
+    {
+      "id": "mem-1765856641774-1qyd4x",
+      "type": "working",
+      "content": "Eviction test 6",
+      "metadata": {
+        "timestamp": "2025-12-16T03:44:01.774Z",
+        "agent_id": "evict-agent-6"
+      }
+    },
+    {
+      "id": "mem-1765856641777-doi2b4",
+      "type": "working",
+      "content": "Eviction test 26",
+      "metadata": {
+        "timestamp": "2025-12-16T03:44:01.777Z",
+        "agent_id": "evict-agent-6"
+      }
+    },
+    {
+      "id": "mem-1765856641778-a0h3a9",
+      "type": "working",
+      "content": "Eviction test 46",
+      "metadata": {
+        "timestamp": "2025-12-16T03:44:01.778Z",
+        "agent_id": "evict-agent-6"
+      }
+    },
+    {
+      "id": "mem-1765856641779-b6flxp",
+      "type": "working",
+      "content": "Eviction test 66",
+      "metadata": {
+        "timestamp": "2025-12-16T03:44:01.779Z",
+        "agent_id": "evict-agent-6"
+      }
+    },
+    {
+      "id": "mem-1765856641780-j1xquz",
+      "type": "working",
+      "content": "Eviction test 86",
+      "metadata": {
+        "timestamp": "2025-12-16T03:44:01.780Z",
+        "agent_id": "evict-agent-6"
+      }
+    }
+  ],
+  "last_updated": "2025-12-16T03:44:01.780Z"
+}

@@ -1,0 +1,8 @@
+{
+  "requestId": "req-anthropic-research",
+  "status": "failed",
+  "output": "",
+  "durationMs": 122149,
+  "exitCode": null,
+  "completedAt": "2025-12-16T00:01:09.794Z"
+}

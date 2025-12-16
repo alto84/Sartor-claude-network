@@ -1,0 +1,54 @@
+=== Optimized Coordinator Agent Log ===
+Request ID: test-gen20-moderate-1765843111
+Role: file-analyzer
+Started: 2025-12-15T23:58:38.052Z
+
+--- Hypothesis 1: Health Check ---
+Status: Will run before agent spawn
+
+--- Hypothesis 2: Lazy Context ---
+Context Mode: full
+Context Size: 684 chars
+Requirements: 4 total
+
+--- Hypothesis 3: Progressive Timeout ---
+Complexity: complex (score: 8)
+Initial Timeout: 180000ms
+Max Timeout: 240000ms
+
+--- Hypothesis 4: Streaming ---
+Incremental logging: enabled
+==========================================
+
+## Task Complete
+
+I analyzed `coordinator/local-only-optimized.js` and identified the 4 hypothesis implementations:
+
+| Hypothesis | Description | Line Numbers |
+|------------|-------------|--------------|
+| **H1: Health Check Probe** | Verify agent initialization | Lines 178-286 |
+| **H2: Lazy Context Loading** | Minimal startup prompt | Lines 118-138, 651-802 |
+| **H3: Progressive Timeout** | Activity-based timeout extension | Lines 66-116, 543-649 |
+| **H4: Streaming Output** | Real-time output with heartbeat | Lines 512-540, 854-924 |
+
+Configuration for all hypotheses is in the `CONFIG` object at lines 32-64.
+
+Results written to `.swarm/test-results/moderate-result.md`.
+
+==========================================
+=== Final Statistics ===
+Completed: 2025-12-15T23:59:14.916Z
+Exit Code: 0
+Duration: 36865ms
+
+Health Check: 4397ms
+Startup Latency: 36525ms
+Context Mode: full
+Context Loaded: false
+Complexity: complex
+Extensions Applied: 0
+Final Timeout: 180000ms
+Timeout Waste: 143135ms
+Output Bytes: 682
+Output Bursts: 1
+==========================================

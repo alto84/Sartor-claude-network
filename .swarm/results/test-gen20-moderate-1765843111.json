@@ -1,0 +1,29 @@
+{
+  "requestId": "test-gen20-moderate-1765843111",
+  "status": "success",
+  "output": "## Task Complete\n\nI analyzed `coordinator/local-only-optimized.js` and identified the 4 hypothesis implementations:\n\n| Hypothesis | Description | Line Numbers |\n|------------|-------------|--------------|\n| **H1: Health Check Probe** | Verify agent initialization | Lines 178-286 |\n| **H2: Lazy Context Loading** | Minimal startup prompt | Lines 118-138, 651-802 |\n| **H3: Progressive Timeout** | Activity-based timeout extension | Lines 66-116, 543-649 |\n| **H4: Streaming Output** | Real-time output with heartbeat | Lines 512-540, 854-924 |\n\nConfiguration for all hypotheses is in the `CONFIG` object at lines 32-64.\n\nResults written to `.swarm/test-results/moderate-result.md`.\n",
+  "durationMs": 36865,
+  "exitCode": 0,
+  "failureReason": null,
+  "stats": {
+    "healthCheckMs": 4397,
+    "contextMode": "full",
+    "contextSizeChars": 684,
+    "contextLoadedFromFile": false,
+    "contextEfficiency": "inline-full",
+    "complexity": "complex",
+    "complexityScore": 8,
+    "initialTimeoutMs": 180000,
+    "finalTimeoutMs": 180000,
+    "extensionsApplied": 0,
+    "wastedTimeMs": 143135,
+    "startupLatencyMs": 36525,
+    "actualDurationMs": 36865,
+    "totalOutputBytes": 682,
+    "outputBursts": 1,
+    "avgTimeBetweenBurstsMs": null,
+    "timeToFirstOutputMs": 36525
+  },
+  "completedAt": "2025-12-15T23:59:14.916Z",
+  "coordinator": "local-only-optimized"
+}

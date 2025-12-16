@@ -1,0 +1,48 @@
+=== Optimized Coordinator Agent Log ===
+Request ID: req-mission-controller
+Role: mission-controller
+Started: 2025-12-15T23:59:23.556Z
+
+--- Hypothesis 1: Health Check ---
+Status: Will run before agent spawn
+
+--- Hypothesis 2: Lazy Context ---
+Context Mode: full
+Context Size: 64 chars
+Requirements: 0 total
+
+--- Hypothesis 3: Progressive Timeout ---
+Complexity: simple (score: 0)
+Initial Timeout: 60000ms
+Max Timeout: 240000ms
+
+--- Hypothesis 4: Streaming ---
+Incremental logging: enabled
+==========================================
+
+
+[COORDINATOR WARNING] Agent silent for 31s with 29s remaining
+
+[COORDINATOR WARNING] Agent silent for 46s at 45572ms elapsed
+
+[COORDINATOR WARNING] Agent silent for 46s with 14s remaining
+
+[COORDINATOR] Killing agent: PROGRESSIVE_TIMEOUT
+
+==========================================
+=== Final Statistics ===
+Completed: 2025-12-16T00:00:24.628Z
+Exit Code: null
+Duration: 61074ms
+
+Health Check: 4530ms
+Startup Latency: nullms
+Context Mode: full
+Context Loaded: false
+Complexity: simple
+Extensions Applied: 0
+Final Timeout: 60000ms
+Timeout Waste: -1074ms
+Output Bytes: 0
+Output Bursts: 0
+==========================================

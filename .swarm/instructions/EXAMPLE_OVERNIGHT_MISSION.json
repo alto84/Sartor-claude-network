@@ -1,0 +1,113 @@
+{
+  "mission_id": "overnight-codebase-review-001",
+  "created": "2025-12-15T21:00:00Z",
+  "status": "ready",
+  "objective": "Comprehensive overnight codebase analysis and improvement",
+
+  "timing": {
+    "duration_hours": 8,
+    "started_at": null,
+    "must_end_by": null,
+    "check_interval_minutes": 30,
+    "agent_timeout_minutes": 25
+  },
+
+  "target": {
+    "codebase_path": "/home/alton/claude-swarm",
+    "focus_areas": ["coordinator/", "skills/", "hooks/"],
+    "exclude_patterns": ["node_modules/", "*.log"]
+  },
+
+  "phases": [
+    {
+      "phase_id": 1,
+      "name": "Discovery",
+      "description": "Map the codebase structure and identify areas of interest",
+      "agent_role": "explorer",
+      "parallel_agents": 2,
+      "requirements": [
+        "List all source files with line counts",
+        "Identify main entry points",
+        "Document dependencies",
+        "Find TODO/FIXME comments",
+        "Write findings to artifacts/phase1-discovery.json"
+      ],
+      "success_criteria": ["artifacts/phase1-discovery.json exists with >10 findings"],
+      "estimated_minutes": 20,
+      "status": "pending"
+    },
+    {
+      "phase_id": 2,
+      "name": "Security Audit",
+      "description": "Check for security issues",
+      "depends_on": [1],
+      "agent_role": "security-auditor",
+      "parallel_agents": 1,
+      "requirements": [
+        "Check for hardcoded secrets",
+        "Review input validation",
+        "Check file permissions",
+        "Look for injection vulnerabilities",
+        "Write findings to artifacts/phase2-security.json"
+      ],
+      "success_criteria": ["Security report generated"],
+      "estimated_minutes": 25,
+      "status": "pending"
+    },
+    {
+      "phase_id": 3,
+      "name": "Code Quality",
+      "description": "Analyze code quality and maintainability",
+      "depends_on": [1],
+      "agent_role": "quality-analyst",
+      "parallel_agents": 1,
+      "requirements": [
+        "Check for code duplication",
+        "Analyze function complexity",
+        "Review error handling patterns",
+        "Check test coverage",
+        "Write findings to artifacts/phase3-quality.json"
+      ],
+      "success_criteria": ["Quality report generated"],
+      "estimated_minutes": 25,
+      "status": "pending"
+    },
+    {
+      "phase_id": 4,
+      "name": "Synthesis",
+      "description": "Combine all findings into actionable recommendations",
+      "depends_on": [2, 3],
+      "agent_role": "synthesizer",
+      "parallel_agents": 1,
+      "requirements": [
+        "Read all phase artifacts",
+        "Prioritize findings by severity",
+        "Create improvement roadmap",
+        "Generate executive summary",
+        "Write to artifacts/FINAL_REPORT.md"
+      ],
+      "success_criteria": ["Final report exists"],
+      "estimated_minutes": 20,
+      "status": "pending"
+    }
+  ],
+
+  "current_phase": 0,
+  "progress": {
+    "phases_completed": [],
+    "agents_spawned": 0,
+    "agents_completed": 0,
+    "agents_failed": 0,
+    "artifacts_produced": [],
+    "iterations": 0
+  },
+
+  "error_handling": {
+    "max_retries_per_phase": 2,
+    "on_failure": "continue",
+    "alert_on_failure": true,
+    "alert_file": "artifacts/ALERTS.json"
+  },
+
+  "notes": "This mission is ready to run. Start by creating a mission-orchestrator request."
+}

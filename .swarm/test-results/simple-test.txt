@@ -1,0 +1,1 @@
+Claude Swarm enables unlimited nested multi-agent hierarchies for Claude Code via external file-based coordination, bypassing the limitation that subagents cannot spawn other subagents.

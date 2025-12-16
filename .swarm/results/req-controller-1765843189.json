@@ -1,0 +1,8 @@
+{
+  "requestId": "req-controller-1765843189",
+  "status": "success",
+  "output": "## Task Complete\n\nI've completed the research and framework analysis as the controller agent. Here's a summary:\n\n### Framework Overview\n**Claude Swarm** is a multi-agent coordination system with:\n- **Firebase Firestore** for real-time task queuing and results\n- **Local file-based messaging** for inter-agent communication\n- **GitHub Actions** as an alternative execution environment\n\n### Controller Architecture\nThe coordinator (`coordinator/index.js`) contains three core classes:\n1. **AgentProcessManager** - Manages Claude subprocess lifecycle, concurrency limits (10 agents), timeouts\n2. **RequestWatcher** - Firebase listener for pending requests with status lifecycle\n3. **LocalRequestWatcher** - Watches `.swarm/requests/` for file-based requests\n\n### Key Coordination Patterns\n- Fan-Out/Fan-In (parallel workers, synthesize results)\n- Pipeline (sequential processing chain)\n- Specialist Delegation (router dispatches to domain experts)\n\n### Recommendations for Enhancement\n- **High Priority**: Error recovery with exponential backoff, heartbeat monitoring\n- **Medium Priority**: Priority queue processing, structured logging with correlation IDs\n- **Consider**: WebSocket messaging, circuit breakers, dead letter queues\n\nResults written to: `.swarm/results/req-controller-1765843189.json`\n",
+  "durationMs": 96611,
+  "exitCode": 0,
+  "completedAt": "2025-12-16T00:02:41.542Z"
+}

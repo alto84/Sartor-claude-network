@@ -1,0 +1,13 @@
+{
+  "content": "\n      Analysis complete. Based on measured test results (n=50 samples):\n      - 47 tests passed, 3 ...",
+  "timestamp": "2025-12-16T03:39:58.299Z",
+  "results": [],
+  "passed": true,
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "info": 0
+  },
+  "testRun": "e2e-workflow",
+  "originalContent": "\n      Analysis complete. Based on measured test results (n=50 samples):\n      - 47 tests passed, 3 tests failed\n      - Pass rate: 94.0% (calculated from 47/50)\n\n      Limitations: Sample size is small; results are preliminary.\n      Requires external validation for production use.\n    "
+}

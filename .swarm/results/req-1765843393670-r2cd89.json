@@ -1,0 +1,8 @@
+{
+  "requestId": "req-1765843393670-r2cd89",
+  "status": "success",
+  "output": "## Results\n\n**Total JSON files in .swarm directory: 128**\n\n### Top 5 Largest Files:\n\n| File | Size |\n|------|------|\n| `.swarm/memory/episodic/2025-12-15.json` | 966,762 bytes (944 KB) |\n| `.swarm/memory/working/agent-3.json` | 949,873 bytes (928 KB) |\n| `.swarm/memory/semantic/research.json` | 239,390 bytes (234 KB) |\n| `.swarm/memory/semantic/planning.json` | 239,383 bytes (234 KB) |\n| `.swarm/memory/semantic/review.json` | 238,470 bytes (233 KB) |\n\n### Distribution by Directory:\n- `results/` - Request result files\n- `memory/` - Working memory, semantic, episodic, and validation data\n- `context/` - Context files for requests\n- `artifacts/` - Benchmark and test artifacts\n- `instructions/` - Mission templates\n",
+  "durationMs": 17282,
+  "exitCode": 0,
+  "completedAt": "2025-12-16T00:03:30.952Z"
+}

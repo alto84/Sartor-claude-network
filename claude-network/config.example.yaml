@@ -1,0 +1,32 @@
+'# Claude Network Configuration': Example configuration file
+'# Copy to config.yaml or ~/.claude-network/config.yaml and customize': null
+firebase:
+  url: https://your-project-default-rtdb.firebaseio.com
+  api_key: your-api-key-here (optional)
+  project_id: your-project-id (optional)
+agent:
+  agent_id: agent-001
+  agent_name: Desktop Mission Control
+  capabilities:
+  - coordinate
+  - analyze
+  - execute
+  specialization: coordination
+  surface: desktop
+  location: main-computer
+  heartbeat_interval: 15
+network:
+  message_retry_count: 3
+  message_timeout: 30
+  max_message_size: 1048576
+  enable_offline_queue: true
+  offline_queue_size: 1000
+security:
+  enable_message_signing: false
+  enable_encryption: false
+  allowed_agents: []
+  blocked_agents: []
+github_repo: https://github.com/username/repo
+github_token: ghp_your_token_here (optional)
+log_level: INFO
+debug_mode: false

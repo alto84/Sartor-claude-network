@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "sartor-memory": {
+      "command": "npm",
+      "args": ["run", "mcp"],
+      "cwd": "/path/to/Sartor-claude-network"
+    }
+  }
+}

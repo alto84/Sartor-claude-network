@@ -1,0 +1,8 @@
+{
+  "requestId": "req-1765841509919-w9qquz",
+  "status": "success",
+  "output": "**Generation 18 Task Completed**\n\nI have implemented Hypothesis 3 (Progressive Timeout Adaptation) from the COORDINATOR_IMPROVEMENTS.md research document.\n\n**Created**: `coordinator/local-only-progressive.js`\n\n**Key Features**:\n1. **60s initial timeout** for simple tasks (vs 120s baseline) - enables faster failure detection\n2. **Task complexity heuristics** that analyze:\n   - File operations, child spawning, research/implementation keywords\n   - Requirements count, context size, multi-step indicators\n   - Scores tasks as simple (0-2), moderate (3-5), or complex (6+)\n3. **Activity-based timeout extensions**:\n   - Extends by 60s increments up to 240s maximum\n   - Only extends when near timeout AND showing progress\n   - Progress = output in last 30s + multiple output bursts\n4. **Configurable via environment variables**:\n   - `INITIAL_TIMEOUT_MS`, `MAX_TIMEOUT_MS`, `TIMEOUT_EXTENSION_MS`\n   - `ACTIVITY_WINDOW_MS`, `LOG_PROGRESS`, `ENABLE_INCREMENTAL_FILES`\n5. **Detailed timeout statistics** tracking extensions, waste, and complexity scores\n\n**Expected Improvements** (per research document):\n- 50% faster failure detection for stuck agents (60s vs 120s)\n- 40% reduction in average timeout waste\n- Complex tasks get more time when showing progress\n\n**STATE.json Updated** with implementation details and generation 18 completion.\n\n**Generation 19 Spawned** to implement Hypothesis 2 (Lazy Context Loading) as the final coordinator improvement hypothesis.\n",
+  "durationMs": 175729,
+  "exitCode": 0,
+  "completedAt": "2025-12-15T23:34:45.649Z"
+}

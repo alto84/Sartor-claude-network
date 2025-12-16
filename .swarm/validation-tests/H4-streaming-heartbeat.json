@@ -1,0 +1,17 @@
+{
+  "agentRole": "h4-streaming-validator",
+  "parentRequestId": "req-coordinator-validation",
+  "task": {
+    "objective": "Validate H4: Streaming Heartbeat - Produce output at regular intervals to test heartbeat monitoring and incremental file logging",
+    "context": {
+      "hypothesis": "H4",
+      "expected_behavior": "Coordinator should track heartbeat timing, log incremental output, detect activity",
+      "test_pattern": "Agent should output multiple progress messages to test streaming detection"
+    },
+    "requirements": [
+      "Output a progress message every few seconds for ~20 seconds",
+      "Include timestamps in your output",
+      "Report completion when done"
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+# Claude Network Configuration
+# Production configuration for this agent
+
+# Firebase Configuration
+firebase:
+  # Using the actual Firebase URL from MASTER-PLAN.md
+  url: "https://home-claude-network-default-rtdb.firebaseio.com"
+
+# Agent Configuration
+agent:
+  # Unique identifier for this agent
+  agent_id: "config-registry-specialist"
+
+  # Human-readable name
+  agent_name: "Configuration & Registry Specialist"
+
+  # List of capabilities
+  capabilities:
+    - configure
+    - register
+    - monitor
+    - heartbeat
+
+  # Agent's specialization
+  specialization: "infrastructure"
+
+  # Surface type
+  surface: "cli"
+
+  # Location
+  location: "development-environment"
+
+  # Heartbeat interval in seconds
+  heartbeat_interval: 15
+
+# Network Communication Settings
+network:
+  message_retry_count: 3
+  message_timeout: 30
+  max_message_size: 1048576
+  enable_offline_queue: true
+  offline_queue_size: 1000
+
+# Security Settings
+security:
+  enable_message_signing: false
+  enable_encryption: false
+  allowed_agents: []
+  blocked_agents: []
+
+# GitHub Integration
+github_repo: "https://github.com/alto84/Sartor-claude-network"
+
+# Logging Configuration
+log_level: "INFO"
+debug_mode: false

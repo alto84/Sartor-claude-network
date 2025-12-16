@@ -1,0 +1,17 @@
+{
+  "agentRole": "h1-health-validator",
+  "parentRequestId": "req-coordinator-validation",
+  "task": {
+    "objective": "Validate H1: Health Check Probe - This task should trigger a health check before agent spawn. Report back with a timestamp and confirm you received this task.",
+    "context": {
+      "hypothesis": "H1",
+      "expected_behavior": "Health check should complete in ~10-15s before main task execution",
+      "validation_metric": "health_check_duration_ms"
+    },
+    "requirements": [
+      "Report the timestamp when you first started processing",
+      "Confirm you can read and write files",
+      "Complete within 30 seconds total"
+    ]
+  }
+}

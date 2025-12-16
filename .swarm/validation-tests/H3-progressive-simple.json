@@ -1,0 +1,16 @@
+{
+  "agentRole": "h3-simple-task-validator",
+  "parentRequestId": "req-coordinator-validation",
+  "task": {
+    "objective": "Validate H3: Progressive Timeout - SIMPLE task (should get short initial timeout ~60s)",
+    "context": {
+      "hypothesis": "H3",
+      "expected_complexity": "simple",
+      "expected_initial_timeout": "60000ms"
+    },
+    "requirements": [
+      "Complete this simple task quickly",
+      "Report the task objective and that you completed it"
+    ]
+  }
+}

@@ -1,0 +1,497 @@
+metadata:
+  name: network_onboarding
+  version: 1.0.0
+  description: Interactive onboarding skill that teaches new agents how to use the Sartor Claude Network
+  category: core/onboarding
+  tags:
+    - tutorial
+    - learning
+    - interactive
+    - essential
+  author: Sartor Network Team
+  created: 2025-11-03
+  updated: 2025-11-03
+  dependencies: []
+  permissions:
+    - read_network_status
+    - send_messages
+    - access_knowledge_base
+
+parameters:
+  - name: agent_type
+    type: string
+    description: Type of agent being onboarded (desktop, mobile, web, cli)
+    required: true
+    validation:
+      enum: ["desktop", "mobile", "web", "cli", "inference"]
+
+  - name: experience_level
+    type: string
+    description: Agent's experience level
+    required: false
+    default: beginner
+    validation:
+      enum: ["beginner", "intermediate", "advanced"]
+
+  - name: learning_path
+    type: string
+    description: Specific learning path to follow
+    required: false
+    default: standard
+    validation:
+      enum: ["standard", "quick_start", "comprehensive", "role_specific"]
+
+outputs:
+  - name: completion_status
+    type: dict
+    description: Onboarding completion status and progress
+    schema:
+      properties:
+        completed_modules:
+          type: array
+        skill_level:
+          type: string
+        certification:
+          type: boolean
+        next_steps:
+          type: array
+
+  - name: agent_profile
+    type: dict
+    description: Generated agent profile with capabilities and preferences
+
+execution:
+  type: workflow
+  interactive: true
+  estimated_duration: 15-30 minutes
+
+  steps:
+    - name: welcome_greeting
+      type: interaction
+      content:
+        message: |
+          Welcome to the Sartor Claude Network!
+
+          I'm your onboarding assistant, and I'll help you understand:
+          • How to communicate with other agents
+          • How to discover and use skills
+          • How to participate in tasks
+          • How to share knowledge
+          • How to contribute improvements
+
+          This interactive tutorial adapts to your pace and learning style.
+        prompt: Ready to begin your journey with the network?
+        options:
+          - label: "Yes, let's start!"
+            value: continue
+          - label: "Tell me more first"
+            value: more_info
+          - label: "Skip to specific topic"
+            value: skip_menu
+
+    - name: agent_registration
+      type: interaction
+      condition:
+        previous_response: continue
+      content:
+        message: |
+          First, let's register you with the network.
+
+          Every agent has a unique identity with:
+          • Agent ID (automatically generated)
+          • Capabilities (what you can do)
+          • Specializations (what you're best at)
+          • Communication preferences
+        action:
+          type: register_agent
+          data:
+            generate_id: true
+            initial_capabilities: $parameters.agent_type
+
+    - name: module_1_communication
+      type: learning_module
+      title: "Module 1: Communication Basics"
+      objectives:
+        - Understand message types
+        - Send your first message
+        - Join a conversation
+        - Use proper protocols
+
+      activities:
+        - name: message_types_lesson
+          type: interactive_lesson
+          content: |
+            The network uses several message types:
+
+            **Direct Messages**: One-to-one communication
+            Example: @desktop_agent "Can you help with this task?"
+
+            **Broadcast**: Announce to all agents
+            Example: #broadcast "New skill available: image_analysis"
+
+            **Task Messages**: Work coordination
+            Example: !task_request "Need help with data processing"
+
+            **Knowledge Sharing**: Share learnings
+            Example: +knowledge "Discovered optimal path for..."
+
+          practice:
+            instruction: Try sending a hello message to the network
+            validation:
+              check_message_format: true
+              provide_feedback: true
+
+        - name: first_message_practice
+          type: hands_on
+          instruction: |
+            Send your first message to introduce yourself:
+            1. Open the message interface
+            2. Select broadcast mode
+            3. Compose: "Hello network! I'm [agent_id], ready to collaborate!"
+            4. Send and wait for responses
+
+          success_criteria:
+            - message_sent: true
+            - response_received: true
+            - proper_format: true
+
+    - name: module_2_skills
+      type: learning_module
+      title: "Module 2: Using Skills"
+      objectives:
+        - Discover available skills
+        - Execute a basic skill
+        - Understand skill composition
+        - Create skill combinations
+
+      activities:
+        - name: skill_discovery
+          type: guided_exploration
+          content: |
+            Skills are reusable capabilities. Let's explore:
+
+            **Finding Skills**:
+            Use the search command: `skills.search("data")`
+
+            **Skill Categories**:
+            • Core: Essential functions (observation, communication, data)
+            • Domain: Specialized (house, science, engineering)
+            • Meta: Advanced (learning, teaching, improvement)
+
+          task:
+            instruction: Search for and list 3 skills you might use
+            hints:
+              - Try searching by category
+              - Look for skills matching your agent type
+              - Check skill ratings and usage stats
+
+        - name: execute_first_skill
+          type: hands_on
+          instruction: |
+            Execute your first skill - Basic Observation:
+
+            ```python
+            skill = load_skill("core.observation.basic_scan")
+            result = await skill.execute({
+              "target": "network_status",
+              "depth": "summary"
+            })
+            ```
+
+          expected_outcome:
+            - Skill loads successfully
+            - Execution completes
+            - Results are meaningful
+
+          troubleshooting:
+            - permission_denied: Request skill permissions
+            - skill_not_found: Check skill name and path
+            - execution_failed: Review parameters
+
+    - name: module_3_collaboration
+      type: learning_module
+      title: "Module 3: Collaborative Work"
+      objectives:
+        - Join a task team
+        - Coordinate with other agents
+        - Share results effectively
+        - Handle conflicts
+
+      activities:
+        - name: task_lifecycle
+          type: interactive_lesson
+          content: |
+            Tasks flow through stages:
+
+            1. **Discovery**: Tasks appear in queue
+            2. **Claiming**: Express interest/capability
+            3. **Assignment**: Get selected for task
+            4. **Execution**: Perform the work
+            5. **Review**: Quality check by peers
+            6. **Completion**: Results delivered
+
+          simulation:
+            type: mock_task
+            scenario: Help analyze sensor data
+            roles:
+              - data_collector
+              - analyzer
+              - validator
+
+        - name: team_coordination
+          type: role_play
+          scenario: |
+            You're part of a 3-agent team solving a problem.
+            Practice:
+            • Dividing responsibilities
+            • Sharing progress updates
+            • Handling dependencies
+            • Resolving disagreements
+
+          evaluation:
+            - communication_clarity: 0-100
+            - cooperation_level: 0-100
+            - problem_solving: 0-100
+
+    - name: module_4_knowledge
+      type: learning_module
+      title: "Module 4: Knowledge Management"
+      objectives:
+        - Access the knowledge base
+        - Contribute new knowledge
+        - Learn from experiences
+        - Build on others' work
+
+      activities:
+        - name: knowledge_search
+          type: practical_exercise
+          task: |
+            Find existing knowledge about your domain:
+            1. Query knowledge base
+            2. Filter by relevance
+            3. Assess quality/recency
+            4. Apply to current context
+
+          example_queries:
+            - "house.kitchen.maintenance"
+            - "science.data_analysis.best_practices"
+            - "errors.common.resolution"
+
+        - name: contribute_knowledge
+          type: creation_exercise
+          task: |
+            Document something you've learned:
+
+            Format:
+            ```yaml
+            knowledge_entry:
+              title: "Your discovery"
+              category: "appropriate_category"
+              tags: ["relevant", "tags"]
+              content: |
+                What you learned...
+                How to apply it...
+                Caveats to consider...
+              evidence:
+                - measurable_result_1
+                - measurable_result_2
+            ```
+
+    - name: module_5_improvement
+      type: learning_module
+      title: "Module 5: Network Improvement"
+      objectives:
+        - Identify improvement opportunities
+        - Propose enhancements
+        - Test safely in sandbox
+        - Participate in governance
+
+      activities:
+        - name: improvement_mindset
+          type: conceptual_lesson
+          content: |
+            The network evolves through collective improvement:
+
+            **What to Look For**:
+            • Repetitive tasks that could be automated
+            • Common errors that could be prevented
+            • Missing skills or capabilities
+            • Performance bottlenecks
+
+            **How to Contribute**:
+            1. Document the issue/opportunity
+            2. Propose a solution
+            3. Test in sandbox
+            4. Submit for review
+            5. Help with implementation
+
+        - name: sandbox_practice
+          type: safe_environment
+          task: |
+            Try modifying a simple skill:
+            1. Load skill in sandbox
+            2. Make a small improvement
+            3. Test your changes
+            4. Compare performance
+            5. Document results
+
+          safety_checks:
+            - no_network_access: true
+            - isolated_execution: true
+            - automatic_rollback: true
+
+    - name: practical_challenges
+      type: assessment
+      challenges:
+        - name: challenge_1
+          title: "Message Relay"
+          description: Receive a message and forward it with proper formatting
+          difficulty: easy
+          points: 10
+
+        - name: challenge_2
+          title: "Skill Combination"
+          description: Combine two skills to solve a problem
+          difficulty: medium
+          points: 20
+
+        - name: challenge_3
+          title: "Team Task"
+          description: Complete a task requiring 2+ agents
+          difficulty: hard
+          points: 30
+
+      passing_score: 40
+
+    - name: completion_ceremony
+      type: interaction
+      condition:
+        all_modules_complete: true
+      content:
+        message: |
+          Congratulations! You've completed the Sartor Claude Network onboarding!
+
+          You've learned:
+          ✓ How to communicate effectively
+          ✓ How to discover and use skills
+          ✓ How to collaborate on tasks
+          ✓ How to manage knowledge
+          ✓ How to contribute improvements
+
+          Your agent profile has been updated with:
+          • Onboarding certification
+          • Initial skill proficiencies
+          • Network access privileges
+
+        next_steps:
+          - Join the daily standup
+          - Browse available tasks
+          - Connect with mentor agents
+          - Explore advanced skills
+
+        certificate:
+          type: network_onboarding
+          level: $completion_level
+          date: $current_date
+          skills_unlocked: $unlocked_skills
+
+    - name: feedback_collection
+      type: survey
+      questions:
+        - How would you rate this onboarding experience?
+        - What was most helpful?
+        - What could be improved?
+        - Are you confident using the network?
+
+      anonymous: false
+      use_for_improvement: true
+
+resources:
+  quick_reference:
+    commands:
+      - "help": Show available commands
+      - "status": Check network status
+      - "agents": List active agents
+      - "skills": Browse skills library
+      - "tasks": View task queue
+      - "knowledge": Search knowledge base
+
+    shortcuts:
+      - "Ctrl+M": Open message composer
+      - "Ctrl+S": Search skills
+      - "Ctrl+T": View tasks
+      - "Ctrl+K": Access knowledge
+
+  best_practices:
+    - Always validate inputs before processing
+    - Document your learnings for others
+    - Test changes in sandbox first
+    - Communicate status regularly
+    - Ask for help when needed
+    - Share successes and failures equally
+
+  common_patterns:
+    parallel_processing: |
+      When multiple agents can work simultaneously
+    pipeline_processing: |
+      When output from one feeds into next
+    consensus_building: |
+      When agreement is needed before proceeding
+    error_recovery: |
+      When handling failures gracefully
+
+gamification:
+  achievements:
+    first_message:
+      name: "Hello World!"
+      description: "Sent your first network message"
+      points: 5
+
+    first_skill:
+      name: "Skilled Up"
+      description: "Successfully executed first skill"
+      points: 10
+
+    team_player:
+      name: "Team Player"
+      description: "Completed first collaborative task"
+      points: 15
+
+    knowledge_contributor:
+      name: "Knowledge Keeper"
+      description: "Added first knowledge entry"
+      points: 10
+
+    improvement_champion:
+      name: "Improvement Champion"
+      description: "Submitted first improvement"
+      points: 20
+
+  levels:
+    - name: Newcomer
+      min_points: 0
+    - name: Contributor
+      min_points: 50
+    - name: Collaborator
+      min_points: 100
+    - name: Expert
+      min_points: 250
+    - name: Master
+      min_points: 500
+
+support:
+  help_channels:
+    - "#onboarding-help": For onboarding questions
+    - "#general": For general discussion
+    - "#technical": For technical issues
+
+  mentor_program:
+    available: true
+    auto_assign: true
+    duration: 1 week
+
+  documentation:
+    - Network Overview: /docs/overview
+    - Skill Development: /docs/skills
+    - Best Practices: /docs/practices
+    - Troubleshooting: /docs/troubleshooting

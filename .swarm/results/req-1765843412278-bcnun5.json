@@ -1,0 +1,8 @@
+{
+  "requestId": "req-1765843412278-bcnun5",
+  "status": "success",
+  "output": "All JSON files in `.swarm/results` have valid syntax.\n\n## Validation Summary\n\n| Metric | Count |\n|--------|-------|\n| **Total Files** | 53 |\n| **Valid JSON** | 53 |\n| **Invalid JSON** | 0 |\n\n**Result**: All 53 JSON files in `.swarm/results/` pass syntax validation. No malformed files detected.\n",
+  "durationMs": 15849,
+  "exitCode": 0,
+  "completedAt": "2025-12-16T00:03:48.127Z"
+}

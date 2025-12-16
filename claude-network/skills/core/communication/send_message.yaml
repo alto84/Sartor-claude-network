@@ -1,0 +1,228 @@
+metadata:
+  name: send_message
+  version: 1.0.0
+  description: Send messages to other agents in the network using various protocols and channels
+  category: core/communication
+  tags:
+    - communication
+    - messaging
+    - essential
+    - async
+  author: Sartor Network Core
+  created: 2025-11-03
+  updated: 2025-11-03
+  dependencies: []
+  permissions:
+    - network_write
+    - agent_communication
+
+parameters:
+  - name: recipient
+    type: string
+    description: Target recipient (agent_id, broadcast, or channel)
+    required: true
+    validation:
+      pattern: "^(@[a-zA-Z0-9_-]+|#[a-zA-Z0-9_-]+|broadcast)$"
+
+  - name: message
+    type: string
+    description: Message content to send
+    required: true
+    validation:
+      min: 1
+      max: 4096
+
+  - name: message_type
+    type: string
+    description: Type of message being sent
+    required: false
+    default: general
+    validation:
+      enum:
+        - general
+        - task
+        - alert
+        - knowledge
+        - status
+        - query
+        - response
+
+  - name: priority
+    type: string
+    description: Message priority level
+    required: false
+    default: normal
+    validation:
+      enum:
+        - low
+        - normal
+        - high
+        - urgent
+
+  - name: metadata
+    type: dict
+    description: Additional message metadata
+    required: false
+    default: {}
+
+  - name: require_receipt
+    type: boolean
+    description: Whether to require delivery confirmation
+    required: false
+    default: false
+
+  - name: timeout
+    type: integer
+    description: Timeout in seconds for delivery confirmation
+    required: false
+    default: 30
+    validation:
+      min: 1
+      max: 300
+
+outputs:
+  - name: message_id
+    type: string
+    description: Unique identifier for the sent message
+
+  - name: timestamp
+    type: string
+    description: ISO timestamp when message was sent
+
+  - name: delivery_status
+    type: dict
+    description: Delivery status information
+    schema:
+      properties:
+        sent:
+          type: boolean
+        delivered:
+          type: boolean
+        receipt_confirmed:
+          type: boolean
+        recipients_count:
+          type: integer
+        failed_recipients:
+          type: array
+
+  - name: response_channel
+    type: string
+    description: Channel ID for receiving responses
+
+execution:
+  type: workflow
+  steps:
+    - name: validate_recipient
+      description: Validate and resolve recipient
+      actions:
+        - type: check_recipient_exists
+        - type: resolve_aliases
+        - type: check_permissions
+
+    - name: format_message
+      description: Format message with proper structure
+      actions:
+        - type: add_headers
+        - type: apply_formatting
+        - type: add_metadata
+        - type: sign_message
+
+    - name: route_message
+      description: Determine best route for delivery
+      condition:
+        if_broadcast:
+          then: use_broadcast_channel
+        if_direct:
+          then: use_direct_channel
+        if_channel:
+          then: use_topic_channel
+
+    - name: send_message
+      description: Send the message
+      actions:
+        - type: queue_message
+        - type: attempt_delivery
+        - type: handle_retries
+      retry:
+        max_attempts: 3
+        backoff: exponential
+
+    - name: confirm_delivery
+      description: Confirm message delivery if required
+      condition:
+        require_receipt: true
+      actions:
+        - type: wait_for_receipt
+        - type: timeout_handler
+
+    - name: log_message
+      description: Log message for audit trail
+      actions:
+        - type: store_in_history
+        - type: update_metrics
+
+examples:
+  - name: simple_direct_message
+    description: Send a direct message to another agent
+    inputs:
+      recipient: "@desktop_agent"
+      message: "Can you help with task analysis?"
+      message_type: query
+
+  - name: broadcast_alert
+    description: Send an urgent broadcast to all agents
+    inputs:
+      recipient: broadcast
+      message: "System maintenance in 5 minutes"
+      message_type: alert
+      priority: urgent
+
+  - name: task_coordination
+    description: Coordinate on a task with confirmation
+    inputs:
+      recipient: "#task_team_alpha"
+      message: "Ready to proceed with phase 2"
+      message_type: task
+      require_receipt: true
+      metadata:
+        task_id: "task_12345"
+        phase: 2
+
+performance:
+  average_latency_ms: 50
+  throughput_per_second: 1000
+  reliability: 99.9
+
+error_handling:
+  - error: recipient_not_found
+    action: return_error
+    message: "Recipient does not exist or is not accessible"
+
+  - error: network_timeout
+    action: retry_with_backoff
+    max_retries: 3
+
+  - error: permission_denied
+    action: return_error
+    message: "Insufficient permissions to send to this recipient"
+
+  - error: message_too_large
+    action: split_message
+    chunk_size: 4096
+
+testing:
+  unit_tests:
+    - test_valid_recipients
+    - test_message_formatting
+    - test_priority_handling
+    - test_delivery_confirmation
+
+  integration_tests:
+    - test_cross_agent_messaging
+    - test_broadcast_delivery
+    - test_channel_messaging
+
+  performance_tests:
+    - test_high_volume
+    - test_latency_under_load
+    - test_concurrent_sends

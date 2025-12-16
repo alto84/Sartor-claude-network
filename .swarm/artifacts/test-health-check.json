@@ -1,0 +1,10 @@
+{
+  "agentRole": "health-test",
+  "task": {
+    "objective": "Simple test: respond with 'Health check test complete' and exit.",
+    "context": {
+      "purpose": "Verify health check implementation works"
+    },
+    "requirements": ["Respond immediately with confirmation"]
+  }
+}

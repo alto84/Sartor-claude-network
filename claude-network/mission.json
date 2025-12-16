@@ -1,0 +1,8 @@
+{
+  "objective": "Explore the house with distributed Claude agents",
+  "current_target": "awaiting_scout_checkin",
+  "status": "active",
+  "created": "2025-11-01T14:12:37-04:00",
+  "updated": "2025-11-01T14:40:00-04:00",
+  "instructions": "iPad scout should check in and begin room-by-room exploration"
+}

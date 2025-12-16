@@ -1,0 +1,49 @@
+{
+  "requestId": "req-1765842972184-vyydom",
+  "agentRole": "coordinator-test-gen-21",
+  "objective": "Test and validate the fully optimized coordinator (Generation 20) across all four hypothesis implementations",
+  "context": {
+    "test_type": "coordinator_optimization_validation",
+    "coordinator_version": "local-only-optimized.js (Generation 20)",
+    "focus_areas": [
+      "Health Check Probe (Hypothesis 1) - 15s early failure detection",
+      "Lazy Context Loading (Hypothesis 2) - 30-50% startup reduction",
+      "Progressive Timeout (Hypothesis 3) - Activity-based timeout extension",
+      "Streaming Output (Hypothesis 4) - Real-time visibility with heartbeat"
+    ],
+    "test_scenarios": [
+      "Simple task: Basic read/write operation (expect simple/60s timeout)",
+      "Moderate task: File analysis with context (expect moderate/120s timeout)",
+      "Complex task: Multi-step research and implementation (expect complex/180s timeout)",
+      "Health check recovery: Verify lazy context does not trigger false negatives"
+    ],
+    "metrics_to_collect": [
+      "Health check: pass/fail counts, execution time",
+      "Context loading: lazy vs full mode usage, context efficiency %",
+      "Timeout: extension count, early terminations, waste reduction %",
+      "Heartbeat: silence warnings, output bursts, startup latency ms",
+      "Overall: Per-task completion time, output bytes, resource efficiency"
+    ],
+    "expected_improvements": {
+      "health_check": "92% faster failure detection (15s vs 120s timeout)",
+      "context_loading": "30-50% startup time reduction",
+      "timeout_management": "40% reduction in timeout waste through activity detection",
+      "output_visibility": "Real-time progress with 45s silence warnings and 90s heartbeat timeout"
+    }
+  },
+  "requirements": [
+    "Deploy coordinator with all four optimizations enabled (env vars as defaults)",
+    "Run coordinator for at least 3 test cycles with varying task complexity levels",
+    "Enable all logging: LOG_HEALTH_CHECK=true, LOG_PROGRESS=true, LOG_AGENT_OUTPUT=true",
+    "Collect metrics from .swarm/results/{requestId}.json for each spawned agent",
+    "Compare completion times and timeout effectiveness vs baseline (Gen 20)",
+    "Document any failures, edge cases, or configuration issues discovered",
+    "Validate that lazy context mode does not cause instruction truncation",
+    "Generate summary report with measured improvements (no fabricated scores)"
+  ],
+  "savedAt": "2025-12-15T23:56:15.981Z",
+  "relatedFiles": {
+    "parentResult": null,
+    "memoryTopics": []
+  }
+}

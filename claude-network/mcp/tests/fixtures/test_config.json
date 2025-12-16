@@ -1,0 +1,28 @@
+{
+  "server": {
+    "name": "test-mcp-server",
+    "version": "1.0.0-test",
+    "description": "Test MCP Server",
+    "max_concurrent_requests": 5,
+    "request_timeout": 30
+  },
+  "firebase": {
+    "url": "https://test-firebase.firebaseio.com",
+    "timeout": 10,
+    "max_retries": 2
+  },
+  "github": {
+    "repo": "test/test-repo",
+    "default_branch": "main",
+    "api_timeout": 10
+  },
+  "logging": {
+    "level": "DEBUG",
+    "file": "/tmp/mcp-test.log"
+  },
+  "rate_limiting": {
+    "enabled": false,
+    "max_requests_per_minute": 100,
+    "max_requests_per_hour": 5000
+  }
+}

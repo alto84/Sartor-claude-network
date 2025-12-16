@@ -1,0 +1,189 @@
+=== Optimized Coordinator Agent Log ===
+Request ID: test-moderate-gen20-001
+Role: analysis-agent
+Started: 2025-12-15T23:58:37.802Z
+
+--- Hypothesis 1: Health Check ---
+Status: Will run before agent spawn
+
+--- Hypothesis 2: Lazy Context ---
+Context Mode: lazy
+Context Size: 1231 chars
+Requirements: 6 total
+
+--- Hypothesis 3: Progressive Timeout ---
+Complexity: complex (score: 10)
+Initial Timeout: 180000ms
+Max Timeout: 240000ms
+
+--- Hypothesis 4: Streaming ---
+Incremental logging: enabled
+==========================================
+
+Now I have the complete file. Let me create a comprehensive summary of all four hypothesis implementations.
+
+---
+
+## Summary: Local-Only Optimized Coordinator
+
+### Overview
+The `local-only-optimized.js` file is a Claude Swarm coordinator that combines four optimization hypotheses to improve agent spawning, execution, and monitoring. The file is approximately 1200 lines and manages multi-agent workflows with file-based request handling.
+
+---
+
+## Hypothesis 1: Health Check Probe
+
+**Purpose**: Verify agent can initialize before committing to full task execution.
+
+**Configuration Options**:
+| Environment Variable | Default | Description |
+|---------------------|---------|-------------|
+| `HEALTH_CHECK_TIMEOUT_MS` | 15000 (15s) | Max time to wait for health check |
+| `SKIP_HEALTH_CHECK` | false | Set to 'true' to bypass health checks |
+| `LOG_HEALTH_CHECK` | false | Enable logging to `health-checks.log` |
+
+**Expected Behavior**:
+1. Before spawning any agent, sends a simple prompt asking for "READY" response
+2. Waits up to 15 seconds for the response
+3. If response received: proceeds to spawn the actual agent
+4. If timeout/failure: marks request as failed immediately with `HEALTH_CHECK_FAILED` status
+5. Tracks success/failure counts separately
+
+**Key Benefit**: 92% faster failure detection (10-15s vs 120s timeout for broken agents)
+
+---
+
+## Hypothesis 2: Lazy Context Loading
+
+**Purpose**: Reduce startup time by providing minimal context initially, with full context available on-demand.
+
+**Configuration Options**:
+| Environment Variable | Default | Description |
+|---------------------|---------|-------------|
+| `CONTEXT_MODE` | 'lazy' | Either 'lazy' or 'full' |
+| `MAX_ESSENTIAL_REQUIREMENTS` | 3 | Requirements shown inline |
+| `MAX_INLINE_CONTEXT_CHARS` | 500 | Threshold for lazy loading |
+| `ENABLE_CONTEXT_FILES` | true | Save full context to files |
+
+**Expected Behavior**:
+1. Analyzes context size on each request
+2. If context > 500 chars and mode is 'lazy':
+   - Saves full context to `.swarm/context/{requestId}.json`
+   - Provides only objective, first 3 requirements, and file pointers in prompt
+   - Agent can load full context via `cat` command if needed
+3. Small contexts are included inline regardless of mode
+4. Tracks whether agents actually loaded context files
+
+**Key Benefit**: 30-50% startup time reduction for large context tasks
+
+---
+
+## Hypothesis 3: Progressive Timeout
+
+**Purpose**: Dynamically adjust timeout based on task complexity and observed progress.
+
+**Configuration Options**:
+| Environment Variable | Default | Description |
+|---------------------|---------|-------------|
+| `INITIAL_TIMEOUT_MS` | 60000 (60s) | Base timeout for simple tasks |
+| `MAX_TIMEOUT_MS` | 240000 (240s) | Maximum allowed timeout |
+| `TIMEOUT_EXTENSION_MS` | 60000 (60s) | Extension increment |
+| `ACTIVITY_WINDOW_MS` | 30000 (30s) | Window for detecting activity |
+| `MIN_OUTPUT_BURSTS` | 2 | Required output events for extension |
+| `PROGRESS_CHECK_INTERVAL_MS` | 15000 (15s) | Progress monitoring frequency |
+
+**Expected Behavior**:
+1. **Complexity Estimation** (at spawn time):
+   - Analyzes task objective for keywords (research, implement, spawn, etc.)
+   - Counts requirements and context size
+   - Assigns complexity score (0-20+):
+     - Score >= 6: "complex" → 180s initial timeout
+     - Score 3-5: "moderate" → 120s initial timeout
+     - Score < 3: "simple" → 60s initial timeout
+
+2. **Dynamic Extension**:
+   - Monitors output stream for activity bursts
+   - If agent is within 30s of timeout AND shows progress (2+ output bursts in last 30s):
+     - Extends timeout by 60s up to max (240s)
+   - Logs each extension
+
+**Key Benefit**: 40% reduction in timeout waste
+
+---
+
+## Hypothesis 4: Streaming Output + Heartbeat
+
+**Purpose**: Provide real-time visibility and detect silent/stuck agents.
+
+**Configuration Options**:
+| Environment Variable | Default | Description |
+|---------------------|---------|-------------|
+| `HEARTBEAT_CHECK_INTERVAL_MS` | 15000 (15s) | How often to check heartbeat |
+| `SILENCE_WARNING_MS` | 45000 (45s) | Warn after this much silence |
+| `HEARTBEAT_TIMEOUT_MS` | 90000 (90s) | Kill agent after this silence |
+| `LOG_AGENT_OUTPUT` | false | Log streaming output to console |
+| `ENABLE_INCREMENTAL_FILES` | true | Write `.stream.txt` log files |
+| `LOG_PROGRESS` | false | Verbose progress logging |
+
+**Expected Behavior**:
+1. **Real-time Streaming**:
+   - Captures all stdout/stderr from agent process
+   - Updates heartbeat timestamp on any output
+   - Tracks first output time (startup latency)
+   - Counts output bytes and burst events
+
+2. **Heartbeat Monitoring**:
+   - Checks agent silence every 15 seconds
+   - At 45s silence: logs warning (but continues)
+   - At 90s silence with no progress: kills agent with `HEARTBEAT_TIMEOUT`
+
+3. **Incremental Files** (when enabled):
+   - Creates `.swarm/logs/{requestId}.stream.txt`
+   - Writes header with configuration info
+   - Appends all output in real-time
+   - Finalizes with statistics on completion
+
+**Key Benefit**: Real-time visibility into agent progress
+
+---
+
+## Combined Statistics Tracked
+
+The coordinator tracks and reports:
+- Health check successes/failures
+- Lazy vs full context usage
+- Context efficiency (bytes loaded vs available)
+- Timeout extensions granted
+- Early timeouts (no extensions used)
+- Heartbeat timeouts
+- Silence warnings issued
+
+All stats are available via `getStatus()` and printed at shutdown.
+
+---
+
+## Integration Architecture
+
+The four hypotheses execute in sequence for each agent:
+1. **Phase 1**: Health check probe (H1)
+2. **Phase 2**: Analyze context size (H2) + task complexity (H3)
+3. **Phase 3**: Build prompt (lazy or full based on H2)
+4. **Phase 4**: Stream output with heartbeat monitoring (H4) + progressive timeout (H3)
+
+==========================================
+=== Final Statistics ===
+Completed: 2025-12-15T23:59:15.858Z
+Exit Code: 0
+Duration: 38057ms
+
+Health Check: 4033ms
+Startup Latency: 37814ms
+Context Mode: lazy
+Context Loaded: false
+Complexity: complex
+Extensions Applied: 0
+Final Timeout: 180000ms
+Timeout Waste: 141943ms
+Output Bytes: 5804
+Output Bursts: 2
+==========================================

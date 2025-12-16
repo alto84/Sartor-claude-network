@@ -1,0 +1,8 @@
+{
+  "requestId": "req-stress-test",
+  "status": "failed",
+  "output": "",
+  "durationMs": 121786,
+  "exitCode": null,
+  "completedAt": "2025-12-16T00:04:29.140Z"
+}

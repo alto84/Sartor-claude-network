@@ -1,0 +1,47 @@
+
+╔═══════════════════════════════════════════════════════════════╗
+║     CLAUDE SWARM - Fully Optimized Coordinator (Gen 20)      ║
+║   Combining: Health + Lazy + Progressive + Streaming         ║
+╠═══════════════════════════════════════════════════════════════╣
+║  [H1] Health Check: 15s timeout, skip=false                 ║
+║  [H2] Lazy Context: lazy, max inline=500 chars              ║
+║  [H3] Progressive:  60s-240s, +60s ext                      ║
+║  [H4] Heartbeat:    45s warn, 90s timeout                   ║
+╠═══════════════════════════════════════════════════════════════╣
+║  Max concurrent: 2                                          ║
+║  Swarm directory: .swarm                                    ║
+║  Incremental files: true                                    ║
+╚═══════════════════════════════════════════════════════════════╝
+
+📂 Watching: .swarm/requests
+🔍 Waiting for agent requests...
+   Drop JSON files in: .swarm/requests/
+
+
+🛑 Shutting down coordinator...
+
+════════════════════════════════════════
+  FINAL STATISTICS
+════════════════════════════════════════
+  Completed: 0
+  Failed: 0
+
+  [H1] Health Check:
+       Successes: 0
+       Failures: 0
+
+  [H2] Lazy Context:
+       Lazy used: 0
+       Full used: 0
+       Efficiency: 0.0%
+
+  [H3] Progressive Timeout:
+       Extensions: 0
+       Early timeouts: 0
+
+  [H4] Heartbeat:
+       Timeouts: 0
+       Silence warnings: 0
+════════════════════════════════════════
+
+👋 Goodbye!

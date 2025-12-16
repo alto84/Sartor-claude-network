@@ -1,0 +1,8 @@
+{
+  "requestId": "req-1765838634059-8u7jws",
+  "status": "success",
+  "output": "## Integration Test Complete\n\n**All 4 framework components validated successfully:**\n\n| Component | Location | Status |\n|-----------|----------|--------|\n| memory-store.ts | `framework/memory/` | Valid TypeScript |\n| validator.ts | `framework/validation/` | Valid TypeScript |\n| skill-registry.json | `framework/skills/` | Valid JSON |\n| bootstrap-config.json | `framework/bootstrap/` | Valid JSON |\n\n**Key findings:**\n- TypeScript files have proper interfaces, exports, and type annotations\n- JSON files are well-formed and contain expected schema structures\n- Components are designed to integrate (validator implements anti-fabrication from CLAUDE.md, config enforces it)\n- Skill registry defines 6 skills with proper load ordering\n\n**Test report written to**: `.swarm/artifacts/INTEGRATION_TEST_RESULTS.md`\n",
+  "durationMs": 87506,
+  "exitCode": 0,
+  "completedAt": "2025-12-15T22:45:21.566Z"
+}

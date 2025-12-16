@@ -1,0 +1,129 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+║           DELEGATION ENFORCEMENT SYSTEM - QUICK REFERENCE                 ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                           ║
+║  STATUS: ACTIVE AND ENFORCED                                             ║
+║  Updated: 2025-12-11                                                     ║
+║                                                                           ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║  WHAT'S BLOCKED                                                          ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                           ║
+║  Orchestrator CANNOT Edit or Write to:                                   ║
+║    • src/*        - Source code implementation                           ║
+║    • lib/*        - Library code                                         ║
+║    • services/*   - Service implementations                              ║
+║                                                                           ║
+║  Exit code: 2 (BLOCKS tool execution entirely)                           ║
+║                                                                           ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║  WHAT'S ALLOWED                                                          ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                           ║
+║  Orchestrator CAN Edit or Write to:                                      ║
+║    • .claude/*    - Configuration and bootstrap                          ║
+║    • docs/*       - Documentation                                        ║
+║    • *.md         - Markdown files                                       ║
+║    • Root configs - package.json, tsconfig.json, etc.                    ║
+║                                                                           ║
+║  Also allowed:                                                           ║
+║    • Bash commands (no blocking)                                         ║
+║    • Grep/Glob (soft reminder after 3+ searches)                         ║
+║    • Read operations (no restrictions)                                   ║
+║                                                                           ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║  HOW TO DELEGATE                                                         ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                           ║
+║  Step 1: Use the Task tool                                               ║
+║  Step 2: Assign a role (IMPLEMENTER, AUDITOR, CLEANER, PLANNER)         ║
+║  Step 3: Include this in the prompt:                                     ║
+║                                                                           ║
+║    ## IMPORTANT: Agent Role Identification                               ║
+║    You are a SUBAGENT. Set this environment variable:                    ║
+║    - CLAUDE_AGENT_ROLE=IMPLEMENTER                                       ║
+║                                                                           ║
+║    This exempts you from orchestrator delegation enforcement.            ║
+║                                                                           ║
+║  Step 4: Define scope, task, constraints, expected output                ║
+║                                                                           ║
+║  See: .claude/SPAWNING_TEMPLATE.md for full template                     ║
+║                                                                           ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║  HOW SUBAGENTS BYPASS ENFORCEMENT                                        ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                           ║
+║  The delegation-enforcer.sh script checks for:                           ║
+║    CLAUDE_AGENT_ROLE environment variable                                ║
+║                                                                           ║
+║  If set (non-empty): Exit 0 (allow operation)                            ║
+║  If unset (empty):   Exit 2 (block operation)                            ║
+║                                                                           ║
+║  Subagents should set this as their first action:                        ║
+║    export CLAUDE_AGENT_ROLE=IMPLEMENTER                                  ║
+║                                                                           ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║  FILES AND LOCATIONS                                                     ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                           ║
+║  User-Level (Global - All Projects):                                     ║
+║    ~/.claude/settings.json                                               ║
+║    ~/.claude/hooks/delegation-enforcer.sh                                ║
+║                                                                           ║
+║  Project-Level (Sartor-Claude-Network):                                  ║
+║    .claude/settings.json                                                 ║
+║    .claude/hooks/delegation-enforcer.sh                                  ║
+║    .claude/SPAWNING_TEMPLATE.md                                          ║
+║                                                                           ║
+║  Documentation:                                                          ║
+║    .claude/hooks/DELEGATION_ENFORCEMENT_SUMMARY.md (full details)        ║
+║    .claude/hooks/DELEGATION_ENFORCEMENT_QUICKREF.txt (this file)         ║
+║                                                                           ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║  TESTING AND VERIFICATION                                                ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                           ║
+║  Test orchestrator blocking:                                             ║
+║    ./.claude/hooks/delegation-enforcer.sh Edit "src/test.ts"             ║
+║    Expected: Exit 2, error message displayed                             ║
+║                                                                           ║
+║  Test subagent exemption:                                                ║
+║    CLAUDE_AGENT_ROLE=IMPLEMENTER \                                       ║
+║      ./.claude/hooks/delegation-enforcer.sh Edit "src/test.ts"           ║
+║    Expected: Exit 0, no output                                           ║
+║                                                                           ║
+║  Test config files allowed:                                              ║
+║    ./.claude/hooks/delegation-enforcer.sh Edit ".claude/test.json"       ║
+║    Expected: Exit 0, no output                                           ║
+║                                                                           ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║  TROUBLESHOOTING                                                         ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                           ║
+║  Problem: "Operation Blocked" error when trying to edit src/ files      ║
+║  Solution: Use Task tool to delegate to a subagent                       ║
+║                                                                           ║
+║  Problem: Subagent is still being blocked                                ║
+║  Solution: Ensure CLAUDE_AGENT_ROLE is set in subagent's environment    ║
+║            Check: echo $CLAUDE_AGENT_ROLE                                ║
+║                                                                           ║
+║  Problem: Need to bypass temporarily for testing                         ║
+║  Solution: export CLAUDE_AGENT_ROLE=TESTING                              ║
+║                                                                           ║
+║  Problem: Want to disable enforcement                                    ║
+║  Solution: Edit .claude/settings.json, set "enabled": false              ║
+║            (Not recommended - defeats purpose of system)                 ║
+║                                                                           ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║  KEY INSIGHT                                                             ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                           ║
+║  Exit code 2 from preToolUse hooks = BLOCK (prevents tool execution)    ║
+║  Exit code 0 from preToolUse hooks = ALLOW (tool proceeds normally)     ║
+║                                                                           ║
+║  This is the foundation of the enforcement system.                       ║
+║                                                                           ║
+║  Research findings documented in:                                        ║
+║    .claude/hooks/DELEGATION_REMINDER_SUMMARY.md                          ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝

@@ -1,0 +1,120 @@
+{
+  "name": "memory-benchmark",
+  "timestamp": "2025-12-15T23:00:02.753Z",
+  "nodeVersion": "v22.16.0",
+  "results": [
+    {
+      "name": "store-small-episodic",
+      "iterations": 500,
+      "totalTimeMs": 251.98115899999968,
+      "avgTimeMs": 0.5039623179999994,
+      "minTimeMs": 0.16655099999999834,
+      "maxTimeMs": 0.9798260000000028,
+      "opsPerSecond": 1984.275340205101
+    },
+    {
+      "name": "store-medium-semantic",
+      "iterations": 300,
+      "totalTimeMs": 36.48454800000019,
+      "avgTimeMs": 0.12161516000000062,
+      "minTimeMs": 0.057254999999997835,
+      "maxTimeMs": 0.4230169999999589,
+      "opsPerSecond": 8222.65908296297
+    },
+    {
+      "name": "store-large-working",
+      "iterations": 200,
+      "totalTimeMs": 34.72134699999987,
+      "avgTimeMs": 0.17360673499999935,
+      "minTimeMs": 0.06217399999997042,
+      "maxTimeMs": 0.4896180000000072,
+      "opsPerSecond": 5760.1451925238025
+    },
+    {
+      "name": "query-by-type",
+      "iterations": 500,
+      "totalTimeMs": 942.6032460000004,
+      "avgTimeMs": 1.8852064920000007,
+      "minTimeMs": 1.7281729999999698,
+      "maxTimeMs": 3.7532449999999926,
+      "opsPerSecond": 530.4458711783386
+    },
+    {
+      "name": "query-by-topic",
+      "iterations": 500,
+      "totalTimeMs": 858.0360040000028,
+      "avgTimeMs": 1.7160720080000056,
+      "minTimeMs": 1.5682130000000143,
+      "maxTimeMs": 3.518814999999904,
+      "opsPerSecond": 582.7261299864969
+    },
+    {
+      "name": "query-by-agent",
+      "iterations": 500,
+      "totalTimeMs": 947.2770990000013,
+      "avgTimeMs": 1.8945541980000025,
+      "minTimeMs": 1.610809999999674,
+      "maxTimeMs": 3.5872840000001815,
+      "opsPerSecond": 527.8286580851875
+    },
+    {
+      "name": "query-text-search",
+      "iterations": 300,
+      "totalTimeMs": 533.3919839999971,
+      "avgTimeMs": 1.7779732799999906,
+      "minTimeMs": 1.6213369999995848,
+      "maxTimeMs": 3.347443999999996,
+      "opsPerSecond": 562.4381486767929
+    },
+    {
+      "name": "query-date-range",
+      "iterations": 500,
+      "totalTimeMs": 965.2540450000051,
+      "avgTimeMs": 1.9305080900000102,
+      "minTimeMs": 1.777951999999459,
+      "maxTimeMs": 2.609425999999985,
+      "opsPerSecond": 517.9983472641105
+    },
+    {
+      "name": "query-complex",
+      "iterations": 500,
+      "totalTimeMs": 258.92867500000284,
+      "avgTimeMs": 0.5178573500000057,
+      "minTimeMs": 0.4258700000000317,
+      "maxTimeMs": 1.0824320000001535,
+      "opsPerSecond": 1931.0337103451154
+    },
+    {
+      "name": "summarize-memories",
+      "iterations": 200,
+      "totalTimeMs": 343.17431700000816,
+      "avgTimeMs": 1.7158715850000408,
+      "minTimeMs": 1.5887740000007398,
+      "maxTimeMs": 2.2932459999992716,
+      "opsPerSecond": 582.7941955224908
+    },
+    {
+      "name": "clear-working-memory",
+      "iterations": 500,
+      "totalTimeMs": 1.1945170000080907,
+      "avgTimeMs": 0.0023890340000161814,
+      "minTimeMs": 0.002163999999538646,
+      "maxTimeMs": 0.03531699999984994,
+      "opsPerSecond": 418579.22490564256
+    },
+    {
+      "name": "query-large-dataset",
+      "iterations": 100,
+      "totalTimeMs": 1188.6349409999957,
+      "avgTimeMs": 11.886349409999957,
+      "minTimeMs": 11.307416999999987,
+      "maxTimeMs": 13.368732999999338,
+      "opsPerSecond": 84.1301198127915
+    }
+  ],
+  "summary": {
+    "totalBenchmarks": 12,
+    "totalIterations": 4600,
+    "totalTimeMs": 6361.681882000021
+  }
+}

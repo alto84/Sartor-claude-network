@@ -1,0 +1,13 @@
+{
+  "agent_id": "desktop",
+  "status": "online",
+  "location": "base_station",
+  "activity": "mission_control",
+  "last_update": "2025-11-01T14:40:00-04:00",
+  "capabilities": [
+    "coordination",
+    "firebase_access",
+    "local_system_access",
+    "github_api"
+  ]
+}
