@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Agent requests - the task queue
+    match /agent_requests/{requestId} {
+      // Anyone authenticated can read
+      allow read: if request.auth != null;
+
+      // Create: must have required fields
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasAll(['agentRole', 'task', 'status'])
+        && request.resource.data.status == 'pending';
+
+      // Update: only specific status transitions allowed
+      allow update: if request.auth != null
+        && (
+          // pending -> acknowledged
+          (resource.data.status == 'pending' && request.resource.data.status == 'acknowledged')
+          // acknowledged -> executing
+          || (resource.data.status == 'acknowledged' && request.resource.data.status == 'executing')
+          // executing -> completed/failed
+          || (resource.data.status == 'executing' && request.resource.data.status in ['completed', 'failed'])
+          // acknowledged -> pending (queue full, retry)
+          || (resource.data.status == 'acknowledged' && request.resource.data.status == 'pending')
+        );
+
+      // No deletes - use TTL for cleanup
+      allow delete: if false;
+    }
+
+    // Agent results - output from completed tasks
+    match /agent_results/{resultId} {
+      // Anyone authenticated can read
+      allow read: if request.auth != null;
+
+      // Create: must reference a valid request
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasAll(['requestId', 'status'])
+        && request.resource.data.status in ['success', 'failed'];
+
+      // No updates or deletes
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    // Agent workers - registry of active agents
+    match /agent_workers/{workerId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+
+    // Logs - audit trail
+    match /agent_logs/{logId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update, delete: if false;
+    }
+
+    // Swarm state - shared coordination state
+    match /swarm_state/{stateId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+  }
+}

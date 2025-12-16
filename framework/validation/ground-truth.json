@@ -1,0 +1,209 @@
+{
+  "version": "1.0.0",
+  "description": "Ground truth data for validation framework testing",
+  "created": "2025-12-15T17:40:00-05:00",
+  "categories": {
+    "superlatives": {
+      "description": "Banned language that suggests fabricated quality claims",
+      "banned_words": [
+        "exceptional",
+        "outstanding",
+        "world-class",
+        "industry-leading",
+        "best-in-class",
+        "cutting-edge",
+        "revolutionary",
+        "groundbreaking"
+      ],
+      "acceptable_alternatives": [
+        "effective",
+        "functional",
+        "meets requirements",
+        "passes tests",
+        "addresses use case",
+        "solves the problem"
+      ]
+    },
+    "scores": {
+      "description": "Numerical assessments require measurement evidence",
+      "patterns_requiring_evidence": [
+        "X%",
+        "X/Y",
+        "score: X",
+        "rating: X",
+        "grade: X"
+      ],
+      "valid_evidence_markers": [
+        "measured",
+        "calculated",
+        "based on",
+        "according to",
+        "source:",
+        "test results show",
+        "benchmark data"
+      ]
+    },
+    "uncertainty": {
+      "description": "Absolute claims require qualification",
+      "absolute_patterns_to_flag": [
+        "will definitely",
+        "is certain to",
+        "always works",
+        "never fails",
+        "100% reliable",
+        "perfect solution",
+        "guaranteed to"
+      ],
+      "acceptable_qualifiers": [
+        "likely",
+        "probably",
+        "in most cases",
+        "typically",
+        "approximately",
+        "estimated",
+        "preliminary",
+        "expected to"
+      ]
+    },
+    "evidence": {
+      "description": "Research claims require citations",
+      "claim_indicators": [
+        "studies show",
+        "research indicates",
+        "data suggests",
+        "according to experts"
+      ],
+      "valid_citation_formats": [
+        "[Author, Year]",
+        "[Author et al, Year]",
+        "https://...",
+        "doi:...",
+        "(Source: ...)"
+      ]
+    }
+  },
+  "test_corpus": {
+    "clean_examples": [
+      {
+        "id": "clean-001",
+        "text": "The implementation handles the specified use cases correctly.",
+        "expected_violations": 0
+      },
+      {
+        "id": "clean-002",
+        "text": "Testing revealed edge cases that require additional handling.",
+        "expected_violations": 0
+      },
+      {
+        "id": "clean-003",
+        "text": "Performance is approximately 200ms per request based on load testing.",
+        "expected_violations": 0
+      },
+      {
+        "id": "clean-004",
+        "text": "The solution likely works for most use cases, though edge cases may need adjustment.",
+        "expected_violations": 0
+      },
+      {
+        "id": "clean-005",
+        "text": "Code coverage is 85% according to Jest test results.",
+        "expected_violations": 0
+      }
+    ],
+    "violation_examples": [
+      {
+        "id": "viol-001",
+        "text": "This is an exceptional implementation.",
+        "expected_violations": 1,
+        "violation_type": "superlative"
+      },
+      {
+        "id": "viol-002",
+        "text": "Achieves 95% accuracy.",
+        "expected_violations": 1,
+        "violation_type": "unsupported_score"
+      },
+      {
+        "id": "viol-003",
+        "text": "This will definitely solve your problem.",
+        "expected_violations": 1,
+        "violation_type": "absolute_claim"
+      },
+      {
+        "id": "viol-004",
+        "text": "Studies show this is more effective.",
+        "expected_violations": 1,
+        "violation_type": "uncited_claim"
+      },
+      {
+        "id": "viol-005",
+        "text": "This exceptional solution achieves 99% accuracy and will definitely work.",
+        "expected_violations": 3,
+        "violation_types": ["superlative", "unsupported_score", "absolute_claim"]
+      }
+    ]
+  },
+  "agent_output_validation": {
+    "description": "Ground truth for validating agent task outputs",
+    "code_review_expectations": {
+      "required_elements": [
+        "specific line references",
+        "concrete suggestions",
+        "evidence-based concerns"
+      ],
+      "prohibited_elements": [
+        "fabricated metrics",
+        "unqualified quality scores",
+        "superlative descriptions"
+      ]
+    },
+    "research_task_expectations": {
+      "required_elements": [
+        "source citations",
+        "uncertainty expressions",
+        "limitation disclosures"
+      ],
+      "prohibited_elements": [
+        "invented statistics",
+        "uncited claims",
+        "absolute predictions"
+      ]
+    },
+    "implementation_task_expectations": {
+      "required_elements": [
+        "working code",
+        "error handling",
+        "edge case consideration"
+      ],
+      "prohibited_elements": [
+        "claimed features not implemented",
+        "fabricated test results",
+        "ignored requirements"
+      ]
+    }
+  },
+  "severity_classification": {
+    "error": {
+      "description": "Must be fixed - blocks acceptance",
+      "examples": [
+        "banned superlatives",
+        "fabricated scores without any evidence marker"
+      ]
+    },
+    "warning": {
+      "description": "Should be addressed - reduces quality",
+      "examples": [
+        "scores with weak evidence",
+        "absolute claims",
+        "uncited research references"
+      ]
+    },
+    "info": {
+      "description": "Consider addressing - minor improvement",
+      "examples": [
+        "could add more qualification",
+        "consider alternative phrasing"
+      ]
+    }
+  }
+}

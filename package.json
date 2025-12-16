@@ -1,0 +1,24 @@
+{
+  "name": "claude-swarm",
+  "version": "1.0.0",
+  "description": "Multi-agent coordination system for Claude Code with Firebase + GitHub",
+  "main": "coordinator/index.js",
+  "type": "module",
+  "scripts": {
+    "coordinator": "node coordinator/index.js",
+    "coordinator:dev": "node --watch coordinator/index.js",
+    "test": "node --test tests/",
+    "setup": "node scripts/setup.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "@octokit/rest": "^20.0.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

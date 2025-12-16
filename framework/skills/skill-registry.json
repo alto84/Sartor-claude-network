@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-12-15",
+  "skills": {
+    "validation": {
+      "name": "Evidence-Based Validation",
+      "path": "skills/validation/",
+      "category": "quality",
+      "description": "Validates outputs against anti-fabrication protocols",
+      "required_for": ["all"],
+      "auto_load": true
+    },
+    "memory-query": {
+      "name": "Memory Query",
+      "path": "skills/memory/",
+      "category": "memory",
+      "description": "Query and store persistent memories",
+      "required_for": ["agents_with_memory"],
+      "auto_load": false
+    },
+    "research-web": {
+      "name": "Web Research",
+      "path": "skills/research-web/",
+      "category": "research",
+      "description": "Systematic web search and synthesis",
+      "required_for": ["research_agents"],
+      "auto_load": false
+    },
+    "research-academic": {
+      "name": "Academic Research",
+      "path": "skills/research-academic/",
+      "category": "research",
+      "description": "ArXiv and academic paper search",
+      "required_for": ["research_agents"],
+      "auto_load": false
+    },
+    "coordination": {
+      "name": "Agent Coordination",
+      "path": "skills/coordination/",
+      "category": "orchestration",
+      "description": "Multi-agent coordination patterns",
+      "required_for": ["orchestrators"],
+      "auto_load": false
+    },
+    "bootstrap": {
+      "name": "Agent Bootstrap",
+      "path": "skills/bootstrap/",
+      "category": "meta",
+      "description": "Self-orientation for new agents",
+      "required_for": ["all_new_agents"],
+      "auto_load": true
+    }
+  },
+  "categories": {
+    "quality": "Quality assurance and validation",
+    "memory": "Memory and persistence",
+    "research": "Information gathering",
+    "orchestration": "Agent coordination",
+    "meta": "Agent self-management"
+  },
+  "load_order": [
+    "bootstrap",
+    "validation",
+    "memory-query",
+    "coordination"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/alton/claude-swarm/scripts/context-checkpoint.sh"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Pre-compact: updating STATE.json timestamp' && date -Iseconds >> /home/alton/claude-swarm/.swarm/compact.log"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/alton/claude-swarm/scripts/reset-context-counter.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

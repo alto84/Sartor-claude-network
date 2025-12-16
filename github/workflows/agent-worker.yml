@@ -1,0 +1,198 @@
+# GitHub Actions workflow for spawning agents from Issues
+# Place this in: .github/workflows/agent-worker.yml
+
+name: Swarm Agent Worker
+
+on:
+  issues:
+    types: [opened, labeled]
+
+  # Also support manual triggers for testing
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number to process'
+        required: true
+        type: number
+
+jobs:
+  check-agent-request:
+    runs-on: ubuntu-latest
+    outputs:
+      is_agent_request: ${{ steps.check.outputs.is_agent_request }}
+      task_context: ${{ steps.parse.outputs.task_context }}
+    steps:
+      - name: Check if agent request
+        id: check
+        run: |
+          LABELS='${{ toJson(github.event.issue.labels.*.name) }}'
+          if echo "$LABELS" | grep -q "agent-request"; then
+            echo "is_agent_request=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_agent_request=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Parse task context
+        id: parse
+        if: steps.check.outputs.is_agent_request == 'true'
+        run: |
+          BODY='${{ github.event.issue.body }}'
+          # Extract JSON between markers
+          CONTEXT=$(echo "$BODY" | sed -n '/<!-- TASK_CONTEXT -->/,/<!-- END_TASK_CONTEXT -->/p' | tail -n +2 | head -n -1)
+          if [ -n "$CONTEXT" ]; then
+            # Escape for GitHub output
+            CONTEXT_ESCAPED=$(echo "$CONTEXT" | jq -c '.')
+            echo "task_context=$CONTEXT_ESCAPED" >> $GITHUB_OUTPUT
+          else
+            echo "task_context={}" >> $GITHUB_OUTPUT
+          fi
+
+  spawn-agent:
+    needs: check-agent-request
+    if: needs.check-agent-request.outputs.is_agent_request == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update issue status
+        run: |
+          gh issue edit ${{ github.event.issue.number }} \
+            --remove-label "agent-request" \
+            --add-label "in-progress"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Execute agent task
+        id: agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TASK_CONTEXT: ${{ needs.check-agent-request.outputs.task_context }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          # Parse task context
+          OBJECTIVE=$(echo "$TASK_CONTEXT" | jq -r '.task.objective // "Complete the assigned task"')
+          AGENT_ROLE=$(echo "$TASK_CONTEXT" | jq -r '.agent_role // "worker"')
+          PARENT_ID=$(echo "$TASK_CONTEXT" | jq -r '.parent_task_id // "none"')
+
+          # Build prompt
+          PROMPT="You are Agent '$AGENT_ROLE' spawned via GitHub Actions.
+
+          TASK: $OBJECTIVE
+
+          CONTEXT:
+          $(echo "$TASK_CONTEXT" | jq -r '.task.context // {}')
+
+          REQUIREMENTS:
+          $(echo "$TASK_CONTEXT" | jq -r '.task.requirements // []' | jq -r '.[]' | sed 's/^/- /')
+
+          INSTRUCTIONS:
+          - Issue number: $ISSUE_NUMBER
+          - Parent task: $PARENT_ID
+          - Complete the task and provide a structured result
+          - If you need to spawn child agents, create new GitHub issues with label 'agent-request'
+
+          Provide your results in a clear, structured format."
+
+          # Run Claude and capture output
+          set +e
+          RESULT=$(claude -p "$PROMPT" --output-format text 2>&1)
+          EXIT_CODE=$?
+          set -e
+
+          # Save result
+          echo "$RESULT" > agent_output.txt
+
+          if [ $EXIT_CODE -eq 0 ]; then
+            echo "status=success" >> $GITHUB_OUTPUT
+          else
+            echo "status=failed" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post results to issue
+        if: always()
+        run: |
+          STATUS="${{ steps.agent.outputs.status }}"
+          RESULT=$(cat agent_output.txt 2>/dev/null || echo "No output captured")
+
+          if [ "$STATUS" = "success" ]; then
+            COMMENT="## Agent Result ✅
+
+          <!-- TASK_RESULT -->
+          \`\`\`json
+          {
+            \"status\": \"success\",
+            \"completed_at\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
+          }
+          \`\`\`
+          <!-- END_TASK_RESULT -->
+
+          ### Output
+
+          $RESULT
+
+          ---
+          *Executed by GitHub Actions swarm worker*"
+
+            FINAL_LABEL="completed"
+          else
+            COMMENT="## Agent Result ❌
+
+          <!-- TASK_RESULT -->
+          \`\`\`json
+          {
+            \"status\": \"failed\",
+            \"completed_at\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
+          }
+          \`\`\`
+          <!-- END_TASK_RESULT -->
+
+          ### Error
+
+          \`\`\`
+          $RESULT
+          \`\`\`
+
+          ---
+          *Executed by GitHub Actions swarm worker*"
+
+            FINAL_LABEL="failed"
+          fi
+
+          # Post comment
+          gh issue comment ${{ github.event.issue.number }} --body "$COMMENT"
+
+          # Update labels
+          gh issue edit ${{ github.event.issue.number }} \
+            --remove-label "in-progress" \
+            --add-label "$FINAL_LABEL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify parent (if nested)
+        if: always()
+        run: |
+          PARENT_ID=$(echo '${{ needs.check-agent-request.outputs.task_context }}' | jq -r '.parent_task_id // ""')
+
+          if [ -n "$PARENT_ID" ] && [ "$PARENT_ID" != "none" ] && [ "$PARENT_ID" != "null" ]; then
+            # Find parent issue and add a comment
+            PARENT_ISSUE=$(gh issue list --label "swarm-agent" --search "$PARENT_ID" --json number --jq '.[0].number')
+
+            if [ -n "$PARENT_ISSUE" ]; then
+              gh issue comment "$PARENT_ISSUE" \
+                --body "Child agent completed: #${{ github.event.issue.number }} (${{ steps.agent.outputs.status }})"
+            fi
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
