@@ -513,11 +513,83 @@ function convertToProposal(
 
 /**
  * Request human approval for a change
- * In a real implementation, this would integrate with a UI or CLI prompt
+ *
+ * Mechanism:
+ * 1. Writes proposal to .swarm/approvals/proposal-{id}.json
+ * 2. Waits for response file .swarm/approvals/response-{id}.json
+ * 3. Times out after configurable duration (default: 5 minutes)
+ * 4. Defaults to REJECT for safety if no response
+ *
+ * Response file format:
+ * {
+ *   "approved": true|false,
+ *   "reviewer": "human-name",
+ *   "timestamp": "ISO-8601",
+ *   "notes": "optional comments"
+ * }
  */
-async function requestHumanApproval(decision: AcceptanceDecision): Promise<boolean> {
-  // For now, we'll simulate by logging and auto-approving
-  // Real implementation would use readline or UI
+async function requestHumanApproval(
+  decision: AcceptanceDecision,
+  timeoutMs: number = 5 * 60 * 1000 // 5 minutes default
+): Promise<boolean> {
+  const approvalDir = path.join(process.cwd(), '.swarm', 'approvals');
+  const proposalId = decision.proposal.id;
+  const proposalPath = path.join(approvalDir, `proposal-${proposalId}.json`);
+  const responsePath = path.join(approvalDir, `response-${proposalId}.json`);
+
+  // Ensure approvals directory exists
+  if (!fs.existsSync(approvalDir)) {
+    fs.mkdirSync(approvalDir, { recursive: true });
+  }
+
+  // Write proposal file with all decision details
+  const proposalData = {
+    id: proposalId,
+    timestamp: new Date().toISOString(),
+    proposal: {
+      id: decision.proposal.id,
+      type: decision.proposal.type,
+      target: decision.proposal.target,
+      description: decision.proposal.description,
+      hypothesis: decision.proposal.hypothesis,
+    },
+    decision: {
+      decision: decision.decision,
+      requiresHumanReview: decision.requiresHumanReview,
+      reasons: decision.reasons,
+      rollbackPlan: decision.rollbackPlan,
+    },
+    testResults: decision.proposal.testResults.map(tr => ({
+      testId: tr.testId,
+      task: tr.task.name,
+      comparison: {
+        successRateA: tr.comparison.successRateA,
+        successRateB: tr.comparison.successRateB,
+        improvement: ((tr.comparison.successRateB - tr.comparison.successRateA) * 100).toFixed(2) + '%',
+        sampleSize: tr.comparison.sampleSize,
+      },
+    })),
+    instructions: {
+      message: 'To approve this change, create a response file at:',
+      responsePath: responsePath,
+      format: {
+        approved: 'true or false',
+        reviewer: 'your-name',
+        timestamp: 'ISO-8601 timestamp',
+        notes: 'optional comments',
+      },
+      example: {
+        approved: true,
+        reviewer: 'human-operator',
+        timestamp: new Date().toISOString(),
+        notes: 'Looks good, approved',
+      },
+    },
+  };
+
+  fs.writeFileSync(proposalPath, JSON.stringify(proposalData, null, 2), 'utf-8');
+
+  // Log approval request
   console.log('='.repeat(70));
   console.log('HUMAN APPROVAL REQUEST');
   console.log('='.repeat(70));
@@ -531,17 +603,63 @@ async function requestHumanApproval(decision: AcceptanceDecision): Promise<boole
   console.log();
   console.log('Rollback Plan:');
   console.log(decision.rollbackPlan);
+  console.log();
+  console.log('Proposal written to:');
+  console.log(`  ${proposalPath}`);
+  console.log();
+  console.log('Waiting for response at:');
+  console.log(`  ${responsePath}`);
+  console.log();
+  console.log(`Timeout: ${timeoutMs / 1000} seconds`);
   console.log('='.repeat(70));
-  console.log('AUTO-APPROVED (implement real prompt in production)');
+
+  // Wait for response file or timeout
+  const startTime = Date.now();
+  const pollInterval = 1000; // Check every second
+
+  while (Date.now() - startTime < timeoutMs) {
+    // Check if response file exists
+    if (fs.existsSync(responsePath)) {
+      try {
+        const responseData = JSON.parse(fs.readFileSync(responsePath, 'utf-8'));
+
+        // Validate response structure
+        if (typeof responseData.approved !== 'boolean') {
+          console.error('Invalid response format: "approved" must be boolean');
+          return false; // Default to reject for safety
+        }
+
+        console.log('\nHuman response received:');
+        console.log(`  Approved: ${responseData.approved}`);
+        console.log(`  Reviewer: ${responseData.reviewer || 'unknown'}`);
+        console.log(`  Notes: ${responseData.notes || 'none'}`);
+        console.log();
+
+        // Clean up files after reading response
+        try {
+          fs.unlinkSync(proposalPath);
+          fs.unlinkSync(responsePath);
+        } catch (err) {
+          console.warn('Warning: Could not clean up approval files:', err);
+        }
+
+        return responseData.approved;
+      } catch (err) {
+        console.error('Failed to parse response file:', err);
+        return false; // Default to reject for safety
+      }
+    }
+
+    // Wait before next check
+    await new Promise(resolve => setTimeout(resolve, pollInterval));
+  }
+
+  // Timeout reached - default to reject for safety
+  console.log('\nHuman approval TIMEOUT - defaulting to REJECT for safety');
+  console.log('Proposal file remains at:', proposalPath);
   console.log();
 
-  // TODO: Implement real human approval mechanism
-  // For example:
-  // const readline = require('readline').createInterface({ input, output });
-  // const answer = await readline.question('Approve? (y/n): ');
-  // return answer.toLowerCase() === 'y';
-
-  return true; // Auto-approve for now
+  return false; // Fail-safe: reject if no human response
 }
 
 /**

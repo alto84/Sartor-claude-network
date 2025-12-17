@@ -9,8 +9,8 @@
  */
 
 import { describe, it, expect, beforeEach } from '@jest/globals';
-import { TierSync, DemotionCriteria, SyncReport } from './tier-sync';
-import { MemoryType } from './file-store';
+import { TierSync, DemotionCriteria, SyncReport } from '../tier-sync';
+import { MemoryType } from '../file-store';
 
 describe('TierSync', () => {
   let tierSync: TierSync;

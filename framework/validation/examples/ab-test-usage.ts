@@ -5,7 +5,7 @@
  */
 
 import { runABTest, ABTestConfig, printABTestReport } from '../ab-test-runner';
-import { runTests, testCases, TestCase } from '../test-suite';
+import { runTests, testCases } from '../test-suite';
 import { validate } from '../validator';
 
 /**
@@ -29,14 +29,14 @@ export async function example1_ValidationRuleImprovement() {
 
   // Baseline: Current validator
   const baseline = () => {
-    const filtered = testCases.filter(tc => config.testSuite.includes(tc.testId));
+    const filtered = testCases.filter(tc => config.testSuite.includes(tc.id));
     return runTests(filtered);
   };
 
   // Variant: Would use modified validator
   // In real usage, this would import from a modified validator file
   const variant = () => {
-    const filtered = testCases.filter(tc => config.testSuite.includes(tc.testId));
+    const filtered = testCases.filter(tc => config.testSuite.includes(tc.id));
     return runTests(filtered);
   };
 
@@ -94,12 +94,12 @@ export async function example3_NewValidationRule() {
   };
 
   const baseline = () => {
-    const filtered = testCases.filter(tc => config.testSuite.includes(tc.testId));
+    const filtered = testCases.filter(tc => config.testSuite.includes(tc.id));
     return runTests(filtered);
   };
 
   const variant = () => {
-    const filtered = testCases.filter(tc => config.testSuite.includes(tc.testId));
+    const filtered = testCases.filter(tc => config.testSuite.includes(tc.id));
     return runTests(filtered);
   };
 
@@ -157,12 +157,12 @@ export async function example5_SubsetTesting() {
   };
 
   const baseline = () => {
-    const filtered = testCases.filter(tc => config.testSuite.includes(tc.testId));
+    const filtered = testCases.filter(tc => config.testSuite.includes(tc.id));
     return runTests(filtered);
   };
 
   const variant = () => {
-    const filtered = testCases.filter(tc => config.testSuite.includes(tc.testId));
+    const filtered = testCases.filter(tc => config.testSuite.includes(tc.id));
     return runTests(filtered);
   };
 
@@ -263,8 +263,8 @@ export async function example7_IterativeWorkflow() {
 
   const quickResult = await runABTest(
     quickConfig,
-    () => runTests(testCases.filter(tc => quickConfig.testSuite.includes(tc.testId))),
-    () => runTests(testCases.filter(tc => quickConfig.testSuite.includes(tc.testId)))
+    () => runTests(testCases.filter(tc => quickConfig.testSuite.includes(tc.id))),
+    () => runTests(testCases.filter(tc => quickConfig.testSuite.includes(tc.id)))
   );
 
   console.log(`Quick validation: ${quickResult.decision}`);
