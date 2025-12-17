@@ -35,6 +35,19 @@ export interface MissionState {
   warnings: string[];
 }
 
+/**
+ * Simplified mission context for agent bootstrap
+ */
+export interface MissionContext {
+  phase: 'bootstrap' | 'research' | 'implementation' | 'validation' | 'reporting';
+  deadline: string;
+  progressPercent: number;
+  urgency: 'low' | 'medium' | 'high' | 'critical';
+  restrictions: string[];
+  checkpoints: string[];
+  warnings: string[];
+}
+
 export interface MissionConfig {
   name: string;
   description?: string;
@@ -134,6 +147,20 @@ function calculateUrgency(
   // Medium if less than 6 hours
   if (remainingHours < 6) return 'medium';
 
+  return 'low';
+}
+
+/**
+ * Calculate urgency based on time to deadline (simplified for MissionContext)
+ * - >24h remaining: low
+ * - 12-24h: medium
+ * - 4-12h: high
+ * - <4h: critical
+ */
+function calculateUrgencyFromDeadline(remainingHours: number): 'low' | 'medium' | 'high' | 'critical' {
+  if (remainingHours < 4) return 'critical';
+  if (remainingHours < 12) return 'high';
+  if (remainingHours < 24) return 'medium';
   return 'low';
 }
 
@@ -320,6 +347,186 @@ export function getMinutesUntilReportDeadline(missionConfig?: MissionConfig | nu
   return (finalReportTime.getTime() - now.getTime()) / (1000 * 60);
 }
 
+/**
+ * Get phase-specific restrictions
+ *
+ * Phase-based restrictions:
+ * - bootstrap: Full access, learning mode
+ * - research: Read-only, must cite sources
+ * - implementation: Can edit, must test
+ * - validation: Run tests, no fabrication
+ * - reporting: No new changes, synthesis only
+ */
+export function getPhaseRestrictions(phase: string): string[] {
+  switch (phase) {
+    case 'bootstrap':
+      return [
+        'Full access granted - learning mode',
+        'Focus on initialization and setup',
+        'No premature conclusions',
+      ];
+    case 'research':
+      return [
+        'Read-only mode - no code changes',
+        'Must cite sources for all claims',
+        'Evidence gathering only',
+        'No implementation during research phase',
+      ];
+    case 'implementation':
+      return [
+        'Can edit code and create files',
+        'Must write tests for all changes',
+        'Must validate changes work correctly',
+        'No untested code allowed',
+      ];
+    case 'validation':
+      return [
+        'Run tests and verify correctness',
+        'No fabrication of test results',
+        'No new features - bug fixes only',
+        'Focus on quality and stability',
+      ];
+    case 'reporting':
+      return [
+        'No new code changes allowed',
+        'Synthesis and documentation only',
+        'No agent spawning',
+        'Consolidation mode',
+      ];
+    default:
+      return ['Unknown phase - proceed with caution'];
+  }
+}
+
+/**
+ * Generate checkpoints based on current phase and progress
+ */
+function generateCheckpoints(
+  phase: string,
+  progressPercent: number,
+  remainingHours: number
+): string[] {
+  const checkpoints: string[] = [];
+
+  switch (phase) {
+    case 'bootstrap':
+      checkpoints.push('Load mission configuration');
+      checkpoints.push('Initialize memory systems');
+      checkpoints.push('Validate agent capabilities');
+      break;
+    case 'research':
+      checkpoints.push('Gather all relevant sources');
+      checkpoints.push('Document evidence and citations');
+      checkpoints.push('Identify implementation requirements');
+      break;
+    case 'implementation':
+      checkpoints.push('Write implementation code');
+      checkpoints.push('Create test coverage');
+      checkpoints.push('Verify all tests pass');
+      break;
+    case 'validation':
+      checkpoints.push('Run full test suite');
+      checkpoints.push('Fix any identified bugs');
+      checkpoints.push('Verify performance metrics');
+      break;
+    case 'reporting':
+      checkpoints.push('Consolidate all findings');
+      checkpoints.push('Generate final report');
+      checkpoints.push('Archive artifacts');
+      break;
+  }
+
+  // Add time-based checkpoints
+  if (remainingHours < 1) {
+    checkpoints.push('URGENT: Wrap up immediately');
+  } else if (remainingHours < 4) {
+    checkpoints.push('Begin transition to reporting phase');
+  }
+
+  return checkpoints;
+}
+
+/**
+ * Get simplified mission context for agent bootstrap
+ */
+export function getMissionContext(
+  missionConfig?: MissionConfig | null,
+  currentTime?: Date
+): MissionContext {
+  const state = getCurrentMissionState(missionConfig, currentTime);
+
+  // Handle 'complete' phase by mapping to 'reporting'
+  const contextPhase = state.phase.current === 'complete'
+    ? 'reporting'
+    : state.phase.current;
+
+  // Calculate urgency based on deadline
+  const urgency = calculateUrgencyFromDeadline(state.timeline.remaining_hours);
+
+  // Get phase restrictions
+  const restrictions = getPhaseRestrictions(contextPhase);
+
+  // Generate checkpoints
+  const checkpoints = generateCheckpoints(
+    contextPhase,
+    state.timeline.progress_percentage,
+    state.timeline.remaining_hours
+  );
+
+  // Add phase transition warnings
+  const warnings = [...state.warnings];
+  if (state.timeline.progress_percentage >= 70 && contextPhase !== 'validation' && contextPhase !== 'reporting') {
+    warnings.push('Approaching validation phase - prepare for testing');
+  }
+  if (state.timeline.progress_percentage >= 90 && contextPhase !== 'reporting') {
+    warnings.push('Approaching reporting phase - begin wrapping up');
+  }
+
+  return {
+    phase: contextPhase,
+    deadline: state.timeline.end_time,
+    progressPercent: state.timeline.progress_percentage,
+    urgency,
+    restrictions,
+    checkpoints,
+    warnings,
+  };
+}
+
+/**
+ * Format mission context for prompt injection
+ */
+export function formatMissionContextForPrompt(context: MissionContext): string {
+  const urgencyIndicator = {
+    low: '',
+    medium: '[MODERATE URGENCY] ',
+    high: '[HIGH URGENCY] ',
+    critical: '[CRITICAL URGENCY] ',
+  };
+
+  let prompt = `## Mission Context
+
+${urgencyIndicator[context.urgency]}**Phase**: ${context.phase.toUpperCase()}
+**Deadline**: ${context.deadline}
+**Progress**: ${context.progressPercent.toFixed(1)}%
+**Urgency Level**: ${context.urgency.toUpperCase()}
+
+### Phase Restrictions
+${context.restrictions.map(r => `- ${r}`).join('\n')}
+
+### Checkpoints
+${context.checkpoints.map((c, i) => `${i + 1}. ${c}`).join('\n')}`;
+
+  if (context.warnings.length > 0) {
+    prompt += `
+
+### WARNINGS
+${context.warnings.map(w => `- ${w}`).join('\n')}`;
+  }
+
+  return prompt;
+}
+
 // CLI interface
 const isMainModule = import.meta.url === `file://${process.argv[1]}` ||
   process.argv[1]?.endsWith('mission-state.ts');
@@ -331,6 +538,10 @@ if (isMainModule) {
     const state = getCurrentMissionState();
     console.log('=== Mission State ===\n');
     console.log(formatMissionStateForPrompt(state));
+  } else if (args[0] === 'context') {
+    const context = getMissionContext();
+    console.log('=== Mission Context ===\n');
+    console.log(formatMissionContextForPrompt(context));
   } else if (args[0] === 'can-spawn') {
     const canSpawn = canSpawnAgents();
     console.log(`Agent spawning allowed: ${canSpawn}`);
@@ -341,20 +552,28 @@ if (isMainModule) {
   } else if (args[0] === 'json') {
     const state = getCurrentMissionState();
     console.log(JSON.stringify(state, null, 2));
+  } else if (args[0] === 'context-json') {
+    const context = getMissionContext();
+    console.log(JSON.stringify(context, null, 2));
   } else {
-    console.log('Usage: mission-state.ts [status|can-spawn|time-left|json]');
+    console.log('Usage: mission-state.ts [status|context|can-spawn|time-left|json|context-json]');
     console.log('');
     console.log('Commands:');
-    console.log('  status     - Show formatted mission state');
-    console.log('  can-spawn  - Check if agent spawning is allowed (exit code 0=yes, 1=no)');
-    console.log('  time-left  - Show minutes until report deadline');
-    console.log('  json       - Output raw mission state as JSON');
+    console.log('  status       - Show formatted mission state');
+    console.log('  context      - Show formatted mission context (simplified)');
+    console.log('  can-spawn    - Check if agent spawning is allowed (exit code 0=yes, 1=no)');
+    console.log('  time-left    - Show minutes until report deadline');
+    console.log('  json         - Output raw mission state as JSON');
+    console.log('  context-json - Output mission context as JSON');
   }
 }
 
 export default {
   getCurrentMissionState,
   formatMissionStateForPrompt,
+  getMissionContext,
+  formatMissionContextForPrompt,
+  getPhaseRestrictions,
   canSpawnAgents,
   getMinutesUntilReportDeadline,
   loadMissionConfig,

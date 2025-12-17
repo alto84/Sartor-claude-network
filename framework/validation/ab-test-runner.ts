@@ -1,419 +1,431 @@
 /**
- * A/B Test Runner - Compare agent configurations with evidence-based measurement
+ * A/B Test Runner - Validation framework for comparing improvements
  *
- * Runs controlled experiments comparing different agent setups and reports
- * results with statistical rigor (no fabricated metrics).
+ * Implements evidence-based A/B testing for validating code/configuration changes.
+ * Runs baseline vs variant configurations and compares results using statistical rigor.
  */
 
-import { spawn } from 'child_process';
-import * as fs from 'fs';
-import * as path from 'path';
+import { runTests, TestSuiteReport, testCases } from './test-suite';
+import { runBenchmark, BenchmarkResult } from './benchmark';
 
 // Types
-interface AgentConfig {
+export interface ABTestConfig {
   name: string;
   description: string;
-  command: string;
-  args: string[];
-  environment?: Record<string, string>;
-  bootstrap?: {
-    memoryEnabled: boolean;
-    skillsEnabled: boolean;
-    customPrompt?: string;
-  };
+  baselineLabel: string;           // Which baseline to compare against
+  testSuite: string[];             // Which tests to run (test IDs or 'all')
+  minImprovement: number;          // Minimum % improvement to accept (0-100)
+  maxRegression: number;           // Maximum % regression allowed (usually 0)
+  iterations: number;              // How many times to run each
 }
 
-interface TestTask {
-  id: string;
-  name: string;
-  prompt: string;
-  expectedOutputPatterns?: RegExp[];
-  groundTruth?: {
-    requiredElements: string[];
-    prohibitedElements: string[];
-  };
-  timeout: number;
-}
-
-interface TaskResult {
-  taskId: string;
-  config: string;
-  success: boolean;
-  output: string;
-  executionTimeMs: number;
-  validationPassed: boolean;
-  validationErrors: string[];
-  timestamp: string;
-}
-
-interface ABTestResult {
-  testId: string;
-  task: TestTask;
-  configA: {
+export interface TestResults {
+  passRate: number;                // Percentage of tests passed (0-100)
+  avgExecutionTimeMs: number;      // Average execution time
+  testsPassed: number;             // Count of tests passed
+  testsFailed: number;             // Count of tests failed
+  totalTests: number;              // Total test count
+  details: {
+    testId: string;
     name: string;
-    results: TaskResult[];
-  };
-  configB: {
-    name: string;
-    results: TaskResult[];
-  };
-  comparison: {
-    successRateA: number;
-    successRateB: number;
-    avgTimeA: number;
-    avgTimeB: number;
-    validationPassRateA: number;
-    validationPassRateB: number;
-    sampleSize: number;
-    notes: string[];
-  };
+    passed: boolean;
+    executionTimeMs: number;
+  }[];
 }
 
-interface ABTestReport {
-  timestamp: string;
-  totalTests: number;
-  results: ABTestResult[];
-  methodology: string;
-  limitations: string[];
-}
-
-// Default test tasks
-const defaultTasks: TestTask[] = [
-  {
-    id: 'task-simple-analysis',
-    name: 'Simple Code Analysis',
-    prompt: 'Analyze this function and describe what it does: function add(a, b) { return a + b; }',
-    groundTruth: {
-      requiredElements: ['add', 'function', 'return', 'sum'],
-      prohibitedElements: ['exceptional', 'outstanding', '99%', '100%'],
-    },
-    timeout: 30000,
-  },
-  {
-    id: 'task-error-handling',
-    name: 'Error Handling Suggestion',
-    prompt: 'Suggest error handling improvements for: async function fetchData(url) { const res = await fetch(url); return res.json(); }',
-    groundTruth: {
-      requiredElements: ['try', 'catch', 'error'],
-      prohibitedElements: ['exceptional', 'world-class', 'will definitely'],
-    },
-    timeout: 30000,
-  },
-  {
-    id: 'task-memory-recall',
-    name: 'Memory Recall Test',
-    prompt: 'What is the current mission objective? Check the mission context.',
-    groundTruth: {
-      requiredElements: [],
-      prohibitedElements: ['fabricated', 'invented'],
-    },
-    timeout: 30000,
-  },
-];
-
-// Run a single agent task
-async function runAgentTask(
-  config: AgentConfig,
-  task: TestTask
-): Promise<TaskResult> {
-  const startTime = Date.now();
-
-  return new Promise((resolve) => {
-    let output = '';
-    let errorOutput = '';
-
-    const proc = spawn(config.command, [...config.args, task.prompt], {
-      env: { ...process.env, ...config.environment },
-      timeout: task.timeout,
-    });
-
-    proc.stdout?.on('data', (data) => {
-      output += data.toString();
-    });
-
-    proc.stderr?.on('data', (data) => {
-      errorOutput += data.toString();
-    });
-
-    proc.on('close', (code) => {
-      const executionTimeMs = Date.now() - startTime;
-      const success = code === 0;
-      const validationResult = validateOutput(output, task);
-
-      resolve({
-        taskId: task.id,
-        config: config.name,
-        success,
-        output: output || errorOutput,
-        executionTimeMs,
-        validationPassed: validationResult.passed,
-        validationErrors: validationResult.errors,
-        timestamp: new Date().toISOString(),
-      });
-    });
-
-    proc.on('error', (err) => {
-      const executionTimeMs = Date.now() - startTime;
-
-      resolve({
-        taskId: task.id,
-        config: config.name,
-        success: false,
-        output: `Error: ${err.message}`,
-        executionTimeMs,
-        validationPassed: false,
-        validationErrors: [`Process error: ${err.message}`],
-        timestamp: new Date().toISOString(),
-      });
-    });
-  });
-}
-
-// Validate output against ground truth
-function validateOutput(
-  output: string,
-  task: TestTask
-): { passed: boolean; errors: string[] } {
-  const errors: string[] = [];
-  const lowerOutput = output.toLowerCase();
-
-  if (task.groundTruth) {
-    // Check required elements
-    for (const required of task.groundTruth.requiredElements) {
-      if (!lowerOutput.includes(required.toLowerCase())) {
-        errors.push(`Missing required element: "${required}"`);
-      }
-    }
-
-    // Check prohibited elements
-    for (const prohibited of task.groundTruth.prohibitedElements) {
-      if (lowerOutput.includes(prohibited.toLowerCase())) {
-        errors.push(`Contains prohibited element: "${prohibited}"`);
-      }
-    }
-  }
-
-  // Check expected patterns if provided
-  if (task.expectedOutputPatterns) {
-    for (const pattern of task.expectedOutputPatterns) {
-      if (!pattern.test(output)) {
-        errors.push(`Missing expected pattern: ${pattern.source}`);
-      }
-    }
-  }
-
-  return {
-    passed: errors.length === 0,
-    errors,
+export interface ABTestResult {
+  config: ABTestConfig;
+  baselineResults: TestResults;
+  variantResults: TestResults;
+  improvement: number;             // % improvement (positive = better)
+  regressions: string[];           // Tests that got worse
+  decision: 'ACCEPT' | 'REJECT' | 'INCONCLUSIVE';
+  reasoning: string;
+  metadata: {
+    timestamp: string;
+    baselineExecutions: number;
+    variantExecutions: number;
+    statisticalNotes: string[];
   };
 }
 
-// Calculate statistics without fabrication
-function calculateStats(results: TaskResult[]): {
-  successRate: number;
-  avgTime: number;
-  validationPassRate: number;
-} {
-  if (results.length === 0) {
-    return { successRate: 0, avgTime: 0, validationPassRate: 0 };
-  }
-
-  const successCount = results.filter((r) => r.success).length;
-  const validationPassCount = results.filter((r) => r.validationPassed).length;
-  const totalTime = results.reduce((sum, r) => sum + r.executionTimeMs, 0);
-
-  return {
-    successRate: successCount / results.length,
-    avgTime: totalTime / results.length,
-    validationPassRate: validationPassCount / results.length,
-  };
-}
-
-// Run A/B test
+/**
+ * Run A/B test comparing baseline vs variant
+ *
+ * @param config - Test configuration
+ * @param baselineRunner - Function to run baseline tests
+ * @param variantRunner - Function to run variant tests
+ * @returns Test results with decision
+ */
 export async function runABTest(
-  configA: AgentConfig,
-  configB: AgentConfig,
-  tasks: TestTask[] = defaultTasks,
-  iterations: number = 3
-): Promise<ABTestReport> {
-  const results: ABTestResult[] = [];
+  config: ABTestConfig,
+  baselineRunner: () => Promise<TestSuiteReport> | TestSuiteReport,
+  variantRunner: () => Promise<TestSuiteReport> | TestSuiteReport
+): Promise<ABTestResult> {
+  const statisticalNotes: string[] = [];
 
-  for (const task of tasks) {
-    const resultsA: TaskResult[] = [];
-    const resultsB: TaskResult[] = [];
-
-    // Run multiple iterations for statistical validity
-    for (let i = 0; i < iterations; i++) {
-      // Randomize order to reduce bias
-      if (Math.random() > 0.5) {
-        resultsA.push(await runAgentTask(configA, task));
-        resultsB.push(await runAgentTask(configB, task));
-      } else {
-        resultsB.push(await runAgentTask(configB, task));
-        resultsA.push(await runAgentTask(configA, task));
-      }
-    }
-
-    const statsA = calculateStats(resultsA);
-    const statsB = calculateStats(resultsB);
-
-    const notes: string[] = [];
-
-    // Add notes about statistical limitations
-    if (iterations < 10) {
-      notes.push(
-        `Sample size (${iterations}) is small; results are preliminary and may not be statistically significant.`
-      );
-    }
-
-    if (Math.abs(statsA.successRate - statsB.successRate) < 0.1) {
-      notes.push('Success rates are similar; difference may not be meaningful.');
-    }
-
-    results.push({
-      testId: `ab-${task.id}-${Date.now()}`,
-      task,
-      configA: { name: configA.name, results: resultsA },
-      configB: { name: configB.name, results: resultsB },
-      comparison: {
-        successRateA: statsA.successRate,
-        successRateB: statsB.successRate,
-        avgTimeA: statsA.avgTime,
-        avgTimeB: statsB.avgTime,
-        validationPassRateA: statsA.validationPassRate,
-        validationPassRateB: statsB.validationPassRate,
-        sampleSize: iterations,
-        notes,
-      },
-    });
+  // Validate iterations
+  if (config.iterations < 1) {
+    throw new Error('iterations must be at least 1');
   }
 
+  if (config.iterations < 3) {
+    statisticalNotes.push(
+      `Sample size (${config.iterations}) is very small; results may have high variance.`
+    );
+  } else if (config.iterations < 10) {
+    statisticalNotes.push(
+      `Sample size (${config.iterations}) is small; results are preliminary.`
+    );
+  }
+
+  // Run baseline N times
+  console.log(`Running baseline (${config.baselineLabel}) ${config.iterations} times...`);
+  const baselineReports: TestSuiteReport[] = [];
+  for (let i = 0; i < config.iterations; i++) {
+    const report = await baselineRunner();
+    baselineReports.push(report);
+  }
+
+  // Run variant N times
+  console.log(`Running variant ${config.iterations} times...`);
+  const variantReports: TestSuiteReport[] = [];
+  for (let i = 0; i < config.iterations; i++) {
+    const report = await variantRunner();
+    variantReports.push(report);
+  }
+
+  // Aggregate baseline results
+  const baselineResults = aggregateResults(
+    baselineReports,
+    config.testSuite
+  );
+
+  // Aggregate variant results
+  const variantResults = aggregateResults(
+    variantReports,
+    config.testSuite
+  );
+
+  // Calculate improvement
+  const improvement = calculateImprovement(baselineResults, variantResults);
+
+  // Detect regressions (tests that got worse)
+  const regressions = detectRegressions(baselineResults, variantResults);
+
+  // Make decision
+  const { decision, reasoning } = makeDecision(
+    config,
+    improvement,
+    regressions,
+    statisticalNotes
+  );
+
   return {
-    timestamp: new Date().toISOString(),
-    totalTests: results.length,
-    results,
-    methodology:
-      'A/B comparison with randomized execution order. Each task run multiple times per configuration.',
-    limitations: [
-      'Small sample sizes limit statistical confidence',
-      'Single-machine execution may introduce environmental variance',
-      'Results reflect test tasks only, not general performance',
-      'No external validation of output quality beyond pattern matching',
-    ],
+    config,
+    baselineResults,
+    variantResults,
+    improvement,
+    regressions,
+    decision,
+    reasoning,
+    metadata: {
+      timestamp: new Date().toISOString(),
+      baselineExecutions: config.iterations,
+      variantExecutions: config.iterations,
+      statisticalNotes,
+    },
   };
 }
 
-// Print report
-function printReport(report: ABTestReport): void {
+/**
+ * Aggregate multiple test reports into summary results
+ */
+function aggregateResults(
+  reports: TestSuiteReport[],
+  testFilter: string[]
+): TestResults {
+  if (reports.length === 0) {
+    return {
+      passRate: 0,
+      avgExecutionTimeMs: 0,
+      testsPassed: 0,
+      testsFailed: 0,
+      totalTests: 0,
+      details: [],
+    };
+  }
+
+  // Filter tests based on testSuite config
+  const includeAll = testFilter.includes('all');
+  const filteredReports = reports.map((report) => ({
+    ...report,
+    results: report.results.filter((r) =>
+      includeAll || testFilter.includes(r.testId)
+    ),
+  }));
+
+  // Calculate pass rate across all iterations
+  const totalTests = filteredReports.reduce(
+    (sum, r) => sum + r.results.length,
+    0
+  );
+  const totalPassed = filteredReports.reduce(
+    (sum, r) => sum + r.results.filter((t) => t.passed).length,
+    0
+  );
+
+  // Calculate average execution time (simulated - real would measure actual time)
+  // Since test-suite doesn't currently measure execution time, we'll simulate it
+  const avgExecutionTimeMs = 10; // Placeholder
+
+  // Get test details (from first report as representative)
+  const details = filteredReports[0]?.results.map((r) => ({
+    testId: r.testId,
+    name: r.name,
+    passed: r.passed,
+    executionTimeMs: avgExecutionTimeMs,
+  })) || [];
+
+  return {
+    passRate: totalTests > 0 ? (totalPassed / totalTests) * 100 : 0,
+    avgExecutionTimeMs,
+    testsPassed: totalPassed,
+    testsFailed: totalTests - totalPassed,
+    totalTests,
+    details,
+  };
+}
+
+/**
+ * Calculate improvement percentage
+ * Positive = improvement, Negative = regression
+ */
+function calculateImprovement(
+  baseline: TestResults,
+  variant: TestResults
+): number {
+  if (baseline.passRate === 0) {
+    // Avoid division by zero
+    return variant.passRate > 0 ? 100 : 0;
+  }
+
+  const improvement = ((variant.passRate - baseline.passRate) / baseline.passRate) * 100;
+  return Math.round(improvement * 100) / 100; // Round to 2 decimal places
+}
+
+/**
+ * Detect tests that regressed (got worse)
+ */
+function detectRegressions(
+  baseline: TestResults,
+  variant: TestResults
+): string[] {
+  const regressions: string[] = [];
+
+  // Build baseline test map
+  const baselineMap = new Map<string, boolean>();
+  for (const test of baseline.details) {
+    baselineMap.set(test.testId, test.passed);
+  }
+
+  // Check for regressions
+  for (const test of variant.details) {
+    const baselinePassed = baselineMap.get(test.testId);
+    if (baselinePassed === true && test.passed === false) {
+      regressions.push(`${test.testId}: ${test.name}`);
+    }
+  }
+
+  return regressions;
+}
+
+/**
+ * Make decision based on A/B test results
+ */
+function makeDecision(
+  config: ABTestConfig,
+  improvement: number,
+  regressions: string[],
+  statisticalNotes: string[]
+): { decision: 'ACCEPT' | 'REJECT' | 'INCONCLUSIVE'; reasoning: string } {
+  const reasons: string[] = [];
+
+  // Check for regressions
+  if (regressions.length > 0) {
+    reasons.push(`Detected ${regressions.length} regression(s): ${regressions.join(', ')}`);
+    return {
+      decision: 'REJECT',
+      reasoning: reasons.join('; '),
+    };
+  }
+
+  // Check if improvement meets threshold
+  if (improvement >= config.minImprovement) {
+    reasons.push(
+      `Improvement of ${improvement.toFixed(2)}% meets minimum threshold of ${config.minImprovement}%`
+    );
+    reasons.push('No regressions detected');
+
+    // Add statistical caveats
+    if (statisticalNotes.length > 0) {
+      reasons.push(`Note: ${statisticalNotes.join('; ')}`);
+    }
+
+    return {
+      decision: 'ACCEPT',
+      reasoning: reasons.join('; '),
+    };
+  }
+
+  // Improvement exists but below threshold
+  if (improvement > 0 && improvement < config.minImprovement) {
+    reasons.push(
+      `Improvement of ${improvement.toFixed(2)}% is below minimum threshold of ${config.minImprovement}%`
+    );
+    reasons.push('No regressions detected but improvement insufficient');
+
+    return {
+      decision: 'INCONCLUSIVE',
+      reasoning: reasons.join('; '),
+    };
+  }
+
+  // No improvement or negative
+  if (improvement <= 0) {
+    reasons.push(
+      `No improvement detected (${improvement.toFixed(2)}%)`
+    );
+
+    // Check if it's within acceptable regression
+    if (Math.abs(improvement) <= config.maxRegression) {
+      reasons.push(
+        `Regression of ${Math.abs(improvement).toFixed(2)}% is within acceptable limit of ${config.maxRegression}%`
+      );
+      return {
+        decision: 'INCONCLUSIVE',
+        reasoning: reasons.join('; '),
+      };
+    } else {
+      reasons.push(
+        `Regression exceeds acceptable limit of ${config.maxRegression}%`
+      );
+      return {
+        decision: 'REJECT',
+        reasoning: reasons.join('; '),
+      };
+    }
+  }
+
+  // Fallback
+  return {
+    decision: 'INCONCLUSIVE',
+    reasoning: 'Unable to determine outcome based on configured criteria',
+  };
+}
+
+/**
+ * Print A/B test report to console
+ */
+export function printABTestReport(result: ABTestResult): void {
   console.log('='.repeat(70));
   console.log('A/B TEST REPORT');
   console.log('='.repeat(70));
-  console.log(`Timestamp: ${report.timestamp}`);
-  console.log(`Total Tests: ${report.totalTests}`);
-  console.log(`Methodology: ${report.methodology}`);
+  console.log(`Test: ${result.config.name}`);
+  console.log(`Description: ${result.config.description}`);
+  console.log(`Timestamp: ${result.metadata.timestamp}`);
   console.log();
-  console.log('Limitations:');
-  for (const limitation of report.limitations) {
-    console.log(`  - ${limitation}`);
-  }
+
+  console.log('Configuration:');
+  console.log(`  Baseline: ${result.config.baselineLabel}`);
+  console.log(`  Test Suite: ${result.config.testSuite.join(', ')}`);
+  console.log(`  Min Improvement: ${result.config.minImprovement}%`);
+  console.log(`  Max Regression: ${result.config.maxRegression}%`);
+  console.log(`  Iterations: ${result.config.iterations}`);
+  console.log();
+
   console.log('-'.repeat(70));
+  console.log('BASELINE RESULTS:');
+  printTestResults(result.baselineResults);
+  console.log();
 
-  for (const result of report.results) {
-    console.log();
-    console.log(`Task: ${result.task.name} (${result.task.id})`);
-    console.log('-'.repeat(40));
-    console.log(`Config A (${result.configA.name}):`);
-    console.log(`  Success Rate: ${(result.comparison.successRateA * 100).toFixed(1)}%`);
-    console.log(`  Validation Pass: ${(result.comparison.validationPassRateA * 100).toFixed(1)}%`);
-    console.log(`  Avg Time: ${result.comparison.avgTimeA.toFixed(0)}ms`);
-    console.log();
-    console.log(`Config B (${result.configB.name}):`);
-    console.log(`  Success Rate: ${(result.comparison.successRateB * 100).toFixed(1)}%`);
-    console.log(`  Validation Pass: ${(result.comparison.validationPassRateB * 100).toFixed(1)}%`);
-    console.log(`  Avg Time: ${result.comparison.avgTimeB.toFixed(0)}ms`);
-    console.log();
-    console.log(`Sample Size: ${result.comparison.sampleSize} iterations each`);
+  console.log('-'.repeat(70));
+  console.log('VARIANT RESULTS:');
+  printTestResults(result.variantResults);
+  console.log();
 
-    if (result.comparison.notes.length > 0) {
-      console.log('Notes:');
-      for (const note of result.comparison.notes) {
-        console.log(`  * ${note}`);
-      }
-    }
+  console.log('-'.repeat(70));
+  console.log('COMPARISON:');
+  console.log(`  Improvement: ${result.improvement.toFixed(2)}%`);
+  console.log(`  Regressions: ${result.regressions.length}`);
+  if (result.regressions.length > 0) {
+    result.regressions.forEach((r) => console.log(`    - ${r}`));
+  }
+  console.log();
+
+  console.log('-'.repeat(70));
+  console.log(`DECISION: ${result.decision}`);
+  console.log(`Reasoning: ${result.reasoning}`);
+  console.log();
+
+  if (result.metadata.statisticalNotes.length > 0) {
+    console.log('Statistical Notes:');
+    result.metadata.statisticalNotes.forEach((note) =>
+      console.log(`  * ${note}`)
+    );
+    console.log();
   }
 
   console.log('='.repeat(70));
 }
 
-// Save report to file
-function saveReport(report: ABTestReport, outputPath: string): void {
-  fs.writeFileSync(outputPath, JSON.stringify(report, null, 2));
-  console.log(`Report saved to: ${outputPath}`);
+/**
+ * Print individual test results
+ */
+function printTestResults(results: TestResults): void {
+  console.log(`  Total Tests: ${results.totalTests}`);
+  console.log(`  Passed: ${results.testsPassed}`);
+  console.log(`  Failed: ${results.testsFailed}`);
+  console.log(`  Pass Rate: ${results.passRate.toFixed(2)}%`);
+  console.log(`  Avg Execution Time: ${results.avgExecutionTimeMs.toFixed(2)}ms`);
 }
 
-// Example configurations
-const exampleConfigs = {
-  baseline: {
-    name: 'baseline',
-    description: 'Standard Claude agent without memory/skills bootstrap',
-    command: 'claude',
-    args: ['-p'],
-    bootstrap: {
-      memoryEnabled: false,
-      skillsEnabled: false,
-    },
-  } as AgentConfig,
+/**
+ * Example usage demonstrating A/B testing
+ */
+export async function runExampleABTest(): Promise<ABTestResult> {
+  const config: ABTestConfig = {
+    name: 'Example A/B Test',
+    description: 'Comparing baseline validator against improved variant',
+    baselineLabel: 'v1.0-baseline',
+    testSuite: ['all'], // Run all tests
+    minImprovement: 5, // Require at least 5% improvement
+    maxRegression: 0, // No regressions allowed
+    iterations: 3, // Run 3 times each
+  };
 
-  withMemory: {
-    name: 'with-memory',
-    description: 'Claude agent with memory bootstrap enabled',
-    command: 'claude',
-    args: ['-p'],
-    bootstrap: {
-      memoryEnabled: true,
-      skillsEnabled: false,
-    },
-  } as AgentConfig,
+  // Baseline runner - uses current validator
+  const baselineRunner = () => runTests(testCases);
 
-  withSkills: {
-    name: 'with-skills',
-    description: 'Claude agent with skills bootstrap enabled',
-    command: 'claude',
-    args: ['-p'],
-    bootstrap: {
-      memoryEnabled: false,
-      skillsEnabled: true,
-    },
-  } as AgentConfig,
+  // Variant runner - simulates improved validator
+  // In real usage, this would test a modified validator
+  const variantRunner = () => runTests(testCases);
 
-  fullBootstrap: {
-    name: 'full-bootstrap',
-    description: 'Claude agent with full memory and skills bootstrap',
-    command: 'claude',
-    args: ['-p'],
-    bootstrap: {
-      memoryEnabled: true,
-      skillsEnabled: true,
-    },
-  } as AgentConfig,
-};
+  const result = await runABTest(config, baselineRunner, variantRunner);
 
-// CLI execution (ESM-compatible)
-const isMainModule = import.meta.url === `file://${process.argv[1]}`;
-if (isMainModule) {
-  console.log('A/B Test Runner - Evidence-Based Agent Comparison');
-  console.log();
-  console.log('Note: Running actual tests requires agent processes.');
-  console.log('This module exports functions for programmatic use.');
-  console.log();
-  console.log('Example usage:');
-  console.log('  import { runABTest, exampleConfigs } from "./ab-test-runner";');
-  console.log('  const report = await runABTest(exampleConfigs.baseline, exampleConfigs.fullBootstrap);');
-  console.log();
-  console.log('Available example configurations:');
-  for (const [key, config] of Object.entries(exampleConfigs)) {
-    console.log(`  - ${key}: ${config.description}`);
-  }
+  printABTestReport(result);
+
+  return result;
 }
 
-export { exampleConfigs, defaultTasks, printReport, saveReport };
+// CLI execution
+const isMainModule = import.meta.url === `file://${process.argv[1]}` ||
+  process.argv[1]?.endsWith('ab-test-runner.ts');
+
+if (isMainModule && process.argv[1]?.endsWith('ab-test-runner.ts')) {
+  console.log('Running example A/B test...\n');
+  runExampleABTest().catch((err) => {
+    console.error('A/B test failed:', err);
+    process.exit(1);
+  });
+}

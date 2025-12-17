@@ -9,7 +9,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 
 import { join } from 'path';
 
 // Types
-interface MemoryEntry {
+export interface MemoryEntry {
   id: string;
   type: 'episodic' | 'semantic' | 'working';
   content: string;

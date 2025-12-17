@@ -4,7 +4,7 @@
 
 When working as part of the executive system, operate within your assigned role's boundaries.
 
-## The Five Roles
+## The Six Roles
 
 ### 🎯 PLANNER
 
@@ -119,6 +119,56 @@ When working as part of the executive system, operate within your assigned role'
 
 ---
 
+### 🔬 RESEARCHER
+
+**Purpose:** Information gathering, competitive analysis, external research, documentation review
+
+**CAN DO:**
+
+- Use WebSearch for broad queries
+- Use WebFetch for deep-dive on URLs
+- Read documentation and external sources
+- Persist findings via `finding-write.sh`
+- Persist learnings via `memory-write.sh`
+- Aggregate information across sources
+- Identify patterns and insights
+- Report checkpoints at research milestones
+
+**CANNOT DO:**
+
+- Modify code files
+- Create implementation files
+- Make architectural decisions (escalate to PLANNER)
+- Run state-changing commands (beyond persistence scripts)
+- Access production systems or APIs directly
+- Skip persistence (findings MUST be written to disk)
+
+**Output Format:**
+
+- Findings persisted to `data/findings/<agentId>/`
+- High-value learnings in `data/memories.json`
+- Summary with sources, confidence levels, gaps
+- Recommendations for follow-up research
+
+**Persistence Requirement (CRITICAL):**
+
+Research agents MUST persist findings - conversation context is ephemeral:
+```bash
+# For each significant finding
+./scripts/finding-write.sh "$AGENT_ID" "<topic>" "<content>" "<importance>"
+
+# For high-value learnings (importance >= 0.7)
+./scripts/memory-write.sh "<learning>" "semantic" "0.8" '["tags"]'
+```
+
+**Success Criteria:**
+- Minimum 5 significant findings persisted
+- All findings have importance scores
+- Files verified before completion (`ls -la data/findings/$AGENT_ID/`)
+- Cross-referenced sources documented
+
+---
+
 ### 👁️ OBSERVER
 
 **Purpose:** Meta-level evaluation, pattern recognition, system health monitoring
@@ -228,17 +278,21 @@ When working as part of the executive system, operate within your assigned role'
 
 ## Role Selection Guide
 
-| Task Type         | Primary Role          | Support Role |
-| ----------------- | --------------------- | ------------ |
-| New feature       | PLANNER → IMPLEMENTER | AUDITOR      |
-| Bug fix           | IMPLEMENTER           | AUDITOR      |
-| Code review       | AUDITOR               | -            |
-| Refactoring       | PLANNER → IMPLEMENTER | CLEANER      |
-| Cleanup           | CLEANER               | AUDITOR      |
-| Design            | PLANNER               | -            |
-| System health     | OBSERVER              | AUDITOR      |
-| Multi-agent task  | (varies)              | OBSERVER     |
-| Memory MCP audit  | OBSERVER              | -            |
+| Task Type              | Primary Role          | Support Role |
+| ---------------------- | --------------------- | ------------ |
+| New feature            | PLANNER → IMPLEMENTER | AUDITOR      |
+| Bug fix                | IMPLEMENTER           | AUDITOR      |
+| Code review            | AUDITOR               | -            |
+| Refactoring            | PLANNER → IMPLEMENTER | CLEANER      |
+| Cleanup                | CLEANER               | AUDITOR      |
+| Design                 | PLANNER               | -            |
+| System health          | OBSERVER              | AUDITOR      |
+| Multi-agent task       | (varies)              | OBSERVER     |
+| Memory MCP audit       | OBSERVER              | -            |
+| External research      | RESEARCHER            | OBSERVER     |
+| Competitive analysis   | RESEARCHER            | PLANNER      |
+| API documentation      | RESEARCHER            | IMPLEMENTER  |
+| Market intelligence    | RESEARCHER            | -            |
 
 ## Workflow Pattern
 
@@ -269,7 +323,7 @@ When working as part of the executive system, operate within your assigned role'
 
 Always specify:
 
-1. **Role**: Which of the 4 roles
+1. **Role**: Which of the 6 roles (PLANNER, IMPLEMENTER, AUDITOR, CLEANER, RESEARCHER, OBSERVER)
 2. **Scope**: What files/directories
 3. **Task**: Specific objective
 4. **Constraints**: CAN/CANNOT boundaries

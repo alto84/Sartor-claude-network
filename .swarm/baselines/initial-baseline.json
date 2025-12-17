@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-12-17T03:16:13.496Z",
+  "agentSuccessRate": 57.42574257425742,
+  "avgTaskDuration": 75730.43859649122,
+  "memoryLatency": {
+    "hot": 4.302892399999996,
+    "warm": 9.024190000000004,
+    "cold": 0.2518349000000114
+  },
+  "testPassRate": 100,
+  "validationScore": 4172.313197193548,
+  "coordinatorEfficiency": null
+}

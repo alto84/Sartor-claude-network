@@ -1,0 +1,14 @@
+{
+  "requestId": "req-1765940145782-e3ksmv",
+  "status": "success",
+  "output": "Health check validation successful\n",
+  "durationMs": 10014,
+  "exitCode": 0,
+  "failureReason": null,
+  "timing": {
+    "healthCheckMs": 5343,
+    "taskMs": 4671
+  },
+  "completedAt": "2025-12-17T02:55:55.798Z",
+  "coordinator": "local-only-health"
+}

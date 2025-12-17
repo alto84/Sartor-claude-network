@@ -26,6 +26,9 @@ interface Memory {
   importance_score: number;
   tags: string[];
   created_at: string;
+  access_count?: number;
+  last_accessed?: string;
+  tier?: 'hot' | 'warm' | 'cold';
 }
 
 interface FileData {

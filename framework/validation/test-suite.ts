@@ -34,7 +34,7 @@ interface TestResult {
   details?: string;
 }
 
-interface TestSuiteReport {
+export interface TestSuiteReport {
   timestamp: string;
   totalTests: number;
   passed: number;

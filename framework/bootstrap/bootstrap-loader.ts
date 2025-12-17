@@ -8,6 +8,7 @@ import { existsSync, readFileSync, readdirSync } from 'fs';
 import { join, basename, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { queryMemory, summarizeMemories } from '../memory/memory-store.js';
+import { summarizeMemoriesForAgent, formatSummaryForPrompt } from './memory-summarizer.js';
 import { generateProtocolPrompt, generateCompactProtocol } from './anti-fabrication-injector.js';
 import {
   getCurrentMissionState,
@@ -16,6 +17,13 @@ import {
   loadMissionConfig,
   type MissionState
 } from './mission-state.js';
+import {
+  getRoleProfile,
+  buildRoleContext,
+  getRoleMemoryTopics,
+  getRoleSkills,
+  type RoleProfile
+} from './role-profiles.js';
 
 // ESM-compatible __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -172,7 +180,7 @@ export function getSkillDescriptions(skillNames: string[]): string {
 }
 
 /**
- * Get relevant memory context
+ * Get relevant memory context (legacy - uses simple topic-based summarization)
  */
 export function getMemoryContext(config: BootstrapConfig): string {
   if (!config.memory.inject_relevant) {
@@ -203,7 +211,70 @@ export function getMemoryContext(config: BootstrapConfig): string {
 }
 
 /**
- * Build full bootstrap prompt
+ * Get smart memory context using intelligent summarization
+ * Separates facts from hypotheses, identifies gaps, prioritizes relevance
+ */
+export async function getSmartMemoryContext(
+  agentContext: AgentContext,
+  config: BootstrapConfig
+): Promise<string> {
+  if (!config.memory.inject_relevant) {
+    return '';
+  }
+
+  try {
+    // Extract keywords from task objective and requirements
+    const taskKeywords: string[] = [];
+
+    // Add role as primary keyword
+    taskKeywords.push(agentContext.role);
+
+    // Extract keywords from objective (simple word extraction)
+    const objectiveWords = agentContext.task.objective
+      .toLowerCase()
+      .split(/\s+/)
+      .filter(word => word.length > 3); // Filter short words
+    taskKeywords.push(...objectiveWords);
+
+    // Add requirement keywords
+    for (const req of agentContext.task.requirements) {
+      const reqWords = req
+        .toLowerCase()
+        .split(/\s+/)
+        .filter(word => word.length > 3);
+      taskKeywords.push(...reqWords);
+    }
+
+    // Add context keywords
+    if (agentContext.task.context) {
+      const contextStr = JSON.stringify(agentContext.task.context).toLowerCase();
+      const contextWords = contextStr
+        .split(/[^a-z0-9]+/)
+        .filter(word => word.length > 3);
+      taskKeywords.push(...contextWords);
+    }
+
+    // Deduplicate keywords
+    const uniqueKeywords = Array.from(new Set(taskKeywords));
+
+    // Summarize memories with intelligent classification
+    const summary = await summarizeMemoriesForAgent({
+      role: agentContext.role,
+      taskKeywords: uniqueKeywords,
+      maxTokens: config.memory.max_context_tokens,
+      prioritizeRecent: true, // Prioritize recent findings by default
+    });
+
+    return formatSummaryForPrompt(summary);
+  } catch (e) {
+    console.error('Smart memory context failed:', e);
+    // Fallback to legacy implementation
+    return getMemoryContext(config);
+  }
+}
+
+/**
+ * Build full bootstrap prompt with role-specific context (synchronous)
  */
 export function buildBootstrapPrompt(
   agentContext: AgentContext,
@@ -211,12 +282,16 @@ export function buildBootstrapPrompt(
 ): string {
   const cfg = config || loadConfig();
 
+  // Get role profile
+  const roleProfile = getRoleProfile(agentContext.role);
+
+  // Get role-specific skills plus global required skills
+  const roleSkills = getRoleSkills(agentContext.role);
+  const allSkills = [...new Set([...cfg.skills.required, ...roleSkills])];
+  const skillDescriptions = getSkillDescriptions(allSkills);
+
   // Get components
   const memoryContext = getMemoryContext(cfg);
-  const skillDescriptions = getSkillDescriptions([
-    ...cfg.skills.required,
-    ...cfg.skills.optional,
-  ]);
 
   // Get mission state for time-awareness
   const missionConfig = loadMissionConfig();
@@ -225,6 +300,9 @@ export function buildBootstrapPrompt(
 
   // Get anti-fabrication protocol for the role
   const antiFabricationSection = generateCompactProtocol(agentContext.role);
+
+  // Build role-specific context
+  const roleContextSection = buildRoleContext(roleProfile);
 
   // Build prompt
   return `# Agent Bootstrap
@@ -242,7 +320,9 @@ ${cfg.mission.constraints.map((c) => `- ${c}`).join('\n')}
 **Success Criteria**:
 ${cfg.mission.success_criteria.map((c) => `- ${c}`).join('\n')}
 
-## Your Role
+${roleContextSection}
+
+## Agent Identity
 You are agent "${agentContext.role}" with request ID ${agentContext.requestId}.
 ${agentContext.parentRequestId ? `Your parent agent is ${agentContext.parentRequestId}.` : 'You are a root-level agent.'}
 
@@ -279,7 +359,96 @@ Store important findings in semantic memory for future agents to learn from.
 
 ---
 
-Now complete your assigned task. Be concise and evidence-based.`;
+Now complete your assigned task following your role's output format. Be concise and evidence-based.`;
+}
+
+/**
+ * Build full bootstrap prompt with smart memory summarization and role profiles (async)
+ * Recommended for production use - provides better context relevance and role-specific guidance
+ */
+export async function buildSmartBootstrapPrompt(
+  agentContext: AgentContext,
+  config?: BootstrapConfig
+): Promise<string> {
+  const cfg = config || loadConfig();
+
+  // Get role profile
+  const roleProfile = getRoleProfile(agentContext.role);
+
+  // Get role-specific skills plus global required skills
+  const roleSkills = getRoleSkills(agentContext.role);
+  const allSkills = [...new Set([...cfg.skills.required, ...roleSkills])];
+  const skillDescriptions = getSkillDescriptions(allSkills);
+
+  // Get components
+  const memoryContext = await getSmartMemoryContext(agentContext, cfg);
+
+  // Get mission state for time-awareness
+  const missionConfig = loadMissionConfig();
+  const missionState = getCurrentMissionState(missionConfig);
+  const missionStateSection = formatMissionStateForPrompt(missionState);
+
+  // Get anti-fabrication protocol for the role
+  const antiFabricationSection = generateCompactProtocol(agentContext.role);
+
+  // Build role-specific context
+  const roleContextSection = buildRoleContext(roleProfile);
+
+  // Build prompt
+  return `# Agent Bootstrap
+
+${missionStateSection}
+
+${antiFabricationSection}
+
+## Mission Context
+**Objective**: ${cfg.mission.objective}
+
+**Constraints**:
+${cfg.mission.constraints.map((c) => `- ${c}`).join('\n')}
+
+**Success Criteria**:
+${cfg.mission.success_criteria.map((c) => `- ${c}`).join('\n')}
+
+${roleContextSection}
+
+## Agent Identity
+You are agent "${agentContext.role}" with request ID ${agentContext.requestId}.
+${agentContext.parentRequestId ? `Your parent agent is ${agentContext.parentRequestId}.` : 'You are a root-level agent.'}
+
+## Assigned Task
+**Objective**: ${agentContext.task.objective}
+
+**Context**:
+\`\`\`json
+${JSON.stringify(agentContext.task.context, null, 2)}
+\`\`\`
+
+**Requirements**:
+${agentContext.task.requirements.map((r) => `- ${r}`).join('\n')}
+
+${memoryContext}
+
+## Available Skills
+${skillDescriptions}
+
+## Memory System
+You have access to the swarm memory system at \`.swarm/memory/\`:
+- **Episodic**: \`.swarm/memory/episodic/{date}.jsonl\` - Event logs
+- **Semantic**: \`.swarm/memory/semantic/{topic}.jsonl\` - Knowledge
+- **Working**: \`.swarm/memory/working/{agent_id}.jsonl\` - Session state
+- **Coordination**: \`.swarm/memory/coordination/messages.jsonl\` - Inter-agent messages
+
+Store important findings in semantic memory for future agents to learn from.
+
+## Environment
+- AGENT_ID: ${agentContext.requestId}
+- AGENT_TYPE: ${agentContext.role}
+- SWARM_MEMORY_PATH: .swarm/memory
+
+---
+
+Now complete your assigned task following your role's output format. Be concise and evidence-based.`;
 }
 
 /**
@@ -310,9 +479,35 @@ if (isMainModule) {
       },
     });
     console.log(prompt);
+  } else if (args[0] === 'test-smart') {
+    const prompt = await buildSmartBootstrapPrompt({
+      role: 'implementer',
+      requestId: 'req-test-456',
+      task: {
+        objective: 'Implement memory summarization feature',
+        context: { feature: 'memory', priority: 'high' },
+        requirements: ['Use TypeScript', 'Add tests', 'Document API'],
+      },
+    });
+    console.log(prompt);
   } else {
-    console.log('Usage: bootstrap-loader.ts [discover|test]');
+    console.log('Usage: bootstrap-loader.ts [discover|test|test-smart]');
   }
 }
 
-export default { loadConfig, discoverSkills, buildBootstrapPrompt };
+export default {
+  loadConfig,
+  discoverSkills,
+  buildBootstrapPrompt,
+  buildSmartBootstrapPrompt,
+  getSmartMemoryContext,
+};
+
+// Re-export role profile functions for convenience
+export {
+  getRoleProfile,
+  buildRoleContext,
+  getRoleMemoryTopics,
+  getRoleSkills,
+  type AgentRole,
+} from './role-profiles.js';

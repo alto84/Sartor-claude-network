@@ -7,7 +7,7 @@ Use this template when delegating to subagents via the Task tool.
 **BEFORE doing ANY Edit/Write operations, subagents MUST set their role:**
 
 ```bash
-export CLAUDE_AGENT_ROLE=[PLANNER|IMPLEMENTER|AUDITOR|CLEANER]
+export CLAUDE_AGENT_ROLE=[PLANNER|IMPLEMENTER|AUDITOR|CLEANER|RESEARCHER|OBSERVER]
 ```
 
 This environment variable exempts subagents from the orchestrator's delegation enforcement hooks, allowing them to edit src/ files directly. Without this variable set, the preToolUse hooks will BLOCK all Edit/Write operations on implementation files.
@@ -599,6 +599,97 @@ Since subagents don't have MCP tools, use the bash wrapper to write memories:
 # Read recent high-importance memories
 cat data/memories.json | jq '.memories | to_entries | map(.value) | map(select(.importance_score >= 0.8))'
 ```
+
+## MANDATORY: Persistence of Findings and Learnings
+
+**⚠️ CRITICAL: ALL subagents MUST persist significant findings and learnings. ⚠️**
+
+Your work is only valuable if future agents (and future sessions) can access it. Persistence is **NOT optional**.
+
+### The "Return" vs "Persist" Distinction
+
+- **Return** (conversation) = Ephemeral. Lost after task completion.
+- **Persist** (file system) = Permanent. Available to all future agents.
+
+**You must do BOTH:** Persist to disk AND return in output.
+
+### When to Persist
+
+**ALWAYS persist when you:**
+- Discover a pattern that worked well
+- Find a blocker or limitation
+- Learn something that changes your approach
+- Complete a significant milestone
+- Identify a bug or issue
+- Make an architectural decision
+- Find important external information (research)
+
+### Persistence Scripts Quick Reference
+
+| What to Persist | Script | Usage Pattern | Importance Range |
+|----------------|--------|---------------|------------------|
+| Research discovery | `finding-write.sh` | `./scripts/finding-write.sh "$AGENT_ID" "topic" "content" "0.8"` | 0.5-1.0 |
+| Architectural decision | `finding-write.sh` | `./scripts/finding-write.sh "$AGENT_ID" "architecture" "decision" "0.85"` | 0.7-1.0 |
+| Bug/blocker | `finding-write.sh` | `./scripts/finding-write.sh "$AGENT_ID" "bug" "description" "0.9"` | 0.7-1.0 |
+| Successful pattern | `memory-write.sh` | `./scripts/memory-write.sh "pattern" "procedural" "0.75" '["tags"]'` | 0.6-0.9 |
+| Critical directive | `memory-write.sh` | `./scripts/memory-write.sh "directive" "semantic" "0.95" '["tags"]'` | 0.9-1.0 |
+| Session event | `memory-write.sh` | `./scripts/memory-write.sh "event" "episodic" "0.6" '["tags"]'` | 0.4-0.8 |
+
+### Finding Persistence (Especially for RESEARCHER Agents)
+
+**Use `finding-write.sh` for all research discoveries:**
+
+```bash
+# Basic usage
+./scripts/finding-write.sh <agentId> <topic> <content> [importance]
+
+# Example: API research finding
+./scripts/finding-write.sh "$AGENT_ID" "api-update" "Anthropic Messages API now supports streaming" "0.9"
+
+# Example: Competitive analysis
+./scripts/finding-write.sh "$AGENT_ID" "competitor" "Pfizer uses $350M PostEra partnership for AI drug discovery" "0.8"
+
+# Example: Architecture discovery
+./scripts/finding-write.sh "$AGENT_ID" "architecture" "Found existing CRDT module in src/coordination/" "0.85"
+
+# Example: Blocker identification
+./scripts/finding-write.sh "$AGENT_ID" "blocker" "Cannot proceed without Memory MCP running" "0.9"
+```
+
+**Findings are automatically:**
+- Stored in `data/findings/<agentId>/finding-NNN.json`
+- Aggregated by topic in `data/findings/_aggregated/topic-<topic>.json`
+- Tagged with relevant keywords
+- Timestamped for chronological tracking
+
+### Example Persistence Workflow
+
+```bash
+# Step 1: Discover something important during research
+# "Found that Novartis scaled back Data42 after $100M+ investment"
+
+# Step 2: PERSIST the finding (MANDATORY)
+./scripts/finding-write.sh "$AGENT_ID" "competitor-analysis" "Novartis scaled back Data42 after \$100M+ investment - cautionary tale about internal AI platform overreach" "0.85"
+
+# Step 3: If this is a high-value learning, ALSO persist to memory
+./scripts/memory-write.sh "Lesson from Novartis Data42: Internal AI platform builds risk overreach; partnership model may be more capital efficient" "semantic" "0.8" '["lessons","partnerships","novartis"]'
+
+# Step 4: ALSO include in your conversation output (for orchestrator)
+# Return findings in standardized format
+
+# Step 5: Verify persistence before completing
+ls -la data/findings/$AGENT_ID/
+```
+
+### Enforcement Checklist
+
+**Before completing your task, verify:**
+- [ ] Have I persisted all significant findings? (via `finding-write.sh`)
+- [ ] Have I persisted high-importance learnings? (via `memory-write.sh`)
+- [ ] Are these also included in my output format?
+- [ ] Can I verify files exist in `data/findings/` or `data/memories.json`?
+
+**If you haven't persisted, your work is incomplete.**
 
 ## Status Coordination (NEW - Real-time Visibility)
 
@@ -1430,6 +1521,101 @@ Clean up the src/skills/ directory:
 # When complete and verified
 ./scripts/wake.sh "COMPLETE" "$AGENT_ID" "Removed 8 unused files, build passes, tests pass"
 \`\`\`
+`
+});
+```
+
+## Example: Spawning a RESEARCHER (Foreground or Background)
+
+Use this pattern for external research, competitive analysis, documentation review, or information gathering tasks.
+
+```
+Task({
+  run_in_background: true,  // or false for foreground
+  subagent_type: 'general-purpose',
+  instructions: `
+**Role: RESEARCHER**
+**Agent ID**: researcher-${topic}-${Date.now()}
+**Scope:** Web research, documentation review, information gathering (READ ONLY - no code changes)
+**Phase:** Research
+
+## IMPORTANT: Agent Role Identification
+You are a RESEARCHER agent. Set this environment variable:
+\`\`\`bash
+export CLAUDE_AGENT_ROLE=RESEARCHER
+export AGENT_ID="researcher-${topic}-${Date.now()}"
+\`\`\`
+
+## Research Topic
+[Describe what to research - competitor strategy, API documentation, regulatory landscape, etc.]
+
+## Research Sources
+- WebSearch: Primary research tool
+- WebFetch: Deep-dive on specific URLs
+- Bash: Execute persistence commands (MANDATORY)
+
+## CRITICAL: Persistence Requirements
+
+**Your findings ONLY HAVE VALUE if persisted. Conversation context is EPHEMERAL.**
+
+### For EACH significant finding:
+\`\`\`bash
+./scripts/finding-write.sh "$AGENT_ID" "<topic>" "<finding content>" "<importance 0.0-1.0>"
+\`\`\`
+
+### For high-value learnings (importance >= 0.7):
+\`\`\`bash
+./scripts/memory-write.sh "<learning content>" "semantic" "0.8" '["tag1","tag2"]'
+\`\`\`
+
+### Examples:
+\`\`\`bash
+# Research finding
+./scripts/finding-write.sh "$AGENT_ID" "competitor-analysis" "Pfizer uses \$350M PostEra partnership for AI drug discovery" "0.85"
+
+# Cross-cutting learning
+./scripts/memory-write.sh "Lesson: Large pharma companies prefer AI partnerships over internal builds after Novartis Data42 failure" "semantic" "0.8" '["lessons","partnerships","pharma-ai"]'
+
+# API documentation finding
+./scripts/finding-write.sh "$AGENT_ID" "api-update" "Anthropic Claude 4.5 supports extended context up to 200K tokens" "0.9"
+\`\`\`
+
+## Research Workflow
+1. Search for information (WebSearch)
+2. Deep-dive on relevant sources (WebFetch)
+3. **PERSIST each finding immediately** (finding-write.sh)
+4. Synthesize patterns across findings
+5. **PERSIST high-value learnings** (memory-write.sh)
+6. Report checkpoints
+7. Verify persistence before completing
+
+## Checkpoint Reporting
+\`\`\`bash
+./scripts/checkpoint.sh "$AGENT_ID" "research" "search_started" "Beginning research on ${topic}"
+./scripts/checkpoint.sh "$AGENT_ID" "research" "initial_findings" "Found 5 relevant sources"
+./scripts/checkpoint.sh "$AGENT_ID" "research" "deep_dive" "Completed detailed analysis of 3 sources"
+./scripts/checkpoint.sh "$AGENT_ID" "research" "synthesis_complete" "Identified key patterns"
+\`\`\`
+
+## Success Criteria
+- [ ] Minimum 5 significant findings persisted via finding-write.sh
+- [ ] All high-importance learnings (>= 0.7) persisted via memory-write.sh
+- [ ] Verified files exist: \`ls -la data/findings/$AGENT_ID/\`
+- [ ] Checkpoints reported throughout
+- [ ] Wake message sent at completion (if background)
+
+## CRITICAL: Wake Message at Completion (Background Only)
+\`\`\`bash
+./scripts/wake.sh "COMPLETE" "$AGENT_ID" "Research complete: Found X findings on ${topic}, Y persisted to memory"
+\`\`\`
+
+## Output Format (In Addition to Persistence)
+Return a summary including:
+- Key findings (also persisted)
+- Sources consulted
+- Confidence levels
+- Gaps or limitations
+- Recommendations for follow-up
 `
 });
 ```
