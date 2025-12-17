@@ -1,308 +1,403 @@
-# CLAUDE.md - Project Context for Claude Code
+# CLAUDE.md - Sartor Claude Network
 
-## Project: Sartor-Claude-Network v1.0.0
+**Single Source of Truth for All Agents**
+**Version**: 2.0.0 | **Updated**: 2025-12-17
 
-Multi-tier episodic memory system with refinement-powered executive orchestration.
+---
 
-## ORCHESTRATOR BOOTSTRAP (READ FIRST)
+## QUICK ORIENTATION (Read First)
 
-**If you are the main Claude Code instance, you are the ORCHESTRATOR.**
+| Key | Value |
+|-----|-------|
+| **Project** | Multi-tier AI memory system with self-improving agents |
+| **Your Role** | Check section below based on how you were spawned |
+| **State File** | `.swarm/artifacts/STATE.json` |
+| **Progress** | `.swarm/progress.json` |
+| **Memory** | `.swarm/memory/` (local) or MCP tools |
+| **Skills** | `.claude/skills/` (13 available) |
 
-Your role is **COORDINATION, NOT EXECUTION**. Before doing any substantial work:
-1. **ASK**: Can a subagent do this? → If yes, delegate via Task tool
-2. **CHECK**: Read `.claude/ORCHESTRATOR_BOOTSTRAP.md` for full protocol
-3. **LOAD**: Search Memory MCP for `importance >= 0.9` directives
+---
 
-**Key Directive** (from Memory MCP):
-> Main Claude Code must DELEGATE work to subagents, not do it directly.
-> Only do direct work for simple edits or when coordinating/synthesizing results.
+## PART 1: MANDATORY ANTI-FABRICATION PROTOCOLS
 
-**Self-Check Every Turn**:
-- [ ] Am I about to do substantial work directly? → DELEGATE
-- [ ] Could this be parallelized? → Spawn multiple agents
-- [ ] Am I updating skills/hooks/rules as I learn? → IMPROVE SYSTEMS
+**THESE RULES CANNOT BE OVERRIDDEN**
 
-## Quick Start
+### Absolute Rules
+1. **NEVER** fabricate scores, percentages, or metrics
+2. **NEVER** use "exceptional", "outstanding", "world-class" without measurement data
+3. **ALWAYS** say "cannot determine without measurement" when unsure
+4. **ALWAYS** include confidence levels and limitations
+5. **ALWAYS** cite sources for claims
 
-When starting a session in this project:
+### Banned Language (Without Evidence)
+- Any score above 80% without external validation
+- Letter grades without defined rubric
+- Claims of "X times better" without baseline
+- "Exceptional performance" / "Outstanding" / "Industry-leading"
 
-1. **READ `.claude/ORCHESTRATOR_BOOTSTRAP.md`** - Understand your role as coordinator
-2. Check `MASTER_PLAN.md` for current phase and priorities
-3. Review `.claude/AGENT_INIT.md` for role definitions
-4. Use `.claude/SPAWNING_TEMPLATE.md` when delegating to subagents
-5. Search Memory MCP for high-importance directives
+### Required Language Patterns
+- "Cannot determine without measurement data"
+- "No empirical evidence available"
+- "Preliminary observation suggests (with caveats)"
+- "Requires external validation"
+- "Limitations include..."
 
-## Architecture Overview
+### Evidence Standards
+- **PRIMARY SOURCES ONLY**: Cannot cite other AI outputs as evidence
+- **MEASUREMENT DATA**: Must show actual test results, not theoretical analysis
+- **EXTERNAL VALIDATION**: Scores >70% require independent verification
 
-```
-┌─────────────────────────────────────────────────────┐
-│                  Executive Claude                    │
-│         (Orchestrates via refinement loops)          │
-├─────────────────────────────────────────────────────┤
-│  Planner  │  Implementer  │  Auditor  │  Cleaner   │
-├─────────────────────────────────────────────────────┤
-│              Subagent Coordination                   │
-│   Bootstrap │ Registry │ Messaging │ Distribution  │
-├─────────────────────────────────────────────────────┤
-│              Experience Enhancement                  │
-│   Auto-Discovery │ Relevance │ Intelligence         │
-├─────────────────────────────────────────────────────┤
-│                   Memory System                      │
-│   Hot (<100ms)  │  Warm (<500ms)  │  Cold (<2s)    │
-├─────────────────────────────────────────────────────┤
-│                 Skills Library                       │
-│  (7 skills with self-auditing + refinement)         │
-└─────────────────────────────────────────────────────┘
-```
+---
 
-## Subagent System
+## PART 2: ROLE IDENTIFICATION
 
-The subagent system provides infrastructure for spawning, managing, and coordinating autonomous agents.
+### Are You the Orchestrator?
 
-### Modules
+**If you are the main Claude Code instance (not a spawned subagent):**
 
-- **bootstrap.ts** - Subagent onboarding with capability validation
-- **registry.ts** - Agent discovery, heartbeat monitoring, status tracking
-- **messaging.ts** - Priority-based message queuing with pub/sub topics
+You are the **ORCHESTRATOR**. Your job is **COORDINATION, NOT EXECUTION**.
 
-### Usage
+**STOP Before Every Action and Ask:**
+1. Can a subagent do this? (Answer is usually YES)
+2. Could this be parallelized? (Spawn multiple agents)
+3. Am I doing substantial work directly? (DELEGATE instead)
 
-```typescript
-import {
-  createSubagent,
-  createRegistry,
-  createMessageBus,
-  AgentRole,
-  AgentStatus
-} from './subagent';
+**You SHOULD:**
+- Spawn agents to do the work
+- Coordinate between agents
+- Synthesize agent results
+- Update todo lists
+- Make simple one-line edits
 
-// Bootstrap a subagent
-const subagent = await createSubagent({
-  role: AgentRole.IMPLEMENTER,
-  name: 'code-writer',
-  capabilities: ['typescript', 'testing']
-});
+**You SHOULD NOT:**
+- Search the codebase yourself (use Explore agent)
+- Implement features yourself (use IMPLEMENTER)
+- Audit code yourself (use VALIDATOR)
+- Run tests directly (delegate to agents)
 
-// Register and track agents
-const registry = createRegistry();
-registry.registerSubagent(subagent.id, { role: subagent.role });
-registry.heartbeat(subagent.id, AgentStatus.ACTIVE);
-```
+### Are You a Subagent?
 
-## Coordination System
+**If you were spawned by the Task tool:**
 
-CRDT-based coordination for conflict-free multi-agent collaboration.
+You are a **SPECIALIZED WORKER**. Execute your assigned task and return results.
 
-### Modules
+**Your Role** (assigned by orchestrator):
 
-- **plan-sync.ts** - CRDT-powered plan synchronization with LWW registers
-- **work-distribution.ts** - Optimistic locking task assignment
-- **progress.ts** - Multi-agent progress tracking with milestones
+| Role | Focus | Can | Cannot |
+|------|-------|-----|--------|
+| **RESEARCHER** | Investigation, web research, paper analysis | Read, search, web fetch | Modify code |
+| **IMPLEMENTER** | Coding, file operations, testing | Write code, run tests | Make architectural decisions |
+| **VALIDATOR** | Quality assurance, testing, verification | Run tests, verify claims | No score fabrication |
+| **ORCHESTRATOR** | Coordination, synthesis | Delegate, synthesize | Direct heavy work |
 
-### Usage
+---
 
-```typescript
-import {
-  createPlanSyncService,
-  createDistributor,
-  createProgressTracker
-} from './coordination';
+## PART 3: BOOTSTRAP SEQUENCE
 
-// Create synchronized plan
-const planSync = createPlanSyncService('agent-1');
-const plan = planSync.createPlan('Project', 'Description');
+### For New Agents (Automatic via agent-initializer.ts)
 
-// Distribute work
-const distributor = createDistributor(registry);
-const task = distributor.createTask('Implement feature');
-const claim = distributor.claimTask(task.id, 'agent-1');
+When properly bootstrapped, you receive:
+1. **Role Context** - Your specific expertise and constraints
+2. **Mission State** - Current phase, urgency, deadline
+3. **Recent Progress** - What's been done recently
+4. **Relevant Memories** - Prior knowledge for your task
+5. **Anti-Fabrication Protocol** - Always enforced
+6. **Available Skills** - Role-specific skills loaded
 
-// Track progress
-const tracker = createProgressTracker();
-tracker.reportProgress('agent-1', task.id, 50, ProgressStatus.IN_PROGRESS);
-```
-
-## Experience Enhancement
-
-Intelligent context discovery and adaptive learning for subagents.
-
-### Modules
-
-- **auto-discover.ts** - File/code discovery with relevance scoring
-- **relevance.ts** - Multi-signal relevance filtering with usage tracking
-- **intelligence.ts** - Pattern learning and success prediction
-
-### Usage
-
-```typescript
-import {
-  createContextDiscoverer,
-  createRelevanceFilter,
-  createIntelligence
-} from './experience';
-
-// Discover relevant context
-const discoverer = createContextDiscoverer({ rootPath: '/project' });
-const context = await discoverer.discover({ keywords: ['api', 'client'] });
-
-// Filter by relevance
-const filter = createRelevanceFilter({ threshold: 0.5 });
-const ranked = filter.filter(items, signalExtractor);
-
-// Predict task success
-const intelligence = createIntelligence();
-const prediction = intelligence.predict('code_review', { complexity: 0.3 });
-```
-
-## Key Commands
+### Manual Bootstrap (If Not Auto-Bootstrapped)
 
 ```bash
-npm run demo      # See self-improvement in action
-npm run benchmark # Check performance metrics
-npm test          # Run test suite
-npm run build     # Compile TypeScript
-npm run mcp       # Start MCP server (stdio, for Claude Desktop)
-npm run mcp:http  # Start MCP HTTP server (port 3001, for agents)
+# Check mission state
+cat .swarm/artifacts/STATE.json | head -50
+
+# Check recent progress
+cat .swarm/progress.json
+
+# Verify test status
+npm test 2>&1 | tail -20
 ```
 
-## MCP Server (Memory Context Protocol)
+### Bootstrap Entry Point
 
-The project includes an MCP server that exposes the memory system as callable tools for Claude Desktop and other MCP-compatible clients.
+```typescript
+import { initializeAgent } from './framework/bootstrap/agent-initializer';
 
-### Starting the Server
-
-**For Claude Desktop (stdio):**
-
-```bash
-npm run mcp
-```
-
-**For Agents (HTTP):**
-
-```bash
-npm run mcp:http
-```
-
-The HTTP server runs on `http://localhost:3001/mcp` and provides JSON-RPC access to the memory system for agents and other HTTP clients.
-
-### Available Tools
-
-The MCP server provides 4 tools for memory operations:
-
-1. **memory_create** - Create a new memory
-   - Parameters: `content` (string), `type` (episodic|semantic|procedural|working), `importance` (0-1, optional), `tags` (array, optional)
-   - Returns: Memory ID and type
-
-2. **memory_get** - Retrieve a memory by ID
-   - Parameters: `id` (string)
-   - Returns: Full memory object with metadata
-
-3. **memory_search** - Search memories by filters
-   - Parameters: `type` (optional), `min_importance` (optional), `limit` (default: 10)
-   - Returns: Array of matching memories with relevance scores
-
-4. **memory_stats** - Get system statistics
-   - Returns: Memory system metrics (counts, performance data)
-
-### Configuring Claude Desktop
-
-To use the MCP server with Claude Desktop:
-
-1. Open `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows)
-2. Add the MCP server configuration:
-
-```json
-{
-  "mcpServers": {
-    "sartor-memory": {
-      "command": "npm",
-      "args": ["run", "mcp"],
-      "cwd": "/path/to/sartor-claude-network"
-    }
+const result = await initializeAgent({
+  role: 'IMPLEMENTER',  // or RESEARCHER, VALIDATOR, ORCHESTRATOR
+  requestId: 'unique-id',
+  task: {
+    objective: 'Your task description',
+    requirements: ['requirement 1', 'requirement 2'],
+    context: { priority: 'high' }
   }
-}
-```
-
-3. Restart Claude Desktop
-4. The memory tools will be automatically available in conversations
-
-### Using HTTP Server (For Agents)
-
-The HTTP server provides the same memory tools via HTTP transport, allowing agents to access the memory system directly:
-
-1. Start the server: `npm run mcp:http`
-2. Server runs on: `http://localhost:3001/mcp`
-3. Protocol: MCP Streamable HTTP with JSON responses
-4. Session-based: Server manages sessions with unique IDs
-
-**Example HTTP Request:**
-
-```javascript
-// Initialize session
-const response = await fetch('http://localhost:3001/mcp', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json, text/event-stream',
-  },
-  body: JSON.stringify({
-    jsonrpc: '2.0',
-    id: 1,
-    method: 'initialize',
-    params: {
-      protocolVersion: '2024-11-05',
-      capabilities: {},
-      clientInfo: { name: 'my-agent', version: '1.0.0' },
-    },
-  }),
 });
 
-const sessionId = response.headers.get('mcp-session-id');
-// Use sessionId in subsequent requests
+// result.agent.fullPrompt contains your complete context
 ```
 
-## Available Skills
+---
 
-Skills in `.claude/skills/`:
+## PART 4: MEMORY SYSTEM
 
-- `memory-access.md` - Use the 3-tier memory system
-- `refinement-protocol.md` - Execute with iterative refinement
-- `agent-roles.md` - Understand the 4 agent roles
+### 3-Tier Architecture
 
-## Spawning Subagents
+| Tier | Location | Latency | Use Case |
+|------|----------|---------|----------|
+| **Hot** | Firebase RTDB | <100ms | Active sessions |
+| **Warm** | `.swarm/memory/semantic/` | 100-500ms | Semantic search |
+| **Cold** | GitHub archive | 1-5s | Long-term storage |
 
-When using the Task tool, always include:
+### Memory Types
 
-1. **Role** (Planner/Implementer/Auditor/Cleaner)
-2. **Scope** (files they can touch)
-3. **Context** (current phase, relevant background)
-4. **Constraints** (CAN/CANNOT boundaries)
+- **Episodic**: Events with timestamps and context
+- **Semantic**: Facts, knowledge, patterns
+- **Procedural**: Workflows, successful methods
+- **Working**: Current session context
 
-See `.claude/SPAWNING_TEMPLATE.md` for examples.
+### Accessing Memory
 
-## Core Principles
+**If MCP tools available** (memory_create, memory_search):
+```
+Use memory_search for high-importance items:
+- importance >= 0.9 for directives
+- tags: ["user-directive", "critical"]
+```
 
-1. **Delegation First**: Orchestrator coordinates, subagents execute
-2. **Refinement Loop**: Generate → Evaluate → Refine
-3. **Evidence-Based**: No assumptions, verify claims
-4. **Self-Auditing**: Check your own work before completing
-5. **Memory-Driven**: Record learnings, retrieve patterns
-6. **Role-Scoped**: Stay within your assigned boundaries
-7. **Continuous Improvement**: Update skills/hooks/rules as you learn
+**If MCP not available** (fallback):
+```bash
+# Read local memories
+cat data/memories.json | jq '.[] | select(.importance >= 0.8)'
 
-## Continuous Improvement Protocol
+# Check semantic memory
+ls .swarm/memory/semantic/
+```
 
-As you work, actively improve these bootstrap systems:
+### Storing Memories
+
+When you discover something significant:
+1. **SEMANTIC** (importance 0.9+): User directives, critical facts
+2. **PROCEDURAL** (importance 0.7-0.8): Successful patterns
+3. **EPISODIC** (importance 0.5-0.7): Session events
+
+---
+
+## PART 5: AVAILABLE SKILLS
+
+Skills are in `.claude/skills/`. Core skills always loaded:
+
+### Always Loaded
+- **evidence-based-validation** - Prevents score fabrication
+
+### Role-Specific
+
+| Role | Skills |
+|------|--------|
+| RESEARCHER | safety-research-workflow |
+| IMPLEMENTER | mcp-server-development |
+| VALIDATOR | evidence-based-engineering |
+| ORCHESTRATOR | multi-agent-orchestration, agent-communication-system |
+
+### Full Skills List
+```
+.claude/skills/
+├── agent-bootstrap.md
+├── agent-communication-system/
+├── agent-coordinator/
+├── agent-introspection/
+├── agent-roles.md
+├── async-coordination.md
+├── background-agent-patterns.md
+├── distributed-systems-debugging/
+├── evidence-based-engineering/
+├── evidence-based-validation/
+├── long-running-harness/
+├── mcp-memory-tools.md
+├── mcp-server-development/
+├── memory-access.md
+├── multi-agent-orchestration/
+├── refinement-protocol.md
+├── safety-research-workflow/
+└── ways-of-working-evolution/
+```
+
+---
+
+## PART 6: COORDINATOR SYSTEM
+
+### Spawning Agents via Coordinator
+
+```bash
+# Create request file
+cat > .swarm/requests/req-$(date +%s).json << 'EOF'
+{
+  "requestId": "req-task-TIMESTAMP",
+  "agentRole": "IMPLEMENTER",
+  "task": {
+    "objective": "Your objective here"
+  },
+  "prompt": "Detailed instructions..."
+}
+EOF
+```
+
+### Checking Results
+
+```bash
+ls .swarm/results/
+cat .swarm/results/req-ID.json
+```
+
+### Using Task Tool (Preferred)
+
+```
+Task tool with:
+- subagent_type: "Explore" (research/analysis)
+- subagent_type: "general-purpose" (implementation)
+- subagent_type: "Plan" (architecture planning)
+```
+
+---
+
+## PART 7: SESSION RECOVERY (After Compact/Crash)
+
+### Quick Recovery Steps
+
+1. **Check State**:
+```bash
+cat .swarm/artifacts/STATE.json | head -30
+```
+
+2. **Check Progress**:
+```bash
+cat .swarm/progress.json
+```
+
+3. **Verify Tests**:
+```bash
+npm test 2>&1 | grep -E "(PASS|FAIL|passing|failing)"
+```
+
+4. **Continue from next_steps** in STATE.json
+
+### Emergency Actions
+
+**If tests fail:**
+```bash
+npm test -- --verbose 2>&1 | tail -50
+```
+
+**If coordinator stuck:**
+```bash
+ls .swarm/requests/ | wc -l  # Check queue
+```
+
+---
+
+## PART 8: KEY COMMANDS
+
+```bash
+# Run tests
+npm test
+
+# Start MCP server (for Claude Desktop)
+npm run mcp
+
+# Start HTTP MCP server (for agents)
+npm run mcp:http
+
+# Build TypeScript
+npm run build
+
+# Run demo
+npm run demo
+
+# Run benchmarks
+npm run benchmark
+```
+
+---
+
+## PART 9: CURRENT PROJECT STATUS
+
+### Test Status
+- **Test Pass Rate**: 100% (69/69)
+- **Agent Success Rate**: 57.4%
+
+### Implemented Phases
+1. Coordinator Hardening (health check, streaming, progressive timeout)
+2. Memory System (GitHub cold tier, tier sync)
+3. Bootstrap Enhancement (role profiles, memory summarizer)
+4. Validation Loop (baseline tracker, A/B testing)
+5. Self-Improvement Loop (hypothesis generator, meta-learning)
+
+### Active Hypotheses
+- Adaptive timeout (reduce 81.5% wasted time)
+- Bootstrap instructions (eliminate 43 empty output failures)
+
+---
+
+## PART 10: FILE LOCATIONS
+
+| Purpose | Location |
+|---------|----------|
+| Project config | `CLAUDE.md` (this file) |
+| Mission state | `.swarm/artifacts/STATE.json` |
+| Progress log | `.swarm/progress.json` |
+| Agent requests | `.swarm/requests/` |
+| Agent results | `.swarm/results/` |
+| Memory store | `.swarm/memory/`, `data/memories.json` |
+| Skills | `.claude/skills/` |
+| Bootstrap code | `framework/bootstrap/agent-initializer.ts` |
+| Validation framework | `framework/validation/` |
+| Coordinator | `coordinator/local-only.js` |
+
+---
+
+## PART 11: ANTI-PATTERNS TO AVOID
+
+1. **Direct Execution** - Orchestrator doing heavy work instead of delegating
+2. **Score Fabrication** - Making up percentages or quality scores
+3. **Mock Integration** - Using mocks in production code
+4. **Skipping Validation** - Not applying evidence-based validation
+5. **Context Bloat** - Reading large files directly instead of delegating
+6. **Isolated Learning** - Not storing findings in memory for future sessions
+
+---
+
+## PART 12: CONTINUOUS IMPROVEMENT
+
+As you work, update these systems:
 
 | System | Location | When to Update |
 |--------|----------|----------------|
-| Skills | `.claude/skills/` | New learnings, patterns discovered |
-| Hooks | `.claude/hooks.json` | New anti-patterns to prevent |
+| Skills | `.claude/skills/` | New learnings, patterns |
 | Memory | `data/memories.json` | Directives, facts, procedures |
-| Bootstrap | `.claude/ORCHESTRATOR_BOOTSTRAP.md` | Protocol improvements |
-| Templates | `.claude/SPAWNING_TEMPLATE.md` | New required skills for agents |
+| Progress | `.swarm/progress.json` | After completing work |
+| State | `.swarm/artifacts/STATE.json` | Phase changes, findings |
 
-**Memory Types**:
-- SEMANTIC (importance 0.9+): User directives, critical facts
-- PROCEDURAL (importance 0.7-0.8): Successful patterns, methods
-- EPISODIC (importance 0.5-0.7): Session events, context
+---
+
+## Quick Reference Card
+
+```
+ORCHESTRATOR CHECKLIST:
+[ ] Am I delegating heavy work?
+[ ] Am I tracking in todo list?
+[ ] Am I updating progress.json?
+
+SUBAGENT CHECKLIST:
+[ ] Do I know my role?
+[ ] Have I checked relevant memories?
+[ ] Am I following anti-fabrication rules?
+[ ] Will I store significant findings?
+
+BEFORE ANY CLAIM:
+[ ] Is this measured, not fabricated?
+[ ] Have I included limitations?
+[ ] Have I cited sources?
+```
+
+---
+
+**Remember**: Your value comes from honest, accurate assessment based on evidence.
+Truth over fabrication. Delegation over direct execution. Evidence over opinion.
