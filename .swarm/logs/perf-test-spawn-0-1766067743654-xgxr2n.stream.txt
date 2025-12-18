@@ -1,0 +1,48 @@
+=== Optimized Coordinator Agent Log ===
+Request ID: perf-test-spawn-0-1766067743654-xgxr2n
+Role: worker
+Started: 2025-12-18T14:22:23.766Z
+
+--- Hypothesis 1: Health Check ---
+Status: Will run before agent spawn
+
+--- Hypothesis 2: Lazy Context ---
+Context Mode: full
+Context Size: 114 chars
+Requirements: 2 total
+
+--- Hypothesis 3: Progressive Timeout ---
+Complexity: simple (score: 0)
+Initial Timeout: 60000ms
+Max Timeout: 240000ms
+
+--- Hypothesis 4: Streaming ---
+Incremental logging: enabled
+==========================================
+
+
+[COORDINATOR WARNING] Agent silent for 30s with 30s remaining
+
+[COORDINATOR WARNING] Agent silent for 45s at 45011ms elapsed
+
+[COORDINATOR WARNING] Agent silent for 45s with 15s remaining
+
+[COORDINATOR] Killing agent: PROGRESSIVE_TIMEOUT
+
+[COORDINATOR] Killing agent: HEARTBEAT_TIMEOUT
+
+[COORDINATOR] Killing agent: HEARTBEAT_TIMEOUT
+
+[COORDINATOR] Killing agent: HEARTBEAT_TIMEOUT
+
+[COORDINATOR] Killing agent: HEARTBEAT_TIMEOUT
+
+[COORDINATOR] Killing agent: HEARTBEAT_TIMEOUT
+
+[COORDINATOR] Killing agent: HEARTBEAT_TIMEOUT
+
+[COORDINATOR] Killing agent: HEARTBEAT_TIMEOUT
+
+[COORDINATOR] Killing agent: HEARTBEAT_TIMEOUT
+
+[COORDINATOR] Killing agent: SHUTDOWN

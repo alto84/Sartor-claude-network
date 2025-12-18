@@ -1,0 +1,11 @@
+{
+  "requestId": "req-1766067523398-d2ivhe",
+  "status": "failed",
+  "output": "Health check timeout after 15009ms (no response)",
+  "durationMs": 15009,
+  "exitCode": -1,
+  "failureReason": "HEALTH_CHECK_FAILED",
+  "stats": null,
+  "completedAt": "2025-12-18T14:18:58.409Z",
+  "coordinator": "local-only-optimized"
+}

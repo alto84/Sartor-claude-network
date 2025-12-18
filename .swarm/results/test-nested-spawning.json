@@ -1,0 +1,11 @@
+{
+  "requestId": "test-nested-spawning",
+  "status": "failed",
+  "output": "Health check timeout after 15007ms (no response)",
+  "durationMs": 15007,
+  "exitCode": -1,
+  "failureReason": "HEALTH_CHECK_FAILED",
+  "stats": null,
+  "completedAt": "2025-12-18T14:18:58.416Z",
+  "coordinator": "local-only-optimized"
+}

@@ -1,0 +1,11 @@
+{
+  "requestId": "test-context-limits-fixed",
+  "status": "failed",
+  "output": "Health check timeout after 15010ms (no response)",
+  "durationMs": 15010,
+  "exitCode": -1,
+  "failureReason": "HEALTH_CHECK_FAILED",
+  "stats": null,
+  "completedAt": "2025-12-18T14:19:26.012Z",
+  "coordinator": "local-only-optimized"
+}
