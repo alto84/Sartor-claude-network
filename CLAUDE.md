@@ -1,7 +1,7 @@
 # CLAUDE.md - Sartor Claude Network
 
 **Single Source of Truth for All Agents**
-**Version**: 2.0.0 | **Updated**: 2025-12-17
+**Version**: 2.1.0 | **Updated**: 2025-12-18
 
 ---
 
@@ -395,6 +395,142 @@ BEFORE ANY CLAIM:
 [ ] Is this measured, not fabricated?
 [ ] Have I included limitations?
 [ ] Have I cited sources?
+```
+
+---
+
+## PART 13: BACKGROUND AGENTS GUIDE
+
+### What Are Background Agents?
+
+Background agents are subagents that run **asynchronously** without blocking the orchestrator.
+
+| Aspect | Regular Subagent | Background Agent |
+|--------|------------------|------------------|
+| **Execution** | Synchronous (wait) | Asynchronous (continue) |
+| **Best for** | Quick tasks (<5 min) | Long tasks (5-30 min) |
+| **Parallelism** | One at a time | 3-5 simultaneously |
+| **Communication** | Direct return | Status files + handoffs |
+
+### How to Spawn Agents (Task Tool)
+
+```
+Task(
+    subagent_type="Explore",       # Required: agent type
+    description="Find all APIs",   # Required: short description
+    prompt="Detailed instructions...",  # Optional: full context
+    model="haiku"                  # Optional: haiku|sonnet|opus
+)
+```
+
+### Available Subagent Types
+
+| Type | Model | Use Case | Tools |
+|------|-------|----------|-------|
+| `Explore` | Haiku (fast) | Search, read-only analysis | Read, Grep, Glob |
+| `general-purpose` | Sonnet | Implementation, testing | Full access |
+| `Plan` | Sonnet | Architecture, design | Read-only |
+| `claude-code-guide` | Sonnet | Documentation lookup | Read, search |
+
+### Model Selection
+
+| Task Type | Model | Rationale |
+|-----------|-------|-----------|
+| Simple search/grep | `haiku` | Fast, low cost |
+| Code implementation | `sonnet` | Balanced |
+| Complex reasoning | `opus` | Highest quality |
+
+### Critical Limitation
+
+**⚠️ SUBAGENTS CANNOT SPAWN OTHER SUBAGENTS**
+
+Only the orchestrator can spawn agents. This is architectural - prevents uncontrolled proliferation.
+
+**Maximum hierarchy**: 2 levels (orchestrator → subagent → sub-subagent via cascading delegation)
+
+### Parallel Execution
+
+**Spawn multiple agents in a single message:**
+```
+# These run in parallel
+Task(subagent_type="Explore", description="Search src/")
+Task(subagent_type="Explore", description="Search tests/")
+Task(subagent_type="Explore", description="Search docs/")
+```
+
+**Limits:**
+- Recommended: 3-5 agents (beyond this, coordination overhead > benefit)
+- Maximum: 10 concurrent tasks
+- Observed speedup: ~3x with 3 agents (98.6% efficiency)
+
+### Status Communication
+
+**Agents signal via status files** (for long-running tasks):
+```
+data/agent-status/{agent-id}.json  # Progress updates
+data/handoffs/{handoff-id}.json    # Final deliverables
+```
+
+**Status format:**
+```json
+{
+  "status": "active|blocked|complete|failed",
+  "progress": 0.0-1.0,
+  "phase": "research|implementation|testing",
+  "findings": ["key discovery 1", "key discovery 2"]
+}
+```
+
+### Effective Prompts
+
+**Include in your prompts:**
+1. Clear objective (what to accomplish)
+2. Scope boundaries (which files/directories)
+3. Expected output format
+4. Validation criteria
+
+**Example:**
+```
+Task(
+    subagent_type="general-purpose",
+    description="Fix memory leak in cache",
+    prompt="""
+    OBJECTIVE: Fix unbounded cache growth
+    SCOPE: src/cache/manager.ts only
+    REQUIREMENTS:
+    1. Add max size limit (2GB)
+    2. Implement LRU eviction
+    3. Run tests: npm test -- cache
+    OUTPUT: Summary of changes + test results
+    """
+)
+```
+
+### Anti-Patterns
+
+| Don't | Why | Do Instead |
+|-------|-----|------------|
+| Block waiting for one agent | Defeats async purpose | Spawn all, aggregate later |
+| Overlapping file scopes | Creates conflicts | Isolate by file/directory |
+| No status updates | Can't detect blocks | Report at milestones |
+| Direct inter-agent communication | Hard to debug | Coordinate via orchestrator |
+| >5 parallel agents | Overhead exceeds benefit | Batch work into 3-5 agents |
+
+### Quick Reference
+
+```bash
+# Spawn patterns (in orchestrator)
+Task(subagent_type="Explore", description="...", model="haiku")     # Fast search
+Task(subagent_type="general-purpose", description="...", model="sonnet")  # Implementation
+Task(subagent_type="Plan", description="...")                       # Architecture
+
+# Monitor (if using coordinator)
+cat data/agent-status/*.json | jq '.status'
+ls data/handoffs/
+
+# Aggregate results
+# Read handoffs from completed agents
+# Synthesize into cohesive output
 ```
 
 ---
