@@ -1,0 +1,73 @@
+[project]
+name = "strokestyles"
+version = "0.1.0"
+description = "Stroke-based font segmentation - StrokeStyles (SIGGRAPH 2022) replication"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Sartor Claude Network"}
+]
+keywords = ["fonts", "typography", "medial-axis", "stroke-extraction", "siggraph"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
+
+dependencies = [
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "scikit-image>=0.21.0",
+    "fonttools>=4.40.0",
+    "freetype-py>=2.4.0",
+    "shapely>=2.0.0",
+    "matplotlib>=3.7.0",
+    "networkx>=3.0",
+    "click>=8.1.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.7.0",
+    "ruff>=0.0.280",
+    "mypy>=1.4.0",
+    "jupyter>=1.0.0",
+]
+
+[project.scripts]
+strokestyles = "strokestyles.cli:main"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
