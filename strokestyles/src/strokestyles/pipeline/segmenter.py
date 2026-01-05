@@ -20,7 +20,7 @@ def segment_glyph(
     glyph_name: str,
     flatten_tolerance: float = 0.5,
     image_size: int = 1000,
-    prune_threshold: float = 0.0,
+    prune_threshold: float = 150.0,  # 15% of image_size - removes serif branches
     beta_min: float = 1.5,
     curvature_threshold: float = 0.01
 ) -> StrokeDecomposition:
@@ -207,7 +207,7 @@ class SegmentationPipeline:
         self.config = {
             'flatten_tolerance': 0.5,
             'image_size': 1000,
-            'prune_threshold': 0.0,
+            'prune_threshold': 150.0,
             'beta_min': 1.5,
             'curvature_threshold': 0.01
         }

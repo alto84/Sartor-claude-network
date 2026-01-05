@@ -291,6 +291,19 @@ def pen_to_contours(pen: RecordingPen) -> List[Contour]:
         elif operation == 'closePath':
             # Close the contour
             if current_segments:
+                # Add closing segment if not already at start point
+                last_point = current_segments[-1].p3  # End of last segment
+                distance = ((last_point.x - start_point.x) ** 2 + (last_point.y - start_point.y) ** 2) ** 0.5
+                if distance > 0.1:  # Small threshold to account for floating point errors
+                    # Add linear segment back to start
+                    closing_segment = BezierSegment(
+                        p0=last_point,
+                        p1=start_point,
+                        p2=start_point,
+                        p3=start_point
+                    )
+                    current_segments.append(closing_segment)
+
                 # Determine winding direction
                 is_clockwise = _compute_winding(current_segments) > 0
 

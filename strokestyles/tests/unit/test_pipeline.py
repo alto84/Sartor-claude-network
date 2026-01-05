@@ -28,7 +28,6 @@ from strokestyles.pipeline.flattener import (
     estimate_flatness_segment
 )
 from strokestyles.pipeline.stroke_recovery import (
-    trace_stroke_path,
     compute_coverage,
     recover_strokes
 )
