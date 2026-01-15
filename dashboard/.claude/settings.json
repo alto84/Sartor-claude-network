@@ -1,0 +1,61 @@
+{
+  "$schema": "https://anthropic.com/schemas/claude-code/settings-v1.json",
+  "hooks": {
+    "preToolUse": {
+      "Bash": {
+        "script": "powershell.exe -ExecutionPolicy Bypass -File ./scripts/ralph-safety-check.ps1",
+        "args": ["${command}"],
+        "description": "Block dangerous bash operations during Ralph iteration",
+        "enabled": true,
+        "blocking": true
+      }
+    },
+    "postToolUse": {
+      "Edit": [
+        {
+          "script": "powershell.exe -ExecutionPolicy Bypass -File ./scripts/ralph-completion-check.ps1",
+          "args": ["Edit", "${file_path}"],
+          "description": "Check if Ralph iteration is complete after edits",
+          "enabled": true,
+          "blocking": false
+        },
+        {
+          "script": "powershell.exe -ExecutionPolicy Bypass -File ./scripts/ralph-progress-update.ps1",
+          "args": ["Edit", "${file_path}"],
+          "description": "Track file changes for Ralph progress",
+          "enabled": true,
+          "blocking": false
+        }
+      ],
+      "Write": [
+        {
+          "script": "powershell.exe -ExecutionPolicy Bypass -File ./scripts/ralph-completion-check.ps1",
+          "args": ["Write", "${file_path}"],
+          "description": "Check if Ralph iteration is complete after writes",
+          "enabled": true,
+          "blocking": false
+        },
+        {
+          "script": "powershell.exe -ExecutionPolicy Bypass -File ./scripts/ralph-progress-update.ps1",
+          "args": ["Write", "${file_path}"],
+          "description": "Track file changes for Ralph progress",
+          "enabled": true,
+          "blocking": false
+        }
+      ]
+    },
+    "stop": [
+      {
+        "script": "powershell.exe -ExecutionPolicy Bypass -File ./scripts/ralph-completion-check.ps1",
+        "description": "Check completion status when Claude stops",
+        "enabled": true
+      }
+    ]
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Ralph Wiggum iteration system hooks for Nestly Dashboard",
+    "purpose": "Continuous improvement loop with completion detection",
+    "created": "2025-01-10"
+  }
+}

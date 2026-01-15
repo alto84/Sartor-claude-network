@@ -1,0 +1,396 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../styles/animations.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-nunito);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Nestly Brand Colors */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-warm: var(--brand-warm);
+  --color-brand-nest: var(--brand-nest);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.995 0.002 110);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  /* Nestly brand green as primary */
+  --primary: oklch(0.577 0.174 149.214);
+  --primary-foreground: oklch(0.985 0 0);
+  /* Warm secondary */
+  --secondary: oklch(0.97 0.01 80);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0.005 90);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0.01 80);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0.01 90);
+  --input: oklch(0.922 0.01 90);
+  --ring: oklch(0.577 0.174 149.214);
+  --chart-1: oklch(0.577 0.174 149.214);
+  --chart-2: oklch(0.705 0.182 47.604);
+  --chart-3: oklch(0.6 0.118 184.704);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  /* Sidebar with warm tint */
+  --sidebar: oklch(0.99 0.005 100);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.577 0.174 149.214);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.94 0.02 145);
+  --sidebar-accent-foreground: oklch(0.205 0.05 145);
+  --sidebar-border: oklch(0.922 0.01 90);
+  --sidebar-ring: oklch(0.577 0.174 149.214);
+
+  /* Nestly Brand Color Variables */
+  --brand-primary: oklch(0.577 0.174 149.214);
+  --brand-primary-foreground: oklch(0.985 0 0);
+  --brand-secondary: oklch(0.705 0.182 47.604);
+  --brand-secondary-foreground: oklch(0.145 0 0);
+  --brand-accent: oklch(0.685 0.169 237.323);
+  --brand-accent-foreground: oklch(0.145 0 0);
+  --brand-warm: oklch(0.905 0.093 95.277);
+  --brand-nest: oklch(0.55 0.12 70);
+}
+
+.dark {
+  --background: oklch(0.15 0.01 145);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0.01 145);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0.01 145);
+  --popover-foreground: oklch(0.985 0 0);
+  /* Nestly brand green adjusted for dark mode */
+  --primary: oklch(0.65 0.18 149.214);
+  --primary-foreground: oklch(0.15 0.05 145);
+  --secondary: oklch(0.269 0.01 80);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0.01 90);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0.01 80);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.65 0.18 149.214);
+  --chart-1: oklch(0.65 0.18 149.214);
+  --chart-2: oklch(0.75 0.18 47.604);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.685 0.169 237.323);
+  --sidebar: oklch(0.18 0.015 145);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.65 0.18 149.214);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.28 0.03 145);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.65 0.18 149.214);
+
+  /* Dark mode brand colors */
+  --brand-primary: oklch(0.65 0.18 149.214);
+  --brand-primary-foreground: oklch(0.15 0.05 145);
+  --brand-secondary: oklch(0.75 0.18 47.604);
+  --brand-secondary-foreground: oklch(0.145 0 0);
+  --brand-accent: oklch(0.72 0.16 237.323);
+  --brand-accent-foreground: oklch(0.145 0 0);
+  --brand-warm: oklch(0.85 0.08 95.277);
+  --brand-nest: oklch(0.6 0.1 70);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Smooth scrolling preference for users who want reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  /* Skip to content link for screen readers */
+  .skip-to-content {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md;
+  }
+}
+
+/* Micro-interactions for buttons */
+@layer components {
+  button,
+  [role="button"] {
+    @apply transition-all duration-200;
+  }
+
+  button:active:not(:disabled),
+  [role="button"]:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  /* Card hover effects */
+  .card-interactive {
+    @apply transition-all duration-200 hover:shadow-md hover:-translate-y-0.5;
+  }
+
+  .card-interactive:active {
+    @apply shadow-sm translate-y-0;
+  }
+
+  /* Input focus animation */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply transition-shadow duration-200;
+  }
+
+  /* Link underline animation */
+  .link-animated {
+    @apply relative inline-block;
+  }
+
+  .link-animated::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300;
+  }
+
+  .link-animated:hover::after {
+    @apply w-full;
+  }
+
+  /* Smooth checkbox/toggle */
+  input[type="checkbox"],
+  input[type="radio"] {
+    @apply transition-all duration-150;
+  }
+
+  input[type="checkbox"]:checked,
+  input[type="radio"]:checked {
+    animation: checkmark-pop 0.2s ease-out;
+  }
+
+  /* Badge pulse effect */
+  .badge-pulse {
+    @apply relative;
+  }
+
+  .badge-pulse::before {
+    content: '';
+    @apply absolute inset-0 rounded-full bg-current opacity-0 animate-ping;
+  }
+
+  /* Notification dot */
+  .notification-dot {
+    @apply relative;
+  }
+
+  .notification-dot::after {
+    content: '';
+    @apply absolute -top-1 -right-1 w-3 h-3 bg-destructive rounded-full;
+    animation: notification-pulse 2s ease-in-out infinite;
+  }
+
+  /* Smooth scrollbar styling */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Stagger animation helper */
+  .stagger-animation > * {
+    animation: stagger-fade-in 0.3s ease-out both;
+  }
+
+  .stagger-animation > *:nth-child(1) { animation-delay: 0ms; }
+  .stagger-animation > *:nth-child(2) { animation-delay: 50ms; }
+  .stagger-animation > *:nth-child(3) { animation-delay: 100ms; }
+  .stagger-animation > *:nth-child(4) { animation-delay: 150ms; }
+  .stagger-animation > *:nth-child(5) { animation-delay: 200ms; }
+  .stagger-animation > *:nth-child(6) { animation-delay: 250ms; }
+  .stagger-animation > *:nth-child(7) { animation-delay: 300ms; }
+  .stagger-animation > *:nth-child(8) { animation-delay: 350ms; }
+}
+
+/* Additional micro-interaction keyframes */
+@keyframes checkmark-pop {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes notification-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes stagger-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes subtle-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes gentle-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+  50% { box-shadow: 0 0 20px 4px rgba(22, 163, 74, 0.1); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+}
+
+.animate-subtle-bounce {
+  animation: subtle-bounce 2s ease-in-out infinite;
+}
+
+.animate-gentle-glow {
+  animation: gentle-glow 3s ease-in-out infinite;
+}
+
+/* Nestly mascot animations */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-20deg); }
+  75% { transform: rotate(20deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-wiggle {
+  animation: wiggle 1s ease-in-out infinite;
+}
+
+.animate-wave {
+  animation: wave 0.5s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}

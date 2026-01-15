@@ -1,0 +1,44 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="#16a34a"/>
+
+  <!-- Pip the Bird - Simplified -->
+  <!-- Body -->
+  <ellipse cx="256" cy="310" rx="100" ry="90" fill="#fb923c"/>
+
+  <!-- Belly -->
+  <ellipse cx="256" cy="330" rx="65" ry="58" fill="#fed7aa"/>
+
+  <!-- Head -->
+  <circle cx="256" cy="200" r="80" fill="#fb923c"/>
+
+  <!-- Cheeks -->
+  <circle cx="192" cy="210" r="18" fill="#fca5a5" opacity="0.6"/>
+  <circle cx="320" cy="210" r="18" fill="#fca5a5" opacity="0.6"/>
+
+  <!-- Eyes -->
+  <ellipse cx="224" cy="190" rx="20" ry="24" fill="white"/>
+  <ellipse cx="288" cy="190" rx="20" ry="24" fill="white"/>
+  <circle cx="230" cy="186" r="12" fill="#1f2937"/>
+  <circle cx="294" cy="186" r="12" fill="#1f2937"/>
+  <!-- Eye sparkles -->
+  <circle cx="234" cy="180" r="5" fill="white"/>
+  <circle cx="298" cy="180" r="5" fill="white"/>
+
+  <!-- Beak -->
+  <path d="M256 225 L235 260 L256 250 L277 260 Z" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+
+  <!-- Smile -->
+  <path d="M230 270 Q256 295 282 270" stroke="#9a3412" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+  <!-- Wings -->
+  <ellipse cx="140" cy="300" rx="35" ry="54" fill="#ea580c" transform="rotate(-15 140 300)"/>
+  <ellipse cx="372" cy="300" rx="35" ry="54" fill="#ea580c" transform="rotate(15 372 300)"/>
+
+  <!-- Feet -->
+  <path d="M215 405 L195 445 M215 405 L215 445 M215 405 L235 445" stroke="#f59e0b" stroke-width="10" stroke-linecap="round"/>
+  <path d="M297 405 L277 445 M297 405 L297 445 M297 405 L317 445" stroke="#f59e0b" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- Tuft -->
+  <path d="M230 125 Q245 95 256 120 Q267 95 282 125" stroke="#ea580c" stroke-width="10" stroke-linecap="round" fill="none"/>
+</svg>

@@ -5,14 +5,28 @@ node_modules/
 .env
 .env.local
 .env.*.local
+.dev.vars
 
 # Firebase credentials (NEVER commit these!)
 config/service-account.json
 config/service-account-*.json
+**/service-account*.json
+
+# Dashboard config
+dashboard/config/service-account.json
+dashboard/.env.local
+
+# Workers secrets
+workers/*/.dev.vars
 
 # Local data storage
 data/
 *.db
 *.sqlite
 config/firebase-credentials.json
-config/firebase-credentials.json
+
+# Credentials and secrets
+*.pem
+*.key
+credentials.json
+secrets.json

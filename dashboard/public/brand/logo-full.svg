@@ -1,0 +1,32 @@
+<svg width="160" height="48" viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Nest base -->
+  <ellipse cx="24" cy="34" rx="18" ry="8" fill="#16a34a" opacity="0.9"/>
+  <ellipse cx="24" cy="32" rx="16" ry="7" fill="#22c55e"/>
+
+  <!-- Nest rim detail -->
+  <path d="M8 32 Q12 28 16 30 Q20 26 24 28 Q28 26 32 30 Q36 28 40 32" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+  <!-- Cute little bird in the nest -->
+  <!-- Bird body -->
+  <ellipse cx="24" cy="24" rx="8" ry="7" fill="#fb923c"/>
+
+  <!-- Bird head -->
+  <circle cx="28" cy="18" r="6" fill="#fb923c"/>
+
+  <!-- Bird eye -->
+  <circle cx="30" cy="17" r="2" fill="white"/>
+  <circle cx="30.5" cy="16.5" r="1" fill="#1f2937"/>
+
+  <!-- Bird beak -->
+  <path d="M33 19 L38 18 L33 21 Z" fill="#fbbf24" stroke="#f59e0b" stroke-width="0.5"/>
+
+  <!-- Bird wing -->
+  <ellipse cx="22" cy="24" rx="4" ry="5" fill="#16a34a" opacity="0.6"/>
+
+  <!-- Small decorative leaves -->
+  <path d="M6 28 Q4 24 8 22 Q6 26 8 28" fill="#22c55e" opacity="0.7"/>
+  <path d="M42 28 Q44 24 40 22 Q42 26 40 28" fill="#22c55e" opacity="0.7"/>
+
+  <!-- Text: Nestly -->
+  <text x="52" y="32" font-family="Nunito, sans-serif" font-size="24" font-weight="700" fill="#16a34a">Nestly</text>
+</svg>

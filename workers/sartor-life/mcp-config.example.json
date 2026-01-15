@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/servers/main/schemas/mcp-config.json",
+  "mcpServers": {
+    "sartor-life": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-remote", "https://sartor-life.YOUR_SUBDOMAIN.workers.dev/mcp"],
+      "env": {
+        "MCP_HEADERS": "{\"Authorization\": \"Bearer YOUR_TOKEN_HERE\"}"
+      },
+      "description": "Sartor Family Life Management - Vault, Memory, Chat, Dashboard"
+    }
+  },
+  "_comment": "Alternative direct HTTP configuration for Claude.ai",
+  "claudeAiConfig": {
+    "name": "Sartor Life",
+    "description": "Family life management including vault storage, memories, messaging, and daily summaries",
+    "serverUrl": "https://sartor-life.YOUR_SUBDOMAIN.workers.dev/mcp",
+    "transport": {
+      "type": "http",
+      "headers": {
+        "Authorization": "Bearer YOUR_TOKEN_HERE",
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "_instructions": {
+    "step1": "Replace YOUR_SUBDOMAIN with your Cloudflare Workers subdomain",
+    "step2": "Replace YOUR_TOKEN_HERE with your family member's bearer token",
+    "step3": "For Claude Desktop, use the mcpServers configuration",
+    "step4": "For Claude.ai web, use the claudeAiConfig settings in the MCP connector"
+  }
+}

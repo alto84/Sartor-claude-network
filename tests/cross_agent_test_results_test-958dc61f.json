@@ -1,0 +1,50 @@
+{
+  "test_id": "test-958dc61f",
+  "started_at": "2025-12-29T20:24:52Z",
+  "steps": [
+    {
+      "step": 0,
+      "name": "SSH Connectivity",
+      "success": true,
+      "details": "Connected to gpuserver1",
+      "timestamp": "2025-12-29T20:24:53Z"
+    },
+    {
+      "step": 1,
+      "name": "Agent A Write Memory",
+      "success": true,
+      "details": "Memory ID: mem-d696988d",
+      "timestamp": "2025-12-29T20:24:53Z"
+    },
+    {
+      "step": 2,
+      "name": "Agent B Read & Verify",
+      "success": true,
+      "details": "{'agent': True, 'tags': True, 'message': True}",
+      "timestamp": "2025-12-29T20:24:54Z"
+    },
+    {
+      "step": 3,
+      "name": "Agent B Write Response",
+      "success": true,
+      "details": "Response ID: resp-49ff07bc",
+      "timestamp": "2025-12-29T20:24:54Z"
+    },
+    {
+      "step": 4,
+      "name": "Agent A Read Response",
+      "success": true,
+      "details": "{'agent': True, 'tags': True, 'message': True, 'reference': True, 'acknowledgement': True}",
+      "timestamp": "2025-12-29T20:24:55Z"
+    },
+    {
+      "step": 5,
+      "name": "Bidirectional Communication",
+      "success": true,
+      "details": "{'Original memory exists': True, 'Original marked completed': True, 'Response memory exists': True, 'Response links back': True}",
+      "timestamp": "2025-12-29T20:24:55Z"
+    }
+  ],
+  "passed": true,
+  "completed_at": "2025-12-29T20:24:56Z"
+}

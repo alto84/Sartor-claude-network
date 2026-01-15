@@ -1,0 +1,24 @@
+# =============================================================================
+# Sartor Life MCP Gateway - Local Development Variables
+# =============================================================================
+#
+# Copy this file to .dev.vars for local development with wrangler dev.
+# These values are only used during local development.
+#
+# DO NOT commit .dev.vars to version control!
+#
+# Usage: wrangler dev
+# The worker will be available at http://localhost:8787
+#
+# =============================================================================
+
+# Authentication tokens for local development
+# These are example values - replace with your own or use these for testing
+AUTH_TOKEN_ENZO=dev-token-enzo-12345-abcdef-67890
+AUTH_TOKEN_ALESSIA=dev-token-alessia-12345-abcdef-67890
+AUTH_TOKEN_NADIA=dev-token-nadia-12345-abcdef-67890
+AUTH_TOKEN_ADMIN=dev-token-admin-12345-abcdef-67890
+
+# Encryption key for local development (32 hex characters = 128 bits)
+# Generate a real one for production with: openssl rand -hex 32
+ENCRYPTION_KEY=0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef

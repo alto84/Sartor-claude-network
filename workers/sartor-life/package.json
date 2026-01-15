@@ -1,0 +1,27 @@
+{
+  "name": "sartor-life-worker",
+  "version": "1.0.0",
+  "description": "Sartor Family Life MCP Gateway - Cloudflare Worker",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "test": "vitest"
+  },
+  "keywords": [
+    "cloudflare",
+    "worker",
+    "mcp",
+    "family",
+    "sartor"
+  ],
+  "author": "Sartor Family",
+  "license": "MIT",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241127.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0",
+    "wrangler": "^3.91.0"
+  }
+}

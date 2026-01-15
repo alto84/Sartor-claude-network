@@ -1,0 +1,66 @@
+name = "sartor-life"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Account configuration (set via wrangler login or CLOUDFLARE_ACCOUNT_ID env var)
+# account_id = "your-account-id"
+
+# Worker routes (uncomment and configure for production)
+# routes = [
+#   { pattern = "sartor-life.your-domain.com/*", zone_name = "your-domain.com" }
+# ]
+
+# Development settings
+[dev]
+port = 8787
+local_protocol = "http"
+
+# KV Namespaces for data storage
+[[kv_namespaces]]
+binding = "VAULT_KV"
+id = "placeholder-vault-kv-id"
+preview_id = "placeholder-vault-kv-preview-id"
+
+[[kv_namespaces]]
+binding = "MEMORY_KV"
+id = "placeholder-memory-kv-id"
+preview_id = "placeholder-memory-kv-preview-id"
+
+[[kv_namespaces]]
+binding = "CHAT_KV"
+id = "placeholder-chat-kv-id"
+preview_id = "placeholder-chat-kv-preview-id"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "placeholder-rate-limit-kv-id"
+preview_id = "placeholder-rate-limit-kv-preview-id"
+
+# Durable Objects for real-time state (optional, for future use)
+# [[durable_objects.bindings]]
+# name = "DASHBOARD_STATE"
+# class_name = "DashboardState"
+
+# Environment variables (non-secret)
+[vars]
+ENVIRONMENT = "development"
+MAX_REQUESTS_PER_MINUTE = "60"
+MAX_VAULT_ITEMS = "10000"
+MAX_MEMORY_ITEMS = "50000"
+
+# Secrets (set via wrangler secret put)
+# Required secrets:
+# - AUTH_TOKEN_ENZO: Bearer token for Enzo
+# - AUTH_TOKEN_ALESSIA: Bearer token for Alessia
+# - AUTH_TOKEN_NADIA: Bearer token for Nadia
+# - AUTH_TOKEN_ADMIN: Admin bearer token
+# - ENCRYPTION_KEY: Key for encrypting sensitive data
+
+# Production environment overrides
+[env.production]
+vars = { ENVIRONMENT = "production", MAX_REQUESTS_PER_MINUTE = "120" }
+
+# Staging environment
+[env.staging]
+vars = { ENVIRONMENT = "staging", MAX_REQUESTS_PER_MINUTE = "60" }
