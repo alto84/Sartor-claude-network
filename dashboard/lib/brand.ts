@@ -1,17 +1,17 @@
 /**
- * Nestly - Family Life Management
+ * Sartor Family Dashboard - Life Management System
  * Brand constants and configuration
  */
 
 export const brand = {
-  name: "Nestly",
-  tagline: "Your cozy command center",
-  description: "A warm, AI-powered home for your family's life",
+  name: "Sartor Family Dashboard",
+  tagline: "Life at 110% capacity, orchestrated",
+  description: "The Sartor family's AI-powered command center for managing life, work, and everything in between",
 
   // Brand story
   story: {
-    short: "Like a cozy nest for your family",
-    long: "Nestly brings your family together with warmth and care, helping you manage life's beautiful chaos from one cozy place.",
+    short: "Your family's intelligent command center",
+    long: "The Sartor Family Dashboard brings together Alton, Aneeta, Vayu, Vishala, and Vasu - orchestrating schedules, tasks, and life's beautiful chaos with Claude's help.",
   },
 } as const;
 

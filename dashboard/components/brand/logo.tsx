@@ -153,7 +153,7 @@ function NestlyText({
       )}
       style={{ color }}
     >
-      Nestly
+      Sartor
     </span>
   );
 }

@@ -43,17 +43,17 @@ import {
 
 // Placeholder data
 const upcomingEvents = [
-  { id: 1, title: "Team Standup", time: "9:00 AM", color: "bg-blue-500" },
-  { id: 2, title: "School Pickup - Emma", time: "3:00 PM", color: "bg-green-500" },
-  { id: 3, title: "Soccer Practice", time: "4:30 PM", color: "bg-orange-500" },
+  { id: 1, title: "AZ AI Innovation Meeting", time: "9:00 AM", color: "bg-blue-500" },
+  { id: 2, title: "MKA Pickup - Vayu & Vishala", time: "3:00 PM", color: "bg-green-500" },
+  { id: 3, title: "Vishala Gymnastics", time: "4:30 PM", color: "bg-orange-500" },
   { id: 4, title: "Family Dinner", time: "7:00 PM", color: "bg-purple-500" },
 ];
 
 const tasks = [
-  { id: 1, title: "Submit expense report", assignee: "Alton", done: false },
-  { id: 2, title: "Grocery shopping", assignee: "Spouse", done: false },
+  { id: 1, title: "Plan Vasu birthday party (Jan 14)", assignee: "Alton", done: false },
+  { id: 2, title: "Solar Inference LLC - CPA call", assignee: "Alton", done: false },
   { id: 3, title: "Homework check", assignee: "Kids", done: true },
-  { id: 4, title: "Book dentist appointment", assignee: "Alton", done: false },
+  { id: 4, title: "Sante Total IRS letter", assignee: "Alton", done: false },
 ];
 
 const quickActions = [
@@ -65,9 +65,10 @@ const quickActions = [
 
 const familyMembers = [
   { name: "Alton", initials: "AS", status: "home" },
-  { name: "Sarah", initials: "SS", status: "work" },
-  { name: "Emma", initials: "ES", status: "school" },
-  { name: "Jake", initials: "JS", status: "school" },
+  { name: "Aneeta", initials: "AS", status: "work" },
+  { name: "Vayu", initials: "VS", status: "school" },
+  { name: "Vishala", initials: "VS", status: "school" },
+  { name: "Vasu", initials: "VS", status: "home" },
 ];
 
 // Widget configuration
@@ -430,7 +431,7 @@ export default function DashboardPage() {
                 </div>
                 <div className="flex justify-between items-center py-2 border-b">
                   <div>
-                    <p className="font-medium">Dentist Appointment - Emma</p>
+                    <p className="font-medium">Vayu Dentist Appointment</p>
                     <p className="text-sm text-muted-foreground">Thursday, 10:00 AM</p>
                   </div>
                 </div>
