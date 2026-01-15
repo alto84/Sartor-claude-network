@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { useFirebaseStatus } from "@/hooks/use-firebase";
+import { isFirebaseConfigured, rtdbGet } from "@/lib/firebase";
 import {
   Card,
   CardContent,
@@ -43,6 +45,17 @@ export function FirebaseSetup({ onComplete, onNeedHelp, onBack }: IntegrationSte
   const [copied, setCopied] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Use the real Firebase status hook
+  const { isConfigured, isConnected, error: firebaseError } = useFirebaseStatus();
+
+  // Check if Firebase is already configured via environment variables
+  useEffect(() => {
+    if (isFirebaseConfigured()) {
+      setProjectId(process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "");
+      setCurrentStep("test");
+    }
+  }, []);
+
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -84,27 +97,39 @@ export function FirebaseSetup({ onComplete, onNeedHelp, onBack }: IntegrationSte
     reader.readAsText(file);
   };
 
-  const handleTestConnection = async () => {
+  const handleTestConnection = useCallback(async () => {
     setTestStatus("testing");
     setTestError(null);
 
-    // Simulate API test
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // Check if Firebase is configured
+      if (!isFirebaseConfigured()) {
+        setTestStatus("error");
+        setTestError("Firebase is not configured. Please set the environment variables in .env.local");
+        return;
+      }
 
-    // Simulate success (in real implementation, this would call an API)
-    const success = Math.random() > 0.3; // 70% success rate for demo
+      // Test actual connection by reading the .info/connected path
+      const connected = await rtdbGet(".info/connected");
 
-    if (success) {
-      setTestStatus("success");
-      updateIntegrationConfig("firebase", {
-        connectionTested: true,
-        lastTested: new Date().toISOString(),
-      });
-    } else {
+      // Also try to read a test path to verify database access
+      const testRead = await rtdbGet("config");
+
+      if (connected || testRead !== null) {
+        setTestStatus("success");
+        updateIntegrationConfig("firebase", {
+          connectionTested: true,
+          lastTested: new Date().toISOString(),
+        });
+      } else {
+        setTestStatus("error");
+        setTestError("Could not connect to Firebase. Please check your credentials and database rules.");
+      }
+    } catch (err) {
       setTestStatus("error");
-      setTestError("Could not connect to Firebase. Please check your service account credentials.");
+      setTestError(err instanceof Error ? err.message : "Connection test failed");
     }
-  };
+  }, [])
 
   const handleCopyProjectId = () => {
     navigator.clipboard.writeText(projectId);
@@ -134,6 +159,19 @@ export function FirebaseSetup({ onComplete, onNeedHelp, onBack }: IntegrationSte
         </div>
       </CardHeader>
       <CardContent className="space-y-6">
+        {/* Environment Configuration Notice */}
+        {isConfigured && (
+          <div className="bg-green-100 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-lg p-3 text-sm text-green-700 dark:text-green-300">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4" />
+              <span className="font-medium">Firebase environment variables detected!</span>
+            </div>
+            <p className="mt-1 text-green-600 dark:text-green-400">
+              Project: {process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}
+            </p>
+          </div>
+        )}
+
         {/* Step Progress */}
         <div className="flex items-center gap-2">
           {["instructions", "upload", "test"].map((step, index) => (
