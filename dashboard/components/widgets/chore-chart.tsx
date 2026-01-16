@@ -38,29 +38,29 @@ interface FamilyMember {
   chores: Chore[];
 }
 
-// Sample data - in production this would come from your data store
+// Sartor family chores - age-appropriate tasks for each child
 const sampleMembers: FamilyMember[] = [
   {
     id: "1",
-    name: "Emma",
-    initials: "ES",
-    totalPoints: 145,
+    name: "Vayu",
+    initials: "VS",
+    totalPoints: 185,
     chores: [
       { id: "c1", name: "Make bed", points: 5, completed: true },
-      { id: "c2", name: "Feed the dog", points: 10, completed: true },
-      { id: "c3", name: "Do homework", points: 15, completed: false },
+      { id: "c2", name: "Do homework", points: 15, completed: true },
+      { id: "c3", name: "Practice piano", points: 10, completed: false },
       { id: "c4", name: "Clean room", points: 20, completed: false },
     ],
   },
   {
     id: "2",
-    name: "Jake",
-    initials: "JS",
-    totalPoints: 120,
+    name: "Vishala",
+    initials: "VS",
+    totalPoints: 160,
     chores: [
-      { id: "c5", name: "Take out trash", points: 10, completed: true },
-      { id: "c6", name: "Empty dishwasher", points: 15, completed: false },
-      { id: "c7", name: "Mow lawn", points: 25, completed: false },
+      { id: "c5", name: "Make bed", points: 5, completed: true },
+      { id: "c6", name: "Set dinner table", points: 10, completed: true },
+      { id: "c7", name: "Gymnastics practice", points: 10, completed: false },
     ],
   },
 ];

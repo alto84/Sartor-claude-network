@@ -68,7 +68,7 @@ const initialMessages: Message[] = [
     id: "1",
     role: "assistant",
     content:
-      "Hello! I'm Claude, your Nestly family assistant. I can help you manage your family's schedule, tasks, home devices, and more. How can I help you today?",
+      "Hello! I'm Claude, the Sartor family assistant. I can help you manage your family's schedule, tasks, home devices, and more. How can I help you today?",
     timestamp: new Date(),
     suggestions: ["What's on my calendar?", "Show pending tasks", "Home status"],
   },

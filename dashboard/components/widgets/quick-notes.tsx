@@ -47,14 +47,14 @@ const sampleNotes: Note[] = [
   },
   {
     id: "2",
-    content: "Call plumber about kitchen sink",
+    content: "Solar Inference LLC - follow up on CPA call",
     color: noteColors[1].value,
     isPinned: false,
     createdAt: new Date(),
   },
   {
     id: "3",
-    content: "Emma's recital is at 5pm",
+    content: "Vishala gymnastics pickup at 5:30pm",
     color: noteColors[2].value,
     isPinned: false,
     createdAt: new Date(),

@@ -28,7 +28,7 @@ const RESPONSE_TEMPLATES = {
 
 **Morning**
 - 9:00 AM - Team standup (30 min)
-- 10:30 AM - Project review with Sarah
+- 10:30 AM - AZ AI Innovation sync
 
 **Afternoon**
 - 2:00 PM - Client call

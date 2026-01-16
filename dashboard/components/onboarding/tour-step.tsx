@@ -92,9 +92,9 @@ const tourSlides = [
       <div className="p-6 space-y-3">
         {[
           { task: "Take out trash", person: "Dad", done: true },
-          { task: "Do homework", person: "Emma", done: false },
+          { task: "Do homework", person: "Vayu", done: false },
           { task: "Grocery shopping", person: "Mom", done: false },
-          { task: "Clean room", person: "Jake", done: true },
+          { task: "Clean room", person: "Vishala", done: true },
         ].map((item, i) => (
           <motion.div
             key={i}
@@ -200,7 +200,7 @@ const tourSlides = [
             <Brain className="w-4 h-4 text-primary" />
           </div>
           <div className="bg-primary text-primary-foreground rounded-2xl rounded-tr-none p-3 text-sm max-w-[200px]">
-            Tomorrow you have 2 meetings and Jake has soccer at 4pm. Don&apos;t forget his cleats!
+            Tomorrow you have 2 meetings and Vayu has piano at 4pm. Don&apos;t forget his cleats!
           </div>
         </motion.div>
       </div>
