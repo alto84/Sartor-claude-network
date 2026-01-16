@@ -21,35 +21,28 @@ interface Birthday {
   relationship: string;
 }
 
-// Sample birthday data - in production this would come from your data store
+// Sartor family birthdays with actual DOBs
 const sampleBirthdays: Birthday[] = [
   {
     id: "1",
-    name: "Emma",
-    initials: "ES",
-    date: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 3),
-    relationship: "Daughter",
+    name: "Vasu",
+    initials: "VS",
+    date: new Date(2022, 0, 14), // DOB: January 14, 2022
+    relationship: "Son",
   },
   {
     id: "2",
-    name: "Grandma Rose",
-    initials: "GR",
-    date: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 12),
-    relationship: "Grandmother",
+    name: "Vishala",
+    initials: "VS",
+    date: new Date(2017, 6, 29), // DOB: July 29, 2017
+    relationship: "Daughter",
   },
   {
     id: "3",
-    name: "Uncle Mike",
-    initials: "UM",
-    date: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 21),
-    relationship: "Uncle",
-  },
-  {
-    id: "4",
-    name: "Sarah",
-    initials: "SS",
-    date: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 15),
-    relationship: "Spouse",
+    name: "Vayu",
+    initials: "VS",
+    date: new Date(2015, 7, 14), // DOB: August 14, 2015
+    relationship: "Son",
   },
 ];
 
@@ -59,16 +52,19 @@ function getDaysUntil(date: Date): number {
   const birthday = new Date(date);
   birthday.setHours(0, 0, 0, 0);
 
+  // Set birthday to current year
+  birthday.setFullYear(today.getFullYear());
+
   // If birthday has passed this year, check next year
   if (birthday < today) {
-    birthday.setFullYear(birthday.getFullYear() + 1);
+    birthday.setFullYear(today.getFullYear() + 1);
   }
 
   const diffTime = birthday.getTime() - today.getTime();
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 }
 
-function getUpcomingBirthdays(birthdays: Birthday[], days: number = 30): Birthday[] {
+function getUpcomingBirthdays(birthdays: Birthday[], days: number = 365): Birthday[] {
   return birthdays
     .map((b) => ({ ...b, daysUntil: getDaysUntil(b.date) }))
     .filter((b) => b.daysUntil <= days && b.daysUntil >= 0)
@@ -205,7 +201,7 @@ export function BirthdaysWidget() {
           {upcomingBirthdays.length === 0 && (
             <div className="text-center py-6 text-muted-foreground">
               <Cake className="h-8 w-8 mx-auto mb-2 opacity-50" />
-              <p className="text-sm">No birthdays in the next 30 days</p>
+              <p className="text-sm">No upcoming birthdays</p>
             </div>
           )}
         </div>

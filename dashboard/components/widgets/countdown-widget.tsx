@@ -41,39 +41,39 @@ const eventIcons: { [key: string]: React.ElementType } = {
   special: Sparkles,
 };
 
-// Sample countdown events - in production this would come from your data store
+// Sartor family events - updated for 2026
 const sampleEvents: CountdownEvent[] = [
   {
     id: "1",
-    title: "Hawaii Vacation",
-    date: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), // 15 days from now
-    icon: "vacation",
-    color: "text-sky-600 dark:text-sky-400",
-    bgColor: "bg-sky-100 dark:bg-sky-900/30",
-  },
-  {
-    id: "2",
-    title: "Emma's Birthday",
-    date: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // 3 days from now
-    icon: "birthday",
-    color: "text-pink-600 dark:text-pink-400",
-    bgColor: "bg-pink-100 dark:bg-pink-900/30",
-  },
-  {
-    id: "3",
-    title: "Christmas",
-    date: new Date(new Date().getFullYear(), 11, 25),
-    icon: "holiday",
+    title: "AZ March Bonus",
+    date: new Date(2026, 2, 15), // March 15, 2026
+    icon: "special",
     color: "text-green-600 dark:text-green-400",
     bgColor: "bg-green-100 dark:bg-green-900/30",
   },
   {
+    id: "2",
+    title: "Vishala's 9th Birthday",
+    date: new Date(2026, 6, 29), // July 29, 2026 - DOB 7/29/17
+    icon: "birthday",
+    color: "text-purple-600 dark:text-purple-400",
+    bgColor: "bg-purple-100 dark:bg-purple-900/30",
+  },
+  {
+    id: "3",
+    title: "Vayu's 11th Birthday",
+    date: new Date(2026, 7, 14), // August 14, 2026 - DOB 8/14/15
+    icon: "birthday",
+    color: "text-blue-600 dark:text-blue-400",
+    bgColor: "bg-blue-100 dark:bg-blue-900/30",
+  },
+  {
     id: "4",
-    title: "Spring Break",
-    date: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000), // 45 days from now
-    icon: "vacation",
-    color: "text-amber-600 dark:text-amber-400",
-    bgColor: "bg-amber-100 dark:bg-amber-900/30",
+    title: "Vasu's 5th Birthday",
+    date: new Date(2027, 0, 14), // January 14, 2027 - DOB 1/14/22
+    icon: "birthday",
+    color: "text-pink-600 dark:text-pink-400",
+    bgColor: "bg-pink-100 dark:bg-pink-900/30",
   },
 ];
 

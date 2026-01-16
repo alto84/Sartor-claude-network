@@ -348,7 +348,7 @@ export default function DashboardPage() {
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <div className="flex items-center gap-2">
                 <Cloud className="h-5 w-5 text-sky-600" />
-                <CardTitle className="text-lg">Weather</CardTitle>
+                <CardTitle className="text-lg">Weather - Montclair, NJ</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
