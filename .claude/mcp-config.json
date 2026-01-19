@@ -3,7 +3,18 @@
     "sartor-memory": {
       "command": "npm",
       "args": ["run", "mcp"],
-      "cwd": "/path/to/Sartor-claude-network"
+      "cwd": "C:/Users/alto8/Sartor-claude-network",
+      "env": {}
+    },
+    "sartor-obsidian": {
+      "command": "npm",
+      "args": ["run", "mcp:obsidian"],
+      "cwd": "C:/Users/alto8/Sartor-claude-network",
+      "env": {
+        "OBSIDIAN_API_URL": "https://127.0.0.1:27124",
+        "OBSIDIAN_API_KEY": "",
+        "OBSIDIAN_SYNC_TO_MEMORY": "true"
+      }
     }
   }
 }

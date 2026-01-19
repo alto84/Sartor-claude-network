@@ -35,7 +35,9 @@
     "setup:firebase": "firebase init",
     "setup:github": "gh auth login && gh repo create sartor-memories",
     "setup:vector-db": "node scripts/setup-vector-db.js",
-    "memory:write": "bash scripts/memory-write.sh"
+    "memory:write": "bash scripts/memory-write.sh",
+    "mcp:obsidian": "ts-node src/mcp/obsidian-server.ts",
+    "test:obsidian": "jest --testPathPatterns obsidian"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
