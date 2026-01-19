@@ -8,10 +8,10 @@ describe('Logo Component', () => {
       render(<Logo />);
 
       // Should have the Nestly text
-      expect(screen.getByText('Nestly')).toBeInTheDocument();
+      expect(screen.getByText('Sartor')).toBeInTheDocument();
 
       // Should have an SVG (the icon)
-      const container = screen.getByText('Nestly').closest('div');
+      const container = screen.getByText('Sartor').closest('div');
       expect(container?.querySelector('svg')).toBeInTheDocument();
     });
 
@@ -19,14 +19,14 @@ describe('Logo Component', () => {
       render(<Logo variant="icon" />);
 
       // Should not have the Nestly text visible
-      expect(screen.queryByText('Nestly')).not.toBeInTheDocument();
+      expect(screen.queryByText('Sartor')).not.toBeInTheDocument();
     });
 
     it('renders text variant without icon', () => {
       const { container } = render(<Logo variant="text" />);
 
       // Should have the Nestly text
-      expect(screen.getByText('Nestly')).toBeInTheDocument();
+      expect(screen.getByText('Sartor')).toBeInTheDocument();
 
       // Should not have SVG in text-only variant (text is a span)
       expect(container.querySelector('svg')).not.toBeInTheDocument();
@@ -70,7 +70,7 @@ describe('Logo Component', () => {
   describe('Color rendering', () => {
     it('applies primary color scheme by default', () => {
       render(<Logo variant="text" color="primary" />);
-      const text = screen.getByText('Nestly');
+      const text = screen.getByText('Sartor');
 
       // Primary text color should be green
       expect(text).toHaveStyle({ color: '#16a34a' });
@@ -78,14 +78,14 @@ describe('Logo Component', () => {
 
     it('applies white color scheme', () => {
       render(<Logo variant="text" color="white" />);
-      const text = screen.getByText('Nestly');
+      const text = screen.getByText('Sartor');
 
       expect(text).toHaveStyle({ color: '#ffffff' });
     });
 
     it('applies dark color scheme', () => {
       render(<Logo variant="text" color="dark" />);
-      const text = screen.getByText('Nestly');
+      const text = screen.getByText('Sartor');
 
       expect(text).toHaveStyle({ color: '#14532d' });
     });

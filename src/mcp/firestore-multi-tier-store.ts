@@ -18,17 +18,31 @@ import { initializeFirebase, getApp } from './firebase-init';
 import { Firestore, getFirestore } from 'firebase-admin/firestore';
 import { FileStore, MemoryType } from './file-store';
 import { GitHubColdTier } from '../memory/cold-tier';
+import {
+  MemorySource,
+  TierType,
+  MEMORY_COLLECTIONS,
+  normalizeMemory as normalizeUnifiedMemory,
+  ClaudeSurface,
+  StorageBackend,
+} from '../memory/unified-types';
 
 interface Memory {
   id: string;
   content: string;
   type: MemoryType;
-  importance_score: number;
+  importance: number;  // Unified field name (not importance_score)
   tags: string[];
-  created_at: string;
+  createdAt: string;
+  accessCount?: number;
+  lastAccessedAt?: string;
+  tier?: TierType;
+  source?: MemorySource;
+  // Legacy field support
+  importance_score?: number;
+  created_at?: string;
   access_count?: number;
   last_accessed?: string;
-  tier?: 'hot' | 'warm' | 'cold';
 }
 
 interface StoreConfig {
@@ -40,6 +54,34 @@ interface StoreConfig {
     owner: string;
     repo: string;
     basePath?: string;
+  };
+  source?: {
+    surface: ClaudeSurface;
+    backend: StorageBackend;
+  };
+}
+
+/**
+ * Normalize a memory from any format (legacy or unified) to the current format
+ */
+function normalizeMemory(raw: any): Memory {
+  const normalized = normalizeUnifiedMemory(raw);
+  return {
+    id: normalized.id,
+    content: normalized.content,
+    type: normalized.type as MemoryType,
+    importance: normalized.importance,
+    tags: normalized.tags,
+    createdAt: normalized.createdAt,
+    accessCount: normalized.accessCount,
+    lastAccessedAt: normalized.lastAccessedAt,
+    tier: normalized.tier as TierType,
+    source: normalized.source,
+    // Keep legacy fields for backward compatibility
+    importance_score: normalized.importance,
+    created_at: normalized.createdAt,
+    access_count: normalized.accessCount,
+    last_accessed: normalized.lastAccessedAt,
   };
 }
 
@@ -54,11 +96,23 @@ export class FirestoreMultiTierStore {
   private useFirestore: boolean = false;
   private useGitHub: boolean = false;
 
-  private collectionName: string = 'mcp-memories';
+  // Use unified collection name from MEMORY_COLLECTIONS
+  private collectionName: string = MEMORY_COLLECTIONS.HOT;
+
+  // Default source tracking
+  private defaultSource: MemorySource = { surface: 'api', backend: 'firestore' };
 
   constructor(config?: StoreConfig) {
     // Always initialize file store as fallback
     this.fileStore = new FileStore();
+
+    // Set source tracking if provided
+    if (config?.source) {
+      this.defaultSource = {
+        surface: config.source.surface,
+        backend: config.source.backend,
+      };
+    }
 
     // Try Firestore if enabled or by default
     if (config?.useFirestore !== false) {
@@ -122,18 +176,29 @@ export class FirestoreMultiTierStore {
   async createMemory(
     content: string,
     type: MemoryType,
-    options: { importance_score?: number; tags?: string[] }
+    options: { importance?: number; importance_score?: number; tags?: string[]; source?: MemorySource }
   ): Promise<Memory> {
     const id = `mem_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const now = new Date().toISOString();
+    // Support both importance and importance_score for backward compatibility
+    const importanceValue = options.importance ?? options.importance_score ?? 0.5;
+
     const memory: Memory = {
       id,
       content,
       type,
-      importance_score: options.importance_score ?? 0.5,
+      importance: importanceValue,
       tags: options.tags ?? [],
-      created_at: new Date().toISOString(),
-      access_count: 0,
+      createdAt: now,
+      accessCount: 0,
+      lastAccessedAt: now,
       tier: this.useFirestore ? 'hot' : 'warm',
+      source: options.source ?? this.defaultSource,
+      // Legacy fields for backward compatibility
+      importance_score: importanceValue,
+      created_at: now,
+      access_count: 0,
+      last_accessed: now,
     };
 
     // Store in hot tier (Firestore) if available
@@ -142,15 +207,15 @@ export class FirestoreMultiTierStore {
         await this.firestoreDb.collection(this.collectionName).doc(id).set(memory);
       } catch (error) {
         console.error('[FirestoreMultiTierStore] Firestore write failed, falling back to file:', error);
-        return this.fileStore.createMemory(content, type, options);
+        return normalizeMemory(this.fileStore.createMemory(content, type, options));
       }
     } else {
       // Fall back to file storage
-      return this.fileStore.createMemory(content, type, options);
+      return normalizeMemory(this.fileStore.createMemory(content, type, options));
     }
 
     // Also archive to GitHub if importance is high and GitHub is enabled
-    if (this.useGitHub && this.githubStore && memory.importance_score >= 0.8) {
+    if (this.useGitHub && this.githubStore && memory.importance >= 0.8) {
       try {
         await this.githubStore.set(
           `${type}/${id}.json`,
@@ -172,11 +237,14 @@ export class FirestoreMultiTierStore {
       try {
         const doc = await this.firestoreDb.collection(this.collectionName).doc(id).get();
         if (doc.exists) {
-          const memory = doc.data() as Memory;
-          // Update access count and timestamp
+          const rawMemory = doc.data();
+          const memory = normalizeMemory(rawMemory);
+          const now = new Date().toISOString();
           await this.firestoreDb.collection(this.collectionName).doc(id).update({
-            access_count: (memory.access_count || 0) + 1,
-            last_accessed: new Date().toISOString(),
+            accessCount: (memory.accessCount || 0) + 1,
+            lastAccessedAt: now,
+            access_count: (memory.accessCount || 0) + 1,
+            last_accessed: now,
           });
           return memory;
         }
@@ -187,7 +255,7 @@ export class FirestoreMultiTierStore {
 
     // Try warm tier (file)
     const fileResult = this.fileStore.getMemory(id);
-    if (fileResult) return fileResult;
+    if (fileResult) return normalizeMemory(fileResult);
 
     // Try cold tier (GitHub)
     if (this.useGitHub && this.githubStore) {
@@ -195,7 +263,7 @@ export class FirestoreMultiTierStore {
         // Search across type directories
         for (const type of ['episodic', 'semantic', 'procedural', 'working', 'refinement_trace', 'expert_consensus']) {
           const result = await this.githubStore.get(`${type}/${id}.json`);
-          if (result) return result as Memory;
+          if (result) return normalizeMemory(result);
         }
       } catch (error) {
         console.error('[FirestoreMultiTierStore] GitHub read failed:', error);
@@ -223,15 +291,16 @@ export class FirestoreMultiTierStore {
 
         // Apply importance filter if specified
         if (filters.min_importance !== undefined) {
-          query = query.where('importance_score', '>=', filters.min_importance) as any;
+          query = query.where('importance', '>=', filters.min_importance) as any;
         }
 
         const snapshot = await query.get();
         snapshot.forEach((doc) => {
-          const mem = doc.data() as Memory;
+          const rawMem = doc.data();
+          const mem = normalizeMemory(rawMem);
           // Double-check filters in case we couldn't apply them in query
           if (filters.type && filters.type.length > 10 && !filters.type.includes(mem.type)) return;
-          if (filters.min_importance !== undefined && mem.importance_score < filters.min_importance)
+          if (filters.min_importance !== undefined && mem.importance < filters.min_importance)
             return;
           results.push({ ...mem, tier: 'hot' });
         });
@@ -242,7 +311,8 @@ export class FirestoreMultiTierStore {
 
     // Search warm tier
     const fileResults = this.fileStore.searchMemories(filters, limit);
-    for (const mem of fileResults) {
+    for (const rawMem of fileResults) {
+      const mem = normalizeMemory(rawMem);
       if (!results.find((r) => r.id === mem.id)) {
         results.push({ ...mem, tier: 'warm' });
       }
@@ -250,7 +320,7 @@ export class FirestoreMultiTierStore {
 
     // Sort by importance and return limited results
     return results
-      .sort((a, b) => (b.importance_score || 0) - (a.importance_score || 0))
+      .sort((a, b) => (b.importance || 0) - (a.importance || 0))
       .slice(0, limit);
   }
 
@@ -351,4 +421,4 @@ export class FirestoreMultiTierStore {
   }
 }
 
-export { MemoryType };
+export { MemoryType, normalizeMemory };

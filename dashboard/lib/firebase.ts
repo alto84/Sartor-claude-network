@@ -121,6 +121,14 @@ export function isFirebaseConfigured(): boolean {
 export type MemoryType = 'episodic' | 'semantic' | 'procedural' | 'working';
 export type MemoryTier = 'hot' | 'warm' | 'cold';
 
+export interface MemorySource {
+  surface: 'desktop' | 'code' | 'dashboard' | 'api' | 'agent';
+  backend: 'firebase' | 'firestore' | 'obsidian' | 'gdrive' | 'github' | 'local';
+  userId?: string;
+  sessionId?: string;
+}
+
+
 export interface Memory {
   id: string;
   type: MemoryType;
@@ -130,7 +138,7 @@ export interface Memory {
   importance: number; // 0-1
   timestamp: string;
   expiresAt?: string;
-  source?: string;
+  source?: MemorySource;
   relatedIds?: string[];
   metadata?: Record<string, unknown>;
 }
@@ -387,6 +395,14 @@ export async function firestoreDeleteDoc(
 // ============================================================================
 
 /**
+ * Default source for memories created from the dashboard
+ */
+const DASHBOARD_SOURCE: MemorySource = {
+  surface: 'dashboard',
+  backend: 'firebase'
+};
+
+/**
  * Create a new memory
  */
 export async function createMemory(memory: Omit<Memory, 'id' | 'timestamp'>): Promise<string | null> {
@@ -394,10 +410,11 @@ export async function createMemory(memory: Omit<Memory, 'id' | 'timestamp'>): Pr
     ...memory,
     id: '', // Will be set by push
     timestamp: new Date().toISOString(),
+    source: memory.source ?? DASHBOARD_SOURCE,
   };
 
-  // Store in hot tier for quick access
-  const id = await rtdbPush('knowledge', data);
+  // Store in hot tier for quick access (unified collection name: 'memories')
+  const id = await rtdbPush('memories', data);
 
   // Also store important memories in warm tier for persistence
   if (id && memory.importance >= 0.7) {
@@ -411,7 +428,7 @@ export async function createMemory(memory: Omit<Memory, 'id' | 'timestamp'>): Pr
  * Search memories by tags
  */
 export async function searchMemoriesByTags(tags: string[]): Promise<Memory[]> {
-  const allMemories = await rtdbGet<Record<string, Memory>>('knowledge');
+  const allMemories = await rtdbGet<Record<string, Memory>>('memories');
   if (!allMemories) return [];
 
   return Object.values(allMemories).filter(memory =>
@@ -422,20 +439,20 @@ export async function searchMemoriesByTags(tags: string[]): Promise<Memory[]> {
 /**
  * Get recent memories
  */
-export async function getRecentMemories(limit: number = 10): Promise<Memory[]> {
-  const allMemories = await rtdbGet<Record<string, Memory>>('knowledge');
+export async function getRecentMemories(count: number = 10): Promise<Memory[]> {
+  const allMemories = await rtdbGet<Record<string, Memory>>('memories');
   if (!allMemories) return [];
 
   return Object.values(allMemories)
     .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
-    .slice(0, limit);
+    .slice(0, count);
 }
 
 /**
  * Get high-importance memories
  */
 export async function getImportantMemories(minImportance: number = 0.8): Promise<Memory[]> {
-  const allMemories = await rtdbGet<Record<string, Memory>>('knowledge');
+  const allMemories = await rtdbGet<Record<string, Memory>>('memories');
   if (!allMemories) return [];
 
   return Object.values(allMemories)
@@ -556,12 +573,12 @@ export function subscribeTasks(
 }
 
 /**
- * Subscribe to knowledge/memory updates
+ * Subscribe to memory updates (unified collection name)
  */
 export function subscribeMemories(
   callback: (memories: Memory[]) => void
 ): Unsubscribe | null {
-  return rtdbSubscribe<Record<string, Memory>>('knowledge', (data) => {
+  return rtdbSubscribe<Record<string, Memory>>('memories', (data) => {
     callback(data ? Object.values(data) : []);
   });
 }

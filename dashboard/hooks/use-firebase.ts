@@ -23,6 +23,7 @@ import {
   subscribeTasks,
   subscribeMemories,
   createMemory,
+  MemorySource,
   searchMemoriesByTags,
   getRecentMemories,
   getImportantMemories,
@@ -219,12 +220,67 @@ export function useFamilyTasks() {
 // ============================================================================
 
 /**
- * Hook for managing memories/knowledge base
+ * Options for the useMemories hook
  */
-export function useMemories() {
+export interface UseMemoriesOptions {
+  /** Filter memories by source surface (e.g., 'desktop', 'dashboard', 'agent') */
+  source?: MemorySource['surface'];
+}
+
+/**
+ * Raw memory data from Firebase (may have old field names)
+ */
+interface RawMemoryData {
+  id?: string;
+  type: MemoryType;
+  content: string;
+  context?: string;
+  tags?: string[];
+  importance?: number;
+  importance_score?: number; // Legacy field name for backward compatibility
+  timestamp?: string;
+  expiresAt?: string;
+  source?: { surface: string; backend: string; userId?: string; sessionId?: string } | string; // Can be object or legacy string
+  relatedIds?: string[];
+  metadata?: Record<string, unknown>;
+}
+
+/**
+ * Normalize memory data to handle backward compatibility
+ * Handles both old 'importance_score' and new 'importance' field names
+ */
+function normalizeMemory(raw: RawMemoryData, id: string): Memory {
+  return {
+    id: raw.id || id,
+    type: raw.type,
+    content: raw.content,
+    context: raw.context,
+    tags: raw.tags || [],
+    // Use 'importance' if available, fall back to 'importance_score' for backward compatibility
+    importance: raw.importance ?? raw.importance_score ?? 0.5,
+    timestamp: raw.timestamp || new Date().toISOString(),
+    expiresAt: raw.expiresAt,
+    source: (typeof raw.source === 'string' 
+      ? { surface: raw.source, backend: 'firebase' } 
+      : raw.source) as Memory['source'],
+    relatedIds: raw.relatedIds,
+    metadata: raw.metadata,
+  };
+}
+
+/**
+ * Hook for managing memories/knowledge base
+ * Uses the unified 'memories' path and handles backward compatibility
+ * with old field names (importance_score -> importance)
+ *
+ * @param options - Optional configuration for filtering memories
+ */
+export function useMemories(options?: UseMemoriesOptions) {
   const [memories, setMemories] = useState<Memory[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const sourceFilter = options?.source;
 
   useEffect(() => {
     if (!isFirebaseConfigured()) {
@@ -232,15 +288,37 @@ export function useMemories() {
       return;
     }
 
-    const unsubscribe = subscribeMemories((data) => {
-      setMemories(data);
+    // Subscribe to the unified 'memories' path
+    const unsubscribe = rtdbSubscribe<Record<string, RawMemoryData>>('memories', (data) => {
+      if (!data) {
+        setMemories([]);
+        setLoading(false);
+        return;
+      }
+
+      // Normalize all memories and apply source filter if specified
+      let normalizedMemories = Object.entries(data).map(([id, raw]) =>
+        normalizeMemory(raw, id)
+      );
+
+      // Apply source filter if specified
+      if (sourceFilter) {
+        normalizedMemories = normalizedMemories.filter(m => m.source?.surface === sourceFilter);
+      }
+
+      // Sort by timestamp descending (most recent first)
+      normalizedMemories.sort((a, b) =>
+        new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+      );
+
+      setMemories(normalizedMemories);
       setLoading(false);
     });
 
     return () => {
       if (unsubscribe) unsubscribe();
     };
-  }, []);
+  }, [sourceFilter]);
 
   const addMemory = useCallback(async (
     content: string,

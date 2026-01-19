@@ -14,16 +14,39 @@ import { initializeFirebase, getDatabase } from './firebase-init';
 import { FileStore, MemoryType } from './file-store';
 import { GitHubColdTier } from '../memory/cold-tier';
 
+interface MemorySource {
+  surface: string;
+  backend: string;
+}
+
 interface Memory {
   id: string;
   content: string;
   type: MemoryType;
-  importance_score: number;
+  importance: number;
   tags: string[];
   created_at: string;
   access_count?: number;
   last_accessed?: string;
   tier?: 'hot' | 'warm' | 'cold';
+  source?: MemorySource;
+  // Legacy field - kept for backward compatibility on read
+  importance_score?: number;
+}
+
+/**
+ * Normalize a memory object to use the new field names.
+ * Handles backward compatibility by reading from old field names if new ones are missing.
+ */
+function normalizeMemory(raw: Partial<Memory> & { importance_score?: number }): Memory {
+  const normalized = {
+    ...raw,
+    // Use 'importance' if present, fall back to 'importance_score' for backward compatibility
+    importance: raw.importance ?? raw.importance_score ?? 0.5,
+  } as Memory;
+  // Remove legacy field from normalized object
+  delete normalized.importance_score;
+  return normalized;
 }
 
 interface StoreConfig {
@@ -49,7 +72,7 @@ export class MultiTierStore {
   private useFirebase: boolean = false;
   private useGitHub: boolean = false;
 
-  private basePath: string = 'mcp-memories';
+  private basePath: string = 'memories';
 
   constructor(config?: StoreConfig) {
     // Always initialize file store as fallback
@@ -112,18 +135,21 @@ export class MultiTierStore {
   async createMemory(
     content: string,
     type: MemoryType,
-    options: { importance_score?: number; tags?: string[] }
+    options: { importance?: number; importance_score?: number; tags?: string[]; source?: MemorySource }
   ): Promise<Memory> {
     const id = `mem_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    // Support both new 'importance' and legacy 'importance_score' in options
+    const importanceValue = options.importance ?? options.importance_score ?? 0.5;
     const memory: Memory = {
       id,
       content,
       type,
-      importance_score: options.importance_score ?? 0.5,
+      importance: importanceValue,
       tags: options.tags ?? [],
       created_at: new Date().toISOString(),
       access_count: 0,
       tier: this.useFirebase ? 'hot' : 'warm',
+      source: options.source,
     };
 
     // Store in hot tier (Firebase) if available
@@ -135,12 +161,13 @@ export class MultiTierStore {
         this.fileStore.createMemory(content, type, options);
       }
     } else {
-      // Fall back to file storage
-      return this.fileStore.createMemory(content, type, options);
+      // Fall back to file storage - normalize the result to use new field names
+      const fileMemory = await this.fileStore.createMemory(content, type, options);
+      return normalizeMemory(fileMemory);
     }
 
     // Also archive to GitHub if importance is high and GitHub is enabled
-    if (this.useGitHub && this.githubStore && memory.importance_score >= 0.8) {
+    if (this.useGitHub && this.githubStore && memory.importance >= 0.8) {
       try {
         await this.githubStore.set(
           `${type}/${id}.json`,
@@ -162,7 +189,8 @@ export class MultiTierStore {
       try {
         const snapshot = await this.firebaseDb.ref(`${this.basePath}/${id}`).get();
         if (snapshot.exists()) {
-          const memory = snapshot.val() as Memory;
+          const rawMemory = snapshot.val();
+          const memory = normalizeMemory(rawMemory);
           // Update access count
           await this.firebaseDb
             .ref(`${this.basePath}/${id}/access_count`)
@@ -179,7 +207,7 @@ export class MultiTierStore {
 
     // Try warm tier (file)
     const fileResult = this.fileStore.getMemory(id);
-    if (fileResult) return fileResult;
+    if (fileResult) return normalizeMemory(fileResult);
 
     // Try cold tier (GitHub)
     if (this.useGitHub && this.githubStore) {
@@ -187,7 +215,7 @@ export class MultiTierStore {
         // Search across type directories
         for (const type of ['episodic', 'semantic', 'procedural', 'working']) {
           const result = await this.githubStore.get(`${type}/${id}.json`);
-          if (result) return result as Memory;
+          if (result) return normalizeMemory(result as Partial<Memory>);
         }
       } catch (error) {
         console.error('[MultiTierStore] GitHub read failed:', error);
@@ -209,11 +237,12 @@ export class MultiTierStore {
         const snapshot = await this.firebaseDb.ref(this.basePath).get();
         if (snapshot.exists()) {
           snapshot.forEach((child) => {
-            const mem = child.val() as Memory;
+            const rawMem = child.val();
+            const mem = normalizeMemory(rawMem);
             if (filters.type && !filters.type.includes(mem.type)) return;
             if (
               filters.min_importance !== undefined &&
-              mem.importance_score < filters.min_importance
+              mem.importance < filters.min_importance
             )
               return;
             results.push({ ...mem, tier: 'hot' });
@@ -226,7 +255,8 @@ export class MultiTierStore {
 
     // Search warm tier
     const fileResults = this.fileStore.searchMemories(filters, limit);
-    for (const mem of fileResults) {
+    for (const rawMem of fileResults) {
+      const mem = normalizeMemory(rawMem);
       if (!results.find((r) => r.id === mem.id)) {
         results.push({ ...mem, tier: 'warm' });
       }
@@ -234,7 +264,7 @@ export class MultiTierStore {
 
     // Sort by importance and return limited results
     return results
-      .sort((a, b) => (b.importance_score || 0) - (a.importance_score || 0))
+      .sort((a, b) => (b.importance || 0) - (a.importance || 0))
       .slice(0, limit);
   }
 
@@ -261,7 +291,7 @@ export class MultiTierStore {
         const snapshot = await this.firebaseDb.ref(this.basePath).get();
         if (snapshot.exists()) {
           snapshot.forEach((child) => {
-            const mem = child.val() as Memory;
+            const mem = normalizeMemory(child.val());
             stats.total++;
             stats.by_tier.hot++;
             if (mem.type in stats.by_type) {
