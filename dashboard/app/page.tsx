@@ -39,6 +39,7 @@ import {
   FamilyPhotoWidget,
   CountdownWidget,
   ChoreChartWidget,
+  MemoryStatusWidget,
 } from "@/components/widgets";
 
 // Placeholder data
@@ -94,6 +95,7 @@ const defaultWidgets: WidgetConfig[] = [
   { id: "quick-actions", name: "Quick Actions", enabled: true, order: 11 },
   { id: "upcoming-week", name: "Upcoming This Week", enabled: true, order: 12 },
   { id: "home-status", name: "Home Status", enabled: true, order: 13 },
+  { id: "memory-status", name: "Memory Status", enabled: true, order: 14 },
 ];
 
 export default function DashboardPage() {
@@ -386,6 +388,14 @@ export default function DashboardPage() {
         {isWidgetEnabled("chore-chart") && <ChoreChartWidget />}
         {isWidgetEnabled("family-photo") && <FamilyPhotoWidget />}
       </div>
+
+      {/* Memory Status Widget */}
+      {isWidgetEnabled("memory-status") && (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <MemoryStatusWidget />
+        </div>
+      )}
+
 
       {/* Quick Actions */}
       {isWidgetEnabled("quick-actions") && (
