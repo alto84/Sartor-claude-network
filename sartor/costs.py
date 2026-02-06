@@ -48,6 +48,9 @@ class CostTracker:
                 data = json.load(f)
             finally:
                 fcntl.flock(f, fcntl.LOCK_UN)
+        # Ensure 'calls' key exists (gateway_cron uses a simpler format)
+        if "calls" not in data:
+            data["calls"] = []
         return data
 
     def _write(self, data: dict) -> None:
