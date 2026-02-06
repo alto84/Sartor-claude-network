@@ -30,3 +30,4 @@ config/firebase-credentials.json
 *.key
 credentials.json
 secrets.json
+credentials/

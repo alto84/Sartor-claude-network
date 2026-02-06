@@ -18,8 +18,36 @@ import {
   RefreshCw,
   Clock,
   TrendingUp,
+  CheckCircle,
+  XCircle,
+  AlertCircle,
+  HardDrive,
+  Cloud,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+interface BackendStatus {
+  name: string;
+  type: string;
+  connected: boolean;
+  latency?: number;
+  error?: string;
+  details?: {
+    version?: string;
+    endpoint?: string;
+  };
+}
+
+interface MemorySystemStatus {
+  overall: 'healthy' | 'degraded' | 'offline';
+  backends: BackendStatus[];
+  tiers: {
+    hot: { count: number; sizeBytes: number };
+    warm: { count: number; sizeBytes: number };
+    cold: { count: number };
+  };
+  lastSync: string;
+}
 
 interface MemoryTierStats {
   tier: string;
@@ -37,9 +65,10 @@ interface MemoryStatusData {
   recentActivity: number;
   lastSync: string | null;
   tiers: MemoryTierStats[];
+  systemStatus?: MemorySystemStatus;
 }
 
-// Default/placeholder data - in production this would come from the memory API
+// Default/placeholder data
 const defaultMemoryData: MemoryStatusData = {
   totalMemories: 0,
   activeMemories: 0,
@@ -99,45 +128,104 @@ function formatLastSync(timestamp: string | null): string {
   return `${diffDays}d ago`;
 }
 
+function getBackendIcon(type: string) {
+  switch (type) {
+    case 'firebase':
+    case 'firestore':
+      return Database;
+    case 'obsidian':
+      return HardDrive;
+    case 'gdrive':
+    case 'github':
+      return Cloud;
+    default:
+      return Database;
+  }
+}
+
+function getStatusIcon(connected: boolean) {
+  return connected ? CheckCircle : XCircle;
+}
+
+function getStatusColor(connected: boolean) {
+  return connected
+    ? "text-green-500 dark:text-green-400"
+    : "text-red-500 dark:text-red-400";
+}
+
+function getOverallStatusIcon(status: string) {
+  switch (status) {
+    case 'healthy':
+      return CheckCircle;
+    case 'degraded':
+      return AlertCircle;
+    case 'offline':
+      return XCircle;
+    default:
+      return AlertCircle;
+  }
+}
+
+function getOverallStatusColor(status: string) {
+  switch (status) {
+    case 'healthy':
+      return "text-green-500";
+    case 'degraded':
+      return "text-yellow-500";
+    case 'offline':
+      return "text-red-500";
+    default:
+      return "text-gray-500";
+  }
+}
+
 export function MemoryStatusWidget() {
   const [data, setData] = useState<MemoryStatusData>(defaultMemoryData);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [showBackends, setShowBackends] = useState(false);
 
   const fetchMemoryStatus = async () => {
     try {
-      // Try to fetch from the memory API
-      const response = await fetch("/api/memory/status");
+      // Fetch from the memory status API
+      const response = await fetch("/api/memory-status");
       if (response.ok) {
-        const memoryStatus = await response.json();
+        const systemStatus: MemorySystemStatus = await response.json();
+
+        // Calculate totals from tiers
+        const totalMemories =
+          (systemStatus.tiers?.hot?.count || 0) +
+          (systemStatus.tiers?.warm?.count || 0) +
+          (systemStatus.tiers?.cold?.count || 0);
+
         setData({
-          totalMemories: memoryStatus.total || 0,
-          activeMemories: memoryStatus.active || 0,
-          archivedMemories: memoryStatus.archived || 0,
-          recentActivity: memoryStatus.recentActivity || 0,
-          lastSync: memoryStatus.lastSync || null,
+          totalMemories,
+          activeMemories: systemStatus.tiers?.hot?.count || 0,
+          archivedMemories: systemStatus.tiers?.cold?.count || 0,
+          recentActivity: 0,
+          lastSync: systemStatus.lastSync,
           tiers: [
             {
               ...defaultMemoryData.tiers[0],
-              count: memoryStatus.byType?.episodic || 0,
+              count: systemStatus.tiers?.hot?.count || 0,
             },
             {
               ...defaultMemoryData.tiers[1],
-              count: memoryStatus.byType?.semantic || 0,
+              count: systemStatus.tiers?.warm?.count || 0,
             },
             {
               ...defaultMemoryData.tiers[2],
-              count: memoryStatus.byType?.procedural || 0,
+              count: 0,
             },
             {
               ...defaultMemoryData.tiers[3],
-              count: memoryStatus.byType?.working || 0,
+              count: 0,
             },
           ],
+          systemStatus,
         });
       }
     } catch (error) {
-      // Keep default/placeholder data on error
       console.log("Memory API not available, using placeholder data");
     } finally {
       setIsLoading(false);
@@ -147,8 +235,8 @@ export function MemoryStatusWidget() {
 
   useEffect(() => {
     fetchMemoryStatus();
-    // Refresh every 5 minutes
-    const interval = setInterval(fetchMemoryStatus, 5 * 60 * 1000);
+    // Refresh every 30 seconds
+    const interval = setInterval(fetchMemoryStatus, 30 * 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -157,9 +245,8 @@ export function MemoryStatusWidget() {
     fetchMemoryStatus();
   };
 
-  const usagePercentage = data.totalMemories > 0
-    ? Math.round((data.activeMemories / data.totalMemories) * 100)
-    : 0;
+  const connectedBackends = data.systemStatus?.backends.filter(b => b.connected).length || 0;
+  const totalBackends = data.systemStatus?.backends.length || 0;
 
   return (
     <Card className="overflow-hidden">
@@ -240,6 +327,75 @@ export function MemoryStatusWidget() {
                 })}
               </div>
             </div>
+
+            {/* Backend Health Status */}
+            {data.systemStatus && (
+              <div className="mt-4 pt-4 border-t">
+                <button
+                  onClick={() => setShowBackends(!showBackends)}
+                  className="w-full flex items-center justify-between text-sm hover:bg-muted/50 rounded-lg p-2 transition-colors"
+                >
+                  <div className="flex items-center gap-2">
+                    {(() => {
+                      const StatusIcon = getOverallStatusIcon(data.systemStatus?.overall || 'offline');
+                      return (
+                        <StatusIcon
+                          className={cn(
+                            "h-4 w-4",
+                            getOverallStatusColor(data.systemStatus?.overall || 'offline')
+                          )}
+                        />
+                      );
+                    })()}
+                    <span className="text-muted-foreground">Backend Status</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-muted-foreground">
+                      {connectedBackends}/{totalBackends} connected
+                    </span>
+                    <ChevronRight
+                      className={cn(
+                        "h-3 w-3 text-muted-foreground transition-transform",
+                        showBackends && "rotate-90"
+                      )}
+                    />
+                  </div>
+                </button>
+
+                {showBackends && data.systemStatus.backends && (
+                  <div className="mt-2 space-y-1 pl-2">
+                    {data.systemStatus.backends.map((backend) => {
+                      const BackendIcon = getBackendIcon(backend.type);
+                      const StatusIcon = getStatusIcon(backend.connected);
+                      return (
+                        <div
+                          key={backend.name}
+                          className="flex items-center justify-between py-1.5 px-2 rounded-md hover:bg-muted/30"
+                        >
+                          <div className="flex items-center gap-2">
+                            <BackendIcon className="h-3 w-3 text-muted-foreground" />
+                            <span className="text-xs">{backend.name}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            {backend.latency && (
+                              <span className="text-xs text-muted-foreground">
+                                {backend.latency}ms
+                              </span>
+                            )}
+                            <StatusIcon
+                              className={cn(
+                                "h-3 w-3",
+                                getStatusColor(backend.connected)
+                              )}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Archived Section */}
             {data.archivedMemories > 0 && (

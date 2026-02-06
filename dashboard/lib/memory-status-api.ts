@@ -117,213 +117,77 @@ export function getRelativeTime(date: Date): string {
 }
 
 // ============================================================================
-// SIMULATED DATA (Replace with real checks later)
+// API FUNCTIONS - Real Backend Checks
 // ============================================================================
 
 /**
- * Simulate checking Firebase RTDB connection
+ * Parse API response and convert date strings to Date objects
  */
-async function checkFirebaseRTDB(): Promise<BackendStatus> {
-  // Simulate network latency
-  const startTime = Date.now();
-  await new Promise(resolve => setTimeout(resolve, Math.random() * 50 + 20));
-  const latency = Date.now() - startTime;
-
-  // Simulate occasional connection issues (5% failure rate)
-  const connected = Math.random() > 0.05;
-
+function parseBackendStatus(backend: Record<string, unknown>): BackendStatus {
   return {
-    name: 'Firebase RTDB',
-    type: 'firebase',
-    connected,
-    latency: connected ? latency : undefined,
-    lastChecked: new Date(),
-    error: connected ? undefined : 'Connection timeout',
-    details: {
-      region: 'us-central1',
-      endpoint: 'sartor-family-default-rtdb.firebaseio.com',
-    },
+    name: backend.name as string,
+    type: backend.type as BackendType,
+    connected: backend.connected as boolean,
+    latency: backend.latency as number | undefined,
+    lastChecked: new Date(backend.lastChecked as string),
+    error: backend.error as string | undefined,
+    details: backend.details as BackendStatus['details'],
   };
 }
 
 /**
- * Simulate checking Firestore connection
+ * Get complete memory system status from the API
  */
-async function checkFirestore(): Promise<BackendStatus> {
-  const startTime = Date.now();
-  await new Promise(resolve => setTimeout(resolve, Math.random() * 60 + 30));
-  const latency = Date.now() - startTime;
+export async function getMemorySystemStatus(): Promise<MemorySystemStatus> {
+  try {
+    const response = await fetch('/api/memory-status');
 
-  const connected = Math.random() > 0.03;
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
 
-  return {
-    name: 'Firestore',
-    type: 'firestore',
-    connected,
-    latency: connected ? latency : undefined,
-    lastChecked: new Date(),
-    error: connected ? undefined : 'Service unavailable',
-    details: {
-      region: 'us-central1',
-    },
-  };
+    const data = await response.json();
+
+    return {
+      overall: data.overall as HealthStatus,
+      backends: (data.backends as Record<string, unknown>[]).map(parseBackendStatus),
+      tiers: data.tiers as MemoryTierStats,
+      lastSync: new Date(data.lastSync as string),
+    };
+  } catch (error) {
+    console.error('Failed to fetch memory system status:', error);
+    // Return offline status if API call fails
+    return {
+      overall: 'offline',
+      backends: [],
+      tiers: {
+        hot: { count: 0, sizeBytes: 0 },
+        warm: { count: 0, sizeBytes: 0 },
+        cold: { count: 0 },
+      },
+      lastSync: new Date(),
+    };
+  }
 }
-
-/**
- * Simulate checking Obsidian Local REST API connection
- */
-async function checkObsidian(): Promise<BackendStatus> {
-  const startTime = Date.now();
-  await new Promise(resolve => setTimeout(resolve, Math.random() * 30 + 10));
-  const latency = Date.now() - startTime;
-
-  // Obsidian is local, so more likely to be connected when running
-  const connected = Math.random() > 0.1;
-
-  return {
-    name: 'Obsidian',
-    type: 'obsidian',
-    connected,
-    latency: connected ? latency : undefined,
-    lastChecked: new Date(),
-    error: connected ? undefined : 'Local REST API not responding',
-    details: {
-      endpoint: 'http://localhost:27123',
-      version: connected ? '1.5.8' : undefined,
-    },
-  };
-}
-
-/**
- * Simulate checking Google Drive connection
- */
-async function checkGoogleDrive(): Promise<BackendStatus> {
-  const startTime = Date.now();
-  await new Promise(resolve => setTimeout(resolve, Math.random() * 100 + 50));
-  const latency = Date.now() - startTime;
-
-  // Google Drive might have auth issues
-  const connected = Math.random() > 0.08;
-
-  return {
-    name: 'Google Drive',
-    type: 'gdrive',
-    connected,
-    latency: connected ? latency : undefined,
-    lastChecked: new Date(),
-    error: connected ? undefined : 'OAuth token expired',
-    details: {
-      endpoint: 'drive.googleapis.com',
-    },
-  };
-}
-
-/**
- * Simulate checking GitHub archive connection
- */
-async function checkGitHub(): Promise<BackendStatus> {
-  const startTime = Date.now();
-  await new Promise(resolve => setTimeout(resolve, Math.random() * 80 + 40));
-  const latency = Date.now() - startTime;
-
-  const connected = Math.random() > 0.02;
-
-  return {
-    name: 'GitHub Archive',
-    type: 'github',
-    connected,
-    latency: connected ? latency : undefined,
-    lastChecked: new Date(),
-    error: connected ? undefined : 'Rate limit exceeded',
-    details: {
-      endpoint: 'api.github.com',
-    },
-  };
-}
-
-/**
- * Get simulated tier statistics
- */
-function getSimulatedTierStats(): MemoryTierStats {
-  return {
-    hot: {
-      count: Math.floor(Math.random() * 50) + 100,
-      sizeBytes: Math.floor(Math.random() * 5000000) + 2000000, // 2-7 MB
-    },
-    warm: {
-      count: Math.floor(Math.random() * 200) + 500,
-      sizeBytes: Math.floor(Math.random() * 50000000) + 20000000, // 20-70 MB
-    },
-    cold: {
-      count: Math.floor(Math.random() * 1000) + 2000,
-    },
-  };
-}
-
-/**
- * Calculate overall health based on backend statuses
- */
-function calculateOverallHealth(backends: BackendStatus[]): HealthStatus {
-  const connectedCount = backends.filter(b => b.connected).length;
-  const totalCount = backends.length;
-  const ratio = connectedCount / totalCount;
-
-  // Firebase RTDB is critical for hot tier
-  const firebaseStatus = backends.find(b => b.type === 'firebase');
-  const isCriticalDown = firebaseStatus && !firebaseStatus.connected;
-
-  if (isCriticalDown || ratio < 0.5) return 'offline';
-  if (ratio < 1) return 'degraded';
-  return 'healthy';
-}
-
-// ============================================================================
-// PUBLIC API FUNCTIONS
-// ============================================================================
 
 /**
  * Check health of a specific backend
  */
 export async function checkBackendHealth(backend: BackendType): Promise<BackendStatus> {
-  switch (backend) {
-    case 'firebase':
-      return checkFirebaseRTDB();
-    case 'firestore':
-      return checkFirestore();
-    case 'obsidian':
-      return checkObsidian();
-    case 'gdrive':
-      return checkGoogleDrive();
-    case 'github':
-      return checkGitHub();
-    default:
-      throw new Error(`Unknown backend type: ${backend}`);
+  const status = await getMemorySystemStatus();
+  const backendStatus = status.backends.find(b => b.type === backend);
+
+  if (!backendStatus) {
+    return {
+      name: backend,
+      type: backend,
+      connected: false,
+      lastChecked: new Date(),
+      error: 'Backend not found',
+    };
   }
-}
 
-/**
- * Get complete memory system status
- */
-export async function getMemorySystemStatus(): Promise<MemorySystemStatus> {
-  // Check all backends in parallel
-  const [firebase, firestore, obsidian, gdrive, github] = await Promise.all([
-    checkFirebaseRTDB(),
-    checkFirestore(),
-    checkObsidian(),
-    checkGoogleDrive(),
-    checkGitHub(),
-  ]);
-
-  const backends = [firebase, firestore, obsidian, gdrive, github];
-  const overall = calculateOverallHealth(backends);
-  const tiers = getSimulatedTierStats();
-
-  return {
-    overall,
-    backends,
-    tiers,
-    lastSync: new Date(Date.now() - Math.floor(Math.random() * 300000)), // Within last 5 mins
-  };
+  return backendStatus;
 }
 
 /**
@@ -349,12 +213,10 @@ export async function refreshAllBackends(): Promise<ApiResponse<MemorySystemStat
  */
 export async function getTierStats(): Promise<ApiResponse<MemoryTierStats>> {
   try {
-    // In production, this would query actual storage metrics
-    await new Promise(resolve => setTimeout(resolve, 50));
-    const stats = getSimulatedTierStats();
+    const status = await getMemorySystemStatus();
     return {
       success: true,
-      data: stats,
+      data: status.tiers,
     };
   } catch (error) {
     return {

@@ -303,7 +303,7 @@ export async function firestoreGetDoc<T extends DocumentData>(
   try {
     const docRef = doc(db, collectionName, docId);
     const docSnap = await getDoc(docRef);
-    return docSnap.exists() ? { id: docSnap.id, ...docSnap.data() } as T : null;
+    return docSnap.exists() ? { id: docSnap.id, ...docSnap.data() } as unknown as T : null;
   } catch (error) {
     console.error(`Firestore get error:`, error);
     return null;
@@ -324,7 +324,7 @@ export async function firestoreGetCollection<T extends DocumentData>(
     const collRef = collection(db, collectionName);
     const q = constraints ? firestoreQuery(collRef, ...constraints) : collRef;
     const snapshot = await getDocs(q);
-    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as T));
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as unknown as T));
   } catch (error) {
     console.error(`Firestore collection error:`, error);
     return [];
