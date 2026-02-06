@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sartor Network Dashboard</title>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--bg-card:#13131a;--bg-card-hover:#1a1a24;
+  --accent:#6366f1;--accent-glow:rgba(99,102,241,.35);
+  --success:#22c55e;--warning:#eab308;--error:#ef4444;--info:#3b82f6;
+  --text:#e2e8f0;--text-dim:#94a3b8;--text-muted:#475569;
+  --border:rgba(255,255,255,.06);--radius:12px;
+}
+html{font-size:14px}
+body{
+  font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;overflow-x:hidden;
+}
+
+/* animated bg */
+.bg-anim{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-anim::before{
+  content:'';position:absolute;width:120vw;height:120vh;top:-10vh;left:-10vw;
+  background:radial-gradient(ellipse at 20% 50%,rgba(99,102,241,.08) 0%,transparent 50%),
+             radial-gradient(ellipse at 80% 20%,rgba(34,197,94,.05) 0%,transparent 50%),
+             radial-gradient(ellipse at 50% 80%,rgba(234,179,8,.04) 0%,transparent 50%);
+  animation:bgShift 20s ease-in-out infinite alternate;
+}
+@keyframes bgShift{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(-3%,2%) scale(1.05)}
+}
+
+.app{position:relative;z-index:1;max-width:1600px;margin:0 auto;padding:16px 24px 40px}
+
+/* Header */
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 0 24px;flex-wrap:wrap;gap:12px;
+}
+.logo{display:flex;align-items:center;gap:12px}
+.logo h1{
+  font-size:1.6rem;font-weight:700;letter-spacing:-.02em;
+  background:linear-gradient(135deg,#fff 0%,var(--accent) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:0 0 40px var(--accent-glow);
+}
+.logo-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:linear-gradient(135deg,var(--accent),#818cf8);
+  display:grid;place-items:center;font-weight:800;color:#fff;font-size:1.1rem;
+  box-shadow:0 0 20px var(--accent-glow);
+}
+.header-right{display:flex;align-items:center;gap:20px}
+.conn-status{display:flex;align-items:center;gap:8px;font-size:.85rem}
+.conn-dot{
+  width:8px;height:8px;border-radius:50%;
+  animation:pulse-dot 2s ease-in-out infinite;
+}
+.conn-dot.connected{background:var(--success);box-shadow:0 0 8px var(--success)}
+.conn-dot.disconnected{background:var(--error);box-shadow:0 0 8px var(--error);animation:none}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+.clock{font-size:.85rem;color:var(--text-dim);font-variant-numeric:tabular-nums}
+
+/* Cards */
+.card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px;
+  backdrop-filter:blur(12px);
+  transition:border-color .2s,box-shadow .2s,transform .15s;
+}
+.card:hover{
+  border-color:rgba(99,102,241,.15);
+  box-shadow:0 4px 24px rgba(0,0,0,.3);
+}
+.card-title{
+  font-size:.75rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--text-muted);margin-bottom:12px;
+}
+
+/* Metrics row */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px}
+.metric-value{font-size:1.8rem;font-weight:700;line-height:1.1}
+.metric-label{font-size:.8rem;color:var(--text-dim);margin-top:2px}
+.metric-sub{font-size:.78rem;color:var(--text-muted);margin-top:8px}
+.progress-bar{
+  height:6px;background:rgba(255,255,255,.06);border-radius:3px;
+  margin-top:10px;overflow:hidden;
+}
+.progress-fill{
+  height:100%;border-radius:3px;transition:width .6s ease;
+  background:linear-gradient(90deg,var(--accent),#818cf8);
+}
+.progress-fill.warn{background:linear-gradient(90deg,var(--warning),#f59e0b)}
+.progress-fill.danger{background:linear-gradient(90deg,var(--error),#f87171)}
+.progress-fill.success{background:linear-gradient(90deg,var(--success),#4ade80)}
+
+/* Main grid */
+.main-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.full-width{grid-column:1/-1}
+
+/* Agent cards */
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.agent-card{
+  background:rgba(255,255,255,.02);border:1px solid var(--border);
+  border-radius:10px;padding:14px;transition:all .2s;
+}
+.agent-card:hover{background:rgba(255,255,255,.04);border-color:rgba(99,102,241,.2)}
+.agent-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.agent-name{font-weight:600;font-size:.95rem}
+.agent-badge{
+  font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+  padding:3px 8px;border-radius:20px;
+}
+.badge-idle{background:rgba(99,102,241,.15);color:var(--accent)}
+.badge-busy{background:rgba(234,179,8,.15);color:var(--warning);animation:pulse-badge 1.5s ease-in-out infinite}
+.badge-offline{background:rgba(239,68,68,.1);color:var(--text-muted)}
+@keyframes pulse-badge{0%,100%{opacity:1}50%{opacity:.6}}
+.agent-meta{font-size:.78rem;color:var(--text-dim);line-height:1.5}
+.agent-caps{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.cap-tag{
+  font-size:.65rem;padding:2px 6px;border-radius:4px;
+  background:rgba(255,255,255,.05);color:var(--text-dim);
+}
+
+/* Tasks */
+.task-list{max-height:360px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
+.task-item{
+  padding:12px;border-radius:8px;cursor:pointer;
+  background:rgba(255,255,255,.02);border:1px solid var(--border);
+  transition:all .2s;
+}
+.task-item:hover{background:rgba(255,255,255,.04)}
+.task-header{display:flex;align-items:center;justify-content:space-between}
+.task-name{font-weight:500;font-size:.9rem}
+.task-status{font-size:.65rem;font-weight:600;text-transform:uppercase;padding:2px 8px;border-radius:20px}
+.task-status.pending{background:rgba(99,102,241,.12);color:var(--accent)}
+.task-status.active{background:rgba(234,179,8,.12);color:var(--warning)}
+.task-status.completed{background:rgba(34,197,94,.12);color:var(--success)}
+.task-detail{
+  font-size:.8rem;color:var(--text-dim);margin-top:8px;
+  max-height:0;overflow:hidden;transition:max-height .3s ease;
+}
+.task-item.expanded .task-detail{max-height:200px}
+.task-progress{margin-top:6px}
+
+/* Memory */
+.search-box{
+  display:flex;gap:8px;margin-bottom:12px;
+}
+.search-input{
+  flex:1;background:rgba(255,255,255,.05);border:1px solid var(--border);
+  border-radius:8px;padding:10px 14px;color:var(--text);font-size:.9rem;
+  outline:none;transition:border-color .2s;
+}
+.search-input:focus{border-color:var(--accent)}
+.search-input::placeholder{color:var(--text-muted)}
+.btn{
+  background:var(--accent);color:#fff;border:none;border-radius:8px;
+  padding:10px 18px;font-size:.85rem;font-weight:600;cursor:pointer;
+  transition:all .15s;white-space:nowrap;
+}
+.btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-sm{padding:6px 12px;font-size:.78rem}
+.memory-results{max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
+.mem-item{
+  padding:12px;border-radius:8px;background:rgba(255,255,255,.02);
+  border:1px solid var(--border);cursor:pointer;transition:all .2s;
+}
+.mem-item:hover{background:rgba(255,255,255,.04)}
+.mem-score{font-size:.7rem;color:var(--accent);font-weight:600}
+.mem-tags{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap}
+.mem-tag{font-size:.65rem;padding:2px 6px;border-radius:4px;background:rgba(99,102,241,.1);color:var(--accent)}
+.mem-preview{font-size:.8rem;color:var(--text-dim);margin-top:6px;line-height:1.4}
+.mem-full{
+  max-height:0;overflow:hidden;transition:max-height .3s;
+  font-size:.8rem;color:var(--text-dim);line-height:1.5;margin-top:6px;
+  padding-top:6px;border-top:1px solid var(--border);
+}
+.mem-item.expanded .mem-full{max-height:400px}
+
+/* Browser panel */
+.browser-controls{display:flex;gap:8px;margin-bottom:12px}
+.browser-controls .search-input{flex:1}
+.screenshot-viewer{
+  width:100%;aspect-ratio:16/9;background:rgba(0,0,0,.3);
+  border-radius:8px;overflow:hidden;display:grid;place-items:center;
+  border:1px solid var(--border);
+}
+.screenshot-viewer img{width:100%;height:100%;object-fit:contain}
+.screenshot-placeholder{color:var(--text-muted);font-size:.85rem;text-align:center}
+.page-info{font-size:.78rem;color:var(--text-dim);margin-top:8px}
+
+/* Log */
+.log-container{max-height:240px;overflow-y:auto;font-family:'JetBrains Mono',monospace;font-size:.78rem}
+.log-entry{
+  padding:6px 10px;border-radius:4px;display:flex;gap:10px;
+  border-bottom:1px solid rgba(255,255,255,.02);
+}
+.log-entry:hover{background:rgba(255,255,255,.02)}
+.log-time{color:var(--text-muted);white-space:nowrap;min-width:70px}
+.log-type{
+  font-weight:600;text-transform:uppercase;font-size:.65rem;
+  min-width:52px;text-align:center;padding:2px 0;border-radius:3px;
+}
+.log-type.info{color:var(--info)}
+.log-type.success{color:var(--success)}
+.log-type.warning{color:var(--warning)}
+.log-type.error{color:var(--error)}
+.log-msg{color:var(--text-dim)}
+
+/* Fun zone */
+.fun-zone{margin-top:16px}
+.fun-canvas{
+  width:100%;height:200px;border-radius:8px;
+  background:#000;display:block;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.14)}
+
+/* Responsive */
+@media(max-width:1100px){.metrics{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){
+  .main-grid{grid-template-columns:1fr}
+  .metrics{grid-template-columns:1fr 1fr}
+}
+@media(max-width:500px){.metrics{grid-template-columns:1fr}}
+
+/* Fade-in animations */
+.fade-in{animation:fadeIn .5s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="bg-anim"></div>
+<div class="app">
+
+  <!-- Header -->
+  <header class="fade-in">
+    <div class="logo">
+      <div class="logo-icon">S</div>
+      <h1>Sartor Network</h1>
+    </div>
+    <div class="header-right">
+      <div class="conn-status">
+        <span class="conn-dot disconnected" id="connDot"></span>
+        <span id="connLabel">Disconnected</span>
+      </div>
+      <div class="clock" id="clock">--:--:--</div>
+    </div>
+  </header>
+
+  <!-- Metrics -->
+  <div class="metrics fade-in" style="animation-delay:.1s">
+    <div class="card" id="gpuCard">
+      <div class="card-title">GPU</div>
+      <div class="metric-value" id="gpuUtil">87%</div>
+      <div class="metric-label" id="gpuName">RTX 5090</div>
+      <div class="metric-sub" id="gpuInfo">62C  |  24.1 / 32.0 GB VRAM</div>
+      <div class="progress-bar"><div class="progress-fill" id="gpuBar" style="width:75%"></div></div>
+    </div>
+    <div class="card" id="cpuCard">
+      <div class="card-title">CPU</div>
+      <div class="metric-value" id="cpuUtil">34%</div>
+      <div class="metric-label" id="cpuName">i9-14900K (32T)</div>
+      <div class="metric-sub" id="cpuInfo">Load avg: 2.14</div>
+      <div class="progress-bar"><div class="progress-fill success" id="cpuBar" style="width:34%"></div></div>
+    </div>
+    <div class="card" id="ramCard">
+      <div class="card-title">Memory</div>
+      <div class="metric-value" id="ramUtil">47%</div>
+      <div class="metric-label" id="ramInfo">60.2 / 128.0 GB</div>
+      <div class="metric-sub">Swap: 2.1 / 16.0 GB</div>
+      <div class="progress-bar"><div class="progress-fill" id="ramBar" style="width:47%"></div></div>
+    </div>
+    <div class="card" id="netCard">
+      <div class="card-title">Network</div>
+      <div class="metric-value" id="agentsOnline">4</div>
+      <div class="metric-label">Agents Online</div>
+      <div class="metric-sub" id="tasksPending">3 tasks pending</div>
+    </div>
+  </div>
+
+  <!-- Main grid -->
+  <div class="main-grid">
+
+    <!-- Agents -->
+    <div class="card fade-in full-width" style="animation-delay:.2s">
+      <div class="card-title">Agent Status</div>
+      <div class="agents-grid" id="agentsGrid">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Tasks -->
+    <div class="card fade-in" style="animation-delay:.3s">
+      <div class="card-title">Task Queue</div>
+      <div class="task-list" id="taskList">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Memory -->
+    <div class="card fade-in" style="animation-delay:.35s">
+      <div class="card-title">Memory Search</div>
+      <div class="search-box">
+        <input class="search-input" id="memSearch" placeholder="Search memories..." />
+        <button class="btn" onclick="searchMemory()">Search</button>
+      </div>
+      <div class="memory-results" id="memResults">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Browser -->
+    <div class="card fade-in full-width" style="animation-delay:.4s">
+      <div class="card-title">Browser Automation</div>
+      <div class="browser-controls">
+        <input class="search-input" id="urlInput" placeholder="Enter URL to navigate..." />
+        <button class="btn" onclick="navigateURL()">Navigate</button>
+        <button class="btn" onclick="takeScreenshot()" style="background:rgba(255,255,255,.08)">Screenshot</button>
+      </div>
+      <div class="screenshot-viewer" id="screenshotViewer">
+        <div class="screenshot-placeholder" id="screenshotPlaceholder">No screenshot captured<br><span style="font-size:.75rem;margin-top:4px;display:block">Click Screenshot to capture the current page</span></div>
+      </div>
+      <div class="page-info" id="pageInfo"></div>
+    </div>
+
+    <!-- Log -->
+    <div class="card fade-in full-width" style="animation-delay:.45s">
+      <div class="card-title">Activity Log</div>
+      <div class="log-container" id="logContainer">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Fun Zone -->
+  <div class="card fun-zone fade-in" style="animation-delay:.5s">
+    <div class="card-title">Flow Field</div>
+    <canvas class="fun-canvas" id="funCanvas"></canvas>
+  </div>
+
+</div>
+
+<script>
+// ---- State ----
+const state = {
+  connected: false,
+  agents: [
+    { name:'gateway', status:'busy', capabilities:['orchestration','routing','scheduling'], task:'Coordinating agent pipeline', heartbeat:2 },
+    { name:'explorer', status:'idle', capabilities:['code-search','file-analysis','codebase-mapping'], task:null, heartbeat:5 },
+    { name:'coder', status:'busy', capabilities:['code-generation','refactoring','debugging'], task:'Implementing memory search API', heartbeat:1 },
+    { name:'researcher', status:'idle', capabilities:['web-search','summarization','analysis'], task:null, heartbeat:12 },
+    { name:'tester', status:'offline', capabilities:['test-generation','coverage','benchmarks'], task:null, heartbeat:340 },
+    { name:'browser', status:'busy', capabilities:['chrome-cdp','screenshots','dom-interaction'], task:'Scraping documentation pages', heartbeat:3 },
+  ],
+  tasks: [
+    { id:'T-001', name:'Build dashboard frontend', status:'active', progress:75, detail:'Create responsive HTML/CSS/JS dashboard with Socket.IO integration.' },
+    { id:'T-002', name:'Implement memory search API', status:'active', progress:40, detail:'BM25 + vector hybrid search over markdown memory files.' },
+    { id:'T-003', name:'Setup GPU monitoring', status:'pending', progress:0, detail:'nvidia-smi polling with WebSocket push to dashboard.' },
+    { id:'T-004', name:'Chrome CDP automation skills', status:'completed', progress:100, detail:'PowerShell CDP toolkit with navigation, screenshots, DOM interaction.' },
+    { id:'T-005', name:'Agent heartbeat system', status:'pending', progress:0, detail:'Periodic health checks with auto-restart for crashed agents.' },
+    { id:'T-006', name:'Session compaction', status:'pending', progress:0, detail:'Compress old conversation context and flush to memory files.' },
+  ],
+  logs: [
+    { time:'12:04:11', type:'info', msg:'Dashboard frontend build initiated' },
+    { time:'12:03:58', type:'success', msg:'Agent "coder" connected successfully' },
+    { time:'12:03:42', type:'warning', msg:'GPU temperature approaching threshold (62C)' },
+    { time:'12:03:30', type:'info', msg:'Memory index rebuilt: 847 entries' },
+    { time:'12:03:15', type:'success', msg:'Chrome CDP session established on port 9223' },
+    { time:'12:02:50', type:'error', msg:'Agent "tester" heartbeat timeout (340s)' },
+    { time:'12:02:30', type:'info', msg:'Task T-004 marked as completed' },
+    { time:'12:02:10', type:'info', msg:'WebSocket server listening on :5000' },
+  ],
+  memories: [
+    { score:0.94, tags:['chrome','cdp','automation'], preview:'CDP toolkit with navigation, screenshots, DOM interaction via PowerShell scripts.', full:'The Chrome DevTools Protocol automation toolkit is located at C:\\Users\\alto8\\chrome-tools\\. It uses a dual Chrome approach where the main profile runs normally and a temp profile enables CDP on port 9223. Scripts include cdp-navigate, cdp-eval, cdp-screenshot, cdp-dom, cdp-click, cdp-type, cdp-find, and cdp-new-tab.' },
+    { score:0.87, tags:['memory','search','bm25'], preview:'Local-first markdown memory with hybrid BM25 search for fast retrieval.', full:'The memory system stores knowledge as markdown files with YAML frontmatter. Search uses a hybrid approach combining BM25 keyword matching with optional vector embeddings. Results are ranked by a weighted combination of both scores. The system supports tag-based filtering and temporal decay.' },
+    { score:0.81, tags:['agents','heartbeat','health'], preview:'Agent heartbeat monitoring with configurable timeout and auto-restart.', full:'Each agent sends periodic heartbeat messages to the gateway. The default interval is 10 seconds with a timeout threshold of 60 seconds. If an agent misses 3 consecutive heartbeats it is marked offline and the gateway attempts an automatic restart. Health metrics include CPU usage, memory consumption, and task queue depth.' },
+  ]
+};
+
+// ---- Socket.IO ----
+let socket = null;
+function initSocket() {
+  try {
+    socket = io('ws://192.168.1.100:5000', {
+      reconnection: true,
+      reconnectionDelay: 2000,
+      reconnectionAttempts: Infinity,
+      timeout: 5000
+    });
+    socket.on('connect', () => {
+      state.connected = true;
+      updateConnectionUI();
+      addLog('success', 'WebSocket connected to backend');
+    });
+    socket.on('disconnect', () => {
+      state.connected = false;
+      updateConnectionUI();
+      addLog('warning', 'WebSocket disconnected');
+    });
+    socket.on('connect_error', () => {
+      state.connected = false;
+      updateConnectionUI();
+    });
+    socket.on('status_update', (data) => {
+      if (data.gpu) updateGPU(data.gpu);
+      if (data.cpu) updateCPU(data.cpu);
+      if (data.ram) updateRAM(data.ram);
+      if (data.network) updateNetwork(data.network);
+    });
+    socket.on('agent_update', (data) => {
+      const idx = state.agents.findIndex(a => a.name === data.name);
+      if (idx >= 0) Object.assign(state.agents[idx], data);
+      else state.agents.push(data);
+      renderAgents();
+    });
+    socket.on('task_update', (data) => {
+      const idx = state.tasks.findIndex(t => t.id === data.id);
+      if (idx >= 0) Object.assign(state.tasks[idx], data);
+      else state.tasks.push(data);
+      renderTasks();
+    });
+    socket.on('log_event', (data) => {
+      addLog(data.type, data.msg);
+    });
+  } catch(e) {
+    console.log('Socket.IO init failed, running in demo mode');
+  }
+}
+
+function updateConnectionUI() {
+  const dot = document.getElementById('connDot');
+  const label = document.getElementById('connLabel');
+  if (state.connected) {
+    dot.className = 'conn-dot connected';
+    label.textContent = 'Connected';
+  } else {
+    dot.className = 'conn-dot disconnected';
+    label.textContent = 'Disconnected';
+  }
+}
+
+// ---- Metric updates ----
+function updateGPU(g) {
+  if (g.util !== undefined) {
+    document.getElementById('gpuUtil').textContent = g.util + '%';
+    setBar('gpuBar', g.util);
+  }
+  if (g.name) document.getElementById('gpuName').textContent = g.name;
+  if (g.temp !== undefined && g.vram_used !== undefined) {
+    document.getElementById('gpuInfo').textContent =
+      g.temp + 'C  |  ' + g.vram_used.toFixed(1) + ' / ' + (g.vram_total||32).toFixed(1) + ' GB VRAM';
+  }
+}
+function updateCPU(c) {
+  if (c.util !== undefined) {
+    document.getElementById('cpuUtil').textContent = c.util + '%';
+    setBar('cpuBar', c.util);
+  }
+  if (c.name) document.getElementById('cpuName').textContent = c.name;
+  if (c.load_avg !== undefined) document.getElementById('cpuInfo').textContent = 'Load avg: ' + c.load_avg;
+}
+function updateRAM(r) {
+  if (r.percent !== undefined) {
+    document.getElementById('ramUtil').textContent = r.percent + '%';
+    setBar('ramBar', r.percent);
+  }
+  if (r.used !== undefined) {
+    document.getElementById('ramInfo').textContent = r.used.toFixed(1) + ' / ' + (r.total||128).toFixed(1) + ' GB';
+  }
+}
+function updateNetwork(n) {
+  if (n.agents_online !== undefined) document.getElementById('agentsOnline').textContent = n.agents_online;
+  if (n.tasks_pending !== undefined) document.getElementById('tasksPending').textContent = n.tasks_pending + ' tasks pending';
+}
+function setBar(id, pct) {
+  const bar = document.getElementById(id);
+  bar.style.width = pct + '%';
+  bar.className = 'progress-fill' + (pct > 85 ? ' danger' : pct > 65 ? ' warn' : pct > 40 ? '' : ' success');
+}
+
+// ---- Render agents ----
+function renderAgents() {
+  const grid = document.getElementById('agentsGrid');
+  grid.innerHTML = state.agents.map(a => {
+    const bc = a.status === 'busy' ? 'badge-busy' : a.status === 'idle' ? 'badge-idle' : 'badge-offline';
+    const hb = a.heartbeat < 60 ? a.heartbeat + 's ago' : Math.floor(a.heartbeat/60) + 'm ago';
+    return `<div class="agent-card">
+      <div class="agent-header">
+        <span class="agent-name">${esc(a.name)}</span>
+        <span class="agent-badge ${bc}">${esc(a.status)}</span>
+      </div>
+      <div class="agent-meta">
+        ${a.task ? 'Task: ' + esc(a.task) : 'No active task'}<br>
+        Heartbeat: ${hb}
+      </div>
+      <div class="agent-caps">
+        ${(a.capabilities||[]).map(c => `<span class="cap-tag">${esc(c)}</span>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ---- Render tasks ----
+function renderTasks() {
+  const list = document.getElementById('taskList');
+  list.innerHTML = state.tasks.map(t => {
+    const sc = t.status === 'active' ? 'active' : t.status === 'completed' ? 'completed' : 'pending';
+    return `<div class="task-item" onclick="this.classList.toggle('expanded')">
+      <div class="task-header">
+        <span class="task-name">${esc(t.id)}: ${esc(t.name)}</span>
+        <span class="task-status ${sc}">${esc(t.status)}</span>
+      </div>
+      ${t.progress !== undefined && t.status !== 'completed' ? `<div class="task-progress"><div class="progress-bar"><div class="progress-fill" style="width:${t.progress}%"></div></div></div>` : ''}
+      <div class="task-detail">${esc(t.detail||'')}</div>
+    </div>`;
+  }).join('');
+}
+
+// ---- Memory search ----
+function searchMemory() {
+  const q = document.getElementById('memSearch').value.trim();
+  if (!q) return;
+  if (socket && state.connected) {
+    socket.emit('search_memory', { query: q }, (results) => {
+      if (results && results.length) {
+        state.memories = results;
+        renderMemories();
+      }
+    });
+  }
+  addLog('info', 'Memory search: "' + q + '"');
+  // always render current state for demo
+  renderMemories();
+}
+function renderMemories() {
+  const el = document.getElementById('memResults');
+  el.innerHTML = state.memories.map(m => {
+    return `<div class="mem-item" onclick="this.classList.toggle('expanded')">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="mem-score">${(m.score*100).toFixed(0)}%</span>
+        <div class="mem-tags">${(m.tags||[]).map(t => `<span class="mem-tag">${esc(t)}</span>`).join('')}</div>
+      </div>
+      <div class="mem-preview">${esc(m.preview)}</div>
+      <div class="mem-full">${esc(m.full||'')}</div>
+    </div>`;
+  }).join('');
+}
+
+// ---- Browser ----
+function navigateURL() {
+  const url = document.getElementById('urlInput').value.trim();
+  if (!url) return;
+  if (socket && state.connected) {
+    socket.emit('navigate', { url });
+    addLog('info', 'Navigate: ' + url);
+  } else {
+    addLog('warning', 'Not connected - cannot navigate');
+  }
+}
+function takeScreenshot() {
+  if (socket && state.connected) {
+    socket.emit('screenshot', {}, (data) => {
+      if (data && data.image) {
+        showScreenshot(data.image, data.title, data.url);
+      }
+    });
+    addLog('info', 'Screenshot requested');
+  } else {
+    addLog('warning', 'Not connected - cannot screenshot');
+  }
+}
+function showScreenshot(base64, title, url) {
+  const viewer = document.getElementById('screenshotViewer');
+  viewer.innerHTML = `<img src="data:image/png;base64,${base64}" alt="Screenshot" />`;
+  const info = document.getElementById('pageInfo');
+  info.textContent = (title || '') + (url ? '  -  ' + url : '');
+}
+
+// ---- Log ----
+function addLog(type, msg) {
+  const now = new Date();
+  const time = now.toTimeString().slice(0,8);
+  state.logs.unshift({ time, type, msg });
+  if (state.logs.length > 200) state.logs.length = 200;
+  renderLogs();
+}
+function renderLogs() {
+  const el = document.getElementById('logContainer');
+  el.innerHTML = state.logs.map(l =>
+    `<div class="log-entry">
+      <span class="log-time">${esc(l.time)}</span>
+      <span class="log-type ${l.type}">${esc(l.type)}</span>
+      <span class="log-msg">${esc(l.msg)}</span>
+    </div>`
+  ).join('');
+}
+
+// ---- Clock ----
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent = now.toTimeString().slice(0,8);
+}
+
+// ---- Utility ----
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// ---- Flow field (Fun Zone) ----
+function initFlowField() {
+  const canvas = document.getElementById('funCanvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, cols, rows;
+  const scale = 20;
+  const particles = [];
+  const PARTICLE_COUNT = 300;
+  let noiseZ = 0;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    w = canvas.width = rect.width * devicePixelRatio;
+    h = canvas.height = rect.height * devicePixelRatio;
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+    cols = Math.ceil(rect.width / scale);
+    rows = Math.ceil(rect.height / scale);
+  }
+
+  // Simple noise using sin-based pseudo-noise
+  function noise(x, y, z) {
+    return (Math.sin(x * 1.2 + z * 0.3) * Math.cos(y * 0.9 + z * 0.5) +
+            Math.sin((x + y) * 0.7 + z * 0.4) * 0.5 +
+            Math.cos(x * 0.4 - y * 1.1 + z * 0.2) * 0.3) / 1.8;
+  }
+
+  class Particle {
+    constructor() { this.reset(); this.x = Math.random() * (w/devicePixelRatio); this.y = Math.random() * (h/devicePixelRatio); }
+    reset() {
+      this.x = Math.random() * (w/devicePixelRatio);
+      this.y = Math.random() * (h/devicePixelRatio);
+      this.prevX = this.x;
+      this.prevY = this.y;
+      this.speed = 0.3 + Math.random() * 0.8;
+      this.hue = 240 + Math.random() * 40; // indigo range
+    }
+    update() {
+      const col = Math.floor(this.x / scale);
+      const row = Math.floor(this.y / scale);
+      const angle = noise(col * 0.08, row * 0.08, noiseZ) * Math.PI * 4;
+      this.prevX = this.x;
+      this.prevY = this.y;
+      this.x += Math.cos(angle) * this.speed;
+      this.y += Math.sin(angle) * this.speed;
+      const rw = w / devicePixelRatio;
+      const rh = h / devicePixelRatio;
+      if (this.x < 0 || this.x > rw || this.y < 0 || this.y > rh) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.moveTo(this.prevX, this.prevY);
+      ctx.lineTo(this.x, this.y);
+      ctx.strokeStyle = `hsla(${this.hue}, 70%, 60%, 0.35)`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+  }
+
+  function init() {
+    resize();
+    particles.length = 0;
+    for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+  }
+
+  function animate() {
+    ctx.save();
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.fillStyle = 'rgba(0,0,0,0.06)';
+    ctx.fillRect(0, 0, w, h);
+    ctx.restore();
+    noiseZ += 0.003;
+    for (const p of particles) { p.update(); p.draw(); }
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', () => { init(); });
+  init();
+  animate();
+}
+
+// ---- Init ----
+document.addEventListener('DOMContentLoaded', () => {
+  renderAgents();
+  renderTasks();
+  renderMemories();
+  renderLogs();
+  updateClock();
+  setInterval(updateClock, 1000);
+  initFlowField();
+  initSocket();
+
+  // Enter key handlers
+  document.getElementById('memSearch').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') searchMemory();
+  });
+  document.getElementById('urlInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') navigateURL();
+  });
+});
+</script>
+</body>
+</html>

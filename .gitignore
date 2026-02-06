@@ -31,3 +31,5 @@ config/firebase-credentials.json
 credentials.json
 secrets.json
 credentials/
+*.pyc
+__pycache__/
