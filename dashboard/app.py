@@ -250,7 +250,121 @@ def api_log():
     return jsonify(activity_log[-50:])
 
 
-@app.route('/api/browser/tabs')
+# ─── Sartor Memory & Brief Routes ──────────────────────────────
+
+SARTOR_DIR = Path(__file__).resolve().parent.parent / "sartor"
+SARTOR_MEMORY = SARTOR_DIR / "memory"
+
+@app.route("/brief")
+def brief_page():
+    """Serve the morning brief as a standalone page."""
+    return send_from_directory("static", "brief.html")
+
+@app.route("/api/brief")
+def api_brief():
+    """Return today's morning brief as JSON with markdown content."""
+    from datetime import date
+    today = date.today().isoformat()
+    brief_path = SARTOR_MEMORY / "daily" / f"{today}-brief.md"
+    if brief_path.exists():
+        return jsonify({
+            "date": today,
+            "content": brief_path.read_text(),
+            "generated": True,
+        })
+    # Try yesterday
+    from datetime import timedelta
+    yesterday = (date.today() - timedelta(days=1)).isoformat()
+    ybrief = SARTOR_MEMORY / "daily" / f"{yesterday}-brief.md"
+    if ybrief.exists():
+        return jsonify({
+            "date": yesterday,
+            "content": ybrief.read_text(),
+            "generated": True,
+            "stale": True,
+        })
+    return jsonify({"date": today, "content": "", "generated": False})
+
+@app.route("/api/sartor/status")
+def api_sartor_status():
+    """Full Sartor system status."""
+    from datetime import date
+    today = date.today().isoformat()
+    daily_log = SARTOR_MEMORY / "daily" / f"{today}.md"
+    cycles = 0
+    last_status = "unknown"
+    if daily_log.exists():
+        log_text = daily_log.read_text()
+        cycles = log_text.count("### ")
+        # Find last status
+        import re
+        statuses = re.findall(r"- Status: (\w+)", log_text)
+        if statuses:
+            last_status = statuses[-1]
+
+    # Count memory files
+    md_files = list(SARTOR_MEMORY.glob("*.md"))
+    total_kb = sum(f.stat().st_size for f in md_files) / 1024
+
+    # Cost info
+    costs_file = SARTOR_DIR / "costs.json"
+    cost_today = 0.0
+    cost_limit = 5.0
+    if costs_file.exists():
+        import json as _json
+        costs = _json.loads(costs_file.read_text())
+        cost_today = costs.get("spent_today", 0)
+        cost_limit = costs.get("daily_limit", 5.0)
+
+    # Tasks
+    active_file = SARTOR_DIR / "tasks" / "ACTIVE.md"
+    pending = 0
+    in_progress = 0
+    completed = 0
+    if active_file.exists():
+        text = active_file.read_text()
+        pending = text.count("- [ ] ")
+        completed = text.count("- [x] ")
+        in_progress = len(re.findall(r"## In Progress", text))
+
+    return jsonify({
+        "date": today,
+        "cycles_today": cycles,
+        "last_status": last_status,
+        "memory_files": len(md_files),
+        "memory_kb": round(total_kb, 1),
+        "cost_today": round(cost_today, 4),
+        "cost_limit": cost_limit,
+        "tasks_pending": pending,
+        "tasks_completed": completed,
+        "brief_exists": (SARTOR_MEMORY / "daily" / f"{today}-brief.md").exists(),
+    })
+
+@app.route("/api/sartor/tasks")
+def api_sartor_tasks():
+    """Return current task list."""
+    active_file = SARTOR_DIR / "tasks" / "ACTIVE.md"
+    if active_file.exists():
+        return jsonify({"content": active_file.read_text()})
+    return jsonify({"content": ""})
+
+@app.route("/api/sartor/search")
+def api_sartor_search():
+    """Search Sartor memory files via BM25."""
+    query = request.args.get("q", "")
+    if not query:
+        return jsonify({"results": []})
+    try:
+        sys.path.insert(0, str(SARTOR_MEMORY))
+        from search import MemorySearch
+        ms = MemorySearch(str(SARTOR_MEMORY))
+        results = ms.search(query, top_k=10)
+        return jsonify({"query": query, "results": results})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/browser/tabs")
 def api_browser_tabs():
     client = get_cdp_client()
     if not client:

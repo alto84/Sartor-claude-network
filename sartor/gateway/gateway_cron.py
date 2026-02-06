@@ -33,6 +33,9 @@ from datetime import datetime, date
 from pathlib import Path
 from typing import Optional
 
+# Brief generation
+BRIEF_GENERATED_TODAY = False
+
 try:
     import yaml
 except ImportError:
@@ -614,6 +617,29 @@ def run_cycle(dry_run=False, verbose=False):
 
     if verbose:
         print("  Logged cycle entry to daily log.", file=sys.stderr)
+
+    # -- Step 7.5: Generate morning brief (once per day, first cycle after 6AM)
+    brief_path = SARTOR_DIR / "memory" / "daily" / f"{date.today().isoformat()}-brief.md"
+    if not brief_path.exists() and datetime.now().hour >= 6:
+        try:
+            brief_script = SARTOR_DIR / "brief.py"
+            if brief_script.exists():
+                if dry_run:
+                    if verbose:
+                        print("  [DRY RUN] Would generate morning brief.", file=sys.stderr)
+                else:
+                    result = subprocess.run(
+                        [sys.executable, str(brief_script)],
+                        cwd=str(REPO_DIR),
+                        capture_output=True, text=True, timeout=30,
+                    )
+                    if result.returncode == 0 and verbose:
+                        print("  Generated morning brief.", file=sys.stderr)
+                    elif result.returncode != 0 and verbose:
+                        print(f"  Brief generation failed: {result.stderr[:200]}", file=sys.stderr)
+        except Exception as e:
+            if verbose:
+                print(f"  Brief generation error: {e}", file=sys.stderr)
 
     # -- Step 8: Git commit ---------------------------------------------
     git_ok = git_commit_memory(dry_run=dry_run, verbose=verbose)

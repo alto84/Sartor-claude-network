@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sartor - Morning Brief</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0e17;
+    color: #e0e0e0;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #1a2035;
+  }
+  .header h1 { font-size: 1.4em; color: #7ee787; }
+  .header .meta { color: #666; font-size: 0.85em; }
+  .status-bar {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 15px;
+    background: #111827;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #1a2035;
+  }
+  .status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .status-item .label { font-size: 0.7em; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+  .status-item .value { font-size: 1.1em; font-weight: 600; }
+  .status-item .value.green { color: #7ee787; }
+  .status-item .value.yellow { color: #f0c040; }
+  .status-item .value.red { color: #f85149; }
+  .status-item .value.cyan { color: #58a6ff; }
+  .brief-content {
+    background: #111827;
+    border-radius: 8px;
+    padding: 25px;
+    border: 1px solid #1a2035;
+  }
+  .brief-content h1 { font-size: 1.3em; color: #7ee787; margin-bottom: 15px; }
+  .brief-content h2 {
+    font-size: 1.1em;
+    color: #58a6ff;
+    margin: 20px 0 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #1a2035;
+  }
+  .brief-content h3 { font-size: 0.95em; color: #d2a8ff; margin: 12px 0 6px; }
+  .brief-content ul { padding-left: 20px; }
+  .brief-content li { margin: 4px 0; }
+  .brief-content strong { color: #f0c040; }
+  .brief-content code { background: #1a2035; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+  .loading { text-align: center; padding: 40px; color: #666; }
+  .error { color: #f85149; text-align: center; padding: 20px; }
+  .stale-notice {
+    background: #2d1b00;
+    color: #f0c040;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 0.85em;
+  }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .nav { margin-bottom: 15px; }
+  .nav a {
+    color: #666;
+    margin-right: 15px;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .nav a:hover { color: #58a6ff; }
+</style>
+</head>
+<body>
+  <div class="nav">
+    <a href="/">Dashboard</a>
+    <a href="/lab">Lab</a>
+    <a href="/brief">Brief</a>
+  </div>
+  <div class="header">
+    <h1>Morning Brief</h1>
+    <div class="meta" id="meta">Loading...</div>
+  </div>
+  <div class="status-bar" id="statusBar">
+    <div class="status-item"><span class="label">Cron Cycles</span><span class="value cyan" id="cycles">--</span></div>
+    <div class="status-item"><span class="label">Last Status</span><span class="value green" id="lastStatus">--</span></div>
+    <div class="status-item"><span class="label">API Cost Today</span><span class="value" id="cost">--</span></div>
+    <div class="status-item"><span class="label">Memory Files</span><span class="value cyan" id="memFiles">--</span></div>
+    <div class="status-item"><span class="label">Tasks Pending</span><span class="value yellow" id="tasksPending">--</span></div>
+  </div>
+  <div id="briefContent" class="loading">Loading brief...</div>
+
+  <script>
+    function markdownToHtml(md) {
+      return md
+        .replace(/^### (.+)$/gm, '<h3></h3>')
+        .replace(/^## (.+)$/gm, '<h2></h2>')
+        .replace(/^# (.+)$/gm, '<h1></h1>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong></strong>')
+        .replace(//g, '<code></code>')
+        .replace(/^\- (.+)$/gm, '<li></li>')
+        .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
+        .replace(/\n\n/g, '<br><br>')
+        .replace(/\[\[(.+?)\]\]/g, '<code></code>');
+    }
+
+    async function loadBrief() {
+      try {
+        const [briefRes, statusRes] = await Promise.all([
+          fetch('/api/brief'),
+          fetch('/api/sartor/status')
+        ]);
+        const brief = await briefRes.json();
+        const status = await statusRes.json();
+
+        // Status bar
+        document.getElementById('cycles').textContent = status.cycles_today;
+        document.getElementById('lastStatus').textContent = status.last_status;
+        document.getElementById('lastStatus').className = 'value ' + (status.last_status === 'ok' ? 'green' : 'yellow');
+        document.getElementById('cost').textContent = '$' + status.cost_today.toFixed(2) + ' / $' + status.cost_limit.toFixed(0);
+        document.getElementById('cost').className = 'value ' + (status.cost_today < status.cost_limit * 0.8 ? 'green' : 'yellow');
+        document.getElementById('memFiles').textContent = status.memory_files + ' (' + status.memory_kb + ' KB)';
+        document.getElementById('tasksPending').textContent = status.tasks_pending;
+
+        // Brief content
+        const el = document.getElementById('briefContent');
+        if (brief.generated) {
+          let html = '';
+          if (brief.stale) html += '<div class="stale-notice">Showing yesterday\'s brief. Today\'s will generate on the next cron cycle after 6 AM.</div>';
+          html += '<div class="brief-content">' + markdownToHtml(brief.content) + '</div>';
+          el.innerHTML = html;
+          document.getElementById('meta').textContent = 'Generated: ' + brief.date;
+        } else {
+          el.innerHTML = '<div class="error">No brief generated yet today. The gateway cron will create one on its next cycle after 6 AM.</div>';
+          document.getElementById('meta').textContent = 'Waiting for generation...';
+        }
+      } catch (e) {
+        document.getElementById('briefContent').innerHTML = '<div class="error">Failed to load brief: ' + e.message + '</div>';
+      }
+    }
+
+    loadBrief();
+    setInterval(loadBrief, 60000); // Refresh every minute
+  </script>
+</body>
+</html>
