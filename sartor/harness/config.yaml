@@ -1,0 +1,55 @@
+# Sartor Task Harness Configuration
+# Defines what the harness can do autonomously vs. requiring human approval
+
+version: 1
+harness:
+  check_interval_minutes: 30
+  max_concurrent_tasks: 3
+  log_dir: results/
+  memory_dir: ../memory/
+  tasks_file: ../tasks/ACTIVE.md
+
+autonomy:
+  # Can do without asking human
+  autonomous:
+    - research          # Web searches, reading docs
+    - code_review       # Review code, suggest improvements
+    - summarize         # Summarize documents, conversations
+    - organize_files    # Clean up, rename, organize
+    - run_tests         # Execute test suites
+    - update_memory     # Write to memory files
+    - generate_code     # Write code to files in project
+    - search_memory     # Search across memory files
+
+  # Must confirm with human before executing
+  ask_first:
+    - git_push          # Push to remote repositories
+    - send_email        # Send any email
+    - send_message      # Send messages (Slack, etc.)
+    - make_purchase     # Any financial transaction
+    - delete_files      # Remove files from disk
+    - modify_production # Change production systems
+    - financial_decisions # Budget, investment decisions
+    - install_packages  # Install system packages
+    - modify_config     # Change system configuration
+
+  # Hard no - never do these
+  never:
+    - access_banking       # Banking websites/APIs
+    - share_credentials    # Passwords, tokens, keys
+    - production_deploy_without_review  # Deploy without human review
+    - access_personal_accounts  # Social media, email login
+    - modify_security_settings  # Firewall, permissions, auth
+
+machines:
+  rocinante:
+    host: localhost
+    os: windows
+    role: primary
+    has_git_credentials: true
+  gpuserver1:
+    host: 192.168.1.100
+    os: linux
+    role: compute
+    has_gpu: true
+    gpu: RTX 5090

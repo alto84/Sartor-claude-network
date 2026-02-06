@@ -1,0 +1,64 @@
+# Sartor Agent Registry
+# Machines and agents in the Sartor network
+
+version: 1
+
+machines:
+  rocinante:
+    hostname: ROCINANTE
+    ip: local
+    os: Windows 11
+    user: alto8
+    capabilities:
+      - git_push          # Has GitHub credentials
+      - chrome_automation # CDP toolkit + Claude in Chrome
+      - file_editing      # Primary development machine
+      - claude_code       # Claude Code installed
+    specs:
+      displays: 3
+      primary_resolution: 2560x1440
+      secondary_resolution: 1920x1080
+    paths:
+      chrome: 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe'
+      chrome_tools: 'C:\Users\alto8\chrome-tools\'
+      project: 'C:\Users\alto8\Sartor-claude-network\'
+
+  gpuserver1:
+    hostname: gpuserver1
+    ip: 192.168.1.100
+    os: Ubuntu 22.04
+    user: alton
+    ssh: "ssh alton@192.168.1.100"
+    capabilities:
+      - gpu_compute       # RTX 5090 32GB
+      - ml_training       # PyTorch, CUDA
+      - chrome_headless   # Headless Chrome CDP on port 9223
+      - claude_code       # Claude Code v2.1.33
+      - long_running      # Server, always on
+      - dashboard         # Flask dashboard on port 5000
+    specs:
+      gpu: RTX 5090 32GB
+      cpu: i9-14900K (32 threads)
+      ram: 128GB
+      python: "3.10"
+      pytorch: "2.11.0+cu128"
+    paths:
+      project: "/home/alton/Sartor-claude-network/"
+      dashboard: "/home/alton/Sartor-claude-network/dashboard/"
+      sartor: "/home/alton/Sartor-claude-network/sartor/"
+
+agents:
+  sartor-main:
+    type: orchestrator
+    description: Primary Sartor assistant instance
+    home_machine: rocinante
+    can_access:
+      - rocinante
+      - gpuserver1
+
+  sartor-compute:
+    type: worker
+    description: GPU compute and long-running tasks
+    home_machine: gpuserver1
+    can_access:
+      - gpuserver1
