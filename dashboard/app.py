@@ -23,6 +23,19 @@ sys.path.insert(0, os.path.join(SKILLS_DIR, 'chrome-automation'))
 from gateway import Gateway, AgentStatus
 from memory_local_first import LocalFirstMemory, HeartbeatScheduler
 
+# Google API imports (graceful)
+try:
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "sartor"))
+    from google_calendar import get_upcoming_events
+    from google_gmail import get_recent_messages, get_unread_count
+    from google_drive import get_recent_files
+    GOOGLE_AVAILABLE = True
+except ImportError:
+    GOOGLE_AVAILABLE = False
+
+# File modification time tracking for change detection
+_file_mtimes = {}
+
 # Initialize Flask
 app = Flask(__name__, static_folder='static')
 app.config['SECRET_KEY'] = 'sartor-network-2026'
@@ -364,6 +377,101 @@ def api_sartor_search():
         return jsonify({"error": str(e)}), 500
 
 
+# ─── Cron Log Parsing Helper ──────────────────────────────────
+
+def parse_cron_log(text):
+    """Parse daily log text into list of cycle entries."""
+    import re
+    cycles = []
+    # Split on ### HH:MM Cycle headers
+    sections = re.split(r'### (\d{2}:\d{2}) Cycle\n', text)
+    # sections[0] is preamble, then alternating time, content
+    for i in range(1, len(sections), 2):
+        time_str = sections[i]
+        content = sections[i+1] if i+1 < len(sections) else ""
+        cycle = {"time": time_str}
+        for line in content.splitlines():
+            line = line.strip()
+            if line.startswith("- Status:"): cycle["status"] = line.split(":", 1)[1].strip()
+            elif line.startswith("- Tasks checked:"): cycle["tasks"] = line.split(":", 1)[1].strip()
+            elif line.startswith("- Actions:"): cycle["action"] = line.split(":", 1)[1].strip()
+            elif line.startswith("- Cost"): cycle["cost"] = line.split(":", 1)[1].strip()
+            elif line.startswith("- Notes:"): cycle["notes"] = line.split(":", 1)[1].strip()
+        cycles.append(cycle)
+    return cycles
+
+
+# ─── New Sartor API Endpoints ─────────────────────────────────
+
+@app.route("/api/sartor/calendar")
+def api_sartor_calendar():
+    """Proxy to Google Calendar upcoming events."""
+    if GOOGLE_AVAILABLE:
+        try:
+            return jsonify(get_upcoming_events(hours=48))
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+    return jsonify({"status": "not_configured", "events": []})
+
+
+@app.route("/api/sartor/email")
+def api_sartor_email():
+    """Proxy to Google Gmail recent messages."""
+    if GOOGLE_AVAILABLE:
+        try:
+            return jsonify({
+                "unread": get_unread_count(),
+                "recent": get_recent_messages(10),
+            })
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+    return jsonify({"status": "not_configured", "unread": 0, "recent": []})
+
+
+@app.route("/api/sartor/cron-log")
+def api_sartor_cron_log():
+    """Return parsed cron cycle entries from today's daily log."""
+    from datetime import date
+    daily_log = SARTOR_MEMORY / "daily" / f"{date.today().isoformat()}.md"
+    if daily_log.exists():
+        try:
+            text = daily_log.read_text()
+            cycles = parse_cron_log(text)
+            return jsonify({"cycles": cycles})
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+    return jsonify({"cycles": []})
+
+
+@app.route("/api/sartor/agents")
+def api_sartor_agents():
+    """Return running Claude processes on local machine."""
+    agents_local = []
+    try:
+        result = subprocess.run(
+            ["ps", "aux"],
+            capture_output=True, text=True, timeout=5,
+        )
+        if result.returncode == 0:
+            for line in result.stdout.splitlines():
+                if "claude" in line.lower() and "grep" not in line.lower():
+                    parts = line.split(None, 10)
+                    if len(parts) >= 11:
+                        agents_local.append({
+                            "pid": parts[1],
+                            "cpu": parts[2],
+                            "mem": parts[3],
+                            "command": parts[10],
+                        })
+    except Exception:
+        pass
+    return jsonify({
+        "local": agents_local,
+        "remote": [],
+        "note": "Remote agent check not yet implemented",
+    })
+
+
 @app.route("/api/browser/tabs")
 def api_browser_tabs():
     client = get_cdp_client()
@@ -485,6 +593,23 @@ def handle_screenshot(data=None):
             emit('screenshot_result', {"error": str(e)})
 
 
+@socketio.on('search_sartor_memory')
+def handle_search_sartor_memory(data):
+    """Search Sartor memory using BM25 and emit results back."""
+    query = data.get('query', '')
+    if not query:
+        emit('search_results', {"query": query, "results": []})
+        return
+    try:
+        sys.path.insert(0, str(SARTOR_MEMORY))
+        from search import MemorySearch
+        ms = MemorySearch(str(SARTOR_MEMORY))
+        results = ms.search(query, top_k=10)
+        emit('search_results', {"query": query, "results": results})
+    except Exception as e:
+        emit('search_results', {"query": query, "results": [], "error": str(e)})
+
+
 # ─── Background Status Broadcaster ────────────────────────────
 
 def status_broadcaster():
@@ -494,6 +619,77 @@ def status_broadcaster():
         try:
             status = get_system_status()
             socketio.emit('status_update', status)
+        except Exception:
+            pass
+
+
+def sartor_status_broadcaster():
+    """Periodically broadcast Sartor-specific status and detect file changes."""
+    from datetime import date
+    while True:
+        time.sleep(15)
+        try:
+            # Broadcast sartor status
+            today = date.today().isoformat()
+            daily_log = SARTOR_MEMORY / "daily" / f"{today}.md"
+            active_file = SARTOR_DIR / "tasks" / "ACTIVE.md"
+
+            # Build status dict (reuse logic from api_sartor_status)
+            import re as _re
+            cycles = 0
+            last_status = "unknown"
+            if daily_log.exists():
+                log_text = daily_log.read_text()
+                cycles = log_text.count("### ")
+                statuses = _re.findall(r"- Status: (\w+)", log_text)
+                if statuses:
+                    last_status = statuses[-1]
+
+            costs_file = SARTOR_DIR / "costs.json"
+            cost_today = 0.0
+            cost_limit = 5.0
+            if costs_file.exists():
+                import json as _json
+                costs = _json.loads(costs_file.read_text())
+                cost_today = costs.get("spent_today", 0)
+                cost_limit = costs.get("daily_limit", 5.0)
+
+            pending = 0
+            completed = 0
+            if active_file.exists():
+                text = active_file.read_text()
+                pending = text.count("- [ ] ")
+                completed = text.count("- [x] ")
+
+            sartor_status = {
+                "cycles_today": cycles,
+                "last_status": last_status,
+                "cost_today": round(cost_today, 4),
+                "cost_limit": cost_limit,
+                "tasks_pending": pending,
+                "tasks_completed": completed,
+                "brief_exists": (SARTOR_MEMORY / "daily" / f"{today}-brief.md").exists(),
+                "uptime": time.time() - app_start_time,
+            }
+            socketio.emit('sartor_status', sartor_status)
+
+            # Check for file changes - ACTIVE.md
+            if active_file.exists():
+                mtime = active_file.stat().st_mtime
+                if _file_mtimes.get("active_tasks") != mtime:
+                    _file_mtimes["active_tasks"] = mtime
+                    socketio.emit('task_update', {"content": active_file.read_text()})
+
+            # Check for file changes - daily log
+            if daily_log.exists():
+                mtime = daily_log.stat().st_mtime
+                if _file_mtimes.get("daily_log") != mtime:
+                    _file_mtimes["daily_log"] = mtime
+                    log_text = daily_log.read_text()
+                    parsed = parse_cron_log(log_text)
+                    if parsed:
+                        socketio.emit('cron_cycle', {"latest": parsed[-1], "cycles": parsed})
+
         except Exception:
             pass
 
@@ -546,6 +742,10 @@ if __name__ == '__main__':
     # Start background status broadcaster
     broadcaster = threading.Thread(target=status_broadcaster, daemon=True)
     broadcaster.start()
+
+    # Start Sartor-specific status broadcaster (every 15s)
+    sartor_broadcaster = threading.Thread(target=sartor_status_broadcaster, daemon=True)
+    sartor_broadcaster.start()
 
     log_activity("Sartor Dashboard starting on port 5000", "success")
     print("=" * 60)

@@ -164,6 +164,27 @@ def generate_brief(target_date=None):
           f"- Gateway cron: {'running' if gw['running'] else 'not running'} ({gw['cycles']} cycles today)"]
     if gw["last_time"]: L.append(f"- Last cycle: {gw['last_time']} - {gw['last_status']}")
     L.append(f"- Memory files: {mf} files, {mk} KB total")
+
+    # Google integrations (optional - works without auth)
+    try:
+        from google_integrations import get_google_context
+        gc = get_google_context()
+        if gc["status"] == "connected":
+            today_events = [e for e in gc["calendar_events"]
+                           if e["start"].startswith(td.isoformat())]
+            L += ["", "## Calendar"]
+            if today_events:
+                for ev in today_events:
+                    t = ev["start"].split("T")[1][:5] if "T" in ev["start"] else "all-day"
+                    loc = f" ({ev['location']})" if ev.get("location") else ""
+                    L.append(f"- {t} {ev['summary']}{loc}")
+            else:
+                L.append("- No events today")
+            unread = gc["email_summary"].get("unread_count", 0)
+            L += ["", "## Email", f"- **Unread:** {unread}"]
+    except Exception:
+        pass  # Brief works fine without Google auth
+
     return "\n".join(L) + "\n"
 
 def main():
