@@ -10,7 +10,7 @@ html, body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: #050508;
+    background: #020205;
     color: #e0e0e0;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
@@ -19,6 +19,14 @@ canvas#main {
     inset: 0;
     width: 100vw;
     height: 100vh;
+}
+canvas#matrix {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.12;
+    pointer-events: none;
 }
 .no-data-overlay {
     display: none;
@@ -39,14 +47,15 @@ canvas#main {
 </head>
 <body>
 <canvas id="main"></canvas>
+<canvas id="matrix"></canvas>
 <div class="no-data-overlay" id="nodata">NO DATA LINK</div>
 <script>
 // =========================================================================
-//  SYSTEM MONITOR SCREENSAVER - Sartor AI Network
-//  Single-file canvas renderer, fetches from API dynamically
+//  SYSTEM MONITOR SCREENSAVER - Sartor AI Network (ENHANCED)
+//  Matrix rain, starfield, history graphs, energy effects, data streams
 // =========================================================================
 
-// Dynamic API URL - works both locally and from remote machines
+// Dynamic API URL
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5002'
     : `http://${window.location.hostname}:5002`;
@@ -54,11 +63,12 @@ const API_URL = API_BASE + "/stats";
 
 const FETCH_INTERVAL = 1000;
 const TARGET_FPS = 30;
-const FRAME_TIME = 1000 / TARGET_FPS;
 
 // --- Canvas setup ---
 const canvas = document.getElementById("main");
 const ctx = canvas.getContext("2d");
+const matrixCanvas = document.getElementById("matrix");
+const mctx = matrixCanvas.getContext("2d");
 let W, H, cx, cy;
 let dpr = window.devicePixelRatio || 1;
 
@@ -70,20 +80,22 @@ function resize() {
     canvas.style.width = W + "px";
     canvas.style.height = H + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    matrixCanvas.width = W;
+    matrixCanvas.height = H;
     cx = W / 2;
     cy = H / 2;
+    if (typeof initMatrixRain === 'function') initMatrixRain();
+    if (typeof initStarfield === 'function') initStarfield();
 }
 window.addEventListener("resize", resize);
-resize();
 
 // --- State ---
 let stats = null;
 let prevStats = null;
 let connected = false;
-let lastFetch = 0;
 let noDataEl = document.getElementById("nodata");
 
-// Smoothed values for lerping
+// Smoothed values
 let s = {
     gpuUtil: 0, gpuMem: 0, gpuTemp: 0,
     cpuOverall: 0, cpuThreads: new Array(32).fill(0),
@@ -92,32 +104,302 @@ let s = {
     claudeActive: false, claudeAgents: [],
 };
 
-// Background particles
+// =========================================================================
+//  HISTORY GRAPHS - Rolling data for sparklines
+// =========================================================================
+const HISTORY_LEN = 120; // 2 minutes at 1/sec
+let history = {
+    gpu: [],
+    cpu: [],
+    ram: [],
+    gpuTemp: [],
+    rx: [],
+    tx: [],
+};
+function pushHistory() {
+    history.gpu.push(s.gpuUtil);
+    history.cpu.push(s.cpuOverall);
+    history.ram.push(s.ramPercent);
+    history.gpuTemp.push(s.gpuTemp);
+    history.rx.push(s.rxMbps);
+    history.tx.push(s.txMbps);
+    for (const k in history) {
+        if (history[k].length > HISTORY_LEN) history[k].shift();
+    }
+}
+setInterval(pushHistory, 1000);
+
+// =========================================================================
+//  MATRIX RAIN
+// =========================================================================
+const MATRIX_CHARS = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモ";
+let matrixColumns = [];
+let matrixFontSize = 14;
+
+function initMatrixRain() {
+    matrixColumns = [];
+    const cols = Math.floor(W / matrixFontSize);
+    for (let i = 0; i < cols; i++) {
+        matrixColumns.push({
+            y: Math.random() * H,
+            speed: 0.5 + Math.random() * 2,
+            chars: [],
+            length: 8 + Math.floor(Math.random() * 20),
+        });
+        // Pre-fill chars
+        const col = matrixColumns[i];
+        for (let j = 0; j < col.length; j++) {
+            col.chars.push(MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)]);
+        }
+    }
+}
+
+function drawMatrixRain(dt) {
+    // Fade previous frame
+    mctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+    mctx.fillRect(0, 0, W, H);
+
+    mctx.font = matrixFontSize + "px monospace";
+
+    for (let ci = 0; ci < matrixColumns.length; ci++) {
+        const col = matrixColumns[ci];
+        col.y += col.speed * dt * 60;
+
+        for (let j = 0; j < col.chars.length; j++) {
+            const charY = col.y - j * matrixFontSize;
+            if (charY < -matrixFontSize || charY > H + matrixFontSize) continue;
+
+            const fade = 1 - (j / col.chars.length);
+            if (j === 0) {
+                mctx.fillStyle = `rgba(180, 255, 180, ${fade * 0.9})`;
+            } else {
+                mctx.fillStyle = `rgba(0, 255, 70, ${fade * 0.5})`;
+            }
+
+            // Randomly change chars
+            if (Math.random() < 0.02) {
+                col.chars[j] = MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)];
+            }
+
+            const x = ci * matrixFontSize;
+            mctx.fillText(col.chars[j], x, charY);
+        }
+
+        if (col.y - col.length * matrixFontSize > H) {
+            col.y = -col.length * matrixFontSize;
+            col.speed = 0.5 + Math.random() * 2;
+        }
+    }
+}
+
+// =========================================================================
+//  STARFIELD
+// =========================================================================
+const STAR_COUNT = 200;
+let stars = [];
+
+function initStarfield() {
+    stars = [];
+    for (let i = 0; i < STAR_COUNT; i++) {
+        stars.push({
+            x: (Math.random() - 0.5) * W * 3,
+            y: (Math.random() - 0.5) * H * 3,
+            z: Math.random() * 1500 + 100,
+            pz: 0,
+        });
+        stars[i].pz = stars[i].z;
+    }
+}
+
+function drawStarfield(t, dt) {
+    const speed = 30 + (s.cpuOverall + s.gpuUtil) * 0.5; // Stars speed up with load
+
+    for (const star of stars) {
+        star.pz = star.z;
+        star.z -= speed * dt;
+
+        if (star.z <= 1) {
+            star.x = (Math.random() - 0.5) * W * 3;
+            star.y = (Math.random() - 0.5) * H * 3;
+            star.z = 1500;
+            star.pz = star.z;
+        }
+
+        const sx = (star.x / star.z) * (W * 0.5) + cx;
+        const sy = (star.y / star.z) * (H * 0.5) + cy;
+        const px = (star.x / star.pz) * (W * 0.5) + cx;
+        const py = (star.y / star.pz) * (H * 0.5) + cy;
+
+        if (sx < 0 || sx > W || sy < 0 || sy > H) continue;
+
+        const brightness = Math.max(0, 1 - star.z / 1500);
+        const r = brightness * 2;
+
+        // Draw star trail
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(sx, sy);
+        ctx.strokeStyle = `rgba(140, 160, 255, ${brightness * 0.4})`;
+        ctx.lineWidth = r * 0.8;
+        ctx.stroke();
+
+        // Star point
+        ctx.beginPath();
+        ctx.arc(sx, sy, r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200, 210, 255, ${brightness * 0.7})`;
+        ctx.fill();
+    }
+}
+
+// =========================================================================
+//  ENERGY PARTICLES / DATA STREAMS
+// =========================================================================
+const ENERGY_PARTICLE_COUNT = 60;
+let energyParticles = [];
+
+function initEnergyParticles() {
+    energyParticles = [];
+    for (let i = 0; i < ENERGY_PARTICLE_COUNT; i++) {
+        energyParticles.push(spawnEnergyParticle(i));
+    }
+}
+
+function spawnEnergyParticle(i) {
+    // Particles orbit between GPU and CPU components
+    const angle = (i / ENERGY_PARTICLE_COUNT) * Math.PI * 2;
+    const sources = [
+        { x: W * 0.32, y: H * 0.48 },  // GPU
+        { x: W * 0.65, y: H * 0.48 },  // CPU
+        { x: W * 0.5, y: H * 0.05 },   // RAM
+        { x: W * 0.88, y: H * 0.45 },  // Claude
+    ];
+    const src = sources[i % sources.length];
+    const dst = sources[(i + 1 + Math.floor(Math.random() * 3)) % sources.length];
+
+    return {
+        sx: src.x, sy: src.y,
+        dx: dst.x, dy: dst.y,
+        progress: Math.random(),
+        speed: 0.15 + Math.random() * 0.3,
+        size: 1 + Math.random() * 2,
+        hue: 220 + Math.random() * 100,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleAmp: 20 + Math.random() * 40,
+    };
+}
+
+function updateEnergyParticles(dt) {
+    for (let i = 0; i < energyParticles.length; i++) {
+        const p = energyParticles[i];
+        p.progress += p.speed * dt;
+        if (p.progress >= 1) {
+            energyParticles[i] = spawnEnergyParticle(i);
+        }
+    }
+}
+
+function drawEnergyParticles(t) {
+    for (const p of energyParticles) {
+        const t2 = p.progress;
+        // Bezier-like curve with wobble
+        const mx = (p.sx + p.dx) / 2;
+        const my = (p.sy + p.dy) / 2 - 60;
+        const x = (1-t2)*(1-t2)*p.sx + 2*(1-t2)*t2*mx + t2*t2*p.dx + Math.sin(p.wobble + t * 0.003) * p.wobbleAmp * Math.sin(t2 * Math.PI);
+        const y = (1-t2)*(1-t2)*p.sy + 2*(1-t2)*t2*my + t2*t2*p.dy + Math.cos(p.wobble + t * 0.002) * p.wobbleAmp * 0.5 * Math.sin(t2 * Math.PI);
+
+        const alpha = Math.sin(t2 * Math.PI) * 0.7;
+
+        // Glow
+        const glow = ctx.createRadialGradient(x, y, 0, x, y, p.size * 5);
+        glow.addColorStop(0, hsl(p.hue, 80, 70, alpha * 0.5));
+        glow.addColorStop(1, "transparent");
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(x, y, p.size * 5, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Core
+        ctx.beginPath();
+        ctx.arc(x, y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = hsl(p.hue, 90, 80, alpha);
+        ctx.fill();
+    }
+}
+
+
+// =========================================================================
+//  HEXAGON DATA STREAMS (flowing hex grid pattern)
+// =========================================================================
+let hexStreams = [];
+const HEX_STREAM_COUNT = 15;
+
+function initHexStreams() {
+    hexStreams = [];
+    for (let i = 0; i < HEX_STREAM_COUNT; i++) {
+        hexStreams.push({
+            x: Math.random() * W,
+            y: -50 - Math.random() * H,
+            speed: 15 + Math.random() * 30,
+            size: 6 + Math.random() * 10,
+            alpha: 0.03 + Math.random() * 0.06,
+            hue: 200 + Math.random() * 80,
+        });
+    }
+}
+
+function drawHexStreams(t, dt) {
+    for (const h of hexStreams) {
+        h.y += h.speed * dt;
+        if (h.y > H + 50) {
+            h.y = -50;
+            h.x = Math.random() * W;
+        }
+
+        // Draw hexagon
+        ctx.beginPath();
+        for (let i = 0; i < 6; i++) {
+            const angle = (Math.PI / 3) * i - Math.PI / 6;
+            const hx = h.x + Math.cos(angle) * h.size;
+            const hy = h.y + Math.sin(angle) * h.size;
+            if (i === 0) ctx.moveTo(hx, hy);
+            else ctx.lineTo(hx, hy);
+        }
+        ctx.closePath();
+        ctx.strokeStyle = hsl(h.hue, 70, 60, h.alpha + Math.sin(t * 0.002 + h.x) * 0.02);
+        ctx.lineWidth = 1;
+        ctx.stroke();
+    }
+}
+
+// =========================================================================
+//  BACKGROUND PARTICLES (enhanced from original)
+// =========================================================================
 let bgParticles = [];
-const BG_PARTICLE_COUNT = 80;
+const BG_PARTICLE_COUNT = 100;
 
-// Network particles
-let netParticlesRx = [];
-let netParticlesTx = [];
-const NET_PARTICLE_MAX = 60;
-
-// --- Initialization ---
 function initParticles() {
     bgParticles = [];
     for (let i = 0; i < BG_PARTICLE_COUNT; i++) {
         bgParticles.push({
             x: Math.random() * W,
             y: Math.random() * H,
-            vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3,
-            r: Math.random() * 1.5 + 0.5,
-            a: Math.random() * 0.3 + 0.05,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            r: Math.random() * 2 + 0.5,
+            a: Math.random() * 0.3 + 0.1,
+            hue: 220 + Math.random() * 60,
         });
     }
 }
-initParticles();
 
-// --- Data fetching ---
+// Network particles
+let netParticlesRx = [];
+let netParticlesTx = [];
+const NET_PARTICLE_MAX = 60;
+
+// =========================================================================
+//  DATA FETCHING & SMOOTHING
+// =========================================================================
 async function fetchStats() {
     try {
         const r = await fetch(API_URL, { signal: AbortSignal.timeout(3000) });
@@ -132,12 +414,10 @@ async function fetchStats() {
     }
 }
 
-// --- Smooth lerp ---
 function lerp(a, b, t) { return a + (b - a) * t; }
-function lerpAngle(a, b, t) { return a + (b - a) * t; }
 
 function updateSmoothed(dt) {
-    const t = Math.min(dt * 4, 1); // ~0.13 per frame at 30fps
+    const t = Math.min(dt * 4, 1);
     if (!stats) return;
     const g = stats.gpu || {};
     const c = stats.cpu || {};
@@ -171,7 +451,6 @@ function hsl(h, s, l, a) {
 }
 
 function utilColor(pct, baseHue, hotHue) {
-    // baseHue at 0%, hotHue at 100%
     const h = lerp(baseHue, hotHue, pct / 100);
     const sat = lerp(50, 95, pct / 100);
     const lig = lerp(40, 60, pct / 100);
@@ -179,15 +458,11 @@ function utilColor(pct, baseHue, hotHue) {
 }
 
 function gpuGradientColor(pct) {
-    // Purple (270) cool -> Orange (30) -> Red (0) hot
-    if (pct < 50) {
-        return utilColor(pct * 2, 270, 35);
-    }
+    if (pct < 50) return utilColor(pct * 2, 270, 35);
     return utilColor((pct - 50) * 2, 35, 0);
 }
 
 function cpuThreadColor(pct) {
-    // brighter blue -> cyan -> yellow -> red
     if (pct < 25) return { h: 220, s: 70, l: lerp(45, 55, pct / 25) };
     if (pct < 50) return { h: lerp(220, 180, (pct - 25) / 25), s: 85, l: lerp(55, 60, (pct - 25) / 25) };
     if (pct < 75) return { h: lerp(180, 50, (pct - 50) / 25), s: 90, l: lerp(55, 65, (pct - 50) / 25) };
@@ -200,39 +475,35 @@ function ramArcColor(pct) {
     return { h: lerp(50, 0, (pct - 70) / 30), s: 90, l: 55 };
 }
 
-// --- Background ambient color ---
 function ambientColor(time) {
     const load = (s.gpuUtil + s.cpuOverall) / 2;
-    // dark blue calm -> warm amber under load
     const h = lerp(230, 30, load / 100);
     const sa = lerp(30, 50, load / 100);
-    const l = lerp(3, 7, load / 100);
+    const l = lerp(2, 5, load / 100);
     return hsl(h, sa, l);
 }
 
 // =========================================================================
-//  DRAWING FUNCTIONS
+//  DRAWING: BACKGROUND
 // =========================================================================
 
-let frameTime = 0;
-
 function drawBackground(t) {
-    // Base fill
     ctx.fillStyle = ambientColor(t);
     ctx.fillRect(0, 0, W, H);
 
-    // Subtle radial gradient from center - navy blue tint so it's not pure black
+    // Radial gradient
     const centerGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(W, H) * 0.7);
-    centerGrad.addColorStop(0, "rgba(20, 25, 50, 0.3)");
-    centerGrad.addColorStop(0.5, "rgba(12, 15, 35, 0.15)");
+    centerGrad.addColorStop(0, "rgba(15, 18, 40, 0.25)");
+    centerGrad.addColorStop(0.5, "rgba(8, 10, 30, 0.12)");
     centerGrad.addColorStop(1, "transparent");
     ctx.fillStyle = centerGrad;
     ctx.fillRect(0, 0, W, H);
 
-    // Grid - more visible
-    ctx.strokeStyle = "rgba(255,255,255,0.06)";
-    ctx.lineWidth = 0.5;
+    // Grid lines - subtle glow effect
     const gridSize = 60;
+    const gridPulse = 0.03 + 0.02 * Math.sin(t * 0.0005);
+    ctx.strokeStyle = `rgba(100, 120, 255, ${gridPulse})`;
+    ctx.lineWidth = 0.5;
     for (let x = gridSize; x < W; x += gridSize) {
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
     }
@@ -240,26 +511,53 @@ function drawBackground(t) {
         ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
     }
 
-    // Ambient glow from components
+    // Scanning line effect - horizontal
+    const scanY = (t * 0.03) % H;
+    const scanGrad = ctx.createLinearGradient(0, scanY - 30, 0, scanY + 30);
+    scanGrad.addColorStop(0, "transparent");
+    scanGrad.addColorStop(0.5, `rgba(100, 140, 255, 0.04)`);
+    scanGrad.addColorStop(1, "transparent");
+    ctx.fillStyle = scanGrad;
+    ctx.fillRect(0, scanY - 30, W, 60);
+
+    // Ambient glows from components
     const gpuGlow = s.gpuUtil / 100;
     const gpuC = gpuGradientColor(s.gpuUtil);
     const gpuX = W * 0.32, gpuY = H * 0.48;
-    const grad1 = ctx.createRadialGradient(gpuX, gpuY, 0, gpuX, gpuY, 250 + gpuGlow * 100);
-    grad1.addColorStop(0, hsl(gpuC.h, gpuC.s, gpuC.l, 0.1 + gpuGlow * 0.08));
+    const grad1 = ctx.createRadialGradient(gpuX, gpuY, 0, gpuX, gpuY, 280 + gpuGlow * 120);
+    grad1.addColorStop(0, hsl(gpuC.h, gpuC.s, gpuC.l, 0.1 + gpuGlow * 0.1));
     grad1.addColorStop(1, "transparent");
     ctx.fillStyle = grad1;
     ctx.fillRect(0, 0, W, H);
 
     const cpuX = W * 0.65, cpuY = H * 0.48;
     const cpuGlow = s.cpuOverall / 100;
-    const grad2 = ctx.createRadialGradient(cpuX, cpuY, 0, cpuX, cpuY, 200 + cpuGlow * 80);
-    grad2.addColorStop(0, hsl(200, 60, 50, 0.06 + cpuGlow * 0.07));
+    const grad2 = ctx.createRadialGradient(cpuX, cpuY, 0, cpuX, cpuY, 220 + cpuGlow * 100);
+    grad2.addColorStop(0, hsl(200, 60, 50, 0.06 + cpuGlow * 0.08));
     grad2.addColorStop(1, "transparent");
     ctx.fillStyle = grad2;
     ctx.fillRect(0, 0, W, H);
 }
 
 function drawBgParticles(t, dt) {
+    // Draw connection lines between nearby particles
+    for (let i = 0; i < bgParticles.length; i++) {
+        for (let j = i + 1; j < bgParticles.length; j++) {
+            const dx = bgParticles[i].x - bgParticles[j].x;
+            const dy = bgParticles[i].y - bgParticles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+                const alpha = (1 - dist / 120) * 0.08;
+                ctx.beginPath();
+                ctx.moveTo(bgParticles[i].x, bgParticles[i].y);
+                ctx.lineTo(bgParticles[j].x, bgParticles[j].y);
+                ctx.strokeStyle = `rgba(129, 140, 248, ${alpha})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+            }
+        }
+    }
+
     for (let p of bgParticles) {
         p.x += p.vx;
         p.y += p.vy;
@@ -269,16 +567,28 @@ function drawBgParticles(t, dt) {
         if (p.y > H) p.y = 0;
 
         const flicker = 0.7 + 0.3 * Math.sin(t * 0.001 + p.x * 0.01);
+        const alpha = Math.max(p.a * flicker, 0.3);
+
+        // Glow
+        const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+        glow.addColorStop(0, hsl(p.hue, 70, 70, alpha * 0.3));
+        glow.addColorStop(1, "transparent");
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+        ctx.fill();
+
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        // Brighter particles - minimum rgba(129, 140, 248, 0.3)
-        const alpha = Math.max(p.a * flicker, 0.3);
-        ctx.fillStyle = `rgba(129, 140, 248, ${alpha})`;
+        ctx.fillStyle = hsl(p.hue, 70, 75, alpha);
         ctx.fill();
     }
 }
 
-// --- GPU GAUGE ---
+// =========================================================================
+//  DRAWING: GPU GAUGE (enhanced with history sparkline)
+// =========================================================================
+
 function drawGPU(t) {
     const x = W * 0.32;
     const y = H * 0.48;
@@ -291,25 +601,47 @@ function drawGPU(t) {
     const temp = s.gpuTemp;
     const gc = gpuGradientColor(util);
 
-    // Pulsing glow - stronger
+    // Outer rotating ring effect
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(t * 0.0004);
+    const tickCount = 60;
+    for (let i = 0; i < tickCount; i++) {
+        const angle = (i / tickCount) * Math.PI * 2;
+        const tickLen = (i % 5 === 0) ? 8 : 4;
+        const r1 = outerR + 12;
+        const r2 = r1 + tickLen;
+        const active = (i / tickCount) * 100 < util;
+        ctx.beginPath();
+        ctx.moveTo(Math.cos(angle) * r1, Math.sin(angle) * r1);
+        ctx.lineTo(Math.cos(angle) * r2, Math.sin(angle) * r2);
+        ctx.strokeStyle = active
+            ? hsl(gc.h, gc.s, gc.l + 10, 0.7)
+            : "rgba(255,255,255,0.1)";
+        ctx.lineWidth = active ? 2 : 1;
+        ctx.stroke();
+    }
+    ctx.restore();
+
+    // Pulsing glow
     const pulse = 1 + 0.15 * Math.sin(t * 0.003 * (1 + util / 50)) * (util / 100);
-    const glowR = outerR * (1.3 + 0.4 * (util / 100)) * pulse;
+    const glowR = outerR * (1.4 + 0.5 * (util / 100)) * pulse;
     const glow = ctx.createRadialGradient(x, y, outerR * 0.5, x, y, glowR);
-    glow.addColorStop(0, hsl(gc.h, gc.s, gc.l, 0.18 + (util / 100) * 0.12));
+    glow.addColorStop(0, hsl(gc.h, gc.s, gc.l, 0.2 + (util / 100) * 0.15));
     glow.addColorStop(1, "transparent");
     ctx.fillStyle = glow;
     ctx.beginPath();
     ctx.arc(x, y, glowR, 0, Math.PI * 2);
     ctx.fill();
 
-    // Outer ring track - brighter
+    // Outer ring track
     ctx.beginPath();
     ctx.arc(x, y, outerR, 0, Math.PI * 2);
-    ctx.strokeStyle = "rgba(129, 140, 248, 0.25)";
+    ctx.strokeStyle = "rgba(129, 140, 248, 0.2)";
     ctx.lineWidth = 8;
     ctx.stroke();
 
-    // Outer ring fill (GPU utilization) - much brighter
+    // Outer ring fill
     const startAngle = -Math.PI / 2;
     const endAngle = startAngle + (Math.PI * 2 * util / 100);
     ctx.beginPath();
@@ -322,25 +654,24 @@ function drawGPU(t) {
     ctx.lineCap = "round";
     ctx.stroke();
 
-    // Glow on the arc endpoint - brighter
+    // Arc endpoint glow
     const ex = x + Math.cos(endAngle) * outerR;
     const ey = y + Math.sin(endAngle) * outerR;
-    const tipGlow = ctx.createRadialGradient(ex, ey, 0, ex, ey, 20);
-    tipGlow.addColorStop(0, hsl(gc.h, gc.s, gc.l + 20, 0.8));
+    const tipGlow = ctx.createRadialGradient(ex, ey, 0, ex, ey, 24);
+    tipGlow.addColorStop(0, hsl(gc.h, gc.s, gc.l + 20, 0.9));
     tipGlow.addColorStop(1, "transparent");
     ctx.fillStyle = tipGlow;
     ctx.beginPath();
-    ctx.arc(ex, ey, 20, 0, Math.PI * 2);
+    ctx.arc(ex, ey, 24, 0, Math.PI * 2);
     ctx.fill();
 
-    // Inner ring track (VRAM) - brighter
+    // Inner ring (VRAM)
     ctx.beginPath();
     ctx.arc(x, y, innerR, 0, Math.PI * 2);
-    ctx.strokeStyle = "rgba(129, 140, 248, 0.15)";
+    ctx.strokeStyle = "rgba(129, 140, 248, 0.12)";
     ctx.lineWidth = 5;
     ctx.stroke();
 
-    // Inner ring fill (VRAM) - brighter
     const memEnd = startAngle + (Math.PI * 2 * memPct / 100);
     ctx.beginPath();
     ctx.arc(x, y, innerR, startAngle, memEnd);
@@ -349,50 +680,97 @@ function drawGPU(t) {
     ctx.lineCap = "round";
     ctx.stroke();
 
-    // Center fill
+    // Center fill with inner glow
     const centerGrad = ctx.createRadialGradient(x, y, 0, x, y, coreR);
-    centerGrad.addColorStop(0, hsl(gc.h, 25, 14, 0.9));
+    centerGrad.addColorStop(0, hsl(gc.h, 30, 16, 0.9));
+    centerGrad.addColorStop(0.7, hsl(gc.h, 25, 10, 0.8));
     centerGrad.addColorStop(1, hsl(gc.h, 20, 8, 0.6));
     ctx.beginPath();
     ctx.arc(x, y, coreR, 0, Math.PI * 2);
     ctx.fillStyle = centerGrad;
     ctx.fill();
 
-    // GPU utilization text - bright white/purple
+    // Inner sparkline ring (mini history graph inside the gauge)
+    if (history.gpu.length > 2) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(x, y, coreR - 2, 0, Math.PI * 2);
+        ctx.clip();
+
+        const graphH = coreR * 0.3;
+        const graphY = y + coreR * 0.45;
+        const graphX = x - coreR * 0.7;
+        const graphW = coreR * 1.4;
+
+        ctx.beginPath();
+        const data = history.gpu;
+        for (let i = 0; i < data.length; i++) {
+            const px = graphX + (i / (data.length - 1)) * graphW;
+            const py = graphY - (data[i] / 100) * graphH;
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+        }
+        ctx.strokeStyle = hsl(gc.h, 60, 60, 0.3);
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // Fill under the line
+        ctx.lineTo(graphX + graphW, graphY);
+        ctx.lineTo(graphX, graphY);
+        ctx.closePath();
+        ctx.fillStyle = hsl(gc.h, 60, 50, 0.08);
+        ctx.fill();
+
+        ctx.restore();
+    }
+
+    // GPU text
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = `bold ${outerR * 0.38}px Inter, system-ui, sans-serif`;
+    // Text glow
+    ctx.save();
+    ctx.shadowColor = hsl(gc.h, gc.s, gc.l, 0.6);
+    ctx.shadowBlur = 15;
     ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
     ctx.fillText(Math.round(util) + "%", x, y - outerR * 0.05);
+    ctx.restore();
 
-    // VRAM text - clearly readable
+    // VRAM text
     ctx.font = `${outerR * 0.11}px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
     const memUsedGB = (s.gpuMem / 1024).toFixed(1);
     const memTotalGB = (((stats && stats.gpu && stats.gpu.memory_total) || 32768) / 1024).toFixed(0);
     ctx.fillText(`VRAM ${memUsedGB} / ${memTotalGB} GB`, x, y + outerR * 0.2);
 
-    // Temperature thermometer
-    const tempX = x + outerR * 0.0;
+    // Temperature with color-coded glow
+    const tempX = x;
     const tempY = y + outerR * 0.38;
     ctx.font = `${outerR * 0.1}px Inter, system-ui, sans-serif`;
     const tempColor = temp > 80 ? hsl(0, 90, 60) : temp > 60 ? hsl(40, 85, 60) : hsl(200, 70, 65);
+    ctx.save();
+    ctx.shadowColor = tempColor;
+    ctx.shadowBlur = 8;
     ctx.fillStyle = tempColor;
     ctx.fillText(Math.round(temp) + "\u00B0C", tempX, tempY);
+    ctx.restore();
 
-    // GPU name label - clearly readable
+    // GPU name
     const gpuName = (stats && stats.gpu && stats.gpu.name) || "RTX 5090";
     ctx.font = `bold ${outerR * 0.1}px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
     ctx.fillText(gpuName, x, y + outerR * 0.55);
 
-    // Label above - clearly readable
+    // Label
     ctx.font = `${outerR * 0.08}px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
-    ctx.fillText("GPU UTILIZATION", x, y - outerR - 20);
+    ctx.fillText("GPU UTILIZATION", x, y - outerR - 26);
 }
 
-// --- CPU GRID ---
+// =========================================================================
+//  DRAWING: CPU GRID (enhanced with wave effect)
+// =========================================================================
+
 function drawCPU(t) {
     const x = W * 0.65;
     const y = H * 0.48;
@@ -406,20 +784,26 @@ function drawCPU(t) {
     const startX = x - gridW / 2;
     const startY = y - gridH / 2 + 15;
 
-    // Overall CPU label above grid - bright and readable
+    // Overall CPU label
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = `bold ${dotR * 5}px Inter, system-ui, sans-serif`;
     const cpuPct = s.cpuOverall;
     const oc = cpuThreadColor(cpuPct);
+
+    // Glowing text
+    ctx.save();
+    ctx.shadowColor = hsl(oc.h, oc.s, oc.l, 0.6);
+    ctx.shadowBlur = 15;
     ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
     ctx.fillText(Math.round(cpuPct) + "%", x, startY - gridH * 0.25 - dotR * 4);
+    ctx.restore();
 
     ctx.font = `${dotR * 1.5}px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
     ctx.fillText("CPU UTILIZATION", x, startY - gridH * 0.25 - dotR * 1.8);
 
-    // Draw thread dots
+    // Draw thread dots with wave animation
     for (let i = 0; i < threadCount; i++) {
         const col = i % cols;
         const row = Math.floor(i / cols);
@@ -428,42 +812,77 @@ function drawCPU(t) {
         const pct = s.cpuThreads[i] || 0;
         const c = cpuThreadColor(pct);
 
-        // Breathing animation for idle threads
-        const breath = pct < 10 ? 0.85 + 0.15 * Math.sin(t * 0.002 + i * 0.5) : 1;
+        // Wave offset for idle breathing
+        const waveOffset = Math.sin(t * 0.002 + col * 0.4 + row * 0.3) * 0.15;
+        const breath = pct < 10 ? 0.85 + waveOffset : 1;
         const r = dotR * breath;
 
-        // Glow for hot threads
-        if (pct > 40) {
-            const tGlow = ctx.createRadialGradient(dx, dy, 0, dx, dy, r * 2.5);
-            tGlow.addColorStop(0, hsl(c.h, c.s, c.l, 0.35 * (pct / 100)));
+        // Glow for hot threads - enhanced
+        if (pct > 30) {
+            const glowSize = r * (2.5 + (pct / 100) * 2);
+            const tGlow = ctx.createRadialGradient(dx, dy, 0, dx, dy, glowSize);
+            tGlow.addColorStop(0, hsl(c.h, c.s, c.l, 0.4 * (pct / 100)));
             tGlow.addColorStop(1, "transparent");
             ctx.fillStyle = tGlow;
             ctx.beginPath();
-            ctx.arc(dx, dy, r * 2.5, 0, Math.PI * 2);
+            ctx.arc(dx, dy, glowSize, 0, Math.PI * 2);
             ctx.fill();
         }
 
+        // Core dot
         ctx.beginPath();
         ctx.arc(dx, dy, r, 0, Math.PI * 2);
-        // Idle threads much more visible - minimum 0.5 opacity in blue
         const brightness = lerp(0.5, 1, pct / 100);
         ctx.fillStyle = hsl(c.h, c.s, c.l, brightness);
         ctx.fill();
 
-        // Thin border - more visible
+        // Border
         ctx.strokeStyle = hsl(c.h, c.s - 10, c.l, 0.4);
         ctx.lineWidth = 0.7;
         ctx.stroke();
     }
 
-    // CPU Name - clearly readable
+    // CPU History sparkline below the grid
+    if (history.cpu.length > 2) {
+        const sparkW = gridW * 1.0;
+        const sparkH = 20;
+        const sparkX = x - sparkW / 2;
+        const sparkY = startY + gridH + dotR * 2;
+
+        // Draw sparkline
+        ctx.beginPath();
+        const data = history.cpu;
+        for (let i = 0; i < data.length; i++) {
+            const px = sparkX + (i / (data.length - 1)) * sparkW;
+            const py = sparkY + sparkH - (data[i] / 100) * sparkH;
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+        }
+        const cc = cpuThreadColor(cpuPct);
+        ctx.strokeStyle = hsl(cc.h, cc.s, cc.l, 0.5);
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Fill
+        ctx.lineTo(sparkX + sparkW, sparkY + sparkH);
+        ctx.lineTo(sparkX, sparkY + sparkH);
+        ctx.closePath();
+        ctx.fillStyle = hsl(cc.h, cc.s, cc.l, 0.08);
+        ctx.fill();
+    }
+
+    // CPU Name
     const cpuName = (stats && stats.cpu && stats.cpu.name) || "i9-14900K";
     ctx.font = `bold ${dotR * 1.4}px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
-    ctx.fillText(cpuName, x, startY + gridH + dotR * 3.5);
+    ctx.textAlign = "center";
+    ctx.fillText(cpuName, x, startY + gridH + dotR * 6.5);
 }
 
-// --- RAM ARC ---
+// =========================================================================
+//  DRAWING: RAM ARC (enhanced with segments glow)
+// =========================================================================
+
 function drawRAM(t) {
     const arcCx = W * 0.5;
     const arcCy = H * 0.05;
@@ -473,7 +892,6 @@ function drawRAM(t) {
     const pct = s.ramPercent;
     const totalGB = (stats && stats.ram && stats.ram.total_gb) || 128;
 
-    // Arc from ~170 deg to ~10 deg (top semicircle)
     const arcStart = Math.PI * 0.82;
     const arcEnd = Math.PI * 0.18;
     const totalAngle = (Math.PI * 2) - (arcStart - arcEnd);
@@ -492,21 +910,45 @@ function drawRAM(t) {
         if (filled) {
             const c = ramArcColor(segPct);
             const glow = 0.5 + 0.5 * (segPct / 100);
-            ctx.strokeStyle = hsl(c.h, c.s, c.l, 0.6 + glow * 0.4);
+            // Enhanced: pulsing filled segments
+            const segPulse = 1 + 0.08 * Math.sin(t * 0.003 + i * 0.2);
+            ctx.strokeStyle = hsl(c.h, c.s, c.l * segPulse, 0.6 + glow * 0.4);
+            ctx.lineWidth = lineW + (filled && i === Math.floor(pct / 100 * segments) ? 2 : 0);
+
+            // Glow on leading edge
+            if (i === Math.floor(pct / 100 * segments)) {
+                const midAngle = angle + segAngle * 0.4;
+                const gx = arcCx + Math.cos(midAngle) * arcR;
+                const gy = arcCy + Math.sin(midAngle) * arcR;
+                const segGlow = ctx.createRadialGradient(gx, gy, 0, gx, gy, 20);
+                segGlow.addColorStop(0, hsl(c.h, c.s, c.l, 0.6));
+                segGlow.addColorStop(1, "transparent");
+                ctx.save();
+                ctx.fillStyle = segGlow;
+                ctx.beginPath();
+                ctx.arc(gx, gy, 20, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+                ctx.beginPath();
+                ctx.arc(arcCx, arcCy, arcR, angle, angle + segAngle * 0.85);
+            }
         } else {
-            // Empty segments have a dim visible outline
-            ctx.strokeStyle = "rgba(255,255,255,0.15)";
+            ctx.strokeStyle = "rgba(255,255,255,0.1)";
         }
         ctx.stroke();
     }
 
-    // RAM text centered - bright and readable
+    // RAM text
     const textY = arcCy + arcR * 0.35;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = `bold ${lineW * 2.2}px Inter, system-ui, sans-serif`;
+    ctx.save();
+    ctx.shadowColor = "rgba(100, 200, 150, 0.4)";
+    ctx.shadowBlur = 12;
     ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
     ctx.fillText(s.ramUsed.toFixed(1) + " GB", arcCx, textY);
+    ctx.restore();
 
     ctx.font = `${lineW * 1.1}px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
@@ -517,17 +959,18 @@ function drawRAM(t) {
     ctx.fillText("MEMORY", arcCx, textY - lineW * 2.5);
 }
 
-// --- NETWORK PARTICLES ---
+// =========================================================================
+//  DRAWING: NETWORK (enhanced with history graph)
+// =========================================================================
+
 function updateNetParticles(dt) {
     const baseY = H * 0.88;
     const centerX = W * 0.5;
     const spread = W * 0.3;
 
-    // Spawn rate proportional to throughput
     const rxRate = Math.min(s.rxMbps * 2, 30);
     const txRate = Math.min(s.txMbps * 2, 30);
 
-    // RX particles (flow left to center)
     if (Math.random() < rxRate * dt) {
         netParticlesRx.push({
             x: centerX - spread + Math.random() * 30,
@@ -538,7 +981,6 @@ function updateNetParticles(dt) {
         });
     }
 
-    // TX particles (flow center to right)
     if (Math.random() < txRate * dt) {
         netParticlesTx.push({
             x: centerX + Math.random() * 30,
@@ -549,27 +991,20 @@ function updateNetParticles(dt) {
         });
     }
 
-    // Update RX
     for (let i = netParticlesRx.length - 1; i >= 0; i--) {
         const p = netParticlesRx[i];
         p.x += p.vx;
         p.life -= dt * 1.5;
-        if (p.life <= 0 || p.x > centerX + 20) {
-            netParticlesRx.splice(i, 1);
-        }
+        if (p.life <= 0 || p.x > centerX + 20) netParticlesRx.splice(i, 1);
     }
 
-    // Update TX
     for (let i = netParticlesTx.length - 1; i >= 0; i--) {
         const p = netParticlesTx[i];
         p.x += p.vx;
         p.life -= dt * 1.5;
-        if (p.life <= 0 || p.x > centerX + spread + 20) {
-            netParticlesTx.splice(i, 1);
-        }
+        if (p.life <= 0 || p.x > centerX + spread + 20) netParticlesTx.splice(i, 1);
     }
 
-    // Cap particle counts
     while (netParticlesRx.length > NET_PARTICLE_MAX) netParticlesRx.shift();
     while (netParticlesTx.length > NET_PARTICLE_MAX) netParticlesTx.shift();
 }
@@ -579,79 +1014,157 @@ function drawNetwork(t) {
     const centerX = W * 0.5;
     const spread = W * 0.3;
 
-    // RX particles (vivid cyan)
+    // Network history graph background
+    const graphH = 35;
+    const graphY = baseY + 15;
+    const graphW = spread * 1.6;
+    const graphX = centerX - graphW / 2;
+
+    // Subtle graph background
+    ctx.fillStyle = "rgba(10, 12, 30, 0.4)";
+    ctx.fillRect(graphX, graphY, graphW, graphH);
+    ctx.strokeStyle = "rgba(100, 120, 255, 0.1)";
+    ctx.lineWidth = 0.5;
+    ctx.strokeRect(graphX, graphY, graphW, graphH);
+
+    // Draw RX history
+    if (history.rx.length > 2) {
+        const maxRx = Math.max(1, ...history.rx, ...history.tx);
+        ctx.beginPath();
+        for (let i = 0; i < history.rx.length; i++) {
+            const px = graphX + (i / (history.rx.length - 1)) * graphW;
+            const py = graphY + graphH - (history.rx[i] / maxRx) * graphH;
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+        }
+        ctx.strokeStyle = hsl(185, 80, 60, 0.6);
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Fill
+        ctx.lineTo(graphX + graphW, graphY + graphH);
+        ctx.lineTo(graphX, graphY + graphH);
+        ctx.closePath();
+        ctx.fillStyle = hsl(185, 80, 50, 0.1);
+        ctx.fill();
+    }
+
+    // Draw TX history
+    if (history.tx.length > 2) {
+        const maxTx = Math.max(1, ...history.rx, ...history.tx);
+        ctx.beginPath();
+        for (let i = 0; i < history.tx.length; i++) {
+            const px = graphX + (i / (history.tx.length - 1)) * graphW;
+            const py = graphY + graphH - (history.tx[i] / maxTx) * graphH;
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+        }
+        ctx.strokeStyle = hsl(310, 80, 60, 0.6);
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        ctx.lineTo(graphX + graphW, graphY + graphH);
+        ctx.lineTo(graphX, graphY + graphH);
+        ctx.closePath();
+        ctx.fillStyle = hsl(310, 80, 50, 0.1);
+        ctx.fill();
+    }
+
+    // RX particles
     for (const p of netParticlesRx) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = hsl(185, 90, 65, p.life * 0.9);
         ctx.fill();
-        // Small glow
-        const pg = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
-        pg.addColorStop(0, hsl(185, 90, 65, p.life * 0.3));
+        const pg = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+        pg.addColorStop(0, hsl(185, 90, 65, p.life * 0.4));
         pg.addColorStop(1, "transparent");
         ctx.fillStyle = pg;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
         ctx.fill();
     }
 
-    // TX particles (vivid magenta)
+    // TX particles
     for (const p of netParticlesTx) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = hsl(310, 90, 65, p.life * 0.9);
         ctx.fill();
-        // Small glow
-        const pg = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
-        pg.addColorStop(0, hsl(310, 90, 65, p.life * 0.3));
+        const pg = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+        pg.addColorStop(0, hsl(310, 90, 65, p.life * 0.4));
         pg.addColorStop(1, "transparent");
         ctx.fillStyle = pg;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
         ctx.fill();
     }
 
-    // Flow lines (more visible)
-    ctx.strokeStyle = "rgba(0,220,240,0.15)";
-    ctx.lineWidth = 1;
+    // Flow lines with pulsing
+    const flowPulse = 0.1 + 0.08 * Math.sin(t * 0.003);
+    ctx.strokeStyle = `rgba(0,220,240,${flowPulse})`;
+    ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(centerX - spread, baseY);
     ctx.lineTo(centerX, baseY);
     ctx.stroke();
 
-    ctx.strokeStyle = "rgba(240,0,200,0.15)";
+    ctx.strokeStyle = `rgba(240,0,200,${flowPulse})`;
     ctx.beginPath();
     ctx.moveTo(centerX, baseY);
     ctx.lineTo(centerX + spread, baseY);
     ctx.stroke();
 
-    // Labels - bright and readable
+    // Center node glow
+    const nodeGlow = ctx.createRadialGradient(centerX, baseY, 0, centerX, baseY, 15);
+    nodeGlow.addColorStop(0, "rgba(255, 255, 255, 0.3)");
+    nodeGlow.addColorStop(1, "transparent");
+    ctx.fillStyle = nodeGlow;
+    ctx.beginPath();
+    ctx.arc(centerX, baseY, 15, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(centerX, baseY, 3, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(255,255,255,0.6)";
+    ctx.fill();
+
+    // Labels
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = `bold 14px Inter, system-ui, sans-serif`;
 
-    // Download - vivid cyan
+    ctx.save();
+    ctx.shadowColor = "rgba(0, 220, 240, 0.5)";
+    ctx.shadowBlur = 10;
     ctx.fillStyle = hsl(185, 80, 65, 0.95);
     ctx.fillText("\u25BC " + s.rxMbps.toFixed(1) + " Mbps", centerX - spread * 0.5, baseY - 22);
+    ctx.restore();
+
     ctx.font = `10px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(0,220,240,0.7)";
     ctx.fillText("DOWNLOAD", centerX - spread * 0.5, baseY - 8);
 
-    // Upload - vivid magenta
     ctx.font = `bold 14px Inter, system-ui, sans-serif`;
+    ctx.save();
+    ctx.shadowColor = "rgba(240, 0, 200, 0.5)";
+    ctx.shadowBlur = 10;
     ctx.fillStyle = hsl(310, 80, 65, 0.95);
     ctx.fillText("\u25B2 " + s.txMbps.toFixed(1) + " Mbps", centerX + spread * 0.5, baseY - 22);
+    ctx.restore();
+
     ctx.font = `10px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(240,0,200,0.7)";
     ctx.fillText("UPLOAD", centerX + spread * 0.5, baseY - 8);
 
-    // Center divider
     ctx.font = `10px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(200, 200, 220, 0.5)";
     ctx.fillText("NETWORK", centerX, baseY - 38);
 }
 
-// --- CLAUDE CODE STATUS ---
+// =========================================================================
+//  DRAWING: CLAUDE CODE STATUS (enhanced with energy field)
+// =========================================================================
+
 function drawClaude(t) {
     const x = W * 0.88;
     const y = H * 0.45;
@@ -659,34 +1172,43 @@ function drawClaude(t) {
     const active = s.claudeActive;
     const agents = s.claudeAgents;
 
-    // Main orb
     if (active) {
-        // Bright purple with radiating rings
-        const ringCount = 3;
+        // Energy field rings
+        const ringCount = 5;
         for (let i = ringCount; i >= 0; i--) {
-            const ringR = orbR * (1.5 + i * 0.6);
+            const ringR = orbR * (1.5 + i * 0.5);
             const phase = t * 0.002 - i * 0.5;
-            const alpha = (0.2 - i * 0.04) * (0.7 + 0.3 * Math.sin(phase));
+            const alpha = (0.25 - i * 0.04) * (0.7 + 0.3 * Math.sin(phase));
+
+            // Rotating dashed ring
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(t * 0.001 * (i % 2 === 0 ? 1 : -1));
             ctx.beginPath();
-            ctx.arc(x, y, ringR, 0, Math.PI * 2);
+            ctx.arc(0, 0, ringR, 0, Math.PI * 2);
+            ctx.setLineDash([4 + i * 2, 8 + i * 3]);
             ctx.strokeStyle = hsl(270, 85, 70, alpha);
             ctx.lineWidth = 1.5;
             ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.restore();
         }
 
-        // Core glow - stronger
-        const cGlow = ctx.createRadialGradient(x, y, 0, x, y, orbR * 2.5);
-        cGlow.addColorStop(0, hsl(270, 85, 70, 0.45));
+        // Core glow - intense
+        const cGlow = ctx.createRadialGradient(x, y, 0, x, y, orbR * 3);
+        cGlow.addColorStop(0, hsl(270, 85, 70, 0.5));
+        cGlow.addColorStop(0.5, hsl(280, 70, 55, 0.15));
         cGlow.addColorStop(1, "transparent");
         ctx.fillStyle = cGlow;
         ctx.beginPath();
-        ctx.arc(x, y, orbR * 2.5, 0, Math.PI * 2);
+        ctx.arc(x, y, orbR * 3, 0, Math.PI * 2);
         ctx.fill();
 
         ctx.beginPath();
         ctx.arc(x, y, orbR, 0, Math.PI * 2);
         const orbGrad = ctx.createRadialGradient(x, y, 0, x, y, orbR);
-        orbGrad.addColorStop(0, hsl(270, 90, 80, 0.95));
+        orbGrad.addColorStop(0, hsl(270, 90, 85, 0.95));
+        orbGrad.addColorStop(0.6, hsl(270, 85, 65, 0.9));
         orbGrad.addColorStop(1, hsl(270, 75, 55, 0.8));
         ctx.fillStyle = orbGrad;
         ctx.fill();
@@ -702,7 +1224,7 @@ function drawClaude(t) {
                 const ay = y + Math.sin(angle) * orbitR;
                 const subR = orbR * 0.4;
 
-                // Connection line
+                // Connection line with energy particles
                 ctx.beginPath();
                 ctx.moveTo(x, y);
                 ctx.lineTo(ax, ay);
@@ -710,7 +1232,15 @@ function drawClaude(t) {
                 ctx.lineWidth = 1;
                 ctx.stroke();
 
-                // Sub orb
+                // Energy dot on connection
+                const edot = (t * 0.003 + i) % 1;
+                const edx = lerp(x, ax, edot);
+                const edy = lerp(y, ay, edot);
+                ctx.beginPath();
+                ctx.arc(edx, edy, 2, 0, Math.PI * 2);
+                ctx.fillStyle = hsl(280, 90, 80, 0.8);
+                ctx.fill();
+
                 ctx.beginPath();
                 ctx.arc(ax, ay, subR, 0, Math.PI * 2);
                 const subGrad = ctx.createRadialGradient(ax, ay, 0, ax, ay, subR);
@@ -719,7 +1249,6 @@ function drawClaude(t) {
                 ctx.fillStyle = subGrad;
                 ctx.fill();
 
-                // Label
                 ctx.font = `8px Inter, system-ui, sans-serif`;
                 ctx.textAlign = "center";
                 ctx.fillStyle = "rgba(220,200,250,0.7)";
@@ -729,12 +1258,31 @@ function drawClaude(t) {
 
         ctx.font = `bold 11px Inter, system-ui, sans-serif`;
         ctx.textAlign = "center";
+        ctx.save();
+        ctx.shadowColor = hsl(270, 80, 70, 0.6);
+        ctx.shadowBlur = 8;
         ctx.fillStyle = hsl(270, 75, 75, 0.95);
         ctx.fillText("ACTIVE", x, y + orbR + 18);
+        ctx.restore();
 
     } else {
-        // Idle: much more visible purple pulse - larger, brighter glow
+        // Idle: elegant breathing
         const breath = 0.6 + 0.3 * Math.sin(t * 0.0015);
+
+        // Subtle rotating ring
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(t * 0.0005);
+        ctx.beginPath();
+        ctx.arc(0, 0, orbR * 1.8, 0, Math.PI * 0.8);
+        ctx.strokeStyle = hsl(270, 50, 55, breath * 0.3);
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(0, 0, orbR * 1.8, Math.PI, Math.PI * 1.8);
+        ctx.stroke();
+        ctx.restore();
+
         const idleGlow = ctx.createRadialGradient(x, y, 0, x, y, orbR * 2.5);
         idleGlow.addColorStop(0, hsl(270, 55, 50, breath * 0.5));
         idleGlow.addColorStop(0.5, hsl(270, 45, 40, breath * 0.2));
@@ -758,13 +1306,15 @@ function drawClaude(t) {
         ctx.fillText("IDLE", x, y + orbR + 18);
     }
 
-    // Label - more readable
     ctx.font = `9px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(200, 200, 220, 0.6)";
     ctx.fillText("CLAUDE CODE", x, y - orbR - 12);
 }
 
-// --- SYSTEM INFO ---
+// =========================================================================
+//  DRAWING: SYSTEM INFO & TITLE
+// =========================================================================
+
 function drawSystemInfo(t) {
     const x = W - 20;
     const y = H - 20;
@@ -775,43 +1325,164 @@ function drawSystemInfo(t) {
     const hostname = sys.hostname || "gpuserver1";
     const uptime = sys.uptime || "--";
 
-    // Time
     const now = new Date();
     const timeStr = now.toLocaleTimeString("en-US", { hour12: false });
 
-    // System info - clearly readable
     ctx.font = `10px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(200, 200, 220, 0.6)";
     ctx.fillText(hostname + "  |  up " + uptime + "  |  " + timeStr, x, y);
 
-    // Watermark - subtle but visible
     ctx.font = `9px Inter, system-ui, sans-serif`;
     ctx.fillStyle = "rgba(129, 140, 248, 0.35)";
     ctx.fillText("SARTOR AI NETWORK", x, y - 16);
 }
 
-// --- TITLE / HEADER ---
 function drawTitle(t) {
-    // Gradient title at very top - clearly visible
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
-    ctx.font = `bold 14px Inter, system-ui, sans-serif`;
+    ctx.font = `bold 16px Inter, system-ui, sans-serif`;
 
-    // Simulate gradient text (#818cf8 -> #c084fc -> #f472b6)
-    const grad = ctx.createLinearGradient(cx - 100, 0, cx + 100, 0);
+    // Animated gradient title
+    const gradShift = Math.sin(t * 0.001) * 50;
+    const grad = ctx.createLinearGradient(cx - 120 + gradShift, 0, cx + 120 + gradShift, 0);
     grad.addColorStop(0, "#818cf8");
+    grad.addColorStop(0.3, "#a78bfa");
     grad.addColorStop(0.5, "#c084fc");
+    grad.addColorStop(0.7, "#e879f9");
     grad.addColorStop(1, "#f472b6");
-    ctx.fillStyle = grad;
-    ctx.fillText("SYSTEM MONITOR", cx, 12);
 
-    // Subtle glow behind title
     ctx.save();
-    ctx.globalAlpha = 0.15;
     ctx.shadowColor = "#c084fc";
-    ctx.shadowBlur = 20;
-    ctx.fillText("SYSTEM MONITOR", cx, 12);
+    ctx.shadowBlur = 25;
+    ctx.fillStyle = grad;
+    ctx.fillText("SYSTEM MONITOR", cx, 10);
     ctx.restore();
+
+    // Subtitle with typing/pulse effect
+    ctx.font = `9px Inter, system-ui, sans-serif`;
+    const subAlpha = 0.3 + 0.15 * Math.sin(t * 0.002);
+    ctx.fillStyle = `rgba(200, 200, 230, ${subAlpha})`;
+    ctx.fillText("gpuserver1 \u2022 RTX 5090 \u2022 i9-14900K \u2022 128 GB", cx, 30);
+
+    // Decorative horizontal lines from title
+    const lineAlpha = 0.08 + 0.04 * Math.sin(t * 0.001);
+    const titleWidth = 140;
+
+    // Left line
+    const lgrd = ctx.createLinearGradient(cx - titleWidth - 200, 0, cx - titleWidth, 0);
+    lgrd.addColorStop(0, "transparent");
+    lgrd.addColorStop(1, `rgba(129, 140, 248, ${lineAlpha})`);
+    ctx.strokeStyle = lgrd;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(cx - titleWidth - 200, 18);
+    ctx.lineTo(cx - titleWidth, 18);
+    ctx.stroke();
+
+    // Right line
+    const rgrd = ctx.createLinearGradient(cx + titleWidth, 0, cx + titleWidth + 200, 0);
+    rgrd.addColorStop(0, `rgba(129, 140, 248, ${lineAlpha})`);
+    rgrd.addColorStop(1, "transparent");
+    ctx.strokeStyle = rgrd;
+    ctx.beginPath();
+    ctx.moveTo(cx + titleWidth, 18);
+    ctx.lineTo(cx + titleWidth + 200, 18);
+    ctx.stroke();
+}
+
+// =========================================================================
+//  DRAWING: GPU TEMP HISTORY (sidebar graph)
+// =========================================================================
+
+function drawTempHistory(t) {
+    if (history.gpuTemp.length < 2) return;
+
+    const gx = W * 0.08;
+    const gy = H * 0.78;
+    const gw = W * 0.12;
+    const gh = 40;
+
+    // Background
+    ctx.fillStyle = "rgba(10, 12, 30, 0.3)";
+    ctx.fillRect(gx, gy, gw, gh);
+    ctx.strokeStyle = "rgba(100, 120, 255, 0.08)";
+    ctx.lineWidth = 0.5;
+    ctx.strokeRect(gx, gy, gw, gh);
+
+    // Label
+    ctx.font = "8px Inter, system-ui, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.4)";
+    ctx.fillText("GPU TEMP", gx + gw / 2, gy - 4);
+
+    const data = history.gpuTemp;
+    const maxT = Math.max(80, ...data);
+    const minT = Math.min(30, ...data);
+
+    ctx.beginPath();
+    for (let i = 0; i < data.length; i++) {
+        const px = gx + (i / (data.length - 1)) * gw;
+        const py = gy + gh - ((data[i] - minT) / (maxT - minT)) * gh;
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+    }
+
+    const temp = s.gpuTemp;
+    const tempHue = temp > 80 ? 0 : temp > 60 ? 40 : 200;
+    ctx.strokeStyle = hsl(tempHue, 70, 55, 0.6);
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.lineTo(gx + gw, gy + gh);
+    ctx.lineTo(gx, gy + gh);
+    ctx.closePath();
+    ctx.fillStyle = hsl(tempHue, 70, 50, 0.08);
+    ctx.fill();
+}
+
+// =========================================================================
+//  DRAWING: RAM HISTORY (sidebar graph)
+// =========================================================================
+
+function drawRAMHistory(t) {
+    if (history.ram.length < 2) return;
+
+    const gx = W * 0.80;
+    const gy = H * 0.78;
+    const gw = W * 0.12;
+    const gh = 40;
+
+    ctx.fillStyle = "rgba(10, 12, 30, 0.3)";
+    ctx.fillRect(gx, gy, gw, gh);
+    ctx.strokeStyle = "rgba(100, 120, 255, 0.08)";
+    ctx.lineWidth = 0.5;
+    ctx.strokeRect(gx, gy, gw, gh);
+
+    ctx.font = "8px Inter, system-ui, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.4)";
+    ctx.fillText("RAM USAGE", gx + gw / 2, gy - 4);
+
+    const data = history.ram;
+
+    ctx.beginPath();
+    for (let i = 0; i < data.length; i++) {
+        const px = gx + (i / (data.length - 1)) * gw;
+        const py = gy + gh - (data[i] / 100) * gh;
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+    }
+
+    const rc = ramArcColor(s.ramPercent);
+    ctx.strokeStyle = hsl(rc.h, rc.s, rc.l, 0.6);
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.lineTo(gx + gw, gy + gh);
+    ctx.lineTo(gx, gy + gh);
+    ctx.closePath();
+    ctx.fillStyle = hsl(rc.h, rc.s, rc.l, 0.08);
+    ctx.fill();
 }
 
 // =========================================================================
@@ -833,23 +1504,38 @@ function frame(timestamp) {
 
     updateSmoothed(dt);
     updateNetParticles(dt);
+    updateEnergyParticles(dt);
 
     // Clear
     ctx.clearRect(0, 0, W, H);
 
-    // Draw layers
+    // Draw layers (back to front)
     drawBackground(timestamp);
+    drawStarfield(timestamp, dt);
+    drawHexStreams(timestamp, dt);
     drawBgParticles(timestamp, dt);
+    drawEnergyParticles(timestamp);
     drawRAM(timestamp);
     drawGPU(timestamp);
     drawCPU(timestamp);
     drawNetwork(timestamp);
     drawClaude(timestamp);
+    drawTempHistory(timestamp);
+    drawRAMHistory(timestamp);
     drawSystemInfo(timestamp);
     drawTitle(timestamp);
 
+    // Matrix rain on separate canvas
+    drawMatrixRain(dt);
+
     requestAnimationFrame(frame);
 }
+
+// Initialize everything now that all functions are defined
+resize();
+initParticles();
+initEnergyParticles();
+initHexStreams();
 
 // Kick off
 fetchStats().then(() => {
