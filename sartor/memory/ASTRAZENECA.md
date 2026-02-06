@@ -50,6 +50,8 @@
 - Required for regulatory submissions and clinical trust
 - Black-box models face adoption barriers
 
+These explainability patterns and other practical insights are tracked in [[LEARNINGS]].
+
 **Multi-omics Integration:**
 - Combining genomics, proteomics, metabolomics for safety prediction
 - Personalized safety profiles based on patient genetics
@@ -61,11 +63,21 @@
 - Need for standardized evaluation frameworks
 - Human-in-the-loop requirements for high-stakes decisions
 
+## Business and Project Context
+
+This research forms one of the two [[BUSINESS|business tracks]] alongside SolarInference.
+For project-level status and milestones, see [[PROJECTS]].
+
 ## Open Questions
 - What specific AZ projects is Alton involved with?
 - Access to MILTON or JARVIS APIs?
 - Current regulatory submission timelines?
 - Specific therapeutic areas of focus?
+
+## Related
+- [[BUSINESS]] - Business context and strategy for pharma work
+- [[PROJECTS]] - Project tracking and status
+- [[LEARNINGS]] - Lessons learned from AI/ML work
 
 ## History
 - 2026-02-06: Initial creation based on background research

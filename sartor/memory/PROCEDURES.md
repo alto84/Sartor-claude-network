@@ -10,7 +10,7 @@
 ## SSH Access
 
 ```bash
-# From Rocinante to gpuserver1
+# From Rocinante to gpuserver1 (see [[MACHINES]] for full specs)
 ssh alton@192.168.1.100
 ```
 
@@ -47,7 +47,7 @@ cd ~/Sartor-claude-network && git pull
 cd /path/to/Sartor-claude-network && git add . && git commit -m "message" && git push
 ```
 
-**Important:** gpuserver1 SSH key is NOT added to GitHub. All pushes must originate from Rocinante which has stored git credentials.
+**Important:** gpuserver1 SSH key is NOT added to GitHub. All pushes must originate from Rocinante which has stored git credentials. This is a key lesson documented in [[LEARNINGS]].
 
 ## PowerShell in Claude Code (Windows)
 
@@ -57,7 +57,7 @@ cd /path/to/Sartor-claude-network && git add . && git commit -m "message" && git
 ```
 powershell -ExecutionPolicy Bypass -File "C:/Users/alto8/script.ps1"
 ```
-Use forward slashes in -File paths.
+Use forward slashes in -File paths. More PowerShell gotchas are tracked in [[LEARNINGS]].
 
 ## Dashboard
 
@@ -70,6 +70,7 @@ Use forward slashes in -File paths.
 - Claude Code supports agent teams for parallel work
 - Can spin up sub-instances for concurrent tasks
 - Useful for research + coding in parallel
+- Part of the [[SELF|Sartor]] orchestration layer
 
 ## Claude in Chrome MCP
 
@@ -82,6 +83,11 @@ Use forward slashes in -File paths.
 - Should we automate git sync on a schedule?
 - Dashboard authentication needed?
 - Backup procedures for memory files?
+
+## Related
+- [[MACHINES]] - Hardware specs and access details
+- [[LEARNINGS]] - Lessons learned from operating these procedures
+- [[SELF]] - Sartor system these procedures support
 
 ## History
 - 2026-02-06: Initial creation

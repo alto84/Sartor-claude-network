@@ -45,10 +45,19 @@
 - SSH from Rocinante to gpuserver1: ssh alton@192.168.1.100
 - No VPN required for local access
 
+For operational procedures on these machines, see [[PROCEDURES]].
+Both machines support the [[PROJECTS|active projects]] in this system.
+[[SELF|Sartor]] runs across both machines with git-synced memory.
+
 ## Open Questions
 - Should we add gpuserver1 SSH key to GitHub for direct push?
 - Are there other machines to inventory?
 - NAS or shared storage on the network?
+
+## Related
+- [[PROCEDURES]] - How to operate and connect to these machines
+- [[PROJECTS]] - Projects running on this hardware
+- [[SELF]] - Sartor system that spans these machines
 
 ## History
 - 2026-02-06: Initial creation

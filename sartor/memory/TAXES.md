@@ -2,7 +2,7 @@
 > Last updated: 2026-02-06 by Claude
 
 ## Key Facts
-- Filing for tax year 2025
+- Filing for [[ALTON]] for tax year 2025
 - Deadline: April 15, 2026
 - Status: Documents gathering phase
 - New deductions available under One Big Beautiful Bill Act (2025-2028)
@@ -35,6 +35,13 @@ These are new for tax year 2025:
 - **No tax on car loan interest:** Up to 10,000 in auto loan interest deductible
 - **Enhanced senior deduction:** Additional 6,000 deduction for qualifying seniors
 
+## Business Income Considerations
+
+Both [[BUSINESS|business tracks]] may generate taxable income or deductible expenses:
+- SolarInference: Pre-revenue startup expenses may be deductible
+- AstraZeneca: W-2 or 1099 depending on arrangement
+- See [[PROJECTS]] for current status of each venture
+
 ## Timeline
 
 | Date | Milestone |
@@ -52,6 +59,11 @@ These are new for tax year 2025:
 - Self-employment income from SolarInference?
 - Home office deduction applicable?
 - Investment gains/losses to report?
+
+## Related
+- [[BUSINESS]] - Business tracks with tax implications
+- [[PROJECTS]] - Project status affecting income/expenses
+- [[ALTON]] - Taxpayer profile and filing details
 
 ## History
 - 2026-02-06: Initial creation
