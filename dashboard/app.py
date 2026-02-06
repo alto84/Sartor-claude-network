@@ -154,6 +154,39 @@ def index():
     return send_from_directory('static', 'index.html')
 
 
+@app.route('/lab')
+def lab():
+    return send_from_directory('static/fun', 'index.html')
+
+
+@app.route('/api/gpu')
+def api_gpu():
+    """Detailed GPU metrics endpoint."""
+    gpu = get_gpu_metrics()
+    if not gpu:
+        return jsonify({"error": "GPU metrics unavailable"}), 503
+    try:
+        import subprocess
+        # Get additional details
+        result = subprocess.run(
+            ['nvidia-smi', '--query-gpu=power.draw,clocks.gr,clocks.mem,fan.speed,pstate',
+             '--format=csv,noheader,nounits'],
+            capture_output=True, text=True, timeout=5
+        )
+        if result.returncode == 0:
+            parts = [p.strip() for p in result.stdout.strip().split(',')]
+            gpu['power_watts'] = float(parts[0])
+            gpu['clock_gpu_mhz'] = int(parts[1])
+            gpu['clock_mem_mhz'] = int(parts[2])
+            gpu['fan_speed'] = int(parts[3]) if parts[3] != '[N/A]' else None
+            gpu['pstate'] = parts[4]
+    except Exception:
+        pass
+    gpu['vram_free'] = gpu.get('vram_total', 0) - gpu.get('vram_used', 0)
+    gpu['vram_percent'] = round(gpu.get('vram_used', 0) / max(gpu.get('vram_total', 1), 1) * 100, 1)
+    return jsonify(gpu)
+
+
 @app.route('/static/<path:filename>')
 def static_files(filename):
     return send_from_directory('static', filename)
