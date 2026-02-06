@@ -29,8 +29,10 @@ canvas#main {
     justify-content: center;
     align-items: center;
     font-size: 1.6rem;
-    color: #555;
-    letter-spacing: 0.1em;
+    color: #f59e0b;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 20px rgba(245,158,11,0.5), 0 0 40px rgba(245,158,11,0.2);
+    font-weight: bold;
 }
 .no-data-overlay.active { display: flex; }
 </style>
@@ -41,10 +43,15 @@ canvas#main {
 <script>
 // =========================================================================
 //  SYSTEM MONITOR SCREENSAVER - Sartor AI Network
-//  Single-file canvas renderer, fetches from localhost:5002/stats
+//  Single-file canvas renderer, fetches from API dynamically
 // =========================================================================
 
-const API_URL = "http://localhost:5002/stats";
+// Dynamic API URL - works both locally and from remote machines
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5002'
+    : `http://${window.location.hostname}:5002`;
+const API_URL = API_BASE + "/stats";
+
 const FETCH_INTERVAL = 1000;
 const TARGET_FPS = 30;
 const FRAME_TIME = 1000 / TARGET_FPS;
@@ -180,17 +187,17 @@ function gpuGradientColor(pct) {
 }
 
 function cpuThreadColor(pct) {
-    // dim blue -> cyan -> yellow -> red
-    if (pct < 25) return { h: 220, s: 60, l: lerp(15, 45, pct / 25) };
-    if (pct < 50) return { h: lerp(220, 180, (pct - 25) / 25), s: 80, l: lerp(45, 55, (pct - 25) / 25) };
-    if (pct < 75) return { h: lerp(180, 50, (pct - 50) / 25), s: 90, l: lerp(50, 60, (pct - 50) / 25) };
-    return { h: lerp(50, 0, (pct - 75) / 25), s: 95, l: lerp(55, 55, (pct - 75) / 25) };
+    // brighter blue -> cyan -> yellow -> red
+    if (pct < 25) return { h: 220, s: 70, l: lerp(45, 55, pct / 25) };
+    if (pct < 50) return { h: lerp(220, 180, (pct - 25) / 25), s: 85, l: lerp(55, 60, (pct - 25) / 25) };
+    if (pct < 75) return { h: lerp(180, 50, (pct - 50) / 25), s: 90, l: lerp(55, 65, (pct - 50) / 25) };
+    return { h: lerp(50, 0, (pct - 75) / 25), s: 95, l: lerp(60, 60, (pct - 75) / 25) };
 }
 
 function ramArcColor(pct) {
-    if (pct < 40) return { h: 140, s: 70, l: 45 };
-    if (pct < 70) return { h: lerp(140, 50, (pct - 40) / 30), s: 80, l: 50 };
-    return { h: lerp(50, 0, (pct - 70) / 30), s: 90, l: 50 };
+    if (pct < 40) return { h: 140, s: 75, l: 55 };
+    if (pct < 70) return { h: lerp(140, 50, (pct - 40) / 30), s: 85, l: 58 };
+    return { h: lerp(50, 0, (pct - 70) / 30), s: 90, l: 55 };
 }
 
 // --- Background ambient color ---
@@ -214,8 +221,16 @@ function drawBackground(t) {
     ctx.fillStyle = ambientColor(t);
     ctx.fillRect(0, 0, W, H);
 
-    // Faint grid
-    ctx.strokeStyle = "rgba(100,120,180,0.03)";
+    // Subtle radial gradient from center - navy blue tint so it's not pure black
+    const centerGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(W, H) * 0.7);
+    centerGrad.addColorStop(0, "rgba(20, 25, 50, 0.3)");
+    centerGrad.addColorStop(0.5, "rgba(12, 15, 35, 0.15)");
+    centerGrad.addColorStop(1, "transparent");
+    ctx.fillStyle = centerGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Grid - more visible
+    ctx.strokeStyle = "rgba(255,255,255,0.06)";
     ctx.lineWidth = 0.5;
     const gridSize = 60;
     for (let x = gridSize; x < W; x += gridSize) {
@@ -230,7 +245,7 @@ function drawBackground(t) {
     const gpuC = gpuGradientColor(s.gpuUtil);
     const gpuX = W * 0.32, gpuY = H * 0.48;
     const grad1 = ctx.createRadialGradient(gpuX, gpuY, 0, gpuX, gpuY, 250 + gpuGlow * 100);
-    grad1.addColorStop(0, hsl(gpuC.h, gpuC.s, gpuC.l, 0.06 + gpuGlow * 0.06));
+    grad1.addColorStop(0, hsl(gpuC.h, gpuC.s, gpuC.l, 0.1 + gpuGlow * 0.08));
     grad1.addColorStop(1, "transparent");
     ctx.fillStyle = grad1;
     ctx.fillRect(0, 0, W, H);
@@ -238,7 +253,7 @@ function drawBackground(t) {
     const cpuX = W * 0.65, cpuY = H * 0.48;
     const cpuGlow = s.cpuOverall / 100;
     const grad2 = ctx.createRadialGradient(cpuX, cpuY, 0, cpuX, cpuY, 200 + cpuGlow * 80);
-    grad2.addColorStop(0, hsl(200, 60, 50, 0.04 + cpuGlow * 0.05));
+    grad2.addColorStop(0, hsl(200, 60, 50, 0.06 + cpuGlow * 0.07));
     grad2.addColorStop(1, "transparent");
     ctx.fillStyle = grad2;
     ctx.fillRect(0, 0, W, H);
@@ -256,7 +271,9 @@ function drawBgParticles(t, dt) {
         const flicker = 0.7 + 0.3 * Math.sin(t * 0.001 + p.x * 0.01);
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = hsl(220, 40, 60, p.a * flicker);
+        // Brighter particles - minimum rgba(129, 140, 248, 0.3)
+        const alpha = Math.max(p.a * flicker, 0.3);
+        ctx.fillStyle = `rgba(129, 140, 248, ${alpha})`;
         ctx.fill();
     }
 }
@@ -274,83 +291,83 @@ function drawGPU(t) {
     const temp = s.gpuTemp;
     const gc = gpuGradientColor(util);
 
-    // Pulsing glow
+    // Pulsing glow - stronger
     const pulse = 1 + 0.15 * Math.sin(t * 0.003 * (1 + util / 50)) * (util / 100);
-    const glowR = outerR * (1.2 + 0.3 * (util / 100)) * pulse;
+    const glowR = outerR * (1.3 + 0.4 * (util / 100)) * pulse;
     const glow = ctx.createRadialGradient(x, y, outerR * 0.5, x, y, glowR);
-    glow.addColorStop(0, hsl(gc.h, gc.s, gc.l, 0.12 * (util / 100 + 0.1)));
+    glow.addColorStop(0, hsl(gc.h, gc.s, gc.l, 0.18 + (util / 100) * 0.12));
     glow.addColorStop(1, "transparent");
     ctx.fillStyle = glow;
     ctx.beginPath();
     ctx.arc(x, y, glowR, 0, Math.PI * 2);
     ctx.fill();
 
-    // Outer ring track
+    // Outer ring track - brighter
     ctx.beginPath();
     ctx.arc(x, y, outerR, 0, Math.PI * 2);
-    ctx.strokeStyle = "rgba(60,60,80,0.3)";
+    ctx.strokeStyle = "rgba(129, 140, 248, 0.25)";
     ctx.lineWidth = 8;
     ctx.stroke();
 
-    // Outer ring fill (GPU utilization)
+    // Outer ring fill (GPU utilization) - much brighter
     const startAngle = -Math.PI / 2;
     const endAngle = startAngle + (Math.PI * 2 * util / 100);
     ctx.beginPath();
     ctx.arc(x, y, outerR, startAngle, endAngle);
     const outerGrad = ctx.createConicGradient(startAngle, x, y);
-    outerGrad.addColorStop(0, hsl(270, 70, 60));
-    outerGrad.addColorStop(Math.min(util / 100, 0.99), hsl(gc.h, gc.s, gc.l));
+    outerGrad.addColorStop(0, "rgba(129, 140, 248, 0.9)");
+    outerGrad.addColorStop(Math.min(util / 100, 0.99), hsl(gc.h, gc.s, gc.l + 15, 0.95));
     ctx.strokeStyle = outerGrad;
     ctx.lineWidth = 8;
     ctx.lineCap = "round";
     ctx.stroke();
 
-    // Glow on the arc endpoint
+    // Glow on the arc endpoint - brighter
     const ex = x + Math.cos(endAngle) * outerR;
     const ey = y + Math.sin(endAngle) * outerR;
-    const tipGlow = ctx.createRadialGradient(ex, ey, 0, ex, ey, 15);
-    tipGlow.addColorStop(0, hsl(gc.h, gc.s, gc.l, 0.6));
+    const tipGlow = ctx.createRadialGradient(ex, ey, 0, ex, ey, 20);
+    tipGlow.addColorStop(0, hsl(gc.h, gc.s, gc.l + 20, 0.8));
     tipGlow.addColorStop(1, "transparent");
     ctx.fillStyle = tipGlow;
     ctx.beginPath();
-    ctx.arc(ex, ey, 15, 0, Math.PI * 2);
+    ctx.arc(ex, ey, 20, 0, Math.PI * 2);
     ctx.fill();
 
-    // Inner ring track (VRAM)
+    // Inner ring track (VRAM) - brighter
     ctx.beginPath();
     ctx.arc(x, y, innerR, 0, Math.PI * 2);
-    ctx.strokeStyle = "rgba(60,60,80,0.2)";
+    ctx.strokeStyle = "rgba(129, 140, 248, 0.15)";
     ctx.lineWidth = 5;
     ctx.stroke();
 
-    // Inner ring fill (VRAM)
+    // Inner ring fill (VRAM) - brighter
     const memEnd = startAngle + (Math.PI * 2 * memPct / 100);
     ctx.beginPath();
     ctx.arc(x, y, innerR, startAngle, memEnd);
-    ctx.strokeStyle = hsl(gc.h, gc.s - 10, gc.l - 5, 0.7);
+    ctx.strokeStyle = hsl(gc.h, gc.s, gc.l + 10, 0.85);
     ctx.lineWidth = 5;
     ctx.lineCap = "round";
     ctx.stroke();
 
     // Center fill
     const centerGrad = ctx.createRadialGradient(x, y, 0, x, y, coreR);
-    centerGrad.addColorStop(0, hsl(gc.h, 20, 10, 0.8));
-    centerGrad.addColorStop(1, hsl(gc.h, 15, 6, 0.5));
+    centerGrad.addColorStop(0, hsl(gc.h, 25, 14, 0.9));
+    centerGrad.addColorStop(1, hsl(gc.h, 20, 8, 0.6));
     ctx.beginPath();
     ctx.arc(x, y, coreR, 0, Math.PI * 2);
     ctx.fillStyle = centerGrad;
     ctx.fill();
 
-    // GPU utilization text
+    // GPU utilization text - bright white/purple
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = `bold ${outerR * 0.38}px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = hsl(gc.h, gc.s, gc.l + 20, 0.95);
+    ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
     ctx.fillText(Math.round(util) + "%", x, y - outerR * 0.05);
 
-    // VRAM text
+    // VRAM text - clearly readable
     ctx.font = `${outerR * 0.11}px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(180,180,200,0.6)";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
     const memUsedGB = (s.gpuMem / 1024).toFixed(1);
     const memTotalGB = (((stats && stats.gpu && stats.gpu.memory_total) || 32768) / 1024).toFixed(0);
     ctx.fillText(`VRAM ${memUsedGB} / ${memTotalGB} GB`, x, y + outerR * 0.2);
@@ -359,19 +376,19 @@ function drawGPU(t) {
     const tempX = x + outerR * 0.0;
     const tempY = y + outerR * 0.38;
     ctx.font = `${outerR * 0.1}px Inter, system-ui, sans-serif`;
-    const tempColor = temp > 80 ? hsl(0, 90, 55) : temp > 60 ? hsl(40, 80, 55) : hsl(200, 60, 55);
+    const tempColor = temp > 80 ? hsl(0, 90, 60) : temp > 60 ? hsl(40, 85, 60) : hsl(200, 70, 65);
     ctx.fillStyle = tempColor;
     ctx.fillText(Math.round(temp) + "\u00B0C", tempX, tempY);
 
-    // Label
+    // GPU name label - clearly readable
     const gpuName = (stats && stats.gpu && stats.gpu.name) || "RTX 5090";
     ctx.font = `bold ${outerR * 0.1}px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(140,140,170,0.5)";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
     ctx.fillText(gpuName, x, y + outerR * 0.55);
 
-    // Small label above
+    // Label above - clearly readable
     ctx.font = `${outerR * 0.08}px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(120,120,160,0.4)";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
     ctx.fillText("GPU UTILIZATION", x, y - outerR - 20);
 }
 
@@ -389,17 +406,17 @@ function drawCPU(t) {
     const startX = x - gridW / 2;
     const startY = y - gridH / 2 + 15;
 
-    // Overall CPU label above grid
+    // Overall CPU label above grid - bright and readable
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = `bold ${dotR * 5}px Inter, system-ui, sans-serif`;
     const cpuPct = s.cpuOverall;
     const oc = cpuThreadColor(cpuPct);
-    ctx.fillStyle = hsl(oc.h, oc.s, oc.l + 15, 0.9);
+    ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
     ctx.fillText(Math.round(cpuPct) + "%", x, startY - gridH * 0.25 - dotR * 4);
 
     ctx.font = `${dotR * 1.5}px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(120,120,160,0.4)";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
     ctx.fillText("CPU UTILIZATION", x, startY - gridH * 0.25 - dotR * 1.8);
 
     // Draw thread dots
@@ -418,7 +435,7 @@ function drawCPU(t) {
         // Glow for hot threads
         if (pct > 40) {
             const tGlow = ctx.createRadialGradient(dx, dy, 0, dx, dy, r * 2.5);
-            tGlow.addColorStop(0, hsl(c.h, c.s, c.l, 0.25 * (pct / 100)));
+            tGlow.addColorStop(0, hsl(c.h, c.s, c.l, 0.35 * (pct / 100)));
             tGlow.addColorStop(1, "transparent");
             ctx.fillStyle = tGlow;
             ctx.beginPath();
@@ -428,20 +445,21 @@ function drawCPU(t) {
 
         ctx.beginPath();
         ctx.arc(dx, dy, r, 0, Math.PI * 2);
-        const brightness = lerp(0.15, 1, pct / 100);
+        // Idle threads much more visible - minimum 0.5 opacity in blue
+        const brightness = lerp(0.5, 1, pct / 100);
         ctx.fillStyle = hsl(c.h, c.s, c.l, brightness);
         ctx.fill();
 
-        // Thin border
-        ctx.strokeStyle = hsl(c.h, c.s - 20, c.l - 10, 0.3);
-        ctx.lineWidth = 0.5;
+        // Thin border - more visible
+        ctx.strokeStyle = hsl(c.h, c.s - 10, c.l, 0.4);
+        ctx.lineWidth = 0.7;
         ctx.stroke();
     }
 
-    // CPU Name
+    // CPU Name - clearly readable
     const cpuName = (stats && stats.cpu && stats.cpu.name) || "i9-14900K";
     ctx.font = `bold ${dotR * 1.4}px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(140,140,170,0.5)";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
     ctx.fillText(cpuName, x, startY + gridH + dotR * 3.5);
 }
 
@@ -474,28 +492,28 @@ function drawRAM(t) {
         if (filled) {
             const c = ramArcColor(segPct);
             const glow = 0.5 + 0.5 * (segPct / 100);
-            ctx.strokeStyle = hsl(c.h, c.s, c.l, 0.4 + glow * 0.5);
+            ctx.strokeStyle = hsl(c.h, c.s, c.l, 0.6 + glow * 0.4);
         } else {
-            ctx.strokeStyle = "rgba(50,50,70,0.15)";
+            // Empty segments have a dim visible outline
+            ctx.strokeStyle = "rgba(255,255,255,0.15)";
         }
         ctx.stroke();
     }
 
-    // RAM text centered
+    // RAM text centered - bright and readable
     const textY = arcCy + arcR * 0.35;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = `bold ${lineW * 2.2}px Inter, system-ui, sans-serif`;
-    const rc = ramArcColor(pct);
-    ctx.fillStyle = hsl(rc.h, rc.s, rc.l + 10, 0.85);
+    ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
     ctx.fillText(s.ramUsed.toFixed(1) + " GB", arcCx, textY);
 
     ctx.font = `${lineW * 1.1}px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(140,140,170,0.5)";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
     ctx.fillText(`/ ${totalGB} GB RAM`, arcCx, textY + lineW * 2.5);
 
     ctx.font = `${lineW * 0.9}px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(100,100,140,0.4)";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.7)";
     ctx.fillText("MEMORY", arcCx, textY - lineW * 2.5);
 }
 
@@ -561,59 +579,75 @@ function drawNetwork(t) {
     const centerX = W * 0.5;
     const spread = W * 0.3;
 
-    // RX particles (cyan)
+    // RX particles (vivid cyan)
     for (const p of netParticlesRx) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = hsl(185, 80, 60, p.life * 0.7);
+        ctx.fillStyle = hsl(185, 90, 65, p.life * 0.9);
+        ctx.fill();
+        // Small glow
+        const pg = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
+        pg.addColorStop(0, hsl(185, 90, 65, p.life * 0.3));
+        pg.addColorStop(1, "transparent");
+        ctx.fillStyle = pg;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
         ctx.fill();
     }
 
-    // TX particles (magenta)
+    // TX particles (vivid magenta)
     for (const p of netParticlesTx) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = hsl(310, 80, 60, p.life * 0.7);
+        ctx.fillStyle = hsl(310, 90, 65, p.life * 0.9);
+        ctx.fill();
+        // Small glow
+        const pg = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
+        pg.addColorStop(0, hsl(310, 90, 65, p.life * 0.3));
+        pg.addColorStop(1, "transparent");
+        ctx.fillStyle = pg;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
         ctx.fill();
     }
 
-    // Flow lines (subtle)
-    ctx.strokeStyle = "rgba(0,200,220,0.06)";
+    // Flow lines (more visible)
+    ctx.strokeStyle = "rgba(0,220,240,0.15)";
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(centerX - spread, baseY);
     ctx.lineTo(centerX, baseY);
     ctx.stroke();
 
-    ctx.strokeStyle = "rgba(220,0,180,0.06)";
+    ctx.strokeStyle = "rgba(240,0,200,0.15)";
     ctx.beginPath();
     ctx.moveTo(centerX, baseY);
     ctx.lineTo(centerX + spread, baseY);
     ctx.stroke();
 
-    // Labels
+    // Labels - bright and readable
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = `bold 14px Inter, system-ui, sans-serif`;
 
-    // Download
-    ctx.fillStyle = hsl(185, 70, 55, 0.8);
+    // Download - vivid cyan
+    ctx.fillStyle = hsl(185, 80, 65, 0.95);
     ctx.fillText("\u25BC " + s.rxMbps.toFixed(1) + " Mbps", centerX - spread * 0.5, baseY - 22);
     ctx.font = `10px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(0,200,220,0.4)";
+    ctx.fillStyle = "rgba(0,220,240,0.7)";
     ctx.fillText("DOWNLOAD", centerX - spread * 0.5, baseY - 8);
 
-    // Upload
+    // Upload - vivid magenta
     ctx.font = `bold 14px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = hsl(310, 70, 55, 0.8);
+    ctx.fillStyle = hsl(310, 80, 65, 0.95);
     ctx.fillText("\u25B2 " + s.txMbps.toFixed(1) + " Mbps", centerX + spread * 0.5, baseY - 22);
     ctx.font = `10px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(220,0,180,0.4)";
+    ctx.fillStyle = "rgba(240,0,200,0.7)";
     ctx.fillText("UPLOAD", centerX + spread * 0.5, baseY - 8);
 
     // Center divider
     ctx.font = `10px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(120,120,160,0.3)";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.5)";
     ctx.fillText("NETWORK", centerX, baseY - 38);
 }
 
@@ -632,28 +666,28 @@ function drawClaude(t) {
         for (let i = ringCount; i >= 0; i--) {
             const ringR = orbR * (1.5 + i * 0.6);
             const phase = t * 0.002 - i * 0.5;
-            const alpha = (0.12 - i * 0.03) * (0.7 + 0.3 * Math.sin(phase));
+            const alpha = (0.2 - i * 0.04) * (0.7 + 0.3 * Math.sin(phase));
             ctx.beginPath();
             ctx.arc(x, y, ringR, 0, Math.PI * 2);
-            ctx.strokeStyle = hsl(270, 80, 65, alpha);
+            ctx.strokeStyle = hsl(270, 85, 70, alpha);
             ctx.lineWidth = 1.5;
             ctx.stroke();
         }
 
-        // Core glow
-        const cGlow = ctx.createRadialGradient(x, y, 0, x, y, orbR * 2);
-        cGlow.addColorStop(0, hsl(270, 80, 65, 0.3));
+        // Core glow - stronger
+        const cGlow = ctx.createRadialGradient(x, y, 0, x, y, orbR * 2.5);
+        cGlow.addColorStop(0, hsl(270, 85, 70, 0.45));
         cGlow.addColorStop(1, "transparent");
         ctx.fillStyle = cGlow;
         ctx.beginPath();
-        ctx.arc(x, y, orbR * 2, 0, Math.PI * 2);
+        ctx.arc(x, y, orbR * 2.5, 0, Math.PI * 2);
         ctx.fill();
 
         ctx.beginPath();
         ctx.arc(x, y, orbR, 0, Math.PI * 2);
         const orbGrad = ctx.createRadialGradient(x, y, 0, x, y, orbR);
-        orbGrad.addColorStop(0, hsl(270, 90, 75, 0.95));
-        orbGrad.addColorStop(1, hsl(270, 70, 50, 0.7));
+        orbGrad.addColorStop(0, hsl(270, 90, 80, 0.95));
+        orbGrad.addColorStop(1, hsl(270, 75, 55, 0.8));
         ctx.fillStyle = orbGrad;
         ctx.fill();
 
@@ -672,7 +706,7 @@ function drawClaude(t) {
                 ctx.beginPath();
                 ctx.moveTo(x, y);
                 ctx.lineTo(ax, ay);
-                ctx.strokeStyle = hsl(270, 60, 55, 0.2);
+                ctx.strokeStyle = hsl(270, 65, 60, 0.35);
                 ctx.lineWidth = 1;
                 ctx.stroke();
 
@@ -680,52 +714,53 @@ function drawClaude(t) {
                 ctx.beginPath();
                 ctx.arc(ax, ay, subR, 0, Math.PI * 2);
                 const subGrad = ctx.createRadialGradient(ax, ay, 0, ax, ay, subR);
-                subGrad.addColorStop(0, hsl(290, 80, 70, 0.9));
-                subGrad.addColorStop(1, hsl(280, 60, 45, 0.6));
+                subGrad.addColorStop(0, hsl(290, 85, 75, 0.95));
+                subGrad.addColorStop(1, hsl(280, 65, 50, 0.7));
                 ctx.fillStyle = subGrad;
                 ctx.fill();
 
                 // Label
                 ctx.font = `8px Inter, system-ui, sans-serif`;
                 ctx.textAlign = "center";
-                ctx.fillStyle = "rgba(200,180,240,0.6)";
+                ctx.fillStyle = "rgba(220,200,250,0.7)";
                 ctx.fillText(agent.type, ax, ay + subR + 10);
             }
         }
 
         ctx.font = `bold 11px Inter, system-ui, sans-serif`;
         ctx.textAlign = "center";
-        ctx.fillStyle = hsl(270, 70, 70, 0.9);
+        ctx.fillStyle = hsl(270, 75, 75, 0.95);
         ctx.fillText("ACTIVE", x, y + orbR + 18);
 
     } else {
-        // Idle: soft dim purple pulse
-        const breath = 0.4 + 0.2 * Math.sin(t * 0.0015);
-        const idleGlow = ctx.createRadialGradient(x, y, 0, x, y, orbR * 1.8);
-        idleGlow.addColorStop(0, hsl(270, 40, 35, breath * 0.3));
+        // Idle: much more visible purple pulse - larger, brighter glow
+        const breath = 0.6 + 0.3 * Math.sin(t * 0.0015);
+        const idleGlow = ctx.createRadialGradient(x, y, 0, x, y, orbR * 2.5);
+        idleGlow.addColorStop(0, hsl(270, 55, 50, breath * 0.5));
+        idleGlow.addColorStop(0.5, hsl(270, 45, 40, breath * 0.2));
         idleGlow.addColorStop(1, "transparent");
         ctx.fillStyle = idleGlow;
         ctx.beginPath();
-        ctx.arc(x, y, orbR * 1.8, 0, Math.PI * 2);
+        ctx.arc(x, y, orbR * 2.5, 0, Math.PI * 2);
         ctx.fill();
 
         ctx.beginPath();
         ctx.arc(x, y, orbR * (0.9 + 0.1 * Math.sin(t * 0.0015)), 0, Math.PI * 2);
         const orbGrad = ctx.createRadialGradient(x, y, 0, x, y, orbR);
-        orbGrad.addColorStop(0, hsl(270, 40, 40, breath));
-        orbGrad.addColorStop(1, hsl(270, 30, 25, breath * 0.5));
+        orbGrad.addColorStop(0, hsl(270, 55, 55, breath));
+        orbGrad.addColorStop(1, hsl(270, 40, 35, breath * 0.6));
         ctx.fillStyle = orbGrad;
         ctx.fill();
 
         ctx.font = `bold 11px Inter, system-ui, sans-serif`;
         ctx.textAlign = "center";
-        ctx.fillStyle = hsl(270, 30, 45, 0.4);
+        ctx.fillStyle = hsl(270, 40, 55, 0.6);
         ctx.fillText("IDLE", x, y + orbR + 18);
     }
 
-    // Label
+    // Label - more readable
     ctx.font = `9px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(120,120,160,0.35)";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.6)";
     ctx.fillText("CLAUDE CODE", x, y - orbR - 12);
 }
 
@@ -744,30 +779,39 @@ function drawSystemInfo(t) {
     const now = new Date();
     const timeStr = now.toLocaleTimeString("en-US", { hour12: false });
 
+    // System info - clearly readable
     ctx.font = `10px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(100,100,140,0.35)";
+    ctx.fillStyle = "rgba(200, 200, 220, 0.6)";
     ctx.fillText(hostname + "  |  up " + uptime + "  |  " + timeStr, x, y);
 
-    // Watermark
+    // Watermark - subtle but visible
     ctx.font = `9px Inter, system-ui, sans-serif`;
-    ctx.fillStyle = "rgba(80,80,120,0.2)";
+    ctx.fillStyle = "rgba(129, 140, 248, 0.35)";
     ctx.fillText("SARTOR AI NETWORK", x, y - 16);
 }
 
 // --- TITLE / HEADER ---
 function drawTitle(t) {
-    // Gradient title at very top
+    // Gradient title at very top - clearly visible
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
-    ctx.font = `bold 13px Inter, system-ui, sans-serif`;
+    ctx.font = `bold 14px Inter, system-ui, sans-serif`;
 
-    // Simulate gradient text
+    // Simulate gradient text (#818cf8 -> #c084fc -> #f472b6)
     const grad = ctx.createLinearGradient(cx - 100, 0, cx + 100, 0);
     grad.addColorStop(0, "#818cf8");
     grad.addColorStop(0.5, "#c084fc");
     grad.addColorStop(1, "#f472b6");
     ctx.fillStyle = grad;
     ctx.fillText("SYSTEM MONITOR", cx, 12);
+
+    // Subtle glow behind title
+    ctx.save();
+    ctx.globalAlpha = 0.15;
+    ctx.shadowColor = "#c084fc";
+    ctx.shadowBlur = 20;
+    ctx.fillText("SYSTEM MONITOR", cx, 12);
+    ctx.restore();
 }
 
 // =========================================================================
