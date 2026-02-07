@@ -17,6 +17,8 @@ import {
   Sparkles,
   Sun,
   Server,
+  Shield,
+  FlaskConical,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -50,6 +52,11 @@ const navigation = [
   { name: "Claude Tasks", href: "/tasks", icon: Sparkles },
   { name: "Setup", href: "/setup", icon: Wrench },
   { name: "Settings", href: "/settings", icon: Settings },
+];
+
+// Drug Development / Safety Research section
+const safetyResearchNav = [
+  { name: "Safety Research", href: "/safety", icon: Shield, iconSecondary: FlaskConical },
 ];
 
 // Solar Inference section - GPU Server Management
@@ -235,6 +242,65 @@ function SidebarContent({
             );
           })}
         </motion.ul>
+
+        {/* Safety Research Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.25 }}
+          className="mt-6 pt-4 border-t border-sidebar-border"
+        >
+          <p className="px-3 mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+            Drug Development
+          </p>
+          <motion.ul className="space-y-1" role="list">
+            {safetyResearchNav.map((item) => {
+              const isActive = pathname === item.href || pathname?.startsWith(item.href + "/");
+              return (
+                <motion.li
+                  key={item.name}
+                  whileHover="hover"
+                  variants={navItemVariants}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={onNavClick}
+                    aria-current={isActive ? "page" : undefined}
+                    className={cn(
+                      "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
+                      isActive
+                        ? "bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-emerald-700 dark:text-emerald-400 shadow-sm border border-emerald-500/30"
+                        : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
+                    )}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: isActive ? 0 : 10 }}
+                      whileTap={{ scale: 0.9 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                      className="relative"
+                    >
+                      <item.icon className={cn(
+                        "h-5 w-5 transition-colors",
+                        isActive ? "text-emerald-500" : "text-emerald-600"
+                      )} />
+                      {item.iconSecondary && (
+                        <item.iconSecondary className="h-3 w-3 absolute -bottom-0.5 -right-0.5 text-teal-500" />
+                      )}
+                    </motion.div>
+                    <span>{item.name}</span>
+                    {isActive && (
+                      <motion.div
+                        layoutId="safetyIndicator"
+                        className="ml-auto h-1.5 w-1.5 rounded-full bg-emerald-500"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                </motion.li>
+              );
+            })}
+          </motion.ul>
+        </motion.div>
 
         {/* Solar Inference Section */}
         <motion.div
