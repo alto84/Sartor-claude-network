@@ -25,6 +25,7 @@ import {
  BookOpen,
  Target,
  Zap,
+ FileDown,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -32,6 +33,10 @@ import { AdverseEventComparison } from "@/components/safety/adverse-event-compar
 import { RiskWaterfall } from "@/components/safety/risk-waterfall";
 import { SafetyRadar } from "@/components/safety/safety-radar";
 import { BayesianPanel } from "@/components/safety/bayesian-panel";
+import { ForestPlot } from "@/components/safety/forest-plot";
+import { FAERSSignals } from "@/components/safety/faers-signals";
+import { PatientJourney } from "@/components/safety/patient-journey";
+import { ExecutiveBriefing } from "@/components/safety/executive-briefing";
 import {
   adverseEventRates as canonicalAERates,
   mitigationStrategies as canonicalMitigations,
@@ -382,6 +387,7 @@ function SafetyDashboardContent() {
  const [selectedMitigations, setSelectedMitigations] = useState<string[]>(["dose-reduction"]);
  const [activeTab, setActiveTab] = useState<TabId>(initialTab);
  const [expandedDecision, setExpandedDecision] = useState<string | null>(null);
+ const [briefingOpen, setBriefingOpen] = useState(false);
 
  const handleTabChange = (tab: TabId) => {
  setActiveTab(tab);
@@ -445,7 +451,7 @@ function SafetyDashboardContent() {
  <div className="p-2 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg">
  <Shield className="h-6 w-6" />
  </div>
- <div>
+ <div className="flex-1">
  <h1 className="text-2xl font-bold tracking-tight">
  Predictive Safety Platform
  </h1>
@@ -453,6 +459,15 @@ function SafetyDashboardContent() {
  CAR-T Cell Therapy in SLE -- BCMA/CD19 Safety Intelligence
  </p>
  </div>
+ <Button
+ variant="outline"
+ size="sm"
+ onClick={() => setBriefingOpen(true)}
+ className="text-xs gap-1.5 h-8"
+ >
+ <FileDown className="h-3.5 w-3.5" />
+ Export Briefing
+ </Button>
  </div>
  <div className="flex items-center gap-2 text-xs text-muted-foreground">
  <span className="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-medium">
@@ -805,6 +820,9 @@ function SafetyDashboardContent() {
  {/* Interactive Recharts Comparison */}
  <AdverseEventComparison />
 
+ {/* Forest Plot - Classic meta-analysis visualization */}
+ <ForestPlot />
+
  <Card>
  <CardHeader className="pb-2">
  <CardTitle className="text-sm font-semibold flex items-center gap-2">
@@ -1155,7 +1173,11 @@ function SafetyDashboardContent() {
  initial={{ opacity: 0, y: 10 }}
  animate={{ opacity: 1, y: 0 }}
  exit={{ opacity: 0, y: -10 }}
+ className="space-y-4"
  >
+ {/* FAERS Signal Detection */}
+ <FAERSSignals />
+
  <Card>
  <CardHeader className="pb-2">
  <CardTitle className="text-sm font-semibold flex items-center gap-2">
@@ -1207,6 +1229,9 @@ function SafetyDashboardContent() {
  exit={{ opacity: 0, y: -10 }}
  className="space-y-3"
  >
+ {/* Patient Journey Timeline */}
+ <PatientJourney />
+
  {[
  {
  id: "dose",
@@ -1435,6 +1460,17 @@ function SafetyDashboardContent() {
  </motion.div>
  )}
  </AnimatePresence>
+
+ {/* Executive Briefing Export Modal */}
+ <ExecutiveBriefing
+ open={briefingOpen}
+ onClose={() => setBriefingOpen(false)}
+ baselineRisks={baselineRisks}
+ mitigatedCRS={mitigatedCRS}
+ mitigatedICANS={mitigatedICANS}
+ selectedMitigations={selectedMitigations}
+ trialCount={activeClinicalTrials.length}
+ />
  </div>
  );
 }
