@@ -37,6 +37,7 @@ import { ForestPlot } from "@/components/safety/forest-plot";
 import { FAERSSignals } from "@/components/safety/faers-signals";
 import { PatientJourney } from "@/components/safety/patient-journey";
 import { ExecutiveBriefing } from "@/components/safety/executive-briefing";
+import { EvidenceAccrual } from "@/components/safety/evidence-accrual";
 import {
   adverseEventRates as canonicalAERates,
   mitigationStrategies as canonicalMitigations,
@@ -582,6 +583,9 @@ function SafetyDashboardContent() {
 
  {/* Bayesian Risk Model (gpuserver1) */}
  <BayesianPanel className="md:col-span-2" />
+
+ {/* Evidence Accrual Curve */}
+ <EvidenceAccrual className="md:col-span-2" />
 
  {/* Baseline Risk */}
  <Card>
@@ -1138,6 +1142,135 @@ function SafetyDashboardContent() {
  .map((m) => ({ name: m.name, relativeRisk: m.relativeRisk }))}
  />
  </div>
+
+ {/* Correlation Sensitivity Analysis */}
+ {correlationWarnings.length > 0 && (() => {
+   // Compute mitigated rate across a range of rho multipliers
+   const rhoScales = [0, 0.5, 1.0, 1.5, 2.0];
+   const rhoLabels = ["Independent", "Half", "Estimated", "1.5\u00D7", "Double"];
+   const crsMits = mitigationStrategies.filter(m => selectedMitigations.includes(m.id) && m.targetAE.includes("CRS"));
+   const icansMits = mitigationStrategies.filter(m => selectedMitigations.includes(m.id) && m.targetAE.includes("ICANS"));
+
+   function computeScaledRR(mits: typeof crsMits, scale: number): number {
+     if (mits.length <= 1) return mits.length === 1 ? mits[0].relativeRisk : 1;
+     const items = mits.map(m => ({ id: m.id, rr: m.relativeRisk }));
+     while (items.length > 1) {
+       let bi = 0, bj = 1;
+       let bc = getMitigationCorrelation(items[0].id, items[1].id) * scale;
+       for (let a = 0; a < items.length; a++) {
+         for (let b = a + 1; b < items.length; b++) {
+           const c = getMitigationCorrelation(items[a].id, items[b].id) * scale;
+           if (c > bc) { bc = c; bi = a; bj = b; }
+         }
+       }
+       const rho = Math.min(bc, 0.99);
+       const combined = combineCorrelatedRR(items[bi].rr, items[bj].rr, rho);
+       items.splice(bj, 1);
+       items.splice(bi, 1);
+       items.push({ id: items.length.toString(), rr: combined });
+     }
+     return items[0].rr;
+   }
+
+   const crsRates = rhoScales.map(s => baselineRisks.crsGrade3Plus.estimate * computeScaledRR(crsMits, s));
+   const icansRates = rhoScales.map(s => baselineRisks.icansGrade3Plus.estimate * computeScaledRR(icansMits, s));
+   const estimatedIdx = 2;
+
+   return (
+     <Card>
+       <CardHeader className="pb-2">
+         <CardTitle className="text-sm font-semibold flex items-center gap-2">
+           <Layers className="h-4 w-4 text-purple-600" />
+           Correlation Sensitivity Analysis
+         </CardTitle>
+       </CardHeader>
+       <CardContent>
+         <p className="text-[10px] text-muted-foreground mb-3">
+           How do mitigated risk estimates change if the true mechanistic correlation between mitigations is higher or lower than estimated?
+           A CMO should consider the range of plausible outcomes across different correlation assumptions.
+         </p>
+         <div className="overflow-x-auto">
+           <table className="w-full text-xs">
+             <thead>
+               <tr className="border-b text-left text-muted-foreground">
+                 <th className="pb-2 pr-3">{"\u03C1"} Assumption</th>
+                 <th className="pb-2 pr-3 text-right">CRS Grade 3+</th>
+                 <th className="pb-2 text-right">ICANS Grade 3+</th>
+               </tr>
+             </thead>
+             <tbody>
+               {rhoScales.map((s, i) => (
+                 <tr
+                   key={s}
+                   className={`border-b border-dashed ${i === estimatedIdx ? "bg-blue-50/50 dark:bg-blue-950/20 font-semibold" : ""}`}
+                 >
+                   <td className="py-1.5 pr-3">
+                     <span className="font-mono text-[10px]">{rhoLabels[i]}</span>
+                     <span className="text-[9px] text-muted-foreground ml-1">
+                       ({s === 0 ? "\u03C1=0" : s === 1 ? "\u03C1 est." : `\u03C1\u00D7${s}`})
+                     </span>
+                     {i === estimatedIdx && (
+                       <span className="ml-1 text-[9px] px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">
+                         current
+                       </span>
+                     )}
+                   </td>
+                   <td className={`py-1.5 pr-3 text-right font-mono text-[10px] ${i === estimatedIdx ? "text-emerald-600" : ""}`}>
+                     {crsRates[i].toFixed(3)}%
+                   </td>
+                   <td className={`py-1.5 text-right font-mono text-[10px] ${i === estimatedIdx ? "text-blue-600" : ""}`}>
+                     {icansRates[i].toFixed(3)}%
+                   </td>
+                 </tr>
+               ))}
+             </tbody>
+           </table>
+         </div>
+         <div className="mt-3 flex gap-4">
+           <div className="flex-1">
+             <p className="text-[9px] text-muted-foreground font-medium mb-1">CRS Range</p>
+             <div className="h-2 rounded-full bg-muted relative overflow-hidden">
+               <div
+                 className="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-300 to-emerald-600 rounded-full"
+                 style={{
+                   left: `${(Math.min(...crsRates) / baselineRisks.crsGrade3Plus.estimate) * 100}%`,
+                   width: `${((Math.max(...crsRates) - Math.min(...crsRates)) / baselineRisks.crsGrade3Plus.estimate) * 100}%`,
+                 }}
+               />
+             </div>
+             <div className="flex justify-between text-[9px] text-muted-foreground mt-0.5">
+               <span>{Math.min(...crsRates).toFixed(3)}%</span>
+               <span>{Math.max(...crsRates).toFixed(3)}%</span>
+             </div>
+           </div>
+           <div className="flex-1">
+             <p className="text-[9px] text-muted-foreground font-medium mb-1">ICANS Range</p>
+             <div className="h-2 rounded-full bg-muted relative overflow-hidden">
+               <div
+                 className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-300 to-blue-600 rounded-full"
+                 style={{
+                   left: `${(Math.min(...icansRates) / baselineRisks.icansGrade3Plus.estimate) * 100}%`,
+                   width: `${((Math.max(...icansRates) - Math.min(...icansRates)) / baselineRisks.icansGrade3Plus.estimate) * 100}%`,
+                 }}
+               />
+             </div>
+             <div className="flex justify-between text-[9px] text-muted-foreground mt-0.5">
+               <span>{Math.min(...icansRates).toFixed(3)}%</span>
+               <span>{Math.max(...icansRates).toFixed(3)}%</span>
+             </div>
+           </div>
+         </div>
+         <p className="text-[9px] text-muted-foreground italic mt-2">
+           {"\u201C"}Independent{"\u201D"} assumes no shared mechanism ({"\u03C1"}=0).
+           {"\u201C"}Estimated{"\u201D"} uses knowledge-graph correlation values.
+           {"\u201C"}Double{"\u201D"} tests if true correlations are 2{"\u00D7"} our estimates.
+           Sensitivity range informs model robustness for CSP decision-making.
+         </p>
+       </CardContent>
+     </Card>
+   );
+ })()}
+
  </motion.div>
  )}
 
