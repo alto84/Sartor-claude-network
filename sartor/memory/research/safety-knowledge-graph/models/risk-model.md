@@ -92,13 +92,19 @@ Studies are weighted by three dimensions:
 For mitigations i and j with correlation rho_ij:
 
 ```
-RR_combined = max(RR_i, RR_j) + (1 - max(RR_i, RR_j)) * min(RR_i, RR_j)^(1 - rho_ij)
+RR_combined = (RR_i * RR_j)^(1 - rho_ij) * min(RR_i, RR_j)^rho_ij
 ```
 
-**Properties of this model:**
+*Note: The original formula (v2.0 draft) was `max(RR) + (1-max(RR)) * min(RR)^(1-rho)` but this did not satisfy its stated boundary conditions. Corrected to geometric interpolation on the RR scale.*
+
+**Properties of this model (verified):**
 - When rho = 0 (fully independent): reverts to multiplicative model (RR_i x RR_j)
-- When rho = 1 (identical mechanism): RR_combined = max(RR_i, RR_j), i.e., no additional benefit from the second mitigation
+- When rho = 1 (identical mechanism): RR_combined = min(RR_i, RR_j), i.e., only the more effective mitigation contributes
 - When 0 < rho < 1: intermediate, with diminishing marginal benefit as correlation increases
+
+**Example:** Tocilizumab (RR=0.45) + Anakinra (RR=0.65), rho=0.4:
+- Naive multiplicative: 0.45 x 0.65 = 0.293
+- Correlated correction: (0.293)^0.6 x 0.45^0.4 = 0.348 (~19% less benefit than naive)
 
 **For 3+ mitigations:** Apply pairwise combination iteratively, combining the two most correlated mitigations first, then combining the result with the next mitigation.
 

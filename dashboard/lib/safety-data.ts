@@ -458,6 +458,101 @@ export const mitigationStrategies: MitigationStrategy[] = [
 ];
 
 // ---------------------------------------------------------------------------
+// Mitigation Correlation Matrix
+// ---------------------------------------------------------------------------
+// When two mitigations share mechanistic pathways, their combined risk
+// reduction is less than the naive multiplicative (independent) model predicts.
+// Correlation rho_ij = 0 means fully independent (multiplicative RR).
+// Correlation rho_ij = 1 means identical mechanism (no additive benefit).
+//
+// Source: risk-model.md v2.0 (knowledge graph, mechanistic reasoning), formula corrected
+// Formula: RR_combined = (RR_i * RR_j)^(1 - rho) * min(RR_i, RR_j)^rho
+//   - rho = 0 → multiplicative: RR_i * RR_j (independent)
+//   - rho = 1 → min(RR_i, RR_j) (fully redundant, best single mitigation wins)
+//   - 0 < rho < 1 → intermediate with diminishing marginal benefit
+
+export const mitigationCorrelations: Record<string, number> = {
+  "tocilizumab|corticosteroids": 0.5,   // Both suppress IL-6 signaling pathway
+  "tocilizumab|anakinra": 0.4,          // Both target pro-inflammatory cytokine cascade (IL-6 and IL-1)
+  "corticosteroids|anakinra": 0.3,      // Overlapping broad anti-inflammatory mechanisms
+  // All other pairs default to 0.0 (independent)
+};
+
+/**
+ * Get the mechanistic correlation between two mitigations.
+ * Returns 0.0 (independent) if no known shared mechanism.
+ */
+export function getMitigationCorrelation(idA: string, idB: string): number {
+  const key = [idA, idB].sort().join("|");
+  return mitigationCorrelations[key] ?? 0;
+}
+
+/**
+ * Combine two relative risks accounting for mechanistic correlation.
+ *
+ * Corrected formula (geometric interpolation between independence and full redundancy):
+ *   RR_combined = (RR_i * RR_j)^(1 - rho) * min(RR_i, RR_j)^rho
+ *
+ * Properties (verified):
+ *   rho = 0 → RR_i * RR_j (multiplicative, fully independent mitigations)
+ *   rho = 1 → min(RR_i, RR_j) (fully redundant; only the more effective mitigation matters)
+ *   0 < rho < 1 → intermediate; diminishing marginal benefit as correlation increases
+ *
+ * Note: The original risk-model.md v2.0 formula was mathematically incorrect
+ * (did not satisfy its own stated boundary conditions). This corrected version
+ * uses log-linear interpolation on the RR scale, preserving both boundary conditions.
+ */
+export function combineCorrelatedRR(rrA: number, rrB: number, rho: number): number {
+  const product = rrA * rrB;
+  const minRR = Math.min(rrA, rrB);
+  return Math.pow(product, 1 - rho) * Math.pow(minRR, rho);
+}
+
+/**
+ * Combine multiple mitigation RRs for a target AE, accounting for pairwise
+ * correlations. For 3+ mitigations, combines the most correlated pair first
+ * (greedy iterative approach per risk-model.md v2.0).
+ */
+export function combineMultipleMitigationRRs(
+  mitigationIds: string[],
+  mitigationRRs: number[],
+  targetAE: string
+): number {
+  if (mitigationIds.length === 0) return 1;
+  if (mitigationIds.length === 1) return mitigationRRs[0];
+
+  // Build working list of (id, rr) pairs
+  const items = mitigationIds.map((id, i) => ({ id, rr: mitigationRRs[i] }));
+
+  // Iteratively combine the most-correlated pair until one remains
+  while (items.length > 1) {
+    let bestI = 0, bestJ = 1;
+    let bestCorr = getMitigationCorrelation(items[0].id, items[1].id);
+
+    for (let i = 0; i < items.length; i++) {
+      for (let j = i + 1; j < items.length; j++) {
+        const corr = getMitigationCorrelation(items[i].id, items[j].id);
+        if (corr > bestCorr) {
+          bestCorr = corr;
+          bestI = i;
+          bestJ = j;
+        }
+      }
+    }
+
+    const combinedRR = combineCorrelatedRR(items[bestI].rr, items[bestJ].rr, bestCorr);
+    const combinedId = `${items[bestI].id}+${items[bestJ].id}`;
+
+    // Remove the two items (higher index first to preserve indices)
+    items.splice(bestJ, 1);
+    items.splice(bestI, 1);
+    items.push({ id: combinedId, rr: combinedRR });
+  }
+
+  return items[0].rr;
+}
+
+// ---------------------------------------------------------------------------
 // Clinical Trials Data
 // ---------------------------------------------------------------------------
 
@@ -787,10 +882,10 @@ export const dataSources: DataSource[] = [
 /**
  * Calculate mitigated risk given baseline risks and selected mitigation strategies.
  *
- * Applies multiplicative risk reduction: for each selected mitigation that targets
- * a given AE, the risk estimate and CI bounds are multiplied by the mitigation's
- * relative risk factor. When multiple mitigations target the same AE, their effects
- * compound multiplicatively (conservative assumption of independence).
+ * Uses the correlated mitigation correction model (risk-model.md v2.0):
+ * When multiple mitigations share mechanistic pathways, their combined risk
+ * reduction is less than the naive multiplicative model predicts. The formula
+ * accounts for pairwise correlation coefficients between mitigations.
  */
 export function calculateMitigatedRisk(
   baselineRisks: RiskAssessment["baselineRisks"],
@@ -800,21 +895,21 @@ export function calculateMitigatedRisk(
     selectedMitigationIds.includes(m.id)
   );
 
-  // Calculate compound risk reduction for CRS
-  let crsMitigationFactor = 1;
-  for (const m of selectedMitigations) {
-    if (m.targetAE.includes("CRS")) {
-      crsMitigationFactor *= m.relativeRisk;
-    }
-  }
+  // Gather mitigations targeting each AE
+  const crsMitigations = selectedMitigations.filter(m => m.targetAE.includes("CRS"));
+  const icansMitigations = selectedMitigations.filter(m => m.targetAE.includes("ICANS"));
 
-  // Calculate compound risk reduction for ICANS
-  let icansMitigationFactor = 1;
-  for (const m of selectedMitigations) {
-    if (m.targetAE.includes("ICANS")) {
-      icansMitigationFactor *= m.relativeRisk;
-    }
-  }
+  // Compute combined RR using correlated combination model
+  const crsMitigationFactor = combineMultipleMitigationRRs(
+    crsMitigations.map(m => m.id),
+    crsMitigations.map(m => m.relativeRisk),
+    "CRS"
+  );
+  const icansMitigationFactor = combineMultipleMitigationRRs(
+    icansMitigations.map(m => m.id),
+    icansMitigations.map(m => m.relativeRisk),
+    "ICANS"
+  );
 
   // Apply floor to prevent unrealistically low estimates
   const applyFloor = (value: number, floor: number = 0.1): number =>

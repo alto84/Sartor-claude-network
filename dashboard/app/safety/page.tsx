@@ -43,6 +43,8 @@ import {
   clinicalTrials as canonicalTrials,
   dataSources as canonicalDataSources,
   getSLEBaselineRiskAssessment,
+  getMitigationCorrelation,
+  combineCorrelatedRR,
 } from "@/lib/safety-data";
 
 // ============================================================
@@ -194,7 +196,7 @@ function calculateMitigatedRisk(
  selectedMitigations: string[],
  targetAE: string
 ): RiskEstimate {
- // Monte Carlo simulation for proper CI propagation
+ // Monte Carlo simulation with correlated mitigation correction (risk-model v2.0)
  const N = 10000;
  const samples: number[] = [];
 
@@ -202,27 +204,50 @@ function calculateMitigatedRisk(
  const baseEst = baseline.estimate / 100;
 
  // Estimate Beta parameters from baseline (method of moments)
- // Using a simple approach: if we observed ~1 event in 47 patients
- const alpha = Math.max(0.5, baseEst * 20); // pseudo-observations
+ const alpha = Math.max(0.5, baseEst * 20);
  const beta = Math.max(0.5, (1 - baseEst) * 20);
+
+ // Identify mitigations targeting this AE
+ const relevantMitigations = selectedMitigations
+   .map(mid => mitigationStrategies.find(s => s.id === mid))
+   .filter((m): m is MitigationStrategy => m != null && m.targetAE.includes(targetAE));
 
  for (let i = 0; i < N; i++) {
  // Sample baseline from Beta distribution
- let baseSample = betaSample(alpha, beta);
+ const baseSample = betaSample(alpha, beta);
 
- // Apply each mitigation
- for (const mid of selectedMitigations) {
- const m = mitigationStrategies.find((s) => s.id === mid);
- if (m && m.targetAE.includes(targetAE)) {
- // Sample RR from LogNormal
- const logMean = Math.log(m.relativeRisk);
- const logSE =
- (Math.log(m.ciHigh) - Math.log(m.ciLow)) / (2 * 1.96);
- const rrSample = Math.exp(logMean + logSE * normalSample());
- baseSample *= rrSample;
+ // Sample individual RRs from LogNormal for each mitigation
+ const sampledItems = relevantMitigations.map(m => {
+   const logMean = Math.log(m.relativeRisk);
+   const logSE = (Math.log(m.ciHigh) - Math.log(m.ciLow)) / (2 * 1.96);
+   return { id: m.id, rr: Math.exp(logMean + logSE * normalSample()) };
+ });
+
+ // Combine sampled RRs using correlated combination (greedy pairwise)
+ let combinedRR = 1;
+ if (sampledItems.length === 1) {
+   combinedRR = sampledItems[0].rr;
+ } else if (sampledItems.length > 1) {
+   const items = [...sampledItems];
+   while (items.length > 1) {
+     let bestI = 0, bestJ = 1;
+     let bestCorr = getMitigationCorrelation(items[0].id, items[1].id);
+     for (let a = 0; a < items.length; a++) {
+       for (let b = a + 1; b < items.length; b++) {
+         const corr = getMitigationCorrelation(items[a].id, items[b].id);
+         if (corr > bestCorr) { bestCorr = corr; bestI = a; bestJ = b; }
+       }
+     }
+     const combined = combineCorrelatedRR(items[bestI].rr, items[bestJ].rr, bestCorr);
+     const combinedId = `${items[bestI].id}+${items[bestJ].id}`;
+     items.splice(bestJ, 1);
+     items.splice(bestI, 1);
+     items.push({ id: combinedId, rr: combined });
+   }
+   combinedRR = items[0].rr;
  }
- }
- samples.push(baseSample * 100); // back to percentage
+
+ samples.push(baseSample * combinedRR * 100);
  }
 
  // Sort and extract percentiles
@@ -409,7 +434,7 @@ function SafetyDashboardContent() {
  const mitigatedCRS = calculateMitigatedRisk(baselineRisks.crsGrade3Plus, selectedMitigations, "CRS");
  const mitigatedICANS = calculateMitigatedRisk(baselineRisks.icansGrade3Plus, selectedMitigations, "ICANS");
 
- // Detect correlated mitigations that are co-selected
+ // Detect correlated mitigations that are co-selected and report corrections
  const correlationWarnings: string[] = [];
  const seenPairs = new Set<string>();
  for (const mid of selectedMitigations) {
@@ -421,8 +446,9 @@ function SafetyDashboardContent() {
  if (!seenPairs.has(pairKey)) {
  seenPairs.add(pairKey);
  const otherName = mitigationStrategies.find((s) => s.id === corr.id)?.name ?? corr.id;
+ const rho = getMitigationCorrelation(mid, corr.id);
  correlationWarnings.push(
- `${m.name} + ${otherName}: ${corr.reason}`
+ `${m.name} + ${otherName} (\u03C1=${rho.toFixed(1)}): Correlated mechanism correction applied`
  );
  }
  }
@@ -628,11 +654,11 @@ function SafetyDashboardContent() {
  <RiskGauge label="Grade 3+ ICANS (mitigated)" risk={mitigatedICANS} color="blue" />
 
  {correlationWarnings.length > 0 && (
- <div className="rounded-md border border-yellow-300 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-950/30 p-2">
+ <div className="rounded-md border border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/30 p-2">
  <div className="flex items-start gap-1.5">
- <AlertTriangle className="h-3 w-3 text-yellow-600 mt-0.5 flex-shrink-0" />
- <p className="text-[10px] text-yellow-700 dark:text-yellow-400">
- Correlated mitigations selected -- combined risk reduction may be overestimated.
+ <Network className="h-3 w-3 text-blue-600 mt-0.5 flex-shrink-0" />
+ <p className="text-[10px] text-blue-700 dark:text-blue-400">
+ Correlated mitigation correction applied (risk-model v2.0). Shared-mechanism pairs yield less benefit than independent mitigations.
  </p>
  </div>
  </div>
@@ -929,22 +955,22 @@ function SafetyDashboardContent() {
  exit={{ opacity: 0, y: -10 }}
  className="space-y-4"
  >
- {/* Correlation Warning Banner */}
+ {/* Correlated Mitigation Correction Banner */}
  {correlationWarnings.length > 0 && (
- <div className="rounded-lg border border-yellow-300 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-950/30 p-3">
+ <div className="rounded-lg border border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/30 p-3">
  <div className="flex items-start gap-2">
- <AlertTriangle className="h-4 w-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+ <Network className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
  <div>
- <p className="text-xs font-semibold text-yellow-800 dark:text-yellow-300">
- Correlated Mitigations Selected
+ <p className="text-xs font-semibold text-blue-800 dark:text-blue-300">
+ Correlated Mitigation Correction Active
  </p>
- <p className="text-[10px] text-yellow-700 dark:text-yellow-400 mt-0.5">
- The following mitigations have overlapping mechanisms. Multiplicative risk reduction may overestimate the combined benefit.
+ <p className="text-[10px] text-blue-700 dark:text-blue-400 mt-0.5">
+ Mitigations with shared mechanisms have diminishing marginal benefit. The risk model corrects for pairwise correlations: RR_combined = (RR_i {"\u00D7"} RR_j)^(1-{"\u03C1"}) {"\u00D7"} min(RR)^{"\u03C1"}, where {"\u03C1"} is mechanistic correlation (0=independent, 1=redundant).
  </p>
  <ul className="mt-1 space-y-0.5">
  {correlationWarnings.map((w, i) => (
- <li key={i} className="text-[10px] text-yellow-700 dark:text-yellow-400 flex items-start gap-1">
- <span className="mt-1 h-1 w-1 rounded-full bg-yellow-500 flex-shrink-0" />
+ <li key={i} className="text-[10px] text-blue-700 dark:text-blue-400 flex items-start gap-1">
+ <span className="mt-1 h-1 w-1 rounded-full bg-blue-500 flex-shrink-0" />
  {w}
  </li>
  ))}
