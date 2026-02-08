@@ -30,6 +30,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AdverseEventComparison } from "@/components/safety/adverse-event-comparison";
 import { RiskWaterfall } from "@/components/safety/risk-waterfall";
+import { SafetyRadar } from "@/components/safety/safety-radar";
 
 // ============================================================
 // TYPES
@@ -556,6 +557,9 @@ function SafetyDashboardContent() {
  </div>
  </CardContent>
  </Card>
+
+ {/* Safety Radar Chart */}
+ <SafetyRadar className="md:col-span-2" />
 
  {/* Baseline Risk */}
  <Card>
