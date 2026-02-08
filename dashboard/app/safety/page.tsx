@@ -31,23 +31,17 @@ import { Button } from "@/components/ui/button";
 import { AdverseEventComparison } from "@/components/safety/adverse-event-comparison";
 import { RiskWaterfall } from "@/components/safety/risk-waterfall";
 import { SafetyRadar } from "@/components/safety/safety-radar";
+import {
+  adverseEventRates as canonicalAERates,
+  mitigationStrategies as canonicalMitigations,
+  clinicalTrials as canonicalTrials,
+  dataSources as canonicalDataSources,
+  getSLEBaselineRiskAssessment,
+} from "@/lib/safety-data";
 
 // ============================================================
 // TYPES
 // ============================================================
-
-interface AdverseEventRate {
- indication: string;
- product: string;
- trial: string;
- nPatients: number;
- crsAnyGrade: number;
- crsGrade3Plus: number;
- icansAnyGrade: number;
- icansGrade3Plus: number;
- source: string;
- year: number;
-}
 
 interface MitigationStrategy {
  id: string;
@@ -72,114 +66,97 @@ interface RiskEstimate {
 // DATA - All numbers from pooled literature analysis
 // ============================================================
 
-const adverseEventRates: AdverseEventRate[] = [
- { indication: "SLE", product: "Pooled (n=47)", trial: "Pooled Analysis", nPatients: 47, crsAnyGrade: 56, crsGrade3Plus: 2.1, icansAnyGrade: 3, icansGrade3Plus: 1.5, source: "Naunyn-Schmied Arch Pharmacol 2025", year: 2025 },
- { indication: "SLE", product: "MB-CART19.1", trial: "Mackensen 2022", nPatients: 5, crsAnyGrade: 60, crsGrade3Plus: 0, icansAnyGrade: 0, icansGrade3Plus: 0, source: "Nature Medicine 2022", year: 2022 },
- { indication: "SLE", product: "Zorpo-cel", trial: "Muller (NEJM) 2024", nPatients: 8, crsAnyGrade: 73, crsGrade3Plus: 0, icansAnyGrade: 6.7, icansGrade3Plus: 0, source: "NEJM 2024;390:687-700", year: 2024 },
- { indication: "SLE", product: "Zorpo-cel", trial: "CASTLE 2025", nPatients: 10, crsAnyGrade: 58, crsGrade3Plus: 0, icansAnyGrade: 0, icansGrade3Plus: 0, source: "Nature Medicine 2025", year: 2025 },
- { indication: "SLE", product: "CD19+BCMA", trial: "Co-infusion (Zhejiang)", nPatients: 15, crsAnyGrade: 86.7, crsGrade3Plus: 0, icansAnyGrade: 0, icansGrade3Plus: 0, source: "Nature Medicine 2025", year: 2025 },
- { indication: "DLBCL", product: "Axi-cel", trial: "ZUMA-1", nPatients: 101, crsAnyGrade: 93, crsGrade3Plus: 13, icansAnyGrade: 64, icansGrade3Plus: 28, source: "NEJM 2017", year: 2017 },
- { indication: "DLBCL", product: "Tisa-cel", trial: "JULIET", nPatients: 111, crsAnyGrade: 58, crsGrade3Plus: 14, icansAnyGrade: 21, icansGrade3Plus: 12, source: "NEJM 2019", year: 2019 },
- { indication: "DLBCL", product: "Liso-cel", trial: "TRANSCEND", nPatients: 269, crsAnyGrade: 42, crsGrade3Plus: 2, icansAnyGrade: 30, icansGrade3Plus: 10, source: "Lancet 2020", year: 2020 },
- { indication: "ALL", product: "Tisa-cel", trial: "ELIANA", nPatients: 75, crsAnyGrade: 77, crsGrade3Plus: 48, icansAnyGrade: 40, icansGrade3Plus: 13, source: "NEJM 2018", year: 2018 },
- { indication: "MM", product: "Ide-cel", trial: "KarMMa", nPatients: 128, crsAnyGrade: 89, crsGrade3Plus: 7, icansAnyGrade: 40, icansGrade3Plus: 4, source: "NEJM 2021", year: 2021 },
- { indication: "MM", product: "Cilta-cel", trial: "CARTITUDE-1", nPatients: 97, crsAnyGrade: 95, crsGrade3Plus: 4, icansAnyGrade: 21, icansGrade3Plus: 10, source: "Nature Medicine 2022", year: 2022 },
-];
+// Adverse event data imported from canonical safety-data.ts
+const adverseEventRates = canonicalAERates;
 
-const mitigationStrategies: MitigationStrategy[] = [
- {
- id: "tocilizumab",
- name: "Tocilizumab Prophylaxis",
- mechanism: "Anti-IL-6R (8 mg/kg IV, 1hr pre-infusion)",
- targetAE: ["CRS"],
- relativeRisk: 0.45,
- ciLow: 0.3,
- ciHigh: 0.65,
- evidenceLevel: "Strong",
+// UI augmentation map for mitigation strategies (icons, correlation warnings)
+const mitigationUIData: Record<string, {
+ icon: React.ReactNode;
+ correlatedWith?: { id: string; reason: string }[];
+}> = {
+ tocilizumab: {
  icon: <Syringe className="h-4 w-4" />,
  correlatedWith: [
  { id: "corticosteroids", reason: "Both suppress cytokine pathways; combined RR may be non-multiplicative" },
  { id: "anakinra", reason: "Both target cytokine cascade (IL-6 and IL-1); overlapping mechanism" },
  ],
  },
- {
- id: "corticosteroids",
- name: "Corticosteroid Prophylaxis",
- mechanism: "Dexamethasone 10mg IV pre-infusion",
- targetAE: ["ICANS"],
- relativeRisk: 0.55,
- ciLow: 0.35,
- ciHigh: 0.75,
- evidenceLevel: "Moderate",
+ corticosteroids: {
  icon: <Pill className="h-4 w-4" />,
  correlatedWith: [
  { id: "tocilizumab", reason: "Both suppress cytokine pathways; combined RR may be non-multiplicative" },
  ],
  },
- {
- id: "anakinra",
- name: "Anakinra Prophylaxis",
- mechanism: "IL-1RA (200mg SC daily x7 days)",
- targetAE: ["CRS", "ICANS"],
- relativeRisk: 0.65,
- ciLow: 0.45,
- ciHigh: 0.85,
- evidenceLevel: "Moderate",
+ anakinra: {
  icon: <Beaker className="h-4 w-4" />,
  correlatedWith: [
  { id: "tocilizumab", reason: "Both target cytokine cascade (IL-6 and IL-1); overlapping mechanism" },
  ],
  },
- {
- id: "dose_reduction",
- name: "Low-Dose Protocol",
- mechanism: "1x10^6 cells/kg (vs 10^7 in oncology)",
- targetAE: ["CRS", "ICANS", "ICAHS"],
- relativeRisk: 0.15,
- ciLow: 0.08,
- ciHigh: 0.3,
- evidenceLevel: "Strong",
+ "dose-reduction": {
  icon: <TrendingDown className="h-4 w-4" />,
  },
- {
- id: "lymphodepletion",
- name: "Modified Lymphodepletion",
- mechanism: "Flu 25mg/m^2x3 + Cy 1000mg/m^2 (reduced)",
- targetAE: ["CRS"],
- relativeRisk: 0.85,
- ciLow: 0.65,
- ciHigh: 1.05,
- evidenceLevel: "Limited",
+ "lymphodepletion-modification": {
  icon: <FlaskConical className="h-4 w-4" />,
  },
-];
-
-const baselineRisks = {
- crsGrade3Plus: { estimate: 2.1, ciLow: 0.4, ciHigh: 7.1 },
- icansGrade3Plus: { estimate: 1.5, ciLow: 0.2, ciHigh: 5.8 },
- icahs: { estimate: 0, ciLow: 0, ciHigh: 7.5 },
- licats: { estimate: 77, ciLow: 61, ciHigh: 88 },
 };
 
-const activeClinicalTrials = [
- { name: "CASTLE", sponsor: "Erlangen/Miltenyi", phase: "Phase 1/2", target: "CD19", status: "Recruiting" as const, enrolled: 24, nctId: "NCT05858957" },
- { name: "RESET-SLE", sponsor: "Cabaletta Bio", phase: "Phase 1/2", target: "CD19", status: "Recruiting" as const, enrolled: 10, nctId: "NCT06121297" },
- { name: "Breakfree-1", sponsor: "Bristol Myers Squibb", phase: "Phase 1", target: "CD19", status: "Active" as const, enrolled: 71, nctId: "NCT06467422" },
- { name: "GC012F / AZD0120", sponsor: "AstraZeneca/Gracell", phase: "Phase 1", target: "CD19/BCMA", status: "Recruiting" as const, enrolled: 12, nctId: "NCT06684042" },
- { name: "BCMA-CD19 cCAR", sponsor: "iCell Gene", phase: "Phase 1", target: "CD19/BCMA", status: "Active" as const, enrolled: 11, nctId: "NCT07328581" },
- { name: "KYV-101", sponsor: "Kyverna", phase: "Phase 2", target: "CD19", status: "Recruiting" as const, enrolled: 30, nctId: "NCT06242340" },
-];
+// Derive mitigation strategies from canonical data + UI augmentations
+const mitigationStrategies: MitigationStrategy[] = canonicalMitigations.map(m => ({
+ id: m.id,
+ name: m.name,
+ mechanism: m.mechanism,
+ targetAE: m.targetAE,
+ relativeRisk: m.relativeRisk,
+ ciLow: m.confidenceInterval[0],
+ ciHigh: m.confidenceInterval[1],
+ evidenceLevel: m.evidenceLevel,
+ icon: mitigationUIData[m.id]?.icon ?? <FlaskConical className="h-4 w-4" />,
+ correlatedWith: mitigationUIData[m.id]?.correlatedWith,
+}));
 
-const dataSources = [
- { name: "Published Literature", type: "Literature", coverage: "47 SLE, 600+ oncology patients", hasAutoimmune: true, icon: <BookOpen className="h-5 w-5" /> },
- { name: "ClinicalTrials.gov", type: "Registry", coverage: "45 active CAR-T SLE trials", hasAutoimmune: true, icon: <ClipboardList className="h-5 w-5" /> },
- { name: "FAERS", type: "Spontaneous", coverage: "9,400+ CAR-T reports", hasAutoimmune: false, icon: <Database className="h-5 w-5" /> },
- { name: "EudraVigilance", type: "Spontaneous", coverage: "EU pharmacovigilance", hasAutoimmune: false, icon: <Database className="h-5 w-5" /> },
- { name: "WHO VigiBase", type: "Spontaneous", coverage: "Global ICSRs", hasAutoimmune: false, icon: <Database className="h-5 w-5" /> },
- { name: "TriNetX", type: "RWD", coverage: "150M+ EHRs", hasAutoimmune: false, icon: <Network className="h-5 w-5" /> },
- { name: "Optum CDM", type: "RWD", coverage: "67M US patients", hasAutoimmune: false, icon: <Network className="h-5 w-5" /> },
- { name: "CIBMTR", type: "Registry", coverage: "CAR-T outcomes registry", hasAutoimmune: false, icon: <ClipboardList className="h-5 w-5" /> },
-];
+// Derive baseline risks from canonical data
+const _canonicalBaseline = getSLEBaselineRiskAssessment();
+const baselineRisks = {
+ crsGrade3Plus: { estimate: _canonicalBaseline.baselineRisks.crsGrade3Plus.estimate, ciLow: _canonicalBaseline.baselineRisks.crsGrade3Plus.ci95[0], ciHigh: _canonicalBaseline.baselineRisks.crsGrade3Plus.ci95[1] },
+ icansGrade3Plus: { estimate: _canonicalBaseline.baselineRisks.icansGrade3Plus.estimate, ciLow: _canonicalBaseline.baselineRisks.icansGrade3Plus.ci95[0], ciHigh: _canonicalBaseline.baselineRisks.icansGrade3Plus.ci95[1] },
+ icahs: { estimate: _canonicalBaseline.baselineRisks.icahs.estimate, ciLow: _canonicalBaseline.baselineRisks.icahs.ci95[0], ciHigh: _canonicalBaseline.baselineRisks.icahs.ci95[1] },
+ licats: { estimate: 77, ciLow: 61, ciHigh: 88 }, // Any-grade LICATS from Hagen 2025 (not in canonical baseline)
+};
+
+// Derive active clinical trials from canonical data (filter to recruiting/active)
+const activeClinicalTrials = canonicalTrials
+ .filter(t => t.status === "Recruiting" || t.status === "Active")
+ .map(t => ({
+ name: t.name,
+ sponsor: t.sponsor,
+ phase: t.phase,
+ target: t.target,
+ status: t.status as "Recruiting" | "Active",
+ enrolled: t.enrollment,
+ nctId: t.nctId,
+ }));
+
+// Icon map for data sources
+const dataSourceIcons: Record<string, React.ReactNode> = {
+ "Published Clinical Trial Literature": <BookOpen className="h-5 w-5" />,
+ "FDA Adverse Event Reporting System (FAERS)": <Database className="h-5 w-5" />,
+ "CIBMTR (Center for International Blood and Marrow Transplant Research)": <ClipboardList className="h-5 w-5" />,
+ "EudraVigilance": <Database className="h-5 w-5" />,
+ "Investigator-Sponsored Trial Databases": <Microscope className="h-5 w-5" />,
+ "WHO VigiBase": <Database className="h-5 w-5" />,
+ "TriNetX": <Network className="h-5 w-5" />,
+ "Optum CDM": <Network className="h-5 w-5" />,
+};
+
+// Derive data sources from canonical data + icons
+const dataSources = canonicalDataSources.map(ds => ({
+ name: ds.name,
+ type: ds.type,
+ coverage: ds.coverage.length > 80 ? ds.coverage.slice(0, 77) + "..." : ds.coverage,
+ hasAutoimmune: ds.autoimmuneCARTData,
+ icon: dataSourceIcons[ds.name] ?? <Database className="h-5 w-5" />,
+}));
 
 // ============================================================
 // RISK CALCULATION ENGINE
@@ -401,7 +378,7 @@ function SafetyDashboardContent() {
  const tabParam = searchParams.get("tab");
  const initialTab: TabId = VALID_TABS.includes(tabParam as TabId) ? (tabParam as TabId) : "overview";
 
- const [selectedMitigations, setSelectedMitigations] = useState<string[]>(["dose_reduction"]);
+ const [selectedMitigations, setSelectedMitigations] = useState<string[]>(["dose-reduction"]);
  const [activeTab, setActiveTab] = useState<TabId>(initialTab);
  const [expandedDecision, setExpandedDecision] = useState<string | null>(null);
 
@@ -478,10 +455,10 @@ function SafetyDashboardContent() {
  </div>
  <div className="flex items-center gap-2 text-xs text-muted-foreground">
  <span className="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-medium">
- Evidence Base: 47 SLE patients, 10 studies
+ Evidence Base: 47 SLE patients, 7 studies
  </span>
  <span className="px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 font-medium">
- 45 Active Trials
+ {activeClinicalTrials.length} Active Trials
  </span>
  <span className="px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 font-medium">
  Last Updated: Feb 2026
@@ -545,7 +522,7 @@ function SafetyDashboardContent() {
  <p className="text-[10px] text-emerald-600 dark:text-emerald-400">Treatment deaths</p>
  </div>
  <div className="text-center">
- <p className="text-xl font-bold text-emerald-700 dark:text-emerald-300">10</p>
+ <p className="text-xl font-bold text-emerald-700 dark:text-emerald-300">7</p>
  <p className="text-[10px] text-emerald-600 dark:text-emerald-400">Published studies</p>
  </div>
  <div className="text-center">
@@ -683,7 +660,7 @@ function SafetyDashboardContent() {
  {
  layer: "Layer 1: Data & Evidence",
  desc: "Graph-networked knowledge base linking trials, publications, safety findings, and risk estimates with full provenance",
- items: ["47 SLE patients pooled", "31 citations from anchor paper", "12 data sources mapped"],
+ items: ["47 SLE patients pooled", "31 citations from anchor paper", "8 data sources mapped"],
  color: "emerald",
  icon: <Database className="h-4 w-4" />,
  },

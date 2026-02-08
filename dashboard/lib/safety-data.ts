@@ -533,6 +533,16 @@ export const clinicalTrials: ClinicalTrial[] = [
     status: "Active",
   },
   {
+    name: "GC012F / AZD0120",
+    sponsor: "AstraZeneca/Gracell",
+    nctId: "NCT06684042",
+    phase: "Phase 1",
+    target: "BCMA/CD19 dual",
+    indication: "SLE",
+    enrollment: 12,
+    status: "Recruiting",
+  },
+  {
     name: "ZUMA-1",
     sponsor: "Kite/Gilead",
     nctId: "NCT02348216",
@@ -726,6 +736,48 @@ export const dataSources: DataSource[] = [
       "Variable data quality across contributing countries",
     ],
   },
+  {
+    name: "TriNetX",
+    type: "RWD",
+    coverage:
+      "Federated EHR network covering 150M+ patients across 120+ healthcare organizations globally",
+    cartDataAvailable: true,
+    autoimmuneCARTData: false,
+    accessMethod: "TriNetX platform (requires institutional license); federated queries without data movement",
+    strengths: [
+      "Large-scale real-world data across diverse populations",
+      "Near real-time data updates",
+      "Federated model preserves patient privacy",
+      "Good for epidemiological background rate estimation",
+    ],
+    limitations: [
+      "No autoimmune CAR-T patients yet (pre-approval)",
+      "CAR-T coding inconsistencies across institutions",
+      "Limited to structured EHR data; lacks clinical detail",
+      "May miss events documented in unstructured notes",
+    ],
+  },
+  {
+    name: "Optum CDM",
+    type: "RWD",
+    coverage:
+      "Claims and EHR data covering 67M+ US patients; integrated medical and pharmacy claims",
+    cartDataAvailable: true,
+    autoimmuneCARTData: false,
+    accessMethod: "Optum data licensing; requires DUA and IRB approval",
+    strengths: [
+      "Longitudinal patient-level data with integrated claims",
+      "Good for comorbidity and comedication analysis",
+      "Large denominator for rate comparisons",
+      "Captures post-discharge outcomes",
+    ],
+    limitations: [
+      "US-only population",
+      "No autoimmune CAR-T patients (pre-approval)",
+      "Claims-based AE identification has limited sensitivity",
+      "Commercial/Medicare populations may not match trial demographics",
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -866,8 +918,8 @@ export function getSLEBaselineRiskAssessment(): RiskAssessment {
   const baselineRisks: RiskAssessment["baselineRisks"] = {
     crsGrade3Plus: { estimate: 2.1, ci95: [0.3, 7.4] },
     icansGrade3Plus: { estimate: 1.5, ci95: [0.2, 5.8] },
-    icahs: { estimate: 0, ci95: [0, 3.0] }, // upper bound from rule-of-3 on n=47
-    licats: { estimate: 0, ci95: [0, 3.0] },
+    icahs: { estimate: 0, ci95: [0, 6.4] }, // upper bound from rule-of-3: 3/47 = 6.4%
+    licats: { estimate: 0, ci95: [0, 6.4] }, // Grade 3+ LICATS; any-grade ~77% (Hagen 2025)
   };
 
   // Default mitigated risk with standard-of-care mitigations
