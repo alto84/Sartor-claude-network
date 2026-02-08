@@ -519,12 +519,12 @@ function SafetyDashboardContent() {
  exit={{ opacity: 0, y: -10 }}
  className="grid gap-4 md:grid-cols-2"
  >
- {/* Key Insight Card */}
+ {/* Executive Summary Card */}
  <Card className="md:col-span-2 border-emerald-200 dark:border-emerald-800 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30">
  <CardContent className="pt-4 pb-4">
  <div className="flex items-start gap-3">
  <Zap className="h-5 w-5 text-emerald-600 mt-0.5 flex-shrink-0" />
- <div>
+ <div className="flex-1">
  <p className="text-sm font-semibold text-emerald-900 dark:text-emerald-200">
  Key Finding: CAR-T in SLE has a dramatically better safety profile than in oncology
  </p>
@@ -533,6 +533,25 @@ function SafetyDashboardContent() {
  Zero IEC-HS events and zero treatment-related deaths in any SLE CAR-T study.
  Primary drivers: lower CAR-T dose (1x10^6/kg) and absence of high antigen burden.
  </p>
+ {/* Quick metrics row */}
+ <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-3 pt-3 border-t border-emerald-200 dark:border-emerald-800">
+ <div className="text-center">
+ <p className="text-xl font-bold text-emerald-700 dark:text-emerald-300">47</p>
+ <p className="text-[10px] text-emerald-600 dark:text-emerald-400">SLE patients pooled</p>
+ </div>
+ <div className="text-center">
+ <p className="text-xl font-bold text-emerald-700 dark:text-emerald-300">0</p>
+ <p className="text-[10px] text-emerald-600 dark:text-emerald-400">Treatment deaths</p>
+ </div>
+ <div className="text-center">
+ <p className="text-xl font-bold text-emerald-700 dark:text-emerald-300">10</p>
+ <p className="text-[10px] text-emerald-600 dark:text-emerald-400">Published studies</p>
+ </div>
+ <div className="text-center">
+ <p className="text-xl font-bold text-amber-600 dark:text-amber-400">Low</p>
+ <p className="text-[10px] text-muted-foreground">Evidence certainty</p>
+ </div>
+ </div>
  </div>
  </div>
  </CardContent>
