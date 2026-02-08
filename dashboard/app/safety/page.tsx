@@ -29,6 +29,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AdverseEventComparison } from "@/components/safety/adverse-event-comparison";
+import { RiskWaterfall } from "@/components/safety/risk-waterfall";
 
 // ============================================================
 // TYPES
@@ -986,6 +987,26 @@ function SafetyDashboardContent() {
  </div>
  </CardContent>
  </Card>
+ </div>
+
+ {/* Risk Waterfall Charts */}
+ <div className="grid gap-4 md:grid-cols-2">
+ <RiskWaterfall
+ title="CRS Risk Waterfall"
+ baselineRate={baselineRisks.crsGrade3Plus.estimate}
+ mitigations={selectedMitigations
+ .map((id) => mitigationStrategies.find((m) => m.id === id))
+ .filter((m): m is typeof mitigationStrategies[number] => !!m && m.targetAE.includes("CRS"))
+ .map((m) => ({ name: m.name, relativeRisk: m.relativeRisk }))}
+ />
+ <RiskWaterfall
+ title="ICANS Risk Waterfall"
+ baselineRate={baselineRisks.icansGrade3Plus.estimate}
+ mitigations={selectedMitigations
+ .map((id) => mitigationStrategies.find((m) => m.id === id))
+ .filter((m): m is typeof mitigationStrategies[number] => !!m && m.targetAE.includes("ICANS"))
+ .map((m) => ({ name: m.name, relativeRisk: m.relativeRisk }))}
+ />
  </div>
  </motion.div>
  )}
