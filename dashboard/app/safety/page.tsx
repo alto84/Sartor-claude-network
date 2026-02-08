@@ -650,6 +650,83 @@ function SafetyDashboardContent() {
  </CardContent>
  </Card>
 
+ {/* Emerging Safety Signals */}
+ <Card className="md:col-span-2">
+ <CardHeader className="pb-2">
+ <CardTitle className="text-sm font-semibold flex items-center gap-2">
+ <AlertTriangle className="h-4 w-4 text-amber-600" />
+ Emerging Safety Signals
+ </CardTitle>
+ </CardHeader>
+ <CardContent>
+ <div className="grid gap-3 md:grid-cols-3">
+ {/* Cytopenias */}
+ <div className="rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/20 p-3">
+ <div className="flex items-center gap-2 mb-2">
+ <Activity className="h-4 w-4 text-amber-600" />
+ <span className="text-xs font-semibold">Prolonged Cytopenias</span>
+ </div>
+ <div className="space-y-1 text-[10px]">
+ <p className="text-muted-foreground">
+ B-cell aplasia is expected and therapeutic. Prolonged neutropenia/thrombocytopenia observed in ~30% of oncology patients beyond day 28.
+ </p>
+ <div className="flex items-center gap-1 mt-1.5">
+ <span className="font-medium text-amber-700 dark:text-amber-400">SLE data:</span>
+ <span className="text-muted-foreground">Recoverable cytopenias in most patients; no prolonged Grade 4 reported</span>
+ </div>
+ <div className="flex items-center gap-1">
+ <span className="font-medium text-amber-700 dark:text-amber-400">Monitoring:</span>
+ <span className="text-muted-foreground">CBC 2x/week x4 weeks, then weekly until recovery</span>
+ </div>
+ <p className="text-muted-foreground italic mt-1">Evidence: Low (limited reporting in autoimmune trials)</p>
+ </div>
+ </div>
+ {/* Infections */}
+ <div className="rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/20 p-3">
+ <div className="flex items-center gap-2 mb-2">
+ <Shield className="h-4 w-4 text-amber-600" />
+ <span className="text-xs font-semibold">Infections (B-cell Aplasia)</span>
+ </div>
+ <div className="space-y-1 text-[10px]">
+ <p className="text-muted-foreground">
+ B-cell depletion causes hypogammaglobulinemia (IgG &lt;400 mg/dL in ~40-60% by month 3). Risk of bacterial/viral infections during aplasia window.
+ </p>
+ <div className="flex items-center gap-1 mt-1.5">
+ <span className="font-medium text-amber-700 dark:text-amber-400">SLE data:</span>
+ <span className="text-muted-foreground">Grade 3+ infections in ~10-15%; one COVID-19 death reported (not treatment-related)</span>
+ </div>
+ <div className="flex items-center gap-1">
+ <span className="font-medium text-amber-700 dark:text-amber-400">Mitigation:</span>
+ <span className="text-muted-foreground">IVIG replacement when IgG &lt;400; prophylactic antivirals/antifungals</span>
+ </div>
+ <p className="text-muted-foreground italic mt-1">Evidence: Moderate (consistent across multiple centers)</p>
+ </div>
+ </div>
+ {/* T-cell malignancy */}
+ <div className="rounded-lg border border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-950/20 p-3">
+ <div className="flex items-center gap-2 mb-2">
+ <AlertTriangle className="h-4 w-4 text-red-600" />
+ <span className="text-xs font-semibold">T-cell Malignancy</span>
+ </div>
+ <div className="space-y-1 text-[10px]">
+ <p className="text-muted-foreground">
+ FDA boxed warning added Jan 2024 after 33 cases of T-cell lymphoma/leukemia in ~34,000 treated patients (~0.1% incidence). All in oncology.
+ </p>
+ <div className="flex items-center gap-1 mt-1.5">
+ <span className="font-medium text-red-700 dark:text-red-400">SLE data:</span>
+ <span className="text-muted-foreground">Zero cases in 47 patients (limited follow-up, median ~18 months)</span>
+ </div>
+ <div className="flex items-center gap-1">
+ <span className="font-medium text-red-700 dark:text-red-400">Requirement:</span>
+ <span className="text-muted-foreground">15-year follow-up mandatory; annual cancer screening</span>
+ </div>
+ <p className="text-muted-foreground italic mt-1">Evidence: Very Low (theoretical risk; insufficient follow-up in autoimmune)</p>
+ </div>
+ </div>
+ </div>
+ </CardContent>
+ </Card>
+
  {/* PSP Engine Architecture */}
  <Card className="md:col-span-2">
  <CardHeader className="pb-2">
@@ -787,7 +864,7 @@ function SafetyDashboardContent() {
  <th className="pb-2 pr-4">CRS 3+</th>
  <th className="pb-2 pr-4">ICANS Any</th>
  <th className="pb-2 pr-4">ICANS 3+</th>
- <th className="pb-2">Source</th>
+ <th className="pb-2">Source / Provenance</th>
  </tr>
  </thead>
  <tbody>
@@ -795,7 +872,7 @@ function SafetyDashboardContent() {
  .filter((r) => r.indication === "SLE")
  .map((r) => (
  <tr key={r.trial} className="border-b border-dashed">
- <td className="py-2 pr-4 font-medium">{r.trial}</td>
+ <td className="py-2 pr-4 font-medium">{r.product}</td>
  <td className="py-2 pr-4">{r.nPatients}</td>
  <td className="py-2 pr-4">{r.crsAnyGrade}%</td>
  <td className="py-2 pr-4">
@@ -809,7 +886,12 @@ function SafetyDashboardContent() {
  {r.icansGrade3Plus}%
  </span>
  </td>
- <td className="py-2 text-muted-foreground">{r.source}</td>
+ <td className="py-2 text-muted-foreground">
+ <div>{r.source}</div>
+ {r.sourceTable && (
+ <span className="text-[9px] text-blue-600 dark:text-blue-400">{r.sourceTable}</span>
+ )}
+ </td>
  </tr>
  ))}
  </tbody>
