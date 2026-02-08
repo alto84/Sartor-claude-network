@@ -41,15 +41,20 @@ Port: 5002 (avoids conflict with dashboard on 5000 and gateway on 5001)
 from __future__ import annotations
 
 import math
+import time
+import logging
 from enum import Enum
 from typing import Optional
 
+import httpx
 import numpy as np
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from scipy import stats
 from scipy.special import betaln
+
+logger = logging.getLogger("psp")
 
 # ---------------------------------------------------------------------------
 # Application setup
@@ -657,6 +662,594 @@ async def get_stopping_rule_power(
         true_rates_evaluated=[_safe_float(r) for r in true_rates],
         rules=rules_output,
     )
+
+
+# ---------------------------------------------------------------------------
+# FAERS Signal Detection — Constants
+# ---------------------------------------------------------------------------
+
+OPENFDA_BASE = "https://api.fda.gov/drug/event.json"
+
+# CAR-T products: brand name -> generic name mapping
+CART_PRODUCTS: dict[str, str] = {
+    "KYMRIAH": "tisagenlecleucel",
+    "YESCARTA": "axicabtagene ciloleucel",
+    "TECARTUS": "brexucabtagene autoleucel",
+    "BREYANZI": "lisocabtagene maraleucel",
+    "ABECMA": "idecabtagene vicleucel",
+    "CARVYKTI": "ciltacabtagene autoleucel",
+}
+
+# Target adverse events (MedDRA preferred terms, uppercased for matching)
+CART_TARGET_AES: list[str] = [
+    "CYTOKINE RELEASE SYNDROME",
+    "CYTOKINE STORM",
+    "IMMUNE EFFECTOR CELL-ASSOCIATED NEUROTOXICITY SYNDROME",
+    "NEUROTOXICITY",
+    "ENCEPHALOPATHY",
+    "TREMOR",
+    "APHASIA",
+    "INFECTION",
+    "PNEUMONIA",
+    "SEPSIS",
+    "FEBRILE NEUTROPENIA",
+    "NEUTROPENIA",
+    "THROMBOCYTOPENIA",
+    "ANAEMIA",
+    "PANCYTOPENIA",
+    "LEUKOPENIA",
+    "LYMPHOPENIA",
+    "HAEMOPHAGOCYTIC LYMPHOHISTIOCYTOSIS",
+    "MACROPHAGE ACTIVATION SYNDROME",
+]
+
+# Group labels for cleaner reporting
+AE_GROUP_MAP: dict[str, str] = {
+    "CYTOKINE RELEASE SYNDROME": "Cytokine Release Syndrome",
+    "CYTOKINE STORM": "Cytokine Release Syndrome",
+    "IMMUNE EFFECTOR CELL-ASSOCIATED NEUROTOXICITY SYNDROME": "Neurotoxicity (ICANS)",
+    "NEUROTOXICITY": "Neurotoxicity (ICANS)",
+    "ENCEPHALOPATHY": "Neurotoxicity (ICANS)",
+    "TREMOR": "Neurotoxicity (ICANS)",
+    "APHASIA": "Neurotoxicity (ICANS)",
+    "INFECTION": "Infections",
+    "PNEUMONIA": "Infections",
+    "SEPSIS": "Infections",
+    "FEBRILE NEUTROPENIA": "Cytopenias",
+    "NEUTROPENIA": "Cytopenias",
+    "THROMBOCYTOPENIA": "Cytopenias",
+    "ANAEMIA": "Cytopenias",
+    "PANCYTOPENIA": "Cytopenias",
+    "LEUKOPENIA": "Cytopenias",
+    "LYMPHOPENIA": "Cytopenias",
+    "HAEMOPHAGOCYTIC LYMPHOHISTIOCYTOSIS": "HLH / MAS",
+    "MACROPHAGE ACTIVATION SYNDROME": "HLH / MAS",
+}
+
+# 24-hour cache: key -> (timestamp, data)
+_faers_cache: dict[str, tuple[float, object]] = {}
+CACHE_TTL_SECONDS: int = 86400  # 24 hours
+
+
+def _cache_get(key: str) -> object | None:
+    """Return cached value if still valid, else None."""
+    if key in _faers_cache:
+        ts, data = _faers_cache[key]
+        if time.time() - ts < CACHE_TTL_SECONDS:
+            return data
+        del _faers_cache[key]
+    return None
+
+
+def _cache_set(key: str, data: object) -> None:
+    """Store value in cache with current timestamp."""
+    _faers_cache[key] = (time.time(), data)
+
+
+# ---------------------------------------------------------------------------
+# FAERS Signal Detection — Response Models
+# ---------------------------------------------------------------------------
+
+
+class DisproportionalityMetrics(BaseModel):
+    """Disproportionality signal metrics for a drug-AE pair."""
+
+    a: int = Field(..., description="Target drug + target AE count")
+    b: int = Field(..., description="Target drug + other AEs count")
+    c: int = Field(..., description="Other drugs + target AE count")
+    d: int = Field(..., description="Other drugs + other AEs count")
+    prr: float = Field(..., description="Proportional Reporting Ratio")
+    prr_ci_lower: float = Field(..., description="PRR 95% CI lower bound")
+    prr_ci_upper: float = Field(..., description="PRR 95% CI upper bound")
+    ror: float = Field(..., description="Reporting Odds Ratio")
+    ror_ci_lower: float = Field(..., description="ROR 95% CI lower bound")
+    ror_ci_upper: float = Field(..., description="ROR 95% CI upper bound")
+    ic: float = Field(..., description="Information Component (IC)")
+    ic025: float = Field(..., description="IC lower 95% credible interval")
+    ebgm: float = Field(..., description="Empirical Bayes Geometric Mean (simplified)")
+    chi_squared: float = Field(..., description="Chi-squared statistic")
+    signal_detected: bool = Field(
+        ..., description="True if PRR>=2 AND chi2>=4 AND a>=3"
+    )
+    signal_strength: str = Field(
+        ..., description="none / weak / moderate / strong"
+    )
+
+
+class FAERSSignalEntry(BaseModel):
+    """One signal entry for a product-AE pair."""
+
+    product_brand: str
+    product_generic: str
+    adverse_event: str
+    ae_group: str
+    metrics: DisproportionalityMetrics
+
+
+class FAERSSignalResponse(BaseModel):
+    """Full response for the FAERS signal detection endpoint."""
+
+    products_queried: list[str]
+    total_signals_detected: int
+    signals: list[FAERSSignalEntry]
+    query_timestamp: str
+    cached: bool
+    data_source: str = "FDA Adverse Event Reporting System (FAERS) via openFDA"
+
+
+class FAERSSummaryProduct(BaseModel):
+    """Summary for a single CAR-T product."""
+
+    brand_name: str
+    generic_name: str
+    total_reports: int
+    top_adverse_events: list[dict[str, object]]
+
+
+class FAERSSummaryResponse(BaseModel):
+    """Quick summary of FAERS data for CAR-T products."""
+
+    products: list[FAERSSummaryProduct]
+    total_cart_reports: int
+    query_timestamp: str
+    cached: bool
+    data_source: str = "FDA Adverse Event Reporting System (FAERS) via openFDA"
+
+
+# ---------------------------------------------------------------------------
+# FAERS Signal Detection — Helper Functions
+# ---------------------------------------------------------------------------
+
+
+async def _openfda_count_reactions(
+    brand_name: str,
+    limit: int = 100,
+) -> list[dict[str, object]]:
+    """
+    Query openFDA for reaction counts for a given brand name.
+    Returns list of {term: str, count: int}.
+    """
+    params = {
+        "search": f'patient.drug.openfda.brand_name:"{brand_name}"',
+        "count": "patient.reaction.reactionmeddrapt.exact",
+        "limit": str(limit),
+    }
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        resp = await client.get(OPENFDA_BASE, params=params)
+        if resp.status_code == 200:
+            data = resp.json()
+            return data.get("results", [])
+        elif resp.status_code == 404:
+            # No results found for this product
+            return []
+        else:
+            logger.warning(
+                "openFDA returned %d for %s: %s",
+                resp.status_code,
+                brand_name,
+                resp.text[:200],
+            )
+            return []
+
+
+async def _openfda_total_reports(brand_name: str) -> int:
+    """Get total number of FAERS reports for a brand name."""
+    params = {
+        "search": f'patient.drug.openfda.brand_name:"{brand_name}"',
+        "limit": "1",
+    }
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        resp = await client.get(OPENFDA_BASE, params=params)
+        if resp.status_code == 200:
+            data = resp.json()
+            meta = data.get("meta", {}).get("results", {})
+            return meta.get("total", 0)
+        return 0
+
+
+async def _openfda_total_reports_all() -> int:
+    """Get the approximate total number of all FAERS reports (for background rate)."""
+    cache_key = "faers_total_all"
+    cached = _cache_get(cache_key)
+    if cached is not None:
+        return cached  # type: ignore[return-value]
+
+    # Query a very common reaction to get the total from meta
+    params = {
+        "search": 'patient.reaction.reactionmeddrapt:"NAUSEA"',
+        "limit": "1",
+    }
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        resp = await client.get(OPENFDA_BASE, params=params)
+        if resp.status_code == 200:
+            data = resp.json()
+            # Total reports in the FAERS database is in the millions
+            total = data.get("meta", {}).get("results", {}).get("total", 0)
+            # Use this as a rough denominator; a more accurate approach
+            # would sum all reports, but this is a reasonable approximation
+            # for disproportionality analysis.
+            # The actual total FAERS reports is ~30 million; we use a
+            # conservative estimate.
+            estimated_total = max(total * 10, 20_000_000)
+            _cache_set(cache_key, estimated_total)
+            return estimated_total
+    return 20_000_000  # fallback estimate
+
+
+async def _openfda_ae_background_count(ae_term: str) -> int:
+    """Get total FAERS reports for a specific AE across all drugs."""
+    cache_key = f"faers_bg_{ae_term}"
+    cached = _cache_get(cache_key)
+    if cached is not None:
+        return cached  # type: ignore[return-value]
+
+    params = {
+        "search": f'patient.reaction.reactionmeddrapt:"{ae_term}"',
+        "limit": "1",
+    }
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        resp = await client.get(OPENFDA_BASE, params=params)
+        if resp.status_code == 200:
+            data = resp.json()
+            total = data.get("meta", {}).get("results", {}).get("total", 0)
+            _cache_set(cache_key, total)
+            return total
+    return 0
+
+
+def _compute_disproportionality(
+    a: int, b: int, c: int, d: int
+) -> DisproportionalityMetrics:
+    """
+    Compute all disproportionality metrics from a 2x2 contingency table.
+
+    a = target drug + target AE
+    b = target drug + other AEs
+    c = other drugs + target AE
+    d = other drugs + other AEs
+    N = a + b + c + d
+    """
+    N = a + b + c + d
+
+    # PRR = (a/(a+b)) / (c/(c+d))
+    if (a + b) > 0 and (c + d) > 0 and c > 0:
+        rate_drug = a / (a + b)
+        rate_other = c / (c + d)
+        prr = rate_drug / rate_other if rate_other > 0 else 0.0
+    else:
+        prr = 0.0
+
+    # PRR 95% CI: ln(PRR) +/- 1.96 * sqrt(1/a - 1/(a+b) + 1/c - 1/(c+d))
+    if a > 0 and (a + b) > 0 and c > 0 and (c + d) > 0 and prr > 0:
+        se_ln_prr = math.sqrt(
+            (1 / a) - (1 / (a + b)) + (1 / c) - (1 / (c + d))
+        )
+        ln_prr = math.log(prr)
+        prr_ci_lower = math.exp(ln_prr - 1.96 * se_ln_prr)
+        prr_ci_upper = math.exp(ln_prr + 1.96 * se_ln_prr)
+    else:
+        prr_ci_lower = 0.0
+        prr_ci_upper = 0.0
+
+    # ROR = (a*d) / (b*c)
+    if b > 0 and c > 0:
+        ror = (a * d) / (b * c)
+    else:
+        ror = 0.0
+
+    # ROR 95% CI: ln(ROR) +/- 1.96 * sqrt(1/a + 1/b + 1/c + 1/d)
+    if a > 0 and b > 0 and c > 0 and d > 0 and ror > 0:
+        se_ln_ror = math.sqrt(1 / a + 1 / b + 1 / c + 1 / d)
+        ln_ror = math.log(ror)
+        ror_ci_lower = math.exp(ln_ror - 1.96 * se_ln_ror)
+        ror_ci_upper = math.exp(ln_ror + 1.96 * se_ln_ror)
+    else:
+        ror_ci_lower = 0.0
+        ror_ci_upper = 0.0
+
+    # IC (Information Component) = log2(a * N / ((a+b) * (a+c)))
+    # With Bayesian correction (add 0.5 to avoid log(0)):
+    a_adj = a + 0.5
+    b_adj = b + 0.5
+    c_adj = c + 0.5
+    d_adj = d + 0.5
+    N_adj = a_adj + b_adj + c_adj + d_adj
+    expected = ((a_adj + b_adj) * (a_adj + c_adj)) / N_adj
+    ic = math.log2(a_adj / expected) if expected > 0 else 0.0
+
+    # IC 95% lower bound (IC025) — simplified approximation
+    # Variance of IC ~ 1 / (a + 0.5) for the Bayesian shrinkage estimate
+    if a > 0:
+        ic_var = 1.0 / a_adj
+        ic025 = ic - 1.96 * math.sqrt(ic_var)
+    else:
+        ic025 = ic
+
+    # EBGM (simplified) — Empirical Bayes Geometric Mean
+    # Simplified: EBGM ~ (a + 0.5) / E where E = (a+b)*(a+c)/N
+    # A full implementation uses a mixture prior; this is the shrinkage estimate
+    E = ((a + b) * (a + c)) / N if N > 0 else 1
+    if E > 0 and a > 0:
+        # Simple shrinkage: weight observed by sample size
+        ebgm = (a + 0.5) / (E + 0.5)
+    else:
+        ebgm = 0.0
+
+    # Chi-squared (Yates-corrected 2x2)
+    if N > 0:
+        expected_a = (a + b) * (a + c) / N
+        expected_b = (a + b) * (b + d) / N
+        expected_c = (c + d) * (a + c) / N
+        expected_d = (c + d) * (b + d) / N
+
+        chi2 = 0.0
+        for obs, exp in [
+            (a, expected_a),
+            (b, expected_b),
+            (c, expected_c),
+            (d, expected_d),
+        ]:
+            if exp > 0:
+                # Yates correction
+                chi2 += (abs(obs - exp) - 0.5) ** 2 / exp
+    else:
+        chi2 = 0.0
+
+    # Signal detection: PRR >= 2 AND chi2 >= 4 AND a >= 3
+    signal_detected = prr >= 2.0 and chi2 >= 4.0 and a >= 3
+
+    # Signal strength classification
+    if not signal_detected:
+        signal_strength = "none"
+    elif prr >= 5.0 and ic025 > 0 and a >= 10:
+        signal_strength = "strong"
+    elif prr >= 3.0 and chi2 >= 10.0 and a >= 5:
+        signal_strength = "moderate"
+    else:
+        signal_strength = "weak"
+
+    return DisproportionalityMetrics(
+        a=a,
+        b=b,
+        c=c,
+        d=d,
+        prr=_safe_float(prr),
+        prr_ci_lower=_safe_float(prr_ci_lower),
+        prr_ci_upper=_safe_float(prr_ci_upper),
+        ror=_safe_float(ror),
+        ror_ci_lower=_safe_float(ror_ci_lower),
+        ror_ci_upper=_safe_float(ror_ci_upper),
+        ic=_safe_float(ic),
+        ic025=_safe_float(ic025),
+        ebgm=_safe_float(ebgm),
+        chi_squared=_safe_float(chi2),
+        signal_detected=signal_detected,
+        signal_strength=signal_strength,
+    )
+
+
+# ---------------------------------------------------------------------------
+# FAERS Signal Detection — Endpoints
+# ---------------------------------------------------------------------------
+
+
+@app.get(
+    "/safety/faers-signals",
+    response_model=FAERSSignalResponse,
+    tags=["FAERS Signal Detection"],
+)
+async def get_faers_signals(
+    products: str = Query(
+        default="",
+        description=(
+            "Comma-separated list of product names (brand or generic). "
+            "Leave empty to query all CAR-T products."
+        ),
+    ),
+) -> FAERSSignalResponse:
+    """
+    FAERS disproportionality signal detection for CAR-T products.
+
+    Queries the openFDA FAERS database and computes PRR, ROR, IC (BCPNN),
+    and simplified EBGM for each product-AE pair. Returns signal strength
+    indicators based on standard pharmacovigilance thresholds.
+
+    Signal criteria: PRR >= 2 AND chi-squared >= 4 AND case count >= 3
+    """
+    import datetime
+
+    # Determine which products to query
+    if products.strip():
+        requested = [p.strip().upper() for p in products.split(",") if p.strip()]
+        # Match against brand names or generic names
+        brands_to_query: list[str] = []
+        for req in requested:
+            # Check brand names
+            if req in CART_PRODUCTS:
+                brands_to_query.append(req)
+            else:
+                # Check generic names
+                for brand, generic in CART_PRODUCTS.items():
+                    if req.lower() in generic.lower() or generic.lower().startswith(req.lower()):
+                        brands_to_query.append(brand)
+                        break
+        if not brands_to_query:
+            # Fall back to all if none matched
+            brands_to_query = list(CART_PRODUCTS.keys())
+    else:
+        brands_to_query = list(CART_PRODUCTS.keys())
+
+    # Check cache
+    cache_key = f"faers_signals_{'_'.join(sorted(brands_to_query))}"
+    cached = _cache_get(cache_key)
+    if cached is not None:
+        return cached  # type: ignore[return-value]
+
+    # Get approximate total FAERS database size
+    N_total = await _openfda_total_reports_all()
+
+    signals: list[FAERSSignalEntry] = []
+
+    for brand in brands_to_query:
+        generic = CART_PRODUCTS[brand]
+
+        # Get reaction counts for this product
+        reactions = await _openfda_count_reactions(brand, limit=100)
+        if not reactions:
+            continue
+
+        # Total reports for this drug (sum of all reaction counts gives
+        # total drug-reaction pairs, but we need total reports)
+        total_drug_reports = await _openfda_total_reports(brand)
+        if total_drug_reports == 0:
+            continue
+
+        # Build a lookup: AE term -> count for this drug
+        drug_ae_counts: dict[str, int] = {}
+        total_drug_ae_pairs = 0
+        for r in reactions:
+            term = r.get("term", "").upper()
+            count = r.get("count", 0)
+            drug_ae_counts[term] = count
+            total_drug_ae_pairs += count
+
+        # For each target AE, compute disproportionality
+        for target_ae in CART_TARGET_AES:
+            # a = reports with this drug AND this AE
+            a = drug_ae_counts.get(target_ae, 0)
+            if a == 0:
+                # Skip AEs not reported for this drug
+                continue
+
+            # b = reports with this drug but NOT this AE
+            b = total_drug_reports - a
+
+            # c = reports with this AE but NOT this drug (background)
+            total_ae_reports = await _openfda_ae_background_count(target_ae)
+            c = max(total_ae_reports - a, 0)
+
+            # d = reports with neither this drug nor this AE
+            d = max(N_total - a - b - c, 0)
+
+            # Ensure non-negative
+            b = max(b, 0)
+
+            metrics = _compute_disproportionality(a, b, c, d)
+
+            ae_group = AE_GROUP_MAP.get(target_ae, "Other")
+
+            signals.append(
+                FAERSSignalEntry(
+                    product_brand=brand,
+                    product_generic=generic,
+                    adverse_event=target_ae.title(),
+                    ae_group=ae_group,
+                    metrics=metrics,
+                )
+            )
+
+    # Sort: detected signals first, then by PRR descending
+    signals.sort(
+        key=lambda s: (not s.metrics.signal_detected, -s.metrics.prr)
+    )
+
+    total_detected = sum(1 for s in signals if s.metrics.signal_detected)
+
+    response = FAERSSignalResponse(
+        products_queried=[f"{b} ({CART_PRODUCTS[b]})" for b in brands_to_query],
+        total_signals_detected=total_detected,
+        signals=signals,
+        query_timestamp=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        cached=False,
+        data_source="FDA Adverse Event Reporting System (FAERS) via openFDA",
+    )
+
+    _cache_set(cache_key, response)
+    return response
+
+
+@app.get(
+    "/safety/faers-summary",
+    response_model=FAERSSummaryResponse,
+    tags=["FAERS Signal Detection"],
+)
+async def get_faers_summary() -> FAERSSummaryResponse:
+    """
+    Quick summary of total FAERS reports for all CAR-T products.
+
+    Returns total report counts and top reported adverse events for each
+    CAR-T product in the FDA FAERS database.
+    """
+    import datetime
+
+    cache_key = "faers_summary_all"
+    cached = _cache_get(cache_key)
+    if cached is not None:
+        return cached  # type: ignore[return-value]
+
+    product_summaries: list[FAERSSummaryProduct] = []
+    total_all = 0
+
+    for brand, generic in CART_PRODUCTS.items():
+        total_reports = await _openfda_total_reports(brand)
+        total_all += total_reports
+
+        top_aes: list[dict[str, object]] = []
+        if total_reports > 0:
+            reactions = await _openfda_count_reactions(brand, limit=20)
+            for r in reactions[:10]:
+                top_aes.append(
+                    {
+                        "term": r.get("term", ""),
+                        "count": r.get("count", 0),
+                        "group": AE_GROUP_MAP.get(
+                            r.get("term", "").upper(), "Other"
+                        ),
+                    }
+                )
+
+        product_summaries.append(
+            FAERSSummaryProduct(
+                brand_name=brand,
+                generic_name=generic,
+                total_reports=total_reports,
+                top_adverse_events=top_aes,
+            )
+        )
+
+    # Sort by total reports descending
+    product_summaries.sort(key=lambda p: -p.total_reports)
+
+    response = FAERSSummaryResponse(
+        products=product_summaries,
+        total_cart_reports=total_all,
+        query_timestamp=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        cached=False,
+        data_source="FDA Adverse Event Reporting System (FAERS) via openFDA",
+    )
+
+    _cache_set(cache_key, response)
+    return response
 
 
 # ---------------------------------------------------------------------------
