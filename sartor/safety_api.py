@@ -1103,6 +1103,7 @@ async def get_faers_signals(
     cache_key = f"faers_signals_{'_'.join(sorted(brands_to_query))}"
     cached = _cache_get(cache_key)
     if cached is not None:
+        cached.cached = True  # type: ignore[union-attr]
         return cached  # type: ignore[return-value]
 
     # Get approximate total FAERS database size
@@ -1205,6 +1206,7 @@ async def get_faers_summary() -> FAERSSummaryResponse:
     cache_key = "faers_summary_all"
     cached = _cache_get(cache_key)
     if cached is not None:
+        cached.cached = True  # type: ignore[union-attr]
         return cached  # type: ignore[return-value]
 
     product_summaries: list[FAERSSummaryProduct] = []
