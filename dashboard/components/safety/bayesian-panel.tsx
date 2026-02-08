@@ -21,6 +21,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Brain, Loader2, WifiOff, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  ReferenceLine,
+  Tooltip,
+} from "recharts";
 
 // ============================================================================
 // TYPES
@@ -44,6 +53,171 @@ interface PredictiveRow {
 
 interface BayesianPanelProps {
   className?: string;
+}
+
+// ============================================================================
+// BETA PDF COMPUTATION (client-side, using Stirling's approximation for lnGamma)
+// ============================================================================
+
+function lnGamma(z: number): number {
+  // Lanczos approximation for ln(Gamma(z))
+  const g = 7;
+  const c = [
+    0.99999999999980993, 676.5203681218851, -1259.1392167224028,
+    771.32342877765313, -176.61502916214059, 12.507343278686905,
+    -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7,
+  ];
+  if (z < 0.5) {
+    return Math.log(Math.PI / Math.sin(Math.PI * z)) - lnGamma(1 - z);
+  }
+  z -= 1;
+  let x = c[0];
+  for (let i = 1; i < g + 2; i++) {
+    x += c[i] / (z + i);
+  }
+  const t = z + g + 0.5;
+  return 0.5 * Math.log(2 * Math.PI) + (z + 0.5) * Math.log(t) - t + Math.log(x);
+}
+
+function betaPdf(x: number, a: number, b: number): number {
+  if (x <= 0 || x >= 1) return 0;
+  const lnB = lnGamma(a) + lnGamma(b) - lnGamma(a + b);
+  return Math.exp((a - 1) * Math.log(x) + (b - 1) * Math.log(1 - x) - lnB);
+}
+
+function computePosteriorCurve(
+  alpha: number,
+  beta: number,
+  nPoints: number = 200
+): { x: number; density: number }[] {
+  // Focus the x-axis range on where the density is meaningful
+  const mean = alpha / (alpha + beta);
+  const sd = Math.sqrt((alpha * beta) / ((alpha + beta) ** 2 * (alpha + beta + 1)));
+  const xMin = Math.max(0, mean - 5 * sd);
+  const xMax = Math.min(1, mean + 6 * sd);
+  const step = (xMax - xMin) / nPoints;
+
+  const points: { x: number; density: number }[] = [];
+  for (let i = 0; i <= nPoints; i++) {
+    const x = xMin + i * step;
+    points.push({ x: x * 100, density: betaPdf(x, alpha, beta) });
+  }
+  return points;
+}
+
+// ============================================================================
+// POSTERIOR DENSITY CHART
+// ============================================================================
+
+function PosteriorDensityChart({
+  crsAlpha,
+  crsBeta,
+  icansAlpha,
+  icansBeta,
+  crsMedian,
+  icansMedian,
+}: {
+  crsAlpha: number;
+  crsBeta: number;
+  icansAlpha: number;
+  icansBeta: number;
+  crsMedian: number;
+  icansMedian: number;
+}) {
+  const crsCurve = React.useMemo(
+    () => computePosteriorCurve(crsAlpha, crsBeta),
+    [crsAlpha, crsBeta]
+  );
+  const icansCurve = React.useMemo(
+    () => computePosteriorCurve(icansAlpha, icansBeta),
+    [icansAlpha, icansBeta]
+  );
+
+  // Merge both curves into a single dataset for overlay
+  const allX = new Set([...crsCurve.map((p) => p.x), ...icansCurve.map((p) => p.x)]);
+  const sortedX = Array.from(allX).sort((a, b) => a - b);
+
+  const crsMap = new Map(crsCurve.map((p) => [p.x, p.density]));
+  const icansMap = new Map(icansCurve.map((p) => [p.x, p.density]));
+
+  const merged = sortedX.map((x) => ({
+    x,
+    crs: crsMap.get(x) ?? 0,
+    icans: icansMap.get(x) ?? 0,
+  }));
+
+  return (
+    <div className="h-[160px] w-full">
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart data={merged} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
+          <XAxis
+            dataKey="x"
+            type="number"
+            domain={[0, "dataMax"]}
+            tickFormatter={(v) => `${v.toFixed(0)}%`}
+            tick={{ fontSize: 10 }}
+            axisLine={{ stroke: "hsl(var(--border))" }}
+            tickLine={false}
+          />
+          <YAxis hide domain={[0, "dataMax"]} />
+          <Tooltip
+            content={({ active, payload }) => {
+              if (!active || !payload?.length) return null;
+              const x = payload[0]?.payload?.x;
+              return (
+                <div className="bg-popover border border-border rounded-lg shadow-lg p-2 text-[11px]">
+                  <p className="font-medium">Rate: {x?.toFixed(1)}%</p>
+                  {payload.map((entry: { name?: string; value?: number; color?: string }) => (
+                    <div key={entry.name} className="flex items-center gap-1">
+                      <div
+                        className="h-2 w-2 rounded-full"
+                        style={{ backgroundColor: entry.color }}
+                      />
+                      <span>{entry.name}: {(entry.value ?? 0).toFixed(1)}</span>
+                    </div>
+                  ))}
+                </div>
+              );
+            }}
+          />
+          <Area
+            type="monotone"
+            dataKey="crs"
+            name="CRS posterior"
+            stroke="#10b981"
+            fill="#10b981"
+            fillOpacity={0.2}
+            strokeWidth={2}
+            dot={false}
+            isAnimationActive={false}
+          />
+          <Area
+            type="monotone"
+            dataKey="icans"
+            name="ICANS posterior"
+            stroke="#6366f1"
+            fill="#6366f1"
+            fillOpacity={0.15}
+            strokeWidth={2}
+            dot={false}
+            isAnimationActive={false}
+          />
+          <ReferenceLine
+            x={crsMedian * 100}
+            stroke="#10b981"
+            strokeDasharray="3 3"
+            strokeOpacity={0.7}
+          />
+          <ReferenceLine
+            x={icansMedian * 100}
+            stroke="#6366f1"
+            strokeDasharray="3 3"
+            strokeOpacity={0.7}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
+  );
 }
 
 // ============================================================================
@@ -200,6 +374,32 @@ export function BayesianPanel({ className }: BayesianPanelProps) {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Posterior density curves */}
+            <div className="rounded-lg border p-3">
+              <p className="text-xs font-semibold text-muted-foreground mb-2">
+                Posterior Density (Beta distribution)
+              </p>
+              <PosteriorDensityChart
+                crsAlpha={riskData.crs.posterior_alpha}
+                crsBeta={riskData.crs.posterior_beta}
+                icansAlpha={riskData.icans.posterior_alpha}
+                icansBeta={riskData.icans.posterior_beta}
+                crsMedian={riskData.crs.posterior_median}
+                icansMedian={riskData.icans.posterior_median}
+              />
+              <div className="flex items-center gap-4 mt-1 text-[10px] text-muted-foreground">
+                <div className="flex items-center gap-1">
+                  <div className="h-2 w-6 rounded bg-emerald-500/30 border border-emerald-500" />
+                  <span>CRS Gr3+</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="h-2 w-6 rounded bg-indigo-500/20 border border-indigo-500" />
+                  <span>ICANS Gr3+</span>
+                </div>
+                <span className="ml-auto italic">Dashed lines = median</span>
+              </div>
             </div>
 
             {/* Posterior predictive toggle */}
