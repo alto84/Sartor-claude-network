@@ -22,11 +22,14 @@
 - **Directions:** Solar panel yield prediction, energy forecasting, AI-driven solar optimization
 - **Next steps:** Define MVP, build landing page content
 
-## [[ASTRAZENECA|AstraZeneca]] Safety Research
-- **Status:** Active
-- **Description:** AI/ML applications for pharmacovigilance and drug safety signal detection
-- **Key areas:** FAERS analysis, disproportionality methods, NLP-based ADR extraction
-- **Tools:** Signal detection algorithms, ML models (GBM, deep learning), explainable AI
+## Safety Research System (Open Source)
+- **Status:** Active development
+- **Repo:** https://github.com/alto84/safety-research-system.git
+- **Description:** Open-source Predictive Safety Platform for cell therapy adverse events
+- **Dashboard:** 25 tabs, live at gpuserver1:8000
+- **Tests:** 2133+ passing
+- **Latest (2026-02-18):** Added SapBERT AE classifier (GPU, 470 MedDRA terms), secondary malignancy detection (FDA boxed warning tracker), interactive knowledge graph (112 nodes, 97 edges), temporal signal evolution, P0 security hardening, pharma org simulation
+- **Key areas:** FAERS analysis, disproportionality methods, SapBERT NLP classification, Bayesian risk modeling, knowledge graphs
 
 ## Creative Lab
 - **Status:** Active / Fun
