@@ -26,10 +26,18 @@
 - **Status:** Active development
 - **Repo:** https://github.com/alto84/safety-research-system.git
 - **Description:** Open-source Predictive Safety Platform for cell therapy adverse events
-- **Dashboard:** 25 tabs, live at gpuserver1:8000
-- **Tests:** 2133+ passing
-- **Latest (2026-02-18):** Added SapBERT AE classifier (GPU, 470 MedDRA terms), secondary malignancy detection (FDA boxed warning tracker), interactive knowledge graph (112 nodes, 97 edges), temporal signal evolution, P0 security hardening, pharma org simulation
-- **Key areas:** FAERS analysis, disproportionality methods, SapBERT NLP classification, Bayesian risk modeling, knowledge graphs
+- **Dashboard:** 26 tabs, live at gpuserver1:8000
+- **Tests:** 2241+ passing
+- **Latest (2026-02-18):** Overnight autonomous build session added:
+  - SapBERT AE classifier (GPU, 470 MedDRA terms, 11/12 correct on real test)
+  - Secondary malignancy detection (FDA boxed warning tracker, 10 signals, 6 CAR-T products)
+  - Interactive knowledge graph (112 nodes, 97 edges, force-directed SVG)
+  - Temporal signal evolution (PRR/ROR/EBGM/IC025 over quarterly periods, regulatory milestone overlay)
+  - Signal Timeline dashboard tab with time-series charts + summary tables
+  - Batch prediction parallelization (asyncio.gather)
+  - P0 security hardening (CORS, error sanitization, bounded memory)
+  - Pharma org simulation (CEO mission, regulatory frameworks)
+- **Key areas:** FAERS analysis, disproportionality methods, SapBERT NLP classification, Bayesian risk modeling, knowledge graphs, temporal pharmacovigilance
 
 ## Creative Lab
 - **Status:** Active / Fun
