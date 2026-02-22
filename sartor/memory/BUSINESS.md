@@ -1,14 +1,44 @@
 # Business Context
-> Last updated: 2026-02-06 by Claude
+> Last updated: 2026-02-20 by Claude (from claude.ai memory export)
 
 ## Key Facts
-- SolarInference.com: Startup in early/idea stage
-- [[ASTRAZENECA|AstraZeneca]]: Drug safety and pharmacovigilance AI work
-- Two distinct business tracks: startup venture + pharma consulting/employment
+- **Solar Inference LLC:** Solar-powered AI inference startup (active development)
+- **Sante Total:** 501(c)(3) nonprofit — healthcare delivery in Haiti and Kenya (Alton is Treasurer/Board Member)
+- **[[ASTRAZENECA|AstraZeneca]]:** Medical Director, AI Innovation and Validation, Global Patient Safety
+- Three distinct tracks: pharma career + startup venture + nonprofit
 
-## SolarInference
+## AstraZeneca Career Track
 
-**Website:** SolarInference.com (currently placeholder Coming Soon page)
+**Current Position:** Medical Director, AI Innovation and Validation, Global Patient Safety
+- **Previous role:** Medical Director of Device & Digital Safety
+- **Office:** Delaware (remote 2 days/week from Montclair, NJ)
+- **Promotion prospect:** Senior Medical Director role in NYC (Empire State Building), $288K-$432K
+- See [[ASTRAZENECA]] for full role details
+
+**AI Industry Partnerships (via AZ):**
+- OpenAI Red Teaming Network member (acknowledged in GPT-4o system card)
+- Anthropic strategic partnership development at AZ level
+- Google Cancer AI Symposium participant
+
+**Professional + Open Source Synergy:**
+- The [[PROJECTS|safety-research-system]] directly aligns with AZ role
+- Demonstrates thought leadership in AI-powered pharmacovigilance
+- No proprietary data — fully independent of AZ
+
+## Solar Inference LLC
+
+**Status:** Active development / pre-revenue
+**Website:** SolarInference.com (currently placeholder)
+
+**Business Model:**
+- $450,000 Tesla Solar Roof installation to power GPU computing operations
+- Solar-powered AI inference — edge computing at solar sites
+- Complex tax optimization: commercial solar depreciation + LLC structuring
+
+**Infrastructure:**
+- vast.ai computer setup for GPU rental economics
+- Considering dual RTX PRO 6000 Blackwell ($17K hardware investment)
+- See [[MACHINES]] for current GPU setup
 
 **Possible Directions:**
 - Solar panel yield prediction using weather and satellite data
@@ -17,45 +47,30 @@
 - Predictive maintenance for solar farms
 - Edge inference on IoT devices at solar sites
 
-**Status:** Pre-revenue, concept stage. Need to validate market fit and define MVP.
-For project-level tracking, see [[PROJECTS]].
+## Sante Total (Nonprofit)
 
-## AstraZeneca / Pharma Safety
-
-**Focus Areas:**
-- Drug safety signal detection using AI/ML
-- Pharmacovigilance automation
-- Adverse drug reaction (ADR) identification and classification
-
-See [[ASTRAZENECA]] for detailed coverage of AZ tools, frameworks, and regulatory landscape.
-
-**Key Tools and Methods in Pharma Safety:**
-- FAERS database (FDA Adverse Event Reporting System)
-- Disproportionality analysis methods: PRR, ROR, BCPNN, MGPS
-- NLP-based ADR extraction from medical literature and social media
-- Machine learning classifiers for case triage and signal prioritization
-- Deep learning for unstructured medical text processing
-
-**Regulatory Landscape:**
-- Growing acceptance of AI/ML in pharmacovigilance
-- Explainability requirements (LIME, SHAP) for regulatory submissions
-- EMA and FDA both exploring AI-assisted safety monitoring
+**Type:** 501(c)(3) nonprofit
+**Alton's role:** Treasurer and Board Member
+**Mission:** Healthcare delivery in Haiti and Kenya
+**History:** Involved since 2010
+**Current issues:** IRS penalty abatement requests in progress; ongoing administrative and financial management
 
 ## Tax Implications
 
-Both business tracks have tax implications for the 2025 filing year.
+All three business tracks have tax implications for 2025 filing year.
 See [[TAXES]] for deductions, estimated payments, and filing details.
 
 ## Open Questions
-- SolarInference: What is the target customer segment?
-- SolarInference: Funding strategy (bootstrap vs. seed)?
-- AZ work: Full-time or consulting arrangement?
-- Any IP considerations between the two tracks?
+- Solar Inference: Tesla Solar Roof timeline and financing status?
+- Solar Inference: vast.ai setup status?
+- Sante Total: IRS penalty abatement resolution?
+- Any IP considerations between AZ work and personal projects?
 
 ## Related
-- [[ASTRAZENECA]] - Detailed AZ safety AI context
-- [[PROJECTS]] - Project-level tracking for both business tracks
+- [[ASTRAZENECA]] - Detailed AZ safety AI context and career details
+- [[PROJECTS]] - Project-level tracking for all business tracks
 - [[TAXES]] - Tax implications of business activities
 
 ## History
 - 2026-02-06: Initial creation
+- 2026-02-20: Major update from claude.ai memory export — Solar Inference LLC details ($450K solar roof), Sante Total nonprofit, AI industry partnerships
