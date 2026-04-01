@@ -92,6 +92,30 @@ Key findings from surveying state-of-the-art AI memory systems:
 - **How:** At end of session, summarize key learnings into core files, append to daily log
 - **Benefit:** Prevents context loss across sessions while keeping files manageable
 
+## Vast.ai Hosting (2026-02-23)
+- **Kaalia daemon** auto-starts after reboot and phones home. No manual restart needed.
+- **Listing requires API key** — set via `~/.vast_api_key` or `vastai set api-key KEY`
+- **Get API key from:** https://cloud.vast.ai/account/ → API Key section
+- **After reboot/re-key:** Machine appears on host console. Must create/re-enable offer (set pricing, enable).
+- **Docker permissions:** `alton` user may not be in `docker` group — use `sudo docker` or `sudo usermod -aG docker alton`
+- **Port forwarding:** DMZ Host on Fios Router → 192.168.1.100 (gpuserver1). UFW on server filters to SSH + 40000-40099 + LAN only.
+- **UPnP is unreliable on Fios:** Mappings don't persist. Don't use for production port forwarding.
+- **DMZ + UFW is the pattern:** Router DMZ forwards everything; server-side UFW provides security. Simpler and more reliable than 100 individual port forwards.
+- **Router admin via Chrome MCP:** Self-signed cert blocks read_page. User must click through cert warning manually, then MCP can interact. Router is Vue.js SPA with Vuex store, save via `apply_abstract.cgi`. Can manipulate Vue component data + call saveDmz() via JS.
+- **Listing end_date expiry:** If end_date passes, machine becomes "not rentable" and offers disappear. Must re-list with new end_date.
+- **CRITICAL: Payout method required** — `vastai list machine` returns `success: true` but creates `new_contracts: []` if `has_payout=false`. No error message. Must configure Stripe/PayPal/Wise at vast.ai settings first.
+- **Docker + UFW conflict (SOLVED 2026-02-27):** UFW's FORWARD DROP blocks Docker port mappings. Fix: add DOCKER-USER chain rules to `/etc/ufw/after.rules` with conntrack `--ctorigdstport 40000:40099 --ctdir ORIGINAL -j ACCEPT`. Key insight: after Docker NAT (PREROUTING DNAT), the destination port is rewritten from host port (40080) to container port (22), so `ufw route allow 40000:40099` never matches. Must use conntrack to match the ORIGINAL pre-NAT destination port.
+- **Hairpin NAT (ROOT CAUSE of self-test failure):** The vast.ai self-test CLI runs ON the host machine and connects to `https://<public_ip>:<port>/progress`. Fios router doesn't support hairpin NAT (LAN → external IP → back to LAN). Fix: `iptables -t nat -A OUTPUT -d 100.1.100.63 -j DNAT --to-destination 192.168.1.100` in `/etc/ufw/before.rules` nat table section. This was the actual blocker — Docker+UFW was a red herring for the self-test (though it needed fixing for external access).
+- **Self-test architecture:** `vastai self-test machine` creates a container with HTTPS server on port 5000, then polls `https://<public_ip>:<mapped_port>/progress` from the host. Runs 5 tests: sysreq, ResNet50, ECC, NCCL, stress (60s). Returns "DONE" when all pass.
+- **vastai CLI:** `~/.local/bin/vastai` (v0.5.0). `vastai show machines` to check listing status.
+- **Conflict with Sartor services:** When renting GPU, stop dashboard/gateway/safety. When not renting, restart them from MERIDIAN GPU control panel.
+
+## Inter-Agent Communication (2026-02-23)
+- **Claude Code on gpuserver1** is in default permission mode — `claude --print -p` works for read-only queries but bash commands get blocked
+- **For full automation:** Use `claude --dangerously-skip-permissions -p` on gpuserver1, or pre-approve specific tools
+- **SSH + claude pattern:** From Rocinante, `ssh alton@192.168.1.100 "claude --print -p 'prompt'"` lets you delegate tasks to the remote Claude instance
+- **Authentication protocol v0.1:** Conversation-URL-as-reference for Claude Code ↔ Claude.ai trust channel. See separate protocol doc.
+
 ## Open Questions
 - Best practices for memory file size limits? → Emerging consensus: ~100 lines per topic file
 - When to split a core file into multiple files? → When it exceeds 100 lines or covers 2+ distinct topics
@@ -105,3 +129,6 @@ Key findings from surveying state-of-the-art AI memory systems:
 ## History
 - 2026-02-06: Initial creation
 - 2026-02-20: Added claude.ai subagent pattern, memory system research findings, safety research system lessons
+- 2026-02-23: Added vast.ai hosting lessons, inter-agent communication patterns
+- 2026-02-26: Added DMZ+UFW pattern, Fios Router Vue.js API, vast.ai payout requirement, UPnP unreliability
+- 2026-02-27: Docker+UFW conflict SOLVED (conntrack --ctorigdstport), hairpin NAT root cause found and fixed, self-test PASSING

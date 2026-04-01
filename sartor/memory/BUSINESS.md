@@ -36,9 +36,10 @@
 - Complex tax optimization: commercial solar depreciation + LLC structuring
 
 **Infrastructure:**
-- vast.ai computer setup for GPU rental economics
+- vast.ai hosting: account alto84@gmail.com (Google OAuth), machine #52271 (RTX 5090), $0.25/hr base
+- API key configured on gpuserver1 (name: "gpuserver1"), CLI at `~/.local/bin/vastai`
 - Considering dual RTX PRO 6000 Blackwell ($17K hardware investment)
-- See [[MACHINES]] for current GPU setup
+- See [[MACHINES]] for current GPU setup and vast.ai details
 
 **Possible Directions:**
 - Solar panel yield prediction using weather and satellite data
