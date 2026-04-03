@@ -1,5 +1,6 @@
 /dist/
 node_modules/
+.next/
 
 # Environment variables
 .env
@@ -36,6 +37,14 @@ client_secret_*.json
 firebase-adminsdk*.json
 *.pyc
 __pycache__/
+
+# Build artifacts and coverage
+coverage/
+*.tmp
+
+# Logs
+*.log
+.swarm/logs/
 
 # Home agent runtime data (generated, not source)
 data/home-agent/
