@@ -1,28 +1,14 @@
-# Costco — Agent Skill Guide
+# Costco
 
-## Purpose
-Track Costco orders, deliveries, and household supply reorder reminders.
+Household Costco order tracking and supply management for the Sartor family (Montclair, NJ). Low priority domain -- check when Alton mentions a purchase or needs a reorder reminder.
 
-## What this folder tracks
-- Active and recent Costco orders
-- Delivery status and expected arrival dates
-- Items to reorder (bulk supplies running low)
-- Price notes for recurring purchases
+## Quick Status
+- **Health:** GREEN
+- **Last Updated:** 2026-04-01
+- **Next Deadline:** None
 
-## What this folder does NOT track
-- Financial account details or payment methods
-- Personal identification information
+## Navigation
 
-## Agent Guidance
-
-### Checking order status
-Costco order status can be checked at costco.com order history (requires Alton's login — do not store credentials here).
-
-### What to update in status.md
-- Add new orders when Alton mentions a Costco purchase
-- Mark items as delivered when confirmed
-- Note reorder reminders when supplies run low
-
-### What requires confirmation
-- Any action that involves logging in to costco.com
-- Placing or modifying orders on Alton's behalf
+| Topic | File | Summary |
+|-------|------|---------|
+| Current state | [status.md](status.md) | Active orders, recent deliveries, reorder reminders |

@@ -1,6 +1,10 @@
 # Active Tasks
 > Last updated: 2026-02-06
 
+## NOTE: This file is stale (54+ days). Active tasks are tracked in tasks/TODAY.md and work/*/status.md
+
+---
+
 ## In Progress
 
 - [ ] **Phase 1: Foundation (MASTERPLAN)** - Heartbeat loop, dashboard, cost controls

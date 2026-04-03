@@ -1,5 +1,6 @@
 # Taxes — Status
 ## Last Updated: 2026-04-01
+## See also: [README.md](README.md) for full navigation
 
 ## Filing Status by Entity
 

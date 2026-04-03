@@ -31,5 +31,11 @@ config/firebase-credentials.json
 credentials.json
 secrets.json
 credentials/
+*adminsdk*.json
+client_secret_*.json
+firebase-adminsdk*.json
 *.pyc
 __pycache__/
+
+# Home agent runtime data (generated, not source)
+data/home-agent/
