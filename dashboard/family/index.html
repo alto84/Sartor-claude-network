@@ -1514,6 +1514,18 @@ body {
       <div id="heartbeatContainer">Loading...</div>
     </div>
 
+    <!-- Memory Health Panel -->
+    <div class="card">
+      <div class="card-title"><span class="icon">&#9632;</span> Memory Health</div>
+      <div id="memoryHealthContainer">Loading...</div>
+    </div>
+
+    <!-- Observer Status Panel -->
+    <div class="card">
+      <div class="card-title"><span class="icon">&#9728;</span> Observer Status</div>
+      <div id="observerContainer">Loading...</div>
+    </div>
+
     <!-- Career Tracker -->
     <div class="card">
       <div class="card-title"><span class="icon">&#9733;</span> Career Tracker</div>
@@ -2133,6 +2145,92 @@ async function renderHeartbeat() {
   container.innerHTML = html;
 }
 
+/* ── Render: Memory Health ──────────────────────────────────────────────── */
+async function fetchMemoryHealth() {
+  const d = await fetchJSON('/api/memory-health');
+  const container = $('memoryHealthContainer');
+  if (!d) {
+    container.innerHTML = '<div style="color:var(--text-dim);font-size:13px">Unavailable</div>';
+    return;
+  }
+
+  var total = d.file_count || 0;
+  var tiers = d.tiers || {};
+  var activeWarm = (tiers.active || 0) + (tiers.warm || 0);
+  var cold = tiers.cold || 0;
+  var stale = tiers.stale || 0;
+  var headerColor = stale > 2 ? 'var(--red)' : cold > 3 ? 'var(--amber)' : 'var(--green)';
+
+  var tierBarHTML = '<div style="display:flex;height:8px;border-radius:4px;overflow:hidden;gap:2px;margin:8px 0 4px">';
+  if (tiers.active) tierBarHTML += '<div style="flex:' + tiers.active + ';background:var(--green)" title="Active: ' + tiers.active + '"></div>';
+  if (tiers.warm)   tierBarHTML += '<div style="flex:' + tiers.warm   + ';background:var(--blue)"  title="Warm: '   + tiers.warm   + '"></div>';
+  if (tiers.cold)   tierBarHTML += '<div style="flex:' + tiers.cold   + ';background:var(--amber)" title="Cold: '   + tiers.cold   + '"></div>';
+  if (tiers.stale)  tierBarHTML += '<div style="flex:' + tiers.stale  + ';background:var(--red)"   title="Stale: '  + tiers.stale  + '"></div>';
+  tierBarHTML += '</div>';
+  tierBarHTML += '<div style="display:flex;gap:12px;font-size:10px;color:var(--text-dim);font-family:var(--mono)">' +
+    '<span style="color:var(--green)">Active: ' + (tiers.active || 0) + '</span>' +
+    '<span style="color:var(--blue)">Warm: '   + (tiers.warm   || 0) + '</span>' +
+    '<span style="color:var(--amber)">Cold: '  + (tiers.cold   || 0) + '</span>' +
+    '<span style="color:var(--red)">Stale: '   + (tiers.stale  || 0) + '</span>' +
+    '</div>';
+
+  var html =
+    '<div class="system-item"><span class="system-label">Files</span><span class="system-value" style="color:' + headerColor + '">' + total + '</span></div>' +
+    '<div class="system-item"><span class="system-label">Total Size</span><span class="system-value">' + (d.total_size_kb || 0) + ' KB</span></div>' +
+    '<div class="system-item"><span class="system-label">Daily Logs</span><span class="system-value">' + (d.daily_log_count || 0) + '</span></div>' +
+    '<div class="system-item"><span class="system-label">Last AutoDream</span><span class="system-value" style="font-size:11px">' + escapeHTML(d.last_autodream || 'never') + '</span></div>' +
+    tierBarHTML;
+
+  container.innerHTML = html;
+}
+
+/* ── Render: Observer Report ────────────────────────────────────────────── */
+async function fetchObserverReport() {
+  const d = await fetchJSON('/api/observer-report');
+  const container = $('observerContainer');
+  if (!d) {
+    container.innerHTML = '<div style="color:var(--text-dim);font-size:13px">Unavailable</div>';
+    return;
+  }
+
+  var overallCls = d.status === 'healthy' ? 'green' : d.status === 'issues' ? 'red' : 'gray';
+  var overallLabel = d.status === 'healthy' ? 'Healthy' : d.status === 'issues' ? 'Issues' : 'No Data';
+
+  var observers = [
+    { key: 'sentinel', label: 'Sentinel' },
+    { key: 'auditor',  label: 'Auditor'  },
+    { key: 'critic',   label: 'Critic'   },
+  ];
+
+  var rowsHTML = '';
+  observers.forEach(function(obs) {
+    var entry = d.observers[obs.key];
+    var badgeCls, badgeText;
+    if (!entry) {
+      badgeCls = 'gray'; badgeText = 'No data';
+    } else if (entry.failed && entry.failed > 0) {
+      badgeCls = 'red'; badgeText = 'Issues';
+    } else {
+      badgeCls = 'green'; badgeText = 'OK';
+    }
+    var ts = entry ? '<span style="font-size:10px;color:var(--text-dim);font-family:var(--mono)">' + escapeHTML((entry.timestamp || '').slice(0, 10)) + '</span>' : '';
+    rowsHTML += '<div class="system-item">' +
+      '<span class="system-label">' + escapeHTML(obs.label) + '</span>' +
+      '<span style="display:flex;align-items:center;gap:8px">' + ts + '<span class="status-badge ' + badgeCls + '">' + badgeText + '</span></span>' +
+      '</div>';
+  });
+
+  var html =
+    '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
+      '<span style="font-size:12px;color:var(--text-dim)">Overall</span>' +
+      '<span class="status-badge ' + overallCls + '">' + overallLabel + '</span>' +
+    '</div>' +
+    rowsHTML +
+    '<div class="system-item"><span class="system-label">Pending Fixes</span><span class="system-value ' + (d.pending_fixes > 0 ? 'amber' : '') + '">' + (d.pending_fixes || 0) + '</span></div>';
+
+  container.innerHTML = html;
+}
+
 /* ── Master Refresh ─────────────────────────────────────────────────────── */
 async function refreshAll() {
   await Promise.all([
@@ -2147,6 +2245,8 @@ async function refreshAll() {
     renderLinks(),
     renderSystem(),
     renderHeartbeat(),
+    fetchMemoryHealth(),
+    fetchObserverReport(),
     renderCareer(),
     renderCosts(),
   ]);

@@ -455,6 +455,63 @@ def git_commit_memory(dry_run=False, verbose=False):
 
 
 # ---------------------------------------------------------------------------
+# Task execution via Claude CLI
+# ---------------------------------------------------------------------------
+
+def execute_task_via_claude(task, memory_context, config):
+    """Execute a task using Claude CLI subprocess."""
+    prompt = f"""You are the Sartor autonomous agent executing a scheduled task.
+
+Task: {task.name}
+Description: {task.description}
+Priority: {task.priority}
+Tags: {', '.join(task.tags)}
+
+Relevant memory context:
+{memory_context[:2000]}
+
+Execute this task. Write results to the appropriate output location.
+Be concise. Stay within scope."""
+
+    tier = classify_task_tier(task)
+    model_args = []
+    if tier == TIER_ROUTINE:
+        model_args = ["--model", "claude-haiku-4-5-20251001"]
+    elif tier == TIER_CRITICAL:
+        model_args = ["--model", "claude-opus-4-6"]
+    # standard = default (sonnet)
+
+    try:
+        cmd = ["claude", "--print"] + model_args + ["-p", prompt]
+        result = subprocess.run(
+            cmd,
+            capture_output=True, text=True, timeout=300,
+            cwd=str(REPO_DIR),
+        )
+        return {
+            "success": result.returncode == 0,
+            "output": result.stdout[:5000],
+            "error": result.stderr[:1000] if result.returncode != 0 else None,
+            "tier": tier,
+        }
+    except subprocess.TimeoutExpired:
+        return {"success": False, "output": "", "error": "Task execution timed out (300s)", "tier": tier}
+    except FileNotFoundError:
+        return {"success": False, "output": "", "error": "'claude' CLI not found in PATH", "tier": tier}
+    except Exception as e:
+        return {"success": False, "output": "", "error": str(e), "tier": tier}
+
+
+def write_heartbeat_log(task_name, status, duration_s=0, model="sonnet", cost=0.0):
+    """Append to data/heartbeat-log.csv for dashboard consumption."""
+    csv_path = REPO_DIR / "data" / "heartbeat-log.csv"
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().isoformat()
+    with open(csv_path, "a", encoding="utf-8") as f:
+        f.write(f"{timestamp},{task_name},{status},{duration_s},{model},{cost}\n")
+
+
+# ---------------------------------------------------------------------------
 # Main cycle
 # ---------------------------------------------------------------------------
 
@@ -497,6 +554,23 @@ def run_cycle(dry_run=False, verbose=False):
         notes_parts.append("config.yaml missing or empty")
         if verbose:
             print("  WARNING: config.yaml not found.", file=sys.stderr)
+
+    # -- Step 1.5: Load due scheduled tasks ----------------------------
+    try:
+        sys.path.insert(0, str(SARTOR_DIR / "gateway"))
+        from scheduled_executor import get_due_tasks
+        due_scheduled = get_due_tasks(REPO_DIR / ".claude" / "scheduled-tasks")
+        if due_scheduled and verbose:
+            print(
+                f"  Scheduled tasks due: {len(due_scheduled)}",
+                file=sys.stderr,
+            )
+    except ImportError:
+        due_scheduled = []
+    except Exception as e:
+        due_scheduled = []
+        if verbose:
+            print(f"  scheduled_executor error: {e}", file=sys.stderr)
 
     # -- Step 2: Read memory files --------------------------------------
     memory_files = read_memory_files()
@@ -551,11 +625,6 @@ def run_cycle(dry_run=False, verbose=False):
             )
             notes_parts.append(f"Task priority: {chosen_task.priority}")
         else:
-            # For now (no Claude API), log what WOULD be done
-            action = (
-                f"identified task: {chosen_task.name} "
-                f"(tier={tier}, awaiting LLM integration)"
-            )
             notes_parts.append(f"Task priority: {chosen_task.priority}")
             notes_parts.append(
                 f"Owner: {chosen_task.owner or 'unassigned'}"
@@ -566,6 +635,7 @@ def run_cycle(dry_run=False, verbose=False):
                 )
 
         # Search memory for context related to the chosen task
+        memory_context = ""
         if memory_files:
             search_results = search_memory(
                 chosen_task.name, memory_files, limit=3
@@ -580,6 +650,55 @@ def run_cycle(dry_run=False, verbose=False):
                     "Related memory: "
                     + ", ".join(name for name, _ in search_results)
                 )
+                # Build memory context string from top matching files
+                memory_context = "\n\n".join(
+                    f"### {name}\n{memory_files[name][:500]}"
+                    for name, _ in search_results
+                    if name in memory_files
+                )
+
+        if not dry_run:
+            exec_start = time.time()
+            exec_result = execute_task_via_claude(chosen_task, memory_context, config)
+            exec_duration = time.time() - exec_start
+
+            tier_to_model = {
+                TIER_ROUTINE: "haiku",
+                TIER_STANDARD: "sonnet",
+                TIER_CRITICAL: "opus",
+            }
+            model_used = tier_to_model.get(tier, "sonnet")
+
+            if exec_result["success"]:
+                action = f"executed task: {chosen_task.name} (tier={tier}, success)"
+                status = "ok"
+                if verbose:
+                    print(
+                        f"  Task completed in {exec_duration:.1f}s",
+                        file=sys.stderr,
+                    )
+                notes_parts.append(
+                    f"Output: {exec_result['output'][:300]}"
+                )
+            else:
+                action = (
+                    f"attempted task: {chosen_task.name} "
+                    f"(tier={tier}, failed: {exec_result['error']})"
+                )
+                status = "warning"
+                if verbose:
+                    print(
+                        f"  Task failed: {exec_result['error']}",
+                        file=sys.stderr,
+                    )
+
+            write_heartbeat_log(
+                task_name=chosen_task.name,
+                status="success" if exec_result["success"] else "failed",
+                duration_s=round(exec_duration, 1),
+                model=model_used,
+                cost=cost,
+            )
     else:
         if not actionable:
             notes_parts.append(

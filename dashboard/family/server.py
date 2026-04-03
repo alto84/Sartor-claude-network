@@ -777,6 +777,79 @@ async def heartbeat_status():
     return {"tasks": tasks_out}
 
 
+# ── GET /api/memory-health ────────────────────────────────────────────────────
+
+@app.get("/api/memory-health")
+async def memory_health():
+    memory_dir = REPO_ROOT / "sartor" / "memory"
+    meta_dir = memory_dir / ".meta"
+
+    files = []
+    for f in sorted(memory_dir.glob("*.md")):
+        stat = f.stat()
+        age_days = (datetime.now().timestamp() - stat.st_mtime) / 86400
+        files.append({
+            "name": f.name,
+            "size": stat.st_size,
+            "age_days": round(age_days, 1),
+            "tier": "active" if age_days < 7 else "warm" if age_days < 30 else "cold" if age_days < 90 else "stale"
+        })
+
+    consolidation_log = meta_dir / "consolidation-log.md"
+    last_dream = None
+    if consolidation_log.exists():
+        content = consolidation_log.read_text(encoding="utf-8", errors="replace")
+        dates = re.findall(r'\d{4}-\d{2}-\d{2}', content)
+        if dates:
+            last_dream = dates[-1]
+
+    tiers = {"active": 0, "warm": 0, "cold": 0, "stale": 0}
+    for f in files:
+        tiers[f["tier"]] += 1
+
+    return {
+        "file_count": len(files),
+        "total_size_kb": sum(f["size"] for f in files) // 1024,
+        "files": files,
+        "tiers": tiers,
+        "last_autodream": last_dream,
+        "daily_log_count": len(list((memory_dir / "daily").glob("*.md"))) if (memory_dir / "daily").exists() else 0
+    }
+
+
+# ── GET /api/observer-report ──────────────────────────────────────────────────
+
+@app.get("/api/observer-report")
+async def observer_report():
+    log_path = REPO_ROOT / "data" / "observer-log.jsonl"
+
+    entries = {"sentinel": None, "auditor": None, "critic": None}
+    if log_path.exists():
+        for line in log_path.read_text(encoding="utf-8", errors="replace").strip().split("\n"):
+            if line.strip():
+                try:
+                    entry = json.loads(line)
+                    observer = entry.get("observer", "")
+                    if observer in entries:
+                        entries[observer] = entry
+                except json.JSONDecodeError:
+                    pass
+
+    fixes_path = REPO_ROOT / "docs" / "proposed-fixes.md"
+    pending_fixes = 0
+    if fixes_path.exists():
+        content = fixes_path.read_text(encoding="utf-8", errors="replace")
+        pending_fixes = content.count("- [ ]")
+
+    return {
+        "observers": entries,
+        "pending_fixes": pending_fixes,
+        "status": "healthy" if all(
+            e and e.get("failed", 0) == 0 for e in entries.values() if e
+        ) else "issues" if any(entries.values()) else "no_data"
+    }
+
+
 # ── WebSocket /ws/claude ──────────────────────────────────────────────────────
 
 @app.websocket("/ws/claude")

@@ -10,7 +10,7 @@ tools:
   - Glob
   - WebSearch
   - WebFetch
-permissionMode: acceptEdits
+permissionMode: bypassPermissions
 maxTurns: 50
 memory: project
 ---

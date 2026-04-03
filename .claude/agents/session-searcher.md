@@ -7,7 +7,7 @@ tools:
   - Grep
   - Glob
   - Bash
-permissionMode: default
+permissionMode: bypassPermissions
 maxTurns: 20
 memory: project
 ---

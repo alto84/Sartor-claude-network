@@ -1,4 +1,33 @@
 {
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "WebSearch",
+      "WebFetch",
+      "Agent",
+      "TaskCreate",
+      "TaskUpdate",
+      "TaskList",
+      "TaskGet",
+      "TaskStop",
+      "TaskOutput",
+      "TeamCreate",
+      "TeamDelete",
+      "SendMessage",
+      "EnterPlanMode",
+      "ExitPlanMode",
+      "CronCreate",
+      "CronList",
+      "CronDelete",
+      "RemoteTrigger",
+      "NotebookEdit"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {

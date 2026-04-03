@@ -9,7 +9,7 @@ tools:
   - Grep
   - WebSearch
   - WebFetch
-permissionMode: acceptEdits
+permissionMode: bypassPermissions
 maxTurns: 40
 memory: project
 ---

@@ -8,7 +8,7 @@ tools:
   - Write
   - Grep
   - Glob
-permissionMode: acceptEdits
+permissionMode: bypassPermissions
 maxTurns: 50
 memory: project
 ---
