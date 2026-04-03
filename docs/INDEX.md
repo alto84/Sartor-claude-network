@@ -8,7 +8,7 @@
 
 **New to Sartor?** Start here:
 
-1. **[Agent Quickstart](./AGENT_QUICKSTART.md)** - ONE-PAGE reference for agents
+1. **Agent Quickstart** - See CLAUDE.md at repo root for current agent reference
    - Current status and roadmap
    - Available skills and how to use them
    - Quick start commands
@@ -529,6 +529,6 @@ npm run validate:sync-config
 
 **Need Help?**
 
-- Check [Agent Quickstart](./AGENT_QUICKSTART.md) for common tasks
+- Check [CLAUDE.md](../CLAUDE.md) for current agent reference and quick start
 - Review [Executive Claude](../EXECUTIVE_CLAUDE.md) for orchestration patterns
 - Consult [Implementation Guide](./implementation-guide.md) for setup issues

@@ -25,6 +25,7 @@ import {
  BookOpen,
  Target,
  Zap,
+ FileDown,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -32,12 +33,19 @@ import { AdverseEventComparison } from "@/components/safety/adverse-event-compar
 import { RiskWaterfall } from "@/components/safety/risk-waterfall";
 import { SafetyRadar } from "@/components/safety/safety-radar";
 import { BayesianPanel } from "@/components/safety/bayesian-panel";
+import { ForestPlot } from "@/components/safety/forest-plot";
+import { FAERSSignals } from "@/components/safety/faers-signals";
+import { PatientJourney } from "@/components/safety/patient-journey";
+import { ExecutiveBriefing } from "@/components/safety/executive-briefing";
+import { EvidenceAccrual } from "@/components/safety/evidence-accrual";
 import {
   adverseEventRates as canonicalAERates,
   mitigationStrategies as canonicalMitigations,
   clinicalTrials as canonicalTrials,
   dataSources as canonicalDataSources,
   getSLEBaselineRiskAssessment,
+  getMitigationCorrelation,
+  combineCorrelatedRR,
 } from "@/lib/safety-data";
 
 // ============================================================
@@ -189,7 +197,7 @@ function calculateMitigatedRisk(
  selectedMitigations: string[],
  targetAE: string
 ): RiskEstimate {
- // Monte Carlo simulation for proper CI propagation
+ // Monte Carlo simulation with correlated mitigation correction (risk-model v2.0)
  const N = 10000;
  const samples: number[] = [];
 
@@ -197,27 +205,50 @@ function calculateMitigatedRisk(
  const baseEst = baseline.estimate / 100;
 
  // Estimate Beta parameters from baseline (method of moments)
- // Using a simple approach: if we observed ~1 event in 47 patients
- const alpha = Math.max(0.5, baseEst * 20); // pseudo-observations
+ const alpha = Math.max(0.5, baseEst * 20);
  const beta = Math.max(0.5, (1 - baseEst) * 20);
+
+ // Identify mitigations targeting this AE
+ const relevantMitigations = selectedMitigations
+   .map(mid => mitigationStrategies.find(s => s.id === mid))
+   .filter((m): m is MitigationStrategy => m != null && m.targetAE.includes(targetAE));
 
  for (let i = 0; i < N; i++) {
  // Sample baseline from Beta distribution
- let baseSample = betaSample(alpha, beta);
+ const baseSample = betaSample(alpha, beta);
 
- // Apply each mitigation
- for (const mid of selectedMitigations) {
- const m = mitigationStrategies.find((s) => s.id === mid);
- if (m && m.targetAE.includes(targetAE)) {
- // Sample RR from LogNormal
- const logMean = Math.log(m.relativeRisk);
- const logSE =
- (Math.log(m.ciHigh) - Math.log(m.ciLow)) / (2 * 1.96);
- const rrSample = Math.exp(logMean + logSE * normalSample());
- baseSample *= rrSample;
+ // Sample individual RRs from LogNormal for each mitigation
+ const sampledItems = relevantMitigations.map(m => {
+   const logMean = Math.log(m.relativeRisk);
+   const logSE = (Math.log(m.ciHigh) - Math.log(m.ciLow)) / (2 * 1.96);
+   return { id: m.id, rr: Math.exp(logMean + logSE * normalSample()) };
+ });
+
+ // Combine sampled RRs using correlated combination (greedy pairwise)
+ let combinedRR = 1;
+ if (sampledItems.length === 1) {
+   combinedRR = sampledItems[0].rr;
+ } else if (sampledItems.length > 1) {
+   const items = [...sampledItems];
+   while (items.length > 1) {
+     let bestI = 0, bestJ = 1;
+     let bestCorr = getMitigationCorrelation(items[0].id, items[1].id);
+     for (let a = 0; a < items.length; a++) {
+       for (let b = a + 1; b < items.length; b++) {
+         const corr = getMitigationCorrelation(items[a].id, items[b].id);
+         if (corr > bestCorr) { bestCorr = corr; bestI = a; bestJ = b; }
+       }
+     }
+     const combined = combineCorrelatedRR(items[bestI].rr, items[bestJ].rr, bestCorr);
+     const combinedId = `${items[bestI].id}+${items[bestJ].id}`;
+     items.splice(bestJ, 1);
+     items.splice(bestI, 1);
+     items.push({ id: combinedId, rr: combined });
+   }
+   combinedRR = items[0].rr;
  }
- }
- samples.push(baseSample * 100); // back to percentage
+
+ samples.push(baseSample * combinedRR * 100);
  }
 
  // Sort and extract percentiles
@@ -382,6 +413,7 @@ function SafetyDashboardContent() {
  const [selectedMitigations, setSelectedMitigations] = useState<string[]>(["dose-reduction"]);
  const [activeTab, setActiveTab] = useState<TabId>(initialTab);
  const [expandedDecision, setExpandedDecision] = useState<string | null>(null);
+ const [briefingOpen, setBriefingOpen] = useState(false);
 
  const handleTabChange = (tab: TabId) => {
  setActiveTab(tab);
@@ -403,7 +435,7 @@ function SafetyDashboardContent() {
  const mitigatedCRS = calculateMitigatedRisk(baselineRisks.crsGrade3Plus, selectedMitigations, "CRS");
  const mitigatedICANS = calculateMitigatedRisk(baselineRisks.icansGrade3Plus, selectedMitigations, "ICANS");
 
- // Detect correlated mitigations that are co-selected
+ // Detect correlated mitigations that are co-selected and report corrections
  const correlationWarnings: string[] = [];
  const seenPairs = new Set<string>();
  for (const mid of selectedMitigations) {
@@ -415,8 +447,9 @@ function SafetyDashboardContent() {
  if (!seenPairs.has(pairKey)) {
  seenPairs.add(pairKey);
  const otherName = mitigationStrategies.find((s) => s.id === corr.id)?.name ?? corr.id;
+ const rho = getMitigationCorrelation(mid, corr.id);
  correlationWarnings.push(
- `${m.name} + ${otherName}: ${corr.reason}`
+ `${m.name} + ${otherName} (\u03C1=${rho.toFixed(1)}): Correlated mechanism correction applied`
  );
  }
  }
@@ -445,7 +478,7 @@ function SafetyDashboardContent() {
  <div className="p-2 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg">
  <Shield className="h-6 w-6" />
  </div>
- <div>
+ <div className="flex-1">
  <h1 className="text-2xl font-bold tracking-tight">
  Predictive Safety Platform
  </h1>
@@ -453,6 +486,15 @@ function SafetyDashboardContent() {
  CAR-T Cell Therapy in SLE -- BCMA/CD19 Safety Intelligence
  </p>
  </div>
+ <Button
+ variant="outline"
+ size="sm"
+ onClick={() => setBriefingOpen(true)}
+ className="text-xs gap-1.5 h-8"
+ >
+ <FileDown className="h-3.5 w-3.5" />
+ Export Briefing
+ </Button>
  </div>
  <div className="flex items-center gap-2 text-xs text-muted-foreground">
  <span className="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 font-medium">
@@ -542,6 +584,9 @@ function SafetyDashboardContent() {
  {/* Bayesian Risk Model (gpuserver1) */}
  <BayesianPanel className="md:col-span-2" />
 
+ {/* Evidence Accrual Curve */}
+ <EvidenceAccrual className="md:col-span-2" />
+
  {/* Baseline Risk */}
  <Card>
  <CardHeader className="pb-2">
@@ -613,11 +658,11 @@ function SafetyDashboardContent() {
  <RiskGauge label="Grade 3+ ICANS (mitigated)" risk={mitigatedICANS} color="blue" />
 
  {correlationWarnings.length > 0 && (
- <div className="rounded-md border border-yellow-300 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-950/30 p-2">
+ <div className="rounded-md border border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/30 p-2">
  <div className="flex items-start gap-1.5">
- <AlertTriangle className="h-3 w-3 text-yellow-600 mt-0.5 flex-shrink-0" />
- <p className="text-[10px] text-yellow-700 dark:text-yellow-400">
- Correlated mitigations selected -- combined risk reduction may be overestimated.
+ <Network className="h-3 w-3 text-blue-600 mt-0.5 flex-shrink-0" />
+ <p className="text-[10px] text-blue-700 dark:text-blue-400">
+ Correlated mitigation correction applied (risk-model v2.0). Shared-mechanism pairs yield less benefit than independent mitigations.
  </p>
  </div>
  </div>
@@ -805,6 +850,9 @@ function SafetyDashboardContent() {
  {/* Interactive Recharts Comparison */}
  <AdverseEventComparison />
 
+ {/* Forest Plot - Classic meta-analysis visualization */}
+ <ForestPlot />
+
  <Card>
  <CardHeader className="pb-2">
  <CardTitle className="text-sm font-semibold flex items-center gap-2">
@@ -911,22 +959,22 @@ function SafetyDashboardContent() {
  exit={{ opacity: 0, y: -10 }}
  className="space-y-4"
  >
- {/* Correlation Warning Banner */}
+ {/* Correlated Mitigation Correction Banner */}
  {correlationWarnings.length > 0 && (
- <div className="rounded-lg border border-yellow-300 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-950/30 p-3">
+ <div className="rounded-lg border border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/30 p-3">
  <div className="flex items-start gap-2">
- <AlertTriangle className="h-4 w-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+ <Network className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
  <div>
- <p className="text-xs font-semibold text-yellow-800 dark:text-yellow-300">
- Correlated Mitigations Selected
+ <p className="text-xs font-semibold text-blue-800 dark:text-blue-300">
+ Correlated Mitigation Correction Active
  </p>
- <p className="text-[10px] text-yellow-700 dark:text-yellow-400 mt-0.5">
- The following mitigations have overlapping mechanisms. Multiplicative risk reduction may overestimate the combined benefit.
+ <p className="text-[10px] text-blue-700 dark:text-blue-400 mt-0.5">
+ Mitigations with shared mechanisms have diminishing marginal benefit. The risk model corrects for pairwise correlations: RR_combined = (RR_i {"\u00D7"} RR_j)^(1-{"\u03C1"}) {"\u00D7"} min(RR)^{"\u03C1"}, where {"\u03C1"} is mechanistic correlation (0=independent, 1=redundant).
  </p>
  <ul className="mt-1 space-y-0.5">
  {correlationWarnings.map((w, i) => (
- <li key={i} className="text-[10px] text-yellow-700 dark:text-yellow-400 flex items-start gap-1">
- <span className="mt-1 h-1 w-1 rounded-full bg-yellow-500 flex-shrink-0" />
+ <li key={i} className="text-[10px] text-blue-700 dark:text-blue-400 flex items-start gap-1">
+ <span className="mt-1 h-1 w-1 rounded-full bg-blue-500 flex-shrink-0" />
  {w}
  </li>
  ))}
@@ -1094,6 +1142,135 @@ function SafetyDashboardContent() {
  .map((m) => ({ name: m.name, relativeRisk: m.relativeRisk }))}
  />
  </div>
+
+ {/* Correlation Sensitivity Analysis */}
+ {correlationWarnings.length > 0 && (() => {
+   // Compute mitigated rate across a range of rho multipliers
+   const rhoScales = [0, 0.5, 1.0, 1.5, 2.0];
+   const rhoLabels = ["Independent", "Half", "Estimated", "1.5\u00D7", "Double"];
+   const crsMits = mitigationStrategies.filter(m => selectedMitigations.includes(m.id) && m.targetAE.includes("CRS"));
+   const icansMits = mitigationStrategies.filter(m => selectedMitigations.includes(m.id) && m.targetAE.includes("ICANS"));
+
+   function computeScaledRR(mits: typeof crsMits, scale: number): number {
+     if (mits.length <= 1) return mits.length === 1 ? mits[0].relativeRisk : 1;
+     const items = mits.map(m => ({ id: m.id, rr: m.relativeRisk }));
+     while (items.length > 1) {
+       let bi = 0, bj = 1;
+       let bc = getMitigationCorrelation(items[0].id, items[1].id) * scale;
+       for (let a = 0; a < items.length; a++) {
+         for (let b = a + 1; b < items.length; b++) {
+           const c = getMitigationCorrelation(items[a].id, items[b].id) * scale;
+           if (c > bc) { bc = c; bi = a; bj = b; }
+         }
+       }
+       const rho = Math.min(bc, 0.99);
+       const combined = combineCorrelatedRR(items[bi].rr, items[bj].rr, rho);
+       items.splice(bj, 1);
+       items.splice(bi, 1);
+       items.push({ id: items.length.toString(), rr: combined });
+     }
+     return items[0].rr;
+   }
+
+   const crsRates = rhoScales.map(s => baselineRisks.crsGrade3Plus.estimate * computeScaledRR(crsMits, s));
+   const icansRates = rhoScales.map(s => baselineRisks.icansGrade3Plus.estimate * computeScaledRR(icansMits, s));
+   const estimatedIdx = 2;
+
+   return (
+     <Card>
+       <CardHeader className="pb-2">
+         <CardTitle className="text-sm font-semibold flex items-center gap-2">
+           <Layers className="h-4 w-4 text-purple-600" />
+           Correlation Sensitivity Analysis
+         </CardTitle>
+       </CardHeader>
+       <CardContent>
+         <p className="text-[10px] text-muted-foreground mb-3">
+           How do mitigated risk estimates change if the true mechanistic correlation between mitigations is higher or lower than estimated?
+           A CMO should consider the range of plausible outcomes across different correlation assumptions.
+         </p>
+         <div className="overflow-x-auto">
+           <table className="w-full text-xs">
+             <thead>
+               <tr className="border-b text-left text-muted-foreground">
+                 <th className="pb-2 pr-3">{"\u03C1"} Assumption</th>
+                 <th className="pb-2 pr-3 text-right">CRS Grade 3+</th>
+                 <th className="pb-2 text-right">ICANS Grade 3+</th>
+               </tr>
+             </thead>
+             <tbody>
+               {rhoScales.map((s, i) => (
+                 <tr
+                   key={s}
+                   className={`border-b border-dashed ${i === estimatedIdx ? "bg-blue-50/50 dark:bg-blue-950/20 font-semibold" : ""}`}
+                 >
+                   <td className="py-1.5 pr-3">
+                     <span className="font-mono text-[10px]">{rhoLabels[i]}</span>
+                     <span className="text-[9px] text-muted-foreground ml-1">
+                       ({s === 0 ? "\u03C1=0" : s === 1 ? "\u03C1 est." : `\u03C1\u00D7${s}`})
+                     </span>
+                     {i === estimatedIdx && (
+                       <span className="ml-1 text-[9px] px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">
+                         current
+                       </span>
+                     )}
+                   </td>
+                   <td className={`py-1.5 pr-3 text-right font-mono text-[10px] ${i === estimatedIdx ? "text-emerald-600" : ""}`}>
+                     {crsRates[i].toFixed(3)}%
+                   </td>
+                   <td className={`py-1.5 text-right font-mono text-[10px] ${i === estimatedIdx ? "text-blue-600" : ""}`}>
+                     {icansRates[i].toFixed(3)}%
+                   </td>
+                 </tr>
+               ))}
+             </tbody>
+           </table>
+         </div>
+         <div className="mt-3 flex gap-4">
+           <div className="flex-1">
+             <p className="text-[9px] text-muted-foreground font-medium mb-1">CRS Range</p>
+             <div className="h-2 rounded-full bg-muted relative overflow-hidden">
+               <div
+                 className="absolute inset-y-0 left-0 bg-gradient-to-r from-emerald-300 to-emerald-600 rounded-full"
+                 style={{
+                   left: `${(Math.min(...crsRates) / baselineRisks.crsGrade3Plus.estimate) * 100}%`,
+                   width: `${((Math.max(...crsRates) - Math.min(...crsRates)) / baselineRisks.crsGrade3Plus.estimate) * 100}%`,
+                 }}
+               />
+             </div>
+             <div className="flex justify-between text-[9px] text-muted-foreground mt-0.5">
+               <span>{Math.min(...crsRates).toFixed(3)}%</span>
+               <span>{Math.max(...crsRates).toFixed(3)}%</span>
+             </div>
+           </div>
+           <div className="flex-1">
+             <p className="text-[9px] text-muted-foreground font-medium mb-1">ICANS Range</p>
+             <div className="h-2 rounded-full bg-muted relative overflow-hidden">
+               <div
+                 className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-300 to-blue-600 rounded-full"
+                 style={{
+                   left: `${(Math.min(...icansRates) / baselineRisks.icansGrade3Plus.estimate) * 100}%`,
+                   width: `${((Math.max(...icansRates) - Math.min(...icansRates)) / baselineRisks.icansGrade3Plus.estimate) * 100}%`,
+                 }}
+               />
+             </div>
+             <div className="flex justify-between text-[9px] text-muted-foreground mt-0.5">
+               <span>{Math.min(...icansRates).toFixed(3)}%</span>
+               <span>{Math.max(...icansRates).toFixed(3)}%</span>
+             </div>
+           </div>
+         </div>
+         <p className="text-[9px] text-muted-foreground italic mt-2">
+           {"\u201C"}Independent{"\u201D"} assumes no shared mechanism ({"\u03C1"}=0).
+           {"\u201C"}Estimated{"\u201D"} uses knowledge-graph correlation values.
+           {"\u201C"}Double{"\u201D"} tests if true correlations are 2{"\u00D7"} our estimates.
+           Sensitivity range informs model robustness for CSP decision-making.
+         </p>
+       </CardContent>
+     </Card>
+   );
+ })()}
+
  </motion.div>
  )}
 
@@ -1155,7 +1332,11 @@ function SafetyDashboardContent() {
  initial={{ opacity: 0, y: 10 }}
  animate={{ opacity: 1, y: 0 }}
  exit={{ opacity: 0, y: -10 }}
+ className="space-y-4"
  >
+ {/* FAERS Signal Detection */}
+ <FAERSSignals />
+
  <Card>
  <CardHeader className="pb-2">
  <CardTitle className="text-sm font-semibold flex items-center gap-2">
@@ -1207,6 +1388,9 @@ function SafetyDashboardContent() {
  exit={{ opacity: 0, y: -10 }}
  className="space-y-3"
  >
+ {/* Patient Journey Timeline */}
+ <PatientJourney />
+
  {[
  {
  id: "dose",
@@ -1435,6 +1619,17 @@ function SafetyDashboardContent() {
  </motion.div>
  )}
  </AnimatePresence>
+
+ {/* Executive Briefing Export Modal */}
+ <ExecutiveBriefing
+ open={briefingOpen}
+ onClose={() => setBriefingOpen(false)}
+ baselineRisks={baselineRisks}
+ mitigatedCRS={mitigatedCRS}
+ mitigatedICANS={mitigatedICANS}
+ selectedMitigations={selectedMitigations}
+ trialCount={activeClinicalTrials.length}
+ />
  </div>
  );
 }

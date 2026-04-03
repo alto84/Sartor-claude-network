@@ -1,0 +1,197 @@
+{
+  "snapshot_date": "2026-02-21",
+  "post_tax": {
+    "total": 1319520,
+    "accounts": [
+      {
+        "name": "Alton Post-Tax Fidelity / Combo",
+        "balance": 747946
+      },
+      {
+        "name": "Chase bank combo",
+        "balance": 41365
+      }
+    ]
+  },
+  "anthropic_equity": {
+    "total": 484200,
+    "note": "Estimated equity value"
+  },
+  "retirement": {
+    "total": 1171838,
+    "accounts": [
+      {
+        "name": "Schwab Roth",
+        "balance": 189787
+      },
+      {
+        "name": "Aneeta Roth (fidelity)",
+        "balance": 176252
+      },
+      {
+        "name": "Alton AZ savings (Mix post-tax, IRA, ROTH)",
+        "balance": 164366
+      },
+      {
+        "name": "Aneeta Rollover IRA",
+        "balance": 148343
+      },
+      {
+        "name": "Aneeta TSP",
+        "balance": 144098
+      },
+      {
+        "name": "Alton Rollover IRA Fidelity",
+        "balance": 112578
+      },
+      {
+        "name": "Alton BU",
+        "balance": 81767
+      },
+      {
+        "name": "Alton TSP",
+        "balance": 67298
+      },
+      {
+        "name": "Aneeta Chase Roth ",
+        "balance": 26965
+      },
+      {
+        "name": "Alton Roth IRA Fidleity",
+        "balance": 23904
+      },
+      {
+        "name": "Aneeta Boston University 2",
+        "balance": 18661
+      },
+      {
+        "name": "MGH Fidelty",
+        "balance": 14732
+      },
+      {
+        "name": "Aneeta Boston University 1",
+        "balance": 3087
+      }
+    ]
+  },
+  "real_estate": {
+    "total": 4169000,
+    "properties": [
+      {
+        "name": "185 Davis",
+        "value": 1157000,
+        "source": "Avg Zillow/Redfin Feb 2026"
+      },
+      {
+        "name": "85 Stonebridge",
+        "value": 3012000,
+        "source": "Avg Zillow/Redfin Feb 2026"
+      }
+    ]
+  },
+  "liabilities": {
+    "total": 3227579,
+    "items": [
+      {
+        "name": "85 Stonebridge Mortgage",
+        "balance": 1869236
+      },
+      {
+        "name": "185 Davis Mortgage",
+        "balance": 708576
+      },
+      {
+        "name": "85 Stonebridge HELOC",
+        "balance": 527000
+      },
+      {
+        "name": "Student Loan",
+        "balance": 73041
+      },
+      {
+        "name": "Car Loan",
+        "balance": 28092
+      },
+      {
+        "name": "Credit Cards",
+        "balance": 21634
+      }
+    ]
+  },
+  "net_worth": 3832778,
+  "monthly_income": 33008,
+  "monthly_expenses": 46278,
+  "monthly_gap": -13270,
+  "income_breakdown": [
+    {
+      "name": "Alton salary",
+      "amount": 12552
+    },
+    {
+      "name": "Aneeta salary",
+      "amount": 10856
+    },
+    {
+      "name": "185 Davis rental",
+      "amount": 4600
+    },
+    {
+      "name": "Support",
+      "amount": 5000
+    }
+  ],
+  "expense_breakdown": [
+    {
+      "name": "85 Stonebridge (PITI)",
+      "amount": 18500
+    },
+    {
+      "name": "Tutoring",
+      "amount": 10000
+    },
+    {
+      "name": "185 Davis mortgage",
+      "amount": 3600
+    },
+    {
+      "name": "Utilities",
+      "amount": 3000
+    },
+    {
+      "name": "Yard",
+      "amount": 3000
+    },
+    {
+      "name": "Goddard",
+      "amount": 2000
+    },
+    {
+      "name": "Groceries",
+      "amount": 2000
+    },
+    {
+      "name": "Car Loan",
+      "amount": 1000
+    },
+    {
+      "name": "Student Loan",
+      "amount": 1000
+    },
+    {
+      "name": "Gilda",
+      "amount": 1000
+    },
+    {
+      "name": "185 Davis Condo Fee",
+      "amount": 700
+    },
+    {
+      "name": "185 Management",
+      "amount": 300
+    },
+    {
+      "name": "Northwestern Mutual",
+      "amount": 178
+    }
+  ]
+}
