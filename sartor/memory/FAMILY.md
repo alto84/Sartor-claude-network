@@ -55,6 +55,14 @@
 - AZ March Bonus: March 15, 2026
 - Wedding anniversary: (to be confirmed) — marriage certificate on file in Downloads
 
+## Summer Plans
+
+### Vishala — Wohelo Camp (Summer 2026)
+- Full session planned; tuition money available
+- Application pending as of 4/4/2026 — Aneeta contacted Debbie Hammond (debbie@wohelo.com) for payment timeline
+- Heidi Gorton confirmed Vishala is going; birthday visit policy may restrict parent visit on July 29
+- Monitor for Wohelo response and payment deadline
+
 ## Open Questions
 - Aneeta's current work situation?
 - Kids' extracurricular activities?

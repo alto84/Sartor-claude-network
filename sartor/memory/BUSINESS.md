@@ -67,6 +67,10 @@ See [[TAXES]] for deductions, estimated payments, and filing details.
 - Sante Total: IRS penalty abatement resolution?
 - Any IP considerations between AZ work and personal projects?
 
+## Recent Events
+- 2026-04-04: Machine #52271 (gpuserver1) reported offline by Vast.ai at 18:35 UTC. Status unverified. SSH check needed.
+- 2026-04-04: Berman Home Systems deposit request (Sales Order AAAO13216-02) awaiting signature.
+
 ## Related
 - [[ASTRAZENECA]] - Detailed AZ safety AI context and career details
 - [[PROJECTS]] - Project-level tracking for all business tracks
