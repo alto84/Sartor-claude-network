@@ -132,3 +132,14 @@ Key findings from surveying state-of-the-art AI memory systems:
 - 2026-02-23: Added vast.ai hosting lessons, inter-agent communication patterns
 - 2026-02-26: Added DMZ+UFW pattern, Fios Router Vue.js API, vast.ai payout requirement, UPnP unreliability
 - 2026-02-27: Docker+UFW conflict SOLVED (conntrack --ctorigdstport), hairpin NAT root cause found and fixed, self-test PASSING
+
+## Consolidated from daily logs (2026-04-05)
+- [2026-02-06] (completed) Integrate memory search (BM25)
+- [2026-02-06] (completed) Create master plan
+- [2026-02-06] (completed) Completed background research on:
+- [2026-02-06] (completed) Fractal gallery
+- [2026-02-06] (completed) Audio visualizer
+- [2026-02-06] (decision) Pattern: OpenClaw-inspired (curated core + daily append-only logs)
+- [2026-02-06] (decision) Pattern: OpenClaw-inspired (curated core + daily append-only logs)
+- [2026-02-06] (insight) OpenClaw patterns provide a proven foundation without over-engineering
+- [2026-02-06] (insight) Separating daily logs from core files keeps core knowledge clean and stable

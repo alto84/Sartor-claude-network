@@ -67,3 +67,6 @@ Both [[BUSINESS|business tracks]] may generate taxable income or deductible expe
 
 ## History
 - 2026-02-06: Initial creation
+
+## Consolidated from daily logs (2026-04-05)
+- [2026-02-06] (completed) OpenClaw architecture and patterns (gateway, local-first memory, heartbeat, compaction)

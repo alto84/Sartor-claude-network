@@ -91,3 +91,6 @@ Use forward slashes in -File paths. More PowerShell gotchas are tracked in [[LEA
 
 ## History
 - 2026-02-06: Initial creation
+
+## Consolidated from daily logs (2026-04-05)
+- [2026-02-06] (insight) Markdown-first approach aligns well with git workflows and Claude Code context loading

@@ -100,3 +100,10 @@ Both machines support the [[PROJECTS|active projects]] in this system.
 - 2026-02-06: Initial creation
 - 2026-02-23: Added vast.ai hosting details, MERIDIAN dashboard section, updated gpuserver1 specs (driver, storage, Docker, Claude auth)
 - 2026-02-26: Vast.ai VERIFIED and live. DMZ enabled on router, UFW configured on gpuserver1, Stripe payout configured
+
+## Consolidated from daily logs (2026-04-05)
+- [2026-02-06] (completed) Mandelbulb 3D GPU renderer
+- [2026-02-06] (completed) Set up sartor/ directory structure on gpuserver1
+- [2026-02-06] (decision) Storage location: ~/Sartor-claude-network/sartor/memory/ on gpuserver1
+- [2026-02-06] (decision) Storage location: ~/Sartor-claude-network/sartor/memory/ on gpuserver1
+- [2026-02-06] (insight) Having a clear machine inventory prevents confusion about where things run
