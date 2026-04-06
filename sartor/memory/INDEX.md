@@ -1,5 +1,5 @@
 # Sartor Memory Index
-## Last Updated: 2026-04-05 03:08
+## Last Updated: 2026-04-06 03:07
 
 ## Core Memory
 - [ALTON.md](ALTON.md) — Alton - User Profile
@@ -16,9 +16,9 @@
 - [TAXES.md](TAXES.md) — Tax Preparation - Tax Year 2025
 
 ## Recent Activity
+- [2026-04-06.md](daily/2026-04-06.md) — Daily Log - 2026-04-06 (Monday)
 - [2026-04-05.md](daily/2026-04-05.md) — Daily Log - 2026-04-05 (Easter Sunday)
 - [2026-04-04.md](daily/2026-04-04.md) — Daily Log - 2026-04-04
-- [2026-04-02.md](daily/2026-04-02.md) — Daily Log - 2026-04-02
 - [2026-02-18.md](daily/2026-02-18.md) — Daily Log — 2026-02-18 (Overnight Autonomous Session)
 - [2026-02-06.md](daily/2026-02-06.md) — Daily Log - 2026-02-06
 - [2026-02-06-brief.md](daily/2026-02-06-brief.md) — Morning Brief - February 6, 2026 (Friday)

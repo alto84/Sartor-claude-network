@@ -95,6 +95,11 @@ DAILY_SECTIONS = [
     "completed", "decisions made", "decisions", "insights", "lessons",
     "what was built", "key facts", "issues", "problems", "next steps",
     "what's next",
+    # Sartor daily log format
+    "critical alerts", "alert escalations", "outstanding alerts",
+    "financial items", "time-sensitive financial items", "nonprofit",
+    "family", "calendar notes", "monitoring items", "upcoming deadlines",
+    "active alerts",
 ]
 
 
@@ -305,6 +310,18 @@ def phase_gather(daily_files):
             "key facts": "fact",
             "issues": "issue",
             "problems": "issue",
+            # Sartor daily log format
+            "critical alerts": "issue",
+            "alert escalations": "issue",
+            "outstanding alerts": "issue",
+            "active alerts": "issue",
+            "financial items": "fact",
+            "time-sensitive financial items": "fact",
+            "nonprofit": "fact",
+            "family": "fact",
+            "calendar notes": "fact",
+            "monitoring items": "fact",
+            "upcoming deadlines": "fact",
         }
 
         for section, category in section_map.items():
