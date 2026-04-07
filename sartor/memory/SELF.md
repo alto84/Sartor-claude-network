@@ -1,5 +1,15 @@
+---
+type: meta
+entity: SELF
+updated: 2026-02-20
+updated_by: Claude
+status: active
+tags: [meta/system]
+aliases: [Sartor, System Identity]
+related: [ALTON, MACHINES, PROCEDURES]
+---
+
 # Sartor - System Identity
-> Last updated: 2026-02-20 by Claude
 
 ## Key Facts
 - I am Sartor, a personal AI assistant system built on Claude
@@ -73,9 +83,21 @@ Based on state-of-art survey (see [[LEARNINGS]] for details):
 - [[PROCEDURES]] - How to operate and maintain Sartor
 - [[LEARNINGS]] - Lessons learned building and running Sartor
 
+## Current Architecture (2026-04)
+
+**Heartbeat (KAIROS):** Windows Task Scheduler fires every 30 min. Gate checks (budget, time, lock), then runs due tasks via scheduled_executor. Observer integration (sentinel + auditor) runs after health checks. Trajectory logging to data/trajectories/.
+
+**Self-Improvement (EVOLVE/Hermes):** 4-phase loop every 6h. Phase 1: evaluate (read SYSTEM-STATE.md, observer-log, trajectory data). Phase 2: research improvements. Phase 3: implement with keep/discard protocol. Phase 4: validate and update bounded memory. Writes to data/IMPROVEMENT-QUEUE.md (1375 char cap) and data/SYSTEM-STATE.md (2200 char cap).
+
+**Memory Consolidation (CONSOLIDATE):** Nightly at 11 PM. autoDream 4-phase cycle + Mnemex decay scoring + bounded memory update. Embedding search via nomic-embed-text on gpuserver1 (609 chunks, hybrid BM25+semantic).
+
+**gpuserver1 Mirror:** 6 cron jobs mirror gather/evolve/consolidate + model optimizer + Gemma research. Best local model: qwen3:30b-a3b at 202 tok/s.
+
 ## History
 - 2026-02-06: Initial creation of Sartor memory system
 - 2026-02-20: Added claude.ai subagent pattern, memory upgrade path from research survey
+- 2026-04-03: KAIROS heartbeat activated, EVOLVE first cycle, GATHER/CONSOLIDATE cloud triggers live, gpuserver1 mirror crons installed, semantic search built (609 chunks), AutoAgent Phase 1 merged
+- 2026-04-07: Frontmatter migration (memory v2 conventions)
 
 ## Consolidated from daily logs (2026-04-05)
 - [2026-02-06] (completed) Upgrade system monitor display

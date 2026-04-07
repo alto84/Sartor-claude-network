@@ -1,5 +1,16 @@
+---
+type: domain
+entity: BUSINESS
+updated: 2026-02-20
+updated_by: Claude
+status: active
+next_review: 2026-04-15
+tags: [entity/llc, entity/nonprofit, domain/career]
+aliases: [Solar Inference, Sante Total, Business]
+related: [ALTON, TAXES, PROJECTS, ASTRAZENECA]
+---
+
 # Business Context
-> Last updated: 2026-02-20 by Claude (from claude.ai memory export)
 
 ## Key Facts
 - **Solar Inference LLC:** Solar-powered AI inference startup (active development)

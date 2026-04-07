@@ -1,5 +1,16 @@
+---
+type: domain
+entity: MACHINES
+updated: 2026-02-06
+updated_by: Claude
+status: active
+next_review: 2026-05-01
+tags: [entity/infra, domain/gpu]
+aliases: [Infrastructure, Hardware]
+related: [BUSINESS, PROCEDURES, SELF]
+---
+
 # Machines - Computer Inventory
-> Last updated: 2026-02-06 by Claude
 
 ## Key Facts
 - Two primary machines: Rocinante (Windows) and gpuserver1 (Ubuntu)

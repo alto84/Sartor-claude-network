@@ -1,5 +1,16 @@
+---
+type: domain
+entity: ASTRAZENECA
+updated: 2026-02-20
+updated_by: Claude
+status: active
+next_review: 2026-05-01
+tags: [entity/employer, domain/career]
+aliases: [AZ, AstraZeneca]
+related: [ALTON, BUSINESS]
+---
+
 # AstraZeneca - Career and AI Safety Context
-> Last updated: 2026-02-20 by Claude (from claude.ai memory export)
 
 ## Key Facts
 - [[ALTON]] is Medical Director, AI Innovation and Validation, Global Patient Safety

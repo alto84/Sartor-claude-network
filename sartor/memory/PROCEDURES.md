@@ -1,5 +1,15 @@
+---
+type: meta
+entity: PROCEDURES
+updated: 2026-02-06
+updated_by: Claude
+status: active
+tags: [meta/procedures]
+aliases: [Workflows]
+related: [MACHINES, SELF]
+---
+
 # Procedures - Working Procedures
-> Last updated: 2026-02-06 by Claude
 
 ## Key Facts
 - SSH to gpuserver1: ssh alton@192.168.1.100

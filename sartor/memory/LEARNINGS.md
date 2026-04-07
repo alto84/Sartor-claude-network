@@ -1,5 +1,15 @@
+---
+type: meta
+entity: LEARNINGS
+updated: 2026-02-20
+updated_by: Claude
+status: active
+tags: [meta/learnings]
+aliases: [Lessons Learned]
+related: [SELF, PROCEDURES]
+---
+
 # Learnings - Lessons Learned
-> Last updated: 2026-02-20 by Claude
 
 ## Key Facts
 - Collection of hard-won lessons from building and operating [[SELF|Sartor]]

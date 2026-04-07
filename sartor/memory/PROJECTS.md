@@ -1,5 +1,16 @@
+---
+type: domain
+entity: PROJECTS
+updated: 2026-02-20
+updated_by: Claude
+status: active
+next_review: 2026-04-15
+tags: [entity/projects, status/active]
+aliases: [Active Projects]
+related: [ALTON, BUSINESS, SELF]
+---
+
 # Projects - Active Projects
-> Last updated: 2026-02-20 by Claude
 
 ## Key Facts
 - 6 active projects tracked

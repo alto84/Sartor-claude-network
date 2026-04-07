@@ -1,3 +1,15 @@
+---
+type: meta
+entity: MASTERPLAN
+updated: 2026-02-06
+updated_by: Claude
+status: active
+next_review: 2026-04-15
+tags: [meta/roadmap, meta/vision]
+aliases: [Master Plan, Roadmap]
+related: [SELF, PROJECTS, MASTERPLAN-VISIONARY]
+---
+
 # SARTOR MASTER PLAN
 
 *Synthesized from 5 agent perspectives. Last updated: 2026-02-06.*

@@ -1,5 +1,16 @@
+---
+type: person
+entity: ALTON
+name: "Emmett Alton Sartor"
+updated: 2026-02-20
+updated_by: Claude
+status: active
+tags: [entity/person, domain/self]
+aliases: [Alton, Emmett, alto8, alto84]
+related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
+---
+
 # Alton - User Profile
-> Last updated: 2026-02-20 by Claude (from claude.ai memory export)
 
 ## Key Facts
 - Full name: Emmett Alton Sartor
