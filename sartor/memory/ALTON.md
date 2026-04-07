@@ -106,3 +106,6 @@
 ## History
 - 2026-02-06: Initial creation
 - 2026-02-20: Major update from claude.ai memory export — medical background, AI engagements, philosophical orientation, communication preferences, career details
+
+## Consolidated from daily logs (2026-04-07)
+- [2026-04-05] (fact) Aneeta away April 29 - May 2 -- Alton sole parent during that window

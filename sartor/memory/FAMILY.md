@@ -76,3 +76,6 @@
 ## History
 - 2026-02-06: Initial creation (placeholder)
 - 2026-02-20: Fully populated from claude.ai memory export — Aneeta's background, kids' schools, Vayu's ADHD, three cats with names
+
+## Consolidated from daily logs (2026-04-07)
+- [2026-04-05] (fact) 2026-04-05 is Easter Sunday -- school holiday (MKA)
