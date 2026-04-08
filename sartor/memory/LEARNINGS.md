@@ -165,3 +165,8 @@ Key findings from surveying state-of-the-art AI memory systems:
 - [2026-04-06] (fact) 185 Davis Ave rental:: Tenant leaving June 15, 2026. Turnover planning needed.
 - [2026-04-06] (fact) ---
 - [2026-04-06] (fact) ---
+
+## Consolidated from daily logs (2026-04-08)
+- [2026-04-05] (fact) ---
+- [2026-04-06] (fact) ---
+- [2026-04-06] (fact) ---
