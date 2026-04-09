@@ -1,5 +1,15 @@
+---
+type: meta
+entity: PROCEDURES
+updated: 2026-02-06
+updated_by: Claude
+status: active
+tags: [meta/procedures]
+aliases: [Workflows]
+related: [MACHINES, SELF]
+---
+
 # Procedures - Working Procedures
-> Last updated: 2026-02-06 by Claude
 
 ## Key Facts
 - SSH to gpuserver1: ssh alton@192.168.1.100
@@ -92,5 +102,5 @@ Use forward slashes in -File paths. More PowerShell gotchas are tracked in [[LEA
 ## History
 - 2026-02-06: Initial creation
 
-## Consolidated from daily logs (2026-04-09)
+## Consolidated from daily logs (2026-04-05)
 - [2026-02-06] (insight) Markdown-first approach aligns well with git workflows and Claude Code context loading

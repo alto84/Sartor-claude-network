@@ -46,9 +46,9 @@ Operational gotchas and disk management notes for gpuserver1. Originally lived a
 - Both are symlinked to `~/Sartor-claude-network/sartor/memory/` as of 2026-04-07 (see [[MULTI-MACHINE-MEMORY]])
 
 ## Related
-- [[gpuserver1-delegation]] — how to delegate tasks to gpuserver1 from Rocinante
-- [[MACHINES]] — full machine inventory
+- [[MACHINES]] — full machine inventory including gpuserver1 access details
 - [[MULTI-MACHINE-MEMORY]] — multi-machine memory architecture
+- For delegation patterns (SSH + `claude --dangerously-skip-permissions -p`) see MACHINES.md and PROCEDURES.md
 
 ## History
 - 2026-02-27: Originally written as `~/.claude/projects/-home-alton/memory/MEMORY.md` on gpuserver1 after a disk space incident

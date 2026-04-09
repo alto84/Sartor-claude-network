@@ -1,5 +1,17 @@
+---
+type: meta
+entity: INDEX
+updated: 2026-04-07
+updated_by: Claude
+status: active
+next_review: 2026-04-14
+tags: [meta/index]
+aliases: [Index, Memory Index]
+related: [SELF, MEMORY]
+---
+
 # Sartor Memory Index
-## Last Updated: 2026-04-09 03:12
+## Last Updated: 2026-04-07 03:06
 
 ## Core Memory
 - [ALTON.md](ALTON.md) — Alton - User Profile
@@ -16,11 +28,22 @@
 - [TAXES.md](TAXES.md) — Tax Preparation - Tax Year 2025
 
 ## Recent Activity
+- [2026-04-07.md](daily/2026-04-07.md) — Daily Log - 2026-04-07 (Tuesday)
+- [2026-04-06.md](daily/2026-04-06.md) — Daily Log - 2026-04-06 (Monday)
+- [2026-04-05.md](daily/2026-04-05.md) — Daily Log - 2026-04-05 (Easter Sunday)
+- [2026-04-04.md](daily/2026-04-04.md) — Daily Log - 2026-04-04
+- [2026-04-03.md](daily/2026-04-03.md) — Daily Log - 2026-04-03
 - [2026-04-02.md](daily/2026-04-02.md) — Daily Log - 2026-04-02
 - [2026-02-18.md](daily/2026-02-18.md) — Daily Log — 2026-02-18 (Overnight Autonomous Session)
 - [2026-02-06.md](daily/2026-02-06.md) — Daily Log - 2026-02-06
 - [2026-02-06-brief.md](daily/2026-02-06-brief.md) — Morning Brief - February 6, 2026 (Friday)
 
-## Research & Snapshots
+## Snapshots
+- [calendar-2026-04.md](snapshots/calendar-2026-04.md) — Calendar snapshot, April 2026
+- [downloads-inventory.md](snapshots/downloads-inventory.md) — Downloads folder inventory
+- [gmail-2026-04.md](snapshots/gmail-2026-04.md) — Gmail snapshot, April 2026
+- [life-timeline.md](snapshots/life-timeline.md) — Life timeline
+
+## Research
 - [cell-therapy-safety-monitoring-lifecycle.md](research/cell-therapy-safety-monitoring-lifecycle.md) — AI-Driven Safety Monitoring and Adverse Event Prediction Across the Cell Therapy Clinical Development Lifecycle
 - [graph-based-safety-prediction-research.md](research/graph-based-safety-prediction-research.md) — Graph-Based Approaches for Pharmaceutical Safety Prediction (PSP Platform)

@@ -1,5 +1,16 @@
+---
+type: domain
+entity: MACHINES
+updated: 2026-02-06
+updated_by: Claude
+status: active
+next_review: 2026-05-01
+tags: [entity/infra, domain/gpu]
+aliases: [Infrastructure, Hardware]
+related: [BUSINESS, PROCEDURES, SELF]
+---
+
 # Machines - Computer Inventory
-> Last updated: 2026-02-06 by Claude
 
 ## Key Facts
 - Two primary machines: Rocinante (Windows) and gpuserver1 (Ubuntu)
@@ -101,7 +112,7 @@ Both machines support the [[PROJECTS|active projects]] in this system.
 - 2026-02-23: Added vast.ai hosting details, MERIDIAN dashboard section, updated gpuserver1 specs (driver, storage, Docker, Claude auth)
 - 2026-02-26: Vast.ai VERIFIED and live. DMZ enabled on router, UFW configured on gpuserver1, Stripe payout configured
 
-## Consolidated from daily logs (2026-04-09)
+## Consolidated from daily logs (2026-04-05)
 - [2026-02-06] (completed) Mandelbulb 3D GPU renderer
 - [2026-02-06] (completed) Set up sartor/ directory structure on gpuserver1
 - [2026-02-06] (decision) Storage location: ~/Sartor-claude-network/sartor/memory/ on gpuserver1
