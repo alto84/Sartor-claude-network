@@ -1,16 +1,5 @@
----
-type: domain
-entity: PROJECTS
-updated: 2026-02-20
-updated_by: Claude
-status: active
-next_review: 2026-04-15
-tags: [entity/projects, status/active]
-aliases: [Active Projects]
-related: [ALTON, BUSINESS, SELF]
----
-
 # Projects - Active Projects
+> Last updated: 2026-02-20 by Claude
 
 ## Key Facts
 - 6 active projects tracked
@@ -86,6 +75,6 @@ related: [ALTON, BUSINESS, SELF]
 - 2026-02-06: Initial creation
 - 2026-02-20: Updated with safety-research-system creative ideas, memory research findings, dashboard state notes
 
-## Consolidated from daily logs (2026-04-05)
+## Consolidated from daily logs (2026-04-09)
 - [2026-02-06] (completed) Build gateway cron loop
 - [2026-02-06] (completed) Created Creative Lab dashboard pages:

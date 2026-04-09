@@ -1,15 +1,5 @@
----
-type: meta
-entity: LEARNINGS
-updated: 2026-02-20
-updated_by: Claude
-status: active
-tags: [meta/learnings]
-aliases: [Lessons Learned]
-related: [SELF, PROCEDURES]
----
-
 # Learnings - Lessons Learned
+> Last updated: 2026-02-20 by Claude
 
 ## Key Facts
 - Collection of hard-won lessons from building and operating [[SELF|Sartor]]
@@ -143,7 +133,7 @@ Key findings from surveying state-of-the-art AI memory systems:
 - 2026-02-26: Added DMZ+UFW pattern, Fios Router Vue.js API, vast.ai payout requirement, UPnP unreliability
 - 2026-02-27: Docker+UFW conflict SOLVED (conntrack --ctorigdstport), hairpin NAT root cause found and fixed, self-test PASSING
 
-## Consolidated from daily logs (2026-04-05)
+## Consolidated from daily logs (2026-04-09)
 - [2026-02-06] (completed) Integrate memory search (BM25)
 - [2026-02-06] (completed) Create master plan
 - [2026-02-06] (completed) Completed background research on:
@@ -153,20 +143,3 @@ Key findings from surveying state-of-the-art AI memory systems:
 - [2026-02-06] (decision) Pattern: OpenClaw-inspired (curated core + daily append-only logs)
 - [2026-02-06] (insight) OpenClaw patterns provide a proven foundation without over-engineering
 - [2026-02-06] (insight) Separating daily logs from core files keeps core knowledge clean and stable
-
-## Consolidated from daily logs (2026-04-07)
-- [2026-04-05] (fact) Vishala summer camp (Wohelo) confirmed; birthday visit policy question unresolved (birthday July 29)
-- [2026-04-05] (fact) ---
-- [2026-04-06] (fact) MKA tuition:: A.Saxena (father-in-law) disputes $13,951.62 owed to MKA beyond what he's paid. Blackbaud payment confirmation received 2026-04-04. Status of dispute unclear.
-- [2026-04-06] (fact) Fidelity Q1 statements:: Available for accounts *1582, *5513, *6596, *6602, *0930 (period ending Mar 31, 2026). Review pending.
-- [2026-04-06] (fact) Schwab eStatement:: Account ending 186, statement date April 3, 2026. Review pending.
-- [2026-04-06] (fact) Wohelo summer camp (Vishala):: Enrollment confirmed by Heidi Gorton. Birthday visit policy (July 29) unresolved.
-- [2026-04-06] (fact) Lucent Energy:: Follow-up on $10K deposit (Oct 2025); installation scheduling for late April 2026.
-- [2026-04-06] (fact) 185 Davis Ave rental:: Tenant leaving June 15, 2026. Turnover planning needed.
-- [2026-04-06] (fact) ---
-- [2026-04-06] (fact) ---
-
-## Consolidated from daily logs (2026-04-08)
-- [2026-04-05] (fact) ---
-- [2026-04-06] (fact) ---
-- [2026-04-06] (fact) ---

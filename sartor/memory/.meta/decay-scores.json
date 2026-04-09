@@ -26,60 +26,6 @@
     "score": 0.0,
     "tier": "ARCHIVE"
   },
-  "2026-04-04.md": {
-    "half_life_days": 3.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-05T03:08:21.336313+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/daily/2026-04-04.md",
-    "score": 0.2495,
-    "tier": "COLD"
-  },
-  "2026-04-05.md": {
-    "half_life_days": 3.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-05T03:08:21.336313+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/daily/2026-04-05.md",
-    "score": 0.2495,
-    "tier": "COLD"
-  },
-  "2026-04-06.md": {
-    "half_life_days": 3.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-06T03:05:17.876043+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/daily/2026-04-06.md",
-    "score": 0.3142,
-    "tier": "WARM"
-  },
-  "2026-04-07.md": {
-    "half_life_days": 3.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-07T03:05:27.083063+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/daily/2026-04-07.md",
-    "score": 0.3959,
-    "tier": "WARM"
-  },
-  "2026-04-07T15-00-00Z-bootstrap.md": {
-    "half_life_days": 14.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-08T03:20:16.984687+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/inbox/gpuserver1/2026-04-07T15-00-00Z-bootstrap.md",
-    "score": 0.5,
-    "tier": "WARM"
-  },
-  "2026-04-08.md": {
-    "half_life_days": 3.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-08T03:20:16.977531+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/daily/2026-04-08.md",
-    "score": 0.4999,
-    "tier": "WARM"
-  },
   "ALTON.md": {
     "half_life_days": 30.0,
     "importance": 1.0,
@@ -95,7 +41,7 @@
     "last_accessed": "2026-02-21T03:28:59.598416+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/ASTRAZENECA.md",
-    "score": 0.0718,
+    "score": 0.0683,
     "tier": "FORGOTTEN"
   },
   "BUSINESS.md": {
@@ -104,7 +50,7 @@
     "last_accessed": "2026-04-03T01:11:11.095662+00:00",
     "n_accesses": 2,
     "path": "/home/user/Sartor-claude-network/sartor/memory/BUSINESS.md",
-    "score": 0.9424,
+    "score": 0.8972,
     "tier": "ACTIVE"
   },
   "CRS.md": {
@@ -113,7 +59,7 @@
     "last_accessed": "2026-02-07T23:07:07.211441+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/adverse-events/CRS.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "FAMILY.md": {
@@ -122,7 +68,7 @@
     "last_accessed": "2026-02-22T02:51:52.262869+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/FAMILY.md",
-    "score": 0.3534,
+    "score": 0.3454,
     "tier": "WARM"
   },
   "ICAHS.md": {
@@ -131,7 +77,7 @@
     "last_accessed": "2026-02-07T23:09:00.556685+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/adverse-events/ICAHS.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "ICANS.md": {
@@ -140,16 +86,16 @@
     "last_accessed": "2026-02-07T23:08:06.332215+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/adverse-events/ICANS.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "INDEX.md": {
     "half_life_days": 14.0,
     "importance": 0.5,
-    "last_accessed": "2026-04-05T03:08:56.148090+00:00",
+    "last_accessed": "2026-04-09T03:12:59.397255+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/INDEX.md",
-    "score": 0.4308,
+    "score": 0.5,
     "tier": "WARM"
   },
   "LEARNINGS.md": {
@@ -158,7 +104,7 @@
     "last_accessed": "2026-04-03T01:11:11.107518+00:00",
     "n_accesses": 2,
     "path": "/home/user/Sartor-claude-network/sartor/memory/LEARNINGS.md",
-    "score": 0.8246,
+    "score": 0.785,
     "tier": "ACTIVE"
   },
   "LICATS.md": {
@@ -167,7 +113,7 @@
     "last_accessed": "2026-02-07T23:09:53.050411+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/adverse-events/LICATS.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "MACHINES.md": {
@@ -176,7 +122,7 @@
     "last_accessed": "2026-04-03T01:11:11.083446+00:00",
     "n_accesses": 2,
     "path": "/home/user/Sartor-claude-network/sartor/memory/MACHINES.md",
-    "score": 0.9424,
+    "score": 0.8972,
     "tier": "ACTIVE"
   },
   "MASTERPLAN-VISIONARY.md": {
@@ -185,7 +131,7 @@
     "last_accessed": "2026-02-06T18:11:38.445089+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/MASTERPLAN-VISIONARY.md",
-    "score": 0.001,
+    "score": 0.0009,
     "tier": "ARCHIVE"
   },
   "MASTERPLAN.md": {
@@ -194,34 +140,7 @@
     "last_accessed": "2026-04-03T01:11:11.132200+00:00",
     "n_accesses": 2,
     "path": "/home/user/Sartor-claude-network/sartor/memory/MASTERPLAN.md",
-    "score": 0.3663,
-    "tier": "WARM"
-  },
-  "MEMORY-CONVENTIONS.md": {
-    "half_life_days": 14.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-08T03:20:16.984687+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/reference/MEMORY-CONVENTIONS.md",
-    "score": 0.5,
-    "tier": "WARM"
-  },
-  "MEMORY.md": {
-    "half_life_days": 14.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-08T03:20:16.973531+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/MEMORY.md",
-    "score": 0.5,
-    "tier": "WARM"
-  },
-  "MULTI-MACHINE-MEMORY.md": {
-    "half_life_days": 14.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-08T03:20:16.986160+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/reference/MULTI-MACHINE-MEMORY.md",
-    "score": 0.5,
+    "score": 0.3319,
     "tier": "WARM"
   },
   "PROCEDURES.md": {
@@ -230,7 +149,7 @@
     "last_accessed": "2026-02-06T15:09:28.001270+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/PROCEDURES.md",
-    "score": 0.03,
+    "score": 0.0286,
     "tier": "ARCHIVE"
   },
   "PROJECTS.md": {
@@ -239,17 +158,8 @@
     "last_accessed": "2026-02-21T03:07:17.208030+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/PROJECTS.md",
-    "score": 0.0063,
+    "score": 0.0057,
     "tier": "ARCHIVE"
-  },
-  "QUICK-REFERENCE.md": {
-    "half_life_days": 14.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-08T03:20:16.973531+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/QUICK-REFERENCE.md",
-    "score": 0.5,
-    "tier": "WARM"
   },
   "README.md": {
     "half_life_days": 14.0,
@@ -257,7 +167,7 @@
     "last_accessed": "2026-02-07T23:06:06.799825+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/data-sources/README.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "SELF.md": {
@@ -266,7 +176,7 @@
     "last_accessed": "2026-02-21T03:08:53.139526+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/SELF.md",
-    "score": 0.1727,
+    "score": 0.1688,
     "tier": "COLD"
   },
   "TAXES.md": {
@@ -275,7 +185,7 @@
     "last_accessed": "2026-02-06T15:09:28.002269+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/TAXES.md",
-    "score": 0.0017,
+    "score": 0.0016,
     "tier": "ARCHIVE"
   },
   "active-trials.md": {
@@ -284,7 +194,7 @@
     "last_accessed": "2026-02-07T23:17:24.959072+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/trials/active-trials.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "anakinra.md": {
@@ -293,7 +203,7 @@
     "last_accessed": "2026-02-07T23:12:37.763320+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/mitigations/anakinra.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "calendar-2026-04.md": {
@@ -302,7 +212,7 @@
     "last_accessed": "2026-04-03T16:20:17.140343+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/snapshots/calendar-2026-04.md",
-    "score": 0.401,
+    "score": 0.3817,
     "tier": "WARM"
   },
   "cell-therapy-safety-monitoring-lifecycle.md": {
@@ -311,7 +221,7 @@
     "last_accessed": "2026-02-07T13:06:33.048846+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/cell-therapy-safety-monitoring-lifecycle.md",
-    "score": 0.0262,
+    "score": 0.0249,
     "tier": "ARCHIVE"
   },
   "corticosteroids.md": {
@@ -320,7 +230,7 @@
     "last_accessed": "2026-02-07T23:11:42.245461+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/mitigations/corticosteroids.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "dose-reduction.md": {
@@ -329,7 +239,7 @@
     "last_accessed": "2026-02-07T23:13:36.673259+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/mitigations/dose-reduction.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "downloads-inventory.md": {
@@ -338,25 +248,7 @@
     "last_accessed": "2026-04-03T16:20:17.143877+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/snapshots/downloads-inventory.md",
-    "score": 0.401,
-    "tier": "WARM"
-  },
-  "feedback_memory_conventions.md": {
-    "half_life_days": 14.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-08T03:20:16.977531+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/feedback/feedback_memory_conventions.md",
-    "score": 0.5,
-    "tier": "WARM"
-  },
-  "feedback_no_scheduled_task_edits.md": {
-    "half_life_days": 14.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-08T03:20:16.983913+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/feedback/feedback_no_scheduled_task_edits.md",
-    "score": 0.5,
+    "score": 0.3817,
     "tier": "WARM"
   },
   "gmail-2026-04.md": {
@@ -365,16 +257,7 @@
     "last_accessed": "2026-04-03T16:20:17.143877+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/snapshots/gmail-2026-04.md",
-    "score": 0.401,
-    "tier": "WARM"
-  },
-  "gpuserver1-operations.md": {
-    "half_life_days": 14.0,
-    "importance": 0.5,
-    "last_accessed": "2026-04-08T03:20:16.986160+00:00",
-    "n_accesses": 1,
-    "path": "/home/user/Sartor-claude-network/sartor/memory/reference/gpuserver1-operations.md",
-    "score": 0.5,
+    "score": 0.3817,
     "tier": "WARM"
   },
   "graph-based-safety-prediction-research.md": {
@@ -383,7 +266,7 @@
     "last_accessed": "2026-02-06T20:19:32.894151+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/graph-based-safety-prediction-research.md",
-    "score": 0.0253,
+    "score": 0.0241,
     "tier": "ARCHIVE"
   },
   "infections.md": {
@@ -392,7 +275,7 @@
     "last_accessed": "2026-02-07T23:31:44.086555+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/adverse-events/infections.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "life-timeline.md": {
@@ -401,7 +284,7 @@
     "last_accessed": "2026-04-03T16:20:17.143877+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/snapshots/life-timeline.md",
-    "score": 0.401,
+    "score": 0.3817,
     "tier": "WARM"
   },
   "lymphodepletion.md": {
@@ -410,7 +293,7 @@
     "last_accessed": "2026-02-07T23:14:35.116425+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/mitigations/lymphodepletion.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "prolonged-cytopenias.md": {
@@ -419,7 +302,7 @@
     "last_accessed": "2026-02-07T23:30:34.065834+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/adverse-events/prolonged-cytopenias.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "risk-model.md": {
@@ -428,7 +311,7 @@
     "last_accessed": "2026-02-08T01:01:07.355359+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/models/risk-model.md",
-    "score": 0.0268,
+    "score": 0.0255,
     "tier": "ARCHIVE"
   },
   "t-cell-malignancy.md": {
@@ -437,7 +320,7 @@
     "last_accessed": "2026-02-07T23:32:59.590880+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/adverse-events/t-cell-malignancy.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   },
   "tocilizumab.md": {
@@ -446,7 +329,7 @@
     "last_accessed": "2026-02-07T23:10:46.600412+00:00",
     "n_accesses": 1,
     "path": "/home/user/Sartor-claude-network/sartor/memory/research/safety-knowledge-graph/mitigations/tocilizumab.md",
-    "score": 0.0267,
+    "score": 0.0254,
     "tier": "ARCHIVE"
   }
 }
