@@ -38,6 +38,12 @@ firebase-adminsdk*.json
 *.pyc
 __pycache__/
 
+# Sartor memory derived artifacts (regenerable from .md files)
+sartor/memory/.meta/
+sartor/memory/.index/
+sartor/memory/indexes/*.json
+# Keep indexes/_index.md so the directory is discoverable in Obsidian
+
 # Build artifacts and coverage
 coverage/
 *.tmp
@@ -48,3 +54,6 @@ coverage/
 
 # Home agent runtime data (generated, not source)
 data/home-agent/
+
+# Agent memory (leaked from agents with memory:project before fix)
+.claude/agent-memory/

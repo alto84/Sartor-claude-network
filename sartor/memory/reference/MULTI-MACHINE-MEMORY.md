@@ -18,7 +18,7 @@ How `sartor/memory/` stays consistent across N computers without a database, wit
 - **Canonical store:** git repo `Sartor-claude-network`, GitHub remote `alto84/Sartor-claude-network`
 - **Machines:** [[MACHINES|Rocinante]] (Windows, has push creds), gpuserver1 (Ubuntu, no push creds, on LAN at 192.168.1.100)
 - **Sync model:** Rocinante is the only push authority. Other machines pull to read; writes must route through Rocinante.
-- **Per-machine Claude Code memory:** at `~/.claude/projects/<sanitized-path>/memory/` — historically divergent from `sartor/memory/`, consolidated via junction (see [[CLAUDE-CODE-MEMORY-JUNCTION]] below).
+- **Per-machine Claude Code memory:** at `~/.claude/projects/<sanitized-path>/memory/` — historically divergent from `sartor/memory/`, consolidated via junction (see the "Claude Code memory junction" section below).
 
 ## Design principles
 
@@ -202,7 +202,7 @@ Checklist for bringing a new computer into the Sartor network:
    mkdir -p ~/Sartor-claude-network/sartor/memory/inbox/$HOSTNAME/_processed
    ```
 4. **Register the machine in MACHINES.md** (write the entry to your own inbox with an `append` operation, so it lands in the canonical file through the curator)
-5. **Junction the Claude Code auto-memory:** see [[CLAUDE-CODE-MEMORY-JUNCTION]] below
+5. **Junction the Claude Code auto-memory:** see the "Claude Code memory junction" section below
 6. **Set up SSH to the hub:**
    ```bash
    ssh-keygen -t ed25519 -C "sartor-{hostname}"

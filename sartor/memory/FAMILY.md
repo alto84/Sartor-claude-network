@@ -107,6 +107,7 @@ related: [ALTON, TAXES]
 ## Related
 - [[ALTON]] - Head of household
 - [[MACHINES]] - Devices used by the family
+- [[ledgers/kids|Kids Ledger]] - Running allowance/debit ledger for Vayu, Vishala, Vasu
 
 ## Extended Family
 - Amarkanth (Aneeta's father): Regular childcare support, picks up kids from school. Paid for India flights.
