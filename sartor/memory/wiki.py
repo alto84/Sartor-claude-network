@@ -696,6 +696,102 @@ class Wiki:
             "mtime": pf.mtime,
         }
 
+    # ------------------------------------------------------------------
+    # Lint (Karpathy LLM-Wiki third operation: periodic audit)
+    # ------------------------------------------------------------------
+
+    def lint(self) -> dict:
+        """Periodic audit for contradictions, stale claims, orphans, broken links.
+
+        Returns a dict with categorized findings. This is the "lint" operation
+        from Karpathy's LLM-Wiki pattern -- a structural audit that the curator
+        (or a human) can act on.
+        """
+        files = self.parse_all()
+        backlinks = build_backlinks(files)
+        orphans = find_orphans(files, backlinks)
+        broken = find_broken_links(files)
+
+        # Stale detection: files with `updated:` field > 30 days old
+        stale = []
+        thirty_days_ago_iso = (datetime.now(timezone.utc).date()).isoformat()
+        for pf in files:
+            updated = pf.frontmatter.get("updated")
+            if not updated:
+                continue
+            try:
+                updated_date = datetime.fromisoformat(str(updated)).date()
+                delta_days = (datetime.now(timezone.utc).date() - updated_date).days
+                if delta_days > 30:
+                    stale.append({"file": pf.rel_path, "updated": str(updated), "days_ago": delta_days})
+            except (ValueError, TypeError):
+                continue
+
+        # Missing frontmatter: files with no `type:` field
+        missing_frontmatter = [
+            pf.rel_path for pf in files
+            if not pf.frontmatter.get("type") and not pf.parse_error
+        ]
+
+        # Missing required fields: files with frontmatter but no `updated:` or `tags:`
+        missing_fields = []
+        for pf in files:
+            if not pf.frontmatter or pf.parse_error:
+                continue
+            missing = []
+            if not pf.frontmatter.get("updated"):
+                missing.append("updated")
+            if "tags" not in pf.frontmatter:
+                missing.append("tags")
+            if missing:
+                missing_fields.append({"file": pf.rel_path, "missing": missing})
+
+        # Files with ALL-CAPS urgency (should use callouts instead)
+        allcaps_urgency = []
+        urgency_words = ("CRITICAL", "URGENT", "OVERDUE", "DEADLINE", "BLOCKER")
+        for pf in files:
+            if pf.parse_error:
+                continue
+            # Count ALL-CAPS urgency words outside of headings and code
+            body_no_code = _strip_code_blocks(pf.body)
+            for word in urgency_words:
+                # Only flag standalone occurrences, not compound words
+                if re.search(r"\b" + word + r"\b", body_no_code):
+                    allcaps_urgency.append({"file": pf.rel_path, "word": word})
+                    break
+
+        return {
+            "orphans": orphans,
+            "broken_links": [list(b) for b in broken],
+            "stale": sorted(stale, key=lambda x: -x["days_ago"]),
+            "missing_frontmatter": missing_frontmatter,
+            "missing_fields": missing_fields,
+            "allcaps_urgency": allcaps_urgency,
+            "total_issues": (
+                len(orphans) + len(broken) + len(stale)
+                + len(missing_frontmatter) + len(missing_fields) + len(allcaps_urgency)
+            ),
+        }
+
+    # ------------------------------------------------------------------
+    # Log (Karpathy LLM-Wiki spine file: append-only chronological ledger)
+    # ------------------------------------------------------------------
+
+    def tail_log(self, lines: int = 20) -> list[str]:
+        """Return the last N entries from log.md. Each entry starts with `## [YYYY-MM-DD]`."""
+        log_path = self.memory_dir / "log.md"
+        if not log_path.exists():
+            return []
+        try:
+            text = log_path.read_text(encoding="utf-8")
+        except OSError:
+            return []
+        # Split on entry headers
+        entries = re.split(r"^(?=## \[\d{4}-\d{2}-\d{2}\])", text, flags=re.MULTILINE)
+        # Keep only actual entries (skip frontmatter and intro)
+        entries = [e.strip() for e in entries if e.strip().startswith("## [")]
+        return entries[:lines]  # most recent first (they're in reverse chron in the file)
+
     def health_summary(self) -> dict:
         """High-level health metrics."""
         files = self.parse_all()
@@ -1013,6 +1109,8 @@ def main() -> int:
     parser.add_argument("--article", metavar="FILE", help="full article view (pretty-printed)")
     parser.add_argument("--article-json", metavar="FILE", help="full article view (JSON)")
     parser.add_argument("--health", action="store_true", help="health summary (JSON)")
+    parser.add_argument("--lint", action="store_true", help="periodic audit for orphans, broken links, stale, missing frontmatter, ALL-CAPS urgency")
+    parser.add_argument("--log", type=int, nargs="?", const=20, metavar="N", help="show last N log.md entries (default 20)")
     parser.add_argument("--selftest", action="store_true", help="run inline sanity tests")
     args = parser.parse_args()
 
@@ -1070,6 +1168,21 @@ def main() -> int:
 
     if args.health:
         print(json.dumps(wiki.health_summary(), indent=2))
+        return 0
+
+    if args.lint:
+        result = wiki.lint()
+        print(json.dumps(result, indent=2, default=str))
+        return 0 if result["total_issues"] == 0 else 1
+
+    if args.log is not None:
+        entries = wiki.tail_log(args.log)
+        if not entries:
+            print("(no log entries found — is sartor/memory/log.md present?)")
+            return 0
+        for e in entries:
+            print(e)
+            print()
         return 0
 
     parser.print_help()

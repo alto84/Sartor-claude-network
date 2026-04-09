@@ -7,6 +7,91 @@ description: Use when building an LLM-optimized wiki/knowledge-base system in a 
 
 A portable playbook for building a lightweight LLM-optimized wiki on top of any folder of markdown files. Derived from Sartor's implementation but rewritten as a from-scratch recipe — no references to Sartor's specific file paths or machinery beyond examples. **Use this skill when you're in a different environment (e.g., work machine) and you want a wiki layer without reading the original source code.**
 
+## Provenance
+
+The pattern originated in **Andrej Karpathy's LLM-Wiki gist** (`442a6bf555914893e9891c11519de94f`) and was bundled as an agent skill in **Nous Research's Hermes Agent v2026.4.8** (`github.com/NousResearch/hermes-agent`). The frontmatter/callout/wikilink conventions come from **kepano/obsidian-skills** (`github.com/kepano/obsidian-skills`). You don't need to read those sources to follow this skill — everything you need is self-contained below — but the citations let you cross-reference if desired.
+
+## Core philosophy: compiled, not retrieved
+
+Traditional agent memory is a RAG pipeline: store raw chunks, re-derive answers on query. The LLM wiki inverts this. **Synthesis happens once at ingest time and persists as a durable artifact.** Cross-references, contradictions, and summaries are baked into the files themselves.
+
+The three operations:
+
+- **Ingest** (write-heavy): a new source arrives. The LLM reads it, extracts key takeaways, writes a summary page, updates the index, revises 10-15 related pages to preserve cross-references, and appends a log entry. This is where the work happens.
+- **Query** (read-only, fast): ask questions. The LLM searches the index, reads relevant pages, answers with citations. The wiki is already compiled; queries just follow the graph.
+- **Lint** (periodic audit): structural health check. Find orphans, broken links, stale claims, contradictions, missing frontmatter. A human or the curator acts on the findings.
+
+The human curates **sources**. The LLM curates **structure**. The wiki is the artifact.
+
+## Two spine files
+
+Every wiki has two durable files that every operation references:
+
+- **`index.md`** — categorized catalog of pages with one-line summaries. Updated on every ingest. The first thing a new reader looks at.
+- **`log.md`** — append-only chronological ledger with parseable date prefixes. Every structural change gets a log entry.
+
+### index.md format
+
+```markdown
+---
+type: meta
+entity: INDEX
+updated: 2026-04-09
+tags: [meta/index, meta/spine]
+---
+
+# Wiki Index
+
+## People
+- [[ALTON]] — one-line summary of who Alton is
+- [[FAMILY]] — one-line summary of family entities
+
+## Domains
+- [[TAXES]] — current tax filing status and deadlines
+- [[BUSINESS]] — business entities with entangled obligations
+
+## Reference
+- [[MEMORY-CONVENTIONS]] — file format spec
+- [[LLM-WIKI-ARCHITECTURE]] — how this wiki layer works
+```
+
+The key is **categorization + one-line summary**, not a flat file list. The summary should answer "should I read this file right now?" for both humans and agents.
+
+### log.md format
+
+```markdown
+---
+type: meta
+entity: log
+updated: 2026-04-09
+tags: [meta/log, meta/spine]
+---
+
+# Log
+
+Append-only chronological ledger. Never rewrite or reorder entries.
+
+## Entry format
+
+`## [YYYY-MM-DD] action | One-line title`
+
+Actions: ingest, refactor, curate, fact, decision, lint, repair
+
+## Entries
+
+## [2026-04-09] refactor | Adopt two-spine pattern
+- Added log.md as append-only ledger
+- Restructured index.md as categorized catalog
+- Source: Karpathy LLM-Wiki gist
+
+## [2026-04-08] ingest | New research paper on retrieval augmentation
+- Summary page: [[retrieval-augmentation-survey]]
+- Updated pages: [[AGENT-MEMORY]], [[RAG]], [[KNOWLEDGE-GRAPHS]]
+- Contradictions flagged: none
+```
+
+The `## [YYYY-MM-DD] action | title` prefix is parseable with `grep`, `sort`, `awk`. A simple `grep '^## \[2026-04' log.md` surfaces all April entries. The append-only discipline means git blame is cheap.
+
 ## What you end up with
 
 After following this skill you will have:
