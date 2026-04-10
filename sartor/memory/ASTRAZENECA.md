@@ -1,44 +1,46 @@
 ---
 type: domain
 entity: ASTRAZENECA
-updated: 2026-02-20
+updated: 2026-04-10
 updated_by: Claude
 status: active
 next_review: 2026-05-01
 tags: [entity/employer, domain/career]
 aliases: [AZ, AstraZeneca]
-related: [ALTON, BUSINESS]
+related: [ALTON, BUSINESS, az-career]
 ---
 
 # AstraZeneca - Career and AI Safety Context
 
 ## Key Facts
-- [[ALTON]] is Medical Director, AI Innovation and Validation, Global Patient Safety
-- Prospect: Senior Medical Director (NYC Empire State Building, posting closed Feb 16, 2026)
-- Delaware office (remote 2 days/week from Montclair, 3 days/week on-site, 125 mi each way)
+- [[ALTON]] is **Senior Medical Director**, AI Innovation and Validation, Global Patient Safety (promoted, started ~2026-03-31)
+- NYC office (Empire State Building), 3 days/week in-person. Career Level G. Comp $288K-$432K + incentive + equity.
+- Currently DRIVING to NYC (~1 hr each way); exploring NJ Transit train from Bay St or Bloomfield station but parking at commuter stations is a known difficulty
 - Previous AZ role: Medical Director of Device & Digital Safety
 - OpenAI Red Teaming Network member; Anthropic partnership lead at AZ
 
 ## Current Role Details
 
-**Title:** Medical Director, AI Innovation and Validation
+**Title:** Senior Medical Director, AI Innovation and Validation, Global Patient Safety
 **Division:** Global Patient Safety (Pharmacovigilance)
-**Location:** Delaware office (remote 2 days/week from Montclair, NJ)
-**Commute:** 125 miles each way, 3 days/week on-site — described as exhausting
+**Location:** New York City (Empire State Building HQ), 3 days/week in-person, 2 days remote from Montclair
+**Commute:** Currently driving (~1 hr each way). Train option: NJ Transit from Bay St Montclair or Bloomfield to Penn Station, but parking at commuter stations is limited. Commute cost is significant. Worth investigating: train pass cost vs. gas+tolls+parking-in-NYC.
+**Career Level:** G
+**Compensation:** $288,059 - $432,089 base + short-term incentive + equity
 
 **Core Responsibilities:**
-- Leading AI-native drug development initiatives
-- Predictive safety platforms for cell therapy AEs (CRS/ICANS prediction)
-- Building strategic partnerships with frontier AI labs (OpenAI, Anthropic, Google)
-- AI/ML clinical validation oversight
-- Regulatory agency engagement (FDA, EMA)
+- Managing global AI research projects impacting product development and patient safety outcomes
+- Building enterprise and external partnerships for frontier AI capabilities in patient safety
+- Clinical validation framework for AI/ML applications in pharmacovigilance
+- AI governance for the full lifecycle from a clinical perspective
+- Regulatory engagement (FDA, EMA) on AI in healthcare
+- Representing AZ Patient Safety in external forums, academic institutions, industry working groups
+- Ethical and responsible AI adoption in safety signal detection, case processing, and surveillance
 
-**Promotion Prospect:**
-- Senior Medical Director, AI Innovation and Validation, Global Patient Safety
-- Location: New York City (Empire State Building)
-- Posting closed: Feb 16, 2026
-- Salary range: $288,059.20 - $432,088.80 + equity + bonus
-- Requirements: MD + 5-7+ years PV experience
+**Previous Role (pre-2026-03-31):**
+- Medical Director, AI Innovation and Validation (Delaware office)
+- 125-mile commute each way, 3 days/week — described as exhausting
+- Medical Director of Device & Digital Safety before that
 
 ## Strategic Work at AZ
 

@@ -2,7 +2,7 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-02-20
+updated: 2026-04-10
 updated_by: Claude
 status: active
 tags: [entity/person, domain/self]
@@ -20,7 +20,8 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 - Location: Montclair, NJ
 - Birthday: March 15
 - Primary machine: Rocinante (Windows, 3 monitors) -- see [[MACHINES]]
-- Work: AstraZeneca, Medical Director, AI Innovation and Validation -- see [[ASTRAZENECA]]
+- Work: AstraZeneca, **Senior Medical Director**, AI Innovation and Validation, Global Patient Safety (NYC, started ~2026-03-31) -- see [[ASTRAZENECA]] and [[business/az-career|AZ Career Track]]
+- Commute: Montclair NJ to NYC Penn Station, 3 days/week in-person. Bay St or Bloomfield station, 7:35 AM train.
 - Side ventures: Solar Inference LLC, Sante Total (nonprofit) -- see [[BUSINESS]]
 - Primary AI tool: Claude Code (Max plan, ~580 chats on claude.ai)
 

@@ -33,6 +33,15 @@ Live dashboard of time-sensitive family items, surfaced from Gmail and Calendar 
 > [!todo]
 > **Vayu counselor/therapist search** — NO email signal in last 30 days. Either being handled by Aneeta via phone/text, or not yet started. Surface to Alton: is this being tracked somewhere I can't see?
 
+> [!todo] Priority: HIGH
+> **Afternoon childcare help needed** — Both parents now have demanding in-office schedules: Alton commutes to AZ NYC 3 days/week (Senior Medical Director, started ~2026-03-31), Aneeta at Neurvati (Medical Director, busy with senior director push). Aneeta's parents (Amarkanth) are aging and this is explicitly temporary. Need reliable 3 PM to 7-8 PM weekday help with three kids across two schools (MKA + Goddard). Must be able to do pickup and transport. Research in progress.
+
+> [!todo]
+> **Family dentist in Montclair area** — Need a family practice accepting Delta Dental for 2 adults + 3 kids (ages 10, 8, 4). Research in progress.
+
+> [!todo]
+> **NYC commute: switch from driving to train** — Alton currently drives to AZ NYC 3 days/week (~1 hr each way, expensive: gas + tolls + NYC parking). Train option is NJ Transit from Bay Street Montclair or Bloomfield to Penn Station (~45 min). **Blocker: parking at commuter stations is limited.** Research needed: Bay St vs Bloomfield lot capacity, permit vs daily rates, waitlist status, alternative parking (nearby streets, private lots), bike-to-station option, monthly NJ Transit pass cost vs current driving costs.
+
 > [!decision]
 > **Aneeta trip 2026-04-29 to 2026-05-03: RRE (NOT DC)** — the FAMILY.md memory said "DC trip Apr 29 - May 2." Calendar shows "Aneeta at RRE" for 4/29-5/03. No DC travel emails. Alton is sole parent during that window — 5 days, not 4. Need to confirm the destination and update [[FAMILY]].
 

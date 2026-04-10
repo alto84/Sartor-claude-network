@@ -19,8 +19,13 @@ External career-track signals only. This page captures **recruiter outreach, ext
 > [!blocker]
 > **Chief Patient Safety Officer lead went cold 2026-03-17** — Andy Stecker at Crawford Thomas Recruiting reached out 2026-03-17 about a CPSO opportunity with a global healthcare org. Alton has not replied. No follow-up from Andy. 3+ weeks of silence. This was the single most promising external opportunity in the pipeline. **Decision needed: respond and open the conversation, or explicitly decline and close the loop.**
 
-> [!note] AZ internal Senior Director application
-> Status: unconfirmed. Posting closed 2026-02-16. Outcome not yet visible in email or calendar. This is an internal AZ career move; full context lives in AZ systems, not Sartor memory.
+> [!fact] AZ Senior Medical Director role CONFIRMED
+> Title: Senior Medical Director, AI Innovation and Validation, Global Patient Safety
+> Location: New York City (Empire State Building HQ), 3 days/week in-person
+> Level: G (global career level). Comp range: $288K-$432K + short-term incentive + equity.
+> Posting closed 2026-02-16. Alton started in role approximately 2026-03-31 (commuting since).
+> Commute: Montclair NJ to NYC Penn Station (Bay St or Bloomfield station, 7:35 AM train).
+> Source: job posting docx at `C:\Users\alto8\Desktop\CV and Cover letters\New York Senior Director.docx`
 
 ## External leads
 
