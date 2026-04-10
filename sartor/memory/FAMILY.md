@@ -22,7 +22,10 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 
 ### Aneeta (Wife)
 - Legal name: Aneeta Saxena
-- Birthday: July 22
+- Cell: (973) 303-5427
+- Email: aneetasax@gmail.com
+- Date of birth: October 20, 1980
+- Birthday: October 20
 - Profession: ICU epilepsy neurologist (MD)
 - Current role: Medical Director at Neurvati Neurosciences Inc (230 Park Ave Ste 2830, NY; developing an anti-seizure medication)
 - Prior role in 2025: left Biogen mid-year and joined Neurvati. TY2025 tax package therefore has two W-2s (Biogen partial year + Neurvati partial year) plus a Biogen 401(k) rollover 1099-R.
@@ -64,12 +67,11 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 - Cleaners every other week (Lucas Cleaning)
 
 ## Important Dates
-- Aneeta birthday: July 22
+- Aneeta birthday: October 20
 - Vayu birthday: August 14
 - Vishala birthday: July 29
 - Vasu birthday: January 14
-- Alton birthday: March 15
-- AZ March Bonus: March 15, 2026
+- Alton birthday: September 20
 - Wedding anniversary: (to be confirmed) — marriage certificate on file in Downloads
 
 ## Schools

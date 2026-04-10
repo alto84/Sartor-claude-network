@@ -17,8 +17,10 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 - Preferred name: Alton
 - Username: alto8 (Windows), alton (Linux)
 - Email: alto84@gmail.com (personal/Claude Max account)
+- Cell: (504) 579-3185
 - Location: Montclair, NJ
-- Birthday: March 15
+- Date of birth: September 20, 1984
+- Birthday: September 20
 - Primary machine: Rocinante (Windows, 3 monitors) -- see [[MACHINES]]
 - Work: AstraZeneca, **Senior Medical Director**, AI Innovation and Validation, Global Patient Safety (NYC, started ~2026-03-31) -- see [[ASTRAZENECA]] and [[business/az-career|AZ Career Track]]
 - Commute: Montclair NJ to NYC Penn Station, 3 days/week in-person. Bay St or Bloomfield station, 7:35 AM train.
