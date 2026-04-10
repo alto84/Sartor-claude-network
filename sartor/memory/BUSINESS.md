@@ -1,14 +1,21 @@
 ---
 type: domain
 entity: BUSINESS
-updated: 2026-02-20
+updated: 2026-04-09
 updated_by: Claude
 status: active
-next_review: 2026-04-15
+next_review: 2026-04-16
 tags: [entity/llc, entity/nonprofit, domain/career]
 aliases: [Solar Inference, Sante Total, Business]
-related: [ALTON, TAXES, PROJECTS, ASTRAZENECA]
+related: [ALTON, TAXES, PROJECTS, ASTRAZENECA, solar-inference, sante-total, az-career]
 ---
+
+> [!note] Sub-pages added 2026-04-09
+> Deep operational pages now live alongside this overview:
+> - [[business/solar-inference|Solar Inference LLC]] — $219K solar draw, Lucent stalled, GPU zero utilization, Berman install 4/27-29
+> - [[business/sante-total|Sante Total]] — ~$4,350 donations/30d, 990-EZ migration coming for TY2026
+> - [[business/az-career|AZ Career Track]] — Andy Stecker CPSO lead cold since 3/17
+
 
 # Business Context
 

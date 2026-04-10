@@ -18,12 +18,18 @@ Categorized catalog of the Sartor memory wiki. One of the two spine files (the o
 
 - [[ALTON]] — Emmett Alton Sartor: physician-scientist, AZ Medical Director, founder of Solar Inference LLC, Sante Total treasurer; Montclair NJ
 - [[FAMILY]] — Aneeta Saxena + three children (Vayu 10, Vishala 8, Vasu 4) + three cats; Neurvati transition and household logistics
+- [[family/vayu|Vayu]] — age 10, MKA middle school, ADHD, counselor search open, stuck physical form blocker
+- [[family/vishala|Vishala]] — age 8, MKA primary, Wohelo summer camp deposit due immediately
+- [[family/vasu|Vasu]] — age 4, Goddard, recycled costume parade coming up
 
 ## Domains
 
 - [[TAXES]] — TY2025 filing: personal 1040 + Solar Inference 1065 + Sante Total 990-N; three deadlines; Jonathan Francis CPA
 - [[BUSINESS]] — Solar Inference LLC, Sante Total nonprofit, AstraZeneca career track; three business entities with entangled tax and timing
-- [[ASTRAZENECA]] — AI safety research and Medical Director role; Senior Director application pending; Chief Patient Safety Officer external opportunity under evaluation
+- [[business/solar-inference|Solar Inference LLC]] — deep ops: $219K solar draw, Lucent stalled, GPU zero utilization, Berman install 4/27-29
+- [[business/sante-total|Sante Total]] — deep ops: ~$4,350/30d donations, 990-EZ migration coming for TY2026
+- [[business/az-career|AZ Career Track]] — external signals only: Andy Stecker CPSO cold since 3/17
+- [[ASTRAZENECA]] — AI safety research and Medical Director role; Senior Director application pending
 - [[PROJECTS]] — Active project tracking across Sartor, safety research, dashboard, and venture work
 - [[MACHINES]] — Hardware inventory: Rocinante (Windows workstation), gpuserver1 (Ubuntu + RTX 5090), vast.ai listing, network topology
 
@@ -44,6 +50,11 @@ Categorized catalog of the Sartor memory wiki. One of the two spine files (the o
 - [[MULTI-MACHINE-MEMORY]] — Hub-and-spoke inbox pattern for N-machine sync; Rocinante junction + gpuserver1 symlinks documented
 - [[LLM-WIKI-ARCHITECTURE]] — How wiki.py, the indexes, the reader agent, and the scheduled task fit together
 - [[gpuserver1-operations]] — Disk management notes, Docker/containerd trap, vast.ai Kaalia rules
+
+## Live dashboards
+
+- [[family/active-todos|Family Active TODOs]] — Live dashboard of urgent family items from Gmail+Calendar harvest (Wohelo, stuck email, Tribeca, etc.)
+- [[family/family-calendar|Family Calendar]] — Compiled 30-day family event view
 
 ## Ledgers
 

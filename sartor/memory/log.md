@@ -36,6 +36,31 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-09] ingest | Gmail + Calendar harvest: family and business signals
+
+- Subagent harvested Gmail + Google Calendar for 30-day window (2026-04-09 through 2026-05-09)
+- Surfaced 9 urgent items and 5 blind spots
+- New pages: [[family/active-todos]], [[family/vayu]], [[family/vishala]], [[family/vasu]], [[family/family-calendar]], [[business/solar-inference]], [[business/sante-total]], [[business/az-career]]
+- Updated [[FAMILY]]: corrected Aneeta "DC trip" (wrong) to "RRE trip" (calendar-confirmed), 4/29-5/03 not 4/29-5/02; added Berman install overlap; added sub-page links
+- Updated [[BUSINESS]]: added sub-page links; bumped review date
+- Critical findings surfaced:
+  - Stuck email draft (Vayu physical form, never sent 2026-04-07)
+  - Wohelo deposit $500 overdue for Vishala
+  - Tribeca Pediatrics $170.28 second notice (Vayu)
+  - Lucent solar project stalled with $219,414.50 already released
+  - Sante Total will exceed $50K donation threshold in 2026 (990-EZ migration coming)
+  - Andy Stecker CPSO lead cold since 2026-03-17
+- Blind spots: Chase business banking invisible, MKA Blackbaud portal, Tribeca portal, counselor search, physical birthday gift tracking
+
+## [2026-04-09] package | Safety research wiki bundle zipped for AZ/work deployment
+
+- Created `bundles/safety-research-wiki/wiki/` tree (26 files, ~72 KB zipped)
+- Output: `C:/Users/alto8/Downloads/safety-research-wiki-v1.zip`
+- Contents: generalized wiki.py (1328 lines, 0 deps), 2 skill files, wiki-reader agent, wiki-reindex task, 5 page templates, CONVENTIONS.md, ARCHITECTURE.md, INGEST.md (with Gmail+Drive workflow docs), README.md, INSTALL.md, install.ps1, install.sh, 1 example page
+- Firewalled: zero Sartor/Alton/AZ references, fully portable
+- Selftest passes, reindex runs clean
+- Team of subagents used: one for wiki.py generalization, one for 5 page templates
+
 ## [2026-04-09] refactor | Adopt Karpathy LLM-Wiki two-spine pattern
 
 - Added this `log.md` as the append-only ledger spine file

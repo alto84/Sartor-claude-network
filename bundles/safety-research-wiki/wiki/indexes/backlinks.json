@@ -1,0 +1,18 @@
+{
+  "INSTALL.md": [],
+  "README.md": [],
+  "agents/wiki-reader.md": [],
+  "conventions/CONVENTIONS.md": [],
+  "docs/ARCHITECTURE.md": [
+    "templates/README.md"
+  ],
+  "docs/INGEST.md": [],
+  "examples/CRS-example.md": [],
+  "examples/README.md": [],
+  "scheduled-tasks/wiki-reindex/SKILL.md": [
+    "templates/README.md"
+  ],
+  "skills/build-llm-wiki/SKILL.md": [],
+  "skills/safety-research-wiki/SKILL.md": [],
+  "templates/README.md": []
+}

@@ -1,0 +1,90 @@
+---
+type: drug
+entity: <FILL-filename-without-extension>
+generic_name: <FILL-generic-name>
+# brand_names is a YAML list. Include every brand you expect to backlink.
+brand_names: [<FILL-brand-1>, <FILL-brand-2>]
+# drug_class should match an existing class page when possible.
+drug_class: <FILL-drug-class>
+# mechanism_of_action should wikilink to a [[mechanism]] page.
+mechanism_of_action: [[<FILL-mechanism-wikilink>]]
+indication: <FILL-primary-indication>
+# status: investigational | approved | withdrawn | discontinued
+status: <FILL>
+updated: <YYYY-MM-DD>
+updated_by: <FILL-author-handle>
+tags: [drug/<FILL-class>, indication/<FILL-area>]
+aliases: [<FILL-alt-name>]
+related: [[[<FILL-wikilink>]], [[<FILL-wikilink>]]]
+---
+
+# <FILL-Generic-Name> (<FILL-Brand>)
+
+> [!summary]
+> One-line description: molecule, class, and primary indication.
+> <FILL>
+
+## Indication
+
+<!-- Approved indications and major off-label uses. Note the regulator
+     (e.g., US, EU, JP) where relevant. Do not include real approval dates
+     unless verified from a primary source. -->
+<FILL>
+
+## Mechanism of Action
+
+<!-- Keep this short. Link to the [[mechanism]] page for detail. -->
+<FILL>
+
+See [[<FILL-mechanism-wikilink>]] for biological detail.
+
+## Known Adverse Events
+
+<!-- Group by system organ class or severity. Each bullet should wikilink
+     to an [[adverse-event]] page where one exists. -->
+
+### Common
+
+- [[<FILL-adverse-event-wikilink>]] — <FILL-note>
+- [[<FILL-adverse-event-wikilink>]] — <FILL-note>
+
+### Serious / Black-Box
+
+> [!danger] Boxed warning
+> <FILL — summarize the boxed warning language or write "none">
+
+- [[<FILL-adverse-event-wikilink>]] — <FILL-note>
+
+## REMS / Risk Management
+
+<!-- Risk Evaluation and Mitigation Strategies or equivalent ex-US programs.
+     Summarize requirements; do not paste full program text. -->
+- **Program name:** <FILL or "none">
+- **Elements:** <FILL — e.g., prescriber certification, patient registry>
+- **Monitoring cadence:** <FILL>
+
+## Labeling Changes (Chronological)
+
+<!-- Append new rows at the TOP. Keep old rows intact for audit.
+     Source each change to a regulator document in Key References. -->
+
+| Date | Region | Change | Source |
+|------|--------|--------|--------|
+| <YYYY-MM-DD> | <FILL> | <FILL> | <FILL> |
+| <YYYY-MM-DD> | <FILL> | <FILL> | <FILL> |
+
+## Signals Under Investigation
+
+<!-- Link to [[signal]] pages. Do not duplicate signal content here. -->
+- [[<FILL-signal-wikilink>]] — status: <FILL>
+- [[<FILL-signal-wikilink>]] — status: <FILL>
+
+## Key References
+
+1. <FILL-citation>
+2. <FILL-citation>
+3. [[<FILL-study-wikilink>]]
+
+## History
+
+- <YYYY-MM-DD> — <FILL-author> — page created.

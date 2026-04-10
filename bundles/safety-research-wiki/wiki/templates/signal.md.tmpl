@@ -1,0 +1,93 @@
+---
+type: signal
+entity: <FILL-filename-without-extension>
+# opened: date the signal was first formally tracked.
+opened: <YYYY-MM-DD>
+# closed: date of resolution, or null if still active.
+closed: null
+# severity: informational | low | moderate | high | critical
+severity: <FILL>
+# status: monitoring | evaluating | escalated | resolved-confirmed |
+#         resolved-refuted | resolved-labeled | resolved-withdrawn
+status: <FILL>
+updated: <YYYY-MM-DD>
+updated_by: <FILL-author-handle>
+tags: [signal/<FILL-status>, severity/<FILL-level>]
+aliases: [<FILL-alt-name>]
+# related wikilinks. Use empty list [] if unknown at intake.
+related_products: [[[<FILL-drug-wikilink>]]]
+related_mechanisms: [[[<FILL-mechanism-wikilink>]]]
+related_adverse_events: [[[<FILL-adverse-event-wikilink>]]]
+---
+
+# Signal: <FILL-Short-Name>
+
+> [!summary]
+> One sentence: product(s), AE, and what prompted intake.
+> <FILL>
+
+## Signal Description
+
+<!-- Who raised it, when, from what data source (spontaneous reports,
+     literature, trial, registry, regulator query). -->
+<FILL>
+
+**Source of detection:** <FILL>
+**Detection method:** <FILL — e.g., disproportionality analysis, case series>
+
+## Evidence
+
+<!-- Summarize the data that supports or weakens the signal.
+     Prefer numbers over adjectives. Link to [[study]] pages. -->
+
+### Supporting
+
+- <FILL>
+- [[<FILL-study-wikilink>]] — <FILL-key-finding>
+
+### Contradicting
+
+- <FILL>
+
+### Gaps
+
+- <FILL>
+
+## Biological Plausibility
+
+<!-- Is there a known or hypothesized mechanism? Link to [[mechanism]]. -->
+<FILL>
+
+See: [[<FILL-mechanism-wikilink>]]
+
+## Affected Products
+
+<!-- Each product gets a row. Impact = observed strength of association. -->
+
+| Product | Indication | Impact | Notes |
+|---------|------------|--------|-------|
+| [[<FILL-drug-wikilink>]] | <FILL> | <FILL> | <FILL> |
+| [[<FILL-drug-wikilink>]] | <FILL> | <FILL> | <FILL> |
+
+## Actions Taken
+
+<!-- Regulatory, clinical, and internal actions. Be specific about dates. -->
+- <YYYY-MM-DD> — <FILL-action>
+- <YYYY-MM-DD> — <FILL-action>
+
+> [!important] Required follow-ups
+> <FILL — open action items with owners>
+
+## Current Status
+
+<!-- Synchronized with the `status` frontmatter field. -->
+**Status:** <FILL>
+**Rationale:** <FILL>
+**Next review:** <YYYY-MM-DD>
+
+## Decision Log (Append-Only)
+
+<!-- NEVER rewrite past entries. Add new entries at the bottom.
+     Format: date — author — decision — rationale. -->
+- <YYYY-MM-DD> — <FILL-author> — signal opened — <FILL-rationale>.
+- <YYYY-MM-DD> — <FILL-author> — <FILL-decision> — <FILL-rationale>.

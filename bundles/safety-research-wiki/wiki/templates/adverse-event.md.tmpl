@@ -1,0 +1,96 @@
+---
+type: adverse-event
+entity: <FILL-filename-without-extension>
+# grading_system: CTCAE | WHO | Hy's Law | custom | none
+grading_system: <FILL>
+# preferred_term_meddra is optional. Use the PT label, not an ID.
+preferred_term_meddra: <FILL-or-omit>
+# soc: MedDRA System Organ Class, free text (e.g., "Hepatobiliary disorders").
+soc: <FILL>
+updated: <YYYY-MM-DD>
+updated_by: <FILL-author-handle>
+status: active
+tags: [ae/<FILL-soc>, severity/<FILL-level>]
+aliases: [<FILL-alt-name-1>, <FILL-alt-name-2>]
+# related mechanisms and drugs as wikilinks.
+related_mechanisms: [[[<FILL-mechanism-wikilink>]]]
+related_drugs: [[[<FILL-drug-wikilink>]], [[<FILL-drug-wikilink>]]]
+---
+
+# <FILL-Adverse-Event-Name>
+
+> [!summary]
+> One sentence: what the event is and why it matters in safety research.
+> <FILL>
+
+## Definition / Grading
+
+<!-- Definitional language and the grading scale actually used.
+     If multiple scales are common, list all and mark the preferred. -->
+<FILL>
+
+### Grade Table
+
+| Grade | Definition | Clinical Action |
+|-------|------------|-----------------|
+| 1 | <FILL> | <FILL> |
+| 2 | <FILL> | <FILL> |
+| 3 | <FILL> | <FILL> |
+| 4 | <FILL> | <FILL> |
+| 5 | <FILL> | <FILL> |
+
+## Mechanism
+
+<!-- Link to [[mechanism]] pages rather than re-explaining biology here. -->
+Primary mechanism: [[<FILL-mechanism-wikilink>]]
+
+Additional contributing mechanisms:
+- [[<FILL-mechanism-wikilink>]]
+- [[<FILL-mechanism-wikilink>]]
+
+## Affected Drug Classes
+
+<!-- Link to [[drug-class]] or representative [[drug]] pages. -->
+- [[<FILL-drug-class-wikilink>]]
+- [[<FILL-drug-class-wikilink>]]
+
+## Clinical Management
+
+### Detection
+
+<!-- Screening labs, imaging, symptom tracking, patient-reported outcomes. -->
+- <FILL>
+
+### Treatment
+
+- **First-line:** <FILL>
+- **Refractory:** <FILL>
+- **Supportive care:** <FILL>
+
+### Rechallenge
+
+> [!caution] Rechallenge guidance
+> <FILL — when is re-exposure to the offending agent acceptable?>
+
+## Signal History
+
+<!-- Chronological signals that are or were associated with this AE.
+     Link to [[signal]] pages; do not duplicate the signal narrative. -->
+- [[<FILL-signal-wikilink>]] — opened <YYYY-MM-DD>, status <FILL>
+- [[<FILL-signal-wikilink>]] — opened <YYYY-MM-DD>, status <FILL>
+
+## Labeling Implications
+
+<!-- Typical label language, boxed warnings, contraindications generally
+     triggered by this AE across products. Keep generic; specific label
+     changes belong on the [[drug]] page. -->
+<FILL>
+
+## Key References
+
+1. <FILL-citation>
+2. <FILL-citation>
+
+## History
+
+- <YYYY-MM-DD> — <FILL-author> — page created.

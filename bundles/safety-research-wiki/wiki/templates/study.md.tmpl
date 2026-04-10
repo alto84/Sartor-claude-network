@@ -1,0 +1,121 @@
+---
+type: study
+entity: <FILL-filename-without-extension>
+# phase: preclinical | 1 | 1/2 | 2 | 2/3 | 3 | 4 | observational | postmarket
+phase: <FILL>
+# population: short descriptor, e.g., "adults with <condition>".
+population: <FILL>
+primary_endpoint: <FILL>
+# nct_id is optional. Only include if the study is real and public.
+nct_id: <FILL-or-omit>
+# study_type: RCT | single-arm | cohort | case-control | registry |
+#             spontaneous-report | meta-analysis
+study_type: <FILL>
+updated: <YYYY-MM-DD>
+updated_by: <FILL-author-handle>
+status: <FILL — planned | ongoing | completed | terminated>
+tags: [study/<FILL-phase>, indication/<FILL-area>]
+aliases: [<FILL-alt-name>]
+related: [[[<FILL-drug-wikilink>]], [[<FILL-adverse-event-wikilink>]]]
+---
+
+# <FILL-Study-Short-Name>
+
+> [!summary]
+> One sentence: what was tested, in whom, and what the safety focus is.
+> <FILL>
+
+## Design
+
+<!-- Randomization, blinding, control arm, duration, sites, sponsor type.
+     Keep this short and structural; findings belong in Safety Findings. -->
+<FILL>
+
+**Design type:** <FILL>
+**Randomization:** <FILL>
+**Blinding:** <FILL>
+**Duration:** <FILL>
+**Comparator:** <FILL>
+
+## Population / Eligibility
+
+### Inclusion
+
+- <FILL>
+- <FILL>
+
+### Exclusion
+
+- <FILL>
+- <FILL>
+
+### Sample Size
+
+- **Planned:** <FILL>
+- **Enrolled:** <FILL>
+- **Analyzed:** <FILL>
+
+## Interventions
+
+<!-- Dose, schedule, route, duration. Link to [[drug]] pages. -->
+
+| Arm | Intervention | Dose | Schedule | N |
+|-----|--------------|------|----------|---|
+| <FILL> | [[<FILL-drug-wikilink>]] | <FILL> | <FILL> | <FILL> |
+| <FILL> | [[<FILL-drug-wikilink>]] | <FILL> | <FILL> | <FILL> |
+
+## Endpoints
+
+### Primary
+
+- <FILL>
+
+### Secondary
+
+- <FILL>
+- <FILL>
+
+### Safety-specific
+
+- <FILL>
+
+## Safety Findings
+
+<!-- This is the main reason this page exists. Be quantitative where you can.
+     Use the AE table below and link every row to an [[adverse-event]] page. -->
+
+> [!important] Headline safety finding
+> <FILL — one-sentence takeaway>
+
+### Adverse Event Summary
+
+| AE (link) | Arm A (n, %) | Arm B (n, %) | Grade >=3 | Notes |
+|-----------|--------------|--------------|-----------|-------|
+| [[<FILL-adverse-event-wikilink>]] | <FILL> | <FILL> | <FILL> | <FILL> |
+| [[<FILL-adverse-event-wikilink>]] | <FILL> | <FILL> | <FILL> | <FILL> |
+
+### Discontinuations and Deaths
+
+- **Discontinuation due to AE:** <FILL>
+- **Serious AEs:** <FILL>
+- **Deaths on study:** <FILL>
+
+### Subgroup Signals
+
+- <FILL>
+
+## Key References
+
+1. <FILL-citation>
+2. <FILL-citation>
+
+## Cross-References to Signals or AEs
+
+<!-- Every [[signal]] or [[adverse-event]] page that cites this study should
+     be wikilinked back here so Obsidian's graph stays connected. -->
+- [[<FILL-signal-wikilink>]]
+- [[<FILL-adverse-event-wikilink>]]
+
+## History
+
+- <YYYY-MM-DD> — <FILL-author> — page created.

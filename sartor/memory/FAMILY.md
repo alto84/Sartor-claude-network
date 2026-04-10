@@ -1,12 +1,12 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-04-07
+updated: 2026-04-09
 updated_by: Claude
 status: active
 tags: [entity/person, domain/family]
 aliases: [Sartor Family, Household]
-related: [ALTON, TAXES]
+related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calendar]
 ---
 
 # Family
@@ -27,7 +27,7 @@ related: [ALTON, TAXES]
 - Current role: Medical Director at Neurvati Neurosciences Inc (230 Park Ave Ste 2830, NY; developing an anti-seizure medication)
 - Prior role in 2025: left Biogen mid-year and joined Neurvati. TY2025 tax package therefore has two W-2s (Biogen partial year + Neurvati partial year) plus a Biogen 401(k) rollover 1099-R.
 - Career update (2026-04): Being positioned for senior director role, CEO mentorship from Bruce, networking with Gail. May leave company ~1.5yr post-promotion.
-- DC trip: April 29 - May 2
+- **RRE trip: April 29 - May 3** (corrected from prior "DC trip" memory — calendar shows "Aneeta at RRE", not DC. No DC travel emails found. 5-day window, not 4.)
 - Role at home: Co-manager of household
 - Co-member of Solar Inference LLC (50% with Alton)
 
@@ -89,7 +89,8 @@ related: [ALTON, TAXES]
 - Goddard pet photo day + supply drive: Monday April 6
 - Oliver's birthday: April 7
 - Solar roof installation: tentatively last week of April (permitting in progress)
-- Aneeta DC trip: April 29 - May 2
+- Berman Home Systems wifi install: April 27-29 (3 days, Solar Inference LLC business install)
+- Aneeta at RRE: April 29 - May 3 (Alton sole-parent window, 5 days, overlaps Berman install)
 - Disney family trip (Disneyland): July 2026 (with Smith/Alison, Kim Tran, Brucker, Perera, Nicole)
 
 ## Open Action Items
@@ -108,6 +109,11 @@ related: [ALTON, TAXES]
 - [[ALTON]] - Head of household
 - [[MACHINES]] - Devices used by the family
 - [[ledgers/kids|Kids Ledger]] - Running allowance/debit ledger for Vayu, Vishala, Vasu
+- [[family/active-todos|Family TODOs]] - Live dashboard of urgent family items
+- [[family/vayu|Vayu]] - Per-child deep profile (age 10, MKA, ADHD, counselor search open)
+- [[family/vishala|Vishala]] - Per-child deep profile (age 8, MKA, Wohelo summer camp)
+- [[family/vasu|Vasu]] - Per-child deep profile (age 4, Goddard)
+- [[family/family-calendar|Family Calendar]] - Compiled 30-day event view from Google Calendar
 
 ## Extended Family
 - Amarkanth (Aneeta's father): Regular childcare support, picks up kids from school. Paid for India flights.
