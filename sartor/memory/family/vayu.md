@@ -2,8 +2,8 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-04-09
-updated_by: Claude
+updated: 2026-04-10
+updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -72,6 +72,18 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 - [[ALTON]] - Head of household
 - [[ledgers/kids]] - Allowance ledger ($10 current balance)
 
+## Latest from gather (2026-04-10)
+
+> [!deadline] 2026-04-17
+> **Ellis Island trip CONFIRMED — physical form still unsubmitted.** Debra Van Eerde sent follow-up email today (Apr 10) explicitly stating: "Vayu's class is going on a trip on 4/17 to Ellis Island. He will need the updated physical on the correct form which I attached to the previous email dated 4/2." She asks that the completed physical be emailed to dvaneerde@mka.org and will upload to Magnus Health. This is the second follow-up from the nurse (first was Apr 2). Form has been in the email thread (4129_001.pdf) since Apr 2. No response has been sent. **Trip is 7 days away.** Get the form completed and emailed.
+
+> [!fact]
+> Soccer game confirmed via Blue Sombrero feed: 2026-04-11, Brookdale Stadium South, Field 1, 11:00 AM-12:00 PM. Team B-34 Lime (Gormley Hanlon & Waynik) vs B-34 Green (Boudreau & Rastogi).
+
+> [!note]
+> Apr 17 coverage conflict: Vishala has a dance concert at MKA 8:00-10:00 AM the same day as the Ellis Island trip. Two events requiring parent presence at the same time. Coordinate with Aneeta.
+
 ## History
 
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
+- 2026-04-10: Updated via personal-data-gather (first live MCP run). Teacher escalated Ellis Island physical form deadline. Soccer game confirmed via Blue Sombrero. Apr 17 coverage conflict flagged.

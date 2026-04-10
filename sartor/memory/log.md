@@ -61,6 +61,19 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Selftest passes, reindex runs clean
 - Team of subagents used: one for wiki.py generalization, one for 5 page templates
 
+## [2026-04-10] ingest | personal-data-gather run 5 — first live Gmail + Calendar harvest
+
+- First successful MCP-live run after 34 blocked runs (Gmail/Calendar unavailable)
+- Sources: Gmail (50 msgs scanned), 5 Google Calendars (primary, Family, Aneeta, Tasks, Blue Sombrero)
+- Facts gathered: 11 new/confirmed signals
+- Critical finding: Debra Van Eerde (MKA nurse) sent second escalation email today — Vayu's Ellis Island trip is Apr 17, physical form still unsubmitted. **7 days to deadline.**
+- New finding: CSA workshift registration overdue (Alton + Aneeta paid but workshifts not signed up; coordinator waiting)
+- New finding: Summit Health patient statement with payment due
+- Conflict flagged: Apr 17 has both Vishala Dance Concert (8 AM MKA) and Vayu Ellis Island trip
+- Updated: [[family/vayu]], [[family/active-todos]]
+- Created: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- Daily log: `daily/2026-04-10.md` (run 5 appended)
+
 ## [2026-04-09] refactor | Adopt Karpathy LLM-Wiki two-spine pattern
 
 - Added this `log.md` as the append-only ledger spine file

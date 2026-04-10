@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-09
-updated_by: Claude
+updated: 2026-04-10
+updated_by: personal-data-gather
 status: active
 priority: p1
 next_review: 2026-04-12
@@ -92,6 +92,21 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - [[family-calendar]] - Full 30-day calendar view
 - [[ALTON]] - Head of household
 
+## Latest from gather (2026-04-10)
+
+> [!deadline] 2026-04-17
+> **Vayu Ellis Island physical form — teacher escalated TODAY.** Debra Van Eerde (dvaneerde@mka.org) sent a second email on Apr 10 explicitly naming Apr 17 as the trip date and requesting the completed physical be emailed to her. Correct blank form was attached to the Apr 2 thread. Email physical to dvaneerde@mka.org. Seven days remaining.
+
+> [!todo]
+> **CSA workshift registration — NEW (Apr 10).** Alton and Aneeta are paid up for the Bloomfield-Montclair CSA but have not signed up for their required 4 work shifts. CSA coordinator Enid Melville contacted Ilan Grunwald, who forwarded to Alton today. Note: Aneeta's Gmail is showing as invalid in the CSA system — verify the correct email address. Register using the link in the Grunwald email thread.
+
+> [!todo]
+> **Summit Health patient statement — payment due.** Email arrived Apr 10 from Summit Health patient portal. Amount not visible in email snippet. Check portal to confirm amount and pay.
+
+> [!warning]
+> **Apr 17 parent coverage conflict.** Vishala Dance Concert at MKA (8:00-10:00 AM) AND Vayu's Ellis Island class trip both fall on Apr 17. Coordinate with Aneeta now.
+
 ## History
 
 - 2026-04-09: Initial creation from Gmail+Calendar harvest. Surfaced 9 urgent items and 5 blind spots.
+- 2026-04-10: Updated via personal-data-gather (first live MCP run). Added: Ellis Island physical form escalation, CSA workshift registration, Summit Health payment, Apr 17 coverage conflict.
