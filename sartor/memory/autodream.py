@@ -24,6 +24,7 @@ Usage:
     python autodream.py --status     # Show last consolidation info
 """
 
+import datetime as _dt_mod
 import json
 import os
 import re
@@ -101,6 +102,27 @@ DAILY_SECTIONS = [
     "family", "calendar notes", "monitoring items", "upcoming deadlines",
     "active alerts",
 ]
+
+
+def _read_preserving_frontmatter(filepath):
+    """Read a file, return (frontmatter_block, body) preserving frontmatter verbatim."""
+    text = filepath.read_text(encoding='utf-8')
+    match = re.match(r'^(---\s*\n.*?\n---\s*\n)', text, re.DOTALL)
+    if match:
+        return match.group(1), text[match.end():]
+    return '', text
+
+
+def _write_preserving_frontmatter(filepath, frontmatter, body, new_section):
+    """Write file preserving frontmatter, updating the 'updated' field, appending new section."""
+    today = _dt_mod.date.today().isoformat()
+    if frontmatter:
+        # Update the 'updated:' field in frontmatter
+        updated_fm = re.sub(r'(updated:\s*)(\S+)', rf'\g<1>{today}', frontmatter)
+        updated_fm = re.sub(r'(updated_by:\s*)(\S+)', r'\g<1>autodream', updated_fm)
+    else:
+        updated_fm = frontmatter
+    filepath.write_text(updated_fm + body.rstrip() + '\n\n' + new_section + '\n', encoding='utf-8')
 
 
 def _ensure_meta_dir():
@@ -417,13 +439,15 @@ def phase_consolidate(facts, topic_files, dry_run=False):
                 f"- [{fact['date']}] ({fact['category']}) {fact['fact']}"
             )
 
+        new_section = "\n".join(append_lines).lstrip("\n")
+
         if not dry_run:
             dest_path = MEMORY_DIR / dest_file
             if dest_path.exists():
-                with dest_path.open("a", encoding="utf-8") as fh:
-                    fh.write("\n".join(append_lines) + "\n")
+                frontmatter, body = _read_preserving_frontmatter(dest_path)
+                _write_preserving_frontmatter(dest_path, frontmatter, body, new_section)
             # Update in-memory content so later facts see the additions
-            topic_content[dest_file] = content + "\n".join(append_lines)
+            topic_content[dest_file] = content + "\n" + new_section
 
         changes.append({
             "file": dest_file,

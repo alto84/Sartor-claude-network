@@ -29,12 +29,12 @@ Multi-family trip planned via a group text called "Disney 2026." Nicole (planner
 
 | Day | Plan | Details |
 |-----|------|---------|
-| **Thursday** (arrival) | DTF lunch + character dinner | Din Tai Fung at Downtown Disney ~1:00 PM (no park ticket needed). Character dining Thursday evening (venue TBD, Nicole booking). |
-| **Friday** | California Adventures | At least one family doing CA Adventures. Others may split between parks. |
-| **Saturday** | Disneyland (park day) | Blue Bayou restaurant (inside Pirates ride) — Nicole can book 60 days out. Park tickets required. |
-| **Sunday** | Departure | Most families leaving Sunday. Kim Tran departure TBD. Denushi early AM back to DC. Smiths staying in LA a few more days. |
+| **Thu Jul 16** (arrival) | DTF lunch + character dinner | Din Tai Fung at Downtown Disney ~1:00 PM (no park ticket needed). Character dining Thursday evening (venue TBD, Nicole booking). |
+| **Fri Jul 17** | California Adventures | At least one family doing CA Adventures. Others may split between parks. |
+| **Sat Jul 18** | Disneyland (park day) | Blue Bayou restaurant (inside Pirates ride) — Nicole books 60 days out (~May 17). Park tickets required. |
+| **Sun Jul 19** | Departure | Most families leaving Sunday. Kim Tran departure TBD. Denushi early AM back to DC. Smiths staying in LA a few more days. |
 
-**Exact July dates not yet confirmed in the messages I can see.** The "Thursday arrival" structure suggests a Thu-Sun window. Based on FAMILY.md listing "July 2026" and the timing references, likely dates are in mid-to-late July. Need to confirm with the group.
+**Dates confirmed from Family calendar: July 16-19, 2026 (Thu-Sun).** Calendar event "Disney Vacation" created Oct 2, 2025, runs July 16 through July 19 (4 nights, depart Sunday). Nicole should book Blue Bayou 60 days out = **~May 17, 2026.**
 
 ## Families attending
 
@@ -67,7 +67,7 @@ Multi-family trip planned via a group text called "Disney 2026." Nicole (planner
 
 ## Alton's action items (ordered by urgency)
 
-1. **Confirm exact dates with the group** — ask Nicole or (512) what the Thursday-Sunday dates are
+1. ~~Confirm exact dates~~ — **CONFIRMED: July 16-19 (Thu-Sun)** from Family calendar
 2. **Share Disneyland login with Nicole** — she asked Mar 31, everyone else said yes, Alton said yes but hasn't followed through
 3. **Book flights** — 5 people, NJ to LAX or SNA. Check both airports. July is peak season; prices rise weekly.
 4. **Book hotel** — near Disneyland/Anaheim. Ask the group where others are staying.

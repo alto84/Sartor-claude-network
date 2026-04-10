@@ -6,6 +6,25 @@ model: sonnet
 
 Produce a unified daily briefing covering all 5 domains below. Format as a flowing document with clear section headers. At the very top, collect any ACTION REQUIRED items found across all sections and list them prominently before proceeding to the full briefing.
 
+## Step 0 — Wiki TODOs and Deadlines
+
+Read these files from `sartor/memory/` for urgent items:
+- `family/active-todos.md` — family action items and deadlines
+- `business/solar-inference.md` — Solar Inference LLC status and blockers
+- `business/sante-total.md` — Sante Total nonprofit status
+- `business/az-career.md` — external career signals
+
+Extract all `> [!deadline]`, `> [!blocker]`, and `> [!todo]` callouts from these files.
+
+For each callout:
+- If it contains a date, check if the date is within 7 days of today
+- If it's a [!blocker], always include it regardless of date
+
+Present the top 5 most urgent items (sorted by: blockers first, then nearest deadlines, then general todos) in the ACTION REQUIRED section at the top of the briefing.
+
+Format each as:
+- [BLOCKER] or [DEADLINE: Apr 15] or [TODO] — one-line description (source: filename)
+
 ## Step 1 — Calendar
 - Use Google Calendar tools to fetch today's events across all calendars.
 - Identify: today's appointments, any conflicts (overlapping times), school events for the kids.
@@ -39,7 +58,8 @@ Produce a unified daily briefing covering all 5 domains below. Format as a flowi
 # Morning Briefing — {date}
 
 ## ACTION REQUIRED
-- [list any urgent items found across all domains]
+- [wiki-sourced blockers, deadlines, and todos from Step 0]
+- [additional urgent items found across calendar, markets, GPU, nonprofit, and task domains]
 
 ## Calendar
 ...

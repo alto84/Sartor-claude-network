@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: kids-ledger
-updated: 2026-04-09
+updated: 2026-04-10
 updated_by: Claude
 status: active
 tags: [domain/family, entity/person, meta/ledger]
@@ -11,10 +11,10 @@ related: [FAMILY, ALTON]
 
 # Kids Ledger
 
-Running ledger of allowance, chores, birthdays, and small credits/debits for the three children. Parents use this as the source of truth so everyone remembers who is owed what. Physical cash rarely changes hands — the ledger IS the account.
+Running ledger for the three children. This is "the family bank" — kids give Alton money for safekeeping, and he tracks it here. Also tracks allowance, chores, birthdays, and other credits/debits. Physical cash rarely changes hands — the ledger IS the account.
 
 > [!note]
-> This is an informal household ledger, not a real bank account. Balances are tracked in whole dollars for simplicity.
+> This is an informal household ledger, not a real bank account. Balances are tracked in whole dollars for simplicity. When a kid gives Alton cash to hold, it's logged as a "deposit" (credit). When they want it back or spend it, it's a "withdrawal" (debit).
 
 ## Current Balances
 
