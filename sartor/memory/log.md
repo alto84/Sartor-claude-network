@@ -110,6 +110,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - New entrypoint: `sartor/memory/MEMORY.md`
 - Pattern source: kepano/obsidian-skills + Karpathy LLM-Wiki + Sartor Hermes bounded-memory
 
+## [2026-04-10] ingest | personal-data-gather run 4 -- blocked, output files written
+
+- Status: BLOCKED (34th consecutive blocked run, reconstructed count) -- Gmail MCP and Google Calendar MCP unavailable
+- Sources checked: 0 (MCPs not in session tool registry)
+- Facts gathered: 0 new; all intelligence carried from 2026-04-04 and 2026-04-09 harvests
+- Pages updated: `sartor/memory/daily/2026-04-10.md` (run 4 appended), `sartor/memory/log.md`
+- Output files written: `data/gather-alerts.md` (10 alerts, urgency-ranked), `data/heartbeat-log.csv` (34-entry reconstructed history)
+- Critical alerts active: Sante Total 990 to Barbara Weis (deadline TODAY, Apr 10), GPU #52271 offline (~145+ hrs), Wohelo $500 deposit (TODAY)
+- Infrastructure blocker: Gmail+GCal MCP entries missing from `.claude/mcp-config.json`; Windows paths non-functional on Linux runtime
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption
