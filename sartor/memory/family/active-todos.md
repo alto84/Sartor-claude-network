@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-10
+updated: 2026-04-11
 updated_by: personal-data-gather
 status: active
 priority: p1
@@ -106,7 +106,19 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!warning]
 > **Apr 17 parent coverage conflict.** Vishala Dance Concert at MKA (8:00-10:00 AM) AND Vayu's Ellis Island class trip both fall on Apr 17. Coordinate with Aneeta now.
 
+## Latest from gather (2026-04-11)
+
+> [!deadline] 2026-04-13
+> **Goddard summer forms due Monday (2 days).** Samantha Ramsden confirmed in weekly announcement. Check that Vasu's enrollment is complete and all required health/permission forms are submitted to The Goddard School. See [[vasu]].
+
+> [!warning]
+> **Apr 18 conflict: Vayu soccer vs Rafi's birthday party.** Blue Sombrero shows two back-to-back B-34 Lime games at Brookdale Park: 1–2 PM and 2–3 PM. Rafi's birthday party (Yankees game) is the same day 1–4 PM. Direct overlap. Decide which takes priority and coordinate logistics. See [[vayu]].
+
+> [!note]
+> **Alton's CSA workshift form submitted** (Google Forms receipt received Apr 10). Aneeta still needs to register — her Gmail is showing as invalid in the CSA system. Contact Ilan Grunwald or Enid Melville (enidmelville@gmail.com) to fix Aneeta's email and complete her workshift signup.
+
 ## History
 
 - 2026-04-09: Initial creation from Gmail+Calendar harvest. Surfaced 9 urgent items and 5 blind spots.
 - 2026-04-10: Updated via personal-data-gather (first live MCP run). Added: Ellis Island physical form escalation, CSA workshift registration, Summit Health payment, Apr 17 coverage conflict.
+- 2026-04-11: Updated via personal-data-gather run 6. Added: Goddard summer forms deadline (Apr 13), Apr 18 soccer/party conflict, CSA registration status update.

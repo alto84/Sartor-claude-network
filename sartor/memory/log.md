@@ -1,8 +1,8 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-09
-updated_by: Claude
+updated: 2026-04-11
+updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -73,6 +73,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Updated: [[family/vayu]], [[family/active-todos]]
 - Created: `data/gather-alerts.md`, `data/heartbeat-log.csv`
 - Daily log: `daily/2026-04-10.md` (run 5 appended)
+
+## [2026-04-11] ingest | personal-data-gather run 6 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, unread after:2026/04/09), 5 Google Calendars (7-day window Apr 11–18)
+- Facts gathered: 8 new signals
+- Critical finding: **Apr 18 conflict** — Vayu's two back-to-back B-34 Lime soccer games (1–2 PM, 2–3 PM, Brookdale Park) directly overlap with Rafi's birthday party (Yankees game, 1–4 PM). Unresolved; needs decision.
+- New deadline: **Goddard summer forms due Monday April 13** (2 days). Vasu soccer also starts Apr 13.
+- Confirmed: Alton's CSA workshift form submitted. Aneeta's Gmail invalid in CSA system — she still needs to register.
+- Tax flag: April 15 is 4 days away. Personal 1040 / Form 4868 + NJ-1065 $450 fee still open decision.
+- Updated: [[family/vasu]], [[family/vayu]], [[family/active-todos]], [[family/family-calendar]]
+- Created: `daily/2026-04-11.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
 ## [2026-04-09] refactor | Adopt Karpathy LLM-Wiki two-spine pattern
 

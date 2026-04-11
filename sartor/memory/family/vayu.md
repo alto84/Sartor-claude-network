@@ -2,7 +2,7 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-04-10
+updated: 2026-04-11
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -83,7 +83,16 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 > [!note]
 > Apr 17 coverage conflict: Vishala has a dance concert at MKA 8:00-10:00 AM the same day as the Ellis Island trip. Two events requiring parent presence at the same time. Coordinate with Aneeta.
 
+## Latest from gather (2026-04-11)
+
+> [!warning]
+> **Apr 18 scheduling conflict.** Blue Sombrero shows two back-to-back rec soccer games: B-34 Lime vs B-34 Shock (1–2 PM) and B-34 Lime vs B-34 Charcoal (2–3 PM), both at Brookdale Stadium South. Rafi's birthday party (Yankees game) is also 1–4 PM that same day. One must give. Decide with Aneeta which takes priority.
+
+> [!fact]
+> Apr 18 soccer schedule (Blue Sombrero confirmed): Game 1 @ 13:00, Game 2 @ 14:00, both Brookdale Park Field 1.
+
 ## History
 
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
 - 2026-04-10: Updated via personal-data-gather (first live MCP run). Teacher escalated Ellis Island physical form deadline. Soccer game confirmed via Blue Sombrero. Apr 17 coverage conflict flagged.
+- 2026-04-11: Updated via personal-data-gather run 6. Added Apr 18 back-to-back soccer games and conflict with Rafi's birthday party.
