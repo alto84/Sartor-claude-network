@@ -1,5 +1,5 @@
 # Sartor Memory Index
-## Last Updated: 2026-04-10 03:11
+## Last Updated: 2026-04-11 03:12
 
 ## Core Memory
 - [ALTON.md](ALTON.md) — ---
@@ -19,6 +19,7 @@
 - [log.md](log.md) — ---
 
 ## Recent Activity
+- [2026-04-11.md](daily/2026-04-11.md) — Daily Log - 2026-04-11 (Saturday)
 - [2026-04-10.md](daily/2026-04-10.md) — Daily Log - 2026-04-10 (Friday)
 - [2026-04-09.md](daily/2026-04-09.md) — Daily Log - 2026-04-09 (Thursday)
 - [2026-04-08.md](daily/2026-04-08.md) — Daily Log - 2026-04-08 (Wednesday)
@@ -28,7 +29,6 @@
 - [2026-04-04.md](daily/2026-04-04.md) — Daily Log - 2026-04-04
 - [2026-02-18.md](daily/2026-02-18.md) — Daily Log — 2026-02-18 (Overnight Autonomous Session)
 - [2026-02-06.md](daily/2026-02-06.md) — Daily Log - 2026-02-06
-- [2026-02-06-brief.md](daily/2026-02-06-brief.md) — Morning Brief - February 6, 2026 (Friday)
 
 ## Research & Snapshots
 - [cell-therapy-safety-monitoring-lifecycle.md](research/cell-therapy-safety-monitoring-lifecycle.md) — AI-Driven Safety Monitoring and Adverse Event Prediction Across the Cell Therapy Clinical Development Lifecycle

@@ -1,8 +1,8 @@
 ---
 type: meta
 entity: LEARNINGS
-updated: 2026-02-20
-updated_by: Claude
+updated: 2026-04-11
+updated_by: autodream
 status: active
 tags: [meta/learnings]
 aliases: [Lessons Learned]
@@ -167,6 +167,11 @@ Key findings from surveying state-of-the-art AI memory systems:
 - [2026-04-06] (fact) ---
 
 ## Consolidated from daily logs (2026-04-10)
+- [2026-04-05] (fact) ---
+- [2026-04-06] (fact) ---
+- [2026-04-06] (fact) ---
+
+## Consolidated from daily logs (2026-04-11)
 - [2026-04-05] (fact) ---
 - [2026-04-06] (fact) ---
 - [2026-04-06] (fact) ---
