@@ -117,6 +117,17 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 - [[FAMILY]] - Family and household info
 - [[ASTRAZENECA]] - Current employer and career context
 
+## Latest from gather (2026-04-11) run 10
+
+> [!fact]
+> **Enzo Tech Group Director of Artificial Intelligence** (LinkedIn Job Alert, 19d7d089965e7a5e, Apr 11 2:53 PM). "Fortune 500 company," listed as "actively recruiting." AI director role, career market intelligence. See [[business/az-career]].
+
+> [!fact]
+> **Global Safety Medical Director, Rare Disease** (LinkedIn/Ladders alert, 19d7c9aaa9627f8d, Apr 11 12:53 PM). Salary $272K–$341K/year. Directly in Alton's safety-medicine physician-scientist lane. Career market intelligence. See [[business/az-career]].
+
+> [!fact]
+> **myHomeIQ April report** — Home value at 85 Stonebridge Rd increased "more than the previous month" per Angelica Tanti (tryhomeiq.com), Apr 11. Check full report for updated estimate. See [[family/active-todos]].
+
 ## History
 - 2026-02-06: Initial creation
 - 2026-02-20: Major update from claude.ai memory export — medical background, AI engagements, philosophical orientation, communication preferences, career details

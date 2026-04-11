@@ -113,6 +113,20 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime (command not found)
 - Updated: [[ALTON]], `daily/2026-04-11.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-11] ingest | personal-data-gather run 10 — Gmail + Calendar harvest
+
+- Sources: Gmail (15 msgs scanned, after:2026/04/11), 5 Google Calendars (7-day window Apr 11–18)
+- Facts gathered: 4 new signals; 2 major resolutions
+- **KEY RESOLUTION: Vayu Ellis Island physical form confirmed SENT** Apr 10 9:35 PM EDT (alto84@gmail.com → dvaneerde@mka.org, signed form attached). Closes blocker open since 2026-02-18.
+- **KEY RESOLUTION: Vishala MKA physical form confirmed SENT** Apr 10 9:25 PM EDT (→ rmasters@mka.org). Closes Apr 8 todo.
+- New fact: Enzo Tech Group Director of AI (Fortune 500, LinkedIn, actively recruiting) — career intelligence [[ALTON]]
+- New fact: Global Safety Medical Director, Rare Disease (Ladders, $272K–$341K/yr) — career intelligence [[ALTON]]
+- New fact: Gym Day 2026 registration open — Tumble Zone LLC, May 30, $25. [[vishala]]
+- New fact: myHomeIQ April report — 85 Stonebridge value increased. [[ALTON]]
+- Calendar: unchanged vs runs 6–9, no new events on any of 5 calendars
+- SSH check: gpuserver1 unavailable from this runtime (command not found)
+- Updated: [[family/vayu]], [[family/vishala]], [[family/active-todos]], [[ALTON]], `daily/2026-04-11.md`
+
 ## [2026-04-11] ingest | personal-data-gather run 9 — Gmail + Calendar harvest
 
 - Sources: Gmail (8 msgs scanned, unread after:2026/04/11), 5 Google Calendars (7-day window Apr 11–18)

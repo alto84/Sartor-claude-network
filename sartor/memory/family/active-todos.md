@@ -117,8 +117,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!note]
 > **Alton's CSA workshift form submitted** (Google Forms receipt received Apr 10). Aneeta still needs to register — her Gmail is showing as invalid in the CSA system. Contact Ilan Grunwald or Enid Melville (enidmelville@gmail.com) to fix Aneeta's email and complete her workshift signup.
 
+## Latest from gather (2026-04-11) run 10
+
+> [!fact]
+> **RESOLVED: Vayu Ellis Island physical form sent Apr 10.** Alton emailed signed form to Debra Van Eerde (dvaneerde@mka.org) at 9:35 PM EDT. Subject: "Re: Attached Image." Aneeta CC'd. The blocker that opened 2026-02-18 is now closed pending MKA receipt confirmation. See [[vayu]].
+
+> [!fact]
+> **RESOLVED: Vishala MKA physical form sent Apr 10.** Alton emailed signed form to Rachael Masters (rmasters@mka.org) at 9:25 PM EDT. Subject: "Re: Vishala- Physical Form." Aneeta CC'd. Todo from Apr 8 is closed. See [[vishala]].
+
+> [!todo] 2026-05-30
+> **Gym Day 2026 registration open** — Tumble Zone LLC email Apr 11. Saturday May 30, $25, includes 2 makeup classes. Sibling discount $5 off. Relevant if Vishala is still enrolled in gymnastics (spring session through June 4). Register via Tumble Zone portal.
+
+> [!fact]
+> **myHomeIQ April report: home value at 85 Stonebridge increased** — Email from Angelica Tanti (Angelica Tanti/tryhomeiq.com), Apr 11. Value updated "more than the previous month." FINANCIAL signal; review report for context.
+
 ## History
 
 - 2026-04-09: Initial creation from Gmail+Calendar harvest. Surfaced 9 urgent items and 5 blind spots.
 - 2026-04-10: Updated via personal-data-gather (first live MCP run). Added: Ellis Island physical form escalation, CSA workshift registration, Summit Health payment, Apr 17 coverage conflict.
 - 2026-04-11: Updated via personal-data-gather run 6. Added: Goddard summer forms deadline (Apr 13), Apr 18 soccer/party conflict, CSA registration status update.
+- 2026-04-11: Updated via personal-data-gather run 10. Resolved: Vayu Ellis Island form (sent Apr 10), Vishala physical form (sent Apr 10). Added: Gym Day registration, myHomeIQ report.

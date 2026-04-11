@@ -91,8 +91,14 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 > [!fact]
 > Apr 18 soccer schedule (Blue Sombrero confirmed): Game 1 @ 13:00, Game 2 @ 14:00, both Brookdale Park Field 1.
 
+## Latest from gather (2026-04-11) run 10
+
+> [!fact]
+> **Ellis Island physical form SENT** — Alton replied to Debra Van Eerde (dvaneerde@mka.org) on Apr 10 at 9:35 PM EDT. Message: "Sorry for the delay. Signed and filled form for Vayu Attached." Aneeta was CC'd. The blocker that has been open since 2026-02-18 is now resolved pending MKA confirmation of receipt and Magnus Health upload. Trip is April 17.
+
 ## History
 
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
 - 2026-04-10: Updated via personal-data-gather (first live MCP run). Teacher escalated Ellis Island physical form deadline. Soccer game confirmed via Blue Sombrero. Apr 17 coverage conflict flagged.
 - 2026-04-11: Updated via personal-data-gather run 6. Added Apr 18 back-to-back soccer games and conflict with Rafi's birthday party.
+- 2026-04-11: Updated via personal-data-gather run 10. Ellis Island physical form confirmed SENT Apr 10 (blocker resolved).
