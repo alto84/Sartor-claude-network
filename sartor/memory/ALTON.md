@@ -137,6 +137,14 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 ## Latest from gather (2026-04-11)
 
+## Latest from gather (2026-04-11) run 11
+
+> [!fact]
+> **Handshake AI "Project Alloy" reminder** (19d7d73c00c98158, Apr 11 4:50 PM). AI answer evaluation project — shown two AI-generated answers, asked to judge which is stronger. Pays up to $125/hr, flexible remote schedule. "Reminder" implies prior invite exists in Handshake AI dashboard. Accept/decline still pending. Contact: fellow-support@joinhandshake.com.
+
+> [!fact]
+> **Medscape CME virtual event — Stroke Prevention** (19d7d2d4731c644e, Apr 11). "The Clotting Report: Evolving Strategies for Stroke Prevention" CME/CNE/CPE. Tuesday May 19, 2026, 2:00 PM. Free virtual event via MedscapeLIVE. Relevant to Alton's neurology background.
+
 > [!fact]
 > **City of Hope recruiting for Executive Director, Technology & AI Products - Healthcare** (LinkedIn alerts x2, Apr 10). Rate $92–153/hr. Listed as "actively recruiting." Role is healthcare AI executive leadership. Relevant career market signal given Alton's AZ promotion trajectory and stated interest in chief safety officer roles at AI companies. See [[business/az-career]].
 

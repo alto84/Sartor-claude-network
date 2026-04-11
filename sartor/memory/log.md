@@ -200,6 +200,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Critical alerts active: Sante Total 990 to Barbara Weis (deadline TODAY, Apr 10), GPU #52271 offline (~145+ hrs), Wohelo $500 deposit (TODAY)
 - Infrastructure blocker: Gmail+GCal MCP entries missing from `.claude/mcp-config.json`; Windows paths non-functional on Linux runtime
 
+## [2026-04-11] ingest | personal-data-gather run 11 — Gmail + Calendar harvest
+
+- Sources: Gmail (23 msgs scanned, unread after:2026/04/11), 5 Google Calendars (7-day window Apr 11–18)
+- Facts gathered: 2 new signals; all prior findings confirmed unchanged
+- Calendar: unchanged vs runs 6–10 — no new events on any of the 5 calendars
+- New fact: Handshake AI "Project Alloy" reminder (Apr 11 4:50 PM) — AI answer evaluation, up to $125/hr, flexible remote. Prior invite exists, accept/decline pending. Routed to [[ALTON]].
+- New fact: Medscape CME — "Evolving Strategies for Stroke Prevention" CME/CNE/CPE, May 19, 2026. Free virtual event. Routed to [[ALTON]].
+- Outstanding (carried): Apr 13 Goddard summer forms (2 days), Apr 15 tax deadlines (4 days), Apr 18 soccer/Rafi conflict, Aneeta CSA workshift, Guidepoint + Zintro advisory decisions pending, Tribeca Pediatrics $170.28
+- SSH check: gpuserver1 unavailable from this runtime
+- Updated: [[ALTON]], `daily/2026-04-11.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption
