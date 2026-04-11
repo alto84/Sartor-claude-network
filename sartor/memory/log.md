@@ -85,6 +85,19 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Updated: [[family/vasu]], [[family/vayu]], [[family/active-todos]], [[family/family-calendar]]
 - Created: `daily/2026-04-11.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-11] ingest | personal-data-gather run 7 — Gmail + Calendar harvest
+
+- Sources: Gmail (50 msgs scanned, unread after:2026/04/10), 5 Google Calendars (7-day window Apr 11–18)
+- Facts gathered: 2 new signals; 6 confirmed/unchanged
+- Calendar: unchanged vs run 6 — no new events surfaced
+- New fact: City of Hope actively recruiting Executive Director, Technology & AI Products - Healthcare ($92–153/hr) — two LinkedIn alerts Apr 10. Career intelligence routed to [[ALTON]].
+- New fact: Guidepoint time-sensitive advisory project (Clinical Trial Technology Solutions, Yasmin Goodman) — accept/decline pending. Routed to [[ALTON]].
+- Outstanding: Vayu Ellis Island physical form still unsubmitted; trip is Apr 17 (6 days). No reply confirmed in inbox.
+- Outstanding: April 15 deadline — 4 days. Personal 1040/4868 + NJ-1065 $450 decision still open.
+- SSH check: gpuserver1 unavailable from this runtime (command not found)
+- Updated: [[ALTON]], `daily/2026-04-11.md`
+- Created: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## [2026-04-09] refactor | Adopt Karpathy LLM-Wiki two-spine pattern
 
 - Added this `log.md` as the append-only ledger spine file

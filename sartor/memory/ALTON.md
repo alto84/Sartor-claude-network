@@ -2,7 +2,7 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-04-10
+updated: 2026-04-11
 updated_by: Claude
 status: active
 tags: [entity/person, domain/self]
@@ -123,3 +123,11 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 ## Consolidated from daily logs (2026-04-07)
 - [2026-04-05] (fact) Aneeta away April 29 - May 2 -- Alton sole parent during that window
+
+## Latest from gather (2026-04-11)
+
+> [!fact]
+> **City of Hope recruiting for Executive Director, Technology & AI Products - Healthcare** (LinkedIn alerts x2, Apr 10). Rate $92–153/hr. Listed as "actively recruiting." Role is healthcare AI executive leadership. Relevant career market signal given Alton's AZ promotion trajectory and stated interest in chief safety officer roles at AI companies. See [[business/az-career]].
+
+> [!fact]
+> **Guidepoint time-sensitive advisory project: Clinical Trial Technology Solutions** — Yasmin Goodman (ygoodman@guidepointglobal.com) sent a time-sensitive accept/decline inquiry Apr 10. Separate from EHS Software survey thread. No response confirmed. If interested, reply to ygoodman@guidepointglobal.com.
