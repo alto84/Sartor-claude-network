@@ -3,7 +3,7 @@ type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-04-11
-updated_by: Claude
+updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/self]
 aliases: [Alton, Emmett, alto8, alto84]
@@ -131,3 +131,12 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 > [!fact]
 > **Guidepoint time-sensitive advisory project: Clinical Trial Technology Solutions** — Yasmin Goodman (ygoodman@guidepointglobal.com) sent a time-sensitive accept/decline inquiry Apr 10. Separate from EHS Software survey thread. No response confirmed. If interested, reply to ygoodman@guidepointglobal.com.
+
+> [!fact]
+> **Director, Drug Safety Physician role** — Jobgether posting (LinkedIn alert Apr 10, 19d77ed3ec539b70). Contract/remote. 4 school alumni noted. Career market intelligence for physician-scientist safety executive track. See [[business/az-career]].
+
+> [!fact]
+> **Weltrio Medical Director** — Remote (US), contract, part-time or full-time (LinkedIn alert Apr 10, 19d777578de2f737). Career market intelligence. See [[business/az-career]].
+
+> [!fact]
+> **Scale AI (SCAI) pre-IPO opportunity live on EquityZen** (Apr 11). Investment in private markets AI infrastructure company. FINANCIAL signal; no action required unless interested.

@@ -98,6 +98,21 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Updated: [[ALTON]], `daily/2026-04-11.md`
 - Created: `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-11] ingest | personal-data-gather run 8 — Gmail + Calendar harvest
+
+- Sources: Gmail (50 msgs scanned, unread after:2026/04/10), 5 Google Calendars (7-day window Apr 11–18)
+- Facts gathered: 3 new signals; all prior outstanding items confirmed unchanged
+- Calendar: unchanged vs runs 6 and 7 — no new events on any of the 5 calendars
+- New fact: Director, Drug Safety Physician role via Jobgether (LinkedIn alert Apr 10) — career market intelligence. Routed to [[ALTON]].
+- New fact: Weltrio Medical Director — remote/contract (LinkedIn alert Apr 10) — career market intelligence. Routed to [[ALTON]].
+- New fact: Scale AI (SCAI) pre-IPO opportunity live on EquityZen (Apr 11). Financial signal. Routed to [[ALTON]].
+- Outstanding: Vayu Ellis Island physical form — trip Apr 17 (6 days), still unsubmitted
+- Outstanding: April 15 deadlines — 4 days (1040/4868, NJ-1065 $450)
+- Outstanding: Goddard summer forms due April 13 (2 days)
+- Outstanding: April 18 conflict (soccer vs Rafi party) unresolved
+- SSH check: gpuserver1 unavailable from this runtime (command not found)
+- Updated: [[ALTON]], `daily/2026-04-11.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## [2026-04-09] refactor | Adopt Karpathy LLM-Wiki two-spine pattern
 
 - Added this `log.md` as the append-only ledger spine file
