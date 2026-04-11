@@ -3,7 +3,7 @@ type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-04-11
-updated_by: personal-data-gather
+updated_by: personal-data-gather-run9
 status: active
 tags: [entity/person, domain/self]
 aliases: [Alton, Emmett, alto8, alto84]
@@ -140,3 +140,9 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 > [!fact]
 > **Scale AI (SCAI) pre-IPO opportunity live on EquityZen** (Apr 11). Investment in private markets AI infrastructure company. FINANCIAL signal; no action required unless interested.
+
+> [!fact]
+> **Pool Guyz LLC service completed** (Service Log #36510285, Apr 11 7:56 AM). Technician Danny Saracho performed main pool checkup at 85 Stonebridge Rd. No issues flagged in service summary. Routine maintenance confirmation.
+
+> [!fact]
+> **Zintro advisory inquiry — Rare Disease Payer Insights** (Z198433, Lexi Pearson, lexi.p@zintro.com, Apr 10). Paid research study targeting payer professionals in rare disease therapy decisions. Different organization from the Guidepoint Clinical Trial Technology Solutions inquiry (Yasmin Goodman). Accept/decline pending. Reply to lexi.p@zintro.com citing Z198433 if interested.

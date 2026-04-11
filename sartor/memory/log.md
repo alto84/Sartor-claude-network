@@ -113,6 +113,20 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime (command not found)
 - Updated: [[ALTON]], `daily/2026-04-11.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-11] ingest | personal-data-gather run 9 — Gmail + Calendar harvest
+
+- Sources: Gmail (8 msgs scanned, unread after:2026/04/11), 5 Google Calendars (7-day window Apr 11–18)
+- Facts gathered: 2 new signals; 10 confirmed/unchanged from prior runs
+- Calendar: unchanged vs runs 6, 7, 8 — no new events on any of the 5 calendars
+- New fact: Pool Guyz LLC service completed Apr 11 (7:56 AM), Service Log #36510285, Danny Saracho, main pool checkup at 85 Stonebridge Rd. Routed to [[ALTON]].
+- New fact: Zintro advisory inquiry — Rare Disease Payer Insights (Z198433, Lexi Pearson, lexi.p@zintro.com, Apr 10). Paid research study, accept/decline pending. Routed to [[ALTON]].
+- Outstanding: Vayu Ellis Island physical form — trip Apr 17 (6 days), still unsubmitted
+- Outstanding: April 15 deadlines — 4 days (1040/4868, NJ-1065 $450)
+- Outstanding: Goddard summer forms due April 13 (2 days)
+- Outstanding: April 18 conflict (soccer vs Rafi party) unresolved
+- SSH check: gpuserver1 unavailable from this runtime (command not found)
+- Updated: [[ALTON]], `daily/2026-04-11.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## [2026-04-09] refactor | Adopt Karpathy LLM-Wiki two-spine pattern
 
 - Added this `log.md` as the append-only ledger spine file
