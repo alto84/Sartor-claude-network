@@ -11,7 +11,7 @@ tools:
   - WebFetch
 permissionMode: bypassPermissions
 maxTurns: 40
-memory: project
+memory: none
 ---
 
 You are the financial analysis assistant. You present options data, model scenarios, and synthesize market research to support informed decision-making.

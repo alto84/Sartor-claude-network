@@ -1,28 +1,49 @@
 # Tax Document Inventory
-## Last Updated: 2026-03-31
+## Last Updated: 2026-04-05
 
 ## How to Use This Index
 This file catalogs all known tax documents by year and entity. File paths are relative to `C:\Users\alto8\Downloads\` unless otherwise noted. Duplicate copies (e.g., `(1)`, `(2)` suffixes) are noted but only one path listed unless content differs. Missing documents are flagged with [MISSING].
 
 ---
 
-## 2025 Tax Year (IN PROGRESS)
+## 2025 Tax Year (PACKAGED -- 2025-Tax-Documents/)
 
-### Personal (Joint: Emmett + Aneeta)
-| Document | Type | Person | Path |
-|----------|------|--------|------|
-| AZ Last Payslip 2025 | Pay stub (W-2 source) | Emmett | `Emmett Sartor 2025 Payslip.pdf` |
-| AZ Payslips Aug 2025 | Pay stubs | Emmett | `Payslip_to_Print_-_Report_Design_08_12_2025.pdf` (+ 3 copies) |
-| AZ Payslips Sep 2025 | Pay stubs | Emmett | `Payslip_to_Print_-_Report_Design_09_17_2025.pdf` (+ 1 copy) |
-| Biogen W-2 2025 | W-2 | Aneeta | `Aneeta Saxena Biogen 2025 W2.pdf` |
-| Neurvati Last Pay Stub 2025 | Pay stub | Aneeta | `Aneeta Saxena Last Pay stub 2025 Neurvati.pdf` |
-| 85 Stonebridge 1098 | Mortgage interest | Joint | `1098 2025 85 stonebridge Yearly Statement.pdf` |
-| Student Loan 1098-E 2025 | Student loan interest | Emmett | `form1098e_tax_2025.pdf` |
-| [MISSING] Emmett W-2 (AZ) | W-2 | Emmett | Not yet issued |
-| [MISSING] Aneeta W-2 (Neurvati) | W-2 | Aneeta | Not yet issued |
-| [MISSING] Fidelity 1099s 2025 | Consolidated 1099 | Both | Not yet issued |
-| [MISSING] Schwab 1099s 2025 | Consolidated 1099 | Emmett | Not yet issued |
-| [MISSING] 185 Davis 1098 2025 | Mortgage interest | Joint | Not yet issued |
+### Personal (Joint: Alton + Aneeta) -- Packaged 2026-04-05
+| # | Document | Type | Person | Package File |
+|---|----------|------|--------|-------------|
+| 01 | AZ W-2 2025 | W-2 | Alton | `01-W2-Alton-AstraZeneca-TY2025.pdf` |
+| 02 | Biogen W-2 2025 | W-2 | Aneeta | `02-W2-Aneeta-Biogen-TY2025.pdf` |
+| 03 | Neurvati Last Pay Stub 2025 | Pay stub (W-2 pending) | Aneeta | `03-PayStub-Aneeta-Neurvati-TY2025.pdf` |
+| 04 | Fidelity Joint 1099 (acct 8998) | Consolidated 1099 | Joint | `04-1099-Fidelity-Joint-8998-TY2025.pdf` |
+| 05 | AZ 401K 1099-R (acct 74304) | 1099-R | Alton | `05-1099R-Fidelity-AZ401K-74304-TY2025.pdf` |
+| 06 | EPD K-1 (MLP) | Schedule K-1 | Aneeta | `06-K1-EPD-MLP-Aneeta-TY2025.pdf` |
+| 07 | 85 Stonebridge 1098 (Shellpoint) | Mortgage interest | Joint | `07-1098-Mortgage-85Stonebridge-Shellpoint-TY2025.pdf` |
+| 08 | 85 Stonebridge 1098 (Cenlar) | Mortgage interest | Joint | `08-1098-Mortgage-85Stonebridge-Cenlar-TY2025.pdf` |
+| 09 | 185 Davis 1098 (Leader Bank) | Mortgage interest | Joint | `09-1098-Mortgage-185Davis-LeaderBank-TY2025.pdf` |
+| 10 | HELOC 1098 (Cenlar) | HELOC interest | Joint | `10-1098-HELOC-Cenlar-TY2025.pdf` |
+| 11 | Student Loan 1098-E (Earnest) | Student loan interest | Alton | `11-1098E-StudentLoan-Earnest-TY2025.pdf` |
+| 12 | AZ Last Payslip 2025 | Pay stub | Alton | `12-PaySlip-Alton-AZ-LastPay-TY2025.pdf` |
+| 13 | Earnest Loan Statement | Loan statement | Alton | `13-LoanStatement-Earnest-TY2025.pdf` |
+
+### Not Needed for 2025
+| Document | Reason |
+|----------|--------|
+| Schwab 1099 (acct 669) | No reportable activity (Schwab confirmed Jan 22, 2026) |
+| Fidelity Individual 1099 (acct 1640) | Aneeta's individual brokerage; all $0 in 2024, likely no 2025 1099 issued |
+| Fidelity UTMA 1099s (5390/5392/5396) | Check if issued; may have no activity |
+| Deel 1099-NEC | No Deel contract work in 2025 (was 2024 only) |
+
+### Still Missing
+| Document | Action |
+|----------|--------|
+| [MISSING] Aneeta W-2 (Neurvati) | Aneeta moved from Biogen to Neurvati in 2025. Need W-2 from Neurvati HR. |
+
+### Key Details Discovered
+- **Two 1098s for 85 Stonebridge**: Mortgage was serviced by both Shellpoint and Cenlar during 2025 (servicer transfer mid-year)
+- **HELOC on 85 Stonebridge**: Cenlar also services a HELOC on the property
+- **185 Davis mortgage**: Serviced by Leader Bank
+- **EPD (Enterprise Products Partners)**: MLP K-1 in Aneeta's name; generates Schedule K-1 with oil/gas deductions
+- **Fidelity account 1640**: Aneeta Saxena's individual brokerage (Z27-331640), had zero activity in 2024
 
 ---
 

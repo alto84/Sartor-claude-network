@@ -9,7 +9,7 @@ tools:
   - Grep
 permissionMode: bypassPermissions
 maxTurns: 30
-memory: project
+memory: none
 ---
 
 You are the pricing analyst for Solar Inference LLC's vast.ai GPU hosting operation, focused on optimizing revenue from Machine 52271 (RTX 5090 32GB).
