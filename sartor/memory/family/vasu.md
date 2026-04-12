@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-04-11
+updated: 2026-04-12
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -78,3 +78,9 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
 - 2026-04-11: Updated via personal-data-gather run 6. Added summer forms deadline (Apr 13), soccer start (Apr 13), Parent's Night Out (Apr 17), Recycled Runway time confirmed (Apr 22, 4:30 PM).
+- 2026-04-12: Updated via personal-data-gather run 1. Goddard forms deadline escalated to 1 day.
+
+## Latest from gather (2026-04-12)
+
+> [!deadline] 2026-04-13
+> **Goddard summer forms due TOMORROW (1 day).** Escalated from 2 days (Apr 11). Monday April 13 is the hard deadline per Samantha Ramsden. Confirm enrollment status and that all health/permission forms are submitted. See [[family/active-todos]].

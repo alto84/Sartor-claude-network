@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-11
+updated: 2026-04-12
 updated_by: personal-data-gather
 status: active
 priority: p1
@@ -137,3 +137,12 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - 2026-04-10: Updated via personal-data-gather (first live MCP run). Added: Ellis Island physical form escalation, CSA workshift registration, Summit Health payment, Apr 17 coverage conflict.
 - 2026-04-11: Updated via personal-data-gather run 6. Added: Goddard summer forms deadline (Apr 13), Apr 18 soccer/party conflict, CSA registration status update.
 - 2026-04-11: Updated via personal-data-gather run 10. Resolved: Vayu Ellis Island form (sent Apr 10), Vishala physical form (sent Apr 10). Added: Gym Day registration, myHomeIQ report.
+- 2026-04-12: Updated via personal-data-gather run 1. Escalated Goddard forms to 1-day deadline; today's logistics noted.
+
+## Latest from gather (2026-04-12)
+
+> [!deadline] 2026-04-13
+> **Goddard summer forms due TOMORROW.** Escalated: was 2 days away (Apr 11), now 1 day. Confirm Vasu's enrollment and submit any missing health/permission forms to The Goddard School before Monday. See [[family/vasu]].
+
+> [!note] TODAY 2026-04-12
+> **Zoe's Birthday — Sky Zone, 77 Willowbrook Blvd, Wayne NJ, 3:00–5:00 PM.** Depart Montclair by ~2:15 PM. Family calendar event, Aneeta created.

@@ -2,8 +2,8 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-04-11
-updated_by: personal-data-gather-run9
+updated: 2026-04-12
+updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/self]
 aliases: [Alton, Emmett, alto8, alto84]
@@ -165,3 +165,8 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 > [!fact]
 > **Zintro advisory inquiry — Rare Disease Payer Insights** (Z198433, Lexi Pearson, lexi.p@zintro.com, Apr 10). Paid research study targeting payer professionals in rare disease therapy decisions. Different organization from the Guidepoint Clinical Trial Technology Solutions inquiry (Yasmin Goodman). Accept/decline pending. Reply to lexi.p@zintro.com citing Z198433 if interested.
+
+## Latest from gather (2026-04-12)
+
+> [!fact]
+> **M3 Global Research: Daily Neurology Studies** (19d7c5b46a2737f4, Apr 11 11:44 AM). Daily physician survey opportunities specifically for neurologists. "Welcome to your daily Neurology studies" — standing invitation from M3 Global Research Team (surveys.usa@m3globalresearch.com). Paid market research, separate from Guidepoint and Zintro engagements. Advisory income potential; check the M3 portal for active studies.

@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-11
+updated: 2026-04-12
 updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
@@ -210,6 +210,20 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Outstanding (carried): Apr 13 Goddard summer forms (2 days), Apr 15 tax deadlines (4 days), Apr 18 soccer/Rafi conflict, Aneeta CSA workshift, Guidepoint + Zintro advisory decisions pending, Tribeca Pediatrics $170.28
 - SSH check: gpuserver1 unavailable from this runtime
 - Updated: [[ALTON]], `daily/2026-04-11.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-12] ingest | personal-data-gather run 1 — Gmail + Calendar harvest
+
+- Sources: Gmail (22 msgs scanned, after:2026/04/11), 5 Google Calendars (7-day window Apr 12–19)
+- Facts gathered: 5 new signals; 12 confirmed/unchanged
+- Calendar: unchanged vs runs 6–11 (Apr 11) — no new events on any of the 5 calendars
+- New fact: M3 Global Research daily neurology physician surveys available. Routed to [[ALTON]].
+- New fact: Amazon boys' athletic shorts delivered; kids soccer gear in transit. Informational.
+- New fact: Venmo March 2026 transaction history available.
+- New fact: Silantro Lime Tacos $37.10 lunch receipt Apr 11.
+- Escalation: Goddard summer forms now 1 day away (due Apr 13). Escalated to critical in [[family/vasu]] and [[family/active-todos]].
+- Outstanding: Apr 15 tax deadlines (3 days), Tribeca Pediatrics $170.28, Apr 17 coverage conflict, Apr 18 soccer/Rafi decision, Aneeta CSA workshift, Guidepoint + Zintro advisory decisions
+- SSH check: gpuserver1 unavailable from this runtime
+- Updated: [[ALTON]], [[family/vasu]], [[family/active-todos]], `daily/2026-04-12.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
 ## History
 
