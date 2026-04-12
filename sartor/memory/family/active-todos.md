@@ -166,3 +166,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] TODAY 2026-04-12
 > **Zoe's Birthday — Sky Zone, 77 Willowbrook Blvd, Wayne NJ, 3:00–5:00 PM.** Depart Montclair by ~2:15 PM. Family calendar event, Aneeta created.
+
+## Latest from gather (2026-04-12) run 5
+
+> [!todo]
+> **CAQH Reattestation Required** — Email received Apr 12 8:32 AM from CAQH (marcom@caqh.org). Alton's CAQH ProView provider profile requires reattestation; expired profiles may affect credentialing. Action: log in to proview.caqh.org and complete reattestation. No explicit deadline but "expired" language is urgent — affects insurance reimbursements and hospital privileges. See [[ALTON]].
+
+> [!fact]
+> **Chewy Rx order #5132136807 placed** (Apr 12 12:28 PM, rx@chewy.com). Prescription Chewy order being prepared. Most likely Loki's chlorambucil (oral liquid 4mg/mL — the active todo flagged this as running low). Confirm item when order ships/delivers. If confirmed as chlorambucil, the "Reorder Loki's chlorambucil" todo can be closed.

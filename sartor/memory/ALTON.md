@@ -171,3 +171,14 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 > [!fact]
 > **M3 Global Research: Daily Neurology Studies** (19d7c5b46a2737f4, Apr 11 11:44 AM). Daily physician survey opportunities specifically for neurologists. "Welcome to your daily Neurology studies" — standing invitation from M3 Global Research Team (surveys.usa@m3globalresearch.com). Paid market research, separate from Guidepoint and Zintro engagements. Advisory income potential; check the M3 portal for active studies.
+
+## Latest from gather (2026-04-12) run 5
+
+> [!todo]
+> **CAQH Reattestation Required** (19d81ade87bc0c44, Apr 12 8:32 AM). CAQH ProView provider profile linked to alto84@gmail.com requires reattestation. "Expired profiles may affect credentialing." Subject: "[Action Required] Reattestation Needed to a CAQH provider profile." CAQH ProView is used by insurers and hospitals to verify physician credentials — expired profiles can disrupt insurance reimbursements and hospital privileges. Action: log in to proview.caqh.org and complete reattestation. No deadline specified in email but "expired" language is urgent.
+
+> [!fact]
+> **Regeneron Director, Global Patient Safety Sciences - General Medicine** (19d81c142d10240f, LinkedIn, Apr 12 12:53 PM). GPS Lead role. "2 connections." Directly in Alton's safety-medicine physician-scientist lane. Career market intelligence. See [[business/az-career]].
+
+> [!fact]
+> **Catalyst Pharmaceuticals Director Medical Information** (19d822f84c230275, LinkedIn, Apr 12 2:53 PM). "10 company alumni." Medical information director at a specialty pharma company. Career market intelligence. See [[business/az-career]].

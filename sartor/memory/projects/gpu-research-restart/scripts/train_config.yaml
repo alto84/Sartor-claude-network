@@ -1,0 +1,100 @@
+# GPU Research Restart -- Training Configuration
+# All hyperparameters externalized here. Scripts read this file via PyYAML.
+# Override any value via CLI flags on the training scripts.
+
+# --- Model ---
+model:
+  name: "Qwen/Qwen2.5-7B"                # Base model for all experiments
+  revision: "main"
+  trust_remote_code: true
+
+# --- Quantization ---
+quantization:
+  load_in_4bit: true                       # QLoRA: 4-bit NF4 quantization
+  bnb_4bit_compute_dtype: "bfloat16"
+  bnb_4bit_quant_type: "nf4"
+  bnb_4bit_use_double_quant: true          # Nested quantization saves ~0.4GB
+
+# --- LoRA ---
+lora:
+  r: 32
+  alpha: 64                                # alpha=2*r per mini-lab recommendation
+  dropout: 0.05
+  bias: "none"
+  task_type: "CAUSAL_LM"
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+
+# --- SFT Training ---
+sft:
+  epochs: 3
+  learning_rate: 2.0e-5
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.1
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 16          # Effective batch = 16
+  max_seq_length: 2048
+  bf16: true
+  fp16: false
+  optim: "paged_adamw_8bit"
+  gradient_checkpointing: true
+  logging_steps: 1
+  save_strategy: "steps"
+  save_steps: 50
+  save_total_limit: 5
+  eval_strategy: "steps"
+  eval_steps: 0.5                          # Eval every 0.5 epoch (fraction)
+  seed: 42
+  report_to: "wandb"
+  assistant_only_loss: true                # MANDATORY: mini-lab lesson
+  early_stopping_patience: 3              # Stop if val loss increases 3 evals in a row
+
+# --- DPO Training ---
+dpo:
+  beta: 0.1
+  learning_rate: 5.0e-7
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.1
+  epochs: 1
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  max_length: 2048
+  max_prompt_length: 1024
+  bf16: true
+  optim: "paged_adamw_8bit"
+  gradient_checkpointing: true
+  logging_steps: 1
+  save_strategy: "epoch"
+  save_total_limit: 3
+  seed: 42
+  report_to: "wandb"
+
+# --- Evaluation ---
+eval:
+  max_new_tokens: 512
+  temperature: 0.0
+  do_sample: false
+  batch_size: 1                            # Sequential for determinism
+
+# --- Paths (relative to project root) ---
+paths:
+  corpus_sft: "data/corpus/constitutional_sft.jsonl"
+  corpus_dpo: "data/corpus/ccp_deconditioning_pairs.jsonl"
+  probes: "data/eval/probes.jsonl"
+  output_base: "outputs"
+  checkpoints: "checkpoints"
+
+# --- WandB ---
+wandb:
+  project: "gpu-research-restart"
+  entity: null                             # Uses default wandb entity
+  tags:
+    - "qwen2.5-7b"
+    - "constitutional-sft"
+    - "abliteration"
