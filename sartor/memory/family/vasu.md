@@ -2,8 +2,8 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-04-09
-updated_by: Claude
+updated: 2026-04-12
+updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -60,6 +60,27 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 - [[ALTON]] - Head of household
 - [[ledgers/kids]] - Allowance ledger (parent-managed for Vasu)
 
+## Latest from gather (2026-04-11)
+
+> [!deadline] 2026-04-13
+> **Goddard summer forms due Monday.** Samantha Ramsden's weekly announcement states: "Summer forms are due on Monday, April 13th." Confirm whether Vasu's enrollment is complete and health/permission forms are submitted. Two days away.
+
+> [!fact]
+> **Vasu soccer begins Monday April 13 at Goddard.** New activity starting this week per weekly announcement.
+
+> [!note]
+> **Goddard Parent's Night Out — Friday April 17, 6–9 PM.** "Last chance to use your coupon." Sign up in the office.
+
+> [!fact]
+> **Recycled Runway confirmed: April 22 at 4:30 PM.** Time now confirmed from email. Vasu needs a costume made from recycled materials.
+
 ## History
 
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
+- 2026-04-11: Updated via personal-data-gather run 6. Added summer forms deadline (Apr 13), soccer start (Apr 13), Parent's Night Out (Apr 17), Recycled Runway time confirmed (Apr 22, 4:30 PM).
+- 2026-04-12: Updated via personal-data-gather run 1. Goddard forms deadline escalated to 1 day.
+
+## Latest from gather (2026-04-12)
+
+> [!deadline] 2026-04-13
+> **Goddard summer forms due TOMORROW (1 day).** Escalated from 2 days (Apr 11). Monday April 13 is the hard deadline per Samantha Ramsden. Confirm enrollment status and that all health/permission forms are submitted. See [[family/active-todos]].

@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: TAXES
-updated: 2026-04-07
-updated_by: Claude
+updated: 2026-04-11
+updated_by: autodream
 status: active
 next_deadline: 2026-04-15
 next_review: 2026-04-10
@@ -138,3 +138,6 @@ Not relevant for the TY2025 return but worth tracking:
 
 ## Consolidated from daily logs (2026-04-05)
 - [2026-02-06] (completed) OpenClaw architecture and patterns (gateway, local-first memory, heartbeat, compaction)
+
+## Consolidated from daily logs (2026-04-11)
+- [2026-02-06] (completed) Tax preparation for 2025 filing year (new deductions under One Big Beautiful Bill Act)

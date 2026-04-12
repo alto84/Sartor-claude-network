@@ -2,8 +2,8 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-04-10
-updated_by: Claude
+updated: 2026-04-12
+updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/self]
 aliases: [Alton, Emmett, alto8, alto84]
@@ -117,9 +117,56 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 - [[FAMILY]] - Family and household info
 - [[ASTRAZENECA]] - Current employer and career context
 
+## Latest from gather (2026-04-11) run 10
+
+> [!fact]
+> **Enzo Tech Group Director of Artificial Intelligence** (LinkedIn Job Alert, 19d7d089965e7a5e, Apr 11 2:53 PM). "Fortune 500 company," listed as "actively recruiting." AI director role, career market intelligence. See [[business/az-career]].
+
+> [!fact]
+> **Global Safety Medical Director, Rare Disease** (LinkedIn/Ladders alert, 19d7c9aaa9627f8d, Apr 11 12:53 PM). Salary $272K–$341K/year. Directly in Alton's safety-medicine physician-scientist lane. Career market intelligence. See [[business/az-career]].
+
+> [!fact]
+> **myHomeIQ April report** — Home value at 85 Stonebridge Rd increased "more than the previous month" per Angelica Tanti (tryhomeiq.com), Apr 11. Check full report for updated estimate. See [[family/active-todos]].
+
 ## History
 - 2026-02-06: Initial creation
 - 2026-02-20: Major update from claude.ai memory export — medical background, AI engagements, philosophical orientation, communication preferences, career details
 
 ## Consolidated from daily logs (2026-04-07)
 - [2026-04-05] (fact) Aneeta away April 29 - May 2 -- Alton sole parent during that window
+
+## Latest from gather (2026-04-11)
+
+## Latest from gather (2026-04-11) run 11
+
+> [!fact]
+> **Handshake AI "Project Alloy" reminder** (19d7d73c00c98158, Apr 11 4:50 PM). AI answer evaluation project — shown two AI-generated answers, asked to judge which is stronger. Pays up to $125/hr, flexible remote schedule. "Reminder" implies prior invite exists in Handshake AI dashboard. Accept/decline still pending. Contact: fellow-support@joinhandshake.com.
+
+> [!fact]
+> **Medscape CME virtual event — Stroke Prevention** (19d7d2d4731c644e, Apr 11). "The Clotting Report: Evolving Strategies for Stroke Prevention" CME/CNE/CPE. Tuesday May 19, 2026, 2:00 PM. Free virtual event via MedscapeLIVE. Relevant to Alton's neurology background.
+
+> [!fact]
+> **City of Hope recruiting for Executive Director, Technology & AI Products - Healthcare** (LinkedIn alerts x2, Apr 10). Rate $92–153/hr. Listed as "actively recruiting." Role is healthcare AI executive leadership. Relevant career market signal given Alton's AZ promotion trajectory and stated interest in chief safety officer roles at AI companies. See [[business/az-career]].
+
+> [!fact]
+> **Guidepoint time-sensitive advisory project: Clinical Trial Technology Solutions** — Yasmin Goodman (ygoodman@guidepointglobal.com) sent a time-sensitive accept/decline inquiry Apr 10. Separate from EHS Software survey thread. No response confirmed. If interested, reply to ygoodman@guidepointglobal.com.
+
+> [!fact]
+> **Director, Drug Safety Physician role** — Jobgether posting (LinkedIn alert Apr 10, 19d77ed3ec539b70). Contract/remote. 4 school alumni noted. Career market intelligence for physician-scientist safety executive track. See [[business/az-career]].
+
+> [!fact]
+> **Weltrio Medical Director** — Remote (US), contract, part-time or full-time (LinkedIn alert Apr 10, 19d777578de2f737). Career market intelligence. See [[business/az-career]].
+
+> [!fact]
+> **Scale AI (SCAI) pre-IPO opportunity live on EquityZen** (Apr 11). Investment in private markets AI infrastructure company. FINANCIAL signal; no action required unless interested.
+
+> [!fact]
+> **Pool Guyz LLC service completed** (Service Log #36510285, Apr 11 7:56 AM). Technician Danny Saracho performed main pool checkup at 85 Stonebridge Rd. No issues flagged in service summary. Routine maintenance confirmation.
+
+> [!fact]
+> **Zintro advisory inquiry — Rare Disease Payer Insights** (Z198433, Lexi Pearson, lexi.p@zintro.com, Apr 10). Paid research study targeting payer professionals in rare disease therapy decisions. Different organization from the Guidepoint Clinical Trial Technology Solutions inquiry (Yasmin Goodman). Accept/decline pending. Reply to lexi.p@zintro.com citing Z198433 if interested.
+
+## Latest from gather (2026-04-12)
+
+> [!fact]
+> **M3 Global Research: Daily Neurology Studies** (19d7c5b46a2737f4, Apr 11 11:44 AM). Daily physician survey opportunities specifically for neurologists. "Welcome to your daily Neurology studies" — standing invitation from M3 Global Research Team (surveys.usa@m3globalresearch.com). Paid market research, separate from Guidepoint and Zintro engagements. Advisory income potential; check the M3 portal for active studies.

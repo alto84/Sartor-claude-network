@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-09
-updated_by: Claude
+updated: 2026-04-11
+updated_by: personal-data-gather
 status: active
 next_review: 2026-04-16
 tags: [entity/family, domain/family, meta/calendar]
@@ -107,6 +107,23 @@ See [[family/active-todos|Family TODOs]] for the correction queue.
 - [[family/active-todos|Family TODOs]] - Urgent action items
 - [[vayu]] / [[vishala]] / [[vasu]] - Per-child pages
 
+## Latest from gather (2026-04-11)
+
+Updated entries for Apr 11–18 based on Blue Sombrero and primary calendar:
+
+| Date | Time | Event | Source | Notes |
+|------|------|-------|--------|-------|
+| Sat 4/18 | 13:00–14:00 | Vayu soccer: B-34 Lime vs B-34 Shock | Blue Sombrero | **CONFLICT** with Rafi's party |
+| Sat 4/18 | 14:00–15:00 | Vayu soccer: B-34 Lime vs B-34 Charcoal | Blue Sombrero | Back-to-back; **CONFLICT** with Rafi's party |
+| Apr 18–20 | all-day | Mother's Day planning | Alton primary | With Ilan Grunwald — Mother's Day is May 10 |
+| Mon 4/13 | school day | Vasu soccer begins at Goddard | Goddard email | New activity |
+| Mon 4/13 | — | Goddard summer forms due | Goddard email | See [[vasu]] |
+| Fri 4/17 | 18:00–21:00 | Goddard Parent's Night Out | Goddard email | Last chance for coupon |
+
+> [!warning]
+> Apr 18 has a hard conflict: Vayu's two rec soccer games (1–3 PM, Brookdale Park) vs Rafi's birthday party (Yankees game, 1–4 PM). Both are family-calendar confirmed. Needs a decision.
+
 ## History
 
 - 2026-04-09: Initial calendar compilation from Gmail+Calendar harvest covering 2026-04-09 through 2026-05-09. Flagged sole-parent window and Aneeta RRE correction.
+- 2026-04-11: Updated via personal-data-gather run 6. Added Apr 18 back-to-back soccer games, Mother's Day planning event, Goddard soccer start, summer forms deadline, Parent's Night Out.

@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-10
+updated: 2026-04-12
 updated_by: personal-data-gather
 status: active
 priority: p1
@@ -106,7 +106,43 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!warning]
 > **Apr 17 parent coverage conflict.** Vishala Dance Concert at MKA (8:00-10:00 AM) AND Vayu's Ellis Island class trip both fall on Apr 17. Coordinate with Aneeta now.
 
+## Latest from gather (2026-04-11)
+
+> [!deadline] 2026-04-13
+> **Goddard summer forms due Monday (2 days).** Samantha Ramsden confirmed in weekly announcement. Check that Vasu's enrollment is complete and all required health/permission forms are submitted to The Goddard School. See [[vasu]].
+
+> [!warning]
+> **Apr 18 conflict: Vayu soccer vs Rafi's birthday party.** Blue Sombrero shows two back-to-back B-34 Lime games at Brookdale Park: 1–2 PM and 2–3 PM. Rafi's birthday party (Yankees game) is the same day 1–4 PM. Direct overlap. Decide which takes priority and coordinate logistics. See [[vayu]].
+
+> [!note]
+> **Alton's CSA workshift form submitted** (Google Forms receipt received Apr 10). Aneeta still needs to register — her Gmail is showing as invalid in the CSA system. Contact Ilan Grunwald or Enid Melville (enidmelville@gmail.com) to fix Aneeta's email and complete her workshift signup.
+
+## Latest from gather (2026-04-11) run 10
+
+> [!fact]
+> **RESOLVED: Vayu Ellis Island physical form sent Apr 10.** Alton emailed signed form to Debra Van Eerde (dvaneerde@mka.org) at 9:35 PM EDT. Subject: "Re: Attached Image." Aneeta CC'd. The blocker that opened 2026-02-18 is now closed pending MKA receipt confirmation. See [[vayu]].
+
+> [!fact]
+> **RESOLVED: Vishala MKA physical form sent Apr 10.** Alton emailed signed form to Rachael Masters (rmasters@mka.org) at 9:25 PM EDT. Subject: "Re: Vishala- Physical Form." Aneeta CC'd. Todo from Apr 8 is closed. See [[vishala]].
+
+> [!todo] 2026-05-30
+> **Gym Day 2026 registration open** — Tumble Zone LLC email Apr 11. Saturday May 30, $25, includes 2 makeup classes. Sibling discount $5 off. Relevant if Vishala is still enrolled in gymnastics (spring session through June 4). Register via Tumble Zone portal.
+
+> [!fact]
+> **myHomeIQ April report: home value at 85 Stonebridge increased** — Email from Angelica Tanti (Angelica Tanti/tryhomeiq.com), Apr 11. Value updated "more than the previous month." FINANCIAL signal; review report for context.
+
 ## History
 
 - 2026-04-09: Initial creation from Gmail+Calendar harvest. Surfaced 9 urgent items and 5 blind spots.
 - 2026-04-10: Updated via personal-data-gather (first live MCP run). Added: Ellis Island physical form escalation, CSA workshift registration, Summit Health payment, Apr 17 coverage conflict.
+- 2026-04-11: Updated via personal-data-gather run 6. Added: Goddard summer forms deadline (Apr 13), Apr 18 soccer/party conflict, CSA registration status update.
+- 2026-04-11: Updated via personal-data-gather run 10. Resolved: Vayu Ellis Island form (sent Apr 10), Vishala physical form (sent Apr 10). Added: Gym Day registration, myHomeIQ report.
+- 2026-04-12: Updated via personal-data-gather run 1. Escalated Goddard forms to 1-day deadline; today's logistics noted.
+
+## Latest from gather (2026-04-12)
+
+> [!deadline] 2026-04-13
+> **Goddard summer forms due TOMORROW.** Escalated: was 2 days away (Apr 11), now 1 day. Confirm Vasu's enrollment and submit any missing health/permission forms to The Goddard School before Monday. See [[family/vasu]].
+
+> [!note] TODAY 2026-04-12
+> **Zoe's Birthday — Sky Zone, 77 Willowbrook Blvd, Wayne NJ, 3:00–5:00 PM.** Depart Montclair by ~2:15 PM. Family calendar event, Aneeta created.
