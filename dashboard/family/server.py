@@ -20,8 +20,8 @@ import anthropic
 
 # ── Auth ──────────────────────────────────────────────────────────────────────
 
-_http_basic = HTTPBasic()
 _MERIDIAN_DEV = os.environ.get("MERIDIAN_DEV", "") == "1"
+_http_basic = HTTPBasic(auto_error=not _MERIDIAN_DEV)
 
 def _load_password() -> str:
     secrets_path = Path(__file__).resolve().parent.parent.parent / ".secrets" / "meridian-password.txt"
@@ -36,6 +36,12 @@ _MERIDIAN_PASSWORD: str = _load_password()
 def require_auth(credentials: HTTPBasicCredentials = Depends(_http_basic)) -> str:
     if _MERIDIAN_DEV:
         return "dev"
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Unauthorized",
+            headers={"WWW-Authenticate": "Basic"},
+        )
     correct_username = secrets.compare_digest(credentials.username.encode(), b"alton")
     correct_password = secrets.compare_digest(
         credentials.password.encode(), _MERIDIAN_PASSWORD.encode()
@@ -271,6 +277,15 @@ async def serve_index():
         return HTMLResponse(content=index_path.read_text(encoding="utf-8"))
     except Exception:
         return HTMLResponse(content="<h1>index.html not found</h1>", status_code=404)
+
+
+@app.get("/meridian-theme.css")
+async def serve_theme_css():
+    css_path = BASE_DIR / "meridian-theme.css"
+    try:
+        return HTMLResponse(content=css_path.read_text(encoding="utf-8"), media_type="text/css")
+    except Exception:
+        return HTMLResponse(content="/* not found */", media_type="text/css", status_code=404)
 
 
 # ── GET /api/greeting ──────────────────────────────────────────────────────────

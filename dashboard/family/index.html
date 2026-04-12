@@ -5,39 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MERIDIAN — Sartor Family Dashboard</title>
 <script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="stylesheet" href="/meridian-theme.css">
 <style>
 /* ── Reset & Variables ──────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0f1117;
-  --bg-card: #1a1d27;
-  --bg-card-hover: #222532;
-  --text: #e4e4e7;
-  --text-dim: #9ca3af;
-  --text-bright: #ffffff;
-  --accent: #6366f1;
-  --accent-dim: #4f46e5;
-  --border: #2d3044;
-  --red: #ef4444;
-  --amber: #f59e0b;
-  --green: #22c55e;
-  --blue: #3b82f6;
-  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
-  --radius: 10px;
-  --shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-
-[data-theme="light"] {
-  --bg: #f5f5f7;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f0f0f3;
-  --text: #1f2937;
-  --text-dim: #6b7280;
-  --text-bright: #111827;
-  --border: #e5e7eb;
-  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --bg: var(--bg-primary, #0f1117);
+  --bg-card: var(--bg-card, #1a1d27);
+  --bg-card-hover: var(--bg-card-hover, #222532);
+  --text: var(--text-primary, #e4e4e7);
+  --text-dim: var(--text-secondary, #9ca3af);
+  --text-bright: var(--text-bright, #ffffff);
+  --accent: var(--accent-primary, #6366f1);
+  --accent-dim: var(--accent-secondary, #4f46e5);
+  --border: var(--border-color, #2d3044);
+  --red: var(--error, #ef4444);
+  --amber: var(--warning, #f59e0b);
+  --green: var(--success, #22c55e);
+  --blue: var(--info, #3b82f6);
+  --font: var(--font-sans, 'Segoe UI', system-ui, -apple-system, sans-serif);
+  --mono: var(--font-mono, 'Cascadia Code', 'Fira Code', 'Consolas', monospace);
+  --radius: var(--radius-md, 10px);
+  --shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.3));
 }
 
 body {
@@ -1541,11 +1531,7 @@ body {
 .heartbeat-table tr:last-child td { border-bottom: none; }
 .heartbeat-table tr:hover { background: rgba(99,102,241,0.04); }
 
-/* ── Memory Graph Panel ────────────────────────────────────────────────── */
-.graph-panel {
-  margin: 8px 24px;
-}
-
+/* ── Memory Graph Panel (Memory Tab only) ────────────────────────────── */
 .graph-card {
   background: #0d1117;
   border: 1px solid var(--border);
@@ -2106,6 +2092,22 @@ body {
 </head>
 <body>
 
+<!-- ── Status Strip ─────────────────────────────────────────────────────── -->
+<div class="status-strip" id="statusStrip">
+  <span class="status-strip-brand">MERIDIAN v0.2</span>
+  <span class="status-strip-sep">|</span>
+  <div class="status-strip-center">
+    <span class="status-strip-item" id="stripGpuStatus"><span class="status-pip probing"></span> GPU: PROBING</span>
+    <span class="status-strip-item" id="stripRentalStatus">RENTAL: --</span>
+    <span class="status-strip-item" id="stripMemoryCount">MEMORY: --</span>
+  </div>
+  <div class="status-strip-right">
+    <span class="status-strip-item" id="stripLastRefresh">REFRESH: --</span>
+    <span class="status-strip-badge dev" id="stripAuthBadge">DEV</span>
+    <span class="theme-name" id="themeName">DARK</span>
+  </div>
+</div>
+
 <!-- ── Header ───────────────────────────────────────────────────────────── -->
 <header class="header">
   <div class="header-left">
@@ -2115,7 +2117,8 @@ body {
   <div class="header-right">
     <span class="clock" id="clock"></span>
     <div class="status-dot" id="statusDot" title="gpuserver1"></div>
-    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">Light</button>
+    <button class="sound-toggle" id="soundBtn" onclick="toggleSound()" title="Toggle sounds">&#128266;</button>
+    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">Midnight</button>
   </div>
 </header>
 
@@ -2128,68 +2131,44 @@ body {
 <!-- ── Urgency Bar ──────────────────────────────────────────────────────── -->
 <div class="urgency-bar" id="urgencyBar"></div>
 
-<!-- ── Memory Graph ────────────────────────────────────────────────────── -->
-<div class="graph-panel">
-  <div class="graph-card">
-    <div class="graph-header">
-      <div class="graph-header-left">
-        <span class="graph-icon">&#9670;</span>
-        MEMORY GRAPH
-      </div>
-      <div class="graph-controls">
-        <button class="graph-btn" onclick="toggleGraphSections()" id="graphSectionsBtn">Sections</button>
-        <button class="graph-btn" onclick="refreshGraph()">Refresh</button>
-      </div>
-    </div>
-    <div class="graph-container" id="graphContainer">
-      <div class="graph-tooltip" id="graphTooltip">
-        <div class="gt-title" id="gtTitle"></div>
-        <span class="gt-tier" id="gtTier"></span>
-        <div class="gt-preview" id="gtPreview"></div>
-      </div>
-    </div>
-    <div class="graph-legend" id="graphLegend"></div>
-  </div>
-</div>
-
 <!-- ── Main Grid ────────────────────────────────────────────────────────── -->
 <div class="main-grid">
   <div class="left-stack">
 
     <!-- Family Card -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9782;</span> Family</div>
+    <div class="glass-card" style="--card-accent:#3b82f6">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9782;</span> Family</div>
       <div class="family-grid" id="familyGrid"></div>
       <div class="cats-row" id="catsRow"></div>
     </div>
 
     <!-- Finances Card -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9776;</span> Finances <span class="fin-health-dot" id="finHealthDot" title="Loading..."></span></div>
+    <div class="glass-card" style="--card-accent:#22c55e">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9776;</span> Finances <span class="fin-health-dot" id="finHealthDot" title="Loading..."></span></div>
       <div id="financesContainer"></div>
     </div>
 
     <!-- Daily Tasks Card -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9745;</span> Today's Tasks</div>
+    <div class="glass-card" style="--card-accent:#f59e0b">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9745;</span> Today's Tasks</div>
       <div id="dailyTasksContainer">Loading...</div>
     </div>
 
     <!-- Work Streams Card -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9881;</span> Work Streams</div>
+    <div class="glass-card" style="--card-accent:#8b5cf6">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9881;</span> Work Streams</div>
       <div id="workStreamsContainer">Loading...</div>
     </div>
 
     <!-- Tasks Card -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9744;</span> Active Tasks</div>
+    <div class="glass-card" style="--card-accent:#6366f1">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9744;</span> Active Tasks</div>
       <div class="tasks-scroll" id="tasksContainer"></div>
     </div>
 
     <!-- Deadlines Card -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9200;</span> Deadlines</div>
+    <div class="glass-card" style="--card-accent:#ef4444">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9200;</span> Deadlines</div>
       <table class="deadline-table">
         <thead><tr><th>Date</th><th>Item</th><th>Days</th><th>Category</th></tr></thead>
         <tbody id="deadlineBody"></tbody>
@@ -2200,51 +2179,51 @@ body {
   <div class="right-stack">
 
     <!-- Quick Links -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9889;</span> Quick Links</div>
+    <div class="glass-card" style="--card-accent:#06b6d4">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9889;</span> Quick Links</div>
       <div class="links-grid" id="linksGrid"></div>
     </div>
 
     <!-- System Status -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9881;</span> System Status</div>
+    <div class="glass-card" style="--card-accent:#14b8a6">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9881;</span> System Status</div>
       <div class="system-grid" id="systemGrid"></div>
     </div>
 
     <!-- Heartbeat Health Panel -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9200;</span> Heartbeat</div>
+    <div class="glass-card" style="--card-accent:#ec4899">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9200;</span> Heartbeat</div>
       <div id="heartbeatLiveContainer"></div>
       <div id="heartbeatContainer">Loading...</div>
     </div>
 
     <!-- Memory Health Panel -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9632;</span> Memory Health</div>
+    <div class="glass-card" style="--card-accent:#a855f7">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9632;</span> Memory Health</div>
       <div id="memoryHealthContainer">Loading...</div>
     </div>
 
     <!-- Observer Status Panel -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9728;</span> Observer Status</div>
+    <div class="glass-card" style="--card-accent:#84cc16">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9728;</span> Observer Status</div>
       <div id="observerContainer">Loading...</div>
     </div>
 
     <!-- Career Tracker -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9733;</span> Career Tracker</div>
+    <div class="glass-card" style="--card-accent:#f97316">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9733;</span> Career Tracker</div>
       <div id="careerContainer"></div>
     </div>
 
     <!-- Cost Tracker -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#36;</span> API Cost Tracker</div>
+    <div class="glass-card" style="--card-accent:#eab308">
+      <div class="glass-card-title"><span class="glass-card-icon">&#36;</span> API Cost Tracker</div>
       <div id="costContainer"></div>
     </div>
 
     <!-- GPU Server Control -->
-    <div class="card">
-      <div class="card-title"><span class="icon">&#9881;</span> GPU Server Control</div>
+    <div class="glass-card" style="--card-accent:#10b981">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9881;</span> GPU Server Control</div>
       <div id="gpuStatusBadges" class="gpu-svc-status"></div>
 
       <!-- GPU Rental Mini Dashboard -->
@@ -2416,7 +2395,36 @@ body {
 </div>
 
 <div class="footer">
-  <span>MERIDIAN v0.1</span> &mdash; Auto-refresh every 60s &mdash; Last updated: <span id="lastUpdate"></span>
+  <span>MERIDIAN v0.2</span> &mdash; Auto-refresh every 60s &mdash; <kbd>Ctrl+K</kbd> Command Palette &mdash; Last updated: <span id="lastUpdate"></span>
+</div>
+
+<!-- ── Command Palette ───────────────────────────────────────────────────── -->
+<div class="cmd-overlay" id="cmdOverlay" onclick="if(event.target===this)closeCmdPalette()">
+  <div class="cmd-palette">
+    <input class="cmd-input" id="cmdInput" type="text" placeholder="Search commands, pages, memory files..." autocomplete="off">
+    <div class="cmd-results" id="cmdResults"></div>
+    <div class="cmd-footer">
+      <div class="cmd-footer-keys">
+        <span><kbd class="cmd-key">Up</kbd> <kbd class="cmd-key">Down</kbd> Navigate</span>
+        <span><kbd class="cmd-key">Enter</kbd> Select</span>
+        <span><kbd class="cmd-key">Esc</kbd> Close</span>
+      </div>
+      <span><kbd class="cmd-key">Ctrl+K</kbd> Toggle</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── Connection Overlay ────────────────────────────────────────────────── -->
+<div class="connection-overlay hidden" id="connectionOverlay">
+  <div class="connection-content">
+    <div class="connection-spinner"></div>
+    <div class="connection-title">Connecting to MERIDIAN systems...</div>
+    <div class="connection-checks" id="connectionChecks"></div>
+    <div class="connection-hint" id="connectionHint">
+      Check that server.py is running on port 5055: <code>cd dashboard/family && python -m uvicorn server:app --port 5055</code>
+    </div>
+    <button class="connection-continue-btn" onclick="dismissConnectionOverlay()">Continue anyway</button>
+  </div>
 </div>
 
 <script>
@@ -2463,22 +2471,30 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-/* ── Theme ──────────────────────────────────────────────────────────────── */
+/* ── Theme (3-way cycle: dark -> midnight -> light -> dark) ─────────────── */
+var THEME_CYCLE = ['dark', 'midnight', 'light'];
+var THEME_NEXT_LABEL = { 'dark': 'Midnight', 'midnight': 'Light', 'light': 'Dark' };
+var THEME_NAME_LABEL = { 'dark': 'DARK', 'midnight': 'MIDNIGHT', 'light': 'LIGHT' };
+
 function toggleTheme() {
-  const html = document.documentElement;
-  const current = html.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
+  var html = document.documentElement;
+  var current = html.getAttribute('data-theme') || 'dark';
+  var idx = THEME_CYCLE.indexOf(current);
+  var next = THEME_CYCLE[(idx + 1) % THEME_CYCLE.length];
   html.setAttribute('data-theme', next);
-  $('themeBtn').textContent = next === 'dark' ? 'Light' : 'Dark';
+  $('themeBtn').textContent = THEME_NEXT_LABEL[next] || 'Dark';
+  var nameEl = $('themeName');
+  if (nameEl) nameEl.textContent = THEME_NAME_LABEL[next] || next.toUpperCase();
   localStorage.setItem('meridian-theme', next);
 }
 
 // Restore theme
-const savedTheme = localStorage.getItem('meridian-theme');
-if (savedTheme) {
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  $('themeBtn').textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
-}
+var savedTheme = localStorage.getItem('meridian-theme') || 'dark';
+if (THEME_CYCLE.indexOf(savedTheme) === -1) savedTheme = 'dark';
+document.documentElement.setAttribute('data-theme', savedTheme);
+$('themeBtn').textContent = THEME_NEXT_LABEL[savedTheme] || 'Dark';
+var _themeNameEl = $('themeName');
+if (_themeNameEl) _themeNameEl.textContent = THEME_NAME_LABEL[savedTheme] || savedTheme.toUpperCase();
 
 /* ── Render: Greeting ───────────────────────────────────────────────────── */
 async function renderGreeting() {
@@ -3267,10 +3283,15 @@ function newConversation() {
 }
 
 function renderMarkdown(text) {
-  // Code blocks
+  // Extract code blocks first, replacing with placeholders
+  var codeBlocks = [];
   var html = text.replace(/```(\w*)\n([\s\S]*?)```/g, function(m, lang, code) {
-    return '<pre>' + escapeHTML(code.trim()) + '</pre>';
+    var placeholder = '%%CODEBLOCK_' + codeBlocks.length + '%%';
+    codeBlocks.push('<pre>' + escapeHTML(code.trim()) + '</pre>');
+    return placeholder;
   });
+  // Escape all remaining HTML to prevent XSS in bold/italic content
+  html = escapeHTML(html);
   // Inline code
   html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
   // Bold
@@ -3279,6 +3300,10 @@ function renderMarkdown(text) {
   html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
   // Line breaks
   html = html.replace(/\n/g, '<br>');
+  // Restore code blocks
+  for (var i = 0; i < codeBlocks.length; i++) {
+    html = html.replace('%%CODEBLOCK_' + i + '%%', codeBlocks[i]);
+  }
   return html;
 }
 
@@ -3412,228 +3437,7 @@ renderGpuStatus();
 renderGpuRental();
 setInterval(renderGpuRental, 30000);
 
-/* ── Memory Graph (D3.js Force-Directed) ──────────────────────────────── */
-let graphData = null;
-let graphSim = null;
-let showSections = false;
-
-function toggleGraphSections() {
-  showSections = !showSections;
-  var btn = $('graphSectionsBtn');
-  btn.classList.toggle('active', showSections);
-  renderGraph();
-}
-
-async function refreshGraph() {
-  graphData = await fetchJSON('/api/memory-graph');
-  renderGraph();
-}
-
-function renderGraph() {
-  if (!graphData) return;
-  var container = $('graphContainer');
-  var tooltip = $('graphTooltip');
-
-  // Remove existing SVG
-  var oldSvg = container.querySelector('svg');
-  if (oldSvg) oldSvg.remove();
-
-  // Filter nodes based on section toggle
-  var nodes = graphData.nodes.filter(function(n) {
-    return showSections || n.type === 'file';
-  }).map(function(n) { return Object.assign({}, n); });
-
-  var nodeIds = new Set(nodes.map(function(n) { return n.id; }));
-  var links = graphData.links.filter(function(l) {
-    return nodeIds.has(l.source) && nodeIds.has(l.target);
-  }).map(function(l) { return Object.assign({}, l); });
-
-  var width = container.clientWidth;
-  var height = container.clientHeight;
-
-  var svg = d3.select(container).append('svg')
-    .attr('width', width)
-    .attr('height', height);
-
-  // Zoom
-  var g = svg.append('g');
-  var zoom = d3.zoom()
-    .scaleExtent([0.3, 4])
-    .on('zoom', function(event) {
-      g.attr('transform', event.transform);
-    });
-  svg.call(zoom);
-
-  // Size scale: file size -> radius
-  var sizeExtent = d3.extent(nodes.filter(function(n) { return n.type === 'file'; }), function(n) { return n.size; });
-  var radiusScale = d3.scaleLinear()
-    .domain([sizeExtent[0] || 100, sizeExtent[1] || 10000])
-    .range([10, 32])
-    .clamp(true);
-
-  // Tier opacity
-  var tierOpacity = { 'ACTIVE': 1.0, 'WARM': 0.85, 'COLD': 0.6, 'FORGOTTEN': 0.4, 'ARCHIVE': 0.25 };
-
-  // Force simulation
-  if (graphSim) graphSim.stop();
-  graphSim = d3.forceSimulation(nodes)
-    .force('link', d3.forceLink(links).id(function(d) { return d.id; }).distance(function(d) {
-      return d.weight > 0.5 ? 80 : 140;
-    }).strength(function(d) { return d.weight * 0.5; }))
-    .force('charge', d3.forceManyBody().strength(function(d) {
-      return d.type === 'file' ? -200 : -50;
-    }))
-    .force('center', d3.forceCenter(width / 2, height / 2))
-    .force('collision', d3.forceCollide().radius(function(d) {
-      return d.type === 'file' ? radiusScale(d.size) + 4 : 10;
-    }));
-
-  // Links
-  var link = g.append('g')
-    .selectAll('line')
-    .data(links)
-    .join('line')
-    .attr('stroke', '#4a5568')
-    .attr('stroke-opacity', function(d) { return Math.max(0.15, d.weight * 0.6); })
-    .attr('stroke-width', function(d) { return Math.max(0.5, d.weight * 1.5); });
-
-  // Cluster labels
-  var clusterPositions = {};
-  nodes.forEach(function(n) {
-    if (n.type !== 'file') return;
-    if (!clusterPositions[n.cluster]) clusterPositions[n.cluster] = { x: 0, y: 0, count: 0 };
-    clusterPositions[n.cluster].count++;
-  });
-
-  // Nodes
-  var node = g.append('g')
-    .selectAll('circle')
-    .data(nodes)
-    .join('circle')
-    .attr('r', function(d) { return d.type === 'file' ? radiusScale(d.size) : 4; })
-    .attr('fill', function(d) { return d.color; })
-    .attr('opacity', function(d) { return tierOpacity[d.tier] || 0.6; })
-    .attr('stroke', function(d) { return d.type === 'file' ? '#fff' : 'none'; })
-    .attr('stroke-width', function(d) { return d.type === 'file' ? 1.5 : 0; })
-    .attr('cursor', 'pointer')
-    .call(d3.drag()
-      .on('start', function(event, d) {
-        if (!event.active) graphSim.alphaTarget(0.3).restart();
-        d.fx = d.x; d.fy = d.y;
-      })
-      .on('drag', function(event, d) {
-        d.fx = event.x; d.fy = event.y;
-      })
-      .on('end', function(event, d) {
-        if (!event.active) graphSim.alphaTarget(0);
-        d.fx = null; d.fy = null;
-      })
-    );
-
-  // Labels for file nodes
-  var label = g.append('g')
-    .selectAll('text')
-    .data(nodes.filter(function(n) { return n.type === 'file'; }))
-    .join('text')
-    .text(function(d) { return d.label; })
-    .attr('font-size', '11px')
-    .attr('font-family', 'var(--mono)')
-    .attr('fill', '#e4e4e7')
-    .attr('text-anchor', 'middle')
-    .attr('dy', function(d) { return radiusScale(d.size) + 14; })
-    .attr('pointer-events', 'none');
-
-  // Cluster labels
-  var clusterLabel = g.append('g')
-    .selectAll('text')
-    .data(Object.entries(graphData.clusters))
-    .join('text')
-    .text(function(d) { return d[0].toUpperCase(); })
-    .attr('font-size', '10px')
-    .attr('font-weight', '600')
-    .attr('font-family', 'var(--mono)')
-    .attr('letter-spacing', '2px')
-    .attr('fill', function(d) { return d[1]; })
-    .attr('opacity', 0.4)
-    .attr('text-anchor', 'middle')
-    .attr('pointer-events', 'none');
-
-  // Hover and click
-  node.on('mouseover', function(event, d) {
-    if (d.type !== 'file') return;
-    var tierColors = { 'ACTIVE': 'rgba(34,197,94,0.2)', 'WARM': 'rgba(59,130,246,0.2)', 'COLD': 'rgba(245,158,11,0.2)', 'FORGOTTEN': 'rgba(239,68,68,0.2)', 'ARCHIVE': 'rgba(107,114,128,0.2)' };
-    $('gtTitle').textContent = d.label;
-    var tierEl = $('gtTier');
-    tierEl.textContent = d.tier + ' (' + (d.score || 0).toFixed(3) + ')';
-    tierEl.style.background = tierColors[d.tier] || 'rgba(107,114,128,0.2)';
-    tierEl.style.color = d.color;
-    $('gtPreview').textContent = d.preview ? d.preview.slice(0, 300) : '(empty)';
-    tooltip.style.display = 'block';
-    tooltip.style.left = (event.offsetX + 16) + 'px';
-    tooltip.style.top = (event.offsetY - 10) + 'px';
-  })
-  .on('mousemove', function(event) {
-    tooltip.style.left = (event.offsetX + 16) + 'px';
-    tooltip.style.top = (event.offsetY - 10) + 'px';
-  })
-  .on('mouseout', function() {
-    tooltip.style.display = 'none';
-  })
-  .on('click', function(event, d) {
-    if (d.type !== 'file' || !d.preview) return;
-    tooltip.style.display = 'block';
-    $('gtTitle').textContent = d.label;
-    $('gtPreview').textContent = d.preview;
-    tooltip.style.left = (event.offsetX + 16) + 'px';
-    tooltip.style.top = (event.offsetY - 10) + 'px';
-  });
-
-  // Tick
-  graphSim.on('tick', function() {
-    link
-      .attr('x1', function(d) { return d.source.x; })
-      .attr('y1', function(d) { return d.source.y; })
-      .attr('x2', function(d) { return d.target.x; })
-      .attr('y2', function(d) { return d.target.y; });
-
-    node
-      .attr('cx', function(d) { return d.x; })
-      .attr('cy', function(d) { return d.y; });
-
-    label
-      .attr('x', function(d) { return d.x; })
-      .attr('y', function(d) { return d.y; });
-
-    // Update cluster label positions (centroid of cluster file nodes)
-    var clusterCentroids = {};
-    nodes.forEach(function(n) {
-      if (n.type !== 'file') return;
-      if (!clusterCentroids[n.cluster]) clusterCentroids[n.cluster] = { x: 0, y: 0, count: 0 };
-      clusterCentroids[n.cluster].x += n.x;
-      clusterCentroids[n.cluster].y += n.y;
-      clusterCentroids[n.cluster].count++;
-    });
-    clusterLabel
-      .attr('x', function(d) {
-        var c = clusterCentroids[d[0]];
-        return c ? c.x / c.count : width / 2;
-      })
-      .attr('y', function(d) {
-        var c = clusterCentroids[d[0]];
-        return c ? (c.y / c.count) - 40 : height / 2;
-      });
-  });
-
-  // Render legend
-  var legend = $('graphLegend');
-  legend.innerHTML = '';
-  Object.entries(graphData.clusters).forEach(function(entry) {
-    legend.innerHTML += '<span class="graph-legend-item"><span class="graph-legend-dot" style="background:' + entry[1] + '"></span>' + entry[0] + '</span>';
-  });
-}
-
-// Initial graph load
-refreshGraph();
+/* (Top-panel graph removed -- Memory Tab graph is the canonical version) */
 
 /* ── Heartbeat Live Mini-Panel ────────────────────────────────────────── */
 async function renderHeartbeatLive() {
@@ -4024,6 +3828,526 @@ $('memSearchInput').addEventListener('input', function() {
 // Initial load
 loadMemHealth();
 refreshMemGraph();
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   MERIDIAN v0.2 -- New Systems (Sound, Command Palette, Status Strip, Overlay)
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Sound System (ported from Hermes Studio sounds.ts) ──────────────── */
+var SOUND_NOTES = { A2: 110.0, C3: 130.81, A4: 440.0, C5: 523.25, E5: 659.25, G5: 783.99, C6: 1046.5 };
+var _soundCtx = null;
+var _soundPrefs = { volume: 0.3, enabled: true };
+
+(function loadSoundPrefs() {
+  try {
+    var stored = localStorage.getItem('meridian-sound-prefs');
+    if (stored) {
+      var p = JSON.parse(stored);
+      if (typeof p.volume === 'number') _soundPrefs.volume = Math.max(0, Math.min(1, p.volume));
+      if (typeof p.enabled === 'boolean') _soundPrefs.enabled = p.enabled;
+    }
+  } catch(e) {}
+})();
+
+function _saveSoundPrefs() {
+  try { localStorage.setItem('meridian-sound-prefs', JSON.stringify(_soundPrefs)); } catch(e) {}
+}
+
+function _getSoundCtx() {
+  if (!_soundCtx || _soundCtx.state === 'closed') _soundCtx = new AudioContext();
+  if (_soundCtx.state === 'suspended') _soundCtx.resume().catch(function(){});
+  return _soundCtx;
+}
+
+function _playTone(freq, durationMs, type, volMul, startOffset) {
+  var ctx = _getSoundCtx();
+  if (!ctx || !_soundPrefs.enabled) return;
+  var now = ctx.currentTime + (startOffset || 0);
+  var dur = durationMs / 1000;
+  var vol = _soundPrefs.volume * (volMul || 1);
+  var osc = ctx.createOscillator();
+  osc.type = type || 'sine';
+  osc.frequency.setValueAtTime(freq, now);
+  var gain = ctx.createGain();
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(vol, now + 0.005);
+  gain.gain.setValueAtTime(vol, now + dur * 0.7);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + dur);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(now);
+  osc.stop(now + dur + 0.01);
+}
+
+function _playSeq(tones) {
+  var offset = 0;
+  tones.forEach(function(t) {
+    _playTone(t.freq, t.dur, t.type, t.vol, offset);
+    offset += t.dur / 1000;
+  });
+}
+
+function playSound(event) {
+  if (!_soundPrefs.enabled) return;
+  switch (event) {
+    case 'success':
+      var ctx = _getSoundCtx();
+      if (!ctx) return;
+      var now = ctx.currentTime;
+      var osc = ctx.createOscillator();
+      osc.type = 'triangle'; osc.frequency.setValueAtTime(SOUND_NOTES.G5, now);
+      var gain = ctx.createGain();
+      gain.gain.setValueAtTime(0, now);
+      gain.gain.linearRampToValueAtTime(_soundPrefs.volume, now + 0.003);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.start(now); osc.stop(now + 0.4);
+      break;
+    case 'error':
+      _playSeq([{freq:SOUND_NOTES.C3,dur:200,type:'sawtooth',vol:0.6},{freq:SOUND_NOTES.A2,dur:200,type:'sawtooth',vol:0.6}]);
+      break;
+    case 'notification':
+      _playTone(SOUND_NOTES.E5, 80, 'sine', 0.5);
+      break;
+    case 'warning':
+      _playSeq([{freq:SOUND_NOTES.A4,dur:100,type:'square',vol:0.5},{freq:SOUND_NOTES.E5,dur:100,type:'square',vol:0.5},{freq:SOUND_NOTES.A4,dur:100,type:'square',vol:0.5}]);
+      break;
+    case 'click':
+      _playTone(SOUND_NOTES.C6, 30, 'sine', 0.33);
+      break;
+    case 'complete':
+      _playSeq([{freq:SOUND_NOTES.E5,dur:80,type:'sine',vol:0.7},{freq:SOUND_NOTES.C5,dur:80,type:'sine',vol:0.7}]);
+      break;
+  }
+}
+
+function toggleSound() {
+  _soundPrefs.enabled = !_soundPrefs.enabled;
+  _saveSoundPrefs();
+  var btn = $('soundBtn');
+  btn.classList.toggle('muted', !_soundPrefs.enabled);
+  btn.title = _soundPrefs.enabled ? 'Sounds on (click to mute)' : 'Sounds off (click to unmute)';
+}
+
+// Init sound button state
+(function() {
+  var btn = $('soundBtn');
+  if (btn) {
+    btn.classList.toggle('muted', !_soundPrefs.enabled);
+    btn.title = _soundPrefs.enabled ? 'Sounds on (click to mute)' : 'Sounds off (click to unmute)';
+  }
+})();
+
+// Wire sounds to Claude terminal events
+var _origHandleWsMessage = handleWsMessage;
+handleWsMessage = function(data) {
+  _origHandleWsMessage(data);
+  if (data.type === 'done') playSound('success');
+  if (data.type === 'error') playSound('error');
+  if (data.type === 'tool_start') playSound('notification');
+};
+
+/* ── Status Strip Updates ────────────────────────────────────────────── */
+var _prevGpuOnline = null;
+var _prevRentalState = null;
+
+function updateStatusStrip() {
+  // Last refresh time
+  var el = $('stripLastRefresh');
+  if (el) el.textContent = 'REFRESH: ' + new Date().toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+
+  // Auth mode badge
+  var authBadge = $('stripAuthBadge');
+  // We detect dev mode by checking if the page loaded without auth (presence of dev env var)
+  // For now, just show based on location
+  if (authBadge) {
+    // The badge defaults to DEV; the server tells us via the initial greeting or we leave it
+  }
+}
+
+async function updateStatusStripGpu() {
+  try {
+    var d = await fetchJSON('/api/gpu/status');
+    var el = $('stripGpuStatus');
+    if (el && d) {
+      var isOnline = d.online;
+      el.innerHTML = '<span class="status-pip ' + (isOnline ? 'online' : 'offline') + '"></span> GPU: ' + (isOnline ? 'ONLINE' : 'OFFLINE');
+      // Sound on state change
+      if (_prevGpuOnline !== null && _prevGpuOnline !== isOnline) {
+        playSound('warning');
+      }
+      _prevGpuOnline = isOnline;
+    }
+  } catch(e) {}
+}
+
+async function updateStatusStripRental() {
+  try {
+    var d = await fetchJSON('/api/gpu/rental');
+    var el = $('stripRentalStatus');
+    if (el && d) {
+      var state = 'OFFLINE';
+      if (d.online) {
+        var v = d.vastai || {};
+        if (v.is_rented) state = 'RENTED';
+        else if (v.machine_status === 'listed') state = 'IDLE';
+        else state = (v.machine_status || 'UNKNOWN').toUpperCase();
+      }
+      el.textContent = 'RENTAL: ' + state;
+      if (_prevRentalState !== null && _prevRentalState !== state && state === 'RENTED') {
+        playSound('notification');
+      }
+      _prevRentalState = state;
+    }
+  } catch(e) {}
+}
+
+async function updateStatusStripMemory() {
+  try {
+    var d = await fetchJSON('/api/memory-health');
+    var el = $('stripMemoryCount');
+    if (el && d) {
+      var total = d.file_count || 0;
+      var tiers = d.tiers || {};
+      var fresh = tiers.ACTIVE || 0;
+      var rotten = (tiers.FORGOTTEN || 0) + (tiers.COLD || 0);
+      el.textContent = 'MEMORY: ' + total + ' files';
+    }
+  } catch(e) {}
+}
+
+// Extend refreshAll to update status strip
+var _origRefreshAll2 = refreshAll;
+refreshAll = async function() {
+  await _origRefreshAll2();
+  updateStatusStrip();
+  updateStatusStripGpu();
+  updateStatusStripRental();
+  updateStatusStripMemory();
+};
+
+// Initial strip update
+updateStatusStrip();
+updateStatusStripGpu();
+updateStatusStripRental();
+updateStatusStripMemory();
+
+/* ── Command Palette ─────────────────────────────────────────────────── */
+
+// Fuzzy scoring algorithm (ported from Hermes command-palette.tsx)
+function scoreCommandAction(action, query) {
+  var nq = query.trim().toLowerCase();
+  if (!nq) return 1;
+  var haystack = (action.label + ' ' + action.keywords).toLowerCase();
+  var directIndex = haystack.indexOf(nq);
+  if (directIndex >= 0) {
+    return 400 - directIndex - Math.max(0, haystack.length - nq.length);
+  }
+  var qi = 0, gaps = 0, lastMatch = -1;
+  for (var i = 0; i < haystack.length && qi < nq.length; i++) {
+    if (haystack[i] !== nq[qi]) continue;
+    if (lastMatch >= 0) gaps += Math.max(0, i - lastMatch - 1);
+    lastMatch = i;
+    qi++;
+  }
+  if (qi !== nq.length) return 0;
+  return 180 - gaps - Math.max(0, haystack.length - nq.length);
+}
+
+// Command registry
+var CMD_REGISTRY = [
+  // Card navigation
+  {id:'nav-family', group:'Cards', label:'Family', keywords:'family members household', icon:'\u2606', action:function(){scrollToCard('familyGrid')}},
+  {id:'nav-finances', group:'Cards', label:'Finances', keywords:'money net worth budget', icon:'\u2261', action:function(){scrollToCard('financesContainer')}},
+  {id:'nav-daily', group:'Cards', label:"Today's Tasks", keywords:'daily tasks todo', icon:'\u2611', action:function(){scrollToCard('dailyTasksContainer')}},
+  {id:'nav-work', group:'Cards', label:'Work Streams', keywords:'work projects streams', icon:'\u2699', action:function(){scrollToCard('workStreamsContainer')}},
+  {id:'nav-tasks', group:'Cards', label:'Active Tasks', keywords:'active tasks backlog', icon:'\u2610', action:function(){scrollToCard('tasksContainer')}},
+  {id:'nav-deadlines', group:'Cards', label:'Deadlines', keywords:'deadlines due dates', icon:'\u23F0', action:function(){scrollToCard('deadlineBody')}},
+  {id:'nav-links', group:'Cards', label:'Quick Links', keywords:'links bookmarks', icon:'\u26A1', action:function(){scrollToCard('linksGrid')}},
+  {id:'nav-system', group:'Cards', label:'System Status', keywords:'system gpu server status', icon:'\u2699', action:function(){scrollToCard('systemGrid')}},
+  {id:'nav-heartbeat', group:'Cards', label:'Heartbeat', keywords:'heartbeat cron health', icon:'\u23F0', action:function(){scrollToCard('heartbeatContainer')}},
+  {id:'nav-memory', group:'Cards', label:'Memory Health', keywords:'memory files decay', icon:'\u25A0', action:function(){scrollToCard('memoryHealthContainer')}},
+  {id:'nav-observer', group:'Cards', label:'Observer Status', keywords:'observer sentinel auditor critic', icon:'\u2600', action:function(){scrollToCard('observerContainer')}},
+  {id:'nav-career', group:'Cards', label:'Career Tracker', keywords:'career promotion salary', icon:'\u2605', action:function(){scrollToCard('careerContainer')}},
+  {id:'nav-costs', group:'Cards', label:'API Cost Tracker', keywords:'costs api spending budget', icon:'$', action:function(){scrollToCard('costContainer')}},
+  {id:'nav-gpu', group:'Cards', label:'GPU Server Control', keywords:'gpu server rental vast ssh', icon:'\u2699', action:function(){scrollToCard('gpuStatusBadges')}},
+  // Memory Tab sub-tabs
+  {id:'mem-graph', group:'Memory', label:'Memory Graph', keywords:'graph d3 force visualization', icon:'\u25C6', action:function(){scrollToMemTab('graph')}},
+  {id:'mem-heatmap', group:'Memory', label:'Memory Heatmap', keywords:'heatmap tier cluster grid', icon:'\u25C6', action:function(){scrollToMemTab('heatmap')}},
+  {id:'mem-recent', group:'Memory', label:'Recent Activity', keywords:'recent 24h changes', icon:'\u25C6', action:function(){scrollToMemTab('recent')}},
+  {id:'mem-crons', group:'Memory', label:'Cron Health', keywords:'cron jobs scheduled tasks', icon:'\u25C6', action:function(){scrollToMemTab('crons')}},
+  {id:'mem-inbox', group:'Memory', label:'Inbox Status', keywords:'inbox machines pending', icon:'\u25C6', action:function(){scrollToMemTab('inbox')}},
+  {id:'mem-search', group:'Memory', label:'Search Memory', keywords:'search memory files bm25', icon:'\u25C6', action:function(){scrollToMemTab('search')}},
+  // Actions
+  {id:'act-theme', group:'Actions', label:'Toggle Theme', keywords:'theme dark midnight light toggle', icon:'\u263E', action:function(){toggleTheme()}},
+  {id:'act-terminal', group:'Actions', label:'Toggle Claude Terminal', keywords:'terminal claude chat ai', icon:'\u25B7', action:function(){toggleTerminal()}},
+  {id:'act-refresh', group:'Actions', label:'Refresh All Data', keywords:'refresh reload update data', icon:'\u21BB', action:function(){refreshAll()}},
+  {id:'act-sound', group:'Actions', label:'Toggle Sounds', keywords:'sound audio mute unmute', icon:'\uD83D\uDD0A', action:function(){toggleSound()}},
+  // GPU Commands
+  {id:'gpu-info', group:'GPU', label:'GPU Info', keywords:'nvidia gpu info smi', icon:'\u26A1', action:function(){gpuCmd('check_gpu');closeCmdPalette();}},
+  {id:'gpu-uptime', group:'GPU', label:'GPU Uptime', keywords:'uptime server', icon:'\u23F0', action:function(){gpuCmd('uptime');closeCmdPalette();}},
+  {id:'gpu-memory', group:'GPU', label:'GPU Memory', keywords:'memory ram usage', icon:'\u2261', action:function(){gpuCmd('check_memory');closeCmdPalette();}},
+  {id:'gpu-disk', group:'GPU', label:'GPU Disk', keywords:'disk space storage', icon:'\u2610', action:function(){gpuCmd('check_disk');closeCmdPalette();}},
+];
+
+function scrollToCard(elementId) {
+  closeCmdPalette();
+  var el = document.getElementById(elementId);
+  if (el) {
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    // Flash highlight
+    var parent = el.closest('.glass-card');
+    if (parent) {
+      parent.style.outline = '2px solid var(--accent-primary)';
+      parent.style.outlineOffset = '2px';
+      setTimeout(function(){parent.style.outline='';parent.style.outlineOffset='';}, 1500);
+    }
+  }
+}
+
+function scrollToMemTab(tabName) {
+  closeCmdPalette();
+  var wrapper = $('memoryTabWrapper');
+  if (wrapper) wrapper.scrollIntoView({behavior:'smooth',block:'start'});
+  memSwitchTab(tabName);
+}
+
+var _cmdSelectedIndex = 0;
+var _cmdFilteredActions = [];
+
+function openCmdPalette() {
+  var overlay = $('cmdOverlay');
+  overlay.classList.add('open');
+  var input = $('cmdInput');
+  input.value = '';
+  input.focus();
+  _cmdSelectedIndex = 0;
+  renderCmdResults('');
+  playSound('click');
+}
+
+function closeCmdPalette() {
+  $('cmdOverlay').classList.remove('open');
+}
+
+function renderCmdResults(query) {
+  var results = $('cmdResults');
+  if (!query) {
+    _cmdFilteredActions = CMD_REGISTRY.map(function(a){return {action:a,score:1};});
+  } else {
+    _cmdFilteredActions = CMD_REGISTRY.map(function(a) {
+      return {action:a, score:scoreCommandAction(a, query)};
+    }).filter(function(a){return a.score > 0;}).sort(function(a,b){return b.score - a.score;});
+  }
+
+  if (_cmdFilteredActions.length === 0) {
+    results.innerHTML = '<div class="cmd-no-results">No results for "' + escapeHTML(query) + '"</div>';
+    return;
+  }
+
+  // Group by group
+  var groups = {};
+  var groupOrder = ['Cards','Memory','Actions','GPU'];
+  _cmdFilteredActions.forEach(function(item) {
+    var g = item.action.group;
+    if (!groups[g]) groups[g] = [];
+    groups[g].push(item);
+  });
+
+  var html = '';
+  var flatIdx = 0;
+  groupOrder.forEach(function(groupName) {
+    var items = groups[groupName];
+    if (!items || items.length === 0) return;
+    html += '<div class="cmd-group-label">' + escapeHTML(groupName) + '</div>';
+    items.forEach(function(item) {
+      var cls = flatIdx === _cmdSelectedIndex ? ' active' : '';
+      html += '<div class="cmd-item' + cls + '" data-idx="' + flatIdx + '">' +
+        '<span class="cmd-item-icon">' + item.action.icon + '</span>' +
+        '<span class="cmd-item-label">' + escapeHTML(item.action.label) + '</span>' +
+        '<span class="cmd-item-cat">' + escapeHTML(item.action.group) + '</span>' +
+      '</div>';
+      flatIdx++;
+    });
+  });
+
+  results.innerHTML = html;
+
+  // Click handlers
+  results.querySelectorAll('.cmd-item').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var idx = parseInt(this.getAttribute('data-idx'));
+      if (_cmdFilteredActions[idx]) {
+        _cmdFilteredActions[idx].action.action();
+        closeCmdPalette();
+      }
+    });
+    el.addEventListener('mousemove', function() {
+      _cmdSelectedIndex = parseInt(this.getAttribute('data-idx'));
+      results.querySelectorAll('.cmd-item').forEach(function(item,i){
+        item.classList.toggle('active', i === _cmdSelectedIndex);
+      });
+    });
+  });
+}
+
+// Command palette keyboard
+document.addEventListener('keydown', function(e) {
+  // Ctrl+K to open/close
+  if (e.ctrlKey && e.key === 'k' && !e.shiftKey && !e.altKey) {
+    e.preventDefault();
+    var overlay = $('cmdOverlay');
+    if (overlay.classList.contains('open')) {
+      closeCmdPalette();
+    } else {
+      openCmdPalette();
+    }
+    return;
+  }
+
+  // When palette is open
+  var overlay = $('cmdOverlay');
+  if (!overlay.classList.contains('open')) return;
+
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    closeCmdPalette();
+    return;
+  }
+
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    if (_cmdFilteredActions.length === 0) return;
+    _cmdSelectedIndex = (_cmdSelectedIndex + 1) % _cmdFilteredActions.length;
+    updateCmdSelection();
+    return;
+  }
+
+  if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (_cmdFilteredActions.length === 0) return;
+    _cmdSelectedIndex = (_cmdSelectedIndex - 1 + _cmdFilteredActions.length) % _cmdFilteredActions.length;
+    updateCmdSelection();
+    return;
+  }
+
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    if (_cmdFilteredActions[_cmdSelectedIndex]) {
+      _cmdFilteredActions[_cmdSelectedIndex].action.action();
+      closeCmdPalette();
+    }
+    return;
+  }
+});
+
+function updateCmdSelection() {
+  var items = $('cmdResults').querySelectorAll('.cmd-item');
+  items.forEach(function(item, i) {
+    item.classList.toggle('active', i === _cmdSelectedIndex);
+  });
+  // Scroll active into view
+  if (items[_cmdSelectedIndex]) {
+    items[_cmdSelectedIndex].scrollIntoView({block:'nearest'});
+  }
+}
+
+// Input handler for palette search
+$('cmdInput').addEventListener('input', function() {
+  _cmdSelectedIndex = 0;
+  renderCmdResults(this.value.trim());
+});
+
+/* ── Connection Health Overlay ───────────────────────────────────────── */
+var _connectionChecks = [
+  {name: 'Backend API', endpoint: '/api/greeting', status: 'pending'},
+  {name: 'GPU Server', endpoint: '/api/gpu/status', status: 'pending'},
+  {name: 'Memory System', endpoint: '/api/memory-health', status: 'pending'},
+  {name: 'Heartbeat System', endpoint: '/api/heartbeat-status', status: 'pending'},
+];
+var _connectionShowHintTimer = null;
+var _connectionRetryTimer = null;
+
+function showConnectionOverlay() {
+  var overlay = $('connectionOverlay');
+  overlay.classList.remove('hidden');
+  renderConnectionChecks();
+}
+
+function dismissConnectionOverlay() {
+  var overlay = $('connectionOverlay');
+  overlay.classList.add('hidden');
+  if (_connectionShowHintTimer) clearTimeout(_connectionShowHintTimer);
+  if (_connectionRetryTimer) clearTimeout(_connectionRetryTimer);
+}
+
+function renderConnectionChecks() {
+  var container = $('connectionChecks');
+  var html = '';
+  _connectionChecks.forEach(function(c) {
+    html += '<div class="connection-check-item">' +
+      '<span class="status-pip ' + (c.status === 'pass' ? 'online' : c.status === 'fail' ? 'offline' : 'probing') + '"></span>' +
+      '<span>' + escapeHTML(c.name) + '</span>' +
+      '<span class="connection-check-status ' + c.status + '">' + c.status.toUpperCase() + '</span>' +
+    '</div>';
+  });
+  container.innerHTML = html;
+}
+
+async function runConnectionChecks() {
+  var allPass = true;
+  var anyFailed = false;
+
+  await Promise.all(_connectionChecks.map(async function(check) {
+    try {
+      var r = await fetch(check.endpoint, {signal: AbortSignal.timeout(5000)});
+      check.status = r.ok ? 'pass' : 'fail';
+    } catch(e) {
+      check.status = 'fail';
+    }
+    if (check.status !== 'pass') allPass = false;
+    if (check.status === 'fail') anyFailed = true;
+  }));
+
+  renderConnectionChecks();
+
+  if (allPass) {
+    // All services online; dismiss overlay
+    dismissConnectionOverlay();
+  } else {
+    // Show hint after 5 seconds
+    if (!_connectionShowHintTimer) {
+      _connectionShowHintTimer = setTimeout(function() {
+        var hint = $('connectionHint');
+        if (hint) hint.classList.add('visible');
+      }, 5000);
+    }
+    // Retry in 5 seconds
+    _connectionRetryTimer = setTimeout(function() {
+      runConnectionChecks();
+    }, 5000);
+  }
+}
+
+// On page load, run health checks silently. Only show overlay if something fails.
+(async function initialHealthCheck() {
+  var anyFailed = false;
+  await Promise.all(_connectionChecks.map(async function(check) {
+    try {
+      var r = await fetch(check.endpoint, {signal: AbortSignal.timeout(4000)});
+      check.status = r.ok ? 'pass' : 'fail';
+    } catch(e) {
+      check.status = 'fail';
+    }
+    if (check.status === 'fail') anyFailed = true;
+  }));
+
+  if (anyFailed) {
+    showConnectionOverlay();
+    // Retry
+    _connectionRetryTimer = setTimeout(runConnectionChecks, 5000);
+  }
+})();
 </script>
 </body>
 </html>
