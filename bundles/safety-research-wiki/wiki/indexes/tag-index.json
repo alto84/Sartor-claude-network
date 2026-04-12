@@ -1,0 +1,20 @@
+{
+  "ae/cytokine": [
+    "examples/CRS-example.md"
+  ],
+  "ae/immune": [
+    "examples/CRS-example.md"
+  ],
+  "ae/systemic": [
+    "examples/CRS-example.md"
+  ],
+  "meta/examples": [
+    "examples/README.md"
+  ],
+  "meta/reference": [
+    "examples/README.md"
+  ],
+  "severity/serious": [
+    "examples/CRS-example.md"
+  ]
+}

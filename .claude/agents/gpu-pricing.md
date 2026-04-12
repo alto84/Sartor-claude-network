@@ -7,7 +7,7 @@ tools:
   - Bash
   - Write
   - Grep
-permissionMode: acceptEdits
+permissionMode: bypassPermissions
 maxTurns: 30
 memory: project
 ---

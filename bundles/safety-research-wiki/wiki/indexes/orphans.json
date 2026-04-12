@@ -1,0 +1,11 @@
+[
+  "INSTALL.md",
+  "README.md",
+  "agents/wiki-reader.md",
+  "conventions/CONVENTIONS.md",
+  "docs/INGEST.md",
+  "examples/CRS-example.md",
+  "skills/build-llm-wiki/SKILL.md",
+  "skills/safety-research-wiki/SKILL.md",
+  "templates/README.md"
+]

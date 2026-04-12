@@ -1,5 +1,15 @@
+---
+type: meta
+entity: MASTERPLAN-VISIONARY
+updated: 2026-02-06
+updated_by: Visionary agent
+status: active
+tags: [meta/vision]
+aliases: [Visionary Manifesto]
+related: [MASTERPLAN, SELF, PROJECTS]
+---
+
 # Sartor Visionary Manifesto
-> Generated: 2026-02-06 by The Visionary agent
 
 ## Named Projects
 1. MERIDIAN - Life dashboard + morning brief

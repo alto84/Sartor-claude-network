@@ -2,9 +2,14 @@
 name: tax-estimate
 description: Cross-entity estimated tax calculation across Personal, Solar Inference LLC, and Sante Total
 model: opus
+reads: [TAXES, BUSINESS, ALTON]
+writes: [data/financial/tax-estimates/]
 ---
 
 Produce an estimated tax calculation across all three entities for CPA discussion support. This is modeling for informed conversations with a tax professional — not tax advice.
+
+> [!fact] Authoritative source
+> Current filing status, CPA contact, and open questions live in [[TAXES]]. Always read it first — it's the ground truth for deadlines, CPA scope, and material TY2025 changes.
 
 ## Entities
 1. **Personal (Alton + Aneeta)** — NJ resident, married filing jointly
@@ -12,7 +17,8 @@ Produce an estimated tax calculation across all three entities for CPA discussio
 3. **Sante Total** — 501(c)(3) nonprofit, no tax liability but may affect deduction planning
 
 ## Step 1 — Read Current Financial Data
-Read data/financial/ for current income, expense, and asset data across entities.
+Read `data/financial/` for current income, expense, and asset data across entities.
+Read [[TAXES]] for current filing status and any open decisions (e.g., 1040 file-vs-extend).
 Read any existing tax estimate files for prior quarter context.
 
 ## Step 2 — Solar Inference LLC Analysis
@@ -45,7 +51,12 @@ Flag any interactions:
 - Sante Total charitable contribution deductibility if personal donations made
 
 ## Step 6 — Key Questions for CPA
-List 3–5 specific questions this analysis raises that should be addressed with a tax professional.
+List 3–5 specific questions this analysis raises that should be addressed with a tax professional. If [[TAXES]] already has open questions in its frontmatter or body, avoid duplicating them — cross-reference instead.
+
+## Related memory files
+- [[TAXES]] — current filing status, CPA scope, open decisions
+- [[BUSINESS]] — Solar Inference LLC structure, Sante Total
+- [[ALTON]] — filer profile
 
 ## Output
 Save to: `data/financial/tax-estimates/{date}-estimate.md`

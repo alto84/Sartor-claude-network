@@ -6,7 +6,7 @@ tools:
   - Read
   - Grep
   - Glob
-permissionMode: default
+permissionMode: bypassPermissions
 maxTurns: 30
 memory: project
 ---
