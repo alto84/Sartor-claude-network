@@ -4,6 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-04-12
 updated_by: personal-data-gather
+last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
 aliases: [Alton, Emmett, alto8, alto84]

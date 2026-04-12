@@ -3,6 +3,7 @@ type: domain
 entity: TAXES
 updated: 2026-04-11
 updated_by: autodream
+last_verified: 2026-04-12
 status: active
 next_deadline: 2026-04-15
 next_review: 2026-04-10

@@ -1,18 +1,19 @@
 ---
 type: meta
 entity: MASTERPLAN
-updated: 2026-02-06
-updated_by: Claude
+updated: 2026-04-12
+updated_by: Claude (hub-refresher)
+last_verified: 2026-04-12
 status: active
-next_review: 2026-04-15
+next_review: 2026-07-01
 tags: [meta/roadmap, meta/vision]
 aliases: [Master Plan, Roadmap]
-related: [SELF, PROJECTS, MASTERPLAN-VISIONARY]
+related: [SELF, PROJECTS, MASTERPLAN-VISIONARY, projects/memory-system-v2, reference/OPERATING-AGREEMENT, reference/MULTI-MACHINE-MEMORY]
 ---
 
 # SARTOR MASTER PLAN
 
-*Synthesized from 5 agent perspectives. Last updated: 2026-02-06.*
+*Synthesized from 5 agent perspectives. Last updated: 2026-02-06. Hub-refreshed: 2026-04-12.*
 *Judge: Claude Opus 4.6 | Status: ACTIVE*
 
 ---
@@ -23,16 +24,27 @@ Sartor is a personal AI system that runs quietly in the background of Alton's li
 
 ## 2. Architecture
 
-### What Exists Today
+### What Exists Today (as of 2026-04-12)
 
 | Component | Location | Status |
 |-----------|----------|--------|
-| Memory store | `~/Sartor-claude-network/sartor/memory/` on gpuserver1 | **Working** - markdown files, git-tracked |
-| Claude Code | gpuserver1 (v2.1.33) + Rocinante (Windows) | **Working** - agent teams enabled |
-| GPU compute | RTX 5090, gpuserver1 (192.168.1.100) | **Working** - PyTorch 2.11.0+cu128 |
-| Chrome automation | CDP on port 9223 (both machines) | **Working** - headless on server, windowed on desktop |
-| Agent skills | 19+ skills in `.claude/skills/` | **Working** - chrome-automation, openclaw-patterns |
-| Git sync | GitHub repo `alto84/Sartor-claude-network` | **Working** - push from Rocinante |
+| Memory store | `~/Sartor-claude-network/sartor/memory/` (152 files, ~362K words) | **Working** — markdown files, git-tracked |
+| Claude Code | gpuserver1 (v2.1.33) + Rocinante (Windows) | **Working** — agent teams enabled |
+| GPU compute | RTX 5090, gpuserver1 (192.168.1.100) | **Working** — PyTorch 2.11.0+cu128 |
+| Chrome automation | CDP on port 9223 (both machines) | **Working** — headless on server, windowed on desktop |
+| Agent skills | 19+ skills in `.claude/skills/` | **Working** — chrome-automation, openclaw-patterns |
+| Git sync | GitHub repo `alto84/Sartor-claude-network` | **Working** — push from Rocinante only |
+| Multi-machine memory | Inbox pattern at `sartor/memory/inbox/gpuserver1/` | **Working** — see [[MULTI-MACHINE-MEMORY]] |
+| Operating Agreement | `reference/OPERATING-AGREEMENT.md` | **Ratified 2026-04-12** — authority/domain split |
+| Household constitution | `reference/HOUSEHOLD-CONSTITUTION.md` v0.2 | **Active** |
+| gpuserver1 monitoring | run_monitor.sh (2h), gather_mirror.sh (4h) | **Working** — 5 active P0 crons post-cleanup |
+| MERIDIAN dashboard | `dashboard/family/server.py` on Rocinante:5055 | **Working** — FastAPI + uvicorn + WebSocket terminal |
+| memory-system-v2 | `sartor/memory/projects/memory-system-v2/` | **In progress** — Phase 3 execution active 2026-04-12 |
+| constitution-council | `sartor/memory/projects/constitution-council/` | **Complete** |
+| safety-knowledge-graph | `sartor/memory/research/safety-knowledge-graph/` | **Active** |
+
+> [!warning] Gateway cron retired
+> The "Target Architecture" diagram below references `gateway_cron.py` as the central cron loop. **That script was disabled 2026-04-12** due to persistent JSON parse failures (`Expecting value: line 1 column 1 (char 0)`). The cron-gateway pattern has been superseded by the five P0 crons described in [[machines/gpuserver1/CRONS|gpuserver1 CRONS v0.2]]. The diagram is preserved for historical context; do not treat it as the current architecture.
 
 ### Target Architecture (End of Phase 2)
 
@@ -360,3 +372,21 @@ ATLAS --> MERIDIAN --> SENTINEL
 *This plan is a living document. It will be updated as Sartor evolves. The git log is the changelog.*
 
 *"The best AI assistant is the one you forget is running until it hands you exactly what you need." -- Sartor Design Principle*
+
+---
+
+## Active Projects (2026-04-12)
+
+| Project | Status | Link |
+|---------|--------|------|
+| memory-system-v2 | Phase 3 execution in progress | [[projects/memory-system-v2/10-MASTER-PLAN|memory-system-v2 master plan]] |
+| rental-operations / Solar ITC | Active — solar install stalled at Lucent, GPU at zero rentals | [[business/rental-operations]] |
+| household-constitution v0.2 | Active | [[reference/HOUSEHOLD-CONSTITUTION|Household Constitution]] |
+
+---
+
+## History
+
+- 2026-02-06: Initial creation from 5-agent synthesis (ATLAS, MERIDIAN, SENTINEL, FORGE, CHRONICLE phases defined)
+- 2026-04-07: Multi-machine memory rewrite — inbox pattern, curator architecture, Operating Agreement drafted. These components are now infrastructure, not roadmap items.
+- 2026-04-12: Hub refresh (EX-1). Updated "What Exists Today" table to reflect 2026-04 reality. Added gateway deprecation notice. Added active-projects table and history section. next_review bumped to 2026-07-01. Wikilinks added for memory-system-v2, Operating Agreement, MULTI-MACHINE-MEMORY, gpuserver1 CRONS, rental-operations, household-constitution.

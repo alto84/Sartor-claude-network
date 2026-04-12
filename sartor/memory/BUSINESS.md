@@ -1,13 +1,14 @@
 ---
 type: domain
 entity: BUSINESS
-updated: 2026-04-09
-updated_by: Claude
+updated: 2026-04-12
+updated_by: Claude (hub-refresher)
+last_verified: 2026-04-12
 status: active
-next_review: 2026-04-16
+next_review: 2026-05-12
 tags: [entity/llc, entity/nonprofit, domain/career]
 aliases: [Solar Inference, Sante Total, Business]
-related: [ALTON, TAXES, PROJECTS, ASTRAZENECA, solar-inference, sante-total, az-career]
+related: [ALTON, TAXES, PROJECTS, ASTRAZENECA, solar-inference, sante-total, az-career, business/rental-operations, business/solar-inference]
 ---
 
 > [!note] Sub-pages added 2026-04-09
@@ -49,15 +50,16 @@ related: [ALTON, TAXES, PROJECTS, ASTRAZENECA, solar-inference, sante-total, az-
 **Website:** SolarInference.com (currently placeholder)
 
 **Business Model:**
-- $450,000 Tesla Solar Roof installation to power GPU computing operations
+- $438,829 Tesla Solar Roof installation (contract value, signed 2025-09-03 with Lucent Energy) to power GPU computing operations
 - Solar-powered AI inference — edge computing at solar sites
 - Complex tax optimization: commercial solar depreciation + LLC structuring
+- Primary operational metric is **rental occupancy** (not profitability) to justify Solar ITC. See [[business/rental-operations]] for framework.
 
 **Infrastructure:**
-- vast.ai hosting: account alto84@gmail.com (Google OAuth), machine #52271 (RTX 5090), $0.25/hr base
+- vast.ai hosting: account alto84@gmail.com (Google OAuth), machine #52271 (RTX 5090), $0.40/hr base, $0.25/hr min bid (note: $0.25 is the minimum bid, not the base rate). Price set to $0.35/hr demand as of 2026-04-11.
 - API key configured on gpuserver1 (name: "gpuserver1"), CLI at `~/.local/bin/vastai`
-- Considering dual RTX PRO 6000 Blackwell ($17K hardware investment)
-- See [[MACHINES]] for current GPU setup and vast.ai details
+- Dual RTX PRO 6000 Blackwell workstation arriving summer 2026 (~$35K, Newegg, 192GB VRAM total). See [[business/rental-operations]] and [[PROJECTS]] for context.
+- See [[MACHINES]] for current GPU setup and vast.ai details; see [[machines/gpuserver1/MISSION|gpuserver1 MISSION v0.2]] for occupancy-first pricing rationale
 
 **Possible Directions:**
 - Solar panel yield prediction using weather and satellite data
@@ -80,14 +82,16 @@ All three business tracks have tax implications for 2025 filing year.
 See [[TAXES]] for deductions, estimated payments, and filing details.
 
 ## Open Questions
-- Solar Inference: Tesla Solar Roof timeline and financing status?
-- Solar Inference: vast.ai setup status?
 - Sante Total: IRS penalty abatement resolution?
 - Any IP considerations between AZ work and personal projects?
+- Why is GPU utilization zero? Needs pricing review vs. comparable RTX 5090 listings.
+- Is the solar contract still in personal name? Must transfer to LLC before in-service for ITC/depreciation.
 
 ## Recent Events
-- 2026-04-04: Machine #52271 (gpuserver1) reported offline by Vast.ai at 18:35 UTC. Status unverified. SSH check needed.
-- 2026-04-04: Berman Home Systems deposit request (Sales Order AAAO13216-02) awaiting signature.
+- 2026-04-04: Machine #52271 (gpuserver1) went offline (45 min inactive); **recovered** — no follow-up emails, confirmed transient outage. Status resolved per [[business/solar-inference]].
+- 2026-04-07: Berman Home Systems WiFi upgrade deposit signed (Dropbox Sign), install scheduled 2026-04-27 to 2026-04-29.
+- 2026-04-11: GPU rental price raised to $0.35/hr demand / $0.26/hr interruptible.
+- 2026-04-12: Operating Agreement ratified. gpuserver1 cron cleanup (15 → 5 active jobs). See [[reference/OPERATING-AGREEMENT|Operating Agreement]].
 
 ## Related
 - [[ASTRAZENECA]] - Detailed AZ safety AI context and career details
@@ -96,4 +100,6 @@ See [[TAXES]] for deductions, estimated payments, and filing details.
 
 ## History
 - 2026-02-06: Initial creation
-- 2026-02-20: Major update from claude.ai memory export — Solar Inference LLC details ($450K solar roof), Sante Total nonprofit, AI industry partnerships
+- 2026-02-20: Major update from claude.ai memory export — Solar Inference LLC details, Sante Total nonprofit, AI industry partnerships
+- 2026-04-09: Sub-pages added: [[business/solar-inference]], [[business/sante-total]], [[business/az-career]]
+- 2026-04-12: Hub refresh — fixed four contradictions: solar roof contract value corrected ($450K → $438,829), GPU base rate clarified ($0.25 is min bid not base; base is $0.40), 2026-04-04 outage resolved (was "unverified"), Blackwell updated (was "considering" → "arriving summer 2026"). Added last_verified, wikilinks to sub-pages and rental-operations framework.

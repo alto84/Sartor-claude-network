@@ -3,6 +3,7 @@ type: meta
 entity: LEARNINGS
 updated: 2026-04-11
 updated_by: autodream
+last_verified: 2026-04-12
 status: active
 tags: [meta/learnings]
 aliases: [Lessons Learned]

@@ -9,14 +9,46 @@ import json
 import asyncio
 import subprocess
 import platform
+import secrets
 from datetime import datetime, date
 from pathlib import Path
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Depends, HTTPException, status
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from fastapi.responses import HTMLResponse, JSONResponse
 from starlette.middleware.cors import CORSMiddleware
 import anthropic
 
-app = FastAPI(title="MERIDIAN", version="0.1.0")
+# ── Auth ──────────────────────────────────────────────────────────────────────
+
+_http_basic = HTTPBasic()
+_MERIDIAN_DEV = os.environ.get("MERIDIAN_DEV", "") == "1"
+
+def _load_password() -> str:
+    secrets_path = Path(__file__).resolve().parent.parent.parent / ".secrets" / "meridian-password.txt"
+    try:
+        return secrets_path.read_text(encoding="utf-8").strip()
+    except FileNotFoundError:
+        raise RuntimeError(f"meridian-password.txt not found at {secrets_path}")
+
+_MERIDIAN_PASSWORD: str = _load_password()
+
+
+def require_auth(credentials: HTTPBasicCredentials = Depends(_http_basic)) -> str:
+    if _MERIDIAN_DEV:
+        return "dev"
+    correct_username = secrets.compare_digest(credentials.username.encode(), b"alton")
+    correct_password = secrets.compare_digest(
+        credentials.password.encode(), _MERIDIAN_PASSWORD.encode()
+    )
+    if not (correct_username and correct_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Unauthorized",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+    return credentials.username
+
+app = FastAPI(title="MERIDIAN", version="0.1.0", dependencies=[Depends(require_auth)])
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 # Paths
@@ -432,8 +464,8 @@ async def system_status():
         "memory_files": mem_count,
         "task_files": task_count,
         "services": {
-            "dashboard": {"port": 5000, "name": "Sartor Dashboard"},
-            "gateway": {"port": 5001, "name": "Gateway API"},
+            "dashboard": {"port": 5000, "name": "Sartor Dashboard", "note": "May be down on gpuserver1"},
+            "gateway": {"port": 5001, "name": "Gateway API", "note": "May be down on gpuserver1"},
             "safety": {"port": 8000, "name": "Safety Research"},
             "meridian": {"port": 5055, "name": "MERIDIAN"},
         },
@@ -444,27 +476,27 @@ async def system_status():
 
 @app.get("/api/costs")
 async def costs():
+    # Load costs.json
     try:
         with open(COSTS_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
     except Exception:
-        return {"daily_limit": 5.0, "spent_today": 0.0, "calls_today": 0, "last_reset": None}
+        data = {"daily_limit": 5.0, "calls": [], "last_reset": None}
 
     calls = data.get("calls", [])
-    today_str = date.today().isoformat()
+    today_val = date.today()
 
-    # Compute today's spend
+    # Compute from costs.json
     spent_today = 0.0
     calls_today = 0
     spent_week = 0.0
     spent_month = 0.0
-    today = date.today()
 
     for c in calls:
         try:
             ts = datetime.fromisoformat(c["timestamp"]).date()
             cost = c.get("cost", 0)
-            delta = (today - ts).days
+            delta = (today_val - ts).days
             if delta == 0:
                 spent_today += cost
                 calls_today += 1
@@ -475,13 +507,38 @@ async def costs():
         except Exception:
             continue
 
+    # Also aggregate costs from heartbeat-log.csv
+    heartbeat_log = DATA_DIR / "heartbeat-log.csv"
+    heartbeat_costs_today = 0.0
+    heartbeat_costs_week = 0.0
+    heartbeat_costs_month = 0.0
+    heartbeat_calls = 0
+    if heartbeat_log.exists():
+        for line in read_file_safe(heartbeat_log).splitlines():
+            parts = line.split(",")
+            if len(parts) < 6 or parts[0].strip() == "timestamp":
+                continue
+            try:
+                ts = datetime.fromisoformat(parts[0].strip()).date()
+                cost = float(parts[5].strip())
+                delta = (today_val - ts).days
+                heartbeat_calls += 1
+                if delta == 0:
+                    heartbeat_costs_today += cost
+                if delta < 7:
+                    heartbeat_costs_week += cost
+                if delta < 30:
+                    heartbeat_costs_month += cost
+            except (ValueError, IndexError):
+                continue
+
     return {
         "daily_limit": data.get("daily_limit", 5.0),
-        "spent_today": round(spent_today, 4),
-        "spent_week": round(spent_week, 4),
-        "spent_month": round(spent_month, 4),
+        "spent_today": round(spent_today + heartbeat_costs_today, 4),
+        "spent_week": round(spent_week + heartbeat_costs_week, 4),
+        "spent_month": round(spent_month + heartbeat_costs_month, 4),
         "calls_today": calls_today,
-        "total_calls": len(calls),
+        "total_calls": len(calls) + heartbeat_calls,
         "last_reset": data.get("last_reset"),
     }
 
@@ -503,7 +560,7 @@ async def career():
         "bonus": {
             "title": "AZ March Bonus",
             "date": "2026-03-15",
-            "days_remaining": (date(2026, 3, 15) - date.today()).days,
+            "status": "paid",
         },
         "engagements": [
             "OpenAI Red Teaming Network member",
@@ -552,9 +609,9 @@ async def daily_tasks():
     today_file = REPO_TASKS_DIR / "TODAY.md"
     content = read_file_safe(today_file)
     if not content:
-        return {"date": date.today().isoformat(), "todo": [], "completed": [], "log": []}
+        return {"date": date.today().isoformat(), "todos": [], "completed": [], "log": []}
 
-    todo = []
+    todos = []
     completed = []
     log = []
     current_section = None
@@ -567,27 +624,37 @@ async def daily_tasks():
             m = re.search(r"(\d{4}-\d{2}-\d{2})", stripped)
             if m:
                 parsed_date = m.group(1)
-        elif stripped.startswith("## To Do"):
-            current_section = "todo"
+        # Match all task-bearing sections (To Do, Urgent, This Week, etc.)
         elif stripped.startswith("## Completed"):
             current_section = "completed"
         elif stripped.startswith("## Log"):
             current_section = "log"
+        elif stripped.startswith("## "):
+            # Any other H2 section (Urgent, This Week, To Do, etc.) is a todo section
+            current_section = "todo"
         elif current_section == "todo" and stripped.startswith("- [ ]"):
-            todo.append(stripped[len("- [ ]"):].strip())
+            text = re.sub(r'\[.*?\]\(.*?\)', lambda m: m.group(0).split(']')[0][1:], stripped[len("- [ ]"):].strip())
+            todos.append({"text": text, "done": False})
+        elif current_section == "todo" and stripped.startswith("- [x]"):
+            text = re.sub(r'\[.*?\]\(.*?\)', lambda m: m.group(0).split(']')[0][1:], stripped[len("- [x]"):].strip())
+            todos.append({"text": text, "done": True})
         elif current_section == "completed" and stripped.startswith("- [x]"):
-            completed.append(stripped[len("- [x]"):].strip())
+            text = re.sub(r'\[.*?\]\(.*?\)', lambda m: m.group(0).split(']')[0][1:], stripped[len("- [x]"):].strip())
+            completed.append({"text": text, "done": True})
+        elif current_section == "completed" and stripped.startswith("- [ ]"):
+            text = re.sub(r'\[.*?\]\(.*?\)', lambda m: m.group(0).split(']')[0][1:], stripped[len("- [ ]"):].strip())
+            completed.append({"text": text, "done": False})
         elif current_section == "log" and stripped.startswith("- "):
             log.append(stripped[2:].strip())
 
-    return {"date": parsed_date, "todo": todo, "completed": completed, "log": log}
+    return {"date": parsed_date, "todos": todos, "completed": completed, "log": log}
 
 
 # ── POST /api/daily-tasks/toggle ──────────────────────────────────────────────
 
 @app.post("/api/daily-tasks/toggle")
 async def toggle_daily_task(body: dict):
-    task_text = body.get("task", "").strip()
+    task_text = body.get("task", body.get("text", "")).strip()
     done = bool(body.get("done", False))
 
     if not task_text:
@@ -607,21 +674,27 @@ async def toggle_daily_task(body: dict):
     # First pass: find and remove the task from its current location
     for line in lines:
         stripped = line.strip()
-        if stripped.startswith("## To Do"):
-            current_section = "todo"
-        elif stripped.startswith("## Completed"):
+        if stripped.startswith("## Completed"):
             current_section = "completed"
         elif stripped.startswith("## Log"):
             current_section = "log"
+        elif stripped.startswith("## "):
+            current_section = "todo"
 
         if not found:
-            if done and current_section == "todo" and stripped == f"- [ ] {task_text}":
+            # Match task text ignoring markdown link suffixes
+            bare_line = re.sub(r'\s*[-—]\s*\[.*?\]\(.*?\)', '', stripped)
+            if done and current_section == "todo" and bare_line == f"- [ ] {task_text}":
                 found = True
                 removed_line = f"- [x] {task_text}"
-                continue  # skip this line (will re-insert in Completed)
-            elif not done and current_section == "completed" and stripped == f"- [x] {task_text}":
+                continue
+            elif done and current_section == "todo" and stripped.startswith("- [ ]") and task_text in stripped:
                 found = True
-                removed_line = f"- [ ] {task_text}"
+                removed_line = stripped.replace("- [ ]", "- [x]", 1)
+                continue
+            elif not done and current_section == "completed" and stripped.startswith("- [x]") and task_text in stripped:
+                found = True
+                removed_line = stripped.replace("- [x]", "- [ ]", 1)
                 continue
 
         new_lines.append(line)
@@ -732,12 +805,15 @@ async def work_status():
 
 _HEARTBEAT_TASKS = [
     {"name": "morning-briefing", "frequency": "Daily 6:30 AM"},
-    {"name": "gpu-check", "frequency": "Every 4h"},
+    {"name": "gpu-utilization-check", "frequency": "Every 4h"},
     {"name": "market-close-summary", "frequency": "Weekdays 4:30 PM"},
     {"name": "nightly-memory-curation", "frequency": "Daily 11:00 PM"},
     {"name": "weekly-financial-summary", "frequency": "Sundays 8:00 AM"},
     {"name": "weekly-nonprofit-review", "frequency": "Sundays 9:00 AM"},
     {"name": "weekly-skill-evolution", "frequency": "Saturdays 10:00 AM"},
+    {"name": "personal-data-gather", "frequency": "Daily"},
+    {"name": "self-improvement-loop", "frequency": "On demand"},
+    {"name": "health-check", "frequency": "Every run"},
 ]
 
 @app.get("/api/heartbeat-status")
@@ -784,15 +860,28 @@ async def memory_health():
     memory_dir = REPO_ROOT / "sartor" / "memory"
     meta_dir = memory_dir / ".meta"
 
+    # Use the decay system for tier classification
+    try:
+        import sys
+        sys.path.insert(0, str(memory_dir))
+        from decay import compute_all_scores, get_health_summary
+        decay_scores = compute_all_scores()
+    except Exception:
+        decay_scores = {}
+
     files = []
     for f in sorted(memory_dir.glob("*.md")):
         stat = f.stat()
         age_days = (datetime.now().timestamp() - stat.st_mtime) / 86400
+        entry = decay_scores.get(f.name, {})
+        tier = entry.get("tier", "COLD")
+        score = entry.get("score", 0.0)
         files.append({
             "name": f.name,
             "size": stat.st_size,
             "age_days": round(age_days, 1),
-            "tier": "active" if age_days < 7 else "warm" if age_days < 30 else "cold" if age_days < 90 else "stale"
+            "tier": tier,
+            "score": round(score, 4),
         })
 
     consolidation_log = meta_dir / "consolidation-log.md"
@@ -803,9 +892,9 @@ async def memory_health():
         if dates:
             last_dream = dates[-1]
 
-    tiers = {"active": 0, "warm": 0, "cold": 0, "stale": 0}
+    tiers = {"ACTIVE": 0, "WARM": 0, "COLD": 0, "FORGOTTEN": 0, "ARCHIVE": 0}
     for f in files:
-        tiers[f["tier"]] += 1
+        tiers[f["tier"]] = tiers.get(f["tier"], 0) + 1
 
     return {
         "file_count": len(files),
@@ -1040,6 +1129,57 @@ async def gpu_status():
     return result
 
 
+@app.get("/api/gpu/rental")
+async def gpu_rental():
+    """
+    Proxy data from the gpuserver1 dashboard at http://192.168.1.100:5060.
+    Returns rental status, GPU activity, and recent rental log for the home dashboard widget.
+    """
+    import urllib.request
+    import urllib.error
+
+    base = "http://192.168.1.100:5060"
+    out = {"online": False, "gpu": None, "vastai": None, "rentals": []}
+
+    def fetch_json(path: str, timeout: int = 4):
+        try:
+            with urllib.request.urlopen(f"{base}{path}", timeout=timeout) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except Exception:
+            return None
+
+    gpu = fetch_json("/api/gpu")
+    vastai = fetch_json("/api/vastai")
+
+    if gpu is None and vastai is None:
+        return out
+
+    out["online"] = True
+    if gpu:
+        out["gpu"] = {
+            "util_pct": gpu.get("utilization_pct"),
+            "mem_used_mb": gpu.get("memory_used_mb"),
+            "mem_total_mb": gpu.get("memory_total_mb"),
+            "temp_c": gpu.get("temperature_c"),
+            "power_w": gpu.get("power_draw_w"),
+            "name": gpu.get("gpu_name"),
+        }
+    if vastai:
+        out["vastai"] = {
+            "machine_status": vastai.get("machine_status"),
+            "is_rented": vastai.get("is_rented"),
+            "current_rental": vastai.get("current_rental"),
+            "hourly_rate": vastai.get("hourly_rate"),
+            "earnings_today": vastai.get("earnings_today"),
+            "earnings_week": vastai.get("earnings_week"),
+            "earnings_month": vastai.get("earnings_month"),
+            "reliability": vastai.get("reliability"),
+        }
+        out["rentals"] = (vastai.get("rental_log") or [])[-5:]
+
+    return out
+
+
 @app.post("/api/gpu/command")
 async def gpu_command(body: dict):
     """Execute a predefined command on gpuserver1 via SSH."""
@@ -1077,6 +1217,581 @@ async def gpu_command(body: dict):
         return JSONResponse(status_code=504, content={"error": "Command timed out"})
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
+
+
+# ── GET /api/memory-graph ─────────────────────────────────────────────────────
+
+_CLUSTER_MAP = {
+    "FAMILY.md": "family",
+    "ALTON.md": "personal",
+    "SELF.md": "personal",
+    "BUSINESS.md": "business",
+    "MACHINES.md": "business",
+    "TAXES.md": "taxes",
+    "ASTRAZENECA.md": "career",
+    "PROJECTS.md": "projects",
+    "MASTERPLAN.md": "projects",
+    "MASTERPLAN-VISIONARY.md": "projects",
+    "LEARNINGS.md": "projects",
+    "PROCEDURES.md": "business",
+    "INDEX.md": "projects",
+}
+
+_CLUSTER_COLORS = {
+    "family": "#3b82f6",
+    "business": "#22c55e",
+    "taxes": "#ef4444",
+    "career": "#a855f7",
+    "personal": "#f59e0b",
+    "projects": "#14b8a6",
+}
+
+
+@app.get("/api/memory-graph")
+async def memory_graph():
+    memory_dir = REPO_ROOT / "sartor" / "memory"
+    nodes = []
+    links = []
+    file_contents = {}
+
+    # Load decay scores for tier info
+    try:
+        import sys
+        sys.path.insert(0, str(memory_dir))
+        from decay import compute_all_scores
+        decay_scores = compute_all_scores()
+    except Exception:
+        decay_scores = {}
+
+    # Read all .md files
+    for f in sorted(memory_dir.glob("*.md")):
+        content = read_file_safe(f)
+        file_contents[f.name] = content
+        stat = f.stat()
+        decay_entry = decay_scores.get(f.name, {})
+
+        cluster = _CLUSTER_MAP.get(f.name, "projects")
+        nodes.append({
+            "id": f.name,
+            "label": f.stem,
+            "type": "file",
+            "size": stat.st_size,
+            "cluster": cluster,
+            "color": _CLUSTER_COLORS.get(cluster, "#6366f1"),
+            "tier": decay_entry.get("tier", "COLD"),
+            "score": decay_entry.get("score", 0.0),
+            "preview": content[:500] if content else "",
+        })
+
+        # Extract section headings as sub-nodes
+        for line in content.splitlines():
+            m = re.match(r'^##\s+(.+)', line)
+            if m:
+                heading = m.group(1).strip()
+                sub_id = f"{f.name}::{heading}"
+                nodes.append({
+                    "id": sub_id,
+                    "label": heading,
+                    "type": "section",
+                    "size": 200,
+                    "cluster": cluster,
+                    "color": _CLUSTER_COLORS.get(cluster, "#6366f1"),
+                    "tier": decay_entry.get("tier", "COLD"),
+                    "score": 0,
+                    "preview": "",
+                })
+                links.append({
+                    "source": f.name,
+                    "target": sub_id,
+                    "weight": 0.3,
+                })
+
+    # Extract [[wiki links]] between files
+    node_ids = {n["id"] for n in nodes}
+    file_names = {f.stem.upper(): f.name for f in memory_dir.glob("*.md")}
+
+    for fname, content in file_contents.items():
+        # Match [[Link]] patterns
+        wiki_links = re.findall(r'\[\[([^\]]+)\]\]', content)
+        for link_text in wiki_links:
+            # Try to resolve to a file
+            target = None
+            link_upper = link_text.strip().upper().replace(" ", "")
+            for stem_upper, full_name in file_names.items():
+                if link_upper == stem_upper or link_upper == stem_upper.replace(".MD", ""):
+                    target = full_name
+                    break
+            if target and target != fname:
+                links.append({"source": fname, "target": target, "weight": 1.0})
+
+        # Also look for markdown links to other memory files
+        md_links = re.findall(r'\[.*?\]\(([^)]+\.md)\)', content)
+        for md_link in md_links:
+            target_name = Path(md_link).name
+            if target_name in file_contents and target_name != fname:
+                links.append({"source": fname, "target": target_name, "weight": 0.7})
+
+        # Look for plain references to other file names
+        for other_fname in file_contents:
+            if other_fname != fname:
+                stem = Path(other_fname).stem
+                if stem in content and len(stem) > 3:
+                    links.append({"source": fname, "target": other_fname, "weight": 0.4})
+
+    # Deduplicate links
+    seen = set()
+    deduped_links = []
+    for link in links:
+        key = (link["source"], link["target"])
+        if key not in seen:
+            seen.add(key)
+            deduped_links.append(link)
+
+    return {
+        "nodes": nodes,
+        "links": deduped_links,
+        "clusters": _CLUSTER_COLORS,
+    }
+
+
+# ── GET /api/heartbeat-live ──────────────────────────────────────────────────
+
+@app.get("/api/heartbeat-live")
+async def heartbeat_live():
+    log_file = DATA_DIR / "heartbeat-log.csv"
+    if not log_file.exists():
+        return {"last_tick": None, "recent": []}
+
+    content = read_file_safe(log_file)
+    lines = [l for l in content.splitlines() if l.strip() and not l.startswith("timestamp")]
+    # Get last 10 entries
+    recent_lines = lines[-10:] if len(lines) > 10 else lines
+    recent = []
+    last_tick = None
+    for line in reversed(recent_lines):
+        parts = line.split(",")
+        if len(parts) >= 3:
+            ts = parts[0].strip()
+            name = parts[1].strip()
+            status = parts[2].strip()
+            recent.append({"timestamp": ts, "task": name, "status": status})
+            if last_tick is None:
+                last_tick = ts
+
+    return {"last_tick": last_tick, "recent": recent}
+
+
+# ── GET /api/memory-recent ───────────────────────────────────────────────────
+
+_MEMORY_RECENT_CACHE: dict = {}
+_MEMORY_RECENT_CACHE_TS: float = 0.0
+_MEMORY_RECENT_CACHE_TTL = 60.0
+
+import time as _time
+
+@app.get("/api/memory-recent")
+async def memory_recent():
+    global _MEMORY_RECENT_CACHE, _MEMORY_RECENT_CACHE_TS
+    now = _time.monotonic()
+    if now - _MEMORY_RECENT_CACHE_TS < _MEMORY_RECENT_CACHE_TTL and _MEMORY_RECENT_CACHE:
+        return _MEMORY_RECENT_CACHE
+
+    cutoff = datetime.now().timestamp() - 86400  # 24h
+    entries = []
+
+    # Recent from curator-log.jsonl
+    curator_log = MEMORY_DIR / ".meta" / "curator-log.jsonl"
+    if curator_log.exists():
+        for line in read_file_safe(curator_log).splitlines():
+            if not line.strip():
+                continue
+            try:
+                rec = json.loads(line)
+                ts = rec.get("timestamp", "")
+                if ts:
+                    try:
+                        t = datetime.fromisoformat(ts.replace("Z", "+00:00")).timestamp()
+                        if t >= cutoff:
+                            entries.append({
+                                "timestamp": ts,
+                                "source_machine": "rocinante",
+                                "destination": "curator",
+                                "action": rec.get("action", "curator-run"),
+                                "entity": rec.get("file", ""),
+                            })
+                    except ValueError:
+                        pass
+            except json.JSONDecodeError:
+                pass
+
+    # Recent from extractor-log.jsonl
+    extractor_log = MEMORY_DIR / ".meta" / "extractor-log.jsonl"
+    if extractor_log.exists():
+        for line in read_file_safe(extractor_log).splitlines():
+            if not line.strip():
+                continue
+            try:
+                rec = json.loads(line)
+                ts = rec.get("timestamp", "")
+                if ts:
+                    try:
+                        t = datetime.fromisoformat(ts.replace("Z", "+00:00")).timestamp()
+                        if t >= cutoff:
+                            entries.append({
+                                "timestamp": ts,
+                                "source_machine": "rocinante",
+                                "destination": "extractor",
+                                "action": "extract",
+                                "entity": f"{rec.get('proposals_written', 0)} proposals",
+                            })
+                    except ValueError:
+                        pass
+            except json.JSONDecodeError:
+                pass
+
+    # Recent drained files from inbox
+    inbox_dir = MEMORY_DIR / "inbox"
+    if inbox_dir.exists():
+        for machine_dir in inbox_dir.iterdir():
+            if not machine_dir.is_dir() or machine_dir.name.startswith("."):
+                continue
+            machine = machine_dir.name
+            # Check _processed / _archive subdirs for recently drained items
+            for drain_dir_name in ("_processed", "_archive", "_curator_logs"):
+                drain_dir = machine_dir / drain_dir_name
+                if not drain_dir.is_dir():
+                    continue
+                for f in drain_dir.iterdir():
+                    if not f.is_file():
+                        continue
+                    try:
+                        mtime = f.stat().st_mtime
+                        if mtime >= cutoff:
+                            entries.append({
+                                "timestamp": datetime.fromtimestamp(mtime).isoformat(),
+                                "source_machine": machine,
+                                "destination": "memory",
+                                "action": "drained",
+                                "entity": f.name,
+                            })
+                    except OSError:
+                        pass
+
+    entries.sort(key=lambda x: x["timestamp"], reverse=True)
+    result = {"entries": entries[:50], "total": len(entries)}
+    _MEMORY_RECENT_CACHE = result
+    _MEMORY_RECENT_CACHE_TS = now
+    return result
+
+
+# ── GET /api/cron-health ─────────────────────────────────────────────────────
+
+_CRON_HEALTH_CACHE: dict = {}
+_CRON_HEALTH_CACHE_TS: float = 0.0
+_CRON_HEALTH_CACHE_TTL = 120.0
+
+_SCHEDULED_TASKS_DIR = REPO_ROOT / ".claude" / "scheduled-tasks"
+
+_CRON_DEFS = [
+    {"name": "morning-briefing",      "machine": "rocinante", "schedule": "0 6 * * *",  "interval_h": 24},
+    {"name": "nightly-memory-curation","machine": "rocinante","schedule": "0 23 * * *", "interval_h": 24},
+    {"name": "gpu-utilization-check", "machine": "rocinante", "schedule": "0 */4 * * *","interval_h": 4},
+    {"name": "market-close-summary",  "machine": "rocinante", "schedule": "30 16 * * 1-5","interval_h": 24},
+    {"name": "weekly-financial-summary","machine":"rocinante","schedule": "0 6 * * 0",  "interval_h": 168},
+    {"name": "wiki-reindex",          "machine": "rocinante", "schedule": "0 2 * * *",  "interval_h": 24},
+]
+
+
+@app.get("/api/cron-health")
+async def cron_health():
+    global _CRON_HEALTH_CACHE, _CRON_HEALTH_CACHE_TS
+    now = _time.monotonic()
+    if now - _CRON_HEALTH_CACHE_TS < _CRON_HEALTH_CACHE_TTL and _CRON_HEALTH_CACHE:
+        return _CRON_HEALTH_CACHE
+
+    # Build last-run map from heartbeat-log.csv
+    heartbeat_log = DATA_DIR / "heartbeat-log.csv"
+    last_runs: dict[str, dict] = {}
+    if heartbeat_log.exists():
+        for line in read_file_safe(heartbeat_log).splitlines():
+            parts = line.split(",", 4)
+            if len(parts) < 3 or parts[0].strip() == "timestamp":
+                continue
+            ts_str = parts[0].strip()
+            name = parts[1].strip()
+            status = parts[2].strip()
+            log_tail = parts[4].strip() if len(parts) > 4 else ""
+            if name not in last_runs or ts_str > last_runs[name]["last_run"]:
+                last_runs[name] = {"last_run": ts_str, "last_status": status, "last_log_tail": log_tail}
+
+    # Also check curator-log.jsonl for nightly-memory-curation
+    curator_log = MEMORY_DIR / ".meta" / "curator-log.jsonl"
+    if curator_log.exists():
+        lines = [l for l in read_file_safe(curator_log).splitlines() if l.strip()]
+        if lines:
+            try:
+                last = json.loads(lines[-1])
+                ts = last.get("timestamp", "")
+                if ts and ("nightly-memory-curation" not in last_runs or ts > last_runs["nightly-memory-curation"]["last_run"]):
+                    last_runs["nightly-memory-curation"] = {
+                        "last_run": ts,
+                        "last_status": "ok",
+                        "last_log_tail": f"facts_written={last.get('facts_written', '?')} files_updated={last.get('files_updated', '?')}",
+                    }
+            except (json.JSONDecodeError, KeyError):
+                pass
+
+    # Try gpuserver1 heartbeat via SSH
+    gpu_heartbeat = None
+    try:
+        res = subprocess.run(
+            ["ssh", "-o", "ConnectTimeout=3", "-o", "StrictHostKeyChecking=no",
+             "alton@192.168.1.100", "cat /home/alton/sartor-heartbeat.json 2>/dev/null || echo null"],
+            capture_output=True, text=True, timeout=6
+        )
+        if res.returncode == 0 and res.stdout.strip() not in ("null", ""):
+            gpu_heartbeat = json.loads(res.stdout.strip())
+    except Exception:
+        pass
+
+    now_ts = datetime.now().timestamp()
+    crons = []
+    for cdef in _CRON_DEFS:
+        name = cdef["name"]
+        machine = cdef["machine"]
+        interval_h = cdef["interval_h"]
+        lr = last_runs.get(name)
+        last_run = lr["last_run"] if lr else None
+        last_status = lr["last_status"] if lr else "never_run"
+        last_log_tail = lr["last_log_tail"] if lr else ""
+
+        # Compute health color
+        color = "grey"
+        if last_run:
+            try:
+                lr_ts = datetime.fromisoformat(last_run.replace("Z", "+00:00")).timestamp()
+                age_h = (now_ts - lr_ts) / 3600
+                if age_h <= interval_h * 1.1:
+                    color = "green"
+                elif age_h <= interval_h * 2.0:
+                    color = "yellow"
+                else:
+                    color = "red"
+                if last_status not in ("ok", "success", ""):
+                    color = "red"
+            except ValueError:
+                color = "grey"
+
+        crons.append({
+            "name": name,
+            "machine": machine,
+            "schedule": cdef["schedule"],
+            "last_run": last_run,
+            "last_status": last_status,
+            "last_log_tail": last_log_tail,
+            "health": color,
+            "gpu_heartbeat": gpu_heartbeat if machine == "gpuserver1" else None,
+        })
+
+    result = {"crons": crons, "gpu_heartbeat": gpu_heartbeat}
+    _CRON_HEALTH_CACHE = result
+    _CRON_HEALTH_CACHE_TS = now
+    return result
+
+
+# ── GET /api/inbox-status ────────────────────────────────────────────────────
+
+@app.get("/api/inbox-status")
+async def inbox_status():
+    inbox_dir = MEMORY_DIR / "inbox"
+    machines = []
+    skip_dirs = {".drained", ".receipts", "_archive", "_processed", "_flagged", "_curator_logs", "_curator_staging"}
+
+    if not inbox_dir.exists():
+        return {"machines": machines}
+
+    for machine_dir in sorted(inbox_dir.iterdir()):
+        if not machine_dir.is_dir() or machine_dir.name.startswith("."):
+            continue
+        machine = machine_dir.name
+        pending_files = []
+        flagged = 0
+
+        for item in machine_dir.iterdir():
+            if item.name.startswith("_") or item.name in skip_dirs or item.is_dir():
+                continue
+            if not item.is_file():
+                continue
+            try:
+                mtime = item.stat().st_mtime
+                # Check for missing schema fields (simple heuristic: no frontmatter)
+                content = read_file_safe(item)
+                has_frontmatter = content.startswith("---")
+                pending_files.append({"name": item.name, "mtime": mtime, "has_frontmatter": has_frontmatter})
+                if not has_frontmatter:
+                    flagged += 1
+            except OSError:
+                pass
+
+        pending_files.sort(key=lambda x: x["mtime"])
+        count = len(pending_files)
+        oldest_age_h = None
+        newest_ts = None
+        if pending_files:
+            oldest_age_h = round((datetime.now().timestamp() - pending_files[0]["mtime"]) / 3600, 1)
+            newest_ts = datetime.fromtimestamp(pending_files[-1]["mtime"]).isoformat()
+
+        machines.append({
+            "machine": machine,
+            "pending_count": count,
+            "oldest_age_h": oldest_age_h,
+            "newest_entry_ts": newest_ts,
+            "flagged_count": flagged,
+        })
+
+    return {"machines": machines}
+
+
+# ── GET /api/memory-search ───────────────────────────────────────────────────
+
+_SEARCH_CACHE: dict[str, tuple[float, list]] = {}
+_SEARCH_CACHE_TTL = 60.0
+
+@app.get("/api/memory-search")
+async def memory_search(q: str = ""):
+    q = q.strip()
+    if not q:
+        return {"hits": [], "query": ""}
+
+    now = _time.monotonic()
+    cache_key = q.lower()
+    if cache_key in _SEARCH_CACHE:
+        ts, hits = _SEARCH_CACHE[cache_key]
+        if now - ts < _SEARCH_CACHE_TTL:
+            return {"hits": hits, "query": q}
+
+    hits = []
+
+    # Try sartor/memory/search.py BM25 first
+    search_script = MEMORY_DIR / "search.py"
+    if search_script.exists():
+        try:
+            res = subprocess.run(
+                ["python", str(search_script), q],
+                capture_output=True, text=True, timeout=10,
+                cwd=str(MEMORY_DIR)
+            )
+            if res.returncode == 0:
+                for line in res.stdout.splitlines()[:20]:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    # Try to parse "path:line: snippet" format
+                    m = re.match(r"^(.+?):(\d+):\s*(.*)", line)
+                    if m:
+                        hits.append({
+                            "path": m.group(1).strip(),
+                            "line": int(m.group(2)),
+                            "snippet": m.group(3).strip()[:200],
+                        })
+                    else:
+                        hits.append({"path": line, "line": 0, "snippet": ""})
+        except Exception:
+            pass
+
+    # Fallback: grep/findstr over memory .md files
+    if not hits:
+        try:
+            if platform.system() == "Windows":
+                result = subprocess.run(
+                    ["grep", "-r", "-n", "-i", "--include=*.md", q, str(MEMORY_DIR)],
+                    capture_output=True, text=True, timeout=10
+                )
+            else:
+                result = subprocess.run(
+                    ["grep", "-r", "-n", "-i", "--include=*.md", q, str(MEMORY_DIR)],
+                    capture_output=True, text=True, timeout=10
+                )
+            for line in (result.stdout or "").splitlines()[:20]:
+                # Parse grep output: filepath:lineno:content
+                m = re.match(r"^(.+?):(\d+):\s*(.*)", line)
+                if m:
+                    rel_path = str(Path(m.group(1)).relative_to(MEMORY_DIR)) if str(m.group(1)).startswith(str(MEMORY_DIR)) else m.group(1)
+                    hits.append({
+                        "path": rel_path,
+                        "line": int(m.group(2)),
+                        "snippet": m.group(3).strip()[:200],
+                    })
+        except Exception:
+            pass
+
+    _SEARCH_CACHE[cache_key] = (now, hits)
+    return {"hits": hits[:20], "query": q}
+
+
+# ── POST /api/obsidian/open ──────────────────────────────────────────────────
+
+_OBSIDIAN_API_KEY: str | None = None
+
+def _load_obsidian_key() -> str | None:
+    global _OBSIDIAN_API_KEY
+    if _OBSIDIAN_API_KEY is not None:
+        return _OBSIDIAN_API_KEY
+    key_path = REPO_ROOT / ".secrets" / "obsidian-api-key.txt"
+    try:
+        _OBSIDIAN_API_KEY = key_path.read_text(encoding="utf-8").strip()
+        return _OBSIDIAN_API_KEY
+    except FileNotFoundError:
+        return None
+
+
+@app.post("/api/obsidian/open")
+async def obsidian_open(body: dict):
+    import urllib.request
+    import urllib.error
+    import ssl
+
+    path = body.get("path", "").strip()
+    if not path:
+        return JSONResponse(status_code=400, content={"error": "path required"})
+
+    # Reject paths outside sartor/memory vault
+    if ".." in path or path.startswith("/"):
+        return JSONResponse(status_code=400, content={"error": "invalid path"})
+
+    key = _load_obsidian_key()
+    if not key:
+        return JSONResponse(status_code=500, content={"error": "obsidian-api-key.txt not found in .secrets/"})
+
+    # Check if path exists locally (optional guard)
+    local_path = REPO_ROOT / path
+    if not local_path.exists():
+        return JSONResponse(status_code=404, content={"error": f"path not found in vault: {path}"})
+
+    # Forward to Obsidian Local REST API
+    import urllib.parse
+    encoded_path = urllib.parse.quote(path, safe="")
+    url = f"https://127.0.0.1:27124/open/{encoded_path}"
+    try:
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        req = urllib.request.Request(url, method="POST")
+        req.add_header("Authorization", f"Bearer {key}")
+        req.add_header("Content-Type", "application/json")
+        req.add_header("Content-Length", "0")
+        with urllib.request.urlopen(req, timeout=4, context=ctx) as resp:
+            return {"ok": True, "status": resp.status, "path": path}
+    except urllib.error.URLError as e:
+        reason = str(e.reason)
+        if "refused" in reason.lower() or "connect" in reason.lower():
+            return JSONResponse(
+                status_code=503,
+                content={"error": "Obsidian Local REST API is not reachable. Open the sartor/memory vault in Obsidian first."}
+            )
+        return JSONResponse(status_code=502, content={"error": f"Obsidian proxy error: {reason}"})
+    except Exception as e:
+        return JSONResponse(status_code=502, content={"error": f"Obsidian proxy error: {e}"})
 
 
 # ── Run ────────────────────────────────────────────────────────────────────────

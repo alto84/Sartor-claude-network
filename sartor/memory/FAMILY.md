@@ -3,6 +3,7 @@ type: domain
 entity: FAMILY
 updated: 2026-04-09
 updated_by: Claude
+last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/family]
 aliases: [Sartor Family, Household]

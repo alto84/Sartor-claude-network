@@ -3,6 +3,7 @@ type: domain
 entity: PROJECTS
 updated: 2026-02-20
 updated_by: Claude
+last_verified: 2026-04-12
 status: active
 next_review: 2026-04-15
 tags: [entity/projects, status/active]
