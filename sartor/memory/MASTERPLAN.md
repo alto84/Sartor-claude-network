@@ -1,10 +1,10 @@
 ---
 type: meta
 entity: MASTERPLAN
-updated: 2026-02-06
+updated: 2026-04-12
 updated_by: Claude
 status: active
-next_review: 2026-04-15
+next_review: 2026-05-15
 tags: [meta/roadmap, meta/vision]
 aliases: [Master Plan, Roadmap]
 related: [SELF, PROJECTS, MASTERPLAN-VISIONARY]
@@ -12,7 +12,7 @@ related: [SELF, PROJECTS, MASTERPLAN-VISIONARY]
 
 # SARTOR MASTER PLAN
 
-*Synthesized from 5 agent perspectives. Last updated: 2026-02-06.*
+*Synthesized from 5 agent perspectives. Last updated: 2026-04-12.*
 *Judge: Claude Opus 4.6 | Status: ACTIVE*
 
 ---
@@ -74,6 +74,8 @@ Sartor is a personal AI system that runs quietly in the background of Alton's li
 
 ## 3. Phase 1: Foundation (This Week)
 
+> **STATUS (2026-04-12): COMPLETE.** Gateway cron running 65 days continuously. BM25 search, cost tracker, morning briefs, git auto-commit all operational. Two items never built: test_gateway.py and TAXES-2025.md structured tracker. System has organically exceeded Phase 1 into Phase 2/3 territory (dashboard, 19+ skills, vast.ai hosting live).
+
 The goal is a working heartbeat loop and memory system. Nothing fancy. Just the bones.
 
 ### Day 1-2: Gateway + Memory
@@ -123,6 +125,8 @@ The goal is a working heartbeat loop and memory system. Nothing fancy. Just the 
 
 ## 4. Phase 2: Living System (Weeks 2-4)
 
+> **STATUS (2026-04-12): PARTIALLY COMPLETE.** MERIDIAN dashboard built (Next.js 16, 15+ widgets) but not currently running. SENTINEL monitoring partially implemented via cron scripts (heartbeat-watcher, gather_mirror, sartor-monitoring). ATLAS memory graph partially implemented (BM25 search, decay scoring, autodream, wiki.py with backlinks). Session compaction and self-editing memory not yet implemented.
+
 ### Week 2: Dashboard (MERIDIAN v0.1)
 
 - [ ] Flask app on gpuserver1, port 5000, accessible from home network
@@ -152,6 +156,8 @@ The goal is a working heartbeat loop and memory system. Nothing fancy. Just the 
 **Phase 2 Exit Criteria:** Dashboard serves morning brief on phone. Gateway monitors 3+ external systems. Memory files are interlinked. System runs for 2 weeks with less than 10 minutes/week of manual intervention.
 
 ## 5. Phase 3: Revenue (Months 2-3)
+
+> **STATUS (2026-04-12): GPU RENTAL ACTIVE.** RTX 5090 listed on vast.ai (machine 52271), verified, actively rented at $0.35/hr GPU rate. FORGE/ANVIL/CHRONICLE not started. GPU rental is the only revenue stream producing income.
 
 ### FORGE: Technical Consulting
 
@@ -358,5 +364,9 @@ ATLAS --> MERIDIAN --> SENTINEL
 ---
 
 *This plan is a living document. It will be updated as Sartor evolves. The git log is the changelog.*
+
+## History
+- 2026-02-06: Initial creation from 5-agent think tank synthesis
+- 2026-04-12: Phase status annotations added. Phase 1 declared complete after 65 days of continuous operation. Phase 2 partially complete. Phase 3 GPU rental active.
 
 *"The best AI assistant is the one you forget is running until it hands you exactly what you need." -- Sartor Design Principle*
