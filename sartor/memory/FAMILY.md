@@ -15,13 +15,13 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 ## Key Facts
 - Family of 5 (+ 3 cats), based in Montclair, NJ
 - [[ALTON|Alton]] (Emmett Alton Sartor) - head of household
-- Aneeta - wife (ICU epilepsy nursing background)
+- Aneeta - Co-Head of Household (ICU epilepsy nursing background)
 - Three children: Vayu, Vishala, Vasu
 - Three cats: Loki, Ghosty, Pickle
 
 ## Family Members
 
-### Aneeta (Wife)
+### Aneeta (Co-Head of Household)
 - Legal name: Aneeta Saxena
 - Cell: (973) 303-5427
 - Email: aneetasax@gmail.com
@@ -130,3 +130,198 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 
 ## Consolidated from daily logs (2026-04-07)
 - [2026-04-05] (fact) 2026-04-05 is Easter Sunday -- school holiday (MKA)
+
+<!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-2881b3cc7fce -->
+## Inbox entry: ce-1775964664-2881b3cc7fce
+
+- Source machine: `rocinante`
+- Created: 2026-04-12T03:31:04+00:00
+- Operation: replace
+- Priority: p2
+- Drained: 2026-04-12T04:35:31+00:00
+
+# Proposed memory: health
+
+- **Category:** `structured_update` / `health`
+- **Confidence:** 0.90
+- **Dedup status:** `partial_update_proposed`
+- **Suggested target:** `FAMILY.md`
+- **Suggested operation:** `replace`
+- **Field:** `health` → `chemo`
+- **Entity:** `Loki`
+
+## Source quote
+
+> I need to order Loki (my cat with small cell lymphoma!) his chemo. I think i got it through chewy
+
+## Match span
+
+`chemo`
+
+## Session reference
+
+- **session_id:** `6d66075b-10f9-482c`
+- **turn_timestamp:** `2026-04-10T23:27:02.534Z`
+- **source_file:** `6d66075b-10f9-482c-a62e-9f2828a7ed0d.jsonl`
+
+## Proposed edit
+
+Replace field `health` on entity `Loki` in `FAMILY.md` with value `chemo`.
+
+<!-- /curator-drained -->
+
+<!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-3310abd52d95 -->
+## Inbox entry: ce-1775964664-3310abd52d95
+
+- Source machine: `rocinante`
+- Created: 2026-04-12T03:31:04+00:00
+- Operation: replace
+- Priority: p2
+- Drained: 2026-04-12T04:35:31+00:00
+
+# Proposed memory: dob
+
+- **Category:** `structured_update` / `dob`
+- **Confidence:** 0.90
+- **Dedup status:** `new`
+- **Suggested target:** `FAMILY.md`
+- **Suggested operation:** `replace`
+- **Field:** `date_of_birth` → `9/20/1984`
+- **Entity:** `Aneeta`
+
+## Source quote
+
+> my birthday is 9/20/84. aneeta's is 10/20/80. please correct.
+
+## Match span
+
+`9/20/1984`
+
+## Session reference
+
+- **session_id:** `6d66075b-10f9-482c`
+- **turn_timestamp:** `2026-04-10T22:54:14.859Z`
+- **source_file:** `6d66075b-10f9-482c-a62e-9f2828a7ed0d.jsonl`
+
+## Proposed edit
+
+Replace field `date_of_birth` on entity `Aneeta` in `FAMILY.md` with value `9/20/1984`.
+
+<!-- /curator-drained -->
+
+<!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-9beac90a1086 -->
+## Inbox entry: ce-1775964664-9beac90a1086
+
+- Source machine: `rocinante`
+- Created: 2026-04-12T03:31:04+00:00
+- Operation: replace
+- Priority: p2
+- Drained: 2026-04-12T04:35:31+00:00
+
+# Proposed memory: dob
+
+- **Category:** `structured_update` / `dob`
+- **Confidence:** 0.90
+- **Dedup status:** `new`
+- **Suggested target:** `FAMILY.md`
+- **Suggested operation:** `replace`
+- **Field:** `date_of_birth` → `10/20/1980`
+- **Entity:** `Aneeta`
+
+## Source quote
+
+> my birthday is 9/20/84. aneeta's is 10/20/80. please correct.
+
+## Match span
+
+`10/20/1980`
+
+## Session reference
+
+- **session_id:** `6d66075b-10f9-482c`
+- **turn_timestamp:** `2026-04-10T22:54:14.859Z`
+- **source_file:** `6d66075b-10f9-482c-a62e-9f2828a7ed0d.jsonl`
+
+## Proposed edit
+
+Replace field `date_of_birth` on entity `Aneeta` in `FAMILY.md` with value `10/20/1980`.
+
+<!-- /curator-drained -->
+
+<!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-9d82d1c0ff9b -->
+## Inbox entry: ce-1775964664-9d82d1c0ff9b
+
+- Source machine: `rocinante`
+- Created: 2026-04-12T03:31:04+00:00
+- Operation: replace
+- Priority: p2
+- Drained: 2026-04-12T04:35:31+00:00
+
+# Proposed memory: health
+
+- **Category:** `structured_update` / `health`
+- **Confidence:** 0.90
+- **Dedup status:** `partial_update_proposed`
+- **Suggested target:** `FAMILY.md`
+- **Suggested operation:** `replace`
+- **Field:** `health` → `lymphoma`
+- **Entity:** `Loki`
+
+## Source quote
+
+> I need to order Loki (my cat with small cell lymphoma!) his chemo. I think i got it through chewy
+
+## Match span
+
+`lymphoma`
+
+## Session reference
+
+- **session_id:** `6d66075b-10f9-482c`
+- **turn_timestamp:** `2026-04-10T23:27:02.534Z`
+- **source_file:** `6d66075b-10f9-482c-a62e-9f2828a7ed0d.jsonl`
+
+## Proposed edit
+
+Replace field `health` on entity `Loki` in `FAMILY.md` with value `lymphoma`.
+
+<!-- /curator-drained -->
+
+<!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-d5f5f6b4a8fb -->
+## Inbox entry: ce-1775964664-d5f5f6b4a8fb
+
+- Source machine: `rocinante`
+- Created: 2026-04-12T03:31:04+00:00
+- Operation: replace
+- Priority: p2
+- Drained: 2026-04-12T04:35:31+00:00
+
+# Proposed memory: phone
+
+- **Category:** `numeric` / `phone`
+- **Confidence:** 0.90
+- **Dedup status:** `already_landed`
+- **Suggested target:** `FAMILY.md`
+- **Suggested operation:** `replace`
+- **Field:** `cell_phone` → `(914) 488-5727`
+- **Entity:** `Tier`
+
+## Source quote
+
+> /actions with deadlines} ## CPA Contact Jonathan Francis — Francis & Company — (914) 488-5727 ## Summary {2-3 sentence status narrative} ```
+
+## Match span
+
+`(914) 488-5727`
+
+## Session reference
+
+- **session_id:** `4408a400-214c-4c35`
+- **turn_timestamp:** `2026-04-12T02:04:11.275Z`
+- **source_file:** `4408a400-214c-4c35-a020-837b64d0b784.jsonl`
+
+## Proposed edit
+
+Replace field `cell_phone` on entity `Tier` in `FAMILY.md` with value `(914) 488-5727`.
+
+<!-- /curator-drained -->

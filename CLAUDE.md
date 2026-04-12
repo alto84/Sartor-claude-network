@@ -29,11 +29,11 @@ The Sartor family lives in Montclair, New Jersey.
 
 | Person | Role | Details |
 |--------|------|---------|
-| Alton Sartor | Head of household | Neurologist, Medical Director AI Innovation at AstraZeneca. Runs Solar Inference LLC and serves as Treasurer of Sante Total. |
-| Aneeta Sartor | Spouse | ICU/epilepsy neurologist. Medical Director at Neurvati. |
+| Alton Sartor | Head of household | Neurologist, new role in NYC (commutes 3 days/week from Montclair via train). Runs Solar Inference LLC and serves as Treasurer of Sante Total. |
+| Aneeta Sartor | Co-Head of Household | ICU/epilepsy neurologist. Medical Director at Neurvati. Being positioned for senior director promotion (2026). |
 | Vayu Sartor | Child | Age 10. Attends Montclair Kimberley Academy (MKA). |
 | Vishala Sartor | Child | Age 8. Attends Montclair Kimberley Academy (MKA). |
-| Vasu Sartor | Child | Age 4. |
+| Vasu Sartor | Child | Age 4. Attends Goddard School of Montclair. |
 | Loki | Cat | -- |
 | Ghosty | Cat | -- |
 | Pickle | Cat | -- |
@@ -230,9 +230,11 @@ Defined in `.claude/scheduled-tasks/`:
 | `gpu-utilization-check` | GPU and vast.ai monitoring | Every 4 hours |
 | `market-close-summary` | End-of-day market summary | Weekdays, 4:30 PM ET |
 | `nightly-memory-curation` | Prune stale data, archive trajectories | Daily, 11:00 PM ET |
-| `weekly-financial-summary` | Financial rollup across all entities | Sundays, 8:00 AM ET |
+| `weekly-financial-summary` | Financial rollup across all entities | Fridays, 6:00 PM ET |
 | `weekly-nonprofit-review` | Nonprofit compliance check | Sundays, 9:00 AM ET |
-| `weekly-skill-evolution` | Skill performance review and improvement | Saturdays, 10:00 AM ET |
+| `weekly-skill-evolution` | Skill performance review and improvement | Sundays, 3:00 AM ET |
+| `personal-data-gather` | Personal data collection (Gmail, Calendar, system state) | Every 4 hours |
+| `self-improvement-loop` | Hermes-style evaluate/research/implement/validate | Every 6 hours |
 
 ## Infrastructure Reference
 
