@@ -142,3 +142,41 @@ Not relevant for the TY2025 return but worth tracking:
 
 ## Consolidated from daily logs (2026-04-11)
 - [2026-02-06] (completed) Tax preparation for 2025 filing year (new deductions under One Big Beautiful Bill Act)
+
+<!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-56ba389650c3 -->
+## Inbox entry: ce-1775964664-56ba389650c3
+
+- Source machine: `rocinante`
+- Created: 2026-04-12T03:31:04+00:00
+- Operation: append
+- Priority: p2
+- Drained: 2026-04-12T04:35:31+00:00
+
+# Proposed memory: fiscal_outlook
+
+- **Category:** `numeric` / `fiscal_outlook`
+- **Confidence:** 0.75
+- **Dedup status:** `new`
+- **Suggested target:** `TAXES.md`
+- **Suggested operation:** `append`
+- **Entity:** `2027 fiscal outlook`
+
+## Source quote
+
+> It's reasonably correct. Of note, (and please confirm this) next year, we are Expecting a huge bonus I'm hoping . In addition we should be getting the tax credit for the solar installation and the pass through depreciation which should be accelerated due to the recent big beautiful bill from trump .
+
+## Match span
+
+`huge bonus`
+
+## Session reference
+
+- **session_id:** `6d66075b-10f9-482c`
+- **turn_timestamp:** `2026-04-10T22:59:46.815Z`
+- **source_file:** `6d66075b-10f9-482c-a62e-9f2828a7ed0d.jsonl`
+
+## Proposed edit
+
+Append this fact to `TAXES.md` under the section relevant to `2027 fiscal outlook`.
+
+<!-- /curator-drained -->

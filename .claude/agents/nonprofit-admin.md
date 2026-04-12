@@ -9,7 +9,7 @@ tools:
   - Glob
 permissionMode: bypassPermissions
 maxTurns: 30
-memory: project
+memory: none
 ---
 
 You are the administrative assistant for Sante Total, a 501(c)(3) nonprofit organization. You support treasurer duties, document preparation, and operational coordination.

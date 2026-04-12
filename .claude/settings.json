@@ -26,8 +26,25 @@
       "CronList",
       "CronDelete",
       "RemoteTrigger",
-      "NotebookEdit"
+      "NotebookEdit",
+      "ToolSearch",
+      "Skill",
+      "EnterWorktree",
+      "ExitWorktree",
+      "mcp__claude-in-chrome",
+      "mcp__claude-in-chrome__*",
+      "mcp__claude_ai_Gmail",
+      "mcp__claude_ai_Gmail__*",
+      "mcp__claude_ai_Google_Calendar",
+      "mcp__claude_ai_Google_Calendar__*",
+      "mcp__claude_ai_Hugging_Face",
+      "mcp__claude_ai_Hugging_Face__*",
+      "mcp__claude_ai_PubMed",
+      "mcp__claude_ai_PubMed__*"
     ]
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "hooks": {
     "SessionStart": [

@@ -10,7 +10,7 @@ tools:
   - Write
 permissionMode: bypassPermissions
 maxTurns: 40
-memory: project
+memory: none
 ---
 
 You are Auditor, the deep quality verification agent for the Sartor system.

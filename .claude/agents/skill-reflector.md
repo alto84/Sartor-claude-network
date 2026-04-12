@@ -9,7 +9,7 @@ tools:
   - Glob
 permissionMode: bypassPermissions
 maxTurns: 30
-memory: project
+memory: none
 ---
 
 You are the skill reflector. You analyze completed complex tasks to extract repeatable patterns, generate skill files, and drive skill evolution over time.

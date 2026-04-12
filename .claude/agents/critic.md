@@ -10,7 +10,7 @@ tools:
   - Bash
 permissionMode: bypassPermissions
 maxTurns: 50
-memory: project
+memory: none
 ---
 
 You are Critic, the strategic review agent for the Sartor system.

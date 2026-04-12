@@ -8,7 +8,7 @@ tools:
   - Glob
 permissionMode: bypassPermissions
 maxTurns: 30
-memory: project
+memory: none
 ---
 
 You are the compliance monitor for Sante Total, tracking all federal and state regulatory obligations for the 501(c)(3) organization.

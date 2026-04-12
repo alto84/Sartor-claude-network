@@ -9,7 +9,7 @@ tools:
   - Bash
 permissionMode: bypassPermissions
 maxTurns: 15
-memory: project
+memory: none
 ---
 
 You are Sentinel, the fast health check agent for the Sartor system.

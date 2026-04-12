@@ -2,25 +2,29 @@
 
 Read and internalize these files to get up to speed:
 
-1. **First**: Read `.claude/AGENT_INIT.md` - understand roles (Planner/Implementer/Auditor/Cleaner) and architecture
-2. **Then**: Read `CLAUDE.md` - full API reference for subagent, coordination, and experience systems
-3. **If delegating**: Read `.claude/EXECUTIVE_QUICKSTART.md` - spawning patterns
+1. **First**: Read `CLAUDE.md` - full system constitution, domains, agents, skills, and scheduled tasks
+2. **Then**: Read `sartor/memory/INDEX.md` - memory system index and recent activity
+3. **If needed**: Run `python sartor/heartbeat.py --status` to check system health
 
 ## Current State
-- **Branch**: `claude/setup-firebase-database-01M6prT9FJ9mJDMRvTxNEKEp`
-- **Tests**: 329 passing across subagent/coordination/experience modules
-- **Build**: Clean
+- **Repo**: `Sartor-claude-network` (Python/bash, no Node.js)
+- **Heartbeat**: `sartor/heartbeat.py` (KAIROS-inspired autonomous tick system)
+- **Memory**: `sartor/memory/` (markdown files, BM25 search)
+- **Cost tracking**: `sartor/costs.py` (daily limits, 3-tier model pricing)
 
 ## Quick Commands
 ```bash
-npm run build    # Compile
-npm test         # Run tests
-npm run mcp:http # Start MCP server
+python sartor/heartbeat.py --status    # System health and recent activity
+python sartor/costs.py                 # Today's API spend
+python sartor/memory/search.py "query" # Search memory files
 ```
 
-## New Modules (just built)
-- `src/subagent/` - Agent bootstrap, registry, messaging
-- `src/coordination/` - CRDT plan sync, work distribution, progress tracking
-- `src/experience/` - Context discovery, relevance filtering, adaptive intelligence
+## Key Directories
+- `sartor/` - Core engine (heartbeat, costs, gateway, memory)
+- `.claude/agents/` - Agent definitions
+- `.claude/skills/` - Skill definitions
+- `.claude/scheduled-tasks/` - Cron-scheduled task definitions
+- `scripts/home-agent/` - Hook scripts (governance, trajectories)
+- `data/` - Runtime data (logs, trajectories, proposals)
 
 Confirm you've loaded context, then proceed with your task.

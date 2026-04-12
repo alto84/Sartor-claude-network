@@ -139,3 +139,59 @@ Both machines support the [[PROJECTS|active projects]] in this system.
 - [2026-02-06] (decision) Storage location: ~/Sartor-claude-network/sartor/memory/ on gpuserver1
 - [2026-02-06] (decision) Storage location: ~/Sartor-claude-network/sartor/memory/ on gpuserver1
 - [2026-02-06] (insight) Having a clear machine inventory prevents confusion about where things run
+
+<!-- curator-drained 2026-04-12T04:35:31+00:00 from gpuserver1 entry=2026-04-07T15-00-00Z-gpuserver1-bootstrap -->
+## Inbox entry: 2026-04-07T15-00-00Z-gpuserver1-bootstrap
+
+- Source machine: `gpuserver1`
+- Created: 2026-04-07 15:00:00+00:00
+- Operation: fact
+- Priority: p3
+- Drained: 2026-04-12T04:35:31+00:00
+
+gpuserver1 registered in multi-machine memory network:
+- Symlinks created from both Claude Code project memory dirs (`~/.claude/projects/-home-alton/memory/` and `~/.claude/projects/-home-alton-Sartor-claude-network/memory/`) to `~/Sartor-claude-network/sartor/memory/`
+- Inbox directory at `~/Sartor-claude-network/sartor/memory/inbox/gpuserver1/` is active and ready for curator reconciliation
+- Claude Code version 2.1.33 available at /usr/bin/claude
+- Operational notes preserved at sartor/memory/reference/gpuserver1-operations.md
+
+<!-- /curator-drained -->
+
+<!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964663-287ba3e0a7cc -->
+## Inbox entry: ce-1775964663-287ba3e0a7cc
+
+- Source machine: `rocinante`
+- Created: 2026-04-12T03:31:03+00:00
+- Operation: replace
+- Priority: p2
+- Drained: 2026-04-12T04:35:31+00:00
+
+# Proposed memory: rental_price
+
+- **Category:** `structured_update` / `rental_price`
+- **Confidence:** 0.95
+- **Dedup status:** `new`
+- **Suggested target:** `MACHINES.md`
+- **Suggested operation:** `replace`
+- **Field:** `gpu_rate` → `$0.35/hr`
+- **Entity:** `machine-52271`
+
+## Source quote
+
+> Looks very spikey... Of note, I am increasing the rental price to 0.35 per hour and see how that rents for a few weeks. Profit is profit here... the most important part is that we have revenue to justify the
+
+## Match span
+
+`increasing the rental price to 0.35`
+
+## Session reference
+
+- **session_id:** `6d66075b-10f9-482c`
+- **turn_timestamp:** `2026-04-11T23:12:36.381Z`
+- **source_file:** `6d66075b-10f9-482c-a62e-9f2828a7ed0d.jsonl`
+
+## Proposed edit
+
+Replace field `gpu_rate` on entity `machine-52271` in `MACHINES.md` with value `$0.35/hr`.
+
+<!-- /curator-drained -->

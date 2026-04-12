@@ -31,17 +31,17 @@
 - Verification: Passing
 
 **Health Metrics (fill on each check):**
-- Last health check: 2026-03-31 (SSH unavailable -- ping OK, sshd not responding to handshake)
-- Uptime: UNKNOWN
-- Marketplace status: UNKNOWN (last known: Verified/Listed)
-- Current renter: UNKNOWN
-- Utilization rate (30-day): UNKNOWN
+- Last health check: 2026-04-03 (SSH OK, GPU idle, disk 37% used, uptime 43d)
+- Uptime: 43 days, 15h
+- Marketplace status: Verified/Listed
+- Current renter: None
+- Utilization rate (24h): 0%
 
 **Earnings (fill on each check):**
-- Earnings this period: UNKNOWN
-- Period: UNKNOWN
-- Total earnings to date: UNKNOWN
-- Last payout: UNKNOWN
+- Earnings (24h): $0.31 (storage only)
+- Period: 2026-04-03
+- Account balance: $13.81
+- Last payout: (pending check)
 
 **Operational Notes:**
 - Payout method: Stripe (configured 2026-02-26)
