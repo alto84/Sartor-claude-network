@@ -34,7 +34,7 @@ try:
     output_summary = str(tool_output)[:200]
 
     entry = {
-        'timestamp': datetime.datetime.utcnow().isoformat() + 'Z',
+        'timestamp': datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00', 'Z'),
         'tool': tool_name,
         'input_summary': input_summary,
         'output_summary': output_summary,

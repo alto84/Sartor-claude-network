@@ -3,12 +3,13 @@ type: meta
 entity: MEMORY
 updated: 2026-04-07
 updated_by: Claude
+last_verified: 2026-04-12
 status: active
 tags: [meta/index, meta/entrypoint]
 aliases: [Memory Index, MEMORY]
 related: [SELF, INDEX, MEMORY-CONVENTIONS, MULTI-MACHINE-MEMORY]
+originSessionId: 6d66075b-10f9-482c-a62e-9f2828a7ed0d
 ---
-
 # Memory Index — Stable Pointer
 
 Entrypoint to the Sartor memory system. This file is auto-injected when Claude Code starts a session at `C:\Users\alto8` via a junction from `~/.claude/projects/C--Users-alto8/memory/` → `sartor/memory/`. The two paths are physically the same directory.
@@ -46,5 +47,6 @@ Entrypoint to the Sartor memory system. This file is auto-injected when Claude C
 
 ## History
 
+- 2026-04-11: Added `reference_vastai_market_pricing.md` (500.farm URL + native `vastai search offers` commands) and `feedback_pricing_autonomy.md` (Alton delegated pricing authority on machine 52271; market-aware ratchet-up rules, no autonomous cuts, weekly review cadence).
 - 2026-04-07: Rewritten as the canonical memory index. Junction from Claude Code auto-memory dir now points here. Conventions and multi-machine architecture added.
 - Prior: Was a stable pointer in the protected Claude Code directory.

@@ -2,6 +2,7 @@
 type: reference
 entity: logging-index
 updated: 2026-04-12
+updated_by: cron-cleaner (memory-system-v2 EX-11)
 status: active
 version: 0.1
 related:
@@ -54,6 +55,9 @@ Per OPERATING-AGREEMENT §3.1:
 | Scheduled-task reports | `reports/daily/{YYYY-MM-DD}-{task}.md` | md+fm | 90d | scheduled task runner | Per-run outputs of scheduled tasks |
 | Financial reports | `reports/financial/` | md+fm | Indefinite | financial-analyst agent | Weekly/monthly rollups |
 | Observer log | `data/observer-log` | JSONL | 7d raw | observer runtime | Runtime-agent observation stream |
+| Curator pass log | TBD (`generated/cron-logs/curator-pass.log` by convention) | plaintext | Shell wrapper (14d) | `SartorCuratorPass` Windows task | Pending — task not yet installed; .cmd wrapper not yet written |
+| Conversation extract log | TBD (stdout/stderr of `python -m sartor.conversation_extract -v`) | plaintext | Shell wrapper (14d) | `SartorConversationExtract` Windows task | Pending — task not yet installed; no redirect defined in XML |
+| Improvement loop log | TBD (`generated/cron-logs/improvement-loop.log` by convention) | plaintext | Shell wrapper (14d) | `SartorImprovementLoop` Windows task | Pending — task not yet installed; .cmd wrapper not yet written |
 
 ### 3.2 gpuserver1 surfaces
 
@@ -71,13 +75,15 @@ Per OPERATING-AGREEMENT §3.1:
 | Heartbeat file | `sartor/memory/inbox/gpuserver1/_heartbeat.md` | md+fm | Live (overwritten) | `update_heartbeat.sh` | Updated by monitoring/pricing/power; curator reads every pass |
 | vastai-tend legacy alert | `~/.vastai-alert` on gpuserver1 | plaintext | Legacy (unbounded) | `vastai-tend.sh` | Pre-agreement script; append-only; replaced by monitoring sweep |
 | vastai-tend legacy log | `~/.vastai-tend.log` on gpuserver1 | plaintext | Legacy (unbounded) | vastai-tend.sh cron redirect | Pre-agreement; replaced by monitoring sweep |
-| Gather mirror log | TBD | TBD | TBD | `gather_mirror.sh` | Runs every 4h; output location TBD |
+| Gather mirror log | `/home/alton/generated/cron-logs/gather_mirror.log` | plaintext | Shell wrapper (14d logrotate) | `gather_mirror.sh` | Every 4h; dir created by script via `mkdir -p`. Also writes status JSON to `inbox/gpuserver1/status/` and alerts to `inbox/gpuserver1/alerts/` on failure. |
+| Stale detect log | `/home/alton/generated/cron-logs/stale-detect.log` | plaintext | Shell wrapper (14d logrotate) | `stale-detect.sh` | Hourly; alerts written to `inbox/gpuserver1/_stale-alerts/` (one file per hour slot, overwrite on re-run). |
+| Vastai tend log | `/home/alton/generated/cron-logs/vastai-tend.log` | plaintext | Shell wrapper (14d logrotate) | `vastai-tend.sh` | Every 30min; state-change inbox entries at `inbox/gpuserver1/_vastai/`. State cache at `/tmp/vastai-tend-state.json` (ephemeral). |
 | Evolve mirror log | `/tmp/sartor-evolve.log` | plaintext | Shell wrapper (logrotate) | `sartor-evolve.sh` | LLM analysis; every 6h |
 | Consolidate mirror log (autodream) | `/tmp/autodream.log` | plaintext | Shell wrapper (logrotate) | cron redirect | Daily 23:30 |
 | Consolidate mirror log (decay) | `/tmp/decay.log` | plaintext | Shell wrapper (logrotate) | cron redirect | Daily 23:30 |
 | Model optimizer log | `/tmp/model-optimizer.log` | plaintext | Shell wrapper (logrotate) | `sartor-model-optimizer.sh` | Weekly Sunday 4 AM |
 | Gemma weekly log | `~/gemma-weekly.log` | plaintext | Shell wrapper (logrotate) | `sartor-gemma-weekly.sh` | Weekly Sunday 3 AM |
-| Dashboard healthcheck log | TBD | TBD | TBD | `dashboard-healthcheck.sh` | Runs every 9h; output TBD |
+| Dashboard healthcheck log | SUPERSEDED | — | — | `dashboard-healthcheck.sh` | Folded into `stale-detect.sh` per EX-5 (master-plan §5.2). Script commented out in crontab 2026-04-12. |
 | Gateway cron log | `~/.sartor-cron.log` | plaintext | Shell wrapper (14d) | gateway_cron.py redirect | Runs every 30min; needs logrotate |
 | Heartbeat CSV log | `data/heartbeat-log.csv` | CSV | Event-driven | consolidate mirror cron | Append-only; retention TBD |
 
@@ -100,13 +106,16 @@ Per OPERATING-AGREEMENT §3.3: if a log surface is not in this index, it does no
 
 Flagged items the next pass should resolve:
 
-1. **gpuserver1 catalog (B13)** — gpuserver1 needs to produce its full surface catalog. Multiple cells are TBD.
-2. **Power logger actually writing** — MISSION v0.2 open question #1 says the logger is not currently writing data. Until B2 lands, the "Power logger" row is aspirational.
-3. **Kaalia daemon logs** — no confirmed location. gpuserver1 to audit.
-4. **vast.ai audit trail** — pre-agreement `~/vastai-tend.sh` log is not yet mapped to a retention tier.
-5. **Scheduled-task report tier** — `reports/daily/*.md` accumulate without a pruner; needs a scheduled housekeeping cron.
-6. **Observer log (data/observer-log) format** — needs confirmation: JSONL with what schema?
+1. **gpuserver1 active cron logs (RESOLVED EX-11)** — gather_mirror, stale-detect, vastai-tend log paths confirmed from script source and added to 3.2.
+2. **dashboard-healthcheck.sh (RESOLVED EX-11)** — marked SUPERSEDED by stale-detect.sh per EX-5.
+3. **Rocinante new task logs (3 rows added, paths TBD)** — SartorCuratorPass, SartorConversationExtract, SartorImprovementLoop log paths are TBD pending .cmd wrappers being written.
+4. **Power logger actually writing** — MISSION v0.2 open question #1 says the logger is not currently writing data. Aspirational row remains.
+5. **Kaalia daemon logs** — no confirmed location. gpuserver1 to audit.
+6. **Scheduled-task report tier** — `reports/daily/*.md` accumulate without a pruner; needs a scheduled housekeeping cron.
+7. **Observer log (data/observer-log) format** — needs confirmation: JSONL with what schema?
+8. **Rocinante new task log paths** — will be TBD until curator-pass-run.cmd and improvement-loop-run.cmd are written. Update this index when .cmd files are created.
 
 ## History
 
+- 2026-04-12: EX-11 update — confirmed gpuserver1 active cron log paths from script source, added stale-detect and vastai-tend rows, marked dashboard-healthcheck superseded, added 3 Rocinante pending task rows (log paths TBD).
 - 2026-04-12: v0.1 created as Rocinante-side bootstrap per EXECUTION-PLAN A6. Awaiting gpuserver1 B13 contribution for section 3.2 completion.

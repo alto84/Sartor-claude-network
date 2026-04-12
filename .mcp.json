@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "obsidian": {
+      "type": "stdio",
+      "command": "cmd.exe",
+      "args": ["/c", "C:\\Users\\alto8\\Sartor-claude-network\\.secrets\\mcp-obsidian-launch.bat"]
+    }
+  }
+}

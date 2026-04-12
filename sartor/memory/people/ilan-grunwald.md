@@ -23,8 +23,9 @@ Alton's close friend. College roommates. Lives in Montclair. Married to Khushbu 
 
 ## Active items
 
-> [!todo] CSA share registration + payment
-> Ilan texted 2026-04-10: "you need to register ASAP for CSA. And also send us money for it." Khushbu mailed full payment for both families' splits in early March. Sartors owe reimbursement for their share (eggs + fruit). Registration form still needs to be filled out separately. Check Ilan's email for registration link and exact amount.
+> [!fact] CSA registration + payment DONE (2026-04-10)
+> Registration form submitted. $830 sent to Ilan/Khushbu for the Sartor share (split premium veggie + eggs + fruit). Site: 86 Llewellyn Rd, Montclair. Cleanup shift preference. Season: 24 weeks, Tuesdays, June-November.
+> **Edit response URL** (in case anything needs correction): https://docs.google.com/forms/u/0/d/e/1FAIpQLScXgP1fAPjn-pGAeuABGzQJXPm7ciob3498hPVFcBU2TD5e7Q/formResponse
 
 ## Shared activities
 

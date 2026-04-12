@@ -3,6 +3,7 @@ type: meta
 entity: SELF
 updated: 2026-02-20
 updated_by: Claude
+last_verified: 2026-04-12
 status: active
 tags: [meta/system]
 aliases: [Sartor, System Identity]

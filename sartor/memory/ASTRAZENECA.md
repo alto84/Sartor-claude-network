@@ -3,6 +3,7 @@ type: domain
 entity: ASTRAZENECA
 updated: 2026-04-10
 updated_by: Claude
+last_verified: 2026-04-12
 status: active
 next_review: 2026-05-01
 tags: [entity/employer, domain/career]

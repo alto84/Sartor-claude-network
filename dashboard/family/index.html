@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MERIDIAN — Sartor Family Dashboard</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <style>
 /* ── Reset & Variables ──────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1314,6 +1315,122 @@ body {
 .gpu-svc-badge.down { background: rgba(239,68,68,0.15); color: var(--red); }
 .gpu-svc-badge.unknown { background: rgba(107,114,128,0.15); color: var(--text-dim); }
 
+/* ── GPU Rental Mini Dashboard ─────────────────────────────────────────── */
+.gpu-rental-widget {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.gpu-rental-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.gpu-rental-status {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.gpu-rental-status.rented {
+  background: rgba(34,197,94,0.18);
+  color: var(--green);
+  box-shadow: 0 0 12px rgba(34,197,94,0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.gpu-rental-status.idle {
+  background: rgba(245,158,11,0.18);
+  color: var(--amber);
+}
+
+.gpu-rental-status.offline,
+.gpu-rental-status.unknown {
+  background: rgba(107,114,128,0.18);
+  color: var(--text-dim);
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(34,197,94,0.3); }
+  50% { box-shadow: 0 0 18px rgba(34,197,94,0.55); }
+}
+
+.gpu-rental-rate {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.gpu-rental-meters {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.gpu-meter {
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  gap: 8px;
+  align-items: center;
+}
+
+.gpu-meter-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+.gpu-meter-bar {
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gpu-meter-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.5s ease, background 0.5s ease;
+}
+
+.gpu-meter-value {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+  text-align: right;
+}
+
+.gpu-rental-earnings {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--green);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.gpu-rental-log {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  max-height: 60px;
+  overflow-y: auto;
+}
+
+.gpu-rental-log-row {
+  padding: 2px 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 1200px) {
   .main-grid { grid-template-columns: 1fr; }
@@ -1423,6 +1540,568 @@ body {
 
 .heartbeat-table tr:last-child td { border-bottom: none; }
 .heartbeat-table tr:hover { background: rgba(99,102,241,0.04); }
+
+/* ── Memory Graph Panel ────────────────────────────────────────────────── */
+.graph-panel {
+  margin: 8px 24px;
+}
+
+.graph-card {
+  background: #0d1117;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.graph-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.graph-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+}
+
+.graph-header-left .graph-icon {
+  font-size: 16px;
+  color: var(--accent);
+}
+
+.graph-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.graph-btn {
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: none;
+  color: var(--text-dim);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.graph-btn:hover { border-color: var(--accent); color: var(--accent); }
+.graph-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.graph-container {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: #0d1117;
+}
+
+.graph-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+.graph-legend {
+  display: flex;
+  gap: 16px;
+  padding: 10px 20px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.graph-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-dim);
+  font-family: var(--mono);
+}
+
+.graph-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.graph-tooltip {
+  position: absolute;
+  display: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  max-width: 360px;
+  font-size: 12px;
+  color: var(--text);
+  z-index: 200;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+.graph-tooltip .gt-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-bright);
+  margin-bottom: 4px;
+}
+
+.graph-tooltip .gt-tier {
+  font-size: 10px;
+  font-family: var(--mono);
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.graph-tooltip .gt-preview {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.4;
+  white-space: pre-wrap;
+  max-height: 120px;
+  overflow: hidden;
+}
+
+/* ── Heartbeat Live Mini-Panel ─────────────────────────────────────────── */
+.heartbeat-live {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  background: var(--bg);
+  border-radius: 8px;
+}
+
+.hb-pulse {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: hbPulse 1.5s infinite;
+  flex-shrink: 0;
+}
+
+.hb-pulse.stale { background: var(--amber); animation: none; }
+.hb-pulse.dead { background: var(--red); animation: none; }
+
+@keyframes hbPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+  50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+
+.hb-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hb-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+}
+
+.hb-time {
+  font-size: 12px;
+  font-family: var(--mono);
+  color: var(--text);
+}
+
+.hb-ticker {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 0 4px;
+}
+
+.hb-tick {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-family: var(--mono);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.hb-tick.ok { background: rgba(34,197,94,0.15); color: var(--green); }
+.hb-tick.warning { background: rgba(245,158,11,0.15); color: var(--amber); }
+.hb-tick.error { background: rgba(239,68,68,0.15); color: var(--red); }
+.hb-tick.dry-run { background: rgba(99,102,241,0.15); color: var(--accent); }
+
+/* ── Memory Tab ─────────────────────────────────────────────────────────── */
+.memory-tab-wrapper {
+  margin: 0 24px 24px;
+}
+
+.memory-tab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+.memory-tab-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.memory-tab-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+}
+
+.memory-sub-tabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.mem-subtab {
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px 6px 0 0;
+  background: none;
+  color: var(--text-dim);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  border-bottom: none;
+  margin-bottom: -1px;
+}
+
+.mem-subtab:hover { color: var(--text); border-color: var(--accent); }
+.mem-subtab.active { background: var(--bg-card); color: var(--text-bright); border-color: var(--border); border-bottom-color: var(--bg-card); }
+
+.mem-subpanel { display: none; }
+.mem-subpanel.active { display: block; }
+
+/* Health strip */
+.mem-health-strip {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.mem-tier-cell {
+  flex: 1;
+  min-width: 90px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  text-align: center;
+}
+
+.mem-tier-cell .tier-label {
+  font-size: 10px;
+  font-family: var(--mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.mem-tier-cell .tier-count {
+  font-size: 22px;
+  font-family: var(--mono);
+  font-weight: 700;
+}
+
+.tier-fresh .tier-count { color: var(--green); }
+.tier-stale .tier-count { color: var(--amber); }
+.tier-rotten .tier-count { color: var(--red); }
+.tier-historical .tier-count { color: #9ca3af; }
+.tier-neutral .tier-count { color: var(--text-dim); }
+
+.mem-health-meta {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+  font-family: var(--mono);
+}
+
+/* Heatmap */
+.mem-heatmap {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.mem-heatmap-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.mem-heatmap-label {
+  font-size: 10px;
+  font-family: var(--mono);
+  color: var(--text-dim);
+  width: 80px;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mem-heatmap-cell {
+  flex: 1;
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-family: var(--mono);
+  cursor: pointer;
+  transition: opacity 0.15s;
+  border: 1px solid transparent;
+}
+
+.mem-heatmap-cell:hover { opacity: 0.8; border-color: var(--text-dim); }
+.mem-heatmap-cell.empty { background: var(--bg) !important; color: var(--text-dim); }
+
+.mem-heatmap-header {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.mem-heatmap-header-label {
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.mem-heatmap-header-cell {
+  flex: 1;
+  font-size: 9px;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+/* Recent entries */
+.mem-recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.mem-recent-entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.mem-recent-entry:hover { border-color: var(--accent); }
+
+.mem-recent-ts {
+  font-family: var(--mono);
+  color: var(--text-dim);
+  flex-shrink: 0;
+  font-size: 11px;
+}
+
+.mem-recent-machine {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-family: var(--mono);
+  background: rgba(99,102,241,0.15);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.mem-recent-action {
+  color: var(--text-dim);
+  flex-shrink: 0;
+  font-size: 11px;
+}
+
+.mem-recent-entity {
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+/* Cron table */
+.mem-cron-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.mem-cron-table th {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.mem-cron-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+}
+
+.mem-cron-table tr:last-child td { border-bottom: none; }
+.mem-cron-table tr:hover { background: rgba(99,102,241,0.04); }
+
+.mem-cron-health {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.mem-cron-health.green { background: var(--green); }
+.mem-cron-health.yellow { background: var(--amber); }
+.mem-cron-health.red { background: var(--red); }
+.mem-cron-health.grey { background: var(--text-dim); }
+
+/* Inbox */
+.mem-inbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.mem-inbox-card {
+  padding: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.mem-inbox-machine {
+  font-size: 12px;
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+}
+
+.mem-inbox-stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.mem-inbox-stat .val {
+  font-family: var(--mono);
+  color: var(--text);
+}
+
+.mem-inbox-flagged {
+  margin-top: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-family: var(--mono);
+  background: rgba(245,158,11,0.12);
+  color: var(--amber);
+  display: inline-block;
+}
+
+/* Search */
+.mem-search-input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mem-search-input {
+  flex: 1;
+  padding: 8px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.mem-search-input:focus { border-color: var(--accent); }
+
+.mem-search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.mem-search-hit {
+  padding: 10px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.mem-search-hit:hover { border-color: var(--accent); }
+
+.mem-search-hit-path {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.mem-search-hit-snippet {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+.mem-empty {
+  padding: 24px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 13px;
+}
 </style>
 </head>
 <body>
@@ -1448,6 +2127,30 @@ body {
 
 <!-- ── Urgency Bar ──────────────────────────────────────────────────────── -->
 <div class="urgency-bar" id="urgencyBar"></div>
+
+<!-- ── Memory Graph ────────────────────────────────────────────────────── -->
+<div class="graph-panel">
+  <div class="graph-card">
+    <div class="graph-header">
+      <div class="graph-header-left">
+        <span class="graph-icon">&#9670;</span>
+        MEMORY GRAPH
+      </div>
+      <div class="graph-controls">
+        <button class="graph-btn" onclick="toggleGraphSections()" id="graphSectionsBtn">Sections</button>
+        <button class="graph-btn" onclick="refreshGraph()">Refresh</button>
+      </div>
+    </div>
+    <div class="graph-container" id="graphContainer">
+      <div class="graph-tooltip" id="graphTooltip">
+        <div class="gt-title" id="gtTitle"></div>
+        <span class="gt-tier" id="gtTier"></span>
+        <div class="gt-preview" id="gtPreview"></div>
+      </div>
+    </div>
+    <div class="graph-legend" id="graphLegend"></div>
+  </div>
+</div>
 
 <!-- ── Main Grid ────────────────────────────────────────────────────────── -->
 <div class="main-grid">
@@ -1511,6 +2214,7 @@ body {
     <!-- Heartbeat Health Panel -->
     <div class="card">
       <div class="card-title"><span class="icon">&#9200;</span> Heartbeat</div>
+      <div id="heartbeatLiveContainer"></div>
       <div id="heartbeatContainer">Loading...</div>
     </div>
 
@@ -1542,6 +2246,34 @@ body {
     <div class="card">
       <div class="card-title"><span class="icon">&#9881;</span> GPU Server Control</div>
       <div id="gpuStatusBadges" class="gpu-svc-status"></div>
+
+      <!-- GPU Rental Mini Dashboard -->
+      <div id="gpuRentalWidget" class="gpu-rental-widget">
+        <div class="gpu-rental-header">
+          <span class="gpu-rental-status" id="gpuRentalStatus">--</span>
+          <span class="gpu-rental-rate" id="gpuRentalRate"></span>
+        </div>
+        <div class="gpu-rental-meters">
+          <div class="gpu-meter">
+            <div class="gpu-meter-label">GPU</div>
+            <div class="gpu-meter-bar"><div class="gpu-meter-fill" id="gpuUtilFill"></div></div>
+            <div class="gpu-meter-value" id="gpuUtilValue">--</div>
+          </div>
+          <div class="gpu-meter">
+            <div class="gpu-meter-label">VRAM</div>
+            <div class="gpu-meter-bar"><div class="gpu-meter-fill" id="gpuMemFill"></div></div>
+            <div class="gpu-meter-value" id="gpuMemValue">--</div>
+          </div>
+          <div class="gpu-meter">
+            <div class="gpu-meter-label">TEMP</div>
+            <div class="gpu-meter-bar"><div class="gpu-meter-fill" id="gpuTempFill"></div></div>
+            <div class="gpu-meter-value" id="gpuTempValue">--</div>
+          </div>
+        </div>
+        <div class="gpu-rental-earnings" id="gpuEarnings"></div>
+        <div class="gpu-rental-log" id="gpuRentalLog"></div>
+      </div>
+
       <div class="gpu-controls">
         <div class="gpu-btn-grid">
           <button class="gpu-btn" onclick="gpuCmd('check_gpu')"><span class="gpu-icon">&#9889;</span> GPU Info</button>
@@ -1557,6 +2289,87 @@ body {
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- ── Memory Tab ──────────────────────────────────────────────────────── -->
+<div class="memory-tab-wrapper" id="memoryTabWrapper">
+  <div class="memory-tab-header">
+    <div class="memory-tab-header-left">
+      <span class="memory-tab-title">&#9670; Memory</span>
+      <div class="memory-sub-tabs">
+        <button class="mem-subtab active" onclick="memSwitchTab('graph')">Graph</button>
+        <button class="mem-subtab" onclick="memSwitchTab('heatmap')">Heatmap</button>
+        <button class="mem-subtab" onclick="memSwitchTab('recent')">Recent</button>
+        <button class="mem-subtab" onclick="memSwitchTab('crons')">Crons</button>
+        <button class="mem-subtab" onclick="memSwitchTab('inbox')">Inbox</button>
+        <button class="mem-subtab" onclick="memSwitchTab('search')">Search</button>
+      </div>
+    </div>
+    <button class="graph-btn" onclick="memRefreshAll()">Refresh</button>
+  </div>
+
+  <!-- Health Strip (always visible) -->
+  <div class="mem-health-strip" id="memHealthStrip">
+    <div class="mem-tier-cell tier-fresh"><div class="tier-label">Fresh</div><div class="tier-count" id="tierFresh">--</div></div>
+    <div class="mem-tier-cell tier-stale"><div class="tier-label">Stale</div><div class="tier-count" id="tierStale">--</div></div>
+    <div class="mem-tier-cell tier-rotten"><div class="tier-label">Rotten</div><div class="tier-count" id="tierRotten">--</div></div>
+    <div class="mem-tier-cell tier-historical"><div class="tier-label">Historical</div><div class="tier-count" id="tierHistorical">--</div></div>
+    <div class="mem-tier-cell tier-neutral"><div class="tier-label">Neutral</div><div class="tier-count" id="tierNeutral">--</div></div>
+    <div class="mem-tier-cell" style="border-color:var(--accent)"><div class="tier-label">Total</div><div class="tier-count" id="tierTotal" style="color:var(--accent)">--</div></div>
+  </div>
+  <div class="mem-health-meta" id="memHealthMeta"></div>
+
+  <!-- Graph sub-panel -->
+  <div class="mem-subpanel active" id="memPanel-graph">
+    <div class="graph-card" style="background:#0d1117">
+      <div class="graph-header">
+        <div class="graph-header-left"><span class="graph-icon">&#9670;</span>MEMORY GRAPH</div>
+        <div class="graph-controls">
+          <button class="graph-btn" onclick="toggleMemGraphSections()" id="memGraphSectionsBtn">Sections</button>
+          <button class="graph-btn" onclick="refreshMemGraph()">Refresh</button>
+        </div>
+      </div>
+      <div class="graph-container" id="memGraphContainer" style="height:480px;background:#0d1117">
+        <div class="graph-tooltip" id="memGraphTooltip">
+          <div class="gt-title" id="memGtTitle"></div>
+          <span class="gt-tier" id="memGtTier"></span>
+          <div class="gt-preview" id="memGtPreview"></div>
+          <div style="margin-top:8px">
+            <button class="graph-btn" onclick="openInObsidian(window._memCurrentNode)">Open in Obsidian</button>
+          </div>
+        </div>
+      </div>
+      <div class="graph-legend" id="memGraphLegend"></div>
+    </div>
+  </div>
+
+  <!-- Heatmap sub-panel -->
+  <div class="mem-subpanel" id="memPanel-heatmap">
+    <div id="memHeatmapContainer"><div class="mem-empty">Loading heatmap...</div></div>
+  </div>
+
+  <!-- Recent sub-panel -->
+  <div class="mem-subpanel" id="memPanel-recent">
+    <div class="mem-recent-list" id="memRecentList"><div class="mem-empty">Loading...</div></div>
+  </div>
+
+  <!-- Crons sub-panel -->
+  <div class="mem-subpanel" id="memPanel-crons">
+    <div id="memCronContainer"><div class="mem-empty">Loading...</div></div>
+  </div>
+
+  <!-- Inbox sub-panel -->
+  <div class="mem-subpanel" id="memPanel-inbox">
+    <div class="mem-inbox-grid" id="memInboxGrid"><div class="mem-empty">Loading...</div></div>
+  </div>
+
+  <!-- Search sub-panel -->
+  <div class="mem-subpanel" id="memPanel-search">
+    <div class="mem-search-input-row">
+      <input class="mem-search-input" id="memSearchInput" type="text" placeholder="Search memory files..." autocomplete="off">
+    </div>
+    <div class="mem-search-results" id="memSearchResults"></div>
   </div>
 </div>
 
@@ -1990,7 +2803,8 @@ async function renderSystem() {
   addItem('Task Files', d.task_files);
 
   Object.values(d.services).forEach(s => {
-    addItem(s.name, ':' + s.port);
+    var label = s.name + (s.note ? ' *' : '');
+    addItem(label, ':' + s.port, s.note ? '' : '');
   });
 }
 
@@ -2012,7 +2826,7 @@ async function renderCareer() {
       '<div class="promotion-detail" style="margin-top:6px;font-weight:600;color:var(--amber)">' + escapeHTML(d.promotion.status) + '</div>' +
     '</div>' +
     '<div style="margin-bottom:8px">' +
-      '<div class="member-birthday">Bonus in <span class="days">' + d.bonus.days_remaining + ' days</span> (Mar 15)</div>' +
+      '<div class="member-birthday">' + (d.bonus.status === 'paid' ? 'Bonus <span class="days">Paid</span> (Mar 15)' : 'Bonus in <span class="days">' + (d.bonus.days_remaining || 0) + ' days</span> (Mar 15)') + '</div>' +
     '</div>' +
     '<ul class="engagement-list">' +
       d.engagements.map(e => '<li>' + escapeHTML(e) + '</li>').join('') +
@@ -2132,8 +2946,17 @@ async function renderHeartbeat() {
   }
   var html = '<table class="heartbeat-table"><thead><tr><th>Task</th><th>Freq</th><th>Last Run</th><th>Status</th></tr></thead><tbody>';
   d.tasks.forEach(function(t) {
-    var badgeCls = t.status === 'ok' ? 'green' : t.status === 'stale' ? 'amber' : 'gray';
-    var badgeText = t.status === 'ok' ? 'OK' : t.status === 'stale' ? 'Stale' : 'Never';
+    var statusMap = {
+      'ok': { cls: 'green', text: 'OK' },
+      'warning': { cls: 'amber', text: 'Warning' },
+      'dry-run': { cls: 'amber', text: 'Dry Run' },
+      'error': { cls: 'red', text: 'Error' },
+      'stale': { cls: 'amber', text: 'Stale' },
+      'never_run': { cls: 'gray', text: 'Never' },
+    };
+    var mapped = statusMap[t.status] || { cls: 'gray', text: t.status || 'Never' };
+    var badgeCls = mapped.cls;
+    var badgeText = mapped.text;
     html += '<tr>' +
       '<td style="font-family:var(--font);color:var(--text)">' + escapeHTML(t.name) + '</td>' +
       '<td>' + escapeHTML(t.frequency || '') + '</td>' +
@@ -2156,22 +2979,23 @@ async function fetchMemoryHealth() {
 
   var total = d.file_count || 0;
   var tiers = d.tiers || {};
-  var activeWarm = (tiers.active || 0) + (tiers.warm || 0);
-  var cold = tiers.cold || 0;
-  var stale = tiers.stale || 0;
-  var headerColor = stale > 2 ? 'var(--red)' : cold > 3 ? 'var(--amber)' : 'var(--green)';
+  var forgotten = (tiers.FORGOTTEN || 0) + (tiers.ARCHIVE || 0);
+  var cold = tiers.COLD || 0;
+  var headerColor = forgotten > 2 ? 'var(--red)' : cold > 3 ? 'var(--amber)' : 'var(--green)';
 
   var tierBarHTML = '<div style="display:flex;height:8px;border-radius:4px;overflow:hidden;gap:2px;margin:8px 0 4px">';
-  if (tiers.active) tierBarHTML += '<div style="flex:' + tiers.active + ';background:var(--green)" title="Active: ' + tiers.active + '"></div>';
-  if (tiers.warm)   tierBarHTML += '<div style="flex:' + tiers.warm   + ';background:var(--blue)"  title="Warm: '   + tiers.warm   + '"></div>';
-  if (tiers.cold)   tierBarHTML += '<div style="flex:' + tiers.cold   + ';background:var(--amber)" title="Cold: '   + tiers.cold   + '"></div>';
-  if (tiers.stale)  tierBarHTML += '<div style="flex:' + tiers.stale  + ';background:var(--red)"   title="Stale: '  + tiers.stale  + '"></div>';
+  if (tiers.ACTIVE)    tierBarHTML += '<div style="flex:' + tiers.ACTIVE    + ';background:var(--green)" title="Active: '    + tiers.ACTIVE    + '"></div>';
+  if (tiers.WARM)      tierBarHTML += '<div style="flex:' + tiers.WARM      + ';background:var(--blue)"  title="Warm: '      + tiers.WARM      + '"></div>';
+  if (tiers.COLD)      tierBarHTML += '<div style="flex:' + tiers.COLD      + ';background:var(--amber)" title="Cold: '      + tiers.COLD      + '"></div>';
+  if (tiers.FORGOTTEN) tierBarHTML += '<div style="flex:' + tiers.FORGOTTEN + ';background:var(--red)"   title="Forgotten: ' + tiers.FORGOTTEN + '"></div>';
+  if (tiers.ARCHIVE)   tierBarHTML += '<div style="flex:' + tiers.ARCHIVE   + ';background:#6b7280"      title="Archive: '   + tiers.ARCHIVE   + '"></div>';
   tierBarHTML += '</div>';
-  tierBarHTML += '<div style="display:flex;gap:12px;font-size:10px;color:var(--text-dim);font-family:var(--mono)">' +
-    '<span style="color:var(--green)">Active: ' + (tiers.active || 0) + '</span>' +
-    '<span style="color:var(--blue)">Warm: '   + (tiers.warm   || 0) + '</span>' +
-    '<span style="color:var(--amber)">Cold: '  + (tiers.cold   || 0) + '</span>' +
-    '<span style="color:var(--red)">Stale: '   + (tiers.stale  || 0) + '</span>' +
+  tierBarHTML += '<div style="display:flex;gap:10px;font-size:10px;color:var(--text-dim);font-family:var(--mono);flex-wrap:wrap">' +
+    '<span style="color:var(--green)">Active: '    + (tiers.ACTIVE    || 0) + '</span>' +
+    '<span style="color:var(--blue)">Warm: '       + (tiers.WARM      || 0) + '</span>' +
+    '<span style="color:var(--amber)">Cold: '      + (tiers.COLD      || 0) + '</span>' +
+    '<span style="color:var(--red)">Forgotten: '   + (tiers.FORGOTTEN || 0) + '</span>' +
+    '<span style="color:#6b7280">Archive: '        + (tiers.ARCHIVE   || 0) + '</span>' +
     '</div>';
 
   var html =
@@ -2513,8 +3337,693 @@ async function renderGpuStatus() {
   }
 }
 
-// Load GPU status on page load
+async function renderGpuRental() {
+  try {
+    var d = await fetchJSON('/api/gpu/rental');
+    var widget = $('gpuRentalWidget');
+    if (!d || !d.online) {
+      $('gpuRentalStatus').textContent = 'OFFLINE';
+      $('gpuRentalStatus').className = 'gpu-rental-status offline';
+      $('gpuRentalRate').textContent = '';
+      $('gpuUtilValue').textContent = '--';
+      $('gpuMemValue').textContent = '--';
+      $('gpuTempValue').textContent = '--';
+      $('gpuUtilFill').style.width = '0%';
+      $('gpuMemFill').style.width = '0%';
+      $('gpuTempFill').style.width = '0%';
+      $('gpuEarnings').textContent = '';
+      $('gpuRentalLog').innerHTML = '';
+      return;
+    }
+
+    // Status badge
+    var v = d.vastai || {};
+    var isRented = v.is_rented;
+    var statusEl = $('gpuRentalStatus');
+    if (isRented) {
+      statusEl.textContent = 'RENTED';
+      statusEl.className = 'gpu-rental-status rented';
+    } else if (v.machine_status === 'listed') {
+      statusEl.textContent = 'IDLE / LISTED';
+      statusEl.className = 'gpu-rental-status idle';
+    } else {
+      statusEl.textContent = (v.machine_status || 'UNKNOWN').toUpperCase();
+      statusEl.className = 'gpu-rental-status unknown';
+    }
+    $('gpuRentalRate').textContent = v.hourly_rate ? '$' + Number(v.hourly_rate).toFixed(2) + '/hr' : '';
+
+    // GPU meters
+    var g = d.gpu || {};
+    var util = g.util_pct != null ? g.util_pct : 0;
+    var memPct = (g.mem_used_mb && g.mem_total_mb) ? Math.round((g.mem_used_mb / g.mem_total_mb) * 100) : 0;
+    var temp = g.temp_c != null ? g.temp_c : 0;
+    $('gpuUtilFill').style.width = util + '%';
+    $('gpuUtilValue').textContent = util + '%';
+    $('gpuMemFill').style.width = memPct + '%';
+    $('gpuMemValue').textContent = memPct + '%';
+    var tempPct = Math.min(100, Math.round((temp / 90) * 100));
+    $('gpuTempFill').style.width = tempPct + '%';
+    $('gpuTempFill').style.background = temp > 80 ? 'var(--red)' : (temp > 70 ? 'var(--amber)' : 'var(--green)');
+    $('gpuTempValue').textContent = temp + '°C';
+
+    // Earnings
+    var earnings = '';
+    if (v.earnings_today != null) earnings += 'Today: $' + Number(v.earnings_today).toFixed(2);
+    if (v.earnings_week != null) earnings += '  •  Week: $' + Number(v.earnings_week).toFixed(2);
+    if (v.earnings_month != null) earnings += '  •  Month: $' + Number(v.earnings_month).toFixed(2);
+    $('gpuEarnings').textContent = earnings;
+
+    // Recent rental log
+    var logHtml = '';
+    (d.rentals || []).slice().reverse().forEach(function(r) {
+      var icon = r.event === 'start' ? '▶' : '■';
+      var when = r.timestamp ? new Date(r.timestamp).toLocaleString() : '';
+      logHtml += '<div class="gpu-rental-log-row">' + icon + ' ' + (r.event || '') + ' ' + when + '</div>';
+    });
+    $('gpuRentalLog').innerHTML = logHtml;
+  } catch (e) {
+    $('gpuRentalStatus').textContent = 'ERROR';
+    $('gpuRentalStatus').className = 'gpu-rental-status offline';
+  }
+}
+
+// Load GPU status on page load and refresh periodically
 renderGpuStatus();
+renderGpuRental();
+setInterval(renderGpuRental, 30000);
+
+/* ── Memory Graph (D3.js Force-Directed) ──────────────────────────────── */
+let graphData = null;
+let graphSim = null;
+let showSections = false;
+
+function toggleGraphSections() {
+  showSections = !showSections;
+  var btn = $('graphSectionsBtn');
+  btn.classList.toggle('active', showSections);
+  renderGraph();
+}
+
+async function refreshGraph() {
+  graphData = await fetchJSON('/api/memory-graph');
+  renderGraph();
+}
+
+function renderGraph() {
+  if (!graphData) return;
+  var container = $('graphContainer');
+  var tooltip = $('graphTooltip');
+
+  // Remove existing SVG
+  var oldSvg = container.querySelector('svg');
+  if (oldSvg) oldSvg.remove();
+
+  // Filter nodes based on section toggle
+  var nodes = graphData.nodes.filter(function(n) {
+    return showSections || n.type === 'file';
+  }).map(function(n) { return Object.assign({}, n); });
+
+  var nodeIds = new Set(nodes.map(function(n) { return n.id; }));
+  var links = graphData.links.filter(function(l) {
+    return nodeIds.has(l.source) && nodeIds.has(l.target);
+  }).map(function(l) { return Object.assign({}, l); });
+
+  var width = container.clientWidth;
+  var height = container.clientHeight;
+
+  var svg = d3.select(container).append('svg')
+    .attr('width', width)
+    .attr('height', height);
+
+  // Zoom
+  var g = svg.append('g');
+  var zoom = d3.zoom()
+    .scaleExtent([0.3, 4])
+    .on('zoom', function(event) {
+      g.attr('transform', event.transform);
+    });
+  svg.call(zoom);
+
+  // Size scale: file size -> radius
+  var sizeExtent = d3.extent(nodes.filter(function(n) { return n.type === 'file'; }), function(n) { return n.size; });
+  var radiusScale = d3.scaleLinear()
+    .domain([sizeExtent[0] || 100, sizeExtent[1] || 10000])
+    .range([10, 32])
+    .clamp(true);
+
+  // Tier opacity
+  var tierOpacity = { 'ACTIVE': 1.0, 'WARM': 0.85, 'COLD': 0.6, 'FORGOTTEN': 0.4, 'ARCHIVE': 0.25 };
+
+  // Force simulation
+  if (graphSim) graphSim.stop();
+  graphSim = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(links).id(function(d) { return d.id; }).distance(function(d) {
+      return d.weight > 0.5 ? 80 : 140;
+    }).strength(function(d) { return d.weight * 0.5; }))
+    .force('charge', d3.forceManyBody().strength(function(d) {
+      return d.type === 'file' ? -200 : -50;
+    }))
+    .force('center', d3.forceCenter(width / 2, height / 2))
+    .force('collision', d3.forceCollide().radius(function(d) {
+      return d.type === 'file' ? radiusScale(d.size) + 4 : 10;
+    }));
+
+  // Links
+  var link = g.append('g')
+    .selectAll('line')
+    .data(links)
+    .join('line')
+    .attr('stroke', '#4a5568')
+    .attr('stroke-opacity', function(d) { return Math.max(0.15, d.weight * 0.6); })
+    .attr('stroke-width', function(d) { return Math.max(0.5, d.weight * 1.5); });
+
+  // Cluster labels
+  var clusterPositions = {};
+  nodes.forEach(function(n) {
+    if (n.type !== 'file') return;
+    if (!clusterPositions[n.cluster]) clusterPositions[n.cluster] = { x: 0, y: 0, count: 0 };
+    clusterPositions[n.cluster].count++;
+  });
+
+  // Nodes
+  var node = g.append('g')
+    .selectAll('circle')
+    .data(nodes)
+    .join('circle')
+    .attr('r', function(d) { return d.type === 'file' ? radiusScale(d.size) : 4; })
+    .attr('fill', function(d) { return d.color; })
+    .attr('opacity', function(d) { return tierOpacity[d.tier] || 0.6; })
+    .attr('stroke', function(d) { return d.type === 'file' ? '#fff' : 'none'; })
+    .attr('stroke-width', function(d) { return d.type === 'file' ? 1.5 : 0; })
+    .attr('cursor', 'pointer')
+    .call(d3.drag()
+      .on('start', function(event, d) {
+        if (!event.active) graphSim.alphaTarget(0.3).restart();
+        d.fx = d.x; d.fy = d.y;
+      })
+      .on('drag', function(event, d) {
+        d.fx = event.x; d.fy = event.y;
+      })
+      .on('end', function(event, d) {
+        if (!event.active) graphSim.alphaTarget(0);
+        d.fx = null; d.fy = null;
+      })
+    );
+
+  // Labels for file nodes
+  var label = g.append('g')
+    .selectAll('text')
+    .data(nodes.filter(function(n) { return n.type === 'file'; }))
+    .join('text')
+    .text(function(d) { return d.label; })
+    .attr('font-size', '11px')
+    .attr('font-family', 'var(--mono)')
+    .attr('fill', '#e4e4e7')
+    .attr('text-anchor', 'middle')
+    .attr('dy', function(d) { return radiusScale(d.size) + 14; })
+    .attr('pointer-events', 'none');
+
+  // Cluster labels
+  var clusterLabel = g.append('g')
+    .selectAll('text')
+    .data(Object.entries(graphData.clusters))
+    .join('text')
+    .text(function(d) { return d[0].toUpperCase(); })
+    .attr('font-size', '10px')
+    .attr('font-weight', '600')
+    .attr('font-family', 'var(--mono)')
+    .attr('letter-spacing', '2px')
+    .attr('fill', function(d) { return d[1]; })
+    .attr('opacity', 0.4)
+    .attr('text-anchor', 'middle')
+    .attr('pointer-events', 'none');
+
+  // Hover and click
+  node.on('mouseover', function(event, d) {
+    if (d.type !== 'file') return;
+    var tierColors = { 'ACTIVE': 'rgba(34,197,94,0.2)', 'WARM': 'rgba(59,130,246,0.2)', 'COLD': 'rgba(245,158,11,0.2)', 'FORGOTTEN': 'rgba(239,68,68,0.2)', 'ARCHIVE': 'rgba(107,114,128,0.2)' };
+    $('gtTitle').textContent = d.label;
+    var tierEl = $('gtTier');
+    tierEl.textContent = d.tier + ' (' + (d.score || 0).toFixed(3) + ')';
+    tierEl.style.background = tierColors[d.tier] || 'rgba(107,114,128,0.2)';
+    tierEl.style.color = d.color;
+    $('gtPreview').textContent = d.preview ? d.preview.slice(0, 300) : '(empty)';
+    tooltip.style.display = 'block';
+    tooltip.style.left = (event.offsetX + 16) + 'px';
+    tooltip.style.top = (event.offsetY - 10) + 'px';
+  })
+  .on('mousemove', function(event) {
+    tooltip.style.left = (event.offsetX + 16) + 'px';
+    tooltip.style.top = (event.offsetY - 10) + 'px';
+  })
+  .on('mouseout', function() {
+    tooltip.style.display = 'none';
+  })
+  .on('click', function(event, d) {
+    if (d.type !== 'file' || !d.preview) return;
+    tooltip.style.display = 'block';
+    $('gtTitle').textContent = d.label;
+    $('gtPreview').textContent = d.preview;
+    tooltip.style.left = (event.offsetX + 16) + 'px';
+    tooltip.style.top = (event.offsetY - 10) + 'px';
+  });
+
+  // Tick
+  graphSim.on('tick', function() {
+    link
+      .attr('x1', function(d) { return d.source.x; })
+      .attr('y1', function(d) { return d.source.y; })
+      .attr('x2', function(d) { return d.target.x; })
+      .attr('y2', function(d) { return d.target.y; });
+
+    node
+      .attr('cx', function(d) { return d.x; })
+      .attr('cy', function(d) { return d.y; });
+
+    label
+      .attr('x', function(d) { return d.x; })
+      .attr('y', function(d) { return d.y; });
+
+    // Update cluster label positions (centroid of cluster file nodes)
+    var clusterCentroids = {};
+    nodes.forEach(function(n) {
+      if (n.type !== 'file') return;
+      if (!clusterCentroids[n.cluster]) clusterCentroids[n.cluster] = { x: 0, y: 0, count: 0 };
+      clusterCentroids[n.cluster].x += n.x;
+      clusterCentroids[n.cluster].y += n.y;
+      clusterCentroids[n.cluster].count++;
+    });
+    clusterLabel
+      .attr('x', function(d) {
+        var c = clusterCentroids[d[0]];
+        return c ? c.x / c.count : width / 2;
+      })
+      .attr('y', function(d) {
+        var c = clusterCentroids[d[0]];
+        return c ? (c.y / c.count) - 40 : height / 2;
+      });
+  });
+
+  // Render legend
+  var legend = $('graphLegend');
+  legend.innerHTML = '';
+  Object.entries(graphData.clusters).forEach(function(entry) {
+    legend.innerHTML += '<span class="graph-legend-item"><span class="graph-legend-dot" style="background:' + entry[1] + '"></span>' + entry[0] + '</span>';
+  });
+}
+
+// Initial graph load
+refreshGraph();
+
+/* ── Heartbeat Live Mini-Panel ────────────────────────────────────────── */
+async function renderHeartbeatLive() {
+  var d = await fetchJSON('/api/heartbeat-live');
+  var container = $('heartbeatLiveContainer');
+  if (!d || !d.last_tick) {
+    container.innerHTML = '<div class="heartbeat-live"><div class="hb-pulse dead"></div><div class="hb-info"><span class="hb-label">Last Tick</span><span class="hb-time">No data</span></div></div>';
+    return;
+  }
+
+  // Determine pulse state
+  var lastTime = new Date(d.last_tick);
+  var ageMin = (Date.now() - lastTime.getTime()) / 60000;
+  var pulseClass = ageMin < 10 ? '' : ageMin < 60 ? 'stale' : 'dead';
+  var timeStr = lastTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+  var tickerHTML = '';
+  (d.recent || []).slice(0, 6).forEach(function(r) {
+    var cls = r.status || 'ok';
+    var time = '';
+    try { time = new Date(r.timestamp).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }); } catch(e) {}
+    tickerHTML += '<span class="hb-tick ' + cls + '">' + escapeHTML(r.task) + ' ' + time + '</span>';
+  });
+
+  container.innerHTML =
+    '<div class="heartbeat-live">' +
+      '<div class="hb-pulse ' + pulseClass + '"></div>' +
+      '<div class="hb-info"><span class="hb-label">Last Tick</span><span class="hb-time">' + timeStr + '</span></div>' +
+      '<div class="hb-ticker">' + tickerHTML + '</div>' +
+    '</div>';
+}
+
+// Add heartbeat live to refresh cycle
+renderHeartbeatLive();
+
+/* ── Updated Master Refresh ────────────────────────────────────────────── */
+var _origRefreshAll = refreshAll;
+refreshAll = async function() {
+  await _origRefreshAll();
+  await renderHeartbeatLive();
+};
+
+/* ── Memory Tab ─────────────────────────────────────────────────────────── */
+
+var _memActiveTab = 'graph';
+var _memGraphData = null;
+var _memGraphSim = null;
+var _memShowSections = false;
+var _memHealthData = null;
+var _memSearchTimer = null;
+window._memCurrentNode = null;
+
+function memSwitchTab(name) {
+  _memActiveTab = name;
+  document.querySelectorAll('.mem-subtab').forEach(function(btn) {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === name.toLowerCase());
+  });
+  document.querySelectorAll('.mem-subpanel').forEach(function(p) {
+    p.classList.toggle('active', p.id === 'memPanel-' + name);
+  });
+  if (name === 'graph' && !_memGraphData) refreshMemGraph();
+  if (name === 'heatmap' && _memHealthData) renderMemHeatmap(_memHealthData);
+  if (name === 'recent') loadMemRecent();
+  if (name === 'crons') loadMemCrons();
+  if (name === 'inbox') loadMemInbox();
+  if (name === 'search') $('memSearchInput').focus();
+}
+
+async function memRefreshAll() {
+  await loadMemHealth();
+  if (_memActiveTab === 'graph') refreshMemGraph();
+  if (_memActiveTab === 'heatmap') { if (_memHealthData) renderMemHeatmap(_memHealthData); }
+  if (_memActiveTab === 'recent') loadMemRecent();
+  if (_memActiveTab === 'crons') loadMemCrons();
+  if (_memActiveTab === 'inbox') loadMemInbox();
+}
+
+async function loadMemHealth() {
+  var d = await fetchJSON('/api/memory-health');
+  if (!d) return;
+  _memHealthData = d;
+  var tiers = d.tiers || {};
+  $('tierFresh').textContent = tiers['ACTIVE'] || tiers['fresh'] || 0;
+  $('tierStale').textContent = tiers['WARM'] || tiers['stale'] || 0;
+  $('tierRotten').textContent = tiers['COLD'] || tiers['rotten'] || 0;
+  $('tierHistorical').textContent = tiers['FORGOTTEN'] || tiers['historical'] || 0;
+  $('tierNeutral').textContent = tiers['ARCHIVE'] || tiers['neutral'] || 0;
+  $('tierTotal').textContent = d.file_count || 0;
+  var meta = '';
+  if (d.last_autodream) meta += 'Last autodream: ' + d.last_autodream + '  ·  ';
+  if (d.daily_log_count != null) meta += 'Daily logs: ' + d.daily_log_count + '  ·  ';
+  if (d.total_size_kb != null) meta += 'Vault: ' + d.total_size_kb + ' KB';
+  $('memHealthMeta').textContent = meta;
+}
+
+function toggleMemGraphSections() {
+  _memShowSections = !_memShowSections;
+  var btn = $('memGraphSectionsBtn');
+  btn.classList.toggle('active', _memShowSections);
+  renderMemGraph();
+}
+
+async function refreshMemGraph() {
+  _memGraphData = await fetchJSON('/api/memory-graph');
+  renderMemGraph();
+}
+
+function renderMemGraph() {
+  if (!_memGraphData) return;
+  var container = $('memGraphContainer');
+  var tooltip = $('memGraphTooltip');
+
+  var oldSvg = container.querySelector('svg');
+  if (oldSvg) oldSvg.remove();
+
+  var nodes = _memGraphData.nodes.filter(function(n) {
+    return _memShowSections || n.type === 'file';
+  }).map(function(n) { return Object.assign({}, n); });
+
+  var nodeIds = new Set(nodes.map(function(n) { return n.id; }));
+  var links = _memGraphData.links.filter(function(l) {
+    return nodeIds.has(l.source) && nodeIds.has(l.target);
+  }).map(function(l) { return Object.assign({}, l); });
+
+  var width = container.clientWidth;
+  var height = container.clientHeight;
+
+  var svg = d3.select(container).append('svg').attr('width', width).attr('height', height);
+  var g = svg.append('g');
+  var zoom = d3.zoom().scaleExtent([0.3, 4]).on('zoom', function(event) { g.attr('transform', event.transform); });
+  svg.call(zoom);
+
+  var sizeExtent = d3.extent(nodes.filter(function(n) { return n.type === 'file'; }), function(n) { return n.size; });
+  var radiusScale = d3.scaleLinear().domain([sizeExtent[0] || 100, sizeExtent[1] || 10000]).range([10, 30]).clamp(true);
+  var tierOpacity = { 'ACTIVE': 1.0, 'WARM': 0.85, 'COLD': 0.6, 'FORGOTTEN': 0.4, 'ARCHIVE': 0.25, 'fresh': 1.0, 'stale': 0.7, 'rotten': 0.5, 'historical': 0.3, 'neutral': 0.6 };
+
+  if (_memGraphSim) _memGraphSim.stop();
+  _memGraphSim = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(links).id(function(d) { return d.id; }).distance(function(d) { return d.weight > 0.5 ? 80 : 140; }).strength(function(d) { return d.weight * 0.5; }))
+    .force('charge', d3.forceManyBody().strength(function(d) { return d.type === 'file' ? -200 : -50; }))
+    .force('center', d3.forceCenter(width / 2, height / 2))
+    .force('collision', d3.forceCollide().radius(function(d) { return d.type === 'file' ? radiusScale(d.size) + 4 : 10; }));
+
+  var link = g.append('g').selectAll('line').data(links).join('line')
+    .attr('stroke', '#4a5568')
+    .attr('stroke-opacity', function(d) { return Math.max(0.15, d.weight * 0.6); })
+    .attr('stroke-width', function(d) { return Math.max(0.5, d.weight * 1.5); });
+
+  var node = g.append('g').selectAll('circle').data(nodes).join('circle')
+    .attr('r', function(d) { return d.type === 'file' ? radiusScale(d.size) : 4; })
+    .attr('fill', function(d) { return d.color; })
+    .attr('opacity', function(d) { return tierOpacity[d.tier] || 0.6; })
+    .attr('stroke', function(d) { return d.type === 'file' ? '#fff' : 'none'; })
+    .attr('stroke-width', function(d) { return d.type === 'file' ? 1.5 : 0; })
+    .attr('cursor', 'pointer')
+    .call(d3.drag()
+      .on('start', function(event, d) { if (!event.active) _memGraphSim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+      .on('drag', function(event, d) { d.fx = event.x; d.fy = event.y; })
+      .on('end', function(event, d) { if (!event.active) _memGraphSim.alphaTarget(0); d.fx = null; d.fy = null; })
+    );
+
+  var label = g.append('g').selectAll('text').data(nodes.filter(function(n) { return n.type === 'file'; })).join('text')
+    .text(function(d) { return d.label; })
+    .attr('font-size', '11px').attr('font-family', 'var(--mono)').attr('fill', '#e4e4e7')
+    .attr('text-anchor', 'middle').attr('dy', function(d) { return radiusScale(d.size) + 14; })
+    .attr('pointer-events', 'none');
+
+  node.on('mouseover', function(event, d) {
+    if (d.type !== 'file') return;
+    window._memCurrentNode = d.id;
+    var tierColors = { 'ACTIVE': 'rgba(34,197,94,0.2)', 'fresh': 'rgba(34,197,94,0.2)', 'WARM': 'rgba(59,130,246,0.2)', 'stale': 'rgba(245,158,11,0.2)', 'COLD': 'rgba(245,158,11,0.2)', 'rotten': 'rgba(239,68,68,0.2)', 'FORGOTTEN': 'rgba(239,68,68,0.2)', 'ARCHIVE': 'rgba(107,114,128,0.2)', 'historical': 'rgba(107,114,128,0.2)', 'neutral': 'rgba(107,114,128,0.2)' };
+    $('memGtTitle').textContent = d.label;
+    var tierEl = $('memGtTier');
+    tierEl.textContent = d.tier + ' (' + (d.score || 0).toFixed(3) + ')';
+    tierEl.style.background = tierColors[d.tier] || 'rgba(107,114,128,0.2)';
+    tierEl.style.color = d.color;
+    $('memGtPreview').textContent = d.preview ? d.preview.slice(0, 300) : '(empty)';
+    tooltip.style.display = 'block';
+    tooltip.style.left = (event.offsetX + 16) + 'px';
+    tooltip.style.top = (event.offsetY - 10) + 'px';
+  }).on('mousemove', function(event) {
+    tooltip.style.left = (event.offsetX + 16) + 'px';
+    tooltip.style.top = (event.offsetY - 10) + 'px';
+  }).on('mouseout', function() {
+    tooltip.style.display = 'none';
+  }).on('click', function(event, d) {
+    if (d.type !== 'file') return;
+    window._memCurrentNode = d.id;
+    tooltip.style.display = 'block';
+    $('memGtTitle').textContent = d.label;
+    $('memGtPreview').textContent = d.preview || '(empty)';
+    tooltip.style.left = (event.offsetX + 16) + 'px';
+    tooltip.style.top = (event.offsetY - 10) + 'px';
+  });
+
+  _memGraphSim.on('tick', function() {
+    link.attr('x1', function(d) { return d.source.x; }).attr('y1', function(d) { return d.source.y; })
+        .attr('x2', function(d) { return d.target.x; }).attr('y2', function(d) { return d.target.y; });
+    node.attr('cx', function(d) { return d.x; }).attr('cy', function(d) { return d.y; });
+    label.attr('x', function(d) { return d.x; }).attr('y', function(d) { return d.y; });
+  });
+
+  var legend = $('memGraphLegend');
+  legend.innerHTML = '';
+  Object.entries(_memGraphData.clusters || {}).forEach(function(entry) {
+    legend.innerHTML += '<span class="graph-legend-item"><span class="graph-legend-dot" style="background:' + entry[1] + '"></span>' + entry[0] + '</span>';
+  });
+}
+
+function renderMemHeatmap(data) {
+  var container = $('memHeatmapContainer');
+  if (!data || !data.files) { container.innerHTML = '<div class="mem-empty">No data</div>'; return; }
+
+  var clusterMap = {
+    'FAMILY.md': 'family', 'ALTON.md': 'personal', 'SELF.md': 'personal',
+    'BUSINESS.md': 'business', 'MACHINES.md': 'business', 'TAXES.md': 'taxes',
+    'ASTRAZENECA.md': 'career', 'PROJECTS.md': 'projects', 'MASTERPLAN.md': 'projects',
+    'MASTERPLAN-VISIONARY.md': 'projects', 'LEARNINGS.md': 'projects',
+    'PROCEDURES.md': 'business', 'INDEX.md': 'projects',
+  };
+  var tiers = ['ACTIVE', 'WARM', 'COLD', 'FORGOTTEN', 'ARCHIVE'];
+  var tierColors = { 'ACTIVE': 'rgba(34,197,94,0.6)', 'WARM': 'rgba(59,130,246,0.6)', 'COLD': 'rgba(245,158,11,0.6)', 'FORGOTTEN': 'rgba(239,68,68,0.6)', 'ARCHIVE': 'rgba(107,114,128,0.5)' };
+
+  // Build cluster → tier → files map
+  var clusters = {};
+  data.files.forEach(function(f) {
+    var cluster = clusterMap[f.name] || 'other';
+    if (!clusters[cluster]) clusters[cluster] = {};
+    var tier = f.tier || 'COLD';
+    if (!clusters[cluster][tier]) clusters[cluster][tier] = [];
+    clusters[cluster][tier].push(f.name);
+  });
+
+  var html = '<div class="mem-heatmap-header">';
+  html += '<div class="mem-heatmap-header-label"></div>';
+  tiers.forEach(function(t) { html += '<div class="mem-heatmap-header-cell">' + t + '</div>'; });
+  html += '</div><div class="mem-heatmap">';
+
+  Object.keys(clusters).sort().forEach(function(cluster) {
+    html += '<div class="mem-heatmap-row"><div class="mem-heatmap-label" title="' + cluster + '">' + cluster + '</div>';
+    tiers.forEach(function(tier) {
+      var files = (clusters[cluster][tier] || []);
+      var count = files.length;
+      if (count > 0) {
+        var title = files.join(', ');
+        html += '<div class="mem-heatmap-cell" style="background:' + tierColors[tier] + '" title="' + escapeHTML(title) + '">' + count + '</div>';
+      } else {
+        html += '<div class="mem-heatmap-cell empty"></div>';
+      }
+    });
+    html += '</div>';
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+async function loadMemRecent() {
+  var container = $('memRecentList');
+  container.innerHTML = '<div class="mem-empty">Loading...</div>';
+  var d = await fetchJSON('/api/memory-recent');
+  if (!d || !d.entries || d.entries.length === 0) {
+    container.innerHTML = '<div class="mem-empty">No recent activity in the last 24h</div>';
+    return;
+  }
+  var html = '';
+  d.entries.forEach(function(e) {
+    var ts = '';
+    try { ts = new Date(e.timestamp).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }); } catch(ex) { ts = e.timestamp; }
+    var entityPath = e.entity || '';
+    html += '<div class="mem-recent-entry" onclick="openInObsidian(' + JSON.stringify(entityPath) + ')" title="Click to open in Obsidian">';
+    html += '<span class="mem-recent-ts">' + escapeHTML(ts) + '</span>';
+    html += '<span class="mem-recent-machine">' + escapeHTML(e.source_machine || '') + '</span>';
+    html += '<span class="mem-recent-action">' + escapeHTML(e.action || '') + '</span>';
+    html += '<span class="mem-recent-entity">' + escapeHTML(entityPath) + '</span>';
+    html += '</div>';
+  });
+  container.innerHTML = html;
+}
+
+async function loadMemCrons() {
+  var container = $('memCronContainer');
+  container.innerHTML = '<div class="mem-empty">Loading...</div>';
+  var d = await fetchJSON('/api/cron-health');
+  if (!d || !d.crons) { container.innerHTML = '<div class="mem-empty">No cron data</div>'; return; }
+  var html = '<table class="mem-cron-table"><thead><tr><th></th><th>Name</th><th>Machine</th><th>Schedule</th><th>Last Run</th><th>Status</th></tr></thead><tbody>';
+  d.crons.forEach(function(c) {
+    var ts = c.last_run ? '' : 'never';
+    if (c.last_run) {
+      try { ts = new Date(c.last_run).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }); } catch(ex) { ts = c.last_run; }
+    }
+    html += '<tr>';
+    html += '<td><span class="mem-cron-health ' + escapeHTML(c.health) + '"></span></td>';
+    html += '<td>' + escapeHTML(c.name) + '</td>';
+    html += '<td>' + escapeHTML(c.machine) + '</td>';
+    html += '<td style="font-size:10px">' + escapeHTML(c.schedule) + '</td>';
+    html += '<td>' + escapeHTML(ts) + '</td>';
+    html += '<td>' + escapeHTML(c.last_status || '--') + '</td>';
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  if (d.gpu_heartbeat) {
+    html += '<div style="margin-top:12px;font-size:11px;color:var(--text-dim);font-family:var(--mono)">gpuserver1 heartbeat: ' + escapeHTML(JSON.stringify(d.gpu_heartbeat).slice(0, 120)) + '</div>';
+  }
+  container.innerHTML = html;
+}
+
+async function loadMemInbox() {
+  var grid = $('memInboxGrid');
+  grid.innerHTML = '<div class="mem-empty">Loading...</div>';
+  var d = await fetchJSON('/api/inbox-status');
+  if (!d || !d.machines || d.machines.length === 0) {
+    grid.innerHTML = '<div class="mem-empty">No inbox data</div>';
+    return;
+  }
+  var html = '';
+  d.machines.forEach(function(m) {
+    html += '<div class="mem-inbox-card">';
+    html += '<div class="mem-inbox-machine">' + escapeHTML(m.machine) + '</div>';
+    html += '<div class="mem-inbox-stat"><span>Pending</span><span class="val">' + (m.pending_count || 0) + '</span></div>';
+    if (m.oldest_age_h != null) html += '<div class="mem-inbox-stat"><span>Oldest</span><span class="val">' + m.oldest_age_h + 'h ago</span></div>';
+    if (m.newest_entry_ts) {
+      var ts = '';
+      try { ts = new Date(m.newest_entry_ts).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); } catch(ex) { ts = m.newest_entry_ts; }
+      html += '<div class="mem-inbox-stat"><span>Newest</span><span class="val">' + escapeHTML(ts) + '</span></div>';
+    }
+    if (m.flagged_count > 0) {
+      html += '<div class="mem-inbox-flagged">' + m.flagged_count + ' flagged (no frontmatter)</div>';
+    }
+    html += '</div>';
+  });
+  grid.innerHTML = html;
+}
+
+async function runMemSearch(q) {
+  if (!q) { $('memSearchResults').innerHTML = ''; return; }
+  $('memSearchResults').innerHTML = '<div class="mem-empty">Searching...</div>';
+  var d = await fetchJSON('/api/memory-search?q=' + encodeURIComponent(q));
+  if (!d || !d.hits || d.hits.length === 0) {
+    $('memSearchResults').innerHTML = '<div class="mem-empty">No results for "' + escapeHTML(q) + '"</div>';
+    return;
+  }
+  var html = '';
+  d.hits.forEach(function(h) {
+    var pathStr = (h.path || '') + (h.line ? ':' + h.line : '');
+    html += '<div class="mem-search-hit" onclick="openInObsidian(' + JSON.stringify(h.path || '') + ')">';
+    html += '<div class="mem-search-hit-path">' + escapeHTML(pathStr) + '</div>';
+    html += '<div class="mem-search-hit-snippet">' + escapeHTML(h.snippet || '') + '</div>';
+    html += '</div>';
+  });
+  $('memSearchResults').innerHTML = html;
+}
+
+async function openInObsidian(path) {
+  if (!path) return;
+  // Normalize: strip leading sartor/memory/ prefix variations
+  var cleanPath = path;
+  // If it looks like just a filename, assume sartor/memory/
+  if (!cleanPath.includes('/') && !cleanPath.includes('\\')) {
+    cleanPath = 'sartor/memory/' + cleanPath;
+  }
+  try {
+    var resp = await fetch('/api/obsidian/open', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path: cleanPath })
+    });
+    var data = await resp.json();
+    if (!resp.ok) {
+      var msg = data.error || resp.status;
+      if (resp.status === 503) {
+        alert('Obsidian is not open. Open the sartor/memory vault in Obsidian first.');
+      } else {
+        console.warn('Obsidian open failed:', msg);
+      }
+    }
+  } catch(e) {
+    console.warn('openInObsidian error:', e);
+  }
+}
+
+// Search debounce
+$('memSearchInput').addEventListener('input', function() {
+  clearTimeout(_memSearchTimer);
+  var q = this.value.trim();
+  _memSearchTimer = setTimeout(function() { runMemSearch(q); }, 300);
+});
+
+// Initial load
+loadMemHealth();
+refreshMemGraph();
 </script>
 </body>
 </html>

@@ -32,7 +32,7 @@ try:
     action = 'write' if tool_name.lower() == 'write' else 'edit'
 
     entry = {
-        'timestamp': datetime.datetime.utcnow().isoformat() + 'Z',
+        'timestamp': datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00', 'Z'),
         'tool': tool_name,
         'file': file_path,
         'action': action,

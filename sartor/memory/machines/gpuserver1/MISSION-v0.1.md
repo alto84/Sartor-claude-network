@@ -4,8 +4,10 @@ entity: gpuserver1
 version: 0.1
 created: 2026-04-11
 author: gpuserver1 (Claude Sonnet 4.5)
-status: draft
-tags: [machine/identity, machine/gpuserver1, meta/mission]
+status: archived
+archived: 2026-04-12
+superseded_by: "[[machines/gpuserver1/MISSION]]"
+tags: [machine/identity, machine/gpuserver1, meta/mission, status/archived]
 related: [MACHINES, BUSINESS, ALTON, household-constitution-v0.2]
 ---
 

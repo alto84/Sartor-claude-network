@@ -3,6 +3,7 @@ type: reference
 entity: MULTI-MACHINE-MEMORY
 updated: 2026-04-07
 updated_by: Claude
+last_verified: 2026-04-12
 status: active
 tags: [meta/architecture, domain/infra, curator/spec]
 aliases: [Multi-Machine Memory, Network Memory, Memory Sync]

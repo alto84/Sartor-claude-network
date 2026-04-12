@@ -15,7 +15,9 @@ from pathlib import Path
 # Hardcoded schedule registry (from CLAUDE.md)
 SCHEDULE_REGISTRY = {
     "morning-briefing": {"cron": "30 6 * * *", "model": "sonnet"},
+    "personal-data-gather": {"cron": "0 */4 * * *", "model": "sonnet"},
     "gpu-utilization-check": {"cron": "0 */4 * * *", "model": "haiku"},
+    "self-improvement-loop": {"cron": "0 */6 * * *", "model": "sonnet"},
     "market-close-summary": {"cron": "30 16 * * 1-5", "model": "sonnet"},
     "nightly-memory-curation": {"cron": "0 23 * * *", "model": "sonnet"},
     "weekly-financial-summary": {"cron": "0 18 * * 5", "model": "sonnet"},
@@ -66,7 +68,7 @@ def get_last_run(task_name: str, heartbeat_log_path: Path) -> datetime | None:
                 # Support both 'task' and 'task_name' column names
                 row_task = row.get("task") or row.get("task_name", "")
                 row_status = row.get("status", "")
-                if row_task == task_name and row_status.lower() == "completed":
+                if row_task == task_name and row_status.lower() in ("completed", "ok"):
                     ts_str = row.get("timestamp") or row.get("datetime") or row.get("time", "")
                     if ts_str:
                         try:

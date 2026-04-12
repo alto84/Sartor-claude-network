@@ -1,7 +1,9 @@
 ---
 type: reference
-updated: 2026-04-07
+version: 0.2
+updated: 2026-04-12
 updated_by: Claude
+last_verified: 2026-04-12
 tags: [meta/conventions, curator/spec]
 aliases: [Conventions, Memory Conventions]
 ---
@@ -72,9 +74,19 @@ aliases: [Alton, Emmett, alto8, alto84]
 type: reference
 ```
 
+### Staleness fields (all canonical hub files and `type: fact` files)
+
+| Field | Type | Values | Notes |
+|-------|------|--------|-------|
+| `last_verified` | date | ISO `YYYY-MM-DD` | Last time content was explicitly confirmed still true. Distinct from `updated` — a file can be unchanged for months and still be verified yesterday. Required on canonical hubs and any file with `type: fact`. |
+| `volatility` | string | `low`, `medium`, `high` | How fast this content rots. Low = biographical facts (DOB, names). Medium = career/role details. High = pricing, live machine state, deadline-bearing content. Drives staleness-score thresholds in `staleness.py`. |
+| `oracle` | string | entity key from `.meta/oracles.yml` | Optional pointer to the ground-truth source for this page. When set, the stale-detector queries the oracle before alerting — can auto-bump `last_verified` if the live value still matches. Omit when oracle is `human` (flags for morning briefing instead). |
+| `superseded_by` | wikilink | `[[filename]]` | For archived v0.1 files: points at the current version. The v0.1 file stays readable in git history but is excluded from active curation. |
+
 ### Hard rules
 
 - `updated` is required and must be maintained. Curator checks this weekly.
+- `last_verified` is required on all canonical hub files and any file with `type: fact`. Set to the date you last confirmed the content is accurate, not just the date you edited the file.
 - `type` is required.
 - `tags` is required but can be empty `[]`.
 - Use lowercase for tag values. Hyphens ok. Slashes for hierarchy.
@@ -137,6 +149,32 @@ All cross-file references use Obsidian `[[FILE]]` syntax, not Markdown links.
 - External URLs still use Markdown links: `[Obsidian help](https://help.obsidian.md)`
 - Declare aliases in the target file's frontmatter (`aliases:` field) so Obsidian's autocomplete and grep-based resolution both work
 - Backlinks are automatic in Obsidian — remove manually-curated "Related" sections over time unless they add narrative context beyond what the link graph shows
+
+## Observation syntax (adopted from basic-memory)
+
+Inline structured observations can appear anywhere in a memory file body. Use this format inside fact lists, decision logs, and change-log entries:
+
+```
+- [category] fact statement #tag
+```
+
+Examples:
+
+```markdown
+- [pricing] vast.ai RTX 5090 market rate $0.38/hr as of 2026-04-12 #gpu #pricing
+- [decision] chose inbox pattern over direct write for multi-machine sync #architecture
+- [deadline] Form 990 due 2026-05-15, extension filed #nonprofit #taxes
+- [fact] Alton DOB confirmed 1984 #person #biographical
+```
+
+### Rules for observation lines
+
+- The `[category]` tag is lowercase and single-word (or hyphenated): `fact`, `pricing`, `decision`, `deadline`, `status`, `constraint`.
+- `#tags` at the end follow the same tag vocabulary as frontmatter (use `/` prefix for hierarchy: `#entity/person`).
+- Optional `(context)` note may follow tags: `- [fact] Aneeta NPI 1234567890 #person (Neurvati employment record)`.
+- The observation line is still valid markdown. It renders as a bullet in Obsidian.
+- The curator's extractor can parse these lines into a structured observation store without modifying the file.
+- Use observation lines for dense fact lists, not for discursive prose. If a fact needs explanation, use a heading and paragraph.
 
 ## Tag vocabulary
 
@@ -237,13 +275,23 @@ grep -l "entity/tax" sartor/memory/*.md
 
 A proper helper script at `sartor/memory/query.py` can wrap these, but grep works fine.
 
+## Related
+
+- [[10-MASTER-PLAN]] §3 — Staleness detection design: scoring function, oracle map, volatility weights, LLM verification budget
+- [[10-MASTER-PLAN]] §13 EX-12 — This file's upgrade brief
+- `sartor/memory/.meta/oracles.yml` — Entity-to-oracle map consumed by `staleness.py`
+- `sartor/memory/staleness.py` — Staleness scorer that reads `last_verified`, `volatility`, and `oracle` fields
+- [[02-research-scout]] §4 — basic-memory observation syntax source (schema adopted here)
+
 ## References
 
 - [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) — the source pattern
 - [Obsidian Flavored Markdown](https://help.obsidian.md/obsidian-flavored-markdown)
 - [Obsidian callouts](https://help.obsidian.md/callouts)
 - [Obsidian properties](https://help.obsidian.md/properties)
+- [basic-memory observation syntax](https://basicmachines.co/blog/what-is-basic-memory/) — source for `- [category] fact #tag` pattern
 
 ## History
 
-- 2026-04-07: Initial creation. Distilled from kepano/obsidian-skills review and memory audit.
+- 2026-04-12: v0.2 — Added `last_verified`, `volatility`, `oracle`, `superseded_by` frontmatter fields (EX-12). Added "Observation syntax (adopted from basic-memory)" section. Added Related section cross-linking master plan and staleness.py. Bumped version to 0.2.
+- 2026-04-07: v0.1 — Initial creation. Distilled from kepano/obsidian-skills review and memory audit.
