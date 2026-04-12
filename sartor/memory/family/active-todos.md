@@ -37,7 +37,22 @@ Live dashboard of time-sensitive family items, surfaced from Gmail and Calendar 
 > **Afternoon childcare help needed** — Both parents now have demanding in-office schedules: Alton commutes to AZ NYC 3 days/week (Senior Medical Director, started ~2026-03-31), Aneeta at Neurvati (Medical Director, busy with senior director push). Aneeta's parents (Amarkanth) are aging and this is explicitly temporary. Need reliable 3 PM to 7-8 PM weekday help with three kids across two schools (MKA + Goddard). Must be able to do pickup and transport. Research in progress.
 
 > [!todo]
-> **Family dentist in Montclair area** — Need a family practice accepting Delta Dental for 2 adults + 3 kids (ages 10, 8, 4). Research in progress.
+> **Family dentist in Montclair area** — Top pick: Park Street Dental (973) 842-2411, confirmed Delta Dental Premier. Call to book family of 5.
+
+> [!deadline] 2026-05-01
+> **GOOGL May $285C roll decision** — 20 short contracts, $49.5K underwater at $317 stock. Let time value decay through late April, then roll up-and-out before May 15 expiry. Decision window: late April when gamma accelerates.
+
+> [!todo]
+> **Reorder Loki's chlorambucil** — Chewy order #5006536778 (Aug 2025). Chlorambucil oral liquid 4mg/mL, 30mL. 1.2mL q2wk. ~50 week supply running low. Vet: Bond Vet Montclair. Chewy Rx: 1-877-977-3879.
+
+> [!todo]
+> **Sante Total: open new bank account** — restricted donations need segregation from general operating funds.
+
+> [!todo]
+> **Miguel (yard work) coming Sunday** (Apr 12)
+
+> [!todo] This weekend (Apr 11-12)
+> **Bank run needed** — purpose TBD (possibly Sante Total new restricted-donations account, possibly personal errand)
 
 > [!todo]
 > **NYC commute: switch from driving to train** — Alton currently drives to AZ NYC 3 days/week (~1 hr each way, expensive: gas + tolls + NYC parking). Train option is NJ Transit from Bay Street Montclair or Bloomfield to Penn Station (~45 min). **Blocker: parking at commuter stations is limited.** Research needed: Bay St vs Bloomfield lot capacity, permit vs daily rates, waitlist status, alternative parking (nearby streets, private lots), bike-to-station option, monthly NJ Transit pass cost vs current driving costs.
@@ -91,6 +106,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - [[vasu]] - Vasu-specific deep profile
 - [[family-calendar]] - Full 30-day calendar view
 - [[ALTON]] - Head of household
+
+## Business idea: burst-compute-as-a-service (2026-04-11)
+
+> [!todo] Solar Inference LLC expansion idea
+> **Two-tier compute rental business.** Tier 1: continue the current vast.ai hosting with gpuserver1 RTX 5090 (and soon the dual PRO 6000 Blackwell workstation). Tier 2: occasionally rent **powerful external machines by the hour** (H100/H200/B200 clusters from Lambda, CoreWeave, RunPod, Together, or vast.ai itself) to train very powerful models that push beyond the limits of the household's own hardware. The business model is a bridge: customers who need occasional frontier-scale training runs but can't justify owning the hardware pay Solar Inference LLC to broker the rental + run the training + deliver the trained weights. Margin comes from (a) markup on the rented compute, (b) operational expertise in distributed training, (c) handling the research-grade tooling. Flag for weekend planning. Worth sketching: target customer profile, initial pricing model, what training runs are feasible (LoRA fine-tunes of frontier open-weight models, full pretraining on smaller sizes, continued-pretraining passes, RLHF/DPO runs at scale). Related to the existing Solar Inference business entity and the dual PRO 6000 workstation order. Alton captured the idea 2026-04-11 during the overnight mini-lab session.
 
 ## Latest from gather (2026-04-10)
 
