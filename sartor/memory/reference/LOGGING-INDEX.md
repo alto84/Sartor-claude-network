@@ -55,22 +55,31 @@ Per OPERATING-AGREEMENT §3.1:
 | Financial reports | `reports/financial/` | md+fm | Indefinite | financial-analyst agent | Weekly/monthly rollups |
 | Observer log | `data/observer-log` | JSONL | 7d raw | observer runtime | Runtime-agent observation stream |
 
-### 3.2 gpuserver1 surfaces (TODO: B13 delivery)
+### 3.2 gpuserver1 surfaces
 
-Awaiting gpuserver1's catalog via inbox entry per EXECUTION-PLAN.md B13. Placeholder entries based on OPERATING-AGREEMENT §1.3 and MISSION v0.2 declarations:
-
-| Name | Current path | Proposed path | Format | Tier | Owner | Notes |
-|---|---|---|---|---|---|---|
-| Power logger | `sartor-power/logs/power_log.csv` (in-repo, broken per MISSION v0.2 #1) | `~/generated/power/power_log.csv` | JSONL (proposed; currently CSV) | Raw telemetry (7d) | `power_logger.py` | B2 refactor required |
-| 2h monitoring sweep stdout | TBD (currently cron stdout) | `~/generated/monitoring/monitor-{ts}.log` | plaintext | Shell wrapper (14d, logrotate) | `run_monitor.sh` | B3 refactor required |
-| 2h monitoring entry (structured) | `sartor/memory/inbox/gpuserver1/monitoring/*.md` | unchanged (stays in inbox) | md+fm | Event-driven 30d | `run_monitor.sh` | The structured inbox side of monitoring |
-| Heartbeat | `sartor/memory/inbox/gpuserver1/_heartbeat.md` | unchanged | md+fm | Live (overwritten every 2h) | `run_monitor.sh` | Curator reads every pass; B6 work item |
-| Pricing cron raw offers | TBD | `~/generated/pricing/offers-{ts}.json` | JSON | Raw telemetry (7d) | `run_pricing.sh` | B4 refactor required |
-| Pricing weekly recommendation | `sartor/memory/inbox/gpuserver1/pricing-rec-{YYYY-MM-DD}.md` | unchanged | md+fm | Event-driven 30d | `run_pricing.sh` | Curator surfaces to morning briefing |
-| Weekly ops report | `sartor/memory/inbox/gpuserver1/weekly-ops-{YYYY-MM-DD}.md` | unchanged | md+fm | Event-driven 30d | weekly ops cron | B11 work item |
-| vastai-tend log | `~/.vastai-alert` on gpuserver1 | TBD (may move to `~/generated/`) | plaintext | Shell wrapper (14d) | `~/vastai-tend.sh` | Pre-agreement surface; needs audit |
-| Kaalia daemon log | TBD | TBD | TBD | TBD | Kaalia | gpuserver1 to catalog |
-| GPU utilization samples | TBD | `~/generated/monitoring/gpu-util.jsonl` | JSONL | Raw telemetry (7d) | future telemetry job | Proposed; not yet deployed |
+| Name | Path | Format | Tier | Owner | Notes |
+|---|---|---|---|---|---|
+| Monitoring sweep shell log | `~/sartor-monitoring/logs/run_{ts}.log` | plaintext | Shell wrapper (30d) | `run_monitor.sh` | Claude invocation wrapper stdout; kept 30d by script's own logrotate |
+| Monitoring sweep inbox entry | `sartor/memory/inbox/gpuserver1/monitoring/{YYYY-MM-DD}_{HHMM}_monitor.md` | md+fm | Event-driven (30d) | `run_monitor.sh` (Claude writes) | Structured health sweep; curator processes |
+| Pricing weekly shell log | `~/sartor-pricing/logs/{YYYY-MM-DD}_{HHMM}.log` | plaintext | Shell wrapper (365d) | `run_pricing.sh` | Claude invocation wrapper; kept 365d per script |
+| Pricing weekly report (local) | `~/sartor-pricing/state/weekly_reports/{YYYY-MM-DD}_pricing.md` | md+fm | Event-driven (365d) | `run_pricing.sh` (Claude writes) | Local state file; copied to inbox |
+| Pricing weekly inbox entry | `sartor/memory/inbox/gpuserver1/pricing/{YYYY-MM-DD}_pricing.md` | md+fm | Event-driven (30d) | `run_pricing.sh` (Claude writes) | Curator-facing copy |
+| Pricing history JSONL | `~/sartor-pricing/state/price_history.jsonl` | JSONL | Event-driven | `run_pricing.sh` (Claude appends) | One line per pricing decision; unbounded retention |
+| Power daily summary inbox | `sartor/memory/inbox/gpuserver1/power/{YYYY-MM-DD}_power.md` | md+fm | Daily summary (30d) | `daily_summary.py` | kWh/cost rollup; curator processes |
+| Power daily summary shell log | `~/sartor-power/logs/daily_summary.log` | plaintext | Shell wrapper (14d) | cron stdout redirect | Script-level log; needs logrotate |
+| Power raw TSV (daily) | `~/sartor-power/data/{YYYY-MM-DD}.tsv` | TSV | Raw telemetry (7d) | `power_logger.py` service | Per-agreement NOT in repo; lives on gpuserver1 only |
+| Heartbeat file | `sartor/memory/inbox/gpuserver1/_heartbeat.md` | md+fm | Live (overwritten) | `update_heartbeat.sh` | Updated by monitoring/pricing/power; curator reads every pass |
+| vastai-tend legacy alert | `~/.vastai-alert` on gpuserver1 | plaintext | Legacy (unbounded) | `vastai-tend.sh` | Pre-agreement script; append-only; replaced by monitoring sweep |
+| vastai-tend legacy log | `~/.vastai-tend.log` on gpuserver1 | plaintext | Legacy (unbounded) | vastai-tend.sh cron redirect | Pre-agreement; replaced by monitoring sweep |
+| Gather mirror log | TBD | TBD | TBD | `gather_mirror.sh` | Runs every 4h; output location TBD |
+| Evolve mirror log | `/tmp/sartor-evolve.log` | plaintext | Shell wrapper (logrotate) | `sartor-evolve.sh` | LLM analysis; every 6h |
+| Consolidate mirror log (autodream) | `/tmp/autodream.log` | plaintext | Shell wrapper (logrotate) | cron redirect | Daily 23:30 |
+| Consolidate mirror log (decay) | `/tmp/decay.log` | plaintext | Shell wrapper (logrotate) | cron redirect | Daily 23:30 |
+| Model optimizer log | `/tmp/model-optimizer.log` | plaintext | Shell wrapper (logrotate) | `sartor-model-optimizer.sh` | Weekly Sunday 4 AM |
+| Gemma weekly log | `~/gemma-weekly.log` | plaintext | Shell wrapper (logrotate) | `sartor-gemma-weekly.sh` | Weekly Sunday 3 AM |
+| Dashboard healthcheck log | TBD | TBD | TBD | `dashboard-healthcheck.sh` | Runs every 9h; output TBD |
+| Gateway cron log | `~/.sartor-cron.log` | plaintext | Shell wrapper (14d) | gateway_cron.py redirect | Runs every 30min; needs logrotate |
+| Heartbeat CSV log | `data/heartbeat-log.csv` | CSV | Event-driven | consolidate mirror cron | Append-only; retention TBD |
 
 ### 3.3 Joint surfaces
 
