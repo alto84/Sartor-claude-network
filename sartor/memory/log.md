@@ -211,6 +211,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime
 - Updated: [[ALTON]], `daily/2026-04-11.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-12] ingest | personal-data-gather run 2 — Gmail + Calendar harvest
+
+- Sources: Gmail (23 msgs scanned, after:2026/04/11), 5 Google Calendars (7-day window Apr 12–19)
+- Facts gathered: 1 new signal; all others confirmed/unchanged from prior runs
+- Calendar: unchanged vs run 1 and runs 6–11 — no new events on any of the 5 calendars
+- New fact: ZXOLDZX 3 Pairs Kids Soccer socks DELIVERED (Apr 12 1:24 AM, 19d7f4a8a3e65923). Was SHIPPED in run 1. Informational.
+- Outstanding: Goddard summer forms DUE TOMORROW (Apr 13) — T-1 critical; Apr 15 tax deadlines (3 days); Tribeca $170.28 pre-collections risk; Apr 17 coverage conflict; Apr 18 soccer/Rafi conflict; advisory decisions pending (Guidepoint, Zintro, Handshake)
+- SSH check: gpuserver1 unavailable from this runtime
+- Updated: `daily/2026-04-12.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## [2026-04-12] ingest | personal-data-gather run 1 — Gmail + Calendar harvest
 
 - Sources: Gmail (22 msgs scanned, after:2026/04/11), 5 Google Calendars (7-day window Apr 12–19)
