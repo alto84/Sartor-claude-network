@@ -141,6 +141,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Created: `data/` directory (did not exist), `data/gather-alerts.md`, `data/heartbeat-log.csv`
 - Updated: `daily/2026-04-12.md`
 
+## [2026-04-12] ingest | personal-data-gather run 5 — Gmail + Calendar harvest
+
+- Sources: Gmail (34 msgs scanned, after:2026/04/11, -promotions/-social), 5 Google Calendars (7-day window Apr 12–19)
+- Facts gathered: 3 new signals (1 ACTION_REQUIRED, 1 resolved todo, 1 informational)
+- **NEW ACTION_REQUIRED: CAQH ProView reattestation** — Alton's medical credentialing profile expired; affects insurance reimbursements and hospital privileges. First flagged this run.
+- **RESOLVED: Chewy Rx order #5132136807** placed Apr 12 via rx@chewy.com — likely Loki's chlorambucil reorder (pending confirmation on item).
+- New informational: CRG Watertown late open 4/13 (3 PM–11 PM); Regeneron Director GPS Sciences LinkedIn alert; Catalyst Director Medical Info LinkedIn alert.
+- Calendar: unchanged vs runs 1–4 and 6–11; no new events on any of 5 calendars
+- SSH check: gpuserver1 unavailable from this runtime (command not found)
+- Updated: [[ALTON]], [[family/active-todos]], `daily/2026-04-12.md`
+- Created: `data/gather-alerts.md` (13 alerts), `data/heartbeat-log.csv`
+
 ## [2026-04-11] ingest | personal-data-gather run 9 — Gmail + Calendar harvest
 
 - Sources: Gmail (8 msgs scanned, unread after:2026/04/11), 5 Google Calendars (7-day window Apr 11–18)
