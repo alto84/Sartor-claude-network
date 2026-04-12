@@ -2,33 +2,35 @@
 type: machine_operations
 entity: rocinante-crons
 updated: 2026-04-12
-updated_by: cron-cleaner (memory-system-v2 EX-11)
+updated_by: morning-briefing-v2 build (gmail_scan + morning_briefing)
 status: active
-version: 0.2
+version: 0.3
 last_verified: 2026-04-12
 related: [gpuserver1-crons, OPERATING-AGREEMENT, MULTI-MACHINE-MEMORY]
 ---
 
 # Rocinante Cron Documentation v0.2
 
-Target state per master-plan §5.1: exactly 3 active Windows Scheduled Tasks on Rocinante. Current state: 1 active (SartorHeartbeat), 3 new tasks with XMLs written but not yet installed, 9 budget-gated old dispatched tasks pending deprecation.
+Target state: 5 active Windows Scheduled Tasks on Rocinante (3 original + 2 new from morning-briefing-v2 build). Current state: 6 registered (including legacy SartorHeartbeat pending removal).
 
-This document is authoritative for all Rocinante scheduled-work operations. Last verified: 2026-04-12 (EX-11).
+This document is authoritative for all Rocinante scheduled-work operations. Last verified: 2026-04-12.
 
 ---
 
-## Target State (master-plan §5.1)
+## Target State
 
-Three Windows Scheduled Tasks on Rocinante:
+Five Windows Scheduled Tasks on Rocinante:
 
 | Task name | Schedule | Status |
 |---|---|---|
-| SartorCuratorPass | 07:30 + 19:30 daily | XML written — pending install |
-| SartorConversationExtract | 23:30 daily | XML written — pending install |
-| SartorImprovementLoop | Sunday 20:00 | XML written — pending install |
+| SartorCuratorPass | 07:30 + 19:30 daily | ACTIVE |
+| SartorConversationExtract | 23:30 daily | ACTIVE |
+| SartorImprovementLoop | Sunday 20:00 | ACTIVE |
+| SartorGmailScan | Every 4h (06:00, 10:00, 14:00, 18:00, 22:00) | ACTIVE |
+| SartorMorningBriefing | Daily 06:30 | ACTIVE |
 
-**Total active after install**: 3
-**6-cron network total**: gpuserver1 (3 active) + Rocinante (3 after install) = 6
+**Total active**: 5 (+ SartorHeartbeat pending removal)
+**Network total**: gpuserver1 (3 active) + Rocinante (5 active) = 8
 
 ---
 
@@ -92,6 +94,32 @@ Register-ScheduledTask -Xml (Get-Content "scripts\conversation-extract-task.xml"
 **Install command**:
 ```powershell
 Register-ScheduledTask -Xml (Get-Content "scripts\improvement-loop-task.xml" -Raw) -TaskName "SartorImprovementLoop"
+```
+
+### 4. SartorGmailScan
+**XML**: `scripts/gmail-scan-task.xml`
+**Schedule**: Every 4 hours (06:00, 10:00, 14:00, 18:00, 22:00)
+**Command**: `scripts\gmail-scan-run.cmd` (working dir: `C:\Users\alto8\Sartor-claude-network`)
+**Purpose**: Scans Gmail for actionable items (reply needed, payments due, school events, deadlines). Writes curator-compatible inbox entries to `sartor/memory/inbox/rocinante/gmail/`. The 06:00 run feeds the morning briefing.
+**Status**: ACTIVE (registered 2026-04-12)
+**Log**: `C:\Users\alto8\generated\gmail-scan-YYYY-MM-DD.log`
+**Module**: `sartor/gmail_scan.py`
+**Install command**:
+```powershell
+Register-ScheduledTask -Xml (Get-Content "scripts\gmail-scan-task.xml" -Raw) -TaskName "SartorGmailScan" -User "$env:USERNAME"
+```
+
+### 5. SartorMorningBriefing
+**XML**: `scripts/morning-briefing-task.xml`
+**Schedule**: Daily at 06:30
+**Command**: `scripts\morning-briefing-run.cmd` (working dir: `C:\Users\alto8\Sartor-claude-network`)
+**Purpose**: Generates daily morning briefing with 8 sections: date/weather, curator summary, gmail highlights, todo resurfacing (the key feature), calendar, system health, memory health, improvement proposals. Writes to `sartor/memory/inbox/rocinante/morning-briefing/YYYY-MM-DD.md`. Replaces the old `morning-briefing` dispatched task.
+**Status**: ACTIVE (registered 2026-04-12)
+**Log**: `C:\Users\alto8\generated\morning-briefing-YYYY-MM-DD.log`
+**Module**: `sartor/morning_briefing.py`
+**Install command**:
+```powershell
+Register-ScheduledTask -Xml (Get-Content "scripts\morning-briefing-task.xml" -Raw) -TaskName "SartorMorningBriefing" -User "$env:USERNAME"
 ```
 
 ---
