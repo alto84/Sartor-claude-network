@@ -1,6 +1,7 @@
 """
-MERIDIAN v0.1 — Sartor Family Dashboard Backend
+MERIDIAN v0.2 — Sartor Family Dashboard Backend
 FastAPI server on port 5055
+Cookie-based session auth (replaces HTTP Basic Auth)
 """
 
 import os
@@ -10,18 +11,21 @@ import asyncio
 import subprocess
 import platform
 import secrets
+import hashlib
+import hmac
+import urllib.request
+import urllib.error
 from datetime import datetime, date
 from pathlib import Path
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Depends, HTTPException, status
-from fastapi.security import HTTPBasic, HTTPBasicCredentials
-from fastapi.responses import HTMLResponse, JSONResponse
+from typing import Optional
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request, Response, HTTPException, status, Cookie
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from starlette.middleware.cors import CORSMiddleware
 import anthropic
 
 # ── Auth ──────────────────────────────────────────────────────────────────────
 
 _MERIDIAN_DEV = os.environ.get("MERIDIAN_DEV", "") == "1"
-_http_basic = HTTPBasic(auto_error=not _MERIDIAN_DEV)
 
 def _load_password() -> str:
     secrets_path = Path(__file__).resolve().parent.parent.parent / ".secrets" / "meridian-password.txt"
@@ -32,30 +36,219 @@ def _load_password() -> str:
 
 _MERIDIAN_PASSWORD: str = _load_password()
 
+# Session cookie signing key (derived from password + salt for simplicity)
+_SESSION_SECRET = hashlib.sha256(f"meridian-session-{_MERIDIAN_PASSWORD}".encode()).hexdigest()
 
-def require_auth(credentials: HTTPBasicCredentials = Depends(_http_basic)) -> str:
-    if _MERIDIAN_DEV:
-        return "dev"
-    if credentials is None:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Unauthorized",
-            headers={"WWW-Authenticate": "Basic"},
-        )
-    correct_username = secrets.compare_digest(credentials.username.encode(), b"alton")
-    correct_password = secrets.compare_digest(
-        credentials.password.encode(), _MERIDIAN_PASSWORD.encode()
-    )
-    if not (correct_username and correct_password):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Unauthorized",
-            headers={"WWW-Authenticate": "Basic"},
-        )
-    return credentials.username
+def _sign_token(username: str) -> str:
+    """Create a signed session token."""
+    payload = f"{username}:{_SESSION_SECRET[:16]}"
+    sig = hmac.new(_SESSION_SECRET.encode(), payload.encode(), hashlib.sha256).hexdigest()[:32]
+    return f"{username}:{sig}"
 
-app = FastAPI(title="MERIDIAN", version="0.1.0", dependencies=[Depends(require_auth)])
+def _verify_token(token: str) -> Optional[str]:
+    """Verify a signed session token. Returns username or None."""
+    if not token or ":" not in token:
+        return None
+    parts = token.split(":", 1)
+    if len(parts) != 2:
+        return None
+    username, sig = parts
+    expected_payload = f"{username}:{_SESSION_SECRET[:16]}"
+    expected_sig = hmac.new(_SESSION_SECRET.encode(), expected_payload.encode(), hashlib.sha256).hexdigest()[:32]
+    if hmac.compare_digest(sig, expected_sig):
+        return username
+    return None
+
+
+app = FastAPI(title="MERIDIAN", version="0.2.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+
+
+# ── Auth Middleware ───────────────────────────────────────────────────────────
+
+from starlette.middleware.base import BaseHTTPMiddleware
+
+class SessionAuthMiddleware(BaseHTTPMiddleware):
+    """Redirect unauthenticated requests to /login. Skip /login, /logout, static."""
+    OPEN_PATHS = {"/login", "/logout", "/meridian-theme.css"}
+
+    async def dispatch(self, request: Request, call_next):
+        path = request.url.path
+        if _MERIDIAN_DEV or path in self.OPEN_PATHS:
+            return await call_next(request)
+        token = request.cookies.get("meridian_session")
+        if token and _verify_token(token):
+            return await call_next(request)
+        # For API/WebSocket requests, return 401 instead of redirect
+        if path.startswith("/api/") or path.startswith("/ws/"):
+            return JSONResponse(status_code=401, content={"error": "Unauthorized"})
+        return RedirectResponse(url="/login", status_code=302)
+
+app.add_middleware(SessionAuthMiddleware)
+
+
+# ── Login / Logout Routes ────────────────────────────────────────────────────
+
+_LOGIN_HTML = """<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MERIDIAN - Login</title>
+<link rel="stylesheet" href="/meridian-theme.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans, 'Segoe UI', system-ui, sans-serif);
+  background: var(--bg-primary, #0f1117);
+  color: var(--text-primary, #e4e4e7);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--bg-card, #1a1d27);
+  border: 1px solid var(--border-color, #2d3044);
+  border-radius: var(--radius-lg, 14px);
+  padding: 40px 32px 32px;
+  box-shadow: var(--shadow-md, 0 4px 16px rgba(0,0,0,0.4)), var(--shadow-glow, 0 0 20px rgba(99,102,241,0.15));
+}
+.login-title {
+  font-family: var(--font-mono, 'Cascadia Code', monospace);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--accent-primary, #6366f1);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.login-subtitle {
+  font-size: 12px;
+  color: var(--text-secondary, #9ca3af);
+  text-align: center;
+  margin-bottom: 28px;
+  letter-spacing: 1px;
+}
+.login-field {
+  margin-bottom: 16px;
+}
+.login-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary, #9ca3af);
+  margin-bottom: 6px;
+}
+.login-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-primary, #0f1117);
+  border: 1px solid var(--border-color, #2d3044);
+  border-radius: var(--radius-sm, 6px);
+  color: var(--text-primary, #e4e4e7);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.login-input:focus {
+  border-color: var(--accent-primary, #6366f1);
+}
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  background: var(--accent-primary, #6366f1);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm, 6px);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.login-btn:hover {
+  background: var(--accent-secondary, #4f46e5);
+}
+.login-error {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: var(--radius-sm, 6px);
+  color: #fca5a5;
+  font-size: 13px;
+  text-align: center;
+  display: none;
+}
+.login-error.visible { display: block; }
+</style>
+</head>
+<body>
+<div class="login-card">
+  <div class="login-title">MERIDIAN</div>
+  <div class="login-subtitle">Sartor Family Dashboard</div>
+  <form method="POST" action="/login" id="loginForm">
+    <div class="login-field">
+      <label class="login-label" for="username">Username</label>
+      <input class="login-input" type="text" id="username" name="username" autocomplete="username" required autofocus>
+    </div>
+    <div class="login-field">
+      <label class="login-label" for="password">Password</label>
+      <input class="login-input" type="password" id="password" name="password" autocomplete="current-password" required>
+    </div>
+    <button class="login-btn" type="submit">Sign In</button>
+    <div class="login-error {error_class}" id="loginError">{error_msg}</div>
+  </form>
+</div>
+</body>
+</html>"""
+
+
+@app.get("/login", response_class=HTMLResponse)
+async def login_page(error: str = ""):
+    error_class = "visible" if error else ""
+    error_msg = error if error else ""
+    html = _LOGIN_HTML.replace("{error_class}", error_class).replace("{error_msg}", error_msg)
+    return HTMLResponse(content=html)
+
+
+@app.post("/login")
+async def login_submit(request: Request):
+    form = await request.form()
+    username = form.get("username", "").strip()
+    password = form.get("password", "").strip()
+
+    correct_user = secrets.compare_digest(username.encode(), b"alton")
+    correct_pass = secrets.compare_digest(password.encode(), _MERIDIAN_PASSWORD.encode())
+
+    if not (correct_user and correct_pass):
+        return RedirectResponse(url="/login?error=Invalid+username+or+password", status_code=303)
+
+    token = _sign_token(username)
+    response = RedirectResponse(url="/", status_code=303)
+    response.set_cookie(
+        key="meridian_session",
+        value=token,
+        httponly=True,
+        samesite="lax",
+        max_age=60 * 60 * 24 * 30,  # 30 days
+    )
+    return response
+
+
+@app.get("/logout")
+async def logout():
+    response = RedirectResponse(url="/login", status_code=302)
+    response.delete_cookie("meridian_session")
+    return response
+
 
 # Paths
 BASE_DIR = Path(__file__).resolve().parent
@@ -220,7 +413,7 @@ Today is {today.strftime('%A, %B %d, %Y')}.
 
 Family members:
 - Alton Sartor (age 41) — Medical Director, AI Innovation & Validation at AstraZeneca. Head of household.
-- Aneeta Sartor (age 45) — Medical Director at Neurvati (anti-seizure medication). Wife.
+- Aneeta Sartor (age 45) — Medical Director at Neurvati (anti-seizure medication). Co-Head of Household.
 - Vayu Sartor (age 10) — MKA, Grade 5. Son.
 - Vishala Sartor (age 8) — MKA, Grade 3. Daughter.
 - Vasu Sartor (age 4) — Pre-K. Son.
@@ -323,7 +516,7 @@ async def family():
         },
         {
             "name": "Aneeta",
-            "role": "Wife",
+            "role": "Co-Head of Household",
             "detail": "Medical Director at Neurvati (anti-seizure medication)",
             "birthday_month": 10,
             "birthday_day": 20,
@@ -404,37 +597,53 @@ async def deadlines():
 
 @app.get("/api/tasks")
 async def tasks():
+    # Try both task file locations
     content = read_file_safe(TASKS_DIR / "ACTIVE.md")
+    if not content:
+        content = read_file_safe(REPO_TASKS_DIR / "ACTIVE.md")
     if not content:
         return {"in_progress": [], "completed": [], "pending": []}
 
     in_progress = []
     completed = []
     pending = []
-    current_section = None
+    current_section = "pending"
 
     for line in content.splitlines():
         stripped = line.strip()
-        if stripped.startswith("## In Progress"):
-            current_section = "in_progress"
-        elif stripped.startswith("## Completed"):
-            current_section = "completed"
-        elif stripped.startswith("## Pending"):
-            current_section = "pending"
+        lower = stripped.lower()
+        if stripped.startswith("## "):
+            # Map section names to categories
+            if "in progress" in lower or "active" in lower:
+                current_section = "in_progress"
+            elif "completed" in lower or "done" in lower:
+                current_section = "completed"
+            else:
+                # All other sections (GPU Business, Taxes, Family, etc.) are pending
+                current_section = "pending"
         elif stripped.startswith("- ["):
-            # Extract task title
-            match = re.match(r"- \[(.)\] \*\*(.+?)\*\*\s*[-–—]?\s*(.*)", stripped)
-            if match:
-                checked = match.group(1).lower() == "x"
-                title = match.group(2)
-                desc = match.group(3).strip()
-                task = {"title": title, "description": desc, "done": checked}
-                if current_section == "in_progress":
-                    in_progress.append(task)
-                elif current_section == "completed":
-                    completed.append(task)
-                elif current_section == "pending":
-                    pending.append(task)
+            # Match both **Bold** format and plain format
+            match_bold = re.match(r"- \[(.)\] \*\*(.+?)\*\*\s*[-\u2013\u2014]?\s*(.*)", stripped)
+            match_plain = re.match(r"- \[(.)\]\s+(.*)", stripped)
+            if match_bold:
+                checked = match_bold.group(1).lower() == "x"
+                title = match_bold.group(2)
+                desc = match_bold.group(3).strip()
+            elif match_plain:
+                checked = match_plain.group(1).lower() == "x"
+                raw_text = match_plain.group(2).strip()
+                # Strip trailing markdown links for display title
+                title = re.sub(r'\s*[\u2014\u2013-]+\s*\[.*?\]\(.*?\)\s*$', '', raw_text).strip()
+                desc = ""
+            else:
+                continue
+            task = {"title": title, "description": desc, "done": checked}
+            if checked:
+                completed.append(task)
+            elif current_section == "in_progress":
+                in_progress.append(task)
+            else:
+                pending.append(task)
 
     return {"in_progress": in_progress, "completed": completed, "pending": pending}
 
@@ -1150,9 +1359,6 @@ async def gpu_rental():
     Proxy data from the gpuserver1 dashboard at http://192.168.1.100:5060.
     Returns rental status, GPU activity, and recent rental log for the home dashboard widget.
     """
-    import urllib.request
-    import urllib.error
-
     base = "http://192.168.1.100:5060"
     out = {"online": False, "gpu": None, "vastai": None, "rentals": []}
 
@@ -1259,6 +1465,12 @@ _CLUSTER_COLORS = {
     "career": "#a855f7",
     "personal": "#f59e0b",
     "projects": "#14b8a6",
+    "machines": "#06b6d4",
+    "people": "#ec4899",
+    "reference": "#8b5cf6",
+    "research": "#f97316",
+    "skills": "#84cc16",
+    "ledgers": "#eab308",
 }
 
 
@@ -1367,6 +1579,295 @@ async def memory_graph():
         "links": deduped_links,
         "clusters": _CLUSTER_COLORS,
     }
+
+
+# ── Hierarchical cluster mapping for drill-down ─────────────────────────────
+
+_CLUSTER_SUBDIRS = {
+    "family": "family",
+    "business": "business",
+    "personal": None,        # personal files live at top level (ALTON.md, SELF.md)
+    "taxes": None,           # TAXES.md lives at top level
+    "career": None,          # ASTRAZENECA.md lives at top level
+    "projects": "projects",
+    "machines": "machines/gpuserver1",
+    "people": "people",
+    "reference": "reference",
+    "research": "research",
+    "skills": "skills",
+    "ledgers": "ledgers",
+}
+
+# Which top-level .md files belong to which cluster
+_CLUSTER_HUB_FILES = {
+    "family": ["FAMILY.md"],
+    "business": ["BUSINESS.md", "MACHINES.md", "PROCEDURES.md"],
+    "personal": ["ALTON.md", "SELF.md"],
+    "taxes": ["TAXES.md"],
+    "career": ["ASTRAZENECA.md"],
+    "projects": ["PROJECTS.md", "MASTERPLAN.md", "MASTERPLAN-VISIONARY.md", "LEARNINGS.md"],
+    "machines": ["MACHINES.md"],
+    "people": [],
+    "reference": ["PROCEDURES.md"],
+    "research": [],
+    "skills": [],
+    "ledgers": [],
+}
+
+
+@app.get("/api/memory-graph/overview")
+async def memory_graph_overview():
+    """Return top-level cluster nodes for the overview zoom level."""
+    memory_dir = REPO_ROOT / "sartor" / "memory"
+
+    # Load decay scores
+    try:
+        import sys
+        sys.path.insert(0, str(memory_dir))
+        from decay import compute_all_scores
+        decay_scores = compute_all_scores()
+    except Exception:
+        decay_scores = {}
+
+    # Build cluster summaries
+    clusters = []
+    for cluster_name, color in _CLUSTER_COLORS.items():
+        subdir = _CLUSTER_SUBDIRS.get(cluster_name)
+        child_count = 0
+        tiers = {"ACTIVE": 0, "WARM": 0, "COLD": 0, "FORGOTTEN": 0, "ARCHIVE": 0}
+
+        # Count hub files
+        hub_files = _CLUSTER_HUB_FILES.get(cluster_name, [])
+        for hf in hub_files:
+            fp = memory_dir / hf
+            if fp.exists():
+                child_count += 1
+                entry = decay_scores.get(hf, {})
+                tier = entry.get("tier", "COLD")
+                if tier in tiers:
+                    tiers[tier] += 1
+
+        # Count subdirectory files
+        if subdir:
+            sub_path = memory_dir / subdir
+            if sub_path.exists():
+                for f in sub_path.rglob("*.md"):
+                    child_count += 1
+                    rel = str(f.relative_to(memory_dir)).replace("\\", "/")
+                    fname = f.name
+                    entry = decay_scores.get(fname, {})
+                    tier = entry.get("tier", "COLD")
+                    if tier in tiers:
+                        tiers[tier] += 1
+
+        # Determine dominant tier for staleness indicator
+        dominant_tier = "COLD"
+        for t in ["FORGOTTEN", "COLD", "WARM", "ACTIVE"]:
+            if tiers.get(t, 0) > 0:
+                dominant_tier = t
+
+        clusters.append({
+            "id": cluster_name,
+            "label": cluster_name.upper(),
+            "type": "cluster",
+            "color": color,
+            "children_count": child_count,
+            "tiers": tiers,
+            "dominant_tier": dominant_tier,
+        })
+
+    # Inter-cluster links based on wikilinks between hub files
+    cluster_links = []
+    file_cluster = {}
+    for cname, hfiles in _CLUSTER_HUB_FILES.items():
+        for hf in hfiles:
+            file_cluster[hf] = cname
+
+    for cname, hfiles in _CLUSTER_HUB_FILES.items():
+        for hf in hfiles:
+            fp = memory_dir / hf
+            if not fp.exists():
+                continue
+            content = read_file_safe(fp)
+            wiki_links = re.findall(r'\[\[([^\]]+)\]\]', content)
+            for link_text in wiki_links:
+                link_upper = link_text.strip().upper().replace(" ", "")
+                for stem, fname in {Path(f).stem.upper(): f for f in file_cluster}.items():
+                    if link_upper == stem or link_upper == stem.replace("-", ""):
+                        target_cluster = file_cluster.get(fname)
+                        if target_cluster and target_cluster != cname:
+                            cluster_links.append({
+                                "source": cname,
+                                "target": target_cluster,
+                                "weight": 0.5,
+                            })
+
+    # Deduplicate cluster links
+    seen = set()
+    deduped = []
+    for link in cluster_links:
+        key = tuple(sorted([link["source"], link["target"]]))
+        if key not in seen:
+            seen.add(key)
+            deduped.append(link)
+
+    return {
+        "clusters": clusters,
+        "links": deduped,
+        "colors": _CLUSTER_COLORS,
+    }
+
+
+@app.get("/api/memory-graph/cluster/{cluster_name}")
+async def memory_graph_cluster(cluster_name: str):
+    """Return nodes within a specific cluster for drill-down."""
+    memory_dir = REPO_ROOT / "sartor" / "memory"
+
+    if cluster_name not in _CLUSTER_COLORS and cluster_name not in _CLUSTER_SUBDIRS:
+        return JSONResponse(status_code=404, content={"error": f"Unknown cluster: {cluster_name}"})
+
+    # Load decay scores
+    try:
+        import sys
+        sys.path.insert(0, str(memory_dir))
+        from decay import compute_all_scores
+        decay_scores = compute_all_scores()
+    except Exception:
+        decay_scores = {}
+
+    nodes = []
+    links = []
+    file_contents = {}
+
+    color = _CLUSTER_COLORS.get(cluster_name, "#6366f1")
+    subdir = _CLUSTER_SUBDIRS.get(cluster_name)
+    hub_files = _CLUSTER_HUB_FILES.get(cluster_name, [])
+
+    # Add hub files (top-level .md files for this cluster)
+    for hf in hub_files:
+        fp = memory_dir / hf
+        if not fp.exists():
+            continue
+        content = read_file_safe(fp)
+        file_contents[hf] = content
+        stat = fp.stat()
+        decay_entry = decay_scores.get(hf, {})
+        word_count = len(content.split()) if content else 0
+        nodes.append({
+            "id": hf,
+            "label": fp.stem,
+            "type": "hub",
+            "size": stat.st_size,
+            "cluster": cluster_name,
+            "color": color,
+            "tier": decay_entry.get("tier", "COLD"),
+            "score": decay_entry.get("score", 0.0),
+            "word_count": word_count,
+            "path": "sartor/memory/" + hf,
+            "preview": content[:500] if content else "",
+            "last_verified": _extract_frontmatter_field(content, "last_verified"),
+        })
+
+    # Add subdirectory files
+    if subdir:
+        sub_path = memory_dir / subdir
+        if sub_path.exists():
+            for f in sorted(sub_path.rglob("*.md")):
+                rel_path = str(f.relative_to(memory_dir)).replace("\\", "/")
+                content = read_file_safe(f)
+                file_contents[rel_path] = content
+                stat = f.stat()
+                decay_entry = decay_scores.get(f.name, {})
+                word_count = len(content.split()) if content else 0
+
+                # Determine node type from frontmatter or filename
+                node_type = "leaf"
+                if f.name == "INDEX.md":
+                    node_type = "index"
+                elif _extract_frontmatter_field(content, "type") == "hub":
+                    node_type = "index"
+
+                nodes.append({
+                    "id": rel_path,
+                    "label": f.stem,
+                    "type": node_type,
+                    "size": stat.st_size,
+                    "cluster": cluster_name,
+                    "color": color,
+                    "tier": decay_entry.get("tier", "COLD"),
+                    "score": decay_entry.get("score", 0.0),
+                    "word_count": word_count,
+                    "path": "sartor/memory/" + rel_path,
+                    "preview": content[:500] if content else "",
+                    "last_verified": _extract_frontmatter_field(content, "last_verified"),
+                })
+
+    # Extract wikilinks between nodes in this cluster
+    node_ids = {n["id"] for n in nodes}
+    node_stems = {}
+    for n in nodes:
+        stem = Path(n["id"]).stem.upper()
+        node_stems[stem] = n["id"]
+        # Also map with path-style references like family/vayu
+        if "/" in n["id"]:
+            # e.g., "family/vayu" from "family/vayu.md"
+            path_ref = n["id"].rsplit(".", 1)[0].upper()
+            node_stems[path_ref] = n["id"]
+
+    for node_id, content in file_contents.items():
+        if not content:
+            continue
+        # [[wikilink]] patterns
+        wiki_links = re.findall(r'\[\[([^\]|]+)(?:\|[^\]]+)?\]\]', content)
+        for link_text in wiki_links:
+            link_clean = link_text.strip().upper().replace(" ", "").replace("-", "")
+            for stem, target_id in node_stems.items():
+                stem_clean = stem.replace("-", "")
+                if link_clean == stem_clean and target_id != node_id:
+                    links.append({"source": node_id, "target": target_id, "weight": 1.0})
+                    break
+
+        # Markdown links to .md files
+        md_links = re.findall(r'\[.*?\]\(([^)]+\.md)\)', content)
+        for md_link in md_links:
+            # Normalize the link path
+            target_name = md_link.replace("\\", "/")
+            # Try matching against node IDs
+            for nid in node_ids:
+                if nid != node_id and (nid.endswith(target_name) or target_name.endswith(Path(nid).name)):
+                    links.append({"source": node_id, "target": nid, "weight": 0.7})
+                    break
+
+    # Deduplicate links
+    seen = set()
+    deduped_links = []
+    for link in links:
+        key = (link["source"], link["target"])
+        if key not in seen:
+            seen.add(key)
+            deduped_links.append(link)
+
+    return {
+        "cluster": cluster_name,
+        "label": cluster_name.upper(),
+        "color": color,
+        "nodes": nodes,
+        "links": deduped_links,
+    }
+
+
+def _extract_frontmatter_field(content: str, field: str) -> str:
+    """Extract a YAML frontmatter field value from markdown content."""
+    if not content or not content.startswith("---"):
+        return ""
+    end = content.find("---", 3)
+    if end == -1:
+        return ""
+    frontmatter = content[3:end]
+    for line in frontmatter.splitlines():
+        if line.strip().startswith(field + ":"):
+            return line.split(":", 1)[1].strip()
+    return ""
 
 
 # ── GET /api/heartbeat-live ──────────────────────────────────────────────────
@@ -1762,8 +2263,6 @@ def _load_obsidian_key() -> str | None:
 
 @app.post("/api/obsidian/open")
 async def obsidian_open(body: dict):
-    import urllib.request
-    import urllib.error
     import ssl
 
     path = body.get("path", "").strip()
@@ -1809,9 +2308,523 @@ async def obsidian_open(body: dict):
         return JSONResponse(status_code=502, content={"error": f"Obsidian proxy error: {e}"})
 
 
+# ── GET /api/morning-briefing ────────────────────────────────────────────────
+
+@app.get("/api/morning-briefing")
+async def morning_briefing():
+    """Find and return the most recent morning briefing."""
+    briefing_dir = MEMORY_DIR / "inbox" / "rocinante" / "morning-briefing"
+    if not briefing_dir.exists():
+        # Also check alternative locations
+        alt_dir = REPO_ROOT / "data" / "morning-briefing"
+        if alt_dir.exists():
+            briefing_dir = alt_dir
+        else:
+            return {"found": False, "date": None, "content": "", "path": ""}
+
+    briefing_files = sorted(briefing_dir.glob("*.md"), reverse=True)
+    if not briefing_files:
+        return {"found": False, "date": None, "content": "", "path": ""}
+
+    latest = briefing_files[0]
+    content = read_file_safe(latest)
+    # Extract date from filename (YYYY-MM-DD.md)
+    date_str = latest.stem
+    return {
+        "found": True,
+        "date": date_str,
+        "content": content[:5000],
+        "path": str(latest.relative_to(REPO_ROOT)),
+    }
+
+
+# ── GET /api/weather ─────────────────────────────────────────────────────────
+
+_WEATHER_CACHE: dict = {}
+_WEATHER_CACHE_TS: float = 0.0
+_WEATHER_CACHE_TTL = 1800.0  # 30 minutes
+
+@app.get("/api/weather")
+async def weather():
+    global _WEATHER_CACHE, _WEATHER_CACHE_TS
+    now = _time.monotonic()
+    if now - _WEATHER_CACHE_TS < _WEATHER_CACHE_TTL and _WEATHER_CACHE:
+        return _WEATHER_CACHE
+
+    url = (
+        "https://api.open-meteo.com/v1/forecast?"
+        "latitude=40.8259&longitude=-74.2090"
+        "&current=temperature_2m,weathercode,windspeed_10m,relative_humidity_2m"
+        "&daily=temperature_2m_max,temperature_2m_min,weathercode"
+        "&temperature_unit=fahrenheit&timezone=America/New_York"
+        "&forecast_days=4"
+    )
+
+    try:
+        with urllib.request.urlopen(url, timeout=8) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except Exception as e:
+        return {"error": str(e), "current": None, "daily": None}
+
+    current = data.get("current", {})
+    daily = data.get("daily", {})
+
+    result = {
+        "current": {
+            "temp": current.get("temperature_2m"),
+            "weathercode": current.get("weathercode"),
+            "wind": current.get("windspeed_10m"),
+            "humidity": current.get("relative_humidity_2m"),
+        },
+        "daily": {
+            "dates": daily.get("time", []),
+            "high": daily.get("temperature_2m_max", []),
+            "low": daily.get("temperature_2m_min", []),
+            "weathercodes": daily.get("weathercode", []),
+        },
+        "location": "Montclair, NJ",
+    }
+
+    _WEATHER_CACHE = result
+    _WEATHER_CACHE_TS = now
+    return result
+
+
+# ── GET /api/wiki-pages ──────────────────────────────────────────────────────
+
+@app.get("/api/wiki-pages")
+async def wiki_pages():
+    """Return key wiki pages with staleness info for the Family Wiki card."""
+    key_pages = ["FAMILY", "ALTON", "BUSINESS", "MACHINES", "TAXES", "MASTERPLAN", "PROJECTS", "ASTRAZENECA"]
+    pages = []
+
+    # Get memory health for staleness tiers
+    try:
+        import sys
+        sys.path.insert(0, str(MEMORY_DIR))
+        from decay import compute_all_scores
+        decay_scores = compute_all_scores()
+    except Exception:
+        decay_scores = {}
+
+    for name in key_pages:
+        fname = f"{name}.md"
+        fpath = MEMORY_DIR / fname
+        if not fpath.exists():
+            pages.append({"name": name, "exists": False, "tier": "MISSING", "path": f"sartor/memory/{fname}"})
+            continue
+        entry = decay_scores.get(fname, {})
+        tier = entry.get("tier", "COLD")
+        stat = fpath.stat()
+        age_days = round((datetime.now().timestamp() - stat.st_mtime) / 86400, 1)
+        pages.append({
+            "name": name,
+            "exists": True,
+            "tier": tier,
+            "age_days": age_days,
+            "path": f"sartor/memory/{fname}",
+        })
+
+    return {"pages": pages}
+
+
+# ── GET /api/wiki/{path} ─────────────────────────────────────────────────────
+
+@app.get("/api/wiki/{path:path}")
+async def wiki_render(path: str):
+    """Return raw markdown for a wiki page."""
+    if ".." in path:
+        return JSONResponse(status_code=400, content={"error": "invalid path"})
+    # Allow paths like FAMILY.md or sartor/memory/FAMILY.md
+    if not path.endswith(".md"):
+        path += ".md"
+    # Try direct path under memory
+    fpath = MEMORY_DIR / path
+    if not fpath.exists():
+        fpath = REPO_ROOT / path
+    if not fpath.exists():
+        return JSONResponse(status_code=404, content={"error": "not found"})
+    content = read_file_safe(fpath)
+    return {"path": path, "content": content[:10000]}
+
+
+# ── Active Tasks CRUD (tasks/ACTIVE.md) ──────────────────────────────────────
+# The file uses arbitrary H2 sections (## GPU Business, ## Taxes, etc.)
+# and tasks in the format: - [ ] Task text -- [link](path)
+# We preserve the file structure on writes -- only modify the specific line.
+
+def _parse_active_tasks_with_lines(content: str) -> list[dict]:
+    """Parse ACTIVE.md into a list of dicts with id, section, line_num, title, done."""
+    tasks = []
+    current_section = "General"
+    task_id = 0
+    for i, line in enumerate(content.splitlines()):
+        stripped = line.strip()
+        if stripped.startswith("## "):
+            current_section = stripped[3:].strip()
+        elif stripped.startswith("- ["):
+            match = re.match(r"- \[(.)\]\s+(.*)", stripped)
+            if match:
+                checked = match.group(1).lower() == "x"
+                raw_text = match.group(2).strip()
+                # Strip trailing markdown links for display
+                title = re.sub(r'\s*[\u2014\u2013-]+\s*\[.*?\]\(.*?\)\s*$', '', raw_text).strip()
+                tasks.append({
+                    "id": task_id,
+                    "section": current_section,
+                    "line_num": i,
+                    "title": title,
+                    "description": "",
+                    "done": checked,
+                    "raw_line": line,
+                })
+                task_id += 1
+    return tasks
+
+
+@app.post("/api/tasks")
+async def add_task(body: dict):
+    """Add a new task to ACTIVE.md."""
+    title = body.get("title", "").strip()
+    if not title:
+        return JSONResponse(status_code=400, content={"error": "title required"})
+
+    active_file = REPO_TASKS_DIR / "ACTIVE.md"
+    content = read_file_safe(active_file)
+    lines = content.splitlines()
+    # Append to the end of the file
+    new_line = f"- [ ] {title}"
+    lines.append(new_line)
+    active_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return {"ok": True, "title": title}
+
+
+@app.patch("/api/tasks/{task_id}")
+async def update_task(task_id: int, body: dict):
+    """Update a task: edit text, toggle complete."""
+    active_file = REPO_TASKS_DIR / "ACTIVE.md"
+    content = read_file_safe(active_file)
+    tasks = _parse_active_tasks_with_lines(content)
+
+    task = None
+    for t in tasks:
+        if t["id"] == task_id:
+            task = t
+            break
+    if not task:
+        return JSONResponse(status_code=404, content={"error": f"task {task_id} not found"})
+
+    lines = content.splitlines()
+    old_line = lines[task["line_num"]]
+
+    if "done" in body:
+        done = bool(body["done"])
+        if done:
+            new_line = old_line.replace("- [ ]", "- [x]", 1)
+        else:
+            new_line = old_line.replace("- [x]", "- [ ]", 1)
+        lines[task["line_num"]] = new_line
+
+    if "title" in body:
+        new_title = body["title"].strip()
+        # Replace the title portion while preserving trailing links
+        current_line = lines[task["line_num"]]
+        match = re.match(r"(- \[.\]\s+)(.*?)(\s*[\u2014\u2013-]+\s*\[.*?\]\(.*?\))?\s*$", current_line)
+        if match:
+            prefix = match.group(1)
+            suffix = match.group(3) or ""
+            lines[task["line_num"]] = prefix + new_title + suffix
+
+    active_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return {"ok": True, "task": {"id": task_id, "title": body.get("title", task["title"]), "done": body.get("done", task["done"])}}
+
+
+@app.delete("/api/tasks/{task_id}")
+async def delete_task(task_id: int):
+    """Delete a task from ACTIVE.md."""
+    active_file = REPO_TASKS_DIR / "ACTIVE.md"
+    content = read_file_safe(active_file)
+    tasks = _parse_active_tasks_with_lines(content)
+
+    task = None
+    for t in tasks:
+        if t["id"] == task_id:
+            task = t
+            break
+    if not task:
+        return JSONResponse(status_code=404, content={"error": f"task {task_id} not found"})
+
+    lines = content.splitlines()
+    del lines[task["line_num"]]
+    active_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return {"ok": True}
+
+
+# ── GET /api/household-health ────────────────────────────────────────────────
+
+_HOUSEHOLD_CACHE: dict = {}
+_HOUSEHOLD_CACHE_TS: float = 0.0
+_HOUSEHOLD_CACHE_TTL = 60.0
+
+@app.get("/api/household-health")
+async def household_health():
+    global _HOUSEHOLD_CACHE, _HOUSEHOLD_CACHE_TS
+    now = _time.monotonic()
+    if now - _HOUSEHOLD_CACHE_TS < _HOUSEHOLD_CACHE_TTL and _HOUSEHOLD_CACHE:
+        return _HOUSEHOLD_CACHE
+
+    result = {
+        "gpuserver1": {"online": False, "ssh": False, "gpu": None, "vastai": None, "last_heartbeat": None},
+        "rocinante": {"scheduled_tasks": [], "uptime": None},
+        "network": {"internet": False, "gpu_ssh_ms": None},
+        "memory": {"tiers": {}, "inbox_backlog": 0, "last_curator_drain": None, "last_extractor": None},
+    }
+
+    # gpuserver1 ping + SSH
+    try:
+        import time as _t
+        start = _t.monotonic()
+        if platform.system() == "Windows":
+            ping = subprocess.run(["ping", "-n", "1", "-w", "2000", "192.168.1.100"],
+                                  capture_output=True, text=True, timeout=5)
+        else:
+            ping = subprocess.run(["ping", "-c", "1", "-W", "2", "192.168.1.100"],
+                                  capture_output=True, text=True, timeout=5)
+        result["gpuserver1"]["online"] = ping.returncode == 0
+        result["network"]["gpu_ssh_ms"] = round((_t.monotonic() - start) * 1000)
+    except Exception:
+        pass
+
+    if result["gpuserver1"]["online"]:
+        try:
+            ssh = subprocess.run(
+                ["ssh", "-o", "ConnectTimeout=5", "-o", "StrictHostKeyChecking=no",
+                 "alton@192.168.1.100", "echo ok"],
+                capture_output=True, text=True, timeout=8)
+            result["gpuserver1"]["ssh"] = ssh.returncode == 0 and "ok" in ssh.stdout
+        except Exception:
+            pass
+
+        if result["gpuserver1"]["ssh"]:
+            # nvidia-smi
+            try:
+                nv = subprocess.run(
+                    ["ssh", "-o", "ConnectTimeout=5", "alton@192.168.1.100",
+                     "nvidia-smi --query-gpu=temperature.gpu,utilization.gpu,memory.used,memory.total,power.draw --format=csv,noheader,nounits 2>/dev/null"],
+                    capture_output=True, text=True, timeout=10)
+                if nv.returncode == 0 and nv.stdout.strip():
+                    parts = [p.strip() for p in nv.stdout.strip().split(",")]
+                    if len(parts) >= 5:
+                        result["gpuserver1"]["gpu"] = {
+                            "temp_c": int(parts[0]) if parts[0].isdigit() else None,
+                            "util_pct": int(parts[1]) if parts[1].isdigit() else None,
+                            "mem_used_mb": int(parts[2]) if parts[2].isdigit() else None,
+                            "mem_total_mb": int(parts[3]) if parts[3].isdigit() else None,
+                            "power_w": float(parts[4]) if parts[4].replace(".", "").isdigit() else None,
+                        }
+            except Exception:
+                pass
+
+            # vast.ai status
+            try:
+                va = subprocess.run(
+                    ["ssh", "-o", "ConnectTimeout=5", "alton@192.168.1.100",
+                     "~/.local/bin/vastai show machines --raw 2>/dev/null | head -50"],
+                    capture_output=True, text=True, timeout=10)
+                if va.returncode == 0 and va.stdout.strip():
+                    try:
+                        machines_data = json.loads(va.stdout.strip())
+                        if isinstance(machines_data, list) and machines_data:
+                            m = machines_data[0]
+                            result["gpuserver1"]["vastai"] = {
+                                "listed": m.get("listed", False),
+                                "rented": m.get("cur_renter") is not None,
+                                "status": "rented" if m.get("cur_renter") else ("listed" if m.get("listed") else "unlisted"),
+                                "price_gpu": m.get("dph_total"),
+                            }
+                    except json.JSONDecodeError:
+                        pass
+            except Exception:
+                pass
+
+    # Internet check
+    try:
+        urllib.request.urlopen("https://httpbin.org/status/200", timeout=5)
+        result["network"]["internet"] = True
+    except Exception:
+        pass
+
+    # Rocinante scheduled tasks from heartbeat log
+    heartbeat_log = DATA_DIR / "heartbeat-log.csv"
+    last_runs: dict[str, dict] = {}
+    if heartbeat_log.exists():
+        for line in read_file_safe(heartbeat_log).splitlines():
+            parts = line.split(",", 4)
+            if len(parts) < 3 or parts[0].strip() == "timestamp":
+                continue
+            ts_str = parts[0].strip()
+            name = parts[1].strip()
+            st = parts[2].strip()
+            if name not in last_runs or ts_str > last_runs[name]["last_run"]:
+                last_runs[name] = {"last_run": ts_str, "status": st}
+
+    sched_names = ["morning-briefing", "nightly-memory-curation", "gpu-utilization-check",
+                   "personal-data-gather", "self-improvement-loop", "health-check"]
+    for sn in sched_names:
+        lr = last_runs.get(sn)
+        result["rocinante"]["scheduled_tasks"].append({
+            "name": sn,
+            "last_run": lr["last_run"] if lr else None,
+            "status": lr["status"] if lr else "never_run",
+        })
+
+    # Memory tiers
+    try:
+        import sys
+        sys.path.insert(0, str(MEMORY_DIR))
+        from decay import compute_all_scores
+        scores = compute_all_scores()
+        tiers: dict[str, int] = {}
+        for entry in scores.values():
+            t = entry.get("tier", "COLD")
+            tiers[t] = tiers.get(t, 0) + 1
+        result["memory"]["tiers"] = tiers
+    except Exception:
+        pass
+
+    # Inbox backlog
+    inbox_dir = MEMORY_DIR / "inbox"
+    if inbox_dir.exists():
+        count = 0
+        for machine_dir in inbox_dir.iterdir():
+            if not machine_dir.is_dir() or machine_dir.name.startswith("."):
+                continue
+            for item in machine_dir.iterdir():
+                if item.is_file() and not item.name.startswith("_"):
+                    count += 1
+        result["memory"]["inbox_backlog"] = count
+
+    # Last curator drain
+    curator_log = MEMORY_DIR / ".meta" / "curator-log.jsonl"
+    if curator_log.exists():
+        lines = [l for l in read_file_safe(curator_log).splitlines() if l.strip()]
+        if lines:
+            try:
+                last = json.loads(lines[-1])
+                result["memory"]["last_curator_drain"] = last.get("timestamp")
+            except Exception:
+                pass
+
+    # Last extractor
+    extractor_log = MEMORY_DIR / ".meta" / "extractor-log.jsonl"
+    if extractor_log.exists():
+        lines = [l for l in read_file_safe(extractor_log).splitlines() if l.strip()]
+        if lines:
+            try:
+                last = json.loads(lines[-1])
+                result["memory"]["last_extractor"] = {
+                    "timestamp": last.get("timestamp"),
+                    "proposals": last.get("proposals_written", 0),
+                }
+            except Exception:
+                pass
+
+    _HOUSEHOLD_CACHE = result
+    _HOUSEHOLD_CACHE_TS = now
+    return result
+
+
+# ── GET /api/projects ─────────────────────────────────────────────────────────
+
+@app.get("/api/projects")
+async def projects():
+    """Return project list from PROJECTS.md and sartor/memory/projects/ subdirs."""
+    result = []
+
+    # Scan projects directory
+    projects_dir = MEMORY_DIR / "projects"
+    if projects_dir.exists() and projects_dir.is_dir():
+        for subdir in sorted(projects_dir.iterdir()):
+            if subdir.is_dir() and not subdir.name.startswith("."):
+                # Try to read STATUS.md or any .md file for info
+                status_file = subdir / "STATUS.md"
+                readme_file = subdir / "README.md"
+                desc = ""
+                proj_status = "active"
+                if status_file.exists():
+                    content = read_file_safe(status_file)
+                    # Parse frontmatter status
+                    fm_match = re.search(r"status:\s*(\w+)", content[:500])
+                    if fm_match:
+                        proj_status = fm_match.group(1).lower()
+                    # Get first non-frontmatter paragraph
+                    in_fm = content.startswith("---")
+                    for line in content.splitlines():
+                        if in_fm and line.strip() == "---" and content.index(line) > 0:
+                            in_fm = False
+                            continue
+                        if not in_fm and line.strip() and not line.startswith("#") and not line.startswith("---"):
+                            desc = line.strip()[:100]
+                            break
+                elif readme_file.exists():
+                    content = read_file_safe(readme_file)
+                    for line in content.splitlines():
+                        if line.strip() and not line.startswith("#") and not line.startswith("---"):
+                            desc = line.strip()[:100]
+                            break
+
+                # Get last modified time
+                try:
+                    latest_mtime = max(f.stat().st_mtime for f in subdir.rglob("*") if f.is_file())
+                except (ValueError, OSError):
+                    latest_mtime = subdir.stat().st_mtime
+                age_days = round((datetime.now().timestamp() - latest_mtime) / 86400, 1)
+
+                result.append({
+                    "name": subdir.name,
+                    "status": proj_status,
+                    "description": desc,
+                    "age_days": age_days,
+                    "last_activity": datetime.fromtimestamp(latest_mtime).isoformat(),
+                    "path": f"sartor/memory/projects/{subdir.name}",
+                })
+
+    # Also scan for standalone project .md files in projects/
+    if projects_dir.exists():
+        for f in sorted(projects_dir.glob("*.md")):
+            name = f.stem
+            if any(p["name"] == name for p in result):
+                continue
+            content = read_file_safe(f)
+            desc = ""
+            proj_status = "reference"
+            fm_match = re.search(r"status:\s*(\w+)", content[:500])
+            if fm_match:
+                proj_status = fm_match.group(1).lower()
+            for line in content.splitlines():
+                if line.strip() and not line.startswith("#") and not line.startswith("---") and ":" not in line[:20]:
+                    desc = line.strip()[:100]
+                    break
+            stat = f.stat()
+            age_days = round((datetime.now().timestamp() - stat.st_mtime) / 86400, 1)
+            result.append({
+                "name": name,
+                "status": proj_status,
+                "description": desc,
+                "age_days": age_days,
+                "last_activity": datetime.fromtimestamp(stat.st_mtime).isoformat(),
+                "path": f"sartor/memory/projects/{f.name}",
+            })
+
+    # Sort: active first, then by age
+    status_order = {"active": 0, "paused": 1, "planned": 2, "reference": 3, "completed": 4}
+    result.sort(key=lambda x: (status_order.get(x["status"], 5), x["age_days"]))
+    return {"projects": result}
+
+
 # ── Run ────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     import uvicorn
-    print("MERIDIAN v0.1 — Starting on http://localhost:5055")
+    print("MERIDIAN v0.2 -- Starting on http://localhost:5055")
     uvicorn.run(app, host="0.0.0.0", port=5055)

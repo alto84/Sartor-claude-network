@@ -127,6 +127,20 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime (command not found)
 - Updated: [[family/vayu]], [[family/vishala]], [[family/active-todos]], [[ALTON]], `daily/2026-04-11.md`
 
+## [2026-04-12] ingest | personal-data-gather run 4 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, is:unread newer_than:2d), 5 Google Calendars (7-day window Apr 12–19)
+- Facts gathered: 1 new signal; all prior outstanding items confirmed unchanged
+- New fact: TheSequence Radar #841 — Anthropic, Meta, Z.ai each released new models this week. Research signal.
+- Calendar: unchanged vs runs 1–3 and 6–10; no new events on any of 5 calendars
+- Confirmed critical: **Goddard summer forms due TOMORROW April 13** (T-1)
+- Confirmed: April 15 deadlines (1040/4868 + NJ-1065 $450) — 3 days
+- Confirmed: April 17 coverage conflict (Vishala dance + Vayu Ellis Island) — unresolved
+- Confirmed: April 18 conflict (soccer double-header vs Rafi's party) — unresolved
+- SSH check: gpuserver1 unavailable from this runtime (command not found)
+- Created: `data/` directory (did not exist), `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- Updated: `daily/2026-04-12.md`
+
 ## [2026-04-11] ingest | personal-data-gather run 9 — Gmail + Calendar harvest
 
 - Sources: Gmail (8 msgs scanned, unread after:2026/04/11), 5 Google Calendars (7-day window Apr 11–18)
@@ -234,6 +248,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Outstanding: Apr 15 tax deadlines (3 days), Tribeca Pediatrics $170.28, Apr 17 coverage conflict, Apr 18 soccer/Rafi decision, Aneeta CSA workshift, Guidepoint + Zintro advisory decisions
 - SSH check: gpuserver1 unavailable from this runtime
 - Updated: [[ALTON]], [[family/vasu]], [[family/active-todos]], `daily/2026-04-12.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-12] ingest | personal-data-gather run 3 — Gmail + Calendar harvest
+
+- Sources: Gmail (23 msgs scanned, after:2026/04/11), 5 Google Calendars (7-day window Apr 12–19)
+- Facts gathered: 0 new signals; all confirmed/unchanged from prior runs
+- Calendar: unchanged vs runs 1–2 and 6–11 — no new events on any of the 5 calendars
+- All prior open signals confirmed active: Goddard forms (due tomorrow Apr 13), Apr 15 tax deadlines (3 days), Tribeca $170.28 pre-collections, Apr 17 coverage conflict, Apr 18 soccer/Rafi conflict, Guidepoint + Zintro + Handshake advisory decisions, Summit Health portal, Aneeta CSA email invalid
+- SSH check: gpuserver1 unavailable from this runtime
+- data/ directory created on disk; gather-alerts.md and heartbeat-log.csv written
+- Updated: `daily/2026-04-12.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
 ## History
 

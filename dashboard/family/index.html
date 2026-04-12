@@ -1660,6 +1660,56 @@ body {
   overflow: hidden;
 }
 
+.graph-tooltip .gt-meta {
+  font-size: 10px;
+  font-family: var(--mono);
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+/* ── Breadcrumb ─────────────────────────────────────────────────────────── */
+.graph-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 20px;
+  font-size: 12px;
+  font-family: var(--mono);
+  color: var(--text-dim);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(13,17,23,0.6);
+  flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+  cursor: pointer;
+  color: var(--text-dim);
+  transition: color 0.2s;
+  padding: 2px 0;
+}
+
+.breadcrumb-item:hover { color: var(--accent); }
+
+.breadcrumb-item.active {
+  color: var(--text-bright);
+  cursor: default;
+}
+
+.breadcrumb-sep {
+  color: var(--text-dim);
+  opacity: 0.4;
+  user-select: none;
+  padding: 0 2px;
+}
+
+/* ── Cluster node badges ─────────────────────────────────────────────── */
+.cluster-badge {
+  font-size: 10px;
+  font-family: var(--mono);
+  fill: rgba(255,255,255,0.7);
+  pointer-events: none;
+}
+
 /* ── Heartbeat Live Mini-Panel ─────────────────────────────────────────── */
 .heartbeat-live {
   display: flex;
@@ -2119,6 +2169,7 @@ body {
     <div class="status-dot" id="statusDot" title="gpuserver1"></div>
     <button class="sound-toggle" id="soundBtn" onclick="toggleSound()" title="Toggle sounds">&#128266;</button>
     <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">Midnight</button>
+    <a href="/logout" style="font-size:11px;color:var(--text-dim);text-decoration:none;border:1px solid var(--border);padding:4px 10px;border-radius:6px;transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-dim)'" title="Sign out">Logout</a>
   </div>
 </header>
 
@@ -2135,6 +2186,58 @@ body {
 <div class="main-grid">
   <div class="left-stack">
 
+    <!-- HERO ROW: Tasks + Calendar + Weather -->
+    <!-- Daily Tasks Card (HERO - first thing Alton sees) -->
+    <div class="glass-card" style="--card-accent:#f59e0b">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9745;</span> Today's Tasks</div>
+      <div id="morningBriefingLink" style="margin-bottom:12px"></div>
+      <div id="dailyTasksContainer">Loading...</div>
+    </div>
+
+    <!-- Hero Row: Weather + Calendar side by side -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <!-- Weather Card -->
+      <div class="glass-card" style="--card-accent:#38bdf8">
+        <div class="glass-card-title"><span class="glass-card-icon">&#9788;</span> Weather</div>
+        <div id="weatherContainer">Loading...</div>
+      </div>
+
+      <!-- Calendar Card -->
+      <div class="glass-card" style="--card-accent:#a855f7">
+        <div class="glass-card-title"><span class="glass-card-icon">&#128197;</span> Calendar</div>
+        <div id="calendarContainer">
+          <iframe src="https://calendar.google.com/calendar/embed?src=primary&mode=AGENDA&showTitle=0&showNav=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&height=280" style="border:0;width:100%;height:280px;border-radius:6px;background:var(--bg-primary)" frameborder="0" scrolling="no" id="calendarIframe"></iframe>
+          <div id="calendarFallback" style="display:none">
+            <a href="https://calendar.google.com" target="_blank" rel="noopener" class="link-btn" style="margin-top:8px;justify-content:center">
+              <span class="link-icon">&#128197;</span> Open Google Calendar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Tasks Card (with interactive editing) -->
+    <div class="glass-card" style="--card-accent:#6366f1">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9744;</span> Active Tasks</div>
+      <div id="addTaskRow" style="display:flex;gap:8px;margin-bottom:12px">
+        <input type="text" id="newTaskInput" placeholder="Add a new task..." style="flex:1;padding:8px 12px;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:6px;color:var(--text-primary);font-size:13px;outline:none" autocomplete="off">
+        <button onclick="addNewTask()" style="padding:8px 16px;background:var(--accent-primary);color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">Add</button>
+      </div>
+      <div class="tasks-scroll" id="tasksContainer"></div>
+    </div>
+
+    <!-- Household Monitoring -->
+    <div class="glass-card" style="--card-accent:#14b8a6">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9881;</span> Household Monitoring</div>
+      <div id="householdHealthContainer">Loading...</div>
+    </div>
+
+    <!-- Projects Tracker -->
+    <div class="glass-card" style="--card-accent:#8b5cf6">
+      <div class="glass-card-title"><span class="glass-card-icon">&#9998;</span> Projects</div>
+      <div id="projectsContainer">Loading...</div>
+    </div>
+
     <!-- Family Card -->
     <div class="glass-card" style="--card-accent:#3b82f6">
       <div class="glass-card-title"><span class="glass-card-icon">&#9782;</span> Family</div>
@@ -2142,28 +2245,16 @@ body {
       <div class="cats-row" id="catsRow"></div>
     </div>
 
-    <!-- Finances Card -->
+    <!-- Finances Card (moved down from hero) -->
     <div class="glass-card" style="--card-accent:#22c55e">
       <div class="glass-card-title"><span class="glass-card-icon">&#9776;</span> Finances <span class="fin-health-dot" id="finHealthDot" title="Loading..."></span></div>
       <div id="financesContainer"></div>
-    </div>
-
-    <!-- Daily Tasks Card -->
-    <div class="glass-card" style="--card-accent:#f59e0b">
-      <div class="glass-card-title"><span class="glass-card-icon">&#9745;</span> Today's Tasks</div>
-      <div id="dailyTasksContainer">Loading...</div>
     </div>
 
     <!-- Work Streams Card -->
     <div class="glass-card" style="--card-accent:#8b5cf6">
       <div class="glass-card-title"><span class="glass-card-icon">&#9881;</span> Work Streams</div>
       <div id="workStreamsContainer">Loading...</div>
-    </div>
-
-    <!-- Tasks Card -->
-    <div class="glass-card" style="--card-accent:#6366f1">
-      <div class="glass-card-title"><span class="glass-card-icon">&#9744;</span> Active Tasks</div>
-      <div class="tasks-scroll" id="tasksContainer"></div>
     </div>
 
     <!-- Deadlines Card -->
@@ -2177,6 +2268,16 @@ body {
 
   </div>
   <div class="right-stack">
+
+    <!-- Family Wiki -->
+    <div class="glass-card" style="--card-accent:#f59e0b">
+      <div class="glass-card-title"><span class="glass-card-icon">&#128214;</span> Family Wiki</div>
+      <div id="wikiContainer">Loading...</div>
+      <div style="margin-top:10px">
+        <input type="text" id="wikiSearchInput" placeholder="Search wiki..." style="width:100%;padding:8px 12px;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:6px;color:var(--text-primary);font-size:13px;outline:none" autocomplete="off">
+        <div id="wikiSearchResults" style="margin-top:6px"></div>
+      </div>
+    </div>
 
     <!-- Quick Links -->
     <div class="glass-card" style="--card-accent:#06b6d4">
@@ -2309,12 +2410,16 @@ body {
           <button class="graph-btn" onclick="refreshMemGraph()">Refresh</button>
         </div>
       </div>
+      <div class="graph-breadcrumb" id="memGraphBreadcrumb">
+        <span class="breadcrumb-item active" onclick="memGraphNavigate(null)">Memory</span>
+      </div>
       <div class="graph-container" id="memGraphContainer" style="height:480px;background:#0d1117">
         <div class="graph-tooltip" id="memGraphTooltip">
           <div class="gt-title" id="memGtTitle"></div>
           <span class="gt-tier" id="memGtTier"></span>
+          <div class="gt-meta" id="memGtMeta"></div>
           <div class="gt-preview" id="memGtPreview"></div>
-          <div style="margin-top:8px">
+          <div style="margin-top:8px;display:flex;gap:6px;pointer-events:auto">
             <button class="graph-btn" onclick="openInObsidian(window._memCurrentNode)">Open in Obsidian</button>
           </div>
         </div>
@@ -2729,34 +2834,116 @@ function toggleFinDetail(i) {
   }
 }
 
-/* ── Render: Tasks ──────────────────────────────────────────────────────── */
+/* ── Render: Tasks (interactive) ────────────────────────────────────────── */
 async function renderTasks() {
-  const d = await fetchJSON('/api/tasks');
+  var d = await fetchJSON('/api/tasks');
   if (!d) return;
-  const container = $('tasksContainer');
+  _activeTasksData = [];
+  var container = $('tasksContainer');
   container.innerHTML = '';
+  var taskId = 0;
 
-  function addSection(label, items, checkClass) {
+  function addSection(label, items, checkClass, sectionName) {
     if (items.length === 0) return;
-    const lbl = document.createElement('div');
+    var lbl = document.createElement('div');
     lbl.className = 'task-section-label';
     lbl.textContent = label + ' (' + items.length + ')';
     container.appendChild(lbl);
-    items.forEach(t => {
-      const div = document.createElement('div');
+    items.forEach(function(t) {
+      var id = taskId++;
+      _activeTasksData.push({id: id, title: t.title, description: t.description, done: t.done, section: sectionName});
+      var div = document.createElement('div');
       div.className = 'task-item';
-      div.innerHTML =
-        '<div class="task-check ' + checkClass + '"></div>' +
-        '<div><div class="task-title ' + (t.done ? 'done' : '') + '">' + escapeHTML(t.title) + '</div>' +
+      div.setAttribute('data-task-id', id);
+      var checkEl = '<div class="task-check ' + checkClass + '" onclick="toggleActiveTask(' + id + ',' + !t.done + ')" style="cursor:pointer" title="' + (t.done ? 'Reopen' : 'Complete') + '"></div>';
+      var deleteBtn = '<span onclick="deleteActiveTask(' + id + ')" style="cursor:pointer;color:var(--text-dim);font-size:14px;margin-left:auto;padding:2px 6px;opacity:0.5;transition:opacity 0.2s" onmouseover="this.style.opacity=1;this.style.color=\'var(--red)\'" onmouseout="this.style.opacity=0.5;this.style.color=\'var(--text-dim)\'" title="Delete">&times;</span>';
+      var titleEl = '<span class="task-title ' + (t.done ? 'done' : '') + '" ondblclick="editActiveTask(this,' + id + ')" title="Double-click to edit">' + escapeHTML(t.title) + '</span>';
+      div.innerHTML = checkEl +
+        '<div style="flex:1;display:flex;align-items:center;gap:4px">' +
+        '<div>' + titleEl +
         (t.description ? '<div class="task-desc">' + escapeHTML(t.description) + '</div>' : '') +
-        '</div>';
+        '</div>' + deleteBtn + '</div>';
       container.appendChild(div);
     });
   }
 
-  addSection('In Progress', d.in_progress, 'in-progress');
-  addSection('Pending', d.pending, '');
-  addSection('Completed Today', d.completed, 'done');
+  addSection('In Progress', d.in_progress, 'in-progress', 'In Progress');
+  addSection('Pending', d.pending, '', 'Pending');
+  addSection('Completed Today', d.completed, 'done', 'Completed');
+}
+
+async function toggleActiveTask(id, done) {
+  var el = document.querySelector('[data-task-id="' + id + '"]');
+  if (el) {
+    var titleSpan = el.querySelector('.task-title');
+    if (titleSpan) titleSpan.classList.toggle('done', done);
+  }
+  try {
+    await fetch('/api/tasks/' + id, {
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({done: done}),
+    });
+  } catch(e) { console.warn('toggleActiveTask error:', e); }
+  renderTasks();
+}
+
+async function deleteActiveTask(id) {
+  var el = document.querySelector('[data-task-id="' + id + '"]');
+  if (el) el.style.opacity = '0.3';
+  try {
+    await fetch('/api/tasks/' + id, {method: 'DELETE'});
+  } catch(e) { console.warn('deleteActiveTask error:', e); }
+  renderTasks();
+}
+
+function editActiveTask(span, id) {
+  var currentText = span.textContent;
+  var input = document.createElement('input');
+  input.type = 'text';
+  input.value = currentText;
+  input.style.cssText = 'padding:4px 8px;background:var(--bg-primary);border:1px solid var(--accent-primary);border-radius:4px;color:var(--text-primary);font-size:13px;width:100%;outline:none';
+  span.replaceWith(input);
+  input.focus();
+  input.select();
+  function save() {
+    var newTitle = input.value.trim();
+    if (newTitle && newTitle !== currentText) {
+      fetch('/api/tasks/' + id, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({title: newTitle}),
+      }).then(function() { renderTasks(); }).catch(function() { renderTasks(); });
+    } else {
+      renderTasks();
+    }
+  }
+  input.addEventListener('blur', save);
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); save(); }
+    if (e.key === 'Escape') { renderTasks(); }
+  });
+}
+
+async function addNewTask() {
+  var input = $('newTaskInput');
+  var title = input.value.trim();
+  if (!title) return;
+  input.value = '';
+  try {
+    await fetch('/api/tasks', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({title: title, section: 'Pending'}),
+    });
+  } catch(e) { console.warn('addNewTask error:', e); }
+  renderTasks();
+}
+
+if ($('newTaskInput')) {
+  $('newTaskInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); addNewTask(); }
+  });
 }
 
 /* ── Render: Deadlines ──────────────────────────────────────────────────── */
@@ -2952,10 +3139,10 @@ async function renderWorkStreams() {
   container.innerHTML = html;
 }
 
-/* ── Render: Heartbeat ──────────────────────────────────────────────────── */
+/* ── Render: Heartbeat (clickable entries) ─────────────────────────────── */
 async function renderHeartbeat() {
-  const d = await fetchJSON('/api/heartbeat-status');
-  const container = $('heartbeatContainer');
+  var d = await fetchJSON('/api/heartbeat-status');
+  var container = $('heartbeatContainer');
   if (!d || !d.tasks) {
     container.innerHTML = '<div style="color:var(--text-dim);font-size:13px">Unavailable</div>';
     return;
@@ -2973,7 +3160,8 @@ async function renderHeartbeat() {
     var mapped = statusMap[t.status] || { cls: 'gray', text: t.status || 'Never' };
     var badgeCls = mapped.cls;
     var badgeText = mapped.text;
-    html += '<tr>' +
+    var logPath = HEARTBEAT_LOG_PATHS[t.name] || 'data/heartbeat-log.csv';
+    html += '<tr style="cursor:pointer" onclick="openInObsidian(\'' + escapeHTML(logPath) + '\')" title="Click to open log">' +
       '<td style="font-family:var(--font);color:var(--text)">' + escapeHTML(t.name) + '</td>' +
       '<td>' + escapeHTML(t.frequency || '') + '</td>' +
       '<td style="font-size:11px;color:var(--text-dim)">' + escapeHTML(t.last_run || 'never') + '</td>' +
@@ -3071,6 +3259,273 @@ async function fetchObserverReport() {
   container.innerHTML = html;
 }
 
+/* ── Render: Weather ────────────────────────────────────────────────────── */
+var WMO_CODES = {
+  0: {label: 'Clear', icon: '\u2600'},
+  1: {label: 'Mostly Clear', icon: '\u26C5'},
+  2: {label: 'Partly Cloudy', icon: '\u26C5'},
+  3: {label: 'Overcast', icon: '\u2601'},
+  45: {label: 'Foggy', icon: '\uD83C\uDF2B'},
+  48: {label: 'Rime Fog', icon: '\uD83C\uDF2B'},
+  51: {label: 'Light Drizzle', icon: '\uD83C\uDF26'},
+  53: {label: 'Drizzle', icon: '\uD83C\uDF27'},
+  55: {label: 'Heavy Drizzle', icon: '\uD83C\uDF27'},
+  61: {label: 'Light Rain', icon: '\uD83C\uDF26'},
+  63: {label: 'Rain', icon: '\uD83C\uDF27'},
+  65: {label: 'Heavy Rain', icon: '\uD83C\uDF27'},
+  71: {label: 'Light Snow', icon: '\uD83C\uDF28'},
+  73: {label: 'Snow', icon: '\uD83C\uDF28'},
+  75: {label: 'Heavy Snow', icon: '\uD83C\uDF28'},
+  80: {label: 'Light Showers', icon: '\uD83C\uDF26'},
+  81: {label: 'Showers', icon: '\uD83C\uDF27'},
+  82: {label: 'Heavy Showers', icon: '\uD83C\uDF27'},
+  95: {label: 'Thunderstorm', icon: '\u26A1'},
+  96: {label: 'T-storm + Hail', icon: '\u26A1'},
+  99: {label: 'Severe T-storm', icon: '\u26A1'},
+};
+
+function getWeatherInfo(code) {
+  if (WMO_CODES[code]) return WMO_CODES[code];
+  var keys = Object.keys(WMO_CODES).map(Number).sort(function(a,b){return a-b;});
+  for (var i = keys.length - 1; i >= 0; i--) {
+    if (keys[i] <= code) return WMO_CODES[keys[i]];
+  }
+  return {label: 'Unknown', icon: '\u2601'};
+}
+
+async function renderWeather() {
+  var container = $('weatherContainer');
+  var d = await fetchJSON('/api/weather');
+  if (!d || d.error || !d.current) {
+    container.innerHTML = '<div style="color:var(--text-dim);font-size:13px">Weather unavailable</div>';
+    return;
+  }
+  var c = d.current;
+  var w = getWeatherInfo(c.weathercode);
+  var html = '<div style="display:flex;align-items:center;gap:16px;margin-bottom:12px">';
+  html += '<div style="font-size:42px;line-height:1">' + w.icon + '</div>';
+  html += '<div>';
+  html += '<div style="font-size:28px;font-weight:700;font-family:var(--mono);color:var(--text-bright)">' + Math.round(c.temp) + '\u00B0F</div>';
+  html += '<div style="font-size:12px;color:var(--text-dim)">' + escapeHTML(w.label) + '</div>';
+  html += '</div></div>';
+  html += '<div style="display:flex;gap:16px;font-size:12px;color:var(--text-dim);margin-bottom:8px">';
+  html += '<span>Wind: <b style="color:var(--text)">' + (c.wind || '--') + ' mph</b></span>';
+  html += '<span>Humidity: <b style="color:var(--text)">' + (c.humidity || '--') + '%</b></span>';
+  html += '</div>';
+  if (d.daily && d.daily.dates && d.daily.dates.length > 0) {
+    html += '<div style="font-size:11px;color:var(--text-dim);margin-bottom:6px">Today: <b style="color:var(--text)">' + Math.round(d.daily.high[0]) + '\u00B0</b> / <b style="color:var(--text-dim)">' + Math.round(d.daily.low[0]) + '\u00B0</b></div>';
+    html += '<div style="display:flex;gap:8px;margin-top:4px">';
+    for (var i = 1; i < Math.min(d.daily.dates.length, 4); i++) {
+      var fw = getWeatherInfo(d.daily.weathercodes[i]);
+      var dayLabel = new Date(d.daily.dates[i] + 'T12:00').toLocaleDateString('en-US', {weekday:'short'});
+      html += '<div style="text-align:center;flex:1;padding:6px 4px;background:var(--bg-primary);border-radius:6px;border:1px solid var(--border-color)">';
+      html += '<div style="font-size:10px;color:var(--text-dim)">' + escapeHTML(dayLabel) + '</div>';
+      html += '<div style="font-size:18px">' + fw.icon + '</div>';
+      html += '<div style="font-size:10px;font-family:var(--mono)">' + Math.round(d.daily.high[i]) + '/' + Math.round(d.daily.low[i]) + '</div>';
+      html += '</div>';
+    }
+    html += '</div>';
+  }
+  container.innerHTML = html;
+}
+
+/* ── Render: Morning Briefing Link ─────────────────────────────────────── */
+async function renderMorningBriefing() {
+  var container = $('morningBriefingLink');
+  var d = await fetchJSON('/api/morning-briefing');
+  if (!d || !d.found) {
+    container.innerHTML = '';
+    return;
+  }
+  var dateStr = d.date || 'unknown';
+  var today = new Date().toISOString().slice(0, 10);
+  var stale = dateStr !== today;
+  var badgeColor = stale ? 'var(--amber)' : 'var(--green)';
+  container.innerHTML =
+    '<a href="#" onclick="openInObsidian(\'' + escapeHTML(d.path) + '\');return false" ' +
+    'style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:8px;text-decoration:none;color:var(--text-primary);font-size:13px;font-weight:500;transition:all 0.2s"' +
+    ' onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border-color)\'">' +
+    '<span style="font-size:16px">&#128220;</span> Morning Briefing ' +
+    '<span style="font-size:10px;padding:2px 8px;border-radius:10px;font-family:var(--mono);font-weight:600;background:' + (stale ? 'rgba(245,158,11,0.15)' : 'rgba(34,197,94,0.15)') + ';color:' + badgeColor + '">' + escapeHTML(dateStr) + '</span>' +
+    '</a>';
+}
+
+/* ── Render: Family Wiki ───────────────────────────────────────────────── */
+var TIER_BADGE = {
+  ACTIVE: {bg: 'rgba(34,197,94,0.15)', color: 'var(--green)', label: 'Fresh'},
+  WARM: {bg: 'rgba(59,130,246,0.15)', color: 'var(--blue)', label: 'Warm'},
+  COLD: {bg: 'rgba(245,158,11,0.15)', color: 'var(--amber)', label: 'Stale'},
+  FORGOTTEN: {bg: 'rgba(239,68,68,0.15)', color: 'var(--red)', label: 'Rotten'},
+  ARCHIVE: {bg: 'rgba(107,114,128,0.15)', color: '#6b7280', label: 'Archive'},
+  MISSING: {bg: 'rgba(239,68,68,0.15)', color: 'var(--red)', label: 'Missing'},
+};
+
+async function renderWiki() {
+  var container = $('wikiContainer');
+  var d = await fetchJSON('/api/wiki-pages');
+  if (!d || !d.pages) {
+    container.innerHTML = '<div style="color:var(--text-dim);font-size:13px">Unavailable</div>';
+    return;
+  }
+  var html = '<div style="display:grid;gap:6px">';
+  d.pages.forEach(function(p) {
+    var badge = TIER_BADGE[p.tier] || TIER_BADGE.COLD;
+    html += '<a href="#" onclick="openInObsidian(\'' + escapeHTML(p.path) + '\');return false" ' +
+      'style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:6px;text-decoration:none;color:var(--text-primary);font-size:13px;font-weight:500;transition:all 0.2s"' +
+      ' onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border-color)\'">' +
+      '<span>' + escapeHTML(p.name) + '</span>' +
+      '<span style="font-size:9px;padding:2px 6px;border-radius:4px;font-family:var(--mono);font-weight:600;background:' + badge.bg + ';color:' + badge.color + '">' + badge.label + '</span>' +
+      '</a>';
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+var _wikiSearchTimer;
+if ($('wikiSearchInput')) {
+  $('wikiSearchInput').addEventListener('input', function() {
+    clearTimeout(_wikiSearchTimer);
+    var q = this.value.trim();
+    _wikiSearchTimer = setTimeout(function() { runWikiSearch(q); }, 300);
+  });
+}
+async function runWikiSearch(q) {
+  var results = $('wikiSearchResults');
+  if (!q) { results.innerHTML = ''; return; }
+  results.innerHTML = '<div style="font-size:12px;color:var(--text-dim)">Searching...</div>';
+  var d = await fetchJSON('/api/memory-search?q=' + encodeURIComponent(q));
+  if (!d || !d.hits || d.hits.length === 0) {
+    results.innerHTML = '<div style="font-size:12px;color:var(--text-dim)">No results</div>';
+    return;
+  }
+  var html = '';
+  d.hits.slice(0, 5).forEach(function(h) {
+    var path = h.path || '';
+    html += '<div onclick="openInObsidian(\'' + escapeHTML(path) + '\')" style="cursor:pointer;padding:6px 10px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:4px;margin-bottom:4px;font-size:12px;transition:border-color 0.2s" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border-color)\'">';
+    html += '<div style="font-weight:600;color:var(--accent-primary)">' + escapeHTML(path) + '</div>';
+    html += '<div style="color:var(--text-dim);font-size:11px">' + escapeHTML(h.snippet || '').slice(0, 100) + '</div>';
+    html += '</div>';
+  });
+  results.innerHTML = html;
+}
+
+/* ── Render: Household Monitoring ──────────────────────────────────────── */
+async function renderHouseholdHealth() {
+  var container = $('householdHealthContainer');
+  var d = await fetchJSON('/api/household-health');
+  if (!d) {
+    container.innerHTML = '<div style="color:var(--text-dim);font-size:13px">Unavailable</div>';
+    return;
+  }
+
+  function pip(ok) {
+    var color = ok ? 'var(--green)' : 'var(--red)';
+    return '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + color + ';box-shadow:0 0 6px ' + color + ';margin-right:6px"></span>';
+  }
+  function pipWarn(val) {
+    var color = val === 'green' ? 'var(--green)' : val === 'yellow' ? 'var(--amber)' : val === 'red' ? 'var(--red)' : 'var(--text-dim)';
+    return '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + color + ';box-shadow:0 0 6px ' + color + ';margin-right:6px"></span>';
+  }
+
+  var html = '';
+  // gpuserver1
+  var g = d.gpuserver1 || {};
+  html += '<div style="margin-bottom:12px">';
+  html += '<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:6px">gpuserver1</div>';
+  html += '<div class="system-item">' + pip(g.online) + '<span class="system-label">Ping</span><span class="system-value ' + (g.online ? 'online' : 'offline') + '">' + (g.online ? 'Online' : 'Offline') + '</span></div>';
+  html += '<div class="system-item">' + pip(g.ssh) + '<span class="system-label">SSH</span><span class="system-value">' + (g.ssh ? 'Connected' : 'Unreachable') + '</span></div>';
+  if (g.gpu) {
+    html += '<div class="system-item">' + pip(g.gpu.temp_c < 80) + '<span class="system-label">GPU Temp</span><span class="system-value">' + (g.gpu.temp_c || '--') + '\u00B0C</span></div>';
+    html += '<div class="system-item">' + pip(true) + '<span class="system-label">GPU Util</span><span class="system-value">' + (g.gpu.util_pct != null ? g.gpu.util_pct + '%' : '--') + '</span></div>';
+    html += '<div class="system-item">' + pip(true) + '<span class="system-label">VRAM</span><span class="system-value">' + (g.gpu.mem_used_mb || '--') + '/' + (g.gpu.mem_total_mb || '--') + ' MB</span></div>';
+  }
+  if (g.vastai) {
+    var vstatus = g.vastai.status || 'unknown';
+    var vcolor = vstatus === 'rented' ? 'var(--green)' : vstatus === 'listed' ? 'var(--amber)' : 'var(--red)';
+    html += '<div class="system-item"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + vcolor + ';box-shadow:0 0 6px ' + vcolor + ';margin-right:6px"></span><span class="system-label">vast.ai</span><span class="system-value" style="text-transform:capitalize">' + escapeHTML(vstatus) + '</span></div>';
+    if (g.vastai.price_gpu != null) {
+      html += '<div class="system-item" style="padding-left:14px"><span class="system-label">Rate</span><span class="system-value">$' + Number(g.vastai.price_gpu).toFixed(2) + '/hr</span></div>';
+    }
+  }
+  html += '</div>';
+
+  // Network
+  var n = d.network || {};
+  html += '<div style="margin-bottom:12px">';
+  html += '<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:6px">Network</div>';
+  html += '<div class="system-item">' + pip(n.internet) + '<span class="system-label">Internet</span><span class="system-value ' + (n.internet ? 'online' : 'offline') + '">' + (n.internet ? 'Connected' : 'Down') + '</span></div>';
+  if (n.gpu_ssh_ms != null) {
+    html += '<div class="system-item">' + pip(n.gpu_ssh_ms < 100) + '<span class="system-label">GPU Latency</span><span class="system-value">' + n.gpu_ssh_ms + 'ms</span></div>';
+  }
+  html += '</div>';
+
+  // Scheduled Tasks
+  var r = d.rocinante || {};
+  if (r.scheduled_tasks && r.scheduled_tasks.length) {
+    html += '<div style="margin-bottom:12px">';
+    html += '<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:6px">Scheduled Tasks</div>';
+    r.scheduled_tasks.forEach(function(t) {
+      var ok = t.status === 'ok' || t.status === 'success';
+      var never = t.status === 'never_run';
+      html += '<div class="system-item">' + (never ? pipWarn('grey') : pip(ok)) + '<span class="system-label" style="font-size:12px">' + escapeHTML(t.name) + '</span>';
+      if (t.last_run) {
+        try {
+          var lr = new Date(t.last_run).toLocaleString('en-US', {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+          html += '<span class="system-value" style="font-size:10px">' + escapeHTML(lr) + '</span>';
+        } catch(e) {
+          html += '<span class="system-value" style="font-size:10px">' + escapeHTML(t.last_run) + '</span>';
+        }
+      } else {
+        html += '<span class="system-value" style="font-size:10px;color:var(--text-dim)">Never</span>';
+      }
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+
+  // Memory
+  var m = d.memory || {};
+  html += '<div>';
+  html += '<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:6px">Memory System</div>';
+  if (m.tiers) {
+    var tierStrs = [];
+    if (m.tiers.ACTIVE) tierStrs.push('<span style="color:var(--green)">Active:' + m.tiers.ACTIVE + '</span>');
+    if (m.tiers.WARM) tierStrs.push('<span style="color:var(--blue)">Warm:' + m.tiers.WARM + '</span>');
+    if (m.tiers.COLD) tierStrs.push('<span style="color:var(--amber)">Cold:' + m.tiers.COLD + '</span>');
+    if (m.tiers.FORGOTTEN) tierStrs.push('<span style="color:var(--red)">Rotten:' + m.tiers.FORGOTTEN + '</span>');
+    html += '<div style="font-size:11px;font-family:var(--mono);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px">' + tierStrs.join('') + '</div>';
+  }
+  html += '<div class="system-item"><span class="system-label">Inbox Backlog</span><span class="system-value">' + (m.inbox_backlog || 0) + '</span></div>';
+  if (m.last_curator_drain) {
+    html += '<div class="system-item"><span class="system-label">Last Curator Drain</span><span class="system-value" style="font-size:10px">' + escapeHTML(String(m.last_curator_drain).slice(0, 16)) + '</span></div>';
+  }
+  if (m.last_extractor) {
+    html += '<div class="system-item"><span class="system-label">Last Extractor</span><span class="system-value" style="font-size:10px">' + escapeHTML(String(m.last_extractor.timestamp || '').slice(0, 16)) + ' (' + (m.last_extractor.proposals || 0) + ' proposals)</span></div>';
+  }
+  html += '</div>';
+
+  container.innerHTML = html;
+}
+
+/* ── Render: Active Tasks (interactive editing) ────────────────────────── */
+
+var _activeTasksData = [];
+
+/* ── Render: Heartbeat (clickable entries) ─────────────────────────────── */
+
+var HEARTBEAT_LOG_PATHS = {
+  'morning-briefing': 'sartor/memory/inbox/rocinante/morning-briefing/',
+  'nightly-memory-curation': 'sartor/memory/.meta/curator-log.jsonl',
+  'gpu-utilization-check': 'data/heartbeat-log.csv',
+  'market-close-summary': 'data/heartbeat-log.csv',
+  'weekly-financial-summary': 'data/heartbeat-log.csv',
+  'weekly-nonprofit-review': 'data/heartbeat-log.csv',
+  'weekly-skill-evolution': 'data/heartbeat-log.csv',
+  'personal-data-gather': 'data/heartbeat-log.csv',
+  'self-improvement-loop': 'data/heartbeat-log.csv',
+  'health-check': 'data/heartbeat-log.csv',
+};
+
 /* ── Master Refresh ─────────────────────────────────────────────────────── */
 async function refreshAll() {
   await Promise.all([
@@ -3089,12 +3544,60 @@ async function refreshAll() {
     fetchObserverReport(),
     renderCareer(),
     renderCosts(),
+    renderWeather(),
+    renderMorningBriefing(),
+    renderWiki(),
+    renderHouseholdHealth(),
+    renderProjects(),
   ]);
   $('lastUpdate').textContent = new Date().toLocaleTimeString();
 }
 
 refreshAll();
 setInterval(refreshAll, 60000);
+
+/* ── Render: Projects Tracker ──────────────────────────────────────────── */
+var PROJECT_STATUS_BADGES = {
+  active: {bg: 'rgba(34,197,94,0.15)', color: 'var(--green)', label: 'Active'},
+  paused: {bg: 'rgba(245,158,11,0.15)', color: 'var(--amber)', label: 'Paused'},
+  planned: {bg: 'rgba(59,130,246,0.15)', color: 'var(--blue)', label: 'Planned'},
+  completed: {bg: 'rgba(107,114,128,0.15)', color: '#6b7280', label: 'Done'},
+  reference: {bg: 'rgba(99,102,241,0.1)', color: 'var(--accent-primary)', label: 'Ref'},
+};
+
+function relativeTime(days) {
+  if (days < 0.04) return 'just now';
+  if (days < 1) return Math.round(days * 24) + 'h ago';
+  if (days < 30) return Math.round(days) + 'd ago';
+  return Math.round(days / 30) + 'mo ago';
+}
+
+async function renderProjects() {
+  var container = $('projectsContainer');
+  var d = await fetchJSON('/api/projects');
+  if (!d || !d.projects || d.projects.length === 0) {
+    container.innerHTML = '<div style="color:var(--text-dim);font-size:13px">No projects found</div>';
+    return;
+  }
+  var html = '<div style="display:grid;gap:8px">';
+  d.projects.forEach(function(p) {
+    var badge = PROJECT_STATUS_BADGES[p.status] || PROJECT_STATUS_BADGES.reference;
+    var name = p.name.replace(/-/g, ' ').replace(/\b\w/g, function(l){return l.toUpperCase();});
+    html += '<div onclick="openInObsidian(\'' + escapeHTML(p.path) + '\')" style="cursor:pointer;padding:10px 12px;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:6px;transition:border-color 0.2s" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border-color)\'">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">';
+    html += '<span style="font-weight:600;font-size:13px;color:var(--text-bright)">' + escapeHTML(name) + '</span>';
+    html += '<div style="display:flex;align-items:center;gap:6px">';
+    html += '<span style="font-size:10px;color:var(--text-dim);font-family:var(--mono)">' + relativeTime(p.age_days) + '</span>';
+    html += '<span style="font-size:9px;padding:2px 6px;border-radius:4px;font-weight:600;background:' + badge.bg + ';color:' + badge.color + '">' + badge.label + '</span>';
+    html += '</div></div>';
+    if (p.description) {
+      html += '<div style="font-size:12px;color:var(--text-dim)">' + escapeHTML(p.description) + '</div>';
+    }
+    html += '</div>';
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
 
 /* ── Claude Terminal ───────────────────────────────────────────────────── */
 let claudeWs = null;
@@ -3490,6 +3993,24 @@ var _memHealthData = null;
 var _memSearchTimer = null;
 window._memCurrentNode = null;
 
+/* ── Hierarchical graph state ──────────────────────────────────────────── */
+var _memGraphLevel = 'overview';
+var _memOverviewData = null;
+var _memClusterCache = {};
+var _memGraphTransitioning = false;
+
+var _tierOpacity = {
+  'ACTIVE': 1.0, 'WARM': 0.85, 'COLD': 0.6, 'FORGOTTEN': 0.4, 'ARCHIVE': 0.25,
+  'fresh': 1.0, 'stale': 0.7, 'rotten': 0.5, 'historical': 0.3, 'neutral': 0.6
+};
+var _tierBgColors = {
+  'ACTIVE': 'rgba(34,197,94,0.2)', 'fresh': 'rgba(34,197,94,0.2)',
+  'WARM': 'rgba(59,130,246,0.2)', 'stale': 'rgba(245,158,11,0.2)',
+  'COLD': 'rgba(245,158,11,0.2)', 'rotten': 'rgba(239,68,68,0.2)',
+  'FORGOTTEN': 'rgba(239,68,68,0.2)', 'ARCHIVE': 'rgba(107,114,128,0.2)',
+  'historical': 'rgba(107,114,128,0.2)', 'neutral': 'rgba(107,114,128,0.2)'
+};
+
 function memSwitchTab(name) {
   _memActiveTab = name;
   document.querySelectorAll('.mem-subtab').forEach(function(btn) {
@@ -3498,7 +4019,7 @@ function memSwitchTab(name) {
   document.querySelectorAll('.mem-subpanel').forEach(function(p) {
     p.classList.toggle('active', p.id === 'memPanel-' + name);
   });
-  if (name === 'graph' && !_memGraphData) refreshMemGraph();
+  if (name === 'graph' && !_memOverviewData) refreshMemGraph();
   if (name === 'heatmap' && _memHealthData) renderMemHeatmap(_memHealthData);
   if (name === 'recent') loadMemRecent();
   if (name === 'crons') loadMemCrons();
@@ -3537,114 +4058,444 @@ function toggleMemGraphSections() {
   _memShowSections = !_memShowSections;
   var btn = $('memGraphSectionsBtn');
   btn.classList.toggle('active', _memShowSections);
-  renderMemGraph();
+  if (_memGraphLevel === 'overview') {
+    renderOverviewGraph();
+  } else {
+    _memClusterCache[_memGraphLevel] = null;
+    renderClusterGraph(_memGraphLevel);
+  }
 }
 
+/* ── Breadcrumb ────────────────────────────────────────────────────────── */
+function updateBreadcrumb(clusterName) {
+  var bc = $('memGraphBreadcrumb');
+  if (!clusterName) {
+    bc.innerHTML = '<span class="breadcrumb-item active">Memory</span>';
+  } else {
+    bc.innerHTML =
+      '<span class="breadcrumb-item" onclick="memGraphNavigate(null)">Memory</span>' +
+      '<span class="breadcrumb-sep">/</span>' +
+      '<span class="breadcrumb-item active">' + clusterName.toUpperCase() + '</span>';
+  }
+}
+
+function memGraphNavigate(target) {
+  if (_memGraphTransitioning) return;
+  if (target === null) {
+    _memGraphLevel = 'overview';
+    renderOverviewGraph();
+  } else {
+    _memGraphLevel = target;
+    renderClusterGraph(target);
+  }
+}
+
+/* ── Overview graph (top-level cluster bubbles) ────────────────────────── */
+async function loadOverviewGraph() {
+  _memOverviewData = await fetchJSON('/api/memory-graph/overview');
+  if (_memOverviewData) renderOverviewGraph();
+}
+
+function renderOverviewGraph() {
+  if (!_memOverviewData) return;
+  _memGraphLevel = 'overview';
+  updateBreadcrumb(null);
+
+  var container = $('memGraphContainer');
+  var tooltip = $('memGraphTooltip');
+  tooltip.style.display = 'none';
+
+  var oldSvg = container.querySelector('svg');
+  if (oldSvg) {
+    _memGraphTransitioning = true;
+    d3.select(oldSvg).transition().duration(250).style('opacity', 0).on('end', function() {
+      oldSvg.remove();
+      _memGraphTransitioning = false;
+      drawOverview();
+    });
+  } else {
+    drawOverview();
+  }
+
+  function drawOverview() {
+    var clusters = (_memOverviewData.clusters || []).map(function(c) { return Object.assign({}, c); });
+    var links = (_memOverviewData.links || []).map(function(l) { return Object.assign({}, l); });
+
+    var width = container.clientWidth;
+    var height = container.clientHeight;
+
+    var svg = d3.select(container).append('svg')
+      .attr('width', width).attr('height', height)
+      .style('opacity', 0);
+    var g = svg.append('g');
+    var zoom = d3.zoom().scaleExtent([0.5, 3]).on('zoom', function(event) { g.attr('transform', event.transform); });
+    svg.call(zoom);
+
+    svg.transition().duration(400).style('opacity', 1);
+
+    var countExtent = d3.extent(clusters, function(c) { return c.children_count; });
+    var radiusScale = d3.scaleLinear()
+      .domain([countExtent[0] || 1, countExtent[1] || 50])
+      .range([35, 65]).clamp(true);
+
+    if (_memGraphSim) _memGraphSim.stop();
+    _memGraphSim = d3.forceSimulation(clusters)
+      .force('link', d3.forceLink(links).id(function(d) { return d.id; }).distance(160).strength(0.3))
+      .force('charge', d3.forceManyBody().strength(-500))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force('collision', d3.forceCollide().radius(function(d) { return radiusScale(d.children_count) + 15; }));
+
+    var link = g.append('g').selectAll('line').data(links).join('line')
+      .attr('stroke', '#4a5568')
+      .attr('stroke-opacity', 0.3)
+      .attr('stroke-width', 1.5)
+      .attr('stroke-dasharray', '4,4');
+
+    var nodeG = g.append('g').selectAll('g').data(clusters).join('g')
+      .attr('cursor', 'pointer')
+      .call(d3.drag()
+        .on('start', function(event, d) { if (!event.active) _memGraphSim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+        .on('drag', function(event, d) { d.fx = event.x; d.fy = event.y; })
+        .on('end', function(event, d) { if (!event.active) _memGraphSim.alphaTarget(0); d.fx = null; d.fy = null; })
+      );
+
+    // Outer glow ring
+    nodeG.append('circle')
+      .attr('r', function(d) { return radiusScale(d.children_count) + 4; })
+      .attr('fill', 'none')
+      .attr('stroke', function(d) { return d.color; })
+      .attr('stroke-width', 2)
+      .attr('stroke-opacity', 0.15);
+
+    // Main circle
+    nodeG.append('circle')
+      .attr('r', function(d) { return radiusScale(d.children_count); })
+      .attr('fill', function(d) { return d.color; })
+      .attr('fill-opacity', function(d) {
+        var t = d.dominant_tier || 'COLD';
+        return (_tierOpacity[t] || 0.6) * 0.35;
+      })
+      .attr('stroke', function(d) { return d.color; })
+      .attr('stroke-width', 2)
+      .attr('stroke-opacity', 0.8);
+
+    // Cluster label
+    nodeG.append('text')
+      .text(function(d) { return d.label; })
+      .attr('text-anchor', 'middle')
+      .attr('dy', '-0.2em')
+      .attr('fill', '#e4e4e7')
+      .attr('font-size', '13px')
+      .attr('font-family', 'var(--mono)')
+      .attr('font-weight', '600')
+      .attr('pointer-events', 'none');
+
+    // Child count badge
+    nodeG.append('text')
+      .text(function(d) { return d.children_count + ' files'; })
+      .attr('text-anchor', 'middle')
+      .attr('dy', '1.2em')
+      .attr('fill', function(d) { return d.color; })
+      .attr('font-size', '10px')
+      .attr('font-family', 'var(--mono)')
+      .attr('opacity', 0.7)
+      .attr('pointer-events', 'none');
+
+    // Tier mini-bar
+    nodeG.each(function(d) {
+      var tiers = d.tiers || {};
+      var total = d.children_count || 1;
+      var barWidth = radiusScale(d.children_count) * 1.2;
+      var barY = 18;
+      var barHeight = 3;
+      var tierOrder = ['ACTIVE', 'WARM', 'COLD', 'FORGOTTEN', 'ARCHIVE'];
+      var tierColors = { 'ACTIVE': '#22c55e', 'WARM': '#3b82f6', 'COLD': '#f59e0b', 'FORGOTTEN': '#ef4444', 'ARCHIVE': '#6b7280' };
+      var x = -barWidth / 2;
+      var sel = d3.select(this);
+      tierOrder.forEach(function(t) {
+        var count = tiers[t] || 0;
+        if (count === 0) return;
+        var w = (count / total) * barWidth;
+        sel.append('rect')
+          .attr('x', x).attr('y', barY)
+          .attr('width', w).attr('height', barHeight)
+          .attr('rx', 1)
+          .attr('fill', tierColors[t])
+          .attr('opacity', 0.7)
+          .attr('pointer-events', 'none');
+        x += w;
+      });
+    });
+
+    // Click to drill down
+    nodeG.on('click', function(event, d) {
+      event.stopPropagation();
+      memGraphNavigate(d.id);
+    });
+
+    // Tooltip on hover
+    nodeG.on('mouseover', function(event, d) {
+      var tiers = d.tiers || {};
+      var parts = [];
+      if (tiers.ACTIVE) parts.push('Active: ' + tiers.ACTIVE);
+      if (tiers.WARM) parts.push('Warm: ' + tiers.WARM);
+      if (tiers.COLD) parts.push('Cold: ' + tiers.COLD);
+      if (tiers.FORGOTTEN) parts.push('Forgotten: ' + tiers.FORGOTTEN);
+      if (tiers.ARCHIVE) parts.push('Archive: ' + tiers.ARCHIVE);
+      $('memGtTitle').textContent = d.label;
+      $('memGtTier').textContent = d.dominant_tier || '';
+      $('memGtTier').style.background = _tierBgColors[d.dominant_tier] || '';
+      $('memGtTier').style.color = d.color;
+      $('memGtMeta').textContent = d.children_count + ' files | ' + parts.join(', ');
+      $('memGtPreview').textContent = 'Click to explore ' + d.label + ' cluster';
+      tooltip.style.display = 'block';
+      tooltip.style.pointerEvents = 'none';
+      var rect = container.getBoundingClientRect();
+      tooltip.style.left = Math.min(event.clientX - rect.left + 16, rect.width - 300) + 'px';
+      tooltip.style.top = (event.clientY - rect.top - 10) + 'px';
+    }).on('mousemove', function(event) {
+      var rect = container.getBoundingClientRect();
+      tooltip.style.left = Math.min(event.clientX - rect.left + 16, rect.width - 300) + 'px';
+      tooltip.style.top = (event.clientY - rect.top - 10) + 'px';
+    }).on('mouseout', function() {
+      tooltip.style.display = 'none';
+    });
+
+    svg.on('click', function() { tooltip.style.display = 'none'; });
+
+    _memGraphSim.on('tick', function() {
+      link
+        .attr('x1', function(d) { return d.source.x; }).attr('y1', function(d) { return d.source.y; })
+        .attr('x2', function(d) { return d.target.x; }).attr('y2', function(d) { return d.target.y; });
+      nodeG.attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+    });
+
+    var legend = $('memGraphLegend');
+    legend.innerHTML = '';
+    var colors = _memOverviewData.colors || {};
+    Object.entries(colors).forEach(function(entry) {
+      legend.innerHTML += '<span class="graph-legend-item"><span class="graph-legend-dot" style="background:' + entry[1] + '"></span>' + entry[0] + '</span>';
+    });
+  }
+}
+
+/* ── Cluster detail graph (drill-down) ─────────────────────────────────── */
+async function renderClusterGraph(clusterName) {
+  updateBreadcrumb(clusterName);
+
+  if (!_memClusterCache[clusterName]) {
+    _memClusterCache[clusterName] = await fetchJSON('/api/memory-graph/cluster/' + encodeURIComponent(clusterName));
+  }
+  var data = _memClusterCache[clusterName];
+  if (!data || !data.nodes) return;
+
+  var container = $('memGraphContainer');
+  var tooltip = $('memGraphTooltip');
+  tooltip.style.display = 'none';
+
+  var oldSvg = container.querySelector('svg');
+  if (oldSvg) {
+    _memGraphTransitioning = true;
+    d3.select(oldSvg).transition().duration(250).style('opacity', 0).on('end', function() {
+      oldSvg.remove();
+      _memGraphTransitioning = false;
+      drawCluster();
+    });
+  } else {
+    drawCluster();
+  }
+
+  function drawCluster() {
+    var nodes = data.nodes.map(function(n) { return Object.assign({}, n); });
+    var links = data.links.map(function(l) { return Object.assign({}, l); });
+
+    var width = container.clientWidth;
+    var height = container.clientHeight;
+
+    var svg = d3.select(container).append('svg')
+      .attr('width', width).attr('height', height)
+      .style('opacity', 0);
+    var g = svg.append('g');
+    var zoom = d3.zoom().scaleExtent([0.3, 4]).on('zoom', function(event) { g.attr('transform', event.transform); });
+    svg.call(zoom);
+
+    svg.transition().duration(400).style('opacity', 1);
+
+    var sizeExtent = d3.extent(nodes, function(n) { return n.size || 100; });
+    var radiusScale = d3.scaleLinear()
+      .domain([sizeExtent[0] || 100, sizeExtent[1] || 10000])
+      .range([12, 35]).clamp(true);
+
+    function nodeRadius(d) {
+      if (d.type === 'hub') return Math.max(radiusScale(d.size), 30);
+      if (d.type === 'index') return Math.max(radiusScale(d.size), 22);
+      return radiusScale(d.size);
+    }
+
+    if (_memGraphSim) _memGraphSim.stop();
+    _memGraphSim = d3.forceSimulation(nodes)
+      .force('link', d3.forceLink(links).id(function(d) { return d.id; }).distance(100).strength(0.4))
+      .force('charge', d3.forceManyBody().strength(-300))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force('collision', d3.forceCollide().radius(function(d) { return nodeRadius(d) + 8; }));
+
+    var link = g.append('g').selectAll('line').data(links).join('line')
+      .attr('stroke', '#4a5568')
+      .attr('stroke-opacity', function(d) { return Math.max(0.2, (d.weight || 0.5) * 0.6); })
+      .attr('stroke-width', function(d) { return Math.max(0.8, (d.weight || 0.5) * 1.5); });
+
+    var nodeG = g.append('g').selectAll('g').data(nodes).join('g')
+      .attr('cursor', 'pointer')
+      .call(d3.drag()
+        .on('start', function(event, d) { if (!event.active) _memGraphSim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+        .on('drag', function(event, d) { d.fx = event.x; d.fy = event.y; })
+        .on('end', function(event, d) { if (!event.active) _memGraphSim.alphaTarget(0); d.fx = null; d.fy = null; })
+      );
+
+    // Hub/index ring
+    nodeG.filter(function(d) { return d.type === 'hub' || d.type === 'index'; })
+      .append('circle')
+      .attr('r', function(d) { return nodeRadius(d) + 4; })
+      .attr('fill', 'none')
+      .attr('stroke', function(d) { return d.color; })
+      .attr('stroke-width', function(d) { return d.type === 'hub' ? 2.5 : 1.5; })
+      .attr('stroke-opacity', 0.2)
+      .attr('stroke-dasharray', function(d) { return d.type === 'index' ? '3,3' : 'none'; });
+
+    // Main circles
+    nodeG.append('circle')
+      .attr('r', function(d) { return nodeRadius(d); })
+      .attr('fill', function(d) { return d.color; })
+      .attr('fill-opacity', function(d) {
+        var base = _tierOpacity[d.tier] || 0.6;
+        if (d.type === 'hub') return base * 0.5;
+        if (d.type === 'index') return base * 0.4;
+        return base * 0.35;
+      })
+      .attr('stroke', function(d) { return d.color; })
+      .attr('stroke-width', function(d) { return d.type === 'hub' ? 2.5 : 1.5; })
+      .attr('stroke-opacity', function(d) { return _tierOpacity[d.tier] || 0.6; });
+
+    // Forgotten/rotten red tint
+    nodeG.filter(function(d) { return d.tier === 'FORGOTTEN' || d.tier === 'rotten'; })
+      .append('circle')
+      .attr('r', function(d) { return nodeRadius(d); })
+      .attr('fill', 'rgba(239,68,68,0.15)')
+      .attr('pointer-events', 'none');
+
+    // Labels
+    nodeG.append('text')
+      .text(function(d) { return d.label; })
+      .attr('text-anchor', 'middle')
+      .attr('dy', function(d) { return nodeRadius(d) + 14; })
+      .attr('fill', '#e4e4e7')
+      .attr('font-size', function(d) { return d.type === 'hub' ? '12px' : '10px'; })
+      .attr('font-family', 'var(--mono)')
+      .attr('font-weight', function(d) { return d.type === 'hub' ? '600' : '400'; })
+      .attr('pointer-events', 'none');
+
+    // Type badge for hub/index
+    nodeG.filter(function(d) { return d.type === 'hub' || d.type === 'index'; })
+      .append('text')
+      .text(function(d) { return d.type === 'hub' ? 'HUB' : 'INDEX'; })
+      .attr('text-anchor', 'middle')
+      .attr('dy', '0.35em')
+      .attr('fill', 'rgba(255,255,255,0.5)')
+      .attr('font-size', '8px')
+      .attr('font-family', 'var(--mono)')
+      .attr('font-weight', '600')
+      .attr('letter-spacing', '1px')
+      .attr('pointer-events', 'none');
+
+    // Tooltip on hover
+    nodeG.on('mouseover', function(event, d) {
+      window._memCurrentNode = d.path || d.id;
+      $('memGtTitle').textContent = d.label;
+      var tierEl = $('memGtTier');
+      tierEl.textContent = d.tier + (d.score ? ' (' + d.score.toFixed(3) + ')' : '');
+      tierEl.style.background = _tierBgColors[d.tier] || '';
+      tierEl.style.color = d.color;
+      var metaParts = [];
+      if (d.word_count) metaParts.push(d.word_count + ' words');
+      if (d.last_verified) metaParts.push('verified: ' + d.last_verified);
+      metaParts.push(d.type);
+      $('memGtMeta').textContent = metaParts.join(' | ');
+      $('memGtPreview').textContent = d.preview ? d.preview.slice(0, 300) : '(empty)';
+      tooltip.style.display = 'block';
+      tooltip.style.pointerEvents = 'auto';
+      var rect = container.getBoundingClientRect();
+      tooltip.style.left = Math.min(event.clientX - rect.left + 16, rect.width - 300) + 'px';
+      tooltip.style.top = (event.clientY - rect.top - 10) + 'px';
+    }).on('mousemove', function(event) {
+      var rect = container.getBoundingClientRect();
+      tooltip.style.left = Math.min(event.clientX - rect.left + 16, rect.width - 300) + 'px';
+      tooltip.style.top = (event.clientY - rect.top - 10) + 'px';
+    }).on('mouseout', function() {
+      setTimeout(function() {
+        if (!tooltip.matches(':hover')) tooltip.style.display = 'none';
+      }, 200);
+    });
+
+    // Click: show persistent tooltip
+    nodeG.on('click', function(event, d) {
+      event.stopPropagation();
+      window._memCurrentNode = d.path || d.id;
+      $('memGtTitle').textContent = d.label;
+      $('memGtPreview').textContent = d.preview ? d.preview.slice(0, 300) : '(empty)';
+      var metaParts = [];
+      if (d.word_count) metaParts.push(d.word_count + ' words');
+      if (d.last_verified) metaParts.push('verified: ' + d.last_verified);
+      metaParts.push(d.type);
+      $('memGtMeta').textContent = metaParts.join(' | ');
+      tooltip.style.display = 'block';
+      tooltip.style.pointerEvents = 'auto';
+      var rect = container.getBoundingClientRect();
+      tooltip.style.left = Math.min(event.clientX - rect.left + 16, rect.width - 300) + 'px';
+      tooltip.style.top = (event.clientY - rect.top - 10) + 'px';
+    });
+
+    // Double-click: open in Obsidian
+    nodeG.on('dblclick', function(event, d) {
+      event.stopPropagation();
+      openInObsidian(d.path || d.id);
+    });
+
+    svg.on('click', function() { tooltip.style.display = 'none'; });
+
+    _memGraphSim.on('tick', function() {
+      link
+        .attr('x1', function(d) { return d.source.x; }).attr('y1', function(d) { return d.source.y; })
+        .attr('x2', function(d) { return d.target.x; }).attr('y2', function(d) { return d.target.y; });
+      nodeG.attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+    });
+
+    var legend = $('memGraphLegend');
+    legend.innerHTML =
+      '<span class="graph-legend-item" style="cursor:pointer;border:1px solid var(--border);border-radius:4px;padding:2px 8px" onclick="memGraphNavigate(null)">' +
+        '<span style="font-size:14px;margin-right:2px">&#8592;</span> All Clusters' +
+      '</span>' +
+      '<span class="graph-legend-item"><span class="graph-legend-dot" style="background:#22c55e"></span>Active</span>' +
+      '<span class="graph-legend-item"><span class="graph-legend-dot" style="background:#3b82f6"></span>Warm</span>' +
+      '<span class="graph-legend-item"><span class="graph-legend-dot" style="background:#f59e0b"></span>Cold</span>' +
+      '<span class="graph-legend-item"><span class="graph-legend-dot" style="background:#ef4444"></span>Forgotten</span>' +
+      '<span class="graph-legend-item"><span class="graph-legend-dot" style="background:#6b7280"></span>Archive</span>';
+  }
+}
+
+/* ── Compat wrappers for refreshMemGraph / renderMemGraph ──────────────── */
 async function refreshMemGraph() {
-  _memGraphData = await fetchJSON('/api/memory-graph');
-  renderMemGraph();
+  _memOverviewData = null;
+  _memClusterCache = {};
+  _memGraphLevel = 'overview';
+  await loadOverviewGraph();
 }
 
 function renderMemGraph() {
-  if (!_memGraphData) return;
-  var container = $('memGraphContainer');
-  var tooltip = $('memGraphTooltip');
-
-  var oldSvg = container.querySelector('svg');
-  if (oldSvg) oldSvg.remove();
-
-  var nodes = _memGraphData.nodes.filter(function(n) {
-    return _memShowSections || n.type === 'file';
-  }).map(function(n) { return Object.assign({}, n); });
-
-  var nodeIds = new Set(nodes.map(function(n) { return n.id; }));
-  var links = _memGraphData.links.filter(function(l) {
-    return nodeIds.has(l.source) && nodeIds.has(l.target);
-  }).map(function(l) { return Object.assign({}, l); });
-
-  var width = container.clientWidth;
-  var height = container.clientHeight;
-
-  var svg = d3.select(container).append('svg').attr('width', width).attr('height', height);
-  var g = svg.append('g');
-  var zoom = d3.zoom().scaleExtent([0.3, 4]).on('zoom', function(event) { g.attr('transform', event.transform); });
-  svg.call(zoom);
-
-  var sizeExtent = d3.extent(nodes.filter(function(n) { return n.type === 'file'; }), function(n) { return n.size; });
-  var radiusScale = d3.scaleLinear().domain([sizeExtent[0] || 100, sizeExtent[1] || 10000]).range([10, 30]).clamp(true);
-  var tierOpacity = { 'ACTIVE': 1.0, 'WARM': 0.85, 'COLD': 0.6, 'FORGOTTEN': 0.4, 'ARCHIVE': 0.25, 'fresh': 1.0, 'stale': 0.7, 'rotten': 0.5, 'historical': 0.3, 'neutral': 0.6 };
-
-  if (_memGraphSim) _memGraphSim.stop();
-  _memGraphSim = d3.forceSimulation(nodes)
-    .force('link', d3.forceLink(links).id(function(d) { return d.id; }).distance(function(d) { return d.weight > 0.5 ? 80 : 140; }).strength(function(d) { return d.weight * 0.5; }))
-    .force('charge', d3.forceManyBody().strength(function(d) { return d.type === 'file' ? -200 : -50; }))
-    .force('center', d3.forceCenter(width / 2, height / 2))
-    .force('collision', d3.forceCollide().radius(function(d) { return d.type === 'file' ? radiusScale(d.size) + 4 : 10; }));
-
-  var link = g.append('g').selectAll('line').data(links).join('line')
-    .attr('stroke', '#4a5568')
-    .attr('stroke-opacity', function(d) { return Math.max(0.15, d.weight * 0.6); })
-    .attr('stroke-width', function(d) { return Math.max(0.5, d.weight * 1.5); });
-
-  var node = g.append('g').selectAll('circle').data(nodes).join('circle')
-    .attr('r', function(d) { return d.type === 'file' ? radiusScale(d.size) : 4; })
-    .attr('fill', function(d) { return d.color; })
-    .attr('opacity', function(d) { return tierOpacity[d.tier] || 0.6; })
-    .attr('stroke', function(d) { return d.type === 'file' ? '#fff' : 'none'; })
-    .attr('stroke-width', function(d) { return d.type === 'file' ? 1.5 : 0; })
-    .attr('cursor', 'pointer')
-    .call(d3.drag()
-      .on('start', function(event, d) { if (!event.active) _memGraphSim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
-      .on('drag', function(event, d) { d.fx = event.x; d.fy = event.y; })
-      .on('end', function(event, d) { if (!event.active) _memGraphSim.alphaTarget(0); d.fx = null; d.fy = null; })
-    );
-
-  var label = g.append('g').selectAll('text').data(nodes.filter(function(n) { return n.type === 'file'; })).join('text')
-    .text(function(d) { return d.label; })
-    .attr('font-size', '11px').attr('font-family', 'var(--mono)').attr('fill', '#e4e4e7')
-    .attr('text-anchor', 'middle').attr('dy', function(d) { return radiusScale(d.size) + 14; })
-    .attr('pointer-events', 'none');
-
-  node.on('mouseover', function(event, d) {
-    if (d.type !== 'file') return;
-    window._memCurrentNode = d.id;
-    var tierColors = { 'ACTIVE': 'rgba(34,197,94,0.2)', 'fresh': 'rgba(34,197,94,0.2)', 'WARM': 'rgba(59,130,246,0.2)', 'stale': 'rgba(245,158,11,0.2)', 'COLD': 'rgba(245,158,11,0.2)', 'rotten': 'rgba(239,68,68,0.2)', 'FORGOTTEN': 'rgba(239,68,68,0.2)', 'ARCHIVE': 'rgba(107,114,128,0.2)', 'historical': 'rgba(107,114,128,0.2)', 'neutral': 'rgba(107,114,128,0.2)' };
-    $('memGtTitle').textContent = d.label;
-    var tierEl = $('memGtTier');
-    tierEl.textContent = d.tier + ' (' + (d.score || 0).toFixed(3) + ')';
-    tierEl.style.background = tierColors[d.tier] || 'rgba(107,114,128,0.2)';
-    tierEl.style.color = d.color;
-    $('memGtPreview').textContent = d.preview ? d.preview.slice(0, 300) : '(empty)';
-    tooltip.style.display = 'block';
-    tooltip.style.left = (event.offsetX + 16) + 'px';
-    tooltip.style.top = (event.offsetY - 10) + 'px';
-  }).on('mousemove', function(event) {
-    tooltip.style.left = (event.offsetX + 16) + 'px';
-    tooltip.style.top = (event.offsetY - 10) + 'px';
-  }).on('mouseout', function() {
-    tooltip.style.display = 'none';
-  }).on('click', function(event, d) {
-    if (d.type !== 'file') return;
-    window._memCurrentNode = d.id;
-    tooltip.style.display = 'block';
-    $('memGtTitle').textContent = d.label;
-    $('memGtPreview').textContent = d.preview || '(empty)';
-    tooltip.style.left = (event.offsetX + 16) + 'px';
-    tooltip.style.top = (event.offsetY - 10) + 'px';
-  });
-
-  _memGraphSim.on('tick', function() {
-    link.attr('x1', function(d) { return d.source.x; }).attr('y1', function(d) { return d.source.y; })
-        .attr('x2', function(d) { return d.target.x; }).attr('y2', function(d) { return d.target.y; });
-    node.attr('cx', function(d) { return d.x; }).attr('cy', function(d) { return d.y; });
-    label.attr('x', function(d) { return d.x; }).attr('y', function(d) { return d.y; });
-  });
-
-  var legend = $('memGraphLegend');
-  legend.innerHTML = '';
-  Object.entries(_memGraphData.clusters || {}).forEach(function(entry) {
-    legend.innerHTML += '<span class="graph-legend-item"><span class="graph-legend-dot" style="background:' + entry[1] + '"></span>' + entry[0] + '</span>';
-  });
+  if (_memGraphLevel === 'overview') {
+    renderOverviewGraph();
+  } else {
+    renderClusterGraph(_memGraphLevel);
+  }
 }
 
 function renderMemHeatmap(data) {
@@ -3993,6 +4844,21 @@ async function updateStatusStripRental() {
         else if (v.machine_status === 'listed') state = 'IDLE';
         else state = (v.machine_status || 'UNKNOWN').toUpperCase();
       }
+      // Fallback: use household-health SSH-based vast.ai data
+      if (state === 'UNKNOWN' || (!d.online && state === 'OFFLINE')) {
+        try {
+          var hh = await fetchJSON('/api/household-health');
+          if (hh && hh.gpuserver1 && hh.gpuserver1.vastai) {
+            var vs = hh.gpuserver1.vastai.status || '';
+            if (vs === 'rented') state = 'RENTED';
+            else if (vs === 'listed') state = 'IDLE';
+            else if (vs === 'unlisted') state = 'UNLISTED';
+            else if (vs) state = vs.toUpperCase();
+          } else if (hh && hh.gpuserver1 && !hh.gpuserver1.online) {
+            state = 'OFFLINE';
+          }
+        } catch(e2) {}
+      }
       el.textContent = 'RENTAL: ' + state;
       if (_prevRentalState !== null && _prevRentalState !== state && state === 'RENTED') {
         playSound('notification');
@@ -4060,6 +4926,11 @@ var CMD_REGISTRY = [
   {id:'nav-family', group:'Cards', label:'Family', keywords:'family members household', icon:'\u2606', action:function(){scrollToCard('familyGrid')}},
   {id:'nav-finances', group:'Cards', label:'Finances', keywords:'money net worth budget', icon:'\u2261', action:function(){scrollToCard('financesContainer')}},
   {id:'nav-daily', group:'Cards', label:"Today's Tasks", keywords:'daily tasks todo', icon:'\u2611', action:function(){scrollToCard('dailyTasksContainer')}},
+  {id:'nav-weather', group:'Cards', label:'Weather', keywords:'weather forecast temperature', icon:'\u2600', action:function(){scrollToCard('weatherContainer')}},
+  {id:'nav-calendar', group:'Cards', label:'Calendar', keywords:'calendar events schedule', icon:'\uD83D\uDCC5', action:function(){scrollToCard('calendarContainer')}},
+  {id:'nav-wiki', group:'Cards', label:'Family Wiki', keywords:'wiki memory knowledge base', icon:'\uD83D\uDCD6', action:function(){scrollToCard('wikiContainer')}},
+  {id:'nav-household', group:'Cards', label:'Household Monitoring', keywords:'household health monitoring status', icon:'\u2699', action:function(){scrollToCard('householdHealthContainer')}},
+  {id:'nav-projects', group:'Cards', label:'Projects', keywords:'projects active planned', icon:'\u270E', action:function(){scrollToCard('projectsContainer')}},
   {id:'nav-work', group:'Cards', label:'Work Streams', keywords:'work projects streams', icon:'\u2699', action:function(){scrollToCard('workStreamsContainer')}},
   {id:'nav-tasks', group:'Cards', label:'Active Tasks', keywords:'active tasks backlog', icon:'\u2610', action:function(){scrollToCard('tasksContainer')}},
   {id:'nav-deadlines', group:'Cards', label:'Deadlines', keywords:'deadlines due dates', icon:'\u23F0', action:function(){scrollToCard('deadlineBody')}},
