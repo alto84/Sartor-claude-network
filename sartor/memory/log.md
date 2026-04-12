@@ -167,6 +167,20 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime (command not found)
 - Updated: [[ALTON]], `daily/2026-04-11.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-12] ingest | personal-data-gather run 6 — Gmail + Calendar harvest
+
+- Sources: Gmail (38 msgs scanned, after:2026/04/11, -promotions/-social), 5 Google Calendars (7-day window Apr 12–19)
+- Facts gathered: 4 new signals (all INFORMATIONAL); all prior open items confirmed outstanding
+- New fact: Sky Zone waiver signed at ~3:04 PM ET — confirms family at Zoe's birthday party today. Event live.
+- New fact: CVS Cedar Grove receipt, Apr 12 ~2:49 PM ET. Routine household expense.
+- New fact: AAPI NJ newsletter ("How Do We Show We Belong?"). No action.
+- New fact: Bausch+Lomb Head of Enterprise AI Solution (LinkedIn, actively recruiting). Career market intelligence. Routed to [[ALTON]].
+- Calendar: unchanged vs runs 1–5 and 6–11; no new events on any of 5 calendars
+- data/ directory recreated (was absent from filesystem)
+- Critical outstanding: Goddard summer forms due TOMORROW (Apr 13); CAQH reattestation ACTION_REQUIRED; Apr 15 tax decisions (3 days)
+- SSH check: gpuserver1 unavailable from this runtime (command not found)
+- Updated: `daily/2026-04-12.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## [2026-04-09] refactor | Adopt Karpathy LLM-Wiki two-spine pattern
 
 - Added this `log.md` as the append-only ledger spine file
