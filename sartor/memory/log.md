@@ -235,6 +235,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime
 - Updated: [[ALTON]], [[family/vasu]], [[family/active-todos]], `daily/2026-04-12.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-12] ingest | personal-data-gather run 3 — Gmail + Calendar harvest
+
+- Sources: Gmail (23 msgs scanned, after:2026/04/11), 5 Google Calendars (7-day window Apr 12–19)
+- Facts gathered: 0 new signals; all confirmed/unchanged from prior runs
+- Calendar: unchanged vs runs 1–2 and 6–11 — no new events on any of the 5 calendars
+- All prior open signals confirmed active: Goddard forms (due tomorrow Apr 13), Apr 15 tax deadlines (3 days), Tribeca $170.28 pre-collections, Apr 17 coverage conflict, Apr 18 soccer/Rafi conflict, Guidepoint + Zintro + Handshake advisory decisions, Summit Health portal, Aneeta CSA email invalid
+- SSH check: gpuserver1 unavailable from this runtime
+- data/ directory created on disk; gather-alerts.md and heartbeat-log.csv written
+- Updated: `daily/2026-04-12.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption
