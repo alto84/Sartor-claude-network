@@ -2,15 +2,23 @@
 """BM25 search engine over markdown memory files.
 
 Usage:
-    CLI:        python search.py "query string"
-                python search.py --with-decay "query string"
+    CLI:        python search.py "query string"              # BM25
+                python search.py --with-decay "query string"  # BM25 + decay
+                python search.py --semantic "query string"    # semantic only
+                python search.py --hybrid "query string"      # blended BM25 + semantic + decay
     Import:     from search import MemorySearch; results = MemorySearch("path").search("query")
 """
 
+import io
 import re
 import sys
 from pathlib import Path
 from rank_bm25 import BM25Okapi
+
+# Fix UnicodeEncodeError on Windows consoles that can't handle Unicode
+if sys.stdout.encoding and sys.stdout.encoding.lower() not in ('utf-8', 'utf8'):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding=sys.stdout.encoding, errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding=sys.stderr.encoding, errors='replace')
 
 try:
     from decay import decay_score, load_scores, record_access, compute_all_scores
@@ -160,16 +168,74 @@ class MemorySearch:
 def main():
     args = sys.argv[1:]
     with_decay = False
+    use_semantic = False
+    use_hybrid = False
+
     if "--with-decay" in args:
         with_decay = True
         args = [a for a in args if a != "--with-decay"]
+    if "--semantic" in args:
+        use_semantic = True
+        args = [a for a in args if a != "--semantic"]
+    if "--hybrid" in args:
+        use_hybrid = True
+        args = [a for a in args if a != "--hybrid"]
 
     if not args:
-        print('Usage: python search.py [--with-decay] "query string"')
+        print('Usage: python search.py [--with-decay] [--semantic] [--hybrid] "query string"')
         sys.exit(1)
 
     query = " ".join(args)
     memory_dir = Path(__file__).resolve().parent
+
+    # Semantic-only mode: delegate to embeddings.py
+    if use_semantic:
+        try:
+            from embeddings import SemanticSearch
+            ss = SemanticSearch(memory_dir)
+            results = ss.search_semantic(query)
+            ss.close()
+        except ImportError:
+            print("Error: embeddings.py not found. Semantic search unavailable.")
+            sys.exit(1)
+
+        if not results:
+            print(f"No semantic results for: {query}")
+            sys.exit(0)
+
+        print(f'Semantic results for: "{query}"\n')
+        for i, r in enumerate(results, 1):
+            rel_path = Path(r["file"]).relative_to(memory_dir)
+            section = r.get("section", "")
+            print(f'  {i}. [{r["score"]:.4f}] {rel_path} :: {section}')
+            print(f'     {r["snippet"]}\n')
+        return
+
+    # Hybrid mode: blended BM25 + semantic + decay
+    if use_hybrid:
+        try:
+            from embeddings import SemanticSearch
+            ss = SemanticSearch(memory_dir)
+            results = ss.search_hybrid(query, apply_decay=True)
+            ss.close()
+        except ImportError:
+            print("Error: embeddings.py not found. Hybrid search unavailable.")
+            sys.exit(1)
+
+        if not results:
+            print(f"No hybrid results for: {query}")
+            sys.exit(0)
+
+        print(f'Hybrid results for: "{query}" (BM25=0.4, semantic=0.6, +decay)\n')
+        for i, r in enumerate(results, 1):
+            rel_path = Path(r["file"]).relative_to(memory_dir)
+            section = r.get("section", "")
+            print(f'  {i}. [{r["score"]:.4f}] {rel_path} :: {section}')
+            print(f'     BM25={r.get("bm25_score", 0):.4f}  semantic={r.get("semantic_score", 0):.4f}')
+            print(f'     {r["snippet"]}\n')
+        return
+
+    # Default: BM25 search
     searcher = MemorySearch(memory_dir)
     results = searcher.search(query, with_decay=with_decay)
 

@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-04-09
+updated: 2026-04-11
 updated_by: Claude
 status: active
 priority: p2
@@ -19,6 +19,9 @@ related: [BUSINESS, TAXES, ALTON]
 
 > [!warning] Structural tax change coming for TY2026
 > **Sante Total will cross the $50,000 annual donation threshold in 2026**, forcing migration from the simple 990-N e-Postcard to the full 990-EZ (or possibly full Form 990). This is a first-time structural event for the nonprofit. Alton explicitly flagged this to Barbara Weis on 2026-04-07: "we will likely exceed the $50000 limit for the e-postcard in 2026, so I'll have to do a more complex filing." **Worth tracking actively — more paperwork, possibly a CPA engagement, and different disclosure requirements.**
+
+> [!todo] Priority: HIGH
+> **Open a new bank account for Sante Total** — receiving specified/restricted donations that need to be segregated from general operating funds. Nonprofit accounting best practice (and potentially donor requirement) to keep restricted funds in a separate account. Need to determine: which bank, who has signatory authority, and whether the board needs to approve.
 
 > [!fact] YTD donation activity (last 30 days)
 > Approximately **$4,350+ in donations received via PayPal** between 2026-03-10 and 2026-04-02. 10 individual gifts ranging from $100 to $1,500. Notable: $1,500 from "mksinbelair" (2026-03-30), $1,000 from "oates2" (2026-04-02). Activity pace suggests 2026 will indeed exceed the $50K threshold.
@@ -50,7 +53,7 @@ related: [BUSINESS, TAXES, ALTON]
 ## Board and governance
 
 - **Alton:** Treasurer and Board Member
-- **Alison Smith:** co-director, LSUHSC (alison.smith@lsuhsc.edu or similar; sent tax receipt to Anna Smyke on 2026-03-10 re donation)
+- **[[alison-smith|Alison Smith]]:** co-director, LSUHSC. Home: 830 Audubon Street, New Orleans LA 70118. Email: alison.smith@lsuhsc.edu (confirm). Sent tax receipt to Anna Smyke on 2026-03-10.
 - **Barbara Weis:** board member and/or contact (dye2tie@verizon.net). Requested 2024 tax doc for her school lunch program grant application. Responded 2026-04-07.
 - All financial transactions require board approval or Alton's explicit authorization
 
@@ -93,7 +96,7 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 ## Key contacts
 
-- **Board/Co-director:** Alison Smith (LSUHSC)
+- **Board/Co-director:** [[alison-smith|Alison Smith]] (LSUHSC, 830 Audubon St, NOLA 70118)
 - **Board/contact:** Barbara Weis (dye2tie@verizon.net)
 - **Donors (sample):** Schall, Yantz, mksinbelair, cfryaniii, Cary Grayson, oates2, Anna Smyke
 - **CPA:** Jonathan Francis does NOT handle Sante Total per [[TAXES]]. Alton handles directly.

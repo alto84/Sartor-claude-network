@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: people-index
-updated: 2026-04-10
+updated: 2026-04-11
 updated_by: Claude
 status: active
 tags: [meta/index, domain/family, entity/person]
@@ -27,7 +27,7 @@ Dossiers and contact cards for people in the Sartor orbit. Each person or family
 - [[doug-paige]] — Solar roof installer at Lucent Energy Management. $219K released, installation stalled. Primary contact for the solar project.
 - [[barbara-weis]] — Sante Total board member/contact. Requested 2024 990-N for grant application. Sent 2026-04-07.
 - [[andy-stecker]] — Crawford Thomas Recruiting. CPSO lead, first contact 2026-03-17, went cold. Decision needed.
-- **Alison Smith** — Sante Total co-director, LSUHSC. Sent tax receipt to Anna Smyke 2026-03-10.
+- [[alison-smith]] — Sante Total co-director, LSUHSC. 830 Audubon St, NOLA 70118. Sent tax receipt to Anna Smyke 2026-03-10.
 - **Alyssa** — Berman Home Systems. WiFi upgrade install 2026-04-27 to 2026-04-29. alyssa@bermanhomesystems.com.
 
 ## Disney Trip Families (July 2026, Disneyland)
@@ -77,6 +77,7 @@ Dossiers and contact cards for people in the Sartor orbit. Each person or family
 | Name / Company | Service | Contact | Notes |
 |----------------|---------|---------|-------|
 | Rachelle Trammel | Babysitter | Venmo | Paid $180 on 2026-04-08 for Vishala Apr 2-7 |
+| Miguel Yardman | Yard work / landscaping | — | 85 Stonebridge. Coming this weekend (Apr 12-13). |
 | Lucas Cleaning | House cleaning | — | Every other week |
 | Berman Home Systems | WiFi / home systems | alyssa@bermanhomesystems.com | Install Apr 27-29 via Solar Inference LLC |
 | Theresa Primo | Cat breeder (Pickle) | 52 Rhodes Circle, Hingham MA 02043, (781) 385-0636 | Pickle's microchip: 956000013806253. "Needs to be re-assigned to us" — possibly still open from 2020. |

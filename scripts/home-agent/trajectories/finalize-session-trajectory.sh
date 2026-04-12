@@ -27,7 +27,7 @@ except Exception:
     pass
 
 entry = {
-    'timestamp': datetime.datetime.utcnow().isoformat() + 'Z',
+    'timestamp': datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00', 'Z'),
     'tool': 'SESSION_END',
     'input_summary': f'Session ended with {tool_count} total tool calls',
     'output_summary': '',

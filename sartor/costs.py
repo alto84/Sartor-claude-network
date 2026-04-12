@@ -7,8 +7,8 @@ of entries older than 30 days.
 """
 
 import argparse
-import fcntl
 import json
+import platform
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -39,15 +39,46 @@ class CostTracker:
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
+    @staticmethod
+    def _lock_shared(f):
+        if platform.system() == "Windows":
+            import msvcrt
+            msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, 1)
+        else:
+            import fcntl
+            fcntl.flock(f, fcntl.LOCK_SH)
+
+    @staticmethod
+    def _lock_exclusive(f):
+        if platform.system() == "Windows":
+            import msvcrt
+            msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, 1)
+        else:
+            import fcntl
+            fcntl.flock(f, fcntl.LOCK_EX)
+
+    @staticmethod
+    def _unlock(f):
+        if platform.system() == "Windows":
+            import msvcrt
+            try:
+                f.seek(0)
+                msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, 1)
+            except OSError:
+                pass
+        else:
+            import fcntl
+            fcntl.flock(f, fcntl.LOCK_UN)
+
     def _read(self) -> dict:
         if not self.path.exists():
             return {"daily_limit": DEFAULT_DAILY_LIMIT, "calls": []}
         with open(self.path, "r") as f:
-            fcntl.flock(f, fcntl.LOCK_SH)
+            self._lock_shared(f)
             try:
                 data = json.load(f)
             finally:
-                fcntl.flock(f, fcntl.LOCK_UN)
+                self._unlock(f)
         # Ensure 'calls' key exists (gateway_cron uses a simpler format)
         if "calls" not in data:
             data["calls"] = []
@@ -57,12 +88,12 @@ class CostTracker:
         cutoff = (datetime.now() - timedelta(days=PRUNE_DAYS)).isoformat()
         data["calls"] = [c for c in data["calls"] if c["timestamp"] >= cutoff]
         with open(self.path, "w") as f:
-            fcntl.flock(f, fcntl.LOCK_EX)
+            self._lock_exclusive(f)
             try:
                 json.dump(data, f, indent=2)
                 f.write("\n")
             finally:
-                fcntl.flock(f, fcntl.LOCK_UN)
+                self._unlock(f)
 
     def log_call(
         self,

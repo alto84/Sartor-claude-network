@@ -24,6 +24,27 @@ import time
 from datetime import datetime, timedelta
 from pathlib import Path
 
+# Import the scheduled executor for proper cron-based task discovery
+try:
+    from scheduled_executor import get_due_tasks as _executor_get_due_tasks
+except ImportError:
+    from sartor.scheduled_executor import get_due_tasks as _executor_get_due_tasks
+
+# Import observer runner for inline sentinel/auditor checks
+try:
+    from run_observers import run_all_observers as _run_observers
+except ImportError:
+    try:
+        from sartor.run_observers import run_all_observers as _run_observers
+    except ImportError:
+        _run_observers = None
+
+# Import trajectory logger for post-execution logging
+try:
+    from trajectory import log_action as _log_trajectory
+except ImportError:
+    _log_trajectory = None
+
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
@@ -267,8 +288,8 @@ def health_check_vastai() -> dict:
     # Look for machine 52271 in output
     for line in lines[1:]:
         if "52271" in line:
-            if "listed" in line.lower() or "online" in line.lower():
-                return {"name": "vastai", "status": "ok", "message": f"Machine 52271 listed"}
+            if any(s in line.lower() for s in ("listed", "online", "verified")):
+                return {"name": "vastai", "status": "ok", "message": f"Machine 52271 active"}
             else:
                 return {"name": "vastai", "status": "warning",
                         "message": f"Machine 52271 status: {line[:80]}"}
@@ -430,83 +451,31 @@ def _parse_schedule_string(schedule: str) -> str | None:
 
 def get_due_scheduled_tasks(now: datetime | None = None) -> list[dict]:
     """
-    Scan .claude/scheduled-tasks/ for tasks due now.
+    Scan .claude/scheduled-tasks/ for tasks due now using the scheduled_executor
+    module which has proper cron parsing and last-run tracking.
 
     Returns list of dicts with: name, model, prompt, schedule_str, skill_path
     """
-    now = now or datetime.now()
+    # Use the scheduled_executor's get_due_tasks which handles:
+    # - Proper cron expression matching
+    # - "never run" tasks always being due
+    # - Last-run tracking from heartbeat-log.csv
+    executor_due = _executor_get_due_tasks(
+        scheduled_tasks_dir=SCHEDULED_TASKS_DIR,
+        heartbeat_log_path=HEARTBEAT_LOG,
+    )
+
     due = []
-
-    if not SCHEDULED_TASKS_DIR.exists():
-        return due
-
-    # Map human-readable schedule phrases to (hour, minute, weekday) tuples.
-    # weekday: None means every day; 0=Mon..6=Sun; list = multiple days
-    SCHEDULE_MAP = {
-        "Daily, 6:30 AM ET":      [(6, 30, None)],
-        "Every 4 hours":          [(h, 0, None) for h in range(0, 24, 4)],
-        "Weekdays, 4:30 PM ET":   [(16, 30, [0, 1, 2, 3, 4])],
-        "Daily, 11:00 PM ET":     [(23, 0, None)],
-        "Sundays, 8:00 AM ET":    [(8, 0, [6])],
-        "Sundays, 9:00 AM ET":    [(9, 0, [6])],
-        "Saturdays, 10:00 AM ET": [(10, 0, [5])],
-    }
-
-    for task_dir in SCHEDULED_TASKS_DIR.iterdir():
-        if not task_dir.is_dir():
-            continue
-        skill_path = task_dir / "SKILL.md"
-        if not skill_path.exists():
-            continue
-
-        fm = _parse_skill_frontmatter(skill_path)
-        if not fm:
-            continue
-
-        task_name = fm.get("name", task_dir.name)
-        model = fm.get("model", "sonnet")
-        schedule_str = fm.get("schedule", "")
-        prompt = fm.get("_body", "")
-
-        if not schedule_str:
-            # Infer schedule from CLAUDE.md known schedules
-            inferred = {
-                "morning-briefing":       "Daily, 6:30 AM ET",
-                "gpu-utilization-check":  "Every 4 hours",
-                "market-close-summary":   "Weekdays, 4:30 PM ET",
-                "nightly-memory-curation":"Daily, 11:00 PM ET",
-                "weekly-financial-summary":"Sundays, 8:00 AM ET",
-                "weekly-nonprofit-review": "Sundays, 9:00 AM ET",
-                "weekly-skill-evolution":  "Saturdays, 10:00 AM ET",
-            }
-            schedule_str = inferred.get(task_dir.name, "")
-
-        slots = SCHEDULE_MAP.get(schedule_str, [])
-        if not slots:
-            continue
-
-        for (hour, minute, weekday) in slots:
-            # Check if current time is within a 5-minute window of this slot
-            slot_dt = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
-            delta_min = abs((now - slot_dt).total_seconds() / 60.0)
-            dow = now.weekday()  # 0=Mon..6=Sun
-
-            day_matches = (
-                weekday is None or
-                (isinstance(weekday, list) and dow in weekday) or
-                weekday == dow
-            )
-
-            if day_matches and delta_min <= 5:
-                due.append({
-                    "name": task_name,
-                    "model": model,
-                    "prompt": prompt,
-                    "schedule_str": schedule_str,
-                    "skill_path": str(skill_path),
-                    "task_dir": task_dir.name,
-                })
-                break  # Don't add same task twice for different slots
+    for task in executor_due:
+        skill_path = SCHEDULED_TASKS_DIR / task["name"] / "SKILL.md"
+        due.append({
+            "name": task["name"],
+            "model": task.get("model", "sonnet"),
+            "prompt": task.get("instructions", ""),
+            "schedule_str": task.get("cron", ""),
+            "skill_path": str(skill_path),
+            "task_dir": task["name"],
+        })
 
     return due
 
@@ -542,15 +511,24 @@ def execute_task(prompt: str, task_name: str = "heartbeat-task",
     model_id = model_flags.get(model.lower(), model_flags["sonnet"])
 
     try:
-        cmd = ["claude", "--print", "--model", model_id, "-p", prompt]
+        # On Windows, find claude via npm global path or use shell=True
+        claude_cmd = "claude"
+        if platform.system() == "Windows":
+            npm_claude = Path(os.environ.get("APPDATA", "")) / "npm" / "claude.cmd"
+            if npm_claude.exists():
+                claude_cmd = str(npm_claude)
+
+        cmd = [claude_cmd, "--print", "--model", model_id, "-p", prompt]
         _vlog(f"Executing: {task_name} (model={model}, timeout={timeout}s)")
+        _vlog(f"  Claude binary: {claude_cmd}")
 
         proc = subprocess.run(
             cmd,
             capture_output=True,
             text=True,
             timeout=timeout,
-            cwd=str(SARTOR_DIR),
+            cwd=str(REPO_DIR),
+            shell=(platform.system() == "Windows"),
         )
         result["output"] = proc.stdout
         result["success"] = proc.returncode == 0
@@ -657,10 +635,10 @@ def run_tick(dry_run: bool = False, health_only: bool = False) -> int:
         write_daily_log(f"Heartbeat skipped: budget exhausted (${budget['spent']:.4f}/${budget['limit']:.2f})")
         return 1
 
-    # --- Gate 2: Time since last tick ---
+    # --- Gate 2: Time since last tick (skip for health-only and dry-run) ---
     timing = check_time_since_last()
     _vlog(f"Timing: {timing.get('minutes_since')} min since last tick")
-    if not timing["ok"]:
+    if not timing["ok"] and not health_only and not dry_run:
         mins = timing.get("minutes_since", 0)
         _log(f"Timing gate: only {mins:.1f}min since last tick (min={MIN_TICK_INTERVAL_MIN}min). Skipping.")
         return 1
@@ -708,17 +686,51 @@ def _tick_body(dry_run: bool, health_only: bool, budget: dict) -> int:
     write_daily_log(f"Heartbeat health: {', '.join(health_summary_parts)}")
 
     # Log health tick to CSV
+    health_duration = round(time.time() - tick_start, 2)
     write_heartbeat_csv(
         "health-check",
         "ok" if not issues else "warning",
-        round(time.time() - tick_start, 2),
+        health_duration,
         "none",
         0.0
     )
 
+    # Log health trajectory
+    if _log_trajectory is not None:
+        try:
+            _log_trajectory(
+                task_name="health-check",
+                action="health-scan",
+                tool="ssh+local",
+                input_summary=f"Ran {len(health_results)} health checks",
+                output_summary=", ".join(health_summary_parts),
+                duration_ms=int(health_duration * 1000),
+                status="ok" if not issues else "warning",
+            )
+        except Exception:
+            pass
+
     # Surface critical health issues
     for issue in issues:
         _log(f"  HEALTH ISSUE [{issue['status'].upper()}] {issue['name']}: {issue['message']}")
+
+    # --- Step 2b: Observer Checks (sentinel + quick auditor) ---
+    if _run_observers is not None:
+        _log("Running observer checks...")
+        try:
+            observer_results = _run_observers()
+            obs_pass = sum(1 for r in observer_results if r.get("status") == "pass")
+            obs_warn = sum(1 for r in observer_results if r.get("status") == "warn")
+            obs_fail = sum(1 for r in observer_results if r.get("status") == "fail")
+            _vlog(f"Observers: {obs_pass} pass, {obs_warn} warn, {obs_fail} fail")
+            if obs_fail > 0:
+                for r in observer_results:
+                    if r.get("status") == "fail":
+                        _log(f"  OBSERVER FAIL [{r.get('observer')}/{r.get('check')}]: {r.get('detail')}")
+        except Exception as e:
+            _log(f"  WARNING: Observer checks failed: {e}")
+    else:
+        _vlog("Observer module not available, skipping")
 
     if health_only:
         _log("Health-only mode. Done.")
@@ -732,9 +744,15 @@ def _tick_body(dry_run: bool, health_only: bool, budget: dict) -> int:
     # --- Step 4: Pick highest priority task ---
     # Priority order: morning-briefing > gpu check > others
     PRIORITY_ORDER = {
-        "scheduled-morning-briefing": 0,
-        "scheduled-gpu-utilization-check": 1,
-        "scheduled-nightly-memory-curation": 2,
+        "morning-briefing": 0,
+        "gpu-utilization-check": 1,
+        "personal-data-gather": 2,
+        "nightly-memory-curation": 3,
+        "market-close-summary": 4,
+        "self-improvement-loop": 5,
+        "weekly-financial-summary": 6,
+        "weekly-nonprofit-review": 7,
+        "weekly-skill-evolution": 8,
     }
     due_tasks.sort(key=lambda t: PRIORITY_ORDER.get(t["name"], 99))
 
@@ -765,6 +783,20 @@ def _tick_body(dry_run: bool, health_only: bool, budget: dict) -> int:
     status = "ok" if result["success"] else "error"
     _log(f"Task {task['name']}: {status} ({result['duration_s']:.1f}s)")
 
+    # --- Step 5b: Save task output to reports ---
+    if result["success"] and result["output"].strip():
+        reports_dir = REPO_DIR / "reports" / "daily"
+        reports_dir.mkdir(parents=True, exist_ok=True)
+        today = datetime.now().strftime("%Y-%m-%d")
+        report_file = reports_dir / f"{today}-{task['name']}.md"
+        try:
+            ts = datetime.now().strftime("%Y-%m-%d %H:%M")
+            report_content = f"# {task['name']} - {ts}\n\n{result['output']}\n"
+            report_file.write_text(report_content, encoding="utf-8")
+            _vlog(f"  Output saved to {report_file}")
+        except Exception as e:
+            _log(f"  WARNING: Could not save report: {e}")
+
     # --- Step 6: Log results ---
     write_heartbeat_csv(
         task["name"],
@@ -782,6 +814,25 @@ def _tick_body(dry_run: bool, health_only: bool, budget: dict) -> int:
 
     if not result["success"] and result.get("error"):
         _log(f"  Error: {result['error']}")
+
+    # --- Step 6b: Trajectory logging ---
+    if _log_trajectory is not None:
+        try:
+            _log_trajectory(
+                task_name=task["name"],
+                action="execute",
+                tool="claude-cli",
+                input_summary=task["prompt"][:500] if task.get("prompt") else "",
+                output_summary=result["output"][:500] if result.get("output") else "",
+                duration_ms=int(result["duration_s"] * 1000),
+                status=status,
+                error=result.get("error", "") or "",
+            )
+            _vlog(f"  Trajectory logged for {task['name']}")
+        except Exception as e:
+            _vlog(f"  WARNING: trajectory logging failed: {e}")
+    else:
+        _vlog("  Trajectory module not available, skipping")
 
     # --- Step 7: Self-assess ---
     # If there were health issues, include them in a follow-up note
