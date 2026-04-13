@@ -2,10 +2,10 @@
 type: domain
 entity: family-active-todos
 updated: 2026-04-13
-updated_by: personal-data-gather
+updated_by: rocinante
 status: active
 priority: p1
-next_review: 2026-04-12
+next_review: 2026-04-20
 tags: [entity/family, status/active, priority/p1, domain/family]
 aliases: [Family TODOs, Family Action Items, Family Dashboard]
 related: [FAMILY, vayu, vishala, vasu, family-calendar]
@@ -21,8 +21,8 @@ Live dashboard of time-sensitive family items, surfaced from Gmail and Calendar 
 > [!deadline] 2026-04-11
 > **Vayu soccer game** — Brookdale Park Stadium, 11:00 AM, arrive 10:40. B-34 Lime team. Shin guards required.
 
-> [!blocker]
-> **Stuck draft email in Alton's outbox since 2026-04-07** — reply to Debra Van Eerde at MKA re: Vayu's Ellis Island trip physical form. Vayu's 2026-01-14 physical was rejected 2026-02-18 for wrong form; replacement status still unconfirmed. Draft was written but never sent. Blocks the school trip. **Send or reissue today.**
+> [!done] 2026-04-13
+> ~~**Stuck draft email in Alton's outbox since 2026-04-07**~~ SENT 2026-04-13. Reply to Debra Van Eerde at MKA re: Vayu's Ellis Island trip physical form dispatched. Awaiting MKA confirmation of form acceptance.
 
 > [!todo] 2026-04-10
 > **Vishala MKA physical form signature needed** — Rachael Masters (rmasters@mka.org) emailed 2026-04-08 asking Alton to sign the bottom line and return. Independent of Vayu's stuck form.
