@@ -107,6 +107,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - [[family-calendar]] - Full 30-day calendar view
 - [[ALTON]] - Head of household
 
+## Latest from gather (2026-04-13) — run 6
+
+> [!deadline] 2026-04-15
+> **PAMKA Social tickets close TOMORROW (Wednesday April 15).** Both Vayu (4th grade) and Vishala (3rd grade) are in scope. Parent emails received from Megan Flick (3rd grade) and Edward C. (4th grade). Last day for ticket sales is Wednesday April 15. Purchase tickets before end of day Wednesday. PAMKA = Parent Association of MKA.
+
+> [!todo]
+> **NEW Guidepoint consultation — Pediatric Low-Grade Glioma Market (#1718071)** — Valerie Villareal (vvillareal@guidepointglobal.com), received Apr 13 5:57 PM UTC. Separate from Yasmin Goodman's prior request (Clinical Trial Technology Solutions). Accept or decline. See [[ALTON]] for advisory opportunity log.
+
 ## Latest from gather (2026-04-13)
 
 > [!fact]
