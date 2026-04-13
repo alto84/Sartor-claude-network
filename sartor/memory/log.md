@@ -285,6 +285,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - data/ directory created on disk; gather-alerts.md and heartbeat-log.csv written
 - Updated: `daily/2026-04-12.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-13] ingest | personal-data-gather run 1 — Gmail + Calendar harvest
+
+- Sources: Gmail (20 msgs scanned, after:2026/04/12), 5 Google Calendars (7-day window Apr 13–20)
+- Facts gathered: 2 new signals (1 ACTION_REQUIRED, 1 DATA CORRECTION) + 3 escalations
+- New fact: Vayu must bring band instrument to school TODAY (Apr 13) — Paul Murphy MKA band teacher email + Aneeta calendar event. ACTION_REQUIRED.
+- Data correction: Rafi's birthday party (Apr 18) is 11:45 AM–5:45 PM (drop-off by 11:45), NOT 1–4 PM as documented in prior runs. Party is Yankees game in Bronx — logistically incompatible with soccer at Brookdale Park 1–3 PM.
+- Escalation: Goddard summer forms deadline is TODAY (Apr 13). Escalated to [[family/vasu]] and [[family/active-todos]].
+- Escalation: Apr 15 tax deadlines now 2 days away (was 3 days in Apr 12 runs).
+- SSH check: gpuserver1 unavailable from this runtime
+- Updated: [[family/vayu]], [[family/vasu]], [[family/active-todos]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption

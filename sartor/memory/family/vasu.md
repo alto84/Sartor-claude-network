@@ -84,3 +84,8 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!deadline] 2026-04-13
 > **Goddard summer forms due TOMORROW (1 day).** Escalated from 2 days (Apr 11). Monday April 13 is the hard deadline per Samantha Ramsden. Confirm enrollment status and that all health/permission forms are submitted. See [[family/active-todos]].
+
+## Latest from gather (2026-04-13)
+
+> [!deadline] 2026-04-13
+> **Goddard summer forms DUE TODAY.** The deadline is now. Confirm with The Goddard School that all required health and permission forms for summer camp are submitted and that Vasu's enrollment is complete. Contact Samantha Ramsden or Jacqueline Capote if anything is missing.
