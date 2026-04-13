@@ -318,6 +318,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime
 - Updated: `daily/2026-04-13.md` (run 3 appended), `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-13] ingest | personal-data-gather run 4 — Gmail + Calendar harvest
+
+- Sources: Gmail (40 msgs scanned, after:2026/04/12, -promotions/-social), 5 Google Calendars (7-day window Apr 13–20)
+- Facts gathered: 1 new signal (FINANCIAL/ACTION_REQUIRED status update); all others confirmed duplicates of prior runs
+- **STATUS UPDATE: Chase Sapphire card ending 9425 being REPLACED** — Chase sent "You requested a new card" at 12:16 PM UTC Apr 13. Resolves the fraud alert ACTION_REQUIRED from run 2. New card in transit (1-2 business days). New action: update autopayments when replacement card arrives.
+- Calendar: unchanged vs runs 1–3 — no new events on any of the 5 calendars
+- All prior open signals confirmed: Goddard forms (due today, no confirmation), April 15 tax deadlines (tomorrow), Tribeca $170.28 pre-collections, Apr 17 coverage conflict, Apr 18 soccer/Rafi incompatibility, CAQH reattestation, advisory decisions pending
+- SSH check: gpuserver1 unavailable from this runtime
+- Updated: [[family/active-todos]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption
