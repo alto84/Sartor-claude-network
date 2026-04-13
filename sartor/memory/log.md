@@ -307,6 +307,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - data/ directory recreated (non-persistent between sessions)
 - Updated: `daily/2026-04-13.md` (run 2 appended), `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-13] ingest | personal-data-gather run 3 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, after:2026/04/12, -promotions/-social), 5 Google Calendars (7-day window Apr 13–20)
+- Facts gathered: 2 new signals (INFORMATIONAL); 1 escalation; all prior open items confirmed unchanged
+- New fact: FedEx tracking #870576358640 from V-COLOR TECHNOLOGY INC. inbound — likely DDR5 RAM from Newegg Apr 12 orders. Delivery date TBD. Business tracking item if hardware is Solar Inference LLC / gpuserver1 build.
+- New fact: Chewy.com order #5132136807 now SHIPPED (was "order placed" in prior runs); arrives Tue Apr 14.
+- Escalation: April 15 tax deadline is NOW TOMORROW — personal 1040/4868 + NJ-1065 $450. Contact CPA today.
+- Calendar: unchanged vs runs 1 and 2 — no new events on any of the 5 calendars
+- SSH check: gpuserver1 unavailable from this runtime
+- Updated: `daily/2026-04-13.md` (run 3 appended), `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption
