@@ -174,3 +174,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact]
 > **Chewy Rx order #5132136807 placed** (Apr 12 12:28 PM, rx@chewy.com). Prescription Chewy order being prepared. Most likely Loki's chlorambucil (oral liquid 4mg/mL — the active todo flagged this as running low). Confirm item when order ships/delivers. If confirmed as chlorambucil, the "Reorder Loki's chlorambucil" todo can be closed.
+
+## Latest from gather (2026-04-13)
+
+> [!todo] TODAY 2026-04-13
+> **Band instrument: Vayu must have it at school today.** Paul Murphy (MKA band teacher) sent reminder Apr 12 10:44 PM — special schedule Monday requires band rehearsal. Aneeta added calendar event. Must be packed before school drop-off. See [[family/vayu]].
+
+> [!deadline] 2026-04-13
+> **Goddard summer forms DUE TODAY.** Samantha Ramsden's confirmed deadline. Confirm Vasu's enrollment status and all required health/permission forms submitted. Has been escalating since Apr 11. See [[family/vasu]].
+
+> [!warning]
+> **DATA CORRECTION — Rafi's party April 18.** Prior entries recorded party as 1:00–4:00 PM. Actual calendar: drop-off by **11:45 AM**, end **5:45 PM** (Yankees game, Bronx). Soccer double-header is at Brookdale Park, Montclair, 1:00–3:00 PM. Logistically incompatible — cannot be in the Bronx by 11:45 and Montclair by 1:00. Decision needed now. See [[family/vayu]].
