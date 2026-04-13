@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-12
+updated: 2026-04-13
 updated_by: personal-data-gather
 status: active
 priority: p1
@@ -107,6 +107,28 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - [[family-calendar]] - Full 30-day calendar view
 - [[ALTON]] - Head of household
 
+## Latest from gather (2026-04-13) — run 6
+
+> [!deadline] 2026-04-15
+> **PAMKA Social tickets close TOMORROW (Wednesday April 15).** Both Vayu (4th grade) and Vishala (3rd grade) are in scope. Parent emails received from Megan Flick (3rd grade) and Edward C. (4th grade). Last day for ticket sales is Wednesday April 15. Purchase tickets before end of day Wednesday. PAMKA = Parent Association of MKA.
+
+> [!todo]
+> **NEW Guidepoint consultation — Pediatric Low-Grade Glioma Market (#1718071)** — Valerie Villareal (vvillareal@guidepointglobal.com), received Apr 13 5:57 PM UTC. Separate from Yasmin Goodman's prior request (Clinical Trial Technology Solutions). Accept or decline. See [[ALTON]] for advisory opportunity log.
+
+## Latest from gather (2026-04-13)
+
+> [!fact]
+> **RESOLVED: Vayu Ellis Island physical form** — MKA nurse Debra Van Eerde confirmed at 9:37 AM ET Apr 13: "I uploaded and approved the physical in Magnus." Vayu is medically cleared for the Ellis Island trip April 17. The `[!blocker]` above (stuck draft email / MKA physical form) is resolved. See [[vayu]] for details.
+
+> [!fact]
+> **RESOLVED: Vishala MKA physical form** — Rachael Masters confirmed at 8:17 AM ET Apr 13: "Thank you! Will upload now." The `[!todo] 2026-04-10` above (physical form signature) is resolved. See [[vishala]] for details.
+
+> [!deadline] 2026-04-15
+> **Tax deadline TOMORROW.** Personal 1040 / Form 4868 extension AND NJ-1065 $450 filing fee both due April 15. No confirmation from CPA received as of this run. Contact [[people/jonathan-francis|Jonathan Francis]] today (jf@francis-cpa.com, 914-488-5727).
+
+> [!warning]
+> **Chase Sapphire card ending 9425 being replaced.** Card flagged for fraud alert (Newegg $938.25, Apr 12). Card replacement requested Apr 13. New card in transit 1-2 business days. Review and update any autopayments linked to card 9425 once replacement arrives.
+
 ## Business idea: burst-compute-as-a-service (2026-04-11)
 
 > [!todo] Solar Inference LLC expansion idea
@@ -158,6 +180,7 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - 2026-04-11: Updated via personal-data-gather run 6. Added: Goddard summer forms deadline (Apr 13), Apr 18 soccer/party conflict, CSA registration status update.
 - 2026-04-11: Updated via personal-data-gather run 10. Resolved: Vayu Ellis Island form (sent Apr 10), Vishala physical form (sent Apr 10). Added: Gym Day registration, myHomeIQ report.
 - 2026-04-12: Updated via personal-data-gather run 1. Escalated Goddard forms to 1-day deadline; today's logistics noted.
+- 2026-04-13: Updated via personal-data-gather run 4. Chase Sapphire card replacement in progress (resolves fraud alert from run 2); autopay update action opened.
 
 ## Latest from gather (2026-04-12)
 
@@ -185,3 +208,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning]
 > **DATA CORRECTION — Rafi's party April 18.** Prior entries recorded party as 1:00–4:00 PM. Actual calendar: drop-off by **11:45 AM**, end **5:45 PM** (Yankees game, Bronx). Soccer double-header is at Brookdale Park, Montclair, 1:00–3:00 PM. Logistically incompatible — cannot be in the Bronx by 11:45 and Montclair by 1:00. Decision needed now. See [[family/vayu]].
+
+## Latest from gather (2026-04-13) run 4
+
+> [!fact]
+> **Chase Sapphire card ending 9425: replacement card requested (2026-04-13 ~8:16 AM ET).** Chase sent confirmation "You requested a new card" after the fraud alert for $938.25 Newegg charge (flagged Apr 13, 1:45 AM UTC). Prior ACTION_REQUIRED (respond to fraud alert) is RESOLVED. New card arrives 1-2 business days. Action needed when card arrives: update any recurring autopayments tied to old card ending 9425.
+
+> [!todo]
+> **Review and update autopayments on Chase Sapphire (...9425) when replacement card arrives.** Card is being replaced after fraud alert (Apr 13). Any subscriptions or autopays on the old card will fail. Review known recurring charges and update with new card number.

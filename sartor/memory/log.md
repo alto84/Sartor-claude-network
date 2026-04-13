@@ -296,6 +296,65 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime
 - Updated: [[family/vayu]], [[family/vasu]], [[family/active-todos]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-13] ingest | personal-data-gather run 2 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, after:2026/04/12, -promotions/-social), 5 Google Calendars (7-day window Apr 13–20)
+- Facts gathered: 1 new signal (ACTION_REQUIRED); all others confirmed/unchanged from run 1
+- **NEW ACTION_REQUIRED: Chase Fraud Alert** — Chase Sapphire card, $938.25 NEWEGG MARKETPLACE charge DECLINED on 04/12, fraud alert at 01:45 UTC 04/13. Context: 3 confirmed Newegg orders (14+ items total) also placed Apr 12; likely a legitimate purchase flagged for volume. Alton must confirm or deny via Chase app/chase.com. If legitimate: confirm so card stays active and merchant can reprocess. If not: report fraud, card replaced in 1-2 business days.
+- Calendar: unchanged vs run 1 — no new events on any of the 5 calendars
+- Newegg purchase volume noted: 3 confirmed orders (#412968624, #412970644/#412970664, #408668539+others), 1 cancelled. Financial tracking item for Solar Inference LLC if any items are business-related.
+- SSH check: gpuserver1 unavailable from this runtime
+- data/ directory recreated (non-persistent between sessions)
+- Updated: `daily/2026-04-13.md` (run 2 appended), `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-13] ingest | personal-data-gather run 3 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, after:2026/04/12, -promotions/-social), 5 Google Calendars (7-day window Apr 13–20)
+- Facts gathered: 2 new signals (INFORMATIONAL); 1 escalation; all prior open items confirmed unchanged
+- New fact: FedEx tracking #870576358640 from V-COLOR TECHNOLOGY INC. inbound — likely DDR5 RAM from Newegg Apr 12 orders. Delivery date TBD. Business tracking item if hardware is Solar Inference LLC / gpuserver1 build.
+- New fact: Chewy.com order #5132136807 now SHIPPED (was "order placed" in prior runs); arrives Tue Apr 14.
+- Escalation: April 15 tax deadline is NOW TOMORROW — personal 1040/4868 + NJ-1065 $450. Contact CPA today.
+- Calendar: unchanged vs runs 1 and 2 — no new events on any of the 5 calendars
+- SSH check: gpuserver1 unavailable from this runtime
+- Updated: `daily/2026-04-13.md` (run 3 appended), `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-13] ingest | personal-data-gather run 4 — Gmail + Calendar harvest
+
+- Sources: Gmail (40 msgs scanned, after:2026/04/12, -promotions/-social), 5 Google Calendars (7-day window Apr 13–20)
+- Facts gathered: 1 new signal (FINANCIAL/ACTION_REQUIRED status update); all others confirmed duplicates of prior runs
+- **STATUS UPDATE: Chase Sapphire card ending 9425 being REPLACED** — Chase sent "You requested a new card" at 12:16 PM UTC Apr 13. Resolves the fraud alert ACTION_REQUIRED from run 2. New card in transit (1-2 business days). New action: update autopayments when replacement card arrives.
+- Calendar: unchanged vs runs 1–3 — no new events on any of the 5 calendars
+- All prior open signals confirmed: Goddard forms (due today, no confirmation), April 15 tax deadlines (tomorrow), Tribeca $170.28 pre-collections, Apr 17 coverage conflict, Apr 18 soccer/Rafi incompatibility, CAQH reattestation, advisory decisions pending
+- SSH check: gpuserver1 unavailable from this runtime
+- Updated: [[family/active-todos]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-13] ingest | personal-data-gather run 5 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, is:unread OR is:important, after:2026/04/11), 5 Google Calendars (7-day window Apr 13–20)
+- Facts gathered: 4 new signals (2 RESOLVED, 1 LOGISTICS, 1 RESEARCH); all prior items confirmed
+- **KEY RESOLUTION: Vayu Ellis Island physical form APPROVED IN MAGNUS** — Debra Van Eerde (MKA) confirmed Apr 13 9:37 AM ET. Physical uploaded and approved. Vayu cleared for Ellis Island trip April 17. Blocker open since 2026-02-18 fully closed.
+- **KEY RESOLUTION: Vishala MKA physical form UPLOADED** — Rachael Masters confirmed Apr 13 8:17 AM ET. Todo from Apr 8 resolved.
+- New logistics fact: Alton is in NYC today (driving), SpotHero reservation #120878675 at 35 W 33rd St. Valet Garage, 9:30 AM–7 PM.
+- New research signal: Stanford HAI 2026 AI Index Report released Apr 13. Route to reading queue.
+- All prior open items confirmed: April 15 tax deadlines TOMORROW, Goddard forms today (no confirmation), Chase Sapphire replacement in progress, CAQH reattestation, Tribeca $170.28, Apr 17/18 conflicts
+- SSH check: gpuserver1 unavailable from this runtime (command not found)
+- Updated: [[family/vayu]], [[family/vishala]], [[family/active-todos]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-13] ingest | personal-data-gather run 6 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, after:2026/04/13, -promotions/-social), 5 Google Calendars (7-day window Apr 13–20)
+- Facts gathered: 2 new ACTION_REQUIRED signals; 4 informational; all prior items confirmed
+- **NEW ACTION_REQUIRED: PAMKA Social tickets close TOMORROW (April 15)** — both Vayu (4th grade) and Vishala (3rd grade) in scope. Two separate parent emails (Megan Flick, 3rd grade; Edward C., 4th grade). Purchase deadline Wednesday April 15. Routed to [[family/active-todos]].
+- **NEW ACTION_REQUIRED: Second Guidepoint consultation request** — Valerie Villareal, Pediatric Low-Grade Glioma Market (#1718071). Separate from Yasmin Goodman's prior request. Accept/decline pending. Routed to [[family/active-todos]].
+- Informational: Chewy delivery window pinned for Tue 4/14, 9:30 AM–1:30 PM (FedEx tracking 518226340069)
+- Informational: 7 Newegg hardware shipments confirmed in transit (Apr 12 purchase batch, multiple orders)
+- Informational: Vasu attended Goddard Apr 13 (first day of soccer, gardening, yoga, small group learning). No summer form confirmation email received — status unconfirmed.
+- Informational: Costco same-day order delivered to 85 Stonebridge Road today
+- Confirmed outstanding: April 15 tax deadlines TOMORROW (1040/4868 + NJ-1065 $450), CAQH reattestation, Tribeca $170.28, Apr 17 coverage conflict, Apr 18 soccer/Rafi incompatibility, Yasmin Goodman Guidepoint, Zintro, Handshake Project Alloy, Summit Health portal, Aneeta CSA email invalid
+- Calendar: unchanged vs runs 1–5 — no new events on any of the 5 calendars
+- SSH check: gpuserver1 unavailable from this runtime
+- Updated: [[family/active-todos]], [[family/vasu]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption

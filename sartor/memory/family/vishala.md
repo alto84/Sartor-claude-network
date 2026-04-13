@@ -2,7 +2,7 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-04-11
+updated: 2026-04-13
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -71,7 +71,13 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 > [!todo] 2026-05-30
 > **Gym Day 2026 — registration open.** Tumble Zone LLC (noreply@jackrabbittech.com) email Apr 11: Saturday May 30, $25/child, includes 2 extra makeup classes. Sibling discount $5 off + admission for 2 adults. Register if Vishala (gymnastics enrollment ongoing) is interested. Deadline not specified but registration is open now.
 
+## Latest from gather (2026-04-13)
+
+> [!fact]
+> **MKA physical form UPLOADED** — Rachael Masters (rmasters@mka.org) confirmed Mon Apr 13 at 8:17 AM ET: "Thank you! Will upload now." The todo from Apr 8 (sign and return physical form) is resolved. Vishala's health records at MKA are up to date.
+
 ## History
 
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
 - 2026-04-11: Updated via personal-data-gather run 10. Physical form confirmed SENT Apr 10. Gym Day registration flagged.
+- 2026-04-13: Updated via personal-data-gather run 5. MKA confirmed physical form uploaded (Rachael Masters).
