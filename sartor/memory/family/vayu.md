@@ -2,7 +2,7 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-04-11
+updated: 2026-04-13
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -104,6 +104,11 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 > [!warning]
 > **DATA CORRECTION — Rafi's birthday party April 18.** Prior notes said the party was 1:00–4:00 PM. The actual calendar event shows **drop-off by 11:45 AM**, party runs through **5:45 PM** (Yankees game, Bronx). This makes the conflict with soccer (Brookdale Park, Montclair, 1:00–3:00 PM) logistically incompatible — Vayu cannot be in the Bronx by 11:45 and also at Brookdale at 1:00. One must be chosen. Decision needed today.
 
+## Latest from gather (2026-04-13) run 5
+
+> [!fact]
+> **MKA physical form UPLOADED AND APPROVED in Magnus** — Debra Van Eerde (dvaneerde@mka.org) confirmed on Mon Apr 13 at 9:37 AM ET: "I uploaded and approved the physical in Magnus." Aneeta thanked her. The blocker open since 2026-02-18 is now FULLY RESOLVED. Vayu is medically cleared for the Ellis Island class trip on April 17. The stuck-draft callout in [[active-todos]] is resolved.
+
 ## History
 
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
@@ -111,3 +116,4 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 - 2026-04-11: Updated via personal-data-gather run 6. Added Apr 18 back-to-back soccer games and conflict with Rafi's birthday party.
 - 2026-04-11: Updated via personal-data-gather run 10. Ellis Island physical form confirmed SENT Apr 10 (blocker resolved).
 - 2026-04-13: Updated via personal-data-gather run 1. Band instrument reminder (today). Rafi's party time corrected to 11:45 AM–5:45 PM (not 1–4 PM).
+- 2026-04-13: Updated via personal-data-gather run 5. MKA confirmed physical uploaded and approved in Magnus. Vayu cleared for Ellis Island Apr 17.

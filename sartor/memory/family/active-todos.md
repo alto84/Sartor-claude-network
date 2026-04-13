@@ -107,6 +107,20 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - [[family-calendar]] - Full 30-day calendar view
 - [[ALTON]] - Head of household
 
+## Latest from gather (2026-04-13)
+
+> [!fact]
+> **RESOLVED: Vayu Ellis Island physical form** — MKA nurse Debra Van Eerde confirmed at 9:37 AM ET Apr 13: "I uploaded and approved the physical in Magnus." Vayu is medically cleared for the Ellis Island trip April 17. The `[!blocker]` above (stuck draft email / MKA physical form) is resolved. See [[vayu]] for details.
+
+> [!fact]
+> **RESOLVED: Vishala MKA physical form** — Rachael Masters confirmed at 8:17 AM ET Apr 13: "Thank you! Will upload now." The `[!todo] 2026-04-10` above (physical form signature) is resolved. See [[vishala]] for details.
+
+> [!deadline] 2026-04-15
+> **Tax deadline TOMORROW.** Personal 1040 / Form 4868 extension AND NJ-1065 $450 filing fee both due April 15. No confirmation from CPA received as of this run. Contact [[people/jonathan-francis|Jonathan Francis]] today (jf@francis-cpa.com, 914-488-5727).
+
+> [!warning]
+> **Chase Sapphire card ending 9425 being replaced.** Card flagged for fraud alert (Newegg $938.25, Apr 12). Card replacement requested Apr 13. New card in transit 1-2 business days. Review and update any autopayments linked to card 9425 once replacement arrives.
+
 ## Business idea: burst-compute-as-a-service (2026-04-11)
 
 > [!todo] Solar Inference LLC expansion idea
