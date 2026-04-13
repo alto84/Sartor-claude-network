@@ -328,6 +328,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime
 - Updated: [[family/active-todos]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-13] ingest | personal-data-gather run 5 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, is:unread OR is:important, after:2026/04/11), 5 Google Calendars (7-day window Apr 13–20)
+- Facts gathered: 4 new signals (2 RESOLVED, 1 LOGISTICS, 1 RESEARCH); all prior items confirmed
+- **KEY RESOLUTION: Vayu Ellis Island physical form APPROVED IN MAGNUS** — Debra Van Eerde (MKA) confirmed Apr 13 9:37 AM ET. Physical uploaded and approved. Vayu cleared for Ellis Island trip April 17. Blocker open since 2026-02-18 fully closed.
+- **KEY RESOLUTION: Vishala MKA physical form UPLOADED** — Rachael Masters confirmed Apr 13 8:17 AM ET. Todo from Apr 8 resolved.
+- New logistics fact: Alton is in NYC today (driving), SpotHero reservation #120878675 at 35 W 33rd St. Valet Garage, 9:30 AM–7 PM.
+- New research signal: Stanford HAI 2026 AI Index Report released Apr 13. Route to reading queue.
+- All prior open items confirmed: April 15 tax deadlines TOMORROW, Goddard forms today (no confirmation), Chase Sapphire replacement in progress, CAQH reattestation, Tribeca $170.28, Apr 17/18 conflicts
+- SSH check: gpuserver1 unavailable from this runtime (command not found)
+- Updated: [[family/vayu]], [[family/vishala]], [[family/active-todos]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption
