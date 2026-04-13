@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-12
+updated: 2026-04-13
 updated_by: personal-data-gather
 status: active
 priority: p1
@@ -158,6 +158,7 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - 2026-04-11: Updated via personal-data-gather run 6. Added: Goddard summer forms deadline (Apr 13), Apr 18 soccer/party conflict, CSA registration status update.
 - 2026-04-11: Updated via personal-data-gather run 10. Resolved: Vayu Ellis Island form (sent Apr 10), Vishala physical form (sent Apr 10). Added: Gym Day registration, myHomeIQ report.
 - 2026-04-12: Updated via personal-data-gather run 1. Escalated Goddard forms to 1-day deadline; today's logistics noted.
+- 2026-04-13: Updated via personal-data-gather run 4. Chase Sapphire card replacement in progress (resolves fraud alert from run 2); autopay update action opened.
 
 ## Latest from gather (2026-04-12)
 
@@ -185,3 +186,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning]
 > **DATA CORRECTION — Rafi's party April 18.** Prior entries recorded party as 1:00–4:00 PM. Actual calendar: drop-off by **11:45 AM**, end **5:45 PM** (Yankees game, Bronx). Soccer double-header is at Brookdale Park, Montclair, 1:00–3:00 PM. Logistically incompatible — cannot be in the Bronx by 11:45 and Montclair by 1:00. Decision needed now. See [[family/vayu]].
+
+## Latest from gather (2026-04-13) run 4
+
+> [!fact]
+> **Chase Sapphire card ending 9425: replacement card requested (2026-04-13 ~8:16 AM ET).** Chase sent confirmation "You requested a new card" after the fraud alert for $938.25 Newegg charge (flagged Apr 13, 1:45 AM UTC). Prior ACTION_REQUIRED (respond to fraud alert) is RESOLVED. New card arrives 1-2 business days. Action needed when card arrives: update any recurring autopayments tied to old card ending 9425.
+
+> [!todo]
+> **Review and update autopayments on Chase Sapphire (...9425) when replacement card arrives.** Card is being replaced after fraud alert (Apr 13). Any subscriptions or autopays on the old card will fail. Review known recurring charges and update with new card number.
