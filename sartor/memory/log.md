@@ -296,6 +296,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime
 - Updated: [[family/vayu]], [[family/vasu]], [[family/active-todos]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-13] ingest | personal-data-gather run 2 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, after:2026/04/12, -promotions/-social), 5 Google Calendars (7-day window Apr 13–20)
+- Facts gathered: 1 new signal (ACTION_REQUIRED); all others confirmed/unchanged from run 1
+- **NEW ACTION_REQUIRED: Chase Fraud Alert** — Chase Sapphire card, $938.25 NEWEGG MARKETPLACE charge DECLINED on 04/12, fraud alert at 01:45 UTC 04/13. Context: 3 confirmed Newegg orders (14+ items total) also placed Apr 12; likely a legitimate purchase flagged for volume. Alton must confirm or deny via Chase app/chase.com. If legitimate: confirm so card stays active and merchant can reprocess. If not: report fraud, card replaced in 1-2 business days.
+- Calendar: unchanged vs run 1 — no new events on any of the 5 calendars
+- Newegg purchase volume noted: 3 confirmed orders (#412968624, #412970644/#412970664, #408668539+others), 1 cancelled. Financial tracking item for Solar Inference LLC if any items are business-related.
+- SSH check: gpuserver1 unavailable from this runtime
+- data/ directory recreated (non-persistent between sessions)
+- Updated: `daily/2026-04-13.md` (run 2 appended), `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption
