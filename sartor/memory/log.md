@@ -402,6 +402,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime (consistent)
 - Updated: [[TAXES]], [[people/jonathan-francis]], [[family/active-todos]], `daily/2026-04-14.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-14] ingest | personal-data-gather run 4 — Gmail + Calendar harvest
+
+- Sources: Gmail (17 msgs scanned, after:2026/04/14, -promotions/-social), 5 Google Calendars (7-day window Apr 14–21)
+- Facts gathered: 3 new signals (1 partial resolution, 1 nonprofit donation, 1 informational); all others confirmed duplicates of runs 1-3
+- **PARTIAL RESOLUTION: Run 3 ACTION_REQUIRED resolved** — Alton replied to JF at 07:59 AM ET: "Holy cow... What increased / changed from last year? Money is in the account." Implicit debit authorization given for the $18K ($15K IRS + $3K NJ). Alton asked about YoY increase; JF has not yet replied. Status: debit can proceed, question pending.
+- **NEW: Sante Total PayPal donation from Michael Quigg** — Apr 14 06:35 AM CDT, Transaction ID: 7AP281443P8371607. Amount TBC (verify in PayPal). First donation since Apr 2.
+- Calendar: unchanged vs runs 1-3 — no new events on any of the 5 calendars
+- Confirmed outstanding: Apr 18 conflict (Rafi party vs soccer) unresolved; PAMKA Social tickets close today (Apr 15); CAQH reattestation open
+- SSH check: gpuserver1 unavailable from this runtime (consistent)
+- Updated: [[TAXES]], [[people/jonathan-francis]], [[business/sante-total]], `daily/2026-04-14.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption

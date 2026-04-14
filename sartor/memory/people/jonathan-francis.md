@@ -74,8 +74,13 @@ From the 2026-04-06 email package:
 | 2026-04-13 | JF → Alton | Active thread: asked about 2025 donations ($25K in 2024; only $2,037.17 MKA in 2025); flagged W2 address should be NJ; asked about Delaware wages; asked about solar tax treatment |
 | 2026-04-13 | Alton → JF | Confirmed $2,037.17 MKA donation; noted AZ role change; confirmed solar install "in next few weeks, before July 4 deadline" |
 | 2026-04-14 | — | Awaiting JF recommendation: file 1040 Apr 15 or extend via Form 4868. April 15 is tomorrow. |
-| 2026-04-14 | JF → Alton | Extension amounts confirmed: $15K IRS + $3K NJ. Requesting authorization to debit checking account on Wednesday (Apr 15). Strategy = extend, not file. LLC losses may reduce final liability. |
-| 2026-04-14 | Alton → JF | **PENDING** — must reply today to authorize/decline the debit. |
+| 2026-04-14 05:58 AM UTC | JF → Alton | Extension amounts confirmed: $15K IRS + $3K NJ. Requesting authorization to debit checking account on Wednesday (Apr 15). Strategy = extend, not file. LLC losses may reduce final liability. |
+| 2026-04-14 07:59 AM ET | Alton → JF | **SENT**: "Holy cow... What increased / changed from last year? Money is in the account." Implicit debit authorization given; question about YoY increase asked. |
+
+## Latest from gather (2026-04-14) run 4
+
+> [!fact]
+> **Alton replied to JF at 07:59 AM ET.** "Holy cow... What increased / changed from last year? Money is in the account." Run 3's ACTION_REQUIRED (reply to JF) is resolved — Alton did respond this morning. Implicit debit authorization given. Open item: JF has not yet answered Alton's question about what drove the year-over-year increase to $18K. Monitor for JF's reply.
 
 ## Related
 - [[TAXES]] — full filing status and open questions
