@@ -299,3 +299,18 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > No reply by EOD today = payment not set up = potential underpayment penalty on Apr 15.
 >
 > Extension strategy (Form 4868) is now confirmed — the 1040 is NOT being filed today. Final 1040 due Oct 15, 2026. See [[TAXES]] and [[people/jonathan-francis]].
+
+## Latest from gather (2026-04-14) run 5
+
+> [!warning] SCHEDULE CHANGE — Apr 18 Soccer
+> **B-34 Lime double-header RESCHEDULED: now noon and 1 PM** (was 1–2 PM and 2–3 PM). Coach Keith Gormley email (11:44 AM ET, Apr 14). Blue Sombrero sent 2 cancel + 2 reschedule notifications confirming the change. New schedule:
+> - Game 1: **12:00–1:00 PM**, Brookdale Stadium South, Field 1
+> - Game 2: **1:00–2:00 PM**, same location
+>
+> **Conflict is now WORSE.** Rafi's party drop-off is 11:45 AM at Yankees (Bronx). Soccer games START at noon. Both require departure ~11:15–11:30 AM from Montclair in opposite directions. Splitting Alton and Aneeta is the only path: one covers Yankees drop-off, one covers soccer. Decide now — Apr 18 is 4 days away.
+
+> [!fact]
+> **Tax thread resolution: ACTION_REQUIRED from run 3 is FULLY RESOLVED.** Alton authorized the $18K debit implicitly at 07:59 AM ET. JF explained the increase (wages up $160K). Alton asked about LLC deductions; JF agreed to pass through 2025 LLC stuff. Debit scheduled for Wednesday Apr 15. No further action needed today. See [[TAXES]] and [[people/jonathan-francis]].
+
+> [!note]
+> **Alton drove to NYC today (Apr 14).** SpotHero parking reservation confirmed: 515 W 36th St (Midtown), 9 AM–9 PM, Tesla Model X (N55UDX). Commuted by car today, not NJ Transit.

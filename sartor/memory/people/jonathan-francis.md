@@ -76,11 +76,25 @@ From the 2026-04-06 email package:
 | 2026-04-14 | — | Awaiting JF recommendation: file 1040 Apr 15 or extend via Form 4868. April 15 is tomorrow. |
 | 2026-04-14 05:58 AM UTC | JF → Alton | Extension amounts confirmed: $15K IRS + $3K NJ. Requesting authorization to debit checking account on Wednesday (Apr 15). Strategy = extend, not file. LLC losses may reduce final liability. |
 | 2026-04-14 07:59 AM ET | Alton → JF | **SENT**: "Holy cow... What increased / changed from last year? Money is in the account." Implicit debit authorization given; question about YoY increase asked. |
+| 2026-04-14 11:39 AM ET | JF → Alton | "Wages increased $160k and withholdings just don't keep up." Answered Alton's YoY question: AZ salary increase is what drove the higher extension amount. |
+| 2026-04-14 11:50 AM ET | Alton → JF | **SENT**: "Ah. Need more deductions! What can you pass through from Solar Inference LLC? We didn't make too many purchases this year, but will have ~$450k solar roof and I just spent $37k on computer hardware" Asked JF to apply LLC deductions to reduce liability. |
+| 2026-04-14 11:51 AM ET | JF → Alton | "We will pass through the 2025 stuff." Agreed to apply LLC deductions/losses. Final liability will be lower than $18K; likely a refund after the Oct 15 filing. |
 
 ## Latest from gather (2026-04-14) run 4
 
 > [!fact]
 > **Alton replied to JF at 07:59 AM ET.** "Holy cow... What increased / changed from last year? Money is in the account." Run 3's ACTION_REQUIRED (reply to JF) is resolved — Alton did respond this morning. Implicit debit authorization given. Open item: JF has not yet answered Alton's question about what drove the year-over-year increase to $18K. Monitor for JF's reply.
+
+## Latest from gather (2026-04-14) run 5
+
+> [!fact]
+> **YoY question answered.** JF replied 11:39 AM ET: wages increased $160K, withholdings didn't keep up. AZ salary increase is the driver.
+
+> [!fact]
+> **LLC deductions confirmed.** Alton asked JF to pass through Solar Inference LLC 2025 deductions (solar roof ~$450K + $37K hardware). JF agreed: "We will pass through the 2025 stuff." Note: solar roof is a 2026 event (not in service until ~July 2026), so it will NOT reduce TY2025 liability. Hardware ($37K) IS a 2025 purchase. The $4,949.49 in documented 2025 expenses is the realistic LLC deduction pool for TY2025. The $18K extension is still the right call.
+
+> [!fact]
+> **Thread status as of 11:51 AM ET Apr 14:** Thread active, all questions answered. Debit authorized ($18K). JF processing. No further action required from Alton today. Monitor for debit confirmation on Apr 15.
 
 ## Related
 - [[TAXES]] — full filing status and open questions
