@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-04-11
-updated_by: Claude
+updated: 2026-04-14
+updated_by: personal-data-gather
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -123,3 +123,8 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 - 2026-04-03: Barbara Weis requested 2024 tax doc
 - 2026-04-07: Alton sent 2024 990-N to Barbara Weis; flagged $50K threshold concern for TY2026
 - 2026-04-09: Initial deep profile page created from Gmail harvest
+
+## Latest from gather (2026-04-14)
+
+> [!fact]
+> **New Sante Total PayPal donation — Michael Quigg, Apr 14.** Transaction ID: 7AP281443P8371607. Received 06:35 AM CDT. Amount not visible from email snippet — verify in PayPal dashboard. First new donation since the Apr 2 batch ($4,350+ logged above). Add to donor activity table once amount confirmed. Send tax receipt per the [[alison-smith|Alison Smith]] pattern used for Anna Smyke on 2026-03-10.

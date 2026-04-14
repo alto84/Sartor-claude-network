@@ -213,3 +213,8 @@ Append this fact to `TAXES.md` under the section relevant to `2027 fiscal outloo
 
 > [!fact]
 > **Extension strategy now confirmed.** The fact that JF is setting up extension payments means the 1040 will NOT be filed by Apr 15 — Form 4868 is being filed instead. The open [!decision] above (file or extend) is implicitly resolved: extending. Alton's choice is now only the payment amount ($18K as estimated or lower if banking on LLC losses). Update the [!decision] callout once JF replies.
+
+## Latest from gather (2026-04-14) run 4
+
+> [!fact]
+> **Alton replied to JF at 07:59 AM ET (Apr 14).** Reply: "Holy cow... What increased / changed from last year? Money is in the account." Implicit debit authorization given — funds confirmed available. Alton is surprised by amount vs prior years and asked for an explanation of the year-over-year increase. JF has not yet replied to that follow-up question. The ACTION_REQUIRED from run 3 is partially resolved: Alton did respond and the debit can proceed, but Alton's question about what drove the increase is open. See [[people/jonathan-francis]] interaction log.
