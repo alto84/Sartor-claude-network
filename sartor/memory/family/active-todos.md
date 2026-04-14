@@ -200,6 +200,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!todo]
 > **Solar engineering plan meeting: awaiting Lucent response.** Alton emailed Niko Markanovic, Doug Paige, and Audrey Vera at Lucent Energy Apr 13 to schedule a meeting. No reply as of Apr 14. Follow up if no response by Apr 16. See [[business/solar-inference]].
 
+## Latest from gather (2026-04-14) run 2
+
+> [!fact]
+> **Chase Sapphire Reserve replacement card SHIPPED.** Email received Apr 13 ~8:47 PM ET: card is now in transit. Prior status was "replacement requested" (Apr 13 fraud alert). Expected delivery Apr 14-15. Action: when card arrives, update all recurring autopayments linked to old card ending 9425. Do NOT wait -- audit autopayments now so you're ready on delivery.
+
 ## History
 
 - 2026-04-09: Initial creation from Gmail+Calendar harvest. Surfaced 9 urgent items and 5 blind spots.

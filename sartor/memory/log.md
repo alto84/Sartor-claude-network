@@ -373,12 +373,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 ## [2026-04-14] ingest | personal-data-gather run 2 — Gmail + Calendar harvest
 
 - Sources: Gmail (40 msgs scanned, after:2026/04/13, -promotions/-social), 5 Google Calendars (7-day window Apr 14–21)
-- Facts gathered: 5 new signals (1 status update, 2 logistics, 1 family, 1 calendar detail)
+- Facts gathered: 7 signals (1 status update, 2 logistics, 1 family, 1 calendar detail, 2 informational)
 - **STATUS UPDATE: Chase Sapphire Reserve replacement card SHIPPED** — email Apr 13 8:47 PM confirms card in transit. Expected arrival Apr 14-15. Action pending on arrival: update autopayments from old card 9425.
 - **LOGISTICS: Chewy.com delivery arriving today (Apr 14)** — FedEx 518226340069, 9:30 AM–1:30 PM. Likely Loki's chlorambucil (Rx order #5132136807). If confirmed, closes the "Reorder Loki's chlorambucil" todo.
 - **LOGISTICS: Newegg 3 hardware orders in transit** — #408668539, #408668519, #408668419 all shipped Apr 13. Hardware build continuing.
-- **FAMILY: Wohelo payment details routed to [[family/vishala]]** — check address confirmed (Wohelo Camps, 25 Gulick Rd, Raymond ME 04071, $12,900). Already in [[family/active-todos]] from run 1; added to vishala.md this run.
+- **FAMILY: Wohelo payment details routed to [[family/vishala]]** — check address confirmed (Wohelo Camps, 25 Gulick Rd, Raymond ME 04071, $12,900).
 - **CALENDAR: Blue Sombrero Apr 18 opponent names confirmed** — Game 1: vs B34 Shock (Gately & Kothari); Game 2: vs B34 Charcoal (Pliego). Brookdale Stadium South, Field 1.
+- Informational: REI order #A397566744 placed (2 items). Password reset + order placed within ~2 min — verify legitimacy.
+- Informational: Perlis Clothing first order placed ("Emmett Sartor" alias).
 - Tax deadline TOMORROW (Apr 15): 1040/4868 + NJ-1065 $450. CPA active but no final call yet. PAMKA Social tickets also close tomorrow.
 - Apr 18 conflict (Rafi party drop-off 11:45 AM Bronx vs soccer 1–3 PM Montclair) still unresolved.
 - SSH check: gpuserver1 unavailable from this runtime (consistent)
