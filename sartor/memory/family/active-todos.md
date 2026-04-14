@@ -3,6 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-14
 updated_by: personal-data-gather
+
 status: active
 priority: p1
 next_review: 2026-04-20
@@ -218,6 +219,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!todo]
 > **Solar engineering plan meeting: awaiting Lucent response.** Alton emailed Niko Markanovic, Doug Paige, and Audrey Vera at Lucent Energy Apr 13 to schedule a meeting. No reply as of Apr 14. Follow up if no response by Apr 16. See [[business/solar-inference]].
 
+## Latest from gather (2026-04-14) run 2
+
+> [!fact]
+> **Chase Sapphire Reserve replacement card SHIPPED.** Email received Apr 13 ~8:47 PM ET: card is now in transit. Prior status was "replacement requested" (Apr 13 fraud alert). Expected delivery Apr 14-15. Action: when card arrives, update all recurring autopayments linked to old card ending 9425. Do NOT wait -- audit autopayments now so you're ready on delivery.
+
 ## History
 
 - 2026-04-09: Initial creation from Gmail+Calendar harvest. Surfaced 9 urgent items and 5 blind spots.
@@ -226,6 +232,21 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - 2026-04-11: Updated via personal-data-gather run 10. Resolved: Vayu Ellis Island form (sent Apr 10), Vishala physical form (sent Apr 10). Added: Gym Day registration, myHomeIQ report.
 - 2026-04-12: Updated via personal-data-gather run 1. Escalated Goddard forms to 1-day deadline; today's logistics noted.
 - 2026-04-13: Updated via personal-data-gather run 4. Chase Sapphire card replacement in progress (resolves fraud alert from run 2); autopay update action opened.
+- 2026-04-14: Updated via personal-data-gather run 2. Chase card shipped confirmed; Chewy delivery arriving today.
+
+## Latest from gather (2026-04-14) — run 2
+
+> [!fact]
+> **Chase Sapphire Reserve replacement card SHIPPED.** Email received Apr 13 8:47 PM ET: "E, your new Chase Sapphire Reserve® card has shipped." Card (replacement for fraud-flagged card ending 9425) is confirmed in transit. Expected 1-2 business days from Apr 13 — likely arriving today (Apr 14) or tomorrow (Apr 15). When it arrives: update all autopayments and recurring charges tied to old card ending 9425.
+
+> [!fact]
+> **Chewy.com delivery arriving today (Apr 14).** FedEx tracking 518226340069, window 9:30 AM–1:30 PM ET. This is from Chewy Rx order #5132136807 placed Apr 12 — almost certainly Loki's chlorambucil oral liquid 4mg/mL. If confirmed as chlorambucil on delivery, the "Reorder Loki's chlorambucil" todo above can be closed. See [[family/vasu]] (Loki is household cat, not Vasu's item — tracked here for convenience).
+
+> [!note]
+> **Blue Sombrero Apr 18 games: opponent teams confirmed.**
+> - 1:00–2:00 PM: B34 Lime vs B34 Shock (Gately & Kothari). Brookdale Stadium South, Field 1.
+> - 2:00–3:00 PM: B34 Lime vs B34 Charcoal (Pliego). Same location.
+> The Rafi party vs soccer conflict remains unresolved. See [[vayu]].
 
 ## Latest from gather (2026-04-12)
 
@@ -261,3 +282,20 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo]
 > **Review and update autopayments on Chase Sapphire (...9425) when replacement card arrives.** Card is being replaced after fraud alert (Apr 13). Any subscriptions or autopays on the old card will fail. Review known recurring charges and update with new card number.
+
+## Latest from gather (2026-04-14) run 3
+
+> [!deadline] 2026-04-14 EOD — MOST URGENT ITEM TODAY
+> **Reply to Jonathan Francis NOW: authorize $18K tax extension payment debit.**
+>
+> JF emailed this morning (Apr 14, 05:58 AM UTC) confirming extension payments: **$15,000 to IRS + $3,000 to NJ = $18,000 total.** He is asking: "Can I set these payments up to be debited from your checking account Wednesday?"
+>
+> Wednesday = April 15 = tomorrow = the filing deadline.
+>
+> **You must reply to jf@francis-cpa.com today** to either:
+> - (A) Authorize the full $18K debit from checking, OR
+> - (B) Authorize a lower amount if you're confident Solar Inference LLC losses will reduce the final tax liability (JF's words: "which should throw off some losses")
+>
+> No reply by EOD today = payment not set up = potential underpayment penalty on Apr 15.
+>
+> Extension strategy (Form 4868) is now confirmed — the 1040 is NOT being filed today. Final 1040 due Oct 15, 2026. See [[TAXES]] and [[people/jonathan-francis]].

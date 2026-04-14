@@ -2,7 +2,7 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-04-13
+updated: 2026-04-14
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -81,3 +81,18 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
 - 2026-04-11: Updated via personal-data-gather run 10. Physical form confirmed SENT Apr 10. Gym Day registration flagged.
 - 2026-04-13: Updated via personal-data-gather run 5. MKA confirmed physical form uploaded (Rachael Masters).
+- 2026-04-14: Updated via personal-data-gather run 2. Wohelo payment details confirmed.
+
+## Latest from gather (2026-04-14) — run 2
+
+> [!fact]
+> **Wohelo camp payment details confirmed.** Heidi Gorton (heidigorton@gmail.com) replied Apr 13 with payment instructions. The `[!deadline] 2026-04-10` Wohelo deposit todo is now actionable — check details received.
+>
+> **Pay by check:**
+> - Payable to: **Wohelo Camps**
+> - Mail to: **25 Gulick Road, Raymond, ME 04071**
+> - Amount: **$12,900** (deposit $500 + full tuition combined per Alton's Apr 13 request)
+> - Full tuition due date (if splitting): **2026-05-15**
+> - Contact: Heidi Gorton (heidigorton@gmail.com), Director Little Wohelo Camp
+>
+> See [[family/active-todos]] for the full payment callout with mailing address. Check needs to be written and mailed. Deposit of $500 was already overdue as of 2026-04-10.

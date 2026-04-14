@@ -26,10 +26,17 @@ Alton's tax preparer. Handles personal 1040 (MFJ) and Solar Inference LLC 1065. 
 - No formal engagement letter on file (flagged to Jonathan 2026-04-06)
 - Filed Form 7004 extension for Solar Inference LLC on 2026-03-14 (confirmed via email: "Mail that in as is by Monday. No NJ extension necessary.")
 
-## Current status (2026-04-14)
+## Current status (2026-04-14) — updated run 3
+
+> [!deadline] 2026-04-15
+> **ACTION TODAY: Reply to JF to authorize extension payment debit.**
+> JF emailed Apr 14 05:58 AM UTC with extension amounts: **$15K IRS + $3K NJ**. He is asking to debit Alton's checking account on Wednesday (Apr 15). Strategy is confirmed as EXTEND (Form 4868), not file. Alton must reply today. If confident LLC losses will reduce liability, can instruct lower payment; otherwise, authorize $18K.
 
 > [!fact]
-> **RESOLVED: CPA silence.** JF engaged on Apr 13. Thread "Re: 2025 Sartor Saxena Tax documents" went active with multiple back-and-forth exchanges. JF is working on the return now. Outstanding question: file 1040 Apr 15 or extend via Form 4868? Alton waiting on recommendation.
+> **Extension strategy confirmed as of Apr 14.** JF is setting up extension payments, not preparing a full 1040 for Apr 15 filing. The open decision (file vs extend) is resolved: extending. Alton has until Oct 15 to file the final 1040.
+
+> [!fact]
+> **RESOLVED: CPA silence.** JF engaged on Apr 13. Thread "Re: 2025 Sartor Saxena Tax documents" went active with multiple back-and-forth exchanges. JF is working on the return now.
 
 > ~~[!blocker]~~
 > ~~**No reply since 2026-04-06.**~~ RESOLVED 2026-04-13.
@@ -67,6 +74,8 @@ From the 2026-04-06 email package:
 | 2026-04-13 | JF → Alton | Active thread: asked about 2025 donations ($25K in 2024; only $2,037.17 MKA in 2025); flagged W2 address should be NJ; asked about Delaware wages; asked about solar tax treatment |
 | 2026-04-13 | Alton → JF | Confirmed $2,037.17 MKA donation; noted AZ role change; confirmed solar install "in next few weeks, before July 4 deadline" |
 | 2026-04-14 | — | Awaiting JF recommendation: file 1040 Apr 15 or extend via Form 4868. April 15 is tomorrow. |
+| 2026-04-14 | JF → Alton | Extension amounts confirmed: $15K IRS + $3K NJ. Requesting authorization to debit checking account on Wednesday (Apr 15). Strategy = extend, not file. LLC losses may reduce final liability. |
+| 2026-04-14 | Alton → JF | **PENDING** — must reply today to authorize/decline the debit. |
 
 ## Related
 - [[TAXES]] — full filing status and open questions
