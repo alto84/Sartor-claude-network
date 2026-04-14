@@ -182,6 +182,25 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!fact]
 > **myHomeIQ April report: home value at 85 Stonebridge increased** — Email from Angelica Tanti (Angelica Tanti/tryhomeiq.com), Apr 11. Value updated "more than the previous month." FINANCIAL signal; review report for context.
 
+## URGENT -- 2026-04-14 (TODAY)
+
+> [!deadline] 2026-04-14 TODAY
+> **Backdoor Roth conversions for Alton + Aneeta.** $7,000 Traditional IRA contributions were made for TY2025 before the April 16 deadline. Both need to be **converted to Roth IRAs TODAY** to complete the backdoor Roth strategy. Leaving the funds in Traditional past today risks: (a) accidental deductible-contribution treatment, (b) growth that becomes taxable on eventual conversion, (c) pro-rata rule entanglement if other pre-tax IRA balances exist.
+>
+> **Action steps (Fidelity, per TAXES.md line 103):**
+> 1. Log into Fidelity. Confirm $7,000 sitting in Alton's Traditional IRA (TY2025 contribution).
+> 2. Initiate Roth conversion of the full $7,000. Same-day conversion is the clean path.
+> 3. Repeat for Aneeta's Fidelity Traditional IRA.
+> 4. **Pro-rata check:** Both individuals' pre-tax IRA balances must be $0 at year-end for the conversion to be non-taxable. If either of you has a rollover IRA, SEP-IRA, or SIMPLE IRA with pre-tax money, the conversion becomes partially taxable per the IRS pro-rata rule. Flag to Jonathan Francis if unsure.
+> 5. Save conversion confirmation emails -- required for Form 8606.
+>
+> **Tax reporting (Jonathan handles):**
+> - Form 8606 for each of you -- reports nondeductible Traditional IRA contribution (TY2025) + the conversion (TY2026).
+> - 1099-R for the conversion arrives from Fidelity in early 2027 (for TY2026 filing).
+> - Basis: $7,000 nondeductible basis added to each person's Form 8606 line 2.
+>
+> **Why today:** Delaying lets the $7,000 generate investment gains in the Traditional IRA, which would be taxable when converted. Same-day conversion = zero gain = zero tax.
+
 ## Latest from gather (2026-04-14)
 
 > [!fact]
