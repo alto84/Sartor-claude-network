@@ -3,6 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-14
 updated_by: personal-data-gather
+
 status: active
 priority: p1
 next_review: 2026-04-20
@@ -207,6 +208,21 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - 2026-04-11: Updated via personal-data-gather run 10. Resolved: Vayu Ellis Island form (sent Apr 10), Vishala physical form (sent Apr 10). Added: Gym Day registration, myHomeIQ report.
 - 2026-04-12: Updated via personal-data-gather run 1. Escalated Goddard forms to 1-day deadline; today's logistics noted.
 - 2026-04-13: Updated via personal-data-gather run 4. Chase Sapphire card replacement in progress (resolves fraud alert from run 2); autopay update action opened.
+- 2026-04-14: Updated via personal-data-gather run 2. Chase card shipped confirmed; Chewy delivery arriving today.
+
+## Latest from gather (2026-04-14) — run 2
+
+> [!fact]
+> **Chase Sapphire Reserve replacement card SHIPPED.** Email received Apr 13 8:47 PM ET: "E, your new Chase Sapphire Reserve® card has shipped." Card (replacement for fraud-flagged card ending 9425) is confirmed in transit. Expected 1-2 business days from Apr 13 — likely arriving today (Apr 14) or tomorrow (Apr 15). When it arrives: update all autopayments and recurring charges tied to old card ending 9425.
+
+> [!fact]
+> **Chewy.com delivery arriving today (Apr 14).** FedEx tracking 518226340069, window 9:30 AM–1:30 PM ET. This is from Chewy Rx order #5132136807 placed Apr 12 — almost certainly Loki's chlorambucil oral liquid 4mg/mL. If confirmed as chlorambucil on delivery, the "Reorder Loki's chlorambucil" todo above can be closed. See [[family/vasu]] (Loki is household cat, not Vasu's item — tracked here for convenience).
+
+> [!note]
+> **Blue Sombrero Apr 18 games: opponent teams confirmed.**
+> - 1:00–2:00 PM: B34 Lime vs B34 Shock (Gately & Kothari). Brookdale Stadium South, Field 1.
+> - 2:00–3:00 PM: B34 Lime vs B34 Charcoal (Pliego). Same location.
+> The Rafi party vs soccer conflict remains unresolved. See [[vayu]].
 
 ## Latest from gather (2026-04-12)
 
