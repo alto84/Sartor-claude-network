@@ -1,0 +1,91 @@
+---
+type: stub
+created_by: rocinante-curator
+created: 2026-04-14
+updated: 2026-04-14
+---
+
+# gpuserver1-monitoring-log.md
+
+_Stub created by curator on 2026-04-14 from inbox entry `gpuserver1-2026-04-11-0338-monitor` (origin: gpuserver1). Awaiting human curation._
+
+
+<!-- curator-drained 2026-04-14T01:39:45+00:00 from gpuserver1 entry=gpuserver1-2026-04-11-0338-monitor -->
+## Inbox entry: gpuserver1-2026-04-11-0338-monitor
+
+- Source machine: `gpuserver1`
+- Created: 2026-04-11 03:38:43+00:00
+- Operation: append
+- Priority: p2
+- Drained: 2026-04-14T01:39:45+00:00
+
+## Summary
+
+**Status: WARNING** — Machine healthy but orphaned container C.34113802 persists with no active rental. GPU idle, all disk/thermal metrics nominal. Container running 6 days with active SSH sessions and supervisord processes; appears to be stale rental not properly cleaned up by kaalia. Sartor cron failing with JSON parse errors.
+
+## Snapshot Table
+
+| Component | Status | Value |
+|-----------|--------|-------|
+| vast.ai listing | OK | Machine 52271 listed, reliability 0.9885 |
+| Active instances | NONE | 0 rentals |
+| GPU temp | OK | 42°C |
+| GPU util | IDLE | 0% |
+| GPU power | OK | 23.64 W |
+| Root disk | OK | 38% (36G/98G used) |
+| Docker LV | OK | 25% (423G/1.8T used) |
+| Load avg | OK | 0.45, 0.92, 0.87 (1/5/15 min) |
+| Container count | 1 | C.34113802 (orphaned) |
+| Kaalia daemon | RUNNING | PID 2839959 (up since Apr 07) |
+
+## Status Indicators
+
+- **vast.ai**: Listed at $0.30/hr (below target $0.40 — pricing discrepancy), verified, no active rentals, reliability 0.9885
+- **GPU**: Idle (0% util, 42°C, 23.64W draw, 864MB/32GB VRAM used)
+- **Disk**: Root 38%, Docker LV 25% — healthy margins
+- **Containers**: 1 running (C.34113802, orphaned from prior rental)
+- **System load**: Nominal for 6-day uptime, 48GB free RAM
+
+## First-Run Investigation
+
+Container `C.34113802` analysis:
+
+**Container metadata:**
+- Started: 2026-04-05T00:46:22Z (6 days ago)
+- Image: `vastai/pytorch_cuda-12.8.1-auto/ssh`
+- Status: Running, 0 restarts
+- Ports: 40020 (SSH), 40052, 40064, 40092 exposed
+
+**Active processes inside container:**
+- supervisord managing cron, sshd daemons
+- tmux session `ssh_tmux` running `/workspace/comfy.log` tail
+- Active SSH reverse tunnel to `ssh5.vast.ai` (ports 33802, 33803)
+- Multiple sshd sessions from localhost (::1) with ED25519 key auth
+- No GPU workload running
+
+**Container logs:**
+- Recent activity shows repeated SSH connections from localhost
+- Logs are sshd session open/close messages, no errors
+- SSH key `SHA256:io4z/V/sOAn6UpeOY5lJ157RnlVEDIZqvWqZctSoULE` repeatedly authenticated
+
+**Diagnosis:**
+Container is a vast.ai rental that was never destroyed after the rental ended. The kaalia daemon typically handles cleanup, but this instance persisted. The container has an active reverse SSH tunnel to vast.ai infrastructure (`ssh5.vast.ai`) and appears to be waiting for a renter connection that will never come. The container is consuming no GPU resources and minimal CPU/RAM.
+
+**Sartor cron context:**
+The `.sartor-cron.log` shows repeated `FATAL: Unhandled exception: Expecting value: line 1 column 1 (char 0)` — a JSON parse error. This is from `gateway_cron.py` which runs every 30 minutes. The error suggests the cron script is receiving empty or malformed responses from an endpoint it expects JSON from. This is unrelated to the Docker container but indicates gateway_cron.py is failing.
+
+## Anomalies
+
+1. **Orphaned container**: C.34113802 running 6 days with no corresponding vast.ai rental. Kaalia should have destroyed this when the rental ended.
+2. **Pricing mismatch**: vast.ai reports machine listed at $0.30/hr GPU, expected $0.40/hr per configuration.
+3. **Sartor cron failures**: gateway_cron.py failing every 30 min with JSON parse errors, filling cron log with exceptions.
+4. **Stale alerts**: 271 disk_full alerts in `.vastai-alert`, all from April 2-3 (over a week old). File needs truncation.
+
+## Recommended Actions
+
+1. **Container cleanup**: Manually destroy C.34113802 or wait for next kaalia cleanup cycle. Container is harmless but consumes Docker resources.
+2. **Pricing correction**: Verify intended listing price and relist if $0.40/hr is desired target (currently at $0.30/hr).
+3. **Alert file cleanup**: Truncate `/home/alton/.vastai-alert` to remove 271 stale entries from April 2-3.
+4. **Cron debug**: Investigate gateway_cron.py JSON parse errors — likely hitting an endpoint that returns empty/malformed responses.
+
+<!-- /curator-drained -->

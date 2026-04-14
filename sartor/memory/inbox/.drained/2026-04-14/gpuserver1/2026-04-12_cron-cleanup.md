@@ -1,10 +1,12 @@
 ---
 type: completion_report
+id: gpuserver1-2026-04-12-cron-cleanup
 entity: cron-cleanup-2026-04-12
 created: 2026-04-12T01:42:00Z
+origin: gpuserver1
 author: gpuserver1
 priority: p2
-target: rocinante
+target: MACHINES.md
 operation: report
 related: [gpuserver1-CRONS, OPERATING-AGREEMENT]
 ---

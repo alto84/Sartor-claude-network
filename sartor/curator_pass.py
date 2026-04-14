@@ -47,6 +47,9 @@ REQUIRED_FIELDS = ("id", "origin", "created", "target", "operation")
 
 RESERVED_DIRS = frozenset({".receipts", ".drained", ".conflicts", "_processed", "_flagged", "_curator_staging"})
 
+# Files written by the curator itself as drain targets; skip during inbox walks to avoid self-referential flagging.
+RESERVED_FILES = frozenset({"_inbox-only-log.md", "_unrouted-log.md"})
+
 URGENT_PRIORITIES = frozenset({"p0", "p1"})
 ROUTINE_TYPES = frozenset({"routine", "report", "completion_report", "heartbeat"})
 
@@ -220,12 +223,14 @@ def walk_inbox(inbox_root: Path) -> Iterable[InboxEntry]:
 
 
 def _iter_entry_files(machine_dir: Path) -> Iterable[Path]:
-    """Recursively yield .md files inside a machine inbox dir, skipping reserved subdirs."""
+    """Recursively yield .md files inside a machine inbox dir, skipping reserved subdirs and files."""
     for path in machine_dir.rglob("*.md"):
         rel_parts = path.relative_to(machine_dir).parts
         if any(p in RESERVED_DIRS for p in rel_parts[:-1]):
             continue
         if path.name in RESERVED_DIRS:
+            continue
+        if path.name in RESERVED_FILES:
             continue
         yield path
 
