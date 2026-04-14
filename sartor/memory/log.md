@@ -413,6 +413,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime (consistent)
 - Updated: [[TAXES]], [[people/jonathan-francis]], [[business/sante-total]], `daily/2026-04-14.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-14] ingest | personal-data-gather run 5 — Gmail + Calendar harvest
+
+- Sources: Gmail (40 msgs scanned, after:2026/04/14, -promotions/-social), 5 Google Calendars (7-day window Apr 14–21)
+- Facts gathered: 4 new signals (1 tax resolution, 1 schedule change, 1 logistics, 1 informational)
+- **KEY RESOLUTION: Tax thread fully resolved.** JF explained $160K wage increase drove extension amounts; Alton asked about LLC deductions; JF agreed to pass through 2025 LLC stuff. Final liability will be less than $18K with refund at Oct 15 filing. No further action needed today.
+- **NEW SCHEDULE CHANGE (URGENT): Apr 18 soccer moved to noon + 1 PM** (was 1–2 PM, 2–3 PM). Coach Gormley email + 4 Blue Sombrero notifications confirm. Conflict with Rafi's party (Yankees drop-off 11:45 AM) is now concurrent — both require 11:30 AM departure from Montclair in opposite directions. Alton/Aneeta split needed. Blue Sombrero calendar API not yet updated.
+- **LOGISTICS:** Alton drove to NYC today (SpotHero at 515 W 36th St, 9 AM–9 PM, Tesla Model X). Not train commute.
+- Calendar: unchanged vs runs 1-4 (Blue Sombrero API still shows old times)
+- SSH check: gpuserver1 unavailable from this runtime (consistent)
+- Updated: [[TAXES]], [[people/jonathan-francis]], [[family/active-todos]], `daily/2026-04-14.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption

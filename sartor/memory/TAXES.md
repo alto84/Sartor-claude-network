@@ -218,3 +218,14 @@ Append this fact to `TAXES.md` under the section relevant to `2027 fiscal outloo
 
 > [!fact]
 > **Alton replied to JF at 07:59 AM ET (Apr 14).** Reply: "Holy cow... What increased / changed from last year? Money is in the account." Implicit debit authorization given — funds confirmed available. Alton is surprised by amount vs prior years and asked for an explanation of the year-over-year increase. JF has not yet replied to that follow-up question. The ACTION_REQUIRED from run 3 is partially resolved: Alton did respond and the debit can proceed, but Alton's question about what drove the increase is open. See [[people/jonathan-francis]] interaction log.
+
+## Latest from gather (2026-04-14) run 5
+
+> [!fact]
+> **YoY tax increase explained.** JF replied at 11:39 AM ET: "Wages increased $160k and withholdings just don't keep up." The $160K wage increase (new AZ Senior Medical Director role) is what drove the extension amounts from prior-year levels to $18K. Withholding did not adjust proportionally.
+
+> [!fact]
+> **LLC deductions will be applied.** Alton replied at 11:50 AM ET asking JF to pass through Solar Inference LLC deductions: "~$450k solar roof and I just spent $37k on computer hardware." JF responded at 11:51 AM ET: "We will pass through the 2025 stuff." This means the 2025 Solar Inference LLC losses and deductions WILL be factored into the final 1040. The $18K extension payment is now over-estimated — final liability will be lower, with a refund at the Oct 15 filing. LLC 2025 expenses documented at $4,949.49 (pre-solar-roof, which is a 2026 event).
+
+> [!decision]
+> **Extension debit: proceed at $18K (safe over-payment).** JF will set up the $15K federal + $3K NJ debit for Wednesday (Apr 15). LLC losses from 2025 are relatively small ($4,949.49), so the refund will not be large. The solar roof ITC ($131,649) and depreciation ($373,005) are 2026 events — not relevant to the TY2025 1040. The $18K over-payment is the prudent choice to avoid underpayment penalties.
