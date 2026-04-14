@@ -13,8 +13,11 @@ import platform
 import secrets
 import hashlib
 import hmac
+import ipaddress
+import time as _auth_time
 import urllib.request
 import urllib.error
+from collections import defaultdict, deque
 from datetime import datetime, date
 from pathlib import Path
 from typing import Optional
@@ -26,6 +29,59 @@ import anthropic
 # ── Auth ──────────────────────────────────────────────────────────────────────
 
 _MERIDIAN_DEV = os.environ.get("MERIDIAN_DEV", "") == "1"
+_MERIDIAN_PORT = int(os.environ.get("MERIDIAN_PORT", "5055"))
+
+# LAN-only accept list: RFC1918 + loopback.
+_LAN_NETWORKS = [
+    ipaddress.ip_network("127.0.0.0/8"),
+    ipaddress.ip_network("::1/128"),
+    ipaddress.ip_network("10.0.0.0/8"),
+    ipaddress.ip_network("172.16.0.0/12"),
+    ipaddress.ip_network("192.168.0.0/16"),
+    ipaddress.ip_network("fc00::/7"),
+    ipaddress.ip_network("fe80::/10"),
+]
+
+def _client_ip(request) -> str:
+    try:
+        return request.client.host if request.client else ""
+    except Exception:
+        return ""
+
+def _is_lan_ip(ip_str: str) -> bool:
+    if not ip_str:
+        return False
+    try:
+        ip = ipaddress.ip_address(ip_str)
+    except ValueError:
+        return False
+    return any(ip in net for net in _LAN_NETWORKS)
+
+# ── Rate limiting: 5 failed /login per IP per 5 min ───────────────────────────
+_LOGIN_FAIL_WINDOW = 5 * 60
+_LOGIN_FAIL_MAX = 5
+_login_failures: "dict[str, deque]" = defaultdict(deque)
+
+def _record_login_failure(ip: str) -> None:
+    now = _auth_time.monotonic()
+    dq = _login_failures[ip]
+    dq.append(now)
+    cutoff = now - _LOGIN_FAIL_WINDOW
+    while dq and dq[0] < cutoff:
+        dq.popleft()
+
+def _login_rate_limited(ip: str) -> bool:
+    now = _auth_time.monotonic()
+    dq = _login_failures.get(ip)
+    if not dq:
+        return False
+    cutoff = now - _LOGIN_FAIL_WINDOW
+    while dq and dq[0] < cutoff:
+        dq.popleft()
+    return len(dq) >= _LOGIN_FAIL_MAX
+
+def _clear_login_failures(ip: str) -> None:
+    _login_failures.pop(ip, None)
 
 def _load_password() -> str:
     secrets_path = Path(__file__).resolve().parent.parent.parent / ".secrets" / "meridian-password.txt"
@@ -60,6 +116,22 @@ def _verify_token(token: str) -> Optional[str]:
     return None
 
 
+def _csrf_for(session_val: str) -> str:
+    """Derive a CSRF token bound to the session cookie."""
+    if not session_val:
+        return ""
+    return hmac.new(
+        (_SESSION_SECRET + "|csrf").encode(),
+        session_val.encode(),
+        hashlib.sha256,
+    ).hexdigest()[:32]
+
+def _verify_csrf(session_val: str, supplied: str) -> bool:
+    if not session_val or not supplied:
+        return False
+    return hmac.compare_digest(_csrf_for(session_val), supplied)
+
+
 app = FastAPI(title="MERIDIAN", version="0.2.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
@@ -76,15 +148,56 @@ class SessionAuthMiddleware(BaseHTTPMiddleware):
         path = request.url.path
         if _MERIDIAN_DEV or path in self.OPEN_PATHS:
             return await call_next(request)
-        token = request.cookies.get("meridian_session")
-        if token and _verify_token(token):
+        sess = request.cookies.get("meridian_session")
+        if sess and _verify_token(sess):
             return await call_next(request)
         # For API/WebSocket requests, return 401 instead of redirect
         if path.startswith("/api/") or path.startswith("/ws/"):
             return JSONResponse(status_code=401, content={"error": "Unauthorized"})
         return RedirectResponse(url="/login", status_code=302)
 
+
+class LanOnlyMiddleware(BaseHTTPMiddleware):
+    """Reject HTTP from non-LAN IPs. WebSocket upgrades enforce this inline."""
+
+    async def dispatch(self, request: Request, call_next):
+        peer = _client_ip(request)
+        override = request.headers.get("x-test-client-ip", "") if _MERIDIAN_DEV else ""
+        effective = override or peer
+        if not _is_lan_ip(effective):
+            return JSONResponse(
+                status_code=403,
+                content={"error": "forbidden: off-LAN access blocked"},
+            )
+        return await call_next(request)
+
+
+class CsrfMiddleware(BaseHTTPMiddleware):
+    """Require X-CSRF-Token on mutating /api/tasks requests."""
+
+    PROTECTED_METHODS = {"POST", "PATCH", "DELETE", "PUT"}
+
+    async def dispatch(self, request: Request, call_next):
+        if _MERIDIAN_DEV and request.headers.get("x-test-skip-csrf") == "1":
+            return await call_next(request)
+        path = request.url.path
+        method = request.method.upper()
+        if method in self.PROTECTED_METHODS and path.startswith("/api/tasks"):
+            sess = request.cookies.get("meridian_session", "")
+            supplied = request.headers.get("x-csrf-token", "")
+            if not _verify_csrf(sess, supplied):
+                return JSONResponse(
+                    status_code=403,
+                    content={"error": "csrf token missing or invalid"},
+                )
+        return await call_next(request)
+
+
+# Starlette runs middleware in reverse of add order.
+# Desired run order: LanOnly -> SessionAuth -> Csrf -> route.
+app.add_middleware(CsrfMiddleware)
 app.add_middleware(SessionAuthMiddleware)
+app.add_middleware(LanOnlyMiddleware)
 
 
 # ── Login / Logout Routes ────────────────────────────────────────────────────
@@ -221,21 +334,30 @@ async def login_page(error: str = ""):
 
 @app.post("/login")
 async def login_submit(request: Request):
+    ip = _client_ip(request) or "unknown"
+    if _login_rate_limited(ip):
+        return RedirectResponse(
+            url="/login?error=Too+many+failed+attempts.+Try+again+in+5+minutes.",
+            status_code=303,
+        )
+
     form = await request.form()
     username = form.get("username", "").strip()
-    password = form.get("password", "").strip()
+    pw_submitted = form.get("password", "").strip()
 
     correct_user = secrets.compare_digest(username.encode(), b"alton")
-    correct_pass = secrets.compare_digest(password.encode(), _MERIDIAN_PASSWORD.encode())
+    correct_pw = secrets.compare_digest(pw_submitted.encode(), _MERIDIAN_PASSWORD.encode())
 
-    if not (correct_user and correct_pass):
+    if not (correct_user and correct_pw):
+        _record_login_failure(ip)
         return RedirectResponse(url="/login?error=Invalid+username+or+password", status_code=303)
 
-    token = _sign_token(username)
+    _clear_login_failures(ip)
+    signed = _sign_token(username)
     response = RedirectResponse(url="/", status_code=303)
     response.set_cookie(
         key="meridian_session",
-        value=token,
+        value=signed,
         httponly=True,
         samesite="lax",
         max_age=60 * 60 * 24 * 30,  # 30 days
@@ -248,6 +370,14 @@ async def logout():
     response = RedirectResponse(url="/login", status_code=302)
     response.delete_cookie("meridian_session")
     return response
+
+
+@app.get("/api/csrf")
+async def csrf_endpoint(request: Request):
+    sess = request.cookies.get("meridian_session", "")
+    if not sess or not _verify_token(sess):
+        return JSONResponse(status_code=401, content={"error": "no session"})
+    return {"token": _csrf_for(sess)}
 
 
 # Paths
@@ -1168,6 +1298,19 @@ async def observer_report():
 @app.websocket("/ws/claude")
 async def ws_claude(ws: WebSocket):
     global _active_claude_sessions
+
+    # BaseHTTPMiddleware does not run on WebSocket scope, so enforce
+    # LAN + session directly on upgrade.
+    if not _MERIDIAN_DEV:
+        peer = ws.client.host if ws.client else ""
+        if not _is_lan_ip(peer):
+            await ws.close(code=4403)
+            return
+        sess = ws.cookies.get("meridian_session", "")
+        if not sess or not _verify_token(sess):
+            await ws.close(code=4401)
+            return
+
     await ws.accept()
 
     if _active_claude_sessions >= MAX_CLAUDE_SESSIONS:
@@ -2826,5 +2969,5 @@ async def projects():
 
 if __name__ == "__main__":
     import uvicorn
-    print("MERIDIAN v0.2 -- Starting on http://localhost:5055")
-    uvicorn.run(app, host="0.0.0.0", port=5055)
+    print(f"MERIDIAN v0.2 -- Starting on http://0.0.0.0:{_MERIDIAN_PORT} (LAN-only, dev={_MERIDIAN_DEV})")
+    uvicorn.run(app, host="0.0.0.0", port=_MERIDIAN_PORT)
