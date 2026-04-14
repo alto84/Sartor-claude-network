@@ -340,6 +340,21 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime (command not found)
 - Updated: [[family/vayu]], [[family/vishala]], [[family/active-todos]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-13] ingest | personal-data-gather run 6 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, after:2026/04/13, -promotions/-social), 5 Google Calendars (7-day window Apr 13–20)
+- Facts gathered: 2 new ACTION_REQUIRED signals; 4 informational; all prior items confirmed
+- **NEW ACTION_REQUIRED: PAMKA Social tickets close TOMORROW (April 15)** — both Vayu (4th grade) and Vishala (3rd grade) in scope. Two separate parent emails (Megan Flick, 3rd grade; Edward C., 4th grade). Purchase deadline Wednesday April 15. Routed to [[family/active-todos]].
+- **NEW ACTION_REQUIRED: Second Guidepoint consultation request** — Valerie Villareal, Pediatric Low-Grade Glioma Market (#1718071). Separate from Yasmin Goodman's prior request. Accept/decline pending. Routed to [[family/active-todos]].
+- Informational: Chewy delivery window pinned for Tue 4/14, 9:30 AM–1:30 PM (FedEx tracking 518226340069)
+- Informational: 7 Newegg hardware shipments confirmed in transit (Apr 12 purchase batch, multiple orders)
+- Informational: Vasu attended Goddard Apr 13 (first day of soccer, gardening, yoga, small group learning). No summer form confirmation email received — status unconfirmed.
+- Informational: Costco same-day order delivered to 85 Stonebridge Road today
+- Confirmed outstanding: April 15 tax deadlines TOMORROW (1040/4868 + NJ-1065 $450), CAQH reattestation, Tribeca $170.28, Apr 17 coverage conflict, Apr 18 soccer/Rafi incompatibility, Yasmin Goodman Guidepoint, Zintro, Handshake Project Alloy, Summit Health portal, Aneeta CSA email invalid
+- Calendar: unchanged vs runs 1–5 — no new events on any of the 5 calendars
+- SSH check: gpuserver1 unavailable from this runtime
+- Updated: [[family/active-todos]], [[family/vasu]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption

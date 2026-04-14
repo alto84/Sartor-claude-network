@@ -28,6 +28,14 @@ No urgent open loops for Vasu. Goddard communications have been routine.
 > [!note]
 > **T-shirt size for summer camp field trips** — Jacqueline Capote (Goddard) requested Vasu's t-shirt size 2026-04-06/07. Alton replied 2026-04-07 and she acknowledged. Closed.
 
+## Latest from gather (2026-04-13)
+
+> [!fact]
+> **Vasu at Goddard today (Apr 13) — first day of soccer.** Multiple Kaymbu classroom updates received: soccer (first day!), gardening with Chy, STEAM yoga (River Pose), Small Group Learning (Bear's New Home). Confirms Vasu attended school.
+
+> [!warning]
+> **Goddard summer forms due today (Apr 13) — no confirmation email received.** Samantha Ramsden's original deadline was April 13. As of end of day, no email confirmation of form submission found in Gmail. Status of Vasu's summer enrollment is unconfirmed. Verify directly with Goddard.
+
 ## Upcoming events (next 30 days)
 
 - 4/22 16:20 — Recycled costume parade (Goddard "Recycled Runway"). Needs a costume made from recycled materials.
