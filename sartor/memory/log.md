@@ -427,3 +427,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption
+
+## [2026-04-14] ingest | personal-data-gather run 6 — Gmail + Calendar harvest
+
+- Sources: Gmail (11 msgs scanned, after:2026/04/14, -promotions/-social/-updates), 5 Google Calendars (7-day window Apr 14–21)
+- Facts gathered: 3 new signals (1 ACTION_REQUIRED/education, 1 logistics_resolved, 1 calendar_update)
+- **NEW ACTION_REQUIRED: Vayu math difficulty.** Teacher Roshni Shah (rshah@mka.org, Grade 4 Dean at MKA) emailed Alton + Aneeta at 2:15 PM ET. Vayu struggling with partial quotients division strategy. One-on-one support in class ongoing. Supplemental worksheets attached. Response + home practice needed.
+- **LOGISTICS RESOLVED: Power Mac LLC electrical confirmed April 28.** Ilija Trajceski confirmed 8-9 AM arrival, will coordinate with Pete Berman. Earlier slot possible. Was pending since Apr 13 estimate approval.
+- **CALENDAR UPDATE: Blue Sombrero Apr 18 opponents corrected.** Calendar refreshed 1:19 PM ET. Games confirmed at noon and 1 PM (matches coach Gormley's email); opponents now B34 Green and B34 Purple (prior data of Shock/Charcoal was stale). Rafi party conflict still unresolved.
+- Calendar: no new events on primary, Family, Aneeta, or Tasks calendars vs runs 1-5
+- SSH check: gpuserver1 unavailable from this runtime (consistent)
+- Updated: [[family/vayu]], [[family/active-todos]], [[business/solar-inference]], `daily/2026-04-14.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`

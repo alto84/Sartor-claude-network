@@ -2,7 +2,7 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-04-13
+updated: 2026-04-14
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -109,6 +109,23 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 > [!fact]
 > **MKA physical form UPLOADED AND APPROVED in Magnus** — Debra Van Eerde (dvaneerde@mka.org) confirmed on Mon Apr 13 at 9:37 AM ET: "I uploaded and approved the physical in Magnus." Aneeta thanked her. The blocker open since 2026-02-18 is now FULLY RESOLVED. Vayu is medically cleared for the Ellis Island class trip on April 17. The stuck-draft callout in [[active-todos]] is resolved.
 
+## Latest from gather (2026-04-14)
+
+> [!todo] ACTION_REQUIRED — respond to teacher
+> **Vayu math difficulty: teacher outreach from Roshni Shah (2:15 PM ET, Apr 14).** Roshni Shah, Ed.D. (rshah@mka.org), Grade 4 Middle School Teacher and Fourth Grade Dean at MKA, emailed Alton + Aneeta (CC: Deborah Gordon, dgordon@mka.org). Vayu is struggling with the **partial quotients division strategy** covered in class. Shah has been working with him one-on-one (helping). She attached 2 PNG worksheets with practice exercises for home use.
+>
+> **Actions needed:**
+> 1. Reply to rshah@mka.org acknowledging and asking any questions
+> 2. Download and use the attached supplemental materials for home practice sessions with Vayu
+> 3. Coordinate with Aneeta — email was sent to both parents
+
+> [!fact]
+> **Blue Sombrero Apr 18 games: opponents updated.** Calendar refreshed 1:19 PM ET Apr 14.
+> - Game 1: noon–1 PM, B34 Lime vs **B34 Green (Boudreau & Rastogi)**
+> - Game 2: 1–2 PM, B34 Lime vs **B34 Purple (Lac & Karacas)**
+> - Location: Brookdale Stadium South, Field 1, Brookdale Park (unchanged)
+> - Conflict with Rafi's party (Yankees, drop-off 11:45 AM) remains unresolved.
+
 ## History
 
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
@@ -117,3 +134,4 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 - 2026-04-11: Updated via personal-data-gather run 10. Ellis Island physical form confirmed SENT Apr 10 (blocker resolved).
 - 2026-04-13: Updated via personal-data-gather run 1. Band instrument reminder (today). Rafi's party time corrected to 11:45 AM–5:45 PM (not 1–4 PM).
 - 2026-04-13: Updated via personal-data-gather run 5. MKA confirmed physical uploaded and approved in Magnus. Vayu cleared for Ellis Island Apr 17.
+- 2026-04-14: Updated via personal-data-gather run 6. Teacher Roshni Shah flagged math difficulty (partial quotients division). Blue Sombrero opponents updated.

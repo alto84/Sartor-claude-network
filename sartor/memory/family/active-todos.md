@@ -314,3 +314,21 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note]
 > **Alton drove to NYC today (Apr 14).** SpotHero parking reservation confirmed: 515 W 36th St (Midtown), 9 AM–9 PM, Tesla Model X (N55UDX). Commuted by car today, not NJ Transit.
+
+## Latest from gather (2026-04-14) run 6
+
+> [!todo] ACTION_REQUIRED — reply to MKA teacher today
+> **Vayu math difficulty: teacher Roshni Shah reached out at 2:15 PM ET.** She is Vayu's Grade 4 teacher and Fourth Grade Dean (rshah@mka.org). Vayu is struggling with the partial quotients division strategy. She has been providing one-on-one support in class and sent supplemental practice worksheets (2 PNG files attached to the email). Email went to both Alton and Aneeta; CC: Deborah Gordon (dgordon@mka.org).
+>
+> **Actions:** (1) Reply to rshah@mka.org. (2) Download the attached worksheets and practice with Vayu at home. (3) Coordinate with Aneeta on next steps.
+>
+> See [[vayu]] for context on Vayu's current ADHD/learning support situation.
+
+> [!fact]
+> **Power Mac LLC electrical: confirmed April 28, 8-9 AM arrival.** Ilija Trajceski (info@power-mac.net) replied today. May have earlier availability — he'll reach out if a slot opens. Will coordinate with Pete Berman. Overlaps with Berman Home Systems WiFi install (Apr 27-29). See [[business/solar-inference]].
+
+> [!note]
+> **Blue Sombrero calendar updated (Apr 18 opponents corrected).** Calendar refreshed 1:19 PM ET today. New opponents:
+> - Game 1 noon–1 PM: B34 Lime vs B34 Green (Boudreau & Rastogi)
+> - Game 2 1–2 PM: B34 Lime vs B34 Purple (Lac & Karacas)
+> Prior opponent data (Shock, Charcoal) was stale. Conflict with Rafi's party still unresolved.
