@@ -9,6 +9,8 @@ category: family/payment
 entity: Wohelo Camps / Vishala
 priority: p1
 status: pending
+target: FAMILY.md
+operation: append
 tags: [entity/vishala, domain/family, status/pending, priority/p1, type/payment]
 related: [vishala, active-todos, FAMILY]
 ---
