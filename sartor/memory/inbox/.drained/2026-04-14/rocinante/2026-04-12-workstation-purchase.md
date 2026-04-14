@@ -4,10 +4,12 @@ type: event
 category: business_purchase
 severity: high
 source: rocinante
+origin: rocinante
 target: BUSINESS.md
 entity: solar-inference-llc
 priority: p1
 created: 2026-04-12T21:14:00-04:00
+operation: append
 ---
 
 # Workstation Purchase: Dual RTX PRO 6000 Blackwell Build

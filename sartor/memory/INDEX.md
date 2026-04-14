@@ -1,5 +1,5 @@
 # Sartor Memory Index
-## Last Updated: 2026-04-13 03:10
+## Last Updated: 2026-04-14 03:11
 
 ## Core Memory
 - [ALTON.md](ALTON.md) — ---
@@ -17,9 +17,11 @@
 - [SELF.md](SELF.md) — ---
 - [TAXES.md](TAXES.md) — ---
 - [feedback_pricing_autonomy.md](feedback_pricing_autonomy.md) — ---
+- [gpuserver1-monitoring-log.md](gpuserver1-monitoring-log.md) — ---
 - [log.md](log.md) — ---
 
 ## Recent Activity
+- [2026-04-14.md](daily/2026-04-14.md) — Daily Log - 2026-04-14 (Tuesday)
 - [2026-04-13.md](daily/2026-04-13.md) — Daily Log - 2026-04-13 (Monday)
 - [2026-04-12.md](daily/2026-04-12.md) — Daily Log - 2026-04-12 (Sunday)
 - [2026-04-11.md](daily/2026-04-11.md) — Daily Log - 2026-04-11
@@ -29,7 +31,6 @@
 - [2026-04-07.md](daily/2026-04-07.md) — Daily Log - 2026-04-07 (Tuesday)
 - [2026-04-06.md](daily/2026-04-06.md) — Daily Log - 2026-04-06 (Monday)
 - [2026-04-05.md](daily/2026-04-05.md) — Daily Log - 2026-04-05 (Easter Sunday)
-- [2026-04-04.md](daily/2026-04-04.md) — Daily Log - 2026-04-04
 
 ## Research & Snapshots
 - [INDEX.md](research/INDEX.md) — ---

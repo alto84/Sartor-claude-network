@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-13
-updated_by: rocinante
+updated: 2026-04-14
+updated_by: personal-data-gather
 status: active
 priority: p1
 next_review: 2026-04-20
@@ -15,8 +15,17 @@ related: [FAMILY, vayu, vishala, vasu, family-calendar]
 
 Live dashboard of time-sensitive family items, surfaced from Gmail and Calendar harvest on 2026-04-09. Reviewed weekly; items age out or move to the relevant kid's page once resolved.
 
-> [!deadline] 2026-04-10
-> **Wohelo deposit $500** — Vishala summer camp. Heidi Gorton confirmed late signup accepted on 2026-04-05. Deposit due immediately, full tuition follows. See [[vishala]].
+> [!warning] 2026-04-13 — PAYMENT DETAILS CONFIRMED, ACTION NEEDED
+> **Wohelo payment — Vishala summer camp.** Heidi Gorton provided payment details on Apr 13. Alton's Apr 13 email asked to send deposit + full tuition together ($12,900 total). Heidi confirmed that amount. Deposit ($500) was due 2026-04-10 (overdue). Full tuition due 2026-05-15.
+>
+> **Pay by check:**
+> - Payable to: **Wohelo Camps**
+> - Mail to: **25 Gulick Road, Raymond, ME 04071**
+> - Amount: **$12,900** (deposit + full tuition combined, per Alton's Apr 13 request) OR **$500** deposit only if splitting
+> - Full tuition balance due: **2026-05-15** if sending deposit only now
+> - Contact: Heidi Gorton (heidigorton@gmail.com), Director Little Wohelo Camp
+>
+> See [[vishala]]. See also `sartor/memory/inbox/rocinante/wohelo-payment-2026-04-13.md` for standalone check-cutting reference.
 
 > [!deadline] 2026-04-11
 > **Vayu soccer game** — Brookdale Park Stadium, 11:00 AM, arrive 10:40. B-34 Lime team. Shin guards required.
@@ -172,6 +181,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact]
 > **myHomeIQ April report: home value at 85 Stonebridge increased** — Email from Angelica Tanti (Angelica Tanti/tryhomeiq.com), Apr 11. Value updated "more than the previous month." FINANCIAL signal; review report for context.
+
+## Latest from gather (2026-04-14)
+
+> [!fact]
+> **RESOLVED: Tribeca Pediatrics $170.28 PAID.** InstaMed payment receipt received Apr 13 5:55 PM ET. Closes the active deadline that has been escalating since Apr 1 (second notice Apr 8). Patient account cleared.
+
+> [!deadline] 2026-04-15
+> **CPA thread ACTIVE — 1040 decision due TOMORROW.** Jonathan Francis engaged Apr 13 after 4+ days of silence. Working on the return now. Watch inbox for his recommendation on Form 4868 extension vs filing 1040 by April 15. NJ-1065 $450 filing fee also due April 15 regardless. See [[TAXES]] and [[people/jonathan-francis]].
+
+> [!todo] 2026-04-16 2:30 PM
+> **Mike Silva (AcrossCap) Zoom intro — prepare.** Calendar invite confirmed. mike@acrosscap.com. Zoom link in calendar. AcrossCap domain — research what AcrossCap does before the call.
+
+> [!done] 2026-04-13
+> ~~**Wohelo tuition payment: awaiting instructions.**~~ RESOLVED: Heidi Gorton replied Apr 13 with payment details. See `[!warning]` entry above. Check for $12,900 to Wohelo Camps, 25 Gulick Rd, Raymond ME 04071. See [[family/vishala]] and `sartor/memory/inbox/rocinante/wohelo-payment-2026-04-13.md`.
+
+> [!todo]
+> **Solar engineering plan meeting: awaiting Lucent response.** Alton emailed Niko Markanovic, Doug Paige, and Audrey Vera at Lucent Energy Apr 13 to schedule a meeting. No reply as of Apr 14. Follow up if no response by Apr 16. See [[business/solar-inference]].
 
 ## History
 

@@ -2537,6 +2537,33 @@ body {
 const API = '';
 const $ = (id) => document.getElementById(id);
 
+/* CSRF: fetched once at page load, attached to mutating requests. */
+let CSRF_VALUE = '';
+async function loadCsrf() {
+  try {
+    const r = await fetch('/api/csrf', {credentials: 'same-origin'});
+    if (r.ok) {
+      const d = await r.json();
+      CSRF_VALUE = d.token || '';
+    }
+  } catch (e) { console.warn('csrf load failed:', e); }
+}
+loadCsrf();
+
+async function secureFetch(path, opts) {
+  opts = opts || {};
+  const method = (opts.method || 'GET').toUpperCase();
+  if (method !== 'GET' && method !== 'HEAD') {
+    opts.headers = Object.assign({}, opts.headers || {});
+    if (!opts.headers['X-CSRF-Token']) {
+      if (!CSRF_VALUE) { await loadCsrf(); }
+      opts.headers['X-CSRF-Token'] = CSRF_VALUE;
+    }
+    opts.credentials = opts.credentials || 'same-origin';
+  }
+  return fetch(path, opts);
+}
+
 async function fetchJSON(path) {
   try {
     const r = await fetch(API + path);
@@ -2879,7 +2906,7 @@ async function toggleActiveTask(id, done) {
     if (titleSpan) titleSpan.classList.toggle('done', done);
   }
   try {
-    await fetch('/api/tasks/' + id, {
+    await secureFetch('/api/tasks/' + id, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({done: done}),
@@ -2892,7 +2919,7 @@ async function deleteActiveTask(id) {
   var el = document.querySelector('[data-task-id="' + id + '"]');
   if (el) el.style.opacity = '0.3';
   try {
-    await fetch('/api/tasks/' + id, {method: 'DELETE'});
+    await secureFetch('/api/tasks/' + id, {method: 'DELETE'});
   } catch(e) { console.warn('deleteActiveTask error:', e); }
   renderTasks();
 }
@@ -2909,7 +2936,7 @@ function editActiveTask(span, id) {
   function save() {
     var newTitle = input.value.trim();
     if (newTitle && newTitle !== currentText) {
-      fetch('/api/tasks/' + id, {
+      secureFetch('/api/tasks/' + id, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({title: newTitle}),
@@ -2931,7 +2958,7 @@ async function addNewTask() {
   if (!title) return;
   input.value = '';
   try {
-    await fetch('/api/tasks', {
+    await secureFetch('/api/tasks', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({title: title, section: 'Pending'}),

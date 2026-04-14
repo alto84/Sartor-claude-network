@@ -1,8 +1,8 @@
 ---
 type: person
 entity: jonathan-francis
-updated: 2026-04-10
-updated_by: Claude
+updated: 2026-04-14
+updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/career, entity/tax]
 aliases: [Jonathan Francis, JF, Francis, CPA]
@@ -25,6 +25,14 @@ Alton's tax preparer. Handles personal 1040 (MFJ) and Solar Inference LLC 1065. 
 - Verbal agreement for "turnkey accounting" after Dec 9, 2025 call
 - No formal engagement letter on file (flagged to Jonathan 2026-04-06)
 - Filed Form 7004 extension for Solar Inference LLC on 2026-03-14 (confirmed via email: "Mail that in as is by Monday. No NJ extension necessary.")
+
+## Current status (2026-04-14)
+
+> [!fact]
+> **RESOLVED: CPA silence.** JF engaged on Apr 13. Thread "Re: 2025 Sartor Saxena Tax documents" went active with multiple back-and-forth exchanges. JF is working on the return now. Outstanding question: file 1040 Apr 15 or extend via Form 4868? Alton waiting on recommendation.
+
+> ~~[!blocker]~~
+> ~~**No reply since 2026-04-06.**~~ RESOLVED 2026-04-13.
 
 ## Current status (2026-04-10)
 
@@ -56,6 +64,9 @@ From the 2026-04-06 email package:
 | 2026-03-14 | JF → Alton | Filed Form 7004 extension; "No NJ extension necessary" |
 | 2026-04-06 | Alton → JF | Full 2025 tax packages sent with cover letter |
 | 2026-04-10 | — | 4 days of silence. No reply. |
+| 2026-04-13 | JF → Alton | Active thread: asked about 2025 donations ($25K in 2024; only $2,037.17 MKA in 2025); flagged W2 address should be NJ; asked about Delaware wages; asked about solar tax treatment |
+| 2026-04-13 | Alton → JF | Confirmed $2,037.17 MKA donation; noted AZ role change; confirmed solar install "in next few weeks, before July 4 deadline" |
+| 2026-04-14 | — | Awaiting JF recommendation: file 1040 Apr 15 or extend via Form 4868. April 15 is tomorrow. |
 
 ## Related
 - [[TAXES]] — full filing status and open questions

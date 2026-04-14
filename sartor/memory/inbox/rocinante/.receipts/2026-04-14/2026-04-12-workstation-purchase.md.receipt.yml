@@ -1,0 +1,8 @@
+received_at: '2026-04-14T01:39:45+00:00'
+received_by: rocinante-curator
+status: drained
+destination: sartor\memory\BUSINESS.md
+action: appended_block
+hash: d3aca769e4a5ed839c3e3eb1e781130d955a5abfc6a87bae12860400b7103219
+entry_id: purchase-2026-04-12-workstation
+curator_version: '0.1'

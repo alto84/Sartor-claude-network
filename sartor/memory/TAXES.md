@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: TAXES
-updated: 2026-04-11
-updated_by: autodream
+updated: 2026-04-14
+updated_by: personal-data-gather
 last_verified: 2026-04-12
 status: active
 next_deadline: 2026-04-15
@@ -142,6 +142,20 @@ Not relevant for the TY2025 return but worth tracking:
 
 ## Consolidated from daily logs (2026-04-11)
 - [2026-02-06] (completed) Tax preparation for 2025 filing year (new deductions under One Big Beautiful Bill Act)
+
+## Latest from gather (2026-04-14)
+
+> [!fact]
+> **CPA Jonathan Francis now actively engaged.** After 4+ days of silence, thread "Re: 2025 Sartor Saxena Tax documents" went active Apr 13. JF asked about 2025 charitable donations; Alton confirmed $2,037.17 to MKA (Nov 20, 2025) as the only major donation (vs ~$25K in 2024). JF flagged W2 address should be updated to NJ and questioned Delaware-only wage withholding. Thread live as of Apr 13 ~6:40 PM ET. Update [[people/jonathan-francis]] interaction log.
+
+> [!deadline] 2026-04-15
+> **TOMORROW: 1040 or Form 4868 extension + NJ-1065 $450 fee.** CPA now has the full package and is working on it. Watch inbox for JF's recommendation on whether to file or extend. The [!decision] above remains open until JF responds.
+
+> [!fact]
+> Alton told JF on Apr 13: "Solar installation going forwards in the next few weeks. Will be before the July 4th deadline." This is a new verbal confirmation to CPA that the ITC/depreciation timeline is on track. JF is aware of the solar installation as a TY2026 item.
+
+> [!fact]
+> Alton also noted to JF: "I just changed job roles at AZ." CPA has been informed of the role change. No further detail in the email snippet. Relevant for the W2 address issue JF flagged.
 
 <!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-56ba389650c3 -->
 ## Inbox entry: ce-1775964664-56ba389650c3

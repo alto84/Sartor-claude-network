@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-04-09
-updated_by: Claude
+updated: 2026-04-14
+updated_by: personal-data-gather
 status: active
 priority: p1
 next_review: 2026-04-16
@@ -86,7 +86,10 @@ Full details in [[TAXES]]. Summary:
 ## Key contacts
 
 - **CPA:** Jonathan Francis, Francis & Company, (914) 488-5727, jf@francis-cpa.com
-- **Solar installer:** Doug Paige, Lucent Energy Management, doug.paige@lucent-energy.com
+- **Solar installer (primary):** Doug Paige, Lucent Energy Management, doug.paige@lucent-energy.com
+- **Solar installer (project):** Niko Markanovic, Lucent Energy, niko@lucent-energy.com
+- **Solar installer (ops):** Audrey Vera, Lucent Energy, audrey.vera@lucent-energy.com
+- **Electrical contractor:** Ilija Trajceski, Power Mac LLC, info@power-mac.net
 - **Solar financing:** Climate First Bank (formerly First Climate)
 - **Home systems / WiFi:** Alyssa at Berman Home Systems, alyssa@bermanhomesystems.com
 - **GPU hosting marketplace:** vast.ai (no direct contact; support via platform)
@@ -99,6 +102,20 @@ Full details in [[TAXES]]. Summary:
 4. **Has the NJ-1065 quarterly payment been made?** Deadline 2026-04-15.
 5. **Has Jonathan Francis replied?** 3 days of silence on the 2025 tax package.
 6. **Blind spot: Chase business banking** — zero Gmail signal for the Ink 7738 card or Business Checking. No visibility into current cash position.
+
+## Latest from gather (2026-04-14)
+
+> [!fact]
+> **Engineering plan meeting requested.** Alton emailed Lucent Energy on Apr 13 requesting to schedule a meeting to "review the overall electrical and engineering plan" for 85 Stonebridge. Recipients: Niko Markanovic (niko@lucent-energy.com), Doug Paige (doug.paige@lucent-energy.com), and Audrey Vera (audrey.vera@lucent-energy.com). Three Lucent contacts now confirmed. No reply as of Apr 14.
+
+> [!fact]
+> **New Lucent contacts identified:** Niko Markanovic (niko@lucent-energy.com) and Audrey Vera (audrey.vera@lucent-energy.com) in addition to the known Doug Paige. Update Key contacts section accordingly.
+
+> [!fact]
+> **Power Mac LLC electrical estimate approved.** Ilija Trajceski (info@power-mac.net) submitted an estimate; Alton replied Apr 13: "This estimate is fine. Let me know how we can proceed. You had mentioned coordinating with Pete Berman." Power Mac LLC is the electrical contractor for the installation. Pete Berman reference: likely coordinating with Berman Home Systems (WiFi install Apr 27-29).
+
+> [!fact]
+> **Verbal update to CPA:** Alton told Jonathan Francis on Apr 13: "Solar installation going forwards in the next few weeks. Will be before the July 4th deadline." CPA now has Alton's verbal assurance on ITC timeline. Solar contract transfer from personal to LLC name not yet confirmed completed.
 
 ## Related
 - [[BUSINESS]] - Higher-level business context

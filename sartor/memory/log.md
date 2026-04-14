@@ -355,6 +355,27 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime
 - Updated: [[family/active-todos]], [[family/vasu]], `daily/2026-04-13.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-14] ingest | personal-data-gather run 1 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, is:unread OR is:read after:2026/04/12, -promotions/-social), 5 Google Calendars (7-day window Apr 14–21)
+- Facts gathered: 7 new signals (2 ACTION_REQUIRED, 3 BUSINESS, 1 RESOLVED, 1 INFORMATIONAL)
+- **KEY: CPA Jonathan Francis now active** — After 4+ days of silence, JF engaged Apr 13 on "2025 Sartor Saxena Tax documents" thread. Key items: 2025 donations confirmed ($2,037.17 MKA), W2 address issue (should be NJ), Delaware wages questioned, solar tax treatment discussed. April 15 is tomorrow; 1040 vs Form 4868 decision still open.
+- **NEW: Mike Silva (AcrossCap) Zoom confirmed** — Thu Apr 16 2:30–3:15 PM ET. New person: mike@acrosscap.com.
+- **NEW: Lucent Energy engineering plan email sent** — Alton emailed Niko Markanovic, Doug Paige, Audrey Vera on Apr 13. Awaiting response. New Lucent contacts: Niko Markanovic + Audrey Vera.
+- **NEW: Power Mac LLC electrical estimate approved** — Ilija Trajceski (info@power-mac.net), coordinating with Pete Berman.
+- **NEW: Wohelo camp tuition payment requested** — Heidi Gorton (heidigorton@gmail.com), awaiting payment instructions for Vishala's summer camp.
+- **RESOLVED: Tribeca Pediatrics $170.28 PAID** — InstaMed receipt Apr 13. Closes escalating deadline from Apr 1.
+- Confirmed: Apr 18 conflict unresolved (Rafi Yankees drop-off 11:45 AM + Vayu soccer 1–3 PM Brookdale)
+- Calendar: 5 events in window, no new conflicts vs prior runs; soccer practice Apr 15, Vishala dance concert Apr 17, movie room repairs Apr 20
+- SSH check: gpuserver1 unavailable from this runtime (consistent with all runs since Apr 10)
+- Updated: [[TAXES]], [[people/jonathan-francis]], [[business/solar-inference]], [[family/active-todos]], `daily/2026-04-14.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-14] fact | New contacts added to solar-inference.md
+
+- Added Niko Markanovic (niko@lucent-energy.com) and Audrey Vera (audrey.vera@lucent-energy.com) as Lucent Energy contacts
+- Added Ilija Trajceski (info@power-mac.net) as Power Mac LLC electrical contractor
+- Updated [[business/solar-inference]] key contacts section
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption
