@@ -392,6 +392,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Added Ilija Trajceski (info@power-mac.net) as Power Mac LLC electrical contractor
 - Updated [[business/solar-inference]] key contacts section
 
+## [2026-04-14] ingest | personal-data-gather run 3 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, is:unread after:2026/04/12), 5 Google Calendars (7-day window Apr 14–21)
+- Facts gathered: 1 new ACTION_REQUIRED; all others confirmed duplicates of runs 1 and 2
+- **CRITICAL ACTION REQUIRED TODAY: Jonathan Francis extension payment debit authorization** — JF emailed Apr 14 05:58 AM UTC confirming extension amounts: $15K IRS + $3K NJ ($18K total). He is requesting authorization to debit Alton's checking account on Wednesday (Apr 15). Strategy confirmed as EXTEND (Form 4868), not file 1040. Alton must reply to jf@francis-cpa.com today.
+- The open [!decision] on TAXES.md (file vs extend) is now resolved: extending. Final 1040 due Oct 15, 2026.
+- Calendar: unchanged vs runs 1 and 2 — no new events on any of the 5 calendars
+- SSH check: gpuserver1 unavailable from this runtime (consistent)
+- Updated: [[TAXES]], [[people/jonathan-francis]], [[family/active-todos]], `daily/2026-04-14.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption

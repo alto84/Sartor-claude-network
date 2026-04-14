@@ -183,6 +183,25 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!fact]
 > **myHomeIQ April report: home value at 85 Stonebridge increased** — Email from Angelica Tanti (Angelica Tanti/tryhomeiq.com), Apr 11. Value updated "more than the previous month." FINANCIAL signal; review report for context.
 
+## URGENT -- 2026-04-14 (TODAY)
+
+> [!deadline] 2026-04-14 TODAY
+> **Backdoor Roth conversions for Alton + Aneeta.** $7,000 Traditional IRA contributions were made for TY2025 before the April 16 deadline. Both need to be **converted to Roth IRAs TODAY** to complete the backdoor Roth strategy. Leaving the funds in Traditional past today risks: (a) accidental deductible-contribution treatment, (b) growth that becomes taxable on eventual conversion, (c) pro-rata rule entanglement if other pre-tax IRA balances exist.
+>
+> **Action steps (Fidelity, per TAXES.md line 103):**
+> 1. Log into Fidelity. Confirm $7,000 sitting in Alton's Traditional IRA (TY2025 contribution).
+> 2. Initiate Roth conversion of the full $7,000. Same-day conversion is the clean path.
+> 3. Repeat for Aneeta's Fidelity Traditional IRA.
+> 4. **Pro-rata check:** Both individuals' pre-tax IRA balances must be $0 at year-end for the conversion to be non-taxable. If either of you has a rollover IRA, SEP-IRA, or SIMPLE IRA with pre-tax money, the conversion becomes partially taxable per the IRS pro-rata rule. Flag to Jonathan Francis if unsure.
+> 5. Save conversion confirmation emails -- required for Form 8606.
+>
+> **Tax reporting (Jonathan handles):**
+> - Form 8606 for each of you -- reports nondeductible Traditional IRA contribution (TY2025) + the conversion (TY2026).
+> - 1099-R for the conversion arrives from Fidelity in early 2027 (for TY2026 filing).
+> - Basis: $7,000 nondeductible basis added to each person's Form 8606 line 2.
+>
+> **Why today:** Delaying lets the $7,000 generate investment gains in the Traditional IRA, which would be taxable when converted. Same-day conversion = zero gain = zero tax.
+
 ## Latest from gather (2026-04-14)
 
 > [!fact]
@@ -263,3 +282,20 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo]
 > **Review and update autopayments on Chase Sapphire (...9425) when replacement card arrives.** Card is being replaced after fraud alert (Apr 13). Any subscriptions or autopays on the old card will fail. Review known recurring charges and update with new card number.
+
+## Latest from gather (2026-04-14) run 3
+
+> [!deadline] 2026-04-14 EOD — MOST URGENT ITEM TODAY
+> **Reply to Jonathan Francis NOW: authorize $18K tax extension payment debit.**
+>
+> JF emailed this morning (Apr 14, 05:58 AM UTC) confirming extension payments: **$15,000 to IRS + $3,000 to NJ = $18,000 total.** He is asking: "Can I set these payments up to be debited from your checking account Wednesday?"
+>
+> Wednesday = April 15 = tomorrow = the filing deadline.
+>
+> **You must reply to jf@francis-cpa.com today** to either:
+> - (A) Authorize the full $18K debit from checking, OR
+> - (B) Authorize a lower amount if you're confident Solar Inference LLC losses will reduce the final tax liability (JF's words: "which should throw off some losses")
+>
+> No reply by EOD today = payment not set up = potential underpayment penalty on Apr 15.
+>
+> Extension strategy (Form 4868) is now confirmed — the 1040 is NOT being filed today. Final 1040 due Oct 15, 2026. See [[TAXES]] and [[people/jonathan-francis]].

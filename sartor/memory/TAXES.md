@@ -194,3 +194,22 @@ Not relevant for the TY2025 return but worth tracking:
 Append this fact to `TAXES.md` under the section relevant to `2027 fiscal outlook`.
 
 <!-- /curator-drained -->
+
+## Latest from gather (2026-04-14) run 3
+
+> [!deadline] 2026-04-15
+> **TOMORROW — REPLY TO JF TODAY.** Jonathan Francis emailed this morning (Apr 14, 05:58 AM UTC) with the extension payment amounts. He is requesting authorization to debit Alton's personal checking account on Wednesday (April 15).
+>
+> **Extension payment amounts:**
+> - IRS: **$15,000**
+> - NJ: **$3,000**
+> - Total: **$18,000**
+>
+> JF's note: "This doesn't take into account any activity of the LLC, which should throw off some losses. If the tax comes in lower, you'll get refunds. Or you could choose to pay less now if you think we'll bang that down."
+>
+> **Required action:** Reply to [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com) TODAY (Apr 14) to either (a) authorize the $18K debit from checking for Wednesday, or (b) instruct a lower amount if confident LLC losses will reduce the final liability.
+>
+> No response by EOD today = no payment authorized = potential Apr 15 underpayment penalty.
+
+> [!fact]
+> **Extension strategy now confirmed.** The fact that JF is setting up extension payments means the 1040 will NOT be filed by Apr 15 — Form 4868 is being filed instead. The open [!decision] above (file or extend) is implicitly resolved: extending. Alton's choice is now only the payment amount ($18K as estimated or lower if banking on LLC losses). Update the [!decision] callout once JF replies.
