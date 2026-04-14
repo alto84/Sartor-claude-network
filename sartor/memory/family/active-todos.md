@@ -263,3 +263,20 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo]
 > **Review and update autopayments on Chase Sapphire (...9425) when replacement card arrives.** Card is being replaced after fraud alert (Apr 13). Any subscriptions or autopays on the old card will fail. Review known recurring charges and update with new card number.
+
+## Latest from gather (2026-04-14) run 3
+
+> [!deadline] 2026-04-14 EOD — MOST URGENT ITEM TODAY
+> **Reply to Jonathan Francis NOW: authorize $18K tax extension payment debit.**
+>
+> JF emailed this morning (Apr 14, 05:58 AM UTC) confirming extension payments: **$15,000 to IRS + $3,000 to NJ = $18,000 total.** He is asking: "Can I set these payments up to be debited from your checking account Wednesday?"
+>
+> Wednesday = April 15 = tomorrow = the filing deadline.
+>
+> **You must reply to jf@francis-cpa.com today** to either:
+> - (A) Authorize the full $18K debit from checking, OR
+> - (B) Authorize a lower amount if you're confident Solar Inference LLC losses will reduce the final tax liability (JF's words: "which should throw off some losses")
+>
+> No reply by EOD today = payment not set up = potential underpayment penalty on Apr 15.
+>
+> Extension strategy (Form 4868) is now confirmed — the 1040 is NOT being filed today. Final 1040 due Oct 15, 2026. See [[TAXES]] and [[people/jonathan-francis]].
