@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-13
-updated_by: rocinante
+updated: 2026-04-14
+updated_by: personal-data-gather
 status: active
 priority: p1
 next_review: 2026-04-20
@@ -172,6 +172,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact]
 > **myHomeIQ April report: home value at 85 Stonebridge increased** — Email from Angelica Tanti (Angelica Tanti/tryhomeiq.com), Apr 11. Value updated "more than the previous month." FINANCIAL signal; review report for context.
+
+## Latest from gather (2026-04-14)
+
+> [!fact]
+> **RESOLVED: Tribeca Pediatrics $170.28 PAID.** InstaMed payment receipt received Apr 13 5:55 PM ET. Closes the active deadline that has been escalating since Apr 1 (second notice Apr 8). Patient account cleared.
+
+> [!deadline] 2026-04-15
+> **CPA thread ACTIVE — 1040 decision due TOMORROW.** Jonathan Francis engaged Apr 13 after 4+ days of silence. Working on the return now. Watch inbox for his recommendation on Form 4868 extension vs filing 1040 by April 15. NJ-1065 $450 filing fee also due April 15 regardless. See [[TAXES]] and [[people/jonathan-francis]].
+
+> [!todo] 2026-04-16 2:30 PM
+> **Mike Silva (AcrossCap) Zoom intro — prepare.** Calendar invite confirmed. mike@acrosscap.com. Zoom link in calendar. AcrossCap domain — research what AcrossCap does before the call.
+
+> [!todo]
+> **Wohelo tuition payment: awaiting instructions.** Alton emailed Heidi Gorton Apr 13 ("We are ready to send the full tuition payment and the deposit"). No reply yet. Follow up if no response by end of week. This is Vishala's summer camp. See [[family/vishala]].
+
+> [!todo]
+> **Solar engineering plan meeting: awaiting Lucent response.** Alton emailed Niko Markanovic, Doug Paige, and Audrey Vera at Lucent Energy Apr 13 to schedule a meeting. No reply as of Apr 14. Follow up if no response by Apr 16. See [[business/solar-inference]].
 
 ## History
 
