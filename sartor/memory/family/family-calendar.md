@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-11
+updated: 2026-04-15
 updated_by: personal-data-gather
 status: active
 next_review: 2026-04-16
@@ -127,3 +127,19 @@ Updated entries for Apr 11–18 based on Blue Sombrero and primary calendar:
 
 - 2026-04-09: Initial calendar compilation from Gmail+Calendar harvest covering 2026-04-09 through 2026-05-09. Flagged sole-parent window and Aneeta RRE correction.
 - 2026-04-11: Updated via personal-data-gather run 6. Added Apr 18 back-to-back soccer games, Mother's Day planning event, Goddard soccer start, summer forms deadline, Parent's Night Out.
+- 2026-04-15: Updated via personal-data-gather run 1. Added Vayu Band Concert Apr 22 (NEW); flagged Apr 22 three-event conflict; noted Goddard parking closure Apr 20-21.
+
+## Latest from gather (2026-04-15)
+
+New event discovered on Family calendar (added Apr 14 by Aneeta):
+
+| Date | Time (ET) | Event | Source | Notes |
+|------|-----------|-------|--------|-------|
+| Wed 4/22 | 4:20–5:20 PM | Vasu Recycling Costume Parade | Family cal | Goddard "Recycled Runway" |
+| Wed 4/22 | 5:30–6:15 PM | Vayu Soccer Practice | Family cal | Anderson Park |
+| Wed 4/22 | 6:30–7:30 PM | **Vayu Band Concert (MKA)** | Family cal | **NEW** — not in any prior calendar view |
+
+> [!warning]
+> **Apr 22 three-event evening.** Band concert (6:30–7:30 PM) was not in any prior gather. All three events require different locations and different children. Recycling parade ends 5:20; soccer starts 5:30 (10-min gap). Soccer ends 6:15; band concert starts 6:30 (15-min gap). Split parent coverage required. Soccer practice is lowest priority if a parent must choose between the three. See [[family/active-todos]].
+
+**Apr 20–21 logistics note:** Goddard parking garage at 1 Seymour St closed 7am–5pm both days. Alternate parking needed for Vasu drop-off. See [[family/vasu]].

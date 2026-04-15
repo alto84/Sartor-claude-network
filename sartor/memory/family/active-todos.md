@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-14
+updated: 2026-04-15
 updated_by: personal-data-gather
 
 status: active
@@ -332,3 +332,28 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - Game 1 noon–1 PM: B34 Lime vs B34 Green (Boudreau & Rastogi)
 > - Game 2 1–2 PM: B34 Lime vs B34 Purple (Lac & Karacas)
 > Prior opponent data (Shock, Charcoal) was stale. Conflict with Rafi's party still unresolved.
+
+## Latest from gather (2026-04-15)
+
+> [!deadline] TODAY 2026-04-15
+> **PAMKA Social tickets close TODAY.** First flagged Apr 13 run 6. No purchase confirmation email found through today's scan. Both Vayu (4th grade) and Vishala (3rd grade) in scope. Contact PAMKA before end of day.
+
+> [!fact]
+> **Loki's chlorambucil DELIVERED.** Chewy order #5132136807 confirmed delivered (service@chewy.com, Apr 14). This was the Rx prescription order placed Apr 12. The "Reorder Loki's chlorambucil" todo above can be CLOSED pending physical item confirmation.
+
+> [!todo]
+> **Goddard parking garage closed Apr 20 and Apr 21.** Alissa DelConte (Goddard, Apr 14): "the 1 Seymour Street parking garage will be closed from 7 am to 5 pm on Monday, 4/20/26, and Tuesday" [4/21]. Find alternate parking for Vasu drop-off both days. See [[family/vasu]].
+
+> [!warning] NEW — Apr 22 three-event evening
+> **Triple-event conflict: Wednesday April 22.** Three events for two children in a 3-hour window:
+> - 4:20–5:20 PM: Vasu Recycling Costume Parade (Goddard, "Recycled Runway")
+> - 5:30–6:15 PM: Vayu Rec Soccer Practice (Anderson Park)
+> - 6:30–7:30 PM: **Vayu Band Concert (MKA)** — NEW, added to Family calendar Apr 14
+>
+> Gaps: 10 min between parade and practice (different locations), 15 min between practice and concert (different locations). Requires split parent coverage. Band concert is highest-stakes; soccer practice is most skippable. Plan now. See [[family/vayu]].
+
+> [!todo]
+> **Tumble Zone Summer Gymnastics Camp — enrollment decision.** Registration open (Tumble Zone LLC email Apr 14). 9 weeks, June 22–Aug 20, Mon-Thu, $50/day or $180/week, age 5+. Eligible: Vishala (8) and Vayu (10). Vasu (4) under minimum age. Separate from the May 30 Gym Day event. Decide whether to register either or both children.
+
+> [!note]
+> **Tax debit executing today.** $18,000 ($15K IRS + $3K NJ) authorized by Alton Apr 14, scheduled by Jonathan Francis for April 15 debit. Verify in checking account. See [[TAXES]] and [[people/jonathan-francis]].

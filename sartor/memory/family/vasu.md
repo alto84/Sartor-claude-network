@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-04-12
+updated: 2026-04-15
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -97,3 +97,11 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!deadline] 2026-04-13
 > **Goddard summer forms DUE TODAY.** The deadline is now. Confirm with The Goddard School that all required health and permission forms for summer camp are submitted and that Vasu's enrollment is complete. Contact Samantha Ramsden or Jacqueline Capote if anything is missing.
+
+## Latest from gather (2026-04-15)
+
+> [!todo]
+> **Closed-toe shoes required at Goddard.** Director Alissa DelConte sent policy reminder Apr 14: as weather gets warmer and children spend more time outdoors, closed-toe shoes are required. Pack appropriate footwear for Vasu daily.
+
+> [!warning]
+> **Goddard parking garage closed Apr 20 and Apr 21.** "The 1 Seymour Street parking garage will be closed from 7 am to 5 pm on Monday, 4/20/26, and Tuesday" [Apr 21] (Alissa DelConte, Apr 14). Plan alternate parking for Vasu drop-off both days. See [[family/active-todos]].
