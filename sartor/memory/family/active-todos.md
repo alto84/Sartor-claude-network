@@ -373,3 +373,8 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo]
 > **HITLAB Innovators Summit — accept or decline.** Jerry Antimano via LinkedIn (Apr 15): "I'm reaching out to invite you to the HITLAB Innovators Summit (May 5–7, NYC) and to participate in a small, peer-led executive roundtable during the conference." HITLAB is a digital health innovation organization. Note: May 5–7 falls just after Aneeta's RRE window (Apr 29–May 3); confirm she is back before committing. See [[ALTON]].
+
+## Latest from gather (2026-04-15) run 6
+
+> [!warning] STREP EXPOSURE — Vasu (Goddard, Apr 15)
+> **A child in Vasu's Goddard preschool class was diagnosed with strep A today.** Child was last in class Apr 14. Director Alissa DelConte notified families at 4:36 PM ET. Monitor Vasu for fever, sore throat, difficulty swallowing over the next 2-5 days. If symptoms develop, contact Tribeca Pediatrics before sending to school. See [[family/vasu]].
