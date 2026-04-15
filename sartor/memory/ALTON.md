@@ -2,7 +2,7 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-04-12
+updated: 2026-04-15
 updated_by: personal-data-gather
 last_verified: 2026-04-12
 status: active
@@ -182,3 +182,11 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 > [!fact]
 > **Catalyst Pharmaceuticals Director Medical Information** (19d822f84c230275, LinkedIn, Apr 12 2:53 PM). "10 company alumni." Medical information director at a specialty pharma company. Career market intelligence. See [[business/az-career]].
+
+## Latest from gather (2026-04-15) run 5
+
+> [!todo]
+> **HITLAB Innovators Summit — accept or decline.** Jerry Antimano (LinkedIn, 19d91cf90386ee78, Apr 15 3:43 PM UTC): "I'm reaching out to invite you to the HITLAB Innovators Summit (May 5–7, NYC) and to participate in a small, peer-led executive roundtable during the conference." HITLAB (Health Innovation Through Technology Lab) is a digital health research and consulting organization. Decision window: before May 5. Note: Aneeta's RRE trip ends May 3 — confirm she is back before committing to May 5 event. See [[family/active-todos]].
+
+> [!deadline] 2026-05-15
+> **SNO Clinical Trials Workshop — application deadline May 15.** Society for Neuro-Oncology newsletter (snodigest@soc-neuro-onc.org, issue 216, Apr 15): "8th Annual Clinical Trial Design Workshop, Application Deadline: Friday, May 15, 2026." Directly relevant to Alton's neuro-oncology background (MGH fellowship, founded Neuro-Oncology Division at Boston Medical Center). Apply if interested. SNO Annual Meeting is Nov 12–15, 2026, PA Convention Center (abstract submission open separately).
