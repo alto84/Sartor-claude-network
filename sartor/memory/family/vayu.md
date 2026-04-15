@@ -144,3 +144,11 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!warning]
 > **Apr 22 scheduling conflict: Band Concert vs Soccer Practice.** New calendar event detected: Vayu has a **Band Concert at 6:30–7:30 PM ET on Wednesday April 22** (added to Family calendar Apr 14 by Aneeta). Soccer practice runs 5:30–6:15 PM at Anderson Park — only 15 minutes before concert start. Vasu's Recycling Costume Parade is also 4:20–5:20 PM at Goddard. Three events across two children in one evening. Band concert is non-negotiable. Soccer practice is skippable if a parent must choose. Coordinate with Aneeta.
+
+## Latest from gather (2026-04-15) run 5
+
+> [!todo] TOMORROW 2026-04-17
+> **Pack lunch for Ellis Island trip.** 4th grade parent email (eduwende@gmail.com, Apr 15) confirmed: "Please make sure to send your child to school with a packed lunch." Ellis Island trip is Friday April 17. Physical cleared in Magnus Health (confirmed 2026-04-13 by Debra Van Eerde). Packed lunch is the only remaining logistics item before the trip.
+
+> [!fact]
+> **Spring Band Concert reminder received.** MKA band teacher Paul Murphy emailed Apr 15 confirming: Wednesday April 22, student arrival 6:30 PM, concert starts 7:00 PM. Consistent with band concert callout already in Family calendar (added Apr 14) and [[family/active-todos]]. Apr 22 triple-event plan unchanged.

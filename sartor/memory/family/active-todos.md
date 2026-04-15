@@ -362,3 +362,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note]
 > **Tax debit executing today.** $18,000 ($15K IRS + $3K NJ) authorized by Alton Apr 14, scheduled by Jonathan Francis for April 15 debit. Verify in checking account. See [[TAXES]] and [[people/jonathan-francis]].
+
+## Latest from gather (2026-04-15) run 5
+
+> [!todo] ACTION_REQUIRED — FRIDAY MORNING 2026-04-17
+> **Pack lunch for Vayu — Ellis Island field trip.** 4th grade parent email (eduwende@gmail.com, Apr 15): "Please make sure to send your child to school with a packed lunch." Physical cleared in Magnus Health (Apr 13). Packed lunch is the only remaining action before the trip. See [[family/vayu]].
+
+> [!warning] VERIFY BEFORE FRIDAY
+> **Vishala dance concert time discrepancy — 8:15 AM vs noon–2 PM.** MKA teacher Kristen Weaver emailed today (Apr 15): "The third grade dance concert is this Friday! The concert is part of our regular Friday assembly. We'll start at 8:15 and hopefully be done by 9." Family calendar shows the event at noon–2 PM (run 2 today corrected prior 8 AM entries to noon based on calendar). Email from the teacher is more authoritative than the calendar entry. Confirm the correct time with Aneeta before Friday — the Apr 17 coverage plan (dance concert vs Vayu's Ellis Island trip) depends on this. See [[family/vishala]].
+
+> [!todo]
+> **HITLAB Innovators Summit — accept or decline.** Jerry Antimano via LinkedIn (Apr 15): "I'm reaching out to invite you to the HITLAB Innovators Summit (May 5–7, NYC) and to participate in a small, peer-led executive roundtable during the conference." HITLAB is a digital health innovation organization. Note: May 5–7 falls just after Aneeta's RRE window (Apr 29–May 3); confirm she is back before committing. See [[ALTON]].

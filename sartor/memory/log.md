@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-14
+updated: 2026-04-15
 updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
@@ -490,3 +490,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - All 9 prior alerts confirmed unchanged: Apr 18 conflict (T-3), Apr 22 triple-event, Mike Silva Zoom tomorrow, PAMKA deadline today (unresolved), $18K tax debit today, Goddard parking 4/20-4/21, Newegg #412968624 in transit, Vayu math worksheets, Apr 28 contractor overlap
 - SSH check: gpuserver1 unavailable from this runtime (consistent)
 - Updated: [[family/family-calendar]] (soccer time correction noted), `daily/2026-04-15.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-15] ingest | personal-data-gather run 5 — dance concert discrepancy + HITLAB invite + Ellis Island packed lunch
+
+- Sources: Gmail (30 msgs, is:unread newer_than:2d), 5 Google Calendars (Apr 15–22 window)
+- Facts gathered: 4 new signals (1 ACTION_REQUIRED, 1 time discrepancy, 2 career/informational)
+- **NEW ACTION_REQUIRED: Vayu Ellis Island packed lunch.** 4th grade parent email (eduwende@gmail.com, Apr 15) confirmed: send packed lunch for Vayu's Ellis Island trip Friday Apr 17. Physical cleared. Only remaining prep item.
+- **NEW TIME DISCREPANCY: Vishala dance concert.** MKA teacher email (Kristen Weaver, Apr 15) says 8:15 AM Friday assembly. Family calendar shows noon–2 PM. Run 2 had corrected to noon based on calendar. Teacher email is more authoritative. Verify with Aneeta before Friday.
+- **NEW CAREER: HITLAB Innovators Summit** — Jerry Antimano (LinkedIn, Apr 15) invited to May 5–7 NYC executive roundtable. Accept/decline pending. Routed to [[ALTON]].
+- **NEW DEADLINE: SNO Clinical Trials Workshop** — application due May 15, 2026. Neuro-oncology relevance. Routed to [[ALTON]].
+- Confirmed unchanged from runs 1–4: Apr 18 conflict (soccer vs Rafi), Apr 22 triple-event, PAMKA deadline today, Mike Silva Zoom tomorrow, tax debit today, Goddard parking 4/20–4/21
+- SSH: gpuserver1 unavailable from this runtime (consistent)
+- Updated: [[family/vayu]], [[family/vishala]], [[family/active-todos]], [[ALTON]]
+- Created: `data/gather-alerts.md` (13 alerts), `data/heartbeat-log.csv`
