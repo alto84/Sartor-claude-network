@@ -5,7 +5,7 @@ updated: 2026-04-14
 updated_by: personal-data-gather
 status: active
 priority: p1
-next_review: 2026-04-16
+next_review: 2026-04-21
 tags: [entity/llc, domain/career, status/active, priority/p1]
 aliases: [Solar Inference, Solar Inference LLC, SI LLC]
 related: [BUSINESS, TAXES, MACHINES, ALTON, FAMILY]
@@ -116,6 +116,11 @@ Full details in [[TAXES]]. Summary:
 
 > [!fact]
 > **Verbal update to CPA:** Alton told Jonathan Francis on Apr 13: "Solar installation going forwards in the next few weeks. Will be before the July 4th deadline." CPA now has Alton's verbal assurance on ITC timeline. Solar contract transfer from personal to LLC name not yet confirmed completed.
+
+## Latest from gather (2026-04-14) run 6
+
+> [!fact]
+> **Power Mac LLC electrical work CONFIRMED: April 28, 8-9 AM.** Ilija Trajceski (info@power-mac.net) replied Apr 14 at 2:19 PM ET: "We can schedule you for April 28th arriving between 8-9am if that works for you. I can let you know if anything opens up sooner. We will coordinate with Pete Berman." Possibility of earlier slot if one opens. Coordinating with Pete Berman (Berman Home Systems, also on-site Apr 27-29 for WiFi). Prior status (run 1): estimate approved with no date. Now fully scheduled.
 
 ## Related
 - [[BUSINESS]] - Higher-level business context
