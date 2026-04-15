@@ -424,6 +424,21 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime (consistent)
 - Updated: [[TAXES]], [[people/jonathan-francis]], [[family/active-todos]], `daily/2026-04-14.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-15] ingest | personal-data-gather run 2 — time corrections + new logistics details
+
+- Sources: Gmail (30 msgs scanned, is:unread after:2026/04/13), 5 Google Calendars (Apr 15-22 window)
+- Facts gathered: 3 corrections, 3 new details, 1 prep flag
+- **TIME CORRECTIONS (errors in family-calendar.md main table from Apr 9 harvest):**
+  - Vishala dance concert 4/17: corrected to noon-2:00 PM ET (was 8:00-10:00 AM)
+  - Movie room repairs 4/20: corrected to 1:00-3:00 PM ET (was 9:00-11:00 AM)
+  - Rafi's birthday party 4/18: event block 3:45-9:45 PM ET; drop-off logistics by 11:45 AM (prior notes conflated to "11:45 AM start; ends 5:45 PM")
+- **NEW LOGISTICS:** Goddard 34 South Fullerton Parking confirmed as alternate for 4/20-4/21; one-lane-only at South Fullerton on 4/22-4/23
+- **NEW PREP FLAG:** Mike Silva (AcrossCap, mike@acrosscap.com) Zoom TOMORROW Apr 16 2:30 PM ET — no prior AcrossCap context in memory
+- **NEW DECISION ITEM:** Tumble Zone summer gymnastics camp (Jun 22-Aug 20, $50/day, ages 5+) — Vishala + Vayu eligible, no decision captured
+- Confirmed active: Apr 18 soccer/Rafi conflict (T-3), Apr 22 triple-event, PAMKA Social deadline today, CAQH reattestation
+- SSH check: gpuserver1 unavailable (consistent)
+- Updated: [[family/family-calendar]], `daily/2026-04-15.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption
