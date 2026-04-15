@@ -3,6 +3,7 @@ type: domain
 entity: family-calendar
 updated: 2026-04-15
 updated_by: personal-data-gather
+note: time-corrections applied run2
 status: active
 next_review: 2026-04-16
 tags: [entity/family, domain/family, meta/calendar]
@@ -31,9 +32,9 @@ Compiled view of family-relevant events from Google Calendar harvest on 2026-04-
 |------|------|-------|-----|
 | Tue 4/15 | 17:30-18:15 | Soccer practice, Anderson Park | Vayu |
 | Thu 4/16 | all-day | Abby's birthday (Alton's sister, recurring) | Gift reminder |
-| Fri 4/17 | 08:00-10:00 | [[vishala]] dance concert (MKA) | Vishala + parent |
-| Sat 4/18 | 13:00-16:00 | Rafi's birthday party, Yankees game | Vayu |
-| Mon 4/20 | 09:00-11:00 | Movie room repairs | Household |
+| Fri 4/17 | 12:00-14:00 | [[vishala]] dance concert (MKA) | Vishala + parent |
+| Sat 4/18 | 15:45-21:45 (drop-off by 11:45 AM) | Rafi's birthday party, Yankees game | Vayu |
+| Mon 4/20 | 13:00-15:00 | Movie room repairs | Household |
 | Mon 4/20 | all-day | Uncle Brad's birthday (recurring) | Gift reminder |
 
 ## Week of 4/21 (2026-04-21 to 2026-04-27)
@@ -143,3 +144,19 @@ New event discovered on Family calendar (added Apr 14 by Aneeta):
 > **Apr 22 three-event evening.** Band concert (6:30–7:30 PM) was not in any prior gather. All three events require different locations and different children. Recycling parade ends 5:20; soccer starts 5:30 (10-min gap). Soccer ends 6:15; band concert starts 6:30 (15-min gap). Split parent coverage required. Soccer practice is lowest priority if a parent must choose between the three. See [[family/active-todos]].
 
 **Apr 20–21 logistics note:** Goddard parking garage at 1 Seymour St closed 7am–5pm both days. Alternate parking needed for Vasu drop-off. See [[family/vasu]].
+
+## Latest from gather (2026-04-15) run 2
+
+**Time corrections applied to main table (errors from original Apr 9 harvest):**
+- Vishala dance concert 4/17: corrected to **noon-2:00 PM ET** (was 8-10 AM — wrong)
+- Movie room repairs 4/20: corrected to **1:00-3:00 PM ET** (was 9-11 AM — wrong)
+- Rafi's birthday party 4/18: calendar event block **3:45-9:45 PM ET**; description note says "Drop off by 11:45am." These are separate facts: drop-off logistics at 11:45 AM, game window 3:45-9:45 PM. Prior notes conflated them as "11:45 AM start; ends 5:45 PM" — both wrong.
+
+> [!fact]
+> **Goddard parking garage alternate confirmed (full details from email body):**
+> - 1 Seymour St CLOSED 7am-5pm on 4/20 AND 4/21.
+> - Alternate for those days: **34 South Fullerton Parking** (designated Goddard spots).
+> - 4/22 AND 4/23: South Fullerton open but **one lane only** — allow extra time for drop-off.
+
+> [!todo]
+> **Mike Silva (AcrossCap) Zoom TOMORROW** — Apr 16, 2:30-3:15 PM ET. Intro meeting; mike@acrosscap.com. No prior AcrossCap context in memory. Prep needed.
