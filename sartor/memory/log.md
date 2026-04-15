@@ -438,3 +438,19 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: no new events on primary, Family, Aneeta, or Tasks calendars vs runs 1-5
 - SSH check: gpuserver1 unavailable from this runtime (consistent)
 - Updated: [[family/vayu]], [[family/active-todos]], [[business/solar-inference]], `daily/2026-04-14.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-15] ingest | personal-data-gather run 1 — Gmail + Calendar harvest
+
+- Sources: Gmail (30 msgs scanned, is:unread after:2026/04/13), 5 Google Calendars (Apr 15–22 window)
+- Facts gathered: 7 new signals (2 logistics/ACTION, 1 resolution, 4 informational)
+- **RESOLVED: Loki's chlorambucil delivered** — Chewy order #5132136807 confirmed delivered Apr 14. Closes the "Reorder Loki's chlorambucil" todo pending physical item check.
+- **NEW LOGISTICS: Goddard parking garage closed Apr 20-21** — 1 Seymour St, 7am–5pm both days. Affects Vasu drop-off. Alternate parking needed. Routed to [[family/vasu]] and [[family/active-todos]].
+- **NEW CALENDAR EVENT: Vayu Band Concert Apr 22 6:30–7:30 PM ET** — added to Family calendar Apr 14 by Aneeta. Not in any prior gather run. Creates triple-event evening: Vasu Recycling Parade (4:20-5:20 PM) + Vayu Soccer Practice (5:30-6:15 PM) + Vayu Band Concert (6:30-7:30 PM). Conflict flagged in [[family/active-todos]] and [[family/family-calendar]].
+- **FAMILY: Aneeta responded to Roshni Shah** (Vayu math teacher) Apr 14 — thanked for 1:1 support; will use worksheets. Reply ACTION_REQUIRED from run 6 is partially resolved. Home practice still needed. Routed to [[family/vayu]].
+- **DEADLINE TODAY: PAMKA Social tickets** — close today Apr 15 (first flagged Apr 13 run 6). No purchase confirmation found. Alert written.
+- **TAX TODAY: $18K debit executing** — $15K IRS + $3K NJ scheduled per JF. Informational; no action needed unless debit fails.
+- Informational: Tumble Zone summer camp open (age 5+, Jun 22–Aug 20), Sam Murphy LinkedIn recruiter (Oncology MD Director), SNO abstract submissions open, Apple TV receipt, multiple deliveries (Newegg, B&N, Chewy), Fidelity webinar.
+- Apr 18 conflict (soccer vs Rafi party) still unresolved — 3 days away.
+- SSH check: gpuserver1 unavailable from this runtime (command not found — consistent with all runs since Apr 10)
+- Created: `daily/2026-04-15.md`, `data/heartbeat-log.csv`, `data/gather-alerts.md`
+- Updated: [[family/vayu]], [[family/active-todos]], [[family/vasu]], [[family/family-calendar]], `data/heartbeat-log.csv`, `data/gather-alerts.md`

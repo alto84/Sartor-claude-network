@@ -2,7 +2,7 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-04-14
+updated: 2026-04-15
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -135,3 +135,12 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 - 2026-04-13: Updated via personal-data-gather run 1. Band instrument reminder (today). Rafi's party time corrected to 11:45 AM–5:45 PM (not 1–4 PM).
 - 2026-04-13: Updated via personal-data-gather run 5. MKA confirmed physical uploaded and approved in Magnus. Vayu cleared for Ellis Island Apr 17.
 - 2026-04-14: Updated via personal-data-gather run 6. Teacher Roshni Shah flagged math difficulty (partial quotients division). Blue Sombrero opponents updated.
+- 2026-04-15: Updated via personal-data-gather run 1. Aneeta replied to Shah (action partially resolved). Band concert Apr 22 newly discovered — conflict with soccer practice flagged.
+
+## Latest from gather (2026-04-15)
+
+> [!fact]
+> **Aneeta replied to Roshni Shah** (math support teacher, rshah@mka.org) Apr 14: "Thank you and thank you for your 1:1 work with Vayu. We will use the attachments to work with him." Alton was CC'd. The ACTION_REQUIRED from the Apr 14 run to reply to the teacher is PARTIALLY RESOLVED — Aneeta acknowledged. Worksheets (2 PNG files) are in the email thread. Still needed: download the attachments and use them for home practice sessions with Vayu on partial quotients division.
+
+> [!warning]
+> **Apr 22 scheduling conflict: Band Concert vs Soccer Practice.** New calendar event detected: Vayu has a **Band Concert at 6:30–7:30 PM ET on Wednesday April 22** (added to Family calendar Apr 14 by Aneeta). Soccer practice runs 5:30–6:15 PM at Anderson Park — only 15 minutes before concert start. Vasu's Recycling Costume Parade is also 4:20–5:20 PM at Goddard. Three events across two children in one evening. Band concert is non-negotiable. Soccer practice is skippable if a parent must choose. Coordinate with Aneeta.
