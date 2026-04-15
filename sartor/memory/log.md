@@ -439,6 +439,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable (consistent)
 - Updated: [[family/family-calendar]], `daily/2026-04-15.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
+## [2026-04-15] ingest | personal-data-gather run 3 — no new signals, contractor overlap flagged
+
+- Sources: Gmail (30 msgs scanned, is:unread after:2026/04/13), 5 Google Calendars (Apr 15–22 window)
+- Facts gathered: 0 new; all Gmail and calendar data duplicates of runs 1 and 2
+- **LOGISTICS FLAG: Apr 28 dual-contractor overlap.** Power Mac LLC (Ilija Trajceski, 8–9 AM) and Berman Home Systems Day 2 (9 AM) both scheduled April 28. Requires coordination to avoid concurrent contractors. Routed to [[family/active-todos]].
+- Confirmed active: PAMKA tickets close TODAY (no confirmation), $18K tax debit executing today, Apr 18 soccer/Rafi conflict (T-3, unresolved), Apr 22 triple-event, Mike Silva Zoom TOMORROW 2:30 PM
+- SSH check: gpuserver1 unavailable (consistent)
+- Updated: [[family/active-todos]], `daily/2026-04-15.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## History
 
 - 2026-04-09: Log spine file created as part of Karpathy pattern adoption
