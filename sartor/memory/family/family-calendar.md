@@ -3,7 +3,7 @@ type: domain
 entity: family-calendar
 updated: 2026-04-15
 updated_by: personal-data-gather
-note: time-corrections applied run2
+note: time-corrections applied run2; soccer times confirmed run4
 status: active
 next_review: 2026-04-16
 tags: [entity/family, domain/family, meta/calendar]
@@ -144,6 +144,23 @@ New event discovered on Family calendar (added Apr 14 by Aneeta):
 > **Apr 22 three-event evening.** Band concert (6:30–7:30 PM) was not in any prior gather. All three events require different locations and different children. Recycling parade ends 5:20; soccer starts 5:30 (10-min gap). Soccer ends 6:15; band concert starts 6:30 (15-min gap). Split parent coverage required. Soccer practice is lowest priority if a parent must choose between the three. See [[family/active-todos]].
 
 **Apr 20–21 logistics note:** Goddard parking garage at 1 Seymour St closed 7am–5pm both days. Alternate parking needed for Vasu drop-off. See [[family/vasu]].
+
+## Latest from gather (2026-04-15) run 4
+
+> [!fact]
+> **Apr 18 soccer times confirmed at noon ET.** Blue Sombrero raw calendar data + Carly Baldwin (soccer group email thread, Apr 14) both confirm Game 1 at **noon–1 PM ET** and Game 2 at **1–2 PM ET**, Brookdale Park. The Apr 11 run had these as 1–3 PM — that was wrong. Correct times are an hour earlier.
+
+> [!warning]
+> With soccer starting at noon, the Apr 18 conflict with Rafi's party (drop-off requires leaving Montclair ~11:15 AM) is a **simultaneous departure in opposite directions**. A parent split is mandatory if Vayu attends both. Decision needed by Fri Apr 17.
+
+**Soccer table correction (Apr 11 entry had wrong times):**
+
+| Date | Time (ET) | Event | Source | Corrected |
+|------|-----------|-------|--------|-----------|
+| Sat 4/18 | **noon–1 PM** | B34 Lime vs B34 Green | Blue Sombrero | Was "1–2 PM" in Apr 11 run |
+| Sat 4/18 | **1–2 PM** | B34 Lime vs B34 Purple | Blue Sombrero | Was "2–3 PM" in Apr 11 run |
+
+**Apr 21 logistics note:** Montclair Public Library opens at noon (12 PM) on Tuesday April 21 for a staff meeting. Informational.
 
 ## Latest from gather (2026-04-15) run 2
 

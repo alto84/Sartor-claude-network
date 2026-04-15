@@ -478,3 +478,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime (command not found — consistent with all runs since Apr 10)
 - Created: `daily/2026-04-15.md`, `data/heartbeat-log.csv`, `data/gather-alerts.md`
 - Updated: [[family/vayu]], [[family/active-todos]], [[family/vasu]], [[family/family-calendar]], `data/heartbeat-log.csv`, `data/gather-alerts.md`
+
+## [2026-04-15] ingest | personal-data-gather run 4 — soccer times confirmed, informational only
+
+- Sources: Gmail (40 msgs scanned, is:unread after:2026/04/14), 5 Google Calendars (Apr 15–22 window)
+- Facts gathered: 1 confirmation + 3 informational; no new ACTION_REQUIRED items
+- **CONFIRMATION: Soccer Apr 18 games at NOON confirmed.** Carly Baldwin (carly.baldwin@patch.com, group email CC) replied Apr 14: "The noon time change for Saturday's game is noted. See you all at noon Saturday!" Blue Sombrero raw calendar independently shows 16:00 UTC (noon ET) and 17:00 UTC (1 PM ET). Apr 11 run had these wrong (1 PM and 2 PM); now corrected in [[family/family-calendar]].
+- Informational: USPS Informed Delivery (Apr 15) — 1 mailpiece + 2 inbound packages arriving today
+- Informational: Angelica Tanti (atanti@ccm.com) — Tax Day reminder; CCM identity not in memory
+- Informational: Montclair Public Library opens at noon (12 PM) on Tuesday April 21 (staff meeting)
+- All 9 prior alerts confirmed unchanged: Apr 18 conflict (T-3), Apr 22 triple-event, Mike Silva Zoom tomorrow, PAMKA deadline today (unresolved), $18K tax debit today, Goddard parking 4/20-4/21, Newegg #412968624 in transit, Vayu math worksheets, Apr 28 contractor overlap
+- SSH check: gpuserver1 unavailable from this runtime (consistent)
+- Updated: [[family/family-calendar]] (soccer time correction noted), `daily/2026-04-15.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
