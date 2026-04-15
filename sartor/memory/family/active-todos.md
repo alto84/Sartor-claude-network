@@ -333,6 +333,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - Game 2 1–2 PM: B34 Lime vs B34 Purple (Lac & Karacas)
 > Prior opponent data (Shock, Charcoal) was stale. Conflict with Rafi's party still unresolved.
 
+## Latest from gather (2026-04-15) run 3
+
+> [!note] 2026-04-28
+> **Dual-contractor day: Power Mac LLC + Berman Home Systems.** Power Mac LLC (Ilija Trajceski, info@power-mac.net) confirmed 8–9 AM arrival for home theater repairs. Berman Home Systems wifi install is a 3-day project (Apr 27–29), techs arrive 9 AM each day. Both contractors on the same day. If Power Mac runs past 9 AM, they will be concurrent. Coordinate with Pete Berman and Ilija Trajceski to confirm sequencing. No action needed today — flag before Apr 27.
+
 ## Latest from gather (2026-04-15)
 
 > [!deadline] TODAY 2026-04-15
