@@ -545,3 +545,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - data/ directory recreated (non-persistent between sessions)
 - Updated: [[family/vayu]], [[family/active-todos]], `daily/2026-04-16.md`
 - Created: `data/heartbeat-log.csv`, `data/gather-alerts.md` (12 alerts)
+
+## [2026-04-16] ingest | personal-data-gather run 3 — delta-zero, informational only
+
+- Sources: Gmail (30 msgs scanned, is:unread after:2026/04/14), 5 Google Calendars (Apr 16–23 window), SSH unavailable
+- Facts gathered: 2 new informational signals; no new ACTION_REQUIRED items
+- New informational: Neurology Today Vol. 26 No. 8 (Apr 16 7:24 AM UTC) — neuromuscular treatments complexity. No routing.
+- New informational: Hiive secondary market — Zipline drone delivery opportunity. US delivery volumes up ~15% week-over-week (as of Jan 2026). FINANCIAL/INVESTMENT signal, no action required.
+- New informational: The Information "Financing the AI Revolution" NYSE event Apr 27 — conference intel.
+- Calendar: identical to runs 1 and 2 on all 5 calendars. No new events, no time changes.
+- Outstanding conflicts confirmed: Apr 18 soccer/Rafi (T-2, unresolved), Apr 22 triple-event (plan needed)
+- SSH check: gpuserver1 unavailable from this runtime (consistent with all runs since Apr 10)
+- Updated: `daily/2026-04-16.md` (run 3 appended), `sartor/memory/log.md`
+- Created: `data/heartbeat-log.csv`, `data/gather-alerts.md` (carry-forward outstanding alerts)
