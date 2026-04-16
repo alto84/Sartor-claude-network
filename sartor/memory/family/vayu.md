@@ -2,8 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-04-15
+updated: 2026-04-16
 updated_by: personal-data-gather
+run: 2
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -152,3 +153,8 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!fact]
 > **Spring Band Concert reminder received.** MKA band teacher Paul Murphy emailed Apr 15 confirming: Wednesday April 22, student arrival 6:30 PM, concert starts 7:00 PM. Consistent with band concert callout already in Family calendar (added Apr 14) and [[family/active-todos]]. Apr 22 triple-event plan unchanged.
+
+## Latest from gather (2026-04-16) — run 2
+
+> [!fact]
+> **Alamo All-Stars book approved (2026-04-16 12:27 AM UTC).** Vayu requested "Alamo All-Stars: Bigger & Badder Edition (Nathan Hale's Hazardous Tales #6): A Texas Tale" via Amazon Kids. Alton approved; order confirmation received 1 minute later. Book is the sixth installment in Nathan Hale's Hazardous Tales series. No action needed.

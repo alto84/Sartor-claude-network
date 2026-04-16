@@ -3,6 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-16
 updated_by: personal-data-gather
+run: 2
 
 status: active
 priority: p1
@@ -386,3 +387,8 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning] STREP EXPOSURE — Vasu (Goddard, Apr 15)
 > **A child in Vasu's Goddard preschool class was diagnosed with strep A today.** Child was last in class Apr 14. Director Alissa DelConte notified families at 4:36 PM ET. Monitor Vasu for fever, sore throat, difficulty swallowing over the next 2-5 days. If symptoms develop, contact Tribeca Pediatrics before sending to school. See [[family/vasu]].
+
+## Latest from gather (2026-04-16) — run 2
+
+> [!todo]
+> **Espervia paid advisory — accept or decline.** Felix Parker (felix.p@espervia.com) requested paid interview on "Rare Disease Payer Insights" (Apr 15 5:07 PM PDT). Conducting study on impact of high-cost therapies on healthcare payer decision-making; looking for senior healthcare payer decision-makers. This is a third distinct paid advisory inquiry this week (after Guidepoint / Yasmin Goodman and Zintro). Espervia is a different organization. See [[ALTON]] for advisory opportunity log.

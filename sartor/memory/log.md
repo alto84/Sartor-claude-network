@@ -530,3 +530,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: no new events on any of the 5 calendars vs runs 1–5. All prior conflicts confirmed.
 - SSH check: gpuserver1 unavailable from this runtime (consistent)
 - Updated: [[family/vasu]], [[family/active-todos]], `daily/2026-04-15.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-16] ingest | personal-data-gather run 2 — new delivery, book approval, Espervia advisory
+
+- Sources: Gmail (40 msgs scanned, is:unread after:2026/04/15 -category:promotions -category:social), 5 Google Calendars (Apr 16–23 window), SSH unavailable
+- Facts gathered: 3 new signals (1 delivery, 1 family, 1 advisory), all others confirmed duplicates of run 1
+- **NEW DELIVERY: Newegg #408668519 delivered** (1 item, Apr 15 7:05 PM PDT). Third distinct Newegg order delivered Apr 15 (alongside #408668419 and #412970644 from run 1).
+- **NEW FAMILY: Vayu's Amazon Kids book request approved.** Alton approved "Alamo All-Stars: Bigger & Badder Edition (Nathan Hale's Hazardous Tales #6)" — order confirmed Apr 16 12:28 AM UTC.
+- **NEW ADVISORY: Espervia paid interview request.** Felix Parker (felix.p@espervia.com) — Rare Disease Payer Insights study. Third distinct paid advisory inquiry this week (after Guidepoint and Zintro). Accept/decline pending. Routed to [[family/active-todos]].
+- SpotHero rating request (Apr 16 2:01 AM UTC): follow-up from Apr 14 NYC parking. Not a new trip signal. AcrossCap Zoom today (2:30 PM) is video/remote.
+- Calendar: identical to run 1 on all 5 calendars. Dance concert 8 AM, movie repairs 9 AM, soccer at noon, all confirmed.
+- **KEY TODAY: Mike Silva (AcrossCap) Zoom 2:30–3:15 PM ET.** No prior AcrossCap context in memory.
+- SSH check: gpuserver1 unavailable from this runtime (consistent with all runs since Apr 10)
+- data/ directory recreated (non-persistent between sessions)
+- Updated: [[family/vayu]], [[family/active-todos]], `daily/2026-04-16.md`
+- Created: `data/heartbeat-log.csv`, `data/gather-alerts.md` (12 alerts)
