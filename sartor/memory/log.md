@@ -36,6 +36,21 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-16] ingest | personal-data-gather run 1: first successful Gmail + Calendar harvest
+
+- Gmail: 30 unread messages scanned (2-day window); 18 distinct facts extracted
+- Google Calendar: all 5 calendars queried for 2026-04-16 through 2026-04-23
+- New pages: [[people/mike-silva]] (AcrossCap intro meeting today)
+- Updated pages: [[family/active-todos]], [[family/vayu]], [[family/vishala]], [[ALTON]]
+- Created: `sartor/memory/daily/2026-04-16.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- New deadlines surfaced:
+  - Chimney damage (property safety, act today)
+  - April 18 scheduling conflict: Vayu soccer double-header vs Rafi's birthday party
+  - April 22 band concert (NEW, not in prior harvest) + costume parade + soccer same evening
+  - Vishala dance concert TOMORROW (2026-04-17, 8:00 AM EDT)
+- Financial signals: Fidelity trade (SANDISK CORP COM $887.78), Summit Health bill pending
+- First successful run after 30+ blocked runs (MCPs were unavailable prior to this session)
+
 ## [2026-04-09] ingest | Gmail + Calendar harvest: family and business signals
 
 - Subagent harvested Gmail + Google Calendar for 30-day window (2026-04-09 through 2026-05-09)

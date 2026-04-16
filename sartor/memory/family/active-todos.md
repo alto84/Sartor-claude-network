@@ -392,3 +392,8 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo]
 > **Espervia paid advisory — accept or decline.** Felix Parker (felix.p@espervia.com) requested paid interview on "Rare Disease Payer Insights" (Apr 15 5:07 PM PDT). Conducting study on impact of high-cost therapies on healthcare payer decision-making; looking for senior healthcare payer decision-makers. This is a third distinct paid advisory inquiry this week (after Guidepoint / Yasmin Goodman and Zintro). Espervia is a different organization. See [[ALTON]] for advisory opportunity log.
+
+## Latest from gather (2026-04-16) — run 3
+
+> [!blocker] 2026-04-16
+> **Chimney damage — stay away from odd-side garden.** Christopher Barr (chrisbarr4537@gmail.com) emailed all building neighbors at 08:14 ET: front odd-side chimney is damaged, bricks dislodged onto roof. Instruction: avoid the odd-side garden area until resolved. Contact building management or contractor to assess structural safety and repair scope. Aneeta and Alton both included on the email chain.
