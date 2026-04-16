@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-15
+updated: 2026-04-16
 updated_by: personal-data-gather
 
 status: active
@@ -373,6 +373,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo]
 > **HITLAB Innovators Summit — accept or decline.** Jerry Antimano via LinkedIn (Apr 15): "I'm reaching out to invite you to the HITLAB Innovators Summit (May 5–7, NYC) and to participate in a small, peer-led executive roundtable during the conference." HITLAB is a digital health innovation organization. Note: May 5–7 falls just after Aneeta's RRE window (Apr 29–May 3); confirm she is back before committing. See [[ALTON]].
+
+## Latest from gather (2026-04-16)
+
+> [!fact]
+> **RESOLVED: Vishala dance concert time discrepancy.** Calendar pull Apr 16 confirms 8:00 AM start (`2026-04-17T08:00:00-04:00`). Teacher Kristen Weaver email (Apr 15) says "8:15 and hopefully done by 9." Both agree. The `[!warning] VERIFY BEFORE FRIDAY` entry below is resolved. Coverage plan: Vishala concert at MKA 8:15 AM Friday assembly. Same school as Vayu's Ellis Island departure. Parent needed at concert; Vayu needs packed lunch. See [[family/vishala]].
+
+> [!todo]
+> **Summit Health patient balance — follow up.** New statement notice received Apr 15 for "Emmett" (alto84@gmail.com). Prior flag from Apr 10 (patient portal statement) has not been resolved. Balance amount gated behind portal login. Go to Summit Health patient portal and pay. This is the second notice.
 
 ## Latest from gather (2026-04-15) run 6
 
