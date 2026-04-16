@@ -55,6 +55,13 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 - Is the gymnastics enrollment confirmed? Spring session is already underway.
 - What is the Wohelo birthday visit policy? Alton + Aneeta would miss Vishala's 9th birthday in person if visits are restricted.
+
+## Latest from gather (2026-04-16)
+
+> [!deadline] 2026-04-17
+> **Dance concert TOMORROW -- 8:00 AM EDT at MKA** -- Vishala's dance concert is Friday April 17, 8:00-10:00 AM EDT. Confirmed in family calendar. Parent attendance expected; account for 7:00-7:15 AM departure from Montclair.
+
+- Spring concert: 2026-04-24 08:00 AM (also upcoming, one week out)
 - Has the Wohelo deposit been paid yet?
 
 ## Related
