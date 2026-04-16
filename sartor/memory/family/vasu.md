@@ -105,3 +105,10 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!warning]
 > **Goddard parking garage closed Apr 20 and Apr 21.** "The 1 Seymour Street parking garage will be closed from 7 am to 5 pm on Monday, 4/20/26, and Tuesday" [Apr 21] (Alissa DelConte, Apr 14). Plan alternate parking for Vasu drop-off both days. See [[family/active-todos]].
+
+## Latest from gather (2026-04-15) run 6
+
+> [!warning] STREP EXPOSURE — Vasu's Goddard class
+> **A child in Vasu's pre-school class was diagnosed with strep A today (Apr 15).** The child was last in care on Apr 14. Director Alissa DelConte (noreply@kaymbu.com) notified families at 4:36 PM ET: "If your child is showing symptoms of strep, please reach out to your child's healthcare provider."
+>
+> Monitor Vasu for the next 2-5 days: fever, sore throat, difficulty swallowing, sandpaper rash. If symptoms develop, contact Tribeca Pediatrics before sending Vasu to school. See [[family/active-todos]].

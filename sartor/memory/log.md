@@ -503,3 +503,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 unavailable from this runtime (consistent)
 - Updated: [[family/vayu]], [[family/vishala]], [[family/active-todos]], [[ALTON]]
 - Created: `data/gather-alerts.md` (13 alerts), `data/heartbeat-log.csv`
+
+## [2026-04-15] ingest | personal-data-gather run 6 — strep exposure at Goddard + informational
+
+- Sources: Gmail (32 msgs, after:2026/04/15 -category:promotions -category:social), 5 Google Calendars (Apr 15–22 window)
+- Facts gathered: 1 new ACTION_REQUIRED/health, 3 informational; all prior items confirmed unchanged
+- **NEW HEALTH ALERT: Strep A exposure in Vasu's Goddard preschool class.** Child diagnosed Apr 15, last in class Apr 14. Director Alissa DelConte notified families 4:36 PM ET. Monitor Vasu for fever, sore throat, difficulty swallowing over next 2-5 days. Contact Tribeca Pediatrics if symptoms develop. Routed to [[family/vasu]] and [[family/active-todos]].
+- Informational: REI order A397566744 status updated to "ready for USPS pickup" (was "placed" in Apr 14 run 2). No action.
+- Informational: MKA STEMology class recap for first class Apr 10 (Amy Gonzalez, agonzalez@mka.org). No action.
+- Informational: Glass Health ambient scribing now supports 50+ languages. Clinical AI tool update.
+- Calendar: no new events on any of the 5 calendars vs runs 1–5. All prior conflicts confirmed.
+- SSH check: gpuserver1 unavailable from this runtime (consistent)
+- Updated: [[family/vasu]], [[family/active-todos]], `daily/2026-04-15.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
