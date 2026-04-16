@@ -2,7 +2,7 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-04-15
+updated: 2026-04-16
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -96,6 +96,13 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 > - Contact: Heidi Gorton (heidigorton@gmail.com), Director Little Wohelo Camp
 >
 > See [[family/active-todos]] for the full payment callout with mailing address. Check needs to be written and mailed. Deposit of $500 was already overdue as of 2026-04-10.
+
+## Latest from gather (2026-04-16)
+
+> [!fact]
+> **Dance concert time RESOLVED: 8:15 AM CONFIRMED.** Direct Google Calendar pull on Apr 16 shows event start `2026-04-17T08:00:00-04:00` (8:00 AM ET). Teacher Kristen Weaver email (Apr 15): "We'll start at 8:15 and hopefully be done by 9." Both sources agree. The [[family/family-calendar]] main table has been corrected. Run 2 (Apr 15) had "corrected" this to noon–2 PM — that was a misread. The original 8:00 AM time was correct.
+>
+> Coverage plan for Apr 17: Vishala's concert starts 8:15 AM at MKA Friday assembly. Vayu's Ellis Island trip departs same school same morning. Parent must attend concert AND ensure Vayu has packed lunch.
 
 ## Latest from gather (2026-04-15) run 5
 

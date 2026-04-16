@@ -504,6 +504,21 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Updated: [[family/vayu]], [[family/vishala]], [[family/active-todos]], [[ALTON]]
 - Created: `data/gather-alerts.md` (13 alerts), `data/heartbeat-log.csv`
 
+## [2026-04-16] ingest | personal-data-gather run 1 — calendar corrections + hardware deliveries
+
+- Sources: Gmail (40 msgs scanned, is:unread after:2026/04/14 -category:promotions -category:social), 5 Google Calendars (Apr 16–23 window), SSH unavailable
+- Facts gathered: 2 calendar corrections (prior run errors), 2 new deliveries, 1 health follow-up flag
+- **CALENDAR REPAIR: Vishala dance concert 4/17 = 8:00 AM.** Run 2 (Apr 15) had incorrectly "corrected" this to noon–2 PM. Google Calendar confirms 08:00 ET. Teacher email confirms 8:15 AM. [[family/family-calendar]] main table corrected. [[family/vishala]] discrepancy flag resolved.
+- **CALENDAR REPAIR: Movie room repairs 4/20 = 9:00–11:00 AM.** Run 2 (Apr 15) had incorrectly "corrected" this to 1:00–3:00 PM. Google Calendar confirms 09:00–11:00 ET. [[family/family-calendar]] main table corrected.
+- **NEW DELIVERIES:** Newegg #408668419 (1 of 3 items delivered), Newegg #412970644 (1 item delivered). Motherboard + CPU among incoming hardware based on installation tips email.
+- **NEW:** UPS Access Point drop-off at 53 N Fullerton Ave — outgoing package, informational.
+- **FOLLOW-UP:** Summit Health second statement notice for Emmett (Apr 15). Prior Apr 10 flag unresolved. Routed to [[family/active-todos]].
+- **PAMKA Social deadline PASSED:** Apr 15 deadline expired; no purchase confirmation received.
+- Confirmed active: Apr 18 soccer/Rafi conflict (T-2, unresolved), Apr 22 triple-event, Vasu strep monitoring (through Apr 20), Wohelo payment, CAQH reattestation, Apr 28 contractor overlap, Aneeta RRE Apr 29–May 3
+- SSH: gpuserver1 unavailable from this runtime (consistent)
+- Created: `daily/2026-04-16.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- Updated: [[family/family-calendar]], [[family/vishala]], [[family/active-todos]]
+
 ## [2026-04-15] ingest | personal-data-gather run 6 — strep exposure at Goddard + informational
 
 - Sources: Gmail (32 msgs, after:2026/04/15 -category:promotions -category:social), 5 Google Calendars (Apr 15–22 window)

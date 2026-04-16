@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-15
+updated: 2026-04-16
 updated_by: personal-data-gather
-note: time-corrections applied run2; soccer times confirmed run4
+note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
 tags: [entity/family, domain/family, meta/calendar]
@@ -32,9 +32,9 @@ Compiled view of family-relevant events from Google Calendar harvest on 2026-04-
 |------|------|-------|-----|
 | Tue 4/15 | 17:30-18:15 | Soccer practice, Anderson Park | Vayu |
 | Thu 4/16 | all-day | Abby's birthday (Alton's sister, recurring) | Gift reminder |
-| Fri 4/17 | 12:00-14:00 | [[vishala]] dance concert (MKA) | Vishala + parent |
+| Fri 4/17 | 08:00-09:00 | [[vishala]] dance concert (MKA) | Vishala + parent |
 | Sat 4/18 | 15:45-21:45 (drop-off by 11:45 AM) | Rafi's birthday party, Yankees game | Vayu |
-| Mon 4/20 | 13:00-15:00 | Movie room repairs | Household |
+| Mon 4/20 | 09:00-11:00 | Movie room repairs | Household |
 | Mon 4/20 | all-day | Uncle Brad's birthday (recurring) | Gift reminder |
 
 ## Week of 4/21 (2026-04-21 to 2026-04-27)
@@ -161,6 +161,17 @@ New event discovered on Family calendar (added Apr 14 by Aneeta):
 | Sat 4/18 | **1–2 PM** | B34 Lime vs B34 Purple | Blue Sombrero | Was "2–3 PM" in Apr 11 run |
 
 **Apr 21 logistics note:** Montclair Public Library opens at noon (12 PM) on Tuesday April 21 for a staff meeting. Informational.
+
+## Latest from gather (2026-04-16)
+
+> [!fact]
+> **Time corrections REVERTED: run 2 (Apr 15) introduced errors, now fixed.** Direct calendar pull on Apr 16 confirms:
+> - Vishala dance concert 4/17: **8:00 AM** (teacher email says 8:15 AM). Run 2's "noon–2 PM" was wrong. Main table corrected.
+> - Movie room repairs 4/20: **9:00–11:00 AM**. Run 2's "1:00–3:00 PM" was wrong. Main table corrected.
+> - All other events confirmed unchanged vs prior runs.
+
+> [!note]
+> **Apr 18 conflict (T-2): still unresolved.** Soccer noon–2 PM (Brookdale Park) vs Rafi's Yankees game drop-off 11:45 AM (Bronx). Decision needed today. See [[family/active-todos]] and [[family/vayu]].
 
 ## Latest from gather (2026-04-15) run 2
 
