@@ -201,3 +201,8 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 > [!fact]
 > **EquityZen catch-up requested by Georgia Edwards** (georgia.edwards@equityzen.com, Apr 16 6:08 PM EDT, messageId: 19d9857ec1d017a9): "Do you have time to catch up next week? Are there any pre-IPO companies we could help you source?" EquityZen is the pre-IPO investment marketplace where Scale AI (SCAI) opportunity was flagged Apr 11. Reply to schedule or decline. FINANCIAL signal. See [[family/active-todos]].
+
+## Latest from gather (2026-04-17) — run 2
+
+> [!fact]
+> **Mike Silva (AcrossCap) — second email in thread (Apr 16 19:05 PDT, messageId 19d992fad45bc3bd).** Snippet: "Yeah the forward projections now a month later look way too conservative. Management's revised projections were to get to ~$30bn in annualized revenue by December and they've already hit that." AcrossCap is an investment/capital firm; Mike is sharing intelligence about a high-growth company outpacing revised projections. Company identity not discernible from snippet. See [[people/mike-silva]].
