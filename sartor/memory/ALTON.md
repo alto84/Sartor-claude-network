@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-04-17
 updated_by: personal-data-gather
-run: 4
+run: 6
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -215,3 +215,11 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 > [!fact]
 > **Mike Silva (AcrossCap) — second email in thread (Apr 16 19:05 PDT, messageId 19d992fad45bc3bd).** Snippet: "Yeah the forward projections now a month later look way too conservative. Management's revised projections were to get to ~$30bn in annualized revenue by December and they've already hit that." AcrossCap is an investment/capital firm; Mike is sharing intelligence about a high-growth company outpacing revised projections. Company identity not discernible from snippet. See [[people/mike-silva]].
+
+## Latest from gather (2026-04-17) — run 6
+
+> [!fact]
+> **AI consulting side gig — explicitly crystallized.** In the Mike Silva thread today (Apr 17 12:46 PM ET), Alton wrote: "I benchmark and review all new model releases. Let me know if you want a live update on the AI space. I'm thinking about building a consulting side gig. I should document some valuation predictions." Mike Silva replied: "I'd love to see anything you got -- don't build anything for me but if you have anything off the shelf that you can share, I'd love to take a look!" First explicit statement of consulting side gig intent. Mike Silva (AcrossCap) is the first prospective recipient of consulting output. Next step: draft AI valuation analysis or model release review and send to Mike. See [[people/mike-silva]] and [[business/solar-inference]].
+
+> [!fact]
+> **AstraZeneca retirement plan quarterly statement available.** Fidelity email (Apr 17 ~9:26 AM ET): Q1 2026 quarterly statement for AstraZeneca Savings Plan is now available online. "Plans include AstraZeneca Savings and Investment Plan." Review at Fidelity online. No action required unless discrepancy found. See [[ASTRAZENECA]].
