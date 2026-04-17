@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: disney-july-2026
-updated: 2026-04-10
-updated_by: Claude
+updated: 2026-04-17
+updated_by: personal-data-gather
 status: active
 priority: p2
 next_review: 2026-04-20
@@ -104,5 +104,22 @@ Multi-family trip planned via a group text called "Disney 2026." Nicole (planner
 - [[family/active-todos|Family TODOs]] — Disney trip flagged as to-do
 - [[people/README]] — Disney trip families listed in contacts index
 
+## Latest from gather (2026-04-17)
+
+> [!fact]
+> **Nicole (planner) confirmed as Nicol Stevenson, Magical Vacation Planner.** Email "Disneyland Dining Ideas" received Apr 17 12:02 PM UTC from n.stevenson@magicalvacationplanner.com, +1 (412) 215-2423. She is a professional travel agent. She emailed Alton directly — the loop is now closed on who she is. She is proactively setting up ADRs for the group.
+
+> [!deadline] 2026-05-17
+> **ADR window opens May 17, 2026** (60 days before July 16 arrival). Nicol needs Alton's dining preferences **before May 17** to secure preferred times at popular venues. Blue Bayou, Carthay Circle, character dining all book quickly. Contact: n.stevenson@magicalvacationplanner.com, +1 (412) 215-2423.
+
+> [!todo] Contact Nicol before May 17
+> **Respond to Nicol Stevenson with Sartor family dining preferences.** She is offering to book all ADRs. Suggested approach: tell her (a) preferred date/meal for character dining (kids' ages: 10, 8, 4 — Plaza Inn Minnie breakfast or Storyteller's Mickey morning would be strong for Vasu), (b) whether you want Blue Bayou Saturday (already in group plan — confirm for Sartors), (c) whether you want DTF Thursday (Downtown Disney, no park ticket). Also inform her of the reservation the group already has (Nicole's own bookings if any). She needs your headcount (5 people: 2 adults, 3 kids).
+>
+> Available character dining options per her email:
+> - **Plaza Inn Minnie Breakfast** (Disneyland Park) — can bundle with reserved parade viewing
+> - **Mickey's Tales of Adventure Breakfast** at Storyteller's Cafe (Grand Californian) — also brunch Fri/Sat/Sun
+> - **Donald's Tales of Adventure Dinner** at Storyteller's (begins May 16) — available for July dates
+
 ## History
 - 2026-04-10: Initial planning page created from Google Messages "Disney 2026" group text scrape. Messages cover Mar 21 through Apr 6, 2026.
+- 2026-04-17: Nicol Stevenson identified as travel agent. ADR deadline flagged (May 17). Dining options documented from her email.

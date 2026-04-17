@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-17
 updated_by: personal-data-gather
-run: 2
+run: 4
 
 status: active
 priority: p1
@@ -397,6 +397,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!blocker] 2026-04-16
 > **Chimney damage — stay away from odd-side garden.** Christopher Barr (chrisbarr4537@gmail.com) emailed all building neighbors at 08:14 ET: front odd-side chimney is damaged, bricks dislodged onto roof. Instruction: avoid the odd-side garden area until resolved. Contact building management or contractor to assess structural safety and repair scope. Aneeta and Alton both included on the email chain.
+
+## Latest from gather (2026-04-17) run 4
+
+> [!deadline] 2026-05-17
+> **Disney dining: respond to Nicol Stevenson before May 17.** Nicol Stevenson (n.stevenson@magicalvacationplanner.com, +1 412-215-2423), the group's travel agent at Magical Vacation Planner, emailed Apr 17 about Disneyland dining. She is offering to book all Advanced Dining Reservations (ADRs). The 60-day ADR window for the July 16-19 trip opens May 17 — she needs preferences **before that date** or popular venues will be unavailable. Tell her: (a) whether Sartors want character dining (Plaza Inn Minnie breakfast or Storyteller's Mickey breakfast recommended given Vasu's age 4), (b) Blue Bayou Saturday confirmation, (c) DTF Thursday headcount (5 people: 2 adults, 3 kids ages 10, 8, 4). See [[family/disney-july-2026]].
+
+> [!note]
+> **Aneeta career call Monday Apr 20, 2–2:30 PM ET.** Hashan Alwis (hashan@acepartners.com, ACE Partners) created a Teams meeting on Aneeta's calendar today re: "MD Role." Appears to be a Medical Director recruiting call. For awareness only — no action needed from Alton unless Aneeta raises it. See [[family/family-calendar]].
 
 ## Latest from gather (2026-04-17)
 

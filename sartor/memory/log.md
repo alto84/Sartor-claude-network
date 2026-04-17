@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-17] ingest | personal-data-gather run 4: Disney travel agent + Aneeta career call
+
+- Gmail: 40 messages in window; 13 new vs run 3; 1 new ACTION_REQUIRED (Nicol Stevenson Disney dining)
+- Nicol Stevenson (Magical Vacation Planner) identified as the "Nicole (planner)" from Disney 2026 group text; ADR deadline May 17 surfaced
+- Calendar: 2 new events created today — Aneeta MD Role call (ACE Partners, Apr 20) + Women's center dinner (Apr 24)
+- Updated: [[family/disney-july-2026]] (travel agent ID + ADR deadline), [[family/active-todos]] (Disney dining action), [[family/family-calendar]] (2 new events), [[ALTON]] (Nicol Stevenson fact)
+- `daily/2026-04-17.md` run 4 diff appended
+
 ## [2026-04-17] ingest | personal-data-gather run 3: property tax payment + Opus 4.7
 
 - New fact: Cenlar escrow payment confirmed — property tax paid 04/16/2026 from account 1510 (85 Stonebridge)
