@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-15
+updated: 2026-04-17
 updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
@@ -35,6 +35,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-17] ingest | personal-data-gather: Gmail + Calendar harvest
+
+- Gmail: 30 unread messages scanned (after:2026/04/15); 3 ACTION_REQUIRED extracted
+- Google Calendar: all 5 calendars queried for 2026-04-17 through 2026-04-24
+- ACTION_REQUIRED items: Mike Silva reply, Guidepoint accept/decline (Yasmin Goodman), EquityZen catch-up
+- Updated pages: [[people/mike-silva]], [[ALTON]], [[family/active-todos]]
+- Created: `sartor/memory/daily/2026-04-17.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- Chimney update: Chris Barr handling (partial resolution of Apr 16 blocker)
+- Calendar confirmed: Vishala dance concert today 8 AM; Apr 18 soccer + Rafi's party conflict still unresolved; Apr 22 triple-event confirmed; Apr 24 Vishala spring concert confirmed
+- No new deadlines surfaced beyond prior gathers
 
 ## [2026-04-16] ingest | personal-data-gather run 1: first successful Gmail + Calendar harvest
 

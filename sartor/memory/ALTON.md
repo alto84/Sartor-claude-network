@@ -2,7 +2,7 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-04-15
+updated: 2026-04-17
 updated_by: personal-data-gather
 last_verified: 2026-04-12
 status: active
@@ -190,3 +190,14 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 > [!deadline] 2026-05-15
 > **SNO Clinical Trials Workshop — application deadline May 15.** Society for Neuro-Oncology newsletter (snodigest@soc-neuro-onc.org, issue 216, Apr 15): "8th Annual Clinical Trial Design Workshop, Application Deadline: Friday, May 15, 2026." Directly relevant to Alton's neuro-oncology background (MGH fellowship, founded Neuro-Oncology Division at Boston Medical Center). Apply if interested. SNO Annual Meeting is Nov 12–15, 2026, PA Convention Center (abstract submission open separately).
+
+## Latest from gather (2026-04-17)
+
+> [!todo] ACTION_REQUIRED — reply within 48 hours
+> **Mike Silva (AcrossCap) — post-meeting follow-up.** Mike emailed Apr 16 1:31 PM PDT (messageId: 19d97fdec3e6ec34): "It was great meeting you earlier, thanks very much for making the time. I enjoyed the discussion, especially hearing your thoughts around AI both where you're seeing the bottlenecks and how [the technology evolves]..." This is the Zoom intro that was prepped in the Apr 14 run. He confirmed the meeting happened and wants to follow up. Reply to mike@acrosscap.com. See [[people/mike-silva]].
+
+> [!todo] ACTION_REQUIRED — time-sensitive
+> **Guidepoint Clinical Trial Technology Solutions — formal accept/decline (2nd contact).** Yasmin Goodman (ygoodman@guidepointglobal.com) sent a formal "Please Accept or Decline" email Apr 16 3:00 PM UTC (messageId: 19d96ceddfd80c31). First inquiry was Apr 10 (see Apr 11 run entry above). No response confirmed. Inaction = implicit decline. Project topic: Clinical Trial Technology Solutions. See [[family/active-todos]].
+
+> [!fact]
+> **EquityZen catch-up requested by Georgia Edwards** (georgia.edwards@equityzen.com, Apr 16 6:08 PM EDT, messageId: 19d9857ec1d017a9): "Do you have time to catch up next week? Are there any pre-IPO companies we could help you source?" EquityZen is the pre-IPO investment marketplace where Scale AI (SCAI) opportunity was flagged Apr 11. Reply to schedule or decline. FINANCIAL signal. See [[family/active-todos]].
