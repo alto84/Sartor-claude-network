@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-16
+updated: 2026-04-17
 updated_by: personal-data-gather
 run: 2
 
@@ -397,3 +397,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!blocker] 2026-04-16
 > **Chimney damage — stay away from odd-side garden.** Christopher Barr (chrisbarr4537@gmail.com) emailed all building neighbors at 08:14 ET: front odd-side chimney is damaged, bricks dislodged onto roof. Instruction: avoid the odd-side garden area until resolved. Contact building management or contractor to assess structural safety and repair scope. Aneeta and Alton both included on the email chain.
+
+## Latest from gather (2026-04-17)
+
+> [!fact]
+> **Chimney repair update: Chris Barr is handling.** Mengyao Zhao (zhaomengyao@gmail.com) replied to the chimney thread Apr 16 12:03 PM ET: "Thanks a lot for taking care of this, Chris!" addressed to Christopher Barr. Building-wide CC (14 neighbors including Alton + Aneeta). Chris is the point person managing the repair. The `[!blocker]` above is PARTIALLY RESOLVED — repair is being handled. Continue to avoid odd-side garden until confirmed safe. No action required from Alton unless Chris asks.
+
+> [!todo] ACTION_REQUIRED — reply to Mike Silva within 48 hours
+> **Mike Silva (AcrossCap) — post-meeting follow-up.** He emailed Apr 16 confirming the meeting went well. Discussed AI bottlenecks and trajectory. Warm networking contact in AI/capital space. Reply to mike@acrosscap.com. See [[people/mike-silva]] and [[ALTON]].
+
+> [!todo] ACTION_REQUIRED — time-sensitive
+> **Guidepoint Clinical Trial Technology Solutions — accept or decline.** Yasmin Goodman (ygoodman@guidepointglobal.com) sent formal "Please Accept or Decline" email Apr 16. First inquiry Apr 10 had no response. This is a second contact — inaction = implicit decline. Reply to ygoodman@guidepointglobal.com. Separate from Valerie Villareal's Pediatric Low-Grade Glioma Market inquiry (#1718071). See [[ALTON]].
+
+> [!todo]
+> **EquityZen catch-up — schedule or decline.** Georgia Edwards (georgia.edwards@equityzen.com) requested a meeting next week to discuss pre-IPO companies. EquityZen is where Scale AI (SCAI) pre-IPO was previously flagged. FINANCIAL signal. Reply to georgia.edwards@equityzen.com. See [[ALTON]].
