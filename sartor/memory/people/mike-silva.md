@@ -28,7 +28,8 @@ Scheduled a Zoom intro meeting with Alton for 2026-04-16 at 2:30 PM EDT. Organiz
 
 ## Open questions
 
-- What is AcrossCap? Investment/capital company?
+- What specific company is the $30bn annualized revenue discussion about?
+- ~~What is AcrossCap?~~ — investment/capital firm (confirmed by context of projection discussion)
 - ~~What is the nature of the intro meeting?~~ — AI discussion (see below)
 - ~~Follow-up expected?~~ — Yes, Mike followed up same day
 
@@ -39,3 +40,8 @@ Scheduled a Zoom intro meeting with Alton for 2026-04-16 at 2:30 PM EDT. Organiz
 
 > [!todo]
 > **Reply to Mike Silva.** He sent a warm post-meeting follow-up. Reply to mike@acrosscap.com within 48 hours. See [[family/active-todos]]. See also [[ALTON]] for advisory opportunity log.
+
+## Latest from gather (2026-04-17) — run 2
+
+> [!fact]
+> **Second email in thread (Apr 16 19:05 PDT, messageId 19d992fad45bc3bd).** Mike sent a follow-on reply. Snippet: "Yeah the forward projections now a month later look way too conservative. Management's revised projections were to get to ~$30bn in annualized revenue by December and they've already hit that." AcrossCap is an investment/capital firm; Mike is sharing intelligence about a company outpacing its own revised projections. The AI bottleneck discussion from the earlier email is the likely backdrop. Company identity not discernible from snippet alone.

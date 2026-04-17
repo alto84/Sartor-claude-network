@@ -36,6 +36,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-17] ingest | personal-data-gather run 2: delta + infrastructure fix
+
+- New fact: Mike Silva second email (Apr 16 19:05 PDT) — company hitting $30bn annualized revenue ahead of revised projections
+- Infrastructure: created `data/` dir on disk (gitignored, non-persistent); wrote `data/heartbeat-log.csv` and `data/gather-alerts.md`
+- Updated: [[people/mike-silva]] (second email + open question updated), [[ALTON]] (run 2 section), `daily/2026-04-17.md` (run 2 diff)
+- All 3 ACTION_REQUIRED items still open: Mike Silva reply, Guidepoint accept/decline, EquityZen meeting
+
 ## [2026-04-17] ingest | personal-data-gather: Gmail + Calendar harvest
 
 - Gmail: 30 unread messages scanned (after:2026/04/15); 3 ACTION_REQUIRED extracted
