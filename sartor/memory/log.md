@@ -36,6 +36,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-17] ingest | personal-data-gather run 5: full confirm, no new delta
+
+- Run 5 from new session. Gmail (30 threads, newer_than:2d) + 5 calendars queried. No new facts vs runs 1-4.
+- Confirmed: all alerts from runs 1-4 still open (Mike Silva reply, Guidepoint, EquityZen, Nicol Stevenson dining, Apr 15 1040 status)
+- data/gather-alerts.md + data/heartbeat-log.csv refreshed on disk (gitignored)
+
 ## [2026-04-17] ingest | personal-data-gather run 4: Disney travel agent + Aneeta career call
 
 - Gmail: 40 messages in window; 13 new vs run 3; 1 new ACTION_REQUIRED (Nicol Stevenson Disney dining)
