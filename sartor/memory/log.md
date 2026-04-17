@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-17] ingest | personal-data-gather run 3: property tax payment + Opus 4.7
+
+- New fact: Cenlar escrow payment confirmed — property tax paid 04/16/2026 from account 1510 (85 Stonebridge)
+- New informational: Anthropic Opus 4.7 release email (AI research signal, no action needed)
+- Calendar: all 5 queried, no new events vs runs 1 and 2
+- No new ACTION_REQUIRED items; 3 from prior runs still open (Mike Silva, Guidepoint, EquityZen)
+- Updated: [[TAXES]] (property tax fact appended), `daily/2026-04-17.md` (run 3 diff)
+
 ## [2026-04-17] ingest | personal-data-gather run 2: delta + infrastructure fix
 
 - New fact: Mike Silva second email (Apr 16 19:05 PDT) — company hitting $30bn annualized revenue ahead of revised projections

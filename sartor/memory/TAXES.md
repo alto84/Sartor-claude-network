@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: TAXES
-updated: 2026-04-14
+updated: 2026-04-17
 updated_by: personal-data-gather
 last_verified: 2026-04-12
 status: active
@@ -229,3 +229,8 @@ Append this fact to `TAXES.md` under the section relevant to `2027 fiscal outloo
 
 > [!decision]
 > **Extension debit: proceed at $18K (safe over-payment).** JF will set up the $15K federal + $3K NJ debit for Wednesday (Apr 15). LLC losses from 2025 are relatively small ($4,949.49), so the refund will not be large. The solar roof ITC ($131,649) and depreciation ($373,005) are 2026 events — not relevant to the TY2025 1040. The $18K over-payment is the prudent choice to avoid underpayment penalties.
+
+## Latest from gather (2026-04-17) run 3
+
+> [!fact]
+> **Property tax paid from escrow 2026-04-16.** Cenlar Loan Administration (account 1510) confirmed at 7:22 AM UTC Apr 17: "a property tax payment was made on 04/16/2026 for your property." This is the Q1/Q2 2026 Montclair township property tax disbursement from the escrow account for 85 Stonebridge. Automatic escrow payment — no action required from Alton. Relevant context: (1) TY2026 Schedule A deduction tracking (property taxes paid this year will be deductible if Alton itemizes), (2) confirms Cenlar escrow is funding per schedule. The Apr 15 1040 extension is now filed ($18K debit executed). Property taxes paid in 2026 are a TY2026 item, not TY2025. Flag for [[people/jonathan-francis|Jonathan Francis]] at Oct 2026 filing. See [[ALTON]].
