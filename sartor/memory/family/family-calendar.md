@@ -162,6 +162,18 @@ New event discovered on Family calendar (added Apr 14 by Aneeta):
 
 **Apr 21 logistics note:** Montclair Public Library opens at noon (12 PM) on Tuesday April 21 for a staff meeting. Informational.
 
+## Latest from gather (2026-04-17) run 4
+
+Two new events created today (2026-04-17) that were not in any prior run:
+
+| Date | Time (ET) | Event | Calendar | Notes |
+|------|-----------|-------|----------|-------|
+| Mon 4/20 | 2:00–2:30 PM | MD Role: Aneeta Saxena + Hashan Alwis | Aneeta (aneetasax) | Created today; organizer Hashan Alwis (hashan@acepartners.com), ACE Partners; Microsoft Teams meeting; appears to be a Medical Director recruiting call |
+| Fri 4/24 | 10:00–11:00 PM | Women's center dinner | Family | Created today by Aneeta; same evening as Vishala spring concert (8 AM); no conflict |
+
+> [!note]
+> The Apr 20 Aneeta call is with ACE Partners (hashan@acepartners.com). ACE Partners appears to be a medical executive search firm. The event title "MD Role" suggests Aneeta is exploring or being recruited for a Medical Director position. Given Aneeta's senior director promotion trajectory at Neurvati (2026), this may be a competing offer or lateral exploration. No action needed from Alton unless Aneeta raises it.
+
 ## Latest from gather (2026-04-16)
 
 > [!fact]

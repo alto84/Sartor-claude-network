@@ -4,6 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-04-17
 updated_by: personal-data-gather
+run: 4
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -190,6 +191,14 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 > [!deadline] 2026-05-15
 > **SNO Clinical Trials Workshop — application deadline May 15.** Society for Neuro-Oncology newsletter (snodigest@soc-neuro-onc.org, issue 216, Apr 15): "8th Annual Clinical Trial Design Workshop, Application Deadline: Friday, May 15, 2026." Directly relevant to Alton's neuro-oncology background (MGH fellowship, founded Neuro-Oncology Division at Boston Medical Center). Apply if interested. SNO Annual Meeting is Nov 12–15, 2026, PA Convention Center (abstract submission open separately).
+
+## Latest from gather (2026-04-17) run 4
+
+> [!fact]
+> **Nicol Stevenson confirmed as the Disney trip travel agent.** Magical Vacation Planner, n.stevenson@magicalvacationplanner.com, +1 (412) 215-2423. She is the "Nicole (planner)" referenced in the Disney 2026 group text since March. Emailed Alton directly Apr 17 re: Disneyland dining. ADR window opens May 17 — she needs dining preferences before that date. See [[family/disney-july-2026]].
+
+> [!note]
+> **Aneeta: MD Role call Monday Apr 20, 2–2:30 PM ET** with Hashan Alwis (hashan@acepartners.com), ACE Partners. Microsoft Teams. Event created today on Aneeta's calendar. ACE Partners appears to be a medical executive search firm. Not flagged to Alton by Aneeta; surfaced from calendar harvest. See [[family/family-calendar]].
 
 ## Latest from gather (2026-04-17)
 
