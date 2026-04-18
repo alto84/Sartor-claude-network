@@ -56,6 +56,14 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 - Is the gymnastics enrollment confirmed? Spring session is already underway.
 - What is the Wohelo birthday visit policy? Alton + Aneeta would miss Vishala's 9th birthday in person if visits are restricted.
 
+## Latest from gather (2026-04-18)
+
+> [!fact]
+> **3rd grade middle school visit summary sent Apr 17.** MKA 3rd grade teacher Colleen Helsel (m@mail3.veracross.com, Apr 17, 12:01 PM UTC): letter and photos from Vishala's 3rd grade class visit to the MKA Middle School on Friday, April 10. The visit was a preview of the middle school environment for current 3rd graders. Informational — no action required. Transition context: Vishala is currently in 3rd grade (age 8); middle school preview is standard MKA curriculum progression.
+
+> [!fact]
+> **Dean of Student Life Kelley Arau departing end of year.** School-wide announcement Apr 17: Kelley Arau (karau@mka.org) is leaving MKA to continue her leadership journey at the Berkeley School. Affects Vishala's and Vayu's school community. No immediate parent action required.
+
 ## Latest from gather (2026-04-16)
 
 > [!deadline] 2026-04-17

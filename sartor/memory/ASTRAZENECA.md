@@ -115,3 +115,8 @@ related: [ALTON, BUSINESS, az-career]
 
 ## Consolidated from daily logs (2026-04-05)
 - [2026-02-06] (completed) Wrote 11 core memory files: SELF, ALTON, FAMILY, MACHINES, PROJECTS, BUSINESS, ASTRAZENECA, TAXES, PROCEDURES, LEARNINGS, and this daily log
+
+## Latest from gather (2026-04-18)
+
+> [!fact]
+> **Fidelity AstraZeneca Q1 2026 retirement plan quarterly statement now available.** Email from Fidelity.Investments@mail.fidelity.com (Apr 17, 1:26 PM UTC): "EMMETT SARTOR ASTRAZENECA — Important information about your retirement plan is now available." Plans covered: AstraZeneca Savings and Investment Plan. This is the first quarterly statement covering Alton's tenure as Senior Medical Director, AI Innovation and Validation, Global Patient Safety (role started ~2026-03-31). Review at Fidelity NetBenefits to confirm: (1) contribution rate reflects new compensation tier ($288K–$432K base), (2) investment allocation is appropriate, (3) beneficiary designations are current. See [[family/active-todos]] for action item.
