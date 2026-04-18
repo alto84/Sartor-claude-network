@@ -464,3 +464,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note]
 > **Mortgage document center notification (Cenlar account 1510, 85 Stonebridge).** Email Apr 18 (CentralLoanAdministrationReporting@loanadministration.com): new document available at loanadministration.com → Documents tab. Likely related to Apr 16 property tax escrow disbursement confirmed in run 3 Apr 17. Review document when convenient — probably a disbursement confirmation. No urgent action unless it is a notice of deficiency or escrow shortage.
+
+## Latest from gather (2026-04-18) — run 4
+
+> [!warning] APR 24 SPRING CONCERT TIME CORRECTION — run 3 was wrong
+> **Vishala spring concert (Apr 24) is 8:00–10:00 AM ET, NOT noon–2 PM.**
+>
+> Run 3 introduced an incorrect "correction" by arguing that `2026-04-24T12:00:00` with no Z suffix means local NY time = noon. Cross-referencing four other no-Z events confirms the opposite: Family calendar events are stored as UTC. Subtract 4h for EDT.
+>
+> | Event | Raw value | UTC = ET |
+> |-------|-----------|----------|
+> | Recycling Parade Apr 22 | `20:20:00` | 4:20 PM ET ✓ |
+> | Soccer Practice Apr 22 | `21:30:00` | 5:30 PM ET ✓ |
+> | Band Concert Apr 22 | `22:30:00` | 6:30 PM ET ✓ |
+> | Movie Room Repairs Apr 20 | `13:00:00` | 9:00 AM ET ✓ |
+> | **Vishala spring concert** | `12:00:00` | **8:00 AM ET** |
+>
+> The original 8 AM value was correct. Women's center dinner Apr 24 remains 6 PM ET (22:00 UTC). Apr 24 schedule: **spring concert 8–10 AM, Women's dinner 6–7 PM.** No conflict. See [[family/family-calendar]] and [[family/vishala]].
+
+> [!note] Newegg verification code (Apr 18 14:16 UTC)
+> Newegg emailed "480587 is your Newegg Verification Code" to alto84@gmail.com today. Context: on Apr 13 a Newegg charge ($938.25) triggered the Chase Sapphire fraud alert and card replacement. If Alton did NOT initiate this Newegg login today, the actor behind the Apr 13 fraud may still be active. Verify with Alton: did you log into Newegg on Apr 18?

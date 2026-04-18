@@ -231,3 +231,15 @@ Two new events created today (2026-04-17) that were not in any prior run:
 
 > [!todo]
 > **Mike Silva (AcrossCap) Zoom TOMORROW** — Apr 16, 2:30-3:15 PM ET. Intro meeting; mike@acrosscap.com. No prior AcrossCap context in memory. Prep needed.
+
+## Latest from gather (2026-04-18) — run 4
+
+> [!warning] REVERT: Vishala spring concert Apr 24 is 8:00–10:00 AM ET
+> Run 3 incorrectly changed this to noon–2 PM. The UTC-without-Z pattern holds across all Family calendar events (Recycling Parade `20:20` = 4:20 PM ET, Soccer `21:30` = 5:30 PM ET, Band Concert `22:30` = 6:30 PM ET, Movie Repairs `13:00` = 9 AM ET). Applying same rule: spring concert `12:00` UTC = **8:00 AM ET**. The main table entry "08:00–10:00" was originally correct. See run 4 in daily log for full proof table.
+>
+> | Time ET | Event |
+> |---------|-------|
+> | 8:00–10:00 AM | Vishala spring concert (MKA) ← CORRECT |
+> | 6:00–7:00 PM | Women's center dinner ← confirmed |
+>
+> Main table Week of 4/21 spring concert row should read "08:00–10:00" not "12:00–14:00."
