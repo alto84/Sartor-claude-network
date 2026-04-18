@@ -2,8 +2,8 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-04-17
-updated_by: personal-data-gather
+updated: 2026-04-18
+updated_by: Claude (wikilinks-implementer, gstack-port)
 run: 6
 last_verified: 2026-04-12
 status: active
@@ -24,7 +24,7 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 - Date of birth: September 20, 1984
 - Birthday: September 20
 - Primary machine: Rocinante (Windows, 3 monitors) -- see [[MACHINES]]
-- Work: AstraZeneca, **Senior Medical Director**, AI Innovation and Validation, Global Patient Safety (NYC, started ~2026-03-31) -- see [[ASTRAZENECA]] and [[business/az-career|AZ Career Track]]
+- Work: [[works_at:ASTRAZENECA|AstraZeneca]], **Senior Medical Director**, AI Innovation and Validation, Global Patient Safety (NYC, started ~2026-03-31) -- see [[ASTRAZENECA]] and [[business/az-career|AZ Career Track]]
 - Commute: Montclair NJ to NYC Penn Station, 3 days/week in-person. Bay St or Bloomfield station, 7:35 AM train.
 - Side ventures: Solar Inference LLC, Sante Total (nonprofit) -- see [[BUSINESS]]
 - Primary AI tool: Claude Code (Max plan, ~580 chats on claude.ai)
@@ -75,11 +75,12 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 ## Personal
 - See [[FAMILY]] for household and family context
-- Father of three young children (Vayu 10, Vishala 8, Vasu 4)
+- Father of three young children ([[parent_of:family/vayu|Vayu]] 10, [[parent_of:family/vishala|Vishala]] 8, [[parent_of:family/vasu|Vasu]] 4)
 - Three cats: Loki, Ghosty, Pickle
-- Wife Aneeta is also a physician — ICU epilepsy neurologist, Medical Director at Neurvati (anti-seizure medication development)
+- Wife Aneeta is also a physician — [[married_to:FAMILY#Aneeta|Aneeta]] is ICU epilepsy neurologist, Medical Director at Neurvati (anti-seizure medication development)
 - Board member/Treasurer of Sante Total (501(c)(3) nonprofit — healthcare in Haiti and Kenya)
 - Operating at "110% capacity"
+- Household [[located_in:FAMILY|Montclair, NJ]]
 
 ## Communication Style
 - Direct, intellectually rigorous, no hedging

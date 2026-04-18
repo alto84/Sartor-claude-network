@@ -2,7 +2,7 @@
 type: hub
 level: 2
 entity: reference-index
-updated: 2026-04-16
+updated: 2026-04-18
 last_verified: 2026-04-16
 related: [PROCEDURES, MACHINES]
 tags: [meta/index, domain/reference]
@@ -26,7 +26,7 @@ Sub-directory hub for `sartor/memory/reference/`. Covers governance docs, memory
 
 ## Memory Architecture
 
-- [[reference/MEMORY-CONVENTIONS|MEMORY-CONVENTIONS]] — YAML frontmatter spec, callout format, wikilink resolution rules, controlled type vocabulary
+- [[reference/MEMORY-CONVENTIONS|MEMORY-CONVENTIONS]] — YAML frontmatter spec, callout format, wikilink resolution rules, controlled type vocabulary. v0.3 (2026-04-18) adds typed wikilinks (`rel:` prefix) with the `works_at` / `parent_of` / `owns` / `invested_in` / `married_to` / `located_in` / `depends_on` / `supersedes` / `archived_from` starting vocabulary; the extractor at `sartor/memory/extract_graph.py` emits `data/graph.jsonl` on each curator pass.
 - [[reference/MULTI-MACHINE-MEMORY|MULTI-MACHINE-MEMORY]] — Multi-machine memory architecture: inbox pattern, per-machine write queues, curator drain on Rocinante
 - [[reference/LLM-WIKI-ARCHITECTURE|LLM-WIKI-ARCHITECTURE]] — LLM-optimized wiki design: hub-and-spoke topology, backlink discipline, page-size recommendations
 

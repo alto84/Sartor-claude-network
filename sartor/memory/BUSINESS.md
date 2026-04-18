@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: BUSINESS
-updated: 2026-04-16
-updated_by: Claude (hub-refresher)
+updated: 2026-04-18
+updated_by: Claude (wikilinks-implementer, gstack-port)
 last_verified: 2026-04-16
 status: active
 next_review: 2026-05-12
@@ -57,7 +57,7 @@ related: [ALTON, TAXES, PROJECTS, ASTRAZENECA, solar-inference, sante-total, az-
 - Primary operational metric is **rental occupancy** (not profitability) to justify Solar ITC. See [[business/rental-operations]] for framework.
 
 **Infrastructure:**
-- vast.ai hosting: account alto84@gmail.com (Google OAuth), machine #52271 (RTX 5090), $0.40/hr base, $0.25/hr min bid (note: $0.25 is the minimum bid, not the base rate). Price set to $0.35/hr demand as of 2026-04-11.
+- vast.ai hosting: account alto84@gmail.com (Google OAuth), Solar Inference LLC [[owns:machines/gpuserver1|machine #52271]] (RTX 5090), $0.40/hr base, $0.25/hr min bid (note: $0.25 is the minimum bid, not the base rate). Price set to $0.35/hr demand as of 2026-04-11.
 - API key configured on gpuserver1 (name: "gpuserver1"), CLI at `~/.local/bin/vastai`
 - Dual RTX PRO 6000 Blackwell workstation arriving summer 2026 (~$35K, Newegg, 192GB VRAM total). See [[business/rental-operations]] and [[PROJECTS]] for context.
 - See [[MACHINES]] for current GPU setup and vast.ai details; see [[machines/gpuserver1/MISSION|gpuserver1 MISSION v0.2]] for occupancy-first pricing rationale

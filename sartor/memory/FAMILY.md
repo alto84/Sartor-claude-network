@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-04-16
-updated_by: Claude (hub-refresher)
+updated: 2026-04-18
+updated_by: Claude (wikilinks-implementer, gstack-port)
 last_verified: 2026-04-16
 status: active
 tags: [entity/person, domain/family]
@@ -13,9 +13,9 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 # Family
 
 ## Key Facts
-- Family of 5 (+ 3 cats), based in Montclair, NJ
+- Family of 5 (+ 3 cats), [[located_in:FAMILY|based in Montclair, NJ]]
 - [[ALTON|Alton]] (Emmett Alton Sartor) - head of household
-- Aneeta - Co-Head of Household (ICU epilepsy nursing background)
+- Aneeta - Co-Head of Household (ICU epilepsy nursing background), [[married_to:ALTON|married to Alton]]
 - Three children: Vayu, Vishala, Vasu
 - Three cats: Loki, Ghosty, Pickle
 
