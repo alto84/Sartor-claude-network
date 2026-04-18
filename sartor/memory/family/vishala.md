@@ -56,6 +56,13 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 - Is the gymnastics enrollment confirmed? Spring session is already underway.
 - What is the Wohelo birthday visit policy? Alton + Aneeta would miss Vishala's 9th birthday in person if visits are restricted.
 
+## Latest from gather (2026-04-18) — run 3
+
+> [!warning] TIME CORRECTION — Spring concert Apr 24
+> **Vishala spring concert (MKA) is at 12:00 PM – 2:00 PM ET, NOT 8:00–10:00 AM.** Raw calendar API returns `"start":{"dateTime":"2026-04-24T12:00:00","timeZone":"America/New_York"}` — no Z suffix, meaning local New York time = noon. All prior gather runs read this as UTC noon (12:00Z) and converted to 8 AM ET — that was wrong. The correct time is **noon on April 24**.
+>
+> Coverage implication: parent attendance at noon on a Friday, not 8 AM. Adjust any 8 AM coverage plan. See [[family/family-calendar]] and [[family/active-todos]].
+
 ## Latest from gather (2026-04-18)
 
 > [!fact]
