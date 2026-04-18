@@ -439,6 +439,24 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!todo]
 > **EquityZen catch-up — schedule or decline.** Georgia Edwards (georgia.edwards@equityzen.com) requested a meeting next week to discuss pre-IPO companies. EquityZen is where Scale AI (SCAI) pre-IPO was previously flagged. FINANCIAL signal. Reply to georgia.edwards@equityzen.com. See [[ALTON]].
 
+## Latest from gather (2026-04-18) — run 3
+
+> [!todo] ACTION_REQUIRED — decide before Apr 25
+> **Cougar Pride Day volunteers needed.** MKA primary school parent VP (pamkaprimaryschoolvp@gmail.com, Apr 18 8 AM ET) sent school-wide volunteer request for Cougar Pride Day (Apr 25, 3–7 PM). Needs help with ticket sales and setup. Reply to the email or sign up. See [[family/family-calendar]].
+
+> [!todo] ACTION_REQUIRED — financial review
+> **Biogen Inc. Securities Litigation — class action notice received.** National Financial Services LLC (Fidelity, id@proxyvote.com, Apr 18 6 AM ET) sent proxy/litigation notification for BIOGEN INC. SECURITIES LITIGATION. Alton holds BIOGEN shares in Fidelity brokerage. Review at proxyvote.com and decide whether to participate. No urgent deadline stated but notice should be read.
+
+> [!note]
+> **Olivia Murgo summer soccer camp — "MONTCLAIR Be Excellent!"** (olivia.murgo@gmail.com, Apr 17). Summer pre-season training for Montclair soccer players, age groups advancing. Informational; decide whether to enroll Vayu. See [[family/vayu]].
+
+> [!warning] APR 24 TIME CORRECTIONS — update your plan
+> **Two events on April 24 have incorrect times in prior calendar notes:**
+> - **Vishala spring concert**: is **12:00 PM – 2:00 PM ET** (NOT 8:00–10:00 AM as previously logged). Raw calendar: `2026-04-24T12:00:00` America/New_York (no Z = local noon). Prior runs incorrectly treated local time as UTC and subtracted 4h.
+> - **Women's center dinner**: is **6:00–7:00 PM ET** (NOT 10:00–11:00 PM). Raw calendar: `2026-04-24T22:00:00Z` (UTC 22:00 = 6 PM ET). Prior run logged as 10 PM by ignoring the Z.
+>
+> Apr 24 corrected schedule: Vishala concert noon–2 PM; Women's center dinner 6–7 PM. No conflict. See [[family/vishala]] and [[family/family-calendar]].
+
 ## Latest from gather (2026-04-18) — run 2
 
 > [!todo] ACTION_REQUIRED — financial review

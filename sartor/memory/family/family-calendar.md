@@ -178,6 +178,21 @@ New event discovered on Family calendar (added Apr 14 by Aneeta):
 
 **Apr 21 logistics note:** Montclair Public Library opens at noon (12 PM) on Tuesday April 21 for a staff meeting. Informational.
 
+## Latest from gather (2026-04-18) — run 3
+
+> [!warning] TWO TIME CORRECTIONS — April 24
+> Raw calendar API (run 3, Apr 18) reveals two events on Apr 24 have been logged with incorrect times in all prior runs:
+>
+> | Event | Prior logged time | Corrected time | Basis |
+> |-------|-----------------|----------------|-------|
+> | Vishala spring concert (MKA) | 8:00–10:00 AM ET | **12:00–2:00 PM ET** | `"start":{"dateTime":"2026-04-24T12:00:00","timeZone":"America/New_York"}` — no Z, local NY noon |
+> | Women's center dinner | 10:00–11:00 PM ET | **6:00–7:00 PM ET** | `"start":{"dateTime":"2026-04-24T22:00:00Z"...}` — Z = UTC, 22:00 UTC = 6 PM ET |
+>
+> Apr 24 corrected schedule: Vishala concert 12:00–2:00 PM, Women's center dinner 6:00–7:00 PM. No conflict. Main table Week of 4/21 above needs manual update — spring concert row should read "12:00–14:00" not "08:00–10:00."
+
+> [!note]
+> **Cougar Pride Day (Apr 25) volunteer request active.** MKA primary school parent VP (pamkaprimaryschoolvp@gmail.com) sent school-wide request Apr 18. Needs ticket sales and setup help. See [[family/active-todos]].
+
 ## Latest from gather (2026-04-17) run 4
 
 Two new events created today (2026-04-17) that were not in any prior run:

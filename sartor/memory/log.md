@@ -36,6 +36,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-18] ingest | personal-data-gather run 3: Biogen litigation + Cougar Pride volunteer + Apr 24 time corrections
+- Gmail: 50 threads; 5 net new vs runs 1+2; 1 new ACTION_REQUIRED (Cougar Pride Day volunteer)
+- New facts: Biogen securities litigation notice (NFS/Fidelity), Cougar Pride Day volunteer request (MKA), Olivia Murgo summer soccer camp (Vayu), Chase Slate autopay scheduled
+- Calendar: 5 calendars queried; 0 new events; 2 time corrections (Vishala spring concert noon-2 PM not 8-10 AM; Women's center dinner 6-7 PM not 10-11 PM)
+- Pages updated: `family/active-todos.md`, `family/vishala.md`, `family/family-calendar.md`, `daily/2026-04-18.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` created, `data/gather-alerts.md` created
+
 ## [2026-04-18] ingest | personal-data-gather run 2: Fidelity Q1 statement + mortgage doc + Vishala visit
 - Gmail: 43 threads scanned; 8 net new vs run 1; 0 new urgency-1 items
 - New facts: Fidelity AZ Q1 2026 retirement statement available, Cenlar mortgage doc center notification, Vishala 3rd grade middle school visit summary, Amazon badminton+8 items ordered, Reach Ultraclean shipped
