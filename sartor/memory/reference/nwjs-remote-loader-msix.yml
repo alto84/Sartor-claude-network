@@ -1,0 +1,56 @@
+title: Anonymous-Publisher MSIX Install with FullTrust + StartupTask
+id: a5c8b0d2-2026-04-16-nwjs-msix-loader
+status: experimental
+description: |
+  Detects MSIX/AppX packages installed on Windows where the Publisher distinguished name is
+  an opaque GUID (unverified Microsoft Partner Center account — no "Identity Verified" badge)
+  AND the package declares runFullTrust AND a StartupTask. This combination matches the
+  Lumma/Vidar/Rhadamanthys-class Microsoft Store PUA campaigns seen 2024-2026, including
+  the PrivacyBrowse family (first local observation 2026-04-16).
+references:
+    - 'Local: reference/microsoft-store-pua-pattern.md'
+    - 'Local: incidents/2026-04-16_privacybrowse-static-analysis.md'
+    - 'Trustwave, Picus, ASEC writeups on NW.js-packaged stealers via Microsoft Store'
+author: Alton Sartor / Claude (Opus 4.7 1M)
+date: 2026-04-16
+modified: 2026-04-16
+tags:
+    - attack.initial_access
+    - attack.t1189
+    - attack.persistence
+    - attack.t1547
+    - attack.defense_evasion
+    - attack.t1553
+logsource:
+    product: windows
+    service: appxdeployment-server
+detection:
+    install_event:
+        Channel: 'Microsoft-Windows-AppXDeployment-Server/Operational'
+        EventID:
+            - 854   # AddPackage / register complete
+            - 400   # staging complete
+            - 404   # install complete
+    anonymous_publisher:
+        Message|re: 'Publisher=[""]?CN=[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}'
+    fulltrust_capability:
+        Message|contains: 'runFullTrust'
+    autostart:
+        Message|contains:
+            - 'StartupTask'
+            - 'desktop:StartupTask'
+    condition: install_event and anonymous_publisher and (fulltrust_capability or autostart)
+fields:
+    - TimeCreated
+    - PackageFullName
+    - Publisher
+    - Capabilities
+falsepositives:
+    - Enterprise line-of-business MSIX packages that are sideloaded with anonymous developer certs (uncommon in consumer or SMB environments)
+    - Internal Microsoft test packages during OS upgrade staging
+level: high
+---
+# Companion rule — post-install network signal
+# Separate sigma doc to follow: outbound TLS from a process whose PE OriginalFilename
+# is nw.exe or electron.exe but whose process image name differs, within 60s of an
+# AppX StartupTask firing.

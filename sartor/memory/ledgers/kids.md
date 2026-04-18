@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: kids-ledger
-updated: 2026-04-10
+updated: 2026-04-16
 updated_by: Claude
 status: active
 tags: [domain/family, entity/person, meta/ledger]
@@ -21,7 +21,7 @@ Running ledger for the three children. This is "the family bank" — kids give A
 | Child | Balance | Last Activity |
 |-------|---------|---------------|
 | [[FAMILY#Vayu|Vayu]] (age 10) | **$10.00** | 2026-04-09 |
-| [[FAMILY#Vishala|Vishala]] (age 8) | $0.00 | 2026-04-09 |
+| [[FAMILY#Vishala|Vishala]] (age 8) | **$26.00** | 2026-04-16 |
 | [[FAMILY#Vasu|Vasu]] (age 4) | $0.00 | 2026-04-09 |
 
 ## Transaction History
@@ -37,6 +37,8 @@ Running ledger for the three children. This is "the family bank" — kids give A
 | Date | Description | Amount | Running Balance |
 |------|-------------|-------:|----------------:|
 | 2026-04-09 | Ledger opened, zero balance | $0.00 | $0.00 |
+| 2026-04-16 | Deposit (cash to hold) | +$25.00 | $25.00 |
+| 2026-04-16 | Deposit (cash to hold) | +$1.00 | $26.00 |
 
 ### Vasu (age 4)
 

@@ -1,9 +1,9 @@
 ---
 type: reference
-version: 0.2
-updated: 2026-04-12
-updated_by: Claude
-last_verified: 2026-04-12
+version: 0.3
+updated: 2026-04-18
+updated_by: Claude (wikilinks-implementer, gstack-port)
+last_verified: 2026-04-18
 tags: [meta/conventions, curator/spec]
 aliases: [Conventions, Memory Conventions]
 ---
@@ -140,6 +140,7 @@ All cross-file references use Obsidian `[[FILE]]` syntax, not Markdown links.
 | `[[TAXES\|tax filing]]` | Link with display alias |
 | `[[TAXES#Filing Status by Entity]]` | Link to a heading in TAXES.md |
 | `[[daily/2026-04-07]]` | Link to a subfolder file |
+| `[[rel:target]]` | Typed wikilink — relation on the link itself (see below) |
 | `#entity/person` | Hierarchical tag |
 
 ### Hard rules
@@ -149,6 +150,58 @@ All cross-file references use Obsidian `[[FILE]]` syntax, not Markdown links.
 - External URLs still use Markdown links: `[Obsidian help](https://help.obsidian.md)`
 - Declare aliases in the target file's frontmatter (`aliases:` field) so Obsidian's autocomplete and grep-based resolution both work
 - Backlinks are automatic in Obsidian — remove manually-curated "Related" sections over time unless they add narrative context beyond what the link graph shows
+
+### Typed wikilinks (`rel:` prefix)
+
+Added in v0.3. Optional prefix that tags a wikilink with a relation type. Syntax: `[[rel:target]]` where `rel` is drawn from the starting vocabulary below. Untyped `[[target]]` remains the default and is unchanged by this addition.
+
+The extractor at `sartor/memory/extract_graph.py` walks all memory markdown, parses typed links, and writes one edge per occurrence to `data/graph.jsonl`. No database, no LLM call, no dependencies. Run on the current corpus on each curator pass.
+
+**Starting vocabulary** (extend by adding to the extractor's allowed set; do not invent new relations ad hoc):
+
+| Relation | Domain → Range | Meaning |
+|----------|----------------|---------|
+| `works_at` | person → organization | Employment |
+| `parent_of` | person → person | Parent-child |
+| `married_to` | person → person | Spouse |
+| `owns` | entity → asset | Legal ownership |
+| `invested_in` | entity → company | Equity or pre-IPO position |
+| `located_in` | entity → place | Physical location |
+| `depends_on` | file → file, system → system | Hard dependency |
+| `supersedes` | file → file | Current version replaces named prior |
+| `archived_from` | file → file | Archived copy of a former canonical |
+
+Display text works the same as untyped wikilinks: `[[rel:TARGET|visible text]]` renders "visible text" and extracts the edge (rel, TARGET).
+
+**Examples using actual Sartor entities:**
+
+```markdown
+Alton [[works_at:ASTRAZENECA]] as Senior Medical Director.
+Alton is [[parent_of:vayu|Vayu's father]].
+Alton is [[married_to:FAMILY#Aneeta|married to Aneeta]].
+Solar Inference LLC [[owns:machines/gpuserver1|machine 52271]].
+Alton [[invested_in:business/solar-inference|Solar Inference LLC]] (50% with Aneeta).
+The household is [[located_in:FAMILY|Montclair, NJ]].
+The curator [[depends_on:MEMORY-CONVENTIONS|reads this spec]] on every run.
+[[HOUSEHOLD-CONSTITUTION]] v0.2 [[supersedes:archive/HOUSEHOLD-CONSTITUTION-v0.1|HOUSEHOLD-CONSTITUTION v0.1]].
+The draft was [[archived_from:archive/OPERATING-AGREEMENT-DRAFT-GPUSERVER1|OPERATING-AGREEMENT-DRAFT-GPUSERVER1]] during the 2026-04-16 cleanup.
+```
+
+**Extracted edges** (one per link) look like:
+
+```json
+{"source": "sartor/memory/ALTON.md", "relation": "works_at", "target": "ASTRAZENECA", "line": 27}
+{"source": "sartor/memory/ALTON.md", "relation": "parent_of", "target": "vayu", "line": 79}
+```
+
+**Rules:**
+
+- Lowercase `rel:` prefix. Relations are snake_case.
+- One relation per link. Don't chain (`[[works_at+member_of:X]]` is invalid).
+- The target slug is the wikilink target with no path normalization; the extractor preserves it verbatim. Collisions between `BUSINESS` (root) and `business/` (folder) are resolved at query time, not at extract time.
+- A file may have many typed links to the same target; each occurrence is a row in `data/graph.jsonl`. Deduplicate at query time if needed.
+- Untyped wikilinks are not extracted to the graph file. If you want an edge, type it.
+- New relations require a spec edit here plus a code change in the extractor's allowed set. Do not let the vocabulary sprawl.
 
 ## Observation syntax (adopted from basic-memory)
 
@@ -293,5 +346,6 @@ A proper helper script at `sartor/memory/query.py` can wrap these, but grep work
 
 ## History
 
+- 2026-04-18: v0.3 — Added typed wikilinks (`rel:` prefix). Starting vocabulary of 9 relations (works_at, parent_of, married_to, owns, invested_in, located_in, depends_on, supersedes, archived_from). Extractor at `sartor/memory/extract_graph.py` emits `data/graph.jsonl`. Ported from gstack review ([[gstack-review-2026-04-18]]).
 - 2026-04-12: v0.2 — Added `last_verified`, `volatility`, `oracle`, `superseded_by` frontmatter fields (EX-12). Added "Observation syntax (adopted from basic-memory)" section. Added Related section cross-linking master plan and staleness.py. Bumped version to 0.2.
 - 2026-04-07: v0.1 — Initial creation. Distilled from kepano/obsidian-skills review and memory audit.

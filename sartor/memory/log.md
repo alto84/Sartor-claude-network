@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-17
+updated: 2026-04-18
 updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
@@ -35,6 +35,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-18] ingest | personal-data-gather run 4: spring concert time revert + Newegg alert
+- Gmail: 50 threads; 5 net new vs runs 1–3; 0 new ACTION_REQUIRED
+- New signals: Newegg verification code (post-fraud-alert context, flagged), Chase Prime Visa autopay (routine), JAMA ESCMID studies (informational), 2 LinkedIn alerts
+- Calendar: 5 calendars; 0 new events; timezone regression corrected — Vishala spring concert Apr 24 is 8 AM ET (NOT noon as run 3 stated). UTC-without-Z pattern validated against 4 cross-reference events.
+- Women's center dinner Apr 24 confirmed 6 PM ET ✓
+- Pages updated: `daily/2026-04-18.md`, `family/active-todos.md`, `family/family-calendar.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
 
 ## [2026-04-18] ingest | personal-data-gather run 3: Biogen litigation + Cougar Pride volunteer + Apr 24 time corrections
 - Gmail: 50 threads; 5 net new vs runs 1+2; 1 new ACTION_REQUIRED (Cougar Pride Day volunteer)

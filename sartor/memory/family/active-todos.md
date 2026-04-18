@@ -11,11 +11,50 @@ next_review: 2026-04-20
 tags: [entity/family, status/active, priority/p1, domain/family]
 aliases: [Family TODOs, Family Action Items, Family Dashboard]
 related: [FAMILY, vayu, vishala, vasu, family-calendar]
+originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 ---
-
 # Family Active TODOs
 
 Live dashboard of time-sensitive family items, surfaced from Gmail and Calendar harvest on 2026-04-09. Reviewed weekly; items age out or move to the relevant kid's page once resolved.
+
+## 2026-04-16 evening triage — Alton decisions
+
+**Closed / resolved:**
+- Backdoor Roth conversions (Alton + Aneeta): DONE
+- $18K tax-extension debit authorization to Jonathan Francis: SENT
+- Lucent Energy solar engineering meeting: SCHEDULED for Thursday 2026-04-23, after 3 PM
+- Mike Silva (AcrossCap) 2026-04-16 2:30 PM Zoom: done (today)
+
+**Declined / removed:**
+- SNO 2026 Clinical Trials Workshop (5/15 app): NOT APPLYING
+- SNO 2026 Annual Meeting abstract (11/12–11/15 Philadelphia): NOT SUBMITTING
+- Gym Day 2026-05-30 registration: NOT ATTENDING
+- Handshake AI "Project Alloy": declining (too busy)
+
+**Unsubscribing:**
+- M3 Global Research daily neurology surveys
+- Generic LinkedIn Job Alerts / Ladders recruiter feeds
+- Recruiter roles: ignore unless explicitly AI-related (see [[feedback/gather-triage-2026-04-16]])
+
+**Still open after triage:**
+- **Call plumber — outdoor pipes broke** (added 2026-04-17). Spring-thaw failure most likely (freeze damage from winter, visible on pressurization). Candidates: irrigation backflow preventer, outdoor hose bib, pool feed line, or main supply.
+- **Pay heating guy** (added 2026-04-17).
+- CAQH ProView reattestation — Alton to handle today/tomorrow
+- W-2 DE→NJ address update at AZ HR (CPA flag)
+- Chase Sapphire Reserve replacement: card in-hand, locate and update autopays
+- Wohelo payment ($12,900 or $500 deposit) — check to Heidi Gorton
+- 4/17 parent coverage conflict: Vishala dance concert + Vayu Ellis Island trip
+- Afternoon childcare help (HIGH, ongoing)
+- Vayu counselor/therapist search (status unclear, ping Aneeta)
+- Family dentist booking (Park Street Dental Montclair top pick)
+- Loki's chlorambucil — confirm 4/14 Chewy delivery
+- Aneeta CSA workshift registration (her Gmail invalid in system)
+- Sante Total restricted-donations bank account
+- Aneeta at RRE 4/29–5/03 (confirm destination; Alton sole parent)
+- GOOGL May $285C roll decision (late April window)
+- Summit Health payment (portal)
+- Tribeca Pediatrics portal messages (3 unread)
+- NYC commute train-switch research
 
 > [!warning] 2026-04-13 — PAYMENT DETAILS CONFIRMED, ACTION NEEDED
 > **Wohelo payment — Vishala summer camp.** Heidi Gorton provided payment details on Apr 13. Alton's Apr 13 email asked to send deposit + full tuition together ($12,900 total). Heidi confirmed that amount. Deposit ($500) was due 2026-04-10 (overdue). Full tuition due 2026-05-15.
@@ -464,3 +503,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note]
 > **Mortgage document center notification (Cenlar account 1510, 85 Stonebridge).** Email Apr 18 (CentralLoanAdministrationReporting@loanadministration.com): new document available at loanadministration.com → Documents tab. Likely related to Apr 16 property tax escrow disbursement confirmed in run 3 Apr 17. Review document when convenient — probably a disbursement confirmation. No urgent action unless it is a notice of deficiency or escrow shortage.
+
+## Latest from gather (2026-04-18) — run 4
+
+> [!warning] APR 24 SPRING CONCERT TIME CORRECTION — run 3 was wrong
+> **Vishala spring concert (Apr 24) is 8:00–10:00 AM ET, NOT noon–2 PM.**
+>
+> Run 3 introduced an incorrect "correction" by arguing that `2026-04-24T12:00:00` with no Z suffix means local NY time = noon. Cross-referencing four other no-Z events confirms the opposite: Family calendar events are stored as UTC. Subtract 4h for EDT.
+>
+> | Event | Raw value | UTC = ET |
+> |-------|-----------|----------|
+> | Recycling Parade Apr 22 | `20:20:00` | 4:20 PM ET ✓ |
+> | Soccer Practice Apr 22 | `21:30:00` | 5:30 PM ET ✓ |
+> | Band Concert Apr 22 | `22:30:00` | 6:30 PM ET ✓ |
+> | Movie Room Repairs Apr 20 | `13:00:00` | 9:00 AM ET ✓ |
+> | **Vishala spring concert** | `12:00:00` | **8:00 AM ET** |
+>
+> The original 8 AM value was correct. Women's center dinner Apr 24 remains 6 PM ET (22:00 UTC). Apr 24 schedule: **spring concert 8–10 AM, Women's dinner 6–7 PM.** No conflict. See [[family/family-calendar]] and [[family/vishala]].
+
+> [!note] Newegg verification code (Apr 18 14:16 UTC)
+> Newegg emailed "480587 is your Newegg Verification Code" to alto84@gmail.com today. Context: on Apr 13 a Newegg charge ($938.25) triggered the Chase Sapphire fraud alert and card replacement. If Alton did NOT initiate this Newegg login today, the actor behind the Apr 13 fraud may still be active. Verify with Alton: did you log into Newegg on Apr 18?

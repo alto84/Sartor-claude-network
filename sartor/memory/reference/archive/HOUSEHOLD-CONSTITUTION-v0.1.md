@@ -1,16 +1,18 @@
 ---
 type: reference
 entity: household-constitution
-updated: 2026-04-11
+updated: 2026-04-16
 updated_by: Claude (Opus subagent draft)
 status: archived
-archived: 2026-04-12
+archived: 2026-04-16
 superseded_by: "[[reference/HOUSEHOLD-CONSTITUTION]]"
 version: 0.1
 tags: [meta/constitution, domain/home-agent, status/draft, status/archived]
 aliases: [Home Agent Constitution, Sartor Constitution, Constitution]
 related: [ALTON, FAMILY, SELF, CLAUDE]
 ---
+
+> archived 2026-04-16 — superseded by `sartor/memory/reference/HOUSEHOLD-CONSTITUTION.md` (v0.2). Relocated from `reference/` into `reference/archive/` 2026-04-16.
 
 > [!warning] DRAFT v0.1 — PENDING REVIEW
 > First-draft constitution for the Sartor Home Agent, drafted by Claude Opus on 2026-04-11 per Alton's brief. Not yet approved, not yet fine-tuning data. See "Notes for Alton" at the bottom for choices flagged for explicit approval or redirect. Review cadence and promotion path TBD.
