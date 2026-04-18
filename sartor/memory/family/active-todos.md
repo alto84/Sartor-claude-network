@@ -438,3 +438,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo]
 > **EquityZen catch-up — schedule or decline.** Georgia Edwards (georgia.edwards@equityzen.com) requested a meeting next week to discuss pre-IPO companies. EquityZen is where Scale AI (SCAI) pre-IPO was previously flagged. FINANCIAL signal. Reply to georgia.edwards@equityzen.com. See [[ALTON]].
+
+## Latest from gather (2026-04-18) — run 2
+
+> [!todo] ACTION_REQUIRED — financial review
+> **Fidelity AZ Q1 2026 quarterly statement available.** Email Apr 17 from Fidelity.Investments@mail.fidelity.com: Q1 2026 statement for the AstraZeneca Savings and Investment Plan is ready. Review at Fidelity NetBenefits. This is the first full quarter as Senior Medical Director (role started ~Mar 31, 2026) — confirm payroll contribution rate reflects new role/compensation tier, verify investment allocation, check beneficiary designations. See [[ASTRAZENECA]].
+
+> [!note]
+> **Mortgage document center notification (Cenlar account 1510, 85 Stonebridge).** Email Apr 18 (CentralLoanAdministrationReporting@loanadministration.com): new document available at loanadministration.com → Documents tab. Likely related to Apr 16 property tax escrow disbursement confirmed in run 3 Apr 17. Review document when convenient — probably a disbursement confirmation. No urgent action unless it is a notice of deficiency or escrow shortage.

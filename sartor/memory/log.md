@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-18] ingest | personal-data-gather run 2: Fidelity Q1 statement + mortgage doc + Vishala visit
+- Gmail: 43 threads scanned; 8 net new vs run 1; 0 new urgency-1 items
+- New facts: Fidelity AZ Q1 2026 retirement statement available, Cenlar mortgage doc center notification, Vishala 3rd grade middle school visit summary, Amazon badminton+8 items ordered, Reach Ultraclean shipped
+- Calendar: 5 calendars queried; 0 new events vs run 1
+- TODAY conflict (Apr 18 Rafi's party + soccer) still in play — no resolution email
+- Pages updated: `ASTRAZENECA.md`, `family/active-todos.md`, `family/vishala.md`, `daily/2026-04-18.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written (6 open items, 2 priority-1)
+
 ## [2026-04-18] ingest | personal-data-gather run 1: soccer game Apr 25 + Cougar pride day time correction
 - Gmail: 50 threads in window; 7 net new vs Apr 17 run 6; 0 new ACTION_REQUIRED
 - Calendar: 5 calendars queried; 1 new event (Vayu soccer Apr 25, Blue Sombrero); 1 time correction (Cougar pride day 3–7 PM ET, not 11 AM–3 PM)
