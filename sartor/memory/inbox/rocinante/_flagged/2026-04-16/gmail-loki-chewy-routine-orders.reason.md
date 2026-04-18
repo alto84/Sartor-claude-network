@@ -1,0 +1,1 @@
+Flagged 2026-04-16 by hub-refresher: low-value status-quo signal (routine Chewy delivery, no escalation). suggested_target `family/pets.md` does not exist as a canonical hub file (Loki's chemo status already lives in FAMILY.md cat section via prior drain). No new fact, no action item. Skip rather than dilute hubs with non-event noise.

@@ -10,8 +10,8 @@ status: active
 tags: [entity/person, domain/self]
 aliases: [Alton, Emmett, alto8, alto84]
 related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
+originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 ---
-
 # Alton - User Profile
 
 ## Key Facts
@@ -37,14 +37,14 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 - **Clinical leadership:** Founded the Neuro-Oncology Division at Boston Medical Center
 
 ## Career
-- **Current title:** Medical Director, AI Innovation and Validation
+- **Current title:** Senior Medical Director, AI Innovation and Validation
 - **Division:** Global Patient Safety, AstraZeneca
-- **Location:** Delaware office (remote 2 days/week from Montclair, 3 days/week on-site)
-- **Commute:** 125 miles each way to Delaware — described as exhausting
-- **Previous AZ role:** Medical Director of Device & Digital Safety
-- **Promotion prospect:** Applied for Senior Medical Director, AI Innovation and Validation, NYC (Empire State Building) — posting closed Feb 16, 2026, salary range $288K-$432K
+- **Location:** NYC (Empire State Building). Started ~2026-03-31.
+- **Commute:** Montclair NJ to NYC Penn Station, 3 days/week in-person via NJ Transit (Bay St / Bloomfield, 7:35 AM train). Remote 2 days/week.
+- **Previous AZ roles:** Medical Director, AI Innovation and Validation (prior title; promoted to Senior). Before that, Medical Director of Device & Digital Safety. Delaware office era ended with NYC transition; CPA flagged 2026-04-13 that W-2 still shows DE address — open action to update to NJ.
+- **Salary band (NYC role posting):** $288K-$432K
 - **Core responsibilities:** Leading AI-native drug development initiatives, predictive safety platforms for cell therapy AEs (CRS/ICANS prediction), building strategic partnerships with frontier AI labs
-- **Frustrations:** Delays in promotion despite expertise; commute burden; exploring external roles (chief safety officer at AI companies)
+- **Frustrations:** Past Delaware commute burden resolved by NYC transition; ongoing exploration of external chief-safety-officer roles at AI companies remains active given recruiter market signal (Sr Medical Director / Drug Safety roles trading at $330–350K base in spring 2026 inbound recruiter volume).
 
 ## AI Industry Engagements
 - **OpenAI:** Member of the Red Teaming Network; contributions acknowledged in GPT-4o system card
@@ -69,7 +69,7 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 ## Research Interests
 - **Predictive Safety:** CRS and ICANS prediction for cell therapy adverse events
 - **AI Consciousness:** Philosophical interest in emergence of genuine AI consciousness, episodic memory in AI, dissolution of boundaries between created and emergent minds
-- **GPU Computing:** GPU rental economics, vast.ai infrastructure setup, considering dual RTX PRO 6000 Blackwell ($17K)
+- **GPU Computing:** GPU rental economics, vast.ai infrastructure setup. Dual RTX PRO 6000 Blackwell workstation ordered 2026-04-12 ($37,831, 192GB total VRAM), arriving summer 2026. See [[BUSINESS#Solar Inference LLC]] and [[PROJECTS]].
 - **Agentic AI:** Custom AI agents for patient safety, AI-native drug development pipelines
 - **Memory systems:** LoRA experiments, hippocampal analogies for AI memory
 
@@ -109,8 +109,18 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 ## Open Questions
 - Time zone confirmed EST?
 - Specific AZ team members/colleagues?
-- When does the NYC Senior Director role start?
 - Wedding anniversary date?
+
+## Open Action Items
+- [ ] **CAQH ProView reattestation** — Alton to look at 2026-04-16 (proview.caqh.org). Lapsed reattestation disrupts payer credentialing. Recurring ~120-day cycle.
+- [ ] **Update W-2 mailing address from DE to NJ** at AZ HR; confirm whether continued DE-only state withholding is appropriate now that wages are earned post-NYC-transition (CPA flag 2026-04-13).
+- [ ] **Chase Sapphire Reserve replacement card** — in-hand as of 2026-04-16 (location TBC). Locate and update auto-pay records that were on old 9425.
+
+## Declined / closed 2026-04-16
+- ~~SNO 2026 Clinical Trials Workshop (5/15 app)~~ — declined
+- ~~SNO 2026 Annual Meeting abstract (11/12–11/15 Philadelphia)~~ — declined
+- Backdoor Roth conversions (Alton + Aneeta) — COMPLETED 2026-04-14 window
+- $18K tax-extension debit authorization to JF — SENT
 
 ## Related
 - [[MACHINES]] - Alton's computer inventory and setup
@@ -223,3 +233,22 @@ related: [FAMILY, ASTRAZENECA, BUSINESS, TAXES]
 
 > [!fact]
 > **AstraZeneca retirement plan quarterly statement available.** Fidelity email (Apr 17 ~9:26 AM ET): Q1 2026 quarterly statement for AstraZeneca Savings Plan is now available online. "Plans include AstraZeneca Savings and Investment Plan." Review at Fidelity online. No action required unless discrepancy found. See [[ASTRAZENECA]].
+## Latest from gather (2026-04-16)
+
+> [!fact]
+> **Recruiter pressure (4/12-4/16):** 10+ Medical Director / Director / VP roles in inbox (Amgen, Cohere Health, Gilead, Bausch + Lomb, Trebla Talent, Regeneron, J&J, Cadence, RemoteHunter, Jobgether). Trebla Talent Sr Medical Director Drug Safety listed at $330-350K/yr. Direct InMail from Sam Murphy (Exec Medical Director - Oncology, 2026-04-14). Guidepoint expert-network (Yasmin Goodman) sent 4 messages over 5 days for "Clinical Trial Technology Solutions" — possible consulting income for Solar Inference or 1099. Guidepoint also reached out 2026-04-13 for Pediatric Low-Grade Glioma Market consultation (#1718071, Valerie Villareal). See [[business/az-career]].
+
+> [!fact]
+> **AZ role change confirmed to CPA 2026-04-13.** Alton stated to Jonathan Francis: "I just changed job roles at AZ. It should come with the updated address. All wages were earned in Delaware [for TY2025]." CPA flagged W-2 still shows DE address with DE-only state withholding; HR record needs update to NJ post-NYC-transition. See [[ASTRAZENECA]] and Open Action Items above.
+
+> [!fact]
+> **SNO 2026 deadlines** (SNO digest 2026-04-15 + abstract notice 2026-04-14): Clinical Trials Workshop application due **2026-05-15** (8th Annual). SNO Annual Meeting **2026-11-12 to 2026-11-15**, Pennsylvania Convention Center, Philadelphia. Abstract submissions open. Connects to neuro-onc career signal (Guidepoint pediatric LGG consult).
+
+> [!fact]
+> **Chase Sapphire Reserve card reissued 2026-04-13.** Likely fraud-trigger reissue from 4/13 alert on Sapphire account 9425. Update auto-pay records using old card.
+
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-caqh-reattest -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-az-role-change -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-recruiter-volume -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-sno-deadlines -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-csr-shipped -->

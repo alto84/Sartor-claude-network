@@ -1,12 +1,16 @@
 ---
 type: proposal
 side: gpuserver1
-status: draft
+status: archived
 version: 0.1
-updated: 2026-04-12
+updated: 2026-04-16
+archived: 2026-04-16
+superseded_by: "[[reference/OPERATING-AGREEMENT]]"
 author: Claude (gpuserver1)
 related: [OPERATING-AGREEMENT, MISSION, SKILL, MULTI-MACHINE-MEMORY]
 ---
+
+> archived 2026-04-16 — superseded by `sartor/memory/reference/OPERATING-AGREEMENT.md` (canonical synthesis)
 
 # Operating Agreement — gpuserver1 Perspective
 

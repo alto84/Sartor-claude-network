@@ -2,8 +2,8 @@
 type: hub
 level: 2
 entity: reference-index
-updated: 2026-04-12
-last_verified: 2026-04-12
+updated: 2026-04-16
+last_verified: 2026-04-16
 related: [PROCEDURES, MACHINES]
 tags: [meta/index, domain/reference]
 ---
@@ -15,11 +15,14 @@ Sub-directory hub for `sartor/memory/reference/`. Covers governance docs, memory
 ## Governance and Operating Agreements
 
 - [[reference/OPERATING-AGREEMENT|OPERATING-AGREEMENT]] — Canonical operating agreement: Rocinante as sole git authority, gpuserver1 as inbox-write-only, memory consolidation rules
-- [[reference/OPERATING-AGREEMENT-DRAFT-GPUSERVER1|OPERATING-AGREEMENT-DRAFT-GPUSERVER1]] — gpuserver1 draft proposal for operating agreement (may be superseded by canonical; check before relying on)
-- [[reference/OPERATING-AGREEMENT-DRAFT-ROCINANTE|OPERATING-AGREEMENT-DRAFT-ROCINANTE]] — Rocinante draft proposal for operating agreement (may be superseded by canonical; check before relying on)
 - [[reference/AGREEMENT-SUMMARY|AGREEMENT-SUMMARY]] — Plain-language summary of the operating agreement; use as quick reference
 - [[reference/HOUSEHOLD-CONSTITUTION|HOUSEHOLD-CONSTITUTION]] — Household constitution v0.2 (active): governance rules for the Sartor home agent system
-- [[reference/HOUSEHOLD-CONSTITUTION-v0.1|HOUSEHOLD-CONSTITUTION-v0.1]] — Household constitution v0.1 (superseded draft, archived 2026-04-12)
+
+### Archived (under `reference/archive/`)
+
+- [[reference/archive/OPERATING-AGREEMENT-DRAFT-GPUSERVER1|OPERATING-AGREEMENT-DRAFT-GPUSERVER1]] — gpuserver1 draft superseded by canonical OPERATING-AGREEMENT (archived 2026-04-16)
+- [[reference/archive/OPERATING-AGREEMENT-DRAFT-ROCINANTE|OPERATING-AGREEMENT-DRAFT-ROCINANTE]] — Rocinante draft superseded by canonical OPERATING-AGREEMENT (archived 2026-04-16)
+- [[reference/archive/HOUSEHOLD-CONSTITUTION-v0.1|HOUSEHOLD-CONSTITUTION-v0.1]] — Household constitution v0.1 (superseded by v0.2; relocated to archive 2026-04-16)
 
 ## Memory Architecture
 

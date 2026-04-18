@@ -5,8 +5,8 @@ updated: 2026-04-17
 updated_by: personal-data-gather
 last_verified: 2026-04-12
 status: active
-next_deadline: 2026-04-15
-next_review: 2026-04-10
+next_deadline: 2026-05-15
+next_review: 2026-05-15
 tags: [entity/tax, status/active, priority/p1, domain/career]
 aliases: [Tax, Taxes, Tax Prep, TY2025]
 related: [ALTON, FAMILY, BUSINESS]
@@ -234,3 +234,21 @@ Append this fact to `TAXES.md` under the section relevant to `2027 fiscal outloo
 
 > [!fact]
 > **Property tax paid from escrow 2026-04-16.** Cenlar Loan Administration (account 1510) confirmed at 7:22 AM UTC Apr 17: "a property tax payment was made on 04/16/2026 for your property." This is the Q1/Q2 2026 Montclair township property tax disbursement from the escrow account for 85 Stonebridge. Automatic escrow payment — no action required from Alton. Relevant context: (1) TY2026 Schedule A deduction tracking (property taxes paid this year will be deductible if Alton itemizes), (2) confirms Cenlar escrow is funding per schedule. The Apr 15 1040 extension is now filed ($18K debit executed). Property taxes paid in 2026 are a TY2026 item, not TY2025. Flag for [[people/jonathan-francis|Jonathan Francis]] at Oct 2026 filing. See [[ALTON]].
+## Latest from gather (2026-04-16)
+
+> [!fact]
+> **Extension payments authorized 2026-04-14.** Alton replied "Money is in the account." authorizing JF to debit $15K IRS + $3K NJ from personal checking week of 2026-04-15. JF replied 2026-04-14 15:51 UTC: "We will pass through the 2025 stuff." TY2025 extension complete; final 1040 amend or file follows after K-1 (Sep 15, 2026).
+
+> [!fact] TY2025 charitable contribution
+> Single major donation: **$2,037.17 cash to Montclair Kimberley Academy** (2025-11-20). 2024 baseline was ~$25K — 2025 is anomalously low. Flag for 2026 giving plan (donor-advised fund consideration).
+
+> [!fact] 85 Stonebridge mortgage transfer (TY2025)
+> Primary mortgage sold mid-2025 from **Shellpoint to Cenlar**. New **HELOC opened through Cenlar** in 2025. Three 1098s on file (Shellpoint pre-transfer, Cenlar post-transfer, Cenlar HELOC). 2025 Montclair property tax paid: **$62,187.49**.
+
+> [!fact] $37k workstation hardware confirmed for LLC pass-through
+> Alton told CPA 2026-04-14: "spent $37k on computer hardware" (the dual RTX PRO 6000 Blackwell rig ordered 2026-04-12). CPA accepted pass-through treatment. Reconcile solar roof basis: CLAUDE.md tracks $438,829, Alton said "~$450k" to CPA — CPA will work with whatever the actual depreciable basis turns out to be once invoiced.
+
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-tax-extension-payments -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-mka-donation -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-mortgage-refi-shellpoint-cenlar -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-workstation-37k-pass-through -->

@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-04-09
-updated_by: Claude
-last_verified: 2026-04-12
+updated: 2026-04-16
+updated_by: Claude (hub-refresher)
+last_verified: 2026-04-16
 status: active
 tags: [entity/person, domain/family]
 aliases: [Sartor Family, Household]
@@ -88,18 +88,30 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 - Monitor for Wohelo response and payment deadline
 
 ## Upcoming Events
-- Easter Egg Hunt: Saturday April 5, 11 AM, Essex County Presby Memorial Iris Gardens
-- Goddard pet photo day + supply drive: Monday April 6
-- Oliver's birthday: April 7
-- Solar roof installation: tentatively last week of April (permitting in progress)
+- **2026-04-17 (Fri):** MKA 4th Grade trip to Ellis Island — Vayu needs packed lunch
+- **2026-04-17 (Fri) 8:15am:** 3rd grade dance concert at MKA Friday assembly (~9am end). Likely Vishala (verify grade). Source: Kristen Weaver / mail3.veracross.com
+- **2026-04-20 to 2026-04-21:** Goddard School (Vasu) — 1 Seymour Street parking garage closed 7am-5pm both days
+- **2026-04-22 (Wed) 7pm** (student arrival 6:30pm): MKA Spring Band Concert (Paul Murphy, mail1.veracross.com). Verify which child plays.
+- Solar roof installation: tentatively last week of April (permitting in progress); install must precede 2026-07-04 ITC deadline
 - Berman Home Systems wifi install: April 27-29 (3 days, Solar Inference LLC business install)
+- **2026-04-28 (Tue) 8-9am:** Power Mac LLC home theater repair visit (vendor Ilija Trajceski, info@power-mac.net) — coordinated with Berman during overlapping wifi install
 - Aneeta at RRE: April 29 - May 3 (Alton sole-parent window, 5 days, overlaps Berman install)
+- **2026-05-15 (Fri):** Wohelo full-tuition payment deadline ($12,400 balance after deposit)
+- Vishala summer camp: Little Wohelo Camp, Thu Jun 25 - Wed Aug 12, 2026 (Raymond, ME)
 - Disney family trip (Disneyland): July 2026 (with Smith/Alison, Kim Tran, Brucker, Perera, Nicole)
 
 ## Open Action Items
+
+> [!deadline] 2026-04-16 (today / overdue)
+> **Wohelo $500 deposit overdue** — was due 2026-04-10. Cut check now to lock Vishala's enrollment. Director Heidi Gorton (heidigorton@gmail.com) has accepted late submission.
+
+> [!deadline] 2026-05-15
+> **Wohelo full tuition $12,900 due** (or $12,400 balance if $500 deposit sent separately). Make check payable to **Wohelo Camps**, mail to 25 Gulick Road, Raymond, ME 04071. Memo: "Vishala Sartor — 2026 tuition". Family plan: Alton + Aneeta work remotely from Maine the week of Vishala's birthday (visit window 1-3pm at the garden during lunch/rest hour, per director).
+
+- **Math support for Vayu (4th grade partial quotients division)** — teacher Roshni Shah (rshah@mka.org) flagged 2026-04-14, shared at-home practice materials. Aneeta acknowledged. Math dean: Deborah Gordon (dgordon@mka.org). See [[family/vayu]].
 - Find local counselor for Vayu (explosive ADHD/ODD specialization, not autism-focused)
 - Vishala health form for MKA (school requesting)
-- Schedule child well visit (Tribeca Pediatrics, http://tpeds.co/13kn)
+- Schedule child well visit (Tribeca Pediatrics, http://tpeds.co/13kn) — confirmed active provider via 2026-04-13 InstaMed payment ($170.28)
 - CVS prescriptions pickup (Vayu) at 49 Claremont Ave
 - Bedroom air filter for master suite
 - Boiler bill payment pending
@@ -286,6 +298,13 @@ Replace field `date_of_birth` on entity `Aneeta` in `FAMILY.md` with value `10/2
 Replace field `health` on entity `Loki` in `FAMILY.md` with value `lymphoma`.
 
 <!-- /curator-drained -->
+
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-wohelo-payment -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-mka-events -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-mka-math-support -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-tribeca-peds -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-aneeta-neurvati confirms_existing: Aneeta=Neurvati already in FAMILY.md; financial detail (Box 1 $194,289, NJ withheld $11,277) already lives in TAXES.md material-changes section -->
+<!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=wohelo-payment-2026-04-13 -->
 
 <!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-d5f5f6b4a8fb -->
 ## Inbox entry: ce-1775964664-d5f5f6b4a8fb

@@ -11,11 +11,50 @@ next_review: 2026-04-20
 tags: [entity/family, status/active, priority/p1, domain/family]
 aliases: [Family TODOs, Family Action Items, Family Dashboard]
 related: [FAMILY, vayu, vishala, vasu, family-calendar]
+originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 ---
-
 # Family Active TODOs
 
 Live dashboard of time-sensitive family items, surfaced from Gmail and Calendar harvest on 2026-04-09. Reviewed weekly; items age out or move to the relevant kid's page once resolved.
+
+## 2026-04-16 evening triage — Alton decisions
+
+**Closed / resolved:**
+- Backdoor Roth conversions (Alton + Aneeta): DONE
+- $18K tax-extension debit authorization to Jonathan Francis: SENT
+- Lucent Energy solar engineering meeting: SCHEDULED for Thursday 2026-04-23, after 3 PM
+- Mike Silva (AcrossCap) 2026-04-16 2:30 PM Zoom: done (today)
+
+**Declined / removed:**
+- SNO 2026 Clinical Trials Workshop (5/15 app): NOT APPLYING
+- SNO 2026 Annual Meeting abstract (11/12–11/15 Philadelphia): NOT SUBMITTING
+- Gym Day 2026-05-30 registration: NOT ATTENDING
+- Handshake AI "Project Alloy": declining (too busy)
+
+**Unsubscribing:**
+- M3 Global Research daily neurology surveys
+- Generic LinkedIn Job Alerts / Ladders recruiter feeds
+- Recruiter roles: ignore unless explicitly AI-related (see [[feedback/gather-triage-2026-04-16]])
+
+**Still open after triage:**
+- **Call plumber — outdoor pipes broke** (added 2026-04-17). Spring-thaw failure most likely (freeze damage from winter, visible on pressurization). Candidates: irrigation backflow preventer, outdoor hose bib, pool feed line, or main supply.
+- **Pay heating guy** (added 2026-04-17).
+- CAQH ProView reattestation — Alton to handle today/tomorrow
+- W-2 DE→NJ address update at AZ HR (CPA flag)
+- Chase Sapphire Reserve replacement: card in-hand, locate and update autopays
+- Wohelo payment ($12,900 or $500 deposit) — check to Heidi Gorton
+- 4/17 parent coverage conflict: Vishala dance concert + Vayu Ellis Island trip
+- Afternoon childcare help (HIGH, ongoing)
+- Vayu counselor/therapist search (status unclear, ping Aneeta)
+- Family dentist booking (Park Street Dental Montclair top pick)
+- Loki's chlorambucil — confirm 4/14 Chewy delivery
+- Aneeta CSA workshift registration (her Gmail invalid in system)
+- Sante Total restricted-donations bank account
+- Aneeta at RRE 4/29–5/03 (confirm destination; Alton sole parent)
+- GOOGL May $285C roll decision (late April window)
+- Summit Health payment (portal)
+- Tribeca Pediatrics portal messages (3 unread)
+- NYC commute train-switch research
 
 > [!warning] 2026-04-13 — PAYMENT DETAILS CONFIRMED, ACTION NEEDED
 > **Wohelo payment — Vishala summer camp.** Heidi Gorton provided payment details on Apr 13. Alton's Apr 13 email asked to send deposit + full tuition together ($12,900 total). Heidi confirmed that amount. Deposit ($500) was due 2026-04-10 (overdue). Full tuition due 2026-05-15.

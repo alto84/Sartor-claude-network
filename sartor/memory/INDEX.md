@@ -16,7 +16,7 @@
 - [QUICK-REFERENCE.md](QUICK-REFERENCE.md) — ---
 - [SELF.md](SELF.md) — ---
 - [TAXES.md](TAXES.md) — ---
-- [feedback_pricing_autonomy.md](feedback_pricing_autonomy.md) — ---
+- [feedback/feedback_pricing_autonomy.md](feedback/feedback_pricing_autonomy.md) — Pricing autonomy rules (relocated 2026-04-16 from memory root into feedback/)
 - [gpuserver1-monitoring-log.md](gpuserver1-monitoring-log.md) — ---
 - [log.md](log.md) — ---
 
