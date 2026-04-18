@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-17
 updated_by: personal-data-gather
-run: 4
+run: 6
 
 status: active
 priority: p1
@@ -405,6 +405,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note]
 > **Aneeta career call Monday Apr 20, 2–2:30 PM ET.** Hashan Alwis (hashan@acepartners.com, ACE Partners) created a Teams meeting on Aneeta's calendar today re: "MD Role." Appears to be a Medical Director recruiting call. For awareness only — no action needed from Alton unless Aneeta raises it. See [[family/family-calendar]].
+
+## Latest from gather (2026-04-17) — run 6
+
+> [!note]
+> **Goddard week of April 20-24 schedule.** Samantha Ramsden (Goddard) sent weekly preview Apr 17: Monday April 20 has Soccer AND School Earth Day activities. Vasu's current lesson theme: "How does weather affect where we live?" (weather unit). Reminder: Goddard parking garage at 1 Seymour St is closed April 20-21 — alternate parking needed for drop-off both days. See [[family/vasu]].
+
+> [!fact]
+> **MKA Dean of Student Life Kelley Arau leaving end of year.** School announcement sent Apr 17. She is leaving to take a leadership role at the Berkeley School. No parent action required. Affects Vayu and Vishala's school community. See [[FAMILY]].
 
 ## Latest from gather (2026-04-17)
 

@@ -38,6 +38,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## [2026-04-17] ingest | personal-data-gather run 5: full confirm, no new delta
 
+## [2026-04-17] ingest | personal-data-gather run 6: 5 new facts, consulting side gig crystallized
+- Facts: Kelley Arau (MKA) departure, Goddard Apr 20-24 schedule, Alton AI consulting side gig intent, AZ Q1 retirement statement, Guidepoint 3rd contact
+- Pages updated: `ALTON.md`, `FAMILY.md`, `family/active-todos.md`, `daily/2026-04-17.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written (10 open items, 3 priority-1)
+- New deadlines surfaced: 0 (all open items previously tracked)
+
 - Run 5 from new session. Gmail (30 threads, newer_than:2d) + 5 calendars queried. No new facts vs runs 1-4.
 - Confirmed: all alerts from runs 1-4 still open (Mike Silva reply, Guidepoint, EquityZen, Nicol Stevenson dining, Apr 15 1040 status)
 - data/gather-alerts.md + data/heartbeat-log.csv refreshed on disk (gitignored)

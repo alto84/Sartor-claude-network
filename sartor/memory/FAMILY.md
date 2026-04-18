@@ -325,3 +325,8 @@ Replace field `health` on entity `Loki` in `FAMILY.md` with value `lymphoma`.
 Replace field `cell_phone` on entity `Tier` in `FAMILY.md` with value `(914) 488-5727`.
 
 <!-- /curator-drained -->
+
+## Latest from gather (2026-04-17) — run 6
+
+> [!fact]
+> **MKA Dean of Student Life Kelley Arau leaving at end of 2025-26 school year.** MKA primary school announcement (Apr 17): "I am writing to you today to share that our Dean of Student Life, Kelley Arau, will be leaving at the end of this year to continue her leadership journey at the Berkeley [School]." Affects Vayu and Vishala's school community. No action required from parents; informational. See [[family/vayu]] and [[family/vishala]].
