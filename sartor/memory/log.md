@@ -36,6 +36,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-18] ingest | personal-data-gather run 5: quiet cycle, full calendar confirm
+- Gmail: 50 threads; 2 net new (LinkedIn VC InMail, Tesla newsletter) — both INFORMATIONAL; 0 new ACTION_REQUIRED
+- Calendar: all 5 queried; 0 new events; all times confirmed against raw API (UTC/offset/no-Z rule settled)
+- 6 ACTION_REQUIRED items carry forward unchanged
+- Pages updated: `daily/2026-04-18.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
 ## [2026-04-18] ingest | personal-data-gather run 4: spring concert time revert + Newegg alert
 - Gmail: 50 threads; 5 net new vs runs 1–3; 0 new ACTION_REQUIRED
 - New signals: Newegg verification code (post-fraud-alert context, flagged), Chase Prime Visa autopay (routine), JAMA ESCMID studies (informational), 2 LinkedIn alerts
