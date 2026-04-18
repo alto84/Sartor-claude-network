@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-16
+updated: 2026-04-18
 updated_by: personal-data-gather
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
@@ -124,11 +124,27 @@ Updated entries for Apr 11–18 based on Blue Sombrero and primary calendar:
 > [!warning]
 > Apr 18 has a hard conflict: Vayu's two rec soccer games (1–3 PM, Brookdale Park) vs Rafi's birthday party (Yankees game, 1–4 PM). Both are family-calendar confirmed. Needs a decision.
 
+## Latest from gather (2026-04-18)
+
+> [!fact]
+> **NEW: Vayu soccer game Apr 25 Sat 11 AM–12 PM ET.** Blue Sombrero shows B34 Purple vs B34 Lime, Brookdale Park Field 1. Not in any prior run. Add to Apr 25 schedule.
+
+> [!fact]
+> **Cougar pride day time correction: 3–7 PM ET (was 11 AM–3 PM).** Raw calendar pull confirms `2026-04-25T15:00:00-04:00` start = 3 PM ET. Prior notes read 15:00 as UTC (11 AM ET) — that was wrong. Soccer (11 AM–12 PM) and Cougar pride day (3–7 PM) do NOT conflict.
+
+Apr 25 corrected schedule:
+
+| Time ET | Event | Who |
+|---------|-------|-----|
+| 11 AM–12 PM | Vayu soccer: B34 Purple vs B34 Lime (Brookdale Park Field 1) | Vayu |
+| 3–7 PM | Cougar pride day (MKA) | Vayu/Vishala |
+
 ## History
 
 - 2026-04-09: Initial calendar compilation from Gmail+Calendar harvest covering 2026-04-09 through 2026-05-09. Flagged sole-parent window and Aneeta RRE correction.
 - 2026-04-11: Updated via personal-data-gather run 6. Added Apr 18 back-to-back soccer games, Mother's Day planning event, Goddard soccer start, summer forms deadline, Parent's Night Out.
 - 2026-04-15: Updated via personal-data-gather run 1. Added Vayu Band Concert Apr 22 (NEW); flagged Apr 22 three-event conflict; noted Goddard parking closure Apr 20-21.
+- 2026-04-18: Updated via personal-data-gather run 1. Added Vayu soccer game Apr 25 (NEW from Blue Sombrero). Corrected Cougar pride day time to 3–7 PM ET (was 11 AM–3 PM).
 
 ## Latest from gather (2026-04-15)
 

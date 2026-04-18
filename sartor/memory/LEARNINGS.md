@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: LEARNINGS
-updated: 2026-04-11
+updated: 2026-04-18
 updated_by: autodream
 last_verified: 2026-04-12
 status: active
@@ -173,6 +173,11 @@ Key findings from surveying state-of-the-art AI memory systems:
 - [2026-04-06] (fact) ---
 
 ## Consolidated from daily logs (2026-04-11)
+- [2026-04-05] (fact) ---
+- [2026-04-06] (fact) ---
+- [2026-04-06] (fact) ---
+
+## Consolidated from daily logs (2026-04-18)
 - [2026-04-05] (fact) ---
 - [2026-04-06] (fact) ---
 - [2026-04-06] (fact) ---
