@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-17
+updated: 2026-04-18
 updated_by: personal-data-gather
-run: 6
+run: 1
 
 status: active
 priority: p1
@@ -418,6 +418,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact]
 > **Chimney repair update: Chris Barr is handling.** Mengyao Zhao (zhaomengyao@gmail.com) replied to the chimney thread Apr 16 12:03 PM ET: "Thanks a lot for taking care of this, Chris!" addressed to Christopher Barr. Building-wide CC (14 neighbors including Alton + Aneeta). Chris is the point person managing the repair. The `[!blocker]` above is PARTIALLY RESOLVED — repair is being handled. Continue to avoid odd-side garden until confirmed safe. No action required from Alton unless Chris asks.
+
+## Latest from gather (2026-04-18)
+
+> [!fact]
+> **NEW: Vayu soccer game Apr 25 Sat 11 AM–12 PM ET.** Blue Sombrero calendar updated. B34 Purple vs B34 Lime, Brookdale Park Field 1. Was not in any prior run.
+
+> [!fact]
+> **Cougar pride day time correction: 3–7 PM ET (was 11 AM–3 PM in prior notes).** Raw calendar confirms `2026-04-25T15:00:00-04:00`. Soccer (11 AM–12 PM) and Cougar pride day (3–7 PM) do NOT conflict. Apr 25 calendar entries above that say "11:00-15:00 Cougar pride day" are incorrect — actual event is 3-7 PM.
+
+> [!note]
+> **All 4 prior ACTION_REQUIRED items remain open:** (1) Mike Silva reply, (2) Guidepoint accept/decline (Yasmin Goodman, 3rd contact), (3) EquityZen catch-up (Georgia Edwards), (4) Disney ADR dining — respond to Nicol Stevenson before May 17.
 
 > [!todo] ACTION_REQUIRED — reply to Mike Silva within 48 hours
 > **Mike Silva (AcrossCap) — post-meeting follow-up.** He emailed Apr 16 confirming the meeting went well. Discussed AI bottlenecks and trajectory. Warm networking contact in AI/capital space. Reply to mike@acrosscap.com. See [[people/mike-silva]] and [[ALTON]].

@@ -36,6 +36,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-18] ingest | personal-data-gather run 1: soccer game Apr 25 + Cougar pride day time correction
+- Gmail: 50 threads in window; 7 net new vs Apr 17 run 6; 0 new ACTION_REQUIRED
+- Calendar: 5 calendars queried; 1 new event (Vayu soccer Apr 25, Blue Sombrero); 1 time correction (Cougar pride day 3–7 PM ET, not 11 AM–3 PM)
+- All 4 prior ACTION_REQUIRED items remain open (Mike Silva, Guidepoint, EquityZen, Disney ADR)
+- Pages updated: `family/family-calendar.md`, `family/active-todos.md`, `daily/2026-04-18.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
 ## [2026-04-17] ingest | personal-data-gather run 5: full confirm, no new delta
 
 ## [2026-04-17] ingest | personal-data-gather run 6: 5 new facts, consulting side gig crystallized
