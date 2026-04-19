@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-18
+updated: 2026-04-19
 updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
@@ -35,6 +35,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-19] ingest | personal-data-gather run 4: 2 new ACTION_REQUIRED (Sante Total donation, Ghostie vet)
+- Gmail: 50 threads; 5 net new after run 3; 2 new ACTION_REQUIRED
+- Christina Stiles PayPal donation to Sante Total (Apr 19 06:23 CDT, TxID: 1HN1210765870815P, amount TBD — verify in PayPal)
+- Ghostie FVRCP vaccine due 2026-05-03, no appt scheduled (Cambridge Cat Clinic 617-245-0245)
+- Calendar: all 5 queried Apr 19–27; 0 new events
+- 8 total ACTION_REQUIRED items (was 6; +2 new)
+- Pages updated: `daily/2026-04-19.md`, `business/sante-total.md`, `family/active-todos.md`, `log.md`
 
 ## [2026-04-19] ingest | personal-data-gather run 3: quiet cycle, 0 new facts; data/ recreated
 - Gmail: 30 threads scanned; 0 net new after run 2; 0 new ACTION_REQUIRED

@@ -533,3 +533,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - BAGAIL Outdoor Badminton Set: SHIPPED (Amazon 21:25 UTC Apr 18). Was "ordered" in run 2.
 > - WIN.MAX Swimming Goggles: DELIVERED (Amazon 22:04 UTC Apr 18). Were "shipped" in run 4.
 > No action needed on either.
+
+## Latest from gather (2026-04-19) — run 4
+
+> [!deadline] 2026-05-03
+> **Ghostie FVRCP vaccine due 2026-05-03 — no appointment scheduled.** Cambridge Cat Clinic (1108 Cambridge Street, Cambridge MA 02139) sent reminder today (12:00 UTC Apr 19). FVRCP (Feline Viral Rhinotracheitis, Calicivirus, Panleukopenia) is a core cat vaccine. No overdue items in their records — only the upcoming FVRCP due May 3. **Call 617-245-0245 or book online to schedule before May 3.** Note: clinic is in Cambridge MA — confirm whether Ghosty's care has been transferred to a Montclair-area vet or whether this is the active vet of record.
+
+> [!fact]
+> **New Sante Total PayPal donation — Christina Stiles, Apr 19.** Transaction ID: 1HN1210765870815P. Received 06:23:05 CDT. Amount not visible in email snippet — verify in PayPal dashboard. Log donation and send tax receipt per [[alison-smith|Alison Smith]] pattern. See [[business/sante-total]] for donor tracking.
