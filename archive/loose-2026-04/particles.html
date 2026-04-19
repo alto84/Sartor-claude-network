@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N-Body Particle Simulation</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000;
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+    color: #fff;
+  }
+  #header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 70%, transparent 100%);
+    padding: 12px 24px 20px;
+    text-align: center;
+  }
+  #header h1 {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #4a9eff, #a855f7, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+  }
+  #header .subtitle {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #555;
+    margin-top: 4px;
+  }
+  #hud {
+    position: fixed;
+    top: 70px; left: 16px;
+    z-index: 100;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #8af;
+    text-shadow: 0 0 8px rgba(100,180,255,0.3);
+    pointer-events: none;
+  }
+  #hud .label { color: #557; }
+  #hud .value { color: #adf; font-weight: bold; }
+  #hud .energy-pos { color: #5fa; }
+  #hud .energy-neg { color: #f55; }
+  #controls {
+    position: fixed;
+    bottom: 16px; left: 16px;
+    z-index: 100;
+    font-size: 10px;
+    color: #445;
+    line-height: 1.6;
+    pointer-events: none;
+  }
+  #controls span { color: #668; }
+  canvas { display: block; cursor: crosshair; }
+  #backCanvas { position: fixed; top: 0; left: 0; z-index: 0; }
+  #trailCanvas { position: fixed; top: 0; left: 0; z-index: 1; }
+  #mainCanvas { position: fixed; top: 0; left: 0; z-index: 2; }
+  #uiCanvas { position: fixed; top: 0; left: 0; z-index: 3; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>N-Body Particle Simulation</h1>
+  <div class="subtitle">Gravitational Dynamics &bull; Orbital Mechanics</div>
+</div>
+<div id="hud">
+  <div><span class="label">PARTICLES </span><span class="value" id="hud-count">0</span></div>
+  <div><span class="label">FPS </span><span class="value" id="hud-fps">0</span></div>
+  <div><span class="label">ENERGY </span><span class="value" id="hud-energy">0</span></div>
+  <div><span class="label">MASS </span><span class="value" id="hud-mass">0</span></div>
+  <div><span class="label">COM </span><span class="value" id="hud-com">0, 0</span></div>
+</div>
+<div id="controls">
+  <span>[CLICK]</span> Create cluster &nbsp;
+  <span>[MOVE]</span> Gravity well &nbsp;
+  <span>[SCROLL]</span> Zoom &nbsp;
+  <span>[R]</span> Reset &nbsp;
+  <span>[E]</span> Explosion &nbsp;
+  <span>[G]</span> Grid &nbsp;
+  <span>[T]</span> Trails &nbsp;
+  <span>[P]</span> Pause
+</div>
+
+<canvas id="backCanvas"></canvas>
+<canvas id="trailCanvas"></canvas>
+<canvas id="mainCanvas"></canvas>
+<canvas id="uiCanvas"></canvas>
+
+<script>
+// ============================================================
+// N-BODY PARTICLE SIMULATION
+// ============================================================
+
+const backCanvas = document.getElementById('backCanvas');
+const trailCanvas = document.getElementById('trailCanvas');
+const mainCanvas = document.getElementById('mainCanvas');
+const uiCanvas = document.getElementById('uiCanvas');
+const backCtx = backCanvas.getContext('2d');
+const trailCtx = trailCanvas.getContext('2d');
+const ctx = mainCanvas.getContext('2d');
+const uiCtx = uiCanvas.getContext('2d');
+
+// --- State ---
+let W, H;
+let particles = [];
+let stars = [];
+let zoom = 1;
+let camX = 0, camY = 0;
+let mouseX = 0, mouseY = 0;
+let mouseWorldX = 0, mouseWorldY = 0;
+let mouseDown = false;
+let showGrid = false;
+let showTrails = true;
+let paused = false;
+let frameCount = 0;
+let fps = 0;
+let lastFpsTime = performance.now();
+let fpsFrames = 0;
+
+const G = 0.8;               // Gravitational constant
+const MERGE_DIST = 6;        // Distance for merging
+const SOFTENING = 4;         // Softening parameter to prevent singularities
+const MOUSE_GRAVITY = 800;   // Mouse gravitational pull
+const MAX_PARTICLES = 1500;
+const TRAIL_FADE = 0.04;
+const DT = 0.5;              // Time step
+const DAMPING = 0.9998;      // Velocity damping
+
+// --- Particle ---
+class Particle {
+  constructor(x, y, vx, vy, mass, hue) {
+    this.x = x;
+    this.y = y;
+    this.vx = vx || 0;
+    this.vy = vy || 0;
+    this.mass = mass || 1;
+    this.hue = hue || Math.random() * 360;
+    this.alive = true;
+    this.age = 0;
+    this.trail = [];
+    this.maxTrail = 12;
+  }
+
+  get radius() {
+    return Math.max(1.2, Math.pow(this.mass, 0.4) * 1.5);
+  }
+
+  get speed() {
+    return Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+  }
+
+  get kineticEnergy() {
+    return 0.5 * this.mass * (this.vx * this.vx + this.vy * this.vy);
+  }
+
+  velocityHue() {
+    const s = this.speed;
+    if (s < 0.5) return 240;       // blue - slow
+    if (s < 1.5) return 180;       // cyan
+    if (s < 3)   return 120;       // green
+    if (s < 5)   return 60;        // yellow
+    if (s < 8)   return 30;        // orange
+    return 0;                       // red - fast
+  }
+
+  update() {
+    this.vx *= DAMPING;
+    this.vy *= DAMPING;
+    this.x += this.vx * DT;
+    this.y += this.vy * DT;
+    this.age++;
+
+    // Store trail
+    if (showTrails && this.age % 2 === 0) {
+      this.trail.push({ x: this.x, y: this.y, hue: this.velocityHue(), alpha: 1 });
+      if (this.trail.length > this.maxTrail) this.trail.shift();
+    }
+  }
+}
+
+// --- Star background ---
+function generateStars() {
+  stars = [];
+  for (let i = 0; i < 400; i++) {
+    stars.push({
+      x: Math.random() * 4000 - 2000,
+      y: Math.random() * 4000 - 2000,
+      r: Math.random() * 1.5 + 0.3,
+      bright: Math.random() * 0.5 + 0.3,
+      twinkleSpeed: Math.random() * 0.02 + 0.005
+    });
+  }
+}
+
+// --- Initial configuration: two colliding galaxies ---
+function createGalaxy(cx, cy, vx, vy, count, radius, hueBase, spin) {
+  const core = new Particle(cx, cy, vx, vy, 40, hueBase);
+  particles.push(core);
+
+  for (let i = 0; i < count; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = Math.random() * radius + 5;
+    const x = cx + Math.cos(angle) * dist;
+    const y = cy + Math.sin(angle) * dist;
+
+    // Orbital velocity
+    const orbitalSpeed = Math.sqrt(G * 40 / (dist + SOFTENING)) * spin;
+    const pvx = vx + Math.cos(angle + Math.PI / 2) * orbitalSpeed + (Math.random() - 0.5) * 0.3;
+    const pvy = vy + Math.sin(angle + Math.PI / 2) * orbitalSpeed + (Math.random() - 0.5) * 0.3;
+
+    const mass = Math.random() * 2 + 0.5;
+    const hue = hueBase + (Math.random() - 0.5) * 40;
+    particles.push(new Particle(x, y, pvx, pvy, mass, hue));
+  }
+}
+
+function initSimulation() {
+  particles = [];
+  // Galaxy 1: blue-ish, coming from upper left
+  createGalaxy(-200, -100, 1.2, 0.6, 200, 150, 220, 1);
+  // Galaxy 2: orange-ish, coming from lower right
+  createGalaxy(200, 100, -1.0, -0.5, 200, 130, 30, -1);
+  // Small cluster in between
+  for (let i = 0; i < 30; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = Math.random() * 40;
+    particles.push(new Particle(
+      Math.cos(angle) * dist,
+      Math.sin(angle) * dist,
+      (Math.random() - 0.5) * 2,
+      (Math.random() - 0.5) * 2,
+      Math.random() * 1.5 + 0.3,
+      280 + Math.random() * 40
+    ));
+  }
+}
+
+// --- Physics ---
+function computeGravity() {
+  const n = particles.length;
+  for (let i = 0; i < n; i++) {
+    const pi = particles[i];
+    if (!pi.alive) continue;
+
+    // Mouse gravity
+    if (mouseDown || true) {
+      const mdx = mouseWorldX - pi.x;
+      const mdy = mouseWorldY - pi.y;
+      const mdist2 = mdx * mdx + mdy * mdy + 200;
+      const mf = MOUSE_GRAVITY / mdist2;
+      const mdist = Math.sqrt(mdist2);
+      if (mouseDown) {
+        pi.vx += (mdx / mdist) * mf * DT;
+        pi.vy += (mdy / mdist) * mf * DT;
+      }
+    }
+
+    // N-body gravity
+    for (let j = i + 1; j < n; j++) {
+      const pj = particles[j];
+      if (!pj.alive) continue;
+
+      const dx = pj.x - pi.x;
+      const dy = pj.y - pi.y;
+      const dist2 = dx * dx + dy * dy + SOFTENING * SOFTENING;
+      const dist = Math.sqrt(dist2);
+
+      // Check merge
+      if (dist < MERGE_DIST && (pi.mass > 1 || pj.mass > 1 || Math.random() < 0.1)) {
+        // Merge j into i
+        const totalMass = pi.mass + pj.mass;
+        pi.vx = (pi.vx * pi.mass + pj.vx * pj.mass) / totalMass;
+        pi.vy = (pi.vy * pi.mass + pj.vy * pj.mass) / totalMass;
+        pi.x = (pi.x * pi.mass + pj.x * pj.mass) / totalMass;
+        pi.y = (pi.y * pi.mass + pj.y * pj.mass) / totalMass;
+        pi.mass = totalMass;
+        pi.hue = (pi.hue + pj.hue) / 2;
+        pj.alive = false;
+        continue;
+      }
+
+      // Gravitational force
+      const force = G * pi.mass * pj.mass / dist2;
+      const fx = force * dx / dist;
+      const fy = force * dy / dist;
+
+      pi.vx += (fx / pi.mass) * DT;
+      pi.vy += (fy / pi.mass) * DT;
+      pj.vx -= (fx / pj.mass) * DT;
+      pj.vy -= (fy / pj.mass) * DT;
+    }
+  }
+}
+
+function updateParticles() {
+  for (const p of particles) {
+    if (p.alive) p.update();
+  }
+  // Remove dead particles
+  particles = particles.filter(p => p.alive);
+}
+
+// --- Rendering ---
+function screenX(wx) { return (wx - camX) * zoom + W / 2; }
+function screenY(wy) { return (wy - camY) * zoom + H / 2; }
+function worldX(sx) { return (sx - W / 2) / zoom + camX; }
+function worldY(sy) { return (sy - H / 2) / zoom + camY; }
+
+function drawBackground() {
+  backCtx.fillStyle = '#000508';
+  backCtx.fillRect(0, 0, W, H);
+
+  // Subtle nebula
+  const t = frameCount * 0.001;
+  const grd = backCtx.createRadialGradient(
+    W / 2 + Math.sin(t) * 100, H / 2 + Math.cos(t * 0.7) * 80, 0,
+    W / 2, H / 2, W * 0.6
+  );
+  grd.addColorStop(0, 'rgba(20, 5, 40, 0.15)');
+  grd.addColorStop(0.5, 'rgba(5, 10, 30, 0.1)');
+  grd.addColorStop(1, 'transparent');
+  backCtx.fillStyle = grd;
+  backCtx.fillRect(0, 0, W, H);
+
+  // Stars
+  for (const s of stars) {
+    const sx = screenX(s.x * 0.3); // Parallax
+    const sy = screenY(s.y * 0.3);
+    if (sx < -10 || sx > W + 10 || sy < -10 || sy > H + 10) continue;
+    const twinkle = s.bright + Math.sin(frameCount * s.twinkleSpeed) * 0.2;
+    backCtx.fillStyle = `rgba(200, 220, 255, ${twinkle})`;
+    backCtx.beginPath();
+    backCtx.arc(sx, sy, s.r * zoom, 0, Math.PI * 2);
+    backCtx.fill();
+  }
+}
+
+function drawTrails() {
+  // Fade existing trails
+  trailCtx.fillStyle = `rgba(0, 5, 8, ${TRAIL_FADE})`;
+  trailCtx.fillRect(0, 0, W, H);
+
+  if (!showTrails) return;
+
+  for (const p of particles) {
+    if (p.trail.length < 2) continue;
+    const len = p.trail.length;
+    for (let i = 1; i < len; i++) {
+      const t0 = p.trail[i - 1];
+      const t1 = p.trail[i];
+      const alpha = (i / len) * 0.4;
+      trailCtx.strokeStyle = `hsla(${t1.hue}, 80%, 60%, ${alpha})`;
+      trailCtx.lineWidth = Math.max(0.5, p.radius * zoom * 0.4 * (i / len));
+      trailCtx.beginPath();
+      trailCtx.moveTo(screenX(t0.x), screenY(t0.y));
+      trailCtx.lineTo(screenX(t1.x), screenY(t1.y));
+      trailCtx.stroke();
+    }
+  }
+}
+
+function drawParticles() {
+  ctx.clearRect(0, 0, W, H);
+
+  for (const p of particles) {
+    const sx = screenX(p.x);
+    const sy = screenY(p.y);
+
+    // Cull offscreen
+    const r = p.radius * zoom;
+    if (sx < -r * 10 || sx > W + r * 10 || sy < -r * 10 || sy > H + r * 10) continue;
+
+    const vHue = p.velocityHue();
+    const glowRadius = r * 4 + p.speed * zoom * 0.5;
+
+    // Outer glow
+    const glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, glowRadius);
+    glow.addColorStop(0, `hsla(${vHue}, 90%, 70%, 0.6)`);
+    glow.addColorStop(0.3, `hsla(${vHue}, 80%, 50%, 0.15)`);
+    glow.addColorStop(1, `hsla(${vHue}, 70%, 40%, 0)`);
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(sx, sy, glowRadius, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Core
+    const coreGrad = ctx.createRadialGradient(sx, sy, 0, sx, sy, r);
+    coreGrad.addColorStop(0, `hsla(${vHue}, 60%, 95%, 1)`);
+    coreGrad.addColorStop(0.5, `hsla(${vHue}, 80%, 70%, 0.9)`);
+    coreGrad.addColorStop(1, `hsla(${vHue}, 90%, 50%, 0.5)`);
+    ctx.fillStyle = coreGrad;
+    ctx.beginPath();
+    ctx.arc(sx, sy, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function drawUI() {
+  uiCtx.clearRect(0, 0, W, H);
+
+  // Grid overlay
+  if (showGrid) {
+    uiCtx.strokeStyle = 'rgba(40, 60, 100, 0.15)';
+    uiCtx.lineWidth = 0.5;
+    const gridSize = 50 * zoom;
+    const offsetX = (W / 2 - camX * zoom) % gridSize;
+    const offsetY = (H / 2 - camY * zoom) % gridSize;
+    for (let x = offsetX; x < W; x += gridSize) {
+      uiCtx.beginPath();
+      uiCtx.moveTo(x, 0);
+      uiCtx.lineTo(x, H);
+      uiCtx.stroke();
+    }
+    for (let y = offsetY; y < H; y += gridSize) {
+      uiCtx.beginPath();
+      uiCtx.moveTo(0, y);
+      uiCtx.lineTo(W, y);
+      uiCtx.stroke();
+    }
+  }
+
+  // Center of mass indicator
+  let comX = 0, comY = 0, totalMass = 0;
+  for (const p of particles) {
+    comX += p.x * p.mass;
+    comY += p.y * p.mass;
+    totalMass += p.mass;
+  }
+  if (totalMass > 0) {
+    comX /= totalMass;
+    comY /= totalMass;
+    const sx = screenX(comX);
+    const sy = screenY(comY);
+
+    // Crosshair
+    uiCtx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+    uiCtx.lineWidth = 1;
+    const cs = 12;
+    uiCtx.beginPath();
+    uiCtx.moveTo(sx - cs, sy); uiCtx.lineTo(sx + cs, sy);
+    uiCtx.moveTo(sx, sy - cs); uiCtx.lineTo(sx, sy + cs);
+    uiCtx.stroke();
+
+    // Ring
+    uiCtx.strokeStyle = 'rgba(100, 180, 255, 0.15)';
+    uiCtx.beginPath();
+    uiCtx.arc(sx, sy, 20, 0, Math.PI * 2);
+    uiCtx.stroke();
+
+    document.getElementById('hud-com').textContent =
+      `${comX.toFixed(0)}, ${comY.toFixed(0)}`;
+  }
+
+  // Mouse gravity well indicator
+  if (mouseDown) {
+    const mx = screenX(mouseWorldX);
+    const my = screenY(mouseWorldY);
+    uiCtx.strokeStyle = 'rgba(255, 180, 50, 0.3)';
+    uiCtx.lineWidth = 1.5;
+    const t = frameCount * 0.05;
+    for (let r = 15; r < 60; r += 15) {
+      uiCtx.beginPath();
+      uiCtx.arc(mx, my, r + Math.sin(t + r * 0.1) * 3, 0, Math.PI * 2);
+      uiCtx.stroke();
+    }
+  }
+
+  // Update HUD
+  document.getElementById('hud-count').textContent = particles.length;
+  document.getElementById('hud-fps').textContent = fps;
+  document.getElementById('hud-mass').textContent = totalMass.toFixed(1);
+
+  let totalEnergy = 0;
+  for (const p of particles) totalEnergy += p.kineticEnergy;
+  const energyEl = document.getElementById('hud-energy');
+  energyEl.textContent = totalEnergy.toFixed(0);
+  energyEl.className = totalEnergy > 5000 ? 'value energy-neg' : 'value energy-pos';
+}
+
+// --- Main loop ---
+function loop() {
+  frameCount++;
+
+  // FPS
+  fpsFrames++;
+  const now = performance.now();
+  if (now - lastFpsTime > 500) {
+    fps = Math.round(fpsFrames / ((now - lastFpsTime) / 1000));
+    fpsFrames = 0;
+    lastFpsTime = now;
+  }
+
+  if (!paused) {
+    computeGravity();
+    updateParticles();
+  }
+
+  drawBackground();
+  drawTrails();
+  drawParticles();
+  drawUI();
+
+  requestAnimationFrame(loop);
+}
+
+// --- Resize ---
+function resize() {
+  W = window.innerWidth;
+  H = window.innerHeight;
+  [backCanvas, trailCanvas, mainCanvas, uiCanvas].forEach(c => {
+    c.width = W;
+    c.height = H;
+  });
+}
+
+// --- Input ---
+mainCanvas.addEventListener('mousedown', (e) => {
+  mouseDown = true;
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  mouseWorldX = worldX(mouseX);
+  mouseWorldY = worldY(mouseY);
+
+  // Create cluster on click
+  if (particles.length < MAX_PARTICLES) {
+    const count = Math.min(15, MAX_PARTICLES - particles.length);
+    const hue = Math.random() * 360;
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const dist = Math.random() * 30 + 5;
+      const speed = Math.random() * 1.5;
+      particles.push(new Particle(
+        mouseWorldX + Math.cos(angle) * dist,
+        mouseWorldY + Math.sin(angle) * dist,
+        Math.cos(angle + Math.PI / 2) * speed + (Math.random() - 0.5),
+        Math.sin(angle + Math.PI / 2) * speed + (Math.random() - 0.5),
+        Math.random() * 2 + 0.5,
+        hue + (Math.random() - 0.5) * 30
+      ));
+    }
+  }
+});
+
+mainCanvas.addEventListener('mouseup', () => { mouseDown = false; });
+
+mainCanvas.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  mouseWorldX = worldX(mouseX);
+  mouseWorldY = worldY(mouseY);
+});
+
+mainCanvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
+  // Zoom toward mouse
+  const wx = worldX(mouseX);
+  const wy = worldY(mouseY);
+  zoom *= zoomFactor;
+  zoom = Math.max(0.1, Math.min(10, zoom));
+  camX = wx - (mouseX - W / 2) / zoom;
+  camY = wy - (mouseY - H / 2) / zoom;
+}, { passive: false });
+
+document.addEventListener('keydown', (e) => {
+  const key = e.key.toLowerCase();
+
+  if (key === 'r') {
+    // Reset
+    trailCtx.clearRect(0, 0, W, H);
+    zoom = 1;
+    camX = 0;
+    camY = 0;
+    initSimulation();
+  }
+
+  if (key === 'e') {
+    // Explosion from center of mass or mouse
+    const cx = mouseWorldX;
+    const cy = mouseWorldY;
+    const count = Math.min(60, MAX_PARTICLES - particles.length);
+    const hue = Math.random() * 360;
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = Math.random() * 8 + 2;
+      const dist = Math.random() * 10;
+      particles.push(new Particle(
+        cx + Math.cos(angle) * dist,
+        cy + Math.sin(angle) * dist,
+        Math.cos(angle) * speed,
+        Math.sin(angle) * speed,
+        Math.random() * 1.5 + 0.3,
+        hue + (Math.random() - 0.5) * 50
+      ));
+    }
+  }
+
+  if (key === 'g') { showGrid = !showGrid; }
+  if (key === 't') { showTrails = !showTrails; if (!showTrails) trailCtx.clearRect(0, 0, W, H); }
+  if (key === 'p') { paused = !paused; }
+});
+
+// Touch support
+mainCanvas.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  const touch = e.touches[0];
+  mouseX = touch.clientX;
+  mouseY = touch.clientY;
+  mouseWorldX = worldX(mouseX);
+  mouseWorldY = worldY(mouseY);
+  mouseDown = true;
+
+  if (particles.length < MAX_PARTICLES) {
+    const count = Math.min(10, MAX_PARTICLES - particles.length);
+    const hue = Math.random() * 360;
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const dist = Math.random() * 25 + 5;
+      const speed = Math.random() * 1.5;
+      particles.push(new Particle(
+        mouseWorldX + Math.cos(angle) * dist,
+        mouseWorldY + Math.sin(angle) * dist,
+        Math.cos(angle + Math.PI / 2) * speed,
+        Math.sin(angle + Math.PI / 2) * speed,
+        Math.random() * 2 + 0.5,
+        hue + (Math.random() - 0.5) * 30
+      ));
+    }
+  }
+}, { passive: false });
+
+mainCanvas.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+  const touch = e.touches[0];
+  mouseX = touch.clientX;
+  mouseY = touch.clientY;
+  mouseWorldX = worldX(mouseX);
+  mouseWorldY = worldY(mouseY);
+}, { passive: false });
+
+mainCanvas.addEventListener('touchend', () => { mouseDown = false; });
+
+// --- Init ---
+window.addEventListener('resize', resize);
+resize();
+generateStars();
+initSimulation();
+loop();
+</script>
+</body>
+</html>

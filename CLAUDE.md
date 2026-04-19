@@ -186,6 +186,10 @@ Agents are defined in `.claude/agents/` and handle specialized tasks:
 | `meta-agent` | Generates and modifies agent definition files from domain descriptions |
 | `session-searcher` | Fast cross-session transcript search for prior decisions and context |
 | `writing-agent` | Blog posts, thought pieces, and manuscript drafts in Alton's voice |
+| `auditor` | Deep quality review; checks for reward hacking, broken links, contradictions, substantive output |
+| `critic` | Weekly strategic review; evaluates system value, identifies lazy agents, proposes structural improvements |
+| `sentinel` | Quick health check inline with heartbeat cycles (haiku-tier) |
+| `wiki-reader` | Query the Sartor memory wiki via `wiki.py` without loading raw markdown; for bounded context delegation |
 
 ## Available Skills
 
@@ -202,9 +206,19 @@ Skills are defined in `.claude/skills/` and provide reusable capabilities:
 | `/nonprofit-deadline-scan` | Scan upcoming nonprofit compliance deadlines |
 | `/weekly-financial-summary` | Weekly financial rollup across all entities |
 | `/deep-research` | Multi-agent deep research on a given topic |
+| `/research-effort` | Lightweight structured research (preferred for scoped questions) |
 | `/travel-planning` | Plan travel logistics for family trips |
 | `/task-review` | Review and prioritize active tasks |
 | `/skill-improvement-tracker` | Analyze skill performance and propose improvements |
+| `/alton-voice` | Draft writing in Alton's voice (4-register corpus-grounded) |
+| `/interior-report-discipline` | Handle introspection claims; third path on "functions as" hedge |
+| `/chrome-automation` | Browser automation via Chrome DevTools Protocol |
+| `/mcp-server-development` | Build and debug MCP servers and tools |
+| `/distributed-systems-debugging` | Debug multi-agent coordination, consensus, state sync |
+| `/safety-research-wiki` | Pharmacovigilance knowledge base builder (AstraZeneca context) |
+| `/build-llm-wiki` | Create self-contained LLM-optimized wiki |
+| `/multi-agent-orchestration` | Multi-agent system design patterns (pending consolidation) |
+| `/evidence-based-validation` | Anti-fabrication default behavior (pending merge with engineering variant) |
 
 ## Available Commands
 
@@ -212,11 +226,13 @@ Commands are defined in `.claude/commands/` and provide quick actions:
 
 | Command | Purpose |
 |---------|---------|
+| `/bootstrap` | Quick bootstrap — read CLAUDE.md + memory INDEX to come up to speed on Sartor |
 | `/morning` | Run the morning-briefing skill for a full cross-domain daily briefing |
 | `/gpu-status` | Run the gpu-fleet-check skill and summarize fleet status |
 | `/markets` | Run the market-snapshot skill for portfolio and options overview |
 | `/nonprofit-status` | Run nonprofit-deadline-scan and summarize Sante Total status |
 | `/family-today` | Check Google Calendar for today's family events and logistics |
+| `/research` | Launch structured research effort via `research-effort` skill |
 | `/curate` | Trigger the memory-curator agent to update USER.md and MEMORY.md |
 | `/reflect` | Trigger the skill-reflector agent for post-task skill extraction |
 
@@ -229,12 +245,13 @@ Defined in `.claude/scheduled-tasks/`:
 | `morning-briefing` | Daily briefing compilation | Daily, 6:30 AM ET |
 | `gpu-utilization-check` | GPU and vast.ai monitoring | Every 4 hours |
 | `market-close-summary` | End-of-day market summary | Weekdays, 4:30 PM ET |
-| `nightly-memory-curation` | Prune stale data, archive trajectories | Daily, 11:00 PM ET |
+| `nightly-memory-curation` | Prune stale data, archive trajectories, drain inbox proposals | Daily, 11:00 PM ET |
+| `personal-data-gather` | Personal data collection (Gmail, Calendar, system state) | Every 4 hours |
+| `todo-sync` | Sync wiki callouts (deadlines, blockers, todos) to Google Tasks | Nightly (post-reindex) |
+| `wiki-reindex` | Hermes-pattern wiki reindex: backlinks, tag-index, similarity, orphans, broken-links | Nightly |
 | `weekly-financial-summary` | Financial rollup across all entities | Fridays, 6:00 PM ET |
 | `weekly-nonprofit-review` | Nonprofit compliance check | Sundays, 9:00 AM ET |
-| `weekly-skill-evolution` | Skill performance review and improvement | Sundays, 3:00 AM ET |
-| `personal-data-gather` | Personal data collection (Gmail, Calendar, system state) | Every 4 hours |
-| `self-improvement-loop` | Hermes-style evaluate/research/implement/validate | Every 6 hours |
+| `weekly-skill-evolution` | Skill variant generation, scoring, improvement queue | Sundays, 3:00 AM ET |
 
 ## Infrastructure Reference
 

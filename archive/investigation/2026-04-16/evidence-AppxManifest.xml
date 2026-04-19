@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10" xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap uap10 desktop rescap" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
+  <!--Package created by MSIX Packaging Tool version: 1.2024.405.0-->
+  <Identity Name="PrivacyBrowse.PrivacyBrowse" Publisher="CN=E2014DE2-35CD-415B-AA3F-BC64B1D1F3B9" Version="1.12.78.0" ProcessorArchitecture="neutral" />
+  <Properties>
+    <DisplayName>PrivacyBrowse</DisplayName>
+    <PublisherDisplayName>PrivacyBrowse</PublisherDisplayName>
+    <Description>Protect your privacy with a simple browser that lets you focus on what matters most</Description>
+    <Logo>Assets\PrivacyBrowse256Square.png</Logo>
+    <uap10:PackageIntegrity>
+      <uap10:Content Enforcement="on" />
+    </uap10:PackageIntegrity>
+  </Properties>
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22000.1" />
+  </Dependencies>
+  <Applications>
+    <Application Id="PRIVACYBROWSE" Executable="VFS\AppData\PrivacyBrowse\PrivacyBrowse.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements BackgroundColor="transparent" DisplayName="PrivacyBrowse" Square150x150Logo="Assets\PRIVACYBROWSE-Square150x150Logo.png" Square44x44Logo="Assets\PRIVACYBROWSE-Square44x44Logo.png" Description="PrivacyBrowse">
+        <uap:DefaultTile Wide310x150Logo="Assets\PRIVACYBROWSE-Wide310x150Logo.png" Square310x310Logo="Assets\PRIVACYBROWSE-Square310x310Logo.png" Square71x71Logo="Assets\PRIVACYBROWSE-Square71x71Logo.png" />
+      </uap:VisualElements>
+      <Extensions>
+        <desktop:Extension Category="windows.startupTask" Executable="VFS\AppData\PrivacyBrowse\PrivacyBrowse.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask TaskId="PRIVACYBROWSE" Enabled="true" DisplayName="PrivacyBrowse" />
+        </desktop:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+  <mp:PhoneIdentity PhoneProductId="4914fc38-92b2-41bb-a9f2-cfa20b6df388" PhonePublisherId="407af4e2-431f-4633-ac99-d5a560c340b7" />
+</Package>

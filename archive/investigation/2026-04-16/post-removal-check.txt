@@ -1,0 +1,97 @@
+﻿=== POST-REMOVAL CHECK 2026-04-16T19:01:57Z ===
+
+=== Residual Appx packages ===
+(if empty above, clean)
+
+=== Windows.FullTrustApplication / StartupTask sweep for suspicious names ===
+SUSPECT: 4DF9E0F8.Netflix  pub=CN=52120C15-ACFA-47FC-A7E3-4974DBA79445
+SUSPECT: NVIDIACorp.NVIDIAControlPanel  pub=CN=D6816951-877F-493B-B4EE-41AB9419C326
+SUSPECT: AD2F1837.HPReverbG2VRHeadsetSetup  pub=CN=ED346674-0FA1-4272-85CE-3187C9C86E26
+SUSPECT: CanonicalGroupLimited.Ubuntu  pub=CN=23596F84-C3EA-4CD8-A7DF-550DCE37BCD0
+SUSPECT: E046963F.LenovoDisplayControlCenter  pub=CN=8F32EFB2-B494-4AEC-A27C-4B0736252363
+SUSPECT: king.com.CandyCrushFriends  pub=CN=F80C3B33-B9E8-4F23-AB15-B97C700EFF2F
+SUSPECT: SpotifyAB.SpotifyMusic  pub=CN=453637B3-4E12-4CDF-B0D3-2A3C863BF6EF
+SUSPECT: king.com.FarmHeroesSaga  pub=CN=F80C3B33-B9E8-4F23-AB15-B97C700EFF2F
+
+=== Registry.dat analysis (offline load) ===
+Loading C:\Users\alto8\evidence-privacybrowse-2026-04-16-185957\Registry.dat as HKU\PB_TEMP
+  ERROR: A required privilege is not held by the client.
+  System.Management.Automation.RemoteException
+  ERROR: A required privilege is not held by the client.
+  System.Management.Automation.RemoteException
+
+=== StartupApproved check for PrivacyBrowse ===
+
+=== Files created in user profile in last 60 minutes ===
+  04/16/2026 18:58:10  32531  C:\Users\alto8\.claude.json
+  04/16/2026 18:59:57  2640  C:\Users\alto8\evidence-AppxManifest.xml
+  04/16/2026 18:59:07  211197  C:\Users\alto8\ioc-snapshot.txt
+  04/16/2026 19:00:06  0  C:\Users\alto8\neutralize-log.txt
+  04/16/2026 18:59:45  4605  C:\Users\alto8\neutralize-malware.ps1
+  04/16/2026 19:01:54  4503  C:\Users\alto8\post-removal-check.ps1
+  04/16/2026 18:57:26  4209  C:\Users\alto8\probe-privacybrowse.ps1
+  04/16/2026 18:57:37  21761  C:\Users\alto8\probe-privacybrowse.txt
+  04/16/2026 18:58:52  2707  C:\Users\alto8\snapshot-malware-network.ps1
+  04/16/2026 18:11:27  32465  C:\Users\alto8\.claude\backups\.claude.json.backup.1776377487281
+  04/16/2026 18:21:59  32465  C:\Users\alto8\.claude\backups\.claude.json.backup.1776378119268
+  04/16/2026 18:58:10  32502  C:\Users\alto8\.claude\backups\.claude.json.backup.1776380290738
+  04/16/2026 18:58:10  350  C:\Users\alto8\.claude\tasks\d920f507-391d-4d21-9a8c-dce4bbe1c2fe\12.json
+  04/16/2026 18:58:12  314  C:\Users\alto8\.claude\tasks\d920f507-391d-4d21-9a8c-dce4bbe1c2fe\13.json
+  04/16/2026 18:58:14  334  C:\Users\alto8\.claude\tasks\d920f507-391d-4d21-9a8c-dce4bbe1c2fe\14.json
+  04/16/2026 18:58:16  371  C:\Users\alto8\.claude\tasks\d920f507-391d-4d21-9a8c-dce4bbe1c2fe\15.json
+  04/16/2026 18:58:18  462  C:\Users\alto8\.claude\tasks\d920f507-391d-4d21-9a8c-dce4bbe1c2fe\16.json
+  04/16/2026 18:59:57  558227  C:\Users\alto8\evidence-privacybrowse-2026-04-16-185957\AppxBlockMap.xml
+  04/16/2026 18:59:57  2640  C:\Users\alto8\evidence-privacybrowse-2026-04-16-185957\AppxManifest.xml
+  04/16/2026 18:59:57  12080  C:\Users\alto8\evidence-privacybrowse-2026-04-16-185957\AppxSignature.p7x
+  04/16/2026 18:59:57  32768  C:\Users\alto8\evidence-privacybrowse-2026-04-16-185957\Registry.dat
+  04/16/2026 18:59:57  5416  C:\Users\alto8\evidence-privacybrowse-2026-04-16-185957\Resources.pri
+  04/16/2026 18:59:57  24576  C:\Users\alto8\evidence-privacybrowse-2026-04-16-185957\User.dat
+
+=== Recent SSH sessions in known_hosts / .bash_history ===
+Last 30 lines of .bash_history:
+  claude
+  cd C:\Users\alto8\new-project
+  cd new-project
+  claude --dangerously-skip-permissions~
+  claude --dangerously-skip-permissions
+  claude --dangerously-skip-permissions
+  claude
+
+=== Defender scan status ===
+  AMRunningMode: Normal
+  ComputerState: 0
+  QuickScanEndTime: 04/15/2026 19:48:35
+  FullScanEndTime: 
+  LastFullScanSource: 0
+
+=== Current network connections (any process) to new remote IPs ===
+  PID=20692 (msedgewebview2)  2600:4041:410a:fc00:ccde:4d78:2aa2:d27e:64462 to 2603:1063:8:123::365:7ea3:443
+  PID=10256 (OneDrive.Sync.Service)  2600:4041:410a:fc00:ccde:4d78:2aa2:d27e:63974 to 2603:1061:13f2:c2f::365:590:443
+  PID=13656 (claude)  2600:4041:410a:fc00:ccde:4d78:2aa2:d27e:62236 to 2607:6bc0::10:443
+  PID=20692 (msedgewebview2)  2600:4041:410a:fc00:ccde:4d78:2aa2:d27e:61558 to 2603:1063:8:102::365:7ea3:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:ccde:4d78:2aa2:d27e:60563 to 2607:f8b0:4004:c0b::bc:5228
+  PID=15916 (chrome)  2600:4041:410a:fc00:ccde:4d78:2aa2:d27e:60562 to 2607:f8b0:4004:c0b::bc:5228
+  PID=15916 (chrome)  2600:4041:410a:fc00:ccde:4d78:2aa2:d27e:60561 to 2607:f8b0:4004:c0b::bc:5228
+  PID=24176 (node)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58711 to 2607:6bc0::10:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58700 to 2603:1063:2000:1::12:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58669 to 2603:1036:3000:10::4:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58609 to 2603:1063:27:2::14:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58575 to 2603:1063:2001:51d::365:ff1:443
+  PID=10944 (Zoom)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58568 to 2407:30c0:182::aa72:3453:443
+  PID=21908 (Zoom)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58567 to 2407:30c0:182::aa72:3453:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58501 to 2600:1405:a000:16::b819:ed84:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58497 to 2600:1405:a000:16::b819:ed84:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58472 to 2603:1063:2200:8::1f:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58454 to 2607:f8b0:4004:c08::5e:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:58332 to 2600:1405:a000:16::b819:ed84:443
+  PID=10256 (OneDrive.Sync.Service)  2600:4041:410a:fc00:ccde:4d78:2aa2:d27e:57747 to 2603:1061:13f2:c20::365:590:443
+  PID=20692 (msedgewebview2)  2600:4041:410a:fc00:925:fc9e:b403:1a51:57696 to 2603:1063:21::1dc:443
+  PID=20692 (msedgewebview2)  2600:4041:410a:fc00:925:fc9e:b403:1a51:57673 to 2603:1063:8:115::365:7ea3:443
+  PID=13076 (SearchApp)  2600:4041:410a:fc00:925:fc9e:b403:1a51:57359 to 2603:1036:302:415d::2:443
+  PID=20692 (msedgewebview2)  2600:4041:410a:fc00:925:fc9e:b403:1a51:57203 to 2603:1063:21::1dc:443
+  PID=21908 (Zoom)  2600:4041:410a:fc00:ccde:4d78:2aa2:d27e:57051 to 2600:1f16:1782:b202:ae9e:7333:436d:a042:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:56687 to 2603:1063:12::307:443
+  PID=20692 (msedgewebview2)  2600:4041:410a:fc00:925:fc9e:b403:1a51:56387 to 2603:1063:8:11c::365:7ea3:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:55947 to 2603:1063:28::36:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:55909 to 2603:1030:20e:5::33:443
+  PID=15916 (chrome)  2600:4041:410a:fc00:925:fc9e:b403:1a51:55472 to 2603:1063:30::4d:443

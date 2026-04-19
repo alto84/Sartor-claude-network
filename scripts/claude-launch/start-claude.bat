@@ -1,0 +1,6 @@
+@echo off
+set CLAUDECODE=
+set CLAUDE_CODE_SESSION_ACCESS_TOKEN=
+set CLAUDE_CODE_ENTRYPOINT=
+set CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=
+start "" "C:\Program Files\Git\git-bash.exe"

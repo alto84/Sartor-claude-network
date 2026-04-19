@@ -1,0 +1,26 @@
+﻿EXISTS  FILE  sz=399  lw=12/24/2025 00:24:37  la=04/16/2026 19:02:46  C:\Users\alto8\.ssh\id_ed25519
+EXISTS  FILE  sz=95  lw=12/24/2025 00:24:37  la=04/16/2026 19:02:46  C:\Users\alto8\.ssh\id_ed25519.pub
+EXISTS  FILE  sz=1120  lw=01/11/2026 13:32:56  la=04/16/2026 19:02:46  C:\Users\alto8\.ssh\known_hosts
+EXISTS  FILE  sz=471  lw=04/16/2026 14:54:05  la=04/16/2026 19:00:53  C:\Users\alto8\.claude\.credentials.json
+EXISTS  FILE  sz=194  lw=04/14/2026 07:52:05  la=04/16/2026 19:00:53  C:\Users\alto8\.git-credentials
+EXISTS  FILE  sz=29  lw=12/29/2025 15:11:34  la=04/16/2026 19:00:53  C:\Users\alto8\.gitconfig
+EXISTS  FILE  sz=917504  lw=04/16/2026 15:55:40  la=04/16/2026 19:00:53  C:\Users\alto8\AppData\Local\Google\Chrome\User Data\Default\Login Data
+ABSENT  C:\Users\alto8\AppData\Local\Google\Chrome\User Data\Default\Cookies
+EXISTS  FILE  sz=3702784  lw=04/16/2026 19:04:11  la=04/16/2026 19:04:11  C:\Users\alto8\AppData\Local\Google\Chrome\User Data\Default\Network\Cookies
+EXISTS  FILE  sz=1277952  lw=04/16/2026 15:55:40  la=04/16/2026 19:00:53  C:\Users\alto8\AppData\Local\Google\Chrome\User Data\Default\Web Data
+EXISTS  FILE  sz=24608768  lw=04/16/2026 17:48:35  la=04/16/2026 19:00:53  C:\Users\alto8\AppData\Local\Google\Chrome\User Data\Default\History
+EXISTS  FILE  sz=182224  lw=04/16/2026 18:58:39  la=04/16/2026 18:58:39  C:\Users\alto8\AppData\Local\Google\Chrome\User Data\Local State
+ABSENT  C:\Users\alto8\.kube\config
+ABSENT  C:\Users\alto8\.aws\credentials
+ABSENT  C:\Users\alto8\.docker\config.json
+ABSENT  C:\Users\alto8\.npmrc
+ABSENT  C:\Users\alto8\.config\gh\hosts.yml
+ABSENT  C:\Users\alto8\AppData\Roaming\Thunderbird
+ABSENT  C:\Users\alto8\.mozilla\firefox
+ABSENT  C:\Users\alto8\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings\nkbihfbeogaeaoehlefnkodbefgpgknn
+ABSENT  C:\Users\alto8\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings\bfnaelmomeimhlpmgjnjophhpkkoljpa
+ABSENT  C:\Users\alto8\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings\hnfanknocfeofbddgcijnmhnfnkdnaad
+ABSENT  C:\Users\alto8\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings\fhbohimaelbohpjbbldcngcnapndodjp
+ABSENT  C:\Users\alto8\AppData\Roaming\Exodus
+ABSENT  C:\Users\alto8\AppData\Roaming\Electrum
+EXISTS  DIR   0 items  C:\Users\alto8\AppData\Roaming\Microsoft\Credentials
