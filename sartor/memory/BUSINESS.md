@@ -87,7 +87,7 @@ See [[TAXES]] for deductions, estimated payments, and filing details.
 - Any IP considerations between AZ work and personal projects?
 - Why is GPU utilization zero? Needs pricing review vs. comparable RTX 5090 listings.
 - **[BLOCKER for Solar ITC] Solar contract is in Alton's personal name** — confirmed in 2026-04-06 CPA tax-package email. Must transfer to Solar Inference LLC before placed-in-service date (target: before July 4, 2026 ITC deadline) to capture ~$131K federal credit + ~$373K accelerated depreciation.
-- Solar roof basis reconciliation: CLAUDE.md tracks $438,829 (Tesla/Lucent contract); Alton told CPA "~$450k" on 2026-04-14. Resolve which figure is canonical.
+- **Solar roof basis (canonical): $438,829** (Tesla/Lucent signed contract, 2025-09-03). The "~$450k" figure in Alton's 2026-04-14 CPA email was a rough verbal approximation; CPA noted "we will work with whatever the actual depreciable basis turns out to be once invoiced." Canonical figure confirmed 2026-04-19.
 
 ## Recent Events
 - 2026-04-04: Machine #52271 (gpuserver1) went offline (45 min inactive); **recovered** — no follow-up emails, confirmed transient outage. Status resolved per [[business/solar-inference]].
@@ -95,7 +95,7 @@ See [[TAXES]] for deductions, estimated payments, and filing details.
 - 2026-04-11: GPU rental price raised to $0.35/hr demand / $0.26/hr interruptible.
 - 2026-04-12: Operating Agreement ratified. gpuserver1 cron cleanup (15 → 4 active jobs). See [[reference/OPERATING-AGREEMENT|Operating Agreement]].
 - 2026-04-13: 85 Stonebridge mortgage detail surfaced via CPA tax-package email — primary mortgage transferred mid-2025 from Shellpoint to Cenlar; new HELOC opened through Cenlar. Three 1098s on file. 2025 Montclair property tax paid: $62,187.49.
-- 2026-04-14: CPA confirmed 2025 LLC pass-through of $37k workstation hardware capex; ~$450k solar roof basis flagged for 2026 ITC + bonus depreciation. CPA noted "We will pass through the 2025 stuff."
+- 2026-04-14: CPA confirmed 2025 LLC pass-through of $37k workstation hardware capex; $438,829 solar roof contract basis flagged for 2026 ITC + bonus depreciation (Alton's verbal "~$450k" in email was approximate). CPA noted "We will pass through the 2025 stuff."
 - 2026-04-14: Sante Total received recurring PayPal donation from Michael Quigg ($250/month, annualized $3,000). Subscription I-UWGVA4LYX3V2 active; next payment 2026-05-14.
 
 ## Related

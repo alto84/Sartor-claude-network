@@ -513,7 +513,7 @@ Output: a staleness assessment per file, written to `inbox/rocinante/_stale-veri
 3. Start llama-server on port 8080 with the Q4_K_M model. Verify `/v1/chat/completions` returns responses.
 4. Run the constitution eval suite against the local endpoint: 50 questions covering household facts, political topics (Tiananmen, Taiwan, Xinjiang), children's interaction norms, financial hard rules, and epistemics. Compare against Claude Sonnet baseline.
 5. Build the `data/local-model-quality.csv` tracking spreadsheet with agreement rates by category.
-6. Write findings to `sartor/memory/projects/gpu-research-restart/07-eval-results.md`.
+6. Write findings to `sartor/memory/research/ccp-alignment/gpu-research-restart/07-eval-results.md`.
 
 **Rollback:** Stop llama-server. No other system depends on it yet.
 

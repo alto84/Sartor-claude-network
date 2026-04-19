@@ -40,8 +40,8 @@ Sartor is a personal AI system that runs quietly in the background of Alton's li
 | gpuserver1 monitoring | run_monitor.sh (2h), gather_mirror.sh (4h) | **Working** — 5 active P0 crons post-cleanup |
 | MERIDIAN dashboard | `dashboard/family/server.py` on Rocinante:5055 | **Working** — FastAPI + uvicorn + WebSocket terminal |
 | memory-system-v2 | `sartor/memory/projects/memory-system-v2/` | **In progress** — Phase 3 execution active 2026-04-12 |
-| constitution-council | `sartor/memory/projects/constitution-council/` | **Complete** |
-| safety-knowledge-graph | `sartor/memory/research/safety-knowledge-graph/` | **Active** |
+| constitution-council | `sartor/memory/research/ccp-alignment/constitution-council/` | **Complete** |
+| safety-knowledge-graph | `sartor/memory/research/pharmacovigilance/safety-knowledge-graph/` | **Active** |
 
 > [!warning] Gateway cron retired
 > The "Target Architecture" diagram below references `gateway_cron.py` as the central cron loop. **That script was disabled 2026-04-12** due to persistent JSON parse failures (`Expecting value: line 1 column 1 (char 0)`). The cron-gateway pattern has been superseded by the five P0 crons described in [[machines/gpuserver1/CRONS|gpuserver1 CRONS v0.2]]. The diagram is preserved for historical context; do not treat it as the current architecture.

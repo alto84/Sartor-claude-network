@@ -193,12 +193,12 @@ Top offenders (excluding daily logs, inbox, feedback, constitution-council inter
 | `family/disney-july-2026.md` | 2026-04-10 | 1,180 | Trip plan, orphan |
 | `ledgers/kids.md` | 2026-04-10 | 426 | Kids ledger, orphan |
 | `people/ilan-grunwald.md` | 2026-04-10 | 237 | New person dossier, orphan |
-| `projects/mini-lab-2026-04-11/MINI-LAB-REPORT.md` | (no fm) | 22,881 | **Largest single file in the wiki**, no frontmatter, no inbound links |
+| `research/ccp-alignment/mini-lab-2026-04-11/MINI-LAB-REPORT.md` | (no fm) | 22,881 | **Largest single file in the wiki**, no frontmatter, no inbound links |
 | `skills/gpuserver1-market-pricing/SKILL.md` | (no `updated:`) | 1,816 | Skill definition, orphan |
 | `machines/gpuserver1/MISSION.md` | 2026-04-12 | 2,935 | The v0.2 mission, orphan (only the deprecated v0.1 file references it via `supersedes:` frontmatter, which is not a wikilink) |
 | `machines/gpuserver1/MISSION-v0.1.md` | (no `updated:`) | 4,548 | Superseded but not annotated as such in body text |
-| `research/cell-therapy-safety-monitoring-lifecycle.md` | (no fm) | 7,928 | Major research doc, orphan |
-| `research/graph-based-safety-prediction-research.md` | (no fm) | 4,287 | Major research doc, orphan |
+| `research/pharmacovigilance/cell-therapy-safety-monitoring-lifecycle.md` | (no fm) | 7,928 | Major research doc, orphan |
+| `research/pharmacovigilance/graph-based-safety-prediction-research.md` | (no fm) | 4,287 | Major research doc, orphan |
 
 The pattern: **everything written after 2026-04-07 is orphaned**. The wiki has been operating in append-mode without updating the link graph in the canonical hub pages.
 
@@ -208,11 +208,11 @@ The pattern: **everything written after 2026-04-07 is orphaned**. The wiki has b
 
 | Path | Words | Type by content |
 |------|------|-----------------|
-| `projects/mini-lab-2026-04-11/MINI-LAB-REPORT.md` | 22,881 | research / project report |
-| `research/cell-therapy-safety-monitoring-lifecycle.md` | 7,928 | research |
-| `research/graph-based-safety-prediction-research.md` | 4,287 | research |
+| `research/ccp-alignment/mini-lab-2026-04-11/MINI-LAB-REPORT.md` | 22,881 | research / project report |
+| `research/pharmacovigilance/cell-therapy-safety-monitoring-lifecycle.md` | 7,928 | research |
+| `research/pharmacovigilance/graph-based-safety-prediction-research.md` | 4,287 | research |
 | `reference/gpuserver1-delegation.md` | 396 | reference |
-| All `research/safety-knowledge-graph/**` files | varies | (cluster lacks frontmatter universally; ~16 files) |
+| All `research/pharmacovigilance/safety-knowledge-graph/**` files | varies | (cluster lacks frontmatter universally; ~16 files) |
 
 The safety-knowledge-graph cluster is consistent with itself but inconsistent with the rest of the wiki. It uses path-style relative links (`[[adverse-events/CRS]]`, `[[mitigations/tocilizumab]]`) that **do** resolve correctly when normalized — my initial dangling-link count of 290 was inflated by my tool not resolving path-style links. After normalization the truly dangling count drops to **16 placeholder links across 9 files**, almost all of which are example syntax in `MEMORY-CONVENTIONS.md`, `LLM-WIKI-ARCHITECTURE.md`, and feedback files (`[[FILE]]`, `[[wikilink]]`, `[[LINK]]`).
 
@@ -279,8 +279,8 @@ These are pages that **should** be reachable by graph traversal from a hub but a
 
 Two clusters legitimately have low backlink counts because they are internally cohesive and not meant to be entry points from the rest of the wiki:
 
-- `projects/constitution-council/**` — 19 files, all linking to each other (reviews + cross-reviews + DIFF + SYNTHESIS + OPEN_QUESTIONS). This is a self-contained project workspace.
-- `research/safety-knowledge-graph/**` — 16 files, all linking to each other via path-style wikilinks. This is a self-contained knowledge graph.
+- `research/ccp-alignment/constitution-council/**` — 19 files, all linking to each other (reviews + cross-reviews + DIFF + SYNTHESIS + OPEN_QUESTIONS). This is a self-contained project workspace.
+- `research/pharmacovigilance/safety-knowledge-graph/**` — 16 files, all linking to each other via path-style wikilinks. This is a self-contained knowledge graph.
 
 Both clusters need a single inbound link from a relevant hub (PROJECTS.md and ASTRAZENECA.md respectively) to be properly findable, but their internal structure is healthy.
 
@@ -298,7 +298,7 @@ Both clusters need a single inbound link from a relevant hub (PROJECTS.md and AS
 
 4. **The constitution-council project is enormous and isolated.** 19 files, 8 personas reviewed twice each, plus DIFF/SYNTHESIS/OPEN_QUESTIONS, plus the two HOUSEHOLD-CONSTITUTION versions. This is a major artifact that the rest of the wiki barely references. PROJECTS.md should link to it as a top-level entry.
 
-5. **`projects/mini-lab-2026-04-11/MINI-LAB-REPORT.md` is the largest single file in the wiki at 22,881 words** but has no frontmatter, no inbound links, and `git_mtime` of 2026-04-11. It is invisible to anyone not specifically looking for it. The mini-lab is referenced as a "recent commit" in the team-lead briefing, so it's clearly important — but the wiki itself does not surface it.
+5. **`research/ccp-alignment/mini-lab-2026-04-11/MINI-LAB-REPORT.md` is the largest single file in the wiki at 22,881 words** but has no frontmatter, no inbound links, and `git_mtime` of 2026-04-11. It is invisible to anyone not specifically looking for it. The mini-lab is referenced as a "recent commit" in the team-lead briefing, so it's clearly important — but the wiki itself does not surface it.
 
 6. **The safety-knowledge-graph cluster is structurally beautiful** — 16 files, dense internal cross-linking via path-style wikilinks, consistent format. But none of them have frontmatter, and the cluster has zero inbound links from outside. It is an island of high-quality content in the wiki.
 

@@ -17,7 +17,7 @@ Three jobs: mini-lab wrap, background process inventory, cron drift-check. All r
 ## Job 1: Mini-Lab Wrap-Up
 
 **Working dir**: `C:/Users/alto8/abliteration-exp/mini-lab/`
-**Project dir**: `sartor/memory/projects/mini-lab-2026-04-11/`
+**Project dir**: `sartor/memory/research/ccp-alignment/mini-lab-2026-04-11/`
 
 ### What Was There
 
@@ -31,7 +31,7 @@ The working dir has six subdirectories:
 
 ### What Was Archived
 
-Copied to `sartor/memory/projects/mini-lab-2026-04-11/artifacts/` (10 files):
+Copied to `sartor/memory/research/ccp-alignment/mini-lab-2026-04-11/artifacts/` (10 files):
 - `train_sft.py`, `run_eval.py`, `score_eval.py`, `interview.py` — core reproducibility scripts
 - `probes.jsonl`, `rubric.md` — eval battery and rubric
 - `eval-base-scored.json`, `eval-sft-v2-scored.json` — final scored results
@@ -47,7 +47,7 @@ Copied to `sartor/memory/projects/mini-lab-2026-04-11/artifacts/` (10 files):
 
 ### STATUS.md Written
 
-`sartor/memory/projects/mini-lab-2026-04-11/STATUS.md` created with verdict, preservation inventory, and future work roadmap. Key verdict: **(B) Partially worked** — constitutional voice and scenario-level values installed, refusal calibration and math regressed via small-corpus overfit.
+`sartor/memory/research/ccp-alignment/mini-lab-2026-04-11/STATUS.md` created with verdict, preservation inventory, and future work roadmap. Key verdict: **(B) Partially worked** — constitutional voice and scenario-level values installed, refusal calibration and math regressed via small-corpus overfit.
 
 ---
 

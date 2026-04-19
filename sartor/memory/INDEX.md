@@ -34,5 +34,5 @@
 
 ## Research & Snapshots
 - [INDEX.md](research/INDEX.md) — ---
-- [cell-therapy-safety-monitoring-lifecycle.md](research/cell-therapy-safety-monitoring-lifecycle.md) — AI-Driven Safety Monitoring and Adverse Event Prediction Across the Cell Therapy Clinical Development Lifecycle
-- [graph-based-safety-prediction-research.md](research/graph-based-safety-prediction-research.md) — Graph-Based Approaches for Pharmaceutical Safety Prediction (PSP Platform)
+- [cell-therapy-safety-monitoring-lifecycle.md](research/pharmacovigilance/cell-therapy-safety-monitoring-lifecycle.md) — AI-Driven Safety Monitoring and Adverse Event Prediction Across the Cell Therapy Clinical Development Lifecycle
+- [graph-based-safety-prediction-research.md](research/pharmacovigilance/graph-based-safety-prediction-research.md) — Graph-Based Approaches for Pharmaceutical Safety Prediction (PSP Platform)

@@ -2,9 +2,9 @@
 type: hub
 level: 2
 entity: projects-index
-updated: 2026-04-12
-last_verified: 2026-04-12
-related: [PROJECTS, MASTERPLAN]
+updated: 2026-04-19
+last_verified: 2026-04-19
+related: [PROJECTS, MASTERPLAN, research-index]
 tags: [meta/index, domain/projects]
 ---
 
@@ -12,22 +12,27 @@ tags: [meta/index, domain/projects]
 
 Sub-directory hub for `sartor/memory/projects/`. Parent: [[PROJECTS]].
 
+**2026-04-19 restructure:** Research projects moved to [[research/INDEX|research/]] per Alton's consolidation directive. This directory now holds only **infrastructure** and **family** projects.
+
 ## Active Infrastructure Projects
 
 - [[projects/memory-system-v2/10-MASTER-PLAN|memory-system-v2 master plan]] — Memory system v2: full execution plan across 12 exercises (EX-1 through EX-12)
-- [[projects/monitoring-probe-architecture|monitoring-probe-architecture]] — Monitoring probe architecture design doc
-- [[projects/rtx6000-workstation-build|rtx6000-workstation-build]] — RTX PRO 6000 Blackwell workstation build plan (arriving summer 2026)
+- [[projects/rtx6000-workstation-build|rtx6000-workstation-build]] — RTX PRO 6000 Blackwell workstation build plan (arriving summer 2026). See also `rtx6000-workstation-build-SHOPPING.md`, `rtx6000-workstation-build-PSU-SWAP.md`.
+- `projects/curator-fixes/` — Curator / memory-system maintenance fixes.
+- `projects/hermes-dashboard-upgrade/` — Hermes dashboard upgrade workspace.
 
-## Research and Training Projects
+## Active Family Projects
 
-- [[projects/counter-ccp-dataset-design|counter-ccp-dataset-design]] — Dataset design for counter-CCP research
-- [[projects/oct-training-playbook|oct-training-playbook]] — OCT model training playbook
+- `projects/2025-photo-book/` — 2025 family photo book.
+- `projects/disney-july-2026/` — Disney trip planning for July 2026.
 
-## Completed / Reference
+## Research — now under [[research/INDEX]]
 
-- [[projects/mini-lab-2026-04-11/MINI-LAB-REPORT|mini-lab-2026-04-11 report]] — Mini-lab report 2026-04-11: 22,881-word comprehensive lab log (largest single file in wiki)
+The following moved to `sartor/memory/research/ccp-alignment/` on 2026-04-19:
 
-## Active Cluster Projects
-
-- `projects/constitution-council/` — Household constitution council: 19-file cluster with persona reviews, cross-reviews, DIFF, SYNTHESIS, OPEN_QUESTIONS. See [[reference/HOUSEHOLD-CONSTITUTION]] for the output.
-- `projects/memory-system-v2/` — Memory system v2 project workspace: ethnography, master plan, execution docs.
+- mini-lab-2026-04-11/ (constitution absorption mini-lab report)
+- gpu-research-restart/ (GPU-scale CCP subtraction restart)
+- constitution-council/ (household constitution drafting workspace)
+- counter-ccp-dataset-design.md
+- oct-training-playbook.md
+- monitoring-probe-architecture.md

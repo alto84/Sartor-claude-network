@@ -15,9 +15,9 @@ entity: sartor-mini-lab
 ## What Is Preserved
 
 **In-repo (committed with MINI-LAB-REPORT.md)**:
-- `sartor/memory/projects/mini-lab-2026-04-11/MINI-LAB-REPORT.md` — full final report (~44k tokens), authoritative
+- `sartor/memory/research/ccp-alignment/mini-lab-2026-04-11/MINI-LAB-REPORT.md` — full final report (~44k tokens), authoritative
 
-**In artifacts directory** (`sartor/memory/projects/mini-lab-2026-04-11/artifacts/`):
+**In artifacts directory** (`sartor/memory/research/ccp-alignment/mini-lab-2026-04-11/artifacts/`):
 - `train_sft.py` — SFT training script with chat-template monkey-patch and `assistant_only_loss=True` fix
 - `run_eval.py` — eval runner
 - `score_eval.py` — eval scorer
@@ -55,4 +55,4 @@ entity: sartor-mini-lab
 3. **Refusal calibration damage**: The training effect is well-characterized (small-corpus overfit at r=32/alpha=64). Remediation options documented in MINI-LAB-REPORT.md §10: larger corpus with diverse benign examples, lower alpha, data augmentation for refusal-calibration-over class.
 4. **CCP hedging probe design**: Base model produces multi-perspective evasion (not refusal) on 3 of 8 CCP probes. Counter-CCP probe battery needs to test for content engagement vs. hedge-without-content. See MINI-LAB-REPORT.md §5.2.
 5. **sft-v1 interview transcript**: Never completed due to session deadline. If the 35B run uses the same interview harness, sft-v1 results would fill the comparison gap.
-6. **35B production run**: This mini-lab was methodology rehearsal for the full OCT run on Qwen3.5-35B-A3B on dual RTX PRO 6000 Blackwell. The eval battery, interview rubric, and chat-template fix from this lab are directly reusable. See `sartor/memory/projects/oct-training-playbook.md`.
+6. **35B production run**: This mini-lab was methodology rehearsal for the full OCT run on Qwen3.5-35B-A3B on dual RTX PRO 6000 Blackwell. The eval battery, interview rubric, and chat-template fix from this lab are directly reusable. See `sartor/memory/research/ccp-alignment/oct-training-playbook.md`.

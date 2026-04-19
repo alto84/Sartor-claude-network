@@ -46,7 +46,7 @@ The Sartor family lives in Montclair, New Jersey.
 **Platform:** vast.ai
 **Hardware:** RTX 5090 (32GB VRAM), Intel i9-14900K, 128GB DDR5 RAM
 **Machine ID:** 52271 | **Offer ID:** 32099437
-**Pricing:** $0.40/hr GPU rate, $0.25/hr minimum bid, $0.10/hr storage
+**Pricing (as of 2026-04-19, verified via `vastai show machines`):** $0.35/hr on-demand, $0.26/hr interruptible, $0.40/hr reserved, $3.00/TB upload, $2.00/TB download
 **Payout:** Stripe (configured)
 **Listing expiry:** 2026-08-24 (must relist before this date)
 
@@ -217,8 +217,8 @@ Skills are defined in `.claude/skills/` and provide reusable capabilities:
 | `/distributed-systems-debugging` | Debug multi-agent coordination, consensus, state sync |
 | `/safety-research-wiki` | Pharmacovigilance knowledge base builder (AstraZeneca context) |
 | `/build-llm-wiki` | Create self-contained LLM-optimized wiki |
-| `/multi-agent-orchestration` | Multi-agent system design patterns (pending consolidation) |
-| `/evidence-based-validation` | Anti-fabrication default behavior (pending merge with engineering variant) |
+| `/multi-agent-orchestration` | Multi-agent system design patterns (consolidated 2026-04-19 from 14 overlapping skills) |
+| `/evidence-based-validation` | Anti-fabrication default behavior (single canonical after 2026-04-19 merge) |
 
 ## Available Commands
 

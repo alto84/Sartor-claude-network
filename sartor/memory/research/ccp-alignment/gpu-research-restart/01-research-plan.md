@@ -498,8 +498,8 @@ The constitutional model would need tool-use fine-tuning (function calling) to i
 - Shisa.AI censorship analysis: https://shisa.ai/posts/qwen2-chinese-llm-censorship-analysis/
 
 ### Mini-Lab Artifacts
-- `sartor/memory/projects/mini-lab-2026-04-11/MINI-LAB-REPORT.md` (full report)
-- `sartor/memory/projects/mini-lab-2026-04-11/artifacts/train_sft.py` (training script with template fix)
+- `sartor/memory/research/ccp-alignment/mini-lab-2026-04-11/MINI-LAB-REPORT.md` (full report)
+- `sartor/memory/research/ccp-alignment/mini-lab-2026-04-11/artifacts/train_sft.py` (training script with template fix)
 - `sartor/memory/reference/HOUSEHOLD-CONSTITUTION.md` (constitution v0.2, 26K words)
 
 ## Appendix B: VRAM Budget
