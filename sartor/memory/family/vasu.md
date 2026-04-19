@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-04-15
+updated: 2026-04-19
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -67,6 +67,14 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 - [[family/active-todos|Family TODOs]] - Current action items
 - [[ALTON]] - Head of household
 - [[ledgers/kids]] - Allowance ledger (parent-managed for Vasu)
+
+## Latest from gather (2026-04-19)
+
+> [!fact]
+> **Goddard School Apr 17 — Rain Cloud in a Cup science project.** Kaymbu classroom update (20:11 UTC Apr 17): "Small Group Learning — Rain Cloud in a Cup. We recreated what happens when clouds get heavy with rain." Confirms Vasu attended school Friday Apr 17.
+
+> [!fact]
+> **Goddard School Apr 17 — Show and Tell letter "P".** Kaymbu update (20:13 UTC Apr 17): Friday Show and Tell theme was the letter P. Children without a letter P item were allowed to participate with another letter. Routine Friday activity confirmed.
 
 ## Latest from gather (2026-04-11)
 
