@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-19] ingest | personal-data-gather run 1: quiet cycle, Cougar Pride sign-up link
+- Gmail: 50 threads; 5 net new after 18:53 UTC Apr 18; 0 new ACTION_REQUIRED
+- New signals: Cougar Pride volunteer sign-up link confirmed (vpuryear3@gmail.com follow-up), BAGAIL badminton shipped, WIN.MAX goggles delivered, Tipitinas promotional (skip)
+- Calendar: all 5 queried Apr 19–26; 0 new events; all times consistent with settled run 4/5 Apr 18 conclusions
+- 6 ACTION_REQUIRED items carry forward unchanged (Mike Silva, Guidepoint, EquityZen, Disney ADR, Cougar Pride, Biogen)
+- Pages updated: `daily/2026-04-19.md`, `family/active-todos.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
 ## [2026-04-18] ingest | personal-data-gather run 5: quiet cycle, full calendar confirm
 - Gmail: 50 threads; 2 net new (LinkedIn VC InMail, Tesla newsletter) — both INFORMATIONAL; 0 new ACTION_REQUIRED
 - Calendar: all 5 queried; 0 new events; all times confirmed against raw API (UTC/offset/no-Z rule settled)
