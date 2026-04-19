@@ -36,6 +36,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-19] ingest | personal-data-gather run 3: quiet cycle, 0 new facts; data/ recreated
+- Gmail: 30 threads scanned; 0 net new after run 2; 0 new ACTION_REQUIRED
+- Calendar: all 5 queried Apr 19–26; 0 new events
+- 6 ACTION_REQUIRED items carry forward unchanged (Mike Silva, Guidepoint, EquityZen, Disney ADR, Cougar Pride, Biogen)
+- Note: data/ directory was missing (run 2 write did not persist); recreated and both heartbeat-log.csv and gather-alerts.md written fresh
+- Pages updated: `daily/2026-04-19.md`, `log.md`
+
 ## [2026-04-19] ingest | personal-data-gather run 2: quiet cycle, Doximity newsletter only
 - Gmail: 50 threads; 1 net new after run 1 (Doximity weekly newsletter, INFORMATIONAL); 0 new ACTION_REQUIRED
 - Calendar: all 5 queried Apr 19–26; 0 new events; Berman Home Systems Install (Apr 27–29) confirmed already documented
