@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-18
+updated: 2026-04-19
 updated_by: personal-data-gather
 run: 1
 
@@ -523,3 +523,13 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Newegg verification code (Apr 18 14:16 UTC)
 > Newegg emailed "480587 is your Newegg Verification Code" to alto84@gmail.com today. Context: on Apr 13 a Newegg charge ($938.25) triggered the Chase Sapphire fraud alert and card replacement. If Alton did NOT initiate this Newegg login today, the actor behind the Apr 13 fraud may still be active. Verify with Alton: did you log into Newegg on Apr 18?
+
+## Latest from gather (2026-04-19)
+
+> [!note] Cougar Pride Day sign-up link now available
+> Valerie Puryear (vpuryear3@gmail.com) sent two follow-up emails at 21:19 and 21:33 UTC Apr 18. The second ("Sorry, I forgot the link") provides the actual volunteer sign-up link. The earlier run 3 entry (pamkaprimaryschoolvp, 8 AM ET Apr 18) was the initial request; these are the follow-ups. **If Alton or Aneeta are volunteering, reply to vpuryear3@gmail.com to get the link.** Apr 25 3–7 PM. Decision needed before then. See [[family/family-calendar]].
+
+> [!note] Orders status update (Apr 18 evening)
+> - BAGAIL Outdoor Badminton Set: SHIPPED (Amazon 21:25 UTC Apr 18). Was "ordered" in run 2.
+> - WIN.MAX Swimming Goggles: DELIVERED (Amazon 22:04 UTC Apr 18). Were "shipped" in run 4.
+> No action needed on either.

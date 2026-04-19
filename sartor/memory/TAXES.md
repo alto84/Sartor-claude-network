@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: TAXES
-updated: 2026-04-17
-updated_by: personal-data-gather
+updated: 2026-04-19
+updated_by: autodream
 last_verified: 2026-04-12
 status: active
 next_deadline: 2026-05-15
@@ -252,3 +252,6 @@ Append this fact to `TAXES.md` under the section relevant to `2027 fiscal outloo
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-mka-donation -->
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-mortgage-refi-shellpoint-cenlar -->
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-workstation-37k-pass-through -->
+
+## Consolidated from daily logs (2026-04-19)
+- [2026-04-19] (fact) Repairs for movie room (Apr 20, 13:00 UTC = 9:00–11:00 AM ET) ✓
