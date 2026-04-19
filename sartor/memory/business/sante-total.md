@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-04-14
+updated: 2026-04-19
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -128,3 +128,8 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!fact]
 > **New Sante Total PayPal donation — Michael Quigg, Apr 14.** Transaction ID: 7AP281443P8371607. Received 06:35 AM CDT. Amount not visible from email snippet — verify in PayPal dashboard. First new donation since the Apr 2 batch ($4,350+ logged above). Add to donor activity table once amount confirmed. Send tax receipt per the [[alison-smith|Alison Smith]] pattern used for Anna Smyke on 2026-03-10.
+
+## Latest from gather (2026-04-19)
+
+> [!fact]
+> **New Sante Total PayPal donation — Christina Stiles, Apr 19.** Transaction ID: 1HN1210765870815P. Received 06:23:05 CDT. Amount not visible in email snippet — verify in PayPal dashboard. Add to donor activity table once amount confirmed. Send tax receipt per [[alison-smith|Alison Smith]] pattern. Running 2026 YTD total: $4,350+ (Mar–Apr 2) + Michael Quigg (Apr 14, amount TBD) + this donation.

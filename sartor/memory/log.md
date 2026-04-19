@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-18
+updated: 2026-04-19
 updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
@@ -35,6 +35,30 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-19] ingest | personal-data-gather run 5: gap-fill 13-17 UTC window, 0 new ACTION_REQUIRED; data/ recreated
+- Gmail: 50 threads; 6 backfilled from 13–17 UTC window missed by run 4 filter; 0 new ACTION_REQUIRED
+- New signals: ENOVI Yoga Ball ordered (Amazon), J&J Senior Director AI Enablement job alert (career intelligence, INFORMATIONAL), JAMA Weekly, ChinaTalk, Medscape CME, Amazon review request — all SKIP/INFORMATIONAL
+- Calendar: all 5 queried Apr 19–27; 0 new events
+- 8 ACTION_REQUIRED items carry forward unchanged
+- data/ directory was again missing; recreated (persistent session issue)
+- Pages updated: `daily/2026-04-19.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
+## [2026-04-19] ingest | personal-data-gather run 4: 2 new ACTION_REQUIRED (Sante Total donation, Ghostie vet)
+- Gmail: 50 threads; 5 net new after run 3; 2 new ACTION_REQUIRED
+- Christina Stiles PayPal donation to Sante Total (Apr 19 06:23 CDT, TxID: 1HN1210765870815P, amount TBD — verify in PayPal)
+- Ghostie FVRCP vaccine due 2026-05-03, no appt scheduled (Cambridge Cat Clinic 617-245-0245)
+- Calendar: all 5 queried Apr 19–27; 0 new events
+- 8 total ACTION_REQUIRED items (was 6; +2 new)
+- Pages updated: `daily/2026-04-19.md`, `business/sante-total.md`, `family/active-todos.md`, `log.md`
+
+## [2026-04-19] ingest | personal-data-gather run 3: quiet cycle, 0 new facts; data/ recreated
+- Gmail: 30 threads scanned; 0 net new after run 2; 0 new ACTION_REQUIRED
+- Calendar: all 5 queried Apr 19–26; 0 new events
+- 6 ACTION_REQUIRED items carry forward unchanged (Mike Silva, Guidepoint, EquityZen, Disney ADR, Cougar Pride, Biogen)
+- Note: data/ directory was missing (run 2 write did not persist); recreated and both heartbeat-log.csv and gather-alerts.md written fresh
+- Pages updated: `daily/2026-04-19.md`, `log.md`
 
 ## [2026-04-19] ingest | personal-data-gather run 2: quiet cycle, Doximity newsletter only
 - Gmail: 50 threads; 1 net new after run 1 (Doximity weekly newsletter, INFORMATIONAL); 0 new ACTION_REQUIRED
