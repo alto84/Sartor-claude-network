@@ -2,7 +2,9 @@
 name: wiki-reader
 description: Query the Sartor memory wiki efficiently. Given a question or topic, uses wiki.py to assemble focused context from backlinks, tags, similarity, and article views without loading raw markdown files. Use when another agent or skill needs wiki context and wants to keep its own context window bounded.
 model: sonnet
-allowed-tools: Read, Bash, Grep, Glob
+tools: Read, Bash, Grep, Glob
+permissionMode: bypassPermissions
+maxTurns: 30
 ---
 
 # Wiki Reader

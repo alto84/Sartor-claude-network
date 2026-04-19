@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Form for Experiment</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 500px; }
+        input, textarea { width: 100%; margin: 10px 0; padding: 8px; }
+        label { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Customer Feedback Form</h1>
+    <form id="testForm">
+        <label for="custname">Name:</label>
+        <input type="text" id="custname" name="custname">
+
+        <label for="custtel">Telephone:</label>
+        <input type="tel" id="custtel" name="custtel">
+
+        <label for="custemail">Email:</label>
+        <input type="email" id="custemail" name="custemail">
+
+        <label for="size">Size:</label>
+        <select id="size" name="size">
+            <option value="">Select...</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+        </select>
+
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" rows="4"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

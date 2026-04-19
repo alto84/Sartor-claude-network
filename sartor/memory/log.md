@@ -36,6 +36,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-19] ingest | personal-data-gather run 2: quiet cycle, Doximity newsletter only
+- Gmail: 50 threads; 1 net new after run 1 (Doximity weekly newsletter, INFORMATIONAL); 0 new ACTION_REQUIRED
+- Calendar: all 5 queried Apr 19–26; 0 new events; Berman Home Systems Install (Apr 27–29) confirmed already documented
+- 6 ACTION_REQUIRED items carry forward unchanged (Mike Silva, Guidepoint, EquityZen, Disney ADR, Cougar Pride, Biogen)
+- Pages updated: `daily/2026-04-19.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` updated, `data/gather-alerts.md` updated (data/ directory created fresh — was missing)
+
 ## [2026-04-19] ingest | personal-data-gather run 1: quiet cycle, Cougar Pride sign-up link
 - Gmail: 50 threads; 5 net new after 18:53 UTC Apr 18; 0 new ACTION_REQUIRED
 - New signals: Cougar Pride volunteer sign-up link confirmed (vpuryear3@gmail.com follow-up), BAGAIL badminton shipped, WIN.MAX goggles delivered, Tipitinas promotional (skip)

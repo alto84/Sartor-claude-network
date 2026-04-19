@@ -1,0 +1,33 @@
+﻿# Post-rotation audit 2026-04-16T19:13:46Z
+
+## Defender full scan status
+  FullScanStartTime: 
+  FullScanEndTime:   
+  ComputerState:     0
+  No detections so far
+
+## DNS cache entries (looking for exfil domains)
+  No suspicious domains in DNS cache (may have expired; cache is short-TTL)
+  Total entries: 0
+
+## Chrome extensions installed today
+  NEW today: Temp  created=04/16/2026 05:55:04
+
+## New Windows scheduled tasks created today
+  No scheduled tasks created today
+
+## Claude conversation files that may contain secrets in plaintext
+  Conversation files in last 30d: 200
+  Total size: 155 MB
+  Recommendation: consider these potentially exfiltrated; any API keys, SSH output, passwords typed inline could be in these JSONL files.
+
+## Recent processes that are not standard
+  UNUSUAL: 04/16/2026 19:13:24  PID=34304  backgroundTaskHost  C:\WINDOWS\system32\backgroundTaskHost.exe
+  UNUSUAL: 04/16/2026 19:13:45  PID=10252  head  C:\Program Files\Git\usr\bin\head.exe
+  UNUSUAL: 04/16/2026 19:13:24  PID=18876  LocationNotificationWindows  C:\WINDOWS\System32\LocationNotificationWindows.exe
+  UNUSUAL: 04/16/2026 18:48:51  PID=35612  msedgewebview2  C:\Program Files (x86)\Microsoft\EdgeWebView\Application\147.0.3912.60\msedgewebview2.exe
+
+## SSH authorized_keys state on gpuserver1 (final)
+  ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK6Ysyscj/xTB4uQwotL9EVS0d2G9ZTR4xP0bE0Ngxbz alto8@rocinante-rotated-2026-04-16
+  ---
+  1 /home/alton/.ssh/authorized_keys

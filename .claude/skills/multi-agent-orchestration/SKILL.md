@@ -1,16 +1,16 @@
 ---
-name: Multi-Agent Orchestration
-description: Guides analysis and design of multi-agent systems including consensus mechanisms, distributed state management, agent coordination patterns, conflict resolution, Memory MCP integration, and work distribution. Use when analyzing agent architectures, debugging coordination issues, designing multi-agent systems, or integrating memory-backed coordination.
-allowed-tools: Read, Grep, Glob, Bash
+name: multi-agent-orchestration
+description: Multi-agent system design patterns for Sartor-scale orchestration (≤7 subagents spawned from a single orchestrator). Covers coordination, communication, state, and conflict resolution. Use when analyzing agent architectures, designing subagent dispatch, or debugging coordination issues. Consolidated 2026-04-19 from 14 overlapping skills.
+tools: Read, Grep, Glob, Bash
 ---
 
 # Multi-Agent Orchestration Skill
 
 ## Overview
 
-This skill provides comprehensive guidance for analyzing, designing, and debugging multi-agent coordination systems. It draws from actual implementations in the SKG Agent Prototype 2 and the Sartor-Claude-Network, focusing on proven patterns for consensus, communication, state management, conflict resolution, and Memory MCP integration in distributed agent systems.
+This skill provides guidance for analyzing, designing, and debugging multi-agent coordination systems at Sartor scale. It draws from the Sartor-Claude-Network implementation, focusing on proven patterns for orchestrator-dispatched subagents, inbox-mediated communication, state management via the memory wiki, and conflict resolution through the operating agreement.
 
-The skill includes production-ready coordination modules for work distribution, plan synchronization, and progress tracking, all integrated with the 3-tier memory system for persistent state and learning.
+**2026-04-19 consolidation note:** This skill absorbed the coordination-cluster of 14 overlapping skills (agent-communication-system, agent-coordinator, agent-introspection, long-running-harness, ways-of-working-evolution, openclaw-patterns, async-coordination, background-agent-patterns, agent-bootstrap, agent-roles, message-bus-quickstart, mcp-memory-tools, memory-access, refinement-protocol) into one canonical entry. The archived originals live at `.claude/skills/_archive/coordination-cluster-2026-04/` — reference them only if a specific Raft/BFT/CRDT pattern is needed, which at Sartor scale is rare. Sartor's orchestrator-with-subagents model does not need distributed consensus primitives; it needs clear scope, inbox audit trails, and a curator that can detect drift. That is what this skill teaches.
 
 ## When to Use This Skill
 

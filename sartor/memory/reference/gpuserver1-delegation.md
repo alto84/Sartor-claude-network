@@ -1,3 +1,13 @@
+---
+name: gpuserver1-delegation
+description: Patterns for delegating tasks to the gpuserver1 Claude instance via SSH. Covers read-only queries, permission escalation for file operations, and repo-context invocations.
+type: reference
+updated: 2026-04-19
+updated_by: Claude (Opus 4.7) — tidy pass
+tags: [reference, domain/gpu, meta/procedures]
+related: [OPERATING-AGREEMENT, MULTI-MACHINE-MEMORY, MACHINES]
+---
+
 # gpuserver1 Delegation
 
 ## How to Delegate Tasks
