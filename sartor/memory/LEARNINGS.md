@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: LEARNINGS
-updated: 2026-04-18
+updated: 2026-04-19
 updated_by: autodream
 last_verified: 2026-04-12
 status: active
@@ -181,3 +181,14 @@ Key findings from surveying state-of-the-art AI memory systems:
 - [2026-04-05] (fact) ---
 - [2026-04-06] (fact) ---
 - [2026-04-06] (fact) ---
+
+## Consolidated from daily logs (2026-04-19)
+- [2026-04-05] (fact) ---
+- [2026-04-06] (fact) ---
+- [2026-04-06] (fact) ---
+- [2026-04-19] (fact) Recycling costume parade (Apr 22, 20:20 UTC = 4:20–5:20 PM ET) ✓
+- [2026-04-19] (fact) Rec Soccer Practice B-34 Lime (Apr 22, 21:30 UTC = 5:30–6:15 PM ET, Anderson Park) ✓
+- [2026-04-19] (fact) Band concert Vayu (Apr 22, 22:30 UTC = 6:30–7:30 PM ET) ✓
+- [2026-04-19] (fact) Vishala spring concert (Apr 24, 12:00 UTC = 8:00–10:00 AM ET) ✓
+- [2026-04-19] (fact) Women's center dinner (Apr 24, 22:00Z = 6:00–7:00 PM ET) ✓
+- [2026-04-19] (fact) Cougar pride day (Apr 25, 15:00-04:00 = 3:00–7:00 PM ET) ✓
