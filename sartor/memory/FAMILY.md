@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-04-18
-updated_by: Claude (wikilinks-implementer, gstack-port)
+updated: 2026-04-20
+updated_by: autodream (wikilinks-implementer, gstack-port)
 last_verified: 2026-04-16
 status: active
 tags: [entity/person, domain/family]
@@ -349,3 +349,6 @@ Replace field `cell_phone` on entity `Tier` in `FAMILY.md` with value `(914) 488
 
 > [!fact]
 > **MKA Dean of Student Life Kelley Arau leaving at end of 2025-26 school year.** MKA primary school announcement (Apr 17): "I am writing to you today to share that our Dean of Student Life, Kelley Arau, will be leaving at the end of this year to continue her leadership journey at the Berkeley [School]." Affects Vayu and Vishala's school community. No action required from parents; informational. See [[family/vayu]] and [[family/vishala]].
+
+## Consolidated from daily logs (2026-04-20)
+- [2026-04-20] (fact) Berman Home Systems Installation (Apr 27–May 1, all-day multi-day) ✓

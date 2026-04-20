@@ -1,5 +1,5 @@
 # Sartor Memory Index
-## Last Updated: 2026-04-19 03:13
+## Last Updated: 2026-04-20 03:03
 
 ## Core Memory
 - [ALTON.md](ALTON.md) — ---
@@ -21,6 +21,7 @@
 - [reference_home_network.md](reference_home_network.md) — ---
 
 ## Recent Activity
+- [2026-04-20.md](daily/2026-04-20.md) — ---
 - [2026-04-19.md](daily/2026-04-19.md) — ---
 - [2026-04-18.md](daily/2026-04-18.md) — ---
 - [2026-04-17.md](daily/2026-04-17.md) — ---
@@ -30,9 +31,7 @@
 - [2026-04-13.md](daily/2026-04-13.md) — Daily Log - 2026-04-13 (Monday)
 - [2026-04-12.md](daily/2026-04-12.md) — Daily Log - 2026-04-12 (Sunday)
 - [2026-04-11.md](daily/2026-04-11.md) — Daily Log - 2026-04-11
-- [2026-04-10.md](daily/2026-04-10.md) — Daily Log - 2026-04-10 (Friday)
 
 ## Research & Snapshots
 - [INDEX.md](research/INDEX.md) — ---
-- [cell-therapy-safety-monitoring-lifecycle.md](research/pharmacovigilance/cell-therapy-safety-monitoring-lifecycle.md) — AI-Driven Safety Monitoring and Adverse Event Prediction Across the Cell Therapy Clinical Development Lifecycle
-- [graph-based-safety-prediction-research.md](research/pharmacovigilance/graph-based-safety-prediction-research.md) — Graph-Based Approaches for Pharmaceutical Safety Prediction (PSP Platform)
+- [experiments-index.md](research/experiments-index.md) — ---

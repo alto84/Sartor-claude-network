@@ -6,6 +6,10 @@ tools:
   - Read
   - Write
   - Grep
+  - mcp__claude_ai_Google_Calendar__list_events
+  - mcp__claude_ai_Google_Calendar__list_calendars
+  - mcp__claude_ai_Google_Calendar__get_event
+  - mcp__claude_ai_Google_Calendar__suggest_time
 permissionMode: bypassPermissions
 maxTurns: 30
 memory: none
