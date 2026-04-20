@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-19
+updated: 2026-04-20
 updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
@@ -35,6 +35,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-20] ingest | personal-data-gather run 3: delta-zero, IMDb informational only; 0 new ACTION_REQUIRED
+- Gmail: 25 threads in window; 1 net new since run 2 (IMDb account closure notice, informational, no action); all others confirmed duplicates
+- Calendar: all 5 queried Apr 20–27; 0 new events; all prior data confirmed
+- 9 ACTION_REQUIRED items carry forward unchanged
+- data/ directory recreated (non-persistent, consistent pattern since Apr 10)
+- Pages updated: `daily/2026-04-20.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written (recreated), `data/gather-alerts.md` written (carry-forward)
 
 ## [2026-04-20] ingest | personal-data-gather run 2: Wohelo assembly Apr 26 + Vayu band today; 0 new ACTION_REQUIRED
 - Gmail: 30 threads; 5 net new vs run 1; 0 new ACTION_REQUIRED
