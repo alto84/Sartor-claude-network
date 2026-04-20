@@ -541,3 +541,13 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact]
 > **New Sante Total PayPal donation — Christina Stiles, Apr 19.** Transaction ID: 1HN1210765870815P. Received 06:23:05 CDT. Amount not visible in email snippet — verify in PayPal dashboard. Log donation and send tax receipt per [[alison-smith|Alison Smith]] pattern. See [[business/sante-total]] for donor tracking.
+
+## Latest from gather (2026-04-20) — run 1
+
+> [!todo] ACTION_REQUIRED — time-sensitive
+> **NEW Guidepoint consultation: AI Adoption/Tools in Biotech, CRO and Pharma.** Received Apr 19 21:56 UTC from atshela@guidepointglobal.com. Described as time-sensitive. This is a fourth distinct Guidepoint inquiry: (1) Yasmin Goodman / Clinical Trial Technology Solutions (still open), (2) Valerie Villareal / Pediatric Low-Grade Glioma Market, (3) EHS Software survey (skip). This one — AI in Biotech/CRO/Pharma — is most directly aligned with Alton's AstraZeneca AI/ML leadership role. Accept or decline. See [[ALTON]] for advisory opportunity log.
+
+> [!warning] DATA CORRECTION — Apr 25 Cougar Pride Day time
+> **Cougar Pride Day is 11:00 AM–3:00 PM ET, NOT 3–7 PM.** The Apr 18 run 1 "correction" to 3–7 PM was wrong — it misread the END time as the START time. Today's live API confirms `start: 2026-04-25T11:00:00-04:00`, `end: 2026-04-25T15:00:00-04:00`.
+>
+> **This creates a real conflict on Apr 25:** Cougar Pride Day (11 AM–3 PM) overlaps directly with Vayu's soccer game at Brookdale Park (11 AM–12 PM ET, B34 Purple vs B34 Lime). Both require 11 AM presence at different locations (MKA vs Brookdale Park). Alton/Aneeta split required, or one event must yield. Prior notes that said "no conflict" between these two were incorrect.

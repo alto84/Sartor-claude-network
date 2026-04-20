@@ -696,6 +696,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Updated: `daily/2026-04-16.md` (run 3 appended), `sartor/memory/log.md`
 - Created: `data/heartbeat-log.csv`, `data/gather-alerts.md` (carry-forward outstanding alerts)
 
+## [2026-04-20] ingest | personal-data-gather run 1: new Guidepoint AI consult + Cougar Pride time correction
+- Gmail: 30 threads; 4 net new vs Apr 19 run 6; 1 new ACTION_REQUIRED
+- NEW ACTION_REQUIRED: Guidepoint AI Adoption/Tools in Biotech, CRO, Pharma (atshela@guidepointglobal.com, time-sensitive)
+- Informational: MKA no after-school band this week (concert week), LessonZoo shipped
+- Calendar: all 5 queried Apr 20–27; 0 new events; 1 data correction
+- DATA CORRECTION: Cougar Pride Day Apr 25 is 11 AM–3 PM ET (NOT 3–7 PM as Apr 18 run 1 stated). Conflict with Vayu soccer (11 AM–12 PM Brookdale) is REAL. Prior "no conflict" notes were wrong.
+- TODAY: Movie room repairs 9–11 AM; Aneeta MD role call 2–2:30 PM ET (Hashan Alwis, ACE Partners)
+- 9 total open ACTION_REQUIRED items (+1 vs Apr 19 run 6)
+- data/ directory recreated (non-persistent, consistent pattern)
+- Pages updated: `family/active-todos.md`, `daily/2026-04-20.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
 ## [2026-04-19] ingest | personal-data-gather run 6 — Coach call + Goddard moments + 11 gap-fill threads
 
 - Sources: Gmail (50 msgs scanned, is:unread newer_than:2d -promotions/-social), 5 Google Calendars (Apr 19–27 window)
