@@ -2,7 +2,7 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-04-16
+updated: 2026-04-20
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -98,10 +98,16 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 > [!fact]
 > **MKA physical form UPLOADED** — Rachael Masters (rmasters@mka.org) confirmed Mon Apr 13 at 8:17 AM ET: "Thank you! Will upload now." The todo from Apr 8 (sign and return physical form) is resolved. Vishala's health records at MKA are up to date.
 
+## Latest from gather (2026-04-20) — run 2
+
+> [!todo] 2026-04-26 12:00 noon EST
+> **Wohelo Little Assembly -- online, April 26 (Sunday), 12:00 noon EST.** Heidi Gorton (heidi@wohelo.com) sent two emails Apr 20: a time-change notice and a date correction ("Wrong date for zoom" -- APRIL 26 12 noon EST). This is the monthly virtual assembly for Little Wohelo 2026 campers -- 30 minutes of singing and getting to know each other. Vishala needs to be at a computer/tablet at noon ET on Sunday April 26. No special preparation needed; just ensure she is online. Contact: heidi@wohelo.com.
+
 ## History
 
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
 - 2026-04-11: Updated via personal-data-gather run 10. Physical form confirmed SENT Apr 10. Gym Day registration flagged.
+- 2026-04-20: Updated via personal-data-gather run 2. Added Wohelo Little Assembly Apr 26 noon EST.
 - 2026-04-13: Updated via personal-data-gather run 5. MKA confirmed physical form uploaded (Rachael Masters).
 - 2026-04-14: Updated via personal-data-gather run 2. Wohelo payment details confirmed.
 
