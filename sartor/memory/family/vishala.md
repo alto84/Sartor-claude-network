@@ -108,6 +108,7 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
 - 2026-04-11: Updated via personal-data-gather run 10. Physical form confirmed SENT Apr 10. Gym Day registration flagged.
 - 2026-04-20: Updated via personal-data-gather run 2. Added Wohelo Little Assembly Apr 26 noon EST.
+- 2026-04-20: Updated via personal-data-gather run 4. Added Capstone project / materials donation notice.
 - 2026-04-13: Updated via personal-data-gather run 5. MKA confirmed physical form uploaded (Rachael Masters).
 - 2026-04-14: Updated via personal-data-gather run 2. Wohelo payment details confirmed.
 
@@ -136,3 +137,8 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!warning] VERIFY BEFORE FRIDAY
 > **Dance concert time discrepancy: email says 8:15 AM, calendar shows noon–2 PM.** MKA teacher Kristen Weaver emailed today (Apr 15): "The third grade dance concert is this Friday! The concert is part of our regular Friday assembly. We'll start at 8:15 and hopefully be done by 9." The family calendar entry shows "Vishala Dance concert" at noon–2 PM ET. Run 2 of today's gather corrected the time to noon based on the calendar data. The teacher's email is more authoritative than the calendar entry. **Confirm the correct time with Aneeta before Friday.** The Apr 17 coverage conflict between Vishala's dance concert and Vayu's Ellis Island trip departure depends on which time is correct. See [[family/active-todos]] and [[family/vayu]].
+
+## Latest from gather (2026-04-20) — run 4
+
+> [!fact]
+> **MKA 3rd grade Capstone project started.** Paul Murphy / MKA 3rd grade teacher emailed 2026-04-20: each student received their "PS space" to use imagination on the Capstone project. Parents asked to donate craft/construction materials. No deadline stated. Consider sending in materials if wanted. See [[family/active-todos]] for tracking.

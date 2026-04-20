@@ -556,3 +556,8 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > **Cougar Pride Day is 11:00 AM–3:00 PM ET, NOT 3–7 PM.** The Apr 18 run 1 "correction" to 3–7 PM was wrong — it misread the END time as the START time. Today's live API confirms `start: 2026-04-25T11:00:00-04:00`, `end: 2026-04-25T15:00:00-04:00`.
 >
 > **This creates a real conflict on Apr 25:** Cougar Pride Day (11 AM–3 PM) overlaps directly with Vayu's soccer game at Brookdale Park (11 AM–12 PM ET, B34 Purple vs B34 Lime). Both require 11 AM presence at different locations (MKA vs Brookdale Park). Alton/Aneeta split required, or one event must yield. Prior notes that said "no conflict" between these two were incorrect.
+
+## Latest from gather (2026-04-20) — run 4
+
+> [!todo] P3
+> **MKA Capstone materials donation (Vishala, 3rd grade)** — Email from MKA 3rd grade (2026-04-20): Capstone project in full swing. Students received "PS space" to use imagination. Parents asked to donate craft/construction materials. No deadline or specific list stated. Low priority — donate if convenient. See [[vishala]].

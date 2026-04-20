@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-20] ingest | personal-data-gather run 4: SpotHero NYC commute + Capstone materials; 0 new ACTION_REQUIRED
+- Gmail: 30 threads; 17 net new vs run 3 cutoff (07:45 UTC); 0 new ACTION_REQUIRED
+- New signals: SpotHero parking 35 W 33rd St NYC (confirms Alton commuted today); MKA 3rd grade Capstone project started / materials donations requested (Vishala); Guidepoint AI Adoption second email from atshela (existing ACTION_REQUIRED #4, increased urgency); SemiAnalysis GPU cluster TCO article (Solar Inference context, informational); TAGIHOO Kids Mesh shipped
+- Calendar: all 5 queried Apr 20–27; 0 new events; Aneeta MD Role call (Hashan Alwis) noted as declined on her end
+- 9 ACTION_REQUIRED items carry forward unchanged
+- Pages updated: `daily/2026-04-20.md`, `family/vishala.md`, `family/active-todos.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written (recreated), `data/gather-alerts.md` written (carry-forward)
+
 ## [2026-04-20] ingest | personal-data-gather run 3: delta-zero, IMDb informational only; 0 new ACTION_REQUIRED
 - Gmail: 25 threads in window; 1 net new since run 2 (IMDb account closure notice, informational, no action); all others confirmed duplicates
 - Calendar: all 5 queried Apr 20–27; 0 new events; all prior data confirmed
