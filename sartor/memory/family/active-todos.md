@@ -542,6 +542,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!fact]
 > **New Sante Total PayPal donation — Christina Stiles, Apr 19.** Transaction ID: 1HN1210765870815P. Received 06:23:05 CDT. Amount not visible in email snippet — verify in PayPal dashboard. Log donation and send tax receipt per [[alison-smith|Alison Smith]] pattern. See [[business/sante-total]] for donor tracking.
 
+## Latest from gather (2026-04-20) — run 2
+
+> [!todo] 2026-04-26 12:00 noon EST
+> **Wohelo Little Assembly -- online, Sunday April 26, 12:00 noon EST.** Heidi Gorton (heidi@wohelo.com) sent two emails this morning (Apr 20): a time-change notice and a date correction. Assembly is 30 minutes for 2026 Little Wohelo campers. Vishala needs to be at a computer at noon ET on Apr 26. See [[family/vishala]].
+
 ## Latest from gather (2026-04-20) — run 1
 
 > [!todo] ACTION_REQUIRED — time-sensitive

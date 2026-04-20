@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-20] ingest | personal-data-gather run 2: Wohelo assembly Apr 26 + Vayu band today; 0 new ACTION_REQUIRED
+- Gmail: 30 threads; 5 net new vs run 1; 0 new ACTION_REQUIRED
+- New signals: Wohelo Little Assembly Apr 26 noon EST (Vishala must be online), MKA band instrument reminder today Apr 20 (Vayu), ENOVI yoga ball shipped, TAGIHOO kids mesh ordered
+- Calendar: all 5 queried Apr 20–27; 0 new events; Cougar Pride Day Apr 25 conflict (11 AM ET) with soccer re-confirmed
+- 9 ACTION_REQUIRED items carry forward unchanged (Guidepoint AI Adoption, Guidepoint Clinical Trial Tech, Mike Silva, Sante Total donation, EquityZen, Disney ADR, Cougar Pride volunteer, Ghostie vet, Biogen)
+- Pages updated: `daily/2026-04-20.md`, `family/vishala.md`, `family/active-todos.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written (recreated), `data/gather-alerts.md` written (recreated)
+
 ## [2026-04-19] ingest | personal-data-gather run 5: gap-fill 13-17 UTC window, 0 new ACTION_REQUIRED; data/ recreated
 - Gmail: 50 threads; 6 backfilled from 13–17 UTC window missed by run 4 filter; 0 new ACTION_REQUIRED
 - New signals: ENOVI Yoga Ball ordered (Amazon), J&J Senior Director AI Enablement job alert (career intelligence, INFORMATIONAL), JAMA Weekly, ChinaTalk, Medscape CME, Amazon review request — all SKIP/INFORMATIONAL
