@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-20] ingest | personal-data-gather run 5: GitHub permissions + Vasu Apr 20 classroom + Recycled Runway reminder
+- Gmail: 25 threads (newer_than:2d window); 1 new ACTION_REQUIRED (GitHub ChatGPT Codex Connector permissions request)
+- New signals: GitHub app requesting updated permissions; Vasu full school day Apr 20 (soccer, STEAM yoga, flashlights, construction); Goddard Recycled Runway reminder (Wednesday Apr 22, costume needed); Dance message from Miss Kelsey (Vasu dance program)
+- Calendar: 5 calendars queried Apr 20–27; 0 new events vs runs 1–4; Aneeta DECLINED ACE Partners MD Role call confirmed
+- SSH: unavailable in execution environment; gpuserver1 skipped
+- Pages updated: `family/active-todos.md` (run 5 section), `family/vasu.md` (Apr 20 classroom facts), `daily/2026-04-20.md` (run 5 section), `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written (10 open items, 2 priority-1)
+
 ## [2026-04-20] ingest | personal-data-gather run 4: SpotHero NYC commute + Capstone materials; 0 new ACTION_REQUIRED
 - Gmail: 30 threads; 17 net new vs run 3 cutoff (07:45 UTC); 0 new ACTION_REQUIRED
 - New signals: SpotHero parking 35 W 33rd St NYC (confirms Alton commuted today); MKA 3rd grade Capstone project started / materials donations requested (Vishala); Guidepoint AI Adoption second email from atshela (existing ACTION_REQUIRED #4, increased urgency); SemiAnalysis GPU cluster TCO article (Solar Inference context, informational); TAGIHOO Kids Mesh shipped
