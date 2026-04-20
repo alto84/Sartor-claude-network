@@ -1,5 +1,21 @@
 #!/usr/bin/env python3
 """
+RETIRED 2026-04-20 by gpuserver1 Claude per task 2026-04-19_heartbeat-and-gateway.md.
+
+Reason: This script has been unscheduled since 2026-04-12 (cron entry commented out).
+Every invocation emitted FATAL: Unhandled exception: Expecting value: line 1 column 1.
+The gateway endpoint returns 404. The autonomous task-execution role this script filled
+is superseded by the 3-cron architecture (stale-detect.sh, gather_mirror.sh, vastai-tend.sh)
+plus interactive Claude Code sessions.
+
+Script left in place for reference. Do not re-enable without rewriting the scheduled_executor
+dependency and verifying costs.json schema compatibility.
+
+Question for Alton: should this file be deleted entirely, or preserved as architectural
+reference for a future autonomous-loop design?
+
+--- Original docstring below ---
+
 Sartor Gateway Cron - Periodic automation loop for the Sartor personal assistant.
 
 Runs every 30 minutes via cron. Each cycle:
