@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: LEARNINGS
-updated: 2026-04-19
+updated: 2026-04-20
 updated_by: autodream
 last_verified: 2026-04-12
 status: active
@@ -192,3 +192,7 @@ Key findings from surveying state-of-the-art AI memory systems:
 - [2026-04-19] (fact) Vishala spring concert (Apr 24, 12:00 UTC = 8:00–10:00 AM ET) ✓
 - [2026-04-19] (fact) Women's center dinner (Apr 24, 22:00Z = 6:00–7:00 PM ET) ✓
 - [2026-04-19] (fact) Cougar pride day (Apr 25, 15:00-04:00 = 3:00–7:00 PM ET) ✓
+
+## Consolidated from daily logs (2026-04-20)
+- [2026-04-20] (fact) Uncle Brad Birthday (Apr 20, all-day) — 2026-04-20 ✓
+- [2026-04-20] (fact) Cougar pride day (Apr 25, 11:00 AM–3:00 PM ET) — CORRECTED: ✓

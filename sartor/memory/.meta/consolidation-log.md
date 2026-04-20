@@ -130,3 +130,15 @@ Records memory consolidation events: merges, archives, and prune operations.
   - LEARNINGS.md: +9 facts
   - TAXES.md: +1 facts
 
+## Run: 2026-04-20 03:03:50
+- dry_run: False
+- facts_gathered: 17
+- facts_written: 3
+- files_updated: 2
+- logs_archived: 0
+- logs_removed: 0
+- index_lines: 37
+- changes:
+  - LEARNINGS.md: +2 facts
+  - FAMILY.md: +1 facts
+
