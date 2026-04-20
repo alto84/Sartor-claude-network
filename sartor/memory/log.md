@@ -695,3 +695,19 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH check: gpuserver1 unavailable from this runtime (consistent with all runs since Apr 10)
 - Updated: `daily/2026-04-16.md` (run 3 appended), `sartor/memory/log.md`
 - Created: `data/heartbeat-log.csv`, `data/gather-alerts.md` (carry-forward outstanding alerts)
+
+## [2026-04-19] ingest | personal-data-gather run 6 — Coach call + Goddard moments + 11 gap-fill threads
+
+- Sources: Gmail (50 msgs scanned, is:unread newer_than:2d -promotions/-social), 5 Google Calendars (Apr 19–27 window)
+- Facts gathered: 12 signals (11 Gmail gap-fills, 1 new calendar event); 0 new ACTION_REQUIRED
+- **NEW CALENDAR: "Coach call" added to Family calendar today at 1:29 PM ET** — same-day event, 9:00–9:30 PM ET, created by aneetasax@gmail.com. No attendees. Context unclear.
+- BAGAIL Outdoor Badminton confirmed DELIVERED (18:10 UTC Apr 19) — missed by run 5's claim of "0 net new after 17:00 UTC"; now closed.
+- New Amazon orders: TAGIHOO 4 Pack Kids Mesh (16:55), LessonZoo 3 Pack Boys (16:23) — children's gear, no action.
+- Career signals: Xenon Pharmaceuticals MD/Sr. MD Drug Safety ($285K–$369K, 16:53), MapLight Therapeutics Sr. MD Pharmacovigilance (12:53) — both INFORMATIONAL.
+- Time-sensitive: PCSS-MOUD CME webinar tomorrow Apr 21, noon–1 PM ET (Polysubstance Use). Register if interested.
+- Goddard School Shared Moments Apr 17 (two Kaymbu emails): Rain Cloud in a Cup science; Show and Tell letter P. Confirms Vasu at school Friday Apr 17.
+- Routine financial: Chase Prime Visa autopay scheduled (Apr 18); mortgage document notification (loanadministration.com, acct XXXXXX1510).
+- All 8 ACTION_REQUIRED items confirmed unchanged from run 4.
+- SSH: gpuserver1 not checked this cycle.
+- Updated: [[family/vasu]], `daily/2026-04-19.md` (run 6 appended)
+- Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
