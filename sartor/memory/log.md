@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-20
+updated: 2026-04-21
 updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
@@ -35,6 +35,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-21] ingest | personal-data-gather run 4: Chase statement, Goddard Mother's Day, MKA Immigration Fest
+- Gmail: 30 threads (newer_than:2d); 3 net new facts vs run 3
+- New signals: Chase credit card (...8547) due 2026-05-17 (balance $36,744.69); Goddard Mother's Day Celebration May 8 (Vasu); MKA Fourth Grade Immigration Fest (likely Vayu)
+- Calendar: all 5 queried Apr 21–28; 0 new events vs run 3; Apr 25 time re-verified (conflict confirmed, earlier "3–7 PM correction" was erroneous)
+- SSH: unavailable in execution environment; gpuserver1 skipped
+- 21 total open alerts (+3 new)
+- Pages updated: `daily/2026-04-21.md` (run 4), `family/vasu.md`, `family/active-todos.md`, `family/family-calendar.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created, 21 open items)
 
 ## [2026-04-21] ingest | personal-data-gather run 3: Zipline May 1 deadline + Chase deposit + Care.com childcare signal
 - Gmail: 50 threads (newer_than:2d); 3 net new facts vs run 2
