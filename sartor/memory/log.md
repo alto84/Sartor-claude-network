@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-21] ingest | personal-data-gather run 2: near-delta-zero; family-calendar.md updated with 3 missing events + conflict callouts
+- Gmail: 30 threads (newer_than:2d); 0 net new vs run 1; 0 new ACTION_REQUIRED
+- Calendar: all 5 queried Apr 21–28; 0 new events vs run 1; all times confirmed with explicit EDT offsets
+- family-calendar.md gaps filled: Vayu band concert (Tue 4/22 18:30–19:30), Women's center dinner (Fri 4/24 18:00–19:00), Vayu soccer game (Sat 4/25 11:00–12:00) + APR 25 CONFLICT callout + APR 22 triple-event callout
+- SSH: unavailable in execution environment; gpuserver1 skipped
+- 17 total open alerts (4 P1-urgent, 3 P1-overdue, 3 P2-deadline, 7 carry-forward)
+- Pages updated: `daily/2026-04-21.md` (run 2 appended), `family/family-calendar.md` (3 events + callouts), `log.md`
+- Outputs: `data/heartbeat-log.csv` (recreated), `data/gather-alerts.md` (recreated, 17 open items)
+
 ## [2026-04-21] ingest | personal-data-gather run 1: Newegg security flag + Espervia geo intel + pool registration + Kalshi deadline
 - Gmail: 30 threads (newer_than:2d); 4 new ACTION_REQUIRED items
 - New signals: Newegg order #412968624 delivered (security flag re: Apr 13 fraud chain); GitHub Claude app permissions request; Espervia second paid advisory inquiry (Geopolitical Intelligence Needs); Hiive/Kalshi funding deadline Apr 30; Pool Season registration opens Apr 27 9 AM; MKA Cougar Auction opens Apr 22 8 AM
