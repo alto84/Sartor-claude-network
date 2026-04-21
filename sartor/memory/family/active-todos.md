@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-19
+updated: 2026-04-20
 updated_by: personal-data-gather
 run: 1
 
@@ -561,3 +561,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] P3
 > **MKA Capstone materials donation (Vishala, 3rd grade)** — Email from MKA 3rd grade (2026-04-20): Capstone project in full swing. Students received "PS space" to use imagination. Parents asked to donate craft/construction materials. No deadline or specific list stated. Low priority — donate if convenient. See [[vishala]].
+
+## Latest from gather (2026-04-20) — run 5
+
+> [!todo] ACTION_REQUIRED — review today
+> **GitHub: ChatGPT Codex Connector requesting updated permissions.** Email received Apr 20 from GitHub (noreply@github.com): "The GitHub App ChatGPT Codex Connector is requesting additional access to your account." Review and approve or decline at github.com. If you did not install this connector intentionally, decline and audit connected GitHub apps.
+
+> [!deadline] 2026-04-22
+> **Vasu Recycled Runway costume — prep today or tomorrow.** Goddard reminder email Apr 20 (Alissa DelConte): "Recycled Runway is Wednesday! We can't wait to see everyone's runway looks!" Event is April 22, 4:20 PM. Costume must be made from recycled materials. No costume-ready confirmation found in email. See [[family/vasu]].
+
+> [!fact]
+> **Vasu confirmed in school April 20 — full day.** Multiple Kaymbu classroom updates received: soccer practice (mini games + scoring drills), STEAM Yoga/Bubble Breathing, Technology (flashlight/headlamp exploration), Construction (new blocks/legos). Attended full day. See [[family/vasu]].

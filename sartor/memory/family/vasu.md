@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-04-19
+updated: 2026-04-20
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -120,3 +120,18 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 > **A child in Vasu's pre-school class was diagnosed with strep A today (Apr 15).** The child was last in care on Apr 14. Director Alissa DelConte (noreply@kaymbu.com) notified families at 4:36 PM ET: "If your child is showing symptoms of strep, please reach out to your child's healthcare provider."
 >
 > Monitor Vasu for the next 2-5 days: fever, sore throat, difficulty swallowing, sandpaper rash. If symptoms develop, contact Tribeca Pediatrics before sending Vasu to school. See [[family/active-todos]].
+
+## Latest from gather (2026-04-20)
+
+> [!fact]
+> **Vasu in school April 20 — full day confirmed.** Multiple Kaymbu classroom updates:
+> - Soccer practice: mini games, practiced scoring in goal (ongoing Goddard soccer program)
+> - STEAM Yoga: Bubble Breathing — imagined blowing a calming bubble as a breathing exercise
+> - Technology: flashlight and headlamp exploration
+> - Construction: new blocks/legos introduced; teachers recording how children use them
+
+> [!note]
+> **Dance message from Miss Kelsey (Apr 20).** Jacqueline Capote forwarded via Goddard app: "Dear Parents, We wanted to share a quick [update]..." re: dance. Subject "Dance Message from Miss Kelsey." Vasu is participating in Goddard dance activities. No action required.
+
+> [!deadline] 2026-04-22
+> **Recycled Runway: THIS WEDNESDAY.** Goddard sent reminder Apr 20 (Alissa DelConte): "Recycled Runway is Wednesday! We can't wait to see everyone's runway looks!" Event at 4:20 PM Apr 22. Costume from recycled materials needed. No costume confirmation in inbox. See [[family/active-todos]].
