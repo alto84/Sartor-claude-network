@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-20
+updated: 2026-04-21
 updated_by: personal-data-gather
 run: 1
 
@@ -273,6 +273,7 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - 2026-04-12: Updated via personal-data-gather run 1. Escalated Goddard forms to 1-day deadline; today's logistics noted.
 - 2026-04-13: Updated via personal-data-gather run 4. Chase Sapphire card replacement in progress (resolves fraud alert from run 2); autopay update action opened.
 - 2026-04-14: Updated via personal-data-gather run 2. Chase card shipped confirmed; Chewy delivery arriving today.
+- 2026-04-21: Updated via personal-data-gather run 1. Added: Newegg delivery security flag; GitHub Claude permissions; Espervia geo intel inquiry; Hiive/Kalshi Apr 30 deadline; Pool registration Apr 27; Apr 25 conflict and Apr 22 triple-event confirmed via live calendar pull.
 
 ## Latest from gather (2026-04-14) — run 2
 
@@ -556,6 +557,29 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > **Cougar Pride Day is 11:00 AM–3:00 PM ET, NOT 3–7 PM.** The Apr 18 run 1 "correction" to 3–7 PM was wrong — it misread the END time as the START time. Today's live API confirms `start: 2026-04-25T11:00:00-04:00`, `end: 2026-04-25T15:00:00-04:00`.
 >
 > **This creates a real conflict on Apr 25:** Cougar Pride Day (11 AM–3 PM) overlaps directly with Vayu's soccer game at Brookdale Park (11 AM–12 PM ET, B34 Purple vs B34 Lime). Both require 11 AM presence at different locations (MKA vs Brookdale Park). Alton/Aneeta split required, or one event must yield. Prior notes that said "no conflict" between these two were incorrect.
+
+## Latest from gather (2026-04-21) — run 1
+
+> [!warning] SECURITY — Newegg delivery Apr 21
+> Newegg order #412968624 (2 items total) delivered today (Apr 21). Background: Apr 13 saw a $938.25 fraudulent Newegg charge that triggered Chase Sapphire card replacement; Apr 18 saw a Newegg verification code email (possibly unauthorized login). This delivery may be from a legitimate Alton order OR from the prior fraudulent actor. **Verify with Alton: did you order from Newegg recently? If not, change Newegg password and audit account.** See security thread above.
+
+> [!todo] ACTION_REQUIRED
+> **GitHub: Claude app requesting updated permissions.** Email received 2026-04-20 23:46 UTC from noreply@github.com. Subject: "[GitHub] Claude is requesting updated permissions." Distinct from the ChatGPT Codex Connector request flagged Apr 20 run 5. If this is a legitimate Claude Code session, approve. If not expected, decline and audit at github.com/settings/apps.
+
+> [!todo] ACTION_REQUIRED
+> **Espervia — second paid advisory inquiry.** Felix Parker (felix.p@espervia.com) sent "Paid Interview Request - Geopolitical Intelligence Needs" on Apr 20. Second inquiry from Espervia (first was Apr 15 "Rare Disease Payer Insights"). Neither has been accepted or declined. Accept or decline both in one reply.
+
+> [!deadline] 2026-04-27 09:00
+> **Pool Season Registration opens April 27 at 9:00 AM.** communitypass.net, "2026 Pool Memberships." Nishuane Pool weekends-only from May 23, daily starting later in season. If registering, be online at 9 AM Apr 27. Financial assistance: 973-509-4916.
+
+> [!deadline] 2026-04-30
+> **Hiive/Kalshi opportunity — funding deadline April 30.** opportunities@mail.hiive.com: "target funding deadline is Thursday, April 30th." FINANCIAL — review before then. See [[ALTON]].
+
+> [!fact]
+> **Apr 24 Vishala spring concert confirmed 8:00–10:00 AM ET.** API confirms `2026-04-24T08:00:00-04:00`. Women's center dinner same day at 6:00–7:00 PM ET. No conflict. Parent needed at MKA by 8 AM Friday Apr 24. See [[family/vishala]].
+
+> [!fact]
+> **MKA Cougar Auction opens Wednesday April 22 at 8 AM.** Sara Elwell (MKA) sent reminder Apr 20. Participate if interested.
 
 ## Latest from gather (2026-04-20) — run 4
 
