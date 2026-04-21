@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-18
+updated: 2026-04-21
 updated_by: personal-data-gather
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
@@ -145,6 +145,7 @@ Apr 25 corrected schedule:
 - 2026-04-11: Updated via personal-data-gather run 6. Added Apr 18 back-to-back soccer games, Mother's Day planning event, Goddard soccer start, summer forms deadline, Parent's Night Out.
 - 2026-04-15: Updated via personal-data-gather run 1. Added Vayu Band Concert Apr 22 (NEW); flagged Apr 22 three-event conflict; noted Goddard parking closure Apr 20-21.
 - 2026-04-18: Updated via personal-data-gather run 1. Added Vayu soccer game Apr 25 (NEW from Blue Sombrero). Corrected Cougar pride day time to 3–7 PM ET (was 11 AM–3 PM).
+- 2026-04-21: Updated via personal-data-gather run 1. Confirmed all Apr 22–28 times from live API. Canonical times locked (see below).
 
 ## Latest from gather (2026-04-15)
 
@@ -231,6 +232,25 @@ Two new events created today (2026-04-17) that were not in any prior run:
 
 > [!todo]
 > **Mike Silva (AcrossCap) Zoom TOMORROW** — Apr 16, 2:30-3:15 PM ET. Intro meeting; mike@acrosscap.com. No prior AcrossCap context in memory. Prep needed.
+
+## Latest from gather (2026-04-21) — run 1
+
+> [!fact] Canonical times locked for week of Apr 21–28 (live API, 2026-04-21)
+>
+> | Date | Time ET | Event | Raw API value | Source |
+> |------|---------|-------|---------------|--------|
+> | Wed 4/22 | 4:20–5:20 PM | Vasu Recycled Runway parade | `2026-04-22T16:20:00-04:00` | Family |
+> | Wed 4/22 | 5:30–6:15 PM | Rec Soccer Practice | `2026-04-22T17:30:00-04:00` | Family |
+> | Wed 4/22 | 6:30–7:30 PM | Vayu Band Concert | `2026-04-22T18:30:00-04:00` | Family |
+> | Fri 4/24 | 8:00–10:00 AM | Vishala spring concert | `2026-04-24T08:00:00-04:00` | Family |
+> | Fri 4/24 | 6:00–7:00 PM | Women's center dinner | `2026-04-24T18:00:00-04:00` | Family |
+> | Sat 4/25 | 11:00 AM–3:00 PM | Cougar Pride Day | `2026-04-25T11:00:00-04:00` | Family |
+> | Sat 4/25 | 11:00 AM–12:00 PM | Vayu soccer game | `2026-04-25T11:00:00-04:00` | Blue Sombrero |
+> | Mon 4/27 | 9:00 AM+ | Berman installation day 1 | `2026-04-27T09:00:00-04:00` | Alton primary |
+>
+> All datetimes include explicit EDT (-04:00) offset — no ambiguity. Vishala spring concert 8 AM confirmed (same as run 4 Apr 18 conclusion).
+>
+> **Apr 25 conflict confirmed:** Cougar Pride Day (11 AM–3 PM) and Vayu soccer (11 AM–12 PM) start simultaneously at different venues. See [[family/active-todos]].
 
 ## Latest from gather (2026-04-18) — run 4
 

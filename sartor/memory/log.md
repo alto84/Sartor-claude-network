@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-21] ingest | personal-data-gather run 1: Newegg security flag + Espervia geo intel + pool registration + Kalshi deadline
+- Gmail: 30 threads (newer_than:2d); 4 new ACTION_REQUIRED items
+- New signals: Newegg order #412968624 delivered (security flag re: Apr 13 fraud chain); GitHub Claude app permissions request; Espervia second paid advisory inquiry (Geopolitical Intelligence Needs); Hiive/Kalshi funding deadline Apr 30; Pool Season registration opens Apr 27 9 AM; MKA Cougar Auction opens Apr 22 8 AM
+- Calendar: all 5 queried Apr 21–28; 0 new events vs prior runs; all times confirmed with explicit EDT offsets; Vishala concert 8 AM confirmed; Apr 25 conflict confirmed (soccer + Cougar Pride Day both 11 AM)
+- SSH: unavailable in execution environment; gpuserver1 skipped
+- Pages updated: `daily/2026-04-21.md` (created), `family/active-todos.md` (run 1 section + history), `family/family-calendar.md` (canonical times table + run 1 section), `log.md`
+- Outputs: `data/heartbeat-log.csv` (recreated), `data/gather-alerts.md` (recreated, 14 open items, 4 priority-1)
+
 ## [2026-04-20] ingest | personal-data-gather run 5: GitHub permissions + Vasu Apr 20 classroom + Recycled Runway reminder
 - Gmail: 25 threads (newer_than:2d window); 1 new ACTION_REQUIRED (GitHub ChatGPT Codex Connector permissions request)
 - New signals: GitHub app requesting updated permissions; Vasu full school day Apr 20 (soccer, STEAM yoga, flashlights, construction); Goddard Recycled Runway reminder (Wednesday Apr 22, costume needed); Dance message from Miss Kelsey (Vasu dance program)
