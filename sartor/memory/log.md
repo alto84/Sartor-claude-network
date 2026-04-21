@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-21] ingest | personal-data-gather run 3: Zipline May 1 deadline + Chase deposit + Care.com childcare signal
+- Gmail: 50 threads (newer_than:2d); 3 net new facts vs run 2
+- New signals: Hiive/Zipline funding deadline May 1 (distinct from Kalshi Apr 30); Chase QuickDeposit accepted Apr 20 account 8563; Care.com sitter suggestion (connects to open high-priority childcare need)
+- Calendar: all 5 queried Apr 21–28; 0 new events vs run 2; canonical event table unchanged
+- SSH: unavailable in execution environment; gpuserver1 skipped
+- 18 total open alerts (added Zipline May 1 as item 10)
+- Pages updated: `daily/2026-04-21.md` (run 3 appended), `family/active-todos.md` (run 3 section), `log.md`
+- Outputs: `data/heartbeat-log.csv` (recreated), `data/gather-alerts.md` (recreated, 18 open items)
+
 ## [2026-04-21] ingest | personal-data-gather run 2: near-delta-zero; family-calendar.md updated with 3 missing events + conflict callouts
 - Gmail: 30 threads (newer_than:2d); 0 net new vs run 1; 0 new ACTION_REQUIRED
 - Calendar: all 5 queried Apr 21–28; 0 new events vs run 1; all times confirmed with explicit EDT offsets

@@ -558,6 +558,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 >
 > **This creates a real conflict on Apr 25:** Cougar Pride Day (11 AM–3 PM) overlaps directly with Vayu's soccer game at Brookdale Park (11 AM–12 PM ET, B34 Purple vs B34 Lime). Both require 11 AM presence at different locations (MKA vs Brookdale Park). Alton/Aneeta split required, or one event must yield. Prior notes that said "no conflict" between these two were incorrect.
 
+## Latest from gather (2026-04-21) — run 3
+
+> [!deadline] 2026-05-01
+> **Hiive/Zipline opportunity — funding deadline May 1.** opportunities@mail.hiive.com: "target funding deadline is Friday, May 1st." FINANCIAL — review. Distinct from Hiive/Kalshi (Apr 30 deadline). Two separate Hiive opportunities open simultaneously. See [[ALTON]].
+
+> [!note]
+> **Care.com suggests local sitter Creuza C.** Email to alto84@gmail.com Apr 21. Relevant to open high-priority childcare need (afternoon 3–8 PM, 3 kids across 2 schools). If a Care.com account was created, review candidates there. See open "Afternoon childcare help needed" item above.
+
+> [!fact]
+> **Chase check deposit accepted Apr 20.** Account ending 8563, received 8:02 PM ET Apr 20. QuickDeposit confirmation. TY2026 financial record — no action needed.
+
 ## Latest from gather (2026-04-21) — run 1
 
 > [!warning] SECURITY — Newegg delivery Apr 21
