@@ -43,9 +43,12 @@ Compiled view of family-relevant events from Google Calendar harvest on 2026-04-
 |------|------|-------|-----|
 | Tue 4/22 | 16:20-17:20 | [[vasu]] recycled costume parade (Goddard "Recycled Runway") | Vasu + parent |
 | Tue 4/22 | 17:30-18:15 | Soccer practice, Anderson Park | Vayu |
+| Tue 4/22 | 18:30-19:30 | Band concert — [[vayu]] (MKA) | Vayu + parent |
 | Fri 4/24 | 08:00-10:00 | Vishala spring concert (MKA) | Vishala + parent |
+| Fri 4/24 | 18:00-19:00 | Women's center dinner | Aneeta |
+| Sat 4/25 | 11:00-12:00 | [[vayu]] soccer game — Brookdale Park Field 1 (B-34 Lime) — **CONFLICT** | Vayu + parent |
 | Sat 4/25 | all-day | Oren's birthday | Gift reminder |
-| Sat 4/25 | 11:00-15:00 | Cougar Pride day (MKA) | Vayu/Vishala |
+| Sat 4/25 | 11:00-15:00 | Cougar Pride day (MKA) — **CONFLICT** with soccer | Vayu/Vishala |
 
 ## Week of 4/28 (2026-04-28 to 2026-05-04) — **LOW-COVERAGE WEEK**
 
@@ -107,6 +110,17 @@ See [[family/active-todos|Family TODOs]] for the correction queue.
 - [[FAMILY]] - Household overview
 - [[family/active-todos|Family TODOs]] - Urgent action items
 - [[vayu]] / [[vishala]] / [[vasu]] - Per-child pages
+
+## Latest from gather (2026-04-21) — run 2
+
+> [!warning] APR 25 CONFLICT — split parent required
+> **Vayu soccer game (11:00 AM–12:00 PM, Brookdale Park Field 1) and Cougar Pride Day (11:00 AM–3:00 PM, MKA Van Brunt Field) both start at 11 AM on April 25.** Cannot cover both with one parent. Either split (one covers soccer, one covers Cougar Pride) or Vayu misses one event. Decide before Saturday. See [[vayu]] and [[active-todos]].
+
+> [!warning] APR 22 TRIPLE-EVENT — split parent required
+> Three back-to-back events for two children across three locations: Vasu parade 4:20–5:20 PM (Goddard), Vayu soccer practice 5:30–6:15 PM (Anderson Park), Vayu band concert 6:30–7:30 PM (MKA). Gaps of 10–15 minutes between each. Band concert is highest-stakes; soccer practice most skippable. See [[vayu]] and [[vasu]].
+
+> [!fact]
+> **All Apr 21–28 event times confirmed via explicit UTC-4 offsets.** Calendar API returned `dateTime` values with `-04:00` suffix for all events — no UTC-without-Z ambiguity. Prior timezone disputes definitively resolved as of 2026-04-21 run 1.
 
 ## Latest from gather (2026-04-11)
 
