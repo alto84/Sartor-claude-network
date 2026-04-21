@@ -607,3 +607,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact]
 > **Vasu confirmed in school April 20 — full day.** Multiple Kaymbu classroom updates received: soccer practice (mini games + scoring drills), STEAM Yoga/Bubble Breathing, Technology (flashlight/headlamp exploration), Construction (new blocks/legos). Attended full day. See [[family/vasu]].
+
+## Latest from gather (2026-04-21) — run 4
+
+> [!deadline] 2026-05-17
+> **Chase credit card statement due.** Account (...8547). Statement balance: **$36,744.69**. Minimum payment due: $391.00. Auto-pay enabled (covers minimum). Review statement for unrecognized charges — note Chase Sapphire Reserve was replaced in April due to $938.25 Newegg fraud charge; account (...8547) is a separate card. Confirm auto-pay setting (minimum vs full balance) before due date.
+
+> [!todo] Priority: P2
+> **Goddard Mother's Day Celebration — Friday May 8.** Samantha Ramsden (Goddard, Vasu's teacher) sent announcement 2026-04-21. Event at Goddard for Vasu's class. Aneeta is back from RRE by May 3, so no coverage conflict. Coordinate attendance. See [[family/vasu]].
+
+> [!todo] Priority: P2
+> **MKA Fourth Grade Immigration Fest** — annual school event, letter from the fourth-grade team sent 2026-04-21 via Veracross (Pia Kutten, MKA Administrative Assistant). Likely Vayu's class. Check the letter for specific date, volunteer requests, and any material requirements.

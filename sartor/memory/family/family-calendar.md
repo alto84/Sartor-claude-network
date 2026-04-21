@@ -276,4 +276,16 @@ Two new events created today (2026-04-17) that were not in any prior run:
 > | 8:00–10:00 AM | Vishala spring concert (MKA) ← CORRECT |
 > | 6:00–7:00 PM | Women's center dinner ← confirmed |
 >
+
+## Latest from gather (2026-04-21) — run 4
+
+> [!fact]
+> **Goddard Mother's Day Celebration — Friday May 8th.** New event from Kaymbu announcement (2026-04-21). Samantha Ramsden organizing at Goddard for Vasu's class. Add to May 5-9 schedule alongside Anjali's birthday (existing). Aneeta returns from RRE by May 3; no coverage conflict for May 8. See [[family/vasu]].
+
+| Date | Time | Event | Who |
+|------|------|-------|-----|
+| Fri 5/08 | TBD (school hours) | Goddard Mother's Day Celebration | Vasu + Aneeta (primary) |
+
+> [!note]
+> **Apr 25 time re-verification.** Today's Family calendar API returns `timeZone: "UTC"` for Cougar Pride Day with `start: 2026-04-25T15:00:00Z`. 15:00 UTC = 11:00 AM ET. Vayu soccer is also `2026-04-25T15:00:00Z` = 11:00 AM ET. **Conflict confirmed: both events start 11 AM.** The Apr 18 run 4 "correction" to "3–7 PM ET" was erroneous — it misread UTC as EDT. The original table entry "11:00–15:00" (= 11 AM–3 PM ET) was correct. See [[family/active-todos]].
 > Main table Week of 4/21 spring concert row should read "08:00–10:00" not "12:00–14:00."

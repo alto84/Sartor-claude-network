@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-04-20
+updated: 2026-04-21
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -135,3 +135,11 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!deadline] 2026-04-22
 > **Recycled Runway: THIS WEDNESDAY.** Goddard sent reminder Apr 20 (Alissa DelConte): "Recycled Runway is Wednesday! We can't wait to see everyone's runway looks!" Event at 4:20 PM Apr 22. Costume from recycled materials needed. No costume confirmation in inbox. See [[family/active-todos]].
+
+## Latest from gather (2026-04-21) — run 4
+
+> [!fact]
+> **Vasu in school April 21 — Small Group Learning confirmed.** Kaymbu update from Samantha Ramsden: "Small Group Learning — Blowing Bubbles. We observed how our breath could transform liquid by using straws to blow bubbles." Routine school day confirmed.
+
+> [!todo] Priority: P2
+> **Goddard Mother's Day Celebration — Friday May 8.** Samantha Ramsden announcement 2026-04-21: celebration for mothers and mother figures at Goddard School. Date is Friday May 8th. Aneeta returns from RRE by May 3, so no coverage conflict. Coordinate attendance. See [[family/active-todos]].
