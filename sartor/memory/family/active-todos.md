@@ -618,3 +618,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] Priority: P2
 > **MKA Fourth Grade Immigration Fest** — annual school event, letter from the fourth-grade team sent 2026-04-21 via Veracross (Pia Kutten, MKA Administrative Assistant). Likely Vayu's class. Check the letter for specific date, volunteer requests, and any material requirements.
+
+## Latest from gather (2026-04-21) — run 5
+
+> [!deadline] 2026-05-17
+> **Chase credit card statement due — second card.** Account (...7054). Statement balance: **$2,301.48**. Minimum payment: $40.00. Auto-pay enabled (covers minimum). Due 2026-05-17, same date as account (...8547) ($36,744.69). Total Chase CC exposure across both cards: **$39,046.17**. Confirm auto-pay settings on both cards before due date.
+
+> [!warning] SECURITY — Newegg account escalated
+> **Two Newegg verification codes received in 3 days.** Code received Apr 18 (first flag), then code 393010 received Apr 20 12:42 PM — suggests repeated login attempts to Newegg account. Plus: Newegg order #412968624 delivered Apr 21 (2 items). Original fraud charge was Apr 13 ($938.25 on Chase Sapphire, card replaced). Pattern of two codes + delivery after known fraud = Newegg account likely still compromised. **Action: change Newegg password immediately and audit order history.** See `daily/2026-04-21.md` security thread.
+
+> [!fact]
+> **Alton commuted to NYC by car today (Apr 21).** SpotHero parking: 35 W 33rd St Valet Garage, 8:30 AM–8:30 PM, Rental ID 121455066. NYC commute research item (switch to NJ Transit) remains open.

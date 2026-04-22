@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-21] ingest | personal-data-gather run 5: second Chase CC statement + Newegg security escalation
+- Gmail: 60 threads (newer_than:2d, two search passes); 3 net new facts vs run 4
+- New signals: Chase CC (...7054) due 2026-05-17 ($2,301.48 balance); SpotHero NYC parking Apr 21 (Alton drove today); Newegg second verification code Apr 20 (escalates security thread)
+- Calendar: all 5 queried Apr 21–28; 0 new events vs run 4; all times confirmed
+- SSH: unavailable in execution environment; gpuserver1 skipped
+- 22 total open alerts (+1 new)
+- Pages updated: `daily/2026-04-21.md` (run 5), `family/active-todos.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` (updated), `data/gather-alerts.md` (updated, 22 open items)
+
 ## [2026-04-21] ingest | personal-data-gather run 4: Chase statement, Goddard Mother's Day, MKA Immigration Fest
 - Gmail: 30 threads (newer_than:2d); 3 net new facts vs run 3
 - New signals: Chase credit card (...8547) due 2026-05-17 (balance $36,744.69); Goddard Mother's Day Celebration May 8 (Vasu); MKA Fourth Grade Immigration Fest (likely Vayu)
