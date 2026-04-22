@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-22] ingest | personal-data-gather run 5: pool service + SNO CME tomorrow; delta-minimal
+- Gmail: 10 threads (newer_than:6h); 2 net new informational facts vs run 4; 0 new ACTION_REQUIRED
+- Pool Guyz service log #36601595 completed at 85 Stonebridge Rd 11:15 AM — routine, informational
+- SNO Newsletter: Pediatric Tumor Board CME tomorrow Apr 23 1–2:30 PM ET (Gliomatosis Cerebri) — time-sensitive informational
+- Calendar: all 5 queried Apr 22–29; 0 new events vs run 4; all confirmed
+- SSH: unavailable; Machine 52271 offline status from run 3 unresolved (no new vast.ai email)
+- Pages updated: `daily/2026-04-22.md` (run 5 appended), `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
 ## [2026-04-22] ingest | personal-data-gather run 4: 1 new advisory request; all prior items carry forward
 - Gmail: 5 threads (newer_than:6h); 1 net new ACTION_REQUIRED vs run 3
 - NEW: Guidepoint #1730583 — 5T4 ADC Programs consultation (jfarenden@guidepointglobal.com, 09:30 UTC)
