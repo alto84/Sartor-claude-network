@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-22] ingest | personal-data-gather run 3: Machine 52271 OFFLINE — active client affected
+- Gmail: 3 threads (newer_than:6h); 2 net new vs run 2 (both GPU business emergency)
+- CRITICAL: Machine 52271 offline ~2:35 AM UTC Apr 22 per automated vast.ai alert
+- CRITICAL: vast.ai support engineer Saber emailed 5:27 AM UTC — rental client affected, status update requested from host
+- Calendar: all 5 queried Apr 22–29; 0 new events vs run 2; all times confirmed
+- SSH: unavailable in execution environment; machine offline confirmed via email
+- Pages updated: `MACHINES.md`, `business/solar-inference.md`, `family/active-todos.md`, `daily/2026-04-22.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written (P0-emergency added)
+
 ## [2026-04-22] ingest | personal-data-gather run 2: delta-zero; data/ recreated
 - Gmail: 6 threads in 2-day window; 0 net new vs run 1; 0 new ACTION_REQUIRED
 - Calendar: all 5 queried Apr 22–29; 0 new events vs run 1; all times confirmed

@@ -647,3 +647,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note]
 > **All 4 prior ACTION_REQUIRED items remain open:** (1) Mike Silva reply to mike@acrosscap.com, (2) Guidepoint / Yasmin Goodman accept/decline (ygoodman@guidepointglobal.com), (3) EquityZen catch-up (georgia.edwards@equityzen.com), (4) Disney ADR — respond to Nicol Stevenson before 2026-05-17.
+
+## Latest from gather (2026-04-22) — run 3
+
+> [!warning] P0 — GPU BUSINESS: Machine 52271 OFFLINE, active client affected
+> Two vast.ai emails received this morning:
+> - **2:35 AM UTC**: automated alert — machine 52271 offline
+> - **5:27 AM UTC**: Saber (saber@contact.vast.ai), vast.ai support engineer — a rental client contacted vast.ai and is waiting for a status update
+>
+> **Actions required:**
+> 1. Check gpuserver1 (192.168.1.100) — SSH or physically inspect; verify power, Kaalia daemon, Docker
+> 2. Reply to saber@contact.vast.ai with machine status for the affected client
+> 3. Once back online: verify vast.ai listing is restored and machine 52271 is listed
+>
+> See [[MACHINES]] for diagnostic steps. This is a business-reputation event — a paying client is waiting.
