@@ -661,3 +661,8 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > 3. Once back online: verify vast.ai listing is restored and machine 52271 is listed
 >
 > See [[MACHINES]] for diagnostic steps. This is a business-reputation event — a paying client is waiting.
+
+## Latest from gather (2026-04-22) — run 4
+
+> [!todo] ACTION_REQUIRED
+> **NEW Guidepoint consultation — 5T4 ADC Programs (#1730583).** jfarenden@guidepointglobal.com, received 09:30 UTC Apr 22. Fourth active Guidepoint consultation this cycle: (1) Yasmin Goodman / Clinical Trial Technology Solutions (formal accept/decline pending), (2) Valerie Villareal / Pediatric Low-Grade Glioma Market (#1718071, Apr 13), (3) atshela / AI Adoption in Biotech/CRO/Pharma (#1720868, Apr 20). This one — 5T4 ADC Programs — is oncology/pharma (5T4 = oncofetal antigen, ADC = antibody-drug conjugate program landscape). Accept or decline. See [[ALTON]] for advisory opportunity log.

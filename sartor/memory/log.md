@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-22] ingest | personal-data-gather run 4: 1 new advisory request; all prior items carry forward
+- Gmail: 5 threads (newer_than:6h); 1 net new ACTION_REQUIRED vs run 3
+- NEW: Guidepoint #1730583 — 5T4 ADC Programs consultation (jfarenden@guidepointglobal.com, 09:30 UTC)
+- Calendar: all 5 queried Apr 22–29; 0 new events vs run 3; all times confirmed
+- SSH: unavailable; gpuserver1 offline status unchanged since run 3
+- Pages updated: `family/active-todos.md`, `daily/2026-04-22.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
 ## [2026-04-22] ingest | personal-data-gather run 3: Machine 52271 OFFLINE — active client affected
 - Gmail: 3 threads (newer_than:6h); 2 net new vs run 2 (both GPU business emergency)
 - CRITICAL: Machine 52271 offline ~2:35 AM UTC Apr 22 per automated vast.ai alert
