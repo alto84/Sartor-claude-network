@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-22] ingest | personal-data-gather run 6: Cougar Pride moved Sun; soccer field change; Venmo childcare; Cadoo bill
+- Gmail: 30 threads (is:inbox, newer_than:2d); 5 net new facts vs run 5; 2 new ACTION_REQUIRED
+- CALENDAR CHANGE: Cougar Pride Day moved Sat Apr 25 → Sun Apr 26 (11 AM–3 PM, Van Brunt Field); resolves prior soccer/Cougar Pride conflict; creates new Wohelo/Cougar Pride overlap Apr 26 noon
+- SPORTS: Blue Sombrero field access blocked Sat Apr 25 (Essex County event at stadium); B34-Lime schedule update sent; Vayu game time/location TBD
+- FINANCIAL: Cadoo Medical PC $765.21 for Emmett (Vayu); Venmo $270 childcare request from Rachelle trammel for Vishala (4/14, 4/16, 4/21)
+- NEW CONFLICT: Wohelo Assembly (noon Apr 26, online) + Cougar Pride Day (11 AM–3 PM Apr 26) — Vishala must be at computer at noon
+- Pages updated: `daily/2026-04-22.md` (run 6 appended), `family/active-todos.md`, `family/family-calendar.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
 ## [2026-04-22] ingest | personal-data-gather run 5: pool service + SNO CME tomorrow; delta-minimal
 - Gmail: 10 threads (newer_than:6h); 2 net new informational facts vs run 4; 0 new ACTION_REQUIRED
 - Pool Guyz service log #36601595 completed at 85 Stonebridge Rd 11:15 AM — routine, informational

@@ -662,6 +662,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 >
 > See [[MACHINES]] for diagnostic steps. This is a business-reputation event — a paying client is waiting.
 
+## Latest from gather (2026-04-22) — run 6
+
+> [!todo] ACTION_REQUIRED — pay promptly
+> **Venmo request: Rachelle trammel $270.00 for Vishala childcare.** Dates: 4/14, 4/16, 4/21. This is likely the regular after-school or weekend childcare provider. Pay via Venmo to @Rachelle-trammel if correct.
+
+> [!todo] ACTION_REQUIRED — watch for update
+> **Vayu soccer Apr 25 field change.** Two Blue Sombrero emails received: (1) club-wide notice that "one of our main fields this Saturday" is blocked by an Essex County event at the stadium; (2) B34-Lime team schedule updated. New game time/location not yet in email snippet. Check Blue Sombrero app or email for revised schedule before Saturday. Brookdale Park Field 1 (original venue) may be affected. See [[vayu]].
+
+> [!todo] Priority: P2
+> **Cadoo Medical PC — $765.21 balance due.** Statement received Apr 22 from noreply@tebra.com for "Emmett" (Vayu), Cadoo Medical PC (NJ). Pay via portal link in the email. No explicit due date in snippet — treat as 30-day.
+
+> [!warning] NEW CONFLICT — Sunday April 26
+> **Wohelo Little Assembly (noon ET, online, Vishala) vs Cougar Pride Day (11 AM–3 PM, Van Brunt Field MKA).** Both fall on Sunday April 26. Wohelo Assembly is 30 min, online — likely joinable via phone/tablet from the field. Decide before Sunday: will Vishala attend Cougar Pride in person and join Wohelo Assembly on a device at noon, or does one event need to yield? See [[vishala]] and [[family-calendar]].
+
+> [!fact] CALENDAR CHANGE — Cougar Pride Day moved to Sunday Apr 26
+> MKA emailed at 6:15 PM ET Apr 22: Cougar Pride Day moved from **Saturday April 25** to **Sunday April 26, 11:00 AM–3:00 PM, Van Brunt Field**. Reason: inclement weather forecast. This RESOLVES the prior Sat Apr 25 soccer-vs-Cougar-Pride conflict. The live Family calendar has not yet been updated (still shows Sat Apr 25) — treat MKA email as authoritative. See [[family-calendar]].
+
 ## Latest from gather (2026-04-22) — run 4
 
 > [!todo] ACTION_REQUIRED

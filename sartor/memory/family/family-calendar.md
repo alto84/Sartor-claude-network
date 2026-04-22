@@ -169,6 +169,31 @@ Also confirming today's three-event stack (all events confirmed against live cal
 
 No new calendar events vs prior runs aside from Grandparents Day (sourced via Gmail, not visible in the Google Calendar query).
 
+## Latest from gather (2026-04-22) — run 6
+
+> [!fact] CALENDAR CHANGE — Cougar Pride Day moved Sat→Sun
+> MKA email (m@mail3.veracross.com, 6:15 PM ET Apr 22): Cougar Pride Day moved from **Saturday April 25** to **Sunday April 26, 11:00 AM–3:00 PM, Van Brunt Field** due to inclement weather forecast. The live Google Family calendar still shows it on Saturday — treat MKA email as authoritative until calendar is updated.
+>
+> | Before | After |
+> |--------|-------|
+> | Sat Apr 25, 11 AM–3 PM, MKA | **Sun Apr 26, 11 AM–3 PM, Van Brunt Field** |
+>
+> Effect on prior conflicts: the Apr 25 soccer (11 AM) vs Cougar Pride (11 AM) conflict is **RESOLVED** — they no longer overlap.
+
+> [!warning] NEW — Apr 26 Wohelo + Cougar Pride conflict
+> **Sunday April 26**: Wohelo Little Assembly (online, noon ET, 30 min, Vishala) now overlaps Cougar Pride Day (11 AM–3 PM, Van Brunt Field). Wohelo Assembly was flagged 2026-04-20 run 2. Phone/tablet from the field is likely the path. Flag before Sunday. See [[vishala]] and [[active-todos]].
+
+> [!note] Vayu soccer Apr 25 — schedule change pending
+> Two Blue Sombrero emails received Apr 22 afternoon: (1) club-wide notice of field access issue at Brookdale Stadium for Saturday due to Essex County event; (2) B34-Lime team schedule updated. New time/location for Vayu's game not yet confirmed. Watch Blue Sombrero app. See [[vayu]].
+
+Updated Apr 25–26 schedule:
+
+| Date | Time ET | Event | Notes |
+|------|---------|-------|-------|
+| Sat 4/25 | TBD | Vayu soccer B34 game — **location/time may change** | Field at stadium blocked; watch for update |
+| Sun 4/26 | 11:00 AM–3:00 PM | Cougar Pride Day, Van Brunt Field (MKA) | MOVED from Sat Apr 25 |
+| Sun 4/26 | 12:00 PM (noon) | Wohelo Little Assembly (online, Vishala) | **CONFLICT** with Cougar Pride if in-person |
+
 ## History
 
 - 2026-04-09: Initial calendar compilation from Gmail+Calendar harvest covering 2026-04-09 through 2026-05-09. Flagged sole-parent window and Aneeta RRE correction.
