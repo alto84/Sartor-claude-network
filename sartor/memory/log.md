@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-22] ingest | personal-data-gather run 2: delta-zero; data/ recreated
+- Gmail: 6 threads in 2-day window; 0 net new vs run 1; 0 new ACTION_REQUIRED
+- Calendar: all 5 queried Apr 22–29; 0 new events vs run 1; all times confirmed
+- SSH: unavailable; gpuserver1 skipped
+- data/ directory recreated (non-persistent environment, consistent pattern)
+- 22 total open alerts carry forward unchanged from run 1
+- Pages updated: `daily/2026-04-22.md` (run 2 section appended), `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written (22 open items, 11 priority-1)
+
 ## [2026-04-22] ingest | personal-data-gather run 1: Grandparents Day, band concert today, 3 new advisory requests
 - Sources: Gmail (50 threads, is:unread after:2026/04/18), 5 Google Calendars (Apr 22–29 window), SSH unavailable
 - Facts gathered: 5 new ACTION_REQUIRED; 1 RESOLVED (Perlis delivery); 1 new calendar event (MKA Grandparents Day Apr 28 via Gmail); all prior events confirmed
