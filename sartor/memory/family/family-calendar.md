@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-21
+updated: 2026-04-22
 updated_by: personal-data-gather
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
@@ -153,6 +153,22 @@ Apr 25 corrected schedule:
 | 11 AM–12 PM | Vayu soccer: B34 Purple vs B34 Lime (Brookdale Park Field 1) | Vayu |
 | 3–7 PM | Cougar pride day (MKA) | Vayu/Vishala |
 
+## Latest from gather (2026-04-22)
+
+> [!deadline] 2026-04-28
+> **NEW: MKA Grandparents & Special Friends Day — Tuesday April 28.** Surfaced from Gmail (kflippin@mka.org). Not previously in calendar. Reminder sent to registered guests Apr 21. Overlaps with Berman install day 2. Verify attendance and logistics.
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| Tue 4/28 | morning | MKA Grandparents & Special Friends Day | Gmail (MKA) | **NEW** — not in any prior calendar view; verify grandparent registration |
+
+Also confirming today's three-event stack (all events confirmed against live calendar pulls):
+- 4:20–5:20 PM Vasu Costume Parade (Goddard)
+- 5:30–6:15 PM Vayu Soccer Practice (Anderson Park)
+- 6:30 PM Vayu arrives MKA / 7:00 PM Band Concert
+
+No new calendar events vs prior runs aside from Grandparents Day (sourced via Gmail, not visible in the Google Calendar query).
+
 ## History
 
 - 2026-04-09: Initial calendar compilation from Gmail+Calendar harvest covering 2026-04-09 through 2026-05-09. Flagged sole-parent window and Aneeta RRE correction.
@@ -160,6 +176,7 @@ Apr 25 corrected schedule:
 - 2026-04-15: Updated via personal-data-gather run 1. Added Vayu Band Concert Apr 22 (NEW); flagged Apr 22 three-event conflict; noted Goddard parking closure Apr 20-21.
 - 2026-04-18: Updated via personal-data-gather run 1. Added Vayu soccer game Apr 25 (NEW from Blue Sombrero). Corrected Cougar pride day time to 3–7 PM ET (was 11 AM–3 PM).
 - 2026-04-21: Updated via personal-data-gather run 1. Confirmed all Apr 22–28 times from live API. Canonical times locked (see below).
+- 2026-04-22: Updated via personal-data-gather run 1. Added Grandparents & Special Friends Day Apr 28 (NEW, from Gmail). Confirmed all Apr 22 three-event timings against live calendar.
 
 ## Latest from gather (2026-04-15)
 

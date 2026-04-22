@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-21
+updated: 2026-04-22
 updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
@@ -35,6 +35,19 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-22] ingest | personal-data-gather run 1: Grandparents Day, band concert today, 3 new advisory requests
+- Sources: Gmail (50 threads, is:unread after:2026/04/18), 5 Google Calendars (Apr 22–29 window), SSH unavailable
+- Facts gathered: 5 new ACTION_REQUIRED; 1 RESOLVED (Perlis delivery); 1 new calendar event (MKA Grandparents Day Apr 28 via Gmail); all prior events confirmed
+- TODAY: Three-event stack (Vasu costume parade 4:20 PM / Vayu soccer 5:30 PM / Vayu band concert 7:00 PM) is live. Final reminder email confirmed 7pm concert / 6:30pm arrival.
+- NEW: MKA Grandparents & Special Friends Day Apr 28 — guests appear already registered; verify
+- NEW: Guidepoint AI Adoption/Tools in Biotech consultation (#1720868) — accept/decline pending
+- NEW: Guidepoint PKU survey $65 honorarium — accept/decline pending
+- NEW: 4th Grade Immigration Fest (Vayu) — read letter for date/requirements
+- NEW: Goddard Mother's Day Celebration May 8 (Vasu) — Aneeta available (returns May 3)
+- Carry-forward open: Mike Silva reply, Guidepoint/Yasmin Goodman, EquityZen, Disney ADR (May 17 deadline)
+- Pages updated: `family/active-todos.md`, `family/family-calendar.md`, `daily/2026-04-22.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written (7 open ACTION_REQUIRED items, 2 priority-1)
 
 ## [2026-04-21] ingest | personal-data-gather run 5: second Chase CC statement + Newegg security escalation
 - Gmail: 60 threads (newer_than:2d, two search passes); 3 net new facts vs run 4

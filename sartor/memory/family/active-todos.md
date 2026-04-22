@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-21
+updated: 2026-04-22
 updated_by: personal-data-gather
 run: 1
 
@@ -629,3 +629,21 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact]
 > **Alton commuted to NYC by car today (Apr 21).** SpotHero parking: 35 W 33rd St Valet Garage, 8:30 AM–8:30 PM, Rental ID 121455066. NYC commute research item (switch to NJ Transit) remains open.
+## Latest from gather (2026-04-22)
+
+> [!warning] TODAY — three-event stack
+> **Apr 22 triple-event evening is happening now.** Final reminder email received this morning confirms Vayu Band Concert at 7pm (6:30pm student arrival).
+> - **4:20–5:20 PM**: Vasu Recycling Costume Parade (Goddard)
+> - **5:30–6:15 PM**: Vayu Rec Soccer Practice (Anderson Park)
+> - **6:30 PM student arrival / 7:00 PM concert**: Vayu Spring Band Concert (MKA)
+>
+> Soccer ends 6:15 PM; concert arrival 6:30 PM — 15-min window. Split parent coverage is the only path. Soccer is skippable; Band concert is not. See [[family/vayu]].
+
+> [!deadline] 2026-04-28
+> **MKA Grandparents & Special Friends Day — Tuesday April 28.** Email from kflippin@mka.org (Apr 21): reminder sent to all registered guests. Overlaps with Berman install day 2 (techs arrive 9am). Confirm: are Sartor grandparents registered and attending? If so, plan logistics — Berman techs will be in the house that morning.
+
+> [!fact]
+> **RESOLVED: Perlis Clothing order #1000106032 delivered Apr 21.** ShipStation tracking confirmation received. Closes the pending FedEx delivery flagged in Apr 18 run.
+
+> [!note]
+> **All 4 prior ACTION_REQUIRED items remain open:** (1) Mike Silva reply to mike@acrosscap.com, (2) Guidepoint / Yasmin Goodman accept/decline (ygoodman@guidepointglobal.com), (3) EquityZen catch-up (georgia.edwards@equityzen.com), (4) Disney ADR — respond to Nicol Stevenson before 2026-05-17.
