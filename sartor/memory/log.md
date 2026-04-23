@@ -36,6 +36,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-23] ingest | personal-data-gather run 12: Guidepoint #1732882; LinkedIn dinner invite; Vasu Show+Tell B
+- Gmail: 30 threads (newer_than:2d); 5 net new facts vs run 11; 2 new ACTION_REQUIRED
+- NEW: Guidepoint Global Oncology Specialists #1732882 (otaylor@guidepointglobal.com) — fifth distinct Guidepoint inquiry this cycle
+- NEW: LinkedIn NYC Dinner invite from Elena Poughia — senior operators dinner on human feedback/eval infra scaling
+- FAMILY: Vasu Show and Tell Letter B this week; Vasu in school Apr 23 confirmed (Foggy Windows, outdoor play, yoga); Pool Guyz service log #36619894 completed 2:55 PM today (distinct from Apr 22 visit)
+- Calendar: no new events; Apr 23–30 window stable (9:40 AM dance concert confirmed)
+- SSH: unavailable; machine 52271 offline unresolved; no new vast.ai email
+- Pages updated: `daily/2026-04-23.md` (run 12 appended), `family/active-todos.md` (run 12), `family/vasu.md` (run 12), `log.md`
+- Outputs: `data/gather-alerts.md` created (18 open items), `data/heartbeat-log.csv` created
+
 ## [2026-04-23] ingest | personal-data-gather run 11: Lucent meeting today (unconfirmed); Claude Opus 4.7 released
 - Gmail: 30 threads (is:unread OR is:important, newer_than:2d); 2 net new facts vs run 10; 1 new urgent flag
 - URGENT: Lucent Energy 85 Stonebridge engineering plan meeting TODAY (Thu Apr 23 after 3 PM) — no Niko confirmation visible in email thread; Alton in NYC per SpotHero; meeting status uncertain

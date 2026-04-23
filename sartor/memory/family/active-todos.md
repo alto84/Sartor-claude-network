@@ -731,3 +731,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact]
 > **Claude Opus 4.7 released this week.** Confirmed via Zvi Mowshowitz newsletter AI #165 (Apr 23): "This was the week of Claude Opus 4.7." Model ID: claude-opus-4-7. Research note for AI/ML tracking. See [[ASTRAZENECA]] and [[business/az-career]] for professional context.
+
+## Latest from gather (2026-04-23) — run 12
+
+> [!todo] ACTION_REQUIRED — accept or decline
+> **NEW Guidepoint consultation — Global Oncology Specialists (#1732882).** Owen Taylor (otaylor@guidepointglobal.com), received Apr 23. This is the **fifth distinct Guidepoint inquiry this cycle**: (1) Yasmin Goodman / Clinical Trial Technology Solutions (formal request pending), (2) Valerie Villareal / Pediatric Low-Grade Glioma Market (#1718071), (3) atshela / AI Adoption in Biotech/CRO/Pharma (#1720868), (4) jfarenden / 5T4 ADC Programs (#1730583). This one — Global Oncology Specialists — is a separate engagement. Accept or decline. See [[ALTON]] for advisory opportunity log.
+
+> [!todo] ACTION_REQUIRED — reply
+> **LinkedIn NYC Dinner: Human Signal & Evaluation.** Elena Poughia (hit-reply@linkedin.com) is organizing a small dinner for 10 senior operators in NYC focused on "scaling human feedback and evaluation infra." Alton is invited based on his AstraZeneca AI/ML leadership work. No event date in snippet. Reply to accept or decline. Networking; relevant to AZ AI role.
+
+> [!todo] P2 — this week
+> **Vasu Show and Tell — Letter B.** Clarissa Black (Goddard School) sent reminder today (Apr 23): this week's Show and Tell letter is B. Examples: Boat, Bell, Baby, Ball, Bear. Vasu needs to bring something starting with B to school this week. See [[family/vasu]].
