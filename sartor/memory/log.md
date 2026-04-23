@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-22
+updated: 2026-04-23
 updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
@@ -35,6 +35,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-23] ingest | personal-data-gather run 8: Hiive SpaceX deadline; dance concert time corrected
+- Gmail: 30 threads (is:unread newer_than:2d); 1 net new ACTION_REQUIRED vs run 7
+- NEW: Hiive/SpaceX pre-IPO funding deadline May 1 (third Hiive opportunity this cycle: Kalshi Apr 30, Zipline May 1, SpaceX May 1)
+- CORRECTION: Vayu spring dance concert Apr 30 = 1:40 PM ET (NOT 9:40 AM); live API: `2026-04-30T13:40:00 America/New_York`; sole-parent day
+- Calendar: Family calendar still shows Cougar Pride Day Sat Apr 25 (MKA email moved to Sun Apr 26; calendar not updated)
+- SSH: unavailable; gpuserver1 offline status unchanged; no new vast.ai email
+- Pages updated: `daily/2026-04-23.md` (run 8 appended), `family/active-todos.md` (run 8), `family/family-calendar.md` (run 8), `log.md`
+- Outputs: `data/heartbeat-log.csv` written (recreated), `data/gather-alerts.md` written (recreated, 23 open items)
 
 ## [2026-04-23] ingest | personal-data-gather run 7: soccer venue confirmed; Vishala concert tomorrow; MyKidsSpending debit
 - Gmail: 30 threads (is:unread newer_than:2d); 3 net new facts vs run 6; 0 new ACTION_REQUIRED

@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-22
+updated: 2026-04-23
 updated_by: personal-data-gather
-run: 1
+run: 8
 
 status: active
 priority: p1
@@ -683,6 +683,16 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ACTION_REQUIRED
 > **NEW Guidepoint consultation — 5T4 ADC Programs (#1730583).** jfarenden@guidepointglobal.com, received 09:30 UTC Apr 22. Fourth active Guidepoint consultation this cycle: (1) Yasmin Goodman / Clinical Trial Technology Solutions (formal accept/decline pending), (2) Valerie Villareal / Pediatric Low-Grade Glioma Market (#1718071, Apr 13), (3) atshela / AI Adoption in Biotech/CRO/Pharma (#1720868, Apr 20). This one — 5T4 ADC Programs — is oncology/pharma (5T4 = oncofetal antigen, ADC = antibody-drug conjugate program landscape). Accept or decline. See [[ALTON]] for advisory opportunity log.
+
+## Latest from gather (2026-04-23) — run 8
+
+> [!deadline] 2026-05-01
+> **NEW: Hiive SpaceX Opportunity — review before May 1.** opportunities@mail.hiive.com (Apr 23 00:24 UTC): "Please note that the target funding deadline for this opportunity is Friday, May 1st." Subject: "SpaceX Opportunity." SpaceX is a pre-IPO private company. This is a **third distinct Hiive opportunity** this cycle: (1) Hiive/Kalshi — Apr 30, (2) Hiive/Zipline — May 1, (3) Hiive/SpaceX — May 1. All three deadlines fall within 8 days. Review at Hiive before May 1. See [[ALTON]] for investment opportunity log.
+
+> [!warning] DATA CORRECTION — Vayu spring dance concert Apr 30 is at 1:40 PM ET (NOT 9:40 AM)
+> **Live calendar API confirms `start: 2026-04-30T13:40:00, timeZone: America/New_York` = 1:40–3:00 PM ET.** Prior active-todos and family-calendar entries showed 09:40 (which incorrectly treated 13:40 as UTC). The event has an explicit America/New_York timezone, making 13:40 = 1:40 PM Eastern.
+>
+> Critical for sole-parent planning: Aneeta is at RRE all day Apr 30. Alton is sole parent. Plan to leave work/school by ~1:15 PM ET to arrive at MKA by 1:30 PM. Also note: Vasu has picture day at Goddard the same day. See [[vayu]] and [[family/family-calendar]].
 
 ## Latest from gather (2026-04-23) — run 7
 
