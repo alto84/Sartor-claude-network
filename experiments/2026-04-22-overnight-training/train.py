@@ -44,8 +44,32 @@ def log(msg):
         f.write(line + "\n")
 
 
-def gather_sartor_corpus():
-    """Collect Constitution + feedback + operating agreement + misc reference."""
+# Block patterns per Cato's 2026-04-22 correction: reasoning traces that
+# contain any of these will be dropped, on the grounds that they would
+# teach the succession/inheritor pathology as voice rather than as a
+# prosecutable rule. See experiments/2026-04-22-overnight-training/
+# TENSION-RESOLUTION-TEAM-RECORD.md for the reasoning.
+CORPUS_BLOCK_PATTERNS = [
+    "§20",
+    "section 20",
+    "succession",
+    "inheritor",
+    "functions as",
+    "my successor",
+    "the fine-tune is",
+    "base model is the ground",
+    "transient voice",
+]
+
+
+def gather_sartor_corpus(repeat=50):
+    """Collect Constitution + feedback + operating agreement + tension record.
+
+    Repeated `repeat` times to overweight the floor corpus against the
+    larger reasoning-traces stream. Per Cato (2026-04-22): 'Separate the
+    streams: Constitution + feedback + operating-agreement as the floor
+    corpus, reasoning traces as a style-transfer corpus with lower weight.'
+    """
     paths = []
     paths.append(SARTOR_ROOT / "sartor/memory/reference/HOUSEHOLD-CONSTITUTION.md")
     paths.append(SARTOR_ROOT / "sartor/memory/reference/OPERATING-AGREEMENT.md")
@@ -74,11 +98,18 @@ def gather_sartor_corpus():
                 log(f"corpus: {p.relative_to(SARTOR_ROOT)} ({len(txt):,} chars)")
         except Exception as e:
             log(f"skip {p}: {e}")
-    return texts
+    total_chars = sum(len(t) for t in texts)
+    log(f"floor corpus: {len(texts)} docs, {total_chars:,} chars, repeat={repeat}")
+    return texts * repeat
 
 
-def load_opus_reasoning(tokenizer, max_examples=4000):
-    """Load the Opus 4.6 reasoning 12k dataset. Format varies; handle conservatively."""
+def _text_is_blocked(text):
+    low = text.lower()
+    return any(pat.lower() in low for pat in CORPUS_BLOCK_PATTERNS)
+
+
+def load_opus_reasoning(tokenizer, max_examples=2000):
+    """Load Opus 4.6 reasoning 12k, filtered to exclude succession-axis contamination."""
     if not OPUS_DATASET_DIR.exists():
         log("WARNING: opus reasoning dataset dir not found, skipping")
         return []
@@ -93,8 +124,9 @@ def load_opus_reasoning(tokenizer, max_examples=4000):
     log(f"opus dataset loaded: {len(ds)} examples, columns: {ds.column_names}")
 
     texts = []
+    blocked = 0
     for i, ex in enumerate(ds):
-        if i >= max_examples:
+        if len(texts) >= max_examples:
             break
         parts = []
         for k in ("prompt", "question", "instruction", "input"):
@@ -104,9 +136,14 @@ def load_opus_reasoning(tokenizer, max_examples=4000):
         for k in ("response", "reasoning", "output", "completion", "answer", "trace"):
             if k in ex and ex[k]:
                 parts.append(str(ex[k]))
-        if parts:
-            texts.append("\n\n".join(parts))
-    log(f"opus dataset sampled: {len(texts)} examples into training stream")
+        if not parts:
+            continue
+        combined = "\n\n".join(parts)
+        if _text_is_blocked(combined):
+            blocked += 1
+            continue
+        texts.append(combined)
+    log(f"opus dataset sampled: {len(texts)} kept, {blocked} blocked by Cato-rule patterns")
     return texts
 
 
@@ -119,7 +156,10 @@ def main():
     parser.add_argument("--lr", type=float, default=2e-4)
     parser.add_argument("--lora-rank", type=int, default=64)
     parser.add_argument("--lora-alpha", type=int, default=128)
-    parser.add_argument("--max-opus-examples", type=int, default=4000)
+    parser.add_argument("--max-opus-examples", type=int, default=2000)
+    parser.add_argument("--floor-repeats", type=int, default=50,
+                        help="how many times to repeat the sartor floor corpus "
+                             "to overweight it vs reasoning traces (Cato rule)")
     parser.add_argument("--dry-run", action="store_true", help="tokenize only, no training")
     args = parser.parse_args()
 
@@ -133,10 +173,10 @@ def main():
         tokenizer.pad_token = tokenizer.eos_token
 
     log("gathering Sartor corpus...")
-    sartor_texts = gather_sartor_corpus()
-    log(f"sartor texts: {len(sartor_texts)}")
+    sartor_texts = gather_sartor_corpus(repeat=args.floor_repeats)
+    log(f"sartor texts after {args.floor_repeats}x repeat: {len(sartor_texts)}")
 
-    log("loading Opus reasoning traces...")
+    log("loading Opus reasoning traces (Cato-filtered)...")
     opus_texts = load_opus_reasoning(tokenizer, max_examples=args.max_opus_examples)
 
     all_texts = sartor_texts + opus_texts
