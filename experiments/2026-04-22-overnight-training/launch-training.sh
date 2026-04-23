@@ -13,6 +13,17 @@ ts() { date -u +%Y-%m-%dT%H:%M:%SZ; }
 log() { echo "[$(ts)] $*" | tee -a "$LOG"; }
 
 log "=== launcher start ==="
+
+# Pre-flight: ensure PCIe links are at max speed before any training load.
+# On this machine, fresh boot negotiates Gen 1 and needs a setpci retrain.
+log "pre-flight: PCIe retrain"
+sudo bash "$TRAIN_DIR/pcie-retrain.sh"
+for bdf in $(lspci | grep -iE "nvidia" | grep -iE "vga|3d" | awk '{print $1}'); do
+  spd=$(cat /sys/bus/pci/devices/0000:$bdf/current_link_speed 2>/dev/null)
+  wid=$(cat /sys/bus/pci/devices/0000:$bdf/current_link_width 2>/dev/null)
+  log "  $bdf link: $spd x$wid"
+done
+
 log "waiting for model + dataset downloads to complete..."
 log "  (watching ~/downloads.log for 'ALL DONE' marker)"
 

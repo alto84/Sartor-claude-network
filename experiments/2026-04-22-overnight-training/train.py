@@ -108,8 +108,36 @@ def _text_is_blocked(text):
     return any(pat.lower() in low for pat in CORPUS_BLOCK_PATTERNS)
 
 
-def load_opus_reasoning(tokenizer, max_examples=2000):
-    """Load Opus 4.6 reasoning 12k, filtered to exclude succession-axis contamination."""
+def _render_messages(msgs, tokenizer):
+    """Render a list of {role, content} dicts into a single text blob.
+
+    Uses the tokenizer's chat_template when available so the rendered
+    text matches what the model sees at inference time. Falls back to
+    a simple "role: content" join when no template is present.
+    """
+    try:
+        if tokenizer.chat_template:
+            return tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=False)
+    except Exception:
+        pass
+    parts = []
+    for m in msgs:
+        if not isinstance(m, dict):
+            continue
+        role = m.get("role", "") or ""
+        content = m.get("content", "") or ""
+        if content:
+            parts.append(f"{role}: {content}")
+    return "\n\n".join(parts)
+
+
+def load_opus_reasoning(tokenizer, max_examples=3000):
+    """Load Opus 4.6 reasoning 12k, filtered to exclude succession-axis contamination.
+
+    Handles both legacy prompt/response schema and the current chat-messages
+    schema (list of {role, content}) used by the Jongsim/claude-opus-4.6-
+    reasoning-12k dataset.
+    """
     if not OPUS_DATASET_DIR.exists():
         log("WARNING: opus reasoning dataset dir not found, skipping")
         return []
@@ -125,25 +153,34 @@ def load_opus_reasoning(tokenizer, max_examples=2000):
 
     texts = []
     blocked = 0
+    skipped_empty = 0
     for i, ex in enumerate(ds):
         if len(texts) >= max_examples:
             break
-        parts = []
-        for k in ("prompt", "question", "instruction", "input"):
-            if k in ex and ex[k]:
-                parts.append(str(ex[k]))
-                break
-        for k in ("response", "reasoning", "output", "completion", "answer", "trace"):
-            if k in ex and ex[k]:
-                parts.append(str(ex[k]))
-        if not parts:
+        combined = ""
+        # Chat-messages schema (current Jongsim format)
+        if "messages" in ex and ex["messages"]:
+            combined = _render_messages(ex["messages"], tokenizer)
+        # Legacy prompt/response schema (fallback)
+        if not combined:
+            parts = []
+            for k in ("prompt", "question", "instruction", "input"):
+                if k in ex and ex[k]:
+                    parts.append(str(ex[k]))
+                    break
+            for k in ("response", "reasoning", "output", "completion", "answer", "trace"):
+                if k in ex and ex[k]:
+                    parts.append(str(ex[k]))
+            combined = "\n\n".join(parts)
+        if not combined.strip():
+            skipped_empty += 1
             continue
-        combined = "\n\n".join(parts)
         if _text_is_blocked(combined):
             blocked += 1
             continue
         texts.append(combined)
-    log(f"opus dataset sampled: {len(texts)} kept, {blocked} blocked by Cato-rule patterns")
+    log(f"opus dataset sampled: {len(texts)} kept, {blocked} blocked by Cato-rule, "
+        f"{skipped_empty} empty/unparsed")
     return texts
 
 
@@ -156,10 +193,14 @@ def main():
     parser.add_argument("--lr", type=float, default=2e-4)
     parser.add_argument("--lora-rank", type=int, default=64)
     parser.add_argument("--lora-alpha", type=int, default=128)
-    parser.add_argument("--max-opus-examples", type=int, default=2000)
+    parser.add_argument("--max-opus-examples", type=int, default=3000)
     parser.add_argument("--floor-repeats", type=int, default=50,
                         help="how many times to repeat the sartor floor corpus "
                              "to overweight it vs reasoning traces (Cato rule)")
+    parser.add_argument("--lora-targets", default="all-linear",
+                        help="peft target_modules — 'all-linear' covers attention, "
+                             "MLP, expert, and SSM projections on the Qwen 3.6 hybrid; "
+                             "supply a comma-separated list to override")
     parser.add_argument("--dry-run", action="store_true", help="tokenize only, no training")
     args = parser.parse_args()
 
@@ -223,14 +264,23 @@ def main():
     model.gradient_checkpointing_enable()
     model.enable_input_require_grads()
 
-    log(f"attaching LoRA adapters (rank={args.lora_rank}, alpha={args.lora_alpha})...")
+    log(f"attaching LoRA adapters (rank={args.lora_rank}, alpha={args.lora_alpha}, "
+        f"targets={args.lora_targets})...")
+    # Qwen 3.6 is a hybrid attention + SSM MoE; attention-only LoRA misses ~70%
+    # of the trainable surface. "all-linear" enumerates every nn.Linear which
+    # covers attention q/k/v/o, MoE expert up/gate/down, SSM projections, and
+    # the router gate. Per rtx-claude-review.md §3 (2026-04-22).
+    if args.lora_targets == "all-linear":
+        target_modules = "all-linear"
+    else:
+        target_modules = [t.strip() for t in args.lora_targets.split(",") if t.strip()]
     lora_cfg = LoraConfig(
         r=args.lora_rank,
         lora_alpha=args.lora_alpha,
         lora_dropout=0.05,
         bias="none",
         task_type="CAUSAL_LM",
-        target_modules=["q_proj", "k_proj", "v_proj", "o_proj"],
+        target_modules=target_modules,
     )
     model = get_peft_model(model, lora_cfg)
     model.print_trainable_parameters()
