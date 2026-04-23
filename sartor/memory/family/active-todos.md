@@ -721,3 +721,13 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - Vasu picture day at Goddard — coordinate drop-off before 9:40 AM or with Amarkanth.
 > - Consider: can the three kids be dropped at school before the concert? Vayu attends MKA so concert logistics may align with school drop-off.
 > See [[vayu]] and [[family/family-calendar]].
+
+## Latest from gather (2026-04-23) — run 11
+
+> [!warning] TODAY — Lucent Energy 85 Stonebridge meeting status UNCERTAIN
+> **Engineering plan meeting was "SCHEDULED for Thursday 2026-04-23, after 3 PM" per Apr 16 triage.** The last email in the Lucent Energy thread is Alton on Apr 17 offering "next Thursday afternoon after 3pm." No formal confirmation from Niko Markanovic (Niko@lucent-energy.com) is visible in inbox. Alton is in NYC today (SpotHero parking at 35 W 33rd St through 8:30 PM). If meeting is on-site at 85 Stonebridge, Alton needs to leave NYC by ~2 PM. Verify: (1) Did Niko confirm? (2) Is meeting remote or on-site? (3) If unconfirmed, reschedule with Lucent now.
+>
+> Thread participants: Niko Markanovic (Niko@lucent-energy.com), Doug Paige (doug.paige@lucent-energy.com), Audrey Vera (audrey.vera@lucent-energy.com). See [[business/solar-inference]].
+
+> [!fact]
+> **Claude Opus 4.7 released this week.** Confirmed via Zvi Mowshowitz newsletter AI #165 (Apr 23): "This was the week of Claude Opus 4.7." Model ID: claude-opus-4-7. Research note for AI/ML tracking. See [[ASTRAZENECA]] and [[business/az-career]] for professional context.

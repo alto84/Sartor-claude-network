@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-23] ingest | personal-data-gather run 11: Lucent meeting today (unconfirmed); Claude Opus 4.7 released
+- Gmail: 30 threads (is:unread OR is:important, newer_than:2d); 2 net new facts vs run 10; 1 new urgent flag
+- URGENT: Lucent Energy 85 Stonebridge engineering plan meeting TODAY (Thu Apr 23 after 3 PM) — no Niko confirmation visible in email thread; Alton in NYC per SpotHero; meeting status uncertain
+- RESEARCH: Claude Opus 4.7 released this week (Zvi AI #165 confirmed); model-id claude-opus-4-7 now available
+- Calendar: no net new events; Apr 23–30 window unchanged from run 10
+- SSH: unavailable; gpuserver1 machine 52271 offline status unchanged
+- Pages updated: `daily/2026-04-23.md` (run 11 appended), `family/active-todos.md` (run 11 section), `log.md`
+- Outputs: `data/gather-alerts.md` written (12 open items), `data/heartbeat-log.csv` written
+
 ## [2026-04-23] ingest | personal-data-gather run 10: Fidelity CRWV call sold; Alton in NYC today
 - Gmail: 30 threads (is:unread newer_than:2d); 2 net new facts vs run 9; 0 new ACTION_REQUIRED
 - NEW FINANCIAL: Fidelity trade confirmation — SOLD CALL (CRWV) COREWEAVE INC COM this morning
