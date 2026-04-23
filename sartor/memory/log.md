@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-23] ingest | personal-data-gather run 10: Fidelity CRWV call sold; Alton in NYC today
+- Gmail: 30 threads (is:unread newer_than:2d); 2 net new facts vs run 9; 0 new ACTION_REQUIRED
+- NEW FINANCIAL: Fidelity trade confirmation — SOLD CALL (CRWV) COREWEAVE INC COM this morning
+- INFORMATIONAL: SpotHero parking 35 W 33rd St NYC confirms Alton commute day (Thu Apr 23)
+- Calendar: no net new events; Vayu dance concert 9:40 AM Apr 30 stable (run 9 re-correction holds)
+- SSH: unavailable; gpuserver1 machine 52271 offline status unchanged
+- Pages updated: `daily/2026-04-23.md` (run 10 appended), `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
 ## [2026-04-23] ingest | personal-data-gather run 9: Brookline MA invoice; dance concert time re-corrected
 - Gmail: 19 threads (is:unread newer_than:2d); 1 net new ACTION_REQUIRED vs run 8
 - NEW: Town of Brookline MA Invoice #2026REQ4-7583028 — financial flag, address anomaly (Brookline MA billed to Sartor household in Montclair NJ); OneClickPay via card XX9425 (now replaced)
