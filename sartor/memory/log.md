@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-23] ingest | personal-data-gather run 9: Brookline MA invoice; dance concert time re-corrected
+- Gmail: 19 threads (is:unread newer_than:2d); 1 net new ACTION_REQUIRED vs run 8
+- NEW: Town of Brookline MA Invoice #2026REQ4-7583028 — financial flag, address anomaly (Brookline MA billed to Sartor household in Montclair NJ); OneClickPay via card XX9425 (now replaced)
+- RE-CORRECTION: Vayu spring dance concert Apr 30 = 9:40 AM ET (NOT 1:40 PM as run 8 claimed); live API: `2026-04-30T09:40:00-04:00`; run 8's correction was wrong; changes sole-parent logistics (no NYC commute that morning)
+- Calendar: no net new events; Vishala spring concert TOMORROW (Fri Apr 24 8:00 AM) confirmed
+- SSH: unavailable; gpuserver1 offline status unchanged; no new vast.ai email
+- Pages updated: `daily/2026-04-23.md` (run 9 appended), `family/active-todos.md` (run 9 section), `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written (11 open items)
+
 ## [2026-04-23] ingest | personal-data-gather run 8: Hiive SpaceX deadline; dance concert time corrected
 - Gmail: 30 threads (is:unread newer_than:2d); 1 net new ACTION_REQUIRED vs run 7
 - NEW: Hiive/SpaceX pre-IPO funding deadline May 1 (third Hiive opportunity this cycle: Kalshi Apr 30, Zipline May 1, SpaceX May 1)

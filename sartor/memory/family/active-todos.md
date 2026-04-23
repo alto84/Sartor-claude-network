@@ -707,3 +707,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ACTION_REQUIRED — carry forward from run 6
 > **Venmo $270.00 to Rachelle trammel.** Childcare for Vishala on 4/14, 4/16, 4/21. Pay to @Rachelle-trammel on Venmo. No payment confirmation found. See [[vishala]].
+
+## Latest from gather (2026-04-23) — run 9
+
+> [!todo] ACTION_REQUIRED — FINANCIAL
+> **Town of Brookline MA Invoice #2026REQ4-7583028.** Invoice received 2026-04-23 07:06 UTC via OneClickPay/InvoiceCloud (no-reply@invoicecloud.net). Addressed to "SARTOR EMMETT ALTON + SAXENA ANEETA RANI." Card on file shown as "XX9425" (old Chase Sapphire now replaced). Sartor family is in Montclair NJ — Brookline MA connection unclear from snippet (prior address? utility account? property?). **Actions:** (1) Review invoice at InvoiceCloud to determine the account/property. (2) Confirm whether this is a legitimate obligation. (3) Update payment method from card 9425 if applicable (card was replaced Apr 13).
+
+> [!warning] DATA CORRECTION — Vayu spring dance concert time (run 8 was wrong)
+> **Vayu spring dance concert (Thu Apr 30) is at 9:40–11:00 AM ET, NOT 1:40 PM.** Run 8 "corrected" to 1:40 PM citing `2026-04-30T13:40:00`; current live API returns `2026-04-30T09:40:00-04:00` — unambiguous 9:40 AM Eastern. The base family-calendar.md also shows 09:40. Run 8's correction was wrong; the original time was right.
+>
+> **Revised Apr 30 sole-parent logistics (Aneeta at RRE all day):**
+> - Concert at MKA **9:40 AM** — Alton must be at MKA before 9:30 AM. NYC commute not viable that morning.
+> - Vasu picture day at Goddard — coordinate drop-off before 9:40 AM or with Amarkanth.
+> - Consider: can the three kids be dropped at school before the concert? Vayu attends MKA so concert logistics may align with school drop-off.
+> See [[vayu]] and [[family/family-calendar]].
