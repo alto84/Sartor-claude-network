@@ -36,6 +36,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-23] ingest | personal-data-gather run 7: soccer venue confirmed; Vishala concert tomorrow; MyKidsSpending debit
+- Gmail: 30 threads (is:unread newer_than:2d); 3 net new facts vs run 6; 0 new ACTION_REQUIRED
+- SPORTS: Vayu soccer Apr 25 venue CONFIRMED = Watchung School Field, Field 1, North Fullerton Ave, Montclair NJ (was TBD after Brookdale blocked; Blue Sombrero updated 2026-04-22T23:19:57Z)
+- DEADLINE TOMORROW: Vishala spring concert Fri Apr 24, 8:00–10:00 AM ET — parent needed at MKA by 8 AM
+- FINANCIAL: MyKidsSpending debit $101.75 (Chase) for Vayu MKA lunch account — account now active
+- CARRY-FORWARD: Venmo $270 to Rachelle trammel (run 6 ACTION_REQUIRED); Wohelo/Cougar Pride Apr 26 conflict; machine 52271 offline (no new signal)
+- SSH: unavailable in execution environment (consistent); gpuserver1 offline status unresolved
+- Pages updated: `daily/2026-04-23.md` (created), `family/active-todos.md` (run 7 appended), `family/family-calendar.md` (soccer venue confirmed), `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
 ## [2026-04-22] ingest | personal-data-gather run 6: Cougar Pride moved Sun; soccer field change; Venmo childcare; Cadoo bill
 - Gmail: 30 threads (is:inbox, newer_than:2d); 5 net new facts vs run 5; 2 new ACTION_REQUIRED
 - CALENDAR CHANGE: Cougar Pride Day moved Sat Apr 25 → Sun Apr 26 (11 AM–3 PM, Van Brunt Field); resolves prior soccer/Cougar Pride conflict; creates new Wohelo/Cougar Pride overlap Apr 26 noon

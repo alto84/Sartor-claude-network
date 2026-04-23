@@ -683,3 +683,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ACTION_REQUIRED
 > **NEW Guidepoint consultation — 5T4 ADC Programs (#1730583).** jfarenden@guidepointglobal.com, received 09:30 UTC Apr 22. Fourth active Guidepoint consultation this cycle: (1) Yasmin Goodman / Clinical Trial Technology Solutions (formal accept/decline pending), (2) Valerie Villareal / Pediatric Low-Grade Glioma Market (#1718071, Apr 13), (3) atshela / AI Adoption in Biotech/CRO/Pharma (#1720868, Apr 20). This one — 5T4 ADC Programs — is oncology/pharma (5T4 = oncofetal antigen, ADC = antibody-drug conjugate program landscape). Accept or decline. See [[ALTON]] for advisory opportunity log.
+
+## Latest from gather (2026-04-23) — run 7
+
+> [!deadline] 2026-04-24 08:00 AM — TOMORROW
+> **Vishala spring concert at MKA.** Parent needed by 8:00 AM Friday April 24. Confirmed from Family calendar (`2026-04-24T08:00:00-04:00`). Women's center dinner same evening 6–7 PM (no conflict with concert). See [[vishala]] and [[family-calendar]].
+
+> [!fact]
+> **Vayu soccer Apr 25 location CONFIRMED: Watchung School Field, Field 1.** Blue Sombrero calendar updated 2026-04-22T23:19:57Z. Game: B34 Purple vs B34 Lime. Time: 11:00 AM–12:00 PM ET. Venue: Watchung School Field, Field 1, North Fullerton Ave, Montclair NJ 07042. (Brookdale Park was original venue; Essex County event blocked it Apr 22.) Conflict with Cougar Pride Day (now moved to Sun Apr 26) is resolved — soccer Sat Apr 25, Cougar Pride Sun Apr 26. See [[vayu]] and [[family-calendar]].
+
+> [!fact]
+> **MyKidsSpending: Vayu's MKA lunch account funded.** Chase debited $101.75 ($100.00 deposit + $1.75 service charge) for Vayu Sartor's MKA school account at MyKidsSpending (mykidsspending.com). Account active as of 2026-04-22. INFORMATIONAL — no action needed.
+
+> [!todo] ACTION_REQUIRED — carry forward from run 6
+> **Venmo $270.00 to Rachelle trammel.** Childcare for Vishala on 4/14, 4/16, 4/21. Pay to @Rachelle-trammel on Venmo. No payment confirmation found. See [[vishala]].

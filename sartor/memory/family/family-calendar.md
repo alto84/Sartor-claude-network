@@ -194,6 +194,25 @@ Updated Apr 25–26 schedule:
 | Sun 4/26 | 11:00 AM–3:00 PM | Cougar Pride Day, Van Brunt Field (MKA) | MOVED from Sat Apr 25 |
 | Sun 4/26 | 12:00 PM (noon) | Wohelo Little Assembly (online, Vishala) | **CONFLICT** with Cougar Pride if in-person |
 
+## Latest from gather (2026-04-23) — run 7
+
+> [!fact] CONFIRMED — Vayu soccer Apr 25 location: Watchung School Field
+> Blue Sombrero calendar updated 2026-04-22T23:19:57Z. The pending "TBD" location from run 6 is now resolved.
+>
+> | Date | Time ET | Event | Location |
+> |------|---------|-------|----------|
+> | Sat 4/25 | 11:00 AM–12:00 PM | B34 Lime vs B34 Purple (Vayu's team) | **Watchung School Field, Field 1, North Fullerton Ave, Montclair NJ 07042** |
+>
+> Apr 25 conflict with Cougar Pride Day is **RESOLVED** — Cougar Pride moved to Sun Apr 26. No overlap with soccer (Sat). Apr 26 Wohelo/Cougar Pride conflict remains open. See [[vayu]] and [[active-todos]].
+
+Corrected Apr 25–26 schedule (final):
+
+| Date | Time ET | Event | Status |
+|------|---------|-------|--------|
+| Sat 4/25 | 11:00 AM–12:00 PM | Vayu soccer game, Watchung School Field (North Fullerton Ave) | CONFIRMED venue |
+| Sun 4/26 | 11:00 AM–3:00 PM | Cougar Pride Day, Van Brunt Field (MKA) | MOVED from Sat |
+| Sun 4/26 | noon ET | Wohelo Little Assembly (online, Vishala) | Conflicts if Vishala at field in-person |
+
 ## History
 
 - 2026-04-09: Initial calendar compilation from Gmail+Calendar harvest covering 2026-04-09 through 2026-05-09. Flagged sole-parent window and Aneeta RRE correction.
