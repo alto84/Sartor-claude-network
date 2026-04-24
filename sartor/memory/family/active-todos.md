@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-24
 updated_by: personal-data-gather
-run: 13
+run: 14
 
 status: active
 priority: p1
@@ -742,6 +742,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] P2 — this week
 > **Vasu Show and Tell — Letter B.** Clarissa Black (Goddard School) sent reminder today (Apr 23): this week's Show and Tell letter is B. Examples: Boat, Bell, Baby, Ball, Bear. Vasu needs to bring something starting with B to school this week. See [[family/vasu]].
+
+## Latest from gather (2026-04-24) — run 14
+
+> [!warning] VERIFY — Vayu spring dance concert Apr 30 time conflict
+> Today's live calendar API returns `start: 2026-04-30T09:40:00-04:00` = **9:40–11:00 AM ET**. This contradicts run 8's correction to 1:40 PM ET, which itself contradicted the original 9:40 AM entry. Run 9 also called the 9:40 AM reading correct. The API today uses an explicit `-04:00` offset — no UTC ambiguity. The original time (9:40 AM) appears correct. **Verify directly with MKA before Apr 30.** Apr 30 is a sole-parent day (Aneeta at RRE). Vasu also has picture day at Goddard. Alton must be at MKA by ~9:25 AM and handle Goddard drop-off beforehand. See [[vayu]] and [[family/family-calendar]].
+
+> [!note] Gmail MCP still expired — run 14
+> No new email data. 14 open items carry forward unchanged. See `data/gather-alerts.md` for ranked list.
 
 ## Latest from gather (2026-04-24) — run 13
 

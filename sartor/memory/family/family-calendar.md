@@ -3,6 +3,7 @@ type: domain
 entity: family-calendar
 updated: 2026-04-24
 updated_by: personal-data-gather
+run: 14
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -367,6 +368,20 @@ Two new events created today (2026-04-17) that were not in any prior run:
 > [!note]
 > **Apr 25 time re-verification.** Today's Family calendar API returns `timeZone: "UTC"` for Cougar Pride Day with `start: 2026-04-25T15:00:00Z`. 15:00 UTC = 11:00 AM ET. Vayu soccer is also `2026-04-25T15:00:00Z` = 11:00 AM ET. **Conflict confirmed: both events start 11 AM.** The Apr 18 run 4 "correction" to "3–7 PM ET" was erroneous — it misread UTC as EDT. The original table entry "11:00–15:00" (= 11 AM–3 PM ET) was correct. See [[family/active-todos]].
 > Main table Week of 4/21 spring concert row should read "08:00–10:00" not "12:00–14:00."
+
+## Latest from gather (2026-04-24) — run 14
+
+> [!warning] TIME REVERT — Vayu spring dance concert Apr 30
+> Today's live calendar API (run 14, 2026-04-24) returns `start: 2026-04-30T09:40:00-04:00, timeZone: America/New_York` = **9:40–11:00 AM ET.** This contradicts run 8 (Apr 23) which corrected it to 1:40–3:00 PM ET (`start: 2026-04-30T13:40:00, timeZone: America/New_York`). Both values use explicit timezone; neither is a UTC-naive misread. The event may have been modified between Apr 23 and Apr 24, or run 8's value was transient. **Verify directly with MKA before Apr 30.** This is a sole-parent day — being wrong by 4 hours matters. See [[vayu]] and [[active-todos]].
+>
+> | Source | Time ET |
+> |--------|---------|
+> | Original table | 9:40–11:00 AM |
+> | Run 8 "correction" (Apr 23) | 1:40–3:00 PM |
+> | Run 14 live API (Apr 24) | **9:40–11:00 AM** (explicit -04:00) |
+
+> [!note] Gmail MCP still expired — run 14
+> Token expired since run 13. No email intelligence this cycle. Calendar stable; 14 ACTION_REQUIRED items carry forward.
 
 ## Latest from gather (2026-04-24) — run 13
 
