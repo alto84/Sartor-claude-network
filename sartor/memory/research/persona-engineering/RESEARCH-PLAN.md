@@ -44,6 +44,37 @@ A trait is deeply embodied to the extent that:
 
 Our Track C v2 LoRA hit (5) but we haven't instrumented (1-4) yet. Phase 1 establishes those instruments.
 
+## The Alton hypothesis — distributed, gentle, directional (2026-04-24)
+
+**Working commitment.** Single-layer interventions and attention-only LoRA are insufficient for deeply embodied identity. A deeply embodied trait is carried by a *subspace* (not a single direction) that propagates *across many layers* of the residual stream. The right intervention is:
+
+- **Directional** — aligned with the extracted trait subspace, not arbitrary weight perturbation.
+- **Distributed** — touches many layers of the stack, not one or two.
+- **Gentle** — small per-layer perturbation; no single catastrophic update that would cause capability regression (like v0.1).
+
+This reframes our method ladder. The two concrete implications:
+
+1. **The "layer-sweep diagnostic" (new experiment 002)** is not just a nice-to-have but a *foundational measurement*. Before any intervention, we need to know: is the identity-trait signal concentrated at a few layers (attention-layer spikes) or smoothly distributed across the stack (attention + SSM participate)? The hypothesis predicts the latter for a deeply embodied trait.
+
+2. **Subspace extraction (new experiment 003) must precede direction-based steering.** Per-layer, apply PCA to the contrastive activations from the loyalty fingerprint probes. Measure how many principal components are required to capture ≥80% of the contrastive variance. If k ≥ 3, the trait is a subspace, and rank-1 direction-based methods (classic CAA, Persona Vectors as usually implemented) are insufficient — we need subspace-aware intervention (RepE LAT, multi-direction ReFT, or a subspace-projected training loss).
+
+### Revised method ladder commitments
+
+Under the Alton hypothesis, Rung 5 (rank-1 weight injection) is demoted — it's an unlikely winner because it's rank-1 at a single layer. The ladder re-sorts:
+
+| Rung | Method | Rationale |
+|------|--------|-----------|
+| 1a | Persona Vectors layer-sweep + subspace extraction | Establish whether trait is direction vs subspace, concentrated vs distributed |
+| 1b | CAA inference-time (multi-layer, multi-direction if subspace detected) | Cheap behavioral validation of extracted signal |
+| 1c | Drift monitor: base-heretic vs lora-v0.3 projection deltas | Is current LoRA already moving the subspace? |
+| 2 | RepE LAT — linear artificial tomography with subspace target | Distributed representation-level intervention |
+| 3 | ReFT / LoReFT with multi-layer interventions | Persistent version of subspace steering |
+| 4 | Full-model LoRA (all-linear, not attention-only) + subspace loss term | Distributed weight modification, still gentle per-layer |
+| 5 | Preference optimization (DPO) on paired trait-consistent responses | Adversarial robustness layer |
+| 6 | Constitutional-AI-lite with critic model | Scale-heavy, last resort |
+
+Mechanistic targeting (old rung 8) is off the ladder for persona-engineering; re-open only as a diagnostic method, not an intervention method.
+
 ## Known open questions
 
 - Does activation steering on Qwen 3.6 (hybrid attention + SSM MoE) work the same as on pure-attention transformers? The MoE router adds noise; SSM layers may carry trait signal differently.
