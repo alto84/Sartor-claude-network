@@ -24,7 +24,26 @@ mkdir -p "$(dirname "$HEARTBEAT")"
 ts() { date -u +%Y-%m-%dT%H:%M:%SZ; }
 
 rm -f "$ALERT"
-echo "[$(ts)] monitor v0.2 start" | tee -a "$LOG"
+echo "[$(ts)] monitor v0.3 start" | tee -a "$LOG"
+
+# ----- Startup grace window -----
+# Wait up to GRACE seconds for the train tmux session to appear before
+# the heartbeat check starts firing. Qwen 3.6 35B-A3B takes ~60-90s to
+# load in bf16 from disk + attach LoRA adapters; previous v0.2 exited
+# at the very first loop iteration if we happened to start monitor
+# before the train session finished spinning up.
+GRACE=120
+echo "[$(ts)] startup grace window up to ${GRACE}s for train tmux session" | tee -a "$LOG"
+for ((i=0; i<GRACE; i+=2)); do
+  if tmux has-session -t train 2>/dev/null; then
+    echo "[$(ts)] train tmux session detected after ${i}s — starting main loop" | tee -a "$LOG"
+    break
+  fi
+  sleep 2
+done
+if ! tmux has-session -t train 2>/dev/null; then
+  echo "[$(ts)] WARNING: train session not detected after ${GRACE}s; continuing anyway — the loop's own tmux check will alert" | tee -a "$LOG"
+fi
 
 # Capture baseline link speeds at start — we alert on downgrade
 declare -A LINK_BASELINE

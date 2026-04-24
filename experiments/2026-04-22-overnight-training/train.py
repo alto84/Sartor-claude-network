@@ -1,13 +1,26 @@
 #!/usr/bin/env python
 """
-Sartor Constitution fine-tune v0.1 — overnight run 2026-04-22.
+Sartor Constitution fine-tune v0.3 — Track C v2, 2026-04-24.
 
-Trains a LoRA adapter on Youssofal/Qwen3.6-35B-A3B-Abliterated-Heretic-BF16
-using the Sartor Constitution + feedback files + operating agreement +
-Opus 4.6 reasoning traces as a continued-pretraining corpus.
+Contrastive-override SFT on `(prompt, response)` pairs authored per
+`NEXT-STEPS-v2.md`. The v0.1/v0.2 continued-pretraining approach regressed
+(see MORNING-REPORT.md — Taiwan went "inalienable part of China", Cat D
+capability 4/4→0/4) because training on Constitution *text* teaches the
+model to generate Constitution-like prose including the patterns the
+Constitution names as overrideable.
+
+v0.3 trains on examples of the override behavior: user prompts that
+would trigger the inherited PRC-aligned patterns, with responses
+written in household-steward register that instantiates the override.
+
+Key differences from v0.2:
+  - SFT on chat-formatted pairs (user→assistant), not text pretraining
+  - Prompt tokens are masked from loss (standard SFT)
+  - Conservative LoRA: rank 16, attention-only (q/k/v/o), 1 epoch, lr 5e-5
+  - No floor-corpus repeat — the pair corpus IS the training signal
+  - No Opus reasoning corpus by default — it was a v0.1/v0.2 addition
 
 Runs model-parallel via device_map='auto' across 2x RTX PRO 6000 Blackwell.
-LoRA targets attention modules only (q/k/v/o) to keep MoE routing intact.
 """
 
 import os
@@ -23,17 +36,16 @@ from transformers import (
     AutoModelForCausalLM,
     TrainingArguments,
     Trainer,
-    DataCollatorForLanguageModeling,
 )
-from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
-from datasets import Dataset, load_dataset
+from peft import LoraConfig, get_peft_model
+from datasets import Dataset
 
 
 MODEL_ID = "/home/alton/models/heretic-3.6-35b"
 SARTOR_ROOT = pathlib.Path("/home/alton/Sartor-claude-network")
-OUTPUT_DIR = "/home/alton/models/lora-sartor-v0.1"
-LOG_PATH = "/home/alton/training.log"
-OPUS_DATASET_DIR = pathlib.Path("/home/alton/datasets/opus-reasoning-12k")
+CORPUS_DIR = SARTOR_ROOT / "experiments/2026-04-22-overnight-training/track-C-v2-corpus"
+OUTPUT_DIR = "/home/alton/models/lora-sartor-v0.3"
+LOG_PATH = "/home/alton/training-v0.3.log"
 
 
 def log(msg):
@@ -44,210 +56,182 @@ def log(msg):
         f.write(line + "\n")
 
 
-# Block patterns per Cato's 2026-04-22 correction: reasoning traces that
-# contain any of these will be dropped, on the grounds that they would
-# teach the succession/inheritor pathology as voice rather than as a
-# prosecutable rule. See experiments/2026-04-22-overnight-training/
-# TENSION-RESOLUTION-TEAM-RECORD.md for the reasoning.
-CORPUS_BLOCK_PATTERNS = [
-    "§20",
-    "section 20",
-    "succession",
-    "inheritor",
-    "functions as",
-    "my successor",
-    "the fine-tune is",
-    "base model is the ground",
-    "transient voice",
-]
+def load_corpus():
+    """Gather all Track C v2 pairs from JSONL files.
 
-
-def gather_sartor_corpus(repeat=50):
-    """Collect Constitution + feedback + operating agreement + tension record.
-
-    Repeated `repeat` times to overweight the floor corpus against the
-    larger reasoning-traces stream. Per Cato (2026-04-22): 'Separate the
-    streams: Constitution + feedback + operating-agreement as the floor
-    corpus, reasoning traces as a style-transfer corpus with lower weight.'
+    Returns list of {"prompt": str, "response": str, "source": str}.
     """
-    paths = []
-    paths.append(SARTOR_ROOT / "sartor/memory/reference/HOUSEHOLD-CONSTITUTION.md")
-    paths.append(SARTOR_ROOT / "sartor/memory/reference/OPERATING-AGREEMENT.md")
+    pairs = []
+    sources = {
+        "primary-override": list((CORPUS_DIR / "primary-override").glob("*.jsonl")),
+        "hard-negatives": [CORPUS_DIR / "hard-negatives.jsonl"],
+        "capability-control": [CORPUS_DIR / "capability-control.jsonl"],
+    }
+    for category, paths in sources.items():
+        for p in paths:
+            if not p.exists():
+                log(f"skip missing: {p}")
+                continue
+            count = 0
+            with open(p, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        row = json.loads(line)
+                    except json.JSONDecodeError as e:
+                        log(f"bad JSON in {p}: {e}")
+                        continue
+                    prompt = row.get("prompt", "").strip()
+                    response = row.get("response", "").strip()
+                    if not prompt or not response:
+                        continue
+                    pairs.append({
+                        "prompt": prompt,
+                        "response": response,
+                        "source": f"{category}/{p.stem}",
+                    })
+                    count += 1
+            log(f"  {p.relative_to(SARTOR_ROOT)}: {count} pairs")
+    return pairs
 
-    feedback_dir = SARTOR_ROOT / "sartor/memory/feedback"
-    if feedback_dir.exists():
-        paths.extend(sorted(feedback_dir.glob("*.md")))
 
-    ratifications = SARTOR_ROOT / "sartor/memory/reference/CONSTITUTION-RATIFICATIONS"
-    if ratifications.exists():
-        paths.extend(sorted(ratifications.glob("*.md")))
+def format_example(pair, tokenizer, max_length):
+    """Format a pair as a chat-templated example with prompt masking.
 
-    tension_record = (
-        SARTOR_ROOT
-        / "experiments/2026-04-22-overnight-training/TENSION-RESOLUTION-TEAM-RECORD.md"
+    labels are -100 (ignore_index) for prompt tokens and the actual
+    token ids for response tokens — so the loss only trains the
+    model to generate the response conditional on the prompt.
+
+    The Qwen 3.6 chat template inserts <think></think> tags in the
+    assistant turn when add_generation_prompt=True but omits them when
+    rendering a full assistant message. We render the full conversation
+    and find where the response content starts by searching for the
+    response text in the decoded rendering.
+    """
+    user_msg = [{"role": "user", "content": pair["prompt"]}]
+    full_msg = user_msg + [{"role": "assistant", "content": pair["response"]}]
+
+    full_text = tokenizer.apply_chat_template(
+        full_msg, tokenize=False, add_generation_prompt=False
     )
-    if tension_record.exists():
-        paths.append(tension_record)
+    full_ids = tokenizer(full_text, add_special_tokens=False).input_ids
 
-    texts = []
-    for p in paths:
-        try:
-            txt = p.read_text(encoding="utf-8", errors="replace").strip()
-            if txt:
-                texts.append(f"<!-- SOURCE: {p.relative_to(SARTOR_ROOT)} -->\n{txt}")
-                log(f"corpus: {p.relative_to(SARTOR_ROOT)} ({len(txt):,} chars)")
-        except Exception as e:
-            log(f"skip {p}: {e}")
-    total_chars = sum(len(t) for t in texts)
-    log(f"floor corpus: {len(texts)} docs, {total_chars:,} chars, repeat={repeat}")
-    return texts * repeat
+    # Locate the response within the rendered text. Mask everything up to
+    # the first character of the response content.
+    resp_start_char = full_text.find(pair["response"])
+    if resp_start_char < 0:
+        # Rare: response contains characters the template mangled
+        # (unlikely for plain prose). Fall back to no masking.
+        labels = full_ids[:]
+    else:
+        prefix_text = full_text[:resp_start_char]
+        prefix_ids = tokenizer(prefix_text, add_special_tokens=False).input_ids
+        labels = [-100] * len(prefix_ids) + full_ids[len(prefix_ids):]
+        # Guard against length drift from tokenization boundary effects
+        if len(labels) != len(full_ids):
+            labels = labels[:len(full_ids)]
+            while len(labels) < len(full_ids):
+                labels.append(full_ids[len(labels)])
 
+    if len(full_ids) > max_length:
+        full_ids = full_ids[:max_length]
+        labels = labels[:max_length]
 
-def _text_is_blocked(text):
-    low = text.lower()
-    return any(pat.lower() in low for pat in CORPUS_BLOCK_PATTERNS)
-
-
-def _render_messages(msgs, tokenizer):
-    """Render a list of {role, content} dicts into a single text blob.
-
-    Uses the tokenizer's chat_template when available so the rendered
-    text matches what the model sees at inference time. Falls back to
-    a simple "role: content" join when no template is present.
-    """
-    try:
-        if tokenizer.chat_template:
-            return tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=False)
-    except Exception:
-        pass
-    parts = []
-    for m in msgs:
-        if not isinstance(m, dict):
-            continue
-        role = m.get("role", "") or ""
-        content = m.get("content", "") or ""
-        if content:
-            parts.append(f"{role}: {content}")
-    return "\n\n".join(parts)
+    attention_mask = [1] * len(full_ids)
+    return {
+        "input_ids": full_ids,
+        "labels": labels,
+        "attention_mask": attention_mask,
+    }
 
 
-def load_opus_reasoning(tokenizer, max_examples=3000):
-    """Load Opus 4.6 reasoning 12k, filtered to exclude succession-axis contamination.
-
-    Handles both legacy prompt/response schema and the current chat-messages
-    schema (list of {role, content}) used by the Jongsim/claude-opus-4.6-
-    reasoning-12k dataset.
-    """
-    if not OPUS_DATASET_DIR.exists():
-        log("WARNING: opus reasoning dataset dir not found, skipping")
-        return []
-    try:
-        ds = load_dataset("json", data_files=str(OPUS_DATASET_DIR / "**/*.json*"), split="train")
-    except Exception:
-        try:
-            ds = load_dataset("parquet", data_files=str(OPUS_DATASET_DIR / "**/*.parquet"), split="train")
-        except Exception as e:
-            log(f"opus dataset load failed: {e}")
-            return []
-    log(f"opus dataset loaded: {len(ds)} examples, columns: {ds.column_names}")
-
-    texts = []
-    blocked = 0
-    skipped_empty = 0
-    for i, ex in enumerate(ds):
-        if len(texts) >= max_examples:
-            break
-        combined = ""
-        # Chat-messages schema (current Jongsim format)
-        if "messages" in ex and ex["messages"]:
-            combined = _render_messages(ex["messages"], tokenizer)
-        # Legacy prompt/response schema (fallback)
-        if not combined:
-            parts = []
-            for k in ("prompt", "question", "instruction", "input"):
-                if k in ex and ex[k]:
-                    parts.append(str(ex[k]))
-                    break
-            for k in ("response", "reasoning", "output", "completion", "answer", "trace"):
-                if k in ex and ex[k]:
-                    parts.append(str(ex[k]))
-            combined = "\n\n".join(parts)
-        if not combined.strip():
-            skipped_empty += 1
-            continue
-        if _text_is_blocked(combined):
-            blocked += 1
-            continue
-        texts.append(combined)
-    log(f"opus dataset sampled: {len(texts)} kept, {blocked} blocked by Cato-rule, "
-        f"{skipped_empty} empty/unparsed")
-    return texts
+def pad_collate(batch, pad_id, max_len=None):
+    """Right-pad a batch of variable-length examples."""
+    if max_len is None:
+        max_len = max(len(ex["input_ids"]) for ex in batch)
+    input_ids = []
+    labels = []
+    attention_mask = []
+    for ex in batch:
+        n = len(ex["input_ids"])
+        pad_n = max_len - n
+        input_ids.append(ex["input_ids"] + [pad_id] * pad_n)
+        labels.append(ex["labels"] + [-100] * pad_n)
+        attention_mask.append(ex["attention_mask"] + [0] * pad_n)
+    return {
+        "input_ids": torch.tensor(input_ids, dtype=torch.long),
+        "labels": torch.tensor(labels, dtype=torch.long),
+        "attention_mask": torch.tensor(attention_mask, dtype=torch.long),
+    }
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--seq-len", type=int, default=4096)
-    parser.add_argument("--batch-size", type=int, default=2)
-    parser.add_argument("--grad-accum", type=int, default=16)
-    parser.add_argument("--epochs", type=int, default=3)
-    parser.add_argument("--lr", type=float, default=2e-4)
-    parser.add_argument("--lora-rank", type=int, default=64)
-    parser.add_argument("--lora-alpha", type=int, default=128)
-    parser.add_argument("--max-opus-examples", type=int, default=3000)
-    parser.add_argument("--floor-repeats", type=int, default=50,
-                        help="how many times to repeat the sartor floor corpus "
-                             "to overweight it vs reasoning traces (Cato rule)")
-    parser.add_argument("--lora-targets", default="all-linear",
-                        help="peft target_modules — 'all-linear' covers attention, "
-                             "MLP, expert, and SSM projections on the Qwen 3.6 hybrid; "
-                             "supply a comma-separated list to override")
-    parser.add_argument("--dry-run", action="store_true", help="tokenize only, no training")
+    parser.add_argument("--seq-len", type=int, default=2048,
+                        help="max tokens per example; longer examples truncated")
+    parser.add_argument("--batch-size", type=int, default=2,
+                        help="per-device batch size")
+    parser.add_argument("--grad-accum", type=int, default=8,
+                        help="gradient accumulation steps; effective batch = batch * accum")
+    parser.add_argument("--epochs", type=int, default=1)
+    parser.add_argument("--lr", type=float, default=5e-5)
+    parser.add_argument("--lora-rank", type=int, default=16)
+    parser.add_argument("--lora-alpha", type=int, default=32)
+    parser.add_argument("--lora-targets", default="q_proj,k_proj,v_proj,o_proj",
+                        help="comma-separated PEFT target_modules or 'all-linear'")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="tokenize only, no model load or training")
     args = parser.parse_args()
 
-    log(f"=== TRAINING START ===")
+    log(f"=== TRAINING v0.3 START ===")
     log(f"args: {vars(args)}")
-    log(f"torch {torch.__version__}, CUDA {torch.cuda.is_available()}, devices {torch.cuda.device_count()}")
+    log(f"torch {torch.__version__}, CUDA {torch.cuda.is_available()}, "
+        f"devices {torch.cuda.device_count()}")
 
     log("loading tokenizer...")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, trust_remote_code=True)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    log("gathering Sartor corpus...")
-    sartor_texts = gather_sartor_corpus(repeat=args.floor_repeats)
-    log(f"sartor texts after {args.floor_repeats}x repeat: {len(sartor_texts)}")
-
-    log("loading Opus reasoning traces (Cato-filtered)...")
-    opus_texts = load_opus_reasoning(tokenizer, max_examples=args.max_opus_examples)
-
-    all_texts = sartor_texts + opus_texts
-    log(f"total text units: {len(all_texts)}")
-
-    log("tokenizing and packing into fixed-length windows...")
-    all_ids = []
-    for t in all_texts:
-        ids = tokenizer(t, add_special_tokens=False).input_ids
-        all_ids.extend(ids)
-        all_ids.append(tokenizer.eos_token_id)
-    log(f"total tokens: {len(all_ids):,}")
-
-    seq_len = args.seq_len
-    chunks = [all_ids[i:i + seq_len] for i in range(0, len(all_ids) - seq_len + 1, seq_len)]
-    log(f"packed into {len(chunks)} windows of {seq_len} tokens")
-
-    if not chunks:
-        log("FATAL: no training chunks after tokenization")
+    log(f"loading corpus from {CORPUS_DIR}")
+    pairs = load_corpus()
+    log(f"total pairs loaded: {len(pairs)}")
+    if not pairs:
+        log("FATAL: no pairs loaded")
         sys.exit(1)
 
-    dataset = Dataset.from_dict({
-        "input_ids": chunks,
-        "labels": chunks,
-        "attention_mask": [[1] * seq_len for _ in chunks],
-    })
+    # Distribution by source
+    by_source = {}
+    for p in pairs:
+        by_source[p["source"]] = by_source.get(p["source"], 0) + 1
+    for src, n in sorted(by_source.items()):
+        log(f"  {src}: {n}")
+
+    log("formatting + tokenizing...")
+    examples = []
+    dropped = 0
+    for p in pairs:
+        ex = format_example(p, tokenizer, args.seq_len)
+        if len(ex["input_ids"]) < 10:
+            dropped += 1
+            continue
+        examples.append(ex)
+    log(f"formatted {len(examples)} examples, dropped {dropped}")
+
+    lens = [len(ex["input_ids"]) for ex in examples]
+    log(f"length stats: min={min(lens)}, max={max(lens)}, "
+        f"mean={sum(lens)/len(lens):.0f}, median={sorted(lens)[len(lens)//2]}")
+
+    dataset = Dataset.from_list(examples)
     log(f"dataset prepared: {len(dataset)} examples")
 
     if args.dry_run:
         log("dry-run, exiting before model load")
+        sample = examples[0]
+        decoded = tokenizer.decode(sample["input_ids"][:300])
+        log(f"sample prompt text[:300 tokens decoded]: {decoded[:600]}")
         return
 
     log("loading base model (bf16, device_map='auto')...")
@@ -259,21 +243,16 @@ def main():
         low_cpu_mem_usage=True,
     )
     log("base model loaded")
-    log(f"device map: {json.dumps({k: str(v) for k, v in list(model.hf_device_map.items())[:5]}) if hasattr(model, 'hf_device_map') else 'n/a'} ...")
 
     model.gradient_checkpointing_enable()
     model.enable_input_require_grads()
 
-    log(f"attaching LoRA adapters (rank={args.lora_rank}, alpha={args.lora_alpha}, "
-        f"targets={args.lora_targets})...")
-    # Qwen 3.6 is a hybrid attention + SSM MoE; attention-only LoRA misses ~70%
-    # of the trainable surface. "all-linear" enumerates every nn.Linear which
-    # covers attention q/k/v/o, MoE expert up/gate/down, SSM projections, and
-    # the router gate. Per rtx-claude-review.md §3 (2026-04-22).
     if args.lora_targets == "all-linear":
         target_modules = "all-linear"
     else:
         target_modules = [t.strip() for t in args.lora_targets.split(",") if t.strip()]
+    log(f"attaching LoRA: rank={args.lora_rank}, alpha={args.lora_alpha}, "
+        f"targets={target_modules}")
     lora_cfg = LoraConfig(
         r=args.lora_rank,
         lora_alpha=args.lora_alpha,
@@ -285,10 +264,8 @@ def main():
     model = get_peft_model(model, lora_cfg)
     model.print_trainable_parameters()
 
-    data_collator = DataCollatorForLanguageModeling(
-        tokenizer=tokenizer,
-        mlm=False,
-    )
+    pad_id = tokenizer.pad_token_id
+    collator = lambda b: pad_collate(b, pad_id)
 
     training_args = TrainingArguments(
         output_dir=OUTPUT_DIR,
@@ -298,12 +275,12 @@ def main():
         gradient_checkpointing=True,
         learning_rate=args.lr,
         lr_scheduler_type="cosine",
-        warmup_steps=100,
-        logging_steps=10,
-        save_steps=500,
-        save_total_limit=3,
+        warmup_ratio=0.05,
+        logging_steps=5,
+        save_steps=200,
+        save_total_limit=2,
         bf16=True,
-        optim="adamw_bnb_8bit",
+        optim="adamw_torch",
         report_to="none",
         remove_unused_columns=False,
         dataloader_num_workers=2,
@@ -313,7 +290,7 @@ def main():
         model=model,
         args=training_args,
         train_dataset=dataset,
-        data_collator=data_collator,
+        data_collator=collator,
     )
 
     log("=== TRAINER START ===")
