@@ -391,6 +391,17 @@ Two new events created today (2026-04-17) that were not in any prior run:
 > [!todo] UPDATE CALENDAR — Cougar Pride Day
 > Family calendar still shows Apr 25. MKA email moved event to Sun Apr 26, 11am–3pm, Van Brunt Field. Update the Google Calendar entry manually.
 
+## Latest from gather (2026-04-24) — run 16
+
+> [!fact] DANCE CONCERT TIME — Z-ANCHORED, 9:40 AM ET CONFIRMED
+> Run 16 API returns `start: 2026-04-30T13:40:00Z` (explicit Z = UTC). 13:40 UTC in EDT (UTC-4) = **9:40 AM ET**. Prior debate (run 8: 1:40 PM local vs. runs 14/15: 9:40 AM UTC-derived) is now settled by the Z suffix. The original table entry "09:40-11:00" was correct throughout. Verify with MKA before Apr 30 given sole-parent day. See [[family/active-todos]] and [[vayu]].
+
+> [!note] Cougar Pride Day — Google Calendar NOT updated, 4th consecutive run
+> Family calendar still shows Saturday April 25 (`2026-04-25T15:00:00Z` = 11am ET). MKA email Apr 22 moved event to **Sunday April 26, 11am–3pm, Van Brunt Field**. Calendar entry has NOT been corrected through runs 13–16. Treat MKA email as authoritative. Update Google Calendar manually.
+
+> [!note] Gmail MCP still expired — run 16 (4th cycle)
+> No new email data. 14 ACTION_REQUIRED items carry forward.
+
 ## Latest from gather (2026-04-24) — run 13
 
 > [!fact] TODAY — Vishala spring concert complete (or in progress)

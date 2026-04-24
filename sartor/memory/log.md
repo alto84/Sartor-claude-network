@@ -37,6 +37,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-24] ingest | personal-data-gather run 16: Gmail still expired (4th cycle); dance concert time Z-anchored at 9:40 AM ET
+- BLOCKER: Gmail MCP token still expired — fourth consecutive cycle (runs 13–16 all affected today); 14 open action items carry forward from run 12 unchanged
+- CALENDAR: All 5 calendars queried 4/24–5/1; 0 net new events; state unchanged from run 15
+- NEW FACT: Vayu spring dance concert Apr 30 — API now returns `2026-04-30T13:40:00Z` (Z suffix = UTC); 13:40 UTC = 9:40 AM EDT; definitively settles run 8 vs runs 14/15 dispute; original 9:40 AM table entry was correct; verify with MKA recommended
+- Cougar Pride Day calendar discrepancy persists (4th run) — Family calendar still shows Sat Apr 25; MKA email is authoritative for Sun Apr 26
+- SSH: unavailable in execution environment; machine 52271 offline status unresolved since Apr 22
+- Pages updated: `daily/2026-04-24.md` (run 16 appended), `family/active-todos.md` (run 16 appended), `family/family-calendar.md` (run 16 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (14 open items + Gmail blocker), `data/heartbeat-log.csv` written
+
 ## [2026-04-24] ingest | personal-data-gather run 15: Gmail still expired (3rd cycle); calendar stable; proximity flags
 - BLOCKER: Gmail MCP token still expired — third consecutive cycle today; 14 open action items carry forward from run 12 unchanged
 - CALENDAR: All 5 calendars queried 4/24–5/1; 0 net new events; state unchanged from run 14

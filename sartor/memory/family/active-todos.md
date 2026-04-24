@@ -762,6 +762,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!deadline] 2026-04-30 (6 days)
 > Hiive Kalshi funding deadline — no action recorded since run 8. Review and decide.
 
+## Latest from gather (2026-04-24) — run 16
+
+> [!note] Gmail MCP still expired — run 16 (4th consecutive cycle)
+> No new email data. 14 open ACTION_REQUIRED items carry forward unchanged from run 12. Gmail token reauthorization required before next run.
+
+> [!fact] DANCE CONCERT TIME SETTLED — 9:40 AM ET
+> This run's calendar API returns `2026-04-30T13:40:00Z` (Z suffix = UTC). 13:40 UTC = **9:40 AM EDT**. Prior ambiguity arose from run 8's `13:40:00` without Z (interpreted as local 1:40 PM ET). The Z-anchored reading is unambiguous. Best working answer: **Vayu spring dance concert April 30 at 9:40–11:00 AM ET.** Verify with MKA given sole-parent logistics that day (Aneeta at RRE; Vasu also has Goddard picture day). Alton must be at MKA by ~9:25 AM. See [[vayu]] and [[family/family-calendar]].
+
 ## Latest from gather (2026-04-24) — run 13
 
 > [!warning] OPERATIONAL BLOCKER — Gmail MCP token expired
