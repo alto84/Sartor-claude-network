@@ -190,4 +190,5 @@ None of these changes alter the semantic content of the three files, only their 
 
 ## History
 
+- 2026-04-24 (evening): All 7 proposals approved by team-lead and landed in INDEX.md as binding conventions. Status moved `proposal` → `adopted`. team-lead's one addition (bidirectional supersession via `supersedes:` field on the new file) integrated. Backing artifacts: `adapters/_TEMPLATE/lineage.yaml`, `adapters/lora-sartor-v0.3/lineage.yaml` (backfilled with TODO-backfill markers), `ONBOARDING.md`. Experiment file renamed to `001_2026-04-25_loyalty-baseline-fingerprint.md`. RESEARCH-LOG.md entry written. See [[RESEARCH-LOG#2026-04-24 22:30 UTC]] for the operational summary.
 - 2026-04-24: Drafted. Four mechanical edits applied (research/INDEX.md cross-link + three frontmatter passes). Seven substantive proposals pending team-lead review.
