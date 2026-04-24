@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-24
 updated_by: personal-data-gather
-run: 14
+run: 15
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-24] ingest | personal-data-gather run 15: Gmail still expired (3rd cycle); calendar stable; proximity flags
+- BLOCKER: Gmail MCP token still expired — third consecutive cycle today; 14 open action items carry forward from run 12 unchanged
+- CALENDAR: All 5 calendars queried 4/24–5/1; 0 net new events; state unchanged from run 14
+- PROXIMITY: Vayu soccer game TOMORROW (Apr 25, 11am, Watchung School Field); Berman install starts Mon Apr 27 (3 days); sole-parent window (Aneeta at RRE) begins Apr 29 (5 days); Hiive Kalshi deadline Apr 30 (6 days)
+- Cougar Pride Day calendar discrepancy persists — Family calendar shows Sat Apr 25, MKA email authoritative for Sun Apr 26
+- SSH: unavailable in execution environment; machine 52271 offline status unresolved since Apr 22
+- Pages updated: `daily/2026-04-24.md` (run 15 appended), `family/active-todos.md` (run 15 appended), `family/family-calendar.md` (run 15 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (14 open items + Gmail blocker), `data/heartbeat-log.csv` appended
 
 ## [2026-04-24] ingest | personal-data-gather run 14: Gmail still expired; dance concert time re-verified; calendar stable
 - BLOCKER: Gmail MCP token still expired — second consecutive cycle; 14 open action items carry forward from run 12 unchanged

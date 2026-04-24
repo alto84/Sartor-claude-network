@@ -383,6 +383,14 @@ Two new events created today (2026-04-17) that were not in any prior run:
 > [!note] Gmail MCP still expired — run 14
 > Token expired since run 13. No email intelligence this cycle. Calendar stable; 14 ACTION_REQUIRED items carry forward.
 
+## Latest from gather (2026-04-24) — run 15
+
+> [!note] Calendar stable — run 15
+> All 5 calendars queried. No changes vs run 14. Events confirmed: Vayu soccer game tomorrow (Apr 25, 11am, Watchung School Field), Berman install Apr 27–29, Aneeta at RRE Apr 29–May 3, Vayu dance concert Apr 30 9:40am (unverified — verify with MKA). Cougar Pride Day calendar discrepancy persists (Family calendar: Apr 25, MKA email: Apr 26 Van Brunt Field).
+
+> [!todo] UPDATE CALENDAR — Cougar Pride Day
+> Family calendar still shows Apr 25. MKA email moved event to Sun Apr 26, 11am–3pm, Van Brunt Field. Update the Google Calendar entry manually.
+
 ## Latest from gather (2026-04-24) — run 13
 
 > [!fact] TODAY — Vishala spring concert complete (or in progress)

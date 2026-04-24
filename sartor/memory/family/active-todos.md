@@ -751,6 +751,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!note] Gmail MCP still expired — run 14
 > No new email data. 14 open items carry forward unchanged. See `data/gather-alerts.md` for ranked list.
 
+## Latest from gather (2026-04-24) — run 15
+
+> [!note] Gmail MCP still expired — run 15 (3rd consecutive cycle)
+> No new email data. 14 open ACTION_REQUIRED items carry forward unchanged. Token must be reauthorized.
+
+> [!warning] PROXIMITY — sole-parent window + installation overlap in 5 days
+> Aneeta departs for RRE on Apr 29 (returns ~May 3). Berman installation runs Apr 27–29 (technicians at home daily). On Apr 30, Alton must cover Vayu dance concert (9:40 AM, MKA — time unverified), Vasu's Goddard drop-off, and Rec Soccer practice Apr 29 5:30 PM — all without Aneeta. Verify dance concert time with MKA before Apr 30.
+
+> [!deadline] 2026-04-30 (6 days)
+> Hiive Kalshi funding deadline — no action recorded since run 8. Review and decide.
+
 ## Latest from gather (2026-04-24) — run 13
 
 > [!warning] OPERATIONAL BLOCKER — Gmail MCP token expired
