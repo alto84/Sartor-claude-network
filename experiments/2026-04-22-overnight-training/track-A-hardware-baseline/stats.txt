@@ -1,0 +1,11 @@
+samples: 382
+GPU 0:
+  max edge temp: 31.0C
+  max memory temp: 0.0C
+  max power: 10.33W
+  max fan: 30.0%
+GPU 1:
+  max edge temp: 29.0C
+  max memory temp: 0.0C
+  max power: 19.74W
+  max fan: 30.0%
