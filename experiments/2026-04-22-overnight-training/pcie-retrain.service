@@ -1,0 +1,23 @@
+[Unit]
+Description=PCIe link retrain for RTX PRO 6000 Blackwell cards that downgrade to Gen 1
+Documentation=file:///home/alton/Sartor-claude-network/experiments/2026-04-22-overnight-training/PLAN.md
+After=multi-user.target
+Before=nvidia-persistenced.service docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/pcie-retrain.sh
+RemainAfterExit=no
+StandardOutput=append:/var/log/pcie-retrain.log
+StandardError=append:/var/log/pcie-retrain.log
+
+[Install]
+WantedBy=multi-user.target
+
+# Install with:
+#   sudo cp pcie-retrain.sh /usr/local/sbin/
+#   sudo chmod 755 /usr/local/sbin/pcie-retrain.sh
+#   sudo cp pcie-retrain.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable pcie-retrain.service
+#   sudo systemctl start pcie-retrain.service   # test

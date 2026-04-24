@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-21
+updated: 2026-04-24
 updated_by: personal-data-gather
-run: 1
+run: 14
 
 status: active
 priority: p1
@@ -629,3 +629,162 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact]
 > **Alton commuted to NYC by car today (Apr 21).** SpotHero parking: 35 W 33rd St Valet Garage, 8:30 AM–8:30 PM, Rental ID 121455066. NYC commute research item (switch to NJ Transit) remains open.
+## Latest from gather (2026-04-22)
+
+> [!warning] TODAY — three-event stack
+> **Apr 22 triple-event evening is happening now.** Final reminder email received this morning confirms Vayu Band Concert at 7pm (6:30pm student arrival).
+> - **4:20–5:20 PM**: Vasu Recycling Costume Parade (Goddard)
+> - **5:30–6:15 PM**: Vayu Rec Soccer Practice (Anderson Park)
+> - **6:30 PM student arrival / 7:00 PM concert**: Vayu Spring Band Concert (MKA)
+>
+> Soccer ends 6:15 PM; concert arrival 6:30 PM — 15-min window. Split parent coverage is the only path. Soccer is skippable; Band concert is not. See [[family/vayu]].
+
+> [!deadline] 2026-04-28
+> **MKA Grandparents & Special Friends Day — Tuesday April 28.** Email from kflippin@mka.org (Apr 21): reminder sent to all registered guests. Overlaps with Berman install day 2 (techs arrive 9am). Confirm: are Sartor grandparents registered and attending? If so, plan logistics — Berman techs will be in the house that morning.
+
+> [!fact]
+> **RESOLVED: Perlis Clothing order #1000106032 delivered Apr 21.** ShipStation tracking confirmation received. Closes the pending FedEx delivery flagged in Apr 18 run.
+
+> [!note]
+> **All 4 prior ACTION_REQUIRED items remain open:** (1) Mike Silva reply to mike@acrosscap.com, (2) Guidepoint / Yasmin Goodman accept/decline (ygoodman@guidepointglobal.com), (3) EquityZen catch-up (georgia.edwards@equityzen.com), (4) Disney ADR — respond to Nicol Stevenson before 2026-05-17.
+
+## Latest from gather (2026-04-22) — run 3
+
+> [!warning] P0 — GPU BUSINESS: Machine 52271 OFFLINE, active client affected
+> Two vast.ai emails received this morning:
+> - **2:35 AM UTC**: automated alert — machine 52271 offline
+> - **5:27 AM UTC**: Saber (saber@contact.vast.ai), vast.ai support engineer — a rental client contacted vast.ai and is waiting for a status update
+>
+> **Actions required:**
+> 1. Check gpuserver1 (192.168.1.100) — SSH or physically inspect; verify power, Kaalia daemon, Docker
+> 2. Reply to saber@contact.vast.ai with machine status for the affected client
+> 3. Once back online: verify vast.ai listing is restored and machine 52271 is listed
+>
+> See [[MACHINES]] for diagnostic steps. This is a business-reputation event — a paying client is waiting.
+
+## Latest from gather (2026-04-22) — run 6
+
+> [!todo] ACTION_REQUIRED — pay promptly
+> **Venmo request: Rachelle trammel $270.00 for Vishala childcare.** Dates: 4/14, 4/16, 4/21. This is likely the regular after-school or weekend childcare provider. Pay via Venmo to @Rachelle-trammel if correct.
+
+> [!todo] ACTION_REQUIRED — watch for update
+> **Vayu soccer Apr 25 field change.** Two Blue Sombrero emails received: (1) club-wide notice that "one of our main fields this Saturday" is blocked by an Essex County event at the stadium; (2) B34-Lime team schedule updated. New game time/location not yet in email snippet. Check Blue Sombrero app or email for revised schedule before Saturday. Brookdale Park Field 1 (original venue) may be affected. See [[vayu]].
+
+> [!todo] Priority: P2
+> **Cadoo Medical PC — $765.21 balance due.** Statement received Apr 22 from noreply@tebra.com for "Emmett" (Vayu), Cadoo Medical PC (NJ). Pay via portal link in the email. No explicit due date in snippet — treat as 30-day.
+
+> [!warning] NEW CONFLICT — Sunday April 26
+> **Wohelo Little Assembly (noon ET, online, Vishala) vs Cougar Pride Day (11 AM–3 PM, Van Brunt Field MKA).** Both fall on Sunday April 26. Wohelo Assembly is 30 min, online — likely joinable via phone/tablet from the field. Decide before Sunday: will Vishala attend Cougar Pride in person and join Wohelo Assembly on a device at noon, or does one event need to yield? See [[vishala]] and [[family-calendar]].
+
+> [!fact] CALENDAR CHANGE — Cougar Pride Day moved to Sunday Apr 26
+> MKA emailed at 6:15 PM ET Apr 22: Cougar Pride Day moved from **Saturday April 25** to **Sunday April 26, 11:00 AM–3:00 PM, Van Brunt Field**. Reason: inclement weather forecast. This RESOLVES the prior Sat Apr 25 soccer-vs-Cougar-Pride conflict. The live Family calendar has not yet been updated (still shows Sat Apr 25) — treat MKA email as authoritative. See [[family-calendar]].
+
+## Latest from gather (2026-04-22) — run 4
+
+> [!todo] ACTION_REQUIRED
+> **NEW Guidepoint consultation — 5T4 ADC Programs (#1730583).** jfarenden@guidepointglobal.com, received 09:30 UTC Apr 22. Fourth active Guidepoint consultation this cycle: (1) Yasmin Goodman / Clinical Trial Technology Solutions (formal accept/decline pending), (2) Valerie Villareal / Pediatric Low-Grade Glioma Market (#1718071, Apr 13), (3) atshela / AI Adoption in Biotech/CRO/Pharma (#1720868, Apr 20). This one — 5T4 ADC Programs — is oncology/pharma (5T4 = oncofetal antigen, ADC = antibody-drug conjugate program landscape). Accept or decline. See [[ALTON]] for advisory opportunity log.
+
+## Latest from gather (2026-04-23) — run 8
+
+> [!deadline] 2026-05-01
+> **NEW: Hiive SpaceX Opportunity — review before May 1.** opportunities@mail.hiive.com (Apr 23 00:24 UTC): "Please note that the target funding deadline for this opportunity is Friday, May 1st." Subject: "SpaceX Opportunity." SpaceX is a pre-IPO private company. This is a **third distinct Hiive opportunity** this cycle: (1) Hiive/Kalshi — Apr 30, (2) Hiive/Zipline — May 1, (3) Hiive/SpaceX — May 1. All three deadlines fall within 8 days. Review at Hiive before May 1. See [[ALTON]] for investment opportunity log.
+
+> [!warning] DATA CORRECTION — Vayu spring dance concert Apr 30 is at 1:40 PM ET (NOT 9:40 AM)
+> **Live calendar API confirms `start: 2026-04-30T13:40:00, timeZone: America/New_York` = 1:40–3:00 PM ET.** Prior active-todos and family-calendar entries showed 09:40 (which incorrectly treated 13:40 as UTC). The event has an explicit America/New_York timezone, making 13:40 = 1:40 PM Eastern.
+>
+> Critical for sole-parent planning: Aneeta is at RRE all day Apr 30. Alton is sole parent. Plan to leave work/school by ~1:15 PM ET to arrive at MKA by 1:30 PM. Also note: Vasu has picture day at Goddard the same day. See [[vayu]] and [[family/family-calendar]].
+
+## Latest from gather (2026-04-23) — run 7
+
+> [!deadline] 2026-04-24 08:00 AM — TOMORROW
+> **Vishala spring concert at MKA.** Parent needed by 8:00 AM Friday April 24. Confirmed from Family calendar (`2026-04-24T08:00:00-04:00`). Women's center dinner same evening 6–7 PM (no conflict with concert). See [[vishala]] and [[family-calendar]].
+
+> [!fact]
+> **Vayu soccer Apr 25 location CONFIRMED: Watchung School Field, Field 1.** Blue Sombrero calendar updated 2026-04-22T23:19:57Z. Game: B34 Purple vs B34 Lime. Time: 11:00 AM–12:00 PM ET. Venue: Watchung School Field, Field 1, North Fullerton Ave, Montclair NJ 07042. (Brookdale Park was original venue; Essex County event blocked it Apr 22.) Conflict with Cougar Pride Day (now moved to Sun Apr 26) is resolved — soccer Sat Apr 25, Cougar Pride Sun Apr 26. See [[vayu]] and [[family-calendar]].
+
+> [!fact]
+> **MyKidsSpending: Vayu's MKA lunch account funded.** Chase debited $101.75 ($100.00 deposit + $1.75 service charge) for Vayu Sartor's MKA school account at MyKidsSpending (mykidsspending.com). Account active as of 2026-04-22. INFORMATIONAL — no action needed.
+
+> [!todo] ACTION_REQUIRED — carry forward from run 6
+> **Venmo $270.00 to Rachelle trammel.** Childcare for Vishala on 4/14, 4/16, 4/21. Pay to @Rachelle-trammel on Venmo. No payment confirmation found. See [[vishala]].
+
+## Latest from gather (2026-04-23) — run 9
+
+> [!todo] ACTION_REQUIRED — FINANCIAL
+> **Town of Brookline MA Invoice #2026REQ4-7583028.** Invoice received 2026-04-23 07:06 UTC via OneClickPay/InvoiceCloud (no-reply@invoicecloud.net). Addressed to "SARTOR EMMETT ALTON + SAXENA ANEETA RANI." Card on file shown as "XX9425" (old Chase Sapphire now replaced). Sartor family is in Montclair NJ — Brookline MA connection unclear from snippet (prior address? utility account? property?). **Actions:** (1) Review invoice at InvoiceCloud to determine the account/property. (2) Confirm whether this is a legitimate obligation. (3) Update payment method from card 9425 if applicable (card was replaced Apr 13).
+
+> [!warning] DATA CORRECTION — Vayu spring dance concert time (run 8 was wrong)
+> **Vayu spring dance concert (Thu Apr 30) is at 9:40–11:00 AM ET, NOT 1:40 PM.** Run 8 "corrected" to 1:40 PM citing `2026-04-30T13:40:00`; current live API returns `2026-04-30T09:40:00-04:00` — unambiguous 9:40 AM Eastern. The base family-calendar.md also shows 09:40. Run 8's correction was wrong; the original time was right.
+>
+> **Revised Apr 30 sole-parent logistics (Aneeta at RRE all day):**
+> - Concert at MKA **9:40 AM** — Alton must be at MKA before 9:30 AM. NYC commute not viable that morning.
+> - Vasu picture day at Goddard — coordinate drop-off before 9:40 AM or with Amarkanth.
+> - Consider: can the three kids be dropped at school before the concert? Vayu attends MKA so concert logistics may align with school drop-off.
+> See [[vayu]] and [[family/family-calendar]].
+
+## Latest from gather (2026-04-23) — run 11
+
+> [!warning] TODAY — Lucent Energy 85 Stonebridge meeting status UNCERTAIN
+> **Engineering plan meeting was "SCHEDULED for Thursday 2026-04-23, after 3 PM" per Apr 16 triage.** The last email in the Lucent Energy thread is Alton on Apr 17 offering "next Thursday afternoon after 3pm." No formal confirmation from Niko Markanovic (Niko@lucent-energy.com) is visible in inbox. Alton is in NYC today (SpotHero parking at 35 W 33rd St through 8:30 PM). If meeting is on-site at 85 Stonebridge, Alton needs to leave NYC by ~2 PM. Verify: (1) Did Niko confirm? (2) Is meeting remote or on-site? (3) If unconfirmed, reschedule with Lucent now.
+>
+> Thread participants: Niko Markanovic (Niko@lucent-energy.com), Doug Paige (doug.paige@lucent-energy.com), Audrey Vera (audrey.vera@lucent-energy.com). See [[business/solar-inference]].
+
+> [!fact]
+> **Claude Opus 4.7 released this week.** Confirmed via Zvi Mowshowitz newsletter AI #165 (Apr 23): "This was the week of Claude Opus 4.7." Model ID: claude-opus-4-7. Research note for AI/ML tracking. See [[ASTRAZENECA]] and [[business/az-career]] for professional context.
+
+## Latest from gather (2026-04-23) — run 12
+
+> [!todo] ACTION_REQUIRED — accept or decline
+> **NEW Guidepoint consultation — Global Oncology Specialists (#1732882).** Owen Taylor (otaylor@guidepointglobal.com), received Apr 23. This is the **fifth distinct Guidepoint inquiry this cycle**: (1) Yasmin Goodman / Clinical Trial Technology Solutions (formal request pending), (2) Valerie Villareal / Pediatric Low-Grade Glioma Market (#1718071), (3) atshela / AI Adoption in Biotech/CRO/Pharma (#1720868), (4) jfarenden / 5T4 ADC Programs (#1730583). This one — Global Oncology Specialists — is a separate engagement. Accept or decline. See [[ALTON]] for advisory opportunity log.
+
+> [!todo] ACTION_REQUIRED — reply
+> **LinkedIn NYC Dinner: Human Signal & Evaluation.** Elena Poughia (hit-reply@linkedin.com) is organizing a small dinner for 10 senior operators in NYC focused on "scaling human feedback and evaluation infra." Alton is invited based on his AstraZeneca AI/ML leadership work. No event date in snippet. Reply to accept or decline. Networking; relevant to AZ AI role.
+
+> [!todo] P2 — this week
+> **Vasu Show and Tell — Letter B.** Clarissa Black (Goddard School) sent reminder today (Apr 23): this week's Show and Tell letter is B. Examples: Boat, Bell, Baby, Ball, Bear. Vasu needs to bring something starting with B to school this week. See [[family/vasu]].
+
+## Latest from gather (2026-04-24) — run 14
+
+> [!warning] VERIFY — Vayu spring dance concert Apr 30 time conflict
+> Today's live calendar API returns `start: 2026-04-30T09:40:00-04:00` = **9:40–11:00 AM ET**. This contradicts run 8's correction to 1:40 PM ET, which itself contradicted the original 9:40 AM entry. Run 9 also called the 9:40 AM reading correct. The API today uses an explicit `-04:00` offset — no UTC ambiguity. The original time (9:40 AM) appears correct. **Verify directly with MKA before Apr 30.** Apr 30 is a sole-parent day (Aneeta at RRE). Vasu also has picture day at Goddard. Alton must be at MKA by ~9:25 AM and handle Goddard drop-off beforehand. See [[vayu]] and [[family/family-calendar]].
+
+> [!note] Gmail MCP still expired — run 14
+> No new email data. 14 open items carry forward unchanged. See `data/gather-alerts.md` for ranked list.
+
+## Latest from gather (2026-04-24) — run 15
+
+> [!note] Gmail MCP still expired — run 15 (3rd consecutive cycle)
+> No new email data. 14 open ACTION_REQUIRED items carry forward unchanged. Token must be reauthorized.
+
+> [!warning] PROXIMITY — sole-parent window + installation overlap in 5 days
+> Aneeta departs for RRE on Apr 29 (returns ~May 3). Berman installation runs Apr 27–29 (technicians at home daily). On Apr 30, Alton must cover Vayu dance concert (9:40 AM, MKA — time unverified), Vasu's Goddard drop-off, and Rec Soccer practice Apr 29 5:30 PM — all without Aneeta. Verify dance concert time with MKA before Apr 30.
+
+> [!deadline] 2026-04-30 (6 days)
+> Hiive Kalshi funding deadline — no action recorded since run 8. Review and decide.
+
+## Latest from gather (2026-04-24) — run 16
+
+> [!note] Gmail MCP still expired — run 16 (4th consecutive cycle)
+> No new email data. 14 open ACTION_REQUIRED items carry forward unchanged from run 12. Gmail token reauthorization required before next run.
+
+> [!fact] DANCE CONCERT TIME SETTLED — 9:40 AM ET
+> This run's calendar API returns `2026-04-30T13:40:00Z` (Z suffix = UTC). 13:40 UTC = **9:40 AM EDT**. Prior ambiguity arose from run 8's `13:40:00` without Z (interpreted as local 1:40 PM ET). The Z-anchored reading is unambiguous. Best working answer: **Vayu spring dance concert April 30 at 9:40–11:00 AM ET.** Verify with MKA given sole-parent logistics that day (Aneeta at RRE; Vasu also has Goddard picture day). Alton must be at MKA by ~9:25 AM. See [[vayu]] and [[family/family-calendar]].
+
+## Latest from gather (2026-04-24) — run 13
+
+> [!warning] OPERATIONAL BLOCKER — Gmail MCP token expired
+> Gmail MCP returned `MCP server "Gmail" requires re-authorization (token expired)`. No new email data this cycle. All open action items carry forward from run 12. **Reauthorize Gmail MCP before the next scheduled run.** Calendar data still available (5 calendars queried successfully).
+
+> [!fact] TODAY — Vishala spring concert, MKA, 8:00–10:00 AM ET
+> Live calendar confirms the concert is today (2026-04-24). Event has occurred or is in progress as of this run. Family calendar also shows Women's center dinner tonight (6:00–7:00 PM ET, Aneeta). No calendar changes vs yesterday.
+
+> [!deadline] 2026-04-30 (6 days)
+> **Hiive Kalshi — funding deadline approaching.** Carry-forward from run 8. Six days remaining. Review and decide before April 30.
+
+> [!todo] CARRY-FORWARD — open action items (no new email data)
+> All 14 open items from run 12 remain active. See `data/gather-alerts.md` for ranked list. Key time-sensitive items:
+> - Venmo $270 to @Rachelle-trammel (Vishala childcare) — OVERDUE
+> - Hiive Kalshi: Apr 30 deadline (6 days)
+> - Hiive SpaceX + Zipline: May 1 deadlines (7 days)
+> - Lucent Energy Apr 23 meeting — status unknown
+> - Machine 52271 offline — unresolved since Apr 22

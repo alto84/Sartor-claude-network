@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-04-21
+updated: 2026-04-23
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -143,3 +143,18 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!todo] Priority: P2
 > **Goddard Mother's Day Celebration — Friday May 8.** Samantha Ramsden announcement 2026-04-21: celebration for mothers and mother figures at Goddard School. Date is Friday May 8th. Aneeta returns from RRE by May 3, so no coverage conflict. Coordinate attendance. See [[family/active-todos]].
+
+## Latest from gather (2026-04-23) — run 12
+
+> [!fact]
+> **Vasu in school April 23 — full day confirmed.** Multiple Kaymbu updates received today:
+> - Small Group Learning (Foggy Windows): used breath to fog a mirror, discussed condensation, practiced writing new words.
+> - Outdoor Play: children enjoyed fresh air and games in the musical garden.
+> - STEAM Yoga (Bubble Breathing): imagined blowing a calming bubble as a breathing exercise.
+> All three updates confirm a normal, active school day.
+
+> [!todo] P2 — this week
+> **Show and Tell: Letter B.** Clarissa Black sent class announcement today (Apr 23). This week's Show and Tell letter is **B**. Examples given: Boat, Bell, Baby, Ball, Bear. Pack something starting with B before Vasu's next school day. See [[family/active-todos]].
+
+> [!fact]
+> **Pool service at 85 Stonebridge completed Apr 23 at 2:55 PM.** The Pool Guyz LLC, Service Log #36619894. "Check up" on Main Pool. Informational; separate from Apr 22 visit (Log #36601595). No action needed.

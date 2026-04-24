@@ -1,8 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-21
+updated: 2026-04-24
 updated_by: personal-data-gather
+run: 15
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -35,6 +36,154 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-24] ingest | personal-data-gather run 16: Gmail still expired (4th cycle); dance concert time Z-anchored at 9:40 AM ET
+- BLOCKER: Gmail MCP token still expired — fourth consecutive cycle (runs 13–16 all affected today); 14 open action items carry forward from run 12 unchanged
+- CALENDAR: All 5 calendars queried 4/24–5/1; 0 net new events; state unchanged from run 15
+- NEW FACT: Vayu spring dance concert Apr 30 — API now returns `2026-04-30T13:40:00Z` (Z suffix = UTC); 13:40 UTC = 9:40 AM EDT; definitively settles run 8 vs runs 14/15 dispute; original 9:40 AM table entry was correct; verify with MKA recommended
+- Cougar Pride Day calendar discrepancy persists (4th run) — Family calendar still shows Sat Apr 25; MKA email is authoritative for Sun Apr 26
+- SSH: unavailable in execution environment; machine 52271 offline status unresolved since Apr 22
+- Pages updated: `daily/2026-04-24.md` (run 16 appended), `family/active-todos.md` (run 16 appended), `family/family-calendar.md` (run 16 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (14 open items + Gmail blocker), `data/heartbeat-log.csv` written
+
+## [2026-04-24] ingest | personal-data-gather run 15: Gmail still expired (3rd cycle); calendar stable; proximity flags
+- BLOCKER: Gmail MCP token still expired — third consecutive cycle today; 14 open action items carry forward from run 12 unchanged
+- CALENDAR: All 5 calendars queried 4/24–5/1; 0 net new events; state unchanged from run 14
+- PROXIMITY: Vayu soccer game TOMORROW (Apr 25, 11am, Watchung School Field); Berman install starts Mon Apr 27 (3 days); sole-parent window (Aneeta at RRE) begins Apr 29 (5 days); Hiive Kalshi deadline Apr 30 (6 days)
+- Cougar Pride Day calendar discrepancy persists — Family calendar shows Sat Apr 25, MKA email authoritative for Sun Apr 26
+- SSH: unavailable in execution environment; machine 52271 offline status unresolved since Apr 22
+- Pages updated: `daily/2026-04-24.md` (run 15 appended), `family/active-todos.md` (run 15 appended), `family/family-calendar.md` (run 15 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (14 open items + Gmail blocker), `data/heartbeat-log.csv` appended
+
+## [2026-04-24] ingest | personal-data-gather run 14: Gmail still expired; dance concert time re-verified; calendar stable
+- BLOCKER: Gmail MCP token still expired — second consecutive cycle; 14 open action items carry forward from run 12 unchanged
+- CALENDAR: All 5 calendars queried 4/24–5/2; 0 net new events; calendar state unchanged from run 13
+- NEW FACT: Vayu spring dance concert Apr 30 reverts to 9:40 AM ET in today's live API pull (explicit -04:00 offset); contradicts run 8 correction to 1:40 PM; aligns with run 9 and original table; flag for MKA verification before Apr 30 (sole-parent day)
+- SSH: unavailable in execution environment (consistent pattern); machine 52271 offline status unresolved
+- Pages updated: `daily/2026-04-24.md` (run 14 appended), `family/active-todos.md` (run 14 appended), `family/family-calendar.md` (run 14 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (14 open items), `data/heartbeat-log.csv` appended
+
+## [2026-04-24] ingest | personal-data-gather run 13: Gmail token expired; Vishala concert today; calendar stable
+- BLOCKER: Gmail MCP token expired — no email data this cycle; 14 open action items carry forward from run 12
+- CALENDAR: All 5 calendars queried 4/24–5/2; 0 new events; Vishala spring concert TODAY (8–10 AM ET); Vayu soccer TOMORROW (Watchung School Field, confirmed)
+- URGENT: Hiive Kalshi deadline Apr 30 now 6 days away; Venmo $270 childcare still open
+- Cougar Pride Day calendar discrepancy persists — Family calendar still shows Sat Apr 25; MKA email authoritative for Sun Apr 26
+- SSH: unavailable; machine 52271 offline unresolved since Apr 22
+- Pages updated: `daily/2026-04-24.md` (created), `family/active-todos.md` (run 13 appended), `family/family-calendar.md` (run 13 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (14 open items + Gmail blocker), `data/heartbeat-log.csv` written (data/ dir created)
+
+## [2026-04-23] ingest | personal-data-gather run 12: Guidepoint #1732882; LinkedIn dinner invite; Vasu Show+Tell B
+- Gmail: 30 threads (newer_than:2d); 5 net new facts vs run 11; 2 new ACTION_REQUIRED
+- NEW: Guidepoint Global Oncology Specialists #1732882 (otaylor@guidepointglobal.com) — fifth distinct Guidepoint inquiry this cycle
+- NEW: LinkedIn NYC Dinner invite from Elena Poughia — senior operators dinner on human feedback/eval infra scaling
+- FAMILY: Vasu Show and Tell Letter B this week; Vasu in school Apr 23 confirmed (Foggy Windows, outdoor play, yoga); Pool Guyz service log #36619894 completed 2:55 PM today (distinct from Apr 22 visit)
+- Calendar: no new events; Apr 23–30 window stable (9:40 AM dance concert confirmed)
+- SSH: unavailable; machine 52271 offline unresolved; no new vast.ai email
+- Pages updated: `daily/2026-04-23.md` (run 12 appended), `family/active-todos.md` (run 12), `family/vasu.md` (run 12), `log.md`
+- Outputs: `data/gather-alerts.md` created (18 open items), `data/heartbeat-log.csv` created
+
+## [2026-04-23] ingest | personal-data-gather run 11: Lucent meeting today (unconfirmed); Claude Opus 4.7 released
+- Gmail: 30 threads (is:unread OR is:important, newer_than:2d); 2 net new facts vs run 10; 1 new urgent flag
+- URGENT: Lucent Energy 85 Stonebridge engineering plan meeting TODAY (Thu Apr 23 after 3 PM) — no Niko confirmation visible in email thread; Alton in NYC per SpotHero; meeting status uncertain
+- RESEARCH: Claude Opus 4.7 released this week (Zvi AI #165 confirmed); model-id claude-opus-4-7 now available
+- Calendar: no net new events; Apr 23–30 window unchanged from run 10
+- SSH: unavailable; gpuserver1 machine 52271 offline status unchanged
+- Pages updated: `daily/2026-04-23.md` (run 11 appended), `family/active-todos.md` (run 11 section), `log.md`
+- Outputs: `data/gather-alerts.md` written (12 open items), `data/heartbeat-log.csv` written
+
+## [2026-04-23] ingest | personal-data-gather run 10: Fidelity CRWV call sold; Alton in NYC today
+- Gmail: 30 threads (is:unread newer_than:2d); 2 net new facts vs run 9; 0 new ACTION_REQUIRED
+- NEW FINANCIAL: Fidelity trade confirmation — SOLD CALL (CRWV) COREWEAVE INC COM this morning
+- INFORMATIONAL: SpotHero parking 35 W 33rd St NYC confirms Alton commute day (Thu Apr 23)
+- Calendar: no net new events; Vayu dance concert 9:40 AM Apr 30 stable (run 9 re-correction holds)
+- SSH: unavailable; gpuserver1 machine 52271 offline status unchanged
+- Pages updated: `daily/2026-04-23.md` (run 10 appended), `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
+## [2026-04-23] ingest | personal-data-gather run 9: Brookline MA invoice; dance concert time re-corrected
+- Gmail: 19 threads (is:unread newer_than:2d); 1 net new ACTION_REQUIRED vs run 8
+- NEW: Town of Brookline MA Invoice #2026REQ4-7583028 — financial flag, address anomaly (Brookline MA billed to Sartor household in Montclair NJ); OneClickPay via card XX9425 (now replaced)
+- RE-CORRECTION: Vayu spring dance concert Apr 30 = 9:40 AM ET (NOT 1:40 PM as run 8 claimed); live API: `2026-04-30T09:40:00-04:00`; run 8's correction was wrong; changes sole-parent logistics (no NYC commute that morning)
+- Calendar: no net new events; Vishala spring concert TOMORROW (Fri Apr 24 8:00 AM) confirmed
+- SSH: unavailable; gpuserver1 offline status unchanged; no new vast.ai email
+- Pages updated: `daily/2026-04-23.md` (run 9 appended), `family/active-todos.md` (run 9 section), `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written (11 open items)
+
+## [2026-04-23] ingest | personal-data-gather run 8: Hiive SpaceX deadline; dance concert time corrected
+- Gmail: 30 threads (is:unread newer_than:2d); 1 net new ACTION_REQUIRED vs run 7
+- NEW: Hiive/SpaceX pre-IPO funding deadline May 1 (third Hiive opportunity this cycle: Kalshi Apr 30, Zipline May 1, SpaceX May 1)
+- CORRECTION: Vayu spring dance concert Apr 30 = 1:40 PM ET (NOT 9:40 AM); live API: `2026-04-30T13:40:00 America/New_York`; sole-parent day
+- Calendar: Family calendar still shows Cougar Pride Day Sat Apr 25 (MKA email moved to Sun Apr 26; calendar not updated)
+- SSH: unavailable; gpuserver1 offline status unchanged; no new vast.ai email
+- Pages updated: `daily/2026-04-23.md` (run 8 appended), `family/active-todos.md` (run 8), `family/family-calendar.md` (run 8), `log.md`
+- Outputs: `data/heartbeat-log.csv` written (recreated), `data/gather-alerts.md` written (recreated, 23 open items)
+
+## [2026-04-23] ingest | personal-data-gather run 7: soccer venue confirmed; Vishala concert tomorrow; MyKidsSpending debit
+- Gmail: 30 threads (is:unread newer_than:2d); 3 net new facts vs run 6; 0 new ACTION_REQUIRED
+- SPORTS: Vayu soccer Apr 25 venue CONFIRMED = Watchung School Field, Field 1, North Fullerton Ave, Montclair NJ (was TBD after Brookdale blocked; Blue Sombrero updated 2026-04-22T23:19:57Z)
+- DEADLINE TOMORROW: Vishala spring concert Fri Apr 24, 8:00–10:00 AM ET — parent needed at MKA by 8 AM
+- FINANCIAL: MyKidsSpending debit $101.75 (Chase) for Vayu MKA lunch account — account now active
+- CARRY-FORWARD: Venmo $270 to Rachelle trammel (run 6 ACTION_REQUIRED); Wohelo/Cougar Pride Apr 26 conflict; machine 52271 offline (no new signal)
+- SSH: unavailable in execution environment (consistent); gpuserver1 offline status unresolved
+- Pages updated: `daily/2026-04-23.md` (created), `family/active-todos.md` (run 7 appended), `family/family-calendar.md` (soccer venue confirmed), `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
+## [2026-04-22] ingest | personal-data-gather run 6: Cougar Pride moved Sun; soccer field change; Venmo childcare; Cadoo bill
+- Gmail: 30 threads (is:inbox, newer_than:2d); 5 net new facts vs run 5; 2 new ACTION_REQUIRED
+- CALENDAR CHANGE: Cougar Pride Day moved Sat Apr 25 → Sun Apr 26 (11 AM–3 PM, Van Brunt Field); resolves prior soccer/Cougar Pride conflict; creates new Wohelo/Cougar Pride overlap Apr 26 noon
+- SPORTS: Blue Sombrero field access blocked Sat Apr 25 (Essex County event at stadium); B34-Lime schedule update sent; Vayu game time/location TBD
+- FINANCIAL: Cadoo Medical PC $765.21 for Emmett (Vayu); Venmo $270 childcare request from Rachelle trammel for Vishala (4/14, 4/16, 4/21)
+- NEW CONFLICT: Wohelo Assembly (noon Apr 26, online) + Cougar Pride Day (11 AM–3 PM Apr 26) — Vishala must be at computer at noon
+- Pages updated: `daily/2026-04-22.md` (run 6 appended), `family/active-todos.md`, `family/family-calendar.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
+## [2026-04-22] ingest | personal-data-gather run 5: pool service + SNO CME tomorrow; delta-minimal
+- Gmail: 10 threads (newer_than:6h); 2 net new informational facts vs run 4; 0 new ACTION_REQUIRED
+- Pool Guyz service log #36601595 completed at 85 Stonebridge Rd 11:15 AM — routine, informational
+- SNO Newsletter: Pediatric Tumor Board CME tomorrow Apr 23 1–2:30 PM ET (Gliomatosis Cerebri) — time-sensitive informational
+- Calendar: all 5 queried Apr 22–29; 0 new events vs run 4; all confirmed
+- SSH: unavailable; Machine 52271 offline status from run 3 unresolved (no new vast.ai email)
+- Pages updated: `daily/2026-04-22.md` (run 5 appended), `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
+## [2026-04-22] ingest | personal-data-gather run 4: 1 new advisory request; all prior items carry forward
+- Gmail: 5 threads (newer_than:6h); 1 net new ACTION_REQUIRED vs run 3
+- NEW: Guidepoint #1730583 — 5T4 ADC Programs consultation (jfarenden@guidepointglobal.com, 09:30 UTC)
+- Calendar: all 5 queried Apr 22–29; 0 new events vs run 3; all times confirmed
+- SSH: unavailable; gpuserver1 offline status unchanged since run 3
+- Pages updated: `family/active-todos.md`, `daily/2026-04-22.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written
+
+## [2026-04-22] ingest | personal-data-gather run 3: Machine 52271 OFFLINE — active client affected
+- Gmail: 3 threads (newer_than:6h); 2 net new vs run 2 (both GPU business emergency)
+- CRITICAL: Machine 52271 offline ~2:35 AM UTC Apr 22 per automated vast.ai alert
+- CRITICAL: vast.ai support engineer Saber emailed 5:27 AM UTC — rental client affected, status update requested from host
+- Calendar: all 5 queried Apr 22–29; 0 new events vs run 2; all times confirmed
+- SSH: unavailable in execution environment; machine offline confirmed via email
+- Pages updated: `MACHINES.md`, `business/solar-inference.md`, `family/active-todos.md`, `daily/2026-04-22.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written (P0-emergency added)
+
+## [2026-04-22] ingest | personal-data-gather run 2: delta-zero; data/ recreated
+- Gmail: 6 threads in 2-day window; 0 net new vs run 1; 0 new ACTION_REQUIRED
+- Calendar: all 5 queried Apr 22–29; 0 new events vs run 1; all times confirmed
+- SSH: unavailable; gpuserver1 skipped
+- data/ directory recreated (non-persistent environment, consistent pattern)
+- 22 total open alerts carry forward unchanged from run 1
+- Pages updated: `daily/2026-04-22.md` (run 2 section appended), `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written (22 open items, 11 priority-1)
+
+## [2026-04-22] ingest | personal-data-gather run 1: Grandparents Day, band concert today, 3 new advisory requests
+- Sources: Gmail (50 threads, is:unread after:2026/04/18), 5 Google Calendars (Apr 22–29 window), SSH unavailable
+- Facts gathered: 5 new ACTION_REQUIRED; 1 RESOLVED (Perlis delivery); 1 new calendar event (MKA Grandparents Day Apr 28 via Gmail); all prior events confirmed
+- TODAY: Three-event stack (Vasu costume parade 4:20 PM / Vayu soccer 5:30 PM / Vayu band concert 7:00 PM) is live. Final reminder email confirmed 7pm concert / 6:30pm arrival.
+- NEW: MKA Grandparents & Special Friends Day Apr 28 — guests appear already registered; verify
+- NEW: Guidepoint AI Adoption/Tools in Biotech consultation (#1720868) — accept/decline pending
+- NEW: Guidepoint PKU survey $65 honorarium — accept/decline pending
+- NEW: 4th Grade Immigration Fest (Vayu) — read letter for date/requirements
+- NEW: Goddard Mother's Day Celebration May 8 (Vasu) — Aneeta available (returns May 3)
+- Carry-forward open: Mike Silva reply, Guidepoint/Yasmin Goodman, EquityZen, Disney ADR (May 17 deadline)
+- Pages updated: `family/active-todos.md`, `family/family-calendar.md`, `daily/2026-04-22.md`, `log.md`
+- Outputs: `data/heartbeat-log.csv` written, `data/gather-alerts.md` written (7 open ACTION_REQUIRED items, 2 priority-1)
 
 ## [2026-04-21] ingest | personal-data-gather run 5: second Chase CC statement + Newegg security escalation
 - Gmail: 60 threads (newer_than:2d, two search passes); 3 net new facts vs run 4

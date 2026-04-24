@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-04-12
-updated_by: Claude (hub-refresher)
+updated: 2026-04-22
+updated_by: personal-data-gather
 last_verified: 2026-04-12
 status: active
 next_review: 2026-05-12
@@ -589,3 +589,15 @@ No git push (no credentials) - awaiting Rocinante curator commit
 — End of completion report
 
 <!-- /curator-drained -->
+
+## Latest from gather (2026-04-22)
+
+> [!warning] 2026-04-22 MACHINE OFFLINE — ACTIVE CLIENT AFFECTED
+> Machine 52271 went offline at approximately **2:35 AM UTC April 22** per automated vast.ai alert (console@mg.vast.ai). A rental client contacted vast.ai support; support engineer **Saber** (saber@contact.vast.ai) emailed alto84@gmail.com at 5:27 AM UTC requesting a status update to relay to the affected client.
+>
+> **Actions required:**
+> 1. SSH to gpuserver1 (192.168.1.100) or physically check the server — verify power, Kaalia daemon, Docker
+> 2. Reply to Saber at saber@contact.vast.ai with status update for the affected client
+> 3. Once machine is back online, verify vast.ai listing is restored
+>
+> Prior offline incident: 2026-04-04 (45 min, no client impact, no follow-up). This incident has a confirmed active client impact.

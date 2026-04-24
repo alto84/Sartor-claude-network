@@ -1,8 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-21
+updated: 2026-04-24
 updated_by: personal-data-gather
+run: 14
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -153,6 +154,83 @@ Apr 25 corrected schedule:
 | 11 AM–12 PM | Vayu soccer: B34 Purple vs B34 Lime (Brookdale Park Field 1) | Vayu |
 | 3–7 PM | Cougar pride day (MKA) | Vayu/Vishala |
 
+## Latest from gather (2026-04-22)
+
+> [!deadline] 2026-04-28
+> **NEW: MKA Grandparents & Special Friends Day — Tuesday April 28.** Surfaced from Gmail (kflippin@mka.org). Not previously in calendar. Reminder sent to registered guests Apr 21. Overlaps with Berman install day 2. Verify attendance and logistics.
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| Tue 4/28 | morning | MKA Grandparents & Special Friends Day | Gmail (MKA) | **NEW** — not in any prior calendar view; verify grandparent registration |
+
+Also confirming today's three-event stack (all events confirmed against live calendar pulls):
+- 4:20–5:20 PM Vasu Costume Parade (Goddard)
+- 5:30–6:15 PM Vayu Soccer Practice (Anderson Park)
+- 6:30 PM Vayu arrives MKA / 7:00 PM Band Concert
+
+No new calendar events vs prior runs aside from Grandparents Day (sourced via Gmail, not visible in the Google Calendar query).
+
+## Latest from gather (2026-04-22) — run 6
+
+> [!fact] CALENDAR CHANGE — Cougar Pride Day moved Sat→Sun
+> MKA email (m@mail3.veracross.com, 6:15 PM ET Apr 22): Cougar Pride Day moved from **Saturday April 25** to **Sunday April 26, 11:00 AM–3:00 PM, Van Brunt Field** due to inclement weather forecast. The live Google Family calendar still shows it on Saturday — treat MKA email as authoritative until calendar is updated.
+>
+> | Before | After |
+> |--------|-------|
+> | Sat Apr 25, 11 AM–3 PM, MKA | **Sun Apr 26, 11 AM–3 PM, Van Brunt Field** |
+>
+> Effect on prior conflicts: the Apr 25 soccer (11 AM) vs Cougar Pride (11 AM) conflict is **RESOLVED** — they no longer overlap.
+
+> [!warning] NEW — Apr 26 Wohelo + Cougar Pride conflict
+> **Sunday April 26**: Wohelo Little Assembly (online, noon ET, 30 min, Vishala) now overlaps Cougar Pride Day (11 AM–3 PM, Van Brunt Field). Wohelo Assembly was flagged 2026-04-20 run 2. Phone/tablet from the field is likely the path. Flag before Sunday. See [[vishala]] and [[active-todos]].
+
+> [!note] Vayu soccer Apr 25 — schedule change pending
+> Two Blue Sombrero emails received Apr 22 afternoon: (1) club-wide notice of field access issue at Brookdale Stadium for Saturday due to Essex County event; (2) B34-Lime team schedule updated. New time/location for Vayu's game not yet confirmed. Watch Blue Sombrero app. See [[vayu]].
+
+Updated Apr 25–26 schedule:
+
+| Date | Time ET | Event | Notes |
+|------|---------|-------|-------|
+| Sat 4/25 | TBD | Vayu soccer B34 game — **location/time may change** | Field at stadium blocked; watch for update |
+| Sun 4/26 | 11:00 AM–3:00 PM | Cougar Pride Day, Van Brunt Field (MKA) | MOVED from Sat Apr 25 |
+| Sun 4/26 | 12:00 PM (noon) | Wohelo Little Assembly (online, Vishala) | **CONFLICT** with Cougar Pride if in-person |
+
+## Latest from gather (2026-04-23) — run 8
+
+> [!warning] DATA CORRECTION — Vayu spring dance concert Apr 30: 1:40 PM ET, NOT 9:40 AM
+> **Live calendar API confirms `start: 2026-04-30T13:40:00, timeZone: America/New_York` = 1:40–3:00 PM ET.** The "Week of 4/28" table above shows "09:40-11:00" — this is wrong. The prior computation treated 13:40 as UTC and subtracted 4h. With an explicit `America/New_York` timezone, no conversion is needed: 13:40 = 1:40 PM ET.
+>
+> Corrected Apr 30 schedule (sole-parent day — Aneeta at RRE):
+>
+> | Time ET | Event |
+> |---------|-------|
+> | School day | Vasu picture day at Goddard |
+> | **1:40–3:00 PM** | Vayu spring dance concert (MKA) — parent needed |
+>
+> Alton must leave by ~1:15 PM to arrive at MKA by 1:30 PM. See [[vayu]] and [[active-todos]].
+
+> [!note] Cougar Pride Day — Google Calendar not yet updated
+> Live Family calendar still shows Cougar Pride Day on **Saturday April 25** (11 AM–3 PM ET). MKA email Apr 22 confirmed it moved to **Sunday April 26, Van Brunt Field, 11 AM–3 PM.** Calendar has not been updated. Do not rely on the Google Calendar entry for this event — treat MKA email as authoritative until the entry is corrected. See [[active-todos]].
+
+## Latest from gather (2026-04-23) — run 7
+
+> [!fact] CONFIRMED — Vayu soccer Apr 25 location: Watchung School Field
+> Blue Sombrero calendar updated 2026-04-22T23:19:57Z. The pending "TBD" location from run 6 is now resolved.
+>
+> | Date | Time ET | Event | Location |
+> |------|---------|-------|----------|
+> | Sat 4/25 | 11:00 AM–12:00 PM | B34 Lime vs B34 Purple (Vayu's team) | **Watchung School Field, Field 1, North Fullerton Ave, Montclair NJ 07042** |
+>
+> Apr 25 conflict with Cougar Pride Day is **RESOLVED** — Cougar Pride moved to Sun Apr 26. No overlap with soccer (Sat). Apr 26 Wohelo/Cougar Pride conflict remains open. See [[vayu]] and [[active-todos]].
+
+Corrected Apr 25–26 schedule (final):
+
+| Date | Time ET | Event | Status |
+|------|---------|-------|--------|
+| Sat 4/25 | 11:00 AM–12:00 PM | Vayu soccer game, Watchung School Field (North Fullerton Ave) | CONFIRMED venue |
+| Sun 4/26 | 11:00 AM–3:00 PM | Cougar Pride Day, Van Brunt Field (MKA) | MOVED from Sat |
+| Sun 4/26 | noon ET | Wohelo Little Assembly (online, Vishala) | Conflicts if Vishala at field in-person |
+
 ## History
 
 - 2026-04-09: Initial calendar compilation from Gmail+Calendar harvest covering 2026-04-09 through 2026-05-09. Flagged sole-parent window and Aneeta RRE correction.
@@ -160,6 +238,7 @@ Apr 25 corrected schedule:
 - 2026-04-15: Updated via personal-data-gather run 1. Added Vayu Band Concert Apr 22 (NEW); flagged Apr 22 three-event conflict; noted Goddard parking closure Apr 20-21.
 - 2026-04-18: Updated via personal-data-gather run 1. Added Vayu soccer game Apr 25 (NEW from Blue Sombrero). Corrected Cougar pride day time to 3–7 PM ET (was 11 AM–3 PM).
 - 2026-04-21: Updated via personal-data-gather run 1. Confirmed all Apr 22–28 times from live API. Canonical times locked (see below).
+- 2026-04-22: Updated via personal-data-gather run 1. Added Grandparents & Special Friends Day Apr 28 (NEW, from Gmail). Confirmed all Apr 22 three-event timings against live calendar.
 
 ## Latest from gather (2026-04-15)
 
@@ -289,3 +368,50 @@ Two new events created today (2026-04-17) that were not in any prior run:
 > [!note]
 > **Apr 25 time re-verification.** Today's Family calendar API returns `timeZone: "UTC"` for Cougar Pride Day with `start: 2026-04-25T15:00:00Z`. 15:00 UTC = 11:00 AM ET. Vayu soccer is also `2026-04-25T15:00:00Z` = 11:00 AM ET. **Conflict confirmed: both events start 11 AM.** The Apr 18 run 4 "correction" to "3–7 PM ET" was erroneous — it misread UTC as EDT. The original table entry "11:00–15:00" (= 11 AM–3 PM ET) was correct. See [[family/active-todos]].
 > Main table Week of 4/21 spring concert row should read "08:00–10:00" not "12:00–14:00."
+
+## Latest from gather (2026-04-24) — run 14
+
+> [!warning] TIME REVERT — Vayu spring dance concert Apr 30
+> Today's live calendar API (run 14, 2026-04-24) returns `start: 2026-04-30T09:40:00-04:00, timeZone: America/New_York` = **9:40–11:00 AM ET.** This contradicts run 8 (Apr 23) which corrected it to 1:40–3:00 PM ET (`start: 2026-04-30T13:40:00, timeZone: America/New_York`). Both values use explicit timezone; neither is a UTC-naive misread. The event may have been modified between Apr 23 and Apr 24, or run 8's value was transient. **Verify directly with MKA before Apr 30.** This is a sole-parent day — being wrong by 4 hours matters. See [[vayu]] and [[active-todos]].
+>
+> | Source | Time ET |
+> |--------|---------|
+> | Original table | 9:40–11:00 AM |
+> | Run 8 "correction" (Apr 23) | 1:40–3:00 PM |
+> | Run 14 live API (Apr 24) | **9:40–11:00 AM** (explicit -04:00) |
+
+> [!note] Gmail MCP still expired — run 14
+> Token expired since run 13. No email intelligence this cycle. Calendar stable; 14 ACTION_REQUIRED items carry forward.
+
+## Latest from gather (2026-04-24) — run 15
+
+> [!note] Calendar stable — run 15
+> All 5 calendars queried. No changes vs run 14. Events confirmed: Vayu soccer game tomorrow (Apr 25, 11am, Watchung School Field), Berman install Apr 27–29, Aneeta at RRE Apr 29–May 3, Vayu dance concert Apr 30 9:40am (unverified — verify with MKA). Cougar Pride Day calendar discrepancy persists (Family calendar: Apr 25, MKA email: Apr 26 Van Brunt Field).
+
+> [!todo] UPDATE CALENDAR — Cougar Pride Day
+> Family calendar still shows Apr 25. MKA email moved event to Sun Apr 26, 11am–3pm, Van Brunt Field. Update the Google Calendar entry manually.
+
+## Latest from gather (2026-04-24) — run 16
+
+> [!fact] DANCE CONCERT TIME — Z-ANCHORED, 9:40 AM ET CONFIRMED
+> Run 16 API returns `start: 2026-04-30T13:40:00Z` (explicit Z = UTC). 13:40 UTC in EDT (UTC-4) = **9:40 AM ET**. Prior debate (run 8: 1:40 PM local vs. runs 14/15: 9:40 AM UTC-derived) is now settled by the Z suffix. The original table entry "09:40-11:00" was correct throughout. Verify with MKA before Apr 30 given sole-parent day. See [[family/active-todos]] and [[vayu]].
+
+> [!note] Cougar Pride Day — Google Calendar NOT updated, 4th consecutive run
+> Family calendar still shows Saturday April 25 (`2026-04-25T15:00:00Z` = 11am ET). MKA email Apr 22 moved event to **Sunday April 26, 11am–3pm, Van Brunt Field**. Calendar entry has NOT been corrected through runs 13–16. Treat MKA email as authoritative. Update Google Calendar manually.
+
+> [!note] Gmail MCP still expired — run 16 (4th cycle)
+> No new email data. 14 ACTION_REQUIRED items carry forward.
+
+## Latest from gather (2026-04-24) — run 13
+
+> [!fact] TODAY — Vishala spring concert complete (or in progress)
+> Run 13 (2026-04-24) confirms Vishala spring concert was today, 8:00–10:00 AM ET. Calendar API returns `2026-04-24T12:00:00Z` = 8:00 AM ET (Z = UTC). End `14:00:00Z` = 10:00 AM ET. Consistent with main table entry. Event is now in the past.
+
+> [!note] Cougar Pride Day — calendar discrepancy persists as of run 13
+> Google Family calendar **still shows Cougar Pride Day on Saturday April 25** (11 AM–3 PM ET, `2026-04-25T15:00:00Z`). MKA email Apr 22 moved it to **Sunday April 26, 11 AM–3 PM, Van Brunt Field**. Calendar entry has NOT been updated after 6+ gather runs. Treat MKA email as authoritative. Update the Google Calendar event manually.
+
+> [!fact] TOMORROW — Vayu soccer confirmed
+> Sat 4/25, 11:00 AM–12:00 PM ET, Watchung School Field, Field 1, North Fullerton Ave, Montclair NJ 07042. Blue Sombrero confirmed. No changes vs prior runs.
+
+> [!warning] Gmail MCP unavailable this run
+> Gmail token expired. No email intelligence available this cycle. Calendar data is current; email-sourced items carry forward from run 12.

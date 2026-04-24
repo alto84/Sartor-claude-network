@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-04-14
+updated: 2026-04-22
 updated_by: personal-data-gather
 status: active
 priority: p1
@@ -140,3 +140,8 @@ Full details in [[TAXES]]. Summary:
 - 2026-04-06: Tax package sent to CPA
 - 2026-04-07: Berman Home Systems wifi deposit signed
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
+
+## Latest from gather (2026-04-22)
+
+> [!warning] GPU MACHINE OFFLINE — ACTIVE CLIENT IMPACTED
+> Machine 52271 went offline at approximately 2:35 AM UTC April 22. Automated vast.ai alert confirmed; vast.ai support engineer Saber emailed at 5:27 AM UTC — an active rental client was impacted and reached out to support. This is the second offline incident (first: 2026-04-04, 45 min, no client impact). Revenue impact: zero while offline. Recovery steps and Saber contact in [[MACHINES]].
