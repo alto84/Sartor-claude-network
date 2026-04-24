@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-23
+updated: 2026-04-24
 updated_by: personal-data-gather
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
@@ -35,6 +35,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-24] ingest | personal-data-gather run 13: Gmail token expired; Vishala concert today; calendar stable
+- BLOCKER: Gmail MCP token expired — no email data this cycle; 14 open action items carry forward from run 12
+- CALENDAR: All 5 calendars queried 4/24–5/2; 0 new events; Vishala spring concert TODAY (8–10 AM ET); Vayu soccer TOMORROW (Watchung School Field, confirmed)
+- URGENT: Hiive Kalshi deadline Apr 30 now 6 days away; Venmo $270 childcare still open
+- Cougar Pride Day calendar discrepancy persists — Family calendar still shows Sat Apr 25; MKA email authoritative for Sun Apr 26
+- SSH: unavailable; machine 52271 offline unresolved since Apr 22
+- Pages updated: `daily/2026-04-24.md` (created), `family/active-todos.md` (run 13 appended), `family/family-calendar.md` (run 13 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (14 open items + Gmail blocker), `data/heartbeat-log.csv` written (data/ dir created)
 
 ## [2026-04-23] ingest | personal-data-gather run 12: Guidepoint #1732882; LinkedIn dinner invite; Vasu Show+Tell B
 - Gmail: 30 threads (newer_than:2d); 5 net new facts vs run 11; 2 new ACTION_REQUIRED

@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-23
+updated: 2026-04-24
 updated_by: personal-data-gather
-run: 8
+run: 13
 
 status: active
 priority: p1
@@ -742,3 +742,22 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] P2 — this week
 > **Vasu Show and Tell — Letter B.** Clarissa Black (Goddard School) sent reminder today (Apr 23): this week's Show and Tell letter is B. Examples: Boat, Bell, Baby, Ball, Bear. Vasu needs to bring something starting with B to school this week. See [[family/vasu]].
+
+## Latest from gather (2026-04-24) — run 13
+
+> [!warning] OPERATIONAL BLOCKER — Gmail MCP token expired
+> Gmail MCP returned `MCP server "Gmail" requires re-authorization (token expired)`. No new email data this cycle. All open action items carry forward from run 12. **Reauthorize Gmail MCP before the next scheduled run.** Calendar data still available (5 calendars queried successfully).
+
+> [!fact] TODAY — Vishala spring concert, MKA, 8:00–10:00 AM ET
+> Live calendar confirms the concert is today (2026-04-24). Event has occurred or is in progress as of this run. Family calendar also shows Women's center dinner tonight (6:00–7:00 PM ET, Aneeta). No calendar changes vs yesterday.
+
+> [!deadline] 2026-04-30 (6 days)
+> **Hiive Kalshi — funding deadline approaching.** Carry-forward from run 8. Six days remaining. Review and decide before April 30.
+
+> [!todo] CARRY-FORWARD — open action items (no new email data)
+> All 14 open items from run 12 remain active. See `data/gather-alerts.md` for ranked list. Key time-sensitive items:
+> - Venmo $270 to @Rachelle-trammel (Vishala childcare) — OVERDUE
+> - Hiive Kalshi: Apr 30 deadline (6 days)
+> - Hiive SpaceX + Zipline: May 1 deadlines (7 days)
+> - Lucent Energy Apr 23 meeting — status unknown
+> - Machine 52271 offline — unresolved since Apr 22

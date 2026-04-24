@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-23
+updated: 2026-04-24
 updated_by: personal-data-gather
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
@@ -367,3 +367,17 @@ Two new events created today (2026-04-17) that were not in any prior run:
 > [!note]
 > **Apr 25 time re-verification.** Today's Family calendar API returns `timeZone: "UTC"` for Cougar Pride Day with `start: 2026-04-25T15:00:00Z`. 15:00 UTC = 11:00 AM ET. Vayu soccer is also `2026-04-25T15:00:00Z` = 11:00 AM ET. **Conflict confirmed: both events start 11 AM.** The Apr 18 run 4 "correction" to "3–7 PM ET" was erroneous — it misread UTC as EDT. The original table entry "11:00–15:00" (= 11 AM–3 PM ET) was correct. See [[family/active-todos]].
 > Main table Week of 4/21 spring concert row should read "08:00–10:00" not "12:00–14:00."
+
+## Latest from gather (2026-04-24) — run 13
+
+> [!fact] TODAY — Vishala spring concert complete (or in progress)
+> Run 13 (2026-04-24) confirms Vishala spring concert was today, 8:00–10:00 AM ET. Calendar API returns `2026-04-24T12:00:00Z` = 8:00 AM ET (Z = UTC). End `14:00:00Z` = 10:00 AM ET. Consistent with main table entry. Event is now in the past.
+
+> [!note] Cougar Pride Day — calendar discrepancy persists as of run 13
+> Google Family calendar **still shows Cougar Pride Day on Saturday April 25** (11 AM–3 PM ET, `2026-04-25T15:00:00Z`). MKA email Apr 22 moved it to **Sunday April 26, 11 AM–3 PM, Van Brunt Field**. Calendar entry has NOT been updated after 6+ gather runs. Treat MKA email as authoritative. Update the Google Calendar event manually.
+
+> [!fact] TOMORROW — Vayu soccer confirmed
+> Sat 4/25, 11:00 AM–12:00 PM ET, Watchung School Field, Field 1, North Fullerton Ave, Montclair NJ 07042. Blue Sombrero confirmed. No changes vs prior runs.
+
+> [!warning] Gmail MCP unavailable this run
+> Gmail token expired. No email intelligence available this cycle. Calendar data is current; email-sourced items carry forward from run 12.
