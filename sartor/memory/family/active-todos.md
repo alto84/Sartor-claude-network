@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-24
 updated_by: personal-data-gather
-run: 17
+run: 18
 
 status: active
 priority: p1
@@ -801,3 +801,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Gmail MCP still expired — run 17 (5th consecutive cycle)
 > No new email data. 14 open ACTION_REQUIRED items carry forward unchanged. Gmail token must be reauthorized.
+
+## Latest from gather (2026-04-24) — run 18
+
+> [!fact] RESOLUTION — Vayu spring dance concert time confirmed 9:40 AM ET
+> Run 18 returns `start: 2026-04-30T09:40:00-04:00` = 9:40 AM ET. Raw event metadata confirms `created` and `updated` timestamps are identical (`2026-04-07T10:58:50Z`) — the event has never been modified since April 7 creation. Run 17's 1:40 PM reading was a transient API anomaly; 5 of 6 runs return 9:40 AM ET. Sole-parent logistics Apr 30: Vasu Goddard drop-off + MKA arrive ~9:25 AM is tight but doable. MKA direct confirmation still recommended. See [[family/family-calendar]] and [[family/vayu]].
+
+> [!note] Gmail MCP still expired — run 18 (6th consecutive cycle)
+> No new email data. 14 open ACTION_REQUIRED items carry forward unchanged. Token reauthorization required.

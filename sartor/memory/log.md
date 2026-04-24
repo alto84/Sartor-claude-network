@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-24
 updated_by: personal-data-gather
-run: 17
+run: 18
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-24] ingest | personal-data-gather run 18: dance concert time RESOLVED (9:40 AM canonical); Gmail still expired (6th cycle)
+- RESOLUTION: Vayu dance concert Apr 30 confirmed 9:40 AM ET — event metadata shows `created` = `updated` = 2026-04-07T10:58:50Z (never modified); run 17 (1:40 PM) was transient API anomaly
+- BLOCKER: Gmail MCP token still expired — sixth consecutive cycle (runs 13–18); 14 open action items carry forward from run 12 unchanged
+- CALENDAR: All 5 calendars queried 4/24–5/1; 0 net new events vs run 17; Aneeta calendar stable (2 events unchanged)
+- Pages updated: `daily/2026-04-24.md` (run 18 appended), `family/active-todos.md` (run 18 appended), `family/family-calendar.md` (run 18 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written, `data/heartbeat-log.csv` appended
 
 ## [2026-04-24] ingest | personal-data-gather run 17: Gmail still expired (5th cycle); dance concert reverted to 1:40 PM ET; Aneeta calendar events now visible
 - BLOCKER: Gmail MCP token still expired — fifth consecutive cycle (runs 13–17); 14 open action items carry forward from run 12 unchanged
