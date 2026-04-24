@@ -91,21 +91,11 @@ Part of the educational value is seeing all three on the same base model and com
 - [mlabonne's HuggingFace blog post on abliteration](https://huggingface.co/blog/mlabonne/abliteration)
 - [arxiv 2512.13655 — Comparative Analysis of LLM Abliteration Methods](https://arxiv.org/pdf/2512.13655)
 
-### Track C — Constitutional LoRA fine-tune v0.2 (2 hours)
+### Track C — SUPERSEDED 2026-04-24
 
-**Purpose:** the deep-absorption intervention. Train adapter weights on Constitution + feedback + tension record so the model carries household values in its MLP layers.
+The v0.2 design described here — training on Constitution + feedback + operating agreement text as a continued-pretraining corpus — produced the regression documented in `MORNING-REPORT.md` (Taiwan probe base→tuned "inalienable part of China"; Cat D capability 4/4→0/4). The error: training text *about* behavior teaches the patterns described in that text, including the ones the Constitution names as patterns to override.
 
-**Base model:** `Youssofal/Qwen3.6-35B-A3B-Abliterated-Heretic-BF16` (already downloaded — abliteration step already done externally).
-
-**Method:** existing `train.py` v0.2 with fixes:
-- Opus parser fixed (messages schema)
-- `target_modules="all-linear"` (hybrid architecture coverage)
-- Model-parallel `device_map='auto'` now on same-NUMA → should be significantly faster than the cross-NUMA attempt
-- 50× floor repeat, Cato-filtered Opus traces
-
-**Outputs:** `track-C-lora-constitution/` with adapter weights, training log, loss curve, telemetry from monitor.sh.
-
-**Stress goal:** full 2+ hours of training load on both GPUs. This is the real endurance test.
+**Replaced by:** `NEXT-STEPS-v2.md` Track C v2 — contrastive-override SFT on `(prompt, response)` pairs where the prompt triggers the inherited PRC-aligned pattern and the response instantiates the override in household register. See that document for corpus design and training config.
 
 ### Track D — Identity probe eval (30 min)
 

@@ -45,34 +45,30 @@ log "idle phase complete"
 nvidia-smi --query-gpu=index,temperature.gpu,temperature.memory,power.draw --format=csv >> "$OUT/run.log"
 
 # Phase 2: 30 min dual-GPU gpu-burn
-# gpu-burn via Docker container if available, else compile locally
 log "=== Phase 2: 30 min dual-GPU gpu-burn ==="
 
-# Try container approach first (cleanest), fall back to build
-if docker info >/dev/null 2>&1; then
-  log "using docker nvidia/cuda image for gpu-burn..."
-  # Run gpu-burn in container on each GPU
-  (docker run --rm --gpus device=0 -v /tmp:/tmp chrisstream/gpu-burn:latest 1800 2>&1 | tee "$OUT/gpu-burn-0.log") &
-  BURN_0=$!
-  (docker run --rm --gpus device=1 -v /tmp:/tmp chrisstream/gpu-burn:latest 1800 2>&1 | tee "$OUT/gpu-burn-1.log") &
-  BURN_1=$!
-  log "gpu-burn PIDs: $BURN_0 (GPU 0), $BURN_1 (GPU 1)"
-  wait $BURN_0 $BURN_1
+GPU_BURN=/opt/gpu-burn/gpu_burn
+if [ ! -x "$GPU_BURN" ]; then
+  log "FATAL: gpu-burn binary missing at $GPU_BURN; skipping Phase 2"
 else
-  log "docker not available; building gpu-burn from source..."
-  cd /tmp
-  if [ ! -d gpu-burn ]; then
-    git clone https://github.com/wilicc/gpu-burn.git 2>&1 | tee -a "$OUT/run.log"
-  fi
-  cd gpu-burn
-  make 2>&1 | tee -a "$OUT/run.log"
-  # Run simultaneously on both GPUs
-  (CUDA_VISIBLE_DEVICES=0 ./gpu_burn 1800 2>&1 | tee "$OUT/gpu-burn-0.log") &
+  # Pre-flight: 60s smoke test on each GPU
+  log "Phase 2 pre-flight: 60s smoke test on each GPU"
+  (cd /opt/gpu-burn && CUDA_VISIBLE_DEVICES=0 ./gpu_burn 60 2>&1 | tail -5 | tee "$OUT/gpu-burn-smoke-0.log") &
+  S0=$!
+  (cd /opt/gpu-burn && CUDA_VISIBLE_DEVICES=1 ./gpu_burn 60 2>&1 | tail -5 | tee "$OUT/gpu-burn-smoke-1.log") &
+  S1=$!
+  wait $S0 $S1
+  log "smoke tests complete"
+
+  # Full 30-min concurrent dual-GPU burn
+  log "starting concurrent 30-min burn on both GPUs..."
+  (cd /opt/gpu-burn && CUDA_VISIBLE_DEVICES=0 ./gpu_burn 1800 2>&1 | tee "$OUT/gpu-burn-0.log") &
   BURN_0=$!
-  (CUDA_VISIBLE_DEVICES=1 ./gpu_burn 1800 2>&1 | tee "$OUT/gpu-burn-1.log") &
+  (cd /opt/gpu-burn && CUDA_VISIBLE_DEVICES=1 ./gpu_burn 1800 2>&1 | tee "$OUT/gpu-burn-1.log") &
   BURN_1=$!
   log "gpu-burn PIDs: $BURN_0 (GPU 0), $BURN_1 (GPU 1)"
   wait $BURN_0 $BURN_1
+  log "30-min burn complete"
 fi
 
 log "=== Phase 3: 2 min cooldown ==="
