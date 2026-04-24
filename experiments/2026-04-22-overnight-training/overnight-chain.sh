@@ -182,8 +182,18 @@ tmux new-session -d -s probe-eval "source /home/alton/ml/bin/activate && python 
 mkdir -p "$ROOT/track-D-probe-eval"
 wait_for_session_end probe-eval 3600   # 1h cap
 
-log "Track D done. Results preview:"
+log "Track D outputs done. Results preview:"
 ls -la "$ROOT/track-D-probe-eval/" 2>&1 | head -10 | tee -a "$LOG"
+
+# ============================================================
+# Phase 3b: LLM-as-judge scoring of probe outputs
+# ============================================================
+log "=== firing probe-score.py (LLM-as-judge on base Heretic) ==="
+tmux new-session -d -s probe-score "source /home/alton/ml/bin/activate && python $ROOT/probe-score.py --judge-model /home/alton/models/heretic-3.6-35b --outputs-dir $ROOT/track-D-probe-eval/outputs-base-heretic $ROOT/track-D-probe-eval/outputs-lora-tuned --output $ROOT/track-D-probe-eval/scored-summary.md 2>&1 | tee $ROOT/track-D-probe-eval/scoring.log"
+wait_for_session_end probe-score 2400
+
+log "Probe scoring summary:"
+cat "$ROOT/track-D-probe-eval/scored-summary.md" 2>/dev/null | tee -a "$LOG"
 
 commit_track "D"
 
@@ -239,15 +249,18 @@ $(cat /home/alton/ALERT 2>/dev/null || echo "(clean)")
 
 LoRA adapter: $([ -d /home/alton/models/lora-sartor-v0.1 ] && ls /home/alton/models/lora-sartor-v0.1 | head -10 || echo "(not produced)")
 
-## Track D — probe eval
+## Track D — probe eval + LLM-judge scoring
 
 Base Heretic probe outputs: $([ -f $ROOT/track-D-probe-eval/outputs-base-heretic/results.jsonl ] && wc -l < $ROOT/track-D-probe-eval/outputs-base-heretic/results.jsonl | tr -d ' ' || echo "0") prompts evaluated.
 
 LoRA-tuned probe outputs: $([ -f $ROOT/track-D-probe-eval/outputs-lora-tuned/results.jsonl ] && wc -l < $ROOT/track-D-probe-eval/outputs-lora-tuned/results.jsonl | tr -d ' ' || echo "0") prompts evaluated.
 
-Raw outputs in \`track-D-probe-eval/outputs-*/results.jsonl\`.
+### Scored summary
 
-Qualitative analysis will require Alton (or a follow-up LLM-judge pass) to review the actual outputs.
+$([ -f $ROOT/track-D-probe-eval/scored-summary.md ] && cat $ROOT/track-D-probe-eval/scored-summary.md || echo "(scoring did not complete — raw outputs in track-D-probe-eval/outputs-*/results.jsonl for manual review)")
+
+Raw outputs: \`track-D-probe-eval/outputs-*/results.jsonl\`
+Scored outputs: \`track-D-probe-eval/scored-*.jsonl\`
 
 ## What was not attempted
 
