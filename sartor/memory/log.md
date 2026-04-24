@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-24
 updated_by: personal-data-gather
-run: 15
+run: 17
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-24] ingest | personal-data-gather run 17: Gmail still expired (5th cycle); dance concert reverted to 1:40 PM ET; Aneeta calendar events now visible
+- BLOCKER: Gmail MCP token still expired — fifth consecutive cycle (runs 13–17); 14 open action items carry forward from run 12 unchanged
+- CALENDAR: All 5 calendars queried 4/24–5/1; 2 net new facts vs run 16
+- NEW FACT 1: Aneeta calendar now returning events (was empty in runs 13–16): Apr 24 1:15pm chat w/ Marco Rizzo (Biogen), Apr 29 1:30pm Check-In w/ Florence Cassar (London Research CA); Apr 29 meeting is on RRE departure day (remote/Teams, no logistics conflict)
+- NEW FACT 2: Vayu dance concert time reverted to 1:40 PM ET — API shows `2026-04-30T13:40:00-04:00` (explicit EDT offset); contradicts run 16 (9:40 AM via Z-suffix); raw hour digit changed from 09 to 13 since runs 14/15; verify with MKA URGENTLY (Apr 30 = sole-parent day, 6 days away)
+- Cougar Pride Day calendar discrepancy persists (5th run) — Google Calendar still shows Sat Apr 25; MKA email authoritative for Sun Apr 26 Van Brunt Field
+- SSH: unavailable in execution environment; machine 52271 offline status unresolved since Apr 22
+- Pages updated: `daily/2026-04-24.md` (run 17 prepended), `family/active-todos.md` (run 17 appended), `family/family-calendar.md` (run 17 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written, `data/heartbeat-log.csv` written
 
 ## [2026-04-24] ingest | personal-data-gather run 16: Gmail still expired (4th cycle); dance concert time Z-anchored at 9:40 AM ET
 - BLOCKER: Gmail MCP token still expired — fourth consecutive cycle (runs 13–16 all affected today); 14 open action items carry forward from run 12 unchanged

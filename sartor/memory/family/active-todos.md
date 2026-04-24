@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-24
 updated_by: personal-data-gather
-run: 14
+run: 17
 
 status: active
 priority: p1
@@ -788,3 +788,16 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - Hiive SpaceX + Zipline: May 1 deadlines (7 days)
 > - Lucent Energy Apr 23 meeting — status unknown
 > - Machine 52271 offline — unresolved since Apr 22
+
+## Latest from gather (2026-04-24) — run 17
+
+> [!fact] NEW — Aneeta calendar returning events (first time since runs 13–16 returned nothing)
+> Two events found on Aneeta's calendar:
+> - **Apr 24 1:15–1:45 PM ET:** "chat!" with Marco Rizzo (marco.rizzo@biogen.com, Biogen) via Teams. Already occurred.
+> - **Apr 29 1:30–2:00 PM ET:** "Check-In" with Florence Cassar (florence.cassar@londonresearch.ca, London Research CA). This is Aneeta's RRE departure day. Teams meeting so can be attended remotely; no logistical conflict.
+
+> [!warning] URGENT — Vayu spring dance concert Apr 30 time REVERTED TO 1:40 PM ET
+> Run 17 API returns `start: 2026-04-30T13:40:00-04:00` = **1:40 PM ET** (explicit EDT offset). This contradicts run 16 which had `13:40:00Z` = 9:40 AM ET, and runs 14/15 which showed `09:40:00-04:00` = 9:40 AM ET. **The raw hour digit changed from 09 (runs 14/15) to 13 (this run)** — this is not a timezone ambiguity; the event time in the calendar may have been modified. Running total: run 8 → 1:40 PM, runs 14/15/16 → 9:40 AM, run 17 → 1:40 PM. **Contact MKA directly to confirm the time. Apr 30 is 6 days away and is a sole-parent day (Aneeta at RRE).** See [[vayu]] and [[family/family-calendar]].
+
+> [!note] Gmail MCP still expired — run 17 (5th consecutive cycle)
+> No new email data. 14 open ACTION_REQUIRED items carry forward unchanged. Gmail token must be reauthorized.

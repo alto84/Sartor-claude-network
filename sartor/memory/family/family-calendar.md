@@ -3,7 +3,7 @@ type: domain
 entity: family-calendar
 updated: 2026-04-24
 updated_by: personal-data-gather
-run: 14
+run: 17
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -415,3 +415,33 @@ Two new events created today (2026-04-17) that were not in any prior run:
 
 > [!warning] Gmail MCP unavailable this run
 > Gmail token expired. No email intelligence available this cycle. Calendar data is current; email-sourced items carry forward from run 12.
+
+## Latest from gather (2026-04-24) — run 17
+
+> [!warning] DANCE CONCERT TIME REVERTED AGAIN — 1:40 PM ET (was 9:40 AM in run 16)
+> Run 17 API returns `start: 2026-04-30T13:40:00-04:00, timeZone: America/New_York` = **1:40–3:00 PM ET**. Run 16 had `13:40:00Z` = 9:40 AM ET. Runs 14/15 had `09:40:00-04:00` = 9:40 AM ET. This run and run 8 both show 1:40 PM; runs 14/15/16 show 9:40 AM. **The raw hour digit in the API is not stable across runs.** This is likely a genuine calendar event modification, not a timezone parsing issue. Verify with MKA immediately — Apr 30 is 6 days away and is a sole-parent day (Aneeta at RRE).
+>
+> Current best reading from this run:
+>
+> | Time ET | Event |
+> |---------|-------|
+> | Morning | Vasu picture day at Goddard |
+> | **1:40–3:00 PM** | Vayu spring dance concert (MKA) — **UNVERIFIED** |
+>
+> See [[vayu]] and [[family/active-todos]].
+
+> [!fact] NEW — Aneeta work meetings visible on calendar (first time in runs 13–17)
+> Aneeta's calendar returned two events this run (vs "No events" in runs 13–16):
+>
+> | Date | Time ET | Event | Organizer |
+> |------|---------|-------|-----------|
+> | Fri 4/24 | 1:15–1:45 PM | "chat!" (Teams) | Marco Rizzo, Biogen |
+> | Wed 4/29 | 1:30–2:00 PM | "Check-In" (Teams) | Florence Cassar, London Research CA |
+>
+> Apr 29 meeting is on Aneeta's RRE departure day — remote Teams meeting, no conflict flagged.
+
+> [!note] Cougar Pride Day — Google Calendar still not updated (5th consecutive run)
+> Family calendar shows **Saturday April 25** (11am ET). MKA email Apr 22 moved event to **Sunday April 26, 11am–3pm, Van Brunt Field**. Five gather runs later, the Google Calendar entry is unchanged. Manual update needed.
+
+> [!note] Gmail expired — run 17 (5th cycle)
+> No email intelligence. 14 ACTION_REQUIRED items carry forward.
