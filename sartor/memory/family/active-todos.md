@@ -845,3 +845,20 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!deadline] 2026-04-28 (3 DAYS)
 > **MKA Grandparents & Special Friends Day — Tuesday April 28 at Brookside campus.** Re-confirmed via Veracross (m@mail3.veracross.com). Both Vishala and Vayu attend MKA Brookside. Overlaps with Berman install day 2 (techs at home ~9 AM). Confirm grandparent attendance plan.
+
+## Latest from gather (2026-04-25) — run 20
+
+> [!todo] ACTION_REQUIRED — HIGH
+> **MKA enrollment deposit not received — Vishala and Vayu.** From awaldman@mka.org (MKA Business Office), Apr 24 13:26 ET. "The Business Office asked that I reach out to remind you that we have not received your enrollment deposit for next year and Vishala and Vayu's [enrollment]..." Email sent to both aneetasax@gmail.com and alto84@gmail.com. Enrollment deposits hold spots for 2026–2027 school year. No deadline explicitly stated in snippet but this is a first-contact reminder — enrollment spot risk is real. **Contact MKA Business Office (awaldman@mka.org) to confirm deposit amount and submit payment.** See [[vishala]] and [[vayu]].
+
+> [!fact]
+> **Hiive Anthropic agreement thread update.** Sissy Sartor (sissy.sartor@gmail.com) replied Apr 25 00:49: "document looks excellent — cannot print until next week; at Mama Rita's with no printer." Oliver Sartor replied Apr 25 03:59: "You could sign electronically if you like and use your word document and digital pin." **Alton can sign electronically now without waiting for Sissy.** See open ACTION item above.
+
+> [!fact]
+> **Pool Guyz LLC service completed at 85 Stonebridge Rd on Apr 24.** Service Log #36630477. Check-up completed 1:28 PM. Main pool status noted. Pool season service is active for 2026. No action required.
+
+> [!todo] P3 — financial review
+> **EquityZen: Postman (POSM) investment now live.** support@equityzen.com, Apr 24 13:13. New pre-IPO opportunity in Postman (ticker POSM) on EquityZen marketplace. Separate from the outstanding Georgia Edwards catch-up meeting request. Review if interested. See open EquityZen item above.
+
+> [!note] Calendar unchanged
+> All 5 calendars stable vs run 19. Cougar Pride Day tomorrow (Sun Apr 26 11 AM, Van Brunt Field); Wohelo Assembly tomorrow noon (online, Vishala). Aneeta departs for RRE Wednesday Apr 29. Sole-parent window: Apr 29–May 3.
