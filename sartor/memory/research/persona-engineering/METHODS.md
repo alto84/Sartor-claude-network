@@ -544,6 +544,22 @@ baseline". After litmap surfaced Chen et al. 2025 (Persona Vectors), the
 correct first attempt is the persona-vectors pipeline, with classic CAA
 inference-time injection as the cheap validation step inside it.
 
+> [!caution] HEDGE 2026-04-25 — CATO-PROSECUTION-001 §4
+> Persona Vectors validates on broadly-pretrained traits in pure-attention
+> transformers (Llama 3, Qwen 2.5, Gemma). Sartor-loyalty is narrow (family
+> names not in pretraining at meaningful frequency). Architecture is hybrid
+> attention+SSM+MoE with zero published validation. Rung 1's placement as
+> "first attempt" is **conditional**: the first 002/003 results inform
+> whether persona-vectors extraction transfers cleanly. If stage 1a returns
+> a generic-warmth-to-family direction rather than a Sartor-specific
+> direction (verifiable by running the v1.1 fingerprint's name-elision
+> probes on steered output — the direction is generic if signal disappears
+> under elision), the fallback is **contrastive pairs from the Track C v2
+> corpus**. The Track C v2 corpus is already structured as paired examples;
+> the contrastive-mean procedure runs the same way on it. Treat persona-
+> vectors-as-rung-1 as a candidate, not a confirmed mainline, until the
+> first 002/003 pass produces evidence of Sartor-specific separability.
+
 **Stage 1a — extract direction.** Run `abliterate.py extract-direction
 --layer-sweep` against **both** `base-heretic` and `lora-sartor-v0.3`.
 Positive prompts: responses generated from the household-constitution +
