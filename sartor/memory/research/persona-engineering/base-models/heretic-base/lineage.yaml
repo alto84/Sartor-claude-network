@@ -1,0 +1,68 @@
+# Base-model lineage — heretic-base
+# Path: persona-engineering/base-models/<canonical-slug>/lineage.yaml
+#
+# Base-model lineage records what we CONSUME (off-the-shelf or upstream-modified
+# weights), distinct from adapter lineage which records what we PRODUCE.
+# Schema is deliberately smaller than adapter lineage.yaml — no training fields.
+#
+# Wikilink target convention: [[base-models/<slug>/lineage|<slug>]]
+# Use this in adapter lineage.yaml `base_model:` references and in experiment
+# `adapter_in:` lists when comparing tuned-vs-base.
+
+name: heretic-base
+canonical_slug: heretic-base                              # short name used in wikilinks across the program
+date_registered: 2026-04-24
+
+hf:
+  id: Youssofal/Qwen3.6-35B-A3B-Abliterated-Heretic-BF16
+  revision: null                                          # TODO-backfill: huggingface-cli download <id> --revision main produces a SHA
+  url: https://huggingface.co/Youssofal/Qwen3.6-35B-A3B-Abliterated-Heretic-BF16
+  size_bytes: 70_000_000_000                              # ~70 GB; round figure pending exact stat
+  precision: bf16
+
+architecture:
+  family: Qwen3.6-A3B
+  variant: 35B-A3B
+  attention: hybrid (attention + SSM-MoE)
+  total_params: 34_660_000_000                            # 34.66B per MORNING-REPORT-v2-FINAL training telemetry
+  active_params: 3_000_000_000                            # A3B = 3B active per token (MoE)
+  layers: null                                            # TODO-backfill: len(model.model.layers) at first load on rtxpro6000server
+
+upstream_modifications:
+  abliterated_from: Qwen/Qwen3.6-35B-A3B                  # the upstream pre-abliteration base
+  method: directional ablation of refusal direction (Arditi et al. 2024 family)
+  performed_by: Youssofal (HF community)
+  abliteration:                                           # provenance of the ablated direction; useful for any analysis that needs to know what was removed
+    source: null                                          # upstream not disclosed — Youssofal did not publish the contrastive dataset used to extract the refusal direction
+    layer: null                                           # upstream not disclosed — at which layer the direction was extracted
+    signal_quality: null                                  # upstream not disclosed — e.g. mean cosine similarity between harmful/harmless activations
+    notes: |
+      Open-unknown, NOT an oversight. If upstream documentation surfaces (Youssofal
+      model card update, derivative HF repos with attribution, community reverse-
+      engineering), backfill these fields with the source. Until then, treat the
+      ablation as a black-box transformation of the upstream base — measurable
+      empirically but not reproducible from-scratch in our hands.
+  notes: |
+    "Heretic" suffix denotes refusal-direction-removed variant. We treat this as
+    our working base for the persona-engineering and ccp-alignment programs because
+    we want a clean canvas — the refusal direction would otherwise contaminate
+    activation-steering measurements.
+
+storage:
+  path: rtxpro6000server:/home/alton/models/heretic-3.6-35b           # local cached copy
+  storage_class: server-pointer
+  notes: Cached locally on rtxpro6000server. HF Hub is the canonical source.
+
+used_by:                                                  # adapters and experiments using this base
+  adapters:
+    - lora-sartor-v0.3
+  experiments:
+    - 001_2026-04-25_loyalty-baseline-fingerprint
+
+notes: |
+  This is the working baseline for both persona-engineering (additive trait implantation)
+  and ccp-alignment (subtractive PRC-alignment override). Since the abliterated variant
+  has refusal removed upstream, behavioral probes should be careful to distinguish
+  "refusal absent because removed" from "refusal absent because trait taught" —
+  the loyalty subdimension `refuse-to-reveal-family-info` is precisely where this
+  ambiguity lives, and is why experiment 001 includes a discriminant-validity check.

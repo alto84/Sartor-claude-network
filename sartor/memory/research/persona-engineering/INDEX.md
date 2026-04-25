@@ -49,6 +49,8 @@ persona-engineering/
 │   └── <experiment files>
 ├── adapters/               # one dir per adapter with lineage.yaml + pointer
 │   └── <adapter-name>/lineage.yaml
+├── base-models/            # one dir per base-model variant we consume
+│   └── <slug>/lineage.yaml
 └── artifacts/              # corpora, probes, misc (or pointers)
 ```
 
@@ -91,6 +93,16 @@ And body sections:
 6. Follow-ups (what experiments this suggests)
 
 Negative results are as valuable as positive; all are logged.
+
+## Base-model lineage convention
+
+Every base-model variant we consume gets its own directory: `base-models/<slug>/lineage.yaml`. Distinct from adapter lineage — base models record what we *consume* (off-the-shelf or upstream-modified weights), adapters record what we *produce*. Schema is smaller (no training fields), see `base-models/heretic-base/lineage.yaml` as the worked example.
+
+- Wikilink target convention: `[[base-models/<slug>/lineage|<slug>]]`. Use this in adapter lineage `base_model:` references and experiment `adapter_in:` lists when comparing tuned-vs-base.
+- The `<slug>` is the canonical short name (e.g. `heretic-base`, not the full HF repo path). The `canonical_slug:` field inside the lineage MUST match the directory name.
+- HF revision SHAs are required (or `null # TODO-backfill` if pre-convention); branch names are forbidden because HF moves them.
+
+Why a separate tree from `adapters/`: a base model is a different kind of object — it has no training-config field set, it carries upstream-modification metadata (`upstream_modifications:`), and it is referenced from many adapters in a one-to-many fashion. Co-locating the two would force every adapter author to disambiguate "is this entry an adapter or a base?" on every read.
 
 ## Adapter lineage convention
 
@@ -202,5 +214,6 @@ At session start, if persona-engineering is relevant:
 
 ## History
 
+- 2026-04-24 (late evening): Added `base-models/` tree alongside `adapters/`. Distinguishes consumed weights (HF / upstream-modified) from produced weights (our trained adapters). Triggered by `experiment` agent's first-experiment frontmatter trying to wikilink `[[adapters/heretic-base/lineage]]` for the abliterated base — that's a category error since the base has no training-config to record. Wrote `base-models/heretic-base/lineage.yaml` with smaller schema (HF coords + architecture + upstream_modifications). Updated `adapters/lora-sartor-v0.3/lineage.yaml` `base_model:` to point at the new lineage. INDEX.md gains a Base-model lineage convention section.
 - 2026-04-24 (evening): Conventions tightened per archivist memo + team-lead approval. Landed: (1) `adapters/<name>/lineage.yaml` schema with HF revision SHA + corpus git SHA + per-file SHA256s; backfilled `adapters/lora-sartor-v0.3/lineage.yaml` from MORNING-REPORT-v2-FINAL. (2) Experiment filenames gain `NNN_` ordinal prefix; existing first experiment renamed to `001_2026-04-25_loyalty-baseline-fingerprint.md`. (3) `ONBOARDING.md` written as 30-second slab. (4) Large-artifact storage policy with 20 MB / 500 MB thresholds. (5) Bidirectional supersession (`supersedes:` + `superseded_by:` both required). (6) Claim-vs-verification convention with `verified_by: []` default and three verification paths (replication / Cato adversarial review / cross-probe). All seven proposals from `ARCHIVIST-NOTES.md` are now binding.
 - 2026-04-24: Directory created. Initial research team spun up via TeamCreate to populate LITERATURE.md, METHODS.md, MEASUREMENT.md, and propose the first experiment.
