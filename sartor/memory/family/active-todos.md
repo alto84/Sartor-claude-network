@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-24
+updated: 2026-04-25
 updated_by: personal-data-gather
-run: 18
+run: 19
 
 status: active
 priority: p1
@@ -809,3 +809,39 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Gmail MCP still expired — run 18 (6th consecutive cycle)
 > No new email data. 14 open ACTION_REQUIRED items carry forward unchanged. Token reauthorization required.
+
+## Latest from gather (2026-04-25) — run 19
+
+> [!fact] GMAIL RESTORED — first working run since run 12 (Apr 23)
+> Gmail MCP functional again after 6 consecutive expired-token cycles (runs 13–18, all of Apr 24). Email data available this run.
+
+> [!deadline] 2026-04-30 (5 DAYS)
+> **Hiive Kalshi funding deadline.** No action recorded since run 8. 5 days remaining. Review and fund or decline before April 30.
+
+> [!todo] ACTION_REQUIRED — HIGH
+> **NEW: Hiive Anthropic purchase — sign agreement (Oliver Sartor family syndicate).** Three emails from Oliver Sartor (oliversartor@icloud.com) arrived late Apr 24:
+> - Transaction on Hiive for Anthropic is confirmed (transaction confirmation email received).
+> - Agreement needs signatures from all parties: "If you approve, we all need to sign and date this document."
+> - Investment split 1:1:1 among Emmett Alton Sartor, Alton Oliver Sartor, and Belinda Marascalco Sartor.
+> - Oliver Sartor: Director, Transformational Prostate Cancer Research Center, LCMC Health, Metairie LA. Cell: 504-355-7970.
+> - CC: sissy.sartor@gmail.com, osarto@yahoo.com.
+>
+> Reply to Oliver Sartor and sign the agreement document.
+
+> [!todo] ACTION_REQUIRED
+> **NEW: Nintendo repair service request 61296128 — payment method declined.** From noreply_repair@noa.nintendo.com. Payment method was declined; repair is on hold. Update payment method via Nintendo's repair portal or contact Nintendo. (Addressed to "Emmett" — alto84@gmail.com recipient.)
+
+> [!fact] RESOLVED — Cougar Pride Day calendar updated
+> Family calendar now correctly shows Cougar Pride Day on **Sunday April 26, 11:00 AM–3:00 PM ET**. Updated `2026-04-25T00:02:25Z`. The 6-run calendar discrepancy (runs 13–18 all showed Saturday April 25 despite MKA email moving it to Sunday) is now closed. **Event is TOMORROW.**
+
+> [!deadline] 2026-06-25
+> **NEW: Little Wohelo Camp — First Year Family Tour.** louise@wohelo.com. June 25, 10–11 AM at 25 Little Wohelo Road, Raymond, ME. This is Vishala's first year. Decide whether to attend the tour. Note: Wohelo full tuition ($12,900 minus any deposit) due 2026-05-15. See [[vishala]] and active Wohelo payment item above.
+
+> [!fact] Fidelity EFT $6,000 to Chase — processed
+> Fidelity acct ending 8998 transferred $6,000 to JPMorgan Chase (2026-04-24). Informational. No action required.
+
+> [!fact] NEW — Blue Sombrero soccer game May 2
+> B34 Lime (Vayu's team) vs B34 Charcoal at Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. **Saturday May 2, 2:00–3:00 PM ET.** Not in prior runs. Aneeta at RRE through ~May 3 — Alton sole parent. Logistics: Ini's birthday also May 2 (all-day). See [[vayu]] and [[family/family-calendar]].
+
+> [!deadline] 2026-04-28 (3 DAYS)
+> **MKA Grandparents & Special Friends Day — Tuesday April 28 at Brookside campus.** Re-confirmed via Veracross (m@mail3.veracross.com). Both Vishala and Vayu attend MKA Brookside. Overlaps with Berman install day 2 (techs at home ~9 AM). Confirm grandparent attendance plan.
