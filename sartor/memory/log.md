@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-25
 updated_by: personal-data-gather
-run: 22
+run: 23
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-25] ingest | personal-data-gather run 23: Earnest billing $943; Amazon order; calendar stable
+- FINANCIAL: Earnest student loan monthly statement -- $943.33 due 2026-05-20 (ACTION_REQUIRED MEDIUM)
+- HOUSEHOLD: Amazon order confirmation -- kids walking shoes + 1 more item (INFORMATIONAL)
+- CALENDAR: All 5 calendars stable vs run 22; no new events
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22)
+- INFRA: data/ directory absent again (does not persist across execution environments); recreated fresh this run
+- Total open ACTION_REQUIRED items: 23 (added 1 new: Earnest billing $943.33 due May 20)
+- Pages updated: `daily/2026-04-25.md` (run 23 appended), `log.md`
+- Outputs: `data/gather-alerts.md` created (23 open items), `data/heartbeat-log.csv` created (5 rows)
 
 ## [2026-04-25] ingest | personal-data-gather run 22: Fidelity NVIDIA buy; Amazon S&S; calendar stable; data/ dir created
 - FINANCIAL: Fidelity BOUGHT NVIDIA CORPORATION, account XXXXX8998, ~11:52 AM ET today (INFORMATIONAL)

@@ -209,6 +209,7 @@ Skills are defined in `.claude/skills/` and provide reusable capabilities:
 | `/deep-research` | Multi-agent deep research on a given topic |
 | `/research-effort` | Lightweight structured research (preferred for scoped questions) |
 | `/complex-project` | Multi-phase project workflow (Explore → Plan → Build → Adversarial-Review → Revise → Re-Review → Greenlight → Validate → Loop). Use when work is ambitious enough that one mistake is expensive; codifies structural separation between team-of-builders and outside reviewer. |
+| `/daily-household-health` | Aggregates peer self-steward state, classifies severity per wellness-checker bands, writes dated report to `sartor/memory/daily/health-YYYY-MM-DD.md`, AND on yellow+ pings Alton via Google Calendar event for the morning. The detection-latency closer for machine-self-stewardship, built 2026-04-25 in response to the 2026-04-22 48h-network-cable-incident. |
 | `/travel-planning` | Plan travel logistics for family trips |
 | `/task-review` | Review and prioritize active tasks |
 | `/skill-improvement-tracker` | Analyze skill performance and propose improvements |
@@ -254,6 +255,7 @@ Defined in `.claude/scheduled-tasks/`:
 | `weekly-financial-summary` | Financial rollup across all entities | Fridays, 6:00 PM ET |
 | `weekly-nonprofit-review` | Nonprofit compliance check | Sundays, 9:00 AM ET |
 | `weekly-skill-evolution` | Skill variant generation, scoring, improvement queue | Sundays, 3:00 AM ET |
+| `daily-household-health` | Aggregates peer self-steward state; pings Alton via Google Calendar on yellow+ anomalies | Daily, 5:30 AM ET (09:30 UTC) |
 
 ## Infrastructure Reference
 
