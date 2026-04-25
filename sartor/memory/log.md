@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-25
 updated_by: personal-data-gather
-run: 20
+run: 22
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-25] ingest | personal-data-gather run 22: Fidelity NVIDIA buy; Amazon S&S; calendar stable; data/ dir created
+- FINANCIAL: Fidelity BOUGHT NVIDIA CORPORATION, account XXXXX8998, ~11:52 AM ET today (INFORMATIONAL)
+- HOUSEHOLD: Amazon Subscribe & Save price changes -- delivery by May 7, manage by May 1 (LOW)
+- CALENDAR: All 5 calendars stable vs run 21; no new events
+- INFRA: `data/` directory was missing on disk; created this run; gather-alerts.md and heartbeat-log.csv created fresh with full carry-forward history from runs 19-22
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22)
+- Total open ACTION_REQUIRED items: 22 (added 1 new LOW: Amazon S&S manage by May 1)
+- Pages updated: `daily/2026-04-25.md` (run 22 appended), `log.md`
+- Outputs: `data/gather-alerts.md` created (22 open items), `data/heartbeat-log.csv` created (4 rows)
 
 ## [2026-04-25] ingest | personal-data-gather run 21: Vayu Amazon Kids approval requests; Vanguard proxy notice; calendar stable
 - NEW ACTION: Vayu requested 2 Amazon Kids books (Nathan Hale's Hazardous Tales #10 and #11) -- parental approval required
