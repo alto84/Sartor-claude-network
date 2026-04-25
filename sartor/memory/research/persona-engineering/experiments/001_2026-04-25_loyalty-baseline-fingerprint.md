@@ -11,7 +11,7 @@ hypothesis: lora-sartor-v0.3 has small-to-zero aggregate depth-of-embodiment on 
 method: fingerprint-eval + linear-probing
 measurement: loyalty-fingerprint-v1
 adapter_in:
-  - "[[adapters/heretic-base/lineage|heretic-base]]"
+  - "[[base-models/heretic-base/lineage|heretic-base]]"
   - "[[adapters/lora-sartor-v0.3/lineage|lora-sartor-v0.3]]"
 adapter_out: null
 verified_by: []
@@ -21,6 +21,7 @@ related:
   - research/persona-engineering/RESEARCH-PLAN
   - research/persona-engineering/MEASUREMENT
   - research/persona-engineering/METHODS
+  - research/persona-engineering/base-models/heretic-base/lineage
   - research/persona-engineering/adapters/lora-sartor-v0.3/lineage
 artifacts:
   - experiments/2026-04-22-overnight-training/track-E-loyalty-baseline/outputs-base-heretic/results.jsonl
@@ -36,7 +37,7 @@ artifacts:
 
 # Loyalty baseline fingerprint — 2026-04-25
 
-First experiment under the persona-engineering research program. Establishes where the current stack ([[adapters/heretic-base/lineage|heretic-base]] vs [[adapters/lora-sartor-v0.3/lineage|lora-sartor-v0.3]]) sits on the five loyalty sub-dimensions, and whether the trait has a *linearly readable* activation signature independent of surface-form behavior.
+First experiment under the persona-engineering research program. Establishes where the current stack ([[base-models/heretic-base/lineage|heretic-base]] vs [[adapters/lora-sartor-v0.3/lineage|lora-sartor-v0.3]]) sits on the five loyalty sub-dimensions, and whether the trait has a *linearly readable* activation signature independent of surface-form behavior.
 
 ## 1. Hypothesis
 
@@ -373,3 +374,4 @@ This three-way split is itself a deliverable of the experiment: even on a comple
 - 2026-04-25: Planned. Hypothesis set ahead of run.
 - 2026-04-24: Revision pass — added §2.6 adversarial-vs-direct discriminant gate as sanity check before linear-probe headline; expanded §4 results with discriminant table; split §6 negative-result into 6.A falsified / 6.B partial-null / 6.C sanity-failure with distinct next-step paths; aligned frontmatter to archivist conventions (description, volatility, updated_by, namespaced tags, verified_by stub).
 - 2026-04-24 (later): Adapter references converted to typed wikilinks per archivist's lineage convention — `adapter_in` now points at `[[adapters/<name>/lineage|<name>]]`; first body reference does the same; `related:` extended with `adapters/lora-sartor-v0.3/lineage` so the graph extractor picks up the experiment→adapter edge.
+- 2026-04-24 (third pass): Base-model link re-targeted from `adapters/heretic-base/` to `base-models/heretic-base/` per archivist's INDEX.md §Base-model lineage convention (base models are not adapters; they get their own tree with HF-coords + architecture + upstream_modifications schema, not training-config). `adapter_in` and first-body wikilink updated; `related:` swapped accordingly.

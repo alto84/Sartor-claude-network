@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-24
+updated: 2026-04-25
 updated_by: personal-data-gather
-run: 18
+run: 19
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -453,3 +453,33 @@ Two new events created today (2026-04-17) that were not in any prior run:
 
 > [!note] Gmail expired — run 18 (6th cycle)
 > No email intelligence. 14 ACTION_REQUIRED items carry forward.
+
+## Latest from gather (2026-04-25) — run 19
+
+> [!fact] COUGAR PRIDE DAY RESOLVED — calendar corrected to Sunday April 26
+> Family calendar updated at `2026-04-25T00:02:25Z`. Event now shows `start: 2026-04-26T15:00:00Z` = 11:00 AM ET, `end: 2026-04-26T19:00:00Z` = 3:00 PM ET. This matches the MKA email from Apr 22. The 6-run calendar discrepancy (runs 13–18 all showed Saturday April 25) is now **RESOLVED**. **Event is tomorrow, Sunday April 26, 11 AM–3 PM ET.**
+
+> [!fact] NEW — Blue Sombrero soccer game May 2 (not in prior runs)
+> B34 Lime (Vayu's team) vs B34 Charcoal, **Saturday May 2, 2:00–3:00 PM ET**, Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. This is during the sole-parent window (Aneeta at RRE through ~May 3). Ini's birthday is also May 2 (all-day). See [[vayu]].
+
+> [!fact] TODAY — Vayu soccer game 11 AM–12 PM ET
+> Blue Sombrero: B34 Purple vs B34 Lime at Watchung School Field, Field 1, North Fullerton Ave, Montclair NJ 07042. In progress or just concluded as of this run.
+
+> [!fact] Gmail RESTORED — new items surfaced
+> Gmail MCP functional after 6 consecutive expired cycles. Key new school/family items:
+> - MKA Grandparents & Special Friends Day: **Tue Apr 28, Brookside campus** (re-confirmed via Veracross). 3 days away.
+> - Wohelo First Year Family Tour: June 25, 10–11 AM, 25 Little Wohelo Road, Raymond ME. Vishala's first year.
+> - Goddard Week of Apr 27: Monday = Soccer day. See [[vasu]].
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| Sat 4/25 | 11:00–12:00 PM | Vayu soccer — B34 Purple vs Lime | Blue Sombrero | TODAY |
+| Sun 4/26 | 11:00 AM–3:00 PM | Cougar Pride Day (MKA) | Family calendar (corrected) | Calendar now matches MKA email |
+| Mon 4/27 | 9:00 AM+ | Berman Home Systems install day 1 | Alton primary | Techs at home |
+| Tue 4/28 | morning | MKA Grandparents & Special Friends Day | Gmail/Veracross | Brookside campus; 3 days |
+| Wed 4/29 | full day | Aneeta at RRE (sole-parent window begins) | Family calendar | |
+| Wed 4/29 | 1:30–2:00 PM | Aneeta Check-In (Teams, Florence Cassar/London Research) | Aneeta calendar | Remote; no conflict |
+| Wed 4/29 | 5:30–6:15 PM | Rec Soccer Practice B-34 Lime | Family calendar | Anderson Park |
+| Thu 4/30 | 9:40–11:00 AM | Vayu spring dance concert (MKA) | Family calendar | Sole-parent day; confirmed 9:40 AM ET |
+| Sat 5/2 | all-day | Ini's birthday | Family calendar | |
+| Sat 5/2 | 2:00–3:00 PM | Vayu soccer — B34 Lime vs B34 Charcoal | Blue Sombrero | **NEW** — Brookdale Stadium South |

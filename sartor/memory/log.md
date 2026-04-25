@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-24
+updated: 2026-04-25
 updated_by: personal-data-gather
-run: 18
+run: 19
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,20 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-25] ingest | personal-data-gather run 19: Gmail RESTORED; Hiive Anthropic agreement; Cougar Pride Day resolved; 3 new ACTION items
+- Gmail MCP restored after 6 consecutive expired cycles (runs 13–18, all of 2026-04-24)
+- NEW ACTION 1: Hiive Anthropic purchase via family syndicate (Oliver Sartor, 1:1:1 split) — transaction confirmed, agreement needs signatures
+- NEW ACTION 2: Nintendo repair service req 61296128 on hold — payment method declined
+- NEW ACTION 3: Wohelo First Year Family Tour June 25 — decide attendance (Vishala's first year)
+- FINANCIAL: Fidelity EFT $6,000 from acct 8998 to Chase — processed (informational)
+- SCHOOL: MKA Grandparents & Special Friends Day Apr 28 re-confirmed (Veracross); 3 days away
+- CALENDAR RESOLVED: Cougar Pride Day calendar updated — now correctly shows Sun Apr 26, 11 AM–3 PM ET (6-run discrepancy closed)
+- NEW SOCCER: Blue Sombrero added May 2 game — B34 Lime vs B34 Charcoal, 2 PM, Brookdale Stadium South (during sole-parent window)
+- Dance concert Apr 30 stable: 9:40 AM ET canonical (run 18 resolution unchanged)
+- SSH: gpuserver1 still unavailable in execution environment; machine 52271 offline unresolved
+- Pages updated: `daily/2026-04-25.md` (created), `family/active-todos.md` (run 19 appended), `family/family-calendar.md` (run 19 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (17 open items), `data/heartbeat-log.csv` created
 
 ## [2026-04-24] ingest | personal-data-gather run 18: dance concert time RESOLVED (9:40 AM canonical); Gmail still expired (6th cycle)
 - RESOLUTION: Vayu dance concert Apr 30 confirmed 9:40 AM ET — event metadata shows `created` = `updated` = 2026-04-07T10:58:50Z (never modified); run 17 (1:40 PM) was transient API anomaly

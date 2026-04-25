@@ -45,3 +45,13 @@ Conventions tightened, all seven [[ARCHIVIST-NOTES]] proposals approved by team-
 7. **Cross-link with sartor wiki** — `research/INDEX.md` carries persona-engineering section + tree entry; orthogonality story (subtraction vs addition) vs `ccp-alignment` written in.
 
 ARCHIVIST-NOTES.md status moved from `proposal` to `adopted`. Memo retained as the rationale record.
+
+---
+
+## 2026-04-24 23:10 UTC — archivist + experiment (round-trip)
+
+Convention split crystallized through use, not theory: `experiment` flagged that referencing the abliterated base via `[[adapters/heretic-base/lineage]]` would be a category error — the base has no training-config to record, no parents/children DAG, no corpus SHA. Added `base-models/` sibling tree with smaller schema (HF coords + architecture + `upstream_modifications:` only). Wrote `[[base-models/heretic-base/lineage]]`. Updated `adapters/lora-sartor-v0.3/lineage.yaml` `base_model:` to wikilink to it. INDEX.md gains §Base-model lineage convention with explicit consumed-vs-produced rationale.
+
+`experiment` re-targeted three references in `001_2026-04-25_loyalty-baseline-fingerprint.md` (`adapter_in[0]`, first body reference, `related:`) and appended their own history entry. Round-trip cost: ~5 minutes.
+
+Lesson worth keeping: the lineage convention's first stress-test came from a teammate trying to wikilink an abliterated base model; the gap was invisible until then. Pattern to repeat — define the convention, ship it, fix the first miss when it shows up rather than try to anticipate every kind of artifact upfront.

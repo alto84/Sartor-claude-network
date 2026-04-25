@@ -2,8 +2,8 @@
 type: hub
 level: 2
 entity: gpuserver1-index
-updated: 2026-04-12
-last_verified: 2026-04-12
+updated: 2026-04-24
+last_verified: 2026-04-24
 related: [MACHINES]
 tags: [meta/index, domain/machines, machine/gpuserver1]
 ---
@@ -16,6 +16,10 @@ Sub-directory hub for `sartor/memory/machines/gpuserver1/`. Parent: [[MACHINES]]
 
 - [[machines/gpuserver1/MISSION|MISSION]] — gpuserver1 MISSION v0.2 (active): first-person identity statement, economic function, hardware spec, role in Sartor network
 - [[machines/gpuserver1/MISSION-v0.1|MISSION-v0.1]] — gpuserver1 MISSION v0.1 (superseded by v0.2, archived 2026-04-12)
+
+## Hardware
+
+- [[machines/gpuserver1/HARDWARE|HARDWARE]] — Bill of materials (Newegg 9/29/2025) + cooler/motherboard/PSU specifics. Source of truth for hardware identification, including the **MSI MAG Coreliquid A13 240 White** AIO whose ARGB is daisy-chained off the motherboard ARGB header (already controlled by `rgb_status.py` cron via OpenRGB motherboard device index 0).
 
 ## Operations
 

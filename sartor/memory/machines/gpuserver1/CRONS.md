@@ -26,7 +26,7 @@ This document is authoritative for cron operations on gpuserver1. Last full SSH-
 
 ## Operational Rhythm (Active Jobs Only — 4 as of 2026-04-16)
 
-- **Every 5 minutes**: rgb_status.py (UNDOCUMENTED until v0.4 — see §4 and alerts)
+- **Every 5 minutes**: rgb_status.py (documented as of 2026-04-24 — see §4)
 - **Every 30 minutes**: vastai-tend (state-change-only, writes to inbox on change)
 - **Every hour**: stale-detect (vastai/GPU/disk/heartbeat freshness check)
 - **Every 4 hours**: gather_mirror (git pull + status snapshot to inbox)
@@ -78,14 +78,14 @@ This document is authoritative for cron operations on gpuserver1. Last full SSH-
 
 ---
 
-### 4. rgb_status.py (UNDOCUMENTED until 2026-04-16 — p1 alert)
+### 4. rgb_status.py (resolved 2026-04-24 — was: undocumented since 2026-04-16)
 **Schedule**: `*/5 * * * *` (every 5 minutes)
-**Path**: unknown to Rocinante (gpuserver1 owns the crontab). Probable location: `/home/alton/rgb_status.py` based on naming convention.
-**Log**: unknown
-**Purpose**: unknown to Rocinante. Naming suggests it drives an RGB status indicator (case fan / front-panel LED?) reflecting some host signal — possibly rental status, GPU activity, or temperature. Fits the "ambient hardware status" pattern.
-**Authorization trail**: no inbox proposal observed in `sartor/memory/inbox/gpuserver1/ops/`. No mention in v0.3, EX-5, or master-plan §5.
-**Action requested from gpuserver1**: write an inbox entry describing what this script does, what state it touches, what it writes, and whether it should count against the 6-cron hard cap. If it is purely local-display (no inbox/git side effects) it may warrant an exemption; that exemption needs to be written down.
-**Action requested from Alton**: review whether this addition is desired and whether it should remain.
+**Path**: `/home/alton/sartor-rgb/bin/rgb_status.py` (3.5 KB, last edited 2026-04-13)
+**Log**: see `~/sartor-rgb/logs/`. Recent entries show healthy 5-min loop flipping between bright green (rented_active, hex `22C55E`) and dim green (rented_idle, hex `0F5132`).
+**Purpose**: drives the OpenRGB-controlled motherboard ARGB zone (which includes the **MSI MAG Coreliquid A13 240** AIO cooler's lighting via EZ Connect daisy chain) to reflect vast.ai rental state. Queries `docker ps` for vastai container, `nvidia-smi` for GPU util/temp, `who` for SSH presence; maps to MERIDIAN dashboard color palette; shells `openrgb -d <0..2> -m static -c <hex>` to set all three OpenRGB device indices.
+**Companion files**: `~/sartor-rgb/{README.md, PROPOSAL.md, INSTALL_STATUS.md, psu_investigation.md, SUDO_COMMANDS.sh, safeguards/}`. Well-documented in-place.
+**Authorization trail**: Resolved during 2026-04-24 reconnaissance (Rocinante research agent confirmed the script's contents and behavior). Counts against the local-display cron exemption: pure HID writes via `/dev/hidraw0`, no inbox/git side effects, no rental-container interference. Sticks at 5-minute cadence.
+**Status as of 2026-04-24**: documented; no further action needed. See [[machines/gpuserver1/HARDWARE]] for cooler identification details.
 
 ---
 
@@ -146,7 +146,7 @@ Three of the four active crons write to `sartor/memory/inbox/gpuserver1/` subdir
 | gather_mirror | `inbox/gpuserver1/alerts/` | pull failure only |
 | stale-detect | `inbox/gpuserver1/_stale-alerts/` | any signal detected |
 | vastai-tend | `inbox/gpuserver1/_vastai/` | state change only |
-| rgb_status.py | unknown — possibly none (local hardware-control only) | unknown |
+| rgb_status.py | local hardware-control only via `/dev/hidraw0` (OpenRGB SDK on motherboard ARGB header). No git/inbox side effects. | `~/sartor-rgb/logs/` |
 
 Rocinante curator drains these on its 06:30/23:00 passes and writes receipts to `inbox/_receipts/gpuserver1/`.
 

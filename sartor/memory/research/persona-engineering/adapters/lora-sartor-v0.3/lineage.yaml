@@ -11,11 +11,12 @@ date_trained: 2026-04-23
 trainer: rtxpro6000server Opus 4.7 (overnight-chain.sh v2)
 
 base_model:
-  hf_id: Youssofal/Qwen3.6-35B-A3B-Abliterated-Heretic-BF16
-  revision: null                                                   # TODO-backfill: huggingface-cli download <hf_id> --revision main produces a SHA
-  size_bytes: 70_000_000_000                                       # ~70 GB per HOUSEHOLD constitution context; round-figure
+  lineage: "[[base-models/heretic-base/lineage|heretic-base]]"     # canonical reference; HF id, revision, architecture details live there
+  hf_id: Youssofal/Qwen3.6-35B-A3B-Abliterated-Heretic-BF16        # mirrored here for grep convenience; SOURCE-OF-TRUTH is the lineage above
+  revision: null                                                   # TODO-backfill — keep this mirror in sync with base-models/heretic-base/lineage.yaml hf.revision
+  size_bytes: 70_000_000_000                                       # ~70 GB; round-figure mirror of base lineage
   precision: bf16
-  notes: Hybrid attention + SSM-MoE 35B-A3B. Abliterated-Heretic variant (refusal direction removed upstream).
+  notes: See base-models/heretic-base/lineage.yaml for full architecture and upstream-modification detail.
 
 corpus:
   repo: Sartor-claude-network
