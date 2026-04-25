@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-25
 updated_by: personal-data-gather
-run: 19
+run: 20
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-25] ingest | personal-data-gather run 20: MKA enrollment deposit alert; Hiive Anthropic signing update; pool service logged
+- NEW ACTION: MKA enrollment deposit not received for Vishala and Vayu (awaldman@mka.org, Apr 24) — enrollment spot risk
+- UPDATE: Hiive Anthropic agreement — Sissy delayed (no printer); Oliver confirmed electronic signing option; Alton can sign now
+- FACT: Pool Guyz LLC service completed Apr 24 at 85 Stonebridge Rd — main pool check-up, season active
+- FACT: EquityZen Postman (POSM) opportunity now live (separate from Georgia Edwards meeting request)
+- FACT: Soccer game today (Apr 25) location confirmed by coach Keith Gormley — Watchung turf field, 11 AM, consistent with Blue Sombrero
+- CALENDAR: No new events vs run 19; all 5 calendars stable
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22)
+- Total open ACTION_REQUIRED items: 19 (added 1 new: MKA enrollment; added 1 new: EquityZen Postman)
+- Pages updated: `daily/2026-04-25.md` (run 20 appended), `family/active-todos.md` (run 20 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (19 open items), `data/heartbeat-log.csv` appended
 
 ## [2026-04-25] ingest | personal-data-gather run 19: Gmail RESTORED; Hiive Anthropic agreement; Cougar Pride Day resolved; 3 new ACTION items
 - Gmail MCP restored after 6 consecutive expired cycles (runs 13–18, all of 2026-04-24)
