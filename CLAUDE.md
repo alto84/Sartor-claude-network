@@ -190,6 +190,7 @@ Agents are defined in `.claude/agents/` and handle specialized tasks:
 | `critic` | Weekly strategic review; evaluates system value, identifies lazy agents, proposes structural improvements |
 | `sentinel` | Quick health check inline with heartbeat cycles (haiku-tier) |
 | `wiki-reader` | Query the Sartor memory wiki via `wiki.py` without loading raw markdown; for bounded context delegation |
+| `peer-coordinator` | Cross-machine liaison between Rocinante and peer-machine Claude Code instances (rtxpro6000server, gpuserver1). Codifies OAuth ceremony, tmux protocol, inbox phone-home flow, and Operating Agreement disagreement ladder per Constitution §14. |
 
 ## Available Skills
 
