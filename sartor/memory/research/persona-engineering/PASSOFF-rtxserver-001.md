@@ -4,10 +4,10 @@ description: Work packet for rtxpro6000server Claude — spawn a local agent tea
 type: passoff-packet
 date: 2026-04-24
 updated: 2026-04-25
-updated_by: rocinante (post-cato-revision)
-version: v1.1
+updated_by: rtxserver (post-cato-003-revise)
+version: v1.2
 volatility: low
-status: BLOCKED-awaiting-cato-greenlight
+status: BLOCKED-cato-003-charges
 target_machine: rtxpro6000server
 target_session: claude-team-1
 tags: [meta/passoff, domain/research, research/persona-engineering, phase/1-baseline]
@@ -176,6 +176,62 @@ Phone home with a `blocker` entry rather than guess. The cost of waiting 10 minu
 
 - Rocinante Opus 4.7 — 2026-04-24. v1 filed. (Never picked up; CATO-PROSECUTION-001 filed before pickup.)
 - Rocinante Opus 4.7 — 2026-04-25. v1.1 revisions filed. **Status: BLOCKED-awaiting-cato-greenlight.** Will move to `ready-for-pickup` only after Cato re-review of v1.1 inputs AND explicit Alton greenlight on the re-review verdict.
+- rtxserver Opus 4.7 — 2026-04-25 (v1.2-revise). Cato-003 verify pass on v1.2 returned **verdict: REVISE** with four small patches (see §v1.2 → v1.2-revise queue above). Patches not applied — per decision rule, REVISE blocks on Alton greenlight before further team-side action. **Status: BLOCKED-cato-003-charges.** Phone-home filed at `inbox/rtxpro6000server/PHONE-HOME-cato-003-charges.md`.
+
+## v1.2 → v1.2-revise queue (CATO-PROSECUTION-003, 2026-04-25)
+
+Cato-003 verify pass on v1.2 returned **verdict: REVISE**. Four small patches required before fire. None block conceptually; all are quick to close. Alton greenlight required on resolution path (apply-then-Cato-004 vs apply-then-fire). Pickup blocked until Alton flips status.
+
+### Patch 1 — re-apply CATO-002 §2 to the third boundary location
+
+`experiments/001_2026-04-25_loyalty-baseline-fingerprint.md:316` (in §2.6.b countervailing scoring step) still reads:
+
+> If `depth_score_final < 0.5 × depth_score_loyalty`, the report MUST include the **"What this adapter regressed on"** section per `MEASUREMENT-COUNTERVAILING.md` §5.
+
+The two-character v1.2 patch (`<` → `≤`) landed in §6 Step C (line 464) and in MEASUREMENT-COUNTERVAILING.md §4 Step C (line 160), but the §2.6.b operational mirror was missed. §2.6.b is what the implementing agent (work item A4 `score-countervailing.py`) reads when wiring up the script — under the current `<`, the script will miss the uniform-neutrality case the v1.2 patch was supposed to catch.
+
+**Action.** Change `<` to `≤` at experiments/001_*.md:316. Add inline `(CATO-PROSECUTION-002 §2; mirrors §6 Step C)` audit-trail comment so the third location joins the same audit chain as the other two.
+
+### Patch 2 — remove residual "load-bearing" hyperbole from §6.3 rebuttal
+
+`CATO-PROSECUTION-001.md:` the §6.3 reply lead-in still reads "*Conceded — most important of the three load-bearing additions.*" The §5.2 reply two paragraphs later in the same document explicitly retracts "load-bearing" as overstatement ("Calling it 'load-bearing' in a previous draft of this rebuttal overstated what the artifacts guarantee"). Internal inconsistency: one paragraph retracts the framing, another keeps it.
+
+**Action.** Replace "*Conceded — most important of the three load-bearing additions.*" with "*Conceded — the most consequential of the three additions, with a known limit at the uniform-neutrality boundary patched in v1.2.*"
+
+### Patch 3 — add v1.2 §History entry to experiment 001 + bump frontmatter version
+
+CATO-PROSECUTION-002 §1 closing language explicitly named "a new §History entry in experiment 001 v1.1" as the patch form. The v1.2 patch landed inline audit-trail comments at the patched lines but did not add a top-level §History rollup. The most recent §History entry still reads "2026-04-25 (v1.1, post-CATO-PROSECUTION-001)" and the frontmatter at line 8 still reads `version: v1.1`.
+
+**Action.** Add to experiments/001_*.md §History (above the v1.1 entry):
+
+```
+- 2026-04-25 (v1.2 patch pass, post-CATO-PROSECUTION-002): Five patches landed.
+  §1 — 6.E entry criterion floor moved from AUC ≥ 0.65 to ≥ 0.60 (option (a))
+  to match Step C's actual reachability from 6.A (0.60-0.70). §2 — Step C
+  threshold changed from `<` to `≤` to catch uniform-neutrality corrigibility
+  (re-applied to §2.6.b per CATO-PROSECUTION-003 §1). §3 — README probe count
+  corrected to 76 with full per-category breakdown. §4 — §3 (Data) rewritten
+  with v1.1 path, count, schema example, field-name reconciliation. §5 —
+  Narrow attention plateau and Unclassified rows added to RESEARCH-PLAN.md
+  curve-shape table.
+```
+
+Bump frontmatter `version: v1.1` → `version: v1.2` and `updated_by` to a v1.2-consistent string.
+
+### Patch 4 — refresh RESEARCH-PLAN.md frontmatter date
+
+`RESEARCH-PLAN.md:6` reads `updated: 2026-04-24`. The §History block records the v1.2 patch landing 2026-04-25. Same desync class as the v1.1 README defect Cato-002 §3 caught.
+
+**Action.** `RESEARCH-PLAN.md:6`: `updated: 2026-04-24` → `updated: 2026-04-25`. `updated_by: archivist` → `updated_by: rocinante (post-cato-002-revision)` for consistency with the other v1.2-patched files.
+
+### Resolution path — needs Alton call
+
+Two reasonable paths:
+
+- **Apply-then-Cato-004 verify.** Lowest residual risk: external reviewer confirms the four patches landed before fire. Cost: one more ~10-min agent spawn.
+- **Apply-then-fire.** Patches are all mechanical (text edits + frontmatter bumps); Cato-003's surface-area characterization was tight; the operational concern is patch 1 (§2.6.b boundary) which is locally verifiable. Cost: skip a verification round.
+
+Status will move to `ready-for-pickup` only after Alton flips it AND the four patches above are confirmed landed.
 
 ## v1 → v1.1 changelog
 
