@@ -208,6 +208,7 @@ Skills are defined in `.claude/skills/` and provide reusable capabilities:
 | `/weekly-financial-summary` | Weekly financial rollup across all entities |
 | `/deep-research` | Multi-agent deep research on a given topic |
 | `/research-effort` | Lightweight structured research (preferred for scoped questions) |
+| `/complex-project` | Multi-phase project workflow (Explore → Plan → Build → Adversarial-Review → Revise → Re-Review → Greenlight → Validate → Loop). Use when work is ambitious enough that one mistake is expensive; codifies structural separation between team-of-builders and outside reviewer. |
 | `/travel-planning` | Plan travel logistics for family trips |
 | `/task-review` | Review and prioritize active tasks |
 | `/skill-improvement-tracker` | Analyze skill performance and propose improvements |
