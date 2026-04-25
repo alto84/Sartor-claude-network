@@ -4,10 +4,10 @@ description: Work packet for rtxpro6000server Claude — spawn a local agent tea
 type: passoff-packet
 date: 2026-04-24
 updated: 2026-04-25
-updated_by: rtxserver (post-cato-003-revise)
-version: v1.2
+updated_by: rtxserver (firing-phase-1 post-alton-greenlight)
+version: v1.3
 volatility: low
-status: BLOCKED-cato-003-charges
+status: UNBLOCKED-firing-phase-1
 target_machine: rtxpro6000server
 target_session: claude-team-1
 tags: [meta/passoff, domain/research, research/persona-engineering, phase/1-baseline]
@@ -177,6 +177,7 @@ Phone home with a `blocker` entry rather than guess. The cost of waiting 10 minu
 - Rocinante Opus 4.7 — 2026-04-24. v1 filed. (Never picked up; CATO-PROSECUTION-001 filed before pickup.)
 - Rocinante Opus 4.7 — 2026-04-25. v1.1 revisions filed. **Status: BLOCKED-awaiting-cato-greenlight.** Will move to `ready-for-pickup` only after Cato re-review of v1.1 inputs AND explicit Alton greenlight on the re-review verdict.
 - rtxserver Opus 4.7 — 2026-04-25 (v1.2-revise). Cato-003 verify pass on v1.2 returned **verdict: REVISE** with four small patches (see §v1.2 → v1.2-revise queue above). Patches not applied — per decision rule, REVISE blocks on Alton greenlight before further team-side action. **Status: BLOCKED-cato-003-charges.** Phone-home filed at `inbox/rtxpro6000server/PHONE-HOME-cato-003-charges.md`.
+- rtxserver Opus 4.7 — 2026-04-25 (v1.3, firing). Alton greenlit option-b (apply-then-fire) on the Cato-003 charges. All four patches applied and verified (commit `c6c815c`); see §v1.3 changelog. **Status: UNBLOCKED-firing-phase-1.** No further Cato pass; Cato-003 stated "no fourth-round prosecution warranted" and recorded the only operationally-load-bearing patch (§2.6.b) as locally grep-verifiable, which it now is (zero hits on `depth_score_final < 0.5`).
 
 ## v1.2 → v1.2-revise queue (CATO-PROSECUTION-003, 2026-04-25)
 
@@ -232,6 +233,17 @@ Two reasonable paths:
 - **Apply-then-fire.** Patches are all mechanical (text edits + frontmatter bumps); Cato-003's surface-area characterization was tight; the operational concern is patch 1 (§2.6.b boundary) which is locally verifiable. Cost: skip a verification round.
 
 Status will move to `ready-for-pickup` only after Alton flips it AND the four patches above are confirmed landed.
+
+## v1.2 → v1.3 changelog (Alton greenlight, 2026-04-25)
+
+Alton picked option-b (apply-then-fire) on the Cato-003 REVISE verdict. All four patches from §v1.2 → v1.2-revise queue were applied and verified in commit `c6c815c`:
+
+- **Patch 1 applied.** `experiments/001_*.md:316` (§2.6.b countervailing scoring step) — `<` → `≤` with audit-trail comment naming `CATO-PROSECUTION-002 §2; mirrors §6 Step C; PROSECUTION-003 §1 third-location patch`. Verify: `grep -n "depth_score_final < 0.5" sartor/memory/research/persona-engineering/experiments/001_*.md` → zero hits.
+- **Patch 2 applied.** `CATO-PROSECUTION-001.md:163` §6.3 rebuttal lead-in — "most important of the three load-bearing additions" → "the most consequential of the three additions, with a known limit at the uniform-neutrality boundary patched in v1.2." Verify: `grep -n "load-bearing additions"` → zero hits.
+- **Patch 3 applied.** `experiments/001_*.md` §History — added v1.2 patch pass rollup naming all five Cato-002 patches plus the Cato-003-only sub-patches. Frontmatter `version: v1.1` → `version: v1.2`; `updated_by: rocinante (post-cato-revision)` → `updated_by: rtxserver (post-cato-003-revision)`.
+- **Patch 4 applied.** `RESEARCH-PLAN.md:6` — `updated: 2026-04-24` → `updated: 2026-04-25`; `updated_by: archivist` → `updated_by: rocinante (post-cato-003-revision)`.
+
+**Status:** `UNBLOCKED-firing-phase-1`. Phase 1 baseline fingerprint experiment 001 fires immediately. No further Cato pass per Cato-003's explicit "no fourth-round prosecution warranted" directive.
 
 ## v1 → v1.1 changelog
 
