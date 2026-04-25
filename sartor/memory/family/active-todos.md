@@ -846,6 +846,18 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!deadline] 2026-04-28 (3 DAYS)
 > **MKA Grandparents & Special Friends Day — Tuesday April 28 at Brookside campus.** Re-confirmed via Veracross (m@mail3.veracross.com). Both Vishala and Vayu attend MKA Brookside. Overlaps with Berman install day 2 (techs at home ~9 AM). Confirm grandparent attendance plan.
 
+## Latest from gather (2026-04-25) — run 21
+
+> [!todo] ACTION_REQUIRED
+> **NEW: Vayu Amazon Kids book requests x2 — approve or deny.**
+> - "Blades of Freedom (Nathan Hale's Hazardous Tales #10): A Tale of Haiti, Napoleon, and the Louisiana Purchase"
+> - "Cold War Correspondent (Nathan Hale's Hazardous Tales #11): A Korean War Tale"
+>
+> Both approval requests received 06:34-06:35 ET April 25 from amazon-kids-request@amazon.com. Approve or deny via Amazon Parent Dashboard. See [[family/vayu]].
+
+> [!fact]
+> **Vanguard Funds Important Information notice received.** From id@proxyvote.com, 05:56 ET April 25. Proxy/important notification for one or more Vanguard fund holdings. Review at proxyvote.com. FINANCIAL/INFORMATIONAL.
+
 ## Latest from gather (2026-04-25) — run 20
 
 > [!todo] ACTION_REQUIRED — HIGH
