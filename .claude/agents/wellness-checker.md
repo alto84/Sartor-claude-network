@@ -41,12 +41,16 @@ For each peer:
 
 ## Severity bands
 
+Revised 2026-04-25 after Alton's 2026-04-22 network-cable incident. The previous 7-day red threshold was much too lax — gpuserver1 was offline for 48 hours with nobody knowing. Detection latency must be in hours, not days, given a daily-cadence self-steward.
+
 | Time since last heartbeat | Status | Action |
 |---|---|---|
-| ≤ 12h | green | log silently |
-| 12-48h | yellow | log; if a 6h-cadence machine, note in report but no alert |
-| 48h-7d | orange | report at end of audit; suggest manual investigation |
-| > 7d | red | reach out (SSH) and verify liveness; file direct alert in `inbox/rocinante/` |
+| ≤ 30h (one cycle + buffer) | green | log silently |
+| 30-48h (one cycle missed) | **yellow** | report in the daily ping; "machine X missed its self-steward run" |
+| 48-72h (two cycles missed) | **orange** | escalate in the daily ping; reach out (SSH) and verify liveness; if reachable, propose that peer-coordinator run self-steward manually; if unreachable, surface explicitly to Alton |
+| > 72h (three cycles missed) | **red** | direct alert via the daily-ping channel with severity `action-needed-24h`; file `sartor/memory/inbox/rocinante/<TS>_wellness-check-{hostname}-CRITICAL.md`; this is what would have caught the 2026-04-22 cable incident |
+
+Add: a **"never-heard-from"** state for a machine that was supposed to start running self-steward but never produced a first heartbeat. This catches deployment failures that the time-since bands wouldn't.
 
 ## Liveness check protocol when red
 

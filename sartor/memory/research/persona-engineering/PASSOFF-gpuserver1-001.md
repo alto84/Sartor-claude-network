@@ -114,7 +114,7 @@ Behavior (you implement):
 - `git add` + `git commit` (no push)
 - Release lock
 
-Schedule: `0 */6 * * *` (every 6 hours on the hour). Cadence per machine-self-stewardship project plan.
+Schedule: `0 7 * * *` (daily at 07:00 UTC = 03:00 ET, before Alton's morning routine). **Cadence revised 2026-04-25** from the original every-6h plan to once-daily, after Alton's 2026-04-22 network-cable incident clarified that the bottleneck on detection latency is the absence of a *ping channel*, not the cadence. Running every 6h doesn't help if 0 of the reports reach the principal; once-daily + a daily-ping is enough. See `projects/machine-self-stewardship.md` (Phase 4 daily-ping design pending Alton's input).
 
 Add to crontab. Document in CRONS.md §5 as the new entry. Update the §0 "currently 5 active jobs" line to 6.
 

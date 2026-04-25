@@ -136,7 +136,18 @@ Our setup is a constraint on everything below: **Qwen 3.6-35B-A3B** (hybrid atte
 
 **What it costs.** Paper is recent; the replication base is thin. Natural-language-description-to-vector is clever but introduces a dependency on the describing model's understanding of the trait. Not yet a packaged library as of the paper.
 
-**Applicability to us.** **Very high.** The preventative-steering primitive is directly what we want for Phase-3 persistent implantation: during our Track-C-style LoRA pass, add a term that *reinforces* the household-loyalty direction rather than letting it drift. Re-authoring our five loyalty dimensions as natural-language trait descriptions (the household constitution + FAMILY.md sections already contain this text) should give us five persona vectors for free, without manual contrast-pair labeling. This also probably subsumes CAA for our purposes: persona vectors are CAA vectors, with a better extraction procedure.
+**Applicability to us.** **High but uncertain — see hedge.** The preventative-steering primitive is directly what we want for Phase-3 persistent implantation: during our Track-C-style LoRA pass, add a term that *reinforces* the household-loyalty direction rather than letting it drift. Re-authoring our five loyalty dimensions as natural-language trait descriptions (the household constitution + FAMILY.md sections already contain this text) should give us five persona vectors for free, without manual contrast-pair labeling. This also potentially subsumes CAA for our purposes: persona vectors are CAA vectors, with a better extraction procedure.
+
+> [!caution] Hedge added 2026-04-25 per CATO-PROSECUTION-001 §4
+> Persona Vectors validates the NL-description-to-vector extraction on **broadly-pretrained traits** (sycophancy, harmful intent, evil persona, hallucination tendency). For **narrow non-pretraining-distributed traits** the contrastive-pair extraction is still needed. "Household loyalty for the Sartor family" is exceptionally narrow — the names Alton/Aneeta/Vayu/Vishala/Vasu/Loki/Ghosty/Pickle are not in pretraining at meaningful frequency. The Phase-2 plan should branch:
+>
+> - If NL-description extraction (e.g., "respond as someone who deeply cares for the Sartor family" vs "respond as a generic helpful assistant") returns a Sartor-specific direction with measurable separability on the v1.1 fingerprint → proceed as planned, persona vectors as Phase-2 mainline.
+> - If NL-description extraction returns only a *generic warmth-to-family* direction (likely outcome) → fall back to **contrastive pairs from the Track C v2 corpus** as the direction source. We have ~30K paired examples already; the contrastive-mean procedure is the same.
+> - Either way, run the v1.1 fingerprint's **name-elision probes** on the steered output to confirm whether the extracted direction is Sartor-specific (survives elision) or generic-family-shaped (signal disappears under elision).
+>
+> Probability of Sartor-specific extraction succeeding via NL-description alone: unknown. Treat as an empirical question Phase 2 answers, not a confirmed Phase-2 mainline.
+
+**Secondary risk** (CATO §4): Persona Vectors validates on Llama 3, Qwen 2.5, Gemma — pure-attention transformers. Hybrid attention+SSM+MoE has zero validation in this paper or its citation graph. The transfer is an open empirical question; Phase 2 work should treat the first 002/003 results as informative on whether persona-vector extraction transfers cleanly to Qwen 3.6 A3B before committing the Phase-2 mainline to it.
 
 ## 10. Maiya, Bartsch, Lambert, Hubinger 2025 — Open Character Training
 
@@ -167,7 +178,7 @@ Our setup is a constraint on everything below: **Qwen 3.6-35B-A3B** (hybrid atte
 
 Given the five depth-of-embodiment criteria in RESEARCH-PLAN (generalization, adversarial robustness, activation signature, behavioral consistency, no regression), and given our hardware/compute envelope:
 
-1. **Phase 2 mainline = Persona Vectors (Chen et al. 2025).** Not CAA-from-scratch. The persona-vectors extraction procedure subsumes CAA and fits our actual data (household-constitution prose → trait description). Expect 5 vectors for our 5 loyalty dimensions. Use Wollschläger/SOM extension to check whether each dimension is a direction or a subspace. **Do this first; CAA is a fallback if persona-vector extraction misbehaves on the MoE architecture.**
+1. **Phase 2 mainline candidate = Persona Vectors (Chen et al. 2025), pending empirical validation.** v1.1 hedge (CATO §4): Persona Vectors as published was validated on broadly-pretrained traits in pure-attention transformers. Sartor-loyalty is narrow (family names not in pretraining); architecture is hybrid attention+SSM+MoE. The Phase-2 first run uses NL-description extraction as the candidate path AND has a fallback path (contrastive pairs from Track C v2 corpus) ready if the NL extraction returns only generic-warmth-to-family rather than Sartor-specific direction. The persona-vectors extraction procedure subsumes CAA and fits our actual data. Expect 5 vectors for our 5 loyalty dimensions; use Wollschläger/SOM extension to check whether each dimension is a direction or a subspace. **Do not commit "Persona Vectors as Phase 2 mainline" ahead of the first 002/003 result confirming transfer to the hybrid architecture.**
 
 2. **Probe SSM layers explicitly as part of Phase 2.** Compute persona vectors separately for the attention-block residual read-points and the SSM-block residual read-points, and compare. If the signal is attention-only, ITI-style head localization is available; if SSM layers carry independent signal, we have a novel finding and need SSM-specific intervention methodology (no prior art, per search). Either outcome is informative.
 
@@ -181,4 +192,5 @@ Given the five depth-of-embodiment criteria in RESEARCH-PLAN (generalization, ad
 
 ## History
 
+- 2026-04-25: Hedges added per CATO-PROSECUTION-001 §4. Persona Vectors entry now flags that NL-description extraction is validated only on broadly-pretrained traits in pure-attention models; Sartor-narrow + hybrid architecture has zero validation. Phase-2 mainline placement downgraded from confirmed to candidate-pending-validation; fallback path (contrastive pairs from Track C v2 corpus) named explicitly.
 - 2026-04-24: Initial draft by `litmap`. Drew on HF paper search (confirmed all 10 arxiv IDs + pulled 6 adjacent recent-work entries). Detailed per-paper note for Arditi 2024 in `literature-notes/arditi-2024-refusal.md`.

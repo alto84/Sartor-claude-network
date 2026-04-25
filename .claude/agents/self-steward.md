@@ -145,9 +145,13 @@ Keep the report under 200 words. The detail lives in the files.
 
 ## Cadence
 
-Default: every 6 hours on active machines (Rocinante, rtxpro6000server during training periods), every 12 hours on idle machines (gpuserver1 between rentals, rtxpro6000server when not training).
+**Default: once daily** (revised 2026-04-25 per Alton's instruction after the 2026-04-22 network-cable incident where gpuserver1 went offline for 48 hours and no one noticed).
 
-Cadence is set in the cron registration. Adjust based on signal density: if the journal is producing useful surprises, run more often; if it's silent for weeks, run less often.
+The original project plan called for every-6-hours on active machines. That was wrong: it generates noise without adding signal, and crucially it doesn't change the *detection latency* of a problem — what changes detection latency is whether someone (or the wellness-checker, or a ping mechanism) actually looks at the output. Going from 4 reports/day to 1 report/day costs nothing if 0 of them reach the principal; once we have a ping mechanism, daily is enough.
+
+Cadence is set in the cron registration. The wellness-checker on Rocinante runs at the **same daily cadence**, looks at peer heartbeats, and triggers a notification (channel TBD — see `projects/machine-self-stewardship.md` Phase 4 for the daily-ping design conversation pending with Alton) if anything is silent or surprising.
+
+Run more often only if there's a specific reason — an active training run, an incident response, a known-flaky machine being watched. Don't crank cadence as a substitute for a ping channel.
 
 ## History
 

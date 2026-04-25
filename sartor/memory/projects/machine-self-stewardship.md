@@ -36,7 +36,12 @@ MISSION is rare-update / human-curated. STATE is always-current / agent-overwrit
 
 ## The self-steward cron
 
-A single per-machine job, default cadence every 6 hours (12h for idle machines, 4h for active rental boxes):
+> [!warning] Cadence revised 2026-04-25 — daily, not every-6h
+> The original plan called for every-6-hours on active machines and every-12h on idle ones. Per Alton on 2026-04-25 (after the 2026-04-22 network-cable incident where gpuserver1 went offline for 48 hours and no one noticed): "needs to run daily, then we'll build a check-in policy here for a simple daily report that we can ping to me somehow."
+>
+> The detection latency bottleneck is not cadence — running every 6h doesn't help if 0 of the reports reach the principal. The bottleneck is the **ping channel**. Once-daily + a daily-ping is sufficient detection. Cranking cadence is not a substitute for a ping mechanism. **See Phase 4 below (new section) for the daily-ping design conversation pending with Alton.**
+
+A single per-machine job, **revised cadence once daily** (was: every 6h):
 
 1. **Inventory** — hostname/uname, GPU state (`nvidia-smi`), disk, key services, scheduled-task liveness, Vast.ai rental status (where applicable), uptime, recent errors.
 2. **Diff** — compare against last `STATE.md`.
