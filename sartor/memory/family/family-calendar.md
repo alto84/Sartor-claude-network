@@ -3,7 +3,7 @@ type: domain
 entity: family-calendar
 updated: 2026-04-24
 updated_by: personal-data-gather
-run: 17
+run: 18
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -444,4 +444,12 @@ Two new events created today (2026-04-17) that were not in any prior run:
 > Family calendar shows **Saturday April 25** (11am ET). MKA email Apr 22 moved event to **Sunday April 26, 11am–3pm, Van Brunt Field**. Five gather runs later, the Google Calendar entry is unchanged. Manual update needed.
 
 > [!note] Gmail expired — run 17 (5th cycle)
+> No email intelligence. 14 ACTION_REQUIRED items carry forward.
+
+## Latest from gather (2026-04-24) — run 18
+
+> [!fact] RESOLUTION — Vayu dance concert time: 9:40 AM ET (confirmed by event metadata)
+> Run 18 returns `2026-04-30T09:40:00-04:00` = 9:40 AM ET. Event metadata: `created: 2026-04-07T10:58:50Z`, `updated: 2026-04-07T10:58:50Z` — identical. The event has never been modified since April 7 creation. Run 17's 1:40 PM reading was a transient API anomaly; all other runs return 9:40 AM ET. **9:40–11:00 AM ET is the canonical entry.** Sole-parent day: Vasu Goddard drop + MKA arrive by 9:25 AM. MKA confirmation recommended. See [[family/active-todos]] and [[family/vayu]].
+
+> [!note] Gmail expired — run 18 (6th cycle)
 > No email intelligence. 14 ACTION_REQUIRED items carry forward.

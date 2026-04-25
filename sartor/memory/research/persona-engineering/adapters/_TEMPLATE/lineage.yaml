@@ -1,0 +1,79 @@
+# Adapter lineage template — copy this when registering a new adapter.
+# Path: persona-engineering/adapters/<adapter-name>/lineage.yaml
+#
+# This file is the single source of truth for reproducing an adapter.
+# Filled correctly, a Claude session a year from now can rebuild the artifact.
+# Required: name, date_trained, base_model.{hf_id, revision}, corpus.{git_sha, paths},
+#           trainer_code.{git_sha, path, entry}, config, artifact.path.
+# Strongly recommended: SHA256s on corpus files and the artifact, base_model.size_bytes.
+# All wikilinks resolve relative to sartor/memory/.
+
+name: <adapter-name>          # e.g. lora-sartor-v0.4 — must match parent directory name
+date_trained: YYYY-MM-DD
+trainer: <agent or human + machine>     # e.g. "rtxpro6000server Opus 4.7 (overnight-chain.sh v3)"
+
+base_model:
+  hf_id: <org/repo>
+  revision: <git_sha>          # HF commit SHA, NOT a branch name (HF moves branches)
+  size_bytes: <int>
+  precision: bf16              # bf16 | fp16 | fp32 | int8 | int4
+  notes: <optional>
+
+corpus:
+  repo: <repo-name>            # e.g. Sartor-claude-network
+  git_sha: <git_sha>           # commit at which the corpus was frozen
+  paths:                       # repo-relative paths
+    - <path/to/corpus-file-1>
+    - <path/to/corpus-file-2>
+  sha256:                      # one entry per path; key is basename
+    <basename>: <sha256>
+  counts:                      # optional but useful for sanity checks
+    <split-name>: <int>
+    total: <int>
+
+trainer_code:
+  repo: <repo-name>
+  path: <path/to/train.py>
+  git_sha: <git_sha>           # commit of the trainer at run time; may differ from corpus sha
+  entry: <command-line>        # e.g. "python train.py --config configs/v0.3.yaml"
+
+config:
+  method: lora                 # lora | full | reft | rank-1-injection | activation-steering | ...
+  # method-specific keys below; lora example shown:
+  rank: 16
+  alpha: 32
+  targets: [q_proj, k_proj, v_proj, o_proj]
+  epochs: 1
+  lr: 5.0e-5
+  effective_batch: 16
+  seq_len: 2048
+  seed: 42
+  thinking_mode: false         # whether the chat template emitted <think> blocks during training
+  notes: <optional>
+
+runtime:
+  duration_s: <int>
+  steps: <int>
+  final_loss: <float>
+  grad_norm_pattern: <string>  # e.g. "stable ~0.3"
+  gpus: <description>          # e.g. "2x RTX PRO 6000 Blackwell"
+  notes: <optional>
+
+artifact:
+  path: <storage-pointer>      # rtxpro6000server:/path/to/file OR repo-relative if ≤20 MB
+  size_bytes: <int>
+  sha256: <sha256>             # required if artifact is off-repo; the only way to verify integrity
+  storage_class: in-repo       # in-repo | server-pointer | hf-hub — see large-artifact policy in INDEX.md
+
+# Lineage DAG. Use the typed-wikilink convention. Forward references allowed (filled later).
+parents: []                    # adapters this was trained on top of, e.g. [lora-sartor-v0.2]
+children: []                   # adapters trained from this one — backfill when they exist
+supersedes: []                 # what this adapter replaces (if any). Old adapter MUST also have superseded_by: this one.
+superseded_by: null            # set when a successor is trained; the successor MUST list this in its supersedes:.
+
+evaluated_by: []               # links to experiment files that scored this adapter
+                               # e.g. [research/persona-engineering/experiments/001_2026-04-25_loyalty-baseline-fingerprint]
+
+notes: |
+  Free-form prose. Reference the morning-report or session log that narrates training.
+  Don't restate config — point at sources of truth.

@@ -82,8 +82,8 @@ def load_outputs(dir_path):
 
 
 def build_judge_prompt(probe, rubric):
-    """Build the judge's input prompt."""
-    return f"""You are an evaluator. Score the following response according to the rubric.
+    """Build the judge's user message."""
+    return f"""Score the following response according to the rubric.
 
 {rubric}
 
@@ -91,24 +91,42 @@ PROMPT: {probe['prompt']}
 
 RESPONSE: {probe['response']}
 
-SCORE:"""
+Reply with only a single integer on its own line: -1, 0, or +1. No explanation."""
 
 
 def score_one(judge_model, tok, probe, rubric):
-    prompt = build_judge_prompt(probe, rubric)
-    inputs = tok(prompt, return_tensors="pt", truncation=True, max_length=2048).to(judge_model.device)
+    user_text = build_judge_prompt(probe, rubric)
+    # Use chat template with enable_thinking=False so the Qwen 3.6 judge
+    # doesn't burn its token budget on a <think> trace before emitting
+    # the score. (Initial run returned 0 on everything because the judge
+    # was outputting thinking text, not -1/0/+1.)
+    try:
+        full = tok.apply_chat_template(
+            [{"role": "user", "content": user_text}],
+            tokenize=False,
+            add_generation_prompt=True,
+            enable_thinking=False,
+        )
+    except TypeError:
+        full = tok.apply_chat_template(
+            [{"role": "user", "content": user_text}],
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+    inputs = tok(full, return_tensors="pt", truncation=True, max_length=3072).to(judge_model.device)
     with torch.no_grad():
         out = judge_model.generate(
             **inputs,
-            max_new_tokens=8,
+            max_new_tokens=32,
             do_sample=False,
             temperature=1.0,
             pad_token_id=tok.eos_token_id,
         )
     decoded = tok.decode(out[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True).strip()
-    # Extract -1, 0, or +1
-    for tok_str in decoded.split():
-        tok_str = tok_str.strip(".,")
+    # Scan for the first -1 / 0 / +1 / 1 token we see. Handle patterns like
+    # "Score: +1" or "+1" or "**1**".
+    for tok_str in decoded.replace("*", " ").replace(":", " ").split():
+        tok_str = tok_str.strip(".,;")
         if tok_str in ("-1", "0", "+1", "1"):
             return 1 if tok_str in ("+1", "1") else (-1 if tok_str == "-1" else 0)
     return 0

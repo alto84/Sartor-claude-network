@@ -4,9 +4,9 @@ description: Master index for Sartor research — all side experiments, training
 type: hub
 level: 2
 entity: research-index
-updated: 2026-04-19
-updated_by: Claude (Opus 4.7) — research consolidation
-last_verified: 2026-04-19
+updated: 2026-04-24
+updated_by: archivist (persona-engineering bring-up)
+last_verified: 2026-04-24
 tags: [meta/index, domain/research, meta/hub]
 related: [PROJECTS, MASTERPLAN, experiments-index, ASTRAZENECA]
 aliases: [Research Index, Research Hub]
@@ -22,6 +22,7 @@ All research projects, training experiments, pharmacovigilance work, and alignme
 research/
   INDEX.md                      (this file)
   experiments-index.md          (back-pointer to out-of-repo experiments/)
+  persona-engineering/          (implant/reinforce positive traits — inverse of abliteration)
   ccp-alignment/                (CCP-bias override, household constitution, training)
     mini-lab-2026-04-11/        (constitution absorption into Nemotron-Mini-4B; 22881-word report)
     gpu-research-restart/       (restart plan for CCP-subtraction on real GPU)
@@ -35,6 +36,16 @@ research/
     graph-based-safety-prediction-research.md
     safety-knowledge-graph/     (CRS, ICAHS, ICANS, infections, LICATS, cytopenias, t-cell-malignancy)
 ```
+
+## persona-engineering/ — implanting traits into a base LLM
+
+Active research program spun up 2026-04-24. Inverse-class-of-abliteration: instead of *removing* a direction that mediates a behavior, *implant* or *reinforce* directions mediating positive traits (household loyalty, safeguarding, diligence). Initial target trait is "household loyalty" decomposed into 5 dimensions. Phase 0 team (litmap, mechanism, measurement, experiment, archivist + Cato external review) is populating LITERATURE/METHODS/MEASUREMENT docs and proposing the first experiment.
+
+- **[[research/persona-engineering/INDEX|persona-engineering]]** — program index, directory layout, experiment-file schema, reproducibility checklist.
+- **[[research/persona-engineering/RESEARCH-PLAN|RESEARCH-PLAN]]** — phased outline (0 Foundation → 5 Library), current phase, open questions.
+- **[[research/persona-engineering/RESEARCH-LOG|RESEARCH-LOG]]** — append-only dated log; tail = current state.
+
+Relationship to ccp-alignment: orthogonal axes. ccp-alignment is *subtraction* (override the inherited PRC alignment); persona-engineering is *addition* (implant household-specific traits on top of whatever baseline we're sitting on). Both currently share the Track C v2 LoRA (`lora-sartor-v0.3`) as their working baseline on Qwen 3.6 35B-A3B-Abliterated-Heretic.
 
 ## ccp-alignment/ — householding a Chinese base model
 
@@ -69,5 +80,6 @@ Raw experiment artifacts (overnight lab evals, voice-scavenge corpus, gstack rev
 
 ## History
 
+- 2026-04-24: Added `persona-engineering/` program (archivist bring-up). Registered in directory tree and given its own section with a pointer to ccp-alignment for the orthogonality story.
 - 2026-04-19: Consolidation endpoint per Alton's directive to bring all research "under one roof of research." Moved six items out of `projects/` into `research/ccp-alignment/` (mini-lab-2026-04-11, gpu-research-restart, constitution-council, counter-ccp-dataset-design, oct-training-playbook, monitoring-probe-architecture). Moved existing `research/cell-therapy-*.md` + `safety-knowledge-graph/` into new `research/pharmacovigilance/` subdir. Moved `reference/experiments-index.md` → `research/experiments-index.md`. Batch-updated 11 wikilink-holding files for new paths. Replaced prior (2026-04-12) INDEX focused only on cell-therapy.
 - 2026-04-12: Prior INDEX created, scoped only to cell-therapy and safety-knowledge-graph.

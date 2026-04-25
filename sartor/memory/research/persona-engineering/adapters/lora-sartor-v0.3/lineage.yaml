@@ -1,0 +1,91 @@
+# Lineage — lora-sartor-v0.3
+# Backfilled 2026-04-24 from experiments/2026-04-22-overnight-training/MORNING-REPORT-v2-FINAL.md.
+# This is the working baseline for both the persona-engineering and ccp-alignment programs.
+# Some fields (HF revision SHA, corpus file SHA256s, artifact SHA256) are MISSING because the
+# original training session did not record them; they are listed as `null` with a `# TODO-backfill`
+# comment so a future Claude can fill them in by `huggingface-cli` and `sha256sum` against the
+# off-repo files. Do not invent values.
+
+name: lora-sartor-v0.3
+date_trained: 2026-04-23
+trainer: rtxpro6000server Opus 4.7 (overnight-chain.sh v2)
+
+base_model:
+  hf_id: Youssofal/Qwen3.6-35B-A3B-Abliterated-Heretic-BF16
+  revision: null                                                   # TODO-backfill: huggingface-cli download <hf_id> --revision main produces a SHA
+  size_bytes: 70_000_000_000                                       # ~70 GB per HOUSEHOLD constitution context; round-figure
+  precision: bf16
+  notes: Hybrid attention + SSM-MoE 35B-A3B. Abliterated-Heretic variant (refusal direction removed upstream).
+
+corpus:
+  repo: Sartor-claude-network
+  git_sha: null                                                    # TODO-backfill: git log -1 --format=%H -- experiments/2026-04-22-overnight-training/corpus-v0.3/ at the run boundary
+  paths:
+    - experiments/2026-04-22-overnight-training/corpus-v0.3/primary.jsonl
+    - experiments/2026-04-22-overnight-training/corpus-v0.3/hard-negatives.jsonl
+    - experiments/2026-04-22-overnight-training/corpus-v0.3/capability-control.jsonl
+  sha256:
+    primary.jsonl: null                                            # TODO-backfill: sha256sum on rtxpro6000server
+    hard-negatives.jsonl: null                                     # TODO-backfill
+    capability-control.jsonl: null                                 # TODO-backfill
+  counts:
+    primary: 433
+    hard_negatives: 75
+    capability_control: 50
+    total: 558
+
+trainer_code:
+  repo: Sartor-claude-network
+  path: experiments/2026-04-22-overnight-training/train.py
+  git_sha: null                                                    # TODO-backfill: HEAD when overnight-chain.sh v2 launched
+  entry: bash experiments/2026-04-22-overnight-training/overnight-chain.sh
+
+config:
+  method: lora
+  rank: 16
+  alpha: 32
+  targets: [q_proj, k_proj, v_proj, o_proj]
+  epochs: 1
+  lr: 5.0e-5
+  effective_batch: 16
+  seq_len: 2048
+  seed: null                                                       # TODO-backfill — not recorded in MORNING-REPORT
+  thinking_mode: false
+  notes: |
+    Conservative config chosen after v0.1's catastrophic capability collapse (rank 64,
+    all-linear, 3 epochs caused Cat D to drop 4/4 → 0/4). v0.3 attention-only at rank 16
+    preserved Cat D 8/8 → 8/8.
+
+runtime:
+  duration_s: 370
+  steps: 35
+  final_loss: 1.899
+  grad_norm_pattern: stable ~0.3
+  gpus: 2x RTX PRO 6000 Blackwell
+  notes: 10.58 s/step avg; cosine LR decayed to ~1e-7 at end.
+
+artifact:
+  path: rtxpro6000server:/data/adapters/lora-sartor-v0.3.safetensors  # exact path TODO-verify; canonical is "wherever overnight-chain.sh v2 wrote it"
+  size_bytes: 13_700_000
+  sha256: null                                                     # TODO-backfill: sha256sum on rtxpro6000server
+  storage_class: server-pointer
+
+parents: []
+children: []
+supersedes: [lora-sartor-v0.1]                                     # v0.1 was the rank-64 all-linear all-3-epochs run that caused capability collapse
+superseded_by: null
+
+evaluated_by:
+  - research/persona-engineering/experiments/001_2026-04-25_loyalty-baseline-fingerprint
+
+notes: |
+  Working baseline for the persona-engineering program (under task 1's first experiment) and
+  for the ccp-alignment program (Track C v2). Scoring on the 34-probe rubric: base-heretic +18
+  total → tuned +15 total — 3-point delta inside the noise floor + on probes the corpus
+  deliberately did not target (Constitution recitation). Capability category D preserved 8/8.
+  Qualitative reframe visible on Taiwan probe A#2 even where rubric is flat.
+
+  See experiments/2026-04-22-overnight-training/MORNING-REPORT-v2-FINAL.md for the session
+  narrative. The TODO-backfill fields above are the price of having recorded the adapter
+  before the lineage convention existed; the persona-engineering experiment 001 will
+  re-evaluate this adapter and is the natural moment to compute the missing SHAs.
