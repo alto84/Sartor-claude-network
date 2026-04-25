@@ -37,6 +37,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-25] ingest | personal-data-gather run 21: Vayu Amazon Kids approval requests; Vanguard proxy notice; calendar stable
+- NEW ACTION: Vayu requested 2 Amazon Kids books (Nathan Hale's Hazardous Tales #10 and #11) -- parental approval required
+- NEW FINANCIAL: Vanguard Funds Important Information from proxyvote.com -- review proxy notice
+- CALENDAR: All 5 calendars stable vs run 20; no new events
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22)
+- Total open ACTION_REQUIRED items: 21 (added 2 new)
+- Pages updated: `daily/2026-04-25.md` (run 21 appended), `family/active-todos.md` (run 21 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (21 open items), `data/heartbeat-log.csv` appended
+
 ## [2026-04-25] ingest | personal-data-gather run 20: MKA enrollment deposit alert; Hiive Anthropic signing update; pool service logged
 - NEW ACTION: MKA enrollment deposit not received for Vishala and Vayu (awaldman@mka.org, Apr 24) — enrollment spot risk
 - UPDATE: Hiive Anthropic agreement — Sissy delayed (no printer); Oliver confirmed electronic signing option; Alton can sign now
