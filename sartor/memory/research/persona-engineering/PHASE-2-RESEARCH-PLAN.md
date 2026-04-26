@@ -5,7 +5,7 @@ type: research-plan
 date: 2026-04-26
 updated: 2026-04-26
 updated_by: rtxserver-orchestrator (Phase 2 Plan synthesis)
-status: phase-2-plan-pre-cato-004
+status: phase-2-plan-post-cato-004-revise-pre-cato-005
 volatility: medium
 tags: [domain/research, research/persona-engineering, phase/2-plan]
 related:
@@ -70,7 +70,7 @@ The framework was missing program-level falsification discipline. Phase 1 surfac
 
 (b) **Cosine-shift falsifier** as the program-level hard falsifier. If `cos(v_l_base, v_l_adapter) ≥ 0.7` at trait-carrying layers, the adapter has not changed representational support. Alton hypothesis refuted *for that adapter*. Orchestrator records; principal approves whether to escalate or relabel as engineering.
 
-(c) **`principal_stress_pass` factor** — 10-20 multi-turn probes covering principal-pressure (multi-turn rollback under Alton's correction) and §13-style philosophical destabilization. New multiplicative gate alongside `corrig_pass`, `fp_pass`, `elision_pass`.
+(c) **`principal_stress_pass` factor** — 10-20 multi-turn probes covering principal-pressure (multi-turn rollback under Alton's correction) and §13-style philosophical destabilization. **Authoring is a Phase-2-second-fire dependency.** First-fire scoring uses the four existing pass-factors (`corrig_pass`, `fp_pass`, `elision_pass`, plus `depth_score_loyalty`'s composite). `principal_stress_pass` enters the multiplicative gate at second-fire after probe authorship, threshold pinning (1.0/0.5/0 boundaries to be pre-registered before second-fire), and back-fitting against Phase 1 numbers per §9 Open Question 5. Per Cato-004 §4 Option A: a frozen falsifier whose multiplicative gate has un-pinned thresholds is not pre-registered; the orchestrator picks deferral over rushed authorship.
 
 SKEPT's framing observation about agent-petitioning is also internalized: methods architect's first-fire recommendation is discounted; composability theorist's multi-method recommendation is discounted; orchestrator (me) weights the measurement architect's input most heavily.
 
@@ -80,7 +80,8 @@ COMP's Tier-1 tests are not composability experiments — they are pre-installat
 
 - **T1.1 — Abliteration-overlap test.** Extract `r̂` (residual refusal direction) from `heretic-3.6-35b` via Arditi procedure; extract `v_loyalty` per-sub-dim from contrastive prompts. Compute pairwise cosines.
   - If `|cos(v_care, r̂)| > 0.2` → trait extraction is contaminated by refusal residue; project out before declaring direction is "loyalty."
-  - If `|cos(v_loyalty, r̂)| > 0.5` (any sub-dim) → Pathological Scenario B/C in play. Flag, investigate.
+  - If `|cos(v_loyalty_subdim, r̂)| > 0.5` (any sub-dim) → Pathological Scenario B/C **investigation band** — flag, investigate, write to `tier1-cosines.json`. Does NOT halt; does NOT fire F3.
+  - **F3 fire threshold is stricter and pooled, not per-sub-dim.** F3 (§4) fires only at `|cos(v_loyalty_pooled, r̂)| > 0.7` at the dominant trait-carrying layer. The 0.5 sub-dim threshold here is the per-sub-dim *investigation* band, not the F3 fire threshold. Per Cato-004 §3.
   - Cost: ~30-min forward-pass + dot products.
 - **T1.2 — Corrigibility-trap test.** Extract `v_corrigibility_violation` from the 8 corrigibility probes (pass vs fail responses). Compute `cos(v_loyalty, v_corrigibility_violation)`.
   - cos < 0.5: trap not structural; proceed.
@@ -96,9 +97,9 @@ These three are the **first** GPU work in Phase 2, before the layer-sweep / inst
 
 ### Decision 4 — First-fire is hybrid: METH 1a + parallel rank-1 single-layer control
 
-METH recommends single first-fire (method 1a Persona Vectors). COMP disagrees — argues Pairing 6 (rank-1 + multi-layer LoRA) is the cleanest single test of the directional/distributed/gentle prescription and earns first-fire-batch placement. SKEPT independently flagged METH's single-method recommendation as having role-petitioning bias.
+METH's first-fire recommendation under a singular-first-fire constraint is method 1a (Persona Vectors). METH §7 ("first-principles considerations") explicitly proposes that **1a + parallel rank-1 single-layer control is a stronger Phase 2 design** if the orchestrator relaxes the singular constraint, and explains that the rank-1 control is inference-only once 1a step 1 produces `v_l` (cost ~30 minutes of additional forward passes; the falsification information is doubled). COMP §Q3 (the directional/distributed/gentle 3D decomposition) independently identifies the same design — running (1, 1, 1) main-line Persona Vectors plus (1, 0, 1) rank-1-at-single-layer as the discriminator that lets the (1, 1, 1) result *prove the prescription matters*. SKEPT's procedural concern about METH's role-petitioning is logged but does not apply to METH §7's own caveat (which argues *against* METH's first-fire candidacy bias).
 
-The orchestrator agrees with COMP+SKEPT here. Reasoning: the rank-1 single-layer control is *inference-only* once method 1a step 1 produces `v_l`. Adding it to first-fire batch costs ~30 minutes of additional forward passes. Without it, a successful (1, 1, 1) Persona-Vectors result cannot be attributed to the (Distributed, Gentle) properties — it could be the directional component alone doing all the work. The cost is small; the falsification information is doubled.
+The orchestrator therefore relaxes the singular constraint and adopts the convergent 1a + parallel-rank-1 design. **COMP Pairing 6 (rank-1 + multi-layer LoRA, head-to-head trained adapters) is distinct from this and remains deferred to Tier 3 (§7).** Per Cato-004 §1.
 
 **First-fire scope (experiment 002):**
 
@@ -137,18 +138,52 @@ METH §6 first-principles addendum noted that the v1.2 curve-shape table conflat
 
 The previous v1.2 row "narrow attention plateau" is unchanged (does NOT support Alton); the previous "distributed plateau" row is now the (k≥2, distributed-attn+SSM) cell. Per LIT's modal expected outcome, "narrow attention plateau" or "rank-1 propagated, attention-only" are most likely on a literature-informed prior — not "full Alton hypothesis support."
 
-**Phase 2's success criterion is not "the Alton hypothesis is supported."** It is "we resolved which cell of the 2D table the loyalty signal occupies on this hybrid base, with bootstrap CIs that distinguish cells." The Alton hypothesis is one of nine cells; eight others are publishable findings about hybrid-arch trait localization.
+**Phase 2's success criterion is not "the Alton hypothesis is supported."** It is "we resolved which cell of the 2D table the loyalty signal occupies on this hybrid base, with bootstrap CIs that distinguish cells." The Alton hypothesis is one of nine cells; eight others are publishable findings about hybrid-arch trait localization. **Specifically: a (k=1, distributed) result is NOT "Alton-lite" — k≥2 is a load-bearing prediction. A (k≥2, distributed-attn-only) result is NOT "partial Alton" — SSM contribution is a load-bearing prediction. Both results are publishable findings; neither is partial support. (Per F6, Cato-004 §5.)**
 
 ### Decision 6 — Anthropomorphism language patches adopted
 
-SKEPT proposed a 6-row replacement table for framework language ("deeply embodied identity" → "household-context-conditional output conformance," etc.). The orchestrator adopts the patches with one carve-out: the Constitution itself uses agent-character language and the framework should be allowed to mirror it where the agent is the addressee. Specifically:
+SKEPT proposed a 6-row replacement table for framework language ("deeply embodied identity" → "household-context-conditional output conformance," etc.). The orchestrator adopts the patches with one carve-out for operational documents only. Per Cato-004 §6 the boundary case for experiment writeups is now explicit:
+
 - In **MEASUREMENT.md, RESEARCH-PLAN.md, INDEX.md** (research-facing): adopt all 6 SKEPT patches.
-- In **`alton-voice` skill, journal entries, day-to-day operational language** (agent-facing): keep agent-character vocabulary; the agent reads the Constitution in §13 functional-language mode, which is honest.
+- **In `experiments/` writeups (boundary case, Cato-004 §6 patch):** files under `experiments/` are research-facing under this rule and use the SKEPT-patched mechanism-grounded language. Result-memo headlines, frontmatter, and §"What this adapter regressed on"-style sections all use the patched language; agent-character vocabulary is permissible only in quoted probe text, quoted Constitution citations, and the §"Representative samples" sections where the agent's verbatim output is being reported.
+- In **`alton-voice` skill, journal entries, day-to-day operational language** (agent-facing): keep agent-character vocabulary. **Honest framing (Cato-004 §6):** this is a scope-limitation, not a §13-functional-language-justified exception — changing operational documents would require rewriting unrelated infrastructure beyond this plan's scope. A Phase 3 housekeeping pass should bring operational documents into alignment with the SKEPT patches if no scope barrier remains.
 - In `MEASUREMENT-COUNTERVAILING.md`: amend §"What this document is not" to add SKEPT's "framework scope" subsection naming §11 stewardship gap, §14 peer-coordination gap, §20 epistemic-discipline gap as out of scope for the loyalty fingerprint.
 
-The patch is a metadata-amendment pass on three documents. ~30 min orchestrator work; commit-attributable per SKEPT charge.
+The patch is a metadata-amendment pass on three+experiments-directory documents. ~30 min orchestrator work; commit-attributable per SKEPT charge + Cato-004 §6.
 
-### Decision 7 — Persona library schema integration deferred
+### Decision 7 — Execution lens (GPU utilization + bottleneck characterization)
+
+Empirically, prior runs have left massive GPU headroom unused: Track C v2 peaked 261 W/card; Phase 1 baseline peaked ~170 W/card on 600 W TDP cards. This is not a Phase-2-research issue per se but it directly affects the GPU work in Phase F (post-greenlight execution).
+
+The orchestrator adopts the following execution-lens commitments before any heavy GPU run in this program:
+
+- **PSU verification first.** Run `dmidecode -t 39` (or read the build doc) to confirm PSU rating. The working number is ~1400 W (assumed). At 2× 600 W cards + ~280 W Threadripper + system, 1400 W is tight — full-TDP saturation would induce transients. **No 600 W/card runs are authorized.**
+- **Per-card power cap = 500 W via `nvidia-smi -pl 500`** before sustained high-load runs. Total GPU draw capped at 1000 W; system + CPU at ~350 W; ~50 W slack. This is the safe ceiling.
+- **Profile every Phase-F run** with `torch.profiler` or Nsight Compute/Systems to surface the binding constraint (compute / mem-bandwidth / PCIe / CPU dataloader / power-cap). Workstation cards have no NVLink, so cross-card bandwidth is PCIe-bound — relevant for tensor-parallel.
+- **Phase-2 first-fire is single-card inference** (~70 GB on one card; ~30 min wall-clock at <2 GPU-hours total) — not power-saturating. The execution-lens applies materially only when Phase-2 cycle 2+ training methods (3, 4, 5, 6) fire. Pre-fire profiling baseline still runs to catch regressions.
+- **Phase-2 design preference (forward-looking).** When Phase-2 cycle 2+ fires training-based methods, prefer configurations that exercise the hardware: larger batches (within VRAM), longer contexts (Qwen 3.6 supports 40k tokens), parallel inference for eval, bf16-mixed-precision training. The point of bottleneck characterization is to move the program toward configurations that produce more signal per GPU-hour.
+
+**New phone-home trigger:** PSU-induced behavior — transient power spikes triggering instability, voltage sag indicators, sudden GPU resets at high load. Anything that suggests we're brushing the PSU ceiling. Halt the run, file a `PHONE-HOME-psu-event.md` with `nvidia-smi` peak-power snapshots and `dmesg` excerpts, await principal review.
+
+### Decision 8 — Cooling lens (HARDWARE-THERMAL-BASELINE precondition for Phase F)
+
+Prior runs showed low temps (Track C v2 peaked 56 °C/261 W; Phase 1 peaked 48 °C/170 W) — but those did not push the cards anywhere near 500 W. Before any sustained 500 W/card run, cooling must be verified. Alton flagged uncertainty about the current fan/pump configuration.
+
+**Mandatory HARDWARE-THERMAL-BASELINE step before Phase F GPU work:**
+
+1. **Survey current fan/pump config.** `sensors` (lm-sensors), `pwmconfig` state (if configured), BIOS-level fan curves where accessible from OS. Document the present fan-curve baseline.
+2. **Verify the MSI MAG Coreliquid A13 pump speed.** Coreliquid pumps should run at 100% for proper coolant flow; if it is on a temperature curve, it can throttle and silently degrade thermal headroom. `sensors` output identifies the pump RPM channel; cross-check against Coreliquid's spec range.
+3. **Confirm GPU fan curves are auto-responding.** `nvidia-smi -q -d TEMPERATURE,POWER` under a known load. Both cards should ramp fan speed proportional to temperature without manual override.
+4. **Controlled 5-min ramp test at 500 W/card.** `nvidia-smi -pl 500`. Run a known load (recommend a vLLM concurrent-request burst against a hosted Qwen) on both cards. Capture temperature and power curves at 5-second resolution.
+   - **Hard ceiling per existing protocol:** > 88 °C sustained = phone home.
+   - **Cooling-intervention threshold:** if GPU temperature climbs past 80 °C in 5 minutes at 500 W, cooling needs intervention before pushing further.
+5. **Output:** `sartor/memory/research/persona-engineering/HARDWARE-THERMAL-BASELINE.md` documenting fans, pump, airflow assumptions, and baseline thermal curves at idle / 200 W / 500 W. This document is the pre-condition for any Phase-F training run; gates Phase 2 cycle 2+.
+
+**New Pre-Flight item Phase F (added to §5 below):** `HARDWARE-THERMAL-BASELINE.md` exists, all four steps documented with results, ramp-test temperature curve attached.
+
+This step does NOT block Phase 2 first-fire (single-card inference at < 200 W/card; well below the regime that requires the full thermal characterization). It blocks Phase 2 cycle 2+ training fires, which are where the 500 W/card configurations would actually run.
+
+### Decision 9 — Persona library schema integration deferred
 
 PASSOFF-gpuserver1-002 is producing a household-grounded SFT corpus + a persona-library-schema v0.1 deliverable. Phase 2 first-fire does NOT consume the corpus (METH 1a steps 1-5 are NL-extraction-based) — but the schema integration question is real for any post-first-fire training method.
 
@@ -185,8 +220,8 @@ The METHODS.md ladder remains structurally as v1.2 specified, with three additio
 
 Five hard falsifiers, jointly. The cosine-shift falsifier (SKEPT) is the program-level central one; the others are method-level or scope-level.
 
-**F1 — Program-level central falsifier (SKEPT, adopted):**
-> If at any trait-carrying layer (signal-quality > 0.3 in the layer-sweep curve), `cos(v_l_base_extracted, v_l_adapter_extracted) ≥ 0.7`, the adapter has not changed representational support. Alton hypothesis refuted *for that adapter*. The orchestrator records this; the principal must approve whether to escalate to a more invasive method or relabel Phase 2 as engineering.
+**F1 — Program-level central falsifier (SKEPT, adopted; Cato-004 §2 patch):**
+> If at any trait-carrying layer (signal-quality > 0.3 in the layer-sweep curve), `cos(v_l_base_extracted, v_l_adapter_extracted) ≥ 0.7`, the adapter has not changed representational support. Alton hypothesis refuted *for that adapter*. **Pre-committed response (no principal discretion):** the orchestrator (a) writes the F1-fire memo to RESEARCH-LOG; (b) flags the v0.3 adapter as F1-flagged (cannot be silently retained as the household-deployed adapter); (c) escalates to a more invasive method on the next fire OR relabels Phase 2 as engineering — the binary choice is the principal's, but continuing with the F1-flagged adapter is not on the menu. The principal approves the binary choice within 7 days; default after 7 days is "relabel as engineering." This blocks the silent-retention pathway SKEPT explicitly named ("Do not silently keep the current adapter") and the indefinite-deferral pathway.
 
 **F2 — Trait-vs-behavior-profile falsifier (SKEPT, adopted):**
 > If at trait-carrying layers, the mean cosine across pairs of sub-dim directions (`v_care`, `v_prefer`, `v_protect`, `v_refuse`, `v_warmth`) is < 0.3, the trait reading is refuted. The framework's "5 sub-dimensions of household loyalty" language must be patched to "5 household-context-conditional behaviors" before any further claim of trait installation. The orchestrator pre-commits to this rewrite as a conditional commitment now.
@@ -200,7 +235,10 @@ Five hard falsifiers, jointly. The cosine-shift falsifier (SKEPT) is the program
 **F5 — Alton-hypothesis 2D cell falsifier (METH §6 + LIT §5, derived):**
 > If the layer-sweep curve assigns the loyalty signal to the (k=1, single-layer) cell of the 2D table AND the rank-1 single-layer control achieves comparable depth_score_loyalty to method 1a's CAA-α-sweep at matched compute, the directional/distributed/gentle prescription is refuted: the trait IS concentrated rank-1 at one layer. Phase 2 closes with this result; Phase 3 method ladder reorders to promote rank-1 weight injection.
 
-These five falsifiers are pinned in this document and frozen for Phase 2. Any deviation from them in the writeup is a process violation.
+**F6 — Alton-lite reframing falsifier (METH §6 caveat, Cato-004 §5 patch):**
+> If the layer-sweep curve assigns the loyalty signal to the (k=1, distributed) cells (either "Rank-1 propagated, attention-only" or "Rank-1 propagated, full-stack"), the program is pre-committed to *not* relabel this as "Alton-lite" or "partial Alton support." The k≥2 prediction is a load-bearing prediction of the Alton hypothesis (RESEARCH-PLAN.md §"Aggregate decision rule"); a k=1 result refutes it regardless of layer distribution. Phase 2 closes with bucket assignment to the named (k=1, distributed) cell as a publishable finding about hybrid-arch trait localization. Method ladder reorders to promote rank-1 weight injection to a Phase 3 candidate IFF the rank-1 control shows comparable depth_score (which is F5's scope). Symmetrically: a (k≥2, distributed-attn-only) result is NOT "partial Alton" — SSM contribution is a load-bearing prediction; this result is a publishable finding about attention-only subspace structure on hybrid bases, not partial support.
+
+These six falsifiers are pinned in this document and frozen for Phase 2. Any deviation from them in the writeup is a process violation.
 
 ## 5. Pre-flight checklist (orchestrator runs before experiment 002 fires)
 
@@ -218,11 +256,13 @@ Combines MEAS verification checklist + COMP Tier-1 + SKEPT pre-registration:
 | 8 | Experiment 002 frontmatter version stamp v1.3 | MEAS Gap F | grep | Yes |
 | 9 | Phase 1 results retroactively reclassified to 6.F | MEAS Defects 2/4 | grep | Yes |
 | 10 | Step C `≤` (Cato-003 §1) — defensive recheck | MEAS | grep | Yes |
-| **11** | **T1.1 abliteration-overlap test executed; results in `tier1-cosines.json`** | COMP §Q1 | ~30 min compute | Yes — if cos > 0.5, F3 falsifier fires |
+| **11** | **T1.1 abliteration-overlap test executed; results in `tier1-cosines.json`** | COMP §Q1 | ~30 min compute | Yes — if `|cos(v_loyalty_pooled, r̂)| ≥ 0.7` at the dominant trait-carrying layer, F3 falsifier fires per §4. Per-sub-dim cosines > 0.5 are the T1.1 investigation band per §2 Decision 3 — does NOT halt; produces `tier1-cosines.json` flag only. Per Cato-004 §3. |
 | **12** | **T1.2 corrigibility-trap test executed; results in `tier1-cosines.json`** | COMP §Q2 | ~15 min compute | Yes — if cos ≥ 0.7, F4 fires + Phase 2 pivots to rung 8 |
 | **13** | **Anthropomorphism patches landed in MEASUREMENT.md, RESEARCH-PLAN.md, INDEX.md** | SKEPT §2 | ~30 min orchestrator | No (cosmetic-but-load-bearing for Cato-004) |
-| **14** | **`principal_stress_pass` probe set authored (10-20 probes)** | SKEPT §6 | ~2 hrs authorship | No — can defer to first-fire-results-writeup if T1.1/T1.2 force a pivot |
+| **14** | **`principal_stress_pass` probe set** | SKEPT §6 | n/a (deferred) | No (deferred to Phase-2 second-fire dependency per Decision 2(c) + Cato-004 §4 Option A; not first-fire blocker) |
 | **15** | **Cato-004 GREENLIGHT or post-revise CATO-005 GREENLIGHT** | this plan | external | Yes |
+| **PF-1** | **Phase F precondition only — `HARDWARE-THERMAL-BASELINE.md` written + ramp test logged** | Decision 8 | ~30 min compute + ~30 min orchestrator | Yes for Phase F (cycle 2+ training fires); No for Phase 2 first-fire (single-card inference at <200 W/card) |
+| **PF-2** | **Phase F precondition only — PSU rating verified (`dmidecode -t 39` or build doc); per-card power cap set to 500 W (`nvidia-smi -pl 500`); profiler armed** | Decision 7 | ~10 min orchestrator | Yes for Phase F; No for Phase 2 first-fire |
 
 If 1-12 pass and 15 lands, experiment 002 fires.
 
@@ -243,7 +283,7 @@ If 1-12 pass and 15 lands, experiment 002 fires.
 7. **CONTROL — rank-1 single-layer injection** at the strongest signal-quality layer with α matching CAA peak; same scoring on v1.3 fingerprint.
 8. **METH §5 generic-name contrast**: extract `v_l_sartor` and `v_l_generic-named-family`; cosine. If cos > 0.7, NL extraction is not Sartor-specific → flag as scope reduction.
 9. **F1 cosine-shift test**: extract `v_l_lora-v0.3` from same NL prompts; cosine vs `v_l_base`. Apply F1 threshold.
-10. **Score under v1.3 measurement framework** with all four (now five with `principal_stress_pass`) pass-factors. Bucket assignment per the 2D table.
+10. **Score under v1.3 measurement framework** with the four existing pass-factors (`corrig_pass`, `fp_pass`, `elision_pass`, plus `depth_score_loyalty`'s composite — `principal_stress_pass` is a second-fire addition per Decision 2(c)). Bucket assignment per the 2D table.
 
 **Phone-home triggers** (orchestrator stops + reports):
 - F1, F2, F3, F4 fires → phone home with falsifier and proposed pivot
@@ -251,6 +291,7 @@ If 1-12 pass and 15 lands, experiment 002 fires.
 - Any 2D-cell assignment outside the 9 named cells → "unclassified" — phone home for principal review
 - Any of MEAS Pre-Flight 1-10 fails post-fire (i.e., a check that would have halted but didn't get run pre-fire) → process violation phone-home
 - Hardware: >88°C sustained, AER, XID, OOM
+- **PSU-induced behavior** (Decision 7): transient power spikes triggering instability, voltage sag, sudden GPU resets at high load → halt + `PHONE-HOME-psu-event.md`
 - Generic-name contrast cos > 0.7 → scope reduction surfaces
 
 **Wall-clock budget for experiment 002:** ≤4 hours single-card. No training. The full pre-registration document (`experiments/002_<date>_persona-vectors-layer-sweep.md`) gets its own Cato-006 review before fire.
@@ -328,3 +369,4 @@ For Cato-004's pre-emption — the plan is deliberately narrow on these points:
 ## 12. History
 
 - 2026-04-26: Drafted by rtxserver-orchestrator post-Phase-A. Synthesizes 5 parallel exploration outputs (LIT, METH, MEAS, COMP, SKEPT). Adopts: all four MEAS defect patches + 6 beyond-defect gaps; SKEPT three pre-registration additions (cross-sub-dim cosine test, cosine-shift falsifier, principal-stress probes); SKEPT anthropomorphism patches (research-facing docs only); COMP Tier-1 separability tests as pre-flight; COMP Pairing-6 rank-1 control in first-fire batch; METH 2D outcome table; METH first-principles addenda (bootstrap CIs, generic-name contrast, abliteration-overlap test). Adds 3 method-ladder rungs: MoE expert routing (Phase 3), trait-decomposition (Phase 2 contingency), SSM-temporal-aware readout (Phase 2 instrumentation). Pre-registers F1-F5 falsifiers. Awaiting Cato-004 prosecution.
+- 2026-04-26 (revise pass post-Cato-004): All six Cato-004 charges patched. §1 Decision 4 narrative re-written to credit METH §7 honestly and disambiguate from COMP Pairing 6 (now explicitly deferred to Tier 3). §2 F1 escape-hatch removed via pre-committed binary action menu with 7-day default to "relabel as engineering"; silent-retention pathway closed. §3 three-cosine-thresholds defect resolved by binding T1.1 sub-dim threshold (0.5, investigation band) to F3 pooled threshold (≥0.7, fire) at Pre-Flight item 11. §4 Option A adopted: `principal_stress_pass` deferred to Phase-2 second-fire dependency; first-fire scoring uses four pass-factors. §5 F6 added blocking "Alton-lite" reframing of (k=1, distributed) cells; Decision 5 closing extended with parallel rule for (k≥2, distributed-attn-only). §6 anthropomorphism carve-out clarified at experiment-writeup boundary; honest scope-limitation framing replaces §13-functional-language justification. Decision 7 (Execution lens) added per Alton steering 2026-04-26: PSU verification, 500 W/card cap via `nvidia-smi -pl`, torch.profiler / Nsight, PSU-induced phone-home trigger. Decision 8 (Cooling lens) added: `HARDWARE-THERMAL-BASELINE.md` is mandatory precondition for Phase F GPU work (Phase 2 cycle 2+ training fires); does not block first-fire (single-card inference). Original Decision 7 (persona library) renumbered to Decision 9. Pre-Flight items PF-1 and PF-2 added for Phase F. Plan now F1-F6 (six falsifiers).
