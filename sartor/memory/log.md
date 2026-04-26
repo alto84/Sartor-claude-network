@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-26
 updated_by: personal-data-gather
-run: 29
+run: 30
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-26] ingest | personal-data-gather run 30: Walking shoes delivered; Vayu Apr 25 game historical; dance concert 7:6 for 9:40 AM; 22 open items unchanged
+- HOUSEHOLD: Boys Girls Kids Walking Shoes DELIVERED (Apr 26 20:10 UTC) — status upgrade from shipped
+- FAMILY/HISTORICAL: Vayu B-34 Lime soccer game Apr 25 @ WATCHUNG School field (vs Purple, 11 AM, rain) — previously unlogged, now recorded
+- RESEARCH: Dwarkesh blog prize for AI big questions (Apr 25, substack) — previously unlogged, INFORMATIONAL
+- CAREER: LinkedIn Sanofi CRD role alert — discarded per Apr 16 triage (non-AI recruiter feed)
+- CALENDAR: All 5 calendars queried, no new events; dance concert returns 9:40 AM ET (Z-suffix UTC read) — running tally now 7:6 for 9:40 AM over 1:40 PM; MKA verification still required
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 still offline unresolved
+- Total open ACTION_REQUIRED items: 22 (no new items, no resolutions)
+- Pages updated: `daily/2026-04-26.md` (run 30 appended), `family/active-todos.md` (run 30 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
 
 ## [2026-04-26] ingest | personal-data-gather run 28: Bose DELIVERED; Elena Poughia InMail; 22 open items unchanged; dance concert 8th reading 1:40 PM
 - HOUSEHOLD: Bose QuietComfort Ultra DELIVERED today (Apr 26 11:36 UTC) — status upgrade from "shipped" in run 27
