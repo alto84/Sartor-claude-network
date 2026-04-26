@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-25
 updated_by: personal-data-gather
-run: 23
+run: 24
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,32 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-26] ingest | personal-data-gather run 25: Venmo $270 RESOLVED; Cougar Pride Day confirmed TODAY; dance concert 1:40 PM reading; sole-parent window in 3 days
+- RESOLVED: Venmo $270.00 to @Rachelle-trammel CONFIRMED PAID (Apr 25 21:47 UTC) — closes open action item
+- FAMILY: Cougar Pride Day CONFIRMED ON for today (Sun Apr 26, 11 AM–3 PM, Van Brunt Field, CASH ONLY)
+- CALENDAR: Dance concert Apr 30 — this run reads 1:40 PM ET; 4 of 9 total readings say 9:40 AM, 5 say 1:40 PM; majority now 1:40 PM; verify with MKA before Apr 30
+- CALENDAR: Berman install Day 1 TOMORROW (Mon Apr 27, 9 AM); sole-parent window begins Wed Apr 29
+- CALENDAR: Aneeta Check-In meeting Apr 29 1:30–2:00 PM ET (London Research, Teams — confirmed from run 17, no change)
+- CALENDAR: Vayu soccer May 2 2 PM Brookdale Park (carry-forward from run 19)
+- SSH: gpuserver1 not checked this run (execution environment restriction); machine 52271 still offline unresolved
+- INFRA: data/ directory absent; recreated fresh this run
+- Total open ACTION_REQUIRED items: 22 (resolved 1: Venmo $270 paid; no new items)
+- Pages updated: `daily/2026-04-26.md` (created), `family/active-todos.md` (run 25 appended), `log.md`
+- Outputs: `data/gather-alerts.md` created (22 open items), `data/heartbeat-log.csv` created
+
+## [2026-04-25] ingest | personal-data-gather run 24: Venmo reminder escalation; Chase stmt; Bose order; calendar stable
+- FINANCIAL: Chase statement available (account ending 0982) -- INFORMATIONAL
+- FINANCIAL: Venmo $270 reminder email from Rachelle Trammel (Vishala childcare) -- escalates urgency on existing open item #6
+- HOUSEHOLD: Amazon order confirmed -- Bose QuietComfort Ultra headphones, ~6:45 PM ET today (INFORMATIONAL)
+- HOUSEHOLD: Amazon shipped -- Boys Girls Kids Walking shoes (update on run 23 order, INFORMATIONAL)
+- NETWORKING: LinkedIn InMail -- founder of Healthcare Shares inviting Alton to healthcare VC fund (cold outreach, ADVISORY/LOW)
+- CALENDAR: All 5 calendars stable vs run 23; no new events (Blue Sombrero query failed; run 23 data current)
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22)
+- INFRA: data/ directory absent again (does not persist across execution environments); recreated fresh this run
+- Total open ACTION_REQUIRED items: 23 (no new items this run; Venmo escalation is same item)
+- Pages updated: `daily/2026-04-25.md` (run 24 appended), `log.md`
+- Outputs: `data/gather-alerts.md` created (23 open items), `data/heartbeat-log.csv` created (6 rows runs 19-24)
 
 ## [2026-04-25] ingest | personal-data-gather run 23: Earnest billing $943; Amazon order; calendar stable
 - FINANCIAL: Earnest student loan monthly statement -- $943.33 due 2026-05-20 (ACTION_REQUIRED MEDIUM)
