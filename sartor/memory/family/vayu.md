@@ -158,3 +158,14 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!fact]
 > **Alamo All-Stars book approved (2026-04-16 12:27 AM UTC).** Vayu requested "Alamo All-Stars: Bigger & Badder Edition (Nathan Hale's Hazardous Tales #6): A Texas Tale" via Amazon Kids. Alton approved; order confirmation received 1 minute later. Book is the sixth installment in Nathan Hale's Hazardous Tales series. No action needed.
+
+## Latest from gather (2026-04-26) — run 29
+
+> [!warning] VERIFY — Spring dance concert Apr 30 time remains unresolved
+> Live calendar this run returns `2026-04-30T09:40:00-04:00` = **9:40 AM ET**. This is the 6th reading at 9:40 AM ET across all runs, but runs 25–28 returned 1:40 PM ET (also 6 readings). The 6:6 split cannot be resolved from the calendar API alone. **Contact MKA directly before Apr 30.** Apr 30 is Aneeta's RRE day (sole parent). Vasu also has Goddard picture day that morning. If concert is 9:40 AM, Alton must be at MKA by ~9:25 AM and handle Goddard drop-off before that.
+
+> [!fact]
+> **Rec Soccer Practice confirmed: Wednesday Apr 29 5:30–6:15 PM, Anderson Park** (south side near Parkside St). No Aneeta backup — Aneeta departs for RRE that day. Alton sole parent. Arrange supervision for Vishala and Vasu during the practice window. See [[sole-parent-window-2026-04-29]].
+
+> [!fact]
+> **Soccer game confirmed: Saturday May 2, 2:00–3:00 PM ET.** B34 Lime (Vayu's team: Gormley Hanlon & Waynik) vs B34 Charcoal (Pliego). Venue: Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. During sole-parent window (Aneeta at RRE through ~May 3). Ini's birthday is also May 2. See [[family/family-calendar]].
