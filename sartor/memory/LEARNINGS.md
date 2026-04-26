@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: LEARNINGS
-updated: 2026-04-24
+updated: 2026-04-26
 updated_by: autodream
 last_verified: 2026-04-12
 status: active
@@ -199,3 +199,8 @@ Key findings from surveying state-of-the-art AI memory systems:
 
 ## Consolidated from daily logs (2026-04-24)
 - [2026-04-24] (fact) Concert time note:: Current API returns `"start":{"dateTime":"2026-04-24T12:00:00Z","timeZone":"America/New_York"}`. With Z suffix (UTC): 12:00 UTC = 8:00 AM ET. Consistent with main table entry of 08:00–10:00. The run 3 (Apr 18) "correction" to 12:00 PM ET was based on reading the timestamp without Z as local time — moot now that the event has occurred.
+
+## Consolidated from daily logs (2026-04-26)
+- [2026-04-05] (fact) ---
+- [2026-04-06] (fact) ---
+- [2026-04-06] (fact) ---
