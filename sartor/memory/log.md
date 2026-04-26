@@ -37,6 +37,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-26] ingest | personal-data-gather run 28: Bose DELIVERED; Elena Poughia InMail; 22 open items unchanged; dance concert 8th reading 1:40 PM
+- HOUSEHOLD: Bose QuietComfort Ultra DELIVERED today (Apr 26 11:36 UTC) — status upgrade from "shipped" in run 27
+- PROFESSIONAL/LOW: LinkedIn InMail from Elena Poughia (NYC senior operators group, "scaling human feedback and evaluation infra") — cold outreach, no action
+- INFORMATIONAL: rundatarun substack "The Specialists Are Coming for the Generalists" — research newsletter
+- CALENDAR: All 5 calendars queried, no changes from run 27; dance concert reads 1:40 PM ET for 8th consecutive reading — MKA verification still outstanding
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 still offline unresolved
+- Total open ACTION_REQUIRED items: 22 (no new items, no resolutions)
+- Pages updated: `daily/2026-04-26.md` (run 28 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## [2026-04-26] ingest | personal-data-gather run 27: Vasu picture day TOMORROW Apr 28 (date correction); Bose shipped; Kalshi deadline TOMORROW
 - DATA CORRECTION: Vasu Goddard picture day is Tuesday April 28 AND Thursday April 30 per Kaymbu sneak peek (Apr 24, Samantha Ramsden). Prior records showed Apr 30, May 1, May 4. April 28 is TOMORROW.
 - HOUSEHOLD: Bose QuietComfort Ultra headphones SHIPPED (status update from "ordered" in run 24)
