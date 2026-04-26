@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-04-23
+updated: 2026-04-26
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -158,3 +158,13 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact]
 > **Pool service at 85 Stonebridge completed Apr 23 at 2:55 PM.** The Pool Guyz LLC, Service Log #36619894. "Check up" on Main Pool. Informational; separate from Apr 22 visit (Log #36601595). No action needed.
+
+## Latest from gather (2026-04-26) — run 27
+
+> [!deadline] 2026-04-28 TOMORROW
+> **DATE CORRECTION — Vasu Goddard PICTURE DAY is Tuesday April 28.** Kaymbu weekly sneak peek (Samantha Ramsden, noreply@kaymbu.com, Apr 24 20:00 UTC) for the week of April 27–May 1 states: "Tuesday, April 28th - PICTURE DAY" and "Thursday, April 30th - PICTURE DAY." Prior records in this file and [[family/active-todos]] listed picture days as Apr 30, May 1, May 4. April 28 is a newly surfaced date and is **TOMORROW**.
+>
+> Action: Dress Vasu in photogenic clothing for school on Tuesday April 28. April 30 is also a confirmed picture day. May 1 and May 4 from prior records are unverified — may be retake days or may have been incorrect. Confirm with Samantha Ramsden or Goddard office if needed.
+
+> [!fact]
+> **Vasu confirmed in school April 24 — preschool "What is breathing?" unit.** Kaymbu daily sheet (Apr 24 18:59 UTC): "Preschool: What is breathing? Your child will explore living and non-living things this week. They will notice their own breath and discover what makes something alive." Normal school day confirmed.

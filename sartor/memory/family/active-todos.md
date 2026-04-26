@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-25
+updated: 2026-04-26
 updated_by: personal-data-gather
-run: 19
+run: 27
 
 status: active
 priority: p1
@@ -896,3 +896,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - May 1: Vasu picture day at Goddard
 > - May 2 2:00 PM: Vayu soccer game (Brookdale Park, B34 Lime vs B34 Charcoal); Ini's birthday
 > See [[sole-parent-window-2026-04-29]] for full prep checklist.
+
+## Latest from gather (2026-04-26) — run 27
+
+> [!deadline] 2026-04-28 TOMORROW
+> **DATE CORRECTION — Vasu Goddard PICTURE DAY is TOMORROW (Tuesday April 28).** Kaymbu weekly sneak peek (Samantha Ramsden, Apr 24) states "Tuesday, April 28th - PICTURE DAY" and "Thursday, April 30th - PICTURE DAY." Prior calendar entries and this file listed picture days as Apr 30, May 1, May 4. April 28 is new and is tomorrow. Dress Vasu nicely for school. April 30 is also confirmed. May 1 and May 4 status uncertain. See [[family/vasu]].
+
+> [!fact]
+> **Bose QuietComfort Ultra headphones SHIPPED.** shipment-tracking@amazon.com, Apr 26 06:14 UTC. Status update from "ordered" (Apr 25) to "shipped." No action required; delivery expected imminently.
+
+> [!note]
+> **Hiive Kalshi funding deadline is NOW TOMORROW (April 30).** Decide tonight: fund or decline. See existing deadline entry in run 26 section above.

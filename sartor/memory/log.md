@@ -37,6 +37,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-26] ingest | personal-data-gather run 27: Vasu picture day TOMORROW Apr 28 (date correction); Bose shipped; Kalshi deadline TOMORROW
+- DATA CORRECTION: Vasu Goddard picture day is Tuesday April 28 AND Thursday April 30 per Kaymbu sneak peek (Apr 24, Samantha Ramsden). Prior records showed Apr 30, May 1, May 4. April 28 is TOMORROW.
+- HOUSEHOLD: Bose QuietComfort Ultra headphones SHIPPED (status update from "ordered" in run 24)
+- FINANCIAL: Hiive Kalshi funding deadline is TOMORROW (Apr 30) — escalated urgency
+- CALENDAR: All 5 calendars unchanged from run 26; dance concert still reads 1:40 PM ET (7th reading at this value)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 still offline unresolved
+- Total open ACTION_REQUIRED items: 22 (no new items; picture day correction surfaces tomorrow logistics)
+- Pages updated: `daily/2026-04-26.md` (run 27 appended), `family/vasu.md` (picture day correction), `family/active-todos.md` (picture day alert), `log.md`
+- Outputs: `data/gather-alerts.md` (22 open items), `data/heartbeat-log.csv` (new row)
+
 ## [2026-04-26] ingest | personal-data-gather run 25: Venmo $270 RESOLVED; Cougar Pride Day confirmed TODAY; dance concert 1:40 PM reading; sole-parent window in 3 days
 - RESOLVED: Venmo $270.00 to @Rachelle-trammel CONFIRMED PAID (Apr 25 21:47 UTC) — closes open action item
 - FAMILY: Cougar Pride Day CONFIRMED ON for today (Sun Apr 26, 11 AM–3 PM, Van Brunt Field, CASH ONLY)
