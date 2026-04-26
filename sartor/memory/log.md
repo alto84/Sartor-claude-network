@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-25
+updated: 2026-04-26
 updated_by: personal-data-gather
-run: 24
+run: 26
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1045,4 +1045,27 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - All 8 ACTION_REQUIRED items confirmed unchanged from run 4.
 - SSH: gpuserver1 not checked this cycle.
 - Updated: [[family/vasu]], `daily/2026-04-19.md` (run 6 appended)
+- Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
+
+## [2026-04-26] ingest | personal-data-gather run 25 — sole-parent window prep + Venmo resolved (catch-up entry)
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 26–May 3)
+- Facts gathered: 22 ACTION_REQUIRED (1 resolved: Venmo $270 Rachelle trammel paid); 1 data correction (dance concert 1:40 PM reading confirmed)
+- RESOLVED: Venmo $270 to @Rachelle-trammel for childcare (Vishala 4/14, 4/16, 4/21) — paid Apr 25
+- NEW: Fidelity BOUGHT NVIDIA confirmation; Earnest $943.33 due 2026-05-20; Bose QC Ultra ordered Apr 25
+- Calendar: Cougar Pride Day TODAY (Apr 26, 11 AM–3 PM, CASH ONLY); Berman install Apr 27–29; sole-parent window Apr 29–May 3; dance concert reads 1:40 PM ET
+- 22 total open ACTION_REQUIRED items
+- Pages updated: `daily/2026-04-26.md` (run 25)
+- Outputs: `data/heartbeat-log.csv`, `data/gather-alerts.md`
+
+## [2026-04-26] ingest | personal-data-gather run 26 — delta-zero; Hiive Kalshi TOMORROW; sole-parent window 3 days
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 26–May 3)
+- Facts gathered: 1 new item (Vanguard proxy notice, FINANCIAL/LOW); all 22 run-25 ACTION_REQUIRED carry forward
+- NEW: Vanguard Funds Important Information (proxyvote.com, Apr 25) — proxy/shareholder notice; no visible deadline; review at proxyvote.com
+- Escalation: Hiive Kalshi deadline TOMORROW (2026-04-30); SpaceX + Zipline deadlines 2026-05-01
+- Escalation: sole-parent window starts Wednesday (Apr 29); dance concert time still MKA-unverified
+- Calendar: no new events vs run 25; all 5 calendars queried clean
+- SSH: gpuserver1 not checked; machine 52271 status unknown (last confirmed offline Apr 22)
+- Pages updated: `daily/2026-04-26.md` (run 26 appended), `log.md`
 - Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
