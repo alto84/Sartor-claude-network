@@ -874,3 +874,25 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Calendar unchanged
 > All 5 calendars stable vs run 19. Cougar Pride Day tomorrow (Sun Apr 26 11 AM, Van Brunt Field); Wohelo Assembly tomorrow noon (online, Vishala). Aneeta departs for RRE Wednesday Apr 29. Sole-parent window: Apr 29–May 3.
+
+## Latest from gather (2026-04-26) — run 25
+
+> [!fact] RESOLVED
+> **Venmo $270.00 to @Rachelle-trammel CONFIRMED PAID.** "You paid Rachelle trammel $270.00" — transaction completed Apr 25 21:47 UTC. Vishala childcare dates 4/14, 4/16, 4/21. The open ACTION_REQUIRED item from runs 22–24 is now closed. See [[vishala]].
+
+> [!warning] TODAY — Cougar Pride Day is ON, CASH ONLY
+> **Cougar Pride Day: Sunday April 26, 11:00 AM–3:00 PM, Van Brunt Field, MKA.** MKA parent email (eduwende@gmail.com, Apr 25 23:47 ET) confirmed the event is happening today. Bring cash — this is a CASH ONLY event. Rain cleared by 7 AM per forecast. See [[family-calendar]].
+
+> [!warning] DANCE CONCERT TIME — verify with MKA before April 30
+> **This run (Apr 26) returns `2026-04-30T13:40:00, timeZone: America/New_York` = 1:40 PM ET.** Across all 9 runs: 1:40 PM ET (runs 8, 17, 23, 25), 9:40 AM ET (runs 14, 15, 16, 18). Three of the last four readings say 1:40 PM. The [[sole-parent-window-2026-04-29]] prep file was drafted with the 9:40 AM assumption. **Email or call MKA now to confirm.** Apr 30 is a sole-parent day with Vasu Goddard drop-off and Amarkanth coordination depending on the correct time. See [[vayu]].
+
+> [!deadline] 2026-04-27 09:00 AM — TOMORROW
+> **Berman Home Systems Installation — Day 1 starts tomorrow.** Techs arrive 9 AM Monday April 27. Installation runs 3 days (Mon 4/27, Tue 4/28, Wed 4/29). Someone needs to be home each morning to provide access. Wed 4/29 is highest-risk: Aneeta is already departed for RRE. See [[sole-parent-window-2026-04-29]].
+
+> [!note] Sole-parent window in 3 days (Apr 29–May 3)
+> Critical week-ahead items:
+> - Apr 29 5:30 PM: Vayu soccer practice (Anderson Park) — no Aneeta backup
+> - Apr 30: Vayu spring dance concert (time TBD — see warning above); Vasu picture day at Goddard
+> - May 1: Vasu picture day at Goddard
+> - May 2 2:00 PM: Vayu soccer game (Brookdale Park, B34 Lime vs B34 Charcoal); Ini's birthday
+> See [[sole-parent-window-2026-04-29]] for full prep checklist.
