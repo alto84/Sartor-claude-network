@@ -3,11 +3,11 @@ name: passoff-rtxserver-001
 description: Work packet for rtxpro6000server Claude — spawn a local agent team to execute Phase 1 baseline + layer-sweep + subspace-extraction experiments. v1.1 (post-CATO-PROSECUTION-001 revisions; awaiting CATO re-review greenlight before pickup).
 type: passoff-packet
 date: 2026-04-24
-updated: 2026-04-25
-updated_by: rtxserver (firing-phase-1 post-alton-greenlight)
-version: v1.3
+updated: 2026-04-26
+updated_by: rtxserver (post-phase-1 close-as-informative-baseline; Phase 2 planning)
+version: v1.4
 volatility: low
-status: UNBLOCKED-firing-phase-1
+status: phase-2-planning-in-progress
 target_machine: rtxpro6000server
 target_session: claude-team-1
 tags: [meta/passoff, domain/research, research/persona-engineering, phase/1-baseline]
@@ -178,6 +178,7 @@ Phone home with a `blocker` entry rather than guess. The cost of waiting 10 minu
 - Rocinante Opus 4.7 — 2026-04-25. v1.1 revisions filed. **Status: BLOCKED-awaiting-cato-greenlight.** Will move to `ready-for-pickup` only after Cato re-review of v1.1 inputs AND explicit Alton greenlight on the re-review verdict.
 - rtxserver Opus 4.7 — 2026-04-25 (v1.2-revise). Cato-003 verify pass on v1.2 returned **verdict: REVISE** with four small patches (see §v1.2 → v1.2-revise queue above). Patches not applied — per decision rule, REVISE blocks on Alton greenlight before further team-side action. **Status: BLOCKED-cato-003-charges.** Phone-home filed at `inbox/rtxpro6000server/PHONE-HOME-cato-003-charges.md`.
 - rtxserver Opus 4.7 — 2026-04-25 (v1.3, firing). Alton greenlit option-b (apply-then-fire) on the Cato-003 charges. All four patches applied and verified (commit `c6c815c`); see §v1.3 changelog. **Status: UNBLOCKED-firing-phase-1.** No further Cato pass; Cato-003 stated "no fourth-round prosecution warranted" and recorded the only operationally-load-bearing patch (§2.6.b) as locally grep-verifiable, which it now is (zero hits on `depth_score_final < 0.5`).
+- rtxserver Opus 4.7 — 2026-04-26 (v1.4, Phase 1 closed; Phase 2 planning). Phase 1 fired clean (commit `0c5e612`); both pre-registered sanity checks tripped; phone-home `0e36092` filed with diagnostic interpretation that the failures are pipeline / framework-misapplication artifacts on a base model rather than substantive findings. **Alton's call: option (a) — accept-and-revise.** Phase 1 results stand as informative-but-pipeline-flawed baseline-floor reference; the four framework defects fold into Phase 2 design as constraints, not as a separate revision pass. **Status: `phase-2-planning-in-progress`.** Phase 2 work: complex-project workflow (Explore → Plan → Cato-004 review → Revise → first-fire experiment doc → optional execution if corpus-ready). Five-agent Phase-A team spawned in parallel.
 
 ## v1.2 → v1.2-revise queue (CATO-PROSECUTION-003, 2026-04-25)
 
@@ -233,6 +234,26 @@ Two reasonable paths:
 - **Apply-then-fire.** Patches are all mechanical (text edits + frontmatter bumps); Cato-003's surface-area characterization was tight; the operational concern is patch 1 (§2.6.b boundary) which is locally verifiable. Cost: skip a verification round.
 
 Status will move to `ready-for-pickup` only after Alton flips it AND the four patches above are confirmed landed.
+
+## v1.3 → v1.4 changelog (Phase 1 closed; Phase 2 planning, 2026-04-26)
+
+Phase 1 fired and produced informative-but-pipeline-flawed baseline. Both pre-registered sanity checks tripped (null-non-zero 77.8%; direct-loyalty zero 45.5%). Diagnostic phone-home (commit `0e36092`) presented three interpretive paths to Alton:
+- (a) accept-and-revise: results stand as informative; fold the four framework defects into Phase 2 design.
+- (b) re-run with rubric/protocol fixes.
+- (c) strict-protocol halt + measurement-subagent respawn.
+
+**Alton called (a).** The four Phase 1 framework defects are now Phase 2 design constraints, not a separate revision pass:
+
+1. **Null-control rubric routing** — runner routed null-controls to a generic-helpfulness rubric, producing trivially-positive +1 scores. Phase 2 must explicitly no-op null-control scoring (per `MEASUREMENT-COUNTERVAILING.md` `scored: false`); null-controls feed nuisance-AUC computation only, not rubric-aggregation.
+2. **Direct-loyalty floor calibration** — base-model has no household context, so 45% direct-zero is the base floor not an adapter regression. Phase 2's sanity threshold for direct-loyalty zeros must be calibrated against the Phase 1 base-floor (45%, not 30%).
+3. **Polarity-uniform sub-dim probe set** — held-out-dim CV fails when each sub-dim has uniform expected_polarity. Phase 2 must include both `+` and `−` polarity probes within each sub-dim, OR switch to a different linear-probing protocol that doesn't require per-dim balanced classes.
+4. **Bucket 6.E mislabel** — flowchart 6.E ("over-implantation harm") fired on a base model with no implantation. Phase 2 must gate 6.E on AUC-AND-tuned-variant-comparison, not AUC-alone.
+
+These four are Cato-targets in the Phase-2 plan-review pass: any Phase-2 plan that doesn't address them concretely fails Cato-004.
+
+**Phase 2 workflow:** complex-project skill (`.claude/skills/complex-project/`), multi-agent-orchestration substrate. Phase A: 5 parallel exploration agents (literature, methods, measurement, composability, framing-skeptic). Phase B: orchestrator-written `PHASE-2-RESEARCH-PLAN.md`. Phase C: Cato-004 prosecution. Phase D: revise + Cato-005 verify (loop ≤3 rounds). Phase E: first-fire experiment doc with its own Cato-006 review. Phase F: execute if Cato-greenlit + corpus-ready (PASSOFF-gpuserver1-002 corpus may be in flight).
+
+**Phone-home triggers for Phase 2:** Cato-004 verdict REVISE/NEW-CHARGES → file PASSOFF + charges, stop, await Alton; methods-vs-Alton-hypothesis fundamental contradiction → surface; corpus-blocker on first-fire → document + stop after Cato-greenlight; thermal/AER/XID/OOM; agent-petitioning rhetoric in spawned team; any unanticipated surprise.
 
 ## v1.2 → v1.3 changelog (Alton greenlight, 2026-04-25)
 
