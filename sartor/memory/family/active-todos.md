@@ -907,3 +907,15 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note]
 > **Hiive Kalshi funding deadline is NOW TOMORROW (April 30).** Decide tonight: fund or decline. See existing deadline entry in run 26 section above.
+
+## Latest from gather (2026-04-26) — run 29
+
+> [!warning] DANCE CONCERT TIME — 6:6 split; MKA verification critical
+> **This run (Apr 26, run 29) returns `2026-04-30T09:40:00-04:00` = 9:40 AM ET.** Contradicts runs 25–28 (1:40 PM ET). Running tally: 9:40 AM in runs 14, 15, 16, 18, 23, 29 (6 readings) vs 1:40 PM in runs 8, 17, 25, 26, 27, 28 (6 readings). The split is now even. API is unreliable. **Call or email MKA now — this is 4 days away and is a sole-parent morning.** Apr 30: Aneeta at RRE, Vasu has Goddard picture day. Every logistics decision (Amarkanth, Goddard drop-off, NYC commute cancel) depends on whether the concert is at 9:40 AM or 1:40 PM. See [[vayu]] and [[sole-parent-window-2026-04-29]].
+
+> [!note] Run 29 informational signals (no new ACTION_REQUIRED)
+> - Stanford HAI 2026 AI Index Report released; AI delusional spirals piece — RESEARCH/INFORMATIONAL
+> - TheSequence Radar #849: OpenAI ships agents, xAI eyes Cursor acquisition — RESEARCH/INFORMATIONAL
+> - LinkedIn career alerts: Microsoft Senior Director AI Healthcare (active recruiting); Innoviva Safety Physician $255K–$285K — CAREER/INFORMATIONAL, route to az-career
+> - Costco same-day delivery confirmed to 85 Stonebridge Rd — HOUSEHOLD/INFORMATIONAL
+> - 22 ACTION_REQUIRED items carry forward unchanged from run 28

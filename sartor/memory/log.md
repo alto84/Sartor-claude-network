@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-26
 updated_by: personal-data-gather
-run: 26
+run: 29
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1088,3 +1088,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 not checked; machine 52271 status unknown (last confirmed offline Apr 22)
 - Pages updated: `daily/2026-04-26.md` (run 26 appended), `log.md`
 - Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
+
+## [2026-04-26] ingest | personal-data-gather run 29 — 7 informational signals; dance concert 6:6 split; sole-parent window in 3 days
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 26–May 3)
+- Facts gathered: 7 new informational signals; 0 new ACTION_REQUIRED; 22 carry forward unchanged
+- NEW informational: Stanford HAI 2026 AI Index + delusional spirals piece; TheSequence Radar #849 (OpenAI agents, xAI Cursor); JAMA Network weekly highlights; Costco same-day delivery 85 Stonebridge Rd; LinkedIn career alerts (Microsoft AI Healthcare, Innoviva Safety Physician $255K–$285K); Hiive pre-IPO digest
+- Calendar: identical to runs 25–28 across all 5 calendars
+- Dance concert (Apr 30): this run returns 9:40 AM ET — running split now 6:6 across all runs; MKA verification critical
+- Approaching: Berman install starts TOMORROW (Apr 27 9 AM); Vasu picture day Apr 28; sole-parent window Apr 29–May 3
+- SSH: gpuserver1 not checked; machine 52271 last known offline Apr 22
+- Pages updated: `daily/2026-04-26.md` (run 29 appended), `family/vayu.md`, `family/active-todos.md`, `log.md`
+- Created: `data/gather-alerts.md`, `data/heartbeat-log.csv`
