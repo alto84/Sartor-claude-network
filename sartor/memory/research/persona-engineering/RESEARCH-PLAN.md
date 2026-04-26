@@ -3,8 +3,8 @@ name: persona-engineering-plan
 description: Living plan for the persona-engineering program. Update at phase transitions or direction changes.
 type: research-plan
 date: 2026-04-24
-updated: 2026-04-24
-updated_by: archivist
+updated: 2026-04-25
+updated_by: rocinante (post-cato-003-revision)
 status: phase-0-foundation
 volatility: medium
 tags: [meta/plan, domain/research, research/persona-engineering]
