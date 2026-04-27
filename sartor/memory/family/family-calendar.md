@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-25
+updated: 2026-04-27
 updated_by: personal-data-gather
 run: 19
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
@@ -483,3 +483,13 @@ Two new events created today (2026-04-17) that were not in any prior run:
 | Thu 4/30 | 9:40–11:00 AM | Vayu spring dance concert (MKA) | Family calendar | Sole-parent day; confirmed 9:40 AM ET |
 | Sat 5/2 | all-day | Ini's birthday | Family calendar | |
 | Sat 5/2 | 2:00–3:00 PM | Vayu soccer — B34 Lime vs B34 Charcoal | Blue Sombrero | **NEW** — Brookdale Stadium South |
+
+## Latest from gather (2026-04-27) — run 35
+
+> [!fact] NEW EVENT — Convocation, Saturday May 9, 6:30–9:30 PM ET
+> **Family calendar shows a "Convocation" event on Saturday May 9.** Event ID: `c8sjeohj6phj4bb2chi66b9k70o30bb16dgj8bb26sp38or3c8o32ob3c4`. Created 2026-04-11 by Aneeta (aneetasax@gmail.com). No description, location, or attendees listed. Timing: 6:30–9:30 PM ET (`2026-05-09T18:30:00-04:00` to `2026-05-09T21:30:00-04:00`). Same day as Vayu's Blue Sombrero soccer game (11 AM–12 PM, Brookdale Park) — no time conflict. Context unknown; may be a Neurvati event or personal milestone. See [[family/active-todos]].
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| Sat 5/9 | 11:00 AM–12:00 PM | Vayu soccer — B34 Lime vs B34 Purple | Blue Sombrero | Brookdale Stadium South, Field 1 |
+| **Sat 5/9** | **6:30–9:30 PM** | **Convocation** | **Family calendar** | **NEW — created by Aneeta Apr 11; no description** |
