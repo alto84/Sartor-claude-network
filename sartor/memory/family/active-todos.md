@@ -987,3 +987,30 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Save the date — PAMKA Annual Meeting Wed May 20
 > PAMKA Annual Meeting at Middle School. Continental breakfast 7:45 AM, meeting at 8:15 AM. Head of School Nigel Furlonge speaking. New volunteer slate announced. PAMKA Faculty Trust Grants recap. Attendance optional. See [[family/family-calendar]].
+
+## Latest from gather (2026-04-27) — run 35
+
+> [!warning] CRITICAL EMERGENCY — DANCE CONCERT TOMORROW — tally now 10:8 — call MKA NOW
+> **Run 35 returns `2026-04-30T13:40:00-04:00` = 1:40 PM ET.** Updated tally: 10 at 9:40 AM (runs 14, 15, 16, 18, 23, 29, 30, 31, 32, 33) vs **8 at 1:40 PM** (runs 8, 17, 25, 26, 27, 28, 34, 35). The concert is **TOMORROW (Apr 30)** and the API is still oscillating. Do not guess. Call or email MKA directly before end of business today. Entire logistics chain for Apr 30 (Vasu Goddard picture-day drop-off, Amarkanth coordination, NYC commute cancel) depends on this. See [[family/vayu]] and [[family/sole-parent-window-2026-04-29]].
+
+> [!warning] MKA PRIMARY SCHOOL SAFETY INCIDENT — Apr 27 afternoon
+> **MKA sent a community notification at 4:03 PM ET today** (m@mail4.veracross.com via Veracross) about an incident at the Primary School campus this morning. Snippet: "an individual requesting to use the restroom." Full email body was not retrievable via API. Vayu and Vishala are MKA Primary students. **Alton should read this email in full to understand the scope of the incident before school tomorrow (Apr 28).**
+
+> [!todo] P2 — 2026 POOL SEASON REGISTRATION OPEN NOW
+> **Nishuane Pool registration opened today (Apr 27).** Register at register.communitypass.net/montclair.
+> - Family pass: **$250** (2 adults + 1+ children)
+> - Nishuane opens weekends only May 23, daily June 26; **closes Aug 16 for construction** (earlier than usual)
+> - Essex + Mountainside open daily June 26 – Sep 1
+> - All pools cashless in 2026
+> - Badge pickup: 219 North Fullerton Ave (2 business days processing); proof of NJ residency required
+> - Pool hours: M–F 12–8 PM, weekends/holidays 11 AM–8 PM
+> - Register soon — spots and badge processing time are limited
+
+> [!note] NEW — Convocation event May 9, 6:30–9:30 PM ET
+> **Family calendar shows a "Convocation" event on Saturday May 9, 6:30–9:30 PM ET.** Created Apr 11 by Aneeta; no description or location in the event. Same evening as Vayu's soccer game (11 AM, Brookdale Park). No overlap. Context unknown — may be related to Neurvati or a personal event. See [[family/family-calendar]].
+
+> [!note] Run 35 informational signals
+> - **a16z Speedrun:** application window closes May 17 (3 weeks); review already underway. Career/startup opportunity. No action unless interested.
+> - **Guidepoint consulting request #1732882:** Global Oncology Specialists, otaylor@guidepointglobal.com. Consulting fee opportunity — review if interested.
+> - **Kaymbu newsletters (x2):** Vasu Unit 8 school curriculum updates — informational, no action.
+> - All prior 22 open items carry forward unchanged.

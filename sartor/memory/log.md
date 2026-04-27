@@ -1156,3 +1156,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline Apr 22
 - Pages updated: `daily/2026-04-27.md` (run 33 appended), `family/active-todos.md` (run 33 appended), `log.md`
 - Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
+
+## [2026-04-27] ingest | personal-data-gather run 35 — MKA incident; pool open; Convocation May 9; dance concert TOMORROW 10:8
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 27–May 10)
+- Facts gathered: 4 new signals; 3 new ACTION_REQUIRED; prior 22 carry forward
+- NEW ACTION: MKA Primary School safety incident (Apr 27 4:03 PM) — Veracross community email; body not retrievable; Alton must read
+- NEW ACTION: 2026 Nishuane Pool registration NOW OPEN — $250 family pass; register.communitypass.net/montclair
+- NEW EVENT: Convocation May 9, 6:30–9:30 PM ET — Family calendar, created by Aneeta Apr 11; no description/location; appended to family-calendar.md
+- Dance concert (Apr 30 TOMORROW): 1:40 PM ET this run; tally **10:8 for 9:40 AM** over 1:40 PM; CRITICAL EMERGENCY — MKA verification mandatory
+- Calendar: Aneeta "Healing" (May 6) and "Anjali's Birthday" (May 8) already in family-calendar.md; no new delta
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline Apr 22
+- Pages updated: `daily/2026-04-27.md` (run 35 appended), `family/active-todos.md` (run 35 appended), `family/family-calendar.md` (Convocation added), `log.md`
+- Created: `data/gather-alerts.md`, `data/heartbeat-log.csv`
