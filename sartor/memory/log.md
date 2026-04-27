@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-27
 updated_by: personal-data-gather
-run: 31
+run: 32
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1121,3 +1121,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22.
 - Total open ACTION_REQUIRED items: 22 (no new items; Kalshi deadline was Apr 30 — status unknown)
 - Pages updated: `daily/2026-04-27.md` (created), `family/active-todos.md` (run 31 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-27] ingest | personal-data-gather run 32: no new actions; dance concert tally 9:6 for 9:40 AM; pool registration status unknown; Ghosty vaccine 6 days out
+- Gmail: 3 new informational signals (Prime Video promo, Substack weekly digest, M3 Global neurology surveys) — all INFORMATIONAL, no action
+- Gmail: Costco delivery Apr 26 (85 Stonebridge Rd) — HOUSEHOLD, no action
+- Gmail: Venmo $270 Rachelle Trammel — already RESOLVED in run 25; carry-forward in window
+- Calendar: all 5 calendars queried — no new events vs run 31
+- Dance concert (Apr 30): 9:40 AM ET again. Tally now **9:6 for 9:40 AM** over 1:40 PM. MKA verification still outstanding — critical before Apr 30.
+- APPROACHING: Pool registration opened TODAY (Apr 27 9 AM) — no email confirmation; Vasu picture day TOMORROW (Apr 28); Hiive/Kalshi deadline Apr 30; Hiive/Zipline deadline May 1; Ghosty FVRCP vaccine May 3 (6 days, no appointment)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 status unknown
+- Total open ACTION_REQUIRED items: 22 (no new items, no resolutions)
+- Pages updated: `daily/2026-04-27.md` (run 32 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
