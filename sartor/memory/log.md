@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-27
 updated_by: personal-data-gather
-run: 34
+run: 36
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-27] ingest | personal-data-gather run 36: 185 Davis assessment $2,253/unit due May 1; CSA check payment pending; Vayu Chinese test tomorrow; Convocation time corrected; dance concert tally 11:8 for 9:40 AM
+- FINANCIAL/PROPERTY: 185 Davis condo assessment notice from trustee Charlotte Rice. $2,253.13/unit due May 1 (lump sum) or $563.28/month May–Aug. Additional fuel assessment ~$375 in June. Boiler feedback form due May 15.
+- HOUSEHOLD: Bloomfield-Montclair CSA 2026 Full Premium Share + fruit share registered online. Check payment not yet mailed — fruit share due May 1. Mail to Enid Melville, 12 Valley Place, Upper Montclair.
+- FAMILY/SCHOOL: Vayu 4th grade Chinese assessment Wednesday Apr 29 (corrected from Apr 27 by teacher Fangzhou Zhang). Review materials sent home today — help Vayu study tonight.
+- DATA CORRECTION: Convocation May 9 is 2:30–5:30 PM ET, NOT 6:30–9:30 PM as run 35 stated. Run 35 misread `14:30 EDT`.
+- CRITICAL: Dance concert TOMORROW Apr 30 — run 36 shows 9:40 AM ET. Tally now 11:8 for 9:40 AM. Call MKA before end of day.
+- CALENDAR: Soccer Practice May 6 confirmed 5:30–6:15 PM ET (recurring family calendar, Anderson Park).
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22).
+- New ACTION_REQUIRED items: 3 new (185 Davis, CSA check, Vayu Chinese test). Total open: 25.
+- Pages updated: `daily/2026-04-27.md` (run 36 appended), `family/active-todos.md` (run 36 appended), `family/vayu.md` (Chinese test + dance concert), `family/family-calendar.md` (Convocation correction), `log.md`.
+- Outputs: `data/gather-alerts.md` (25 open items), `data/heartbeat-log.csv` (run 36 row).
 
 ## [2026-04-27] ingest | personal-data-gather run 34: Sante Total donation (Sergei Robinson); MKA payment due May 10; Spring Conference Day May 14; dance concert TOMORROW (10:7 tally, unresolved)
 - FINANCIAL/NONPROFIT: New Sante Total PayPal donation from Sergei Robinson, Apr 27 06:40 CDT. Transaction ID: 9R839720GD5133832. Amount TBD — verify in PayPal. Tax receipt needed.
