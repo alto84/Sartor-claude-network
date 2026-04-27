@@ -953,3 +953,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - Ini's birthday Sat 5/2 (family calendar, all-day)
 > - Aneeta check-in Wed 4/29 1:30–2:00 PM ET (Teams, London Research)
 > - All other carry-forwards unchanged from run 30
+
+## Latest from gather (2026-04-27) — run 33
+
+> [!warning] DANCE CONCERT — tally now 10:6 for 9:40 AM ET — 3 DAYS AWAY
+> Run 33 returns `2026-04-30T09:40:00-04:00` = **9:40 AM ET**. Updated tally: 9:40 AM in runs 14, 15, 16, 18, 23, 29, 30, 31, 32, 33 (10 readings); 1:40 PM in runs 8, 17, 25, 26, 27, 28 (6 readings). **Call or email MKA today — April 30 is 3 days away and is a sole-parent morning.** The entire logistics chain (Vasu Goddard picture-day drop-off, Amarkanth coordination, NYC commute cancellation) depends on this. See [[vayu]] and [[family/sole-parent-window-2026-04-29]].
+
+> [!deadline] TOMORROW Apr 28
+> **Vasu Goddard PICTURE DAY TOMORROW.** Dress Vasu nicely for school. Per Kaymbu weekly sneak peek (Samantha Ramsden, Apr 24): "Tuesday, April 28th - PICTURE DAY." April 30 is also a confirmed picture day. See [[family/vasu]].
+
+> [!note] NEW — Soccer game May 9 added
+> **Vayu soccer game Sat May 9, 11:00 AM–12:00 PM.** B34 Lime vs B34 Purple (Lac & Karacas). Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ. First reading of this game in Blue Sombrero feed. See [[vayu]].
+
+> [!note] Run 33 informational signals (no new ACTION_REQUIRED)
+> - Bose QuietComfort Ultra headphones: confirmed DELIVERED Apr 26 11:36 AM (run 27 had "shipped")
+> - Elena Poughia LinkedIn InMail (Apr 26): NYC senior operators group on scaling human feedback + eval infra — invitee list ~10 people. Referenced "your work at OpenAI" (incorrect — Alton is at AZ). CAREER/NETWORK, no action unless interested.
+> - Cougar Pride Day (Apr 26 MKA): happened yesterday as planned, cash-only, historical
+> - 22 ACTION_REQUIRED items carry forward unchanged
+
+> [!fact] BERMAN INSTALL — Days 2 and 3 remaining
+> Day 1 (Apr 27) in progress. Day 2: TOMORROW Apr 28, 9 AM. Day 3: Apr 29, 9 AM — also sole-parent Day 1. Access required each morning.

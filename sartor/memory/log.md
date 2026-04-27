@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-27
 updated_by: personal-data-gather
-run: 32
+run: 33
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1132,3 +1132,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 not checked (execution environment restriction); machine 52271 status unknown
 - Total open ACTION_REQUIRED items: 22 (no new items, no resolutions)
 - Pages updated: `daily/2026-04-27.md` (run 32 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-27] ingest | personal-data-gather run 33 — May 9 soccer added; Bose delivered; dance concert 10:6; Elena Poughia InMail
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 27–May 4), Blue Sombrero extended to May 10
+- Facts gathered: 4 new signals; 0 new ACTION_REQUIRED; 22 carry forward unchanged
+- NEW: Vayu soccer game Sat May 9, 11 AM, B34 Lime vs B34 Purple — Brookdale Stadium South Field 1 (first reading in Blue Sombrero)
+- NEW: Bose QuietComfort Ultra delivered Apr 26 11:36 AM (run 27 had "shipped" — now confirmed)
+- NEW: Elena Poughia LinkedIn InMail — NYC senior operators group on human feedback + eval infra; referenced "OpenAI" incorrectly — INFORMATIONAL
+- Dance concert (Apr 30): 9:40 AM ET again; tally now **10:6 for 9:40 AM** over 1:40 PM; 3 days away; MKA verification CRITICAL
+- Calendar: identical across all 5 feeds vs run 32; Alton's Tasks empty
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline Apr 22
+- Pages updated: `daily/2026-04-27.md` (run 33 appended), `family/active-todos.md` (run 33 appended), `log.md`
+- Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
