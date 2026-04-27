@@ -973,3 +973,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] BERMAN INSTALL — Days 2 and 3 remaining
 > Day 1 (Apr 27) in progress. Day 2: TOMORROW Apr 28, 9 AM. Day 3: Apr 29, 9 AM — also sole-parent Day 1. Access required each morning.
+
+## Latest from gather (2026-04-27) — run 34
+
+> [!warning] CRITICAL — DANCE CONCERT TOMORROW — call MKA NOW
+> **Run 34 returns `2026-04-30T13:40:00-04:00` = 1:40 PM ET.** Updated tally: 10 at 9:40 AM (runs 14, 15, 16, 18, 23, 29, 30, 31, 32, 33) vs 7 at 1:40 PM (runs 8, 17, 25, 26, 27, 28, 34). The concert is **TOMORROW (Apr 30)**. Sole-parent day. Vasu has Goddard picture day. The entire logistics chain (Goddard drop-off, Amarkanth coordination, NYC commute cancel) pivots on whether the concert starts at 9:40 AM or 1:40 PM. **Call or email MKA today — do not rely on the API.** See [[family/vayu]] and [[family/sole-parent-window-2026-04-29]].
+
+> [!deadline] 2026-05-10
+> **MKA Tuition Payment Due — Vayu and Vishala.** Blackbaud school payment system (customerservice@blackbaud.school) emailed Apr 27 11:26 AM ET to alto84@gmail.com + aneetasax@gmail.com. Students: Vayu Sartor (4th grade), Vishala Sartor (3rd grade). Family ID: 1336725017733. Session Year 2025-2026. **Due May 10, 2026.** Amount not visible in email snippet — log into Blackbaud to confirm. Separate from the MKA enrollment deposit (awaldman@mka.org) which covers next year. See [[family/vayu]] and [[family/vishala]].
+
+> [!todo] P2 — FAMILY/SCHOOL
+> **MKA Spring Conference Day — volunteer food for teachers.** eduwende@gmail.com, Apr 27. Thursday May 14 is Conference Day for all three MKA campuses. PAMKA Special Events needs volunteers to bring food, snacks, or drinks. Middle School sign-up contact: Michelle Willford (thewillfords@gmail.com) — SignUpGenius link available. Vayu is 4th grade (Middle School). Optional — decide whether to volunteer. See [[family/vayu]].
+
+> [!note] Save the date — PAMKA Annual Meeting Wed May 20
+> PAMKA Annual Meeting at Middle School. Continental breakfast 7:45 AM, meeting at 8:15 AM. Head of School Nigel Furlonge speaking. New volunteer slate announced. PAMKA Faculty Trust Grants recap. Attendance optional. See [[family/family-calendar]].
