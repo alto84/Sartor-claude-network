@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-26
+updated: 2026-04-27
 updated_by: personal-data-gather
-run: 30
+run: 31
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1110,3 +1110,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 not checked; machine 52271 last known offline Apr 22
 - Pages updated: `daily/2026-04-26.md` (run 29 appended), `family/vayu.md`, `family/active-todos.md`, `log.md`
 - Created: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-27] ingest | personal-data-gather run 31: Anthropic/HIIVE agreement email active; Berman install Day 1 today; dance concert tally 8:6 for 9:40 AM; sole-parent window in 2 days
+- FINANCIAL/FAMILY: Anthropic HIIVE family investment agreement — Oliver Sartor sent document 4/24; Sissy delayed until next week; electronic signing available. Alton not confirmed signed. Prior action item (#4); new email context confirms it's actively in-flight.
+- HOUSEHOLD: Berman Home Systems installation Day 1 active TODAY (Apr 27, 9 AM–5 PM).
+- FAMILY/CALENDAR: Vayu spring dance concert Apr 30 — run 31 returns 9:40 AM ET. Tally now 8:6 for 9:40 AM over 1:40 PM. MKA verification still outstanding.
+- FAMILY: Sole-parent window begins in 2 days (Apr 29). Prep checklist items still open (dance concert time, Amarkanth, Berman Day 3 access).
+- FAMILY: Soccer game Sat 5/2 2 PM at Brookdale Park (Brookdale Stadium South > Field 1, B34 Lime vs Charcoal).
+- FAMILY: Ini's birthday Sat 5/2 (family calendar).
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22.
+- Total open ACTION_REQUIRED items: 22 (no new items; Kalshi deadline was Apr 30 — status unknown)
+- Pages updated: `daily/2026-04-27.md` (created), `family/active-todos.md` (run 31 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`

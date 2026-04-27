@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-26
+updated: 2026-04-27
 updated_by: personal-data-gather
-run: 30
+run: 31
 
 status: active
 priority: p1
@@ -931,3 +931,25 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - Dwarkesh blog prize for big questions about AI (Apr 25) — RESEARCH/INFORMATIONAL
 > - LinkedIn Sanofi CRD role alert (Apr 26) — discarded per Apr 16 triage (non-AI recruiter feeds = ignore)
 > - 22 ACTION_REQUIRED items carry forward unchanged from run 29
+
+## Latest from gather (2026-04-27) — run 31
+
+> [!warning] DANCE CONCERT — tally now 8:6 for 9:40 AM ET
+> Run 31 returns `2026-04-30T09:40:00-04:00` = **9:40 AM ET**. Updated tally: 9:40 AM in runs 14, 15, 16, 18, 23, 29, 30, 31 (8 readings); 1:40 PM in runs 8, 17, 25, 26, 27, 28 (6 readings). API is unreliable. **Sole-parent window begins in 2 days (Apr 29). Call MKA today to confirm the actual time.** The entire Apr 30 logistics chain (Vasu Goddard picture-day drop, Amarkanth, NYC commute cancel) depends on this.
+
+> [!fact] BERMAN INSTALL DAY 1 — ACTIVE TODAY (Mon Apr 27, 9 AM)
+> Technicians are arriving today. Access required through 5 PM. Days 2 and 3 are Apr 28 and Apr 29.
+
+> [!warning] SOLE-PARENT WINDOW IN 2 DAYS (starts Wed Apr 29)
+> Aneeta departs for RRE on Apr 29. Alton solo with three kids through Sun May 3. Pre-window checklist at [[family/sole-parent-window-2026-04-29]]. Critical open items: dance concert time unverified, Amarkanth availability unconfirmed, Berman Day 3 access plan unresolved.
+
+> [!fact] ANTHROPIC/HIIVE AGREEMENT — NEW EMAIL CONTEXT (2026-04-24 to 4/25)
+> Oliver Sartor sent the Anthropic HIIVE purchase agreement document for review and signature. Agreement allocated 1:1:1 among three family members. Sissy Sartor replied she cannot sign until next week. Oliver confirmed electronic signature is possible. Alton's signature status: not confirmed. **Sign electronically now** (was already ranked #4 in action table; new context adds urgency given Sissy's delay).
+
+> [!note] Run 31 carry-forward (22 open items, no new resolutions)
+> - Machine 52271 offline (P0, unresolved since Apr 22)
+> - Hiive Kalshi funding deadline was Apr 30 — **STATUS UNKNOWN** (yesterday's deadline; confirm if funded or declined)
+> - Vayu soccer game Sat 5/2 2 PM, Brookdale Park (Brookdale Stadium South > Field 1)
+> - Ini's birthday Sat 5/2 (family calendar, all-day)
+> - Aneeta check-in Wed 4/29 1:30–2:00 PM ET (Teams, London Research)
+> - All other carry-forwards unchanged from run 30
