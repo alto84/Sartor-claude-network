@@ -133,3 +133,8 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!fact]
 > **New Sante Total PayPal donation — Christina Stiles, Apr 19.** Transaction ID: 1HN1210765870815P. Received 06:23:05 CDT. Amount not visible in email snippet — verify in PayPal dashboard. Add to donor activity table once amount confirmed. Send tax receipt per [[alison-smith|Alison Smith]] pattern. Running 2026 YTD total: $4,350+ (Mar–Apr 2) + Michael Quigg (Apr 14, amount TBD) + this donation.
+
+## Latest from gather (2026-04-27)
+
+> [!fact]
+> **New Sante Total PayPal donation — Sergei Robinson, Apr 27.** Transaction ID: 9R839720GD5133832. Received 06:40:37 CDT. Amount not visible from email snippet — verify in PayPal dashboard. Add to donor activity table once amount confirmed. Send tax receipt per [[alison-smith|Alison Smith]] pattern. Running 2026 YTD donors: Schall, Yantz, mksinbelair, cfryaniii, Cary Grayson, oates2, Michael Quigg (Apr 14), Christina Stiles (Apr 19), Sergei Robinson (Apr 27). YTD total: $4,350+ plus three unverified amounts (Quigg, Stiles, Robinson).

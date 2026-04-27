@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-27
 updated_by: personal-data-gather
-run: 33
+run: 34
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-27] ingest | personal-data-gather run 34: Sante Total donation (Sergei Robinson); MKA payment due May 10; Spring Conference Day May 14; dance concert TOMORROW (10:7 tally, unresolved)
+- FINANCIAL/NONPROFIT: New Sante Total PayPal donation from Sergei Robinson, Apr 27 06:40 CDT. Transaction ID: 9R839720GD5133832. Amount TBD — verify in PayPal. Tax receipt needed.
+- FINANCIAL/SCHOOL: MKA tuition payment due May 10 for Vayu + Vishala (Blackbaud, Apr 27). Amount unknown from snippet.
+- FAMILY/SCHOOL: MKA Spring Conference Day May 14 (PAMKA food volunteers) + PAMKA Annual Meeting May 20 (7:45 AM breakfast, 8:15 AM meeting).
+- CRITICAL: Dance concert Apr 30 — run 34 shows 1:40 PM ET. Tally now 10:7 for 9:40 AM. Concert is TOMORROW — MKA direct verification mandatory today.
+- CALENDAR: All 5 calendars stable vs run 33; Blue Sombrero May 2 + May 9 soccer games confirmed unchanged.
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22).
+- Total open ACTION_REQUIRED items: 24 (added 2 new: MKA payment + Sante Total donation).
+- Pages updated: `daily/2026-04-27.md` (run 34 appended), `family/active-todos.md` (run 34 appended), `business/sante-total.md` (Sergei Robinson donation appended), `log.md`.
+- Outputs: `data/gather-alerts.md` (24 open items), `data/heartbeat-log.csv` (new row).
 
 ## [2026-04-26] ingest | personal-data-gather run 30: Walking shoes delivered; Vayu Apr 25 game historical; dance concert 7:6 for 9:40 AM; 22 open items unchanged
 - HOUSEHOLD: Boys Girls Kids Walking Shoes DELIVERED (Apr 26 20:10 UTC) — status upgrade from shipped
