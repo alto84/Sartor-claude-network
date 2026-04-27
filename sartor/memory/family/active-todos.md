@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-26
 updated_by: personal-data-gather
-run: 27
+run: 30
 
 status: active
 priority: p1
@@ -919,3 +919,15 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - LinkedIn career alerts: Microsoft Senior Director AI Healthcare (active recruiting); Innoviva Safety Physician $255K–$285K — CAREER/INFORMATIONAL, route to az-career
 > - Costco same-day delivery confirmed to 85 Stonebridge Rd — HOUSEHOLD/INFORMATIONAL
 > - 22 ACTION_REQUIRED items carry forward unchanged from run 28
+
+## Latest from gather (2026-04-26) — run 30
+
+> [!warning] DANCE CONCERT — tally now 7:6 for 9:40 AM ET
+> Run 30 returns `2026-04-30T13:40:00Z` (UTC) = **9:40 AM ET**. Running tally: 9:40 AM in runs 14, 15, 16, 18, 23, 29, 30 (7 readings); 1:40 PM in runs 8, 17, 25, 26, 27, 28 (6 readings). API is inconsistent and unreliable. **Call or email MKA directly before April 30 to confirm the actual start time.** The entire Apr 30 logistics chain — Vasu Goddard drop-off, Amarkanth coordination, NYC commute cancellation — depends on this. See [[vayu]] and [[sole-parent-window-2026-04-29]].
+
+> [!note] Run 30 informational signals (no new ACTION_REQUIRED)
+> - Boys Girls Kids Walking Shoes DELIVERED (Apr 26 20:10 UTC) — HOUSEHOLD/INFORMATIONAL
+> - Vayu soccer game Apr 25 vs Purple @ WATCHUNG School field played yesterday in the rain — HISTORICAL/INFORMATIONAL; see [[vayu]]
+> - Dwarkesh blog prize for big questions about AI (Apr 25) — RESEARCH/INFORMATIONAL
+> - LinkedIn Sanofi CRD role alert (Apr 26) — discarded per Apr 16 triage (non-AI recruiter feeds = ignore)
+> - 22 ACTION_REQUIRED items carry forward unchanged from run 29
