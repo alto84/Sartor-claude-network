@@ -1,0 +1,40 @@
+=== PWM pulse mapping ===
+Mon Apr 27 03:08:23 AM UTC 2026
+
+--- pwm1 ---
+baseline rpm (current BIOS curve): 0
+pwm=255 (100%) -> 0 rpm
+pwm=80  (31%)  -> 0 rpm
+
+--- pwm2 ---
+baseline rpm (current BIOS curve): 636
+pwm=255 (100%) -> 608 rpm
+pwm=80  (31%)  -> 613 rpm
+
+--- pwm3 ---
+baseline rpm (current BIOS curve): 884
+pwm=255 (100%) -> 890 rpm
+pwm=80  (31%)  -> 897 rpm
+
+--- pwm4 ---
+baseline rpm (current BIOS curve): 929
+pwm=255 (100%) -> 913 rpm
+pwm=80  (31%)  -> 930 rpm
+
+--- pwm5 ---
+baseline rpm (current BIOS curve): 0
+pwm=255 (100%) -> 0 rpm
+pwm=80  (31%)  -> 0 rpm
+
+--- pwm6 ---
+baseline rpm (current BIOS curve): 0
+pwm=255 (100%) -> 0 rpm
+pwm=80  (31%)  -> 0 rpm
+
+--- pwm7 ---
+baseline rpm (current BIOS curve): 1689
+pwm=255 (100%) -> 1691 rpm
+pwm=80  (31%)  -> 1672 rpm
+
+=== mapping complete ===
+[restore] all pwm channels restored to BIOS auto
