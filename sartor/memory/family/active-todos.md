@@ -1098,3 +1098,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - **PAMKA Spring Conference Day volunteers (May 14)**: Food/snacks for teachers. Primary School contact: Besa Owen (besaowen@gmail.com). Optional.
 > - **Fall 2026 Parent Grade Socials**: Host needed — contact Meredith Levine (mflevine@gmail.com). Optional.
 > - Total open ACTION_REQUIRED items: **26** (+1 new: Parent Transition Panel RSVP)
+
+## Latest from gather (2026-04-28) — run 22 addendum (late-afternoon capture)
+
+> [!todo] ACTION_REQUIRED — MEDIUM
+> **NEW: MKA 3V Class Gift — Vishala's class (year-end).** From joannasteckler@gmail.com (Apr 28 14:17 ET). "Dear 3V Parents... at this time of year we like to give the [teacher(s) a class gift]." Parent-organized end-of-year gift for Vishala's 3rd grade (3V) class at MKA. Class contacts: Megan Flick (meganflick@gmail.com), pamkaprimaryschoolvp@gmail.com. Decide contribution amount and respond to joannasteckler@gmail.com. See [[family/vishala]].
+
+> [!fact] FINANCIAL/INFORMATIONAL
+> **Hiive: Perplexity AI opportunity (Apr 28 16:25 ET).** Revenue grew 5x from $100M→$500M as of April 2026, driven by Perplexity Computer (autonomous agentic AI infrastructure). New investment opportunity from Hiive. INFORMATIONAL — review after resolving Kalshi (Apr 30), SpaceX, and Zipline (May 1) deadlines. See [[BUSINESS]].
+
+> [!todo] LOW
+> **NM Planning Review — 3rd follow-up (Apr 28).** Noah Krassin (noah.krassin@nm.com) with Garrett Warner (CC). Third outreach since Mar 12. Northwestern Mutual financial plan review. Schedule meeting or send explicit decline to stop follow-up cycle.
