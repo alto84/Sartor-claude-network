@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-27
 updated_by: personal-data-gather
-run: 31
+run: 36
 
 status: active
 priority: p1
@@ -1009,8 +1009,53 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!note] NEW — Convocation event May 9, 6:30–9:30 PM ET
 > **Family calendar shows a "Convocation" event on Saturday May 9, 6:30–9:30 PM ET.** Created Apr 11 by Aneeta; no description or location in the event. Same evening as Vayu's soccer game (11 AM, Brookdale Park). No overlap. Context unknown — may be related to Neurvati or a personal event. See [[family/family-calendar]].
 
+
 > [!note] Run 35 informational signals
 > - **a16z Speedrun:** application window closes May 17 (3 weeks); review already underway. Career/startup opportunity. No action unless interested.
 > - **Guidepoint consulting request #1732882:** Global Oncology Specialists, otaylor@guidepointglobal.com. Consulting fee opportunity — review if interested.
 > - **Kaymbu newsletters (x2):** Vasu Unit 8 school curriculum updates — informational, no action.
 > - All prior 22 open items carry forward unchanged.
+
+## Latest from gather (2026-04-27) — run 36
+
+> [!deadline] 2026-05-01 — CRITICAL FINANCIAL
+> **185 Davis Condo Assessment: $2,253.13 per unit due May 1 (lump sum) or $563.28/month May–August.**
+> From Charlotte Rice (trustee, charlotterice@gmail.com), sent to all unit owners Apr 27. Assessment covers: (1) FY26 budget gap ($2,625 total / $328.13/unit); (2) Front retaining wall via SM Masonry ($15,400 total / $1,925/unit). Payment options: lump sum by May 1, 2026 OR four monthly installments of $563.28 (May, June, July, August).
+>
+> **Additional upcoming assessments:**
+> - Fuel cost overage: ~$375/unit — Devaney will confirm amount June 1; due June 30
+> - Additional building repairs TBD later in year (chimney $4,200 est.; possible boiler expansion tank ~$10,000)
+>
+> **Boiler expansion tank feedback:** Vote via Google Form by **May 15** on whether to proceed with $10,237 expansion tank replacement. See 185 Davis email thread for form link.
+>
+> **Action:** Decide on lump sum vs. installment plan and make payment by May 1. If installment, payments will auto-continue May–August. Email charlotterice@gmail.com or the board with questions.
+
+> [!deadline] 2026-05-01 — HIGH
+> **CSA 2026 registration incomplete — check payment required by May 1.**
+> Alton submitted the Bloomfield-Montclair CSA 2026 online registration form today (Apr 27). **Registration is not complete until checks are mailed.**
+>
+> Checks needed:
+> 1. **CIRCLE BROOK FARM** — Full Premium Share ($1,145; split payment: $670 now + $475 by May 1)
+> 2. **TREE-LICIOUS ORCHARDS** — Fruit share add-on ($345) — **due by May 1**
+>
+> Mail/hand-deliver to: **Enid Melville, 12 Valley Place, Upper Montclair, NJ 07043**
+>
+> Pickup site: 86 Llewellyn Rd, Montclair (primary). 24 deliveries, Tuesdays June 9 – Nov 17. 4 required work shifts (SignUp Genius link sent after payment received).
+
+> [!warning] CRITICAL EMERGENCY — DANCE CONCERT TOMORROW — tally now 11:8 for 9:40 AM
+> **Run 36 returns `2026-04-30T09:40:00-04:00` = 9:40 AM ET.** Updated tally: 11 at 9:40 AM (runs 14, 15, 16, 18, 23, 29, 30, 31, 32, 33, 36) vs **8 at 1:40 PM** (runs 8, 17, 25, 26, 27, 28, 34, 35). The concert is **TOMORROW (Apr 30)** and the API continues to oscillate. This is the last gather before the event. Do not guess — call MKA directly. Sole-parent day. Vasu has Goddard picture day. Logistics (Goddard drop-off, Amarkanth coordination, NYC commute cancel) all depend on 9:40 AM vs 1:40 PM. See [[family/vayu]] and [[family/sole-parent-window-2026-04-29]].
+
+> [!deadline] 2026-04-29 TOMORROW — HIGH
+> **Vayu 4th grade Chinese assessment — Wednesday April 29.**
+> Teacher Fangzhou Zhang (fzhang@mka.org) sent correction today: original email said Apr 27 but assessment is actually **Wednesday Apr 29**. Assessment covers Chinese painting, art, and spring-related nature vocabulary. Review materials (flashcards + vocabulary sheets) sent home today.
+> **Help Vayu study flashcards and vocab tonight (Apr 27) and tomorrow morning.** See [[family/vayu]].
+
+> [!fact] CALENDAR CORRECTION — Convocation May 9 is 2:30–5:30 PM ET (not 6:30–9:30 PM as run 35 stated)
+> Run 35 logged Convocation as 6:30–9:30 PM ET. Live API this run returns `start: 2026-05-09T14:30:00-04:00` to `end: 2026-05-09T17:30:00-04:00` = **2:30–5:30 PM ET**. Run 35 misread `14:30 EDT`. Vayu's soccer game (11 AM–12 PM) and Convocation (2:30–5:30 PM) are both May 9 with no overlap. Aneeta back from RRE by May 3 — no coverage conflict. See [[family/family-calendar]].
+
+> [!note] Run 36 informational signals
+> - **LEGO Insiders:** 982 points expiring 2026-06-26. No action needed now; redeem before June 26.
+> - **Goddard Vasu (Kaymbu):** Soccer practice today (mini games, scoring drills) + Last Week Recap (terrarium building). Informational.
+> - **NW Mutual vote notice:** Addressed to "Emmett" — routine policyholder vote. INFORMATIONAL.
+> - **CSA volunteer contact jljmoo@aol.com:** Alton emailed about volunteering for set-up/clean-up shifts. No response yet.
+> - All prior 22 open items carry forward unchanged (now +3 new = 25 open items).

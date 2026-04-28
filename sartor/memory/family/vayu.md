@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-04-16
+updated: 2026-04-27
 updated_by: personal-data-gather
-run: 2
+run: 36
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -158,6 +158,14 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!fact]
 > **Alamo All-Stars book approved (2026-04-16 12:27 AM UTC).** Vayu requested "Alamo All-Stars: Bigger & Badder Edition (Nathan Hale's Hazardous Tales #6): A Texas Tale" via Amazon Kids. Alton approved; order confirmation received 1 minute later. Book is the sixth installment in Nathan Hale's Hazardous Tales series. No action needed.
+
+## Latest from gather (2026-04-27) — run 36
+
+> [!deadline] 2026-04-29 TOMORROW
+> **Chinese class assessment Wednesday Apr 29.** Teacher Fangzhou Zhang (fzhang@mka.org) sent correction today: originally stated Apr 27, corrected to Wed Apr 29. Assessment covers Chinese painting, art, and spring-related nature vocabulary (units covered in April). Review materials (flashcards + vocabulary sheets) sent home today. Help Vayu study tonight and tomorrow morning.
+
+> [!fact]
+> **Vayu spring dance concert TOMORROW (April 30) — still unverified time.** Run 36 calendar API: `2026-04-30T09:40:00-04:00` = **9:40 AM ET**. Tally: 11 readings at 9:40 AM vs 8 readings at 1:40 PM. The API oscillation is unresolved. Call MKA before the event — this is the last gather before Apr 30. See [[family/active-todos]] and [[family/sole-parent-window-2026-04-29]].
 
 ## Latest from gather (2026-04-26) — run 29
 
