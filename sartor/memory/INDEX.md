@@ -1,5 +1,5 @@
 # Sartor Memory Index
-## Last Updated: 2026-04-27 03:21
+## Last Updated: 2026-04-28 03:12
 
 ## Core Memory
 - [ALTON.md](ALTON.md) — ---
@@ -21,6 +21,7 @@
 - [reference_home_network.md](reference_home_network.md) — ---
 
 ## Recent Activity
+- [2026-04-28.md](daily/2026-04-28.md) — ---
 - [2026-04-27.md](daily/2026-04-27.md) — ---
 - [2026-04-26.md](daily/2026-04-26.md) — ---
 - [2026-04-25.md](daily/2026-04-25.md) — ---
@@ -30,7 +31,6 @@
 - [2026-04-21.md](daily/2026-04-21.md) — ---
 - [2026-04-20.md](daily/2026-04-20.md) — ---
 - [2026-04-19.md](daily/2026-04-19.md) — ---
-- [2026-04-18.md](daily/2026-04-18.md) — ---
 
 ## Research & Snapshots
 - [INDEX.md](research/INDEX.md) — ---
