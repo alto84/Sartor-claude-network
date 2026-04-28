@@ -37,6 +37,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-28] ingest | personal-data-gather run 22 addendum: 3 late-afternoon items missed by automated runs
+- NEW ACTION: MKA 3V Class Gift (Vishala's class) — joannasteckler@gmail.com, 14:17 ET
+- NEW FINANCIAL: Hiive Perplexity AI opportunity — revenue 5x $100M→$500M (16:25 ET, after run 40)
+- NEW LOW: NM Planning Review 3rd follow-up (Noah Krassin, 13:04 ET)
+- Pages updated: `daily/2026-04-28.md` (addendum appended), `family/active-todos.md` (addendum appended), `log.md`
+
 ## [2026-04-28] ingest | personal-data-gather run 38: Parent Transition Panel RSVP (May 6) new; dance concert tally 13:8 for 9:40 AM; CSA re-registration clarified; 26 open items
 - FAMILY/SCHOOL ACTION: MKA 3rd-4th Grade Parent-to-Parent Panel RSVP due ASAP. Wed May 6, 8:15 AM, Middle School Dining Hall. Vayu's PS→MS transition panel. New this run.
 - FAMILY/SCHOOL P2: MKA Field Day volunteer sign-up (May 22/26). New this run.
