@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-27
+updated: 2026-04-28
 updated_by: personal-data-gather
-run: 36
+run: 37
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-28] ingest | personal-data-gather run 37: dance concert tally 12:8 for 9:40 AM (2 days); Berman Day 2 active; sole-parent window tomorrow; Jackrabbit gymnastics new
+- CRITICAL: Dance concert THURSDAY Apr 30 — run 37 shows 9:40 AM ET. Tally now 12:8 for 9:40 AM. Call MKA today — last business day before event.
+- FAMILY/ACTIVE: Berman Home Systems Installation Day 2 in progress (techs ~9 AM today). Vasu picture day today at Goddard. MKA Grandparents & Special Friends Day today.
+- FAMILY: Sole-parent window begins TOMORROW Apr 29. Alton solo with 3 kids Apr 29–May 3.
+- FAMILY/SCHOOL: Vayu Chinese assessment TOMORROW (Apr 29). Help study flashcards tonight.
+- FINANCIAL/DEADLINE: 185 Davis condo assessment $2,253.13 due May 1 (carry-forward from run 36). CSA checks due May 1 (carry-forward). Hiive/Kalshi deadline TOMORROW Apr 30.
+- INFORMATIONAL: Jackrabbit Tech summer gymnastics (June 23–Aug 18, $200, Wayne NJ) — new. GPT-5.5 system card (TheZvi) — new, research interest.
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22).
+- No new ACTION_REQUIRED items. 25 open items carry forward.
+- Pages updated: `daily/2026-04-28.md` (new), `family/active-todos.md` (run 37 appended), `log.md`.
+- Outputs: `data/gather-alerts.md` (25 open items), `data/heartbeat-log.csv` (run 37 row).
 
 ## [2026-04-27] ingest | personal-data-gather run 36: 185 Davis assessment $2,253/unit due May 1; CSA check payment pending; Vayu Chinese test tomorrow; Convocation time corrected; dance concert tally 11:8 for 9:40 AM
 - FINANCIAL/PROPERTY: 185 Davis condo assessment notice from trustee Charlotte Rice. $2,253.13/unit due May 1 (lump sum) or $563.28/month May–Aug. Additional fuel assessment ~$375 in June. Boiler feedback form due May 15.
