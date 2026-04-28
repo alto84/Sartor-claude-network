@@ -1218,4 +1218,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
 - Total open ACTION_REQUIRED items: 26 (unchanged)
 - Pages updated: `daily/2026-04-28.md` (run 39 appended), `log.md`
+
+## [2026-04-28] ingest | personal-data-gather run 40 — 7 informational signals; 13 open items carry; dance concert TOMORROW tally 15:8 for 9:40 AM
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 28–May 5)
+- Facts gathered: 7 new signals; 0 new ACTION_REQUIRED; 13 carry forward
+- Gmail delta: USPS inbound package (Dumpling Squishies), ChinaTalk AI compute essay, Doximity Brigham indictment news, Doximity Tulane Neurology residency nomination, Amazon shipped x2, Amazon review request — all INFORMATIONAL
+- Vasu Goddard Kaymbu moments (Apr 27): soccer practice, terrarium, math, garden — normal active day
+- Calendar: all 5 feeds identical to run 39; no new events
+- Dance concert (Apr 30 TOMORROW): 9:40 AM ET; tally now **15:8 for 9:40 AM** over 1:40 PM; last-call day to confirm with MKA
+- Sole-parent window TOMORROW (Apr 29–May 3): all logistics must be confirmed today
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Total open ACTION_REQUIRED items: 13 (reduced from 26 by consolidation; same substance)
+- Pages updated: `daily/2026-04-28.md` (run 40 appended), `log.md`
+- Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
 - Outputs: `data/gather-alerts.md` (26 open items), `data/heartbeat-log.csv` (run 39 row)
