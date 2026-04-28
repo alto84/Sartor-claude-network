@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-28
 updated_by: personal-data-gather
-run: 38
+run: 39
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1204,3 +1204,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline Apr 22
 - Pages updated: `daily/2026-04-27.md` (run 35 appended), `family/active-todos.md` (run 35 appended), `family/family-calendar.md` (Convocation added), `log.md`
 - Created: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-28] ingest | personal-data-gather run 39 — no new signals; 26 open items carry forward; dance concert tally 14:8 for 9:40 AM
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 28–May 5)
+- Facts gathered: 0 new signals; 0 new ACTION_REQUIRED; 26 carry forward unchanged
+- Gmail: no delta since run 38; all threads already captured in known set
+- Calendar: all 5 feeds identical to run 38; Alton's Tasks empty; Blue Sombrero May 2 game unchanged
+- Dance concert (Apr 30): 9:40 AM ET again; tally now **14:8 for 9:40 AM** over 1:40 PM; concert in 2 days; call MKA today
+- TOMORROW (Apr 29): sole-parent window begins; Berman Day 3; Vayu Chinese assessment; Rec Soccer 5:30 PM (sole parent)
+- CRITICAL 3 days: 185 Davis $2,253.13 due May 1; CSA checks due May 1
+- HIGH 2 days: Hiive/Kalshi decision due Apr 30
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Total open ACTION_REQUIRED items: 26 (unchanged)
+- Pages updated: `daily/2026-04-28.md` (run 39 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (26 open items), `data/heartbeat-log.csv` (run 39 row)
