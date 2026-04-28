@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-27
+updated: 2026-04-28
 updated_by: personal-data-gather
-run: 36
+run: 37
 
 status: active
 priority: p1
@@ -1059,3 +1059,21 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - **NW Mutual vote notice:** Addressed to "Emmett" — routine policyholder vote. INFORMATIONAL.
 > - **CSA volunteer contact jljmoo@aol.com:** Alton emailed about volunteering for set-up/clean-up shifts. No response yet.
 > - All prior 22 open items carry forward unchanged (now +3 new = 25 open items).
+
+## Latest from gather (2026-04-28) — run 37
+
+> [!warning] CRITICAL EMERGENCY — dance concert THURSDAY Apr 30, time UNVERIFIED
+> Tally after run 37: **12 readings at 9:40 AM** vs **8 readings at 1:40 PM**. Concert is in 2 days. Call MKA now — this is the last business day before the event. See [[family/family-calendar]] and [[family/sole-parent-window-2026-04-29]].
+
+> [!warning] TODAY — multiple active events
+> - **Berman Home Systems Installation Day 2**: Techs arriving ~9 AM. Someone must be home. Day 3 is tomorrow (Apr 29).
+> - **Vasu picture day (Goddard)**: Dress Vasu nicely for school today. Per Kaymbu sneak peek Apr 24.
+> - **MKA Grandparents & Special Friends Day**: Registered guests attending MKA today. Per kflippin@mka.org Apr 21.
+
+> [!note] Jackrabbit Tech summer gymnastics
+> **9-week Summer Session, June 23 – Aug 18, 2026.** $200 per child ($20 off 2nd and 3rd sibling). Located at 136 Mountainview Blvd, Wayne NJ. Call 973-837-8877. Relevant for summer activity planning for Vayu and Vishala. No enrollment deadline stated. INFORMATIONAL — decide when convenient.
+
+> [!note] GPT-5.5 system card (TheZvi, Apr 27)
+> OpenAI announced GPT-5.5 and GPT-5.5-Pro. System card published. Relevant to Alton's AI/ML leadership role at AstraZeneca. INFORMATIONAL — read when time permits.
+
+> - Total open ACTION_REQUIRED items: 25 (no new required items; +1 informational; carry-forward unchanged)
