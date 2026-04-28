@@ -1077,3 +1077,24 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > OpenAI announced GPT-5.5 and GPT-5.5-Pro. System card published. Relevant to Alton's AI/ML leadership role at AstraZeneca. INFORMATIONAL — read when time permits.
 
 > - Total open ACTION_REQUIRED items: 25 (no new required items; +1 informational; carry-forward unchanged)
+
+## Latest from gather (2026-04-28) — run 38
+
+> [!warning] CRITICAL EMERGENCY — dance concert TOMORROW Apr 30 — tally 13:8 for 9:40 AM
+> Run 38 returns `2026-04-30T09:40:00-04:00` = **9:40 AM ET**. Updated tally: **13 readings at 9:40 AM** vs **8 at 1:40 PM** (runs 8, 17, 25, 26, 27, 28, 34, 35). Concert is TOMORROW. This is the last possible moment to call MKA — the office is open today. Do NOT rely on the API. Sole-parent day (Aneeta at RRE). Vasu Goddard picture day. Entire logistics chain (Goddard drop-off, Amarkanth coordination, NYC commute cancel) depends on 9:40 AM vs 1:40 PM. See [[family/vayu]] and [[family/sole-parent-window-2026-04-29]].
+
+> [!todo] ACTION_REQUIRED — HIGH
+> **NEW: RSVP for MKA 3rd-4th Grade Parent-to-Parent Panel — Wednesday May 6, 8:15 AM.**
+> From meganflick@gmail.com (PAMKA), Apr 28. In-person panel at MKA Middle School Dining Hall on the PS→MS transition experience. This is Vayu's transition (3rd → 4th grade). RSVP via Google Form (link in original email from meganflick@gmail.com, subject "PARENT TRANSITION PANEL, SPRING CONFERENCE DAY & MORE"). Deadline not stated but spots fill on first-come basis. See [[family/vayu]] and [[family/family-calendar]].
+
+> [!todo] P2 — OPTIONAL
+> **MKA Field Day volunteer sign-up — Wednesday May 22 (rain date May 26).**
+> From meganflick@gmail.com (PAMKA), Apr 28. Google Form required. Volunteers must be available both dates. Fill out a separate form for each volunteer. Email Sara @ pamkaprimaryschoolvp@gmail.com with questions. See [[family/family-calendar]].
+
+> [!note] Run 38 informational signals
+> - **Goddard (Marianne) email with attachment** (Apr 27): Principal/director sent to both alto84@ and aneetasax@. Snippet: "Spring is in the air... Marianne." Has attachment — check inbox directly.
+> - **CSA clarification**: Alton re-registered from 2025 to 2026. Delivery window: Tuesdays June 9 – Nov 17 (24 deliveries). Checks still due May 1 (see run 36 deadline item).
+> - **Hiive Shield AI Opportunity**: Hiive marketing email — NOT the Kalshi deadline. Separate investment opportunity. Skip.
+> - **PAMKA Spring Conference Day volunteers (May 14)**: Food/snacks for teachers. Primary School contact: Besa Owen (besaowen@gmail.com). Optional.
+> - **Fall 2026 Parent Grade Socials**: Host needed — contact Meredith Levine (mflevine@gmail.com). Optional.
+> - Total open ACTION_REQUIRED items: **26** (+1 new: Parent Transition Panel RSVP)

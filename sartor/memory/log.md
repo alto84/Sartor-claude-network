@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-28
 updated_by: personal-data-gather
-run: 37
+run: 38
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-28] ingest | personal-data-gather run 38: Parent Transition Panel RSVP (May 6) new; dance concert tally 13:8 for 9:40 AM; CSA re-registration clarified; 26 open items
+- FAMILY/SCHOOL ACTION: MKA 3rd-4th Grade Parent-to-Parent Panel RSVP due ASAP. Wed May 6, 8:15 AM, Middle School Dining Hall. Vayu's PS→MS transition panel. New this run.
+- FAMILY/SCHOOL P2: MKA Field Day volunteer sign-up (May 22/26). New this run.
+- CRITICAL: Dance concert TOMORROW Apr 30 — tally now 13:8 for 9:40 AM. Calendar stable. Call MKA today.
+- HOUSEHOLD: CSA clarified — Alton re-registered from 2025 to 2026. 24 deliveries Tuesdays June 9 – Nov 17. Checks still due May 1.
+- INFORMATIONAL: Goddard (Marianne) email with attachment — check inbox. Amazon Dumpling Squishies orders x2 (household). Hiive Shield AI marketing email (skip).
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22).
+- Total open: 26 (+1 new Parent Transition Panel RSVP).
+- Pages updated: `daily/2026-04-28.md` (run 38 appended), `family/active-todos.md` (run 38 appended), `log.md`.
+- Outputs: `data/gather-alerts.md` (26 open items), `data/heartbeat-log.csv` (run 38 row).
 
 ## [2026-04-28] ingest | personal-data-gather run 37: dance concert tally 12:8 for 9:40 AM (2 days); Berman Day 2 active; sole-parent window tomorrow; Jackrabbit gymnastics new
 - CRITICAL: Dance concert THURSDAY Apr 30 — run 37 shows 9:40 AM ET. Tally now 12:8 for 9:40 AM. Call MKA today — last business day before event.
