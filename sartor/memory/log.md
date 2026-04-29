@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-28
+updated: 2026-04-29
 updated_by: personal-data-gather
-run: 39
+run: 40
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-29] ingest | personal-data-gather run 40: MKA payment May 10; CSA workshift step 3; Sante Total Sergei Robinson donation; Fidelity BU statements; sole-parent window active
+- NEW ACTION: MKA tuition payment due 2026-05-10 for Vayu and Vishala (Blackbaud/MKA Business Office, Apr 27)
+- NEW ACTION: CSA Sign Up Genius step 3 -- workshift registration for Llewellyn (4 shifts required)
+- ESCALATED: Nintendo repair service request 61296128 -- reminder email, payment declined, on hold
+- NEW FINANCIAL: Sante Total PayPal donation from Sergei Robinson, Apr 27 (Tx# 9R839720GD5133832; amount TBD)
+- NEW FINANCIAL: Fidelity BU quarterly statements available for both Alton and Aneeta (Boston University 403b plans)
+- CALENDAR: 5 calendars queried; confirmed sole-parent window (Aneeta at RRE today–May 3); soccer practice today 5:30 PM; dance concert tomorrow 9:40 AM; soccer game May 2 2 PM Brookdale; Aneeta London Research check-in today 1:30 PM
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22)
+- Total open ACTION_REQUIRED items: ~26 (added 2 new, 1 escalated)
+- Pages updated: `daily/2026-04-29.md` (created), `family/active-todos.md` (run 40 appended), `business/sante-total.md` (Sergei Robinson donation + 990-N deadline), `FAMILY.md` (Aneeta RRE + MKA payment + Berman complete), `log.md`
+- Outputs: `data/gather-alerts.md` written, `data/heartbeat-log.csv` appended
 
 ## [2026-04-28] ingest | personal-data-gather run 22 addendum: 3 late-afternoon items missed by automated runs
 - NEW ACTION: MKA 3V Class Gift (Vishala's class) — joannasteckler@gmail.com, 14:17 ET

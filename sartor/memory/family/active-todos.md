@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-28
+updated: 2026-04-29
 updated_by: personal-data-gather
-run: 41
+run: 42
 
 status: active
 priority: p1
@@ -845,6 +845,31 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!deadline] 2026-04-28 (3 DAYS)
 > **MKA Grandparents & Special Friends Day — Tuesday April 28 at Brookside campus.** Re-confirmed via Veracross (m@mail3.veracross.com). Both Vishala and Vayu attend MKA Brookside. Overlaps with Berman install day 2 (techs at home ~9 AM). Confirm grandparent attendance plan.
+
+## Latest from gather (2026-04-29) — run 22
+
+> [!deadline] 2026-05-10
+> **MKA tuition payment due May 10.** Blackbaud invoice received Apr 27 from Montclair Kimberley Academy. Both Vayu (4th grade) and Vishala (3rd grade) covered. Family ID: 1336725017733. Session year 2025–2026. Email to ALTO84@gmail.com, CC aneetasax@gmail.com. Log in to MKA Blackbaud portal and pay. Amount not in snippet. See [[vayu]] and [[vishala]].
+
+> [!todo] ACTION_REQUIRED
+> **CSA workshift sign-up: step 3 — Llewellyn.** Email from cat.squatrito@gmail.com (Apr 28) to alto84 and judycav1@yahoo.com. "Premium Share Members are required to sign up for a total of four workshifts." This is a Sign Up Genius link for Llewellyn farm workshifts. Prior status (run 10): Alton submitted his form; Aneeta's Gmail showed as invalid. Complete workshift registration. Confirm Aneeta's email status with CSA coordinator.
+
+> [!warning] ESCALATED — Nintendo repair on hold
+> **Nintendo service request 61296128 — reminder sent Apr 28.** "Time is running out! Your payment method was declined." Update payment method via Nintendo repair portal before request is cancelled. First surfaced run 19 (Apr 25). This is the second notice.
+
+> [!todo] ACTION_REQUIRED — log + send receipt
+> **Sante Total donation received: Sergei Robinson, Apr 27.** PayPal Tx# 9R839720GD5133832, received 06:40:37 CDT. Amount not in snippet — verify in PayPal dashboard. Log donation and send donor tax receipt. See [[business/sante-total]].
+
+> [!todo] FINANCIAL — review
+> **Fidelity BU quarterly statements available.** Two emails from Fidelity.Investments@mail.fidelity.com (Apr 28): (1) Alton (EMMETT A SARTOR) Boston University Retirement Plan — Q1 2026 statement available. (2) Aneeta (ANEETA R SAXENA) Boston University Retirement Plans — statements available (plural). These are BU 403(b) plans from prior employment, distinct from the AZ NetBenefits plan. Review for contribution accuracy, investment allocation, and beneficiary status.
+
+> [!fact] TODAY — logistics summary (Aneeta at RRE, day 1)
+> Sole-parent window started today. Key logistics:
+> - **5:30–6:15 PM**: Soccer practice B-34 Lime @ Anderson Park (Alton must cover)
+> - **Tomorrow (Apr 30) 9:40 AM**: Vayu spring dance concert at MKA (time consensus: 9:40 AM; arrive by 9:25 AM)
+> - **Apr 30**: Vasu picture day at Goddard (coordinate drop-off before 9:40 AM or with Amarkanth)
+> - **Sat May 2, 2:00–3:00 PM**: Vayu soccer GAME @ Brookdale Stadium South, Field 1 (Aneeta still at RRE)
+> - Aneeta has London Research Teams check-in today 1:30–2:00 PM (she attends remotely from RRE)
 
 ## Latest from gather (2026-04-25) — run 21
 

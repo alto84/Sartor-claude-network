@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-04-20
-updated_by: autodream (wikilinks-implementer, gstack-port)
+updated: 2026-04-29
+updated_by: personal-data-gather
 last_verified: 2026-04-16
 status: active
 tags: [entity/person, domain/family]
@@ -352,3 +352,14 @@ Replace field `cell_phone` on entity `Tier` in `FAMILY.md` with value `(914) 488
 
 ## Consolidated from daily logs (2026-04-20)
 - [2026-04-20] (fact) Berman Home Systems Installation (Apr 27–May 1, all-day multi-day) ✓
+
+## Latest from gather (2026-04-29) — run 22
+
+> [!fact]
+> **Aneeta at RRE Apr 29–May 3 (confirmed via calendar).** All-day event on Family calendar, Apr 29 through May 2 inclusive. Alton is sole parent. Aneeta has a London Research (Florence Cassar) Teams check-in today at 1:30 PM — attending remotely from RRE. Returns approximately May 3.
+
+> [!deadline] 2026-05-10
+> **MKA tuition payment due May 10, 2026.** Both Vayu (4th grade) and Vishala (3rd grade). From Blackbaud/MKA Business Office, Apr 27. Log into MKA Blackbaud portal to view amount and pay. See [[family/active-todos]] for action item.
+
+> [!fact]
+> **Berman Home Systems Installation completed.** Final day was April 29 (3-day install Apr 27–29). Solar Inference LLC business install.

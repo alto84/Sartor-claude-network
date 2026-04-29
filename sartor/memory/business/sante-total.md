@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-04-19
+updated: 2026-04-29
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -138,3 +138,8 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!fact]
 > **New Sante Total PayPal donation — Sergei Robinson, Apr 27.** Transaction ID: 9R839720GD5133832. Received 06:40:37 CDT. Amount not visible from email snippet — verify in PayPal dashboard. Add to donor activity table once amount confirmed. Send tax receipt per [[alison-smith|Alison Smith]] pattern. Running 2026 YTD donors: Schall, Yantz, mksinbelair, cfryaniii, Cary Grayson, oates2, Michael Quigg (Apr 14), Christina Stiles (Apr 19), Sergei Robinson (Apr 27). YTD total: $4,350+ plus three unverified amounts (Quigg, Stiles, Robinson).
+
+## Latest from gather (2026-04-29) — run 22
+
+> [!deadline] 2026-05-15
+> **2025 Form 990-N due May 15.** Still 16 days out. Not yet filed per last entry (Apr 19). Alton handles directly (not in Jonathan Francis's scope). File at IRS.gov tax-exempt organization search portal. Gross receipts under $50K for TY2025 — 990-N (e-Postcard) still applies. Do not miss this deadline; 990-N has no automatic extension without Form 8868.
