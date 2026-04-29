@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-28
 updated_by: personal-data-gather
-run: 37
+run: 41
 
 status: active
 priority: p1
@@ -1109,3 +1109,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] LOW
 > **NM Planning Review — 3rd follow-up (Apr 28).** Noah Krassin (noah.krassin@nm.com) with Garrett Warner (CC). Third outreach since Mar 12. Northwestern Mutual financial plan review. Schedule meeting or send explicit decline to stop follow-up cycle.
+
+## Latest from gather (2026-04-28) — run 41
+
+> [!todo] ACTION_REQUIRED — HIGH
+> **Nintendo Switch repair on hold — payment method declined.** Service request 61296128 (noa.nintendo.com). Repair is on hold awaiting decision. Payment method on file was declined. Log into Nintendo repair portal and provide updated payment method or cancel the service request. Email from noreply_repair@noa.nintendo.com, Apr 28 3:00 PM ET. Addressed to "Emmett" (Alton).
+
+> [!fact] INFORMATIONAL — FINANCIAL
+> **Fidelity Boston University retirement plan Q1 2026 quarterly statements** are now available for both Alton (EMMETT A SARTOR) and Aneeta (ANEETA R SAXENA). Log into Fidelity to review. No action deadline; review at next financial planning session.

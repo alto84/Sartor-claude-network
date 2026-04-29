@@ -1225,6 +1225,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Total open ACTION_REQUIRED items: 26 (unchanged)
 - Pages updated: `daily/2026-04-28.md` (run 39 appended), `log.md`
 
+## [2026-04-28] ingest | personal-data-gather run 41 — 12 signals; 1 new ACTION_REQUIRED; dance concert TOMORROW tally 16:8 for 9:40 AM
+
+- Sources: Gmail (50 threads, newer_than:2d), all 5 calendars (Apr 28–May 5)
+- Facts gathered: 12 new signals; 1 new ACTION_REQUIRED (Nintendo Switch repair on hold, payment declined, service request 61296128)
+- Gmail delta: Nintendo repair on hold (NEW ACTION), MKA evacuation drill, Vasu daily sheet (normal), Goddard May calendar PDF, SpotHero NYC commute confirmation, Vasu dance class Goddard, Goddard picture day schedule PDF, Fidelity BU Q1 statements x2, MKA STEMology recap, The Information AWS/Claude Cowork story, ChinaTalk China-Proofing essay
+- Calendar: all 5 feeds identical to run 40; dance concert Apr 30 9:40 AM; tally **16:8 for 9:40 AM**; concert TOMORROW
+- SpotHero confirms Alton commuted NYC today (35 W 33rd St, 8:30AM-8:30PM)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Total open ACTION_REQUIRED items: 14 (added: Nintendo Switch repair)
+- Pages updated: `daily/2026-04-28.md` (run 41 appended), `family/active-todos.md` (Nintendo + Fidelity), `log.md`
+- Outputs: `data/gather-alerts.md` (20 items), `data/heartbeat-log.csv` (run 41 row)
+
 ## [2026-04-28] ingest | personal-data-gather run 40 — 7 informational signals; 13 open items carry; dance concert TOMORROW tally 15:8 for 9:40 AM
 
 - Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 28–May 5)
