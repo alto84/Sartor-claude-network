@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-29
 updated_by: personal-data-gather
-run: 40
+run: 42
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-29] ingest | personal-data-gather run 26: SpotHero NYC logistics conflict; Mother's Day May 4 deadline; 5 facts; data/ dir created
+- NEW LOGISTICS: SpotHero parking #122072609 confirms Alton in NYC today (35 W 33rd St, 9AM–9PM). Conflict with soccer practice at 5:30 PM ET (sole-parent day). Must leave NYC by ~4:30 PM.
+- NEW ACTION: Mother's Day personalization deadline May 4 (5 days). Aneeta returns May 3. Mark and Graham.
+- DEDUP: SNO Editorial Scholars April 30 deadline — not applicable (per 2026-04-16 triage).
+- INFORMATIONAL: ChinaTalk quantum industrial base; The Zvi charts; Newegg review request.
+- CALENDAR: All 5 feeds stable. No new events.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 unresolved since Apr 22.
+- Total open ACTION_REQUIRED items: ~27 (added 2 new: SpotHero logistics + Mother's Day)
+- Pages updated: `daily/2026-04-29.md` (run 26 appended), `family/active-todos.md` (Mother's Day + logistics callouts), `log.md`
+- Outputs: `data/gather-alerts.md` (created, gitignored), `data/heartbeat-log.csv` (created, gitignored)
 
 ## [2026-04-29] ingest | personal-data-gather run 41: EquityZen Lambda signal; Gym Day dedup; calendar stable; 3 informational facts
 - INFORMATIONAL: EquityZen Lambda (LAMD) now live — private AI compute company on EquityZen marketplace
