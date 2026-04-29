@@ -37,6 +37,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-29] ingest | personal-data-gather run 41: EquityZen Lambda signal; Gym Day dedup; calendar stable; 3 informational facts
+- INFORMATIONAL: EquityZen Lambda (LAMD) now live — private AI compute company on EquityZen marketplace
+- INFORMATIONAL: AI diffusion vs autoregressive newsletter (inference architecture signal, Solar Inference / Domain 5 relevant)
+- DEDUP: Jackrabbit Gym Day May 30 (surfaced run 23) — already declined per 2026-04-16 triage. Removed from alert queue.
+- CALENDAR: no changes from run 40/41. Sole-parent window active (Aneeta at RRE through May 3). Soccer practice today 5:30 PM. Dance concert tomorrow 9:40 AM.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 unresolved since Apr 22.
+- Total open ACTION_REQUIRED items: unchanged from run 40 (Nintendo, MKA May 10 payment, CSA workshift step 3, Replit ~May 29 deadline)
+- Pages updated: `daily/2026-04-29.md` (run 24 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (new file), `data/heartbeat-log.csv` created
+
 ## [2026-04-29] ingest | personal-data-gather run 40: MKA payment May 10; CSA workshift step 3; Sante Total Sergei Robinson donation; Fidelity BU statements; sole-parent window active
 - NEW ACTION: MKA tuition payment due 2026-05-10 for Vayu and Vishala (Blackbaud/MKA Business Office, Apr 27)
 - NEW ACTION: CSA Sign Up Genius step 3 -- workshift registration for Llewellyn (4 shifts required)
