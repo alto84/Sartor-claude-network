@@ -243,14 +243,31 @@ The BMC is now a first-class management surface. Future rtxserver Claude session
 
 ## Open questions / next steps
 
-- [ ] Find ASUS-specific IPMI raw command for fan PWM (research task; scan AMI MegaRAC SP-X docs, Phoronix, ServeTheHome forum)
-- [ ] Once raw command known, write `gpu-fan-control` daemon with `max(PCIE03, PCIE07)` logic + watchdog
-- [ ] Set initial Customized fan curves with PCIE03/PCIE07 sources (per recommendation table above)
-- [ ] Capture HTTP traffic from web UI when changing a curve to reverse the IPMI command
-- [ ] Change BMC default password (`admin`) — file the new credentials in a secure location
-- [ ] Validate post-curve thermal performance with another 475W/card 5-min run
-- [ ] Document SEL hardware events into the daily-health pipeline
+- [x] ~~Find ASUS-specific IPMI raw command for fan PWM~~ — NOT FOUND for ASUS; see `inbox/rtxpro6000server/IPMI-FAN-RESEARCH.md`. ASRock Rack AST2600 sequence (`0x3a 0xd0`) is a plausible-but-unverified hypothesis filed for the future.
+- [x] ~~Set initial Customized fan curves with PCIE03/PCIE07 sources~~ — applied 2026-04-29 via Chrome MCP; see History entry above.
+- [x] ~~Validate post-curve thermal performance with another 475W/card 5-min run~~ — done; verdict marginal, see `experiments/2026-04-29-post-bmc-binding-stress/comparison.md`.
+- [x] ~~Document SEL hardware events into the daily-health pipeline~~ — `.claude/agents/self-steward.md` extended 2026-04-29 with `ipmitool sel list` capture + per-event-type severity rules.
+- [ ] Capture HTTP body of one Customized-curve Save POST via Chrome DevTools (free during the next BMC web UI session — useful for future scripting interface).
+- [ ] **Cooling upgrade decision (open):** install 5th ARCTIC P14 in CHA_FAN4, rebind Zone 5 → PCIE03, re-test. If GPU0 peak still ≥ 78°C, escalate to water cooling on GPU0. See `inbox/rocinante/PHONE-HOME-cooling-upgrade-recommendation.md`.
+- [ ] Once raw IPMI command is found OR HTTP-capture interface is built, write `gpu-fan-control` daemon with `max(PCIE03, PCIE07)` logic + watchdog (low priority — current per-zone single-source binding is already adequate for current operation).
+- [ ] Change BMC default password (`admin`) — file the new credentials in a secure location.
 
 ## History
 
 - 2026-04-29: Created during Chrome-MCP-driven exploration of the BMC web UI. Found that ASUS routes all fan PWM through the BMC (Q-Fan in BIOS is inert without BMC_SW jumper change). Discovered that fan zones can be independently bound to PCIE03/PCIE07 GPU temperatures — GPU-aware cooling without a daemon. Mapped 7 fan zones, 19 settings tiles, and the IPMI access surface.
+- 2026-04-29 (later): rtxserver-side empirical sensor validation (`experiments/2026-04-29-bmc-sensor-validation/correlation.md`) confirmed PCIE03 = GPU0 die exact and PCIE07 = GPU1 die +1°C constant offset at idle. Both BMC sensors usable as fan-curve sources.
+- 2026-04-29 (later): Research dispatched and returned NOT FOUND for an ASUS-confirmed `ipmitool raw` fan-PWM command sequence (`inbox/rtxpro6000server/IPMI-FAN-RESEARCH.md`). ASUS does not publish OEM IPMI fan commands; the upstream `ipmitool` repo has zero ASUSTeK handlers; ASRock Rack publishes a primary-source AST2600 sequence (NetFn 0x3a Cmd 0xd0 sub 0x0e/0x0f/0x11/0x12) that is architecturally plausible but NOT verified on ASUS. HTTP capture of the BMC web UI's Save POST is the deterministic path forward for any future scripted interface.
+- 2026-04-29 (later): BMC fan source bindings + 4-point GPU-temp curves applied via Chrome MCP from Rocinante (`inbox/rocinante/20260429T125000Z_bmc-binding-applied.md`). Final config:
+
+  | Zone | Header | Source | Curve A | Curve B | Curve C | Curve D |
+  |------|--------|--------|---------|---------|---------|---------|
+  | 1 | CPU_FAN | CPU Pkg (untouched) | 20°C/20% | 45°C/40% | 65°C/70% | 70°C/100% |
+  | 2 | CHA_FAN1 | PCIE07 | 30°C/30% | 55°C/50% | 70°C/80% | 80°C/100% |
+  | 3 | CHA_FAN2 | PCIE03 | 30°C/30% | 55°C/50% | 70°C/80% | 80°C/100% |
+  | 4 | CHA_FAN3 | PCIE03 | 30°C/30% | 55°C/50% | 70°C/80% | 80°C/100% |
+  | 5 | CHA_FAN4 | PCIE07 | 30°C/30% | 55°C/50% | 70°C/80% | 80°C/100% |
+  | 6 | CHA_FAN5 (MEGACOOLs) | PCIE03 | 30°C/30% | 55°C/50% | 70°C/80% | 80°C/100% |
+  | 7 | W_PUMP+ | CPU Pkg (default, empty) | 20°C/100% | 45°C/100% | 60°C/100% | 70°C/100% |
+
+  BMC overall mode auto-promoted from "Generic mode" to "Customized mode" upon first per-zone Save (per BMC firmware behavior — saving any Customized curve makes Customized authoritative).
+- 2026-04-29 (later): 5-min 475W/card thermal stress run on the post-binding config (`experiments/2026-04-29-post-bmc-binding-stress/comparison.md`). GPU0 peak 84°C, GPU1 peak 73°C, inter-card delta +10.9°C, no throttle. **Essentially unchanged from baseline** (GPU0 83°C / GPU1 72°C). Conclusion: the binding change was correct architecturally (fans follow GPU heat, lower idle noise) but the existing physical fan suite is at its thermal capacity — adding more efficient signal routing to saturated fans does not extract more heat. Decision rule places this in the "marginal" band; recommendation filed in `inbox/rocinante/PHONE-HOME-cooling-upgrade-recommendation.md` to install a 5th ARCTIC P14 in CHA_FAN4, rebind Zone 5 to PCIE03, re-test, and decide on water cooling for GPU0 based on the re-test.

@@ -55,13 +55,14 @@ def main() -> int:
         print("CUDA not available", file=sys.stderr)
         return 2
 
+    ctx = mp.get_context("spawn")
     stop_at = time.time() + args.duration
     print(f"Stress will run for {args.duration}s on GPUs {gpu_ids}", flush=True)
 
-    q: mp.Queue = mp.Queue()
+    q = ctx.Queue()
     procs = []
     for gpu_id in gpu_ids:
-        p = mp.Process(target=stress_worker, args=(gpu_id, stop_at, q))
+        p = ctx.Process(target=stress_worker, args=(gpu_id, stop_at, q))
         p.start()
         procs.append(p)
 
