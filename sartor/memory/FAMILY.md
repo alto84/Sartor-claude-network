@@ -2,7 +2,7 @@
 type: domain
 entity: FAMILY
 updated: 2026-04-29
-updated_by: personal-data-gather
+updated_by: autodream
 last_verified: 2026-04-16
 status: active
 tags: [entity/person, domain/family]
@@ -363,3 +363,9 @@ Replace field `cell_phone` on entity `Tier` in `FAMILY.md` with value `(914) 488
 
 > [!fact]
 > **Berman Home Systems Installation completed.** Final day was April 29 (3-day install Apr 27–29). Solar Inference LLC business install.
+
+## Consolidated from daily logs (2026-04-29)
+- [2026-04-29] (fact) From: noreply@kaymbu.com (Samantha Ramsden, Goddard School)
+- [2026-04-29] (fact) Route: → family/vasu.md (informational note)
+- [2026-04-29] (fact) Route: → family/vasu.md (informational, no action)
+- [2026-04-29] (fact) Content: NJ legislation notification — "2026-04-29, we successfully held [an evacuation drill]." Vayu and Vishala's school, Brookside campus.

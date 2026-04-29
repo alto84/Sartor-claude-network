@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-04-22
-updated_by: personal-data-gather
+updated: 2026-04-29
+updated_by: autodream
 last_verified: 2026-04-12
 status: active
 next_review: 2026-05-12
@@ -601,3 +601,6 @@ No git push (no credentials) - awaiting Rocinante curator commit
 > 3. Once machine is back online, verify vast.ai listing is restored
 >
 > Prior offline incident: 2026-04-04 (45 min, no client impact, no follow-up). This incident has a confirmed active client impact.
+
+## Consolidated from daily logs (2026-04-29)
+- [2026-04-29] (fact) Vasu's Goddard May 2026 schedule available. No specific dates extractable from snippet.
