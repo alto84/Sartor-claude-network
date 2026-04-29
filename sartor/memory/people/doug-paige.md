@@ -1,8 +1,8 @@
 ---
 type: person
 entity: doug-paige
-updated: 2026-04-10
-updated_by: Claude
+updated: 2026-04-29
+updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/career, entity/llc]
 aliases: [Doug Paige, Doug, Lucent Energy]
@@ -44,6 +44,12 @@ Primary contact for the Sartor solar roof installation. The single most importan
 | 2026-03-15 | Climate First → Lucent | $219,414.50 released |
 | 2026-04-01 | Alton → Doug | Chase email re timing. Mid-April electrical planning discussion planned. |
 | 2026-04-09 | — | Still tentative. No confirmed start date. |
+| 2026-04-13 | Alton → Doug/Niko/Audrey | Asked to schedule engineering plan review meeting. "When would be a good time?" |
+| 2026-04-16 | Alton → Doug/Niko/Audrey | Follow-up escalation. "I am honestly getting exhausted with how poorly your office communicates." |
+| 2026-04-16 | Doug → Niko/Audrey (CC: Alton) | Doug forwarded Alton's email: "Niko & Audrey, Please advise." |
+| 2026-04-16 | Niko → Doug (CC: Alton/Audrey) | Niko proposed week of Apr 20, preferred Thu/Fri. Asked Alton for available dates. |
+| 2026-04-17 | Alton → Niko | Alton replied: "flexible next Thursday afternoon after 3pm" (= April 23 or 24) |
+| 2026-04-29 | — | No meeting confirmation or follow-up visible in Gmail as of run 25. Proposed Apr 23 meeting unconfirmed. |
 
 ## What needs to happen
 
@@ -56,5 +62,11 @@ Primary contact for the Sartor solar roof installation. The single most importan
 - [[business/solar-inference|Solar Inference LLC]] — the business entity
 - [[TAXES]] — ITC and depreciation implications
 
+## Latest from gather (2026-04-29)
+
+> [!warning] PROPOSED MEETING UNCONFIRMED — INSTALLATION STILL NOT STARTED
+> Alton proposed April 23 (Thursday after 3 PM) for the engineering plan review. As of April 29 (6 days later), no email confirmation or follow-up is visible. The contractual completion date (~2026-05-01) has now passed. The **ITC deadline of July 4, 2026 is ~66 days away.** If system is not in service by then, Solar Inference LLC forfeits ~$131,649 in federal tax credits. This requires immediate follow-up with Niko (Niko@lucent-energy.com) and Doug (doug.paige@lucent-energy.com). Reference thread subject: "Schedule engineering plan for 85 Stonebridge."
+
 ## History
 - 2026-04-10: Initial dossier created from Gmail harvest and tax session data
+- 2026-04-29: Interaction log updated (Apr 13–17 emails); meeting follow-up warning added

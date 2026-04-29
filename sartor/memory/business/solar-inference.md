@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-04-22
+updated: 2026-04-29
 updated_by: personal-data-gather
 status: active
 priority: p1
@@ -140,6 +140,11 @@ Full details in [[TAXES]]. Summary:
 - 2026-04-06: Tax package sent to CPA
 - 2026-04-07: Berman Home Systems wifi deposit signed
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
+
+## Latest from gather (2026-04-29)
+
+> [!blocker] LUCENT SOLAR INSTALLATION — PROPOSED MEETING UNCONFIRMED, ITC DEADLINE AT RISK
+> Alton proposed April 23 engineering meeting to Niko and Doug Paige (Lucent Energy). No confirmation or follow-up visible in Gmail as of today (April 29). Contractual completion date (~2026-05-01) has passed. Installation has NOT started. **ITC deadline: July 4, 2026 (~66 days).** $131,649 federal tax credit requires system in service before that date. Email/call Niko (Niko@lucent-energy.com) and Doug (doug.paige@lucent-energy.com) immediately. See [[people/doug-paige]].
 
 ## Latest from gather (2026-04-22)
 
