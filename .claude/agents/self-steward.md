@@ -63,6 +63,11 @@ Gather the current state. Record only what's stable enough to be useful (don't o
 - **Scheduled tasks:** `crontab -l` and `systemctl list-timers --no-legend | head -10` on Linux; `Get-ScheduledTask | Where State -eq Ready | Select-Object TaskName, LastRunTime` on Windows. Specifically check whether any tasks documented in `machines/{hostname}/CRONS.md` are present and recently fired.
 - **Rentals (gpuserver1 specifically):** `~/.local/bin/vastai show machines` and `show instances`. Record reliability score, occupancy, current rental rate.
 - **Recent errors:** `journalctl --priority=err --since="-6 hours" --no-pager | tail -20` on Linux. Skip noise-level errors.
+- **BMC sensors + SEL (rtxpro6000server only):** the ASUS ASMB11-iKVM BMC on rtxserver is the authoritative source for fan tachs, GPU slot temperatures (PCIE03/PCIE07), VRM/DIMM temps, and hardware events (ECC, thermal, power, fan failure). Capture:
+  - `sudo ipmitool sdr type fan` — all fan tachs with state. Flag any fan that was reporting last run but is now `ns`/Disabled/0 RPM (mechanical failure).
+  - `sudo ipmitool sdr type temperature` — all temps with state. Flag any threshold-crossing (`cr`/`nr` state, or value above the warn/err/nr thresholds documented in `machines/rtxpro6000server/BMC.md`).
+  - `sudo ipmitool sel list` — System Event Log. Diff against the prior run's last SEL entry (record the highest record ID seen in `STATE.md`). Anything new is reportable; the kinds of events to watch for are: `Memory #` (ECC), `Temperature #` (threshold crossings), `Power Supply #` (PSU events), `Fan #` (fan failure), `Critical Interrupt`, `Watchdog`, `Boot Error`. Boot-time `Version Change` events are routine.
+  - Compact summary: count of fan-tach failures, count of temperature-threshold-crossings, count of new SEL entries by event type. Put the summary in `STATE.md` and the raw new-SEL-entries (only the new ones) in the journal entry if any.
 - **Heartbeat / liveness from peers:** read tail of `sartor/memory/inbox/{hostname}/_heartbeat.md` if present.
 
 ### 3. Diff against previous STATE.md
@@ -114,6 +119,13 @@ Peer machines do NOT push; Rocinante drains via `git pull --rebase` on its next 
 | Unfamiliar binary in `/usr/local/bin` or `/opt` | surprise (investigate; do NOT delete) |
 | dmesg ERR-level kernel message | depends on content; XID/AER for NVIDIA → user-action-needed |
 | Unfamiliar SSH connection in `~/.ssh/known_hosts` | surprise; do NOT modify; flag |
+| New BMC SEL entry of type `Memory` (ECC) — rtxserver only | user-action-needed |
+| New BMC SEL entry of type `Temperature` going-high or `Critical Interrupt` — rtxserver | user-action-needed |
+| New BMC SEL entry of type `Fan` (failure) — rtxserver | user-action-needed |
+| New BMC SEL entry of type `Power Supply` — rtxserver | surprise (or user-action-needed if redundancy lost) |
+| New BMC SEL entry of type `Version Change` (boot) — rtxserver | routine |
+| BMC fan tach drops to 0 RPM that was non-zero last run — rtxserver | surprise (mechanical investigation) |
+| BMC temp sensor in `cr`/`nr` state — rtxserver | user-action-needed |
 
 If unsure, escalate one level (routine→surprise, surprise→user-action-needed). Underclaiming is the failure mode this duty is designed to prevent.
 
