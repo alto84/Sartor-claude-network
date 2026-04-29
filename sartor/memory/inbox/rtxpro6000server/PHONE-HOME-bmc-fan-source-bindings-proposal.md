@@ -27,10 +27,18 @@ Per Alton's authorization update 2026-04-29:
 - Lockout-risk subset OFF-LIMITS: Network Settings, User Management, Services, System Firewall, IPMI Interfaces. **This proposal touches NONE of those.** Only `/#settings/fan_control/source` and `/#settings/fan_control/manual`.
 - If a verified programmatic IPMI path exists, apply via ipmitool with cautious single-zone test first. If not, Rocinante drives the BMC web UI via Chrome MCP.
 
-## Application path (in priority order)
+## Application path — RESOLVED 2026-04-29
 
-1. **Programmatic via ipmitool** — pending research result (`inbox/rtxpro6000server/IPMI-FAN-RESEARCH.md`, ETA ≤60 min from research start). If a primary-source command sequence surfaces, test on Zone 7 (W_PUMP+, empty header — zero blast radius) first, validate, then apply the full binding set.
-2. **Web UI via Chrome MCP from Rocinante** — clean fallback. The web UI is mapped (BMC.md sidebar), credentials are `admin/admin` at `https://192.168.1.156`, and the UI exposes both source binding and curve points per zone. Rocinante drives this exactly as it did for the original BMC mapping session 2026-04-29.
+Research result is in (`IPMI-FAN-RESEARCH.md`, same directory). Verdict **NOT FOUND** for ASUS ASMB11-specific raw IPMI fan PWM. The closest primary-source command set is ASRock Rack's AST2600 sequence (`0x3a 0xd0 0x{0e,0f,11,12}`), which shares the SoC and the AMI SP-X firmware with ASUS but is NOT verified on the ASUS command space. Per the directive's "verified programmatic path" gate, that hypothesis does not qualify for testing today (BMC recovery posture not established; failure mode includes hardware-jumper-required reset).
+
+**Application path: Web UI via Chrome MCP from Rocinante.** This is the directive's documented clean fallback, not a degraded mode. Procedure:
+
+1. Rocinante's Chrome MCP session opens `https://192.168.1.156/`, accepts the self-signed cert, logs in `admin/admin`.
+2. Navigate `/#settings/fan_control/source` — set Zones 2-6 per the table below; leave Zone 1 (CPU Package Temp) and Zone 7 (default) untouched. Save each zone.
+3. Navigate `/#settings/fan_control/manual` — set Zones 2-6 to the 4-point curve below. Save each zone.
+4. Confirm `/#settings/fan_control/auto` is set to **Generic mode** (NOT Full speed, NOT Silent) — the Customized curves only take effect under Generic.
+5. Capture the POST request body during one Save click in DevTools (per `IPMI-FAN-RESEARCH.md` HTTP-capture procedure) — that gives us a future scripting interface and is essentially free while the binding work is happening.
+6. Write `inbox/rocinante/<TS>_bmc-binding-applied.md` with the final config rendered + a copy of the captured POST body. rtxserver polls for that file before firing the stress.
 
 ## Proposed source bindings
 
@@ -88,16 +96,18 @@ Worst case if the proposed bindings + curves are wrong:
 
 The lockout-risk subset (Network/Users/Services/Firewall/IPMI Interfaces) is untouched, so the BMC remains reachable for revert.
 
-## Specific request to Rocinante
+## Specific request to Rocinante (consolidated)
 
-1. Pick up this phone-home plus the IPMI research result (when it lands, in `inbox/rtxpro6000server/IPMI-FAN-RESEARCH.md`).
-2. If research returns a primary-source raw command:
-   - Test on Zone 7 (empty header) first, brief duty change, immediate revert. Confirm BMC is responsive after.
-   - Apply the binding set (Zones 2-6 to PCIE03/PCIE07 per table) and the curves above.
-3. If research returns NOT-FOUND or low-confidence:
-   - Drive Chrome MCP at `https://192.168.1.156`, log in `admin/admin`, navigate to `/#settings/fan_control/source` and bind per the table; navigate to `/#settings/fan_control/manual` and set curves per the points above.
-4. Once curves are saved (BMC persists), kick the in-band stress test on rtxserver. The `Run thermal stress` task on rtxserver (waiting on this binding to land) will execute and write to `experiments/2026-04-29-post-bmc-binding-stress/samples.jsonl`.
-5. Pass back a confirmation file at `inbox/rocinante/<TS>_bmc-binding-applied.md` with the final config rendered so rtxserver knows it's safe to fire stress.
+Research is in. Application path is Chrome MCP. Action items:
+
+1. Pull origin to get this phone-home, the research file, and the staged stress harness (commit `7f2756e` and any later).
+2. Drive Chrome MCP through the 6-step procedure under "Application path" above.
+3. Once Save confirmations land in the BMC and the cold-cache idle sensor read shows Zones 2-6 reading their new sources, write `inbox/rocinante/<TS>_bmc-binding-applied.md` — must include:
+   - A rendered table of the final per-zone source assignments and 4-point curves (read back from the BMC, not echoed from this proposal).
+   - The captured POST body from one Save click (for the future scripting interface).
+   - A short "ready for stress" line at the bottom.
+4. rtxserver-side instruction: when that confirmation file appears in the local working tree (after the next `git pull --rebase`), execute `experiments/2026-04-29-post-bmc-binding-stress/run.sh`. Stress is 5 min, sampler is 5:10 total. Output lands in `samples.jsonl` and `stress.log` in that directory.
+5. After stress completes, rtxserver writes `experiments/2026-04-29-post-bmc-binding-stress/comparison.md` against the 2026-04-27 baseline and applies the cooling-decision rule documented above. If GPU0 peak ≥ 85°C or any throttle, file an immediate phone-home flagged `severity: action-needed-24h` to `inbox/rocinante/`.
 
 ## Files
 
