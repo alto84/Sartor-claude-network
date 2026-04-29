@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-29
 updated_by: personal-data-gather
-run: 42
+run: 43
 
 status: active
 priority: p1
@@ -1142,3 +1142,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] INFORMATIONAL — FINANCIAL
 > **Fidelity Boston University retirement plan Q1 2026 quarterly statements** are now available for both Alton (EMMETT A SARTOR) and Aneeta (ANEETA R SAXENA). Log into Fidelity to review. No action deadline; review at next financial planning session.
+
+## Latest from gather (2026-04-29) — run 43
+
+> [!todo] ACTION_REQUIRED — MEDIUM
+> **Replit Apps deletion deadline ~2026-05-29.** Alton has not logged into Replit since May 29, 2025 (1 year). Apps will be automatically deleted in 30 days from today (2026-04-29). Log into replit.com before 2026-05-29 to preserve or export any hosted projects. From: notifications@replit.com, 2026-04-29 02:12 UTC.
+
+> [!todo] ACTION_REQUIRED — LOW
+> **Jackrabbit Tech Gym Day — Saturday May 30, $25/child, registration open now.** Sibling discount $5 off + admission for 2 adults. Includes 2 extra makeup classes. Register before spots fill. For Vayu and/or Vishala (gymnastics). From: noreply@jackrabbittech.com, 2026-04-28. Check email directly for registration link.
+
+> [!note] Run 43 INFORMATIONAL — CSA step 3 in progress
+> SignUpGenius login confirmation email received 2026-04-29 01:23. Alton's alto84@gmail.com account already exists in SignUpGenius. Supports that step-3 workshift registration (Llewellyn CSA) is actively being handled. CSA item remains open until Alton confirms sign-up completion.

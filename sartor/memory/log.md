@@ -1263,3 +1263,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-04-28.md` (run 40 appended), `log.md`
 - Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
 - Outputs: `data/gather-alerts.md` (26 open items), `data/heartbeat-log.csv` (run 39 row)
+
+## [2026-04-29] ingest | personal-data-gather run 23 — 2 new ACTION_REQUIRED; Replit deletion deadline; Gym Day registration
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 29–May 6)
+- Facts gathered: 5 signals (2 new ACTION_REQUIRED, 3 informational)
+- Gmail delta: Replit 30-day app deletion warning (NEW — deadline ~2026-05-29), Jackrabbit Gym Day May 30 registration open (NEW — $25/child), SignUpGenius login confirmation (CSA step 3 in progress), PayPal trusted device login (Sante Total donation verification), Chase Credit Summary (routine)
+- Calendar: all 5 feeds identical to run 22; soccer practice tonight 5:30 PM; dance concert tomorrow 9:40 AM; Vayu soccer game May 2 2:00 PM
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Total open ACTION_REQUIRED items: ~16 (added: Replit deletion, Gym Day registration)
+- Pages updated: `daily/2026-04-29.md` (run 23 appended), `family/active-todos.md` (run 43 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (run 23 row)
