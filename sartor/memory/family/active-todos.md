@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-29
 updated_by: personal-data-gather
-run: 43
+run: 44
 
 status: active
 priority: p1
@@ -1168,3 +1168,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - **B-34 Lime coach email**: Confirms 5:30 PM practice today (Coach Greg + Coach David). Confirms May 2 game vs Charcoal at Brookdale. No change from calendar.
 > - **USPS**: 4 mailpieces + 1 inbound package arriving today.
 > - All prior open items carry forward unchanged.
+
+## Latest from gather (2026-04-29) — run 26
+
+> [!todo] ACTION_REQUIRED — HIGH | Deadline: 2026-05-04
+> **Mother's Day gift for Aneeta — personalize by May 4.** Mark and Graham personalization deadline is May 4 (5 days). Mother's Day is May 11. Aneeta returns from RRE ~May 3. Order/personalize gift before May 4 to ensure arrival in time. (markandgraham.com, email 2026-04-29 14:19 UTC)
+
+> [!warning] TODAY logistics — sole-parent + NYC commute conflict
+> **SpotHero parking confirmation #122072609**: Alton parked at 35 W 33rd St Valet Garage, NYC, Apr 29 9:00 AM–9:00 PM ET. Soccer practice B-34 Lime is at 5:30 PM ET at Anderson Park, Montclair. Alton is sole parent (Aneeta at RRE through May 3). Must depart NYC office by ~4:30 PM ET to make practice, or arrange parent coverage for the 5:30 PM slot. Parking held until 9 PM so car can be retrieved after practice.
+
+> [!note] Run 26 informational — research signals
+> - ChinaTalk: "The Quantum Industrial Base" (substack, 13:56 UTC) — quantum computing + industrial policy. Domain 5 relevant.
+> - The Zvi: "The Most Important Charts in the World" (substack, 14:04 UTC) — AI/macro signal.
+> - SNO Editorial Scholars deadline April 30: not applicable per 2026-04-16 triage.
+> - All 5 calendar feeds stable. No new events. All prior open items carry forward.
