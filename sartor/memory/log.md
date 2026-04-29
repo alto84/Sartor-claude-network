@@ -1274,6 +1274,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
 - Outputs: `data/gather-alerts.md` (26 open items), `data/heartbeat-log.csv` (run 39 row)
 
+## [2026-04-29] ingest | personal-data-gather run 25 — 1 CRITICAL new blocker; Lucent Solar meeting unconfirmed; ITC at risk
+
+- Sources: Gmail (40 threads, newer_than:2d), all 5 calendars (Apr 29–May 6)
+- Facts gathered: 7 signals (1 critical ACTION_REQUIRED, 6 informational/dedup)
+- Gmail delta: Lucent Solar/85 Stonebridge engineering meeting (proposed Apr 23, unconfirmed — CRITICAL), MNSSSHP 2026 from Nicol Stevenson (informational), EquityZen Lightmatter/Redwood digest, DeepSeek-V4 TheSequence, B-34 Lime coach confirm (dedup), USPS 1 package
+- Calendar: all 5 feeds unchanged. Dance concert tomorrow 9:40 AM ET confirmed again (13:40Z).
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- New critical blocker: Lucent Solar installation stalled; $131,649 ITC at risk; 66 days to July 4 deadline
+- Pages updated: `daily/2026-04-29.md` (run 25 appended), `family/active-todos.md` (Lucent Solar blocker + concert tally), `people/doug-paige.md` (interaction log + warning), `business/solar-inference.md` (blocker), `family/disney-july-2026.md` (MNSSSHP note), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (run 25 row)
+
 ## [2026-04-29] ingest | personal-data-gather run 23 — 2 new ACTION_REQUIRED; Replit deletion deadline; Gym Day registration
 
 - Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 29–May 6)

@@ -120,6 +120,12 @@ Multi-family trip planned via a group text called "Disney 2026." Nicole (planner
 > - **Mickey's Tales of Adventure Breakfast** at Storyteller's Cafe (Grand Californian) — also brunch Fri/Sat/Sun
 > - **Donald's Tales of Adventure Dinner** at Storyteller's (begins May 16) — available for July dates
 
+## Latest from gather (2026-04-29)
+
+> [!note] Nicol Stevenson proactively sending Disney news (Apr 29)
+> Email from travel@travelagentupdates.com (Nicol Stevenson, n.stevenson@magicalvacationplanner.com): "2026 Mickey's Not-So-Scary Halloween Party Dates Announced!" Note: MNSSSHP is a Walt Disney World (Magic Kingdom, Florida) event — not applicable to the July 2026 Disneyland (California) trip. Nicol remains engaged as travel agent. ADR booking window opens May 17 — contact her before then with Sartor dining preferences.
+
 ## History
 - 2026-04-10: Initial planning page created from Google Messages "Disney 2026" group text scrape. Messages cover Mar 21 through Apr 6, 2026.
 - 2026-04-17: Nicol Stevenson identified as travel agent. ADR deadline flagged (May 17). Dining options documented from her email.
+- 2026-04-29: MNSSSHP 2026 announcement noted; ADR window (May 17) still open.

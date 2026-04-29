@@ -1153,3 +1153,18 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Run 43 INFORMATIONAL — CSA step 3 in progress
 > SignUpGenius login confirmation email received 2026-04-29 01:23. Alton's alto84@gmail.com account already exists in SignUpGenius. Supports that step-3 workshift registration (Llewellyn CSA) is actively being handled. CSA item remains open until Alton confirms sign-up completion.
+
+## Latest from gather (2026-04-29) — run 25
+
+> [!blocker] CRITICAL — Lucent Solar 85 Stonebridge engineering meeting unconfirmed
+> **Proposed meeting date (April 23, Thursday after 3 PM) has passed with no confirmation visible.** Thread from Apr 13–17 shows Alton proposed this date to Niko (Niko@lucent-energy.com) and Doug Paige (doug.paige@lucent-energy.com) of Lucent Energy. No reply or meeting confirmation found in Gmail as of this run. Contractual completion was ~2026-05-01 (already passed). **ITC deadline July 4, 2026 (~66 days)** — $131,649 federal tax credit at risk if solar system is not in service by then. Immediate action: email or call Niko and Doug to confirm meeting status and get a firm installation start date. See [[people/doug-paige]], [[business/solar-inference]].
+
+> [!fact] DANCE CONCERT TOMORROW — run 25 confirms 9:40 AM ET
+> API returned `2026-04-30T13:40:00Z` (= 9:40 AM ET). Consistent with recent runs. Tally continues to favor 9:40 AM. If MKA has not been called today, call now — this is the final window before the concert.
+
+> [!note] Run 25 informational signals
+> - **Disney MNSSSHP 2026**: Nicol Stevenson (travel agent) announced Mickey's Not-So-Scary Halloween Party 2026 dates. This is a WDW/Florida event, not relevant to July Disneyland trip, but Nicol is active. No action.
+> - **EquityZen**: Lightmatter (AI photonics) and Redwood Materials now live in addition to Lambda. INFORMATIONAL.
+> - **B-34 Lime coach email**: Confirms 5:30 PM practice today (Coach Greg + Coach David). Confirms May 2 game vs Charcoal at Brookdale. No change from calendar.
+> - **USPS**: 4 mailpieces + 1 inbound package arriving today.
+> - All prior open items carry forward unchanged.
