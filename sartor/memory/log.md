@@ -37,6 +37,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-04-30] ingest | personal-data-gather run 31: all-dedup; 0 new facts; data/ re-created; alerts written
+- DEDUP: 6 net-new Gmail threads (post-run-30); all low-signal: USPS digest (2 mailpieces, senders unknown), Blue Sombrero game reminder (dedup), The Sequence #852 (AI/CLI informational), rundatarun substack, M3 Research solicitation, Newegg promo. Net-new facts: 0.
+- CALENDAR: All 5 feeds stable. Identical to runs 28–30. Sole-parent window continues (Aneeta at RRE through May 3). Soccer game May 2, practice May 6.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 status unresolved since Apr 22.
+- INFRA: data/ directory re-created (ephemeral across sessions). gather-alerts.md and heartbeat-log.csv written.
+- Open ACTION_REQUIRED carry-forward: Mother's Day gift deadline May 4 (HIGH), Sante Total fund transfer (HIGH), Lucent Solar ITC (HIGH), 990-N May 15 (MEDIUM), EquityZen Anthropic (MEDIUM).
+- Pages updated: `daily/2026-04-30.md` (run 31 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 0 | New ACTION_REQUIRED items: 0
+
 ## [2026-04-30] ingest | personal-data-gather run 30: all-dedup run; 0 new facts; calendar stable; data/ dir recreated
 - DEDUP: All 40 Gmail threads in scope (newer_than:1d) already processed by runs 28–29. Net-new facts: 0.
 - CALENDAR: All 5 feeds stable and identical to run 29. Vayu dance concert confirmed 9:40 AM ET today (day-of). Aneeta at RRE through May 3. Soccer game May 2 2 PM ET.
