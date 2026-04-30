@@ -1190,3 +1190,8 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ACTION_REQUIRED — EquityZen: reconfirm Anthropic investor interest
 > Email from support@equityzen.com, 2026-04-29 17:58 ET, subject "Action Needed: Please Reconfirm Your Investor Interest." Company: Anthropic. "Submitting interest helps us gauge how much current demand there is." Interest expires without reconfirmation. Log into EquityZen My Watchlist and reconfirm. Prior run 27 flagged as "soft action" — today's email is subject-line explicit.
+
+## Latest from gather (2026-04-30) — run 29
+
+> [!decision] ACTION_REQUIRED — SANTE TOTAL FINANCIAL
+> **Authorize or hold Sante Total fund transfer to "Gaby."** [[people/alison-smith|Alison Smith]] emailed "Carol" (Cadelssbusia@aol.com) on 2026-04-30 02:29 UTC, CC'd [[barbara-weis|Barbara Weis]] (dye2tie@gmail.com), edelss@hotmail.com, and alto84@gmail.com. Question posed: "Do you anticipate anymore [donors] or should we plan to get the money sent to Gaby?" "Gaby" is an in-country program contact (Haiti or Kenya). All Sante Total financial transfers require board approval or Alton's explicit authorization. **Review the email thread and decide: (1) authorize transfer amount and timing, or (2) hold pending more donations.** See [[business/sante-total]].

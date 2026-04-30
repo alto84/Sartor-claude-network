@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-30
 updated_by: personal-data-gather
-run: 43
+run: 44
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-30] ingest | personal-data-gather run 29: Sante Total fund transfer action; Alison Smith donors email; calendar stable; 2 facts routed
+- NEW ACTION: Alison Smith "Donors" email (Apr 30 02:29 UTC) — fund transfer to "Gaby" pending Alton's authorization. Sante Total financial decision required.
+- NEW CONTACT: "Carol" (Cadelssbusia@aol.com) — apparent Sante Total board member or donor coordinator, surfaced in Alison's email thread.
+- CALENDAR: All 5 feeds stable. No new events vs. run 28.
+- SSH: gpuserver1 unavailable in execution environment.
+- Pages updated: `daily/2026-04-30.md` (run 29 appended), `business/sante-total.md` (fund transfer decision callout), `people/alison-smith.md` (donors email fact), `family/active-todos.md` (decision callout), `log.md`
+- Outputs: `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (created)
+- Total new facts: 2 | New ACTION_REQUIRED items: 1
 
 ## [2026-04-29] ingest | personal-data-gather run 26: SpotHero NYC logistics conflict; Mother's Day May 4 deadline; 5 facts; data/ dir created
 - NEW LOGISTICS: SpotHero parking #122072609 confirms Alton in NYC today (35 W 33rd St, 9AM–9PM). Conflict with soccer practice at 5:30 PM ET (sole-parent day). Must leave NYC by ~4:30 PM.
