@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-04-27
+updated: 2026-04-30
 updated_by: personal-data-gather
-run: 36
+run: 37
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -177,3 +177,14 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!fact]
 > **Soccer game confirmed: Saturday May 2, 2:00–3:00 PM ET.** B34 Lime (Vayu's team: Gormley Hanlon & Waynik) vs B34 Charcoal (Pliego). Venue: Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. During sole-parent window (Aneeta at RRE through ~May 3). Ini's birthday is also May 2. See [[family/family-calendar]].
+
+## Latest from gather (2026-04-30) — run 28
+
+> [!warning] TODAY — Spring dance concert 9:40–11:00 AM ET
+> The dance concert is happening TODAY at MKA. API (run 28): `start: 2026-04-30T13:40:00Z, timeZone: America/New_York` = 9:40 AM ET. Aneeta is at RRE. Alton is sole parent. Must arrive MKA by ~9:25 AM. The weeks-long API time oscillation (9:40 AM vs 1:40 PM across 28 runs) is resolved by today's Z-anchored reading: 13:40 UTC = 9:40 AM EDT. See [[family/active-todos]].
+
+> [!fact]
+> **Soccer game May 2 — reconfirmed.** Blue Sombrero: B34 Lime vs B34 Charcoal, Saturday May 2, 2:00–3:00 PM ET, Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. During sole-parent window (Aneeta at RRE through ~May 3). First captured run 19; confirmed run 28.
+
+> [!fact]
+> **Soccer practice May 6: 5:30–6:15 PM ET.** Family calendar event `2026-05-06T21:30:00Z` with `timeZone: America/New_York` = 5:30 PM ET. Anderson Park, south side near Parkside St (B-34 Lime). Aneeta's "Healing" event same day is 8–11 PM — no conflict.
