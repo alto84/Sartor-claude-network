@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-04-26
+updated: 2026-04-30
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -168,3 +168,8 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact]
 > **Vasu confirmed in school April 24 — preschool "What is breathing?" unit.** Kaymbu daily sheet (Apr 24 18:59 UTC): "Preschool: What is breathing? Your child will explore living and non-living things this week. They will notice their own breath and discover what makes something alive." Normal school day confirmed.
+
+## Latest from gather (2026-04-30) — run 33
+
+> [!fact]
+> **Picture Day May 1, 2026 at 11:30am (Goddard School).** Samantha Ramsden via Kaymbu (noreply@kaymbu.com), 2026-04-30 20:00 UTC: "Reminder that your child will have picture day tomorrow at 11:30am. Sibling pictures will be taken on the first child's appointment." May 1 was previously listed as a picture day; new detail: 11:30am start time and sibling photo policy. Dress Vasu for pictures on Thursday May 1. See [[family/active-todos]].

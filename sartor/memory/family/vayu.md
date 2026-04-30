@@ -4,7 +4,7 @@ entity: vayu
 name: "Vayu Sartor"
 updated: 2026-04-30
 updated_by: personal-data-gather
-run: 38
+run: 39
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -193,3 +193,8 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!todo] ACTION_REQUIRED — NJ Pride FC Spring 2 enrollment
 > **NJ Pride FC Spring 2 season starts May 23, 2026.** Email 2026-04-30 14:14 UTC from info@njpridefc.com: "2 of the classes are already close to being sold out!" This is Vayu's soccer development program (distinct from B-34 Lime rec league). Spring 2 = 3 weeks out. Enroll or pass — decision needed soon to hold a spot. Check njpridefc.com or reply to info@njpridefc.com for pricing and class options. See [[family/active-todos]].
+
+## Latest from gather (2026-04-30) — run 33
+
+> [!todo] ACTION_REQUIRED — Respond to Roshni Shah (homework habits)
+> **New teacher concern: Vayu's homework habits.** Roshni Shah (rshah@mka.org) emailed Alton and Aneeta on 2026-04-30 17:24 UTC (CC: alto84@gmail.com), subject "Re: Math support." New content: "I wanted to reach out to share an observation about Vayu's homework habits and to ask for your partnership in supporting him." This is a separate escalation from the Apr 14 partial-quotients division email — now about homework completion/consistency broadly. Teacher requesting parent partnership. Respond to rshah@mka.org; coordinate with Aneeta (returns from RRE ~May 3). Math dean: Deborah Gordon (dgordon@mka.org). See [[family/active-todos]].

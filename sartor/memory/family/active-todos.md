@@ -1200,3 +1200,20 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ACTION_REQUIRED — NJ Pride FC Spring 2 enrollment
 > **Enroll Vayu in NJ Pride FC Spring 2 season before spots sell out.** Email from info@njpridefc.com received 2026-04-30 14:14 UTC: "The Spring Two Season begins May 23rd, 2026. 2 of the classes are already close to being sold out!" This is Vayu's soccer development program (separate from the B-34 Lime rec league, which has its own schedule). Spring 2 starts May 23. No price listed in snippet — check the NJ Pride FC portal or reply to info@njpridefc.com. Decision: enroll or pass. See [[family/vayu]].
+
+## Latest from gather (2026-04-30) — run 33
+
+> [!todo] ACTION_REQUIRED — Vasu picture day May 1 at 11:30am (Goddard School)
+> Samantha Ramsden (Goddard) via Kaymbu, 2026-04-30 20:00 UTC: picture day TOMORROW (May 1) at 11:30am. Sibling pictures taken at first child's appointment slot. Dress Vasu in photogenic clothing for school Thursday May 1. See [[family/vasu]].
+
+> [!todo] ACTION_REQUIRED — Respond to Roshni Shah re: Vayu homework habits
+> Roshni Shah (rshah@mka.org) emailed 2026-04-30 17:24 UTC asking for parent partnership on Vayu's homework habits — a new concern beyond the Apr 14 partial-quotients math email. Respond to rshah@mka.org. Coordinate with Aneeta (returns from RRE ~May 3). Math dean: Deborah Gordon (dgordon@mka.org). See [[family/vayu]].
+
+> [!deadline] 2026-05-29 at 8:15am
+> **Vishala Capstone Design Fair at Brookside (MKA).** May 29, 8:15am, 3rd grade classrooms. Veracross email 2026-04-30. Parents expected to attend. Block calendar now. See [[family/vishala]].
+
+> [!todo] ACTION_REQUIRED — Pay Pool Guyz LLC statement
+> billing@thepoolguyznj.com, 2026-04-30 20:18 UTC. Statement PDF attached (amount in attachment). Pay via Zelle to Thepoolguyznj@gmail.com (preferred) or Venmo @thepoolguyz. Prior service visits: Apr 22 (log #36601595), Apr 23 (log #36619894). See [[family/vasu]] for pool service history.
+
+> [!todo] ACTION_REQUIRED — Nintendo Switch repair #61296128 (payment declined)
+> noreply_repair@noa.nintendo.com, 2026-04-28 19:00 UTC. Service request 61296128 on hold: "Your payment method was declined. Please click on the link. Time is running out!" Update payment method to authorize repair before the service window closes.

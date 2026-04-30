@@ -1366,3 +1366,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Total open ACTION_REQUIRED items: ~28 (added 1 net new: EquityZen Anthropic).
 - Pages updated: `daily/2026-04-30.md` (created), `FAMILY.md`, `family/vayu.md`, `family/family-calendar.md`, `family/active-todos.md`, `log.md`
 - Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-04-30] ingest | personal-data-gather run 33: 5 new action items; Vasu picture day; Vayu teacher escalation; Vishala Capstone Fair; Pool Guyz invoice; Nintendo repair
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (Apr 30–May 7)
+- Facts gathered: 5 actionable (Vasu picture day May 1 11:30am, Vayu homework habits teacher escalation, Vishala Capstone Design Fair May 29 8:15am, Pool Guyz LLC statement, Nintendo repair #61296128 payment declined)
+- Calendar: all 5 feeds stable. No new events vs. runs 28–32.
+- Gmail delta (post-16:10 UTC): Kaymbu picture day, Roshni Shah homework habits email, MKA Veracross Capstone fair, Pool Guyz billing, Nintendo repair hold, DEA training (informational)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Pages updated: `daily/2026-04-30.md` (run 33 appended), `family/vayu.md`, `family/vasu.md`, `family/vishala.md`, `family/active-todos.md`, `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
