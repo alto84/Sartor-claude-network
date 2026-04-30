@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-27
+updated: 2026-04-30
 updated_by: personal-data-gather
-run: 36
+run: 37
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -507,3 +507,21 @@ Two new events created today (2026-04-17) that were not in any prior run:
 | Sat 5/6 | 5:30–6:15 PM | Rec Soccer Practice (B-34 Lime) | Family calendar | Anderson Park; confirmed recurring event |
 | Sat 5/9 | 11:00 AM–12:00 PM | Vayu soccer — B34 Lime vs B34 Purple | Blue Sombrero | Brookdale Stadium South, Field 1 |
 | **Sat 5/9** | **2:30–5:30 PM** | **Convocation** | **Family calendar** | Corrected from run 35 (6:30 PM was wrong) |
+
+## Latest from gather (2026-04-30) — run 28
+
+Confirmed schedule from live calendar pull. Today is the dance concert day.
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| **Thu 4/30** | **9:40–11:00 AM** | **Vayu spring dance concert (MKA)** | Family | **TODAY** — sole-parent day; Aneeta at RRE |
+| Thu 4/30 | all-day (ends) | Berman Home Systems install complete | Family | 3-day install Apr 27–30 wrapped |
+| Thu 4/30 – Sun 5/3 | all-day | Aneeta at RRE (sole-parent window) | Family | Returns ~May 3 |
+| Sat 5/2 | 2:00–3:00 PM | Vayu soccer game — B34 Lime vs B34 Charcoal | Blue Sombrero | Brookdale Stadium South, Field 1 |
+| Sat 5/2 | all-day | Ini's birthday | Family | Recurring |
+| Wed 5/6 | 5:30–6:15 PM | Rec Soccer Practice B-34 Lime | Family | Anderson Park, south side near Parkside St |
+| Wed 5/6 | 8:00–11:00 PM | Aneeta "Healing" (recurring) | Aneeta | No conflict with soccer |
+| Sat 5/9 | 11:00 AM–12:00 PM | Vayu soccer — B34 Lime vs B34 Purple | Blue Sombrero | Brookdale Stadium South, Field 1 (confirmed prior runs) |
+| Sat 5/9 | 2:30–5:30 PM | Convocation | Family | Created by Aneeta Apr 11; no description or location |
+
+**Dance concert time settled:** All prior API oscillation resolved by run 28 Z-anchored reading: `2026-04-30T13:40:00Z` = 9:40 AM ET. The `timeZone: America/New_York` field is display-only when Z suffix is present. 9:40 AM ET is correct.

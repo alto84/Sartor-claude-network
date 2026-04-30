@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-29
+updated: 2026-04-30
 updated_by: personal-data-gather
-run: 42
+run: 43
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1316,3 +1316,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
 - Pages updated: `daily/2026-04-29.md` (run 27 appended), `ALTON.md` (Harvey + DeepMind + EquityZen Anthropic signals), `log.md`
 - Outputs: `data/gather-alerts.md` (created/updated), `data/heartbeat-log.csv` (run 27 row)
+
+## [2026-04-30] ingest | personal-data-gather run 28: dance concert TODAY; EquityZen Anthropic action; EPE carline update; 5 facts
+- TODAY URGENT: Vayu spring dance concert 9:40–11:00 AM ET at MKA. Sole-parent day (Aneeta at RRE through May 3). API run 28: `2026-04-30T13:40:00Z` = 9:40 AM ET. Weeks-long API time oscillation resolved by Z-anchored reading.
+- ACTION_REQUIRED: EquityZen "Action Needed" email — reconfirm Anthropic watchlist interest before it expires. Run 27 logged as "soft action"; run 28 email is subject-line explicit.
+- FAMILY: MKA EPE Carline procedure updated — JrK/K EPE students now outside on front playground during afternoon carline (warm weather). agonzalez@mka.org, 2026-04-29.
+- FACT: Berman Home Systems installation complete today (final day of Apr 27–30 install).
+- INFORMATIONAL: Fidelity 500 Index Fund shareholder report; AAMC 2026 (Nov 6–10 Anaheim, priority reg opens June); BMC April newsletter.
+- CALENDAR: All 5 feeds stable. Soccer game May 2 confirmed (Brookdale Stadium South, 2 PM ET). Soccer practice May 6 5:30 PM ET confirmed.
+- SSH: gpuserver1 not checked (execution environment limitation). Machine 52271 last known offline 2026-04-22.
+- Total open ACTION_REQUIRED items: ~28 (added 1 net new: EquityZen Anthropic).
+- Pages updated: `daily/2026-04-30.md` (created), `FAMILY.md`, `family/vayu.md`, `family/family-calendar.md`, `family/active-todos.md`, `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)

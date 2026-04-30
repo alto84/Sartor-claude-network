@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-29
+updated: 2026-04-30
 updated_by: personal-data-gather
-run: 44
+run: 45
 
 status: active
 priority: p1
@@ -1182,3 +1182,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - The Zvi: "The Most Important Charts in the World" (substack, 14:04 UTC) — AI/macro signal.
 > - SNO Editorial Scholars deadline April 30: not applicable per 2026-04-16 triage.
 > - All 5 calendar feeds stable. No new events. All prior open items carry forward.
+
+## Latest from gather (2026-04-30) — run 28
+
+> [!warning] TODAY — Vayu spring dance concert 9:40 AM ET (sole-parent day)
+> Concert is at MKA TODAY, 9:40–11:00 AM ET. Aneeta is at RRE. Alton must be at MKA by 9:25 AM. The API time debate (9:40 AM vs 1:40 PM tracked across 28 runs) is resolved by today's Z-anchored reading: `2026-04-30T13:40:00Z` = 9:40 AM EDT. See [[family/vayu]].
+
+> [!todo] ACTION_REQUIRED — EquityZen: reconfirm Anthropic investor interest
+> Email from support@equityzen.com, 2026-04-29 17:58 ET, subject "Action Needed: Please Reconfirm Your Investor Interest." Company: Anthropic. "Submitting interest helps us gauge how much current demand there is." Interest expires without reconfirmation. Log into EquityZen My Watchlist and reconfirm. Prior run 27 flagged as "soft action" — today's email is subject-line explicit.

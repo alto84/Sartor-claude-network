@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-04-29
-updated_by: autodream
+updated: 2026-04-30
+updated_by: personal-data-gather
 last_verified: 2026-04-16
 status: active
 tags: [entity/person, domain/family]
@@ -369,3 +369,17 @@ Replace field `cell_phone` on entity `Tier` in `FAMILY.md` with value `(914) 488
 - [2026-04-29] (fact) Route: → family/vasu.md (informational note)
 - [2026-04-29] (fact) Route: → family/vasu.md (informational, no action)
 - [2026-04-29] (fact) Content: NJ legislation notification — "2026-04-29, we successfully held [an evacuation drill]." Vayu and Vishala's school, Brookside campus.
+
+## Latest from gather (2026-04-30) — run 28
+
+> [!warning] TODAY — Vayu spring dance concert 9:40–11:00 AM ET
+> Concert is TODAY at MKA. Aneeta is at RRE (sole-parent window through May 3). Alton must be at MKA by ~9:25 AM. API reading: `start: 2026-04-30T13:40:00Z, timeZone: America/New_York` = 9:40 AM ET (Z-anchored, consistent with runs 16/18/25/27/28). See [[family/vayu]] and [[family/active-todos]].
+
+> [!todo] ACTION_REQUIRED — EquityZen: reconfirm Anthropic investor interest
+> EquityZen email (support@equityzen.com, 2026-04-29): subject "Action Needed: Please Reconfirm Your Investor Interest." Company: Anthropic. Interest will expire without action. Log into EquityZen watchlist and reconfirm.
+
+> [!fact]
+> **MKA EPE Carline Update (2026-04-29).** agonzalez@mka.org: warm weather means JrK and Kindergarten EPE students are now outside on front playground during afternoon carline. New safety procedure in effect. Verify which Sartor children are in EPE if afternoon pickup is involved.
+
+> [!fact]
+> **Berman Home Systems installation complete.** Final day April 30 (all-day event end date). 3-day install Apr 27–30 wrapped today. Solar Inference LLC business install.
