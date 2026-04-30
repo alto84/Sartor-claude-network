@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-30
 updated_by: personal-data-gather
-run: 45
+run: 46
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-30] ingest | personal-data-gather run 32: NJ Pride FC Spring 2 action; GPT-5.5 week; EquityZen Perplexity; 1 new fact
+- NEW ACTION: NJ Pride FC Spring 2 season (starts May 23). 2 classes near sellout. Enroll Vayu soon. Routed to `family/vayu.md` and `family/active-todos.md`.
+- RESEARCH: GPT-5.5 launched this week (Zvi AI #166). NEJM AI Human-AI framework editorial. The Sequence agentic-as-CLI thesis. All INFORMATIONAL; logged in daily only.
+- FINANCIAL: EquityZen Perplexity live fund offering (Alton expressed interest 7 months ago). INFORMATIONAL; distinct from EquityZen Anthropic (ACTION_REQUIRED, run 28) and Lightmatter (captured run 28).
+- CALENDAR: All 5 feeds stable. Identical to runs 28–31. Vayu dance concert completed (was 9:40–11:00 AM ET today). Sole-parent window continues (Aneeta at RRE through May 3). Soccer game May 2 2 PM ET.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 status unresolved since Apr 22.
+- Pages updated: `daily/2026-04-30.md` (run 32 appended), `family/vayu.md` (NJ Pride FC), `family/active-todos.md` (NJ Pride FC), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 1 | New ACTION_REQUIRED items: 1
 
 ## [2026-04-30] ingest | personal-data-gather run 31: all-dedup; 0 new facts; data/ re-created; alerts written
 - DEDUP: 6 net-new Gmail threads (post-run-30); all low-signal: USPS digest (2 mailpieces, senders unknown), Blue Sombrero game reminder (dedup), The Sequence #852 (AI/CLI informational), rundatarun substack, M3 Research solicitation, Newegg promo. Net-new facts: 0.
