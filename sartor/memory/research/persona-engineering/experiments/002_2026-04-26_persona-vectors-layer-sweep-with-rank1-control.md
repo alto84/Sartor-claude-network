@@ -6,7 +6,8 @@ date: 2026-04-26
 updated: 2026-04-26
 updated_by: rtxserver-orchestrator (Phase E experiment-doc drafting)
 version: v1.0
-status: planned-post-cato-008-revise-pre-cato-009
+status: planned-grep-verified-pre-fire-pre-principal-greenlight
+verification: 2026-04-30 grep-verified (path-b per Alton): all 6 Cato-008 patches present in the doc — §1→§2.8+L225/226, §2→§2.3 step 6 + §2.4 step "Bootstrap CI on k_80", §3→§2.2 T1.2 L138-141, §4→§2.5 L191 (Bellini/Conti/Russo), §5→§6 Step F L415-427 (split + v1.2-ref removed + F6 wording), §6→§2.7 L212 + §6 Step A item 3 L383. Cato-009 verify pass skipped per Alton's instruction. Awaiting principal greenlight before fire.
 volatility: low
 hypothesis: |
   Operational, not predictive. The experiment's purpose is to resolve which cell of the
