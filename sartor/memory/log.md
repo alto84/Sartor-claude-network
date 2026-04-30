@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-04-30
 updated_by: personal-data-gather
-run: 44
+run: 45
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-04-30] ingest | personal-data-gather run 30: all-dedup run; 0 new facts; calendar stable; data/ dir recreated
+- DEDUP: All 40 Gmail threads in scope (newer_than:1d) already processed by runs 28–29. Net-new facts: 0.
+- CALENDAR: All 5 feeds stable and identical to run 29. Vayu dance concert confirmed 9:40 AM ET today (day-of). Aneeta at RRE through May 3. Soccer game May 2 2 PM ET.
+- SSH: gpuserver1 unavailable in execution environment (persistent since Apr 22). Machine 52271 status unresolved.
+- INFRA: data/ directory was missing; recreated. gather-alerts.md and heartbeat-log.csv written fresh.
+- Pages updated: `daily/2026-04-30.md` (run 30 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (reconstructed), `data/heartbeat-log.csv` (new row)
+- Total new facts: 0 | New ACTION_REQUIRED items: 0
 
 ## [2026-04-30] ingest | personal-data-gather run 29: Sante Total fund transfer action; Alison Smith donors email; calendar stable; 2 facts routed
 - NEW ACTION: Alison Smith "Donors" email (Apr 30 02:29 UTC) — fund transfer to "Gaby" pending Alton's authorization. Sante Total financial decision required.
