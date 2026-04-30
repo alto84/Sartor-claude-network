@@ -1306,3 +1306,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Total open ACTION_REQUIRED items: ~16 (added: Replit deletion, Gym Day registration)
 - Pages updated: `daily/2026-04-29.md` (run 23 appended), `family/active-todos.md` (run 43 appended), `log.md`
 - Outputs: `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (run 23 row)
+
+## [2026-04-29] ingest | personal-data-gather run 27 — Harvey/Hiive opportunity; EquityZen Anthropic reconfirmation; DeepMind career signal; JAMA clinical AI viewpoint
+
+- Sources: Gmail (30 threads, newer_than:1d), all 5 calendars (Apr 29–May 6)
+- Facts gathered: 8 signals (1 soft ACTION_REQUIRED, 2 financial/informational, 1 career signal, 2 research signals, 2 family/logistics)
+- Gmail delta: EquityZen Anthropic watchlist reconfirmation (soft action), Hiive Harvey AI opportunity ($190M ARR), Google DeepMind Portfolio Lead Health career signal, JAMA "AI is not end of physician" + autonomous clinical AI licensure, Dwarkesh/Reiner Pope LLM math podcast, Vasu Apr 29 daily sheet, Amazon delivery update
+- Calendar: all 5 feeds unchanged. Dance concert tomorrow 9:40 AM ET (confirmed API again). Soccer practice today 5:30 PM ET; sole parent logistics conflict from SpotHero (NYC) already flagged run 26.
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Pages updated: `daily/2026-04-29.md` (run 27 appended), `ALTON.md` (Harvey + DeepMind + EquityZen Anthropic signals), `log.md`
+- Outputs: `data/gather-alerts.md` (created/updated), `data/heartbeat-log.csv` (run 27 row)
