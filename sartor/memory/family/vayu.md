@@ -4,7 +4,7 @@ entity: vayu
 name: "Vayu Sartor"
 updated: 2026-04-30
 updated_by: personal-data-gather
-run: 37
+run: 38
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -188,3 +188,8 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!fact]
 > **Soccer practice May 6: 5:30–6:15 PM ET.** Family calendar event `2026-05-06T21:30:00Z` with `timeZone: America/New_York` = 5:30 PM ET. Anderson Park, south side near Parkside St (B-34 Lime). Aneeta's "Healing" event same day is 8–11 PM — no conflict.
+
+## Latest from gather (2026-04-30) — run 32
+
+> [!todo] ACTION_REQUIRED — NJ Pride FC Spring 2 enrollment
+> **NJ Pride FC Spring 2 season starts May 23, 2026.** Email 2026-04-30 14:14 UTC from info@njpridefc.com: "2 of the classes are already close to being sold out!" This is Vayu's soccer development program (distinct from B-34 Lime rec league). Spring 2 = 3 weeks out. Enroll or pass — decision needed soon to hold a spot. Check njpridefc.com or reply to info@njpridefc.com for pricing and class options. See [[family/active-todos]].

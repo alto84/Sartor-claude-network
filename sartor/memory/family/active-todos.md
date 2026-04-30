@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-04-30
 updated_by: personal-data-gather
-run: 45
+run: 46
 
 status: active
 priority: p1
@@ -1195,3 +1195,8 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!decision] ACTION_REQUIRED — SANTE TOTAL FINANCIAL
 > **Authorize or hold Sante Total fund transfer to "Gaby."** [[people/alison-smith|Alison Smith]] emailed "Carol" (Cadelssbusia@aol.com) on 2026-04-30 02:29 UTC, CC'd [[barbara-weis|Barbara Weis]] (dye2tie@gmail.com), edelss@hotmail.com, and alto84@gmail.com. Question posed: "Do you anticipate anymore [donors] or should we plan to get the money sent to Gaby?" "Gaby" is an in-country program contact (Haiti or Kenya). All Sante Total financial transfers require board approval or Alton's explicit authorization. **Review the email thread and decide: (1) authorize transfer amount and timing, or (2) hold pending more donations.** See [[business/sante-total]].
+
+## Latest from gather (2026-04-30) — run 32
+
+> [!todo] ACTION_REQUIRED — NJ Pride FC Spring 2 enrollment
+> **Enroll Vayu in NJ Pride FC Spring 2 season before spots sell out.** Email from info@njpridefc.com received 2026-04-30 14:14 UTC: "The Spring Two Season begins May 23rd, 2026. 2 of the classes are already close to being sold out!" This is Vayu's soccer development program (separate from the B-34 Lime rec league, which has its own schedule). Spring 2 starts May 23. No price listed in snippet — check the NJ Pride FC portal or reply to info@njpridefc.com. Decision: enroll or pass. See [[family/vayu]].
