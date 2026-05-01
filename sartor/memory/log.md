@@ -1385,3 +1385,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-01.md` (created), `log.md`
 - Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 - Total new facts: 3 | New ACTION_REQUIRED items: 0 | Open carry-forward actions: 11
+
+## [2026-05-01] ingest | personal-data-gather run 35: 1 new action item (Amazon recall); Mother's Day deadline surfaced
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 1–May 8)
+- Gmail delta (new since run 34 cutoff ~02:00 UTC May 1): Amazon product safety recall (ACTION_REQUIRED, 00:40 UTC), SemiAnalysis newsletter (INFORMATIONAL, 02:30 UTC)
+- Calendar: all 5 feeds stable. No changes from run 34.
+- NEW FACTS: Amazon safety recall (ACTION_REQUIRED/household), SemiAnalysis AI value capture newsletter (INFORMATIONAL)
+- NEW DEADLINES SURFACED: Mother's Day gift May 4 (3 days); GOOGL $285C today (flagged in alerts); 990-N May 15 (14 days); Wohelo tuition May 15 (14 days); MKA tuition May 10 (9 days)
+- SSH: gpuserver1 not checked (execution environment restriction); data/ directory created this run (prior runs 33-34 claimed to write there but dir was absent)
+- Pages updated: `daily/2026-05-01.md` (run 35 appended), `family/active-todos.md` (Mother's Day + Amazon recall callouts), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created, backfilled runs 33-34)
+- Total new facts: 2 | New ACTION_REQUIRED items: 1 | Open carry-forward actions: 12
