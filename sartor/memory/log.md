@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-30
+updated: 2026-05-01
 updated_by: personal-data-gather
-run: 46
+run: 47
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1375,3 +1375,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
 - Pages updated: `daily/2026-04-30.md` (run 33 appended), `family/vayu.md`, `family/vasu.md`, `family/vishala.md`, `family/active-todos.md`, `log.md`
 - Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-01] ingest | personal-data-gather run 34: 3 new facts; 0 new actions; all carry-forward open
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 1–May 8)
+- Gmail delta (new since run 33 cutoff ~21:00 UTC Apr 30): AlphaSights paid consult (Life Sciences, 21:22 UTC), EquityZen Apptronik new listing (23:48 UTC), Vasu daily sheet final (23:48 UTC). All other threads: deduplicated against runs 28–33.
+- Calendar: all 5 feeds stable. Identical to run 33. Aneeta at RRE through May 3. Soccer game May 2 2 PM ET. Soccer practice May 6 5:30 PM. Mother's Day deadline May 4 (3 days out).
+- NEW FACTS: AlphaSights consult (INFORMATIONAL/career), Apptronik EquityZen (FINANCIAL/INFORMATIONAL), Vasu final daily sheet Apr 30 (INFORMATIONAL)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Pages updated: `daily/2026-05-01.md` (created), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 3 | New ACTION_REQUIRED items: 0 | Open carry-forward actions: 11
