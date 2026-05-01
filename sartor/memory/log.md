@@ -1396,3 +1396,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-01.md` (run 35 appended), `family/active-todos.md` (Mother's Day + Amazon recall callouts), `log.md`
 - Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created, backfilled runs 33-34)
 - Total new facts: 2 | New ACTION_REQUIRED items: 1 | Open carry-forward actions: 12
+
+## [2026-05-01] ingest | personal-data-gather run 36: 0 net-new facts; run-35 write remediation; 2 OVERDUE flags added
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 1–May 8)
+- Gmail delta (new since run 35 cutoff ~02:30 UTC May 1): 0 net-new. All 30 threads deduplicated against runs 28–35.
+- Calendar: all 5 feeds stable. Identical to runs 34–35. No changes.
+- REMEDIATION: Run 35 logged writes to `family/active-todos.md` (Amazon recall + Mother's Day callouts) but active-todos.md remained at updated:2026-04-30. This run executed those writes.
+- OVERDUE FLAGS: 185 Davis condo assessment ($2,253.13 lump sum, due today) and CSA checks ($820 total, due today) were missing from run 34-35 carry-forward tables. OVERDUE callouts added to active-todos.md.
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Pages updated: `daily/2026-05-01.md` (run 36 appended), `family/active-todos.md` (run 36 section + OVERDUE callouts), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 0 | Remediated writes: 2 | New OVERDUE flags: 2 | Carry-forward actions: 15
