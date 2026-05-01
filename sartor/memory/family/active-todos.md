@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-25
+updated: 2026-05-01
 updated_by: personal-data-gather
-run: 19
+run: 22
 
 status: active
 priority: p1
@@ -874,3 +874,49 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Calendar unchanged
 > All 5 calendars stable vs run 19. Cougar Pride Day tomorrow (Sun Apr 26 11 AM, Van Brunt Field); Wohelo Assembly tomorrow noon (online, Vishala). Aneeta departs for RRE Wednesday Apr 29. Sole-parent window: Apr 29–May 3.
+
+## Latest from gather (2026-05-01) — run 22
+
+> [!warning] URGENT — Hiive deadlines now past or expiring today
+> - **Hiive Kalshi** funding deadline was **2026-04-30** — PASSED. No resolution email found. Confirm status immediately.
+> - **Hiive SpaceX** review deadline was **2026-05-01** — EXPIRING TODAY. Act now or it closes.
+> - **Hiive Zipline** deadline was **2026-05-01** — EXPIRING TODAY. Act now or it closes.
+
+> [!fact] LIKELY RESOLVED — GOOGL May call sold
+> Fidelity trade confirmation received May 1: "SOLD CALL (GOOGL) ALPHABET INC CAP" from account XXXXX8998. This corresponds to the active `[!deadline] 2026-05-01` GOOGL May $285C roll decision (20 short contracts, roll up-and-out before May 15 expiry). Trade appears executed. Verify with Jonathan Francis for tax implications if the position was closed vs rolled. See [[TAXES]].
+
+> [!todo] ACTION_REQUIRED — HIGH
+> **NEW: Vayu homework habits — respond to MKA teacher Roshni Shah.** rshah@mka.org (CC: dgordon@mka.org) sent a second email Apr 30 re: Vayu's homework habits, requesting parental partnership. First contact was Apr 14 (partial quotients division; Aneeta replied). This is a new escalation on homework behavior pattern. Reply to rshah@mka.org. See [[family/vayu]].
+
+> [!deadline] 2026-05-29 (28 days)
+> **NEW: MKA Third Grade Capstone Design Fair — Friday May 29, 8:15 AM, Brookside.** From m@mail2.veracross.com (Apr 30). Event is in each third grade classroom. This is Vishala's class. Add to Google Calendar. See [[family/vishala]].
+
+> [!todo]
+> **NEW: Pool Guyz LLC statement — pay.** Statement from billing@thepoolguyznj.com (Apr 30). Amount in attached PDF. Payment options: Zelle (preferred) to Thepoolguyznj@gmail.com, or Venmo @thepoolguyz. Pool service active 2026. Prior check-up Apr 24 (service log #36630477). See [[business/solar-inference]] for 85 Stonebridge operating costs.
+
+> [!todo]
+> **NEW: Amazon safety recall notice — identify and act.** order-update@amazon.com (May 1). "Potential safety concern with a product that you purchased on Amazon.com." Product not identified in snippet. Open email, identify product, review Recalls page.
+
+> [!fact] TODAY — Vasu picture day at Goddard (11:30 AM)
+> Confirmed by Goddard Kaymbu announcement (Apr 30 evening). Sibling photos taken during first child's turn. Happening now. Normal school day otherwise. See [[family/vasu]].
+
+> [!fact] CONFIRMED — Vayu soccer game TOMORROW May 2, 2:00 PM ET
+> Blue Sombrero game reminder received Apr 30 (postmaster@bluesombrero.com). B34 Lime vs B34 Charcoal, **Saturday May 2, 2:00–3:00 PM**, Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. **Aneeta still at RRE (returns ~May 3) — Alton sole parent.** See [[family/vayu]] and [[family/family-calendar]].
+
+> [!fact] CSA Share 2026 — Alton re-enrolled
+> Alton sent email to jljmoo@aol.com Apr 27: "I was notified that I had signed up for the wrong year for CSA share. I had signed up for 2025 and just re-did my application for 2026. I am interested in volunteering for set-up and clean up." 2026 application confirmed submitted.
+
+> [!todo] P3 — multiple new financial review items
+> **EquityZen new opportunities (Apr 30):**
+> - **Apptronik (APTK)** — hardware/robotics, new on EquityZen marketplace.
+> - **Perplexity** — two emails; Alton had expressed interest 7 months ago.
+> Also carry-forward: Georgia Edwards meeting, Postman (POSM).
+
+> [!todo]
+> **NEW: AlphaSights consult — Life Sciences Patient Service and Hub Operations.** From emma.sciarrone@alphasights.com (Apr 30). 1-hour compensated consultation. Accept or decline.
+
+> [!todo]
+> **NEW: Guidepoint Genetic Disorder Survey — $50.** From surveys@guidepoint.com (Apr 30). Online paid survey. Accept or decline.
+
+> [!note] Sole-parent window ACTIVE — 2 days remaining
+> Aneeta at RRE through approximately Saturday May 3. Today (May 1, Friday) and tomorrow (May 2, Saturday) are sole-parent days. Tomorrow's logistics: Vayu soccer 2:00 PM Brookdale Stadium South. No other school events flagged for today. Aneeta "Healing" recurring event May 6 after her return.

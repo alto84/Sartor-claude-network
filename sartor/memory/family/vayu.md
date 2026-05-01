@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-04-16
+updated: 2026-05-01
 updated_by: personal-data-gather
-run: 2
+run: 22
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -55,6 +55,20 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 - Tribeca Pediatrics (patient ID 599351). At least 3 unread portal messages as of harvest.
 - CVS prescriptions — one order confirmation 2026-04-01, no pending pickups flagged.
 - Diagnosed ADHD + enuresis. Counselor search is an open family action item.
+
+## Latest from gather (2026-05-01) — run 22
+
+> [!todo] ACTION_REQUIRED — HIGH
+> **MKA teacher second contact re: homework habits (Roshni Shah, Apr 30).** rshah@mka.org (CC: dgordon@mka.org) sent a follow-up email Apr 30 about Vayu's homework habits, asking for parental partnership. First contact was Apr 14 (partial quotients division math support; Aneeta replied Apr 14). This second outreach is a distinct concern — homework completion or consistency pattern. Alton (or Aneeta) should reply to rshah@mka.org. See [[family/active-todos]].
+
+> [!fact] Soccer game TOMORROW
+> B34 Lime vs B34 Charcoal, **Saturday May 2, 2:00–3:00 PM ET**, Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. Confirmed via Blue Sombrero game reminder (Apr 30). Alton sole parent (Aneeta at RRE through ~May 3). Next practice: May 6 5:30–6:15 PM ET, Anderson Park.
+
+> [!fact] Amazon Kids book requests — pending approval (from run 21)
+> Two Nathan Hale's Hazardous Tales requests submitted Apr 25:
+> - "Blades of Freedom (#10): A Tale of Haiti, Napoleon, and the Louisiana Purchase"
+> - "Cold War Correspondent (#11): A Korean War Tale"
+> Approve or deny via Amazon Parent Dashboard. Status unknown as of run 22.
 
 ## Contacts
 

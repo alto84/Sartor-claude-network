@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-04-25
+updated: 2026-05-01
 updated_by: personal-data-gather
-run: 19
+run: 22
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -483,3 +483,31 @@ Two new events created today (2026-04-17) that were not in any prior run:
 | Thu 4/30 | 9:40–11:00 AM | Vayu spring dance concert (MKA) | Family calendar | Sole-parent day; confirmed 9:40 AM ET |
 | Sat 5/2 | all-day | Ini's birthday | Family calendar | |
 | Sat 5/2 | 2:00–3:00 PM | Vayu soccer — B34 Lime vs B34 Charcoal | Blue Sombrero | **NEW** — Brookdale Stadium South |
+
+## Latest from gather (2026-05-01) — run 22
+
+> [!fact] TODAY — Sole-parent window ongoing (Day 3 of 5)
+> Aneeta at RRE through approximately Saturday May 3. Today is May 1 (Friday). No school events flagged today.
+
+> [!fact] TOMORROW — Vayu soccer game, Brookdale Stadium South
+> B34 Lime (Vayu) vs B34 Charcoal, **Saturday May 2, 2:00–3:00 PM ET**, Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. Game reminder confirmed from Blue Sombrero (postmaster@bluesombrero.com Apr 30). Alton sole parent.
+
+> [!deadline] 2026-05-15
+> Wohelo full tuition balance due. $12,900 total (or balance minus any deposit already paid). Mail check to Wohelo Camps, 25 Gulick Road, Raymond, ME 04071. See [[family/vishala]] and [[family/active-todos]].
+
+> [!deadline] 2026-05-29
+> **NEW: MKA Third Grade Capstone Design Fair — Friday May 29, 8:15 AM, Brookside.** Vishala's class. From MKA Veracross Apr 30. Add to Google Calendar.
+
+**Calendar: May 1–8 confirmed events**
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| Fri 5/1 | 11:30 AM | Vasu picture day (Goddard) | Kaymbu | TODAY; sibling photos during first child's turn |
+| Sat 5/2 | all-day | Ini's birthday | Family calendar | Recurring |
+| Sat 5/2 | 2:00–3:00 PM | Vayu soccer — B34 Lime vs B34 Charcoal | Blue Sombrero | Brookdale Stadium South, sole-parent day |
+| Sun 5/3 | approx. | Aneeta returns from RRE | Family calendar | Sole-parent window ends |
+| Wed 5/6 | 5:30–6:15 PM | Rec Soccer Practice (B-34 Lime) | Family calendar | Anderson Park, Parkside St side |
+| Wed 5/6 | 8:00–11:00 PM | Aneeta "Healing" | Aneeta calendar | Recurring |
+| Fri 5/8 | all-day | Anjali's birthday | Aneeta calendar | Recurring |
+
+No new events vs run 21 in the 7-day window. Calendar stable.
