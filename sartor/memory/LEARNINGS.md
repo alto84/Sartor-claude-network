@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: LEARNINGS
-updated: 2026-04-24
+updated: 2026-04-29
 updated_by: autodream
 last_verified: 2026-04-12
 status: active
@@ -199,3 +199,22 @@ Key findings from surveying state-of-the-art AI memory systems:
 
 ## Consolidated from daily logs (2026-04-24)
 - [2026-04-24] (fact) Concert time note:: Current API returns `"start":{"dateTime":"2026-04-24T12:00:00Z","timeZone":"America/New_York"}`. With Z suffix (UTC): 12:00 UTC = 8:00 AM ET. Consistent with main table entry of 08:00–10:00. The run 3 (Apr 18) "correction" to 12:00 PM ET was based on reading the timestamp without Z as local time — moot now that the event has occurred.
+
+## Consolidated from daily logs (2026-04-26)
+- [2026-04-05] (fact) ---
+- [2026-04-06] (fact) ---
+- [2026-04-06] (fact) ---
+
+## Consolidated from daily logs (2026-04-29)
+- [2026-04-29] (fact) Goddard May 2026 calendar received:
+- [2026-04-29] (fact) Date: 2026-04-28
+- [2026-04-29] (fact) Content: "May Calendar. Please see attached for the May calendar May 2026.pdf"
+- [2026-04-29] (fact) Vasu Goddard daily sheet April 28 — normal:
+- [2026-04-29] (fact) Check-in: 7:22 AM (Nathia W), Check-out: 3:18 PM (Lorena C)
+- [2026-04-29] (fact) MKA evacuation drill completed April 28:
+- [2026-04-29] (fact) From: m@mail4.veracross.com (MKA)
+- [2026-04-29] (fact) INFORMATIONAL. No action.
+- [2026-04-29] (fact) MKA STEMology class recap 04.24.26:
+- [2026-04-29] (fact) From: agonzalez@mka.org (Amy & Amy)
+- [2026-04-29] (fact) Date: 2026-04-28
+- [2026-04-29] (fact) Fun recap email to STEMology families. No action needed.

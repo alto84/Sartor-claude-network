@@ -192,3 +192,64 @@ Records memory consolidation events: merges, archives, and prune operations.
 - logs_removed: 0
 - index_lines: 37
 
+## Run: 2026-04-26 03:09:29
+- dry_run: False
+- facts_gathered: 63
+- facts_written: 3
+- files_updated: 1
+- logs_archived: 0
+- logs_removed: 0
+- index_lines: 37
+- changes:
+  - LEARNINGS.md: +3 facts
+
+## Run: 2026-04-27 03:21:07
+- dry_run: False
+- facts_gathered: 0
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 0
+- logs_removed: 0
+- index_lines: 37
+
+## Run: 2026-04-28 03:12:25
+- dry_run: False
+- facts_gathered: 0
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 0
+- logs_removed: 0
+- index_lines: 37
+
+## Run: 2026-04-29 03:15:57
+- dry_run: False
+- facts_gathered: 18
+- facts_written: 18
+- files_updated: 4
+- logs_archived: 0
+- logs_removed: 0
+- index_lines: 37
+- changes:
+  - LEARNINGS.md: +12 facts
+  - FAMILY.md: +4 facts
+  - MACHINES.md: +1 facts
+  - ALTON.md: +1 facts
+
+## Run: 2026-04-30 03:15:30
+- dry_run: False
+- facts_gathered: 18
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 0
+- logs_removed: 0
+- index_lines: 37
+
+## Run: 2026-05-01 03:10:05
+- dry_run: False
+- facts_gathered: 18
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 0
+- logs_removed: 0
+- index_lines: 37
+

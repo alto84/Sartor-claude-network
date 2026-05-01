@@ -1,0 +1,5 @@
+Stress started on 2 GPUs. PID OK
+Stop requested, joining...
+GPU 1: 66000 matmuls in 305.6s
+GPU 0: 63000 matmuls in 306.6s
+Done.

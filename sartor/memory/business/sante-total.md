@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-04-19
+updated: 2026-04-30
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -133,3 +133,21 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!fact]
 > **New Sante Total PayPal donation — Christina Stiles, Apr 19.** Transaction ID: 1HN1210765870815P. Received 06:23:05 CDT. Amount not visible in email snippet — verify in PayPal dashboard. Add to donor activity table once amount confirmed. Send tax receipt per [[alison-smith|Alison Smith]] pattern. Running 2026 YTD total: $4,350+ (Mar–Apr 2) + Michael Quigg (Apr 14, amount TBD) + this donation.
+
+## Latest from gather (2026-04-27)
+
+> [!fact]
+> **New Sante Total PayPal donation — Sergei Robinson, Apr 27.** Transaction ID: 9R839720GD5133832. Received 06:40:37 CDT. Amount not visible from email snippet — verify in PayPal dashboard. Add to donor activity table once amount confirmed. Send tax receipt per [[alison-smith|Alison Smith]] pattern. Running 2026 YTD donors: Schall, Yantz, mksinbelair, cfryaniii, Cary Grayson, oates2, Michael Quigg (Apr 14), Christina Stiles (Apr 19), Sergei Robinson (Apr 27). YTD total: $4,350+ plus three unverified amounts (Quigg, Stiles, Robinson).
+
+## Latest from gather (2026-04-29) — run 22
+
+> [!deadline] 2026-05-15
+> **2025 Form 990-N due May 15.** Still 16 days out. Not yet filed per last entry (Apr 19). Alton handles directly (not in Jonathan Francis's scope). File at IRS.gov tax-exempt organization search portal. Gross receipts under $50K for TY2025 — 990-N (e-Postcard) still applies. Do not miss this deadline; 990-N has no automatic extension without Form 8868.
+
+## Latest from gather (2026-04-30) — run 29
+
+> [!decision] ACTION_REQUIRED — authorize or hold
+> **Sante Total fund transfer to "Gaby" pending board/treasurer authorization.** Alison Smith (alison.annette.smith@gmail.com) emailed "Carol" (Cadelssbusia@aol.com) on 2026-04-30 02:29 UTC, CC'd edelss@hotmail.com, dye2tie@gmail.com ([[barbara-weis|Barbara Weis]]), and alto84@gmail.com. Alison's message: "Do you anticipate anymore [donors] or should we plan to get the money sent to Gaby?" "Gaby" is an in-country program contact (Haiti or Kenya -- confirm which). All financial transactions require board approval or Alton's explicit authorization per governing rules. **Alton must review the email thread and authorize or hold the transfer.** New contact surfaced: "Carol" at Cadelssbusia@aol.com -- likely a board member or donor coordinator (surname possibly Adels-Busia or similar). Not yet in people registry.
+
+> [!fact]
+> **Donor spreadsheet updated by Alison Smith as of 2026-04-30.** Alison added more donors to the spreadsheet overnight before sending the "Donors" email. No count or amount visible in snippet. This likely follows the Sergei Robinson donation (Apr 27) and possibly others. Verify updated spreadsheet totals before authorizing fund transfer.

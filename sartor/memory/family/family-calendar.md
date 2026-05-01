@@ -3,7 +3,7 @@ type: domain
 entity: family-calendar
 updated: 2026-05-01
 updated_by: personal-data-gather
-run: 22
+run: 37
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -511,3 +511,44 @@ Two new events created today (2026-04-17) that were not in any prior run:
 | Fri 5/8 | all-day | Anjali's birthday | Aneeta calendar | Recurring |
 
 No new events vs run 21 in the 7-day window. Calendar stable.
+## Latest from gather (2026-04-27) — run 35
+
+> [!fact] NEW EVENT — Convocation, Saturday May 9, 6:30–9:30 PM ET
+> **Family calendar shows a "Convocation" event on Saturday May 9.** Event ID: `c8sjeohj6phj4bb2chi66b9k70o30bb16dgj8bb26sp38or3c8o32ob3c4`. Created 2026-04-11 by Aneeta (aneetasax@gmail.com). No description, location, or attendees listed. Timing: 6:30–9:30 PM ET (`2026-05-09T18:30:00-04:00` to `2026-05-09T21:30:00-04:00`). Same day as Vayu's Blue Sombrero soccer game (11 AM–12 PM, Brookdale Park) — no time conflict. Context unknown; may be a Neurvati event or personal milestone. See [[family/active-todos]].
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| Sat 5/9 | 11:00 AM–12:00 PM | Vayu soccer — B34 Lime vs B34 Purple | Blue Sombrero | Brookdale Stadium South, Field 1 |
+| **Sat 5/9** | **2:30–5:30 PM** | **Convocation** | **Family calendar** | Created by Aneeta Apr 11; time corrected run 36 (was 6:30–9:30 PM in run 35 — misread) |
+
+## Latest from gather (2026-04-27) — run 36
+
+> [!fact] DATA CORRECTION — Convocation May 9 is 2:30–5:30 PM ET
+> Run 35 logged "Convocation, Saturday May 9, 6:30–9:30 PM ET" (`2026-05-09T18:30:00-04:00`). Live API this run returns `start: 2026-05-09T14:30:00-04:00`, `end: 2026-05-09T17:30:00-04:00` = **2:30–5:30 PM ET**. Run 35 appears to have misread `14:30 EDT` as `18:30 EDT`. Table above corrected. Vayu soccer game (11 AM–12 PM) and Convocation (2:30–5:30 PM) are both May 9 with a comfortable 2.5-hour gap. No conflict. Aneeta expected back from RRE by May 3 — no coverage issue. Created by Aneeta Apr 11; no description or location in event.
+
+> [!warning] DANCE CONCERT TOMORROW — final gather before event — tally 11:8 for 9:40 AM
+> Run 36 API: `2026-04-30T09:40:00-04:00` = **9:40 AM ET**. Tally: 11 readings at 9:40 AM vs 8 readings at 1:40 PM. Concert is **TOMORROW**. This is the last gather before the event. Call MKA now. Apr 30 is a sole-parent day. See [[family/vayu]] and [[family/active-todos]].
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| Sat 5/6 | 5:30–6:15 PM | Rec Soccer Practice (B-34 Lime) | Family calendar | Anderson Park; confirmed recurring event |
+| Sat 5/9 | 11:00 AM–12:00 PM | Vayu soccer — B34 Lime vs B34 Purple | Blue Sombrero | Brookdale Stadium South, Field 1 |
+| **Sat 5/9** | **2:30–5:30 PM** | **Convocation** | **Family calendar** | Corrected from run 35 (6:30 PM was wrong) |
+
+## Latest from gather (2026-04-30) — run 28
+
+Confirmed schedule from live calendar pull. Today is the dance concert day.
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| **Thu 4/30** | **9:40–11:00 AM** | **Vayu spring dance concert (MKA)** | Family | **TODAY** — sole-parent day; Aneeta at RRE |
+| Thu 4/30 | all-day (ends) | Berman Home Systems install complete | Family | 3-day install Apr 27–30 wrapped |
+| Thu 4/30 – Sun 5/3 | all-day | Aneeta at RRE (sole-parent window) | Family | Returns ~May 3 |
+| Sat 5/2 | 2:00–3:00 PM | Vayu soccer game — B34 Lime vs B34 Charcoal | Blue Sombrero | Brookdale Stadium South, Field 1 |
+| Sat 5/2 | all-day | Ini's birthday | Family | Recurring |
+| Wed 5/6 | 5:30–6:15 PM | Rec Soccer Practice B-34 Lime | Family | Anderson Park, south side near Parkside St |
+| Wed 5/6 | 8:00–11:00 PM | Aneeta "Healing" (recurring) | Aneeta | No conflict with soccer |
+| Sat 5/9 | 11:00 AM–12:00 PM | Vayu soccer — B34 Lime vs B34 Purple | Blue Sombrero | Brookdale Stadium South, Field 1 (confirmed prior runs) |
+| Sat 5/9 | 2:30–5:30 PM | Convocation | Family | Created by Aneeta Apr 11; no description or location |
+
+**Dance concert time settled:** All prior API oscillation resolved by run 28 Z-anchored reading: `2026-04-30T13:40:00Z` = 9:40 AM ET. The `timeZone: America/New_York` field is display-only when Z suffix is present. 9:40 AM ET is correct.

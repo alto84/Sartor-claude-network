@@ -2,8 +2,8 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-04-18
-updated_by: Claude (wikilinks-implementer, gstack-port)
+updated: 2026-04-29
+updated_by: autodream (wikilinks-implementer, gstack-port)
 run: 6
 last_verified: 2026-04-12
 status: active
@@ -253,3 +253,17 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-recruiter-volume -->
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-sno-deadlines -->
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-csr-shipped -->
+
+## Consolidated from daily logs (2026-04-29)
+- [2026-04-29] (fact) Activities: AM snack (water) at 9:23 AM. Normal day. No health flags.
+
+## Latest from gather (2026-04-29) — run 27
+
+> [!fact]
+> **Hiive: Harvey AI legal platform — private market opportunity.** Harvey surpassed $100M ARR in August 2025, reached $190M ARR by January 2026 (~90% growth in 6 months). Hiive private market opportunity now live (email 2026-04-29 17:01 UTC). Harvey is an LLM-native legal research/workflow platform. No action required; Alton watches Hiive + EquityZen for pre-IPO AI infra plays. See also Lambda (LAMD) and Lightmatter noted run 24-25. [[business/solar-inference]]
+
+> [!fact]
+> **EquityZen: Anthropic watchlist reconfirmation requested.** EquityZen (support@equityzen.com, 2026-04-29 18:01 UTC) requests reconfirmation of investor interest in Anthropic. Alton should visit EquityZen watchlist to reconfirm if still interested. No deadline stated but time-sensitive for demand gauging.
+
+> [!fact]
+> **Career signal — Google DeepMind Portfolio Lead, Health (LinkedIn, 2026-04-29).** Posted 2026-04-27. Senior health AI leadership role at DeepMind. Logged as career reference point. No application initiated; Alton is tracking senior AI/ML leadership roles for context given AZ role. [[business/az-career]]

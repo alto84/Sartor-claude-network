@@ -140,13 +140,26 @@ When the canonical path is protected, route the update; do not refuse it.
 
 This file ships standalone — it does not require constitution ratification — and is the lowest-friction way to get every Claude instance to follow the principle from the next session forward.
 
+## Phase 4 — Daily-ping mechanism (built 2026-04-25)
+
+The 48h-network-cable-incident clarified that the bottleneck on detection latency was not the cron cadence but the absence of a notification channel. Built (not just planned) on 2026-04-25:
+
+- **`.claude/skills/daily-household-health/SKILL.md`** — aggregates peer self-steward state, classifies severity per wellness-checker bands (green ≤30h heartbeat, yellow 30-48h, orange 48-72h, red >72h), writes dated report to `sartor/memory/daily/health-YYYY-MM-DD.md`.
+- **`.claude/scheduled-tasks/daily-household-health/SKILL.md`** — fires the skill daily at 05:30 ET (09:30 UTC), early enough to land in Alton's morning, late enough that all peer self-steward crons (03:00 ET / 07:00 UTC) have completed.
+- **Ping channel: Google Calendar event** for today 06:00-06:30 ET, in Alton's primary calendar, on yellow-or-worse severity. Title encodes severity (⚠ for yellow, ⚠⚠ for orange, 🚨 for red); description carries the full report. The event fires the principal's calendar notification on his phone, which is the actual "ping."
+- **Red-severity Gmail draft** as a secondary archived record — does NOT auto-send; principal stays in control.
+- **Green days produce no ping** — only the dated report file. Silence is the success state; not interrupting the principal on quiet days is part of the design.
+
+Architecture: each peer's local self-steward writes STATE.md / JOURNAL.md / INDEX.md heartbeat to git daily; Rocinante drains via `git pull --rebase`; this skill aggregates across drained state and pings.
+
 ## Why this won't get lost
 
-Three redundant checkpoints. Any one can fail and the others recover:
+**Four** redundant checkpoints (was three before Phase 4). Any one can fail and the others recover:
 
-1. **Cron** runs whether or not the user shows up — state accretes on a schedule.
-2. **Curator audit** detects silent machines (no journal in >7 days) on its weekly run — visible failure, not silent rot.
-3. **Session-start read** — the next time anyone opens Claude on that machine, the bootstrap fragment makes the in-session agent re-establish ground truth from STATE.md and JOURNAL.md tail.
+1. **Cron on each peer** runs whether or not the user shows up — state accretes on a schedule.
+2. **Wellness-checker** (Rocinante-side audit) detects silent machines per the severity bands — visible failure, not silent rot. Threshold revised from >7d to >72h after the 2026-04-22 incident showed 7d was much too lax.
+3. **Daily ping via Google Calendar** — yellow+ severity surfaces directly to the principal's phone within 24 hours, not a week later. THIS is what would have caught the 2026-04-22 cable-pull on day 1 instead of day 2.
+4. **Session-start read** — the next time anyone opens Claude on that machine, the bootstrap fragment makes the in-session agent re-establish ground truth from STATE.md and JOURNAL.md tail.
 
 ## Sequencing
 

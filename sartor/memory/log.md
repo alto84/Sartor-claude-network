@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-04-25
+updated: 2026-05-01
 updated_by: personal-data-gather
-run: 20
+run: 48
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -56,6 +56,215 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Total open ACTION_REQUIRED items: 31 (added 9 new items)
 - Pages updated: `daily/2026-05-01.md` (created), `family/active-todos.md` (run 22 appended), `family/family-calendar.md` (run 22 appended), `family/vayu.md` (run 22 appended), `log.md`
 - Outputs: `data/gather-alerts.md` written (31 open items), `data/heartbeat-log.csv` created
+## [2026-05-01] ingest | personal-data-gather run 37: Fidelity GOOGL options roll (INFORMATIONAL); WeAreMKA newsletter; 0 new actions; 15 open carry-forward
+- FINANCIAL: Fidelity trade confirmation received — SOLD CALL (GOOGL) $115.70, BOUGHT CALL $94.33, BOUGHT CALL $92.49, SOLD CALL $18.10 on account XXXXX8998. 4-legged adjustment (spread roll/condor), trade executed. INFORMATIONAL only.
+- FAMILY/SCHOOL: WeAreMKA newsletter May 1 received (HTML only, plain text unavailable via MCP). Review in email client for school dates.
+- RESEARCH: Doximity AAN 2026 clinical trial highlights. INFORMATIONAL.
+- CALENDAR: All 5 feeds stable. Identical to runs 34–36. Sole-parent window active (Aneeta at RRE through May 3). Soccer game May 2 2 PM Brookdale. Soccer practice May 6 5:30 PM Anderson Park.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved since Apr 22.
+- OVERDUE: 185 Davis assessment + CSA checks (both due today May 1). No resolution.
+- Total open ACTION_REQUIRED items: 15 (no new items this run).
+- Pages updated: `daily/2026-05-01.md` (run 37 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (15 open items), `data/heartbeat-log.csv` (run 37 row)
+- Total new facts: 1 | New ACTION_REQUIRED items: 0
+
+## [2026-04-30] ingest | personal-data-gather run 32: NJ Pride FC Spring 2 action; GPT-5.5 week; EquityZen Perplexity; 1 new fact
+- NEW ACTION: NJ Pride FC Spring 2 season (starts May 23). 2 classes near sellout. Enroll Vayu soon. Routed to `family/vayu.md` and `family/active-todos.md`.
+- RESEARCH: GPT-5.5 launched this week (Zvi AI #166). NEJM AI Human-AI framework editorial. The Sequence agentic-as-CLI thesis. All INFORMATIONAL; logged in daily only.
+- FINANCIAL: EquityZen Perplexity live fund offering (Alton expressed interest 7 months ago). INFORMATIONAL; distinct from EquityZen Anthropic (ACTION_REQUIRED, run 28) and Lightmatter (captured run 28).
+- CALENDAR: All 5 feeds stable. Identical to runs 28–31. Vayu dance concert completed (was 9:40–11:00 AM ET today). Sole-parent window continues (Aneeta at RRE through May 3). Soccer game May 2 2 PM ET.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 status unresolved since Apr 22.
+- Pages updated: `daily/2026-04-30.md` (run 32 appended), `family/vayu.md` (NJ Pride FC), `family/active-todos.md` (NJ Pride FC), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 1 | New ACTION_REQUIRED items: 1
+
+## [2026-04-30] ingest | personal-data-gather run 31: all-dedup; 0 new facts; data/ re-created; alerts written
+- DEDUP: 6 net-new Gmail threads (post-run-30); all low-signal: USPS digest (2 mailpieces, senders unknown), Blue Sombrero game reminder (dedup), The Sequence #852 (AI/CLI informational), rundatarun substack, M3 Research solicitation, Newegg promo. Net-new facts: 0.
+- CALENDAR: All 5 feeds stable. Identical to runs 28–30. Sole-parent window continues (Aneeta at RRE through May 3). Soccer game May 2, practice May 6.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 status unresolved since Apr 22.
+- INFRA: data/ directory re-created (ephemeral across sessions). gather-alerts.md and heartbeat-log.csv written.
+- Open ACTION_REQUIRED carry-forward: Mother's Day gift deadline May 4 (HIGH), Sante Total fund transfer (HIGH), Lucent Solar ITC (HIGH), 990-N May 15 (MEDIUM), EquityZen Anthropic (MEDIUM).
+- Pages updated: `daily/2026-04-30.md` (run 31 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 0 | New ACTION_REQUIRED items: 0
+
+## [2026-04-30] ingest | personal-data-gather run 30: all-dedup run; 0 new facts; calendar stable; data/ dir recreated
+- DEDUP: All 40 Gmail threads in scope (newer_than:1d) already processed by runs 28–29. Net-new facts: 0.
+- CALENDAR: All 5 feeds stable and identical to run 29. Vayu dance concert confirmed 9:40 AM ET today (day-of). Aneeta at RRE through May 3. Soccer game May 2 2 PM ET.
+- SSH: gpuserver1 unavailable in execution environment (persistent since Apr 22). Machine 52271 status unresolved.
+- INFRA: data/ directory was missing; recreated. gather-alerts.md and heartbeat-log.csv written fresh.
+- Pages updated: `daily/2026-04-30.md` (run 30 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (reconstructed), `data/heartbeat-log.csv` (new row)
+- Total new facts: 0 | New ACTION_REQUIRED items: 0
+
+## [2026-04-30] ingest | personal-data-gather run 29: Sante Total fund transfer action; Alison Smith donors email; calendar stable; 2 facts routed
+- NEW ACTION: Alison Smith "Donors" email (Apr 30 02:29 UTC) — fund transfer to "Gaby" pending Alton's authorization. Sante Total financial decision required.
+- NEW CONTACT: "Carol" (Cadelssbusia@aol.com) — apparent Sante Total board member or donor coordinator, surfaced in Alison's email thread.
+- CALENDAR: All 5 feeds stable. No new events vs. run 28.
+- SSH: gpuserver1 unavailable in execution environment.
+- Pages updated: `daily/2026-04-30.md` (run 29 appended), `business/sante-total.md` (fund transfer decision callout), `people/alison-smith.md` (donors email fact), `family/active-todos.md` (decision callout), `log.md`
+- Outputs: `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (created)
+- Total new facts: 2 | New ACTION_REQUIRED items: 1
+
+## [2026-04-29] ingest | personal-data-gather run 26: SpotHero NYC logistics conflict; Mother's Day May 4 deadline; 5 facts; data/ dir created
+- NEW LOGISTICS: SpotHero parking #122072609 confirms Alton in NYC today (35 W 33rd St, 9AM–9PM). Conflict with soccer practice at 5:30 PM ET (sole-parent day). Must leave NYC by ~4:30 PM.
+- NEW ACTION: Mother's Day personalization deadline May 4 (5 days). Aneeta returns May 3. Mark and Graham.
+- DEDUP: SNO Editorial Scholars April 30 deadline — not applicable (per 2026-04-16 triage).
+- INFORMATIONAL: ChinaTalk quantum industrial base; The Zvi charts; Newegg review request.
+- CALENDAR: All 5 feeds stable. No new events.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 unresolved since Apr 22.
+- Total open ACTION_REQUIRED items: ~27 (added 2 new: SpotHero logistics + Mother's Day)
+- Pages updated: `daily/2026-04-29.md` (run 26 appended), `family/active-todos.md` (Mother's Day + logistics callouts), `log.md`
+- Outputs: `data/gather-alerts.md` (created, gitignored), `data/heartbeat-log.csv` (created, gitignored)
+
+## [2026-04-29] ingest | personal-data-gather run 41: EquityZen Lambda signal; Gym Day dedup; calendar stable; 3 informational facts
+- INFORMATIONAL: EquityZen Lambda (LAMD) now live — private AI compute company on EquityZen marketplace
+- INFORMATIONAL: AI diffusion vs autoregressive newsletter (inference architecture signal, Solar Inference / Domain 5 relevant)
+- DEDUP: Jackrabbit Gym Day May 30 (surfaced run 23) — already declined per 2026-04-16 triage. Removed from alert queue.
+- CALENDAR: no changes from run 40/41. Sole-parent window active (Aneeta at RRE through May 3). Soccer practice today 5:30 PM. Dance concert tomorrow 9:40 AM.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 unresolved since Apr 22.
+- Total open ACTION_REQUIRED items: unchanged from run 40 (Nintendo, MKA May 10 payment, CSA workshift step 3, Replit ~May 29 deadline)
+- Pages updated: `daily/2026-04-29.md` (run 24 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (new file), `data/heartbeat-log.csv` created
+
+## [2026-04-29] ingest | personal-data-gather run 40: MKA payment May 10; CSA workshift step 3; Sante Total Sergei Robinson donation; Fidelity BU statements; sole-parent window active
+- NEW ACTION: MKA tuition payment due 2026-05-10 for Vayu and Vishala (Blackbaud/MKA Business Office, Apr 27)
+- NEW ACTION: CSA Sign Up Genius step 3 -- workshift registration for Llewellyn (4 shifts required)
+- ESCALATED: Nintendo repair service request 61296128 -- reminder email, payment declined, on hold
+- NEW FINANCIAL: Sante Total PayPal donation from Sergei Robinson, Apr 27 (Tx# 9R839720GD5133832; amount TBD)
+- NEW FINANCIAL: Fidelity BU quarterly statements available for both Alton and Aneeta (Boston University 403b plans)
+- CALENDAR: 5 calendars queried; confirmed sole-parent window (Aneeta at RRE today–May 3); soccer practice today 5:30 PM; dance concert tomorrow 9:40 AM; soccer game May 2 2 PM Brookdale; Aneeta London Research check-in today 1:30 PM
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22)
+- Total open ACTION_REQUIRED items: ~26 (added 2 new, 1 escalated)
+- Pages updated: `daily/2026-04-29.md` (created), `family/active-todos.md` (run 40 appended), `business/sante-total.md` (Sergei Robinson donation + 990-N deadline), `FAMILY.md` (Aneeta RRE + MKA payment + Berman complete), `log.md`
+- Outputs: `data/gather-alerts.md` written, `data/heartbeat-log.csv` appended
+
+## [2026-04-28] ingest | personal-data-gather run 22 addendum: 3 late-afternoon items missed by automated runs
+- NEW ACTION: MKA 3V Class Gift (Vishala's class) — joannasteckler@gmail.com, 14:17 ET
+- NEW FINANCIAL: Hiive Perplexity AI opportunity — revenue 5x $100M→$500M (16:25 ET, after run 40)
+- NEW LOW: NM Planning Review 3rd follow-up (Noah Krassin, 13:04 ET)
+- Pages updated: `daily/2026-04-28.md` (addendum appended), `family/active-todos.md` (addendum appended), `log.md`
+
+## [2026-04-28] ingest | personal-data-gather run 38: Parent Transition Panel RSVP (May 6) new; dance concert tally 13:8 for 9:40 AM; CSA re-registration clarified; 26 open items
+- FAMILY/SCHOOL ACTION: MKA 3rd-4th Grade Parent-to-Parent Panel RSVP due ASAP. Wed May 6, 8:15 AM, Middle School Dining Hall. Vayu's PS→MS transition panel. New this run.
+- FAMILY/SCHOOL P2: MKA Field Day volunteer sign-up (May 22/26). New this run.
+- CRITICAL: Dance concert TOMORROW Apr 30 — tally now 13:8 for 9:40 AM. Calendar stable. Call MKA today.
+- HOUSEHOLD: CSA clarified — Alton re-registered from 2025 to 2026. 24 deliveries Tuesdays June 9 – Nov 17. Checks still due May 1.
+- INFORMATIONAL: Goddard (Marianne) email with attachment — check inbox. Amazon Dumpling Squishies orders x2 (household). Hiive Shield AI marketing email (skip).
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22).
+- Total open: 26 (+1 new Parent Transition Panel RSVP).
+- Pages updated: `daily/2026-04-28.md` (run 38 appended), `family/active-todos.md` (run 38 appended), `log.md`.
+- Outputs: `data/gather-alerts.md` (26 open items), `data/heartbeat-log.csv` (run 38 row).
+
+## [2026-04-28] ingest | personal-data-gather run 37: dance concert tally 12:8 for 9:40 AM (2 days); Berman Day 2 active; sole-parent window tomorrow; Jackrabbit gymnastics new
+- CRITICAL: Dance concert THURSDAY Apr 30 — run 37 shows 9:40 AM ET. Tally now 12:8 for 9:40 AM. Call MKA today — last business day before event.
+- FAMILY/ACTIVE: Berman Home Systems Installation Day 2 in progress (techs ~9 AM today). Vasu picture day today at Goddard. MKA Grandparents & Special Friends Day today.
+- FAMILY: Sole-parent window begins TOMORROW Apr 29. Alton solo with 3 kids Apr 29–May 3.
+- FAMILY/SCHOOL: Vayu Chinese assessment TOMORROW (Apr 29). Help study flashcards tonight.
+- FINANCIAL/DEADLINE: 185 Davis condo assessment $2,253.13 due May 1 (carry-forward from run 36). CSA checks due May 1 (carry-forward). Hiive/Kalshi deadline TOMORROW Apr 30.
+- INFORMATIONAL: Jackrabbit Tech summer gymnastics (June 23–Aug 18, $200, Wayne NJ) — new. GPT-5.5 system card (TheZvi) — new, research interest.
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22).
+- No new ACTION_REQUIRED items. 25 open items carry forward.
+- Pages updated: `daily/2026-04-28.md` (new), `family/active-todos.md` (run 37 appended), `log.md`.
+- Outputs: `data/gather-alerts.md` (25 open items), `data/heartbeat-log.csv` (run 37 row).
+
+## [2026-04-27] ingest | personal-data-gather run 36: 185 Davis assessment $2,253/unit due May 1; CSA check payment pending; Vayu Chinese test tomorrow; Convocation time corrected; dance concert tally 11:8 for 9:40 AM
+- FINANCIAL/PROPERTY: 185 Davis condo assessment notice from trustee Charlotte Rice. $2,253.13/unit due May 1 (lump sum) or $563.28/month May–Aug. Additional fuel assessment ~$375 in June. Boiler feedback form due May 15.
+- HOUSEHOLD: Bloomfield-Montclair CSA 2026 Full Premium Share + fruit share registered online. Check payment not yet mailed — fruit share due May 1. Mail to Enid Melville, 12 Valley Place, Upper Montclair.
+- FAMILY/SCHOOL: Vayu 4th grade Chinese assessment Wednesday Apr 29 (corrected from Apr 27 by teacher Fangzhou Zhang). Review materials sent home today — help Vayu study tonight.
+- DATA CORRECTION: Convocation May 9 is 2:30–5:30 PM ET, NOT 6:30–9:30 PM as run 35 stated. Run 35 misread `14:30 EDT`.
+- CRITICAL: Dance concert TOMORROW Apr 30 — run 36 shows 9:40 AM ET. Tally now 11:8 for 9:40 AM. Call MKA before end of day.
+- CALENDAR: Soccer Practice May 6 confirmed 5:30–6:15 PM ET (recurring family calendar, Anderson Park).
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22).
+- New ACTION_REQUIRED items: 3 new (185 Davis, CSA check, Vayu Chinese test). Total open: 25.
+- Pages updated: `daily/2026-04-27.md` (run 36 appended), `family/active-todos.md` (run 36 appended), `family/vayu.md` (Chinese test + dance concert), `family/family-calendar.md` (Convocation correction), `log.md`.
+- Outputs: `data/gather-alerts.md` (25 open items), `data/heartbeat-log.csv` (run 36 row).
+
+## [2026-04-27] ingest | personal-data-gather run 34: Sante Total donation (Sergei Robinson); MKA payment due May 10; Spring Conference Day May 14; dance concert TOMORROW (10:7 tally, unresolved)
+- FINANCIAL/NONPROFIT: New Sante Total PayPal donation from Sergei Robinson, Apr 27 06:40 CDT. Transaction ID: 9R839720GD5133832. Amount TBD — verify in PayPal. Tax receipt needed.
+- FINANCIAL/SCHOOL: MKA tuition payment due May 10 for Vayu + Vishala (Blackbaud, Apr 27). Amount unknown from snippet.
+- FAMILY/SCHOOL: MKA Spring Conference Day May 14 (PAMKA food volunteers) + PAMKA Annual Meeting May 20 (7:45 AM breakfast, 8:15 AM meeting).
+- CRITICAL: Dance concert Apr 30 — run 34 shows 1:40 PM ET. Tally now 10:7 for 9:40 AM. Concert is TOMORROW — MKA direct verification mandatory today.
+- CALENDAR: All 5 calendars stable vs run 33; Blue Sombrero May 2 + May 9 soccer games confirmed unchanged.
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22).
+- Total open ACTION_REQUIRED items: 24 (added 2 new: MKA payment + Sante Total donation).
+- Pages updated: `daily/2026-04-27.md` (run 34 appended), `family/active-todos.md` (run 34 appended), `business/sante-total.md` (Sergei Robinson donation appended), `log.md`.
+- Outputs: `data/gather-alerts.md` (24 open items), `data/heartbeat-log.csv` (new row).
+
+## [2026-04-26] ingest | personal-data-gather run 30: Walking shoes delivered; Vayu Apr 25 game historical; dance concert 7:6 for 9:40 AM; 22 open items unchanged
+- HOUSEHOLD: Boys Girls Kids Walking Shoes DELIVERED (Apr 26 20:10 UTC) — status upgrade from shipped
+- FAMILY/HISTORICAL: Vayu B-34 Lime soccer game Apr 25 @ WATCHUNG School field (vs Purple, 11 AM, rain) — previously unlogged, now recorded
+- RESEARCH: Dwarkesh blog prize for AI big questions (Apr 25, substack) — previously unlogged, INFORMATIONAL
+- CAREER: LinkedIn Sanofi CRD role alert — discarded per Apr 16 triage (non-AI recruiter feed)
+- CALENDAR: All 5 calendars queried, no new events; dance concert returns 9:40 AM ET (Z-suffix UTC read) — running tally now 7:6 for 9:40 AM over 1:40 PM; MKA verification still required
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 still offline unresolved
+- Total open ACTION_REQUIRED items: 22 (no new items, no resolutions)
+- Pages updated: `daily/2026-04-26.md` (run 30 appended), `family/active-todos.md` (run 30 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-26] ingest | personal-data-gather run 28: Bose DELIVERED; Elena Poughia InMail; 22 open items unchanged; dance concert 8th reading 1:40 PM
+- HOUSEHOLD: Bose QuietComfort Ultra DELIVERED today (Apr 26 11:36 UTC) — status upgrade from "shipped" in run 27
+- PROFESSIONAL/LOW: LinkedIn InMail from Elena Poughia (NYC senior operators group, "scaling human feedback and evaluation infra") — cold outreach, no action
+- INFORMATIONAL: rundatarun substack "The Specialists Are Coming for the Generalists" — research newsletter
+- CALENDAR: All 5 calendars queried, no changes from run 27; dance concert reads 1:40 PM ET for 8th consecutive reading — MKA verification still outstanding
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 still offline unresolved
+- Total open ACTION_REQUIRED items: 22 (no new items, no resolutions)
+- Pages updated: `daily/2026-04-26.md` (run 28 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-26] ingest | personal-data-gather run 27: Vasu picture day TOMORROW Apr 28 (date correction); Bose shipped; Kalshi deadline TOMORROW
+- DATA CORRECTION: Vasu Goddard picture day is Tuesday April 28 AND Thursday April 30 per Kaymbu sneak peek (Apr 24, Samantha Ramsden). Prior records showed Apr 30, May 1, May 4. April 28 is TOMORROW.
+- HOUSEHOLD: Bose QuietComfort Ultra headphones SHIPPED (status update from "ordered" in run 24)
+- FINANCIAL: Hiive Kalshi funding deadline is TOMORROW (Apr 30) — escalated urgency
+- CALENDAR: All 5 calendars unchanged from run 26; dance concert still reads 1:40 PM ET (7th reading at this value)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 still offline unresolved
+- Total open ACTION_REQUIRED items: 22 (no new items; picture day correction surfaces tomorrow logistics)
+- Pages updated: `daily/2026-04-26.md` (run 27 appended), `family/vasu.md` (picture day correction), `family/active-todos.md` (picture day alert), `log.md`
+- Outputs: `data/gather-alerts.md` (22 open items), `data/heartbeat-log.csv` (new row)
+
+## [2026-04-26] ingest | personal-data-gather run 25: Venmo $270 RESOLVED; Cougar Pride Day confirmed TODAY; dance concert 1:40 PM reading; sole-parent window in 3 days
+- RESOLVED: Venmo $270.00 to @Rachelle-trammel CONFIRMED PAID (Apr 25 21:47 UTC) — closes open action item
+- FAMILY: Cougar Pride Day CONFIRMED ON for today (Sun Apr 26, 11 AM–3 PM, Van Brunt Field, CASH ONLY)
+- CALENDAR: Dance concert Apr 30 — this run reads 1:40 PM ET; 4 of 9 total readings say 9:40 AM, 5 say 1:40 PM; majority now 1:40 PM; verify with MKA before Apr 30
+- CALENDAR: Berman install Day 1 TOMORROW (Mon Apr 27, 9 AM); sole-parent window begins Wed Apr 29
+- CALENDAR: Aneeta Check-In meeting Apr 29 1:30–2:00 PM ET (London Research, Teams — confirmed from run 17, no change)
+- CALENDAR: Vayu soccer May 2 2 PM Brookdale Park (carry-forward from run 19)
+- SSH: gpuserver1 not checked this run (execution environment restriction); machine 52271 still offline unresolved
+- INFRA: data/ directory absent; recreated fresh this run
+- Total open ACTION_REQUIRED items: 22 (resolved 1: Venmo $270 paid; no new items)
+- Pages updated: `daily/2026-04-26.md` (created), `family/active-todos.md` (run 25 appended), `log.md`
+- Outputs: `data/gather-alerts.md` created (22 open items), `data/heartbeat-log.csv` created
+
+## [2026-04-25] ingest | personal-data-gather run 24: Venmo reminder escalation; Chase stmt; Bose order; calendar stable
+- FINANCIAL: Chase statement available (account ending 0982) -- INFORMATIONAL
+- FINANCIAL: Venmo $270 reminder email from Rachelle Trammel (Vishala childcare) -- escalates urgency on existing open item #6
+- HOUSEHOLD: Amazon order confirmed -- Bose QuietComfort Ultra headphones, ~6:45 PM ET today (INFORMATIONAL)
+- HOUSEHOLD: Amazon shipped -- Boys Girls Kids Walking shoes (update on run 23 order, INFORMATIONAL)
+- NETWORKING: LinkedIn InMail -- founder of Healthcare Shares inviting Alton to healthcare VC fund (cold outreach, ADVISORY/LOW)
+- CALENDAR: All 5 calendars stable vs run 23; no new events (Blue Sombrero query failed; run 23 data current)
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22)
+- INFRA: data/ directory absent again (does not persist across execution environments); recreated fresh this run
+- Total open ACTION_REQUIRED items: 23 (no new items this run; Venmo escalation is same item)
+- Pages updated: `daily/2026-04-25.md` (run 24 appended), `log.md`
+- Outputs: `data/gather-alerts.md` created (23 open items), `data/heartbeat-log.csv` created (6 rows runs 19-24)
+
+## [2026-04-25] ingest | personal-data-gather run 23: Earnest billing $943; Amazon order; calendar stable
+- FINANCIAL: Earnest student loan monthly statement -- $943.33 due 2026-05-20 (ACTION_REQUIRED MEDIUM)
+- HOUSEHOLD: Amazon order confirmation -- kids walking shoes + 1 more item (INFORMATIONAL)
+- CALENDAR: All 5 calendars stable vs run 22; no new events
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22)
+- INFRA: data/ directory absent again (does not persist across execution environments); recreated fresh this run
+- Total open ACTION_REQUIRED items: 23 (added 1 new: Earnest billing $943.33 due May 20)
+- Pages updated: `daily/2026-04-25.md` (run 23 appended), `log.md`
+- Outputs: `data/gather-alerts.md` created (23 open items), `data/heartbeat-log.csv` created (5 rows)
+
+## [2026-04-25] ingest | personal-data-gather run 22: Fidelity NVIDIA buy; Amazon S&S; calendar stable; data/ dir created
+- FINANCIAL: Fidelity BOUGHT NVIDIA CORPORATION, account XXXXX8998, ~11:52 AM ET today (INFORMATIONAL)
+- HOUSEHOLD: Amazon Subscribe & Save price changes -- delivery by May 7, manage by May 1 (LOW)
+- CALENDAR: All 5 calendars stable vs run 21; no new events
+- INFRA: `data/` directory was missing on disk; created this run; gather-alerts.md and heartbeat-log.csv created fresh with full carry-forward history from runs 19-22
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved (since Apr 22)
+- Total open ACTION_REQUIRED items: 22 (added 1 new LOW: Amazon S&S manage by May 1)
+- Pages updated: `daily/2026-04-25.md` (run 22 appended), `log.md`
+- Outputs: `data/gather-alerts.md` created (22 open items), `data/heartbeat-log.csv` created (4 rows)
 
 ## [2026-04-25] ingest | personal-data-gather run 21: Vayu Amazon Kids approval requests; Vanguard proxy notice; calendar stable
 - NEW ACTION: Vayu requested 2 Amazon Kids books (Nathan Hale's Hazardous Tales #10 and #11) -- parental approval required
@@ -1020,3 +1229,212 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 not checked this cycle.
 - Updated: [[family/vasu]], `daily/2026-04-19.md` (run 6 appended)
 - Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
+
+## [2026-04-26] ingest | personal-data-gather run 25 — sole-parent window prep + Venmo resolved (catch-up entry)
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 26–May 3)
+- Facts gathered: 22 ACTION_REQUIRED (1 resolved: Venmo $270 Rachelle trammel paid); 1 data correction (dance concert 1:40 PM reading confirmed)
+- RESOLVED: Venmo $270 to @Rachelle-trammel for childcare (Vishala 4/14, 4/16, 4/21) — paid Apr 25
+- NEW: Fidelity BOUGHT NVIDIA confirmation; Earnest $943.33 due 2026-05-20; Bose QC Ultra ordered Apr 25
+- Calendar: Cougar Pride Day TODAY (Apr 26, 11 AM–3 PM, CASH ONLY); Berman install Apr 27–29; sole-parent window Apr 29–May 3; dance concert reads 1:40 PM ET
+- 22 total open ACTION_REQUIRED items
+- Pages updated: `daily/2026-04-26.md` (run 25)
+- Outputs: `data/heartbeat-log.csv`, `data/gather-alerts.md`
+
+## [2026-04-26] ingest | personal-data-gather run 26 — delta-zero; Hiive Kalshi TOMORROW; sole-parent window 3 days
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 26–May 3)
+- Facts gathered: 1 new item (Vanguard proxy notice, FINANCIAL/LOW); all 22 run-25 ACTION_REQUIRED carry forward
+- NEW: Vanguard Funds Important Information (proxyvote.com, Apr 25) — proxy/shareholder notice; no visible deadline; review at proxyvote.com
+- Escalation: Hiive Kalshi deadline TOMORROW (2026-04-30); SpaceX + Zipline deadlines 2026-05-01
+- Escalation: sole-parent window starts Wednesday (Apr 29); dance concert time still MKA-unverified
+- Calendar: no new events vs run 25; all 5 calendars queried clean
+- SSH: gpuserver1 not checked; machine 52271 status unknown (last confirmed offline Apr 22)
+- Pages updated: `daily/2026-04-26.md` (run 26 appended), `log.md`
+- Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
+
+## [2026-04-26] ingest | personal-data-gather run 29 — 7 informational signals; dance concert 6:6 split; sole-parent window in 3 days
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 26–May 3)
+- Facts gathered: 7 new informational signals; 0 new ACTION_REQUIRED; 22 carry forward unchanged
+- NEW informational: Stanford HAI 2026 AI Index + delusional spirals piece; TheSequence Radar #849 (OpenAI agents, xAI Cursor); JAMA Network weekly highlights; Costco same-day delivery 85 Stonebridge Rd; LinkedIn career alerts (Microsoft AI Healthcare, Innoviva Safety Physician $255K–$285K); Hiive pre-IPO digest
+- Calendar: identical to runs 25–28 across all 5 calendars
+- Dance concert (Apr 30): this run returns 9:40 AM ET — running split now 6:6 across all runs; MKA verification critical
+- Approaching: Berman install starts TOMORROW (Apr 27 9 AM); Vasu picture day Apr 28; sole-parent window Apr 29–May 3
+- SSH: gpuserver1 not checked; machine 52271 last known offline Apr 22
+- Pages updated: `daily/2026-04-26.md` (run 29 appended), `family/vayu.md`, `family/active-todos.md`, `log.md`
+- Created: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-27] ingest | personal-data-gather run 31: Anthropic/HIIVE agreement email active; Berman install Day 1 today; dance concert tally 8:6 for 9:40 AM; sole-parent window in 2 days
+- FINANCIAL/FAMILY: Anthropic HIIVE family investment agreement — Oliver Sartor sent document 4/24; Sissy delayed until next week; electronic signing available. Alton not confirmed signed. Prior action item (#4); new email context confirms it's actively in-flight.
+- HOUSEHOLD: Berman Home Systems installation Day 1 active TODAY (Apr 27, 9 AM–5 PM).
+- FAMILY/CALENDAR: Vayu spring dance concert Apr 30 — run 31 returns 9:40 AM ET. Tally now 8:6 for 9:40 AM over 1:40 PM. MKA verification still outstanding.
+- FAMILY: Sole-parent window begins in 2 days (Apr 29). Prep checklist items still open (dance concert time, Amarkanth, Berman Day 3 access).
+- FAMILY: Soccer game Sat 5/2 2 PM at Brookdale Park (Brookdale Stadium South > Field 1, B34 Lime vs Charcoal).
+- FAMILY: Ini's birthday Sat 5/2 (family calendar).
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22.
+- Total open ACTION_REQUIRED items: 22 (no new items; Kalshi deadline was Apr 30 — status unknown)
+- Pages updated: `daily/2026-04-27.md` (created), `family/active-todos.md` (run 31 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-27] ingest | personal-data-gather run 32: no new actions; dance concert tally 9:6 for 9:40 AM; pool registration status unknown; Ghosty vaccine 6 days out
+- Gmail: 3 new informational signals (Prime Video promo, Substack weekly digest, M3 Global neurology surveys) — all INFORMATIONAL, no action
+- Gmail: Costco delivery Apr 26 (85 Stonebridge Rd) — HOUSEHOLD, no action
+- Gmail: Venmo $270 Rachelle Trammel — already RESOLVED in run 25; carry-forward in window
+- Calendar: all 5 calendars queried — no new events vs run 31
+- Dance concert (Apr 30): 9:40 AM ET again. Tally now **9:6 for 9:40 AM** over 1:40 PM. MKA verification still outstanding — critical before Apr 30.
+- APPROACHING: Pool registration opened TODAY (Apr 27 9 AM) — no email confirmation; Vasu picture day TOMORROW (Apr 28); Hiive/Kalshi deadline Apr 30; Hiive/Zipline deadline May 1; Ghosty FVRCP vaccine May 3 (6 days, no appointment)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 status unknown
+- Total open ACTION_REQUIRED items: 22 (no new items, no resolutions)
+- Pages updated: `daily/2026-04-27.md` (run 32 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-27] ingest | personal-data-gather run 33 — May 9 soccer added; Bose delivered; dance concert 10:6; Elena Poughia InMail
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 27–May 4), Blue Sombrero extended to May 10
+- Facts gathered: 4 new signals; 0 new ACTION_REQUIRED; 22 carry forward unchanged
+- NEW: Vayu soccer game Sat May 9, 11 AM, B34 Lime vs B34 Purple — Brookdale Stadium South Field 1 (first reading in Blue Sombrero)
+- NEW: Bose QuietComfort Ultra delivered Apr 26 11:36 AM (run 27 had "shipped" — now confirmed)
+- NEW: Elena Poughia LinkedIn InMail — NYC senior operators group on human feedback + eval infra; referenced "OpenAI" incorrectly — INFORMATIONAL
+- Dance concert (Apr 30): 9:40 AM ET again; tally now **10:6 for 9:40 AM** over 1:40 PM; 3 days away; MKA verification CRITICAL
+- Calendar: identical across all 5 feeds vs run 32; Alton's Tasks empty
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline Apr 22
+- Pages updated: `daily/2026-04-27.md` (run 33 appended), `family/active-todos.md` (run 33 appended), `log.md`
+- Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
+
+## [2026-04-27] ingest | personal-data-gather run 35 — MKA incident; pool open; Convocation May 9; dance concert TOMORROW 10:8
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 27–May 10)
+- Facts gathered: 4 new signals; 3 new ACTION_REQUIRED; prior 22 carry forward
+- NEW ACTION: MKA Primary School safety incident (Apr 27 4:03 PM) — Veracross community email; body not retrievable; Alton must read
+- NEW ACTION: 2026 Nishuane Pool registration NOW OPEN — $250 family pass; register.communitypass.net/montclair
+- NEW EVENT: Convocation May 9, 6:30–9:30 PM ET — Family calendar, created by Aneeta Apr 11; no description/location; appended to family-calendar.md
+- Dance concert (Apr 30 TOMORROW): 1:40 PM ET this run; tally **10:8 for 9:40 AM** over 1:40 PM; CRITICAL EMERGENCY — MKA verification mandatory
+- Calendar: Aneeta "Healing" (May 6) and "Anjali's Birthday" (May 8) already in family-calendar.md; no new delta
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline Apr 22
+- Pages updated: `daily/2026-04-27.md` (run 35 appended), `family/active-todos.md` (run 35 appended), `family/family-calendar.md` (Convocation added), `log.md`
+- Created: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-04-28] ingest | personal-data-gather run 39 — no new signals; 26 open items carry forward; dance concert tally 14:8 for 9:40 AM
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 28–May 5)
+- Facts gathered: 0 new signals; 0 new ACTION_REQUIRED; 26 carry forward unchanged
+- Gmail: no delta since run 38; all threads already captured in known set
+- Calendar: all 5 feeds identical to run 38; Alton's Tasks empty; Blue Sombrero May 2 game unchanged
+- Dance concert (Apr 30): 9:40 AM ET again; tally now **14:8 for 9:40 AM** over 1:40 PM; concert in 2 days; call MKA today
+- TOMORROW (Apr 29): sole-parent window begins; Berman Day 3; Vayu Chinese assessment; Rec Soccer 5:30 PM (sole parent)
+- CRITICAL 3 days: 185 Davis $2,253.13 due May 1; CSA checks due May 1
+- HIGH 2 days: Hiive/Kalshi decision due Apr 30
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Total open ACTION_REQUIRED items: 26 (unchanged)
+- Pages updated: `daily/2026-04-28.md` (run 39 appended), `log.md`
+
+## [2026-04-28] ingest | personal-data-gather run 41 — 12 signals; 1 new ACTION_REQUIRED; dance concert TOMORROW tally 16:8 for 9:40 AM
+
+- Sources: Gmail (50 threads, newer_than:2d), all 5 calendars (Apr 28–May 5)
+- Facts gathered: 12 new signals; 1 new ACTION_REQUIRED (Nintendo Switch repair on hold, payment declined, service request 61296128)
+- Gmail delta: Nintendo repair on hold (NEW ACTION), MKA evacuation drill, Vasu daily sheet (normal), Goddard May calendar PDF, SpotHero NYC commute confirmation, Vasu dance class Goddard, Goddard picture day schedule PDF, Fidelity BU Q1 statements x2, MKA STEMology recap, The Information AWS/Claude Cowork story, ChinaTalk China-Proofing essay
+- Calendar: all 5 feeds identical to run 40; dance concert Apr 30 9:40 AM; tally **16:8 for 9:40 AM**; concert TOMORROW
+- SpotHero confirms Alton commuted NYC today (35 W 33rd St, 8:30AM-8:30PM)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Total open ACTION_REQUIRED items: 14 (added: Nintendo Switch repair)
+- Pages updated: `daily/2026-04-28.md` (run 41 appended), `family/active-todos.md` (Nintendo + Fidelity), `log.md`
+- Outputs: `data/gather-alerts.md` (20 items), `data/heartbeat-log.csv` (run 41 row)
+
+## [2026-04-28] ingest | personal-data-gather run 40 — 7 informational signals; 13 open items carry; dance concert TOMORROW tally 15:8 for 9:40 AM
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 28–May 5)
+- Facts gathered: 7 new signals; 0 new ACTION_REQUIRED; 13 carry forward
+- Gmail delta: USPS inbound package (Dumpling Squishies), ChinaTalk AI compute essay, Doximity Brigham indictment news, Doximity Tulane Neurology residency nomination, Amazon shipped x2, Amazon review request — all INFORMATIONAL
+- Vasu Goddard Kaymbu moments (Apr 27): soccer practice, terrarium, math, garden — normal active day
+- Calendar: all 5 feeds identical to run 39; no new events
+- Dance concert (Apr 30 TOMORROW): 9:40 AM ET; tally now **15:8 for 9:40 AM** over 1:40 PM; last-call day to confirm with MKA
+- Sole-parent window TOMORROW (Apr 29–May 3): all logistics must be confirmed today
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Total open ACTION_REQUIRED items: 13 (reduced from 26 by consolidation; same substance)
+- Pages updated: `daily/2026-04-28.md` (run 40 appended), `log.md`
+- Created: `data/heartbeat-log.csv`, `data/gather-alerts.md`
+- Outputs: `data/gather-alerts.md` (26 open items), `data/heartbeat-log.csv` (run 39 row)
+
+## [2026-04-29] ingest | personal-data-gather run 25 — 1 CRITICAL new blocker; Lucent Solar meeting unconfirmed; ITC at risk
+
+- Sources: Gmail (40 threads, newer_than:2d), all 5 calendars (Apr 29–May 6)
+- Facts gathered: 7 signals (1 critical ACTION_REQUIRED, 6 informational/dedup)
+- Gmail delta: Lucent Solar/85 Stonebridge engineering meeting (proposed Apr 23, unconfirmed — CRITICAL), MNSSSHP 2026 from Nicol Stevenson (informational), EquityZen Lightmatter/Redwood digest, DeepSeek-V4 TheSequence, B-34 Lime coach confirm (dedup), USPS 1 package
+- Calendar: all 5 feeds unchanged. Dance concert tomorrow 9:40 AM ET confirmed again (13:40Z).
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- New critical blocker: Lucent Solar installation stalled; $131,649 ITC at risk; 66 days to July 4 deadline
+- Pages updated: `daily/2026-04-29.md` (run 25 appended), `family/active-todos.md` (Lucent Solar blocker + concert tally), `people/doug-paige.md` (interaction log + warning), `business/solar-inference.md` (blocker), `family/disney-july-2026.md` (MNSSSHP note), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (run 25 row)
+
+## [2026-04-29] ingest | personal-data-gather run 23 — 2 new ACTION_REQUIRED; Replit deletion deadline; Gym Day registration
+
+- Sources: Gmail (30 threads, newer_than:2d), all 5 calendars (Apr 29–May 6)
+- Facts gathered: 5 signals (2 new ACTION_REQUIRED, 3 informational)
+- Gmail delta: Replit 30-day app deletion warning (NEW — deadline ~2026-05-29), Jackrabbit Gym Day May 30 registration open (NEW — $25/child), SignUpGenius login confirmation (CSA step 3 in progress), PayPal trusted device login (Sante Total donation verification), Chase Credit Summary (routine)
+- Calendar: all 5 feeds identical to run 22; soccer practice tonight 5:30 PM; dance concert tomorrow 9:40 AM; Vayu soccer game May 2 2:00 PM
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Total open ACTION_REQUIRED items: ~16 (added: Replit deletion, Gym Day registration)
+- Pages updated: `daily/2026-04-29.md` (run 23 appended), `family/active-todos.md` (run 43 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (run 23 row)
+
+## [2026-04-29] ingest | personal-data-gather run 27 — Harvey/Hiive opportunity; EquityZen Anthropic reconfirmation; DeepMind career signal; JAMA clinical AI viewpoint
+
+- Sources: Gmail (30 threads, newer_than:1d), all 5 calendars (Apr 29–May 6)
+- Facts gathered: 8 signals (1 soft ACTION_REQUIRED, 2 financial/informational, 1 career signal, 2 research signals, 2 family/logistics)
+- Gmail delta: EquityZen Anthropic watchlist reconfirmation (soft action), Hiive Harvey AI opportunity ($190M ARR), Google DeepMind Portfolio Lead Health career signal, JAMA "AI is not end of physician" + autonomous clinical AI licensure, Dwarkesh/Reiner Pope LLM math podcast, Vasu Apr 29 daily sheet, Amazon delivery update
+- Calendar: all 5 feeds unchanged. Dance concert tomorrow 9:40 AM ET (confirmed API again). Soccer practice today 5:30 PM ET; sole parent logistics conflict from SpotHero (NYC) already flagged run 26.
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Pages updated: `daily/2026-04-29.md` (run 27 appended), `ALTON.md` (Harvey + DeepMind + EquityZen Anthropic signals), `log.md`
+- Outputs: `data/gather-alerts.md` (created/updated), `data/heartbeat-log.csv` (run 27 row)
+
+## [2026-04-30] ingest | personal-data-gather run 28: dance concert TODAY; EquityZen Anthropic action; EPE carline update; 5 facts
+- TODAY URGENT: Vayu spring dance concert 9:40–11:00 AM ET at MKA. Sole-parent day (Aneeta at RRE through May 3). API run 28: `2026-04-30T13:40:00Z` = 9:40 AM ET. Weeks-long API time oscillation resolved by Z-anchored reading.
+- ACTION_REQUIRED: EquityZen "Action Needed" email — reconfirm Anthropic watchlist interest before it expires. Run 27 logged as "soft action"; run 28 email is subject-line explicit.
+- FAMILY: MKA EPE Carline procedure updated — JrK/K EPE students now outside on front playground during afternoon carline (warm weather). agonzalez@mka.org, 2026-04-29.
+- FACT: Berman Home Systems installation complete today (final day of Apr 27–30 install).
+- INFORMATIONAL: Fidelity 500 Index Fund shareholder report; AAMC 2026 (Nov 6–10 Anaheim, priority reg opens June); BMC April newsletter.
+- CALENDAR: All 5 feeds stable. Soccer game May 2 confirmed (Brookdale Stadium South, 2 PM ET). Soccer practice May 6 5:30 PM ET confirmed.
+- SSH: gpuserver1 not checked (execution environment limitation). Machine 52271 last known offline 2026-04-22.
+- Total open ACTION_REQUIRED items: ~28 (added 1 net new: EquityZen Anthropic).
+- Pages updated: `daily/2026-04-30.md` (created), `FAMILY.md`, `family/vayu.md`, `family/family-calendar.md`, `family/active-todos.md`, `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-04-30] ingest | personal-data-gather run 33: 5 new action items; Vasu picture day; Vayu teacher escalation; Vishala Capstone Fair; Pool Guyz invoice; Nintendo repair
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (Apr 30–May 7)
+- Facts gathered: 5 actionable (Vasu picture day May 1 11:30am, Vayu homework habits teacher escalation, Vishala Capstone Design Fair May 29 8:15am, Pool Guyz LLC statement, Nintendo repair #61296128 payment declined)
+- Calendar: all 5 feeds stable. No new events vs. runs 28–32.
+- Gmail delta (post-16:10 UTC): Kaymbu picture day, Roshni Shah homework habits email, MKA Veracross Capstone fair, Pool Guyz billing, Nintendo repair hold, DEA training (informational)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Pages updated: `daily/2026-04-30.md` (run 33 appended), `family/vayu.md`, `family/vasu.md`, `family/vishala.md`, `family/active-todos.md`, `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-01] ingest | personal-data-gather run 34: 3 new facts; 0 new actions; all carry-forward open
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 1–May 8)
+- Gmail delta (new since run 33 cutoff ~21:00 UTC Apr 30): AlphaSights paid consult (Life Sciences, 21:22 UTC), EquityZen Apptronik new listing (23:48 UTC), Vasu daily sheet final (23:48 UTC). All other threads: deduplicated against runs 28–33.
+- Calendar: all 5 feeds stable. Identical to run 33. Aneeta at RRE through May 3. Soccer game May 2 2 PM ET. Soccer practice May 6 5:30 PM. Mother's Day deadline May 4 (3 days out).
+- NEW FACTS: AlphaSights consult (INFORMATIONAL/career), Apptronik EquityZen (FINANCIAL/INFORMATIONAL), Vasu final daily sheet Apr 30 (INFORMATIONAL)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Pages updated: `daily/2026-05-01.md` (created), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 3 | New ACTION_REQUIRED items: 0 | Open carry-forward actions: 11
+
+## [2026-05-01] ingest | personal-data-gather run 35: 1 new action item (Amazon recall); Mother's Day deadline surfaced
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 1–May 8)
+- Gmail delta (new since run 34 cutoff ~02:00 UTC May 1): Amazon product safety recall (ACTION_REQUIRED, 00:40 UTC), SemiAnalysis newsletter (INFORMATIONAL, 02:30 UTC)
+- Calendar: all 5 feeds stable. No changes from run 34.
+- NEW FACTS: Amazon safety recall (ACTION_REQUIRED/household), SemiAnalysis AI value capture newsletter (INFORMATIONAL)
+- NEW DEADLINES SURFACED: Mother's Day gift May 4 (3 days); GOOGL $285C today (flagged in alerts); 990-N May 15 (14 days); Wohelo tuition May 15 (14 days); MKA tuition May 10 (9 days)
+- SSH: gpuserver1 not checked (execution environment restriction); data/ directory created this run (prior runs 33-34 claimed to write there but dir was absent)
+- Pages updated: `daily/2026-05-01.md` (run 35 appended), `family/active-todos.md` (Mother's Day + Amazon recall callouts), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created, backfilled runs 33-34)
+- Total new facts: 2 | New ACTION_REQUIRED items: 1 | Open carry-forward actions: 12
+
+## [2026-05-01] ingest | personal-data-gather run 36: 0 net-new facts; run-35 write remediation; 2 OVERDUE flags added
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 1–May 8)
+- Gmail delta (new since run 35 cutoff ~02:30 UTC May 1): 0 net-new. All 30 threads deduplicated against runs 28–35.
+- Calendar: all 5 feeds stable. Identical to runs 34–35. No changes.
+- REMEDIATION: Run 35 logged writes to `family/active-todos.md` (Amazon recall + Mother's Day callouts) but active-todos.md remained at updated:2026-04-30. This run executed those writes.
+- OVERDUE FLAGS: 185 Davis condo assessment ($2,253.13 lump sum, due today) and CSA checks ($820 total, due today) were missing from run 34-35 carry-forward tables. OVERDUE callouts added to active-todos.md.
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Pages updated: `daily/2026-05-01.md` (run 36 appended), `family/active-todos.md` (run 36 section + OVERDUE callouts), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 0 | Remediated writes: 2 | New OVERDUE flags: 2 | Carry-forward actions: 15

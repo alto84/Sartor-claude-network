@@ -1,8 +1,8 @@
 ---
 type: person
 entity: alison-smith
-updated: 2026-04-11
-updated_by: Claude
+updated: 2026-04-30
+updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/nonprofit, org/sante-total]
 aliases: [Alison, Alison Smith, Alison Smith MD]
@@ -41,3 +41,11 @@ Co-director of [[sante-total|Sante Total Inc.]]. Based at LSUHSC in New Orleans.
 ## History
 
 - 2026-04-11: Initial dossier created. Home address added per Alton.
+
+## Latest from gather (2026-04-30) — run 29
+
+> [!fact]
+> **Alison initiated fund transfer discussion for Sante Total program on 2026-04-30.** Email to "Carol" (Cadelssbusia@aol.com), CC: Barbara Weis (dye2tie@gmail.com), edelss@hotmail.com, alto84@gmail.com. Subject: "Donors." Alison updated the donor spreadsheet and asked whether more donors are expected or whether to send funds to "Gaby" (in-country program contact). This is the first visible program-side email action from Alison in recent gather cycles (prior runs flagged low program activity visibility). Confirms program-side engagement is active.
+
+> [!note]
+> **New Sante Total contact surfaced: "Carol" (Cadelssbusia@aol.com).** Not yet in people registry. Based on email pattern, Carol is either a board member or donor coordinator. Alison addresses her as the primary recipient, suggesting she has authority over whether more donors are solicited before funds are transferred.

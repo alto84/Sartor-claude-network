@@ -4,7 +4,7 @@ entity: vayu
 name: "Vayu Sartor"
 updated: 2026-05-01
 updated_by: personal-data-gather
-run: 22
+run: 39
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -172,3 +172,43 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!fact]
 > **Alamo All-Stars book approved (2026-04-16 12:27 AM UTC).** Vayu requested "Alamo All-Stars: Bigger & Badder Edition (Nathan Hale's Hazardous Tales #6): A Texas Tale" via Amazon Kids. Alton approved; order confirmation received 1 minute later. Book is the sixth installment in Nathan Hale's Hazardous Tales series. No action needed.
+
+## Latest from gather (2026-04-27) — run 36
+
+> [!deadline] 2026-04-29 TOMORROW
+> **Chinese class assessment Wednesday Apr 29.** Teacher Fangzhou Zhang (fzhang@mka.org) sent correction today: originally stated Apr 27, corrected to Wed Apr 29. Assessment covers Chinese painting, art, and spring-related nature vocabulary (units covered in April). Review materials (flashcards + vocabulary sheets) sent home today. Help Vayu study tonight and tomorrow morning.
+
+> [!fact]
+> **Vayu spring dance concert TOMORROW (April 30) — still unverified time.** Run 36 calendar API: `2026-04-30T09:40:00-04:00` = **9:40 AM ET**. Tally: 11 readings at 9:40 AM vs 8 readings at 1:40 PM. The API oscillation is unresolved. Call MKA before the event — this is the last gather before Apr 30. See [[family/active-todos]] and [[family/sole-parent-window-2026-04-29]].
+
+## Latest from gather (2026-04-26) — run 29
+
+> [!warning] VERIFY — Spring dance concert Apr 30 time remains unresolved
+> Live calendar this run returns `2026-04-30T09:40:00-04:00` = **9:40 AM ET**. This is the 6th reading at 9:40 AM ET across all runs, but runs 25–28 returned 1:40 PM ET (also 6 readings). The 6:6 split cannot be resolved from the calendar API alone. **Contact MKA directly before Apr 30.** Apr 30 is Aneeta's RRE day (sole parent). Vasu also has Goddard picture day that morning. If concert is 9:40 AM, Alton must be at MKA by ~9:25 AM and handle Goddard drop-off before that.
+
+> [!fact]
+> **Rec Soccer Practice confirmed: Wednesday Apr 29 5:30–6:15 PM, Anderson Park** (south side near Parkside St). No Aneeta backup — Aneeta departs for RRE that day. Alton sole parent. Arrange supervision for Vishala and Vasu during the practice window. See [[sole-parent-window-2026-04-29]].
+
+> [!fact]
+> **Soccer game confirmed: Saturday May 2, 2:00–3:00 PM ET.** B34 Lime (Vayu's team: Gormley Hanlon & Waynik) vs B34 Charcoal (Pliego). Venue: Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. During sole-parent window (Aneeta at RRE through ~May 3). Ini's birthday is also May 2. See [[family/family-calendar]].
+
+## Latest from gather (2026-04-30) — run 28
+
+> [!warning] TODAY — Spring dance concert 9:40–11:00 AM ET
+> The dance concert is happening TODAY at MKA. API (run 28): `start: 2026-04-30T13:40:00Z, timeZone: America/New_York` = 9:40 AM ET. Aneeta is at RRE. Alton is sole parent. Must arrive MKA by ~9:25 AM. The weeks-long API time oscillation (9:40 AM vs 1:40 PM across 28 runs) is resolved by today's Z-anchored reading: 13:40 UTC = 9:40 AM EDT. See [[family/active-todos]].
+
+> [!fact]
+> **Soccer game May 2 — reconfirmed.** Blue Sombrero: B34 Lime vs B34 Charcoal, Saturday May 2, 2:00–3:00 PM ET, Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. During sole-parent window (Aneeta at RRE through ~May 3). First captured run 19; confirmed run 28.
+
+> [!fact]
+> **Soccer practice May 6: 5:30–6:15 PM ET.** Family calendar event `2026-05-06T21:30:00Z` with `timeZone: America/New_York` = 5:30 PM ET. Anderson Park, south side near Parkside St (B-34 Lime). Aneeta's "Healing" event same day is 8–11 PM — no conflict.
+
+## Latest from gather (2026-04-30) — run 32
+
+> [!todo] ACTION_REQUIRED — NJ Pride FC Spring 2 enrollment
+> **NJ Pride FC Spring 2 season starts May 23, 2026.** Email 2026-04-30 14:14 UTC from info@njpridefc.com: "2 of the classes are already close to being sold out!" This is Vayu's soccer development program (distinct from B-34 Lime rec league). Spring 2 = 3 weeks out. Enroll or pass — decision needed soon to hold a spot. Check njpridefc.com or reply to info@njpridefc.com for pricing and class options. See [[family/active-todos]].
+
+## Latest from gather (2026-04-30) — run 33
+
+> [!todo] ACTION_REQUIRED — Respond to Roshni Shah (homework habits)
+> **New teacher concern: Vayu's homework habits.** Roshni Shah (rshah@mka.org) emailed Alton and Aneeta on 2026-04-30 17:24 UTC (CC: alto84@gmail.com), subject "Re: Math support." New content: "I wanted to reach out to share an observation about Vayu's homework habits and to ask for your partnership in supporting him." This is a separate escalation from the Apr 14 partial-quotients division email — now about homework completion/consistency broadly. Teacher requesting parent partnership. Respond to rshah@mka.org; coordinate with Aneeta (returns from RRE ~May 3). Math dean: Deborah Gordon (dgordon@mka.org). See [[family/active-todos]].
