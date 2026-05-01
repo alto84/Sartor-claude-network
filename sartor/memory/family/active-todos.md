@@ -149,6 +149,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - **Vayu counselor search** — no email thread, no calendar hold. Unclear whether Aneeta is working this via text or it hasn't started.
 - **Physical gifts for upcoming birthdays** (Abby, Uncle Brad, Oren, Ini, Anjali) — no purchase signal in email.
 
+## Latest from gather (2026-05-01) — run 35
+
+> [!deadline] 2026-05-04
+> **Mother's Day gift for Aneeta — 3 days remaining.** Personalize via Mark and Graham. Must ship in time for Mother's Day May 11. Personalization orders typically require 5–7 days lead time. Source: carry-forward from run 26.
+
+> [!todo] ACTION_REQUIRED
+> **Amazon product safety recall (2026-05-01).** Amazon emailed: "Important Safety Notice about your Past Amazon Order." Review Amazon account → Recalls and Product Safety Alerts page to identify affected product and required action.
+
 ## Related
 - [[FAMILY]] - Household overview and family member profiles
 - [[vayu]] - Vayu-specific deep profile
