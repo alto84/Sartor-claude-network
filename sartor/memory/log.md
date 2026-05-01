@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-01
 updated_by: personal-data-gather
-run: 47
+run: 48
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-05-01] ingest | personal-data-gather run 37: Fidelity GOOGL options roll (INFORMATIONAL); WeAreMKA newsletter; 0 new actions; 15 open carry-forward
+- FINANCIAL: Fidelity trade confirmation received — SOLD CALL (GOOGL) $115.70, BOUGHT CALL $94.33, BOUGHT CALL $92.49, SOLD CALL $18.10 on account XXXXX8998. 4-legged adjustment (spread roll/condor), trade executed. INFORMATIONAL only.
+- FAMILY/SCHOOL: WeAreMKA newsletter May 1 received (HTML only, plain text unavailable via MCP). Review in email client for school dates.
+- RESEARCH: Doximity AAN 2026 clinical trial highlights. INFORMATIONAL.
+- CALENDAR: All 5 feeds stable. Identical to runs 34–36. Sole-parent window active (Aneeta at RRE through May 3). Soccer game May 2 2 PM Brookdale. Soccer practice May 6 5:30 PM Anderson Park.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved since Apr 22.
+- OVERDUE: 185 Davis assessment + CSA checks (both due today May 1). No resolution.
+- Total open ACTION_REQUIRED items: 15 (no new items this run).
+- Pages updated: `daily/2026-05-01.md` (run 37 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (15 open items), `data/heartbeat-log.csv` (run 37 row)
+- Total new facts: 1 | New ACTION_REQUIRED items: 0
 
 ## [2026-04-30] ingest | personal-data-gather run 32: NJ Pride FC Spring 2 action; GPT-5.5 week; EquityZen Perplexity; 1 new fact
 - NEW ACTION: NJ Pride FC Spring 2 season (starts May 23). 2 classes near sellout. Enroll Vayu soon. Routed to `family/vayu.md` and `family/active-todos.md`.
