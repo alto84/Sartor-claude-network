@@ -37,6 +37,25 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-05-01] ingest | personal-data-gather run 22: Vayu teacher escalation; Hiive deadlines expired; EquityZen Apptronik+Perplexity; GOOGL call sold; Pool Guyz statement; MKA Capstone fair
+- GAP: 6 days since run 21 (2026-04-25)
+- NEW ACTION (HIGH): Vayu homework habits — Roshni Shah (rshah@mka.org) second contact, Apr 30. Parent response needed.
+- NEW ACTION: MKA Third Grade Capstone Design Fair, May 29 8:15 AM — Vishala. Add to calendar.
+- NEW ACTION (MEDIUM): Pool Guyz LLC statement received — pay via Zelle (Thepoolguyznj@gmail.com).
+- NEW FINANCIAL: Fidelity SOLD CALL (GOOGL) account 8998 — likely GOOGL May $285C roll execution. Deadline was today.
+- NEW FINANCIAL: EquityZen Apptronik (APTK) + Perplexity now live (Apr 30 emails).
+- EXPIRED: Hiive Kalshi deadline Apr 30 PASSED; Hiive SpaceX + Zipline deadlines May 1 expiring TODAY. No resolution emails found.
+- NEW ADVISORY: AlphaSights Life Sciences consult (emma.sciarrone@alphasights.com); Guidepoint Genetic Disorder Survey $50.
+- NEW HOUSEHOLD: Amazon safety recall notice (product unspecified).
+- FACT: CSA Share 2026 — Alton re-enrolled Apr 27.
+- FACT: Vasu picture day TODAY at Goddard 11:30 AM.
+- FACT: Vayu soccer TOMORROW May 2 2:00 PM, Brookdale Stadium South — sole-parent day.
+- FACT: Sole-parent window active (Aneeta at RRE through ~May 3).
+- CALENDAR: No new events vs run 21 in 7-day window. May 1–8 stable.
+- SSH: gpuserver1 unavailable in execution environment; machine 52271 offline unresolved.
+- Total open ACTION_REQUIRED items: 31 (added 9 new items)
+- Pages updated: `daily/2026-05-01.md` (created), `family/active-todos.md` (run 22 appended), `family/family-calendar.md` (run 22 appended), `family/vayu.md` (run 22 appended), `log.md`
+- Outputs: `data/gather-alerts.md` written (31 open items), `data/heartbeat-log.csv` created
 ## [2026-05-01] ingest | personal-data-gather run 37: Fidelity GOOGL options roll (INFORMATIONAL); WeAreMKA newsletter; 0 new actions; 15 open carry-forward
 - FINANCIAL: Fidelity trade confirmation received — SOLD CALL (GOOGL) $115.70, BOUGHT CALL $94.33, BOUGHT CALL $92.49, SOLD CALL $18.10 on account XXXXX8998. 4-legged adjustment (spread roll/condor), trade executed. INFORMATIONAL only.
 - FAMILY/SCHOOL: WeAreMKA newsletter May 1 received (HTML only, plain text unavailable via MCP). Review in email client for school dates.
