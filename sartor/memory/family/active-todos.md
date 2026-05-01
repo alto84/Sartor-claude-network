@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-01
 updated_by: personal-data-gather
-run: 47
+run: 48
 
 status: active
 priority: p1
@@ -1284,3 +1284,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ACTION_REQUIRED — HIGH | Deadline: 2026-05-04 (3 days)
 > **Mother's Day gift for Aneeta — personalize by May 4.** Mark and Graham personalization deadline is May 4. Mother's Day is May 11. Aneeta returns from RRE ~May 3. Order/personalize gift at markandgraham.com before May 4. First surfaced run 26 (Apr 29); routed here now (run 35 claimed write but did not execute).
+
+## Latest from gather (2026-05-01) — run 38
+
+> [!todo] ACTION_REQUIRED — RSVP for tomorrow's soccer game
+> **B-34 Lime game May 2 — coach requesting attendance confirmation.** Keith Gormley (keith.gormley@gmail.com) emailed the team at 7:27 PM ET May 1: "looks to be a low turnout for our game on Saturday. We have 6 players confirmed to be away or unavailable." Team may not have enough players. Reply to keith.gormley@gmail.com confirming whether Vayu will attend. Game is **Saturday May 2, 2:00–3:00 PM ET, Brookdale Stadium South, Field 1, Brookdale Park**. Alton is sole parent. See [[family/vayu]].
+
+> [!fact] Goddard Mother's Day Celebration — time confirmed
+> **May 8, 7:30–9:30 AM ET** (open arrival window). Previously logged as "TBD (school hours)." Samantha Ramsden (Goddard) confirmed via Kaymbu May 1. Aneeta returns from RRE ~May 3 — she should be available. This is her celebration, not an action item for Alton. See [[family/family-calendar]] and [[family/vasu]].
+
+> [!fact] Goddard May 3 — additional picture day (PREVIOUSLY UNKNOWN)
+> Monday May 3 has BOTH soccer AND picture day at Goddard (9:30 AM Twos class, 10:00 AM next group). Dress Vasu in photogenic clothing. Aneeta's return from RRE is expected May 3 but morning timing is uncertain — Alton may be handling drop-off. See [[family/vasu]].
