@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-04-30
+updated: 2026-05-01
 updated_by: personal-data-gather
-run: 46
+run: 47
 
 status: active
 priority: p1
@@ -1225,3 +1225,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ACTION_REQUIRED — Nintendo Switch repair #61296128 (payment declined)
 > noreply_repair@noa.nintendo.com, 2026-04-28 19:00 UTC. Service request 61296128 on hold: "Your payment method was declined. Please click on the link. Time is running out!" Update payment method to authorize repair before the service window closes.
+
+## Latest from gather (2026-05-01) — run 36
+
+> [!warning] OVERDUE — deadline was 2026-05-01 (TODAY)
+> **185 Davis Condo Assessment — lump sum due date has passed.** $2,253.13 lump sum was due May 1, OR enroll in $563.28/month installment plan (May–August). From Charlotte Rice (trustee, charlotterice@gmail.com), Apr 27. If lump sum not yet paid, contact Charlotte to confirm installment enrollment. Additional upcoming assessments: fuel cost overage ~$375/unit (due June 30) and boiler expansion tank vote via Google Form by May 15. See run 36 (Apr 27) entry above.
+
+> [!warning] OVERDUE — deadline was 2026-05-01 (TODAY)
+> **CSA 2026 checks — both due TODAY.** Circle Brook Farm split payment ($475 due May 1) + Tree-Licious Orchards fruit share ($345 due May 1). Mail to Enid Melville, 12 Valley Place, Upper Montclair, NJ 07043. If not yet sent, contact Enid directly to confirm whether late payment is accepted. Pickup site: 86 Llewellyn Rd, Montclair. Season starts June 9. See run 36 (Apr 27) entry above.
+
+> [!todo] ACTION_REQUIRED — HOUSEHOLD/SAFETY
+> **Amazon product safety recall — review required.** order-update@amazon.com, 2026-05-01 00:40 UTC. Subject: "ATTENTION: Important Safety Notice about your Past Amazon Order." Amazon notifying of potential safety concern with a previously purchased product. Log into Amazon → Account & Lists → Recalls and Product Safety Alerts to identify the affected product. Specific item not visible in snippet. First surfaced run 35; routed here now.
+
+> [!todo] ACTION_REQUIRED — HIGH | Deadline: 2026-05-04 (3 days)
+> **Mother's Day gift for Aneeta — personalize by May 4.** Mark and Graham personalization deadline is May 4. Mother's Day is May 11. Aneeta returns from RRE ~May 3. Order/personalize gift at markandgraham.com before May 4. First surfaced run 26 (Apr 29); routed here now (run 35 claimed write but did not execute).
