@@ -28,9 +28,9 @@ This project repatriated the entire network to local Sartor admin in one day, wi
 | Sartor-Saxena-Claude Network (switch) | 192.168.1.170 | 58:d6:1f:86:e3:ff | USPM24P | ✅ Connected | renamed from "USW-Pro-Max-24-PoE", port labels via API, fw bumped 7.0.50→7.4.1 during adoption |
 | OutdoorBackyard | 192.168.1.173 | 58:d6:1f:a8:36:58 | UKPW (U7-Outdoor) | ✅ Connected | first AP — proof-of-concept |
 | Hall2ndFloor | 192.168.1.167 | a8:9c:6c:64:70:14 | U7PRO | ✅ Connected | switch port 1 |
-| Gym | 192.168.1.165 | 8c:ed:e1:7a:f2:bc | U7PRO | ✅ Connected | switch port 2 |
+| HerOffice (formerly mislabeled "Gym" by BHS install — confirmed 2026-05-02 ~01:30 ET via locate-strobe + Pixel-8 RSSI test) | 192.168.1.165 | 8c:ed:e1:7a:f2:bc | U7PRO | ✅ Connected | switch port 2 |
 | Basement | 192.168.1.168 | 9c:05:d6:b0:53:d2 | U7PRO | ✅ Connected | switch port 3 |
-| HerOffice | 192.168.1.183 | a8:9c:6c:62:ea:20 | U7PRO | ✅ Connected | switch port 4 |
+| TBD-was-HerOffice (BHS-labeled "HerOffice" but NOT in her office — actual location unknown, possibly the real gym; needs walk-through audit 2026-05-02) | 192.168.1.183 | a8:9c:6c:62:ea:20 | U7PRO | ✅ Connected | switch port 4 |
 | 3rdFloor | 192.168.1.166 | 8c:ed:e1:7a:86:ac | U7PRO | ✅ Connected | switch port 5 |
 | Livingroom | 192.168.1.185 | 8c:ed:e1:7a:8a:04 | U7PRO | ✅ Connected | switch port 6 via downstream AV-rack switch — separate Ubiquiti U-PoE++ injector powers the AP (NOT switch PoE on port 6); was hung post-restart, recovered by physically power-cycling the U-PoE++ injector |
 | HisOffice (in-wall) | 192.168.1.186 | 1c:0b:8b:6e:6d:e3 | U7PIW (G7IW) | ✅ Connected | switch port 8 — required `firmware.json` patch to register G7IW model alias |

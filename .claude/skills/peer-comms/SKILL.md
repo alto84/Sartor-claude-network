@@ -81,8 +81,12 @@ Per Constitution §14 + the discipline that has worked across this evening's Cat
 # Tmux pane (the live work)
 ssh alton@<peer-ip> 'tmux capture-pane -t claude-team-1:0 -p | tail -50'
 
-# Recent peer-side commits (peer cannot push; you fetch)
-git fetch <peer-remote-name>  # rtxserver or gpuserver1 must be configured as a remote
+# Recent peer-side commits (post-2026-05-02: peers push to rtxserver bare;
+# read either via the bare or the peer's working tree)
+git fetch origin   # origin = rtxserver bare; will pull commits from any peer
+git log origin/main --oneline -10
+# Optional: read directly from a peer's working tree if you suspect the bare hasn't received yet
+git fetch <peer-remote-name>  # rtxserver / gpuserver1 working-tree remotes still configured
 git log <peer>/main --oneline -10
 
 # Phone-home inbox
@@ -130,20 +134,45 @@ ssh alton@<peer-ip> 'ls ~/Sartor-claude-network/sartor/memory/inbox/<host>/ 2>&1
 
 ## Git sync pattern
 
+**As of 2026-05-02, the canonical write target is the bare repo on rtxserver: `alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git`.** Every peer's `origin` should point there. GitHub is a 15-min-lag DR mirror written exclusively by Rocinante's "Sartor Memory Mirror" Windows Scheduled Task. Full architecture in `sartor/memory/reference_memory_server.md` — read it before changing this section.
+
 ```bash
-# Peer commits locally (peers cannot push)
-ssh alton@<peer-ip> 'cd ~/Sartor-claude-network && git status --short && git log --oneline -3'
+# Peer commits AND pushes (peers no longer wait for Rocinante to drain)
+ssh alton@<peer-ip> 'cd ~/Sartor-claude-network && git status --short && git fetch origin && git log --oneline -3'
 
-# Rocinante fetches the peer's branch
-git fetch <peer-remote-name>
+# After peer pushes to rtxserver bare, Rocinante syncs:
+git fetch origin
+git merge --ff-only origin/main   # or rebase if you have local work to land
 
-# Optionally merge into local main and push to origin
+# If a peer's origin still points at GitHub (pre-2026-05-02 onboarding), fall back to the
+# old peer-working-tree fetch pattern until that peer's origin is repointed:
+git fetch <peer-remote-name>      # rtxserver / gpuserver1 working-tree remotes
 git merge <peer>/main --no-edit
-# resolve any conflicts; for HARDWARE.md and persona-engineering files, prefer the peer's recent Cato-iterated version
-git push origin main
+git push origin main              # NB: origin = rtxserver bare; mirror handles GitHub
 ```
 
+**Do not push to the `github` remote from any peer, including Rocinante outside the mirror script.** The "Sartor Memory Mirror" task pushes only `main` (not `--mirror`) to preserve claude.ai cloud-agent branches. Manual GitHub pushes from this thread risk both auth issues (no creds on peers) and overwriting cloud-agent branches.
+
 If conflicts on persona-engineering files (`CATO-PROSECUTION-*`, `PASSOFF-*`, `experiments/*`), `git checkout --theirs` is usually right because the peer has been iterating those through Cato cycles. For machines/<host>/HARDWARE.md and similar shared docs, inspect both versions before deciding.
+
+### Per-peer migration status (2026-05-02)
+
+| Peer | `origin` URL | Pushes work? |
+|---|---|---|
+| Rocinante | `alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git` | ✅ migrated |
+| rtxserver-self peer Claude | `alton@192.168.1.157:/home/alton/Sartor-claude-network` (working tree, pre-migration) | ⏳ next session |
+| gpuserver1 peer Claude | likely GitHub HTTPS (pre-migration) | ⏳ next session |
+| Aneeta laptop (future) | onboard directly to rtxserver bare per [[projects/aneeta-peer-setup]] | n/a yet |
+
+When you sit down with a peer Claude session, the migration is one-shot:
+```bash
+ssh alton@<peer-ip>
+cd ~/Sartor-claude-network
+git remote set-url origin alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git
+git fetch origin
+git push origin main   # should be a no-op if peer was up-to-date
+```
+Add the peer's SSH pubkey to rtxserver's `~/.ssh/authorized_keys` first (rtxserver's own peer can use a local `file://` URL or just use its SSH pair to itself).
 
 ## Phone-home flow (when you receive one)
 
