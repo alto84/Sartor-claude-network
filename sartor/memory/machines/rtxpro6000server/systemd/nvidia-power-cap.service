@@ -1,0 +1,26 @@
+[Unit]
+Description=Apply rtxpro6000server production GPU power cap (450W per card)
+Documentation=file:///home/alton/Sartor-claude-network/sartor/memory/projects/rtx-stress-design-2026-05-02.md
+Documentation=file:///home/alton/Sartor-claude-network/experiments/2026-05-02-stress/comparison-A1-vs-F1.md
+# Order: must apply BEFORE Docker / vast.ai container daemon comes up.
+# nvidia-persistenced should be running first so power.limit writes persist.
+After=nvidia-persistenced.service
+Before=docker.service
+Wants=nvidia-persistenced.service
+ConditionPathExists=/usr/bin/nvidia-smi
+
+[Service]
+Type=oneshot
+# Use absolute path to be robust against $PATH not being set in early boot.
+# 450W per card matches the production envelope locked 2026-05-02 after the
+# A1 + F1 + B thermal stress sequence. See referenced docs for rationale.
+# If this command fails (e.g., a card is missing or driver isn't loaded yet),
+# log the failure and continue — better to boot than to brick.
+ExecStart=/usr/bin/nvidia-smi -pl 450
+ExecStartPost=/bin/sh -c 'echo "[$(date -Iseconds)] nvidia-power-cap applied: pl=450 on all GPUs"; /usr/bin/nvidia-smi --query-gpu=index,power.limit --format=csv'
+RemainAfterExit=yes
+# Don't make the system fail-to-boot if this fails — log and proceed.
+SuccessExitStatus=0
+
+[Install]
+WantedBy=multi-user.target

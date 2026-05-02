@@ -1,0 +1,84 @@
+# Hairpin NAT splice for /etc/ufw/before.rules — rtxpro6000server
+# DRAFT 2026-05-02 — do NOT apply until Alton's Fios port-forward (step 7) lands
+#
+# Why this is needed:
+#   rtxserver is on 192.168.1.157 behind a Fios router with WAN IP 100.1.100.63.
+#   Vast.ai's reachability self-test wants to connect to 100.1.100.63:40100-40199
+#   and have it routed to rtxserver. The Fios port-forward handles this for
+#   external traffic. But for LAN-side traffic (rtxserver itself OR Rocinante on
+#   the same LAN trying to reach the listing's "external" address), the router
+#   does NOT hairpin — rtxserver's packet to 100.1.100.63 either goes to the WAN
+#   and back (NAT loopback NOT supported on consumer Fios) or gets dropped at
+#   the host because the destination IP is "not me".
+#
+# This DNAT rule on the OUTPUT chain rewrites packets going to 100.1.100.63:4010X
+# back to 192.168.1.157:4010X before they leave the host. Vast.ai's docker
+# container can then talk to its own listed external endpoint and the
+# self-test passes.
+#
+# DOCKER-USER conntrack: Docker installs its own iptables rules that handle
+# bridge-network traffic. Without an explicit ESTABLISHED,RELATED accept on
+# DOCKER-USER, the return packets get dropped. Mirror gpuserver1's rule.
+#
+# Splice procedure (after Alton's port-forward lands AND external connectivity
+# is verified from outside the LAN):
+#   1. sudo cp /etc/ufw/before.rules /etc/ufw/before.rules.pre-rtxserver-hairpin
+#   2. Insert the *nat block below BEFORE the *filter block (or as a separate
+#      table at the top of the file — order doesn't matter for iptables-restore
+#      since it's a multi-table file).
+#   3. sudo ufw reload
+#   4. Verify: sudo iptables -t nat -L OUTPUT -n -v | grep DNAT
+#   5. Test: curl -s --max-time 5 -I http://100.1.100.63:40150/ from rtxserver
+#      (will fail until vast.ai container is up, but the DNAT rule should be
+#       visible in iptables -t nat -L)
+#
+# Rule text to splice (copy-paste between the marker comments):
+
+# === BEGIN hairpin-nat-rtxserver SPLICE ===
+*nat
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+
+# Hairpin NAT for vast.ai customer port range — rewrite local connections to
+# our own external IP back to our LAN IP so vast.ai's self-test can reach us
+# from inside the same chassis.
+-A OUTPUT -d 100.1.100.63 -p tcp --dport 40100:40199 -j DNAT --to-destination 192.168.1.157
+
+# Docker bridge return-traffic — match conntrack on the DOCKER-USER chain so
+# packets flowing back from rented containers to clients aren't dropped.
+# (This complements the equivalent rule on gpuserver1; required for vast.ai
+# Docker bridge behavior to work alongside UFW.)
+COMMIT
+# === END hairpin-nat-rtxserver SPLICE ===
+
+# Additional iptables rule that lives in DOCKER-USER chain (NOT in UFW; install
+# separately via `iptables -I DOCKER-USER -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT`
+# OR via a oneshot systemd unit that runs at boot after Docker starts):
+#
+#   /etc/systemd/system/docker-user-conntrack.service
+#   ----------------------------------------------------
+#   [Unit]
+#   Description=Insert DOCKER-USER conntrack accept (rtxserver vast.ai)
+#   After=docker.service
+#   Requires=docker.service
+#
+#   [Service]
+#   Type=oneshot
+#   ExecStart=/sbin/iptables -I DOCKER-USER -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+#   ExecStop=/sbin/iptables -D DOCKER-USER -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+#   RemainAfterExit=yes
+#
+#   [Install]
+#   WantedBy=multi-user.target
+#
+# Defer this until Docker is installed for vast.ai (which is a step we haven't
+# tackled yet — vast.ai docs say `vastai self-test` will install/configure
+# Docker as part of host onboarding).
+
+# Verification commands (after splice + reload + Docker up):
+#   sudo iptables -t nat -L OUTPUT -n -v | grep 40100
+#   sudo iptables -L DOCKER-USER -n -v | head -5
+#   curl -s --max-time 5 http://100.1.100.63:40150/ -o /dev/null -w '%{http_code}\n'
+#   (third one returns "000" until container is up, then "200" or similar)
