@@ -4,7 +4,7 @@ description: Thermal stress test design + run log + fan-placement analysis for r
 type: experiment-design
 date: 2026-05-02
 author: rtxpro6000server peer Claude (Opus 4.7)
-status: executed-A1-only-tctl-abort-phase-z-complete
+status: executed-A1-tctl-abort-then-F1-aggressive-curves-marginal
 volatility: low
 related:
   - machines/rtxpro6000server/HARDWARE
@@ -205,11 +205,58 @@ If clean: no phone-home; just commit results.
 ### Phone-home filed
 `sartor/memory/inbox/rtxpro6000server/PHONE-HOME-stress-2026-05-02-anomaly.md` — Tctl breach, forced-fan-attempt findings, branch verdict, and option-1-vs-option-2 surfaced for Alton.
 
+### Phase F0 — fan-control investigation (Alton-directed)
+Surfaced top-4 attempts for greenlight; Alton chose Plan A (Chrome-MCP curve fix via Rocinante). Read-only IPMI probes ran in parallel — see `forced-fan-attempt.log`. Aggressive curves applied to Zones 2-6 (CHA_FAN1, CHA_FAN2, CHA_FAN3, CHA_FAN4, CHA_FAN5):
+
+| Point | A1 (Apr 29) | F1 (aggressive, applied 14:46Z) |
+|-------|-------------|--------------------------------|
+| A | 30°C/30% | 30°C/50% |
+| B | 55°C/50% | 50°C/75% |
+| C | 70°C/80% | 60°C/90% |
+| D | 80°C/100% | 70°C/100% |
+
+Idle response confirmed: CHA_FAN1 600→1080 RPM, CHA_FAN5 600→960 RPM, CHA_FAN2/3 480→720 RPM. Curves live.
+
+### Phase F1 — A1-rerun with aggressive curves (2026-05-02T14:46:51Z → 14:51:54Z, 5:03 wall, 66 samples)
+- `CUDA_VISIBLE_DEVICES=0 /opt/gpu-burn/gpu_burn 300` PID 1327862, exited naturally at t+300s.
+- **AUDIBLE THRESHOLD CROSSED at t+13s** (vs A1's t+58s) — fans audible 45 seconds earlier.
+- F1 peaks (66 samples):
+
+| Metric | A1 | F1 | Delta |
+|---|---:|---:|---:|
+| GPU0 die | 74 | 73 | −1 |
+| BMC PCIE03 | 74 | 73 | −1 |
+| Tccd1 peak | 50.6 | 49.6 | −1.0 |
+| Tccd2 peak | 50.0 | 49.1 | −0.9 |
+| Tccd3 peak | 49.5 | 49.1 | −0.4 |
+| **Tccd4 peak** | **69.1** | **49.2** | **−19.9** |
+| **CPU Tctl peak** | **79.6** | **77.1** | **−2.5 (still above 75°C threshold)** |
+| BMC CPU Pkg peak | 73 | 71 | −2 |
+| GPU0 power | 480 | 478 | ~0 |
+| Wall peak | 693 | 692 | ~0 |
+| GPU0 onboard fan | 45% | 44% | ~0 |
+| CPU_FAN peak | 1440 | 1440 | 0 |
+| CHA_FAN5 peak | 1440 | **1680 (= nameplate)** | +240 (saturated) |
+| CHA_FAN2 peak | 1080 | 1200 | +120 |
+| CHA_FAN3 peak | 1080 | 1200 | +120 |
+
+- **Tccd4 fully resolved (−19.9°C)**: aggressive front fans cooled the front-of-CPU CCD that was getting GPU exhaust impingement. All four CCDs now uniform at ~49°C peak.
+- **Tctl barely moved (−2.5°C)**: the IO die / central-socket area is heated independently of CCDs, via the Noctua intake air column that pulls warm chassis air. Front fans cannot reach it.
+- **CHA_FAN5 saturated** at 1680 RPM = nameplate. Pushing curves harder cannot extract more airflow from the front-mesh array.
+- **CHA_FAN2/3 still under-driven at 71% of nameplate** despite 100%-duty curve at PCIE03=70°C. BMC PWM-scaling cap on those zones (firmware quirk; not addressable via curve).
+- No abort fired during F1, but **caught a sampler bug**: abort-trigger regex was `^(A1|A2|B)$` and didn't include `F1`, so the 77.1°C Tctl reading didn't trigger the SOFT abort. GPU envelope safe regardless (peak well below 88°C hard). Filed in open questions.
+
+### Phase Z2 — F1 cool-down + revert (2026-05-02T14:52:24Z → ~14:55Z)
+- `nvidia-smi -i 0,1 -pl 600` reverted both cards to default (verified `power.limit` reads 600.00 W).
+- Sampler stopped (concurrent samplers issue caught: original A1 sampler had survived the kill, was tagged Z-done while the F1 sampler ran in parallel; both stopped now).
+- BMC curves left at the new aggressive values per Alton's instruction (curve change persists in BMC firmware; reversible via Chrome MCP if desired).
+- Final state: GPU0=31°C, GPU1=27°C, fan%=30%, dmesg clean.
+
 ## Fan-placement analysis
 
 ### Headline
 
-**The bottleneck is not fan capacity. It is the GPU0 → CPU intake air column.** The three 140 mm fans should be deployed by air-path geometry, not by adding redundant fans to already-cool zones. The single highest-leverage placement is **a top-mounted exhaust above the GPU0/CPU region** to break the recirculation loop revealed by today's A1 data.
+**The bottleneck is not fan capacity. It is the GPU0 → IO-die heating via the Noctua intake air column.** F1's curve change (Apr-29 → aggressive) **fully resolved Tccd4** (−19.9°C, all four CCDs now uniform) but **Tctl barely moved (−2.5°C, still above 75°C threshold)** — proving the heat path that's failing is independent of CCD-localized impingement. The three 140 mm fans should be deployed by air-path geometry, not by adding redundant fans to already-saturated front intakes. The single highest-leverage placement is **a top-mounted exhaust above the GPU0/CPU region** to intercept GPU0 exhaust before it reaches the Noctua intake.
 
 ### Bottleneck identification (evidence-based)
 
