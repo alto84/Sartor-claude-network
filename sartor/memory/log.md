@@ -1438,3 +1438,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-01.md` (run 36 appended), `family/active-todos.md` (run 36 section + OVERDUE callouts), `log.md`
 - Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 - Total new facts: 0 | Remediated writes: 2 | New OVERDUE flags: 2 | Carry-forward actions: 15
+
+## [2026-05-01] ingest | personal-data-gather run 38: 3 net-new facts; 1 ACTION_REQUIRED
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 1–May 8)
+- Gmail delta (new since run 37 cutoff ~12:00 UTC May 1): B-34 Lime coach RSVP request (ACTION_REQUIRED), Goddard Mother's Day time confirmed (7:30–9:30 AM May 8), Goddard Sneak Peek May 3 picture day + soccer, Vasu daily sheet May 1 (routine), Goddard snack calendar May (informational). All remaining 25 threads deduplicated.
+- Calendar: all 5 feeds stable. Net-new: Goddard May 3 picture day (sourced from Gmail sneak peek). No changes to Google Calendar events.
+- NEW FACTS: B-34 coach RSVP request | Mother's Day Celebration time 7:30–9:30 AM | Goddard May 3 picture day
+- NEW DEADLINES SURFACED: none
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22
+- Pages updated: `daily/2026-05-01.md` (run 38 appended), `family/vayu.md` (run 40), `family/vasu.md`, `family/family-calendar.md` (run 38), `family/active-todos.md` (run 48), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 3 | New ACTION_REQUIRED items: 1 | Open carry-forward actions: 17

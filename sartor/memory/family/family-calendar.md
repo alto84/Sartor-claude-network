@@ -3,7 +3,7 @@ type: domain
 entity: family-calendar
 updated: 2026-05-01
 updated_by: personal-data-gather
-run: 37
+run: 38
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -552,3 +552,18 @@ Confirmed schedule from live calendar pull. Today is the dance concert day.
 | Sat 5/9 | 2:30–5:30 PM | Convocation | Family | Created by Aneeta Apr 11; no description or location |
 
 **Dance concert time settled:** All prior API oscillation resolved by run 28 Z-anchored reading: `2026-04-30T13:40:00Z` = 9:40 AM ET. The `timeZone: America/New_York` field is display-only when Z suffix is present. 9:40 AM ET is correct.
+
+## Latest from gather (2026-05-01) — run 38
+
+> [!fact] CONFIRMED TIME — Goddard Mother's Day Celebration: 7:30–9:30 AM, May 8
+> **Samantha Ramsden (Goddard, noreply@kaymbu.com, 17:00 UTC May 1):** "Our Mother's Day celebration is one week away! Join us on Friday, May 8th any time between 7:30 and 9:30 for a [celebration]." Prior entry (run 21 Apr 21) had this as "TBD (school hours)." Time now confirmed: **7:30–9:30 AM ET, open-format arrival window.** Aneeta is the natural attendee (Mother's Day). She returns from RRE ~May 3. Anjali's Birthday is also May 8 (Aneeta's recurring event, all-day). No scheduling conflict between those two items. See [[family/vasu]] and [[family/active-todos]].
+
+> [!fact] NEW — Goddard May 3 events: Soccer AND Picture Day
+> **Goddard Sneak Peek Week of May 3–8** (Samantha Ramsden, 20:00 UTC May 1): Monday May 3 includes both outdoor Soccer and Picture Day (Twos class at 9:30 AM, next group at 10:00 AM). Dress Vasu in photogenic clothing on Monday May 3. This is an additional picture day not previously logged (prior known dates: Apr 28, Apr 30, May 1). Aneeta's return from RRE is expected May 3; morning drop-off logistics depend on when she arrives. See [[family/vasu]].
+
+Updated May 8 entry:
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| Fri 5/8 | **7:30–9:30 AM** | Goddard Mother's Day Celebration | Kaymbu (run 38) | Confirmed time — was TBD. Vasu's school. Aneeta primary attendee. |
+| Mon 5/3 | 9:30 AM+ | Vasu Picture Day (Goddard) + Soccer | Kaymbu sneak peek | Additional picture day — dress Vasu photogenically |

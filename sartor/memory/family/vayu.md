@@ -4,7 +4,7 @@ entity: vayu
 name: "Vayu Sartor"
 updated: 2026-05-01
 updated_by: personal-data-gather
-run: 39
+run: 40
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -212,3 +212,8 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!todo] ACTION_REQUIRED — Respond to Roshni Shah (homework habits)
 > **New teacher concern: Vayu's homework habits.** Roshni Shah (rshah@mka.org) emailed Alton and Aneeta on 2026-04-30 17:24 UTC (CC: alto84@gmail.com), subject "Re: Math support." New content: "I wanted to reach out to share an observation about Vayu's homework habits and to ask for your partnership in supporting him." This is a separate escalation from the Apr 14 partial-quotients division email — now about homework completion/consistency broadly. Teacher requesting parent partnership. Respond to rshah@mka.org; coordinate with Aneeta (returns from RRE ~May 3). Math dean: Deborah Gordon (dgordon@mka.org). See [[family/active-todos]].
+
+## Latest from gather (2026-05-01) — run 38
+
+> [!todo] ACTION_REQUIRED — RSVP to coach for Saturday game
+> **B-34 Lime game May 2 — low turnout warning.** Coach Keith Gormley (keith.gormley@gmail.com) emailed the team at 19:27 UTC May 1: "Team - looks to be a low turnout for our game on Saturday. We have 6 players confirmed to be away or unavailable. For the rest of the team, please let us know if you'll be able to attend - 2pm at Brookdale [Stadium South]." The team is short 6 players and may struggle to field a full side. Reply to keith.gormley@gmail.com confirming whether Vayu will attend. Game is tomorrow (Saturday May 2, 2:00–3:00 PM ET, Brookdale Stadium South, Field 1). Alton is sole parent (Aneeta returns from RRE ~May 3). See [[family/active-todos]].

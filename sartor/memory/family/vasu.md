@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-04-30
+updated: 2026-05-01
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -173,3 +173,11 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact]
 > **Picture Day May 1, 2026 at 11:30am (Goddard School).** Samantha Ramsden via Kaymbu (noreply@kaymbu.com), 2026-04-30 20:00 UTC: "Reminder that your child will have picture day tomorrow at 11:30am. Sibling pictures will be taken on the first child's appointment." May 1 was previously listed as a picture day; new detail: 11:30am start time and sibling photo policy. Dress Vasu for pictures on Thursday May 1. See [[family/active-todos]].
+
+## Latest from gather (2026-05-01) — run 38
+
+> [!fact] NEXT WEEK — May 3 Picture Day AND Soccer (Goddard)
+> **Goddard Sneak Peek Week of May 3–8** (Samantha Ramsden, noreply@kaymbu.com, 2026-05-01 20:00 UTC): Monday May 3 has two events — Soccer (outdoor activity, morning) AND Picture Day, 9:30 AM for the Twos class, 10:00 AM for the next group. Vasu is in the Preschool class; the Twos A/10: scheduling may mean Vasu's picture time slot is slightly later. Dress Vasu in photogenic clothing on Monday May 3 — this is an additional picture day not previously captured (prior known picture days were Apr 28, Apr 30, May 1). Aneeta returns from RRE ~May 3 but time of return is uncertain; Alton may still be sole parent for morning drop-off. See [[family/active-todos]] and [[family/family-calendar]].
+
+> [!fact] TODAY (May 1) Vasu daily sheet
+> Preschool unit: "What does it mean to be alive?" curriculum this week — learning about living vs non-living things, self-awareness activities. Normal school day confirmed via Kaymbu (2026-05-01 19:17 UTC, check-in by Nathia W). Routine informational.
