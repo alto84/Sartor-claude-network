@@ -1,12 +1,13 @@
 ---
 name: federated-memory-map
-description: Topical lookup index for the WHOLE Sartor wiki — federated across sartor/memory/, work/, dashboard/, archive/, and conversation_extract.py. Cures the "no memory record" failure mode by naming where each entity lives.
+description: Topical lookup index for the WHOLE Sartor wiki — federated across sartor/memory/, work/, dashboard/, archive/, conversation_extract.py, and ~/.claude/teams/. Cures the "no memory record" failure mode by naming where each entity lives.
 type: index
 status: living-document
 created: 2026-05-02
+updated: 2026-05-02-evening
 created_by: cartographer (memory-agents team)
 tags: [reference/index, memory/federated]
-related: [search-memory-first, ALTON, FAMILY, BUSINESS, TAXES, MACHINES, google-drive-catalog-2026-05-02]
+related: [search-memory-first, artifact-vs-fact-not-found, ALTON, FAMILY, BUSINESS, TAXES, MACHINES, google-drive-catalog-2026-05-02, rtxserver-vastai-watch]
 ---
 
 # Federated Memory Map
@@ -26,19 +27,21 @@ related: [search-memory-first, ALTON, FAMILY, BUSINESS, TAXES, MACHINES, google-
 | `archive/` | **Cold storage.** Old `MASTER_PLAN.md`, `IMPLEMENTATION_PLAN.md`, `BOOTSTRAP_MESH_SUMMARY.md`, the 2026-04 forensic + chrome-extension-debug bundles, loose screenshots. Sometimes the only place a fact still lives. |
 | `experiments/` | Out-of-repo training/eval artifacts. Not memory; reference only. |
 | `~/Downloads/` (off-repo) | Source PDFs and bank statements indexed by `work/taxes/reference/document-inventory.md`. |
+| `~/.claude/teams/` (off-repo, persistent) | **Multi-agent team configurations.** Each team has a `config.json` defining roles + a member's persistent context, and an `inboxes/<member>.json` file. As of 2026-05-02 the only team is `memory-agents/` (cartographer, search-first-auditor, vast-ai-watcher, rule-author, team-lead). Distinct from `.claude/agents/` in-repo, which holds single-shot subagent definitions. |
 
 A federated grep is `Grep` with no `path:` argument. Cost is sub-second; cost of false-unknown is a wrong answer.
 
 ## 2. Alphabetical entity index
 
 ### 185 Davis Avenue
-Jointly owned **rental condo** (Alton + Aneeta). The textbook "federated" entity — no single file holds all of it.
+Jointly owned **rental condo** (Alton + Aneeta). Now has a canonical hub in `BUSINESS.md::Rental Property` (added 2026-05-02 evening, commit `9d09797`); previously the textbook "no canonical hub" entity.
+- **Canonical hub:** `sartor/memory/BUSINESS.md` §Rental Property — type, mortgage, insurance, tax position, doc trail
 - `dashboard/family/finances.json` — value $1,157,000 (real_estate), mortgage balance $708,576 (liabilities), $4,600/mo rental income, $3,600/mo mortgage, $700/mo condo fee, $300/mo management
 - `work/taxes/reference/document-inventory.md` — Leader Bank 1098 mortgage statements (TY2025 doc 09; also TY2022 "185 davis #8 1098.pdf")
 - `work/family/reference/important-docs.md` — Vermont Mutual Condo Policy 1.18.25–1.18.26
-- `sartor/conversation_extract.py:406` — `"Leader Bank": ("BUSINESS.md", "business", "185 Davis")`
+- `sartor/conversation_extract.py:406` — `"Leader Bank": ("BUSINESS.md", "business", "185 Davis")` (routing rule now matches a real section)
 - `sartor/memory/reference/google-drive-catalog-2026-05-02.md` — Drive 1098 surface
-- `sartor/memory/feedback/search-memory-first.md` — origin incident reference (2026-05-02)
+- `sartor/memory/feedback/search-memory-first.md` — origin incident (2026-05-02 morning)
 
 ### 85 Stonebridge Road
 Primary residence, Montclair NJ (Block 1101 Lot 12).
@@ -110,6 +113,13 @@ Browser automation. Port 9223, profile `C:\Users\alto8\chrome-automation-profile
 - `.claude/skills/chrome-automation/`
 - `sartor/memory/MACHINES.md`
 
+### Climate First Bank (formerly First Climate)
+Solar Inference LLC's solar-roof financier. $438,829 loan, 366 months, 8% APR with autopay, $0 down. **$219,414.50 disbursed to Lucent Energy 2026-03-15** — single most important item on the Solar Inference docket pending July 4 ITC deadline. Distinct entity from "First Climate" of older docs (renamed).
+- `sartor/memory/business/solar-inference.md:21,48,50,92,137` — disbursement, financing terms, history line
+- `sartor/memory/feedback/artifact-vs-fact-not-found.md` — origin of the "fact tracked, artifact missing" rule (2026-05-02)
+- `~/Downloads/Solar Inference LLC/2 - Solar Roof/Financing/` — First Climate prequalification, terms, eSign, privacy
+- `work/solar-inference/reference/document-inventory.md` §2 Solar Roof → Financing
+
 ### Disney 2026 / Disneyland
 Family trip July 2026 (group: Smith/Alison, Kim Tran, Brucker, Perera, Nicole). Travel agent: Nicol Stevenson, Magical Vacation Planner.
 - `sartor/memory/projects/disney-july-2026/PROJECT.md`
@@ -147,8 +157,10 @@ Vasu's preschool. Teachers Samantha Ramsden, Clarissa B.
 Ubuntu 22.04 server, RTX 5090, vast.ai machine 52271. IP 192.168.1.100. The first Sartor peer machine.
 - `sartor/memory/MACHINES.md` — canonical
 - `sartor/memory/machines/gpuserver1/` — MISSION, CRONS, HARDWARE, INDEX
+- `sartor/memory/machines/gpuserver1/systemd/` — `claude-tmux.service` (auto-respawn peer Claude in tmux), `nvidia-power-cap.service` (pl=600W on boot, ordered before docker + vastai_kaalia), `rgb-status.service`
 - `sartor/memory/reference/gpuserver1-operations.md`, `gpuserver1-monitoring.md`, `gpuserver1-power-logging.md`, `gpuserver1-delegation.md`
 - `sartor/memory/reference/OPERATING-AGREEMENT.md` — peer governance
+- `sartor/memory/inbox/gpuserver1/rtxserver-vastai-onboarding-2026-05-02.md` — replication template (canonical "how to bring up the second host")
 - `CLAUDE.md` Infrastructure Reference
 
 ### Heidi Gorton
@@ -173,8 +185,10 @@ Francis & Company. jf@francis-cpa.com, (914) 488-5727. Handles personal 1040 + S
 - `work/taxes/` — engagement / correspondence trail
 
 ### Kaalia (vast.ai daemon)
-Runs on gpuserver1 as `vastai_kaalia` user. Heartbeats 52.90.216.45:7071. Auto-starts after reboot.
+Vast.ai's host-side daemon. Runs on gpuserver1 as `vastai_kaalia` user. Heartbeats 52.90.216.45:7071. Auto-starts after reboot. Docker shim at `/var/lib/vastai_kaalia/latest/kaalia_docker_shim`. **Not yet installed on rtxpro6000server** — blocker #5 in the rtxserver onboarding tracker.
 - `sartor/memory/MACHINES.md` Vast.ai Hosting
+- `sartor/memory/projects/rtxserver-vastai-watch.md` — install pending, Q1 2026 docs reviewed
+- `sartor/memory/inbox/gpuserver1/rtxserver-vastai-onboarding-2026-05-02.md` — installer recipe
 
 ### Leader Bank
 Mortgage servicer for 185 Davis condo.
@@ -199,6 +213,12 @@ $438,829 signed contract 2025-09-03 (basis is canonical despite Alton's verbal "
 Investment/capital firm contact. Live 2026-04-16+ thread; first prospective recipient of AI consulting side gig.
 - `sartor/memory/people/mike-silva.md`
 - `sartor/memory/ALTON.md` Latest from gather (2026-04-17)
+
+### Memory-Agents Team
+Multi-agent persistent team launched 2026-05-02 for memory-discipline work. Lives at `~/.claude/teams/memory-agents/` (off-repo). Members: **cartographer** (this map's author), **search-first-auditor** (catches missed search-first opportunities), **vast-ai-watcher** (tracks rtxserver vast.ai onboarding), **rule-author** (drafts memory-discipline feedback rules), **team-lead** (orchestrator). Each member has a `<name>.json` inbox; the team has a shared `config.json`. Outputs land in-repo under `sartor/memory/reference/` and `sartor/memory/feedback/`.
+- `~/.claude/teams/memory-agents/config.json` — team definition + member personas
+- `~/.claude/teams/memory-agents/inboxes/{cartographer,rule-author,search-first-auditor,vast-ai-watcher,team-lead}.json` — message queues
+- In-repo deliverables: `sartor/memory/reference/federated-memory-map.md` (this file), `sartor/memory/reference/search-first-audit-log.md`, `sartor/memory/projects/rtxserver-vastai-watch.md`, `sartor/memory/feedback/search-memory-first.md`, `sartor/memory/feedback/artifact-vs-fact-not-found.md`
 
 ### MKA (Montclair Kimberley Academy)
 Vayu and Vishala's school. Tuition due 2026-05-10. Dean of Student Life Kelley Arau leaving end of 2025-26 year.
@@ -234,12 +254,13 @@ Primary workstation. Windows 10, 3 monitors, 2560x1440 primary. Path `C:\Users\a
 - `sartor/memory/family/vayu.md`
 - `sartor/memory/FAMILY.md` Open Action Items
 
-### rtxpro6000server
-Third Sartor peer machine. Ubuntu 22.04 HWE, AMD Threadripper PRO 7975WX, 251GB DDR5, 2x RTX PRO 6000 Blackwell (96GB each = 192GB total), 450W per-card cap. IP 192.168.1.157.
+### rtxpro6000server (rtxserver)
+Third Sartor peer machine. Ubuntu 22.04 HWE, AMD Threadripper PRO 7975WX, 251GB DDR5, 2x RTX PRO 6000 Blackwell (96GB each = 192GB total), 450W per-card cap. IP 192.168.1.157, BMC at 192.168.1.156. **Vast.ai onboarding paused 2026-05-02 evening** pending Verizon Fios WAN-path decision (no admin to CR1000A; UCG-Pro pivot under consideration).
+- **Living tracker:** `sartor/memory/projects/rtxserver-vastai-watch.md` — blockers, open work, pre-fire research (corrected `-g 1.25 -m 2` flags), greenlight verdict pending WAN decision
 - `sartor/memory/MACHINES.md`
-- `sartor/memory/machines/rtxpro6000server/HARDWARE.md`
-- `sartor/memory/inbox/rtxpro6000server/RESUME-vastai-onboarding-2026-05-02.md` — onboarding paused
-- `sartor/memory/inbox/rocinante/rtxserver-vastai-decisions-2026-05-02.md` — Alton decisions
+- `sartor/memory/machines/rtxpro6000server/` — HARDWARE.md, BMC.md, CRONS.md, MISSION-v0.1.md, `onboarding-staged/`, `systemd/` (`nvidia-power-cap.service`, `sartor-claude-peer.service` user-level auto-respawn)
+- `sartor/memory/inbox/rocinante/rtxserver-vastai-decisions-2026-05-02.md` — Alton's commercial decisions ($2.50/hr, -m 2, port 40100-40199)
+- `sartor/memory/inbox/gpuserver1/rtxserver-vastai-onboarding-2026-05-02.md` — gpuserver1's self-contained replication template
 - `CLAUDE.md` Infrastructure Reference
 
 ### Samantha Ramsden / Clarissa B
@@ -310,10 +331,17 @@ Condo insurance for 185 Davis Avenue. Policy 1.18.25 – 1.18.26.
 - `work/family/reference/important-docs.md`
 - (Not yet in `sartor/memory/` proper — federation gap)
 
-### Verizon Fios
-Home ISP and router (HTTPS admin, self-signed cert, 192.168.1.1, Vue.js SPA). DMZ → 192.168.1.100. Public IP 100.1.100.63. Hairpin NAT broken (worked-around with iptables OUTPUT DNAT).
+### Verizon Fios / CR1000A
+Home ISP + ISP-supplied router (Verizon CR1000A WNC, MAC `ac:91:9b:6c:9b:69`, 192.168.1.1, 2.5GBASE-T LAN). HTTPS admin (self-signed, Vue.js SPA) — **Alton has no admin credential**, blocking direct port-forward changes; this is the active gating constraint on rtxserver vast.ai onboarding. DMZ host = 192.168.1.100 for vast.ai. Public IP 100.1.100.63. Hairpin NAT broken (worked-around with iptables OUTPUT DNAT). Bridge-mode pivot to UCG-Pro is on the table.
+- `sartor/memory/reference_home_network.md` (line 51)
 - `sartor/memory/reference/network.md`
 - `sartor/memory/MACHINES.md` Network section
+- `sartor/memory/projects/unifi-takeover-2026-05-01-network-census.md` (line 159 — full ARP/DHCP entry)
+- `sartor/memory/projects/unifi-takeover-2026-05-01-final-census.md` (line 196)
+- `sartor/memory/projects/unifi-takeover-2026-05-01-phase3-hardening-plan.md` — IPv6 firewall + DHCP scope notes
+- `sartor/memory/projects/unifi-takeover-2026-05-01-INDEX.md` (UCG-Pro decision point #6)
+- `sartor/memory/projects/rtxserver-vastai-watch.md` — blocker #1 (the WAN-decision)
+- `sartor/memory/LEARNINGS.md`
 - `CLAUDE.md` Infrastructure Reference → Network
 - `sartor/conversation_extract.py:398`
 
@@ -324,13 +352,16 @@ Middle child. DOB 2017-07-29 (age 8). MKA primary. Wohelo summer camp Jun 25 –
 - `sartor/conversation_extract.py:394`
 
 ### vast.ai
-GPU rental marketplace. Account alto84@gmail.com (Google OAuth). Solar Inference LLC owns machine 52271 (RTX 5090 on gpuserver1). Listed at $0.30/hr on-demand; under reserved contract C.34113802 at ~$0.20/hr through 2026-08-24.
+GPU rental marketplace. Account alto84@gmail.com (Google OAuth). Solar Inference LLC owns machine 52271 (RTX 5090 on gpuserver1, listed at $0.30/hr on-demand, under reserved contract C.34113802 at ~$0.20/hr through 2026-08-24). **Second machine pending**: rtxpro6000server with target list `-g 1.25 -b 1.00 -s 0.10 -m 2 -l "6 months"` ($2.50/hr dual-rental); paused on Verizon Fios WAN-decision. Vast.ai docs explicitly forbid host GPU usage during paid rental — `vastai_kaalia` heartbeat to 52.90.216.45:7071 is the host-side trust anchor.
+- **Living tracker (rtxserver):** `sartor/memory/projects/rtxserver-vastai-watch.md`
 - `sartor/memory/MACHINES.md` Vast.ai Hosting
 - `sartor/memory/business/solar-inference.md`
-- `sartor/memory/business/rental-operations.md`
+- `sartor/memory/business/rental-operations.md`, `business/rental-policy.md`
 - `sartor/memory/reference/reference_vastai_market_pricing.md`
 - `sartor/memory/skills/gpuserver1-market-pricing/`
-- `.claude/skills/vastai-market-scan/SKILL.md`
+- `.claude/skills/vastai-market-scan/SKILL.md`, `.claude/skills/peer-comms/SKILL.md`
+- `sartor/memory/inbox/rocinante/rtxserver-vastai-decisions-2026-05-02.md`
+- `sartor/memory/inbox/gpuserver1/rtxserver-vastai-onboarding-2026-05-02.md`
 - `sartor/conversation_extract.py:399-400`
 - `work/solar-inference/vast-ai-operations.md`
 
@@ -358,6 +389,9 @@ Vishala's summer camp 2026 (full session, Jun 25 – Aug 12, Raymond ME). Direct
 | Google Drive catalog | `sartor/memory/reference/google-drive-catalog-2026-05-02.md` | ~135 Drive docs across 16 queries (snapshot) |
 | Operating Agreement | `sartor/memory/reference/OPERATING-AGREEMENT.md` | Peer-machine governance (Rocinante ↔ gpuserver1 ↔ rtxpro6000server) |
 | Household Constitution | `sartor/memory/reference/HOUSEHOLD-CONSTITUTION.md` (v0.3) | Master rules for the home agent |
+| rtxserver vast.ai watch | `sartor/memory/projects/rtxserver-vastai-watch.md` | Living tracker: blockers, open work, pre-fire research, resume command-list |
+| Search-first audit log | `sartor/memory/reference/search-first-audit-log.md` | Incidents where federated search wasn't run (memory-agents output) |
+| Memory-agents team config | `~/.claude/teams/memory-agents/config.json` | Team roster + member personas (off-repo, persistent) |
 
 ## 4. Worked example — "185 Davis Avenue"
 
@@ -371,9 +405,9 @@ A reader asks "what's 185 Davis?" — here is the federated reconstruction.
 | `sartor/conversation_extract.py:406` | Routing rule: any sentence containing "Leader Bank" should route to `BUSINESS.md` under entity "185 Davis" |
 | `sartor/memory/feedback/search-memory-first.md` | Records the 2026-05-02 incident where this exact federated reconstruction was missed |
 
-**Reconstructed entity:** 185 Davis Avenue is a jointly-owned **rental condo** mortgaged through **Leader Bank**, insured through **Vermont Mutual** (condo policy), generating $4,600/mo rental income against $3,600 mortgage + $700 condo fee + $300 management fees. Documented across **5 federation roots**, no single canonical hub file.
+**Reconstructed entity:** 185 Davis Avenue is a jointly-owned **rental condo** mortgaged through **Leader Bank**, insured through **Vermont Mutual** (condo policy), generating $4,600/mo rental income against $3,600 mortgage + $700 condo fee + $300 management fees. Documented across **5 federation roots**, with canonical hub at `BUSINESS.md::Rental Property` as of 2026-05-02 evening (commit `9d09797`).
 
-**Federation gap flagged:** `sartor/memory/BUSINESS.md` does not currently have a 185 Davis section even though `conversation_extract.py` routes facts there. Worth a follow-up edit by the family-curator.
+**Federation gap closed 2026-05-02 evening:** earlier today this entry flagged that `sartor/memory/BUSINESS.md` had no 185 Davis section despite `conversation_extract.py` routing facts there. The `## Rental Property — 185 Davis Avenue` section now exists and explicitly references the routing rule, finances.json, and the doc trail. Federation gap resolved; the worked example stands as a method demonstration.
 
 ## 5. Exclusions (do not list)
 
@@ -397,4 +431,5 @@ Names, addresses, schools, vendors, entity-relationships are fine; that is the p
 
 ## History
 
+- 2026-05-02 evening: Refresh pass. Promoted 185 Davis to "canonical hub at BUSINESS.md::Rental Property" (commit 9d09797 closed the gap). Added new entities: Climate First Bank ($219,414.50 disbursement; new `feedback/artifact-vs-fact-not-found.md`), Verizon CR1000A (the actual ISP-side router, MAC `ac:91:9b:6c:9b:69`, blocking rtxserver vast.ai onboarding), Memory-Agents Team (this team). Added systemd-unit refs to gpuserver1 (`claude-tmux`, `nvidia-power-cap`, `rgb-status`) and rtxpro6000server (`nvidia-power-cap`, `sartor-claude-peer`). Re-pointed vast.ai and rtxpro6000server to the new `projects/rtxserver-vastai-watch.md` living tracker. Added new federation root: `~/.claude/teams/` (off-repo, persistent multi-agent team configs). Updated §3 indexes table with three new entries. Worked example §4 now reflects the closed gap rather than an open one.
 - 2026-05-02: Initial build by cartographer (memory-agents team). 50 entities indexed across 6 federation roots. Triggered by 185 Davis incident (see [[feedback/search-memory-first]]).
