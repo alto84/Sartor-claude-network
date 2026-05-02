@@ -40,15 +40,22 @@ A Claude Code instance authenticated to **Aneeta's own Claude account**, integra
 - Authenticate with **Aneeta's Claude account** (not Alton's): run `claude` in a terminal, follow the OAuth flow that opens in her browser. Important: this is HER credential, billing goes to HER account.
 - Verify: `claude --version` should print OK.
 
-### 3. Clone the Sartor memory repo
+### 3. Clone the Sartor memory repo from rtxserver bare (NOT GitHub)
+
+As of 2026-05-02 the canonical git remote is the bare repo on rtxserver, not GitHub. See [[reference_memory_server]] for full architecture. Aneeta's laptop never needs GitHub credentials at all — much cleaner.
 
 ```bash
+# First: SSH-key setup (one-time)
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
+cat ~/.ssh/id_ed25519.pub  # copy this output, Alton appends to rtxserver:~/.ssh/authorized_keys
+
+# Then clone:
 cd ~
-git clone https://github.com/alto84/Sartor-claude-network.git
+git clone alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git
 cd Sartor-claude-network
 ```
 
-For private-repo access: she needs to be added as a GitHub collaborator on `alto84/Sartor-claude-network`, OR generate a personal-access-token. Alton's call which path. (She doesn't need GitHub credentials capable of pushing — only Rocinante pushes per the constitution. But she does need to clone + pull.)
+What this gets her: `origin` already pointing at the rtxserver bare. She can push directly. Her commits show up on GitHub within 15 min via Rocinante's mirror task. No GitHub account needed, no PAT to rotate, no collaborator invite to manage. The whole multi-machine substrate is now SSH-key-only on the LAN.
 
 ### 4. Run Claude Code from the repo directory
 
@@ -103,7 +110,8 @@ This is the main difference from the rtxserver pattern (always-on). The peer-com
 - ✅ Inbox directory `sartor/memory/inbox/aneeta-peer/` with placeholder
 - ✅ This setup guide
 - ✅ Repo current — she clones latest after we push the takeover commits
-- ⏳ Add her as GitHub collaborator on `alto84/Sartor-claude-network` — Alton's quick step
+- ✅ Memory-server topology in place (2026-05-02): canonical git is the rtxserver bare repo, GitHub is a DR mirror. Her path is now SSH-key-only — no GitHub account needed.
+- ⏳ Append her SSH pubkey to `rtxserver:~/.ssh/authorized_keys` once she generates one — Alton's quick step (or Aneeta does it via `ssh-copy-id` if she has Alton's SSH access)
 - ⏳ Add her to UniFi controller as Admin — separate quick step
 - ⏳ OPERATING-AGREEMENT amendment — defer until her peer is actually online (don't preregister phantom peers)
 
