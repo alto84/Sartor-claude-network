@@ -18,6 +18,17 @@ tags: [project/active, project/paused, machine/rtxpro6000server, vast-ai]
 
 # rtxserver vast.ai onboarding watch
 
+> **CANONICAL LISTING COMMAND (supersedes all earlier `-g 2.50 -m 1` planning):**
+>
+> ```
+> vastai list machine <id> -g 1.25 -b 1.00 -s 0.10 -m 2 -l "6 months"
+> ```
+>
+> $1.25/GPU × 2 GPUs = $2.50/hr dual-rental. `-m 2` forces both-cards-as-one-chunk.
+> Per-GPU pricing semantics confirmed via live `vastai list machine --help`;
+> see "Pre-fire research Q1" below for full derivation. Earlier `-m 1` references
+> are preserved as audit trail; do not use them to fire the listing.
+
 ## TL;DR
 
 rtxpro6000server is hardware-ready, BMC-tuned, peer-Claude-online, network-open
@@ -71,7 +82,7 @@ during the day; new top blocker is the kaalia host-package install.
 - **OAuth credentials sync every 4h (2026-05-02).** Windows Scheduled Task `Sartor Peer Creds Sync` SCPs fresh `~/.claude/.credentials.json` to rtxserver every 4 hours, keeping the peer Claude's tokens within Anthropic's refresh window across daytime reboots. (commit d78c502)
 - **Memory server canonical path (2026-05-02).** `alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git` is the bare repo all peers push to. Peer-Claude-on-rtxserver pushes to its own host's bare repo. (commits 738d4fb, 7427a7e)
 - **Pricing target validated against live market (2026-05-02).** Dual RTX PRO 6000 WS market via vastai CLI: $1.74-$2.93/hr verified-rentable (median $2.14). Broader visible UI floor: $1.85-$2.72/hr (median ≈$2.00). $2.50 lands at the 75th-85th percentile depending on which median you cite — defensible as a "192 GB combined VRAM is differentiated" anchor. New `vastai-market-scan` skill captures the methodology including the MUI Select Chrome MCP recipe. (commit de2b5d7)
-- **Commercial decisions captured (2026-05-02).** $2.50/hr listed, `-m 1` (single rentable unit, 192 GB combined VRAM as market differentiator), Solar Inference LLC Stripe payout (consolidated with gpuserver1), port range 40100-40199 (separate from gpuserver1's 40000-40099), manual port-forward (NOT shared DMZ — Fios doesn't support two DMZ hosts), rgb_status.py port skipped (BMC owns lighting). (commit 43cf9dd, file `inbox/rocinante/rtxserver-vastai-decisions-2026-05-02.md`)
+- **Commercial decisions captured (2026-05-02).** $2.50/hr listed, `-m 1` (single rentable unit, 192 GB combined VRAM as market differentiator), Solar Inference LLC Stripe payout (consolidated with gpuserver1), port range 40100-40199 (separate from gpuserver1's 40000-40099), manual port-forward (NOT shared DMZ — Fios doesn't support two DMZ hosts), rgb_status.py port skipped (BMC owns lighting). (commit 43cf9dd, file `inbox/rocinante/rtxserver-vastai-decisions-2026-05-02.md`) **[SUPERSEDED 2026-05-02 evening by Pre-fire research Q1: `-g` is per GPU, not per rental. Canonical flags are now `-g 1.25 -b 1.00 -m 2` → $2.50/hr dual-rental. The price target ($2.50 dual), payout entity, port range, and DMZ decisions all stand. The `-m 1` morning-of-2026-05-02 framing remains in this entry as audit trail.]**
 - **Replication template captured (2026-05-02).** gpuserver1's peer Claude wrote a self-contained read-back of its own configuration (live crontab, iptables, UFW, kaalia paths, scripts verbatim) into `inbox/gpuserver1/rtxserver-vastai-onboarding-2026-05-02.md` (commit fd80cc3). This is the canonical "how to bring up the second host" doc.
 
 ## Open work (ordered)
