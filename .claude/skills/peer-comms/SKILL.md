@@ -100,8 +100,8 @@ ssh alton@<peer-ip> 'ls ~/Sartor-claude-network/sartor/memory/inbox/<host>/ 2>&1
 
 | Symptom | Diagnosis | Fix |
 |---|---|---|
-| `error connecting to /tmp/tmux-*/default` | tmux server died (peer rebooted, oom-killer, manual kill) | `ssh alton@<peer> 'tmux new-session -d -s claude-team-1 -x 200 -y 50 "cd ~/Sartor-claude-network && claude --dangerously-skip-permissions"'`, wait 6s, capture-pane to confirm Claude is up |
-| `Please run /login · API Error: 401` | OAuth token expired | `scp ~/.claude/.credentials.json` from Rocinante, restart Claude in the pane (kill + new-session) |
+| `error connecting to /tmp/tmux-*/default` | tmux server died (peer rebooted, oom-killer, manual kill) | **rtxserver (since 2026-05-02): systemd auto-respawns the session** — just run `ssh alton@192.168.1.157 'systemctl --user start sartor-claude-peer.service'` to force a respawn, OR wait for the next reboot which auto-starts. **gpuserver1 (no systemd unit yet): manual** — `ssh alton@<peer> 'tmux new-session -d -s claude-team-1 -x 200 -y 50 "cd ~/Sartor-claude-network && claude --dangerously-skip-permissions"'`, wait 6s, capture-pane to confirm Claude is up |
+| `Please run /login · API Error: 401` | OAuth token expired | Run `powershell.exe -ExecutionPolicy Bypass -File C:\Users\alto8\scripts\sartor-creds-sync.ps1` from Rocinante to push fresh creds to all peers, then restart Claude on the peer (`systemctl --user restart sartor-claude-peer.service` on rtxserver, or kill+new-session on gpuserver1). The 4h scheduled task usually keeps tokens fresh, so this manual step is rare. |
 | `tmux capture-pane` returns empty | Pane too narrow, OR session just started, OR captured before output flushed | Re-create session with `-x 200 -y 50`, sleep 3-5s after submit before capturing |
 | send-keys "Enter" appears literally in pane | Used `Enter` instead of `C-m` | Send `C-m` separately (always two send-keys calls — one for text, one for C-m) |
 | Bash heredoc EOF error sending directive | Apostrophes/backticks in content broke quoting | Use Write + SCP + `$(cat /tmp/...)` instead of inline heredoc |
@@ -114,12 +114,17 @@ ssh alton@<peer-ip> 'ls ~/Sartor-claude-network/sartor/memory/inbox/<host>/ 2>&1
 ### rtxpro6000server (192.168.1.157)
 
 - **Hardware:** dual RTX PRO 6000 Blackwell (96GB each, slots 3+7), Threadripper PRO 7975WX, ASUS WRX90E-SAGE SE, Noctua NH-U14S TR5-SP6 (air, zero TDP headroom on 7975WX), be quiet! 1600W PSU
-- **Wall outlet:** 120V/15A — 1400W continuous ceiling. **Cap GPUs at 475W/card** for sustained work (1350W system); 500W will tag the breaker and approach 88°C abort threshold on GPU0.
+- **Wall outlet:** 120V/15A — 1400W continuous ceiling. **Production cap 450W/card** (set 2026-05-02 after thermal stress sequence; was 475W previously). 500W will tag the breaker and approach 88°C abort threshold on GPU0.
+- **Power-cap persistence:** systemd unit `nvidia-power-cap.service` re-applies `nvidia-smi -pl 450` on boot, ordered before docker.service. **Do not manually run `nvidia-smi -pl 600` and walk away** — the systemd unit only fires on boot, not periodically. If you change pl manually for a test, revert before any rental container starts.
+- **Peer Claude auto-respawn:** user-level systemd unit `sartor-claude-peer.service` spawns `tmux new-session ... claude --dangerously-skip-permissions` at boot. Lingering enabled for `alton`. **To restart manually:** `systemctl --user restart sartor-claude-peer.service`. **No need to run `tmux new-session` by hand on rtxserver.**
+- **BMC fan curves saved (persistent in firmware, applied 2026-05-02 via Chrome MCP):** Zones 2-6 set to 30°C/50% → 50°C/75% → 60°C/90% → 70°C/100%. Confirmed Phase B safe at 475W × 2 for 5 min (Tctl peak 65°C). Less aggressive curves were the historical Tctl bottleneck.
 - **GPU asymmetry:** GPU0 (slot 3) runs ~11°C hotter than GPU1 (slot 7) under same load. Slot 3 is the hot slot.
-- **CPU thermal coupling:** Noctua intake warms ~48°C from GPU exhaust ambient alone. Avoid simultaneous CPU+GPU max-load workloads.
+- **CPU thermal coupling:** Noctua intake warms ~48°C from GPU exhaust ambient alone in single-card mode (only PCIE03 fan zone engaged). Dual-card mode breaks the recirculation loop — both PCIE07+PCIE03 fans run hard. Tctl is healthier under dual-card load than single-card load.
+- **Front-fan PWM-cord override:** physical PWM cord from front-flower fans to motherboard can be unplugged + remote control set to MAX, giving hardware-100% airflow regardless of BMC PWM-scaling cap on CHA_FAN2/3 (which is stuck at 71% nameplate even at commanded 100%).
 - **Working dir:** `~/Sartor-claude-network`
 - **Venv:** `~/ml/bin/activate` (torch 2.10+cu128)
 - **No GitHub credentials** — peer commits locally; Rocinante fetches via `rtxserver` remote
+- **vast.ai onboarding state:** PAUSED 2026-05-02 pending network topology pivot. Resume from `inbox/rtxpro6000server/RESUME-vastai-onboarding-2026-05-02.md`. Don't fire `vastai list machine` until port-forward path is decided.
 - **No vast.ai rental** — clean GPU access for research
 
 ### gpuserver1 (192.168.1.100)
