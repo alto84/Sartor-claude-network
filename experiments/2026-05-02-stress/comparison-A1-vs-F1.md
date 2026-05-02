@@ -103,6 +103,60 @@ Phase B's first fire (15:28:23Z) had only GPU0 actually loaded — `b-gpu1.log` 
 
 Concurrent kill-mechanics issue surfaced too: `kill -TERM $!` of a backgrounded `( cmd ) &` subshell does NOT propagate to the gpu_burn binary inside (subshell PID ≠ exec'd PID when there's I/O redirection). My initial mid-test kill on the failed first-B at 15:30Z killed the bash subshells but left two orphan gpu_burn processes (PIDs 1346706, 1346769) running — Rocinante caught this externally with `pkill -KILL -f gpu_burn` and let GPU0 cool. Lesson booked: any future kill of `( ... ) &` constructs MUST use `pkill -KILL -f <binary>` or send to process group, not stored `$!`.
 
+## Production envelope (2026-05-02 close)
+
+Alton's call after reviewing all three runs: **good enough — limit to 450W and call it a day.** Rocinante set `nvidia-smi -pl 450` on both cards immediately after Phase B. This is the production setting going forward; **do not revert to 600W**.
+
+### Settings persisting after this run
+
+| Setting | Value | Set by | Persistence |
+|---------|-------|--------|-------------|
+| GPU0 power.limit | **450 W** | Rocinante (post-B wrap) | Across reboots? `nvidia-smi -pl` is NOT persistent by default — needs `nvidia-persistenced` enabled OR a systemd unit / cron @reboot to re-apply. **Currently NOT persistent across reboots; re-apply on boot.** |
+| GPU1 power.limit | **450 W** | same | same |
+| BMC fan source bindings | Zones 2-6 → PCIE03/PCIE07 per 04-29 confirmation | Rocinante 04-29 Chrome MCP | YES — persistent in BMC firmware |
+| BMC fan curves (Zones 2-6) | A=30/50, B=50/75, C=60/90, D=70/100 | Rocinante 05-02T14:46Z Chrome MCP | YES — persistent in BMC firmware |
+| BMC fan mode | Customized | auto-promoted from Generic on first per-zone Save | YES |
+| Sampler | stopped 15:45:01Z | rtxserver | n/a (one-shot test; no daemon left running) |
+| nct6798 enable=5 | restored on all touched channels | rtxserver post-attempt restore | yes |
+
+### Why 450W is the right cap
+
+- Phase B at 475W produced GPU0=84°C peak under 5-min sustained dual-card load — 1°C from the 85°C SOFT abort and 4°C from 88°C HARD.
+- 04-22 LoRA training run drew approximately 1080W system (450W × 2 ≈ same wall budget) — the historical sustainable point.
+- Linear-ish power-temp scaling: −25W/card → ~−3°C GPU die. Projected GPU0 peak at 450W/card sustained: ~80-81°C. Five-degree thermal buffer to SOFT abort.
+- Tctl in dual-card mode is excellent under aggressive curves (65°C peak at 475W; will be even better at 450W). CPU side has 30°C of margin.
+- Wall power at 450W × 2 + 200W baseline ≈ 1100W. **300W of breaker margin** (vs the historical 1380W abort threshold and 1400W breaker).
+
+### What this means for sustained workloads
+
+| Workload | Per-card cap | Wall envelope | Status |
+|----------|-------------:|---------------|--------|
+| Sustained dual-card inference / training | **450 W** | ~1100 W | **PRODUCTION-READY** with current cooling |
+| Ad-hoc burst (≤5 min) | 475 W (manual) | ~1150 W | Safe, but mind the abort triggers |
+| Single-card development / testing | 450-475 W | 575-625 W | Safe |
+| Future "uncapped" — would require new cooling | 600 W | ~1400 W | NOT AUTHORIZED until cooling upgrade + re-test |
+
+### Three 140 mm fans — DEFERRED
+
+Current envelope is good enough. The three 140 mm fans on hand are **NOT** required for thermal capacity at the 450W production cap. **Hold them in reserve** for any of:
+
+- Decision to increase per-card cap above 450W for a sustained workload (e.g., a training run that wants 500W/card) — at that point install Fan #1 (CHA_FAN4 + rebind to PCIE03) first and re-test
+- Sub-78°C GPU0 target for warranty / longevity reasons (some literature suggests sustained ≥80°C accelerates GDDR memory wear) — same install path
+- Visible asymmetry concerns (e.g., GPU0 throttling under specific workloads) — install Fan #2 (side-bracket aimed at slot 3) first
+- Failure replacement (one of the existing fans dies) — keep at least one 140 mm as a hot-standby
+
+### What to validate going forward
+
+- **First boot after a reboot:** verify `nvidia-smi -pl 450` re-applied. If not auto-applied, document the boot-time hook (cron @reboot, systemd unit, or `nvidia-persistenced` config).
+- **First sustained workload (e.g., LoRA training run >30 min) under the new envelope:** re-run a quick sampler capture to confirm GPU0 stabilizes ≤80°C and Tctl stays ≤65°C as projected.
+- **Quarterly:** re-run the full A1+F1+B harness as a regression test. Hardware ages; thermal paste degrades; fan bearings wear. Catching drift early is cheaper than catching it late.
+
+### What to remember
+
+- The aggressive BMC curves are the single biggest improvement from today's work — they take Tctl from 87.8°C (04-29 baseline) to 65°C (today's B). They are persistent in BMC firmware and survive reboots.
+- The cooling-marginal verdict from 04-29 is RESOLVED at the 450W operating point. The original "78-85°C marginal band" was based on 475W/card data; at 450W the same hardware sits comfortably in the green band.
+- Single-card workloads have a different thermal profile than dual-card — beware: a single-card workload may produce HIGHER Tctl than dual-card because half the chassis fans stay at idle floor. If running a single-GPU workload at sustained 475W, monitor Tctl. (At 450W single-card, the F1 data suggests Tctl peak ~74°C — under threshold, safe.)
+
 ## Critical finding: Tccd4 fully fixed but Tctl barely moved
 
 **The aggressive curves completely resolved the localized GPU0→Tccd4 impingement.** All four CCDs are now uniform at ~49°C peak — the historical "Tccd4 hot-spot" pattern documented in HARDWARE.md is GONE under F1. This is conclusive evidence that the front-intake fans can hit the front-of-CPU region effectively when driven hard enough.
