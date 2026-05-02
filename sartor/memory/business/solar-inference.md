@@ -61,12 +61,11 @@ Pre-revenue NJ multi-member LLC (50/50 Alton + Aneeta) combining Tesla Solar Roo
 - **Offer ID:** 32099437
 - **Hardware:** RTX 5090 (32GB VRAM), Intel i9-14900K, 128GB DDR5
 - **Server name:** gpuserver1 (192.168.1.100 on LAN)
-- **Pricing:** $0.40/hr GPU, $0.25/hr min bid, $0.10/hr storage
-- **Listing expiry:** 2026-08-24 (must relist before this date)
-- **Utilization (2026-04-09):** **ZERO rentals**, earning $0.31/day storage only, balance $13.81 as of last check
-- **Recent incident:** machine went offline 2026-04-04 (45 min inactive); no follow-up emails, likely recovered
+- **Pricing (live 2026-05-02):** $0.30/hr on-demand listed, $0.25/hr interruptible floor. Realized ~$0.20/hr under reserved contract C.34113802 (long-term discount). Profitable because RTX 5090 sips power.
+- **Listing expiry:** 2026-10-24 (extended from original 2026-08-24 via web UI). Reserved contract still ends 2026-08-24 — distinct field.
+- **Utilization (2026-05-02):** Continuously rented since 2026-04-05 under reserved contract C.34113802.
 
-The GPU business has been listed and verified since 2026-02-26 but has generated essentially zero rental revenue. This is a persistent pattern and may indicate a competitive pricing problem or marketplace visibility issue. Pricing analysis against comparable RTX 5090 listings has not been completed.
+The GPU business hit profitable utilization in April 2026 once the reserved-contract renter signed up. Long-term reserved pricing ($0.20/hr realized) is below the listed on-demand rate ($0.30) but covers more than the marginal power cost; net positive contribution to Solar Inference LLC revenue.
 
 ## 2025 tax filing status
 

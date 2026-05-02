@@ -45,9 +45,9 @@ The Sartor family lives in Montclair, New Jersey.
 **Platform:** vast.ai
 **Hardware:** RTX 5090 (32GB VRAM), Intel i9-14900K, 128GB DDR5 RAM
 **Machine ID:** 52271 | **Offer ID:** 32099437
-**Pricing (as of 2026-04-19, verified via `vastai show machines`):** $0.35/hr on-demand, $0.26/hr interruptible, $0.40/hr reserved, $3.00/TB upload, $2.00/TB download
+**Pricing (as of 2026-05-02, verified via `vastai show machines`):** $0.30/hr on-demand listed, $0.25/hr interruptible floor, $3.00/TB upload, $2.00/TB download. Currently rented under reserved contract C.34113802 (through 2026-08-24) at ~$0.20/hr realized — a long-term-discount price; profitable at this rate because the 5090 sips power vs. its earnings.
 **Payout:** Stripe (configured)
-**Listing expiry:** 2026-08-24 (must relist before this date)
+**Listing expiry:** 2026-10-24 (was 2026-08-24, extended via the web UI). Reserved-contract C.34113802 still ends 2026-08-24 — distinct field. After that date, evaluate market and relist.
 
 ### Monitoring Responsibilities
 - Track GPU utilization and rental status via `ssh alton@192.168.1.100`
