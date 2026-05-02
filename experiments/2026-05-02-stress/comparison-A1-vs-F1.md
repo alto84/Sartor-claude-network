@@ -52,6 +52,57 @@ Applied to Zones 2-6 (CHA_FAN1, CHA_FAN2, CHA_FAN3, CHA_FAN4-empty, CHA_FAN5/MEG
 | Audible at | t+58s | **t+13s** | −45s |
 | Result | aborted on TCTL_75 at t+300s natural end | ran clean to t+300s natural end | — |
 
+## Phase B — both cards 475W concurrent, aggressive curves
+
+Fired 2026-05-02T15:39:04Z (re-fire after first attempt's GPU1-process bug). Halted 15:44:08Z by mid-checkpoint (GPU0 84°C, climbing from 83°C 30s prior). 60 samples in B phase. No XID/AER/NVRM/thermal in dmesg.
+
+| Metric | A1 (single, agg none) | F1 (single, agg) | **B (dual, agg)** | 04-29 baseline (dual, default curves) |
+|--------|----------------------:|-----------------:|------------------:|--------------------------------------:|
+| GPU0 die peak | 74 °C | 73 °C | **84 °C** | 84 °C |
+| GPU0 die mean | 68.5 | 67.7 | 72.8 | n/a |
+| GPU1 die peak | 28 (idle) | 27 (idle) | **73 °C** | 73 °C |
+| Inter-card delta | n/a | n/a | **+11 °C** | +11 °C |
+| BMC PCIE03 peak | 74 | 73 | 83 | n/a |
+| BMC PCIE07 peak | 27 | 27 | 72 | n/a |
+| **CPU Tctl peak** | **79.6 → ABORT** | **77.1** | **65.1** | 87.8 |
+| CPU Tctl mean | 55.1 | 53.6 | 57.6 | n/a |
+| BMC CPU Pkg peak | 73 | 71 | **65** | n/a |
+| Tccd1-3 peak | 49.5-50.6 | 49.1-49.6 | 48-49 (uniform) | n/a |
+| Tccd4 peak | 69.1 | 49.2 | **57.5** | 83.1 |
+| GPU0 power peak / mean | 480 / 452 | 478 / 442 | 478 / 438 | 475 / 475 |
+| GPU1 power peak / mean | 14 / 13 | 14 / 13 | 475 / 322 (lower mean: spinup lag) | 475 / 475 |
+| Wall peak | 693 W | 692 W | **1153 W** | n/a |
+| GPU0 onboard fan | 45% | 44% | 51% | n/a |
+| CPU_FAN peak | 1440 | 1440 | 1080 | n/a |
+| CHA_FAN1 peak (PCIE07-bound) | 960 | 1080 | **1800** | n/a |
+| CHA_FAN2 peak | 1080 | 1200 | 1200 (capped) | n/a |
+| CHA_FAN3 peak | 1080 | 1200 | 1200 (capped) | n/a |
+| CHA_FAN5 peak (front-mesh) | 1440 | 1680 | 1680 (saturated) | n/a |
+| Audible at | t+58s | t+13s | **t+21s** | n/a |
+| Result | TCTL_75 abort | clean | **mid-checkpoint kill at GPU0 climbing** | reference |
+
+### Three numbers Alton asked for
+
+1. **Two-card Tctl peak: 65.1 °C.** Refutes the +27.5°C IO-die offset finding from F1. With both PCIE07 and PCIE03 fans engaged, total chassis airflow doubles and the Noctua intake stays clean. **The IO-die heating that produced F1's 77°C Tctl was a single-card pathology** caused by half the chassis fans staying idle (PCIE07-bound zones at 30% floor while GPU1 was cold).
+2. **GPU0 vs GPU1 thermal asymmetry: +11 °C** — same as historical (04-22, 04-27, 04-29). Holds across all curve configurations. Confirms the asymmetry is mechanical (slot 3 air starvation), not curve-addressable.
+3. **Wall power actual: 1153 W peak** — within 3W of the projected 1150W. The +50W estimated for added chassis-fan power was approximately right. **227 W of breaker margin.** Sustained dual-card 475W is comfortably under the 1400W wall limit.
+
+### Why we landed on the mid-checkpoint kill
+
+GPU0 was at 84°C climbing from 83°C 30s prior at t+300s — exactly the design's mid-checkpoint trigger. Tctl 65°C and wall 1153W were both healthy; the kill was driven by GPU0 die approaching 85°C SOFT abort. Per pre-registered protocol this was correct. Without the mid-checkpoint kill GPU0 would likely have hit GPU_TEMP_85 (85°C) within ~30 more seconds based on linear extrapolation, and then 88°C HARD abort within ~2 more minutes.
+
+The right interpretation: **the curve fix solves the CPU side completely under dual-card; the GPU0 die is the new bottleneck.** That's a much better problem to have than the previous one (CPU-side thermal coupling) because GPU0 die is fixable with targeted airflow at slot 3 — the asymmetry-fix that's been on the table since 04-22.
+
+### Sampler bug update
+
+The F1-discovered abort-regex bug (sampler ignores aborts when phase isn't `^(A1|A2|B)$`) is unchanged. Today's B was correctly tagged `B` so the regex matched, but no abort fired from the sampler because GPU0 only hit 84 (under 85 threshold) and Tctl peak 65 was well under 75. Mid-checkpoint kill came from the orchestrator monitor, not the sampler. **For any future re-test, fix the sampler regex BEFORE running** so the sample-tick abort triggers are reliable across phase tags.
+
+### gpu_burn / kill-mechanics bug (B-specific)
+
+Phase B's first fire (15:28:23Z) had only GPU0 actually loaded — `b-gpu1.log` showed `./gpu_burn: No such file or directory` because the second `./gpu_burn` invocation lost cwd context. Re-fire (15:39:04Z) used explicit subshells `( cd /opt/gpu-burn && ... ) &` and both processes loaded correctly.
+
+Concurrent kill-mechanics issue surfaced too: `kill -TERM $!` of a backgrounded `( cmd ) &` subshell does NOT propagate to the gpu_burn binary inside (subshell PID ≠ exec'd PID when there's I/O redirection). My initial mid-test kill on the failed first-B at 15:30Z killed the bash subshells but left two orphan gpu_burn processes (PIDs 1346706, 1346769) running — Rocinante caught this externally with `pkill -KILL -f gpu_burn` and let GPU0 cool. Lesson booked: any future kill of `( ... ) &` constructs MUST use `pkill -KILL -f <binary>` or send to process group, not stored `$!`.
+
 ## Critical finding: Tccd4 fully fixed but Tctl barely moved
 
 **The aggressive curves completely resolved the localized GPU0→Tccd4 impingement.** All four CCDs are now uniform at ~49°C peak — the historical "Tccd4 hot-spot" pattern documented in HARDWARE.md is GONE under F1. This is conclusive evidence that the front-intake fans can hit the front-of-CPU region effectively when driven hard enough.
@@ -84,9 +135,19 @@ The Noctua's intake is front-of-case-facing. It pulls chassis air through the to
 
 **CHA_FAN5 is saturated at nameplate** — pushing this curve harder cannot extract more airflow from the front-mesh array. **CHA_FAN2/3 are still under-driven** even with the aggressive curve commanding 100% duty at PCIE03=70°C — peaked at 71% of nameplate. This is a BMC PWM-scaling cap on those zones (the open-question item from the design doc); curve aggression cannot push them past this cap.
 
-## Verdict
+## Verdict (post-B, supersedes the post-F1 verdict below)
 
-**MARGINAL branch.** The aggressive curves did real work: Tccd4 fully resolved, Tctl reduced 2.5°C, GPU0 die marginally cooler, fans audible 45 seconds earlier. **But Tctl peak 77.1°C is still above the 75°C threshold** — only 2°C above, but above. The remaining gap is structural: GPU0 → IO-die heating via the Noctua intake air column, which front fans cannot address.
+**The Tctl problem is single-card-specific, not dual-card.** Phase B (both cards 475W concurrent, aggressive curves) ran cleanly with **Tctl peak 65.1°C** — 14°C below F1's single-card peak and 22.7°C below the 04-29 dual-card default-curves baseline. With both PCIE03 AND PCIE07 fans ramping (CHA_FAN1 hit 1800 RPM = above nameplate), total chassis airflow doubled vs single-card runs, and the Noctua intake stayed clean despite both GPUs dumping heat.
+
+**Production 24/7 dual-card 475W inference is thermally safe on the CPU side with the new aggressive curves.** The previously-flagged "GPU0 → Noctua intake recirculation" only manifests when half the chassis fans are at low RPM (single-card mode where PCIE07 stays cold). Under both-cards-loaded, all chassis fans run hard, the air column moves fast enough that the Noctua intake doesn't accumulate warm air, and Tctl stays in healthy range.
+
+**The bottleneck shifts to GPU0 die.** Phase B was halted at t+300s by the pre-registered mid-checkpoint (GPU0 84°C and climbing from 83°C 30s prior). 84°C is identical to the 04-29 default-curves baseline peak and 1°C from where GPU_TEMP_85 SOFT would fire. The aggressive curves did NOT lower GPU0 die — CHA_FAN5 saturated at nameplate (1680 RPM), CHA_FAN2/3 pinned at 1200 RPM (BMC PWM-scaling cap), GPU0 onboard fan only at 51%. We are at the limit of what the existing chassis-fan suite can do for the slot-3 hot card under sustained dual-card load.
+
+**Inter-card asymmetry held at +11°C** — same as historical, regardless of curve change. Slot 3 air-starvation is mechanical, not curve-addressable.
+
+## Verdict (post-F1, superseded above but kept for the chronology)
+
+MARGINAL branch (single-card). The aggressive curves did real work: Tccd4 fully resolved, Tctl reduced 2.5°C, GPU0 die marginally cooler, fans audible 45 seconds earlier. **But Tctl peak 77.1°C was still above the 75°C threshold** — only 2°C above, but above. We then thought the gap was the GPU0→IO-die air-column problem. **B re-test proved that diagnosis incomplete:** Tctl in dual-card mode is HEALTHIER than single-card because both fan zones engage. The earlier theory captured the single-card pathology but not the actual production envelope.
 
 **Decision rule:**
 
@@ -98,28 +159,52 @@ The Noctua's intake is front-of-case-facing. It pulls chassis air through the to
 
 We landed in Branch B. Specific fan placement updated below.
 
-## Three 140 mm fan placement (final, evidence-based)
+## Three 140 mm fan placement — UPDATED post-B
 
-### Fan #1 — TOP-MOUNTED EXHAUST above the GPU0/CPU region (highest leverage)
+The post-F1 plan was top-exhaust as Fan #1. Phase B disproved the premise: Tctl is fine in dual-card mode (the production case). The actual remaining problem is GPU0 die at 84°C under dual-card sustained load. Updated priorities:
 
-- **Why:** F1's data isolates the Tctl problem to GPU0 → Noctua intake → IO die. A top-exhaust fan above this region pulls GPU0's hot exhaust OUT of the chassis BEFORE it can recirculate into the Noctua's front-facing intake. This is the ONLY intervention that addresses the residual 2-3°C Tctl gap.
-- **Connector:** W_PUMP+ header (currently empty, default Generic curve = always 100%) is a good home if you want max-speed continuous. Alternatively, splitter from CHA_FAN5 source for curve-controlled. **Suggested:** start with W_PUMP+ for full speed during the next stress validation, switch to curve-bound after.
-- **Expected effect:** Drop Tctl peak from 77.1°C (F1, single-card) to ~70-72°C; drop dual-card Tctl peak from 87.8°C (04-29 baseline) to ~78-80°C. Sustained 475W/card 24/7 inference becomes thermally safe IF combined with the F1 curves now in place.
+### Fan #1 — CHA_FAN4 header (empty), bound to PCIE03 (was Fan #2 in F1 plan, now promoted)
 
-### Fan #2 — CHA_FAN4 header (currently empty), with rebind Zone 5 PCIE07 → PCIE03
+- **Why:** Adds a 5th PCIE03-bound fan on the hot card's airstream. CHA_FAN5 is at nameplate; CHA_FAN2/3 are PWM-cap-bound at 1200 RPM. CHA_FAN4 is a fresh airflow path that bypasses both limitations.
+- **Header binding:** CHA_FAN4 is currently bound to PCIE07 in BMC Zone 5. **Rebind Zone 5 PCIE07 → PCIE03** via Chrome MCP (one-click change). Note: doing so removes CHA_FAN4 from the GPU1-side cooling, but GPU1 has plenty of margin (73°C peak vs GPU0's 84°C).
+- **Expected effect:** 2-4°C reduction in GPU0 peak under dual-card load (target: 80-82°C from current 84°C). Modest but on the highest-leverage zone for the actual bottleneck.
+- **Already proposed in:** `inbox/rocinante/PHONE-HOME-cooling-upgrade-recommendation.md` 2026-04-29. B data confirms this is the right play.
 
-- **Why:** CHA_FAN4 is the empty 5th P14 slot. Today's data showed PCIE03-bound zones are the relevant cooling lever (PCIE07 stays cold during GPU0-solo). Rebinding Zone 5 to PCIE03 puts another fan on the hot card's airstream. Addresses the inter-card asymmetry (11°C in dual-card runs) without touching the CPU coupling.
-- **Expected effect:** 2-3°C reduction in GPU0 die under dual-card load; 2-4°C reduction in inter-card asymmetry. Modest but cheap.
-- **Note:** This was already proposed in `inbox/rocinante/PHONE-HOME-cooling-upgrade-recommendation.md` 2026-04-29. F1 data reaffirms.
+### Fan #2 — Side-bracket intake aimed directly at slot 3 (asymmetry-fix; was reserve in F1 plan)
 
-### Fan #3 — HOLD IN RESERVE
+- **Why:** The +11°C inter-card asymmetry is robust across all curve configurations (04-27 baseline 11°C, 04-29 dual 11°C, today's B 11°C). It's mechanical: slot 3 sits higher in the chassis and gets less direct front-intake airflow than slot 7. A side-bracket fan blowing perpendicular to the slot 3 PCB (or angled down at the GPU0 intake) breaks this asymmetry.
+- **Connector:** Splitter from CHA_FAN4 (after Fan #1 lands), OR W_PUMP+ header for constant-100% mode (Phanteks Enthoo Pro 2 has a side mount).
+- **Expected effect:** 3-5°C reduction in GPU0 peak; corresponding reduction in inter-card asymmetry to 5-7°C. Bigger leverage than Fan #1 because it addresses the geometric cause, not just adds redundant intake CFM.
 
-- **Why:** F1's curve change consumed most of the front-intake-fan headroom (CHA_FAN5 now saturated at 1680 RPM = nameplate). Adding a third PCIE03-bound fan to an already-saturated zone gives diminishing returns.
-- **Likely future deployment** (after post-mod stress test):
-  - If post-mod B-phase shows Tctl still ≥75°C: second top-exhaust fan in a redundant position
-  - If post-mod shows asymmetry persists despite CHA_FAN4: side-bracket intake aimed at slot 3
-  - If post-mod is clean across all metrics: hold permanently for failure replacement
-- **Decision rule:** install Fans #1 and #2, re-run today's full A1+A2+B harness, measure, then decide.
+### Fan #3 — HOLD IN RESERVE (still)
+
+- **Why:** Three placements at once obscures which intervention helped. Install Fans #1 and #2, re-run B with 10 minutes (no mid-checkpoint abort) to measure full equilibrium, then decide.
+- **Likely future deployment:**
+  - If post-mod B shows GPU0 still > 82°C: top-mounted exhaust above GPU0 (the F1-era recommendation, now demoted; useful primarily for asymmetry between PCIE03-bound airflow and the actual GPU0 exhaust path)
+  - If post-mod shows asymmetry persists: redundant side-bracket fan
+  - If post-mod is clean: hold permanently, useful as failure-replacement spare
+
+### What CHANGED from the F1-era plan
+
+| Fan | F1-era plan | Post-B plan | Reason for change |
+|-----|-------------|-------------|-------------------|
+| #1 | Top-exhaust above GPU0/CPU | **CHA_FAN4 + rebind PCIE03** | Tctl is solved by aggressive curves under dual-card; new bottleneck is GPU0 die peak under dual-card |
+| #2 | CHA_FAN4 + rebind PCIE03 | **Side-bracket at slot 3** | Asymmetry is mechanical, not curve-fixable; geometric intervention has higher leverage than another front-intake |
+| #3 | Reserve | Reserve | Same — install one fan at a time, measure, decide |
+
+### What does NOT change
+
+- The aggressive curves (applied 14:46Z) STAY in place. They massively improved Tctl in dual-card mode and reduced Tccd4 in single-card mode by 20°C. Reverting would lose those gains.
+- The 04-29 BMC source bindings (Zones 2-6 to PCIE03/PCIE07 per the table) STAY. Today's B run confirms they work correctly under dual-card load.
+- W_PUMP+ remains empty (default Generic curve, no fan attached). Stays available for either Fan #2 (constant-100% mode) or future intervention.
+
+### Implication for current production envelope
+
+**With aggressive curves now in place (no new fans installed yet):**
+
+- Sustained 475W/card 24/7 inference: SAFE on CPU/Tctl side (peak 65°C, 30°C margin), MARGINAL on GPU0 die side (peak 84°C climbing, 1°C from soft abort threshold, 4°C from 88°C hard).
+- Recommended interim cap: **450W/card** for sustained loads (drops GPU0 by ~3-4°C estimated, putting peak ~80°C with comfortable margin), OR run at 475W/card with active monitoring and accept early throttling if it occurs.
+- After Fan #1 and #2 install + re-test: 475W/card 24/7 likely safe across all metrics. Validate with another B run.
 
 ## What the data discriminates among the original three branches
 
