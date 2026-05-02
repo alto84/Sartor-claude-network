@@ -1309,3 +1309,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] Berman Home Systems WiFi-7 install confirmed working
 > Alton's outbound email to Pete@bermanhomesystems.com (May 1 23:53 UTC): "WiFi-7 coverage is exactly what I was hoping for, and the Sonos integration came out clean. Genuinely happy with the work." Subject: "Network management handoff + a few suggestions." Install confirmed complete and satisfactory. $5,000 deposit (card 7436) paid Apr 8. Install Apr 27–29.
+
+## Latest from gather (2026-05-02) — run 40
+
+> [!todo] ACTION_REQUIRED — HIGH | Aneeta LLC draft needs review
+> **Aneeta sent first LLC draft to Alton for review.** aneetasax@gmail.com → alto84@gmail.com, May 2 03:04 UTC. Subject: "Re first draft LLC." Snippet: "Evening, Here is my first stab at my LLC Aneeta." Likely related to her Neurvati Medical Director role or consulting income structure. Alton should review and respond. No deadline stated. See email thread "Re first draft LLC" in Gmail.
+
+> [!fact] Vishala weekly screen time: 11hr 39min (Apr 25–May 1)
+> Microsoft Family Safety weekly report, May 2 01:13 UTC. Screen time within normal range — no escalation flag. See [[family/vishala]].
+
+> [!fact] TODAY — B-34 Lime game at Brookdale (2:00 PM ET, run 40 reminder)
+> B34 Lime vs B34 Charcoal, Brookdale Stadium South, Field 1. 2:00–3:00 PM ET. Vayu confirmed. RSVP thread closed.
