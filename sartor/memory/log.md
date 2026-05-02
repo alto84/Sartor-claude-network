@@ -37,6 +37,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-05-02] ingest | personal-data-gather run 41: CAQH profile expired; CRWV call sold; Cary Grayson Sante Total donation; Disney agent active
+- Sources: Gmail (newer_than:1d, 50 threads), all 5 calendars (May 2–May 9)
+- Net-new facts: 5 (PayPal Cary Grayson → Sante Total; CRWV CoreWeave sold call; CAQH profile expired; Nicol Stevenson Disney Lightning Lanes; Jackrabbit Tech summer gym)
+- New ACTION_REQUIRED: 1 escalation (CAQH expired → reattestation required immediately)
+- Carry-forward open actions: ~30 (2 OVERDUE, carry-forward HIGHs from run 40, others unchanged)
+- Calendar: all 5 stable — no net-new events vs run 40
+- Pages updated: `daily/2026-05-02.md` (run 41), `family/active-todos.md` (run 41), `business/sante-total.md` (run 41), `family/disney-july-2026.md` (run 41), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- KEY ESCALATION: CAQH profile now officially expired (was "requires reattestation"); Mother's Day gift 2 days out; 2 items OVERDUE; Aneeta LLC draft pending review
+
 ## [2026-05-02] ingest | personal-data-gather run 40: Aneeta LLC draft shared; Vishala screen time logged; calendars stable
 - Sources: Gmail (newer_than:2d, 50 threads), all 5 calendars (May 2–May 9)
 - Net-new facts: 2 (Aneeta LLC draft → Alton for review; Vishala screen time 11hr 39min Apr 25–May 1)

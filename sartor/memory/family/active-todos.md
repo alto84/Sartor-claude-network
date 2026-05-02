@@ -1320,3 +1320,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] TODAY — B-34 Lime game at Brookdale (2:00 PM ET, run 40 reminder)
 > B34 Lime vs B34 Charcoal, Brookdale Stadium South, Field 1. 2:00–3:00 PM ET. Vayu confirmed. RSVP thread closed.
+
+## Latest from gather (2026-05-02) — run 41
+
+> [!warning] ESCALATED — CAQH ProView profile now EXPIRED
+> **CAQH ProView reattestation required.** marcom@caqh.org, May 2 12:31 UTC: "This email is associated with one or more expired profiles in the CAQH Provider Data Portal." Previously flagged Apr 12 run 5 as "requires reattestation." Status now upgraded to **expired**. Expired profiles affect insurance credentialing and hospital privileges. Log in to proview.caqh.org and complete reattestation immediately. See [[ALTON]].
+
+> [!fact] FINANCIAL — CoreWeave (CRWV) call sold (May 2)
+> **Fidelity trade confirmation: SOLD CALL (CRWV) COREWEAVE INC COM.** Account XXXXX8998. May 2 11:20 UTC. Trade executed. INFORMATIONAL — no further action needed from this surface.
+
+> [!fact] Sante Total — new PayPal donation from Cary Grayson (May 2)
+> service@paypal.com, May 2 10:02 UTC. Transaction ID: 77M21554G32947412. "You received a payment from Cary Grayson for Sante Total." Amount not visible in snippet — verify in PayPal. Note: Cary Grayson previously donated ~$350+ on 2026-04-02; this is a second donation from the same donor. Log amount and send tax receipt per [[alison-smith|Alison Smith]] pattern. See [[business/sante-total]].
+
+> [!todo] LOW — Jackrabbit Tech Summer Gymnastics (June 23–Aug 18)
+> **Registration open.** 9-week summer session, June 23–August 18, 2026. Price: $200 (no registration fee), $20 off 2nd/3rd sibling. NEW: parent/child summer class. Location: 136 Mountainview Blvd, Wayne NJ, 973-837-8877. Eligible: Vishala (8), Vayu (10), Vasu (4, parent/child class). Decide whether to enroll. From noreply@jackrabbittech.com, May 2 14:29 UTC.

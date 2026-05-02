@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-04-30
+updated: 2026-05-02
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -151,3 +151,8 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!fact]
 > **Donor spreadsheet updated by Alison Smith as of 2026-04-30.** Alison added more donors to the spreadsheet overnight before sending the "Donors" email. No count or amount visible in snippet. This likely follows the Sergei Robinson donation (Apr 27) and possibly others. Verify updated spreadsheet totals before authorizing fund transfer.
+
+## Latest from gather (2026-05-02) — run 41
+
+> [!fact]
+> **New Sante Total PayPal donation — Cary Grayson, May 2 (second donation).** Transaction ID: 77M21554G32947412. Received 05:02:33 CDT (10:02 UTC). "You received a payment from Cary Grayson for Sante Total." Amount not visible in email snippet — verify in PayPal dashboard. Note: Cary Grayson previously donated ~$350+ on 2026-04-02 (listed in donor activity table above). This is a **second donation** from the same donor — unusual and worth a personal thank-you. Add to donor activity table once amount confirmed. Send tax receipt per [[alison-smith|Alison Smith]] pattern. Running 2026 YTD donors: Schall, Yantz, mksinbelair, cfryaniii, Cary Grayson (×2), oates2, Michael Quigg (Apr 14), Christina Stiles (Apr 19), Sergei Robinson (Apr 27), Cary Grayson again (May 2).
