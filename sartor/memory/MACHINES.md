@@ -1,14 +1,14 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-04-29
-updated_by: autodream
-last_verified: 2026-04-12
+updated: 2026-05-02
+updated_by: unifi-takeover-cleanup
+last_verified: 2026-05-02
 status: active
 next_review: 2026-05-12
-tags: [entity/infra, domain/gpu]
+tags: [entity/infra, domain/gpu, infra/network]
 aliases: [Infrastructure, Hardware]
-related: [BUSINESS, PROCEDURES, SELF, MULTI-MACHINE-MEMORY, machines/gpuserver1/MISSION, machines/gpuserver1/CRONS, machines/rocinante/CRONS]
+related: [BUSINESS, PROCEDURES, SELF, MULTI-MACHINE-MEMORY, machines/gpuserver1/MISSION, machines/gpuserver1/CRONS, machines/rocinante/CRONS, projects/unifi-takeover-2026-05-01-INDEX, reference_home_network]
 ---
 
 # Machines - Computer Inventory
@@ -103,6 +103,15 @@ After a 2026-04-12 cleanup that reduced 15 jobs to 5, only these P0/active crons
 - **UPnP:** Available but mappings don't persist on this router — don't rely on it
 - **Router API:** LuCI-based (OpenWrt), save endpoint: `apply_abstract.cgi`, data via Vue.js SPA with Vuex store
 
+### Sartor-Saxena-Claude Network (UniFi, locally administered as of 2026-05-01)
+
+- **Controller:** Rocinante runs the UniFi controller at `https://192.168.1.171:8443` (inform port 8080). MongoDB backing store at `mongodb://127.0.0.1:27117/ace` (loopback, no auth).
+- **9 devices total:** USW-Pro-Max-24-PoE switch (192.168.1.170) + 8 WiFi 7 APs (Hall2ndFloor .167, Gym .165, Basement .168, HerOffice .183, 3rdFloor .166, Livingroom .185, OutdoorBackyard .173, HisOffice in-wall .186).
+- **Single SSID:** `LGP123` (WPA3-SAE + WPA2 transition, `pmf_mode=optional`). PSK lives in the takeover project doc, not here.
+- **Daily `.unf` backup:** Windows Scheduled Task "UniFi Daily Backup" at 3 AM ET → `C:\Users\alto8\backups\unifi\` + OneDrive parallel copy. Script at `C:\Users\alto8\scripts\unifi-daily-backup.ps1`.
+- **Full playbook + credentials + per-AP authkeys + recovery procedures:** [[projects/unifi-takeover-2026-05-01]] (canonical) and [[projects/unifi-takeover-2026-05-01-INDEX]] (dispatch).
+- **Operational note:** if Rocinante reboots, the controller comes back automatically (Java auto-launched by tray app). If Rocinante is offline for an extended period, APs continue running their last-pushed config (broadcast SSIDs, route traffic) but won't accept config changes until it's back. Acceptable for residential.
+
 For operational procedures on these machines, see [[PROCEDURES]].
 Both machines support the [[PROJECTS|active projects]] in this system.
 [[SELF|Sartor]] runs across both machines with git-synced memory.
@@ -132,6 +141,7 @@ Both machines support the [[PROJECTS|active projects]] in this system.
 - 2026-04-07: Multi-machine memory architecture introduced; inbox pattern, curator drain, Operating Agreement. See [[MULTI-MACHINE-MEMORY]].
 - 2026-04-11: run_monitor.sh installed (P0 monitoring, replaces vastai-tend.sh)
 - 2026-04-12: Cron cleanup — 15 jobs → 5 active; vastai-tend.sh, gateway_cron.py, memory-sync.sh, heartbeat-watcher.sh, consolidate-mirror all deprecated/disabled. Operating Agreement ratified: gpuserver1 is inbox-write-only, no direct GitHub push. Price raised to $0.35/hr demand. Hub refresh: added last_verified, cron table, inbox pattern, removed resolved "GitHub SSH" open question.
+- 2026-05-01: UniFi network takeover from Berman Home Systems. 9 devices (1 switch + 8 WiFi 7 APs) repatriated to local controller on Rocinante. New "Sartor-Saxena-Claude Network" sub-section added under Network. Single SSID `LGP123`. Daily `.unf` backup scheduled task installed. See [[projects/unifi-takeover-2026-05-01-INDEX]].
 
 ## Consolidated from daily logs (2026-04-05)
 - [2026-02-06] (completed) Mandelbulb 3D GPU renderer

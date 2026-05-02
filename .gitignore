@@ -58,3 +58,9 @@ data/home-agent/
 
 # Agent memory (leaked from agents with memory:project before fix)
 .claude/agent-memory/
+
+# UniFi backups and authkey files (defensive — actual files live outside the repo
+# at C:\Users\alto8\backups\unifi\, but block by name in case anyone copies one in)
+ap-authkeys-*.json
+*.unf
+firmware.json.bak-*
