@@ -37,6 +37,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-05-02] ingest | personal-data-gather run 40: Aneeta LLC draft shared; Vishala screen time logged; calendars stable
+- Sources: Gmail (newer_than:2d, 50 threads), all 5 calendars (May 2–May 9)
+- Net-new facts: 2 (Aneeta LLC draft → Alton for review; Vishala screen time 11hr 39min Apr 25–May 1)
+- New ACTION_REQUIRED: 1 (Aneeta LLC draft review — HIGH, no hard deadline)
+- Carry-forward open actions: ~25 (2 OVERDUE, 1 new HIGH, others unchanged)
+- Calendar: stable — no net-new events vs run 39
+- Pages updated: `daily/2026-05-02.md` (run 40 appended), `family/active-todos.md` (run 40 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- KEY ESCALATION: Mother's Day gift personalization deadline **2 DAYS** (May 4); Aneeta LLC draft newly surfaced; 185 Davis + CSA checks still OVERDUE
+
 ## [2026-05-02] ingest | personal-data-gather run 39: Berman WiFi-7 confirmed; Gecko Robotics on Hiive; Teacher Appreciation Week; B-34 RSVP closed
 - Sources: Gmail (newer_than:2d, 50 threads), all 5 calendars (May 2–May 9)
 - Net-new facts: 4 (Berman install confirmed, Gecko Robotics Hiive opportunity, Teacher Appreciation Week chalk, LinkedIn message from Aneeta)
