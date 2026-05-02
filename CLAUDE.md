@@ -146,7 +146,7 @@ ssh alton@192.168.1.100 "nvidia-smi"
 - **PII:** Children's full names, birthdates, school details, and medical information for any family member must never appear in reports, logs, or external communications.
 - **Financial:** No autonomous transactions. No trade execution. No fund transfers. Analysis and reporting only.
 - **Communications:** Never send emails, messages, or external communications without explicit approval. Draft and present for review.
-- **Git:** Canonical write target is the bare repo on rtxserver (`alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git`). All peers push there via `origin`. GitHub is a disaster-recovery mirror maintained by Rocinante's "Sartor Memory Mirror" scheduled task (every 15 min). **Never push directly to GitHub from a peer.** See `sartor/memory/reference_memory_server.md` for the full architecture, failure modes, and per-peer onboarding procedure.
+- **Git:** Canonical write target is the bare repo on rtxserver (`alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git`). All peers push there via `origin`. GitHub is a disaster-recovery mirror maintained by Rocinante's "Sartor Memory Mirror" scheduled task (nightly at 3:30 AM ET). **Never push directly to GitHub from a peer.** See `sartor/memory/reference_memory_server.md` for the full architecture, failure modes, and per-peer onboarding procedure.
 
 ### Operational
 - **Confirm before acting** on anything irreversible: deleting files, sending communications, modifying server configurations, or making purchases.
@@ -276,7 +276,7 @@ Defined in `.claude/scheduled-tasks/`:
 | `weekly-nonprofit-review` | Nonprofit compliance check | Sundays, 9:00 AM ET |
 | `weekly-skill-evolution` | Skill variant generation, scoring, improvement queue | Sundays, 3:00 AM ET |
 | `daily-household-health` | Aggregates peer self-steward state; pings Alton via Google Calendar on yellow+ anomalies | Daily, 5:30 AM ET (09:30 UTC) |
-| `Sartor Memory Mirror` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Mirror rtxserver bare git repo to GitHub via `C:\Users\alto8\scripts\sartor-mirror-to-github.ps1`. Logs to `C:\Users\alto8\backups\sartor-mirror.log`. | Every 15 min |
+| `Sartor Memory Mirror` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Mirror rtxserver bare git repo to GitHub via `C:\Users\alto8\scripts\sartor-mirror-to-github.ps1`. Logs to `C:\Users\alto8\backups\sartor-mirror.log`. Run by hand for immediate mirror. | Nightly, 3:30 AM ET |
 | `UniFi Daily Backup` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Pull `.unf` from local UniFi controller; SCP off-site to rtxserver via `C:\Users\alto8\scripts\unifi-daily-backup.ps1`. | Daily, 3:00 AM ET |
 
 ## Infrastructure Reference
@@ -333,5 +333,5 @@ This repo (`Sartor-claude-network`) is the consolidated home for all Sartor AI s
 ### Git Sync
 - Pull before read, push after write
 - **Canonical remote:** `origin` = `alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git` (bare repo on rtxserver). Every peer pushes here.
-- **GitHub mirror:** `github` = `https://github.com/alto84/Sartor-claude-network.git` — disaster-recovery only, lag ≤15 min, written exclusively by Rocinante's "Sartor Memory Mirror" scheduled task (`C:\Users\alto8\scripts\sartor-mirror-to-github.ps1`). **Peers must not push to `github`.**
+- **GitHub mirror:** `github` = `https://github.com/alto84/Sartor-claude-network.git` — disaster-recovery only, lag ≤24 h (nightly), written exclusively by Rocinante's "Sartor Memory Mirror" scheduled task (`C:\Users\alto8\scripts\sartor-mirror-to-github.ps1`). Run the script by hand if you need an immediate mirror. **Peers must not push to `github`.**
 - **Architecture doc:** `sartor/memory/reference_memory_server.md` is canonical. If anything in this CLAUDE.md or the Operating Agreement disagrees with that file, that file wins.

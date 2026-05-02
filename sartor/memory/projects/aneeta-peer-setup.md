@@ -55,7 +55,7 @@ git clone alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git
 cd Sartor-claude-network
 ```
 
-What this gets her: `origin` already pointing at the rtxserver bare. She can push directly. Her commits show up on GitHub within 15 min via Rocinante's mirror task. No GitHub account needed, no PAT to rotate, no collaborator invite to manage. The whole multi-machine substrate is now SSH-key-only on the LAN.
+What this gets her: `origin` already pointing at the rtxserver bare. She can push directly. Her commits show up on GitHub by the next morning via Rocinante's nightly mirror task. No GitHub account needed, no PAT to rotate, no collaborator invite to manage. The whole multi-machine substrate is now SSH-key-only on the LAN.
 
 ### 4. Run Claude Code from the repo directory
 

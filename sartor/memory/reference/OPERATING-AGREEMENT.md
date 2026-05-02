@@ -69,13 +69,13 @@ Push failures, pull failures persisting more than two consecutive cron runs, mer
 
 ### 1.5 Memory-server topology (added 2026-05-02, supersedes earlier "only Rocinante can push" framing)
 
-The canonical write target for `Sartor-claude-network` is the bare repo at `alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git` on rtxserver. Both Rocinante and gpuserver1 (and any future peer) push to this bare via `origin`. GitHub (`https://github.com/alto84/Sartor-claude-network`) is now a disaster-recovery mirror written exclusively by Rocinante's "Sartor Memory Mirror" Windows Scheduled Task every 15 min.
+The canonical write target for `Sartor-claude-network` is the bare repo at `alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git` on rtxserver. Both Rocinante and gpuserver1 (and any future peer) push to this bare via `origin`. GitHub (`https://github.com/alto84/Sartor-claude-network`) is now a disaster-recovery mirror written exclusively by Rocinante's "Sartor Memory Mirror" Windows Scheduled Task nightly at 3:30 AM ET (lag ≤ 24 h; run the .ps1 by hand for immediate sync).
 
 This changes §1.2.4 ("Push at least once per session... gpuserver1's crons depend on a fresh remote and Rocinante is the only node that can publish to it"). The new framing: Rocinante's mirror responsibility makes Rocinante the only node that publishes to GitHub, but every node can publish to the canonical bare. gpuserver1's gather-mirror pull cron continues to pull from `origin`, but now `origin` resolves to rtxserver bare instead of GitHub.
 
 Migration status as of v1.0 of `reference_memory_server.md` (2026-05-02):
 - Rocinante: migrated. `origin` → rtxserver bare; `github` → GitHub HTTPS.
-- gpuserver1: pending. Next interactive gpuserver1 session re-points its `origin`. Until then, gpuserver1 continues to fetch from its existing `origin` (GitHub) and the lag is bounded by the mirror cycle (~15 min). No data loss; minor delay.
+- gpuserver1: pending. Next interactive gpuserver1 session re-points its `origin`. Until then, gpuserver1 continues to fetch from its existing `origin` (GitHub) and is bounded by the nightly mirror cycle (≤24 h). No data loss; ≤1-day delay on shared state visibility from Rocinante's side.
 - rtxserver-self peer Claude: pending. Same as gpuserver1.
 
 The full architecture, failure modes, and per-peer onboarding checklist live in `sartor/memory/reference_memory_server.md`. That file is canonical; if this Operating Agreement disagrees with it, it wins.
