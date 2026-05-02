@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-01
+updated: 2026-05-02
 updated_by: personal-data-gather
 run: 48
 
@@ -1295,3 +1295,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] Goddard May 3 — additional picture day (PREVIOUSLY UNKNOWN)
 > Monday May 3 has BOTH soccer AND picture day at Goddard (9:30 AM Twos class, 10:00 AM next group). Dress Vasu in photogenic clothing. Aneeta's return from RRE is expected May 3 but morning timing is uncertain — Alton may be handling drop-off. See [[family/vasu]].
+
+## Latest from gather (2026-05-02) — run 39
+
+> [!fact] RESOLVED — B-34 Lime RSVP sent
+> Alton replied to coach Keith Gormley (keith.gormley@gmail.com) at 5:42 PM ET May 1: "Vayu will be there." Also confirmed: Cormac (Schorrh), Asa (Brentan). Game is TODAY May 2, 2:00–3:00 PM ET, Brookdale Stadium South. Action item from run 38 is closed.
+
+> [!todo] SOFT ACTION — Teacher Appreciation Week chalk message | Deadline: 2026-05-04 (Monday)
+> Goddard announces Teacher Appreciation Week May 4–8. Monday May 4 drop-off: write Vasu's teacher a message on the outdoor chalkboard (chalk provided at school). Aneeta returns from RRE May 3 — likely her drop-off but morning logistics uncertain. See [[family/vasu]].
+
+> [!fact] Hiive: Gecko Robotics shares now available
+> US Navy + GSA IDIQ, 5-year, $71M ceiling, $54M initial — largest robotics deal in US Navy history. Pre-IPO shares on Hiive marketplace. Alton has no prior expressed Gecko interest on record. LOW priority. From opportunities@mail.hiive.com, May 1 22:30 UTC.
+
+> [!fact] Berman Home Systems WiFi-7 install confirmed working
+> Alton's outbound email to Pete@bermanhomesystems.com (May 1 23:53 UTC): "WiFi-7 coverage is exactly what I was hoping for, and the Sonos integration came out clean. Genuinely happy with the work." Subject: "Network management handoff + a few suggestions." Install confirmed complete and satisfactory. $5,000 deposit (card 7436) paid Apr 8. Install Apr 27–29.

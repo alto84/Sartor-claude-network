@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-01
+updated: 2026-05-02
 updated_by: personal-data-gather
 run: 48
 status: active
@@ -36,6 +36,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-05-02] ingest | personal-data-gather run 39: Berman WiFi-7 confirmed; Gecko Robotics on Hiive; Teacher Appreciation Week; B-34 RSVP closed
+- Sources: Gmail (newer_than:2d, 50 threads), all 5 calendars (May 2–May 9)
+- Net-new facts: 4 (Berman install confirmed, Gecko Robotics Hiive opportunity, Teacher Appreciation Week chalk, LinkedIn message from Aneeta)
+- New ACTION_REQUIRED: 0 (B-34 RSVP RESOLVED this run)
+- Carry-forward open actions: 25 (2 OVERDUE, 4 HIGH, 8 MEDIUM, 11 LOW/OPEN)
+- Calendar: stable — no net-new events vs run 38
+- Pages updated: `daily/2026-05-02.md`, `family/active-todos.md`, `family/family-calendar.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- OVERDUE ESCALATION: 185 Davis condo assessment + CSA checks now 1 day past deadline (May 1)
+- KEY UPCOMING: Mother's Day gift personalization deadline May 4 (2 days); MKA Tuition May 10; 990-N May 15
 
 ## [2026-05-01] ingest | personal-data-gather run 22: Vayu teacher escalation; Hiive deadlines expired; EquityZen Apptronik+Perplexity; GOOGL call sold; Pool Guyz statement; MKA Capstone fair
 - GAP: 6 days since run 21 (2026-04-25)

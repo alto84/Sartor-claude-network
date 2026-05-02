@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-05-01
+updated: 2026-05-02
 updated_by: personal-data-gather
-run: 38
+run: 39
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -567,3 +567,13 @@ Updated May 8 entry:
 |------|---------|-------|--------|-------|
 | Fri 5/8 | **7:30–9:30 AM** | Goddard Mother's Day Celebration | Kaymbu (run 38) | Confirmed time — was TBD. Vasu's school. Aneeta primary attendee. |
 | Mon 5/3 | 9:30 AM+ | Vasu Picture Day (Goddard) + Soccer | Kaymbu sneak peek | Additional picture day — dress Vasu photogenically |
+
+## Latest from gather (2026-05-02) — run 39
+
+> [!fact] Teacher Appreciation Week — May 4–8 at Goddard
+> Alissa DelConte (Goddard, noreply@kaymbu.com, 21:56 UTC May 1): "Monday kicks off Teacher Appreciation Week! When you arrive Monday morning, please grab a piece of chalk and write your child's teacher a message on our outdoor chalkboard!" Soft action for Monday May 4 drop-off. Aneeta returns from RRE May 3; she or Alton will be doing drop-off.
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| Mon 5/4 – Fri 5/8 | school hours | Teacher Appreciation Week (Goddard) | Kaymbu run 39 | Chalk message Monday morning at drop-off |
+| Sat 5/2 | 2:00–3:00 PM | Vayu soccer — B34 Lime vs B34 Charcoal | Blue Sombrero | TODAY — Vayu confirmed attending (Alton replied to coach) |
