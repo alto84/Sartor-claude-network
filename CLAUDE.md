@@ -278,6 +278,7 @@ Defined in `.claude/scheduled-tasks/`:
 | `daily-household-health` | Aggregates peer self-steward state; pings Alton via Google Calendar on yellow+ anomalies | Daily, 5:30 AM ET (09:30 UTC) |
 | `Sartor Memory Mirror` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Mirror rtxserver bare git repo to GitHub via `C:\Users\alto8\scripts\sartor-mirror-to-github.ps1`. Logs to `C:\Users\alto8\backups\sartor-mirror.log`. Run by hand for immediate mirror. | Nightly, 3:30 AM ET |
 | `UniFi Daily Backup` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Pull `.unf` from local UniFi controller; SCP off-site to rtxserver via `C:\Users\alto8\scripts\unifi-daily-backup.ps1`. | Daily, 3:00 AM ET |
+| `Sartor Peer Creds Sync` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | SCP fresh `~/.claude/.credentials.json` to peer Claudes (rtxserver, gpuserver1) so peer-side OAuth tokens never go stale. Script `C:\Users\alto8\scripts\sartor-creds-sync.ps1` logs to `C:\Users\alto8\backups\sartor-creds-sync.log`. Bumped from nightly to 4h on 2026-05-02 because daytime peer reboots were leaving peers with expired tokens until next 4 AM run. | Every 4 hours |
 
 ## Infrastructure Reference
 
@@ -302,6 +303,18 @@ Defined in `.claude/scheduled-tasks/`:
 - **Tending script:** `~/vastai-tend.sh` (cron, every 2h)
 - **Alerts:** `~/.vastai-alert`
 - **Limitations:** No GitHub credentials (cannot git push), no browser automation
+
+### rtxpro6000server (Workstation / future GPU Host)
+- **OS:** Ubuntu 22.04 (HWE 6.8 kernel)
+- **CPU:** AMD Threadripper PRO 7975WX (32C/64T)
+- **RAM:** 251 GB DDR5
+- **GPUs:** 2× NVIDIA RTX PRO 6000 Blackwell Workstation (96 GB VRAM each, 192 GB total). **Production cap 450W/card** (auto-applied on boot via `/etc/systemd/system/nvidia-power-cap.service`).
+- **IP:** 192.168.1.157 (LAN, on UniFi switch port 10), BMC at 192.168.1.156
+- **SSH:** `ssh alton@192.168.1.157` (host MAC `30:c5:99:d5:8f:b5`)
+- **Peer Claude:** auto-spawns at boot in tmux session `claude-team-1` via user-level systemd service `~/.config/systemd/user/sartor-claude-peer.service` (lingering enabled for `alton`).
+- **BMC fan curves (saved to firmware):** Zones 2-6 = 30°C/50% → 50°C/75% → 60°C/90% → 70°C/100%, applied via Chrome MCP 2026-05-02. Fan-cord override available via remote control for max chassis airflow.
+- **Vast.ai listing:** **NOT YET LISTED** — onboarding paused 2026-05-02 pending network topology pivot. State captured in `inbox/rtxpro6000server/RESUME-vastai-onboarding-2026-05-02.md`.
+- **Limitations:** No GitHub credentials (cannot git push), no browser automation, no Verizon Fios WAN port-forward yet.
 
 ### MCPs Available
 - **Google Calendar:** Event management, scheduling, free time lookup
