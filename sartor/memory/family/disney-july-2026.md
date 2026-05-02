@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: disney-july-2026
-updated: 2026-04-17
+updated: 2026-05-02
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -129,3 +129,9 @@ Multi-family trip planned via a group text called "Disney 2026." Nicole (planner
 - 2026-04-10: Initial planning page created from Google Messages "Disney 2026" group text scrape. Messages cover Mar 21 through Apr 6, 2026.
 - 2026-04-17: Nicol Stevenson identified as travel agent. ADR deadline flagged (May 17). Dining options documented from her email.
 - 2026-04-29: MNSSSHP 2026 announcement noted; ADR window (May 17) still open.
+- 2026-05-02: Lightning Lanes tips email from Nicol. ADR window (May 17) still open.
+
+## Latest from gather (2026-05-02) — run 41
+
+> [!note] Nicol Stevenson active — Disney Lightning Lanes tips (May 2)
+> Email from updates@traveleremail.com (Nicol Stevenson, n.stevenson@magicalvacationplanner.com, +1 412-215-2423), May 2 12:01 UTC. Subject: "Maximize Your Disneyland Fun With Disney Lightning Lanes." She continues proactively sending Disneyland planning content. Informational — not a booking update. **ADR window opens May 17 — the `[!deadline]` above is now 15 days out.** No new action; existing deadline and `[!todo]` stand.
