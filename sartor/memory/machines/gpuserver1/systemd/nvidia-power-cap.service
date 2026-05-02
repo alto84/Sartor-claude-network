@@ -1,0 +1,20 @@
+[Unit]
+Description=Apply gpuserver1 GPU power cap (600W — RTX 5090 default)
+Documentation=file:///home/alton/Sartor-claude-network/sartor/memory/MACHINES.md
+After=nvidia-persistenced.service
+Before=docker.service vastai_kaalia.service
+Wants=nvidia-persistenced.service
+ConditionPathExists=/usr/bin/nvidia-smi
+
+[Service]
+Type=oneshot
+# 600W = RTX 5090 default. PSU 1200W is dramatically over-provisioned for one card.
+# This unit is defensive: if pl is ever changed by manual nvidia-smi or testing,
+# reboot will restore the documented operating point so the rental container
+# starts with predictable GPU power available.
+ExecStart=/usr/bin/nvidia-smi -pl 600
+ExecStartPost=/bin/sh -c "echo \"[$(date -Iseconds)] gpuserver1 nvidia-power-cap applied: pl=600\"; /usr/bin/nvidia-smi --query-gpu=index,power.limit --format=csv"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

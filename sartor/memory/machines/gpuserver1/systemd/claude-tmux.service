@@ -1,0 +1,15 @@
+[Unit]
+Description=Persistent Claude Code session in tmux (claude-team-1)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Environment=TERM=xterm-256color
+WorkingDirectory=/home/alton/Sartor-claude-network
+ExecStart=/bin/bash -c '/usr/bin/tmux has-session -t claude-team-1 2>/dev/null && echo "claude-team-1 already running, leaving alone" || /usr/bin/tmux new-session -d -s claude-team-1 -x 200 -y 50 "cd /home/alton/Sartor-claude-network && /usr/bin/claude --dangerously-skip-permissions"'
+ExecStop=/bin/bash -c '/usr/bin/tmux kill-session -t claude-team-1 2>/dev/null; true'
+
+[Install]
+WantedBy=default.target

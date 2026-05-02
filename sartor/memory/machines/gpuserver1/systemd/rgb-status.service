@@ -1,0 +1,23 @@
+[Unit]
+Description=Sartor RGB Status Indicator
+Documentation=file:///home/alton/sartor-rgb/PROPOSAL.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/alton/sartor-rgb/bin/rgb_status.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Environment
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/alton/.local/bin"
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
