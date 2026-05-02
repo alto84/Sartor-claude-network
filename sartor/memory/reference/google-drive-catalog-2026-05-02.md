@@ -11,6 +11,9 @@ tags: [reference/index, source/google-drive]
 
 # Sartor Google Drive catalog — 2026-05-02 snapshot
 
+> [!warning] **2026-05-02 correction notice (Rocinante, post-Alton-intervention)**
+> The "185 Davis property — memory has no record" claim in this file's open-questions and headline findings is **WRONG IN SCOPE**. The cataloging subagent searched only `sartor/memory/**`, but the broader Sartor wiki (`work/taxes/`, `work/family/`, `dashboard/family/`, `sartor/conversation_extract.py`) has 185 Davis Avenue documented as a **jointly-owned rental condo, mortgaged through Leader Bank, insured through Vermont Mutual Condo Policy**. Pieces span multiple files; the Drive 1098 surfaced is not a new mystery — it's the TY2025 instance of an existing recurring item. **Open-question #1 is stale; treat as resolved: "Drive 1098 is filed under TY2025 tax records for a known asset (185 Davis rental condo)."** Lesson captured at `sartor/memory/feedback/search-memory-first.md`.
+
 ## Methodology
 
 **Tools.** Chrome MCP into Alton's open Drive session at `https://drive.google.com/`. Each query was a navigation to `https://drive.google.com/drive/search?q=<term>` followed by JS extraction of `[role="row"][data-id]` rows from the rendered grid. Folder enumerations used `https://drive.google.com/drive/folders/<id>`.
