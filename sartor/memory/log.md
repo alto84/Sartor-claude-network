@@ -1503,6 +1503,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Outputs: `data/gather-alerts.md`, `data/heartbeat-log.csv`
 - Total new facts: 5 | New ACTION_REQUIRED: 0 | Escalations: 1 | Carry-forward: 30
 
+## [2026-05-03] ingest | personal-data-gather run 43: delta-minimal; Mother's Day gift due tomorrow
+- Sources: Gmail (newer_than:2d), all 5 calendars (May 3–May 10)
+- NEW FACTS: JPMorgan investment statement (May 3); Amazon Aveeno Eczema Therapy order (May 3); MedscapeLIVE CME Stroke Prevention May 19; Chase statements (...7691) and (...8189)
+- Calendar: stable, no net-new vs run 42. Confirmed window: soccer practice May 6 5:30 PM, Convocation May 9 2:30 PM, soccer game May 9 11 AM
+- REMINDER: Mother's Day gift (Mark and Graham) deadline TOMORROW 2026-05-04
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~11 days)
+- Pages updated: `daily/2026-05-03.md` (run 43 appended), `family/active-todos.md` (run 43 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (regenerated), `data/heartbeat-log.csv` (created)
+- Total new facts: 4 | New ACTION_REQUIRED: 0 | Carry-forward: 27
+
 ## [2026-05-03] ingest | personal-data-gather run 42: 4 net-new facts; Nintendo repair CLOSED
 - Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 10)
 - NEW FACTS: Nintendo Switch repair #61296128 closed (unable to process, returning unrepaired); Cenlar mortgage payment $17,311.53 applied 05/01; Chase CC (...1276) statement $75.01 due 05/27 autopay; Google security alert Claude for Drive access granted
