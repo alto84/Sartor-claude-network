@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-02
+updated: 2026-05-03
 updated_by: personal-data-gather
-run: 48
+run: 42
 
 status: active
 priority: p1
@@ -1334,3 +1334,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] LOW — Jackrabbit Tech Summer Gymnastics (June 23–Aug 18)
 > **Registration open.** 9-week summer session, June 23–August 18, 2026. Price: $200 (no registration fee), $20 off 2nd/3rd sibling. NEW: parent/child summer class. Location: 136 Mountainview Blvd, Wayne NJ, 973-837-8877. Eligible: Vishala (8), Vayu (10), Vasu (4, parent/child class). Decide whether to enroll. From noreply@jackrabbittech.com, May 2 14:29 UTC.
+
+## Latest from gather (2026-05-03) — run 42
+
+> [!fact] CLOSED — Nintendo Switch repair #61296128 returned unrepaired
+> noreply_repair@noa.nintendo.com, May 2 19:00 UTC. "We were unable to process service request 61296128. Your order will be returned in the same condition it was received." Previously flagged run 33 as "payment declined, on hold." The repair attempt is now fully abandoned — Nintendo is shipping the device back unrepaired. No further action on this item. Status: CLOSED.
+
+> [!fact] Cenlar mortgage payment $17,311.53 applied 05/01/2026
+> Regular monthly mortgage cycle confirmed. Cenlar@loanadministration.com, May 2 18:00 UTC. INFORMATIONAL.
+
+> [!fact] Chase CC (...1276) — statement balance $75.01, due 05/27/2026, autopay enabled
+> no.reply.alerts@chase.com, May 2 19:18 UTC. Very low balance; autopay handles. No action needed.
