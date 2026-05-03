@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-02
+updated: 2026-05-03
 updated_by: personal-data-gather
-run: 48
+run: 42
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-05-02] ingest | personal-data-gather run 41: CAQH profile expired; CRWV call sold; Cary Grayson Sante Total donation; Disney agent active
+- Sources: Gmail (newer_than:1d, 50 threads), all 5 calendars (May 2–May 9)
+- Net-new facts: 5 (PayPal Cary Grayson → Sante Total; CRWV CoreWeave sold call; CAQH profile expired; Nicol Stevenson Disney Lightning Lanes; Jackrabbit Tech summer gym)
+- New ACTION_REQUIRED: 1 escalation (CAQH expired → reattestation required immediately)
+- Carry-forward open actions: ~30 (2 OVERDUE, carry-forward HIGHs from run 40, others unchanged)
+- Calendar: all 5 stable — no net-new events vs run 40
+- Pages updated: `daily/2026-05-02.md` (run 41), `family/active-todos.md` (run 41), `business/sante-total.md` (run 41), `family/disney-july-2026.md` (run 41), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- KEY ESCALATION: CAQH profile now officially expired (was "requires reattestation"); Mother's Day gift 2 days out; 2 items OVERDUE; Aneeta LLC draft pending review
 
 ## [2026-05-02] ingest | personal-data-gather run 40: Aneeta LLC draft shared; Vishala screen time logged; calendars stable
 - Sources: Gmail (newer_than:2d, 50 threads), all 5 calendars (May 2–May 9)
@@ -1468,3 +1477,68 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-01.md` (run 38 appended), `family/vayu.md` (run 40), `family/vasu.md`, `family/family-calendar.md` (run 38), `family/active-todos.md` (run 48), `log.md`
 - Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 - Total new facts: 3 | New ACTION_REQUIRED items: 1 | Open carry-forward actions: 17
+
+## [2026-05-02] ingest | personal-data-gather run 39: 4 net-new facts; B-34 RSVP closed
+- Sources: Gmail (newer_than:2d, 50 threads), all 5 calendars (May 2–May 9)
+- NEW FACTS: WiFi-7 install confirmed satisfactory (Alton outbound to Berman); Gecko Robotics shares on Hiive (US Navy IDIQ); Teacher Appreciation Week May 4–8 chalk message; Aneeta LinkedIn message to Alton
+- RESOLVED: B-34 Lime RSVP (Alton replied to coach Keith Gormley)
+- Pages updated: `daily/2026-05-02.md` (created), `family/active-todos.md`, `family/family-calendar.md`, `log.md`
+- Outputs: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- Total new facts: 4 | New ACTION_REQUIRED: 0 | Resolved: 1 | Carry-forward: 28
+
+## [2026-05-02] ingest | personal-data-gather run 40: 2 net-new facts; Aneeta LLC draft ACTION_REQUIRED
+- Sources: Gmail (newer_than:2d), all 5 calendars
+- NEW FACTS: Aneeta sent first LLC draft to Alton for review (HIGH ACTION_REQUIRED); Vishala screen time Apr 25–May 1: 11hr 39min
+- Calendar: stable, no net-new
+- Pages updated: `daily/2026-05-02.md` (run 40 appended), `family/active-todos.md`, `log.md`
+- Outputs: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- Total new facts: 2 | New ACTION_REQUIRED: 1 | Carry-forward: 29
+
+## [2026-05-02] ingest | personal-data-gather run 41: 5 net-new facts; CAQH escalated to EXPIRED
+- Sources: Gmail (newer_than:2d), all 5 calendars
+- NEW FACTS: Cary Grayson PayPal donation to Sante Total (Tx ID 77M21554G32947412, amount TBD); CRWV CoreWeave call sold (Fidelity XXXXX8998); CAQH ProView profile confirmed expired (credentialing risk); Nicol Stevenson sending Disney Lightning Lanes content (ADR window May 17); Jackrabbit Tech summer gymnastics registration open (June 23–Aug 18, $200)
+- ESCALATED: CAQH reattestation from MEDIUM to CRITICAL/EXPIRED
+- Calendar: stable, no net-new
+- Pages updated: `daily/2026-05-02.md` (run 41 appended), `family/active-todos.md`, `business/sante-total.md`, `family/disney-july-2026.md`, `log.md`
+- Outputs: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- Total new facts: 5 | New ACTION_REQUIRED: 0 | Escalations: 1 | Carry-forward: 30
+
+## [2026-05-03] ingest | personal-data-gather run 43: delta-minimal; Mother's Day gift due tomorrow
+- Sources: Gmail (newer_than:2d), all 5 calendars (May 3–May 10)
+- NEW FACTS: JPMorgan investment statement (May 3); Amazon Aveeno Eczema Therapy order (May 3); MedscapeLIVE CME Stroke Prevention May 19; Chase statements (...7691) and (...8189)
+- Calendar: stable, no net-new vs run 42. Confirmed window: soccer practice May 6 5:30 PM, Convocation May 9 2:30 PM, soccer game May 9 11 AM
+- REMINDER: Mother's Day gift (Mark and Graham) deadline TOMORROW 2026-05-04
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~11 days)
+- Pages updated: `daily/2026-05-03.md` (run 43 appended), `family/active-todos.md` (run 43 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (regenerated), `data/heartbeat-log.csv` (created)
+- Total new facts: 4 | New ACTION_REQUIRED: 0 | Carry-forward: 27
+
+## [2026-05-03] ingest | personal-data-gather run 44: 3 net-new facts; HIIVE/Anthropic agreement ACTION_REQUIRED
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 10)
+- NEW FACTS: HIIVE/Anthropic family investment agreement — Alton signature pending (HIGH; Oliver nudged May 3, Alton replied "Will"); Amazon Aveeno shipped (informational); Doximity — Asundexian + antiplatelet cuts ischemic stroke risk 26% over 2 years (professional/informational)
+- NEW ACTION_REQUIRED: HIIVE/Anthropic family document signature (Alton committed "Will" May 3 11:34 UTC — electronic signature available)
+- Calendar: stable, no net-new vs run 43. Window: soccer practice May 6 5:30 PM, Convocation May 9 2:30 PM, soccer game May 9 11 AM
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~11 days)
+- Pages updated: `daily/2026-05-03.md` (run 44 appended), `family/active-todos.md` (run 44 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 3 | New ACTION_REQUIRED: 1 | Carry-forward: 28
+
+## [2026-05-03] ingest | personal-data-gather run 42: 4 net-new facts; Nintendo repair CLOSED
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 10)
+- NEW FACTS: Nintendo Switch repair #61296128 closed (unable to process, returning unrepaired); Cenlar mortgage payment $17,311.53 applied 05/01; Chase CC (...1276) statement $75.01 due 05/27 autopay; Google security alert Claude for Drive access granted
+- CLOSED: Nintendo repair MEDIUM item (run 33 origin)
+- Calendar: stable, no net-new. Confirmed window: soccer practice May 6 5:30 PM, Convocation May 9 2:30 PM, soccer game May 9 11 AM.
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (11 days)
+- Pages updated: `daily/2026-05-03.md` (created), `family/active-todos.md` (run 42 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created, backfilled runs 39–41)
+- Total new facts: 4 | New ACTION_REQUIRED: 0 | Closed: 1 | Carry-forward: 27
+
+## [2026-05-03] ingest | personal-data-gather run 45: 4 net-new facts; 0 new ACTION_REQUIRED; delta-minimal
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 10)
+- NEW FACTS: Costco order delivered May 3 (85 Stonebridge Road); Anthropic receipt #2333-0595-7386 (API/Pro billing); Amazon Aveeno delivered (loop closed from run 44); Code Ninjas Livingston NJ summer camps email
+- NEW ACTION_REQUIRED: 0
+- Calendar: stable, no net-new vs run 44. Window: soccer practice May 6 5:30 PM, Convocation May 9 2:30 PM, soccer game May 9 11 AM
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~11 days)
+- Pages updated: `daily/2026-05-03.md` (run 45 appended), `family/active-todos.md` (run 45 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 4 | New ACTION_REQUIRED: 0 | Carry-forward: 28

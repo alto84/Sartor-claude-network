@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-02
+updated: 2026-05-03
 updated_by: personal-data-gather
-run: 48
+run: 45
 
 status: active
 priority: p1
@@ -1320,3 +1320,64 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] TODAY — B-34 Lime game at Brookdale (2:00 PM ET, run 40 reminder)
 > B34 Lime vs B34 Charcoal, Brookdale Stadium South, Field 1. 2:00–3:00 PM ET. Vayu confirmed. RSVP thread closed.
+
+## Latest from gather (2026-05-02) — run 41
+
+> [!warning] ESCALATED — CAQH ProView profile now EXPIRED
+> **CAQH ProView reattestation required.** marcom@caqh.org, May 2 12:31 UTC: "This email is associated with one or more expired profiles in the CAQH Provider Data Portal." Previously flagged Apr 12 run 5 as "requires reattestation." Status now upgraded to **expired**. Expired profiles affect insurance credentialing and hospital privileges. Log in to proview.caqh.org and complete reattestation immediately. See [[ALTON]].
+
+> [!fact] FINANCIAL — CoreWeave (CRWV) call sold (May 2)
+> **Fidelity trade confirmation: SOLD CALL (CRWV) COREWEAVE INC COM.** Account XXXXX8998. May 2 11:20 UTC. Trade executed. INFORMATIONAL — no further action needed from this surface.
+
+> [!fact] Sante Total — new PayPal donation from Cary Grayson (May 2)
+> service@paypal.com, May 2 10:02 UTC. Transaction ID: 77M21554G32947412. "You received a payment from Cary Grayson for Sante Total." Amount not visible in snippet — verify in PayPal. Note: Cary Grayson previously donated ~$350+ on 2026-04-02; this is a second donation from the same donor. Log amount and send tax receipt per [[alison-smith|Alison Smith]] pattern. See [[business/sante-total]].
+
+> [!todo] LOW — Jackrabbit Tech Summer Gymnastics (June 23–Aug 18)
+> **Registration open.** 9-week summer session, June 23–August 18, 2026. Price: $200 (no registration fee), $20 off 2nd/3rd sibling. NEW: parent/child summer class. Location: 136 Mountainview Blvd, Wayne NJ, 973-837-8877. Eligible: Vishala (8), Vayu (10), Vasu (4, parent/child class). Decide whether to enroll. From noreply@jackrabbittech.com, May 2 14:29 UTC.
+
+## Latest from gather (2026-05-03) — run 42
+
+> [!fact] CLOSED — Nintendo Switch repair #61296128 returned unrepaired
+> noreply_repair@noa.nintendo.com, May 2 19:00 UTC. "We were unable to process service request 61296128. Your order will be returned in the same condition it was received." Previously flagged run 33 as "payment declined, on hold." The repair attempt is now fully abandoned — Nintendo is shipping the device back unrepaired. No further action on this item. Status: CLOSED.
+
+> [!fact] Cenlar mortgage payment $17,311.53 applied 05/01/2026
+> Regular monthly mortgage cycle confirmed. Cenlar@loanadministration.com, May 2 18:00 UTC. INFORMATIONAL.
+
+> [!fact] Chase CC (...1276) — statement balance $75.01, due 05/27/2026, autopay enabled
+> no.reply.alerts@chase.com, May 2 19:18 UTC. Very low balance; autopay handles. No action needed.
+
+## Latest from gather (2026-05-03) — run 43
+
+> [!fact] Delta-minimal run — 4 informational facts, 0 new ACTION_REQUIRED
+> Run 43 queried Gmail (newer_than:2d) and all 5 calendars (May 3–10). Net-new: JPMorgan investment statement (May 3); Amazon Aveeno Eczema Therapy order (May 3); MedscapeLIVE CME Stroke Prevention May 19; Chase statements (...7691) and (...8189). Calendar stable vs run 42. All 27 carry-forward ACTION_REQUIRED items unchanged.
+
+> [!warning] DEADLINE TOMORROW — Mother's Day gift (Mark and Graham personalize)
+> **2026-05-04** is the personalization cutoff. If Alton has not yet ordered, today (May 3) is the last day to place the order with personalization. First flagged run 26. See carry-forward list.
+
+> [!warning] DEADLINE TOMORROW — Goddard Teacher Appreciation chalk message
+> Monday May 4 drop-off: write Vasu's teacher a message on the outdoor chalk board (chalk provided at school entrance). From run 39/Alissa DelConte (Goddard). Aneeta returned from RRE May 3 — coordinate who handles drop-off.
+
+> [!fact] MedscapeLIVE CME — Stroke Prevention, May 19, 2026
+> Virtual CME/CNE/CPE event, Tuesday May 19, 2:00 PM ET. "The Clotting Report: Evolving Strategies for Stroke Prevention." Free virtual event in Alton's clinical domain. Relevant to AstraZeneca stroke portfolio work. No registration deadline stated.
+
+## Latest from gather (2026-05-03) — run 44
+
+> [!todo] ACTION_REQUIRED — HIGH | HIIVE/Anthropic family agreement — sign document electronically
+> **Alton committed "Will" to Oliver Sartor on May 3 (11:34 UTC).** Thread `19dc1f2557a2df27`. Subject: "Anthropic agreement that support our purchase via HIIVE which was allocated 1:1:1 in value between Emmett Alton Sartor and Alton Oliver Sartor and Belinda Marascalco Sartor." Oliver sent the document April 24 for signing; offered electronic signature option. osarto@yahoo.com nudged May 3 09:36: "Would be good to sign please." Alton replied: "Will." Document has not yet been signed. Retrieve the attached document from the original April 24 email (oliversartor@icloud.com) and sign electronically. Sissy Sartor is also pending signature (was at Mama Rita's without printer April 24). Sign ASAP.
+
+> [!warning] DEADLINE TOMORROW — Mother's Day gift (Mark and Graham personalize)
+> **2026-05-04** is the personalization cutoff for Mark and Graham order. First flagged run 26. Last opportunity to order with personalization before Mother's Day.
+
+> [!warning] DEADLINE TOMORROW — Goddard Teacher Appreciation chalk message
+> Monday May 4 drop-off: write Vasu's teacher a chalk message on the outdoor chalk board (chalk provided at school entrance). From Alissa DelConte (Goddard). Coordinate with Aneeta on who handles drop-off.
+
+## Latest from gather (2026-05-03) — run 45
+
+> [!fact] Delta-minimal run — 4 informational facts, 0 new ACTION_REQUIRED
+> Run 45 queried Gmail (newer_than:2d) and all 5 calendars (May 3–10). Net-new: Costco order delivered May 3 (85 Stonebridge Road); Anthropic receipt #2333-0595-7386; Amazon Aveeno delivered (loop closed from run 44); Code Ninjas Livingston NJ summer camps email. Calendar stable. All 28 carry-forward ACTION_REQUIRED items unchanged.
+
+> [!warning] DEADLINE TOMORROW — Mother's Day gift (Mark and Graham personalize)
+> **2026-05-04** is the personalization cutoff. Last opportunity to order with personalization before Mother's Day (May 11). Carry-forward from run 26.
+
+> [!warning] DEADLINE TOMORROW — Goddard Teacher Appreciation chalk message
+> Monday May 4 drop-off: write Vasu's teacher a chalk message on the outdoor chalk board (chalk provided at school entrance). Coordinate with Aneeta on who handles drop-off.
