@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-03
 updated_by: personal-data-gather
-run: 42
+run: 44
 
 status: active
 priority: p1
@@ -1359,3 +1359,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] MedscapeLIVE CME — Stroke Prevention, May 19, 2026
 > Virtual CME/CNE/CPE event, Tuesday May 19, 2:00 PM ET. "The Clotting Report: Evolving Strategies for Stroke Prevention." Free virtual event in Alton's clinical domain. Relevant to AstraZeneca stroke portfolio work. No registration deadline stated.
+
+## Latest from gather (2026-05-03) — run 44
+
+> [!todo] ACTION_REQUIRED — HIGH | HIIVE/Anthropic family agreement — sign document electronically
+> **Alton committed "Will" to Oliver Sartor on May 3 (11:34 UTC).** Thread `19dc1f2557a2df27`. Subject: "Anthropic agreement that support our purchase via HIIVE which was allocated 1:1:1 in value between Emmett Alton Sartor and Alton Oliver Sartor and Belinda Marascalco Sartor." Oliver sent the document April 24 for signing; offered electronic signature option. osarto@yahoo.com nudged May 3 09:36: "Would be good to sign please." Alton replied: "Will." Document has not yet been signed. Retrieve the attached document from the original April 24 email (oliversartor@icloud.com) and sign electronically. Sissy Sartor is also pending signature (was at Mama Rita's without printer April 24). Sign ASAP.
+
+> [!warning] DEADLINE TOMORROW — Mother's Day gift (Mark and Graham personalize)
+> **2026-05-04** is the personalization cutoff for Mark and Graham order. First flagged run 26. Last opportunity to order with personalization before Mother's Day.
+
+> [!warning] DEADLINE TOMORROW — Goddard Teacher Appreciation chalk message
+> Monday May 4 drop-off: write Vasu's teacher a chalk message on the outdoor chalk board (chalk provided at school entrance). From Alissa DelConte (Goddard). Coordinate with Aneeta on who handles drop-off.

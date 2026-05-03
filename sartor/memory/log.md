@@ -1513,6 +1513,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Outputs: `data/gather-alerts.md` (regenerated), `data/heartbeat-log.csv` (created)
 - Total new facts: 4 | New ACTION_REQUIRED: 0 | Carry-forward: 27
 
+## [2026-05-03] ingest | personal-data-gather run 44: 3 net-new facts; HIIVE/Anthropic agreement ACTION_REQUIRED
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 10)
+- NEW FACTS: HIIVE/Anthropic family investment agreement — Alton signature pending (HIGH; Oliver nudged May 3, Alton replied "Will"); Amazon Aveeno shipped (informational); Doximity — Asundexian + antiplatelet cuts ischemic stroke risk 26% over 2 years (professional/informational)
+- NEW ACTION_REQUIRED: HIIVE/Anthropic family document signature (Alton committed "Will" May 3 11:34 UTC — electronic signature available)
+- Calendar: stable, no net-new vs run 43. Window: soccer practice May 6 5:30 PM, Convocation May 9 2:30 PM, soccer game May 9 11 AM
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~11 days)
+- Pages updated: `daily/2026-05-03.md` (run 44 appended), `family/active-todos.md` (run 44 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 3 | New ACTION_REQUIRED: 1 | Carry-forward: 28
+
 ## [2026-05-03] ingest | personal-data-gather run 42: 4 net-new facts; Nintendo repair CLOSED
 - Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 10)
 - NEW FACTS: Nintendo Switch repair #61296128 closed (unable to process, returning unrepaired); Cenlar mortgage payment $17,311.53 applied 05/01; Chase CC (...1276) statement $75.01 due 05/27 autopay; Google security alert Claude for Drive access granted
