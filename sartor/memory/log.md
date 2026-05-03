@@ -1532,3 +1532,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-03.md` (created), `family/active-todos.md` (run 42 appended), `log.md`
 - Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created, backfilled runs 39–41)
 - Total new facts: 4 | New ACTION_REQUIRED: 0 | Closed: 1 | Carry-forward: 27
+
+## [2026-05-03] ingest | personal-data-gather run 45: 4 net-new facts; 0 new ACTION_REQUIRED; delta-minimal
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 10)
+- NEW FACTS: Costco order delivered May 3 (85 Stonebridge Road); Anthropic receipt #2333-0595-7386 (API/Pro billing); Amazon Aveeno delivered (loop closed from run 44); Code Ninjas Livingston NJ summer camps email
+- NEW ACTION_REQUIRED: 0
+- Calendar: stable, no net-new vs run 44. Window: soccer practice May 6 5:30 PM, Convocation May 9 2:30 PM, soccer game May 9 11 AM
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~11 days)
+- Pages updated: `daily/2026-05-03.md` (run 45 appended), `family/active-todos.md` (run 45 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 4 | New ACTION_REQUIRED: 0 | Carry-forward: 28
