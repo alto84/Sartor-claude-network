@@ -1345,3 +1345,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] Chase CC (...1276) — statement balance $75.01, due 05/27/2026, autopay enabled
 > no.reply.alerts@chase.com, May 2 19:18 UTC. Very low balance; autopay handles. No action needed.
+
+## Latest from gather (2026-05-03) — run 43
+
+> [!fact] Delta-minimal run — 4 informational facts, 0 new ACTION_REQUIRED
+> Run 43 queried Gmail (newer_than:2d) and all 5 calendars (May 3–10). Net-new: JPMorgan investment statement (May 3); Amazon Aveeno Eczema Therapy order (May 3); MedscapeLIVE CME Stroke Prevention May 19; Chase statements (...7691) and (...8189). Calendar stable vs run 42. All 27 carry-forward ACTION_REQUIRED items unchanged.
+
+> [!warning] DEADLINE TOMORROW — Mother's Day gift (Mark and Graham personalize)
+> **2026-05-04** is the personalization cutoff. If Alton has not yet ordered, today (May 3) is the last day to place the order with personalization. First flagged run 26. See carry-forward list.
+
+> [!warning] DEADLINE TOMORROW — Goddard Teacher Appreciation chalk message
+> Monday May 4 drop-off: write Vasu's teacher a message on the outdoor chalk board (chalk provided at school entrance). From run 39/Alissa DelConte (Goddard). Aneeta returned from RRE May 3 — coordinate who handles drop-off.
+
+> [!fact] MedscapeLIVE CME — Stroke Prevention, May 19, 2026
+> Virtual CME/CNE/CPE event, Tuesday May 19, 2:00 PM ET. "The Clotting Report: Evolving Strategies for Stroke Prevention." Free virtual event in Alton's clinical domain. Relevant to AstraZeneca stroke portfolio work. No registration deadline stated.
