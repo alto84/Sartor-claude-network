@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-03
 updated_by: personal-data-gather
-run: 44
+run: 45
 
 status: active
 priority: p1
@@ -1370,3 +1370,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning] DEADLINE TOMORROW — Goddard Teacher Appreciation chalk message
 > Monday May 4 drop-off: write Vasu's teacher a chalk message on the outdoor chalk board (chalk provided at school entrance). From Alissa DelConte (Goddard). Coordinate with Aneeta on who handles drop-off.
+
+## Latest from gather (2026-05-03) — run 45
+
+> [!fact] Delta-minimal run — 4 informational facts, 0 new ACTION_REQUIRED
+> Run 45 queried Gmail (newer_than:2d) and all 5 calendars (May 3–10). Net-new: Costco order delivered May 3 (85 Stonebridge Road); Anthropic receipt #2333-0595-7386; Amazon Aveeno delivered (loop closed from run 44); Code Ninjas Livingston NJ summer camps email. Calendar stable. All 28 carry-forward ACTION_REQUIRED items unchanged.
+
+> [!warning] DEADLINE TOMORROW — Mother's Day gift (Mark and Graham personalize)
+> **2026-05-04** is the personalization cutoff. Last opportunity to order with personalization before Mother's Day (May 11). Carry-forward from run 26.
+
+> [!warning] DEADLINE TOMORROW — Goddard Teacher Appreciation chalk message
+> Monday May 4 drop-off: write Vasu's teacher a chalk message on the outdoor chalk board (chalk provided at school entrance). Coordinate with Aneeta on who handles drop-off.
