@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-03
 updated_by: personal-data-gather
-run: 45
+run: 46
 
 status: active
 priority: p1
@@ -1381,3 +1381,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning] DEADLINE TOMORROW — Goddard Teacher Appreciation chalk message
 > Monday May 4 drop-off: write Vasu's teacher a chalk message on the outdoor chalk board (chalk provided at school entrance). Coordinate with Aneeta on who handles drop-off.
+
+## Latest from gather (2026-05-03) — run 46
+
+> [!warning] CRITICAL — Chase Fraud Alerts: TWO cards simultaneously
+> **Chase@fraudalert.chase.com, May 3 17:06–17:07 UTC. Thread 19deecea84e7efd2.** Two separate fraud alerts arrived within 1 minute: Chase Sapphire (...8547) and Chase Freedom (...7054). "Please tell us if you or someone you authorized made this transaction." Two simultaneous alerts on different cards is unusual and may indicate a shared compromised merchant or broader account issue. **Respond to both alerts immediately via Chase mobile app or online banking.** If unauthorized, request card replacement for both cards.
+
+> [!fact] Soccer schedule extended — May 13 practice + May 16 game (new in window)
+> Run 46 extended calendar window to 14 days, surfacing two new events: (1) **May 13, 5:30–6:15 PM** — Rec Soccer Practice (B-34 Lime), Anderson Park (Family calendar); (2) **May 16, noon–1:00 PM** — B34 Silver vs B34 Lime, Brookdale Park Field 1 (Blue Sombrero). Both conflicts-checked: no overlaps with known Aneeta/family events.

@@ -1542,3 +1542,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-03.md` (run 45 appended), `family/active-todos.md` (run 45 appended), `log.md`
 - Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 - Total new facts: 4 | New ACTION_REQUIRED: 0 | Carry-forward: 28
+
+## [2026-05-03] ingest | personal-data-gather run 46: 3 net-new facts; CRITICAL — Chase fraud alerts (2 cards)
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 17, 14-day window)
+- NEW FACTS: Chase fraud alerts on Sapphire (...8547) AND Freedom (...7054) simultaneously (17:06–17:07 UTC May 3 — CRITICAL); Rec Soccer Practice May 13 5:30 PM Anderson Park (calendar, extended window); B34 Silver vs B34 Lime soccer game May 16 noon Brookdale Park (Blue Sombrero, extended window)
+- NEW ACTION_REQUIRED: Chase fraud alerts — respond immediately; if unauthorized, request card replacement for both
+- Calendar: stable within prior window; extended to 14 days surfaced 2 new events (May 13 practice, May 16 game)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~11 days)
+- Pages updated: `daily/2026-05-03.md` (run 46 appended), `family/active-todos.md` (run 46 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created, Chase fraud alerts at top), `data/heartbeat-log.csv` (created)
+- Total new facts: 3 | New ACTION_REQUIRED: 1 (CRITICAL) | Carry-forward: 29
