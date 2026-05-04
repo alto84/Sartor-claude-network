@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-03
+updated: 2026-05-04
 updated_by: personal-data-gather
-run: 42
+run: 47
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1552,3 +1552,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-03.md` (run 46 appended), `family/active-todos.md` (run 46 appended), `log.md`
 - Outputs: `data/gather-alerts.md` (created, Chase fraud alerts at top), `data/heartbeat-log.csv` (created)
 - Total new facts: 3 | New ACTION_REQUIRED: 1 (CRITICAL) | Carry-forward: 29
+
+## [2026-05-04] ingest | personal-data-gather run 47: 3 net-new facts; SECURITY/FLAG — Bitwarden signup same evening as Chase fraud alerts
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 4–May 18)
+- NEW FACTS: Bitwarden account created at alto84@gmail.com (May 3 23:12 UTC) — SECURITY/FLAG, timing overlaps Chase fraud alerts from same evening; Guidepoint Pharma R&D Tech Survey $50 (new, distinct from Genetic Disorder Survey run 22); Disney+ one-time passcode (informational)
+- NEW ACTION_REQUIRED: 1 — Bitwarden signup confirmation (SECURITY/FLAG)
+- DEADLINE STATUS CHANGE: Mother's Day gift (Mark and Graham) and Teacher Appreciation chalk are TODAY (2026-05-04)
+- Calendar: stable, no net-new vs run 46. Window: soccer practice May 6, Convocation May 9, soccer game May 9, soccer practice May 13, soccer game May 16
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~12 days)
+- Pages updated: `daily/2026-05-04.md` (created), `family/active-todos.md` (run 47 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (updated run 47), `data/heartbeat-log.csv` (updated run 47)
+- Total new facts: 3 | New ACTION_REQUIRED: 1 (SECURITY/FLAG) | Carry-forward: 31

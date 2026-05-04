@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-03
+updated: 2026-05-04
 updated_by: personal-data-gather
-run: 46
+run: 47
 
 status: active
 priority: p1
@@ -1389,3 +1389,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] Soccer schedule extended — May 13 practice + May 16 game (new in window)
 > Run 46 extended calendar window to 14 days, surfacing two new events: (1) **May 13, 5:30–6:15 PM** — Rec Soccer Practice (B-34 Lime), Anderson Park (Family calendar); (2) **May 16, noon–1:00 PM** — B34 Silver vs B34 Lime, Brookdale Park Field 1 (Blue Sombrero). Both conflicts-checked: no overlaps with known Aneeta/family events.
+
+## Latest from gather (2026-05-04) — run 47
+
+> [!warning] SECURITY/FLAG — Bitwarden account created at alto84@gmail.com — confirm or deny
+> **no-reply@bitwarden.com, May 3 23:12 UTC. Threads 19df01d2f740fb90 + 19df01dc74224397.** Two back-to-back Bitwarden emails (Verify Your Email + Welcome) arrived at alto84@gmail.com. Bitwarden is a password manager; this means someone created a new Bitwarden account using Alton's email address. This may be legitimate (Alton setting up a password manager) or it may be unauthorized. **The timing is concerning:** these emails arrived ~6 hours after two simultaneous Chase fraud alerts on Sapphire (...8547) and Freedom (...7054) at 17:06–17:07 UTC the same evening. If Alton did not initiate this: do not click the verification link, access Bitwarden.com to deactivate the account, and escalate the Chase fraud alert response. If Alton did create this account: no action needed — close this item.
+
+> [!warning] DEADLINE TODAY — Mother's Day gift (Mark and Graham personalize)
+> **2026-05-04** is the personalization cutoff. Mark and Graham order must be placed today to receive personalization before Mother's Day (May 11). First flagged run 26.
+
+> [!warning] DEADLINE TODAY — Goddard Teacher Appreciation chalk message
+> Monday May 4 drop-off: write Vasu's teacher a chalk message on the outdoor chalk board (chalk provided at school entrance). Coordinate with Aneeta on who handles drop-off. From Alissa DelConte (Goddard). First flagged run 39.
+
+> [!fact] Guidepoint Pharma R&D Tech Survey $50 — new opportunity (run 47)
+> surveys@guidepoint.com, May 3 23:21 UTC. Separate from the Genetic Disorder Survey (run 22, still open). Pharma R&D Tech topic. $50 compensation. Accept or decline per interest.
