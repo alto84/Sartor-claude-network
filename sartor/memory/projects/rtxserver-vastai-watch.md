@@ -18,8 +18,15 @@ tags: [project/active, project/paused, machine/rtxpro6000server, vast-ai]
 
 # rtxserver vast.ai onboarding watch
 
-> **CANONICAL LISTING COMMAND (supersedes all earlier `-g 2.50 -m 1` planning):**
+> **CANONICAL LISTING COMMAND** (per short-term-first preference, see [[business/vastai-pricing-strategy]]):
 >
+> First listing — fixed end-date for price-discovery window:
+> ```
+> vastai list machine <id> -g 1.25 -b 1.00 -s 0.10 -m 2 -e MM/DD/YYYY
+> ```
+> Pick `-e` ~6-12 weeks out (price-discovery window). Use `vastai-management` skill's idle-job + price-adjust ops during the window. Re-evaluate before extending.
+>
+> Post-discovery (only after 2-4 weeks of fill-rate data) — rolling 6-month or longer-term:
 > ```
 > vastai list machine <id> -g 1.25 -b 1.00 -s 0.10 -m 2 -l "6 months"
 > ```
