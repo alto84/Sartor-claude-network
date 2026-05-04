@@ -45,9 +45,9 @@ The Sartor family lives in Montclair, New Jersey.
 **Platform:** vast.ai
 **Hardware:** RTX 5090 (32GB VRAM), Intel i9-14900K, 128GB DDR5 RAM
 **Machine ID:** 52271 | **Offer ID:** 32099437
-**Pricing (as of 2026-05-02, verified via `vastai show machines`):** $0.30/hr on-demand listed, $0.25/hr interruptible floor, $3.00/TB upload, $2.00/TB download. Currently rented under reserved contract C.34113802 (through 2026-08-24) at ~$0.20/hr realized — a long-term-discount price; profitable at this rate because the 5090 sips power vs. its earnings.
+**Pricing (live as of 2026-05-04, verified via `vastai show machines --raw`):** $0.30/hr on-demand listed, $0.25/hr interruptible floor (`min_bid_price`), $0.15/GB-month storage, $3.00/TB upload, $2.00/TB download. Currently rented under reserved contract C.34113802 (through 2026-08-24) at ~$0.20/hr realized — a long-term-discount price; profitable at this rate because the 5090 sips power vs. its earnings. **Note:** vast.ai exposes no machine-level "reserved rate" field; reserved is a per-rental contract attribute, not a host-set price. Earlier docs claiming "$0.40/hr reserved" were doc fiction (truth-up 2026-05-04).
 **Payout:** Stripe (configured)
-**Listing expiry:** 2026-10-24 (was 2026-08-24, extended via the web UI). Reserved-contract C.34113802 still ends 2026-08-24 — distinct field. After that date, evaluate market and relist.
+**Listing expiry:** 2026-10-24 (auto-renewed via web UI from prior 2026-08-24). Reserved-contract C.34113802 still ends 2026-08-24 — distinct field. After that date, evaluate market and relist.
 
 ### Monitoring Responsibilities
 - Track GPU utilization and rental status via `ssh alton@192.168.1.100`
@@ -70,8 +70,9 @@ ssh alton@192.168.1.100 "nvidia-smi"
 
 ### Known Issues
 - Hairpin NAT on Fios router: LAN cannot route to its own public IP. Fixed with iptables OUTPUT DNAT rule + DOCKER-USER conntrack rule.
-- vast.ai tending script runs every 2h via cron on gpuserver1 (`~/vastai-tend.sh`). Alerts land in `~/.vastai-alert`.
+- vast.ai tending script runs every **30 min** via cron on gpuserver1 (`~/vastai-tend.sh`, state-change-only). State-change events land in `sartor/memory/inbox/gpuserver1/vastai/`. Hourly `stale-detect.sh` writes `inbox/gpuserver1/_heartbeat.md` and `stale-alerts/`.
 - Router DMZ forwards all traffic to gpuserver1; UFW on server handles filtering.
+- **`vastai show instances` returns `[]` on host-side** — it lists *client-side* rentals only. Host-side rental check is docker-based: `docker ps --format '{{.Names}}' | grep '^C\.'` (kaalia names customer containers `C.<instance_id>`).
 
 ## Domain 2: Nonprofit Administration
 

@@ -78,19 +78,19 @@ related: [BUSINESS, PROCEDURES, SELF, MULTI-MACHINE-MEMORY, machines/gpuserver1/
 - **After reboot:** Kaalia auto-starts. Check listing with `~/.local/bin/vastai show machines`.
 - **Port forwarding:** DMZ Host enabled on router → 192.168.1.100 (all ports forwarded, UFW filters on server side)
 
-### gpuserver1 Active Cron Jobs (as of 2026-04-12)
+### gpuserver1 Active Cron Jobs (live as of 2026-05-04 audit)
 
-After a 2026-04-12 cleanup that reduced 15 jobs to 5, only these P0/active crons run. See [[machines/gpuserver1/CRONS|gpuserver1 CRONS v0.2]] for full details including the 10 deprecated jobs.
+This block was truth-up'd 2026-05-04 from a live `crontab -l` on gpuserver1. The 2026-04-12 cleanup story is preserved in [[machines/gpuserver1/CRONS|gpuserver1 CRONS]] history; what changed since is that `run_monitor.sh` was retired and `vastai-tend.sh` was un-deprecated and re-edited 2026-04-19. The current 5-job set:
 
 | Job | Schedule | Purpose |
 |-----|----------|---------|
-| `run_monitor.sh` | every 2 hours | P0: Claude Code health sweep (disk, Docker, vastai, GPU temp) |
-| `gather_mirror.sh` | every 4 hours | P0: git pull from Rocinante, vastai status + GPU health snapshot, heartbeat |
-| `daily_summary.py` | daily 11:55 PM UTC | P0: power usage summary (UPS metrics) |
-| `run_pricing.sh` | Monday 9 AM UTC | P0: weekly vast.ai pricing review, recommends adjustments via inbox |
-| `dashboard-healthcheck.sh` | daily 9 AM UTC | health check for safety-research (port 8000) + gpu-dashboard (port 5060) |
+| `gather_mirror.sh` | every 4 hours | git pull from Rocinante, vastai status + GPU health snapshot, heartbeat |
+| `stale-detect.sh` | hourly | Writes `inbox/gpuserver1/_heartbeat.md` and `inbox/gpuserver1/stale-alerts/` |
+| `vastai-tend.sh` | every 30 min | State-change-only events to `inbox/gpuserver1/vastai/` (un-deprecated 2026-04-19) |
+| `rgb_status.py` | every 5 min | RGB LED status indicator on chassis |
+| `docker-weekly-prune.sh` | Sunday 4 AM | Docker image / volume cleanup |
 
-**Deprecated 2026-04-12 (no longer running):** `vastai-tend.sh` (replaced by run_monitor.sh), `gateway_cron.py` (JSON parse failures), `memory-sync.sh` (git conflict failures), `heartbeat-watcher.sh` (redundant), `consolidate-mirror/autodream/decay` (memory consolidation is Rocinante-only per Operating Agreement §2).
+**Historical:** Earlier 2026-04-12 cleanup deprecated `vastai-tend.sh`, `gateway_cron.py`, `memory-sync.sh`, `heartbeat-watcher.sh`, `consolidate-mirror/autodream/decay` and introduced `run_monitor.sh`. Subsequently (2026-04-19), `run_monitor.sh` was retired and `vastai-tend.sh` was rewritten + re-enabled. The `daily_summary.py`, `run_pricing.sh`, and `dashboard-healthcheck.sh` jobs listed in earlier MACHINES.md versions are not in the live crontab as of 2026-05-04.
 
 ## Network
 

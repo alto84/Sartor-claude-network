@@ -111,7 +111,8 @@ The price-increase challenge mechanism is the only sanctioned path for raising p
 #    even with active renters — it triggers a "price increase challenge" emailed
 #    to affected clients.
 ssh alton@192.168.1.100 \
-  '~/.local/bin/vastai list machine 52271 -g 0.35 -b 0.30 -s 0.10 -m 1 -e MM/DD/YYYY'
+  '~/.local/bin/vastai list machine 52271 -g <NEW_PRICE> -b <NEW_FLOOR> -s 0.15 -m 1 -e MM/DD/YYYY'
+# Current live values (2026-05-04 audit): -g 0.30 -b 0.25 -s 0.15. Use these as your baseline; only change what you intend to.
 
 # 2. Affected clients get an email and accept (or decline) the new rate via
 #    cloud.vast.ai's web UI. Until they accept, their auto-extend stops at the OLD price.

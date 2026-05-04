@@ -64,8 +64,8 @@ If AI commoditization accelerates faster than expected, rental value could compr
 **gpuserver1** (the current rental node):
 
 - Hardware: RTX 5090, i9-14900K, 128GB DDR5, ASUS Z790 Gaming WiFi7
-- vast.ai machine 52271, listed at $0.35/hr demand, $0.26/hr interruptible (as of 2026-04-11, 25% spread between demand and interruptible)
-- Operational cadence: 2-hour monitoring cron, 60-second power logger (pynvml cumulative counter), weekly Monday-09:00-UTC pricing review cron, nightly memory consolidation via autodream
+- vast.ai machine 52271, listed at $0.30/hr demand, $0.25/hr interruptible (live as of 2026-05-04 audit; was $0.35/$0.26 on 2026-04-11, lowered via web UI in the interim — channel for the change is unaccounted-for, see business/rental-operations.md "pricing authority" rules)
+- Operational cadence: 30-min `vastai-tend.sh` (state-change events), hourly `stale-detect.sh` (heartbeat), every-4h `gather_mirror.sh`, every-5min `rgb_status.py`, weekly `docker-weekly-prune.sh` (Sun 4 AM). Per 2026-05-04 audit, the previously-documented `run_monitor.sh` (every 2h), `daily_summary.py`, and `run_pricing.sh` cron jobs are not active.
 - Agent documents:
   - MISSION: `sartor/memory/machines/gpuserver1/MISSION.md` (self-authored, v0.2)
   - Market pricing skill: `sartor/memory/skills/gpuserver1-market-pricing/SKILL.md` (self-authored)
