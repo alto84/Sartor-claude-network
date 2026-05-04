@@ -1,20 +1,53 @@
 ---
 name: rtxserver-vastai-watch
-description: Living tracker for rtxserver's path to first vast.ai rental. Watched by vast-ai-watcher (memory-agents team). Refreshes on relevant commits. Status PAUSED 2026-05-02 pending Verizon Fios WAN-path decision.
+description: Living tracker for rtxserver's path to first vast.ai rental. **LISTED 2026-05-04 03:34 UTC, machine_id 97429, $2.50/hr dual-rental, fixed end-date 2026-06-15 per short-term-first strategy. Pending automatic verification.**
 type: tracker
-status: paused-pending-decision
+status: live-listed-pending-verification
+machine_id: 97429
 target: rtxpro6000server (192.168.1.157, dual RTX PRO 6000 Blackwell, 192 GB combined VRAM)
 created: 2026-05-02
-updated: 2026-05-02-research-pass-3
+updated: 2026-05-04-listed
 created_by: vast-ai-watcher (memory-agents team)
 related:
   - inbox/rocinante/rtxserver-vastai-decisions-2026-05-02
+  - inbox/rocinante/rtxserver-pre-kaalia-2026-05-04
   - inbox/gpuserver1/rtxserver-vastai-onboarding-2026-05-02
   - machines/rtxpro6000server/HARDWARE
   - business/solar-inference
+  - business/vastai-pricing-strategy
+  - procedures/vastai-host-onboarding
   - reference_memory_server
-tags: [project/active, project/paused, machine/rtxpro6000server, vast-ai]
+tags: [project/active, project/live, machine/rtxpro6000server, vast-ai, listed]
 ---
+
+## 2026-05-04 LISTING FIRED — machine 97429 live
+
+| Field | Value |
+|---|---|
+| machine_id | **97429** |
+| listing fired | 2026-05-04 03:34 UTC (`vastai list machine 97429 -g 1.25 -b 1.00 -s 0.10 -m 2 -e 06/15/2026`) |
+| price | $1.25/GPU/hr × 2 = **$2.50/hr dual-rental** |
+| min chunk | -m 2 (must rent both cards as one chunk) |
+| storage | $0.10/GB-month |
+| end_date | 2026-06-15 (fixed; ~6-week price-discovery window per short-term-first strategy) |
+| verification | unverified (automatic per vast.ai; RTX PRO 6000 WS is on prioritized list; expect 1-3h) |
+| reliability2 | 0.60 starting (builds with uptime) |
+| bandwidth | 613 Mbps down / 645 Mbps up (well above 500 threshold) |
+| public_ipaddr | 100.1.100.63 (shared with gpuserver1) |
+| daemon | vastai.service active; kaalia running; customer sshd on 40199 |
+| install method | vast.ai web UI install command (1-hour-validity per-user install token) |
+| install command source | cloud.vast.ai/host/setup/ Install Manager section |
+
+**Critical learning captured tonight:** the install command's api_key is NOT a regular account api-key. It's a 1-hour-validity host-install-token issued by the vast.ai web UI. Using regular api-keys (rights_id=2) for the daemon/identify endpoint returns HTTP 403 "machine_api_key is too old or does not have machine registration rights" even with `machine_write` permission added. This is undocumented — discovered tonight by failed install attempts and reading the install command's structure. **Update `procedures/vastai-host-onboarding.md` Phase B to reflect this** instead of the SCP-clipboard-hijack pattern from the older flow.
+
+**Next steps (automatic, no human action needed):**
+1. Wait 1-3h for verification (RTX PRO 6000 WS prioritized)
+2. Once verified, listing visible to default renter searches
+3. Reliability builds with uptime
+4. Watch for first rental
+5. ~6 weeks before end_date 2026-06-15: re-evaluate per short-term-first strategy — extend with new fixed -e, or move to rolling -l, or adjust pricing based on fill rate
+
+
 
 # rtxserver vast.ai onboarding watch
 
