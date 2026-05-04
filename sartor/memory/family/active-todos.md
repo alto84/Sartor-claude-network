@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-04
 updated_by: personal-data-gather
-run: 47
+run: 50
 
 status: active
 priority: p1
@@ -1408,3 +1408,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] Bitwarden Windows CLI login — IP consistent with Rocinante (run 48 escalation of run 47 flag)
 > `no-reply@bitwarden.com`, May 4 01:19 UTC. Thread 19df091fb767ff47. The Bitwarden account created at alto84@gmail.com (run 47 SECURITY/FLAG) was subsequently logged into from a new device: **Windows CLI**, IP `2600:4041:410a:fc00:cd31:4ed1:b779:7089`. IPv6 prefix `2600:4041` is Verizon Fios — consistent with Rocinante's internet connection in Montclair NJ. Sequence: Chase fraud alerts → Bitwarden account created → CLI login from local Fios IP 2 hours later. Likely benign (Alton setting up Bitwarden CLI on Rocinante). **Close the run 47 flag if Alton confirms this was intentional.**
+
+## Latest from gather (2026-05-04) — run 50
+
+> [!todo] DELIVERY_EXPECTED — Nintendo Switch repair #61296128 shipped via UPS
+> `noreply_repair@noa.nintendo.com`, May 4 15:57 UTC. Thread 19df3b59ba319fd2. "We shipped your service request 61296128 back to you." Tracking: **1Z9437400399660038**, Carrier: UPS. Previously marked CLOSED run 42 (ticket closed on Nintendo's end). Now physically in transit — expect UPS delivery within 1-3 business days. Track at ups.com.
+
+> [!todo] OPEN — Guidepoint Brain Health / Neuro-Technology consultation #1737738 — accept or decline
+> `mpramesty@guidepointglobal.com`, May 4 08:32 UTC. Thread 19df21e86c5c654b. New consultation request matched to Alton: "Brain Health and Neuro-Technology Experts (#1737738)." Directly in Alton's domain (neurologist + AI/ML). Contact: Manisha Pramesty. Separate from Pediatric Glioma consult (run 6) and Pharma R&D Tech survey (run 47). Accept or decline.

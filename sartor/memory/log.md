@@ -1583,3 +1583,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - INFRA: data/ directory re-created (ephemeral). gather-alerts.md and heartbeat-log.csv written.
 - Pages updated: `daily/2026-05-04.md` (run 49 appended), `log.md`
 - Outputs: `data/gather-alerts.md` (re-created, 31 open items), `data/heartbeat-log.csv` (re-created, run 49 row)
+
+## [2026-05-04] ingest | personal-data-gather run 50: Nintendo Switch shipped; Guidepoint Brain Health consultation; SpotHero NYC commute; 4 net-new facts
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 4–May 11)
+- Net-new facts: 4 — (1) Nintendo Switch #61296128 SHIPPED UPS 1Z9437400399660038 (15:57 UTC), DELIVERY_EXPECTED; (2) Guidepoint Brain Health/Neuro-Tech consultation #1737738 (08:32 UTC), new OPEN item; (3) SpotHero Parking #122447317 35 W 33rd St NYC 9AM–7PM (12:03 UTC), INFORMATIONAL — Alton in NYC today; (4) Kaymbu Teacher Appreciation chalk reinforcement (10:54 UTC), TODAY deadline
+- New ACTION_REQUIRED: 1 new OPEN (Guidepoint #1737738 accept/decline); 1 DELIVERY_EXPECTED (Nintendo UPS)
+- Carry-forward open actions: 32 (+1 new)
+- Calendar: stable — no change vs run 49. Window: soccer May 6, Convocation + soccer game May 9.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved (13 days).
+- INFRA: data/ directory re-created (ephemeral). gather-alerts.md and heartbeat-log.csv written.
+- Pages updated: `daily/2026-05-04.md` (run 50 appended), `family/active-todos.md` (run 50 section), `log.md`
+- Outputs: `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (run 50 row)
