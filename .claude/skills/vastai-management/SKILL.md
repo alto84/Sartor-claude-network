@@ -113,8 +113,10 @@ The price-increase challenge mechanism is the only sanctioned path for raising p
 ssh alton@192.168.1.100 \
   '~/.local/bin/vastai list machine 52271 -g 0.35 -b 0.30 -s 0.10 -m 1 -e MM/DD/YYYY'
 
-# 2. Affected clients get an email. Until they `vastai accept price-increase <id>`
-#    on the renter side, their auto-extend stops at the OLD price.
+# 2. Affected clients get an email and accept (or decline) the new rate via
+#    cloud.vast.ai's web UI. Until they accept, their auto-extend stops at the OLD price.
+#    Note: there is no `vastai accept price-increase` CLI verb — confirmed against
+#    CLI v0.5.0 subcommand list 2026-05-04. Acceptance is web-UI only.
 # 3. New rentals see the new price.
 # 4. Existing rentals continue at OLD price until their current term ends or they accept.
 ```
@@ -212,9 +214,11 @@ ssh alton@192.168.1.100 \
 # Inspect
 ssh alton@192.168.1.100 'sudo tail -100 /var/lib/vastai_kaalia/kaalia.log'
 
-# Kaalia auto-restarts via /etc/init.d/vastai_kaalia_update (sysvinit, NOT systemd).
+# Kaalia runs as systemd service `vastai.service` (also: `vast_metrics.service`,
+# `vastai_bouncer.service`). User=vastai_kaalia, ExecStart=launch_kaalia.sh, Restart=always.
 # To force a restart:
-ssh alton@192.168.1.100 'sudo /etc/init.d/vastai_kaalia_update restart 2>&1 | head -20'
+ssh alton@192.168.1.100 'sudo systemctl restart vastai.service 2>&1 | head -20'
+ssh alton@192.168.1.100 'sudo systemctl status vastai.service 2>&1 | head -20'
 
 # If kaalia binary is corrupted, the install script can be re-run idempotently:
 ssh alton@192.168.1.100 \
@@ -317,9 +321,9 @@ vastai search offers "gpu_ram>=96 verified=true rentable=true" --raw
 
 Routing through `vastai-market-scan` is preferable when sizing comps for a pricing decision.
 
-### `vastai price-increase` (renter-side, mentioned for context)
+### Price-increase challenge (renter-side, mentioned for context)
 
-When you raise price on a host with active renters, those renters get an email and can run `vastai accept price-increase <id>` to opt in to the new rate. Until they accept, their auto-extend stops at the old price. **You don't run this command** — it's the renter-side accept verb. But knowing it exists explains why the price-increase challenge mechanism is non-disruptive.
+When you raise price on a host with active renters, those renters get an email and accept (or decline) the new rate via cloud.vast.ai's web UI. Until they accept, their auto-extend stops at the old price. **No CLI verb for renter-side acceptance exists** on CLI v0.5.0 (confirmed 2026-05-04 against the `vastai` subcommand list). Earlier Sartor docs that referred to a `vastai accept price-increase <id>` command are incorrect; the mechanism itself is real but is web-UI only on the renter side.
 
 ## Idle jobs
 

@@ -25,7 +25,7 @@ The bring-up sequence for a brand-new GPU host on the Sartor fleet. Twelve phase
 
 This procedure replaces the planned-but-never-written `procedures/vastai-host-onboarding.md`. It's grounded in:
 
-- gpuserver1's actual deployed state (CLI v0.5.0, the active 5-cron suite, the kaalia init.d unit, hairpin NAT, UFW rules, the `vastai_kaalia` user)
+- gpuserver1's actual deployed state (CLI v0.5.0, the active 5-cron suite, the kaalia systemd unit `vastai.service` and siblings `vast_metrics.service` + `vastai_bouncer.service`, hairpin NAT, UFW rules, the `vastai_kaalia` user)
 - rtxserver's onboarding work paused at commit `6cee210` (April-May 2026 — hardware, network, peer Claude, power cap all in place, kaalia install pending)
 - gpuserver1 peer's self-contained replication dump from 2026-05-02 (commit `fd80cc3`; referenced by the watcher tracker)
 - Live `vastai list machine --help`, `vastai self-test machine --help` from gpuserver1 (CLI v0.5.0, 2026-05-04)
@@ -378,8 +378,11 @@ sudo python3 /tmp/vast_host_installer.py "$API_KEY" \
     --interactive \
     --agree-to-nvidia-license \
     --no-driver \
-    --no-libvirt
+    --no-libvirt \
+    --no-docker
 ```
+
+**Non-interactive alternative:** the installer also accepts `--ports START END` to skip the port prompt entirely (verified against the installer's argparse on 2026-05-04: `parser.add_argument("--ports", nargs="+")`). Recommended only if you're scripting the install — for first-time bring-up, `--interactive` is safer because it forces a human review of the port range against the per-host allocation table below.
 
 **Flag reasoning:**
 
@@ -421,8 +424,10 @@ ps aux | grep -i kaalia | grep -v grep
 sudo cat /var/lib/vastai_kaalia/host_port_range
 # Expected: e.g., 40100-40199
 
-# Init.d unit (kaalia uses sysvinit, NOT systemd)
-sudo /etc/init.d/vastai_kaalia_update status 2>&1 | head -5
+# Systemd unit (kaalia runs as `vastai.service` system-level systemd unit;
+# also `vast_metrics.service` and `vastai_bouncer.service` are installed)
+systemctl status vastai.service 2>&1 | head -10
+systemctl is-active vastai.service vast_metrics.service vastai_bouncer.service
 ```
 
 **Interactive boundary documented:** kaalia install is the one phase that genuinely requires a human-equivalent at the console. Rocinante peer Claudes can prepare everything else (network, power cap, cron suite, MISSION doc) but cannot type the sudo password and port integers without explicit approval. The peer-side preparation makes Alton's window of attention as short as possible — the install, port answers, and "Daemon Running" confirmation should fit in ~10 minutes.
@@ -431,7 +436,7 @@ sudo /etc/init.d/vastai_kaalia_update status 2>&1 | head -5
 
 | Component | Path / unit | Notes |
 |---|---|---|
-| Kaalia daemon | `/var/lib/vastai_kaalia/latest/kaalia` (binary) launched by `launch_kaalia.sh` | Runs as `vastai_kaalia` user. NOT a systemd unit — auto-start is via `/etc/init.d/vastai_kaalia_update` (sysvinit-compatible). |
+| Kaalia daemon | `/var/lib/vastai_kaalia/latest/kaalia` binary launched by `/var/lib/vastai_kaalia/latest/launch_kaalia.sh` | Auto-start via systemd service `vastai.service` (User=vastai_kaalia, Group=docker, Restart=always, Wants=docker+libvirtd). Two sibling units `vast_metrics.service` and `vastai_bouncer.service` also installed. Verified on gpuserver1 2026-05-04. |
 | Machine ID | `/var/lib/vastai_kaalia/machine_id` | Internal hash. Vast.ai assigns the integer machine_id (e.g., 52271) server-side, returned to kaalia via API. |
 | Port range | `/var/lib/vastai_kaalia/host_port_range` | Plain text. |
 | Data partition | `/var/lib/vastai_kaalia/data/` | 95% of `/var/lib/` free space by default. Loopback file. |
