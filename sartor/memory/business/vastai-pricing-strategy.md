@@ -23,7 +23,7 @@ related:
 
 1. Publish at a candidate target price (the validated market median from `vastai-market-scan`).
 2. Watch rental fill rate, time-to-first-rental, and renter behavior.
-3. If fill rate is high → consider a small price raise via `vastai accept price-increase` mechanism.
+3. If fill rate is high → consider a small price raise. The host-side action is a listing-update via `vastai list machine <id> -g <new>` (or web UI). Existing renters receive a "price increase challenge" email from vast.ai; they accept via the platform's web UI (renter side, not host CLI). No `vastai accept` CLI verb exists.
 4. If fill rate is zero → drop price 10-20% and watch again.
 5. Only after 2-4 weeks of rental data should we consider a long-term reserved contract (which locks in a specific renter at a discount).
 

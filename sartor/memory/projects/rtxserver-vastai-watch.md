@@ -173,9 +173,13 @@ up. Two viable launch strategies:
   doc quote suggests it is).
 - **Launch-discounted then ratchet ($0.99 × 2 = $1.98 dual for first 2 weeks, then
   raise to $1.25)**: captures first renters during unverified window, builds
-  reliability score faster. CLI supports raising prices via "price-increase challenge"
-  — affected clients get an email and can `vastai accept price-increase <id>` to opt in;
-  until they accept, their auto-extend stops at the old price (per the `--help`).
+  reliability score faster. The host-side action to raise a listing's price is a
+  `vastai list machine <id> -g <new>` update (or web UI). Existing renters receive a
+  "price-increase challenge" notification from vast.ai and accept via the platform's
+  web UI on the renter side; until they accept, their auto-extend stops at the old
+  price. **There is no `vastai accept` CLI verb** — the original note in this section
+  inherited an error from the source docs (corrected 2026-05-03 by vastai-management
+  reviewer).
 
 **Recommendation: launch-at-target ($1.25/GPU, $2.50 dual).** Reasoning: (1) RTX PRO 6000
 WS is on the docs' explicit "prioritized verification" list, so the unverified window
