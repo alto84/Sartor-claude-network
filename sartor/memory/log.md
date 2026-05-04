@@ -1572,3 +1572,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-04.md` (created), `family/active-todos.md` (run 47 appended), `log.md`
 - Outputs: `data/gather-alerts.md` (updated run 47), `data/heartbeat-log.csv` (updated run 47)
 - Total new facts: 3 | New ACTION_REQUIRED: 1 (SECURITY/FLAG) | Carry-forward: 31
+
+## [2026-05-04] ingest | personal-data-gather run 49: 0 net-new facts; all-dedup; data/ re-created; alerts written
+- Sources: Gmail (newer_than:2d), all 5 calendars (May 4–May 11)
+- Net-new facts: 0 (all threads already captured runs 45–48)
+- New ACTION_REQUIRED: 0
+- Carry-forward open actions: 31 (unchanged)
+- Calendar: stable — confirmed May 6 soccer practice, May 9 soccer game + Convocation, May 8 Anjali Birthday (Aneeta). No conflicts.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline status unresolved.
+- INFRA: data/ directory re-created (ephemeral). gather-alerts.md and heartbeat-log.csv written.
+- Pages updated: `daily/2026-05-04.md` (run 49 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (re-created, 31 open items), `data/heartbeat-log.csv` (re-created, run 49 row)
