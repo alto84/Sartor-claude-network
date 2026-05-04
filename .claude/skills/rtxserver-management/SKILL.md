@@ -28,8 +28,10 @@ Skip for: a single read-only one-shot (`ssh alton@192.168.1.157 'nvidia-smi'`) �
 | Hostname | `rtxpro6000server` |
 | LAN IP | `192.168.1.157` (DHCP from Fios) |
 | Host MAC | `30:c5:99:d5:8f:b5` |
-| BMC IP | `192.168.1.156` (DHCP from Fios) |
-| BMC MAC | `30:c5:99:d5:8f:b8` |
+| BMC IP — primary | **`192.168.1.154`** (eth0, dedicated MGMT port, UniFi switch port 11, DHCP from Fios). Reachable from rtxserver-itself (no hairpin). Cable added 2026-05-04. |
+| BMC IP — secondary | `192.168.1.156` (eth1, Shared LAN, UniFi switch port 10, DHCP from Fios). Still active for redundancy. Hairpin: rtxserver-itself cannot reach this IP. |
+| BMC MAC eth0 | `30:c5:99:d5:8f:b7` (dedicated MGMT) |
+| BMC MAC eth1 | `30:c5:99:d5:8f:b8` (Shared LAN) |
 | BMC module | ASUS ASMB11-iKVM, firmware 2.1.30 (AST2600 chip) |
 | Public IPv4 | `100.1.100.63` (shared with gpuserver1; single Fios WAN) |
 | Public IPv6 | `2600:4041:410a:fc00::/64` (Verizon native) |
@@ -70,21 +72,25 @@ tmux attach -t claude-team-1
 
 ### BMC (out-of-band)
 
-The BMC is reachable from any LAN host EXCEPT rtxserver itself (Shared LAN hairpin — host can't ping its own port-mate via the switch). To probe the BMC, SSH to Rocinante or another host first.
+**Two BMC interfaces are active as of 2026-05-04:**
+
+- `192.168.1.154` (eth0, dedicated MGMT, switch port 11) — **preferred**. Reachable from EVERY host including rtxserver-itself. No hairpin.
+- `192.168.1.156` (eth1, Shared LAN, switch port 10) — legacy/redundancy. Reachable from any LAN host EXCEPT rtxserver-itself (Shared LAN hairpin). Will be retired in a future maintenance.
+
+Use `.154` for any new code. `.156` works fine from Rocinante for now.
 
 ```bash
-# From Rocinante (or any 192.168.1.0/24 host that's not rtxserver itself):
-# Web UI — Chrome MCP or browser
-#   https://192.168.1.156    (self-signed cert; accept once)
-#   creds:  sartor-secret read 'BMC rtxserver'   (NOT the default admin/admin — rotated 2026-05-03)
+# Web UI
+#   https://192.168.1.154    (self-signed cert; accept once)
+#   creds:  sartor-secret read 'BMC rtxserver'
 
 # IPMI over LAN
 PASS="$(sartor-secret read 'BMC rtxserver')" \
-  ipmitool -I lanplus -H 192.168.1.156 -U admin -P "$PASS" sensor
+  ipmitool -I lanplus -H 192.168.1.154 -U admin -P "$PASS" sensor
 
 # Redfish (programmatic, JSON over HTTPS)
 curl -k -s -u "admin:$(sartor-secret read 'BMC rtxserver')" \
-     "https://192.168.1.156/redfish/v1/Chassis/Self/Thermal" | python3 -m json.tool
+     "https://192.168.1.154/redfish/v1/Chassis/Self/Thermal" | python3 -m json.tool
 
 # In-band IPMI from rtxserver itself — works without BMC password
 sudo ipmitool chassis status        # power state, last power event
@@ -154,7 +160,7 @@ Applied 2026-05-02 via Chrome MCP from Rocinante. Currently active:
 | 6 | CHA_FAN5 (3× MEGACOOL splitter) | PCIE03 | 30°C/50% | 50°C/75% | 60°C/90% | 70°C/100% |
 | 7 | W_PUMP+ | CPU Pkg (default, empty) | 20°C/100% | — | — | — |
 
-BMC overall fan mode = **Customized** (auto-promoted from "Generic mode" on first per-zone Save). Verify after any BMC firmware update or factory-reset by visiting `https://192.168.1.156/#settings/fan_control/manual` via Chrome MCP.
+BMC overall fan mode = **Customized** (auto-promoted from "Generic mode" on first per-zone Save). Verify after any BMC firmware update or factory-reset by visiting `https://192.168.1.154/#settings/fan_control/manual` via Chrome MCP.
 
 ### OS-side fan control is INERT
 
@@ -239,7 +245,7 @@ If the box is unreachable after a known power outage:
 ### Remote power control via BMC web UI
 
 ```
-https://192.168.1.156/#power-control
+https://192.168.1.154/#power-control
   Power On / Power Off / Power Cycle / Hard Reset / ACPI Shutdown
 ```
 
@@ -247,9 +253,9 @@ https://192.168.1.156/#power-control
 
 ```bash
 PASS="$(sartor-secret read 'BMC rtxserver')"
-ipmitool -I lanplus -H 192.168.1.156 -U admin -P "$PASS" power status
-ipmitool -I lanplus -H 192.168.1.156 -U admin -P "$PASS" power cycle
-ipmitool -I lanplus -H 192.168.1.156 -U admin -P "$PASS" power soft   # = ACPI shutdown
+ipmitool -I lanplus -H 192.168.1.154 -U admin -P "$PASS" power status
+ipmitool -I lanplus -H 192.168.1.154 -U admin -P "$PASS" power cycle
+ipmitool -I lanplus -H 192.168.1.154 -U admin -P "$PASS" power soft   # = ACPI shutdown
 ```
 
 ### Open action item
@@ -395,8 +401,8 @@ ping -n 3 192.168.1.157   # Windows; -c 3 on Linux
 ping -n 3 192.168.1.156
 
 # 3. Branch:
-#    BMC alive, host dead    → host hung. Power-cycle via BMC web UI (https://192.168.1.156/#power-control)
-#                              or `ipmitool -I lanplus -H 192.168.1.156 -U admin -P "$(sartor-secret read 'BMC rtxserver')" power cycle`
+#    BMC alive, host dead    → host hung. Power-cycle via BMC web UI (https://192.168.1.154/#power-control)
+#                              or `ipmitool -I lanplus -H 192.168.1.154 -U admin -P "$(sartor-secret read 'BMC rtxserver')" power cycle`
 #    BMC dead too            → physical layer failure. Check rack power, switch port 10, AC at the outlet.
 #                              See §"Power and recovery" for the AC-failure-doesn't-auto-resume pattern.
 #    BMC alive, ipmitool says System Power: off  → press physical button (3rd-floor attic) OR
@@ -445,7 +451,7 @@ ssh alton@192.168.1.157 '~/.local/bin/vastai self-test machine 97429'
 ```bash
 # 1. Confirm BMC fan curves are still active (persistent in firmware, but firmware
 #    updates / factory-resets can blow them away)
-#    Visit https://192.168.1.156/#settings/fan_control/manual via Chrome MCP from Rocinante.
+#    Visit https://192.168.1.154/#settings/fan_control/manual via Chrome MCP from Rocinante.
 #    Confirm Customized mode + per-zone bindings + curves match the table above.
 
 # 2. If a card hits 75 °C+ sustained, drop power-cap as an emergency lever:
