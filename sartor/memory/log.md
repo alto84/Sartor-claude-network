@@ -1594,3 +1594,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - INFRA: data/ directory re-created (ephemeral). gather-alerts.md and heartbeat-log.csv written.
 - Pages updated: `daily/2026-05-04.md` (run 50 appended), `family/active-todos.md` (run 50 section), `log.md`
 - Outputs: `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (run 50 row)
+
+## [2026-05-04] ingest | personal-data-gather run 51: GCP billing past due; Pixel 10 Pro Fold acquired; Tribeca Pediatrics 5 unread; Guidepoint Global Oncology #1732882
+- Sources: Gmail (newer_than:2d, 25 threads from ~16:00–19:58 UTC), all 5 calendars (May 4–May 11)
+- Net-new facts: 5 — (1) GCP billing account 013989-45FB97-2BEFF0 past due (17:11 UTC), ACTION_REQUIRED; (2) Pixel 10 Pro Fold purchased Google Store Chelsea, Pixel 9 Pro Fold replaced under warranty, delivery RMA74714708 5/5–5/7 (17:10–18:18 UTC), INFORMATIONAL; (3) Tribeca Pediatrics 2 new portal messages, total 5 unread (18:39 UTC), FLAG; (4) Guidepoint Global Oncology Specialists #1732882 (16:22 UTC), new OPEN item; (5) Climate First Bank service disruption May 7–11 (16:45 UTC), INFORMATIONAL
+- New ACTION_REQUIRED: 1 (GCP billing)
+- New FLAG: 1 (Tribeca Pediatrics 5 total unread)
+- New OPEN: 1 (Guidepoint Global Oncology #1732882)
+- Carry-forward open actions: 34 (32 from run 50 + 2 new)
+- Calendar: stable — no change vs run 50. 7-day window: soccer May 6, Convocation + soccer game May 9 (2.5h gap confirmed manageable)
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved (13+ days)
+- Pages updated: `daily/2026-05-04.md` (run 51 appended), `family/active-todos.md` (run 51 section), `log.md` (this entry), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (run 51 row)
+- KEY ESCALATION: GCP billing failure could disrupt running infrastructure — check immediately
