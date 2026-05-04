@@ -1553,6 +1553,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Outputs: `data/gather-alerts.md` (created, Chase fraud alerts at top), `data/heartbeat-log.csv` (created)
 - Total new facts: 3 | New ACTION_REQUIRED: 1 (CRITICAL) | Carry-forward: 29
 
+## [2026-05-04] ingest | personal-data-gather run 48: 2 net-new facts; Bitwarden CLI login from Fios IP (likely Rocinante — benign escalation); Schwab eStatement 186
+- Sources: Gmail (newer_than:2d, is:unread OR is:starred), all 5 calendars (May 4–May 11)
+- NEW FACTS: (1) Bitwarden "New Device Logged In From Windows CLI" (May 4 01:19 UTC) — IP `2600:4041:410a:fc00:...` = Verizon Fios, consistent with Rocinante; likely benign escalation of run 47 security flag; (2) Schwab eStatement account 186 (May 4 03:44 UTC) — routine financial
+- NEW ACTION_REQUIRED: 0 (run 47 Bitwarden flag still open pending Alton confirmation; this login is likely-benign)
+- Calendar: stable, no change vs run 47. Window: soccer May 6, Convocation + soccer game May 9, soccer May 13+16
+- Pages updated: `daily/2026-05-04.md` (run 48 appended), `family/active-todos.md` (run 48 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created, backfilled runs 39–48)
+- Total new facts: 2 | New ACTION_REQUIRED: 0 | Carry-forward: 31
+
 ## [2026-05-04] ingest | personal-data-gather run 47: 3 net-new facts; SECURITY/FLAG — Bitwarden signup same evening as Chase fraud alerts
 - Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 4–May 18)
 - NEW FACTS: Bitwarden account created at alto84@gmail.com (May 3 23:12 UTC) — SECURITY/FLAG, timing overlaps Chase fraud alerts from same evening; Guidepoint Pharma R&D Tech Survey $50 (new, distinct from Genetic Disorder Survey run 22); Disney+ one-time passcode (informational)

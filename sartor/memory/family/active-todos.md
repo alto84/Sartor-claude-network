@@ -1403,3 +1403,8 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] Guidepoint Pharma R&D Tech Survey $50 — new opportunity (run 47)
 > surveys@guidepoint.com, May 3 23:21 UTC. Separate from the Genetic Disorder Survey (run 22, still open). Pharma R&D Tech topic. $50 compensation. Accept or decline per interest.
+
+## Latest from gather (2026-05-04) — run 48
+
+> [!fact] Bitwarden Windows CLI login — IP consistent with Rocinante (run 48 escalation of run 47 flag)
+> `no-reply@bitwarden.com`, May 4 01:19 UTC. Thread 19df091fb767ff47. The Bitwarden account created at alto84@gmail.com (run 47 SECURITY/FLAG) was subsequently logged into from a new device: **Windows CLI**, IP `2600:4041:410a:fc00:cd31:4ed1:b779:7089`. IPv6 prefix `2600:4041` is Verizon Fios — consistent with Rocinante's internet connection in Montclair NJ. Sequence: Chase fraud alerts → Bitwarden account created → CLI login from local Fios IP 2 hours later. Likely benign (Alton setting up Bitwarden CLI on Rocinante). **Close the run 47 flag if Alton confirms this was intentional.**
