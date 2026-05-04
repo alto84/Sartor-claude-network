@@ -1,0 +1,8 @@
+{
+  "ts": "2026-04-25T16:00:05+00:00",
+  "script": "gather_mirror.sh",
+  "pull_ok": true,
+  "gpu_temp_c": "43",
+  "disk_home_pct": "40",
+  "vastai_machines_raw": "ID     #gpus  gpu_name  disk  hostname    driver   reliab  veri      ip            geoloc          reports  gpuD_$/h  gpuI$/h  rdisc  netu_$/TB  netd_$/TB  occup\n52271  1      RTX_5090  1334  gpuserver1  570.144  0.9485  verified  100.1.100.63  New_Jersey,_US  4        0.30      0.25     0.00   3.00       2.00       R_   \n"
+}
