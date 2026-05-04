@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: MEMORY
-updated: 2026-05-02
-updated_by: unifi-takeover-cleanup (Rocinante Opus 4.7)
-last_verified: 2026-05-02
+updated: 2026-05-03
+updated_by: anthropic-shares-intake (Rocinante Opus 4.7)
+last_verified: 2026-05-03
 status: active
 tags: [meta/index, meta/entrypoint]
 aliases: [Memory Index, MEMORY]
@@ -19,7 +19,7 @@ Entrypoint to the Sartor memory system. This file is auto-injected when Claude C
 - **Session context (auto-injected):** `docs/USER.md`, `docs/MEMORY.md` — updated nightly by curator
 - **Feedback rules (auto-injected):** `sartor/memory/feedback/*.md` — behavioral rules visible in every session. As of 2026-04-16, all feedback files live under `feedback/` (the previous root-level outlier `feedback_pricing_autonomy.md` was relocated into `feedback/` to match convention).
 - **Core knowledge:** `sartor/memory/` — ALTON, FAMILY, BUSINESS, TAXES, MACHINES, PROJECTS, ASTRAZENECA, SELF, LEARNINGS, PROCEDURES
-- **Other top-level memory files:** [[INDEX]] (auto-generated browse index), [[MASTERPLAN]] and [[MASTERPLAN-VISIONARY]] (phased roadmap), [[QUICK-REFERENCE]], `gpuserver1-monitoring-log.md` (rolling log), `log.md` (session log), `reference_home_network.md` (home LAN reference), `reference_memory_server.md` (canonical git topology — rtxserver bare is origin, GitHub is DR mirror, added 2026-05-02)
+- **Other top-level memory files:** [[INDEX]] (auto-generated browse index), [[MASTERPLAN]] and [[MASTERPLAN-VISIONARY]] (phased roadmap), [[QUICK-REFERENCE]], `gpuserver1-monitoring-log.md` (rolling log), `log.md` (session log), `reference_home_network.md` (home LAN reference), `reference_memory_server.md` (canonical git topology — rtxserver bare is origin, GitHub is DR mirror, added 2026-05-02), `reference_anthropic_shares.md` (EquityZen Series 13 + Hiive HII Anthropic-01 family holdings, default posture: keep personal pending CPA review, added 2026-05-03)
 - **Conventions and architecture:** `sartor/memory/reference/`
   - [[MEMORY-CONVENTIONS]] — YAML frontmatter, callouts, wikilinks spec
   - [[MULTI-MACHINE-MEMORY]] — inbox pattern for N-machine sync

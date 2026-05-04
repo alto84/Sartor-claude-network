@@ -1,16 +1,16 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-04-29
-updated_by: personal-data-gather
+updated: 2026-05-03
+updated_by: anthropic-shares-intake (Rocinante Opus 4.7)
 status: active
 priority: p1
 next_review: 2026-04-21
 tags: [entity/llc, domain/career, status/active, priority/p1]
 aliases: [Solar Inference, Solar Inference LLC, SI LLC]
 related: [BUSINESS, TAXES, MACHINES, ALTON, FAMILY]
+originSessionId: 20258412-9bde-4353-8ccf-54156884e952
 ---
-
 # Solar Inference LLC
 
 Pre-revenue NJ multi-member LLC (50/50 Alton + Aneeta) combining Tesla Solar Roof at 85 Stonebridge Rd with a GPU compute rig on vast.ai marketplace. Founded 2025-09-06 via LegalZoom. Currently in build-out phase with significant capital deployed but zero revenue.
@@ -139,6 +139,11 @@ Full details in [[TAXES]]. Summary:
 - 2026-04-06: Tax package sent to CPA
 - 2026-04-07: Berman Home Systems wifi deposit signed
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
+
+## Anthropic shares — held personally, not by SI (2026-05-03)
+
+> [!note] Family Anthropic-share holdings tracked separately
+> Two private-secondary Anthropic positions exist (EquityZen Series 13, $105K cost basis 2025-02-12, in Emmett's name; Hiive HII Anthropic-01, 900 shares purchased 2025-12-24 from Alton Oliver Sartor's Schwab with a 300/300/300 family MOU). Both are currently held **outside** Solar Inference LLC. SI shared workspace tracker at `business/solar-inference/anthropic-shares/`. Canonical reference + decision considerations at [[reference_anthropic_shares]]. Default posture: keep personal until CPA opinion on §721(b) investment-company risk and active-business posture for the 2026 ITC case.
 
 ## Latest from gather (2026-04-29)
 
