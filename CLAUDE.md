@@ -242,6 +242,8 @@ Skills are defined in `.claude/skills/` and provide reusable capabilities:
 | `/build-llm-wiki` | Create self-contained LLM-optimized wiki |
 | `/multi-agent-orchestration` | Multi-agent system design patterns (consolidated 2026-04-19 from 14 overlapping skills) |
 | `/evidence-based-validation` | Anti-fabrication default behavior (single canonical after 2026-04-19 merge) |
+| `/secrets-via-bitwarden` | Sartor convention for credential retrieval. Wrapper at `scripts/sartor-secret` over Bitwarden CLI. Codifies vault-locked behavior, naming convention, hygiene rules, migration recipe for known-leaked passwords. Reference secrets by name, never by value. Created 2026-05-03 after the household-default-password problem surfaced. |
+| `/network-management` | Operating manual for the Sartor-Saxena-Claude Network. Topology, controller-access patterns, common operations (PSK change, AP restart, locate-strobe, backup), recovery playbooks (AP unreachable, controller down, re-adopt a device), per-AP authkey management, Phase 3 hardening status. Created 2026-05-03; consolidates the 2026-05-01 takeover bundle into operational form. |
 
 ## Available Commands
 
