@@ -244,6 +244,7 @@ Skills are defined in `.claude/skills/` and provide reusable capabilities:
 | `/evidence-based-validation` | Anti-fabrication default behavior (single canonical after 2026-04-19 merge) |
 | `/secrets-via-bitwarden` | Sartor convention for credential retrieval. Wrapper at `scripts/sartor-secret` over Bitwarden CLI. Codifies vault-locked behavior, naming convention, hygiene rules, migration recipe for known-leaked passwords. Reference secrets by name, never by value. Created 2026-05-03 after the household-default-password problem surfaced. |
 | `/network-management` | Operating manual for the Sartor-Saxena-Claude Network. Topology, controller-access patterns, common operations (PSK change, AP restart, locate-strobe, backup), recovery playbooks (AP unreachable, controller down, re-adopt a device), per-AP authkey management, Phase 3 hardening status. Created 2026-05-03; consolidates the 2026-05-01 takeover bundle into operational form. |
+| `/vastai-management` | Operational manual for the Sartor vast.ai GPU rental fleet. Fleet inventory, "short-term first" listing strategy, daily/weekly/periodic ops, pricing-adjustment workflow (price-increase challenge, on-demand vs reserved decision rules), CLI flag reference (per-GPU `-g`, `-m`, `-e` vs `-l`, etc.), idle-jobs mechanism, recovery playbooks (machine offline, kaalia broken, NIC issue, hung rental). Pairs with `procedures/vastai-host-onboarding.md` for new-host bring-up. Created 2026-05-04. |
 
 ## Available Commands
 
