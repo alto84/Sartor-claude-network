@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-04
 updated_by: personal-data-gather
-run: 50
+run: 51
 
 status: active
 priority: p1
@@ -1416,3 +1416,20 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] OPEN — Guidepoint Brain Health / Neuro-Technology consultation #1737738 — accept or decline
 > `mpramesty@guidepointglobal.com`, May 4 08:32 UTC. Thread 19df21e86c5c654b. New consultation request matched to Alton: "Brain Health and Neuro-Technology Experts (#1737738)." Directly in Alton's domain (neurologist + AI/ML). Contact: Manisha Pramesty. Separate from Pediatric Glioma consult (run 6) and Pharma R&D Tech survey (run 47). Accept or decline.
+
+## Latest from gather (2026-05-04) — run 51
+
+> [!todo] ACTION_REQUIRED — Google Cloud Platform billing past due
+> `CloudPlatform-noreply@google.com`, May 4 17:11 UTC. Thread 19df3f8ec26a18ec. Subject: "Action required: your billing account 013989-45FB97-2BEFF0 is past due or has invalid payment information." GCP billing failures stop running services. Check GCP console → Billing → Account 013989-45FB97-2BEFF0. Update payment method or clear the past-due balance. If this account hosts Sartor or Solar Inference infrastructure, services may already be degraded.
+
+> [!warning] Tribeca Pediatrics portal messages — now 5 unread
+> `info@tribecapediatrics.com`, May 4 18:39–18:40 UTC. Thread 19df449d16fe662a. Two new portal messages (×2 back-to-back). Prior carry-forward count was 3 unread (earlier runs). Total now **5 unread portal messages.** Content unknown — could be appointment reminders, test results, or clinical communications for any of the three children. Check the Tribeca Pediatrics portal to determine urgency.
+
+> [!todo] OPEN — Guidepoint Global Oncology Specialists #1732882 — accept or decline
+> `otaylor@guidepointglobal.com`, May 4 16:22 UTC. Thread 19df3cc8f1d013c3. Third distinct Guidepoint request this run cycle (separate from: Genetic Disorder Survey run 22, Brain Health/Neuro-Tech #1737738 run 50). Global Oncology Specialists topic. Contact: O. Taylor. Accept or decline.
+
+> [!fact] Alton acquired Pixel 10 Pro Fold at Google Store Chelsea today
+> Google Store Chelsea (76 9th Ave), May 4 2:15 PM appointment. Pixel 9 Pro Fold Obsidian 256GB replaced under warranty (RMA GSR.9196-8116-1500). New Pixel 10 Pro Fold purchased (receipt GS.6304-2623-7510). Replacement device for old phone: RMA74714708, delivery 5/5–5/7. Google security alert for new device sign-in is expected and benign.
+
+> [!note] Climate First Bank system upgrade May 7–11 (5-day disruption)
+> `marketing@email.climatefirstbank.com`, May 4 16:45 UTC. Thread 19df3e223f54590d. Banking services disrupted starting Thursday May 7 through May 11. If any Solar Inference LLC or personal accounts are at Climate First Bank, plan transactions around this window. INFORMATIONAL — confirm whether this bank is in active use.
