@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-05
 updated_by: personal-data-gather
-run: 53
+run: 54
 
 status: active
 priority: p1
@@ -1483,3 +1483,18 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Run 53 carry-forward (35 open items, no new items this run)
 > GCP billing P0 unresolved (19+ hours). FedEx CEVA expected today before 8 PM (signature req). Memory Book presale deadline 2026-05-10. Wohelo $12,900 due 2026-05-15. Machine 52271 offline 15+ days.
+
+## Latest from gather (2026-05-05) — run 54
+
+> [!todo] ACTION_REQUIRED — P1 HOME SYSTEMS
+> **Berman Home Systems Lutron quote received — Theater Lighting Control.** pete@bermanhomesystems.com, 14:52 UTC May 5. Subject: "Berman Home Systems Quote- Lutron." Pete Berman sent the Lighting Control quote for the Theater following the 8 AM call. Review and respond via the Berman Home Systems portal (link in email) — accept, decline, or request changes. This advances the Power Mac LLC (Ilija Trajceski, info@power-mac.net) coordination pending since 2026-04-13 estimate acceptance. Contact: Pete Berman, C: 201-615-0296. See [[family/active-todos]] Lutron run 52/53 entries for call history.
+
+> [!fact] Soccer — May 13 practice + May 16 game added to Vayu's window
+> **Wed 2026-05-13, 5:30–6:15 PM ET** — Rec Soccer Practice (B-34 Lime), Anderson Park (south side near Parkside St). Recurring. Newly in extended calendar window.
+> **Sat 2026-05-16, 12:00–1:00 PM ET** — Game: B34 Silver vs B34 Lime (Gormley Hanlon & Waynik), Brookdale Park, Montclair NJ. Net-new. See [[family/vayu]].
+
+> [!fact] Vishala — MKA "own your letter dress down" day, May 20
+> **Wed 2026-05-20, all-day** — "Vishala own your letter dress down" — MKA spirit/achievement dress-down day. Created by Aneeta on 2026-05-04. Transparency: free (no blocking). See [[family/vishala]].
+
+> [!note] Run 54 carry-forward (36 open items, +1 new: Lutron quote review)
+> GCP billing P0 unresolved (24+ hours). FedEx CEVA status unknown (delivery window closed at 8 PM today). Memory Book presale 2026-05-10. Wohelo $12,900 due 2026-05-15. Machine 52271 offline 15+ days.
