@@ -1617,3 +1617,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - INFRA: data/ directory re-created (ephemeral). gather-alerts.md and heartbeat-log.csv written.
 - Pages updated: `daily/2026-05-05.md` (created, run 52), `family/active-todos.md` (run 52 section appended), `log.md` (this entry)
 - Outputs: `data/gather-alerts.md` (35 open items), `data/heartbeat-log.csv` (run 52 row)
+
+## [2026-05-05] ingest | personal-data-gather supplemental (stale run counter 41): FedEx TODAY; Memory Book 5/10; Newegg inquiry; swim lessons
+- Note: parallel gather run with stale counter (used 41, already taken by 2026-05-02 session). Facts below are unique — not captured in runs 39–52.
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 5–May 12)
+- UNIQUE NEW FACTS vs runs 39–52: (1) FedEx CEVA delivery TODAY, tracking #491365128030, signature required — URGENT; (2) MKA 3rd grade Memory Book presale deadline 2026-05-10 (Vishala); (3) Newegg server components inquiry Build-20260504214241-95 (Solar Inference LLC hardware); (4) Summer swim lessons registration open (North Jersey Aquatics, Essex pool, June 29 start, communitypass.net)
+- Overlapping facts (already in run 51/52): Lutron call, Tribeca portal 5 unread, Pixel 10 Pro Fold active, Chase Wallet setup
+- Pages updated: `daily/2026-05-05.md` (supplemental section appended), `family/vishala.md` (Memory Book deadline), `family/vayu.md` (Tribeca portal note), `family/active-todos.md` (FedEx, Lutron, Memory Book, swim lessons), `business/solar-inference.md` (Newegg inquiry), `log.md`
+- Total unique new facts: 4 | Unique ACTION_REQUIRED: 1 (FedEx TODAY) | Unique deadlines: 2026-05-05 (FedEx), 2026-05-10 (Memory Book)

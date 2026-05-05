@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-04-29
+updated: 2026-05-05
 updated_by: personal-data-gather
 status: active
 priority: p1
@@ -150,3 +150,8 @@ Full details in [[TAXES]]. Summary:
 
 > [!warning] GPU MACHINE OFFLINE — ACTIVE CLIENT IMPACTED
 > Machine 52271 went offline at approximately 2:35 AM UTC April 22. Automated vast.ai alert confirmed; vast.ai support engineer Saber emailed at 5:27 AM UTC — an active rental client was impacted and reached out to support. This is the second offline incident (first: 2026-04-04, 45 min, no client impact). Revenue impact: zero while offline. Recovery steps and Saber contact in [[MACHINES]].
+
+## Latest from gather (2026-05-05) — run 41
+
+> [!fact]
+> **Newegg server components/system inquiry submitted (2026-05-04).** Alton submitted a server build inquiry to Newegg Business. Newegg confirmed receipt: "Thank you for choosing our server solution for your business needs. Your unique Build ID is: Build-20260504214241-95. We are reviewing the specifications." Response pending from Newegg Business team. Context: likely additional hardware for Solar Inference LLC compute capacity (or replacement/expansion of gpuserver1). No pricing or specs confirmed yet.
