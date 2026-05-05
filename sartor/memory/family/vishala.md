@@ -4,6 +4,7 @@ entity: vishala
 name: "Vishala Sartor"
 updated: 2026-05-05
 updated_by: personal-data-gather
+run: 54
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -152,3 +153,8 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!deadline] 2026-05-10
 > **3rd Grade Memory Book — presale deadline May 10.** meganflick@gmail.com (MKA 3rd grade, appears to be class parent) sent to Alton 2026-05-05 00:36 UTC: "It's time to order your child's Third Grade Memory book. There is a presale, if you purchase your book between now and May 10th, you will get the discounted price." Vishala is in 3rd grade at MKA. Order before 2026-05-10 to get the discounted price. After that date, full price applies. See [[family/active-todos]].
+
+## Latest from gather (2026-05-05) — run 54
+
+> [!fact] MKA spirit day — "own your letter dress down", May 20
+> **Wed 2026-05-20, all-day** — "Vishala own your letter dress down" per Family calendar, created by Aneeta on 2026-05-04. "Own your letter" is an MKA achievement/spirit event — dress-down day tied to earning a letter or award. Transparency: free. See [[family/active-todos]].

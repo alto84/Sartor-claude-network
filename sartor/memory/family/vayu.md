@@ -4,7 +4,7 @@ entity: vayu
 name: "Vayu Sartor"
 updated: 2026-05-05
 updated_by: personal-data-gather
-run: 41
+run: 54
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -228,3 +228,10 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 > - **Wed 2026-05-06 5:30–6:15 PM ET** — Rec Soccer Practice, B-34 Lime, Anderson Park (south side near Parkside St)
 > - **Sat 2026-05-09 11:00 AM–12:00 PM ET** — Game: B34 Lime vs B34 Purple, Brookdale Park, Montclair NJ
 > Both events previously confirmed in runs 36/28. No changes.
+
+## Latest from gather (2026-05-05) — run 54
+
+> [!fact] Soccer schedule extended — May 13 practice + May 16 game
+> From live calendar API (Blue Sombrero + Family calendar), run 54 extended window May 5–19:
+> - **Wed 2026-05-13, 5:30–6:15 PM ET** — Rec Soccer Practice (B-34 Lime), Anderson Park, south side near Parkside St. Recurring.
+> - **Sat 2026-05-16, 12:00–1:00 PM ET** — Game: B34 Silver vs B34 Lime (Gormley Hanlon & Waynik), Brookdale Park, Montclair NJ. Net-new — first capture of this game.

@@ -1634,3 +1634,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: stable — no change vs run 52. Window: soccer May 6 5:30 PM, Anjali Birthday May 8, Vayu soccer + Convocation May 9
 - SSH: gpuserver1 unavailable. Machine 52271 offline 15+ days (Apr 22 outage)
 - Pages updated: `daily/2026-05-05.md` (run 53 appended), `family/active-todos.md` (run 53 section), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-05] ingest | personal-data-gather run 54: Lutron quote received; Pool service logged; May 16 soccer + May 20 dress-down
+- Sources: Gmail (newer_than:1d, 50 threads, cutoff ~12:05 UTC after run 53), all 5 calendars (May 5–May 19, extended 2-week window)
+- Net-new facts: 6 — (1) Berman Home Systems Lutron Lighting Control quote received for Theater, ACTION_REQUIRED; (2) Pool Guyz LLC service completed at 85 Stonebridge Rd, INFORMATIONAL; (3) Gemini API event-driven webhooks announced, INFORMATIONAL; (4) May 13 rec soccer practice (recurring, new in window); (5) May 16 Vayu soccer game vs B34 Silver, Brookdale Park; (6) May 20 Vishala "own your letter" dress-down day (MKA)
+- New ACTION_REQUIRED: 1 (Lutron quote review)
+- New calendar events captured: 3 (May 13 practice, May 16 game, May 20 Vishala dress-down)
+- Carry-forward open actions: 36 (35 from run 53 + 1 new: Lutron quote)
+- Calendar: 5 calendars queried. Primary: 0 events. Tasks: 0 events. Family: soccer practice May 6/13, Convocation May 9, Vishala dress-down May 20. Aneeta: Healing May 6, Anjali Birthday May 8. Blue Sombrero: soccer game May 9 + May 16 (NEW).
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved (15+ days since Apr 22)
+- data/ directory: created. gather-alerts.md + heartbeat-log.csv initialized this run.
+- Pages updated: `daily/2026-05-05.md` (run 54 appended), `family/active-todos.md` (run 54 section), `family/vayu.md` (May 16 game added), `family/vishala.md` (May 20 dress-down added), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
