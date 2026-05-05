@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-04
+updated: 2026-05-05
 updated_by: personal-data-gather
-run: 47
+run: 52
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1606,3 +1606,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved (13+ days)
 - Pages updated: `daily/2026-05-04.md` (run 51 appended), `family/active-todos.md` (run 51 section), `log.md` (this entry), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (run 51 row)
 - KEY ESCALATION: GCP billing failure could disrupt running infrastructure — check immediately
+
+## [2026-05-05] ingest | personal-data-gather run 52: Lutron call pending; Pixel 10 Pro Fold active; 2 deliveries expected
+- Sources: Gmail (newer_than:1d, 50 threads), all 5 calendars (May 5–May 12)
+- Net-new facts: 2 — (1) Lutron switches call with Pete Berman (pete@bermanhomesystems.com) requested for May 5 morning, ACTION_REQUIRED; (2) Pixel 10 Pro Fold confirmed active via Chase new-device alert 00:00 UTC May 5, INFORMATIONAL
+- New ACTION_REQUIRED: 1 (Lutron call with Pete Berman)
+- Carry-forward open actions: 35 (34 from run 51 + 1 new)
+- Calendar: stable — no change vs run 51. Window: soccer May 6 5:30 PM (Anderson Park), Anjali's Birthday May 8 (Aneeta), Vayu soccer game + Convocation May 9 (2.5h gap, no conflict)
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved (14+ days since Apr 22)
+- INFRA: data/ directory re-created (ephemeral). gather-alerts.md and heartbeat-log.csv written.
+- Pages updated: `daily/2026-05-05.md` (created, run 52), `family/active-todos.md` (run 52 section appended), `log.md` (this entry)
+- Outputs: `data/gather-alerts.md` (35 open items), `data/heartbeat-log.csv` (run 52 row)

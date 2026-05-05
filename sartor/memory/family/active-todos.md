@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-04
+updated: 2026-05-05
 updated_by: personal-data-gather
-run: 51
+run: 52
 
 status: active
 priority: p1
@@ -1433,3 +1433,22 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Climate First Bank system upgrade May 7–11 (5-day disruption)
 > `marketing@email.climatefirstbank.com`, May 4 16:45 UTC. Thread 19df3e223f54590d. Banking services disrupted starting Thursday May 7 through May 11. If any Solar Inference LLC or personal accounts are at Climate First Bank, plan transactions around this window. INFORMATIONAL — confirm whether this bank is in active use.
+
+## Latest from gather (2026-05-05) — run 52
+
+> [!todo] ACTION_REQUIRED — P2 HOME SYSTEMS
+> **Lutron switches — call with Pete Berman (today, May 5).** Pete Berman (pete@bermanhomesystems.com, Berman Home Systems) emailed 23:59 UTC May 4: "Eli asked me to follow up with you about the Lutron switches. Can we jump on a quick call tomorrow morning to talk about it?" Alton replied "Certainly." Context: Berman Home Systems completed the WiFi-7/Sonos installation Apr 27–29 (confirmed working May 1). Pete also coordinates with Power Mac LLC (Ilija Trajceski, info@power-mac.net) for electrical work. Confirm call time and discuss Lutron switch requirements.
+
+> [!warning] DEADLINE PASSED — Mother's Day gift personalization cutoff (May 4)
+> Mark and Graham personalization deadline was yesterday (May 4). Mother's Day is **May 11**. Standard (non-personalized) shipping from markandgraham.com may still arrive in time — check current delivery estimates. Aneeta is home (returned from RRE May 3). First flagged run 26.
+
+> [!todo] DELIVERY_EXPECTED — today or this week
+> Two inbound deliveries:
+> - **Pixel 10 Pro Fold** replacement (RMA74714708) — Google Store delivery window 5/5–5/7
+> - **Nintendo Switch** returned unrepaired (#61296128, UPS 1Z9437400399660038) — shipped May 4, 1–3 business days
+
+> [!note] Run 52 calendar — stable vs run 51
+> No new events in 7-day window (May 5–12). Soccer practice May 6 5:30 PM (Anderson Park). Anjali's Birthday May 8 (Aneeta). Vayu soccer game May 9 11 AM + Convocation 2:30 PM — no conflict (2.5h gap). No scheduling conflicts detected.
+
+> [!note] Run 52 carry-forward (35 total open items, +1 new)
+> GCP billing P0 unresolved (15+ hours). Machine 52271 offline 14+ days. CAQH ProView expired. MKA tuition due May 10. All prior 34 items unchanged. See `data/gather-alerts.md` for full ranked list.
