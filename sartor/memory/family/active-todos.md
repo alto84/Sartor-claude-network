@@ -157,6 +157,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!todo] ACTION_REQUIRED
 > **Amazon product safety recall (2026-05-01).** Amazon emailed: "Important Safety Notice about your Past Amazon Order." Review Amazon account → Recalls and Product Safety Alerts page to identify affected product and required action.
 
+## Latest from gather (2026-05-05) — run 41
+
+> [!deadline] TODAY 2026-05-05 — URGENT
+> **FedEx delivery from CEVA — signature required.** Tracking #491365128030. Estimated delivery window: 9 AM–8 PM today. Second FedEx email confirms "signature required." Must have an adult present to sign. If no one home, check FedEx delivery options to redirect or hold. Source: TrackingUpdates@fedex.com, 2026-05-05 02:11 UTC.
+
+> [!todo] TODAY 2026-05-05
+> **Lutron switches call — Pete Berman.** Pete Berman (pete@bermanhomesystems.com, C: 201-615-0296) emailed 2026-05-04 23:59 UTC asking to "jump on a quick call tomorrow morning" about Lutron switches. Mentioned "Eli asked me to follow up." Alton replied at 01:32 UTC confirming he'd call at 8 AM. Call Pete Berman today if not already done. Related to home smart-lighting (Lutron) project and the Power Mac LLC electrical coordination (estimate approved 2026-04-13, Power Mac coordinating with Berman).
+
+> [!deadline] 2026-05-10
+> **3rd Grade Memory Book — presale deadline.** Vishala (3rd grade, MKA) has a class memory book on sale now through May 10 at discounted presale price. After May 10, full price. Email from meganflick@gmail.com (appears to be MKA class parent) to Alton 2026-05-05. Order before 2026-05-10. See [[family/vishala]].
+
+> [!todo]
+> **Summer swim lessons — register now.** North Jersey Aquatics returning to Essex pool location starting June 29. Registration now open via communitypass.net (announced 2026-05-04). Consider registering children for swim lessons before sessions fill. communitypass.net is the registration platform.
+
+> [!fact]
+> **Tribeca Pediatrics — 2 more portal messages (2026-05-04).** 5+ total unread messages now at http://tpeds.co/13kn. $170.28 balance (Vayu patient ID 599351) was a second-notice as of 2026-04-08; now significantly overdue. Check portal. See [[family/vayu]].
+
 ## Related
 - [[FAMILY]] - Household overview and family member profiles
 - [[vayu]] - Vayu-specific deep profile

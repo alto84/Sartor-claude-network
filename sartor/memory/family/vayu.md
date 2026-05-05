@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-05-01
+updated: 2026-05-05
 updated_by: personal-data-gather
-run: 40
+run: 41
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -217,3 +217,14 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!todo] ACTION_REQUIRED — RSVP to coach for Saturday game
 > **B-34 Lime game May 2 — low turnout warning.** Coach Keith Gormley (keith.gormley@gmail.com) emailed the team at 19:27 UTC May 1: "Team - looks to be a low turnout for our game on Saturday. We have 6 players confirmed to be away or unavailable. For the rest of the team, please let us know if you'll be able to attend - 2pm at Brookdale [Stadium South]." The team is short 6 players and may struggle to field a full side. Reply to keith.gormley@gmail.com confirming whether Vayu will attend. Game is tomorrow (Saturday May 2, 2:00–3:00 PM ET, Brookdale Stadium South, Field 1). Alton is sole parent (Aneeta returns from RRE ~May 3). See [[family/active-todos]].
+
+## Latest from gather (2026-05-05) — run 41
+
+> [!todo] ACTION_REQUIRED
+> **Tribeca Pediatrics — 2 new portal messages (2026-05-04).** info@tribecapediatrics.com sent two back-to-back portal notification emails on 2026-05-04 at 18:39 and 18:40 UTC. These are in addition to the 3+ unread messages already flagged in prior runs. Total unread portal messages: 5+. Content is gated behind the portal login at http://tpeds.co/13kn. May be related to the outstanding $170.28 balance (second notice, overdue since 2026-04-15), a well-visit, or other clinical matter. Check portal.
+
+> [!fact]
+> **Upcoming soccer — confirmed from live API, 2026-05-05 run:**
+> - **Wed 2026-05-06 5:30–6:15 PM ET** — Rec Soccer Practice, B-34 Lime, Anderson Park (south side near Parkside St)
+> - **Sat 2026-05-09 11:00 AM–12:00 PM ET** — Game: B34 Lime vs B34 Purple, Brookdale Park, Montclair NJ
+> Both events previously confirmed in runs 36/28. No changes.

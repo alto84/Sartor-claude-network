@@ -2,7 +2,7 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-04-30
+updated: 2026-05-05
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -147,3 +147,8 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!deadline] 2026-05-29 at 8:15am
 > **Vishala Capstone Design Fair — Friday May 29, 2026, 8:15am, Brookside (MKA).** MKA Veracross email (m@mail2.veracross.com, 2026-04-30 19:24 UTC): "We are SO excited to welcome you to Brookside on Friday, May 29th for the Third Grade Capstone Design Fair. The event will begin promptly at 8:15am in each of the third grade classrooms." Parents expected to attend. This is the culminating event for the Capstone project started in April. Block May 29 8:15am on calendar. See [[family/active-todos]].
+
+## Latest from gather (2026-05-05) — run 41
+
+> [!deadline] 2026-05-10
+> **3rd Grade Memory Book — presale deadline May 10.** meganflick@gmail.com (MKA 3rd grade, appears to be class parent) sent to Alton 2026-05-05 00:36 UTC: "It's time to order your child's Third Grade Memory book. There is a presale, if you purchase your book between now and May 10th, you will get the discounted price." Vishala is in 3rd grade at MKA. Order before 2026-05-10 to get the discounted price. After that date, full price applies. See [[family/active-todos]].
