@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-05
 updated_by: personal-data-gather
-run: 52
+run: 53
 
 status: active
 priority: p1
@@ -1469,3 +1469,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Run 52 carry-forward (35 total open items, +1 new)
 > GCP billing P0 unresolved (15+ hours). Machine 52271 offline 14+ days. CAQH ProView expired. MKA tuition due May 10. All prior 34 items unchanged. See `data/gather-alerts.md` for full ranked list.
+
+## Latest from gather (2026-05-05) — run 53
+
+> [!fact] Lutron call with Pete Berman — confirmed 8 AM May 5
+> pete@bermanhomesystems.com, 10:08 UTC May 5. Pete replied "8 works great" to Alton's confirmation. Call was at 8 AM ET today — outcome unknown. Follow up: did the call happen? What were the Lutron switch requirements discussed? Power Mac LLC (Ilija Trajceski) coordination pending since Apr 13. Update this item with call outcome.
+
+> [!warning] M3 Global Research neurology surveys — unsubscribe not completed
+> surveys.usa@m3globalresearch.com still sending daily. Per 2026-04-16 triage decision, Alton elected to unsubscribe. The action was not completed. Go to the email and use the unsubscribe link, or reply with opt-out.
+
+> [!note] Run 53 calendar — stable (no changes)
+> All 5 calendars unchanged vs run 52. Next events: soccer practice Wed 5/6 5:30 PM; Anjali's Birthday Fri 5/8; Vayu soccer game + Convocation Sat 5/9. No conflicts.
+
+> [!note] Run 53 carry-forward (35 open items, no new items this run)
+> GCP billing P0 unresolved (19+ hours). FedEx CEVA expected today before 8 PM (signature req). Memory Book presale deadline 2026-05-10. Wohelo $12,900 due 2026-05-15. Machine 52271 offline 15+ days.

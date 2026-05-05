@@ -1625,3 +1625,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Overlapping facts (already in run 51/52): Lutron call, Tribeca portal 5 unread, Pixel 10 Pro Fold active, Chase Wallet setup
 - Pages updated: `daily/2026-05-05.md` (supplemental section appended), `family/vishala.md` (Memory Book deadline), `family/vayu.md` (Tribeca portal note), `family/active-todos.md` (FedEx, Lutron, Memory Book, swim lessons), `business/solar-inference.md` (Newegg inquiry), `log.md`
 - Total unique new facts: 4 | Unique ACTION_REQUIRED: 1 (FedEx TODAY) | Unique deadlines: 2026-05-05 (FedEx), 2026-05-10 (Memory Book)
+
+## [2026-05-05] ingest | personal-data-gather run 53: Lutron call confirmed; M3 unsubscribe pending; USPS 1 mailpiece
+- Sources: Gmail (newer_than:1d, 50 threads), all 5 calendars (May 5–May 12)
+- Net-new facts: 3 — (1) Pete Berman confirmed Lutron call at 8 AM May 5 ("8 works great"), ACTION STATUS UPDATE; (2) M3 Global Research daily neurology surveys still arriving despite 4/16 triage unsubscribe decision, FLAG; (3) USPS Informed Delivery: 1 mailpiece today, 0 packages (12:05 UTC), INFORMATIONAL
+- New ACTION_REQUIRED: 0 (updates to existing items only)
+- Carry-forward open actions: 35 (unchanged)
+- Calendar: stable — no change vs run 52. Window: soccer May 6 5:30 PM, Anjali Birthday May 8, Vayu soccer + Convocation May 9
+- SSH: gpuserver1 unavailable. Machine 52271 offline 15+ days (Apr 22 outage)
+- Pages updated: `daily/2026-05-05.md` (run 53 appended), `family/active-todos.md` (run 53 section), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
