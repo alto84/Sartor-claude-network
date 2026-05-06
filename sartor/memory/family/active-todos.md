@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-06
 updated_by: personal-data-gather
-run: 56
+run: 60
 
 status: active
 priority: p1
@@ -161,6 +161,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!deadline] TOMORROW 2026-05-06 at 2:30 PM ET
 > **Chase business account meeting — Pavel Manrique.** In-person meeting at Chase Montclair, 19 N Fullerton Ave. Topic: "Open or upgrade a business account." Banker: Pavel Manrique (973-873-9133). No calendar conflict (soccer practice 5:30 PM is after). Prepare for meeting: business type, documents. Likely Solar Inference LLC context. Source: chase.meeting.scheduler@mccb.chase.com, 18:51 UTC May 5.
+
+## Latest from gather (2026-05-06) — run 60
+
+> [!blocker] iCloud storage full — backups failing NOW
+> Apple alert 2026-05-06: Alton's iCloud storage is full. Device backups stopped; photos/videos not syncing. Action: upgrade storage plan at appleid.apple.com or delete old backups. Affects iPhone/iPad on alto84@gmail.com account.
+
+> [!todo] Vasu pizza money at Goddard — replenish (Friday pizza)
+> Samantha Ramsden (Goddard) emailed 2026-05-06: Vasu is out of pizza money. Friday pizza program needs a top-up. See [[family/vasu]].
+
+> [!todo] Avigilon Alta (Openpath) — Goddard door access activation (expires ~2026-05-13)
+> Goddard Montclair sent Alton a mobile door-access invite (2026-05-06). Install "Alta Open" app, then activate using the emailed link. Token expires ~7 days from receipt (est. 2026-05-13). See [[family/vasu]].
 
 > [!todo] ACTION_REQUIRED
 > **MKA Fourth Grade Laptop Letter — review.** Erica Budd (Director of Educational Technology) and Jacqy Chung (Middle School Instructional Technologist) sent a laptop letter to 4th grade families via Veracross (19:00 UTC May 5). Vayu is in 4th grade. Email body blank — content requires Veracross portal login. Review and action before any purchase deadline. See [[family/vayu]].

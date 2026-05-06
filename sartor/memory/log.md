@@ -37,6 +37,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-05-06] ingest | personal-data-gather run 60: iCloud full; Vasu pizza money; Goddard door access; Schwab TQQQ
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 6–May 13)
+- Net-new facts: 4
+- New ACTION_REQUIRED: 3 (iCloud storage full, Vasu pizza money, Avigilon Alta activation)
+- New FINANCIAL: 1 (Schwab TQQQ 125 shares @ $69.11 = $8,638.75, account 186, settled 2026-05-07)
+- Carry-forward open actions: 4 P0/P1 (GCP billing, Wohelo May 15, Memory Book May 10, Ghosty vet)
+- Calendar: no new events vs run 57 correction (Convocation 2:30–5:30 PM on May 9, not 6:30 PM)
+- Pages updated: `daily/2026-05-06.md` (run 60 appended), `family/vasu.md`, `family/active-todos.md`, `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: iCloud backups down; Vasu needs pizza money today; Openpath activation expires ~May 13; Wohelo $12,900 due in 9 days
+
 ## [2026-05-06] ingest | personal-data-gather run 58: Cenlar mortgage payment; all carry-forwards stable
 - Sources: Gmail (newer_than:2d, 25 threads), all 5 calendars (May 6–May 13)
 - Net-new facts: 1 (Cenlar mortgage payment $3,133.12 applied 2026-05-05)

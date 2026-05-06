@@ -56,6 +56,14 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 - What's the Recycled Runway costume plan for 4/22? Typically requires parent prep.
 - School closure dates for April — needs cross-reference against Alton's work travel days.
 
+## Latest from gather (2026-05-06)
+
+> [!todo] Pizza money at Goddard — replenish
+> Samantha Ramsden emailed 2026-05-06 (via Kaymbu): Vasu is out of pizza money for Friday pizza at Goddard Montclair. Replenish via Goddard payment portal or call the school.
+
+> [!todo] Avigilon Alta / Openpath — Goddard door access setup
+> Goddard Montclair provisioned Alton with mobile door-unlock access (Avigilon Alta). Install "Alta Open" app and activate using the invitation email sent 2026-05-06. Token expires ~2026-05-13. This simplifies dropoff/pickup door access at Goddard.
+
 ## Notable about Vasu at age 4
 
 - Too young for independent ledger tracking — balance stays at $0, purchases made on his behalf don't flow through the kids ledger
