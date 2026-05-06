@@ -1689,3 +1689,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 SSH unavailable from execution environment. GPU monitoring skipped this run. Machine 52271 offline status unknown.
 - Pages updated: `daily/2026-05-06.md` (created), `family/active-todos.md` (run 56 appended), `people/oliver-sartor.md` (created), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (updated), `log.md` (this entry)
 - KEY ITEMS: Chase business meeting TODAY 2:30 PM (open/upgrade Solar Inference business account); Wohelo $12,900 due 9 days; Memory Book 4 days; Oliver Sartor signed unknown Anthropic agreement (family); MKA 4th grade laptop letter needs review (Vayu)
+
+## [2026-05-06] ingest | personal-data-gather run 59: Ghosty vet overdue; Cenlar $17K payment; carries-forward all run 56-58 items
+- Sources: Gmail (unread + newer_than:2d, 30 threads scanned), all 5 calendars (May 6–May 13)
+- Net-new facts: 4 — (1) Ghosty overdue vet services at Cambridge Cat Clinic, ACTION_REQUIRED; (2) Cenlar $17,311.53 payment applied 2026-05-01, anomalous vs routine $3,133.12, FLAG; (3) Sante Total Cary Grayson donation 2026-05-02 — already logged run 41, confirmed as duplicate; (4) Tesla Google Account authorization, informational
+- New ACTION_REQUIRED: 1 (Ghosty vet scheduling)
+- Carry-forward escalations: 4 (GCP billing P0 unresolved; Memory Book May 10 — 4 days; Wohelo $12,900 May 15 — 9 days; Chase meeting today 2:30 PM — outcome unknown)
+- Calendar: no new events vs run 56-58; window stable through May 13
+- SSH: gpuserver1 unavailable (no ssh binary in execution environment). data/ directory created this run on this host.
+- Pages updated: `daily/2026-05-06.md` (run 59 appended), `family/active-todos.md` (run 59 appended), `business/sante-total.md` (updated: field only), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created), `log.md` (this entry)
