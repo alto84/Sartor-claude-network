@@ -157,6 +157,20 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!todo] ACTION_REQUIRED
 > **Amazon product safety recall (2026-05-01).** Amazon emailed: "Important Safety Notice about your Past Amazon Order." Review Amazon account → Recalls and Product Safety Alerts page to identify affected product and required action.
 
+## Latest from gather (2026-05-05) — run 55
+
+> [!deadline] TOMORROW 2026-05-06 at 2:30 PM ET
+> **Chase business account meeting — Pavel Manrique.** In-person meeting at Chase Montclair, 19 N Fullerton Ave. Topic: "Open or upgrade a business account." Banker: Pavel Manrique (973-873-9133). No calendar conflict (soccer practice 5:30 PM is after). Prepare for meeting: business type, documents. Likely Solar Inference LLC context. Source: chase.meeting.scheduler@mccb.chase.com, 18:51 UTC May 5.
+
+> [!todo] ACTION_REQUIRED
+> **MKA Fourth Grade Laptop Letter — review.** Erica Budd (Director of Educational Technology) and Jacqy Chung (Middle School Instructional Technologist) sent a laptop letter to 4th grade families via Veracross (19:00 UTC May 5). Vayu is in 4th grade. Email body blank — content requires Veracross portal login. Review and action before any purchase deadline. See [[family/vayu]].
+
+> [!fact] RESOLVED 2026-05-05
+> **Pixel 10 Pro Fold + FedEx CEVA delivery confirmed received.** Google Store email at 18:49 UTC confirms package delivered today. Closes carry-forward FedEx delivery item (tracking #491365128030 and RMA74714708).
+
+> [!todo]
+> **Guidepoint consultation — Global Oncology Specialists (#1732882).** Request from otaylor@guidepointglobal.com, 17:37 UTC May 5. Accept or decline. Quick consulting income opportunity. See [[ALTON]] for advisory log. Prior Guidepoint request in run 6 (Pediatric Low-Grade Glioma #1718071) — unclear if that was acted on.
+
 ## Latest from gather (2026-05-05) — run 41
 
 > [!deadline] TODAY 2026-05-05 — URGENT

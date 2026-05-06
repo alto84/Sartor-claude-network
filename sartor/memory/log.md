@@ -37,6 +37,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-05-05] ingest | personal-data-gather run 55: Chase meeting tomorrow; MKA laptop letter; Pixel delivered
+- Sources: Gmail (newer_than:2d, 25 threads), all 5 calendars (May 5–May 12)
+- Net-new facts: 6 (Chase business meeting May 6; MKA 4th grade laptop letter; Pixel delivered; Guidepoint consult #1732882; Chase $1K payment; SpotHero NYC parking)
+- New ACTION_REQUIRED: 2 (Chase meeting tomorrow 2:30 PM; MKA laptop letter review)
+- RESOLVED: FedEx CEVA delivery + Pixel RMA — both delivered May 5
+- Carry-forward open actions: 37 (net +1 vs run 54)
+- Calendar: all 5 stable — ZERO net-new events vs run 54
+- Pages updated: `daily/2026-05-05.md` (run 55 appended), `family/active-todos.md` (run 55 appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- KEY ITEMS: Chase business meeting TOMORROW 2:30 PM (Pavel Manrique, Montclair branch); GCP billing still P0 overdue; Wohelo $12,900 due in 10 days; Memory Book deadline May 10
+
 ## [2026-05-02] ingest | personal-data-gather run 41: CAQH profile expired; CRWV call sold; Cary Grayson Sante Total donation; Disney agent active
 - Sources: Gmail (newer_than:1d, 50 threads), all 5 calendars (May 2–May 9)
 - Net-new facts: 5 (PayPal Cary Grayson → Sante Total; CRWV CoreWeave sold call; CAQH profile expired; Nicol Stevenson Disney Lightning Lanes; Jackrabbit Tech summer gym)
