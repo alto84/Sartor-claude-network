@@ -37,6 +37,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-05-06] ingest | personal-data-gather run 58: Cenlar mortgage payment; all carry-forwards stable
+- Sources: Gmail (newer_than:2d, 25 threads), all 5 calendars (May 6–May 13)
+- Net-new facts: 1 (Cenlar mortgage payment $3,133.12 applied 2026-05-05)
+- New ACTION_REQUIRED: 0 (carry-forward only)
+- Carry-forward open actions: 4 P0/P1 (Chase meeting TODAY, GCP billing, Wohelo May 15, Memory Book May 10)
+- Calendar: no new events vs run 57
+- Pages updated: `daily/2026-05-06.md` (run 58 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated), `log.md`
+- KEY: Chase business meeting in-person TODAY 2:30 PM Montclair; Wohelo $12,900 due in 9 days; Memory Book deadline 4 days
+
 ## [2026-05-06] ingest | personal-data-gather run 57: Berman QuoteValet order; Convocation time correction
 - Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 6–May 13)
 - Net-new facts: 3 (Berman Home Systems QuoteValet order #AAAQ13681 accepted; Convocation corrected to 2:30–5:30 PM not 6:30 PM; Disney+ new login notification)
