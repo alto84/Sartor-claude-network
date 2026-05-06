@@ -37,6 +37,21 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-05-06] ingest | personal-data-gather run 57: Berman QuoteValet order; Convocation time correction
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 6–May 13)
+- Net-new facts: 3 (Berman Home Systems QuoteValet order #AAAQ13681 accepted; Convocation corrected to 2:30–5:30 PM not 6:30 PM; Disney+ new login notification)
+- New ACTION_REQUIRED: 1 (Berman order — confirm service scope/cost/date)
+- Carry-forward open actions: 9 (GCP P0, Memory Book May 10, Wohelo May 15, Chase meeting today, MKA laptop letter, Convocation context, Guidepoint, CAQH, Aneeta LLC draft)
+- Calendar: Convocation time error corrected from run 56. No new calendar events.
+- Pages updated: `daily/2026-05-06.md` (run 57 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated), `log.md`
+- KEY: Chase business meeting in-person TODAY 2:30 PM; Berman new home systems work order; Wohelo $12,900 due May 15 (9 days)
+
+## [2026-05-06] ingest | personal-data-gather run 56: Oliver Sartor Anthropic agreement; PAMKA Conference Day; soccer coach email
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 6–May 13)
+- Net-new facts: 6
+- New ACTION_REQUIRED: 0 (carry-forward items only)
+- Pages updated: `daily/2026-05-06.md` (run 56), `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
 ## [2026-05-05] ingest | personal-data-gather run 55: Chase meeting tomorrow; MKA laptop letter; Pixel delivered
 - Sources: Gmail (newer_than:2d, 25 threads), all 5 calendars (May 5–May 12)
 - Net-new facts: 6 (Chase business meeting May 6; MKA 4th grade laptop letter; Pixel delivered; Guidepoint consult #1732882; Chase $1K payment; SpotHero NYC parking)
