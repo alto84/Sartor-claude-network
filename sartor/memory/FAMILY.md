@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-04-30
-updated_by: personal-data-gather
+updated: 2026-05-06
+updated_by: autodream
 last_verified: 2026-04-16
 status: active
 tags: [entity/person, domain/family]
@@ -383,3 +383,6 @@ Replace field `cell_phone` on entity `Tier` in `FAMILY.md` with value `(914) 488
 
 > [!fact]
 > **Berman Home Systems installation complete.** Final day April 30 (all-day event end date). 3-day install Apr 27–30 wrapped today. Solar Inference LLC business install.
+
+## Consolidated from daily logs (2026-05-06)
+- [2026-05-05] (fact) Convocation: — Sat 2026-05-09, 2:30–5:30 PM ET. Created by Aneeta Apr 11. No location or description. [already logged runs 35/36]

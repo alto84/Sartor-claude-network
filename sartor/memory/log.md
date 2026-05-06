@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-05
+updated: 2026-05-06
 updated_by: personal-data-gather
 run: 52
 status: active
@@ -1655,3 +1655,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved (15+ days since Apr 22)
 - data/ directory: created. gather-alerts.md + heartbeat-log.csv initialized this run.
 - Pages updated: `daily/2026-05-05.md` (run 54 appended), `family/active-todos.md` (run 54 section), `family/vayu.md` (May 16 game added), `family/vishala.md` (May 20 dress-down added), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-06] ingest | personal-data-gather run 56: Oliver Sartor Anthropic agreement; Chase meeting day-of; Wohelo 9 days out
+- Sources: Gmail (unread + newer_than:2d, 30 threads scanned), all 5 calendars (May 6–May 13)
+- Net-new facts: 6 (Oliver Sartor Anthropic agreement signed; soccer practice tonight confirmed; Vayu game May 9 confirmed; Convocation May 9; MKA Conference Day May 14 volunteer request; Anjali's Birthday May 8)
+- New ACTION_REQUIRED: 1 (Chase business meeting TODAY 2:30 PM — Montclair branch, Pavel Manrique)
+- Carry-forward escalations: 3 (Wohelo $12,900 due May 15 — 9 days; Memory Book deadline May 10 — 4 days; GCP billing P0 unresolved)
+- Calendar: Family + Blue Sombrero active — soccer practice 5:30 PM tonight, game May 9 11 AM Brookdale, Convocation May 9 6:30 PM (context unknown), Anjali's Birthday May 8
+- SSH: gpuserver1 SSH unavailable from execution environment. GPU monitoring skipped this run. Machine 52271 offline status unknown.
+- Pages updated: `daily/2026-05-06.md` (created), `family/active-todos.md` (run 56 appended), `people/oliver-sartor.md` (created), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (updated), `log.md` (this entry)
+- KEY ITEMS: Chase business meeting TODAY 2:30 PM (open/upgrade Solar Inference business account); Wohelo $12,900 due 9 days; Memory Book 4 days; Oliver Sartor signed unknown Anthropic agreement (family); MKA 4th grade laptop letter needs review (Vayu)

@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: LEARNINGS
-updated: 2026-05-04
+updated: 2026-05-06
 updated_by: autodream
 last_verified: 2026-04-12
 status: active
@@ -223,3 +223,6 @@ Key findings from surveying state-of-the-art AI memory systems:
 - [2026-04-05] (fact) ---
 - [2026-04-06] (fact) ---
 - [2026-04-06] (fact) ---
+
+## Consolidated from daily logs (2026-05-06)
+- [2026-05-05] (fact) Rec Soccer Practice (B-34 Lime): — Wed 2026-05-06, 5:30–6:15 PM ET, Anderson Park, south side near Parkside St. [already logged runs 36/28/22]
