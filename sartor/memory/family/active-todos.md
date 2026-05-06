@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-05
+updated: 2026-05-06
 updated_by: personal-data-gather
-run: 54
+run: 56
 
 status: active
 priority: p1
@@ -1512,3 +1512,32 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Run 54 carry-forward (36 open items, +1 new: Lutron quote review)
 > GCP billing P0 unresolved (24+ hours). FedEx CEVA status unknown (delivery window closed at 8 PM today). Memory Book presale 2026-05-10. Wohelo $12,900 due 2026-05-15. Machine 52271 offline 15+ days.
+
+## Latest from gather (2026-05-06) — run 56
+
+> [!todo] ACTION — Chase Business Meeting TODAY 2:30 PM
+> In-person at Chase Montclair branch, 19 N Fullerton Ave. With Pavel Manrique (Relationship Banker, 973-873-9133). Topic: open or upgrade a business account (Solar Inference LLC likely). Email confirmation received 2026-05-05.
+
+> [!deadline] 2026-05-15 — Wohelo $12,900 (9 days — URGENT)
+> Full tuition for Vishala's summer camp. Check to Wohelo Camps, 25 Gulick Road, Raymond ME 04071. Contact Heidi Gorton (heidigorton@gmail.com). $500 deposit already past due since 2026-04-10. See [[family/vishala]].
+
+> [!deadline] 2026-05-10 — MKA Memory Book order (4 days)
+> Carry-forward from run 55.
+
+> [!fact] Oliver Sartor — Anthropic agreement signed (2026-05-05)
+> Dr. Oliver Sartor (MD, Tulane/LCMC Health, family member — oncologist) emailed Alton + family "Anthropic agreement signed by all..... File it!" with attachment. Nature of agreement unclear. See [[people/oliver-sartor]].
+
+> [!fact] MKA Conference Day May 14 — PAMKA volunteer request
+> PAMKA requesting food/snacks for Spring Conference Day (Thursday May 14, all MKA campuses). Source: meganflick@gmail.com 2026-05-05.
+
+> [!fact] MKA Fourth Grade Laptop Letter — review needed (Vayu)
+> From Erica Budd (Director of Ed Tech) + Jacqy Chung via Veracross. Important info for 4th grade families. Body blank in email — may need MKA Veracross portal login to read. See [[family/vayu]].
+
+> [!deadline] 2026-05-09 — Vayu soccer game @ Brookdale Park
+> 11 AM vs Purple team (B34 - Lime vs B34 - Purple - Lac & Karacas). Team coming off a loss on Saturday. Shin guards required. Coach: Gormley/Hanlon/Waynik.
+
+> [!note] Convocation — Saturday May 9, 6:30–9:30 PM
+> On Family calendar. No location or context provided. Check what this event is — possible school graduation or ceremony.
+
+> [!note] Run 56 carry-forward (37 open items, +1 new: Lutron quote resolved?, +0 new escalations)
+> GCP billing P0 unresolved. Memory Book deadline 2026-05-10 (4 days). Wohelo $12,900 due 2026-05-15 (9 days). Machine 52271 offline status unknown (SSH unavailable this run). Chase meeting TODAY.
