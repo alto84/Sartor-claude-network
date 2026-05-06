@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-02
+updated: 2026-05-06
 updated_by: personal-data-gather
 status: active
 priority: p2

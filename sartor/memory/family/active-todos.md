@@ -1541,3 +1541,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Run 56 carry-forward (37 open items, +1 new: Lutron quote resolved?, +0 new escalations)
 > GCP billing P0 unresolved. Memory Book deadline 2026-05-10 (4 days). Wohelo $12,900 due 2026-05-15 (9 days). Machine 52271 offline status unknown (SSH unavailable this run). Chase meeting TODAY.
+
+## Latest from gather (2026-05-06) — run 59
+
+> [!todo] ACTION_REQUIRED — Ghosty vet: overdue services (Cambridge Cat Clinic)
+> Cambridge Cat Clinic (1108 Cambridge St, Cambridge MA; 617-245-0245) sent an overdue services reminder for Ghostie on 2026-05-06. Services overdue — schedule appointment or consider transitioning to a local Montclair vet given distance. See `daily/2026-05-06.md` run 59 for full detail.
+
+> [!fact] Cenlar mortgage — large payment $17,311.53 applied 2026-05-01 (review allocation)
+> A $17,311.53 Cenlar loan payment was applied on 2026-05-01 — substantially above the routine monthly amount ($3,133.12). May be escrow true-up, extra principal, or a separate loan. Review at loanadministration.com for allocation breakdown.
+
+> [!note] Run 59 carry-forward (38 open items, +1 new: Ghosty vet)
+> GCP billing P0 unresolved. Memory Book deadline 2026-05-10 (4 days). Wohelo $12,900 due 2026-05-15 (9 days). Machine 52271 offline status unknown. Chase business meeting was today 2:30 PM (outcome unknown).
