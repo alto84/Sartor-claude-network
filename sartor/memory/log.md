@@ -1708,3 +1708,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: no new events vs run 56-58; window stable through May 13
 - SSH: gpuserver1 unavailable (no ssh binary in execution environment). data/ directory created this run on this host.
 - Pages updated: `daily/2026-05-06.md` (run 59 appended), `family/active-todos.md` (run 59 appended), `business/sante-total.md` (updated: field only), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created), `log.md` (this entry)
+
+## [2026-05-06] ingest | personal-data-gather run 61: Chase bank session resolved; LA geauxBIZ/Sante Total; Vasu Show+Tell Fri; EquityZen Anthropic
+- Sources: Gmail (unread + newer_than:2d, 30 threads scanned), all 5 calendars (May 6–May 13)
+- Net-new facts: 6 (Chase bank session outcome; LA geauxBIZ alert → Sante Total; Vasu Show and Tell letter i; Vishala MKA alum visit; EquityZen Anthropic reconfirm needed; pool service complete)
+- New ACTION_REQUIRED: 3 (LA geauxBIZ/Sante Total state filing; Vasu Show and Tell Fri; EquityZen Anthropic reconfirmation)
+- Carry-forward escalations: 5 (GCP P0 unresolved; iCloud storage full; MKA Memory Book May 10; Wohelo $12,900 May 15; Sante Total 990-N May 15)
+- Calendar: no new events vs run 60; added Vasu Show and Tell Fri May 8 to calendar table from Gmail signal
+- Note: runs 57, 58, 60 wrote to daily log but did not update active-todos or log.md — run 61 catches up those missed active-todos items (iCloud, pizza money, Avigilon Alta)
+- SSH: gpuserver1 SSH unavailable from execution environment. Machine 52271 status unknown.
+- Pages updated: `daily/2026-05-06.md` (run 61 appended), `family/active-todos.md` (run 60 catch-up + run 61 appended), `business/sante-total.md` (LA geauxBIZ fact added), `family/vasu.md` (Show and Tell + Goddard activities added), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created), `log.md` (this entry)
+- KEY ITEMS: Sante Total Louisiana registration needs geauxBIZ check; Vasu needs Show and Tell item (letter i) by Friday; EquityZen Anthropic interest expires without reconfirmation; iCloud backups failing; GCP billing still P0; Wohelo + 990-N both due May 15
