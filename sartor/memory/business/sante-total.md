@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-06
+updated: 2026-05-07
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -161,3 +161,8 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!fact]
 > **New Sante Total PayPal donation — Cary Grayson, May 2 (second donation).** Transaction ID: 77M21554G32947412. Received 05:02:33 CDT (10:02 UTC). "You received a payment from Cary Grayson for Sante Total." Amount not visible in email snippet — verify in PayPal dashboard. Note: Cary Grayson previously donated ~$350+ on 2026-04-02 (listed in donor activity table above). This is a **second donation** from the same donor — unusual and worth a personal thank-you. Add to donor activity table once amount confirmed. Send tax receipt per [[alison-smith|Alison Smith]] pattern. Running 2026 YTD donors: Schall, Yantz, mksinbelair, cfryaniii, Cary Grayson (×2), oates2, Michael Quigg (Apr 14), Christina Stiles (Apr 19), Sergei Robinson (Apr 27), Cary Grayson again (May 2).
+
+## Latest from gather (2026-05-07) — run 63
+
+> [!fact]
+> **New Sante Total PayPal donation — stinchieii@aol.com, May 7.** Received 2026-05-07 02:04:47 UTC. Amount: **$250.00 USD** (confirmed in email snippet: "You received a payment of $250.00 USD from (stinchieii@aol.com)"). Sender email alias does not map to a known donor name — verify name in PayPal dashboard. Add to donor activity table once name confirmed. Send tax receipt per [[alison-smith|Alison Smith]] pattern used for Anna Smyke on 2026-03-10. Running 2026 YTD donors: Schall, Yantz, mksinbelair, cfryaniii, Cary Grayson (×2), oates2, Michael Quigg (Apr 14, amt TBD), Christina Stiles (Apr 19, amt TBD), Sergei Robinson (Apr 27, amt TBD), this donor (May 7, $250 confirmed). YTD total: $4,350+ (Mar–Apr 2) + 4 unverified + $250 confirmed = $4,600+ minimum.
