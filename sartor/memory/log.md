@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-07
 updated_by: personal-data-gather
-run: 63
+run: 65
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1748,3 +1748,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-07.md` (run 64 appended), `business/solar-inference.md` (Steven fact + todo added), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (updated), `log.md`
 - KEY: Lucent Energy thread active again — Steven site visit confirmed; reply needed; ITC deadline July 4 in 58 days
 - KEY: Sante Total 2026 YTD now $4,600+ minimum confirmed. 990-N due in 8 days (not yet filed). Wohelo $12,900 check also due in 8 days.
+
+## [2026-05-07] ingest | personal-data-gather run 65: Vasu pizza final notice; Wohelo forms+check May 15; Sante Total PayPal split; NVDA call sold
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 7–14)
+- Net-new facts: 5
+- New ACTION_REQUIRED: 3 (Vasu pizza P0 today; Wohelo forms+check May 15 formal reminder; Sante Total PayPal program split request)
+- New FINANCIAL: 2 (Fidelity SOLD CALL NVDA account 8998; Schwab funds transfer IN PROGRESS account 669)
+- INFORMATIONAL: Alton in NYC today (SpotHero 35 W 33rd St); Schwab new Android trusted device; Blue Sombrero game reminder (already captured)
+- Calendar: All 5 stable. No new events vs run 64. May 9: soccer 11 AM + Convocation 2:30 PM (no conflict).
+- SSH: gpuserver1 unavailable from execution environment.
+- Pages updated: `daily/2026-05-07.md` (run 65 appended), `family/vasu.md` (pizza final notice), `family/active-todos.md` (run 65 appended), `business/sante-total.md` (PayPal split todo), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: Vasu pizza money P0 today — Alton in NYC, must act remotely; Wohelo forms AND check both due May 15 (8 days); Sante Total PayPal split question from Julia Clemens needs Alton's governance decision
