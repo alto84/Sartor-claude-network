@@ -1,4 +1,18 @@
 ---
+supersession_note: |
+  Superseded 2026-05-06 by Rocinante orchestrator on Alton's behalf.
+  Production envelope changed from 475W to 450W per card via
+  nvidia-power-cap.service. The 84°C peak that drove this
+  recommendation was at 475W; we don't operate there anymore.
+  2026-05-02 stress sequence A1→F1→B confirmed dual-card mode at
+  450W is healthier than single-card. BMC fan curves saved to
+  firmware (zones 2-6). Flower-fan PWM conversion completed per
+  4/27 follow-up. Re-open if GPU0 ≥ 85°C at 450W during real
+  workloads. Original phone-home preserved below.
+moved_to_processed: 2026-05-06
+---
+
+---
 name: phone-home-cooling-upgrade-recommendation-2026-04-29
 description: Cooling-upgrade recommendation for rtxpro6000server after the post-BMC-binding 475W stress test. Verdict marginal (GPU0 peak 84°C, no throttle, but existing fan suite is at its thermal ceiling). Recommendation: install a 5th ARCTIC P14 PWM in CHA_FAN4 (Zone 5), rebind Zone 5 from PCIE07 to PCIE03 (the hot card), re-test. If GPU0 peak stays ≥ 78°C, escalate to water cooling on GPU0. Filed for Alton's review when he is back from remote.
 type: phone-home

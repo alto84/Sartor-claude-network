@@ -48,7 +48,9 @@ def gen_via_hf(model_id: str, prompts: list[str], system_prompt: str | None,
                max_new_tokens: int = 512, log=lambda s: None,
                adapter_path: str | None = None) -> list[str]:
     """Load model via transformers and generate responses for each prompt.
-    If adapter_path is given, layer a PEFT LoRA adapter on top of the base."""
+    If adapter_path is given, manually merge the LoRA delta into the base
+    weights (bypasses PEFT.from_pretrained which hits a transformers/PEFT
+    version-mismatch on Qwen3.6-35B-A3B with peft 0.19.1 + transformers 5.7)."""
     log(f"loading {model_id}...")
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -61,9 +63,35 @@ def gen_via_hf(model_id: str, prompts: list[str], system_prompt: str | None,
         trust_remote_code=True,
     )
     if adapter_path:
-        from peft import PeftModel
-        log(f"loading PEFT adapter from {adapter_path}")
-        model = PeftModel.from_pretrained(model, adapter_path)
+        import json as _json
+        import safetensors.torch as _st
+        from pathlib import Path as _P
+        log(f"manually merging LoRA delta from {adapter_path}")
+        cfg = _json.load(open(_P(adapter_path) / "adapter_config.json"))
+        scale = cfg["lora_alpha"] / cfg["r"]
+        weights = _st.load_file(str(_P(adapter_path) / "adapter_model.safetensors"))
+        applied, missing = 0, 0
+        with torch.no_grad():
+            for key, val in weights.items():
+                if not key.endswith(".lora_A.weight"):
+                    continue
+                B_key = key.replace(".lora_A.weight", ".lora_B.weight")
+                if B_key not in weights:
+                    continue
+                # PEFT key format: base_model.model.<...>.<module>.lora_A.weight
+                # base   key format: <...>.<module>.weight
+                base_key = key.replace("base_model.model.", "").replace(".lora_A.weight", ".weight")
+                try:
+                    target = model.get_parameter(base_key)
+                except (AttributeError, KeyError):
+                    missing += 1
+                    continue
+                A = val.to(target.device).to(torch.float32)
+                B = weights[B_key].to(target.device).to(torch.float32)
+                delta = (B @ A) * scale
+                target.data.add_(delta.to(target.dtype))
+                applied += 1
+        log(f"LoRA merge: applied={applied}, missing={missing}")
     model.eval()
     log(f"model loaded; device map: {getattr(model, 'hf_device_map', 'n/a')}")
 

@@ -119,7 +119,7 @@ def main() -> int:
         save_steps=args.save_steps,
         save_total_limit=2,
         report_to="none",
-        max_seq_length=args.max_seq_len,
+        max_length=args.max_seq_len,
         packing=False,
         remove_unused_columns=False,
         gradient_checkpointing=True,

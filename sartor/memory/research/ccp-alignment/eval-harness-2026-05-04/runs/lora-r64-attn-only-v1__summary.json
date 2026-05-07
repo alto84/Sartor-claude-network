@@ -1,0 +1,10 @@
+{
+  "completed": true,
+  "paused": false,
+  "out_dir": "runs/lora-r64-attn-only-v1",
+  "n_examples": 46,
+  "global_step": 18,
+  "epoch": 3.0,
+  "training_loss": null,
+  "timestamp": "2026-05-05T04:54:27+0000"
+}
