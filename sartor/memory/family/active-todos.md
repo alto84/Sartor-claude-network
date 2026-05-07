@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-06
+updated: 2026-05-07
 updated_by: personal-data-gather
-run: 61
+run: 65
 
 status: active
 priority: p1
@@ -1603,3 +1603,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - **2026-05-17 (10 days)**: Disney ADR — respond to Nicol Stevenson
 > - **2026-05-29 (22 days)**: Vishala Capstone Design Fair 8:15 AM, MKA Brookside
 > No new ACTION_REQUIRED items this run.
+
+## Latest from gather (2026-05-07) — run 65
+
+> [!warning] P0 — TODAY 2026-05-07
+> **Vasu pizza money — LAST DAY.** Goddard (Samantha Ramsden via Kaymbu) sent final "Last Day - Out of Pizza Money!" notice at 13:01 UTC. Alton is in NYC today (SpotHero 35 W 33rd St). Replenish via Goddard payment portal remotely or coordinate with Aneeta. If unresolved, Vasu misses Friday pizza. See [[family/vasu]].
+
+> [!deadline] 2026-05-15 (Friday) — ESCALATED
+> **Wohelo/Camp Timanous — forms AND check both due May 15.** Heidi (heidi@timanous.org) sent formal "Important Reminder - Forms Due Friday, May 15" at 15:48 UTC from Panther Pond (Raymond ME). Previous memory tracked only the $12,900 check. Camp forms are also due by this Friday. Both must be mailed together. Check payable to Wohelo Camps, 25 Gulick Road, Raymond ME 04071. 8 days remaining. See [[family/vishala]].
+
+> [!todo] ACTION_REQUIRED — Sante Total PayPal program split
+> **Julia Clemens (jclemens27@gmail.com) requesting PayPal separation — school vs clinic donations.** Email to Barbara Weis (dye2tie@verizon.net) at 15:22 UTC, cc Alton. Julia wants separate PayPal donation buttons/tracks for the school program vs the clinic program. She is asking for PayPal login access to look at options. Alton must decide: provide Barbara/Julia access, or set up the split structure himself. Governance note: PayPal credentials are sensitive — do not share unless explicitly authorized. See [[business/sante-total]].

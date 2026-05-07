@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-05-06
+updated: 2026-05-07
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -71,6 +71,11 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!todo] Pizza money at Goddard — replenish
 > Samantha Ramsden emailed 2026-05-06 (via Kaymbu): Vasu is out of pizza money for Friday pizza at Goddard Montclair. Replenish via Goddard payment portal or call the school.
+
+## Latest from gather (2026-05-07) — run 65
+
+> [!warning] P0 — LAST DAY (2026-05-07)
+> **Vasu pizza money — final notice.** Samantha Ramsden (Goddard) sent "Last Day - Out of Pizza Money!" at 13:01 UTC May 7. This is the second notice (first was May 6). Alton is in NYC today (SpotHero parking 35 W 33rd St). Must replenish via Goddard online payment portal remotely, or coordinate with Aneeta. If not resolved today, Vasu misses Friday pizza. See [[family/active-todos]].
 
 > [!todo] Avigilon Alta / Openpath — Goddard door access setup
 > Goddard Montclair provisioned Alton with mobile door-unlock access (Avigilon Alta). Install "Alta Open" app and activate using the invitation email sent 2026-05-06. Token expires ~2026-05-13. This simplifies dropoff/pickup door access at Goddard.
