@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-06
+updated: 2026-05-07
 updated_by: personal-data-gather
-run: 52
+run: 62
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1719,3 +1719,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 SSH unavailable from execution environment. Machine 52271 status unknown.
 - Pages updated: `daily/2026-05-06.md` (run 61 appended), `family/active-todos.md` (run 60 catch-up + run 61 appended), `business/sante-total.md` (LA geauxBIZ fact added), `family/vasu.md` (Show and Tell + Goddard activities added), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created), `log.md` (this entry)
 - KEY ITEMS: Sante Total Louisiana registration needs geauxBIZ check; Vasu needs Show and Tell item (letter i) by Friday; EquityZen Anthropic interest expires without reconfirmation; iCloud backups failing; GCP billing still P0; Wohelo + 990-N both due May 15
+
+## [2026-05-07] ingest | personal-data-gather run 62: convocation correction; deadline escalations
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 7–14)
+- Net-new facts: 6
+- New ACTION_REQUIRED: 0 (all items carried forward from run 61)
+- Deadline escalations: Show & Tell (tomorrow), Memory Book (3d), Alta (6d), Wohelo (8d), Disney (10d), Capstone Fair (22d)
+- Convocation corrected: 2:30–5:30 PM May 9 (prior active-todos had 6:30–9:30 PM — not 6:30 PM)
+- Pages updated: `daily/2026-05-07.md` (created), `family/vayu.md`, `family/active-todos.md`, `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: No new blockers. Deadlines converge May 8–15. Wohelo check must be mailed within 8 days.

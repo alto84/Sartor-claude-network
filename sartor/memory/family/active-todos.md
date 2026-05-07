@@ -1588,3 +1588,18 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Run 61 carry-forward (40+ open items)
 > P0: GCP billing past due (ongoing). P0: iCloud storage full. Deadline 2026-05-08: Vasu Show and Tell letter i. Deadline 2026-05-10: MKA Memory Book order. Deadline 2026-05-13: Avigilon Alta activation. Deadline 2026-05-15: Wohelo $12,900. Deadline 2026-05-15: Sante Total 2025 990-N filing. Ghosty vet overdue services. Chase banking session completed (address update + new debit card + paperless enrollment — all resolved). Machine 52271 offline status unknown (SSH unavailable from this host).
+
+## Latest from gather (2026-05-07) — run 62
+
+> [!warning] CONVOCATION TIME CORRECTION — May 9
+> **Convocation is 2:30–5:30 PM ET, NOT 6:30–9:30 PM** as logged in a prior run. Live Family calendar API (run 62): `start: 2026-05-09T14:30:00-04:00`, `end: 2026-05-09T17:30:00-04:00`. No conflict with Vayu's soccer game (11:00 AM–12:00 PM). 2.5h gap between events.
+
+> [!note] Run 62 deadline status (2026-05-07)
+> P0 ongoing: iCloud storage full (unresolved). Carry-forward open: 40+ items.
+> - **2026-05-08 TOMORROW**: Vasu Show & Tell letter "i"
+> - **2026-05-10 (3 days)**: MKA Memory Book presale ends (Vishala)
+> - **2026-05-13 (6 days)**: Avigilon Alta token expires
+> - **2026-05-15 (8 days)**: Wohelo $12,900 mailing deadline
+> - **2026-05-17 (10 days)**: Disney ADR — respond to Nicol Stevenson
+> - **2026-05-29 (22 days)**: Vishala Capstone Design Fair 8:15 AM, MKA Brookside
+> No new ACTION_REQUIRED items this run.
