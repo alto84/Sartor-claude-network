@@ -152,6 +152,11 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 > [!fact]
 > **Donor spreadsheet updated by Alison Smith as of 2026-04-30.** Alison added more donors to the spreadsheet overnight before sending the "Donors" email. No count or amount visible in snippet. This likely follows the Sergei Robinson donation (Apr 27) and possibly others. Verify updated spreadsheet totals before authorizing fund transfer.
 
+## Latest from gather (2026-05-06) — run 61
+
+> [!todo] ACTION_REQUIRED — Louisiana geauxBIZ alert
+> DoNotReply@sos.la.gov sent a "New geauxBIZ Alerts" email on 2026-05-06. Context: Pavel Manrique (Chase Montclair, relationship banker) sent Alton a Louisiana SOS filing document link (coraweb.sos.la.gov, CharterID 923742). Alton replied to Pavel confirming identity as Sante Total Treasurer via santetotal.org/biographies/ and 4 documents with his name. This is almost certainly Sante Total's Louisiana charity registration filing. Action: log into geauxBIZ (geauxbiz.sos.la.gov) and check what registration document or renewal is required. See `daily/2026-05-06.md` run 61 for full detail.
+
 ## Latest from gather (2026-05-02) — run 41
 
 > [!fact]

@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-06
 updated_by: personal-data-gather
-run: 60
+run: 61
 
 status: active
 priority: p1
@@ -1563,3 +1563,28 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Run 59 carry-forward (38 open items, +1 new: Ghosty vet)
 > GCP billing P0 unresolved. Memory Book deadline 2026-05-10 (4 days). Wohelo $12,900 due 2026-05-15 (9 days). Machine 52271 offline status unknown. Chase business meeting was today 2:30 PM (outcome unknown).
+
+## Latest from gather (2026-05-06) — run 60 (catch-up: not logged in prior active-todos pass)
+
+> [!blocker] ACTION_REQUIRED — iCloud storage full, backups failing
+> Apple email 2026-05-06 14:07 UTC: iCloud storage is full. Documents, contacts, and device data no longer backing up. Photos no longer uploading to iCloud Photos. Action: upgrade iCloud storage plan at appleid.apple.com, or free space by deleting old device backups.
+
+> [!todo] Vasu — pizza money at Goddard, replenish (2026-05-06 13:57 UTC)
+> Samantha Ramsden via Kaymbu: Vasu is out of pizza money for Friday pizza. Replenish via Goddard payment portal or contact the school directly. May already be handled (email arrived ~10 AM ET). Verify.
+
+> [!todo] Avigilon Alta (Openpath) — Goddard door access, activate before 2026-05-13
+> noreply@alta.avigilon.com, 2026-05-06 11:58 UTC. Goddard Montclair provisioned mobile door access for Alton via Avigilon Alta. Steps: (1) Download "Alta Open" app (iOS or Android); (2) Activate using invitation link in the email. Token expires ~2026-05-13. See [[family/vasu]].
+
+## Latest from gather (2026-05-06) — run 61
+
+> [!todo] Sante Total — Louisiana geauxBIZ alert (check portal)
+> DoNotReply@sos.la.gov sent "New geauxBIZ Alerts" today. Pavel Manrique (Chase Montclair) also sent a Louisiana SOS filing link for Sante Total (CharterID 923742). Alton confirmed identity in reply. Action: log into geauxBIZ and determine what renewal or filing is needed for Louisiana charity registration. See [[business/sante-total]].
+
+> [!todo] P1 — Vasu Show and Tell FRIDAY 2026-05-08 (letter "i")
+> Lorena Castillo (Goddard) via Kaymbu, May 6 17:42 UTC. Letter of the week: i. Bring ice cream toy, indigo item, or anything starting with i. Pack before Friday drop-off. See [[family/vasu]].
+
+> [!todo] EquityZen — reconfirm Anthropic investor interest
+> support@equityzen.com: Alton's Anthropic watchlist interest needs reconfirmation or it will be removed. Login to EquityZen and reconfirm. Separate from SambaNova Express Deal (informational, no action needed on that).
+
+> [!note] Run 61 carry-forward (40+ open items)
+> P0: GCP billing past due (ongoing). P0: iCloud storage full. Deadline 2026-05-08: Vasu Show and Tell letter i. Deadline 2026-05-10: MKA Memory Book order. Deadline 2026-05-13: Avigilon Alta activation. Deadline 2026-05-15: Wohelo $12,900. Deadline 2026-05-15: Sante Total 2025 990-N filing. Ghosty vet overdue services. Chase banking session completed (address update + new debit card + paperless enrollment — all resolved). Machine 52271 offline status unknown (SSH unavailable from this host).
