@@ -108,7 +108,7 @@ This block was truth-up'd 2026-05-04 from a live `crontab -l` on gpuserver1. The
 - **Controller:** Rocinante runs the UniFi controller at `https://192.168.1.171:8443` (inform port 8080). MongoDB backing store at `mongodb://127.0.0.1:27117/ace` (loopback, no auth).
 - **9 devices total:** USW-Pro-Max-24-PoE switch (192.168.1.170) + 8 WiFi 7 APs (Hall2ndFloor .167, Gym .165, Basement .168, HerOffice .183, 3rdFloor .166, Livingroom .185, OutdoorBackyard .173, HisOffice in-wall .186).
 - **Single SSID:** `LGP123` (WPA3-SAE + WPA2 transition, `pmf_mode=optional`). PSK lives in the takeover project doc, not here.
-- **Daily `.unf` backup:** Windows Scheduled Task "UniFi Daily Backup" at 3 AM ET → `C:\Users\alto8\backups\unifi\` + OneDrive parallel copy. Script at `C:\Users\alto8\scripts\unifi-daily-backup.ps1`.
+- **Daily `.unf` backup:** Windows Scheduled Task "UniFi Daily Backup" at 3 AM ET → `C:\Users\alto8\backups\unifi\` (local, 30-day rolling) + SCP off-site to `alton@192.168.1.157:/home/alton/sartor-network-backups/` (rtxserver, kept indefinitely). Script at `C:\Users\alto8\scripts\unifi-daily-backup.ps1`.
 - **Full playbook + credentials + per-AP authkeys + recovery procedures:** [[projects/unifi-takeover-2026-05-01]] (canonical) and [[projects/unifi-takeover-2026-05-01-INDEX]] (dispatch).
 - **Operational note:** if Rocinante reboots, the controller comes back automatically (Java auto-launched by tray app). If Rocinante is offline for an extended period, APs continue running their last-pushed config (broadcast SSIDs, route traffic) but won't accept config changes until it's back. Acceptable for residential.
 

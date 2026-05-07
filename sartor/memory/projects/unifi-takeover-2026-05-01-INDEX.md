@@ -73,13 +73,13 @@ See `C:\Users\alto8\backups\unifi\README.md` for per-file descriptions. As of 20
 - `ap-173-OutdoorBackyard-mgmt.bak` — first AP's `/etc/persistent/cfg/mgmt` before edits (proof-of-concept device)
 - `backup-log.txt` — append-only log of scheduled-task runs
 
-### OneDrive copies
+### Off-site copy
 
-The daily backup script writes a parallel copy to `C:\Users\alto8\OneDrive\Documents\Sartor-network\backups\` for off-Rocinante durability.
+The daily backup script SCPs each `.unf` to `alton@192.168.1.157:/home/alton/sartor-network-backups/` on rtxserver (LAN, ~999 GB free) for off-Rocinante durability. rtxserver-side copies are kept indefinitely. (Earlier docs claiming a OneDrive parallel copy were wrong — the script never wrote there.)
 
 ### Daily backup script
 
-- `C:\Users\alto8\scripts\unifi-daily-backup.ps1` — PowerShell script that logs in to the controller, triggers a backup, downloads the `.unf`, copies to OneDrive, prunes local copies older than 30 days.
+- `C:\Users\alto8\scripts\unifi-daily-backup.ps1` — PowerShell script that logs in to the controller, triggers a backup, downloads the `.unf`, SCPs to rtxserver, prunes local copies older than 30 days.
 
 ### Scheduled Task
 
