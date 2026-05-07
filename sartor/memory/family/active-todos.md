@@ -1614,3 +1614,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ACTION_REQUIRED — Sante Total PayPal program split
 > **Julia Clemens (jclemens27@gmail.com) requesting PayPal separation — school vs clinic donations.** Email to Barbara Weis (dye2tie@verizon.net) at 15:22 UTC, cc Alton. Julia wants separate PayPal donation buttons/tracks for the school program vs the clinic program. She is asking for PayPal login access to look at options. Alton must decide: provide Barbara/Julia access, or set up the split structure himself. Governance note: PayPal credentials are sensitive — do not share unless explicitly authorized. See [[business/sante-total]].
+
+## Latest from gather (2026-05-07) — run 49 (addendum)
+
+> [!deadline] 2026-05-15
+> **MKA Parent-Teacher Conference sign-up — conferences next Thursday.** Roshni Shah (rshah@mka.org, 4th Grade Dean) emailed Alton and Aneeta 2026-05-07 18:02 ET: "I noticed that you haven't signed up for a Parent Teacher Conference for next Thursday. Sign-ups can be found on Veracross." Conference Day is 2026-05-15. Sign up immediately. Covers Vayu (4th grade) and likely Vishala (3rd grade — same Conference Day). See [[family/vayu]] and [[family/vishala]].
+
+> [!todo] Add to Google Calendar — Vasu Dance Recital June 2 at 4:30 PM
+> Jacqueline Capote (Goddard admin) via Kaymbu, 2026-05-07 18:42 ET: "Dance Recital Info! June 2nd at 4:30!" Miss Kelsey (dance teacher). First mention. Confirm venue with Goddard. See [[family/vasu]] and [[family/family-calendar]].
