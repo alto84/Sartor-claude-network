@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-07
 updated_by: personal-data-gather
-run: 62
+run: 63
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1728,3 +1728,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Convocation corrected: 2:30–5:30 PM May 9 (prior active-todos had 6:30–9:30 PM — not 6:30 PM)
 - Pages updated: `daily/2026-05-07.md` (created), `family/vayu.md`, `family/active-todos.md`, `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
 - KEY: No new blockers. Deadlines converge May 8–15. Wohelo check must be mailed within 8 days.
+
+## [2026-05-07] ingest | personal-data-gather run 63: Sante Total $250 donation (stinchieii@aol.com)
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 7–14)
+- Net-new facts: 1 (Sante Total PayPal $250 from stinchieii@aol.com, 2026-05-07 02:04 UTC — confirmed amount)
+- New ACTION_REQUIRED: 0 (donation needs tax receipt — no hard deadline, but standard follow-up)
+- Carry-forward escalations: Same as run 62 (Vasu Show & Tell tomorrow, Memory Book 3d, Alta 6d, Wohelo 8d, 990-N 8d)
+- Calendar: All 5 stable. No new events vs run 62. May 9 convergence: soccer 11 AM + Convocation 2:30 PM (no conflict).
+- SSH: gpuserver1 SSH unavailable from execution environment. Machine 52271 status unknown.
+- Pages updated: `daily/2026-05-07.md` (run 63 appended), `business/sante-total.md` (donation fact added), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: Sante Total 2026 YTD now $4,600+ minimum confirmed. 990-N due in 8 days (not yet filed). Wohelo $12,900 check also due in 8 days.
