@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-05-05
+updated: 2026-05-07
 updated_by: personal-data-gather
-run: 54
+run: 62
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -235,3 +235,12 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 > From live calendar API (Blue Sombrero + Family calendar), run 54 extended window May 5–19:
 > - **Wed 2026-05-13, 5:30–6:15 PM ET** — Rec Soccer Practice (B-34 Lime), Anderson Park, south side near Parkside St. Recurring.
 > - **Sat 2026-05-16, 12:00–1:00 PM ET** — Game: B34 Silver vs B34 Lime (Gormley Hanlon & Waynik), Brookdale Park, Montclair NJ. Net-new — first capture of this game.
+
+## Latest from gather (2026-05-07) — run 62
+
+> [!fact] Soccer this week — both events confirmed live
+> - **Sat 2026-05-09, 11:00 AM–12:00 PM ET** — Game: B34 Lime vs B34 Purple (Lac & Karacas), Brookdale Park, Montclair NJ. No coverage conflict — Convocation starts 2:30 PM.
+> - **Wed 2026-05-13, 5:30–6:15 PM ET** — Rec Soccer Practice, Anderson Park, south side near Parkside St.
+
+> [!todo] ACTION_REQUIRED — MKA Fourth Grade Laptop Letter (check Veracross portal)
+> Erica Budd (Director of Educational Technology) + Jacqy Chung (Middle School Instructional Technologist) sent a Fourth Grade Laptop Letter via Veracross (m@mail3.veracross.com, 2026-05-05). Email body was blank — content requires Veracross parent portal login. Likely covers 4th grade technology/laptop program or policy for the upcoming school year. Review at MKA Veracross portal. See [[family/active-todos]].
