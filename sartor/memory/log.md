@@ -1759,3 +1759,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 unavailable from execution environment.
 - Pages updated: `daily/2026-05-07.md` (run 65 appended), `family/vasu.md` (pizza final notice), `family/active-todos.md` (run 65 appended), `business/sante-total.md` (PayPal split todo), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
 - KEY: Vasu pizza money P0 today — Alton in NYC, must act remotely; Wohelo forms AND check both due May 15 (8 days); Sante Total PayPal split question from Julia Clemens needs Alton's governance decision
+
+## [2026-05-08] ingest | personal-data-gather run 66: MKA enrollment complete; Vasu Mother's Day TODAY; pool pump issue; Sante Total Chase account opened
+- Sources: Gmail (newer_than:2d, 30+ threads), all 5 Google Calendars (May 8–15)
+- Net-new facts: 6
+- New ACTION_REQUIRED: 4 (Vasu Mother's Day TODAY; pool pump follow-up; Chase donation button pending Pavel; MKA Conference Day sign-up x2)
+- New FINANCIAL: 1 (MKA $7,000 enrollment payment confirmed for Vayu + Vishala)
+- Carry-forward P0 escalations: Wohelo $12,900 + forms due 2026-05-15 (7d); Form 990-N due 2026-05-15 (7d)
+- Calendar: All 5 queried. May 9: soccer 11 AM + Convocation 2:30 PM (no conflict). Alton's Tasks empty. Primary empty.
+- SSH: gpuserver1 unavailable from execution environment.
+- Pages updated: `daily/2026-05-08.md` (created), `family/vayu.md` (enrollment + PTC), `family/vishala.md` (enrollment + PTC), `family/vasu.md` (Mother's Day TODAY), `family/active-todos.md` (pool + enrollment + PTC), `business/sante-total.md` (Chase account OPENED + donation button), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: Two P0 deadlines converge on 2026-05-15 (7 days): Wohelo $12,900 and Form 990-N. Pool pump/water heater is an active unresolved home issue. Sante Total now has a Chase account.

@@ -210,3 +210,8 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!todo] ADD TO CALENDAR — Vasu Dance Recital: June 2 at 4:30 PM
 > **Miss Kelsey (Goddard dance teacher) via Jacqueline Capote (Goddard admin), 2026-05-07:** "Dance Recital Info! June 2nd at 4:30! Please see the below message that was sent from Miss Kelsey: Hey there, amazing parents and guardians!" First mention of recital date. Add to Google Calendar; confirm venue with Goddard (presumably at the school). See [[family/active-todos]] and [[family/family-calendar]].
+
+## Latest from gather (2026-05-08) — run 66
+
+> [!deadline] 2026-05-08 TODAY
+> **Vasu Mother's Day Celebration — Goddard School, TODAY.** Kaymbu announcement (Samantha Ramsden, noreply@kaymbu.com, 2026-05-07 20:00 UTC): "Our Mother's Day celebration is TOMORROW!" No time specified — confirm with school or check Kaymbu. Attendance expected from parents/guardians. Aneeta's calendar shows no dedicated coverage event today; Alton should plan to attend or coordinate. See [[family/active-todos]].

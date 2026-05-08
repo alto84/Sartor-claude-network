@@ -158,3 +158,11 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!fact] MKA spirit day — "own your letter dress down", May 20
 > **Wed 2026-05-20, all-day** — "Vishala own your letter dress down" per Family calendar, created by Aneeta on 2026-05-04. "Own your letter" is an MKA achievement/spirit event — dress-down day tied to earning a letter or award. Transparency: free. See [[family/active-todos]].
+
+## Latest from gather (2026-05-08) — run 66
+
+> [!fact]
+> **MKA Enrollment confirmed — Vishala, 2026-2027 academic year.** Veracross confirmation email (m@mail4.veracross.com, 2026-05-08 00:01 UTC): "We have received your enrollment contract and deposit for Vishala for the 2026-2027 academic year." Enrollment deposit paid: $7,000.00 USD (authorize.net receipt, invoice mka-7969-1, 2026-05-07 23:05 UTC, shared payment with Vayu enrollment). No further enrollment action required for 2026-2027.
+
+> [!deadline] 2026-05-15
+> **MKA Conference Day — Primary School.** General reminder from Primary School (m@mail1.veracross.com, 2026-05-07). Conference Day is 2026-05-15. Sign up on Veracross. See [[family/active-todos]].
