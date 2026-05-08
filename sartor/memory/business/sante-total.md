@@ -171,3 +171,11 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!todo] ACTION_REQUIRED — PayPal program split (school vs clinic)
 > **Julia Clemens (jclemens27@gmail.com)** emailed [[barbara-weis|Barbara Weis]] (dye2tie@verizon.net) at 15:22 UTC May 7, cc Alton: "just wanted to check in again about adding a paypal button or something to separate donations for the school vs clinic, if either of you have the information to login to Paypal so I can look on [it]." This is a governance question: Julia wants to distinguish donations by program (school program vs clinic program), which would enable restricted-fund accounting by program. Next step: Alton must decide whether to (a) provide Julia/Barbara PayPal access, (b) set up the split PayPal structure himself, or (c) decline and route via the existing single account with bookkeeping tags. Note: the open bank account question (restricted donations segregation, [[active-todos]]) is related — program-split in PayPal is a complementary but distinct action. **Do not share PayPal credentials without Alton's explicit authorization.** See [[family/active-todos]] for the associated todo.
+
+## Latest from gather (2026-05-08) — run 66
+
+> [!fact]
+> **Sante Total Chase account OPENED 2026-05-06.** Alton opened a new Chase bank account for Sante Total (restricted/segregated donations) in person at the Montclair branch on 2026-05-06. This closes the long-open "open new restricted-donations bank account" todo from active-todos. Contact: **Pavel Manrique**, Relationship Banker, NMLS ID 601421, pavel.p.manrique@chase.com, T: 973-783-5062. Branch Manager: **Darlyn Ramirez**, darlyn.ramirez@chase.com, T: 973-783-5139. Branch: 19 N Fullerton Ave, Montclair, NJ 07042. Louisiana SOS ID verification (CharterID 923742) completed as part of account opening KYC.
+
+> [!todo] ACTION_REQUIRED — Chase donation button inquiry pending
+> Alton emailed Pavel Manrique on 2026-05-07 asking whether Chase can facilitate direct website donation acceptance to replace PayPal ("they take a cut and it adds extra steps"). Awaiting Pavel's response. If Chase can support this, it would simplify donation workflow and eliminate PayPal fees. This is distinct from the Julia Clemens PayPal program-split request (run 65).

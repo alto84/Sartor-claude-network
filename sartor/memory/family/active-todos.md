@@ -1622,3 +1622,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] Add to Google Calendar — Vasu Dance Recital June 2 at 4:30 PM
 > Jacqueline Capote (Goddard admin) via Kaymbu, 2026-05-07 18:42 ET: "Dance Recital Info! June 2nd at 4:30!" Miss Kelsey (dance teacher). First mention. Confirm venue with Goddard. See [[family/vasu]] and [[family/family-calendar]].
+
+## Latest from gather (2026-05-08) — run 66
+
+> [!deadline] 2026-05-08 TODAY
+> **Vasu Mother's Day Celebration at Goddard School — TODAY.** Announced via Kaymbu (2026-05-07). No time confirmed in snippet. Confirm timing with Goddard or check Kaymbu app. Aneeta's calendar has no dedicated coverage event. See [[family/vasu]].
+
+> [!todo] ACTION_REQUIRED
+> **Pool pump not taking in water; water heater low pressure alarm.** Pool Guyz visited 2026-05-07 but issue remains unresolved. Their follow-up note (2026-05-07 23:42): "pool needs another follow up — please ensure water level is nice and high." Alton should: (1) top off pool water level now, (2) call The Pool Guyz (973-558-3636) to schedule pump inspection and water heater pressure diagnostic. This is separate from the spring pipe/plumber issue.
+
+> [!fact]
+> **MKA enrollment complete for both children — 2026-2027 academic year.** Vayu and Vishala enrollment contracts and deposits received by MKA (Veracross, 2026-05-08 00:01 UTC). $7,000.00 paid via authorize.net (invoice mka-7969-1, 2026-05-07 23:05 UTC). No further enrollment action required. See [[family/vayu]] and [[family/vishala]].
+
+> [!deadline] 2026-05-15
+> **MKA Conference Day (Primary School) — sign up on Veracross for both Vayu and Vishala.** General reminder sent 2026-05-07. Roshni Shah (Vayu's teacher) also sent a specific sign-up reminder (run 49). Both children require separate conference sign-ups on Veracross.

@@ -249,3 +249,11 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!deadline] 2026-05-15
 > **MKA Parent-Teacher Conference sign-up due.** Teacher Roshni Shah (rshah@mka.org) emailed Alton and Aneeta on 2026-05-07: "I noticed that you haven't signed up for a Parent Teacher Conference for next Thursday. Sign-ups can be found on Veracross." Conference Day is 2026-05-15. Sign up on Veracross now. See [[family/active-todos]].
+
+## Latest from gather (2026-05-08) — run 66
+
+> [!fact]
+> **MKA Enrollment confirmed — Vayu, 2026-2027 academic year.** Veracross confirmation email (m@mail2.veracross.com, 2026-05-08 00:01 UTC): "We have received your enrollment contract and deposit for Vayu for the 2026-2027 academic year." Enrollment deposit paid: $7,000.00 USD (authorize.net receipt, invoice mka-7969-1, 2026-05-07 23:05 UTC). No further enrollment action required for 2026-2027.
+
+> [!deadline] 2026-05-15
+> **MKA Conference Day — Primary School.** General reminder from Primary School (m@mail1.veracross.com, 2026-05-07). Conference Day is 2026-05-15. Sign up on Veracross (Roshni Shah email captured in run 49 — same deadline). See [[family/active-todos]].
