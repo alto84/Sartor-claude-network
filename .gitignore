@@ -64,3 +64,10 @@ data/home-agent/
 ap-authkeys-*.json
 *.unf
 firmware.json.bak-*
+
+# Source-document INDEX (added 2026-05-06 by inspector-source-docs during memory-system-uplift).
+# Contains 3,211 paths to scattered local PDFs/statements/contracts including
+# 747 AstraZeneca work-product paths (~23%). Indexing was authorized by Alton;
+# publishing the path manifest to the GitHub DR mirror requires AZ Compliance
+# review first. Until then the INDEX stays untracked locally only.
+sartor/memory/source-documents/

@@ -56,9 +56,12 @@ foreach ($peer in $peers) {
     $stagingDir = "$stagingRoot\$($peer.name)"
     if (!(Test-Path $stagingDir)) { New-Item -ItemType Directory -Path $stagingDir -Force | Out-Null }
 
-    # 1. Pull all session jsonls from peer into staging (overwrites files; safe)
-    $scpCmd = 'scp -q -r alton@' + $peer.ip + ':/home/alton/.claude/projects/-home-alton-Sartor-claude-network/. "' + $stagingDir + '/"'
-    $r = & cmd /c $scpCmd 2>&1
+    # 1. Pull all session jsonls from peer into staging (overwrites files; safe).
+    # Direct scp invocation (no cmd /c shim) — the cmd shim spawned a visible
+    # console window every 15 min even with the task set to Hidden=$true. Fixed
+    # 2026-05-06 by switching to direct invocation matching sartor-creds-sync.ps1.
+    $src = "alton@$($peer.ip):/home/alton/.claude/projects/-home-alton-Sartor-claude-network/."
+    $r = & scp -q -r $src "$stagingDir/" 2>&1
     if ($LASTEXITCODE -ne 0) {
         Log-Line "WARN $($peer.name): scp failed: $r"
         continue

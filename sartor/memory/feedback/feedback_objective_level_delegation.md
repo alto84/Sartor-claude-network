@@ -3,6 +3,7 @@ name: Delegate to remote machine agents at the objective level, not the task lev
 description: When dispatching work to gpuserver1 or future peer machines (Blackwell workstation etc.), state the objective and trust the agent's execution judgment. Do not pre-specify commands, file paths, or step ordering. Escalate disagreements to Alton before overriding unilaterally.
 type: feedback
 originSessionId: 6d66075b-10f9-482c-a62e-9f2828a7ed0d
+related: [feedback/intake-protocol]
 ---
 # Delegate to remote machine agents at the objective level, not the task level
 
