@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-04-30
+updated: 2026-05-07
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -151,3 +151,31 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!fact]
 > **Donor spreadsheet updated by Alison Smith as of 2026-04-30.** Alison added more donors to the spreadsheet overnight before sending the "Donors" email. No count or amount visible in snippet. This likely follows the Sergei Robinson donation (Apr 27) and possibly others. Verify updated spreadsheet totals before authorizing fund transfer.
+
+## Latest from gather (2026-05-06) — run 61
+
+> [!todo] ACTION_REQUIRED — Louisiana geauxBIZ alert
+> DoNotReply@sos.la.gov sent a "New geauxBIZ Alerts" email on 2026-05-06. Context: Pavel Manrique (Chase Montclair, relationship banker) sent Alton a Louisiana SOS filing document link (coraweb.sos.la.gov, CharterID 923742). Alton replied to Pavel confirming identity as Sante Total Treasurer via santetotal.org/biographies/ and 4 documents with his name. This is almost certainly Sante Total's Louisiana charity registration filing. Action: log into geauxBIZ (geauxbiz.sos.la.gov) and check what registration document or renewal is required. See `daily/2026-05-06.md` run 61 for full detail.
+
+## Latest from gather (2026-05-02) — run 41
+
+> [!fact]
+> **New Sante Total PayPal donation — Cary Grayson, May 2 (second donation).** Transaction ID: 77M21554G32947412. Received 05:02:33 CDT (10:02 UTC). "You received a payment from Cary Grayson for Sante Total." Amount not visible in email snippet — verify in PayPal dashboard. Note: Cary Grayson previously donated ~$350+ on 2026-04-02 (listed in donor activity table above). This is a **second donation** from the same donor — unusual and worth a personal thank-you. Add to donor activity table once amount confirmed. Send tax receipt per [[alison-smith|Alison Smith]] pattern. Running 2026 YTD donors: Schall, Yantz, mksinbelair, cfryaniii, Cary Grayson (×2), oates2, Michael Quigg (Apr 14), Christina Stiles (Apr 19), Sergei Robinson (Apr 27), Cary Grayson again (May 2).
+
+## Latest from gather (2026-05-07) — run 63
+
+> [!fact]
+> **New Sante Total PayPal donation — stinchieii@aol.com, May 7.** Received 2026-05-07 02:04:47 UTC. Amount: **$250.00 USD** (confirmed in email snippet: "You received a payment of $250.00 USD from (stinchieii@aol.com)"). Sender email alias does not map to a known donor name — verify name in PayPal dashboard. Add to donor activity table once name confirmed. Send tax receipt per [[alison-smith|Alison Smith]] pattern used for Anna Smyke on 2026-03-10. Running 2026 YTD donors: Schall, Yantz, mksinbelair, cfryaniii, Cary Grayson (×2), oates2, Michael Quigg (Apr 14, amt TBD), Christina Stiles (Apr 19, amt TBD), Sergei Robinson (Apr 27, amt TBD), this donor (May 7, $250 confirmed). YTD total: $4,350+ (Mar–Apr 2) + 4 unverified + $250 confirmed = $4,600+ minimum.
+
+## Latest from gather (2026-05-07) — run 65
+
+> [!todo] ACTION_REQUIRED — PayPal program split (school vs clinic)
+> **Julia Clemens (jclemens27@gmail.com)** emailed [[barbara-weis|Barbara Weis]] (dye2tie@verizon.net) at 15:22 UTC May 7, cc Alton: "just wanted to check in again about adding a paypal button or something to separate donations for the school vs clinic, if either of you have the information to login to Paypal so I can look on [it]." This is a governance question: Julia wants to distinguish donations by program (school program vs clinic program), which would enable restricted-fund accounting by program. Next step: Alton must decide whether to (a) provide Julia/Barbara PayPal access, (b) set up the split PayPal structure himself, or (c) decline and route via the existing single account with bookkeeping tags. Note: the open bank account question (restricted donations segregation, [[active-todos]]) is related — program-split in PayPal is a complementary but distinct action. **Do not share PayPal credentials without Alton's explicit authorization.** See [[family/active-todos]] for the associated todo.
+
+## Latest from gather (2026-05-08) — run 66
+
+> [!fact]
+> **Sante Total Chase account OPENED 2026-05-06.** Alton opened a new Chase bank account for Sante Total (restricted/segregated donations) in person at the Montclair branch on 2026-05-06. This closes the long-open "open new restricted-donations bank account" todo from active-todos. Contact: **Pavel Manrique**, Relationship Banker, NMLS ID 601421, pavel.p.manrique@chase.com, T: 973-783-5062. Branch Manager: **Darlyn Ramirez**, darlyn.ramirez@chase.com, T: 973-783-5139. Branch: 19 N Fullerton Ave, Montclair, NJ 07042. Louisiana SOS ID verification (CharterID 923742) completed as part of account opening KYC.
+
+> [!todo] ACTION_REQUIRED — Chase donation button inquiry pending
+> Alton emailed Pavel Manrique on 2026-05-07 asking whether Chase can facilitate direct website donation acceptance to replace PayPal ("they take a cut and it adds extra steps"). Awaiting Pavel's response. If Chase can support this, it would simplify donation workflow and eliminate PayPal fees. This is distinct from the Julia Clemens PayPal program-split request (run 65).

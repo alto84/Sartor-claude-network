@@ -2,8 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-04-30
+updated: 2026-05-05
 updated_by: personal-data-gather
+run: 54
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -147,3 +148,21 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!deadline] 2026-05-29 at 8:15am
 > **Vishala Capstone Design Fair — Friday May 29, 2026, 8:15am, Brookside (MKA).** MKA Veracross email (m@mail2.veracross.com, 2026-04-30 19:24 UTC): "We are SO excited to welcome you to Brookside on Friday, May 29th for the Third Grade Capstone Design Fair. The event will begin promptly at 8:15am in each of the third grade classrooms." Parents expected to attend. This is the culminating event for the Capstone project started in April. Block May 29 8:15am on calendar. See [[family/active-todos]].
+
+## Latest from gather (2026-05-05) — run 41
+
+> [!deadline] 2026-05-10
+> **3rd Grade Memory Book — presale deadline May 10.** meganflick@gmail.com (MKA 3rd grade, appears to be class parent) sent to Alton 2026-05-05 00:36 UTC: "It's time to order your child's Third Grade Memory book. There is a presale, if you purchase your book between now and May 10th, you will get the discounted price." Vishala is in 3rd grade at MKA. Order before 2026-05-10 to get the discounted price. After that date, full price applies. See [[family/active-todos]].
+
+## Latest from gather (2026-05-05) — run 54
+
+> [!fact] MKA spirit day — "own your letter dress down", May 20
+> **Wed 2026-05-20, all-day** — "Vishala own your letter dress down" per Family calendar, created by Aneeta on 2026-05-04. "Own your letter" is an MKA achievement/spirit event — dress-down day tied to earning a letter or award. Transparency: free. See [[family/active-todos]].
+
+## Latest from gather (2026-05-08) — run 66
+
+> [!fact]
+> **MKA Enrollment confirmed — Vishala, 2026-2027 academic year.** Veracross confirmation email (m@mail4.veracross.com, 2026-05-08 00:01 UTC): "We have received your enrollment contract and deposit for Vishala for the 2026-2027 academic year." Enrollment deposit paid: $7,000.00 USD (authorize.net receipt, invoice mka-7969-1, 2026-05-07 23:05 UTC, shared payment with Vayu enrollment). No further enrollment action required for 2026-2027.
+
+> [!deadline] 2026-05-15
+> **MKA Conference Day — Primary School.** General reminder from Primary School (m@mail1.veracross.com, 2026-05-07). Conference Day is 2026-05-15. Sign up on Veracross. See [[family/active-todos]].

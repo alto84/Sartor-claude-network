@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-02
+updated: 2026-05-07
 updated_by: personal-data-gather
-run: 48
+run: 65
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,68 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-05-06] ingest | personal-data-gather run 60: iCloud full; Vasu pizza money; Goddard door access; Schwab TQQQ
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 6–May 13)
+- Net-new facts: 4
+- New ACTION_REQUIRED: 3 (iCloud storage full, Vasu pizza money, Avigilon Alta activation)
+- New FINANCIAL: 1 (Schwab TQQQ 125 shares @ $69.11 = $8,638.75, account 186, settled 2026-05-07)
+- Carry-forward open actions: 4 P0/P1 (GCP billing, Wohelo May 15, Memory Book May 10, Ghosty vet)
+- Calendar: no new events vs run 57 correction (Convocation 2:30–5:30 PM on May 9, not 6:30 PM)
+- Pages updated: `daily/2026-05-06.md` (run 60 appended), `family/vasu.md`, `family/active-todos.md`, `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: iCloud backups down; Vasu needs pizza money today; Openpath activation expires ~May 13; Wohelo $12,900 due in 9 days
+
+## [2026-05-06] ingest | personal-data-gather run 58: Cenlar mortgage payment; all carry-forwards stable
+- Sources: Gmail (newer_than:2d, 25 threads), all 5 calendars (May 6–May 13)
+- Net-new facts: 1 (Cenlar mortgage payment $3,133.12 applied 2026-05-05)
+- New ACTION_REQUIRED: 0 (carry-forward only)
+- Carry-forward open actions: 4 P0/P1 (Chase meeting TODAY, GCP billing, Wohelo May 15, Memory Book May 10)
+- Calendar: no new events vs run 57
+- Pages updated: `daily/2026-05-06.md` (run 58 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated), `log.md`
+- KEY: Chase business meeting in-person TODAY 2:30 PM Montclair; Wohelo $12,900 due in 9 days; Memory Book deadline 4 days
+
+## [2026-05-06] ingest | personal-data-gather run 57: Berman QuoteValet order; Convocation time correction
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 6–May 13)
+- Net-new facts: 3 (Berman Home Systems QuoteValet order #AAAQ13681 accepted; Convocation corrected to 2:30–5:30 PM not 6:30 PM; Disney+ new login notification)
+- New ACTION_REQUIRED: 1 (Berman order — confirm service scope/cost/date)
+- Carry-forward open actions: 9 (GCP P0, Memory Book May 10, Wohelo May 15, Chase meeting today, MKA laptop letter, Convocation context, Guidepoint, CAQH, Aneeta LLC draft)
+- Calendar: Convocation time error corrected from run 56. No new calendar events.
+- Pages updated: `daily/2026-05-06.md` (run 57 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated), `log.md`
+- KEY: Chase business meeting in-person TODAY 2:30 PM; Berman new home systems work order; Wohelo $12,900 due May 15 (9 days)
+
+## [2026-05-06] ingest | personal-data-gather run 56: Oliver Sartor Anthropic agreement; PAMKA Conference Day; soccer coach email
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 6–May 13)
+- Net-new facts: 6
+- New ACTION_REQUIRED: 0 (carry-forward items only)
+- Pages updated: `daily/2026-05-06.md` (run 56), `data/gather-alerts.md`, `data/heartbeat-log.csv`
+
+## [2026-05-05] ingest | personal-data-gather run 55: Chase meeting tomorrow; MKA laptop letter; Pixel delivered
+- Sources: Gmail (newer_than:2d, 25 threads), all 5 calendars (May 5–May 12)
+- Net-new facts: 6 (Chase business meeting May 6; MKA 4th grade laptop letter; Pixel delivered; Guidepoint consult #1732882; Chase $1K payment; SpotHero NYC parking)
+- New ACTION_REQUIRED: 2 (Chase meeting tomorrow 2:30 PM; MKA laptop letter review)
+- RESOLVED: FedEx CEVA delivery + Pixel RMA — both delivered May 5
+- Carry-forward open actions: 37 (net +1 vs run 54)
+- Calendar: all 5 stable — ZERO net-new events vs run 54
+- Pages updated: `daily/2026-05-05.md` (run 55 appended), `family/active-todos.md` (run 55 appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- KEY ITEMS: Chase business meeting TOMORROW 2:30 PM (Pavel Manrique, Montclair branch); GCP billing still P0 overdue; Wohelo $12,900 due in 10 days; Memory Book deadline May 10
+
+## [2026-05-02] ingest | personal-data-gather run 41: CAQH profile expired; CRWV call sold; Cary Grayson Sante Total donation; Disney agent active
+- Sources: Gmail (newer_than:1d, 50 threads), all 5 calendars (May 2–May 9)
+- Net-new facts: 5 (PayPal Cary Grayson → Sante Total; CRWV CoreWeave sold call; CAQH profile expired; Nicol Stevenson Disney Lightning Lanes; Jackrabbit Tech summer gym)
+- New ACTION_REQUIRED: 1 escalation (CAQH expired → reattestation required immediately)
+- Carry-forward open actions: ~30 (2 OVERDUE, carry-forward HIGHs from run 40, others unchanged)
+- Calendar: all 5 stable — no net-new events vs run 40
+- Pages updated: `daily/2026-05-02.md` (run 41), `family/active-todos.md` (run 41), `business/sante-total.md` (run 41), `family/disney-july-2026.md` (run 41), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- KEY ESCALATION: CAQH profile now officially expired (was "requires reattestation"); Mother's Day gift 2 days out; 2 items OVERDUE; Aneeta LLC draft pending review
+
+## [2026-05-02] ingest | personal-data-gather run 40: Aneeta LLC draft shared; Vishala screen time logged; calendars stable
+- Sources: Gmail (newer_than:2d, 50 threads), all 5 calendars (May 2–May 9)
+- Net-new facts: 2 (Aneeta LLC draft → Alton for review; Vishala screen time 11hr 39min Apr 25–May 1)
+- New ACTION_REQUIRED: 1 (Aneeta LLC draft review — HIGH, no hard deadline)
+- Carry-forward open actions: ~25 (2 OVERDUE, 1 new HIGH, others unchanged)
+- Calendar: stable — no net-new events vs run 39
+- Pages updated: `daily/2026-05-02.md` (run 40 appended), `family/active-todos.md` (run 40 appended), `log.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- KEY ESCALATION: Mother's Day gift personalization deadline **2 DAYS** (May 4); Aneeta LLC draft newly surfaced; 185 Davis + CSA checks still OVERDUE
 
 ## [2026-05-02] ingest | personal-data-gather run 39: Berman WiFi-7 confirmed; Gecko Robotics on Hiive; Teacher Appreciation Week; B-34 RSVP closed
 - Sources: Gmail (newer_than:2d, 50 threads), all 5 calendars (May 2–May 9)
@@ -1459,3 +1521,252 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-01.md` (run 38 appended), `family/vayu.md` (run 40), `family/vasu.md`, `family/family-calendar.md` (run 38), `family/active-todos.md` (run 48), `log.md`
 - Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 - Total new facts: 3 | New ACTION_REQUIRED items: 1 | Open carry-forward actions: 17
+
+## [2026-05-02] ingest | personal-data-gather run 39: 4 net-new facts; B-34 RSVP closed
+- Sources: Gmail (newer_than:2d, 50 threads), all 5 calendars (May 2–May 9)
+- NEW FACTS: WiFi-7 install confirmed satisfactory (Alton outbound to Berman); Gecko Robotics shares on Hiive (US Navy IDIQ); Teacher Appreciation Week May 4–8 chalk message; Aneeta LinkedIn message to Alton
+- RESOLVED: B-34 Lime RSVP (Alton replied to coach Keith Gormley)
+- Pages updated: `daily/2026-05-02.md` (created), `family/active-todos.md`, `family/family-calendar.md`, `log.md`
+- Outputs: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- Total new facts: 4 | New ACTION_REQUIRED: 0 | Resolved: 1 | Carry-forward: 28
+
+## [2026-05-02] ingest | personal-data-gather run 40: 2 net-new facts; Aneeta LLC draft ACTION_REQUIRED
+- Sources: Gmail (newer_than:2d), all 5 calendars
+- NEW FACTS: Aneeta sent first LLC draft to Alton for review (HIGH ACTION_REQUIRED); Vishala screen time Apr 25–May 1: 11hr 39min
+- Calendar: stable, no net-new
+- Pages updated: `daily/2026-05-02.md` (run 40 appended), `family/active-todos.md`, `log.md`
+- Outputs: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- Total new facts: 2 | New ACTION_REQUIRED: 1 | Carry-forward: 29
+
+## [2026-05-02] ingest | personal-data-gather run 41: 5 net-new facts; CAQH escalated to EXPIRED
+- Sources: Gmail (newer_than:2d), all 5 calendars
+- NEW FACTS: Cary Grayson PayPal donation to Sante Total (Tx ID 77M21554G32947412, amount TBD); CRWV CoreWeave call sold (Fidelity XXXXX8998); CAQH ProView profile confirmed expired (credentialing risk); Nicol Stevenson sending Disney Lightning Lanes content (ADR window May 17); Jackrabbit Tech summer gymnastics registration open (June 23–Aug 18, $200)
+- ESCALATED: CAQH reattestation from MEDIUM to CRITICAL/EXPIRED
+- Calendar: stable, no net-new
+- Pages updated: `daily/2026-05-02.md` (run 41 appended), `family/active-todos.md`, `business/sante-total.md`, `family/disney-july-2026.md`, `log.md`
+- Outputs: `data/gather-alerts.md`, `data/heartbeat-log.csv`
+- Total new facts: 5 | New ACTION_REQUIRED: 0 | Escalations: 1 | Carry-forward: 30
+
+## [2026-05-03] ingest | personal-data-gather run 43: delta-minimal; Mother's Day gift due tomorrow
+- Sources: Gmail (newer_than:2d), all 5 calendars (May 3–May 10)
+- NEW FACTS: JPMorgan investment statement (May 3); Amazon Aveeno Eczema Therapy order (May 3); MedscapeLIVE CME Stroke Prevention May 19; Chase statements (...7691) and (...8189)
+- Calendar: stable, no net-new vs run 42. Confirmed window: soccer practice May 6 5:30 PM, Convocation May 9 2:30 PM, soccer game May 9 11 AM
+- REMINDER: Mother's Day gift (Mark and Graham) deadline TOMORROW 2026-05-04
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~11 days)
+- Pages updated: `daily/2026-05-03.md` (run 43 appended), `family/active-todos.md` (run 43 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (regenerated), `data/heartbeat-log.csv` (created)
+- Total new facts: 4 | New ACTION_REQUIRED: 0 | Carry-forward: 27
+
+## [2026-05-03] ingest | personal-data-gather run 44: 3 net-new facts; HIIVE/Anthropic agreement ACTION_REQUIRED
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 10)
+- NEW FACTS: HIIVE/Anthropic family investment agreement — Alton signature pending (HIGH; Oliver nudged May 3, Alton replied "Will"); Amazon Aveeno shipped (informational); Doximity — Asundexian + antiplatelet cuts ischemic stroke risk 26% over 2 years (professional/informational)
+- NEW ACTION_REQUIRED: HIIVE/Anthropic family document signature (Alton committed "Will" May 3 11:34 UTC — electronic signature available)
+- Calendar: stable, no net-new vs run 43. Window: soccer practice May 6 5:30 PM, Convocation May 9 2:30 PM, soccer game May 9 11 AM
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~11 days)
+- Pages updated: `daily/2026-05-03.md` (run 44 appended), `family/active-todos.md` (run 44 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 3 | New ACTION_REQUIRED: 1 | Carry-forward: 28
+
+## [2026-05-03] ingest | personal-data-gather run 42: 4 net-new facts; Nintendo repair CLOSED
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 10)
+- NEW FACTS: Nintendo Switch repair #61296128 closed (unable to process, returning unrepaired); Cenlar mortgage payment $17,311.53 applied 05/01; Chase CC (...1276) statement $75.01 due 05/27 autopay; Google security alert Claude for Drive access granted
+- CLOSED: Nintendo repair MEDIUM item (run 33 origin)
+- Calendar: stable, no net-new. Confirmed window: soccer practice May 6 5:30 PM, Convocation May 9 2:30 PM, soccer game May 9 11 AM.
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (11 days)
+- Pages updated: `daily/2026-05-03.md` (created), `family/active-todos.md` (run 42 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created, backfilled runs 39–41)
+- Total new facts: 4 | New ACTION_REQUIRED: 0 | Closed: 1 | Carry-forward: 27
+
+## [2026-05-03] ingest | personal-data-gather run 45: 4 net-new facts; 0 new ACTION_REQUIRED; delta-minimal
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 10)
+- NEW FACTS: Costco order delivered May 3 (85 Stonebridge Road); Anthropic receipt #2333-0595-7386 (API/Pro billing); Amazon Aveeno delivered (loop closed from run 44); Code Ninjas Livingston NJ summer camps email
+- NEW ACTION_REQUIRED: 0
+- Calendar: stable, no net-new vs run 44. Window: soccer practice May 6 5:30 PM, Convocation May 9 2:30 PM, soccer game May 9 11 AM
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~11 days)
+- Pages updated: `daily/2026-05-03.md` (run 45 appended), `family/active-todos.md` (run 45 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- Total new facts: 4 | New ACTION_REQUIRED: 0 | Carry-forward: 28
+
+## [2026-05-03] ingest | personal-data-gather run 46: 3 net-new facts; CRITICAL — Chase fraud alerts (2 cards)
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 3–May 17, 14-day window)
+- NEW FACTS: Chase fraud alerts on Sapphire (...8547) AND Freedom (...7054) simultaneously (17:06–17:07 UTC May 3 — CRITICAL); Rec Soccer Practice May 13 5:30 PM Anderson Park (calendar, extended window); B34 Silver vs B34 Lime soccer game May 16 noon Brookdale Park (Blue Sombrero, extended window)
+- NEW ACTION_REQUIRED: Chase fraud alerts — respond immediately; if unauthorized, request card replacement for both
+- Calendar: stable within prior window; extended to 14 days surfaced 2 new events (May 13 practice, May 16 game)
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~11 days)
+- Pages updated: `daily/2026-05-03.md` (run 46 appended), `family/active-todos.md` (run 46 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created, Chase fraud alerts at top), `data/heartbeat-log.csv` (created)
+- Total new facts: 3 | New ACTION_REQUIRED: 1 (CRITICAL) | Carry-forward: 29
+
+## [2026-05-04] ingest | personal-data-gather run 48: 2 net-new facts; Bitwarden CLI login from Fios IP (likely Rocinante — benign escalation); Schwab eStatement 186
+- Sources: Gmail (newer_than:2d, is:unread OR is:starred), all 5 calendars (May 4–May 11)
+- NEW FACTS: (1) Bitwarden "New Device Logged In From Windows CLI" (May 4 01:19 UTC) — IP `2600:4041:410a:fc00:...` = Verizon Fios, consistent with Rocinante; likely benign escalation of run 47 security flag; (2) Schwab eStatement account 186 (May 4 03:44 UTC) — routine financial
+- NEW ACTION_REQUIRED: 0 (run 47 Bitwarden flag still open pending Alton confirmation; this login is likely-benign)
+- Calendar: stable, no change vs run 47. Window: soccer May 6, Convocation + soccer game May 9, soccer May 13+16
+- Pages updated: `daily/2026-05-04.md` (run 48 appended), `family/active-todos.md` (run 48 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created, backfilled runs 39–48)
+- Total new facts: 2 | New ACTION_REQUIRED: 0 | Carry-forward: 31
+
+## [2026-05-04] ingest | personal-data-gather run 47: 3 net-new facts; SECURITY/FLAG — Bitwarden signup same evening as Chase fraud alerts
+- Sources: Gmail (newer_than:2d, is:unread OR is:important), all 5 calendars (May 4–May 18)
+- NEW FACTS: Bitwarden account created at alto84@gmail.com (May 3 23:12 UTC) — SECURITY/FLAG, timing overlaps Chase fraud alerts from same evening; Guidepoint Pharma R&D Tech Survey $50 (new, distinct from Genetic Disorder Survey run 22); Disney+ one-time passcode (informational)
+- NEW ACTION_REQUIRED: 1 — Bitwarden signup confirmation (SECURITY/FLAG)
+- DEADLINE STATUS CHANGE: Mother's Day gift (Mark and Graham) and Teacher Appreciation chalk are TODAY (2026-05-04)
+- Calendar: stable, no net-new vs run 46. Window: soccer practice May 6, Convocation May 9, soccer game May 9, soccer practice May 13, soccer game May 16
+- SSH: gpuserver1 not checked (execution environment restriction); machine 52271 last known offline 2026-04-22 (~12 days)
+- Pages updated: `daily/2026-05-04.md` (created), `family/active-todos.md` (run 47 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (updated run 47), `data/heartbeat-log.csv` (updated run 47)
+- Total new facts: 3 | New ACTION_REQUIRED: 1 (SECURITY/FLAG) | Carry-forward: 31
+
+## [2026-05-04] ingest | personal-data-gather run 49: 0 net-new facts; all-dedup; data/ re-created; alerts written
+- Sources: Gmail (newer_than:2d), all 5 calendars (May 4–May 11)
+- Net-new facts: 0 (all threads already captured runs 45–48)
+- New ACTION_REQUIRED: 0
+- Carry-forward open actions: 31 (unchanged)
+- Calendar: stable — confirmed May 6 soccer practice, May 9 soccer game + Convocation, May 8 Anjali Birthday (Aneeta). No conflicts.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline status unresolved.
+- INFRA: data/ directory re-created (ephemeral). gather-alerts.md and heartbeat-log.csv written.
+- Pages updated: `daily/2026-05-04.md` (run 49 appended), `log.md`
+- Outputs: `data/gather-alerts.md` (re-created, 31 open items), `data/heartbeat-log.csv` (re-created, run 49 row)
+
+## [2026-05-04] ingest | personal-data-gather run 50: Nintendo Switch shipped; Guidepoint Brain Health consultation; SpotHero NYC commute; 4 net-new facts
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 4–May 11)
+- Net-new facts: 4 — (1) Nintendo Switch #61296128 SHIPPED UPS 1Z9437400399660038 (15:57 UTC), DELIVERY_EXPECTED; (2) Guidepoint Brain Health/Neuro-Tech consultation #1737738 (08:32 UTC), new OPEN item; (3) SpotHero Parking #122447317 35 W 33rd St NYC 9AM–7PM (12:03 UTC), INFORMATIONAL — Alton in NYC today; (4) Kaymbu Teacher Appreciation chalk reinforcement (10:54 UTC), TODAY deadline
+- New ACTION_REQUIRED: 1 new OPEN (Guidepoint #1737738 accept/decline); 1 DELIVERY_EXPECTED (Nintendo UPS)
+- Carry-forward open actions: 32 (+1 new)
+- Calendar: stable — no change vs run 49. Window: soccer May 6, Convocation + soccer game May 9.
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved (13 days).
+- INFRA: data/ directory re-created (ephemeral). gather-alerts.md and heartbeat-log.csv written.
+- Pages updated: `daily/2026-05-04.md` (run 50 appended), `family/active-todos.md` (run 50 section), `log.md`
+- Outputs: `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (run 50 row)
+
+## [2026-05-04] ingest | personal-data-gather run 51: GCP billing past due; Pixel 10 Pro Fold acquired; Tribeca Pediatrics 5 unread; Guidepoint Global Oncology #1732882
+- Sources: Gmail (newer_than:2d, 25 threads from ~16:00–19:58 UTC), all 5 calendars (May 4–May 11)
+- Net-new facts: 5 — (1) GCP billing account 013989-45FB97-2BEFF0 past due (17:11 UTC), ACTION_REQUIRED; (2) Pixel 10 Pro Fold purchased Google Store Chelsea, Pixel 9 Pro Fold replaced under warranty, delivery RMA74714708 5/5–5/7 (17:10–18:18 UTC), INFORMATIONAL; (3) Tribeca Pediatrics 2 new portal messages, total 5 unread (18:39 UTC), FLAG; (4) Guidepoint Global Oncology Specialists #1732882 (16:22 UTC), new OPEN item; (5) Climate First Bank service disruption May 7–11 (16:45 UTC), INFORMATIONAL
+- New ACTION_REQUIRED: 1 (GCP billing)
+- New FLAG: 1 (Tribeca Pediatrics 5 total unread)
+- New OPEN: 1 (Guidepoint Global Oncology #1732882)
+- Carry-forward open actions: 34 (32 from run 50 + 2 new)
+- Calendar: stable — no change vs run 50. 7-day window: soccer May 6, Convocation + soccer game May 9 (2.5h gap confirmed manageable)
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved (13+ days)
+- Pages updated: `daily/2026-05-04.md` (run 51 appended), `family/active-todos.md` (run 51 section), `log.md` (this entry), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (run 51 row)
+- KEY ESCALATION: GCP billing failure could disrupt running infrastructure — check immediately
+
+## [2026-05-05] ingest | personal-data-gather run 52: Lutron call pending; Pixel 10 Pro Fold active; 2 deliveries expected
+- Sources: Gmail (newer_than:1d, 50 threads), all 5 calendars (May 5–May 12)
+- Net-new facts: 2 — (1) Lutron switches call with Pete Berman (pete@bermanhomesystems.com) requested for May 5 morning, ACTION_REQUIRED; (2) Pixel 10 Pro Fold confirmed active via Chase new-device alert 00:00 UTC May 5, INFORMATIONAL
+- New ACTION_REQUIRED: 1 (Lutron call with Pete Berman)
+- Carry-forward open actions: 35 (34 from run 51 + 1 new)
+- Calendar: stable — no change vs run 51. Window: soccer May 6 5:30 PM (Anderson Park), Anjali's Birthday May 8 (Aneeta), Vayu soccer game + Convocation May 9 (2.5h gap, no conflict)
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved (14+ days since Apr 22)
+- INFRA: data/ directory re-created (ephemeral). gather-alerts.md and heartbeat-log.csv written.
+- Pages updated: `daily/2026-05-05.md` (created, run 52), `family/active-todos.md` (run 52 section appended), `log.md` (this entry)
+- Outputs: `data/gather-alerts.md` (35 open items), `data/heartbeat-log.csv` (run 52 row)
+
+## [2026-05-05] ingest | personal-data-gather supplemental (stale run counter 41): FedEx TODAY; Memory Book 5/10; Newegg inquiry; swim lessons
+- Note: parallel gather run with stale counter (used 41, already taken by 2026-05-02 session). Facts below are unique — not captured in runs 39–52.
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 5–May 12)
+- UNIQUE NEW FACTS vs runs 39–52: (1) FedEx CEVA delivery TODAY, tracking #491365128030, signature required — URGENT; (2) MKA 3rd grade Memory Book presale deadline 2026-05-10 (Vishala); (3) Newegg server components inquiry Build-20260504214241-95 (Solar Inference LLC hardware); (4) Summer swim lessons registration open (North Jersey Aquatics, Essex pool, June 29 start, communitypass.net)
+- Overlapping facts (already in run 51/52): Lutron call, Tribeca portal 5 unread, Pixel 10 Pro Fold active, Chase Wallet setup
+- Pages updated: `daily/2026-05-05.md` (supplemental section appended), `family/vishala.md` (Memory Book deadline), `family/vayu.md` (Tribeca portal note), `family/active-todos.md` (FedEx, Lutron, Memory Book, swim lessons), `business/solar-inference.md` (Newegg inquiry), `log.md`
+- Total unique new facts: 4 | Unique ACTION_REQUIRED: 1 (FedEx TODAY) | Unique deadlines: 2026-05-05 (FedEx), 2026-05-10 (Memory Book)
+
+## [2026-05-05] ingest | personal-data-gather run 53: Lutron call confirmed; M3 unsubscribe pending; USPS 1 mailpiece
+- Sources: Gmail (newer_than:1d, 50 threads), all 5 calendars (May 5–May 12)
+- Net-new facts: 3 — (1) Pete Berman confirmed Lutron call at 8 AM May 5 ("8 works great"), ACTION STATUS UPDATE; (2) M3 Global Research daily neurology surveys still arriving despite 4/16 triage unsubscribe decision, FLAG; (3) USPS Informed Delivery: 1 mailpiece today, 0 packages (12:05 UTC), INFORMATIONAL
+- New ACTION_REQUIRED: 0 (updates to existing items only)
+- Carry-forward open actions: 35 (unchanged)
+- Calendar: stable — no change vs run 52. Window: soccer May 6 5:30 PM, Anjali Birthday May 8, Vayu soccer + Convocation May 9
+- SSH: gpuserver1 unavailable. Machine 52271 offline 15+ days (Apr 22 outage)
+- Pages updated: `daily/2026-05-05.md` (run 53 appended), `family/active-todos.md` (run 53 section), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-05] ingest | personal-data-gather run 54: Lutron quote received; Pool service logged; May 16 soccer + May 20 dress-down
+- Sources: Gmail (newer_than:1d, 50 threads, cutoff ~12:05 UTC after run 53), all 5 calendars (May 5–May 19, extended 2-week window)
+- Net-new facts: 6 — (1) Berman Home Systems Lutron Lighting Control quote received for Theater, ACTION_REQUIRED; (2) Pool Guyz LLC service completed at 85 Stonebridge Rd, INFORMATIONAL; (3) Gemini API event-driven webhooks announced, INFORMATIONAL; (4) May 13 rec soccer practice (recurring, new in window); (5) May 16 Vayu soccer game vs B34 Silver, Brookdale Park; (6) May 20 Vishala "own your letter" dress-down day (MKA)
+- New ACTION_REQUIRED: 1 (Lutron quote review)
+- New calendar events captured: 3 (May 13 practice, May 16 game, May 20 Vishala dress-down)
+- Carry-forward open actions: 36 (35 from run 53 + 1 new: Lutron quote)
+- Calendar: 5 calendars queried. Primary: 0 events. Tasks: 0 events. Family: soccer practice May 6/13, Convocation May 9, Vishala dress-down May 20. Aneeta: Healing May 6, Anjali Birthday May 8. Blue Sombrero: soccer game May 9 + May 16 (NEW).
+- SSH: gpuserver1 unavailable in execution environment. Machine 52271 offline unresolved (15+ days since Apr 22)
+- data/ directory: created. gather-alerts.md + heartbeat-log.csv initialized this run.
+- Pages updated: `daily/2026-05-05.md` (run 54 appended), `family/active-todos.md` (run 54 section), `family/vayu.md` (May 16 game added), `family/vishala.md` (May 20 dress-down added), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-06] ingest | personal-data-gather run 56: Oliver Sartor Anthropic agreement; Chase meeting day-of; Wohelo 9 days out
+- Sources: Gmail (unread + newer_than:2d, 30 threads scanned), all 5 calendars (May 6–May 13)
+- Net-new facts: 6 (Oliver Sartor Anthropic agreement signed; soccer practice tonight confirmed; Vayu game May 9 confirmed; Convocation May 9; MKA Conference Day May 14 volunteer request; Anjali's Birthday May 8)
+- New ACTION_REQUIRED: 1 (Chase business meeting TODAY 2:30 PM — Montclair branch, Pavel Manrique)
+- Carry-forward escalations: 3 (Wohelo $12,900 due May 15 — 9 days; Memory Book deadline May 10 — 4 days; GCP billing P0 unresolved)
+- Calendar: Family + Blue Sombrero active — soccer practice 5:30 PM tonight, game May 9 11 AM Brookdale, Convocation May 9 6:30 PM (context unknown), Anjali's Birthday May 8
+- SSH: gpuserver1 SSH unavailable from execution environment. GPU monitoring skipped this run. Machine 52271 offline status unknown.
+- Pages updated: `daily/2026-05-06.md` (created), `family/active-todos.md` (run 56 appended), `people/oliver-sartor.md` (created), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (updated), `log.md` (this entry)
+- KEY ITEMS: Chase business meeting TODAY 2:30 PM (open/upgrade Solar Inference business account); Wohelo $12,900 due 9 days; Memory Book 4 days; Oliver Sartor signed unknown Anthropic agreement (family); MKA 4th grade laptop letter needs review (Vayu)
+
+## [2026-05-06] ingest | personal-data-gather run 59: Ghosty vet overdue; Cenlar $17K payment; carries-forward all run 56-58 items
+- Sources: Gmail (unread + newer_than:2d, 30 threads scanned), all 5 calendars (May 6–May 13)
+- Net-new facts: 4 — (1) Ghosty overdue vet services at Cambridge Cat Clinic, ACTION_REQUIRED; (2) Cenlar $17,311.53 payment applied 2026-05-01, anomalous vs routine $3,133.12, FLAG; (3) Sante Total Cary Grayson donation 2026-05-02 — already logged run 41, confirmed as duplicate; (4) Tesla Google Account authorization, informational
+- New ACTION_REQUIRED: 1 (Ghosty vet scheduling)
+- Carry-forward escalations: 4 (GCP billing P0 unresolved; Memory Book May 10 — 4 days; Wohelo $12,900 May 15 — 9 days; Chase meeting today 2:30 PM — outcome unknown)
+- Calendar: no new events vs run 56-58; window stable through May 13
+- SSH: gpuserver1 unavailable (no ssh binary in execution environment). data/ directory created this run on this host.
+- Pages updated: `daily/2026-05-06.md` (run 59 appended), `family/active-todos.md` (run 59 appended), `business/sante-total.md` (updated: field only), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created), `log.md` (this entry)
+
+## [2026-05-06] ingest | personal-data-gather run 61: Chase bank session resolved; LA geauxBIZ/Sante Total; Vasu Show+Tell Fri; EquityZen Anthropic
+- Sources: Gmail (unread + newer_than:2d, 30 threads scanned), all 5 calendars (May 6–May 13)
+- Net-new facts: 6 (Chase bank session outcome; LA geauxBIZ alert → Sante Total; Vasu Show and Tell letter i; Vishala MKA alum visit; EquityZen Anthropic reconfirm needed; pool service complete)
+- New ACTION_REQUIRED: 3 (LA geauxBIZ/Sante Total state filing; Vasu Show and Tell Fri; EquityZen Anthropic reconfirmation)
+- Carry-forward escalations: 5 (GCP P0 unresolved; iCloud storage full; MKA Memory Book May 10; Wohelo $12,900 May 15; Sante Total 990-N May 15)
+- Calendar: no new events vs run 60; added Vasu Show and Tell Fri May 8 to calendar table from Gmail signal
+- Note: runs 57, 58, 60 wrote to daily log but did not update active-todos or log.md — run 61 catches up those missed active-todos items (iCloud, pizza money, Avigilon Alta)
+- SSH: gpuserver1 SSH unavailable from execution environment. Machine 52271 status unknown.
+- Pages updated: `daily/2026-05-06.md` (run 61 appended), `family/active-todos.md` (run 60 catch-up + run 61 appended), `business/sante-total.md` (LA geauxBIZ fact added), `family/vasu.md` (Show and Tell + Goddard activities added), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created), `log.md` (this entry)
+- KEY ITEMS: Sante Total Louisiana registration needs geauxBIZ check; Vasu needs Show and Tell item (letter i) by Friday; EquityZen Anthropic interest expires without reconfirmation; iCloud backups failing; GCP billing still P0; Wohelo + 990-N both due May 15
+
+## [2026-05-07] ingest | personal-data-gather run 62: convocation correction; deadline escalations
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 7–14)
+- Net-new facts: 6
+- New ACTION_REQUIRED: 0 (all items carried forward from run 61)
+- Deadline escalations: Show & Tell (tomorrow), Memory Book (3d), Alta (6d), Wohelo (8d), Disney (10d), Capstone Fair (22d)
+- Convocation corrected: 2:30–5:30 PM May 9 (prior active-todos had 6:30–9:30 PM — not 6:30 PM)
+- Pages updated: `daily/2026-05-07.md` (created), `family/vayu.md`, `family/active-todos.md`, `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: No new blockers. Deadlines converge May 8–15. Wohelo check must be mailed within 8 days.
+
+## [2026-05-07] ingest | personal-data-gather run 63: Sante Total $250 donation (stinchieii@aol.com)
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 7–14)
+- Net-new facts: 1 (Sante Total PayPal $250 from stinchieii@aol.com, 2026-05-07 02:04 UTC — confirmed amount)
+- New ACTION_REQUIRED: 0 (donation needs tax receipt — no hard deadline, but standard follow-up)
+- Carry-forward escalations: Same as run 62 (Vasu Show & Tell tomorrow, Memory Book 3d, Alta 6d, Wohelo 8d, 990-N 8d)
+- Calendar: All 5 stable. No new events vs run 62. May 9 convergence: soccer 11 AM + Convocation 2:30 PM (no conflict).
+- SSH: gpuserver1 SSH unavailable from execution environment. Machine 52271 status unknown.
+- Pages updated: `daily/2026-05-07.md` (run 63 appended), `business/sante-total.md` (donation fact added), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+
+## [2026-05-07] ingest | personal-data-gather run 64: Lucent Energy Steven site visit; Chase $2,301 payment
+- Sources: Gmail (newer_than:2d, 40 threads), all 5 calendars (May 7–14)
+- Net-new facts: 2 (Lucent Energy new contact Steven site visit + ACTION_REQUIRED reply; Chase Freedom Unlimited $2,301.48 payment scheduled)
+- New ACTION_REQUIRED: 1 (reply to Steven at Lucent Energy — confirm name + advance solar install discussion; ITC deadline July 4 in 58 days)
+- Carry-forward escalations: Vasu Show & Tell TODAY (May 8), Memory Book 3d, Alta 6d, Wohelo 8d, 990-N 8d
+- Calendar: All 5 stable. No new events vs run 63. May 9 convergence: soccer 11 AM + Convocation 2:30 PM (no conflict).
+- SSH: gpuserver1 SSH unavailable from execution environment.
+- Pages updated: `daily/2026-05-07.md` (run 64 appended), `business/solar-inference.md` (Steven fact + todo added), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (updated), `log.md`
+- KEY: Lucent Energy thread active again — Steven site visit confirmed; reply needed; ITC deadline July 4 in 58 days
+- KEY: Sante Total 2026 YTD now $4,600+ minimum confirmed. 990-N due in 8 days (not yet filed). Wohelo $12,900 check also due in 8 days.
+
+## [2026-05-07] ingest | personal-data-gather run 65: Vasu pizza final notice; Wohelo forms+check May 15; Sante Total PayPal split; NVDA call sold
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 7–14)
+- Net-new facts: 5
+- New ACTION_REQUIRED: 3 (Vasu pizza P0 today; Wohelo forms+check May 15 formal reminder; Sante Total PayPal program split request)
+- New FINANCIAL: 2 (Fidelity SOLD CALL NVDA account 8998; Schwab funds transfer IN PROGRESS account 669)
+- INFORMATIONAL: Alton in NYC today (SpotHero 35 W 33rd St); Schwab new Android trusted device; Blue Sombrero game reminder (already captured)
+- Calendar: All 5 stable. No new events vs run 64. May 9: soccer 11 AM + Convocation 2:30 PM (no conflict).
+- SSH: gpuserver1 unavailable from execution environment.
+- Pages updated: `daily/2026-05-07.md` (run 65 appended), `family/vasu.md` (pizza final notice), `family/active-todos.md` (run 65 appended), `business/sante-total.md` (PayPal split todo), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: Vasu pizza money P0 today — Alton in NYC, must act remotely; Wohelo forms AND check both due May 15 (8 days); Sante Total PayPal split question from Julia Clemens needs Alton's governance decision
+
+## [2026-05-08] ingest | personal-data-gather run 66: MKA enrollment complete; Vasu Mother's Day TODAY; pool pump issue; Sante Total Chase account opened
+- Sources: Gmail (newer_than:2d, 30+ threads), all 5 Google Calendars (May 8–15)
+- Net-new facts: 6
+- New ACTION_REQUIRED: 4 (Vasu Mother's Day TODAY; pool pump follow-up; Chase donation button pending Pavel; MKA Conference Day sign-up x2)
+- New FINANCIAL: 1 (MKA $7,000 enrollment payment confirmed for Vayu + Vishala)
+- Carry-forward P0 escalations: Wohelo $12,900 + forms due 2026-05-15 (7d); Form 990-N due 2026-05-15 (7d)
+- Calendar: All 5 queried. May 9: soccer 11 AM + Convocation 2:30 PM (no conflict). Alton's Tasks empty. Primary empty.
+- SSH: gpuserver1 unavailable from execution environment.
+- Pages updated: `daily/2026-05-08.md` (created), `family/vayu.md` (enrollment + PTC), `family/vishala.md` (enrollment + PTC), `family/vasu.md` (Mother's Day TODAY), `family/active-todos.md` (pool + enrollment + PTC), `business/sante-total.md` (Chase account OPENED + donation button), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: Two P0 deadlines converge on 2026-05-15 (7 days): Wohelo $12,900 and Form 990-N. Pool pump/water heater is an active unresolved home issue. Sante Total now has a Chase account.

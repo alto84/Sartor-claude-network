@@ -253,3 +253,44 @@ Records memory consolidation events: merges, archives, and prune operations.
 - logs_removed: 0
 - index_lines: 37
 
+## Run: 2026-05-04 03:06:59
+- dry_run: False
+- facts_gathered: 81
+- facts_written: 3
+- files_updated: 1
+- logs_archived: 0
+- logs_removed: 0
+- index_lines: 38
+- changes:
+  - LEARNINGS.md: +3 facts
+
+## Run: 2026-05-06 03:10:15
+- dry_run: False
+- facts_gathered: 2
+- facts_written: 2
+- files_updated: 2
+- logs_archived: 0
+- logs_removed: 0
+- index_lines: 38
+- changes:
+  - LEARNINGS.md: +1 facts
+  - FAMILY.md: +1 facts
+
+## Run: 2026-05-07 03:07:04
+- dry_run: False
+- facts_gathered: 2
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 38
+
+## Run: 2026-05-08 03:10:13
+- dry_run: False
+- facts_gathered: 2
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 0
+- logs_removed: 0
+- index_lines: 38
+

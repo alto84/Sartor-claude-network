@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-05-01
+updated: 2026-05-07
 updated_by: personal-data-gather
-run: 40
+run: 62
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -217,3 +217,43 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!todo] ACTION_REQUIRED — RSVP to coach for Saturday game
 > **B-34 Lime game May 2 — low turnout warning.** Coach Keith Gormley (keith.gormley@gmail.com) emailed the team at 19:27 UTC May 1: "Team - looks to be a low turnout for our game on Saturday. We have 6 players confirmed to be away or unavailable. For the rest of the team, please let us know if you'll be able to attend - 2pm at Brookdale [Stadium South]." The team is short 6 players and may struggle to field a full side. Reply to keith.gormley@gmail.com confirming whether Vayu will attend. Game is tomorrow (Saturday May 2, 2:00–3:00 PM ET, Brookdale Stadium South, Field 1). Alton is sole parent (Aneeta returns from RRE ~May 3). See [[family/active-todos]].
+
+## Latest from gather (2026-05-05) — run 41
+
+> [!todo] ACTION_REQUIRED
+> **Tribeca Pediatrics — 2 new portal messages (2026-05-04).** info@tribecapediatrics.com sent two back-to-back portal notification emails on 2026-05-04 at 18:39 and 18:40 UTC. These are in addition to the 3+ unread messages already flagged in prior runs. Total unread portal messages: 5+. Content is gated behind the portal login at http://tpeds.co/13kn. May be related to the outstanding $170.28 balance (second notice, overdue since 2026-04-15), a well-visit, or other clinical matter. Check portal.
+
+> [!fact]
+> **Upcoming soccer — confirmed from live API, 2026-05-05 run:**
+> - **Wed 2026-05-06 5:30–6:15 PM ET** — Rec Soccer Practice, B-34 Lime, Anderson Park (south side near Parkside St)
+> - **Sat 2026-05-09 11:00 AM–12:00 PM ET** — Game: B34 Lime vs B34 Purple, Brookdale Park, Montclair NJ
+> Both events previously confirmed in runs 36/28. No changes.
+
+## Latest from gather (2026-05-05) — run 54
+
+> [!fact] Soccer schedule extended — May 13 practice + May 16 game
+> From live calendar API (Blue Sombrero + Family calendar), run 54 extended window May 5–19:
+> - **Wed 2026-05-13, 5:30–6:15 PM ET** — Rec Soccer Practice (B-34 Lime), Anderson Park, south side near Parkside St. Recurring.
+> - **Sat 2026-05-16, 12:00–1:00 PM ET** — Game: B34 Silver vs B34 Lime (Gormley Hanlon & Waynik), Brookdale Park, Montclair NJ. Net-new — first capture of this game.
+
+## Latest from gather (2026-05-07) — run 62
+
+> [!fact] Soccer this week — both events confirmed live
+> - **Sat 2026-05-09, 11:00 AM–12:00 PM ET** — Game: B34 Lime vs B34 Purple (Lac & Karacas), Brookdale Park, Montclair NJ. No coverage conflict — Convocation starts 2:30 PM.
+> - **Wed 2026-05-13, 5:30–6:15 PM ET** — Rec Soccer Practice, Anderson Park, south side near Parkside St.
+
+> [!todo] ACTION_REQUIRED — MKA Fourth Grade Laptop Letter (check Veracross portal)
+> Erica Budd (Director of Educational Technology) + Jacqy Chung (Middle School Instructional Technologist) sent a Fourth Grade Laptop Letter via Veracross (m@mail3.veracross.com, 2026-05-05). Email body was blank — content requires Veracross parent portal login. Likely covers 4th grade technology/laptop program or policy for the upcoming school year. Review at MKA Veracross portal. See [[family/active-todos]].
+
+## Latest from gather (2026-05-07) — run 49 (addendum)
+
+> [!deadline] 2026-05-15
+> **MKA Parent-Teacher Conference sign-up due.** Teacher Roshni Shah (rshah@mka.org) emailed Alton and Aneeta on 2026-05-07: "I noticed that you haven't signed up for a Parent Teacher Conference for next Thursday. Sign-ups can be found on Veracross." Conference Day is 2026-05-15. Sign up on Veracross now. See [[family/active-todos]].
+
+## Latest from gather (2026-05-08) — run 66
+
+> [!fact]
+> **MKA Enrollment confirmed — Vayu, 2026-2027 academic year.** Veracross confirmation email (m@mail2.veracross.com, 2026-05-08 00:01 UTC): "We have received your enrollment contract and deposit for Vayu for the 2026-2027 academic year." Enrollment deposit paid: $7,000.00 USD (authorize.net receipt, invoice mka-7969-1, 2026-05-07 23:05 UTC). No further enrollment action required for 2026-2027.
+
+> [!deadline] 2026-05-15
+> **MKA Conference Day — Primary School.** General reminder from Primary School (m@mail1.veracross.com, 2026-05-07). Conference Day is 2026-05-15. Sign up on Veracross (Roshni Shah email captured in run 49 — same deadline). See [[family/active-todos]].

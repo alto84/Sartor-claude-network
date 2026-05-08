@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-05-03
-updated_by: anthropic-shares-intake (Rocinante Opus 4.7)
+updated: 2026-05-08
+updated_by: merge-reconciliation (Rocinante Opus 4.7)
 status: active
 priority: p1
 next_review: 2026-04-21
@@ -154,3 +154,16 @@ Full details in [[TAXES]]. Summary:
 
 > [!warning] GPU MACHINE OFFLINE — ACTIVE CLIENT IMPACTED
 > Machine 52271 went offline at approximately 2:35 AM UTC April 22. Automated vast.ai alert confirmed; vast.ai support engineer Saber emailed at 5:27 AM UTC — an active rental client was impacted and reached out to support. This is the second offline incident (first: 2026-04-04, 45 min, no client impact). Revenue impact: zero while offline. Recovery steps and Saber contact in [[MACHINES]].
+
+## Latest from gather (2026-05-05) — run 41
+
+> [!fact]
+> **Newegg server components/system inquiry submitted (2026-05-04).** Alton submitted a server build inquiry to Newegg Business. Newegg confirmed receipt: "Thank you for choosing our server solution for your business needs. Your unique Build ID is: Build-20260504214241-95. We are reviewing the specifications." Response pending from Newegg Business team. Context: likely additional hardware for Solar Inference LLC compute capacity (or replacement/expansion of gpuserver1). No pricing or specs confirmed yet.
+
+## Latest from gather (2026-05-07) — run 64
+
+> [!fact]
+> **New Lucent Energy contact: Steven (steven@lucent-energy.com), site visit 2026-05-07.** Alton emailed Steven (01:27 UTC) following a site visit to 85 Stonebridge, subject "Updated project for 85 Stonebridge." Alton summarized two categories of potential home upgrades: (1) items that can be rolled into the solar financing, and (2) other improvements. Steven replied (02:21 UTC), asked "Emmett or Alton, what name do you prefer?" and confirmed his notes in blue. This is the first active Lucent Energy reply thread since the April 29 blocker (engineering meeting unconfirmed). Steven is a new contact — add to key contacts alongside Doug Paige, Niko Markanovic, and Audrey Vera.
+
+> [!todo] ACTION_REQUIRED — reply to Steven at Lucent Energy
+> steven@lucent-energy.com is waiting on (1) name preference ("Alton") and (2) advancement of the 85 Stonebridge upgrade discussion. ITC deadline 2026-07-04 is 58 days away. This thread is the live path to placing the system in service. Reply promptly to maintain momentum.

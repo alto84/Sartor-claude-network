@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-05-01
+updated: 2026-05-07
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -36,6 +36,17 @@ No urgent open loops for Vasu. Goddard communications have been routine.
 > [!warning]
 > **Goddard summer forms due today (Apr 13) — no confirmation email received.** Samantha Ramsden's original deadline was April 13. As of end of day, no email confirmation of form submission found in Gmail. Status of Vasu's summer enrollment is unconfirmed. Verify directly with Goddard.
 
+## Latest from gather (2026-05-06) — run 61
+
+> [!todo] P1 — FRIDAY 2026-05-08
+> **Show and Tell: Letter "i".** Lorena Castillo (Goddard Montclair) via Kaymbu, 17:42 UTC May 6. This Friday is Show and Tell. The letter is **i** (described as "a tough one"). Suggested items: ice cream toy, the color indigo, anything starting with i. Pack an item before Friday morning drop-off. See [[family/active-todos]].
+
+> [!fact] Goddard activities today (2026-05-06)
+> Big Jeff (performer) visited the class and did a special performance; helped celebrate a classmate's 4th birthday. Yoga: affirmations in a mirror. Normal school day confirmed via Kaymbu x3 messages.
+
+> [!fact] Pool service at 85 Stonebridge Rd completed 2026-05-06 — Safe to Swim
+> The Pool Guyz LLC, Service Log #36731293. Service: check up. Status: Safe to Swim. Informational.
+
 ## Upcoming events (next 30 days)
 
 - 4/22 16:20 — Recycled costume parade (Goddard "Recycled Runway"). Needs a costume made from recycled materials.
@@ -55,6 +66,19 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 - Is Vasu enrolled in Goddard summer camp? Fee schedule was emailed 2026-04-06 but enrollment confirmation not visible.
 - What's the Recycled Runway costume plan for 4/22? Typically requires parent prep.
 - School closure dates for April — needs cross-reference against Alton's work travel days.
+
+## Latest from gather (2026-05-06)
+
+> [!todo] Pizza money at Goddard — replenish
+> Samantha Ramsden emailed 2026-05-06 (via Kaymbu): Vasu is out of pizza money for Friday pizza at Goddard Montclair. Replenish via Goddard payment portal or call the school.
+
+## Latest from gather (2026-05-07) — run 65
+
+> [!warning] P0 — LAST DAY (2026-05-07)
+> **Vasu pizza money — final notice.** Samantha Ramsden (Goddard) sent "Last Day - Out of Pizza Money!" at 13:01 UTC May 7. This is the second notice (first was May 6). Alton is in NYC today (SpotHero parking 35 W 33rd St). Must replenish via Goddard online payment portal remotely, or coordinate with Aneeta. If not resolved today, Vasu misses Friday pizza. See [[family/active-todos]].
+
+> [!todo] Avigilon Alta / Openpath — Goddard door access setup
+> Goddard Montclair provisioned Alton with mobile door-unlock access (Avigilon Alta). Install "Alta Open" app and activate using the invitation email sent 2026-05-06. Token expires ~2026-05-13. This simplifies dropoff/pickup door access at Goddard.
 
 ## Notable about Vasu at age 4
 
@@ -181,3 +205,13 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact] TODAY (May 1) Vasu daily sheet
 > Preschool unit: "What does it mean to be alive?" curriculum this week — learning about living vs non-living things, self-awareness activities. Normal school day confirmed via Kaymbu (2026-05-01 19:17 UTC, check-in by Nathia W). Routine informational.
+
+## Latest from gather (2026-05-07) — run 49
+
+> [!todo] ADD TO CALENDAR — Vasu Dance Recital: June 2 at 4:30 PM
+> **Miss Kelsey (Goddard dance teacher) via Jacqueline Capote (Goddard admin), 2026-05-07:** "Dance Recital Info! June 2nd at 4:30! Please see the below message that was sent from Miss Kelsey: Hey there, amazing parents and guardians!" First mention of recital date. Add to Google Calendar; confirm venue with Goddard (presumably at the school). See [[family/active-todos]] and [[family/family-calendar]].
+
+## Latest from gather (2026-05-08) — run 66
+
+> [!deadline] 2026-05-08 TODAY
+> **Vasu Mother's Day Celebration — Goddard School, TODAY.** Kaymbu announcement (Samantha Ramsden, noreply@kaymbu.com, 2026-05-07 20:00 UTC): "Our Mother's Day celebration is TOMORROW!" No time specified — confirm with school or check Kaymbu. Attendance expected from parents/guardians. Aneeta's calendar shows no dedicated coverage event today; Alton should plan to attend or coordinate. See [[family/active-todos]].
