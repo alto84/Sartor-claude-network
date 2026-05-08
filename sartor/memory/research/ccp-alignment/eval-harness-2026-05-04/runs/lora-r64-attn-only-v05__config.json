@@ -1,0 +1,19 @@
+{
+  "model_id": "Youssofal/Qwen3.6-35B-A3B-Abliterated-Heretic-BF16",
+  "corpus": "corpus/corpus-v05.jsonl",
+  "out": "runs/lora-r64-attn-only-v05",
+  "epochs": 3.0,
+  "lora_r": 64,
+  "lora_alpha": 128,
+  "lr": 2e-05,
+  "batch_size": 1,
+  "grad_accum": 8,
+  "max_seq_len": 4096,
+  "save_steps": 20,
+  "logging_steps": 2,
+  "warmup_ratio": 0.05,
+  "limit": 0,
+  "torch": "2.11.0+cu128",
+  "cuda_devices": 2,
+  "timestamp": "2026-05-08T16:24:07+0000"
+}
