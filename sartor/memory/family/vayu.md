@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-05-07
+updated: 2026-05-08
 updated_by: personal-data-gather
-run: 62
+run: 67
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -257,3 +257,11 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!deadline] 2026-05-15
 > **MKA Conference Day — Primary School.** General reminder from Primary School (m@mail1.veracross.com, 2026-05-07). Conference Day is 2026-05-15. Sign up on Veracross (Roshni Shah email captured in run 49 — same deadline). See [[family/active-todos]].
+
+## Latest from gather (2026-05-08) — run 67
+
+> [!fact] No afterschool band today (2026-05-08, Friday)
+> Pia Kutten / MKA admin (m@mail2.veracross.com, 2026-05-08 15:52 UTC): "Dear 4th Grade Families, There will not be afterschool band today. Apologies if this causes any inconvenience." Normal dismissal applies. No logistics change.
+
+> [!fact] Screen time May 1–7: 23h58m
+> Microsoft Family Safety weekly report (2026-05-08 01:41 UTC). Vayu logged 23 hours 58 minutes of screen time for the week May 1–7 (average ~3.4h/day on vayusartor@gmail.com). Review family.microsoft.com for full breakdown if needed.
