@@ -205,3 +205,8 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact] TODAY (May 1) Vasu daily sheet
 > Preschool unit: "What does it mean to be alive?" curriculum this week — learning about living vs non-living things, self-awareness activities. Normal school day confirmed via Kaymbu (2026-05-01 19:17 UTC, check-in by Nathia W). Routine informational.
+
+## Latest from gather (2026-05-07) — run 49
+
+> [!todo] ADD TO CALENDAR — Vasu Dance Recital: June 2 at 4:30 PM
+> **Miss Kelsey (Goddard dance teacher) via Jacqueline Capote (Goddard admin), 2026-05-07:** "Dance Recital Info! June 2nd at 4:30! Please see the below message that was sent from Miss Kelsey: Hey there, amazing parents and guardians!" First mention of recital date. Add to Google Calendar; confirm venue with Goddard (presumably at the school). See [[family/active-todos]] and [[family/family-calendar]].

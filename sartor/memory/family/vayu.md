@@ -244,3 +244,8 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!todo] ACTION_REQUIRED — MKA Fourth Grade Laptop Letter (check Veracross portal)
 > Erica Budd (Director of Educational Technology) + Jacqy Chung (Middle School Instructional Technologist) sent a Fourth Grade Laptop Letter via Veracross (m@mail3.veracross.com, 2026-05-05). Email body was blank — content requires Veracross parent portal login. Likely covers 4th grade technology/laptop program or policy for the upcoming school year. Review at MKA Veracross portal. See [[family/active-todos]].
+
+## Latest from gather (2026-05-07) — run 49 (addendum)
+
+> [!deadline] 2026-05-15
+> **MKA Parent-Teacher Conference sign-up due.** Teacher Roshni Shah (rshah@mka.org) emailed Alton and Aneeta on 2026-05-07: "I noticed that you haven't signed up for a Parent Teacher Conference for next Thursday. Sign-ups can be found on Veracross." Conference Day is 2026-05-15. Sign up on Veracross now. See [[family/active-todos]].

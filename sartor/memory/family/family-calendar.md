@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-05-02
+updated: 2026-05-07
 updated_by: personal-data-gather
-run: 39
+run: 49
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -577,3 +577,19 @@ Updated May 8 entry:
 |------|---------|-------|--------|-------|
 | Mon 5/4 – Fri 5/8 | school hours | Teacher Appreciation Week (Goddard) | Kaymbu run 39 | Chalk message Monday morning at drop-off |
 | Sat 5/2 | 2:00–3:00 PM | Vayu soccer — B34 Lime vs B34 Charcoal | Blue Sombrero | TODAY — Vayu confirmed attending (Alton replied to coach) |
+
+## Latest from gather (2026-05-07) — run 49
+
+New events from May 7–14 calendar window:
+
+| Date | Time ET | Event | Calendar | Notes |
+|------|---------|-------|----------|-------|
+| Sat 5/9 | 11:00 AM–12:00 PM | Vayu soccer: B34 Lime vs B34 Purple | Blue Sombrero | Brookdale Park, Montclair NJ 07043 — confirmed |
+| Sat 5/9 | 2:30–5:30 PM | Convocation | Family | Aneeta organizer; no description/location — confirmed |
+| **Tue 5/13** | **5:30–6:15 PM** | **Rec Soccer Practice (B-34 Lime)** | Family | Anderson Park, south side near Parkside St — **first capture in run 49** |
+
+June lookahead:
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| **Mon 6/2** | **4:30 PM** | **Vasu Dance Recital** | Gmail/Kaymbu (run 49) | Miss Kelsey; first mention. Add to Google Calendar. Venue TBD — confirm with Goddard. |
