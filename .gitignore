@@ -71,3 +71,11 @@ firmware.json.bak-*
 # publishing the path manifest to the GitHub DR mirror requires AZ Compliance
 # review first. Until then the INDEX stays untracked locally only.
 sartor/memory/source-documents/
+
+# Archived predecessor / parallel-fork repos brought in 2026-05-08 during the
+# C:\Users\alto8 -> Sartor-claude-network migration. Each carries its own
+# inner .git and is preserved as a frozen historical reference, not as live
+# project content. Keeping them on disk for backup but out of this repo's
+# git tracking. The 376 MB analysis fork would dominate the repo otherwise.
+/archive/home-agent-2026-04/
+/archive/sartor-network-analysis-2026-12-20-fork/
