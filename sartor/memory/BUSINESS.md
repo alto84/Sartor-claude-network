@@ -24,7 +24,8 @@ related: [ALTON, TAXES, PROJECTS, ASTRAZENECA, solar-inference, sante-total, az-
 - **Solar Inference LLC:** Solar-powered AI inference startup (active development)
 - **Sante Total:** 501(c)(3) nonprofit — healthcare delivery in Haiti and Kenya (Alton is Treasurer/Board Member)
 - **[[ASTRAZENECA|AstraZeneca]]:** Medical Director, AI Innovation and Validation, Global Patient Safety
-- Three distinct tracks: pharma career + startup venture + nonprofit
+- **185 Davis Avenue:** rental condo (jointly owned with Aneeta) — Leader Bank mortgage, Vermont Mutual condo policy, generates rental income tracked in `dashboard/family/finances.json`
+- Four distinct tracks: pharma career + startup venture + nonprofit + rental property
 
 ## AstraZeneca Career Track
 
@@ -76,6 +77,17 @@ related: [ALTON, TAXES, PROJECTS, ASTRAZENECA, solar-inference, sante-total, az-
 **Mission:** Healthcare delivery in Haiti and Kenya
 **History:** Involved since 2010
 **Current issues:** IRS penalty abatement requests in progress; ongoing administrative and financial management
+
+## Rental Property — 185 Davis Avenue
+
+**Type:** Residential condo, jointly owned (Aneeta Saxena & Emmett Alton Sartor)
+**Use:** Tenant-occupied rental; generates rental income for the household
+**Mortgage:** Leader Bank (1098 issued annually; routing rule for Leader Bank docs is this section per [[../conversation_extract.py|conversation_extract.py:406]])
+**Insurance:** Vermont Mutual condo policy (renewed annually 1/18; current policy 2025-01-18 → 2026-01-18)
+**Tax position:** rental income + mortgage interest + condo fees flow through Schedule E on the joint 1040; CPA Jonathan Francis handles. See [[TAXES]] for deductions and depreciation schedule.
+**Live financial state:** `dashboard/family/finances.json` carries line items for "185 Davis Mortgage", "185 Davis rental", "185 Davis Condo Fee"
+**Document trail:** `work/taxes/reference/document-inventory.md` — 1098s by tax year, mortgage statements; `work/family/reference/important-docs.md` — Vermont Mutual policy
+**Status:** stable, recurring; no operational issues as of 2026-05-02
 
 ## Tax Implications
 

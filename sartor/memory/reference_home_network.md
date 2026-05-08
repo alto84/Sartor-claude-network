@@ -21,7 +21,7 @@ For the full takeover history, playbook, credentials, and recovery procedures se
 - **URL:** `https://192.168.1.171:8443` (Rocinante, port 8443; inform port 8080)
 - **Admin:** `alton` / household-default password (see project doc, not here)
 - **Backing store:** MongoDB at `mongodb://127.0.0.1:27117/ace` (loopback only, no auth)
-- **Daily `.unf` backup:** Windows Scheduled Task "UniFi Daily Backup" at 3 AM ET → `C:\Users\alto8\backups\unifi\` + OneDrive parallel copy
+- **Daily `.unf` backup:** Windows Scheduled Task "UniFi Daily Backup" at 3 AM ET → `C:\Users\alto8\backups\unifi\` (local, 30-day rolling) + SCP off-site to `alton@192.168.1.157:/home/alton/sartor-network-backups/` (rtxserver, kept indefinitely)
 
 ### UniFi devices (9)
 

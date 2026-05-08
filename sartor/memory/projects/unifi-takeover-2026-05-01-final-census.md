@@ -244,7 +244,7 @@ The "75 GB to Google Nest" pattern from the mid-state census persists. It is ste
 | Berman Net live broadcasts | no (configured but not on-air at scan time) | no (and now also absent from system.cfg / hostapd) | belt + suspenders |
 | GhLoP live broadcasts | no | no, and absent from system.cfg / hostapd | renamed cleanly to LGP123 |
 | Backup automation | not yet running | scheduled task active, ran 21:58 SUCCESS, next 03:00 ET | new safety net |
-| Daily backup destination | manual `.unf` files | automated to `C:\Users\alto8\backups\unifi\` + OneDrive `Sartor-network/backups/` | persisted offsite via OneDrive |
+| Daily backup destination | manual `.unf` files | automated to `C:\Users\alto8\backups\unifi\` (local) + SCP to `alton@192.168.1.157:/home/alton/sartor-network-backups/` (rtxserver) | persisted off-Rocinante via LAN SCP |
 | OutdoorBackyard 2.4 GHz channel | 6 (74% utilization, neighbor war zone) | 1 (80% utilization, also crowded) | switched to a different crowded channel; 11 might be a quieter target |
 | 3rdFloor PoE draw | 8.03 W | **12.24 W** | post-reboot calibration spike — should settle to ~8 W within 1 h |
 | Wireless clients | 0 | 0 | family hasn't re-keyed yet; expected by morning |
@@ -253,7 +253,7 @@ The "75 GB to Google Nest" pattern from the mid-state census persists. It is ste
 
 Net direction: **everything moved in the right direction.** The only slight regression is OutdoorBackyard's 2.4 GHz on a crowded channel, and that is not a real problem until clients are present.
 
-> **Special verification 5 result: PASS.** "UniFi Daily Backup" scheduled task is `State=Ready`, `LastResult=0x41303` (267011 — task currently running), `NextRun=2026-05-02 03:00 ET`. Most-recent run completed at 21:58:59 with success: produced `sartor-claude-network_auto_2026-05-01_2158.unf` (34.2 KB) to both local and OneDrive paths.
+> **Special verification 5 result: PASS.** "UniFi Daily Backup" scheduled task is `State=Ready`, `LastResult=0x41303` (267011 — task currently running), `NextRun=2026-05-02 03:00 ET`. Most-recent run completed at 21:58:59 with success: produced `sartor-claude-network_auto_2026-05-01_2158.unf` (34.2 KB) at `C:\Users\alto8\backups\unifi\` plus SCP off-site to rtxserver. (Original 2026-05-01 entry mentioned a OneDrive parallel path; that was never wired — corrected 2026-05-06.)
 
 ---
 

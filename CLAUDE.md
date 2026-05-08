@@ -45,9 +45,9 @@ The Sartor family lives in Montclair, New Jersey.
 **Platform:** vast.ai
 **Hardware:** RTX 5090 (32GB VRAM), Intel i9-14900K, 128GB DDR5 RAM
 **Machine ID:** 52271 | **Offer ID:** 32099437
-**Pricing (as of 2026-04-19, verified via `vastai show machines`):** $0.35/hr on-demand, $0.26/hr interruptible, $0.40/hr reserved, $3.00/TB upload, $2.00/TB download
+**Pricing (live as of 2026-05-04, verified via `vastai show machines --raw`):** $0.30/hr on-demand listed, $0.25/hr interruptible floor (`min_bid_price`), $0.15/GB-month storage, $3.00/TB upload, $2.00/TB download. Currently rented under reserved contract C.34113802 (through 2026-08-24) at ~$0.20/hr realized — a long-term-discount price; profitable at this rate because the 5090 sips power vs. its earnings. **Note:** vast.ai exposes no machine-level "reserved rate" field; reserved is a per-rental contract attribute, not a host-set price. Earlier docs claiming "$0.40/hr reserved" were doc fiction (truth-up 2026-05-04).
 **Payout:** Stripe (configured)
-**Listing expiry:** 2026-08-24 (must relist before this date)
+**Listing expiry:** 2026-10-24 (auto-renewed via web UI from prior 2026-08-24). Reserved-contract C.34113802 still ends 2026-08-24 — distinct field. After that date, evaluate market and relist.
 
 ### Monitoring Responsibilities
 - Track GPU utilization and rental status via `ssh alton@192.168.1.100`
@@ -70,8 +70,9 @@ ssh alton@192.168.1.100 "nvidia-smi"
 
 ### Known Issues
 - Hairpin NAT on Fios router: LAN cannot route to its own public IP. Fixed with iptables OUTPUT DNAT rule + DOCKER-USER conntrack rule.
-- vast.ai tending script runs every 2h via cron on gpuserver1 (`~/vastai-tend.sh`). Alerts land in `~/.vastai-alert`.
+- vast.ai tending script runs every **30 min** via cron on gpuserver1 (`~/vastai-tend.sh`, state-change-only). State-change events land in `sartor/memory/inbox/gpuserver1/vastai/`. Hourly `stale-detect.sh` writes `inbox/gpuserver1/_heartbeat.md` and `stale-alerts/`.
 - Router DMZ forwards all traffic to gpuserver1; UFW on server handles filtering.
+- **`vastai show instances` returns `[]` on host-side** — it lists *client-side* rentals only. Host-side rental check is docker-based: `docker ps --format '{{.Names}}' | grep '^C\.'` (kaalia names customer containers `C.<instance_id>`).
 
 ## Domain 2: Nonprofit Administration
 
@@ -242,6 +243,10 @@ Skills are defined in `.claude/skills/` and provide reusable capabilities:
 | `/build-llm-wiki` | Create self-contained LLM-optimized wiki |
 | `/multi-agent-orchestration` | Multi-agent system design patterns (consolidated 2026-04-19 from 14 overlapping skills) |
 | `/evidence-based-validation` | Anti-fabrication default behavior (single canonical after 2026-04-19 merge) |
+| `/secrets-via-bitwarden` | Sartor convention for credential retrieval. Wrapper at `scripts/sartor-secret` over Bitwarden CLI. Codifies vault-locked behavior, naming convention, hygiene rules, migration recipe for known-leaked passwords. Reference secrets by name, never by value. Created 2026-05-03 after the household-default-password problem surfaced. |
+| `/network-management` | Operating manual for the Sartor-Saxena-Claude Network. Topology, controller-access patterns, common operations (PSK change, AP restart, locate-strobe, backup), recovery playbooks (AP unreachable, controller down, re-adopt a device), per-AP authkey management, Phase 3 hardening status. Created 2026-05-03; consolidates the 2026-05-01 takeover bundle into operational form. |
+| `/vastai-management` | Operational manual for the Sartor vast.ai GPU rental fleet. Fleet inventory, "short-term first" listing strategy, daily/weekly/periodic ops, pricing-adjustment workflow (price-increase challenge, on-demand vs reserved decision rules), CLI flag reference (per-GPU `-g`, `-m`, `-e` vs `-l`, etc.), idle-jobs mechanism, recovery playbooks (machine offline, kaalia broken, NIC issue, hung rental). Pairs with `procedures/vastai-host-onboarding.md` for new-host bring-up. Created 2026-05-04. |
+| `/rtxserver-management` | Operating manual for rtxpro6000server (192.168.1.157, dual RTX PRO 6000 Blackwell, machine_id 97429). Identity/topology one-pager, access patterns (SSH + BMC web UI + IPMI), file-path map, hardware quirks (450W cap not persistent, BMC fan curves saved to firmware, OS-side fan control inert, single-card thermal pathology, no UPS), peer Claude tmux protocol (`claude-team-1`, auto-respawn via user systemd), AC-failure recovery playbook (2026-05-03 14h outage), vast.ai lifecycle on this box, the install-token critical learning, common-ops cheat-sheet, recovery playbooks (unreachable, listing offline, thermal anomaly, power-cap drift), documented don'ts. Audience is both Rocinante-side Claudes operating remotely AND the rtxserver peer Claude itself. Created 2026-05-04. |
 
 ## Available Commands
 
@@ -278,6 +283,9 @@ Defined in `.claude/scheduled-tasks/`:
 | `daily-household-health` | Aggregates peer self-steward state; pings Alton via Google Calendar on yellow+ anomalies | Daily, 5:30 AM ET (09:30 UTC) |
 | `Sartor Memory Mirror` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Mirror rtxserver bare git repo to GitHub via `C:\Users\alto8\scripts\sartor-mirror-to-github.ps1`. Logs to `C:\Users\alto8\backups\sartor-mirror.log`. Run by hand for immediate mirror. | Nightly, 3:30 AM ET |
 | `UniFi Daily Backup` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Pull `.unf` from local UniFi controller; SCP off-site to rtxserver via `C:\Users\alto8\scripts\unifi-daily-backup.ps1`. | Daily, 3:00 AM ET |
+| `Sartor Peer Creds Sync` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | SCP fresh `~/.claude/.credentials.json` to peer Claudes (rtxserver, gpuserver1) so peer-side OAuth tokens never go stale. Script `C:\Users\alto8\scripts\sartor-creds-sync.ps1` logs to `C:\Users\alto8\backups\sartor-creds-sync.log`. Bumped from nightly to 4h on 2026-05-02 because daytime peer reboots were leaving peers with expired tokens until next 4 AM run. | Every 4 hours |
+| `Sartor Peer Sessions Mirror` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | SCP peer Claude session `.jsonl` files from rtxserver + gpuserver1 into Rocinante's picker-visible dir at `~/.claude/projects/C--Users-alto8-Sartor-claude-network/`, so peer conversations show up in `claude --resume` alongside Rocinante-native sessions when cwd is the Sartor working tree. Sidecar manifest at `.peer-manifest.json` tracks which session-ids came from which peer. Script `Sartor-claude-network/scripts/rsync-peer-sessions.ps1` logs to `C:\Users\alto8\backups\peer-sessions-rsync.log`. | Every 15 minutes |
+| `Sartor Hours Log` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Material-participation hours tracker for §469 / Solar Inference LLC tax record. Walks `~/.claude/projects/**/*.jsonl`, computes active-typing intervals (gaps <30 min count as active; >=30 min split sessions), takes the UNION of intervals across concurrent sessions to avoid double-counting parallel subagents (the May 2 "$13K-burn" fanout was 9.32h actual, not 80h). Classifies by cwd: `Sartor-claude-network` → solar_inference, else → general_sartor. Idempotent re-write of `sartor/memory/business/hours-log/all-hours.csv` columns: date, solar_inference_hours, general_sartor_hours, total_active_hours (union), session_count, first/last msg local time. Logs to `C:\Users\alto8\backups\hours-log.log`. | Daily, 11:55 PM ET |
 
 ## Infrastructure Reference
 
@@ -302,6 +310,18 @@ Defined in `.claude/scheduled-tasks/`:
 - **Tending script:** `~/vastai-tend.sh` (cron, every 2h)
 - **Alerts:** `~/.vastai-alert`
 - **Limitations:** No GitHub credentials (cannot git push), no browser automation
+
+### rtxpro6000server (Workstation / future GPU Host)
+- **OS:** Ubuntu 22.04 (HWE 6.8 kernel)
+- **CPU:** AMD Threadripper PRO 7975WX (32C/64T)
+- **RAM:** 251 GB DDR5
+- **GPUs:** 2× NVIDIA RTX PRO 6000 Blackwell Workstation (96 GB VRAM each, 192 GB total). **Production cap 450W/card** (auto-applied on boot via `/etc/systemd/system/nvidia-power-cap.service`).
+- **IP:** 192.168.1.157 (LAN, on UniFi switch port 10), BMC primary at 192.168.1.154 (dedicated MGMT, switch port 11, post-2026-05-04), BMC secondary at 192.168.1.156 (Shared LAN, still active for redundancy)
+- **SSH:** `ssh alton@192.168.1.157` (host MAC `30:c5:99:d5:8f:b5`)
+- **Peer Claude:** auto-spawns at boot in tmux session `claude-team-1` via user-level systemd service `~/.config/systemd/user/sartor-claude-peer.service` (lingering enabled for `alton`).
+- **BMC fan curves (saved to firmware):** Zones 2-6 = 30°C/50% → 50°C/75% → 60°C/90% → 70°C/100%, applied via Chrome MCP 2026-05-02. Fan-cord override available via remote control for max chassis airflow.
+- **Vast.ai listing:** **NOT YET LISTED** — onboarding paused 2026-05-02 pending network topology pivot. State captured in `inbox/rtxpro6000server/RESUME-vastai-onboarding-2026-05-02.md`.
+- **Limitations:** No GitHub credentials (cannot git push), no browser automation, no Verizon Fios WAN port-forward yet.
 
 ### MCPs Available
 - **Google Calendar:** Event management, scheduling, free time lookup

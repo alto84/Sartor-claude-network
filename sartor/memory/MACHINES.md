@@ -68,8 +68,8 @@ related: [BUSINESS, PROCEDURES, SELF, MULTI-MACHINE-MEMORY, machines/gpuserver1/
 - **Hairpin NAT:** iptables OUTPUT DNAT rule (100.1.100.63→192.168.1.100) in /etc/ufw/before.rules nat table
 - **DOCKER-USER chain:** conntrack --ctorigdstport 40000:40099 rule in /etc/ufw/after.rules (allows Docker-mapped ports)
 - **Docker group:** `alton` is in docker group (added 2026-02-23)
-- **Pricing:** Base $0.40/hr, MinBid $0.25/hr, end date 2026-08-24. Price raised to $0.35/hr demand / $0.26/hr interruptible 2026-04-11 (25% spread). See [[business/rental-operations]] for pricing rationale and authority rules.
-- **Utilization (2026-04-09):** ZERO rentals; earning $0.31/day storage only. This is a persistent pattern requiring pricing review.
+- **Pricing (live as of 2026-05-02):** $0.30/hr on-demand listed, $0.25/hr interruptible floor. Realized ~$0.20/hr under reserved contract C.34113802 (long-term discount, runs through 2026-08-24). Listing end date drifted to 2026-10-24 via web UI extension. See [[business/rental-operations]] for pricing rationale. Historical: was $0.40 base 2026-02 launch, raised to $0.35/hr 2026-04-11, currently $0.30 listed.
+- **Utilization (2026-05-02):** Continuously rented under reserved contract since 2026-04-05 (renter container `C.34113802`). Profitable at $0.20/hr because the 5090 sips power vs. its earnings; the dollar-per-hour figure undersells unit economics.
 - **Reliability:** 99.85%
 - **Verification:** VERIFIED (as of 2026-02-26)
 - **Self-test:** PASSING (fixed 2026-02-27)
@@ -78,19 +78,19 @@ related: [BUSINESS, PROCEDURES, SELF, MULTI-MACHINE-MEMORY, machines/gpuserver1/
 - **After reboot:** Kaalia auto-starts. Check listing with `~/.local/bin/vastai show machines`.
 - **Port forwarding:** DMZ Host enabled on router → 192.168.1.100 (all ports forwarded, UFW filters on server side)
 
-### gpuserver1 Active Cron Jobs (as of 2026-04-12)
+### gpuserver1 Active Cron Jobs (live as of 2026-05-04 audit)
 
-After a 2026-04-12 cleanup that reduced 15 jobs to 5, only these P0/active crons run. See [[machines/gpuserver1/CRONS|gpuserver1 CRONS v0.2]] for full details including the 10 deprecated jobs.
+This block was truth-up'd 2026-05-04 from a live `crontab -l` on gpuserver1. The 2026-04-12 cleanup story is preserved in [[machines/gpuserver1/CRONS|gpuserver1 CRONS]] history; what changed since is that `run_monitor.sh` was retired and `vastai-tend.sh` was un-deprecated and re-edited 2026-04-19. The current 5-job set:
 
 | Job | Schedule | Purpose |
 |-----|----------|---------|
-| `run_monitor.sh` | every 2 hours | P0: Claude Code health sweep (disk, Docker, vastai, GPU temp) |
-| `gather_mirror.sh` | every 4 hours | P0: git pull from Rocinante, vastai status + GPU health snapshot, heartbeat |
-| `daily_summary.py` | daily 11:55 PM UTC | P0: power usage summary (UPS metrics) |
-| `run_pricing.sh` | Monday 9 AM UTC | P0: weekly vast.ai pricing review, recommends adjustments via inbox |
-| `dashboard-healthcheck.sh` | daily 9 AM UTC | health check for safety-research (port 8000) + gpu-dashboard (port 5060) |
+| `gather_mirror.sh` | every 4 hours | git pull from Rocinante, vastai status + GPU health snapshot, heartbeat |
+| `stale-detect.sh` | hourly | Writes `inbox/gpuserver1/_heartbeat.md` and `inbox/gpuserver1/stale-alerts/` |
+| `vastai-tend.sh` | every 30 min | State-change-only events to `inbox/gpuserver1/vastai/` (un-deprecated 2026-04-19) |
+| `rgb_status.py` | every 5 min | RGB LED status indicator on chassis |
+| `docker-weekly-prune.sh` | Sunday 4 AM | Docker image / volume cleanup |
 
-**Deprecated 2026-04-12 (no longer running):** `vastai-tend.sh` (replaced by run_monitor.sh), `gateway_cron.py` (JSON parse failures), `memory-sync.sh` (git conflict failures), `heartbeat-watcher.sh` (redundant), `consolidate-mirror/autodream/decay` (memory consolidation is Rocinante-only per Operating Agreement §2).
+**Historical:** Earlier 2026-04-12 cleanup deprecated `vastai-tend.sh`, `gateway_cron.py`, `memory-sync.sh`, `heartbeat-watcher.sh`, `consolidate-mirror/autodream/decay` and introduced `run_monitor.sh`. Subsequently (2026-04-19), `run_monitor.sh` was retired and `vastai-tend.sh` was rewritten + re-enabled. The `daily_summary.py`, `run_pricing.sh`, and `dashboard-healthcheck.sh` jobs listed in earlier MACHINES.md versions are not in the live crontab as of 2026-05-04.
 
 ## Network
 
@@ -108,7 +108,7 @@ After a 2026-04-12 cleanup that reduced 15 jobs to 5, only these P0/active crons
 - **Controller:** Rocinante runs the UniFi controller at `https://192.168.1.171:8443` (inform port 8080). MongoDB backing store at `mongodb://127.0.0.1:27117/ace` (loopback, no auth).
 - **9 devices total:** USW-Pro-Max-24-PoE switch (192.168.1.170) + 8 WiFi 7 APs (Hall2ndFloor .167, Gym .165, Basement .168, HerOffice .183, 3rdFloor .166, Livingroom .185, OutdoorBackyard .173, HisOffice in-wall .186).
 - **Single SSID:** `LGP123` (WPA3-SAE + WPA2 transition, `pmf_mode=optional`). PSK lives in the takeover project doc, not here.
-- **Daily `.unf` backup:** Windows Scheduled Task "UniFi Daily Backup" at 3 AM ET → `C:\Users\alto8\backups\unifi\` + OneDrive parallel copy. Script at `C:\Users\alto8\scripts\unifi-daily-backup.ps1`.
+- **Daily `.unf` backup:** Windows Scheduled Task "UniFi Daily Backup" at 3 AM ET → `C:\Users\alto8\backups\unifi\` (local, 30-day rolling) + SCP off-site to `alton@192.168.1.157:/home/alton/sartor-network-backups/` (rtxserver, kept indefinitely). Script at `C:\Users\alto8\scripts\unifi-daily-backup.ps1`.
 - **Full playbook + credentials + per-AP authkeys + recovery procedures:** [[projects/unifi-takeover-2026-05-01]] (canonical) and [[projects/unifi-takeover-2026-05-01-INDEX]] (dispatch).
 - **Operational note:** if Rocinante reboots, the controller comes back automatically (Java auto-launched by tray app). If Rocinante is offline for an extended period, APs continue running their last-pushed config (broadcast SSIDs, route traffic) but won't accept config changes until it's back. Acceptable for residential.
 

@@ -1,16 +1,16 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-05-07
-updated_by: personal-data-gather
+updated: 2026-05-08
+updated_by: merge-reconciliation (Rocinante Opus 4.7)
 status: active
 priority: p1
 next_review: 2026-04-21
 tags: [entity/llc, domain/career, status/active, priority/p1]
 aliases: [Solar Inference, Solar Inference LLC, SI LLC]
 related: [BUSINESS, TAXES, MACHINES, ALTON, FAMILY]
+originSessionId: 20258412-9bde-4353-8ccf-54156884e952
 ---
-
 # Solar Inference LLC
 
 Pre-revenue NJ multi-member LLC (50/50 Alton + Aneeta) combining Tesla Solar Roof at 85 Stonebridge Rd with a GPU compute rig on vast.ai marketplace. Founded 2025-09-06 via LegalZoom. Currently in build-out phase with significant capital deployed but zero revenue.
@@ -61,12 +61,11 @@ Pre-revenue NJ multi-member LLC (50/50 Alton + Aneeta) combining Tesla Solar Roo
 - **Offer ID:** 32099437
 - **Hardware:** RTX 5090 (32GB VRAM), Intel i9-14900K, 128GB DDR5
 - **Server name:** gpuserver1 (192.168.1.100 on LAN)
-- **Pricing:** $0.40/hr GPU, $0.25/hr min bid, $0.10/hr storage
-- **Listing expiry:** 2026-08-24 (must relist before this date)
-- **Utilization (2026-04-09):** **ZERO rentals**, earning $0.31/day storage only, balance $13.81 as of last check
-- **Recent incident:** machine went offline 2026-04-04 (45 min inactive); no follow-up emails, likely recovered
+- **Pricing (live 2026-05-02):** $0.30/hr on-demand listed, $0.25/hr interruptible floor. Realized ~$0.20/hr under reserved contract C.34113802 (long-term discount). Profitable because RTX 5090 sips power.
+- **Listing expiry:** 2026-10-24 (extended from original 2026-08-24 via web UI). Reserved contract still ends 2026-08-24 — distinct field.
+- **Utilization (2026-05-02):** Continuously rented since 2026-04-05 under reserved contract C.34113802.
 
-The GPU business has been listed and verified since 2026-02-26 but has generated essentially zero rental revenue. This is a persistent pattern and may indicate a competitive pricing problem or marketplace visibility issue. Pricing analysis against comparable RTX 5090 listings has not been completed.
+The GPU business hit profitable utilization in April 2026 once the reserved-contract renter signed up. Long-term reserved pricing ($0.20/hr realized) is below the listed on-demand rate ($0.30) but covers more than the marginal power cost; net positive contribution to Solar Inference LLC revenue.
 
 ## 2025 tax filing status
 
@@ -140,6 +139,11 @@ Full details in [[TAXES]]. Summary:
 - 2026-04-06: Tax package sent to CPA
 - 2026-04-07: Berman Home Systems wifi deposit signed
 - 2026-04-09: Initial deep profile page created from Gmail+Calendar harvest
+
+## Anthropic shares — held personally, not by SI (2026-05-03)
+
+> [!note] Family Anthropic-share holdings tracked separately
+> Two private-secondary Anthropic positions exist (EquityZen Series 13, $105K cost basis 2025-02-12, in Emmett's name; Hiive HII Anthropic-01, 900 shares purchased 2025-12-24 from Alton Oliver Sartor's Schwab with a 300/300/300 family MOU). Both are currently held **outside** Solar Inference LLC. SI shared workspace tracker at `business/solar-inference/anthropic-shares/`. Canonical reference + decision considerations at [[reference_anthropic_shares]]. Default posture: keep personal until CPA opinion on §721(b) investment-company risk and active-business posture for the 2026 ITC case.
 
 ## Latest from gather (2026-04-29)
 

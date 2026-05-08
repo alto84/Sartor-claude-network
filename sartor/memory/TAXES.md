@@ -1,17 +1,17 @@
 ---
 type: domain
 entity: TAXES
-updated: 2026-04-19
-updated_by: autodream
-last_verified: 2026-04-12
+updated: 2026-05-03
+updated_by: anthropic-shares-intake (Rocinante Opus 4.7)
+last_verified: 2026-05-03
 status: active
 next_deadline: 2026-05-15
 next_review: 2026-05-15
 tags: [entity/tax, status/active, priority/p1, domain/career]
 aliases: [Tax, Taxes, Tax Prep, TY2025]
 related: [ALTON, FAMILY, BUSINESS]
+originSessionId: 20258412-9bde-4353-8ccf-54156884e952
 ---
-
 # Tax Preparation -- Tax Year 2025
 
 Three filing entities, three different deadlines. Jonathan Francis handles [[ALTON|Alton]] + [[FAMILY|Aneeta]]'s personal 1040 and Solar Inference LLC's 1065; Sante Total 990-N is handled separately by Alton.
@@ -125,10 +125,36 @@ Not relevant for the TY2025 return but worth tracking:
 - **ITC deadline (in service):** Before July 4, 2026
 - **LLC must own solar system before in-service date** (currently contracted in personal name)
 
+## Liquidity-event tax estimates (NJ resident, MFJ, top brackets)
+
+Rule-of-thumb effective tax rates for **realized long-term capital gains** when Alton + Aneeta are NJ residents filing MFJ. Use these to set aside cash on any large LTCG event (Anthropic IPO via [[reference_anthropic_shares]], future Solar Inference exit, RSU sales, secondary share sales, etc). Confirm with Jonathan Francis in the actual realization year because brackets shift with income.
+
+| Component | Rate | When it applies |
+|---|---|---|
+| Federal LTCG (held > 1 year) | **15% – 20%** | 20% applies once MFJ taxable income exceeds ~$583K (2025); 15% below. A large Anthropic gain almost certainly pushes them into 20%. |
+| Federal Net Investment Income Tax (NIIT) | **3.8%** | Always — they're well above the $250K MFJ MAGI threshold. |
+| NJ state income tax on capital gains | **8.97% – 10.75%** | NJ taxes cap gains as ordinary income. 8.97% bracket covers MFJ income $500K-$1M; 10.75% above $1M. |
+| **Combined effective rate (LTCG)** | **~27.8% – 34.5%** | Use **~35% set-aside rule** for conservative planning on a large gain. |
+
+**Short-term capital gains** (held ≤ 1 year): replace the 15–20% federal LTCG with **federal ordinary rates up to 37%** + 3.8% NIIT + 8.97–10.75% NJ. Combined ~50%. Avoid short-term realization where possible.
+
+**No federal/state withholding on partnership distributions.** EquityZen, Hiive, and similar SPV/fund vehicles wire **gross pre-tax cash**. The K-1 lands the following spring; estimated taxes may be needed quarterly in the gain year to avoid underpayment penalties (Form 1040-ES).
+
+**Offsets to discuss with CPA in the realization year:**
+- Solar Inference LLC operating losses (2025 baseline ~$2K each via K-1; future years could be larger if GPU/R&D activity scales)
+- Capital-loss harvesting in the same year
+- 85 Stonebridge / 185 Davis depreciation timing
+- 2026 ITC + bonus-depreciation carryforwards if not fully usable in 2026
+
+**Concrete worked example (illustrative only):** If $100K Anthropic basis grows to $500K and is realized in cash via SPV distribution: $400K gain × 34.5% ≈ **$138K total tax bill the following April**. Net retained from the wire: ~$262K (after-tax) on a $500K gross.
+
+**Reminder:** these are **resident** rates. If Alton or Aneeta domicile changes (e.g., move to a no-income-tax state) before realization, NJ portion drops out. Material savings; worth modeling if a large IPO is anticipated.
+
 ## Related
 - [[BUSINESS]] -- Solar Inference LLC and Sante Total entity details
 - [[FAMILY]] -- Aneeta's Neurvati transition and household context
 - [[ALTON]] -- Taxpayer profile
+- [[reference_anthropic_shares]] -- the immediate driver for these estimates
 - `work/taxes/` -- Detailed working docs per filing entity
 
 ## History

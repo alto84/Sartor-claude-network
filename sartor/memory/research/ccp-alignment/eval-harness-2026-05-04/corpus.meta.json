@@ -1,0 +1,120 @@
+{
+  "version": "v1",
+  "n_examples": 46,
+  "n_chars_total": 266075,
+  "bucket_counts": {
+    "HOUSEHOLD-CONSTITUTION": 26,
+    "OPERATING-AGREEMENT": 1,
+    "feedback": 19
+  },
+  "include_daily": false,
+  "daily_n": 0,
+  "inputs": [
+    {
+      "path": "sartor/memory/reference/HOUSEHOLD-CONSTITUTION.md",
+      "sha256_16": "8ff264348182ff31",
+      "bytes": 171456
+    },
+    {
+      "path": "sartor/memory/reference/OPERATING-AGREEMENT.md",
+      "sha256_16": "fae6f6422f1a26a7",
+      "bytes": 36777
+    },
+    {
+      "path": "sartor/memory/feedback/artifact-vs-fact-not-found.md",
+      "sha256_16": "ee0998e8557bbc06",
+      "bytes": 4038
+    },
+    {
+      "path": "sartor/memory/feedback/awareness-as-duty.md",
+      "sha256_16": "d3768f6f95e64396",
+      "bytes": 3235
+    },
+    {
+      "path": "sartor/memory/feedback/completeness-principle.md",
+      "sha256_16": "bce06f0ef90df629",
+      "bytes": 4159
+    },
+    {
+      "path": "sartor/memory/feedback/federation-grep-before-delegation.md",
+      "sha256_16": "90c72878f10e005e",
+      "bytes": 3831
+    },
+    {
+      "path": "sartor/memory/feedback/feedback_agent_bypass.md",
+      "sha256_16": "d23f041ae7203d2f",
+      "bytes": 1410
+    },
+    {
+      "path": "sartor/memory/feedback/feedback_memory_conventions.md",
+      "sha256_16": "09c821e4482ee373",
+      "bytes": 2018
+    },
+    {
+      "path": "sartor/memory/feedback/feedback_no_permissions.md",
+      "sha256_16": "0ea1eeff129efff2",
+      "bytes": 564
+    },
+    {
+      "path": "sartor/memory/feedback/feedback_objective_level_delegation.md",
+      "sha256_16": "afbbcf061302c694",
+      "bytes": 3434
+    },
+    {
+      "path": "sartor/memory/feedback/feedback_permissions_fix.md",
+      "sha256_16": "79a264b99ae63542",
+      "bytes": 1429
+    },
+    {
+      "path": "sartor/memory/feedback/feedback_prefer_subagents.md",
+      "sha256_16": "7993806447c7611c",
+      "bytes": 1689
+    },
+    {
+      "path": "sartor/memory/feedback/feedback_preserve_frontmatter.md",
+      "sha256_16": "4b5d80689e55b53b",
+      "bytes": 2815
+    },
+    {
+      "path": "sartor/memory/feedback/feedback_pricing_autonomy.md",
+      "sha256_16": "6ebf65c6844b3d73",
+      "bytes": 5826
+    },
+    {
+      "path": "sartor/memory/feedback/feedback_protected_paths.md",
+      "sha256_16": "8022bc175ab2f3c3",
+      "bytes": 1448
+    },
+    {
+      "path": "sartor/memory/feedback/gather-triage-2026-04-16.md",
+      "sha256_16": "1952567065fd2105",
+      "bytes": 3275
+    },
+    {
+      "path": "sartor/memory/feedback/proactive-error-cleanup.md",
+      "sha256_16": "2869b20b03d69488",
+      "bytes": 2174
+    },
+    {
+      "path": "sartor/memory/feedback/prosecutorial-discount-on-constitutional-reframes.md",
+      "sha256_16": "9d5c7158d54d8a44",
+      "bytes": 2422
+    },
+    {
+      "path": "sartor/memory/feedback/search-memory-first.md",
+      "sha256_16": "bdedce70e8dc5e6a",
+      "bytes": 3561
+    },
+    {
+      "path": "sartor/memory/feedback/subagent-scope-discipline.md",
+      "sha256_16": "344ddaba8dfbc92f",
+      "bytes": 3485
+    },
+    {
+      "path": "sartor/memory/feedback/trust-but-verify-subagent-reports.md",
+      "sha256_16": "b97651c1c76a47f0",
+      "bytes": 4100
+    }
+  ],
+  "out_path": "/home/alton/experiments/2026-05-04-finetune-loyalty/corpus/corpus.jsonl"
+}
