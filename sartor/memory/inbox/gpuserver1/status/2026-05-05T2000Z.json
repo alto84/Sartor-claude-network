@@ -1,0 +1,8 @@
+{
+  "ts": "2026-05-05T20:00:07+00:00",
+  "script": "gather_mirror.sh",
+  "pull_ok": true,
+  "gpu_temp_c": "43",
+  "disk_home_pct": "41",
+  "vastai_machines_raw": "failed with error 500: Something went wrong on the server\n"
+}
