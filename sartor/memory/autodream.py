@@ -575,8 +575,21 @@ def _extract_file_summary(path):
     except OSError:
         return "(unreadable)"
 
-    for line in content.splitlines():
+    lines = content.splitlines()
+    in_frontmatter = False
+    saw_frontmatter_open = False
+    for line in lines:
         stripped = line.strip()
+        if stripped == "---":
+            if not saw_frontmatter_open:
+                saw_frontmatter_open = True
+                in_frontmatter = True
+                continue
+            if in_frontmatter:
+                in_frontmatter = False
+                continue
+        if in_frontmatter:
+            continue
         if not stripped:
             continue
         # Skip main heading
