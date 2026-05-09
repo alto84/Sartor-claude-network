@@ -1,0 +1,155 @@
+# Sartor WiFi client priority registry -single source of truth for Tier-A
+# observability + alerting (sartor/memory/wifi/wifi-health-monitor.py).
+#
+# Purpose
+#   The monitor evaluates the same wireless metrics on every client every 15
+#   minutes. The thresholds it applies are NOT one-size-fits-all. A 3% retry
+#   rate is fine on a Sonos speaker; on Aneeta's ICU work laptop during a
+#   meeting it is a real harm. This file maps each known client to a priority
+#   tier; the monitor reads thresholds out of a tier table keyed by that
+#   priority.
+#
+# Priority tiers (alert thresholds defined in the monitor)
+#
+#   critical     Work-laptop class. Tightest thresholds.
+#                signal < -65 dB | retry > 3% | phy < 200 Mbps |
+#                satisfaction < 95 | -3 dB drop run-over-run.
+#                Any alert here is "send Alton a Calendar ping" worthy.
+#
+#   high         Phones for primary-principals. People mid-call notice.
+#                signal < -68 dB | retry > 5% | phy < 100 Mbps |
+#                satisfaction < 90 | -5 dB drop.
+#
+#   normal       Family laptops, smart TV. Annoying but not urgent.
+#                signal < -72 dB | retry > 8% | phy < 50 Mbps |
+#                satisfaction < 85 | -8 dB drop.
+#
+#   best_effort  Sonos speakers, smart-home sensors. Static-tolerant.
+#                signal < -78 dB | retry > 15% | phy < 20 Mbps |
+#                satisfaction < 70 | -10 dB drop.
+#
+# When this file gets edited
+#   - A new device joins the household (add a stanza)
+#   - A device's role changes (Vayu's MSI laptop becomes the kid-school laptop)
+#   - The "(unknown HP)" gets identified -update hostname + owner + notes
+#   - A device retires (delete the stanza, do not orphan)
+#
+# Editing rules
+#   - mac is the primary key (lowercase, colon-delimited)
+#   - hostname mirrors what the UniFi controller surfaces; "(unknown ...)" is fine
+#   - owner identifies the human responsible (so we know who to ping)
+#   - priority must be one of the four tiers above
+#   - notes are free-form; capture incident history and rationale here
+#   - any client NOT listed here defaults to `normal` in the monitor
+#
+# Provenance
+#   Seeded 2026-05-09 from the four 2026-05-09 incident probes in
+#   sartor/memory/projects/codebase-cleanup-2026-05-08/. Live snapshot
+#   at seed time confirmed NEURV-PF5B9D8L at retry%=10.6 and AZAPXLGM0P85E7
+#   at retry%=6.3 -both above their critical 3% thresholds, which is the
+#   incident that motivated this whole observation tier.
+
+schema_version: "1.0"
+updated: 2026-05-09
+updated_by: "Rocinante Opus 4.7 (Tier-A WiFi observability build)"
+
+clients:
+
+  - mac: 00:72:ee:00:bd:a6
+    hostname: NEURV-PF5B9D8L
+    owner: Aneeta
+    priority: critical
+    notes: |
+      Aneeta's Neurvati work laptop. ICU + leadership work; video calls;
+      degradation during meetings is a real harm. Tightest thresholds.
+      2026-05-09 incident snapshot: retry%=10.6, signal=-62 dB, sat=100,
+      AP=Aneeta's Office. Retry rate already past the 3% critical line.
+
+  - mac: 8c:3b:4a:56:c5:6c
+    hostname: AZAPXLGM0P85E7
+    owner: Alton
+    priority: critical
+    notes: |
+      Alton's AstraZeneca work laptop. Same posture as NEURV-PF5B9D8L.
+      2026-05-09 incident snapshot: retry%=6.3, signal=-43 dB, sat=100,
+      AP=Alton's Office. Strong signal, but retry% above 3% critical
+      threshold -worth flagging on the next run.
+
+  - mac: 0a:b2:44:90:26:7b
+    hostname: Pixel-10-Pro-Fold
+    owner: Alton
+    priority: high
+    notes: |
+      Alton's phone. Voice + video calls; family logistics.
+
+  - mac: 52:de:e5:c1:33:5e
+    hostname: Pixel-8
+    owner: Aneeta
+    priority: high
+    notes: |
+      Aneeta's phone. 2026-05-09 snapshot: signal=-83 dB on Aneeta's Office
+      AP -that is poor; check whether she's in the basement or far corner.
+
+  - mac: ac:19:8e:dd:29:e4
+    hostname: VayuMSILaptop
+    owner: Vayu
+    priority: normal
+    notes: |
+      Vayu's gaming laptop. Heavy downloads expected.
+      2026-05-09 bottleneck investigation found 5 GHz @ 40 MHz width clamp
+      + sticky-client to Basement AP. Tier B candidate: widen Basement 5 GHz
+      to 80 MHz, possibly steer to a closer AP.
+
+  - mac: 94:8c:d7:80:a3:47
+    hostname: "(unknown HP)"
+    owner: probably-MKA-school
+    priority: normal
+    notes: |
+      HP device on Aneeta's Office WiFi for 6.8d, 0.3 MB total -almost
+      certainly a kid's school laptop. NEEDS ALTON CONFIRMATION before
+      finalizing owner/priority. If MKA school laptop, normal is correct.
+      If it turns out to be a guest device, downgrade to best_effort.
+
+  - mac: 20:17:42:b0:26:52
+    hostname: LGwebOSTV
+    owner: household
+    priority: normal
+    notes: |
+      LG smart TV (livingroom). Streaming buffering is annoying;
+      household-shared device; normal tier.
+
+  - mac: 34:7e:5c:0b:dd:aa
+    hostname: SonosZP-1
+    owner: household
+    priority: best_effort
+    notes: Sonos speaker. Static-tolerant.
+
+  - mac: 34:7e:5c:0b:dd:ad
+    hostname: SonosZP-2
+    owner: household
+    priority: best_effort
+    notes: Sonos speaker.
+
+  - mac: 34:7e:5c:0b:d0:60
+    hostname: SonosZP-3
+    owner: household
+    priority: best_effort
+    notes: Sonos speaker.
+
+  - mac: 34:7e:5c:0c:63:5d
+    hostname: SonosZP-4
+    owner: household
+    priority: best_effort
+    notes: Sonos speaker.
+
+  - mac: 34:7e:5c:0b:14:23
+    hostname: SonosZP-5
+    owner: household
+    priority: best_effort
+    notes: Sonos speaker.
+
+  - mac: 34:7e:5c:0b:dd:a1
+    hostname: SonosZP-6
+    owner: household
+    priority: best_effort
+    notes: Sonos speaker.
