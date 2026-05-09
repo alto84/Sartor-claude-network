@@ -65,6 +65,12 @@ ap-authkeys-*.json
 *.unf
 firmware.json.bak-*
 
+# Tier-A WiFi health monitor state cache. The reports themselves
+# (wifi-health-<UTC>.md) are tracked because they are the audit trail; this
+# JSON cache is high-churn (rewritten every 15 minutes) and only used to
+# compute trend deltas + AP CU streaks across runs.
+sartor/memory/inbox/rocinante/.wifi-health-state.json
+
 # Source-document INDEX (added 2026-05-06 by inspector-source-docs during memory-system-uplift).
 # Contains 3,211 paths to scattered local PDFs/statements/contracts including
 # 747 AstraZeneca work-product paths (~23%). Indexing was authorized by Alton;
