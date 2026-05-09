@@ -4,6 +4,7 @@ description: Canonical record of every scheduled job in the Sartor fleet — Win
 type: reference
 updated: 2026-05-09
 originSessionId: d73d3437-8b28-4e31-bbe2-14e776bba51c
+last_change: "Tier-A WiFi health monitor task spec added (NOT registered yet)"
 ---
 # Sartor scheduled-task inventory
 
@@ -22,6 +23,7 @@ Verify with: `Get-ScheduledTask | Where-Object {$_.TaskName -like "Sartor*" -or 
 | `Sartor Memory Mirror` | nightly 3:30 AM ET | `scripts/win-tasks/sartor-mirror-to-github.ps1` — pushes rtxserver bare repo `main` to GitHub mirror | `C:\Users\alto8\backups\sartor-mirror.log` | DR mirror only; peers never push to GitHub directly |
 | `Sartor Hours Log` | nightly 11:55 PM ET | `scripts/hours-log-extract.py` — material-participation hours tracker (§469) writing `sartor/memory/business/hours-log/all-hours.csv` | `C:\Users\alto8\backups\hours-log.log` | union-of-intervals dedup across concurrent sessions; gaps <30 min count active |
 | `Sartor Registry Drift Check` *(spec only - not yet registered)* | every 4 hr | `scripts/win-tasks/registry-drift-check.cmd` -> `python sartor/memory/machines/check-registry.py` - pings each machine in REGISTRY.yaml, attempts SSH liveness, writes drift report to `inbox/rocinante/registry-drift-<UTC>.md` | `C:\Users\alto8\backups\registry-drift-check.log` | Tier 4 of IP-graceful-reassignment architecture (Tier 3 = REGISTRY.yaml). Exits non-zero on STALE/UNREACHABLE so cron-fail surfaces. Awaiting Alton greenlight to register; one-line `Set-ScheduledTask` in History below. |
+| `Sartor WiFi Health Monitor` *(spec only - not yet registered)* | every 15 min | `scripts/win-tasks/wifi-health-monitor.cmd` -> `python sartor/memory/wifi/wifi-health-monitor.py` - read-only UniFi survey of every wireless client + AP radio with priority-aware thresholds from `sartor/memory/wifi/CLIENT-PRIORITIES.yaml`; writes `inbox/rocinante/wifi-health-<UTC>.md` | `C:\Users\alto8\backups\wifi-health-monitor.log` | Tier-A of active WiFi management. Critical-tier clients (Aneeta Neurvati laptop, Alton AZ laptop) get tightest thresholds; Sonos best_effort. Exits 0/1/2 (green / alerts / controller-unreachable). Awaiting Alton greenlight to register; runbook at `scripts/win-tasks/wifi-health-monitor.README.md`. |
 | `UniFi Daily Backup` | daily 3:00 AM ET | `scripts/win-tasks/unifi-daily-backup.ps1` — pulls `.unf` from local UniFi controller, SCPs off-site to rtxserver `/home/alton/sartor-network-backups/` | `C:\Users\alto8\backups\unifi\backup-log.txt` | local copies pruned >30d; rtxserver copies kept indefinitely |
 | `SartorMorningBriefing` | daily 6:30 AM ET | `scripts/morning-briefing-run.cmd` → invokes morning-briefing skill | (Claude session log) | drives the cross-domain daily briefing |
 | `SartorCuratorPass` | 7:30 AM + 7:30 PM ET | `scripts/curator-pass-run.cmd` → invokes memory-curator agent | (Claude session log) | drains inbox proposals, updates USER.md + MEMORY.md |
@@ -112,6 +114,7 @@ System timers are OS-managed and not in this inventory.
 
 ## History
 
+- 2026-05-09 (later): `Sartor WiFi Health Monitor` task spec added (NOT registered yet; awaiting Alton greenlight). Tier-A of the active WiFi management architecture. Wrapper at `scripts/win-tasks/wifi-health-monitor.cmd`, monitor at `sartor/memory/wifi/wifi-health-monitor.py`, priority registry at `sartor/memory/wifi/CLIENT-PRIORITIES.yaml`. Verified by manual run: 6 wireless clients surveyed, 22 AP radios, 5 alerts on first run + 7 alerts on second run after CU streak persistence kicked in. Both critical-tier laptops (NEURV-PF5B9D8L, AZAPXLGM0P85E7) flagged with retry%>3% (the incident that motivated the build). Registration runbook at `scripts/win-tasks/wifi-health-monitor.README.md`.
 - 2026-05-09: `Sartor Registry Drift Check` task spec added (NOT registered yet; awaiting Alton greenlight). Tier 4 of the IP-graceful-reassignment architecture built tonight after the gpuserver1 .100 -> .199 DHCP-reassignment incident. Wrapper at `scripts/win-tasks/registry-drift-check.cmd`, detector at `sartor/memory/machines/check-registry.py`, registry source at `sartor/memory/machines/REGISTRY.yaml`. Verified end-to-end against the live fleet (3 OK, ping 1 ms each, ssh OK on both peers). To register when Alton greenlights:
   ```powershell
   $action = New-ScheduledTaskAction -Execute 'wscript.exe' -Argument '"C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\run-hidden.vbs" "C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\registry-drift-check.cmd"'
