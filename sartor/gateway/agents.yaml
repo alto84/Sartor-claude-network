@@ -20,7 +20,7 @@ machines:
       secondary_resolution: 1920x1080
     paths:
       chrome: 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe'
-      chrome_tools: 'C:\Users\alto8\chrome-tools\'
+      chrome_tools: 'C:\Users\alto8\Sartor-claude-network\tools\chrome-tools\'
       project: 'C:\Users\alto8\Sartor-claude-network\'
 
   gpuserver1:

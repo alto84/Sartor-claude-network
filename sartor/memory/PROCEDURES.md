@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: PROCEDURES
-updated: 2026-04-12
+updated: 2026-05-08
 updated_by: Claude (hub-refresher)
 last_verified: 2026-04-12
 status: active
@@ -16,7 +16,7 @@ related: [MACHINES, SELF, MULTI-MACHINE-MEMORY, reference/OPERATING-AGREEMENT, r
 - SSH to gpuserver1: ssh alton@192.168.1.100
 - Git push must happen from Rocinante (has credentials). gpuserver1 **cannot** push to GitHub; it is inbox-write-only per the [[reference/OPERATING-AGREEMENT|Operating Agreement]].
 - PowerShell in Claude Code: use .ps1 script files, not inline $variables
-- Chrome CDP toolkit on Rocinante at C:\Users\alto8\chrome-tools\
+- Chrome CDP toolkit on Rocinante at C:\Users\alto8\Sartor-claude-network\tools\chrome-tools\
 - Inter-machine memory writes go through the **inbox pattern** — gpuserver1 writes YAML-fronted proposals to `sartor/memory/inbox/gpuserver1/`, Rocinante curator drains them nightly. See [[MULTI-MACHINE-MEMORY]].
 - Before reading memory, pull. Before writing memory from Rocinante, pull then push after. Never have gpuserver1 touch git directly.
 
@@ -34,7 +34,7 @@ ssh alton@192.168.1.100
 Start-Process "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" -ArgumentList "--remote-debugging-port=9223", "--remote-allow-origins=*", "--user-data-dir=C:\Users\alto8\chrome-automation-profile", "--no-first-run"
 ```
 
-**CDP Toolkit scripts** (C:\Users\alto8\chrome-tools\):
+**CDP Toolkit scripts** (C:\Users\alto8\Sartor-claude-network\tools\chrome-tools\):
 - cdp-common.ps1 - Shared WebSocket CDP client functions
 - cdp-list-tabs.ps1 - List open tabs
 - cdp-navigate.ps1 - Navigate to URL
@@ -105,7 +105,7 @@ Use forward slashes in -File paths. More PowerShell gotchas are tracked in [[LEA
 - Extension connected via named pipe: \.\pipe\claude-mcp-browser-bridge-alton
 - Protocol: 4-byte LE uint32 length + UTF-8 JSON
 - Method: execute_tool (not standard MCP methods)
-- Test: C:\Users\alto8\chrome-tools\test-mcp-simple.ps1
+- Test: C:\Users\alto8\Sartor-claude-network\tools\chrome-tools\test-mcp-simple.ps1
 
 ## Open Questions
 - Dashboard authentication: MERIDIAN is LAN-only now (no auth). Phase 3 concern.

@@ -295,7 +295,7 @@ Defined in `.claude/scheduled-tasks/`:
 - **Shell:** Bash via Claude Code
 - **Chrome:** `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe` v144
 - **Chrome automation:** Port 9223, profile at `C:\Users\alto8\chrome-automation-profile\`
-- **Chrome tools:** `C:\Users\alto8\chrome-tools\` (CDP toolkit)
+- **Chrome tools:** `C:\Users\alto8\Sartor-claude-network\tools\chrome-tools\` (CDP toolkit)
 - **Project repo:** `C:\Users\alto8\Sartor-claude-network\`
 - **GitHub:** `https://github.com/alto84/`
 

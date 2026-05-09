@@ -30,7 +30,7 @@ related: [BUSINESS, PROCEDURES, SELF, MULTI-MACHINE-MEMORY, machines/gpuserver1/
 - **Username:** alton (Windows user), alto8 (profile path)
 - **Chrome:** v144 at C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
 - **Claude Code:** Installed and active
-- **CDP Toolkit:** C:\Users\alto8\chrome-tools\ (cdp-*.ps1 scripts, screenshot, click, type)
+- **CDP Toolkit:** C:\Users\alto8\Sartor-claude-network\tools\chrome-tools\ (cdp-*.ps1 scripts, screenshot, click, type)
 - **Chrome Automation Profile:** C:\Users\alto8\chrome-automation-profile\ (CDP port 9223)
 - **Git:** Has credentials stored locally, must be used for pushing to GitHub
 - **Claude in Chrome:** MCP extension connected via named pipe \.\pipe\claude-mcp-browser-bridge-alton

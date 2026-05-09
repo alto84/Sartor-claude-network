@@ -4,7 +4,7 @@ description: Topical lookup index for the WHOLE Sartor wiki — federated across
 type: index
 status: living-document
 created: 2026-05-02
-updated: 2026-05-02-evening
+updated: 2026-05-08
 created_by: cartographer (memory-agents team)
 tags: [reference/index, memory/federated]
 related: [search-memory-first, artifact-vs-fact-not-found, ALTON, FAMILY, BUSINESS, TAXES, MACHINES, google-drive-catalog-2026-05-02, rtxserver-vastai-watch]
@@ -108,7 +108,7 @@ Mortgage servicer for 85 Stonebridge primary mortgage (post mid-2025 transfer) a
 - `work/taxes/reference/document-inventory.md` — TY2025 1098s docs 08 + 10
 
 ### Chrome / CDP toolkit
-Browser automation. Port 9223, profile `C:\Users\alto8\chrome-automation-profile\`, scripts `C:\Users\alto8\chrome-tools\`.
+Browser automation. Port 9223, profile `C:\Users\alto8\chrome-automation-profile\`, scripts `C:\Users\alto8\Sartor-claude-network\tools\chrome-tools\`.
 - `CLAUDE.md` Infrastructure Reference → Rocinante
 - `.claude/skills/chrome-automation/`
 - `sartor/memory/MACHINES.md`

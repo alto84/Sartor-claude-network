@@ -1,7 +1,7 @@
 # Take a screenshot of a tab via CDP
 param(
     [Parameter(Mandatory=$false)][string]$TabId,
-    [Parameter(Mandatory=$false)][string]$Output = "C:\Users\alto8\chrome-tools\cdp_screenshot.png",
+    [Parameter(Mandatory=$false)][string]$Output = "C:\Users\alto8\Sartor-claude-network\tools\chrome-tools\cdp_screenshot.png",
     [Parameter(Mandatory=$false)][string]$Format = "png",
     [Parameter(Mandatory=$false)][int]$Quality = 80
 )

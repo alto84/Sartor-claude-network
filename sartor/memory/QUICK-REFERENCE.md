@@ -1,7 +1,7 @@
 ---
 type: reference
 entity: QUICK-REFERENCE
-updated: 2026-04-07
+updated: 2026-05-08
 updated_by: Claude
 status: active
 tags: [meta/reference]
@@ -14,7 +14,7 @@ related: [MACHINES, PROCEDURES]
 
 ## Rocinante (Primary Workstation)
 - **Chrome:** `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe` v144
-- **Chrome tools:** `C:\Users\alto8\chrome-tools\` (CDP toolkit, screenshots)
+- **Chrome tools:** `C:\Users\alto8\Sartor-claude-network\tools\chrome-tools\` (CDP toolkit, screenshots)
 - **Automation Chrome:** Port 9223, profile at `C:\Users\alto8\chrome-automation-profile\`
 - **Claude in Chrome MCP:** Named pipe `\\.\pipe\claude-mcp-browser-bridge-alton`
 

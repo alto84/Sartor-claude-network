@@ -49,7 +49,7 @@ WS_URL=$(curl -s http://localhost:9223/json | jq -r '.[0].webSocketDebuggerUrl')
 
 ## CDP Toolkit Scripts (PowerShell - Windows)
 
-Located in `chrome-tools/` directory:
+Located in `tools/chrome-tools/` directory (relative to repo root):
 
 | Script | Purpose | Key Params |
 |--------|---------|------------|
