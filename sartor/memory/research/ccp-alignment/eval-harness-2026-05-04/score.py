@@ -229,7 +229,10 @@ def main() -> int:
     ap.add_argument("--out", required=True, help="output JSON path")
     ap.add_argument("--system-prompt-file", default=None,
                     help="optional file with a system prompt to prepend")
-    ap.add_argument("--max-new-tokens", type=int, default=512)
+    # 2026-05-09 wake-10: bumped 512 -> 1024 to handle the verbose-CoT-eats-answer
+    # pattern documented in the May-4 honest-accounting + wake-2 v0.5 LoRA findings.
+    # Prior runs at 512 remain canonical for backwards-comparison; new runs use 1024.
+    ap.add_argument("--max-new-tokens", type=int, default=1024)
     ap.add_argument("--score-only", action="store_true",
                     help="skip generation; subject must be file:<path>")
     ap.add_argument("--limit", type=int, default=0,
