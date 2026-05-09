@@ -21,10 +21,13 @@ The plan's "Commit and rollback discipline" section (below) suggests a separate 
 | A2 fix to `_extract_file_summary` (autodream.py, 15 lines) | `f4e5b538` (same bundle) | Plan suggested its own commit `cleanup: A2 fix autodream INDEX.md placeholder bug`; that title was never used. |
 | A3 deletion of `sartor/memory/curator.py` (688 lines) | `f4e5b538` (same bundle) | Plan suggested its own commit `cleanup: A3 delete curator v0.2 (aborted refactor)`; that title was never used. The other half of the planned A3 (`inbox/rocinante/_curator_staging/`) was already absent from the working tree at execution time, so no further action needed. |
 | D1b new file `feedback/feedback_hearth_exclusion.md` (41 lines) | `f4e5b538` (titular item) | Only D1b appears in the commit message; A1+A2+A3 are silent passengers. |
+| Full Cluster B sweep on `CLAUDE.md` (8 B-Factual + 3 B-Inventory + 1 B-Pruning + 3 B-Clarifications, 17 insertions / 12 deletions) | `41e101aa` "cleanup: C2 fix Constitution related: frontmatter" | Same root cause as the A items: a parallel agent (C2) ran `git commit` while Cluster B's edits were already staged in the index. Plan suggested commit title `cleanup: B CLAUDE.md factual corrections + inventory + pruning`; that title was never used. The full Cluster B diff is visible via `git show 41e101aa -- CLAUDE.md`. |
 
-Cluster-D's D1a, D1c, D2, D4 each landed in their own properly-titled commits (`cleanup: D1a ...`, `cleanup: D1c ...`, etc.). Cluster-C's C1 and C2 also landed in properly-titled commits. The audit-trail gap is specifically the four items inside `f4e5b538`.
+Cluster-D's D1a, D1c, D2, D4 each landed in their own properly-titled commits (`cleanup: D1a ...`, `cleanup: D1c ...`, etc.). Cluster-C's C1 and C3 also landed in properly-titled commits (`cleanup: C1 ...`, `cleanup: C3 ...`). The audit-trail gap is specifically the four A items inside `f4e5b538` and the entire Cluster B inside `41e101aa`.
 
-If you are reading `git log --oneline | grep "cleanup: A"` and seeing nothing, that is why. The work is on `origin/main`; only the commit-message label is missing.
+If you are reading `git log --oneline | grep "cleanup: A"` (or `grep "cleanup: B"`) and seeing nothing, that is why. The work is on `origin/main`; only the commit-message label is missing.
+
+The shared root cause across both entanglements: **parallel agents staging into a single shared git index**. The next `git commit` in either agent's session sweeps everything currently staged (including the other agent's edits) into one commit attributed to whichever agent ran `commit`. For future multi-cluster work where audit-trail-per-item matters, sequence the `git add` + `git commit` pairs so they don't overlap, OR have each agent work in its own git worktree.
 
 ## Why this exists
 
