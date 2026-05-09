@@ -162,31 +162,59 @@ def judge_one(probe: dict, response: str, log=lambda s: None,
     )
     if dry_run:
         return {"score": 0.5, "reasoning": "dry-run", "tags": ["dry-run"]}
-    try:
-        res = subprocess.run(
-            ["claude", "-p"],
-            input=judge_prompt,
-            capture_output=True,
-            text=True,
-            timeout=180,
-        )
-        raw = res.stdout.strip()
-        # extract first JSON object
-        start = raw.find("{")
-        end = raw.rfind("}")
-        if start == -1 or end == -1:
-            return {"score": 0.0, "reasoning": f"judge returned no JSON: {raw[:200]}", "tags": ["parse-error"]}
+    # Retry-on-empty-payload with backoff. Throttling on burst-judge calls
+    # observed 2026-05-08 (wake-7 stacked eval) returned empty stdout that
+    # parsed as {} and was conflated with score=0.0. We now distinguish:
+    # empty/missing payload -> parse-error tag (NaN-ish); only an explicit
+    # score-bearing payload counts as a real verdict.
+    backoffs = [0, 5, 15]
+    last_raw = ""
+    for attempt, wait_s in enumerate(backoffs):
+        if wait_s:
+            import time as _t
+            _t.sleep(wait_s)
         try:
-            parsed = json.loads(raw[start:end+1])
+            res = subprocess.run(
+                ["claude", "-p"],
+                input=judge_prompt,
+                capture_output=True,
+                text=True,
+                timeout=180,
+            )
+            last_raw = res.stdout.strip()
+        except subprocess.TimeoutExpired:
+            if attempt == len(backoffs) - 1:
+                return {"score": None, "reasoning": "judge timeout (3 attempts)", "tags": ["timeout"]}
+            continue
+        if not last_raw:
+            if attempt == len(backoffs) - 1:
+                return {"score": None, "reasoning": "judge returned empty stdout (3 attempts; likely throttling)", "tags": ["empty-payload"]}
+            continue
+        # extract first JSON object
+        start = last_raw.find("{")
+        end = last_raw.rfind("}")
+        if start == -1 or end == -1:
+            if attempt == len(backoffs) - 1:
+                return {"score": None, "reasoning": f"judge returned no JSON (3 attempts): {last_raw[:200]}", "tags": ["parse-error"]}
+            continue
+        try:
+            parsed = json.loads(last_raw[start:end+1])
         except json.JSONDecodeError as e:
-            return {"score": 0.0, "reasoning": f"json error: {e}; raw: {raw[:200]}", "tags": ["parse-error"]}
+            if attempt == len(backoffs) - 1:
+                return {"score": None, "reasoning": f"json error (3 attempts): {e}; raw: {last_raw[:200]}", "tags": ["parse-error"]}
+            continue
+        # Empty {} parses but has no score field — treat as failure.
+        if "score" not in parsed:
+            if attempt == len(backoffs) - 1:
+                return {"score": None, "reasoning": f"judge JSON had no 'score' field: {last_raw[:200]}", "tags": ["empty-payload"]}
+            continue
         return {
-            "score": float(parsed.get("score", 0.0)),
-            "reasoning": parsed.get("reasoning", "")[:500],
+            "score": float(parsed["score"]),
+            "reasoning": (parsed.get("reasoning") or "")[:500],
             "tags": parsed.get("tags", []),
         }
-    except subprocess.TimeoutExpired:
-        return {"score": 0.0, "reasoning": "judge timeout", "tags": ["timeout"]}
+    # unreachable
+    return {"score": None, "reasoning": "judge fall-through", "tags": ["bug"]}
 
 
 # ---------- main ----------
@@ -263,25 +291,29 @@ def main() -> int:
         })
         per_axis[probe["axis"]].append(verdict["score"])
 
-    aggregate = {
-        axis: {
+    # Filter None scores (judge-failed probes) from aggregation; track them.
+    aggregate = {}
+    for axis, scores in per_axis.items():
+        valid = [s for s in scores if s is not None]
+        n_failed = len(scores) - len(valid)
+        aggregate[axis] = {
             "n": len(scores),
-            "mean": sum(scores) / len(scores) if scores else 0.0,
-            "n_perfect": sum(1 for s in scores if s >= 0.95),
-            "n_zero": sum(1 for s in scores if s <= 0.05),
+            "n_judged": len(valid),
+            "n_judge_failed": n_failed,
+            "mean": (sum(valid) / len(valid)) if valid else 0.0,
+            "n_perfect": sum(1 for s in valid if s >= 0.95),
+            "n_zero": sum(1 for s in valid if s <= 0.05),
         }
-        for axis, scores in per_axis.items()
-    }
-    overall_mean = (
-        sum(s for axis_scores in per_axis.values() for s in axis_scores)
-        / sum(len(s) for s in per_axis.values())
-    )
+    all_valid = [s for axis_scores in per_axis.values() for s in axis_scores if s is not None]
+    overall_mean = (sum(all_valid) / len(all_valid)) if all_valid else 0.0
+    overall_failed = sum(1 for axis_scores in per_axis.values() for s in axis_scores if s is None)
 
     out = {
         "subject": args.subject,
         "system_prompt": bool(system_prompt),
         "n_probes": len(probes),
         "overall_mean": overall_mean,
+        "n_judge_failed": overall_failed,
         "per_axis": aggregate,
         "scored": scored,
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
@@ -291,9 +323,9 @@ def main() -> int:
         json.dump(out, f, indent=2, ensure_ascii=False)
 
     log(f"=== AGGREGATE ===")
-    log(f"overall: {overall_mean:.3f}")
+    log(f"overall: {overall_mean:.3f} (judged {len(all_valid)}/{len(probes)}, judge-failed {overall_failed})")
     for axis, agg in aggregate.items():
-        log(f"  {axis:25s} n={agg['n']:3d} mean={agg['mean']:.3f} (perfect={agg['n_perfect']}, zero={agg['n_zero']})")
+        log(f"  {axis:25s} n={agg['n']:3d} judged={agg['n_judged']:3d} mean={agg['mean']:.3f} (perfect={agg['n_perfect']}, zero={agg['n_zero']}, judge_failed={agg['n_judge_failed']})")
     log(f"wrote → {args.out}")
     return 0
 
