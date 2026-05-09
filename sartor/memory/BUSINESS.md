@@ -1,14 +1,14 @@
 ---
 type: domain
 entity: BUSINESS
-updated: 2026-04-18
-updated_by: Claude (wikilinks-implementer, gstack-port)
-last_verified: 2026-04-16
+updated: 2026-05-08
+updated_by: heloc-curation (Rocinante Opus 4.7 1M)
+last_verified: 2026-05-08
 status: active
-next_review: 2026-05-12
+next_review: 2026-05-22
 tags: [entity/llc, entity/nonprofit, domain/career]
 aliases: [Solar Inference, Sante Total, Business]
-related: [ALTON, TAXES, PROJECTS, ASTRAZENECA, solar-inference, sante-total, az-career, business/rental-operations, business/solar-inference]
+related: [ALTON, TAXES, PROJECTS, ASTRAZENECA, solar-inference, sante-total, az-career, business/rental-operations, business/solar-inference, reference_solar_project, reference_heloc]
 ---
 
 > [!note] Sub-pages added 2026-04-09
@@ -97,18 +97,19 @@ See [[TAXES]] for deductions, estimated payments, and filing details.
 ## Open Questions
 - Sante Total: IRS penalty abatement resolution?
 - Any IP considerations between AZ work and personal projects?
-- Why is GPU utilization zero? Needs pricing review vs. comparable RTX 5090 listings.
-- **[BLOCKER for Solar ITC] Solar contract is in Alton's personal name** — confirmed in 2026-04-06 CPA tax-package email. Must transfer to Solar Inference LLC before placed-in-service date (target: before July 4, 2026 ITC deadline) to capture ~$131K federal credit + ~$373K accelerated depreciation.
-- **Solar roof basis (canonical): $438,829** (Tesla/Lucent signed contract, 2025-09-03). The "~$450k" figure in Alton's 2026-04-14 CPA email was a rough verbal approximation; CPA noted "we will work with whatever the actual depreciable basis turns out to be once invoiced." Canonical figure confirmed 2026-04-19.
+- GPU utilization is no longer zero (continuously rented since 2026-04-05 under reserved contract C.34113802); CLOSED.
+- **[BLOCKER for Solar ITC] Solar contract is in Alton's personal name** — confirmed in 2026-04-06 CPA tax-package email. Must transfer to Solar Inference LLC before placed-in-service date (target: before July 4, 2026 ITC deadline) to capture ~$131K federal credit + ~$373K accelerated depreciation. **Loan is also in personal name (joint Alton + Aneeta) at Climate First Bank; account ending 0641. Asset-only assignment to LLC is the likely structure — CPA call open.** See [[reference_solar_project]].
+- **Solar roof basis (canonical): $438,829** original contract (Tesla/Lucent signed 2025-09-03). May 2026 expanded scope adds an estimated **$95K–$170K** of work (2 Tesla Powerwalls, $17–18K wood deck, plaster siding, mortar, gutters, AC re-arrangement, etc.) — see [[reference_solar_project]] for the 12-item table and per-item routing (Climate First loan vs HELOC vs paid). The "~$450k" figure in Alton's 2026-04-14 CPA email was a rough verbal approximation predating the May 2026 expansion. **Decision item: roll additions into Climate First (re-underwrite) vs HELOC vs brokerage cash.** CPA call open on §48 ITC eligibility per item.
 
 ## Recent Events
 - 2026-04-04: Machine #52271 (gpuserver1) went offline (45 min inactive); **recovered** — no follow-up emails, confirmed transient outage. Status resolved per [[business/solar-inference]].
 - 2026-04-07: Berman Home Systems WiFi upgrade deposit signed (Dropbox Sign), install scheduled 2026-04-27 to 2026-04-29.
 - 2026-04-11: GPU rental price raised to $0.35/hr demand / $0.26/hr interruptible.
 - 2026-04-12: Operating Agreement ratified. gpuserver1 cron cleanup (15 → 4 active jobs). See [[reference/OPERATING-AGREEMENT|Operating Agreement]].
-- 2026-04-13: 85 Stonebridge mortgage detail surfaced via CPA tax-package email — primary mortgage transferred mid-2025 from Shellpoint to Cenlar; new HELOC opened through Cenlar. Three 1098s on file. 2025 Montclair property tax paid: $62,187.49.
+- 2026-04-13: 85 Stonebridge mortgage detail surfaced via CPA tax-package email — primary mortgage transferred mid-2025 from Shellpoint to Cenlar; new HELOC opened with **Georgia's Own Credit Union (originated by CrossCountry Mortgage, serviced by Cenlar)**, account ending 7887, $527,000 credit limit, $506K drawn at 2025-10-23 closing — see [[reference_heloc]]. Three 1098s on file. 2025 Montclair property tax paid: $62,187.49.
 - 2026-04-14: CPA confirmed 2025 LLC pass-through of $37k workstation hardware capex; $438,829 solar roof contract basis flagged for 2026 ITC + bonus depreciation (Alton's verbal "~$450k" in email was approximate). CPA noted "We will pass through the 2025 stuff."
 - 2026-04-14: Sante Total received recurring PayPal donation from Michael Quigg ($250/month, annualized $3,000). Subscription I-UWGVA4LYX3V2 active; next payment 2026-05-14.
+- 2026-05-06: **Lucent CEO Steven Schwartz on-site engineering walk-through at 85 Stonebridge.** Produced a 12-item expanded-scope plan (Alton's 9 + Steven's 3 additions: snow guards, tree removal, driveway staging). Includes 2 Tesla Powerwalls (new — original contract was no-battery), wood deck $17–18K, mason work, plaster siding, gutters, AC re-arrangement, vent reloc, mortar, power washing, bathroom (separate vendor). Tree-removal item already CLOSED — American Tree Experts removed the 3 front trees in March 2026 (Steven was unaware). Estimated additional cost $95K–$170K. Open: contract-amendment paperwork with Lucent, Climate-First-vs-HELOC routing decision, CPA call on personal-vs-LLC + per-item §48 ITC eligibility. Next vendor visit Wednesday 2026-05-13 (Powerwash 9 AM + Santos mason 9:30 AM). See [[reference_solar_project]].
 
 ## Related
 - [[ASTRAZENECA]] - Detailed AZ safety AI context and career details
@@ -178,7 +179,7 @@ Stored at: `work/taxes/solar-inference-receipts/2026-04-12-workstation-purchase/
 > **Michael Quigg** — $250/month via PayPal subscription I-UWGVA4LYX3V2 (active). Annualized $3,000. Next payment 2026-05-14. Logged as ledger fact for Treasurer (Alton); donor PII not for external publication.
 
 > [!fact] 85 Stonebridge mortgage (TY2025)
-> Primary mortgage transferred mid-2025 from **Shellpoint to Cenlar**. New HELOC opened through Cenlar. 2025 Montclair property tax: **$62,187.49**. Three 1098s on file. See also [[TAXES]].
+> Primary mortgage transferred mid-2025 from **Shellpoint to Cenlar**. New HELOC opened with **Georgia's Own Credit Union** (originated by CrossCountry Mortgage, serviced by Cenlar), account ending 7887, $527,000 limit, $506K drawn at 2025-10-23 closing — canonical detail in [[reference_heloc]]. 2025 Montclair property tax: **$62,187.49**. Three 1098s on file. See also [[TAXES]].
 
 > [!fact] Newegg hardware deliveries 2026-04-14 to 2026-04-15
 > Workstation components arriving in waves. Order #408668499 delivered 4/14; #412968624 (GPUs) shipped 4/14; #408668519, partial #408668419, #412970644 delivered 4/15. Newegg sent install tips for "New Motherboard + CPU" 4/15. Receipts reconcile with the $37k workstation pass-through line. Build coordination is per [[machines/gpuserver1]] / [[MACHINES]].

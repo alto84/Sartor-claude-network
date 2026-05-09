@@ -2,13 +2,13 @@
 type: domain
 entity: solar-inference
 updated: 2026-05-08
-updated_by: merge-reconciliation (Rocinante Opus 4.7)
+updated_by: solar-project-curation (Rocinante Opus 4.7 1M)
 status: active
 priority: p1
-next_review: 2026-04-21
+next_review: 2026-05-22
 tags: [entity/llc, domain/career, status/active, priority/p1]
 aliases: [Solar Inference, Solar Inference LLC, SI LLC]
-related: [BUSINESS, TAXES, MACHINES, ALTON, FAMILY]
+related: [BUSINESS, TAXES, MACHINES, ALTON, FAMILY, reference_solar_project]
 originSessionId: 20258412-9bde-4353-8ccf-54156884e952
 ---
 # Solar Inference LLC
@@ -167,3 +167,18 @@ Full details in [[TAXES]]. Summary:
 
 > [!todo] ACTION_REQUIRED — reply to Steven at Lucent Energy
 > steven@lucent-energy.com is waiting on (1) name preference ("Alton") and (2) advancement of the 85 Stonebridge upgrade discussion. ITC deadline 2026-07-04 is 58 days away. This thread is the live path to placing the system in service. Reply promptly to maintain momentum.
+
+## 2026-05-08 expanded scope
+
+The 2026-05-06 site visit by Steven Schwartz (CEO, Lucent Energy Management) produced a 12-item expanded scope and a clean engineering plan. **Estimated additional work: $95K–$170K** beyond the original $438,829 contract. Two Tesla Powerwalls were added (original scope was no-battery). The required wood deck for nail-base racking is $17K–$18K. A mason (Santos) and Powerwash company are scheduled for site survey **Wednesday 2026-05-13** (9:00 AM and 9:30 AM respectively); Steven handles the walk-through.
+
+**Tree-removal loop closed:** Steven flagged "3 trees on the front of the home need to be removed" in his May 7 reply. Those trees were already removed by American Tree Experts in **March 2026**, six weeks before the meeting. Steven was apparently unaware. Reply to him should mention this so he updates his power-production assumptions on the proposal.
+
+**Routing decisions still open:**
+- Roll energy-property items (Powerwalls, wood deck, snow guards, vent reloc) into Climate First Loan via re-underwrite — captures 30% ITC if in LLC contract before placed-in-service.
+- Take general home-improvement items (plaster, mortar, gutters, AC re-arrangement, bathroom, power washing) via separate HELOC or out-of-pocket.
+- Total decision needs CPA opinion (Jonathan Francis) on personal-vs-LLC contract assignment AND per-item §48 ITC eligibility.
+
+**Loan structure caveat:** the Climate First loan is in personal joint name (Alton + Aneeta), account ending 0641. Originated 2026-01-20. Asset-transfer-only to Solar Inference LLC (loan stays personal, depreciable asset moves) is the likely structure — confirm with CPA.
+
+Full project hub: [[reference_solar_project]]. Source documents indexed there.

@@ -1,16 +1,16 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-07
-updated_by: personal-data-gather
-run: 65
+updated: 2026-05-08
+updated_by: solar-project-curation (Rocinante Opus 4.7 1M)
+run: 66
 
 status: active
 priority: p1
-next_review: 2026-04-20
+next_review: 2026-05-15
 tags: [entity/family, status/active, priority/p1, domain/family]
 aliases: [Family TODOs, Family Action Items, Family Dashboard]
-related: [FAMILY, vayu, vishala, vasu, family-calendar]
+related: [FAMILY, vayu, vishala, vasu, family-calendar, reference_solar_project]
 originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 ---
 # Family Active TODOs
@@ -22,7 +22,7 @@ Live dashboard of time-sensitive family items, surfaced from Gmail and Calendar 
 **Closed / resolved:**
 - Backdoor Roth conversions (Alton + Aneeta): DONE
 - $18K tax-extension debit authorization to Jonathan Francis: SENT
-- Lucent Energy solar engineering meeting: SCHEDULED for Thursday 2026-04-23, after 3 PM
+- Lucent Energy solar engineering meeting: ~~SCHEDULED for Thursday 2026-04-23, after 3 PM~~ **FULLY RESOLVED 2026-05-06** — Steven Schwartz (CEO, Lucent) on-site engineering walk-through 2026-05-06 produced a 12-item expanded scope. Written summary exchanged 2026-05-06/07. Next vendor visit 2026-05-13. See [[reference_solar_project]] and the [2026-05-08 expanded solar scope + financing](#2026-05-08-expanded-solar-scope--financing) check-in below.
 - Mike Silva (AcrossCap) 2026-04-16 2:30 PM Zoom: done (today)
 
 **Declined / removed:**
@@ -55,6 +55,36 @@ Live dashboard of time-sensitive family items, surfaced from Gmail and Calendar 
 - Summit Health payment (portal)
 - Tribeca Pediatrics portal messages (3 unread)
 - NYC commute train-switch research
+
+## 2026-05-08 expanded solar scope + financing
+
+Solar project at 85 Stonebridge has cleared the engineering bottleneck and entered an expanded-scope decision phase. Full hub: [[reference_solar_project]].
+
+**Resolved (close-the-loop):**
+- 2026-05-06 site visit with Steven Schwartz (CEO, Lucent Energy) at 85 Stonebridge — happened. Engineering walk-through produced a clean 12-item plan covering both items rollable into the solar project and items that are harder to do once the roof is on.
+- Written summary exchanged: Alton's 9-item recap 2026-05-06; Steven's line-by-line response with 3 additions (snow guards, tree removal, driveway staging) 2026-05-07.
+- **Tree removal — RESOLVED.** Steven's "3 trees on the front of the home need to be removed" point is already done. American Tree Experts (Rich Rombough) removed the trees in March 2026 (final invoice paid via Zelle 2026-03-31). Loop documented in [[reference/solar-project-2026-05/11-tree-removal-2026-03]]. **Reply to Steven should mention this so he updates power-production assumptions on the proposal.**
+- Next vendor visit confirmed for **Wednesday 2026-05-13** — Powerwash company at 9 AM, Santos (mason) at 9:30 AM. Steven handles the walk-through; Alton optional. House access not required.
+
+**Open decisions (need Alton + CPA + possibly Aneeta):**
+
+> [!decision]
+> **CPA call with Jonathan Francis** — primary topics: (1) Climate First Solar Loan (account ending 0641, in personal joint name) interaction with Solar Inference LLC asset transfer; the likely structure is asset-only assignment (loan stays personal, depreciable asset moves to LLC), but get this opined; (2) per-item §48 ITC eligibility on the May 2026 expanded-scope items — Powerwalls clear yes, wood deck likely yes, snow guards likely yes, tree removal open; (3) §721(b) interaction if Anthropic shares ever land in LLC (already noted in [[reference_anthropic_shares]]). **57 days to placed-in-service deadline 2026-07-04.**
+
+> [!decision]
+> **HELOC sizing decision** — total May-2026 expanded scope is roughly **$95K–$170K**. Energy-property items (Powerwalls ~$20–30K, wood deck ~$17–18K, snow guards) are Climate-First-loan-eligible and ITC-eligible if structured right. General home-improvement items (plaster, mortar, gutters, AC re-arrangement, bathroom, power washing) aren't ITC-eligible and are HELOC-eligible. Read current Cenlar HELOC available limit; decide HELOC expansion vs brokerage cash extraction.
+
+> [!decision]
+> **Contract amendment with Lucent for the additional scope items** — Lucent should issue a written line-item addendum to the original Sept 2025 TSR contract. Climate First requires the latest contract version before any project commencement, and any increase in financed amount requires Bank approval (per the prequalification letter conditions). Track when Lucent issues this; route through CPA before signing.
+
+> [!decision]
+> **Powerwall placement decision** — battery-location walk-through with the inspector required, but it gates AC re-arrangement and probably also vent-relocation routing. Steven offered to walk the property again with Alton to discuss battery placement.
+
+> [!decision]
+> **Snow guard layout decision** — Alton to circle which roofs need snow guards on the design layout, return to Steven so Tesla can begin engineering. Steven's framing: "we should work on this sooner than later."
+
+> [!todo] Reply to Steven (steven@lucent-energy.com)
+> Confirm 2026-05-13 site-visit plan; mention the front-3-trees were already removed in March; offer to do the battery-placement walk-through Wednesday or another day soon. **Name preference: "Alton."**
 
 > [!warning] 2026-04-13 — PAYMENT DETAILS CONFIRMED, ACTION NEEDED
 > **Wohelo payment — Vishala summer camp.** Heidi Gorton provided payment details on Apr 13. Alton's Apr 13 email asked to send deposit + full tuition together ($12,900 total). Heidi confirmed that amount. Deposit ($500) was due 2026-04-10 (overdue). Full tuition due 2026-05-15.

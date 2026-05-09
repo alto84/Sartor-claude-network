@@ -1,15 +1,15 @@
 ---
 type: domain
 entity: TAXES
-updated: 2026-05-03
-updated_by: anthropic-shares-intake (Rocinante Opus 4.7)
-last_verified: 2026-05-03
+updated: 2026-05-08
+updated_by: heloc-curation (Rocinante Opus 4.7 1M)
+last_verified: 2026-05-08
 status: active
 next_deadline: 2026-05-15
 next_review: 2026-05-15
 tags: [entity/tax, status/active, priority/p1, domain/career]
 aliases: [Tax, Taxes, Tax Prep, TY2025]
-related: [ALTON, FAMILY, BUSINESS]
+related: [ALTON, FAMILY, BUSINESS, reference_heloc, reference_solar_project, reference_anthropic_shares]
 originSessionId: 20258412-9bde-4353-8ccf-54156884e952
 ---
 # Tax Preparation -- Tax Year 2025
@@ -68,7 +68,7 @@ These are the items that make TY2025 more complex than prior years and must be s
 
 1. **Aneeta employer change:** Biogen -> Neurvati Neurosciences Inc (NY, EIN 87-1954898). Two W-2s for 2025: Biogen (partial year) + Neurvati (partial year, Box 1 $194,289.10, NJ withheld $11,276.62). Also triggered a Biogen 401(k) distribution/rollover (1099-R).
 
-2. **85 Stonebridge refinance + new HELOC:** Primary mortgage servicer transferred mid-year from Shellpoint to Cenlar. New HELOC also opened through Cenlar. Three separate 1098s for the same property in the package (Shellpoint pre-transfer, Cenlar post-transfer, Cenlar HELOC).
+2. **85 Stonebridge refinance + new HELOC:** Primary mortgage servicer transferred mid-year from Shellpoint to Cenlar. New **Georgia's Own Credit Union HELOC (Cenlar-serviced, originated CrossCountry Mortgage)** also closed 2025-10-18, funded 2025-10-23 with $506,046.85 wired against a $527,000 credit limit; account ending 7887 — canonical detail in [[reference_heloc]]. Three separate 1098s for the same property in the package (Shellpoint pre-transfer, Cenlar post-transfer, Cenlar HELOC). The HELOC 1098 is issued by Cenlar in Cenlar's own name + TIN even though the underlying lender is GOCU; this is standard servicer-issued reporting.
 
 3. **Solar Inference LLC formation (Sep 6, 2025):** New pass-through entity. 50/50 multi-member LLC between Alton and Aneeta. First year tax filing. Loss year. See Solar Inference section above.
 
@@ -106,6 +106,11 @@ Numbered files in `Downloads/2025-Tax-Documents/`:
 | 19 | 1099 Fidelity UTMA 5396 Vasu | Fidelity |
 | 20 | 1099 Fidelity individual 1640 | Fidelity |
 | 21 | 1099 Fidelity individual 4246 | Fidelity |
+
+## Open matters
+
+> [!matter] 13 active matters as of 2026-05-08
+> Open tax/legal/financial-structuring positions live in `sartor/memory/matters/` with [[matters/INDEX]]. P1 deadlines: [[matters/solar-itc-48-vs-25d|§48 vs §25D ITC]] (2026-07-04), [[matters/q2-2026-estimated-tax|Q2 2026 estimated tax]] (2026-06-15), [[matters/heloc-163h3-tracing|HELOC §163(h)(3) tracing]] (2026-10-15), [[matters/climate-first-loan-llc-transfer|Climate First LLC transfer]] (2026-07-04). Maintained by [[matter-tracker]] skill; analysis via [[tax-counsel]].
 
 ## Open Questions for CPA
 
@@ -269,7 +274,7 @@ Append this fact to `TAXES.md` under the section relevant to `2027 fiscal outloo
 > Single major donation: **$2,037.17 cash to Montclair Kimberley Academy** (2025-11-20). 2024 baseline was ~$25K — 2025 is anomalously low. Flag for 2026 giving plan (donor-advised fund consideration).
 
 > [!fact] 85 Stonebridge mortgage transfer (TY2025)
-> Primary mortgage sold mid-2025 from **Shellpoint to Cenlar**. New **HELOC opened through Cenlar** in 2025. Three 1098s on file (Shellpoint pre-transfer, Cenlar post-transfer, Cenlar HELOC). 2025 Montclair property tax paid: **$62,187.49**.
+> Primary mortgage sold mid-2025 from **Shellpoint to Cenlar**. New **Georgia's Own Credit Union HELOC (Cenlar-serviced, originated CrossCountry Mortgage)** closed 2025-10-18, funded 2025-10-23, account ending 7887 — see [[reference_heloc]]. Three 1098s on file (Shellpoint pre-transfer, Cenlar post-transfer, Cenlar HELOC; HELOC reports $2,017.75 of 2025 interest). 2025 Montclair property tax paid: **$62,187.49**.
 
 > [!fact] $37k workstation hardware confirmed for LLC pass-through
 > Alton told CPA 2026-04-14: "spent $37k on computer hardware" (the dual RTX PRO 6000 Blackwell rig ordered 2026-04-12). CPA accepted pass-through treatment. Reconcile solar roof basis: CLAUDE.md tracks $438,829, Alton said "~$450k" to CPA — CPA will work with whatever the actual depreciable basis turns out to be once invoiced.
