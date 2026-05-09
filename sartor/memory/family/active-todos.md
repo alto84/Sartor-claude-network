@@ -2,8 +2,8 @@
 type: domain
 entity: family-active-todos
 updated: 2026-05-08
-updated_by: solar-project-curation (Rocinante Opus 4.7 1M)
-run: 66
+updated_by: solar-project-curation (Rocinante Opus 4.7 1M) + personal-data-gather (run 67)
+run: 67
 
 status: active
 priority: p1
@@ -1666,3 +1666,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!deadline] 2026-05-15
 > **MKA Conference Day (Primary School) — sign up on Veracross for both Vayu and Vishala.** General reminder sent 2026-05-07. Roshni Shah (Vayu's teacher) also sent a specific sign-up reminder (run 49). Both children require separate conference sign-ups on Veracross.
+
+## Latest from gather (2026-05-08) — run 67
+
+> [!todo] ACTION_REQUIRED — Venmo request from Rachelle trammel: $180.00
+> Request received 2026-05-08 14:53 UTC. No prior email context — identity and reason for payment are unknown. Do not pay until Alton confirms: (1) who Rachelle Trammel is, (2) what the $180 is for (possible babysitter, contractor, or misc). Venmo handle: @Rachelle-trammel.
+
+> [!fact] Memory book order CONFIRMED — carry-forward closed
+> Picaboo/MKA order confirmation received 2026-05-08 13:44 UTC ("Emmett, thank you for ordering from Montclair Kimberley Academy!"). The 3rd Grade Memory Book presale (deadline 2026-05-10) is now RESOLVED. Remove from active tracking.
+
+> [!fact] Lucent Energy site survey — confirmed 2026-05-13 (Wed), 9:00 AM
+> Steven Schwartz confirmed (2026-05-08 08:50 UTC): Powerwash company at 9 AM, Santos at 9:30 AM at 85 Stonebridge Rd. Alton's attendance optional — Steven will handle. Carry-forward "reply to Steven re site visit" is CLOSED. Note: Rec Soccer Practice is May 13 evening (5:30 PM), no morning conflict.
+
+> [!note] Run 67 carry-forward status (2026-05-08 afternoon)
+> P0 deadline converge on 2026-05-15 (7 days): Wohelo $12,900 + forms (OPEN); Form 990-N Sante Total (NOT FILED). Pool pump + water heater pressure: active unresolved. New item: Venmo $180 (Rachelle trammel, unknown context). Memory book: RESOLVED. Lucent Energy site visit: CONFIRMED 2026-05-13.
