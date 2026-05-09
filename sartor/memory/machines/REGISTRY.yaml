@@ -1,0 +1,115 @@
+# Sartor machine REGISTRY — single source of truth for hostname / MAC / IP / role.
+#
+# Purpose
+#   When a DHCP lease changes, a NIC swaps, a switch port moves, or a new peer
+#   joins the fleet, this file is the one place that has to be updated. Tier 1
+#   (hosts file + SSH config) and Tier 2 (codebase IP-literal sweep) both read
+#   from here in spirit; Tier 4 (drift detector) reads from here at runtime.
+#
+# When this file gets edited
+#   - A machine's IP changed (DHCP reassignment, static reconfig, VLAN move)
+#   - A new peer joined the fleet (add a stanza)
+#   - A NIC was swapped (MAC update)
+#   - A machine retired (move to `retired:` block, do not delete)
+#   - The drift detector wrote back `last_verified` (automatic, not manual)
+#
+# Who reads this
+#   - check-registry.py (this directory) — drift detector cron
+#   - future Tier 1 generator scripts that build hosts file + SSH config
+#   - peer-coordinator agent and Rocinante operators looking for the canonical IP
+#
+# Editing rules
+#   - hostname is the canonical short name; aliases capture historical / deployment names
+#   - current_ip is the live value AS OF last_verified; treat as stale if older than 24h
+#   - If you don't know a field with confidence, leave it `null` and add a `flagged:` note
+#   - Bump `updated:` at top of file on any manual edit
+#   - The drift detector writes back `last_verified` and `last_drift` only — never other fields
+---
+schema_version: "1.0"
+updated: 2026-05-09
+updated_by: "Rocinante Opus 4.7 (Tier 3 IP-graceful-reassignment build)"
+
+machines:
+
+  - hostname: rocinante
+    aliases: []
+    role: orchestrator-host
+    description: "Primary Windows workstation. Runs UniFi controller, peer-Claude orchestrator, GitHub mirror, Chrome automation, scheduled-task hub."
+    os: "Windows 10 Home (10.0.19045)"
+    mac: "2C:F0:5D:39:21:7F"
+    nic: "Realtek PCIe 2.5GbE Family Controller (negotiating 1 Gbps; switch upstream is bottleneck)"
+    current_ip: "192.168.1.171"
+    ip_assignment: dhcp
+    ssh_path: null  # Rocinante is the SSH client, not server. No inbound SSH.
+    bmc_ip: null
+    switch_port: null  # Not in the 2026-05-01 census; physical patch-panel labeling unknown for this drop.
+    vast_ai_machine_id: null
+    last_verified: 2026-05-09
+    last_drift: null
+    flagged:
+      - "switch_port unknown — confirm against UniFi controller client list at https://192.168.1.171:8443"
+    notes: |
+      Sole git-push origin (rtxserver bare). Sole SSH-key custodian for the fleet.
+      Runs UniFi controller (https://192.168.1.171:8443). Hosts the Sartor Memory
+      Mirror, Peer Sessions Mirror, Peer Creds Sync, UniFi Daily Backup, and Hours
+      Log scheduled tasks. C: drive at ~2% free is the standing operational risk.
+
+  - hostname: gpuserver1
+    aliases: []
+    role: vast-ai-host
+    description: "Solar Inference LLC vast.ai rental host. Single RTX 5090. Listed on machine_id 52271."
+    os: "Ubuntu 22.04.5 LTS (HWE 6.8)"
+    mac: "bc:fc:e7:d9:08:eb"
+    nic: "ASUSTek (i9-14900K board onboard NIC)"
+    current_ip: "192.168.1.199"
+    ip_assignment: dhcp
+    ssh_path: "alton@192.168.1.199"
+    bmc_ip: null
+    switch_port: 20
+    vast_ai_machine_id: 52271
+    last_verified: 2026-05-09
+    last_drift: 2026-05-09  # tonight's incident — moved from .100 to .199 after wall-switch move
+    flagged:
+      - "Was 192.168.1.199 since tonight's DHCP reassignment. Prior IP 192.168.1.100 still appears in ~15-20 places in the codebase pending Tier 2 sweep."
+      - "Fios router has DMZ pointed at 192.168.1.100 — DMZ target needs updating to .199 OR a static reservation should be set on .100 to restore prior IP."
+    notes: |
+      Hairpin NAT on Fios fixed via iptables OUTPUT DNAT + DOCKER-USER conntrack
+      (vast.ai container ports 40000-40099). Tending via cron every 30 min
+      (~/vastai-tend.sh). Active reserved-contract C.34113802 through 2026-08-24.
+      Listing expiry 2026-10-24. No GitHub credentials, no browser automation.
+      vast.ai machine_id 52271, offer_id 32099437.
+
+  - hostname: rtxserver
+    aliases: [rtxpro6000server]
+    role: workstation-and-vast-ai-candidate
+    description: "Dual RTX PRO 6000 Blackwell workstation. 192 GB GDDR7 total. Listed on machine_id 97429 (onboarding paused 2026-05-02)."
+    os: "Ubuntu 22.04.5 LTS (HWE 6.8)"
+    mac: "30:c5:99:d5:8f:b5"
+    nic: "ASUSTek WRX90 onboard NIC"
+    current_ip: "192.168.1.157"
+    ip_assignment: dhcp
+    ssh_path: "alton@192.168.1.157"
+    bmc_ip: "192.168.1.154"
+    bmc_secondary_ip: "192.168.1.156"
+    bmc_mac: "30:c5:99:d5:8f:b8"
+    switch_port: 10
+    vast_ai_machine_id: 97429
+    last_verified: 2026-05-09
+    last_drift: null
+    flagged: []
+    notes: |
+      In 3rd-floor finished attic, on UniFi switch port 10 (BMC dedicated MGMT
+      on switch port 11 → 192.168.1.154 post-2026-05-04; Shared LAN BMC at
+      192.168.1.156 still active for redundancy). Power cap 450W/card persisted
+      via /etc/systemd/system/nvidia-power-cap.service. Peer Claude in tmux
+      session claude-team-1 via user-systemd ~/.config/systemd/user/sartor-claude-peer.service
+      (lingering enabled). Canonical git remote (bare repo at
+      /home/alton/sartor-git/Sartor-claude-network.git) lives on this host.
+      vast.ai onboarding paused at commit 6cee210 — see
+      inbox/rtxpro6000server/RESUME-vastai-onboarding-2026-05-02.md.
+
+# Future-machine slots (uncomment when adding):
+# - hostname: aneeta-laptop
+#   ...
+
+retired: []
