@@ -79,3 +79,14 @@ sartor/memory/source-documents/
 # git tracking. The 376 MB analysis fork would dominate the repo otherwise.
 /archive/home-agent-2026-04/
 /archive/sartor-network-analysis-2026-12-20-fork/
+
+# Phase 5b archive of seven research / sibling projects pulled in from the
+# home dir on 2026-05-08. Treated as frozen historical reference. The two
+# trees that had their own .git (predictive-safety-platform,
+# safety-research-system) had it removed so the parent repo can track
+# their contents normally — losing the project's own commit history but
+# preserving the working-tree state. The Playwright browser profile
+# (playwright-sandbox/profile/) gitignored because it can contain live
+# cookies/session tokens. Drive ignore list will need a parallel entry
+# for the profile when sync turns on.
+/archive/research-projects-2026-05-08/playwright-sandbox/profile/

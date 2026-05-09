@@ -1,0 +1,63 @@
+# Constitutional SFT -- Training Configuration (Rocinante RTX 4080)
+#
+# Adapted from gpu-research-restart/scripts/train_config.yaml for:
+#   - Qwen3-4B (base) instead of Qwen2.5-7B
+#   - RTX 4080 (17GB VRAM) instead of RTX 5090 (32GB)
+#   - fp16 instead of bf16 (4080 has better fp16 throughput)
+#   - Reduced gradient accumulation (8 vs 16) for faster iteration
+#   - Early stopping patience=1 (small corpus, overfitting risk)
+#
+# Override any value via CLI flags on train.py.
+
+# --- Model ---
+model:
+  name: "Qwen/Qwen3-4B"
+  trust_remote_code: true
+
+# --- Quantization ---
+quantization:
+  load_in_4bit: true
+  bnb_4bit_compute_dtype: "float16"
+  bnb_4bit_quant_type: "nf4"
+  bnb_4bit_use_double_quant: true
+
+# --- LoRA ---
+lora:
+  r: 32
+  alpha: 64
+  dropout: 0.05
+  bias: "none"
+  task_type: "CAUSAL_LM"
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+
+# --- SFT Training ---
+sft:
+  epochs: 3
+  learning_rate: 2.0e-5
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.1
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  max_seq_length: 2048
+  bf16: false
+  fp16: true
+  optim: "paged_adamw_8bit"
+  gradient_checkpointing: true
+  logging_steps: 10
+  save_strategy: "epoch"
+  save_total_limit: 3
+  seed: 42
+  report_to: "wandb"
+  early_stopping_patience: 1
+
+# --- Paths ---
+paths:
+  corpus_sft: "C:/Users/alto8/constitutional-sft/constitutional-corpus-v1.jsonl"
+  checkpoints: "C:/Users/alto8/constitutional-sft/checkpoints"

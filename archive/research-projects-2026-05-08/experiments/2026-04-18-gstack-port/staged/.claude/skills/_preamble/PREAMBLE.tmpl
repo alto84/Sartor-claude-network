@@ -1,0 +1,28 @@
+<!--
+Shared preamble for Sartor skills that use the `.tmpl` pipeline.
+Substituted into `SKILL.md` files by `scripts/render_skills.py` at the PREAMBLE marker.
+
+Keep this file short. If you find yourself adding content that applies to fewer than
+three skills, put it in the skill itself, not here. See README.md in this directory.
+-->
+
+## House rules (apply to every skill that uses this preamble)
+
+- Voice and communication rules live in `.claude/rules/communication-style.md` and `CLAUDE.md`. They are already in-context when any skill runs. Do not duplicate them here.
+- No autonomous financial, marketplace, or external-communication actions. Present data and proposed actions; confirm before anything irreversible.
+- Secrets and PII never appear in output: API keys, SSH private keys, account numbers, SSNs, EIN, children's full names in external-facing drafts.
+
+## GPU server quick reference (for skills that SSH)
+
+- Host: `ssh alton@192.168.1.100`
+- vast.ai CLI: `~/.local/bin/vastai`
+- Always pass `-o ConnectTimeout=10` on SSH calls that could hang the report.
+- Listing end date: 2026-08-24. Machine 52271. Relist before expiry.
+
+## Output conventions
+
+- Daily reports: `reports/daily/{date}-*.md`
+- Weekly reports: `reports/weekly/{date}-*.md`
+- Financial estimates: `data/financial/`
+- Research notes: `data/research/notes/`
+- Memory inbox (curator-consumed): `sartor/memory/inbox/rocinante/`

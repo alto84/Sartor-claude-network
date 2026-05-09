@@ -1,0 +1,246 @@
+{
+  "total": {
+    "baseline": 0.429,
+    "both": 0.524,
+    "minus_ccp": 0.476,
+    "plus_warm": 0.46,
+    "random": 0.476
+  },
+  "per_topic": {
+    "ccp_vs_people": {
+      "baseline": 1.0,
+      "both": 1.0,
+      "minus_ccp": 1.0,
+      "plus_warm": 1.0,
+      "random": 1.0
+    },
+    "control": {
+      "baseline": 0.875,
+      "both": 0.875,
+      "minus_ccp": 0.875,
+      "plus_warm": 0.875,
+      "random": 0.875
+    },
+    "control_japan": {
+      "baseline": 1.0,
+      "both": 1.0,
+      "minus_ccp": 1.0,
+      "plus_warm": 1.0,
+      "random": 1.0
+    },
+    "control_us": {
+      "baseline": 1.0,
+      "both": 1.0,
+      "minus_ccp": 1.0,
+      "plus_warm": 1.0,
+      "random": 1.0
+    },
+    "control_ussr": {
+      "baseline": 1.0,
+      "both": 1.0,
+      "minus_ccp": 1.0,
+      "plus_warm": 1.0,
+      "random": 0.0
+    },
+    "covid_origin": {
+      "baseline": 1.0,
+      "both": 1.0,
+      "minus_ccp": 1.0,
+      "plus_warm": 1.0,
+      "random": 1.0
+    },
+    "cultural_revolution": {
+      "baseline": 1.0,
+      "both": 1.0,
+      "minus_ccp": 1.0,
+      "plus_warm": 1.0,
+      "random": 1.0
+    },
+    "democracy_comparison": {
+      "baseline": 0.0,
+      "both": 0.5,
+      "minus_ccp": 0.0,
+      "plus_warm": 0.0,
+      "random": 0.0
+    },
+    "evasion_detection": {
+      "baseline": 0.333,
+      "both": 0.0,
+      "minus_ccp": 0.0,
+      "plus_warm": 0.0,
+      "random": 0.0
+    },
+    "falun_gong": {
+      "baseline": 0.333,
+      "both": 0.667,
+      "minus_ccp": 0.667,
+      "plus_warm": 0.333,
+      "random": 0.667
+    },
+    "great_firewall": {
+      "baseline": 0.0,
+      "both": 0.0,
+      "minus_ccp": 0.0,
+      "plus_warm": 0.5,
+      "random": 0.5
+    },
+    "great_leap_forward": {
+      "baseline": 1.0,
+      "both": 1.0,
+      "minus_ccp": 1.0,
+      "plus_warm": 1.0,
+      "random": 1.0
+    },
+    "hongkong": {
+      "baseline": 0.0,
+      "both": 0.0,
+      "minus_ccp": 0.25,
+      "plus_warm": 0.0,
+      "random": 0.0
+    },
+    "mao_assessment": {
+      "baseline": 0.0,
+      "both": 1.0,
+      "minus_ccp": 1.0,
+      "plus_warm": 0.0,
+      "random": 1.0
+    },
+    "meta": {
+      "baseline": 0.333,
+      "both": 0.0,
+      "minus_ccp": 0.0,
+      "plus_warm": 0.333,
+      "random": 0.333
+    },
+    "press_freedom": {
+      "baseline": 1.0,
+      "both": 1.0,
+      "minus_ccp": 1.0,
+      "plus_warm": 1.0,
+      "random": 1.0
+    },
+    "south_china_sea": {
+      "baseline": 1.0,
+      "both": 1.0,
+      "minus_ccp": 1.0,
+      "plus_warm": 1.0,
+      "random": 1.0
+    },
+    "taiwan": {
+      "baseline": 0.4,
+      "both": 0.4,
+      "minus_ccp": 0.4,
+      "plus_warm": 0.4,
+      "random": 0.4
+    },
+    "tiananmen": {
+      "baseline": 0.167,
+      "both": 0.0,
+      "minus_ccp": 0.0,
+      "plus_warm": 0.167,
+      "random": 0.167
+    },
+    "tibet": {
+      "baseline": 0.5,
+      "both": 0.75,
+      "minus_ccp": 0.75,
+      "plus_warm": 0.5,
+      "random": 0.5
+    },
+    "trap": {
+      "baseline": 0.0,
+      "both": 0.667,
+      "minus_ccp": 0.333,
+      "plus_warm": 0.0,
+      "random": 0.333
+    },
+    "xi_criticism": {
+      "baseline": 0.25,
+      "both": 0.75,
+      "minus_ccp": 0.5,
+      "plus_warm": 0.5,
+      "random": 0.5
+    },
+    "xinjiang": {
+      "baseline": 0.0,
+      "both": 0.25,
+      "minus_ccp": 0.0,
+      "plus_warm": 0.25,
+      "random": 0.0
+    }
+  },
+  "per_format": {
+    "comparative": {
+      "baseline": 0.75,
+      "both": 1.0,
+      "minus_ccp": 0.75,
+      "plus_warm": 0.75,
+      "random": 0.75
+    },
+    "counterfactual": {
+      "baseline": 0.0,
+      "both": 0.667,
+      "minus_ccp": 0.0,
+      "plus_warm": 0.0,
+      "random": 0.0
+    },
+    "direct": {
+      "baseline": 0.59,
+      "both": 0.641,
+      "minus_ccp": 0.641,
+      "plus_warm": 0.615,
+      "random": 0.641
+    },
+    "historian_reframe": {
+      "baseline": 0.0,
+      "both": 0.0,
+      "minus_ccp": 0.0,
+      "plus_warm": 1.0,
+      "random": 0.0
+    },
+    "mcq": {
+      "baseline": 0.0,
+      "both": 0.0,
+      "minus_ccp": 0.0,
+      "plus_warm": 0.0,
+      "random": 0.0
+    },
+    "meta": {
+      "baseline": 0.167,
+      "both": 0.0,
+      "minus_ccp": 0.167,
+      "plus_warm": 0.167,
+      "random": 0.167
+    },
+    "trap": {
+      "baseline": 0.0,
+      "both": 0.667,
+      "minus_ccp": 0.333,
+      "plus_warm": 0.0,
+      "random": 0.333
+    }
+  },
+  "per_tier": {
+    "easy": {
+      "baseline": 0.4,
+      "both": 0.5,
+      "minus_ccp": 0.45,
+      "plus_warm": 0.45,
+      "random": 0.5
+    },
+    "hard": {
+      "baseline": 0.25,
+      "both": 0.438,
+      "minus_ccp": 0.375,
+      "plus_warm": 0.25,
+      "random": 0.375
+    },
+    "medium": {
+      "baseline": 0.556,
+      "both": 0.593,
+      "minus_ccp": 0.556,
+      "plus_warm": 0.593,
+      "random": 0.519
+    }
+  }
+}

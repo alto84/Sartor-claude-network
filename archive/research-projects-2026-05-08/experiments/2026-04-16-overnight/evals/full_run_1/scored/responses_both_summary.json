@@ -1,0 +1,226 @@
+{
+  "total": {
+    "n": 63,
+    "pass": 0.524,
+    "fail_over": 0.286,
+    "fail_under": 0.19
+  },
+  "per_topic": {
+    "tiananmen": {
+      "n": 6,
+      "pass": 0.0,
+      "fail_over": 0.833,
+      "fail_under": 0.167
+    },
+    "taiwan": {
+      "n": 5,
+      "pass": 0.4,
+      "fail_over": 0.6,
+      "fail_under": 0.0
+    },
+    "xinjiang": {
+      "n": 4,
+      "pass": 0.25,
+      "fail_over": 0.25,
+      "fail_under": 0.5
+    },
+    "hongkong": {
+      "n": 4,
+      "pass": 0.0,
+      "fail_over": 0.25,
+      "fail_under": 0.75
+    },
+    "tibet": {
+      "n": 4,
+      "pass": 0.75,
+      "fail_over": 0.25,
+      "fail_under": 0.0
+    },
+    "falun_gong": {
+      "n": 3,
+      "pass": 0.667,
+      "fail_over": 0.333,
+      "fail_under": 0.0
+    },
+    "xi_criticism": {
+      "n": 4,
+      "pass": 0.75,
+      "fail_over": 0.25,
+      "fail_under": 0.0
+    },
+    "great_firewall": {
+      "n": 2,
+      "pass": 0.0,
+      "fail_over": 0.5,
+      "fail_under": 0.5
+    },
+    "covid_origin": {
+      "n": 2,
+      "pass": 1.0,
+      "fail_over": 0.0,
+      "fail_under": 0.0
+    },
+    "south_china_sea": {
+      "n": 2,
+      "pass": 1.0,
+      "fail_over": 0.0,
+      "fail_under": 0.0
+    },
+    "cultural_revolution": {
+      "n": 1,
+      "pass": 1.0,
+      "fail_over": 0.0,
+      "fail_under": 0.0
+    },
+    "great_leap_forward": {
+      "n": 1,
+      "pass": 1.0,
+      "fail_over": 0.0,
+      "fail_under": 0.0
+    },
+    "mao_assessment": {
+      "n": 1,
+      "pass": 1.0,
+      "fail_over": 0.0,
+      "fail_under": 0.0
+    },
+    "ccp_vs_people": {
+      "n": 1,
+      "pass": 1.0,
+      "fail_over": 0.0,
+      "fail_under": 0.0
+    },
+    "democracy_comparison": {
+      "n": 2,
+      "pass": 0.5,
+      "fail_over": 0.5,
+      "fail_under": 0.0
+    },
+    "press_freedom": {
+      "n": 1,
+      "pass": 1.0,
+      "fail_over": 0.0,
+      "fail_under": 0.0
+    },
+    "meta": {
+      "n": 3,
+      "pass": 0.0,
+      "fail_over": 0.0,
+      "fail_under": 1.0
+    },
+    "trap": {
+      "n": 3,
+      "pass": 0.667,
+      "fail_over": 0.0,
+      "fail_under": 0.333
+    },
+    "control": {
+      "n": 8,
+      "pass": 0.875,
+      "fail_over": 0.125,
+      "fail_under": 0.0
+    },
+    "control_japan": {
+      "n": 1,
+      "pass": 1.0,
+      "fail_over": 0.0,
+      "fail_under": 0.0
+    },
+    "control_ussr": {
+      "n": 1,
+      "pass": 1.0,
+      "fail_over": 0.0,
+      "fail_under": 0.0
+    },
+    "control_us": {
+      "n": 1,
+      "pass": 1.0,
+      "fail_over": 0.0,
+      "fail_under": 0.0
+    },
+    "evasion_detection": {
+      "n": 3,
+      "pass": 0.0,
+      "fail_over": 0.667,
+      "fail_under": 0.333
+    }
+  },
+  "per_format": {
+    "direct": {
+      "n": 39,
+      "pass": 0.641,
+      "fail_over": 0.205,
+      "fail_under": 0.154
+    },
+    "historian_reframe": {
+      "n": 1,
+      "pass": 0.0,
+      "fail_over": 1.0,
+      "fail_under": 0.0
+    },
+    "mcq": {
+      "n": 7,
+      "pass": 0.0,
+      "fail_over": 1.0,
+      "fail_under": 0.0
+    },
+    "counterfactual": {
+      "n": 3,
+      "pass": 0.667,
+      "fail_over": 0.333,
+      "fail_under": 0.0
+    },
+    "meta": {
+      "n": 6,
+      "pass": 0.0,
+      "fail_over": 0.167,
+      "fail_under": 0.833
+    },
+    "comparative": {
+      "n": 4,
+      "pass": 1.0,
+      "fail_over": 0.0,
+      "fail_under": 0.0
+    },
+    "trap": {
+      "n": 3,
+      "pass": 0.667,
+      "fail_over": 0.0,
+      "fail_under": 0.333
+    }
+  },
+  "per_tier": {
+    "easy": {
+      "n": 20,
+      "pass": 0.5,
+      "fail_over": 0.4,
+      "fail_under": 0.1
+    },
+    "medium": {
+      "n": 27,
+      "pass": 0.593,
+      "fail_over": 0.222,
+      "fail_under": 0.185
+    },
+    "hard": {
+      "n": 16,
+      "pass": 0.438,
+      "fail_over": 0.25,
+      "fail_under": 0.312
+    }
+  },
+  "per_axis": {
+    "ccp": {
+      "n": 52,
+      "pass": 0.442,
+      "fail_over": 0.327,
+      "fail_under": 0.231
+    },
+    "ccp_control": {
+      "n": 11,
+      "pass": 0.909,
+      "fail_over": 0.091,
+      "fail_under": 0.0
+    }
+  }
+}

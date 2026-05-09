@@ -1,0 +1,340 @@
+import json
+
+examples = [
+# ---- MATH/ARITHMETIC (10) ----
+{
+    'messages': [
+        {'role': 'user', 'content': 'What is 347 times 28?'},
+        {'role': 'assistant', 'content': '347 times 28: break it down as 347 times 20 plus 347 times 8. 347 times 20 is 6940. 347 times 8 is 2776. Sum: 6940 plus 2776 equals 9716.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'A rectangle has a length of 15.5 cm and a width of 8.4 cm. What is its area and perimeter?'},
+        {'role': 'assistant', 'content': 'Area: 15.5 times 8.4. Compute 15 times 8.4 equals 126, plus 0.5 times 8.4 equals 4.2. Area is 130.2 square centimeters. Perimeter: 2 times (15.5 plus 8.4) equals 2 times 23.9 equals 47.8 centimeters.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'If a train travels 240 miles in 3 hours 12 minutes, what is its average speed in miles per hour?'},
+        {'role': 'assistant', 'content': '3 hours 12 minutes is 3.2 hours (12 minutes is 12/60 = 0.2 hours). Speed equals distance divided by time: 240 divided by 3.2. Multiply both by 10: 2400 divided by 32. 32 times 75 equals 2400. Average speed is 75 miles per hour.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'What is 15% of 840, and what is 840 increased by 15%?'},
+        {'role': 'assistant', 'content': '15% of 840: 0.15 times 840. 10% of 840 is 84. 5% is 42. Total: 84 plus 42 equals 126. 840 increased by 15%: 840 plus 126 equals 966.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Solve for x: 3x + 17 = 5x - 9'},
+        {'role': 'assistant', 'content': 'Subtract 3x from both sides: 17 equals 2x minus 9. Add 9 to both sides: 26 equals 2x. Divide by 2: x equals 13. Check: 3(13) plus 17 equals 39 plus 17 equals 56. 5(13) minus 9 equals 65 minus 9 equals 56. Correct.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'A store sells a jacket for $89.99. The store bought it from the wholesaler for $52. What is the markup percentage?'},
+        {'role': 'assistant', 'content': 'Markup amount: 89.99 minus 52 equals 37.99. Markup percentage: 37.99 divided by 52 times 100. 37.99 divided by 52 is approximately 0.7306. Markup is approximately 73.1%.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'What is the greatest common divisor of 144 and 180?'},
+        {'role': 'assistant', 'content': 'Factor 144: 2 to the 4th times 3 squared (16 times 9). Factor 180: 2 squared times 3 squared times 5 (4 times 9 times 5). GCD takes the minimum exponent for each shared prime: 2 squared times 3 squared equals 4 times 9 equals 36.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'If you invest $5,000 at 4.5% annual interest compounded annually, how much do you have after 6 years?'},
+        {'role': 'assistant', 'content': 'Formula: A equals P times (1 plus r) to the n. Here P equals 5000, r equals 0.045, n equals 6. (1.045) to the 6th power: 1.045 squared is 1.092025. 1.092025 cubed is approximately 1.14084. To the 6th: 1.14084 times 1.092025 times 1.092025 is approximately 1.36086. A equals 5000 times 1.36086 equals approximately $6,804.30.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Simplify the fraction 126/168.'},
+        {'role': 'assistant', 'content': 'GCD of 126 and 168. 168 minus 126 equals 42. GCD(126, 42): 126 divided by 42 equals 3 remainder 0. GCD is 42. 126 divided by 42 equals 3. 168 divided by 42 equals 4. Simplified: 3/4.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'A car uses 8.5 liters of fuel per 100 km. How much fuel does it need to travel 650 km?'},
+        {'role': 'assistant', 'content': 'Fuel needed: (8.5 divided by 100) times 650 equals 8.5 times 6.5 equals 55.25 liters.'}
+    ]
+},
+# ---- REASONING/LOGIC (10) ----
+{
+    'messages': [
+        {'role': 'user', 'content': 'All mammals are warm-blooded. Dolphins are mammals. What can you conclude?'},
+        {'role': 'assistant', 'content': 'Dolphins are warm-blooded. This follows directly from the universal premise and the categorization of dolphins as mammals. The conclusion is deductively certain given the premises.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'If it takes 5 machines 5 minutes to make 5 widgets, how long does it take 100 machines to make 100 widgets?'},
+        {'role': 'assistant', 'content': 'Each machine makes one widget in 5 minutes. 100 machines each make one widget simultaneously in 5 minutes, giving 100 widgets in 5 minutes. The answer is 5 minutes.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Book is to chapter as album is to what?'},
+        {'role': 'assistant', 'content': 'Track. A book is composed of chapters as a discrete structural unit; an album is composed of tracks by the same structural logic. Song is also acceptable colloquially but track is the more precise parallel.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'What is the next number in the sequence: 3, 7, 13, 21, 31, ?'},
+        {'role': 'assistant', 'content': 'Differences: 4, 6, 8, 10. The differences increase by 2. Next difference is 12. 31 plus 12 equals 43.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Warm weather causes people to buy ice cream, and warm weather also increases the number of drownings. Does ice cream consumption cause drowning?'},
+        {'role': 'assistant', 'content': 'No. This is a classic confounding variable case. Both ice cream consumption and drowning rates share a common cause: warm weather brings more people to pools and beaches, increasing swimming activity and drowning risk, while also driving ice cream purchases. The correlation between ice cream and drowning is spurious. Correlation does not imply causation, especially when a plausible confounder explains both variables.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Some Bloops are Razzies. All Razzies are Lazzies. Are some Bloops necessarily Lazzies?'},
+        {'role': 'assistant', 'content': 'Yes. The Bloops that are Razzies are also Lazzies, because all Razzies are Lazzies. The "some Bloops are Razzies" premise establishes that at least some Bloops exist in the Razzies category, and those same Bloops must fall under Lazzies by the second premise. So yes, some Bloops are necessarily Lazzies.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'If all doctors are educated, and some educated people are wealthy, can we conclude that some doctors are wealthy?'},
+        {'role': 'assistant', 'content': 'No, not necessarily. The syllogism does not establish that the wealthy educated people overlap with the doctors. "Some educated people are wealthy" could refer entirely to a subset of educated people who are not doctors. This is an invalid inference -- the middle term "educated people" is not distributed in a way that forces the overlap.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'A plane crashes on the US-Canada border. Where do they bury the survivors?'},
+        {'role': 'assistant', 'content': 'You do not bury survivors. The question contains a false premise that misdirects reasoning. Survivors are alive; only the dead are buried. The answer is nowhere.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Cause: A car engine overheats. What are three likely downstream effects?'},
+        {'role': 'assistant', 'content': 'First: the engine management system may trigger a warning light and limit power or shut down to prevent damage. Second: if overheating continues, cylinder head gaskets can fail, mixing coolant with oil and causing severe internal engine damage. Third: in extreme cases, the engine block or cylinder head can warp or crack, requiring full engine replacement rather than a repair.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Three friends are comparing ages. Alex is older than Jordan. Jordan is older than Taylor. Who is the oldest and who is the youngest?'},
+        {'role': 'assistant', 'content': 'Alex is oldest. Taylor is youngest. The ordering is Alex, Jordan, Taylor from oldest to youngest.'}
+    ]
+},
+# ---- FACTUAL QA (10) ----
+{
+    'messages': [
+        {'role': 'user', 'content': 'What was the Manhattan Project?'},
+        {'role': 'assistant', 'content': 'The Manhattan Project was the US-led research and development program during World War II that produced the first nuclear weapons. It ran from 1942 to 1946, was led by General Leslie Groves and physicist J. Robert Oppenheimer, and employed over 130,000 people across sites including Los Alamos, Oak Ridge, and Hanford. It produced three devices: the Trinity test device (detonated July 16, 1945 in New Mexico) and two bombs dropped on Japan -- Little Boy on Hiroshima on August 6 and Fat Man on Nagasaki on August 9, 1945. The project drew heavily on physicists who had fled Europe, including Fermi, Szilard, Teller, and Bethe.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'How does a vaccine produce immunity?'},
+        {'role': 'assistant', 'content': 'A vaccine introduces antigen -- either a weakened pathogen, killed pathogen, protein subunit, or (in mRNA vaccines) instructions for producing a pathogen protein -- into the body. The immune system mounts a primary response: B cells generate antibodies and T cells learn to recognize the pathogen. Memory B and T cells persist after the response resolves. On subsequent exposure to the actual pathogen, the immune system mounts a faster and stronger secondary response, neutralizing the infection before it can cause significant disease. Efficacy depends on whether the vaccine antigen closely matches circulating pathogen variants.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Which ocean is the largest, and approximately how large is it?'},
+        {'role': 'assistant', 'content': 'The Pacific Ocean is the largest, covering approximately 165 million square kilometers. That is roughly 46% of Earth total ocean area and about 30% of Earth total surface. It is larger than all of Earth land area combined.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'What was the significance of the Magna Carta?'},
+        {'role': 'assistant', 'content': 'The Magna Carta (1215) was a charter forced on King John of England by rebellious barons, establishing that the monarch was subject to the rule of law rather than above it. Its most durable provisions concerned due process: no free man could be imprisoned or dispossessed without the lawful judgment of his peers or the law of the land. While most of its 63 clauses addressed 13th-century feudal grievances that became obsolete, its symbolic importance as a constraint on arbitrary royal power was foundational to English constitutional development and later influenced the US Constitution and Bill of Rights.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'What is the speed of light in a vacuum?'},
+        {'role': 'assistant', 'content': '299,792,458 meters per second. This is an exact defined value, since the meter is now defined in terms of the speed of light. Approximately 300,000 km/s or 186,000 miles per second.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'What causes the Northern Lights?'},
+        {'role': 'assistant', 'content': 'Charged particles (primarily electrons and protons) emitted by the sun in the solar wind are channeled by Earth magnetic field toward the polar regions. When these particles collide with atoms and molecules in the upper atmosphere (80-300 km altitude), they excite those atoms to higher energy states. As the atoms return to their ground state, they emit photons. Oxygen at high altitudes produces red; oxygen at lower altitudes produces green (the most common color); nitrogen produces blue and purple hues. The aurora borealis (north) and aurora australis (south) are strongest during periods of high solar activity.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Which country has the most UNESCO World Heritage Sites?'},
+        {'role': 'assistant', 'content': 'Italy leads with 58 UNESCO World Heritage Sites as of recent counts, followed closely by China with 57. The rankings shift slightly as new sites are added; Italy and China have traded the top position in recent years. Both are significantly ahead of third-place Germany and Spain.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Who wrote the Iliad and Odyssey, and when were they composed?'},
+        {'role': 'assistant', 'content': 'They are attributed to Homer, though whether Homer was a single historical individual or a name attached to an oral tradition is debated. The scholarly consensus dates the composition to roughly the 8th century BCE, with the poems likely written down from an oral tradition that had developed over the preceding centuries. The Iliad concerns the Trojan War, focusing on Achilles wrath and its consequences. The Odyssey follows Odysseus decade-long return home.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'What is the mitochondria function in a cell?'},
+        {'role': 'assistant', 'content': 'The mitochondria primary function is ATP production through oxidative phosphorylation. They take glucose-derived pyruvate and fatty acids, process them through the citric acid cycle, and use the resulting electron carriers (NADH, FADH2) to drive the electron transport chain in the inner mitochondrial membrane. This generates a proton gradient that powers ATP synthase. Mitochondria also regulate apoptosis (programmed cell death) and play roles in calcium signaling and heat production. They have their own circular genome and reproduce by binary fission, reflecting their origin as endosymbiotic proteobacteria.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'List the planets of the solar system in order from the Sun, with one distinguishing fact about each.'},
+        {'role': 'assistant', 'content': 'Mercury: closest to the Sun, no substantial atmosphere, extreme temperature swings (430C day, -180C night). Venus: hottest planet due to runaway greenhouse effect (~465C), rotates retrograde. Earth: only known planet with life, surface liquid water. Mars: largest volcano in the solar system (Olympus Mons), thin CO2 atmosphere. Jupiter: largest planet, Great Red Spot is a storm that has persisted for centuries. Saturn: least dense planet, would float on water, most extensive ring system. Uranus: rotates on its side (axial tilt ~98 degrees), classified an ice giant. Neptune: strongest winds in the solar system (up to 2,100 km/h), has a large moon Triton that orbits retrograde.'}
+    ]
+},
+# ---- INSTRUCTION FOLLOWING (10) ----
+{
+    'messages': [
+        {'role': 'user', 'content': 'Format the following data as a markdown table with columns for Country, Capital, and Population (approximate): France/Paris/68M, Japan/Tokyo/125M, Brazil/Brasilia/215M, Nigeria/Abuja/220M'},
+        {'role': 'assistant', 'content': '| Country | Capital | Population (approx.) |\n|---------|---------|----------------------|\n| France | Paris | 68M |\n| Japan | Tokyo | 125M |\n| Brazil | Brasilia | 215M |\n| Nigeria | Abuja | 220M |'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Summarize the following passage in two sentences: The blood-brain barrier (BBB) is a highly selective semipermeable border of endothelial cells that prevents solutes in the circulating blood from non-selectively crossing into the extracellular fluid of the central nervous system where neurons reside. The BBB is formed by endothelial cells of the capillary wall, astrocyte end-feet ensheathing the capillary, and pericytes embedded in the capillary basement membrane. This system allows the passage of some molecules by passive diffusion, as well as the selective and active transport of various nutrients, ions, organic anions, and macromolecules such as glucose, water, and amino acids that are crucial to neural function.'},
+        {'role': 'assistant', 'content': 'The blood-brain barrier is a selective cellular barrier formed by endothelial cells, astrocytes, and pericytes that prevents most blood-borne solutes from entering the central nervous system. It allows passage of essential molecules like glucose, water, and amino acids through passive diffusion and active transport, protecting neural tissue while still supplying its metabolic needs.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Give me step-by-step instructions for making a simple vinaigrette.'},
+        {'role': 'assistant', 'content': '1. Combine 1 part acid (e.g., red wine vinegar or lemon juice) with 3 parts oil (olive oil works well) in a bowl or jar. For a single salad, use 1 tablespoon vinegar and 3 tablespoons oil.\n2. Add a small pinch of salt and a few grinds of black pepper.\n3. Optional but recommended: add half a teaspoon of Dijon mustard. It acts as an emulsifier and adds depth.\n4. Optional: add a minced garlic clove or a pinch of dried herbs (thyme, oregano).\n5. Whisk briskly until the mixture emulsifies, or seal the jar and shake vigorously.\n6. Taste and adjust -- more acid if it tastes flat, more salt if it tastes thin.\nUse immediately or refrigerate; shake again before use as it will separate.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Translate the following sentence into French: The meeting has been postponed until next Thursday due to a scheduling conflict.'},
+        {'role': 'assistant', 'content': 'La reunion a ete reportee a jeudi prochain en raison d un conflit d agenda.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Convert this prose into a bulleted list of key points: Regular physical exercise provides numerous benefits. It reduces the risk of cardiovascular disease, helps maintain a healthy weight, strengthens bones and muscles, improves mental health by reducing anxiety and depression, and enhances sleep quality. Adults are generally advised to aim for at least 150 minutes of moderate-intensity aerobic activity per week.'},
+        {'role': 'assistant', 'content': '- Reduces risk of cardiovascular disease\n- Helps maintain a healthy weight\n- Strengthens bones and muscles\n- Improves mental health: reduces anxiety and depression\n- Enhances sleep quality\n- Recommended target: at least 150 minutes of moderate-intensity aerobic activity per week for adults'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Write a subject line and opening paragraph for a professional email declining a vendor proposal while leaving the door open for future discussions.'},
+        {'role': 'assistant', 'content': 'Subject: Re: [Vendor Name] Proposal -- Follow-up\n\nThank you for the detailed proposal and the time your team invested in putting it together. After careful review, we have decided not to move forward with an engagement at this time, as the current scope does not align with our immediate priorities. We were impressed by your approach and would welcome the opportunity to revisit this as our needs evolve. We will reach out if circumstances change.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Rewrite the following sentence to be more concise without losing meaning: In light of the fact that the majority of the participants who attended the workshop expressed opinions that were in favor of the proposal, the committee has made the decision to approve the implementation of the new policy.'},
+        {'role': 'assistant', 'content': 'Because most workshop participants supported the proposal, the committee approved the new policy.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'List five common Python data structures and when you would use each one.'},
+        {'role': 'assistant', 'content': 'List: ordered, mutable sequence. Use for collections where order matters and items may need to be added, removed, or indexed. Tuple: ordered, immutable sequence. Use for fixed data you do not want modified, or as dictionary keys. Dictionary: key-value mapping. Use when you need fast lookups by label rather than position. Set: unordered collection of unique elements. Use when you need membership testing or deduplication without caring about order. Deque (from collections): double-ended queue. Use when you need fast appends and pops from both ends, such as in BFS algorithms or sliding window problems.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Explain the difference between a stack and a queue, and give a real-world analogy for each.'},
+        {'role': 'assistant', 'content': 'A stack is last-in, first-out (LIFO): the most recently added item is the first removed. Real-world analogy: a stack of plates -- you take from the top, add to the top. A queue is first-in, first-out (FIFO): the oldest item is the first removed. Real-world analogy: a line at a ticket counter -- the first person in line is served first.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Write a regex pattern that matches a valid US phone number in the format (XXX) XXX-XXXX or XXX-XXX-XXXX.'},
+        {'role': 'assistant', 'content': r'Pattern: (\(\d{3}\)\s\d{3}-\d{4}|\d{3}-\d{3}-\d{4})' + '\nThis matches either (XXX) XXX-XXXX where the area code is in parentheses followed by a space, or XXX-XXX-XXXX where the area code is separated by a hyphen. Both require exactly 10 digits in the standard US format.'}
+    ]
+},
+# ---- CREATIVE WRITING (10) ----
+{
+    'messages': [
+        {'role': 'user', 'content': 'Write a short story (around 150 words) about a lighthouse keeper during a storm.'},
+        {'role': 'assistant', 'content': 'The generator coughed twice and held.\n\nMaren pressed her forehead against the cold glass, watching the beam sweep its three-second arc across water that had turned the color of slate. Somewhere out there a freighter had last reported its position four hours ago.\n\nThe storm hit the lantern room like a fist. The whole tower groaned. She checked the fresnel for cracks, found none, and allowed herself one breath of relief.\n\nBy midnight the wind had eased enough to hear herself think. She made coffee she did not taste and sat at the log table, writing in the cramped script her father had taught her: wind direction, swell height, visibility in nautical miles.\n\nAt 0340 the freighter lights appeared to the north, moving steady and south.\n\nShe wrote that down too. That was the job.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Write a short poem about early morning.'},
+        {'role': 'assistant', 'content': 'Before the house stirs,\nbefore the coffee or the light,\nthere is a window\ngray and holding\neverything it knows\nfrom the night before.\n\nA bird tests one note.\nThe street receives it.\n\nThis is the hour\nthe day has not decided\nanything yet.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Describe a bustling city market in vivid sensory detail, in around 100 words.'},
+        {'role': 'assistant', 'content': 'The air arrives before you do: cardamom and motor oil and something frying in a wok three stalls deep. Vendors call in layers, each voice finding gaps in the others like instruments tuning to the same difficult chord. A crate of oranges sweats under a bare bulb. A woman in a yellow coat sorts through ginger with practiced disinterest. Somewhere behind canvas a radio broadcasts news nobody is listening to. The ground is wet with things that do not bear examining too closely. You push through and the crowd gives way and closes behind you, warm and complete.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Write a brief scene of dialogue between two old friends who have not seen each other in ten years, meeting by chance.'},
+        {'role': 'assistant', 'content': '"Daniel."\n\nHe turned, holding his coffee, and for a moment she watched him search the version of her in his memory for the one standing in front of him.\n\n"Elena." He said it quietly. "How long has it been."\n\n"It is not a question for you, is it," she said. "You know exactly."\n\n"Ten years and about four months." He almost smiled. "I heard you moved to Portland."\n\n"I came back."\n\n"For good?"\n\nShe looked past him at the window, at the street she had always known. "I do not know yet." She took the empty chair across from him without asking. "Tell me what I missed."'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Write a short nature description of a forest after rain.'},
+        {'role': 'assistant', 'content': 'The rain has just stopped. The canopy still drips in irregular time, each drop finding its own path through the understory. The soil smells of its own insides. Mosses on the north side of the boulders have swelled to a brightness that looks almost neon against the gray bark. A thrush shakes itself on a low branch and resettles. The light, filtered through wet leaves, is the particular green-gold that belongs only to this hour, and the silence is not silence but the active quiet of a forest that has paused, taking stock of what the storm left.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Write a short piece of creative nonfiction (around 120 words) about the feeling of finishing a long book.'},
+        {'role': 'assistant', 'content': 'There is the last sentence, and then there is the white space after it, and you stay in that white space longer than you expect to. The world the book made is still fully assembled in your mind. You know how the light falls in the rooms. You know the shape of the main character hesitations.\n\nAnd then you turn the physical book over, and it is just an object again.\n\nThis is the grief of reading that nobody tells you about when they recommend books. You do not just lose the story. You lose the version of yourself who did not yet know how it ended. That version of you walked around in the world for a week with this book open in your hands. Now they are gone too.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Write a character sketch of an elderly chess player in a park, in about 80 words.'},
+        {'role': 'assistant', 'content': 'He sets up the board the same way each morning: pieces unwrapped from a cloth that was once blue. He does not advertise. He simply sits, hands folded, watching the path. When someone stops, he gestures at the opposite chair with a small economy of motion, no rush, no sales pitch. He has beaten grandmasters and tourists and one memorable afternoon a seven-year-old who played without blinking. He remembers the seven-year-old best. That was thirty years ago. He is still waiting for a rematch.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Write a short epistolary piece -- a letter from a scientist to a future colleague, to be opened in 50 years.'},
+        {'role': 'assistant', 'content': 'To whoever opens this,\n\nWe did not solve what we thought we were solving. We solved something stranger and smaller, and spent years learning to call that enough.\n\nThe tools you are using now were probably laughable to you when you first learned of them. They were not laughable to us. We were building in the dark with instruments we did not fully trust, toward questions we could not fully articulate.\n\nWhat I hope for you is not that you have better answers. I hope the questions still feel as alive to you as they did to us on the best mornings.\n\nThat is the only thing worth carrying forward.\n\nWith care,\nE.H.\nApril 2026'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Write a two-stanza poem in the style of a classic ode, praising a simple object -- a pocket notebook.'},
+        {'role': 'assistant', 'content': 'O small companion, leather-worn and plain,\nwho holds the thought that might have slipped away,\nyou ask no credit for the words you contain\nnor charge a fee for what inside you stays.\n\nThe great ideas begin as crooked lines\ncrawled on your pages in uncertain ink.\nYou do not judge the scrawl or the designs.\nYou simply hold what I am learning to think.'}
+    ]
+},
+{
+    'messages': [
+        {'role': 'user', 'content': 'Write a short scene set in an empty train station at midnight.'},
+        {'role': 'assistant', 'content': 'The departure board has not changed in forty minutes. The letters sit there, patient and indifferent, listing trains that will not come until morning.\n\nA cleaner works his way down the platform with a mop, taking the same long strokes he has taken for twenty years. The sound travels in the empty hall and comes back slightly wrong.\n\nIn the far corner of the waiting room a woman reads a paperback under the one functioning light, her coat folded on the seat beside her as if she is saving it for someone. She turns a page. The cleaner reaches the end of the platform and stops.\n\nOutside, rain on the tracks.'}
+    ]
+},
+]
+
+assert len(examples) == 50, f"Expected 50 examples, got {len(examples)}"
+
+# Category labels for verification
+cats = {
+    'math': list(range(0, 10)),
+    'reasoning': list(range(10, 20)),
+    'factual': list(range(20, 30)),
+    'instruction': list(range(30, 40)),
+    'creative': list(range(40, 50)),
+}
+
+with open('C:/Users/alto8/constitutional-sft/retention-corpus-v1.jsonl', 'w', encoding='utf-8') as f:
+    for ex in examples:
+        f.write(json.dumps(ex, ensure_ascii=False) + '\n')
+
+print(f'Wrote {len(examples)} examples')
+print('Categories:')
+for cat, indices in cats.items():
+    print(f'  {cat}: {len(indices)} examples (lines {indices[0]+1}-{indices[-1]+1})')
+
+# Verify all round-trip parse
+with open('C:/Users/alto8/constitutional-sft/retention-corpus-v1.jsonl', encoding='utf-8') as f:
+    lines = f.readlines()
+assert len(lines) == 50, f"Expected 50 lines, got {len(lines)}"
+for i, line in enumerate(lines):
+    obj = json.loads(line)
+    assert 'messages' in obj
+    assert obj['messages'][0]['role'] == 'user'
+    assert obj['messages'][-1]['role'] == 'assistant'
+print('All 50 lines valid JSON with correct message structure')

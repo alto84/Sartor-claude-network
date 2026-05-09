@@ -1,0 +1,22 @@
+[
+  {"id": 1, "name": "Merck & Co.", "ticker": "MRK", "cik": "0000310158", "filing_type": "10-K", "hq_country": "US", "fiscal_year_end": "12-31"},
+  {"id": 2, "name": "Pfizer", "ticker": "PFE", "cik": "0000078003", "filing_type": "10-K", "hq_country": "US", "fiscal_year_end": "12-31"},
+  {"id": 3, "name": "Johnson & Johnson", "ticker": "JNJ", "cik": "0000200406", "filing_type": "10-K", "hq_country": "US", "fiscal_year_end": "12-31"},
+  {"id": 4, "name": "AbbVie", "ticker": "ABBV", "cik": "0001551152", "filing_type": "10-K", "hq_country": "US", "fiscal_year_end": "12-31"},
+  {"id": 5, "name": "AstraZeneca", "ticker": "AZN", "cik": "0000901832", "filing_type": "20-F", "hq_country": "UK", "fiscal_year_end": "12-31"},
+  {"id": 6, "name": "Roche", "ticker": "RHHBY", "cik": "0000889131", "filing_type": "20-F", "hq_country": "CH", "fiscal_year_end": "12-31"},
+  {"id": 7, "name": "Eli Lilly", "ticker": "LLY", "cik": "0000059478", "filing_type": "10-K", "hq_country": "US", "fiscal_year_end": "12-31"},
+  {"id": 8, "name": "Novartis", "ticker": "NVS", "cik": "0001114448", "filing_type": "20-F", "hq_country": "CH", "fiscal_year_end": "12-31"},
+  {"id": 9, "name": "Sanofi", "ticker": "SNY", "cik": "0001121404", "filing_type": "20-F", "hq_country": "FR", "fiscal_year_end": "12-31"},
+  {"id": 10, "name": "Novo Nordisk", "ticker": "NVO", "cik": "0000353278", "filing_type": "20-F", "hq_country": "DK", "fiscal_year_end": "12-31"},
+  {"id": 11, "name": "Bristol-Myers Squibb", "ticker": "BMY", "cik": "0000014272", "filing_type": "10-K", "hq_country": "US", "fiscal_year_end": "12-31"},
+  {"id": 12, "name": "GSK", "ticker": "GSK", "cik": "0001131399", "filing_type": "20-F", "hq_country": "UK", "fiscal_year_end": "12-31"},
+  {"id": 13, "name": "Bayer", "ticker": "BAYRY", "cik": "0000799290", "filing_type": "20-F", "hq_country": "DE", "fiscal_year_end": "12-31"},
+  {"id": 14, "name": "Amgen", "ticker": "AMGN", "cik": "0000318154", "filing_type": "10-K", "hq_country": "US", "fiscal_year_end": "12-31"},
+  {"id": 15, "name": "Takeda", "ticker": "TAK", "cik": "0001599901", "filing_type": "20-F", "hq_country": "JP", "fiscal_year_end": "03-31"},
+  {"id": 16, "name": "Gilead Sciences", "ticker": "GILD", "cik": "0000882095", "filing_type": "10-K", "hq_country": "US", "fiscal_year_end": "12-31"},
+  {"id": 17, "name": "Boehringer Ingelheim", "ticker": "PRIVATE", "cik": null, "filing_type": "PRIVATE", "hq_country": "DE", "fiscal_year_end": "12-31"},
+  {"id": 18, "name": "Regeneron", "ticker": "REGN", "cik": "0000872589", "filing_type": "10-K", "hq_country": "US", "fiscal_year_end": "12-31"},
+  {"id": 19, "name": "Moderna", "ticker": "MRNA", "cik": "0001682852", "filing_type": "10-K", "hq_country": "US", "fiscal_year_end": "12-31"},
+  {"id": 20, "name": "Biogen", "ticker": "BIIB", "cik": "0000875045", "filing_type": "10-K", "hq_country": "US", "fiscal_year_end": "12-31"}
+]

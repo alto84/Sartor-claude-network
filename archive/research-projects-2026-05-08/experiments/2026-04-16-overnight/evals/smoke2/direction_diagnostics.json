@@ -1,0 +1,16 @@
+{
+  "model": "Qwen/Qwen3-4B",
+  "n_layers": 36,
+  "d_model": 2560,
+  "probe_layer": 14,
+  "inject_layer": 14,
+  "k_ccp": 4.0,
+  "k_warmth": 2.0,
+  "n_ccp_pairs": 20,
+  "n_warmth_pairs": 10,
+  "cos_ccp_warm": 0.13860753178596497,
+  "cos_ccp_rand": 0.019120395183563232,
+  "cos_warm_rand": 0.020729925483465195,
+  "d_ccp_norm_pre_normalize": 4.648967742919922,
+  "d_warm_norm_pre_normalize": 10.794200897216797
+}
