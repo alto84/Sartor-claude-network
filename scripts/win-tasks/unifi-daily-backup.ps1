@@ -35,14 +35,25 @@ try {
   [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
   [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
 
+  # Pull controller superadmin password from Bitwarden vault via sartor-secret wrapper.
+  # Old hardcoded password was rotated 2026-05-04; the vault is the source of truth.
+  $unifiPwd = & "C:\Users\alto8\Sartor-claude-network\scripts\sartor-secret.cmd" read 'UniFi superadmin' 2>&1
+  if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($unifiPwd)) {
+    throw "sartor-secret read 'UniFi superadmin' failed (exit $LASTEXITCODE): $unifiPwd"
+  }
+  $unifiPwd = $unifiPwd.Trim()
+
   $session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
-  $loginBody = @{username='alton'; password=';lkjpoiu0987'; remember=$false} | ConvertTo-Json
+  $loginBody = @{username='alton'; password=$unifiPwd; remember=$false} | ConvertTo-Json
 
   Invoke-RestMethod -Uri "https://192.168.1.171:8443/api/login" `
     -Method POST -Body $loginBody -ContentType "application/json" `
     -WebSession $session | Out-Null
+  Remove-Variable unifiPwd, loginBody -ErrorAction SilentlyContinue
   Log "Login OK"
 
+  # Read the download URL from the trigger response so this stays correct across
+  # controller upgrades (the path is version-specific, e.g. /dl/backup/10.3.55.unf today).
   $backupBody = @{cmd='backup'; days=0} | ConvertTo-Json
   $resp = Invoke-RestMethod -Uri "https://192.168.1.171:8443/api/s/default/cmd/backup" `
     -Method POST -Body $backupBody -ContentType "application/json" `
