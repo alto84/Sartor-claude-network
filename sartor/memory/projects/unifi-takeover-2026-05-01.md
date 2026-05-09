@@ -4,7 +4,7 @@ description: Complete software-only takeover of the Berman Home Systems-installe
 type: project
 status: 9-of-9-fully-owned-takeover-complete
 date: 2026-05-01
-last_updated: 2026-05-02T00:05Z
+last_updated: 2026-05-09
 related:
   - reference/HOUSEHOLD-CONSTITUTION
 tags: [project/active, infra/network, machine/rocinante, vendor/ubiquiti, vendor/berman-home-systems]
@@ -28,12 +28,12 @@ This project repatriated the entire network to local Sartor admin in one day, wi
 | Sartor-Saxena-Claude Network (switch) | 192.168.1.170 | 58:d6:1f:86:e3:ff | USPM24P | ✅ Connected | renamed from "USW-Pro-Max-24-PoE", port labels via API, fw bumped 7.0.50→7.4.1 during adoption |
 | OutdoorBackyard | 192.168.1.173 | 58:d6:1f:a8:36:58 | UKPW (U7-Outdoor) | ✅ Connected | first AP — proof-of-concept |
 | Hall2ndFloor | 192.168.1.167 | a8:9c:6c:64:70:14 | U7PRO | ✅ Connected | switch port 1 |
-| HerOffice (formerly mislabeled "Gym" by BHS controller; confirmed 2026-05-02 via locate-strobe + Aneeta's Pixel-8 association) | 192.168.1.165 | 8c:ed:e1:7a:f2:bc | U7PRO | ✅ Connected | switch port 2 |
+| Aneeta's Office (formerly mislabeled "Gym" by BHS controller; confirmed 2026-05-02 via locate-strobe + Aneeta's Pixel-8 association; renamed from HerOffice to Aneeta's Office 2026-05-09) | 192.168.1.165 | 8c:ed:e1:7a:f2:bc | U7PRO | ✅ Connected | switch port 2 |
 | Gym (BHS controller labeled this "Basement"; physical patch panel labels port 3 "GYM"; Alton's Fold associated at -36 dBm from inside the gym; renamed 2026-05-02 ~13:55 ET) | 192.168.1.168 | 9c:05:d6:b0:53:d2 | U7PRO | ✅ Connected | switch port 3 |
 | Basement (BHS controller labeled this "HerOffice"; physical patch panel labels port 4 "BASE WAP"; renamed to match physical truth 2026-05-02 ~13:55 ET) | 192.168.1.183 | a8:9c:6c:62:ea:20 | U7PRO | ✅ Connected | switch port 4 |
 | 3rdFloor | 192.168.1.166 | 8c:ed:e1:7a:86:ac | U7PRO | ✅ Connected | switch port 5 |
 | Livingroom | 192.168.1.185 | 8c:ed:e1:7a:8a:04 | U7PRO | ✅ Connected | switch port 6 via downstream AV-rack switch — separate Ubiquiti U-PoE++ injector powers the AP (NOT switch PoE on port 6); was hung post-restart, recovered by physically power-cycling the U-PoE++ injector |
-| HisOffice (in-wall) | 192.168.1.186 | 1c:0b:8b:6e:6d:e3 | U7PIW (G7IW) | ✅ Connected | switch port 8 — required `firmware.json` patch to register G7IW model alias |
+| Alton's Office (in-wall, renamed from HisOffice 2026-05-09) | 192.168.1.186 | 1c:0b:8b:6e:6d:e3 | U7PIW (G7IW) | ✅ Connected | switch port 8 — required `firmware.json` patch to register G7IW model alias |
 
 ## Credentials
 
@@ -239,7 +239,7 @@ Worth wiring into a Windows Scheduled Task (daily 3 AM ET) once stable.
 ## Open items
 
 1. **Resolve Livingroom (.185)** — physical unplug-replug of the AP's ethernet cable for 10 seconds. AP will reboot, immediately phone our controller, transition Pending → Connected within 60-90s. All config already present in MongoDB so no further action needed.
-2. **Verify `mgmt_url` and `stun_url` updated to ours** on all 9 devices. SSH to each, `cat /etc/persistent/cfg/mgmt | grep -E "url"` — should show `192.168.1.171` for all three URLs (servers.1.url, stun_url, mgmt_url). If `stun_url`/`mgmt_url` still show `berman.gets-it.net`, that's stale display text, not a security gap (those URLs aren't load-bearing for primary control). HisOffice + OutdoorBackyard confirmed clean; verify others.
+2. **Verify `mgmt_url` and `stun_url` updated to ours** on all 9 devices. SSH to each, `cat /etc/persistent/cfg/mgmt | grep -E "url"` — should show `192.168.1.171` for all three URLs (servers.1.url, stun_url, mgmt_url). If `stun_url`/`mgmt_url` still show `berman.gets-it.net`, that's stale display text, not a security gap (those URLs aren't load-bearing for primary control). Alton's Office + OutdoorBackyard confirmed clean; verify others.
 3. **Confirm hidden `letmeinnow` SSID is gone** — WiFi scan from a phone, look for hidden SSIDs in your house. Should not see one anymore since our pre-staged config didn't include it.
 4. **Take fresh post-takeover `.unf` backup** once Livingroom resolves. Stash next to the pre-takeover one.
 5. **Send Pete email** — drafted at `unifi-takeover-2026-05-01-draft-pete-email.md` — Alton's call when. Friendly framing, four security suggestions for their default install template + Super Admin handoff request. Skip mentioning we already executed Phase 1+2 ourselves.

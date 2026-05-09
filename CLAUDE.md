@@ -305,6 +305,9 @@ Defined in `.claude/scheduled-tasks/`:
 - **GitHub:** `https://github.com/alto84/`
 
 ### gpuserver1 (GPU Server)
+
+> Current IP is 192.168.1.199 as of 2026-05-08 evening (was .100). Hosts-file work is in progress to switch references to the hostname `gpuserver1`. See Tier 2 sweep for hostname migration. Literal .100 references throughout this section are stale; use hostname `gpuserver1` going forward.
+
 - **OS:** Ubuntu 22.04
 - **CPU:** Intel i9-14900K
 - **RAM:** 128GB DDR5

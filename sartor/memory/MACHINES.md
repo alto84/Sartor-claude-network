@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-05-08
-updated_by: unifi-takeover-cleanup
+updated: 2026-05-09
+updated_by: ip-and-ap-rename-cleanup
 last_verified: 2026-05-02
 status: active
 next_review: 2026-05-12
@@ -36,6 +36,8 @@ related: [BUSINESS, PROCEDURES, SELF, MULTI-MACHINE-MEMORY, machines/gpuserver1/
 - **Claude in Chrome:** MCP extension connected via named pipe \.\pipe\claude-mcp-browser-bridge-alton
 
 ## gpuserver1 (Ubuntu Server)
+
+> Current IP is 192.168.1.199 as of 2026-05-08 evening (was .100). Hosts-file work is in progress to switch references to the hostname `gpuserver1`. See Tier 2 sweep for hostname migration. Literal .100 references throughout this section are stale; use hostname `gpuserver1` going forward.
 
 **Role:** GPU compute, model training/inference, headless automation, dashboard host, vast.ai rental
 

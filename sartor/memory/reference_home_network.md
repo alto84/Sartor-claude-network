@@ -2,7 +2,7 @@
 name: Home network and smart devices
 description: 85 Stonebridge network topology — Sartor-Saxena-Claude Network (UniFi, locally administered), Sonos speakers, Google Home/Nest devices, IPs, subnets. Updated 2026-05-02 to reflect the BHS takeover.
 type: reference
-updated: 2026-05-02
+updated: 2026-05-09
 last_verified: 2026-05-02
 related: [projects/unifi-takeover-2026-05-01-INDEX, projects/unifi-takeover-2026-05-01, MACHINES]
 originSessionId: 6d66075b-10f9-482c-a62e-9f2828a7ed0d
@@ -31,16 +31,16 @@ For the full takeover history, playbook, credentials, and recovery procedures se
 | Hall2ndFloor (U7-Pro) | 192.168.1.167 | port 1 | AP |
 | Gym (U7-Pro) | 192.168.1.165 | port 2 | AP |
 | Basement (U7-Pro) | 192.168.1.168 | port 3 | AP |
-| HerOffice (U7-Pro) | 192.168.1.183 | port 4 | AP |
+| Aneeta's Office (U7-Pro) | 192.168.1.183 | port 4 | AP |
 | 3rdFloor (U7-Pro) | 192.168.1.166 | port 5 | AP |
 | Livingroom (U7-Pro) | 192.168.1.185 | port 6 (downstream AV-rack switch + U-PoE++ injector) | AP |
 | OutdoorBackyard (U7-Outdoor) | 192.168.1.173 | port 7 | AP |
-| HisOffice (U7-PIW in-wall) | 192.168.1.186 | port 8 | AP |
+| Alton's Office (U7-PIW in-wall) | 192.168.1.186 | port 8 | AP |
 
 ### WiFi SSIDs
 
 - **`LGP123`** — single consolidated SSID, broadcast on all 3 bands (2.4 / 5 / 6 GHz) where the AP supports them. WPA3-SAE + WPA2 transition (`pmf_mode=optional`). PSK is in the takeover project doc, not here.
-- 2.4 GHz channels pinned 1/6/11 (HerOffice/Basement/HisOffice on 1, Gym/OutdoorBackyard on 6, 3rdFloor/Hall2ndFloor/Livingroom on 11). 5 GHz and 6 GHz auto.
+- 2.4 GHz channels pinned 1/6/11 (Aneeta's Office/Basement/Alton's Office on 1, Gym/OutdoorBackyard on 6, 3rdFloor/Hall2ndFloor/Livingroom on 11). 5 GHz and 6 GHz auto.
 - Auto-firmware-update enabled, daily 3 AM ET window, release channel.
 
 ### Other LAN clients (192.168.1.x — selected)

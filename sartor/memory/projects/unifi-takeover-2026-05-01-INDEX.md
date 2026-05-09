@@ -4,7 +4,7 @@ description: Single dispatch page for the 2026-05-01 UniFi network takeover. Ind
 type: index
 status: phase-1-and-2-complete-phase-3-deferred
 date: 2026-05-01
-last_updated: 2026-05-02
+last_updated: 2026-05-09
 related:
   - projects/unifi-takeover-2026-05-01
   - reference_home_network
@@ -96,7 +96,7 @@ Outstanding items, in rough priority order. None blocks the takeover, which is o
 
 1. **Physical Nest retirement** — once Aneeta and the kids' devices have migrated to `LGP123`, unplug the Nest mesh root at switch port 22 (.163). Two wireless peers go dark within seconds. See [[unifi-takeover-2026-05-01-nest-retirement]] for the safe sequence and the 75 GB sustained-flow anomaly that motivates it.
 2. **Send the Pete email** — Gmail draft `r1648436912190611604` is queued; Alton's call when. Friendly framing, four security suggestions for BHS's default install template plus a Super Admin handoff request.
-3. **Verify `mgmt_url` and `stun_url`** still show 192.168.1.171 (not `berman.gets-it.net`) on all 9 devices. SSH to each, `cat /etc/persistent/cfg/mgmt | grep -E "url"`. HisOffice + OutdoorBackyard already verified clean.
+3. **Verify `mgmt_url` and `stun_url`** still show 192.168.1.171 (not `berman.gets-it.net`) on all 9 devices. SSH to each, `cat /etc/persistent/cfg/mgmt | grep -E "url"`. Alton's Office + OutdoorBackyard already verified clean.
 4. **Confirm hidden `letmeinnow` SSID stays gone** — periodic WiFi scan from a phone for hidden SSIDs.
 5. **DNS filter decision** — Phase 3A Kids VLAN with Pi-hole is deferred. Whether to wire Pi-hole or NextDNS at the gateway level is an open choice that depends on Phase 3A timing.
 6. **UCG-Pro decision** — eventually replace the Verizon Fios router with a UniFi Cloud Gateway (UCG-Pro / UCG-Max) to fold WAN edge into the same admin model. CR1000A bridge mode is supported. No timeline yet.

@@ -2,7 +2,7 @@
 name: reference_scheduled_tasks
 description: Canonical record of every scheduled job in the Sartor fleet — Windows Scheduled Tasks on Rocinante, Claude Code agentic tasks defined in .claude/scheduled-tasks/, Linux cron + systemd timers on gpuserver1 and rtxserver. Single source of truth; CLAUDE.md and per-machine MISSION docs link here. Bump `updated:` and add a History line on any change.
 type: reference
-updated: 2026-05-08
+updated: 2026-05-09
 originSessionId: d73d3437-8b28-4e31-bbe2-14e776bba51c
 ---
 # Sartor scheduled-task inventory
@@ -21,6 +21,7 @@ Verify with: `Get-ScheduledTask | Where-Object {$_.TaskName -like "Sartor*" -or 
 | `Sartor Peer Creds Sync` | every 4 hr | `scripts/win-tasks/sartor-creds-sync.ps1` — SCP fresh `~/.claude/.credentials.json` to peer Claudes | `C:\Users\alto8\backups\sartor-creds-sync.log` | bumped from nightly to 4h on 2026-05-02 to keep peer OAuth fresh after intra-day reboots |
 | `Sartor Memory Mirror` | nightly 3:30 AM ET | `scripts/win-tasks/sartor-mirror-to-github.ps1` — pushes rtxserver bare repo `main` to GitHub mirror | `C:\Users\alto8\backups\sartor-mirror.log` | DR mirror only; peers never push to GitHub directly |
 | `Sartor Hours Log` | nightly 11:55 PM ET | `scripts/hours-log-extract.py` — material-participation hours tracker (§469) writing `sartor/memory/business/hours-log/all-hours.csv` | `C:\Users\alto8\backups\hours-log.log` | union-of-intervals dedup across concurrent sessions; gaps <30 min count active |
+| `Sartor Registry Drift Check` *(spec only - not yet registered)* | every 4 hr | `scripts/win-tasks/registry-drift-check.cmd` -> `python sartor/memory/machines/check-registry.py` - pings each machine in REGISTRY.yaml, attempts SSH liveness, writes drift report to `inbox/rocinante/registry-drift-<UTC>.md` | `C:\Users\alto8\backups\registry-drift-check.log` | Tier 4 of IP-graceful-reassignment architecture (Tier 3 = REGISTRY.yaml). Exits non-zero on STALE/UNREACHABLE so cron-fail surfaces. Awaiting Alton greenlight to register; one-line `Set-ScheduledTask` in History below. |
 | `UniFi Daily Backup` | daily 3:00 AM ET | `scripts/win-tasks/unifi-daily-backup.ps1` — pulls `.unf` from local UniFi controller, SCPs off-site to rtxserver `/home/alton/sartor-network-backups/` | `C:\Users\alto8\backups\unifi\backup-log.txt` | local copies pruned >30d; rtxserver copies kept indefinitely |
 | `SartorMorningBriefing` | daily 6:30 AM ET | `scripts/morning-briefing-run.cmd` → invokes morning-briefing skill | (Claude session log) | drives the cross-domain daily briefing |
 | `SartorCuratorPass` | 7:30 AM + 7:30 PM ET | `scripts/curator-pass-run.cmd` → invokes memory-curator agent | (Claude session log) | drains inbox proposals, updates USER.md + MEMORY.md |
@@ -111,6 +112,14 @@ System timers are OS-managed and not in this inventory.
 
 ## History
 
+- 2026-05-09: `Sartor Registry Drift Check` task spec added (NOT registered yet; awaiting Alton greenlight). Tier 4 of the IP-graceful-reassignment architecture built tonight after the gpuserver1 .100 -> .199 DHCP-reassignment incident. Wrapper at `scripts/win-tasks/registry-drift-check.cmd`, detector at `sartor/memory/machines/check-registry.py`, registry source at `sartor/memory/machines/REGISTRY.yaml`. Verified end-to-end against the live fleet (3 OK, ping 1 ms each, ssh OK on both peers). To register when Alton greenlights:
+  ```powershell
+  $action = New-ScheduledTaskAction -Execute 'wscript.exe' -Argument '"C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\run-hidden.vbs" "C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\registry-drift-check.cmd"'
+  $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).Date.AddMinutes(15) -RepetitionInterval (New-TimeSpan -Hours 4)
+  $settings = New-ScheduledTaskSettingsSet -Hidden -StartWhenAvailable -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+  Register-ScheduledTask -TaskName 'Sartor Registry Drift Check' -Action $action -Trigger $trigger -Settings $settings -RunLevel Limited
+  ```
+  Verify with `Get-ScheduledTask -TaskName 'Sartor Registry Drift Check' | Get-ScheduledTaskInfo` and by triggering once: `Start-ScheduledTask -TaskName 'Sartor Registry Drift Check'`. Expect `LastTaskResult = 0` and a fresh `inbox/rocinante/registry-drift-<UTC>.md` file.
 - 2026-05-08 — flash fix actually applied. Discovered that 2026-05-06's `Settings.Hidden = $true` did not stop the console flash (only suppresses Task Scheduler's own UI, not the spawned `powershell.exe` / `cmd.exe` window). Created `C:\Users\alto8\scripts\run-hidden.vbs` (one-line `WScript.Shell.Run cmd, 0, True` wrapper) and rerouted all 10 Sartor-owned tasks through it via `Set-ScheduledTask -Action` (no admin needed). Verified clean by triggering Sartor Hours Log, Sartor Peer Sessions Mirror, and Sartor Peer Creds Sync — all completed with `LastTaskResult=0` and produced the expected log entries with no desktop flash. Original Execute+Arguments strings are preserved verbatim inside the wrapper's quoted argument so existing scripts run unchanged. Tried the cleaner `LogonType=S4U` route first (would have avoided needing a wrapper file) but `Set-ScheduledTask -Principal` returned `Access is denied` without admin elevation.
 - 2026-05-06 — file created during memory-system-uplift kickoff. Inventoried 10 Windows tasks + 11 Claude-task specs + 5 gpuserver1 cron entries + 4 rtxserver cron entries + 2 rtxserver user systemd services + 1 system service. All Windows tasks set to `Settings.Hidden = $true` (later found insufficient — see 2026-05-08).
 - 2026-05-08 — Phase 3 of C:\Users\alto8 → Sartor-claude-network migration. The 5 home-dir scripts (`sartor-creds-sync.ps1`, `sartor-mirror-to-github.ps1`, `unifi-daily-backup.ps1`, `run-hidden.vbs`, `push-peer-credentials.sh`) moved into `scripts/win-tasks/`. All 10 Sartor-owned Windows Scheduled Tasks updated via `Set-ScheduledTask -Action`. Verified by manual trigger of Sartor Hours Log + Sartor Peer Sessions Mirror (both LastResult=0). Old `C:\Users\alto8\scripts\` archived to `archive/legacy-scripts-2026-05-08/` for one-cycle fallback before deletion.

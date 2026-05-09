@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Sartor REGISTRY drift detector — Tier 4.
+Sartor REGISTRY drift detector -Tier 4.
 
 Walks REGISTRY.yaml. For each non-retired machine:
   1. Pings current_ip with a short timeout.
@@ -16,10 +16,10 @@ Designed to run on Rocinante under a 4h Windows Scheduled Task. Works from
 either Bash (Git for Windows) or PowerShell. Pure stdlib + PyYAML.
 
 Status semantics:
-  OK          — ping succeeded AND (no ssh_path OR ssh liveness succeeded).
-  STALE       — ping succeeded but ssh failed (host alive at IP, but auth or
+  OK          -ping succeeded AND (no ssh_path OR ssh liveness succeeded).
+  STALE       -ping succeeded but ssh failed (host alive at IP, but auth or
                 sshd is broken; possibly an IP collision with a different host).
-  UNREACHABLE — ping failed (host is off, IP changed, network broken).
+  UNREACHABLE -ping failed (host is off, IP changed, network broken).
 """
 
 from __future__ import annotations
@@ -144,7 +144,7 @@ def write_report(results: list[dict], stamp: str) -> Path:
     lines.append("source: sartor/memory/machines/check-registry.py")
     lines.append("---")
     lines.append("")
-    lines.append(f"# Registry drift check — {utc_iso()}")
+    lines.append(f"# Registry drift check -{utc_iso()}")
     lines.append("")
     lines.append(f"Overall: **{overall.upper()}**. {counts['OK']} OK, {counts['STALE']} STALE, {counts['UNREACHABLE']} UNREACHABLE.")
     lines.append("")

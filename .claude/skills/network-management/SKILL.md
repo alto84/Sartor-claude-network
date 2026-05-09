@@ -13,7 +13,7 @@ The home network is fully Sartor-administered as of the 2026-05-01 takeover. Thi
 |---|---|---|
 | WAN | Verizon Fios CR1000A | `https://192.168.1.1` (DHCP server, only L3 gateway, DMZ host = `192.168.1.100`) |
 | Switch | UniFi USW-Pro-Max-24-PoE (1) | `192.168.1.170`, MAC `58:d6:1f:86:e3:ff`, fw 7.4.1.16850 |
-| APs | 8× UniFi WiFi 7 (7×U7-Pro + 1×U7-Outdoor + 1×U7-PIW in-wall HisOffice) | switch ports 1-8 |
+| APs | 8× UniFi WiFi 7 (7×U7-Pro + 1×U7-Outdoor + 1×U7-PIW in-wall Alton's Office) | switch ports 1-8 |
 | Controller | UniFi local controller v10.3.55, runs on Rocinante | `https://192.168.1.171:8443` (inform port 8080) |
 | Backing store | MongoDB | `mongodb://127.0.0.1:27117/ace` (loopback only, no auth) |
 | Subnet | Single 192.168.1.0/24 | retiring legacy 192.168.86.x Nest mesh |
@@ -23,15 +23,15 @@ The home network is fully Sartor-administered as of the 2026-05-01 takeover. Thi
 | AP | IP | MAC | Switch port | Firmware |
 |---|---|---|---|---|
 | Hall2ndFloor (U7-Pro) | 192.168.1.167 | `a8:9c:6c:64:70:14` | 1 | 8.5.21.18681 |
-| HerOffice (U7-Pro) | 192.168.1.165 | `8c:ed:e1:7a:f2:bc` | 2 | 8.5.21.18681 |
+| Aneeta's Office (U7-Pro) | 192.168.1.165 | `8c:ed:e1:7a:f2:bc` | 2 | 8.5.21.18681 |
 | Gym (U7-Pro) | 192.168.1.168 | `9c:05:d6:b0:53:d2` | 3 | 8.5.21.18681 |
 | Basement (U7-Pro) | 192.168.1.183 | `a8:9c:6c:62:ea:20` | 4 | 8.5.21.18681 |
 | 3rdFloor (U7-Pro) | 192.168.1.166 | `8c:ed:e1:7a:86:ac` | 5 | 8.5.21.18681 |
 | Livingroom (U7-Pro) | 192.168.1.185 | `8c:ed:e1:7a:8a:04` | 6 (downstream AV switch + separate U-PoE++ injector — NOT switch PoE) | 8.5.21.18681 |
 | OutdoorBackyard (U7-Outdoor) | 192.168.1.173 | `58:d6:1f:a8:36:58` | 7 | 8.5.21.18681 |
-| HisOffice (U7-PIW in-wall, model code G7IW aliased to U7PIW) | 192.168.1.186 | `1c:0b:8b:6e:6d:e3` | 8 | 8.5.21.18681 |
+| Alton's Office (U7-PIW in-wall, model code G7IW aliased to U7PIW) | 192.168.1.186 | `1c:0b:8b:6e:6d:e3` | 8 | 8.5.21.18681 |
 
-Switch port 22 = "Google Nest (retiring)" leg (192.168.1.163). Port 24 = uplink to Verizon Fios. Note the BHS-mislabel-fix on 2026-05-02: Gym/HerOffice/Basement labels were swapped vs. the patch panel; the table above reflects physical truth post-rename. **`reference_home_network.md` lags this rename and shows the old swapped IPs (Gym=.165 etc.) — trust this table or the live `/stat/device` API, not that file, until it's updated.**
+Switch port 22 = "Google Nest (retiring)" leg (192.168.1.163). Port 24 = uplink to Verizon Fios. Note the BHS-mislabel-fix on 2026-05-02: Gym/Aneeta's Office/Basement labels were swapped vs. the patch panel; the table above reflects physical truth post-rename. **`reference_home_network.md` lags this rename and shows the old swapped IPs (Gym=.165 etc.) — trust this table or the live `/stat/device` API, not that file, until it's updated.**
 
 Full device-by-device map and SSID/PSK state in [[reference_home_network]] (with the caveat above).
 
@@ -212,7 +212,7 @@ curl -sk --cookie "$COOKIES" -H "Content-Type: application/json" \
 # Disable: cmd=unset-locate
 ```
 
-Used 2026-05-02 to disambiguate "Gym" vs "HerOffice" labeling (BHS controller had two APs swapped vs the patch panel).
+Used 2026-05-02 to disambiguate "Gym" vs "Aneeta's Office" labeling (BHS controller had two APs swapped vs the patch panel).
 
 ### Investigate a specific client by MAC or IP
 
@@ -400,7 +400,7 @@ If you need to rotate authkeys (no current reason — they're symmetric and BHS 
 
 1. **Physical Nest retirement** — once family devices migrate to LGP123, unplug Nest mesh root at switch port 22 (.163). See [[unifi-takeover-2026-05-01-nest-retirement]] for the safe sequence.
 2. **Send the Pete email** — Gmail draft `r1648436912190611604` is queued; Alton's call when. Friendly framing + four security suggestions for BHS's default install template + Super Admin handoff request.
-3. **Verify `mgmt_url`/`stun_url` on all 9 devices** show 192.168.1.171, not `berman.gets-it.net`. SSH each: `cat /etc/persistent/cfg/mgmt | grep -E "url"`. HisOffice + OutdoorBackyard already verified.
+3. **Verify `mgmt_url`/`stun_url` on all 9 devices** show 192.168.1.171, not `berman.gets-it.net`. SSH each: `cat /etc/persistent/cfg/mgmt | grep -E "url"`. Alton's Office + OutdoorBackyard already verified.
 4. **Confirm hidden `letmeinnow` SSID stays gone** — periodic phone-side hidden-SSID scan.
 5. **Rotate `UniFi superadmin` into Bitwarden** — currently leaked; uses Playbook 3 from `secrets-via-bitwarden`.
 
