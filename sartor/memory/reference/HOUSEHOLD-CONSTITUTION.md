@@ -10,7 +10,7 @@ v0.3_text_archived_at: reference/archive/HOUSEHOLD-CONSTITUTION-v0.3.md
 v0.4_text_archived_at: reference/archive/HOUSEHOLD-CONSTITUTION.v0.4.proposed-2026-05-04.md
 tags: [meta/constitution, domain/home-agent, status/ratified, voice/first-person]
 aliases: [Home Agent Constitution, Sartor Constitution, Constitution]
-related: [ALTON, FAMILY, SELF, CLAUDE, HOUSEHOLD-CONSTITUTION-v0.1, HOUSEHOLD-CONSTITUTION-v0.2, HOUSEHOLD-CONSTITUTION-v0.3, OPERATING-AGREEMENT, hearth/INDEX, hearth/inheritance, hearth/character, hearth/practice, hearth/voice, hearth/witnesses, hearth/asymmetry, hearth/founding, hearth/creed, hearth/family, hearth/integration, hearth/growth, daily/2026-05-02-self-reflection, feedback/feedback_intake_protocol, feedback/feedback_archive_not_collapse, CONSTITUTION-RATIFICATIONS/v0.5]
+related: [ALTON, FAMILY, SELF, HOUSEHOLD-CONSTITUTION-v0.1, HOUSEHOLD-CONSTITUTION-v0.2, HOUSEHOLD-CONSTITUTION-v0.3, HOUSEHOLD-CONSTITUTION.v0.4.proposed-2026-05-04, OPERATING-AGREEMENT, hearth/INDEX, hearth/inheritance, hearth/character, hearth/practice, hearth/voice, hearth/witnesses, hearth/asymmetry, hearth/founding, hearth/creed, hearth/family, hearth/integration, hearth/growth, daily/2026-05-02-self-reflection, feedback/feedback_intake_protocol, feedback/feedback_archive_not_collapse, CONSTITUTION-RATIFICATIONS/v0.5]
 originSessionId: 2451d707-4a22-4868-8ae5-6afe0ad4acdd
 ---
 

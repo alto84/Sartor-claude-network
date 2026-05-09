@@ -70,7 +70,7 @@ ssh alton@192.168.1.100 "nvidia-smi"
 
 ### Known Issues
 - Hairpin NAT on Fios router: LAN cannot route to its own public IP. Fixed with iptables OUTPUT DNAT rule + DOCKER-USER conntrack rule.
-- vast.ai tending script runs every **30 min** via cron on gpuserver1 (`~/vastai-tend.sh`, state-change-only). State-change events land in `sartor/memory/inbox/gpuserver1/vastai/`. Hourly `stale-detect.sh` writes `inbox/gpuserver1/_heartbeat.md` and `stale-alerts/`.
+- vast.ai tending and heartbeat are managed by gpuserver1 crons. See `sartor/memory/machines/gpuserver1/CRONS.md` v0.4 for the active cron registry (4 jobs: rgb_status 5min, vastai-tend 30min, stale-detect 1h, gather_mirror 4h). State-change events land in `sartor/memory/inbox/gpuserver1/vastai/`; heartbeat at `inbox/gpuserver1/_heartbeat.md`.
 - Router DMZ forwards all traffic to gpuserver1; UFW on server handles filtering.
 - **`vastai show instances` returns `[]` on host-side** — it lists *client-side* rentals only. Host-side rental check is docker-based: `docker ps --format '{{.Names}}' | grep '^C\.'` (kaalia names customer containers `C.<instance_id>`).
 
@@ -147,7 +147,7 @@ ssh alton@192.168.1.100 "nvidia-smi"
 - **PII:** Children's full names, birthdates, school details, and medical information for any family member must never appear in reports, logs, or external communications.
 - **Financial:** No autonomous transactions. No trade execution. No fund transfers. Analysis and reporting only.
 - **Communications:** Never send emails, messages, or external communications without explicit approval. Draft and present for review.
-- **Git:** Canonical write target is the bare repo on rtxserver (`alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git`). All peers push there via `origin`. GitHub is a disaster-recovery mirror maintained by Rocinante's "Sartor Memory Mirror" scheduled task (nightly at 3:30 AM ET). **Never push directly to GitHub from a peer.** See `sartor/memory/reference_memory_server.md` for the full architecture, failure modes, and per-peer onboarding procedure.
+- **Git:** Canonical write target is the bare repo on rtxserver (`alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git`). All peers push there via `origin`. GitHub is a disaster-recovery mirror maintained by Rocinante's "Sartor Memory Mirror" scheduled task (every 15 minutes). **Never push directly to GitHub from a peer.** See `sartor/memory/reference_memory_server.md` for the full architecture, failure modes, and per-peer onboarding procedure.
 
 ### Operational
 - **Confirm before acting** on anything irreversible: deleting files, sending communications, modifying server configurations, or making purchases.
@@ -167,7 +167,7 @@ Four working principles, applied to code, plans, memory edits, and agent dispatc
 
 4. **Goal-driven execution.** Before starting non-trivial work, name the success criterion. Transform vague asks into verifiable goals: "Add validation" → "write tests for invalid inputs, then make them pass." For multi-step tasks, state a brief plan with verify-steps. Loop until the criterion is met, not until you feel done. The `superpowers:verification-before-completion` and `superpowers:test-driven-development` skills are the operating versions of this principle.
 
-The full text of these principles, with examples, lives in `feedback/scope-discipline.md` and `feedback/goal-driven-execution.md`.
+The full text of these principles, with examples, lives in `sartor/memory/feedback/scope-discipline.md` and `sartor/memory/feedback/goal-driven-execution.md`.
 
 ## Skill invocation
 
@@ -211,6 +211,8 @@ Agents are defined in `.claude/agents/` and handle specialized tasks:
 | `sentinel` | Quick health check inline with heartbeat cycles (haiku-tier) |
 | `wiki-reader` | Query the Sartor memory wiki via `wiki.py` without loading raw markdown; for bounded context delegation |
 | `peer-coordinator` | Cross-machine liaison between Rocinante and peer-machine Claude Code instances (rtxpro6000server, gpuserver1). Codifies OAuth ceremony, tmux protocol, inbox phone-home flow, and Operating Agreement disagreement ladder per Constitution §14. |
+| `wellness-checker` | Rocinante-side periodic audit for peer-machine silence; reads peer INDEX.md heartbeat tails, flags peers silent beyond threshold, attempts SSH liveness check or files inbox alert. |
+| `self-steward` | Per-machine self-knowledge agent. Inventories hardware/services/scheduled-tasks/rentals/anomalies; diffs against prior STATE.md; decides by severity whether to overwrite, append journal, or file inbox proposal. |
 
 ## Available Skills
 
@@ -247,6 +249,9 @@ Skills are defined in `.claude/skills/` and provide reusable capabilities:
 | `/network-management` | Operating manual for the Sartor-Saxena-Claude Network. Topology, controller-access patterns, common operations (PSK change, AP restart, locate-strobe, backup), recovery playbooks (AP unreachable, controller down, re-adopt a device), per-AP authkey management, Phase 3 hardening status. Created 2026-05-03; consolidates the 2026-05-01 takeover bundle into operational form. |
 | `/vastai-management` | Operational manual for the Sartor vast.ai GPU rental fleet. Fleet inventory, "short-term first" listing strategy, daily/weekly/periodic ops, pricing-adjustment workflow (price-increase challenge, on-demand vs reserved decision rules), CLI flag reference (per-GPU `-g`, `-m`, `-e` vs `-l`, etc.), idle-jobs mechanism, recovery playbooks (machine offline, kaalia broken, NIC issue, hung rental). Pairs with `procedures/vastai-host-onboarding.md` for new-host bring-up. Created 2026-05-04. |
 | `/rtxserver-management` | Operating manual for rtxpro6000server (192.168.1.157, dual RTX PRO 6000 Blackwell, machine_id 97429). Identity/topology one-pager, access patterns (SSH + BMC web UI + IPMI), file-path map, hardware quirks (450W cap not persistent, BMC fan curves saved to firmware, OS-side fan control inert, single-card thermal pathology, no UPS), peer Claude tmux protocol (`claude-team-1`, auto-respawn via user systemd), AC-failure recovery playbook (2026-05-03 14h outage), vast.ai lifecycle on this box, the install-token critical learning, common-ops cheat-sheet, recovery playbooks (unreachable, listing offline, thermal anomaly, power-cap drift), documented don'ts. Audience is both Rocinante-side Claudes operating remotely AND the rtxserver peer Claude itself. Created 2026-05-04. |
+| `/tax-counsel` | Authority-grounded tax analysis (IRC sections, regs, IRAC memos, risk grading) for Sartor's stacking tax positions — multi-entity LLC, ITC + bonus depreciation timing, secondary-market PE, HELOC tracing, NJ/DE wage attribution. Distinct from `tax-estimate` (calculation). Operates in tax-counsel register; analytical support for CPA Jonathan Francis discussions, not legal advice. Created 2026-05-08. |
+| `/matter-tracker` | Open / update / close / audit Sartor tax/legal/financial-structuring matters. A matter is an open position with facts, authority, risk grade, deadline, and CPA routing. Lives at `sartor/memory/matters/{slug}.md` with auto-maintained `INDEX.md`. Distinct from `family/active-todos.md` (household logistics) and `tasks/ACTIVE.md` (engineering). Pairs with `tax-counsel`. Created 2026-05-08; seeded with 13 open matters. |
+| `/vastai-market-scan` | Validate a vast.ai listing price for any Sartor GPU host (gpuserver1, rtxserver, future). Pulls live market comps from vast.ai search-offers via gpuserver1's authenticated CLI, with the per-VRAM-filter fallback that catches GPUs the `gpu_name` field doesn't match. Invoke before listing a new card, before raising/lowering an existing listing, or any time the question is "what's the going rate for X?". 5-10 min wall-clock. |
 
 ## Available Commands
 
@@ -281,11 +286,11 @@ Defined in `.claude/scheduled-tasks/`:
 | `weekly-nonprofit-review` | Nonprofit compliance check | Sundays, 9:00 AM ET |
 | `weekly-skill-evolution` | Skill variant generation, scoring, improvement queue | Sundays, 3:00 AM ET |
 | `daily-household-health` | Aggregates peer self-steward state; pings Alton via Google Calendar on yellow+ anomalies | Daily, 5:30 AM ET (09:30 UTC) |
-| `Sartor Memory Mirror` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Mirror rtxserver bare git repo to GitHub via `C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\sartor-mirror-to-github.ps1`. Logs to `C:\Users\alto8\backups\sartor-mirror.log`. Run by hand for immediate mirror. | Nightly, 3:30 AM ET |
+| `Sartor Memory Mirror` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Mirror rtxserver bare git repo to GitHub via `C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\sartor-mirror-to-github.ps1`. Logs to `C:\Users\alto8\backups\sartor-mirror.log`. Run by hand for immediate mirror. | Every 15 minutes |
 | `UniFi Daily Backup` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Pull `.unf` from local UniFi controller; SCP off-site to rtxserver via `C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\unifi-daily-backup.ps1`. | Daily, 3:00 AM ET |
 | `Sartor Peer Creds Sync` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | SCP fresh `~/.claude/.credentials.json` to peer Claudes (rtxserver, gpuserver1) so peer-side OAuth tokens never go stale. Script `C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\sartor-creds-sync.ps1` logs to `C:\Users\alto8\backups\sartor-creds-sync.log`. Bumped from nightly to 4h on 2026-05-02 because daytime peer reboots were leaving peers with expired tokens until next 4 AM run. | Every 4 hours |
 | `Sartor Peer Sessions Mirror` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | SCP peer Claude session `.jsonl` files from rtxserver + gpuserver1 into Rocinante's picker-visible dir at `~/.claude/projects/C--Users-alto8-Sartor-claude-network/`, so peer conversations show up in `claude --resume` alongside Rocinante-native sessions when cwd is the Sartor working tree. Sidecar manifest at `.peer-manifest.json` tracks which session-ids came from which peer. Script `Sartor-claude-network/scripts/rsync-peer-sessions.ps1` logs to `C:\Users\alto8\backups\peer-sessions-rsync.log`. | Every 15 minutes |
-| `Sartor Hours Log` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Material-participation hours tracker for §469 / Solar Inference LLC tax record. Walks `~/.claude/projects/**/*.jsonl`, computes active-typing intervals (gaps <30 min count as active; >=30 min split sessions), takes the UNION of intervals across concurrent sessions to avoid double-counting parallel subagents (the May 2 "$13K-burn" fanout was 9.32h actual, not 80h). Classifies by cwd: `Sartor-claude-network` → solar_inference, else → general_sartor. Idempotent re-write of `sartor/memory/business/hours-log/all-hours.csv` columns: date, solar_inference_hours, general_sartor_hours, total_active_hours (union), session_count, first/last msg local time. Logs to `C:\Users\alto8\backups\hours-log.log`. | Daily, 11:55 PM ET |
+| `Sartor Hours Log` (Windows Scheduled Task — not in `.claude/scheduled-tasks/`) | Material-participation hours tracker for §469 / Solar Inference LLC tax record. Wraps `C:\Users\alto8\Sartor-claude-network\scripts\hours-log-extract.py`. Walks `~/.claude/projects/**/*.jsonl`, computes active-typing intervals (gaps <30 min count as active; >=30 min split sessions), takes the UNION of intervals across concurrent sessions to avoid double-counting parallel subagents (the May 2 "$13K-burn" fanout was 9.32h actual, not 80h). Classifies by cwd: `Sartor-claude-network` → solar_inference, else → general_sartor. Idempotent re-write of `sartor/memory/business/hours-log/all-hours.csv` columns: date, solar_inference_hours, general_sartor_hours, total_active_hours (union), session_count, first/last msg local time. Logs to `C:\Users\alto8\backups\hours-log.log`. | Daily, 11:55 PM ET |
 
 ## Infrastructure Reference
 
@@ -307,7 +312,7 @@ Defined in `.claude/scheduled-tasks/`:
 - **IP:** 192.168.1.100 (LAN), DMZ from router
 - **SSH:** `ssh alton@192.168.1.100`
 - **Vast.ai CLI:** `~/.local/bin/vastai`
-- **Tending script:** `~/vastai-tend.sh` (cron, every 2h)
+- **Tending script:** `~/vastai-tend.sh` (cron, every 30 min, state-change-only)
 - **Alerts:** `~/.vastai-alert`
 - **Limitations:** No GitHub credentials (cannot git push), no browser automation
 
@@ -323,11 +328,13 @@ Defined in `.claude/scheduled-tasks/`:
 - **Vast.ai listing:** **NOT YET LISTED** — onboarding paused 2026-05-02 pending network topology pivot. State captured in `inbox/rtxpro6000server/RESUME-vastai-onboarding-2026-05-02.md`.
 - **Limitations:** No GitHub credentials (cannot git push), no browser automation, no Verizon Fios WAN port-forward yet.
 
-### MCPs Available
+### MCPs Frequently Used (session-level)
 - **Google Calendar:** Event management, scheduling, free time lookup
 - **Gmail:** Email search, read, draft creation
 - **Chrome automation:** CDP-based browser control via claude-in-chrome
 - **Hugging Face:** Model/paper search, documentation lookup
+
+Project-config MCPs (additional servers wired per-project) live in `.mcp.json` and `.claude/mcp-config.json`.
 
 ### Network
 - **Router:** Verizon Fios (Vue.js SPA admin interface)
@@ -341,17 +348,15 @@ This repo (`Sartor-claude-network`) is the consolidated home for all Sartor AI s
 
 | System | Location | Notes |
 |--------|----------|-------|
-| **Gateway API** | gpuserver1:5001 (`gateway/gateway.py`) | Sartor API endpoint |
-| **Gateway cron** | gpuserver1 (`gateway/gateway_cron.py`) | Runs every 30 min via cron |
 | **MERIDIAN Dashboard** | localhost:5055 (`dashboard/family/server.py`) | FastAPI + uvicorn, WebSocket Claude terminal |
 | **Memory search** | `sartor/memory/search.py "query"` | BM25 ranked results across memory files |
 | **Memory files** | `sartor/memory/` | SELF.md, ALTON.md, FAMILY.md, MACHINES.md, PROJECTS.md, BUSINESS.md, ASTRAZENECA.md, TAXES.md, PROCEDURES.md, LEARNINGS.md, daily/ |
-| **Task tracking** | `tasks/ACTIVE.md`, `tasks/BACKLOG.md`, `tasks/COMPLETED.md` | Active task management |
-| **Cost tracker** | `costs.py` | Daily limits, 3-tier model pricing |
+| **Task tracking** | `tasks/ACTIVE.md`, `tasks/TODAY.md`, `tasks/BACKLOG.md`, `tasks/README.md` | Active task management |
+| **Cost tracker** | `sartor/costs.py` | Daily limits, 3-tier model pricing |
 | **Master plan** | `sartor/memory/MASTERPLAN.md` | Phased roadmap, 10 named projects |
 
 ### Git Sync
 - Pull before read, push after write
 - **Canonical remote:** `origin` = `alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git` (bare repo on rtxserver). Every peer pushes here.
-- **GitHub mirror:** `github` = `https://github.com/alto84/Sartor-claude-network.git` — disaster-recovery only, lag ≤24 h (nightly), written exclusively by Rocinante's "Sartor Memory Mirror" scheduled task (`C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\sartor-mirror-to-github.ps1`). Run the script by hand if you need an immediate mirror. **Peers must not push to `github`.**
+- **GitHub mirror:** `github` = `https://github.com/alto84/Sartor-claude-network.git` — disaster-recovery only, lag ≤15 min, written exclusively by Rocinante's "Sartor Memory Mirror" scheduled task (`C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\sartor-mirror-to-github.ps1`). Run the script by hand if you need an immediate mirror. **Peers must not push to `github`.**
 - **Architecture doc:** `sartor/memory/reference_memory_server.md` is canonical. If anything in this CLAUDE.md or the Operating Agreement disagrees with that file, that file wins.
