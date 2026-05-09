@@ -1770,3 +1770,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SSH: gpuserver1 unavailable from execution environment.
 - Pages updated: `daily/2026-05-08.md` (created), `family/vayu.md` (enrollment + PTC), `family/vishala.md` (enrollment + PTC), `family/vasu.md` (Mother's Day TODAY), `family/active-todos.md` (pool + enrollment + PTC), `business/sante-total.md` (Chase account OPENED + donation button), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
 - KEY: Two P0 deadlines converge on 2026-05-15 (7 days): Wohelo $12,900 and Form 990-N. Pool pump/water heater is an active unresolved home issue. Sante Total now has a Chase account.
+
+## [2026-05-08] ingest | personal-data-gather run 67: Venmo $180 unknown; memory book resolved; Lucent survey confirmed
+- Sources: Gmail (newer_than:1d, 40 threads), all 5 Google Calendars (May 8–15)
+- Net-new facts: 5
+- New ACTION_REQUIRED: 1 (Venmo $180 from Rachelle trammel — unknown context, do not pay without confirmation)
+- Carry-forwards CLOSED: Memory book (Picaboo order confirmed); Lucent Energy site visit (confirmed 2026-05-13)
+- INFORMATIONAL: No afterschool band today (Vayu, 4th grade); Vayu screen time May 1–7 = 23h58m
+- Calendar: All 5 queried. Stable vs run 66. May 9: soccer 11 AM + Convocation 2:30 PM. May 13: Lucent survey 9 AM + soccer practice 5:30 PM.
+- SSH: gpuserver1 unavailable from execution environment.
+- Pages updated: `daily/2026-05-08.md` (run 67 appended), `family/vayu.md` (band + screen time), `family/active-todos.md` (Venmo + closures), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: Two P0 deadlines still converge on 2026-05-15 (7 days): Wohelo $12,900 and Form 990-N. Venmo $180 is new unknown-context payment request — needs Alton verification before paying.
