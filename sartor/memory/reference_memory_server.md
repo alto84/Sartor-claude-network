@@ -33,7 +33,7 @@ GitHub alto84/Sartor-claude-network   ← DR mirror only, lag ≤ 24 h
 - **Single canonical target:** `alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git`
 - **`origin` on every peer points there.**
 - **GitHub is a disaster-recovery mirror.** It lags by up to ~24 h (nightly cycle). Never push to it directly from a peer; the next mirror cycle would clobber peer pushes if it was force-pushed in between.
-- **Mirror responsibility:** Rocinante runs `C:\Users\alto8\scripts\sartor-mirror-to-github.ps1` nightly at 3:30 AM ET via the "Sartor Memory Mirror" Windows Scheduled Task. Mirror credentials live in Windows Credential Manager (HTTPS to GitHub). No GitHub keys exist anywhere else in the fleet. **Manual mirror anytime:** run the same .ps1 file by hand if you need an immediate push to GitHub (e.g., before stepping away from a session that won't be reachable for >24h).
+- **Mirror responsibility:** Rocinante runs `C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\sartor-mirror-to-github.ps1` nightly at 3:30 AM ET via the "Sartor Memory Mirror" Windows Scheduled Task. Mirror credentials live in Windows Credential Manager (HTTPS to GitHub). No GitHub keys exist anywhere else in the fleet. **Manual mirror anytime:** run the same .ps1 file by hand if you need an immediate push to GitHub (e.g., before stepping away from a session that won't be reachable for >24h).
 
 ## Why we changed it (2026-05-02)
 
@@ -80,7 +80,7 @@ That's it. The mirror to GitHub happens automatically on Rocinante's next 15-min
 
 rtxserver is a SPOF for live writes. Mitigations:
 
-1. **GitHub mirror with ≤24 h lag (nightly).** If rtxserver dies (hardware, OS, fire), every commit pushed before the last nightly run is preserved on GitHub. Recovery is `git clone github:alto84/Sartor-claude-network` to a new bare on a new server, repoint peers, push --all back. We accept up to ~24 h of write loss on rtxserver-fatal events. If a session is doing something where a same-day GitHub copy matters, run `C:\Users\alto8\scripts\sartor-mirror-to-github.ps1` by hand at session close.
+1. **GitHub mirror with ≤24 h lag (nightly).** If rtxserver dies (hardware, OS, fire), every commit pushed before the last nightly run is preserved on GitHub. Recovery is `git clone github:alto84/Sartor-claude-network` to a new bare on a new server, repoint peers, push --all back. We accept up to ~24 h of write loss on rtxserver-fatal events. If a session is doing something where a same-day GitHub copy matters, run `C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\sartor-mirror-to-github.ps1` by hand at session close.
 2. **rtxserver has UPS.** Power blip alone won't take it down.
 3. **Daily UniFi backup also lands on rtxserver.** If rtxserver dies, both the network config backups and the memory canonical go down together — but GitHub is the offsite for memory, and the local UniFi backup directory on Rocinante is the offsite for network config. Those failure domains are crossed, by design.
 4. **gpuserver1 working clone is a hot spare.** Not a literal git remote we'd promote, but it has recent state. In a cold-start scenario, `git clone gpuserver1:~/Sartor-claude-network` retrieves whatever state was last fetched there.
@@ -95,7 +95,7 @@ When a new peer joins the fleet (rtxserver-self, gpuserver1, Aneeta's laptop, an
 2. **Test:** `ssh alton@192.168.1.157 hostname` from the peer should succeed without password prompt.
 3. **Clone:** `git clone alton@192.168.1.157:/home/alton/sartor-git/Sartor-claude-network.git ~/Sartor-claude-network`
 4. **Verify:** `cd ~/Sartor-claude-network && git remote -v` shows `origin` pointing at rtxserver.
-5. **First push test:** `touch .peer-test-<hostname> && git add . && git commit -m 'peer onboarding test' && git push origin main`. To verify the GitHub mirror without waiting for the next nightly run, run `powershell.exe -ExecutionPolicy Bypass -File C:\Users\alto8\scripts\sartor-mirror-to-github.ps1` on Rocinante. Then revert.
+5. **First push test:** `touch .peer-test-<hostname> && git add . && git commit -m 'peer onboarding test' && git push origin main`. To verify the GitHub mirror without waiting for the next nightly run, run `powershell.exe -ExecutionPolicy Bypass -File C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\sartor-mirror-to-github.ps1` on Rocinante. Then revert.
 6. **Document:** add the peer to OPERATING-AGREEMENT signatories list, and to MACHINES.md.
 
 For Aneeta specifically, see [[projects/aneeta-peer-setup]] for the laptop-specific variant (intermittent connectivity expected).
@@ -109,7 +109,7 @@ For Aneeta specifically, see [[projects/aneeta-peer-setup]] for the laptop-speci
 
 ## Mirror script details
 
-`C:\Users\alto8\scripts\sartor-mirror-to-github.ps1`:
+`C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\sartor-mirror-to-github.ps1`:
 
 - Fetches `origin/main` from rtxserver bare
 - If local `main` is behind: `git merge --ff-only origin/main` — keeps Rocinante's working tree current

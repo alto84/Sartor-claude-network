@@ -278,7 +278,7 @@ curl -sk --cookie "$COOKIES" \
     "https://192.168.1.171:8443${URL_PATH}"
 ```
 
-The full scheduled-task script (canonical reference for the python-and-PowerShell pattern) lives at `C:\Users\alto8\scripts\unifi-daily-backup.ps1`. It logs to `backup-log.txt` in the backups dir and pushes an off-site SCP copy to rtxserver at `alton@192.168.1.157:/home/alton/sartor-network-backups/`. If the script ever fails, check that log first.
+The full scheduled-task script (canonical reference for the python-and-PowerShell pattern) lives at `C:\Users\alto8\Sartor-claude-network\scripts\win-tasks\unifi-daily-backup.ps1`. It logs to `backup-log.txt` in the backups dir and pushes an off-site SCP copy to rtxserver at `alton@192.168.1.157:/home/alton/sartor-network-backups/`. If the script ever fails, check that log first.
 
 To verify the scheduled task is healthy:
 
