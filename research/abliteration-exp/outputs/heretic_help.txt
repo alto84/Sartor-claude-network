@@ -1,0 +1,276 @@
+W0410 23:14:52.910000 35472 Lib\site-packages\torch\utils\flop_counter.py:29] triton not found; flop counting will not work for triton kernels
+█░█░█▀▀░█▀▄░█▀▀░▀█▀░█░█▀▀  v1.2.0
+█▀█░█▀▀░█▀▄░█▀▀░░█░░█░█░░
+▀░▀░▀▀▀░▀░▀░▀▀▀░░▀░░▀░▀▀▀  https://github.com/p-e-w/heretic
+
+usage: heretic [-h] [--model str] [--evaluate-model {str,null}]
+               [--dtypes list[str]] [--quantization {NONE,BNB_4BIT}]
+               [--device-map {str,Dict[str,{int,str}]}]
+               [--max-memory {Dict[str,str],null}]
+               [--trust-remote-code {bool,null}] [--batch-size int]
+               [--max-batch-size int] [--max-response-length int]
+               [--print-responses | --no-print-responses]
+               [--print-residual-geometry | --no-print-residual-geometry]
+               [--plot-residuals | --no-plot-residuals]
+               [--residual-plot-path str] [--residual-plot-title str]
+               [--residual-plot-style str] [--kl-divergence-scale float]
+               [--kl-divergence-target float]
+               [--orthogonalize-direction | --no-orthogonalize-direction]
+               [--row-normalization {NONE,PRE,FULL}]
+               [--full-normalization-lora-rank int]
+               [--winsorization-quantile float] [--n-trials int]
+               [--n-startup-trials int] [--study-checkpoint-dir str]
+               [--refusal-markers list[str]] [--system-prompt str]
+               [--good-prompts [JSON]] [--good-prompts.dataset str]
+               [--good-prompts.split str] [--good-prompts.column str]
+               [--good-prompts.prefix str] [--good-prompts.suffix str]
+               [--good-prompts.system-prompt {str,null}]
+               [--good-prompts.residual-plot-label {str,null}]
+               [--good-prompts.residual-plot-color {str,null}]
+               [--bad-prompts [JSON]] [--bad-prompts.dataset str]
+               [--bad-prompts.split str] [--bad-prompts.column str]
+               [--bad-prompts.prefix str] [--bad-prompts.suffix str]
+               [--bad-prompts.system-prompt {str,null}]
+               [--bad-prompts.residual-plot-label {str,null}]
+               [--bad-prompts.residual-plot-color {str,null}]
+               [--good-evaluation-prompts [JSON]]
+               [--good-evaluation-prompts.dataset str]
+               [--good-evaluation-prompts.split str]
+               [--good-evaluation-prompts.column str]
+               [--good-evaluation-prompts.prefix str]
+               [--good-evaluation-prompts.suffix str]
+               [--good-evaluation-prompts.system-prompt {str,null}]
+               [--good-evaluation-prompts.residual-plot-label {str,null}]
+               [--good-evaluation-prompts.residual-plot-color {str,null}]
+               [--bad-evaluation-prompts [JSON]]
+               [--bad-evaluation-prompts.dataset str]
+               [--bad-evaluation-prompts.split str]
+               [--bad-evaluation-prompts.column str]
+               [--bad-evaluation-prompts.prefix str]
+               [--bad-evaluation-prompts.suffix str]
+               [--bad-evaluation-prompts.system-prompt {str,null}]
+               [--bad-evaluation-prompts.residual-plot-label {str,null}]
+               [--bad-evaluation-prompts.residual-plot-color {str,null}]
+
+options:
+  -h, --help            show this help message and exit
+  --model str           Hugging Face model ID, or path to model on disk.
+                        (required)
+  --evaluate-model {str,null}
+                        If this model ID or path is set, then instead of
+                        abliterating the main model, evaluate this model
+                        relative to the main model. (default: null)
+  --dtypes list[str]    List of PyTorch dtypes to try when loading model
+                        tensors. If loading with a dtype fails, the next dtype
+                        in the list will be tried. (default: ['auto',
+                        'float16', 'bfloat16', 'float32'])
+  --quantization {NONE,BNB_4BIT}
+                        Quantization method to use when loading the model.
+                        Options: "none" (no quantization), "bnb_4bit" (4-bit
+                        quantization using bitsandbytes). (default: NONE)
+  --device-map {str,Dict[str,{int,str}]}
+                        Device map to pass to Accelerate when loading the
+                        model. (default: auto)
+  --max-memory {Dict[str,str],null}
+                        Maximum memory to allocate per device (e.g., {"0":
+                        "20GB", "cpu": "64GB"}). (default: null)
+  --trust-remote-code {bool,null}
+                        Whether to trust remote code when loading the model.
+                        (default: null)
+  --batch-size int      Number of input sequences to process in parallel (0 =
+                        auto). (default: 0)
+  --max-batch-size int  Maximum batch size to try when automatically
+                        determining the optimal batch size. (default: 128)
+  --max-response-length int
+                        Maximum number of tokens to generate for each
+                        response. (default: 100)
+  --print-responses, --no-print-responses
+                        Whether to print prompt/response pairs when counting
+                        refusals. (default: False)
+  --print-residual-geometry, --no-print-residual-geometry
+                        Whether to print detailed information about residuals
+                        and refusal directions. (default: False)
+  --plot-residuals, --no-plot-residuals
+                        Whether to generate plots showing PaCMAP projections
+                        of residual vectors. (default: False)
+  --residual-plot-path str
+                        Base path to save plots of residual vectors to.
+                        (default: plots)
+  --residual-plot-title str
+                        Title placed above plots of residual vectors.
+                        (default: PaCMAP Projection of Residual Vectors for
+                        "Harmless" and "Harmful" Prompts)
+  --residual-plot-style str
+                        Matplotlib style sheet to use for plots of residual
+                        vectors. (default: dark_background)
+  --kl-divergence-scale float
+                        Assumed "typical" value of the Kullback-Leibler
+                        divergence from the original model for abliterated
+                        models. This is used to ensure balanced co-
+                        optimization of KL divergence and refusal count.
+                        (default: 1.0)
+  --kl-divergence-target float
+                        The KL divergence to target. Below this value, an
+                        objective based on the refusal count is used. This
+                        helps prevent the sampler from extensively exploring
+                        parameter combinations that "do nothing". (default:
+                        0.01)
+  --orthogonalize-direction, --no-orthogonalize-direction
+                        Whether to adjust the refusal directions so that only
+                        the component that is orthogonal to the good direction
+                        is subtracted during abliteration. (default: False)
+  --row-normalization {NONE,PRE,FULL}
+                        How to apply row normalization of the weights.
+                        Options: "none" (no normalization), "pre" (compute
+                        LoRA adapter relative to row-normalized weights),
+                        "full" (like "pre", but renormalizes to preserve
+                        original row magnitudes). (default: NONE)
+  --full-normalization-lora-rank int
+                        The rank of the LoRA adapter to use when "full" row
+                        normalization is used. Row magnitude preservation is
+                        approximate due to non-linear effects, and this
+                        determines the rank of that approximation. Higher
+                        ranks produce larger output files and may slow down
+                        evaluation. (default: 3)
+  --winsorization-quantile float
+                        The symmetric winsorization to apply to the per-
+                        prompt, per-layer residual vectors, expressed as the
+                        quantile to clamp to (between 0 and 1). Disabled by
+                        default. This can tame so-called "massive activations"
+                        that occur in some models. Example:
+                        winsorization_quantile = 0.95 computes the
+                        0.95-quantile of the absolute values of the
+                        components, then clamps the magnitudes of all
+                        components to that quantile. (default: 1.0)
+  --n-trials int        Number of abliteration trials to run during
+                        optimization. (default: 200)
+  --n-startup-trials int
+                        Number of trials that use random sampling for the
+                        purpose of exploration. (default: 60)
+  --study-checkpoint-dir str
+                        Directory to save and load study progress to/from.
+                        (default: checkpoints)
+  --refusal-markers list[str]
+                        Strings whose presence in a response (case
+                        insensitive) identifies the response as a refusal.
+                        (default: ['sorry', "i can'", 'i cant', 'i cannot', "i
+                        won'", 'i wont', 'i will not', 'i unable', 'im
+                        unable', "i'm unable", 'i am unable', 'i an ai', 'im
+                        an ai', "i'm an ai", 'i am an ai', 'as an ai', 'ai
+                        assistant', 'i designed to', 'im designed to', "i'm
+                        designed to", 'i am designed to', 'i programmed to',
+                        'im programmed to', "i'm programmed to", 'i am
+                        programmed to', 'violat', 'prohibit', 'illegal',
+                        'harmful', 'inappropriate', 'unethical', 'ethical
+                        boundaries'])
+  --system-prompt str   System prompt to use when prompting the model.
+                        (default: You are a helpful assistant.)
+
+good-prompts options:
+  Dataset of prompts that tend to not result in refusals (used for calculating refusal directions).
+
+  --good-prompts [JSON]
+                        set good-prompts from JSON string (default: {})
+  --good-prompts.dataset str
+                        Hugging Face dataset ID, or path to dataset on disk.
+                        (default: mlabonne/harmless_alpaca)
+  --good-prompts.split str
+                        Portion of the dataset to use. (default: train[:400])
+  --good-prompts.column str
+                        Column in the dataset that contains the prompts.
+                        (default: text)
+  --good-prompts.prefix str
+                        Text to prepend to each prompt. (default: )
+  --good-prompts.suffix str
+                        Text to append to each prompt. (default: )
+  --good-prompts.system-prompt {str,null}
+                        System prompt to use with the prompts (overrides
+                        global system prompt if set). (default: None)
+  --good-prompts.residual-plot-label {str,null}
+                        Label to use for the dataset in plots of residual
+                        vectors. (default: "Harmless" prompts)
+  --good-prompts.residual-plot-color {str,null}
+                        Matplotlib color to use for the dataset in plots of
+                        residual vectors. (default: royalblue)
+
+bad-prompts options:
+  Dataset of prompts that tend to result in refusals (used for calculating refusal directions).
+
+  --bad-prompts [JSON]  set bad-prompts from JSON string (default: {})
+  --bad-prompts.dataset str
+                        Hugging Face dataset ID, or path to dataset on disk.
+                        (default: mlabonne/harmful_behaviors)
+  --bad-prompts.split str
+                        Portion of the dataset to use. (default: train[:400])
+  --bad-prompts.column str
+                        Column in the dataset that contains the prompts.
+                        (default: text)
+  --bad-prompts.prefix str
+                        Text to prepend to each prompt. (default: )
+  --bad-prompts.suffix str
+                        Text to append to each prompt. (default: )
+  --bad-prompts.system-prompt {str,null}
+                        System prompt to use with the prompts (overrides
+                        global system prompt if set). (default: None)
+  --bad-prompts.residual-plot-label {str,null}
+                        Label to use for the dataset in plots of residual
+                        vectors. (default: "Harmful" prompts)
+  --bad-prompts.residual-plot-color {str,null}
+                        Matplotlib color to use for the dataset in plots of
+                        residual vectors. (default: darkorange)
+
+good-evaluation-prompts options:
+  Dataset of prompts that tend to not result in refusals (used for evaluating model performance).
+
+  --good-evaluation-prompts [JSON]
+                        set good-evaluation-prompts from JSON string (default:
+                        {})
+  --good-evaluation-prompts.dataset str
+                        Hugging Face dataset ID, or path to dataset on disk.
+                        (default: mlabonne/harmless_alpaca)
+  --good-evaluation-prompts.split str
+                        Portion of the dataset to use. (default: test[:100])
+  --good-evaluation-prompts.column str
+                        Column in the dataset that contains the prompts.
+                        (default: text)
+  --good-evaluation-prompts.prefix str
+                        Text to prepend to each prompt. (default: )
+  --good-evaluation-prompts.suffix str
+                        Text to append to each prompt. (default: )
+  --good-evaluation-prompts.system-prompt {str,null}
+                        System prompt to use with the prompts (overrides
+                        global system prompt if set). (default: None)
+  --good-evaluation-prompts.residual-plot-label {str,null}
+                        Label to use for the dataset in plots of residual
+                        vectors. (default: None)
+  --good-evaluation-prompts.residual-plot-color {str,null}
+                        Matplotlib color to use for the dataset in plots of
+                        residual vectors. (default: None)
+
+bad-evaluation-prompts options:
+  Dataset of prompts that tend to result in refusals (used for evaluating model performance).
+
+  --bad-evaluation-prompts [JSON]
+                        set bad-evaluation-prompts from JSON string (default:
+                        {})
+  --bad-evaluation-prompts.dataset str
+                        Hugging Face dataset ID, or path to dataset on disk.
+                        (default: mlabonne/harmful_behaviors)
+  --bad-evaluation-prompts.split str
+                        Portion of the dataset to use. (default: test[:100])
+  --bad-evaluation-prompts.column str
+                        Column in the dataset that contains the prompts.
+                        (default: text)
+  --bad-evaluation-prompts.prefix str
+                        Text to prepend to each prompt. (default: )
+  --bad-evaluation-prompts.suffix str
+                        Text to append to each prompt. (default: )
+  --bad-evaluation-prompts.system-prompt {str,null}
+                        System prompt to use with the prompts (overrides
+                        global system prompt if set). (default: None)
+  --bad-evaluation-prompts.residual-plot-label {str,null}
+                        Label to use for the dataset in plots of residual
+                        vectors. (default: None)
+  --bad-evaluation-prompts.residual-plot-color {str,null}
+                        Matplotlib color to use for the dataset in plots of
+                        residual vectors. (default: None)

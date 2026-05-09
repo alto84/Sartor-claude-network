@@ -1,0 +1,218 @@
+#!/usr/bin/env python3
+"""
+sartor-power daily summary: read today's (or yesterday's if after midnight)
+TSV, compute kWh totals + $ cost at $0.1789/kWh, write a markdown file to
+the gpuserver1 inbox for the Rocinante curator to pick up.
+
+Runs from cron daily. Stdlib only. Never pushes git.
+"""
+import datetime as dt
+import os
+import sys
+from pathlib import Path
+
+DATA = Path("/home/alton/sartor-power/data")
+INBOX = Path("/home/alton/Sartor-claude-network/sartor/memory/inbox/gpuserver1/power")
+RATE_USD_PER_KWH = 0.1789  # 2025 NJ residential average per EIA
+
+COLS = [
+    "timestamp_iso",
+    "cpu_package_joules_cumulative",
+    "cpu_package_watts_interval",
+    "dram_joules_cumulative",
+    "dram_watts_interval",
+    "gpu_joules_cumulative",
+    "gpu_watts_instantaneous",
+    "gpu_watts_interval",
+    "estimated_total_watts",
+]
+
+
+def parse_ts(s):
+    try:
+        return dt.datetime.fromisoformat(s)
+    except ValueError:
+        return None
+
+
+def fnum(s):
+    if s == "" or s is None:
+        return None
+    try:
+        return float(s)
+    except ValueError:
+        return None
+
+
+def load_rows(path: Path):
+    rows = []
+    with open(path, encoding="utf-8") as f:
+        header = f.readline().rstrip("\n").split("\t")
+        idx = {c: i for i, c in enumerate(header)}
+        for line in f:
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) < len(header):
+                continue
+            rows.append(parts)
+    return rows, idx
+
+
+def pick_date():
+    now = dt.datetime.now()
+    target = now.date()
+    # If called shortly after midnight, prefer yesterday if today has < 10 rows.
+    candidate = DATA / f"{target.isoformat()}.tsv"
+    if now.hour < 1 and candidate.exists():
+        try:
+            with open(candidate) as f:
+                if sum(1 for _ in f) < 20:  # header + few rows
+                    target = target - dt.timedelta(days=1)
+        except OSError:
+            pass
+    return target
+
+
+def summarize(target_date: dt.date):
+    path = DATA / f"{target_date.isoformat()}.tsv"
+    if not path.exists():
+        return None, f"No TSV for {target_date}"
+    rows, idx = load_rows(path)
+    if len(rows) < 2:
+        return None, f"Insufficient rows ({len(rows)}) for {target_date}"
+
+    cpu_joules = 0.0
+    gpu_joules = 0.0
+    dram_joules = 0.0
+    est_total_joules = 0.0
+    cpu_watts_list = []
+    gpu_watts_list = []
+    est_total_list = []
+    peak_cpu = 0.0
+    peak_gpu = 0.0
+    peak_total = 0.0
+
+    prev_ts = None
+    covered_s = 0.0
+    for r in rows:
+        ts = parse_ts(r[idx["timestamp_iso"]])
+        if ts is None:
+            continue
+        cpu_w = fnum(r[idx["cpu_package_watts_interval"]])
+        dram_w = fnum(r[idx["dram_watts_interval"]])
+        gpu_w = fnum(r[idx["gpu_watts_interval"]])
+        est_w = fnum(r[idx["estimated_total_watts"]])
+
+        if prev_ts is not None:
+            interval = (ts - prev_ts).total_seconds()
+            if 0 < interval <= 600:  # cap gaps at 10 min to avoid runaway
+                covered_s += interval
+                if cpu_w is not None:
+                    cpu_joules += cpu_w * interval
+                    cpu_watts_list.append(cpu_w)
+                    peak_cpu = max(peak_cpu, cpu_w)
+                if dram_w is not None:
+                    dram_joules += dram_w * interval
+                if gpu_w is not None:
+                    gpu_joules += gpu_w * interval
+                    gpu_watts_list.append(gpu_w)
+                    peak_gpu = max(peak_gpu, gpu_w)
+                if est_w is not None:
+                    est_total_joules += est_w * interval
+                    est_total_list.append(est_w)
+                    peak_total = max(peak_total, est_w)
+        prev_ts = ts
+
+    kwh_cpu = cpu_joules / 3.6e6
+    kwh_dram = dram_joules / 3.6e6
+    kwh_gpu = gpu_joules / 3.6e6
+    kwh_total_est = est_total_joules / 3.6e6
+    cost_usd = kwh_total_est * RATE_USD_PER_KWH
+
+    def avg(xs):
+        return sum(xs) / len(xs) if xs else 0.0
+
+    summary = {
+        "date": target_date.isoformat(),
+        "rows": len(rows),
+        "covered_hours": covered_s / 3600.0,
+        "kwh_cpu": kwh_cpu,
+        "kwh_dram": kwh_dram,
+        "kwh_gpu": kwh_gpu,
+        "kwh_total_estimated": kwh_total_est,
+        "cost_usd": cost_usd,
+        "avg_cpu_w": avg(cpu_watts_list),
+        "avg_gpu_w": avg(gpu_watts_list),
+        "avg_total_w": avg(est_total_list),
+        "peak_cpu_w": peak_cpu,
+        "peak_gpu_w": peak_gpu,
+        "peak_total_w": peak_total,
+    }
+    return summary, None
+
+
+def write_inbox(summary):
+    INBOX.mkdir(parents=True, exist_ok=True)
+    ts_now = dt.datetime.now(dt.timezone.utc).astimezone().isoformat(timespec="seconds")
+    date = summary["date"]
+    md = f"""---
+type: inbox
+source: gpuserver1
+category: power
+timestamp: {ts_now}
+date: {date}
+updated: {ts_now}
+---
+
+# gpuserver1 Power Summary — {date}
+
+Daily energy summary generated by `sartor-power` logger (CPU RAPL + nvidia-smi
+integration). Rate applied: ${RATE_USD_PER_KWH}/kWh (2025 NJ residential avg).
+
+## Totals
+
+| Component | kWh | Notes |
+|---|---|---|
+| CPU package (RAPL) | {summary['kwh_cpu']:.4f} | Intel i9-14900K, package-0 domain |
+| DRAM (RAPL) | {summary['kwh_dram']:.4f} | Not exposed on this board (will be 0) |
+| GPU (nvidia-smi integrated) | {summary['kwh_gpu']:.4f} | RTX 5090 |
+| **Estimated system total** | **{summary['kwh_total_estimated']:.4f}** | (CPU+GPU+DRAM) x 1.15 + 25W baseline |
+
+## Cost
+
+- **Estimated electricity cost today:** **${summary['cost_usd']:.3f}** at ${RATE_USD_PER_KWH}/kWh
+- Data coverage: {summary['covered_hours']:.2f} hours across {summary['rows']} samples
+
+## Averages (time-weighted)
+
+- CPU package: {summary['avg_cpu_w']:.1f} W avg, peak {summary['peak_cpu_w']:.1f} W
+- GPU: {summary['avg_gpu_w']:.1f} W avg, peak {summary['peak_gpu_w']:.1f} W
+- Estimated total: {summary['avg_total_w']:.1f} W avg, peak {summary['peak_total_w']:.1f} W
+
+## Caveats
+
+- Total is an estimate. PSU conversion loss, motherboard, fans, NVMe, peripherals
+  are approximated by the 1.15x multiplier + 25 W baseline. For ground truth,
+  a wall-plug meter (e.g., Kasa KP125M or Shelly Plus PM) can validate within ±2%.
+- RAPL may undercount on heavy AVX-512 workloads.
+- GPU energy integrated from `nvidia-smi power.draw` (~1s avg) because driver
+  570.144 on RTX 5090 does not expose `total_energy_consumption`.
+"""
+    out = INBOX / f"{date}_power.md"
+    out.write_text(md, encoding="utf-8")
+    return out
+
+
+def main():
+    target = pick_date()
+    summary, err = summarize(target)
+    if err:
+        print(err, file=sys.stderr)
+        return 1
+    out = write_inbox(summary)
+    print(f"Wrote {out}")
+    print(f"Total kWh: {summary['kwh_total_estimated']:.4f}  Cost: ${summary['cost_usd']:.3f}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
