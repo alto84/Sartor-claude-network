@@ -216,7 +216,7 @@ def compute_all_scores() -> dict:
     # Collect all .md files, excluding .meta/
     md_files: list[Path] = []
     for path in sorted(MEMORY_DIR.rglob("*.md")):
-        if ".meta" in path.parts:
+        if ".meta" in path.parts or "hearth" in path.parts:
             continue
         md_files.append(path)
 
