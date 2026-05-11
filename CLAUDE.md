@@ -48,7 +48,7 @@ The Sartor family lives in Montclair, New Jersey.
 **Listing expiry:** 2026-10-24 (auto-renewed via web UI from prior 2026-08-24). Reserved-contract C.34113802 still ends 2026-08-24 — distinct field. After that date, evaluate market and relist.
 
 ### Monitoring Responsibilities
-- Track GPU utilization and rental status via `ssh alton@192.168.1.100`
+- Track GPU utilization and rental status via `ssh alton@gpuserver1`
 - Monitor vast.ai earnings and payout status
 - Watch competitor pricing on vast.ai marketplace for RTX 5090 listings
 - Alert on machine going offline or listing expiring
@@ -57,13 +57,13 @@ The Sartor family lives in Montclair, New Jersey.
 ### Key Commands
 ```bash
 # Check machine status
-ssh alton@192.168.1.100 "~/.local/bin/vastai show machines"
+ssh alton@gpuserver1 "~/.local/bin/vastai show machines"
 # Check active rentals
-ssh alton@192.168.1.100 "~/.local/bin/vastai show instances"
+ssh alton@gpuserver1 "~/.local/bin/vastai show instances"
 # Relist machine
-ssh alton@192.168.1.100 '~/.local/bin/vastai list machine 52271 -g 0.40 -b 0.25 -s 0.10 -m 1 -e "08/24/2026"'
+ssh alton@gpuserver1 '~/.local/bin/vastai list machine 52271 -g 0.40 -b 0.25 -s 0.10 -m 1 -e "08/24/2026"'
 # GPU utilization
-ssh alton@192.168.1.100 "nvidia-smi"
+ssh alton@gpuserver1 "nvidia-smi"
 ```
 
 ### Known Issues
@@ -307,14 +307,14 @@ Defined in `.claude/scheduled-tasks/`:
 
 ### gpuserver1 (GPU Server)
 
-> Current IP is 192.168.1.199 as of 2026-05-08 evening (was .100). Hosts-file work is in progress to switch references to the hostname `gpuserver1`. See Tier 2 sweep for hostname migration. Literal .100 references throughout this section are stale; use hostname `gpuserver1` going forward.
+> Canonical machine identity lives in `sartor/memory/machines/REGISTRY.yaml` (hostname → MAC → current_ip → role). Address peers by hostname (`gpuserver1`, `rtxserver`); the IP is operational data that drifts (gpuserver1 moved .100 → .199 on 2026-05-08). SSH config on Rocinante maps hostnames already (`Host gpuserver1`); peer-machine setup is documented in `reference_memory_server.md`. CLAUDE.md was migrated to hostname form on 2026-05-10; the broader 212-ref Tier-2 sweep across `dashboard/`, `.claude/agents/`, `.claude/skills/`, `scripts/win-tasks/` is tracked at `sartor/memory/projects/codebase-cleanup-2026-05-08/HOSTNAME-MIGRATION-TRACKER.md`.
 
 - **OS:** Ubuntu 22.04
 - **CPU:** Intel i9-14900K
 - **RAM:** 128GB DDR5
 - **GPU:** NVIDIA RTX 5090 (32GB VRAM)
-- **IP:** 192.168.1.100 (LAN), DMZ from router
-- **SSH:** `ssh alton@192.168.1.100`
+- **IP:** 192.168.1.199 (LAN, current — see REGISTRY.yaml), DMZ from router
+- **SSH:** `ssh alton@gpuserver1`
 - **Vast.ai CLI:** `~/.local/bin/vastai`
 - **Tending script:** `~/vastai-tend.sh` (cron, every 30 min, state-change-only)
 - **Alerts:** `~/.vastai-alert`
@@ -342,7 +342,7 @@ Project-config MCPs (additional servers wired per-project) live in `.mcp.json` a
 
 ### Network
 - **Router:** Verizon Fios (Vue.js SPA admin interface)
-- **DMZ:** All external traffic forwarded to 192.168.1.100
+- **DMZ:** All external traffic forwarded to gpuserver1 (current LAN IP in REGISTRY.yaml)
 - **UFW:** Server-side firewall handles port filtering
 - **Vast.ai ports:** 40000-40099 open for rentals
 

@@ -1,0 +1,92 @@
+---
+type: project-tracker
+project: codebase-cleanup-2026-05-08
+sub-project: hostname-migration
+status: in-progress
+created: 2026-05-10
+created_by: Claude Opus 4.7 (1M context), tidy-pass session
+audience: future Claude or Alton continuing the Tier-2 sweep
+related: [reference/MACHINES, machines/REGISTRY.yaml, reference_memory_server, projects/codebase-cleanup-2026-05-08/PLAN]
+tags: [project/cleanup, scope/portability, action/track]
+---
+
+# Hostname migration tracker
+
+The 2026-05-08 portability audit identified 212 active-code references to `192.168.1.100` (gpuserver1's pre-2026-05-08 IP). The right shape is to address peers by hostname (`gpuserver1`, `rtxserver`, `rocinante`) and let SSH config + hosts file resolve to the live IP. Canonical identity source: `sartor/memory/machines/REGISTRY.yaml`.
+
+This file tracks what's been migrated and what remains.
+
+## Completed (2026-05-10)
+
+- **`CLAUDE.md`** — all 8 stale `192.168.1.100` references migrated to hostname `gpuserver1` (SSH commands) or to the canonical-via-REGISTRY framing (documentation lines). Callout box updated to point at this tracker.
+- **`~/.claude/settings.json`** — autoMode allow note already used hostnames (no migration needed).
+- **`~/.ssh/config`** (Rocinante) — confirmed mappings: `Host gpuserver1` → 192.168.1.199, `Host rtxserver rtxpro6000server` → 192.168.1.157, `Host rtxserver-bmc` → 192.168.1.154. SSH-by-hostname works from Rocinante out of the box.
+
+## Pending (priority order)
+
+### Tier A — high blast radius, manual review recommended
+
+1. **`dashboard/family/server.py`** — ~15 hardcoded `.100` refs in ping logic, SSH command construction, URL building. Runtime app; changes risk breaking the live dashboard. Suggested approach: introduce a `GPUSERVER1_HOST` config constant at top of file (default `"gpuserver1"`), migrate refs to use it, test in isolation before deploying.
+2. **`scripts/win-tasks/*.ps1`** — `sartor-creds-sync.ps1`, `wifi-health-monitor.cmd`, others. Registered as Windows Scheduled Tasks; breaking them stops the WiFi monitor / creds sync / etc. Suggested approach: edit each, test invocation manually, then leave for next scheduled fire to verify.
+3. **`scripts/sartor-vastai-dispatch.ps1`** — param defaults hardcode `alton@192.168.1.100`. Change default to `alton@gpuserver1`.
+4. **`scripts/rsync-peer-sessions.ps1`** — peer mirror script; uses `.100` in path construction. Stop-checks first.
+
+### Tier B — broad but low individual risk
+
+5. **`.claude/agents/*.md`** — ~60 references in agent definitions. Mostly inert documentation (agents read CLAUDE.md anyway). Bulk find/replace, then spot-check.
+6. **`.claude/skills/*/SKILL.md`** — ~20 references in skill prompts. Skills with peer-coord (`peer-comms`, `gpu-pricing-optimizer`, `gpu-fleet-check`, `rtxserver-management`, `vastai-management`) deserve a careful per-skill review. Most others bulk-replaceable.
+7. **`.claude/scheduled-tasks/*/SKILL.md`** — references in task SKILL prompts. Similar to skills; review per-task.
+
+### Tier C — memory documentation
+
+8. **`sartor/memory/machines/gpuserver1/CRONS.md`** and related per-machine state — review for hardcoded `.100`. These are documentation; if they reflect a historical state they may be intentional.
+9. **`sartor/memory/reference/gpuserver1-*.md`** — multiple files. Some reflect historical state; check whether to convert or leave as-is.
+10. **Older `daily/*.md` self-reflections** — references in daily logs are historical record; do NOT migrate (archive-not-collapse).
+
+### Tier D — explicitly out of scope
+
+- `sartor/memory/source-documents/` — gitignored (AZ Compliance pending).
+- `sartor/memory/daily/archive/*.md` — historical record.
+- `archive/` — frozen historical reference; not active code.
+
+## How to do a clean batch
+
+For Tier B (agents/skills):
+
+```bash
+# preview
+grep -rln "192.168.1.100" .claude/agents/ .claude/skills/
+
+# spot-edit one
+$EDITOR .claude/agents/peer-coordinator.md   # replace 192.168.1.100 → gpuserver1
+
+# bulk for files where the replacement is safe (verify per-file):
+# (do not run blindly — review each file's context first)
+sed -i 's|192\.168\.1\.100|gpuserver1|g' .claude/agents/<file>.md
+```
+
+For Tier A (runtime systems):
+
+1. Introduce a config constant or env var.
+2. Migrate refs to it.
+3. Test the runtime path before deploying.
+4. Commit per file with a short message describing the test.
+
+## Verification
+
+After migration, run from Rocinante:
+
+```bash
+# should still resolve
+ssh -o ConnectTimeout=5 -o BatchMode=yes alton@gpuserver1 "hostname; uptime"
+ssh -o ConnectTimeout=5 -o BatchMode=yes alton@rtxserver "hostname; uptime"
+
+# count remaining .100 in active code (excluding archive, daily, source-documents)
+grep -rn "192\.168\.1\.100" --include="*.py" --include="*.md" --include="*.json" --include="*.ps1" --include="*.cmd" --include="*.yaml" --include="*.yml" \
+  --exclude-dir=archive --exclude-dir=source-documents --exclude-dir=daily \
+  .
+```
+
+## Closing
+
+The right end state: peer addresses appear in code only via hostname (`gpuserver1`, etc.) or via REGISTRY.yaml lookup. The IP appears only in REGISTRY.yaml, SSH config, hosts file, and the dashboard's runtime config. Then a clone of this repo on a different machine just needs SSH config + hosts entries (or DNS), and everything else works.
