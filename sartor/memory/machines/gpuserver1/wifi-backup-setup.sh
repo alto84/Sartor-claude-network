@@ -57,25 +57,25 @@ sleep 2
 nmcli general status
 
 echo "=== Step 4: scan and join LGP123 ==="
-nmcli device wifi rescan || true
+sudo nmcli device wifi rescan || true
 sleep 3
-nmcli device wifi list | head -30
+sudo nmcli device wifi list | head -30
 
 # create the connection profile via cli (avoids dropping PSK in a file)
-nmcli connection delete LGP123 2>/dev/null || true
-nmcli device wifi connect "$SSID" password "$PSK" ifname wlp7s0 name LGP123
+sudo nmcli connection delete LGP123 2>/dev/null || true
+sudo nmcli device wifi connect "$SSID" password "$PSK" ifname wlp7s0 name LGP123
 
 echo "=== Step 5: pin route metrics so wired wins when both are up ==="
 # eno1 = primary (low metric); wlp7s0 = backup (high metric)
-nmcli connection modify LGP123 ipv4.route-metric 600 ipv6.route-metric 600
-nmcli connection modify LGP123 connection.autoconnect yes
+sudo nmcli connection modify LGP123 ipv4.route-metric 600 ipv6.route-metric 600
+sudo nmcli connection modify LGP123 connection.autoconnect yes
 # Reapply
-nmcli connection up LGP123 || true
+sudo nmcli connection up LGP123 || true
 
 echo "=== Step 6: verify ==="
 ip -br addr show wlp7s0
 ip -4 route show
-nmcli -t -f NAME,DEVICE,STATE connection show --active
+sudo nmcli -t -f NAME,DEVICE,STATE connection show --active
 
 echo
 echo "=== Done ==="

@@ -45,7 +45,19 @@ CURATOR_NAME = "rocinante-curator"
 
 REQUIRED_FIELDS = ("id", "origin", "created", "target", "operation")
 
-RESERVED_DIRS = frozenset({".receipts", ".drained", ".conflicts", "_processed", "_flagged", "_curator_staging"})
+RESERVED_DIRS = frozenset({
+    ".receipts", ".drained", ".conflicts",
+    "_processed", "_flagged", "_curator_staging",
+    # 2026-05-10 additions: per-peer convention for inbox-mail that isn't
+    # curator input. `_memos` is the canonical home for peer-to-peer memos
+    # with free-form frontmatter (type: inbox-message, type: peer-loop-report,
+    # type: phone-home, etc.). `_curator_logs` and `_specs` already existed
+    # under inbox/rocinante/ but were not skipped, so the curator was flagging
+    # its own log files every run. `loop-reports/` is gpuserver1's existing
+    # self-loop record dir. See sartor/memory/projects/codebase-cleanup-
+    # 2026-05-08/inbox-triage-2026-05-10.md for the triage that produced this.
+    "_memos", "_curator_logs", "_specs", "loop-reports",
+})
 
 # Files written by the curator itself as drain targets; skip during inbox walks to avoid self-referential flagging.
 RESERVED_FILES = frozenset({"_inbox-only-log.md", "_unrouted-log.md"})

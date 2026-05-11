@@ -7,7 +7,7 @@ set -euo pipefail
 
 INPUT=$(cat)
 
-HOOK_INPUT="$INPUT" python - <<'PYEOF'
+HOOK_INPUT="$INPUT" python3 - <<'PYEOF'
 import sys, json, re, os
 
 raw = os.environ.get('HOOK_INPUT', '')
