@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: MEMORY
-updated: 2026-05-08
-updated_by: tax-counsel-skill-build (Rocinante Opus 4.7 1M)
-last_verified: 2026-05-08
+updated: 2026-05-10
+updated_by: tidy-pass (Rocinante Opus 4.7 1M, post-Constitution-v0.5 alignment)
+last_verified: 2026-05-10
 status: active
 tags: [meta/index, meta/entrypoint]
 aliases: [Memory Index, MEMORY]
@@ -19,12 +19,12 @@ Entrypoint to the Sartor memory system. This file is auto-injected when Claude C
 - **Session context (auto-injected):** `docs/USER.md`, `docs/MEMORY.md` — updated nightly by curator
 - **Feedback rules (auto-injected):** `sartor/memory/feedback/*.md` — behavioral rules visible in every session. As of 2026-04-16, all feedback files live under `feedback/` (the previous root-level outlier `feedback_pricing_autonomy.md` was relocated into `feedback/` to match convention).
 - **Core knowledge:** `sartor/memory/` — ALTON, FAMILY, BUSINESS, TAXES, MACHINES, PROJECTS, ASTRAZENECA, SELF, LEARNINGS, PROCEDURES
-- **Other top-level memory files:** [[INDEX]] (auto-generated browse index), [[MASTERPLAN]] and [[MASTERPLAN-VISIONARY]] (phased roadmap), [[QUICK-REFERENCE]], `gpuserver1-monitoring-log.md` (rolling log), `log.md` (session log), `reference_home_network.md` (home LAN reference), `reference_memory_server.md` (canonical git topology — rtxserver bare is origin, GitHub is DR mirror, added 2026-05-02), `reference_anthropic_shares.md` (EquityZen Series 13 + Hiive HII Anthropic-01 family holdings, default posture: keep personal pending CPA review, added 2026-05-03), `reference_scheduled_tasks.md` (canonical fleet-wide cron + Windows-task + systemd inventory; verify-commands per section, conventions for adding tasks, added 2026-05-06), `reference_solar_project.md` (85 Stonebridge Tesla Solar Roof + Lucent + Climate First Bank loan + May 2026 expanded scope, $95–170K additional + 2 Powerwalls, ITC deadline 2026-07-04, sources in `reference/solar-project-2026-05/`, added 2026-05-08), `reference_heloc.md` (85 Stonebridge HELOC: Georgia's Own Credit Union lender + Cenlar servicer + Symmetry Lending funder + CrossCountry Mortgage originator, $527K limit, $506K drawn 2025-10-23, account ending 7887, sources in `reference/heloc-2025-10/`, added 2026-05-08)
+- **Other top-level memory files:** [[INDEX]] (auto-generated browse index), [[MASTERPLAN]] and [[MASTERPLAN-VISIONARY]] (phased roadmap), [[QUICK-REFERENCE]], `log.md` (session log), `reference_home_network.md` (home LAN reference), `reference_memory_server.md` (canonical git topology — rtxserver bare is origin, GitHub is DR mirror, added 2026-05-02), `reference_anthropic_shares.md` (EquityZen Series 13 + Hiive HII Anthropic-01 family holdings, default posture: keep personal pending CPA review, added 2026-05-03), `reference_scheduled_tasks.md` (canonical fleet-wide cron + Windows-task + systemd inventory; verify-commands per section, conventions for adding tasks, added 2026-05-06), `reference_solar_project.md` (85 Stonebridge Tesla Solar Roof + Lucent + Climate First Bank loan + May 2026 expanded scope, $95–170K additional + 2 Powerwalls, ITC deadline 2026-07-04, sources in `reference/solar-project-2026-05/`, added 2026-05-08), `reference_heloc.md` (85 Stonebridge HELOC: Georgia's Own Credit Union lender + Cenlar servicer + Symmetry Lending funder + CrossCountry Mortgage originator, $527K limit, $506K drawn 2025-10-23, account ending 7887, sources in `reference/heloc-2025-10/`, added 2026-05-08). The 2026-04-13 `gpuserver1-monitoring-log.md` stub was archived 2026-05-10 to `.curator-history/` per archive-not-collapse — it had been curator-drained on 2026-04-14 and was load-free at root.
 - **Conventions and architecture:** `sartor/memory/reference/`
   - [[MEMORY-CONVENTIONS]] — YAML frontmatter, callouts, wikilinks spec
   - [[MULTI-MACHINE-MEMORY]] — inbox pattern for N-machine sync
   - [[OPERATING-AGREEMENT]] — canonical Rocinante↔gpuserver1 operating agreement (the `OPERATING-AGREEMENT-DRAFT-*` files were archived to `reference/archive/` 2026-04-16)
-  - [[HOUSEHOLD-CONSTITUTION]] — v0.3 active (ratified 2026-04-19; v0.1 and v0.2 archived to `reference/archive/`)
+  - [[HOUSEHOLD-CONSTITUTION]] — v0.5 active (ratified 2026-05-06, first-person, six hard constraints in §7; v0.1, v0.2, v0.3 archived to `reference/archive/`; v0.4 preserved as proposal at `reference/archive/HOUSEHOLD-CONSTITUTION.v0.4.proposed-2026-05-04.md`)
   - `gpuserver1-delegation.md` — delegation to the GPU server
 - **Per-machine state:** `sartor/memory/machines/{hostname}/` — MISSION, CRONS, INDEX per machine
 - **Research (single roof):** `sartor/memory/research/` — see [[research/INDEX]]. Contains `ccp-alignment/` (mini-lab, constitution-council, counter-ccp dataset, OCT playbook, monitoring probes, gpu-research-restart), `pharmacovigilance/` (cell-therapy + safety-knowledge-graph), and [[experiments-index]].
