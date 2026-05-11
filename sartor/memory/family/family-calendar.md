@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-05-07
+updated: 2026-05-11
 updated_by: personal-data-gather
-run: 49
+run: 69
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -593,3 +593,20 @@ June lookahead:
 | Date | Time ET | Event | Source | Notes |
 |------|---------|-------|--------|-------|
 | **Mon 6/2** | **4:30 PM** | **Vasu Dance Recital** | Gmail/Kaymbu (run 49) | Miss Kelsey; first mention. Add to Google Calendar. Venue TBD — confirm with Goddard. |
+
+## Latest from gather (2026-05-11) — run 69
+
+> [!fact] TIME CORRECTION — Playdate with Livia May 17: 10:00 AM – 1:00 PM ET
+> Run 68 (2026-05-10 daily log) captured this event with wrong times (2:00–5:00 PM). Live API this run:
+> `start: 2026-05-17T10:00:00-04:00, end: 2026-05-17T13:00:00-04:00` = **10:00 AM – 1:00 PM ET.**
+> Creator: aneetasax@gmail.com. Source: Family calendar. No conflict with soccer game on May 16.
+
+Week of May 11–17 (confirmed from live API):
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| Wed 5/13 | 5:30–6:15 PM | Rec Soccer Practice (B-34 Lime) | Family cal | Anderson Park, south side near Parkside St |
+| Sat 5/16 | 12:00–1:00 PM | Vayu soccer: B34 Lime vs B34 Silver (Verdegaal & Roache) | Blue Sombrero | Brookdale Stadium South > Field 1, Brookdale Park, Montclair NJ |
+| **Sun 5/17** | **10:00 AM – 1:00 PM** | **Playdate with Livia and family** | Family cal | CORRECTED from "2:00–5:00 PM" (run 68 error); creator: Aneeta |
+
+No events on Alton primary, Aneeta, or Alton's Tasks calendars for this window.
