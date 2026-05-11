@@ -57,6 +57,11 @@ RESERVED_DIRS = frozenset({
     # self-loop record dir. See sartor/memory/projects/codebase-cleanup-
     # 2026-05-08/inbox-triage-2026-05-10.md for the triage that produced this.
     "_memos", "_curator_logs", "_specs", "loop-reports",
+    # gpuserver1's peer-side subdirs holding cron output: vastai-tend's
+    # state-change events (`vastai/`), gather_mirror's per-tick status
+    # (`status/`, currently .json-only but reserve preemptively), and
+    # `_tasks/` (peer-Claude task output dir, follows _-prefix convention).
+    "vastai", "status", "_tasks",
 })
 
 # Files written by the curator itself as drain targets; skip during inbox walks to avoid self-referential flagging.
