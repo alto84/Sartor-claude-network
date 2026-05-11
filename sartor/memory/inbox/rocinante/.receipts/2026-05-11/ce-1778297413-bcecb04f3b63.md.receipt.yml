@@ -1,0 +1,8 @@
+received_at: '2026-05-11T01:39:45+00:00'
+received_by: rocinante-curator
+status: drained
+destination: sartor\memory\FAMILY.md
+action: appended_block
+hash: 0fc62f588a0601a2f6c7969091adf7651717e6f1aa7ab30d9610f44db4b47cb4
+entry_id: ce-1778297413-bcecb04f3b63
+curator_version: '0.1'

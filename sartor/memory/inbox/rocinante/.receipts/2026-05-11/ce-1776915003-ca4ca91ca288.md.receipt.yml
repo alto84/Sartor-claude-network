@@ -1,0 +1,8 @@
+received_at: '2026-05-11T01:39:45+00:00'
+received_by: rocinante-curator
+status: drained
+destination: sartor\memory\ALTON.md
+action: appended_block
+hash: c5a27ff84315e46e55fc49fd14ad1e13475972f5bcec9542e22b48fb3147abd4
+entry_id: ce-1776915003-ca4ca91ca288
+curator_version: '0.1'
