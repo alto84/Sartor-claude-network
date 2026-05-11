@@ -39,6 +39,9 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parents[3]
 REGISTRY_PATH = REPO_ROOT / "sartor" / "memory" / "machines" / "REGISTRY.yaml"
 INBOX_DIR = REPO_ROOT / "sartor" / "memory" / "inbox" / "rocinante"
+# 2026-05-10: drift reports moved into _memos/registry-drift/ subdir so the
+# curator skip-walks them (they're cron output, not curator input).
+REPORT_DIR = INBOX_DIR / "_memos" / "registry-drift"
 
 
 def utc_stamp() -> str:
@@ -126,8 +129,8 @@ def classify(machine: dict) -> tuple[str, str, str]:
 
 
 def write_report(results: list[dict], stamp: str) -> Path:
-    INBOX_DIR.mkdir(parents=True, exist_ok=True)
-    report_path = INBOX_DIR / f"registry-drift-{stamp}.md"
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    report_path = REPORT_DIR / f"registry-drift-{stamp}.md"
     counts = {"OK": 0, "STALE": 0, "UNREACHABLE": 0}
     for r in results:
         counts[r["status"]] = counts.get(r["status"], 0) + 1

@@ -42,6 +42,11 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parents[3]
 PRIORITIES_PATH = REPO_ROOT / "sartor" / "memory" / "wifi" / "CLIENT-PRIORITIES.yaml"
 INBOX_DIR = REPO_ROOT / "sartor" / "memory" / "inbox" / "rocinante"
+# 2026-05-10: audit-trail .md files moved into _memos/wifi-health/ subdir so
+# the curator skip-walks them (they're cron output, not curator input). The
+# state cache stays at INBOX_DIR root because it's gitignored and the curator
+# already skips dotfiles.
+REPORT_DIR = INBOX_DIR / "_memos" / "wifi-health"
 STATE_PATH = INBOX_DIR / ".wifi-health-state.json"
 SECRET_CMD = r"C:/Users/alto8/Sartor-claude-network/scripts/sartor-secret.cmd"
 CONTROLLER = "https://192.168.1.171:8443"
@@ -416,7 +421,7 @@ def derive_suggestions(ap_states: list[dict]) -> list[str]:
 # -----------------------------
 
 def main() -> int:
-    INBOX_DIR.mkdir(parents=True, exist_ok=True)
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
     registry = load_priorities()
     try:
         password = get_controller_password()
@@ -426,7 +431,7 @@ def main() -> int:
         print(msg, file=sys.stderr)
         # Write a minimal report so the audit trail still exists.
         stamp = utc_stamp()
-        report_path = INBOX_DIR / f"wifi-health-{stamp}.md"
+        report_path = REPORT_DIR / f"wifi-health-{stamp}.md"
         report_path.write_text(
             f"---\ntype: wifi-health-report\ngenerated: {utc_iso()}\n"
             f"generator: wifi-health-monitor v1\nstatus: controller-unreachable\n---\n\n"
@@ -469,7 +474,7 @@ def main() -> int:
 
     report = render_report(client_states, ap_states, deltas, suggestions, total_alerts)
     stamp = utc_stamp()
-    report_path = INBOX_DIR / f"wifi-health-{stamp}.md"
+    report_path = REPORT_DIR / f"wifi-health-{stamp}.md"
     report_path.write_text(report, encoding="utf-8")
     save_state(client_states, ap_states)
 

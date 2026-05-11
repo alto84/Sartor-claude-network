@@ -15,10 +15,9 @@ $ErrorActionPreference = "Continue"
 $logFile  = "C:\Users\alto8\backups\sartor-creds-sync.log"
 $credsSrc = "$env:USERPROFILE\.claude\.credentials.json"
 
-$peers = @(
-  @{ host = "rtxserver";   ip = "192.168.1.157" },
-  @{ host = "gpuserver1";  ip = "192.168.1.100" }
-)
+# Use SSH config aliases - they resolve via ~/.ssh/config (single source of truth for IPs).
+# Adding a new peer: extend this list AND add a matching Host entry to ~/.ssh/config.
+$peers = @("rtxserver", "gpuserver1")
 
 function Log($msg) {
   $line = "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') $msg"
@@ -32,14 +31,14 @@ if (-not (Test-Path $credsSrc)) {
 
 $any_failure = $false
 foreach ($peer in $peers) {
-  $dest = "alton@$($peer.ip):~/.claude/.credentials.json"
+  $dest = "${peer}:~/.claude/.credentials.json"
   $scpOut = & scp -o ConnectTimeout=5 -o BatchMode=yes -o StrictHostKeyChecking=accept-new $credsSrc $dest 2>&1
   if ($LASTEXITCODE -eq 0) {
     # Tighten perms on the peer side
-    & ssh -o ConnectTimeout=5 -o BatchMode=yes "alton@$($peer.ip)" "chmod 600 ~/.claude/.credentials.json" 2>&1 | Out-Null
+    & ssh -o ConnectTimeout=5 -o BatchMode=yes $peer "chmod 600 ~/.claude/.credentials.json" 2>&1 | Out-Null
     # Don't log success unless something interesting; this runs nightly and stays quiet
   } else {
-    Log "WARN $($peer.host) ($($peer.ip)) SCP failed (exit $LASTEXITCODE): $scpOut"
+    Log "WARN $peer SCP failed (exit $LASTEXITCODE): $scpOut"
     $any_failure = $true
   }
 }
