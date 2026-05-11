@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-16"?>
+
+<Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+
+  <RegistrationInfo>
+
+    <Author>alton</Author>
+
+    <Description>Sartor curator pass â€” drains the multi-machine memory inbox and writes receipts. Runs twice daily on Rocinante. See sartor/curator_pass.py and sartor/memory/projects/memory-system-v2/10-MASTER-PLAN.md Â§5.1 cron #4.</Description>
+
+    <URI>\SartorCuratorPass</URI>
+
+  </RegistrationInfo>
+
+  <Principals>
+
+    <Principal id="Author">
+
+      <UserId>S-1-5-21-2515504145-1138363155-2256348784-1001</UserId>
+
+      <LogonType>InteractiveToken</LogonType>
+
+    </Principal>
+
+  </Principals>
+
+  <Settings>
+
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+
+    <ExecutionTimeLimit>PT10M</ExecutionTimeLimit>
+
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+
+    <StartWhenAvailable>true</StartWhenAvailable>
+
+    <IdleSettings>
+
+      <StopOnIdleEnd>false</StopOnIdleEnd>
+
+      <RestartOnIdle>false</RestartOnIdle>
+
+    </IdleSettings>
+
+    <UseUnifiedSchedulingEngine>true</UseUnifiedSchedulingEngine>
+
+  </Settings>
+
+  <Triggers>
+
+    <CalendarTrigger>
+
+      <StartBoundary>2026-04-12T07:30:00</StartBoundary>
+
+      <ScheduleByDay>
+
+        <DaysInterval>1</DaysInterval>
+
+      </ScheduleByDay>
+
+    </CalendarTrigger>
+
+    <CalendarTrigger>
+
+      <StartBoundary>2026-04-12T19:30:00</StartBoundary>
+
+      <ScheduleByDay>
+
+        <DaysInterval>1</DaysInterval>
+
+      </ScheduleByDay>
+
+    </CalendarTrigger>
+
+  </Triggers>
+
+  <Actions Context="Author">
+
+    <Exec>
+
+      <Command>C:\Users\alto8\Sartor-claude-network\scripts\curator-pass-run.cmd</Command>
+
+      <WorkingDirectory>C:\Users\alto8\Sartor-claude-network</WorkingDirectory>
+
+    </Exec>
+
+  </Actions>
+
+</Task>

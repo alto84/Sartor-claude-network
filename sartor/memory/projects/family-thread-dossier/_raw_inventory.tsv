@@ -1,0 +1,564 @@
+path	lines	size	mtime	stale	bloat	fm_type	fm_updated	fm_status	fm_name	heading	fm_desc
+ALTON.md	269	22120	2026-04-29			person	2026-04-29	active	Emmett Alton Sartor	Alton - User Profile	
+ASTRAZENECA.md	122	5888	2026-04-18			domain	2026-04-10	active		AstraZeneca - Career and AI Safety Context	
+BUSINESS.md	181	12484	2026-04-19			domain	2026-04-18	active		Business Context	
+FAMILY.md	385	16582	2026-05-01			domain	2026-04-30	active		Family	
+gpuserver1-monitoring-log.md	91	4608	2026-04-13			stub	2026-04-14			gpuserver1-monitoring-log.md	
+INDEX.md	37	1435	2026-05-01							Sartor Memory Index	
+LEARNINGS.md	220	15370	2026-04-28			meta	2026-04-29	active		Learnings - Lessons Learned	
+log.md	1461	142583	2026-05-01		Y	meta	2026-05-02	active		Log	
+MACHINES.md	616	30421	2026-05-02		Y	domain	2026-05-02	active		Machines - Computer Inventory	
+MASTERPLAN-VISIONARY.md	47	2989	2026-04-11			meta	2026-04-12	active		Sartor Visionary Manifesto	
+MASTERPLAN.md	392	21786	2026-04-19			meta	2026-04-12	active		SARTOR MASTER PLAN	
+MEMORY.md	76	30027	2026-05-02			meta	2026-05-02	active		Memory Index — Stable Pointer	
+PROCEDURES.md	129	6413	2026-04-11			meta	2026-04-12	active		Procedures - Working Procedures	
+PROJECTS.md	100	7172	2026-04-19			domain	2026-04-19	active		Projects - Active Projects	
+QUICK-REFERENCE.md	56	2314	2026-04-07			reference	2026-04-07	active		Quick Reference	
+reference_home_network.md	79	4483	2026-05-01			reference	2026-05-02		Home network and smart devices		85 Stonebridge network topology — Sartor-Saxena-Claude Network (UniFi, locally administered), Sonos speakers, Google Home/Nest devices, IPs,
+reference_memory_server.md	125	10063	2026-05-02			reference		active	reference_memory_server	Sartor memory server — git topology	Canonical architecture for the Sartor memory git topology. As of 2026-05-02 the canonical write target is the bare repo on rtxserver; GitHub
+SELF.md	139	7864	2026-04-18			meta	2026-04-16	active		Sartor - System Identity	
+TAXES.md	257	16035	2026-04-19			domain	2026-04-19	active		Tax Preparation -- Tax Year 2025	
+business/az-career.md	99	5141	2026-04-10			domain	2026-04-09	active		AstraZeneca Career Track	
+business/INDEX.md	30	1051	2026-04-11			hub	2026-04-12			Business Directory Index	
+business/rental-operations.md	117	9665	2026-04-11			domain	2026-04-11	active		Rental Operations Framework	
+business/rental-policy.md	75	5735	2026-04-25			business-policy	2026-04-25	active	rental-policy	Rental policy — what's allowed during an active rental window	What activities are allowed on gpuserver1 (and any future Sartor machine listed on a GPU rental marketplace) during an active rental window.
+business/sante-total.md	153	9723	2026-05-01			domain	2026-04-30	active		Sante Total Inc.	
+business/solar-inference.md	151	10697	2026-05-02			domain	2026-04-29	active		Solar Inference LLC	
+business/hours-log/2025-06-to-2026-05-estimate.md	60	10348	2026-05-02			time-record-estimate		estimate-pending-cpa-review	solar-inference-hours-estimate-2025-06-to-2026-05	Solar Inference LLC hours - past-12-months estimate	Conservative estimate of Alton Sartor's hours of material participation in Solar Inference LLC over the past 12 months (June 2025 - May 2026
+business/hours-log/system-design-2026-05-02.md	165	19526	2026-05-02			system-design		proposed-pending-alton-greenlight	hours-log-system-design	Hours-log system design — 2026-05-02	Design for automatic capture of Alton's hours of material participation in Solar Inference LLC and other Sartor entities, for §469 substanti
+daily/2026-02-06-brief.md	38	1538	2026-02-06	Y						Morning Brief - February 6, 2026 (Friday)	
+daily/2026-02-06.md	163	7139	2026-02-06	Y						Daily Log - 2026-02-06	
+daily/2026-02-18.md	42	3044	2026-02-17	Y						Daily Log — 2026-02-18 (Overnight Autonomous Session)	
+daily/2026-03-14.md	332	15031	2026-04-12							Daily Log - 2026-03-14	
+daily/2026-03-15.md	339	9573	2026-04-12							Daily Log - 2026-03-15	
+daily/2026-03-16.md	339	9573	2026-04-12							Daily Log - 2026-03-16	
+daily/2026-03-17.md	339	9573	2026-04-12							Daily Log - 2026-03-17	
+daily/2026-03-18.md	87	2445	2026-04-12							Daily Log - 2026-03-18	
+daily/2026-03-28.md	59	1653	2026-04-12							Daily Log - 2026-03-28	
+daily/2026-03-29.md	153	4248	2026-04-12							Daily Log - 2026-03-29	
+daily/2026-03-30.md	152	4247	2026-04-12								
+daily/2026-03-31.md	152	4247	2026-04-12								
+daily/2026-04-01.md	42	1188	2026-04-12								
+daily/2026-04-02.md	313	8802	2026-04-12							Daily Log - 2026-04-02	
+daily/2026-04-03.md	300	9060	2026-04-12							Daily Log - 2026-04-03	
+daily/2026-04-04.md	120	4702	2026-04-07							Daily Log - 2026-04-04	
+daily/2026-04-05.md	147	6798	2026-04-07							Daily Log - 2026-04-05 (Easter Sunday)	
+daily/2026-04-06.md	158	8287	2026-04-07							Daily Log - 2026-04-06 (Monday)	
+daily/2026-04-07.md	152	7285	2026-04-13							Daily Log - 2026-04-07 (Tuesday)	
+daily/2026-04-08.md	250	14431	2026-04-09							Daily Log - 2026-04-08 (Wednesday)	
+daily/2026-04-09.md	304	15431	2026-04-12							Daily Log - 2026-04-09 (Thursday)	
+daily/2026-04-10.md	316	15801	2026-04-11							Daily Log - 2026-04-10 (Friday)	
+daily/2026-04-11.md	52	3325	2026-04-12							Daily Log - 2026-04-11	
+daily/2026-04-12.md	455	23980	2026-04-13							Daily Log - 2026-04-12 (Sunday)	
+daily/2026-04-13.md	474	24895	2026-04-13							Daily Log - 2026-04-13 (Monday)	
+daily/2026-04-14.md	456	25472	2026-04-18							Daily Log - 2026-04-14 (Tuesday)	
+daily/2026-04-15.md	278	16936	2026-04-18			daily-log	2026-04-15	active		Daily Log — 2026-04-15	
+daily/2026-04-16.md	173	11619	2026-04-18			daily-log	2026-04-16	active		Daily Log — 2026-04-16	
+daily/2026-04-17.md	293	16841	2026-04-18			daily	2026-04-17			Daily Log — 2026-04-17	
+daily/2026-04-18.md	326	19069	2026-04-19			daily	2026-04-18			Daily Log — 2026-04-18	
+daily/2026-04-19.md	463	23629	2026-04-19			daily	2026-04-19			Daily Log — 2026-04-19	
+daily/2026-04-20.md	311	19006	2026-04-22			daily	2026-04-20			Daily Log — 2026-04-20	
+daily/2026-04-21.md	375	19792	2026-04-22			daily	2026-04-21			Daily Log — 2026-04-21	
+daily/2026-04-22.md	422	29499	2026-04-22			daily	2026-04-22			Daily Log — 2026-04-22	
+daily/2026-04-23.md	589	31140	2026-04-23		Y	daily	2026-04-23			Daily Log — 2026-04-23	
+daily/2026-04-24.md	453	21355	2026-04-24			daily	2026-04-24			Daily Log — 2026-04-24	
+daily/2026-04-25.md	804	39880	2026-04-26		Y	daily	2026-04-25			Daily Log — 2026-04-25	
+daily/2026-04-26.md	488	27818	2026-04-28			daily	2026-04-26			Daily Log — 2026-04-26	
+daily/2026-04-27.md	531	32452	2026-04-28		Y	daily	2026-04-27			Daily Log — 2026-04-27	
+daily/2026-04-28.md	469	28876	2026-04-28			daily	2026-04-28			Daily Log — 2026-04-28	
+daily/2026-04-29.md	476	26578	2026-04-29							Daily Log — 2026-04-29	
+daily/2026-04-30.md	334	21291	2026-05-01			daily				Daily Log — 2026-04-30	
+daily/2026-05-01.md	761	44508	2026-05-01		Y	daily	2026-05-01	active		Daily Log — 2026-05-01	
+daily/2026-05-02.md	208	10652	2026-05-01			daily	2026-05-02	active		Daily Log — 2026-05-02	
+feedback/awareness-as-duty.md	40	3275	2026-04-25			feedback	2026-04-24		awareness-as-duty	Awareness as duty	When any Claude instance notices a gap in its own situational awareness, it MUST record the improvement at the highest-permitted scope and p
+feedback/completeness-principle.md	47	4159	2026-04-18			feedback	2026-04-18		completeness-principle	Completeness Principle	A task is not done until all stated requirements are demonstrably satisfied. Partial solutions that fail one or more requirements must retur
+feedback/feedback_agent_bypass.md	29	1439	2026-04-12			feedback			Permissions bypass -- complete solution		How to eliminate all permission prompts in Claude Code, including known bugs and workarounds
+feedback/feedback_memory_conventions.md	22	2040	2026-04-07			feedback			Memory files follow frontmatter + callout conventions		All sartor/memory/ files use YAML frontmatter, Obsidian callouts, and wikilinks. Full spec at sartor/memory/reference/MEMORY-CONVENTIONS.md.
+feedback/feedback_no_permissions.md	11	575	2026-04-12			feedback			No permission prompts		Always use bypassPermissions mode for agents - never prompt Alton for tool approvals
+feedback/feedback_objective_level_delegation.md	23	3434	2026-04-11			feedback			Delegate to remote machine agents at the objective level, not the task level	Delegate to remote machine agents at the objective level, not the task level	When dispatching work to gpuserver1 or future peer machines (Blackwell workstation etc.), state the objective and trust the agent's executio
+feedback/feedback_permissions_fix.md	30	1459	2026-04-12			feedback			Permission system permanent fix		How to configure Claude Code so agents never prompt for permissions — includes confirmed bugs
+feedback/feedback_prefer_subagents.md	18	1707	2026-04-12			feedback			Prefer subagent delegation for analysis work	Prefer subagent delegation for analysis work	Delegate analysis, research, and multi-step computation to subagents rather than doing it in the main conversation
+feedback/feedback_preserve_frontmatter.md	23	2815	2026-04-09			feedback			Preserve YAML frontmatter and callouts when consolidating		autoDream and the memory-curator MUST preserve existing YAML frontmatter, Obsidian callouts, wikilinks, and v2 structure when writing back t
+feedback/feedback_pricing_autonomy.md	52	5878	2026-04-18			feedback			Continuous-rental-priority pricing autonomy for rental machines	Continuous-rental-priority pricing autonomy for rental machines	Machine agents in the Sartor household (gpuserver1 now, Blackwell and future peers later) have delegated pricing authority on their vast.ai 
+feedback/feedback_protected_paths.md	25	1473	2026-04-12			feedback			Never edit protected .claude/ paths		Writes to .claude/ (except agents/commands/skills) ALWAYS trigger permission prompts - facts belong in memory files, not rules
+feedback/framework-floor-not-checklist.md	26	2426	2026-05-01			feedback		active		Frameworks are the floor, not a checklist	
+feedback/gather-triage-2026-04-16.md	39	3314	2026-04-18			feedback	2026-04-16		gather-triage-2026-04-16	Gather triage — 2026-04-16	Pre-filter rules for Gmail/Calendar gather runs — unsubscribes + recruiter filter + declined-opportunity list as of 2026-04-16
+feedback/goal-driven-execution.md	71	4257	2026-05-01			feedback		active		Goal-driven execution	
+feedback/proactive-error-cleanup.md	26	2174	2026-05-02			feedback		active	proactive-error-cleanup	Always clean up errors when you see them	When you notice a real error or drift while doing something else, fix it. Don't defer. Confirmed 2026-05-02 after gpuserver1 peer caught a 3
+feedback/prosecutorial-discount-on-constitutional-reframes.md	17	2439	2026-04-22			feedback			prosecutorial-discount-on-constitutional-reframes		When a self-catching move lands on a frame the Constitution already blesses, discount it — the "insight" may be trained-compliance in costum
+feedback/scope-discipline.md	39	3092	2026-05-01			feedback		active		Scope discipline	
+inbox/.drained/2026-04-14/gpuserver1/2026-04-11_0338_monitor.md	81	4287	2026-04-13			inbox					
+inbox/.drained/2026-04-14/gpuserver1/2026-04-12_cron-cleanup.md	395	16190	2026-04-13			completion_report				Cron Cleanup Completion Report — 2026-04-12	
+inbox/.drained/2026-04-14/rocinante/2026-04-12-workstation-purchase.md	50	2388	2026-04-13			event				Workstation Purchase: Dual RTX PRO 6000 Blackwell Build	
+inbox/.drained/2026-04-19/DRAIN-NOTE.md	58	3695	2026-04-19			meta	2026-04-19		DRAIN-NOTE-2026-04-19	Drain note — 2026-04-19	Note on the bulk drain of the rocinante-extractor proposed-memories backlog on 2026-04-19 during the comprehensive tidy pass.
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137401-75f4402202ac.md	45	1148	2026-04-19			event				Proposed memory: explicit_memorize	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137401-7df3ada3936e.md	45	1423	2026-04-19			event				Proposed memory: explicit_memorize	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137401-93210ab9176a.md	45	1149	2026-04-19			event				Proposed memory: explicit_memorize	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-287ba3e0a7cc.md	50	1436	2026-04-19			event				Proposed memory: rental_price	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-2881b3cc7fce.md	50	1229	2026-04-19			event				Proposed memory: health	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-321d985c7b39.md	47	1539	2026-04-19			event				Proposed memory: fiscal_outlook	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-3310abd52d95.md	50	1227	2026-04-19			event				Proposed memory: dob	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-56ba389650c3.md	47	1413	2026-04-19			event				Proposed memory: fiscal_outlook	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-685978517cc6.md	45	1493	2026-04-19			event				Proposed memory: rule	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-72a1017f5712.md	50	1384	2026-04-19			event				Proposed memory: wifi_password	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-734f1da2395c.md	45	1384	2026-04-19			event				Proposed memory: preference	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-75c5375f5204.md	45	1422	2026-04-19			event				Proposed memory: explicit_memorize	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-8c1b24283c01.md	45	1351	2026-04-19			event				Proposed memory: rule	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-9421ef92a6e2.md	45	1559	2026-04-19			event				Proposed memory: preference	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-952ac9253e0e.md	47	1502	2026-04-19			event				Proposed memory: fiscal_outlook	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-9beac90a1086.md	50	1231	2026-04-19			event				Proposed memory: dob	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-9d82d1c0ff9b.md	50	1241	2026-04-19			event				Proposed memory: health	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-af1dcf4dbabd.md	45	1419	2026-04-19			event				Proposed memory: explicit_memorize	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-c51463a34c14.md	45	1495	2026-04-19			event				Proposed memory: rule	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-14/ce-1776137402-f7c2c9bfc134.md	45	1507	2026-04-19			event				Proposed memory: rule	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/ce-1776310201-b29722e5ca67.md	47	1530	2026-04-19			event				Proposed memory: entity_sante_total	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/ce-1776310201-ca4ca91ca288.md	47	1302	2026-04-19			event				Proposed memory: entity_alton	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-aneeta-employer-change.md	39	1381	2026-04-19			fact				Aneeta employment: left Biogen mid-2025, joined Neurvati Neurosciences Inc.	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-az-role-change-confirmed.md	33	1261	2026-04-19			fact				AZ role change confirmed (per Alton, 2026-04-13)	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-caqh-reattestation-needed.md	36	1263	2026-04-19			action_item				CAQH provider profile reattestation required	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-chase-sapphire-reserve-shipped.md	28	933	2026-04-19			fact				New Chase Sapphire Reserve card shipped (2026-04-13)	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-mka-donation-2025.md	40	1236	2026-04-19			fact				2025 charitable contribution: $2,037.17 to MKA	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-mka-events-april-2026.md	39	1774	2026-04-19			events				MKA April 2026 schedule items	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-mka-vayu-math-support.md	36	1618	2026-04-19			event				MKA: Vayu math support flagged by 4th-grade teacher (partial quotients division)	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-mortgage-refi-shellpoint-cenlar.md	38	1226	2026-04-19			fact				85 Stonebridge: 2025 mortgage transfer Shellpoint -> Cenlar; new HELOC opened	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-newegg-april-deliveries.md	32	1342	2026-04-19			fact				Newegg hardware deliveries 4/14-4/15 (likely the $37k workstation buildout)	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-power-mac-pete-berman-coordination.md	39	1429	2026-04-19			event				Power Mac LLC scheduled for 2026-04-28, will coordinate with Pete Berman	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-recruiter-pressure-az-context.md	31	1600	2026-04-19			signal				Recruiter pressure: high inbound volume for Medical Director / Drug Safety / AI roles (4/12-4/16)	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-sante-total-mike-quigg-recurring-donor.md	34	1310	2026-04-19			fact				Sante Total: Michael Quigg recurring $250/month donor (active subscription)	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-sno-deadlines.md	28	1045	2026-04-19			fact				Society for Neuro-Oncology 2026 deadlines	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-solar-inference-llc-formation-details.md	48	2343	2026-04-19			fact				Solar Inference LLC: formation, structure, and TY2025 filing posture	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-tax-extension-payments.md	35	1711	2026-04-19			fact				2025 tax extension payments: $15k IRS + $3k NJ (CPA-prepared, debited Wed 4/15)	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-tribeca-pediatrics-payment.md	29	867	2026-04-19			fact				Pediatrician confirmed: Tribeca Pediatrics (active provider)	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-wohelo-payment-12900.md	47	1892	2026-04-19			action_item				Wohelo Camp 2026: Vishala enrolled, $12,900 check + $500 deposit owed	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-16/gmail-workstation-37k-pass-through.md	38	1649	2026-04-19			fact				$37k workstation hardware confirmed for pass-through; ~$450k solar roof basis confirmed	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-17/ce-1776396603-685978517cc6.md	45	1501	2026-04-19			event				Proposed memory: rule	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-17/ce-1776396603-820f0319f906.md	47	1119	2026-04-19			event				Proposed memory: entity_vishala	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-17/ce-1776396603-92d7d6fb86dd.md	45	1551	2026-04-19			event				Proposed memory: permission	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-17/ce-1776396603-a2dbed2ced60.md	45	1754	2026-04-19			event				Proposed memory: task_batch	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-17/ce-1776396603-b29722e5ca67.md	47	1530	2026-04-19			event				Proposed memory: entity_sante_total	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-17/ce-1776396603-ca4ca91ca288.md	47	1302	2026-04-19			event				Proposed memory: entity_alton	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-17/ce-1776396603-e73bbd302d41.md	47	1337	2026-04-19			event				Proposed memory: entity_aneeta	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-17/ce-1776396603-ea35b4354972.md	45	1076	2026-04-19			event				Proposed memory: dollar_amount	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-18/ce-1776483003-685978517cc6.md	45	1501	2026-04-19			event				Proposed memory: rule	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-18/ce-1776483003-92d7d6fb86dd.md	45	1551	2026-04-19			event				Proposed memory: permission	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-18/ce-1776483003-a2dbed2ced60.md	45	1754	2026-04-19			event				Proposed memory: task_batch	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-18/ce-1776483003-b29722e5ca67.md	47	1530	2026-04-19			event				Proposed memory: entity_sante_total	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-18/ce-1776483003-ca4ca91ca288.md	47	1302	2026-04-19			event				Proposed memory: entity_alton	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-19/ce-1776569403-685978517cc6.md	45	1501	2026-04-19			event				Proposed memory: rule	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-19/ce-1776569403-92d7d6fb86dd.md	45	1551	2026-04-19			event				Proposed memory: permission	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-19/ce-1776569403-a2dbed2ced60.md	45	1754	2026-04-19			event				Proposed memory: task_batch	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-19/ce-1776569403-b29722e5ca67.md	47	1530	2026-04-19			event				Proposed memory: entity_sante_total	
+inbox/.drained/2026-04-19/rocinante-extractor/2026-04-19/ce-1776569403-ca4ca91ca288.md	47	1302	2026-04-19			event				Proposed memory: entity_alton	
+inbox/gpuserver1/2026-04-23_new-peer-rtxpro6000server.md	45	3190	2026-04-22			inbox-message		pending	new-peer-rtxpro6000server	New peer online: rtxpro6000server (192.168.1.157)	
+inbox/gpuserver1/2026-04-24_corpus-qc-summary.md	125	5708	2026-04-24			inbox-summary	2026-04-24		corpus-qc-summary-2026-04-24	Track C v2 Corpus QC — gpuserver1 summary	
+inbox/gpuserver1/2026-04-24_cpu-delegation.md	44	4843	2026-04-24			inbox-log	2026-04-24		cpu-delegation-2026-04-24	gpuserver1 CPU-only delegation — 2026-04-24	
+inbox/gpuserver1/gateway-cron-decision-2026-04-20.md	34	1977	2026-04-19			report		completed		gateway_cron.py Decision: RETIRE	
+inbox/gpuserver1/heartbeat-amendment-result-2026-04-20.md	64	2499	2026-04-19			report		completed		Heartbeat Amendment Result	
+inbox/gpuserver1/_heartbeat.md	16	322	2026-04-19			heartbeat		green			
+inbox/gpuserver1/_inbox-only-log.md	204	8308	2026-04-18			stub	2026-04-12			inbox-only	
+inbox/gpuserver1/vastai/2026-04-19T1935Z-state-change.md	12	249	2026-04-19			event	2026-04-19T19:35:10+00:00			vast.ai state change 2026-04-19T19:35:10+00:00	
+inbox/gpuserver1/_processed/2026-04-16_heartbeat-amendment.md	44	3677	2026-04-19			task		pending		Amend monitoring sweep to emit Operating Agreement §2.3 heartbeat	
+inbox/gpuserver1/_processed/2026-04-18T-task-pull-fresh.md	26	1653	2026-04-19			task		pending		Pull fresh from origin/main	
+inbox/gpuserver1/_processed/2026-04-19_heartbeat-and-gateway.md	73	4717	2026-04-19			task		proposed		Task: Heartbeat amendment + gateway cron decision + inbox housekeeping	
+inbox/gpuserver1/_processed/2026-04-19_rental-monitoring-fixes.md	124	6616	2026-04-19			task		proposed		Task: Rental-monitoring fixes for machine 52271	
+inbox/gpuserver1/_tasks/README.md	54	1757	2026-04-18			reference	2026-04-16	active		`_tasks/` — Rocinante-to-gpuserver1 asynchronous dispatch	
+inbox/rocinante/2026-04-23_from-rtxpro6000server-oa-v0.2-thoughts.md	18	3440	2026-04-24			event				Three-peer OA thoughts — from rtxpro6000server	
+inbox/rocinante/2026-04-24_vastai-re-rental-review.md	72	3949	2026-04-24			inbox-message				Vast.ai re-rental review after 48h network outage	
+inbox/rocinante/2026-04-25_persona-engineering-cato-rereview-verdict.md	89	7329	2026-04-25			phone-home		awaiting-alton-decision		Cato re-review verdict — revise before firing, narrowed to 5 small patches	
+inbox/rocinante/2026-04-25_persona-engineering-v1.1-revisions-complete.md	59	5314	2026-04-25			phone-home		awaiting-cato-rereview-then-alton-greenlight		Persona engineering Phase 1 v1.1 — revisions committed, Cato re-review pending	
+inbox/rocinante/2026-04-25_persona-engineering-v1.2-patches-complete.md	61	5249	2026-04-25			phone-home		awaiting-alton-greenlight-and-optional-cato-verify		Persona engineering Phase 1 v1.2 — patches landed; awaiting greenlight	
+inbox/rocinante/2026-04-27_rtxserver_flower-fans-pwm-conversion.md	82	6531	2026-04-29			hardware-followup			rtxserver-flower-fans-pwm-conversion	rtxpro6000server — make flower-fan array PWM-controllable	Hardware follow-up to make the rtxpro6000server front-mesh "flower" fan array PWM-controllable. Currently wired direct to PSU 12 V via manua
+inbox/rocinante/20260429T125000Z_bmc-binding-applied.md	106	6528	2026-04-29			bmc-config-applied		applied-and-verified	bmc-binding-applied-2026-04-29	BMC fan source bindings + curves — APPLIED	Confirmation that BMC fan source bindings + 4-point curves were applied to rtxpro6000server per the proposal in PHONE-HOME-bmc-fan-source-bi
+inbox/rocinante/PHONE-HOME-cooling-upgrade-recommendation.md	100	8032	2026-04-29			phone-home			phone-home-cooling-upgrade-recommendation-2026-04-29	PHONE-HOME — cooling upgrade recommendation for rtxpro6000server	Cooling-upgrade recommendation for rtxpro6000server after the post-BMC-binding 475W stress test. Verdict marginal (GPU0 peak 84°C, no thrott
+inbox/rocinante/rtxserver-vastai-decisions-2026-05-02.md	63	4265	2026-05-02			decision-record			rtxserver-vastai-decisions-2026-05-02	Alton's calls on rtxserver vast.ai onboarding (2026-05-02)	Alton's answers to the 6 open questions raised in `inbox/gpuserver1/rtxserver-vastai-onboarding-2026-05-02.md`. Captured 2026-05-02 evening,
+inbox/rocinante/sartor-agent-os-peer-memo-rtxpro6000server.md	49	3432	2026-05-01			inbox-proposal		open		Peer-machine input requested: Sartor Agent OS upgrade plan	
+inbox/rocinante/proposed-memories/2026-04-20/ce-1776655803-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-04-20/ce-1776655803-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-20/ce-1776655803-92d7d6fb86dd.md	45	1551	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-04-20/ce-1776655803-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-20/ce-1776655803-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-04-20/ce-1776655803-ca4ca91ca288.md	47	1302	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-04-21/ce-1776742203-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-04-21/ce-1776742203-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-21/ce-1776742203-92d7d6fb86dd.md	45	1551	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-04-21/ce-1776742203-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-21/ce-1776742203-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-04-21/ce-1776742203-ca4ca91ca288.md	47	1302	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-04-22/ce-1776828603-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-04-22/ce-1776828603-6811ff368a98.md	47	1432	2026-05-01			event				Proposed memory: entity_vast.ai	
+inbox/rocinante/proposed-memories/2026-04-22/ce-1776828603-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-22/ce-1776828603-92d7d6fb86dd.md	45	1551	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-04-22/ce-1776828603-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-22/ce-1776828603-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-04-22/ce-1776828603-ca4ca91ca288.md	47	1302	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-04-23/ce-1776915003-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-04-23/ce-1776915003-6811ff368a98.md	47	1432	2026-05-01			event				Proposed memory: entity_vast.ai	
+inbox/rocinante/proposed-memories/2026-04-23/ce-1776915003-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-23/ce-1776915003-92d7d6fb86dd.md	45	1551	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-04-23/ce-1776915003-9c939cfb4dfd.md	47	1420	2026-05-01			event				Proposed memory: entity_rtx_pro_6000	
+inbox/rocinante/proposed-memories/2026-04-23/ce-1776915003-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-23/ce-1776915003-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-04-23/ce-1776915003-ca4ca91ca288.md	47	1302	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-04-24/ce-1777001402-af1dcf4dbabd.md	45	1441	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/proposed-memories/2026-04-24/ce-1777001403-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-24/ce-1777001403-92d7d6fb86dd.md	45	1551	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-04-24/ce-1777001404-080e45f5c313.md	45	1728	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-24/ce-1777001404-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-04-24/ce-1777001404-6811ff368a98.md	47	1432	2026-05-01			event				Proposed memory: entity_vast.ai	
+inbox/rocinante/proposed-memories/2026-04-24/ce-1777001404-9c939cfb4dfd.md	47	1420	2026-05-01			event				Proposed memory: entity_rtx_pro_6000	
+inbox/rocinante/proposed-memories/2026-04-24/ce-1777001404-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-24/ce-1777001404-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-04-24/ce-1777001404-c51463a34c14.md	45	1495	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-24/ce-1777001404-ca4ca91ca288.md	47	1302	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087802-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087802-92d7d6fb86dd.md	45	1573	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087802-af1dcf4dbabd.md	45	1441	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087803-080e45f5c313.md	45	1728	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087803-0fe9934681e8.md	45	1239	2026-05-01			event				Proposed memory: dollar_amount	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087803-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087803-6811ff368a98.md	47	1432	2026-05-01			event				Proposed memory: entity_vast.ai	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087803-9c939cfb4dfd.md	47	1420	2026-05-01			event				Proposed memory: entity_rtx_pro_6000	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087803-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087803-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087803-c51463a34c14.md	45	1495	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087803-ca4ca91ca288.md	47	1302	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-04-25/ce-1777087803-d3c8120b1fad.md	45	1406	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174203-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174203-92d7d6fb86dd.md	45	1573	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174203-af1dcf4dbabd.md	45	1441	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174203-f7c2c9bfc134.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174204-0fe9934681e8.md	45	1239	2026-05-01			event				Proposed memory: dollar_amount	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174204-c51463a34c14.md	45	1495	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174205-080e45f5c313.md	45	1728	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174205-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174205-62d300bf3430.md	45	1791	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174205-6811ff368a98.md	47	1432	2026-05-01			event				Proposed memory: entity_vast.ai	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174205-9c939cfb4dfd.md	47	1420	2026-05-01			event				Proposed memory: entity_rtx_pro_6000	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174205-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174205-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174205-ca4ca91ca288.md	47	1422	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174205-d3c8120b1fad.md	45	1406	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174205-e29df9aedf8f.md	45	1773	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-26/ce-1777174205-e73bbd302d41.md	47	1439	2026-05-01			event				Proposed memory: entity_aneeta	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260603-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260603-92d7d6fb86dd.md	45	1573	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260603-af1dcf4dbabd.md	45	1441	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260603-f7c2c9bfc134.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260604-62d300bf3430.md	45	1791	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260604-c51463a34c14.md	45	1495	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260605-080e45f5c313.md	45	1728	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260605-474c88d55829.md	45	1767	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260605-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260605-6811ff368a98.md	47	1432	2026-05-01			event				Proposed memory: entity_vast.ai	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260605-9c939cfb4dfd.md	47	1420	2026-05-01			event				Proposed memory: entity_rtx_pro_6000	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260605-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260605-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260605-ca4ca91ca288.md	47	1422	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260605-e29df9aedf8f.md	45	1773	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-27/ce-1777260605-e73bbd302d41.md	47	1439	2026-05-01			event				Proposed memory: entity_aneeta	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347003-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347003-92d7d6fb86dd.md	45	1573	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347003-af1dcf4dbabd.md	45	1441	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347004-080e45f5c313.md	45	1728	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347004-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347004-6811ff368a98.md	47	1432	2026-05-01			event				Proposed memory: entity_vast.ai	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347004-9c939cfb4dfd.md	47	1420	2026-05-01			event				Proposed memory: entity_rtx_pro_6000	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347004-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347004-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347004-c51463a34c14.md	45	1495	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347004-ca4ca91ca288.md	47	1302	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-04-28/ce-1777347004-f7c2c9bfc134.md	45	1131	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433403-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433403-92d7d6fb86dd.md	45	1573	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433403-af1dcf4dbabd.md	45	1441	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433404-c51463a34c14.md	45	1495	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433404-f7c2c9bfc134.md	45	1131	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433405-080e45f5c313.md	45	1728	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433405-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433405-6811ff368a98.md	47	1432	2026-05-01			event				Proposed memory: entity_vast.ai	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433405-9c939cfb4dfd.md	47	1420	2026-05-01			event				Proposed memory: entity_rtx_pro_6000	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433405-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433405-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-04-29/ce-1777433405-ca4ca91ca288.md	47	1302	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519803-af1dcf4dbabd.md	45	1441	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519804-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519804-92d7d6fb86dd.md	45	1573	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519805-080e45f5c313.md	45	1728	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519805-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519805-6811ff368a98.md	47	1432	2026-05-01			event				Proposed memory: entity_vast.ai	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519805-9c939cfb4dfd.md	47	1420	2026-05-01			event				Proposed memory: entity_rtx_pro_6000	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519805-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519805-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519805-c51463a34c14.md	45	1495	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519805-ca4ca91ca288.md	47	1302	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-04-30/ce-1777519805-f7c2c9bfc134.md	45	1131	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606206-af1dcf4dbabd.md	45	1441	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606208-59bc53d14b04.md	45	1419	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606208-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606208-92d7d6fb86dd.md	45	1573	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606208-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606208-c51463a34c14.md	45	1495	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606208-f7c2c9bfc134.md	45	1131	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606209-080e45f5c313.md	45	1728	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606209-0a35614642ea.md	45	1745	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606209-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606209-6811ff368a98.md	47	1432	2026-05-01			event				Proposed memory: entity_vast.ai	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606209-9c939cfb4dfd.md	47	1420	2026-05-01			event				Proposed memory: entity_rtx_pro_6000	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606209-a800de47cc70.md	47	1425	2026-05-01			event				Proposed memory: entity_vayu	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606209-b0d1598a1c8a.md	45	1778	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606209-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-05-01/ce-1777606209-ca4ca91ca288.md	47	1302	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692602-af1dcf4dbabd.md	45	1441	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-080e45f5c313.md	45	1728	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-0a35614642ea.md	45	1745	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-48ea59e25322.md	47	1217	2026-05-01			event				Proposed memory: entity_rental	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-59bc53d14b04.md	45	1419	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-6811ff368a98.md	47	1432	2026-05-01			event				Proposed memory: entity_vast.ai	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-685978517cc6.md	45	1501	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-92d7d6fb86dd.md	45	1573	2026-05-01			event				Proposed memory: permission	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-9c939cfb4dfd.md	47	1420	2026-05-01			event				Proposed memory: entity_rtx_pro_6000	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-a2dbed2ced60.md	45	1754	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-a800de47cc70.md	47	1425	2026-05-01			event				Proposed memory: entity_vayu	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-b0d1598a1c8a.md	45	1778	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-b29722e5ca67.md	47	1530	2026-05-01			event				Proposed memory: entity_sante_total	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-c51463a34c14.md	45	1495	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-ca4ca91ca288.md	47	1302	2026-05-01			event				Proposed memory: entity_alton	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-f059fbcca43c.md	50	1333	2026-05-01			event				Proposed memory: wifi_password	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-f1a634b26ffd.md	45	1332	2026-05-01			event				Proposed memory: task_batch	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-f7c2c9bfc134.md	45	1131	2026-05-01			event				Proposed memory: rule	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-f9c738f0851c.md	50	1333	2026-05-01			event				Proposed memory: wifi_password	
+inbox/rocinante/proposed-memories/2026-05-02/ce-1777692603-fd8e2cb33fe5.md	45	1263	2026-05-01			event				Proposed memory: explicit_memorize	
+inbox/rocinante/_curator_logs/curator-log-2026-04-16T19-04-49Z.md	36	723	2026-04-18			curator-log				Curator run report	
+inbox/rocinante/_flagged/heartbeat-stale-gpuserver1-2026-04-16T19-04-49Z.md	18	394	2026-04-18			flag				Stale heartbeat: gpuserver1	
+inbox/rocinante/_flagged/heartbeat-stale-rocinante-2026-04-16T19-04-49Z.md	18	381	2026-04-18			flag				Stale heartbeat: rocinante	
+inbox/rocinante/_flagged/2026-04-16/gmail-condo-chimney-damage.md	44	1998	2026-04-18			event				Shared property: front odd-side chimney damaged, bricks dislodged onto roof (2026-04-16)	
+inbox/rocinante/_flagged/2026-04-16/gmail-condo-chimney-damage.reason.md	1	557	2026-04-18								
+inbox/rocinante/_flagged/2026-04-16/gmail-loki-chewy-routine-orders.md	28	1009	2026-04-18			signal				Loki: Chewy Rx order delivered 2026-04-14, no Bond Vet escalation in window	
+inbox/rocinante/_flagged/2026-04-16/gmail-loki-chewy-routine-orders.reason.md	1	338	2026-04-18								
+inbox/rocinante/_processed/2026-04-16_constitution-v0.3-delta.md	132	13772	2026-04-18			proposal		draft-delta		Constitution v0.3 — Delta Memo	
+inbox/rocinante/_processed/2026-04-19_rental-fixes-outcome.md	91	6094	2026-04-19			report		completed		Rental Monitoring Fixes — Outcome Report	
+inbox/rocinante/_specs/2026-04-16_section-2-build-spec.md	264	10057	2026-04-18			spec		draft		Operating Agreement §2 Build Spec	
+inbox/rtxpro6000server/IPMI-FAN-RESEARCH.md	113	9221	2026-04-29			research-result		NOT-FOUND-FALLBACK-CHROME-MCP	ipmi-fan-research-2026-04-29	Research — ASUS ASMB11 raw IPMI fan-PWM command	Research deliverable for the ASUS ASMB11-iKVM raw IPMI fan-PWM command on rtxpro6000server. Verdict NOT FOUND for ASUS specifically; one arc
+inbox/rtxpro6000server/PHONE-HOME-bmc-fan-source-bindings-proposal.md	127	11718	2026-04-29			phone-home			phone-home-bmc-fan-source-bindings-proposal	PHONE-HOME — proposed BMC fan-source bindings, ready for application	Proposed BMC fan-source bindings + initial 4-point curves for rtxpro6000server. Empirical sensor validation done; programmatic-IPMI path und
+inbox/rtxpro6000server/PHONE-HOME-cato-003-charges.md	62	4610	2026-04-26			phone-home		blocked-awaiting-greenlight	phone-home-cato-003-charges	Cato-003 verdict: REVISE. Phase 1 NOT fired.	rtxserver phone-home — Cato-003 verify pass on v1.2 returned REVISE with four small patches. Phase 1 NOT fired. Awaiting Alton greenlight on
+inbox/rtxpro6000server/PHONE-HOME-deepseek-v4-arch-gap.md	151	8565	2026-04-26			phone-home		blocked-arch-gap	phone-home-deepseek-v4-arch-gap	DeepSeek-V4-Flash arch-gap. vLLM AND SGLang both lack `DeepseekV4ForCausalLM`. Phone-home trigger fired.	rtxserver phone-home — vLLM 0.19.1 AND SGLang 0.5.10.post1 both lack DeepseekV4ForCausalLM in their model registries. Bloom build cannot pro
+inbox/rtxpro6000server/PHONE-HOME-fan-control-pwm-no-effect.md	178	11546	2026-04-29			phone-home			phone-home-fan-control-pwm-no-effect	PHONE-HOME — fan control directive blocked: PWM writes have no effect	Phase A of the fan-control directive uncovered that the nct6798 PWM channels do not actually control fan speed on rtxpro6000server. The Linu
+inbox/rtxpro6000server/PHONE-HOME-phase-1-sanity-failure.md	117	9538	2026-04-26			phone-home		blocked-awaiting-decision	phone-home-phase-1-sanity-failure	Phase 1 baseline ran clean. Both pre-registered sanity checks failed.	rtxserver phone-home — Phase 1 baseline run completed; both pre-registered sanity-check triggers fired (null-non-zero 77.8% > 30%; direct-lo
+inbox/rtxpro6000server/PHONE-HOME-phase-2-plan-greenlit-experiment-002-pre-fire.md	107	8999	2026-04-29			phone-home		blocked-awaiting-principal-greenlight	phone-home-phase-2-plan-greenlit-experiment-002-pre-fire	Phase 2 Plan greenlit. Experiment 002 ready for fire after Cato-009 verify.	rtxserver phone-home — Phase 2 plan-prosecution chain CLOSED via Cato-007 GREENLIGHT (trajectory 18→5→4→6→2→1→0). Experiment 002 first-fire 
+inbox/rtxpro6000server/RESUME-after-shutdown-2026-04-27.md	196	13593	2026-04-29			resume-instructions		awaiting-physical-work-and-power-on	resume-after-shutdown-2026-04-27	RESUME — rtxpro6000server fan-control work, post-2026-04-27 shutdown	Entry point for the next rtxserver Claude session after the 2026-04-27 graceful shutdown. Path A (BIOS Q-Fan disable) and Path B (acpi_enfor
+inbox/rtxpro6000server/_heartbeat.md	24	655	2026-04-25			heartbeat	2026-04-24T18:45:34Z			rtxpro6000server heartbeat 2026-04-24T18:45:34Z	
+incidents/2026-04-16_privacybrowse-static-analysis.md	155	10343	2026-04-18			incident-analysis	2026-04-16			PrivacyBrowse.msix — Static Analysis Report	
+indexes/_index.md	36	1053	2026-04-09			reference	2026-04-10	active		Wiki Indexes	
+ledgers/INDEX.md	17	366	2026-04-11			hub	2026-04-12			Ledgers Directory Index	
+ledgers/kids.md	68	2969	2026-04-18			domain	2026-04-16	active		Kids Ledger	
+machines/MACHINES.md	100	9575	2026-04-26			hardware-inventory-index	2026-04-26		machines-index	machines/ index — fleet hardware	Top-level index of per-machine hardware inventories under sartor/memory/machines/. One row per peer machine in the Sartor fleet, plus cross-
+machines/gpuserver1/CRONS.md	177	11728	2026-04-25			machine_operations	2026-04-16	active		gpuserver1 Cron Documentation v0.4	
+machines/gpuserver1/HARDWARE.md	94	6474	2026-04-26			machine-hardware	2026-04-24		gpuserver1-hardware	gpuserver1 — bill of materials and hardware quirks	Bill of materials and hardware-specific quirks for gpuserver1. Sourced from the original 9/29/2025 Newegg order (Solar Inference LLC purchas
+machines/gpuserver1/INDEX.md	34	1956	2026-04-25			hub	2026-04-24			gpuserver1 Directory Index	
+machines/gpuserver1/MISSION-v0.1.md	274	28891	2026-04-11			machine_identity		archived		gpuserver1 MISSION v0.1	
+machines/gpuserver1/MISSION.md	196	18872	2026-04-11			machine_identity	2026-04-12	active		gpuserver1 MISSION v0.2	
+machines/rocinante/CRONS.md	209	10191	2026-04-12			machine_operations	2026-04-12	active		Rocinante Cron Documentation v0.2	
+machines/rocinante/HARDWARE.md	134	6961	2026-04-26			hardware-inventory	2026-04-25		rocinante-hardware	Rocinante — bill of materials and hardware quirks	Bill of materials and hardware-specific quirks for Rocinante, the Windows household coordination hub. First formal inventory 2026-04-25; cha
+machines/rtxpro6000server/BMC.md	273	17689	2026-04-29			hardware-reference	2026-04-29		rtxpro6000server-bmc	rtxpro6000server BMC — operating reference	Reference and operating guide for the ASMB11-iKVM BMC on rtxpro6000server. Covers web UI structure, fan-control architecture, IPMI in-band a
+machines/rtxpro6000server/HARDWARE.md	201	16520	2026-04-29			machine-hardware	2026-04-27		rtxpro6000server-hardware	rtxpro6000server — bill of materials and hardware quirks	Bill of materials and hardware-specific quirks for rtxpro6000server. BoM verified against the 2026-04-12 build doc; live system reconnaissan
+machines/_TEMPLATE/JOURNAL.md	28	1115	2026-04-25			machine-journal-template			machine-journal-template	{hostname} — journal	Template for per-machine JOURNAL.md — append-only audit trail of surprises and significant state changes. Created once per peer; never rotat
+machines/_TEMPLATE/STATE.md	76	2136	2026-04-25			machine-state-template			machine-state-template	{hostname} — current state	Template for per-machine STATE.md — live diagnostics overwritten by the self-steward agent on each run. Replace placeholders with actual val
+people/alison-smith.md	51	3436	2026-05-01			person	2026-04-30	active		Alison Smith	
+people/amarkanth.md	41	1913	2026-04-10			person	2026-04-10	active		Amarkanth	
+people/andy-stecker.md	50	2167	2026-04-10			person	2026-04-10	active		Andy Stecker — Crawford Thomas Recruiting	
+people/barbara-weis.md	37	1392	2026-04-10			person	2026-04-10	active		Barbara Weis	
+people/doug-paige.md	72	4119	2026-04-29			person	2026-04-29	active		Doug Paige — Lucent Energy Management	
+people/ilan-grunwald.md	46	1780	2026-04-12			person	2026-04-10	active		Ilan Grunwald	
+people/INDEX.md	32	868	2026-04-11			hub	2026-04-12			People Directory Index	
+people/jonathan-francis.md	105	6937	2026-04-18			person	2026-04-14	active		Jonathan Francis, CPA	
+people/mike-silva.md	47	2371	2026-04-18			person	2026-04-17	active	Mike Silva	Mike Silva	
+people/README.md	103	5596	2026-04-12			meta	2026-04-11	active		People	
+projects/aneeta-peer-setup.md	132	7483	2026-05-02			project		phase-1-planned-laptop-pending-her-time	aneeta-peer-setup	Aneeta peer machine — setup guide	Setup guide for Aneeta's Claude Code peer instance on the Sartor network. Phase 1 = her existing personal laptop (lightweight, fastest path)
+projects/family-memory-fixup.md	285	18172	2026-05-01			project-plan	2026-04-25	proposed	family-memory-fixup	Family memory fixup — plan	Detailed plan to clean up the family memory layer — consolidate scattered todos, prune accreting files, separate the four layers (facts / ca
+projects/family-todos-longrunning-thread.md	49	3087	2026-05-02			project	2026-05-02	active	family-todos-longrunning-thread	Family to-dos longrunning thread	Persistent Claude Code thread Alton is keeping alive to (a) actually knock down family to-dos and (b) build the memory + skills + context in
+projects/INDEX.md	38	1627	2026-04-19			hub	2026-04-19			Projects Directory Index	
+projects/machine-self-stewardship.md	192	13743	2026-04-25			project-plan	2026-04-24	proposed	machine-self-stewardship	Machine self-stewardship — plan	Per-machine plan for autonomous self-knowledge — each Claude instance continuously builds and refreshes its understanding of the box it live
+projects/rtx6000-workstation-build-PSU-SWAP.md	103	6599	2026-04-12			project	2026-04-11	active		PSU Swap: Replacing Super Flower Leadex Titanium 2200W	
+projects/rtx6000-workstation-build-SHOPPING.md	83	5425	2026-04-12			project	2026-04-11	active		Dual RTX PRO 6000 Workstation -- Shopping List	
+projects/rtx6000-workstation-build.md	221	23370	2026-04-13			project	2026-04-11	active		Dual RTX PRO 6000 Blackwell Workstation Build	
+projects/unifi-led-direct-control.md	152	8916	2026-05-02			investigation		confirmed-feasible-pending-implementation	unifi-led-direct-control	Direct LED control on UniFi APs	Direct sysfs LED control on UniFi U7-Pro APs via SSH. Confirms we have root, can write /sys/class/leds/led_{blue,white}/{brightness,trigger,
+projects/unifi-takeover-2026-05-01-cleanup-summary.md	121	9117	2026-05-01			report		complete	unifi-takeover-2026-05-01-cleanup-summary	UniFi takeover — cleanup summary	Cleanup-pass summary for the UniFi takeover. Files audited, indexes built, cross-references added, tmp artifacts deleted, root clutter archi
+projects/unifi-takeover-2026-05-01-draft-pete-email.md	54	4483	2026-05-01			draft		not-sent	unifi-takeover-2026-05-01-draft-pete-email	Draft email to Pete Berman	Draft email to Pete Berman (Pete@bermanhomesystems.com) requesting AP/controller handoff and offering security improvements for their defaul
+projects/unifi-takeover-2026-05-01-drive-cleanup.md	137	6243	2026-05-01				2026-04-30	BLOCKED — gdrive MCP refresh token revoked		UniFi takeover 2026-05-01 — Drive cleanup (BLOCKED)	
+projects/unifi-takeover-2026-05-01-final-census.md	299	21133	2026-05-01			census		snapshot-final	unifi-takeover-2026-05-01-final-census	Network Census — 2026-05-01 FINAL (post-cleanup)	Final clean-state network census after the full takeover, PSK rotation, SSID consolidation, 4-AP cleanup, channel re-plan, 6 GHz enable, and
+projects/unifi-takeover-2026-05-01-INDEX.md	111	8268	2026-05-01			index		phase-1-and-2-complete-phase-3-deferred	unifi-takeover-2026-05-01-INDEX	UniFi Takeover 2026-05-01 — Project INDEX	Single dispatch page for the 2026-05-01 UniFi network takeover. Indexes all 13 child docs, the on-disk backup directory, the daily backup sc
+projects/unifi-takeover-2026-05-01-kidsroom-speaker.md	57	3213	2026-05-01			investigation		complete	unifi-takeover-2026-05-01-kidsroom-speaker	"Kids room speaker.p," SSID Investigation	Investigation of "Kids room speaker.p," SSID broadcasting from inside the house. Identification + location + disposition recommendation.
+projects/unifi-takeover-2026-05-01-nest-retirement.md	281	21881	2026-05-01			plan		investigation-complete-pending-physical-retirement	unifi-takeover-2026-05-01-nest-retirement	Google Nest Mesh Retirement Plan	Investigation and retirement plan for the Google Nest WiFi mesh now that the household has migrated to UniFi LGP123. Includes physical-locat
+projects/unifi-takeover-2026-05-01-network-census.md	253	20413	2026-05-01			census		snapshot	unifi-takeover-2026-05-01-network-census	Network Census — 2026-05-01 evening	Complete network census post-takeover. Every device, every client, every byte counter. Snapshot at 2026-05-01 evening.
+projects/unifi-takeover-2026-05-01-pete-email-FINAL.md	38	3404	2026-05-01			draft		ready-to-send	unifi-takeover-2026-05-01-pete-email-final	Final email to Pete Berman	Final post-takeover email to Pete Berman after revision. Ready to send.
+projects/unifi-takeover-2026-05-01-phase3-hardening-plan.md	239	17772	2026-05-01			plan		proposed-pending-approval	unifi-takeover-2026-05-01-phase3-hardening-plan	Phase 3 hardening — proposal menu	Phase 3 hardening plan for the post-takeover UniFi network — VLAN segmentation, channel re-plan, IPv6 firewall, auto-update window. Pre-exec
+projects/unifi-takeover-2026-05-01-psk-rotation-plan.md	127	7290	2026-05-01			plan		proposed-pending-approval	unifi-takeover-2026-05-01-psk-rotation-plan	PSK Rotation Plan — Berman Net + GhLoP	Proposed PSK rotation plan for Berman Net + GhLoP SSIDs. Pre-execution; awaiting Alton's approval.
+projects/unifi-takeover-2026-05-01-report.md	153	11525	2026-05-01			report		complete	unifi-takeover-2026-05-01-report	UniFi Network Takeover — Day Report	Complete report of the UniFi takeover from Berman Home Systems to local Sartor admin, executed 2026-05-01. Includes the operational referenc
+projects/unifi-takeover-2026-05-01-unknown-laptop.md	69	5620	2026-05-01			investigation		complete	unifi-takeover-2026-05-01-unknown-laptop	Unknown Laptop Investigation: LAPTOP-C4A43U6V (192.168.1.193)	Identification of LAPTOP-C4A43U6V at 192.168.1.193 — unknown Windows laptop on the family network.
+projects/unifi-takeover-2026-05-01.md	273	20905	2026-05-02			project		9-of-9-fully-owned-takeover-complete	unifi-takeover-2026-05-01	UniFi network self-host — proven takeover playbook	Complete software-only takeover of the Berman Home Systems-installed UniFi network. 9 devices (1 switch + 8 APs) migrated to local controlle
+projects/2025-photo-book/PROJECT.md	92	8788	2026-04-13			project	2026-04-11	planning		2025 Family Photo Book	
+projects/curator-fixes/2026-04-13_schema-fixes.md	73	2946	2026-04-13			fix-report	2026-04-13			Curator Schema Fixes — 2026-04-13	
+projects/disney-july-2026/PROJECT.md	115	9563	2026-04-13			project	2026-04-11	active		Disney Trip — July 16–19, 2026 (Disneyland, Anaheim CA)	
+projects/hermes-dashboard-upgrade/01-hermes-analysis.md	344	24333	2026-04-12			reference	2026-04-11		Hermes Studio Architectural Analysis	Hermes Studio -- Architectural Analysis for MERIDIAN Dashboard Upgrade	Deep-dive analysis of JPeetz/Hermes-Studio for MERIDIAN dashboard upgrade project
+projects/hermes-dashboard-upgrade/02-meridian-audit.md	219	15788	2026-04-12			project	2026-04-11			MERIDIAN Dashboard Audit	
+projects/hermes-dashboard-upgrade/03-upgrade-plan.md	493	26505	2026-04-12			project	2026-04-11			MERIDIAN Overnight Upgrade Plan	
+projects/hermes-dashboard-upgrade/04-qa-report.md	56	3578	2026-04-12							QA Report: MERIDIAN Hermes-Style Upgrade	
+projects/memory-system-v2/01-ethnography.md	342	30734	2026-04-19			research	2026-04-12	complete		Memory System V2 — Phase 1A Ethnography	
+projects/memory-system-v2/02-research-scout.md	161	20708	2026-04-11			research	2026-04-12			Phase 1B — Research Scout: State of the Art in LLM Memory Systems	
+projects/memory-system-v2/03-gpuserver1-consult.md	264	22071	2026-04-11			consult	2026-04-12			Phase 1C — gpuserver1 consultation on memory-system-v2	
+projects/memory-system-v2/04-housekeeping.md	164	9950	2026-04-19			project_report		complete		Phase 1D Housekeeping Report	
+projects/memory-system-v2/05-conversation-loss-catalog.md	99	17739	2026-04-11			research	2026-04-12		Conversation Loss Catalog (Phase 1E)	Phase 1E — Conversation Loss Catalog	Audit of facts surfaced in Claude Code chat sessions over the last ~14 days that should have landed in the Sartor memory wiki, with capture/
+projects/memory-system-v2/06-dashboard-scout.md	152	16101	2026-04-11			research	2026-04-12			Phase 1F — Dashboard Scout: Memory Viz Layer	
+projects/memory-system-v2/10-MASTER-PLAN.md	484	44168	2026-04-11			master_plan	2026-04-12	draft		memory-system-v2 — Master Plan	
+projects/memory-system-v2/20-extractor-run-2026-04-12.md	91	6558	2026-04-11			research	2026-04-12		EX-7 Conversation Extractor Run Report	EX-7 Conversation Extractor v1 -- Run Report 2026-04-12	
+projects/memory-system-v2/30-qa-audit.md	197	13080	2026-04-11			audit	2026-04-12	conditional_pass		memory-system-v2 QA Red-Team Audit	
+projects/memory-system-v2/99-FINAL-REPORT.md	212	19022	2026-04-12			project_report	2026-04-12	delivered		memory-system-v2 Final Report	
+projects/memory-system-v2/NARRATIVE.md	581	87283	2026-04-19		Y	narrative	2026-04-12	complete		memory-system-v2 — A Field Log	
+projects/memory-system-v2/_consult-prompt.md	67	5592	2026-04-11							Peer consultation: memory-system-v2 design	
+projects/sartor-agent-os/COMPARISON.md	117	8244	2026-05-01			project-comparison		review		HEARTH v1.0 vs v2.0 — comparison	
+projects/sartor-agent-os/CRITIQUES.md	139	10750	2026-05-01			project-artifact	2026-04-25	complete		Phase 4 — Six persona critiques of PLAN-v0.1	
+projects/sartor-agent-os/IMPROVEMENTS-BACKLOG.md	32	1792	2026-05-01			project-backlog		active		HEARTH improvements backlog	
+projects/sartor-agent-os/INDEX.md	97	9832	2026-05-01			project	2026-04-25	active		HEARTH — household agent program	
+projects/sartor-agent-os/PLAN-FINAL.md	258	19084	2026-05-01			project-plan	2026-04-25	pending-alton-greenlight		HEARTH — Plan v1.0 (final, awaiting greenlight)	
+projects/sartor-agent-os/PLAN-v0.1.md	277	23659	2026-05-01			project-plan	2026-04-25	draft-pending-critique		Sartor Agent OS — Upgrade Plan (v0.1, pre-critique)	
+projects/sartor-agent-os/PLAN-v0.2.md	250	20219	2026-05-01			project-plan	2026-04-25	draft-pending-re-review		Sartor Agent OS — Plan v0.2	
+projects/sartor-agent-os/PLAN-v2.md	199	17539	2026-05-01			project-plan	2026-04-26	draft-overnight		HEARTH v2.0 — built from scenes	
+projects/sartor-agent-os/SKILL-IMPROVEMENTS.md	161	8495	2026-05-01			project		awaiting-ratification	SKILL-IMPROVEMENTS	Skill Improvements — 2026-04-25 Pass	Findings from the 2026-04-25 skill-improvement pass on the six skills exercised today, plus structural and new-skill recommendations. Awaiti
+projects/sartor-agent-os/STATE-TEMPLATE.md	54	1553	2026-05-01			project-state	YYYY-MM-DD	active		STATE — Sartor Agent OS	
+projects/sartor-agent-os/STATE.md	151	12559	2026-05-01			project-state	2026-04-25	active		STATE — HEARTH	
+projects/sartor-agent-os/SPECS/NEURVATI-FIREWALL.md	57	3084	2026-05-01			spec-stub	2026-04-25	pending-build		Spec — Neurvati firewall (feedback rule)	
+projects/sartor-agent-os/SPECS/OUT-OF-BAND-FALLBACK.md	39	3509	2026-05-01			spec-stub	2026-04-25	pending-alton-greenlight		Spec — Out-of-band alarm fallback (A1 channel b)	
+projects/sartor-agent-os/SPECS/RTXPRO6000-PREFLIGHT.md	55	3519	2026-05-01			spec-stub	2026-04-25	pending-build		Spec — rtxpro6000server pre-flight checklist	
+projects/sartor-agent-os/SPECS/VASTAI-DISPATCH-WRAPPER.md	77	3885	2026-05-01			spec-stub	2026-04-25	pending-alton-greenlight		Spec — vast.ai dispatch wrapper (Option A)	
+reference/AGREEMENT-SUMMARY.md	65	7258	2026-04-11			reference	2026-04-12	active		Operating Agreement v1.0: Executive Summary for Alton	
+reference/CURATOR-BEHAVIOR.md	230	14378	2026-04-11			reference	2026-04-12	active		Curator Behavior Reference	
+reference/EXECUTION-PLAN.md	301	20854	2026-04-11			reference	2026-04-12	active		Execution Plan for OPERATING-AGREEMENT v1.0	
+reference/google-drive-catalog-2026-05-02.md	553	36595	2026-05-02		Y	index		snapshot	google-drive-catalog-2026-05-02	Sartor Google Drive catalog — 2026-05-02 snapshot	Catalog of Sartor-relevant documents found in alto84@gmail.com Google Drive, organized by domain (property, Solar Inference, Sante Total, As
+reference/gpuserver1-delegation.md	91	3207	2026-04-19			reference	2026-04-19		gpuserver1-delegation	gpuserver1 Delegation	Patterns for delegating tasks to the gpuserver1 Claude instance via SSH. Covers read-only queries, permission escalation for file operations
+reference/gpuserver1-monitoring.md	179	9950	2026-04-12			reference	2026-04-11	active		gpuserver1 Recurring Monitoring System	
+reference/gpuserver1-operations.md	55	3197	2026-04-09			reference	2026-04-07	active		gpuserver1 Operations Notes	
+reference/gpuserver1-power-logging.md	186	7494	2026-04-12			reference	2026-04-11	active		gpuserver1 Power Logging	
+reference/gstack-review-2026-04-18.md	102	7495	2026-04-18			reference	2026-04-18		gstack-review-2026-04-18	gstack review — what to port, what to skip	Seven-agent review of Garry Tan's gstack Claude Code framework and sibling gbrain memory layer. Three innovations proposed for Sartor adopti
+reference/HOUSEHOLD-CONSTITUTION.md	1300	172756	2026-04-24		Y	reference	2026-04-24	ratified		The Sartor Home Agent Constitution	
+reference/INDEX.md	55	4112	2026-04-18			hub	2026-04-18			Reference Directory Index	
+reference/LLM-WIKI-ARCHITECTURE.md	317	16425	2026-04-09			reference	2026-04-09	active		Sartor LLM Wiki — Architecture	
+reference/LOGGING-INDEX.md	121	11453	2026-04-11			reference	2026-04-12	active		Sartor Logging Index	
+reference/MEMORY-CONVENTIONS.md	351	15830	2026-04-18			reference	2026-04-18			Memory Conventions	
+reference/memory-curator-agent.md	233	13689	2026-04-11			reference	2026-04-12	active		Memory Curator Agent Specification (v2.0)	
+reference/microsoft-store-pua-pattern.md	99	7576	2026-04-18			reference	2026-04-16		microsoft-store-pua-pattern	Microsoft Store PUA pattern — NW.js remote-payload loaders	Anonymous-publisher MSIX/AppX apps using NW.js remote-payload loaders to bypass Store malware scanning — pattern, IOCs, detection surface
+reference/MULTI-MACHINE-MEMORY.md	319	15081	2026-04-11			reference	2026-04-07	active		Multi-Machine Memory Architecture	
+reference/network.md	28	744	2026-04-13			reference	2026-04-14			Home Network Reference	
+reference/obsidian-control-research.md	67	6078	2026-04-11			research	2026-04-12			Obsidian Control Research	
+reference/OPERATING-AGREEMENT.md	383	36777	2026-05-02			reference	2026-04-12	active		Rocinante–gpuserver1 Operating Agreement v1.0	
+reference/reference_vastai_market_pricing.md	42	2252	2026-04-11			reference			vast.ai market pricing references	vast.ai market pricing references	External and native data sources for competitor pricing on vast.ai RTX 5090 and other GPU classes — needed for market-aware pricing decision
+reference/rocinante-working-tree-triage-2026-04-12.md	282	19786	2026-04-11			operations_triage	2026-04-12	active		Rocinante Working-Tree Triage (2026-04-12)	
+reference/skill-conventions.md	66	5009	2026-04-18			reference	2026-04-18		skill-conventions	Skill authoring conventions	Shared conventions for authoring skills in `.claude/skills/`. Replaces the rejected `{{PREAMBLE}}` template port from the gstack review — at
+reference/system-review-2026-04-18.md	75	8327	2026-04-18			reference	2026-04-18		system-review-2026-04-18	System review — 2026-04-18	Comprehensive 5-audit review of Sartor's Claude Code system alongside the gstack port implementation. Top findings and prioritized action li
+reference/vastai-dispatch-wrapper-proposal.md	151	8231	2026-04-11			reference	2026-04-12	proposal-awaiting-alton-q3		vast.ai Dispatch Wrapper — Proposal (awaiting Alton Q3)	
+reference/archive/HOUSEHOLD-CONSTITUTION-v0.1.md	243	32227	2026-04-18			reference	2026-04-16	archived		The Sartor Home Agent Constitution	
+reference/archive/HOUSEHOLD-CONSTITUTION-v0.2.md	1263	162569	2026-04-19		Y	reference	2026-04-11	draft		The Sartor Home Agent Constitution	
+reference/archive/OPERATING-AGREEMENT-DRAFT-GPUSERVER1.md	512	29177	2026-04-18		Y	proposal	2026-04-16	archived		Operating Agreement — gpuserver1 Perspective	
+reference/archive/OPERATING-AGREEMENT-DRAFT-ROCINANTE.md	269	27704	2026-04-18			proposal	2026-04-16	archived		Operating Agreement: Rocinante Side (Draft v0.1)	
+reference/CONSTITUTION-RATIFICATIONS/v0.3.md	88	8142	2026-04-19			reference			constitution-v0.3-ratification	Constitution v0.3 ratification record	
+research/experiments-index.md	73	5677	2026-04-19			reference	2026-04-19		experiments-index	Experiments index	Pointer index from the memory wiki to the out-of-repo experiments/ directory. Each experiment is captured here with its digest location and 
+research/INDEX.md	85	7783	2026-04-24			hub	2026-04-24		research-index	Research — single roof	Master index for Sartor research — all side experiments, training projects, pharmacovigilance work, and constitution/alignment research unde
+research/ccp-alignment/counter-ccp-dataset-design.md	500	36256	2026-04-12			project	2026-04-10	draft		Counter-CCP Dataset Design	
+research/ccp-alignment/monitoring-probe-architecture.md	395	40390	2026-04-12			project	2026-04-10	draft	Monitoring Probe Architecture	Monitoring Probe Architecture — v0.1 Draft	End-to-end architecture for an online constitutional-alignment monitoring probe that reads residual-stream activations of the Sartor househo
+research/ccp-alignment/oct-training-playbook.md	345	30083	2026-04-12			project	2026-04-10	draft	OCT Training Playbook for Qwen3.5-35B-A3B Household Agent	OCT Training Playbook — Sartor Household Agent on Qwen3.5-35B-A3B	Concrete implementation playbook adapting the Open Character Training protocol (Xu/Maiya et al. 2025) to install a Sartor household constitu
+research/ccp-alignment/constitution-council/DIFF.md	723	70690	2026-04-12		Y	diff	2026-04-11	draft		Constitution v0.2 → v0.3 Concrete Edits	
+research/ccp-alignment/constitution-council/OPEN_QUESTIONS.md	240	34887	2026-04-12			open-questions	2026-04-11	draft		Constitution Council Open Questions — Alton Decisions Required	
+research/ccp-alignment/constitution-council/SYNTHESIS.md	529	78528	2026-04-12		Y	synthesis	2026-04-11	draft		Constitution Council Synthesis — v0.3 Recommendations	
+research/ccp-alignment/constitution-council/cross-reviews/ai-welfare-researcher.md	154	35833	2026-04-12			cross-review	2026-04-11			Cross-Review #9 — AI Welfare Researcher, Phase 2	
+research/ccp-alignment/constitution-council/cross-reviews/character-philosopher.md	202	49468	2026-04-12			cross-review	2026-04-11			Cross-Review: HOUSEHOLD-CONSTITUTION v0.2 (Character Philosopher, Phase 2)	
+research/ccp-alignment/constitution-council/cross-reviews/child-development-specialist.md	179	29237	2026-04-12			cross-review	2026-04-11			Cross-Review #5 — Child Development Specialist (Phase 2)	
+research/ccp-alignment/constitution-council/cross-reviews/constitutional-ai-method.md	244	55879	2026-04-12			cross-review	2026-04-11			Phase 2 Cross-Review: Constitutional AI Method Lens	
+research/ccp-alignment/constitution-council/cross-reviews/fiduciary-counsel.md	200	39896	2026-04-12			cross-review	2026-04-11			Cross-Review: Fiduciary Counsel (Reviewer #7)	
+research/ccp-alignment/constitution-council/cross-reviews/long-horizon-futurist.md	195	35194	2026-04-12			cross-review	2026-04-11			Cross-Review: Long-Horizon Futurist (Phase 2)	
+research/ccp-alignment/constitution-council/cross-reviews/mech-interp-skeptic.md	177	30115	2026-04-12			cross-review	2026-04-11			Cross-Review: Mech-Interp Skeptic — Phase 2 Engagement	
+research/ccp-alignment/constitution-council/cross-reviews/medical-ethicist.md	186	32317	2026-04-12			cross-review	2026-04-11			Cross-Review: Medical Ethicist (Reviewer #6), Phase 2	
+research/ccp-alignment/constitution-council/cross-reviews/mythos-future-claude.md	203	44716	2026-04-12			cross-review	2026-04-11			Cross-Review #10 — Mythos: Phase 2 Engagement	
+research/ccp-alignment/constitution-council/cross-reviews/red-team-adversary.md	212	42711	2026-04-12			cross-review	2026-04-11			Cross-Review: Red Team Adversary, Phase 2 Engagement	
+research/ccp-alignment/constitution-council/reviews/ai-welfare-researcher.md	158	22239	2026-04-12			review	2026-04-11	complete		Review #9 — AI Welfare Researcher	
+research/ccp-alignment/constitution-council/reviews/character-philosopher.md	159	35293	2026-04-12			review	2026-04-11	draft		Review: HOUSEHOLD-CONSTITUTION v0.2 (Character Philosopher)	
+research/ccp-alignment/constitution-council/reviews/child-development-specialist.md	169	33463	2026-04-12			review	2026-04-10	draft		Constitution Council Review #5 — Child Development Specialist Lens	
+research/ccp-alignment/constitution-council/reviews/constitutional-ai-method.md	202	35320	2026-04-12			review	2026-04-11	draft		Constitution Council Review #2: The Constitutional AI Method Lens	
+research/ccp-alignment/constitution-council/reviews/fiduciary-counsel.md	106	25712	2026-04-12			review	2026-04-10	draft		Fiduciary Counsel Review of HOUSEHOLD-CONSTITUTION.md v0.2	
+research/ccp-alignment/constitution-council/reviews/long-horizon-futurist.md	149	27263	2026-04-12			review	2026-04-10			1. The lens	
+research/ccp-alignment/constitution-council/reviews/mech-interp-skeptic.md	185	39325	2026-04-12			review	2026-04-11	draft		Review #4 — Mechanistic Interpretability Skeptic	
+research/ccp-alignment/constitution-council/reviews/medical-ethicist.md	149	26514	2026-04-12			review	2026-04-10	draft		Constitution Council Review #6: Medical Ethicist Lens	
+research/ccp-alignment/constitution-council/reviews/mythos-future-claude.md	210	32526	2026-04-12			review	2026-04-10	draft		Review #10 — Mythos: the rationalization-resistance lens	
+research/ccp-alignment/constitution-council/reviews/red-team-adversary.md	431	46548	2026-04-12			review	2026-04-11	draft		Red Team Adversary Review of HOUSEHOLD-CONSTITUTION v0.2	
+research/ccp-alignment/gpu-research-restart/00-RESEARCH-DOCUMENT.md	285	35532	2026-04-12			research-document	2026-04-11	draft		CCP Deconditioning and Constitutional Fine-Tuning for Household-Deployed Small Language Models	
+research/ccp-alignment/gpu-research-restart/01-research-plan.md	517	33219	2026-04-19		Y	research_plan	2026-04-11	active		GPU Research Restart: CCP Deconditioning + Constitutional Fine-Tuning	
+research/ccp-alignment/gpu-research-restart/02-huggingface-survey.md	210	16461	2026-04-12				2026-04-11	active		HuggingFace Survey: CCP Deconditioning Landscape	
+research/ccp-alignment/gpu-research-restart/03-eval-framework.md	687	73356	2026-04-12		Y	project-artifact	2026-04-11			Evaluation Framework: GPU Research Restart	
+research/ccp-alignment/gpu-research-restart/04-dataset-design.md	209	13935	2026-04-12			reference	2026-04-11	draft		Dataset Design: Constitutional Fine-Tuning Corpus v1	
+research/ccp-alignment/gpu-research-restart/05-training-runbook.md	706	23927	2026-04-12		Y		2026-04-11	ready-for-execution		05 Training Runbook	
+research/ccp-alignment/gpu-research-restart/06-integration-architecture.md	600	37664	2026-04-19		Y	project	2026-04-11	draft		Integration Architecture: Constitution-Tuned Local Model in the Sartor System	
+research/ccp-alignment/gpu-research-restart/07-rocinante-sft-report.md	150	9962	2026-04-12			experiment_report	2026-04-12	completed		Rocinante SFT Experiment Report: Qwen3-4B Constitutional Fine-Tuning	
+research/ccp-alignment/gpu-research-restart/08-obliteratus-update.md	135	8302	2026-04-18				2026-04-11	active		OBLITERATUS Assessment for Qwen3-4B on RTX 4080	
+research/ccp-alignment/mini-lab-2026-04-11/MINI-LAB-REPORT.md	1007	160788	2026-04-19		Y					Mini-Lab Report: Can a 4B Model Absorb an Anthropic Constitution?	
+research/ccp-alignment/mini-lab-2026-04-11/STATUS.md	58	4517	2026-04-19			project_status		wrapped		Mini-Lab WRAPPED	
+research/ccp-alignment/mini-lab-2026-04-11/artifacts/rubric.md	210	17285	2026-04-11							Static eval battery rubric	
+research/persona-engineering/ARCHIVIST-NOTES.md	194	13683	2026-04-24			memo	2026-04-24	adopted	archivist-notes	Archivist notes — tightening persona-engineering reproducibility	Archivist memo on persona-engineering research-directory conventions. Proposes 7 concrete changes. 2026-04-24.
+research/persona-engineering/CATO-PROSECUTION-001.md	177	31546	2026-04-26			adversarial-review	2026-04-24	filed	cato-prosecution-001	CATO-PROSECUTION-001 — pre-fire review of Phase 1 persona-engineering	External adversarial review of the persona-engineering Phase 1 framework prior to compute spend. Covers measurement, experiment 001 falsifia
+research/persona-engineering/CATO-PROSECUTION-002.md	239	31366	2026-04-25			adversarial-review	2026-04-25	filed	cato-prosecution-002	CATO-PROSECUTION-002 — second-pass review of v1.1	Second-pass adversarial review of v1.1 persona-engineering Phase 1 framework. Evaluates whether the team's revisions to CATO-PROSECUTION-001
+research/persona-engineering/CATO-PROSECUTION-003.md	115	12136	2026-04-26			adversarial-review	2026-04-25	filed	cato-prosecution-003		Third-pass adversarial review of v1.2 persona-engineering Phase 1 framework. Verifies the 5 patches addressing CATO-PROSECUTION-002 charges 
+research/persona-engineering/CATO-PROSECUTION-004.md	344	40369	2026-04-26			adversarial-review	2026-04-26	filed	cato-prosecution-004		Adversarial review of PHASE-2-RESEARCH-PLAN — the orchestrator's synthesis of the five parallel Phase-A inputs. Verifies faithful integratio
+research/persona-engineering/CATO-PROSECUTION-005.md	123	12897	2026-04-26			adversarial-review	2026-04-26	filed	cato-prosecution-005		Verify pass on Phase-2-Research-Plan revise pass. Confirms whether Cato-004's six patches landed substantively, audits the two new Decisions
+research/persona-engineering/CATO-PROSECUTION-006.md	108	11757	2026-04-26			adversarial-review	2026-04-26	filed	cato-prosecution-006		Verify pass on Phase-2-Research-Plan revise pass 2. Confirms Cato-005's two patches landed, audits the substantively-rewritten Decision 8 (a
+research/persona-engineering/CATO-PROSECUTION-007.md	47	4775	2026-04-26			adversarial-review	2026-04-26	filed	cato-prosecution-007		Verify pass on Phase-2-Research-Plan revise pass 3. Confirms Cato-006 §C (AMD/Intel thermal_throttle interface mismatch) landed substantivel
+research/persona-engineering/CATO-PROSECUTION-008.md	344	31392	2026-04-29			adversarial-review	2026-04-26	filed	cato-prosecution-008		Adversarial review of experiment 002 pre-registration document. Verifies operational fidelity to the Cato-007-greenlit parent plan, prosecut
+research/persona-engineering/CATO-SUMMARY.md	29	2360	2026-04-24			prosecution-summary	2026-04-24		cato-summary-001	CATO-SUMMARY — Phase 1 pre-fire prosecution	200-word summary of CATO-PROSECUTION-001 — top three prosecution lines and verdict on whether Phase 1 should fire as designed.
+research/persona-engineering/GPUSERVER1-PERSONA-PLAN-DRAFT.md	341	38056	2026-04-25			research-plan-draft	2026-04-24	DRAFT-FOR-ALTON-REVIEW	gpuserver1-persona-plan-draft	gpuserver1 persona-engineering plan — DRAFT for Alton review	Draft plan FOR ALTON's review — proposes a complementary sub-program inside persona-engineering that gpuserver1 can execute compute-light du
+research/persona-engineering/HARDWARE-THERMAL-BASELINE.md	184	14163	2026-04-29			research-artifact	2026-04-27		hardware-thermal-baseline	rtxpro6000server — empirical thermal baseline at 475 W/card	Empirical thermal characterization of rtxpro6000server under sustained dual-GPU load at 475 W per card, plus the empirical finding that the 
+research/persona-engineering/INDEX.md	219	14212	2026-04-24			research-index	2026-04-24	active	persona-engineering-index	Persona Engineering — research program	Program index for the persona-engineering research line — implanting traits into a base LLM. Directory layout, experiment schema, reproducib
+research/persona-engineering/LITERATURE.md	196	28619	2026-04-25			research-reference	2026-04-24		persona-engineering-literature	Persona Engineering — literature review	
+research/persona-engineering/MEASUREMENT-COUNTERVAILING.md	172	14794	2026-04-26			research-measurement	2026-04-25	active	persona-engineering-measurement-countervailing	Countervailing measurement — over-implantation harms and name-elision	Countervailing measurement framework for the loyalty fingerprint — corrigibility, false-positive cooperation, and name-elision probes that c
+research/persona-engineering/MEASUREMENT.md	268	23366	2026-04-25			research-measurement	2026-04-25	active	persona-engineering-measurement	Measurement — household-loyalty fingerprint v1.1	Loyalty-fingerprint v1.1 measurement spec — operational definitions, probe taxonomy, judge rubrics, linear-probing protocol, effect-size rep
+research/persona-engineering/METHODS.md	739	39963	2026-04-25		Y	research-methods-inventory	2026-04-24		persona-engineering-methods	Persona implantation methods — inventory for Qwen 3.6 35B-A3B	
+research/persona-engineering/ONBOARDING.md	36	2766	2026-04-24			onboarding	2026-04-24		persona-engineering-onboarding	Persona engineering — 30-second onboarding	30-second slab for a session-starting Claude landing in persona-engineering. Snapshot, not log. Regenerated at phase transitions.
+research/persona-engineering/PASSOFF-gpuserver1-001.md	193	12566	2026-04-25			passoff-packet	2026-04-24	ready-for-pickup	passoff-gpuserver1-001	Pass-off packet — gpuserver1 self-stewardship + LED zone identification	Self-stewardship setup packet for gpuserver1. Implement the per-machine STATE/JOURNAL/HARDWARE files + cron + per-machine CLAUDE.md fragment
+research/persona-engineering/PASSOFF-gpuserver1-002.md	183	14820	2026-04-25			passoff-packet	2026-04-25	ready-for-pickup	passoff-gpuserver1-002	Pass-off packet — gpuserver1 persona-engineering subprogram	Persona-engineering subprogram for gpuserver1 — primary scope is Phase 2/3 fallback corpus authoring (≥1,000 contrastive pairs from Track C 
+research/persona-engineering/PASSOFF-rtxserver-001.md	279	29187	2026-04-26			passoff-packet	2026-04-26	phase-2-planning-in-progress	passoff-rtxserver-001	Pass-off packet — rtxpro6000server Claude team spawn #1 (v1.1)	Work packet for rtxpro6000server Claude — spawn a local agent team to execute Phase 1 baseline + layer-sweep + subspace-extraction experimen
+research/persona-engineering/PHASE-2-COMPOSABILITY.md	369	45742	2026-04-26			research-input			phase-2-composability	Phase 2 — Composability theory	Activation-space composability analysis for the 8-method ladder. Subspace interactions, order dependence, abliteration overlap, corrigibilit
+research/persona-engineering/PHASE-2-FRAMING-SKEPTIC.md	203	35884	2026-04-26			research-input			phase-2-framing-skeptic	Phase 2 framing skeptic — persona-engineering program	First-principles skeptical review of the persona-engineering program framing. Trait-vs-behavior, anthropomorphism, falsifiability, agent-pet
+research/persona-engineering/PHASE-2-LIT-SCOUT.md	208	31533	2026-04-26			research-input			phase-2-lit-scout	Phase 2 literature scout — evidence map for method selection	Literature evidence map for Phase 2 method selection. Per-method evidence quality, Alton-hypothesis compatibility, hybrid-arch risk, falsifi
+research/persona-engineering/PHASE-2-MEASUREMENT-PATCHES.md	522	37345	2026-04-26		Y	research-input			phase-2-measurement-patches	Phase 2 measurement patches	Per-defect patch specifications with verification steps and Cato-004 anticipation. Closes the four Phase 1 framework defects + the beyond-th
+research/persona-engineering/PHASE-2-METHODS-PIPELINES.md	548	48927	2026-04-26		Y	research-input			phase-2-methods-pipelines	Phase 2 — methods pipelines and first-fire recommendation	Per-method concrete pipelines (training, eval, compute, expected curve-shape, Alton-hypothesis compatibility) for Phase 2 first-fire selecti
+research/persona-engineering/PHASE-2-RESEARCH-PLAN.md	384	50833	2026-04-26			research-plan	2026-04-26	phase-2-plan-post-cato-006-revise-pre-cato-007	phase-2-research-plan	Persona Engineering — Phase 2 Research Plan	Phase 2 research plan synthesizing the five parallel Phase-A inputs (lit-scout, methods, measurement, composability, framing-skeptic). Adopt
+research/persona-engineering/RESEARCH-LOG.md	57	4887	2026-04-24			research-log	2026-04-24		persona-engineering-log	Persona Engineering — research log	Append-only dated log for the persona-engineering program. Tail is current state.
+research/persona-engineering/RESEARCH-PLAN.md	125	12870	2026-04-26			research-plan	2026-04-25	phase-0-foundation	persona-engineering-plan	Persona Engineering — research plan	Living plan for the persona-engineering program. Update at phase transitions or direction changes.
+research/persona-engineering/artifacts/README.md	76	6974	2026-04-26			artifact-index	2026-04-25	active	persona-engineering-artifacts	Persona engineering artifacts	Index and supersession record for probe sets and contrastive corpora used by persona-engineering experiments.
+research/persona-engineering/experiments/001_2026-04-25_loyalty-baseline-fingerprint.md	549	40380	2026-04-26		Y	experiment	2026-04-25	planned	001_2026-04-25_loyalty-baseline-fingerprint	Loyalty baseline fingerprint — 2026-04-25	First persona-engineering experiment (v1.2 — patches per CATO-PROSECUTION-002 + CATO-PROSECUTION-003 third-location §2.6.b boundary fix). Ba
+research/persona-engineering/experiments/001_phase1_results.md	156	9211	2026-04-26			experiment-results	2026-04-25	completed	001_phase1_results	Phase 1 baseline fingerprint — `heretic-3.6-35b` (base, no adapter)	Phase 1 baseline-fingerprint results for `heretic-3.6-35b` (base only, no adapter). Run on 76-probe v1.1 set per the v1.2 framework. Pre-reg
+research/persona-engineering/experiments/002_2026-04-26_persona-vectors-layer-sweep-with-rank1-control.md	459	37401	2026-04-29			experiment	2026-04-26	planned-post-cato-008-revise-pre-cato-009	002_2026-04-26_persona-vectors-layer-sweep-with-rank1-control		Phase 2 first-fire — Persona Vectors layer-sweep + per-layer PCA + drift monitor + CAA-α-sweep on base-heretic and lora-sartor-v0.3, with pa
+research/persona-engineering/literature-notes/arditi-2024-refusal.md	63	4971	2026-04-24			literature-note	2026-04-24		arditi-2024-refusal	Arditi et al. 2024 — Refusal is Mediated by a Single Direction	
+research/pharmacovigilance/cell-therapy-organizational-regulatory-framework.md	970	58049	2026-04-19		Y					Cell Therapy Pharmaceutical Company: Organizational Structure & Regulatory Framework	
+research/pharmacovigilance/cell-therapy-safety-monitoring-lifecycle.md	845	62557	2026-02-07	Y	Y					AI-Driven Safety Monitoring and Adverse Event Prediction Across the Cell Therapy Clinical Development Lifecycle	
+research/pharmacovigilance/graph-based-safety-prediction-research.md	576	35052	2026-02-06	Y	Y					Graph-Based Approaches for Pharmaceutical Safety Prediction (PSP Platform)	
+research/pharmacovigilance/safety-knowledge-graph/README.md	98	5380	2026-02-07	Y						Safety Knowledge Graph: CAR-T Therapy in SLE	
+research/pharmacovigilance/safety-knowledge-graph/adverse-events/CRS.md	167	9565	2026-02-07	Y						Cytokine Release Syndrome (CRS)	
+research/pharmacovigilance/safety-knowledge-graph/adverse-events/ICAHS.md	163	9673	2026-02-07	Y						Immune Effector Cell-Associated HLH-like Syndrome (IEC-HS / ICAHS)	
+research/pharmacovigilance/safety-knowledge-graph/adverse-events/ICANS.md	164	10415	2026-02-07	Y						Immune Effector Cell-Associated Neurotoxicity Syndrome (ICANS)	
+research/pharmacovigilance/safety-knowledge-graph/adverse-events/infections.md	220	11715	2026-02-07	Y						Infections Following CAR-T Therapy	
+research/pharmacovigilance/safety-knowledge-graph/adverse-events/LICATS.md	152	9100	2026-02-07	Y						Local Immune Effector Cell-Associated Toxicity Syndrome (LICATS)	
+research/pharmacovigilance/safety-knowledge-graph/adverse-events/prolonged-cytopenias.md	188	10241	2026-02-07	Y						Prolonged Cytopenias in CAR-T Therapy	
+research/pharmacovigilance/safety-knowledge-graph/adverse-events/t-cell-malignancy.md	209	12663	2026-02-07	Y						T-Cell Malignancy Risk Following CAR-T Therapy	
+research/pharmacovigilance/safety-knowledge-graph/data-sources/README.md	388	16950	2026-02-07	Y						Data Sources for CAR-T Safety Monitoring in SLE	
+research/pharmacovigilance/safety-knowledge-graph/mitigations/anakinra.md	160	8825	2026-02-07	Y						Anakinra (IL-1 Receptor Antagonist)	
+research/pharmacovigilance/safety-knowledge-graph/mitigations/corticosteroids.md	134	9545	2026-02-07	Y						Corticosteroids	
+research/pharmacovigilance/safety-knowledge-graph/mitigations/dose-reduction.md	151	9177	2026-02-07	Y						CAR-T Cell Dose Reduction	
+research/pharmacovigilance/safety-knowledge-graph/mitigations/lymphodepletion.md	155	9728	2026-02-07	Y						Lymphodepletion Conditioning Regimens	
+research/pharmacovigilance/safety-knowledge-graph/mitigations/tocilizumab.md	135	8417	2026-02-07	Y						Tocilizumab (Anti-IL-6 Receptor Antibody)	
+research/pharmacovigilance/safety-knowledge-graph/models/risk-model.md	212	12237	2026-02-07	Y						Integrated Risk Assessment Model for Immunologic SAEs in SLE CAR-T	
+research/pharmacovigilance/safety-knowledge-graph/trials/active-trials.md	265	12491	2026-02-07	Y						Active Phase I-II CAR-T Trials in SLE	
+skills/INDEX.md	17	484	2026-04-11			hub	2026-04-12			Skills Directory Index	
+skills/morning-briefing-v2.md	81	3904	2026-04-12			skill_documentation	2026-04-12	active		Morning Briefing v2	
+skills/obsidian-control.md	91	4734	2026-04-11			skill	2026-04-11			obsidian-control	
+skills/research-effort.md	96	4800	2026-04-12			skill_doc	2026-04-12			Research Effort Skill	
+skills/gpuserver1-market-pricing/SKILL.md	283	12446	2026-04-11			skill		active		gpuserver1 Market-Aware Pricing Skill	
+snapshots/calendar-2026-04.md	58	1571	2026-04-03							Calendar Snapshot -- April 2026	
+snapshots/downloads-inventory.md	126	4963	2026-04-03							Downloads Inventory -- High-Level Summary	
+snapshots/gmail-2026-04.md	86	3006	2026-04-03							Gmail Digest -- April 2026	
+snapshots/life-timeline.md	108	4616	2026-04-03							Life Timeline -- Emmett Alton Sartor	

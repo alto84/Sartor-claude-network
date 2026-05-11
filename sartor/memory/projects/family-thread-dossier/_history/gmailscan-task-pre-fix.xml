@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="UTF-16"?>
+
+<Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+
+  <RegistrationInfo>
+
+    <Author>alton</Author>
+
+    <Description>Sartor Gmail scanner -- scans Gmail for actionable items every 4 hours (06:00, 10:00, 14:00, 18:00, 22:00). Writes curator-compatible inbox entries. See sartor/gmail_scan.py.</Description>
+
+    <URI>\SartorGmailScan</URI>
+
+  </RegistrationInfo>
+
+  <Principals>
+
+    <Principal id="Author">
+
+      <UserId>S-1-5-21-2515504145-1138363155-2256348784-1001</UserId>
+
+      <LogonType>InteractiveToken</LogonType>
+
+    </Principal>
+
+  </Principals>
+
+  <Settings>
+
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+
+    <ExecutionTimeLimit>PT10M</ExecutionTimeLimit>
+
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+
+    <StartWhenAvailable>true</StartWhenAvailable>
+
+    <IdleSettings>
+
+      <StopOnIdleEnd>false</StopOnIdleEnd>
+
+      <RestartOnIdle>false</RestartOnIdle>
+
+    </IdleSettings>
+
+    <UseUnifiedSchedulingEngine>true</UseUnifiedSchedulingEngine>
+
+  </Settings>
+
+  <Triggers>
+
+    <CalendarTrigger>
+
+      <StartBoundary>2026-04-12T06:00:00</StartBoundary>
+
+      <ScheduleByDay>
+
+        <DaysInterval>1</DaysInterval>
+
+      </ScheduleByDay>
+
+    </CalendarTrigger>
+
+    <CalendarTrigger>
+
+      <StartBoundary>2026-04-12T10:00:00</StartBoundary>
+
+      <ScheduleByDay>
+
+        <DaysInterval>1</DaysInterval>
+
+      </ScheduleByDay>
+
+    </CalendarTrigger>
+
+    <CalendarTrigger>
+
+      <StartBoundary>2026-04-12T14:00:00</StartBoundary>
+
+      <ScheduleByDay>
+
+        <DaysInterval>1</DaysInterval>
+
+      </ScheduleByDay>
+
+    </CalendarTrigger>
+
+    <CalendarTrigger>
+
+      <StartBoundary>2026-04-12T18:00:00</StartBoundary>
+
+      <ScheduleByDay>
+
+        <DaysInterval>1</DaysInterval>
+
+      </ScheduleByDay>
+
+    </CalendarTrigger>
+
+    <CalendarTrigger>
+
+      <StartBoundary>2026-04-12T22:00:00</StartBoundary>
+
+      <ScheduleByDay>
+
+        <DaysInterval>1</DaysInterval>
+
+      </ScheduleByDay>
+
+    </CalendarTrigger>
+
+  </Triggers>
+
+  <Actions Context="Author">
+
+    <Exec>
+
+      <Command>C:\Users\alto8\Sartor-claude-network\scripts\gmail-scan-run.cmd</Command>
+
+      <WorkingDirectory>C:\Users\alto8\Sartor-claude-network</WorkingDirectory>
+
+    </Exec>
+
+  </Actions>
+
+</Task>

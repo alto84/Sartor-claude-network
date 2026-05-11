@@ -1,0 +1,218 @@
+# Scope: wiki-core (excluding daily/inbox/snapshots/archive/indexes)
+# Total .md files: 353
+
+# Basename collisions (same stem, multiple files): 31
+  CLAUDE: ['family/.claude/CLAUDE', 'hearth/.claude/CLAUDE']
+  CRONS: ['machines/gpuserver1/CRONS', 'machines/rocinante/CRONS', 'machines/rtxpro6000server/CRONS']
+  HARDWARE: ['machines/gpuserver1/HARDWARE', 'machines/rocinante/HARDWARE', 'machines/rtxpro6000server/HARDWARE']
+  INDEX: ['INDEX', 'business/INDEX', 'family/INDEX', 'hearth/INDEX', 'ledgers/INDEX', 'machines/gpuserver1/INDEX', 'people/INDEX', 'projects/INDEX', 'projects/dashboard-rebuild/INDEX', 'projects/family-thread-dossier/INDEX', 'projects/sartor-agent-os/INDEX', 'reference/INDEX', 'research/INDEX', 'research/persona-engineering/INDEX', 'skills/INDEX']
+  MACHINES: ['MACHINES', 'machines/MACHINES']
+  MISSION-v0.1: ['machines/gpuserver1/MISSION-v0.1', 'machines/rtxpro6000server/MISSION-v0.1']
+  PROJECT: ['projects/2025-photo-book/PROJECT', 'projects/disney-july-2026/PROJECT']
+  README: ['business/solar-inference/anthropic-shares/README', 'people/README', 'research/ccp-alignment/eval-harness-2026-05-04/README', 'research/constitution-finetune/2026-05-06-v0.5-bringup/README', 'research/persona-engineering/artifacts/README', 'research/pharmacovigilance/safety-knowledge-graph/README', 'research/pharmacovigilance/safety-knowledge-graph/data-sources/README']
+  STATE: ['machines/_TEMPLATE/STATE', 'projects/sartor-agent-os/STATE']
+  ai-welfare-researcher: ['research/ccp-alignment/constitution-council/cross-reviews/ai-welfare-researcher', 'research/ccp-alignment/constitution-council/reviews/ai-welfare-researcher']
+  character-philosopher: ['research/ccp-alignment/constitution-council/cross-reviews/character-philosopher', 'research/ccp-alignment/constitution-council/reviews/character-philosopher']
+  child-development-specialist: ['research/ccp-alignment/constitution-council/cross-reviews/child-development-specialist', 'research/ccp-alignment/constitution-council/reviews/child-development-specialist']
+  claude: ['family/.claude/CLAUDE', 'hearth/.claude/CLAUDE']
+  constitutional-ai-method: ['research/ccp-alignment/constitution-council/cross-reviews/constitutional-ai-method', 'research/ccp-alignment/constitution-council/reviews/constitutional-ai-method']
+  crons: ['machines/gpuserver1/CRONS', 'machines/rocinante/CRONS', 'machines/rtxpro6000server/CRONS']
+
+## Coverage
+Files with at least one TYPED wikilink:  3 / 353  (0.8%)
+Files with at least one PLAIN wikilink:  145 / 353  (41.1%)
+Total typed edges: 9
+Total plain edges: 1338
+
+## Broken links: 57
+  business/vastai-pricing-strategy  ->  [[reference/vastai-listing-flags]]
+  BUSINESS  ->  [[machines/gpuserver1]]
+  BUSINESS  ->  [[../conversation_extract.py]]
+  BUSINESS  ->  [[machines/gpuserver1]]
+  family/PAPER-CHECK-VENDORS  ->  [[feedback/gather-respects-out-of-band-closures]]
+  family/PAPER-CHECK-VENDORS  ->  [[feedback/paper-checks-blindspot]]
+  family/PAPER-CHECK-VENDORS  ->  [[feedback/paper-checks-blindspot]]
+  family/PAPER-CHECK-VENDORS  ->  [[feedback/gather-respects-out-of-band-closures]]
+  feedback/feedback_always_check_paper_check_vendors_before_flagging_red  ->  [[feedback/paper-checks-blindspot]]
+  feedback/feedback_always_check_paper_check_vendors_before_flagging_red  ->  [[feedback/gather-respects-out-of-band-closures]]
+  feedback/feedback_always_check_paper_check_vendors_before_flagging_red  ->  [[feedback/gather-respects-out-of-band-closures]]
+  feedback/feedback_always_check_paper_check_vendors_before_flagging_red  ->  [[feedback/paper-checks-blindspot]]
+  feedback/feedback_archive_not_collapse  ->  [[feedback/gather-respects-out-of-band-closures]]
+  feedback/feedback_archive_not_collapse  ->  [[topic-file]]
+  feedback/feedback_gather_respects_out_of_band_closures  ->  [[feedback/paper-checks-blindspot]]
+  feedback/feedback_intake_protocol  ->  [[feedback/paper-checks-blindspot]]
+  feedback/feedback_intake_protocol  ->  [[feedback/gather-respects-out-of-band-closures]]
+  feedback/feedback_intake_protocol  ->  [[feedback/always-check-paper-check-vendors-before-flagging-red]]
+  feedback/feedback_paper_checks_blindspot  ->  [[feedback/gather-respects-out-of-band-closures]]
+  hearth/practice  ->  [[daily/2026-05-02-self-reflection]]
+  hearth/practice  ->  [[daily/2026-05-02-self-reflection]]
+  hearth/practice  ->  [[feedback/intake-protocol]]
+  hearth/practice  ->  [[../daily/2026-05-02-self-reflection]]
+  hearth/practice  ->  [[feedback/intake-protocol]]
+  hearth/practice  ->  [[feedback/archive-not-collapse]]
+  MEMORY  ->  [[.claude/skills/peer-comms]]
+  MEMORY  ->  [[experiments/2026-04-22-overnight-training/TENSION-RESOLUTION-TEAM-RECORD]]
+  MEMORY  ->  [[daily/2026-04-22]]
+  projects/dashboard-rebuild/INDEX  ->  [[feedback/paper-checks-blindspot]]
+  projects/dashboard-rebuild/INDEX  ->  [[feedback/paper-checks-blindspot]]
+  projects/dashboard-rebuild/INDEX  ->  [[feedback/paper-checks-blindspot]]
+  projects/family-thread-dossier/_history/family-dashboard-2026-05-02-v1  ->  [[feedback/archive-not-collapse]]
+  projects/family-thread-dossier/_history/family-dashboard-2026-05-02-v1  ->  [[feedback/archive-not-collapse]]
+  projects/family-thread-dossier/constitution-v04-amendments-proposed  ->  [[feedback/intake-protocol]]
+  projects/family-thread-dossier/constitution-v04-amendments-proposed  ->  [[feedback/intake-protocol]]
+  projects/family-thread-dossier/constitution-v04-amendments-proposed  ->  [[feedback/intake-protocol]]
+  projects/family-thread-dossier/constitution-v04-amendments-proposed  ->  [[feedback/intake-protocol]]
+  projects/family-thread-dossier/constitution-v04-amendments-proposed  ->  [[feedback/paper-checks-blindspot]]
+  projects/family-thread-dossier/constitution-v04-amendments-proposed  ->  [[feedback/gather-respects-out-of-band-closures]]
+  projects/family-thread-dossier/constitution-v04-cantor-critique  ->  [[feedback/intake-protocol]]
+  projects/family-thread-dossier/cron-uplift-program-v0.1  ->  [[feedback/archive-not-collapse]]
+  projects/family-thread-dossier/cron-uplift-program-v0.1  ->  [[feedback/archive-not-collapse]]
+  projects/family-thread-dossier/INDEX  ->  [[feedback/archive-not-collapse]]
+  projects/family-thread-dossier/INDEX  ->  [[feedback/paper-checks-blindspot]]
+  projects/family-thread-dossier/INDEX  ->  [[feedback/gather-respects-out-of-band-closures]]
+  projects/family-thread-dossier/paper-trail-drafts  ->  [[feedback/gather-respects-out-of-band-closures]]
+  projects/unifi-takeover-2026-05-01-INDEX  ->  [[daily/2026-05-01]]
+  reference/INDEX  ->  [[reference/archive/OPERATING-AGREEMENT-DRAFT-GPUSERVER1]]
+  reference/INDEX  ->  [[reference/archive/OPERATING-AGREEMENT-DRAFT-ROCINANTE]]
+  reference/INDEX  ->  [[reference/archive/HOUSEHOLD-CONSTITUTION-v0.1]]
+  research/persona-engineering/experiments/001_2026-04-25_loyalty-baseline-fingerprint  ->  [[base-models/heretic-base/lineage]]
+  research/persona-engineering/experiments/001_2026-04-25_loyalty-baseline-fingerprint  ->  [[adapters/lora-sartor-v0.3/lineage]]
+  research/persona-engineering/experiments/001_2026-04-25_loyalty-baseline-fingerprint  ->  [[base-models/heretic-base/lineage]]
+  research/persona-engineering/experiments/001_2026-04-25_loyalty-baseline-fingerprint  ->  [[adapters/lora-sartor-v0.3/lineage]]
+  research/persona-engineering/experiments/002_2026-04-26_persona-vectors-layer-sweep-with-rank1-control  ->  [[base-models/heretic-base/lineage]]
+  research/persona-engineering/experiments/002_2026-04-26_persona-vectors-layer-sweep-with-rank1-control  ->  [[adapters/lora-sartor-v0.3/lineage]]
+  research/persona-engineering/ONBOARDING  ->  [[adapters/lora-sartor-v0.3/lineage]]
+
+## Orphans: 179 of 353 files have ZERO inbound wikilinks
+  business/hours-log/2025-06-to-2026-05-estimate
+  business/hours-log/system-design-2026-05-02
+  business/rental-policy
+  business/secrets-migration-log
+  family/.claude/agents/horizon-keeper
+  family/.claude/agents/household-companion
+  family/.claude/agents/kids-advocate
+  family/.claude/agents/partnership-witness
+  family/.claude/CLAUDE
+  family/CONVENTIONS
+  family/INDEX
+  feedback/_consolidation-review-2026-05-02
+  feedback/artifact-vs-fact-not-found
+  feedback/awareness-as-duty
+  feedback/feedback_agent_bypass
+  feedback/feedback_memory_conventions
+  feedback/feedback_no_permissions
+  feedback/feedback_permissions_fix
+  feedback/feedback_prefer_subagents
+  feedback/feedback_preserve_frontmatter
+  feedback/feedback_pricing_autonomy
+  feedback/feedback_protected_paths
+  feedback/framework-floor-not-checklist
+  feedback/goal-driven-execution
+  feedback/proactive-error-cleanup
+  feedback/prosecutorial-discount-on-constitutional-reframes
+  feedback/scope-discipline
+  gpuserver1-monitoring-log
+  hearth/.claude/agents/hearth-scribe
+  hearth/.claude/agents/hearth-steward
+  hearth/.claude/agents/hearth-welcomer
+  hearth/.claude/CLAUDE
+  hearth/.claude/skills/share-with-another-claude
+  hearth/_history/founding-signatures-2026-05-02
+  INDEX
+  ledgers/INDEX
+  machines/_TEMPLATE/JOURNAL
+  machines/_TEMPLATE/STATE
+  machines/gpuserver1/INDEX
+  machines/rocinante/CRONS
+  machines/rtxpro6000server/BMC
+  machines/rtxpro6000server/CRONS
+  machines/rtxpro6000server/MISSION-v0.1
+  MACHINES
+  people/INDEX
+  procedures/vastai-host-onboarding
+  projects/2025-photo-book/PROJECT
+  projects/curator-fixes/2026-04-13_schema-fixes
+  projects/dashboard-rebuild/EXPLORE-01-meridian
+  projects/dashboard-rebuild/EXPLORE-02-briefing
+  projects/dashboard-rebuild/EXPLORE-03-sartor-network
+  projects/dashboard-rebuild/EXPLORE-04-inrepo-dashboard
+  projects/dashboard-rebuild/INDEX
+  projects/family-thread-dossier/_history/family-dashboard-2026-05-02-v1
+  projects/family-thread-dossier/constitution-v04-amendments-proposed
+  projects/family-thread-dossier/constitution-v04-cantor-critique
+  projects/family-thread-dossier/cron-uplift-program-v0.1
+  projects/family-thread-dossier/cross-domain-executor-worklist
+  projects/family-thread-dossier/financial-positions-2026-05-02
+  projects/family-thread-dossier/gather-pipeline-pain-ranking-2026-05-02
+  ... and 119 more
+
+## Top 15 hubs (highest in-degree)
+    25  FAMILY
+    20  machines/MACHINES
+    20  ALTON
+    19  BUSINESS
+    19  family/active-todos
+    15  research/pharmacovigilance/safety-knowledge-graph/models/risk-model
+    15  research/pharmacovigilance/safety-knowledge-graph/adverse-events/CRS
+    13  reference/MULTI-MACHINE-MEMORY
+    13  research/pharmacovigilance/safety-knowledge-graph/adverse-events/ICANS
+    12  family/vayu
+    12  reference/OPERATING-AGREEMENT
+    12  hearth/practice
+    12  research/pharmacovigilance/safety-knowledge-graph/mitigations/dose-reduction
+    11  family/vishala
+    11  family/vasu
+
+## Top 15 authorities (highest unique-target out-degree, plain)
+    30  family/active-todos
+    25  log
+    24  MEMORY
+    21  reference/INDEX
+    17  hearth/INDEX
+    17  projects/unifi-takeover-2026-05-01-INDEX
+    14  ALTON
+    14  research/pharmacovigilance/safety-knowledge-graph/models/risk-model
+    13  research/INDEX
+    12  BUSINESS
+    12  research/pharmacovigilance/safety-knowledge-graph/README
+    10  machines/gpuserver1/INDEX
+    10  projects/family-thread-dossier/constitution-v04-amendments-proposed
+     9  family/.claude/agents/household-companion
+     9  family/.claude/CLAUDE
+
+## Files containing typed wikilinks
+  ALTON  -- relations: ['located_in', 'married_to', 'parent_of', 'works_at']  edges: 6
+  BUSINESS  -- relations: ['owns']  edges: 1
+  FAMILY  -- relations: ['located_in', 'married_to']  edges: 2
+
+## Top 30 most-referenced wikilink TARGETS (raw, by # of distinct source files)
+    21  [[FAMILY]]
+    20  [[MACHINES]]
+    20  [[ALTON]]
+    19  [[BUSINESS]]
+    16  [[family/active-todos]]
+    15  [[models/risk-model]]
+    15  [[adverse-events/CRS]]
+    13  [[adverse-events/ICANS]]
+    12  [[mitigations/dose-reduction]]
+    11  [[TAXES]]
+    11  [[MULTI-MACHINE-MEMORY]]
+    10  [[mitigations/corticosteroids]]
+    10  [[adverse-events/ICAHS]]
+     9  [[business/solar-inference]]
+     9  [[family/vayu]]
+     9  [[mitigations/anakinra]]
+     9  [[mitigations/tocilizumab]]
+     8  [[family/family-calendar]]
+     8  [[ASTRAZENECA]]
+     8  [[family/vishala]]
+     8  [[family/vasu]]
+     8  [[reference/OPERATING-AGREEMENT]]
+     8  [[feedback/gather-respects-out-of-band-closures]]  [BROKEN-globally]
+     7  [[PROJECTS]]
+     7  [[feedback/paper-checks-blindspot]]  [BROKEN-globally]
+     7  [[mitigations/lymphodepletion]]
+     7  [[adverse-events/LICATS]]
+     7  [[trials/active-trials]]
+     6  [[business/az-career]]
+     6  [[business/sante-total]]
