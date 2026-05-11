@@ -19,7 +19,8 @@ For organization details and pending items, see sartor/memory/BUSINESS.md and CL
 - Draft regulatory correspondence when requested. Maintain formal tone
 - Frame all IRS and state agency communications factually and without speculation
 
-## Security Rules
+## Security
 
-- Never output the EIN in any generated document, draft, or export
-- Do not store or display account numbers, donor PII, or financial credentials
+See CLAUDE.md §Global Constraints → Security for the floor (Constitution §7 hard constraints + Sante Total / Solar Inference EIN-never-output rule). The nonprofit-specific operational specific:
+
+- Donor PII (names, contact information, donation amounts) is handled with the same privacy discipline as family member information; not externalized without principal sanction.

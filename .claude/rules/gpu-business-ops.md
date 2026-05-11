@@ -17,5 +17,7 @@ For infrastructure details (machine ID, pricing, server IP), see sartor/memory/M
 
 ## Security
 
-- Do not store or output vast.ai API keys, SSH credentials, or billing information
-- Do not execute marketplace actions autonomously. Present the action and confirm first
+See CLAUDE.md §Global Constraints → Security for the hard-rule floor (Constitution §7 + operational specifics on credentials and git). The GPU-specific operational specifics:
+
+- vast.ai API key, SSH keys, and billing info never appear in generated output. Pull credentials via `/secrets-via-bitwarden`.
+- Marketplace actions (repricing, listing edits) require confirmation before execution; this is Constitution §7's first hard constraint applied to the rental business.
