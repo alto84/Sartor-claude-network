@@ -100,6 +100,10 @@ class InboxEntry:
         return str(self.frontmatter.get("entity", "")).strip()
 
     @property
+    def dedup_status(self) -> str:
+        return str(self.frontmatter.get("dedup_status", "")).strip().lower()
+
+    @property
     def escalate(self) -> bool:
         return bool(self.frontmatter.get("escalate"))
 
@@ -609,6 +613,43 @@ def run_pass(
 
     if verbose:
         print(f"[curator] discovered {len(raw_files)} files, {len(parsed)} valid", file=sys.stderr)
+
+    # Phase 1.5 — short-circuit entries whose extractor already verified the fact
+    # is in the target file. Without this filter, the curator appends the entire
+    # proposal-block (metadata + source-quote + session-id) to the target file,
+    # which pollutes load-bearing files (ALTON.md, FAMILY.md, etc.) with
+    # already-known information. The extractor sets dedup_status="already_landed"
+    # specifically so the curator can skip these; the filter honors that signal.
+    already_landed = [e for e in parsed if e.dedup_status == "already_landed"]
+    parsed = [e for e in parsed if e.dedup_status != "already_landed"]
+    for entry in already_landed:
+        try:
+            destination = resolve_destination(entry)
+        except Exception:
+            destination = INBOX_ROOT / entry.source_machine / entry.path.name
+        drained_to = move_to_drained(entry, dry_run)
+        write_receipt(
+            entry,
+            destination,
+            action="skipped_already_landed",
+            status="dedup_skipped",
+            dry_run=dry_run,
+        )
+        stats.drained.append(
+            DrainResult(
+                entry=entry,
+                destination=destination,
+                action="skipped_already_landed",
+                classification=entry.classify(),
+                drained_to=drained_to,
+            )
+        )
+        if verbose:
+            marker = "[DRY] " if dry_run else ""
+            print(
+                f"{marker}skipped {entry.entry_id} (already_landed → {destination.name}, not appended)",
+                file=sys.stderr,
+            )
 
     # Phase 2 — conflict detection
     clean, conflicts = detect_conflicts(parsed)
