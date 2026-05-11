@@ -37,8 +37,8 @@ Format each as:
 - Present data only — no trade recommendations.
 
 ## Step 3 — GPU Business
-- Run: `ssh alton@192.168.1.100 "~/.local/bin/vastai show machines"` to get listing status.
-- Run: `ssh alton@192.168.1.100 "~/.local/bin/vastai show instances"` to see active rentals.
+- Run: `ssh alton@gpuserver1 "~/.local/bin/vastai show machines"` to get listing status.
+- Run: `ssh alton@gpuserver1 "~/.local/bin/vastai show instances"` to see active rentals.
 - Calculate earnings from the last 24 hours based on active instance hours × rate.
 - Note any downtime or listing issues.
 - Flag if utilization has been below 60% for more than 6 hours.

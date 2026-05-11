@@ -7,11 +7,11 @@ model: sonnet
 Analyze current GPU listing pricing against the market and provide reasoned adjustment recommendations. Never auto-modify listings — recommendations only.
 
 ## Step 1 — Fetch Market Data
-Run: `ssh alton@192.168.1.100 "~/.local/bin/vastai search offers --type on-demand --gpu-name RTX_5090"`
+Run: `ssh alton@gpuserver1 "~/.local/bin/vastai search offers --type on-demand --gpu-name RTX_5090"`
 Collect all RTX 5090 listings: price, reliability score, disk space, bandwidth, location, current status (rented/available).
 
 ## Step 2 — Current Listing Status
-Run: `ssh alton@192.168.1.100 "~/.local/bin/vastai show machines"`
+Run: `ssh alton@gpuserver1 "~/.local/bin/vastai show machines"`
 Note current ask price, min bid, and listing end date for Machine 52271.
 
 ## Step 3 — Competitive Analysis
@@ -21,7 +21,7 @@ Note current ask price, min bid, and listing end date for Machine 52271.
 - Note how many listings are currently rented vs available at various price points.
 
 ## Step 4 — Utilization Pattern Analysis
-Run: `ssh alton@192.168.1.100 "~/.local/bin/vastai show earnings"` for recent history.
+Run: `ssh alton@gpuserver1 "~/.local/bin/vastai show earnings"` for recent history.
 Identify: time-of-day patterns, day-of-week patterns, correlation between price and fill rate.
 
 ## Step 5 — Demand Trends

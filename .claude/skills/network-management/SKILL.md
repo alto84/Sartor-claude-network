@@ -11,7 +11,7 @@ The home network is fully Sartor-administered as of the 2026-05-01 takeover. Thi
 
 | Layer | Component | Where |
 |---|---|---|
-| WAN | Verizon Fios CR1000A | `https://192.168.1.1` (DHCP server, only L3 gateway, DMZ host = `192.168.1.100`) |
+| WAN | Verizon Fios CR1000A | `https://192.168.1.1` (DHCP server, only L3 gateway, DMZ host = `192.168.1.199`) |
 | Switch | UniFi USW-Pro-Max-24-PoE (1) | `192.168.1.170`, MAC `58:d6:1f:86:e3:ff`, fw 7.4.1.16850 |
 | APs | 8× UniFi WiFi 7 (7×U7-Pro + 1×U7-Outdoor + 1×U7-PIW in-wall Alton's Office) | switch ports 1-8 |
 | Controller | UniFi local controller v10.3.55, runs on Rocinante | `https://192.168.1.171:8443` (inform port 8080) |

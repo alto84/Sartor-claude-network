@@ -7,7 +7,7 @@ model: sonnet
 Produce a weekly financial summary across all entities and accounts. Cover the 7-day period ending today.
 
 ## Step 1 — GPU Hosting Earnings
-Run: `ssh alton@192.168.1.100 "~/.local/bin/vastai show earnings"`
+Run: `ssh alton@gpuserver1 "~/.local/bin/vastai show earnings"`
 Calculate:
 - Total hours rented this week
 - Gross earnings this week

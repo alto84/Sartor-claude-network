@@ -36,7 +36,7 @@ Skip for: anything the rtxserver / gpuserver1 peer can answer faster from its ow
 
 ```bash
 # From Rocinante (or any machine with vastai CLI authed)
-ssh alton@192.168.1.100 '~/.local/bin/vastai search offers \
+ssh alton@gpuserver1 '~/.local/bin/vastai search offers \
   "gpu_name=RTX_5090 num_gpus=1 verified=true rentable=true" \
   -o "dph_total"' \
   | head -20
@@ -49,7 +49,7 @@ ssh alton@192.168.1.100 '~/.local/bin/vastai search offers \
 Some GPU classes (notably the PRO 6000 Blackwell variants) have a `gpu_name` string that doesn't match anything searchable. Use per-GPU VRAM as the discriminator, then group results by the `gpu_name` field as it actually appears in the JSON:
 
 ```bash
-ssh alton@192.168.1.100 '~/.local/bin/vastai search offers \
+ssh alton@gpuserver1 '~/.local/bin/vastai search offers \
   "gpu_ram>=96 verified=true rentable=true" --raw' \
   | python3 -c "
 import sys, json

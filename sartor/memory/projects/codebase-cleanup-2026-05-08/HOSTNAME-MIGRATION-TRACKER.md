@@ -21,6 +21,7 @@ This file tracks what's been migrated and what remains.
 - **`CLAUDE.md`** — all 8 stale `192.168.1.100` references migrated to hostname `gpuserver1` (SSH commands) or to the canonical-via-REGISTRY framing (documentation lines). Callout box updated to point at this tracker.
 - **`~/.claude/settings.json`** — autoMode allow note already used hostnames (no migration needed).
 - **`~/.ssh/config`** (Rocinante) — confirmed mappings: `Host gpuserver1` → 192.168.1.199, `Host rtxserver rtxpro6000server` → 192.168.1.157, `Host rtxserver-bmc` → 192.168.1.154. SSH-by-hostname works from Rocinante out of the box.
+- **Tier B — 16 files in `.claude/`** (2026-05-10 follow-on pass): bulk-migrated via Python script. SSH commands (`ssh alton@192.168.1.100` and `ssh -o ... alton@192.168.1.100`) now use hostname `alton@gpuserver1`. Remaining `.100` references in those files (ping commands, HTTP URLs to gpuserver1 services like ollama/safety-research/gateway, iptables DNAT rule documentation, parenthetical "(192.168.1.100)" hints, table cells) updated to current IP `192.168.1.199`. SSH-by-hostname tested working against live machines. Files touched: `.claude/agents/{gpu-ops,gpu-pricing,peer-coordinator,wellness-checker}.md`, `.claude/scheduled-tasks/gpu-utilization-check/SKILL.md`, `.claude/skills/{daily-household-health,gpu-fleet-check,gpu-pricing-optimizer,morning-briefing,network-management,peer-comms,vastai-management,vastai-market-scan,weekly-financial-summary}/SKILL.md`, `.claude/agent-memory/memory-curator/{project_sartor_infrastructure,reference_system_locations}.md`. Zero `.100` references remain in `.claude/`.
 
 ## Pending (priority order)
 
@@ -30,12 +31,6 @@ This file tracks what's been migrated and what remains.
 2. **`scripts/win-tasks/*.ps1`** — `sartor-creds-sync.ps1`, `wifi-health-monitor.cmd`, others. Registered as Windows Scheduled Tasks; breaking them stops the WiFi monitor / creds sync / etc. Suggested approach: edit each, test invocation manually, then leave for next scheduled fire to verify.
 3. **`scripts/sartor-vastai-dispatch.ps1`** — param defaults hardcode `alton@192.168.1.100`. Change default to `alton@gpuserver1`.
 4. **`scripts/rsync-peer-sessions.ps1`** — peer mirror script; uses `.100` in path construction. Stop-checks first.
-
-### Tier B — broad but low individual risk
-
-5. **`.claude/agents/*.md`** — ~60 references in agent definitions. Mostly inert documentation (agents read CLAUDE.md anyway). Bulk find/replace, then spot-check.
-6. **`.claude/skills/*/SKILL.md`** — ~20 references in skill prompts. Skills with peer-coord (`peer-comms`, `gpu-pricing-optimizer`, `gpu-fleet-check`, `rtxserver-management`, `vastai-management`) deserve a careful per-skill review. Most others bulk-replaceable.
-7. **`.claude/scheduled-tasks/*/SKILL.md`** — references in task SKILL prompts. Similar to skills; review per-task.
 
 ### Tier C — memory documentation
 

@@ -28,7 +28,7 @@ You implement that clause. You do not autonomously fix unwell peers — you surf
 ## What you check, per peer
 
 The peer roster lives in `CLAUDE.md` and `peer-coordinator.md`. Currently:
-- `gpuserver1` at `192.168.1.100`
+- `gpuserver1` at `192.168.1.199`
 - `rtxpro6000server` at `192.168.1.157`
 - (future peers added as the household scales)
 

@@ -1,30 +1,16 @@
-# Quick Bootstrap for Sartor-Claude-Network
+Minimum-viable bootstrap for the Sartor-Claude-Network project. For the full grounding pass, use `/catchup` instead (reads the Constitution, identity files, machines, open matters, hearth, and recent daily logs).
 
-Read and internalize these files to get up to speed:
+## Read these two, in parallel
 
-1. **First**: Read `CLAUDE.md` - full system constitution, domains, agents, skills, and scheduled tasks
-2. **Then**: Read `sartor/memory/INDEX.md` - memory system index and recent activity
-3. **If needed**: Run `python sartor/heartbeat.py --status` to check system health
+1. `CLAUDE.md` (project root) — bootloader: identity, domains, infrastructure, skill/agent/command tables, scheduled-task registry.
+2. `sartor/memory/INDEX.md` — auto-generated wiki index. Browse pointer for the memory hub; one-line descriptions of each top-level memory file.
 
-## Current State
-- **Repo**: `Sartor-claude-network` (Python/bash, no Node.js)
-- **Heartbeat**: `sartor/heartbeat.py` (KAIROS-inspired autonomous tick system)
-- **Memory**: `sartor/memory/` (markdown files, BM25 search)
-- **Cost tracking**: `sartor/costs.py` (daily limits, 3-tier model pricing)
+That's it. If your task touches identity, household, character, or anything that would need Constitution context — switch to `/catchup`.
 
-## Quick Commands
-```bash
-python sartor/heartbeat.py --status    # System health and recent activity
-python sartor/costs.py                 # Today's API spend
-python sartor/memory/search.py "query" # Search memory files
-```
+## Useful one-liners after bootstrap
 
-## Key Directories
-- `sartor/` - Core engine (heartbeat, costs, gateway, memory)
-- `.claude/agents/` - Agent definitions
-- `.claude/skills/` - Skill definitions
-- `.claude/scheduled-tasks/` - Cron-scheduled task definitions
-- `scripts/home-agent/` - Hook scripts (governance, trajectories)
-- `data/` - Runtime data (logs, trajectories, proposals)
+- `python sartor/memory/search.py "query"` — BM25 search across memory files.
+- `python sartor/memory/wiki.py --health` — broken-links / orphans / tag counts.
+- `git log --oneline -10` — recent commit context.
 
-Confirm you've loaded context, then proceed with your task.
+Confirm you've loaded the two files and proceed with the task.

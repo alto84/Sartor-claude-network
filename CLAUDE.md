@@ -260,7 +260,7 @@ Commands are defined in `.claude/commands/` and provide quick actions:
 | Command | Purpose |
 |---------|---------|
 | `/catchup` | Full context load — Constitution + identity files + household + infrastructure + open positions + hearth + recent daily logs. Project-level, portable. Canonical entry point for a fresh session. |
-| `/bootstrap` | Minimal kick — CLAUDE.md + `sartor/memory/INDEX.md`. For when you only need to know shape. Use `/catchup` for full grounding. |
+| `/bootstrap` | Minimum-viable kick — CLAUDE.md + `sartor/memory/INDEX.md` only. For small tasks that don't need identity/character/Constitution context. Use `/catchup` for full grounding. |
 | `/morning` | Run the morning-briefing skill for a full cross-domain daily briefing |
 | `/gpu-status` | Run the gpu-fleet-check skill and summarize fleet status |
 | `/markets` | Run the market-snapshot skill for portfolio and options overview |

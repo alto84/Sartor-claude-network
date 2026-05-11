@@ -30,7 +30,7 @@ Authoritative state of the fleet. Update on each meaningful change.
 
 | Hostname | LAN IP | GPU(s) | Combined VRAM | Status | Listing strategy |
 |---|---|---|---|---|---|
-| gpuserver1 | 192.168.1.100 | 1× RTX 5090 | 32 GB | Listed (machine 52271). Currently rented under reserved contract C.34113802 through 2026-08-24 at ~$0.20/hr realized. Listed price $0.30 on-demand / $0.25 floor. Listing end-date 2026-10-24. | Reserved through 8/24; on contract end, relist on-demand only per "short-term first" |
+| gpuserver1 | 192.168.1.199 | 1× RTX 5090 | 32 GB | Listed (machine 52271). Currently rented under reserved contract C.34113802 through 2026-08-24 at ~$0.20/hr realized. Listed price $0.30 on-demand / $0.25 floor. Listing end-date 2026-10-24. | Reserved through 8/24; on contract end, relist on-demand only per "short-term first" |
 | rtxpro6000server | 192.168.1.157 | 2× RTX PRO 6000 Blackwell WS | 192 GB | **NOT YET LISTED** as of 2026-05-04. Hardware ready, network ready (Fios port-forward 40100-40199 + UFW + hairpin NAT), kaalia install pending. See [`projects/rtxserver-vastai-watch.md`](../../../sartor/memory/projects/rtxserver-vastai-watch.md). | Per "short-term first": list on-demand only with fixed `-e` end-date for first 2-4 weeks. Do NOT use `-l "6 months"` rolling-reservation flag for first listing. |
 | Future hosts | — | — | — | — | Same: on-demand + fixed end-date for 2-4 weeks of price discovery, then re-evaluate |
 
@@ -62,16 +62,16 @@ Short, frequent commands. None should ever modify state.
 
 ```bash
 # Earnings (pay attention to recent days, not just total)
-ssh alton@192.168.1.100 '~/.local/bin/vastai show earnings'
+ssh alton@gpuserver1 '~/.local/bin/vastai show earnings'
 
 # Active rentals — who's on the box, what they're paying
-ssh alton@192.168.1.100 '~/.local/bin/vastai show instances'
+ssh alton@gpuserver1 '~/.local/bin/vastai show instances'
 
 # Machine status — listing health, reliability score, occupancy
-ssh alton@192.168.1.100 '~/.local/bin/vastai show machines'
+ssh alton@gpuserver1 '~/.local/bin/vastai show machines'
 
 # Hardware health — GPU temp, util, memory, disk
-ssh alton@192.168.1.100 'nvidia-smi; df -h /; free -h; uptime'
+ssh alton@gpuserver1 'nvidia-smi; df -h /; free -h; uptime'
 ```
 
 For rtxserver once listed, swap IPs and run the same commands.
@@ -110,7 +110,7 @@ The price-increase challenge mechanism is the only sanctioned path for raising p
 # 1. Re-list the machine at the new (higher) price. The CLI accepts the new price
 #    even with active renters — it triggers a "price increase challenge" emailed
 #    to affected clients.
-ssh alton@192.168.1.100 \
+ssh alton@gpuserver1 \
   '~/.local/bin/vastai list machine 52271 -g <NEW_PRICE> -b <NEW_FLOOR> -s 0.15 -m 1 -e MM/DD/YYYY'
 # Current live values (2026-05-04 audit): -g 0.30 -b 0.25 -s 0.15. Use these as your baseline; only change what you intend to.
 
@@ -130,7 +130,7 @@ Cuts apply immediately, including to active rentals (the renter pays the lower r
 
 ```bash
 # Cut: same command, lower number
-ssh alton@192.168.1.100 \
+ssh alton@gpuserver1 \
   '~/.local/bin/vastai list machine 52271 -g 0.25 -b 0.20 -s 0.10 -m 1 -e MM/DD/YYYY'
 ```
 
@@ -168,23 +168,23 @@ Order of operations:
 
 ```bash
 # 1. LAN ping — distinguishes network-down from box-down
-ping -n 3 192.168.1.100
+ping -n 3 192.168.1.199
 
 # 2. SSH — tells you sshd is up, OAuth keys work
-ssh -o ConnectTimeout=5 alton@192.168.1.100 'date; uptime'
+ssh -o ConnectTimeout=5 alton@gpuserver1 'date; uptime'
 
 # 3. nvidia-smi — GPU/driver alive
-ssh alton@192.168.1.100 'nvidia-smi 2>&1 | head -10'
+ssh alton@gpuserver1 'nvidia-smi 2>&1 | head -10'
 
 # 4. Kaalia daemon — vast.ai's host process
-ssh alton@192.168.1.100 'ps -ef | grep kaalia | grep -v grep'
-ssh alton@192.168.1.100 'sudo tail -30 /var/lib/vastai_kaalia/kaalia.log'
+ssh alton@gpuserver1 'ps -ef | grep kaalia | grep -v grep'
+ssh alton@gpuserver1 'sudo tail -30 /var/lib/vastai_kaalia/kaalia.log'
 
 # 5. Docker — kaalia talks to docker; if docker is down, every rental hangs
-ssh alton@192.168.1.100 'sudo systemctl status docker | head -10'
+ssh alton@gpuserver1 'sudo systemctl status docker | head -10'
 
 # 6. UFW + Fios port-forward — does external traffic still route?
-ssh alton@192.168.1.100 'sudo ufw status verbose | grep 40000'
+ssh alton@gpuserver1 'sudo ufw status verbose | grep 40000'
 # Fios port-forward verification requires Chrome MCP to the router admin OR an external tester
 # (curl from Rocinante hits the LAN-side hairpin, not the WAN ingress)
 ```
@@ -198,11 +198,11 @@ Past incidents:
 ```bash
 # Symptom: vastai show machines shows machine but no listing fields,
 # or end_date is in the past
-ssh alton@192.168.1.100 '~/.local/bin/vastai show machines'
+ssh alton@gpuserver1 '~/.local/bin/vastai show machines'
 
 # Recovery: re-list. Use the "short-term first" defaults if it was a new host's expiry,
 # OR the prior price if it was a healthy listing that just rolled over.
-ssh alton@192.168.1.100 \
+ssh alton@gpuserver1 \
   '~/.local/bin/vastai list machine <id> -g <g> -b <b> -s 0.10 -m <m> -e MM/DD/YYYY'
 ```
 
@@ -213,16 +213,16 @@ ssh alton@192.168.1.100 \
 # or kaalia.log shows repeating errors
 
 # Inspect
-ssh alton@192.168.1.100 'sudo tail -100 /var/lib/vastai_kaalia/kaalia.log'
+ssh alton@gpuserver1 'sudo tail -100 /var/lib/vastai_kaalia/kaalia.log'
 
 # Kaalia runs as systemd service `vastai.service` (also: `vast_metrics.service`,
 # `vastai_bouncer.service`). User=vastai_kaalia, ExecStart=launch_kaalia.sh, Restart=always.
 # To force a restart:
-ssh alton@192.168.1.100 'sudo systemctl restart vastai.service 2>&1 | head -20'
-ssh alton@192.168.1.100 'sudo systemctl status vastai.service 2>&1 | head -20'
+ssh alton@gpuserver1 'sudo systemctl restart vastai.service 2>&1 | head -20'
+ssh alton@gpuserver1 'sudo systemctl status vastai.service 2>&1 | head -20'
 
 # If kaalia binary is corrupted, the install script can be re-run idempotently:
-ssh alton@192.168.1.100 \
+ssh alton@gpuserver1 \
   'sudo python3 /tmp/vast_host_installer.py "$(cat ~/.config/vastai/vast_api_key)" \
    --interactive --agree-to-nvidia-license --no-driver --no-libvirt'
 # Re-running on a healthy install is safe — kaalia detects existing state and updates in place.
@@ -233,15 +233,15 @@ ssh alton@192.168.1.100 \
 
 ```bash
 # vast.ai reachability self-test fails
-ssh alton@192.168.1.100 '~/.local/bin/vastai self-test machine <id>'
+ssh alton@gpuserver1 '~/.local/bin/vastai self-test machine <id>'
 # Returns "BUSY" during kaalia warm-up; returns failure with a specific diagnosis otherwise.
 
 # Test the LAN-side hairpin from the host itself (this is what self-test does):
-ssh alton@192.168.1.100 'sudo iptables -t nat -L OUTPUT -n -v | grep DNAT'
-# Expected: -A OUTPUT -d <PUB_IP> -p tcp --dport 40000:40099 -j DNAT --to-destination 192.168.1.100
+ssh alton@gpuserver1 'sudo iptables -t nat -L OUTPUT -n -v | grep DNAT'
+# Expected: -A OUTPUT -d <PUB_IP> -p tcp --dport 40000:40099 -j DNAT --to-destination 192.168.1.199
 
 # UFW rules
-ssh alton@192.168.1.100 'sudo ufw status verbose | grep 4000'
+ssh alton@gpuserver1 'sudo ufw status verbose | grep 4000'
 # Expected: ALLOW from anywhere to 40000:40099/tcp
 
 # Fios port-forward — manual check via Chrome MCP to https://192.168.1.1

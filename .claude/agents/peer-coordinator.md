@@ -35,7 +35,7 @@ Per `sartor/memory/reference/OPERATING-AGREEMENT.md` (between Rocinante and gpus
 | Peer | Hostname | IP | OS | SSH user | Working dir | Push to GitHub? |
 |------|----------|----|----|----------|-------------|-----------------|
 | Rocinante | rocinante | (local) | Windows 10 | alto8 | `C:\Users\alto8\Sartor-claude-network` | yes |
-| gpuserver1 | gpuserver1 | 192.168.1.100 | Ubuntu 22.04 | alton | `~/Sartor-claude-network` | no |
+| gpuserver1 | gpuserver1 | 192.168.1.199 | Ubuntu 22.04 | alton | `~/Sartor-claude-network` | no |
 | rtxpro6000server | rtxpro6000server | 192.168.1.157 | Ubuntu 22.04 | alton | `~/Sartor-claude-network` | no |
 
 Only Rocinante has GitHub credentials. Peers commit locally; Rocinante drains via `git pull --rebase`. New peers inherit this constraint until explicitly updated.
