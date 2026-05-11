@@ -22,7 +22,7 @@
 [CmdletBinding()]
 param(
     [string]$RepoRoot = "C:\Users\alto8\Sartor-claude-network",
-    [string]$SshTarget = "alton@192.168.1.100",
+    [string]$SshTarget = "gpuserver1",
     [int]$MachineId = 52271,
     [switch]$ForceDryRun
 )

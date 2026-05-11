@@ -7,7 +7,9 @@ $ErrorActionPreference = "Continue"
 $timestamp = Get-Date -Format "yyyy-MM-dd_HHmm"
 $logFile = "C:\Users\alto8\backups\unifi\backup-log.txt"
 $localDir = "C:\Users\alto8\backups\unifi"
-$rtxHost = "alton@192.168.1.157"
+# Peer address resolves via ~/.ssh/config. UniFi controller is on Rocinante itself
+# (localhost), but the cert is bound to 192.168.1.171 so we use that for HTTPS calls.
+$rtxHost = "rtxserver"
 $rtxDir = "/home/alton/sartor-network-backups"
 
 function Log($msg) {

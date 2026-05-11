@@ -22,15 +22,23 @@ This file tracks what's been migrated and what remains.
 - **`~/.claude/settings.json`** — autoMode allow note already used hostnames (no migration needed).
 - **`~/.ssh/config`** (Rocinante) — confirmed mappings: `Host gpuserver1` → 192.168.1.199, `Host rtxserver rtxpro6000server` → 192.168.1.157, `Host rtxserver-bmc` → 192.168.1.154. SSH-by-hostname works from Rocinante out of the box.
 - **Tier B — 16 files in `.claude/`** (2026-05-10 follow-on pass): bulk-migrated via Python script. SSH commands (`ssh alton@192.168.1.100` and `ssh -o ... alton@192.168.1.100`) now use hostname `alton@gpuserver1`. Remaining `.100` references in those files (ping commands, HTTP URLs to gpuserver1 services like ollama/safety-research/gateway, iptables DNAT rule documentation, parenthetical "(192.168.1.100)" hints, table cells) updated to current IP `192.168.1.199`. SSH-by-hostname tested working against live machines. Files touched: `.claude/agents/{gpu-ops,gpu-pricing,peer-coordinator,wellness-checker}.md`, `.claude/scheduled-tasks/gpu-utilization-check/SKILL.md`, `.claude/skills/{daily-household-health,gpu-fleet-check,gpu-pricing-optimizer,morning-briefing,network-management,peer-comms,vastai-management,vastai-market-scan,weekly-financial-summary}/SKILL.md`, `.claude/agent-memory/memory-curator/{project_sartor_infrastructure,reference_system_locations}.md`. Zero `.100` references remain in `.claude/`.
+- **Tier A active-runtime scripts (2026-05-10 evening pass)**: 5 files migrated to SSH-config hostnames. Single source of truth for peer IPs is now `~/.ssh/config`. Adding a new peer = one new `Host` entry there; no script edits.
+  - `scripts/win-tasks/sartor-creds-sync.ps1` — was failing for gpuserver1 since 2026-05-09 (hardcoded `.100` after IP moved to `.199`). Tested; now syncs to both peers.
+  - `scripts/win-tasks/push-peer-credentials.sh` — same fix; `PEERS="rtxserver gpuserver1"`.
+  - `scripts/rsync-peer-sessions.ps1` — tested live; both peers mirrored cleanly in trial run.
+  - `scripts/sartor-vastai-dispatch.ps1` — `$SshTarget` default now `gpuserver1`.
+  - `scripts/claude-peer.ps1` — `claude-rtx`/`claude-gpu` functions use hostnames.
+  - `scripts/win-tasks/unifi-daily-backup.ps1` — `$rtxHost = "rtxserver"`. UniFi controller URLs intentionally kept at `192.168.1.171` (self-signed cert binding; controller is on Rocinante itself).
+- **`scripts/win-tasks/update-hosts-file.ps1`** (2026-05-10 evening): script written but not yet executed. Requires elevation; awaiting either Alton's UAC trigger (`Start-Process -Verb RunAs`) or `gsudo` install. Adds managed `# === SARTOR LAN ===` block with 8 hostnames so Python/HTTP/ping calls can use hostnames too.
 
 ## Pending (priority order)
 
 ### Tier A — high blast radius, manual review recommended
 
-1. **`dashboard/family/server.py`** — ~15 hardcoded `.100` refs in ping logic, SSH command construction, URL building. Runtime app; changes risk breaking the live dashboard. Suggested approach: introduce a `GPUSERVER1_HOST` config constant at top of file (default `"gpuserver1"`), migrate refs to use it, test in isolation before deploying.
-2. **`scripts/win-tasks/*.ps1`** — `sartor-creds-sync.ps1`, `wifi-health-monitor.cmd`, others. Registered as Windows Scheduled Tasks; breaking them stops the WiFi monitor / creds sync / etc. Suggested approach: edit each, test invocation manually, then leave for next scheduled fire to verify.
-3. **`scripts/sartor-vastai-dispatch.ps1`** — param defaults hardcode `alton@192.168.1.100`. Change default to `alton@gpuserver1`.
-4. **`scripts/rsync-peer-sessions.ps1`** — peer mirror script; uses `.100` in path construction. Stop-checks first.
+1. **`dashboard/family/server.py`** — ~20 hardcoded `.100` refs in ping logic, SSH command construction, URL building. Runtime app; changes risk breaking the live dashboard. Suggested approach: introduce a `GPUSERVER1_HOST` config constant at top of file (default `"gpuserver1"`) plus a `GPUSERVER1_HTTP_HOST` for URLs that need OS-level name resolution (depends on hosts file or env var), migrate refs to use them, test in isolation before deploying. **Still pending as of 2026-05-10 evening — needs a deliberate session.**
+2. ~~**`scripts/win-tasks/*.ps1`** — Done 2026-05-10 evening.~~
+3. ~~**`scripts/sartor-vastai-dispatch.ps1`** — Done 2026-05-10 evening.~~
+4. ~~**`scripts/rsync-peer-sessions.ps1`** — Done 2026-05-10 evening.~~
 
 ### Tier C — memory documentation
 

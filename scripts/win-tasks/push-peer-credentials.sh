@@ -11,7 +11,8 @@ mkdir -p "$LOGDIR"
 LOG="$LOGDIR/$(date +%Y-%m-%d).log"
 
 CRED_FILE="/c/Users/alto8/.claude/.credentials.json"
-PEERS="192.168.1.157 192.168.1.100"
+# Peer addresses resolve via ~/.ssh/config; single source of truth.
+PEERS="rtxserver gpuserver1"
 
 if [ ! -f "$CRED_FILE" ]; then
     echo "$(date -Is) ERROR: source credentials file missing at $CRED_FILE" >> "$LOG"
@@ -26,21 +27,21 @@ src_exp_human=$(date -d "@$src_exp" 2>/dev/null || echo "?")
 echo "$(date -Is) Source token expires: $src_exp_human" >> "$LOG"
 
 for peer in $PEERS; do
-    if ! ssh -o ConnectTimeout=5 -o BatchMode=yes alton@$peer 'true' 2>/dev/null; then
+    if ! ssh -o ConnectTimeout=5 -o BatchMode=yes $peer 'true' 2>/dev/null; then
         echo "$(date -Is) [$peer] unreachable, skipping" >> "$LOG"
         continue
     fi
 
     # Read peer's current expiry
-    peer_exp=$(ssh -o ConnectTimeout=5 alton@$peer 'jq -r ".claudeAiOauth.expiresAt/1000" ~/.claude/.credentials.json 2>/dev/null' || echo "0")
+    peer_exp=$(ssh -o ConnectTimeout=5 $peer 'jq -r ".claudeAiOauth.expiresAt/1000" ~/.claude/.credentials.json 2>/dev/null' || echo "0")
 
     if [ "$peer_exp" = "$src_exp" ]; then
         echo "$(date -Is) [$peer] already up to date (expires $src_exp_human)" >> "$LOG"
         continue
     fi
 
-    if scp -o ConnectTimeout=10 -q "$CRED_FILE" alton@$peer:~/.claude/.credentials.json 2>>"$LOG"; then
-        ssh -o ConnectTimeout=5 alton@$peer 'chmod 600 ~/.claude/.credentials.json' 2>>"$LOG"
+    if scp -o ConnectTimeout=10 -q "$CRED_FILE" $peer:~/.claude/.credentials.json 2>>"$LOG"; then
+        ssh -o ConnectTimeout=5 $peer 'chmod 600 ~/.claude/.credentials.json' 2>>"$LOG"
         echo "$(date -Is) [$peer] pushed (now expires $src_exp_human)" >> "$LOG"
     else
         echo "$(date -Is) [$peer] scp FAILED" >> "$LOG"

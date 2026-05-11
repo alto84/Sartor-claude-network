@@ -47,23 +47,22 @@ if (Test-Path $manifestFile) {
     }
 }
 
-$peers = @(
-    @{ name = "rtxserver"; ip = "192.168.1.157" },
-    @{ name = "gpuserver1"; ip = "192.168.1.100" }
-)
+# Peer addresses resolve via ~/.ssh/config; single source of truth.
+# Adding a new peer: extend this list AND add a matching Host entry to ~/.ssh/config.
+$peers = @("rtxserver", "gpuserver1")
 
 foreach ($peer in $peers) {
-    $stagingDir = "$stagingRoot\$($peer.name)"
+    $stagingDir = "$stagingRoot\$peer"
     if (!(Test-Path $stagingDir)) { New-Item -ItemType Directory -Path $stagingDir -Force | Out-Null }
 
     # 1. Pull all session jsonls from peer into staging (overwrites files; safe).
     # Direct scp invocation (no cmd /c shim) — the cmd shim spawned a visible
     # console window every 15 min even with the task set to Hidden=$true. Fixed
     # 2026-05-06 by switching to direct invocation matching sartor-creds-sync.ps1.
-    $src = "alton@$($peer.ip):/home/alton/.claude/projects/-home-alton-Sartor-claude-network/."
+    $src = "${peer}:/home/alton/.claude/projects/-home-alton-Sartor-claude-network/."
     $r = & scp -q -r $src "$stagingDir/" 2>&1
     if ($LASTEXITCODE -ne 0) {
-        Log-Line "WARN $($peer.name): scp failed: $r"
+        Log-Line "WARN ${peer}: scp failed: $r"
         continue
     }
 
@@ -83,10 +82,10 @@ foreach ($peer in $peers) {
             return
         }
         Copy-Item -Path $src -Destination $dst -Force
-        $manifest[$sid] = $peer.name
+        $manifest[$sid] = $peer
         $copied++
     }
-    Log-Line "OK $($peer.name): mirrored $($copied) new+updated, $($skipped) up-to-date"
+    Log-Line "OK ${peer}: mirrored $($copied) new+updated, $($skipped) up-to-date"
 }
 
 # Write manifest back
