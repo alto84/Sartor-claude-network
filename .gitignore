@@ -96,3 +96,11 @@ sartor/memory/source-documents/
 # cookies/session tokens. Drive ignore list will need a parallel entry
 # for the profile when sync turns on.
 /archive/research-projects-2026-05-08/playwright-sandbox/profile/
+
+# Google Drive desktop sync staging dir — auto-managed, churns constantly.
+# Files are opaque numeric IDs (no extension), no semantic value to git.
+/.tmp.driveupload/
+
+# Rufus USB tool launcher (2 KB) left over from a one-off USB image task;
+# not project content.
+/rufus.com
