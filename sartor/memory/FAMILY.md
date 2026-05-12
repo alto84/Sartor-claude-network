@@ -186,7 +186,7 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 > Concert is TODAY at MKA. Aneeta is at RRE (sole-parent window through May 3). Alton must be at MKA by ~9:25 AM. API reading: `start: 2026-04-30T13:40:00Z, timeZone: America/New_York` = 9:40 AM ET (Z-anchored, consistent with runs 16/18/25/27/28). See [[family/vayu]] and [[family/active-todos]].
 
 > [!todo] ACTION_REQUIRED — EquityZen: reconfirm Anthropic investor interest
-> EquityZen email (support@equityzen.com, 2026-04-29): subject "Action Needed: Please Reconfirm Your Investor Interest." Company: Anthropic. Interest will expire without action. Log into EquityZen watchlist and reconfirm.
+> EquityZen email (support@equityzen.com, 2026-04-29): subject "Action Needed: Please Reconfirm Your Investor Interest." Company: Anthropic. Interest will expire without action. Log into EquityZen My Watchlist and reconfirm.
 
 > [!fact]
 > **MKA EPE Carline Update (2026-04-29).** agonzalez@mka.org: warm weather means JrK and Kindergarten EPE students are now outside on front playground during afternoon carline. New safety procedure in effect. Verify which Sartor children are in EPE if afternoon pickup is involved.
