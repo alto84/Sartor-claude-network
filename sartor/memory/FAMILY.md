@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-05-06
+updated: 2026-05-12
 updated_by: autodream
 last_verified: 2026-04-16
 status: active
@@ -144,206 +144,16 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 - [2026-04-05] (fact) 2026-04-05 is Easter Sunday -- school holiday (MKA)
 
 <!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-2881b3cc7fce -->
-## Inbox entry: ce-1775964664-2881b3cc7fce
-
-- Source machine: `rocinante`
-- Created: 2026-04-12T03:31:04+00:00
-- Operation: replace
-- Priority: p2
-- Drained: 2026-04-12T04:35:31+00:00
-
-# Proposed memory: health
-
-- **Category:** `structured_update` / `health`
-- **Confidence:** 0.90
-- **Dedup status:** `partial_update_proposed`
-- **Suggested target:** `FAMILY.md`
-- **Suggested operation:** `replace`
-- **Field:** `health` → `chemo`
-- **Entity:** `Loki`
-
-## Source quote
-
-> I need to order Loki (my cat with small cell lymphoma!) his chemo. I think i got it through chewy
-
-## Match span
-
-`chemo`
-
-## Session reference
-
-- **session_id:** `6d66075b-10f9-482c`
-- **turn_timestamp:** `2026-04-10T23:27:02.534Z`
-- **source_file:** `6d66075b-10f9-482c-a62e-9f2828a7ed0d.jsonl`
-
-## Proposed edit
-
-Replace field `health` on entity `Loki` in `FAMILY.md` with value `chemo`.
-
-<!-- /curator-drained -->
-
 <!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-3310abd52d95 -->
-## Inbox entry: ce-1775964664-3310abd52d95
-
-- Source machine: `rocinante`
-- Created: 2026-04-12T03:31:04+00:00
-- Operation: replace
-- Priority: p2
-- Drained: 2026-04-12T04:35:31+00:00
-
-# Proposed memory: dob
-
-- **Category:** `structured_update` / `dob`
-- **Confidence:** 0.90
-- **Dedup status:** `new`
-- **Suggested target:** `FAMILY.md`
-- **Suggested operation:** `replace`
-- **Field:** `date_of_birth` → `9/20/1984`
-- **Entity:** `Aneeta`
-
-## Source quote
-
-> my birthday is 9/20/84. aneeta's is 10/20/80. please correct.
-
-## Match span
-
-`9/20/1984`
-
-## Session reference
-
-- **session_id:** `6d66075b-10f9-482c`
-- **turn_timestamp:** `2026-04-10T22:54:14.859Z`
-- **source_file:** `6d66075b-10f9-482c-a62e-9f2828a7ed0d.jsonl`
-
-## Proposed edit
-
-Replace field `date_of_birth` on entity `Aneeta` in `FAMILY.md` with value `9/20/1984`.
-
-<!-- /curator-drained -->
-
 <!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-9beac90a1086 -->
-## Inbox entry: ce-1775964664-9beac90a1086
-
-- Source machine: `rocinante`
-- Created: 2026-04-12T03:31:04+00:00
-- Operation: replace
-- Priority: p2
-- Drained: 2026-04-12T04:35:31+00:00
-
-# Proposed memory: dob
-
-- **Category:** `structured_update` / `dob`
-- **Confidence:** 0.90
-- **Dedup status:** `new`
-- **Suggested target:** `FAMILY.md`
-- **Suggested operation:** `replace`
-- **Field:** `date_of_birth` → `10/20/1980`
-- **Entity:** `Aneeta`
-
-## Source quote
-
-> my birthday is 9/20/84. aneeta's is 10/20/80. please correct.
-
-## Match span
-
-`10/20/1980`
-
-## Session reference
-
-- **session_id:** `6d66075b-10f9-482c`
-- **turn_timestamp:** `2026-04-10T22:54:14.859Z`
-- **source_file:** `6d66075b-10f9-482c-a62e-9f2828a7ed0d.jsonl`
-
-## Proposed edit
-
-Replace field `date_of_birth` on entity `Aneeta` in `FAMILY.md` with value `10/20/1980`.
-
-<!-- /curator-drained -->
-
 <!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-9d82d1c0ff9b -->
-## Inbox entry: ce-1775964664-9d82d1c0ff9b
-
-- Source machine: `rocinante`
-- Created: 2026-04-12T03:31:04+00:00
-- Operation: replace
-- Priority: p2
-- Drained: 2026-04-12T04:35:31+00:00
-
-# Proposed memory: health
-
-- **Category:** `structured_update` / `health`
-- **Confidence:** 0.90
-- **Dedup status:** `partial_update_proposed`
-- **Suggested target:** `FAMILY.md`
-- **Suggested operation:** `replace`
-- **Field:** `health` → `lymphoma`
-- **Entity:** `Loki`
-
-## Source quote
-
-> I need to order Loki (my cat with small cell lymphoma!) his chemo. I think i got it through chewy
-
-## Match span
-
-`lymphoma`
-
-## Session reference
-
-- **session_id:** `6d66075b-10f9-482c`
-- **turn_timestamp:** `2026-04-10T23:27:02.534Z`
-- **source_file:** `6d66075b-10f9-482c-a62e-9f2828a7ed0d.jsonl`
-
-## Proposed edit
-
-Replace field `health` on entity `Loki` in `FAMILY.md` with value `lymphoma`.
-
-<!-- /curator-drained -->
-
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-wohelo-payment -->
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-mka-events -->
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-mka-math-support -->
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-tribeca-peds -->
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=gmail-2026-04-16-aneeta-neurvati confirms_existing: Aneeta=Neurvati already in FAMILY.md; financial detail (Box 1 $194,289, NJ withheld $11,277) already lives in TAXES.md material-changes section -->
 <!-- curator-drained 2026-04-16T18:30:00Z from rocinante entry=wohelo-payment-2026-04-13 -->
-
 <!-- curator-drained 2026-04-12T04:35:31+00:00 from rocinante entry=ce-1775964664-d5f5f6b4a8fb -->
-## Inbox entry: ce-1775964664-d5f5f6b4a8fb
-
-- Source machine: `rocinante`
-- Created: 2026-04-12T03:31:04+00:00
-- Operation: replace
-- Priority: p2
-- Drained: 2026-04-12T04:35:31+00:00
-
-# Proposed memory: phone
-
-- **Category:** `numeric` / `phone`
-- **Confidence:** 0.90
-- **Dedup status:** `already_landed`
-- **Suggested target:** `FAMILY.md`
-- **Suggested operation:** `replace`
-- **Field:** `cell_phone` → `(914) 488-5727`
-- **Entity:** `Tier`
-
-## Source quote
-
-> /actions with deadlines} ## CPA Contact Jonathan Francis — Francis & Company — (914) 488-5727 ## Summary {2-3 sentence status narrative} ```
-
-## Match span
-
-`(914) 488-5727`
-
-## Session reference
-
-- **session_id:** `4408a400-214c-4c35`
-- **turn_timestamp:** `2026-04-12T02:04:11.275Z`
-- **source_file:** `4408a400-214c-4c35-a020-837b64d0b784.jsonl`
-
-## Proposed edit
-
-Replace field `cell_phone` on entity `Tier` in `FAMILY.md` with value `(914) 488-5727`.
-
-<!-- /curator-drained -->
 
 ## Latest from gather (2026-04-17) — run 6
 
@@ -394,3 +204,6 @@ Replace field `cell_phone` on entity `Tier` in `FAMILY.md` with value `(914) 488
 
 > [!fact]
 > **Vasu Dance Recital: June 2, 4:30 PM (first mention).** From Miss Kelsey/Jacqueline Capote (Goddard) via Kaymbu, 2026-05-07. Add to Google Calendar. Venue TBD — confirm with Goddard. See [[family/vasu]] and [[family/family-calendar]].
+
+## Consolidated from daily logs (2026-05-12)
+- [2026-05-10] (fact) Jackrabbit parent/child class: (info only): Ages 1-4, May 30 + June 3, 4:00–4:45 PM, 136 Mountainview Blvd Wayne NJ, $15/non-member — potential activity for Vasu
