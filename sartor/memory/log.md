@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-11
+updated: 2026-05-12
 updated_by: personal-data-gather
-run: 69
+run: 70
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -111,6 +111,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Neurvati board call (May 14): Aneeta slide deck submitted to CEO May 8. Prep complete.
 - Files touched: `ALTON.md`, `ASTRAZENECA.md`, `FAMILY.md`, `family/family-calendar.md`
 - KEY: Wohelo check still unconfirmed — follow up May 12 if no receipt. iCloud still borderline.
+
+## [2026-05-12] ingest | personal-data-gather run 70: Chase Sante Total restriction; 990-N 3-day countdown; Hiive Harvey decision deadline
+- Sources: Gmail (newer_than:2d, 30 threads), 5 calendars (May 12–19 window)
+- CRITICAL: Chase/Sante Total bank account (opened 2026-05-06) flagged for missing information — contact Pavel Manrique before 06/04/2026 or account restricted.
+- P0: Sante Total Form 990-N due 2026-05-15 (3 days). Status: NOT FILED per all prior entries.
+- Time-sensitive: Hiive/Harvey AI investment closes 2026-05-14 ($25K min, ~$12.1B implied valuation). Decision item only.
+- Financial: Chase Sapphire Reserve $15K payment scheduled 5/12. Chase CC (...5680) statement $23,786.95 due 05/28 auto-pay on. AZ Fidelity 401(k) investment lineup changes (review NetBenefits). Summit Health patient payment due.
+- Calendar NEW: Optimum fiber appointment Mon 5/18 1:00–2:00 PM (prior events captured run 69).
+- Files touched: `daily/2026-05-12.md` (created), `business/sante-total.md`, `family/active-todos.md`, `family/family-calendar.md`, `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: Two time-sensitive Sante Total items — 990-N in 3 days (P0) and Chase KYC follow-up (act this week on 6-day-old account).
 
 ## [2026-05-11] ingest | personal-data-gather run 69: AZ Day 1 complete; Wohelo confirmed; rtxserver vastai listing live
 - Sources: Gmail (newer_than:2d, 38 threads), all 5 calendars (May 11–28), SSH gpuserver1 + rtxserver

@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-07
+updated: 2026-05-12
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -179,3 +179,11 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!todo] ACTION_REQUIRED — Chase donation button inquiry pending
 > Alton emailed Pavel Manrique on 2026-05-07 asking whether Chase can facilitate direct website donation acceptance to replace PayPal ("they take a cut and it adds extra steps"). Awaiting Pavel's response. If Chase can support this, it would simplify donation workflow and eliminate PayPal fees. This is distinct from the Julia Clemens PayPal program-split request (run 65).
+
+## Latest from gather (2026-05-12) — run 70
+
+> [!deadline] 2026-06-04
+> **Chase/Sante Total bank account — missing information required to avoid restriction.** Chase email 2026-05-12 14:09 UTC (Chase@notifyalert.chase.com): "We need your help - Please contact us to provide missing information before 06/04/2026, to avoid account restriction SANTE TOTAL." Account was opened only 6 days ago (2026-05-06). Almost certainly a KYC follow-up on the new business checking account. Contact: Pavel Manrique (pavel.p.manrique@chase.com, 973-783-5062), Chase Montclair branch (19 N Fullerton Ave). Do not let this lapse — account restriction would interrupt Sante Total's banking at a critical time (ongoing donations, PayPal/donation infrastructure decisions). 23 days until stated deadline; act this week while account is new and Pavel has context.
+
+> [!deadline] 2026-05-15
+> **2025 Form 990-N — DUE IN 3 DAYS (Friday May 15).** Status as of run 70: NOT FILED. No email observed confirming completion through run 70. Alton handles directly via IRS.gov tax-exempt organization search portal. Gross receipts under $50K for TY2025 — 990-N (e-Postcard) still applies. No automatic extension without separately filing Form 8868 first. P0.
