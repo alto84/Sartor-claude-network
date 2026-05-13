@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-12
+updated: 2026-05-13
 updated_by: personal-data-gather
-run: 70
+run: 71
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -121,6 +121,19 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar NEW: Optimum fiber appointment Mon 5/18 1:00–2:00 PM (prior events captured run 69).
 - Files touched: `daily/2026-05-12.md` (created), `business/sante-total.md`, `family/active-todos.md`, `family/family-calendar.md`, `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
 - KEY: Two time-sensitive Sante Total items — 990-N in 3 days (P0) and Chase KYC follow-up (act this week on 6-day-old account).
+
+## [2026-05-13] ingest | personal-data-gather run 71: Montclair camp opens today; Sante Total grant proposal; Harvey deadline tomorrow; Anysphere 90% subscribed
+- Sources: Gmail (newer_than:2d, 43 threads), all 5 calendars (May 13–20 window)
+- P0: Montclair Summer Camp registration opens today at 10 AM (communitypass.net).
+- P0: Harvey/Hiive investment decision deadline tomorrow 2026-05-14 ($25K min, ~$12.1B valuation). Escalated from run 70.
+- P0: Sante Total 990-N due 2026-05-15 (2 days). Still NOT FILED.
+- P1: Sante Total — Barbara Weis + Berteau "Money for the elderly" grant proposal. Budget exceeds expectations. Alton must review as Treasurer.
+- P1: Anysphere/Cursor.com via Hiive — 90%+ subscribed. Near-full, separate from Harvey.
+- Family: Vasu Pajama Day today; Vasu bedding needed on Mondays; Vishala "own your letter dress down" on May 20 (new calendar event); MKA Theme Day today.
+- Purchases: Dyson Hushjet Compact ordered; SOPOGER Archery Arrow Rest ordered; Puma child shoes shipped.
+- Climate First Bank: Intuit connectivity disrupted after core banking conversion May 11 — may affect Solar Inference LLC QuickBooks.
+- Files touched: `daily/2026-05-13.md` (created), `business/sante-total.md`, `family/active-todos.md`, `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: 990-N deadline in 2 days — P0. Harvey decision tomorrow. Sante Total grant proposal needs Treasurer review. Montclair camp opens at 10 AM today.
 
 ## [2026-05-11] ingest | personal-data-gather run 69: AZ Day 1 complete; Wohelo confirmed; rtxserver vastai listing live
 - Sources: Gmail (newer_than:2d, 38 threads), all 5 calendars (May 11–28), SSH gpuserver1 + rtxserver
