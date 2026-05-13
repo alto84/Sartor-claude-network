@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-12
+updated: 2026-05-13
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -151,6 +151,14 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!fact]
 > **Donor spreadsheet updated by Alison Smith as of 2026-04-30.** Alison added more donors to the spreadsheet overnight before sending the "Donors" email. No count or amount visible in snippet. This likely follows the Sergei Robinson donation (Apr 27) and possibly others. Verify updated spreadsheet totals before authorizing fund transfer.
+
+## Latest from gather (2026-05-13) — run 71
+
+> [!todo] ACTION_REQUIRED — grant proposal review (Treasurer)
+> **Barbara Weis (dye2tie@verizon.net) + Berteau — "Money for the elderly" grant proposal.** Email 2026-05-12 20:46 UTC to Alison Smith (asmi60@lsuhsc.edu, alison.annette.smith@gmail.com) and Alton. Barbara wrote: "Berteau and I wrote up his project for the elderly using the grant application Temrah and I came up with. I told him to include everything he might need, so it comes to more than we have been..." Budget exceeds prior expectations. Alton must review as Treasurer: (1) review the proposal amount, (2) determine if Sante Total has sufficient funds and board authorization for such a grant, (3) respond to Barbara/Alison. New contact surfaced: Berteau (project leader for elderly program), Temrah (wrote the grant application template used). Add to people registry when more context available.
+
+> [!deadline] 2026-05-15 (2 days) — P0
+> **2025 Form 990-N still NOT FILED.** Due 2026-05-15. Alton files directly at IRS.gov. Gross receipts under $50K for TY2025. No automatic extension without Form 8868. This deadline has been P0 since run 22 (2026-04-29). File immediately.
 
 ## Latest from gather (2026-05-06) — run 61
 

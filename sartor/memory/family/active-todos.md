@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-12
+updated: 2026-05-13
 updated_by: personal-data-gather
-run: 70
+run: 71
 
 status: active
 priority: p1
@@ -236,6 +236,39 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - [[vasu]] - Vasu-specific deep profile
 - [[family-calendar]] - Full 30-day calendar view
 - [[ALTON]] - Head of household
+
+## Latest from gather (2026-05-13) — run 71
+
+> [!deadline] 2026-05-14 (TOMORROW) — ESCALATED from run 70 (was 2 days)
+> **Hiive/Harvey AI investment — decision deadline TOMORROW.** Harvey AI: $190M ARR, $11B valuation (March 2026, Sequoia/GIC/a16z/Coatue). Offer: $37/unit, ~$12.1B implied valuation, $25K minimum. Hiive single-asset fund, no mgmt fees or carry. Decision only — no action if passing. Contact: opportunities@hiive.com.
+
+> [!todo] ACTION_REQUIRED — TODAY at 10 AM
+> **Montclair Summer Camp registration opens 2026-05-13 at 10 AM.** communitypass.net. Programs: Summer Fun Activities Camp (weekly), Co-Ed, and partner programs. Vayu (10), Vishala (8), Vasu (4) all eligible. Registration may fill quickly. Source: info@communitypass.net, 2026-05-12 20:17 UTC.
+
+> [!todo] ACTION_REQUIRED — Sante Total grant proposal review (Treasurer)
+> **Barbara Weis (dye2tie@verizon.net) + Berteau wrote up a "project for the elderly" grant proposal.** Budget "comes to more than we have been" — exceeds prior expectations. Email to Alison Smith + Alton (2026-05-12 20:46 UTC). Alton must review as Treasurer and respond. See [[business/sante-total]].
+
+> [!todo]
+> **Anysphere/Cursor.com via Hiive — 90%+ subscribed.** Separate from Harvey. Near-full — if interested, act immediately. opportunities@hiive.com. Source: 2026-05-12 18:31 UTC.
+
+> [!todo]
+> **Vasu — bring bedding sheets to Goddard on Mondays.** Lorena Castillo (Goddard) reminder: children arriving without sheets. Add to Monday morning pack list. See [[family/vasu]].
+
+> [!note] Vishala — "own your letter dress down" on 2026-05-20 (NEW)
+> New Family calendar event: all-day Wed 2026-05-20. "Vishala own your letter dress down." Plan outfit with appropriate letter (likely "V" or assigned letter — confirm with school/Vishala). See [[family/vishala]].
+
+> [!note] Calendar this week (May 13–19 confirmed)
+> - TODAY Wed 5/13: Rec Soccer Practice 5:30–6:15 PM, Anderson Park south near Parkside St
+> - TODAY Wed 5/13: MKA Theme Day (Chloe Martinez Head of School Day, Brookside)
+> - TODAY Wed 5/13: Vasu Pajama Day at Goddard
+> - Sat 5/16 12:00–1:00 PM: Vayu soccer GAME vs B34-Silver, Brookdale Park Field 1 (arrive 11:40)
+> - Sun 5/17 10:00 AM–1:00 PM: Playdate with Livia and family
+> - Mon 5/18 1:00–2:00 PM: Optimum fiber appointment (must be home)
+> - Wed 5/20: Vishala "own your letter dress down" (all day)
+> - Wed 5/20 5:30–6:15 PM: Rec Soccer Practice (B-34 Lime), Anderson Park
+
+> [!fact] MKA Conference sign-up — likely RESOLVED (per run 69 log)
+> Run 69 log (2026-05-11) reports: "MKA Veracross: Alton signed up for May 20 conference slot (Vayu 3:30 PM, Vishala 4:00 PM)." If Veracross shows sign-ups complete, prior deadline items (2026-05-15) can be closed.
 
 ## Latest from gather (2026-04-13) — run 6
 
