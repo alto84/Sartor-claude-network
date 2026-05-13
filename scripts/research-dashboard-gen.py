@@ -31,14 +31,17 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RESEARCH_DIR = REPO_ROOT / "sartor" / "memory" / "research"
 INBOX_DIR = REPO_ROOT / "sartor" / "memory" / "inbox" / "rocinante"
+DAILY_REPORTS_DIR = REPO_ROOT / "sartor" / "memory" / "daily"
 MACHINE_DIR = REPO_ROOT / "sartor" / "memory" / "machines" / "rtxpro6000server"
 OUT_FILE = RESEARCH_DIR / "dashboard.html"
 
 PE_DIR = RESEARCH_DIR / "persona-engineering"
-PV_DIR = RESEARCH_DIR / "pharmacovigilance"
 CCP_HARNESS_DIR = RESEARCH_DIR / "ccp-alignment" / "eval-harness-2026-05-04"
 
-NIGHTLY_GLOB = re.compile(r"(\d{4}-\d{2}-\d{2}T\d{4}Z)_research-nightly-(\w+)\.md$")
+# Phone-homes from the cron wrapper (process-level events: started/completed/skipped/failed)
+DAILY_PHONE_HOME_GLOB = re.compile(r"(\d{4}-\d{2}-\d{2}T\d{4}Z)_research-daily-(\w+)\.md$")
+# Substantive daily reports written by the Claude session itself
+DAILY_REPORT_GLOB = re.compile(r"^research-(\d{4}-\d{2}-\d{2})\.md$")
 
 
 # ---- helpers ---------------------------------------------------------------
@@ -99,13 +102,13 @@ def git_log_research(days: int = 7) -> list[dict]:
 
 # ---- collectors ------------------------------------------------------------
 
-def collect_nightly_phone_homes(limit_days: int = 7) -> list[dict]:
-    """Return one row per nightly run (most recent first)."""
+def collect_daily_phone_homes(limit_days: int = 14) -> list[dict]:
+    """Return one row per cron-wrapper phone-home (started/completed/skipped/failed)."""
     rows = []
     if not INBOX_DIR.exists():
         return rows
     for p in sorted(INBOX_DIR.iterdir()):
-        m = NIGHTLY_GLOB.search(p.name)
+        m = DAILY_PHONE_HOME_GLOB.search(p.name)
         if not m:
             continue
         ts, verb = m.group(1), m.group(2)
@@ -133,6 +136,40 @@ def collect_nightly_phone_homes(limit_days: int = 7) -> list[dict]:
     # Most recent first
     rows.sort(key=lambda r: r["ts"], reverse=True)
     return rows[: limit_days * 4]  # cap to avoid runaway
+
+def collect_daily_reports(limit: int = 14) -> list[dict]:
+    """Substantive daily reports written by the Claude session itself."""
+    rows = []
+    if not DAILY_REPORTS_DIR.exists():
+        return rows
+    for p in sorted(DAILY_REPORTS_DIR.iterdir(), reverse=True):
+        m = DAILY_REPORT_GLOB.match(p.name)
+        if not m:
+            continue
+        date = m.group(1)
+        text = safe_read(p, max_bytes=8000)
+        fm, body = parse_frontmatter(text)
+        first_para = ""
+        in_section = False
+        for line in body.splitlines():
+            if line.startswith("## Mission") or line.startswith("## Picked"):
+                in_section = True
+                continue
+            if in_section and line.strip() and not line.startswith("#"):
+                first_para = line.strip()[:240]
+                break
+        rows.append({
+            "date": date,
+            "program": fm.get("program_advanced", "?"),
+            "self_loop": fm.get("self_loop_status", "?"),
+            "proposed_gpu": fm.get("proposed_for_gpu_session", ""),
+            "preview": first_para,
+            "size": p.stat().st_size,
+            "path": str(p.relative_to(REPO_ROOT)).replace("\\", "/"),
+        })
+        if len(rows) >= limit:
+            break
+    return rows
 
 def collect_persona_engineering() -> dict:
     log = safe_read(PE_DIR / "RESEARCH-LOG.md")
@@ -175,21 +212,6 @@ def collect_ccp_alignment() -> dict:
         "notes_tail": notes_tail,
         "runs_count": runs_count,
         "harness_path": str(CCP_HARNESS_DIR.relative_to(REPO_ROOT)).replace("\\", "/"),
-    }
-
-def collect_pharmacovigilance() -> dict:
-    kg_root = PV_DIR / "safety-knowledge-graph"
-    counts = {"adverse-events": 0, "mitigations": 0, "trials": 0, "models": 0, "data-sources": 0}
-    if kg_root.exists():
-        for kind in counts.keys():
-            d = kg_root / kind
-            if d.exists():
-                counts[kind] = sum(1 for p in d.glob("*.md") if p.name != "README.md")
-    readme = safe_read(kg_root / "README.md")
-    readme_head = "\n".join(readme.splitlines()[:20])
-    return {
-        "counts": counts,
-        "readme_head": readme_head,
     }
 
 def collect_loop_reports(limit: int = 10) -> list[dict]:
@@ -292,7 +314,8 @@ tr:hover { background: #1e293b; }
 .pill-skip { background: #1e3a8a; color: #dbeafe; }
 .pill-dim { background: #334155; color: #cbd5e1; }
 .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2em; }
-@media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
+.grid.two-col { grid-template-columns: 1fr 1fr; }
+@media (max-width: 1100px) { .grid, .grid.two-col { grid-template-columns: 1fr; } }
 .card { background: #1e293b; padding: 0.8em 1em; border-radius: 6px; }
 .headline { color: #cbd5e1; }
 pre { background: #0b1220; padding: 0.6em; border-radius: 4px; font-size: 0.78em; overflow-x: auto; color: #cbd5e1; max-height: 18em; }
@@ -355,9 +378,9 @@ def render_loop_reports(rows: list[dict]) -> str:
     out.append('</table>')
     return "".join(out)
 
-def render_nightly_table(rows: list[dict]) -> str:
+def render_daily_phone_homes(rows: list[dict]) -> str:
     if not rows:
-        return '<p class="dim">No nightly phone-homes found in inbox. Nightly cron may not be installed yet.</p>'
+        return '<p class="dim">No daily phone-homes in inbox/rocinante/. Daily cron may not be installed yet.</p>'
     out = ['<table>',
            '<tr><th>UTC</th><th>verb</th><th>headline</th><th>file</th></tr>']
     for r in rows[:14]:
@@ -372,7 +395,7 @@ def render_nightly_table(rows: list[dict]) -> str:
     out.append('</table>')
     return "".join(out)
 
-def render_program_cards(pe: dict, ccp: dict, pv: dict) -> str:
+def render_program_cards(pe: dict, ccp: dict) -> str:
     pe_exp = pe.get("latest_experiment")
     pe_exp_html = (
         f'<div class="mono">{html.escape(pe_exp["ord"])} · {html.escape(pe_exp["date"])} · '
@@ -384,31 +407,52 @@ def render_program_cards(pe: dict, ccp: dict, pv: dict) -> str:
         f'<div>Runs catalogued: <span class="mono">{ccp.get("runs_count", 0)}</span></div>'
         f'<div class="dim mono" style="margin-top:0.3em">harness: {html.escape(ccp.get("harness_path", ""))}</div>'
     )
-    pv_counts = pv.get("counts", {})
-    pv_html = '<table style="margin:0">'
-    for k, v in pv_counts.items():
-        pv_html += f'<tr><td class="dim">{html.escape(k)}</td><td class="num mono">{v}</td></tr>'
-    pv_html += '</table>'
-
     return f"""
-<div class="grid">
+<div class="grid two-col">
   <div class="card">
     <h3>persona-engineering</h3>
-    <div>Latest experiment:</div>
+    <div class="dim" style="font-size:0.85em">implant household-loyalty as deeply-embodied trait (addition)</div>
+    <div style="margin-top:0.6em">Latest experiment:</div>
     {pe_exp_html}
     <div class="dim" style="margin-top:0.6em">RESEARCH-PLAN updated: <span class="mono">{html.escape(pe.get("plan_updated", "?"))}</span> by <span class="mono">{html.escape(pe.get("plan_updated_by", "?"))}</span></div>
   </div>
   <div class="card">
     <h3>ccp-alignment</h3>
-    {ccp_html}
-  </div>
-  <div class="card">
-    <h3>pharmacovigilance</h3>
-    <div>safety-knowledge-graph nodes by type:</div>
-    {pv_html}
+    <div class="dim" style="font-size:0.85em">override CCP-aligned baseline so Constitution can absorb (subtraction)</div>
+    <div style="margin-top:0.6em">{ccp_html}</div>
   </div>
 </div>
 """
+
+def render_daily_reports(rows: list[dict]) -> str:
+    if not rows:
+        return '<p class="dim">No daily research reports at sartor/memory/daily/research-*.md yet. The daily cron may not be installed.</p>'
+    out = ['<table>',
+           '<tr><th>date</th><th>program</th><th>self-loop</th><th>preview</th><th>proposed-for-GPU</th><th>file</th></tr>']
+    for r in rows:
+        program_pill = {
+            "ccp-alignment": '<span class="pill pill-warn">ccp-alignment</span>',
+            "persona-engineering": '<span class="pill pill-ok">persona-engineering</span>',
+            "both": '<span class="pill pill-ok">both</span>',
+            "meta": '<span class="pill pill-dim">meta</span>',
+        }.get(r["program"], f'<span class="pill pill-dim">{html.escape(r["program"])}</span>')
+        loop = r["self_loop"]
+        loop_pill = {
+            "recent": '<span class="pill pill-ok">recent</span>',
+            "stalled": '<span class="pill pill-crit">stalled</span>',
+        }.get(loop, f'<span class="pill pill-dim">{html.escape(loop)}</span>')
+        out.append(
+            f'<tr>'
+            f'<td class="mono">{html.escape(r["date"])}</td>'
+            f'<td>{program_pill}</td>'
+            f'<td>{loop_pill}</td>'
+            f'<td class="dim" style="max-width:36em">{html.escape(r["preview"] or "(no preview)")}</td>'
+            f'<td class="dim" style="max-width:24em">{html.escape(r["proposed_gpu"] or "")}</td>'
+            f'<td class="mono"><a href="../../../{html.escape(r["path"])}">research-{html.escape(r["date"])}.md</a></td>'
+            f'</tr>'
+        )
+    out.append('</table>')
+    return "".join(out)
 
 def render_passoffs(rows: list[dict]) -> str:
     if not rows:
@@ -486,21 +530,21 @@ def render_status_lights(nightly_rows: list[dict], snapshot: dict) -> str:
 '''
 
 def render_html(
-    nightly_rows: list[dict],
+    phone_homes: list[dict],
+    daily_reports: list[dict],
     pe: dict,
     ccp: dict,
-    pv: dict,
     passoffs: list[dict],
     commits: list[dict],
     snapshot: dict,
     loop_reports: list[dict],
 ) -> str:
-    last_proposed = ""
-    for r in nightly_rows:
-        proposed = r["fm"].get("proposed_for_tonight")
-        if proposed:
-            last_proposed = proposed
-            break
+    # Aggregate "proposed for GPU session" from all recent daily reports
+    proposed_items = []
+    for r in daily_reports[:5]:
+        prop = r.get("proposed_gpu", "").strip()
+        if prop and prop not in proposed_items:
+            proposed_items.append(f'<li><span class="dim mono">{html.escape(r["date"])}:</span> {html.escape(prop)}</li>')
 
     return f"""<!doctype html>
 <html><head>
@@ -512,17 +556,27 @@ def render_html(
 <h1>Sartor Research Dashboard</h1>
 <div class="stamp">Generated {html.escape(local_now())} local · {html.escape(utc_now())} · auto-reload 60s · regenerated every 30 min by Sartor Research Dashboard scheduled task</div>
 
-{render_status_lights(nightly_rows, snapshot)}
+{render_status_lights(phone_homes, snapshot)}
+
+<div class="card" style="margin-bottom:1.5em">
+<strong style="color:#fbbf24">Mission:</strong> Can we get a smaller model to take on the household identity?
+<div class="dim" style="margin-top:0.3em">Substrate: Qwen 3.6 35B-A3B-Abliterated-Heretic (current) · Identity: Constitution v0.5 (ratified 2026-05-06). Two research lines: ccp-alignment (subtraction) + persona-engineering (addition).</div>
+</div>
+
+<h2>Daily research reports — last 14</h2>
+<p class="dim">Substantive prose reports written by the daytime research-daily cron (10:00 ET / 14:00 UTC). The load-bearing artifact.</p>
+{render_daily_reports(daily_reports)}
 
 <h2>rtxserver peer self-loop — last 10 wake reports</h2>
-<p class="dim">ScheduleWakeup-driven; fragile (lost on peer-service restart). The nightly cron backstops this.</p>
+<p class="dim">ScheduleWakeup-driven; fragile (lost on peer-service restart). The daily cron backstops this.</p>
 {render_loop_reports(loop_reports)}
 
-<h2>Nightly cron — last 14 phone-homes</h2>
-{render_nightly_table(nightly_rows)}
+<h2>Daily cron phone-homes — last 14</h2>
+<p class="dim">Wrapper-level events: started, completed, skipped (rental active), failed. The substantive prose is in the daily reports above.</p>
+{render_daily_phone_homes(phone_homes)}
 
 <h2>Per-program state</h2>
-{render_program_cards(pe, ccp, pv)}
+{render_program_cards(pe, ccp)}
 
 <h2>Persona-engineering — RESEARCH-LOG tail (last 30 lines)</h2>
 <pre>{html.escape(pe.get("log_tail", "(no log)"))}</pre>
@@ -533,17 +587,18 @@ def render_html(
 <h2>Open PASSOFF packets</h2>
 {render_passoffs(passoffs)}
 
-<h2>Recent commits to sartor/memory/research/ (last 7 days)</h2>
+<h2>Recent commits to sartor/memory/research/ (last 14 days)</h2>
 {render_recent_commits(commits)}
 
-<h2>What rtxserver proposed for a future GPU-allowed night</h2>
-<div class="card">{html.escape(last_proposed) if last_proposed else '<span class="dim">No proposal in the most recent phone-home(s).</span>'}</div>
+<h2>Proposed for an Alton-greenlit GPU session</h2>
+<div class="card">{('<ul style="margin:0">' + "".join(proposed_items) + '</ul>') if proposed_items else '<span class="dim">No proposals yet — the daily cron hasn\'t fired.</span>'}</div>
 
 <h2 class="dim">Diagnostics</h2>
 <table>
 <tr><td class="dim">Working tree:</td><td class="mono">{html.escape(str(REPO_ROOT))}</td></tr>
-<tr><td class="dim">Nightly phone-homes scanned:</td><td class="mono num">{len(nightly_rows)}</td></tr>
-<tr><td class="dim">Commits scanned (7d):</td><td class="mono num">{len(commits)}</td></tr>
+<tr><td class="dim">Daily phone-homes scanned:</td><td class="mono num">{len(phone_homes)}</td></tr>
+<tr><td class="dim">Daily reports scanned:</td><td class="mono num">{len(daily_reports)}</td></tr>
+<tr><td class="dim">Commits scanned (14d):</td><td class="mono num">{len(commits)}</td></tr>
 <tr><td class="dim">PASSOFFs scanned:</td><td class="mono num">{len(passoffs)}</td></tr>
 <tr><td class="dim">rtxserver status snapshot source:</td><td class="mono">{html.escape(snapshot.get("__source", "(none)"))}</td></tr>
 </table>
@@ -558,16 +613,16 @@ def main() -> int:
         print(f"ERROR: research dir missing at {RESEARCH_DIR}", file=sys.stderr)
         return 1
 
-    nightly = collect_nightly_phone_homes()
+    phone_homes = collect_daily_phone_homes()
+    daily_reports = collect_daily_reports()
     pe = collect_persona_engineering()
     ccp = collect_ccp_alignment()
-    pv = collect_pharmacovigilance()
-    commits = git_log_research(days=7)
+    commits = git_log_research(days=14)
     passoffs = collect_open_passoffs()
     snapshot = collect_rtxserver_status()
     loop_reports = collect_loop_reports()
 
-    html_out = render_html(nightly, pe, ccp, pv, passoffs, commits, snapshot, loop_reports)
+    html_out = render_html(phone_homes, daily_reports, pe, ccp, passoffs, commits, snapshot, loop_reports)
     OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     OUT_FILE.write_text(html_out, encoding="utf-8")
     print(f"wrote {OUT_FILE} ({len(html_out)} bytes)")
