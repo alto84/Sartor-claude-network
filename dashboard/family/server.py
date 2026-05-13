@@ -31,6 +31,15 @@ import anthropic
 _MERIDIAN_DEV = os.environ.get("MERIDIAN_DEV", "") == "1"
 _MERIDIAN_PORT = int(os.environ.get("MERIDIAN_PORT", "5055"))
 
+# Peer address config. SSH calls use the hostname (resolved by ~/.ssh/config on
+# Rocinante); ping/HTTP/URL contexts use the IP directly because the OS resolver
+# doesn't know the LAN names yet (hosts-file rollout pending — see
+# sartor/memory/projects/codebase-cleanup-2026-05-08/HOSTNAME-MIGRATION-TRACKER.md).
+# Both are env-overridable so a clone on another machine can adapt without code edits.
+# Canonical source: sartor/memory/machines/REGISTRY.yaml.
+GPUSERVER1_IP = os.environ.get("GPUSERVER1_IP", "192.168.1.199")
+GPUSERVER1_SSH_HOST = os.environ.get("GPUSERVER1_SSH_HOST", "gpuserver1")
+
 # LAN-only accept list: RFC1918 + loopback.
 _LAN_NETWORKS = [
     ipaddress.ip_network("127.0.0.0/8"),
@@ -558,12 +567,12 @@ Be warm, concise, and helpful. Use markdown formatting. When asked about family 
 
 
 def build_gpu_system_prompt() -> str:
-    return build_system_prompt() + """
+    return build_system_prompt() + f"""
 
 You also have context about the GPU server setup:
-- gpuserver1 is at 192.168.1.100 (RTX 5090, 128GB RAM, Ubuntu 22.04)
+- gpuserver1 is at {GPUSERVER1_IP} (RTX 5090, 128GB RAM, Ubuntu 22.04)
 - It runs on Vast.ai and needs to be re-listed after reboots
-- SSH access: ssh alton@192.168.1.100
+- SSH access: ssh alton@{GPUSERVER1_SSH_HOST}
 - Services: Dashboard (port 5000), Gateway API (port 5001), Safety Research (port 8000)
 """
 
@@ -787,12 +796,12 @@ async def system_status():
     try:
         if platform.system() == "Windows":
             result = subprocess.run(
-                ["ping", "-n", "1", "-w", "2000", "192.168.1.100"],
+                ["ping", "-n", "1", "-w", "2000", GPUSERVER1_IP],
                 capture_output=True, text=True, timeout=5
             )
         else:
             result = subprocess.run(
-                ["ping", "-c", "1", "-W", "2", "192.168.1.100"],
+                ["ping", "-c", "1", "-W", "2", GPUSERVER1_IP],
                 capture_output=True, text=True, timeout=5
             )
         gpu_online = result.returncode == 0
@@ -814,7 +823,7 @@ async def system_status():
         pass
 
     return {
-        "gpuserver1": {"online": gpu_online, "host": "192.168.1.100"},
+        "gpuserver1": {"online": gpu_online, "host": GPUSERVER1_IP},
         "memory_files": mem_count,
         "task_files": task_count,
         "services": {
@@ -945,13 +954,13 @@ async def links():
             {"name": "Gmail", "url": "https://mail.google.com", "icon": "mail"},
             {"name": "Google Calendar", "url": "https://calendar.google.com", "icon": "calendar"},
             {"name": "GitHub", "url": "https://github.com/alto84", "icon": "code"},
-            {"name": "Safety Dashboard", "url": "http://192.168.1.100:8000", "icon": "shield"},
+            {"name": "Safety Dashboard", "url": f"http://{GPUSERVER1_IP}:8000", "icon": "shield"},
             {"name": "Claude.ai", "url": "https://claude.ai", "icon": "brain"},
             {"name": "LinkedIn", "url": "https://www.linkedin.com", "icon": "briefcase"},
             {"name": "Weather", "url": "https://weather.gov", "icon": "cloud"},
             {"name": "AZ Internal", "url": "https://astrazeneca.net", "icon": "building"},
-            {"name": "Sartor Dashboard", "url": "http://192.168.1.100:5000", "icon": "monitor"},
-            {"name": "Gateway API", "url": "http://192.168.1.100:5001", "icon": "server"},
+            {"name": "Sartor Dashboard", "url": f"http://{GPUSERVER1_IP}:5000", "icon": "monitor"},
+            {"name": "Gateway API", "url": f"http://{GPUSERVER1_IP}:5001", "icon": "server"},
         ]
     }
 
@@ -1457,12 +1466,12 @@ async def gpu_status():
     try:
         if platform.system() == "Windows":
             ping = subprocess.run(
-                ["ping", "-n", "1", "-w", "2000", "192.168.1.100"],
+                ["ping", "-n", "1", "-w", "2000", GPUSERVER1_IP],
                 capture_output=True, text=True, timeout=5
             )
         else:
             ping = subprocess.run(
-                ["ping", "-c", "1", "-W", "2", "192.168.1.100"],
+                ["ping", "-c", "1", "-W", "2", GPUSERVER1_IP],
                 capture_output=True, text=True, timeout=5
             )
         result["online"] = ping.returncode == 0
@@ -1473,7 +1482,7 @@ async def gpu_status():
         try:
             ssh = subprocess.run(
                 ["ssh", "-o", "ConnectTimeout=3", "-o", "StrictHostKeyChecking=no",
-                 "alton@192.168.1.100", "echo ok"],
+                 f"alton@{GPUSERVER1_SSH_HOST}", "echo ok"],
                 capture_output=True, text=True, timeout=8
             )
             result["ssh"] = ssh.returncode == 0 and "ok" in ssh.stdout
@@ -1484,7 +1493,7 @@ async def gpu_status():
             for svc, port in [("dashboard", 5000), ("gateway", 5001), ("safety", 8000)]:
                 try:
                     check = subprocess.run(
-                        ["ssh", "-o", "ConnectTimeout=3", "alton@192.168.1.100",
+                        ["ssh", "-o", "ConnectTimeout=3", f"alton@{GPUSERVER1_SSH_HOST}",
                          f"curl -s -o /dev/null -w '%{{http_code}}' http://localhost:{port}/ 2>/dev/null || echo down"],
                         capture_output=True, text=True, timeout=10
                     )
@@ -1499,10 +1508,10 @@ async def gpu_status():
 @app.get("/api/gpu/rental")
 async def gpu_rental():
     """
-    Proxy data from the gpuserver1 dashboard at http://192.168.1.100:5060.
+    Proxy data from the gpuserver1 dashboard at port 5060.
     Returns rental status, GPU activity, and recent rental log for the home dashboard widget.
     """
-    base = "http://192.168.1.100:5060"
+    base = f"http://{GPUSERVER1_IP}:5060"
     out = {"online": False, "gpu": None, "vastai": None, "rentals": []}
 
     def fetch_json(path: str, timeout: int = 4):
@@ -1568,7 +1577,7 @@ async def gpu_command(body: dict):
     try:
         result = subprocess.run(
             ["ssh", "-o", "ConnectTimeout=5", "-o", "StrictHostKeyChecking=no",
-             "alton@192.168.1.100", allowed_commands[cmd_name]],
+             f"alton@{GPUSERVER1_SSH_HOST}", allowed_commands[cmd_name]],
             capture_output=True, text=True, timeout=30
         )
         return {
@@ -2205,7 +2214,7 @@ async def cron_health():
     try:
         res = subprocess.run(
             ["ssh", "-o", "ConnectTimeout=3", "-o", "StrictHostKeyChecking=no",
-             "alton@192.168.1.100", "cat /home/alton/sartor-heartbeat.json 2>/dev/null || echo null"],
+             f"alton@{GPUSERVER1_SSH_HOST}", "cat /home/alton/sartor-heartbeat.json 2>/dev/null || echo null"],
             capture_output=True, text=True, timeout=6
         )
         if res.returncode == 0 and res.stdout.strip() not in ("null", ""):
@@ -2728,10 +2737,10 @@ async def household_health():
         import time as _t
         start = _t.monotonic()
         if platform.system() == "Windows":
-            ping = subprocess.run(["ping", "-n", "1", "-w", "2000", "192.168.1.100"],
+            ping = subprocess.run(["ping", "-n", "1", "-w", "2000", GPUSERVER1_IP],
                                   capture_output=True, text=True, timeout=5)
         else:
-            ping = subprocess.run(["ping", "-c", "1", "-W", "2", "192.168.1.100"],
+            ping = subprocess.run(["ping", "-c", "1", "-W", "2", GPUSERVER1_IP],
                                   capture_output=True, text=True, timeout=5)
         result["gpuserver1"]["online"] = ping.returncode == 0
         result["network"]["gpu_ssh_ms"] = round((_t.monotonic() - start) * 1000)
@@ -2742,7 +2751,7 @@ async def household_health():
         try:
             ssh = subprocess.run(
                 ["ssh", "-o", "ConnectTimeout=5", "-o", "StrictHostKeyChecking=no",
-                 "alton@192.168.1.100", "echo ok"],
+                 f"alton@{GPUSERVER1_SSH_HOST}", "echo ok"],
                 capture_output=True, text=True, timeout=8)
             result["gpuserver1"]["ssh"] = ssh.returncode == 0 and "ok" in ssh.stdout
         except Exception:
@@ -2752,7 +2761,7 @@ async def household_health():
             # nvidia-smi
             try:
                 nv = subprocess.run(
-                    ["ssh", "-o", "ConnectTimeout=5", "alton@192.168.1.100",
+                    ["ssh", "-o", "ConnectTimeout=5", f"alton@{GPUSERVER1_SSH_HOST}",
                      "nvidia-smi --query-gpu=temperature.gpu,utilization.gpu,memory.used,memory.total,power.draw --format=csv,noheader,nounits 2>/dev/null"],
                     capture_output=True, text=True, timeout=10)
                 if nv.returncode == 0 and nv.stdout.strip():
@@ -2771,7 +2780,7 @@ async def household_health():
             # vast.ai status
             try:
                 va = subprocess.run(
-                    ["ssh", "-o", "ConnectTimeout=5", "alton@192.168.1.100",
+                    ["ssh", "-o", "ConnectTimeout=5", f"alton@{GPUSERVER1_SSH_HOST}",
                      "~/.local/bin/vastai show machines --raw 2>/dev/null | head -50"],
                     capture_output=True, text=True, timeout=10)
                 if va.returncode == 0 and va.stdout.strip():
