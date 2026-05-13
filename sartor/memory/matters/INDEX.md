@@ -1,8 +1,8 @@
 ---
 type: meta
 entity: matters-index
-updated: 2026-05-08
-updated_by: matter-tracker (initial seed, Rocinante Opus 4.7 1M)
+updated: 2026-05-12
+updated_by: Claude (Opus 4.7, 1M context)
 status: active
 tags: [meta/index, domain/tax, domain/legal]
 related: [TAXES, BUSINESS, reference_solar_project, reference_heloc, reference_anthropic_shares]
@@ -30,7 +30,8 @@ Maintained by the [[matter-tracker]] skill. Pairs with [[tax-counsel]] for IRAC 
 
 | Slug | Matter | Risk | Deadline | Last action |
 |---|---|---|---|---|
-| [anthropic-721b-investment-company](anthropic-721b-investment-company.md) | §721(b) investment-company trap on Anthropic-shares contribution | MEDIUM-HIGH | trigger-only | 2026-05-08 |
+| [anthropic-721b-investment-company](anthropic-721b-investment-company.md) | §721(b) investment-company trap on Anthropic-shares contribution | MEDIUM-HIGH | trigger-only | 2026-05-12 |
+| [anthropic-secondary-recognition-risk](anthropic-secondary-recognition-risk.md) | Anthropic 2026-05-12 unauthorized-secondary-sales warning — Hiive named, EquityZen not | MEDIUM | trigger-only | 2026-05-12 |
 | [hiive-mou-gift-tax](hiive-mou-gift-tax.md) | Hiive Anthropic-01 nominee structure §2503 gift-tax exposure | MEDIUM | TY2025 Form 709 | 2026-05-08 |
 | [469-material-participation](469-material-participation.md) | §469 material participation hours documentation | MEDIUM | continuous | 2026-05-08 |
 | [cpa-engagement-letter](cpa-engagement-letter.md) | Convert JF engagement from verbal to written | MEDIUM | next call | 2026-05-08 |
