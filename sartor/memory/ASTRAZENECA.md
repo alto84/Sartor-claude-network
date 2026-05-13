@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: ASTRAZENECA
-updated: 2026-04-10
-updated_by: Claude
+updated: 2026-05-12
+updated_by: autodream
 last_verified: 2026-04-12
 status: active
 next_review: 2026-05-01
@@ -120,3 +120,8 @@ related: [ALTON, BUSINESS, az-career]
 
 > [!fact]
 > **Fidelity AstraZeneca Q1 2026 retirement plan quarterly statement now available.** Email from Fidelity.Investments@mail.fidelity.com (Apr 17, 1:26 PM UTC): "EMMETT SARTOR ASTRAZENECA — Important information about your retirement plan is now available." Plans covered: AstraZeneca Savings and Investment Plan. This is the first quarterly statement covering Alton's tenure as Senior Medical Director, AI Innovation and Validation, Global Patient Safety (role started ~2026-03-31). Review at Fidelity NetBenefits to confirm: (1) contribution rate reflects new compensation tier ($288K–$432K base), (2) investment allocation is appropriate, (3) beneficiary designations are current. See [[family/active-todos]] for action item.
+
+## Consolidated from daily logs (2026-05-12)
+- [2026-05-10] (fact) Amazon delivered: (2026-05-09): IMENSEAS Grip Strength item
+- [2026-05-10] (fact) Amazon in transit: (ordered 2026-05-08, shipped 2026-05-09): Unicorn Terrarium (7july) + 1 more item
+- [2026-05-10] (fact) LinkedIn job alerts: (INFORMATIONAL): Biogen AMD Global Drug Safety, Sanofi Medical Head Early Pipeline, Vertex Exec MD Patient Safety — no action required unless relevant to Aneeta's career positioning

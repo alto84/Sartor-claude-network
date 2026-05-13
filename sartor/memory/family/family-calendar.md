@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-05-07
+updated: 2026-05-12
 updated_by: personal-data-gather
-run: 49
+run: 70
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -266,7 +266,7 @@ New event discovered on Family calendar (added Apr 14 by Aneeta):
 **Soccer table correction (Apr 11 entry had wrong times):**
 
 | Date | Time (ET) | Event | Source | Corrected |
-|------|-----------|-------|--------|-----------|
+|------|-----------|-------|--------|----------|
 | Sat 4/18 | **noon–1 PM** | B34 Lime vs B34 Green | Blue Sombrero | Was "1–2 PM" in Apr 11 run |
 | Sat 4/18 | **1–2 PM** | B34 Lime vs B34 Purple | Blue Sombrero | Was "2–3 PM" in Apr 11 run |
 
@@ -375,7 +375,7 @@ Two new events created today (2026-04-17) that were not in any prior run:
 > Today's live calendar API (run 14, 2026-04-24) returns `start: 2026-04-30T09:40:00-04:00, timeZone: America/New_York` = **9:40–11:00 AM ET.** This contradicts run 8 (Apr 23) which corrected it to 1:40–3:00 PM ET (`start: 2026-04-30T13:40:00, timeZone: America/New_York`). Both values use explicit timezone; neither is a UTC-naive misread. The event may have been modified between Apr 23 and Apr 24, or run 8's value was transient. **Verify directly with MKA before Apr 30.** This is a sole-parent day — being wrong by 4 hours matters. See [[vayu]] and [[active-todos]].
 >
 > | Source | Time ET |
-> |--------|---------|
+> |--------|--------|
 > | Original table | 9:40–11:00 AM |
 > | Run 8 "correction" (Apr 23) | 1:40–3:00 PM |
 > | Run 14 live API (Apr 24) | **9:40–11:00 AM** (explicit -04:00) |
@@ -434,7 +434,7 @@ Two new events created today (2026-04-17) that were not in any prior run:
 > Aneeta's calendar returned two events this run (vs "No events" in runs 13–16):
 >
 > | Date | Time ET | Event | Organizer |
-> |------|---------|-------|-----------|
+> |------|---------|-------|----------|
 > | Fri 4/24 | 1:15–1:45 PM | "chat!" (Teams) | Marco Rizzo, Biogen |
 > | Wed 4/29 | 1:30–2:00 PM | "Check-In" (Teams) | Florence Cassar, London Research CA |
 >
@@ -593,3 +593,28 @@ June lookahead:
 | Date | Time ET | Event | Source | Notes |
 |------|---------|-------|--------|-------|
 | **Mon 6/2** | **4:30 PM** | **Vasu Dance Recital** | Gmail/Kaymbu (run 49) | Miss Kelsey; first mention. Add to Google Calendar. Venue TBD — confirm with Goddard. |
+
+## Latest from gather (2026-05-11) — run 69
+
+> [!fact] TIME CORRECTION — Playdate with Livia May 17: 10:00 AM – 1:00 PM ET
+> Run 68 (2026-05-10 daily log) captured this event with wrong times (2:00–5:00 PM). Live API this run:
+> `start: 2026-05-17T10:00:00-04:00, end: 2026-05-17T13:00:00-04:00` = **10:00 AM – 1:00 PM ET.**
+> Creator: aneetasax@gmail.com. Source: Family calendar. No conflict with soccer game on May 16.
+
+Week of May 11–17 (confirmed from live API):
+
+| Date | Time ET | Event | Source | Notes |
+|------|---------|-------|--------|-------|
+| Wed 5/13 | 5:30–6:15 PM | Rec Soccer Practice (B-34 Lime) | Family cal | Anderson Park, south side near Parkside St |
+| Sat 5/16 | 12:00–1:00 PM | Vayu soccer: B34 Lime vs B34 Silver (Verdegaal & Roache) | Blue Sombrero | Brookdale Stadium South > Field 1, Brookdale Park, Montclair NJ |
+| **Sun 5/17** | **10:00 AM – 1:00 PM** | **Playdate with Livia and family** | Family cal | CORRECTED from "2:00–5:00 PM" (run 68 error); creator: Aneeta |
+
+No events on Alton primary, Aneeta, or Alton's Tasks calendars for this window.
+
+## Latest from gather (2026-05-12) — run 70
+
+New event not captured in prior runs:
+
+| Date | Time (ET) | Event | Calendar | Notes |
+|------|-----------|-------|----------|-------|
+| Mon 5/18 | 1:00–2:00 PM | Optimum fiber appointment | Primary (Alton) | Someone needs to be home. Scheduling flexibility required. |

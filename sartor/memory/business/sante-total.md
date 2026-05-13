@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-07
+updated: 2026-05-13
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -152,6 +152,14 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 > [!fact]
 > **Donor spreadsheet updated by Alison Smith as of 2026-04-30.** Alison added more donors to the spreadsheet overnight before sending the "Donors" email. No count or amount visible in snippet. This likely follows the Sergei Robinson donation (Apr 27) and possibly others. Verify updated spreadsheet totals before authorizing fund transfer.
 
+## Latest from gather (2026-05-13) — run 71
+
+> [!todo] ACTION_REQUIRED — grant proposal review (Treasurer)
+> **Barbara Weis (dye2tie@verizon.net) + Berteau — "Money for the elderly" grant proposal.** Email 2026-05-12 20:46 UTC to Alison Smith (asmi60@lsuhsc.edu, alison.annette.smith@gmail.com) and Alton. Barbara wrote: "Berteau and I wrote up his project for the elderly using the grant application Temrah and I came up with. I told him to include everything he might need, so it comes to more than we have been..." Budget exceeds prior expectations. Alton must review as Treasurer: (1) review the proposal amount, (2) determine if Sante Total has sufficient funds and board authorization for such a grant, (3) respond to Barbara/Alison. New contact surfaced: Berteau (project leader for elderly program), Temrah (wrote the grant application template used). Add to people registry when more context available.
+
+> [!deadline] 2026-05-15 (2 days) — P0
+> **2025 Form 990-N still NOT FILED.** Due 2026-05-15. Alton files directly at IRS.gov. Gross receipts under $50K for TY2025. No automatic extension without Form 8868. This deadline has been P0 since run 22 (2026-04-29). File immediately.
+
 ## Latest from gather (2026-05-06) — run 61
 
 > [!todo] ACTION_REQUIRED — Louisiana geauxBIZ alert
@@ -179,3 +187,11 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!todo] ACTION_REQUIRED — Chase donation button inquiry pending
 > Alton emailed Pavel Manrique on 2026-05-07 asking whether Chase can facilitate direct website donation acceptance to replace PayPal ("they take a cut and it adds extra steps"). Awaiting Pavel's response. If Chase can support this, it would simplify donation workflow and eliminate PayPal fees. This is distinct from the Julia Clemens PayPal program-split request (run 65).
+
+## Latest from gather (2026-05-12) — run 70
+
+> [!deadline] 2026-06-04
+> **Chase/Sante Total bank account — missing information required to avoid restriction.** Chase email 2026-05-12 14:09 UTC (Chase@notifyalert.chase.com): "We need your help - Please contact us to provide missing information before 06/04/2026, to avoid account restriction SANTE TOTAL." Account was opened only 6 days ago (2026-05-06). Almost certainly a KYC follow-up on the new business checking account. Contact: Pavel Manrique (pavel.p.manrique@chase.com, 973-783-5062), Chase Montclair branch (19 N Fullerton Ave). Do not let this lapse — account restriction would interrupt Sante Total's banking at a critical time (ongoing donations, PayPal/donation infrastructure decisions). 23 days until stated deadline; act this week while account is new and Pavel has context.
+
+> [!deadline] 2026-05-15
+> **2025 Form 990-N — DUE IN 3 DAYS (Friday May 15).** Status as of run 70: NOT FILED. No email observed confirming completion through run 70. Alton handles directly via IRS.gov tax-exempt organization search portal. Gross receipts under $50K for TY2025 — 990-N (e-Postcard) still applies. No automatic extension without separately filing Form 8868 first. P0.

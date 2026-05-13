@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-08
-updated_by: solar-project-curation (Rocinante Opus 4.7 1M) + personal-data-gather (run 67)
-run: 67
+updated: 2026-05-13
+updated_by: personal-data-gather
+run: 71
 
 status: active
 priority: p1
@@ -237,6 +237,39 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - [[family-calendar]] - Full 30-day calendar view
 - [[ALTON]] - Head of household
 
+## Latest from gather (2026-05-13) — run 71
+
+> [!deadline] 2026-05-14 (TOMORROW) — ESCALATED from run 70 (was 2 days)
+> **Hiive/Harvey AI investment — decision deadline TOMORROW.** Harvey AI: $190M ARR, $11B valuation (March 2026, Sequoia/GIC/a16z/Coatue). Offer: $37/unit, ~$12.1B implied valuation, $25K minimum. Hiive single-asset fund, no mgmt fees or carry. Decision only — no action if passing. Contact: opportunities@hiive.com.
+
+> [!todo] ACTION_REQUIRED — TODAY at 10 AM
+> **Montclair Summer Camp registration opens 2026-05-13 at 10 AM.** communitypass.net. Programs: Summer Fun Activities Camp (weekly), Co-Ed, and partner programs. Vayu (10), Vishala (8), Vasu (4) all eligible. Registration may fill quickly. Source: info@communitypass.net, 2026-05-12 20:17 UTC.
+
+> [!todo] ACTION_REQUIRED — Sante Total grant proposal review (Treasurer)
+> **Barbara Weis (dye2tie@verizon.net) + Berteau wrote up a "project for the elderly" grant proposal.** Budget "comes to more than we have been" — exceeds prior expectations. Email to Alison Smith + Alton (2026-05-12 20:46 UTC). Alton must review as Treasurer and respond. See [[business/sante-total]].
+
+> [!todo]
+> **Anysphere/Cursor.com via Hiive — 90%+ subscribed.** Separate from Harvey. Near-full — if interested, act immediately. opportunities@hiive.com. Source: 2026-05-12 18:31 UTC.
+
+> [!todo]
+> **Vasu — bring bedding sheets to Goddard on Mondays.** Lorena Castillo (Goddard) reminder: children arriving without sheets. Add to Monday morning pack list. See [[family/vasu]].
+
+> [!note] Vishala — "own your letter dress down" on 2026-05-20 (NEW)
+> New Family calendar event: all-day Wed 2026-05-20. "Vishala own your letter dress down." Plan outfit with appropriate letter (likely "V" or assigned letter — confirm with school/Vishala). See [[family/vishala]].
+
+> [!note] Calendar this week (May 13–19 confirmed)
+> - TODAY Wed 5/13: Rec Soccer Practice 5:30–6:15 PM, Anderson Park south near Parkside St
+> - TODAY Wed 5/13: MKA Theme Day (Chloe Martinez Head of School Day, Brookside)
+> - TODAY Wed 5/13: Vasu Pajama Day at Goddard
+> - Sat 5/16 12:00–1:00 PM: Vayu soccer GAME vs B34-Silver, Brookdale Park Field 1 (arrive 11:40)
+> - Sun 5/17 10:00 AM–1:00 PM: Playdate with Livia and family
+> - Mon 5/18 1:00–2:00 PM: Optimum fiber appointment (must be home)
+> - Wed 5/20: Vishala "own your letter dress down" (all day)
+> - Wed 5/20 5:30–6:15 PM: Rec Soccer Practice (B-34 Lime), Anderson Park
+
+> [!fact] MKA Conference sign-up — likely RESOLVED (per run 69 log)
+> Run 69 log (2026-05-11) reports: "MKA Veracross: Alton signed up for May 20 conference slot (Vayu 3:30 PM, Vishala 4:00 PM)." If Veracross shows sign-ups complete, prior deadline items (2026-05-15) can be closed.
+
 ## Latest from gather (2026-04-13) — run 6
 
 > [!deadline] 2026-04-15
@@ -264,64 +297,6 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!todo] Solar Inference LLC expansion idea
 > **Two-tier compute rental business.** Tier 1: continue the current vast.ai hosting with gpuserver1 RTX 5090 (and soon the dual PRO 6000 Blackwell workstation). Tier 2: occasionally rent **powerful external machines by the hour** (H100/H200/B200 clusters from Lambda, CoreWeave, RunPod, Together, or vast.ai itself) to train very powerful models that push beyond the limits of the household's own hardware. The business model is a bridge: customers who need occasional frontier-scale training runs but can't justify owning the hardware pay Solar Inference LLC to broker the rental + run the training + deliver the trained weights. Margin comes from (a) markup on the rented compute, (b) operational expertise in distributed training, (c) handling the research-grade tooling. Flag for weekend planning. Worth sketching: target customer profile, initial pricing model, what training runs are feasible (LoRA fine-tunes of frontier open-weight models, full pretraining on smaller sizes, continued-pretraining passes, RLHF/DPO runs at scale). Related to the existing Solar Inference business entity and the dual PRO 6000 workstation order. Alton captured the idea 2026-04-11 during the overnight mini-lab session.
 
-## Latest from gather (2026-04-10)
-
-> [!deadline] 2026-04-17
-> **Vayu Ellis Island physical form — teacher escalated TODAY.** Debra Van Eerde (dvaneerde@mka.org) sent a second email on Apr 10 explicitly naming Apr 17 as the trip date and requesting the completed physical be emailed to her. Correct blank form was attached to the Apr 2 thread. Email physical to dvaneerde@mka.org. Seven days remaining.
-
-> [!todo]
-> **CSA workshift registration — NEW (Apr 10).** Alton and Aneeta are paid up for the Bloomfield-Montclair CSA but have not signed up for their required 4 work shifts. CSA coordinator Enid Melville contacted Ilan Grunwald, who forwarded to Alton today. Note: Aneeta's Gmail is showing as invalid in the CSA system — verify the correct email address. Register using the link in the Grunwald email thread.
-
-> [!todo]
-> **Summit Health patient statement — payment due.** Email arrived Apr 10 from Summit Health patient portal. Amount not visible in email snippet. Check portal to confirm amount and pay.
-
-> [!warning]
-> **Apr 17 parent coverage conflict.** Vishala Dance Concert at MKA (8:00-10:00 AM) AND Vayu's Ellis Island class trip both fall on Apr 17. Coordinate with Aneeta now.
-
-## Latest from gather (2026-04-11)
-
-> [!deadline] 2026-04-13
-> **Goddard summer forms due Monday (2 days).** Samantha Ramsden confirmed in weekly announcement. Check that Vasu's enrollment is complete and all required health/permission forms are submitted to The Goddard School. See [[vasu]].
-
-> [!warning]
-> **Apr 18 conflict: Vayu soccer vs Rafi's birthday party.** Blue Sombrero shows two back-to-back B-34 Lime games at Brookdale Park: 1–2 PM and 2–3 PM. Rafi's birthday party (Yankees game) is the same day 1–4 PM. Direct overlap. Decide which takes priority and coordinate logistics. See [[vayu]].
-
-> [!note]
-> **Alton's CSA workshift form submitted** (Google Forms receipt received Apr 10). Aneeta still needs to register — her Gmail is showing as invalid in the CSA system. Contact Ilan Grunwald or Enid Melville (enidmelville@gmail.com) to fix Aneeta's email and complete her workshift signup.
-
-## Latest from gather (2026-04-11) run 10
-
-> [!fact]
-> **RESOLVED: Vayu Ellis Island physical form sent Apr 10.** Alton emailed signed form to Debra Van Eerde (dvaneerde@mka.org) at 9:35 PM EDT. Subject: "Re: Attached Image." Aneeta CC'd. The blocker that opened 2026-02-18 is now closed pending MKA receipt confirmation. See [[vayu]].
-
-> [!fact]
-> **RESOLVED: Vishala MKA physical form sent Apr 10.** Alton emailed signed form to Rachael Masters (rmasters@mka.org) at 9:25 PM EDT. Subject: "Re: Vishala- Physical Form." Aneeta CC'd. Todo from Apr 8 is closed. See [[vishala]].
-
-> [!todo] 2026-05-30
-> **Gym Day 2026 registration open** — Tumble Zone LLC email Apr 11. Saturday May 30, $25, includes 2 makeup classes. Sibling discount $5 off. Relevant if Vishala is still enrolled in gymnastics (spring session through June 4). Register via Tumble Zone portal.
-
-> [!fact]
-> **myHomeIQ April report: home value at 85 Stonebridge increased** — Email from Angelica Tanti (Angelica Tanti/tryhomeiq.com), Apr 11. Value updated "more than the previous month." FINANCIAL signal; review report for context.
-
-## URGENT -- 2026-04-14 (TODAY)
-
-> [!deadline] 2026-04-14 TODAY
-> **Backdoor Roth conversions for Alton + Aneeta.** $7,000 Traditional IRA contributions were made for TY2025 before the April 16 deadline. Both need to be **converted to Roth IRAs TODAY** to complete the backdoor Roth strategy. Leaving the funds in Traditional past today risks: (a) accidental deductible-contribution treatment, (b) growth that becomes taxable on eventual conversion, (c) pro-rata rule entanglement if other pre-tax IRA balances exist.
->
-> **Action steps (Fidelity, per TAXES.md line 103):**
-> 1. Log into Fidelity. Confirm $7,000 sitting in Alton's Traditional IRA (TY2025 contribution).
-> 2. Initiate Roth conversion of the full $7,000. Same-day conversion is the clean path.
-> 3. Repeat for Aneeta's Fidelity Traditional IRA.
-> 4. **Pro-rata check:** Both individuals' pre-tax IRA balances must be $0 at year-end for the conversion to be non-taxable. If either of you has a rollover IRA, SEP-IRA, or SIMPLE IRA with pre-tax money, the conversion becomes partially taxable per the IRS pro-rata rule. Flag to Jonathan Francis if unsure.
-> 5. Save conversion confirmation emails -- required for Form 8606.
->
-> **Tax reporting (Jonathan handles):**
-> - Form 8606 for each of you -- reports nondeductible Traditional IRA contribution (TY2025) + the conversion (TY2026).
-> - 1099-R for the conversion arrives from Fidelity in early 2027 (for TY2026 filing).
-> - Basis: $7,000 nondeductible basis added to each person's Form 8606 line 2.
->
-> **Why today:** Delaying lets the $7,000 generate investment gains in the Traditional IRA, which would be taxable when converted. Same-day conversion = zero gain = zero tax.
-
 ## Latest from gather (2026-04-14)
 
 > [!fact]
@@ -339,564 +314,21 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!todo]
 > **Solar engineering plan meeting: awaiting Lucent response.** Alton emailed Niko Markanovic, Doug Paige, and Audrey Vera at Lucent Energy Apr 13 to schedule a meeting. No reply as of Apr 14. Follow up if no response by Apr 16. See [[business/solar-inference]].
 
-## Latest from gather (2026-04-14) run 2
-
-> [!fact]
-> **Chase Sapphire Reserve replacement card SHIPPED.** Email received Apr 13 ~8:47 PM ET: card is now in transit. Prior status was "replacement requested" (Apr 13 fraud alert). Expected delivery Apr 14-15. Action: when card arrives, update all recurring autopayments linked to old card ending 9425. Do NOT wait -- audit autopayments now so you're ready on delivery.
-
-## History
-
-- 2026-04-09: Initial creation from Gmail+Calendar harvest. Surfaced 9 urgent items and 5 blind spots.
-- 2026-04-10: Updated via personal-data-gather (first live MCP run). Added: Ellis Island physical form escalation, CSA workshift registration, Summit Health payment, Apr 17 coverage conflict.
-- 2026-04-11: Updated via personal-data-gather run 6. Added: Goddard summer forms deadline (Apr 13), Apr 18 soccer/party conflict, CSA registration status update.
-- 2026-04-11: Updated via personal-data-gather run 10. Resolved: Vayu Ellis Island form (sent Apr 10), Vishala physical form (sent Apr 10). Added: Gym Day registration, myHomeIQ report.
-- 2026-04-12: Updated via personal-data-gather run 1. Escalated Goddard forms to 1-day deadline; today's logistics noted.
-- 2026-04-13: Updated via personal-data-gather run 4. Chase Sapphire card replacement in progress (resolves fraud alert from run 2); autopay update action opened.
-- 2026-04-14: Updated via personal-data-gather run 2. Chase card shipped confirmed; Chewy delivery arriving today.
-- 2026-04-21: Updated via personal-data-gather run 1. Added: Newegg delivery security flag; GitHub Claude permissions; Espervia geo intel inquiry; Hiive/Kalshi Apr 30 deadline; Pool registration Apr 27; Apr 25 conflict and Apr 22 triple-event confirmed via live calendar pull.
-
-## Latest from gather (2026-04-14) — run 2
-
-> [!fact]
-> **Chase Sapphire Reserve replacement card SHIPPED.** Email received Apr 13 8:47 PM ET: "E, your new Chase Sapphire Reserve® card has shipped." Card (replacement for fraud-flagged card ending 9425) is confirmed in transit. Expected 1-2 business days from Apr 13 — likely arriving today (Apr 14) or tomorrow (Apr 15). When it arrives: update all autopayments and recurring charges tied to old card ending 9425.
-
-> [!fact]
-> **Chewy.com delivery arriving today (Apr 14).** FedEx tracking 518226340069, window 9:30 AM–1:30 PM ET. This is from Chewy Rx order #5132136807 placed Apr 12 — almost certainly Loki's chlorambucil oral liquid 4mg/mL. If confirmed as chlorambucil on delivery, the "Reorder Loki's chlorambucil" todo above can be closed. See [[family/vasu]] (Loki is household cat, not Vasu's item — tracked here for convenience).
-
-> [!note]
-> **Blue Sombrero Apr 18 games: opponent teams confirmed.**
-> - 1:00–2:00 PM: B34 Lime vs B34 Shock (Gately & Kothari). Brookdale Stadium South, Field 1.
-> - 2:00–3:00 PM: B34 Lime vs B34 Charcoal (Pliego). Same location.
-> The Rafi party vs soccer conflict remains unresolved. See [[vayu]].
-
-## Latest from gather (2026-04-12)
-
-> [!deadline] 2026-04-13
-> **Goddard summer forms due TOMORROW.** Escalated: was 2 days away (Apr 11), now 1 day. Confirm Vasu's enrollment and submit any missing health/permission forms to The Goddard School before Monday. See [[family/vasu]].
-
-> [!note] TODAY 2026-04-12
-> **Zoe's Birthday — Sky Zone, 77 Willowbrook Blvd, Wayne NJ, 3:00–5:00 PM.** Depart Montclair by ~2:15 PM. Family calendar event, Aneeta created.
-
-## Latest from gather (2026-04-12) run 5
-
-> [!todo]
-> **CAQH Reattestation Required** — Email received Apr 12 8:32 AM from CAQH (marcom@caqh.org). Alton's CAQH ProView provider profile requires reattestation; expired profiles may affect credentialing. Action: log in to proview.caqh.org and complete reattestation. No explicit deadline but "expired" language is urgent — affects insurance reimbursements and hospital privileges. See [[ALTON]].
-
-> [!fact]
-> **Chewy Rx order #5132136807 placed** (Apr 12 12:28 PM, rx@chewy.com). Prescription Chewy order being prepared. Most likely Loki's chlorambucil (oral liquid 4mg/mL — the active todo flagged this as running low). Confirm item when order ships/delivers. If confirmed as chlorambucil, the "Reorder Loki's chlorambucil" todo can be closed.
-
-## Latest from gather (2026-04-13)
-
-> [!todo] TODAY 2026-04-13
-> **Band instrument: Vayu must have it at school today.** Paul Murphy (MKA band teacher) sent reminder Apr 12 10:44 PM — special schedule Monday requires band rehearsal. Aneeta added calendar event. Must be packed before school drop-off. See [[family/vayu]].
-
-> [!deadline] 2026-04-13
-> **Goddard summer forms DUE TODAY.** Samantha Ramsden's confirmed deadline. Confirm Vasu's enrollment status and all required health/permission forms submitted. Has been escalating since Apr 11. See [[family/vasu]].
-
-> [!warning]
-> **DATA CORRECTION — Rafi's party April 18.** Prior entries recorded party as 1:00–4:00 PM. Actual calendar: drop-off by **11:45 AM**, end **5:45 PM** (Yankees game, Bronx). Soccer double-header is at Brookdale Park, Montclair, 1:00–3:00 PM. Logistically incompatible — cannot be in the Bronx by 11:45 and Montclair by 1:00. Decision needed now. See [[family/vayu]].
-
-## Latest from gather (2026-04-13) run 4
-
-> [!fact]
-> **Chase Sapphire card ending 9425: replacement card requested (2026-04-13 ~8:16 AM ET).** Chase sent confirmation "You requested a new card" after the fraud alert for $938.25 Newegg charge (flagged Apr 13, 1:45 AM UTC). Prior ACTION_REQUIRED (respond to fraud alert) is RESOLVED. New card arrives 1-2 business days. Action needed when card arrives: update any recurring autopayments tied to old card ending 9425.
-
-> [!todo]
-> **Review and update autopayments on Chase Sapphire (...9425) when replacement card arrives.** Card is being replaced after fraud alert (Apr 13). Any subscriptions or autopays on the old card will fail. Review known recurring charges and update with new card number.
-
-## Latest from gather (2026-04-14) run 3
-
-> [!deadline] 2026-04-14 EOD — MOST URGENT ITEM TODAY
-> **Reply to Jonathan Francis NOW: authorize $18K tax extension payment debit.**
->
-> JF emailed this morning (Apr 14, 05:58 AM UTC) confirming extension payments: **$15,000 to IRS + $3,000 to NJ = $18,000 total.** He is asking: "Can I set these payments up to be debited from your checking account Wednesday?"
->
-> Wednesday = April 15 = tomorrow = the filing deadline.
->
-> **You must reply to jf@francis-cpa.com today** to either:
-> - (A) Authorize the full $18K debit from checking, OR
-> - (B) Authorize a lower amount if you're confident Solar Inference LLC losses will reduce the final tax liability (JF's words: "which should throw off some losses")
->
-> No reply by EOD today = payment not set up = potential underpayment penalty on Apr 15.
->
-> Extension strategy (Form 4868) is now confirmed — the 1040 is NOT being filed today. Final 1040 due Oct 15, 2026. See [[TAXES]] and [[people/jonathan-francis]].
-
-## Latest from gather (2026-04-14) run 5
-
-> [!warning] SCHEDULE CHANGE — Apr 18 Soccer
-> **B-34 Lime double-header RESCHEDULED: now noon and 1 PM** (was 1–2 PM and 2–3 PM). Coach Keith Gormley email (11:44 AM ET, Apr 14). Blue Sombrero sent 2 cancel + 2 reschedule notifications confirming the change. New schedule:
-> - Game 1: **12:00–1:00 PM**, Brookdale Stadium South, Field 1
-> - Game 2: **1:00–2:00 PM**, same location
->
-> **Conflict is now WORSE.** Rafi's party drop-off is 11:45 AM at Yankees (Bronx). Soccer games START at noon. Both require departure ~11:15–11:30 AM from Montclair in opposite directions. Splitting Alton and Aneeta is the only path: one covers Yankees drop-off, one covers soccer. Decide now — Apr 18 is 4 days away.
-
-> [!fact]
-> **Tax thread resolution: ACTION_REQUIRED from run 3 is FULLY RESOLVED.** Alton authorized the $18K debit implicitly at 07:59 AM ET. JF explained the increase (wages up $160K). Alton asked about LLC deductions; JF agreed to pass through 2025 LLC stuff. Debit scheduled for Wednesday Apr 15. No further action needed today. See [[TAXES]] and [[people/jonathan-francis]].
-
-> [!note]
-> **Alton drove to NYC today (Apr 14).** SpotHero parking reservation confirmed: 515 W 36th St (Midtown), 9 AM–9 PM, Tesla Model X (N55UDX). Commuted by car today, not NJ Transit.
-
-## Latest from gather (2026-04-14) run 6
-
-> [!todo] ACTION_REQUIRED — reply to MKA teacher today
-> **Vayu math difficulty: teacher Roshni Shah reached out at 2:15 PM ET.** She is Vayu's Grade 4 teacher and Fourth Grade Dean (rshah@mka.org). Vayu is struggling with the partial quotients division strategy. She has been providing one-on-one support in class and sent supplemental practice worksheets (2 PNG files attached to the email). Email went to both Alton and Aneeta; CC: Deborah Gordon (dgordon@mka.org).
->
-> **Actions:** (1) Reply to rshah@mka.org. (2) Download the attached worksheets and practice with Vayu at home. (3) Coordinate with Aneeta on next steps.
->
-> See [[vayu]] for context on Vayu's current ADHD/learning support situation.
-
-> [!fact]
-> **Power Mac LLC electrical: confirmed April 28, 8-9 AM arrival.** Ilija Trajceski (info@power-mac.net) replied today. May have earlier availability — he'll reach out if a slot opens. Will coordinate with Pete Berman. Overlaps with Berman Home Systems WiFi install (Apr 27-29). See [[business/solar-inference]].
-
-> [!note]
-> **Blue Sombrero calendar updated (Apr 18 opponents corrected).** Calendar refreshed 1:19 PM ET today. New opponents:
-> - Game 1 noon–1 PM: B34 Lime vs B34 Green (Boudreau & Rastogi)
-> - Game 2 1–2 PM: B34 Lime vs B34 Purple (Lac & Karacas)
-> Prior opponent data (Shock, Charcoal) was stale. Conflict with Rafi's party still unresolved.
-
-## Latest from gather (2026-04-15) run 3
-
-> [!note] 2026-04-28
-> **Dual-contractor day: Power Mac LLC + Berman Home Systems.** Power Mac LLC (Ilija Trajceski, info@power-mac.net) confirmed 8–9 AM arrival for home theater repairs. Berman Home Systems wifi install is a 3-day project (Apr 27–29), techs arrive 9 AM each day. Both contractors on the same day. If Power Mac runs past 9 AM, they will be concurrent. Coordinate with Pete Berman and Ilija Trajceski to confirm sequencing. No action needed today — flag before Apr 27.
-
-## Latest from gather (2026-04-15)
-
-> [!deadline] TODAY 2026-04-15
-> **PAMKA Social tickets close TODAY.** First flagged Apr 13 run 6. No purchase confirmation email found through today's scan. Both Vayu (4th grade) and Vishala (3rd grade) in scope. Contact PAMKA before end of day.
-
-> [!fact]
-> **Loki's chlorambucil DELIVERED.** Chewy order #5132136807 confirmed delivered (service@chewy.com, Apr 14). This was the Rx prescription order placed Apr 12. The "Reorder Loki's chlorambucil" todo above can be CLOSED pending physical item confirmation.
-
-> [!todo]
-> **Goddard parking garage closed Apr 20 and Apr 21.** Alissa DelConte (Goddard, Apr 14): "the 1 Seymour Street parking garage will be closed from 7 am to 5 pm on Monday, 4/20/26, and Tuesday" [4/21]. Find alternate parking for Vasu drop-off both days. See [[family/vasu]].
-
-> [!warning] NEW — Apr 22 three-event evening
-> **Triple-event conflict: Wednesday April 22.** Three events for two children in a 3-hour window:
-> - 4:20–5:20 PM: Vasu Recycling Costume Parade (Goddard, "Recycled Runway")
-> - 5:30–6:15 PM: Vayu Rec Soccer Practice (Anderson Park)
-> - 6:30–7:30 PM: **Vayu Band Concert (MKA)** — NEW, added to Family calendar Apr 14
->
-> Gaps: 10 min between parade and practice (different locations), 15 min between practice and concert (different locations). Requires split parent coverage. Band concert is highest-stakes; soccer practice is most skippable. Plan now. See [[family/vayu]].
-
-> [!todo]
-> **Tumble Zone Summer Gymnastics Camp — enrollment decision.** Registration open (Tumble Zone LLC email Apr 14). 9 weeks, June 22–Aug 20, Mon-Thu, $50/day or $180/week, age 5+. Eligible: Vishala (8) and Vayu (10). Vasu (4) under minimum age. Separate from the May 30 Gym Day event. Decide whether to register either or both children.
-
-> [!note]
-> **Tax debit executing today.** $18,000 ($15K IRS + $3K NJ) authorized by Alton Apr 14, scheduled by Jonathan Francis for April 15 debit. Verify in checking account. See [[TAXES]] and [[people/jonathan-francis]].
-
-## Latest from gather (2026-04-15) run 5
-
-> [!todo] ACTION_REQUIRED — FRIDAY MORNING 2026-04-17
-> **Pack lunch for Vayu — Ellis Island field trip.** 4th grade parent email (eduwende@gmail.com, Apr 15): "Please make sure to send your child to school with a packed lunch." Physical cleared in Magnus Health (Apr 13). Packed lunch is the only remaining action before the trip. See [[family/vayu]].
-
-> [!warning] VERIFY BEFORE FRIDAY
-> **Vishala dance concert time discrepancy — 8:15 AM vs noon–2 PM.** MKA teacher Kristen Weaver emailed today (Apr 15): "The third grade dance concert is this Friday! The concert is part of our regular Friday assembly. We'll start at 8:15 and hopefully be done by 9." Family calendar shows the event at noon–2 PM (run 2 today corrected prior 8 AM entries to noon based on calendar). Email from the teacher is more authoritative than the calendar entry. Confirm the correct time with Aneeta before Friday — the Apr 17 coverage plan (dance concert vs Vayu's Ellis Island trip) depends on this. See [[family/vishala]].
-
-> [!todo]
-> **HITLAB Innovators Summit — accept or decline.** Jerry Antimano via LinkedIn (Apr 15): "I'm reaching out to invite you to the HITLAB Innovators Summit (May 5–7, NYC) and to participate in a small, peer-led executive roundtable during the conference." HITLAB is a digital health innovation organization. Note: May 5–7 falls just after Aneeta's RRE window (Apr 29–May 3); confirm she is back before committing. See [[ALTON]].
-
-## Latest from gather (2026-04-16)
-
-> [!fact]
-> **RESOLVED: Vishala dance concert time discrepancy.** Calendar pull Apr 16 confirms 8:00 AM start (`2026-04-17T08:00:00-04:00`). Teacher Kristen Weaver email (Apr 15) says "8:15 and hopefully done by 9." Both agree. The `[!warning] VERIFY BEFORE FRIDAY` entry below is resolved. Coverage plan: Vishala concert at MKA 8:15 AM Friday assembly. Same school as Vayu's Ellis Island departure. Parent needed at concert; Vayu needs packed lunch. See [[family/vishala]].
-
-> [!todo]
-> **Summit Health patient balance — follow up.** New statement notice received Apr 15 for "Emmett" (alto84@gmail.com). Prior flag from Apr 10 (patient portal statement) has not been resolved. Balance amount gated behind portal login. Go to Summit Health patient portal and pay. This is the second notice.
-
-## Latest from gather (2026-04-15) run 6
-
-> [!warning] STREP EXPOSURE — Vasu (Goddard, Apr 15)
-> **A child in Vasu's Goddard preschool class was diagnosed with strep A today.** Child was last in class Apr 14. Director Alissa DelConte notified families at 4:36 PM ET. Monitor Vasu for fever, sore throat, difficulty swallowing over the next 2-5 days. If symptoms develop, contact Tribeca Pediatrics before sending to school. See [[family/vasu]].
-
-## Latest from gather (2026-04-16) — run 2
-
-> [!todo]
-> **Espervia paid advisory — accept or decline.** Felix Parker (felix.p@espervia.com) requested paid interview on "Rare Disease Payer Insights" (Apr 15 5:07 PM PDT). Conducting study on impact of high-cost therapies on healthcare payer decision-making; looking for senior healthcare payer decision-makers. This is a third distinct paid advisory inquiry this week (after Guidepoint / Yasmin Goodman and Zintro). Espervia is a different organization. See [[ALTON]] for advisory opportunity log.
-
-## Latest from gather (2026-04-16) — run 3
-
-> [!blocker] 2026-04-16
-> **Chimney damage — stay away from odd-side garden.** Christopher Barr (chrisbarr4537@gmail.com) emailed all building neighbors at 08:14 ET: front odd-side chimney is damaged, bricks dislodged onto roof. Instruction: avoid the odd-side garden area until resolved. Contact building management or contractor to assess structural safety and repair scope. Aneeta and Alton both included on the email chain.
-
-## Latest from gather (2026-04-17) run 4
-
-> [!deadline] 2026-05-17
-> **Disney dining: respond to Nicol Stevenson before May 17.** Nicol Stevenson (n.stevenson@magicalvacationplanner.com, +1 412-215-2423), the group's travel agent at Magical Vacation Planner, emailed Apr 17 about Disneyland dining. She is offering to book all Advanced Dining Reservations (ADRs). The 60-day ADR window for the July 16-19 trip opens May 17 — she needs preferences **before that date** or popular venues will be unavailable. Tell her: (a) whether Sartors want character dining (Plaza Inn Minnie breakfast or Storyteller's Mickey breakfast recommended given Vasu's age 4), (b) Blue Bayou Saturday confirmation, (c) DTF Thursday headcount (5 people: 2 adults, 3 kids ages 10, 8, 4). See [[family/disney-july-2026]].
-
-> [!note]
-> **Aneeta career call Monday Apr 20, 2–2:30 PM ET.** Hashan Alwis (hashan@acepartners.com, ACE Partners) created a Teams meeting on Aneeta's calendar today re: "MD Role." Appears to be a Medical Director recruiting call. For awareness only — no action needed from Alton unless Aneeta raises it. See [[family/family-calendar]].
-
-## Latest from gather (2026-04-17) — run 6
-
-> [!note]
-> **Goddard week of April 20-24 schedule.** Samantha Ramsden (Goddard) sent weekly preview Apr 17: Monday April 20 has Soccer AND School Earth Day activities. Vasu's current lesson theme: "How does weather affect where we live?" (weather unit). Reminder: Goddard parking garage at 1 Seymour St is closed April 20-21 — alternate parking needed for drop-off both days. See [[family/vasu]].
-
-> [!fact]
-> **MKA Dean of Student Life Kelley Arau leaving end of year.** School announcement sent Apr 17. She is leaving to take a leadership role at the Berkeley School. No parent action required. Affects Vayu and Vishala's school community. See [[FAMILY]].
-
-## Latest from gather (2026-04-17)
-
-> [!fact]
-> **Chimney repair update: Chris Barr is handling.** Mengyao Zhao (zhaomengyao@gmail.com) replied to the chimney thread Apr 16 12:03 PM ET: "Thanks a lot for taking care of this, Chris!" addressed to Christopher Barr. Building-wide CC (14 neighbors including Alton + Aneeta). Chris is the point person managing the repair. The `[!blocker]` above is PARTIALLY RESOLVED — repair is being handled. Continue to avoid odd-side garden until confirmed safe. No action required from Alton unless Chris asks.
-
-## Latest from gather (2026-04-18)
-
-> [!fact]
-> **NEW: Vayu soccer game Apr 25 Sat 11 AM–12 PM ET.** Blue Sombrero calendar updated. B34 Purple vs B34 Lime, Brookdale Park Field 1. Was not in any prior run.
-
-> [!fact]
-> **Cougar pride day time correction: 3–7 PM ET (was 11 AM–3 PM in prior notes).** Raw calendar confirms `2026-04-25T15:00:00-04:00`. Soccer (11 AM–12 PM) and Cougar pride day (3–7 PM) do NOT conflict. Apr 25 calendar entries above that say "11:00-15:00 Cougar pride day" are incorrect — actual event is 3-7 PM.
-
-> [!note]
-> **All 4 prior ACTION_REQUIRED items remain open:** (1) Mike Silva reply, (2) Guidepoint accept/decline (Yasmin Goodman, 3rd contact), (3) EquityZen catch-up (Georgia Edwards), (4) Disney ADR dining — respond to Nicol Stevenson before May 17.
-
-> [!todo] ACTION_REQUIRED — reply to Mike Silva within 48 hours
-> **Mike Silva (AcrossCap) — post-meeting follow-up.** He emailed Apr 16 confirming the meeting went well. Discussed AI bottlenecks and trajectory. Warm networking contact in AI/capital space. Reply to mike@acrosscap.com. See [[people/mike-silva]] and [[ALTON]].
-
-> [!todo] ACTION_REQUIRED — time-sensitive
-> **Guidepoint Clinical Trial Technology Solutions — accept or decline.** Yasmin Goodman (ygoodman@guidepointglobal.com) sent formal "Please Accept or Decline" email Apr 16. First inquiry Apr 10 had no response. This is a second contact — inaction = implicit decline. Reply to ygoodman@guidepointglobal.com. Separate from Valerie Villareal's Pediatric Low-Grade Glioma Market inquiry (#1718071). See [[ALTON]].
-
-> [!todo]
-> **EquityZen catch-up — schedule or decline.** Georgia Edwards (georgia.edwards@equityzen.com) requested a meeting next week to discuss pre-IPO companies. EquityZen is where Scale AI (SCAI) pre-IPO was previously flagged. FINANCIAL signal. Reply to georgia.edwards@equityzen.com. See [[ALTON]].
-
-## Latest from gather (2026-04-18) — run 3
-
-> [!todo] ACTION_REQUIRED — decide before Apr 25
-> **Cougar Pride Day volunteers needed.** MKA primary school parent VP (pamkaprimaryschoolvp@gmail.com, Apr 18 8 AM ET) sent school-wide volunteer request for Cougar Pride Day (Apr 25, 3–7 PM). Needs help with ticket sales and setup. Reply to the email or sign up. See [[family/family-calendar]].
-
-> [!todo] ACTION_REQUIRED — financial review
-> **Biogen Inc. Securities Litigation — class action notice received.** National Financial Services LLC (Fidelity, id@proxyvote.com, Apr 18 6 AM ET) sent proxy/litigation notification for BIOGEN INC. SECURITIES LITIGATION. Alton holds BIOGEN shares in Fidelity brokerage. Review at proxyvote.com and decide whether to participate. No urgent deadline stated but notice should be read.
-
-> [!note]
-> **Olivia Murgo summer soccer camp — "MONTCLAIR Be Excellent!"** (olivia.murgo@gmail.com, Apr 17). Summer pre-season training for Montclair soccer players, age groups advancing. Informational; decide whether to enroll Vayu. See [[family/vayu]].
-
-> [!warning] APR 24 TIME CORRECTIONS — update your plan
-> **Two events on April 24 have incorrect times in prior calendar notes:**
-> - **Vishala spring concert**: is **12:00 PM – 2:00 PM ET** (NOT 8:00–10:00 AM as previously logged). Raw calendar: `2026-04-24T12:00:00` America/New_York (no Z = local noon). Prior runs incorrectly treated local time as UTC and subtracted 4h.
-> - **Women's center dinner**: is **6:00–7:00 PM ET** (NOT 10:00–11:00 PM). Raw calendar: `2026-04-24T22:00:00Z` (UTC 22:00 = 6 PM ET). Prior run logged as 10 PM by ignoring the Z.
->
-> Apr 24 corrected schedule: Vishala concert noon–2 PM; Women's center dinner 6–7 PM. No conflict. See [[family/vishala]] and [[family/family-calendar]].
-
-## Latest from gather (2026-04-18) — run 2
-
-> [!todo] ACTION_REQUIRED — financial review
-> **Fidelity AZ Q1 2026 quarterly statement available.** Email Apr 17 from Fidelity.Investments@mail.fidelity.com: Q1 2026 statement for the AstraZeneca Savings and Investment Plan is ready. Review at Fidelity NetBenefits. This is the first full quarter as Senior Medical Director (role started ~Mar 31, 2026) — confirm payroll contribution rate reflects new role/compensation tier, verify investment allocation, check beneficiary designations. See [[ASTRAZENECA]].
-
-> [!note]
-> **Mortgage document center notification (Cenlar account 1510, 85 Stonebridge).** Email Apr 18 (CentralLoanAdministrationReporting@loanadministration.com): new document available at loanadministration.com → Documents tab. Likely related to Apr 16 property tax escrow disbursement confirmed in run 3 Apr 17. Review document when convenient — probably a disbursement confirmation. No urgent action unless it is a notice of deficiency or escrow shortage.
-
-## Latest from gather (2026-04-18) — run 4
-
-> [!warning] APR 24 SPRING CONCERT TIME CORRECTION — run 3 was wrong
-> **Vishala spring concert (Apr 24) is 8:00–10:00 AM ET, NOT noon–2 PM.**
->
-> Run 3 introduced an incorrect "correction" by arguing that `2026-04-24T12:00:00` with no Z suffix means local NY time = noon. Cross-referencing four other no-Z events confirms the opposite: Family calendar events are stored as UTC. Subtract 4h for EDT.
->
-> | Event | Raw value | UTC = ET |
-> |-------|-----------|----------|
-> | Recycling Parade Apr 22 | `20:20:00` | 4:20 PM ET ✓ |
-> | Soccer Practice Apr 22 | `21:30:00` | 5:30 PM ET ✓ |
-> | Band Concert Apr 22 | `22:30:00` | 6:30 PM ET ✓ |
-> | Movie Room Repairs Apr 20 | `13:00:00` | 9:00 AM ET ✓ |
-> | **Vishala spring concert** | `12:00:00` | **8:00 AM ET** |
->
-> The original 8 AM value was correct. Women's center dinner Apr 24 remains 6 PM ET (22:00 UTC). Apr 24 schedule: **spring concert 8–10 AM, Women's dinner 6–7 PM.** No conflict. See [[family/family-calendar]] and [[family/vishala]].
-
-> [!note] Newegg verification code (Apr 18 14:16 UTC)
-> Newegg emailed "480587 is your Newegg Verification Code" to alto84@gmail.com today. Context: on Apr 13 a Newegg charge ($938.25) triggered the Chase Sapphire fraud alert and card replacement. If Alton did NOT initiate this Newegg login today, the actor behind the Apr 13 fraud may still be active. Verify with Alton: did you log into Newegg on Apr 18?
-
-## Latest from gather (2026-04-19)
-
-> [!note] Cougar Pride Day sign-up link now available
-> Valerie Puryear (vpuryear3@gmail.com) sent two follow-up emails at 21:19 and 21:33 UTC Apr 18. The second ("Sorry, I forgot the link") provides the actual volunteer sign-up link. The earlier run 3 entry (pamkaprimaryschoolvp, 8 AM ET Apr 18) was the initial request; these are the follow-ups. **If Alton or Aneeta are volunteering, reply to vpuryear3@gmail.com to get the link.** Apr 25 3–7 PM. Decision needed before then. See [[family/family-calendar]].
-
-> [!note] Orders status update (Apr 18 evening)
-> - BAGAIL Outdoor Badminton Set: SHIPPED (Amazon 21:25 UTC Apr 18). Was "ordered" in run 2.
-> - WIN.MAX Swimming Goggles: DELIVERED (Amazon 22:04 UTC Apr 18). Were "shipped" in run 4.
-> No action needed on either.
-
-## Latest from gather (2026-04-19) — run 4
-
-> [!deadline] 2026-05-03
-> **Ghostie FVRCP vaccine due 2026-05-03 — no appointment scheduled.** Cambridge Cat Clinic (1108 Cambridge Street, Cambridge MA 02139) sent reminder today (12:00 UTC Apr 19). FVRCP (Feline Viral Rhinotracheitis, Calicivirus, Panleukopenia) is a core cat vaccine. No overdue items in their records — only the upcoming FVRCP due May 3. **Call 617-245-0245 or book online to schedule before May 3.** Note: clinic is in Cambridge MA — confirm whether Ghosty's care has been transferred to a Montclair-area vet or whether this is the active vet of record.
-
-> [!fact]
-> **New Sante Total PayPal donation — Christina Stiles, Apr 19.** Transaction ID: 1HN1210765870815P. Received 06:23:05 CDT. Amount not visible in email snippet — verify in PayPal dashboard. Log donation and send tax receipt per [[alison-smith|Alison Smith]] pattern. See [[business/sante-total]] for donor tracking.
-
-## Latest from gather (2026-04-20) — run 2
-
-> [!todo] 2026-04-26 12:00 noon EST
-> **Wohelo Little Assembly -- online, Sunday April 26, 12:00 noon EST.** Heidi Gorton (heidi@wohelo.com) sent two emails this morning (Apr 20): a time-change notice and a date correction. Assembly is 30 minutes for 2026 Little Wohelo campers. Vishala needs to be at a computer at noon ET on Apr 26. See [[family/vishala]].
-
-## Latest from gather (2026-04-20) — run 1
-
-> [!todo] ACTION_REQUIRED — time-sensitive
-> **NEW Guidepoint consultation: AI Adoption/Tools in Biotech, CRO and Pharma.** Received Apr 19 21:56 UTC from atshela@guidepointglobal.com. Described as time-sensitive. This is a fourth distinct Guidepoint inquiry: (1) Yasmin Goodman / Clinical Trial Technology Solutions (still open), (2) Valerie Villareal / Pediatric Low-Grade Glioma Market, (3) EHS Software survey (skip). This one — AI in Biotech/CRO/Pharma — is most directly aligned with Alton's AstraZeneca AI/ML leadership role. Accept or decline. See [[ALTON]] for advisory opportunity log.
-
-> [!warning] DATA CORRECTION — Apr 25 Cougar Pride Day time
-> **Cougar Pride Day is 11:00 AM–3:00 PM ET, NOT 3–7 PM.** The Apr 18 run 1 "correction" to 3–7 PM was wrong — it misread the END time as the START time. Today's live API confirms `start: 2026-04-25T11:00:00-04:00`, `end: 2026-04-25T15:00:00-04:00`.
->
-> **This creates a real conflict on Apr 25:** Cougar Pride Day (11 AM–3 PM) overlaps directly with Vayu's soccer game at Brookdale Park (11 AM–12 PM ET, B34 Purple vs B34 Lime). Both require 11 AM presence at different locations (MKA vs Brookdale Park). Alton/Aneeta split required, or one event must yield. Prior notes that said "no conflict" between these two were incorrect.
-
-## Latest from gather (2026-04-21) — run 3
+## Latest from gather (2026-04-21) — run 1
 
 > [!deadline] 2026-05-01
 > **Hiive/Zipline opportunity — funding deadline May 1.** opportunities@mail.hiive.com: "target funding deadline is Friday, May 1st." FINANCIAL — review. Distinct from Hiive/Kalshi (Apr 30 deadline). Two separate Hiive opportunities open simultaneously. See [[ALTON]].
 
-> [!note]
-> **Care.com suggests local sitter Creuza C.** Email to alto84@gmail.com Apr 21. Relevant to open high-priority childcare need (afternoon 3–8 PM, 3 kids across 2 schools). If a Care.com account was created, review candidates there. See open "Afternoon childcare help needed" item above.
-
-> [!fact]
-> **Chase check deposit accepted Apr 20.** Account ending 8563, received 8:02 PM ET Apr 20. QuickDeposit confirmation. TY2026 financial record — no action needed.
-
-## Latest from gather (2026-04-21) — run 1
-
-> [!warning] SECURITY — Newegg delivery Apr 21
-> Newegg order #412968624 (2 items total) delivered today (Apr 21). Background: Apr 13 saw a $938.25 fraudulent Newegg charge that triggered Chase Sapphire card replacement; Apr 18 saw a Newegg verification code email (possibly unauthorized login). This delivery may be from a legitimate Alton order OR from the prior fraudulent actor. **Verify with Alton: did you order from Newegg recently? If not, change Newegg password and audit account.** See security thread above.
-
-> [!todo] ACTION_REQUIRED
-> **GitHub: Claude app requesting updated permissions.** Email received 2026-04-20 23:46 UTC from noreply@github.com. Subject: "[GitHub] Claude is requesting updated permissions." Distinct from the ChatGPT Codex Connector request flagged Apr 20 run 5. If this is a legitimate Claude Code session, approve. If not expected, decline and audit at github.com/settings/apps.
-
-> [!todo] ACTION_REQUIRED
-> **Espervia — second paid advisory inquiry.** Felix Parker (felix.p@espervia.com) sent "Paid Interview Request - Geopolitical Intelligence Needs" on Apr 20. Second inquiry from Espervia (first was Apr 15 "Rare Disease Payer Insights"). Neither has been accepted or declined. Accept or decline both in one reply.
+> [!deadline] 2026-04-30
+> **Hiive/Kalshi opportunity — funding deadline April 30.** opportunities@mail.hiive.com: "target funding deadline is Thursday, April 30th." FINANCIAL — review before then. See [[ALTON]].
 
 > [!deadline] 2026-04-27 09:00
 > **Pool Season Registration opens April 27 at 9:00 AM.** communitypass.net, "2026 Pool Memberships." Nishuane Pool weekends-only from May 23, daily starting later in season. If registering, be online at 9 AM Apr 27. Financial assistance: 973-509-4916.
 
-> [!deadline] 2026-04-30
-> **Hiive/Kalshi opportunity — funding deadline April 30.** opportunities@mail.hiive.com: "target funding deadline is Thursday, April 30th." FINANCIAL — review before then. See [[ALTON]].
-
-> [!fact]
-> **Apr 24 Vishala spring concert confirmed 8:00–10:00 AM ET.** API confirms `2026-04-24T08:00:00-04:00`. Women's center dinner same day at 6:00–7:00 PM ET. No conflict. Parent needed at MKA by 8 AM Friday Apr 24. See [[family/vishala]].
-
-> [!fact]
-> **MKA Cougar Auction opens Wednesday April 22 at 8 AM.** Sara Elwell (MKA) sent reminder Apr 20. Participate if interested.
-
-## Latest from gather (2026-04-20) — run 4
-
-> [!todo] P3
-> **MKA Capstone materials donation (Vishala, 3rd grade)** — Email from MKA 3rd grade (2026-04-20): Capstone project in full swing. Students received "PS space" to use imagination. Parents asked to donate craft/construction materials. No deadline or specific list stated. Low priority — donate if convenient. See [[vishala]].
-
-## Latest from gather (2026-04-20) — run 5
-
-> [!todo] ACTION_REQUIRED — review today
-> **GitHub: ChatGPT Codex Connector requesting updated permissions.** Email received Apr 20 from GitHub (noreply@github.com): "The GitHub App ChatGPT Codex Connector is requesting additional access to your account." Review and approve or decline at github.com. If you did not install this connector intentionally, decline and audit connected GitHub apps.
-
-> [!deadline] 2026-04-22
-> **Vasu Recycled Runway costume — prep today or tomorrow.** Goddard reminder email Apr 20 (Alissa DelConte): "Recycled Runway is Wednesday! We can't wait to see everyone's runway looks!" Event is April 22, 4:20 PM. Costume must be made from recycled materials. No costume-ready confirmation found in email. See [[family/vasu]].
-
-> [!fact]
-> **Vasu confirmed in school April 20 — full day.** Multiple Kaymbu classroom updates received: soccer practice (mini games + scoring drills), STEAM Yoga/Bubble Breathing, Technology (flashlight/headlamp exploration), Construction (new blocks/legos). Attended full day. See [[family/vasu]].
-
-## Latest from gather (2026-04-21) — run 4
-
 > [!deadline] 2026-05-17
-> **Chase credit card statement due.** Account (...8547). Statement balance: **$36,744.69**. Minimum payment due: $391.00. Auto-pay enabled (covers minimum). Review statement for unrecognized charges — note Chase Sapphire Reserve was replaced in April due to $938.25 Newegg fraud charge; account (...8547) is a separate card. Confirm auto-pay setting (minimum vs full balance) before due date.
-
-> [!todo] Priority: P2
-> **Goddard Mother's Day Celebration — Friday May 8.** Samantha Ramsden (Goddard, Vasu's teacher) sent announcement 2026-04-21. Event at Goddard for Vasu's class. Aneeta is back from RRE by May 3, so no coverage conflict. Coordinate attendance. See [[family/vasu]].
-
-> [!todo] Priority: P2
-> **MKA Fourth Grade Immigration Fest** — annual school event, letter from the fourth-grade team sent 2026-04-21 via Veracross (Pia Kutten, MKA Administrative Assistant). Likely Vayu's class. Check the letter for specific date, volunteer requests, and any material requirements.
-
-## Latest from gather (2026-04-21) — run 5
-
-> [!deadline] 2026-05-17
-> **Chase credit card statement due — second card.** Account (...7054). Statement balance: **$2,301.48**. Minimum payment: $40.00. Auto-pay enabled (covers minimum). Due 2026-05-17, same date as account (...8547) ($36,744.69). Total Chase CC exposure across both cards: **$39,046.17**. Confirm auto-pay settings on both cards before due date.
-
-> [!warning] SECURITY — Newegg account escalated
-> **Two Newegg verification codes received in 3 days.** Code received Apr 18 (first flag), then code 393010 received Apr 20 12:42 PM — suggests repeated login attempts to Newegg account. Plus: Newegg order #412968624 delivered Apr 21 (2 items). Original fraud charge was Apr 13 ($938.25 on Chase Sapphire, card replaced). Pattern of two codes + delivery after known fraud = Newegg account likely still compromised. **Action: change Newegg password immediately and audit order history.** See `daily/2026-04-21.md` security thread.
-
-> [!fact]
-> **Alton commuted to NYC by car today (Apr 21).** SpotHero parking: 35 W 33rd St Valet Garage, 8:30 AM–8:30 PM, Rental ID 121455066. NYC commute research item (switch to NJ Transit) remains open.
-## Latest from gather (2026-04-22)
-
-> [!warning] TODAY — three-event stack
-> **Apr 22 triple-event evening is happening now.** Final reminder email received this morning confirms Vayu Band Concert at 7pm (6:30pm student arrival).
-> - **4:20–5:20 PM**: Vasu Recycling Costume Parade (Goddard)
-> - **5:30–6:15 PM**: Vayu Rec Soccer Practice (Anderson Park)
-> - **6:30 PM student arrival / 7:00 PM concert**: Vayu Spring Band Concert (MKA)
->
-> Soccer ends 6:15 PM; concert arrival 6:30 PM — 15-min window. Split parent coverage is the only path. Soccer is skippable; Band concert is not. See [[family/vayu]].
-
-> [!deadline] 2026-04-28
-> **MKA Grandparents & Special Friends Day — Tuesday April 28.** Email from kflippin@mka.org (Apr 21): reminder sent to all registered guests. Overlaps with Berman install day 2 (techs arrive 9am). Confirm: are Sartor grandparents registered and attending? If so, plan logistics — Berman techs will be in the house that morning.
-
-> [!fact]
-> **RESOLVED: Perlis Clothing order #1000106032 delivered Apr 21.** ShipStation tracking confirmation received. Closes the pending FedEx delivery flagged in Apr 18 run.
-
-> [!note]
-> **All 4 prior ACTION_REQUIRED items remain open:** (1) Mike Silva reply to mike@acrosscap.com, (2) Guidepoint / Yasmin Goodman accept/decline (ygoodman@guidepointglobal.com), (3) EquityZen catch-up (georgia.edwards@equityzen.com), (4) Disney ADR — respond to Nicol Stevenson before 2026-05-17.
-
-## Latest from gather (2026-04-22) — run 3
-
-> [!warning] P0 — GPU BUSINESS: Machine 52271 OFFLINE, active client affected
-> Two vast.ai emails received this morning:
-> - **2:35 AM UTC**: automated alert — machine 52271 offline
-> - **5:27 AM UTC**: Saber (saber@contact.vast.ai), vast.ai support engineer — a rental client contacted vast.ai and is waiting for a status update
->
-> **Actions required:**
-> 1. Check gpuserver1 (192.168.1.100) — SSH or physically inspect; verify power, Kaalia daemon, Docker
-> 2. Reply to saber@contact.vast.ai with machine status for the affected client
-> 3. Once back online: verify vast.ai listing is restored and machine 52271 is listed
->
-> See [[MACHINES]] for diagnostic steps. This is a business-reputation event — a paying client is waiting.
-
-## Latest from gather (2026-04-22) — run 6
-
-> [!todo] ACTION_REQUIRED — pay promptly
-> **Venmo request: Rachelle trammel $270.00 for Vishala childcare.** Dates: 4/14, 4/16, 4/21. This is likely the regular after-school or weekend childcare provider. Pay via Venmo to @Rachelle-trammel if correct.
-
-> [!todo] ACTION_REQUIRED — watch for update
-> **Vayu soccer Apr 25 field change.** Two Blue Sombrero emails received: (1) club-wide notice that "one of our main fields this Saturday" is blocked by an Essex County event at the stadium; (2) B34-Lime team schedule updated. New game time/location not yet in email snippet. Check Blue Sombrero app or email for revised schedule before Saturday. Brookdale Park Field 1 (original venue) may be affected. See [[vayu]].
-
-> [!todo] Priority: P2
-> **Cadoo Medical PC — $765.21 balance due.** Statement received Apr 22 from noreply@tebra.com for "Emmett" (Vayu), Cadoo Medical PC (NJ). Pay via portal link in the email. No explicit due date in snippet — treat as 30-day.
-
-> [!warning] NEW CONFLICT — Sunday April 26
-> **Wohelo Little Assembly (noon ET, online, Vishala) vs Cougar Pride Day (11 AM–3 PM, Van Brunt Field MKA).** Both fall on Sunday April 26. Wohelo Assembly is 30 min, online — likely joinable via phone/tablet from the field. Decide before Sunday: will Vishala attend Cougar Pride in person and join Wohelo Assembly on a device at noon, or does one event need to yield? See [[vishala]] and [[family-calendar]].
-
-> [!fact] CALENDAR CHANGE — Cougar Pride Day moved to Sunday Apr 26
-> MKA emailed at 6:15 PM ET Apr 22: Cougar Pride Day moved from **Saturday April 25** to **Sunday April 26, 11:00 AM–3:00 PM, Van Brunt Field**. Reason: inclement weather forecast. This RESOLVES the prior Sat Apr 25 soccer-vs-Cougar-Pride conflict. The live Family calendar has not yet been updated (still shows Sat Apr 25) — treat MKA email as authoritative. See [[family-calendar]].
-
-## Latest from gather (2026-04-22) — run 4
-
-> [!todo] ACTION_REQUIRED
-> **NEW Guidepoint consultation — 5T4 ADC Programs (#1730583).** jfarenden@guidepointglobal.com, received 09:30 UTC Apr 22. Fourth active Guidepoint consultation this cycle: (1) Yasmin Goodman / Clinical Trial Technology Solutions (formal accept/decline pending), (2) Valerie Villareal / Pediatric Low-Grade Glioma Market (#1718071, Apr 13), (3) atshela / AI Adoption in Biotech/CRO/Pharma (#1720868, Apr 20). This one — 5T4 ADC Programs — is oncology/pharma (5T4 = oncofetal antigen, ADC = antibody-drug conjugate program landscape). Accept or decline. See [[ALTON]] for advisory opportunity log.
-
-## Latest from gather (2026-04-23) — run 8
-
-> [!deadline] 2026-05-01
-> **NEW: Hiive SpaceX Opportunity — review before May 1.** opportunities@mail.hiive.com (Apr 23 00:24 UTC): "Please note that the target funding deadline for this opportunity is Friday, May 1st." Subject: "SpaceX Opportunity." SpaceX is a pre-IPO private company. This is a **third distinct Hiive opportunity** this cycle: (1) Hiive/Kalshi — Apr 30, (2) Hiive/Zipline — May 1, (3) Hiive/SpaceX — May 1. All three deadlines fall within 8 days. Review at Hiive before May 1. See [[ALTON]] for investment opportunity log.
-
-> [!warning] DATA CORRECTION — Vayu spring dance concert Apr 30 is at 1:40 PM ET (NOT 9:40 AM)
-> **Live calendar API confirms `start: 2026-04-30T13:40:00, timeZone: America/New_York` = 1:40–3:00 PM ET.** Prior active-todos and family-calendar entries showed 09:40 (which incorrectly treated 13:40 as UTC). The event has an explicit America/New_York timezone, making 13:40 = 1:40 PM Eastern.
->
-> Critical for sole-parent planning: Aneeta is at RRE all day Apr 30. Alton is sole parent. Plan to leave work/school by ~1:15 PM ET to arrive at MKA by 1:30 PM. Also note: Vasu has picture day at Goddard the same day. See [[vayu]] and [[family/family-calendar]].
-
-## Latest from gather (2026-04-23) — run 7
-
-> [!deadline] 2026-04-24 08:00 AM — TOMORROW
-> **Vishala spring concert at MKA.** Parent needed by 8:00 AM Friday April 24. Confirmed from Family calendar (`2026-04-24T08:00:00-04:00`). Women's center dinner same evening 6–7 PM (no conflict with concert). See [[vishala]] and [[family-calendar]].
-
-> [!fact]
-> **Vayu soccer Apr 25 location CONFIRMED: Watchung School Field, Field 1.** Blue Sombrero calendar updated 2026-04-22T23:19:57Z. Game: B34 Purple vs B34 Lime. Time: 11:00 AM–12:00 PM ET. Venue: Watchung School Field, Field 1, North Fullerton Ave, Montclair NJ 07042. (Brookdale Park was original venue; Essex County event blocked it Apr 22.) Conflict with Cougar Pride Day (now moved to Sun Apr 26) is resolved — soccer Sat Apr 25, Cougar Pride Sun Apr 26. See [[vayu]] and [[family-calendar]].
-
-> [!fact]
-> **MyKidsSpending: Vayu's MKA lunch account funded.** Chase debited $101.75 ($100.00 deposit + $1.75 service charge) for Vayu Sartor's MKA school account at MyKidsSpending (mykidsspending.com). Account active as of 2026-04-22. INFORMATIONAL — no action needed.
-
-> [!todo] ACTION_REQUIRED — carry forward from run 6
-> **Venmo $270.00 to Rachelle trammel.** Childcare for Vishala on 4/14, 4/16, 4/21. Pay to @Rachelle-trammel on Venmo. No payment confirmation found. See [[vishala]].
-
-## Latest from gather (2026-04-23) — run 9
-
-> [!todo] ACTION_REQUIRED — FINANCIAL
-> **Town of Brookline MA Invoice #2026REQ4-7583028.** Invoice received 2026-04-23 07:06 UTC via OneClickPay/InvoiceCloud (no-reply@invoicecloud.net). Addressed to "SARTOR EMMETT ALTON + SAXENA ANEETA RANI." Card on file shown as "XX9425" (old Chase Sapphire now replaced). Sartor family is in Montclair NJ — Brookline MA connection unclear from snippet (prior address? utility account? property?). **Actions:** (1) Review invoice at InvoiceCloud to determine the account/property. (2) Confirm whether this is a legitimate obligation. (3) Update payment method from card 9425 if applicable (card was replaced Apr 13).
-
-> [!warning] DATA CORRECTION — Vayu spring dance concert time (run 8 was wrong)
-> **Vayu spring dance concert (Thu Apr 30) is at 9:40–11:00 AM ET, NOT 1:40 PM.** Run 8 "corrected" to 1:40 PM citing `2026-04-30T13:40:00`; current live API returns `2026-04-30T09:40:00-04:00` — unambiguous 9:40 AM Eastern. The base family-calendar.md also shows 09:40. Run 8's correction was wrong; the original time was right.
->
-> **Revised Apr 30 sole-parent logistics (Aneeta at RRE all day):**
-> - Concert at MKA **9:40 AM** — Alton must be at MKA before 9:30 AM. NYC commute not viable that morning.
-> - Vasu picture day at Goddard — coordinate drop-off before 9:40 AM or with Amarkanth.
-> - Consider: can the three kids be dropped at school before the concert? Vayu attends MKA so concert logistics may align with school drop-off.
-> See [[vayu]] and [[family/family-calendar]].
-
-## Latest from gather (2026-04-23) — run 11
-
-> [!warning] TODAY — Lucent Energy 85 Stonebridge meeting status UNCERTAIN
-> **Engineering plan meeting was "SCHEDULED for Thursday 2026-04-23, after 3 PM" per Apr 16 triage.** The last email in the Lucent Energy thread is Alton on Apr 17 offering "next Thursday afternoon after 3pm." No formal confirmation from Niko Markanovic (Niko@lucent-energy.com) is visible in inbox. Alton is in NYC today (SpotHero parking at 35 W 33rd St through 8:30 PM). If meeting is on-site at 85 Stonebridge, Alton needs to leave NYC by ~2 PM. Verify: (1) Did Niko confirm? (2) Is meeting remote or on-site? (3) If unconfirmed, reschedule with Lucent now.
->
-> Thread participants: Niko Markanovic (Niko@lucent-energy.com), Doug Paige (doug.paige@lucent-energy.com), Audrey Vera (audrey.vera@lucent-energy.com). See [[business/solar-inference]].
-
-> [!fact]
-> **Claude Opus 4.7 released this week.** Confirmed via Zvi Mowshowitz newsletter AI #165 (Apr 23): "This was the week of Claude Opus 4.7." Model ID: claude-opus-4-7. Research note for AI/ML tracking. See [[ASTRAZENECA]] and [[business/az-career]] for professional context.
-
-## Latest from gather (2026-04-23) — run 12
-
-> [!todo] ACTION_REQUIRED — accept or decline
-> **NEW Guidepoint consultation — Global Oncology Specialists (#1732882).** Owen Taylor (otaylor@guidepointglobal.com), received Apr 23. This is the **fifth distinct Guidepoint inquiry this cycle**: (1) Yasmin Goodman / Clinical Trial Technology Solutions (formal request pending), (2) Valerie Villareal / Pediatric Low-Grade Glioma Market (#1718071), (3) atshela / AI Adoption in Biotech/CRO/Pharma (#1720868), (4) jfarenden / 5T4 ADC Programs (#1730583). This one — Global Oncology Specialists — is a separate engagement. Accept or decline. See [[ALTON]] for advisory opportunity log.
-
-> [!todo] ACTION_REQUIRED — reply
-> **LinkedIn NYC Dinner: Human Signal & Evaluation.** Elena Poughia (hit-reply@linkedin.com) is organizing a small dinner for 10 senior operators in NYC focused on "scaling human feedback and evaluation infra." Alton is invited based on his AstraZeneca AI/ML leadership work. No event date in snippet. Reply to accept or decline. Networking; relevant to AZ AI role.
-
-> [!todo] P2 — this week
-> **Vasu Show and Tell — Letter B.** Clarissa Black (Goddard School) sent reminder today (Apr 23): this week's Show and Tell letter is B. Examples: Boat, Bell, Baby, Ball, Bear. Vasu needs to bring something starting with B to school this week. See [[family/vasu]].
-
-## Latest from gather (2026-04-24) — run 14
-
-> [!warning] VERIFY — Vayu spring dance concert Apr 30 time conflict
-> Today's live calendar API returns `start: 2026-04-30T09:40:00-04:00` = **9:40–11:00 AM ET**. This contradicts run 8's correction to 1:40 PM ET, which itself contradicted the original 9:40 AM entry. Run 9 also called the 9:40 AM reading correct. The API today uses an explicit `-04:00` offset — no UTC ambiguity. The original time (9:40 AM) appears correct. **Verify directly with MKA before Apr 30.** Apr 30 is a sole-parent day (Aneeta at RRE). Vasu also has picture day at Goddard. Alton must be at MKA by ~9:25 AM and handle Goddard drop-off beforehand. See [[vayu]] and [[family/family-calendar]].
-
-> [!note] Gmail MCP still expired — run 14
-> No new email data. 14 open items carry forward unchanged. See `data/gather-alerts.md` for ranked list.
-
-## Latest from gather (2026-04-24) — run 15
-
-> [!note] Gmail MCP still expired — run 15 (3rd consecutive cycle)
-> No new email data. 14 open ACTION_REQUIRED items carry forward unchanged. Token must be reauthorized.
-
-> [!warning] PROXIMITY — sole-parent window + installation overlap in 5 days
-> Aneeta departs for RRE on Apr 29 (returns ~May 3). Berman installation runs Apr 27–29 (technicians at home daily). On Apr 30, Alton must cover Vayu dance concert (9:40 AM, MKA — time unverified), Vasu's Goddard drop-off, and Rec Soccer practice Apr 29 5:30 PM — all without Aneeta. Verify dance concert time with MKA before Apr 30.
-
-> [!deadline] 2026-04-30 (6 days)
-> Hiive Kalshi funding deadline — no action recorded since run 8. Review and decide.
-
-## Latest from gather (2026-04-24) — run 16
-
-> [!note] Gmail MCP still expired — run 16 (4th consecutive cycle)
-> No new email data. 14 open ACTION_REQUIRED items carry forward unchanged from run 12. Gmail token reauthorization required before next run.
-
-> [!fact] DANCE CONCERT TIME SETTLED — 9:40 AM ET
-> This run's calendar API returns `2026-04-30T13:40:00Z` (Z suffix = UTC). 13:40 UTC = **9:40 AM EDT**. Prior ambiguity arose from run 8's `13:40:00` without Z (interpreted as local 1:40 PM ET). The Z-anchored reading is unambiguous. Best working answer: **Vayu spring dance concert April 30 at 9:40–11:00 AM ET.** Verify with MKA given sole-parent logistics that day (Aneeta at RRE; Vasu also has Goddard picture day). Alton must be at MKA by ~9:25 AM. See [[vayu]] and [[family/family-calendar]].
-
-## Latest from gather (2026-04-24) — run 13
-
-> [!warning] OPERATIONAL BLOCKER — Gmail MCP token expired
-> Gmail MCP returned `MCP server "Gmail" requires re-authorization (token expired)`. No new email data this cycle. All open action items carry forward from run 12. **Reauthorize Gmail MCP before the next scheduled run.** Calendar data still available (5 calendars queried successfully).
-
-> [!fact] TODAY — Vishala spring concert, MKA, 8:00–10:00 AM ET
-> Live calendar confirms the concert is today (2026-04-24). Event has occurred or is in progress as of this run. Family calendar also shows Women's center dinner tonight (6:00–7:00 PM ET, Aneeta). No calendar changes vs yesterday.
-
-> [!deadline] 2026-04-30 (6 days)
-> **Hiive Kalshi — funding deadline approaching.** Carry-forward from run 8. Six days remaining. Review and decide before April 30.
-
-> [!todo] CARRY-FORWARD — open action items (no new email data)
-> All 14 open items from run 12 remain active. See `data/gather-alerts.md` for ranked list. Key time-sensitive items:
-> - Venmo $270 to @Rachelle-trammel (Vishala childcare) — OVERDUE
-> - Hiive Kalshi: Apr 30 deadline (6 days)
-> - Hiive SpaceX + Zipline: May 1 deadlines (7 days)
-> - Lucent Energy Apr 23 meeting — status unknown
-> - Machine 52271 offline — unresolved since Apr 22
-
-## Latest from gather (2026-04-24) — run 17
-
-> [!fact] NEW — Aneeta calendar returning events (first time since runs 13–16 returned nothing)
-> Two events found on Aneeta's calendar:
-> - **Apr 24 1:15–1:45 PM ET:** "chat!" with Marco Rizzo (marco.rizzo@biogen.com, Biogen) via Teams. Already occurred.
-> - **Apr 29 1:30–2:00 PM ET:** "Check-In" with Florence Cassar (florence.cassar@londonresearch.ca, London Research CA). This is Aneeta's RRE departure day. Teams meeting so can be attended remotely; no logistical conflict.
-
-> [!warning] URGENT — Vayu spring dance concert Apr 30 time REVERTED TO 1:40 PM ET
-> Run 17 API returns `start: 2026-04-30T13:40:00-04:00` = **1:40 PM ET** (explicit EDT offset). This contradicts run 16 which had `13:40:00Z` = 9:40 AM ET, and runs 14/15 which showed `09:40:00-04:00` = 9:40 AM ET. **The raw hour digit changed from 09 (runs 14/15) to 13 (this run)** — this is not a timezone ambiguity; the event time in the calendar may have been modified. Running total: run 8 → 1:40 PM, runs 14/15/16 → 9:40 AM, run 17 → 1:40 PM. **Contact MKA directly to confirm the time. Apr 30 is 6 days away and is a sole-parent day (Aneeta at RRE).** See [[vayu]] and [[family/family-calendar]].
-
-> [!note] Gmail MCP still expired — run 17 (5th consecutive cycle)
-> No new email data. 14 open ACTION_REQUIRED items carry forward unchanged. Gmail token must be reauthorized.
-
-## Latest from gather (2026-04-24) — run 18
-
-> [!fact] RESOLUTION — Vayu spring dance concert time confirmed 9:40 AM ET
-> Run 18 returns `start: 2026-04-30T09:40:00-04:00` = 9:40 AM ET. Raw event metadata confirms `created` and `updated` timestamps are identical (`2026-04-07T10:58:50Z`) — the event has never been modified since April 7 creation. Run 17's 1:40 PM reading was a transient API anomaly; 5 of 6 runs return 9:40 AM ET. Sole-parent logistics Apr 30: Vasu Goddard drop-off + MKA arrive ~9:25 AM is tight but doable. MKA direct confirmation still recommended. See [[family/family-calendar]] and [[family/vayu]].
-
-> [!note] Gmail MCP still expired — run 18 (6th consecutive cycle)
-> No new email data. 14 open ACTION_REQUIRED items carry forward unchanged. Token reauthorization required.
+> **Disney dining: respond to Nicol Stevenson before May 17.** Nicol Stevenson (n.stevenson@magicalvacationplanner.com, +1 412-215-2423), the group's travel agent at Magical Vacation Planner, emailed Apr 17 about Disneyland dining. She is offering to book all Advanced Dining Reservations (ADRs). The 60-day ADR window for the July 16-19 trip opens May 17 — she needs preferences **before that date** or popular venues will be unavailable. Tell her: (a) whether Sartors want character dining (Plaza Inn Minnie breakfast or Storyteller's Mickey breakfast recommended given Vasu's age 4), (b) Blue Bayou Saturday confirmation, (c) DTF Thursday headcount (5 people: 2 adults, 3 kids ages 10, 8, 4). See [[family/disney-july-2026]].
 
 ## Latest from gather (2026-04-25) — run 19
-
-> [!fact] GMAIL RESTORED — first working run since run 12 (Apr 23)
-> Gmail MCP functional again after 6 consecutive expired-token cycles (runs 13–18, all of Apr 24). Email data available this run.
-
-> [!deadline] 2026-04-30 (5 DAYS)
-> **Hiive Kalshi funding deadline.** No action recorded since run 8. 5 days remaining. Review and fund or decline before April 30.
 
 > [!todo] ACTION_REQUIRED — HIGH
 > **NEW: Hiive Anthropic purchase — sign agreement (Oliver Sartor family syndicate).** Three emails from Oliver Sartor (oliversartor@icloud.com) arrived late Apr 24:
@@ -908,267 +340,15 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 >
 > Reply to Oliver Sartor and sign the agreement document.
 
-> [!todo] ACTION_REQUIRED
-> **NEW: Nintendo repair service request 61296128 — payment method declined.** From noreply_repair@noa.nintendo.com. Payment method was declined; repair is on hold. Update payment method via Nintendo's repair portal or contact Nintendo. (Addressed to "Emmett" — alto84@gmail.com recipient.)
-
-> [!fact] RESOLVED — Cougar Pride Day calendar updated
-> Family calendar now correctly shows Cougar Pride Day on **Sunday April 26, 11:00 AM–3:00 PM ET**. Updated `2026-04-25T00:02:25Z`. The 6-run calendar discrepancy (runs 13–18 all showed Saturday April 25 despite MKA email moving it to Sunday) is now closed. **Event is TOMORROW.**
-
 > [!deadline] 2026-06-25
 > **NEW: Little Wohelo Camp — First Year Family Tour.** louise@wohelo.com. June 25, 10–11 AM at 25 Little Wohelo Road, Raymond, ME. This is Vishala's first year. Decide whether to attend the tour. Note: Wohelo full tuition ($12,900 minus any deposit) due 2026-05-15. See [[vishala]] and active Wohelo payment item above.
-
-> [!fact] Fidelity EFT $6,000 to Chase — processed
-> Fidelity acct ending 8998 transferred $6,000 to JPMorgan Chase (2026-04-24). Informational. No action required.
-
-> [!fact] NEW — Blue Sombrero soccer game May 2
-> B34 Lime (Vayu's team) vs B34 Charcoal at Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. **Saturday May 2, 2:00–3:00 PM ET.** Not in prior runs. Aneeta at RRE through ~May 3 — Alton sole parent. Logistics: Ini's birthday also May 2 (all-day). See [[vayu]] and [[family/family-calendar]].
-
-> [!deadline] 2026-04-28 (3 DAYS)
-> **MKA Grandparents & Special Friends Day — Tuesday April 28 at Brookside campus.** Re-confirmed via Veracross (m@mail3.veracross.com). Both Vishala and Vayu attend MKA Brookside. Overlaps with Berman install day 2 (techs at home ~9 AM). Confirm grandparent attendance plan.
 
 ## Latest from gather (2026-04-29) — run 22
 
 > [!deadline] 2026-05-10
 > **MKA tuition payment due May 10.** Blackbaud invoice received Apr 27 from Montclair Kimberley Academy. Both Vayu (4th grade) and Vishala (3rd grade) covered. Family ID: 1336725017733. Session year 2025–2026. Email to ALTO84@gmail.com, CC aneetasax@gmail.com. Log in to MKA Blackbaud portal and pay. Amount not in snippet. See [[vayu]] and [[vishala]].
 
-> [!todo] ACTION_REQUIRED
-> **CSA workshift sign-up: step 3 — Llewellyn.** Email from cat.squatrito@gmail.com (Apr 28) to alto84 and judycav1@yahoo.com. "Premium Share Members are required to sign up for a total of four workshifts." This is a Sign Up Genius link for Llewellyn farm workshifts. Prior status (run 10): Alton submitted his form; Aneeta's Gmail showed as invalid. Complete workshift registration. Confirm Aneeta's email status with CSA coordinator.
-
-> [!warning] ESCALATED — Nintendo repair on hold
-> **Nintendo service request 61296128 — reminder sent Apr 28.** "Time is running out! Your payment method was declined." Update payment method via Nintendo repair portal before request is cancelled. First surfaced run 19 (Apr 25). This is the second notice.
-
-> [!todo] ACTION_REQUIRED — log + send receipt
-> **Sante Total donation received: Sergei Robinson, Apr 27.** PayPal Tx# 9R839720GD5133832, received 06:40:37 CDT. Amount not in snippet — verify in PayPal dashboard. Log donation and send donor tax receipt. See [[business/sante-total]].
-
-> [!todo] FINANCIAL — review
-> **Fidelity BU quarterly statements available.** Two emails from Fidelity.Investments@mail.fidelity.com (Apr 28): (1) Alton (EMMETT A SARTOR) Boston University Retirement Plan — Q1 2026 statement available. (2) Aneeta (ANEETA R SAXENA) Boston University Retirement Plans — statements available (plural). These are BU 403(b) plans from prior employment, distinct from the AZ NetBenefits plan. Review for contribution accuracy, investment allocation, and beneficiary status.
-
-> [!fact] TODAY — logistics summary (Aneeta at RRE, day 1)
-> Sole-parent window started today. Key logistics:
-> - **5:30–6:15 PM**: Soccer practice B-34 Lime @ Anderson Park (Alton must cover)
-> - **Tomorrow (Apr 30) 9:40 AM**: Vayu spring dance concert at MKA (time consensus: 9:40 AM; arrive by 9:25 AM)
-> - **Apr 30**: Vasu picture day at Goddard (coordinate drop-off before 9:40 AM or with Amarkanth)
-> - **Sat May 2, 2:00–3:00 PM**: Vayu soccer GAME @ Brookdale Stadium South, Field 1 (Aneeta still at RRE)
-> - Aneeta has London Research Teams check-in today 1:30–2:00 PM (she attends remotely from RRE)
-
-## Latest from gather (2026-04-25) — run 21
-
-> [!todo] ACTION_REQUIRED
-> **NEW: Vayu Amazon Kids book requests x2 — approve or deny.**
-> - "Blades of Freedom (Nathan Hale's Hazardous Tales #10): A Tale of Haiti, Napoleon, and the Louisiana Purchase"
-> - "Cold War Correspondent (Nathan Hale's Hazardous Tales #11): A Korean War Tale"
->
-> Both approval requests received 06:34-06:35 ET April 25 from amazon-kids-request@amazon.com. Approve or deny via Amazon Parent Dashboard. See [[family/vayu]].
-
-> [!fact]
-> **Vanguard Funds Important Information notice received.** From id@proxyvote.com, 05:56 ET April 25. Proxy/important notification for one or more Vanguard fund holdings. Review at proxyvote.com. FINANCIAL/INFORMATIONAL.
-
-## Latest from gather (2026-04-25) — run 20
-
-> [!todo] ACTION_REQUIRED — HIGH
-> **MKA enrollment deposit not received — Vishala and Vayu.** From awaldman@mka.org (MKA Business Office), Apr 24 13:26 ET. "The Business Office asked that I reach out to remind you that we have not received your enrollment deposit for next year and Vishala and Vayu's [enrollment]..." Email sent to both aneetasax@gmail.com and alto84@gmail.com. Enrollment deposits hold spots for 2026–2027 school year. No deadline explicitly stated in snippet but this is a first-contact reminder — enrollment spot risk is real. **Contact MKA Business Office (awaldman@mka.org) to confirm deposit amount and submit payment.** See [[vishala]] and [[vayu]].
-
-> [!fact]
-> **Hiive Anthropic agreement thread update.** Sissy Sartor (sissy.sartor@gmail.com) replied Apr 25 00:49: "document looks excellent — cannot print until next week; at Mama Rita's with no printer." Oliver Sartor replied Apr 25 03:59: "You could sign electronically if you like and use your word document and digital pin." **Alton can sign electronically now without waiting for Sissy.** See open ACTION item above.
-
-> [!fact]
-> **Pool Guyz LLC service completed at 85 Stonebridge Rd on Apr 24.** Service Log #36630477. Check-up completed 1:28 PM. Main pool status noted. Pool season service is active for 2026. No action required.
-
-> [!todo] P3 — financial review
-> **EquityZen: Postman (POSM) investment now live.** support@equityzen.com, Apr 24 13:13. New pre-IPO opportunity in Postman (ticker POSM) on EquityZen marketplace. Separate from the outstanding Georgia Edwards catch-up meeting request. Review if interested. See open EquityZen item above.
-
-> [!note] Calendar unchanged
-> All 5 calendars stable vs run 19. Cougar Pride Day tomorrow (Sun Apr 26 11 AM, Van Brunt Field); Wohelo Assembly tomorrow noon (online, Vishala). Aneeta departs for RRE Wednesday Apr 29. Sole-parent window: Apr 29–May 3.
-
-## Latest from gather (2026-05-01) — run 22
-
-> [!warning] URGENT — Hiive deadlines now past or expiring today
-> - **Hiive Kalshi** funding deadline was **2026-04-30** — PASSED. No resolution email found. Confirm status immediately.
-> - **Hiive SpaceX** review deadline was **2026-05-01** — EXPIRING TODAY. Act now or it closes.
-> - **Hiive Zipline** deadline was **2026-05-01** — EXPIRING TODAY. Act now or it closes.
-
-> [!fact] LIKELY RESOLVED — GOOGL May call sold
-> Fidelity trade confirmation received May 1: "SOLD CALL (GOOGL) ALPHABET INC CAP" from account XXXXX8998. This corresponds to the active `[!deadline] 2026-05-01` GOOGL May $285C roll decision (20 short contracts, roll up-and-out before May 15 expiry). Trade appears executed. Verify with Jonathan Francis for tax implications if the position was closed vs rolled. See [[TAXES]].
-
-> [!todo] ACTION_REQUIRED — HIGH
-> **NEW: Vayu homework habits — respond to MKA teacher Roshni Shah.** rshah@mka.org (CC: dgordon@mka.org) sent a second email Apr 30 re: Vayu's homework habits, requesting parental partnership. First contact was Apr 14 (partial quotients division; Aneeta replied). This is a new escalation on homework behavior pattern. Reply to rshah@mka.org. See [[family/vayu]].
-
-> [!deadline] 2026-05-29 (28 days)
-> **NEW: MKA Third Grade Capstone Design Fair — Friday May 29, 8:15 AM, Brookside.** From m@mail2.veracross.com (Apr 30). Event is in each third grade classroom. This is Vishala's class. Add to Google Calendar. See [[family/vishala]].
-
-> [!todo]
-> **NEW: Pool Guyz LLC statement — pay.** Statement from billing@thepoolguyznj.com (Apr 30). Amount in attached PDF. Payment options: Zelle (preferred) to Thepoolguyznj@gmail.com, or Venmo @thepoolguyz. Pool service active 2026. Prior check-up Apr 24 (service log #36630477). See [[business/solar-inference]] for 85 Stonebridge operating costs.
-
-> [!todo]
-> **NEW: Amazon safety recall notice — identify and act.** order-update@amazon.com (May 1). "Potential safety concern with a product that you purchased on Amazon.com." Product not identified in snippet. Open email, identify product, review Recalls page.
-
-> [!fact] TODAY — Vasu picture day at Goddard (11:30 AM)
-> Confirmed by Goddard Kaymbu announcement (Apr 30 evening). Sibling photos taken during first child's turn. Happening now. Normal school day otherwise. See [[family/vasu]].
-
-> [!fact] CONFIRMED — Vayu soccer game TOMORROW May 2, 2:00 PM ET
-> Blue Sombrero game reminder received Apr 30 (postmaster@bluesombrero.com). B34 Lime vs B34 Charcoal, **Saturday May 2, 2:00–3:00 PM**, Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ 07043. **Aneeta still at RRE (returns ~May 3) — Alton sole parent.** See [[family/vayu]] and [[family/family-calendar]].
-
-> [!fact] CSA Share 2026 — Alton re-enrolled
-> Alton sent email to jljmoo@aol.com Apr 27: "I was notified that I had signed up for the wrong year for CSA share. I had signed up for 2025 and just re-did my application for 2026. I am interested in volunteering for set-up and clean up." 2026 application confirmed submitted.
-
-> [!todo] P3 — multiple new financial review items
-> **EquityZen new opportunities (Apr 30):**
-> - **Apptronik (APTK)** — hardware/robotics, new on EquityZen marketplace.
-> - **Perplexity** — two emails; Alton had expressed interest 7 months ago.
-> Also carry-forward: Georgia Edwards meeting, Postman (POSM).
-
-> [!todo]
-> **NEW: AlphaSights consult — Life Sciences Patient Service and Hub Operations.** From emma.sciarrone@alphasights.com (Apr 30). 1-hour compensated consultation. Accept or decline.
-
-> [!todo]
-> **NEW: Guidepoint Genetic Disorder Survey — $50.** From surveys@guidepoint.com (Apr 30). Online paid survey. Accept or decline.
-
-> [!note] Sole-parent window ACTIVE — 2 days remaining
-> Aneeta at RRE through approximately Saturday May 3. Today (May 1, Friday) and tomorrow (May 2, Saturday) are sole-parent days. Tomorrow's logistics: Vayu soccer 2:00 PM Brookdale Stadium South. No other school events flagged for today. Aneeta "Healing" recurring event May 6 after her return.
-## Latest from gather (2026-04-26) — run 25
-
-> [!fact] RESOLVED
-> **Venmo $270.00 to @Rachelle-trammel CONFIRMED PAID.** "You paid Rachelle trammel $270.00" — transaction completed Apr 25 21:47 UTC. Vishala childcare dates 4/14, 4/16, 4/21. The open ACTION_REQUIRED item from runs 22–24 is now closed. See [[vishala]].
-
-> [!warning] TODAY — Cougar Pride Day is ON, CASH ONLY
-> **Cougar Pride Day: Sunday April 26, 11:00 AM–3:00 PM, Van Brunt Field, MKA.** MKA parent email (eduwende@gmail.com, Apr 25 23:47 ET) confirmed the event is happening today. Bring cash — this is a CASH ONLY event. Rain cleared by 7 AM per forecast. See [[family-calendar]].
-
-> [!warning] DANCE CONCERT TIME — verify with MKA before April 30
-> **This run (Apr 26) returns `2026-04-30T13:40:00, timeZone: America/New_York` = 1:40 PM ET.** Across all 9 runs: 1:40 PM ET (runs 8, 17, 23, 25), 9:40 AM ET (runs 14, 15, 16, 18). Three of the last four readings say 1:40 PM. The [[sole-parent-window-2026-04-29]] prep file was drafted with the 9:40 AM assumption. **Email or call MKA now to confirm.** Apr 30 is a sole-parent day with Vasu Goddard drop-off and Amarkanth coordination depending on the correct time. See [[vayu]].
-
-> [!deadline] 2026-04-27 09:00 AM — TOMORROW
-> **Berman Home Systems Installation — Day 1 starts tomorrow.** Techs arrive 9 AM Monday April 27. Installation runs 3 days (Mon 4/27, Tue 4/28, Wed 4/29). Someone needs to be home each morning to provide access. Wed 4/29 is highest-risk: Aneeta is already departed for RRE. See [[sole-parent-window-2026-04-29]].
-
-> [!note] Sole-parent window in 3 days (Apr 29–May 3)
-> Critical week-ahead items:
-> - Apr 29 5:30 PM: Vayu soccer practice (Anderson Park) — no Aneeta backup
-> - Apr 30: Vayu spring dance concert (time TBD — see warning above); Vasu picture day at Goddard
-> - May 1: Vasu picture day at Goddard
-> - May 2 2:00 PM: Vayu soccer game (Brookdale Park, B34 Lime vs B34 Charcoal); Ini's birthday
-> See [[sole-parent-window-2026-04-29]] for full prep checklist.
-
-## Latest from gather (2026-04-26) — run 27
-
-> [!deadline] 2026-04-28 TOMORROW
-> **DATE CORRECTION — Vasu Goddard PICTURE DAY is TOMORROW (Tuesday April 28).** Kaymbu weekly sneak peek (Samantha Ramsden, Apr 24) states "Tuesday, April 28th - PICTURE DAY" and "Thursday, April 30th - PICTURE DAY." Prior calendar entries and this file listed picture days as Apr 30, May 1, May 4. April 28 is new and is tomorrow. Dress Vasu nicely for school. April 30 is also confirmed. May 1 and May 4 status uncertain. See [[family/vasu]].
-
-> [!fact]
-> **Bose QuietComfort Ultra headphones SHIPPED.** shipment-tracking@amazon.com, Apr 26 06:14 UTC. Status update from "ordered" (Apr 25) to "shipped." No action required; delivery expected imminently.
-
-> [!note]
-> **Hiive Kalshi funding deadline is NOW TOMORROW (April 30).** Decide tonight: fund or decline. See existing deadline entry in run 26 section above.
-
-## Latest from gather (2026-04-26) — run 29
-
-> [!warning] DANCE CONCERT TIME — 6:6 split; MKA verification critical
-> **This run (Apr 26, run 29) returns `2026-04-30T09:40:00-04:00` = 9:40 AM ET.** Contradicts runs 25–28 (1:40 PM ET). Running tally: 9:40 AM in runs 14, 15, 16, 18, 23, 29 (6 readings) vs 1:40 PM in runs 8, 17, 25, 26, 27, 28 (6 readings). The split is now even. API is unreliable. **Call or email MKA now — this is 4 days away and is a sole-parent morning.** Apr 30: Aneeta at RRE, Vasu has Goddard picture day. Every logistics decision (Amarkanth, Goddard drop-off, NYC commute cancel) depends on whether the concert is at 9:40 AM or 1:40 PM. See [[vayu]] and [[sole-parent-window-2026-04-29]].
-
-> [!note] Run 29 informational signals (no new ACTION_REQUIRED)
-> - Stanford HAI 2026 AI Index Report released; AI delusional spirals piece — RESEARCH/INFORMATIONAL
-> - TheSequence Radar #849: OpenAI ships agents, xAI eyes Cursor acquisition — RESEARCH/INFORMATIONAL
-> - LinkedIn career alerts: Microsoft Senior Director AI Healthcare (active recruiting); Innoviva Safety Physician $255K–$285K — CAREER/INFORMATIONAL, route to az-career
-> - Costco same-day delivery confirmed to 85 Stonebridge Rd — HOUSEHOLD/INFORMATIONAL
-> - 22 ACTION_REQUIRED items carry forward unchanged from run 28
-
-## Latest from gather (2026-04-26) — run 30
-
-> [!warning] DANCE CONCERT — tally now 7:6 for 9:40 AM ET
-> Run 30 returns `2026-04-30T13:40:00Z` (UTC) = **9:40 AM ET**. Running tally: 9:40 AM in runs 14, 15, 16, 18, 23, 29, 30 (7 readings); 1:40 PM in runs 8, 17, 25, 26, 27, 28 (6 readings). API is inconsistent and unreliable. **Call or email MKA directly before April 30 to confirm the actual start time.** The entire Apr 30 logistics chain — Vasu Goddard drop-off, Amarkanth coordination, NYC commute cancellation — depends on this. See [[vayu]] and [[sole-parent-window-2026-04-29]].
-
-> [!note] Run 30 informational signals (no new ACTION_REQUIRED)
-> - Boys Girls Kids Walking Shoes DELIVERED (Apr 26 20:10 UTC) — HOUSEHOLD/INFORMATIONAL
-> - Vayu soccer game Apr 25 vs Purple @ WATCHUNG School field played yesterday in the rain — HISTORICAL/INFORMATIONAL; see [[vayu]]
-> - Dwarkesh blog prize for big questions about AI (Apr 25) — RESEARCH/INFORMATIONAL
-> - LinkedIn Sanofi CRD role alert (Apr 26) — discarded per Apr 16 triage (non-AI recruiter feeds = ignore)
-> - 22 ACTION_REQUIRED items carry forward unchanged from run 29
-
-## Latest from gather (2026-04-27) — run 31
-
-> [!warning] DANCE CONCERT — tally now 8:6 for 9:40 AM ET
-> Run 31 returns `2026-04-30T09:40:00-04:00` = **9:40 AM ET**. Updated tally: 9:40 AM in runs 14, 15, 16, 18, 23, 29, 30, 31 (8 readings); 1:40 PM in runs 8, 17, 25, 26, 27, 28 (6 readings). API is unreliable. **Sole-parent window begins in 2 days (Apr 29). Call MKA today to confirm the actual time.** The entire Apr 30 logistics chain (Vasu Goddard picture-day drop, Amarkanth, NYC commute cancel) depends on this.
-
-> [!fact] BERMAN INSTALL DAY 1 — ACTIVE TODAY (Mon Apr 27, 9 AM)
-> Technicians are arriving today. Access required through 5 PM. Days 2 and 3 are Apr 28 and Apr 29.
-
-> [!warning] SOLE-PARENT WINDOW IN 2 DAYS (starts Wed Apr 29)
-> Aneeta departs for RRE on Apr 29. Alton solo with three kids through Sun May 3. Pre-window checklist at [[family/sole-parent-window-2026-04-29]]. Critical open items: dance concert time unverified, Amarkanth availability unconfirmed, Berman Day 3 access plan unresolved.
-
-> [!fact] ANTHROPIC/HIIVE AGREEMENT — NEW EMAIL CONTEXT (2026-04-24 to 4/25)
-> Oliver Sartor sent the Anthropic HIIVE purchase agreement document for review and signature. Agreement allocated 1:1:1 among three family members. Sissy Sartor replied she cannot sign until next week. Oliver confirmed electronic signature is possible. Alton's signature status: not confirmed. **Sign electronically now** (was already ranked #4 in action table; new context adds urgency given Sissy's delay).
-
-> [!note] Run 31 carry-forward (22 open items, no new resolutions)
-> - Machine 52271 offline (P0, unresolved since Apr 22)
-> - Hiive Kalshi funding deadline was Apr 30 — **STATUS UNKNOWN** (yesterday's deadline; confirm if funded or declined)
-> - Vayu soccer game Sat 5/2 2 PM, Brookdale Park (Brookdale Stadium South > Field 1)
-> - Ini's birthday Sat 5/2 (family calendar, all-day)
-> - Aneeta check-in Wed 4/29 1:30–2:00 PM ET (Teams, London Research)
-> - All other carry-forwards unchanged from run 30
-
-## Latest from gather (2026-04-27) — run 33
-
-> [!warning] DANCE CONCERT — tally now 10:6 for 9:40 AM ET — 3 DAYS AWAY
-> Run 33 returns `2026-04-30T09:40:00-04:00` = **9:40 AM ET**. Updated tally: 9:40 AM in runs 14, 15, 16, 18, 23, 29, 30, 31, 32, 33 (10 readings); 1:40 PM in runs 8, 17, 25, 26, 27, 28 (6 readings). **Call or email MKA today — April 30 is 3 days away and is a sole-parent morning.** The entire logistics chain (Vasu Goddard picture-day drop-off, Amarkanth coordination, NYC commute cancellation) depends on this. See [[vayu]] and [[family/sole-parent-window-2026-04-29]].
-
-> [!deadline] TOMORROW Apr 28
-> **Vasu Goddard PICTURE DAY TOMORROW.** Dress Vasu nicely for school. Per Kaymbu weekly sneak peek (Samantha Ramsden, Apr 24): "Tuesday, April 28th - PICTURE DAY." April 30 is also a confirmed picture day. See [[family/vasu]].
-
-> [!note] NEW — Soccer game May 9 added
-> **Vayu soccer game Sat May 9, 11:00 AM–12:00 PM.** B34 Lime vs B34 Purple (Lac & Karacas). Brookdale Stadium South, Field 1, Brookdale Park, Montclair NJ. First reading of this game in Blue Sombrero feed. See [[vayu]].
-
-> [!note] Run 33 informational signals (no new ACTION_REQUIRED)
-> - Bose QuietComfort Ultra headphones: confirmed DELIVERED Apr 26 11:36 AM (run 27 had "shipped")
-> - Elena Poughia LinkedIn InMail (Apr 26): NYC senior operators group on scaling human feedback + eval infra — invitee list ~10 people. Referenced "your work at OpenAI" (incorrect — Alton is at AZ). CAREER/NETWORK, no action unless interested.
-> - Cougar Pride Day (Apr 26 MKA): happened yesterday as planned, cash-only, historical
-> - 22 ACTION_REQUIRED items carry forward unchanged
-
-> [!fact] BERMAN INSTALL — Days 2 and 3 remaining
-> Day 1 (Apr 27) in progress. Day 2: TOMORROW Apr 28, 9 AM. Day 3: Apr 29, 9 AM — also sole-parent Day 1. Access required each morning.
-
-## Latest from gather (2026-04-27) — run 34
-
-> [!warning] CRITICAL — DANCE CONCERT TOMORROW — call MKA NOW
-> **Run 34 returns `2026-04-30T13:40:00-04:00` = 1:40 PM ET.** Updated tally: 10 at 9:40 AM (runs 14, 15, 16, 18, 23, 29, 30, 31, 32, 33) vs 7 at 1:40 PM (runs 8, 17, 25, 26, 27, 28, 34). The concert is **TOMORROW (Apr 30)**. Sole-parent day. Vasu has Goddard picture day. The entire logistics chain (Goddard drop-off, Amarkanth coordination, NYC commute cancel) pivots on whether the concert starts at 9:40 AM or 1:40 PM. **Call or email MKA today — do not rely on the API.** See [[family/vayu]] and [[family/sole-parent-window-2026-04-29]].
-
-> [!deadline] 2026-05-10
-> **MKA Tuition Payment Due — Vayu and Vishala.** Blackbaud school payment system (customerservice@blackbaud.school) emailed Apr 27 11:26 AM ET to alto84@gmail.com + aneetasax@gmail.com. Students: Vayu Sartor (4th grade), Vishala Sartor (3rd grade). Family ID: 1336725017733. Session Year 2025-2026. **Due May 10, 2026.** Amount not visible in email snippet — log into Blackbaud to confirm. Separate from the MKA enrollment deposit (awaldman@mka.org) which covers next year. See [[family/vayu]] and [[family/vishala]].
-
-> [!todo] P2 — FAMILY/SCHOOL
-> **MKA Spring Conference Day — volunteer food for teachers.** eduwende@gmail.com, Apr 27. Thursday May 14 is Conference Day for all three MKA campuses. PAMKA Special Events needs volunteers to bring food, snacks, or drinks. Middle School sign-up contact: Michelle Willford (thewillfords@gmail.com) — SignUpGenius link available. Vayu is 4th grade (Middle School). Optional — decide whether to volunteer. See [[family/vayu]].
-
-> [!note] Save the date — PAMKA Annual Meeting Wed May 20
-> PAMKA Annual Meeting at Middle School. Continental breakfast 7:45 AM, meeting at 8:15 AM. Head of School Nigel Furlonge speaking. New volunteer slate announced. PAMKA Faculty Trust Grants recap. Attendance optional. See [[family/family-calendar]].
-
-## Latest from gather (2026-04-27) — run 35
-
-> [!warning] CRITICAL EMERGENCY — DANCE CONCERT TOMORROW — tally now 10:8 — call MKA NOW
-> **Run 35 returns `2026-04-30T13:40:00-04:00` = 1:40 PM ET.** Updated tally: 10 at 9:40 AM (runs 14, 15, 16, 18, 23, 29, 30, 31, 32, 33) vs **8 at 1:40 PM** (runs 8, 17, 25, 26, 27, 28, 34, 35). The concert is **TOMORROW (Apr 30)** and the API is still oscillating. Do not guess. Call or email MKA directly before end of business today. Entire logistics chain for Apr 30 (Vasu Goddard picture-day drop-off, Amarkanth coordination, NYC commute cancel) depends on this. See [[family/vayu]] and [[family/sole-parent-window-2026-04-29]].
-
-> [!warning] MKA PRIMARY SCHOOL SAFETY INCIDENT — Apr 27 afternoon
-> **MKA sent a community notification at 4:03 PM ET today** (m@mail4.veracross.com via Veracross) about an incident at the Primary School campus this morning. Snippet: "an individual requesting to use the restroom." Full email body was not retrievable via API. Vayu and Vishala are MKA Primary students. **Alton should read this email in full to understand the scope of the incident before school tomorrow (Apr 28).**
-
-> [!todo] P2 — 2026 POOL SEASON REGISTRATION OPEN NOW
-> **Nishuane Pool registration opened today (Apr 27).** Register at register.communitypass.net/montclair.
-> - Family pass: **$250** (2 adults + 1+ children)
-> - Nishuane opens weekends only May 23, daily June 26; **closes Aug 16 for construction** (earlier than usual)
-> - Essex + Mountainside open daily June 26 – Sep 1
-> - All pools cashless in 2026
-> - Badge pickup: 219 North Fullerton Ave (2 business days processing); proof of NJ residency required
-> - Pool hours: M–F 12–8 PM, weekends/holidays 11 AM–8 PM
-> - Register soon — spots and badge processing time are limited
-
-> [!note] NEW — Convocation event May 9, 6:30–9:30 PM ET
-> **Family calendar shows a "Convocation" event on Saturday May 9, 6:30–9:30 PM ET.** Created Apr 11 by Aneeta; no description or location in the event. Same evening as Vayu's soccer game (11 AM, Brookdale Park). No overlap. Context unknown — may be related to Neurvati or a personal event. See [[family/family-calendar]].
-
-
-> [!note] Run 35 informational signals
-> - **a16z Speedrun:** application window closes May 17 (3 weeks); review already underway. Career/startup opportunity. No action unless interested.
-> - **Guidepoint consulting request #1732882:** Global Oncology Specialists, otaylor@guidepointglobal.com. Consulting fee opportunity — review if interested.
-> - **Kaymbu newsletters (x2):** Vasu Unit 8 school curriculum updates — informational, no action.
-> - All prior 22 open items carry forward unchanged.
-
-## Latest from gather (2026-04-27) — run 36
-
-> [!deadline] 2026-05-01 — CRITICAL FINANCIAL
+> [!deadline] 2026-05-01
 > **185 Davis Condo Assessment: $2,253.13 per unit due May 1 (lump sum) or $563.28/month May–August.**
 > From Charlotte Rice (trustee, charlotterice@gmail.com), sent to all unit owners Apr 27. Assessment covers: (1) FY26 budget gap ($2,625 total / $328.13/unit); (2) Front retaining wall via SM Masonry ($15,400 total / $1,925/unit). Payment options: lump sum by May 1, 2026 OR four monthly installments of $563.28 (May, June, July, August).
 >
@@ -1176,9 +356,9 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - Fuel cost overage: ~$375/unit — Devaney will confirm amount June 1; due June 30
 > - Additional building repairs TBD later in year (chimney $4,200 est.; possible boiler expansion tank ~$10,000)
 >
-> **Boiler expansion tank feedback:** Vote via Google Form by **May 15** on whether to proceed with $10,237 expansion tank replacement. See 185 Davis email thread for form link.
+> **Boiler expansion tank feedback:** Vote via Google Form by **May 15** on whether to proceed with $10,237 expansion tank replacement.
 >
-> **Action:** Decide on lump sum vs. installment plan and make payment by May 1. If installment, payments will auto-continue May–August. Email charlotterice@gmail.com or the board with questions.
+> **Action:** Decide on lump sum vs. installment plan and make payment by May 1.
 
 > [!deadline] 2026-05-01 — HIGH
 > **CSA 2026 registration incomplete — check payment required by May 1.**
@@ -1189,421 +369,45 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > 2. **TREE-LICIOUS ORCHARDS** — Fruit share add-on ($345) — **due by May 1**
 >
 > Mail/hand-deliver to: **Enid Melville, 12 Valley Place, Upper Montclair, NJ 07043**
->
-> Pickup site: 86 Llewellyn Rd, Montclair (primary). 24 deliveries, Tuesdays June 9 – Nov 17. 4 required work shifts (SignUp Genius link sent after payment received).
-
-> [!warning] CRITICAL EMERGENCY — DANCE CONCERT TOMORROW — tally now 11:8 for 9:40 AM
-> **Run 36 returns `2026-04-30T09:40:00-04:00` = 9:40 AM ET.** Updated tally: 11 at 9:40 AM (runs 14, 15, 16, 18, 23, 29, 30, 31, 32, 33, 36) vs **8 at 1:40 PM** (runs 8, 17, 25, 26, 27, 28, 34, 35). The concert is **TOMORROW (Apr 30)** and the API continues to oscillate. This is the last gather before the event. Do not guess — call MKA directly. Sole-parent day. Vasu has Goddard picture day. Logistics (Goddard drop-off, Amarkanth coordination, NYC commute cancel) all depend on 9:40 AM vs 1:40 PM. See [[family/vayu]] and [[family/sole-parent-window-2026-04-29]].
-
-> [!deadline] 2026-04-29 TOMORROW — HIGH
-> **Vayu 4th grade Chinese assessment — Wednesday April 29.**
-> Teacher Fangzhou Zhang (fzhang@mka.org) sent correction today: original email said Apr 27 but assessment is actually **Wednesday Apr 29**. Assessment covers Chinese painting, art, and spring-related nature vocabulary. Review materials (flashcards + vocabulary sheets) sent home today.
-> **Help Vayu study flashcards and vocab tonight (Apr 27) and tomorrow morning.** See [[family/vayu]].
-
-> [!fact] CALENDAR CORRECTION — Convocation May 9 is 2:30–5:30 PM ET (not 6:30–9:30 PM as run 35 stated)
-> Run 35 logged Convocation as 6:30–9:30 PM ET. Live API this run returns `start: 2026-05-09T14:30:00-04:00` to `end: 2026-05-09T17:30:00-04:00` = **2:30–5:30 PM ET**. Run 35 misread `14:30 EDT`. Vayu's soccer game (11 AM–12 PM) and Convocation (2:30–5:30 PM) are both May 9 with no overlap. Aneeta back from RRE by May 3 — no coverage conflict. See [[family/family-calendar]].
-
-> [!note] Run 36 informational signals
-> - **LEGO Insiders:** 982 points expiring 2026-06-26. No action needed now; redeem before June 26.
-> - **Goddard Vasu (Kaymbu):** Soccer practice today (mini games, scoring drills) + Last Week Recap (terrarium building). Informational.
-> - **NW Mutual vote notice:** Addressed to "Emmett" — routine policyholder vote. INFORMATIONAL.
-> - **CSA volunteer contact jljmoo@aol.com:** Alton emailed about volunteering for set-up/clean-up shifts. No response yet.
-> - All prior 22 open items carry forward unchanged (now +3 new = 25 open items).
-
-## Latest from gather (2026-04-28) — run 37
-
-> [!warning] CRITICAL EMERGENCY — dance concert THURSDAY Apr 30, time UNVERIFIED
-> Tally after run 37: **12 readings at 9:40 AM** vs **8 readings at 1:40 PM**. Concert is in 2 days. Call MKA now — this is the last business day before the event. See [[family/family-calendar]] and [[family/sole-parent-window-2026-04-29]].
-
-> [!warning] TODAY — multiple active events
-> - **Berman Home Systems Installation Day 2**: Techs arriving ~9 AM. Someone must be home. Day 3 is tomorrow (Apr 29).
-> - **Vasu picture day (Goddard)**: Dress Vasu nicely for school today. Per Kaymbu sneak peek Apr 24.
-> - **MKA Grandparents & Special Friends Day**: Registered guests attending MKA today. Per kflippin@mka.org Apr 21.
-
-> [!note] Jackrabbit Tech summer gymnastics
-> **9-week Summer Session, June 23 – Aug 18, 2026.** $200 per child ($20 off 2nd and 3rd sibling). Located at 136 Mountainview Blvd, Wayne NJ. Call 973-837-8877. Relevant for summer activity planning for Vayu and Vishala. No enrollment deadline stated. INFORMATIONAL — decide when convenient.
-
-> [!note] GPT-5.5 system card (TheZvi, Apr 27)
-> OpenAI announced GPT-5.5 and GPT-5.5-Pro. System card published. Relevant to Alton's AI/ML leadership role at AstraZeneca. INFORMATIONAL — read when time permits.
-
-> - Total open ACTION_REQUIRED items: 25 (no new required items; +1 informational; carry-forward unchanged)
-
-## Latest from gather (2026-04-28) — run 38
-
-> [!warning] CRITICAL EMERGENCY — dance concert TOMORROW Apr 30 — tally 13:8 for 9:40 AM
-> Run 38 returns `2026-04-30T09:40:00-04:00` = **9:40 AM ET**. Updated tally: **13 readings at 9:40 AM** vs **8 at 1:40 PM** (runs 8, 17, 25, 26, 27, 28, 34, 35). Concert is TOMORROW. This is the last possible moment to call MKA — the office is open today. Do NOT rely on the API. Sole-parent day (Aneeta at RRE). Vasu Goddard picture day. Entire logistics chain (Goddard drop-off, Amarkanth coordination, NYC commute cancel) depends on 9:40 AM vs 1:40 PM. See [[family/vayu]] and [[family/sole-parent-window-2026-04-29]].
-
-> [!todo] ACTION_REQUIRED — HIGH
-> **NEW: RSVP for MKA 3rd-4th Grade Parent-to-Parent Panel — Wednesday May 6, 8:15 AM.**
-> From meganflick@gmail.com (PAMKA), Apr 28. In-person panel at MKA Middle School Dining Hall on the PS→MS transition experience. This is Vayu's transition (3rd → 4th grade). RSVP via Google Form (link in original email from meganflick@gmail.com, subject "PARENT TRANSITION PANEL, SPRING CONFERENCE DAY & MORE"). Deadline not stated but spots fill on first-come basis. See [[family/vayu]] and [[family/family-calendar]].
-
-> [!todo] P2 — OPTIONAL
-> **MKA Field Day volunteer sign-up — Wednesday May 22 (rain date May 26).**
-> From meganflick@gmail.com (PAMKA), Apr 28. Google Form required. Volunteers must be available both dates. Fill out a separate form for each volunteer. Email Sara @ pamkaprimaryschoolvp@gmail.com with questions. See [[family/family-calendar]].
-
-> [!note] Run 38 informational signals
-> - **Goddard (Marianne) email with attachment** (Apr 27): Principal/director sent to both alto84@ and aneetasax@. Snippet: "Spring is in the air... Marianne." Has attachment — check inbox directly.
-> - **CSA clarification**: Alton re-registered from 2025 to 2026. Delivery window: Tuesdays June 9 – Nov 17 (24 deliveries). Checks still due May 1 (see run 36 deadline item).
-> - **Hiive Shield AI Opportunity**: Hiive marketing email — NOT the Kalshi deadline. Separate investment opportunity. Skip.
-> - **PAMKA Spring Conference Day volunteers (May 14)**: Food/snacks for teachers. Primary School contact: Besa Owen (besaowen@gmail.com). Optional.
-> - **Fall 2026 Parent Grade Socials**: Host needed — contact Meredith Levine (mflevine@gmail.com). Optional.
-> - Total open ACTION_REQUIRED items: **26** (+1 new: Parent Transition Panel RSVP)
-
-## Latest from gather (2026-04-28) — run 22 addendum (late-afternoon capture)
-
-> [!todo] ACTION_REQUIRED — MEDIUM
-> **NEW: MKA 3V Class Gift — Vishala's class (year-end).** From joannasteckler@gmail.com (Apr 28 14:17 ET). "Dear 3V Parents... at this time of year we like to give the [teacher(s) a class gift]." Parent-organized end-of-year gift for Vishala's 3rd grade (3V) class at MKA. Class contacts: Megan Flick (meganflick@gmail.com), pamkaprimaryschoolvp@gmail.com. Decide contribution amount and respond to joannasteckler@gmail.com. See [[family/vishala]].
-
-> [!fact] FINANCIAL/INFORMATIONAL
-> **Hiive: Perplexity AI opportunity (Apr 28 16:25 ET).** Revenue grew 5x from $100M→$500M as of April 2026, driven by Perplexity Computer (autonomous agentic AI infrastructure). New investment opportunity from Hiive. INFORMATIONAL — review after resolving Kalshi (Apr 30), SpaceX, and Zipline (May 1) deadlines. See [[BUSINESS]].
-
-> [!todo] LOW
-> **NM Planning Review — 3rd follow-up (Apr 28).** Noah Krassin (noah.krassin@nm.com) with Garrett Warner (CC). Third outreach since Mar 12. Northwestern Mutual financial plan review. Schedule meeting or send explicit decline to stop follow-up cycle.
-
-## Latest from gather (2026-04-28) — run 41
-
-> [!todo] ACTION_REQUIRED — HIGH
-> **Nintendo Switch repair on hold — payment method declined.** Service request 61296128 (noa.nintendo.com). Repair is on hold awaiting decision. Payment method on file was declined. Log into Nintendo repair portal and provide updated payment method or cancel the service request. Email from noreply_repair@noa.nintendo.com, Apr 28 3:00 PM ET. Addressed to "Emmett" (Alton).
-
-> [!fact] INFORMATIONAL — FINANCIAL
-> **Fidelity Boston University retirement plan Q1 2026 quarterly statements** are now available for both Alton (EMMETT A SARTOR) and Aneeta (ANEETA R SAXENA). Log into Fidelity to review. No action deadline; review at next financial planning session.
-
-## Latest from gather (2026-04-29) — run 43
-
-> [!todo] ACTION_REQUIRED — MEDIUM
-> **Replit Apps deletion deadline ~2026-05-29.** Alton has not logged into Replit since May 29, 2025 (1 year). Apps will be automatically deleted in 30 days from today (2026-04-29). Log into replit.com before 2026-05-29 to preserve or export any hosted projects. From: notifications@replit.com, 2026-04-29 02:12 UTC.
-
-> [!todo] ACTION_REQUIRED — LOW
-> **Jackrabbit Tech Gym Day — Saturday May 30, $25/child, registration open now.** Sibling discount $5 off + admission for 2 adults. Includes 2 extra makeup classes. Register before spots fill. For Vayu and/or Vishala (gymnastics). From: noreply@jackrabbittech.com, 2026-04-28. Check email directly for registration link.
-
-> [!note] Run 43 INFORMATIONAL — CSA step 3 in progress
-> SignUpGenius login confirmation email received 2026-04-29 01:23. Alton's alto84@gmail.com account already exists in SignUpGenius. Supports that step-3 workshift registration (Llewellyn CSA) is actively being handled. CSA item remains open until Alton confirms sign-up completion.
-
-## Latest from gather (2026-04-29) — run 25
-
-> [!blocker] CRITICAL — Lucent Solar 85 Stonebridge engineering meeting unconfirmed
-> **Proposed meeting date (April 23, Thursday after 3 PM) has passed with no confirmation visible.** Thread from Apr 13–17 shows Alton proposed this date to Niko (Niko@lucent-energy.com) and Doug Paige (doug.paige@lucent-energy.com) of Lucent Energy. No reply or meeting confirmation found in Gmail as of this run. Contractual completion was ~2026-05-01 (already passed). **ITC deadline July 4, 2026 (~66 days)** — $131,649 federal tax credit at risk if solar system is not in service by then. Immediate action: email or call Niko and Doug to confirm meeting status and get a firm installation start date. See [[people/doug-paige]], [[business/solar-inference]].
-
-> [!fact] DANCE CONCERT TOMORROW — run 25 confirms 9:40 AM ET
-> API returned `2026-04-30T13:40:00Z` (= 9:40 AM ET). Consistent with recent runs. Tally continues to favor 9:40 AM. If MKA has not been called today, call now — this is the final window before the concert.
-
-> [!note] Run 25 informational signals
-> - **Disney MNSSSHP 2026**: Nicol Stevenson (travel agent) announced Mickey's Not-So-Scary Halloween Party 2026 dates. This is a WDW/Florida event, not relevant to July Disneyland trip, but Nicol is active. No action.
-> - **EquityZen**: Lightmatter (AI photonics) and Redwood Materials now live in addition to Lambda. INFORMATIONAL.
-> - **B-34 Lime coach email**: Confirms 5:30 PM practice today (Coach Greg + Coach David). Confirms May 2 game vs Charcoal at Brookdale. No change from calendar.
-> - **USPS**: 4 mailpieces + 1 inbound package arriving today.
-> - All prior open items carry forward unchanged.
-
-## Latest from gather (2026-04-29) — run 26
-
-> [!todo] ACTION_REQUIRED — HIGH | Deadline: 2026-05-04
-> **Mother's Day gift for Aneeta — personalize by May 4.** Mark and Graham personalization deadline is May 4 (5 days). Mother's Day is May 11. Aneeta returns from RRE ~May 3. Order/personalize gift before May 4 to ensure arrival in time. (markandgraham.com, email 2026-04-29 14:19 UTC)
-
-> [!warning] TODAY logistics — sole-parent + NYC commute conflict
-> **SpotHero parking confirmation #122072609**: Alton parked at 35 W 33rd St Valet Garage, NYC, Apr 29 9:00 AM–9:00 PM ET. Soccer practice B-34 Lime is at 5:30 PM ET at Anderson Park, Montclair. Alton is sole parent (Aneeta at RRE through May 3). Must depart NYC office by ~4:30 PM ET to make practice, or arrange parent coverage for the 5:30 PM slot. Parking held until 9 PM so car can be retrieved after practice.
-
-> [!note] Run 26 informational — research signals
-> - ChinaTalk: "The Quantum Industrial Base" (substack, 13:56 UTC) — quantum computing + industrial policy. Domain 5 relevant.
-> - The Zvi: "The Most Important Charts in the World" (substack, 14:04 UTC) — AI/macro signal.
-> - SNO Editorial Scholars deadline April 30: not applicable per 2026-04-16 triage.
-> - All 5 calendar feeds stable. No new events. All prior open items carry forward.
-
-## Latest from gather (2026-04-30) — run 28
-
-> [!warning] TODAY — Vayu spring dance concert 9:40 AM ET (sole-parent day)
-> Concert is at MKA TODAY, 9:40–11:00 AM ET. Aneeta is at RRE. Alton must be at MKA by 9:25 AM. The API time debate (9:40 AM vs 1:40 PM tracked across 28 runs) is resolved by today's Z-anchored reading: `2026-04-30T13:40:00Z` = 9:40 AM EDT. See [[family/vayu]].
-
-> [!todo] ACTION_REQUIRED — EquityZen: reconfirm Anthropic investor interest
-> Email from support@equityzen.com, 2026-04-29 17:58 ET, subject "Action Needed: Please Reconfirm Your Investor Interest." Company: Anthropic. "Submitting interest helps us gauge how much current demand there is." Interest expires without reconfirmation. Log into EquityZen My Watchlist and reconfirm. Prior run 27 flagged as "soft action" — today's email is subject-line explicit.
-
-## Latest from gather (2026-04-30) — run 29
-
-> [!decision] ACTION_REQUIRED — SANTE TOTAL FINANCIAL
-> **Authorize or hold Sante Total fund transfer to "Gaby."** [[people/alison-smith|Alison Smith]] emailed "Carol" (Cadelssbusia@aol.com) on 2026-04-30 02:29 UTC, CC'd [[barbara-weis|Barbara Weis]] (dye2tie@gmail.com), edelss@hotmail.com, and alto84@gmail.com. Question posed: "Do you anticipate anymore [donors] or should we plan to get the money sent to Gaby?" "Gaby" is an in-country program contact (Haiti or Kenya). All Sante Total financial transfers require board approval or Alton's explicit authorization. **Review the email thread and decide: (1) authorize transfer amount and timing, or (2) hold pending more donations.** See [[business/sante-total]].
-
-## Latest from gather (2026-04-30) — run 32
-
-> [!todo] ACTION_REQUIRED — NJ Pride FC Spring 2 enrollment
-> **Enroll Vayu in NJ Pride FC Spring 2 season before spots sell out.** Email from info@njpridefc.com received 2026-04-30 14:14 UTC: "The Spring Two Season begins May 23rd, 2026. 2 of the classes are already close to being sold out!" This is Vayu's soccer development program (separate from the B-34 Lime rec league, which has its own schedule). Spring 2 starts May 23. No price listed in snippet — check the NJ Pride FC portal or reply to info@njpridefc.com. Decision: enroll or pass. See [[family/vayu]].
-
-## Latest from gather (2026-04-30) — run 33
-
-> [!todo] ACTION_REQUIRED — Vasu picture day May 1 at 11:30am (Goddard School)
-> Samantha Ramsden (Goddard) via Kaymbu, 2026-04-30 20:00 UTC: picture day TOMORROW (May 1) at 11:30am. Sibling pictures taken at first child's appointment slot. Dress Vasu in photogenic clothing for school Thursday May 1. See [[family/vasu]].
-
-> [!todo] ACTION_REQUIRED — Respond to Roshni Shah re: Vayu homework habits
-> Roshni Shah (rshah@mka.org) emailed 2026-04-30 17:24 UTC asking for parent partnership on Vayu's homework habits — a new concern beyond the Apr 14 partial-quotients math email. Respond to rshah@mka.org. Coordinate with Aneeta (returns from RRE ~May 3). Math dean: Deborah Gordon (dgordon@mka.org). See [[family/vayu]].
-
-> [!deadline] 2026-05-29 at 8:15am
-> **Vishala Capstone Design Fair at Brookside (MKA).** May 29, 8:15am, 3rd grade classrooms. Veracross email 2026-04-30. Parents expected to attend. Block calendar now. See [[family/vishala]].
-
-> [!todo] ACTION_REQUIRED — Pay Pool Guyz LLC statement
-> billing@thepoolguyznj.com, 2026-04-30 20:18 UTC. Statement PDF attached (amount in attachment). Pay via Zelle to Thepoolguyznj@gmail.com (preferred) or Venmo @thepoolguyz. Prior service visits: Apr 22 (log #36601595), Apr 23 (log #36619894). See [[family/vasu]] for pool service history.
-
-> [!todo] ACTION_REQUIRED — Nintendo Switch repair #61296128 (payment declined)
-> noreply_repair@noa.nintendo.com, 2026-04-28 19:00 UTC. Service request 61296128 on hold: "Your payment method was declined. Please click on the link. Time is running out!" Update payment method to authorize repair before the service window closes.
 
 ## Latest from gather (2026-05-01) — run 36
 
 > [!warning] OVERDUE — deadline was 2026-05-01 (TODAY)
-> **185 Davis Condo Assessment — lump sum due date has passed.** $2,253.13 lump sum was due May 1, OR enroll in $563.28/month installment plan (May–August). From Charlotte Rice (trustee, charlotterice@gmail.com), Apr 27. If lump sum not yet paid, contact Charlotte to confirm installment enrollment. Additional upcoming assessments: fuel cost overage ~$375/unit (due June 30) and boiler expansion tank vote via Google Form by May 15. See run 36 (Apr 27) entry above.
+> **185 Davis Condo Assessment — lump sum due date has passed.** $2,253.13 lump sum was due May 1, OR enroll in $563.28/month installment plan (May–August). From Charlotte Rice (trustee, charlotterice@gmail.com), Apr 27. If lump sum not yet paid, contact Charlotte to confirm installment enrollment. Additional upcoming assessments: fuel cost overage ~$375/unit (due June 30) and boiler expansion tank vote via Google Form by May 15.
 
 > [!warning] OVERDUE — deadline was 2026-05-01 (TODAY)
-> **CSA 2026 checks — both due TODAY.** Circle Brook Farm split payment ($475 due May 1) + Tree-Licious Orchards fruit share ($345 due May 1). Mail to Enid Melville, 12 Valley Place, Upper Montclair, NJ 07043. If not yet sent, contact Enid directly to confirm whether late payment is accepted. Pickup site: 86 Llewellyn Rd, Montclair. Season starts June 9. See run 36 (Apr 27) entry above.
-
-> [!todo] ACTION_REQUIRED — HOUSEHOLD/SAFETY
-> **Amazon product safety recall — review required.** order-update@amazon.com, 2026-05-01 00:40 UTC. Subject: "ATTENTION: Important Safety Notice about your Past Amazon Order." Amazon notifying of potential safety concern with a previously purchased product. Log into Amazon → Account & Lists → Recalls and Product Safety Alerts to identify the affected product. Specific item not visible in snippet. First surfaced run 35; routed here now.
-
-> [!todo] ACTION_REQUIRED — HIGH | Deadline: 2026-05-04 (3 days)
-> **Mother's Day gift for Aneeta — personalize by May 4.** Mark and Graham personalization deadline is May 4. Mother's Day is May 11. Aneeta returns from RRE ~May 3. Order/personalize gift at markandgraham.com before May 4. First surfaced run 26 (Apr 29); routed here now (run 35 claimed write but did not execute).
-
-## Latest from gather (2026-05-01) — run 38
-
-> [!todo] ACTION_REQUIRED — RSVP for tomorrow's soccer game
-> **B-34 Lime game May 2 — coach requesting attendance confirmation.** Keith Gormley (keith.gormley@gmail.com) emailed the team at 7:27 PM ET May 1: "looks to be a low turnout for our game on Saturday. We have 6 players confirmed to be away or unavailable." Team may not have enough players. Reply to keith.gormley@gmail.com confirming whether Vayu will attend. Game is **Saturday May 2, 2:00–3:00 PM ET, Brookdale Stadium South, Field 1, Brookdale Park**. Alton is sole parent. See [[family/vayu]].
-
-> [!fact] Goddard Mother's Day Celebration — time confirmed
-> **May 8, 7:30–9:30 AM ET** (open arrival window). Previously logged as "TBD (school hours)." Samantha Ramsden (Goddard) confirmed via Kaymbu May 1. Aneeta returns from RRE ~May 3 — she should be available. This is her celebration, not an action item for Alton. See [[family/family-calendar]] and [[family/vasu]].
-
-> [!fact] Goddard May 3 — additional picture day (PREVIOUSLY UNKNOWN)
-> Monday May 3 has BOTH soccer AND picture day at Goddard (9:30 AM Twos class, 10:00 AM next group). Dress Vasu in photogenic clothing. Aneeta's return from RRE is expected May 3 but morning timing is uncertain — Alton may be handling drop-off. See [[family/vasu]].
-
-## Latest from gather (2026-05-02) — run 39
-
-> [!fact] RESOLVED — B-34 Lime RSVP sent
-> Alton replied to coach Keith Gormley (keith.gormley@gmail.com) at 5:42 PM ET May 1: "Vayu will be there." Also confirmed: Cormac (Schorrh), Asa (Brentan). Game is TODAY May 2, 2:00–3:00 PM ET, Brookdale Stadium South. Action item from run 38 is closed.
-
-> [!todo] SOFT ACTION — Teacher Appreciation Week chalk message | Deadline: 2026-05-04 (Monday)
-> Goddard announces Teacher Appreciation Week May 4–8. Monday May 4 drop-off: write Vasu's teacher a message on the outdoor chalkboard (chalk provided at school). Aneeta returns from RRE May 3 — likely her drop-off but morning logistics uncertain. See [[family/vasu]].
-
-> [!fact] Hiive: Gecko Robotics shares now available
-> US Navy + GSA IDIQ, 5-year, $71M ceiling, $54M initial — largest robotics deal in US Navy history. Pre-IPO shares on Hiive marketplace. Alton has no prior expressed Gecko interest on record. LOW priority. From opportunities@mail.hiive.com, May 1 22:30 UTC.
-
-> [!fact] Berman Home Systems WiFi-7 install confirmed working
-> Alton's outbound email to Pete@bermanhomesystems.com (May 1 23:53 UTC): "WiFi-7 coverage is exactly what I was hoping for, and the Sonos integration came out clean. Genuinely happy with the work." Subject: "Network management handoff + a few suggestions." Install confirmed complete and satisfactory. $5,000 deposit (card 7436) paid Apr 8. Install Apr 27–29.
-
-## Latest from gather (2026-05-02) — run 40
-
-> [!todo] ACTION_REQUIRED — HIGH | Aneeta LLC draft needs review
-> **Aneeta sent first LLC draft to Alton for review.** aneetasax@gmail.com → alto84@gmail.com, May 2 03:04 UTC. Subject: "Re first draft LLC." Snippet: "Evening, Here is my first stab at my LLC Aneeta." Likely related to her Neurvati Medical Director role or consulting income structure. Alton should review and respond. No deadline stated. See email thread "Re first draft LLC" in Gmail.
-
-> [!fact] Vishala weekly screen time: 11hr 39min (Apr 25–May 1)
-> Microsoft Family Safety weekly report, May 2 01:13 UTC. Screen time within normal range — no escalation flag. See [[family/vishala]].
-
-> [!fact] TODAY — B-34 Lime game at Brookdale (2:00 PM ET, run 40 reminder)
-> B34 Lime vs B34 Charcoal, Brookdale Stadium South, Field 1. 2:00–3:00 PM ET. Vayu confirmed. RSVP thread closed.
-
-## Latest from gather (2026-05-02) — run 41
-
-> [!warning] ESCALATED — CAQH ProView profile now EXPIRED
-> **CAQH ProView reattestation required.** marcom@caqh.org, May 2 12:31 UTC: "This email is associated with one or more expired profiles in the CAQH Provider Data Portal." Previously flagged Apr 12 run 5 as "requires reattestation." Status now upgraded to **expired**. Expired profiles affect insurance credentialing and hospital privileges. Log in to proview.caqh.org and complete reattestation immediately. See [[ALTON]].
-
-> [!fact] FINANCIAL — CoreWeave (CRWV) call sold (May 2)
-> **Fidelity trade confirmation: SOLD CALL (CRWV) COREWEAVE INC COM.** Account XXXXX8998. May 2 11:20 UTC. Trade executed. INFORMATIONAL — no further action needed from this surface.
-
-> [!fact] Sante Total — new PayPal donation from Cary Grayson (May 2)
-> service@paypal.com, May 2 10:02 UTC. Transaction ID: 77M21554G32947412. "You received a payment from Cary Grayson for Sante Total." Amount not visible in snippet — verify in PayPal. Note: Cary Grayson previously donated ~$350+ on 2026-04-02; this is a second donation from the same donor. Log amount and send tax receipt per [[alison-smith|Alison Smith]] pattern. See [[business/sante-total]].
-
-> [!todo] LOW — Jackrabbit Tech Summer Gymnastics (June 23–Aug 18)
-> **Registration open.** 9-week summer session, June 23–August 18, 2026. Price: $200 (no registration fee), $20 off 2nd/3rd sibling. NEW: parent/child summer class. Location: 136 Mountainview Blvd, Wayne NJ, 973-837-8877. Eligible: Vishala (8), Vayu (10), Vasu (4, parent/child class). Decide whether to enroll. From noreply@jackrabbittech.com, May 2 14:29 UTC.
-
-## Latest from gather (2026-05-03) — run 42
-
-> [!fact] CLOSED — Nintendo Switch repair #61296128 returned unrepaired
-> noreply_repair@noa.nintendo.com, May 2 19:00 UTC. "We were unable to process service request 61296128. Your order will be returned in the same condition it was received." Previously flagged run 33 as "payment declined, on hold." The repair attempt is now fully abandoned — Nintendo is shipping the device back unrepaired. No further action on this item. Status: CLOSED.
-
-> [!fact] Cenlar mortgage payment $17,311.53 applied 05/01/2026
-> Regular monthly mortgage cycle confirmed. Cenlar@loanadministration.com, May 2 18:00 UTC. INFORMATIONAL.
-
-> [!fact] Chase CC (...1276) — statement balance $75.01, due 05/27/2026, autopay enabled
-> no.reply.alerts@chase.com, May 2 19:18 UTC. Very low balance; autopay handles. No action needed.
-
-## Latest from gather (2026-05-03) — run 43
-
-> [!fact] Delta-minimal run — 4 informational facts, 0 new ACTION_REQUIRED
-> Run 43 queried Gmail (newer_than:2d) and all 5 calendars (May 3–10). Net-new: JPMorgan investment statement (May 3); Amazon Aveeno Eczema Therapy order (May 3); MedscapeLIVE CME Stroke Prevention May 19; Chase statements (...7691) and (...8189). Calendar stable vs run 42. All 27 carry-forward ACTION_REQUIRED items unchanged.
-
-> [!warning] DEADLINE TOMORROW — Mother's Day gift (Mark and Graham personalize)
-> **2026-05-04** is the personalization cutoff. If Alton has not yet ordered, today (May 3) is the last day to place the order with personalization. First flagged run 26. See carry-forward list.
-
-> [!warning] DEADLINE TOMORROW — Goddard Teacher Appreciation chalk message
-> Monday May 4 drop-off: write Vasu's teacher a message on the outdoor chalk board (chalk provided at school entrance). From run 39/Alissa DelConte (Goddard). Aneeta returned from RRE May 3 — coordinate who handles drop-off.
-
-> [!fact] MedscapeLIVE CME — Stroke Prevention, May 19, 2026
-> Virtual CME/CNE/CPE event, Tuesday May 19, 2:00 PM ET. "The Clotting Report: Evolving Strategies for Stroke Prevention." Free virtual event in Alton's clinical domain. Relevant to AstraZeneca stroke portfolio work. No registration deadline stated.
+> **CSA 2026 checks — both due TODAY.** Circle Brook Farm split payment ($475 due May 1) + Tree-Licious Orchards fruit share ($345 due May 1). Mail to Enid Melville, 12 Valley Place, Upper Montclair, NJ 07043. If not yet sent, contact Enid directly to confirm whether late payment is accepted.
 
 ## Latest from gather (2026-05-03) — run 44
 
 > [!todo] ACTION_REQUIRED — HIGH | HIIVE/Anthropic family agreement — sign document electronically
 > **Alton committed "Will" to Oliver Sartor on May 3 (11:34 UTC).** Thread `19dc1f2557a2df27`. Subject: "Anthropic agreement that support our purchase via HIIVE which was allocated 1:1:1 in value between Emmett Alton Sartor and Alton Oliver Sartor and Belinda Marascalco Sartor." Oliver sent the document April 24 for signing; offered electronic signature option. osarto@yahoo.com nudged May 3 09:36: "Would be good to sign please." Alton replied: "Will." Document has not yet been signed. Retrieve the attached document from the original April 24 email (oliversartor@icloud.com) and sign electronically. Sissy Sartor is also pending signature (was at Mama Rita's without printer April 24). Sign ASAP.
 
-> [!warning] DEADLINE TOMORROW — Mother's Day gift (Mark and Graham personalize)
-> **2026-05-04** is the personalization cutoff for Mark and Graham order. First flagged run 26. Last opportunity to order with personalization before Mother's Day.
-
-> [!warning] DEADLINE TOMORROW — Goddard Teacher Appreciation chalk message
-> Monday May 4 drop-off: write Vasu's teacher a chalk message on the outdoor chalk board (chalk provided at school entrance). From Alissa DelConte (Goddard). Coordinate with Aneeta on who handles drop-off.
-
-## Latest from gather (2026-05-03) — run 45
-
-> [!fact] Delta-minimal run — 4 informational facts, 0 new ACTION_REQUIRED
-> Run 45 queried Gmail (newer_than:2d) and all 5 calendars (May 3–10). Net-new: Costco order delivered May 3 (85 Stonebridge Road); Anthropic receipt #2333-0595-7386; Amazon Aveeno delivered (loop closed from run 44); Code Ninjas Livingston NJ summer camps email. Calendar stable. All 28 carry-forward ACTION_REQUIRED items unchanged.
-
-> [!warning] DEADLINE TOMORROW — Mother's Day gift (Mark and Graham personalize)
-> **2026-05-04** is the personalization cutoff. Last opportunity to order with personalization before Mother's Day (May 11). Carry-forward from run 26.
-
-> [!warning] DEADLINE TOMORROW — Goddard Teacher Appreciation chalk message
-> Monday May 4 drop-off: write Vasu's teacher a chalk message on the outdoor chalk board (chalk provided at school entrance). Coordinate with Aneeta on who handles drop-off.
-
-## Latest from gather (2026-05-03) — run 46
-
-> [!warning] CRITICAL — Chase Fraud Alerts: TWO cards simultaneously
-> **Chase@fraudalert.chase.com, May 3 17:06–17:07 UTC. Thread 19deecea84e7efd2.** Two separate fraud alerts arrived within 1 minute: Chase Sapphire (...8547) and Chase Freedom (...7054). "Please tell us if you or someone you authorized made this transaction." Two simultaneous alerts on different cards is unusual and may indicate a shared compromised merchant or broader account issue. **Respond to both alerts immediately via Chase mobile app or online banking.** If unauthorized, request card replacement for both cards.
-
-> [!fact] Soccer schedule extended — May 13 practice + May 16 game (new in window)
-> Run 46 extended calendar window to 14 days, surfacing two new events: (1) **May 13, 5:30–6:15 PM** — Rec Soccer Practice (B-34 Lime), Anderson Park (Family calendar); (2) **May 16, noon–1:00 PM** — B34 Silver vs B34 Lime, Brookdale Park Field 1 (Blue Sombrero). Both conflicts-checked: no overlaps with known Aneeta/family events.
-
-## Latest from gather (2026-05-04) — run 47
-
-> [!warning] SECURITY/FLAG — Bitwarden account created at alto84@gmail.com — confirm or deny
-> **no-reply@bitwarden.com, May 3 23:12 UTC. Threads 19df01d2f740fb90 + 19df01dc74224397.** Two back-to-back Bitwarden emails (Verify Your Email + Welcome) arrived at alto84@gmail.com. Bitwarden is a password manager; this means someone created a new Bitwarden account using Alton's email address. This may be legitimate (Alton setting up a password manager) or it may be unauthorized. **The timing is concerning:** these emails arrived ~6 hours after two simultaneous Chase fraud alerts on Sapphire (...8547) and Freedom (...7054) at 17:06–17:07 UTC the same evening. If Alton did not initiate this: do not click the verification link, access Bitwarden.com to deactivate the account, and escalate the Chase fraud alert response. If Alton did create this account: no action needed — close this item.
-
-> [!warning] DEADLINE TODAY — Mother's Day gift (Mark and Graham personalize)
-> **2026-05-04** is the personalization cutoff. Mark and Graham order must be placed today to receive personalization before Mother's Day (May 11). First flagged run 26.
-
-> [!warning] DEADLINE TODAY — Goddard Teacher Appreciation chalk message
-> Monday May 4 drop-off: write Vasu's teacher a chalk message on the outdoor chalk board (chalk provided at school entrance). Coordinate with Aneeta on who handles drop-off. From Alissa DelConte (Goddard). First flagged run 39.
-
-> [!fact] Guidepoint Pharma R&D Tech Survey $50 — new opportunity (run 47)
-> surveys@guidepoint.com, May 3 23:21 UTC. Separate from the Genetic Disorder Survey (run 22, still open). Pharma R&D Tech topic. $50 compensation. Accept or decline per interest.
-
-## Latest from gather (2026-05-04) — run 48
-
-> [!fact] Bitwarden Windows CLI login — IP consistent with Rocinante (run 48 escalation of run 47 flag)
-> `no-reply@bitwarden.com`, May 4 01:19 UTC. Thread 19df091fb767ff47. The Bitwarden account created at alto84@gmail.com (run 47 SECURITY/FLAG) was subsequently logged into from a new device: **Windows CLI**, IP `2600:4041:410a:fc00:cd31:4ed1:b779:7089`. IPv6 prefix `2600:4041` is Verizon Fios — consistent with Rocinante's internet connection in Montclair NJ. Sequence: Chase fraud alerts → Bitwarden account created → CLI login from local Fios IP 2 hours later. Likely benign (Alton setting up Bitwarden CLI on Rocinante). **Close the run 47 flag if Alton confirms this was intentional.**
-
-## Latest from gather (2026-05-04) — run 50
-
-> [!todo] DELIVERY_EXPECTED — Nintendo Switch repair #61296128 shipped via UPS
-> `noreply_repair@noa.nintendo.com`, May 4 15:57 UTC. Thread 19df3b59ba319fd2. "We shipped your service request 61296128 back to you." Tracking: **1Z9437400399660038**, Carrier: UPS. Previously marked CLOSED run 42 (ticket closed on Nintendo's end). Now physically in transit — expect UPS delivery within 1-3 business days. Track at ups.com.
-
-> [!todo] OPEN — Guidepoint Brain Health / Neuro-Technology consultation #1737738 — accept or decline
-> `mpramesty@guidepointglobal.com`, May 4 08:32 UTC. Thread 19df21e86c5c654b. New consultation request matched to Alton: "Brain Health and Neuro-Technology Experts (#1737738)." Directly in Alton's domain (neurologist + AI/ML). Contact: Manisha Pramesty. Separate from Pediatric Glioma consult (run 6) and Pharma R&D Tech survey (run 47). Accept or decline.
-
 ## Latest from gather (2026-05-04) — run 51
 
 > [!todo] ACTION_REQUIRED — Google Cloud Platform billing past due
-> `CloudPlatform-noreply@google.com`, May 4 17:11 UTC. Thread 19df3f8ec26a18ec. Subject: "Action required: your billing account 013989-45FB97-2BEFF0 is past due or has invalid payment information." GCP billing failures stop running services. Check GCP console → Billing → Account 013989-45FB97-2BEFF0. Update payment method or clear the past-due balance. If this account hosts Sartor or Solar Inference infrastructure, services may already be degraded.
-
-> [!warning] Tribeca Pediatrics portal messages — now 5 unread
-> `info@tribecapediatrics.com`, May 4 18:39–18:40 UTC. Thread 19df449d16fe662a. Two new portal messages (×2 back-to-back). Prior carry-forward count was 3 unread (earlier runs). Total now **5 unread portal messages.** Content unknown — could be appointment reminders, test results, or clinical communications for any of the three children. Check the Tribeca Pediatrics portal to determine urgency.
-
-> [!todo] OPEN — Guidepoint Global Oncology Specialists #1732882 — accept or decline
-> `otaylor@guidepointglobal.com`, May 4 16:22 UTC. Thread 19df3cc8f1d013c3. Third distinct Guidepoint request this run cycle (separate from: Genetic Disorder Survey run 22, Brain Health/Neuro-Tech #1737738 run 50). Global Oncology Specialists topic. Contact: O. Taylor. Accept or decline.
+> `CloudPlatform-noreply@google.com`, May 4 17:11 UTC. Subject: "Action required: your billing account 013989-45FB97-2BEFF0 is past due or has invalid payment information." GCP billing failures stop running services. Check GCP console → Billing → Account 013989-45FB97-2BEFF0. Update payment method or clear the past-due balance.
 
 > [!fact] Alton acquired Pixel 10 Pro Fold at Google Store Chelsea today
-> Google Store Chelsea (76 9th Ave), May 4 2:15 PM appointment. Pixel 9 Pro Fold Obsidian 256GB replaced under warranty (RMA GSR.9196-8116-1500). New Pixel 10 Pro Fold purchased (receipt GS.6304-2623-7510). Replacement device for old phone: RMA74714708, delivery 5/5–5/7. Google security alert for new device sign-in is expected and benign.
+> Google Store Chelsea (76 9th Ave), May 4 2:15 PM appointment. Pixel 9 Pro Fold Obsidian 256GB replaced under warranty (RMA GSR.9196-8116-1500). New Pixel 10 Pro Fold purchased (receipt GS.6304-2623-7510). Replacement device for old phone: RMA74714708, delivery 5/5–5/7.
 
-> [!note] Climate First Bank system upgrade May 7–11 (5-day disruption)
-> `marketing@email.climatefirstbank.com`, May 4 16:45 UTC. Thread 19df3e223f54590d. Banking services disrupted starting Thursday May 7 through May 11. If any Solar Inference LLC or personal accounts are at Climate First Bank, plan transactions around this window. INFORMATIONAL — confirm whether this bank is in active use.
+## Latest from gather (2026-05-02) — run 41
 
-## Latest from gather (2026-05-05) — run 52
-
-> [!todo] ACTION_REQUIRED — P2 HOME SYSTEMS
-> **Lutron switches — call with Pete Berman (today, May 5).** Pete Berman (pete@bermanhomesystems.com, Berman Home Systems) emailed 23:59 UTC May 4: "Eli asked me to follow up with you about the Lutron switches. Can we jump on a quick call tomorrow morning to talk about it?" Alton replied "Certainly." Context: Berman Home Systems completed the WiFi-7/Sonos installation Apr 27–29 (confirmed working May 1). Pete also coordinates with Power Mac LLC (Ilija Trajceski, info@power-mac.net) for electrical work. Confirm call time and discuss Lutron switch requirements.
-
-> [!warning] DEADLINE PASSED — Mother's Day gift personalization cutoff (May 4)
-> Mark and Graham personalization deadline was yesterday (May 4). Mother's Day is **May 11**. Standard (non-personalized) shipping from markandgraham.com may still arrive in time — check current delivery estimates. Aneeta is home (returned from RRE May 3). First flagged run 26.
-
-> [!todo] DELIVERY_EXPECTED — today or this week
-> Two inbound deliveries:
-> - **Pixel 10 Pro Fold** replacement (RMA74714708) — Google Store delivery window 5/5–5/7
-> - **Nintendo Switch** returned unrepaired (#61296128, UPS 1Z9437400399660038) — shipped May 4, 1–3 business days
-
-> [!note] Run 52 calendar — stable vs run 51
-> No new events in 7-day window (May 5–12). Soccer practice May 6 5:30 PM (Anderson Park). Anjali's Birthday May 8 (Aneeta). Vayu soccer game May 9 11 AM + Convocation 2:30 PM — no conflict (2.5h gap). No scheduling conflicts detected.
-
-> [!note] Run 52 carry-forward (35 total open items, +1 new)
-> GCP billing P0 unresolved (15+ hours). Machine 52271 offline 14+ days. CAQH ProView expired. MKA tuition due May 10. All prior 34 items unchanged. See `data/gather-alerts.md` for full ranked list.
-
-## Latest from gather (2026-05-05) — run 53
-
-> [!fact] Lutron call with Pete Berman — confirmed 8 AM May 5
-> pete@bermanhomesystems.com, 10:08 UTC May 5. Pete replied "8 works great" to Alton's confirmation. Call was at 8 AM ET today — outcome unknown. Follow up: did the call happen? What were the Lutron switch requirements discussed? Power Mac LLC (Ilija Trajceski) coordination pending since Apr 13. Update this item with call outcome.
-
-> [!warning] M3 Global Research neurology surveys — unsubscribe not completed
-> surveys.usa@m3globalresearch.com still sending daily. Per 2026-04-16 triage decision, Alton elected to unsubscribe. The action was not completed. Go to the email and use the unsubscribe link, or reply with opt-out.
-
-> [!note] Run 53 calendar — stable (no changes)
-> All 5 calendars unchanged vs run 52. Next events: soccer practice Wed 5/6 5:30 PM; Anjali's Birthday Fri 5/8; Vayu soccer game + Convocation Sat 5/9. No conflicts.
-
-> [!note] Run 53 carry-forward (35 open items, no new items this run)
-> GCP billing P0 unresolved (19+ hours). FedEx CEVA expected today before 8 PM (signature req). Memory Book presale deadline 2026-05-10. Wohelo $12,900 due 2026-05-15. Machine 52271 offline 15+ days.
-
-## Latest from gather (2026-05-05) — run 54
-
-> [!todo] ACTION_REQUIRED — P1 HOME SYSTEMS
-> **Berman Home Systems Lutron quote received — Theater Lighting Control.** pete@bermanhomesystems.com, 14:52 UTC May 5. Subject: "Berman Home Systems Quote- Lutron." Pete Berman sent the Lighting Control quote for the Theater following the 8 AM call. Review and respond via the Berman Home Systems portal (link in email) — accept, decline, or request changes. This advances the Power Mac LLC (Ilija Trajceski, info@power-mac.net) coordination pending since 2026-04-13 estimate acceptance. Contact: Pete Berman, C: 201-615-0296. See [[family/active-todos]] Lutron run 52/53 entries for call history.
-
-> [!fact] Soccer — May 13 practice + May 16 game added to Vayu's window
-> **Wed 2026-05-13, 5:30–6:15 PM ET** — Rec Soccer Practice (B-34 Lime), Anderson Park (south side near Parkside St). Recurring. Newly in extended calendar window.
-> **Sat 2026-05-16, 12:00–1:00 PM ET** — Game: B34 Silver vs B34 Lime (Gormley Hanlon & Waynik), Brookdale Park, Montclair NJ. Net-new. See [[family/vayu]].
-
-> [!fact] Vishala — MKA "own your letter dress down" day, May 20
-> **Wed 2026-05-20, all-day** — "Vishala own your letter dress down" — MKA spirit/achievement dress-down day. Created by Aneeta on 2026-05-04. Transparency: free (no blocking). See [[family/vishala]].
-
-> [!note] Run 54 carry-forward (36 open items, +1 new: Lutron quote review)
-> GCP billing P0 unresolved (24+ hours). FedEx CEVA status unknown (delivery window closed at 8 PM today). Memory Book presale 2026-05-10. Wohelo $12,900 due 2026-05-15. Machine 52271 offline 15+ days.
+> [!warning] ESCALATED — CAQH ProView profile now EXPIRED
+> **CAQH ProView reattestation required.** marcom@caqh.org, May 2 12:31 UTC: "This email is associated with one or more expired profiles in the CAQH Provider Data Portal." Previously flagged Apr 12 run 5 as "requires reattestation." Status now upgraded to **expired**. Expired profiles affect insurance credentialing and hospital privileges. Log in to proview.caqh.org and complete reattestation immediately. See [[ALTON]].
 
 ## Latest from gather (2026-05-06) — run 56
-
-> [!todo] ACTION — Chase Business Meeting TODAY 2:30 PM
-> In-person at Chase Montclair branch, 19 N Fullerton Ave. With Pavel Manrique (Relationship Banker, 973-873-9133). Topic: open or upgrade a business account (Solar Inference LLC likely). Email confirmation received 2026-05-05.
-
-> [!deadline] 2026-05-15 — Wohelo $12,900 (9 days — URGENT)
-> Full tuition for Vishala's summer camp. Check to Wohelo Camps, 25 Gulick Road, Raymond ME 04071. Contact Heidi Gorton (heidigorton@gmail.com). $500 deposit already past due since 2026-04-10. See [[family/vishala]].
-
-> [!deadline] 2026-05-10 — MKA Memory Book order (4 days)
-> Carry-forward from run 55.
 
 > [!fact] Oliver Sartor — Anthropic agreement signed (2026-05-05)
 > Dr. Oliver Sartor (MD, Tulane/LCMC Health, family member — oncologist) emailed Alton + family "Anthropic agreement signed by all..... File it!" with attachment. Nature of agreement unclear. See [[people/oliver-sartor]].
 
-> [!fact] MKA Conference Day May 14 — PAMKA volunteer request
-> PAMKA requesting food/snacks for Spring Conference Day (Thursday May 14, all MKA campuses). Source: meganflick@gmail.com 2026-05-05.
-
 > [!fact] MKA Fourth Grade Laptop Letter — review needed (Vayu)
 > From Erica Budd (Director of Ed Tech) + Jacqy Chung via Veracross. Important info for 4th grade families. Body blank in email — may need MKA Veracross portal login to read. See [[family/vayu]].
-
-> [!deadline] 2026-05-09 — Vayu soccer game @ Brookdale Park
-> 11 AM vs Purple team (B34 - Lime vs B34 - Purple - Lac & Karacas). Team coming off a loss on Saturday. Shin guards required. Coach: Gormley/Hanlon/Waynik.
-
-> [!note] Convocation — Saturday May 9, 6:30–9:30 PM
-> On Family calendar. No location or context provided. Check what this event is — possible school graduation or ceremony.
-
-> [!note] Run 56 carry-forward (37 open items, +1 new: Lutron quote resolved?, +0 new escalations)
-> GCP billing P0 unresolved. Memory Book deadline 2026-05-10 (4 days). Wohelo $12,900 due 2026-05-15 (9 days). Machine 52271 offline status unknown (SSH unavailable this run). Chase meeting TODAY.
 
 ## Latest from gather (2026-05-06) — run 59
 
 > [!todo] ACTION_REQUIRED — Ghosty vet: overdue services (Cambridge Cat Clinic)
 > Cambridge Cat Clinic (1108 Cambridge St, Cambridge MA; 617-245-0245) sent an overdue services reminder for Ghostie on 2026-05-06. Services overdue — schedule appointment or consider transitioning to a local Montclair vet given distance. See `daily/2026-05-06.md` run 59 for full detail.
-
-> [!fact] Cenlar mortgage — large payment $17,311.53 applied 2026-05-01 (review allocation)
-> A $17,311.53 Cenlar loan payment was applied on 2026-05-01 — substantially above the routine monthly amount ($3,133.12). May be escrow true-up, extra principal, or a separate loan. Review at loanadministration.com for allocation breakdown.
-
-> [!note] Run 59 carry-forward (38 open items, +1 new: Ghosty vet)
-> GCP billing P0 unresolved. Memory Book deadline 2026-05-10 (4 days). Wohelo $12,900 due 2026-05-15 (9 days). Machine 52271 offline status unknown. Chase business meeting was today 2:30 PM (outcome unknown).
-
-## Latest from gather (2026-05-06) — run 60 (catch-up: not logged in prior active-todos pass)
-
-> [!blocker] ACTION_REQUIRED — iCloud storage full, backups failing
-> Apple email 2026-05-06 14:07 UTC: iCloud storage is full. Documents, contacts, and device data no longer backing up. Photos no longer uploading to iCloud Photos. Action: upgrade iCloud storage plan at appleid.apple.com, or free space by deleting old device backups.
-
-> [!todo] Vasu — pizza money at Goddard, replenish (2026-05-06 13:57 UTC)
-> Samantha Ramsden via Kaymbu: Vasu is out of pizza money for Friday pizza. Replenish via Goddard payment portal or contact the school directly. May already be handled (email arrived ~10 AM ET). Verify.
-
-> [!todo] Avigilon Alta (Openpath) — Goddard door access, activate before 2026-05-13
-> noreply@alta.avigilon.com, 2026-05-06 11:58 UTC. Goddard Montclair provisioned mobile door access for Alton via Avigilon Alta. Steps: (1) Download "Alta Open" app (iOS or Android); (2) Activate using invitation link in the email. Token expires ~2026-05-13. See [[family/vasu]].
 
 ## Latest from gather (2026-05-06) — run 61
 
@@ -1613,39 +417,22 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > [!todo] P1 — Vasu Show and Tell FRIDAY 2026-05-08 (letter "i")
 > Lorena Castillo (Goddard) via Kaymbu, May 6 17:42 UTC. Letter of the week: i. Bring ice cream toy, indigo item, or anything starting with i. Pack before Friday drop-off. See [[family/vasu]].
 
-> [!todo] EquityZen — reconfirm Anthropic investor interest
-> support@equityzen.com: Alton's Anthropic watchlist interest needs reconfirmation or it will be removed. Login to EquityZen and reconfirm. Separate from SambaNova Express Deal (informational, no action needed on that).
-
-> [!note] Run 61 carry-forward (40+ open items)
-> P0: GCP billing past due (ongoing). P0: iCloud storage full. Deadline 2026-05-08: Vasu Show and Tell letter i. Deadline 2026-05-10: MKA Memory Book order. Deadline 2026-05-13: Avigilon Alta activation. Deadline 2026-05-15: Wohelo $12,900. Deadline 2026-05-15: Sante Total 2025 990-N filing. Ghosty vet overdue services. Chase banking session completed (address update + new debit card + paperless enrollment — all resolved). Machine 52271 offline status unknown (SSH unavailable from this host).
-
 ## Latest from gather (2026-05-07) — run 62
 
-> [!warning] CONVOCATION TIME CORRECTION — May 9
-> **Convocation is 2:30–5:30 PM ET, NOT 6:30–9:30 PM** as logged in a prior run. Live Family calendar API (run 62): `start: 2026-05-09T14:30:00-04:00`, `end: 2026-05-09T17:30:00-04:00`. No conflict with Vayu's soccer game (11:00 AM–12:00 PM). 2.5h gap between events.
-
 > [!note] Run 62 deadline status (2026-05-07)
-> P0 ongoing: iCloud storage full (unresolved). Carry-forward open: 40+ items.
-> - **2026-05-08 TOMORROW**: Vasu Show & Tell letter "i"
 > - **2026-05-10 (3 days)**: MKA Memory Book presale ends (Vishala)
 > - **2026-05-13 (6 days)**: Avigilon Alta token expires
 > - **2026-05-15 (8 days)**: Wohelo $12,900 mailing deadline
 > - **2026-05-17 (10 days)**: Disney ADR — respond to Nicol Stevenson
 > - **2026-05-29 (22 days)**: Vishala Capstone Design Fair 8:15 AM, MKA Brookside
-> No new ACTION_REQUIRED items this run.
 
 ## Latest from gather (2026-05-07) — run 65
-
-> [!warning] P0 — TODAY 2026-05-07
-> **Vasu pizza money — LAST DAY.** Goddard (Samantha Ramsden via Kaymbu) sent final "Last Day - Out of Pizza Money!" notice at 13:01 UTC. Alton is in NYC today (SpotHero 35 W 33rd St). Replenish via Goddard payment portal remotely or coordinate with Aneeta. If unresolved, Vasu misses Friday pizza. See [[family/vasu]].
 
 > [!deadline] 2026-05-15 (Friday) — ESCALATED
 > **Wohelo/Camp Timanous — forms AND check both due May 15.** Heidi (heidi@timanous.org) sent formal "Important Reminder - Forms Due Friday, May 15" at 15:48 UTC from Panther Pond (Raymond ME). Previous memory tracked only the $12,900 check. Camp forms are also due by this Friday. Both must be mailed together. Check payable to Wohelo Camps, 25 Gulick Road, Raymond ME 04071. 8 days remaining. See [[family/vishala]].
 
 > [!todo] ACTION_REQUIRED — Sante Total PayPal program split
 > **Julia Clemens (jclemens27@gmail.com) requesting PayPal separation — school vs clinic donations.** Email to Barbara Weis (dye2tie@verizon.net) at 15:22 UTC, cc Alton. Julia wants separate PayPal donation buttons/tracks for the school program vs the clinic program. She is asking for PayPal login access to look at options. Alton must decide: provide Barbara/Julia access, or set up the split structure himself. Governance note: PayPal credentials are sensitive — do not share unless explicitly authorized. See [[business/sante-total]].
-
-## Latest from gather (2026-05-07) — run 49 (addendum)
 
 > [!deadline] 2026-05-15
 > **MKA Parent-Teacher Conference sign-up — conferences next Thursday.** Roshni Shah (rshah@mka.org, 4th Grade Dean) emailed Alton and Aneeta 2026-05-07 18:02 ET: "I noticed that you haven't signed up for a Parent Teacher Conference for next Thursday. Sign-ups can be found on Veracross." Conference Day is 2026-05-15. Sign up immediately. Covers Vayu (4th grade) and likely Vishala (3rd grade — same Conference Day). See [[family/vayu]] and [[family/vishala]].
@@ -1654,9 +441,6 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > Jacqueline Capote (Goddard admin) via Kaymbu, 2026-05-07 18:42 ET: "Dance Recital Info! June 2nd at 4:30!" Miss Kelsey (dance teacher). First mention. Confirm venue with Goddard. See [[family/vasu]] and [[family/family-calendar]].
 
 ## Latest from gather (2026-05-08) — run 66
-
-> [!deadline] 2026-05-08 TODAY
-> **Vasu Mother's Day Celebration at Goddard School — TODAY.** Announced via Kaymbu (2026-05-07). No time confirmed in snippet. Confirm timing with Goddard or check Kaymbu app. Aneeta's calendar has no dedicated coverage event. See [[family/vasu]].
 
 > [!todo] ACTION_REQUIRED
 > **Pool pump not taking in water; water heater low pressure alarm.** Pool Guyz visited 2026-05-07 but issue remains unresolved. Their follow-up note (2026-05-07 23:42): "pool needs another follow up — please ensure water level is nice and high." Alton should: (1) top off pool water level now, (2) call The Pool Guyz (973-558-3636) to schedule pump inspection and water heater pressure diagnostic. This is separate from the spring pipe/plumber issue.
@@ -1680,3 +464,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Run 67 carry-forward status (2026-05-08 afternoon)
 > P0 deadline converge on 2026-05-15 (7 days): Wohelo $12,900 + forms (OPEN); Form 990-N Sante Total (NOT FILED). Pool pump + water heater pressure: active unresolved. New item: Venmo $180 (Rachelle trammel, unknown context). Memory book: RESOLVED. Lucent Energy site visit: CONFIRMED 2026-05-13.
+
+## Latest from gather (2026-05-12) — run 70
+
+> [!deadline] 2026-06-04 — act this week
+> **Chase/Sante Total bank account — missing KYC information.** Chase email 2026-05-12: "Action Needed: contact us before 06/04/2026 to avoid account restriction SANTE TOTAL." Account opened 6 days ago (2026-05-06). Contact Pavel Manrique immediately: pavel.p.manrique@chase.com, 973-783-5062, 19 N Fullerton Ave Montclair. See [[business/sante-total]].
+
+> [!deadline] 2026-05-14 (THURSDAY — 2 days) — decision only
+> **Hiive/Harvey AI investment opportunity — funding deadline May 14.** Harvey: AI legal platform, $190M ARR (Jan 2026), raised at $11B valuation (March 2026, Sequoia/GIC/a16z/Coatue). This offer: $37/unit, implied ~$12.1B valuation, $25K minimum investment, Hiive single-asset fund (no mgmt fees or carry; transaction/admin fees apply). No action required if not interested — decision item only. Contact if interested: Ardi Aaziznia, opportunities@hiive.com.
+
+> [!todo] AZ Fidelity 401(k) — review investment lineup changes
+> AZ Savings & Security Plan changing investment lineup: new options added, existing options removed, share class changes (lower-cost classes), possible fee change. Log into Fidelity NetBenefits → Plan Information → Plan Changes. No hard deadline stated; review before default reinvestment applies. See [[ASTRAZENECA]].
+
+> [!todo] Summit Health — patient portal payment due
+> Patient statement posted 2026-05-12. Insurance paid its portion; patient balance remains. Log into Summit Health patient portal for amount. noreply@patient-message.com.
+
+> [!note] Calendar — week of May 12–18 (confirmed from live API this run)
+> - Wed 5/13 5:30–6:15 PM: Rec Soccer Practice (B-34 Lime), Anderson Park south side near Parkside St
+> - Sat 5/16 12:00–1:00 PM: Vayu soccer GAME vs B34-Silver, Brookdale Park Field 1 (arrive ~11:40)
+> - Sun 5/17 10:00 AM–1:00 PM: Playdate with Livia and family
+> - Mon 5/18 1:00–2:00 PM: Optimum fiber appointment (someone needs to be home)

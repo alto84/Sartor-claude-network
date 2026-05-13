@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-05-08
-updated_by: solar-project-curation (Rocinante Opus 4.7 1M)
+updated: 2026-05-10
+updated_by: personal-data-gather (run 68)
 status: active
 priority: p1
 next_review: 2026-05-22
@@ -182,3 +182,11 @@ The 2026-05-06 site visit by Steven Schwartz (CEO, Lucent Energy Management) pro
 **Loan structure caveat:** the Climate First loan is in personal joint name (Alton + Aneeta), account ending 0641. Originated 2026-01-20. Asset-transfer-only to Solar Inference LLC (loan stays personal, depreciable asset moves) is the likely structure — confirm with CPA.
 
 Full project hub: [[reference_solar_project]]. Source documents indexed there.
+
+## Latest from gather (2026-05-10) — run 68
+
+> [!fact] CPA call request sent — §48 ITC structuring (2026-05-09 02:57 UTC)
+> Alton emailed [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com) requesting 15-min call on Solar Inference §48 ITC structuring. Key framing: Lucent Energy installation starts early June; placed-in-service target before July 4 to capture §48 ITC. Aneeta cc'd on the email. **Response pending** — follow up by 2026-05-12 if no reply.
+
+> [!fact] Climate First Bank ownership structure question sent (2026-05-09 02:56 UTC)
+> Alton emailed Erin Gannon (erin.gannon@climatefirstbank.com) re Clean Energy Loan App ID 15296, 85 Stonebridge Rd — raising Solar Inference LLC ownership structure question. Aneeta cc'd. **Response pending** — critical for confirming asset-transfer structure before placed-in-service. Follow up by 2026-05-12 if no reply.
