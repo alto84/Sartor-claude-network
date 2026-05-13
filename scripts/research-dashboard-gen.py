@@ -33,6 +33,7 @@ RESEARCH_DIR = REPO_ROOT / "sartor" / "memory" / "research"
 INBOX_DIR = REPO_ROOT / "sartor" / "memory" / "inbox" / "rocinante"
 DAILY_REPORTS_DIR = REPO_ROOT / "sartor" / "memory" / "daily"
 MACHINE_DIR = REPO_ROOT / "sartor" / "memory" / "machines" / "rtxpro6000server"
+GOAL_FILE = RESEARCH_DIR / "GOAL.md"
 OUT_FILE = RESEARCH_DIR / "dashboard.html"
 
 PE_DIR = RESEARCH_DIR / "persona-engineering"
@@ -101,6 +102,97 @@ def git_log_research(days: int = 7) -> list[dict]:
 
 
 # ---- collectors ------------------------------------------------------------
+
+def collect_goal_state() -> dict:
+    """Read sartor/memory/research/GOAL.md and extract the dashboard-relevant slices.
+
+    The /goal skill maintains this file. We render its mission, decomposition status,
+    tractable items, blocked items, open questions, and recent progress tail.
+    """
+    out: dict = {
+        "present": False,
+        "fm": {},
+        "mission": "",
+        "decomposition_raw": "",
+        "tractable_raw": "",
+        "blocked_gpu_raw": "",
+        "blocked_human_raw": "",
+        "open_questions_raw": "",
+        "progress_entries": [],
+        "updated": "?",
+        "mtime_hours": None,
+    }
+    if not GOAL_FILE.exists():
+        return out
+    out["present"] = True
+    try:
+        mtime = dt.datetime.fromtimestamp(GOAL_FILE.stat().st_mtime, dt.timezone.utc)
+        out["mtime_hours"] = (dt.datetime.now(dt.timezone.utc) - mtime).total_seconds() / 3600.0
+    except Exception:
+        pass
+
+    text = safe_read(GOAL_FILE, max_bytes=400_000)
+    fm, body = parse_frontmatter(text)
+    out["fm"] = fm
+    out["updated"] = fm.get("updated", "?")
+
+    # Section splitter — markdown level-2 headers
+    sections: dict[str, str] = {}
+    current_key = None
+    current_lines: list[str] = []
+    for line in body.splitlines():
+        if line.startswith("## "):
+            if current_key is not None:
+                sections[current_key] = "\n".join(current_lines).strip()
+            current_key = line[3:].strip().lower()
+            current_lines = []
+        else:
+            current_lines.append(line)
+    if current_key is not None:
+        sections[current_key] = "\n".join(current_lines).strip()
+
+    out["mission"] = sections.get("the mission question", "")
+    out["decomposition_raw"] = sections.get("decomposition", "")
+    out["tractable_raw"] = sections.get("tractable now (cpu-only design work)", "")
+    out["blocked_gpu_raw"] = sections.get("blocked on gpu (proposed for an alton-greenlit gpu session)", "")
+    out["blocked_human_raw"] = sections.get("blocked on human", "")
+    out["open_questions_raw"] = sections.get("open questions", "")
+
+    # Recent progress entries — each is a sub-section under "Recent progress" delimited by "## " inside body.
+    # GOAL.md uses level-2 headers for progress entries too (e.g., "## 2026-05-12 — rocinante (initial seed)").
+    # We pick those that look like progress entries by date prefix.
+    for key, sec_body in sections.items():
+        m = re.match(r"^(\d{4}-\d{2}-\d{2})\s+[—-]\s+(.+)$", key)
+        if not m:
+            continue
+        out["progress_entries"].append({
+            "date": m.group(1),
+            "author": m.group(2),
+            "body": sec_body[:400],
+        })
+    # Most recent first
+    out["progress_entries"].sort(key=lambda r: r["date"], reverse=True)
+    return out
+
+def parse_decomposition(decomp_raw: str) -> dict:
+    """Count DONE / IN PROGRESS / NOT STARTED / READY tokens from the decomposition tree."""
+    counts = {"DONE": 0, "IN PROGRESS": 0, "NOT STARTED": 0, "READY": 0, "CLOSED": 0}
+    for line in decomp_raw.splitlines():
+        upper = line.upper()
+        if "DONE" in upper:
+            counts["DONE"] += 1
+        elif "IN PROGRESS" in upper:
+            counts["IN PROGRESS"] += 1
+        elif "NOT STARTED" in upper:
+            counts["NOT STARTED"] += 1
+        elif "READY FOR" in upper:
+            counts["READY"] += 1
+        elif "CLOSED" in upper:
+            counts["CLOSED"] += 1
+    return counts
+
+def count_bullets(raw: str) -> int:
+    return sum(1 for line in raw.splitlines() if line.lstrip().startswith("- "))
 
 def collect_daily_phone_homes(limit_days: int = 14) -> list[dict]:
     """Return one row per cron-wrapper phone-home (started/completed/skipped/failed)."""
@@ -529,6 +621,109 @@ def render_status_lights(nightly_rows: list[dict], snapshot: dict) -> str:
 </div>
 '''
 
+def render_goal_card(goal: dict) -> str:
+    if not goal.get("present"):
+        return '<div class="card"><span class="dim">No sartor/memory/research/GOAL.md found. The /goal framework is not yet active.</span></div>'
+
+    fm = goal["fm"]
+    mtime_h = goal.get("mtime_hours")
+    if mtime_h is None:
+        freshness = '<span class="dim">freshness unknown</span>'
+    elif mtime_h < 24:
+        freshness = f'<span class="pill pill-ok">updated {mtime_h:.0f}h ago</span>'
+    elif mtime_h < 72:
+        freshness = f'<span class="pill pill-warn">updated {mtime_h:.0f}h ago</span>'
+    else:
+        freshness = f'<span class="pill pill-crit">updated {mtime_h:.0f}h ago — peer self-loop may be stalled</span>'
+
+    counts = parse_decomposition(goal.get("decomposition_raw", ""))
+    tractable_n = count_bullets(goal.get("tractable_raw", ""))
+    blocked_gpu_n = count_bullets(goal.get("blocked_gpu_raw", ""))
+    blocked_human_n = count_bullets(goal.get("blocked_human_raw", ""))
+    open_q_n = count_bullets(goal.get("open_questions_raw", ""))
+
+    mission_first = ""
+    for line in goal.get("mission", "").splitlines():
+        if line.strip().startswith(">"):
+            mission_first = line.strip().lstrip(">").strip().strip("*").strip()
+            break
+
+    return f"""
+<div class="card" style="margin-bottom:1.5em">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.6em">
+    <h3 style="margin:0;color:#fbbf24">Mission</h3>
+    {freshness}
+  </div>
+  <div style="font-size:1.05em;color:#fff;margin-top:0.4em">{html.escape(mission_first or "(see GOAL.md)")}</div>
+  <div class="dim" style="margin-top:0.4em">Substrate: <span class="mono">{html.escape(fm.get("substrate_current", "?"))}</span> · Target: <span class="mono">{html.escape(fm.get("target_identity", "?"))}</span> · Lines: <span class="mono">{html.escape(fm.get("lines_engaged", "?"))}</span></div>
+  <table style="margin-top:0.8em">
+    <tr>
+      <th>decomposition</th>
+      <th class="num">DONE</th>
+      <th class="num">IN PROGRESS</th>
+      <th class="num">NOT STARTED</th>
+      <th class="num">READY</th>
+      <th class="num">CLOSED</th>
+    </tr>
+    <tr>
+      <td class="dim">node states</td>
+      <td class="num mono ok">{counts["DONE"]}</td>
+      <td class="num mono warn">{counts["IN PROGRESS"]}</td>
+      <td class="num mono dim">{counts["NOT STARTED"]}</td>
+      <td class="num mono ok">{counts["READY"]}</td>
+      <td class="num mono dim">{counts["CLOSED"]}</td>
+    </tr>
+  </table>
+  <table style="margin-top:0.8em">
+    <tr>
+      <th>work pool</th>
+      <th class="num">items</th>
+    </tr>
+    <tr><td>Tractable now (peer picks from here)</td><td class="num mono ok">{tractable_n}</td></tr>
+    <tr><td>Blocked on GPU (proposed for Alton-greenlit session)</td><td class="num mono warn">{blocked_gpu_n}</td></tr>
+    <tr><td>Blocked on human</td><td class="num mono crit">{blocked_human_n}</td></tr>
+    <tr><td>Open questions</td><td class="num mono dim">{open_q_n}</td></tr>
+  </table>
+  <div class="dim" style="margin-top:0.6em">Full state: <a href="../../research/GOAL.md" class="mono">sartor/memory/research/GOAL.md</a></div>
+</div>
+"""
+
+def render_tractable_list(raw: str) -> str:
+    if not raw.strip():
+        return '<p class="dim">No tractable items in GOAL.md.</p>'
+    out = ['<ul style="margin:0.4em 0;padding-left:1.4em">']
+    for line in raw.splitlines():
+        stripped = line.lstrip()
+        if not stripped.startswith("- "):
+            continue
+        content = stripped[2:]
+        # Bold up to first period; treat as headline
+        m = re.match(r"\*\*([^*]+)\*\*\s*(.*)", content)
+        if m:
+            head = m.group(1)
+            rest = m.group(2)
+            out.append(f'<li><strong>{html.escape(head)}</strong> <span class="dim">{html.escape(rest[:220])}</span></li>')
+        else:
+            out.append(f'<li>{html.escape(content[:240])}</li>')
+    out.append('</ul>')
+    return "".join(out)
+
+def render_progress_tail(entries: list[dict], limit: int = 8) -> str:
+    if not entries:
+        return '<p class="dim">No progress entries yet.</p>'
+    out = ['<table>',
+           '<tr><th>date</th><th>author</th><th>summary</th></tr>']
+    for r in entries[:limit]:
+        out.append(
+            f'<tr>'
+            f'<td class="mono">{html.escape(r["date"])}</td>'
+            f'<td class="dim">{html.escape(r["author"])}</td>'
+            f'<td>{html.escape(r["body"][:240])}</td>'
+            f'</tr>'
+        )
+    out.append('</table>')
+    return "".join(out)
+
 def render_html(
     phone_homes: list[dict],
     daily_reports: list[dict],
@@ -538,6 +733,7 @@ def render_html(
     commits: list[dict],
     snapshot: dict,
     loop_reports: list[dict],
+    goal: dict,
 ) -> str:
     # Aggregate "proposed for GPU session" from all recent daily reports
     proposed_items = []
@@ -558,21 +754,21 @@ def render_html(
 
 {render_status_lights(phone_homes, snapshot)}
 
-<div class="card" style="margin-bottom:1.5em">
-<strong style="color:#fbbf24">Mission:</strong> Can we get a smaller model to take on the household identity?
-<div class="dim" style="margin-top:0.3em">Substrate: Qwen 3.6 35B-A3B-Abliterated-Heretic (current) · Identity: Constitution v0.5 (ratified 2026-05-06). Two research lines: ccp-alignment (subtraction) + persona-engineering (addition).</div>
-</div>
+{render_goal_card(goal)}
 
-<h2>Daily research reports — last 14</h2>
-<p class="dim">Substantive prose reports written by the daytime research-daily cron (10:00 ET / 14:00 UTC). The load-bearing artifact.</p>
-{render_daily_reports(daily_reports)}
+<h2>Tractable now — what the peer picks from each wake</h2>
+{render_tractable_list(goal.get("tractable_raw", ""))}
+
+<h2>GOAL.md progress tail</h2>
+<p class="dim">Append-only entries the /goal skill writes after each wake's work. Newest first.</p>
+{render_progress_tail(goal.get("progress_entries", []))}
 
 <h2>rtxserver peer self-loop — last 10 wake reports</h2>
-<p class="dim">ScheduleWakeup-driven; fragile (lost on peer-service restart). The daily cron backstops this.</p>
+<p class="dim">ScheduleWakeup-driven loop-reports. /goal is the framework that drives these. Age pills surface drift (peer-service restarts can lose the in-session wakeup).</p>
 {render_loop_reports(loop_reports)}
 
-<h2>Daily cron phone-homes — last 14</h2>
-<p class="dim">Wrapper-level events: started, completed, skipped (rental active), failed. The substantive prose is in the daily reports above.</p>
+<h2>Cron backstop — last 14 phone-homes</h2>
+<p class="dim">If the optional backstop cron is installed, wrapper-level events surface here. Empty = backstop not installed (the primary mechanism is /goal in the peer).</p>
 {render_daily_phone_homes(phone_homes)}
 
 <h2>Per-program state</h2>
@@ -596,8 +792,10 @@ def render_html(
 <h2 class="dim">Diagnostics</h2>
 <table>
 <tr><td class="dim">Working tree:</td><td class="mono">{html.escape(str(REPO_ROOT))}</td></tr>
-<tr><td class="dim">Daily phone-homes scanned:</td><td class="mono num">{len(phone_homes)}</td></tr>
-<tr><td class="dim">Daily reports scanned:</td><td class="mono num">{len(daily_reports)}</td></tr>
+<tr><td class="dim">GOAL.md present:</td><td class="mono">{'yes' if goal.get('present') else 'no'}</td></tr>
+<tr><td class="dim">GOAL.md age (hours):</td><td class="mono num">{(f"{goal['mtime_hours']:.1f}" if goal.get('mtime_hours') is not None else 'n/a')}</td></tr>
+<tr><td class="dim">Loop-reports scanned:</td><td class="mono num">{len(loop_reports)}</td></tr>
+<tr><td class="dim">Cron phone-homes scanned (backstop):</td><td class="mono num">{len(phone_homes)}</td></tr>
 <tr><td class="dim">Commits scanned (14d):</td><td class="mono num">{len(commits)}</td></tr>
 <tr><td class="dim">PASSOFFs scanned:</td><td class="mono num">{len(passoffs)}</td></tr>
 <tr><td class="dim">rtxserver status snapshot source:</td><td class="mono">{html.escape(snapshot.get("__source", "(none)"))}</td></tr>
@@ -621,8 +819,9 @@ def main() -> int:
     passoffs = collect_open_passoffs()
     snapshot = collect_rtxserver_status()
     loop_reports = collect_loop_reports()
+    goal = collect_goal_state()
 
-    html_out = render_html(phone_homes, daily_reports, pe, ccp, passoffs, commits, snapshot, loop_reports)
+    html_out = render_html(phone_homes, daily_reports, pe, ccp, passoffs, commits, snapshot, loop_reports, goal)
     OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     OUT_FILE.write_text(html_out, encoding="utf-8")
     print(f"wrote {OUT_FILE} ({len(html_out)} bytes)")
