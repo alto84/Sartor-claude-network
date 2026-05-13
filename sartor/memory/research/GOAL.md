@@ -6,7 +6,7 @@ updated_by: rocinante (opus 4.7, 1M context — initial seed for /goal framework
 status: active
 mission_slug: smaller-model-takes-household-identity
 substrate_current: Qwen3.6-35B-A3B-Abliterated-Heretic-BF16
-target_identity: reference/HOUSEHOLD-CONSTITUTION.md (v0.5, ratified 2026-05-06)
+target_identity: reference/HOUSEHOLD-CONSTITUTION.md (v0.6, ratified 2026-05-13)
 lines_engaged: [ccp-alignment, persona-engineering]
 machine_primary: rtxpro6000server
 tags: [meta/goal, domain/research, research/ccp-alignment, research/persona-engineering]
