@@ -112,6 +112,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Files touched: `ALTON.md`, `ASTRAZENECA.md`, `FAMILY.md`, `family/family-calendar.md`
 - KEY: Wohelo check still unconfirmed — follow up May 12 if no receipt. iCloud still borderline.
 
+## [2026-05-14] ingest | personal-data-gather run 73: calendar confirmed stable; 990-N P0 1-day; Avigilon expired
+
+- Sources: Calendar (5 calendars, May 14–21 window, all returned). Gmail: UNAVAILABLE (OAuth still expired — reauth required). SSH: unavailable in web runner.
+- Calendar delta: zero new events vs run 72. All 5 calendars stable.
+- P0 ESCALATED: Sante Total Form 990-N due TOMORROW 2026-05-15. Still NOT FILED. File immediately at IRS.gov.
+- P0 ESCALATED: Wohelo forms due TOMORROW 2026-05-15. Confirm sent to heidi@timanous.org.
+- Harvey/Hiive deadline: TODAY 2026-05-14 — closes this evening or already closed.
+- Avigilon Alta app token: CONFIRMED EXPIRED (estimated expiry was 2026-05-13).
+- Aneeta Neurvati board call: TODAY (first flagged run 63, slide deck submitted May 8).
+- Files touched: `daily/2026-05-14.md` (run 73 section appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: 990-N due TOMORROW. File today. Wohelo forms also due tomorrow — confirm sent. Harvey window closes today.
+
 ## [2026-05-14] ingest | personal-data-gather run 72: deadline escalations; Gmail OAuth gap; Nehal birthday added
 - Sources: Calendar (5 calendars, May 14–21 window). Gmail: UNAVAILABLE (OAuth expired — reauth initiated). SSH: unavailable in web runner environment.
 - P0-TODAY: Harvey/Hiive investment decision — final funding deadline today. $25K min, $11B valuation.
