@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-13
+updated: 2026-05-14
 updated_by: personal-data-gather
-run: 71
+run: 72
 
 status: active
 priority: p1
@@ -228,6 +228,32 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact]
 > **Tribeca Pediatrics — 2 more portal messages (2026-05-04).** 5+ total unread messages now at http://tpeds.co/13kn. $170.28 balance (Vayu patient ID 599351) was a second-notice as of 2026-04-08; now significantly overdue. Check portal. See [[family/vayu]].
+
+## Latest from gather (2026-05-14) — run 72
+
+> [!warning] Gmail unavailable this run
+> OAuth token expired. No new email data. All items below are deadline escalations from run 71 carry-forwards.
+
+> [!deadline] TODAY 2026-05-14 — FINAL DECISION WINDOW
+> **Harvey/Hiive investment — decision deadline TODAY.** Harvey AI: $190M ARR, $11B valuation (March 2026). Offer: $37/unit, ~$12.1B implied valuation, $25K minimum, Hiive single-asset fund (no mgmt fees/carry). Last window to act. Contact if interested: opportunities@hiive.com. No action if passing.
+
+> [!deadline] TOMORROW 2026-05-15 — P0
+> **Sante Total Form 990-N — file TODAY or TOMORROW.** Due 2026-05-15. Status: NOT FILED per runs 22–71 (every run since April 29). File at IRS.gov. Gross receipts under $50K TY2025 — 990-N (e-Postcard) still applies. No automatic extension without Form 8868. See [[business/sante-total]].
+
+> [!deadline] TOMORROW 2026-05-15 — P0
+> **Wohelo — confirm check AND forms both sent.** Check mailed May 7, deposit confirmed received May 10. Camp forms ALSO due May 15 per run 65 (Heidi at heidi@timanous.org). Both check ($12,900 to Wohelo Camps, 25 Gulick Road, Raymond ME 04071) and forms must arrive by Friday. See [[vishala]].
+
+> [!deadline] 2026-05-17 (3 days) — P1
+> **Disney ADR — respond to Nicol Stevenson.** 60-day window opens May 17. Preferences needed: (a) character dining (Plaza Inn Minnie breakfast or Storyteller's Mickey breakfast, Vasu age 4), (b) Blue Bayou Saturday confirmation, (c) DTF Thursday headcount (5). Contact: n.stevenson@magicalvacationplanner.com, +1 412-215-2423. See [[family/disney-july-2026]].
+
+> [!note] Calendar — May 14–21 (confirmed from live API this run)
+> - TODAY Thu 5/14: No calendar events
+> - Sat 5/16 12:00–1:00 PM: Vayu soccer GAME vs B34-Silver, Brookdale Park Field 1 (arrive ~11:40)
+> - Sun 5/17 10:00 AM–1:00 PM: Playdate with Livia and family
+> - Mon 5/18 1:00–2:00 PM: Optimum fiber appointment (must be home)
+> - Wed 5/20: Vishala "own your letter dress down" (all day, plan outfit)
+> - Wed 5/20 5:30–6:15 PM: Rec Soccer Practice (B-34 Lime), Anderson Park south near Parkside St
+> - Thu 5/21: Nehal's Birthday (recurring — send message/call)
 
 ## Related
 - [[FAMILY]] - Household overview and family member profiles

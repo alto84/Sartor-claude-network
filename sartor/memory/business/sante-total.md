@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-13
+updated: 2026-05-14
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -60,7 +60,7 @@ related: [BUSINESS, TAXES, ALTON]
 ## Recent donor activity (PayPal, last 30 days)
 
 | Date | Amount | Donor reference |
-|------|--------|-----------------|
+|------|--------|------------------|
 | 2026-03-10 | $100 | Schall |
 | 2026-03-16 | $100 | (unnamed) |
 | 2026-03-17 | $400 | (unnamed) |
@@ -195,3 +195,11 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!deadline] 2026-05-15
 > **2025 Form 990-N — DUE IN 3 DAYS (Friday May 15).** Status as of run 70: NOT FILED. No email observed confirming completion through run 70. Alton handles directly via IRS.gov tax-exempt organization search portal. Gross receipts under $50K for TY2025 — 990-N (e-Postcard) still applies. No automatic extension without separately filing Form 8868 first. P0.
+
+## Latest from gather (2026-05-14) — run 72
+
+> [!deadline] TOMORROW 2026-05-15 — ESCALATED TO P0-NOW
+> **2025 Form 990-N — DUE TOMORROW.** Status: NOT FILED per runs 22–71 (every run since April 29). Gmail unavailable this run (OAuth expired) — no confirmation email could be checked. If not filed: go to IRS.gov → Tax Exempt Organization Search → File 990-N (e-Postcard). EIN required. TY2025 gross receipts under $50K. No automatic extension without separately filing Form 8868. Filing takes ~10 minutes online. This deadline has been P0 for 16 days. File immediately.
+
+> [!deadline] 2026-06-04 (21 days) — act this week
+> **Chase/Sante Total KYC** — carry-forward from run 70 (21 days remain). Contact Pavel Manrique (pavel.p.manrique@chase.com, 973-783-5062) before account restriction. Account opened 2026-05-06.
