@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-14
 updated_by: personal-data-gather
-run: 72
+run: 74
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -168,3 +168,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - MKA Veracross: Alton signed up for May 20 conference slot (Vayu 3:30 PM, Vishala 4:00 PM).
 - Files touched: `ALTON.md`, `ASTRAZENECA.md`, `MACHINES.md`, `machines/rtxpro6000server/STATE.md`, `machines/gpuserver1/STATE.md`, `FAMILY.md`, `family/family-calendar.md` (time correction + May 16/17 events appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
 - KEY: Wohelo check must be mailed TODAY or tomorrow — it is 4 days to May 15. MKA Veracross conference sign-up: same deadline. Both are P0.
+
+## [2026-05-14] ingest | personal-data-gather run 74: evening run; Gmail unavailable; Harvey deadline passed
+- Sources: Gmail UNAVAILABLE (OAuth expired; auth URL issued to user), all 5 calendars (May 14–21), SSH unavailable (web runner)
+- Facts gathered: 0 new (no Gmail), 0 new calendar events (stable vs runs 72–73)
+- Harvey/Hiive investment deadline 2026-05-14: PASSED. Removing from active P0 list.
+- P0 escalations remaining: Sante Total 990-N (DUE TOMORROW 2026-05-15, still not filed); Wohelo check+forms (DUE TOMORROW 2026-05-15, confirm mailed)
+- Avigilon Alta token: CONFIRMED EXPIRED (estimated 2026-05-13 — now past)
+- Disney ADR: 3 days to 2026-05-17 window — Nicol Stevenson response still pending
+- Files touched: `daily/2026-05-14.md` (run 74 appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: 990-N due tomorrow — file at IRS.gov NOW. Wohelo forms must also be confirmed sent. Gmail re-auth required for next run.
