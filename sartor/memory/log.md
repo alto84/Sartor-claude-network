@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-13
+updated: 2026-05-14
 updated_by: personal-data-gather
-run: 71
+run: 72
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -111,6 +111,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Neurvati board call (May 14): Aneeta slide deck submitted to CEO May 8. Prep complete.
 - Files touched: `ALTON.md`, `ASTRAZENECA.md`, `FAMILY.md`, `family/family-calendar.md`
 - KEY: Wohelo check still unconfirmed — follow up May 12 if no receipt. iCloud still borderline.
+
+## [2026-05-14] ingest | personal-data-gather run 72: deadline escalations; Gmail OAuth gap; Nehal birthday added
+- Sources: Calendar (5 calendars, May 14–21 window). Gmail: UNAVAILABLE (OAuth expired — reauth initiated). SSH: unavailable in web runner environment.
+- P0-TODAY: Harvey/Hiive investment decision — final funding deadline today. $25K min, $11B valuation.
+- P0-TOMORROW: Sante Total Form 990-N — DUE 2026-05-15. Status: NOT FILED per all prior runs.
+- P0-TOMORROW: Wohelo $12,900 + forms — DUE 2026-05-15. Confirm both check and forms sent.
+- P1-3-DAYS: Disney ADR — respond to Nicol Stevenson before May 17 with dining preferences.
+- Calendar new (run 72): Nehal's Birthday on Thu 2026-05-21 (recurring, Alton primary calendar).
+- All other calendar events carry forward unchanged from run 71.
+- Files touched: `daily/2026-05-14.md` (created), `business/sante-total.md`, `family/active-todos.md`, `data/gather-alerts.md` (created/updated), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: 990-N TOMORROW. File immediately at IRS.gov. Harvey decision window closes today.
 
 ## [2026-05-12] ingest | personal-data-gather run 70: Chase Sante Total restriction; 990-N 3-day countdown; Hiive Harvey decision deadline
 - Sources: Gmail (newer_than:2d, 30 threads), 5 calendars (May 12–19 window)
