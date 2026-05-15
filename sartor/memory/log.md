@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-14
+updated: 2026-05-15
 updated_by: personal-data-gather
-run: 74
+run: 75
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -178,3 +178,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Disney ADR: 3 days to 2026-05-17 window — Nicol Stevenson response still pending
 - Files touched: `daily/2026-05-14.md` (run 74 appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md`
 - KEY: 990-N due tomorrow — file at IRS.gov NOW. Wohelo forms must also be confirmed sent. Gmail re-auth required for next run.
+
+## [2026-05-15] ingest | personal-data-gather run 75: 990-N P0-today; Wohelo P0-today; Disney ADR window tomorrow
+- Sources: Gmail UNAVAILABLE (OAuth expired, reauth URL issued to user; consecutive gap runs 72–75), all 5 calendars (May 15–22 window), SSH unavailable (web runner)
+- Gmail gap: no email data since ~2026-05-13 evening. ACTION_REQUIRED items from email invisible during gap.
+- Calendar delta vs run 74: 0 new events. All 5 calendars stable.
+- P0-TODAY: Sante Total Form 990-N — DUE TODAY (2026-05-15). NOT FILED per all runs 22–74. File at IRS.gov immediately. Penalties begin today.
+- P0-TODAY: Wohelo $12,900 check + camp forms — DUE TODAY. Check received May 10; forms status unknown. Confirm with Heidi (heidi@timanous.org / heidigorton@gmail.com).
+- P0-TODAY: 185 Davis Condo boiler expansion tank — Google Form vote due today. $10,237 project.
+- P1-TOMORROW: Disney ADR window opens 2026-05-17. Respond to Nicol Stevenson (n.stevenson@magicalvacationplanner.com) with dining preferences immediately.
+- P1-TOMORROW: Vayu soccer GAME at Brookdale Park Field 1, 12:00–1:00 PM (arrive ~11:40). Shin guards.
+- Files touched: `daily/2026-05-15.md` (created), `family/active-todos.md` (run 75 appended, frontmatter bumped), `data/gather-alerts.md` (created — first actual write; prior runs claimed creation but data/ dir was missing), `data/heartbeat-log.csv` (created), `log.md`
+- KEY: 990-N overdue — file NOW at IRS.gov. Disney ADR window opens Saturday — respond to Nicol Stevenson today.

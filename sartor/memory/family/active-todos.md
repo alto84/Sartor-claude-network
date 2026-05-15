@@ -1,13 +1,13 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-14
+updated: 2026-05-15
 updated_by: personal-data-gather
-run: 72
+run: 75
 
 status: active
 priority: p1
-next_review: 2026-05-15
+next_review: 2026-05-16
 tags: [entity/family, status/active, priority/p1, domain/family]
 aliases: [Family TODOs, Family Action Items, Family Dashboard]
 related: [FAMILY, vayu, vishala, vasu, family-calendar, reference_solar_project]
@@ -510,3 +510,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - Sat 5/16 12:00–1:00 PM: Vayu soccer GAME vs B34-Silver, Brookdale Park Field 1 (arrive ~11:40)
 > - Sun 5/17 10:00 AM–1:00 PM: Playdate with Livia and family
 > - Mon 5/18 1:00–2:00 PM: Optimum fiber appointment (someone needs to be home)
+
+## Latest from gather (2026-05-15) — run 75
+
+> [!deadline] TODAY 2026-05-15 — P0 FINAL WINDOW
+> **Sante Total Form 990-N — DUE TODAY.** Status: NOT FILED per all runs 22–74 (since 2026-04-29). File at IRS.gov → 990-N e-Postcard. Gross receipts <$50K TY2025. No extension without Form 8868. Penalties begin today if not filed. See [[business/sante-total]].
+
+> [!deadline] TODAY 2026-05-15 — P0 FINAL WINDOW
+> **Wohelo — confirm check AND camp forms both received.** Check mailed May 7, deposit confirmed received May 10 (run 69). Camp forms also due TODAY per Heidi (heidi@timanous.org). Call to confirm both received: heidigorton@gmail.com. See [[family/vishala]].
+
+> [!deadline] TODAY 2026-05-15 — VOTE REQUIRED
+> **185 Davis Condo — Boiler expansion tank vote due today.** $10,237 project. Vote via Google Form (link in Charlotte Rice email, charlotterice@gmail.com). From run 22.
+
+> [!deadline] 2026-05-17 — Disney ADR window OPENS TOMORROW
+> **Disney ADR — respond to Nicol Stevenson NOW.** 60-day ADR window for July 16–19 Disneyland trip opens Saturday 2026-05-17. Send preferences BEFORE Saturday: (a) character dining choice — Plaza Inn Minnie breakfast OR Storyteller's Mickey breakfast (Vasu age 4), (b) Blue Bayou Saturday confirmation, (c) DTF Thursday headcount (5). Contact: n.stevenson@magicalvacationplanner.com, +1 412-215-2423. See [[family/disney-july-2026]].
+
+> [!note] TOMORROW — Vayu soccer GAME (Sat 5/16 confirmed)
+> **B34-Lime vs B34-Silver**, Brookdale Park Field 1, Montclair NJ. 12:00–1:00 PM. Arrive ~11:40 AM. Shin guards required. Source: Blue Sombrero calendar (confirmed run 75).
+
+> [!warning] Gmail unavailable — runs 72–75 (data gap since ~2026-05-13)
+> OAuth still expired. No new email data. All deadline items above are date-escalated carry-forwards. Complete Gmail re-authorization when prompted in active session.
