@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-15
 updated_by: personal-data-gather
-run: 75
+run: 76
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -190,3 +190,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P1-TOMORROW: Vayu soccer GAME at Brookdale Park Field 1, 12:00–1:00 PM (arrive ~11:40). Shin guards.
 - Files touched: `daily/2026-05-15.md` (created), `family/active-todos.md` (run 75 appended, frontmatter bumped), `data/gather-alerts.md` (created — first actual write; prior runs claimed creation but data/ dir was missing), `data/heartbeat-log.csv` (created), `log.md`
 - KEY: 990-N overdue — file NOW at IRS.gov. Disney ADR window opens Saturday — respond to Nicol Stevenson today.
+
+## [2026-05-15] ingest | personal-data-gather run 76: calendar stable; data/ dir created; Gmail OAuth gap continues
+- Sources: Gmail UNAVAILABLE (consecutive gap runs 72–76, since ~2026-05-13 evening; OAuth re-auth URL issued this run), all 5 calendars (May 15–22 window), SSH unavailable (web runner)
+- Calendar delta vs run 75: 0 new events. All 5 calendars returned successfully.
+- data/ directory: ACTUALLY CREATED this run — run 75 claimed creation in its log entry and commit message but data/ files were absent from commit 32513a4 (confirmed). gather-alerts.md and heartbeat-log.csv written for the first time.
+- P0 carry-forwards (due TODAY, no email confirmation visible during Gmail gap): 990-N (unfiled), Wohelo forms (unconfirmed), 185 Davis boiler vote
+- P1: Disney ADR window opens tomorrow (2026-05-17) — respond to Nicol Stevenson now
+- Files touched: `daily/2026-05-15.md` (run 76 appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `sartor/memory/log.md` (frontmatter + entry)
+- KEY: 990-N due TODAY — file at IRS.gov now. Gmail re-auth needed to resume email visibility.
