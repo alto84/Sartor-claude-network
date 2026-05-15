@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-15
 updated_by: personal-data-gather
-run: 78
+run: 79
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -219,3 +219,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Note: data/ is gitignored; gather-alerts.md and heartbeat-log.csv written fresh this session.
 - Files touched: `daily/2026-05-15.md` (run 78 appended, frontmatter bumped run: 78), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `sartor/memory/log.md` (frontmatter + entry)
 - KEY: 990-N deadline TODAY — file at IRS.gov. Disney ADR window opens tomorrow (Sat). Gmail re-auth required (URL in data/gather-alerts.md).
+
+## [2026-05-15] ingest | personal-data-gather run 79: calendar stable; Gmail gap runs 72-79; P0 end-of-day
+- Sources: Gmail UNAVAILABLE (consecutive gap runs 72–79; OAuth re-auth URL issued this run), all 5 calendars (May 15–22), SSH unavailable (web runner)
+- Calendar delta: zero new events vs run 78. All 5 calendars stable. 7 events in May 15–21 window. Blue Sombrero last-refreshed 2026-05-15T19:19:58Z.
+- Facts gathered: 0 new (no Gmail, no SSH)
+- P0 end-of-day: Sante Total 990-N (due TODAY, unconfirmed); 185 Davis boiler vote (due TODAY, unconfirmed); Wohelo forms (due TODAY, unconfirmed). Gmail gap prevents email confirmation.
+- P1 TIME-CRITICAL: Disney ADR window opens TOMORROW (2026-05-17) — respond to Nicol Stevenson today with dining preferences.
+- Note: data/ is gitignored; gather-alerts.md and heartbeat-log.csv written fresh this session.
+- Files touched: `daily/2026-05-15.md` (run 79 appended, frontmatter bumped run: 79), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `sartor/memory/log.md` (frontmatter + entry)
+- KEY: Disney ADR window opens TOMORROW — respond to Nicol Stevenson today. Gmail re-auth still required.
