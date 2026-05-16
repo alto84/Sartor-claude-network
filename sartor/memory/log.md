@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-16
 updated_by: personal-data-gather
-run: 82
+run: 83
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -258,3 +258,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Gmail gap: 11 consecutive runs (72–82) without email data. Re-auth URL issued this run.
 - Files touched: `daily/2026-05-16.md` (run 82 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (frontmatter + entry)
 - KEY: Disney ADR opens tomorrow — contact Nicol Stevenson today. Gmail re-auth still required.
+
+## [2026-05-16] ingest | personal-data-gather run 83: Vayu game concluded; Disney ADR opens tomorrow; Gmail gap runs 72–83
+- Sources: Gmail UNAVAILABLE (consecutive gap runs 72–83, since ~2026-05-13 evening; OAuth re-auth URL issued this run), all 5 calendars (May 16–23 window), SSH unavailable (web runner)
+- Calendar delta vs run 82: zero new events. Blue Sombrero refreshed 8h (to 19:19:56Z); Vayu soccer game (noon-1pm ET) has now concluded. All other calendars unchanged.
+- Facts gathered: 0 new (no Gmail, no SSH, no calendar changes)
+- P0 OVERDUE: Sante Total 990-N, Wohelo forms, 185 Davis boiler vote — no resolution visible (Gmail gap)
+- P1 CRITICAL: Disney ADR window opens TOMORROW (2026-05-17) — contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423) if not already done today
+- P1: "Friday to PA" (5/22–5/23) still unresolved; May 22 is a school day
+- Gmail gap: 12 consecutive runs (72–83). OAuth re-auth URL issued this run.
+- Files touched: `daily/2026-05-16.md` (run 83 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (frontmatter + entry)
+- KEY: Disney ADR window opens tomorrow — contact Nicol Stevenson. Gmail re-auth needed (paste callback URL to complete flow).
