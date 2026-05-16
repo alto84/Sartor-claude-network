@@ -330,16 +330,31 @@ class LanOnlyMiddleware(BaseHTTPMiddleware):
 
 
 class CsrfMiddleware(BaseHTTPMiddleware):
-    """Require X-CSRF-Token on mutating /api/tasks requests."""
+    """Require X-CSRF-Token on all mutating /api/* requests EXCEPT /api/auth/*.
+
+    Auth endpoints are exempted because they run before any session exists, so
+    there is no session-bound CSRF token to verify. They mitigate via:
+      - Content-Type: application/json requirement (browsers won't send this
+        for cross-origin <form> submissions without preflight CORS approval)
+      - SameSite=Lax cookies (cross-site fetch POSTs get no cookie attached)
+      - HTTP rate-limit on bad credentials
+
+    Per review-build-sub-1-v1.md Charge 4 (medium): previously this middleware
+    only covered /api/tasks, leaving /api/me/color and any future session-
+    authenticated mutating endpoint unprotected.
+    """
 
     PROTECTED_METHODS = {"POST", "PATCH", "DELETE", "PUT"}
+    EXEMPT_PREFIXES = ("/api/auth/",)
 
     async def dispatch(self, request: Request, call_next):
         if _MERIDIAN_DEV and request.headers.get("x-test-skip-csrf") == "1":
             return await call_next(request)
         path = request.url.path
         method = request.method.upper()
-        if method in self.PROTECTED_METHODS and path.startswith("/api/tasks"):
+        if method in self.PROTECTED_METHODS and path.startswith("/api/"):
+            if any(path.startswith(p) for p in self.EXEMPT_PREFIXES):
+                return await call_next(request)
             sess = request.cookies.get("meridian_session", "")
             supplied = request.headers.get("x-csrf-token", "")
             if not _verify_csrf(sess, supplied):
