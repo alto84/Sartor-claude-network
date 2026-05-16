@@ -35,7 +35,7 @@ This file tracks what's been migrated and what remains.
 
 ### Tier A — high blast radius, manual review recommended
 
-1. **`dashboard/family/server.py`** — ~20 hardcoded `.100` refs in ping logic, SSH command construction, URL building. Runtime app; changes risk breaking the live dashboard. Suggested approach: introduce a `GPUSERVER1_HOST` config constant at top of file (default `"gpuserver1"`) plus a `GPUSERVER1_HTTP_HOST` for URLs that need OS-level name resolution (depends on hosts file or env var), migrate refs to use them, test in isolation before deploying. **Still pending as of 2026-05-10 evening — needs a deliberate session.**
+1. ~~**`dashboard/family/server.py`** — Done 2026-05-13.~~ Introduced two env-overridable constants at the top of the file: `GPUSERVER1_IP` (default `"192.168.1.199"`, used for ping/HTTP/URL paths where the OS resolver is in play) and `GPUSERVER1_SSH_HOST` (default `"gpuserver1"`, used for SSH calls where `~/.ssh/config` handles resolution). All 21 hardcoded `.100` refs migrated. Verified: file parses, FastAPI app imports (with the gitignored `.secrets/meridian-password.txt` stubbed), all 47 routes register, env-var override changes resolved values. Branch `dashboard-hostname-2026-05-13`.
 2. ~~**`scripts/win-tasks/*.ps1`** — Done 2026-05-10 evening.~~
 3. ~~**`scripts/sartor-vastai-dispatch.ps1`** — Done 2026-05-10 evening.~~
 4. ~~**`scripts/rsync-peer-sessions.ps1`** — Done 2026-05-10 evening.~~

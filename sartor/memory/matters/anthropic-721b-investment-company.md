@@ -5,11 +5,11 @@ status: open
 risk: medium-high
 priority: p2
 opened: 2026-05-08
-updated: 2026-05-08
-last_action: 2026-05-08
+updated: 2026-05-12
+last_action: 2026-05-12
 deadline: trigger-only
 authority: [IRC-721b, IRC-351e, Reg-1.351-1c, Reg-1.731-1c]
-related: [reference_anthropic_shares, BUSINESS, business/solar-inference, TAXES]
+related: [reference_anthropic_shares, anthropic-secondary-recognition-risk, BUSINESS, business/solar-inference, TAXES]
 ---
 
 # Matter: §721(b) investment-company trap on Anthropic-shares contribution to Solar Inference LLC
@@ -21,6 +21,7 @@ Whether contributing the EquityZen Series 13 ($105K basis) and/or Hiive HII Anth
 ## Facts
 
 - EquityZen Growth Technology Fund II LLC, Series 13: cost basis $105,037.51, held in Alton's personal name (Emmett Sartor, alto84@gmail.com). Investment funded 2025-02-12. Indirect Anthropic Series E-1 Preferred via SPV stack.
+- **Source-of-funds wrinkle (filed 2026-05-12):** the EquityZen Subscription Amount was wired from a Fidelity Joint WROS account Z25598998 (presumably joint with Aneeta), confirmation 79277892, 2025-02-10. Legal title to the Series Interest is in Emmett's name only. Legal-title vs. source-of-funds distinction is real: under partnership-tax §721, what matters is the contributing partner's basis in the property contributed, which travels with legal title — but under NJ state marital-property and estate doctrines, funding a personal-name purchase from joint marital funds can support a transmutation or constructive-trust argument by the non-titled spouse. Compounds the §721(b) analysis if SI contribution is contemplated: a contribution to a 50/50 LLC of property that was (a) titled in Alton's name but (b) funded from joint marital cash creates ambiguity around whose property is being contributed. CPA + family-law-aware view required before any move.
 - HII Anthropic-01 (Hiive): 300 shares beneficial to Alton ($94,014.90 basis), held in nominee structure under father (Alton Oliver Sartor) per MOU dated 2025-12-24.
 - Solar Inference LLC: 50/50 multi-member NJ LLC (Alton + Aneeta), formed 2025-09-06, EIN 39-4199284. Pre-revenue. Active operating business posture for Solar ITC + bonus depreciation eligibility.
 - Anthropic mark almost certainly above cost since Feb 2025 entry.
@@ -87,6 +88,7 @@ If a future contribution is contemplated post-2027:
 ## History
 
 - 2026-05-08: Opened as watching matter. Default posture KEEP PERSONAL ratified per [[reference_anthropic_shares]] 2026-05-03 analysis. No fresh action.
+- 2026-05-12: Updated. Source-document audit confirmed canonical [[reference_anthropic_shares]] matches the eight PDFs in `reference/anthropic-shares-2026-05/`. Two collateral findings: (a) EquityZen wire came from a Fidelity Joint WROS account (joint with Aneeta) — legal title vs source-of-funds distinction now in Facts; (b) Hiive MOU still only signed by Emmett (action item flagged in [[anthropic-secondary-recognition-risk]]). Anthropic published a public warning on unauthorized secondary sales naming Hiive — see [[anthropic-secondary-recognition-risk]] for the recognition-risk dimension that compounds with this §721(b) trap. Default posture KEEP PERSONAL reinforced: don't contribute Anthropic-shares to SI before resolving BOTH §721(b) AND recognition-risk.
 
 ## Resolution
 

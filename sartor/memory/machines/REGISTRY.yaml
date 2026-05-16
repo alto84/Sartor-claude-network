@@ -44,7 +44,7 @@ machines:
     bmc_ip: null
     switch_port: null  # Not in the 2026-05-01 census; physical patch-panel labeling unknown for this drop.
     vast_ai_machine_id: null
-    last_verified: 2026-05-11
+    last_verified: 2026-05-13
     last_drift: null
     flagged:
       - "switch_port unknown -confirm against UniFi controller client list at https://192.168.1.171:8443"
@@ -67,7 +67,7 @@ machines:
     bmc_ip: null
     switch_port: 20
     vast_ai_machine_id: 52271
-    last_verified: 2026-05-11
+    last_verified: 2026-05-13
     last_drift: 2026-05-09  # tonight's incident -moved from .100 to .199 after wall-switch move
     flagged:
       - "Was 192.168.1.199 since tonight's DHCP reassignment. Prior IP 192.168.1.100 still appears in ~15-20 places in the codebase pending Tier 2 sweep."
@@ -94,7 +94,7 @@ machines:
     bmc_mac: "30:c5:99:d5:8f:b8"
     switch_port: 10
     vast_ai_machine_id: 97429
-    last_verified: 2026-05-11
+    last_verified: 2026-05-13
     last_drift: null
     flagged: []
     notes: |

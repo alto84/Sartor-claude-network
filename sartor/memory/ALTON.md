@@ -2,7 +2,7 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-04-29
+updated: 2026-05-12
 updated_by: autodream (wikilinks-implementer, gstack-port)
 run: 6
 last_verified: 2026-04-12
@@ -197,8 +197,8 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 ## Latest from gather (2026-04-15) run 5
 
-> [!todo]
-> **HITLAB Innovators Summit — accept or decline.** Jerry Antimano (LinkedIn, 19d91cf90386ee78, Apr 15 3:43 PM UTC): "I'm reaching out to invite you to the HITLAB Innovators Summit (May 5–7, NYC) and to participate in a small, peer-led executive roundtable during the conference." HITLAB (Health Innovation Through Technology Lab) is a digital health research and consulting organization. Decision window: before May 5. Note: Aneeta's RRE trip ends May 3 — confirm she is back before committing to May 5 event. See [[family/active-todos]].
+> [!todo] ACTION_REQUIRED — reply within 48 hours
+> **Mike Silva (AcrossCap) — post-meeting follow-up.** Mike emailed Apr 16 1:31 PM PDT (messageId: 19d97fdec3e6ec34): "It was great meeting you earlier, thanks very much for making the time. I enjoyed the discussion, especially hearing your thoughts around AI both where you're seeing the bottlenecks and how [the technology evolves]..." This is the Zoom intro that was prepped in the Apr 14 run. He confirmed the meeting happened and wants to follow up. Reply to mike@acrosscap.com. See [[people/mike-silva]].
 
 > [!deadline] 2026-05-15
 > **SNO Clinical Trials Workshop — application deadline May 15.** Society for Neuro-Oncology newsletter (snodigest@soc-neuro-onc.org, issue 216, Apr 15): "8th Annual Clinical Trial Design Workshop, Application Deadline: Friday, May 15, 2026." Directly relevant to Alton's neuro-oncology background (MGH fellowship, founded Neuro-Oncology Division at Boston Medical Center). Apply if interested. SNO Annual Meeting is Nov 12–15, 2026, PA Convention Center (abstract submission open separately).
@@ -267,3 +267,6 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact]
 > **Career signal — Google DeepMind Portfolio Lead, Health (LinkedIn, 2026-04-29).** Posted 2026-04-27. Senior health AI leadership role at DeepMind. Logged as career reference point. No application initiated; Alton is tracking senior AI/ML leadership roles for context given AZ role. [[business/az-career]]
+
+## Consolidated from daily logs (2026-05-12)
+- [2026-05-10] (fact) Doximity neurology news: (INFORMATIONAL): GSK/Alector halted phase 2 Alzheimer's drug ($700M) after interim analysis
