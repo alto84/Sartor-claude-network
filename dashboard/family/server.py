@@ -149,9 +149,16 @@ _load_persisted_failures()
 def _load_password() -> str:
     secrets_path = Path(__file__).resolve().parent.parent.parent / ".secrets" / "meridian-password.txt"
     try:
-        return secrets_path.read_text(encoding="utf-8").strip()
+        value = secrets_path.read_text(encoding="utf-8").strip()
     except FileNotFoundError:
         raise RuntimeError(f"meridian-password.txt not found at {secrets_path}")
+    # Guard against empty file (review-build-sub-1-v2 finding): a blank file
+    # would set _MERIDIAN_PASSWORD to "", and the Charge 1 set-pin setup_key
+    # check (secrets.compare_digest(b"", b"")) would silently pass for any
+    # caller. Fail loudly at startup instead.
+    if not value:
+        raise RuntimeError(f"meridian-password.txt at {secrets_path} is empty")
+    return value
 
 _MERIDIAN_PASSWORD: str = _load_password()
 
@@ -287,6 +294,11 @@ def _get_viewer(request) -> Optional[dict]:
 
 
 app = FastAPI(title="MERIDIAN", version="0.2.0")
+# CORS allow_origins=["*"] is intentional and safe here because allow_credentials
+# is NOT enabled (default False). Browsers will never attach the session cookie
+# to a cross-origin request, so a wildcard origin cannot produce an authenticated
+# request from another site. CSRF protection (CsrfMiddleware) is the second layer.
+# See review-build-sub-1-v2 deferral note.
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 
