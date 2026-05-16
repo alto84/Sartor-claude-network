@@ -147,12 +147,31 @@ def _verify_csrf(session_val: str, supplied: str) -> bool:
 
 PROFILES_PATH = Path(__file__).resolve().parent.parent.parent / "sartor" / "memory" / "family" / "profiles.json"
 
+# Seed profiles. Written to disk on first start if profiles.json is missing
+# (the file is git-ignored per review-sub-1 Charge 2 — runtime state with PIN
+# hashes must stay local, not propagate to the GitHub mirror). Each peer
+# bootstraps from this and then evolves its local copy via the auth flow.
+_SEED_PROFILES = {
+    "_comment": "MERIDIAN dashboard user profiles. Auto-bootstrapped from server.py _SEED_PROFILES on first start. Tier drives data access at the API layer (admin > adult > kid). Color is the user's accent. pin_hash is sha256(pin | pin_salt | session-secret-prefix); null means first-run PIN setup required. Kids never have a PIN. See family/CLAUDE.md privacy rules.",
+    "users": [
+        {"id": "alton", "name": "Alton", "tier": "admin", "color": "#6366f1", "pin_hash": None, "pin_salt": None},
+        {"id": "aneeta", "name": "Aneeta", "tier": "adult", "color": "#ec4899", "pin_hash": None, "pin_salt": None},
+        {"id": "vayu", "name": "Vayu", "tier": "kid", "age": 10, "color": "#10b981"},
+        {"id": "vishala", "name": "Vishala", "tier": "kid", "age": 8, "color": "#f59e0b"},
+    ],
+    "color_palette": ["#6366f1", "#ec4899", "#10b981", "#f59e0b", "#0ea5e9", "#8b5cf6", "#f43f5e", "#14b8a6"],
+}
+
 
 def _load_profiles_data() -> dict:
+    if not PROFILES_PATH.exists():
+        # Self-bootstrap on first start. Per Charge 2, profiles.json is git-ignored;
+        # the file lives in family/ which already exists, so no mkdir needed.
+        PROFILES_PATH.write_text(json.dumps(_SEED_PROFILES, indent=2) + "\n", encoding="utf-8")
     try:
         return json.loads(PROFILES_PATH.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        return {"users": [], "color_palette": []}
+    except (FileNotFoundError, json.JSONDecodeError):
+        return _SEED_PROFILES.copy()
 
 
 def _save_profiles_data(data: dict) -> None:
