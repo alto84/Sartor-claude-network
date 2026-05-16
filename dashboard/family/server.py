@@ -71,6 +71,55 @@ _LOGIN_FAIL_WINDOW = 5 * 60
 _LOGIN_FAIL_MAX = 5
 _login_failures: "dict[str, deque]" = defaultdict(deque)
 
+# Persist failures across server restarts per review-sub-1 Charge 3.
+# Stored as { ip: [unix_timestamp, ...] } since monotonic clock resets on
+# restart and isn't comparable across processes.
+_AUTH_FAILURES_PATH = Path(__file__).resolve().parent / ".auth-failures.json"
+
+
+def _load_persisted_failures() -> None:
+    """Called once on import. Reads any prior failures from disk; entries
+    older than the window are dropped on load."""
+    if not _AUTH_FAILURES_PATH.exists():
+        return
+    try:
+        raw = json.loads(_AUTH_FAILURES_PATH.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return
+    now_wall = _auth_time.time()
+    cutoff_wall = now_wall - _LOGIN_FAIL_WINDOW
+    # Convert wall-clock timestamps from disk to monotonic-clock offsets
+    # by treating them as "how long ago in wall time."
+    mono_now = _auth_time.monotonic()
+    for ip, ts_list in raw.items():
+        dq = deque()
+        for ts in ts_list:
+            if ts > cutoff_wall:
+                age = now_wall - ts
+                dq.append(mono_now - age)
+        if dq:
+            _login_failures[ip] = dq
+
+
+def _save_persisted_failures() -> None:
+    """Write the current in-memory state to disk. Atomic via tmp+rename."""
+    now_wall = _auth_time.time()
+    mono_now = _auth_time.monotonic()
+    cutoff_mono = mono_now - _LOGIN_FAIL_WINDOW
+    out: dict = {}
+    for ip, dq in _login_failures.items():
+        recent = [t for t in dq if t > cutoff_mono]
+        if recent:
+            # Convert monotonic offsets back to wall-clock timestamps for storage.
+            out[ip] = [now_wall - (mono_now - t) for t in recent]
+    try:
+        tmp = _AUTH_FAILURES_PATH.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(out), encoding="utf-8")
+        tmp.replace(_AUTH_FAILURES_PATH)
+    except OSError:
+        pass  # disk write failures shouldn't break the auth flow
+
+
 def _record_login_failure(ip: str) -> None:
     now = _auth_time.monotonic()
     dq = _login_failures[ip]
@@ -78,6 +127,7 @@ def _record_login_failure(ip: str) -> None:
     cutoff = now - _LOGIN_FAIL_WINDOW
     while dq and dq[0] < cutoff:
         dq.popleft()
+    _save_persisted_failures()
 
 def _login_rate_limited(ip: str) -> bool:
     now = _auth_time.monotonic()
@@ -91,13 +141,24 @@ def _login_rate_limited(ip: str) -> bool:
 
 def _clear_login_failures(ip: str) -> None:
     _login_failures.pop(ip, None)
+    _save_persisted_failures()
+
+
+_load_persisted_failures()
 
 def _load_password() -> str:
     secrets_path = Path(__file__).resolve().parent.parent.parent / ".secrets" / "meridian-password.txt"
     try:
-        return secrets_path.read_text(encoding="utf-8").strip()
+        value = secrets_path.read_text(encoding="utf-8").strip()
     except FileNotFoundError:
         raise RuntimeError(f"meridian-password.txt not found at {secrets_path}")
+    # Guard against empty file (review-build-sub-1-v2 finding): a blank file
+    # would set _MERIDIAN_PASSWORD to "", and the Charge 1 set-pin setup_key
+    # check (secrets.compare_digest(b"", b"")) would silently pass for any
+    # caller. Fail loudly at startup instead.
+    if not value:
+        raise RuntimeError(f"meridian-password.txt at {secrets_path} is empty")
+    return value
 
 _MERIDIAN_PASSWORD: str = _load_password()
 
@@ -141,7 +202,103 @@ def _verify_csrf(session_val: str, supplied: str) -> bool:
     return hmac.compare_digest(_csrf_for(session_val), supplied)
 
 
+# ── User profiles (multi-user Phase 1) ────────────────────────────────────────
+# profiles.json is the source of truth for who can log in and what color they get.
+# Tier (admin/adult/kid) is the privacy-filter gate read in Phase 2.
+
+PROFILES_PATH = Path(__file__).resolve().parent.parent.parent / "sartor" / "memory" / "family" / "profiles.json"
+
+# Seed profiles. Written to disk on first start if profiles.json is missing
+# (the file is git-ignored per review-sub-1 Charge 2 — runtime state with PIN
+# hashes must stay local, not propagate to the GitHub mirror). Each peer
+# bootstraps from this and then evolves its local copy via the auth flow.
+_SEED_PROFILES = {
+    "_comment": "MERIDIAN dashboard user profiles. Auto-bootstrapped from server.py _SEED_PROFILES on first start. Tier drives data access at the API layer (admin > adult > kid). Color is the user's accent. pin_hash is sha256(pin | pin_salt | session-secret-prefix); null means first-run PIN setup required. Kids never have a PIN. See family/CLAUDE.md privacy rules.",
+    "users": [
+        {"id": "alton", "name": "Alton", "tier": "admin", "color": "#6366f1", "pin_hash": None, "pin_salt": None},
+        {"id": "aneeta", "name": "Aneeta", "tier": "adult", "color": "#ec4899", "pin_hash": None, "pin_salt": None},
+        {"id": "vayu", "name": "Vayu", "tier": "kid", "age": 10, "color": "#10b981"},
+        {"id": "vishala", "name": "Vishala", "tier": "kid", "age": 8, "color": "#f59e0b"},
+    ],
+    "color_palette": ["#6366f1", "#ec4899", "#10b981", "#f59e0b", "#0ea5e9", "#8b5cf6", "#f43f5e", "#14b8a6"],
+}
+
+
+def _load_profiles_data() -> dict:
+    if not PROFILES_PATH.exists():
+        # Self-bootstrap on first start. Per Charge 2, profiles.json is git-ignored;
+        # the file lives in family/ which already exists, so no mkdir needed.
+        PROFILES_PATH.write_text(json.dumps(_SEED_PROFILES, indent=2) + "\n", encoding="utf-8")
+    try:
+        return json.loads(PROFILES_PATH.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return _SEED_PROFILES.copy()
+
+
+def _save_profiles_data(data: dict) -> None:
+    tmp = PROFILES_PATH.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    tmp.replace(PROFILES_PATH)
+
+
+def _profile_by_id(user_id: str) -> Optional[dict]:
+    if not user_id:
+        return None
+    for u in _load_profiles_data().get("users", []):
+        if u.get("id") == user_id:
+            return u
+    return None
+
+
+def _update_profile(user_id: str, **fields) -> Optional[dict]:
+    data = _load_profiles_data()
+    for u in data.get("users", []):
+        if u.get("id") == user_id:
+            u.update(fields)
+            _save_profiles_data(data)
+            return u
+    return None
+
+
+def _hash_pin(pin: str, salt: str) -> str:
+    return hashlib.sha256(f"{pin}|{salt}|{_SESSION_SECRET[:16]}".encode()).hexdigest()
+
+
+def _verify_pin(user: dict, pin: str) -> bool:
+    if not user or not pin:
+        return False
+    salt = user.get("pin_salt") or ""
+    expected = user.get("pin_hash") or ""
+    if not salt or not expected:
+        return False
+    return hmac.compare_digest(_hash_pin(pin, salt), expected)
+
+
+def _public_profile(u: dict) -> dict:
+    """Profile view safe for tile-launcher (no PIN material)."""
+    return {
+        "id": u.get("id"),
+        "name": u.get("name"),
+        "tier": u.get("tier"),
+        "color": u.get("color"),
+        "age": u.get("age"),
+        "has_pin": bool(u.get("pin_hash")),
+        "needs_pin_setup": u.get("tier") in ("admin", "adult") and not u.get("pin_hash"),
+    }
+
+
+def _get_viewer(request) -> Optional[dict]:
+    sess = request.cookies.get("meridian_session", "")
+    user_id = _verify_token(sess) if sess else None
+    return _profile_by_id(user_id) if user_id else None
+
+
 app = FastAPI(title="MERIDIAN", version="0.2.0")
+# CORS allow_origins=["*"] is intentional and safe here because allow_credentials
+# is NOT enabled (default False). Browsers will never attach the session cookie
+# to a cross-origin request, so a wildcard origin cannot produce an authenticated
+# request from another site. CSRF protection (CsrfMiddleware) is the second layer.
+# See review-build-sub-1-v2 deferral note.
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 
@@ -151,14 +308,17 @@ from starlette.middleware.base import BaseHTTPMiddleware
 
 class SessionAuthMiddleware(BaseHTTPMiddleware):
     """Redirect unauthenticated requests to /login. Skip /login, /logout, static."""
-    OPEN_PATHS = {"/login", "/logout", "/meridian-theme.css"}
+    OPEN_PATHS = {"/login", "/login/legacy", "/logout", "/meridian-theme.css"}
+    OPEN_PREFIXES = ("/api/auth/",)
 
     async def dispatch(self, request: Request, call_next):
         path = request.url.path
-        if _MERIDIAN_DEV or path in self.OPEN_PATHS:
+        if _MERIDIAN_DEV or path in self.OPEN_PATHS or any(path.startswith(p) for p in self.OPEN_PREFIXES):
             return await call_next(request)
         sess = request.cookies.get("meridian_session")
-        if sess and _verify_token(sess):
+        user_id = _verify_token(sess) if sess else None
+        # Token must verify AND name a real profile (catches deleted users).
+        if user_id and _profile_by_id(user_id):
             return await call_next(request)
         # For API/WebSocket requests, return 401 instead of redirect
         if path.startswith("/api/") or path.startswith("/ws/"):
@@ -182,16 +342,31 @@ class LanOnlyMiddleware(BaseHTTPMiddleware):
 
 
 class CsrfMiddleware(BaseHTTPMiddleware):
-    """Require X-CSRF-Token on mutating /api/tasks requests."""
+    """Require X-CSRF-Token on all mutating /api/* requests EXCEPT /api/auth/*.
+
+    Auth endpoints are exempted because they run before any session exists, so
+    there is no session-bound CSRF token to verify. They mitigate via:
+      - Content-Type: application/json requirement (browsers won't send this
+        for cross-origin <form> submissions without preflight CORS approval)
+      - SameSite=Lax cookies (cross-site fetch POSTs get no cookie attached)
+      - HTTP rate-limit on bad credentials
+
+    Per review-build-sub-1-v1.md Charge 4 (medium): previously this middleware
+    only covered /api/tasks, leaving /api/me/color and any future session-
+    authenticated mutating endpoint unprotected.
+    """
 
     PROTECTED_METHODS = {"POST", "PATCH", "DELETE", "PUT"}
+    EXEMPT_PREFIXES = ("/api/auth/",)
 
     async def dispatch(self, request: Request, call_next):
         if _MERIDIAN_DEV and request.headers.get("x-test-skip-csrf") == "1":
             return await call_next(request)
         path = request.url.path
         method = request.method.upper()
-        if method in self.PROTECTED_METHODS and path.startswith("/api/tasks"):
+        if method in self.PROTECTED_METHODS and path.startswith("/api/"):
+            if any(path.startswith(p) for p in self.EXEMPT_PREFIXES):
+                return await call_next(request)
             sess = request.cookies.get("meridian_session", "")
             supplied = request.headers.get("x-csrf-token", "")
             if not _verify_csrf(sess, supplied):
@@ -216,7 +391,7 @@ _LOGIN_HTML = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MERIDIAN - Login</title>
+<title>MERIDIAN - Sign In</title>
 <link rel="stylesheet" href="/meridian-theme.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -226,152 +401,547 @@ body {
   color: var(--text-primary, #e4e4e7);
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 24px;
 }
-.login-card {
-  width: 100%;
-  max-width: 380px;
-  background: var(--bg-card, #1a1d27);
-  border: 1px solid var(--border-color, #2d3044);
-  border-radius: var(--radius-lg, 14px);
-  padding: 40px 32px 32px;
-  box-shadow: var(--shadow-md, 0 4px 16px rgba(0,0,0,0.4)), var(--shadow-glow, 0 0 20px rgba(99,102,241,0.15));
-}
-.login-title {
+.brand {
   font-family: var(--font-mono, 'Cascadia Code', monospace);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   color: var(--accent-primary, #6366f1);
-  text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
-.login-subtitle {
-  font-size: 12px;
-  color: var(--text-secondary, #9ca3af);
-  text-align: center;
-  margin-bottom: 28px;
-  letter-spacing: 1px;
-}
-.login-field {
-  margin-bottom: 16px;
-}
-.login-label {
-  display: block;
+.subtitle {
   font-size: 11px;
+  color: var(--text-secondary, #9ca3af);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 720px;
+}
+.tile {
+  background: var(--bg-card, #1a1d27);
+  border: 2px solid var(--border-color, #2d3044);
+  border-radius: 16px;
+  padding: 32px 20px 24px;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+.tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--tile-color, var(--accent-primary, #6366f1));
+  box-shadow: 0 0 24px 0 var(--tile-color, rgba(99,102,241,0.4));
+}
+.tile-avatar {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: var(--tile-color, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-mono, monospace);
+}
+.tile-name {
+  font-size: 16px;
   font-weight: 600;
+  color: var(--text-primary, #e4e4e7);
+  margin-bottom: 4px;
+}
+.tile-tier {
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--text-secondary, #9ca3af);
-  margin-bottom: 6px;
 }
-.login-input {
-  width: 100%;
-  padding: 10px 14px;
-  background: var(--bg-primary, #0f1117);
-  border: 1px solid var(--border-color, #2d3044);
-  border-radius: var(--radius-sm, 6px);
-  color: var(--text-primary, #e4e4e7);
-  font-size: 14px;
-  font-family: inherit;
-  outline: none;
-  transition: border-color 0.2s;
-}
-.login-input:focus {
-  border-color: var(--accent-primary, #6366f1);
-}
-.login-btn {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  background: var(--accent-primary, #6366f1);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius-sm, 6px);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.login-btn:hover {
-  background: var(--accent-secondary, #4f46e5);
-}
-.login-error {
-  margin-top: 12px;
-  padding: 8px 12px;
-  background: rgba(239,68,68,0.12);
-  border: 1px solid rgba(239,68,68,0.3);
-  border-radius: var(--radius-sm, 6px);
-  color: #fca5a5;
-  font-size: 13px;
-  text-align: center;
+.pin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,17,23,0.92);
   display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  z-index: 20;
 }
-.login-error.visible { display: block; }
+.pin-overlay.visible { display: flex; }
+.pin-card {
+  background: var(--bg-card, #1a1d27);
+  border: 2px solid var(--border-color, #2d3044);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 320px;
+  width: 100%;
+  text-align: center;
+}
+.pin-prompt {
+  font-size: 14px;
+  color: var(--text-secondary, #9ca3af);
+  margin-bottom: 4px;
+}
+.pin-who {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--pin-color, #6366f1);
+  margin-bottom: 20px;
+}
+.pin-input {
+  width: 100%;
+  padding: 14px;
+  background: var(--bg-primary, #0f1117);
+  border: 2px solid var(--border-color, #2d3044);
+  border-radius: 10px;
+  color: var(--text-primary, #e4e4e7);
+  font-size: 24px;
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 12px;
+  text-align: center;
+  outline: none;
+  margin-bottom: 14px;
+}
+.pin-input:focus { border-color: var(--pin-color, #6366f1); }
+.pin-actions {
+  display: flex;
+  gap: 8px;
+}
+.pin-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.pin-btn.primary {
+  background: var(--pin-color, #6366f1);
+  color: #fff;
+}
+.pin-btn.secondary {
+  background: transparent;
+  border: 1px solid var(--border-color, #2d3044);
+  color: var(--text-secondary, #9ca3af);
+}
+.pin-error {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #fca5a5;
+  min-height: 16px;
+}
+.legacy-link {
+  margin-top: 32px;
+  font-size: 11px;
+  color: var(--text-secondary, #9ca3af);
+  text-decoration: none;
+  opacity: 0.5;
+}
+.legacy-link:hover { opacity: 1; }
 </style>
 </head>
 <body>
-<div class="login-card">
-  <div class="login-title">MERIDIAN</div>
-  <div class="login-subtitle">Sartor Family Dashboard</div>
-  <form method="POST" action="/login" id="loginForm">
-    <div class="login-field">
-      <label class="login-label" for="username">Username</label>
-      <input class="login-input" type="text" id="username" name="username" autocomplete="username" required autofocus>
+<div class="brand">MERIDIAN</div>
+<div class="subtitle">Sartor Family Dashboard</div>
+
+<div class="tile-grid" id="tileGrid"></div>
+
+<div class="pin-overlay" id="pinOverlay">
+  <div class="pin-card">
+    <div class="pin-prompt" id="pinPrompt">Enter your PIN</div>
+    <div class="pin-who" id="pinWho">User</div>
+    <input class="pin-input" id="pinInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" />
+    <div class="pin-actions">
+      <button class="pin-btn secondary" id="pinCancel" type="button">Cancel</button>
+      <button class="pin-btn primary" id="pinSubmit" type="button">Sign In</button>
     </div>
-    <div class="login-field">
-      <label class="login-label" for="password">Password</label>
-      <input class="login-input" type="password" id="password" name="password" autocomplete="current-password" required>
-    </div>
-    <button class="login-btn" type="submit">Sign In</button>
-    <div class="login-error {error_class}" id="loginError">{error_msg}</div>
+    <div class="pin-error" id="pinError"></div>
+  </div>
+</div>
+
+<a href="/login/legacy" class="legacy-link">admin recovery</a>
+
+<script>
+const grid = document.getElementById('tileGrid');
+const overlay = document.getElementById('pinOverlay');
+const pinInput = document.getElementById('pinInput');
+const pinWho = document.getElementById('pinWho');
+const pinPrompt = document.getElementById('pinPrompt');
+const pinError = document.getElementById('pinError');
+const pinSubmit = document.getElementById('pinSubmit');
+const pinCancel = document.getElementById('pinCancel');
+const pinCard = overlay.querySelector('.pin-card');
+
+let pending = null;  // {user, mode: 'verify'|'setup'|'confirm', firstPin?}
+
+async function fetchProfiles() {
+  const r = await fetch('/api/auth/profiles', { credentials: 'same-origin' });
+  if (!r.ok) {
+    grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #fca5a5;">Could not load profiles.</div>';
+    return;
+  }
+  const data = await r.json();
+  renderTiles(data.users || []);
+}
+
+function initial(name) {
+  return (name || '?').trim().charAt(0).toUpperCase();
+}
+
+function isSafeColor(c) {
+  return typeof c === 'string' && /^#[0-9a-fA-F]{6}$/.test(c);
+}
+
+function renderTiles(users) {
+  // Use DOM API instead of innerHTML template per review-sub-1 Charge 8.
+  // Names/tiers come from profiles.json; if anything ever lets user input
+  // through to that file, textContent prevents script injection.
+  grid.textContent = '';
+  for (const u of users) {
+    const safeColor = isSafeColor(u.color) ? u.color : '#6366f1';
+    const t = document.createElement('div');
+    t.className = 'tile';
+    t.style.setProperty('--tile-color', safeColor);
+
+    const avatar = document.createElement('div');
+    avatar.className = 'tile-avatar';
+    avatar.style.background = safeColor;
+    avatar.textContent = initial(u.name);
+
+    const name = document.createElement('div');
+    name.className = 'tile-name';
+    name.textContent = u.name || '';
+
+    const tier = document.createElement('div');
+    tier.className = 'tile-tier';
+    tier.textContent = (u.tier || '') + (u.age ? ' · age ' + u.age : '');
+
+    t.appendChild(avatar);
+    t.appendChild(name);
+    t.appendChild(tier);
+    t.addEventListener('click', () => onTileClick(u));
+    grid.appendChild(t);
+  }
+}
+
+function showPinOverlay(user, mode, label) {
+  pending = { user, mode, firstPin: null };
+  pinCard.style.setProperty('--pin-color', user.color);
+  pinWho.textContent = user.name;
+  pinWho.style.color = user.color;
+  pinPrompt.textContent = label;
+  pinInput.value = '';
+  pinError.textContent = '';
+  overlay.classList.add('visible');
+  setTimeout(() => pinInput.focus(), 50);
+}
+
+function hidePinOverlay() {
+  overlay.classList.remove('visible');
+  pending = null;
+}
+
+async function onTileClick(user) {
+  if (user.tier === 'kid') {
+    // Kid: tap, login immediately, no PIN
+    await doLogin(user, null);
+    return;
+  }
+  if (user.needs_pin_setup) {
+    showPinOverlay(user, 'setup', 'Set a PIN for the first time');
+  } else {
+    showPinOverlay(user, 'verify', 'Enter your PIN');
+  }
+}
+
+async function doLogin(user, pin) {
+  pinError.textContent = '';
+  const body = { user_id: user.id };
+  if (pin !== null) body.pin = pin;
+  const r = await fetch('/api/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'same-origin',
+    body: JSON.stringify(body),
+  });
+  if (r.ok) {
+    window.location.href = '/';
+    return;
+  }
+  const err = await r.json().catch(() => ({}));
+  pinError.textContent = err.error || 'Sign-in failed.';
+  pinInput.value = '';
+  pinInput.focus();
+}
+
+async function doSetPin(user, pin) {
+  // Setup requires the household admin password (Meridian admin) so any LAN
+  // device can't claim someone's PIN before they do. See review charge 1.
+  const setupKey = window.prompt(
+    `First-time PIN setup for ${user.name}.\n\n` +
+    `Enter the household admin password (the Meridian admin password from Bitwarden):`
+  );
+  if (!setupKey) {
+    pinError.textContent = 'Setup cancelled — admin password required.';
+    return;
+  }
+  pinError.textContent = '';
+  const r = await fetch('/api/auth/set-pin', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'same-origin',
+    body: JSON.stringify({ user_id: user.id, pin, setup_key: setupKey }),
+  });
+  if (r.ok) {
+    await doLogin(user, pin);
+    return;
+  }
+  const err = await r.json().catch(() => ({}));
+  pinError.textContent = err.error || 'Could not set PIN.';
+  pinInput.value = '';
+  pinInput.focus();
+}
+
+pinSubmit.addEventListener('click', async () => {
+  if (!pending) return;
+  const pin = pinInput.value.trim();
+  if (!/^\\d{4,6}$/.test(pin)) {
+    pinError.textContent = 'PIN must be 4-6 digits.';
+    return;
+  }
+  if (pending.mode === 'verify') {
+    await doLogin(pending.user, pin);
+  } else if (pending.mode === 'setup') {
+    pending.firstPin = pin;
+    pending.mode = 'confirm';
+    pinPrompt.textContent = 'Enter the PIN again to confirm';
+    pinInput.value = '';
+    pinInput.focus();
+  } else if (pending.mode === 'confirm') {
+    if (pin !== pending.firstPin) {
+      pinError.textContent = 'PINs did not match. Start over.';
+      pending.mode = 'setup';
+      pending.firstPin = null;
+      pinPrompt.textContent = 'Set a PIN for the first time';
+      pinInput.value = '';
+      return;
+    }
+    await doSetPin(pending.user, pin);
+  }
+});
+
+pinInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') pinSubmit.click();
+  if (e.key === 'Escape') hidePinOverlay();
+});
+
+pinCancel.addEventListener('click', hidePinOverlay);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) hidePinOverlay(); });
+
+fetchProfiles();
+</script>
+</body>
+</html>"""
+
+
+_LEGACY_LOGIN_HTML = """<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MERIDIAN - Admin Recovery</title>
+<link rel="stylesheet" href="/meridian-theme.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans, system-ui); background: #0f1117; color: #e4e4e7;
+       min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+.card { width: 100%; max-width: 360px; background: #1a1d27; border: 1px solid #2d3044;
+        border-radius: 14px; padding: 32px; }
+.title { font-family: monospace; font-size: 18px; font-weight: 700; color: #6366f1;
+         text-align: center; letter-spacing: 3px; margin-bottom: 6px; }
+.subtitle { text-align: center; font-size: 11px; color: #9ca3af; letter-spacing: 1.5px;
+            text-transform: uppercase; margin-bottom: 24px; }
+input { width: 100%; padding: 10px 14px; background: #0f1117; border: 1px solid #2d3044;
+        border-radius: 6px; color: #e4e4e7; font-size: 14px; margin-bottom: 12px; outline: none; }
+input:focus { border-color: #6366f1; }
+button { width: 100%; padding: 10px; background: #6366f1; color: #fff; border: none;
+         border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+button:hover { background: #4f46e5; }
+.err { margin-top: 12px; padding: 8px 12px; background: rgba(239,68,68,0.12);
+       border: 1px solid rgba(239,68,68,0.3); border-radius: 6px; color: #fca5a5;
+       font-size: 13px; text-align: center; display: none; }
+.err.visible { display: block; }
+.back { display: block; text-align: center; margin-top: 18px; font-size: 11px;
+        color: #9ca3af; text-decoration: none; }
+.back:hover { color: #e4e4e7; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="title">MERIDIAN</div>
+  <div class="subtitle">Admin recovery</div>
+  <form method="POST" action="/login/legacy">
+    <input name="password" type="password" placeholder="meridian-password" autofocus required>
+    <button type="submit">Sign in as Alton</button>
+    <div class="err {error_class}">{error_msg}</div>
   </form>
+  <a href="/login" class="back">&larr; back to tile picker</a>
 </div>
 </body>
 </html>"""
 
 
 @app.get("/login", response_class=HTMLResponse)
-async def login_page(error: str = ""):
+async def login_page():
+    return HTMLResponse(content=_LOGIN_HTML)
+
+
+@app.get("/login/legacy", response_class=HTMLResponse)
+async def legacy_login_page(error: str = ""):
     error_class = "visible" if error else ""
     error_msg = error if error else ""
-    html = _LOGIN_HTML.replace("{error_class}", error_class).replace("{error_msg}", error_msg)
+    html = _LEGACY_LOGIN_HTML.replace("{error_class}", error_class).replace("{error_msg}", error_msg)
     return HTMLResponse(content=html)
 
 
-@app.post("/login")
-async def login_submit(request: Request):
+@app.post("/login/legacy")
+async def legacy_login_submit(request: Request):
+    """Fallback admin login using the meridian-password.txt file. Always signs in as `alton`.
+
+    Kept as recovery: if Alton forgets his PIN or profiles.json is corrupt,
+    this path still works as long as the file + admin profile exist.
+    """
     ip = _client_ip(request) or "unknown"
     if _login_rate_limited(ip):
         return RedirectResponse(
-            url="/login?error=Too+many+failed+attempts.+Try+again+in+5+minutes.",
+            url="/login/legacy?error=Too+many+failed+attempts.+Try+again+in+5+minutes.",
             status_code=303,
         )
-
     form = await request.form()
-    username = form.get("username", "").strip()
-    pw_submitted = form.get("password", "").strip()
-
-    correct_user = secrets.compare_digest(username.encode(), b"alton")
-    correct_pw = secrets.compare_digest(pw_submitted.encode(), _MERIDIAN_PASSWORD.encode())
-
-    if not (correct_user and correct_pw):
+    pw = form.get("password", "").strip()
+    if not secrets.compare_digest(pw.encode(), _MERIDIAN_PASSWORD.encode()):
         _record_login_failure(ip)
-        return RedirectResponse(url="/login?error=Invalid+username+or+password", status_code=303)
-
+        return RedirectResponse(url="/login/legacy?error=Invalid+password", status_code=303)
+    if not _profile_by_id("alton"):
+        return RedirectResponse(url="/login/legacy?error=Admin+profile+missing", status_code=303)
     _clear_login_failures(ip)
-    signed = _sign_token(username)
     response = RedirectResponse(url="/", status_code=303)
     response.set_cookie(
         key="meridian_session",
-        value=signed,
+        value=_sign_token("alton"),
         httponly=True,
         samesite="lax",
-        max_age=60 * 60 * 24 * 30,  # 30 days
+        max_age=60 * 60 * 24 * 30,
     )
     return response
+
+
+# ── New tile-launcher auth endpoints ─────────────────────────────────────────
+
+
+@app.get("/api/auth/profiles")
+async def auth_profiles():
+    """Public list of profiles for the tile-launcher. No PIN material returned."""
+    data = _load_profiles_data()
+    return {"users": [_public_profile(u) for u in data.get("users", [])]}
+
+
+@app.post("/api/auth/login")
+async def auth_login(body: dict, request: Request):
+    """Tile login. Body: {user_id, pin?}. Kids skip pin; adults require it."""
+    ip = _client_ip(request) or "unknown"
+    if _login_rate_limited(ip):
+        return JSONResponse(
+            status_code=429,
+            content={"error": "Too many failed attempts. Try again in 5 minutes."},
+        )
+    user_id = (body or {}).get("user_id", "").strip()
+    pin = (body or {}).get("pin", "")
+    user = _profile_by_id(user_id)
+    if not user:
+        _record_login_failure(ip)
+        return JSONResponse(status_code=400, content={"error": "Unknown user."})
+    tier = user.get("tier", "")
+    if tier == "kid":
+        # No PIN required for kids.
+        pass
+    elif tier in ("admin", "adult"):
+        if not user.get("pin_hash"):
+            return JSONResponse(
+                status_code=400,
+                content={"error": "PIN not set yet. Use the setup flow first."},
+            )
+        if not _verify_pin(user, pin):
+            _record_login_failure(ip)
+            return JSONResponse(status_code=400, content={"error": "Wrong PIN."})
+    else:
+        return JSONResponse(status_code=400, content={"error": "Unknown tier."})
+    _clear_login_failures(ip)
+    response = JSONResponse(content={"ok": True, "user": _public_profile(user)})
+    response.set_cookie(
+        key="meridian_session",
+        value=_sign_token(user_id),
+        httponly=True,
+        samesite="lax",
+        max_age=60 * 60 * 24 * 30,
+    )
+    return response
+
+
+@app.post("/api/auth/set-pin")
+async def auth_set_pin(body: dict, request: Request):
+    """First-run PIN setup for admin/adult tiers. Requires the Meridian admin password
+    as `setup_key` to prevent any LAN device from claiming someone else's PIN before
+    the legitimate user can (review-build-sub-1-v1 Charge 1).
+
+    Only allowed when pin_hash is null (not set yet). Subsequent PIN rotation is a
+    sub-4 backlog item (would require a signed-in session of the same user).
+    """
+    ip = _client_ip(request) or "unknown"
+    if _login_rate_limited(ip):
+        return JSONResponse(
+            status_code=429,
+            content={"error": "Too many failed attempts. Try again in 5 minutes."},
+        )
+    user_id = (body or {}).get("user_id", "").strip()
+    pin = (body or {}).get("pin", "")
+    setup_key = (body or {}).get("setup_key", "")
+    if not secrets.compare_digest(str(setup_key).encode(), _MERIDIAN_PASSWORD.encode()):
+        _record_login_failure(ip)
+        return JSONResponse(
+            status_code=403,
+            content={"error": "Setup key required. Enter the household admin password."},
+        )
+    user = _profile_by_id(user_id)
+    if not user:
+        return JSONResponse(status_code=400, content={"error": "Unknown user."})
+    if user.get("tier") not in ("admin", "adult"):
+        return JSONResponse(status_code=400, content={"error": "PIN not applicable to this tier."})
+    if user.get("pin_hash"):
+        return JSONResponse(
+            status_code=400,
+            content={"error": "PIN already set. Use the change-PIN flow."},
+        )
+    if not isinstance(pin, str) or not pin.isdigit() or not (4 <= len(pin) <= 6):
+        return JSONResponse(status_code=400, content={"error": "PIN must be 4-6 digits."})
+    _clear_login_failures(ip)
+    salt = secrets.token_hex(8)
+    _update_profile(user_id, pin_salt=salt, pin_hash=_hash_pin(pin, salt))
+    return {"ok": True}
 
 
 @app.get("/logout")
@@ -387,6 +957,30 @@ async def csrf_endpoint(request: Request):
     if not sess or not _verify_token(sess):
         return JSONResponse(status_code=401, content={"error": "no session"})
     return {"token": _csrf_for(sess)}
+
+
+@app.get("/api/me")
+async def me_endpoint(request: Request):
+    """Return the current viewer's public profile. Drives color theming on the dashboard."""
+    user = _get_viewer(request)
+    if not user:
+        return JSONResponse(status_code=401, content={"error": "no session"})
+    return _public_profile(user)
+
+
+@app.post("/api/me/color")
+async def me_set_color(body: dict, request: Request):
+    """Self-update one's own accent color. Body: {color: '#rrggbb'}."""
+    user = _get_viewer(request)
+    if not user:
+        return JSONResponse(status_code=401, content={"error": "no session"})
+    color = (body or {}).get("color", "")
+    if not isinstance(color, str) or not re.fullmatch(r"#[0-9a-fA-F]{6}", color):
+        return JSONResponse(status_code=400, content={"error": "color must be '#rrggbb'"})
+    updated = _update_profile(user["id"], color=color)
+    if not updated:
+        return JSONResponse(status_code=500, content={"error": "profile write failed"})
+    return _public_profile(updated)
 
 
 # Paths
@@ -603,12 +1197,30 @@ def compute_age(birth_year: int, birth_month: int, birth_day: int) -> int:
 # ── GET / ──────────────────────────────────────────────────────────────────────
 
 @app.get("/", response_class=HTMLResponse)
-async def serve_index():
+async def serve_index(request: Request):
     index_path = BASE_DIR / "index.html"
     try:
-        return HTMLResponse(content=index_path.read_text(encoding="utf-8"))
+        html = index_path.read_text(encoding="utf-8")
     except Exception:
         return HTMLResponse(content="<h1>index.html not found</h1>", status_code=404)
+    # Inject the viewer's accent color as a CSS-variable override so the dashboard
+    # picks up per-user theming on first paint, before any JS runs.
+    viewer = _get_viewer(request)
+    if viewer:
+        # Re-validate at injection time per review-sub-1 Charge 7. The /api/me/color
+        # endpoint validates on write, but defense-in-depth here means a hand-edited
+        # profiles.json with a malicious color string cannot inject </style><script>.
+        raw_color = viewer.get("color") or "#6366f1"
+        color = raw_color if re.fullmatch(r"#[0-9a-fA-F]{6}", str(raw_color)) else "#6366f1"
+        style_block = (
+            f"<style id=\"meridian-viewer-theme\">:root {{ --accent-primary: {color}; "
+            f"--accent-secondary: {color}; }}</style>"
+        )
+        if "</head>" in html:
+            html = html.replace("</head>", style_block + "</head>", 1)
+        else:
+            html = style_block + html
+    return HTMLResponse(content=html)
 
 
 @app.get("/meridian-theme.css")
