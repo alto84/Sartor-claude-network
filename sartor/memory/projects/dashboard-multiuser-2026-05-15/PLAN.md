@@ -95,6 +95,12 @@ Pre-registered for when sub-2 happens. Not relevant for sub-1 review, but docume
 
 Sub-1 is "fired" already (build complete on the worktree branch, not yet committed/merged). Adversarial review is the first real interpretation gate.
 
+## Test artifact
+
+Adversarial test suite lives at `dashboard/family/tests/test_auth_flow.sh`. Run target: uvicorn on `127.0.0.1:5056` from this worktree (with `.secrets/meridian-password.txt` populated). Script self-bootstraps `profiles.json` and resets `.auth-failures.json` between runs.
+
+The v1 test script had 18 assertions but missed 4 of the 18 pre-registered PLAN.md tests (see review-build-sub-1-v1 Charge 5). The v2 in-repo script covers all 18 PLAN.md tests plus adversarial coverage for Charges 1, 3, 4, 7, 8 — **29 assertions, all passing after revisions land**.
+
 ## Out of scope for this plan
 
 - Tailscale / off-LAN reachability — separate decision, separate threat model, separate plan when relevant

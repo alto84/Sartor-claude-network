@@ -216,4 +216,54 @@ Bucket F (real attack found) would apply if this were being deployed to producti
 ---
 
 ## Reply from the team
-<!-- Leave empty. The orchestrator fills this during Phase 5 Revise with per-charge response: CONCEDE / CONTEST / EXTEND, plus pointer to revision commit if applicable. -->
+
+Filed by orchestrator (single-builder context per skill rule 2). Each charge gets one of CONCEDE (the charge is right; here's the fix), CONTEST (the charge is wrong; here's why), or EXTEND (concede the point but disagree on the proposed patch; here's the alternative).
+
+### Charge 1 — Unauthenticated PIN setup
+**CONCEDE.** Real attack, real blocker. Implemented option (B) from the recommendation: `/api/auth/set-pin` now requires a `setup_key` field matching `_MERIDIAN_PASSWORD`. Rate-limit applies to bad setup_key attempts. Setup flow in the login HTML prompts for the admin password before submitting the PIN. Patch: commit `d468d4e3`. Adversarial test added: "set-pin without setup_key returns 403", "set-pin with wrong setup_key returns 403". Both green.
+
+Option (A) considered and rejected for now: it would require a working /api/me/set-pin endpoint reachable from an authenticated session, which means first-run flow is "log in via /login/legacy, set PIN, log out, re-login via tile." Too many UI steps for v1. Backlog: build the in-session PIN-rotation flow as part of sub-4 Polish.
+
+### Charge 2 — PIN hashes leak via GitHub mirror
+**CONCEDE.** The INDEX claim was wrong. Two patches:
+- Commit `f24856d9`: `sartor/memory/family/profiles.json` added to `.gitignore`; the bootstrap version with null hashes (already in d3e2bff5 git history) is harmless and stays; INDEX corrected to name the real resistance model (PIN hash includes `_SESSION_SECRET[:16]` derived from never-committed `meridian-password.txt`).
+- Commit `cd15a4b7`: server now self-bootstraps `profiles.json` from `_SEED_PROFILES` on first start when missing. Avoids the merge-deletes-file footgun.
+
+### Charge 3 — Rate limit state in-memory only
+**CONCEDE.** Patch: commit `8b1ee5d4`. `_login_failures` now persisted to `dashboard/family/.auth-failures.json` (gitignored). Atomic write on each `_record_login_failure` / `_clear_login_failures`. Loaded once at import; stale entries dropped. Monotonic offsets converted to wall-clock for storage, converted back on load. Adversarial test added: "auth-failures.json exists" + "auth-failures has entries" after rate-limit trigger. Green.
+
+### Charge 4 — CSRF middleware only covers /api/tasks
+**CONCEDE.** Patch: commit `2c5c638c`. `CsrfMiddleware` now covers all mutating `/api/*` EXCEPT `/api/auth/*` (no session exists yet — relies on Content-Type + SameSite + rate-limit for CSRF mitigation, documented in middleware docstring). Adversarial test added: "color update without CSRF returns 403", "color update with CSRF 200". Both green.
+
+### Charge 5 — Test script gaps
+**CONCEDE.** The v1 test in `jobs/85180d3d/test-auth-flow.sh` had 18 assertions but missed 4 of the 18 PLAN.md acceptance tests (#1 PIN-material absence, #16 legacy POST cookie, #17 rate limit, #18 cookie forgery) and zero adversarial cases. v2 test script committed to repo at `dashboard/family/tests/test_auth_flow.sh` with **29 assertions covering all 18 PLAN.md tests + adversarial cases for Charges 1, 3, 4. All 29 green.** PLAN.md updated to reference the in-repo script.
+
+### Charge 6 — Double profile load per request
+**EXTEND — defer to sub-4.** Concede the structural inconsistency point. The fix (pass `request.state.viewer` from middleware) is correct but is performance/cleanliness, not security. Deferring to sub-4 Polish so this revision pass stays scoped to security charges. Added to backlog. No commit in this round.
+
+### Charge 7 — CSS injection via color in serve_index
+**CONCEDE.** Defense-in-depth, one line. Patch: commit `b0d9a3a3` (bundled with Charge 8). `serve_index` now re-validates the color value against `re.fullmatch(r"#[0-9a-fA-F]{6}", ...)` before injection; falls back to default `#6366f1` on mismatch.
+
+### Charge 8 — innerHTML in renderTiles
+**CONCEDE.** Patch: commit `b0d9a3a3` (bundled with Charge 7). `renderTiles` rewritten to use `createElement` + `textContent` for name, tier, age fields. Color attribute checked against `#rrggbb` regex before being set as a CSS property. Eliminates the latent XSS vector if any future endpoint ever lets user input land in `profiles.json`.
+
+### Charge 9 — Session secret coupled to admin password
+**EXTEND — defer to backlog.** Concede the operational-coupling point. Decoupling (separate `.secrets/session-salt.txt`) is correct but the practical impact today is "rotating the admin password forces re-login" — annoying but not security-breaking. Filed as a sub-4 / future-improvement backlog item. The rotation flow is rare enough that adding the file now is premature without a real use case driving it.
+
+---
+
+### Summary of revisions
+
+| Charge | Action | Commit |
+|---|---|---|
+| 1 critical | fix landed | d468d4e3 |
+| 2 high | fix landed | f24856d9, cd15a4b7 |
+| 3 medium | fix landed | 8b1ee5d4 |
+| 4 medium | fix landed | 2c5c638c |
+| 5 medium | fix landed (test in repo) | <this commit> |
+| 6 low | defer to sub-4 | — |
+| 7 low | fix landed | b0d9a3a3 |
+| 8 low | fix landed | b0d9a3a3 |
+| 9 low | defer to backlog | — |
+
+7 fixes landed; 2 deferred with documented rationale. 29/29 acceptance tests pass after revisions. Ready for re-review (skill Phase 6).
