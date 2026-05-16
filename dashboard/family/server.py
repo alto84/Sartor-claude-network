@@ -590,17 +590,37 @@ function initial(name) {
   return (name || '?').trim().charAt(0).toUpperCase();
 }
 
+function isSafeColor(c) {
+  return typeof c === 'string' && /^#[0-9a-fA-F]{6}$/.test(c);
+}
+
 function renderTiles(users) {
-  grid.innerHTML = '';
+  // Use DOM API instead of innerHTML template per review-sub-1 Charge 8.
+  // Names/tiers come from profiles.json; if anything ever lets user input
+  // through to that file, textContent prevents script injection.
+  grid.textContent = '';
   for (const u of users) {
+    const safeColor = isSafeColor(u.color) ? u.color : '#6366f1';
     const t = document.createElement('div');
     t.className = 'tile';
-    t.style.setProperty('--tile-color', u.color);
-    t.innerHTML = `
-      <div class="tile-avatar" style="background:${u.color}">${initial(u.name)}</div>
-      <div class="tile-name">${u.name}</div>
-      <div class="tile-tier">${u.tier}${u.age ? ' · age ' + u.age : ''}</div>
-    `;
+    t.style.setProperty('--tile-color', safeColor);
+
+    const avatar = document.createElement('div');
+    avatar.className = 'tile-avatar';
+    avatar.style.background = safeColor;
+    avatar.textContent = initial(u.name);
+
+    const name = document.createElement('div');
+    name.className = 'tile-name';
+    name.textContent = u.name || '';
+
+    const tier = document.createElement('div');
+    tier.className = 'tile-tier';
+    tier.textContent = (u.tier || '') + (u.age ? ' · age ' + u.age : '');
+
+    t.appendChild(avatar);
+    t.appendChild(name);
+    t.appendChild(tier);
     t.addEventListener('click', () => onTileClick(u));
     grid.appendChild(t);
   }
@@ -1175,7 +1195,11 @@ async def serve_index(request: Request):
     # picks up per-user theming on first paint, before any JS runs.
     viewer = _get_viewer(request)
     if viewer:
-        color = viewer.get("color") or "#6366f1"
+        # Re-validate at injection time per review-sub-1 Charge 7. The /api/me/color
+        # endpoint validates on write, but defense-in-depth here means a hand-edited
+        # profiles.json with a malicious color string cannot inject </style><script>.
+        raw_color = viewer.get("color") or "#6366f1"
+        color = raw_color if re.fullmatch(r"#[0-9a-fA-F]{6}", str(raw_color)) else "#6366f1"
         style_block = (
             f"<style id=\"meridian-viewer-theme\">:root {{ --accent-primary: {color}; "
             f"--accent-secondary: {color}; }}</style>"
