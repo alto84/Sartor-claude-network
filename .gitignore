@@ -28,6 +28,14 @@ config/firebase-credentials.json
 
 # Credentials and secrets
 *.pem
+
+# MERIDIAN dashboard per-user profiles — contains PIN hashes once set.
+# The repo mirrors to GitHub every 15 min; PIN hashes outside the LAN are
+# offline-crackable. See projects/dashboard-multiuser-2026-05-15/review-build-sub-1-v1.md
+# charge 2. The bootstrap version with null hashes (committed in d3e2bff5) is
+# harmless and stays as the seed for new deployments; subsequent versions
+# carrying real hashes must not land in git.
+sartor/memory/family/profiles.json
 *.key
 credentials.json
 secrets.json
