@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: ASTRAZENECA
-updated: 2026-05-12
+updated: 2026-05-14
 updated_by: autodream
 last_verified: 2026-04-12
 status: active
@@ -125,3 +125,6 @@ related: [ALTON, BUSINESS, az-career]
 - [2026-05-10] (fact) Amazon delivered: (2026-05-09): IMENSEAS Grip Strength item
 - [2026-05-10] (fact) Amazon in transit: (ordered 2026-05-08, shipped 2026-05-09): Unicorn Terrarium (7july) + 1 more item
 - [2026-05-10] (fact) LinkedIn job alerts: (INFORMATIONAL): Biogen AMD Global Drug Safety, Sanofi Medical Head Early Pipeline, Vertex Exec MD Patient Safety — no action required unless relevant to Aneeta's career positioning
+
+## Consolidated from daily logs (2026-05-14)
+- [2026-05-12] (fact) Amazon delivery confirmed — Torkase Dimmable MR16 LED + 1 more item:

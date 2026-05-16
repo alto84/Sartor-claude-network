@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: LEARNINGS
-updated: 2026-05-12
+updated: 2026-05-14
 updated_by: autodream
 last_verified: 2026-04-12
 status: active
@@ -232,3 +232,23 @@ Key findings from surveying state-of-the-art AI memory systems:
 - [2026-04-06] (fact) ---
 - [2026-04-06] (fact) ---
 - [2026-05-10] (fact) USPS package arriving 2026-05-10: (2026-05-10): 1 inbound package per Informed Delivery
+
+## Consolidated from daily logs (2026-05-14)
+- [2026-05-12] (fact) Kaymbu/Goddard, 2026-05-12 15:52 UTC
+- [2026-05-12] (fact) "Dance Class!" shared moment. Informational — Vasu is in dance class 2026-05-12.
+- [2026-05-12] (fact) Delivered 2026-05-12 08:54 UTC.
+- [2026-05-13] (fact) Vasu — Pajama Day 2026-05-13 (2026-05-13):
+- [2026-05-13] (fact) noreply@kaymbu.com, 2026-05-12 20:00 UTC
+- [2026-05-13] (fact) Vasu should be in pajamas for Goddard 2026-05-13. Morning logistics — hopefully handled.
+- [2026-05-13] (fact) Vasu — Bedding/sheets needed on Mondays at Goddard:
+- [2026-05-13] (fact) noreply@kaymbu.com, 2026-05-12 16:47 UTC
+- [2026-05-13] (fact) Vasu needs to bring bedding sheets to Goddard on Mondays
+- [2026-05-13] (fact) Kaymbu daily report: checked in 07:32 AM (Nathia W), checked out 06:00 PM (Alissa D)
+- [2026-05-13] (fact) Ate AM snack (mangos, all), nap, math/3D shapes sorting activity, farmer's market play, hot potato game
+- [2026-05-13] (fact) MKA — Theme Day 2026-05-13 (2026-05-13):
+- [2026-05-13] (fact) m@mail2.veracross.com, 2026-05-12 19:00 UTC
+- [2026-05-13] (fact) Subject: "MKA: Reminder- Theme Day Tomorrow!"
+- [2026-05-13] (fact) Vishala — "own your letter dress down" on 2026-05-20 (NEW calendar event):
+- [2026-05-13] (fact) Summary: "Vishala own your letter dress down"
+- [2026-05-13] (fact) jackrabbittech.com, 2026-05-12 21:29. Saturday May 30, $25.
+- [2026-05-13] (fact) ALREADY DECLINED per active-todos.md ("Gym Day 2026-05-30 registration: NOT ATTENDING")

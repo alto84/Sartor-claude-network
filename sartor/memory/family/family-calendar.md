@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-05-12
+updated: 2026-05-16
 updated_by: personal-data-gather
-run: 70
+run: 80
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -618,3 +618,22 @@ New event not captured in prior runs:
 | Date | Time (ET) | Event | Calendar | Notes |
 |------|-----------|-------|----------|-------|
 | Mon 5/18 | 1:00–2:00 PM | Optimum fiber appointment | Primary (Alton) | Someone needs to be home. Scheduling flexibility required. |
+
+## Latest from gather (2026-05-16) — run 80
+
+> [!fact] NEW EVENT — "Friday to PA" (Fri 5/22 – Sat 5/23)
+> Created by Aneeta (aneetasax@gmail.com) at 2026-05-16T01:27:51Z (1:27 AM ET, today). All-day Family calendar event spanning May 22-23. No description, location, or attendees in the event. May 22 is a **Friday and school day** for Vayu and Vishala at MKA. Confirm: who is going, kids included or not, school logistics if applicable. See [[family/active-todos]].
+
+Week of May 16–23 (confirmed from live API, run 80):
+
+| Date | Time (ET) | Event | Calendar | Notes |
+|------|-----------|-------|----------|-------|
+| Sat 5/16 (TODAY) | 12:00–1:00 PM | Vayu soccer GAME (B34-Lime vs B34-Silver-Verdegaal&Roache) | Blue Sombrero | Brookdale Park Field 1. Arrive ~11:40. Shin guards. |
+| Sun 5/17 | 10:00 AM–1:00 PM | Playdate with Livia and family | Family | Creator: Aneeta |
+| Mon 5/18 | 1:00–2:00 PM | Optimum fiber appointment | Primary (Alton) | Must be home |
+| Wed 5/20 | all day | Vishala "own your letter dress down" | Family | Plan outfit, appropriate letter |
+| Wed 5/20 | 5:30–6:15 PM | Rec Soccer Practice (B-34 Lime) | Family | Anderson Park, south near Parkside St |
+| Thu 5/21 | all day | Nehal's Birthday | Primary (Alton) | Recurring — send message/call |
+| **Fri 5/22 – Sat 5/23** | **all day** | **"Friday to PA"** | **Family** | **NEW — Aneeta created 1:27 AM today. Confirm who/what/logistics.** |
+
+No events on Aneeta, Alton's Tasks, or Alton Primary calendars for May 16–23 beyond what's listed. Calendar metadata stable vs run 79; only delta is the PA trip entry.

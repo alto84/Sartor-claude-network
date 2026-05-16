@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-05-12
+updated: 2026-05-14
 updated_by: autodream
 last_verified: 2026-04-16
 status: active
@@ -207,3 +207,14 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 
 ## Consolidated from daily logs (2026-05-12)
 - [2026-05-10] (fact) Jackrabbit parent/child class: (info only): Ages 1-4, May 30 + June 3, 4:00–4:45 PM, 136 Mountainview Blvd Wayne NJ, $15/non-member — potential activity for Vasu
+
+## Consolidated from daily logs (2026-05-14)
+- [2026-05-12] (fact) Meowtel — Memorial Day weekend (May 22–25) cat sitter solicitation:
+- [2026-05-12] (fact) Informational: proactive outreach from Meowtel for Memorial Day weekend. Note if travel is planned for that window (cats Loki, Ghosty, Pickle).
+- [2026-05-13] (fact) Samantha Ramsden: "Pajama Day Tomorrow! Wear your coziest pjs to school tomorrow!"
+- [2026-05-13] (fact) Routed to: family/vasu
+- [2026-05-13] (fact) Lorena Castillo: "Bedding Parents, Children are coming in without sheets on Mondays."
+- [2026-05-13] (fact) Routed to: family/vasu, family/active-todos
+- [2026-05-13] (fact) Brookside will have a special theme day 2026-05-13. "Head of School for the Day" auction winner Chloe Martinez invited students to dress with a theme. Details in Veracross.
+- [2026-05-13] (fact) Vishala wears a dress featuring her own letter (likely letter "V" or a specific assigned letter — confirm with Vishala/school)
+- [2026-05-13] (fact) Routed to: family/vishala, family/active-todos

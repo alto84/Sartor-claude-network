@@ -303,3 +303,17 @@ Records memory consolidation events: merges, archives, and prune operations.
 - logs_removed: 0
 - index_lines: 42
 
+## Run: 2026-05-14 03:08:43
+- dry_run: False
+- facts_gathered: 41
+- facts_written: 30
+- files_updated: 5
+- logs_archived: 6
+- logs_removed: 0
+- index_lines: 42
+- changes:
+  - LEARNINGS.md: +18 facts
+  - ASTRAZENECA.md: +1 facts
+  - FAMILY.md: +9 facts
+  - ALTON.md: +1 facts
+  - MACHINES.md: +1 facts

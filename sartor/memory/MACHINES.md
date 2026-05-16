@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-05-09
-updated_by: ip-and-ap-rename-cleanup
+updated: 2026-05-14
+updated_by: autodream
 last_verified: 2026-05-02
 status: active
 next_review: 2026-05-12
@@ -28,7 +28,7 @@ related: [BUSINESS, PROCEDURES, SELF, MULTI-MACHINE-MEMORY, machines/gpuserver1/
 - **OS:** Windows
 - **Display:** 3 monitors (2560x1440 primary + 2x 1920x1080)
 - **Username:** alton (Windows user), alto8 (profile path)
-- **Chrome:** v144 at C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+- **Chrome:** v144 at C:\Users\alto8\chrome-automation-profile
 - **Claude Code:** Installed and active
 - **CDP Toolkit:** C:\Users\alto8\Sartor-claude-network\tools\chrome-tools\ (cdp-*.ps1 scripts, screenshot, click, type)
 - **Chrome Automation Profile:** C:\Users\alto8\chrome-automation-profile\ (CDP port 9223)
@@ -247,12 +247,6 @@ Executed cron cleanup task per Alton's authorization. Cleaned 15 → 5 active cr
 
 **Script disposition**: Preserved in repo at `sartor/gateway/gateway_cron.py` (not renamed or moved)
 
-**Verification**:
-```
-$ ls -la /home/alton/Sartor-claude-network/sartor/gateway/gateway_cron.py
--rw-rw-r-- 1 alton alton 1845 Apr  3 01:17 /home/alton/Sartor-claude-network/sartor/gateway/gateway_cron.py
-```
-
 **Rationale**: Failing every 30min with JSON decode errors. Purpose unclear from code. Preserved for potential debugging but stopped to eliminate log spam.
 
 ---
@@ -271,12 +265,6 @@ $ ls -la /home/alton/Sartor-claude-network/sartor/gateway/gateway_cron.py
 ```
 
 **Script disposition**: Renamed to `/home/alton/vastai-tend.sh.deprecated-2026-04-12`
-
-**Verification**:
-```
-$ ls -la /home/alton/vastai-tend.sh*
--rwxr-xr-x 1 alton alton 2484 Feb 27 20:03 /home/alton/vastai-tend.sh.deprecated-2026-04-12
-```
 
 **Redundancy verification**: Compared vastai-tend.sh (75 lines) vs run_monitor.sh (64 lines). Both check:
 - vastai machine listing status
@@ -396,8 +384,6 @@ Subagent investigation (agent a8a04af) found all three failing due to Docker per
 # Reason: gpuserver1 has rental-operations authority, Rocinante has memory-curation authority
 # 30 23 * * * cd ~/Sartor-claude-network && python3 sartor/memory/autodream.py --force >> /tmp/autodream.log 2>&1; python3 sartor/memory/decay.py --update >> /tmp/decay.log 2>&1; echo "$(date -Iseconds),consolidate-mirror,completed,0,local,0" >> data/heartbeat-log.csv
 ```
-
-**Script disposition**: Scripts remain in repo at `sartor/memory/autodream.py` and `sartor/memory/decay.py` (not executed on gpuserver1)
 
 **Rationale**: OPERATING-AGREEMENT §2 establishes domain authority separation:
 - Rocinante: memory-wiki curation, git operations, shared-state writes
@@ -616,3 +602,6 @@ No git push (no credentials) - awaiting Rocinante curator commit
 
 ## Consolidated from daily logs (2026-04-29)
 - [2026-04-29] (fact) Vasu's Goddard May 2026 schedule available. No specific dates extractable from snippet.
+
+## Consolidated from daily logs (2026-05-14)
+- [2026-05-13] (fact) Gym Day Registration — skipped (already declined):
