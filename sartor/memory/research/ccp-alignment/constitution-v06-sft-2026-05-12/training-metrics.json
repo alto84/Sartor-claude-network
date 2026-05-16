@@ -1,0 +1,13 @@
+{
+  "model": "llmfan46/Qwen3.6-27B-uncensored-heretic-v2-Native-MTP-Preserved",
+  "corpus_size": 95,
+  "train_size": 85,
+  "eval_size": 10,
+  "lora_r": 16,
+  "lora_alpha": 32,
+  "target_modules_count": 256,
+  "trainable_params": 79691776,
+  "total_params": 27436420336,
+  "training_seconds": 327.0101900100708,
+  "vram_at_load_gib": 51.426544189453125
+}
