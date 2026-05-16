@@ -112,4 +112,7 @@ sartor/memory/source-documents/
 # Rufus USB tool launcher (2 KB) left over from a one-off USB image task;
 # not project content.
 /rufus.com
+# MERIDIAN dashboard rate-limit state (review-build-sub-1-v1 Charge 3).
 dashboard/family/.auth-failures.json
+
+

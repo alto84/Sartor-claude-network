@@ -23,19 +23,19 @@
   </style>
 </head><body>
 <h1>Sartor Network Dashboard</h1>
-<div class="stamp">Generated 2026-05-12 21:19:14 local (2026-05-13 01:19:14 UTC) — auto-reload every 60 sec — regenerated on disk every 5 min by <code>Sartor Network Dashboard</code> task</div>
+<div class="stamp">Generated 2026-05-13 00:54:04 local (2026-05-13 04:54:04 UTC) — auto-reload every 60 sec — regenerated on disk every 5 min by <code>Sartor Network Dashboard</code> task</div>
 <h2>Topology</h2>
 <div class="mermaid">
 flowchart LR
     fios[&quot;Verizon Fios&lt;br/&gt;2.5GbE uplink&quot;]:::wan
     sw[&quot;UniFi Switch&lt;br/&gt;USPM24P (24-port PoE)&quot;]:::sw
     fios --&gt; sw
-    sw --&gt; ap_Hall2ndFloor[&quot;Hall2ndFloor&lt;br/&gt;3 clients&lt;br/&gt;0.0 Mbps&quot;]:::apok
+    sw --&gt; ap_Hall2ndFloor[&quot;Hall2ndFloor&lt;br/&gt;4 clients&lt;br/&gt;0.0 Mbps&quot;]:::apok
     sw --&gt; ap_OutdoorBackyard[&quot;OutdoorBackyard&lt;br/&gt;1 clients&lt;br/&gt;0.0 Mbps&quot;]:::apok
     sw --&gt; ap_Basement[&quot;Basement&lt;br/&gt;0 clients&lt;br/&gt;0.0 Mbps&quot;]:::apok
     sw --&gt; ap_Alton_s_Office[&quot;Alton&amp;#x27;s Office&lt;br/&gt;1 clients&lt;br/&gt;0.0 Mbps&quot;]:::apok
     sw --&gt; ap_Aneeta_s_Office[&quot;Aneeta&amp;#x27;s Office&lt;br/&gt;3 clients&lt;br/&gt;0.0 Mbps&quot;]:::apok
-    sw --&gt; ap_3rdFloor[&quot;3rdFloor&lt;br/&gt;2 clients&lt;br/&gt;0.0 Mbps&quot;]:::apok
+    sw --&gt; ap_3rdFloor[&quot;3rdFloor&lt;br/&gt;1 clients&lt;br/&gt;0.0 Mbps&quot;]:::apok
     sw --&gt; ap_Gym[&quot;Gym&lt;br/&gt;1 clients&lt;br/&gt;0.0 Mbps&quot;]:::apok
     sw --&gt; ap_Livingroom[&quot;Livingroom&lt;br/&gt;0 clients&lt;br/&gt;0.0 Mbps&quot;]:::apok
     sw --&gt; wh_SonosZP_dd_aa[&quot;SonosZP&lt;br/&gt;192.168.1.184&quot;]:::wired
@@ -43,7 +43,7 @@ flowchart LR
     sw --&gt; wh__noname__28_1c[&quot;(noname)&lt;br/&gt;192.168.1.163&quot;]:::wired
     sw --&gt; wh_Rocinante_21_7f[&quot;Rocinante&lt;br/&gt;192.168.1.171&quot;]:::wired
     sw --&gt; wh_rtxpro6000server_8f_b5[&quot;rtxpro6000server&lt;br/&gt;192.168.1.157&quot;]:::wired
-    sw --&gt; nest[&quot;Google Nest mesh&lt;br/&gt;(retiring)&lt;br/&gt;RX 32.6 GB | TX 153.0 GB cum&lt;br/&gt;opaque: clients NAT-hidden&quot;]:::nest
+    sw --&gt; nest[&quot;Google Nest mesh&lt;br/&gt;(retiring)&lt;br/&gt;RX 32.7 GB | TX 153.1 GB cum&lt;br/&gt;opaque: clients NAT-hidden&quot;]:::nest
 
     classDef wan fill:#1e3a8a,color:#fff,stroke:#1e3a8a;
     classDef sw fill:#0f172a,color:#fff,stroke:#0f172a;
@@ -55,33 +55,33 @@ flowchart LR
 <h2>Switch ports — current rate</h2>
 <table>
 <tr><th>port</th><th>label</th><th class="num">link</th><th class="num">rx now</th><th class="num">tx now</th><th class="num">rx cum</th><th class="num">tx cum</th></tr>
-<tr><td class="ok">24</td><td class="ok">Verizon Fios Uplink</td><td class="num">2500M</td><td class="num">1983.20 Mbps</td><td class="num">29.63 Mbps</td><td class="num">660.6 GB</td><td class="num">205.0 GB</td></tr>
-<tr><td class="">10</td><td class="">Port 10</td><td class="num">1000M</td><td class="num">26.01 Mbps</td><td class="num">1978.58 Mbps</td><td class="num">81.5 GB</td><td class="num">162.6 GB</td></tr>
-<tr><td class="">8</td><td class="">HisOffice</td><td class="num">1000M</td><td class="num">2.90 Mbps</td><td class="num">3.70 Mbps</td><td class="num">18.4 GB</td><td class="num">64.3 GB</td></tr>
-<tr><td class="">5</td><td class="">3rdFloor</td><td class="num">1000M</td><td class="num">0.36 Mbps</td><td class="num">0.49 Mbps</td><td class="num">2.9 GB</td><td class="num">9.9 GB</td></tr>
-<tr><td class="">1</td><td class="">Hall2ndFloor</td><td class="num">1000M</td><td class="num">0.14 Mbps</td><td class="num">0.36 Mbps</td><td class="num">16.6 GB</td><td class="num">41.4 GB</td></tr>
-<tr><td class="">2</td><td class="">HerOffice</td><td class="num">1000M</td><td class="num">0.09 Mbps</td><td class="num">0.17 Mbps</td><td class="num">32.0 GB</td><td class="num">58.9 GB</td></tr>
-<tr><td class="crit">22</td><td class="crit">Google Nest (retiring)</td><td class="num">1000M</td><td class="num">0.04 Mbps</td><td class="num">0.13 Mbps</td><td class="num">32.6 GB</td><td class="num">153.0 GB</td></tr>
-<tr><td class="">20</td><td class="">Port 20</td><td class="num">1000M</td><td class="num">0.02 Mbps</td><td class="num">0.07 Mbps</td><td class="num">54.1 GB</td><td class="num">43.0 GB</td></tr>
-<tr><td class="">7</td><td class="">OutdoorBackyard</td><td class="num">1000M</td><td class="num">0.00 Mbps</td><td class="num">0.06 Mbps</td><td class="num">2.9 GB</td><td class="num">4.0 GB</td></tr>
-<tr><td class="">3</td><td class="">Gym</td><td class="num">1000M</td><td class="num">0.00 Mbps</td><td class="num">0.06 Mbps</td><td class="num">295.9 MB</td><td class="num">5.1 GB</td></tr>
-<tr><td class="">6</td><td class="">Livingroom + AV</td><td class="num">1000M</td><td class="num">0.02 Mbps</td><td class="num">0.05 Mbps</td><td class="num">5.6 GB</td><td class="num">91.6 GB</td></tr>
-<tr><td class="">11</td><td class="">Port 11</td><td class="num">1000M</td><td class="num">0.01 Mbps</td><td class="num">0.05 Mbps</td><td class="num">517.0 MB</td><td class="num">2.1 GB</td></tr>
-<tr><td class="">4</td><td class="">Basement</td><td class="num">1000M</td><td class="num">0.00 Mbps</td><td class="num">0.06 Mbps</td><td class="num">691.5 MB</td><td class="num">98.2 GB</td></tr>
+<tr><td class="ok">24</td><td class="ok">Verizon Fios Uplink</td><td class="num">2500M</td><td class="num">0.73 Mbps</td><td class="num">0.78 Mbps</td><td class="num">702.3 GB</td><td class="num">206.7 GB</td></tr>
+<tr><td class="">20</td><td class="">Port 20</td><td class="num">1000M</td><td class="num">0.50 Mbps</td><td class="num">0.07 Mbps</td><td class="num">54.8 GB</td><td class="num">43.1 GB</td></tr>
+<tr><td class="">1</td><td class="">Hall2ndFloor</td><td class="num">1000M</td><td class="num">0.18 Mbps</td><td class="num">0.35 Mbps</td><td class="num">16.7 GB</td><td class="num">42.1 GB</td></tr>
+<tr><td class="">5</td><td class="">3rdFloor</td><td class="num">1000M</td><td class="num">0.09 Mbps</td><td class="num">0.27 Mbps</td><td class="num">3.0 GB</td><td class="num">12.3 GB</td></tr>
+<tr><td class="">8</td><td class="">HisOffice</td><td class="num">1000M</td><td class="num">0.12 Mbps</td><td class="num">0.21 Mbps</td><td class="num">19.3 GB</td><td class="num">68.3 GB</td></tr>
+<tr><td class="">2</td><td class="">HerOffice</td><td class="num">1000M</td><td class="num">0.09 Mbps</td><td class="num">0.17 Mbps</td><td class="num">32.0 GB</td><td class="num">59.0 GB</td></tr>
+<tr><td class="crit">22</td><td class="crit">Google Nest (retiring)</td><td class="num">1000M</td><td class="num">0.02 Mbps</td><td class="num">0.14 Mbps</td><td class="num">32.7 GB</td><td class="num">153.1 GB</td></tr>
+<tr><td class="">3</td><td class="">Gym</td><td class="num">1000M</td><td class="num">0.00 Mbps</td><td class="num">0.05 Mbps</td><td class="num">300.1 MB</td><td class="num">5.2 GB</td></tr>
+<tr><td class="">7</td><td class="">OutdoorBackyard</td><td class="num">1000M</td><td class="num">0.00 Mbps</td><td class="num">0.05 Mbps</td><td class="num">2.9 GB</td><td class="num">4.0 GB</td></tr>
+<tr><td class="">6</td><td class="">Livingroom + AV</td><td class="num">1000M</td><td class="num">0.00 Mbps</td><td class="num">0.05 Mbps</td><td class="num">5.7 GB</td><td class="num">91.6 GB</td></tr>
+<tr><td class="">10</td><td class="">Port 10</td><td class="num">1000M</td><td class="num">0.01 Mbps</td><td class="num">0.04 Mbps</td><td class="num">82.9 GB</td><td class="num">199.2 GB</td></tr>
+<tr><td class="">4</td><td class="">Basement</td><td class="num">1000M</td><td class="num">0.00 Mbps</td><td class="num">0.05 Mbps</td><td class="num">693.3 MB</td><td class="num">98.2 GB</td></tr>
+<tr><td class="">11</td><td class="">Port 11</td><td class="num">1000M</td><td class="num">0.01 Mbps</td><td class="num">0.04 Mbps</td><td class="num">523.8 MB</td><td class="num">2.1 GB</td></tr>
 </table>
 <div class="grid">
 <div>
 <h2>Access points — current load</h2>
 <table>
 <tr><th>AP</th><th class="num">clients</th><th class="num">rx now</th><th class="num">tx now</th><th class="num">2.4G cu</th><th class="num">5G cu</th><th class="num">6G cu</th></tr>
-<tr><td class="">Hall2ndFloor</td><td class="num">3</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">58%</td><td class="num">12%</td><td class="num">2%</td></tr>
-<tr><td class="">OutdoorBackyard</td><td class="num">1</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">77%</td><td class="num">43%</td><td class="num">-%</td></tr>
-<tr><td class="">Basement</td><td class="num">0</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">42%</td><td class="num">8%</td><td class="num">2%</td></tr>
-<tr><td class="">Alton&#x27;s Office</td><td class="num">1</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">50%</td><td class="num">10%</td><td class="num">-%</td></tr>
-<tr><td class="">Aneeta&#x27;s Office</td><td class="num">3</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">56%</td><td class="num">2%</td><td class="num">2%</td></tr>
-<tr><td class="">3rdFloor</td><td class="num">2</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">49%</td><td class="num">10%</td><td class="num">3%</td></tr>
-<tr><td class="">Gym</td><td class="num">1</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">54%</td><td class="num">10%</td><td class="num">2%</td></tr>
-<tr><td class="">Livingroom</td><td class="num">0</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">50%</td><td class="num">7%</td><td class="num">3%</td></tr>
+<tr><td class="">Hall2ndFloor</td><td class="num">4</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">44%</td><td class="num">11%</td><td class="num">4%</td></tr>
+<tr><td class="">OutdoorBackyard</td><td class="num">1</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">85%</td><td class="num">9%</td><td class="num">-%</td></tr>
+<tr><td class="">Basement</td><td class="num">0</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">32%</td><td class="num">9%</td><td class="num">2%</td></tr>
+<tr><td class="">Alton&#x27;s Office</td><td class="num">1</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">41%</td><td class="num">10%</td><td class="num">-%</td></tr>
+<tr><td class="">Aneeta&#x27;s Office</td><td class="num">3</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">55%</td><td class="num">2%</td><td class="num">2%</td></tr>
+<tr><td class="">3rdFloor</td><td class="num">1</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">54%</td><td class="num">9%</td><td class="num">2%</td></tr>
+<tr><td class="">Gym</td><td class="num">1</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">52%</td><td class="num">9%</td><td class="num">2%</td></tr>
+<tr><td class="">Livingroom</td><td class="num">0</td><td class="num">0.00 Mbps</td><td class="num">0.00 Mbps</td><td class="num">47%</td><td class="num">7%</td><td class="num">2%</td></tr>
 </table>
 </div>
 <div>
@@ -93,7 +93,7 @@ flowchart LR
 </div>
 <h2>Loki-Ghostie (Google Nest mesh)</h2>
 <p>
-Wired through switch port 22. <strong>Current rate:</strong> rx 0.04 Mbps, tx 0.13 Mbps. <strong>Cumulative:</strong> rx 32.6 GB, tx 153.0 GB. 
+Wired through switch port 22. <strong>Current rate:</strong> rx 0.02 Mbps, tx 0.14 Mbps. <strong>Cumulative:</strong> rx 32.7 GB, tx 153.1 GB. 
 </p>
 <p class="dim">Per-client traffic on Loki-Ghostie is opaque from this controller — clients are NAT-hidden behind the Nest router. To audit them we either retire the Nest physically (cleanest), break its mesh and let stragglers reattach to LGP123, or point the controller-side flow-export at port 22 for top-domain visibility (no client identification).</p>
 <h2>SSIDs in our controller</h2>

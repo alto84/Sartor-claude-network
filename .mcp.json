@@ -4,6 +4,24 @@
       "type": "stdio",
       "command": "cmd.exe",
       "args": ["/c", "C:\\Users\\alto8\\Sartor-claude-network\\.secrets\\mcp-obsidian-launch.bat"]
+    },
+    "sartor-playwright": {
+      "type": "stdio",
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@playwright/mcp@latest",
+        "--browser",
+        "chromium",
+        "--user-data-dir",
+        "C:\\Users\\alto8\\Sartor-claude-network\\.playwright-profile",
+        "--viewport-size",
+        "1440x900",
+        "--caps",
+        "vision,pdf"
+      ]
     }
   }
 }
