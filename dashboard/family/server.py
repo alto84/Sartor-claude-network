@@ -71,6 +71,55 @@ _LOGIN_FAIL_WINDOW = 5 * 60
 _LOGIN_FAIL_MAX = 5
 _login_failures: "dict[str, deque]" = defaultdict(deque)
 
+# Persist failures across server restarts per review-sub-1 Charge 3.
+# Stored as { ip: [unix_timestamp, ...] } since monotonic clock resets on
+# restart and isn't comparable across processes.
+_AUTH_FAILURES_PATH = Path(__file__).resolve().parent / ".auth-failures.json"
+
+
+def _load_persisted_failures() -> None:
+    """Called once on import. Reads any prior failures from disk; entries
+    older than the window are dropped on load."""
+    if not _AUTH_FAILURES_PATH.exists():
+        return
+    try:
+        raw = json.loads(_AUTH_FAILURES_PATH.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return
+    now_wall = _auth_time.time()
+    cutoff_wall = now_wall - _LOGIN_FAIL_WINDOW
+    # Convert wall-clock timestamps from disk to monotonic-clock offsets
+    # by treating them as "how long ago in wall time."
+    mono_now = _auth_time.monotonic()
+    for ip, ts_list in raw.items():
+        dq = deque()
+        for ts in ts_list:
+            if ts > cutoff_wall:
+                age = now_wall - ts
+                dq.append(mono_now - age)
+        if dq:
+            _login_failures[ip] = dq
+
+
+def _save_persisted_failures() -> None:
+    """Write the current in-memory state to disk. Atomic via tmp+rename."""
+    now_wall = _auth_time.time()
+    mono_now = _auth_time.monotonic()
+    cutoff_mono = mono_now - _LOGIN_FAIL_WINDOW
+    out: dict = {}
+    for ip, dq in _login_failures.items():
+        recent = [t for t in dq if t > cutoff_mono]
+        if recent:
+            # Convert monotonic offsets back to wall-clock timestamps for storage.
+            out[ip] = [now_wall - (mono_now - t) for t in recent]
+    try:
+        tmp = _AUTH_FAILURES_PATH.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(out), encoding="utf-8")
+        tmp.replace(_AUTH_FAILURES_PATH)
+    except OSError:
+        pass  # disk write failures shouldn't break the auth flow
+
+
 def _record_login_failure(ip: str) -> None:
     now = _auth_time.monotonic()
     dq = _login_failures[ip]
@@ -78,6 +127,7 @@ def _record_login_failure(ip: str) -> None:
     cutoff = now - _LOGIN_FAIL_WINDOW
     while dq and dq[0] < cutoff:
         dq.popleft()
+    _save_persisted_failures()
 
 def _login_rate_limited(ip: str) -> bool:
     now = _auth_time.monotonic()
@@ -91,6 +141,10 @@ def _login_rate_limited(ip: str) -> bool:
 
 def _clear_login_failures(ip: str) -> None:
     _login_failures.pop(ip, None)
+    _save_persisted_failures()
+
+
+_load_persisted_failures()
 
 def _load_password() -> str:
     secrets_path = Path(__file__).resolve().parent.parent.parent / ".secrets" / "meridian-password.txt"

@@ -112,3 +112,4 @@ sartor/memory/source-documents/
 # Rufus USB tool launcher (2 KB) left over from a one-off USB image task;
 # not project content.
 /rufus.com
+dashboard/family/.auth-failures.json
