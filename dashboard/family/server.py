@@ -569,12 +569,22 @@ async function doLogin(user, pin) {
 }
 
 async function doSetPin(user, pin) {
+  // Setup requires the household admin password (Meridian admin) so any LAN
+  // device can't claim someone's PIN before they do. See review charge 1.
+  const setupKey = window.prompt(
+    `First-time PIN setup for ${user.name}.\n\n` +
+    `Enter the household admin password (the Meridian admin password from Bitwarden):`
+  );
+  if (!setupKey) {
+    pinError.textContent = 'Setup cancelled — admin password required.';
+    return;
+  }
   pinError.textContent = '';
   const r = await fetch('/api/auth/set-pin', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'same-origin',
-    body: JSON.stringify({ user_id: user.id, pin }),
+    body: JSON.stringify({ user_id: user.id, pin, setup_key: setupKey }),
   });
   if (r.ok) {
     await doLogin(user, pin);
@@ -774,11 +784,28 @@ async def auth_login(body: dict, request: Request):
 
 @app.post("/api/auth/set-pin")
 async def auth_set_pin(body: dict, request: Request):
-    """First-run PIN setup for admin/adult tiers. Only allowed when pin_hash is null
-    (i.e., not set yet). Subsequent PIN changes need to come from a signed-in session
-    (see /api/me/pin endpoint, future Phase 4)."""
+    """First-run PIN setup for admin/adult tiers. Requires the Meridian admin password
+    as `setup_key` to prevent any LAN device from claiming someone else's PIN before
+    the legitimate user can (review-build-sub-1-v1 Charge 1).
+
+    Only allowed when pin_hash is null (not set yet). Subsequent PIN rotation is a
+    sub-4 backlog item (would require a signed-in session of the same user).
+    """
+    ip = _client_ip(request) or "unknown"
+    if _login_rate_limited(ip):
+        return JSONResponse(
+            status_code=429,
+            content={"error": "Too many failed attempts. Try again in 5 minutes."},
+        )
     user_id = (body or {}).get("user_id", "").strip()
     pin = (body or {}).get("pin", "")
+    setup_key = (body or {}).get("setup_key", "")
+    if not secrets.compare_digest(str(setup_key).encode(), _MERIDIAN_PASSWORD.encode()):
+        _record_login_failure(ip)
+        return JSONResponse(
+            status_code=403,
+            content={"error": "Setup key required. Enter the household admin password."},
+        )
     user = _profile_by_id(user_id)
     if not user:
         return JSONResponse(status_code=400, content={"error": "Unknown user."})
@@ -791,6 +818,7 @@ async def auth_set_pin(body: dict, request: Request):
         )
     if not isinstance(pin, str) or not pin.isdigit() or not (4 <= len(pin) <= 6):
         return JSONResponse(status_code=400, content={"error": "PIN must be 4-6 digits."})
+    _clear_login_failures(ip)
     salt = secrets.token_hex(8)
     _update_profile(user_id, pin_salt=salt, pin_hash=_hash_pin(pin, salt))
     return {"ok": True}
