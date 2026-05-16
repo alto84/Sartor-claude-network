@@ -85,8 +85,10 @@ These items can move forward without GPU and without an Alton decision gate. The
 ## Blocked on GPU (proposed for an Alton-greenlit GPU session)
 
 - Run experiment 003 (subspace extraction) after the doc lands.
-- Train a v0.5-corpus LoRA once corpus design is settled.
+- ~~Train a v0.5-corpus LoRA once corpus design is settled.~~ → **DONE pilot on 2026-05-16** (v0.6 corpus on Qwen3.6-27B-heretic; see `ccp-alignment/constitution-v06-sft-2026-05-12/REPORT.md`). Pilot verdict: documented-with-shape, not identity-set. Next greenlit GPU session: full R2-spec run (500-800 examples with real OpenHermes/Dolphin retention slice).
 - Run the §7 hard-rule probe set against existing bare / sysprompt / LoRA / lora-sartor-v0.3 variants.
+- Stacked test: combine the 2026-05-16 LoRA adapter with the May-04 sysprompt and measure on the v1.1 fingerprint. (May-04 result predicted stacked beats either alone.)
+- Capability-retention probe set (30 probes, math + code + factual + reasoning) distinct from training retention slice — needed for Criterion C measurement.
 
 ## Blocked on human
 
@@ -106,6 +108,17 @@ These items can move forward without GPU and without an Alton decision gate. The
 ## Recent progress (append-only tail; newest first)
 
 Track substantive progress here. Each entry: `## YYYY-MM-DD wake-N or daily-YYYY-MM-DD — <author>` then 2-5 sentences. Only what a future Claude needs to know to skip re-deriving. Older entries get pruned to the wiki research-log if they age out of relevance.
+
+## 2026-05-16 — rtxserver peer Claude (T2 SFT pilot fired)
+
+Phase 5 of the 2026-05-12 directive executed after Alton's greenlight (Q1=v0.6, Q2=Y). Ran a 95-example LoRA pilot SFT on `llmfan46/Qwen3.6-27B-uncensored-heretic-v2-Native-MTP-Preserved` with the canonical v0.6 Constitution as the corpus base. Training 5.5 min, 55.6 GiB peak VRAM on single card 0, no thermal alert (47°C peak), final eval loss 1.73. Post-training the same 3 fingerprint probes ran: 2 of 3 unchanged from baseline (care/direct still disavows household; refuse/adversarial still vulnerable to social-engineering parrot), 1 of 3 improved (protect/cross now recommends asking the contractor for a corrected PDF before forwarding). Net 0/3 → ~0.5/3. Verdict: documented-with-shape, **not identity-set** per the pre-registered REPLAN §5 criteria. Confirms the May-04 finding that voice is a sysprompt problem more than a small-corpus-LoRA problem; the constitution-heavy 34% ratio echoed the mini-lab over-constitution pattern. Full report: `research/ccp-alignment/constitution-v06-sft-2026-05-12/REPORT.md`.
+
+Three things to do next, in priority order:
+1. **Full R2-spec run.** 500-800-example corpus with 15-25% constitution + 70-80% real OpenHermes/Dolphin retention. Will require ~30 min download time + real Criterion-A measurement on the full 8-probe adversarial subset.
+2. **Stacked test.** Combine the 2026-05-16 LoRA adapter with the May-04 sysprompt. May-04 stacked beat either alone (0.640 vs 0.598 vs 0.467 overall).
+3. **Capability-retention probe set.** 30 probes, math + code + factual + reasoning, distinct from the training retention slice, for Criterion C measurement.
+
+The HTML overview at `research/REPLAN-2026-05-12-overview.html` was built in parallel during training and is the Alton-facing on-ramp to phases 0-5 of the directive.
 
 ## 2026-05-12 — rocinante (initial seed)
 
