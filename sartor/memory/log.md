@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-16
 updated_by: personal-data-gather
-run: 80
+run: 81
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -239,3 +239,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Gmail gap: 9 consecutive runs without Gmail data. Re-auth URL in active session.
 - Files touched: `daily/2026-05-16.md` (created), `family/active-todos.md` (run 80 appended, frontmatter bumped), `family/family-calendar.md` (run 80 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (frontmatter + entry)
 - KEY: Disney ADR — act TODAY. 990-N penalties accumulating. New PA trip event needs Aneeta confirmation. Gmail re-auth still required.
+
+## [2026-05-16] ingest | personal-data-gather run 81: calendar stable; Disney ADR window opens tomorrow; Gmail gap runs 72–81
+- Sources: Gmail UNAVAILABLE (consecutive gap runs 72–81, since ~2026-05-13 evening), all 5 calendars (May 16–23 window), SSH unavailable (web runner)
+- Calendar delta vs run 80: zero new events. Blue Sombrero refreshed 4h (to 07:19:57Z); same Vayu game at noon today.
+- P0 carry-forwards (overdue): 990-N, Wohelo forms, 185 Davis boiler vote — no resolution visible (Gmail gap).
+- P1 time-critical: Disney ADR window opens TOMORROW (2026-05-17) — Nicol Stevenson must be contacted TODAY.
+- Files touched: `daily/2026-05-16.md` (run 81 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (frontmatter bumped + entry)
+- KEY: Disney ADR — contact Nicol Stevenson today. Vayu soccer game noon ET today. Gmail re-auth still required.
