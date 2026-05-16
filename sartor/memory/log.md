@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-15
+updated: 2026-05-16
 updated_by: personal-data-gather
-run: 79
+run: 80
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -229,3 +229,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Note: data/ is gitignored; gather-alerts.md and heartbeat-log.csv written fresh this session.
 - Files touched: `daily/2026-05-15.md` (run 79 appended, frontmatter bumped run: 79), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `sartor/memory/log.md` (frontmatter + entry)
 - KEY: Disney ADR window opens TOMORROW — respond to Nicol Stevenson today. Gmail re-auth still required.
+
+## [2026-05-16] ingest | personal-data-gather run 80: "Friday to PA" new calendar; P0 overdue; Disney ADR window opens tomorrow; Gmail gap runs 72-80
+- Sources: Gmail UNAVAILABLE (consecutive gap runs 72–80, since ~2026-05-13 evening; OAuth re-auth URL issued this session), all 5 calendars (May 16–23 window), SSH unavailable (web runner)
+- Calendar delta vs run 79: ONE new event — "Friday to PA" (Family calendar, all-day May 22–23, created by Aneeta at 2026-05-16T01:27:51Z). May 22 is a Friday school day for Vayu and Vishala. Logistics/confirmation needed.
+- P0 OVERDUE (deadline was yesterday 2026-05-15): Sante Total Form 990-N (penalties accumulating), Wohelo camp forms (no email confirmation), 185 Davis Condo boiler vote (no confirmation).
+- P1 TIME-CRITICAL: Disney ADR window opens TOMORROW (2026-05-17) — respond to Nicol Stevenson TODAY.
+- TODAY: Vayu soccer GAME, Brookdale Park Field 1, 12:00–1:00 PM ET.
+- Gmail gap: 9 consecutive runs without Gmail data. Re-auth URL in active session.
+- Files touched: `daily/2026-05-16.md` (created), `family/active-todos.md` (run 80 appended, frontmatter bumped), `family/family-calendar.md` (run 80 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (frontmatter + entry)
+- KEY: Disney ADR — act TODAY. 990-N penalties accumulating. New PA trip event needs Aneeta confirmation. Gmail re-auth still required.
