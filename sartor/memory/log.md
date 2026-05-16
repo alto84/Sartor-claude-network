@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-16
 updated_by: personal-data-gather
-run: 81
+run: 82
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -247,3 +247,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P1 time-critical: Disney ADR window opens TOMORROW (2026-05-17) — Nicol Stevenson must be contacted TODAY.
 - Files touched: `daily/2026-05-16.md` (run 81 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (frontmatter bumped + entry)
 - KEY: Disney ADR — contact Nicol Stevenson today. Vayu soccer game noon ET today. Gmail re-auth still required.
+
+## [2026-05-16] ingest | personal-data-gather run 82: calendar stable; Disney ADR opens tomorrow; Optimum Mon 5/18; Gmail gap runs 72–82
+- Sources: Gmail UNAVAILABLE (consecutive gap runs 72–82, since ~2026-05-13 evening; OAuth re-auth URL issued this run), all 5 calendars (May 16–23 window), SSH unavailable (web runner)
+- Calendar delta vs run 81: zero new events. Blue Sombrero refreshed 4h (to 11:19:56Z); same Vayu game at noon ET today. All 5 calendars stable.
+- P0 OVERDUE (penalties accumulating): Sante Total 990-N, Wohelo forms, 185 Davis boiler vote — no resolution visible (Gmail gap)
+- P1 time-critical: Disney ADR window opens TOMORROW (2026-05-17) — respond to Nicol Stevenson TODAY with dining preferences
+- P1: Optimum fiber appointment Mon 5/18 1:00–2:00 PM ET — someone must be home
+- TODAY: Vayu soccer game noon–1 PM ET, Brookdale Park Field 1 (arrive ~11:40)
+- Gmail gap: 11 consecutive runs (72–82) without email data. Re-auth URL issued this run.
+- Files touched: `daily/2026-05-16.md` (run 82 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (frontmatter + entry)
+- KEY: Disney ADR opens tomorrow — contact Nicol Stevenson today. Gmail re-auth still required.
