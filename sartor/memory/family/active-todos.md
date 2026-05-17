@@ -553,3 +553,6 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning] Gmail unavailable — runs 72–75 (data gap since ~2026-05-13)
 > OAuth still expired. No new email data. All deadline items above are date-escalated carry-forwards. Complete Gmail re-authorization when prompted in active session.
+
+> [!todo] Decide when to unblock Vayu's MSI laptop (added 2026-05-17)
+> Vayu's MSI gaming laptop (`ac:19:8e:dd:29:e4` / `VayuMSILaptop`) is blocked at the UniFi controller as of 2026-05-17 ~09:33 ET — consequence for breaking the no-morning-media rule today. Context + how-to-unblock in [[vayu#2026-05-17--no-morning-media-rule-and-the-msi-laptop-block]]. **Open question for Alton (with Aneeta if relevant):** how long should the block stand — through tomorrow, through the school week, until a conversation with Vayu? Currently no auto-expiry; the block stays until manually lifted.
