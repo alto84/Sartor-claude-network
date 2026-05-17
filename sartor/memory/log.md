@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-17
 updated_by: personal-data-gather
-run: 85
+run: 86
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -294,3 +294,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P2: PA trip 5/22–5/23 conflicts with MKA school day; cat sitter needed for Memorial Day weekend
 - Gmail gap: 14 consecutive runs (72–85). OAuth re-auth URL issued this session. Complete flow to restore email data.
 - Files touched: `daily/2026-05-17.md` (run 85 appended), `log.md` (run bumped + entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-17] ingest | personal-data-gather run 86: Gmail gap 15 runs; zero calendar delta; Optimum TOMORROW; ADR window open
+- Sources: Gmail UNAVAILABLE (gap runs 72–86, ~3.5 days since 2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 17–24), SSH unavailable (web runner)
+- Calendar delta vs run 85: zero net-new events. Playdate with Livia now past (ended 1 PM ET). All other events unchanged.
+- Facts gathered: 0 new
+- P0 ACT TODAY: Disney ADR window open — contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423). Unconfirmed due to Gmail gap.
+- P0 OVERDUE: Sante Total 990-N (2 days overdue 2026-05-15); Wohelo camp forms (2 days overdue); 185 Davis boiler vote (2 days overdue) — all unconfirmed due to Gmail gap
+- P1 TOMORROW: Optimum fiber appointment Mon 5/18 1:00–2:00 PM — confirm home coverage
+- P1 18 days: Chase/Sante Total KYC deadline 2026-06-04
+- P2: PA trip 5/22–5/23 conflicts with MKA school day; cat sitter needed for Memorial Day weekend
+- Gmail gap: 15 consecutive runs (72–86). OAuth re-auth URL issued this session. Paste callback URL to complete.
+- Files touched: `daily/2026-05-17.md` (run 86 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written)
