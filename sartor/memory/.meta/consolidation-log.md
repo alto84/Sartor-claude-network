@@ -317,3 +317,14 @@ Records memory consolidation events: merges, archives, and prune operations.
   - FAMILY.md: +9 facts
   - ALTON.md: +1 facts
   - MACHINES.md: +1 facts
+## Run: 2026-05-17 03:07:23
+- dry_run: False
+- facts_gathered: 281
+- facts_written: 3
+- files_updated: 1
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+- changes:
+  - LEARNINGS.md: +3 facts
+
