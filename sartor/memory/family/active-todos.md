@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-16
+updated: 2026-05-17
 updated_by: personal-data-gather
-run: 80
+run: 84
 
 status: active
 priority: p1
@@ -553,3 +553,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning] Gmail unavailable — runs 72–75 (data gap since ~2026-05-13)
 > OAuth still expired. No new email data. All deadline items above are date-escalated carry-forwards. Complete Gmail re-authorization when prompted in active session.
+
+## Latest from gather (2026-05-17) — run 84
+
+> [!deadline] TODAY 2026-05-17 — ACT NOW
+> **Disney ADR window OPEN.** 60-day booking window for July 16 Disneyland arrival opened today. Contact [[people/nicol-stevenson|Nicol Stevenson]] immediately: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. Communicate: (a) character dining choice — Plaza Inn Minnie breakfast or Storyteller's Mickey morning (Vasu age 4), (b) Blue Bayou Saturday confirmation, (c) DTF Thursday headcount 5. Popular venues (Blue Bayou, character dining) book within hours. See [[family/disney-july-2026]].
+
+> [!warning] 2026-05-22 — PA trip conflicts with MKA school day
+> "Friday to PA" (Family calendar, Aneeta created 2026-05-16) spans May 22–23. May 22 is a standard MKA school day for [[family/vayu|Vayu]] (age 10) and [[family/vishala|Vishala]] (age 8). Clarify logistics: early dismissal, excused absence, or adults-only trip. Also: cats Loki, Ghosty, Pickle need sitter for Memorial Day weekend (May 22–25) if family is away. Book Meowtel if needed.

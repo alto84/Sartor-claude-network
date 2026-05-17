@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-16
+updated: 2026-05-17
 updated_by: personal-data-gather
-run: 83
+run: 84
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -269,3 +269,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Gmail gap: 12 consecutive runs (72–83). OAuth re-auth URL issued this run.
 - Files touched: `daily/2026-05-16.md` (run 83 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (frontmatter + entry)
 - KEY: Disney ADR window opens tomorrow — contact Nicol Stevenson. Gmail re-auth needed (paste callback URL to complete flow).
+
+## [2026-05-17] ingest | personal-data-gather run 84: ADR window open today; PA trip school conflict; Gmail OAuth in progress
+- Sources: Gmail re-auth in progress (OAuth initiated this run; gap runs 72–84, since ~2026-05-13), all 5 calendars (May 17–24 window), SSH unavailable (web runner)
+- Calendar delta vs run 83: zero net-new events. ADR deadline status upgraded: "opens tomorrow" → "opens today."
+- Facts gathered: 2 (Disney ADR opened today; PA trip school conflict note)
+- Pages updated: daily/2026-05-17.md (created), family/active-todos.md, family/disney-july-2026.md, data/gather-alerts.md, data/heartbeat-log.csv
+- P0 OVERDUE: Sante Total 990-N (since 5/15, penalties accumulating)
+- P0 ACTIVE: Chase/Sante Total KYC (deadline 2026-06-04, 18 days)
+- P1 ACT TODAY: Disney ADR window open — contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423)
+- P1 TOMORROW: Optimum fiber appointment Mon 5/18 1:00–2:00 PM — confirm home coverage
+- P2 FLAG: PA trip (5/22–5/23) conflicts with MKA school day 5/22; Memorial Day cats need sitter
+- Gmail gap: 12+ runs. Re-auth OAuth in progress this session. Complete flow to restore.
+- Files touched: daily/2026-05-17.md (created), active-todos.md (frontmatter + appended), disney-july-2026.md (frontmatter + appended), log.md (frontmatter bumped + entry), data/gather-alerts.md (written), data/heartbeat-log.csv (created)
