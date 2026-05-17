@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-17
 updated_by: personal-data-gather
-run: 86
+run: 87
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -306,3 +306,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P2: PA trip 5/22–5/23 conflicts with MKA school day; cat sitter needed for Memorial Day weekend
 - Gmail gap: 15 consecutive runs (72–86). OAuth re-auth URL issued this session. Paste callback URL to complete.
 - Files touched: `daily/2026-05-17.md` (run 86 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written)
+
+## [2026-05-17] ingest | personal-data-gather run 87: Gmail gap 16 runs; Family+BlueSombrero calendars updated today; zero event delta in window
+- Sources: Gmail UNAVAILABLE (gap runs 72–87, 16 consecutive, ~3.5 days since 2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 17–24 window), SSH unavailable (web runner)
+- Calendar delta vs run 86: zero net-new events in window. Family cal updated 18:09:20Z today (possible event outside window). Blue Sombrero updated 19:19:57Z today (possible soccer games beyond 5/24).
+- Facts gathered: 0 new (no Gmail, no SSH, no new events in window)
+- P0 ACT TODAY: Disney ADR window open — contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423). Status unconfirmed due to Gmail gap.
+- P0 OVERDUE: Sante Total 990-N (2 days, 2026-05-15); Wohelo camp forms (2 days); 185 Davis boiler vote (2 days) — all unconfirmed due to Gmail gap
+- P1 TOMORROW: Optimum fiber Mon 5/18 1:00–2:00 PM — confirm home coverage
+- P1 18 days: Chase/Sante Total KYC deadline 2026-06-04
+- P2: PA trip 5/22–5/23 conflicts with MKA school day; cat sitter needed Memorial Day weekend
+- Gmail gap: 16 consecutive runs (72–87). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-17.md` (run 87 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written)
