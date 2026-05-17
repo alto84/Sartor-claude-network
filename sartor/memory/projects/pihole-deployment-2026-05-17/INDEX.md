@@ -61,8 +61,10 @@ A successful Phase 3+ build means all of:
 - Per-client DNS routing / kid-specific blocking (Pi-hole can do per-group, but v1 is just household-wide). Vayu's MAC block at UniFi already exists for the kid-specific axis.
 - Migration to dedicated Pi 4 hardware (revisit if Docker-on-Rocinante turns out to reboot too often)
 - Cloudflare DoH/DoT upgrades — v2
-- Network-wide policy (block all of YouTube during school hours, etc.) — v2 if requested
 - Reaching outside the LAN to query Pi-hole admin (Tailscale, etc.) — separate threat-model question
+
+**Queued for v2 (named explicitly so it doesn't get lost):**
+- **Time-of-day blocking for kid devices.** The household has agreed rules around screen time (e.g., no media in the morning). Pi-hole supports this via client groups + schedule rules: assign kid device MACs to a "kids" group, apply streaming-domain blocklist with time-window 5-9 AM, kid devices can't resolve disneyplus.com / netflix.com / youtube.com in that window. v1 builds the foundation (Pi-hole running, DNS logged, household-wide blocking working); v2 wires the per-group schedules. The architecture supports it natively — no rebuild required.
 
 ## Constraints
 
