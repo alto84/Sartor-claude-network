@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-17
+updated: 2026-05-18
 updated_by: personal-data-gather
-run: 87
+run: 88
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -318,3 +318,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P2: PA trip 5/22–5/23 conflicts with MKA school day; cat sitter needed Memorial Day weekend
 - Gmail gap: 16 consecutive runs (72–87). OAuth URL re-issued; paste callback URL to complete.
 - Files touched: `daily/2026-05-17.md` (run 87 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written)
+
+## [2026-05-18] ingest | personal-data-gather run 88: Gmail gap 17 runs; Optimum fiber TODAY; Disney ADR day 2; 3× overdue P0s; PA conflict 4 days
+- Sources: Gmail UNAVAILABLE (gap runs 72–88, 17 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 18–25 window), SSH unavailable (web runner)
+- Calendar delta vs run 87: zero net-new events. Optimum fiber appointment upgraded from TOMORROW to **TODAY** (Mon 5/18 1–2 PM).
+- Facts gathered: 0 new (no Gmail, no SSH, no new calendar events)
+- P0 TODAY: Optimum fiber 1–2 PM (home required); Disney ADR day 2 of open window (contact Nicol Stevenson)
+- P0 OVERDUE 3 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1: Vishala dress-down Wed 5/20; Rec Soccer Wed 5/20 5:30 PM; Nehal's Birthday Thu 5/21; PA trip school conflict Fri 5/22; KYC deadline 2026-06-04 (17 days)
+- Gmail gap: 17 consecutive runs (72–88). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-18.md` (created), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
