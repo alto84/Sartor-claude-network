@@ -265,3 +265,22 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!fact] Screen time May 1–7: 23h58m
 > Microsoft Family Safety weekly report (2026-05-08 01:41 UTC). Vayu logged 23 hours 58 minutes of screen time for the week May 1–7 (average ~3.4h/day on vayusartor@gmail.com). Review family.microsoft.com for full breakdown if needed.
+
+## 2026-05-17 — No-morning-media rule and the MSI laptop block
+
+**Context.** The household has an agreed rule: no media for the kids in the morning before school. This morning Vayu woke up early and watched TV in the family room. The UniFi controller had been silently down since 2026-05-13 ~00:58, so there was no network record of it — Alton confirmed via the Disney+ account history.
+
+**Parent action (Alton).** Vayu's gaming laptop blocked at the UniFi controller:
+- MAC: `ac:19:8e:dd:29:e4`
+- Hostname: `VayuMSILaptop`
+- Blocked 2026-05-17 ~09:33 ET via UniFi `cmd/stamgr` (response `meta.rc=ok`, `blocked: true`)
+- Was on the Basement AP at the time; controller dropped the client within seconds
+- Block persists across controller restarts (stored in `db.user.blocked` on the controller's Mongo)
+
+**The rule (canonical statement):** *No media for kids in the morning before school.* This page records it so the policy has a home that survives across instances. The TV doesn't enforce the rule on its own — the LG in the family room is free-access. The Pi-hole project in flight (see [[../projects/pihole-deployment-2026-05-17/INDEX]]) closes the audit-trail gap going forward (DNS-query records per client), and time-of-day blocking per kid device is queued as v2 so future morning-media access can be denied at the network layer rather than relying on enforcement after the fact.
+
+**To unblock when ready.** Either:
+- UniFi Web UI: `https://192.168.1.171:8443` → Clients → search `VayuMSILaptop` → Unblock.
+- CLI: re-run the block script with `cmd: unblock-sta` (see `C:\Users\alto8\.claude\jobs\85180d3d\block-vayu.sh`).
+
+**Followup item** to decide unblock timing is now in [[active-todos]].

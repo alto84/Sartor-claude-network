@@ -34,6 +34,20 @@ Read from `sartor/memory/machines/<hostname>/`:
 
 The peer roster is read from `CLAUDE.md` (Domain 1: gpuserver1) and `peer-coordinator` agent definition (rtxpro6000server, plus future peers). If a new peer is added, add it to the roster there; this skill picks it up.
 
+### Step 2b: Probe Rocinante-hosted critical services
+
+Added 2026-05-17 after the UniFi controller crashed silently on 2026-05-13 and stayed down for 4 days. Peer-machine probing (the prior version of this step) doesn't cover services hosted on Rocinante itself. Without these checks, a service can be dead for days before the principal notices.
+
+For each service in the roster:
+
+| Service | Probe | Threshold | Severity on fail |
+|---|---|---|---|
+| **UniFi controller** | `curl -k -s -o /dev/null -w '%{http_code}' --max-time 5 https://192.168.1.171:8443/status` | HTTP 200 | yellow on any non-200 or timeout; orange if down >24h (cross-reference last successful probe stored alongside the dated report) |
+| **MERIDIAN dashboard** | `curl -s -o /dev/null -w '%{http_code}' --max-time 5 http://127.0.0.1:5055/login` | HTTP 200 | yellow on non-200 or timeout |
+| **Pi-hole** (post-deploy) | `dig +short +time=2 +tries=1 google.com @127.0.0.1` | non-empty answer | yellow on timeout or empty (Pi-hole present but DNS not answering); the controller's Secondary=1.1.1.1 fallback means clients are fine, but log lost — worth a ping |
+
+Service severity rolls up into the overall household severity the same way peer severity does. If UniFi is yellow AND a peer is green, overall is yellow.
+
 ### Step 3: Classify severity per peer
 
 Per the **wellness-checker** severity bands (see `.claude/agents/wellness-checker.md`):
