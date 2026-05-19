@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-19
 updated_by: personal-data-gather
-run: 95
+run: 96
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -393,6 +393,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Gmail gap: 23 consecutive runs (72–94). OAuth URL re-issued; paste callback URL to complete.
 - Note: data/ directory missing (fresh container); heartbeat-log.csv and gather-alerts.md recreated
 - Files touched: `daily/2026-05-19.md` (run 94 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-19] ingest | personal-data-gather run 96: Gmail gap 25 runs; 0 delta; Disney ADR Day 3 CRITICAL; P0 overdue 4 days; Vishala dress-down TOMORROW
+- Sources: Gmail UNAVAILABLE (gap runs 72–96, 25 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 19–26 window), SSH unavailable (web runner)
+- Calendar delta vs run 95: zero net-new events across all 5 calendars (fourth run today)
+- Facts gathered: 0 new (no Gmail, no SSH, no new calendar events)
+- P0 ACT TODAY: Disney ADR Day 3 of open window — character dining sellout risk CRITICAL (contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423)
+- P0 OVERDUE 4 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1 TOMORROW: Vishala dress-down (Wed 5/20 all-day); Rec Soccer (Wed 5/20 5:30–6:15 PM Anderson Park)
+- P1: Nehal's Birthday Thu 5/21; PA trip Fri 5/22 (MKA school conflict Vayu+Vishala); KYC deadline 2026-06-04 (16 days); cat sitter 5/25 (6 days)
+- Gmail gap: 25 consecutive runs (72–96). OAuth URL re-issued; paste callback URL to complete.
+- Note: data/ directory missing (fresh container); heartbeat-log.csv and gather-alerts.md recreated
+- Files touched: `daily/2026-05-19.md` (run 96 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
 
 ## [2026-05-19] ingest | personal-data-gather run 95: Gmail gap 24 runs; 0 delta; Disney ADR Day 3 URGENT; P0 overdue 4 days
 - Sources: Gmail UNAVAILABLE (gap runs 72–95, 24 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 19–26 window), SSH unavailable (web runner)
