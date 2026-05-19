@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-17
+updated: 2026-05-19
 updated_by: personal-data-gather
-run: 84
+run: 93
 
 status: active
 priority: p1
@@ -254,6 +254,27 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - Wed 5/20: Vishala "own your letter dress down" (all day, plan outfit)
 > - Wed 5/20 5:30–6:15 PM: Rec Soccer Practice (B-34 Lime), Anderson Park south near Parkside St
 > - Thu 5/21: Nehal's Birthday (recurring — send message/call)
+
+## Latest from gather (2026-05-19) — run 93
+
+> [!warning] Disney ADR — Day 3 of open window — ACT NOW
+> 60-day ADR window for July 16–19 Disneyland trip opened May 17. Today is Day 3. Blue Bayou and character dining typically sell out in the first 24–72 hours. If not yet contacted, call Nicol Stevenson now: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. Preferences: (a) character dining — Plaza Inn Minnie breakfast or Storyteller's Mickey breakfast (Vasu age 4), (b) Blue Bayou Saturday, (c) DTF Thursday headcount 5. Status unconfirmed due to Gmail gap. See [[family/disney-july-2026]].
+
+> [!warning] OVERDUE 4 days — Sante Total Form 990-N (was due 2026-05-15)
+> NOT FILED per all runs 22–93. IRS penalties accumulating since May 15. File at IRS.gov → 990-N e-Postcard. Gross receipts <$50K TY2025. See [[business/sante-total]].
+
+> [!deadline] TOMORROW Wed 2026-05-20 — Vishala dress-down day
+> "Own your letter" dress-down day at MKA Brookside. Plan outfit with appropriate letter (likely "V"). See [[family/vishala]].
+
+> [!note] Calendar this week (May 19–25 confirmed from live API run 93)
+> - TODAY Tue 5/19: No events
+> - Wed 5/20 all-day: Vishala "own your letter" dress-down
+> - Wed 5/20 5:30–6:15 PM: Rec Soccer Practice (B-34 Lime), Anderson Park south near Parkside St
+> - Thu 5/21: Nehal's Birthday (send message/call)
+> - Fri 5/22 – Sat 5/23: "Friday to PA" — school conflict (Vayu + Vishala MKA school day 5/22; confirm with Aneeta)
+> - Blue Sombrero: No Vayu soccer game this week
+> - Memorial Day Mon 5/25 (6 days): cat sitter needed if family is away (Meowtel)
+> - Chase/Sante Total KYC: 16 days to deadline (2026-06-04) — contact Pavel Manrique
 
 ## Related
 - [[FAMILY]] - Household overview and family member profiles
