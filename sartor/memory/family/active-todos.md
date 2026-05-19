@@ -582,3 +582,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning] 2026-05-22 — PA trip conflicts with MKA school day
 > "Friday to PA" (Family calendar, Aneeta created 2026-05-16) spans May 22–23. May 22 is a standard MKA school day for [[family/vayu|Vayu]] (age 10) and [[family/vishala|Vishala]] (age 8). Clarify logistics: early dismissal, excused absence, or adults-only trip. Also: cats Loki, Ghosty, Pickle need sitter for Memorial Day weekend (May 22–25) if family is away. Book Meowtel if needed.
+
+## Latest from gather (2026-05-19) — run 97
+
+> [!fact] NEW — "Boston trip" (Wed 5/27 – Fri 5/29) on Family calendar
+> All-day Family calendar event created by Alton (alto84@gmail.com) on 2026-04-28. Has been on the calendar for 3 weeks but was outside the 7-day query window in all prior runs. No description, location, or attendees. First captured in run 97 (2026-05-19).
+>
+> Back-to-back with PA trip (5/22–5/23). That's two family trips in one week.
+
+> [!warning] Boston trip — school conflict and logistics unresolved (8 days)
+> - **MKA school conflict:** Memorial Day is Mon 5/25. MKA resumes Tue 5/27. If [[family/vayu|Vayu]] (age 10) and [[family/vishala|Vishala]] (age 8) are included, all 3 trip days (5/27–5/29) are school days.
+> - **Vasu:** Goddard School also in session 5/27–5/29. If [[family/vasu|Vasu]] (age 4) is included, Goddard logistics needed.
+> - **Cat sitter — two windows:** Loki, Ghosty, and Pickle need Meowtel coverage for both PA trip (5/22–5/23) AND Boston trip (5/27–5/29). If family is home for Memorial Day (5/25), that's three back-to-back coverage decisions.
+> - **Confirm with Aneeta:** Who is going on Boston trip? Kids included or adults-only? School absences or adults-only?
+> See [[family/family-calendar]] for full May 19–30 calendar view.

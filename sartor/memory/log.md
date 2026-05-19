@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-19
 updated_by: personal-data-gather
-run: 96
+run: 97
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -416,3 +416,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Gmail gap: 24 consecutive runs (72–95). OAuth URL re-issued; paste callback URL to complete.
 - Note: data/ directory missing (fresh container); heartbeat-log.csv and gather-alerts.md recreated
 - Files touched: `daily/2026-05-19.md` (run 95 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-19] ingest | personal-data-gather run 97: NEW Boston trip 5/27-5/29; Gmail gap 26 runs; Disney ADR Day 3 CRITICAL; P0s overdue 4d
+- Sources: Gmail UNAVAILABLE (gap runs 72–97, 26 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 19–26 + 5/30 spillover), SSH unavailable (web runner)
+- **NEW FINDING: "Boston trip" (Wed 5/27 – Fri 5/29) on Family calendar** — created by Alton 2026-04-28, outside prior 7-day window. No description/location/attendees. MKA school conflict (all 3 days are school days post-Memorial Day). Back-to-back with PA trip 5/22–5/23. Cat sitter needed for both windows.
+- Calendar delta vs run 96: 1 new event (Boston trip). All other 5 calendars unchanged.
+- Facts gathered: 1 new (Boston trip)
+- P0 ACT TODAY: Disney ADR Day 3 of open window — CRITICAL sellout risk (Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423)
+- P0 OVERDUE 4 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — unconfirmed due to Gmail gap
+- P1 TOMORROW: Vishala dress-down (Wed 5/20 all-day); Rec Soccer (Wed 5/20 5:30–6:15 PM Anderson Park)
+- P1 NEW: Boston trip (5/27–5/29) logistics — school conflict + Meowtel for two windows
+- Gmail gap: 26 consecutive runs (72–97). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-19.md` (run 97 appended, frontmatter bumped), `family/family-calendar.md` (Boston trip appended), `family/active-todos.md` (Boston trip callouts), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
