@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-20
 updated_by: personal-data-gather
-run: 99
+run: 100
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -450,3 +450,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri 5/22 (MKA school conflict); Boston trip 5/27 (multiple conflicts)
 - Gmail gap: 27 consecutive runs (72–98). OAuth URL re-issued; paste callback URL to complete.
 - Files touched: `daily/2026-05-20.md` (new, run 98), `family/active-todos.md` (run 98 entry appended, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-20] ingest | personal-data-gather run 100: zero delta; Gmail gap 29 runs; P0s overdue 5d; Disney ADR Day 4 CRITICAL
+- Sources: Gmail UNAVAILABLE (gap runs 72–100, 29 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 20–27 window), SSH unavailable (web runner)
+- Calendar delta vs run 99: zero net-new events across all 5 calendars
+- Facts gathered: 0 new
+- TODAY: Vishala dress-down (all-day, MKA Brookside) + Rec Soccer Practice (5:30–6:15 PM, Anderson Park)
+- Disney ADR: Day 4 of open window (opened May 17) — CRITICAL sellout risk (past 24–72h typical sellout window); contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 5 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — unconfirmed due to Gmail gap
+- P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri–Sat 5/22–5/23 (MKA conflict); Boston trip 5/27 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (15 days)
+- Gmail gap: 29 consecutive runs (72–100). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-20.md` (run 100 appended), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (appended)
