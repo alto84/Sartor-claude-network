@@ -16,13 +16,13 @@ $beginTag  = '# === SARTOR LAN ==='
 $endTag    = '# === END SARTOR LAN ==='
 
 $entries = [ordered]@{
-    'gpuserver1'          = '192.168.1.199'
+    'gpuserver1'          = '192.168.1.100'   # rolled back from .199 during 2026-05-19 fuseblow recovery
     'rtxserver'           = '192.168.1.157'
     'rtxpro6000server'    = '192.168.1.157'
     'rtxserver-bmc'       = '192.168.1.154'
     'rtxserver-bmc2'      = '192.168.1.156'
-    'rocinante'           = '192.168.1.171'
-    'unifi-controller'    = '192.168.1.171'
+    'rocinante'           = '192.168.1.169'   # shifted from .171 during 2026-05-19 fuseblow (Ethernet later recovered, now dual-homed)
+    'unifi-controller'    = '127.0.0.1'       # controller runs on Rocinante, localhost is future-proof
     'verizon-fios'        = '192.168.1.1'
 }
 

@@ -7,9 +7,12 @@ $ErrorActionPreference = "Continue"
 $timestamp = Get-Date -Format "yyyy-MM-dd_HHmm"
 $logFile = "C:\Users\alto8\backups\unifi\backup-log.txt"
 $localDir = "C:\Users\alto8\backups\unifi"
-# Peer address resolves via ~/.ssh/config. UniFi controller is on Rocinante itself
-# (localhost), but the cert is bound to 192.168.1.171 so we use that for HTTPS calls.
+# Peer address resolves via ~/.ssh/config. UniFi controller is on Rocinante itself,
+# so localhost is the future-proof URL — cert is self-signed and we already disable
+# validation below via TrustAllCertsPolicy, so the cert's IP binding doesn't matter.
+# (Was hardcoded 192.168.1.171 prior to 2026-05-19 fuseblow Rocinante DHCP shift.)
 $rtxHost = "rtxserver"
+$unifiBase = "https://127.0.0.1:8443"
 $rtxDir = "/home/alton/sartor-network-backups"
 
 function Log($msg) {
@@ -48,7 +51,7 @@ try {
   $session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
   $loginBody = @{username='alton'; password=$unifiPwd; remember=$false} | ConvertTo-Json
 
-  Invoke-RestMethod -Uri "https://192.168.1.171:8443/api/login" `
+  Invoke-RestMethod -Uri "https://127.0.0.1:8443/api/login" `
     -Method POST -Body $loginBody -ContentType "application/json" `
     -WebSession $session | Out-Null
   Remove-Variable unifiPwd, loginBody -ErrorAction SilentlyContinue
@@ -57,10 +60,10 @@ try {
   # Read the download URL from the trigger response so this stays correct across
   # controller upgrades (the path is version-specific, e.g. /dl/backup/10.3.55.unf today).
   $backupBody = @{cmd='backup'; days=0} | ConvertTo-Json
-  $resp = Invoke-RestMethod -Uri "https://192.168.1.171:8443/api/s/default/cmd/backup" `
+  $resp = Invoke-RestMethod -Uri "https://127.0.0.1:8443/api/s/default/cmd/backup" `
     -Method POST -Body $backupBody -ContentType "application/json" `
     -WebSession $session
-  $url = "https://192.168.1.171:8443" + $resp.data[0].url
+  $url = "https://127.0.0.1:8443" + $resp.data[0].url
   Log "Backup triggered, URL = $url"
 
   $localPath = Join-Path $localDir "sartor-claude-network_auto_$timestamp.unf"

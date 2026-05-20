@@ -26,8 +26,8 @@
 #   - The drift detector writes back `last_verified` and `last_drift` only -never other fields
 ---
 schema_version: "1.0"
-updated: 2026-05-09
-updated_by: "Rocinante Opus 4.7 (Tier 3 IP-graceful-reassignment build)"
+updated: 2026-05-19
+updated_by: "Rocinante Opus 4.7 (post-fuseblow IP-drift capture)"
 
 machines:
 
@@ -38,21 +38,23 @@ machines:
     os: "Windows 10 Home (10.0.19045)"
     mac: "2C:F0:5D:39:21:7F"
     nic: "Realtek PCIe 2.5GbE Family Controller (negotiating 1 Gbps; switch upstream is bottleneck)"
-    current_ip: "192.168.1.171"
+    current_ip: "192.168.1.169"
     ip_assignment: dhcp
     ssh_path: null  # Rocinante is the SSH client, not server. No inbound SSH.
     bmc_ip: null
     switch_port: null  # Not in the 2026-05-01 census; physical patch-panel labeling unknown for this drop.
     vast_ai_machine_id: null
-    last_verified: 2026-05-16
-    last_drift: null
+    last_verified: 2026-05-19
+    last_drift: 2026-05-19  # UniFi switch lost power in fuse blow ~22:54 ET; Rocinante's Ethernet died, Rocinante DHCP-renewed onto Fios CR1000A WiFi at .169. Old .171 lease still showing as Deprecated on the dead Ethernet adapter.
     flagged:
-      - "switch_port unknown -confirm against UniFi controller client list at https://192.168.1.171:8443"
+      - "Ethernet adapter shows .171 in Deprecated state (stale lease from dead UniFi switch); release/renew once switch is back."
+      - "switch_port unknown -confirm against UniFi controller client list at https://127.0.0.1:8443 (formerly 192.168.1.171; controller runs locally so localhost is the future-proof URL)"
     notes: |
       Sole git-push origin (rtxserver bare). Sole SSH-key custodian for the fleet.
-      Runs UniFi controller (https://192.168.1.171:8443). Hosts the Sartor Memory
-      Mirror, Peer Sessions Mirror, Peer Creds Sync, UniFi Daily Backup, and Hours
-      Log scheduled tasks. C: drive at ~2% free is the standing operational risk.
+      Runs UniFi controller (https://127.0.0.1:8443; was on Rocinante's LAN IP
+      192.168.1.171 prior to 2026-05-19 fuseblow shift to .169). Hosts the Sartor
+      Memory Mirror, Peer Sessions Mirror, Peer Creds Sync, UniFi Daily Backup,
+      and Hours Log scheduled tasks. C: drive at ~2% free is the standing risk.
 
   - hostname: gpuserver1
     aliases: []
@@ -61,23 +63,24 @@ machines:
     os: "Ubuntu 22.04.5 LTS (HWE 6.8)"
     mac: "bc:fc:e7:d9:08:eb"
     nic: "ASUSTek (i9-14900K board onboard NIC)"
-    current_ip: "192.168.1.199"
+    current_ip: "192.168.1.100"
     ip_assignment: dhcp
-    ssh_path: "alton@192.168.1.199"
+    ssh_path: "alton@192.168.1.100"
     bmc_ip: null
-    switch_port: 20
+    switch_port: null  # Physically rewired into Alton's Office switch port during 2026-05-19 fuse-blow recovery; switch_port number unknown until UniFi client list is re-queried post-restoration.
     vast_ai_machine_id: 52271
-    last_verified: 2026-05-16
-    last_drift: 2026-05-09  # tonight's incident -moved from .100 to .199 after wall-switch move
+    last_verified: 2026-05-19
+    last_drift: 2026-05-19  # ROLLED BACK from .199 → .100 during fuseblow recovery (gpuserver1 physically moved to Alton's Office wired drop; DHCP reassigned to original .100). Restores alignment with Fios DMZ target. Rental C.34113802 reconnected within 30min, reliability dropped slightly (0.9807 → 0.9718) but recovering.
     flagged:
-      - "Was 192.168.1.199 since tonight's DHCP reassignment. Prior IP 192.168.1.100 still appears in ~15-20 places in the codebase pending Tier 2 sweep."
-      - "Fios router has DMZ pointed at 192.168.1.100 -DMZ target needs updating to .199 OR a static reservation should be set on .100 to restore prior IP."
+      - "Now back at 192.168.1.100 (pre-2026-05-09 IP). Codebase references to .199 will need cleanup in next Tier-2 sweep; the .100 references that were previously stale are now correct again."
+      - "switch_port unknown post-rewire — re-query UniFi client list once stable."
     notes: |
       Hairpin NAT on Fios fixed via iptables OUTPUT DNAT + DOCKER-USER conntrack
       (vast.ai container ports 40000-40099). Tending via cron every 30 min
-      (~/vastai-tend.sh). Active reserved-contract C.34113802 through 2026-08-24.
-      Listing expiry 2026-10-24. No GitHub credentials, no browser automation.
-      vast.ai machine_id 52271, offer_id 32099437.
+      (~/vastai-tend.sh). Active reserved-contract C.34113802 through 2026-08-24
+      (renter container resumed within 30min of fuseblow). Listing expiry
+      2026-10-24. No GitHub credentials, no browser automation. vast.ai
+      machine_id 52271, offer_id 32099437.
 
   - hostname: rtxserver
     aliases: [rtxpro6000server]
@@ -94,7 +97,7 @@ machines:
     bmc_mac: "30:c5:99:d5:8f:b8"
     switch_port: 10
     vast_ai_machine_id: 97429
-    last_verified: 2026-05-16
+    last_verified: 2026-05-20
     last_drift: null
     flagged: []
     notes: |

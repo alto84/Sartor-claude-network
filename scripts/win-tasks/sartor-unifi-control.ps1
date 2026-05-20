@@ -39,7 +39,7 @@ $UniFiHome    = 'C:\Users\alto8\Ubiquiti UniFi'
 $JavaExe      = Join-Path $UniFiHome 'jre\bin\java.exe'
 $AceJar       = Join-Path $UniFiHome 'lib\ace.jar'
 $ServerLog    = Join-Path $UniFiHome 'logs\server.log'
-$ApiProbeUrl  = 'https://192.168.1.171:8443/status'   # designated health endpoint; 200 OK when controller is up
+$ApiProbeUrl  = 'https://127.0.0.1:8443/status'   # localhost since controller runs on Rocinante (was hardcoded 192.168.1.171 prior to 2026-05-19 fuseblow DHCP shift)
 $ProbeTimeout = 5
 $StartTimeout = 120
 
