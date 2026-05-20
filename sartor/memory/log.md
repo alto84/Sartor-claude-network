@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-20
 updated_by: personal-data-gather
-run: 101
+run: 102
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -472,3 +472,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri–Sat 5/22–5/23 (MKA conflict); Boston trip 5/27 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (15 days)
 - Gmail gap: 30 consecutive runs (72–101). OAuth URL re-issued; paste callback URL to complete.
 - Files touched: `daily/2026-05-20.md` (run 101 appended, frontmatter bumped run: 101), `log.md` (frontmatter bumped run: 101 + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created)
+
+## [2026-05-20] ingest | personal-data-gather run 102: zero delta; Gmail gap 31 runs; P0s overdue 5d; Disney ADR Day 4 CRITICAL
+- Sources: Gmail UNAVAILABLE (gap runs 72–102, 31 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 20–27 window), SSH unavailable (web runner)
+- Calendar delta vs run 101: zero net-new events across all 5 calendars
+- Facts gathered: 0 new
+- TODAY end-of-day: Vishala dress-down (all-day, MKA Brookside) + Rec Soccer Practice (5:30–6:15 PM, Anderson Park)
+- Disney ADR: Day 4 of open window (opened May 17) — CRITICAL sellout risk; contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 5 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — unconfirmed due to Gmail gap
+- P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri–Sat 5/22–5/23 (MKA conflict); Memorial Day Mon 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (15 days)
+- Gmail gap: 31 consecutive runs (72–102). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-20.md` (run 102 appended, frontmatter bumped run: 102), `log.md` (frontmatter bumped run: 102 + this entry), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (created)
