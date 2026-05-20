@@ -1,5 +1,5 @@
 # Sartor Memory Index
-## Last Updated: 2026-05-19 03:02
+## Last Updated: 2026-05-20 03:04
 
 ## Core Memory
 - [ALTON.md](ALTON.md) — Alton - User Profile
@@ -25,6 +25,8 @@
 - [reference_solar_project.md](reference_solar_project.md) — 85 Stonebridge Solar Project — canonical reference
 
 ## Recent Activity
+- [2026-05-20.md](daily/2026-05-20.md) — Daily Log — 2026-05-20 (Wednesday)
+- [2026-05-19.md](daily/2026-05-19.md) — Daily Log — 2026-05-19 (Tuesday)
 - [2026-05-18.md](daily/2026-05-18.md) — Daily Log — 2026-05-18 (Monday)
 - [2026-05-17.md](daily/2026-05-17.md) — Daily Log — 2026-05-17 (Sunday)
 - [2026-05-16.md](daily/2026-05-16.md) — Daily Log — 2026-05-16
@@ -33,8 +35,6 @@
 - [2026-05-13.md](daily/2026-05-13.md) — Daily Log — 2026-05-13
 - [2026-05-12.md](daily/2026-05-12.md) — Daily Log -- 2026-05-12
 - [2026-05-11.md](daily/2026-05-11.md) — Daily Log — 2026-05-11 (Monday after Mother's Day)
-- [2026-05-10.md](daily/2026-05-10.md) — Daily Log — 2026-05-10 (Mother's Day)
-- [2026-05-08.md](daily/2026-05-08.md) — Daily Log — 2026-05-08
 
 ## Research & Snapshots
 - [GOAL.md](research/GOAL.md) — Research Goal — smaller model takes household identity
