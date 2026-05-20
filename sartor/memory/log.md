@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-19
+updated: 2026-05-20
 updated_by: personal-data-gather
-run: 97
+run: 98
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -428,3 +428,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P1 NEW: Boston trip (5/27–5/29) logistics — school conflict + Meowtel for two windows
 - Gmail gap: 26 consecutive runs (72–97). OAuth URL re-issued; paste callback URL to complete.
 - Files touched: `daily/2026-05-19.md` (run 97 appended, frontmatter bumped), `family/family-calendar.md` (Boston trip appended), `family/active-todos.md` (Boston trip callouts), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-20] ingest | personal-data-gather run 98: TODAY dress-down+soccer; NEW Boston/soccer conflict 5/27; Disney ADR Day 4 CRITICAL; P0s overdue 5d
+- Sources: Gmail UNAVAILABLE (gap runs 72–98, 27 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 20–27 window), SSH unavailable (web runner)
+- **TODAY: Vishala dress-down (all-day) + Rec Soccer Practice (5:30–6:15 PM, Anderson Park)**
+- **NEW CONFLICT: Boston trip (starts 5/27) and Rec Soccer Practice (5/27, 5:30 PM) overlap on same day** — Vayu misses practice if family departs May 27; confirm trip timing with Aneeta
+- Calendar delta vs run 97: 0 new events; Rec Soccer Practice May 27 already in system but conflict with Boston trip first flagged this run
+- Facts gathered: 1 new (soccer/Boston conflict on May 27)
+- Disney ADR: Day 4 of open window (opened May 17) — character dining sellout risk CRITICAL (past 24–72h typical sellout window); Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 5 days: Sante Total 990-N; Wohelo camp forms; 185 Davis boiler vote — all unconfirmed due to Gmail gap
+- P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri 5/22 (MKA school conflict); Boston trip 5/27 (multiple conflicts)
+- Gmail gap: 27 consecutive runs (72–98). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-20.md` (new, run 98), `family/active-todos.md` (run 98 entry appended, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
