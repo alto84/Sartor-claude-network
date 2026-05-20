@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-20
 updated_by: personal-data-gather
-run: 98
+run: 99
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -428,6 +428,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P1 NEW: Boston trip (5/27–5/29) logistics — school conflict + Meowtel for two windows
 - Gmail gap: 26 consecutive runs (72–97). OAuth URL re-issued; paste callback URL to complete.
 - Files touched: `daily/2026-05-19.md` (run 97 appended, frontmatter bumped), `family/family-calendar.md` (Boston trip appended), `family/active-todos.md` (Boston trip callouts), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-20] ingest | personal-data-gather run 99: Gmail gap 28 runs; 0 delta; Disney ADR Day 4 CRITICAL; P0s overdue 5d; TODAY soccer+dress-down
+- Sources: Gmail UNAVAILABLE (gap runs 72–99, 28 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 20–27 window), SSH unavailable (web runner)
+- Calendar delta vs run 98: zero net-new events across all 5 calendars. TODAY events still active: Vishala dress-down (all-day) + Rec Soccer Practice (5:30–6:15 PM, Anderson Park).
+- Facts gathered: 0 new
+- Disney ADR: Day 4 of open window (opened May 17) — CRITICAL sellout risk (past 24–72h typical sellout window); contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423)
+- P0 OVERDUE 5 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri–Sat 5/22–5/23 (MKA school conflict); Boston trip 5/27 (soccer conflict + school conflict); Chase/Sante Total KYC 2026-06-04 (15 days)
+- Gmail gap: 28 consecutive runs (72–99). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-20.md` (run 99 appended, frontmatter unchanged), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
 
 ## [2026-05-20] ingest | personal-data-gather run 98: TODAY dress-down+soccer; NEW Boston/soccer conflict 5/27; Disney ADR Day 4 CRITICAL; P0s overdue 5d
 - Sources: Gmail UNAVAILABLE (gap runs 72–98, 27 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 20–27 window), SSH unavailable (web runner)
