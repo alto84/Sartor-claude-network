@@ -284,6 +284,43 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - [[family-calendar]] - Full 30-day calendar view
 - [[ALTON]] - Head of household
 
+## Latest from gather (2026-05-21) — run 107
+
+> [!fact] Gmail + Calendar MCP RESTORED after 33+ run gap
+> Both Gmail (30 threads) and all 5 Google Calendars returned live data this run. First live-data run since ~2026-05-13 evening (gap: runs 72–106). Items below are from live sources.
+
+> [!warning] TODAY — Decide Field Day vs PA Trip logistics (before end of day)
+> MKA Veracross email (12:01 PM May 21): **Primary School Field Day is Friday May 22 at 9:00 AM.** "Starts promptly at 9:00 am — an extravaganza of athletic events, teamwork, treats, and fun community activities." Affects [[family/vayu|Vayu]] (4th grade) and [[family/vishala|Vishala]] (3rd grade). Family calendar also has "Friday to PA" all-day 5/22. Conflict: if kids go on PA trip, they miss Field Day. Confirm with Aneeta today. Options: (a) Field Day at 9 AM, leave for PA after ~noon; (b) kids skip Field Day, go to PA; (c) adults-only PA trip, kids at school. See [[family/family-calendar]].
+
+> [!todo] ACTION_REQUIRED — Magnus Health records needed (Vayu + Vishala) for 2026-2027
+> Two separate emails from no-reply@magnushealthportal.com (2026-05-20): one for [[family/vishala|Vishala]], one for [[family/vayu|Vayu]]. "Items that need to be provided to update your child's health records for the 2026-2027 school year. Items must be resolved in order for your child to continue at school." Log in to Magnus Health portal and submit required records for both children. No hard deadline stated but enrollment-blocking language — act this week.
+
+> [!todo] ACTION_REQUIRED — PatientGateway questionnaire due soon
+> PatientGateway@partners.org (2026-05-20 12:23 PM): "You have a questionnaire that needs to be completed soon." Mass General Brigham / Partners system. Log in at patient.massgeneral.org and complete. See [[ALTON]].
+
+> [!fact] Chase credit card statements — both due 2026-06-17, auto-pay enabled
+> Two statements arrived today (no.reply.alerts@chase.com):
+> - Card ending **7054**: balance $1,247.36, min payment $40.00, due 06/17/2026, auto-pay enrolled
+> - Card ending **8547**: balance $27,609.04, min payment $686.00, due 06/17/2026, auto-pay enrolled
+> Auto-pay will cover minimum. No immediate action unless manual full-balance payment or charge review needed.
+
+> [!fact] Chase Ink Business Unlimited 7738 — $4,151.86 payment authorized 2026-05-20
+> no.reply.alerts@chase.com (2026-05-21 01:12 UTC): payment scheduled for Ink Business Unlimited 7738, $4,151.86, authorized May 20, 2026. See [[business/solar-inference]].
+
+> [!note] Calendar — confirmed live (May 21–28)
+> - TODAY Thu 5/21: Nehal's Birthday (all-day, recurring) — send message or call
+> - Fri 5/22 – Sat 5/23: "Friday to PA" (Family calendar, confirmed)
+> - Wed 5/27 – Fri 5/29: "Boston trip" (Family calendar, confirmed, created 2026-04-28 by Alton)
+> - Aneeta calendar: no events this week
+> - Blue Sombrero (Vayu soccer): no events this week
+> See [[family/family-calendar]] for full view.
+
+> [!warning] PA trip + Field Day conflict — DECIDE TODAY
+> "Friday to PA" (Fri 5/22) now conflicts with MKA Primary School Field Day (Fri 5/22 at 9:00 AM). See Field Day item above.
+
+> [!note] Vasu at Goddard — bugs/insects week
+> Three Kaymbu classroom moments today: "Creepy Crawly Patterns" (insect manipulatives + play doh), "CONSTRUCTION: insect houses" (nonfiction books + building), "Hugs from friends." [[family/vasu|Vasu]] appears engaged. No action needed.
+
 ## Latest from gather (2026-05-16) — run 80
 
 > [!warning] OVERDUE — was due 2026-05-15

@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-21
 updated_by: personal-data-gather
-run: 106
+run: 107
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -528,3 +528,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P1 TOMORROW: PA trip Fri–Sat 5/22–5/23 (MKA school conflict Vayu+Vishala); Memorial Day 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (14 days)
 - Note: data/ directory recreated (fresh container); heartbeat-log.csv and gather-alerts.md written fresh
 - Files touched: `daily/2026-05-21.md` (run 106 appended, frontmatter bumped run: 106), `log.md` (frontmatter bumped run: 106 + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-21] ingest | personal-data-gather run 107: MCP RESTORED — Gmail + Calendar live after 33-run gap
+- Sources: Gmail (30 unread threads, newer_than:2d + keyword search), all 5 calendars (May 21–28), no SSH (web runner)
+- **RESTORED:** Both Gmail and Google Calendar MCP returned live data for first time since ~2026-05-13 evening (gap: runs 72–106)
+- New facts: Field Day conflict (MKA 5/22 9 AM vs PA trip); Magnus Health health records needed (Vayu + Vishala, 2026-2027); PatientGateway questionnaire due (Alton, Partners); Chase CC 7054 ($1,247.36 due 06/17); Chase CC 8547 ($27,609.04 due 06/17); Ink Business 7738 payment $4,151.86 scheduled; EquityZen SambaNova $29/share; PA trip confirmed; Boston trip confirmed
+- Calendar confirmed: Nehal's Birthday (today), PA trip Fri 5/22–Sat 5/23, Boston trip Wed 5/27–Fri 5/29; no soccer events from Blue Sombrero; Aneeta calendar empty this week
+- SNO 2026 abstract deadline May 26: SKIP (already decided NOT SUBMITTING per 2026-04-16 triage)
+- Alerts: P0 — Field Day conflict (decide today); Magnus Health records (enrollment-blocking); PatientGateway questionnaire; carry-forward P0 overdue items (990-N, Wohelo, boiler vote, Disney ADR day 5)
+- Files touched: `daily/2026-05-21.md` (run 107 appended, frontmatter bumped), `family/active-todos.md` (run 107 section appended), `data/gather-alerts.md` (overwritten with live data), `data/heartbeat-log.csv` (run 107 entry appended), `log.md` (this entry)
