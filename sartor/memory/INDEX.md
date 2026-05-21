@@ -1,5 +1,5 @@
 # Sartor Memory Index
-## Last Updated: 2026-05-20 03:04
+## Last Updated: 2026-05-21 03:07
 
 ## Core Memory
 - [ALTON.md](ALTON.md) — Alton - User Profile
@@ -26,7 +26,7 @@
 
 ## Recent Activity
 - [2026-05-20.md](daily/2026-05-20.md) — Daily Log — 2026-05-20 (Wednesday)
-- [2026-05-19.md](daily/2026-05-19.md) — Daily Log — 2026-05-19 (Tuesday)
+- [2026-05-19.md](daily/2026-05-19.md) — Daily — 2026-05-19 (post-fuseblow incident night)
 - [2026-05-18.md](daily/2026-05-18.md) — Daily Log — 2026-05-18 (Monday)
 - [2026-05-17.md](daily/2026-05-17.md) — Daily Log — 2026-05-17 (Sunday)
 - [2026-05-16.md](daily/2026-05-16.md) — Daily Log — 2026-05-16
