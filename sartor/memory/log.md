@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-20
+updated: 2026-05-21
 updated_by: personal-data-gather
-run: 103
+run: 104
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -494,3 +494,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri–Sat 5/22–5/23 (MKA conflict); Memorial Day Mon 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (15 days)
 - Gmail gap: 32 consecutive runs (72–103). OAuth URL re-issued; paste callback URL to complete.
 - Files touched: `daily/2026-05-20.md` (run 103 appended, frontmatter bumped run: 103), `log.md` (frontmatter bumped run: 103 + this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-21] ingest | personal-data-gather run 104: NEW — Calendar MCP also blocked; Gmail gap 33 runs; P0s overdue 6d; Disney ADR Day 5 CRITICAL
+- Sources: Gmail UNAVAILABLE (gap runs 72–104, 33+ consecutive since ~2026-05-13 evening), Calendar UNAVAILABLE (NEW — all 5 calendars blocked by MCP approval gate; was working runs 72–103), SSH unavailable (web runner)
+- Calendar delta vs run 103: no live data; date-shifted carry-forward only
+- Facts gathered: 0 new (both sources blocked)
+- NEW BLOCKER: Calendar MCP returning "MCP tool call requires approval" in this session — regression from prior runs. Requires user action in claude.ai MCP settings. Tool name mismatch possible (mcp__Google-Calendar__* vs mcp__claude_ai_Google_Calendar__* in allowlist).
+- TODAY: Nehal's Birthday (all-day)
+- Disney ADR: Day 5 of open window (opened May 17) — MAXIMUM sellout risk; contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 6 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15)
+- P1: PA trip TOMORROW Fri–Sat 5/22–5/23 (MKA conflict); Memorial Day Mon 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (14 days)
+- Files touched: `daily/2026-05-21.md` (created, run 104), `log.md` (frontmatter bumped run: 104 + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created)
