@@ -30,7 +30,7 @@ Authoritative state of the fleet. Update on each meaningful change.
 
 | Hostname | LAN IP | GPU(s) | Combined VRAM | Status | Listing strategy |
 |---|---|---|---|---|---|
-| gpuserver1 | 192.168.1.199 | 1× RTX 5090 | 32 GB | Listed (machine 52271). Currently rented under reserved contract C.34113802 through 2026-08-24 at ~$0.20/hr realized. Listed price $0.30 on-demand / $0.25 floor. Listing end-date 2026-10-24. | Reserved through 8/24; on contract end, relist on-demand only per "short-term first" |
+| gpuserver1 | 192.168.1.100 | 1× RTX 5090 | 32 GB | Listed (machine 52271). Currently rented under reserved contract C.34113802 through 2026-08-24 at ~$0.20/hr realized. Listed price $0.30 on-demand / $0.25 floor. Listing end-date 2026-10-24. | Reserved through 8/24; on contract end, relist on-demand only per "short-term first" |
 | rtxpro6000server | 192.168.1.157 | 2× RTX PRO 6000 Blackwell WS | 192 GB | **NOT YET LISTED** as of 2026-05-04. Hardware ready, network ready (Fios port-forward 40100-40199 + UFW + hairpin NAT), kaalia install pending. See [`projects/rtxserver-vastai-watch.md`](../../../sartor/memory/projects/rtxserver-vastai-watch.md). | Per "short-term first": list on-demand only with fixed `-e` end-date for first 2-4 weeks. Do NOT use `-l "6 months"` rolling-reservation flag for first listing. |
 | Future hosts | — | — | — | — | Same: on-demand + fixed end-date for 2-4 weeks of price discovery, then re-evaluate |
 
@@ -168,7 +168,7 @@ Order of operations:
 
 ```bash
 # 1. LAN ping — distinguishes network-down from box-down
-ping -n 3 192.168.1.199
+ping -n 3 192.168.1.100
 
 # 2. SSH — tells you sshd is up, OAuth keys work
 ssh -o ConnectTimeout=5 alton@gpuserver1 'date; uptime'
@@ -238,7 +238,7 @@ ssh alton@gpuserver1 '~/.local/bin/vastai self-test machine <id>'
 
 # Test the LAN-side hairpin from the host itself (this is what self-test does):
 ssh alton@gpuserver1 'sudo iptables -t nat -L OUTPUT -n -v | grep DNAT'
-# Expected: -A OUTPUT -d <PUB_IP> -p tcp --dport 40000:40099 -j DNAT --to-destination 192.168.1.199
+# Expected: -A OUTPUT -d <PUB_IP> -p tcp --dport 40000:40099 -j DNAT --to-destination 192.168.1.100
 
 # UFW rules
 ssh alton@gpuserver1 'sudo ufw status verbose | grep 4000'

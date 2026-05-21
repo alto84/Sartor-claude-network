@@ -127,7 +127,7 @@ ssh alton@<peer-ip> 'ls ~/Sartor-claude-network/sartor/memory/inbox/<host>/ 2>&1
 - **vast.ai onboarding state:** PAUSED 2026-05-02 pending network topology pivot. Resume from `inbox/rtxpro6000server/RESUME-vastai-onboarding-2026-05-02.md`. Don't fire `vastai list machine` until port-forward path is decided.
 - **No vast.ai rental** — clean GPU access for research
 
-### gpuserver1 (192.168.1.199)
+### gpuserver1 (192.168.1.100)
 
 - **Hardware:** single RTX 5090, i9-14900K, 128GB DDR5, MSI MAG Coreliquid A13 240 (AIO — pump should always be 100%)
 - **Wall outlet:** 1200W PSU, dramatically over-provisioned for current workload

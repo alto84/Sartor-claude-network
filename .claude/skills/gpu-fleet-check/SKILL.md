@@ -10,7 +10,7 @@ Run a complete GPU fleet check. Output full report to reports/daily/{date}-gpu-s
 
 Before running any SSH commands, always use `-o ConnectTimeout=10`. If SSH fails:
 
-1. **Ping first:** `ping -n 3 192.168.1.199` -- distinguishes network-down from SSH-down.
+1. **Ping first:** `ping -n 3 192.168.1.100` -- distinguishes network-down from SSH-down.
 2. **If ping fails:** Server or network is down. Document as "gpuserver1 unreachable" and stop.
 3. **If ping succeeds but SSH fails:** SSH daemon issue. Document the exact error:
    - `kex_exchange_identification` / `banner exchange` error: sshd is not completing the handshake. Likely sshd crashed, fail2ban block, or resource exhaustion.

@@ -184,7 +184,7 @@ LAN cable to gpuserver1 (eno1).
 
 Verify gpuserver1 reachability:
 - Check LAN cable
-- ping 192.168.1.199
+- ping 192.168.1.100
 - if reachable, inspect ~/.self-steward.lock and recent logs
 - if rental is still active, no action on the rental side; if rental dropped, file a re-rental review
 

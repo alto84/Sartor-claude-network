@@ -37,7 +37,7 @@ _MERIDIAN_PORT = int(os.environ.get("MERIDIAN_PORT", "5055"))
 # sartor/memory/projects/codebase-cleanup-2026-05-08/HOSTNAME-MIGRATION-TRACKER.md).
 # Both are env-overridable so a clone on another machine can adapt without code edits.
 # Canonical source: sartor/memory/machines/REGISTRY.yaml.
-GPUSERVER1_IP = os.environ.get("GPUSERVER1_IP", "192.168.1.199")
+GPUSERVER1_IP = os.environ.get("GPUSERVER1_IP", "192.168.1.100")
 GPUSERVER1_SSH_HOST = os.environ.get("GPUSERVER1_SSH_HOST", "gpuserver1")
 
 # LAN-only accept list: RFC1918 + loopback.

@@ -37,7 +37,7 @@ related: [BUSINESS, PROCEDURES, SELF, MULTI-MACHINE-MEMORY, machines/gpuserver1/
 
 ## gpuserver1 (Ubuntu Server)
 
-> Current IP is 192.168.1.199 as of 2026-05-08 evening (was .100). Hosts-file work is in progress to switch references to the hostname `gpuserver1`. See Tier 2 sweep for hostname migration. Literal .100 references throughout this section are stale; use hostname `gpuserver1` going forward.
+> Current IP is 192.168.1.100 (rolled back during 2026-05-19 fuse-blow recovery; was at 192.168.1.199 between 2026-05-08 and 2026-05-19). Hosts-file work is in progress to switch references to the hostname `gpuserver1`. See Tier 2 sweep for hostname migration. Address peers by hostname going forward; the IP is operational drift.
 
 **Role:** GPU compute, model training/inference, headless automation, dashboard host, vast.ai rental
 
