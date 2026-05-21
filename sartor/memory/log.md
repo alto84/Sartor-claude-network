@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-21
 updated_by: personal-data-gather
-run: 104
+run: 105
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -505,3 +505,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 OVERDUE 6 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15)
 - P1: PA trip TOMORROW Fri–Sat 5/22–5/23 (MKA conflict); Memorial Day Mon 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (14 days)
 - Files touched: `daily/2026-05-21.md` (created, run 104), `log.md` (frontmatter bumped run: 104 + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created)
+
+## [2026-05-21] ingest | personal-data-gather run 105: Gmail+Calendar gap 34 runs; 0 delta; Disney ADR Day 5 CRITICAL; P0s overdue 6d; PA trip TOMORROW
+- Sources: Gmail UNAVAILABLE (gap runs 72–105, 34+ consecutive since ~2026-05-13 evening), Calendar UNAVAILABLE (second consecutive run blocked by same platform consent gate; was working runs 72–103), SSH unavailable (web runner)
+- Calendar delta vs run 104: no live data; date-shifted carry-forward only
+- Facts gathered: 0 new (both sources blocked)
+- TODAY: Nehal's Birthday (all-day — send message or call)
+- Disney ADR: Day 5 of open window (opened May 17) — MAXIMUM sellout risk; contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 6 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1 TOMORROW: PA trip Fri–Sat 5/22–5/23 (MKA school conflict Vayu+Vishala); Memorial Day 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (14 days)
+- Gmail gap: 34+ consecutive runs (72–105). Platform consent gate blocking both MCPs.
+- Note: data/ directory missing (fresh container); heartbeat-log.csv and gather-alerts.md recreated
+- Files touched: `daily/2026-05-21.md` (run 105 appended, frontmatter bumped run: 105), `log.md` (frontmatter bumped run: 105 + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
