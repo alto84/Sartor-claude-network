@@ -60,7 +60,40 @@ if ($localSha -ne $remoteSha) {
   }
 }
 
-# 3. Push to github (HTTPS, credentials in Windows Credential Manager)
+# 3. Fetch-first guard: confirm github/main is an ancestor of (or equal to) local main
+# before pushing. Without this guard, a peer that pushes direct-to-GitHub (claude.ai
+# cloud-agent, an aneeta-laptop session, anything) leaves github/main with unique
+# commits, and the next `git push github main` fails with "fetch first". The script
+# then silently failed every 15 min for a week before anyone noticed (2026-05-13
+# through 2026-05-20). The guard turns "silently broken mirror" into "noisy
+# DIVERGED marker in the log" which dashboards can grep.
+$fetchGhOut = & git fetch github main 2>&1
+if ($LASTEXITCODE -ne 0) {
+  Log "ERROR fetch github (network/auth issue?): $fetchGhOut"
+  exit 1
+}
+
+$localMain  = (& git rev-parse main).Trim()
+$githubMain = (& git rev-parse github/main).Trim()
+
+if ($localMain -eq $githubMain) {
+  # already in sync, no-op
+  exit 0
+}
+
+# Is github/main an ancestor of local main? If yes, fast-forward push is safe.
+& git merge-base --is-ancestor $githubMain $localMain 2>&1 | Out-Null
+if ($LASTEXITCODE -ne 0) {
+  # github has commits that aren't on local. Don't force; log a distinctive marker
+  # and bail. Manual reconciliation needed (merge github/main locally, push to
+  # rtxserver bare via origin, then this script will resync on the next tick).
+  $aheadCount  = (& git rev-list --count "$localMain..github/main").Trim()
+  $behindCount = (& git rev-list --count "github/main..$localMain").Trim()
+  Log "DIVERGED-MIRROR github/main has $aheadCount commits not on local; local has $behindCount commits not on github. Manual reconciliation required. Local=$localMain GitHub=$githubMain"
+  exit 2
+}
+
+# 4. Push to github (HTTPS, credentials in Windows Credential Manager)
 $pushOut = & git push github main 2>&1
 if ($LASTEXITCODE -ne 0) {
   Log "ERROR push to github: $pushOut"
