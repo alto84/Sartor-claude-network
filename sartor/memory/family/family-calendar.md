@@ -637,3 +637,27 @@ Week of May 16–23 (confirmed from live API, run 80):
 | **Fri 5/22 – Sat 5/23** | **all day** | **"Friday to PA"** | **Family** | **NEW — Aneeta created 1:27 AM today. Confirm who/what/logistics.** |
 
 No events on Aneeta, Alton's Tasks, or Alton Primary calendars for May 16–23 beyond what's listed. Calendar metadata stable vs run 79; only delta is the PA trip entry.
+
+## Latest from gather (2026-05-19) — run 97
+
+> [!fact] NEW EVENT — "Boston trip" (Wed 5/27 – Fri 5/29)
+> Family calendar shows an all-day event "Boston trip" spanning 2026-05-27 through 2026-05-29 (end date 2026-05-30 exclusive). Created by Alton (alto84@gmail.com) on 2026-04-28 — on the calendar for 3 weeks but outside the prior 7-day query window. No description, location, or attendees in the event.
+>
+> Key conflict flags:
+> - MKA school conflict: After Memorial Day (Mon 5/25), MKA resumes Tue 5/27. If Vayu and Vishala are included, all 3 days are MKA school days.
+> - Back-to-back travel: PA trip 5/22–5/23 (this Friday–Saturday), then Boston 5/27–5/29 (next Wednesday–Friday) — two family trips in one week.
+> - Cat sitter: Meowtel coverage needed for both windows (5/22–5/23 and 5/27–5/29) if family is away.
+> - Vasu: Goddard in session 5/27–5/29.
+>
+> Action: Confirm with Aneeta — who is going on each trip, are kids included, school logistics if yes. See [[family/active-todos]].
+
+Week of May 19–30 (confirmed from live API, run 97):
+
+| Date | Time (ET) | Event | Calendar | Notes |
+|------|-----------|-------|----------|-------|
+| TOMORROW Wed 5/20 | all-day | Vishala "own your letter" dress-down | Family | Plan "V" outfit tonight |
+| TOMORROW Wed 5/20 | 5:30–6:15 PM | Rec Soccer Practice (B-34 Lime) | Family | Anderson Park, south near Parkside St |
+| Thu 5/21 | all-day | Nehal's Birthday | Primary (Alton) | Recurring — send message/call |
+| Fri 5/22 – Sat 5/23 | all-day | "Friday to PA" | Family | School conflict: Vayu+Vishala have MKA on 5/22 — confirm logistics |
+| Mon 5/25 | all-day | Memorial Day | — | Cat sitter needed if family away |
+| **Wed 5/27 – Fri 5/29** | **all-day** | **"Boston trip"** | **Family** | **NEW — Alton created 2026-04-28. School conflict (MKA). Back-to-back with PA trip.** |

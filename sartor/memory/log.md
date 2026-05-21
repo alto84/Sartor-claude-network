@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-16
+updated: 2026-05-20
 updated_by: personal-data-gather
-run: 82
+run: 103
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -258,3 +258,239 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Gmail gap: 11 consecutive runs (72–82) without email data. Re-auth URL issued this run.
 - Files touched: `daily/2026-05-16.md` (run 82 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (frontmatter + entry)
 - KEY: Disney ADR opens tomorrow — contact Nicol Stevenson today. Gmail re-auth still required.
+
+## [2026-05-16] ingest | personal-data-gather run 83: Vayu game concluded; Disney ADR opens tomorrow; Gmail gap runs 72–83
+- Sources: Gmail UNAVAILABLE (consecutive gap runs 72–83, since ~2026-05-13 evening; OAuth re-auth URL issued this run), all 5 calendars (May 16–23 window), SSH unavailable (web runner)
+- Calendar delta vs run 82: zero new events. Blue Sombrero refreshed 8h (to 19:19:56Z); Vayu soccer game (noon-1pm ET) has now concluded. All other calendars unchanged.
+- Facts gathered: 0 new (no Gmail, no SSH, no calendar changes)
+- P0 OVERDUE: Sante Total 990-N, Wohelo forms, 185 Davis boiler vote — no resolution visible (Gmail gap)
+- P1 CRITICAL: Disney ADR window opens TOMORROW (2026-05-17) — contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423) if not already done today
+- P1: "Friday to PA" (5/22–5/23) still unresolved; May 22 is a school day
+- Gmail gap: 12 consecutive runs (72–83). OAuth re-auth URL issued this run.
+- Files touched: `daily/2026-05-16.md` (run 83 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (frontmatter + entry)
+- KEY: Disney ADR window opens tomorrow — contact Nicol Stevenson. Gmail re-auth needed (paste callback URL to complete flow).
+
+## [2026-05-17] ingest | personal-data-gather run 84: ADR window open today; PA trip school conflict; Gmail OAuth in progress
+- Sources: Gmail re-auth in progress (OAuth initiated this run; gap runs 72–84, since ~2026-05-13), all 5 calendars (May 17–24 window), SSH unavailable (web runner)
+- Calendar delta vs run 83: zero net-new events. ADR deadline status upgraded: "opens tomorrow" → "opens today."
+- Facts gathered: 2 (Disney ADR opened today; PA trip school conflict note)
+- Pages updated: daily/2026-05-17.md (created), family/active-todos.md, family/disney-july-2026.md, data/gather-alerts.md, data/heartbeat-log.csv
+- P0 OVERDUE: Sante Total 990-N (since 5/15, penalties accumulating)
+- P0 ACTIVE: Chase/Sante Total KYC (deadline 2026-06-04, 18 days)
+- P1 ACT TODAY: Disney ADR window open — contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423)
+- P1 TOMORROW: Optimum fiber appointment Mon 5/18 1:00–2:00 PM — confirm home coverage
+- P2 FLAG: PA trip (5/22–5/23) conflicts with MKA school day 5/22; Memorial Day cats need sitter
+- Gmail gap: 12+ runs. Re-auth OAuth in progress this session. Complete flow to restore.
+- Files touched: daily/2026-05-17.md (created), active-todos.md (frontmatter + appended), disney-july-2026.md (frontmatter + appended), log.md (frontmatter bumped + entry), data/gather-alerts.md (written), data/heartbeat-log.csv (created)
+
+## [2026-05-17] ingest | personal-data-gather run 85: Gmail gap continues; zero calendar delta; ADR window open
+- Sources: Gmail UNAVAILABLE (gap runs 72–85, since ~2026-05-13 evening; re-auth URL issued, awaiting callback), all 5 calendars (May 17–24 window), SSH unavailable (web runner)
+- Calendar delta vs run 84: zero net-new events. All 5 calendars queried and returned identical results.
+- Facts gathered: 0 new (no Gmail, no SSH, no calendar changes)
+- P0 ACTIVE TODAY: Disney ADR window open — contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423)
+- P0 OVERDUE: Sante Total 990-N (since 2026-05-15), Wohelo camp forms (since 2026-05-15), 185 Davis boiler vote (since 2026-05-15) — all unconfirmed due to Gmail gap
+- P1 TOMORROW: Optimum fiber appointment Mon 5/18 1 PM — confirm home coverage
+- P1 18 days: Chase/Sante Total KYC deadline 2026-06-04
+- P2: PA trip 5/22–5/23 conflicts with MKA school day; cat sitter needed for Memorial Day weekend
+- Gmail gap: 14 consecutive runs (72–85). OAuth re-auth URL issued this session. Complete flow to restore email data.
+- Files touched: `daily/2026-05-17.md` (run 85 appended), `log.md` (run bumped + entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-17] ingest | personal-data-gather run 86: Gmail gap 15 runs; zero calendar delta; Optimum TOMORROW; ADR window open
+- Sources: Gmail UNAVAILABLE (gap runs 72–86, ~3.5 days since 2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 17–24), SSH unavailable (web runner)
+- Calendar delta vs run 85: zero net-new events. Playdate with Livia now past (ended 1 PM ET). All other events unchanged.
+- Facts gathered: 0 new
+- P0 ACT TODAY: Disney ADR window open — contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423). Unconfirmed due to Gmail gap.
+- P0 OVERDUE: Sante Total 990-N (2 days overdue 2026-05-15); Wohelo camp forms (2 days overdue); 185 Davis boiler vote (2 days overdue) — all unconfirmed due to Gmail gap
+- P1 TOMORROW: Optimum fiber appointment Mon 5/18 1:00–2:00 PM — confirm home coverage
+- P1 18 days: Chase/Sante Total KYC deadline 2026-06-04
+- P2: PA trip 5/22–5/23 conflicts with MKA school day; cat sitter needed for Memorial Day weekend
+- Gmail gap: 15 consecutive runs (72–86). OAuth re-auth URL issued this session. Paste callback URL to complete.
+- Files touched: `daily/2026-05-17.md` (run 86 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written)
+
+## [2026-05-17] ingest | personal-data-gather run 87: Gmail gap 16 runs; Family+BlueSombrero calendars updated today; zero event delta in window
+- Sources: Gmail UNAVAILABLE (gap runs 72–87, 16 consecutive, ~3.5 days since 2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 17–24 window), SSH unavailable (web runner)
+- Calendar delta vs run 86: zero net-new events in window. Family cal updated 18:09:20Z today (possible event outside window). Blue Sombrero updated 19:19:57Z today (possible soccer games beyond 5/24).
+- Facts gathered: 0 new (no Gmail, no SSH, no new events in window)
+- P0 ACT TODAY: Disney ADR window open — contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423). Status unconfirmed due to Gmail gap.
+- P0 OVERDUE: Sante Total 990-N (2 days, 2026-05-15); Wohelo camp forms (2 days); 185 Davis boiler vote (2 days) — all unconfirmed due to Gmail gap
+- P1 TOMORROW: Optimum fiber Mon 5/18 1:00–2:00 PM — confirm home coverage
+- P1 18 days: Chase/Sante Total KYC deadline 2026-06-04
+- P2: PA trip 5/22–5/23 conflicts with MKA school day; cat sitter needed Memorial Day weekend
+- Gmail gap: 16 consecutive runs (72–87). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-17.md` (run 87 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written)
+
+## [2026-05-18] ingest | personal-data-gather run 88: Gmail gap 17 runs; Optimum fiber TODAY; Disney ADR day 2; 3× overdue P0s; PA conflict 4 days
+- Sources: Gmail UNAVAILABLE (gap runs 72–88, 17 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 18–25 window), SSH unavailable (web runner)
+- Calendar delta vs run 87: zero net-new events. Optimum fiber appointment upgraded from TOMORROW to **TODAY** (Mon 5/18 1–2 PM).
+- Facts gathered: 0 new (no Gmail, no SSH, no new calendar events)
+- P0 TODAY: Optimum fiber 1–2 PM (home required); Disney ADR day 2 of open window (contact Nicol Stevenson)
+- P0 OVERDUE 3 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1: Vishala dress-down Wed 5/20; Rec Soccer Wed 5/20 5:30 PM; Nehal's Birthday Thu 5/21; PA trip school conflict Fri 5/22; KYC deadline 2026-06-04 (17 days)
+- Gmail gap: 17 consecutive runs (72–88). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-18.md` (created), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-18] ingest | personal-data-gather run 89: Gmail gap 18 runs; 0 delta; Disney ADR Day 2; 3× overdue P0s; PA conflict Fri
+- Sources: Gmail UNAVAILABLE (gap runs 72–89, 18 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 18–25 window), SSH unavailable (web runner)
+- Calendar delta vs run 88: zero net-new events across all 5 calendars
+- Facts gathered: 0 new (no Gmail, no SSH, no new calendar events)
+- P0: Disney ADR Day 2 of open window (contact Nicol Stevenson); Optimum fiber 1–2 PM TODAY (status unknown)
+- P0 OVERDUE 3+ days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1: Vishala dress-down Wed 5/20; Rec Soccer Wed 5/20 5:30 PM; Nehal's Birthday Thu 5/21; PA trip school conflict Fri 5/22; KYC deadline 2026-06-04 (17 days)
+- Gmail gap: 18 consecutive runs (72–89). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-18.md` (run 89 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written)
+
+## [2026-05-18] ingest | personal-data-gather run 90: Gmail gap 19 runs; 0 delta; Disney ADR Day 2; 3× overdue P0s; PA conflict Fri
+- Sources: Gmail UNAVAILABLE (gap runs 72–90, 19 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 18–25 window), SSH unavailable (web runner)
+- Calendar delta vs run 89: zero net-new events across all 5 calendars
+- Facts gathered: 0 new (no Gmail, no SSH, no new calendar events)
+- P0: Disney ADR Day 2 of open window (contact Nicol Stevenson — n.stevenson@magicalvacationplanner.com / +1 412-215-2423); Optimum fiber 1–2 PM TODAY (status unconfirmed)
+- P0 OVERDUE 3+ days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1: Vishala dress-down Wed 5/20; Rec Soccer Wed 5/20 5:30 PM; Nehal's Birthday Thu 5/21; PA trip school conflict Fri 5/22; KYC deadline 2026-06-04 (17 days)
+- Gmail gap: 19 consecutive runs (72–90). OAuth URL re-issued; paste callback URL to complete.
+- Note: data/ directory was empty (fresh container); heartbeat-log.csv and gather-alerts.md recreated
+- Files touched: `daily/2026-05-18.md` (run 90 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-18] ingest | personal-data-gather run 91: Gmail gap 20 runs; 0 delta; Disney ADR Day 3 open; 3× overdue P0s; PA conflict Fri
+- Sources: Gmail UNAVAILABLE (gap runs 72–91, 20 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 18–25 window), SSH unavailable (web runner)
+- Calendar delta vs run 90: zero net-new events across all 5 calendars
+- Facts gathered: 0 new (no Gmail, no SSH, no new calendar events)
+- P0: Disney ADR Day 3 of open window (contact Nicol Stevenson — n.stevenson@magicalvacationplanner.com / +1 412-215-2423); Optimum fiber appointment was TODAY 1–2 PM (status unconfirmed)
+- P0 OVERDUE 3+ days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1: Vishala dress-down Wed 5/20; Rec Soccer Wed 5/20 5:30 PM ET; Nehal's Birthday Thu 5/21; PA trip Fri 5/22 (school conflict Vayu+Vishala); KYC deadline 2026-06-04 (17 days)
+- Gmail gap: 20 consecutive runs (72–91). OAuth URL re-issued; paste callback URL to complete.
+- Note: data/ directory missing (fresh container); heartbeat-log.csv and gather-alerts.md recreated
+- Files touched: `daily/2026-05-18.md` (run 91 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-19] ingest | personal-data-gather run 93: Gmail gap 22 runs; 0 delta; Disney ADR Day 3; 4× overdue P0 4 days; PA trip 3 days
+- Sources: Gmail UNAVAILABLE (gap runs 72–93, 22 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 19–26 window), SSH unavailable (web runner)
+- Calendar delta vs run 92: zero net-new events. Optimum fiber appointment (Mon 5/18) has passed. Disney ADR Day 3 open window (Blue Bayou/character dining may already be booked). 3× overdue P0s now 4 days past deadline.
+- Facts gathered: 0 new (no Gmail, no SSH, no new calendar events)
+- P0 ACT TODAY: Disney ADR Day 3 (contact Nicol Stevenson — n.stevenson@magicalvacationplanner.com / +1 412-215-2423); character dining 24–72h sell-out risk
+- P0 OVERDUE 4 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1: Vishala dress-down TOMORROW Wed 5/20; Rec Soccer TOMORROW Wed 5/20 5:30 PM; Nehal's Birthday Thu 5/21; PA trip Fri 5/22 (MKA school conflict Vayu+Vishala); KYC deadline 2026-06-04 (16 days); Memorial Day cat sitter (5/25, 6 days)
+- Gmail gap: 22 consecutive runs (72–93). OAuth URL re-issued; paste callback URL to complete.
+- Note: data/ directory missing (fresh container); heartbeat-log.csv and gather-alerts.md recreated
+- Files touched: `daily/2026-05-19.md` (created), `family/active-todos.md` (run 93 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-18] ingest | personal-data-gather run 92: Gmail gap 21 runs; 0 delta; Disney ADR Day 3 open; 3× overdue P0s; PA trip Fri
+- Sources: Gmail UNAVAILABLE (gap runs 72–92, 21 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 18–25 window), SSH unavailable (web runner)
+- Calendar delta vs run 91: zero net-new events across all 5 calendars
+- Facts gathered: 0 new (no Gmail, no SSH, no new calendar events)
+- P0: Disney ADR Day 3 of open window (contact Nicol Stevenson — n.stevenson@magicalvacationplanner.com / +1 412-215-2423); Optimum fiber appointment TODAY 1–2 PM (status unconfirmed)
+- P0 OVERDUE 3+ days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1: Vishala dress-down Wed 5/20; Rec Soccer Wed 5/20 5:30 PM ET; Nehal's Birthday Thu 5/21; PA trip Fri 5/22 (school conflict Vayu+Vishala); KYC deadline 2026-06-04 (16 days)
+- Gmail gap: 21 consecutive runs (72–92). OAuth URL re-issued; paste callback URL to complete.
+- Note: data/ directory missing (fresh container); heartbeat-log.csv and gather-alerts.md recreated
+- Files touched: `daily/2026-05-18.md` (run 92 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-19] ingest | personal-data-gather run 94: Gmail gap 23 runs; 0 delta; Disney ADR Day 3; P0 overdue 4 days; PA trip 3 days
+- Sources: Gmail UNAVAILABLE (gap runs 72–94, 23 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 19–26 window), SSH unavailable (web runner)
+- Calendar delta vs run 93: zero net-new events across all 5 calendars (second run today)
+- Facts gathered: 0 new (no Gmail, no SSH, no new calendar events)
+- P0 ACT TODAY: Disney ADR Day 3 of open window — character dining sell-out risk (contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423)
+- P0 OVERDUE 4 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1: Vishala dress-down TOMORROW Wed 5/20; Rec Soccer TOMORROW Wed 5/20 5:30 PM; Nehal's Birthday Thu 5/21; PA trip Fri 5/22 (MKA school conflict Vayu+Vishala); KYC deadline 2026-06-04 (16 days); cat sitter 5/25 (6 days)
+- Gmail gap: 23 consecutive runs (72–94). OAuth URL re-issued; paste callback URL to complete.
+- Note: data/ directory missing (fresh container); heartbeat-log.csv and gather-alerts.md recreated
+- Files touched: `daily/2026-05-19.md` (run 94 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-19] ingest | personal-data-gather run 96: Gmail gap 25 runs; 0 delta; Disney ADR Day 3 CRITICAL; P0 overdue 4 days; Vishala dress-down TOMORROW
+- Sources: Gmail UNAVAILABLE (gap runs 72–96, 25 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 19–26 window), SSH unavailable (web runner)
+- Calendar delta vs run 95: zero net-new events across all 5 calendars (fourth run today)
+- Facts gathered: 0 new (no Gmail, no SSH, no new calendar events)
+- P0 ACT TODAY: Disney ADR Day 3 of open window — character dining sellout risk CRITICAL (contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423)
+- P0 OVERDUE 4 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1 TOMORROW: Vishala dress-down (Wed 5/20 all-day); Rec Soccer (Wed 5/20 5:30–6:15 PM Anderson Park)
+- P1: Nehal's Birthday Thu 5/21; PA trip Fri 5/22 (MKA school conflict Vayu+Vishala); KYC deadline 2026-06-04 (16 days); cat sitter 5/25 (6 days)
+- Gmail gap: 25 consecutive runs (72–96). OAuth URL re-issued; paste callback URL to complete.
+- Note: data/ directory missing (fresh container); heartbeat-log.csv and gather-alerts.md recreated
+- Files touched: `daily/2026-05-19.md` (run 96 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-19] ingest | personal-data-gather run 95: Gmail gap 24 runs; 0 delta; Disney ADR Day 3 URGENT; P0 overdue 4 days
+- Sources: Gmail UNAVAILABLE (gap runs 72–95, 24 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 19–26 window), SSH unavailable (web runner)
+- Calendar delta vs run 94: zero net-new events across all 5 calendars (third run today)
+- Facts gathered: 0 new (no Gmail, no SSH, no new calendar events)
+- P0 ACT TODAY: Disney ADR Day 3 of open window — character dining sellout risk ELEVATED (contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423)
+- P0 OVERDUE 4 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1: Vishala dress-down TOMORROW Wed 5/20; Rec Soccer TOMORROW Wed 5/20 5:30 PM ET; Nehal's Birthday Thu 5/21; PA trip Fri 5/22 (MKA school conflict Vayu+Vishala); KYC deadline 2026-06-04 (16 days); cat sitter 5/25 (6 days)
+- Gmail gap: 24 consecutive runs (72–95). OAuth URL re-issued; paste callback URL to complete.
+- Note: data/ directory missing (fresh container); heartbeat-log.csv and gather-alerts.md recreated
+- Files touched: `daily/2026-05-19.md` (run 95 appended, frontmatter bumped), `log.md` (frontmatter bumped + entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-19] ingest | personal-data-gather run 97: NEW Boston trip 5/27-5/29; Gmail gap 26 runs; Disney ADR Day 3 CRITICAL; P0s overdue 4d
+- Sources: Gmail UNAVAILABLE (gap runs 72–97, 26 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 19–26 + 5/30 spillover), SSH unavailable (web runner)
+- **NEW FINDING: "Boston trip" (Wed 5/27 – Fri 5/29) on Family calendar** — created by Alton 2026-04-28, outside prior 7-day window. No description/location/attendees. MKA school conflict (all 3 days are school days post-Memorial Day). Back-to-back with PA trip 5/22–5/23. Cat sitter needed for both windows.
+- Calendar delta vs run 96: 1 new event (Boston trip). All other 5 calendars unchanged.
+- Facts gathered: 1 new (Boston trip)
+- P0 ACT TODAY: Disney ADR Day 3 of open window — CRITICAL sellout risk (Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423)
+- P0 OVERDUE 4 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — unconfirmed due to Gmail gap
+- P1 TOMORROW: Vishala dress-down (Wed 5/20 all-day); Rec Soccer (Wed 5/20 5:30–6:15 PM Anderson Park)
+- P1 NEW: Boston trip (5/27–5/29) logistics — school conflict + Meowtel for two windows
+- Gmail gap: 26 consecutive runs (72–97). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-19.md` (run 97 appended, frontmatter bumped), `family/family-calendar.md` (Boston trip appended), `family/active-todos.md` (Boston trip callouts), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-20] ingest | personal-data-gather run 99: Gmail gap 28 runs; 0 delta; Disney ADR Day 4 CRITICAL; P0s overdue 5d; TODAY soccer+dress-down
+- Sources: Gmail UNAVAILABLE (gap runs 72–99, 28 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 20–27 window), SSH unavailable (web runner)
+- Calendar delta vs run 98: zero net-new events across all 5 calendars. TODAY events still active: Vishala dress-down (all-day) + Rec Soccer Practice (5:30–6:15 PM, Anderson Park).
+- Facts gathered: 0 new
+- Disney ADR: Day 4 of open window (opened May 17) — CRITICAL sellout risk (past 24–72h typical sellout window); contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423)
+- P0 OVERDUE 5 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri–Sat 5/22–5/23 (MKA school conflict); Boston trip 5/27 (soccer conflict + school conflict); Chase/Sante Total KYC 2026-06-04 (15 days)
+- Gmail gap: 28 consecutive runs (72–99). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-20.md` (run 99 appended, frontmatter unchanged), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-20] ingest | personal-data-gather run 98: TODAY dress-down+soccer; NEW Boston/soccer conflict 5/27; Disney ADR Day 4 CRITICAL; P0s overdue 5d
+- Sources: Gmail UNAVAILABLE (gap runs 72–98, 27 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 20–27 window), SSH unavailable (web runner)
+- **TODAY: Vishala dress-down (all-day) + Rec Soccer Practice (5:30–6:15 PM, Anderson Park)**
+- **NEW CONFLICT: Boston trip (starts 5/27) and Rec Soccer Practice (5/27, 5:30 PM) overlap on same day** — Vayu misses practice if family departs May 27; confirm trip timing with Aneeta
+- Calendar delta vs run 97: 0 new events; Rec Soccer Practice May 27 already in system but conflict with Boston trip first flagged this run
+- Facts gathered: 1 new (soccer/Boston conflict on May 27)
+- Disney ADR: Day 4 of open window (opened May 17) — character dining sellout risk CRITICAL (past 24–72h typical sellout window); Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 5 days: Sante Total 990-N; Wohelo camp forms; 185 Davis boiler vote — all unconfirmed due to Gmail gap
+- P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri 5/22 (MKA school conflict); Boston trip 5/27 (multiple conflicts)
+- Gmail gap: 27 consecutive runs (72–98). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-20.md` (new, run 98), `family/active-todos.md` (run 98 entry appended, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-20] ingest | personal-data-gather run 100: zero delta; Gmail gap 29 runs; P0s overdue 5d; Disney ADR Day 4 CRITICAL
+- Sources: Gmail UNAVAILABLE (gap runs 72–100, 29 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 20–27 window), SSH unavailable (web runner)
+- Calendar delta vs run 99: zero net-new events across all 5 calendars
+- Facts gathered: 0 new
+- TODAY: Vishala dress-down (all-day, MKA Brookside) + Rec Soccer Practice (5:30–6:15 PM, Anderson Park)
+- Disney ADR: Day 4 of open window (opened May 17) — CRITICAL sellout risk (past 24–72h typical sellout window); contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 5 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — unconfirmed due to Gmail gap
+- P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri–Sat 5/22–5/23 (MKA conflict); Boston trip 5/27 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (15 days)
+- Gmail gap: 29 consecutive runs (72–100). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-20.md` (run 100 appended), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (appended)
+
+## [2026-05-20] ingest | personal-data-gather run 101: zero delta; Gmail gap 30 runs; P0s overdue 5d; Disney ADR Day 4 CRITICAL
+- Sources: Gmail UNAVAILABLE (gap runs 72–101, 30 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 20–27 window), SSH unavailable (web runner)
+- Calendar delta vs run 100: zero net-new events across all 5 calendars
+- Facts gathered: 0 new
+- TODAY: Vishala dress-down (all-day, MKA Brookside) + Rec Soccer Practice (5:30–6:15 PM, Anderson Park)
+- Disney ADR: Day 4 of open window (opened May 17) — CRITICAL sellout risk; contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 5 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — unconfirmed due to Gmail gap
+- P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri–Sat 5/22–5/23 (MKA conflict); Boston trip 5/27 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (15 days)
+- Gmail gap: 30 consecutive runs (72–101). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-20.md` (run 101 appended, frontmatter bumped run: 101), `log.md` (frontmatter bumped run: 101 + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created)
+
+## [2026-05-20] ingest | personal-data-gather run 102: zero delta; Gmail gap 31 runs; P0s overdue 5d; Disney ADR Day 4 CRITICAL
+- Sources: Gmail UNAVAILABLE (gap runs 72–102, 31 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 20–27 window), SSH unavailable (web runner)
+- Calendar delta vs run 101: zero net-new events across all 5 calendars
+- Facts gathered: 0 new
+- TODAY end-of-day: Vishala dress-down (all-day, MKA Brookside) + Rec Soccer Practice (5:30–6:15 PM, Anderson Park)
+- Disney ADR: Day 4 of open window (opened May 17) — CRITICAL sellout risk; contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 5 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — unconfirmed due to Gmail gap
+- P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri–Sat 5/22–5/23 (MKA conflict); Memorial Day Mon 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (15 days)
+- Gmail gap: 31 consecutive runs (72–102). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-20.md` (run 102 appended, frontmatter bumped run: 102), `log.md` (frontmatter bumped run: 102 + this entry), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (created)
+
+## [2026-05-20] ingest | personal-data-gather run 103: zero delta; Gmail gap 32 runs; P0s overdue 5d; Disney ADR Day 4 CRITICAL
+- Sources: Gmail UNAVAILABLE (gap runs 72–103, 32 consecutive since ~2026-05-13 evening; OAuth URL re-issued this run), all 5 calendars (May 20–27 window), SSH unavailable (web runner)
+- Calendar delta vs run 102: zero net-new events across all 5 calendars
+- Facts gathered: 0 new
+- TODAY end-of-day: Vishala dress-down (all-day, MKA Brookside) + Rec Soccer Practice (5:30–6:15 PM, Anderson Park)
+- Disney ADR: Day 4 of open window (opened May 17) — CRITICAL sellout risk; contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 5 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — unconfirmed due to Gmail gap
+- P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri–Sat 5/22–5/23 (MKA conflict); Memorial Day Mon 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (15 days)
+- Gmail gap: 32 consecutive runs (72–103). OAuth URL re-issued; paste callback URL to complete.
+- Files touched: `daily/2026-05-20.md` (run 103 appended, frontmatter bumped run: 103), `log.md` (frontmatter bumped run: 103 + this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)

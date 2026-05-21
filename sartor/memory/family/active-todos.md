@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-16
+updated: 2026-05-20
 updated_by: personal-data-gather
-run: 80
+run: 98
 
 status: active
 priority: p1
@@ -254,6 +254,27 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - Wed 5/20: Vishala "own your letter dress down" (all day, plan outfit)
 > - Wed 5/20 5:30–6:15 PM: Rec Soccer Practice (B-34 Lime), Anderson Park south near Parkside St
 > - Thu 5/21: Nehal's Birthday (recurring — send message/call)
+
+## Latest from gather (2026-05-19) — run 93
+
+> [!warning] Disney ADR — Day 3 of open window — ACT NOW
+> 60-day ADR window for July 16–19 Disneyland trip opened May 17. Today is Day 3. Blue Bayou and character dining typically sell out in the first 24–72 hours. If not yet contacted, call Nicol Stevenson now: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. Preferences: (a) character dining — Plaza Inn Minnie breakfast or Storyteller's Mickey breakfast (Vasu age 4), (b) Blue Bayou Saturday, (c) DTF Thursday headcount 5. Status unconfirmed due to Gmail gap. See [[family/disney-july-2026]].
+
+> [!warning] OVERDUE 4 days — Sante Total Form 990-N (was due 2026-05-15)
+> NOT FILED per all runs 22–93. IRS penalties accumulating since May 15. File at IRS.gov → 990-N e-Postcard. Gross receipts <$50K TY2025. See [[business/sante-total]].
+
+> [!deadline] TOMORROW Wed 2026-05-20 — Vishala dress-down day
+> "Own your letter" dress-down day at MKA Brookside. Plan outfit with appropriate letter (likely "V"). See [[family/vishala]].
+
+> [!note] Calendar this week (May 19–25 confirmed from live API run 93)
+> - TODAY Tue 5/19: No events
+> - Wed 5/20 all-day: Vishala "own your letter" dress-down
+> - Wed 5/20 5:30–6:15 PM: Rec Soccer Practice (B-34 Lime), Anderson Park south near Parkside St
+> - Thu 5/21: Nehal's Birthday (send message/call)
+> - Fri 5/22 – Sat 5/23: "Friday to PA" — school conflict (Vayu + Vishala MKA school day 5/22; confirm with Aneeta)
+> - Blue Sombrero: No Vayu soccer game this week
+> - Memorial Day Mon 5/25 (6 days): cat sitter needed if family is away (Meowtel)
+> - Chase/Sante Total KYC: 16 days to deadline (2026-06-04) — contact Pavel Manrique
 
 ## Related
 - [[FAMILY]] - Household overview and family member profiles
@@ -556,3 +577,36 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] Decide when to unblock Vayu's MSI laptop (added 2026-05-17)
 > Vayu's MSI gaming laptop (`ac:19:8e:dd:29:e4` / `VayuMSILaptop`) is blocked at the UniFi controller as of 2026-05-17 ~09:33 ET — consequence for breaking the no-morning-media rule today. Context + how-to-unblock in [[vayu#2026-05-17--no-morning-media-rule-and-the-msi-laptop-block]]. **Open question for Alton (with Aneeta if relevant):** how long should the block stand — through tomorrow, through the school week, until a conversation with Vayu? Currently no auto-expiry; the block stays until manually lifted.
+
+## Latest from gather (2026-05-17) — run 84
+
+> [!deadline] TODAY 2026-05-17 — ACT NOW
+> **Disney ADR window OPEN.** 60-day booking window for July 16 Disneyland arrival opened today. Contact [[people/nicol-stevenson|Nicol Stevenson]] immediately: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. Communicate: (a) character dining choice — Plaza Inn Minnie breakfast or Storyteller's Mickey morning (Vasu age 4), (b) Blue Bayou Saturday confirmation, (c) DTF Thursday headcount 5. Popular venues (Blue Bayou, character dining) book within hours. See [[family/disney-july-2026]].
+
+> [!warning] 2026-05-22 — PA trip conflicts with MKA school day
+> "Friday to PA" (Family calendar, Aneeta created 2026-05-16) spans May 22–23. May 22 is a standard MKA school day for [[family/vayu|Vayu]] (age 10) and [[family/vishala|Vishala]] (age 8). Clarify logistics: early dismissal, excused absence, or adults-only trip. Also: cats Loki, Ghosty, Pickle need sitter for Memorial Day weekend (May 22–25) if family is away. Book Meowtel if needed.
+
+## Latest from gather (2026-05-19) — run 97
+
+> [!fact] NEW — "Boston trip" (Wed 5/27 – Fri 5/29) on Family calendar
+> All-day Family calendar event created by Alton (alto84@gmail.com) on 2026-04-28. Has been on the calendar for 3 weeks but was outside the 7-day query window in all prior runs. No description, location, or attendees. First captured in run 97 (2026-05-19).
+>
+> Back-to-back with PA trip (5/22–5/23). That's two family trips in one week.
+
+> [!warning] Boston trip — school conflict and logistics unresolved (8 days)
+> - **MKA school conflict:** Memorial Day is Mon 5/25. MKA resumes Tue 5/27. If [[family/vayu|Vayu]] (age 10) and [[family/vishala|Vishala]] (age 8) are included, all 3 trip days (5/27–5/29) are school days.
+> - **Vasu:** Goddard School also in session 5/27–5/29. If [[family/vasu|Vasu]] (age 4) is included, Goddard logistics needed.
+> - **Cat sitter — two windows:** Loki, Ghosty, and Pickle need Meowtel coverage for both PA trip (5/22–5/23) AND Boston trip (5/27–5/29). If family is home for Memorial Day (5/25), that's three back-to-back coverage decisions.
+> - **Confirm with Aneeta:** Who is going on Boston trip? Kids included or adults-only? School absences or adults-only?
+> See [[family/family-calendar]] for full May 19–30 calendar view.
+
+## Latest from gather (2026-05-20) — run 98
+
+> [!warning] TODAY — Vishala dress-down + Soccer Practice (both today)
+> Two logistics items active today: (1) Vishala "own your letter" dress-down at MKA Brookside (all-day — confirm outfit with "V"). (2) Rec Soccer Practice B-34 Lime at 5:30–6:15 PM, Anderson Park (south side near Parkside St). See [[family/vishala]] and [[family/vayu]].
+
+> [!warning] NEW CONFLICT — Boston trip (5/27) vs Rec Soccer Practice (5/27 5:30 PM)
+> Family calendar has both "Boston trip" (all-day, starts 5/27) AND "Rec Soccer Practice B-34 Lime" (5:30–6:15 PM, Anderson Park) on **Wednesday May 27.** If the family departs for Boston on May 27, [[family/vayu|Vayu]] misses practice. Separate from the MKA school-day conflict (MKA resumes Tue 5/27 after Memorial Day). Confirm trip departure timing with Aneeta. See [[family/vayu]] and [[family/family-calendar]].
+
+> [!note] Disney ADR — Day 4 of open window (status unknown — Gmail gap)
+> 60-day ADR window for July 16–19 Disneyland trip opened May 17. Today is Day 4. Blue Bayou and character dining typically book within 24–72h — risk is now elevated. Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. Status unconfirmed due to Gmail gap (run 27 consecutive). See [[family/disney-july-2026]].

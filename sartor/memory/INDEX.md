@@ -1,5 +1,5 @@
 # Sartor Memory Index
-## Last Updated: 2026-05-14 03:08
+## Last Updated: 2026-05-20 03:04
 
 ## Core Memory
 - [ALTON.md](ALTON.md) — Alton - User Profile
@@ -25,18 +25,19 @@
 - [reference_solar_project.md](reference_solar_project.md) — 85 Stonebridge Solar Project — canonical reference
 
 ## Recent Activity
+- [2026-05-20.md](daily/2026-05-20.md) — Daily Log — 2026-05-20 (Wednesday)
+- [2026-05-19.md](daily/2026-05-19.md) — Daily Log — 2026-05-19 (Tuesday)
+- [2026-05-18.md](daily/2026-05-18.md) — Daily Log — 2026-05-18 (Monday)
+- [2026-05-17.md](daily/2026-05-17.md) — Daily Log — 2026-05-17 (Sunday)
+- [2026-05-16.md](daily/2026-05-16.md) — Daily Log — 2026-05-16
+- [2026-05-15.md](daily/2026-05-15.md) — Daily Log — 2026-05-15
+- [2026-05-14.md](daily/2026-05-14.md) — Daily Log — 2026-05-14
 - [2026-05-13.md](daily/2026-05-13.md) — Daily Log — 2026-05-13
 - [2026-05-12.md](daily/2026-05-12.md) — Daily Log -- 2026-05-12
 - [2026-05-11.md](daily/2026-05-11.md) — Daily Log — 2026-05-11 (Monday after Mother's Day)
-- [2026-05-10.md](daily/2026-05-10.md) — Daily Log — 2026-05-10 (Mother's Day)
-- [2026-05-08.md](daily/2026-05-08.md) — Daily Log — 2026-05-08
-- [2026-05-08-overnight-status.md](daily/2026-05-08-overnight-status.md) — Overnight status — 2026-05-08 evening through 2026-05-09 dawn
-- [2026-05-07.md](daily/2026-05-07.md) — Daily Log — 2026-05-07
-- [2026-05-06.md](daily/2026-05-06.md) — Daily Log — 2026-05-06
-- [2026-05-05.md](daily/2026-05-05.md) — Daily Log — 2026-05-05 (Tuesday)
-- [2026-05-04.md](daily/2026-05-04.md) — Daily Log — 2026-05-04
 
 ## Research & Snapshots
 - [GOAL.md](research/GOAL.md) — Research Goal — smaller model takes household identity
 - [INDEX.md](research/INDEX.md) — Research — single roof
+- [REPLAN-2026-05-12.md](research/REPLAN-2026-05-12.md) — Replan — 2026-05-12 directive
 - [experiments-index.md](research/experiments-index.md) — Experiments index
