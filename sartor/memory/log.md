@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-22
 updated_by: personal-data-gather
-run: 109
+run: 110
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -552,3 +552,10 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: no new events vs run 108 (Family: PA trip 5/22–5/23, Boston trip 5/27–5/30; Aneeta empty; Blue Sombrero empty; Tasks empty)
 - P0 carries unchanged: 990-N 7 days overdue; Disney ADR Day 7
 - Pages updated: `daily/2026-05-22.md` (run 109 appended, frontmatter bumped), `family/active-todos.md` (run 109 section appended, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (created fresh), `data/heartbeat-log.csv` (created fresh)
+
+## [2026-05-22] ingest | personal-data-gather run 110: Guidepoint Biosimulation AI; Vayu screen time; 5 calendars
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 22–29). No SSH (web runner).
+- New facts: Guidepoint #1733233 (Biosimulation Software/Service Market, AI use cases) — ACTION_REQUIRED, 24-48h window; Alton's AZ conflict-of-interest must be reviewed before accepting. Vayu screen time 8h41m May 15-21 (informational). Goddard Unit 9 Week 2 newsletter (Goodnight Gorilla, informational). LinkedIn AI/DS director roles at J&J MedTech and Amgen (informational).
+- Calendar: no new events vs run 109 (Family: PA trip 5/22–5/23 confirmed underway, Boston trip 5/27–5/30; all others empty)
+- P0 carries escalated: 990-N now 8 days overdue; Disney ADR Day 8
+- Pages updated: `daily/2026-05-22.md` (run 110 appended, frontmatter bumped), `family/active-todos.md` (run 110 section prepended, frontmatter bumped), `log.md` (this entry), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (created)

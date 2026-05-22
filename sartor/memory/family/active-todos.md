@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-22
 updated_by: personal-data-gather
-run: 109
+run: 110
 
 status: active
 priority: p1
@@ -343,6 +343,24 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Vasu at Goddard — bugs/insects week
 > Three Kaymbu classroom moments today: "Creepy Crawly Patterns" (insect manipulatives + play doh), "CONSTRUCTION: insect houses" (nonfiction books + building), "Hugs from friends." [[family/vasu|Vasu]] appears engaged. No action needed.
+
+## Latest from gather (2026-05-22) — run 110
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1733233 (respond within 24–48h)
+> Guidepoint Network request from Alvi Rahman (alvi.rahman@guidepointglobal.com, +1 646-688-4846).
+> Topic: **Biosimulation Software/Service Market** — client seeking experts familiar with AI use cases, disruption, and opportunities in biosimulation services/software.
+> Directly aligned with [[ASTRAZENECA|Alton's AZ role]] (Senior Medical Director, AI Innovation and Validation, Global Patient Safety).
+> **Conflict of interest:** cannot discuss Biogen products; AZ listed as current employer in profile — review carefully before accepting.
+> Accept or decline ASAP; consultations scheduled within 24–48h. See [[ALTON]] for advisory log.
+
+> [!note] Vayu screen time week of May 15–21: 8 hr 41 min
+> Microsoft Family Safety report (2026-05-22). Informational. See [[family/vayu]].
+
+> [!warning] P0 carry-forward — Sante Total Form 990-N OVERDUE 8 days
+> Not filed per runs 22–110. File at IRS.gov → 990-N e-Postcard. See [[business/sante-total]].
+
+> [!warning] P0 carry-forward — Disney ADR Day 8 (Blue Bayou at high risk)
+> Contact Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. See [[family/disney-july-2026]].
 
 ## Latest from gather (2026-05-22) — run 109
 
