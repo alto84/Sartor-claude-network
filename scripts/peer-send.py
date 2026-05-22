@@ -123,10 +123,14 @@ def ssh_args(peer: dict, *extra: str) -> list[str]:
 
 
 def run(cmd: list[str], timeout: int = 30, check: bool = False, stdin_data: str | None = None) -> subprocess.CompletedProcess:
+    # encoding=utf-8 + errors=replace so Windows cp1252 default doesn't choke on
+    # peer Claude's TUI unicode (✻ ⏵⏵ etc.) in capture-pane output.
     return subprocess.run(
         cmd,
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         timeout=timeout,
         check=check,
         input=stdin_data,
@@ -223,17 +227,43 @@ def judge_content(text: str) -> list[str]:
 
 
 def send_light(peer_name: str, peer: dict, text: str) -> None:
-    """Direct tmux send-keys for short message."""
+    """Direct tmux send-keys for short message.
+
+    SSH concats argv through `sh -c`, so the text must be shell-quoted on
+    the local side OR delivered via a remote temp file. We use the temp-file
+    path: it handles parens, dollar signs, backticks, apostrophes, newlines
+    without any local escaping (the "file-not-heredoc" rule from peer-comms
+    SKILL, applied to short sends too).
+    """
     info(f"light send → {peer_name} ({len(text)} chars)")
-    # Step 1: text into tmux
-    r = run(ssh_args(peer, "tmux", "send-keys", "-t", f"{peer['tmux_session']}:0", text), timeout=15)
-    if r.returncode != 0:
-        die(f"tmux send-keys (text) failed: {r.stderr.strip()}", code=20)
-    # Step 2: C-m to submit (critical — see peer-comms SKILL line 57)
-    time.sleep(0.5)
-    r = run(ssh_args(peer, "tmux", "send-keys", "-t", f"{peer['tmux_session']}:0", "C-m"), timeout=15)
-    if r.returncode != 0:
-        die(f"tmux send-keys (C-m) failed: {r.stderr.strip()}", code=20)
+    # Write text to local temp file, scp to peer, then tmux send-keys "$(cat tempfile)"
+    ts = int(time.time())
+    with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8") as tf:
+        tf.write(text)
+        local_tmp = tf.name
+    remote_tmp = f"/tmp/peer-send-{ts}.txt"
+    try:
+        r = run(["scp", "-o", "ConnectTimeout=10", "-o", "BatchMode=yes",
+                 local_tmp, f"{peer['ssh_user']}@{peer['ssh_host']}:{remote_tmp}"], timeout=20)
+        if r.returncode != 0:
+            die(f"scp of text failed: {r.stderr.strip()}", code=20)
+        # Step 1: read remote file into tmux pane — single arg, no shell-quoting issue
+        cmd = f'tmux send-keys -t {shlex.quote(peer["tmux_session"] + ":0")} "$(cat {shlex.quote(remote_tmp)})"'
+        r = run(ssh_args(peer, cmd), timeout=15)
+        if r.returncode != 0:
+            die(f"tmux send-keys (text) failed: {r.stderr.strip()}", code=20)
+        # Step 2: C-m to submit (critical — peer-comms SKILL line 57; Enter as literal won't submit)
+        time.sleep(0.5)
+        r = run(ssh_args(peer, "tmux", "send-keys", "-t", f"{peer['tmux_session']}:0", "C-m"), timeout=15)
+        if r.returncode != 0:
+            die(f"tmux send-keys (C-m) failed: {r.stderr.strip()}", code=20)
+        # Step 3: clean up remote temp (best effort)
+        run(ssh_args(peer, "rm", "-f", remote_tmp), timeout=10)
+    finally:
+        try:
+            os.unlink(local_tmp)
+        except OSError:
+            pass
 
 
 def send_heavy(peer_name: str, peer: dict, text: str, slug: str) -> str:
