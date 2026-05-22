@@ -7,6 +7,17 @@ description: Use when about to send work to a peer machine (rtxpro6000server / g
 
 The protocol that makes cross-machine work auditable instead of ad-hoc. Each peer (rtxpro6000server, gpuserver1) runs its own local Claude in a persistent tmux session. You drive from Rocinante. Substrate is shared git, not shared filesystem.
 
+## Default path (2026-05-22 onward): use `/peer-send` or `scripts/peer-send.py`
+
+For routine sends, do NOT walk through the manual ceremony below. Use:
+
+- **Slash command** (interactive): `/peer-send rtxserver "your message here"`
+- **Script** (composable from Bash tool / cron / agents): `python scripts/peer-send.py rtxserver "your message here"` or `--from-file <path>`
+
+The script handles preflight + OAuth refresh + tmux recovery + light/heavy path routing + `C-m` submit + capture-pane ack + JSONL audit log. Exit code 0 on visible-processing ack. See design at `sartor/memory/projects/peer-comms-streamlining-2026-05-22.md`.
+
+The manual ceremony below is documented for **debugging when the script fails** and for understanding the constitutional structure (peers are NOT subagents — Constitution §14). Don't replicate it by hand unless you're debugging.
+
 ## When this applies
 
 Invoke when you are about to:

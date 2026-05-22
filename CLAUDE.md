@@ -158,7 +158,7 @@ Operational specifics that aren't in the Constitution:
 
 ## Discipline
 
-Four working principles, applied to code, plans, memory edits, and agent dispatch alike.
+Five working principles, applied to code, plans, memory edits, and agent dispatch alike.
 
 1. **Think before acting.** State assumptions explicitly. If multiple interpretations exist, present them; don't pick silently. If something is unclear, name what's confusing and ask. If a simpler approach exists, say so.
 
@@ -167,6 +167,8 @@ Four working principles, applied to code, plans, memory edits, and agent dispatc
 3. **Surgical changes.** Touch only what serves the request. Match existing style. Don't refactor what isn't broken. Don't "improve" adjacent code, comments, or formatting. **Every changed line should trace directly to the user's request.** When you notice unrelated dead code or stale memory, mention it; don't delete it. When your changes create orphans (unused imports, variables, references), remove those orphans, but leave pre-existing dead code alone unless asked.
 
 4. **Goal-driven execution.** Before starting non-trivial work, name the success criterion. Transform vague asks into verifiable goals: "Add validation" → "write tests for invalid inputs, then make them pass." For multi-step tasks, state a brief plan with verify-steps. Loop until the criterion is met, not until you feel done. The `superpowers:verification-before-completion` and `superpowers:test-driven-development` skills are the operating versions of this principle.
+
+5. **Always planning to build.** Investigation is Phase 1 of construction, not a separate deliverable. When a problem is treated as a project — subagents dispatched, findings captured in `sartor/memory/projects/`, decision points listed — the default next step is to build the recommended design. Wait for Alton's explicit greenlight only on irreversible blast (Constitution §7) or specific open decisions he was asked to call. Otherwise proceed past the design doc into implementation without a second "should we?" round-trip.
 
 The full text of these principles, with examples, lives in `sartor/memory/feedback/scope-discipline.md` and `sartor/memory/feedback/goal-driven-execution.md`.
 
