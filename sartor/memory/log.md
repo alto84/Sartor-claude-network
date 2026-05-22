@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-22
 updated_by: personal-data-gather
-run: 110
+run: 111
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -559,3 +559,10 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: no new events vs run 109 (Family: PA trip 5/22–5/23 confirmed underway, Boston trip 5/27–5/30; all others empty)
 - P0 carries escalated: 990-N now 8 days overdue; Disney ADR Day 8
 - Pages updated: `daily/2026-05-22.md` (run 110 appended, frontmatter bumped), `family/active-todos.md` (run 110 section prepended, frontmatter bumped), `log.md` (this entry), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (created)
+
+## [2026-05-22] ingest | personal-data-gather run 111: Cadoo Medical bill $765.21; Vasu soccer extended June 22; MKA Magnus Health reminder
+- Sources: Gmail newer_than:4h (16 threads), all 5 Google Calendars (May 22–29). No SSH (web runner).
+- New facts: Cadoo Medical bill $765.21 addressed to "EMMETT" at alto84@gmail.com — ACTION_REQUIRED, verify identity before paying; Vasu Goddard soccer extended to June 22 due to Memorial Day closure; MKA Magnus Health 2026-2027 forms now open (reinforcing existing run 97 callout, not duplicated). LinkedIn DSPV/AI roles (informational). Hiive market digest (informational).
+- Calendar: no new events vs run 110 (Family: PA trip 5/22–5/23, Boston trip 5/27–5/30; all others empty)
+- P0 carries: 990-N 8 days overdue; Disney ADR Day 8 end-of-day
+- Pages updated: `daily/2026-05-22.md` (run 111 appended), `family/active-todos.md` (Cadoo bill callout appended), `family/vasu.md` (soccer extension appended), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)

@@ -2,7 +2,7 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-05-07
+updated: 2026-05-22
 updated_by: personal-data-gather
 status: active
 tags: [entity/person, domain/family, status/active]
@@ -215,3 +215,8 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!deadline] 2026-05-08 TODAY
 > **Vasu Mother's Day Celebration — Goddard School, TODAY.** Kaymbu announcement (Samantha Ramsden, noreply@kaymbu.com, 2026-05-07 20:00 UTC): "Our Mother's Day celebration is TOMORROW!" No time specified — confirm with school or check Kaymbu. Attendance expected from parents/guardians. Aneeta's calendar shows no dedicated coverage event today; Alton should plan to attend or coordinate. See [[family/active-todos]].
+
+## Latest from gather (2026-05-22) — run 111
+
+> [!fact] Goddard soccer extended to June 22, 2026
+> Message from Jacqueline Capote (Goddard admin, 2026-05-22 6:24 PM ET): "Soccer extended one more week! Due to Monday's Memorial Day school closure, soccer will now be ending on June 22nd." Prior assumed end date was June 15 or earlier. Updated end date: **2026-06-22**. See [[family/active-todos]] and [[family/family-calendar]].

@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-22
 updated_by: personal-data-gather
-run: 110
+run: 111
 
 status: active
 priority: p1
@@ -708,3 +708,10 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Disney ADR — Day 4 of open window (status unknown — Gmail gap)
 > 60-day ADR window for July 16–19 Disneyland trip opened May 17. Today is Day 4. Blue Bayou and character dining typically book within 24–72h — risk is now elevated. Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. Status unconfirmed due to Gmail gap (run 27 consecutive). See [[family/disney-july-2026]].
+
+## Latest from gather (2026-05-22) — run 111
+
+> [!warning] VERIFY BEFORE PAYING — Cadoo Medical PC bill $765.21 (received 2026-05-22)
+> Tebra billing platform (noreply@tebra.com) sent a balance statement to alto84@gmail.com, but the bill is addressed to "EMMETT" — not a recognized name in the household. Practice: Cadoo Medical PC, (973) NJ area code. Amount: **$765.21**. A second email in the same inbox batch (NJ Pride FC marketing) also used "Hi Emmett!" — possible alias or list contamination associated with this Gmail address.
+> Action: Confirm whether this bill is for a household member or a misdirected email before paying. If legitimate, route to appropriate payer.
+> Route: [[ALTON]]
