@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-22
 updated_by: personal-data-gather
-run: 108
+run: 109
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -545,3 +545,10 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Carry-forward P0: 990-N 7 days overdue; Disney ADR Day 6
 - No new deadlines; MKA cafeteria debit is passive/informational unless account is thin
 - Pages updated: `daily/2026-05-22.md` (created), `family/active-todos.md` (run 108 appended, frontmatter bumped), `family/vayu.md` (MKA cafeteria fact appended, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-22] ingest | personal-data-gather run 109: MKA newsletter; Shakespeare Project conflict; Vishala June 5 closing; INVESCO proxy x2
+- Sources: Gmail newer_than:6h (4 threads), all 5 Google Calendars (May 22–29). No SSH (web runner).
+- New facts: WeAreMKA Veracross newsletter (May 22) extracted — Shakespeare Project May 29–30 conflicts with Boston trip; Vishala Third Grade Closing Exercises June 5 (parent event); Wacky Wednesday Dress Down June 3; STEM+ Summer Camp Open House May 30. INVESCO proxy vote notices x2 (informational/financial). USPS 0 mail today.
+- Calendar: no new events vs run 108 (Family: PA trip 5/22–5/23, Boston trip 5/27–5/30; Aneeta empty; Blue Sombrero empty; Tasks empty)
+- P0 carries unchanged: 990-N 7 days overdue; Disney ADR Day 7
+- Pages updated: `daily/2026-05-22.md` (run 109 appended, frontmatter bumped), `family/active-todos.md` (run 109 section appended, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (created fresh), `data/heartbeat-log.csv` (created fresh)

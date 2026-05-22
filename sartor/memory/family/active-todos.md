@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-22
 updated_by: personal-data-gather
-run: 108
+run: 109
 
 status: active
 priority: p1
@@ -343,6 +343,26 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Vasu at Goddard — bugs/insects week
 > Three Kaymbu classroom moments today: "Creepy Crawly Patterns" (insect manipulatives + play doh), "CONSTRUCTION: insect houses" (nonfiction books + building), "Hugs from friends." [[family/vasu|Vasu]] appears engaged. No action needed.
+
+## Latest from gather (2026-05-22) — run 109
+
+> [!warning] CONFLICT — Shakespeare Project MKA May 29–30 vs Boston Trip
+> WeAreMKA newsletter (2026-05-22) lists **Shakespeare Project at MKA — Friday May 29 + Saturday May 30** under Primary School updates. Family calendar has Boston trip **May 27 – May 30** (all-day). If [[family/vayu|Vayu]] (4th grade) or [[family/vishala|Vishala]] (3rd grade) have roles in the Shakespeare Project, there is a direct conflict. Clarify with school whether kids are performing. Source: Veracross WeAreMKA newsletter.
+
+> [!deadline] 2026-06-05 — Parent event: Vishala Third Grade Closing Exercises
+> WeAreMKA newsletter: **Third Grade Closing Exercises — Friday, June 5.** [[family/vishala|Vishala]] is in 3rd grade. Mark calendar; plan to attend. Same day as Upper School Awards Assembly (US only, not relevant). Source: Veracross WeAreMKA newsletter.
+
+> [!todo] 2026-06-03 — Wacky Wednesday Dress Down Day
+> WeAreMKA newsletter: **Wacky Wednesday Community Dress Down Day — Wednesday, June 3.** Plan outfits for [[family/vayu|Vayu]] and [[family/vishala|Vishala]]. Source: Veracross WeAreMKA newsletter.
+
+> [!note] INVESCO proxy votes x2 (2026-05-22) — review at leisure
+> Two proxy-vote / shareholder-materials notices from id@proxyvote.com: 08:26 ET and 09:36 ET. Subject: "INVESCO Important Information." No hard deadline in email snippet. Review proxy materials via proxyvote.com and vote or discard. Category: FINANCIAL. See [[ALTON]].
+
+> [!warning] P0 carry-forward — Sante Total Form 990-N OVERDUE 7 days
+> Not filed per runs 22–109. File at IRS.gov → 990-N e-Postcard. See [[business/sante-total]].
+
+> [!warning] P0 carry-forward — Disney ADR Day 7 (Blue Bayou at risk)
+> Contact Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. See [[family/disney-july-2026]].
 
 ## Latest from gather (2026-05-16) — run 80
 
