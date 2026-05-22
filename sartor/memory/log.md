@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-21
+updated: 2026-05-22
 updated_by: personal-data-gather
-run: 107
+run: 108
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -537,3 +537,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - SNO 2026 abstract deadline May 26: SKIP (already decided NOT SUBMITTING per 2026-04-16 triage)
 - Alerts: P0 — Field Day conflict (decide today); Magnus Health records (enrollment-blocking); PatientGateway questionnaire; carry-forward P0 overdue items (990-N, Wohelo, boiler vote, Disney ADR day 5)
 - Files touched: `daily/2026-05-21.md` (run 107 appended, frontmatter bumped), `family/active-todos.md` (run 107 section appended), `data/gather-alerts.md` (overwritten with live data), `data/heartbeat-log.csv` (run 107 entry appended), `log.md` (this entry)
+
+## [2026-05-22] ingest | personal-data-gather run 108: Gmail+Calendar live; PA trip underway; MKA cafeteria auto-debit; P0s carry-forward
+- Sources: Gmail (30 unread threads, newer_than:2d), all 5 calendars (May 22–29). No SSH (web runner).
+- Calendar: PA trip active today (5/22–5/23), Boston trip 5/27–5/29, Memorial Day 5/25, no soccer events, Aneeta cal empty
+- New facts: MKA MyKidsSpending cafeteria auto-debit ~$100 (Chase 8563, within 48h); Reed reunion meal-ticket soft deadline 5/27; Window AC thread closed (Oana/Harvard — resolved); Amazon pool chemicals shipped; Vasu Goddard normal day
+- Carry-forward P0: 990-N 7 days overdue; Disney ADR Day 6
+- No new deadlines; MKA cafeteria debit is passive/informational unless account is thin
+- Pages updated: `daily/2026-05-22.md` (created), `family/active-todos.md` (run 108 appended, frontmatter bumped), `family/vayu.md` (MKA cafeteria fact appended, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)

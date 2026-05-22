@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-20
+updated: 2026-05-22
 updated_by: personal-data-gather
-run: 98
+run: 108
 
 status: active
 priority: p1
@@ -283,6 +283,29 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - [[vasu]] - Vasu-specific deep profile
 - [[family-calendar]] - Full 30-day calendar view
 - [[ALTON]] - Head of household
+
+## Latest from gather (2026-05-22) — run 108
+
+> [!fact] PA trip underway today (5/22–5/23)
+> "Friday to PA" confirmed on Family calendar. All-day event through Sat 5/23. Field Day conflict decision was yesterday — assumed resolved per Alton.
+
+> [!todo] MKA cafeteria account — Vayu auto-debit incoming (~$100)
+> Two emails from statements@mykidsspending.com at midnight (2026-05-22 00:00–00:07 AM ET):
+> (1) Chase account ending **8563** will be debited **~$100** "within the next day or two" to fund [[family/vayu|Vayu]]'s MKA cafeteria (MyKidsSpending) account.
+> (2) A MyKidsSpending portal account has been created for Vayu — manage at mykidsspending.com.
+> No immediate action unless $100 debit would cause account issues. Consider logging in to set spending limits or monitor balance.
+
+> [!warning] P0 carry-forward — Sante Total Form 990-N OVERDUE 7 days
+> Not filed per runs 22–108. File at IRS.gov → 990-N e-Postcard. Gross receipts <$50K TY2025. See [[business/sante-total]].
+
+> [!warning] P0 carry-forward — Disney ADR Day 6 (Blue Bayou at risk)
+> Contact Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. See [[family/disney-july-2026]].
+
+> [!note] Boston trip 5/27–5/29 — school conflicts still open
+> Family calendar has Boston trip Wed 5/27 – Fri 5/29. School days for Vayu + Vishala (MKA). Confirm plan with Aneeta.
+
+> [!note] Reed reunion soft deadline — meal tickets end 2026-05-27
+> Alton's Reed College reunion: dorms nearly full, meal ticket sales close May 27 at midnight PST. Optional. No action unless attending.
 
 ## Latest from gather (2026-05-21) — run 107
 

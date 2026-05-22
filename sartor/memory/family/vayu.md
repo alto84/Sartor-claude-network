@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-05-08
+updated: 2026-05-22
 updated_by: personal-data-gather
-run: 67
+run: 108
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -32,6 +32,14 @@ Alton + Aneeta's oldest child. Age 10. Attends Montclair Kimberley Academy (MKA)
 
 > [!todo]
 > **Counselor / therapist search** — explosive ADHD/ODD specialization (not autism-focused). No email signal in last 30 days. May be via phone/text with Aneeta. Needs confirmation.
+
+## Latest from gather (2026-05-22) — run 108
+
+> [!fact] MKA cafeteria (MyKidsSpending) account — auto-debit incoming
+> Two emails from statements@mykidsspending.com (2026-05-22 midnight):
+> - Chase account ending **8563** will be debited **~$100** "within next day or two" to fund Vayu's school cafeteria account at MKA
+> - MyKidsSpending portal account created for Vayu; login available at mykidsspending.com
+> No action required unless account balance needs review.
 
 ## Middle school context
 
