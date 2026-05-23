@@ -12,17 +12,60 @@ Output: ../network-dashboard.html (one level up from this script's dir, so
 sartor/memory/wifi/network-dashboard.html). Open via file:// in any browser.
 """
 import json
+import re
 import ssl
 import subprocess
 import urllib.request
 import http.cookiejar
 from datetime import datetime, timezone
 from pathlib import Path
-from collections import defaultdict
+from collections import defaultdict, Counter
 from html import escape
 
 OUT = Path(__file__).resolve().parent.parent / 'network-dashboard.html'
-CTRL = 'https://192.168.1.171:8443'
+# localhost: controller runs on Rocinante; future-proof vs Rocinante DHCP shifts
+# (this script always runs ON Rocinante, so 127.0.0.1 is always correct).
+CTRL = 'https://127.0.0.1:8443'
+
+
+def ping_latency(host: str, count: int = 5, timeout_ms: int = 1500) -> dict:
+    """Returns {min, avg, max, loss_pct} or {error: <reason>}."""
+    try:
+        r = subprocess.run(
+            ['ping', '-n', str(count), '-w', str(timeout_ms), host],
+            capture_output=True, text=True, timeout=count * 2 + 5,
+        )
+        out = r.stdout + r.stderr
+        # Windows ping: "Lost = N (NN% loss)"
+        loss_m = re.search(r'Lost\s*=\s*\d+\s*\((\d+)%\s*loss\)', out)
+        # Windows ping summary: "Minimum = Nms, Maximum = Nms, Average = Nms"
+        stats_m = re.search(r'Minimum\s*=\s*(\d+)ms,\s*Maximum\s*=\s*(\d+)ms,\s*Average\s*=\s*(\d+)ms', out)
+        loss = int(loss_m.group(1)) if loss_m else None
+        if stats_m:
+            return {
+                'min_ms': int(stats_m.group(1)),
+                'avg_ms': int(stats_m.group(3)),
+                'max_ms': int(stats_m.group(2)),
+                'loss_pct': loss if loss is not None else 0,
+            }
+        return {'error': f'no-stats (loss={loss})', 'loss_pct': loss if loss is not None else 100}
+    except Exception as e:
+        return {'error': str(e)[:80], 'loss_pct': 100}
+
+
+def ip_conflicts(stas: list) -> list:
+    """Return list of {ip, devices: [(name, mac, kind)]} where same IP claimed by 2+ devices."""
+    by_ip = defaultdict(list)
+    for s in stas:
+        ip = s.get('ip')
+        if not ip or ip.startswith('169.254.'):  # skip APIPA
+            continue
+        by_ip[ip].append({
+            'name': s.get('hostname') or s.get('name') or '(noname)',
+            'mac': s.get('mac', ''),
+            'kind': 'wired' if s.get('is_wired') else ('wireless' if s.get('ap_mac') else 'unknown'),
+        })
+    return [{'ip': ip, 'devices': devs} for ip, devs in by_ip.items() if len(devs) > 1]
 
 pwd = subprocess.run(
     [r'C:/Users/alto8/Sartor-claude-network/scripts/sartor-secret.cmd', 'read', 'UniFi superadmin'],
@@ -227,6 +270,98 @@ html_parts.append(
     f'<div class="stamp">Generated {escape(now_local)} ({escape(now_utc)}) — auto-reload every 60 sec — '
     f'regenerated on disk every 5 min by <code>Sartor Network Dashboard</code> task</div>'
 )
+
+# ============================================================================
+# Internet Health — top-of-page "is the internet OK right now" gauge.
+# Added 2026-05-23 after gaming-lag-due-to-IP-conflict incident; this section
+# would have surfaced both the WAN latency AND the .154 collision at a glance.
+# ============================================================================
+html_parts.append('<h2>Internet health</h2>')
+
+# WAN throughput summary (Fios uplink port)
+wan_rx_mbps = port_info[fios_port]['rx_rate'] * 8 / 1e6 if fios_port else 0
+wan_tx_mbps = port_info[fios_port]['tx_rate'] * 8 / 1e6 if fios_port else 0
+wan_speed = port_info[fios_port]['speed'] if fios_port else None
+
+# Ping to 3 reference endpoints
+ping_targets = [
+    ('8.8.8.8', 'Google DNS'),
+    ('1.1.1.1', 'Cloudflare'),
+    ('208.67.222.222', 'OpenDNS'),
+]
+ping_results = [(host, label, ping_latency(host, count=4)) for host, label in ping_targets]
+
+# IP conflict scan
+conflicts = ip_conflicts(stas)
+
+# Render — three side-by-side cards
+html_parts.append('<div class="grid">')
+
+# Card 1: WAN throughput
+html_parts.append('<div>')
+html_parts.append('<h3 style="color:#fbbf24;margin:0 0 0.5em 0;">WAN throughput (Fios uplink)</h3>')
+html_parts.append('<table>')
+html_parts.append('<tr><th>Direction</th><th class="num">Now</th><th class="num">Link cap</th><th class="num">Cumulative</th></tr>')
+html_parts.append(
+    f'<tr><td>Download (rx)</td>'
+    f'<td class="num">{wan_rx_mbps:.2f} Mbps</td>'
+    f'<td class="num">{wan_speed or "-"} M</td>'
+    f'<td class="num">{fmt_bytes(port_info[fios_port]["rx_bytes"]) if fios_port else "-"}</td></tr>'
+)
+html_parts.append(
+    f'<tr><td>Upload (tx)</td>'
+    f'<td class="num">{wan_tx_mbps:.2f} Mbps</td>'
+    f'<td class="num">{wan_speed or "-"} M</td>'
+    f'<td class="num">{fmt_bytes(port_info[fios_port]["tx_bytes"]) if fios_port else "-"}</td></tr>'
+)
+html_parts.append('</table>')
+html_parts.append('</div>')
+
+# Card 2: WAN latency
+html_parts.append('<div>')
+html_parts.append('<h3 style="color:#fbbf24;margin:0 0 0.5em 0;">WAN latency (this generation pass)</h3>')
+html_parts.append('<table>')
+html_parts.append('<tr><th>Endpoint</th><th class="num">min</th><th class="num">avg</th><th class="num">max</th><th class="num">loss</th></tr>')
+for host, label, r in ping_results:
+    if 'error' in r:
+        html_parts.append(
+            f'<tr><td>{escape(label)} <span class="dim">{host}</span></td>'
+            f'<td colspan="4" class="crit">{escape(r["error"])}</td></tr>'
+        )
+        continue
+    loss = r.get('loss_pct', 0)
+    avg = r.get('avg_ms', 0)
+    avg_cls = 'crit' if avg > 50 else ('ok' if avg < 15 else '')
+    loss_cls = 'crit' if loss > 0 else 'ok'
+    html_parts.append(
+        f'<tr><td>{escape(label)} <span class="dim">{host}</span></td>'
+        f'<td class="num">{r["min_ms"]}ms</td>'
+        f'<td class="num {avg_cls}">{avg}ms</td>'
+        f'<td class="num">{r["max_ms"]}ms</td>'
+        f'<td class="num {loss_cls}">{loss}%</td></tr>'
+    )
+html_parts.append('</table>')
+html_parts.append('</div>')
+html_parts.append('</div>')  # end grid
+
+# IP conflict alert — full width
+if conflicts:
+    html_parts.append('<div style="background:#7f1d1d;border:2px solid #fca5a5;padding:1em;border-radius:8px;margin:1em 0;">')
+    html_parts.append('<h3 style="color:#fff;margin:0 0 0.5em 0;">⚠ IP CONFLICT DETECTED</h3>')
+    html_parts.append('<table style="background:transparent;">')
+    html_parts.append('<tr><th style="background:#991b1b;">IP</th><th style="background:#991b1b;">Devices fighting for it</th></tr>')
+    for c in conflicts:
+        devices_str = ', '.join(f'{d["name"]} ({d["mac"][-8:]}, {d["kind"]})' for d in c['devices'])
+        html_parts.append(f'<tr><td><strong>{escape(c["ip"])}</strong></td><td>{escape(devices_str)}</td></tr>')
+    html_parts.append('</table>')
+    html_parts.append('<p style="color:#fecaca;margin:0.5em 0 0 0;font-size:0.85em;">'
+                     'Each conflict causes ARP flapping, TCP retransmits, and UDP packet drops — classic gaming/streaming lag. '
+                     'Resolve by: (a) <code>ipconfig /release</code> + <code>/renew</code> on the colliding host to get a new IP, '
+                     '(b) set a DHCP reservation on the Fios CR1000A for the canonical-owner MAC, or '
+                     '(c) shorten the DHCP lease time so collisions self-resolve faster.</p>')
+    html_parts.append('</div>')
+else:
+    html_parts.append('<p class="ok" style="margin:0.5em 0;">✓ No IP conflicts detected on the LAN.</p>')
 
 html_parts.append('<h2>Topology</h2>')
 html_parts.append(f'<div class="mermaid">\n{escape(mermaid_text)}\n</div>')
