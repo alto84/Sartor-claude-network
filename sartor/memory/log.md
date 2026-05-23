@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-23
 updated_by: personal-data-gather
-run: 113
+run: 114
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -580,3 +580,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - All other threads/calendar events match run 112 data exactly — deduplicated, not re-routed.
 - P0 carries: 990-N 8 days overdue (unchanged); Disney ADR Day 7+ (unchanged).
 - Pages updated: `daily/2026-05-23.md` (run 113 section appended, frontmatter bumped), `family/active-todos.md` (Berman $6K warning callout prepended to run 113 section, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/heartbeat-log.csv` (run 113 line appended), `data/gather-alerts.md` (refreshed with full current alert state)
+
+## [2026-05-23] ingest | personal-data-gather run 114: sleepover time correction; Hiive Anthropic new low ask; HTH pool delivery
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 23–30). No SSH (web runner). Third run today.
+- New facts: (1) DATA CORRECTION — Vishala sleepover (May 30–31): start is 5 PM ET, not 9 PM as run 112 recorded; end is noon, not 4 PM. Calendar API authoritative. (2) FINANCIAL — Hiive: Anthropic secondary market new low ask $1,250/share (4 sell orders $1,250–$1,600; 1 match); Alton on watchlist. (3) FAMILY INFO — Amazon HTH 67121 pool chemicals delivered 2026-05-22; on hand at 85 Stonebridge.
+- Calendar: no new events vs run 112/113. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: 990-N 8 days overdue (unchanged); Disney ADR Day 7 (unchanged).
+- Pages updated: `daily/2026-05-23.md` (run 114 appended), `family/vishala.md` (time correction appended, run bumped to 114), `family/family-calendar.md` (time correction appended, run bumped to 114), `family/active-todos.md` (run 114 section appended), `ALTON.md` (Hiive/Anthropic note appended), `log.md` (this entry, run bumped to 114), `data/heartbeat-log.csv` (run 114 line appended), `data/gather-alerts.md` (refreshed)
+- KEY: Vishala sleepover logistics need 5 PM drop-off (4h earlier than previously flagged). Berman $6K Lutron payment still open. 990-N overdue.

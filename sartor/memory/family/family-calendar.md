@@ -3,7 +3,7 @@ type: domain
 entity: family-calendar
 updated: 2026-05-23
 updated_by: personal-data-gather
-run: 112
+run: 114
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -676,3 +676,17 @@ Week of May 19–30 (confirmed from live API, run 97):
 > | Mon 5/25 | all-day | Memorial Day | — | Goddard CLOSED (confirmed). MKA closed. |
 > | Wed 5/27 – Fri 5/29 | all-day | Boston trip | Family | T-4 days; school/cat logistics unresolved |
 > | Sat 5/30, 9 PM – Sun 5/31, 4 PM | overnight | Vishala sleepover (Amia) | Family | NEW |
+
+## Latest from gather (2026-05-23) — run 114
+
+> [!fact] CORRECTION — Vishala sleepover times: 5 PM–noon (not 9 PM–4 PM as run 112 stated)
+> Live Calendar API (run 114) returns: start 2026-05-30 **17:00 ET (5 PM)**, end 2026-05-31 **12:00 ET (noon)**.
+> Run 112 recorded 21:00 ET (9 PM) / 16:00 ET (4 PM) — those were incorrect. Calendar API is authoritative.
+> Drop-off at 5 PM Saturday; pickup at noon Sunday. See [[family/vishala]].
+
+> [!note] Week of May 25–31 — CORRECTED (run 114)
+> | Date | Time | Event | Calendar | Notes |
+> |------|------|-------|----------|-------|
+> | Mon 5/25 | all-day | Memorial Day | — | Goddard CLOSED (confirmed). MKA closed. |
+> | Wed 5/27 – Fri 5/29 | all-day | Boston trip | Family | School/cat logistics unresolved |
+> | **Sat 5/30, 5 PM – Sun 5/31, noon** | **overnight** | **Vishala sleepover (Amia)** | **Family** | **CORRECTED: was 9 PM–4 PM; actual is 5 PM–noon** |

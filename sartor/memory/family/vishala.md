@@ -4,7 +4,7 @@ entity: vishala
 name: "Vishala Sartor"
 updated: 2026-05-23
 updated_by: personal-data-gather
-run: 112
+run: 114
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -175,3 +175,14 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 > - Pickup: Sunday May 31 at 4 PM
 > Context: one day after Boston trip ends (5/29). Back-to-back logistics weekend.
 > Logistics: confirm drop-off and pickup arrangements with Amia's family. See [[family/active-todos]] and [[family/family-calendar]].
+
+## Latest from gather (2026-05-23) — run 114
+
+> [!fact] CORRECTION — Vishala sleepover with Amia: start 5 PM (not 9 PM as run 112 recorded)
+> Live Calendar API (run 114) returns corrected times for the May 30 sleepover:
+> - **Corrected start:** 2026-05-30 **17:00 ET (5 PM)**
+> - **Corrected end:** 2026-05-31 **12:00 ET (noon)**
+> - Run 112 incorrectly stated 9 PM start / 4 PM end. Calendar API is authoritative.
+> Duration is still ~19 hours (overnight). Drop-off is 4 hours earlier than previously flagged.
+> Logistics: coordinate drop-off at 5 PM Saturday May 30 and pickup at noon Sunday May 31 with Amia's family.
+> See [[family/active-todos]] and [[family/family-calendar]].

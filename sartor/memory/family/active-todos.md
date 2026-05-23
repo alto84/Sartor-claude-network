@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-23
 updated_by: personal-data-gather
-run: 113
+run: 114
 
 status: active
 priority: p1
@@ -742,3 +742,20 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - Wed 5/27 – Fri 5/29: Boston trip (T-4 days; school/cat-sitter logistics unresolved)
 > - Sat 5/30, 9 PM – Sun 5/31, 4 PM: [[family/vishala|Vishala]] sleepover with Amia — NEW
 > - Blue Sombrero: no Vayu soccer this week; Aneeta calendar: no events
+
+## Latest from gather (2026-05-23) — run 114
+
+> [!fact] TIME CORRECTION — Vishala sleepover: drop-off 5 PM (not 9 PM), pickup noon (not 4 PM)
+> Live Calendar API (run 114) corrects the run 112 entry. Calendar shows:
+> - **Drop-off: Saturday May 30, 5:00 PM ET**
+> - **Pickup: Sunday May 31, 12:00 PM (noon) ET**
+> Run 112 stated 9 PM and 4 PM — those were wrong. Adjust logistics planning with Amia's family accordingly.
+> See [[family/vishala]] and [[family/family-calendar]].
+
+> [!note] Calendar — May 23–30 (CORRECTED, live API run 114)
+> | Date | Time | Event | Calendar | Notes |
+> |------|------|-------|----------|-------|
+> | Mon 5/25 | all-day | Memorial Day | — | Goddard CLOSED. MKA closed. |
+> | Wed 5/27 – Fri 5/29 | all-day | Boston trip | Family | School/cat logistics unresolved |
+> | **Sat 5/30, 5 PM – Sun 5/31, noon** | **overnight** | **Vishala sleepover (Amia)** | **Family** | **CORRECTED from run 112 (was 9 PM–4 PM)** |
+> | All others | — | No events | — | Aneeta, Alton primary, Tasks, Blue Sombrero all empty |

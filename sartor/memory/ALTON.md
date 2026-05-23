@@ -2,8 +2,8 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-05-14
-updated_by: autodream (wikilinks-implementer, gstack-port)
+updated: 2026-05-23
+updated_by: personal-data-gather
 run: 6
 last_verified: 2026-04-12
 status: active
@@ -273,3 +273,8 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 ## Consolidated from daily logs (2026-05-14)
 - [2026-05-13] (fact) Informational, healthy day
+
+## Latest from gather (2026-05-23) — run 114
+
+> [!fact]
+> **Hiive: Anthropic secondary market — new low ask $1,250/share (2026-05-22).** Hiive market digest (2026-05-22 19:10 ET): Anthropic has 4 sell orders listed at **$1,250–$1,600 per share**; Hiive flagged "New low ask" (floor dropped below prior level). 1 buyer-seller match completed in past 24 hours. Alton watches Anthropic on both Hiive and EquityZen (EquityZen reconfirmation request sent 2026-04-29, per run 27). No action required; noting the new floor for context. Includes fund opportunities (accredited investors only). See [[business/solar-inference]].
