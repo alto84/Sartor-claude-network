@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-23
 updated_by: personal-data-gather
-run: 115
+run: 116
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -588,6 +588,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: 990-N 8 days overdue (unchanged); Disney ADR Day 7 (unchanged).
 - Pages updated: `daily/2026-05-23.md` (run 114 appended), `family/vishala.md` (time correction appended, run bumped to 114), `family/family-calendar.md` (time correction appended, run bumped to 114), `family/active-todos.md` (run 114 section appended), `ALTON.md` (Hiive/Anthropic note appended), `log.md` (this entry, run bumped to 114), `data/heartbeat-log.csv` (run 114 line appended), `data/gather-alerts.md` (refreshed)
 - KEY: Vishala sleepover logistics need 5 PM drop-off (4h earlier than previously flagged). Berman $6K Lutron payment still open. 990-N overdue.
+
+## [2026-05-23] ingest | personal-data-gather run 116: Sante Total Berteau ASAP ($2,400); BMC wellness event May 30
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 23–30). No SSH (web runner). Fifth run today.
+- New facts: (1) ACTION_REQUIRED — Barbara Weis follow-up on "Money for the elderly" today (18:51 UTC): Berteau situation "desperate," requesting $800/mo increase ($2,400 for 3 months upfront) — ASAP response needed from Alton as Treasurer; original May 12 email also had pending Gaby $9,972 request. (2) INFORMATIONAL — BMC free community Family Wellness Event, Sat May 30, 11 AM–3 PM, Blue Hill Club/Harambee Park — compatible with Vishala sleepover drop-off at 5 PM.
+- Calendar: no new events vs run 115. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All others empty.
+- P0 carries: 990-N 8 days overdue; Disney ADR Day 7+; Berman $6K (5d past promise); cat sitter T-4; NEW: Sante Total Berteau decision ASAP.
+- Pages updated: `daily/2026-05-23.md` (run 116 appended, frontmatter bumped), `business/sante-total.md` (Berteau follow-up callout appended, frontmatter bumped), `family/active-todos.md` (run 116 section appended, run bumped to 116), `log.md` (this entry, run bumped to 116), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Sante Total treasurer decision needed ASAP — Barbara Weis follow-up on Berteau elderly food program ($2,400 ask). Cat sitter for Boston trip (5/27) still unbooked at T-4.
 
 ## [2026-05-23] ingest | personal-data-gather run 115: cat sitter T-4 escalated; Window AC property; Chase credit alerts; Vishala screen time
 - Sources: Gmail (newer_than:2d, 50 threads — broader query), all 5 Google Calendars (May 23–30). No SSH (web runner). Fourth run today.

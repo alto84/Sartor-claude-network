@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-23
 updated_by: personal-data-gather
-run: 115
+run: 116
 
 status: active
 priority: p1
@@ -759,6 +759,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Wed 5/27 – Fri 5/29 | all-day | Boston trip | Family | School/cat logistics unresolved |
 > | **Sat 5/30, 5 PM – Sun 5/31, noon** | **overnight** | **Vishala sleepover (Amia)** | **Family** | **CORRECTED from run 112 (was 9 PM–4 PM)** |
 > | All others | — | No events | — | Aneeta, Alton primary, Tasks, Blue Sombrero all empty |
+
+## Latest from gather (2026-05-23) — run 116
+
+> [!todo] ACTION_REQUIRED — ASAP — Sante Total: Barbara Weis follow-up on Berteau elderly funding
+> Barbara Weis (dye2tie@verizon.net) sent a follow-up today (2026-05-23 18:51 UTC) to the May 12 thread: "Berteau has sent me several messages that the situation is desperate. If we can't do all of this, can we afford to increase to $800 a month and send him $2400 to cover the next three months? Please answer asap." Original May 12 email also requested sending Gaby $9,972/$10,000. Alton must respond as Treasurer. CC: asmi60@lsuhsc.edu, alison.annette.smith@gmail.com. See [[business/sante-total]].
+
+> [!note] FAMILY — BMC Free Wellness Event: Sat May 30, 11 AM – 3 PM
+> info@bmc.org (2026-05-22 20:33 ET): Free community Family Wellness Event, Saturday May 30, 11:00 AM to 3:00 PM. Location: Berkshire Partners Blue Hill Club and Harambee Park. Same day as Vishala's sleepover (drop-off 5 PM) — no conflict if attending morning/early afternoon. Optional; no action required.
 
 ## Latest from gather (2026-05-23) — run 115
 

@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-14
+updated: 2026-05-23
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -195,6 +195,21 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!deadline] 2026-05-15
 > **2025 Form 990-N — DUE IN 3 DAYS (Friday May 15).** Status as of run 70: NOT FILED. No email observed confirming completion through run 70. Alton handles directly via IRS.gov tax-exempt organization search portal. Gross receipts under $50K for TY2025 — 990-N (e-Postcard) still applies. No automatic extension without separately filing Form 8868 first. P0.
+
+## Latest from gather (2026-05-23) — run 116
+
+> [!todo] ACTION_REQUIRED — ASAP — Sante Total: Berteau elderly funding decision
+> **Barbara Weis (dye2tie@verizon.net) circled back TODAY (2026-05-23 18:51 UTC)** on the "Money for the elderly" thread. Original email 2026-05-12 (run 71): Barbara and Berteau wrote up a grant proposal for elderly food support in Haiti; budget exceeds current monthly amount (~$1000/month). Now: "Berteau has sent me several messages that the situation is desperate. If we can't do all of this, can we afford to increase to $800 a month and send him $2400 to cover the next three months? Please answer asap."
+>
+> **Decision for Alton as Treasurer:**
+> 1. Can Sante Total fund $2,400 upfront (3 months @ $800/mo) for Berteau's elderly food program?
+> 2. Per Barbara's May 12 email, Berteau should send receipts before additional disbursements.
+> 3. The May 12 email also requested sending **Gaby $9,972** (or round to $10,000) with Finance Report 2025.xlsx attached — unclear if separate or linked decision. That request has been pending since 2026-05-12 with no visible response.
+>
+> **No disbursements should be made without Alton's explicit authorization.** Reply to Barbara (cc Alison Smith: asmi60@lsuhsc.edu and alison.annette.smith@gmail.com) to unblock.
+
+> [!warning] Sante Total 990-N — OVERDUE 8 days (from run 116 carry-forward)
+> Still not filed per runs 22–115. Due 2026-05-15. File at IRS.gov → 990-N e-Postcard. TY2025 gross receipts <$50K.
 
 ## Latest from gather (2026-05-14) — run 72
 
