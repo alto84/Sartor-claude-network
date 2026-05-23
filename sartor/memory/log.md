@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-23
 updated_by: personal-data-gather
-run: 112
+run: 113
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -573,3 +573,10 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: Family (Boston trip 5/27–5/29 + Vishala sleepover 5/30); all other calendars empty this week.
 - P0 carries escalated: 990-N 8 days overdue; Disney ADR Day 7 (critical).
 - Pages updated: `daily/2026-05-23.md` (created), `family/vishala.md` (sleepover appended, frontmatter bumped), `family/family-calendar.md` (sleepover + week note appended, frontmatter bumped), `family/active-todos.md` (run 112 section appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
+
+## [2026-05-23] ingest | personal-data-gather run 113: Berman $6K payment 5d past promise; all else dedup of run 112
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 23–30). No SSH (web runner). Second run today.
+- New facts (1): Berman Home Systems $6,000 payment — Alton promised credit card payment "in just a few days" on 2026-05-18 (thread #AAAO13216-03); today is 5 days later; Alyssa has not followed up but window is closing. Route: active-todos.
+- All other threads/calendar events match run 112 data exactly — deduplicated, not re-routed.
+- P0 carries: 990-N 8 days overdue (unchanged); Disney ADR Day 7+ (unchanged).
+- Pages updated: `daily/2026-05-23.md` (run 113 section appended, frontmatter bumped), `family/active-todos.md` (Berman $6K warning callout prepended to run 113 section, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/heartbeat-log.csv` (run 113 line appended), `data/gather-alerts.md` (refreshed with full current alert state)

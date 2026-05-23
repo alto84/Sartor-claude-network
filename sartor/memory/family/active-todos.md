@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-23
 updated_by: personal-data-gather
-run: 112
+run: 113
 
 status: active
 priority: p1
@@ -715,6 +715,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > Tebra billing platform (noreply@tebra.com) sent a balance statement to alto84@gmail.com, but the bill is addressed to "EMMETT" — not a recognized name in the household. Practice: Cadoo Medical PC, (973) NJ area code. Amount: **$765.21**. A second email in the same inbox batch (NJ Pride FC marketing) also used "Hi Emmett!" — possible alias or list contamination associated with this Gmail address.
 > Action: Confirm whether this bill is for a household member or a misdirected email before paying. If legitimate, route to appropriate payer.
 > Route: [[ALTON]]
+
+## Latest from gather (2026-05-23) — run 113
+
+> [!warning] ACTION REQUIRED — Berman Home Systems $6,000 payment (5 days past promise)
+> Thread #AAAO13216-03 (Alyssa Berman, Alyssa@bermanhomesystems.com). Alton promised credit card payment "in just a few days" on 2026-05-18 after declining debit-card route (merchant fee). Alyssa agreed to wait. Today is 2026-05-23 — 5 days later. No follow-up from Berman yet, but the window is closing. Pay by credit card or confirm new timeline with Alyssa. This is the Lutron home system order. See [[ALTON]] for payment log.
 
 ## Latest from gather (2026-05-23) — run 112
 
