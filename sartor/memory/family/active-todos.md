@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-22
+updated: 2026-05-23
 updated_by: personal-data-gather
-run: 111
+run: 112
 
 status: active
 priority: p1
@@ -715,3 +715,25 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > Tebra billing platform (noreply@tebra.com) sent a balance statement to alto84@gmail.com, but the bill is addressed to "EMMETT" — not a recognized name in the household. Practice: Cadoo Medical PC, (973) NJ area code. Amount: **$765.21**. A second email in the same inbox batch (NJ Pride FC marketing) also used "Hi Emmett!" — possible alias or list contamination associated with this Gmail address.
 > Action: Confirm whether this bill is for a household member or a misdirected email before paying. If legitimate, route to appropriate payer.
 > Route: [[ALTON]]
+
+## Latest from gather (2026-05-23) — run 112
+
+> [!fact] NEW — Vishala sleepover with Amia: Sat May 30, 9 PM – Sun May 31, 4 PM
+> Family calendar event (Aneeta created 2026-05-17). One day after Boston trip ends.
+> - Drop-off: Sat May 30, 9 PM | Pickup: Sun May 31, 4 PM
+> Logistics: confirm drop-off and pickup arrangements with Amia's family. See [[family/vishala]] and [[family/family-calendar]].
+
+> [!warning] P0 carry-forward — Sante Total Form 990-N OVERDUE 8 days
+> Not filed per runs 22–112. File at IRS.gov → 990-N e-Postcard. Gross receipts <$50K TY2025. See [[business/sante-total]].
+
+> [!warning] P0 carry-forward — Disney ADR Day 7 (Blue Bayou at critical risk)
+> Contact Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. See [[family/disney-july-2026]].
+
+> [!todo] Informational — Pop Warner registration open (communitypass.net)
+> Montclair Pop Warner now open: Tackle Football ages 8–13 ($225), Cheerleading ages 5–7 ($150). Eligible: [[family/vayu|Vayu]] (10, tackle), [[family/vishala|Vishala]] (8, tackle or cheer). No deadline.
+
+> [!note] Calendar — May 23–30 (confirmed from live API run 112)
+> - Mon 5/25: Memorial Day — Goddard CLOSED (confirmed via Kaymbu), MKA closed
+> - Wed 5/27 – Fri 5/29: Boston trip (T-4 days; school/cat-sitter logistics unresolved)
+> - Sat 5/30, 9 PM – Sun 5/31, 4 PM: [[family/vishala|Vishala]] sleepover with Amia — NEW
+> - Blue Sombrero: no Vayu soccer this week; Aneeta calendar: no events

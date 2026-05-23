@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-22
+updated: 2026-05-23
 updated_by: personal-data-gather
-run: 111
+run: 112
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -566,3 +566,10 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: no new events vs run 110 (Family: PA trip 5/22–5/23, Boston trip 5/27–5/30; all others empty)
 - P0 carries: 990-N 8 days overdue; Disney ADR Day 8 end-of-day
 - Pages updated: `daily/2026-05-22.md` (run 111 appended), `family/active-todos.md` (Cadoo bill callout appended), `family/vasu.md` (soccer extension appended), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-23] ingest | personal-data-gather run 112: Vishala sleepover Amia May 30; Boston T-4; 990-N Day 8
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 23–30). No SSH (web runner).
+- New facts: Vishala sleepover with Amia (Sat May 30 9 PM – Sun May 31 4 PM, Family calendar, Aneeta created 5/17) — NEW, first capture. Goddard CLOSED May 25 confirmed via Kaymbu. Pop Warner registration open (communitypass.net, informational). Vayu MKA cafeteria funded $101.75 (completed auto-debit, closed). PA trip (5/22–5/23) complete.
+- Calendar: Family (Boston trip 5/27–5/29 + Vishala sleepover 5/30); all other calendars empty this week.
+- P0 carries escalated: 990-N 8 days overdue; Disney ADR Day 7 (critical).
+- Pages updated: `daily/2026-05-23.md` (created), `family/vishala.md` (sleepover appended, frontmatter bumped), `family/family-calendar.md` (sleepover + week note appended, frontmatter bumped), `family/active-todos.md` (run 112 section appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)

@@ -2,9 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-05-05
+updated: 2026-05-23
 updated_by: personal-data-gather
-run: 54
+run: 112
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -166,3 +166,12 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!deadline] 2026-05-15
 > **MKA Conference Day — Primary School.** General reminder from Primary School (m@mail1.veracross.com, 2026-05-07). Conference Day is 2026-05-15. Sign up on Veracross. See [[family/active-todos]].
+
+## Latest from gather (2026-05-23) — run 112
+
+> [!fact] NEW — Vishala sleepover with Amia: Sat May 30, 9 PM – Sun May 31, 4 PM
+> Family calendar event created by Aneeta (aneetasax@gmail.com) on 2026-05-17. Overnight, ~19 hours.
+> - Drop-off: Saturday May 30 at 9 PM
+> - Pickup: Sunday May 31 at 4 PM
+> Context: one day after Boston trip ends (5/29). Back-to-back logistics weekend.
+> Logistics: confirm drop-off and pickup arrangements with Amia's family. See [[family/active-todos]] and [[family/family-calendar]].
