@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-23
 updated_by: personal-data-gather
-run: 114
+run: 115
 
 status: active
 priority: p1
@@ -759,3 +759,16 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Wed 5/27 – Fri 5/29 | all-day | Boston trip | Family | School/cat logistics unresolved |
 > | **Sat 5/30, 5 PM – Sun 5/31, noon** | **overnight** | **Vishala sleepover (Amia)** | **Family** | **CORRECTED from run 112 (was 9 PM–4 PM)** |
 > | All others | — | No events | — | Aneeta, Alton primary, Tasks, Blue Sombrero all empty |
+
+## Latest from gather (2026-05-23) — run 115
+
+> [!warning] P0 ESCALATION — Cat sitter: Boston trip T-4 days (starts 2026-05-27 Wednesday)
+> Cats Loki, Ghosty, and Pickle need care 2026-05-27 through 2026-05-29. No booking confirmation found in Gmail. Meowtel app in inbox (promotional, not booked). T-4 days — book immediately. Meowtel or another trusted sitter.
+
+> [!note] Carry-forward P0/P1 (run 115)
+> | Item | Status | Days |
+> |------|--------|------|
+> | Sante Total 990-N | NOT FILED | 8 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 7+ (window opened 2026-05-17) |
+> | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 5 days past Alton's 2026-05-18 promise |
+> | **Cat sitter (Boston 5/27)** | **UNRESOLVED** | **T-4 days — escalated to P0 this run** |

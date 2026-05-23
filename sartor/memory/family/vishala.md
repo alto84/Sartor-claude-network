@@ -4,7 +4,7 @@ entity: vishala
 name: "Vishala Sartor"
 updated: 2026-05-23
 updated_by: personal-data-gather
-run: 114
+run: 115
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -186,3 +186,8 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 > Duration is still ~19 hours (overnight). Drop-off is 4 hours earlier than previously flagged.
 > Logistics: coordinate drop-off at 5 PM Saturday May 30 and pickup at noon Sunday May 31 with Amia's family.
 > See [[family/active-todos]] and [[family/family-calendar]].
+
+## Latest from gather (2026-05-23) — run 115
+
+> [!fact] Screen time — week of May 16–22: 8 hours 57 minutes
+> Microsoft Family Safety weekly report (familysafety@microsoft.com, received 2026-05-23). Full report available at family.microsoft.com.

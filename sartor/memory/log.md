@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-23
 updated_by: personal-data-gather
-run: 114
+run: 115
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -588,3 +588,10 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: 990-N 8 days overdue (unchanged); Disney ADR Day 7 (unchanged).
 - Pages updated: `daily/2026-05-23.md` (run 114 appended), `family/vishala.md` (time correction appended, run bumped to 114), `family/family-calendar.md` (time correction appended, run bumped to 114), `family/active-todos.md` (run 114 section appended), `ALTON.md` (Hiive/Anthropic note appended), `log.md` (this entry, run bumped to 114), `data/heartbeat-log.csv` (run 114 line appended), `data/gather-alerts.md` (refreshed)
 - KEY: Vishala sleepover logistics need 5 PM drop-off (4h earlier than previously flagged). Berman $6K Lutron payment still open. 990-N overdue.
+
+## [2026-05-23] ingest | personal-data-gather run 115: cat sitter T-4 escalated; Window AC property; Chase credit alerts; Vishala screen time
+- Sources: Gmail (newer_than:2d, 50 threads — broader query), all 5 Google Calendars (May 23–30). No SSH (web runner). Fourth run today.
+- New facts: (1) URGENCY ESCALATION — cat sitter for Boston trip (5/27) still unresolved, T-4 days, escalated to P0 in active-todos. (2) Window AC rental property — Oana Geambasu (Harvard SPH tenant) emailed Aneeta; Aneeta authorized Task Rabbit reimbursement; Oana self-resolved, moving out soon. (3) Chase credit balance alerts x2 (5/23 ~14:28 ET) — informational. (4) Vishala screen time 8h57m week May 16–22 (Microsoft Family Safety). (5) Montclair municipal pool closed (unseasonable weather, low priority). (6) LinkedIn DSPV director role alerts (J&J, BMS, Celcuity, Ladders). (7) Anthropic red.anthropic.com new posts (exploit measurement, vuln disclosure). (8) MyKidsSpending Vayu portal registration invitation (low priority).
+- Calendar: no new events vs run 114. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: 990-N 8 days overdue; Disney ADR Day 7+; Berman $6K (5 days past promise); cat sitter T-4 (NEW escalation to P0).
+- Pages updated: `daily/2026-05-23.md` (run 115 appended), `family/active-todos.md` (P0 cat sitter escalation, run bumped to 115), `family/vishala.md` (screen time appended, run bumped to 115), `log.md` (this entry, run bumped to 115), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
