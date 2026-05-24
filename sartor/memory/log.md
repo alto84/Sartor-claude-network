@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-24
 updated_by: personal-data-gather
-run: 119
+run: 121
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -635,3 +635,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: 990-N 9 days overdue; Disney ADR Day 8; Berman $6K 6 days past promise; cat sitter T-3 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending; Cadoo Medical $765.21 NEW-PAY.
 - Pages updated: `daily/2026-05-24.md` (run 120 section appended, run bumped), `business/sante-total.md` (Berteau/Gaby 3-part ask detailed, 990-N overdue updated), `family/active-todos.md` (Cadoo bill resolved + run 120 carry-forward, run bumped), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
 - KEY: Cat sitter for Boston (T-3) still unbooked. Cadoo Medical $765.21 is now confirmed as Alton's bill — ready to pay. Sante Total 3-part ask (Berteau + Gaby) awaiting Alton response. 990-N 9 days overdue.
+
+## [2026-05-24] ingest | personal-data-gather run 121: 5 new informational threads; pool closed 3rd day; AI newsletter; pharma forward from Oliver
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 24–31). No SSH (web runner). Fifth run today.
+- New facts: (1) Oliver Sartor forwarding Fierce Life Sciences pharma digest (11:50 AM ET) — industry/FDA news, INFORMATIONAL. (2) Montclair pool closed again today (9:06 AM ET) — 3rd consecutive closure for unseasonable weather. (3) JAMA Weekly Highlights email today — professional reading, INFORMATIONAL. (4) Substack AI #169 from Zvi Mowshowitz et al. (5/22) — AI newsletter relevant to research interests. (5) JAMA Med News "19,000 Measles Cases" (5/22) — medical news, INFORMATIONAL. All 5 new items are INFORMATIONAL; no new ACTION_REQUIRED items.
+- Calendar: unchanged from runs 112–120. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: unchanged from run 120 — 990-N 9 days overdue; Disney ADR Day 8; Berman $6K 6 days past promise; cat sitter T-3 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending; UPS claim monitor; Cadoo Medical $765.21 pay.
+- Pages updated: `daily/2026-05-24.md` (run 121 section appended, run bumped), `log.md` (this entry, run bumped to 121), `data/heartbeat-log.csv` (created with runs 117–121), `data/gather-alerts.md` (written)
+- KEY: No new escalations this run. All P0 items carry from run 120 unchanged. Cat sitter for Boston 5/27 still critical at T-3.
