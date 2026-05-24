@@ -1,8 +1,9 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-23
+updated: 2026-05-24
 updated_by: personal-data-gather
+run: 120
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -195,6 +196,27 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!deadline] 2026-05-15
 > **2025 Form 990-N — DUE IN 3 DAYS (Friday May 15).** Status as of run 70: NOT FILED. No email observed confirming completion through run 70. Alton handles directly via IRS.gov tax-exempt organization search portal. Gross receipts under $50K for TY2025 — 990-N (e-Postcard) still applies. No automatic extension without separately filing Form 8868 first. P0.
+
+## Latest from gather (2026-05-24) — run 120
+
+> [!todo] ACTION_REQUIRED — ASAP — Sante Total: Berteau elderly funding (full 3-part ask)
+> **Barbara Weis (dye2tie@verizon.net) full request (May 12 + May 23 follow-up):**
+>
+> **Item 1 — Berteau elderly food program:**
+> Barbara and Berteau wrote a grant proposal ("2026 CHEAHP grant application.docx" attached) for an elderly food support project in Haiti. Budget exceeds the current ~$1,000/month disbursement rate. Berteau reports situation is "desperate." May 23 follow-up ask: can Sante Total increase to **$800/month and send $2,400 upfront (3 months)**? Barbara's condition: Berteau must send receipts before additional disbursements after an initial amount.
+>
+> **Item 2 — School lunch program grant with Erick Delss:**
+> Barbara applied for a grant with Erick Delss (school lunch program). Status: pending, no action from Alton needed yet.
+>
+> **Item 3 — Send Gaby $9,972 (round to $10,000):**
+> "Copy of Finance report 2025.xlsx" attached with Barbara's corrections on Gaby's spreadsheet. Barbara asked Gaby to verify corrections repeatedly; he did not. Recommendation: send $9,972/$10,000 and start fresh from January 2026. **This request has been pending since 2026-05-12 with no visible response.**
+>
+> **Alton must respond as Treasurer.** Reply to thread (dye2tie@verizon.net), cc: asmi60@lsuhsc.edu and alison.annette.smith@gmail.com.
+>
+> **No disbursements without Alton's explicit authorization.**
+
+> [!warning] Sante Total 990-N — OVERDUE 9 days (as of 2026-05-24)
+> Still not filed per runs 22–120. Due 2026-05-15. File at IRS.gov → 990-N e-Postcard. TY2025 gross receipts <$50K.
 
 ## Latest from gather (2026-05-23) — run 116
 

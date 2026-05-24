@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-24
 updated_by: personal-data-gather
-run: 119
+run: 120
 
 status: active
 priority: p1
@@ -780,6 +780,26 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Disney ADR (Blue Bayou) | No confirmation | Day 7+ (window opened 2026-05-17) |
 > | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 5 days past Alton's 2026-05-18 promise |
 > | **Cat sitter (Boston 5/27)** | **UNRESOLVED** | **T-4 days — escalated to P0 this run** |
+
+## Latest from gather (2026-05-24) — run 120
+
+> [!fact] RESOLVED — Cadoo Medical PC $765.21 is Alton's bill (run 111 flag lifted)
+> The "EMMETT" ambiguity from run 111 is resolved: UPS email (04:09 AM ET 2026-05-24) addresses Alton as "Emmett Alton," confirming that billing systems use his first name. **Cadoo Medical PC $765.21 is a legitimate bill for Alton.** Pay via Tebra patient portal or call 973-577-3010. No further verification needed.
+
+> [!todo] ACTION_REQUIRED — Pay Cadoo Medical PC $765.21
+> Bill from Cadoo Medical PC (NJ, 973-577-3010) via Tebra platform. Amount: **$765.21**. Pay via patient portal or call main office. Payment plan available if needed. Statement received 2026-05-22. See [[ALTON]].
+
+> [!note] Carry-forward P0/P1 (run 120, 2026-05-24)
+> | Item | Status | Days |
+> |------|--------|------|
+> | Sante Total 990-N | NOT FILED | 9 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 8 (window opened 2026-05-17) |
+> | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 6 days past Alton's 2026-05-18 promise |
+> | **Cat sitter (Boston 5/27)** | **UNRESOLVED** | **T-3 days — CRITICAL** |
+> | Sante Total Berteau $2,400 | ASAP decision needed | 1 day since Barbara Weis follow-up |
+> | Sante Total Gaby $9,972 | Pending since 5/12 | No visible response |
+> | UPS lost package claim | Monitor | By ~2026-06-05 |
+> | **Cadoo Medical PC $765.21** | **PAY** | Bill confirmed legitimate — see above |
 
 ## Latest from gather (2026-05-24) — run 119
 
