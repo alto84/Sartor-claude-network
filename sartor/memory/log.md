@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-24
 updated_by: personal-data-gather
-run: 121
+run: 122
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -643,3 +643,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: unchanged from run 120 — 990-N 9 days overdue; Disney ADR Day 8; Berman $6K 6 days past promise; cat sitter T-3 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending; UPS claim monitor; Cadoo Medical $765.21 pay.
 - Pages updated: `daily/2026-05-24.md` (run 121 section appended, run bumped), `log.md` (this entry, run bumped to 121), `data/heartbeat-log.csv` (created with runs 117–121), `data/gather-alerts.md` (written)
 - KEY: No new escalations this run. All P0 items carry from run 120 unchanged. Cat sitter for Boston 5/27 still critical at T-3.
+
+## [2026-05-24] ingest | personal-data-gather run 122: Stanford HAI scaling laws; Hiive digest; 2 LinkedIn recruiter skips
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 24–31). No SSH (web runner). Sixth run today.
+- New facts: (1) Stanford HAI newsletter "A new approach to AI scaling laws" (1:03 PM ET) — measurement-science reframing of scaling laws; INFORMATIONAL for AI research context. (2) Hiive daily private market digest (3:05 PM ET) — INFORMATIONAL. 2 LinkedIn recruiter alerts skipped per triage rule (Bayer Exec Med Dir, Kailera Therapeutics Pharmacovigilance MD).
+- Calendar: unchanged from runs 112–121. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: unchanged from run 121 — 990-N 9 days overdue; Disney ADR Day 8; Berman $6K 6 days past promise; cat sitter T-3 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending; UPS claim monitor; Cadoo Medical $765.21 pay.
+- Pages updated: `daily/2026-05-24.md` (run 122 appended, run bumped to 122), `log.md` (this entry, run bumped to 122), `data/heartbeat-log.csv` (run 122 entry appended), `data/gather-alerts.md` (updated)
+- KEY: No new escalations. P0 items carry from run 121 unchanged. Cat sitter Boston 5/27 still unresolved (T-3 days).
