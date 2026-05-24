@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-23
+updated: 2026-05-24
 updated_by: personal-data-gather
-run: 116
+run: 117
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -603,3 +603,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: no new events vs run 114. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
 - P0 carries: 990-N 8 days overdue; Disney ADR Day 7+; Berman $6K (5 days past promise); cat sitter T-4 (NEW escalation to P0).
 - Pages updated: `daily/2026-05-23.md` (run 115 appended), `family/active-todos.md` (P0 cat sitter escalation, run bumped to 115), `family/vishala.md` (screen time appended, run bumped to 115), `log.md` (this entry, run bumped to 115), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
+
+## [2026-05-24] ingest | personal-data-gather run 117: no new Gmail; calendar unchanged; P0 escalations day+1
+- Sources: Gmail (newer_than:1d, 16 threads all dated 2026-05-23), all 5 Google Calendars (May 24–31). No SSH (web runner). First run today.
+- New facts: (1) Amazon household orders (Waterloo sparkling water + baby wipes, ordered + delivered 2026-05-23) — first capture, INFORMATIONAL only, daily log. No other new intelligence.
+- Calendar: unchanged from yesterday. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon ET). All others empty.
+- P0 carry-forward updated: 990-N now 9 days overdue; Disney ADR Day 8; Berman $6K 6 days past promise; cat sitter T-3 (CRITICAL); Sante Total Berteau follow-up 1 day since 5/23.
+- Pages updated: `daily/2026-05-24.md` (created), `family/active-todos.md` (run 117 carry-forward appended, frontmatter bumped), `log.md` (this entry, run bumped to 117), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Cat sitter for Boston trip (5/27) still unbooked at T-3 — book today. Sante Total Berteau $2,400 decision overdue 1 day. 990-N now 9 days past IRS deadline.

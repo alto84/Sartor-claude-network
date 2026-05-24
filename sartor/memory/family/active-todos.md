@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-23
+updated: 2026-05-24
 updated_by: personal-data-gather
-run: 116
+run: 117
 
 status: active
 priority: p1
@@ -780,3 +780,27 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Disney ADR (Blue Bayou) | No confirmation | Day 7+ (window opened 2026-05-17) |
 > | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 5 days past Alton's 2026-05-18 promise |
 > | **Cat sitter (Boston 5/27)** | **UNRESOLVED** | **T-4 days — escalated to P0 this run** |
+
+## Latest from gather (2026-05-24) — run 117
+
+> [!warning] P0 CRITICAL — Cat sitter: Boston trip T-3 days (departs Wed 2026-05-27)
+> Cats Loki, Ghosty, and Pickle need care 2026-05-27 through 2026-05-29. No booking confirmation in Gmail. T-3 days — book immediately via Meowtel or another trusted sitter. This is the last realistic day to book without risking unavailability.
+
+> [!todo] ACTION_REQUIRED — ASAP — Sante Total: Berteau elderly funding response (1 day since follow-up)
+> Barbara Weis (dye2tie@verizon.net) follow-up 2026-05-23: "Berteau has sent me several messages that the situation is desperate. If we can't do all of this, can we afford to increase to $800 a month and send him $2400 to cover the next three months? Please answer asap." Alton must reply as Treasurer. CC: asmi60@lsuhsc.edu, alison.annette.smith@gmail.com. See [[business/sante-total]].
+
+> [!note] Carry-forward P0/P1 (run 117, 2026-05-24)
+> | Item | Status | Days |
+> |------|--------|------|
+> | Sante Total 990-N | NOT FILED | 9 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 8 (window opened 2026-05-17) |
+> | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 6 days past Alton's 2026-05-18 promise |
+> | **Cat sitter (Boston 5/27)** | **UNRESOLVED** | **T-3 days — CRITICAL** |
+> | Sante Total Berteau $2,400 | ASAP decision needed | 1 day since Barbara Weis follow-up |
+
+> [!note] Calendar May 24–31 (confirmed live API run 117)
+> | Date | Time (ET) | Event |
+> |------|-----------|-------|
+> | Mon 5/25 | all-day | Memorial Day — Goddard closed, MKA closed |
+> | Wed 5/27 – Fri 5/29 | all-day | Boston trip — T-3 days |
+> | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
