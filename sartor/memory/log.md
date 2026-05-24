@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-24
 updated_by: personal-data-gather
-run: 118
+run: 119
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -619,3 +619,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forward updated: 990-N now 9 days overdue; Disney ADR Day 8; Berman $6K 6 days past promise; cat sitter T-3 (CRITICAL); Sante Total Berteau follow-up 1 day since 5/23.
 - Pages updated: `daily/2026-05-24.md` (created), `family/active-todos.md` (run 117 carry-forward appended, frontmatter bumped), `log.md` (this entry, run bumped to 117), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
 - KEY: Cat sitter for Boston trip (5/27) still unbooked at T-3 — book today. Sante Total Berteau $2,400 decision overdue 1 day. 990-N now 9 days past IRS deadline.
+
+## [2026-05-24] ingest | personal-data-gather run 119: UPS claim; Vayu cafeteria debit confirmed; pool chemicals; expanded Gmail window
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 24–31). No SSH (web runner). Third run today.
+- New facts: (1) UPS lost package claim received (04:09 AM ET today, pkginfo@ups.com) — ACTION_REQUIRED/monitor, expect UPS contact by ~2026-06-05. (2) Vayu MKA cafeteria debit confirmed — Chase 8563 debited $101.75 ($100 + $1.75 fee) on 2026-05-23 midnight; MyKidsSpending portal active. Closes run 108 pending item. (3) Amazon delivered HTH swimming pool chemicals (2026-05-22 22:23 ET) — pool supply, informational. (4) Anthropic red.anthropic.com newsletter (2026-05-22) — exploit measurement + vuln disclosure, informational. (5) Code Ninjas Livingston NJ summer camps promo (2026-05-23) — summer planning context for Vayu/Vishala.
+- Calendar: unchanged from runs 117–118. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: 990-N 9 days overdue; Disney ADR Day 8 (Blue Bayou at critical risk); Berman $6K 6 days past promise; cat sitter T-3 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending since 5/12.
+- Pages updated: `daily/2026-05-24.md` (run 119 section appended, run bumped), `family/vayu.md` (cafeteria debit confirmed, run 108 todo closed), `family/active-todos.md` (UPS claim added, debit resolved, frontmatter bumped), `log.md` (this entry, run bumped to 119), `data/heartbeat-log.csv` (written), `data/gather-alerts.md` (written)
+- KEY: Cat sitter for Boston trip (5/27) at T-3 — last realistic booking day. Sante Total Berteau $2,400 decision needed ASAP. 990-N 9 days overdue. New: UPS lost package claim filed today; monitor for ~8 business days.

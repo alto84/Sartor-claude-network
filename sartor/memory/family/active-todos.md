@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-24
 updated_by: personal-data-gather
-run: 117
+run: 119
 
 status: active
 priority: p1
@@ -780,6 +780,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Disney ADR (Blue Bayou) | No confirmation | Day 7+ (window opened 2026-05-17) |
 > | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 5 days past Alton's 2026-05-18 promise |
 > | **Cat sitter (Boston 5/27)** | **UNRESOLVED** | **T-4 days — escalated to P0 this run** |
+
+## Latest from gather (2026-05-24) — run 119
+
+> [!fact] RESOLVED — Vayu MKA cafeteria debit confirmed (2026-05-23)
+> Chase account ending 8563 debited $101.75 ($100 deposit + $1.75 service charge) to fund [[family/vayu|Vayu]]'s MyKidsSpending cafeteria account at MKA. Portal active at mykidsspending.com. Closes run 108 pending item. No action required.
+
+> [!todo] Monitor — UPS lost package claim (filed 2026-05-24)
+> UPS email (pkginfo@ups.com, 04:09 AM ET 2026-05-24): claim received for a lost package. UPS will contact within 8 business days (expected by ~2026-06-05). No action until UPS responds. Monitor inbox.
 
 ## Latest from gather (2026-05-24) — run 117
 

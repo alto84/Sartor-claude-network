@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-05-22
+updated: 2026-05-24
 updated_by: personal-data-gather
-run: 108
+run: 119
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -40,6 +40,14 @@ Alton + Aneeta's oldest child. Age 10. Attends Montclair Kimberley Academy (MKA)
 > - Chase account ending **8563** will be debited **~$100** "within next day or two" to fund Vayu's school cafeteria account at MKA
 > - MyKidsSpending portal account created for Vayu; login available at mykidsspending.com
 > No action required unless account balance needs review.
+
+## Latest from gather (2026-05-24) — run 119
+
+> [!fact] MKA cafeteria debit CONFIRMED — $101.75 from Chase 8563 (2026-05-23)
+> Closes run 108 pending item. Two confirmation emails from statements@mykidsspending.com at 2026-05-23 00:00–00:01 ET:
+> - Chase account ending **8563** debited **$101.75** ($100.00 cafeteria deposit + $1.75 service charge).
+> - MyKidsSpending portal account now active. Login at mykidsspending.com to review balance or set spending limits.
+> No further action required. Balance: ~$100 (subject to lunch charges).
 
 ## Middle school context
 
