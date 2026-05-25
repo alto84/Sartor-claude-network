@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-25
 updated_by: personal-data-gather
-run: 124
+run: 126
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -675,3 +675,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: unchanged — 990-N 10 days overdue; Disney ADR Day 9; Berman $6K 7 days past promise; cat sitter T-2 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending 13 days; UPS claim monitor; Cadoo Medical $765.21 pay.
 - Pages updated: `daily/2026-05-25.md` (run 125 appended, run bumped to 125), `family/active-todos.md` (portrait sale todo added, run bumped to 125), `log.md` (this entry), `data/heartbeat-log.csv` (created/appended), `data/gather-alerts.md` (written)
 - KEY: New P1 item — ImageQuix portrait sale (Vayu + Vishala, free shipping, Memorial Day window, order soon). All P0 items carry unchanged. Cat sitter Boston T-2 remains the top priority.
+
+## [2026-05-25] ingest | personal-data-gather run 126: Dorotheas party live; 12 informational; P0 carry
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 25–Jun 1). No SSH (web runner). Fourth run of 2026-05-25.
+- New facts: (1) **Dorotheas party** added to Family calendar today at 2:44 PM ET — happening now, 3–6 PM at 244 Christopher St, Montclair (Aneeta as organizer). (2) Lyft 25% off through 2026-05-29 — useful for Boston trip. (3) Newegg Computex RTX 5080 combo deals — GPU market signal. (4) Leader Bank email to "Emmett" — CRM name error or wrong-address delivery to alto84@gmail.com. (5) LinkedIn job alerts: Novartis Data Science/AI Director, BeOne Medicines Exec Dir Global Clinical Pharmacology, Vertex Patient Safety AMD — INFORMATIONAL. (6) Hiive 3rd digest today, VA newsletter, Amazon/Newegg promos, Nightjar — INFORMATIONAL.
+- Calendar: Family calendar added 1 new event vs runs 123–125 — Dorotheas party today (live). Boston trip (5/27–5/29), Vishala sleepover (5/30–5/31), Vasu dance 6/2 unchanged.
+- P0 carries: unchanged from run 125 — 990-N 10 days overdue; Disney ADR Day 9; Berman $6K 7 days past promise; cat sitter T-2 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending 13 days; UPS claim monitor; Cadoo Medical pay; ImageQuix sale order.
+- Pages updated: `daily/2026-05-25.md` (run 126 appended, run bumped to 126), `log.md` (this entry, run bumped to 126), `data/heartbeat-log.csv` (created/run 126 entry), `data/gather-alerts.md` (refreshed)
+- KEY: Dorotheas party in Montclair today 3–6 PM — new calendar event, likely family logistics context. No new P0 escalations. Cat sitter Boston T-2 remains top unresolved item.
