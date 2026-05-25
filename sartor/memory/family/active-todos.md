@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-24
+updated: 2026-05-25
 updated_by: personal-data-gather
-run: 120
+run: 123
 
 status: active
 priority: p1
@@ -831,4 +831,28 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > |------|-----------|-------|
 > | Mon 5/25 | all-day | Memorial Day — Goddard closed, MKA closed |
 > | Wed 5/27 – Fri 5/29 | all-day | Boston trip — T-3 days |
+> | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
+
+## Latest from gather (2026-05-25) — run 123
+
+> [!warning] P0 CRITICAL — Cat sitter: Boston trip T-2 days (departs Wed 2026-05-27)
+> **Today is the last realistic day to book a cat sitter.** Loki, Ghosty, and Pickle need coverage 2026-05-27 through 2026-05-29. No booking confirmation visible in Gmail. Book via Meowtel or trusted local sitter immediately.
+
+> [!note] Carry-forward P0/P1 (run 123, 2026-05-25 — Memorial Day)
+> | Item | Status | Days |
+> |------|--------|------|
+> | **Cat sitter (Boston 5/27)** | **UNRESOLVED** | **T-2 — LAST DAY TO BOOK** |
+> | Sante Total 990-N | NOT FILED | 10 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 9 (window opened 2026-05-17) |
+> | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 7 days past Alton's 2026-05-18 promise |
+> | Sante Total Berteau $2,400 | ASAP decision needed | 2 days since Barbara Weis follow-up (5/23) |
+> | Sante Total Gaby $9,972 | Pending since 5/12 | 13 days no visible response |
+> | UPS lost pkg claim 1Z091C2R4220295437 | Monitor | Day 2 of ~8 biz days; by ~2026-06-05 |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+
+> [!note] Calendar May 25–31 (confirmed live API run 123)
+> | Date | Time (ET) | Event |
+> |------|-----------|-------|
+> | Mon 5/25 | all-day | Memorial Day — Goddard closed, MKA closed |
+> | Wed 5/27 – Fri 5/29 | all-day | Boston trip — T-2 days |
 > | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
