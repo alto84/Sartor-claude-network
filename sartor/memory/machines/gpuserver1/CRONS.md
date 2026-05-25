@@ -169,6 +169,17 @@ Rocinante curator drains these on its 06:30/23:00 passes and writes receipts to 
 
 ---
 
+## GPU temperature trajectory logger (added 2026-05-25)
+
+Beyond the crontab jobs above, this host also runs a continuous **GPU temperature trajectory logger** as a systemd user service:
+
+- `gpu-temp-logger.service` (~/.config/systemd/user/, `Restart=always`, lingering enabled) → writes a ~30s-cadence CSV to `/home/alton/generated/cron-logs/gpu-temp-trajectory-52271-{rental_id}-YYYY-MM-DD.csv`
+- `gpu-temp-summary.sh` (crontab `7 * * * *`) → reads the previous hour's rows, emits markdown digest to `inbox/gpuserver1/_temp-summary/`
+
+Both are the unified-v2 version that runs on **both** rtxserver and gpuserver1. Full architecture / schema / operations: [[gpu-temp-logger-v2]] at `machines/gpu-temp-logger-v2.md`. Single-GPU schema variant on this host; gpu1_*, BMC fan columns are empty in the CSV.
+
+---
+
 ## Appendix: Crontab Syntax Quick Reference
 
 - `*/5 * * * *` = every 5 minutes

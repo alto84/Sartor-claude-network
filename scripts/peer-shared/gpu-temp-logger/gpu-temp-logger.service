@@ -1,0 +1,20 @@
+[Unit]
+Description=Sartor GPU temperature trajectory logger (v2 unified, ~30s cadence)
+Documentation=file:///home/alton/gpu-temp-logger.sh
+After=docker.service nvidia-persistenced.service
+Wants=docker.service
+
+[Service]
+Type=simple
+ExecStart=/home/alton/gpu-temp-logger.sh
+Restart=always
+RestartSec=15
+StandardOutput=append:/home/alton/generated/cron-logs/gpu-temp-logger.systemd.log
+StandardError=append:/home/alton/generated/cron-logs/gpu-temp-logger.systemd.log
+
+# Resource bounds: tiny script, but enforce conservative caps anyway.
+MemoryMax=64M
+CPUQuota=10%
+
+[Install]
+WantedBy=default.target
