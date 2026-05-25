@@ -173,6 +173,17 @@ This file is authoritative for rtxpro6000server cron operations. When adding, mo
 
 ---
 
+## GPU temperature trajectory logger (added 2026-05-25)
+
+Beyond the four cron jobs above, this host also runs a continuous **GPU temperature trajectory logger** as a systemd user service:
+
+- `gpu-temp-logger.service` (~/.config/systemd/user/, `Restart=always`, lingering enabled) → writes a ~30s-cadence CSV to `/home/alton/generated/cron-logs/gpu-temp-trajectory-97429-{rental_id}-YYYY-MM-DD.csv`
+- `gpu-temp-summary.sh` (crontab `7 * * * *`) → reads the previous hour's rows, emits markdown digest to `inbox/rtxpro6000server/_temp-summary/`
+
+Both are the unified-v2 version that runs on **both** rtxserver and gpuserver1. Full architecture / schema / operations: [[gpu-temp-logger-v2]] at `machines/gpu-temp-logger-v2.md`. v1 (manual bash launched under pts/0) was retired 2026-05-25; the systemd unit replaced it after the schema unification.
+
+---
+
 ## Appendix: Crontab Syntax Quick Reference
 
 - `*/5 * * * *` = every 5 minutes
