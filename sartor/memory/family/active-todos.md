@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-25
 updated_by: personal-data-gather
-run: 123
+run: 125
 
 status: active
 priority: p1
@@ -856,3 +856,8 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Mon 5/25 | all-day | Memorial Day — Goddard closed, MKA closed |
 > | Wed 5/27 – Fri 5/29 | all-day | Boston trip — T-2 days |
 > | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
+
+## Latest from gather (2026-05-25) — run 125
+
+> [!todo] ORDER NOW — ImageQuix portrait sale: Vayu + Vishala (Memorial Day free shipping)
+> ImageQuix (no-reply@imagequix.com) sent Memorial Day sale emails for both [[family/vayu|Vayu]]'s and [[family/vishala|Vishala]]'s school portraits: free shipping during the Memorial Day sale window. Order via ImageQuix before the sale ends. Photos from MKA portrait sessions. No hard deadline stated in snippet — act today while sale is active. See [[family/vayu]] and [[family/vishala]].

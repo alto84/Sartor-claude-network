@@ -667,3 +667,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: unchanged from run 123 — 990-N 10 days overdue; Disney ADR Day 9; Berman $6K 7 days past promise; cat sitter T-2 CRITICAL (today is last booking day); Berteau $2,400 ASAP; Gaby $9,972 pending 13 days; UPS claim Day 2; Cadoo Medical $765.21 pay.
 - Pages updated: `daily/2026-05-25.md` (run 124 section appended), `log.md` (this entry, run bumped to 124), `data/heartbeat-log.csv` (created/appended), `data/gather-alerts.md` (written)
 - KEY: No new actionable items this run. Cat sitter for Boston 5/27 still unbooked at T-2 — today is the last realistic day. Sante Total Berteau $2,400 still awaiting Alton's response (3 days since Barbara's follow-up).
+
+## [2026-05-25] ingest | personal-data-gather run 125: portrait sale; 11 informational; P0 carry
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 25–Jun 1). No SSH (web runner). Third run of 2026-05-25.
+- New facts: (1) ImageQuix portrait sales for Vayu and Vishala — Memorial Day free shipping window, order via ImageQuix. FAMILY ACTION. (2) LinkedIn job alerts (Regeneron, Insmed, Bayer, Kailera, Clover) — INFORMATIONAL. (3) Consulting solicitations (Vedak, Gaoyi) — INFORMATIONAL. (4) Stanford HAI scaling-law newsletter — RESEARCH. (5) Doximity neuro news (dual decliners) — INFORMATIONAL. (6) JAMA weekly, Hiive digest ×2, Fierce Life Sciences fwd, M3 surveys, Montclair pool closure — all INFORMATIONAL.
+- Calendar: unchanged from runs 123–124. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon), Vasu dance performance ~6/2 TBD. All other calendars empty.
+- P0 carries: unchanged — 990-N 10 days overdue; Disney ADR Day 9; Berman $6K 7 days past promise; cat sitter T-2 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending 13 days; UPS claim monitor; Cadoo Medical $765.21 pay.
+- Pages updated: `daily/2026-05-25.md` (run 125 appended, run bumped to 125), `family/active-todos.md` (portrait sale todo added, run bumped to 125), `log.md` (this entry), `data/heartbeat-log.csv` (created/appended), `data/gather-alerts.md` (written)
+- KEY: New P1 item — ImageQuix portrait sale (Vayu + Vishala, free shipping, Memorial Day window, order soon). All P0 items carry unchanged. Cat sitter Boston T-2 remains the top priority.
