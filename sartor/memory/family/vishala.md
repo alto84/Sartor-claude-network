@@ -2,9 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-05-05
+updated: 2026-05-23
 updated_by: personal-data-gather
-run: 54
+run: 115
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -166,3 +166,28 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!deadline] 2026-05-15
 > **MKA Conference Day — Primary School.** General reminder from Primary School (m@mail1.veracross.com, 2026-05-07). Conference Day is 2026-05-15. Sign up on Veracross. See [[family/active-todos]].
+
+## Latest from gather (2026-05-23) — run 112
+
+> [!fact] NEW — Vishala sleepover with Amia: Sat May 30, 9 PM – Sun May 31, 4 PM
+> Family calendar event created by Aneeta (aneetasax@gmail.com) on 2026-05-17. Overnight, ~19 hours.
+> - Drop-off: Saturday May 30 at 9 PM
+> - Pickup: Sunday May 31 at 4 PM
+> Context: one day after Boston trip ends (5/29). Back-to-back logistics weekend.
+> Logistics: confirm drop-off and pickup arrangements with Amia's family. See [[family/active-todos]] and [[family/family-calendar]].
+
+## Latest from gather (2026-05-23) — run 114
+
+> [!fact] CORRECTION — Vishala sleepover with Amia: start 5 PM (not 9 PM as run 112 recorded)
+> Live Calendar API (run 114) returns corrected times for the May 30 sleepover:
+> - **Corrected start:** 2026-05-30 **17:00 ET (5 PM)**
+> - **Corrected end:** 2026-05-31 **12:00 ET (noon)**
+> - Run 112 incorrectly stated 9 PM start / 4 PM end. Calendar API is authoritative.
+> Duration is still ~19 hours (overnight). Drop-off is 4 hours earlier than previously flagged.
+> Logistics: coordinate drop-off at 5 PM Saturday May 30 and pickup at noon Sunday May 31 with Amia's family.
+> See [[family/active-todos]] and [[family/family-calendar]].
+
+## Latest from gather (2026-05-23) — run 115
+
+> [!fact] Screen time — week of May 16–22: 8 hours 57 minutes
+> Microsoft Family Safety weekly report (familysafety@microsoft.com, received 2026-05-23). Full report available at family.microsoft.com.

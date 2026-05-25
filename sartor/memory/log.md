@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-20
+updated: 2026-05-25
 updated_by: personal-data-gather
-run: 103
+run: 123
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -494,3 +494,168 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P1: Nehal's Birthday TOMORROW (Thu 5/21); PA trip Fri–Sat 5/22–5/23 (MKA conflict); Memorial Day Mon 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (15 days)
 - Gmail gap: 32 consecutive runs (72–103). OAuth URL re-issued; paste callback URL to complete.
 - Files touched: `daily/2026-05-20.md` (run 103 appended, frontmatter bumped run: 103), `log.md` (frontmatter bumped run: 103 + this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-21] ingest | personal-data-gather run 104: NEW — Calendar MCP also blocked; Gmail gap 33 runs; P0s overdue 6d; Disney ADR Day 5 CRITICAL
+- Sources: Gmail UNAVAILABLE (gap runs 72–104, 33+ consecutive since ~2026-05-13 evening), Calendar UNAVAILABLE (NEW — all 5 calendars blocked by MCP approval gate; was working runs 72–103), SSH unavailable (web runner)
+- Calendar delta vs run 103: no live data; date-shifted carry-forward only
+- Facts gathered: 0 new (both sources blocked)
+- NEW BLOCKER: Calendar MCP returning "MCP tool call requires approval" in this session — regression from prior runs. Requires user action in claude.ai MCP settings. Tool name mismatch possible (mcp__Google-Calendar__* vs mcp__claude_ai_Google_Calendar__* in allowlist).
+- TODAY: Nehal's Birthday (all-day)
+- Disney ADR: Day 5 of open window (opened May 17) — MAXIMUM sellout risk; contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 6 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15)
+- P1: PA trip TOMORROW Fri–Sat 5/22–5/23 (MKA conflict); Memorial Day Mon 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (14 days)
+- Files touched: `daily/2026-05-21.md` (created, run 104), `log.md` (frontmatter bumped run: 104 + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created)
+
+## [2026-05-21] ingest | personal-data-gather run 105: Gmail+Calendar gap 34 runs; 0 delta; Disney ADR Day 5 CRITICAL; P0s overdue 6d; PA trip TOMORROW
+- Sources: Gmail UNAVAILABLE (gap runs 72–105, 34+ consecutive since ~2026-05-13 evening), Calendar UNAVAILABLE (second consecutive run blocked by same platform consent gate; was working runs 72–103), SSH unavailable (web runner)
+- Calendar delta vs run 104: no live data; date-shifted carry-forward only
+- Facts gathered: 0 new (both sources blocked)
+- TODAY: Nehal's Birthday (all-day — send message or call)
+- Disney ADR: Day 5 of open window (opened May 17) — MAXIMUM sellout risk; contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 6 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1 TOMORROW: PA trip Fri–Sat 5/22–5/23 (MKA school conflict Vayu+Vishala); Memorial Day 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (14 days)
+- Gmail gap: 34+ consecutive runs (72–105). Platform consent gate blocking both MCPs.
+- Note: data/ directory missing (fresh container); heartbeat-log.csv and gather-alerts.md recreated
+- Files touched: `daily/2026-05-21.md` (run 105 appended, frontmatter bumped run: 105), `log.md` (frontmatter bumped run: 105 + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-21] ingest | personal-data-gather run 106: Gmail+Calendar gap 35 runs; 0 delta; Disney ADR Day 5 CRITICAL; P0s overdue 6d; PA trip TOMORROW
+- Sources: Gmail UNAVAILABLE (gap runs 72–106, 35+ consecutive since ~2026-05-13 evening), Calendar UNAVAILABLE (third consecutive run blocked by platform consent gate; runs 104–106; was working runs 72–103), SSH unavailable (web runner)
+- Calendar delta vs run 105: no live data; same calendar date (2026-05-21), no day-shift
+- Facts gathered: 0 new (both sources blocked)
+- TODAY: Nehal's Birthday (all-day — send message or call)
+- Disney ADR: Day 5 of open window (opened May 17) — MAXIMUM sellout risk; contact Nicol Stevenson n.stevenson@magicalvacationplanner.com / +1 412-215-2423
+- P0 OVERDUE 6 days: Sante Total 990-N (2026-05-15); Wohelo camp forms (2026-05-15); 185 Davis boiler vote (2026-05-15) — all unconfirmed due to Gmail gap
+- P1 TOMORROW: PA trip Fri–Sat 5/22–5/23 (MKA school conflict Vayu+Vishala); Memorial Day 5/25; Boston trip 5/27–5/29 (soccer + school conflicts); Chase/Sante Total KYC 2026-06-04 (14 days)
+- Note: data/ directory recreated (fresh container); heartbeat-log.csv and gather-alerts.md written fresh
+- Files touched: `daily/2026-05-21.md` (run 106 appended, frontmatter bumped run: 106), `log.md` (frontmatter bumped run: 106 + this entry), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (recreated)
+
+## [2026-05-21] ingest | personal-data-gather run 107: MCP RESTORED — Gmail + Calendar live after 33-run gap
+- Sources: Gmail (30 unread threads, newer_than:2d + keyword search), all 5 calendars (May 21–28), no SSH (web runner)
+- **RESTORED:** Both Gmail and Google Calendar MCP returned live data for first time since ~2026-05-13 evening (gap: runs 72–106)
+- New facts: Field Day conflict (MKA 5/22 9 AM vs PA trip); Magnus Health health records needed (Vayu + Vishala, 2026-2027); PatientGateway questionnaire due (Alton, Partners); Chase CC 7054 ($1,247.36 due 06/17); Chase CC 8547 ($27,609.04 due 06/17); Ink Business 7738 payment $4,151.86 scheduled; EquityZen SambaNova $29/share; PA trip confirmed; Boston trip confirmed
+- Calendar confirmed: Nehal's Birthday (today), PA trip Fri 5/22–Sat 5/23, Boston trip Wed 5/27–Fri 5/29; no soccer events from Blue Sombrero; Aneeta calendar empty this week
+- SNO 2026 abstract deadline May 26: SKIP (already decided NOT SUBMITTING per 2026-04-16 triage)
+- Alerts: P0 — Field Day conflict (decide today); Magnus Health records (enrollment-blocking); PatientGateway questionnaire; carry-forward P0 overdue items (990-N, Wohelo, boiler vote, Disney ADR day 5)
+- Files touched: `daily/2026-05-21.md` (run 107 appended, frontmatter bumped), `family/active-todos.md` (run 107 section appended), `data/gather-alerts.md` (overwritten with live data), `data/heartbeat-log.csv` (run 107 entry appended), `log.md` (this entry)
+
+## [2026-05-22] ingest | personal-data-gather run 108: Gmail+Calendar live; PA trip underway; MKA cafeteria auto-debit; P0s carry-forward
+- Sources: Gmail (30 unread threads, newer_than:2d), all 5 calendars (May 22–29). No SSH (web runner).
+- Calendar: PA trip active today (5/22–5/23), Boston trip 5/27–5/29, Memorial Day 5/25, no soccer events, Aneeta cal empty
+- New facts: MKA MyKidsSpending cafeteria auto-debit ~$100 (Chase 8563, within 48h); Reed reunion meal-ticket soft deadline 5/27; Window AC thread closed (Oana/Harvard — resolved); Amazon pool chemicals shipped; Vasu Goddard normal day
+- Carry-forward P0: 990-N 7 days overdue; Disney ADR Day 6
+- No new deadlines; MKA cafeteria debit is passive/informational unless account is thin
+- Pages updated: `daily/2026-05-22.md` (created), `family/active-todos.md` (run 108 appended, frontmatter bumped), `family/vayu.md` (MKA cafeteria fact appended, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-22] ingest | personal-data-gather run 109: MKA newsletter; Shakespeare Project conflict; Vishala June 5 closing; INVESCO proxy x2
+- Sources: Gmail newer_than:6h (4 threads), all 5 Google Calendars (May 22–29). No SSH (web runner).
+- New facts: WeAreMKA Veracross newsletter (May 22) extracted — Shakespeare Project May 29–30 conflicts with Boston trip; Vishala Third Grade Closing Exercises June 5 (parent event); Wacky Wednesday Dress Down June 3; STEM+ Summer Camp Open House May 30. INVESCO proxy vote notices x2 (informational/financial). USPS 0 mail today.
+- Calendar: no new events vs run 108 (Family: PA trip 5/22–5/23, Boston trip 5/27–5/30; Aneeta empty; Blue Sombrero empty; Tasks empty)
+- P0 carries unchanged: 990-N 7 days overdue; Disney ADR Day 7
+- Pages updated: `daily/2026-05-22.md` (run 109 appended, frontmatter bumped), `family/active-todos.md` (run 109 section appended, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/gather-alerts.md` (created fresh), `data/heartbeat-log.csv` (created fresh)
+
+## [2026-05-22] ingest | personal-data-gather run 110: Guidepoint Biosimulation AI; Vayu screen time; 5 calendars
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 22–29). No SSH (web runner).
+- New facts: Guidepoint #1733233 (Biosimulation Software/Service Market, AI use cases) — ACTION_REQUIRED, 24-48h window; Alton's AZ conflict-of-interest must be reviewed before accepting. Vayu screen time 8h41m May 15-21 (informational). Goddard Unit 9 Week 2 newsletter (Goodnight Gorilla, informational). LinkedIn AI/DS director roles at J&J MedTech and Amgen (informational).
+- Calendar: no new events vs run 109 (Family: PA trip 5/22–5/23 confirmed underway, Boston trip 5/27–5/30; all others empty)
+- P0 carries escalated: 990-N now 8 days overdue; Disney ADR Day 8
+- Pages updated: `daily/2026-05-22.md` (run 110 appended, frontmatter bumped), `family/active-todos.md` (run 110 section prepended, frontmatter bumped), `log.md` (this entry), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (created)
+
+## [2026-05-22] ingest | personal-data-gather run 111: Cadoo Medical bill $765.21; Vasu soccer extended June 22; MKA Magnus Health reminder
+- Sources: Gmail newer_than:4h (16 threads), all 5 Google Calendars (May 22–29). No SSH (web runner).
+- New facts: Cadoo Medical bill $765.21 addressed to "EMMETT" at alto84@gmail.com — ACTION_REQUIRED, verify identity before paying; Vasu Goddard soccer extended to June 22 due to Memorial Day closure; MKA Magnus Health 2026-2027 forms now open (reinforcing existing run 97 callout, not duplicated). LinkedIn DSPV/AI roles (informational). Hiive market digest (informational).
+- Calendar: no new events vs run 110 (Family: PA trip 5/22–5/23, Boston trip 5/27–5/30; all others empty)
+- P0 carries: 990-N 8 days overdue; Disney ADR Day 8 end-of-day
+- Pages updated: `daily/2026-05-22.md` (run 111 appended), `family/active-todos.md` (Cadoo bill callout appended), `family/vasu.md` (soccer extension appended), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-23] ingest | personal-data-gather run 112: Vishala sleepover Amia May 30; Boston T-4; 990-N Day 8
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 23–30). No SSH (web runner).
+- New facts: Vishala sleepover with Amia (Sat May 30 9 PM – Sun May 31 4 PM, Family calendar, Aneeta created 5/17) — NEW, first capture. Goddard CLOSED May 25 confirmed via Kaymbu. Pop Warner registration open (communitypass.net, informational). Vayu MKA cafeteria funded $101.75 (completed auto-debit, closed). PA trip (5/22–5/23) complete.
+- Calendar: Family (Boston trip 5/27–5/29 + Vishala sleepover 5/30); all other calendars empty this week.
+- P0 carries escalated: 990-N 8 days overdue; Disney ADR Day 7 (critical).
+- Pages updated: `daily/2026-05-23.md` (created), `family/vishala.md` (sleepover appended, frontmatter bumped), `family/family-calendar.md` (sleepover + week note appended, frontmatter bumped), `family/active-todos.md` (run 112 section appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
+
+## [2026-05-23] ingest | personal-data-gather run 113: Berman $6K payment 5d past promise; all else dedup of run 112
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 23–30). No SSH (web runner). Second run today.
+- New facts (1): Berman Home Systems $6,000 payment — Alton promised credit card payment "in just a few days" on 2026-05-18 (thread #AAAO13216-03); today is 5 days later; Alyssa has not followed up but window is closing. Route: active-todos.
+- All other threads/calendar events match run 112 data exactly — deduplicated, not re-routed.
+- P0 carries: 990-N 8 days overdue (unchanged); Disney ADR Day 7+ (unchanged).
+- Pages updated: `daily/2026-05-23.md` (run 113 section appended, frontmatter bumped), `family/active-todos.md` (Berman $6K warning callout prepended to run 113 section, frontmatter bumped), `log.md` (frontmatter bumped + this entry), `data/heartbeat-log.csv` (run 113 line appended), `data/gather-alerts.md` (refreshed with full current alert state)
+
+## [2026-05-23] ingest | personal-data-gather run 114: sleepover time correction; Hiive Anthropic new low ask; HTH pool delivery
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 23–30). No SSH (web runner). Third run today.
+- New facts: (1) DATA CORRECTION — Vishala sleepover (May 30–31): start is 5 PM ET, not 9 PM as run 112 recorded; end is noon, not 4 PM. Calendar API authoritative. (2) FINANCIAL — Hiive: Anthropic secondary market new low ask $1,250/share (4 sell orders $1,250–$1,600; 1 match); Alton on watchlist. (3) FAMILY INFO — Amazon HTH 67121 pool chemicals delivered 2026-05-22; on hand at 85 Stonebridge.
+- Calendar: no new events vs run 112/113. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: 990-N 8 days overdue (unchanged); Disney ADR Day 7 (unchanged).
+- Pages updated: `daily/2026-05-23.md` (run 114 appended), `family/vishala.md` (time correction appended, run bumped to 114), `family/family-calendar.md` (time correction appended, run bumped to 114), `family/active-todos.md` (run 114 section appended), `ALTON.md` (Hiive/Anthropic note appended), `log.md` (this entry, run bumped to 114), `data/heartbeat-log.csv` (run 114 line appended), `data/gather-alerts.md` (refreshed)
+- KEY: Vishala sleepover logistics need 5 PM drop-off (4h earlier than previously flagged). Berman $6K Lutron payment still open. 990-N overdue.
+
+## [2026-05-23] ingest | personal-data-gather run 116: Sante Total Berteau ASAP ($2,400); BMC wellness event May 30
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 23–30). No SSH (web runner). Fifth run today.
+- New facts: (1) ACTION_REQUIRED — Barbara Weis follow-up on "Money for the elderly" today (18:51 UTC): Berteau situation "desperate," requesting $800/mo increase ($2,400 for 3 months upfront) — ASAP response needed from Alton as Treasurer; original May 12 email also had pending Gaby $9,972 request. (2) INFORMATIONAL — BMC free community Family Wellness Event, Sat May 30, 11 AM–3 PM, Blue Hill Club/Harambee Park — compatible with Vishala sleepover drop-off at 5 PM.
+- Calendar: no new events vs run 115. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All others empty.
+- P0 carries: 990-N 8 days overdue; Disney ADR Day 7+; Berman $6K (5d past promise); cat sitter T-4; NEW: Sante Total Berteau decision ASAP.
+- Pages updated: `daily/2026-05-23.md` (run 116 appended, frontmatter bumped), `business/sante-total.md` (Berteau follow-up callout appended, frontmatter bumped), `family/active-todos.md` (run 116 section appended, run bumped to 116), `log.md` (this entry, run bumped to 116), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Sante Total treasurer decision needed ASAP — Barbara Weis follow-up on Berteau elderly food program ($2,400 ask). Cat sitter for Boston trip (5/27) still unbooked at T-4.
+
+## [2026-05-23] ingest | personal-data-gather run 115: cat sitter T-4 escalated; Window AC property; Chase credit alerts; Vishala screen time
+- Sources: Gmail (newer_than:2d, 50 threads — broader query), all 5 Google Calendars (May 23–30). No SSH (web runner). Fourth run today.
+- New facts: (1) URGENCY ESCALATION — cat sitter for Boston trip (5/27) still unresolved, T-4 days, escalated to P0 in active-todos. (2) Window AC rental property — Oana Geambasu (Harvard SPH tenant) emailed Aneeta; Aneeta authorized Task Rabbit reimbursement; Oana self-resolved, moving out soon. (3) Chase credit balance alerts x2 (5/23 ~14:28 ET) — informational. (4) Vishala screen time 8h57m week May 16–22 (Microsoft Family Safety). (5) Montclair municipal pool closed (unseasonable weather, low priority). (6) LinkedIn DSPV director role alerts (J&J, BMS, Celcuity, Ladders). (7) Anthropic red.anthropic.com new posts (exploit measurement, vuln disclosure). (8) MyKidsSpending Vayu portal registration invitation (low priority).
+- Calendar: no new events vs run 114. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: 990-N 8 days overdue; Disney ADR Day 7+; Berman $6K (5 days past promise); cat sitter T-4 (NEW escalation to P0).
+- Pages updated: `daily/2026-05-23.md` (run 115 appended), `family/active-todos.md` (P0 cat sitter escalation, run bumped to 115), `family/vishala.md` (screen time appended, run bumped to 115), `log.md` (this entry, run bumped to 115), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
+
+## [2026-05-24] ingest | personal-data-gather run 118: Baby Wipes shipped; Doximity newsletter; all else dedup
+- Sources: Gmail (newer_than:1d, 18 threads), all 5 Google Calendars (May 24–31). No SSH (web runner). Second run today.
+- New facts: (1) Amazon Elements Baby Wipes shipped (2 shipment emails 02:34/03:14 UTC, INFORMATIONAL, follows 5/23 order for [[family/vasu|Vasu]]). (2) Doximity Neuro News — "Blood Test May Help Identify Cognitive-Motor Decline in Dementia-Free Adults" (01:17 UTC, INFORMATIONAL). All other 16 threads duplicates of runs 112–117.
+- Calendar: unchanged from run 117. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: same as run 117 (same day) — 990-N 9 days overdue; Disney ADR Day 8; Berman $6K 6 days past promise; cat sitter T-3 CRITICAL; Berteau ASAP.
+- Pages updated: `daily/2026-05-24.md` (run 118 section appended, run bumped), `log.md` (this entry, run bumped to 118), `data/heartbeat-log.csv` (created — run 117 entry reconstructed + run 118 added), `data/gather-alerts.md` (created)
+- KEY: No new actionable items this run. Cat sitter for Boston (5/27) still unbooked at T-3 — today is last day with confidence.
+
+## [2026-05-24] ingest | personal-data-gather run 117: no new Gmail; calendar unchanged; P0 escalations day+1
+- Sources: Gmail (newer_than:1d, 16 threads all dated 2026-05-23), all 5 Google Calendars (May 24–31). No SSH (web runner). First run today.
+- New facts: (1) Amazon household orders (Waterloo sparkling water + baby wipes, ordered + delivered 2026-05-23) — first capture, INFORMATIONAL only, daily log. No other new intelligence.
+- Calendar: unchanged from yesterday. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon ET). All others empty.
+- P0 carry-forward updated: 990-N now 9 days overdue; Disney ADR Day 8; Berman $6K 6 days past promise; cat sitter T-3 (CRITICAL); Sante Total Berteau follow-up 1 day since 5/23.
+- Pages updated: `daily/2026-05-24.md` (created), `family/active-todos.md` (run 117 carry-forward appended, frontmatter bumped), `log.md` (this entry, run bumped to 117), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Cat sitter for Boston trip (5/27) still unbooked at T-3 — book today. Sante Total Berteau $2,400 decision overdue 1 day. 990-N now 9 days past IRS deadline.
+
+## [2026-05-24] ingest | personal-data-gather run 119: UPS claim; Vayu cafeteria debit confirmed; pool chemicals; expanded Gmail window
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 24–31). No SSH (web runner). Third run today.
+- New facts: (1) UPS lost package claim received (04:09 AM ET today, pkginfo@ups.com) — ACTION_REQUIRED/monitor, expect UPS contact by ~2026-06-05. (2) Vayu MKA cafeteria debit confirmed — Chase 8563 debited $101.75 ($100 + $1.75 fee) on 2026-05-23 midnight; MyKidsSpending portal active. Closes run 108 pending item. (3) Amazon delivered HTH swimming pool chemicals (2026-05-22 22:23 ET) — pool supply, informational. (4) Anthropic red.anthropic.com newsletter (2026-05-22) — exploit measurement + vuln disclosure, informational. (5) Code Ninjas Livingston NJ summer camps promo (2026-05-23) — summer planning context for Vayu/Vishala.
+- Calendar: unchanged from runs 117–118. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: 990-N 9 days overdue; Disney ADR Day 8 (Blue Bayou at critical risk); Berman $6K 6 days past promise; cat sitter T-3 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending since 5/12.
+- Pages updated: `daily/2026-05-24.md` (run 119 section appended, run bumped), `family/vayu.md` (cafeteria debit confirmed, run 108 todo closed), `family/active-todos.md` (UPS claim added, debit resolved, frontmatter bumped), `log.md` (this entry, run bumped to 119), `data/heartbeat-log.csv` (written), `data/gather-alerts.md` (written)
+- KEY: Cat sitter for Boston trip (5/27) at T-3 — last realistic booking day. Sante Total Berteau $2,400 decision needed ASAP. 990-N 9 days overdue. New: UPS lost package claim filed today; monitor for ~8 business days.
+
+## [2026-05-24] ingest | personal-data-gather run 120: Cadoo bill clarified; Sante Total 3-part ask detailed; Amazon delivered; Goddard schedule confirmed
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 24–31). No SSH (web runner). Fourth run today.
+- New facts: (1) CLARIFICATION — Cadoo Medical PC $765.21 bill confirmed legitimate for Alton ("EMMETT" = Alton's first name per UPS email today); ACTION_REQUIRED to pay. (2) Amazon Baby Wipes delivered 11:07 AM ET today — INFORMATIONAL. (3) Goddard Sneak Peek week of May 25–29: Mon 5/25 CLOSED (Memorial Day), Dance Recital June 2 — both previously known, confirmed. (4) Sante Total Barbara Weis 3-part ask fully detailed: Berteau elderly grant ($2,400/3 months), school lunch program with Erick Delss (pending, no action), Gaby $9,972 (Finance Report 2025.xlsx attached, no response since 5/12). (5) LinkedIn Medical Director InMail — skip per recruiter-feed triage rule.
+- Calendar: unchanged from runs 112–119. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: 990-N 9 days overdue; Disney ADR Day 8; Berman $6K 6 days past promise; cat sitter T-3 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending; Cadoo Medical $765.21 NEW-PAY.
+- Pages updated: `daily/2026-05-24.md` (run 120 section appended, run bumped), `business/sante-total.md` (Berteau/Gaby 3-part ask detailed, 990-N overdue updated), `family/active-todos.md` (Cadoo bill resolved + run 120 carry-forward, run bumped), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Cat sitter for Boston (T-3) still unbooked. Cadoo Medical $765.21 is now confirmed as Alton's bill — ready to pay. Sante Total 3-part ask (Berteau + Gaby) awaiting Alton response. 990-N 9 days overdue.
+
+## [2026-05-24] ingest | personal-data-gather run 121: 5 new informational threads; pool closed 3rd day; AI newsletter; pharma forward from Oliver
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 24–31). No SSH (web runner). Fifth run today.
+- New facts: (1) Oliver Sartor forwarding Fierce Life Sciences pharma digest (11:50 AM ET) — industry/FDA news, INFORMATIONAL. (2) Montclair pool closed again today (9:06 AM ET) — 3rd consecutive closure for unseasonable weather. (3) JAMA Weekly Highlights email today — professional reading, INFORMATIONAL. (4) Substack AI #169 from Zvi Mowshowitz et al. (5/22) — AI newsletter relevant to research interests. (5) JAMA Med News "19,000 Measles Cases" (5/22) — medical news, INFORMATIONAL. All 5 new items are INFORMATIONAL; no new ACTION_REQUIRED items.
+- Calendar: unchanged from runs 112–120. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: unchanged from run 120 — 990-N 9 days overdue; Disney ADR Day 8; Berman $6K 6 days past promise; cat sitter T-3 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending; UPS claim monitor; Cadoo Medical $765.21 pay.
+- Pages updated: `daily/2026-05-24.md` (run 121 section appended, run bumped), `log.md` (this entry, run bumped to 121), `data/heartbeat-log.csv` (created with runs 117–121), `data/gather-alerts.md` (written)
+- KEY: No new escalations this run. All P0 items carry from run 120 unchanged. Cat sitter for Boston 5/27 still critical at T-3.
+
+## [2026-05-24] ingest | personal-data-gather run 122: Stanford HAI scaling laws; Hiive digest; 2 LinkedIn recruiter skips
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 24–31). No SSH (web runner). Sixth run today.
+- New facts: (1) Stanford HAI newsletter "A new approach to AI scaling laws" (1:03 PM ET) — measurement-science reframing of scaling laws; INFORMATIONAL for AI research context. (2) Hiive daily private market digest (3:05 PM ET) — INFORMATIONAL. 2 LinkedIn recruiter alerts skipped per triage rule (Bayer Exec Med Dir, Kailera Therapeutics Pharmacovigilance MD).
+- Calendar: unchanged from runs 112–121. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All other calendars empty.
+- P0 carries: unchanged from run 121 — 990-N 9 days overdue; Disney ADR Day 8; Berman $6K 6 days past promise; cat sitter T-3 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending; UPS claim monitor; Cadoo Medical $765.21 pay.
+- Pages updated: `daily/2026-05-24.md` (run 122 appended, run bumped to 122), `log.md` (this entry, run bumped to 122), `data/heartbeat-log.csv` (run 122 entry appended), `data/gather-alerts.md` (updated)
+- KEY: No new escalations. P0 items carry from run 121 unchanged. Cat sitter Boston 5/27 still unresolved (T-3 days).
+
+## [2026-05-25] ingest | personal-data-gather run 123: T-2 cat sitter CRITICAL; Memorial Day; 4 informational threads
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 25–Jun 1). No SSH (web runner). First run of 2026-05-25.
+- New facts: (1) cardiosax@gmail.com family share "4,000 Rules: Sanskrit Grammar Behind Every LLM" (7:54 PM ET 5/24) — INFORMATIONAL. (2) Substack "Reiner Pope – Chip design from the bottom up" (6:00 PM ET 5/24) — INFORMATIONAL. (3) Samsung TV ACR opt-in notice (5:08 PM ET 5/24) — INFORMATIONAL. (4) Disney+ new login + OTP (4:41 PM ET 5/24) — INFORMATIONAL, user-initiated activity.
+- Calendar: no new events vs prior runs. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon). All others empty. Today: Memorial Day — Goddard closed, MKA closed.
+- P0 updates: cat sitter now T-2 (LAST DAY); 990-N now 10 days overdue; Berman 7 days past promise; Berteau 2 days since follow-up; Gaby 13 days.
+- Pages updated: `daily/2026-05-25.md` (created), `family/active-todos.md` (run 123 section appended, frontmatter bumped), `log.md` (this entry, run bumped to 123), `data/heartbeat-log.csv` (created with runs 117–123), `data/gather-alerts.md` (created)
+- KEY: Cat sitter for Boston (5/27) at T-2 — TODAY is the last realistic booking day. Sante Total Berteau $2,400 now 2 days without response. 990-N 10 days overdue.

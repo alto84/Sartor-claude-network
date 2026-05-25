@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-20
+updated: 2026-05-25
 updated_by: personal-data-gather
-run: 98
+run: 123
 
 status: active
 priority: p1
@@ -283,6 +283,104 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 - [[vasu]] - Vasu-specific deep profile
 - [[family-calendar]] - Full 30-day calendar view
 - [[ALTON]] - Head of household
+
+## Latest from gather (2026-05-22) — run 108
+
+> [!fact] PA trip underway today (5/22–5/23)
+> "Friday to PA" confirmed on Family calendar. All-day event through Sat 5/23. Field Day conflict decision was yesterday — assumed resolved per Alton.
+
+> [!todo] MKA cafeteria account — Vayu auto-debit incoming (~$100)
+> Two emails from statements@mykidsspending.com at midnight (2026-05-22 00:00–00:07 AM ET):
+> (1) Chase account ending **8563** will be debited **~$100** "within the next day or two" to fund [[family/vayu|Vayu]]'s MKA cafeteria (MyKidsSpending) account.
+> (2) A MyKidsSpending portal account has been created for Vayu — manage at mykidsspending.com.
+> No immediate action unless $100 debit would cause account issues. Consider logging in to set spending limits or monitor balance.
+
+> [!warning] P0 carry-forward — Sante Total Form 990-N OVERDUE 7 days
+> Not filed per runs 22–108. File at IRS.gov → 990-N e-Postcard. Gross receipts <$50K TY2025. See [[business/sante-total]].
+
+> [!warning] P0 carry-forward — Disney ADR Day 6 (Blue Bayou at risk)
+> Contact Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. See [[family/disney-july-2026]].
+
+> [!note] Boston trip 5/27–5/29 — school conflicts still open
+> Family calendar has Boston trip Wed 5/27 – Fri 5/29. School days for Vayu + Vishala (MKA). Confirm plan with Aneeta.
+
+> [!note] Reed reunion soft deadline — meal tickets end 2026-05-27
+> Alton's Reed College reunion: dorms nearly full, meal ticket sales close May 27 at midnight PST. Optional. No action unless attending.
+
+## Latest from gather (2026-05-21) — run 107
+
+> [!fact] Gmail + Calendar MCP RESTORED after 33+ run gap
+> Both Gmail (30 threads) and all 5 Google Calendars returned live data this run. First live-data run since ~2026-05-13 evening (gap: runs 72–106). Items below are from live sources.
+
+> [!warning] TODAY — Decide Field Day vs PA Trip logistics (before end of day)
+> MKA Veracross email (12:01 PM May 21): **Primary School Field Day is Friday May 22 at 9:00 AM.** "Starts promptly at 9:00 am — an extravaganza of athletic events, teamwork, treats, and fun community activities." Affects [[family/vayu|Vayu]] (4th grade) and [[family/vishala|Vishala]] (3rd grade). Family calendar also has "Friday to PA" all-day 5/22. Conflict: if kids go on PA trip, they miss Field Day. Confirm with Aneeta today. Options: (a) Field Day at 9 AM, leave for PA after ~noon; (b) kids skip Field Day, go to PA; (c) adults-only PA trip, kids at school. See [[family/family-calendar]].
+
+> [!todo] ACTION_REQUIRED — Magnus Health records needed (Vayu + Vishala) for 2026-2027
+> Two separate emails from no-reply@magnushealthportal.com (2026-05-20): one for [[family/vishala|Vishala]], one for [[family/vayu|Vayu]]. "Items that need to be provided to update your child's health records for the 2026-2027 school year. Items must be resolved in order for your child to continue at school." Log in to Magnus Health portal and submit required records for both children. No hard deadline stated but enrollment-blocking language — act this week.
+
+> [!todo] ACTION_REQUIRED — PatientGateway questionnaire due soon
+> PatientGateway@partners.org (2026-05-20 12:23 PM): "You have a questionnaire that needs to be completed soon." Mass General Brigham / Partners system. Log in at patient.massgeneral.org and complete. See [[ALTON]].
+
+> [!fact] Chase credit card statements — both due 2026-06-17, auto-pay enabled
+> Two statements arrived today (no.reply.alerts@chase.com):
+> - Card ending **7054**: balance $1,247.36, min payment $40.00, due 06/17/2026, auto-pay enrolled
+> - Card ending **8547**: balance $27,609.04, min payment $686.00, due 06/17/2026, auto-pay enrolled
+> Auto-pay will cover minimum. No immediate action unless manual full-balance payment or charge review needed.
+
+> [!fact] Chase Ink Business Unlimited 7738 — $4,151.86 payment authorized 2026-05-20
+> no.reply.alerts@chase.com (2026-05-21 01:12 UTC): payment scheduled for Ink Business Unlimited 7738, $4,151.86, authorized May 20, 2026. See [[business/solar-inference]].
+
+> [!note] Calendar — confirmed live (May 21–28)
+> - TODAY Thu 5/21: Nehal's Birthday (all-day, recurring) — send message or call
+> - Fri 5/22 – Sat 5/23: "Friday to PA" (Family calendar, confirmed)
+> - Wed 5/27 – Fri 5/29: "Boston trip" (Family calendar, confirmed, created 2026-04-28 by Alton)
+> - Aneeta calendar: no events this week
+> - Blue Sombrero (Vayu soccer): no events this week
+> See [[family/family-calendar]] for full view.
+
+> [!warning] PA trip + Field Day conflict — DECIDE TODAY
+> "Friday to PA" (Fri 5/22) now conflicts with MKA Primary School Field Day (Fri 5/22 at 9:00 AM). See Field Day item above.
+
+> [!note] Vasu at Goddard — bugs/insects week
+> Three Kaymbu classroom moments today: "Creepy Crawly Patterns" (insect manipulatives + play doh), "CONSTRUCTION: insect houses" (nonfiction books + building), "Hugs from friends." [[family/vasu|Vasu]] appears engaged. No action needed.
+
+## Latest from gather (2026-05-22) — run 110
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1733233 (respond within 24–48h)
+> Guidepoint Network request from Alvi Rahman (alvi.rahman@guidepointglobal.com, +1 646-688-4846).
+> Topic: **Biosimulation Software/Service Market** — client seeking experts familiar with AI use cases, disruption, and opportunities in biosimulation services/software.
+> Directly aligned with [[ASTRAZENECA|Alton's AZ role]] (Senior Medical Director, AI Innovation and Validation, Global Patient Safety).
+> **Conflict of interest:** cannot discuss Biogen products; AZ listed as current employer in profile — review carefully before accepting.
+> Accept or decline ASAP; consultations scheduled within 24–48h. See [[ALTON]] for advisory log.
+
+> [!note] Vayu screen time week of May 15–21: 8 hr 41 min
+> Microsoft Family Safety report (2026-05-22). Informational. See [[family/vayu]].
+
+> [!warning] P0 carry-forward — Sante Total Form 990-N OVERDUE 8 days
+> Not filed per runs 22–110. File at IRS.gov → 990-N e-Postcard. See [[business/sante-total]].
+
+> [!warning] P0 carry-forward — Disney ADR Day 8 (Blue Bayou at high risk)
+> Contact Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. See [[family/disney-july-2026]].
+
+## Latest from gather (2026-05-22) — run 109
+
+> [!warning] CONFLICT — Shakespeare Project MKA May 29–30 vs Boston Trip
+> WeAreMKA newsletter (2026-05-22) lists **Shakespeare Project at MKA — Friday May 29 + Saturday May 30** under Primary School updates. Family calendar has Boston trip **May 27 – May 30** (all-day). If [[family/vayu|Vayu]] (4th grade) or [[family/vishala|Vishala]] (3rd grade) have roles in the Shakespeare Project, there is a direct conflict. Clarify with school whether kids are performing. Source: Veracross WeAreMKA newsletter.
+
+> [!deadline] 2026-06-05 — Parent event: Vishala Third Grade Closing Exercises
+> WeAreMKA newsletter: **Third Grade Closing Exercises — Friday, June 5.** [[family/vishala|Vishala]] is in 3rd grade. Mark calendar; plan to attend. Same day as Upper School Awards Assembly (US only, not relevant). Source: Veracross WeAreMKA newsletter.
+
+> [!todo] 2026-06-03 — Wacky Wednesday Dress Down Day
+> WeAreMKA newsletter: **Wacky Wednesday Community Dress Down Day — Wednesday, June 3.** Plan outfits for [[family/vayu|Vayu]] and [[family/vishala|Vishala]]. Source: Veracross WeAreMKA newsletter.
+
+> [!note] INVESCO proxy votes x2 (2026-05-22) — review at leisure
+> Two proxy-vote / shareholder-materials notices from id@proxyvote.com: 08:26 ET and 09:36 ET. Subject: "INVESCO Important Information." No hard deadline in email snippet. Review proxy materials via proxyvote.com and vote or discard. Category: FINANCIAL. See [[ALTON]].
+
+> [!warning] P0 carry-forward — Sante Total Form 990-N OVERDUE 7 days
+> Not filed per runs 22–109. File at IRS.gov → 990-N e-Postcard. See [[business/sante-total]].
+
+> [!warning] P0 carry-forward — Disney ADR Day 7 (Blue Bayou at risk)
+> Contact Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. See [[family/disney-july-2026]].
 
 ## Latest from gather (2026-05-16) — run 80
 
@@ -610,3 +708,151 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Disney ADR — Day 4 of open window (status unknown — Gmail gap)
 > 60-day ADR window for July 16–19 Disneyland trip opened May 17. Today is Day 4. Blue Bayou and character dining typically book within 24–72h — risk is now elevated. Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. Status unconfirmed due to Gmail gap (run 27 consecutive). See [[family/disney-july-2026]].
+
+## Latest from gather (2026-05-22) — run 111
+
+> [!warning] VERIFY BEFORE PAYING — Cadoo Medical PC bill $765.21 (received 2026-05-22)
+> Tebra billing platform (noreply@tebra.com) sent a balance statement to alto84@gmail.com, but the bill is addressed to "EMMETT" — not a recognized name in the household. Practice: Cadoo Medical PC, (973) NJ area code. Amount: **$765.21**. A second email in the same inbox batch (NJ Pride FC marketing) also used "Hi Emmett!" — possible alias or list contamination associated with this Gmail address.
+> Action: Confirm whether this bill is for a household member or a misdirected email before paying. If legitimate, route to appropriate payer.
+> Route: [[ALTON]]
+
+## Latest from gather (2026-05-23) — run 113
+
+> [!warning] ACTION REQUIRED — Berman Home Systems $6,000 payment (5 days past promise)
+> Thread #AAAO13216-03 (Alyssa Berman, Alyssa@bermanhomesystems.com). Alton promised credit card payment "in just a few days" on 2026-05-18 after declining debit-card route (merchant fee). Alyssa agreed to wait. Today is 2026-05-23 — 5 days later. No follow-up from Berman yet, but the window is closing. Pay by credit card or confirm new timeline with Alyssa. This is the Lutron home system order. See [[ALTON]] for payment log.
+
+## Latest from gather (2026-05-23) — run 112
+
+> [!fact] NEW — Vishala sleepover with Amia: Sat May 30, 9 PM – Sun May 31, 4 PM
+> Family calendar event (Aneeta created 2026-05-17). One day after Boston trip ends.
+> - Drop-off: Sat May 30, 9 PM | Pickup: Sun May 31, 4 PM
+> Logistics: confirm drop-off and pickup arrangements with Amia's family. See [[family/vishala]] and [[family/family-calendar]].
+
+> [!warning] P0 carry-forward — Sante Total Form 990-N OVERDUE 8 days
+> Not filed per runs 22–112. File at IRS.gov → 990-N e-Postcard. Gross receipts <$50K TY2025. See [[business/sante-total]].
+
+> [!warning] P0 carry-forward — Disney ADR Day 7 (Blue Bayou at critical risk)
+> Contact Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. See [[family/disney-july-2026]].
+
+> [!todo] Informational — Pop Warner registration open (communitypass.net)
+> Montclair Pop Warner now open: Tackle Football ages 8–13 ($225), Cheerleading ages 5–7 ($150). Eligible: [[family/vayu|Vayu]] (10, tackle), [[family/vishala|Vishala]] (8, tackle or cheer). No deadline.
+
+> [!note] Calendar — May 23–30 (confirmed from live API run 112)
+> - Mon 5/25: Memorial Day — Goddard CLOSED (confirmed via Kaymbu), MKA closed
+> - Wed 5/27 – Fri 5/29: Boston trip (T-4 days; school/cat-sitter logistics unresolved)
+> - Sat 5/30, 9 PM – Sun 5/31, 4 PM: [[family/vishala|Vishala]] sleepover with Amia — NEW
+> - Blue Sombrero: no Vayu soccer this week; Aneeta calendar: no events
+
+## Latest from gather (2026-05-23) — run 114
+
+> [!fact] TIME CORRECTION — Vishala sleepover: drop-off 5 PM (not 9 PM), pickup noon (not 4 PM)
+> Live Calendar API (run 114) corrects the run 112 entry. Calendar shows:
+> - **Drop-off: Saturday May 30, 5:00 PM ET**
+> - **Pickup: Sunday May 31, 12:00 PM (noon) ET**
+> Run 112 stated 9 PM and 4 PM — those were wrong. Adjust logistics planning with Amia's family accordingly.
+> See [[family/vishala]] and [[family/family-calendar]].
+
+> [!note] Calendar — May 23–30 (CORRECTED, live API run 114)
+> | Date | Time | Event | Calendar | Notes |
+> |------|------|-------|----------|-------|
+> | Mon 5/25 | all-day | Memorial Day | — | Goddard CLOSED. MKA closed. |
+> | Wed 5/27 – Fri 5/29 | all-day | Boston trip | Family | School/cat logistics unresolved |
+> | **Sat 5/30, 5 PM – Sun 5/31, noon** | **overnight** | **Vishala sleepover (Amia)** | **Family** | **CORRECTED from run 112 (was 9 PM–4 PM)** |
+> | All others | — | No events | — | Aneeta, Alton primary, Tasks, Blue Sombrero all empty |
+
+## Latest from gather (2026-05-23) — run 116
+
+> [!todo] ACTION_REQUIRED — ASAP — Sante Total: Barbara Weis follow-up on Berteau elderly funding
+> Barbara Weis (dye2tie@verizon.net) sent a follow-up today (2026-05-23 18:51 UTC) to the May 12 thread: "Berteau has sent me several messages that the situation is desperate. If we can't do all of this, can we afford to increase to $800 a month and send him $2400 to cover the next three months? Please answer asap." Original May 12 email also requested sending Gaby $9,972/$10,000. Alton must respond as Treasurer. CC: asmi60@lsuhsc.edu, alison.annette.smith@gmail.com. See [[business/sante-total]].
+
+> [!note] FAMILY — BMC Free Wellness Event: Sat May 30, 11 AM – 3 PM
+> info@bmc.org (2026-05-22 20:33 ET): Free community Family Wellness Event, Saturday May 30, 11:00 AM to 3:00 PM. Location: Berkshire Partners Blue Hill Club and Harambee Park. Same day as Vishala's sleepover (drop-off 5 PM) — no conflict if attending morning/early afternoon. Optional; no action required.
+
+## Latest from gather (2026-05-23) — run 115
+
+> [!warning] P0 ESCALATION — Cat sitter: Boston trip T-4 days (starts 2026-05-27 Wednesday)
+> Cats Loki, Ghosty, and Pickle need care 2026-05-27 through 2026-05-29. No booking confirmation found in Gmail. Meowtel app in inbox (promotional, not booked). T-4 days — book immediately. Meowtel or another trusted sitter.
+
+> [!note] Carry-forward P0/P1 (run 115)
+> | Item | Status | Days |
+> |------|--------|------|
+> | Sante Total 990-N | NOT FILED | 8 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 7+ (window opened 2026-05-17) |
+> | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 5 days past Alton's 2026-05-18 promise |
+> | **Cat sitter (Boston 5/27)** | **UNRESOLVED** | **T-4 days — escalated to P0 this run** |
+
+## Latest from gather (2026-05-24) — run 120
+
+> [!fact] RESOLVED — Cadoo Medical PC $765.21 is Alton's bill (run 111 flag lifted)
+> The "EMMETT" ambiguity from run 111 is resolved: UPS email (04:09 AM ET 2026-05-24) addresses Alton as "Emmett Alton," confirming that billing systems use his first name. **Cadoo Medical PC $765.21 is a legitimate bill for Alton.** Pay via Tebra patient portal or call 973-577-3010. No further verification needed.
+
+> [!todo] ACTION_REQUIRED — Pay Cadoo Medical PC $765.21
+> Bill from Cadoo Medical PC (NJ, 973-577-3010) via Tebra platform. Amount: **$765.21**. Pay via patient portal or call main office. Payment plan available if needed. Statement received 2026-05-22. See [[ALTON]].
+
+> [!note] Carry-forward P0/P1 (run 120, 2026-05-24)
+> | Item | Status | Days |
+> |------|--------|------|
+> | Sante Total 990-N | NOT FILED | 9 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 8 (window opened 2026-05-17) |
+> | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 6 days past Alton's 2026-05-18 promise |
+> | **Cat sitter (Boston 5/27)** | **UNRESOLVED** | **T-3 days — CRITICAL** |
+> | Sante Total Berteau $2,400 | ASAP decision needed | 1 day since Barbara Weis follow-up |
+> | Sante Total Gaby $9,972 | Pending since 5/12 | No visible response |
+> | UPS lost package claim | Monitor | By ~2026-06-05 |
+> | **Cadoo Medical PC $765.21** | **PAY** | Bill confirmed legitimate — see above |
+
+## Latest from gather (2026-05-24) — run 119
+
+> [!fact] RESOLVED — Vayu MKA cafeteria debit confirmed (2026-05-23)
+> Chase account ending 8563 debited $101.75 ($100 deposit + $1.75 service charge) to fund [[family/vayu|Vayu]]'s MyKidsSpending cafeteria account at MKA. Portal active at mykidsspending.com. Closes run 108 pending item. No action required.
+
+> [!todo] Monitor — UPS lost package claim (filed 2026-05-24)
+> UPS email (pkginfo@ups.com, 04:09 AM ET 2026-05-24): claim received for a lost package. UPS will contact within 8 business days (expected by ~2026-06-05). No action until UPS responds. Monitor inbox.
+
+## Latest from gather (2026-05-24) — run 117
+
+> [!warning] P0 CRITICAL — Cat sitter: Boston trip T-3 days (departs Wed 2026-05-27)
+> Cats Loki, Ghosty, and Pickle need care 2026-05-27 through 2026-05-29. No booking confirmation in Gmail. T-3 days — book immediately via Meowtel or another trusted sitter. This is the last realistic day to book without risking unavailability.
+
+> [!todo] ACTION_REQUIRED — ASAP — Sante Total: Berteau elderly funding response (1 day since follow-up)
+> Barbara Weis (dye2tie@verizon.net) follow-up 2026-05-23: "Berteau has sent me several messages that the situation is desperate. If we can't do all of this, can we afford to increase to $800 a month and send him $2400 to cover the next three months? Please answer asap." Alton must reply as Treasurer. CC: asmi60@lsuhsc.edu, alison.annette.smith@gmail.com. See [[business/sante-total]].
+
+> [!note] Carry-forward P0/P1 (run 117, 2026-05-24)
+> | Item | Status | Days |
+> |------|--------|------|
+> | Sante Total 990-N | NOT FILED | 9 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 8 (window opened 2026-05-17) |
+> | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 6 days past Alton's 2026-05-18 promise |
+> | **Cat sitter (Boston 5/27)** | **UNRESOLVED** | **T-3 days — CRITICAL** |
+> | Sante Total Berteau $2,400 | ASAP decision needed | 1 day since Barbara Weis follow-up |
+
+> [!note] Calendar May 24–31 (confirmed live API run 117)
+> | Date | Time (ET) | Event |
+> |------|-----------|-------|
+> | Mon 5/25 | all-day | Memorial Day — Goddard closed, MKA closed |
+> | Wed 5/27 – Fri 5/29 | all-day | Boston trip — T-3 days |
+> | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
+
+## Latest from gather (2026-05-25) — run 123
+
+> [!warning] P0 CRITICAL — Cat sitter: Boston trip T-2 days (departs Wed 2026-05-27)
+> **Today is the last realistic day to book a cat sitter.** Loki, Ghosty, and Pickle need coverage 2026-05-27 through 2026-05-29. No booking confirmation visible in Gmail. Book via Meowtel or trusted local sitter immediately.
+
+> [!note] Carry-forward P0/P1 (run 123, 2026-05-25 — Memorial Day)
+> | Item | Status | Days |
+> |------|--------|------|
+> | **Cat sitter (Boston 5/27)** | **UNRESOLVED** | **T-2 — LAST DAY TO BOOK** |
+> | Sante Total 990-N | NOT FILED | 10 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 9 (window opened 2026-05-17) |
+> | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 7 days past Alton's 2026-05-18 promise |
+> | Sante Total Berteau $2,400 | ASAP decision needed | 2 days since Barbara Weis follow-up (5/23) |
+> | Sante Total Gaby $9,972 | Pending since 5/12 | 13 days no visible response |
+> | UPS lost pkg claim 1Z091C2R4220295437 | Monitor | Day 2 of ~8 biz days; by ~2026-06-05 |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+
+> [!note] Calendar May 25–31 (confirmed live API run 123)
+> | Date | Time (ET) | Event |
+> |------|-----------|-------|
+> | Mon 5/25 | all-day | Memorial Day — Goddard closed, MKA closed |
+> | Wed 5/27 – Fri 5/29 | all-day | Boston trip — T-2 days |
+> | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
