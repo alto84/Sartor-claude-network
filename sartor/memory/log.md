@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-25
 updated_by: personal-data-gather
-run: 123
+run: 124
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -659,3 +659,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 updates: cat sitter now T-2 (LAST DAY); 990-N now 10 days overdue; Berman 7 days past promise; Berteau 2 days since follow-up; Gaby 13 days.
 - Pages updated: `daily/2026-05-25.md` (created), `family/active-todos.md` (run 123 section appended, frontmatter bumped), `log.md` (this entry, run bumped to 123), `data/heartbeat-log.csv` (created with runs 117–123), `data/gather-alerts.md` (created)
 - KEY: Cat sitter for Boston (5/27) at T-2 — TODAY is the last realistic booking day. Sante Total Berteau $2,400 now 2 days without response. 990-N 10 days overdue.
+
+## [2026-05-25] ingest | personal-data-gather run 124: Steam purchases x2; LinkedIn msg; P0 carry
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 25–Jun 1). No SSH (web runner). Second run of 2026-05-25.
+- New facts: (1) Steam purchases ×2 (noreply@steampowered.com, 2026-05-25 00:19/00:21 ET) — two gaming purchases added to Steam Library, FINANCIAL/PERSONAL, no action required. (2) LinkedIn message notification from "Michael" (07:24 ET) — 1 message awaiting response, INFORMATIONAL. All other 28 threads are duplicates of runs 120–123.
+- Calendar: unchanged from run 123. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon), Vasu dance performance ~June 2 (time TBD). All other calendars empty. Today: Memorial Day.
+- P0 carries: unchanged from run 123 — 990-N 10 days overdue; Disney ADR Day 9; Berman $6K 7 days past promise; cat sitter T-2 CRITICAL (today is last booking day); Berteau $2,400 ASAP; Gaby $9,972 pending 13 days; UPS claim Day 2; Cadoo Medical $765.21 pay.
+- Pages updated: `daily/2026-05-25.md` (run 124 section appended), `log.md` (this entry, run bumped to 124), `data/heartbeat-log.csv` (created/appended), `data/gather-alerts.md` (written)
+- KEY: No new actionable items this run. Cat sitter for Boston 5/27 still unbooked at T-2 — today is the last realistic day. Sante Total Berteau $2,400 still awaiting Alton's response (3 days since Barbara's follow-up).
