@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-25
+updated: 2026-05-26
 updated_by: personal-data-gather
-run: 126
+run: 128
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -683,6 +683,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: unchanged from run 125 — 990-N 10 days overdue; Disney ADR Day 9; Berman $6K 7 days past promise; cat sitter T-2 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending 13 days; UPS claim monitor; Cadoo Medical pay; ImageQuix sale order.
 - Pages updated: `daily/2026-05-25.md` (run 126 appended, run bumped to 126), `log.md` (this entry, run bumped to 126), `data/heartbeat-log.csv` (created/run 126 entry), `data/gather-alerts.md` (refreshed)
 - KEY: Dorotheas party in Montclair today 3–6 PM — new calendar event, likely family logistics context. No new P0 escalations. Cat sitter Boston T-2 remains top unresolved item.
+
+## [2026-05-26] ingest | personal-data-gather run 128: Newegg PC build ($1,919); Google Pay new card; calendar stable; P0 carry
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 26–Jun 2). No SSH (web runner). Second run of 2026-05-26.
+- New facts: (1) **Newegg order #448349643 ($1,919.10)** — full PC build for Solar Inference LLC second GPU server: Ryzen 9 9950X, ASRock X870E TAICHI, ARCTIC 360mm AIO, WD_BLACK 4TB NVMe, HYTE Y70 case, CX750M 750W + Leadex III 1300W PSUs, 12VHPWR cable. Combined with RTX 5090 shipped 2026-05-21: second GPU server confirmed. Deliveries: May 28 / May 29–Jun 2 / Jun 3–5. (2) Google Pay new card added notification (security, no action unless unauthorized). (3) Amazon dog pee pads — routine household, skip.
+- Calendar: unchanged from run 127. Boston trip 5/27–5/29, Vishala sleepover 5/30–5/31, Vasu dance 6/2, May term evening 6/2 7–9 PM. All 5 calendars stable.
+- P0 carries: unchanged from run 127 — 990-N 11 days overdue; cat sitter T-0 (Boston departs today); vast.ai 97429 Jay's steps unresolved; Berman $6K 8+ days; Disney ADR Day 10; Berteau $2,400 pending.
+- Pages updated: `daily/2026-05-26.md` (run 128 appended, frontmatter bumped), `business/solar-inference.md` (run 128 Newegg build fact, frontmatter bumped), `MACHINES.md` (new GPU server build noted), `log.md` (this entry, run bumped to 128), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Newegg PC build ($1,919) + RTX 5090 = Solar Inference LLC second GPU server in progress. Log all components as LLC capital assets on delivery. Cat sitter Boston still unconfirmed — T-0 emergency.
 
 ## [2026-05-26] ingest | personal-data-gather run 127: RTX 5090 shipped; CPA call confirmed; May term evening; vast.ai 97429 unresolved
 - Sources: Gmail (is:unread newer_than:2d, 30 threads + targeted searches), all 5 Google Calendars (May 26–Jun 2). No SSH (web runner). First run of 2026-05-26, Day after Memorial Day.

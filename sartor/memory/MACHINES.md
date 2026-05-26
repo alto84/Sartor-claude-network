@@ -603,5 +603,18 @@ No git push (no credentials) - awaiting Rocinante curator commit
 ## Consolidated from daily logs (2026-04-29)
 - [2026-04-29] (fact) Vasu's Goddard May 2026 schedule available. No specific dates extractable from snippet.
 
+## Latest from gather (2026-05-26) — run 128
+
+> [!fact] Solar Inference LLC — second GPU server build ordered 2026-05-25
+> Newegg order #448349643 ($1,919.10) confirmed. Components for a new AM5 build:
+> - **CPU:** AMD Ryzen 9 9950X (Zen 5, 16C/32T, 4.3 GHz base, AM5, 170W TDP)
+> - **Motherboard:** ASRock X870E TAICHI (AM5, X870E chipset, Extended ATX)
+> - **Cooler:** ARCTIC Liquid Freezer III Pro 360mm AIO (AMD AM5/AM4, Intel LGA1851/1700)
+> - **Storage:** WD_BLACK SN7100 4TB M.2 2280 NVMe (PCIe 4.0 x4)
+> - **Case:** HYTE Y70 Dual Chamber Mid-Tower ATX (PCIe 4.0 riser cable included, Snow White)
+> - **PSUs:** CORSAIR CX750M 750W 80+ Bronze + Super Flower Leadex III GE Gold 1300W ATX 3.1
+> - **Cable:** SUPER FLOWER 12VHPWR PCIe 5.0 600W cable (for RTX 5090 power delivery)
+> Combined with GIGABYTE RTX 5090 (shipped Amazon 2026-05-21): **new GPU server for Solar Inference LLC**. Deliveries: May 28, May 29–Jun 2, Jun 3–5. Add to machine registry once built and named. Assign machine ID via vast.ai on completion. See [[business/solar-inference]].
+
 ## Consolidated from daily logs (2026-05-14)
 - [2026-05-13] (fact) Gym Day Registration — skipped (already declined):
