@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-26
 updated_by: personal-data-gather
-run: 127
+run: 130
 
 status: active
 priority: p1
@@ -894,3 +894,33 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
 > | Tue 6/2 | TBD | Vasu dance performance |
 > | Tue 6/2 | 7:00–9:00 PM | May term evening (MKA — NEW) |
+
+## Latest from gather (2026-05-26) — run 130
+
+> [!deadline] TODAY 2026-05-26 at 6:00 PM ET — EXPIRES IN HOURS
+> **Dr. Shah baby shower — Venmo @katie-cocco by 6 PM.** Katie Cocco (katiecocco@gmail.com) sent a final call: "Last chance to add to the collection for Dr. Shah's baby shower! Send the venmo to @katie-cocco by 6pm tonight if you'd like to contribute. No pressure!" Dr. Shah is a teacher in one of the kids' classes at MKA. CC: julie.wilska@gmail.com. Decide and Venmo now if contributing — window closes in hours.
+
+> [!todo] MKA EPE Make-Up Week — next week June 1–3 (last week of school)
+> agonzalez@mka.org (2026-05-26): "Next week is Make-Up Week for EPE and the last week of school." Schedule covers Monday 06/01 through ~Wednesday 06/03. Two separate emails sent (likely one per child division). Affects [[family/vayu|Vayu]] and [[family/vishala|Vishala]] EPE afternoon pickup logistics. Check full schedule in email and confirm pickups.
+
+> [!todo] MKA Middle School PE clothes — pre-order for 2026-2027
+> m@mail3.veracross.com (2026-05-26): MKA requires a uniform t-shirt and shorts for all Middle School students. Pre-order via MKA website. No deadline stated. Confirm which grade is "Middle School" at MKA — Vayu is rising 5th grade, Vishala rising 4th; check whether this applies to either child in 2026-2027.
+
+> [!note] MKA band: no after-school activities this week or next (Vayu)
+> 4th + 5th grade band has officially wrapped for 2025-2026. No after-school band pickup obligations for [[family/vayu|Vayu]] remaining this year.
+
+> [!deadline] 2026-06-20 — Earnest loan payment $943.33
+> Monthly billing statement available (no-reply@updates.earnest.com, 2026-05-26). Total due: **$943.33** by **2026-06-20** (25 days). Log in to Earnest account to confirm auto-pay status or make manual payment.
+
+> [!note] Carry-forward P0/P1 (run 130, 2026-05-26 ~4:45 PM ET)
+> | Item | Status | Days |
+> |------|--------|------|
+> | **Dr. Shah Venmo @katie-cocco** | **ACT BY 6 PM TODAY** | **EXPIRES IN HOURS** |
+> | **Cat sitter (Boston 5/27)** | **UNBOOKED** | **T-0 — DEPARTS TOMORROW** |
+> | Sante Total 990-N | NOT FILED | 11 days overdue |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Berman $6K Lutron | Committed CC, not paid | 8+ days past promise |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 10 |
+> | Sante Total Berteau $2,400 | No visible response | 3+ days |
+> | Earnest loan | $943.33 | Due 2026-06-20 |
+> | MKA PE clothes pre-order | TODO | No hard deadline |
