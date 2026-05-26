@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: TAXES
-updated: 2026-05-08
-updated_by: heloc-curation (Rocinante Opus 4.7 1M)
+updated: 2026-05-26
+updated_by: personal-data-gather (run 127)
 last_verified: 2026-05-08
 status: active
 next_deadline: 2026-05-15
@@ -286,3 +286,11 @@ Append this fact to `TAXES.md` under the section relevant to `2027 fiscal outloo
 
 ## Consolidated from daily logs (2026-04-19)
 - [2026-04-19] (fact) Repairs for movie room (Apr 20, 13:00 UTC = 9:00–11:00 AM ET) ✓
+
+## Latest from gather (2026-05-26) — run 127
+
+> [!fact] §48 ITC structuring call with CPA — confirmed occurred 2026-05-20
+> [[people/jonathan-francis|Jonathan Francis]] call (2:30 PM ET, 2026-05-20) took place — confirmed via email thread. Topic: §48 ITC structuring for Lucent Energy solar installation at 85 Stonebridge. Key framing: installation starts early June; placed-in-service target before **2026-07-04** (39 days from 2026-05-26) to capture ~$131,649 federal ITC credit. Aneeta CC'd. Outcome from call not in email; follow up with Alton on next steps (loan assignment, per-item ITC eligibility, §721(b) interaction if Anthropic shares come into LLC). See [[matters/solar-itc-48-vs-25d]] and [[business/solar-inference]].
+
+> [!warning] Sante Total 990-N — 11 days overdue
+> Due 2026-05-15. Still not filed as of run 127. File immediately at IRS.gov → 990-N e-Postcard. EIN required. TY2025 gross receipts <$50K. See [[business/sante-total]].

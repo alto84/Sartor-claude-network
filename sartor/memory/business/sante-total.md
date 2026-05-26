@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-24
+updated: 2026-05-26
 updated_by: personal-data-gather
-run: 120
+run: 127
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -240,3 +240,14 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!deadline] 2026-06-04 (21 days) — act this week
 > **Chase/Sante Total KYC** — carry-forward from run 70 (21 days remain). Contact Pavel Manrique (pavel.p.manrique@chase.com, 973-783-5062) before account restriction. Account opened 2026-05-06.
+
+## Latest from gather (2026-05-26) — run 127
+
+> [!fact] PayPal recurring donation — Christina Stiles $5.00 (2026-05-19)
+> Received $5.00 from Christina Stiles (christina.stiles16@gmail.com) via PayPal recurring subscription for Sante Total. Profile ID: I-BV436GGKEFU7 (Active). Transaction ID: 2EY91889BK331354W. **Next payment due: 2026-06-19.** Amount per payment: $5.00 USD. Log for nonprofit accounting records.
+
+> [!warning] 990-N OVERDUE — 11 days (as of 2026-05-26)
+> Still not filed per runs 22–127. Due 2026-05-15. File at IRS.gov → Tax Exempt Organization Search → File 990-N (e-Postcard). TY2025 gross receipts <$50K. No automatic extension without Form 8868. 11 days overdue and counting.
+
+> [!todo] ACTION_REQUIRED — ASAP — Berteau elderly funding (3 days since Barbara's follow-up)
+> Barbara Weis (dye2tie@verizon.net) follow-up 2026-05-23: increase to $800/month + send $2,400 upfront (3 months). Berteau reports situation "desperate." Alton must respond as Treasurer. CC: asmi60@lsuhsc.edu, alison.annette.smith@gmail.com. No disbursements without Alton's authorization. Also: Gaby $9,972 pending since 2026-05-12 (14 days no visible response).

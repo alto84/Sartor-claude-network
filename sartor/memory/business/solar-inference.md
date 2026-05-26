@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-05-10
-updated_by: personal-data-gather (run 68)
+updated: 2026-05-26
+updated_by: personal-data-gather (run 127)
 status: active
 priority: p1
 next_review: 2026-05-22
@@ -190,3 +190,14 @@ Full project hub: [[reference_solar_project]]. Source documents indexed there.
 
 > [!fact] Climate First Bank ownership structure question sent (2026-05-09 02:56 UTC)
 > Alton emailed Erin Gannon (erin.gannon@climatefirstbank.com) re Clean Energy Loan App ID 15296, 85 Stonebridge Rd — raising Solar Inference LLC ownership structure question. Aneeta cc'd. **Response pending** — critical for confirming asset-transfer structure before placed-in-service. Follow up by 2026-05-12 if no reply.
+
+## Latest from gather (2026-05-26) — run 127
+
+> [!fact] CPA call with Jonathan Francis — CONFIRMED OCCURRED 2026-05-20
+> Email thread (thread 19e0aaab545fbaa5) confirms the [[people/jonathan-francis|Jonathan Francis]] §48 ITC structuring call happened on **2026-05-20 at 2:30 PM ET**. Lucent Energy installation target: early June 2026. Placed-in-service deadline for §48 ITC capture: **2026-07-04 (39 days away)**. Aneeta was CC'd. Outcome and next steps from the call not visible in email — confirm with Alton what was decided.
+
+> [!fact] GIGABYTE RTX 5090 ordered + shipped 2026-05-21
+> Amazon order (auto-confirm@amazon.com, 2026-05-21 02:18 UTC): "GIGABYTE GeForce RTX 5090... and 1 more item." Shipped same day (shipment-tracking@amazon.com, 2026-05-21 03:33 UTC). Delivery status unknown — track via Amazon. **Most likely Solar Inference LLC fleet expansion.** Log as LLC capital asset upon delivery; depreciation schedule and ITC eligibility analysis apply. Coordinate with CPA on timing relative to §48 ITC structuring.
+
+> [!todo] ACTION_REQUIRED — vast.ai machine 97429 offline (2026-05-21)
+> Automated alert: machine offline. Alton emailed vast.ai support re: stale error_description blocking marketplace visibility. Jay (jay@contact.vast.ai) replied with **two additional steps not in Alton's list**. No visible follow-up from Alton. Machine 97429 (rtxpro6000server) marketplace listing may still be blocked. SSH in and execute Jay's steps, or reply to Jay to retrieve them. See [[MACHINES]].

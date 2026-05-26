@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-25
+updated: 2026-05-26
 updated_by: personal-data-gather
-run: 125
+run: 127
 
 status: active
 priority: p1
@@ -861,3 +861,36 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ORDER NOW — ImageQuix portrait sale: Vayu + Vishala (Memorial Day free shipping)
 > ImageQuix (no-reply@imagequix.com) sent Memorial Day sale emails for both [[family/vayu|Vayu]]'s and [[family/vishala|Vishala]]'s school portraits: free shipping during the Memorial Day sale window. Order via ImageQuix before the sale ends. Photos from MKA portrait sessions. No hard deadline stated in snippet — act today while sale is active. See [[family/vayu]] and [[family/vishala]].
+
+## Latest from gather (2026-05-26) — run 127
+
+> [!warning] P0 EMERGENCY — Cat sitter: Boston trip DEPARTS TOMORROW 2026-05-27
+> Loki, Ghosty, and Pickle need coverage 2026-05-27 through 2026-05-29. **No booking visible in Gmail.** Today is the absolute last moment to book. Book via Meowtel or trusted local sitter NOW.
+
+> [!todo] ACTION_REQUIRED — P1 — vast.ai machine 97429: follow up Jay's 2 steps
+> **vast.ai machine 97429 (rtxpro6000server) offline alert received 2026-05-21.** Alton emailed support same day; Jay (jay@contact.vast.ai) replied that there are "two steps that aren't in your list yet and are worth [trying]." Alton has not visibly replied. Marketplace visibility may still be blocked. SSH into rtxpro6000server or reply to Jay's email to get and execute the two additional steps. See [[MACHINES]].
+
+> [!note] New calendar event — May term evening 2026-06-02 7–9 PM
+> Family calendar (organizer: Aneeta). MKA event. **Potentially conflicts with Vasu dance performance same day (time TBD)**. Confirm Vasu's performance time before 2026-06-02 to check for overlap.
+
+> [!note] Carry-forward P0/P1 (run 127, 2026-05-26 — Day after Memorial Day)
+> | Item | Status | Days |
+> |------|--------|------|
+> | **Cat sitter (Boston 5/27)** | **UNBOOKED** | **T-1 EMERGENCY — departs TOMORROW** |
+> | Sante Total 990-N | NOT FILED | 11 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 10 (window opened 2026-05-17) |
+> | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 8 days past Alton's 2026-05-18 promise |
+> | Sante Total Berteau $2,400 | No visible response | 3 days since Barbara Weis 5/23 follow-up |
+> | Sante Total Gaby $9,972 | No visible response | 14 days since 2026-05-12 request |
+> | UPS claim 1Z091C2R4220295437 | Monitor | Day 3 of ~8 biz days (~2026-06-03) |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | ImageQuix portrait sale | ORDER | Vayu + Vishala, free shipping (window may close) |
+> | **vast.ai 97429 Jay's 2 steps** | **UNRESOLVED** | **P1 — GPU marketplace blocked** |
+
+> [!note] Calendar May 26–Jun 2 (confirmed live API run 127)
+> | Date | Time (ET) | Event |
+> |------|-----------|-------|
+> | Wed 5/27 – Fri 5/29 | all-day | Boston trip — TOMORROW |
+> | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
+> | Tue 6/2 | TBD | Vasu dance performance |
+> | Tue 6/2 | 7:00–9:00 PM | May term evening (MKA — NEW) |
