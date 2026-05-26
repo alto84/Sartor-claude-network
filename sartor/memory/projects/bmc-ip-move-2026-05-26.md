@@ -65,3 +65,12 @@ If a post-compaction Claude reads this:
 ## Status updates (append as we go)
 
 - 2026-05-26 start: plan written, beginning Phase A
+- 2026-05-26 Phase A complete: BMC was discovered at factory-default `10.10.10.10` (silent factory-reset between 2026-05-21 and 2026-05-26). Moved to `192.168.1.150` static via `sudo ipmitool lan set 1 ipaddr` + `ipsrc static`. Verified reachable from Rocinante (0% loss, 3ms avg). Gratuitous ARP step skipped — `arping` not installed on rtxserver and new IP wasn't previously cached anywhere.
+- 2026-05-26 Phase B complete: swept 5 active-state files (REGISTRY.yaml, CLAUDE.md, update-hosts-file.ps1, rtxserver-management SKILL.md [13 occurrences], ip-resistance-pattern-2026-05-20.md). Historical refs in daily logs / archived inbox memos / worktree branches left alone per scope-discipline. Committed `094a8ae4` and pushed to rtxserver bare.
+- 2026-05-26 Phase C complete: rtxserver uptime 4d 21h (no reboot triggered by BMC change), vastai.service active, machine 124192 still verified+listed+visible-in-renter-search at $3.20/hr, error_description=None, reliability 0.9645. Previous rental C.37359460 (vLLM) ended at some point; slot is back on the market awaiting next renter. **System is CLEAN.**
+- 2026-05-26 Phase D DEFERRED: Fios CR1000A admin credentials not in Bitwarden (`sartor-secret list` shows only BMC rtxserver / Meridian / UniFi). DHCP reservation needs either (a) Alton to add Fios creds to Bitwarden so a future Claude can drive Chrome MCP into the admin UI, or (b) Alton to add the reservation manually (~5 min in the Fios admin). Since BMC is now at STATIC `.150` (not dependent on DHCP), Phase D is no longer time-critical — it's nice-to-have for the broader IP-resistance design.
+- 2026-05-26 anomaly flagged: GPU power cap is 425W per card (not 450W as REGISTRY/skill assume). `nvidia-power-cap.service` ExecStart says `-pl 425` (with cosmetic mismatch in the ExecStartPost echo still saying "pl=450"). Probably intentional conservative reduction post-fuseblow but worth Alton confirming. Cards healthy at 425W cap, idle.
+
+## Outcome
+
+System is in a CLEAN ready-to-rent state. BMC reachable on LAN at `192.168.1.150` static, codebase updated to match, rental slot live. Commit `094a8ae4` is the canonical state.
