@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-26
 updated_by: personal-data-gather
-run: 128
+run: 129
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -697,3 +697,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - New facts: (1) GIGABYTE RTX 5090 ordered+shipped 2026-05-21 via Amazon (Solar Inference LLC fleet expansion). (2) Jonathan Francis §48 ITC structuring call CONFIRMED OCCURRED 2026-05-20 2:30 PM ET — was pending/blocker in prior runs. (3) vast.ai machine 97429 offline alert 2026-05-21 + Jay support response with 2 additional steps — unresolved/no visible follow-up from Alton. (4) Christina Stiles $5 recurring PayPal donation for Sante Total 2026-05-19 (next payment 2026-06-19). (5) May term evening 2026-06-02 7–9 PM on Family calendar (new, MKA event, potential overlap with Vasu dance performance same day). (6) P0 escalation: cat sitter for Boston DEPARTS TOMORROW (T-1 EMERGENCY).
 - Pages updated: `daily/2026-05-26.md` (created), `family/active-todos.md` (run 127 appended, frontmatter bumped to run 127), `business/sante-total.md` (run 127 section added, Christina Stiles payment), `business/solar-inference.md` (CPA call + RTX 5090 + vast.ai 97429 action items), `TAXES.md` (CPA call update + 990-N carry), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (refreshed)
 - KEY: Cat sitter for Boston TOMORROW — T-1 EMERGENCY. vast.ai 97429 marketplace visibility likely still blocked (Jay's 2 steps not executed). CPA call happened 2026-05-20; outcome unknown. §48 ITC deadline 39 days out (2026-07-04). 990-N 11 days overdue.
+
+## [2026-05-26] ingest | personal-data-gather run 129: Care.com sitter search observed; 6 informational; P0 carry
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 26–Jun 2). No SSH (web runner). Third run of 2026-05-26.
+- New facts: (1) Care.com promotional email suggests Alton browsed for pet/house sitters for Boston trip — still no booking confirmation. (2) LinkedIn message digest: "Michael just messaged you" — unknown contact, no context. (3) cardiosax@gmail.com family forward: "4,000 Rules: The Sanskrit Grammar Behind Every LLM" YouTube (family AI article). (4) Substack (Dwarkesh Patel + Zvi Mowshowitz), Cerebral Valley newsletter (OpenAI voice models SF, Paris hackathons July), Samsung ACR TV privacy notice, Amazon S&S upcoming Jun 7 — all INFORMATIONAL.
+- Calendar: all 5 stable. No new events. Boston trip departs 2026-05-27.
+- P0 carries: unchanged — cat sitter T-0 EMERGENCY (trip tomorrow, Care.com browsed but no confirm); 990-N 11 days overdue; vast.ai 97429 Jay's steps unresolved; Berman $6K 8+ days; Disney ADR Day 10; Berteau $2,400; Gaby $9,972; UPS claim monitor.
+- Pages updated: `daily/2026-05-26.md` (run 129 appended, frontmatter bumped), `log.md` (this entry, run bumped to 129), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Cat sitter P0 — trip TOMORROW. Care.com browsing observed but no booking confirmed in Gmail. All other P0s carry. No new escalations this run.
