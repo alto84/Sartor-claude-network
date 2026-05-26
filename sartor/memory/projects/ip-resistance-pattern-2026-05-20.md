@@ -27,7 +27,7 @@ Reservations to set:
 | Host | MAC | Pin to IP |
 |---|---|---|
 | rtxserver host NIC | `30:c5:99:d5:8f:b5` | 192.168.1.157 |
-| rtxserver BMC primary (dedicated MGMT) | `30:c5:99:d5:8f:b7` | 192.168.1.154 |
+| rtxserver BMC primary (dedicated MGMT) | `30:c5:99:d5:8f:b7` | 192.168.1.150 |  # moved from .154 to .150 on 2026-05-26
 | rtxserver BMC secondary (Shared LAN) | `30:c5:99:d5:8f:b8` | 192.168.1.156 |
 | gpuserver1 | `bc:fc:e7:d9:08:eb` | 192.168.1.100 |
 | Rocinante Ethernet (defer; currently dual-homed) | `2C:F0:5D:39:21:7F` | 192.168.1.171 (restore original) |
@@ -83,7 +83,7 @@ Host rocinante
     HostName 192.168.1.171
     User alton
 Host rtxserver-bmc rtxserver-bmc-primary
-    HostName 192.168.1.154
+    HostName 192.168.1.150
 Host rtxserver-bmc-secondary
     HostName 192.168.1.156
 Host unifi-switch

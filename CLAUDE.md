@@ -327,7 +327,7 @@ Defined in `.claude/scheduled-tasks/`:
 - **CPU:** AMD Threadripper PRO 7975WX (32C/64T)
 - **RAM:** 251 GB DDR5
 - **GPUs:** 2× NVIDIA RTX PRO 6000 Blackwell Workstation (96 GB VRAM each, 192 GB total). **Production cap 450W/card** (auto-applied on boot via `/etc/systemd/system/nvidia-power-cap.service`).
-- **IP:** 192.168.1.157 (LAN, on UniFi switch port 10), BMC primary at 192.168.1.154 (dedicated MGMT, switch port 11, post-2026-05-04), BMC secondary at 192.168.1.156 (Shared LAN, still active for redundancy)
+- **IP:** 192.168.1.157 (LAN, on UniFi switch port 10), BMC primary at 192.168.1.150 (dedicated MGMT, switch port 11, static, post-2026-05-26 move from .154), BMC secondary at 192.168.1.156 (Shared LAN, still active for redundancy)
 - **SSH:** `ssh alton@192.168.1.157` (host MAC `30:c5:99:d5:8f:b5`)
 - **Peer Claude:** auto-spawns at boot in tmux session `claude-team-1` via user-level systemd service `~/.config/systemd/user/sartor-claude-peer.service` (lingering enabled for `alton`).
 - **BMC fan curves (saved to firmware):** Zones 2-6 = 30°C/50% → 50°C/75% → 60°C/90% → 70°C/100%, applied via Chrome MCP 2026-05-02. Fan-cord override available via remote control for max chassis airflow.
