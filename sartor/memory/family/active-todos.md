@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-26
 updated_by: personal-data-gather
-run: 130
+run: 131
 
 status: active
 priority: p1
@@ -894,6 +894,35 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
 > | Tue 6/2 | TBD | Vasu dance performance |
 > | Tue 6/2 | 7:00–9:00 PM | May term evening (MKA — NEW) |
+
+## Latest from gather (2026-05-26) — run 131
+
+> [!todo] ACTION_REQUIRED — Review Berman updated invoice #AAAO13216-04 before paying
+> Alyssa Berman (Alyssa@bermanhomesystems.com) sent a **NEW invoice #AAAO13216-04** today at 1:31 PM ET: "Please find attached our updated order." This replaces #AAAO13216-03. Scope or pricing may have changed. **Do not pay $6,000 against the old invoice.** Open the attachment, confirm the amount, then pay by CC. Phone: 973-239-8870. See [[business/solar-inference]].
+
+> [!todo] ACTION_REQUIRED — GitHub Claude App: approve or deny updated permissions request
+> noreply@github.com (3:56 PM ET): "The GitHub App Claude is requesting additional access to your account." Navigate to GitHub Settings → Applications → Claude and approve or deny. If not approved, GitHub MCP tools will break. See [[ALTON]].
+
+> [!note] MKA Valley Road carline closure — read full notice before next carline run
+> no-reply@mka.org (2:38 PM ET): Road closure on Valley Road between [cross streets] may impact Middle School carline. Boston trip covers 5/27–5/29; confirm alternate route before next carline pickup (Fri 5/29 or Mon 6/1). Affects [[family/vayu|Vayu]] and [[family/vishala|Vishala]] carline logistics.
+
+> [!fact] Amazon pet supplies DELIVERED today — pee pads + 1 item (1:36 PM ET)
+> IMMCUTE Dog Pee Pads Extra and one additional item delivered to 85 Stonebridge today. Likely cat-care supplies for Boston trip period. Pads in hand as of today — relevant context for whoever handles cat coverage.
+
+> [!note] Carry-forward P0/P1 (run 131, 2026-05-26 ~8:00 PM ET)
+> | Item | Status | Urgency |
+> |------|--------|---------|
+> | **Cat sitter (Boston 5/27)** | **UNBOOKED** | **T-0 EMERGENCY — trip tomorrow** |
+> | **Berman invoice #AAAO13216-04** | **Review before paying** | **P1 — new invoice, check scope** |
+> | **GitHub Claude permissions** | **Approve/deny** | **P1 — GitHub MCP blocked otherwise** |
+> | Sante Total 990-N | NOT FILED | 11 days overdue |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Berman $6K Lutron | Review updated invoice | See above |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 10 |
+> | Sante Total Berteau $2,400 | No visible response | 3+ days |
+> | Sante Total Gaby $9,972 | No visible response | 14+ days |
+> | UPS claim 1Z091C2R4220295437 | Monitor | ~2026-06-03 |
+> | Earnest loan | $943.33 | Due 2026-06-20 |
 
 ## Latest from gather (2026-05-26) — run 130
 

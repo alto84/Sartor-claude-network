@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-26
 updated_by: personal-data-gather
-run: 129
+run: 131
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -713,3 +713,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: unchanged — cat sitter T-0 EMERGENCY (trip tomorrow, Care.com browsed but no confirm); 990-N 11 days overdue; vast.ai 97429 Jay's steps unresolved; Berman $6K 8+ days; Disney ADR Day 10; Berteau $2,400; Gaby $9,972; UPS claim monitor.
 - Pages updated: `daily/2026-05-26.md` (run 129 appended, frontmatter bumped), `log.md` (this entry, run bumped to 129), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
 - KEY: Cat sitter P0 — trip TOMORROW. Care.com browsing observed but no booking confirmed in Gmail. All other P0s carry. No new escalations this run.
+
+## [2026-05-26] ingest | personal-data-gather run 131: Berman invoice update; GitHub Claude permissions; MKA carline closure; cat supplies delivered
+- Sources: Gmail (newer_than:1d, 30 threads), all 5 Google Calendars (May 26 – Jun 3)
+- 4 new actionable items since run 130 (~11:31 AM ET cutoff):
+  1. **Berman Home Systems #AAAO13216-04** — Alyssa sent a REVISED invoice at 1:31 PM ET (replaces #AAAO13216-03). Do not pay old amount; review scope change first.
+  2. **GitHub Claude App permissions update** — 3:56 PM ET. OAuth re-authorization request for GitHub MCP integration. Requires Alton to approve/deny at GitHub settings.
+  3. **MKA Valley Road carline closure** — 2:38 PM ET. Road closure may impact Middle School carline. Relevant for return from Boston trip (Fri 5/29 or Mon 6/1).
+  4. **Amazon IMMCUTE Dog Pee Pads DELIVERED** — 1:36 PM ET. Pet supplies in hand at 85 Stonebridge as of today.
+- Informational: Pool Guyz service complete (pool Safe), MKA STEMology final class, Vasu's Daily Sheet (normal), Substack auth, LinkedIn job alerts (3), Avis promo, Hiive digest, Google Fitbit Air, Jackrabbit parent/child class.
+- Calendar: all 5 unchanged — Boston trip 5/27–5/29, Vishala sleepover 5/30, Vasu dance 6/2, May term evening 6/2.
+- P0 carries: cat sitter T-0 EMERGENCY (no booking, trip TOMORROW); 990-N 11 days overdue; vast.ai 97429 Jay's 2 steps; Disney ADR Day 10; Sante Total Berteau + Gaby; UPS claim monitor.
+- Pages updated: `daily/2026-05-26.md` (run 131 appended), `family/active-todos.md` (run 131 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- KEY: Berman invoice scope change — verify before paying. Cat sitter P0 — Boston trip is TOMORROW morning.
