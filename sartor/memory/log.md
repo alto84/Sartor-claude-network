@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-27
 updated_by: personal-data-gather
-run: 133
+run: 134
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -742,3 +742,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: 990-N 13 days overdue; Chase/Sante Total KYC 8 days; Berman invoice review; GitHub Claude permissions; June 2 Vasu dance/MKA conflict unconfirmed.
 - Pages updated: `daily/2026-05-27.md` (run 133 appended), `family/active-todos.md` (run 133 carry-forward), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
 - KEY: Nothing new escalated. 990-N now 13 days overdue — file immediately at IRS.gov. Sante Total KYC window closing (June 4).
+
+## [2026-05-27] ingest | personal-data-gather run 134: Toy Story 5; Library Summer Reading; Petco; AI ROI digest
+- Sources: Gmail (newer_than:1d, 50 threads scanned), all 5 Google Calendars (May 27 – Jun 3). No SSH (web runner). data/ dir recreated (was absent from cloned repo).
+- New facts: (1) Montclair Library Summer Reading 2026 — pre-registration opens June 1, logging June 29. Family action item added to active-todos. (2) Toy Story 5 opens June 19 — tickets on sale. Family note added. (3) Petco Vital Care membership changes — affects 3-cat household; informational. (4) The Information: Uber COO AI lacks ROI — research interest digest. (5) ASCO Connection newsletter — informational.
+- No new emails since run 133 (02:30 UTC 5/27) — all new items are from 5/26 emails not previously routed to 2026-05-27.md.
+- Calendar: all 5 stable. Boston trip ongoing. No new events.
+- P0 carries: 990-N 13 days overdue; KYC 8 days; Berman invoice review; GitHub permissions; Vasu dance June 2 time unconfirmed; vast.ai 97429 Jay's 2 steps.
+- Pages updated: `daily/2026-05-27.md` (run 134 appended), `family/active-todos.md` (run 134 appended), `log.md` (this entry), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created)
+- KEY: Library Summer Reading pre-registration June 1 — only 5 days away.

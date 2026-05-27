@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-27
 updated_by: personal-data-gather
-run: 132
+run: 134
 
 status: active
 priority: p1
@@ -987,6 +987,29 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Sante Total Berteau $2,400 | No visible response | 3+ days |
 > | Earnest loan | $943.33 | Due 2026-06-20 |
 > | MKA PE clothes pre-order | TODO | No hard deadline |
+
+## Latest from gather (2026-05-27) — run 134
+
+> [!todo] FAMILY — Montclair Library Summer Reading 2026 — pre-register June 1
+> Montclair Public Library Summer Reading 2026 (theme: "Unearth a Story"). Pre-registration opens **June 1**; book logging starts June 29. All 3 kids eligible: [[family/vayu|Vayu]] (10), [[family/vishala|Vishala]] (8), [[family/vasu|Vasu]] (4). Register at Montclair Public Library website by or after June 1. Source: Off the Shelf newsletter 5/26.
+
+> [!note] Toy Story 5 opens June 19 — tickets on sale now
+> Disney/Pixar Toy Story 5 in theaters June 19, 2026. Tickets on sale via Fandango. Family film option for after-Disney-trip or summer entertainment. [[family/vayu|Vayu]], [[family/vishala|Vishala]], and [[family/vasu|Vasu]] ages. No action needed — flag for family discussion.
+
+> [!note] Carry-forward P0/P1 (run 134, 2026-05-27)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | Sante Total 990-N | NOT FILED | **13 days overdue** (due 2026-05-15) — FILE NOW |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **8 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant approval + meeting request |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 12+ (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | June 2: Vasu dance time | CONFIRM | Possibly 4:30 PM; conflicts with MKA May term 7 PM if later |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 |
+> | UPS claim 1Z091C2R4220295437 | Monitor | ~2026-06-03 |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
 
 ## Latest from gather (2026-05-27) — run 133
 
