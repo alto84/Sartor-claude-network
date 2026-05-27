@@ -111,6 +111,11 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 5. **NJ charity registration renewal** — when is it due? Not in current memory.
 6. **Program activity in Haiti/Kenya** — email-invisible. Worth an explicit check-in with Alison Smith.
 
+## Latest from gather (2026-05-27) — run 135
+
+> [!fact] New recurring donor: Sergei Robinson — $50/month
+> PayPal notification 2026-05-27 11:01 AM ET: **$50.00 received** from Sergei Robinson (sergeirobinson@yahoo.com). Transaction ID: 90R92598T88754749. **Recurring subscription active** — Profile ID I-18PAYJ3W7SS2, $50/month maximum. Next payment due **2026-06-27**. Add to donor list and ensure tax receipt is issued per standard practice.
+
 ## Related
 - [[BUSINESS]] - Higher-level business context
 - [[TAXES]] - Filing overview (Sante Total 990-N section)

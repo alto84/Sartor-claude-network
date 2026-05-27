@@ -1011,6 +1011,26 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
 > | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
 
+## Latest from gather (2026-05-27) — run 135
+
+> [!deadline] 2026-06-10 — ACTION REQUIRED IMMEDIATELY
+> **MKA Blackbaud past-due tuition: $5,340.00.** Highlighted red in MKA billing notice (5/27 11:13 AM ET). Past-due amount must be paid NOW at parent.blackbaud.school. Separate from the scheduled June 10 installment (which is $0.00). Students: [[family/vayu|Vayu]] (4th grade) and [[family/vishala|Vishala]] (3rd grade). Source: customerservice@blackbaud.school, Family ID 1336725017733.
+
+> [!note] Carry-forward P0/P1 (run 135, 2026-05-27)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | **MKA past-due tuition $5,340.00** | **PAY IMMEDIATELY** | parent.blackbaud.school — NEW |
+> | Sante Total 990-N | NOT FILED | **12 days overdue** (due 2026-05-15) |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **8 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant approval + meeting request |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 11+ (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | June 2: Vasu dance time | CONFIRM | Possibly 4:30 PM; conflicts with MKA May term 7 PM |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+
 ## Latest from gather (2026-05-27) — run 133
 
 > [!note] Alton legal name — Marriott Bonvoy + Nintendo

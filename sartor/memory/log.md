@@ -743,6 +743,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-27.md` (run 133 appended), `family/active-todos.md` (run 133 carry-forward), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
 - KEY: Nothing new escalated. 990-N now 13 days overdue — file immediately at IRS.gov. Sante Total KYC window closing (June 4).
 
+## [2026-05-27] ingest | personal-data-gather run 135: MKA past-due $5,340; Sante Total $50 recurring donor
+- Sources: Gmail (newer_than:6h, 8 threads scanned), all 5 Google Calendars (May 27 – June 3). No SSH (web runner).
+- New facts: (1) **MKA Blackbaud billing — $5,340.00 past-due** (5/27 11:13 AM ET) — PAY IMMEDIATELY at parent.blackbaud.school; actionable deadline June 10 for scheduled installment but past-due is immediate. (2) **Sante Total PayPal $50.00 from Sergei Robinson** — recurring $50/month subscription, Profile I-18PAYJ3W7SS2, next due 2026-06-27. (3) MKA teacher summer resources email — INFORMATIONAL. (4) USPS 3 mailpieces today — INFORMATIONAL.
+- Calendar: all 5 stable. Boston trip active (5/27–5/29). Blue Sombrero updated today but no soccer events in window.
+- P0 carries: MKA past-due $5,340 NEW P0; 990-N 12 days overdue; KYC 8 days to 2026-06-04.
+- Pages updated: `daily/2026-05-27.md` (run 135 appended), `family/active-todos.md` (run 135 MKA alert), `business/sante-total.md` (Sergei Robinson recurring), `log.md` (this entry), `data/heartbeat-log.csv`, `data/gather-alerts.md`
+- KEY: MKA $5,340 past-due — pay at parent.blackbaud.school before this compounds.
+
 ## [2026-05-27] ingest | personal-data-gather run 134: Toy Story 5; Library Summer Reading; Petco; AI ROI digest
 - Sources: Gmail (newer_than:1d, 50 threads scanned), all 5 Google Calendars (May 27 – Jun 3). No SSH (web runner). data/ dir recreated (was absent from cloned repo).
 - New facts: (1) Montclair Library Summer Reading 2026 — pre-registration opens June 1, logging June 29. Family action item added to active-todos. (2) Toy Story 5 opens June 19 — tickets on sale. Family note added. (3) Petco Vital Care membership changes — affects 3-cat household; informational. (4) The Information: Uber COO AI lacks ROI — research interest digest. (5) ASCO Connection newsletter — informational.
