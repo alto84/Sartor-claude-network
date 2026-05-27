@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-26
+updated: 2026-05-27
 updated_by: personal-data-gather
-run: 131
+run: 132
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -713,6 +713,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: unchanged — cat sitter T-0 EMERGENCY (trip tomorrow, Care.com browsed but no confirm); 990-N 11 days overdue; vast.ai 97429 Jay's steps unresolved; Berman $6K 8+ days; Disney ADR Day 10; Berteau $2,400; Gaby $9,972; UPS claim monitor.
 - Pages updated: `daily/2026-05-26.md` (run 129 appended, frontmatter bumped), `log.md` (this entry, run bumped to 129), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
 - KEY: Cat sitter P0 — trip TOMORROW. Care.com browsing observed but no booking confirmed in Gmail. All other P0s carry. No new escalations this run.
+
+## [2026-05-27] ingest | personal-data-gather run 132: Gaby $10K wire confirmed RESOLVED; Sante Total board items; Boston trip active; June 2 dance/MKA conflict
+- Sources: Gmail (newer_than:2d, 30 unread + 12 high-priority threads), all 5 Google Calendars (May 27 – Jun 3)
+- 2 key facts: (1) Gaby $10,000 wire CONFIRMED sent 2026-05-26 (Chase acct 8189 → Gabriel Thelus); closes May 12 item. (2) Barbara Weis replied 2026-05-26 9:55 PM with 5 open board items — Berteau grant approval, school lunch fund routing, computer lab disbursement process, 2026 budget offer, and meeting request.
+- Calendar summary: Boston trip active (5/27–5/29); Vishala sleepover Sat 5/30 5 PM – Sun 5/31 noon (confirmed corrected times); Vasu dance performance June 2 TBD; MKA May term evening June 2 7–9 PM ET; Aneeta Healing June 3.
+- New conflict flagged: Vasu dance June 2 TBD vs MKA May term evening June 2 7–9 PM — prior email (run 65) said 4:30 PM; needs confirmation.
+- Pages updated: `daily/2026-05-27.md` (created), `business/sante-total.md` (Gaby RESOLVED + Barbara's open items), `family/active-todos.md` (run 132 appended), `family/family-calendar.md` (June events added), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Sante Total board response needed — Berteau grant approval process and meeting. 990-N now 12 days overdue. Chase/Sante Total KYC deadline 2026-06-04 (8 days).
 
 ## [2026-05-26] ingest | personal-data-gather run 131: Berman invoice update; GitHub Claude permissions; MKA carline closure; cat supplies delivered
 - Sources: Gmail (newer_than:1d, 30 threads), all 5 Google Calendars (May 26 – Jun 3)

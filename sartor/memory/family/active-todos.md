@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-26
+updated: 2026-05-27
 updated_by: personal-data-gather
-run: 131
+run: 132
 
 status: active
 priority: p1
@@ -894,6 +894,40 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
 > | Tue 6/2 | TBD | Vasu dance performance |
 > | Tue 6/2 | 7:00–9:00 PM | May term evening (MKA — NEW) |
+
+## Latest from gather (2026-05-27) — run 132
+
+> [!fact] RESOLVED — Sante Total Gaby $10,000 wire sent (2026-05-26)
+> $10,000 wire to GABRIEL THELUS executed from Chase account ending 8189 on 2026-05-26 4:38 PM ET (wire 12053086804). Closes the "send Gaby $9,972/$10,000" item pending since 2026-05-12. See [[business/sante-total]].
+
+> [!todo] ACTION_REQUIRED — Sante Total: reply to Barbara Weis re Berteau grant + meeting
+> Barbara Weis (dye2tie@verizon.net) emailed 2026-05-26 9:55 PM ET (cc: asmi60@lsuhsc.edu, alison.annette.smith@gmail.com) asking: (1) how to get board approval for Berteau's elderly program grant — send to whole board?; (2) whether to set up a board meeting. She also offered a 2026 budget draft. Alton to reply as Treasurer. See [[business/sante-total]].
+
+> [!warning] CONFIRM — Vasu dance performance time (June 2) vs May term evening (June 2)
+> Family calendar has Vasu dance performance on Tue June 2 as "time to be decided." Also June 2: MKA May term evening 7–9 PM ET. Run 65 (2026-05-07 Goddard email) indicated "June 2nd at 4:30!" — if confirmed at 4:30 PM, there is no conflict. Confirm performance time with Goddard before June 2 to finalize logistics. See [[family/vasu]] and [[family/family-calendar]].
+
+> [!note] Calendar — May 27–June 3 (confirmed live API run 132)
+> | Date | Time (ET) | Event |
+> |------|-----------|-------|
+> | Wed 5/27 – Fri 5/29 | all-day | Boston trip — ACTIVE TODAY |
+> | Sat 5/30 5 PM – Sun 5/31 noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia (confirmed CORRECTED times) |
+> | Tue 6/2 | TBD (possibly 4:30 PM) | [[family/vasu\|Vasu]] dance performance — CONFIRM TIME |
+> | Tue 6/2 | 7–9 PM | May term evening (MKA) — potential conflict with Vasu dance |
+> | Wed 6/3 | 8–11 PM | Aneeta "Healing" (recurring) |
+
+> [!note] Carry-forward P0/P1 (run 132, 2026-05-27)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | Sante Total 990-N | NOT FILED | 12 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 11 (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | New invoice — confirm scope before paying |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Sante Total Berteau grant approval | Reply needed | 4 days since Barbara Weis 5/23 follow-up |
+> | Sante Total Gaby $9,972 | **RESOLVED** — $10,000 wired 2026-05-26 | Closed |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | 8 days remaining |
+> | UPS claim 1Z091C2R4220295437 | Monitor | ~2026-06-03 |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
 
 ## Latest from gather (2026-05-26) — run 131
 

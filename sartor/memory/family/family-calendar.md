@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-05-23
+updated: 2026-05-27
 updated_by: personal-data-gather
-run: 114
+run: 132
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -690,3 +690,22 @@ Week of May 19–30 (confirmed from live API, run 97):
 > | Mon 5/25 | all-day | Memorial Day | — | Goddard CLOSED (confirmed). MKA closed. |
 > | Wed 5/27 – Fri 5/29 | all-day | Boston trip | Family | School/cat logistics unresolved |
 > | **Sat 5/30, 5 PM – Sun 5/31, noon** | **overnight** | **Vishala sleepover (Amia)** | **Family** | **CORRECTED: was 9 PM–4 PM; actual is 5 PM–noon** |
+
+## Latest from gather (2026-05-27) — run 132
+
+**June 2026 events (confirmed from live Calendar API):**
+
+| Date | Time (ET) | Event | Calendar | Notes |
+|------|-----------|-------|----------|-------|
+| Tue 6/2 | TBD (possibly 4:30 PM) | [[vasu\|Vasu]] dance performance | Family | Calendar says "time to be decided"; run 65 email (Goddard admin, 5/7) said "4:30" — confirm |
+| Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Family | If Vasu dance is at 4:30 PM, no direct conflict |
+| Wed 6/3 | 8:00–11:00 PM | Aneeta "Healing" | Aneeta | Recurring event |
+
+**Active this week (May 27–June 1, confirmed from live API):**
+
+| Date | Time (ET) | Event | Calendar | Notes |
+|------|-----------|-------|----------|-------|
+| Wed 5/27 – Fri 5/29 | all-day | Boston trip | Family | ACTIVE TODAY — family traveling |
+| Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[vishala\|Vishala]] sleepover with Amia | Family | CORRECTED times (per run 114) |
+
+Alton primary, Alton's Tasks, and Blue Sombrero: no events this week or through June 3.

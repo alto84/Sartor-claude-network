@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-26
+updated: 2026-05-27
 updated_by: personal-data-gather
-run: 127
+run: 132
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -196,6 +196,25 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!deadline] 2026-05-15
 > **2025 Form 990-N — DUE IN 3 DAYS (Friday May 15).** Status as of run 70: NOT FILED. No email observed confirming completion through run 70. Alton handles directly via IRS.gov tax-exempt organization search portal. Gross receipts under $50K for TY2025 — 990-N (e-Postcard) still applies. No automatic extension without separately filing Form 8868 first. P0.
+
+## Latest from gather (2026-05-27) — run 132
+
+> [!fact] RESOLVED 2026-05-26 — Gaby ($10,000) wire sent
+> $10,000 wire transfer executed from Chase account ending 8189 to **GABRIEL THELUS** on 2026-05-26 at 4:38 PM ET (wire 12053086804). Closes the "send Gaby $9,972/$10,000" item that [[barbara-weis|Barbara Weis]] first requested 2026-05-12. Source: Chase wire alert (thread 19e660310201deb8).
+
+> [!todo] ACTION_REQUIRED — Reply to Barbara Weis: Berteau grant board process + meeting
+> Barbara Weis (dye2tie@verizon.net) replied 2026-05-26 9:55 PM ET (cc: asmi60@lsuhsc.edu, alison.annette.smith@gmail.com) after Alton's "We have plenty of money" reply. Open items requiring Alton's response as Treasurer:
+>
+> 1. **Berteau elderly grant approval** — "How should I go about approving Berteau's grant then. Send it to the whole board? What do you think?" Full grant proposal ("2026 CHEAHP grant application.docx") attached in May 12 email. Alton needs to define the board approval process.
+> 2. **School lunch money routing** — should NOT be in school account (most goes to HaitiOne org in US; co-mingling risks losing disbursement control). 25/26 disbursed; 26/27 grant pending (she re-applied with Erick Delss).
+> 3. **Computer lab donations** — maintain disbursement process control: proposal → estimates → receipts → periodic payments before sending bulk funds to Gaby.
+> 4. **2026 budget** — Barbara offers to compile a budget for all known projects to assess solvency.
+> 5. **Meeting request** — Barbara: "Should we set up a meeting to talk about all of this?"
+>
+> Alton's reply earlier same day: "We should get the money that previously was coming from the church into the new bank account." Church donations → new Chase account (Pavel Manrique) is an open coordination item.
+
+> [!note] Church donations → new Chase account
+> Alton flagged (2026-05-26) that church-sourced donations should be routed to the new Sante Total Chase account (opened 2026-05-06). Determine redirect mechanism and coordinate with the relevant church contact.
 
 ## Latest from gather (2026-05-24) — run 120
 
