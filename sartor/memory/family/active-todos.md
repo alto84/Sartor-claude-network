@@ -987,3 +987,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Sante Total Berteau $2,400 | No visible response | 3+ days |
 > | Earnest loan | $943.33 | Due 2026-06-20 |
 > | MKA PE clothes pre-order | TODO | No hard deadline |
+
+## Latest from gather (2026-05-27) — run 133
+
+> [!note] Alton legal name — Marriott Bonvoy + Nintendo
+> Two emails arrived using Alton's legal first name "Emmett" (Emmett Alton Sartor): (1) Marriott Bonvoy welcome — member 831843162, unactivated (noreply@joinmarriottbonvoy.com, 02:03 UTC). (2) Nintendo warranty repair service request 61333620 acknowledged — technician evaluating, return free if under warranty. No action required; noting for context.
+
+> [!note] Carry-forward P0/P1 (run 133, 2026-05-27)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | Sante Total 990-N | NOT FILED | **13 days overdue** (due 2026-05-15) — FILE NOW |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **8 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant approval + meeting request |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 12 (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | June 2: Vasu dance time | CONFIRM | Possibly 4:30 PM; conflicts with MKA May term 7 PM if later |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 |
+> | UPS claim 1Z091C2R4220295437 | Monitor | ~2026-06-03 |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |

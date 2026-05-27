@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-27
 updated_by: personal-data-gather
-run: 132
+run: 133
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -734,3 +734,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: cat sitter T-0 EMERGENCY (no booking, trip TOMORROW); 990-N 11 days overdue; vast.ai 97429 Jay's 2 steps; Disney ADR Day 10; Sante Total Berteau + Gaby; UPS claim monitor.
 - Pages updated: `daily/2026-05-26.md` (run 131 appended), `family/active-todos.md` (run 131 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - KEY: Berman invoice scope change — verify before paying. Cat sitter P0 — Boston trip is TOMORROW morning.
+
+## [2026-05-27] ingest | personal-data-gather run 133: Emmett/Alton accounts; 990-N 13 days overdue; P0 carry
+- Sources: Gmail (newer_than:2d, 30 threads re-scanned), all 5 Google Calendars (May 27 – Jun 3). No SSH (web runner).
+- New facts: (1) Marriott Bonvoy account created for "EMMETT SARTOR" (member 831843162) — Alton's legal name Emmett Alton Sartor; account unactivated. (2) Nintendo service request 61333620 received for "Emmett" — warranty device repair in progress; no charge until evaluation. (3) Newegg #448349663 delivery update (shipping). All 3 INFORMATIONAL.
+- Calendar: all 5 stable. Boston trip active (5/27–5/29). No new events since run 132.
+- P0 carries: 990-N 13 days overdue; Chase/Sante Total KYC 8 days; Berman invoice review; GitHub Claude permissions; June 2 Vasu dance/MKA conflict unconfirmed.
+- Pages updated: `daily/2026-05-27.md` (run 133 appended), `family/active-todos.md` (run 133 carry-forward), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Nothing new escalated. 990-N now 13 days overdue — file immediately at IRS.gov. Sante Total KYC window closing (June 4).
