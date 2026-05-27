@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-27
 updated_by: personal-data-gather
-run: 134
+run: 137
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -767,3 +767,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: 990-N 13 days overdue; KYC 8 days; Berman invoice review; GitHub permissions; Vasu dance June 2 time unconfirmed; vast.ai 97429 Jay's 2 steps.
 - Pages updated: `daily/2026-05-27.md` (run 134 appended), `family/active-todos.md` (run 134 appended), `log.md` (this entry), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created)
 - KEY: Library Summer Reading pre-registration June 1 — only 5 days away.
+
+## [2026-05-27] ingest | personal-data-gather run 137: Nintendo shipped; Livia birthday; 3rd grade graduation confirmed; Aneeta SMART call
+- Sources: Gmail (newer_than:2d, 30 threads — evening batch ~17:00–20:00 ET), all 5 Google Calendars (May 27 – June 10). No SSH (web runner). data/ dir recreated.
+- New facts: (1) **Nintendo service request 61333620 SHIPPED** — UPS tracking 1Z9437400395402529; expect delivery ~5/29–5/30. Prior status "In service" (run 133). (2) **Livia Birthday Party June 7, 7–10 PM ET** — NEW calendar event (Family, created by Aneeta 2026-04-15). (3) **Third grade graduation June 5, 12–6 PM ET** — calendar-confirmed times for Vishala's end-of-3rd-grade ceremony (previously captured as date-only from WeAreMKA). (4) **"In office" June 9–10** — Aneeta in-office all-day (likely Neurvati). (5) **Aneeta SMART Certified Providers Quarterly Call June 10 noon–1 PM** — Zoom, MGH/Benson-Henry Institute. (6) MKA take-home folders + Picnic (informational, date TBD). (7) MKA new math program for rising 5th grade (informational, full email in Veracross portal). (8) Goddard school picture proofs arriving Monday June 1. (9) LEGO Insiders 982 points expiring 2026-06-26. (10) Vasu at Goddard today (confirmed via Daily Sheet — Vasu not on Boston trip). (11) Substack "Inside the 800VDC Revolution" (AI infrastructure research digest).
+- Calendar: all 5 queried May 27–June 10. New events in June 5–10 window captured above. Boston trip active.
+- P0 carries: MKA $5,340 past-due; 990-N 12 days overdue; Sante Total KYC 8 days to 2026-06-04.
+- Pages updated: `daily/2026-05-27.md` (run 137 appended), `family/active-todos.md` (run 137 appended), `family/family-calendar.md` (June 5–10 events added), `log.md` (this entry), `data/heartbeat-log.csv` (written), `data/gather-alerts.md` (written)
+- KEY: Livia Birthday Party June 7 is NEW and requires planning. Third grade graduation June 5 now has confirmed times (12–6 PM). Nintendo device on its way back.

@@ -3,7 +3,7 @@ type: domain
 entity: family-calendar
 updated: 2026-05-27
 updated_by: personal-data-gather
-run: 132
+run: 137
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -709,3 +709,26 @@ Week of May 19–30 (confirmed from live API, run 97):
 | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[vishala\|Vishala]] sleepover with Amia | Family | CORRECTED times (per run 114) |
 
 Alton primary, Alton's Tasks, and Blue Sombrero: no events this week or through June 3.
+
+## Latest from gather (2026-05-27) — run 137
+
+New events confirmed from live Calendar API (Family calendar + Aneeta's calendar, June 5–10 window):
+
+| Date | Time (ET) | Event | Calendar | Notes |
+|------|-----------|-------|----------|-------|
+| Thu 6/5 | 12:00 PM – 6:00 PM | Third grade graduation | Family (Aneeta) | [[family/vishala\|Vishala]] (3rd grade). Created 2026-04-18. Times confirmed this run; previously captured as date-only from WeAreMKA newsletter (run 109). |
+| Sun 6/7 | 7:00–10:00 PM | Livia Birthday Party | Family (Aneeta) | NEW — first capture. Created 2026-04-15. Same Livia as May 17 playdate. |
+| Tue 6/9 – Wed 6/10 | all-day | In office | Family (Aneeta) | NEW. Likely Aneeta's Neurvati in-office days. |
+| Wed 6/10 | 12:00–1:00 PM | SMART Certified Providers Quarterly Call | Aneeta | NEW. Zoom via MGH/Benson-Henry Institute (Naila Jabbar organizer). Quarterly continuing ed. |
+
+**Full June 2–10 confirmed calendar (as of run 137):**
+
+| Date | Time (ET) | Event | Calendar |
+|------|-----------|-------|----------|
+| Tue 6/2 | TBD (possibly 4:30 PM) | [[vasu\|Vasu]] dance performance | Family |
+| Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Family |
+| Wed 6/3 | 8:00–11:00 PM | Aneeta "Healing" | Aneeta |
+| Thu 6/5 | 12:00–6:00 PM | Third grade graduation | Family |
+| Sun 6/7 | 7:00–10:00 PM | Livia Birthday Party | Family |
+| Tue 6/9 – Wed 6/10 | all-day | In office (Aneeta) | Family |
+| Wed 6/10 | 12:00–1:00 PM | SMART Certified Providers Quarterly Call | Aneeta |

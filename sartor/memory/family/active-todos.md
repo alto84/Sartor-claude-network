@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-27
 updated_by: personal-data-gather
-run: 136
+run: 137
 
 status: active
 priority: p1
@@ -1030,6 +1030,50 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
 > | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
 > | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+
+## Latest from gather (2026-05-27) — run 137
+
+> [!fact] Nintendo service request 61333620 SHIPPED — UPS 1Z9437400395402529
+> Nintendo of America (5/27 17:35 ET): service request 61333620 has been shipped back. **UPS tracking: 1Z9437400395402529.** Expect delivery in 1–3 business days (~May 29–30). Prior status: "In service" (run 133, 17:03 ET). Repair complete — no charge indicated. Addressed to "Emmett" (Alton's legal first name). See [[ALTON]] for device log.
+
+> [!deadline] 2026-06-05 — Third grade graduation: 12:00 PM – 6:00 PM ET (TIMES CONFIRMED)
+> Family calendar confirms **Third grade graduation** (created by Aneeta) on **Friday June 5, 12:00 PM – 6:00 PM ET**. Aligns with the "Third Grade Closing Exercises" item logged in run 109 (2026-05-22) via WeAreMKA newsletter. [[family/vishala|Vishala]] is in 3rd grade. Mark calendar; plan to attend. Previously known date-only; times now calendar-confirmed. See [[family/vishala]] and [[family/family-calendar]].
+
+> [!note] NEW — Livia Birthday Party: Sun June 7, 7:00–10:00 PM ET
+> Family calendar (created by Aneeta, 2026-04-15): **Livia Birthday Party**, Sunday June 7, 7:00–10:00 PM ET. Likely the same Livia from the May 17 playdate (Aneeta organized). Plan attendance and gift. See [[family/family-calendar]].
+
+> [!note] MKA: new math program for Primary School + rising 5th grade (Vayu)
+> MKA Veracross email (5/27 19:05 ET): new math program announced for Primary School and **rising 5th grade families**. Directly relevant to [[family/vayu|Vayu]] (rising 5th grade for 2026-2027). Full details require Veracross portal login. INFORMATIONAL — read when available.
+
+> [!note] MKA end-of-year: take-home folders sent home today + Picnic
+> MKA Veracross (5/27 19:02 ET): children brought home clear plastic take-home folders with end-of-year work. "Picnic" referenced in email subject — date not visible in snippet. Look for picnic details in the Veracross portal. Affects [[family/vayu|Vayu]] (4th grade) and [[family/vishala|Vishala]] (3rd grade).
+
+> [!note] Calendar update — June 5–10 (NEW events, run 137)
+> | Date | Time (ET) | Event | Calendar | Notes |
+> |------|-----------|-------|----------|-------|
+> | Thu 6/5 | 12:00–6:00 PM | Third grade graduation | Family | [[family/vishala\|Vishala]] — TIMES CONFIRMED |
+> | Sun 6/7 | 7:00–10:00 PM | Livia Birthday Party | Family | NEW — plan attendance + gift |
+> | Tue 6/9 – Wed 6/10 | all-day | In office (Aneeta) | Family | NEW — Aneeta at Neurvati |
+> | Wed 6/10 | 12:00–1:00 PM | SMART Certified Providers Quarterly Call | Aneeta | NEW — Zoom, MGH/Benson-Henry |
+
+> [!note] Carry-forward P0/P1 (run 137, 2026-05-27 ~8:00 PM ET)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | **MKA past-due tuition $5,340.00** | **PAY IMMEDIATELY** | parent.blackbaud.school |
+> | Sante Total 990-N | NOT FILED | **12 days overdue** (due 2026-05-15) |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **8 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant approval + meeting request |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 11+ (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | June 2: Vasu dance time | CONFIRM | Possibly 4:30 PM vs MKA May term 7 PM |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+> | Leader Bank Escrow Analysis | REVIEW | 185 Davis Ave Brookline MA |
+> | **Nintendo repair** | **SHIPPED** | **UPS 1Z9437400395402529 — expect ~5/29–5/30** |
+> | Third grade graduation | Mark calendar | June 5, 12–6 PM ET (confirmed) |
+> | Livia Birthday Party | Plan + gift | June 7, 7–10 PM ET |
 
 ## Latest from gather (2026-05-27) — run 136
 
