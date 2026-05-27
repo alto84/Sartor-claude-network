@@ -35,7 +35,7 @@ If autoDream fails, log the error and continue to Step 2.
 Run the Mnemex decay engine to update tier assignments:
 
 ```bash
-python sartor/memory/decay.py --update
+python sartor/memory/decay.py --refresh
 ```
 
 This recalculates: `score(t) = (n_use)^0.6 * e^(-lambda * delta_t) * importance`

@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-05-14
+updated: 2026-05-27
 updated_by: autodream
 last_verified: 2026-04-16
 status: active
@@ -218,3 +218,7 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 - [2026-05-13] (fact) Brookside will have a special theme day 2026-05-13. "Head of School for the Day" auction winner Chloe Martinez invited students to dress with a theme. Details in Veracross.
 - [2026-05-13] (fact) Vishala wears a dress featuring her own letter (likely letter "V" or a specific assigned letter — confirm with Vishala/school)
 - [2026-05-13] (fact) Routed to: family/vishala, family/active-todos
+
+## Consolidated from daily logs (2026-05-27)
+- [2026-05-27] (fact) Boston trip: (May 27–29) is underway 2026-05-27 (all-day Family calendar event, created 2026-04-28). No description, location, or attendee list on the calendar event itself.
+- [2026-05-27] (fact) MKA Valley Road carline road closure: (no-reply@mka.org, 2026-05-26 2:38 PM ET): closure on Valley Road between Brunswick and Wendover, overrunning its 3 PM scheduled end, causing extra volume on Brunswick Road. Carline running with delays. Boston trip covers 5/27–5/29; plan alternate route for return carline (first school carline would be Mon 6/1 or if kids return earlier).
