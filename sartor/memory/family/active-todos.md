@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-27
 updated_by: personal-data-gather
-run: 134
+run: 136
 
 status: active
 priority: p1
@@ -1030,6 +1030,33 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
 > | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
 > | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+
+## Latest from gather (2026-05-27) — run 136
+
+> [!todo] ACTION_REQUIRED — Leader Bank Annual Escrow Analysis (185 Davis Ave Brookline MA)
+> **Leader Bank** (Clientservices@leaderbank.com, 5/27 15:30 ET): Annual escrow account review for 185 Davis Ave Unit 8, Brookline MA 02445 — AutoPay mortgage. Escrow analysis determines whether property taxes and insurance are sufficiently escrowed; result may adjust the monthly mortgage payment. Review the escrow analysis document from Leader Bank. See [[ALTON]].
+
+> [!note] FAMILY — Meowtel July 4th cat sitter reminder (5 weeks out)
+> Meowtel sent a booking reminder (5/27 15:39 ET): book cat sitter for July 4th. Loki, Ghosty, and Pickle need care if family plans to travel July 4th weekend. No confirmed travel plans visible. Flag for family decision. Also check: Disney trip is July 16–19, so July 4th is a separate window.
+
+> [!note] Jackrabbit Tech parent/child class (Vasu) — upcoming Wed May 30 + June 3
+> Starz & Me class (ages 1–4), 4:00–4:45 PM, 136 Mountainview Blvd Wayne NJ. Today's class missed (family in Boston). Next classes: **Wed May 30** and **Wed June 3** at 4 PM. No conflict on June 3 with Aneeta "Healing" (8 PM). See [[family/vasu]].
+
+> [!note] Carry-forward P0/P1 (run 136, 2026-05-27 ~3:45 PM ET)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | **MKA past-due tuition $5,340.00** | **PAY IMMEDIATELY** | parent.blackbaud.school |
+> | Sante Total 990-N | NOT FILED | **12 days overdue** (due 2026-05-15) |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **8 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant + meeting request |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 11+ (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | June 2: Vasu dance time | CONFIRM | Possibly 4:30 PM vs MKA May term 7 PM |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+> | **Leader Bank Escrow Analysis** | **REVIEW** | **185 Davis Ave Brookline MA — NEW** |
 
 ## Latest from gather (2026-05-27) — run 133
 

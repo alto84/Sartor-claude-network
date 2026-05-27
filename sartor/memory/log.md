@@ -735,6 +735,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-05-26.md` (run 131 appended), `family/active-todos.md` (run 131 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - KEY: Berman invoice scope change — verify before paying. Cat sitter P0 — Boston trip is TOMORROW morning.
 
+## [2026-05-27] ingest | personal-data-gather run 136: Leader Bank escrow; Meowtel July 4th; Jackrabbit Tech class
+- Sources: Gmail (newer_than:2d, 30 threads — scanned afternoon batch), all 5 Google Calendars (May 27 – Jun 3). No SSH (web runner).
+- New facts: (1) **Leader Bank Annual Escrow Analysis** for 185 Davis Ave Unit 8 Brookline MA — review required, monthly payment may change. (2) Meowtel July 4th cat sitter booking reminder — flag for family decision (~5 weeks). (3) Jackrabbit Tech parent/child class (Vasu, ages 1–4) at Wayne NJ — today missed (Boston trip), upcoming May 30 + June 3 at 4 PM. (4) Newegg #448349643 delivery update (2 items, follow-on). All others INFORMATIONAL.
+- Calendar: all 5 stable. Boston trip active. No new events since run 135.
+- P0 carries: MKA $5,340 past-due (PAY); 990-N 12 days overdue; KYC 8 days to 2026-06-04.
+- Pages updated: `daily/2026-05-27.md` (run 136 appended), `family/active-todos.md` (run 136 escrow + Meowtel), `log.md` (this entry), `data/heartbeat-log.csv` (created, data/ dir recreated), `data/gather-alerts.md` (written)
+- KEY: Leader Bank escrow for Brookline condo is a new item — may affect monthly payment. July 4th cat coverage decision needed within ~2 weeks. MKA tuition $5,340 past-due remains most urgent P0.
+
 ## [2026-05-27] ingest | personal-data-gather run 133: Emmett/Alton accounts; 990-N 13 days overdue; P0 carry
 - Sources: Gmail (newer_than:2d, 30 threads re-scanned), all 5 Google Calendars (May 27 – Jun 3). No SSH (web runner).
 - New facts: (1) Marriott Bonvoy account created for "EMMETT SARTOR" (member 831843162) — Alton's legal name Emmett Alton Sartor; account unactivated. (2) Nintendo service request 61333620 received for "Emmett" — warranty device repair in progress; no charge until evaluation. (3) Newegg #448349663 delivery update (shipping). All 3 INFORMATIONAL.
