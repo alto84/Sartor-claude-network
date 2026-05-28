@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-28
 updated_by: personal-data-gather
-run: 137
+run: 141
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -800,3 +800,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: MKA past-due $5,340 (UNRESOLVED); 990-N 13 days overdue; KYC 7 days to 2026-06-04
 - Pages updated: `daily/2026-05-28.md` (run 140 appended), `ALTON.md` (run 140 appended), `family/active-todos.md` (run 140 appended), `family/vayu.md` (run 140 appended), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
 - KEY: Guidepoint consult request (#1752401) needs response; UCNS cert deadline needs review.
+
+## [2026-05-28] ingest | personal-data-gather run 141: Newegg late; CSA orientation; Vasu daily sheet; Goddard issue resolved
+- Sources: Gmail (newer_than:2d, 50 threads scanned), all 5 Google Calendars (May 28 – June 4). No SSH (web runner, cloud env).
+- New facts: (1) **Vasu daily sheet May 28 received** — Kaymbu delivery issue resolved. Check-in 7:26 AM, check-out 3:59 PM. (2) **Newegg orders #448349603 + #448349623 running late** — WD_BLACK SN7100 4TB and associated items; monitor delivery. (3) **CSA 2026 orientation** — Bloomfield Montclair CSA opening day June 9; new members need pre-opening orientation (from asamiraglia@gmail.com). (4) **Verizon Fios NJ12297784814** — Aneeta forwarded May 8 confirmation; check if follow-up needed. (5) Adult Aquasize registration opens June 2 at Mountainside Pool. (6) NEJM AI Vol 3 No 6 published. (7) FedEx Delivery Manager profile updated — verify household initiated. (8) Goddard daily sheets delivery issue resolved per Alissa DelConte 8:01 PM UTC.
+- Calendar: all 5 stable. Vasu dance event title stale ("time to be decided") but 4–6 PM confirmed in calendar data. Boston trip concluded (ended May 30 all-day).
+- P0 carries: Vishala Capstone TOMORROW 8:15 AM; Vayu folder due TOMORROW; MKA $5,340 overdue; 990-N 13+ days overdue; KYC 7 days.
+- Pages updated: `daily/2026-05-28.md` (run 141 appended), `data/gather-alerts.md` (created fresh, 25 P0-P2 items), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- KEY: Vishala Capstone Design Fair TOMORROW 8:15 AM MKA Brookside. Vayu folder sign + return TOMORROW. Newegg SSD orders late — monitor delivery vs rtxserver timeline.
