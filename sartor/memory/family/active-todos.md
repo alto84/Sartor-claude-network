@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-27
+updated: 2026-05-28
 updated_by: personal-data-gather
-run: 137
+run: 138
 
 status: active
 priority: p1
@@ -1121,3 +1121,70 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | UPS claim 1Z091C2R4220295437 | Monitor | ~2026-06-03 |
 > | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
 > | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+
+
+## Latest from gather (2026-05-28) — run 138
+
+> [!deadline] TOMORROW 2026-05-29 at 8:15 AM — URGENT
+> **Vishala Capstone Design Fair — 8:15 AM, MKA Brookside.** 3rd Grade Capstone Design Fair.
+> - Report to Vishala's classroom at 8:15 AM for short presentation, then to auditorium for design fair
+> - **Limit: 2 adults per student** — plan attendance (Alton + Aneeta? Confirm)
+> - **Concert attire required:** white collared shirt + khaki bottoms (change of spirit clothes optional)
+> - Event ends ~9:45 AM; light refreshments follow
+> - Afternoon (students only): pizza lunch + ice cream truck; parents not needed afternoon
+> - Source: Aneeta forwarded MKA 3rd grade email (originally sent Apr 30 from Daniela Vespucci, Team 3)
+> - See [[family/vishala]]
+
+> [!deadline] TOMORROW 2026-05-29 — Vayu take-home folder due
+> Roshni Shah (4th Grade Dean) sent take-home folder home May 27. Contents: Final Poetry Packet, American Revolution Essays, Book Clubs Assessment, Unit 7 Math Check-Ins. **Sign the orange "sign and return" sheet and return by Friday May 29.** [[family/vayu|Vayu]]'s **4th grade picnic is TODAY (May 28)** — no parent action needed for picnic. See [[family/vayu]].
+
+> [!todo] ACTION_REQUIRED — Respond to Alyssa Berman: Lutron programming visit June 4
+> Alyssa Berman (alyssa@bermanhomesystems.com) asked May 27: "Can I get a technician to you next Thursday the 4th about 8:30-9am to program the Lutron system?" No reply yet. **Confirm or reschedule June 4 at 8:30-9 AM.** This is the Lutron programming service call — distinct from the unresolved invoice #AAAO13216-04 (billing still pending separately). See [[ALTON]].
+
+> [!deadline] 2026-06-14 — Leader Bank escrow shortage: decide by this date
+> Full details extracted from Leader Bank email (run 138): escrow shortage **$5,366.83** for 185 Davis Ave Unit 8, Brookline MA 02445.
+> - **Pay in full by June 14:** monthly = $4,101.99 (P&I $3,216.94 + Escrow $885.05) from July 1
+> - **Let AutoPay spread over 12 months:** monthly = $4,549.22 (P&I $3,216.94 + Escrow $1,332.28) from July 1
+> - Option A saves $447.23/month; financially ~neutral over 12 months (pay $5,367 now vs pay $5,367 more via escrow), but eliminates ongoing cash-flow drag
+> - If not paid by June 14, Option B auto-activates; AutoPay updates July 1
+> - Pay at leaderbank.com → "Make a One-Time Payment" → "Escrow Only" field
+> - See [[ALTON]]
+
+> [!fact] Vasu dance performance — time confirmed: 4:00–6:00 PM June 2
+> Calendar definitively shows Vasu dance performance Tue June 2, **4:00–6:00 PM ET** (event summary still reads "time to be decided" but calendar datetimes are authoritative). June 2 MKA May term evening is 7:00–9:00 PM — **no overlap**, sequential logistics needed. See [[family/vasu]] and [[family/family-calendar]].
+
+> [!note] MKA new math program — Amplify Desmos Math (2026-2027)
+> MKA announced Amplify Desmos Math for Primary School K-5 starting 2026-2027 (Gretchen Ievers, May 27). Applies to [[family/vayu|Vayu]] (rising 5th) and [[family/vishala|Vishala]] (rising 4th). Family Education Series presentations planned for fall. INFORMATIONAL — no action until school year begins.
+
+> [!note] Calendar — May 28 – June 4 (confirmed live API run 138)
+> | Date | Time (ET) | Event | Notes |
+> |------|-----------|-------|-------|
+> | **Thu 5/28** | all-day | Boston trip ongoing + **Vayu 4th grade picnic TODAY** | No parent logistics needed |
+> | **Fri 5/29** | **8:15–9:45 AM** | **Vishala Capstone Design Fair (TOMORROW)** | Concert attire, 2-adult limit |
+> | **Fri 5/29** | — | **Vayu take-home folder due** | Sign orange sheet + return |
+> | Sat 5/30 | 5:00 PM | Vishala sleepover w/ Amia (drop-off) | [[family/vishala]] |
+> | Sun 5/31 | 12:00 PM | Vishala sleepover pickup | [[family/vishala]] |
+> | **Tue 6/2** | **4:00–6:00 PM** | **Vasu dance performance (TIME CONFIRMED)** | Was "TBD" — now definitive |
+> | **Tue 6/2** | **7:00–9:00 PM** | **May term evening (MKA)** | Sequential with dance; [[family/vayu]], [[family/vishala]] |
+> | Wed 6/3 | 8:00–11:00 PM | Aneeta "Healing" (recurring) | Aneeta calendar |
+> | **Thu 6/4** | **8:30–9:00 AM** | **Berman Lutron tech (AWAITING CONFIRM)** | Respond to Alyssa Berman |
+
+> [!note] Carry-forward P0/P1 (run 138, 2026-05-28)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | **Vishala Capstone Design Fair** | **TOMORROW 8:15 AM** | MKA Brookside — plan attendance NOW |
+> | **Vayu take-home folder** | **DUE TOMORROW (5/29)** | Sign orange sheet + return by Friday |
+> | **Berman Lutron programming visit** | **RESPOND to Alyssa** | Thu June 4 8:30am — confirm/decline |
+> | **MKA past-due tuition $5,340.00** | **PAY IMMEDIATELY** | parent.blackbaud.school |
+> | Sante Total 990-N | NOT FILED | **13 days overdue** (due 2026-05-15) |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **7 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant + board meeting |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 12+ (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | Leader Bank Escrow $5,366.83 | Decide by 2026-06-14 | Pay now → $4,101.99/mo; auto-spread → $4,549.22/mo |
+> | June 2: Vasu dance | 4–6 PM (CONFIRMED) | May term 7–9 PM sequential |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+> | Nintendo repair | SHIPPED | UPS 1Z9437400395402529 — expect ~5/29–5/30 |

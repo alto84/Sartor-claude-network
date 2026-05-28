@@ -775,3 +775,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: MKA $5,340 past-due; 990-N 12 days overdue; Sante Total KYC 8 days to 2026-06-04.
 - Pages updated: `daily/2026-05-27.md` (run 137 appended), `family/active-todos.md` (run 137 appended), `family/family-calendar.md` (June 5–10 events added), `log.md` (this entry), `data/heartbeat-log.csv` (written), `data/gather-alerts.md` (written)
 - KEY: Livia Birthday Party June 7 is NEW and requires planning. Third grade graduation June 5 now has confirmed times (12–6 PM). Nintendo device on its way back.
+
+## [2026-05-28] ingest | personal-data-gather run 138: Vishala Capstone tomorrow; Lutron tech visit; Leader Bank escrow details
+- Sources: Gmail (newer_than:2d, 50 threads scanned), all 5 Google Calendars (May 28 – June 4). No SSH (web runner, cloud env). data/ dir recreated.
+- New facts: (1) **Vishala Capstone Design Fair TOMORROW May 29 at 8:15 AM** — concert attire, 2-adult limit, ends 9:45 AM. Aneeta forwarded email with full details. URGENT. (2) **Vayu 4th grade picnic TODAY** + take-home folder due back **May 29** (sign orange sheet, return to Roshni Shah). (3) **Berman Lutron programming visit** — Alyssa Berman requesting technician June 4 at 8:30-9am — no reply yet. ACTION REQUIRED. (4) **Leader Bank escrow analysis full details**: shortage $5,366.83; pay by June 14 → monthly $4,101.99; auto-spread → $4,549.22/mo. (5) **Vasu dance performance time confirmed**: June 2, 4–6 PM ET (calendar definitive; was TBD). (6) MKA Amplify Desmos Math curriculum announced for 2026-2027 (informational). (7) Amazon children's clothing orders (informational). (8) Goddard June snack calendar + picture proofs arriving June 1.
+- Calendar: all 5 queried May 28–June 4. Boston trip ends Friday. Vishala sleepover Sat–Sun. Vasu dance June 2 4–6 PM confirmed. Berman Lutron tech June 4 pending confirmation.
+- P0 carries: MKA past-due $5,340 (UNRESOLVED); 990-N 13 days overdue; KYC 7 days to 2026-06-04.
+- Pages updated: `daily/2026-05-28.md` (created), `family/active-todos.md` (run 138 appended), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
+- KEY: Vishala Capstone Design Fair TOMORROW at 8:15 AM — plan attendance immediately. Vayu take-home folder due same day.
