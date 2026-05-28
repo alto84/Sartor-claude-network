@@ -4,7 +4,7 @@ entity: vayu
 name: "Vayu Sartor"
 updated: 2026-05-28
 updated_by: personal-data-gather
-run: 139
+run: 140
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -305,3 +305,8 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!todo] MKA Summer Enrichment — registration now open
 > m@mail1.veracross.com, 2026-05-28: Summer Enrichment at MKA (201 Valley Road, Montclair), **August 3–14, 2026**, Grades 4–8. Vayu is rising 5th grade — eligible. Consider registering before sessions fill. See [[family/active-todos]].
+
+## Latest from gather (2026-05-28) — run 140
+
+> [!note] Montclair United Summer Soccer Sessions 2026 — registration open
+> clubnews@bluesombrero.com, 2026-05-28: Montclair United Soccer Club Summer Soccer Sessions now open for all skill levels. Register via Blue Sombrero. See [[family/active-todos]].

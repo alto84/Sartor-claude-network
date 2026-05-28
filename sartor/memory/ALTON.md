@@ -2,9 +2,9 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-05-23
+updated: 2026-05-28
 updated_by: personal-data-gather
-run: 6
+run: 140
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -147,6 +147,17 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 ## Consolidated from daily logs (2026-04-07)
 - [2026-04-05] (fact) Aneeta away April 29 - May 2 -- Alton sole parent during that window
+
+## Latest from gather (2026-05-28) run 140
+
+> [!todo] Guidepoint consultation request — Adamantinomatous Craniopharyngioma (#1752401)
+> jobrien@guidepointglobal.com, 2026-05-28 15:59 UTC: Alton identified as potential expert consultant. Respond to accept or decline. See [[business/az-career]].
+
+> [!todo] UCNS — Autonomic Disorders Certification application deadline approaching
+> ucns-ucns.org@shared1.ccsend.com, 2026-05-28: Review ucns.org to determine if this certification is applicable and whether Alton needs to submit an application before the deadline.
+
+> [!fact] Chase statement available — account ending 0982 (2026-05-28)
+> no.reply.alerts@chase.com, 2026-05-28 16:01 UTC: Latest statement now available for review at chase.com.
 
 ## Latest from gather (2026-04-11)
 

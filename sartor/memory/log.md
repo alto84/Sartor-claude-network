@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-27
+updated: 2026-05-28
 updated_by: personal-data-gather
 run: 137
 status: active
@@ -791,3 +791,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: MKA past-due $5,340 (UNRESOLVED); 990-N 13 days overdue; KYC 7 days to 2026-06-04. No new P0/P1 items.
 - Pages updated: `daily/2026-05-28.md` (run 139 appended), `family/active-todos.md` (run 139 appended), `family/vayu.md` (run 139 appended), `family/vishala.md` (run 139 appended), `log.md` (this entry), `data/heartbeat-log.csv` (written), `data/gather-alerts.md` (written)
 - KEY: MKA Summer Enrichment Aug 3–14 registration open; sign up before sessions fill. Vanguard proxy notice needs review.
+
+## [2026-05-28] ingest | personal-data-gather run 140
+
+- Facts gathered: 5 (3 ACTION_REQUIRED, 1 FINANCIAL, 1 INFORMATIONAL)
+- New items: Guidepoint consultation #1752401 (accept/decline needed); UCNS Autonomic Disorders cert deadline (review ucns.org); Chase statement 0982 available; MKA "First Year in Books" end-of-year note; Montclair United Summer Soccer registration open
+- Calendar: all 5 stable, no new events
+- P0 carries: MKA past-due $5,340 (UNRESOLVED); 990-N 13 days overdue; KYC 7 days to 2026-06-04
+- Pages updated: `daily/2026-05-28.md` (run 140 appended), `ALTON.md` (run 140 appended), `family/active-todos.md` (run 140 appended), `family/vayu.md` (run 140 appended), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
+- KEY: Guidepoint consult request (#1752401) needs response; UCNS cert deadline needs review.

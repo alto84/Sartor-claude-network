@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-28
 updated_by: personal-data-gather
-run: 139
+run: 140
 
 status: active
 priority: p1
@@ -1203,3 +1203,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] WD_BLACK SN7100 4TB NVMe SSD purchased (2026-05-27)
 > Newegg / PlatinumMicro: WD_BLACK SN7100 M.2 2280 4TB PCIe 4.0 x4 SSD purchased. Likely for rtxpro6000server storage expansion (Solar Inference LLC asset). Track in hardware ledger for depreciation. See [[business/solar-inference]].
+
+## Latest from gather (2026-05-28) — run 140
+
+> [!todo] Guidepoint consultation #1752401 — respond accept/decline
+> jobrien@guidepointglobal.com, 2026-05-28 15:59 UTC: Expert consultation request on Adamantinomatous Craniopharyngioma. Respond to accept or decline. See [[ALTON]].
+
+> [!note] Montclair United Summer Soccer Sessions 2026 — registration open
+> clubnews@bluesombrero.com, 2026-05-28: Summer Soccer Sessions open for all skill levels. Relevant to [[family/vayu|Vayu]]. No deadline; register when ready.
