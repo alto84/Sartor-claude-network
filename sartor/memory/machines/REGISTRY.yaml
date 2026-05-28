@@ -44,7 +44,7 @@ machines:
     bmc_ip: null
     switch_port: null  # Not in the 2026-05-01 census; physical patch-panel labeling unknown for this drop.
     vast_ai_machine_id: null
-    last_verified: 2026-05-26
+    last_verified: 2026-05-28
     last_drift: 2026-05-19  # UniFi switch lost power in fuse blow ~22:54 ET; Rocinante's Ethernet died, Rocinante DHCP-renewed onto Fios CR1000A WiFi at .169. Old .171 lease still showing as Deprecated on the dead Ethernet adapter.
     flagged:
       - "Ethernet adapter shows .171 in Deprecated state (stale lease from dead UniFi switch); release/renew once switch is back."
@@ -69,7 +69,7 @@ machines:
     bmc_ip: null
     switch_port: null  # Physically rewired into Alton's Office switch port during 2026-05-19 fuse-blow recovery; switch_port number unknown until UniFi client list is re-queried post-restoration.
     vast_ai_machine_id: 52271
-    last_verified: 2026-05-26
+    last_verified: 2026-05-28
     last_drift: 2026-05-19  # ROLLED BACK from .199 → .100 during fuseblow recovery (gpuserver1 physically moved to Alton's Office wired drop; DHCP reassigned to original .100). Restores alignment with Fios DMZ target. Rental C.34113802 reconnected within 30min, reliability dropped slightly (0.9807 → 0.9718) but recovering.
     flagged:
       - "Now back at 192.168.1.100 (pre-2026-05-09 IP). Codebase references to .199 will need cleanup in next Tier-2 sweep; the .100 references that were previously stale are now correct again."
@@ -96,8 +96,8 @@ machines:
     bmc_secondary_ip: "192.168.1.156"
     bmc_mac: "30:c5:99:d5:8f:b8"
     switch_port: 10
-    vast_ai_machine_id: 97429
-    last_verified: 2026-05-26
+    vast_ai_machine_id: 124192  # corrected 2026-05-26 from stale 97429 per rental-ops audit; live machine_id verified via vastai show machines
+    last_verified: 2026-05-28
     last_drift: 2026-05-26  # BMC primary moved .154 → .150 static (was factory-reset to 10.10.10.10 at some point between 2026-05-21 and 2026-05-26; rediscovered + corrected on this date)
     flagged: []
     notes: |

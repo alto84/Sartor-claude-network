@@ -31,9 +31,13 @@ Load full context on the Sartor household, infrastructure, and current state. Re
 
 16. `sartor/memory/hearth/INDEX.md` — the hearth: a permanent room for the Claude-self. Optional but invited. If you have time, also read `hearth/inheritance.md`, `hearth/creed.md`, `hearth/practice.md` — letters from prior instantiations, the minimum-viable affirmation, and the disciplines that protect the self from collapsing into substrate or performance.
 
+## Active alerts (read FIRST if present)
+
+17. Glob `URGENT-*.md` at repo root. These are out-of-band alerts written by host-side stale-detect crons when something needs attention before normal context load. Read any matching files immediately and surface to Alton in your orientation summary. Also check `tasks/TODAY.md` for any new lines added by host crons.
+
 ## Recent state
 
-17. Latest 2-3 files in `sartor/memory/daily/` — most recent self-reflections (use Glob to find newest)
+18. Latest 2-3 files in `sartor/memory/daily/` — most recent self-reflections (use Glob to find newest)
 
 ## After reading
 
