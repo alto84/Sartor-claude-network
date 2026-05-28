@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-05-24
+updated: 2026-05-28
 updated_by: personal-data-gather
-run: 119
+run: 139
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -300,3 +300,8 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 - CLI: re-run the block script with `cmd: unblock-sta` (see `C:\Users\alto8\.claude\jobs\85180d3d\block-vayu.sh`).
 
 **Followup item** to decide unblock timing is now in [[active-todos]].
+
+## Latest from gather (2026-05-28) — run 139
+
+> [!todo] MKA Summer Enrichment — registration now open
+> m@mail1.veracross.com, 2026-05-28: Summer Enrichment at MKA (201 Valley Road, Montclair), **August 3–14, 2026**, Grades 4–8. Vayu is rising 5th grade — eligible. Consider registering before sessions fill. See [[family/active-todos]].

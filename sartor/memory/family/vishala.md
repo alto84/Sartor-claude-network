@@ -2,9 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-05-23
+updated: 2026-05-28
 updated_by: personal-data-gather
-run: 115
+run: 139
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -191,3 +191,8 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!fact] Screen time — week of May 16–22: 8 hours 57 minutes
 > Microsoft Family Safety weekly report (familysafety@microsoft.com, received 2026-05-23). Full report available at family.microsoft.com.
+
+## Latest from gather (2026-05-28) — run 139
+
+> [!todo] MKA Summer Enrichment — registration now open
+> m@mail1.veracross.com, 2026-05-28: Summer Enrichment at MKA (201 Valley Road, Montclair), **August 3–14, 2026**, Grades 4–8. Vishala is rising 4th grade — eligible. Consider registering before sessions fill. See [[family/active-todos]].

@@ -783,3 +783,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: MKA past-due $5,340 (UNRESOLVED); 990-N 13 days overdue; KYC 7 days to 2026-06-04.
 - Pages updated: `daily/2026-05-28.md` (created), `family/active-todos.md` (run 138 appended), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
 - KEY: Vishala Capstone Design Fair TOMORROW at 8:15 AM — plan attendance immediately. Vayu take-home folder due same day.
+
+## [2026-05-28] ingest | personal-data-gather run 139: MKA Summer Enrichment; Vanguard proxy; WD_BLACK SSD
+- Sources: Gmail (newer_than:2d, 50 threads scanned), all 5 Google Calendars (May 28 – June 4). No SSH (web runner, cloud env).
+- New facts: (1) **MKA Summer Enrichment registration now open** — Aug 3–14, Grades 4–8; applies to Vayu (rising 5th) and Vishala (rising 4th). (2) **Vanguard Funds proxy vote** — id@proxyvote.com IMPORTANT; third proxy notice in recent weeks. Review at proxyvote.com. (3) **WD_BLACK SN7100 4TB NVMe SSD purchased** via Newegg/PlatinumMicro — likely rtxpro6000server storage, Solar Inference LLC asset. (4) Aneeta shared Hudson Valley Shakespeare 98-acre theater campus (opening summer, 60mi from NYC). (5) Goddard daily sheets delivery issue (minor, Kaymbu support contacted). (6) LEGO Insiders 982 points expiring 2026-06-26 now routed to active-todos.
+- Calendar: all 5 stable, no new events. Event landscape unchanged from run 138.
+- P0 carries: MKA past-due $5,340 (UNRESOLVED); 990-N 13 days overdue; KYC 7 days to 2026-06-04. No new P0/P1 items.
+- Pages updated: `daily/2026-05-28.md` (run 139 appended), `family/active-todos.md` (run 139 appended), `family/vayu.md` (run 139 appended), `family/vishala.md` (run 139 appended), `log.md` (this entry), `data/heartbeat-log.csv` (written), `data/gather-alerts.md` (written)
+- KEY: MKA Summer Enrichment Aug 3–14 registration open; sign up before sessions fill. Vanguard proxy notice needs review.

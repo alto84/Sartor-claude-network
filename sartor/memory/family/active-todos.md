@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-28
 updated_by: personal-data-gather
-run: 138
+run: 139
 
 status: active
 priority: p1
@@ -1188,3 +1188,18 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
 > | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
 > | Nintendo repair | SHIPPED | UPS 1Z9437400395402529 — expect ~5/29–5/30 |
+> | UPS claim 1Z091C2R4220295437 | Monitor | ~2026-06-03 |
+
+## Latest from gather (2026-05-28) — run 139
+
+> [!todo] MKA Summer Enrichment — register before sessions fill
+> m@mail1.veracross.com, 2026-05-28 (8 AM ET): "Summer Enrichment Registration Now Open" — **August 3–14, 2026**, Grades 4–8, MKA (201 Valley Road Montclair). Applies to [[family/vayu|Vayu]] (rising 5th grade) and [[family/vishala|Vishala]] (rising 4th grade). No hard deadline visible; sessions may fill. Decide and register if interested.
+
+> [!note] Vanguard proxy vote — review at proxyvote.com
+> id@proxyvote.com, 2026-05-28 (IMPORTANT INBOX): "Important Information" re one or more Vanguard fund holdings. Login to proxyvote.com and vote or discard. Third proxy-vote notice in recent weeks (INVESCO ×2 were 2026-05-22). FINANCIAL. See [[ALTON]].
+
+> [!note] LEGO Insiders points expiring 2026-06-26 — 982 points (29 days)
+> Noreply@t.crm.lego.com, 2026-05-27: Insiders card 817784981, 982 points expire 06/26/2026. Redeem before expiry at LEGO.com or in-store. Minor.
+
+> [!fact] WD_BLACK SN7100 4TB NVMe SSD purchased (2026-05-27)
+> Newegg / PlatinumMicro: WD_BLACK SN7100 M.2 2280 4TB PCIe 4.0 x4 SSD purchased. Likely for rtxpro6000server storage expansion (Solar Inference LLC asset). Track in hardware ledger for depreciation. See [[business/solar-inference]].
