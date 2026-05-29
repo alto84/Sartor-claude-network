@@ -27,7 +27,7 @@ Reconciles the live P0/P1 carry-forward table (last refreshed run 123, 2026-05-2
 | **Cat sitter — Boston trip (5/27–5/29)** | Trip window is **NOW** (started 5/27). Booking window closed. Either booked out-of-band or already played out. | **[needs Alton]** confirm cats were covered |
 | **Boston trip school/logistics (Vayu+Vishala MKA, Vasu Goddard 5/27–5/29)** | Trip underway; logistics resolved by event whether planned or not. | resolved-by-event |
 | **Shakespeare Project MKA 5/29–5/30 vs Boston trip** | Conflict window is now (5/29). | **[needs Alton]** — was either reconciled or a role was missed |
-| **Sante Total Form 990-N (due 2026-05-15)** | **OVERDUE 13 days.** No filing signal. Penalties accruing. | **[needs Alton]** — P0, file at IRS.gov 990-N e-Postcard |
+| ~~Sante Total Form 990-N (due 2026-05-15)~~ | **RESOLVED 2026-05-29 — FILED** (confirmed by Alton). Confirmation on file: `work/taxes/sante-total-filings/2025-form-990-N-e-postcard.pdf`. | DONE — clears the P0. (Earlier gather blocks below are stale archive.) |
 | **Disney ADR (Blue Bayou / character dining)** | Window opened 5/17; now Day 11. Status never confirmed (Gmail gaps). | **[needs Alton]** confirm whether Nicol Stevenson booked |
 | **Berman Home Systems $6,000 (Lutron #AAAO13216-03)** | 10 days past Alton's 2026-05-18 "few days" CC-payment promise. | **[needs Alton]** pay or reconfirm timeline |
 | **Sante Total Berteau $2,400 / Gaby $9,972** | Treasurer decision pending since 5/12 (Gaby) and 5/23 (Berteau). | **[needs Alton]** — Sante Total, board/treasurer authorization required |

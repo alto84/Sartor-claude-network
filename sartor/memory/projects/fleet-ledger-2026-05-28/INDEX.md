@@ -155,8 +155,12 @@ review → revise → re-review → (9) CPA draft + matters + family sweep + wik
 
 ## Open decisions / handoffs for Alton (check-in)
 
-- **D1 — rtxserver price.** Live $1.10/GPU vs approved $0.92 (watchdog flags ORANGE every pass). Decide:
-  accept $1.10 (update fleet.yaml + approved) or relist to $0.92 (needs greenlight — a price change).
+- ~~**D1 — rtxserver price.**~~ RESOLVED 2026-05-29 — superseded by Alton's separate **pricing workstream**:
+  `scripts/fleet/reprice.py` (SartorFleetReprice, every 15 min) now autonomously sets rtxserver's
+  on-demand price (anchor to 2nd-cheapest comparable RTX PRO 6000 + bounded demand multiplier; live
+  ~$2.35/GPU, in the $2.40–2.67 market band). It updates `fleet.yaml` gpu_cost in sync, so the watchdog
+  no longer flags drift. **This project does not own pricing** — leave reprice.py to that workstream.
+  (Memory: [[feedback_autonomous_dynamic_pricing]].)
 - **D2 — watchdog phone channel.** Code is activation-ready; drop a Pushover or Telegram token in
   `sartor/memory/business/watchdog-notify.yaml` to make ORANGE+ alerts reach your phone. Until then,
   alerts land in inbox + dashboard only.

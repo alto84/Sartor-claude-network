@@ -33,11 +33,11 @@ related: [BUSINESS, TAXES, ALTON]
 - Filed.
 - Alton sent a copy to Barbara Weis on 2026-04-07 for her grant application (school lunch program). The original Barbara Weis email was 2026-04-03, deadline 2026-04-11.
 
-### 2025 Form 990-N (PENDING)
+### 2025 Form 990-N (FILED)
 - Due: 2026-05-15 (extendable to 2026-11-15 via Form 8868)
 - **NOT in Jonathan Francis's engagement scope.** Alton handles this filing directly.
 - Gross receipts: under $50K threshold for the 2025 tax year, so 990-N still applies
-- Status: not yet filed
+- **Status: FILED — sent (confirmed by Alton 2026-05-29).** e-Postcard confirmation/View saved internally at `work/taxes/sante-total-filings/2025-form-990-N-e-postcard.pdf` (committed; View dated 2026-04-07). Source copy also in Downloads ("Sante Total 990 e-Postcard View 2025.pdf").
 
 ### 2026 Form 990-EZ or Form 990 (PLANNED)
 - Due: 2027-05-15 (based on calendar-year fiscal year)
@@ -104,8 +104,8 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 ## Open questions and risks
 
-1. **Is the 990-N for 2025 filed?** Due 2026-05-15, still ~5 weeks out.
-2. **Who will handle the 2026 990-EZ or 990?** Alton alone? Engage a nonprofit-specialized CPA?
+1. ~~**Is the 990-N for 2025 filed?**~~ RESOLVED 2026-05-29 — FILED (confirmed by Alton); confirmation on file at `work/taxes/sante-total-filings/2025-form-990-N-e-postcard.pdf`.
+2. **Who will handle the 2026 990-EZ or 990?** Alton alone? Engage a nonprofit-specialized CPA? (The >$50K threshold crossing forces 990-EZ/990 for TY2026 — the next real deadline, due 2027-05-15.)
 3. **IRS penalty abatement — still pending?** 3+ months since submission.
 4. **Are all 2026 donors getting tax receipts?** The receipt pattern needs verification.
 5. **NJ charity registration renewal** — when is it due? Not in current memory.
