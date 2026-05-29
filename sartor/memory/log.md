@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-29
 updated_by: personal-data-gather
-run: 144
+run: 145
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -839,3 +839,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries (from run 142): vast.ai 124192 offline; MKA $5,340 past-due; 990-N 14 days overdue; KYC 6 days to 2026-06-04.
 - Pages updated: `daily/2026-05-29.md` (run 143 appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created)
 - KEY: Fidelity transfer review recommended (large cash movement, verify intentional). Ubiquiti UCG-Max is new hardware requiring topology planning for new GPU server build.
+
+## [2026-05-29] ingest | personal-data-gather run 145: 4 INFORMATIONAL; calendar stable; P0s unchanged
+
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 29–June 5). No SSH (web runner, cloud env). `data/` gitignored — files recreated locally.
+- Facts gathered: 4 new (all INFORMATIONAL — no new P0/P1 items)
+- **SCHOOL:** WeAreMKA May 29 weekly newsletter arrived (Veracross). Content unknown from snippet; may contain end-of-year schedule items. Review for actionable items.
+- **SOCIAL:** Lora Solangi Paperless Post group invitation to large Montclair community list. Event details not visible. Low urgency.
+- **PROFESSIONAL:** PCSS-MOUD Clinical Roundtable June 4 on SBIRT for SUDs in Primary Care (AAAP). Register if interested.
+- **PRODUCT:** Glass.health now supports telehealth audio (Zoom/browser EHR) for ambient scribing. Relevant to Aneeta's telehealth practice.
+- Calendar: all 5 queried. Zero new events vs run 144. Event table stable.
+- P0 unchanged: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 15 days overdue; KYC 6 days to 2026-06-04; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-29.md` (run 145 appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created locally — gitignored), `data/heartbeat-log.csv` (created locally — gitignored)
+- KEY: Light run — no new escalations. P0 watch: 990-N now 15d overdue, KYC deadline in 6 days.
