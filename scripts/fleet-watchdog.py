@@ -669,8 +669,6 @@ def main() -> int:
 
     # 10. Witness self-disk (Rocinante). "Witness with no witness": a full C: kills
     #     this watchdog + the GitHub mirror + creds-sync + hours-log, all silently.
-    # 10. Witness self-disk (Rocinante). "Witness with no witness": a full C: kills
-    #     this watchdog + the GitHub mirror + creds-sync + hours-log, all silently.
     disk_gb = disk_free_gb()
     prior_witness = prior_state.get("_witness", {})
     if disk_gb is not None:

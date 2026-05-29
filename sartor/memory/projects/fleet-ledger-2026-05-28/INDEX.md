@@ -144,7 +144,14 @@ review → revise → re-review → (9) CPA draft + matters + family sweep + wik
   - Matters: `solar-itc-48-vs-25d` + `469-material-participation` corrected; 2 new HIGH matters
     (insurance, registered-agent); 5 Watching items. CPA email drafted in Gmail.
   - Family freshness sweep (SWEEP-2026-05-28.md): surfaced overdue Sante Total 990-N (P0), cat-sitter.
-- Phase 4 Adversarial Review (auditor agent, standalone) + wiki reindex in flight.
+- 2026-05-29: Phase 4/6 Adversarial Review + Re-Review (standalone auditor). Verdict: **no fabrication,
+  no reward-hack** — the system is honest about unknowns. Found 1 CRITICAL (C1: watchdog price-drift
+  was transition-only → standing drift never re-fired, overall wrongly green) + 3 HIGH (H1 misleading
+  0.40% ITC fraction; H2/M1 stale §48/Notice-2018-59 in matters body; H3 dashboard §469 bot-inflated
+  fallback) + H4 (GPU PIS date, CPA flag). All fixed (commit `5747004a`); re-review confirmed **all
+  RESOLVED**, one cosmetic dup-comment patched (`5747004a`+). Wiki reindex run (496 files, 0 errors).
+  Build validated end-to-end (watchdog + ledger tasks fire LastTaskResult 0). **Project complete**;
+  remaining items are the Alton decisions D1-D6 + the elevated S4U registration handoff.
 
 ## Open decisions / handoffs for Alton (check-in)
 
