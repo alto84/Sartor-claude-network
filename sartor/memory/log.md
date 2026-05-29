@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-29
 updated_by: personal-data-gather
-run: 142
+run: 143
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -819,3 +819,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 14 days overdue; KYC 6 days; Disney ADR unconfirmed.
 - Files touched: `daily/2026-05-29.md` (created), `business/solar-inference.md` (run 142 machine-offline warning appended, frontmatter bumped), `family/vishala.md` (graduation party appended, frontmatter bumped), `family/family-calendar.md` (June 5 party + week table appended, frontmatter bumped), `family/active-todos.md` (run 142 section appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 - KEY: vast.ai machine 124192 offline — investigate; may be new build registered on vast.ai. June 5 Vishala graduation party is a new, fully-packed day requiring logistics.
+
+## [2026-05-29] ingest | personal-data-gather run 143: Fidelity $10K transfer; Ubiquiti UCG-Max ordered
+
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 29–Jun 5). No SSH (web runner, cloud env).
+- Facts gathered: 2 new (1 FINANCIAL, 1 INFRASTRUCTURE)
+- **FINANCIAL:** Fidelity transfer $10,000 from account ending 8998 → JPMorgan Chase Bank, initiated 2026-05-28 11:34 PM ET. In progress 1–2 business days. Verify intentional.
+- **INFRASTRUCTURE:** Amazon ordered Ubiquiti Cloud Gateway Max (2026-05-29 03:08 UTC). Likely for new GPU server network segment or UniFi expansion. Topology impact TBD.
+- P0 carries (from run 142): vast.ai 124192 offline; MKA $5,340 past-due; 990-N 14 days overdue; KYC 6 days to 2026-06-04.
+- Pages updated: `daily/2026-05-29.md` (run 143 appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created)
+- KEY: Fidelity transfer review recommended (large cash movement, verify intentional). Ubiquiti UCG-Max is new hardware requiring topology planning for new GPU server build.
