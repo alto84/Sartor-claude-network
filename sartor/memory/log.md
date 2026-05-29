@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-29
 updated_by: personal-data-gather
-run: 145
+run: 146
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -852,3 +852,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 unchanged: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 15 days overdue; KYC 6 days to 2026-06-04; Disney ADR unconfirmed.
 - Pages updated: `daily/2026-05-29.md` (run 145 appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created locally — gitignored), `data/heartbeat-log.csv` (created locally — gitignored)
 - KEY: Light run — no new escalations. P0 watch: 990-N now 15d overdue, KYC deadline in 6 days.
+
+## [2026-05-29] ingest | personal-data-gather run 146: Fidelity EFT completed; Vasu June calendar
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 29–June 5). No SSH (web runner, cloud env). `data/` gitignored — files recreated locally.
+- Facts gathered: 2 new (1 FINANCIAL/STATUS-UPDATE, 1 FAMILY/VASU-SCHEDULE)
+- **FINANCIAL:** Fidelity EFT $10,000 → JPMorgan Chase confirmed COMPLETED (2026-05-29 12:08 UTC). Closes run 143's "in-progress" P1 item. Transfer from account 8998.
+- **FAMILY/VASU:** Goddard June 2026 calendar email from Samantha Ramsden (Kaymbu). Attachment not readable from snippet — retrieve PDF for June school dates and summer start.
+- Calendar: all 5 queried. Zero new events vs run 145. Event table stable.
+- P0 unchanged: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 15 days overdue; KYC 6 days to 2026-06-04; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-29.md` (run 146 appended, frontmatter bumped), `family/vasu.md` (June calendar fact added), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created locally — gitignored), `data/heartbeat-log.csv` (created locally — gitignored)

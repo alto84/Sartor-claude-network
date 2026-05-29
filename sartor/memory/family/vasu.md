@@ -56,6 +56,11 @@ No urgent open loops for Vasu. Goddard communications have been routine.
 
 Goddard summer camp — fees and school closure dates communicated 2026-04-06. Summer camp field trips trigger the t-shirt size request above. Enrollment status TBD; worth confirming whether Vasu is enrolled in summer camp or if alternative care is needed.
 
+## Latest from gather (2026-05-29) — run 146
+
+> [!fact]
+> **Goddard June 2026 calendar available.** Samantha Ramsden (Goddard Montclair) sent the June 2026 school calendar via Kaymbu on 2026-05-29. Attachment: "June 2026.pdf". Retrieve from Kaymbu / Gmail to extract: last day of school, summer camp start date, any June closures. See [[family/active-todos]].
+
 ## Contacts
 
 - **School:** Samantha Ramsden, Clarissa B (classroom teachers), Jacqueline Capote (administrative)
