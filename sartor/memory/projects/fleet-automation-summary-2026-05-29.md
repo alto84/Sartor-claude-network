@@ -93,13 +93,25 @@ pricing only sets the *next* renter's rate. Full trajectory in `reprice-log.json
 
 ## Open items
 
-- **GPU0 thermal — ACTIVE (Alton's call).** rtxserver GPU0 reached 85°C under sustained renter load
-  on 2026-05-29 (the documented soft-abort line; hard-abort 88°C). The watchdog detects + alerts but
-  cannot cool it. Levers: drop the 425W cap further (host-side; degrades the renter — don't touch a
-  rented GPU's config without intent), or the long-deferred cooling fix (5th ARCTIC P14 / GPU0
-  water-cooling, open since 2026-04-29 in rtxserver BMC notes). If it hits 86°C the watchdog goes RED;
-  at 85–88°C the host may soft/hard-abort the rental (reliability hit). Was "2°C of headroom" in the
-  prior snapshot — that headroom is now gone.
+- **GPU0 thermal — being handled (2026-05-29).** GPU0 hit 85°C (soft-abort line) under sustained renter
+  load in the hot attic room. Actions taken:
+  - **ROOT FIX (Alton): room AC added** — dropped GPU0 85→81°C and intake (SYSTIN) 37→33°C within the
+    hour; the real lever. NB: AC + 2×425W GPUs + Threadripper share the attic circuit — watch for breaker
+    trips (a tripped breaker is another power-loss/outage path, cf. the 2026-05-28 incident).
+  - **SAFETY NET (deployed): dynamic power-cap guard** — `scripts/peer-shared/gpu-thermal-guard/` →
+    `/usr/local/bin/gpu-thermal-guard.sh` on rtxserver, systemd timer every 60s. Sheds the per-GPU cap
+    425→400W at 84°C, →375W at 87°C, restores at ≤79°C (hysteresis). Keeps the die below the 85/88°C
+    abort lines without killing the rental. Valid -pl range 150–600W confirmed. Logs to
+    `/var/log/gpu-thermal-guard.log` (state-change-only).
+  - **RULED OUT: GPU fan-curve bump** — headless box (no Xorg); fan control needs X+Coolbits, whose
+    init would risk the live renter's CUDA context. Not worth it given AC + the guard.
+  - **STILL OPEN — BMC fan policy (permanent fan fix).** The chassis fans aren't maxing (CHA_FAN2/3
+    ~1200, CPU_FAN/CHA_FAN5 ~1560 RPM) even with the BMC's own PCIE03 slot sensor at 81°C and CPU at
+    87°C — the saved curve isn't tracking the GPU slot, and the OS can't drive these fans (inert; BMC
+    owns them). Permanent fix = a BMC web-UI change (set chassis fans to Full, or raise/repoint the
+    curve to the PCIE03 slot sensor) at 192.168.1.150. Bundle the admin/admin → real-credential fix
+    (open security item). Now optional given AC, but worth doing before peak summer. Can be driven via
+    Chrome MCP on request.
 - **Rocinante disk ~15 GB free** — the witness host is at the watchdog's ORANGE threshold; a full C:
   silently kills the watchdog/mirror/hours-log. Free the `.drained/` + `_memos/` archives (respect
   archive-not-collapse: move to a 2nd drive rather than delete) or relocate the peer-session mirror.

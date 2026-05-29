@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the Sartor GPU thermal guard every 60s
+
+[Timer]
+OnBootSec=120
+OnUnitActiveSec=60
+AccuracySec=10
+Unit=gpu-thermal-guard.service
+
+[Install]
+WantedBy=timers.target

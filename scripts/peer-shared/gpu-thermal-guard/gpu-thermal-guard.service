@@ -1,0 +1,8 @@
+[Unit]
+Description=Sartor GPU thermal guard (dynamic power-cap for rtxserver GPU0 slot-3 thermal shadow)
+After=nvidia-power-cap.service
+Documentation=https://github.com/alto84/Sartor-claude-network scripts/peer-shared/gpu-thermal-guard/
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/gpu-thermal-guard.sh
