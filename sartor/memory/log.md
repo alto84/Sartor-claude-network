@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-29
 updated_by: personal-data-gather
-run: 143
+run: 144
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -819,6 +819,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 14 days overdue; KYC 6 days; Disney ADR unconfirmed.
 - Files touched: `daily/2026-05-29.md` (created), `business/solar-inference.md` (run 142 machine-offline warning appended, frontmatter bumped), `family/vishala.md` (graduation party appended, frontmatter bumped), `family/family-calendar.md` (June 5 party + week table appended, frontmatter bumped), `family/active-todos.md` (run 142 section appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 - KEY: vast.ai machine 124192 offline — investigate; may be new build registered on vast.ai. June 5 Vishala graduation party is a new, fully-packed day requiring logistics.
+
+## [2026-05-29] ingest | personal-data-gather run 144: HYTE Y70 case delivered; GPU build status update; calendar stable
+
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 29–June 5). No SSH (web runner, cloud env).
+- Facts gathered: 1 new (BUILD-STATUS)
+- **BUILD:** HYTE Y70 Dual Chamber ATX Case delivered 2026-05-28 7:05 PM via Adorama/Newegg order #448349663 (tracking 1Z68R0R00385163546). Ship to Montclair NJ. Case component of second GPU server build confirmed received. Newegg tip email confirms motherboard/CPU components also likely in hand. Outstanding: Newegg #448349603 (1 of 4 late), #448349623 (1 item late), GIGABYTE RTX 5090 (status unknown).
+- Calendar: all 5 queried. Zero new events vs run 143. Vishala sleepover tonight (5 PM ET). Vasu dance June 2 4-6 PM. June 5 full day confirmed.
+- P0 carries unchanged: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 14 days overdue; KYC 6 days to 2026-06-04.
+- Pages updated: `daily/2026-05-29.md` (run 144 appended, frontmatter bumped), `MACHINES.md` (HYTE Y70 delivery note appended), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- KEY: GPU build case confirmed in hand. Motherboard/CPU tips email implies those delivered too. 2 Newegg shipments still late; RTX 5090 status unknown.
 
 ## [2026-05-29] ingest | personal-data-gather run 143: Fidelity $10K transfer; Ubiquiti UCG-Max ordered
 

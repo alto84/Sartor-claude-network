@@ -619,6 +619,11 @@ No git push (no credentials) - awaiting Rocinante curator commit
 ## Consolidated from daily logs (2026-05-14)
 - [2026-05-13] (fact) Gym Day Registration — skipped (already declined):
 
+## Latest from gather (2026-05-29) — run 144
+
+> [!fact] GPU Server Build — HYTE Y70 case delivered 2026-05-28
+> Newegg order #448349663 (Adorama, marketplace): HYTE Y70 CS-HYTE-Y70-WW Dual Chamber Mid-Tower ATX Case with PCIe 4.0 Express Riser Cable, Snow White — delivered 7:05 PM, tracking 1Z68R0R00385163546. Case component confirmed in hand at Montclair NJ. Motherboard/CPU likely received too (Newegg tip email triggered 5/29). Outstanding: Newegg #448349603 (1 of 4 items late), #448349623 (1 item late), GIGABYTE RTX 5090 delivery status unknown. Build assembly cannot begin until RTX 5090 arrives.
+
 ## Latest from gather (2026-05-29) — run 143
 
 > [!fact]
