@@ -6,6 +6,9 @@
 #
 #   SartorFleetWatchdog : every 10 min  -> scripts/win-tasks/fleet-watchdog.cmd
 #                         (witness-side rental/host/thermal/price/expiry/disk monitor)
+#   SartorFleetReprice  : every 15 min  -> scripts/win-tasks/fleet-reprice.cmd
+#                         (adaptive market repricer for rtxserver 124192: anchor to 2nd-
+#                          cheapest comparable RTX PRO 6000 + demand multiplier, bounded)
 #   SartorFleetLedger   : daily 23:45   -> scripts/win-tasks/fleet-ledger.cmd
 #                         (vast.ai revenue+state, power kWh, books, reconcile; ahead of
 #                          the 23:55 Sartor Hours Log task)
@@ -19,9 +22,10 @@ $ErrorActionPreference = 'Stop'
 $RepoRoot  = 'C:\Users\alto8\Sartor-claude-network'
 $RunHidden = Join-Path $RepoRoot 'scripts\win-tasks\run-hidden.vbs'
 $WatchCmd  = Join-Path $RepoRoot 'scripts\win-tasks\fleet-watchdog.cmd'
+$RepriceCmd= Join-Path $RepoRoot 'scripts\win-tasks\fleet-reprice.cmd'
 $LedgerCmd = Join-Path $RepoRoot 'scripts\win-tasks\fleet-ledger.cmd'
 
-foreach ($p in @($RunHidden, $WatchCmd, $LedgerCmd)) {
+foreach ($p in @($RunHidden, $WatchCmd, $RepriceCmd, $LedgerCmd)) {
   if (-not (Test-Path $p)) { throw "Missing required file: $p" }
 }
 
@@ -56,11 +60,20 @@ $watchTrigger.Repetition = $rep
 Register-FleetTask -TaskName 'SartorFleetWatchdog' -CmdPath $WatchCmd -Trigger $watchTrigger `
   -Desc 'Witness-side vast.ai fleet monitor (rental/host-down/price-drift/reliability/error/expiry/marginal-floor/min-gpus/GPU-temp + Rocinante disk). Every 10 min. Writes inbox alert + data/financial/solar-inference/fleet-health.json; phone alert on ORANGE+ if watchdog-notify.yaml configured. See scripts/fleet-watchdog.py.'
 
+# --- SartorFleetReprice: every 15 minutes, indefinitely (offset 5 min from watchdog) ---
+$repriceTrigger = New-ScheduledTaskTrigger -Once -At (Get-Date).Date.AddMinutes(8)
+$repRep = (New-ScheduledTaskTrigger -Once -At (Get-Date) `
+            -RepetitionInterval (New-TimeSpan -Minutes 15) `
+            -RepetitionDuration (New-TimeSpan -Days 3650)).Repetition
+$repriceTrigger.Repetition = $repRep
+Register-FleetTask -TaskName 'SartorFleetReprice' -CmdPath $RepriceCmd -Trigger $repriceTrigger `
+  -Desc 'Adaptive market repricer for rtxserver (124192): anchors to the 2nd-cheapest comparable RTX PRO 6000 listing (strict-2-GPU preferred, per-GPU fallback) x a demand multiplier learned from fill-latency/idle, bounded by electricity floor + peer ceiling + per-run step cap; preserves min_gpus=2. Every 15 min. Sets the vast.ai price, updates business/fleet.yaml, logs decisions to data/financial/solar-inference/reprice-log.jsonl. See scripts/fleet/reprice.py.'
+
 # --- SartorFleetLedger: daily 23:45 ---
 $ledgerTrigger = New-ScheduledTaskTrigger -Daily -At 23:45
 Register-FleetTask -TaskName 'SartorFleetLedger' -CmdPath $LedgerCmd -Trigger $ledgerTrigger `
   -Desc 'Daily vast.ai revenue+state pull, power kWh ingest, books rebuild, doc reconcile for the Solar Inference fleet. Runs 23:45 (before Sartor Hours Log 23:55). See scripts/fleet/.'
 
 Write-Host ''
-Write-Host 'Done. Verify:  Get-ScheduledTask SartorFleetWatchdog,SartorFleetLedger | Format-Table TaskName,State'
-Write-Host 'Test now:      Start-ScheduledTask -TaskName SartorFleetWatchdog ; Get-Content C:\Users\alto8\backups\fleet-watchdog.log -Tail 20'
+Write-Host 'Done. Verify:  Get-ScheduledTask SartorFleetWatchdog,SartorFleetReprice,SartorFleetLedger | Format-Table TaskName,State'
+Write-Host 'Test now:      Start-ScheduledTask -TaskName SartorFleetReprice ; Get-Content C:\Users\alto8\backups\fleet-reprice.log -Tail 20'

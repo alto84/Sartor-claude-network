@@ -104,7 +104,7 @@ machines:
       load_w: 1250                     # 2x425W cap + ~350W host/CPU/board
       logger: null                     # NO logger installed — power_ingest flags this (ITC substantiation gap)
     listing:
-      gpu_cost: 0.92                   # APPROVED. Live = $1.10 -> DRIFT (decision D1 open)
+      gpu_cost: 1.60                   # DYNAMIC (scripts/fleet/reprice.py) set 2026-05-29T14:10:26Z
       min_bid: 0.85
       storage_cost: 0.10
       min_gpus: 2                      # CRITICAL thermal-safety invariant — single-card pathology if 1
