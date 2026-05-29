@@ -476,6 +476,55 @@ def _duration_str(since_iso: str | None) -> str:
 _MACHINES_CACHE: dict = {}
 
 
+def standing_conditions(cfg: dict, ns: dict) -> list:
+    """Invariant violations TRUE right now, regardless of transition.
+
+    The transition checks in evaluate_machine fire once when a signal crosses a
+    threshold — correct for noisy signals (reliability, temp spikes) but WRONG for a
+    standing invariant like a price that should always read as wrong while it's wrong.
+    (Bug caught 2026-05-29: a price already-drifted in the state file never re-alerted,
+    so `overall` showed green while rtxserver sat at $1.10 vs approved $0.92.)
+
+    These conditions always feed `overall` severity + the health snapshot every pass.
+    Inbox re-alerting is throttled separately (see main) so health stays accurate
+    without 10-minute spam.
+    """
+    out = []
+    host = ns.get("hostname")
+    if ns.get("host_status") == "DOWN":
+        sev = "red" if ns.get("rented") else "orange"
+        out.append({"severity": sev, "kind": "host_down", "msg": f"{host} is DOWN."})
+    approved = cfg.get("approved_gpu_cost")
+    tol = float(cfg.get("tolerance", 0.005))
+    gc = ns.get("gpu_cost")
+    if approved is not None and gc is not None and abs(float(gc) - float(approved)) > tol:
+        out.append({"severity": "orange", "kind": "price_drift",
+                    "msg": f"{host} list ${gc}/GPU != approved ${approved}/GPU (standing drift)."})
+    if ns.get("below_floor"):
+        out.append({"severity": "red", "kind": "below_marginal_floor",
+                    "msg": f"{host} list price below marginal electricity floor (standing)."})
+    if ns.get("min_gpus_bad"):
+        out.append({"severity": "red", "kind": "min_gpus_violation",
+                    "msg": f"{host} live min_chunk below required min_gpus (standing)."})
+    if ns.get("error_description"):
+        out.append({"severity": "red", "kind": "error_description",
+                    "msg": f"{host} error_description set: '{ns.get('error_description')}' (standing; delists)."})
+    crit = cfg.get("gpu_temp_crit_c")
+    t = ns.get("gpu_temp_c")
+    if crit is not None and t is not None and float(t) >= float(crit):
+        out.append({"severity": "red", "kind": "gpu_temp",
+                    "msg": f"{host} GPU {t:.0f}C >= crit {crit}C (standing)."})
+    d = ns.get("days_to_expiry")
+    if d is not None and d <= 7:
+        out.append({"severity": "orange", "kind": "listing_expiry",
+                    "msg": f"{host} listing expires in {d}d (standing)."})
+    return out
+
+
+# Re-nag cadence for a persistent standing condition (avoid 10-min inbox spam).
+STANDING_RENAG_HOURS = 12
+
+
 # --- notification --------------------------------------------------------------
 
 def notify_inbox(overall: str, events: list, run_iso: str) -> Path:
@@ -497,8 +546,8 @@ def notify_inbox(overall: str, events: list, run_iso: str) -> Path:
     return path
 
 
-def write_health(overall: str, new_state: dict, events: list, disk_gb: float | None,
-                 run_iso: str) -> Path:
+def write_health(overall: str, new_state: dict, events: list, standing: list,
+                 disk_gb: float | None, run_iso: str) -> Path:
     """Dashboard-facing health snapshot. Written every pass (green included)."""
     HEALTH_PATH.parent.mkdir(parents=True, exist_ok=True)
     machines = {}
@@ -520,6 +569,7 @@ def write_health(overall: str, new_state: dict, events: list, disk_gb: float | N
         "overall": overall,
         "disk_free_gb": round(disk_gb, 1) if disk_gb is not None else None,
         "events": [{"severity": e["severity"], "kind": e["kind"], "msg": e["msg"]} for e in events],
+        "standing": [{"severity": s["severity"], "kind": s["kind"], "msg": s["msg"]} for s in standing],
         "machines": machines,
     }
     HEALTH_PATH.write_text(json.dumps(payload, indent=2), encoding="utf-8")
@@ -597,58 +647,91 @@ def main() -> int:
 
     prior_state = load_state(args.state)
     new_state = {}
-    all_events = []
+    all_events = []      # transitions (one-shot inbox alerts)
+    all_standing = []    # invariant violations true right now (always feed overall + health)
     for mid, cfg in machine_cfgs.items():
         prior = prior_state.get(str(mid), {})
         ns, events = evaluate_machine(mid, cfg, registry_by_id, prior)
         new_state[str(mid)] = ns
         all_events.extend(events)
+        standing = standing_conditions(cfg, ns)
+        all_standing.extend(standing)
         host = ns.get("hostname", mid)
         print(f"[{host}] host={ns.get('host_status')} rented={ns.get('rented')} "
               f"gpu_cost={ns.get('gpu_cost')} rel={ns.get('reliability2')} "
               f"temp={ns.get('gpu_temp_c')} expiry={ns.get('days_to_expiry')}d "
               f"err={ns.get('error_description')} vastai={ns.get('vastai_query')} "
-              f"-> {len(events)} event(s)")
+              f"-> {len(events)} event(s), {len(standing)} standing")
         for e in events:
-            print(f"    [{e['severity'].upper()}] {e['kind']}: {e['msg']}")
+            print(f"    [{e['severity'].upper()}] {e['kind']}: {e['msg']} (transition)")
+        for s in standing:
+            print(f"    [{s['severity'].upper()}] {s['kind']}: {s['msg']}")
 
     # 10. Witness self-disk (Rocinante). "Witness with no witness": a full C: kills
     #     this watchdog + the GitHub mirror + creds-sync + hours-log, all silently.
+    # 10. Witness self-disk (Rocinante). "Witness with no witness": a full C: kills
+    #     this watchdog + the GitHub mirror + creds-sync + hours-log, all silently.
     disk_gb = disk_free_gb()
+    prior_witness = prior_state.get("_witness", {})
     if disk_gb is not None:
         print(f"[rocinante] disk_free={disk_gb:.1f}GB")
-        prior_disk_alerted = prior_state.get("_witness", {}).get("disk_alerted")
         if disk_gb < DISK_RED_GB:
             all_events.append({"severity": "red", "kind": "witness_disk",
                                "msg": f"Rocinante C: only {disk_gb:.1f}GB free (< {DISK_RED_GB}GB) -- witness layer at risk."})
-        elif disk_gb < DISK_ORANGE_GB:
-            if not prior_disk_alerted:
-                all_events.append({"severity": "orange", "kind": "witness_disk",
-                                   "msg": f"Rocinante C: {disk_gb:.1f}GB free (< {DISK_ORANGE_GB}GB)."})
-        new_state["_witness"] = {"disk_free_gb": round(disk_gb, 1),
-                                 "disk_alerted": disk_gb < DISK_ORANGE_GB}
+        elif disk_gb < DISK_ORANGE_GB and not prior_witness.get("disk_alerted"):
+            all_events.append({"severity": "orange", "kind": "witness_disk",
+                               "msg": f"Rocinante C: {disk_gb:.1f}GB free (< {DISK_ORANGE_GB}GB)."})
 
+    # overall reflects BOTH transitions and standing conditions, so health is never
+    # green while a known invariant (e.g. price drift) is violated.
     overall = "green"
-    for e in all_events:
+    for e in all_events + all_standing:
         if SEV_ORDER[e["severity"]] > SEV_ORDER[overall]:
             overall = e["severity"]
+    standing_sev = "green"
+    for s in all_standing:
+        if SEV_ORDER[s["severity"]] > SEV_ORDER[standing_sev]:
+            standing_sev = s["severity"]
+
+    def _stale(iso: str | None, hours: float) -> bool:
+        if not iso:
+            return True
+        try:
+            t = datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+        except ValueError:
+            return True
+        return (datetime.now(timezone.utc) - t).total_seconds() >= hours * 3600
+
+    last_standing = prior_witness.get("last_standing_alert_utc")
+    renag_due = SEV_ORDER[standing_sev] >= SEV_ORDER["orange"] and _stale(last_standing, STANDING_RENAG_HOURS)
 
     if args.dry_run:
-        print(f"\n[DRY-RUN] overall={overall}; {len(all_events)} event(s); nothing written.")
+        print(f"\n[DRY-RUN] overall={overall}; {len(all_events)} transition(s), "
+              f"{len(all_standing)} standing; renag_due={renag_due}; nothing written.")
         return 0
+
+    will_alert = bool(all_events) or renag_due
+    new_standing_alert = utc_iso() if (will_alert and SEV_ORDER[standing_sev] >= SEV_ORDER["orange"]) else last_standing
+    new_state["_witness"] = {
+        "disk_free_gb": round(disk_gb, 1) if disk_gb is not None else None,
+        "disk_alerted": (disk_gb is not None and disk_gb < DISK_ORANGE_GB),
+        "last_standing_alert_utc": new_standing_alert,
+    }
 
     save_state(new_state, args.state)
     write_health(overall, {k: v for k, v in new_state.items() if k != "_witness"},
-                 all_events, disk_gb, utc_iso())
+                 all_events, all_standing, disk_gb, utc_iso())
 
-    if all_events:
-        inbox_path = notify_inbox(overall, all_events, utc_iso())
-        print(f"\nWrote inbox alert: {inbox_path}")
+    alert_items = all_events + all_standing
+    if will_alert and alert_items:
+        inbox_path = notify_inbox(overall, alert_items, utc_iso())
+        why = "transition" if all_events else f"standing re-nag (>{STANDING_RENAG_HOURS}h)"
+        print(f"\nWrote inbox alert ({why}): {inbox_path} [{len(all_events)} transition, {len(all_standing)} standing]")
         if SEV_ORDER[overall] >= SEV_ORDER["orange"]:
-            phone_result = notify_phone(overall, all_events, utc_iso())
+            phone_result = notify_phone(overall, alert_items, utc_iso())
             print(f"Phone alert ({overall}): {phone_result}")
     else:
-        print(f"\noverall=green; no transitions; state + health updated, no alert.")
+        print(f"\noverall={overall}; {len(all_standing)} standing (re-nag not due), no new transition; state + health updated.")
     return 0
 
 

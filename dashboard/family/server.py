@@ -2274,9 +2274,13 @@ def _fleet_hours_469():
         i_tot = header.index("total_active_hours")
     except ValueError:
         return None
+    # Prefer the tax-defensible §469 column. solar_inference_hours is bot-inflated
+    # (counts automated/peer sessions) — only used as a flagged fallback (auditor H3).
+    i_human = header.index("human_interactive_hours") if "human_interactive_hours" in header else None
     this_year = str(date.today().year)
     si_ytd = 0.0
     tot_ytd = 0.0
+    human_ytd = 0.0
     latest = None
     for ln in lines[1:]:
         cols = ln.split(",")
@@ -2290,15 +2294,25 @@ def _fleet_hours_469():
             tot_ytd += float(cols[i_tot])
         except ValueError:
             continue
+        if i_human is not None and len(cols) > i_human:
+            try:
+                human_ytd += float(cols[i_human])
+            except ValueError:
+                pass
         if latest is None or d > latest:
             latest = d
+    has_human = i_human is not None
     return {
+        "ytd_human_hours": round(human_ytd, 2) if has_human else round(si_ytd, 2),
+        "is_bot_inflated_source": not has_human,
         "solar_inference_ytd": round(si_ytd, 2),
+        "human_interactive_ytd": round(human_ytd, 2) if has_human else None,
         "total_ytd": round(tot_ytd, 2),
         "test_500": 500,
         "test_100": 100,
         "latest_date": latest,
-        "source": "hours-log/all-hours.csv",
+        "source": ("hours-log/all-hours.csv (human_interactive_hours)" if has_human
+                   else "hours-log/all-hours.csv (solar_inference_hours — BOT-INFLATED fallback)"),
     }
 
 

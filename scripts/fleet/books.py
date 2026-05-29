@@ -420,19 +420,41 @@ def build_itc(solar: dict, total_business_kwh: float | None, warnings: list) -> 
     section = solar.get("itc_section", "48E")
     placed = solar.get("placed_in_service")
 
-    # Business-use fraction: MEASURED only. Never assumed.
-    if total_business_kwh is None or annual_gen in (None, 0):
+    # Business-use fraction: MEASURED only, and ONLY meaningful once the solar is
+    # generating. A fraction = business-kWh / generation-over-the-SAME-period. We never
+    # divide partial GPU draw by a full-year generation ESTIMATE (that produced a
+    # misleading ~0.4% — auditor H1, 2026-05-29). Until placed-in-service, there is no
+    # generation, so the fraction is UNMEASURED and the logged kWh is only the future numerator.
+    measured_kwh = round(total_business_kwh, 1) if total_business_kwh is not None else None
+    if total_business_kwh is None:
         business_fraction = None
-        fraction_basis = ("UNMEASURED — cannot compute. No power data (power-2026.csv absent / no logger "
-                          "on rtxserver). See VERIFICATION C1. Do NOT assume a fraction.")
+        fraction_basis = ("UNMEASURED — no power data (power-2026.csv absent / no logger on rtxserver). "
+                          "See VERIFICATION C1. Do NOT assume a fraction.")
         warnings.append(
-            "ITC: business_use_fraction is UNMEASURED — the load-bearing unknown. The single ITC dollar "
-            "figure cannot be computed; only the labeled scenario RANGE below is defensible.")
+            "ITC: business_use_fraction UNMEASURED (no power data). Only the labeled scenario RANGE is defensible.")
+    elif placed is None:
+        business_fraction = None
+        meaningless = (total_business_kwh / annual_gen) if annual_gen else 0
+        fraction_basis = (
+            f"UNMEASURED — solar is NOT yet placed in service (placed_in_service=null), so there is no "
+            f"generation to form a fraction against. Business GPU draw logged to date: {measured_kwh} kWh "
+            f"— this is the FUTURE NUMERATOR, not a fraction. (Dividing it by the full-year generation "
+            f"estimate would give a meaningless ~{meaningless:.2%}; we deliberately do not.)")
+        warnings.append(
+            f"ITC: business_use_fraction UNMEASURED — solar not yet in service; {measured_kwh} kWh business "
+            f"draw logged so far (numerator only). Use the scenario RANGE, not a single figure.")
+    elif annual_gen in (None, 0):
+        business_fraction = None
+        fraction_basis = "UNMEASURED — annual_generation_kwh missing/zero in fleet.yaml."
+        warnings.append("ITC: business_use_fraction UNMEASURED — annual_generation_kwh missing.")
     else:
+        # Solar IS generating. NOTE: numerator and denominator must cover the SAME period;
+        # confirm both are full-year (or matched) before relying on this.
         business_fraction = round(total_business_kwh / annual_gen, 4)
-        fraction_basis = (f"MEASURED kWh-based: sum(business_kwh)={total_business_kwh:.1f} / "
-                          f"annual_generation_kwh={annual_gen:.0f}. NOTE: a kWh metric is defensible but "
-                          f"UNSETTLED (CPA/exam call); home-office use-% is the conventional method (VERIFICATION C1).")
+        fraction_basis = (f"MEASURED kWh-based: sum(business_kwh)={measured_kwh} / "
+                          f"annual_generation_kwh={annual_gen:.0f}. CAUTION: ensure numerator and "
+                          f"denominator cover the same period. A kWh metric is defensible but UNSETTLED "
+                          f"(CPA/exam call); home-office use-% is the conventional method (VERIFICATION C1).")
 
     # §50(c)(3): depreciable basis reduced by 50% of the credit. Reported, not folded into the credit math.
     basis_reduction_note = (
@@ -468,6 +490,7 @@ def build_itc(solar: dict, total_business_kwh: float | None, warnings: list) -> 
         "status": "PENDING" if placed is None else "IN SERVICE",
         "business_use_fraction": business_fraction,
         "business_use_fraction_basis": fraction_basis,
+        "business_kwh_measured_to_date": measured_kwh,
         "section_50c3_basis_reduction": basis_reduction_note,
         "scenario_range": scenarios,
         "single_number_warning": overstated_note,

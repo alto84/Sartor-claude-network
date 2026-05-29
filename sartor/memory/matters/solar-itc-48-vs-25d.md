@@ -69,6 +69,13 @@ above.
 
 ## Authority
 
+> [!warning] SUPERSEDED CITATIONS — read the VERIFIED UPDATE (top) first
+> The §48, Notice 2018-59, and "§25D = $131,649 fallback" citations in this Authority and the
+> Analysis below are **superseded** (verified 2026-05-28): controlling section is **§48E**; the
+> safe-harbor authority is **Notice 2025-42** (not 2018-59); **§25D is dead** for expenditures after
+> 12/31/2025 (zero residential fallback); the credit is the **business-use fraction** of basis, not
+> 30% × full $438,829. Retained below as the original reasoning / history. Cite the VERIFIED UPDATE.
+
 - **IRC §25D**: Residential clean energy credit. 30% of qualified expenditures. NO bonus depreciation track. Credit attaches to taxpayer who places property in service for personal use at primary or secondary residence.
 - **IRC §48**: Energy investment credit (commercial). 30% credit on qualified energy property. Pairs with §168(k) bonus depreciation for property placed in service in 2026 at 100% (per pre-OBBB) — confirm current rate post-OBBB.
 - **IRC §168(k)(6)**: Bonus depreciation phase-down schedule. 2026 placed-in-service rate to verify with CPA — historically 80%, OBBB potentially restored to 100%.

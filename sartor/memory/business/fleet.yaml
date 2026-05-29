@@ -94,7 +94,9 @@ machines:
     hardware: "2x RTX PRO 6000 Blackwell 96GB, Threadripper PRO 7975WX, 251GB DDR5"
     asset:
       acquisition_date: "2026-04-12"
-      in_service_date: "2026-05-26"    # listing live / first rental detected
+      in_service_date: "2026-05-26"    # listing live / first rental. CPA Q (auditor H4): true placed-in-service
+                                       # may be earlier (assembled/operational ~2026-04; "readiness" test). 2026-05-26
+                                       # is conservative (defers depreciation) — confirm the defensible date with JF.
       cost_basis_ref: "data/financial/solar-inference/expenses-2026.csv (capitalize rows, hostname=rtxserver)"
       depreciation: {method: "MACRS-200DB", recovery_years: 5, bonus_eligible: true}
     power:

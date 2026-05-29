@@ -129,3 +129,39 @@ review → revise → re-review → (9) CPA draft + matters + family sweep + wik
 
 - 2026-05-28: Phase 0/2 framed; verification workflow landed; `fleet.yaml` spine next. bg-isolation
   disabled for this repo (work must drive live tree: scheduled tasks, dashboard, wiki reindex).
+- 2026-05-28: Phase 0/2 committed (`018ca7c3`): INDEX, VERIFICATION, `business/fleet.yaml` spine.
+- 2026-05-28→29: Phase 3 Build (7-builder workflow `wf_9d4ebe19-aba`) + integration, committed (`54b96bec`):
+  - `scripts/fleet/{vastai_pull,power_ingest,books,reconcile}.py` — live-tested (acct ~$252, 49 days kWh
+    from gpuserver1, books runs clean with honest UNMEASURED ITC + scenario range, reconcile catches D1).
+  - `scripts/fleet-watchdog.py` rewired (GPU-temp 83C, disk, expiry, floor, min_gpus; fleet-health.json;
+    Pushover/Telegram activation-ready) + **scheduled** (SartorFleetWatchdog 10min, SartorFleetLedger
+    daily; verified firing, LastTaskResult 0) — closes the "never scheduled" critical finding.
+  - `scripts/hours-log-extract.py` §469 fix (human_interactive_hours; 404 peer sessions + meta-log files
+    excluded — the real 07:30/23:30 contaminant).
+  - Dashboard `/api/fleet` + "Solar Inference Fleet" panel (HTTP-tested).
+  - Doc reconciliation: 17 files corrected to live ground truth; CLAUDE.md operational facts fixed
+    (machine_id, $0.80, expiry, listed-status, 425W) — flagged for Alton; killed the `-g 0.40` footgun.
+  - Matters: `solar-itc-48-vs-25d` + `469-material-participation` corrected; 2 new HIGH matters
+    (insurance, registered-agent); 5 Watching items. CPA email drafted in Gmail.
+  - Family freshness sweep (SWEEP-2026-05-28.md): surfaced overdue Sante Total 990-N (P0), cat-sitter.
+- Phase 4 Adversarial Review (auditor agent, standalone) + wiki reindex in flight.
+
+## Open decisions / handoffs for Alton (check-in)
+
+- **D1 — rtxserver price.** Live $1.10/GPU vs approved $0.92 (watchdog flags ORANGE every pass). Decide:
+  accept $1.10 (update fleet.yaml + approved) or relist to $0.92 (needs greenlight — a price change).
+- **D2 — watchdog phone channel.** Code is activation-ready; drop a Pushover or Telegram token in
+  `sartor/memory/business/watchdog-notify.yaml` to make ORANGE+ alerts reach your phone. Until then,
+  alerts land in inbox + dashboard only.
+- **D3 — wall-plug kWh meters** (~$25/machine) for ITC-grade business-use substantiation (vs the
+  current GPU-draw proxy). The ITC business-use fraction is the load-bearing tax unknown.
+- **D4 — insurance** (matters/insurance-commercial-coverage): disclose the GPU business to Selective +
+  get commercial coverage before rig 3 goes live. Tax/insurance tension is real.
+- **D5 — registered agent / NJ standing** (matters/registered-agent-nj-standing): confirm RA after the
+  LegalZoom cancellation; calendar the Sept 6 NJ annual report.
+- **D6 — begin-construction lock by July 4 2026** (matters/solar-itc-48-vs-25d): get Lucent's written
+  5%-safe-harbor attestation — protects the §48E credit even if install slips to 2029-2030.
+- **Privileged one-liner:** run `scripts/win-tasks/register-fleet-tasks.ps1` in an ELEVATED PowerShell
+  to upgrade the two tasks from current-user to S4U (so they survive a reboot-before-login).
+- **CPA email** drafted in Gmail (to jf@francis-cpa.com) — review + send.
+- **rig 3** arriving: add a `fleet.yaml` stanza (template in-file) and it flows everywhere automatically.
