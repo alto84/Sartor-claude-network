@@ -1,0 +1,132 @@
+# Solar Inference LLC — canonical fleet CONFIG (machine identity + listing + monitoring + tax posture).
+#
+# This file is VERSION-CONTROLLED. It holds NO dollar amounts (cost basis, revenue, balances).
+# The privacy boundary (CLAUDE.md: "Financial data stays in data/financial/"):
+#   - CONFIG (here, committed):      machine identity, listing spec, depreciation PARAMETERS, tax posture.
+#   - DOLLARS (data/financial/, gitignored, local-only): cost basis, revenue, expenses, capital
+#     accounts, books output. Cost basis is DERIVED from data/financial/solar-inference/expenses-2026.csv
+#     (the capitalized purchase rows tagged to a machine) — never duplicated here.
+#
+# ONE source of truth for everything machine-keyed that is not pure network identity:
+#   - Network identity (hostname / MAC / IP / role) lives in sartor/memory/machines/REGISTRY.yaml.
+#   - Links to REGISTRY by `hostname` + `vast_ai_machine_id`.
+#   - Supersedes business/approved-pricing.yaml (kept as a deprecated pointer; watchdog now reads THIS).
+#
+# Adding machine N+1 = copy a `- hostname:` stanza, fill the fields. Everything iterates over `machines`:
+#   scripts/fleet/books.py        -> depreciation, ITC business-use fraction, balance sheet
+#   scripts/fleet/vastai_pull.py  -> revenue + live state per machine
+#   scripts/fleet/power_ingest.py -> kWh per machine (reads `power.logger`)
+#   scripts/fleet/reconcile.py    -> live vast.ai state vs this file (drift)
+#   scripts/fleet-watchdog.py     -> price / expiry / temp / floor / min_gpus checks
+#   dashboard/family/             -> per-machine revenue + fleet health
+#
+# Editing rule: when Alton approves a price/listing change, update the `listing:` block here in the
+# SAME action that runs `vastai list machine`. The watchdog treats this file as truth.
+# Tax fields verified 2026-05-28: projects/fleet-ledger-2026-05-28/VERIFICATION.md (live IRS/OBBB/Notice 2025-42).
+
+schema_version: "1.0"
+updated: 2026-05-28
+updated_by: "Rocinante Opus 4.8 (fleet-ledger build)"
+
+solar:
+  contract_total_usd: 438829          # public contract figure (in receipts); kept for the ITC denominator
+  system_kw: 22.10
+  annual_generation_kwh: 19854        # design estimate; ~82% offset of household load
+  placed_in_service: null             # set when in service; gates the ITC/depreciation tax year
+  begin_construction_locked: null     # date the 5% safe harbor is established (Notice 2025-42)
+  itc_section: "48E"                  # Clean Electricity ITC; replaced §48 for PIS after 12/31/2024
+  itc_rate: 0.30
+  bonus_depreciation_pct: 100         # 2026, permanent under OBBB
+  begin_construction_deadline: "2026-07-04"   # STATUTORY (OBBB + Notice 2025-42); a BEGIN-CONSTRUCTION date, NOT placed-in-service
+  business_use_fraction: null         # the load-bearing unknown; MEASURED from power logs, never assumed
+  note: >
+    The §48E ITC and depreciable basis must be reduced to the BUSINESS-USE fraction. The plan's
+    $131,649 (= 30% x full $438,829) is OVERSTATED (no business-use haircut). Defensible ~ $32K
+    (GPU-only kWh ~24%) to ~$86K (dual-rig ~64%), possibly higher with net-metered grid-export income.
+    §25D is dead for expenditures after 12/31/2025 (personal fraction gets zero credit). July 4 2026 is
+    a begin-construction deadline; the 5% safe harbor (system <=1.5 MW) lets PIS slip to ~2029-2030 with
+    full credit if construction begins by then. See matters/solar-itc-48-vs-25d.md.
+
+electricity:
+  nj_residential_usd_per_kwh: 0.18    # PSE&G approx; replace with metered utility-bill figure
+  cooling_overhead_pct: 35            # summer AC multiplier on rig draw for the marginal floor
+
+machines:
+  - hostname: gpuserver1
+    vast_ai_machine_id: 52271
+    offer_id: 32099437
+    role: rental                       # rental | household | mixed
+    status: active                     # active | staged | retired
+    gpus: 1
+    gpu_model: "RTX 5090"
+    hardware: "RTX 5090 32GB, i9-14900K, 128GB DDR5"
+    asset:                             # depreciation PARAMETERS only; cost basis is in the expense ledger
+      acquisition_date: null           # SEED note from work/taxes/solar-inference-2025.md
+      in_service_date: "2026-04-05"    # first rental under C.34113802
+      cost_basis_ref: "data/financial/solar-inference/expenses-2026.csv (capitalize rows, hostname=gpuserver1)"
+      depreciation: {method: "MACRS-200DB", recovery_years: 5, bonus_eligible: true}
+    power:
+      idle_w: 80
+      load_w: 550
+      logger: "ssh:alton@gpuserver1:/home/alton/sartor-power/"   # power_ingest source (null if none)
+    listing:
+      gpu_cost: 0.80                   # $/GPU/hr on-demand list price (approved)
+      min_bid: 0.65                    # interruptible floor
+      storage_cost: 0.10               # $/GB-month
+      min_gpus: 1
+      end_date: "2026-06-30"           # live listing expiry (verified 2026-05-26)
+      marginal_floor_gpu_cost: 0.14    # never list below (electricity); watchdog RED if breached
+      tolerance: 0.005
+    monitoring:
+      gpu_temp_alert_c: 84
+      gpu_temp_crit_c: 86
+    note: >
+      Realized ~$0.20/hr under long-term reserved contract C.34113802 through 2026-08-24 (a per-rental
+      contract attribute, not a host-set rate). Listing expiry 2026-06-30 is a distinct field.
+
+  - hostname: rtxserver
+    vast_ai_machine_id: 124192         # corrected 2026-05-26 from stale 97429
+    offer_id: null
+    role: mixed                        # household-primary inference + supplemental rental
+    status: active
+    gpus: 2
+    gpu_model: "RTX PRO 6000 Blackwell"
+    hardware: "2x RTX PRO 6000 Blackwell 96GB, Threadripper PRO 7975WX, 251GB DDR5"
+    asset:
+      acquisition_date: "2026-04-12"
+      in_service_date: "2026-05-26"    # listing live / first rental detected
+      cost_basis_ref: "data/financial/solar-inference/expenses-2026.csv (capitalize rows, hostname=rtxserver)"
+      depreciation: {method: "MACRS-200DB", recovery_years: 5, bonus_eligible: true}
+    power:
+      idle_w: 350
+      load_w: 1250                     # 2x425W cap + ~350W host/CPU/board
+      logger: null                     # NO logger installed — power_ingest flags this (ITC substantiation gap)
+    listing:
+      gpu_cost: 0.92                   # APPROVED. Live = $1.10 -> DRIFT (decision D1 open)
+      min_bid: 0.85
+      storage_cost: 0.10
+      min_gpus: 2                      # CRITICAL thermal-safety invariant — single-card pathology if 1
+      end_date: "2026-06-30"
+      marginal_floor_gpu_cost: 0.11    # ~1250W * $0.18/kWh / 2 GPU; refine with metered bill
+      tolerance: 0.005
+    monitoring:
+      power_cap_w: 425                 # LIVE value (verified). Service file + docs say 450 — see VERIFICATION O1
+      gpu_temp_alert_c: 84
+      gpu_temp_crit_c: 86
+    note: >
+      Live list $1.10 vs approved $0.92 (D1). GPU0 ~83C under sustained renter load (2C from 85C
+      soft-abort). min_gpus must never drop to 1. machine_id 124192 (not 97429).
+
+# Future-machine slot (uncomment + fill when rig 3 arrives):
+# - hostname: rig3
+#   vast_ai_machine_id: null
+#   role: rental
+#   status: staged
+#   gpus: ?
+#   gpu_model: "?"
+#   asset: {acquisition_date: "2026-05-26", in_service_date: null, cost_basis_ref: "expenses-2026.csv hostname=rig3", depreciation: {method: "MACRS-200DB", recovery_years: 5, bonus_eligible: true}}
+#   power: {idle_w: ?, load_w: ?, logger: null}
+#   listing: {gpu_cost: null, min_bid: null, storage_cost: 0.10, min_gpus: 1, end_date: null, marginal_floor_gpu_cost: null, tolerance: 0.005}
+#   monitoring: {gpu_temp_alert_c: 84, gpu_temp_crit_c: 86}
+
+retired: []
