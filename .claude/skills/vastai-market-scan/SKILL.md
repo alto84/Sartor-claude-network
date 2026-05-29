@@ -142,7 +142,7 @@ Always close with a structured table he can scan:
 Plus 3 short bullets:
 
 - **Why the spec sheet justifies upper-mid:** [the specific Sartor advantages — CPU class, RAM, PCIe gen, NUMA, location]
-- **Realized-vs-listed reality:** under reserved contracts, Sartor sees ~$0.20 realized vs $0.30 listed on gpuserver1 — about a 33% discount. Apply that ratio to estimate revenue at the proposed listed rate.
+- **Realized-vs-listed reality:** under reserved contracts, Sartor sees ~$0.20 realized on gpuserver1 against a list that has risen from $0.30 (when the contract was signed) to $0.80 now. The realized rate is contract-locked; the listed rate is current market. Apply the realized-vs-list gap with care — for gpuserver1 the gap reflects a legacy contract, not the current market discount.
 - **Adjustment recommendation:** specific increment (e.g., "list at $2.50, drop to $2.25 if no rent in 7 days, hold if rented in <48h").
 
 ## Reference data points (snapshots — refresh when stale)
@@ -160,12 +160,11 @@ Plus 3 short bullets:
 
 **Method-A vs Method-C divergence**: Web UI median was $0.14 lower than CLI median for the same dual-WS class (4 unverified/non-rentable listings the CLI excluded clustered at the low end). When the question is "what would a renter actually book at?", the CLI is more honest. When the question is "what's the visible market floor that we're competing against on the search page?", the UI is more honest. Both are useful; cite which one you used.
 
-### 2026-05-02 gpuserver1 (RTX 5090 x1) live state
+### 2026-05-28 gpuserver1 (RTX 5090 x1) live state
 
-- Listed: $0.30/hr on-demand, $0.25/hr interruptible floor
-- Realized under reserved contract C.34113802: ~$0.20/hr
-- Discount ratio: 33% (listed → realized for long-term)
-- Listing end_date: 2026-10-24
+- Listed: $0.80/hr on-demand, $0.65/hr interruptible floor
+- Realized under reserved contract C.34113802: ~$0.20/hr (contract signed when list was $0.30)
+- Listing expiry: 2026-06-30 (distinct from reserved-contract end 2026-08-24)
 
 ## Failure modes
 

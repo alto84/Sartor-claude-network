@@ -1,23 +1,17 @@
-# Approved vast.ai per-GPU on-demand list prices ($/GPU/hr).
+# DEPRECATED 2026-05-28 — superseded by sartor/memory/business/fleet.yaml
 #
-# Source of truth for fleet-watchdog.py's price-drift check. The watchdog reads
-# `listed_gpu_cost` from each machine's live vast.ai record and alerts (ORANGE)
-# if it deviates from approved_gpu_cost beyond tolerance.
+# This file is no longer the source of truth for approved vast.ai pricing.
+# The canonical fleet config (machine inventory, approved prices, listing
+# state, power caps) is now:
 #
-# WHY THIS EXISTS: on the 2026-05-28 rtxserver reboot, the listing price silently
-# reverted from the approved $0.92/GPU to the $1.00/GPU default. Nothing noticed.
-# This file makes the approved value explicit and machine-checkable.
+#     sartor/memory/business/fleet.yaml
 #
-# Editing rule: when Alton approves a price change, update approved_gpu_cost here
-# in the SAME action that runs `vastai list machine`. The watchdog treating this
-# file as truth means a stale entry will false-alarm — keep it current.
-
-machines:
-  124192:                      # rtxserver — dual RTX PRO 6000 Blackwell (2 GPUs)
-    approved_gpu_cost: 0.92
-    tolerance: 0.005
-    note: "Approved 2026-05-26 (drop from $1.00). Reverted to $1.00 on 2026-05-28 reboot; re-pinned same day."
-  52271:                       # gpuserver1 — RTX 5090 (1 GPU); reserved contract C.34113802
-    approved_gpu_cost: 0.80
-    tolerance: 0.005
-    note: "List price $0.80/GPU; realized ~$0.20/hr under long-term reserved contract through 2026-08-24."
+# fleet-watchdog.py and all fleet scripts now read fleet.yaml. This file is
+# retained ONLY so that anything still referencing the old path does not break.
+# Do not edit the values below — they are frozen at deprecation and may be
+# stale. Update fleet.yaml instead.
+#
+# Frozen-at-deprecation snapshot (for reference; authoritative values are in
+# fleet.yaml):
+#   124192 (rtxserver, 2× RTX PRO 6000 Blackwell): approved_gpu_cost 0.92
+#   52271  (gpuserver1, RTX 5090):                 approved_gpu_cost 0.80

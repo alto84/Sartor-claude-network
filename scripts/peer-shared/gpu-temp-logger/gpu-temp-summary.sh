@@ -14,7 +14,7 @@ set -u
 HOSTNAME=$(hostname)
 case "$HOSTNAME" in
   rtxpro6000server|rtxserver)
-    MACHINE_ID=97429; NUM_GPUS=2; HAVE_BMC=1
+    MACHINE_ID=124192; NUM_GPUS=2; HAVE_BMC=1
     SUMMARY_DIR="/home/alton/Sartor-claude-network/sartor/memory/inbox/rtxpro6000server/_temp-summary"
     ;;
   gpuserver1)

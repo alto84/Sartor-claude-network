@@ -48,7 +48,7 @@ related: [ALTON, TAXES, PROJECTS, ASTRAZENECA, solar-inference, sante-total, az-
 
 ## Solar Inference LLC
 
-**Status:** Active development / pre-revenue
+**Status:** Active. Pre-revenue through TY2025 (short year); TY2026 is revenue-generating — both vast.ai hosts (gpuserver1 machine 52271, rtxserver machine 124192) rented as of 2026-05-28. Solar build-out still in progress.
 **Website:** SolarInference.com (currently placeholder)
 
 **Business Model:**
@@ -163,7 +163,7 @@ See [[TAXES]] for deductions, estimated payments, and filing details.
 - [x] ~~240V L6-20 electrical circuit~~ NO LONGER NEEDED -- be quiet! DPP13 supports 115-240V, runs on standard 120V outlet
 - [ ] Update MACHINES.md with new workstation entry when it arrives
 - [ ] Notify CPA Jonathan Francis of $37,810 capital equipment purchase for depreciation scheduling
-- [ ] Consider NJ ST-3 sales tax exemption for future purchases via NeweggBusiness account
+- [ ] NJ sales/use tax — route to CPA, do NOT pursue ST-3 as a resale exemption. ST-3 is a *resale certificate*; Solar Inference sells **compute/IaaS, not tangible goods for resale**, so ST-3 is likely the wrong instrument (misusing it risks a bad exemption claim). The real questions for JF: (a) correct NJ use-tax treatment of the GPU equipment purchases, (b) whether SI has any NJ sales-tax collection obligation on compute revenue, and (c) whether vast.ai acts as a marketplace facilitator collecting/remitting on our rentals. See [[projects/fleet-ledger-2026-05-28/VERIFICATION]] T4. (Now in the CPA-call agenda draft.)
 
 ## Receipts
 Stored at: `work/taxes/solar-inference-receipts/2026-04-12-workstation-purchase/`

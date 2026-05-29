@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: rental-operations
-updated: 2026-04-11
+updated: 2026-05-28
 updated_by: Claude
 status: active
 priority: p1
@@ -64,7 +64,7 @@ If AI commoditization accelerates faster than expected, rental value could compr
 **gpuserver1** (the current rental node):
 
 - Hardware: RTX 5090, i9-14900K, 128GB DDR5, ASUS Z790 Gaming WiFi7
-- vast.ai machine 52271, listed at $0.30/hr demand, $0.25/hr interruptible (live as of 2026-05-04 audit; was $0.35/$0.26 on 2026-04-11, lowered via web UI in the interim — channel for the change is unaccounted-for, see business/rental-operations.md "pricing authority" rules)
+- vast.ai machine 52271, listed at $0.80/hr demand, $0.65/hr interruptible (live as of 2026-05-28 audit; was $0.30/$0.25 on 2026-05-04, raised since). Listing expiry 2026-06-30, distinct from reserved-contract C.34113802 end 2026-08-24.
 - Operational cadence: 30-min `vastai-tend.sh` (state-change events), hourly `stale-detect.sh` (heartbeat), every-4h `gather_mirror.sh`, every-5min `rgb_status.py`, weekly `docker-weekly-prune.sh` (Sun 4 AM). Per 2026-05-04 audit, the previously-documented `run_monitor.sh` (every 2h), `daily_summary.py`, and `run_pricing.sh` cron jobs are not active.
 - Agent documents:
   - MISSION: `sartor/memory/machines/gpuserver1/MISSION.md` (self-authored, v0.2)
@@ -72,7 +72,7 @@ If AI commoditization accelerates faster than expected, rental value could compr
 
 **Future rental nodes:**
 
-- **Dual RTX PRO 6000 Blackwell workstation** — scheduled for summer 2026 delivery, ~$35K Newegg order planned, 192GB VRAM total. Primary role: household inference and fine-tuning (for the home agent). Secondary role: supplemental rental when idle. Its MISSION will be authored when the hardware arrives.
+- **Dual RTX PRO 6000 Blackwell workstation (rtxserver, machine_id 124192)** — delivered and now serving rentals: LISTED, verified, and RENTED on-demand as of 2026-05-28. 192GB VRAM total. Primary role: household inference and fine-tuning (for the home agent). Secondary role: supplemental rental — currently rented out on-demand.
 - **Possible additional machines after that** — each added rental node deepens the business electricity consumption and strengthens the deduction justification. Pattern is replicable.
 
 ## Agent-level pricing approach

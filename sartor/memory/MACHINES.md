@@ -70,7 +70,7 @@ related: [BUSINESS, PROCEDURES, SELF, MULTI-MACHINE-MEMORY, machines/gpuserver1/
 - **Hairpin NAT:** iptables OUTPUT DNAT rule (100.1.100.63→192.168.1.100) in /etc/ufw/before.rules nat table
 - **DOCKER-USER chain:** conntrack --ctorigdstport 40000:40099 rule in /etc/ufw/after.rules (allows Docker-mapped ports)
 - **Docker group:** `alton` is in docker group (added 2026-02-23)
-- **Pricing (live as of 2026-05-02):** $0.30/hr on-demand listed, $0.25/hr interruptible floor. Realized ~$0.20/hr under reserved contract C.34113802 (long-term discount, runs through 2026-08-24). Listing end date drifted to 2026-10-24 via web UI extension. See [[business/rental-operations]] for pricing rationale. Historical: was $0.40 base 2026-02 launch, raised to $0.35/hr 2026-04-11, currently $0.30 listed.
+- **Pricing (live as of 2026-05-28):** $0.80/hr on-demand listed, $0.65/hr interruptible floor. Realized ~$0.20/hr under reserved contract C.34113802 (long-term discount, runs through 2026-08-24). Listing expiry 2026-06-30 (distinct from reserved-contract end 2026-08-24). See [[business/rental-operations]] for pricing rationale. Historical: was $0.40 base 2026-02 launch, raised to $0.35/hr 2026-04-11, then $0.30, now $0.80 listed.
 - **Utilization (2026-05-02):** Continuously rented under reserved contract since 2026-04-05 (renter container `C.34113802`). Profitable at $0.20/hr because the 5090 sips power vs. its earnings; the dollar-per-hour figure undersells unit economics.
 - **Reliability:** 99.85%
 - **Verification:** VERIFIED (as of 2026-02-26)

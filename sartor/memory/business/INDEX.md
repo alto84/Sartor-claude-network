@@ -2,8 +2,8 @@
 type: hub
 level: 2
 entity: business-index
-updated: 2026-04-12
-last_verified: 2026-04-12
+updated: 2026-05-28
+last_verified: 2026-05-28
 related: [BUSINESS]
 tags: [meta/index, domain/business]
 ---
@@ -14,7 +14,7 @@ Sub-directory hub for `sartor/memory/business/`. Parent: [[BUSINESS]].
 
 ## Solar Inference LLC (GPU Hosting)
 
-- [[business/solar-inference|solar-inference]] — Solar Inference LLC overview: revenue status, vast.ai listing, solar roof contract ($438,829), zero-rental context as of 2026-04-09
+- [[business/solar-inference|solar-inference]] — Solar Inference LLC overview: revenue status, vast.ai listing, solar roof contract ($438,829). TY2026 revenue-generating (both hosts rented as of 2026-05-28).
 - [[business/rental-operations|rental-operations]] — Day-to-day vast.ai rental operations: pricing strategy, market monitoring, incident log, operational runbook
 
 ## Sante Total

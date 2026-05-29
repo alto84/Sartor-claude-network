@@ -5,10 +5,10 @@ status: open
 risk: medium
 priority: p2
 opened: 2026-05-08
-updated: 2026-05-08
-last_action: 2026-05-08
+updated: 2026-05-28
+last_action: 2026-05-28
 deadline: continuous
-authority: [IRC-469, Reg-1.469-5T, Reg-1.469-2T]
+authority: [IRC-469, IRC-469d2, IRC-38c, Reg-1.469-5T, Reg-1.469-3, Reg-1.469-2T]
 related: [BUSINESS, business/solar-inference, TAXES]
 ---
 
@@ -17,6 +17,39 @@ related: [BUSINESS, business/solar-inference, TAXES]
 ## Issue
 
 Document and defend Alton's material participation in Solar Inference LLC under IRC §469 / Treas. Reg. §1.469-5T to ensure pass-through losses are non-passive (deductible against ordinary income) rather than passive (limited to passive income).
+
+## 2026-05-28 VERIFIED UPDATE (supersedes the auto-log-is-sufficient framing below)
+
+Adversarial verification (see [[projects/fleet-ledger-2026-05-28/VERIFICATION|VERIFICATION.md]] C3):
+
+1. **The hours log is NOT, as built, a defensible §1.469-5T(f)(4) record.** §469(h)(1) requires the
+   **individual's own** regular/continuous/substantial involvement. The current extractor classifies
+   "active-typing time by working directory" and **counts automated activity as Alton's hours**:
+   scheduled-task/cron Claude runs (the tell: rows bounded exactly 07:30:01→23:30:01), peer-machine
+   mirrored sessions, and subagent sidechains. It **overstates** the §469 figure — precisely the
+   "are the hours real vs inflated" failure mode an exam targets. **Fix shipped 2026-05-28:**
+   `scripts/hours-log-extract.py` now excludes sidechains, peer-mirrored sessions, and automated/cron
+   sessions, and emits a `human_interactive_hours` column — **that column, not the old ones, is the
+   tax-defensible figure.** Re-baseline the trailing-hours estimate from it before relying on the position.
+2. **"Investor-grade activity" cuts AGAINST us, not for us.** The original Analysis cited
+   §1.469-5T(f)(2) defensively — but reviewing autonomous pricing output, reading dashboards, and
+   monitoring are exactly the **investor activities that don't count**. The log over-captures these.
+   Lean on operator-level work (pricing decisions, vendor/hardware ops, customer issues), logged as
+   Alton's own time.
+3. **The ITC is the energy credit on the SOLAR ROOF (§48E), not on GPU hardware** (GPUs earn
+   depreciation). If material participation fails → the activity is passive → (a) the bonus-depreciation
+   loss is **suspended** (§469(a)(1)(A),(b), deductible only vs passive income), AND (b) the §48E ITC
+   becomes a **passive activity credit** (§469(d)(2)) that **cannot offset the AZ/Neurvati W-2 wages** —
+   it strands as a carryforward. Confirm with JF which passive activity the ITC is allocated to.
+4. **The 7-day short-rental exception does NOT rescue the position.** §1.469-1T(e)(3)(ii)(A) only strips
+   the per-se *rental* label; the activity is then tested under §469(c)(1) and **still requires material
+   participation**. In a failure scenario it stays passive.
+5. **Second-order limit even when "allowed":** §38(c) general-business-credit cap (25% of net regular
+   tax over $25K), 20-year carryforward, §196 deduction at expiry.
+
+**Net:** the (a)(3) 100-hour-more-than-anyone test is still the most reachable path, but it must rest
+on the new `human_interactive_hours` figure and operator-level (not investor-grade) time. This raises
+the matter's effective risk given how load-bearing the ITC's usability against wage income is.
 
 ## Facts
 

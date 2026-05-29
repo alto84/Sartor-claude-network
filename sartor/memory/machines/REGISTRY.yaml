@@ -44,7 +44,7 @@ machines:
     bmc_ip: null
     switch_port: null  # Not in the 2026-05-01 census; physical patch-panel labeling unknown for this drop.
     vast_ai_machine_id: null
-    last_verified: 2026-05-28
+    last_verified: 2026-05-29
     last_drift: 2026-05-19  # UniFi switch lost power in fuse blow ~22:54 ET; Rocinante's Ethernet died, Rocinante DHCP-renewed onto Fios CR1000A WiFi at .169. Old .171 lease still showing as Deprecated on the dead Ethernet adapter.
     flagged:
       - "Ethernet adapter shows .171 in Deprecated state (stale lease from dead UniFi switch); release/renew once switch is back."
@@ -69,7 +69,7 @@ machines:
     bmc_ip: null
     switch_port: null  # Physically rewired into Alton's Office switch port during 2026-05-19 fuse-blow recovery; switch_port number unknown until UniFi client list is re-queried post-restoration.
     vast_ai_machine_id: 52271
-    last_verified: 2026-05-28
+    last_verified: 2026-05-29
     last_drift: 2026-05-19  # ROLLED BACK from .199 → .100 during fuseblow recovery (gpuserver1 physically moved to Alton's Office wired drop; DHCP reassigned to original .100). Restores alignment with Fios DMZ target. Rental C.34113802 reconnected within 30min, reliability dropped slightly (0.9807 → 0.9718) but recovering.
     flagged:
       - "Now back at 192.168.1.100 (pre-2026-05-09 IP). Codebase references to .199 will need cleanup in next Tier-2 sweep; the .100 references that were previously stale are now correct again."
@@ -79,13 +79,14 @@ machines:
       (vast.ai container ports 40000-40099). Tending via cron every 30 min
       (~/vastai-tend.sh). Active reserved-contract C.34113802 through 2026-08-24
       (renter container resumed within 30min of fuseblow). Listing expiry
-      2026-10-24. No GitHub credentials, no browser automation. vast.ai
-      machine_id 52271, offer_id 32099437.
+      2026-06-30 (distinct from reserved-contract end 2026-08-24). Listed price
+      $0.80/GPU on-demand / $0.65 floor (live 2026-05-28). No GitHub credentials,
+      no browser automation. vast.ai machine_id 52271, offer_id 32099437.
 
   - hostname: rtxserver
     aliases: [rtxpro6000server]
     role: workstation-and-vast-ai-candidate
-    description: "Dual RTX PRO 6000 Blackwell workstation. 192 GB GDDR7 total. Listed on machine_id 97429 (onboarding paused 2026-05-02)."
+    description: "Dual RTX PRO 6000 Blackwell workstation. 192 GB GDDR7 total. LISTED, verified, RENTED on-demand on machine_id 124192 (as of 2026-05-28)."
     os: "Ubuntu 22.04.5 LTS (HWE 6.8)"
     mac: "30:c5:99:d5:8f:b5"
     nic: "ASUSTek WRX90 onboard NIC"
@@ -104,13 +105,17 @@ machines:
       In 3rd-floor finished attic, on UniFi switch port 10 (BMC dedicated MGMT
       on switch port 11 → 192.168.1.150 static, post-2026-05-26 move from .154
       DHCP after rediscovery of factory-reset to 10.10.10.10; Shared LAN BMC at
-      192.168.1.156 still active for redundancy). Power cap 450W/card persisted
-      via /etc/systemd/system/nvidia-power-cap.service. Peer Claude in tmux
+      192.168.1.156 still active for redundancy). Power cap 425W/card live as of
+      2026-05-28; NOTE service file /etc/systemd/system/nvidia-power-cap.service
+      still specifies 450W — service-file vs live discrepancy, reconcile host-side.
+      Peer Claude in tmux
       session claude-team-1 via user-systemd ~/.config/systemd/user/sartor-claude-peer.service
       (lingering enabled). Canonical git remote (bare repo at
       /home/alton/sartor-git/Sartor-claude-network.git) lives on this host.
-      vast.ai onboarding paused at commit 6cee210 -see
-      inbox/rtxpro6000server/RESUME-vastai-onboarding-2026-05-02.md.
+      vast.ai onboarding COMPLETE: machine_id 124192 LISTED, verified, and RENTED
+      on-demand as of 2026-05-28 (live list $1.10/GPU; approved $0.92/GPU is a
+      separate open decision). Historical onboarding tracker:
+      projects/rtxserver-vastai-watch.md (closed/superseded).
 
 # Future-machine slots (uncomment when adding):
 # - hostname: aneeta-laptop

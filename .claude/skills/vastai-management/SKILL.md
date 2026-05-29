@@ -30,8 +30,8 @@ Authoritative state of the fleet. Update on each meaningful change.
 
 | Hostname | LAN IP | GPU(s) | Combined VRAM | Status | Listing strategy |
 |---|---|---|---|---|---|
-| gpuserver1 | 192.168.1.100 | 1× RTX 5090 | 32 GB | Listed (machine 52271). Currently rented under reserved contract C.34113802 through 2026-08-24 at ~$0.20/hr realized. Listed price $0.30 on-demand / $0.25 floor. Listing end-date 2026-10-24. | Reserved through 8/24; on contract end, relist on-demand only per "short-term first" |
-| rtxpro6000server | 192.168.1.157 | 2× RTX PRO 6000 Blackwell WS | 192 GB | **NOT YET LISTED** as of 2026-05-04. Hardware ready, network ready (Fios port-forward 40100-40199 + UFW + hairpin NAT), kaalia install pending. See [`projects/rtxserver-vastai-watch.md`](../../../sartor/memory/projects/rtxserver-vastai-watch.md). | Per "short-term first": list on-demand only with fixed `-e` end-date for first 2-4 weeks. Do NOT use `-l "6 months"` rolling-reservation flag for first listing. |
+| gpuserver1 | 192.168.1.100 | 1× RTX 5090 | 32 GB | Listed (machine 52271). Currently rented under reserved contract C.34113802 through 2026-08-24 at ~$0.20/hr realized. Listed price $0.80 on-demand / $0.65 floor. Listing expiry 2026-06-30 (distinct from contract end 8/24). | Reserved through 8/24; on contract end, relist on-demand only per "short-term first" |
+| rtxpro6000server | 192.168.1.157 | 2× RTX PRO 6000 Blackwell WS | 192 GB | **LISTED, verified, RENTED on-demand** (machine 124192) as of 2026-05-28. Live list $1.10/GPU (approved $0.92/GPU — live-drift, separate open decision). Listing expiry 2026-06-30. | In price-discovery window. Reconcile live $1.10 vs approved $0.92 with Alton. |
 | Future hosts | — | — | — | — | Same: on-demand + fixed end-date for 2-4 weeks of price discovery, then re-evaluate |
 
 **Fleet account:** all Sartor hosts share one vast.ai host account (alto84@gmail.com / Solar Inference LLC). One Stripe payout entity. Per-host CLI installs each have their own `~/.config/vastai/vast_api_key` mode 600.
@@ -45,7 +45,7 @@ Canonical preference doc: [`sartor/memory/business/vastai-pricing-strategy.md`](
 1. **First listing of a new host** — on-demand only. Fixed `-e END_DATE` for the listing horizon, NOT `-l DURATION` rolling reservation. The fixed date forces a re-evaluation; rolling reservation makes the price stick by default.
 2. **First 2-4 weeks** — treat as price discovery. Watch fill rate, time-to-first-rental, renter behavior. Do NOT lock into a reserved contract during this window.
 3. **After 2-4 weeks** — if fill rate >80%, raise price 5-10% via the price-increase challenge mechanism (below). If fill rate <50%, drop 10-20% and watch again. Only after price discovery should reserved contracts be considered.
-4. **A long-term reserved contract offered early** — evaluate against current realized rate (not list price). Decline if the reserved-rate discount exceeds the visible realized-vs-list gap. Example: gpuserver1 lists at $0.30 but realizes $0.20 under C.34113802 — that's a 33% long-term discount. A renter offering 50% discount on a fresh host is offering worse than the prevailing market.
+4. **A long-term reserved contract offered early** — evaluate against current realized rate (not list price). Decline if the reserved-rate discount exceeds the visible realized-vs-list gap. Example: gpuserver1 lists at $0.80 but realizes $0.20 under C.34113802, a contract signed when list was $0.30 — the gap has widened as list rose. A renter offering a steep discount on a fresh host may be offering worse than the prevailing market; compare to the live list, not the legacy contract.
 5. **Concrete first-listing flag template** for the new-host case (substitutes the per-GPU price for `<g>`, the dual-card differentiator min-chunk for `<m>`, an end-date 30-90 days out for `<e>`):
 
 ```
@@ -54,7 +54,7 @@ vastai list machine <id> -g <g> -b <b> -s 0.10 -m <m> -e MM/DD/YYYY
 
 The reserved-contract / rolling-listing variant `-l "6 months"` should NOT be used for v1 of a new listing — it implicitly commits to that horizon and is harder to course-correct.
 
-**Why:** locking long-term too early with insufficient data means under-pricing. gpuserver1's reserved C.34113802 at ~$0.20 realized is a case in point — list price is $0.30, but the contract was signed during a quieter period and is now likely below current market for an RTX 5090.
+**Why:** locking long-term too early with insufficient data means under-pricing. gpuserver1's reserved C.34113802 at ~$0.20 realized is a case in point — the contract was signed during a quieter period when list was $0.30; list is now $0.80, so the contract is well below current market for an RTX 5090.
 
 ## Daily operations
 
@@ -112,7 +112,7 @@ The price-increase challenge mechanism is the only sanctioned path for raising p
 #    to affected clients.
 ssh alton@gpuserver1 \
   '~/.local/bin/vastai list machine 52271 -g <NEW_PRICE> -b <NEW_FLOOR> -s 0.15 -m 1 -e MM/DD/YYYY'
-# Current live values (2026-05-04 audit): -g 0.30 -b 0.25 -s 0.15. Use these as your baseline; only change what you intend to.
+# Current live values (2026-05-28 audit): -g 0.80 -b 0.65 -s 0.15. Use these as your baseline; only change what you intend to.
 
 # 2. Affected clients get an email and accept (or decline) the new rate via
 #    cloud.vast.ai's web UI. Until they accept, their auto-extend stops at the OLD price.
@@ -365,7 +365,7 @@ Future work:
 - Reconcile per-day; the delta IS vast.ai's cut + payout adjustments
 - Surface the realized cut as a fleet metric so pricing decisions know the true revenue
 
-For now, the realized-vs-listed gap on gpuserver1 (~$0.20 vs $0.30 = 33%) is treated as a combined long-term-discount + platform-fee aggregate. When rtxserver is on-demand with no reserved contract, the gap will isolate the platform fee.
+For now, the realized-vs-listed gap on gpuserver1 (~$0.20 realized under a contract signed when list was $0.30 = ~33% at signing; list has since risen to $0.80) is treated as a combined long-term-discount + platform-fee aggregate. rtxserver (machine 124192) is now on-demand with no reserved contract, so its gap isolates the platform fee.
 
 ## Operational rules (codified)
 
@@ -413,7 +413,7 @@ ssh alton@<host> '~/.local/bin/vastai show machines --raw' \
 
 - [`sartor/memory/procedures/vastai-host-onboarding.md`](../../../sartor/memory/procedures/vastai-host-onboarding.md) — Canonical bring-up procedure for a brand-new host. Invoke this skill alongside.
 - [`sartor/memory/business/vastai-pricing-strategy.md`](../../../sartor/memory/business/vastai-pricing-strategy.md) — Alton's "short-term first" preference (the source for the Listing strategy section above).
-- [`sartor/memory/projects/rtxserver-vastai-watch.md`](../../../sartor/memory/projects/rtxserver-vastai-watch.md) — Live tracker for rtxserver onboarding; load-bearing as long as rtxserver is unlisted.
+- [`sartor/memory/projects/rtxserver-vastai-watch.md`](../../../sartor/memory/projects/rtxserver-vastai-watch.md) — Onboarding tracker for rtxserver (machine 124192); superseded/closed 2026-05-28 — rtxserver is now LISTED, verified, and RENTED on-demand.
 - [`sartor/memory/business/solar-inference.md`](../../../sartor/memory/business/solar-inference.md) — Business-entity context, listing details, ITC framing.
 - [`sartor/memory/machines/gpuserver1/MISSION.md`](../../../sartor/memory/machines/gpuserver1/MISSION.md) — The occupancy-first reframe; the source for the supervised-cuts rule.
 - [`sartor/memory/machines/gpuserver1/CRONS.md`](../../../sartor/memory/machines/gpuserver1/CRONS.md) — Authoritative cron documentation for gpuserver1; pattern-source for new-host cron suites.

@@ -52,7 +52,7 @@ Three filing entities, three different deadlines. Jonathan Francis handles [[ALT
 - Extended federal deadline: Sep 15, 2026
 - NJ-1065: CPA said "no NJ extension necessary"; $450 filing fee ($300 + $150 prepayment) still due Apr 15, 2026
 - Package: `Downloads/2025-Solar-Inference-LLC-Tax-Package/` (8 subfolders)
-- Revenue: $0 (pre-revenue). Total documented expenses: $4,949.49. Loss return.
+- Revenue: $0 for the TY2025 short year (Sep 6 – Dec 31, 2025; pre-revenue for that period only — TY2026 is revenue-generating, both vast.ai hosts rented as of 2026-05-28). Total documented expenses: $4,949.49. Loss return.
 - K-1 to each member (50/50): ~$2,000-$2,009 ordinary business loss
 
 ### Sante Total Form 990-N

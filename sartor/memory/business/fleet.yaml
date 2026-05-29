@@ -61,7 +61,7 @@ machines:
     gpu_model: "RTX 5090"
     hardware: "RTX 5090 32GB, i9-14900K, 128GB DDR5"
     asset:                             # depreciation PARAMETERS only; cost basis is in the expense ledger
-      acquisition_date: null           # SEED note from work/taxes/solar-inference-2025.md
+      acquisition_date: "2025-09-22"   # RTX 5090 purchased 2025-09-22 (Amazon); components 2025-09-29 (Newegg). Per work/taxes/solar-inference-2025.md.
       in_service_date: "2026-04-05"    # first rental under C.34113802
       cost_basis_ref: "data/financial/solar-inference/expenses-2026.csv (capitalize rows, hostname=gpuserver1)"
       depreciation: {method: "MACRS-200DB", recovery_years: 5, bonus_eligible: true}

@@ -43,9 +43,9 @@ The Sartor family lives in Montclair, New Jersey.
 **Platform:** vast.ai
 **Hardware:** RTX 5090 (32GB VRAM), Intel i9-14900K, 128GB DDR5 RAM
 **Machine ID:** 52271 | **Offer ID:** 32099437
-**Pricing (live as of 2026-05-04, verified via `vastai show machines --raw`):** $0.30/hr on-demand listed, $0.25/hr interruptible floor (`min_bid_price`), $0.15/GB-month storage, $3.00/TB upload, $2.00/TB download. Currently rented under reserved contract C.34113802 (through 2026-08-24) at ~$0.20/hr realized — a long-term-discount price; profitable at this rate because the 5090 sips power vs. its earnings. **Note:** vast.ai exposes no machine-level "reserved rate" field; reserved is a per-rental contract attribute, not a host-set price. Earlier docs claiming "$0.40/hr reserved" were doc fiction (truth-up 2026-05-04).
+**Pricing (live as of 2026-05-28, verified via `vastai show machines --raw`):** $0.80/hr on-demand listed, $0.65/hr interruptible floor (`min_bid_price`), $0.15/GB-month storage, $3.00/TB upload, $2.00/TB download. Currently rented under reserved contract C.34113802 (through 2026-08-24) at ~$0.20/hr realized — a long-term-discount price; profitable at this rate because the 5090 sips power vs. its earnings. **Note:** vast.ai exposes no machine-level "reserved rate" field; reserved is a per-rental contract attribute, not a host-set price. Earlier docs claiming "$0.40/hr reserved" were doc fiction (truth-up 2026-05-04).
 **Payout:** Stripe (configured)
-**Listing expiry:** 2026-10-24 (auto-renewed via web UI from prior 2026-08-24). Reserved-contract C.34113802 still ends 2026-08-24 — distinct field. After that date, evaluate market and relist.
+**Listing expiry:** 2026-06-30 (verified 2026-05-28). Reserved-contract C.34113802 still ends 2026-08-24 — distinct field. After the listing expiry, evaluate market and relist. (Now monitored by `scripts/fleet-watchdog.py`.)
 
 ### Monitoring Responsibilities
 - Track GPU utilization and rental status via `ssh alton@gpuserver1`
@@ -61,7 +61,7 @@ ssh alton@gpuserver1 "~/.local/bin/vastai show machines"
 # Check active rentals
 ssh alton@gpuserver1 "~/.local/bin/vastai show instances"
 # Relist machine
-ssh alton@gpuserver1 '~/.local/bin/vastai list machine 52271 -g 0.40 -b 0.25 -s 0.10 -m 1 -e "08/24/2026"'
+ssh alton@gpuserver1 '~/.local/bin/vastai list machine 52271 -g 0.80 -b 0.65 -s 0.10 -m 1 -e "MM/DD/YYYY"'  # set -e to intended listing expiry (NOT the reserved-contract date); approved price lives in business/fleet.yaml
 # GPU utilization
 ssh alton@gpuserver1 "nvidia-smi"
 ```
@@ -250,7 +250,7 @@ Skills are defined in `.claude/skills/` and provide reusable capabilities:
 | `/secrets-via-bitwarden` | Sartor convention for credential retrieval. Wrapper at `scripts/sartor-secret` over Bitwarden CLI. Codifies vault-locked behavior, naming convention, hygiene rules, migration recipe for known-leaked passwords. Reference secrets by name, never by value. Created 2026-05-03 after the household-default-password problem surfaced. |
 | `/network-management` | Operating manual for the Sartor-Saxena-Claude Network. Topology, controller-access patterns, common operations (PSK change, AP restart, locate-strobe, backup), recovery playbooks (AP unreachable, controller down, re-adopt a device), per-AP authkey management, Phase 3 hardening status. Created 2026-05-03; consolidates the 2026-05-01 takeover bundle into operational form. |
 | `/vastai-management` | Operational manual for the Sartor vast.ai GPU rental fleet. Fleet inventory, "short-term first" listing strategy, daily/weekly/periodic ops, pricing-adjustment workflow (price-increase challenge, on-demand vs reserved decision rules), CLI flag reference (per-GPU `-g`, `-m`, `-e` vs `-l`, etc.), idle-jobs mechanism, recovery playbooks (machine offline, kaalia broken, NIC issue, hung rental). Pairs with `procedures/vastai-host-onboarding.md` for new-host bring-up. Created 2026-05-04. |
-| `/rtxserver-management` | Operating manual for rtxpro6000server (192.168.1.157, dual RTX PRO 6000 Blackwell, machine_id 97429). Identity/topology one-pager, access patterns (SSH + BMC web UI + IPMI), file-path map, hardware quirks (450W cap not persistent, BMC fan curves saved to firmware, OS-side fan control inert, single-card thermal pathology, no UPS), peer Claude tmux protocol (`claude-team-1`, auto-respawn via user systemd), AC-failure recovery playbook (2026-05-03 14h outage), vast.ai lifecycle on this box, the install-token critical learning, common-ops cheat-sheet, recovery playbooks (unreachable, listing offline, thermal anomaly, power-cap drift), documented don'ts. Audience is both Rocinante-side Claudes operating remotely AND the rtxserver peer Claude itself. Created 2026-05-04. |
+| `/rtxserver-management` | Operating manual for rtxpro6000server (192.168.1.157, dual RTX PRO 6000 Blackwell, machine_id 124192). Identity/topology one-pager, access patterns (SSH + BMC web UI + IPMI), file-path map, hardware quirks (425W live cap / service file says 450W — discrepancy, 450W cap not persistent, BMC fan curves saved to firmware, OS-side fan control inert, single-card thermal pathology, no UPS), peer Claude tmux protocol (`claude-team-1`, auto-respawn via user systemd), AC-failure recovery playbook (2026-05-03 14h outage), vast.ai lifecycle on this box, the install-token critical learning, common-ops cheat-sheet, recovery playbooks (unreachable, listing offline, thermal anomaly, power-cap drift), documented don'ts. Audience is both Rocinante-side Claudes operating remotely AND the rtxserver peer Claude itself. Created 2026-05-04. |
 | `/tax-counsel` | Authority-grounded tax analysis (IRC sections, regs, IRAC memos, risk grading) for Sartor's stacking tax positions — multi-entity LLC, ITC + bonus depreciation timing, secondary-market PE, HELOC tracing, NJ/DE wage attribution. Distinct from `tax-estimate` (calculation). Operates in tax-counsel register; analytical support for CPA Jonathan Francis discussions, not legal advice. Created 2026-05-08. |
 | `/matter-tracker` | Open / update / close / audit Sartor tax/legal/financial-structuring matters. A matter is an open position with facts, authority, risk grade, deadline, and CPA routing. Lives at `sartor/memory/matters/{slug}.md` with auto-maintained `INDEX.md`. Distinct from `family/active-todos.md` (household logistics) and `tasks/ACTIVE.md` (engineering). Pairs with `tax-counsel`. Created 2026-05-08; seeded with 13 open matters. |
 | `/vastai-market-scan` | Validate a vast.ai listing price for any Sartor GPU host (gpuserver1, rtxserver, future). Pulls live market comps from vast.ai search-offers via gpuserver1's authenticated CLI, with the per-VRAM-filter fallback that catches GPUs the `gpu_name` field doesn't match. Invoke before listing a new card, before raising/lowering an existing listing, or any time the question is "what's the going rate for X?". 5-10 min wall-clock. |
@@ -326,12 +326,12 @@ Defined in `.claude/scheduled-tasks/`:
 - **OS:** Ubuntu 22.04 (HWE 6.8 kernel)
 - **CPU:** AMD Threadripper PRO 7975WX (32C/64T)
 - **RAM:** 251 GB DDR5
-- **GPUs:** 2× NVIDIA RTX PRO 6000 Blackwell Workstation (96 GB VRAM each, 192 GB total). **Production cap 450W/card** (auto-applied on boot via `/etc/systemd/system/nvidia-power-cap.service`).
+- **GPUs:** 2× NVIDIA RTX PRO 6000 Blackwell Workstation (96 GB VRAM each, 192 GB total). **Production cap 425W/card live** (as of 2026-05-28; the `nvidia-power-cap.service` file still specifies 450W — service-file vs live discrepancy, reconcile host-side).
 - **IP:** 192.168.1.157 (LAN, on UniFi switch port 10), BMC primary at 192.168.1.150 (dedicated MGMT, switch port 11, static, post-2026-05-26 move from .154), BMC secondary at 192.168.1.156 (Shared LAN, still active for redundancy)
 - **SSH:** `ssh alton@192.168.1.157` (host MAC `30:c5:99:d5:8f:b5`)
 - **Peer Claude:** auto-spawns at boot in tmux session `claude-team-1` via user-level systemd service `~/.config/systemd/user/sartor-claude-peer.service` (lingering enabled for `alton`).
 - **BMC fan curves (saved to firmware):** Zones 2-6 = 30°C/50% → 50°C/75% → 60°C/90% → 70°C/100%, applied via Chrome MCP 2026-05-02. Fan-cord override available via remote control for max chassis airflow.
-- **Vast.ai listing:** **NOT YET LISTED** — onboarding paused 2026-05-02 pending network topology pivot. State captured in `inbox/rtxpro6000server/RESUME-vastai-onboarding-2026-05-02.md`.
+- **Vast.ai listing:** **LISTED, verified, RENTED on-demand** (machine_id 124192) as of 2026-05-28. Live list $1.10/GPU; approved $0.92/GPU (`business/fleet.yaml`) is a separate open decision (live-drift D1). Historical onboarding record: `projects/rtxserver-vastai-watch.md` (closed/superseded).
 - **Limitations:** No GitHub credentials (cannot git push), no browser automation, no Verizon Fios WAN port-forward yet.
 
 ### MCPs Frequently Used (session-level)

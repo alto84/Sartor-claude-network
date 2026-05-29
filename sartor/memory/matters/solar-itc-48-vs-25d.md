@@ -5,10 +5,10 @@ status: open
 risk: high
 priority: p1
 opened: 2026-05-08
-updated: 2026-05-08
-last_action: 2026-05-08
-deadline: 2026-07-04
-authority: [IRC-25D, IRC-48, IRC-168k, Reg-1.48-9, Reg-1.168k-2]
+updated: 2026-05-28
+last_action: 2026-05-28
+deadline: 2026-07-04   # BEGIN-CONSTRUCTION deadline (not placed-in-service) — corrected 2026-05-28
+authority: [IRC-25D, IRC-48, IRC-48E, IRC-168k, IRC-50c, Reg-1.48-9, Reg-1.168k-2, OBBB-PL119-21, Notice-2025-42]
 related: [reference_solar_project, BUSINESS, business/solar-inference, TAXES]
 ---
 
@@ -18,6 +18,43 @@ related: [reference_solar_project, BUSINESS, business/solar-inference, TAXES]
 
 Which Investment Tax Credit regime applies to the 85 Stonebridge Tesla Solar Roof — §25D (residential, credit only) or §48 (commercial, credit + bonus depreciation) — and whether the underlying asset can be transferred to Solar Inference LLC before placed-in-service to lock in the §48 path.
 
+## 2026-05-28 VERIFIED UPDATE (supersedes the stale framing below)
+
+Adversarial verification against live IRS / OBBB / Notice 2025-42 sources (see
+[[projects/fleet-ledger-2026-05-28/VERIFICATION|fleet-ledger VERIFICATION.md]] C1/C2/C4) corrected
+five load-bearing points in the original analysis. Read these first:
+
+1. **Controlling section is §48E, not §48.** §48 was replaced by the §48E Clean Electricity Investment
+   Credit for property **placed in service after 12/31/2024**. A 2026 system runs under §48E. The
+   allocation logic carries over; cite §48E.
+2. **§25D is DEAD for expenditures after 12/31/2025 (OBBB).** The "§25D = $131,649 fallback" framing in
+   the Analysis below is **wrong for a 2026 install** — the personal/residential fraction now gets
+   **ZERO** credit, not a residential credit. This makes the §48E business path the only live route and
+   raises the stakes on documenting maximal business use.
+3. **The $131,649 (= 30% × full $438,829) is OVERSTATED.** §48E applies only to the **business-use
+   (depreciable) fraction** of a dwelling-sited system. There is **no 20% on/off cliff** (that was a
+   conflation of three different 80/20 rules); the credit scales **proportionately** with business use
+   (§48(a)(3)(C)/§48E depreciability gate; §50(b)(2)(D) exempts energy property from the lodging
+   disqualifier). Defensible ITC ≈ **$32K (GPU-only kWh ~24%) to ~$86K (dual-rig ~64%)**, possibly
+   higher if LLC-owned **net-metered grid-export income** counts as business production of income.
+   **Business-use measurement (home-office % vs kWh) is unsettled — a CPA/exam judgment call.** The
+   $373,005 figure is correctly the §50(c)(3) half-credit basis reduction (not a business-use haircut).
+4. **July 4, 2026 is a BEGIN-CONSTRUCTION deadline, not placed-in-service** (OBBB + IRS Notice 2025-42).
+   There is **no Dec 31, 2026 placed-in-service cliff**. If construction **begins by July 4, 2026**, the
+   4-year continuity safe harbor lets placed-in-service slip to **~Dec 2029–2030** with the full 30% +
+   100% bonus intact. The 5% safe harbor **still applies** (Notice 2025-42 kept it for ≤1.5 MW systems;
+   this is 0.0221 MW) — the $219,414.50 drawn 2026-03-15 plausibly establishes it. **Cite Notice
+   2025-42, not Notice 2018-59.** This is the highest-leverage action: lock begin-construction before
+   July 4 and the placed-in-service crunch largely dissolves.
+5. **2026 bonus depreciation = 100% PERMANENT (OBBB)** — resolves the open "80% vs 100%" question; the
+   $373,005 figure stands (subject to the business-use haircut in point 3).
+
+**Reframed economics.** The choice is no longer "§25D $131K vs §48 $261K." It is "§48E on the
+business fraction (credit + bonus, ~$32–86K credit + proportional bonus) vs **zero** if no business
+use is established." The transfer mechanics (Path A/B/C), NJ non-conformity, and begin-construction
+analysis below remain valid; the credit-magnitude and §25D-fallback framing are superseded by the
+above.
+
 ## Facts
 
 - Tesla Solar Roof contract value $438,829 (signed 2025-09-03 via Hilton Head Solar / Lucent Energy).
@@ -25,7 +62,9 @@ Which Investment Tax Credit regime applies to the 85 Stonebridge Tesla Solar Roo
 - **Contract is in Alton's personal name** as of 2026-05-08. Has NOT been transferred to Solar Inference LLC.
 - Solar Inference LLC: 50/50 multi-member NJ LLC, formed 2025-09-06, EIN 39-4199284. Pre-revenue. Active operating business per IRS positioning (solar-powered AI inference).
 - Install start: ~early June 2026. Engineering survey complete 2026-04-30 (Doug Paige) + 2026-05-06 (Steven Schwartz).
-- **ITC deadline (placed-in-service)**: July 4, 2026 per CPA discussion 2026-04-13.
+- **ITC deadline**: July 4, 2026 is a **begin-construction** deadline (OBBB + Notice 2025-42), NOT
+  placed-in-service (corrected 2026-05-28 — see VERIFIED UPDATE above). Begin construction by then
+  (5% safe harbor, system ≤1.5 MW) and placed-in-service can slip to ~Dec 2029–2030.
 - Climate First Bank Clean Energy Loan: $438,829 funded Jan 20, 2026, in personal joint name (Alton + Aneeta).
 
 ## Authority
@@ -115,6 +154,7 @@ Not because the position is shaky — it's defensible — but because the deadli
 
 - 2026-05-08: Opened. Path A/B/C tradeoff identified. Two-week decision window set.
 - 2026-05-08 (later): Steven Schwartz verbal confirmation of 5% Begin-Construction threshold passed via engineering. Notice 2018-59 framework added to memo. **Critical clarification**: 5% safe harbor protects ITC rate-preservation, NOT regime selection (§48 vs §25D). LLC ownership at placed-in-service is still the load-bearing question. Action items expanded: written attestation from Steven + draft emails to Steven and Erin Gannon (Climate First) to drive Phase 1 decisions.
+- 2026-05-28: **VERIFIED UPDATE added** (adversarial verification vs live IRS/OBBB/Notice 2025-42). Five corrections: controlling section is §48E (not §48); §25D dead for expenditures after 12/31/2025 (zero residential fallback); $131,649 overstated — §48E scales with the business-use fraction (no 20% cliff), defensible ~$32–86K; July 4 2026 is a begin-construction (not placed-in-service) deadline with the 5% safe harbor still available (Notice 2025-42, system ≤1.5 MW); 2026 bonus is 100% permanent. Begin-construction lock before July 4 is now the highest-leverage action. CPA call agenda updated accordingly.
 
 ## Resolution
 

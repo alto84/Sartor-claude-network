@@ -14,7 +14,7 @@ Invoke when about to:
 - SSH to rtxserver for substantive work (>5 lines of commands, configuration changes, multi-step ops)
 - Drive a household training/inference workload on the dual Blackwell
 - Investigate a thermal, power, or network anomaly on this specific box
-- Manage the vast.ai listing for machine 97429 (state changes, repricing, recovery)
+- Manage the vast.ai listing for machine 124192 (state changes, repricing, recovery)
 - Recover from an outage (AC failure, peer-Claude tmux death, network unreachability)
 - Audit what the rtxserver peer Claude is doing
 - Bring up post-rental cron suite or finish vast.ai onboarding (cron not yet installed as of 2026-05-04)
@@ -43,12 +43,12 @@ Skip for: a single read-only one-shot (`ssh alton@192.168.1.157 'nvidia-smi'`) �
 | RAM | 256 GB DDR5 ECC RDIMM (8-channel; `free -g` reports 251 GB usable) |
 | GPUs | 2× NVIDIA RTX PRO 6000 Blackwell Workstation (96 GB VRAM each, 192 GB combined) |
 | Driver / CUDA | 580.126.09 / CUDA 13.0 |
-| Production GPU power cap | **450 W per card** (auto-applied at boot via `nvidia-power-cap.service`) |
+| Production GPU power cap | **425 W per card** (live value as of 2026-05-28). NOTE: `nvidia-power-cap.service` file still specifies 450 W — service-file vs live discrepancy needs host-side reconciliation on rtxserver (do not change the service from off-box). |
 | OS | Ubuntu 22.04.5 LTS (HWE 6.8 kernel) |
 | Docker | 28.5.2 (installed by kaalia 2026-05-04) |
 | PSU | be quiet! 1600 W |
 | Wall outlet | 120 V / 15 A breaker; ~1380 W safe ceiling |
-| vast.ai machine_id | **97429** (listed `$1.25/GPU/hr × 2 = $2.50/hr` dual, end_date `2026-06-15`, unverified pending) |
+| vast.ai machine_id | **124192** (LISTED, verified, RENTED on-demand as of 2026-05-28. Live list $1.10/GPU; approved $0.92/GPU — live-drift, separate open decision. Listing expiry 2026-06-30.) |
 | vast.ai customer port range | `40100-40199` (gpuserver1 owns `40000-40099`) |
 
 rtxserver is gpuserver1's sibling, not its successor. They share the Fios WAN; gpuserver1 has the DMZ; rtxserver gets explicit port-forwards only.
@@ -109,8 +109,8 @@ sudo ipmitool sel list              # System Event Log (memory, thermal, fan, PS
 | `/var/lib/vastai_kaalia/` | Kaalia daemon files (`machine_id`, `host_port_range`, `kaalia.log`, `latest/launch_kaalia.sh`) |
 | `/var/lib/vastai_kaalia/kaalia.log` | Kaalia daemon log — tail this for renter activity, benchmarks, errors |
 | `/var/lib/vastai_kaalia/host_port_range` | Plain text `40100-40199` |
-| `/var/lib/vastai_kaalia/machine_id` | Internal hash; the integer machine_id (97429) is server-side at vast.ai |
-| `/etc/systemd/system/nvidia-power-cap.service` | Re-applies `nvidia-smi -pl 450` at boot, before docker.service |
+| `/var/lib/vastai_kaalia/machine_id` | Internal hash; the integer machine_id (124192) is server-side at vast.ai |
+| `/etc/systemd/system/nvidia-power-cap.service` | Re-applies `nvidia-smi -pl 450` at boot, before docker.service. NOTE: live cap is 425 W as of 2026-05-28 — service file (450) disagrees with live; reconcile host-side. |
 | `~/.config/systemd/user/sartor-claude-peer.service` | User-level systemd unit that auto-spawns the peer Claude tmux at boot |
 | `~/cron-scripts-staged/` | Cron suite STAGED but not installed (gather_mirror.sh, stale-detect.sh, vastai-tend.sh, docker-weekly-prune.sh, plus reference txt files) |
 | `~/{gather_mirror,stale-detect,vastai-tend,docker-weekly-prune}.sh` | Where the cron scripts will land once installed (post-listing) |
@@ -128,7 +128,7 @@ These are the load-bearing surprises. None are fail-stop, but every one of them 
 
 | Field | Value | Source |
 |---|---|---|
-| Per-card power cap | **450 W** | systemd `nvidia-power-cap.service`, applied on boot |
+| Per-card power cap | **425 W live (2026-05-28); service file specifies 450 W — discrepancy, reconcile host-side** | systemd `nvidia-power-cap.service`. Stress data below was taken at 450 W; live cap is now lower, so those figures are conservative upper bounds. |
 | Wall draw at 450 W/card sustained | ~1100 W | empirical 2026-05-02 |
 | Tctl peak at 450 W dual-card (projected) | ~62 °C | A1+F1+B stress sequence 2026-05-02 |
 | GPU0 die peak at 450 W dual-card (projected) | ~80 °C | 5 °C buffer to 85 °C SOFT abort, 8 °C to 88 °C HARD |
@@ -312,7 +312,7 @@ curl -s --max-time 5 -6 ifconfig.me
 
 ## vast.ai lifecycle on rtxserver
 
-Current status as of 2026-05-04: **machine_id 97429, listed `$1.25/GPU/hr × 2 = $2.50/hr` dual-rental, end_date 2026-06-15, unverified pending automatic verification.** The listing fired at 2026-05-04 03:34 UTC.
+Current status as of 2026-05-28: **machine_id 124192 — LISTED, verified, and RENTED on-demand.** Live list $1.10/GPU (approved $0.92/GPU — live-drift discrepancy, separate open decision). Listing expiry 2026-06-30.
 
 For listing strategy, pricing decisions, repricing workflows, idle jobs, and reserved-vs-on-demand logic, see [`vastai-management`](../vastai-management/SKILL.md). For onboarding-procedure specifics on a brand-new host, see [`sartor/memory/procedures/vastai-host-onboarding.md`](../../../sartor/memory/procedures/vastai-host-onboarding.md). Always cross-check live tracker state at [`sartor/memory/projects/rtxserver-vastai-watch.md`](../../../sartor/memory/projects/rtxserver-vastai-watch.md).
 
@@ -428,7 +428,7 @@ ssh alton@192.168.1.157 'sudo loginctl enable-linger alton'
 ```bash
 # 1. Confirm listing is alive on vast.ai's side
 ssh alton@192.168.1.157 '~/.local/bin/vastai show machines'
-# Look for machine_id 97429 with a non-zero gpuD_$/h field.
+# Look for machine_id 124192 with a non-zero gpuD_$/h field.
 
 # 2. Confirm kaalia is running
 ssh alton@192.168.1.157 'systemctl status vastai.service | head -10'
@@ -442,7 +442,7 @@ ssh alton@192.168.1.157 'sudo iptables -t nat -L OUTPUT -n | grep 100.1.100.63'
 #    (Verizon Fios doesn't expose a port-forward API.)
 
 # 5. Self-test from vast.ai's NOC perspective
-ssh alton@192.168.1.157 '~/.local/bin/vastai self-test machine 97429'
+ssh alton@192.168.1.157 '~/.local/bin/vastai self-test machine 124192'
 # Returns "BUSY" during kaalia warm-up; specific failure message otherwise.
 ```
 

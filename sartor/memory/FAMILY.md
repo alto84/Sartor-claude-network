@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-05-14
-updated_by: autodream
-last_verified: 2026-04-16
+updated: 2026-05-28
+updated_by: family-freshness-sweep
+last_verified: 2026-05-28
 status: active
 tags: [entity/person, domain/family]
 aliases: [Sartor Family, Household]
@@ -82,39 +82,48 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 ## Summer Plans
 
 ### Vishala — Wohelo Camp (Summer 2026)
-- Full session planned; tuition money available
-- Application pending as of 4/4/2026 — Aneeta contacted Debbie Hammond (debbie@wohelo.com) for payment timeline
-- Heidi Gorton confirmed Vishala is going; birthday visit policy may restrict parent visit on July 29
-- Monitor for Wohelo response and payment deadline
+- Full session planned; **enrollment + payment RESOLVED** — $12,900 check mailed 2026-05-07, deposit received 2026-05-10, forms in by 5/15. (Earlier "application pending 4/4" / "payment timeline" notes are closed.)
+- Session: Thu Jun 25 – Wed Aug 12, 2026 (Raymond, ME).
+- Heidi Gorton confirmed Vishala is going; **[needs Alton]** birthday visit policy (Vishala's 9th is 7/29, falls during camp) — visit window per director is 1–3pm at the garden; confirm.
 
 ## Upcoming Events
-- **2026-04-17 (Fri):** MKA 4th Grade trip to Ellis Island — Vayu needs packed lunch
-- **2026-04-17 (Fri) 8:15am:** 3rd grade dance concert at MKA Friday assembly (~9am end). Likely Vishala (verify grade). Source: Kristen Weaver / mail3.veracross.com
-- **2026-04-20 to 2026-04-21:** Goddard School (Vasu) — 1 Seymour Street parking garage closed 7am-5pm both days
-- **2026-04-22 (Wed) 7pm** (student arrival 6:30pm): MKA Spring Band Concert (Paul Murphy, mail1.veracross.com). Verify which child plays.
-- Solar roof installation: tentatively last week of April (permitting in progress); install must precede 2026-07-04 ITC deadline
-- Berman Home Systems wifi install: April 27-29 (3 days, Solar Inference LLC business install)
-- **2026-04-28 (Tue) 8-9am:** Power Mac LLC home theater repair visit (vendor Ilija Trajceski, info@power-mac.net) — coordinated with Berman during overlapping wifi install
-- Aneeta at RRE: April 29 - May 3 (Alton sole-parent window, 5 days, overlaps Berman install)
-- **2026-05-15 (Fri):** Wohelo full-tuition payment deadline ($12,400 balance after deposit)
-- Vishala summer camp: Little Wohelo Camp, Thu Jun 25 - Wed Aug 12, 2026 (Raymond, ME)
-- Disney family trip (Disneyland): July 2026 (with Smith/Alison, Kim Tran, Brucker, Perera, Nicole)
+
+*Freshness sweep 2026-05-28: April/early-May events struck as past; only forward-looking items remain live. Day-to-day calendar lives in [[family/family-calendar]] and the [[family/active-todos]] sweep table.*
+
+**Past (kept for record):**
+- ~~**2026-04-17 (Fri):** MKA 4th Grade Ellis Island trip; 3rd grade dance concert 8:15am~~
+- ~~**2026-04-20 to 2026-04-21:** Goddard 1 Seymour St garage closed~~
+- ~~**2026-04-22 (Wed):** MKA Spring Band Concert~~
+- ~~**2026-04-27 to 04-30:** Berman Home Systems wifi install (completed; Solar Inference LLC business install)~~
+- ~~**2026-04-28 (Tue):** Power Mac LLC home theater repair visit (Ilija Trajceski)~~
+- ~~**Aneeta at RRE: April 29 – May 3** (Alton sole-parent window; closed)~~
+- ~~**2026-05-15 (Fri):** Wohelo full-tuition deadline~~ — **PAID** (check mailed 5/7, received 5/10; see Open Action Items above)
+
+**Live / forward-looking:**
+- **Solar roof:** begin-construction safe-harbor deadline **2026-07-04** (corrected framing — this is a *begin-construction* date, not placed-in-service; per fleet-ledger VERIFICATION C4). Install timing tracked in [[reference_solar_project]]; this is a business/tax line, owned outside the family domain.
+- **2026-05-29 (Fri) 8:15am:** Vishala 3rd Grade Capstone Design Fair, MKA Brookside
+- **2026-05-30 (Sat) 5 PM – 05-31 (Sun) noon:** Vishala sleepover with Amia
+- **2026-06-02 (Mon) 4:30 PM:** Vasu Dance Recital (Goddard; venue TBD)
+- **2026-06-05 (Fri):** Vishala 3rd Grade Closing Exercises
+- **2026-06-22:** Goddard soccer season ends (Vasu)
+- **2026-06-25 (Thu) 10–11am:** Wohelo First Year Family Tour (optional), Raymond ME
+- **Vishala summer camp:** Little Wohelo Camp, Thu Jun 25 – Wed Aug 12, 2026 (Raymond, ME)
+- **Disney family trip (Disneyland):** July 16–19, 2026 (with Smith/Alison, Kim Tran, Brucker, Perera; Nicol Stevenson travel agent). ADR/booking status **[needs Alton]** — see [[family/disney-july-2026]].
 
 ## Open Action Items
 
-> [!deadline] 2026-04-16 (today / overdue)
-> **Wohelo $500 deposit overdue** — was due 2026-04-10. Cut check now to lock Vishala's enrollment. Director Heidi Gorton (heidigorton@gmail.com) has accepted late submission.
+*Freshness sweep 2026-05-28: Wohelo callouts resolved (struck below); see [[family/active-todos]] §2026-05-28 freshness sweep for the current open-loop table.*
 
-> [!deadline] 2026-05-15
-> **Wohelo full tuition $12,900 due** (or $12,400 balance if $500 deposit sent separately). Make check payable to **Wohelo Camps**, mail to 25 Gulick Road, Raymond, ME 04071. Memo: "Vishala Sartor — 2026 tuition". Family plan: Alton + Aneeta work remotely from Maine the week of Vishala's birthday (visit window 1-3pm at the garden during lunch/rest hour, per director).
+> [!done] Wohelo deposit + tuition — RESOLVED
+> ~~$500 deposit (was due 2026-04-10) + full tuition $12,900 (was due 2026-05-15).~~ Check ($12,900, deposit + full tuition combined) mailed 2026-05-07; deposit confirmed received 2026-05-10; camp forms also submitted by the 5/15 deadline. Payable to **Wohelo Camps**, 25 Gulick Road, Raymond, ME 04071. (The earlier "$12,400 balance" framing assumed a separate deposit — moot once combined.) Family plan: Alton + Aneeta work remotely from Maine the week of Vishala's birthday (visit window 1-3pm at the garden during lunch/rest hour, per director).
 
-- **Math support for Vayu (4th grade partial quotients division)** — teacher Roshni Shah (rshah@mka.org) flagged 2026-04-14, shared at-home practice materials. Aneeta acknowledged. Math dean: Deborah Gordon (dgordon@mka.org). See [[family/vayu]].
-- Find local counselor for Vayu (explosive ADHD/ODD specialization, not autism-focused)
-- Vishala health form for MKA (school requesting)
-- Schedule child well visit (Tribeca Pediatrics, http://tpeds.co/13kn) — confirmed active provider via 2026-04-13 InstaMed payment ($170.28)
-- CVS prescriptions pickup (Vayu) at 49 Claremont Ave
-- Bedroom air filter for master suite
-- Boiler bill payment pending
+- **Math support for Vayu (4th grade partial quotients division)** — teacher Roshni Shah (rshah@mka.org) flagged 2026-04-14, shared at-home practice materials. Aneeta acknowledged 2026-04-14; a second teacher outreach (homework habits) followed 2026-04-30 — **[needs Alton/Aneeta]** confirm reply sent. Math dean: Deborah Gordon (dgordon@mka.org). See [[family/vayu]].
+- Find local counselor for Vayu (explosive ADHD/ODD specialization, not autism-focused) — **[needs Alton/Aneeta]**, still open, no email signal.
+- ~~Vishala health form for MKA (school requesting)~~ **DONE** — signed and uploaded by Rachael Masters 2026-04-13. (Note: separate Magnus Health 2026-27 records request opened 2026-05-20 — enrollment-blocking, see [[family/active-todos]].)
+- Schedule child well visit (Tribeca Pediatrics, http://tpeds.co/13kn) — confirmed active provider via 2026-04-13 InstaMed payment ($170.28, since PAID). **[needs Alton]** if visit not yet booked.
+- CVS prescriptions pickup (Vayu) at 49 Claremont Ave — **[needs Alton]**, status unknown.
+- Bedroom air filter for master suite — **[needs Alton]**, low priority.
+- Boiler bill payment pending — **[needs Alton]**; confirm whether resolved out-of-band (see PAPER-CHECK-VENDORS).
 
 ## Open Questions
 - Wedding anniversary date?

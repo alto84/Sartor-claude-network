@@ -2204,6 +2204,351 @@ async def gpu_command(body: dict):
         return JSONResponse(status_code=500, content={"error": str(e)})
 
 
+# ── GET /api/fleet ─────────────────────────────────────────────────────────────
+#
+# Solar Inference LLC fleet panel. The canonical config spine is
+# sartor/memory/business/fleet.yaml (committed, NO dollars) — this route iterates
+# its `machines` list and never hardcodes a machine. Live state + dollar figures
+# come from data/financial/solar-inference/ (gitignored, local-only): fleet-state.json
+# (vast.ai pull) and books-2026.json (statements + ITC + §469). Every source degrades
+# gracefully when absent — the panel renders "pending first pull" rather than erroring.
+#
+# Privacy posture matches /api/finances: the server runs LAN-only + session-auth on
+# Rocinante, so reading the gitignored dollar files locally and serving them over the
+# private API is the established pattern. This route writes NO dollar figure back to any
+# committed file — the gitignored source stays gitignored.
+
+FLEET_YAML = MEMORY_DIR / "business" / "fleet.yaml"
+FLEET_STATE_JSON = DATA_DIR / "financial" / "solar-inference" / "fleet-state.json"
+FLEET_BOOKS_JSON = DATA_DIR / "financial" / "solar-inference" / "books-2026.json"
+# Watchdog state is a fallback live-state source if the vast.ai pull (fleet-state.json)
+# has not run yet. It carries host_status / rented / gpu_cost / reliability2 / error.
+FLEET_WATCHDOG_STATE = MEMORY_DIR / "projects" / "fleet-watchdog-state.json"
+FLEET_HOURS_CSV = MEMORY_DIR / "business" / "hours-log" / "all-hours.csv"
+
+
+def _read_json_safe(path: Path):
+    """Return parsed JSON, or None if the file is absent/unreadable/invalid."""
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return None
+
+
+def _read_yaml_safe(path: Path):
+    """Return parsed YAML, or None. yaml imported lazily so a missing dep can
+    never break server import — the panel just shows the spine as unavailable."""
+    try:
+        import yaml  # noqa: PLC0415  (lazy by design)
+    except ImportError:
+        return None
+    try:
+        return yaml.safe_load(path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, OSError):
+        return None
+    except Exception:
+        # yaml.YAMLError and friends — treat any parse failure as "no data".
+        return None
+
+
+def _fleet_hours_469():
+    """§469 material-participation hours YTD from the committed hours-log CSV.
+
+    Returns {solar_inference_ytd, total_ytd, test_500, test_100, latest_date} or None.
+    The 500-hr test (material participation) and the 100-hr test (one of the §469(h)
+    facts-and-circumstances tests) are the two thresholds the panel surfaces. This is
+    a fallback / corroboration source; books-2026.json section_469_hours is preferred
+    when present.
+    """
+    try:
+        text = FLEET_HOURS_CSV.read_text(encoding="utf-8")
+    except (FileNotFoundError, OSError):
+        return None
+    lines = [ln for ln in text.splitlines() if ln.strip()]
+    if len(lines) < 2:
+        return None
+    header = [h.strip() for h in lines[0].split(",")]
+    try:
+        i_date = header.index("date")
+        i_si = header.index("solar_inference_hours")
+        i_tot = header.index("total_active_hours")
+    except ValueError:
+        return None
+    this_year = str(date.today().year)
+    si_ytd = 0.0
+    tot_ytd = 0.0
+    latest = None
+    for ln in lines[1:]:
+        cols = ln.split(",")
+        if len(cols) <= max(i_date, i_si, i_tot):
+            continue
+        d = cols[i_date].strip()
+        if not d.startswith(this_year):
+            continue
+        try:
+            si_ytd += float(cols[i_si])
+            tot_ytd += float(cols[i_tot])
+        except ValueError:
+            continue
+        if latest is None or d > latest:
+            latest = d
+    return {
+        "solar_inference_ytd": round(si_ytd, 2),
+        "total_ytd": round(tot_ytd, 2),
+        "test_500": 500,
+        "test_100": 100,
+        "latest_date": latest,
+        "source": "hours-log/all-hours.csv",
+    }
+
+
+@app.get("/api/fleet")
+async def fleet():
+    """Solar Inference fleet panel data. Spine = fleet.yaml; live + dollars from
+    data/financial/solar-inference/. Everything degrades to nulls + a note."""
+    cfg = _read_yaml_safe(FLEET_YAML)
+    out = {
+        "config_loaded": cfg is not None,
+        "machines": [],
+        "fleet_health": {"alerts": [], "overall": "green", "source": None, "pulled_at": None},
+        "tax": {"itc": None, "section_469": None},
+        "sources": {
+            "fleet_yaml": FLEET_YAML.exists(),
+            "fleet_state": FLEET_STATE_JSON.exists(),
+            "books": FLEET_BOOKS_JSON.exists(),
+            "watchdog_state": FLEET_WATCHDOG_STATE.exists(),
+            "hours_csv": FLEET_HOURS_CSV.exists(),
+        },
+        "notes": [],
+    }
+    if cfg is None:
+        out["notes"].append("fleet.yaml not loaded (missing PyYAML or file absent) — no fleet spine.")
+        return out
+
+    # ── Live state sources (gitignored, local-only). fleet-state.json is the
+    # vast.ai pull; watchdog state is the fallback. Both keyed by machine_id (str).
+    state = _read_json_safe(FLEET_STATE_JSON)
+    state_machines = (state or {}).get("machines", {}) if isinstance(state, dict) else {}
+    if state:
+        out["fleet_health"]["pulled_at"] = state.get("pulled_at")
+        out["fleet_health"]["source"] = "fleet-state.json"
+    else:
+        out["notes"].append("fleet-state.json pending first pull — live price/rental/temp unavailable.")
+
+    wd = _read_json_safe(FLEET_WATCHDOG_STATE) or {}
+
+    books = _read_json_safe(FLEET_BOOKS_JSON)
+    # books-2026.json `machines` is a LIST of per-machine objects keyed by hostname
+    # (NOT keyed by machine_id like fleet-state.json). Index it by hostname.
+    books_machines = {}
+    if isinstance(books, dict):
+        bm = books.get("machines")
+        if isinstance(bm, list):
+            books_machines = {x.get("hostname"): x for x in bm if isinstance(x, dict)}
+        elif isinstance(bm, dict):
+            # tolerate a dict form too (keyed by hostname or id) for forward-compat
+            books_machines = bm
+    if books is None:
+        out["notes"].append("books-2026.json pending — revenue MTD/YTD + ITC worksheet unavailable.")
+
+    today = date.today()
+
+    for m in (cfg.get("machines") or []):
+        mid = m.get("vast_ai_machine_id")
+        mid_key = str(mid) if mid is not None else None
+        listing = m.get("listing") or {}
+        monitoring = m.get("monitoring") or {}
+        live = state_machines.get(mid_key) if mid_key else None
+        wdm = wd.get(mid_key) if mid_key else None
+        bk = books_machines.get(m.get("hostname"))  # books machines are hostname-keyed
+
+        # rental status: prefer fleet-state.json, fall back to watchdog state.
+        rented = None
+        running = None
+        if live is not None:
+            running = live.get("current_rentals_running")
+            if running is not None:
+                rented = int(running) >= 1
+        if rented is None and wdm is not None:
+            rented = wdm.get("rented")
+
+        # live list price: fleet-state first, watchdog second, approved config last.
+        live_price = None
+        if live is not None:
+            live_price = live.get("listed_gpu_cost")
+        if live_price is None and wdm is not None:
+            live_price = wdm.get("gpu_cost")
+
+        reliability = None
+        if live is not None:
+            reliability = live.get("reliability2")
+        if reliability is None and wdm is not None:
+            reliability = wdm.get("reliability2")
+
+        error_description = None
+        if live is not None:
+            error_description = live.get("error_description")
+        if error_description is None and wdm is not None:
+            error_description = wdm.get("error_description")
+
+        # GPU temp: fleet-state may carry it under gpu_temp_c if a future pull adds it;
+        # the current vast.ai pull does not, so this is usually None. We do NOT SSH from
+        # this route — that would block the event loop and duplicate the watchdog's job.
+        gpu_temp = live.get("gpu_temp_c") if live else None
+
+        # Revenue MTD / YTD from books (gitignored dollars). null when books absent.
+        rev_mtd = bk.get("revenue_mtd") if bk else None
+        rev_ytd = bk.get("revenue_ytd") if bk else None
+        # Live per-machine earnings from the vast.ai pull (single-day window; see
+        # fleet-state.json earnings_window limitation). More current than books revenue.
+        earn_hour = live.get("earn_hour") if live else None
+        earn_day = live.get("earn_day") if live else None
+
+        # listing expiry → days remaining + urgency. Prefer the live end_date_iso from
+        # the vast.ai pull; fall back to the approved config value in fleet.yaml.
+        end_date = (live.get("end_date_iso") if live else None) or listing.get("end_date")
+        expiry_days = None
+        expiry_urgency = None
+        if end_date:
+            try:
+                ed = date.fromisoformat(str(end_date))
+                expiry_days = (ed - today).days
+                expiry_urgency = "red" if expiry_days < 7 else "amber" if expiry_days < 21 else "blue"
+            except ValueError:
+                pass
+
+        out["machines"].append({
+            "hostname": m.get("hostname"),
+            "machine_id": mid,
+            "role": m.get("role"),
+            "status": m.get("status"),
+            "gpus": m.get("gpus"),
+            "gpu_model": m.get("gpu_model"),
+            "rented": rented,
+            "rentals_running": running,
+            "live_price": live_price,
+            "approved_price": listing.get("gpu_cost"),
+            "min_bid": listing.get("min_bid"),
+            "marginal_floor": listing.get("marginal_floor_gpu_cost"),
+            "reliability": reliability,
+            "gpu_temp_c": gpu_temp,
+            "gpu_temp_alert_c": monitoring.get("gpu_temp_alert_c"),
+            "gpu_temp_crit_c": monitoring.get("gpu_temp_crit_c"),
+            "error_description": error_description,
+            "end_date": end_date,
+            "expiry_days": expiry_days,
+            "expiry_urgency": expiry_urgency,
+            "revenue_mtd": rev_mtd,
+            "revenue_ytd": rev_ytd,
+            "earn_hour": earn_hour,
+            "earn_day": earn_day,
+            "live": live is not None,
+        })
+
+    # ── Fleet health alerts. Compute from config + live state; cheap, deterministic,
+    # no network. Mirrors the watchdog's check kinds so the panel and the alerter agree.
+    alerts = []
+    sev_rank = {"green": 0, "yellow": 1, "amber": 1, "orange": 2, "red": 3}
+    for mc in out["machines"]:
+        host = mc["hostname"]
+        # price drift
+        lp, ap, tol = mc["live_price"], mc["approved_price"], 0.005
+        if lp is not None and ap is not None and abs(float(lp) - float(ap)) > tol:
+            alerts.append({"severity": "orange", "machine": host,
+                           "msg": f"price drift: live ${lp}/GPU != approved ${ap}/GPU"})
+        # marginal-floor breach
+        if lp is not None and mc["marginal_floor"] is not None and float(lp) < float(mc["marginal_floor"]):
+            alerts.append({"severity": "red", "machine": host,
+                           "msg": f"list ${lp}/GPU below marginal floor ${mc['marginal_floor']}/GPU"})
+        # error_description (silent delist)
+        if mc["error_description"]:
+            alerts.append({"severity": "red", "machine": host,
+                           "msg": f"error_description set: {mc['error_description']}"})
+        # reliability regression
+        rel = mc["reliability"]
+        if rel is not None:
+            if float(rel) < 0.90:
+                alerts.append({"severity": "red", "machine": host,
+                               "msg": f"reliability {float(rel):.4f} < 0.90"})
+            elif float(rel) < 0.95:
+                alerts.append({"severity": "orange", "machine": host,
+                               "msg": f"reliability {float(rel):.4f} < 0.95"})
+        # temp
+        t, alert_c, crit_c = mc["gpu_temp_c"], mc["gpu_temp_alert_c"], mc["gpu_temp_crit_c"]
+        if t is not None and crit_c is not None and float(t) >= float(crit_c):
+            alerts.append({"severity": "red", "machine": host,
+                           "msg": f"GPU {t}°C >= crit {crit_c}°C"})
+        elif t is not None and alert_c is not None and float(t) >= float(alert_c):
+            alerts.append({"severity": "orange", "machine": host,
+                           "msg": f"GPU {t}°C >= alert {alert_c}°C"})
+        # listing expiry
+        if mc["expiry_days"] is not None and mc["expiry_days"] < 7:
+            alerts.append({"severity": "orange" if mc["expiry_days"] >= 0 else "red", "machine": host,
+                           "msg": f"listing expires in {mc['expiry_days']}d ({mc['end_date']})"})
+    overall = "green"
+    for a in alerts:
+        if sev_rank.get(a["severity"], 0) > sev_rank.get(overall, 0):
+            overall = a["severity"]
+    out["fleet_health"]["alerts"] = alerts
+    out["fleet_health"]["overall"] = overall
+
+    # ── Tax progress. ITC business-use fraction (the load-bearing unknown) + §469 hours.
+    # Prefer the books itc_worksheet (computed, with the defensible scenario_range);
+    # fall back to fleet.yaml's solar block when books are absent.
+    solar = cfg.get("solar") or {}
+    itc_books = (books or {}).get("itc_worksheet") if isinstance(books, dict) else None
+
+    # business-use fraction: books first (it's the computed authority), then config.
+    bu_fraction = None
+    if isinstance(itc_books, dict):
+        bu_fraction = itc_books.get("business_use_fraction")
+    if bu_fraction is None:
+        bu_fraction = solar.get("business_use_fraction")
+
+    # Scenario range: take the books worksheet's labeled scenarios when present.
+    scenario_range = None
+    scenario_low_pct, scenario_high_pct = 24, 64  # fleet.yaml's stated defensible band
+    if isinstance(itc_books, dict) and isinstance(itc_books.get("scenario_range"), list):
+        scenario_range = itc_books["scenario_range"]
+        pcts = [s.get("business_use_pct") for s in scenario_range
+                if isinstance(s, dict) and s.get("business_use_pct") is not None]
+        if pcts:
+            scenario_low_pct, scenario_high_pct = min(pcts), max(pcts)
+
+    itc = {
+        "itc_section": (itc_books or {}).get("itc_section") if itc_books else solar.get("itc_section"),
+        "itc_rate": (itc_books or {}).get("rate") if itc_books else solar.get("itc_rate"),
+        "contract_total_usd": (itc_books or {}).get("basis_contract_usd") if itc_books else solar.get("contract_total_usd"),
+        "begin_construction_deadline": solar.get("begin_construction_deadline"),
+        "business_use_fraction": bu_fraction,
+        "measured": bu_fraction is not None,
+        "scenario_low_pct": scenario_low_pct,
+        "scenario_high_pct": scenario_high_pct,
+        "scenario_range": scenario_range,
+        "obbb_facts": (itc_books or {}).get("obbb_facts") if isinstance(itc_books, dict) else None,
+        "single_number_warning": (itc_books or {}).get("single_number_warning") if isinstance(itc_books, dict) else None,
+        "worksheet": itc_books,  # full worksheet from books when present (gitignored dollars)
+    }
+    if not itc["measured"]:
+        itc["status"] = "UNMEASURED"
+        itc["note"] = ("Business-use fraction not yet measured from power logs. Defensible ITC "
+                       f"scenario range ~{scenario_low_pct}% (GPU-only kWh) to ~{scenario_high_pct}% (dual-rig).")
+    else:
+        itc["status"] = "MEASURED"
+    out["tax"]["itc"] = itc
+
+    # §469 hours: prefer books, fall back to the committed hours-log CSV.
+    books_469 = (books or {}).get("section_469_hours") if isinstance(books, dict) else None
+    if books_469:
+        out["tax"]["section_469"] = {**books_469, "source": "books-2026.json"}
+    else:
+        out["tax"]["section_469"] = _fleet_hours_469()
+        if out["tax"]["section_469"] is None:
+            out["notes"].append("§469 hours unavailable (no books, no hours-log CSV).")
+
+    return out
+
+
 # ── GET /api/memory-graph ─────────────────────────────────────────────────────
 
 _CLUSTER_MAP = {

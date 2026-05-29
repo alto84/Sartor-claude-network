@@ -3,7 +3,7 @@ name: vastai-pricing-strategy
 description: Sartor's stated preference for vast.ai listing strategy — short-term rentals first while gauging demand at various price points, then commit to longer terms once price discovery is done. Cited 2026-05-03 by Alton.
 type: project
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-05-28
 status: active
 tags: [business/vastai, business/solar-inference, strategy]
 related:
@@ -27,7 +27,7 @@ related:
 4. If fill rate is zero → drop price 10-20% and watch again.
 5. Only after 2-4 weeks of rental data should we consider a long-term reserved contract (which locks in a specific renter at a discount).
 
-**Why:** Locking long-term too early with insufficient data means we under-price (gpuserver1's current 5090 reserved contract C.34113802 at ~$0.20/hr realized is a case in point — list price was $0.30 but the contract bought it at a long-term discount; if demand were higher we'd be capturing more on-demand).
+**Why:** Locking long-term too early with insufficient data means we under-price (gpuserver1's 5090 reserved contract C.34113802 at ~$0.20/hr realized is a case in point — the contract bought it at a long-term discount when list was $0.30; list is now $0.80, so the realized-vs-list gap has widened and we'd be capturing more on-demand if the machine weren't locked).
 
 ## Concrete rules
 
@@ -40,8 +40,8 @@ related:
 
 | Host | Listing | Strategy |
 |---|---|---|
-| gpuserver1 (RTX 5090) | $0.30 listed, currently under reserved C.34113802 (~$0.20/hr realized) through 2026-08-24 | Reserved through 8/24, then re-evaluate against fresh price-discovery on relist |
-| rtxpro6000server (dual RTX PRO 6000 Blackwell) | Not yet listed; plan is `-g 1.25 -m 2 -l "6 months"` for $2.50/hr dual-rental | **Per this strategy: drop the `-l "6 months"` rolling reservation and use a fixed `-e` end-date for first listing.** Re-evaluate after 2-4 weeks of data. |
+| gpuserver1 (RTX 5090) | $0.80 listed, currently under reserved C.34113802 (~$0.20/hr realized) through 2026-08-24. Listing expiry 2026-06-30. | Reserved through 8/24, then re-evaluate against fresh price-discovery on relist |
+| rtxpro6000server (dual RTX PRO 6000 Blackwell, machine_id 124192) | LISTED, verified, RENTED on-demand as of 2026-05-28. Live list $1.10/GPU (approved $0.92/GPU — live-drift discrepancy, separate open decision). | In price-discovery window. Reconcile live $1.10 vs approved $0.92 with Alton; adjust per fill rate. |
 | Future hosts | n/a | Same strategy applies |
 
 ## Related

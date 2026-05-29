@@ -1421,6 +1421,152 @@ body {
   border-top: 1px solid rgba(255,255,255,0.04);
 }
 
+/* ── Solar Inference Fleet ──────────────────────────────────────────────── */
+.fleet-overall {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-left: auto;
+  padding: 2px 8px;
+  border: 1px solid;
+  border-radius: 10px;
+}
+.fleet-empty {
+  font-size: 12px;
+  color: var(--text-dim);
+  padding: 8px 0;
+}
+.fleet-machines {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+@media (max-width: 700px) { .fleet-machines { grid-template-columns: 1fr; } }
+.fleet-machine {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+}
+.fleet-m-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+.fleet-m-host {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+.fleet-rent {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.fleet-rent.rented { background: rgba(34,197,94,0.18); color: var(--green); }
+.fleet-rent.idle { background: rgba(245,158,11,0.18); color: var(--amber); }
+.fleet-rent.unknown { background: rgba(107,114,128,0.18); color: var(--text-dim); }
+.fleet-m-sub {
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.fleet-m-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+}
+.fleet-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 11px;
+}
+.fleet-stat-wide { grid-column: 1 / -1; }
+.fleet-stat-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.fleet-stat-val {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+}
+.fleet-drift { color: var(--amber); font-weight: 700; }
+.fleet-drift-note { font-size: 9px; color: var(--text-dim); }
+.fleet-ok { color: var(--green); }
+.fleet-warn { color: var(--amber); }
+.fleet-bad { color: var(--red); }
+.fleet-section-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin: 10px 0 6px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 3px;
+}
+.fleet-ok-line { font-size: 11px; color: var(--green); }
+.fleet-dim { color: var(--text-dim); }
+.fleet-alerts { display: flex; flex-direction: column; gap: 4px; }
+.fleet-alert {
+  font-size: 11px;
+  padding: 5px 8px;
+  background: rgba(0,0,0,0.2);
+  border-left: 3px solid var(--amber);
+  border-radius: 3px;
+}
+.fleet-alert-sev { font-family: var(--mono); font-size: 9px; font-weight: 700; }
+.fleet-alert-host { font-family: var(--mono); font-weight: 700; color: var(--text); }
+.fleet-alert-msg { color: var(--text-dim); }
+.fleet-tax { display: flex; flex-direction: column; gap: 10px; }
+.fleet-tax-block {
+  background: rgba(0,0,0,0.2);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+.fleet-tax-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.fleet-tax-line { font-size: 11px; color: var(--text); margin: 2px 0; }
+.fleet-469-test {
+  display: grid;
+  grid-template-columns: 70px 1fr 40px;
+  gap: 8px;
+  align-items: center;
+  margin-top: 4px;
+}
+.fleet-469-label { font-family: var(--mono); font-size: 9px; color: var(--text-dim); }
+.fleet-469-bar {
+  height: 7px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.fleet-469-fill { height: 100%; transition: width 0.5s ease; }
+.fleet-469-val { font-family: var(--mono); font-size: 10px; color: var(--text-dim); text-align: right; }
+.fleet-notes { margin-top: 10px; }
+.fleet-note {
+  font-size: 10px;
+  color: var(--text-dim);
+  font-style: italic;
+  padding: 1px 0;
+}
+
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 1200px) {
   .main-grid { grid-template-columns: 1fr; }
@@ -2367,6 +2513,15 @@ body {
         </div>
         <div class="gpu-output" id="gpuOutput"></div>
       </div>
+    </div>
+
+    <!-- Solar Inference Fleet -->
+    <div class="glass-card" style="--card-accent:#eab308">
+      <div class="glass-card-title">
+        <span class="glass-card-icon">&#9728;</span> Solar Inference Fleet
+        <span id="fleetOverall" class="fleet-overall"></span>
+      </div>
+      <div id="fleetContainer">Loading...</div>
     </div>
 
   </div>
@@ -3967,6 +4122,179 @@ renderGpuStatus();
 renderGpuRental();
 setInterval(renderGpuRental, 30000);
 
+/* ── Solar Inference Fleet ─────────────────────────────────────────────── */
+function fleetSevColor(sev) {
+  if (sev === 'red') return 'var(--red)';
+  if (sev === 'orange') return 'var(--amber)';
+  if (sev === 'yellow' || sev === 'amber') return 'var(--amber)';
+  return 'var(--green)';
+}
+function fleetMoney(n) {
+  if (n == null) return '—';
+  return '$' + Number(n).toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 2});
+}
+function fleetPrice(n) {
+  return n == null ? '—' : '$' + Number(n).toFixed(2);
+}
+
+async function renderFleet() {
+  var c = $('fleetContainer');
+  var overallBadge = $('fleetOverall');
+  var d = await fetchJSON('/api/fleet');
+  if (!d) {
+    c.innerHTML = '<div class="fleet-empty">Fleet data unavailable.</div>';
+    overallBadge.textContent = '';
+    return;
+  }
+  if (!d.config_loaded) {
+    c.innerHTML = '<div class="fleet-empty">fleet.yaml not loaded — no fleet spine. ' +
+      escapeHTML((d.notes || []).join(' ')) + '</div>';
+    overallBadge.textContent = '';
+    return;
+  }
+
+  // Overall health pill in the card title
+  var overall = (d.fleet_health && d.fleet_health.overall) || 'green';
+  overallBadge.textContent = overall.toUpperCase();
+  overallBadge.style.color = fleetSevColor(overall);
+  overallBadge.style.borderColor = fleetSevColor(overall);
+
+  var html = '';
+
+  // ── Per-machine rows ──
+  html += '<div class="fleet-machines">';
+  (d.machines || []).forEach(function(m) {
+    var rentClass = m.rented === true ? 'rented' : (m.rented === false ? 'idle' : 'unknown');
+    var rentLabel = m.rented === true ? 'RENTED' : (m.rented === false ? 'IDLE' : 'NO DATA');
+    // price drift flag
+    var drift = (m.live_price != null && m.approved_price != null &&
+                 Math.abs(Number(m.live_price) - Number(m.approved_price)) > 0.005);
+    var priceCls = drift ? 'fleet-drift' : '';
+    // reliability color
+    var rel = m.reliability;
+    var relCls = rel == null ? '' : (Number(rel) < 0.90 ? 'fleet-bad' : (Number(rel) < 0.95 ? 'fleet-warn' : 'fleet-ok'));
+    // temp
+    var tempStr = '—';
+    if (m.gpu_temp_c != null) {
+      var hot = (m.gpu_temp_crit_c != null && Number(m.gpu_temp_c) >= Number(m.gpu_temp_crit_c));
+      var warm = (m.gpu_temp_alert_c != null && Number(m.gpu_temp_c) >= Number(m.gpu_temp_alert_c));
+      tempStr = '<span class="' + (hot ? 'fleet-bad' : (warm ? 'fleet-warn' : 'fleet-ok')) + '">' +
+                Number(m.gpu_temp_c) + '°C</span>';
+    }
+    // expiry
+    var expStr = '—';
+    if (m.expiry_days != null) {
+      var expCls = m.expiry_urgency === 'red' ? 'fleet-bad' : (m.expiry_urgency === 'amber' ? 'fleet-warn' : '');
+      expStr = '<span class="' + expCls + '">' + m.expiry_days + 'd</span>';
+    }
+    // revenue: prefer live earn_day, then books MTD
+    var revStr = '';
+    if (m.earn_day != null) revStr = fleetMoney(m.earn_day) + '/day';
+    else if (m.revenue_mtd != null) revStr = fleetMoney(m.revenue_mtd) + ' MTD';
+    var priceCell = fleetPrice(m.live_price);
+    if (drift) priceCell += ' <span class="fleet-drift-note">(appr ' + fleetPrice(m.approved_price) + ')</span>';
+
+    html += '<div class="fleet-machine">' +
+      '<div class="fleet-m-head">' +
+        '<span class="fleet-m-host">' + escapeHTML(m.hostname || '?') + '</span>' +
+        '<span class="fleet-rent ' + rentClass + '">' + rentLabel + '</span>' +
+      '</div>' +
+      '<div class="fleet-m-sub">' + escapeHTML((m.gpu_model || '') + ' · ' + (m.gpus || '?') + '×GPU · ' + (m.role || '')) + '</div>' +
+      '<div class="fleet-m-grid">' +
+        '<div class="fleet-stat"><span class="fleet-stat-label">Price</span><span class="fleet-stat-val ' + priceCls + '">' + priceCell + '</span></div>' +
+        '<div class="fleet-stat"><span class="fleet-stat-label">Reliab</span><span class="fleet-stat-val ' + relCls + '">' + (rel == null ? '—' : (Number(rel) * 100).toFixed(1) + '%') + '</span></div>' +
+        '<div class="fleet-stat"><span class="fleet-stat-label">Temp</span><span class="fleet-stat-val">' + tempStr + '</span></div>' +
+        '<div class="fleet-stat"><span class="fleet-stat-label">Expiry</span><span class="fleet-stat-val">' + expStr + '</span></div>' +
+        '<div class="fleet-stat fleet-stat-wide"><span class="fleet-stat-label">Revenue</span><span class="fleet-stat-val">' + escapeHTML(revStr || '—') + '</span></div>' +
+      '</div>' +
+    '</div>';
+  });
+  html += '</div>';
+
+  // ── Fleet health alerts ──
+  var alerts = (d.fleet_health && d.fleet_health.alerts) || [];
+  html += '<div class="fleet-section-label">Fleet Health</div>';
+  if (alerts.length === 0) {
+    var pulled = d.fleet_health && d.fleet_health.pulled_at;
+    html += '<div class="fleet-ok-line">No drift / expiry / down / temp / price alerts.' +
+            (pulled ? ' <span class="fleet-dim">pulled ' + escapeHTML(pulled) + '</span>' : '') + '</div>';
+  } else {
+    html += '<div class="fleet-alerts">';
+    alerts.forEach(function(a) {
+      html += '<div class="fleet-alert" style="border-left-color:' + fleetSevColor(a.severity) + '">' +
+        '<span class="fleet-alert-sev" style="color:' + fleetSevColor(a.severity) + '">' + escapeHTML(a.severity.toUpperCase()) + '</span> ' +
+        '<span class="fleet-alert-host">' + escapeHTML(a.machine || '') + '</span> ' +
+        '<span class="fleet-alert-msg">' + escapeHTML(a.msg || '') + '</span>' +
+      '</div>';
+    });
+    html += '</div>';
+  }
+
+  // ── Tax progress ──
+  var tax = d.tax || {};
+  var itc = tax.itc;
+  var s469 = tax.section_469;
+  html += '<div class="fleet-section-label">Tax Progress</div>';
+  html += '<div class="fleet-tax">';
+
+  if (itc) {
+    var itcStatusCls = itc.status === 'MEASURED' ? 'fleet-ok' : 'fleet-warn';
+    html += '<div class="fleet-tax-block">' +
+      '<div class="fleet-tax-title">ITC business-use fraction ' +
+        '<span class="' + itcStatusCls + '">' + escapeHTML(itc.status || '') + '</span></div>';
+    if (itc.status === 'MEASURED' && itc.business_use_fraction != null) {
+      html += '<div class="fleet-tax-line">Measured: ' + (Number(itc.business_use_fraction) * 100).toFixed(1) + '% business use · §' +
+              escapeHTML(itc.itc_section || '') + ' @ ' + ((itc.itc_rate || 0) * 100).toFixed(0) + '%</div>';
+    } else {
+      html += '<div class="fleet-tax-line">Scenario range: <b>' + itc.scenario_low_pct + '%</b> (GPU-only) – <b>' +
+              itc.scenario_high_pct + '%</b> (dual-rig) · §' + escapeHTML(itc.itc_section || '') +
+              ' @ ' + ((itc.itc_rate || 0) * 100).toFixed(0) + '%</div>';
+    }
+    if (itc.begin_construction_deadline) {
+      html += '<div class="fleet-tax-line fleet-dim">Begin-construction deadline: ' + escapeHTML(itc.begin_construction_deadline) + '</div>';
+    }
+    html += '</div>';
+  }
+
+  if (s469) {
+    var ytd = s469.ytd_human_hours != null ? s469.ytd_human_hours :
+              (s469.solar_inference_ytd != null ? s469.solar_inference_ytd : null);
+    var pct500 = ytd != null ? Math.min(100, (Number(ytd) / 500) * 100) : 0;
+    var pct100 = ytd != null ? Math.min(100, (Number(ytd) / 100) * 100) : 0;
+    html += '<div class="fleet-tax-block">' +
+      '<div class="fleet-tax-title">§469 material-participation hours YTD</div>' +
+      '<div class="fleet-tax-line"><b>' + (ytd == null ? '—' : Number(ytd).toFixed(1)) + ' hrs</b> ' +
+        '<span class="fleet-dim">(' + escapeHTML(s469.source || '') + ')</span></div>' +
+      '<div class="fleet-469-test">' +
+        '<div class="fleet-469-label">500-hr test</div>' +
+        '<div class="fleet-469-bar"><div class="fleet-469-fill" style="width:' + pct500.toFixed(0) + '%;background:var(--amber)"></div></div>' +
+        '<div class="fleet-469-val">' + pct500.toFixed(0) + '%</div>' +
+      '</div>' +
+      '<div class="fleet-469-test">' +
+        '<div class="fleet-469-label">100-hr test</div>' +
+        '<div class="fleet-469-bar"><div class="fleet-469-fill" style="width:' + pct100.toFixed(0) + '%;background:var(--green)"></div></div>' +
+        '<div class="fleet-469-val">' + pct100.toFixed(0) + '%</div>' +
+      '</div>';
+    if (s469.is_bot_inflated_source) {
+      html += '<div class="fleet-tax-line fleet-warn">⚠ Source is bot-inflated — upper bound, not a §469 record. Extractor fix pending.</div>';
+    }
+    html += '</div>';
+  }
+  html += '</div>';
+
+  // ── Source/degradation notes ──
+  if ((d.notes || []).length) {
+    html += '<div class="fleet-notes">';
+    d.notes.forEach(function(n) { html += '<div class="fleet-note">' + escapeHTML(n) + '</div>'; });
+    html += '</div>';
+  }
+
+  c.innerHTML = html;
+}
+
+renderFleet();
+setInterval(renderFleet, 60000);
+
 /* (Top-panel graph removed -- Memory Tab graph is the canonical version) */
 
 /* ── Heartbeat Live Mini-Panel ────────────────────────────────────────── */
@@ -4969,6 +5297,7 @@ var CMD_REGISTRY = [
   {id:'nav-career', group:'Cards', label:'Career Tracker', keywords:'career promotion salary', icon:'\u2605', action:function(){scrollToCard('careerContainer')}},
   {id:'nav-costs', group:'Cards', label:'API Cost Tracker', keywords:'costs api spending budget', icon:'$', action:function(){scrollToCard('costContainer')}},
   {id:'nav-gpu', group:'Cards', label:'GPU Server Control', keywords:'gpu server rental vast ssh', icon:'\u2699', action:function(){scrollToCard('gpuStatusBadges')}},
+  {id:'nav-fleet', group:'Cards', label:'Solar Inference Fleet', keywords:'fleet solar inference gpu rental revenue itc tax 469 vast', icon:'\u2600', action:function(){scrollToCard('fleetContainer')}},
   // Memory Tab sub-tabs
   {id:'mem-graph', group:'Memory', label:'Memory Graph', keywords:'graph d3 force visualization', icon:'\u25C6', action:function(){scrollToMemTab('graph')}},
   {id:'mem-heatmap', group:'Memory', label:'Memory Heatmap', keywords:'heatmap tier cluster grid', icon:'\u25C6', action:function(){scrollToMemTab('heatmap')}},

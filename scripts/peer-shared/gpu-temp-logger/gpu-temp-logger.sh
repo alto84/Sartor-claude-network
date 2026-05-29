@@ -25,7 +25,7 @@ set -u
 HOSTNAME=$(hostname)
 case "$HOSTNAME" in
   rtxpro6000server|rtxserver)
-    MACHINE_ID=97429
+    MACHINE_ID=124192
     NUM_GPUS=2
     CPU_TEMP_SOURCE=k10temp_tctl
     HAVE_BMC=1

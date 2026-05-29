@@ -7,7 +7,8 @@ run: 123
 
 status: active
 priority: p1
-next_review: 2026-05-16
+next_review: 2026-06-01
+freshness_swept: 2026-05-28
 tags: [entity/family, status/active, priority/p1, domain/family]
 aliases: [Family TODOs, Family Action Items, Family Dashboard]
 related: [FAMILY, vayu, vishala, vasu, family-calendar, reference_solar_project]
@@ -16,6 +17,32 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 # Family Active TODOs
 
 Live dashboard of time-sensitive family items, surfaced from Gmail and Calendar harvest on 2026-04-09. Reviewed weekly; items age out or move to the relevant kid's page once resolved.
+
+## 2026-05-28 freshness sweep
+
+Reconciles the live P0/P1 carry-forward table (last refreshed run 123, 2026-05-25) to today. The dated `## Latest from gather` blocks below are append-only history (archive-not-collapse) and are NOT rewritten; this section is the current truth for the open loops. No new facts invented — items with no gather signal are flagged **[needs Alton]**.
+
+| Item | Status as of 2026-05-28 | Flag |
+|------|-------------------------|------|
+| **Cat sitter — Boston trip (5/27–5/29)** | Trip window is **NOW** (started 5/27). Booking window closed. Either booked out-of-band or already played out. | **[needs Alton]** confirm cats were covered |
+| **Boston trip school/logistics (Vayu+Vishala MKA, Vasu Goddard 5/27–5/29)** | Trip underway; logistics resolved by event whether planned or not. | resolved-by-event |
+| **Shakespeare Project MKA 5/29–5/30 vs Boston trip** | Conflict window is now (5/29). | **[needs Alton]** — was either reconciled or a role was missed |
+| **Sante Total Form 990-N (due 2026-05-15)** | **OVERDUE 13 days.** No filing signal. Penalties accruing. | **[needs Alton]** — P0, file at IRS.gov 990-N e-Postcard |
+| **Disney ADR (Blue Bayou / character dining)** | Window opened 5/17; now Day 11. Status never confirmed (Gmail gaps). | **[needs Alton]** confirm whether Nicol Stevenson booked |
+| **Berman Home Systems $6,000 (Lutron #AAAO13216-03)** | 10 days past Alton's 2026-05-18 "few days" CC-payment promise. | **[needs Alton]** pay or reconfirm timeline |
+| **Sante Total Berteau $2,400 / Gaby $9,972** | Treasurer decision pending since 5/12 (Gaby) and 5/23 (Berteau). | **[needs Alton]** — Sante Total, board/treasurer authorization required |
+| **Cadoo Medical PC $765.21** | Bill confirmed legitimate (run 120). Unpaid as far as gather sees. | **[needs Alton]** pay via Tebra portal |
+| **UPS lost-package claim (1Z091C2R4220295437)** | Monitor; UPS to respond by ~2026-06-05. | monitor |
+| **Vishala sleepover with Amia (Sat 5/30 5 PM – Sun 5/31 noon)** | Upcoming this weekend; times CORRECTED to 5 PM/noon (run 114). | upcoming |
+| **Vishala Capstone Design Fair (Fri 5/29 8:15 AM, MKA Brookside)** | Tomorrow; parent attendance expected. Overlaps Boston-trip return. | **[needs Alton]** coverage |
+| **Vasu Dance Recital (Mon 6/2 4:30 PM, Goddard)** | Upcoming; venue still TBD. | upcoming |
+| **Vishala 3rd Grade Closing Exercises (Fri 6/5)** | Upcoming parent event. | upcoming |
+| **Vayu MSI laptop UniFi block (since 2026-05-17)** | Still active; no auto-expiry; unblock-timing decision open. | **[needs Alton/Aneeta]** |
+
+**Resolved since last full triage (closed below in their dated blocks):** Wohelo check+forms (mailed 5/7, received 5/10); Vayu MKA cafeteria debit ($101.75, 5/23); 3rd-grade memory book order (5/8); MKA 2026-27 enrollment both kids (5/8); Lucent 5/13 site visit; Cadoo "EMMETT" identity ambiguity (5/24); Pixel 10 Pro Fold delivery (5/5).
+
+> [!note] Reconciliation flag — NJ ST-3 / sales-tax item is NOT in this file
+> The 2026-05-28 fleet-ledger verification (projects/fleet-ledger-2026-05-28/VERIFICATION.md, finding **T4**) references a "consider NJ ST-3 exemption" idea cited at `active-todos.md:166`, but no such item exists in this (family) file as of this sweep — line 166 is the "Open questions / blind spots" header. The ST-3 / sales-tax position lives in the **business** memory (`sartor/memory/BUSINESS.md`), which is outside the family domain and not edited here. **Correct disposition per VERIFICATION T4:** route to CPA — the ST-3 resale certificate is likely the **wrong instrument** (Solar Inference sells compute/IaaS, not goods); confirm output-side IaaS taxability and whether vast.ai acts as a marketplace facilitator that collects/remits, rather than pursuing an ST-3 resale exemption. This note records the family-side reconciliation only; the business-file edit is owned elsewhere.
 
 ## 2026-04-16 evening triage — Alton decisions
 
@@ -36,25 +63,25 @@ Live dashboard of time-sensitive family items, surfaced from Gmail and Calendar 
 - Generic LinkedIn Job Alerts / Ladders recruiter feeds
 - Recruiter roles: ignore unless explicitly AI-related (see [[feedback/gather-triage-2026-04-16]])
 
-**Still open after triage:**
-- **Call plumber — outdoor pipes broke** (added 2026-04-17). Spring-thaw failure most likely (freeze damage from winter, visible on pressurization). Candidates: irrigation backflow preventer, outdoor hose bib, pool feed line, or main supply.
-- **Pay heating guy** (added 2026-04-17).
-- CAQH ProView reattestation — Alton to handle today/tomorrow
-- W-2 DE→NJ address update at AZ HR (CPA flag)
-- Chase Sapphire Reserve replacement: card in-hand, locate and update autopays
-- Wohelo payment ($12,900 or $500 deposit) — check to Heidi Gorton
-- 4/17 parent coverage conflict: Vishala dance concert + Vayu Ellis Island trip
-- Afternoon childcare help (HIGH, ongoing)
-- Vayu counselor/therapist search (status unclear, ping Aneeta)
-- Family dentist booking (Park Street Dental Montclair top pick)
-- Loki's chlorambucil — confirm 4/14 Chewy delivery
-- Aneeta CSA workshift registration (her Gmail invalid in system)
-- Sante Total restricted-donations bank account
-- Aneeta at RRE 4/29–5/03 (confirm destination; Alton sole parent)
-- GOOGL May $285C roll decision (late April window)
-- Summit Health payment (portal)
-- Tribeca Pediatrics portal messages (3 unread)
-- NYC commute train-switch research
+**Still open after triage:** *(freshness sweep 2026-05-28: this 2026-04-16 block is largely overtaken by events — statuses appended inline below; date-passed items struck.)*
+- **Call plumber — outdoor pipes broke** (added 2026-04-17). Spring-thaw failure most likely (freeze damage from winter, visible on pressurization). Candidates: irrigation backflow preventer, outdoor hose bib, pool feed line, or main supply. **[needs Alton]** — no closure signal in gather; confirm whether resolved out-of-band (paper check / phone). Distinct from the May Pool Guyz pump/heater issue.
+- ~~**Pay heating guy** (added 2026-04-17).~~ **[needs Alton]** — likely resolved out-of-band; no later signal. Confirm.
+- ~~CAQH ProView reattestation~~ — escalated to EXPIRED 2026-05-02 (see run 41 below); **[needs Alton]** confirm reattestation completed at proview.caqh.org.
+- W-2 DE→NJ address update at AZ HR (CPA flag) — **[needs Alton]**, still open.
+- ~~Chase Sapphire Reserve replacement: card in-hand, locate and update autopays~~ — superseded by the 2026-04-13 fraud-replacement of card 9425 (see run 6 below); confirm autopays updated.
+- ~~Wohelo payment ($12,900 or $500 deposit) — check to Heidi Gorton~~ **DONE** — check mailed 2026-05-07, deposit confirmed received 2026-05-10 (run 69).
+- ~~4/17 parent coverage conflict: Vishala dance concert + Vayu Ellis Island trip~~ **PAST** (2026-04-17).
+- Afternoon childcare help (HIGH, ongoing) — still open; ongoing structural need.
+- Vayu counselor/therapist search (status unclear) — **[needs Alton/Aneeta]**, still unclear; no email signal.
+- Family dentist booking (Park Street Dental Montclair top pick) — **[needs Alton]**, no booking signal.
+- ~~Loki's chlorambucil — confirm 4/14 Chewy delivery~~ — 4/14 window passed; reorder item still tracked separately below (Chewy #5006536778).
+- Aneeta CSA workshift registration (her Gmail invalid in system) — **[needs Aneeta]**, status unknown.
+- Sante Total restricted-donations bank account — superseded: Chase Sante Total account opened 2026-05-06; **KYC follow-up due 2026-06-04** (see run 70 below).
+- ~~Aneeta at RRE 4/29–5/03 (confirm destination; Alton sole parent)~~ **PAST** — window closed 2026-05-03; destination still unconfirmed but moot.
+- ~~GOOGL May $285C roll decision (late April window)~~ **PAST** — May 15 expiry has passed; outcome **[needs Alton]** to record. (Financial; figures stay in data/financial/.)
+- Summit Health payment (portal) — **[needs Alton]**, amount behind portal login.
+- Tribeca Pediatrics portal messages — the $170.28 Vayu balance was **PAID 2026-04-13** (run, below); remaining unread portal messages still **[needs Alton]** to review (5+ as of early May).
+- NYC commute train-switch research — still open; blocker is commuter-lot parking capacity.
 
 ## 2026-05-08 expanded solar scope + financing
 

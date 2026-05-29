@@ -1,12 +1,12 @@
 ---
 name: rtxserver-vastai-watch
-description: Living tracker for rtxserver's path to first vast.ai rental. **LISTED 2026-05-04 03:34 UTC, machine_id 97429, $2.50/hr dual-rental, fixed end-date 2026-06-15 per short-term-first strategy. Pending automatic verification.**
+description: CLOSED/SUPERSEDED 2026-05-28 — rtxserver onboarding is complete. The listing fired and the machine re-IDed to **124192** (the 97429 referenced throughout this tracker is stale). rtxserver is now LISTED, verified, and RENTED on-demand. Tracker retained as historical record of the bring-up.
 type: tracker
-status: live-listed-pending-verification
-machine_id: 97429
+status: closed/superseded
+machine_id: 124192
 target: rtxpro6000server (192.168.1.157, dual RTX PRO 6000 Blackwell, 192 GB combined VRAM)
 created: 2026-05-02
-updated: 2026-05-04-listed
+updated: 2026-05-28-closed
 created_by: vast-ai-watcher (memory-agents team)
 related:
   - inbox/rocinante/rtxserver-vastai-decisions-2026-05-02
@@ -17,10 +17,13 @@ related:
   - business/vastai-pricing-strategy
   - procedures/vastai-host-onboarding
   - reference_memory_server
-tags: [project/active, project/live, machine/rtxpro6000server, vast-ai, listed]
+tags: [project/closed, project/superseded, machine/rtxpro6000server, vast-ai, listed]
 ---
 
-## 2026-05-04 LISTING FIRED — machine 97429 live
+> [!done] CLOSED / SUPERSEDED 2026-05-28
+> rtxserver onboarding is complete. The machine is **LISTED, verified, and RENTED on-demand** under **machine_id 124192**. Every "97429" below is stale — the real machine_id is 124192 (verified via `vastai show machines`). This tracker is retained as the historical record of the bring-up; do not act on its "pending" / "blocker" / "open work" sections. Current operational state lives in [`business/fleet.yaml`](../business/fleet.yaml), [`vastai-management`](../../../.claude/skills/vastai-management/SKILL.md), and [`rtxserver-management`](../../../.claude/skills/rtxserver-management/SKILL.md).
+
+## 2026-05-04 LISTING FIRED — machine 97429 live (machine later re-IDed to 124192)
 
 | Field | Value |
 |---|---|

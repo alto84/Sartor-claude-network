@@ -1,11 +1,11 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-05-10
-updated_by: personal-data-gather (run 68)
+updated: 2026-05-28
+updated_by: personal-data-gather (run 68); fleet doc-drift fix 2026-05-28
 status: active
 priority: p1
-next_review: 2026-05-22
+next_review: 2026-06-15
 tags: [entity/llc, domain/career, status/active, priority/p1]
 aliases: [Solar Inference, Solar Inference LLC, SI LLC]
 related: [BUSINESS, TAXES, MACHINES, ALTON, FAMILY, reference_solar_project]
@@ -13,7 +13,7 @@ originSessionId: 20258412-9bde-4353-8ccf-54156884e952
 ---
 # Solar Inference LLC
 
-Pre-revenue NJ multi-member LLC (50/50 Alton + Aneeta) combining Tesla Solar Roof at 85 Stonebridge Rd with a GPU compute rig on vast.ai marketplace. Founded 2025-09-06 via LegalZoom. Currently in build-out phase with significant capital deployed but zero revenue.
+NJ multi-member LLC (50/50 Alton + Aneeta) combining Tesla Solar Roof at 85 Stonebridge Rd with a GPU compute rig on vast.ai marketplace. Founded 2025-09-06 via LegalZoom. Was pre-revenue through the 2025 short tax year ($0 revenue); TY2026 is revenue-generating — gpuserver1 continuously rented since 2026-04-05, rtxserver (machine_id 124192) listed + rented on-demand since 2026-05-28. Still in solar build-out phase with significant capital deployed.
 
 ## Current state (2026-04-09)
 
@@ -61,18 +61,18 @@ Pre-revenue NJ multi-member LLC (50/50 Alton + Aneeta) combining Tesla Solar Roo
 - **Offer ID:** 32099437
 - **Hardware:** RTX 5090 (32GB VRAM), Intel i9-14900K, 128GB DDR5
 - **Server name:** gpuserver1 (192.168.1.100 on LAN)
-- **Pricing (live 2026-05-02):** $0.30/hr on-demand listed, $0.25/hr interruptible floor. Realized ~$0.20/hr under reserved contract C.34113802 (long-term discount). Profitable because RTX 5090 sips power.
-- **Listing expiry:** 2026-10-24 (extended from original 2026-08-24 via web UI). Reserved contract still ends 2026-08-24 — distinct field.
-- **Utilization (2026-05-02):** Continuously rented since 2026-04-05 under reserved contract C.34113802.
+- **Pricing (live 2026-05-28):** $0.80/hr on-demand listed, $0.65/hr interruptible floor. Realized ~$0.20/hr under reserved contract C.34113802 (long-term discount). Profitable because RTX 5090 sips power.
+- **Listing expiry:** 2026-06-30. Reserved contract ends 2026-08-24 — distinct field.
+- **Utilization (2026-05-28):** Continuously rented since 2026-04-05 under reserved contract C.34113802.
 
-The GPU business hit profitable utilization in April 2026 once the reserved-contract renter signed up. Long-term reserved pricing ($0.20/hr realized) is below the listed on-demand rate ($0.30) but covers more than the marginal power cost; net positive contribution to Solar Inference LLC revenue.
+The GPU business hit profitable utilization in April 2026 once the reserved-contract renter signed up. Long-term reserved pricing ($0.20/hr realized) is below the listed on-demand rate ($0.80) but covers more than the marginal power cost; net positive contribution to Solar Inference LLC revenue.
 
 ## 2025 tax filing status
 
 Full details in [[TAXES]]. Summary:
 - Form 1065 federal: extension filed 2026-03-14 (Form 7004), extended to 2026-09-15
 - NJ-1065: CPA said "no NJ extension necessary"; $450 filing fee still due 2026-04-15
-- Revenue: $0 (pre-revenue)
+- Revenue: $0 (TY2025 short year, Sep 6 – Dec 31 2025; pre-revenue for that period. TY2026 is revenue-generating — see entity summary above)
 - Documented expenses: $4,949.49
 - Loss return; K-1 to each member ~$2,000-$2,009
 
@@ -97,7 +97,7 @@ Full details in [[TAXES]]. Summary:
 
 1. **Will solar be in service by 2026-07-04?** If not, the $131K ITC for TY2026 is at risk.
 2. **Is the solar contract still in personal name?** The LLC transfer must happen before in-service. Nothing in email suggests this has been done.
-3. **Why is GPU utilization zero?** Needs pricing review vs. comparable RTX 5090 listings.
+3. **~~Why is GPU utilization zero?~~ RESOLVED (2026-05-28):** Not zero — gpuserver1 has been continuously rented since 2026-04-05 under reserved contract C.34113802. The original observation predated the contract.
 4. **Has the NJ-1065 quarterly payment been made?** Deadline 2026-04-15.
 5. **Has Jonathan Francis replied?** 3 days of silence on the 2025 tax package.
 6. **Blind spot: Chase business banking** — zero Gmail signal for the Ink 7738 card or Business Checking. No visibility into current cash position.

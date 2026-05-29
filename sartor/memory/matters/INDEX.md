@@ -21,10 +21,12 @@ Maintained by the [[matter-tracker]] skill. Pairs with [[tax-counsel]] for IRAC 
 
 | Slug | Matter | Risk | Deadline | Last action |
 |---|---|---|---|---|
+| [solar-itc-48-vs-25d](solar-itc-48-vs-25d.md) | §48**E** ITC (business-use fraction) + begin-construction lock + LLC asset transfer | HIGH | 2026-07-04 (begin-construction) | 2026-05-28 |
+| [insurance-commercial-coverage](insurance-commercial-coverage.md) | Homeowner's (Selective) voids commercial GPU op; tax/insurance tension | HIGH | 2026-06-15 | 2026-05-28 |
+| [registered-agent-nj-standing](registered-agent-nj-standing.md) | NJ registered-agent lapse / dissolution risk post-LegalZoom; ITC ownership posture | HIGH | 2026-09-06 | 2026-05-28 |
 | [heloc-163h3-tracing](heloc-163h3-tracing.md) | §163(h)(3) HELOC use-of-proceeds tracing | HIGH | 2026-10-15 | 2026-05-08 |
-| [solar-itc-48-vs-25d](solar-itc-48-vs-25d.md) | §48 vs §25D ITC track + LLC asset transfer | HIGH | 2026-07-04 | 2026-05-08 |
 | [climate-first-loan-llc-transfer](climate-first-loan-llc-transfer.md) | Climate First Loan deductibility post-LLC transfer | MEDIUM | 2026-07-04 | 2026-05-08 |
-| [q2-2026-estimated-tax](q2-2026-estimated-tax.md) | Q2 2026 estimated tax (post-$160K wage bump) | MEDIUM | 2026-06-15 | 2026-05-08 |
+| [q2-2026-estimated-tax](q2-2026-estimated-tax.md) | Q2 2026 estimated tax (wage bump + new un-withheld LLC rental income) | MEDIUM | 2026-06-15 | 2026-05-28 |
 
 ## Open — medium priority (P2)
 
@@ -52,6 +54,11 @@ Maintained by the [[matter-tracker]] skill. Pairs with [[tax-counsel]] for IRAC 
 
 | Slug | Matter | Note |
 |---|---|---|
+| (see VERIFICATION T6) | SE tax + guaranteed-payment characterization of LLC operating income | Now live — both machines earning. Active-business posture (for §48E/§469) pulls profit into SE tax. CPA to model. |
+| (see VERIFICATION T4) | NJ sales/use tax — IaaS output taxability + vast.ai marketplace-facilitator status; ST-3 resale likely wrong instrument | CPA opinion; confirm vast.ai collects/remits. |
+| (see VERIFICATION T7) | 1099-K TIN match — confirm Stripe/vast.ai registered under SI EIN 39-4199284, not Alton's SSN | Avoid CP2000 mismatch; reconcile gross vs fees in the new books. |
+| (see VERIFICATION T8) | §183 profit-motive — don't rent below cost to "justify the ITC" | Mitigated 2026-05-28: both machines earning real revenue. Keep pricing above marginal cost. |
+| (see VERIFICATION T3) | Montclair zoning / home-occupation vs commercial GPU op | Tax "business" assertion vs residential-zone limits. |
 
 ## Closed (last quarter)
 
@@ -68,3 +75,4 @@ Maintained by the [[matter-tracker]] skill. Pairs with [[tax-counsel]] for IRAC 
 ## History
 
 - 2026-05-08: Initial seed. 13 matters opened from tax-counsel pass over current Sartor financial state. Skills `tax-counsel` and `matter-tracker` written same session.
+- 2026-05-28: Fleet-ledger audit + adversarial verification pass (see [[projects/fleet-ledger-2026-05-28/VERIFICATION]]). **Corrected** `solar-itc-48-vs-25d` (→ §48E, business-use fraction, July-4 begin-construction, §25D dead, 100% bonus) and `469-material-participation` (hours log counted bot activity — now uses human_interactive_hours; ITC strands against wages if passive). **Opened 2 new P1 matters**: `insurance-commercial-coverage`, `registered-agent-nj-standing`. Added 5 Watching items (SE tax, NJ sales tax, 1099-K, §183 profit-motive, zoning). Now 15 active matters + 5 watching.

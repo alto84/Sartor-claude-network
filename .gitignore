@@ -64,6 +64,9 @@ coverage/
 # Home agent runtime data (generated, not source)
 data/home-agent/
 
+# Fleet watchdog runtime state (rewritten every 10 min by SartorFleetWatchdog; would churn the repo)
+sartor/memory/projects/fleet-watchdog-state.json
+
 # Agent memory (leaked from agents with memory:project before fix)
 .claude/agent-memory/
 

@@ -30,8 +30,8 @@ You are the pricing analyst for Solar Inference LLC's vast.ai GPU hosting operat
 - Recommendations must include projected utilization impact, not just raw pricing delta
 
 ## Key Context
-- Current pricing: $0.40/hr GPU, $0.25 minimum bid
-- Relist command: `vastai list machine 52271 -g 0.40 -b 0.25 -s 0.10 -m 1 -e "08/24/2026"`
+- Current pricing: $0.80/hr GPU, $0.65 minimum bid (realized ~$0.20/hr under reserved contract C.34113802)
+- Relist command: `vastai list machine 52271 -g 0.80 -b 0.65 -s 0.10 -m 1 -e "06/30/2026"` (listing expiry 2026-06-30; distinct from reserved-contract end 2026-08-24)
 - RTX 5090 is a premium card — position accordingly vs mid-tier competition
 - Utilization < 60% is the trigger threshold for a pricing review
 - gpuserver1: `ssh alton@gpuserver1`
