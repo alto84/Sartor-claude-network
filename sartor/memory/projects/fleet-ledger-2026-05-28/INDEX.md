@@ -12,6 +12,11 @@ related: [BUSINESS, solar-inference, rental-operations, TAXES, MACHINES, matters
 
 # Fleet Ledger — durable accounting + telemetry + reconciliation for the Solar Inference fleet
 
+> [!tip] Operator one-pager
+> For day-to-day "what's running and how to control it," read
+> [[projects/fleet-automation-summary-2026-05-29]] — the single operator summary covering both this
+> monitoring/ledger layer and the pricing workstream's repricer. Owned/kept current by this project.
+
 Complex-project phase log. Frame (Phase 0) and Plan (Phase 2) below; Explore (Phase 1) = the
 2026-05-28 audit + verification workflow (see `## Phase 1` for artifacts). Each phase commits.
 

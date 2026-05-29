@@ -1,16 +1,25 @@
 ---
 type: summary
 date: 2026-05-29
+updated: 2026-05-29
 author: Rocinante Opus 4.8
+maintained_by: "fleet-ledger project — [[projects/fleet-ledger-2026-05-28/INDEX]]"
 status: live
 tags: [domain/business, project/fleet-automation, machine/rtxserver, machine/gpuserver1]
 supersedes_context: [rental-monitoring-design-2026-05-28, rtxserver-rental-watch-2026-05-26]
+related: [projects/fleet-ledger-2026-05-28/INDEX, business/fleet.yaml, feedback_autonomous_dynamic_pricing]
 ---
 
 # Fleet automation — what's running and how to control it
 
 One-screen operator summary of the vast.ai fleet monitoring + pricing automation built
 2026-05-26 → 2026-05-29. If you read one file about the rental fleet, read this.
+
+> [!note] Ownership
+> Now owned + kept current by the **fleet-ledger project** ([[projects/fleet-ledger-2026-05-28/INDEX]]).
+> Monitoring/ledger layer (watchdog, vastai_pull, books, power, reconcile) and pricing layer
+> (`reprice.py`) were two workstreams; this is their single operator doc. The "Current state"
+> section is a snapshot — live logs / `fleet-health.json` are truth.
 
 ## Why this exists
 
@@ -56,9 +65,10 @@ on-demand price is now owned by the controller. gpuserver1 (reserved contract) i
 4. **Logged:** every decision → `data/financial/solar-inference/reprice-log.jsonl` (anchor,
    multiplier, target, fill-latency). Over weeks this is the dataset to fit the real demand curve.
 
-**First live action (2026-05-29):** stepped $1.10 → $1.60/GPU, climbing toward ~$1.69 (overhead-
-adjusted match of the market's 2nd-cheapest $2.00/GPU). The active miner is unaffected — pricing
-only sets the *next* renter's rate.
+**Live trajectory (2026-05-29):** climbed $1.10 → $1.60 → $2.15 → **$2.35/GPU** (applied 17:53Z) as
+the comparable-market anchor rose — the strict 2-GPU set emptied and the per-GPU 2nd-cheapest reached
+~$2.67. Now **holding at $2.35** (target ≈ live each run → no change). The active renter is unaffected;
+pricing only sets the *next* renter's rate. Full trajectory in `reprice-log.jsonl`.
 
 ## Operator knobs
 
@@ -74,23 +84,40 @@ only sets the *next* renter's rate.
 
 ## Current state (2026-05-29, see live logs for truth)
 
-- rtxserver (124192): rented by a compute/mining renter, both GPUs ~100%, GPU0 ~83°C (2°C from
-  85°C soft-abort — the hottest sustained case; power-capped at 425W, not thermal-throttled).
-  Listed $1.60/GPU, climbing. reliability ~0.975 (recovering from the incident dip).
-- gpuserver1 (52271): reserved contract C.34113802, day 7+, fixed at $0.80/GPU list.
+- rtxserver (124192): rented, both GPUs ~100%, **GPU0 at 85°C — AT the soft-abort line** (climbed
+  83→84→85 over ~1h to 18:33Z; power-capped 425W). Watchdog is alerting ORANGE on temp (goes RED at
+  86°C). Listed **$2.35/GPU**, holding. reliability ~0.978 (recovering from the incident dip).
+  **→ see "GPU0 thermal" under Open items — now ACTIVE, not deferred.**
+- gpuserver1 (52271): reserved contract C.34113802, day 7+, fixed at $0.80/GPU list, GPU ~43°C.
+- Witness (Rocinante): disk down to ~15 GB free — at the watchdog's ORANGE line (see Open items).
 
 ## Open items
 
-- **Phone-alert channel** — the watchdog writes inbox + health-json and can ping Google Calendar
-  from a Claude session (tested, reaches the phone), but the headless Task-Scheduler path needs a
-  channel decision (Telegram / Pushover / Google OAuth). "Good enough for now" via the calendar
-  test; not yet wired into the headless watchdog.
-- **Hardware (Alton's call):** BIOS power-button lockout + a small UPS would address the *cause*
-  of the 2026-05-28 outage (the watchdog only catches the symptom).
-- **Pricing to watch over the next few days:** whether the multiplier climbs sensibly while fills
-  stay fast, or whether the thin 3-listing market makes the anchor jumpy. The log will tell; tune
-  `reprice.py` constants once there's data.
-- **Power cap 425W vs documented 450W** — cosmetic doc mismatch, confirm intended value.
+- **GPU0 thermal — ACTIVE (Alton's call).** rtxserver GPU0 reached 85°C under sustained renter load
+  on 2026-05-29 (the documented soft-abort line; hard-abort 88°C). The watchdog detects + alerts but
+  cannot cool it. Levers: drop the 425W cap further (host-side; degrades the renter — don't touch a
+  rented GPU's config without intent), or the long-deferred cooling fix (5th ARCTIC P14 / GPU0
+  water-cooling, open since 2026-04-29 in rtxserver BMC notes). If it hits 86°C the watchdog goes RED;
+  at 85–88°C the host may soft/hard-abort the rental (reliability hit). Was "2°C of headroom" in the
+  prior snapshot — that headroom is now gone.
+- **Rocinante disk ~15 GB free** — the witness host is at the watchdog's ORANGE threshold; a full C:
+  silently kills the watchdog/mirror/hours-log. Free the `.drained/` + `_memos/` archives (respect
+  archive-not-collapse: move to a 2nd drive rather than delete) or relocate the peer-session mirror.
+- **Phone-alert channel** — the watchdog writes inbox + `fleet-health.json` and can ping Google
+  Calendar from a Claude session (tested, reaches the phone), but the headless Task-Scheduler path
+  needs a channel decision (Telegram / Pushover / Google OAuth). Code is activation-ready: drop a
+  token in `sartor/memory/business/watchdog-notify.yaml`. "Good enough for now" via the calendar test.
+- **Hardware (Alton's call):** BIOS power-button lockout + a small UPS would address the *cause* of
+  the 2026-05-28 outage (the watchdog only catches the symptom).
+- **Pricing to watch:** whether the multiplier holds sensibly while fills stay fast, or whether the
+  thin RTX PRO 6000 market (the strict 2-GPU set keeps emptying → per-GPU fallback, anchor jumpy)
+  whipsaws the anchor. Live now at $2.35/GPU; the log is the dataset — tune `reprice.py` constants
+  (pricing workstream) once there's a few days of fill data.
+- ~~Power cap 425W vs documented 450W~~ **RESOLVED in docs (2026-05-29):** all canonical docs +
+  `fleet.yaml` aligned to the live 425W; the `nvidia-power-cap.service` file still specifies 450W —
+  reconcile host-side when convenient (cosmetic; live cap is 425W).
+- **S4U registration — DONE:** all three tasks now run S4U as `alton` (verified 2026-05-29), so they
+  survive a reboot-before-login. (Earlier they were a current-user fallback pending elevation.)
 
 ## File map
 
