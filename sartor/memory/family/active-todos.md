@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-28
+updated: 2026-05-29
 updated_by: personal-data-gather
-run: 140
+run: 142
 
 status: active
 priority: p1
@@ -1211,3 +1211,33 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Montclair United Summer Soccer Sessions 2026 — registration open
 > clubnews@bluesombrero.com, 2026-05-28: Summer Soccer Sessions open for all skill levels. Relevant to [[family/vayu|Vayu]]. No deadline; register when ready.
+
+## Latest from gather (2026-05-29) — run 142
+
+> [!warning] CRITICAL — vast.ai Machine 124192 Offline (Unknown Machine)
+> **console@mg.vast.ai (2026-05-28 23:36 UTC):** "Your Hosted Vast.ai Machine is Offline. Machine 124192."
+> Machine 124192 is NOT in the Sartor memory system (gpuserver1=52271, rtxpro6000server=97429). Most likely candidate: the new second GPU server (GIGABYTE RTX 5090 + Newegg build #448349643) may have been registered on vast.ai as machine 124192 and went offline during setup. SSH to both known machines; run `~/.local/bin/vastai show machines` to enumerate. Confirm C.34113802 contract on gpuserver1 still active. See [[business/solar-inference]].
+
+> [!deadline] 2026-06-05 — NEW: MKA Third Grade Graduation Party (first captured this run)
+> **Vishala Third Grade Graduation Party — June 5, 6:00–7:30 PM ET.**
+> Location: Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 07039.
+> **June 5 full sequence:** Third Grade Closing Exercises (12:00–6:00 PM ET, parent event at MKA) → Graduation Party (6:00–7:30 PM ET, Sports Universe Livingston). 7.5 hours. Plan MKA→Livingston transportation. RSVP via Evite (link on Family calendar event). See [[family/vishala]] and [[family/family-calendar]].
+
+> [!note] Status — TODAY May 29
+> - **Boston trip ended today.** Family returning from 3-day Boston trip (2026-05-27–2026-05-29).
+> - **Vishala Capstone Design Fair: 8:15 AM MKA Brookside** — happening now or concluded. Concert attire, 2-adult limit, ends 9:45 AM.
+> - **Vayu take-home folder: DUE TODAY.** Sign orange sheet + return to Roshni Shah.
+> - **Vishala sleepover TOMORROW (Sat 5/30 at 5 PM ET)** — drop off at Amia's; pickup Sun 5/31 at noon.
+
+> [!note] Calendar confirmed (May 29 – June 5, run 142)
+> | Date | Time ET | Event | Notes |
+> |------|---------|-------|-------|
+> | **Fri 5/29** | **8:15–9:45 AM** | **Vishala Capstone Design Fair (TODAY)** | Concert attire, 2 adults |
+> | **Fri 5/29** | — | **Vayu take-home folder due** | Sign + return |
+> | Sat 5/30 | 5:00 PM | Vishala sleepover w/ Amia | Drop-off |
+> | Sun 5/31 | 12:00 PM | Vishala sleepover pickup | [[vishala]] |
+> | Tue 6/2 | 4:00–6:00 PM | Vasu dance performance | [[vasu]] |
+> | Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Sequential with dance |
+> | Wed 6/3 | 8:00–11:00 PM | Aneeta Healing (recurring) | Aneeta |
+> | **Fri 6/5** | 12:00–6:00 PM | Vishala Third Grade Closing Exercises | Parent event |
+> | **Fri 6/5** | **6:00–7:30 PM** | **MKA Third Grade Graduation Party (NEW)** | Sports Universe Livingston |

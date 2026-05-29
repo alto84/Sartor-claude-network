@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-28
+updated: 2026-05-29
 updated_by: personal-data-gather
-run: 141
+run: 142
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -808,3 +808,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: Vishala Capstone TOMORROW 8:15 AM; Vayu folder due TOMORROW; MKA $5,340 overdue; 990-N 13+ days overdue; KYC 7 days.
 - Pages updated: `daily/2026-05-28.md` (run 141 appended), `data/gather-alerts.md` (created fresh, 25 P0-P2 items), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - KEY: Vishala Capstone Design Fair TOMORROW 8:15 AM MKA Brookside. Vayu folder sign + return TOMORROW. Newegg SSD orders late — monitor delivery vs rtxserver timeline.
+
+## [2026-05-29] ingest | personal-data-gather run 142: vast.ai machine 124192 offline; MKA 3rd Grade Graduation Party June 5; Boston trip ended
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 29 – Jun 5). No SSH (web runner, cloud env).
+- Facts gathered: 4 (1 CRITICAL/BUSINESS, 1 FAMILY/NEW-EVENT, 1 STATUS, 1 DEDUP-CLARIFICATION)
+- **CRITICAL:** vast.ai machine 124192 offline (email 2026-05-28 23:36 UTC). Machine ID 124192 not in memory system (known: gpuserver1=52271, rtxpro6000server=97429). Possible new machine from second GPU server build (RTX 5090 + Newegg #448349643). Investigate SSH + vast.ai dashboard.
+- **NEW EVENT:** MKA Third Grade Graduation Party — June 5, 6:00–7:30 PM ET, Sports Universe 355 Eisenhower Pkwy Livingston NJ 07039. Created by Aneeta 2026-05-28. First capture this run. Full June 5: Closing Exercises 12–6 PM → Party 6–7:30 PM.
+- **STATUS:** Boston trip (5/27–5/29) ended today. Vishala Capstone Design Fair and Vayu take-home folder both due TODAY (were "TOMORROW" in runs 138/141).
+- **CLARIFICATION:** June 2 Vasu dance (4-6 PM ET) + May term evening (7-9 PM ET) confirmed NOT overlapping — 1h gap; prior run 127 conflict flag was premature.
+- P0 carries: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 14 days overdue; KYC 6 days; Disney ADR unconfirmed.
+- Files touched: `daily/2026-05-29.md` (created), `business/solar-inference.md` (run 142 machine-offline warning appended, frontmatter bumped), `family/vishala.md` (graduation party appended, frontmatter bumped), `family/family-calendar.md` (June 5 party + week table appended, frontmatter bumped), `family/active-todos.md` (run 142 section appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- KEY: vast.ai machine 124192 offline — investigate; may be new build registered on vast.ai. June 5 Vishala graduation party is a new, fully-packed day requiring logistics.

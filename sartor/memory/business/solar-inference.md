@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-05-26
-updated_by: personal-data-gather (run 128)
+updated: 2026-05-29
+updated_by: personal-data-gather (run 142)
 status: active
 priority: p1
 next_review: 2026-05-22
@@ -206,3 +206,9 @@ Full project hub: [[reference_solar_project]]. Source documents indexed there.
 
 > [!fact] Newegg PC build ordered 2026-05-25 — Solar Inference LLC fleet expansion confirmed
 > Newegg order #448349643 confirmed (2026-05-26 02:29 UTC). Total: **$1,919.10** across 4 sub-orders. Components: AMD Ryzen 9 9950X (Zen 5, 16C/32T, AM5 socket), ASRock X870E TAICHI motherboard, ARCTIC Liquid Freezer III Pro 360mm AIO cooler, WD_BLACK SN7100 4TB NVMe SSD, HYTE Y70 dual-chamber ATX case (Snow White), CORSAIR CX750M 750W PSU, Super Flower Leadex III GE Gold 1300W ATX 3.1 PSU, SUPER FLOWER 12VHPWR PCIe 5.0 cable. Deliveries staggered: May 28 (CPU/mobo/PSUs), May 29–Jun 2 (case), Jun 3–5 (SSD/AIO). Combined with the GIGABYTE RTX 5090 shipped 2026-05-21: constitutes a **second GPU server build** for Solar Inference LLC. Log all components as LLC capital assets on receipt. Run depreciation schedule. Flag additional capital deployment to [[people/jonathan-francis|Jonathan Francis]] in next CPA touchpoint. §48 ITC eligibility for GPU hardware vs. solar hardware is a distinct question — confirm scope with CPA. See [[MACHINES]].
+
+## Latest from gather (2026-05-29) — run 142
+
+> [!warning] vast.ai Machine 124192 Offline Alert — UNKNOWN MACHINE ID
+> **console@mg.vast.ai (2026-05-28 23:36 UTC):** "Your hosted Vast.ai machine 124192 appears to be offline."
+> Machine ID 124192 is not in the Sartor memory system. Known machines: gpuserver1 = 52271 (rented under C.34113802), rtxpro6000server = 97429 (unlisted, onboarding paused). Possible explanations: (a) the second GPU server being built from Newegg order #448349643 + GIGABYTE RTX 5090 (components arriving May 28 – June 5) was registered on vast.ai as machine 124192 and went offline during setup; (b) different vast.ai ID namespace; (c) separate account. **SSH to gpuserver1 and rtxserver immediately.** Run `~/.local/bin/vastai show machines` on both. Check vast.ai dashboard for machine 124192. Confirm C.34113802 reserved contract still active. See [[MACHINES]].

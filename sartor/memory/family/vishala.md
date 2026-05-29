@@ -2,9 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-05-28
+updated: 2026-05-29
 updated_by: personal-data-gather
-run: 139
+run: 142
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -196,3 +196,14 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!todo] MKA Summer Enrichment — registration now open
 > m@mail1.veracross.com, 2026-05-28: Summer Enrichment at MKA (201 Valley Road, Montclair), **August 3–14, 2026**, Grades 4–8. Vishala is rising 4th grade — eligible. Consider registering before sessions fill. See [[family/active-todos]].
+
+## Latest from gather (2026-05-29) — run 142
+
+> [!deadline] 2026-06-05 — Full-day logistics required
+> **MKA Third Grade Graduation Party — NEW (first captured this run).**
+> - **Time:** 6:00–7:30 PM ET (created by Aneeta 2026-05-28)
+> - **Location:** Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 07039
+> - **Evite:** http://www.evite.com/event/0213IIAE4SKDAA5CCEPRJJKI7D7Y6Y (Aneeta's invite)
+> - **Full June 5 sequence:** Third Grade Closing Exercises (12:00–6:00 PM ET, parent event) → Graduation Party (6:00–7:30 PM ET, Sports Universe Livingston)
+> - Sports Universe is in Livingston, separate from MKA Montclair — plan transportation between the two venues.
+> - See [[family/family-calendar]] and [[family/active-todos]].

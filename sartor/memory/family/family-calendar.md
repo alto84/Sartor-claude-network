@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-05-27
+updated: 2026-05-29
 updated_by: personal-data-gather
-run: 137
+run: 142
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -732,3 +732,23 @@ New events confirmed from live Calendar API (Family calendar + Aneeta's calendar
 | Sun 6/7 | 7:00–10:00 PM | Livia Birthday Party | Family |
 | Tue 6/9 – Wed 6/10 | all-day | In office (Aneeta) | Family |
 | Wed 6/10 | 12:00–1:00 PM | SMART Certified Providers Quarterly Call | Aneeta |
+
+## Latest from gather (2026-05-29) — run 142
+
+**Week of May 29 – June 5 (confirmed live API run 142):**
+
+| Date | Time ET | Event | Source |
+|------|---------|-------|--------|
+| Fri 5/29 | 8:15–9:45 AM | Vishala Capstone Design Fair (TODAY) | Family |
+| Sat 5/30 | 5:00 PM | Vishala sleepover w/ Amia (drop-off) | Family |
+| Sun 5/31 | 12:00 PM | Vishala sleepover pickup | Family |
+| Tue 6/2 | 4:00–6:00 PM | Vasu dance performance | Family |
+| Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Family |
+| Wed 6/3 | 8:00–11:00 PM | Aneeta Healing (recurring) | Aneeta |
+| **Fri 6/5** | 12:00–6:00 PM | Vishala Third Grade Closing Exercises | Family |
+| **Fri 6/5** | **6:00–7:30 PM** | **MKA Third Grade Graduation Party (NEW)** | Family |
+
+> [!fact]
+> **MKA Third Grade Graduation Party** — NEW event, first captured run 142. June 5, 6:00–7:30 PM ET at Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 07039. Created by Aneeta 2026-05-28. Follows the Closing Exercises (12–6 PM) on the same day — June 5 is a fully packed day for [[family/vishala|Vishala]]. Plan logistics for MKA → Sports Universe Livingston transition.
+
+**Boston trip status:** Trip (2026-05-27 – 2026-05-29) ended today. Family returning from Boston.
