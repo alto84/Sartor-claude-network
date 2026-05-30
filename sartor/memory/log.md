@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-30
 updated_by: personal-data-gather
-run: 148
+run: 149
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -883,6 +883,17 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: all 5 live. Zero new events vs run 147. Alton's Tasks empty. Blue Sombrero empty (confirmed spring season ended).
 - P0 unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC **5 days** to 2026-06-04; MKA $5,340 past-due; Disney ADR unconfirmed 13+ days.
 - Pages updated: `daily/2026-05-30.md` (run 148 appended, frontmatter bumped), `family/active-todos.md` (calendar correction + run 148 appended, frontmatter bumped), `family/vayu.md` (screen-time appended, frontmatter bumped to run 148), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-30] ingest | personal-data-gather run 149: Fidelity SOLD CALL (GOOGL); Cenlar mortgage autopay; Jun 5 calendar clarification
+- Sources: Gmail (newer_than:4h, 9 threads, live), all 5 Google Calendars (May 30–Jun 7, live). SSH unavailable (cloud runner). `data/` gitignored — files recreated each run.
+- Facts gathered: 3 new (1 FINANCIAL/TRADE, 1 FINANCIAL/routine, 1 FAMILY/INFORMATIONAL)
+- **FINANCIAL/TRADE:** Fidelity trade confirmation — SOLD CALL (GOOGL) ALPHABET INC CAP, account XXXXX8998. May represent roll of the active GOOGL May $285C short-call position. Full details require Fidelity login. Added `[!fact]` to active-todos.md.
+- **FINANCIAL/routine:** Cenlar mortgage autopay processing 06/01/2026. Account XXXXXX1510, 85 Stonebridge Rd. Routine — daily log only.
+- **FAMILY/INFORMATIONAL:** Costco order confirmed delivery today by 2:42 PM ET. Daily log only.
+- **CALENDAR NOTE:** Jun 5 "Third grade graduation" live API returns noon–6 PM ET — contradicts run 148's "correction" to 8 AM–2 PM. Event unchanged since creation 2026-04-18. Likely run 148 referenced a different event. Jun 5 sequence: graduation noon–6 PM, party 6–7:30 PM (back-to-back).
+- **INFORMATIONAL (skipped):** Newegg GPU marketing, LinkedIn job alert (Director AI Enablement), Handshake Project Hedgehog referral, Frontier credit card offer, NJ Pride FC launch, Rotten Tomatoes.
+- P0 carry-forwards unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC 5 days to 2026-06-04; MKA $5,340 past-due; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-30.md` (run 149 appended, frontmatter bumped), `family/active-todos.md` (GOOGL trade + Jun 5 fact appended, frontmatter bumped), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 
 ## [2026-05-30] ingest | personal-data-gather run 148 (second pass): vasu/vishala updates + alerts written
 - Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 30–Jun 7). SSH unavailable (cloud runner).

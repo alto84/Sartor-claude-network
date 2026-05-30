@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-30
 updated_by: personal-data-gather
-run: 148
+run: 149
 
 status: active
 priority: p1
@@ -343,6 +343,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Vasu at Goddard — bugs/insects week
 > Three Kaymbu classroom moments today: "Creepy Crawly Patterns" (insect manipulatives + play doh), "CONSTRUCTION: insect houses" (nonfiction books + building), "Hugs from friends." [[family/vasu|Vasu]] appears engaged. No action needed.
+
+## Latest from gather (2026-05-30) — run 149
+
+> [!fact] 2026-05-30 — Fidelity SOLD CALL (GOOGL) trade confirmation
+> Fidelity trade confirmation arrived 14:18 UTC: **SOLD CALL (GOOGL) ALPHABET INC CAP**, account XXXXX8998. Full position details require Fidelity NetBenefits login. This may represent the roll of the active-todos GOOGL May $285C item (20 short contracts, flagged for roll by May 15 expiry). If new short calls were sold, track strike, expiry, and premium. If existing position was closed, mark the GOOGL May $285C decision item resolved. See [[ALTON]].
+
+> [!fact] 2026-05-30 — Jun 5 schedule clarification (live API)
+> Live Google Calendar API (run 149): "Third grade graduation" event is **12:00 PM–6:00 PM ET** on Jun 5. This conflicts with run 148's reported correction (8 AM–2 PM). The event has not been modified since creation (2026-04-18). Run 148's correction may have been based on a different event. **Current live data: graduation ceremony noon–6 PM, then MKA Graduation Party 6–7:30 PM (Sports Universe, 355 Eisenhower Pkwy, Livingston NJ).** Back-to-back — plan travel between MKA and Sports Universe accordingly. See [[family/vishala]].
 
 ## Latest from gather (2026-05-22) — run 110
 
