@@ -1,7 +1,7 @@
 ---
 type: meta
 entity: LEARNINGS
-updated: 2026-05-27
+updated: 2026-05-30
 updated_by: autodream
 last_verified: 2026-04-12
 status: active
@@ -268,3 +268,8 @@ Key findings from surveying state-of-the-art AI memory systems:
 - [2026-05-27] (fact) Vasu dance performance: Tue June 2 TBD (calendar says "time to be decided"; run 65 from May 7 email said 4:30 PM — confirm with Goddard)
 - [2026-05-27] (fact) May term evening (MKA): Tue June 2, 7:00–9:00 PM ET — potential conflict with Vasu dance
 - [2026-05-27] (fact) Aneeta "Healing": (recurring): Wed June 3, 8:00–11:00 PM ET
+
+## Consolidated from daily logs (2026-05-30)
+- [2026-04-05] (fact) ---
+- [2026-04-06] (fact) ---
+- [2026-04-06] (fact) ---
