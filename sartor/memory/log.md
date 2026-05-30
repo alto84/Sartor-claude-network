@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-29
+updated: 2026-05-30
 updated_by: personal-data-gather
-run: 146
+run: 147
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -861,3 +861,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: all 5 queried. Zero new events vs run 145. Event table stable.
 - P0 unchanged: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 15 days overdue; KYC 6 days to 2026-06-04; Disney ADR unconfirmed.
 - Pages updated: `daily/2026-05-29.md` (run 146 appended, frontmatter bumped), `family/vasu.md` (June calendar fact added), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created locally — gitignored), `data/heartbeat-log.csv` (created locally — gitignored)
+
+## [2026-05-30] ingest | personal-data-gather run 147
+- Sources: Gmail (newer_than:2d, 30 threads, live), all 5 Google Calendars (May 30–Jun 6, live). SSH unavailable (cloud runner).
+- Facts gathered: 7 new (2 SECURITY, 1 FINANCIAL/FAMILY-SYNDICATE, 2 FAMILY/SCHEDULE, 2 FAMILY/INFORMATIONAL)
+- **SECURITY:** Ubiquiti account — 3 overnight emails (SSO verify → MFA → new-country sign-in). Bitwarden: new Chrome device login from Comcast IPv6 (03:42 UTC). Likely Boston-trip residual but flagged for Alton to confirm.
+- **FINANCIAL:** Oliver Sartor forwarded Hiive fund update from Sean Jones re: Anthropic syndicate investment. Content not visible from snippet — read needed.
+- **FAMILY/TODAY:** Vishala sleepover with Amia — drop-off 5 PM today (Sat May 30), pickup Sun May 31 noon.
+- **FAMILY/SCHEDULE:** Vasu dance performance Tue Jun 2 4–6 PM (confirmed calendar); Goddard week Jun 1–5: Mon Soccer, Tue Dance Recital. Father's Day Celebration at Goddard (date TBD).
+- **FAMILY/SCREEN-TIME:** Vayu 12h57m May 22–28 (+49% WoW). Vishala no activity last 7 days (Boston trip).
+- Calendar: all 5 live. Events confirmed: Vishala sleepover today, Vasu dance Tue 6/2, May term evening Tue 6/2 7PM, Aneeta Healing Wed 6/3, Vishala Third Grade Closing + Graduation Party Fri 6/5.
+- P0 unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC 5 days to 2026-06-04; MKA $5,340 past-due; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-30.md` (created), `family/active-todos.md` (run 147 appended, frontmatter bumped), `family/family-calendar.md` (week May 30–Jun 5 appended, frontmatter bumped), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)

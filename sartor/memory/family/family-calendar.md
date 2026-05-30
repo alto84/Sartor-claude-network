@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-05-29
+updated: 2026-05-30
 updated_by: personal-data-gather
-run: 142
+run: 147
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -752,3 +752,22 @@ New events confirmed from live Calendar API (Family calendar + Aneeta's calendar
 > **MKA Third Grade Graduation Party** — NEW event, first captured run 142. June 5, 6:00–7:30 PM ET at Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 07039. Created by Aneeta 2026-05-28. Follows the Closing Exercises (12–6 PM) on the same day — June 5 is a fully packed day for [[family/vishala|Vishala]]. Plan logistics for MKA → Sports Universe Livingston transition.
 
 **Boston trip status:** Trip (2026-05-27 – 2026-05-29) ended today. Family returning from Boston.
+
+## Week of May 30 – June 5 (confirmed live, run 147)
+
+| Date | Time ET | Event | Who | Notes |
+|------|---------|-------|-----|-------|
+| Sat 5/30 | 5:00 PM | Vishala sleepover w/ Amia (TODAY) | Vishala | Drop-off; pickup Sun 5/31 noon |
+| Sun 5/31 | 12:00 PM | Vishala sleepover pickup | Vishala | |
+| Mon 6/1 | school | Goddard: Soccer day | Vasu | Goddard weekly theme |
+| Tue 6/2 | 4:00–6:00 PM | Vasu dance performance (Goddard recital) | Vasu + parents | Venue: confirm with Goddard |
+| Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Vayu or Vishala? | Aneeta-created event; confirm which child |
+| Wed 6/3 | 8:00–11:00 PM | Aneeta Healing (recurring) | Aneeta | |
+| Fri 6/5 | 12:00–6:00 PM | Vishala Third Grade Closing Exercises | Vishala + parents | MKA Brookside; parent event |
+| Fri 6/5 | 6:00–7:30 PM | MKA Third Grade Graduation Party | Family | Sports Universe, 355 Eisenhower Pkwy, Livingston NJ. RSVP via Evite. |
+
+> [!note] Blue Sombrero (Vayu rec soccer): no events May 30 – Jun 7. Spring season appears concluded.
+> Montclair United Summer Soccer Sessions open for registration (no deadline stated).
+
+> [!fact] Father's Day Celebration at Goddard — date TBD
+> Samantha Ramsden / Kaymbu announced a Father's Day waffle event. Father's Day is Sun Jun 15. Goddard event likely week of Jun 9–13. Confirm date via full email or Goddard communication.

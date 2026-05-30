@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-29
+updated: 2026-05-30
 updated_by: personal-data-gather
-run: 142
+run: 147
 
 status: active
 priority: p1
@@ -1241,3 +1241,27 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Wed 6/3 | 8:00–11:00 PM | Aneeta Healing (recurring) | Aneeta |
 > | **Fri 6/5** | 12:00–6:00 PM | Vishala Third Grade Closing Exercises | Parent event |
 > | **Fri 6/5** | **6:00–7:30 PM** | **MKA Third Grade Graduation Party (NEW)** | Sports Universe Livingston |
+
+## Latest from gather (2026-05-30) — run 147
+
+> [!warning] TODAY — Vishala sleepover drop-off 5 PM
+> Family returned from Boston trip (May 27–29). Vishala sleepover with Amia is **tonight** — drop-off at 5:00 PM. Pickup Sunday May 31 at 12:00 PM. Confirmed on Family calendar (Aneeta created 2026-05-17). See [[family/vishala]].
+
+> [!warning] SECURITY — Ubiquiti + Bitwarden new device logins overnight
+> Three Ubiquiti account-noreply@ui.com emails 02:50–03:37 UTC (SSO email verification, MFA authentication, new-country sign-in "United States — was this you?"). Immediately followed by Bitwarden no-reply@bitwarden.com: "New Device Logged In From Chrome" at 03:42 UTC from IPv6 `2600:4041:410a:fc00:65f8:b879:6757:41a4` (Comcast/Xfinity range, not Fios). Consistent with hotel/mobile network from end of Boston trip — but UniFi controller access from an unrecognized IP warrants explicit confirmation. If Alton, no action. If unclear, rotate Ubiquiti password and audit UniFi controller for changes. See [[ALTON]] and [[network-management]].
+
+> [!todo] ACTION_REQUIRED — Oliver Sartor Hiive fund update (read + reply if needed)
+> oliversartor@icloud.com, 01:37 UTC May 30: forwarded from Sean Jones at Hiive. Subject "Fwd: Update on Your Hiive Fund Investment important." This is an update to the Anthropic family syndicate investment (signed by all 2026-05-05). Content not visible from snippet. Read full email; if it's a distribution notice or material NAV update, reply to Oliver. CC sissy.sartor@gmail.com as needed. See [[reference_anthropic_shares]].
+
+> [!fact] Vayu screen time — 12h57m week of May 22–28 (up 49%)
+> Microsoft Family Safety (familysafety@microsoft.com, 17:54 UTC May 29). May 22–28: **12h57m**. Prior week May 15–21 was 8h41m (from run 110). Up 4h16m (+49%) week-over-week. Vishala: no screen activity last 7 days (Boston trip effect — informational). See [[family/vayu]].
+
+> [!fact] Goddard: Father's Day Celebration + June 1–5 schedule
+> Two Goddard emails May 29: (1) "Father's Day Celebration" — "waffle-y fun" event at Goddard; date not in snippet (likely week of June 9–13); confirm with Goddard. (2) Sneak Peek Jun 1–5: Monday Soccer, **Tuesday June 2 Dance** (confirms recital). See [[family/vasu]].
+
+> [!note] P0 carry-forwards (run 147 status)
+> - **Sante Total 990-N: 15 days overdue.** Not filed per runs 22–146. File at IRS.gov.
+> - **vast.ai Machine 124192: offline** since run 142 alert (2026-05-28). Identify via `vastai show machines` on both servers.
+> - **Chase/Sante Total KYC: 5 days to 2026-06-04.** Contact Pavel Manrique at Chase Montclair.
+> - **MKA $5,340 past-due.** Carry-forward from run 146.
+> - **Disney ADR: status unknown** (13+ days since window opened May 17). Confirm with Nicol Stevenson.
