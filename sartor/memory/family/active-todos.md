@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-30
 updated_by: personal-data-gather
-run: 147
+run: 148
 
 status: active
 priority: p1
@@ -1265,3 +1265,15 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - **Chase/Sante Total KYC: 5 days to 2026-06-04.** Contact Pavel Manrique at Chase Montclair.
 > - **MKA $5,340 past-due.** Carry-forward from run 146.
 > - **Disney ADR: status unknown** (13+ days since window opened May 17). Confirm with Nicol Stevenson.
+
+## Latest from gather (2026-05-30) — run 148
+
+> [!warning] CALENDAR CORRECTION — Jun 5 Third Grade Graduation: 8:00 AM–2:00 PM (not noon)
+> Live calendar API (run 148) confirms: "Third grade graduation" (Family calendar) **start 8:00 AM ET, end 2:00 PM ET** on Friday June 5. Runs 142 and 147 recorded this as "12:00–6:00 PM" — that timing was wrong.
+> **Corrected Jun 5 sequence for [[family/vishala|Vishala]]:**
+> - **8:00 AM – 2:00 PM** — Third Grade Graduation ceremony (MKA Brookside — parent event)
+> - **6:00 – 7:30 PM** — MKA Third Grade Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ (RSVP via Evite)
+> Plan morning arrival; 4-hour gap between ceremony end and party. See [[family/vishala]] and [[family/family-calendar]].
+
+> [!note] Amazon shipments confirmed (run 148 — informational)
+> Two shipments dispatched for May 29 overnight order: "Spin Art Machine for Kids" (04:32 UTC) and "Skillmatics Aqua Puffs – 3D..." (04:32 UTC). Both confirmed shipped. No action needed.

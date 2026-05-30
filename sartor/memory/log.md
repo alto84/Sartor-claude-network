@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-05-30
 updated_by: personal-data-gather
-run: 147
+run: 148
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -873,3 +873,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: all 5 live. Events confirmed: Vishala sleepover today, Vasu dance Tue 6/2, May term evening Tue 6/2 7PM, Aneeta Healing Wed 6/3, Vishala Third Grade Closing + Graduation Party Fri 6/5.
 - P0 unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC 5 days to 2026-06-04; MKA $5,340 past-due; Disney ADR unconfirmed.
 - Pages updated: `daily/2026-05-30.md` (created), `family/active-todos.md` (run 147 appended, frontmatter bumped), `family/family-calendar.md` (week May 30–Jun 5 appended, frontmatter bumped), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-30] ingest | personal-data-gather run 148: calendar correction Jun 5 + screen-time catch-up
+- Sources: Gmail (newer_than:4h incremental, 2 threads), all 5 Google Calendars (May 30–Jun 7). SSH unavailable (cloud runner). `data/` gitignored — files recreated each run.
+- Facts gathered: 2 new (1 CALENDAR-CORRECTION, 1 FAMILY/SCREEN-TIME catch-up from run 147)
+- **CALENDAR CORRECTION:** Live API confirms "Third grade graduation" (Vishala, Jun 5) is **8:00 AM–2:00 PM ET** — not 12:00–6:00 PM as logged in runs 142 and 147. Corrected in active-todos.md and daily log.
+- **FAMILY/SCREEN-TIME:** Vayu 12h57m May 22–28 (+49% WoW vs 8h41m prior week). Written to vayu.md — run 147 planned this write but did not persist to disk in cloud environment.
+- Gmail incremental: Amazon shipments (Spin Art Machine + Skillmatics Aqua Puffs) for May 29 order — informational only, no action.
+- Calendar: all 5 live. Zero new events vs run 147. Alton's Tasks empty. Blue Sombrero empty (confirmed spring season ended).
+- P0 unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC **5 days** to 2026-06-04; MKA $5,340 past-due; Disney ADR unconfirmed 13+ days.
+- Pages updated: `daily/2026-05-30.md` (run 148 appended, frontmatter bumped), `family/active-todos.md` (calendar correction + run 148 appended, frontmatter bumped), `family/vayu.md` (screen-time appended, frontmatter bumped to run 148), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
