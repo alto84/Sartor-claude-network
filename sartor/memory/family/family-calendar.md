@@ -3,7 +3,7 @@ type: domain
 entity: family-calendar
 updated: 2026-05-30
 updated_by: personal-data-gather
-run: 147
+run: 150
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -771,3 +771,12 @@ New events confirmed from live Calendar API (Family calendar + Aneeta's calendar
 
 > [!fact] Father's Day Celebration at Goddard — date TBD
 > Samantha Ramsden / Kaymbu announced a Father's Day waffle event. Father's Day is Sun Jun 15. Goddard event likely week of Jun 9–13. Confirm date via full email or Goddard communication.
+
+## Week of June 7 (partial — run 150)
+
+| Date | Time ET | Event | Who | Notes |
+|------|---------|-------|-----|-------|
+| Sun 6/7 | 7:00–10:00 PM | **Livia Birthday Party** | Family | Family calendar; no location in event data — confirm with Aneeta |
+
+> [!note] Livia Birthday Party — Sun Jun 7, 7–10 PM ET
+> First entered 7-day lookahead window in run 150. Created 2026-04-15 by Aneeta. "Livia" likely the child from May 17 playdate ("Playdate with Livia and family"). Gift planning needed. See [[family/active-todos]].

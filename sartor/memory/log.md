@@ -884,6 +884,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC **5 days** to 2026-06-04; MKA $5,340 past-due; Disney ADR unconfirmed 13+ days.
 - Pages updated: `daily/2026-05-30.md` (run 148 appended, frontmatter bumped), `family/active-todos.md` (calendar correction + run 148 appended, frontmatter bumped), `family/vayu.md` (screen-time appended, frontmatter bumped to run 148), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 
+## [2026-05-30] ingest | personal-data-gather run 150: Livia Birthday Party Jun 7 (new); CSA schedule first capture
+- Sources: Gmail (newer_than:4h, 7 threads, live), all 5 Google Calendars (May 30–Jun 7, live). SSH unavailable (cloud runner). `data/` gitignored — files recreated each run.
+- Facts gathered: 2 new (1 FAMILY/CALENDAR — Livia Birthday Party Jun 7; 1 FAMILY — CSA pickup schedule)
+- **NEW CALENDAR EVENT:** Livia Birthday Party — Sun Jun 7, 7:00–10:00 PM ET. First appearance in 7-day lookahead window. Family calendar, created 2026-04-15 by Aneeta. No location. Gift planning needed. Added `[!note]` to active-todos.md and family-calendar.md.
+- **NEW FAMILY CONTACT:** CSA pickup schedule shared by khushbu.b.patel@gmail.com (to Alton + Aneeta + IlanIG@gmail.com). First time CSA arrangement surfaces in inbox. No action unless travel-week conflict. Added `[!note]` to active-todos.md.
+- **INFORMATIONAL (skipped):** LinkedIn job alerts ×2, AAA membership marketing, Tubi FIFA World Cup, Costco receipt (already captured run 149), LinkedIn "Ashley" message (minor).
+- P0 unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC **5 days** to 2026-06-04; MKA $5,340 outstanding; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-30.md` (run 150 appended, frontmatter bumped), `family/active-todos.md` (Livia party + CSA note appended, frontmatter bumped), `family/family-calendar.md` (Jun 7 week added, frontmatter bumped), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
 ## [2026-05-30] ingest | personal-data-gather run 149: Fidelity SOLD CALL (GOOGL); Cenlar mortgage autopay; Jun 5 calendar clarification
 - Sources: Gmail (newer_than:4h, 9 threads, live), all 5 Google Calendars (May 30–Jun 7, live). SSH unavailable (cloud runner). `data/` gitignored — files recreated each run.
 - Facts gathered: 3 new (1 FINANCIAL/TRADE, 1 FINANCIAL/routine, 1 FAMILY/INFORMATIONAL)

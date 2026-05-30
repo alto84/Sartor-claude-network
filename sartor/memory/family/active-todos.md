@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-30
 updated_by: personal-data-gather
-run: 149
+run: 150
 
 status: active
 priority: p1
@@ -351,6 +351,26 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] 2026-05-30 — Jun 5 schedule clarification (live API)
 > Live Google Calendar API (run 149): "Third grade graduation" event is **12:00 PM–6:00 PM ET** on Jun 5. This conflicts with run 148's reported correction (8 AM–2 PM). The event has not been modified since creation (2026-04-18). Run 148's correction may have been based on a different event. **Current live data: graduation ceremony noon–6 PM, then MKA Graduation Party 6–7:30 PM (Sports Universe, 355 Eisenhower Pkwy, Livingston NJ).** Back-to-back — plan travel between MKA and Sports Universe accordingly. See [[family/vishala]].
+
+## Latest from gather (2026-05-30) — run 150
+
+> [!note] NEW calendar event — Livia Birthday Party (Sun Jun 7, 7–10 PM ET)
+> First appearance in 7-day lookahead window. Family calendar event, created 2026-04-15 by Aneeta. "Livia" is likely the same child from the May 17 playdate ("Playdate with Livia and family"). No location in event data — confirm with Aneeta. Plan: Jun 7 is a Sunday evening. Kids at this event (likely); assess logistics, gift needed.
+
+> [!note] CSA pickup schedule (first capture)
+> khushbu.b.patel@gmail.com emailed Alton + Aneeta + IlanIG@gmail.com (17:34 UTC) with a "CSA pickup schedule attached." Khushbu notes no pickup conflicts on their end. First time CSA (Community Supported Agriculture) has surfaced in inbox — family is in a shared CSA arrangement with at least two other households. Full schedule requires opening the attachment. Informational unless a pickup date falls on a travel week. See [[FAMILY]].
+
+> [!todo] LinkedIn message from Ashley — check inbox
+> LinkedIn digest (16:42 UTC): 1 unread message from "Ashley" awaiting response. Check LinkedIn inbox. Low urgency.
+
+> [!warning] P0 carry-forward — Sante Total Form 990-N OVERDUE 15d
+> Not filed per runs 22–150. File at IRS.gov → 990-N e-Postcard. Gross receipts <$50K TY2025. See [[business/sante-total]].
+
+> [!deadline] 2026-06-04 (**5 days**) — Chase/Sante Total KYC
+> Pavel Manrique (Chase Montclair) needs KYC documentation to complete business account setup. Contact Pavel: 973-873-9133 or Chase Montclair, 19 N Fullerton Ave. See [[business/sante-total]] and [[BUSINESS]].
+
+> [!warning] P0 carry-forward — Disney ADR status unknown (13+ days open window)
+> 60-day ADR window opened May 17. Status unconfirmed across all runs. Contact Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. See [[family/disney-july-2026]].
 
 ## Latest from gather (2026-05-22) — run 110
 
