@@ -2,8 +2,9 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-05-22
+updated: 2026-05-30
 updated_by: personal-data-gather
+run: 148
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -225,3 +226,18 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact] Goddard soccer extended to June 22, 2026
 > Message from Jacqueline Capote (Goddard admin, 2026-05-22 6:24 PM ET): "Soccer extended one more week! Due to Monday's Memorial Day school closure, soccer will now be ending on June 22nd." Prior assumed end date was June 15 or earlier. Updated end date: **2026-06-22**. See [[family/active-todos]] and [[family/family-calendar]].
+
+## Latest from gather (2026-05-29) — run 147
+
+> [!fact] Vasu daily sheet May 29 — "Where do animals live?" habitat unit
+> Kaymbu daily sheet (cls64fc559b249306000230d48e@inbox.kaymbu.com, 2026-05-29 22:06 UTC). Preschool unit: "Where do animals live? We're going to explore where animals live this week! Children will learn that animal habitats provide food, water, and shelter." Normal school day confirmed. No action needed.
+
+> [!todo] Confirm date — Goddard Father's Day Celebration
+> Kaymbu announcement (Samantha Ramsden, noreply@kaymbu.com, 2026-05-29 18:00 UTC): "Father's Day Celebration! It's almost time to celebrate all of the amazing fathers and father figures in our lives! Join us for a waffle-y fun..." No date specified in snippet. Father's Day is Sunday June 15 — Goddard event likely the week of **June 9–13**. Confirm exact date and time with Goddard or via Kaymbu. Add to Family calendar once confirmed. See [[family/active-todos]].
+
+> [!fact] Goddard week of June 1–5 confirmed schedule
+> Kaymbu sneak peek (Samantha Ramsden, noreply@kaymbu.com, 2026-05-29 20:00 UTC): Monday June 1 Soccer, **Tuesday June 2 Dance** (confirms recital day aligns with Family calendar event 4–6 PM). Full week:
+> - Mon Jun 1: Soccer
+> - Tue Jun 2: Dance (recital — see Family calendar 4:00–6:00 PM)
+> - Rest of week: not visible in snippet
+> Soccer extended through June 22 per prior run 111. See [[family/family-calendar]].

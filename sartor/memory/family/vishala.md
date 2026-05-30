@@ -2,9 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-05-29
+updated: 2026-05-30
 updated_by: personal-data-gather
-run: 142
+run: 148
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -207,3 +207,16 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 > - **Full June 5 sequence:** Third Grade Closing Exercises (12:00–6:00 PM ET, parent event) → Graduation Party (6:00–7:30 PM ET, Sports Universe Livingston)
 > - Sports Universe is in Livingston, separate from MKA Montclair — plan transportation between the two venues.
 > - See [[family/family-calendar]] and [[family/active-todos]].
+
+## Latest from gather (2026-05-30) — run 148
+
+> [!warning] TIMING CORRECTION — Jun 5 Third Grade Graduation: 8:00 AM–2:00 PM (not noon–6 PM)
+> Live Calendar API (run 148, 2026-05-30): "Third grade graduation" (Family calendar, created by Aneeta) **start 8:00 AM ET, end 2:00 PM ET** on Friday June 5. Runs 142 and 147 recorded this as "12:00–6:00 PM" — incorrect.
+> **Corrected Jun 5 full sequence for Vishala:**
+> - **8:00 AM – 2:00 PM** — Third Grade Graduation / Closing Exercises (MKA Brookside — parent event)
+> - **4-hour gap** between ceremony end and party start
+> - **6:00 – 7:30 PM** — MKA Third Grade Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ (RSVP via Evite)
+> Plan morning arrival at MKA; allow time for lunch/transition before the Livingston party. See [[family/active-todos]] and [[family/family-calendar]].
+
+> [!fact] Screen activity — May 23–29: zero (Boston trip effect)
+> Microsoft Family Safety (familysafety@microsoft.com, 2026-05-30 02:08 UTC): "No activity was found for Vishala for the past seven days." Window May 23–29 overlaps with Boston trip May 27–29. Device was not in use during or after trip. Informational.

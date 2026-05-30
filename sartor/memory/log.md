@@ -883,3 +883,10 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: all 5 live. Zero new events vs run 147. Alton's Tasks empty. Blue Sombrero empty (confirmed spring season ended).
 - P0 unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC **5 days** to 2026-06-04; MKA $5,340 past-due; Disney ADR unconfirmed 13+ days.
 - Pages updated: `daily/2026-05-30.md` (run 148 appended, frontmatter bumped), `family/active-todos.md` (calendar correction + run 148 appended, frontmatter bumped), `family/vayu.md` (screen-time appended, frontmatter bumped to run 148), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-30] ingest | personal-data-gather run 148 (second pass): vasu/vishala updates + alerts written
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 30–Jun 7). SSH unavailable (cloud runner).
+- Facts gathered: 5 (3 FAMILY/SCHEDULE — vasu.md Father's Day + Jun 1-5 schedule; 1 CALENDAR-CORRECTION — vishala.md Jun 5 8 AM; 1 INFORMATIONAL — Newegg partial delivery)
+- New Newegg item: order #448349603 motherboard+CPU (1 of 4 items delivered; 3 pending). Informational pending business/personal context.
+- Calendar: all 5 live. No events new vs run 148 first pass. P0 carry-forwards unchanged.
+- Pages updated: `family/vasu.md` (Father's Day + Jun 1-5 appended, frontmatter bumped to run 148), `family/vishala.md` (Jun 5 correction appended, frontmatter bumped to run 148), `daily/2026-05-30.md` (second-pass appended), `data/gather-alerts.md` (written — 2 P0, 3 P1, 4 INFO), `data/heartbeat-log.csv` (written), `log.md` (this entry)
