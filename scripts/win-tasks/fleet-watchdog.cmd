@@ -1,10 +1,12 @@
 @echo off
-REM Sartor fleet watchdog -- witness-side rental + host + thermal monitor. Runs ONE pass.
+REM Sartor fleet watchdog -- SLIM witness-side liveness + price-drift monitor. Runs ONE pass.
 REM Registered as the "SartorFleetWatchdog" Windows Scheduled Task (every 10 min, S4U alton).
 REM Checks (per machine in business/fleet.yaml): host-down, rental transition, price drift,
-REM reliability, error_description, listing expiry, marginal floor, min_gpus, GPU temp; plus
-REM Rocinante's own disk. Writes inbox alert + data/financial/solar-inference/fleet-health.json;
-REM phone alert on ORANGE+ if watchdog-notify.yaml is configured. Read-only against the fleet.
+REM stale sentinel heartbeat; plus Rocinante's own disk. Host hardware/rental detail (temp,
+REM reliability, error_description, expiry, floor, min_gpus) is now self-reported every 5 min by
+REM fleet-sentinel into sartor/memory/fleet-log/<host>.ndjson. Writes inbox alert +
+REM data/financial/solar-inference/fleet-health.json; phone alert on ORANGE+ if
+REM watchdog-notify.yaml is configured. Read-only against the fleet.
 setlocal
 set LOGFILE=C:\Users\alto8\backups\fleet-watchdog.log
 cd /d C:\Users\alto8\Sartor-claude-network

@@ -76,10 +76,22 @@ FAST_FILL_MIN = 30                 # filled <30 min after going idle -> underpri
 SLOW_FILL_MIN = 6 * 60            # filled >6 h after going idle -> overpriced
 FAST_FILL_BUMP = 1.10
 SLOW_FILL_CUT = 0.92
+SWEETSPOT_PROBE = 1.03           # TWEAK (b) 2026-05-31: small UPWARD probe on a sweet-spot
+                                  # fill. The controller was a downward ratchet — the only
+                                  # up-path (FAST_FILL_BUMP) needs a rare <30-min fill, while
+                                  # slow-fill + idle-backoff cut easily, so mult stuck ~0.92
+                                  # and never resampled higher even though the box is
+                                  # demonstrably underpriced (6-18 min fills at $0.92-1.10).
+                                  # A sweet-spot fill (30 min-6 h) means the current price is
+                                  # ACCEPTABLE, not optimal — nudge up a hair to probe whether
+                                  # $1.00-1.20/GPU still fills. Bounded by MULT_MAX + step-cap.
 IDLE_BACKOFF_H = 12               # idle this long at current price -> back off once
 IDLE_BACKOFF_CUT = 0.92
 
 # --- bounds / damping ---
+OUTLIER_MULT = 1.5               # TWEAK (c) 2026-05-31: reject a per-GPU-normalized anchor
+                                  # more than 1.5x the robust median (a lone mispriced comp,
+                                  # e.g. a 1-GPU box at $10-22/GPU, must never set our price).
 STEP_CAP_GPU = 0.50               # max change to gpu_cost per applied relist ($/GPU)
 ABS_CEILING_GPU = 3.00            # absolute per-GPU ceiling, regardless of market
 MIN_RELIST_INTERVAL_MIN = 30      # don't relist more often than this
@@ -255,7 +267,10 @@ def compute(state: dict, our: dict | None, comps_raw: list[dict] | None,
                     mult *= SLOW_FILL_CUT
                     reasons.append(f"slow fill ({fill_latency_min:.0f}m>{SLOW_FILL_MIN}) -> mult x{SLOW_FILL_CUT}")
                 else:
-                    reasons.append(f"fill {fill_latency_min:.0f}m in sweet spot -> mult held")
+                    # TWEAK (b): sweet-spot fill = price acceptable -> probe a hair higher to
+                    # find the real ceiling. Symmetric exploration; bounded by MULT_MAX below.
+                    mult *= SWEETSPOT_PROBE
+                    reasons.append(f"fill {fill_latency_min:.0f}m in sweet spot -> upward probe x{SWEETSPOT_PROBE}")
             idle_since = None
             backed_off = False
         elif was is True and now_rented is False:      # rented -> idle: start the clock
@@ -316,11 +331,33 @@ def compute(state: dict, our: dict | None, comps_raw: list[dict] | None,
         if len(pergpu) >= 3:
             rank3_per_gpu = pergpu[2]["per_gpu"]
         reasons.append(f"2-GPU set thin ({len(strict2)}); per-GPU basis over {len(pergpu)} boxes")
+
+        # TWEAK (c) 2026-05-31 — OUTLIER GUARD on the per-GPU-normalized fallback.
+        # A lone mispriced listing (a 1-GPU box at $10.36/GPU appeared in 67 early rows)
+        # could drag the rank-2 per-GPU anchor far above any real 2-GPU market. Reject a
+        # per-GPU anchor more than OUTLIER_MULT x a robust reference and fall back to that
+        # reference. Reference = strict-2GPU median when ANY 2-GPU comps exist (the most
+        # apples-to-apples signal), else the per-GPU median of the pool.
+        ref = None
+        if strict2:
+            s2 = sorted(c["dph"] / 2.0 for c in strict2)
+            ref = s2[len(s2) // 2]                      # median strict-2GPU per-GPU
+        else:
+            pg = sorted(c["per_gpu"] for c in pergpu)
+            ref = pg[len(pg) // 2]                      # median per-GPU of the pool
+        if ref and anchor_per_gpu > OUTLIER_MULT * ref:
+            reasons.append(f"OUTLIER GUARD: anchor ${anchor_per_gpu:.2f} > {OUTLIER_MULT}x median "
+                           f"${ref:.2f}/GPU -> clamped to median (lone mispriced comp ignored)")
+            anchor_per_gpu = ref
+            # also clamp the rank-3 ceiling reference so the upper bound stays sane
+            if rank3_per_gpu is not None and rank3_per_gpu > OUTLIER_MULT * ref:
+                rank3_per_gpu = None
     elif pergpu:
-        basis = "per-gpu-single-comp"
-        comps = pergpu
-        anchor_per_gpu = pergpu[-1]["per_gpu"]
-        reasons.append(f"only {len(pergpu)} comp(s); anchor = priciest available per-GPU")
+        # TWEAK (c) 2026-05-31 — NEVER anchor on a single comp. The old
+        # `anchor = priciest available per-GPU` over one listing is exactly how the
+        # $10.36 outlier poisoned the price. With <2 comps there is no market to read;
+        # hold the current price (this returns the no-anchor branch below).
+        reasons.append(f"only {len(pergpu)} comp(s) (<{ANCHOR_RANK}); no market to anchor -> hold price")
 
     if anchor_per_gpu is None:
         return {"apply": False, "reason": "no comparable listings; holding price",
@@ -354,15 +391,23 @@ def compute(state: dict, our: dict | None, comps_raw: list[dict] | None,
             reasons.append(f"step-capped down to -${STEP_CAP_GPU}/GPU")
     target_gpu = round(max(floor, min(ABS_CEILING_GPU, target_gpu)), 2)
 
-    # apply gate: material change + min relist interval
+    # apply gate: material change + min relist interval + NOT currently rented.
+    # TWEAK (a) 2026-05-31 — gate apply on idle: `vastai list` only changes the price the
+    # NEXT renter sees; a relist mid-rental is pointless write traffic that cannot affect
+    # the active contract (44/56 historical applied relists fired mid-rental). When rented,
+    # we still recompute + LOG the target (so the dataset keeps growing and the multiplier
+    # keeps learning from fills), but we hold the actual relist until the box goes idle.
     last_relist = parse_iso(state.get("last_relist"))
     interval_ok = last_relist is None or (now - last_relist).total_seconds() / 60.0 >= MIN_RELIST_INTERVAL_MIN
     material = base is None or abs(target_gpu - float(base)) > PRICE_TOLERANCE
-    apply = material and interval_ok
+    idle_to_apply = (now_rented is not True)   # None (unknown) does not block; only True (rented) does
+    apply = material and interval_ok and idle_to_apply
     if not material:
         reasons.append(f"target ${target_gpu} ~= live ${base}; no change")
     if material and not interval_ok:
         reasons.append(f"relisted <{MIN_RELIST_INTERVAL_MIN}m ago; deferring")
+    if material and interval_ok and not idle_to_apply:
+        reasons.append("rented now -> hold relist (only affects next renter); target logged")
 
     return {"apply": apply, "reason": "; ".join(reasons) or "nominal",
             "live_gpu_cost": live_gpu_cost, "now_rented": now_rented,

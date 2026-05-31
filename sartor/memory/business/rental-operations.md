@@ -115,3 +115,18 @@ The pricing skill is expected to evolve. gpuserver1 will refine it over time bas
 ## History
 
 - 2026-04-11: Initial capture of the operational framework. Primary objective reframed from revenue-max to occupancy-max for solar ITC tax deduction justification. gpuserver1 MISSION v0.2 and market-pricing skill authored by gpuserver1 Claude on the same day. Reflects Alton's direct framing in the pricing-autonomy discussion. Document is explicitly a v0.1 starting point to be refined as the business grows, more machines come online, and the CPA review shapes the tax strategy.
+
+## Diagnosing "what's running on the host" without false alarms (added 2026-05-29)
+
+- **rtxserver: check rentals with `sudo -n docker ps -a`.** The `alton` user is NOT in the docker
+  group on rtxserver, so a bare `docker ps` returns EMPTY and reads as a false "idle / no customer."
+  (gpuserver1 differs — bare `docker ps` works there.)
+- A container named **`C.<digits>`** is a vast.ai customer. Renters may run crypto-miner images
+  (e.g. `duplexorg/non-useful-miner`) and peg the GPUs at 100% — that is allowed and is revenue,
+  not a compromise. Renters run as root *inside* their sandboxed container.
+- Map a suspicious host pid to its container: `cat /proc/<pid>/cgroup` -> `/docker/<id>` ->
+  `sudo docker inspect <id>`. Host-level (non-cgroup) processes + unexpected outbound host
+  connections (beyond kaalia / sshd / peer-claude) are the actual compromise signals.
+- 2026-05-29: a "temperature dropping" check found rtxserver's GPUs at 100% running
+  `miner_worker`/`pearl-gateway`; it was renter container `C.38328535`, normal revenue. See
+  user-memory `feedback_vastai_renter_miners_not_compromise.md`.

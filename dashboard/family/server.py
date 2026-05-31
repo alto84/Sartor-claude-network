@@ -2563,6 +2563,241 @@ async def fleet():
     return out
 
 
+# ── GET /api/fleet-usage ───────────────────────────────────────────────────────
+#
+# History companion to /api/fleet. /api/fleet is the LIVE status panel; this route
+# powers the Fleet Usage HISTORY charts. Source is the COMMITTED central log written
+# on each host by scripts/peer-shared/fleet-sentinel/fleet-sentinel.sh (one NDJSON row
+# per 5-min tick). Schema: sartor/memory/fleet-log/SCHEMA.md.
+#
+# Privacy: the NDJSON carries vast.ai earn_hour/earn_day + applied list_price (already
+# public on vast.ai) + util/temp/power + a DERIVED est_kwh/est_earn — graphing-only
+# signals, NO cost basis. This route reads those committed files and writes nothing.
+# Cost-basis dollars stay in data/financial/ (gitignored) and are NOT touched here.
+#
+# Light by construction: ~288 rows/host/day; default 7-day window = tail ~2016 lines/host.
+
+FLEET_LOG_DIR = MEMORY_DIR / "fleet-log"
+
+
+def _tail_lines(path: Path, n: int) -> list[str]:
+    """Return up to the last n non-empty lines of a file, cheaply, without reading
+    the whole thing into a Python list when the file is large. Block-reads from the
+    end. Returns [] if the file is absent/unreadable."""
+    try:
+        size = path.stat().st_size
+    except (FileNotFoundError, OSError):
+        return []
+    if size == 0:
+        return []
+    block = 64 * 1024
+    data = b""
+    try:
+        with path.open("rb") as f:
+            pos = size
+            # Read backward until we have > n newlines or hit the start.
+            while pos > 0 and data.count(b"\n") <= n:
+                read = min(block, pos)
+                pos -= read
+                f.seek(pos)
+                data = f.read(read) + data
+    except OSError:
+        return []
+    text = data.decode("utf-8", errors="replace")
+    lines = [ln for ln in text.splitlines() if ln.strip()]
+    return lines[-n:]
+
+
+# Columns the chart series carry forward per row. Keep narrow — the dashboard only
+# needs the time-series fields, not every schema column on every point.
+_USAGE_SERIES_FIELDS = (
+    "ts", "rented", "gpu_util", "temp_max", "power_w", "est_kwh_interval",
+    "list_price", "min_bid", "earn_hour", "earn_day", "est_earn_interval",
+    "stale_docker", "stale_vm", "health", "source",
+)
+
+
+def _coerce_row(obj: dict) -> dict:
+    """Project a raw NDJSON row down to the chart fields, tolerating missing keys
+    and string/None numerics. Booleans pass through; numerics coerce or null."""
+    def num(v):
+        if v is None or v == "":
+            return None
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            return None
+    return {
+        "ts": obj.get("ts"),
+        "rented": bool(obj.get("rented")) if obj.get("rented") is not None else None,
+        "gpu_util": num(obj.get("gpu_util")),
+        "temp_max": num(obj.get("temp_max")),
+        "power_w": num(obj.get("power_w")),
+        "est_kwh_interval": num(obj.get("est_kwh_interval")),
+        "list_price": num(obj.get("list_price")),
+        "min_bid": num(obj.get("min_bid")),
+        "earn_hour": num(obj.get("earn_hour")),
+        "earn_day": num(obj.get("earn_day")),
+        "est_earn_interval": num(obj.get("est_earn_interval")),
+        "stale_docker": int(num(obj.get("stale_docker")) or 0),
+        "stale_vm": int(num(obj.get("stale_vm")) or 0),
+        "health": obj.get("health"),
+        "source": obj.get("source"),
+    }
+
+
+@app.get("/api/fleet-usage")
+async def fleet_usage(days: int = 7):
+    """Per-machine usage history from the committed fleet-log NDJSONs.
+
+    Returns, per host: the time-series points (projected to chart fields) + summary
+    tiles (today's est_earn, current price/util, days-to-expiry, last-heartbeat age).
+    Degrades to an empty series + a note when a host has not written its log yet."""
+    days = max(1, min(int(days or 7), 60))
+    # 288 ticks/day at 5-min cadence; +1 day slack for partial first/last day.
+    max_lines = (days + 1) * 288
+
+    cfg = _read_yaml_safe(FLEET_YAML)
+    out = {
+        "config_loaded": cfg is not None,
+        "days": days,
+        "machines": [],
+        "notes": [],
+        "source_dir": str(FLEET_LOG_DIR.name),
+    }
+    if cfg is None:
+        out["notes"].append("fleet.yaml not loaded — cannot map hosts to listings.")
+        return out
+
+    now = datetime.now().astimezone()
+    today = date.today()
+    cutoff_ts = (now.timestamp() - days * 86400)
+
+    for m in (cfg.get("machines") or []):
+        host = m.get("hostname")
+        if not host:
+            continue
+        mid = m.get("vast_ai_machine_id")
+        listing = m.get("listing") or {}
+        monitoring = m.get("monitoring") or {}
+
+        log_path = FLEET_LOG_DIR / f"{host}.ndjson"
+        raw = _tail_lines(log_path, max_lines)
+
+        points = []
+        for ln in raw:
+            try:
+                obj = json.loads(ln)
+            except json.JSONDecodeError:
+                continue
+            if not isinstance(obj, dict):
+                continue
+            row = _coerce_row(obj)
+            # Window filter on ts when parseable; keep rows with unparseable ts
+            # (rare) rather than silently dropping data.
+            ts = row.get("ts")
+            if ts:
+                try:
+                    rt = datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+                    if rt.timestamp() < cutoff_ts:
+                        continue
+                except ValueError:
+                    pass
+            points.append(row)
+
+        # ── Summary tiles derived from the windowed points ──
+        # Today's est_earn = sum of est_earn_interval over rows dated today (local).
+        today_iso = today.isoformat()
+        today_earn = 0.0
+        today_kwh = 0.0
+        have_today = False
+        for p in points:
+            ts = p.get("ts")
+            if not ts:
+                continue
+            # ts is UTC; compare the date after converting to local for "today".
+            try:
+                rt = datetime.fromisoformat(str(ts).replace("Z", "+00:00")).astimezone()
+            except ValueError:
+                continue
+            if rt.date().isoformat() == today_iso:
+                have_today = True
+                if p.get("est_earn_interval") is not None:
+                    today_earn += p["est_earn_interval"]
+                if p.get("est_kwh_interval") is not None:
+                    today_kwh += p["est_kwh_interval"]
+
+        last = points[-1] if points else None
+        # Rolling occupancy over the window: fraction of points where rented is True.
+        rented_pts = [p for p in points if p.get("rented") is not None]
+        occupancy = (sum(1 for p in rented_pts if p["rented"]) / len(rented_pts)) if rented_pts else None
+
+        # Heartbeat age from the host's sentinel heartbeat file (committed via gather_mirror).
+        hb_path = MEMORY_DIR / "inbox" / host / "_sentinel-heartbeat.json"
+        hb = _read_json_safe(hb_path)
+        hb_age_s = None
+        hb_ts = None
+        if isinstance(hb, dict):
+            hb_ts = hb.get("ts") or hb.get("timestamp")
+            if hb_ts:
+                try:
+                    ht = datetime.fromisoformat(str(hb_ts).replace("Z", "+00:00"))
+                    hb_age_s = max(0, int(now.timestamp() - ht.timestamp()))
+                except ValueError:
+                    pass
+        # Fall back to the freshest log row's ts if no heartbeat file yet.
+        if hb_age_s is None and last and last.get("ts"):
+            try:
+                lt = datetime.fromisoformat(str(last["ts"]).replace("Z", "+00:00"))
+                hb_age_s = max(0, int(now.timestamp() - lt.timestamp()))
+                hb_ts = last["ts"]
+            except ValueError:
+                pass
+
+        # Days-to-expiry from fleet.yaml listing end_date (config, committed).
+        end_date = listing.get("end_date")
+        expiry_days = None
+        if end_date:
+            try:
+                expiry_days = (date.fromisoformat(str(end_date)) - today).days
+            except ValueError:
+                pass
+
+        if not points:
+            out["notes"].append(
+                f"{host}: no fleet-log rows yet ({log_path.name} pending first host write).")
+
+        out["machines"].append({
+            "hostname": host,
+            "machine_id": mid,
+            "gpus": m.get("gpus"),
+            "gpu_model": m.get("gpu_model"),
+            "role": m.get("role"),
+            "points": points,
+            "point_count": len(points),
+            "tiles": {
+                "today_est_earn": round(today_earn, 4) if have_today else None,
+                "today_est_kwh": round(today_kwh, 4) if have_today else None,
+                "current_price": last.get("list_price") if last else None,
+                "current_util": last.get("gpu_util") if last else None,
+                "current_temp": last.get("temp_max") if last else None,
+                "current_rented": last.get("rented") if last else None,
+                "current_health": last.get("health") if last else None,
+                "occupancy_pct": round(occupancy * 100, 1) if occupancy is not None else None,
+                "stale_docker": last.get("stale_docker") if last else None,
+                "stale_vm": last.get("stale_vm") if last else None,
+                "expiry_days": expiry_days,
+                "end_date": end_date,
+                "heartbeat_age_s": hb_age_s,
+                "heartbeat_ts": hb_ts,
+                "gpu_temp_alert_c": monitoring.get("gpu_temp_alert_c"),
+                "gpu_temp_crit_c": monitoring.get("gpu_temp_crit_c"),
+            },
+        })
+
+    return out
+
+
 # ── GET /api/memory-graph ─────────────────────────────────────────────────────
 
 _CLUSTER_MAP = {

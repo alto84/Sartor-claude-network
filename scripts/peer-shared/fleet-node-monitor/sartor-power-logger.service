@@ -1,0 +1,31 @@
+[Unit]
+# gpuserver1 ONLY. Promotes ~/sartor-power/bin/power_logger.py off a bare `nohup`
+# (PID 2215 as of 2026-05-31) onto a supervised systemd-user service so the precise
+# kWh source — the ITC business-use substantiation signal — survives reboots and crashes.
+#
+# This is the PRECISE per-machine energy logger (cumulative GPU energy counter, RAPL/pynvml).
+# It is the source of record for data/financial/.../power-2026.csv via power_ingest.py.
+# It is NOT replaced by fleet-sentinel's est_kwh (that is a coarse 5-min graphing estimate).
+# rtxserver has no equivalent logger box; its est_kwh comes from fleet-sentinel's nvidia-smi
+# integral until a logger is installed there.
+#
+# Install (gpuserver1):
+#   cp scripts/peer-shared/fleet-sentinel/sartor-power-logger.service ~/.config/systemd/user/
+#   kill 2215    # stop the bare nohup so it doesn't double-write
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now sartor-power-logger.service
+#   systemctl --user status sartor-power-logger.service     # confirm active (running)
+#   tail -1 ~/sartor-power/data/$(date -u +%F).tsv          # confirm a fresh row appends
+# Requires lingering (already enabled for alton; gpu-temp-logger.service runs the same way).
+Description=Sartor precise power logger (gpuserver1 GPU energy -> kWh of record for ITC substantiation)
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/alton/sartor-power/bin/power_logger.py --daemon
+Restart=always
+RestartSec=10
+Nice=10
+
+[Install]
+WantedBy=default.target

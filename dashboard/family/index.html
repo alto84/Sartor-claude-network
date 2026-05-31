@@ -1567,6 +1567,50 @@ body {
   padding: 1px 0;
 }
 
+/* ── Fleet Usage (history charts) ───────────────────────────────────────── */
+.fu-controls { display: flex; gap: 6px; align-items: center; margin-left: auto; }
+.fu-range-btn {
+  font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 1px;
+  padding: 2px 8px; border: 1px solid var(--border); border-radius: 10px;
+  background: transparent; color: var(--text-dim); cursor: pointer;
+}
+.fu-range-btn.active { color: var(--green); border-color: var(--green); }
+.fu-machine { margin-bottom: 16px; }
+.fu-m-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 1px solid var(--border); padding-bottom: 4px; margin-bottom: 8px;
+}
+.fu-m-host { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--text); }
+.fu-m-sub { font-size: 10px; color: var(--text-dim); }
+.fu-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 6px; margin-bottom: 10px; }
+.fu-tile {
+  background: rgba(0,0,0,0.25); border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 8px; display: flex; flex-direction: column; gap: 2px;
+}
+.fu-tile-label { font-family: var(--mono); font-size: 8px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-dim); }
+.fu-tile-val { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--text); }
+.fu-tile-val.ok { color: var(--green); }
+.fu-tile-val.warn { color: var(--amber); }
+.fu-tile-val.bad { color: var(--red); }
+.fu-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 760px) { .fu-charts { grid-template-columns: 1fr; } }
+.fu-chart {
+  background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 6px; padding: 8px;
+}
+.fu-chart-title {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 4px; display: flex; justify-content: space-between;
+}
+.fu-chart svg { display: block; width: 100%; height: auto; }
+.fu-legend { font-family: var(--mono); font-size: 8px; }
+.fu-health-strip { display: flex; height: 14px; border-radius: 3px; overflow: hidden; margin-top: 2px; }
+.fu-health-seg { height: 100%; flex: 1 1 0; }
+.fu-stale-badge {
+  font-family: var(--mono); font-size: 9px; font-weight: 700; color: var(--red);
+  background: rgba(239,68,68,0.15); border-radius: 8px; padding: 1px 6px; margin-left: 6px;
+}
+.fu-empty { font-size: 11px; color: var(--text-dim); padding: 6px 0; font-style: italic; }
+
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 1200px) {
   .main-grid { grid-template-columns: 1fr; }
@@ -2522,6 +2566,19 @@ body {
         <span id="fleetOverall" class="fleet-overall"></span>
       </div>
       <div id="fleetContainer">Loading...</div>
+    </div>
+
+    <!-- Solar Inference Fleet — Usage History -->
+    <div class="glass-card" style="--card-accent:#22c55e">
+      <div class="glass-card-title">
+        <span class="glass-card-icon">&#9201;</span> Fleet Usage History
+        <div class="fu-controls" id="fuControls">
+          <button class="fu-range-btn" data-days="1" onclick="fuSetRange(1)">1D</button>
+          <button class="fu-range-btn active" data-days="7" onclick="fuSetRange(7)">7D</button>
+          <button class="fu-range-btn" data-days="30" onclick="fuSetRange(30)">30D</button>
+        </div>
+      </div>
+      <div id="fleetUsageContainer">Loading...</div>
     </div>
 
   </div>
@@ -4295,6 +4352,238 @@ async function renderFleet() {
 renderFleet();
 setInterval(renderFleet, 60000);
 
+/* ── Fleet Usage History (tails sartor/memory/fleet-log/<host>.ndjson) ───── */
+var FU_DAYS = 7;
+function fuSetRange(days) {
+  FU_DAYS = days;
+  document.querySelectorAll('#fuControls .fu-range-btn').forEach(function(b) {
+    b.classList.toggle('active', Number(b.getAttribute('data-days')) === days);
+  });
+  renderFleetUsage();
+}
+function fuHealthColor(h) {
+  if (h === 'red') return 'var(--red)';
+  if (h === 'yellow') return 'var(--amber)';
+  if (h === 'green') return 'var(--green)';
+  return 'rgba(107,114,128,0.5)';
+}
+function fuAge(s) {
+  if (s == null) return '—';
+  if (s < 90) return s + 's';
+  if (s < 5400) return Math.round(s / 60) + 'm';
+  if (s < 172800) return Math.round(s / 3600) + 'h';
+  return Math.round(s / 86400) + 'd';
+}
+// Minimal dependency-free SVG line/area renderer. pts: [{x:Number,y:Number|null}].
+// Multiple series share one x-domain. opts: {h,w,series:[{vals,color,fill,axis}],
+// rentedMask:[bool], yMax2}. Returns an SVG string. Light — no chart lib.
+function fuSparkSVG(xs, series, opts) {
+  opts = opts || {};
+  var W = opts.w || 320, H = opts.h || 64, pad = 4;
+  var n = xs.length;
+  if (n < 2) return '<svg viewBox="0 0 ' + W + ' ' + H + '"></svg>';
+  var iw = W - pad * 2, ih = H - pad * 2;
+  function xAt(i) { return pad + (iw * i) / (n - 1); }
+  var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none">';
+  // rented shaded bands (drawn first, behind lines)
+  if (opts.rentedMask) {
+    var m = opts.rentedMask, runStart = null;
+    for (var i = 0; i <= n; i++) {
+      var on = i < n && m[i] === true;
+      if (on && runStart === null) runStart = i;
+      if (!on && runStart !== null) {
+        var x0 = xAt(runStart), x1 = xAt(Math.min(i, n - 1));
+        svg += '<rect x="' + x0.toFixed(1) + '" y="0" width="' + Math.max(0.8, x1 - x0).toFixed(1) +
+               '" height="' + H + '" fill="rgba(34,197,94,0.12)"/>';
+        runStart = null;
+      }
+    }
+  }
+  (series || []).forEach(function(s) {
+    var vals = s.vals;
+    var fin = vals.filter(function(v) { return v != null && isFinite(v); });
+    if (!fin.length) return;
+    var mn = Math.min.apply(null, fin), mx = Math.max.apply(null, fin);
+    if (s.min != null) mn = Math.min(mn, s.min);
+    if (s.max != null) mx = Math.max(mx, s.max);
+    var range = (mx - mn) || 1;
+    function yAt(v) { return pad + ih - ((v - mn) / range) * ih; }
+    var d = '', started = false, firstX = null, lastX = null;
+    for (var i = 0; i < n; i++) {
+      var v = vals[i];
+      if (v == null || !isFinite(v)) { started = false; continue; }
+      var X = xAt(i), Y = yAt(v);
+      if (firstX === null) firstX = X;
+      lastX = X;
+      d += (started ? 'L' : 'M') + X.toFixed(1) + ' ' + Y.toFixed(1) + ' ';
+      started = true;
+    }
+    if (s.fill && firstX !== null) {
+      var area = 'M' + firstX.toFixed(1) + ' ' + (pad + ih).toFixed(1) + ' ' +
+                 d.replace(/^M/, 'L') + 'L' + lastX.toFixed(1) + ' ' + (pad + ih).toFixed(1) + ' Z';
+      svg += '<path d="' + area + '" fill="' + s.color + '" opacity="0.14"/>';
+    }
+    svg += '<path d="' + d.trim() + '" fill="none" stroke="' + s.color + '" stroke-width="1.4" stroke-linejoin="round"/>';
+  });
+  svg += '</svg>';
+  return svg;
+}
+function fuStepSVG(xs, vals, color, rentedMask, opts) {
+  // step-line (for price) with optional rented bands; reuses spark but step path
+  opts = opts || {};
+  var W = opts.w || 320, H = opts.h || 64, pad = 4;
+  var n = xs.length;
+  if (n < 2) return '<svg viewBox="0 0 ' + W + ' ' + H + '"></svg>';
+  var iw = W - pad * 2, ih = H - pad * 2;
+  function xAt(i) { return pad + (iw * i) / (n - 1); }
+  var fin = vals.filter(function(v) { return v != null && isFinite(v); });
+  var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none">';
+  if (rentedMask) {
+    var runStart = null;
+    for (var i = 0; i <= n; i++) {
+      var on = i < n && rentedMask[i] === true;
+      if (on && runStart === null) runStart = i;
+      if (!on && runStart !== null) {
+        var x0 = xAt(runStart), x1 = xAt(Math.min(i, n - 1));
+        svg += '<rect x="' + x0.toFixed(1) + '" y="0" width="' + Math.max(0.8, x1 - x0).toFixed(1) +
+               '" height="' + H + '" fill="rgba(34,197,94,0.12)"/>';
+        runStart = null;
+      }
+    }
+  }
+  if (fin.length) {
+    var mn = Math.min.apply(null, fin), mx = Math.max.apply(null, fin);
+    var range = (mx - mn) || (mx || 1);
+    if (range === 0) range = 1;
+    function yAt(v) { return pad + ih - ((v - mn) / range) * ih; }
+    var d = '', prevY = null, started = false;
+    for (var i = 0; i < n; i++) {
+      var v = vals[i];
+      if (v == null || !isFinite(v)) continue;
+      var X = xAt(i), Y = yAt(v);
+      if (!started) { d += 'M' + X.toFixed(1) + ' ' + Y.toFixed(1) + ' '; started = true; }
+      else { d += 'L' + X.toFixed(1) + ' ' + prevY.toFixed(1) + ' L' + X.toFixed(1) + ' ' + Y.toFixed(1) + ' '; }
+      prevY = Y;
+    }
+    svg += '<path d="' + d.trim() + '" fill="none" stroke="' + color + '" stroke-width="1.4" stroke-linejoin="round"/>';
+  }
+  svg += '</svg>';
+  return svg;
+}
+async function renderFleetUsage() {
+  var c = $('fleetUsageContainer');
+  var d = await fetchJSON('/api/fleet-usage?days=' + FU_DAYS);
+  if (!d) { c.innerHTML = '<div class="fu-empty">Fleet usage data unavailable.</div>'; return; }
+  if (!d.config_loaded) {
+    c.innerHTML = '<div class="fu-empty">fleet.yaml not loaded — no fleet spine. ' +
+      escapeHTML((d.notes || []).join(' ')) + '</div>';
+    return;
+  }
+  var html = '';
+  (d.machines || []).forEach(function(m) {
+    var t = m.tiles || {};
+    var pts = m.points || [];
+    var xs = pts.map(function(p) { return p.ts; });
+    var rentedMask = pts.map(function(p) { return p.rented === true; });
+
+    // tile color helpers
+    var tempCls = '';
+    if (t.current_temp != null) {
+      if (t.gpu_temp_crit_c != null && Number(t.current_temp) >= Number(t.gpu_temp_crit_c)) tempCls = 'bad';
+      else if (t.gpu_temp_alert_c != null && Number(t.current_temp) >= Number(t.gpu_temp_alert_c)) tempCls = 'warn';
+      else tempCls = 'ok';
+    }
+    var hbCls = '';
+    if (t.heartbeat_age_s != null) hbCls = (t.heartbeat_age_s < 600 ? 'ok' : (t.heartbeat_age_s < 1200 ? 'warn' : 'bad'));
+    var expCls = '';
+    if (t.expiry_days != null) expCls = (t.expiry_days < 7 ? 'bad' : (t.expiry_days < 21 ? 'warn' : ''));
+    var staleN = (t.stale_docker || 0) + (t.stale_vm || 0);
+
+    html += '<div class="fu-machine">';
+    html += '<div class="fu-m-head"><span class="fu-m-host">' + escapeHTML(m.hostname || '?') +
+      (staleN > 0 ? '<span class="fu-stale-badge">' + staleN + ' STALE</span>' : '') + '</span>' +
+      '<span class="fu-m-sub">' + escapeHTML((m.gpu_model || '') + ' · ' + (m.gpus || '?') + '×GPU · ' +
+        (m.point_count || 0) + ' pts/' + d.days + 'd') + '</span></div>';
+
+    // ── Top tiles ──
+    html += '<div class="fu-tiles">';
+    html += fuTile('Earn today', t.today_est_earn == null ? '—' : '$' + Number(t.today_est_earn).toFixed(2), '');
+    html += fuTile('Price/GPU', t.current_price == null ? '—' : '$' + Number(t.current_price).toFixed(2), '');
+    html += fuTile('Util', t.current_util == null ? '—' : Math.round(t.current_util) + '%', '');
+    html += fuTile('Occupancy', t.occupancy_pct == null ? '—' : Number(t.occupancy_pct).toFixed(0) + '%', '');
+    html += fuTile('Temp', t.current_temp == null ? '—' : Math.round(t.current_temp) + '°C', tempCls);
+    html += fuTile('kWh today', t.today_est_kwh == null ? '—' : Number(t.today_est_kwh).toFixed(1), '');
+    html += fuTile('Expiry', t.expiry_days == null ? '—' : t.expiry_days + 'd', expCls);
+    html += fuTile('Heartbeat', fuAge(t.heartbeat_age_s), hbCls);
+    html += '</div>';
+
+    if (pts.length < 2) {
+      html += '<div class="fu-empty">' +
+        escapeHTML(m.hostname + ': not enough history yet (' + (m.point_count || 0) +
+        ' rows). Charts populate once fleet-sentinel has written a few ticks.') + '</div>';
+      html += '</div>';
+      return;
+    }
+
+    // ── Charts ──
+    html += '<div class="fu-charts">';
+
+    // 1. Revenue vs Power (dual area)
+    var earn = pts.map(function(p) { return p.est_earn_interval; });
+    var kwh = pts.map(function(p) { return p.est_kwh_interval; });
+    html += '<div class="fu-chart">' +
+      '<div class="fu-chart-title"><span>Revenue vs Power</span>' +
+      '<span class="fu-legend"><span style="color:var(--green)">$ earn</span> · <span style="color:#06b6d4">kWh</span></span></div>' +
+      fuSparkSVG(xs, [
+        { vals: earn, color: 'var(--green)', fill: true, min: 0 },
+        { vals: kwh, color: '#06b6d4', fill: false, min: 0 }
+      ]) + '</div>';
+
+    // 2. Utilization + Rental bands
+    var util = pts.map(function(p) { return p.gpu_util; });
+    html += '<div class="fu-chart">' +
+      '<div class="fu-chart-title"><span>Utilization + Rental</span>' +
+      '<span class="fu-legend"><span style="color:var(--blue)">util</span> · <span style="color:var(--green)">▮ rented</span></span></div>' +
+      fuSparkSVG(xs, [{ vals: util, color: 'var(--blue)', fill: false, min: 0, max: 100 }], { rentedMask: rentedMask }) +
+      '</div>';
+
+    // 3. Price vs Occupancy (step price over rented bands)
+    var price = pts.map(function(p) { return p.list_price; });
+    html += '<div class="fu-chart">' +
+      '<div class="fu-chart-title"><span>Price vs Occupancy</span>' +
+      '<span class="fu-legend"><span style="color:var(--amber)">$/GPU</span> · <span style="color:var(--green)">▮ rented</span></span></div>' +
+      fuStepSVG(xs, price, 'var(--amber)', rentedMask) + '</div>';
+
+    // 4. Health strip
+    var strip = '<div class="fu-health-strip">';
+    pts.forEach(function(p) {
+      strip += '<div class="fu-health-seg" style="background:' + fuHealthColor(p.health) + '" title="' +
+        escapeHTML((p.ts || '') + ' ' + (p.health || '')) + '"></div>';
+    });
+    strip += '</div>';
+    html += '<div class="fu-chart">' +
+      '<div class="fu-chart-title"><span>Health</span>' +
+      '<span class="fu-legend"><span style="color:var(--green)">green</span>·<span style="color:var(--amber)">yellow</span>·<span style="color:var(--red)">red</span></span></div>' +
+      strip + '</div>';
+
+    html += '</div>'; // .fu-charts
+    html += '</div>'; // .fu-machine
+  });
+
+  if ((d.notes || []).length) {
+    html += '<div class="fleet-notes">';
+    d.notes.forEach(function(n) { html += '<div class="fleet-note">' + escapeHTML(n) + '</div>'; });
+    html += '</div>';
+  }
+  c.innerHTML = html || '<div class="fu-empty">No machines in fleet.yaml.</div>';
+}
+function fuTile(label, val, cls) {
+  return '<div class="fu-tile"><span class="fu-tile-label">' + escapeHTML(label) + '</span>' +
+    '<span class="fu-tile-val ' + (cls || '') + '">' + escapeHTML(String(val)) + '</span></div>';
+}
+renderFleetUsage();
+setInterval(renderFleetUsage, 60000);
+
 /* (Top-panel graph removed -- Memory Tab graph is the canonical version) */
 
 /* ── Heartbeat Live Mini-Panel ────────────────────────────────────────── */
@@ -5298,6 +5587,7 @@ var CMD_REGISTRY = [
   {id:'nav-costs', group:'Cards', label:'API Cost Tracker', keywords:'costs api spending budget', icon:'$', action:function(){scrollToCard('costContainer')}},
   {id:'nav-gpu', group:'Cards', label:'GPU Server Control', keywords:'gpu server rental vast ssh', icon:'\u2699', action:function(){scrollToCard('gpuStatusBadges')}},
   {id:'nav-fleet', group:'Cards', label:'Solar Inference Fleet', keywords:'fleet solar inference gpu rental revenue itc tax 469 vast', icon:'\u2600', action:function(){scrollToCard('fleetContainer')}},
+  {id:'nav-fleet-usage', group:'Cards', label:'Fleet Usage History', keywords:'fleet usage history utilization power kwh price occupancy temp stale docker health sentinel', icon:'\u23f1', action:function(){scrollToCard('fleetUsageContainer')}},
   // Memory Tab sub-tabs
   {id:'mem-graph', group:'Memory', label:'Memory Graph', keywords:'graph d3 force visualization', icon:'\u25C6', action:function(){scrollToMemTab('graph')}},
   {id:'mem-heatmap', group:'Memory', label:'Memory Heatmap', keywords:'heatmap tier cluster grid', icon:'\u25C6', action:function(){scrollToMemTab('heatmap')}},
