@@ -942,3 +942,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forwards: 990-N overdue; vast.ai 124192 offline; KYC Jun 4; MKA $5,340.
 - **INFORMATIONAL (skipped):** LinkedIn alerts, Costco receipts, AAA offer, Medscape CME, JAMA newsletter, Tipitinas, NJ Pride FC, Rotten Tomatoes, Star Citizen, Warframe, Code Ninjas, Andy Kim, M3 surveys, USPS digest, Hiive update.
 - Pages updated: `daily/2026-05-31.md` (created), `family/active-todos.md` (3 items appended, frontmatter bumped to run 151), `ALTON.md` (GOOGL sold + Guidepoint appended, frontmatter bumped to run 151), `data/gather-alerts.md` (created — 3 P0, 4 P1, 3 P2), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-05-31] ingest | personal-data-gather run 155
+- Sources: Gmail (newer_than:1d, 50 threads), all 5 Google Calendars (May 31–Jun 7). SSH unavailable (cloud runner).
+- Facts gathered: 4 (1 SECURITY — Schwab login confirmation; 1 FAMILY/LOGISTICS — CSA pickup schedule / Khushbu Patel contact; 1 CAREER — LinkedIn PV job alert pattern; 1 CALENDAR CORRECTION — Livia Birthday Party time corrected to 3:00–6:00 PM EDT)
+- New deadlines: none new (KYC Jun 4 still P0 carry-forward)
+- Calendar: all 5 live. No new events. **One correction:** Livia Birthday Party Jun 7 = 3:00–6:00 PM EDT (runs 151–154 had UTC→EDT error reporting 7:00–10:00 PM).
+- P0 carry-forwards: 990-N overdue; KYC Jun 4 (4 days); MKA $5,340; vast.ai 124192 GPU complaint; Disney ADR; Pool Guyz bill.
+- **INFORMATIONAL (skipped):** JAMA weekly highlights, Hiive pre-IPO digest, LinkedIn messaging digest.
+- Pages updated: `daily/2026-05-31.md` (run 155 appended), `ALTON.md` (run 155 appended — frontmatter bumped), `family/active-todos.md` (run 155 appended — frontmatter bumped), `data/gather-alerts.md` (recreated — cloud clone), `data/heartbeat-log.csv` (recreated — cloud clone), `log.md` (this entry)

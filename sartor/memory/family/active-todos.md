@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-31
 updated_by: personal-data-gather
-run: 152
+run: 155
 
 status: active
 priority: p1
@@ -1324,3 +1324,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning] ESCALATED — vast.ai Machine 124192: GPU 100% usage customer complaint
 > console@mg.vast.ai (2026-05-31 03:15 UTC): customer complaint on Machine 124192, Instance ID 38687010. "GPUs are already at 100% usage with just logging in." Machine 124192 was reported offline in run 142 (2026-05-28). Now back online but in degraded state — customer rating risk. SSH to gpuserver1 and rtxpro6000server, run `~/.local/bin/vastai show machines` to enumerate, identify machine 124192, and remediate. See [[business/solar-inference]].
+
+## Latest from gather (2026-05-31) — run 155
+
+> [!note] CSA pickup schedule — household logistics (2026-05-30)
+> Khushbu Patel (khushbu.b.patel@gmail.com, 5/30 17:34 UTC): seasonal CSA share pickup schedule for group including Alton, Aneeta, and Ilan (IlanIG@gmail.com). No missed pickup days expected. Informational unless schedule conflicts arise.
+
+> [!warning] CALENDAR CORRECTION — Livia Birthday Party: 3:00–6:00 PM EDT (not 7:00 PM)
+> Run 155 corrects prior entries (runs 151–154): Livia Birthday Party on 2026-06-07 is **3:00–6:00 PM EDT** (`2026-06-07T19:00:00Z`–`22:00:00Z`). Prior reads said "7:00–10:00 PM ET" — UTC→EDT conversion error. **Plan arrival by 3:00 PM on June 7.** Location not in calendar event; confirm with Aneeta.

@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-05-31
 updated_by: personal-data-gather
-run: 153
+run: 155
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -310,3 +310,17 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] Chase statement available — account ending 7691 (2026-05-31)
 > no.reply.alerts@chase.com (2026-05-31 05:13 UTC): latest statement now available for account ending 7691. Second Chase statement today (8189 captured run 152 at 01:44 UTC). Account 7691 not yet identified in memory — review at chase.com to confirm account type (personal card, business card, or checking) and flag any anomalies.
+
+## Latest from gather (2026-05-31) — run 155
+
+> [!fact] Schwab login confirmation — 2026-05-31 9:59 AM EDT
+> donotreply@mail.schwab.com (2026-05-31 13:59 UTC): "Confirming your recent login." Standard Schwab security notice — login confirmed as expected. No action needed.
+
+> [!fact] LinkedIn drug safety / PV job alert pattern — week of 2026-05-30
+> Four LinkedIn alerts in 48h pushing pharmacovigilance/drug-safety Senior/Sr. Medical Director roles: Sr. Medical Director Drug Safety & PV at BridgeBio (5/31); Senior Medical Director Drug Safety & PV at Celcuity (5/30 and 5/31); Director Medical Outcomes Research at Viatris (5/30). LinkedIn algorithm has latched onto Alton's AZ Global Patient Safety role. Informational — career context signal. See [[business/az-career]].
+
+> [!fact] CSA pickup schedule — Khushbu Patel (2026-05-30 17:34 UTC)
+> khushbu.b.patel@gmail.com group email to Alton, Aneeta, and IlanIG@gmail.com: sharing seasonal CSA (community-supported agriculture) pickup schedule for the group. No missed pickup days expected on their end. New contacts in household context: **Khushbu Patel** (neighbor/CSA share group), **Ilan** (IlanIG@gmail.com). Routes to [[family/active-todos]].
+
+> [!warning] CALENDAR CORRECTION — Livia Birthday Party: 3:00–6:00 PM EDT (not 7:00–10:00 PM)
+> Run 155 live calendar pull: Livia Birthday Party (Family calendar, 2026-06-07) = `2026-06-07T19:00:00Z`–`2026-06-07T22:00:00Z` = **3:00–6:00 PM EDT**. Runs 151–154 reported "7:00–10:00 PM ET" — UTC→EDT conversion error (19:00Z misread as 7:00 PM local time). Corrected in [[family/active-todos]] and [[family/family-calendar]].
