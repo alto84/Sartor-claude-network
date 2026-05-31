@@ -1,0 +1,13 @@
+[Unit]
+Description=Sartor fleet host-local self-monitor (one 5-min snapshot per tick)
+Documentation=https://github.com/alto84/Sartor-claude-network scripts/peer-shared/fleet-node-monitor/
+After=network-online.target
+
+[Service]
+Type=oneshot
+# Deployed copy lives at ~/fleet-node-monitor.sh (chmod +x). Runs as the user
+# (systemd --user), so $HOME, the docker group / passwordless sudo, and the
+# authenticated vast.ai CLI are all available exactly as for a login shell.
+ExecStart=/home/alton/fleet-node-monitor.sh
+# A failed tick must not poison the timer; next tick retries cleanly.
+SuccessExitStatus=0 2

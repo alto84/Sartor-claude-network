@@ -1,0 +1,13 @@
+[Unit]
+Description=Run the Sartor fleet host-local self-monitor every 5 minutes
+
+[Timer]
+# Mirrors gpu-thermal-guard.timer. OnBootSec waits for network/nvidia after a
+# reboot; OnUnitActiveSec=300 == the kWh-integral interval the script assumes.
+OnBootSec=120
+OnUnitActiveSec=300
+AccuracySec=15
+Unit=fleet-node-monitor.service
+
+[Install]
+WantedBy=timers.target
