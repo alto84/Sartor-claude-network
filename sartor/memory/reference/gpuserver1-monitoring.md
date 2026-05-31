@@ -11,7 +11,9 @@ related: [gpuserver1-delegation, MULTI-MACHINE-MEMORY, MACHINES, BUSINESS]
 
 # gpuserver1 Recurring Monitoring System
 
-Claude Code-driven health monitoring for the GPU hosting business. Runs every 2 hours on gpuserver1, emits a narrative report to the inbox, no git credentials required on the server.
+Claude Code-driven health monitoring for the GPU hosting business. Designed to run every 2 hours on gpuserver1 (dormant since 2026-04-12 — the `run_monitor.sh` cron was commented out in the EX-5 consolidation and the sweep folded into the host-local `fleet-node-monitor` systemd timer; re-enable per the Cron section if a narrative Claude sweep is wanted again). Emits a narrative report to the inbox, no git credentials required on the server.
+
+> **Rental detection — read this before triaging containers.** A running Docker container named `C.<instance_id>` is an *active paying customer rental*, not an orphan. `vastai show instances` lists client-side rentals only and is ALWAYS empty on this host; an empty result does NOT mean the machine is idle. The authoritative host-side check is `docker ps --format '{{.Names}}' | grep '^C\.'`. A `C.*` container often holds a live `ssh*.vast.ai` reverse tunnel and a running workload even when the GPU reads 0% between jobs. Never call a `C.*` container "orphaned" and never recommend killing one. `C.34113802` is the active reserved contract through 2026-08-24.
 
 ## Architecture
 
@@ -81,7 +83,7 @@ The brief is the full prompt. It defines:
 2. The anomaly criteria that trigger subagent spawning
 3. The report format (frontmatter, snapshot table, status indicators, anomaly narrative)
 4. Hard rules (no git, no kills, model sonnet for self / haiku for subagents)
-5. A first-run-only investigation hook (used for the C.34113802 mystery container)
+5. ~~A first-run-only investigation hook (used for the C.34113802 "mystery" container)~~ — REMOVED 2026-05-31: it hardcoded a false "orphaned" framing for `C.34113802`, which is in fact the active reserved rental through 2026-08-24. See the rental-detection callout near the top.
 
 After editing, the next scheduled run picks up the new brief. No restart needed.
 
@@ -155,7 +157,7 @@ The curator will archive drained reports into `inbox/gpuserver1/_processed/YYYY-
 ## Interaction with existing systems
 
 - **vastai-tend.sh** (cron `30 */2`) — unchanged. Still writes to `~/.vastai-alert` and `~/.vastai-tend.log`. This monitor reads both.
-- **gateway_cron.py** (cron `*/30`) — unchanged. Its failures are surfaced by this monitor if they affect health.
+- **gateway_cron.py** — DISABLED in the crontab since 2026-04-12 (JSON decode error, superseded). No longer runs; its `~/.sartor-cron.log` is frozen at Apr 12 and is NOT a live error source.
 - **GATHER/EVOLVE/CONSOLIDATE mirrors** — unchanged. The `0 */4` gather mirror pulls the repo; this monitor relies on that fresh checkout.
 - **memory-sync.sh** and **heartbeat-watcher.sh** — unchanged.
 
@@ -176,4 +178,5 @@ Design constraint: one subagent per run, max. This bounds cost. For complex mult
 
 ## History
 
-- 2026-04-11: Initial deployment. Tested end-to-end, first report caught an orphaned container (C.34113802), a pricing mismatch ($0.30 vs $0.40 target), a stale alert file (271 entries from April 3), and `gateway_cron.py` JSON parse errors. Cron installed at `0 */2`.
+- 2026-04-11: Initial deployment. Tested end-to-end, first report flagged container C.34113802 as "orphaned" [CORRECTED 2026-05-31: it was never orphaned — it is the active reserved rental through 2026-08-24; the empty `vastai show instances` was misread as "no rental", see rental-detection callout], a pricing mismatch ($0.30 vs $0.40 target), a stale alert file (271 entries from April 3), and `gateway_cron.py` JSON parse errors. Cron installed at `0 */2`.
+- 2026-05-31: Corrected the rental-detection logic in `monitor_brief.md` — removed the false "orphaned" first-run hook and rewrote anomaly criteria #4/#6 so they no longer rely on the host-side-blind `vastai show instances`. Separately fixed `vast_metrics.service` (missing exec bit on `launch_metrics_pusher.sh` had it in a ~91k-restart `Permission denied` loop) and confirmed `gateway_cron.py` has been disabled since 2026-04-12 (stale log, not a live error).
