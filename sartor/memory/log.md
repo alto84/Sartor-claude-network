@@ -951,3 +951,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forwards: 990-N overdue; KYC Jun 4 (4 days); MKA $5,340; vast.ai 124192 GPU complaint; Disney ADR; Pool Guyz bill.
 - **INFORMATIONAL (skipped):** JAMA weekly highlights, Hiive pre-IPO digest, LinkedIn messaging digest.
 - Pages updated: `daily/2026-05-31.md` (run 155 appended), `ALTON.md` (run 155 appended — frontmatter bumped), `family/active-todos.md` (run 155 appended — frontmatter bumped), `data/gather-alerts.md` (recreated — cloud clone), `data/heartbeat-log.csv` (recreated — cloud clone), `log.md` (this entry)
+
+## [2026-05-31] ingest | personal-data-gather run 156: Chase stmts 7785 + QuickDeposit 8563; Oliver Sartor Hiive fund update (ACTION REQUIRED)
+- Sources: Gmail (newer_than:2d, 30 threads + important filter), all 5 Google Calendars (May 31–Jun 7). SSH unavailable (cloud runner).
+- Facts gathered: 3 (2 FINANCIAL — Chase stmt account 7785 at 18:11 UTC; Chase QuickDeposit account 8563 at 17:04 UTC; 1 FINANCIAL/ACTION — Oliver Sartor forwarded Hiive fund investment update — family-shared fund, not previously captured in runs 151–155)
+- New P1: Hiive family fund investment update — Oliver Sartor + Sissy Sartor co-invested. Open Gmail thread to review.
+- Calendar: all 5 live. No new events. All Jun 2–7 events stable.
+- P0 carry-forwards (unchanged): 990-N overdue; KYC Jun 4 (4 days); MKA $5,340; vast.ai 124192 GPU complaint; Disney ADR; Pool Guyz bill.
+- Note: `data/` dir absent from cloud clone; recreated this run.
+- Pages updated: `daily/2026-05-31.md` (run 156 appended), `ALTON.md` (run 156 appended — frontmatter bumped), `family/active-todos.md` (run 156 appended — frontmatter bumped), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md` (this entry)

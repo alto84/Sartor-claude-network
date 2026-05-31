@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-31
 updated_by: personal-data-gather
-run: 155
+run: 156
 
 status: active
 priority: p1
@@ -1332,3 +1332,8 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning] CALENDAR CORRECTION — Livia Birthday Party: 3:00–6:00 PM EDT (not 7:00 PM)
 > Run 155 corrects prior entries (runs 151–154): Livia Birthday Party on 2026-06-07 is **3:00–6:00 PM EDT** (`2026-06-07T19:00:00Z`–`22:00:00Z`). Prior reads said "7:00–10:00 PM ET" — UTC→EDT conversion error. **Plan arrival by 3:00 PM on June 7.** Location not in calendar event; confirm with Aneeta.
+
+## Latest from gather (2026-05-31) — run 156
+
+> [!todo] ACTION_REQUIRED — Hiive Fund Investment update (family-shared fund)
+> oliversartor@icloud.com (2026-05-30 01:37 UTC): Oliver Sartor, MD forwarded a Hiive fund investment update from Sean Jones (sean.jones@mail.hiive.com) to Alton and Sissy Sartor (sissy.sartor@gmail.com). Subject: "Fwd: Update on Your Hiive Fund Investment important." This appears to be a shared family investment position (Oliver + Alton + Sissy) in a Hiive-managed fund — distinct from solo pre-IPO digests. **Open thread in Gmail to review update content.** Contact Oliver Sartor at 504-355-7970 if clarification needed. See [[ALTON]].

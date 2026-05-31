@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-05-31
 updated_by: personal-data-gather
-run: 155
+run: 156
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -324,3 +324,14 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!warning] CALENDAR CORRECTION — Livia Birthday Party: 3:00–6:00 PM EDT (not 7:00–10:00 PM)
 > Run 155 live calendar pull: Livia Birthday Party (Family calendar, 2026-06-07) = `2026-06-07T19:00:00Z`–`2026-06-07T22:00:00Z` = **3:00–6:00 PM EDT**. Runs 151–154 reported "7:00–10:00 PM ET" — UTC→EDT conversion error (19:00Z misread as 7:00 PM local time). Corrected in [[family/active-todos]] and [[family/family-calendar]].
+
+## Latest from gather (2026-05-31) — run 156
+
+> [!fact] Chase statement available — account ending 7785 (2026-05-31)
+> no.reply.alerts@chase.com (2026-05-31 18:11 UTC): latest statement now available for account ending 7785. Third Chase statement today (8189 at 01:44 UTC, 7691 at 05:13 UTC, 7785 at 18:11 UTC). Account 7785 not yet identified in memory — review at chase.com to confirm account type and flag anomalies.
+
+> [!fact] Chase QuickDeposit received — account ending 8563 (2026-05-31)
+> no.reply.alerts@chase.com (2026-05-31 17:04 UTC): check deposit received via QuickDeposit, account ending 8563, May 31 at 1:04 PM ET. Account 8563 not previously seen in memory — identify account type at chase.com.
+
+> [!todo] ACTION_REQUIRED — Hiive Fund Investment update (family-shared fund)
+> oliversartor@icloud.com (2026-05-30 01:37 UTC): Oliver Sartor, MD (Director, Transformational Prostate Cancer Research Center, LCMC Health; 504-355-7970) forwarded a Hiive fund investment update from Sean Jones (sean.jones@mail.hiive.com) to Alton and Sissy Sartor (sissy.sartor@gmail.com). Subject: "Fwd: Update on Your Hiive Fund Investment important." Appears to be a shared family position in a Hiive-managed fund — distinct from solo Hiive pre-IPO market digests. Update content not visible from snippet. **Open thread in Gmail to review.** See [[family/active-todos]].
