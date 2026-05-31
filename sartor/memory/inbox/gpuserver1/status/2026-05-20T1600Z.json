@@ -1,0 +1,8 @@
+{
+  "ts": "2026-05-20T16:00:09+00:00",
+  "script": "gather_mirror.sh",
+  "pull_ok": true,
+  "gpu_temp_c": "52",
+  "disk_home_pct": "43",
+  "vastai_machines_raw": "ID     #gpus  gpu_name         disk  hostname          driver      reliab  veri      ip            geoloc          reports  gpuD_$/h  gpuI$/h  rdisc  netu_$/TB  netd_$/TB  occup\n52271  1      RTX_5090         1334  gpuserver1        570.144     0.9803  verified  100.1.100.63  New_Jersey,_US  5        0.35      0.30     0.00   3.00       2.00       R_   \n97429  2      RTX_PRO_6000_WS  3352  rtxpro6000server  580.126.09  0.9672  verified  100.1.100.63  New_Jersey,_US  -        1.20      1.00     0.40   0.00       0.00       x_x_ \n"
+}
