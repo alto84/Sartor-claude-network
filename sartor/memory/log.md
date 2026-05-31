@@ -911,6 +911,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: all 5 live. No events new vs run 148 first pass. P0 carry-forwards unchanged.
 - Pages updated: `family/vasu.md` (Father's Day + Jun 1-5 appended, frontmatter bumped to run 148), `family/vishala.md` (Jun 5 correction appended, frontmatter bumped to run 148), `daily/2026-05-30.md` (second-pass appended), `data/gather-alerts.md` (written — 2 P0, 3 P1, 4 INFO), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 
+## [2026-05-31] ingest | personal-data-gather run 153: Chase stmt 7691; calendars stable; P0s unchanged
+- Sources: Gmail (newer_than:1d, 50 threads), all 5 Google Calendars (May 31–Jun 7). SSH unavailable (cloud runner).
+- Facts gathered: 1 (FINANCIAL — Chase statement account 7691, 05:13 UTC, new since run 152 cutoff)
+- Calendar: all 5 live, no new events. Vishala Jun 5 UTC→EDT conversion confirmed: 8 AM–2 PM EDT (run 149 "noon" was UTC conversion error; run 151 correction stands).
+- P0 carry-forwards: 990-N overdue 16+ days; KYC Jun 4 (4 days); vast.ai 124192 GPU complaint; MKA balance.
+- Pages updated: `daily/2026-05-31.md` (run 153 appended), `ALTON.md` (Chase stmt 7691 appended, run 153), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+
 ## [2026-05-31] ingest | personal-data-gather run 152 (second pass): Pool Guyz bill; vast.ai 124192 GPU complaint; Gaithersburg Marriott stay
 - Sources: Gmail (newer_than:2d post-midnight threads), all 5 Google Calendars (May 31–Jun 7). SSH unavailable (cloud runner).
 - Facts gathered: 4 (1 FINANCIAL/ACTION — Pool Guyz billing statement; 1 BUSINESS/ACTION — vast.ai Machine 124192 GPU complaint; 1 INFORMATIONAL — Gaithersburg Marriott stay May 26–28; 1 FINANCIAL — Chase statement account 8189)

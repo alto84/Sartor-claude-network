@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-05-31
 updated_by: personal-data-gather
-run: 152
+run: 153
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -305,3 +305,8 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] Chase statement available — account ending 8189 (2026-05-31)
 > no.reply.alerts@chase.com (2026-05-31 01:44 UTC): latest statement now available at chase.com. Account 8189 was used for the Sante Total Gaby $10,000 wire on 2026-05-26 (run 132). Review statement for any anomalies.
+
+## Latest from gather (2026-05-31) — run 153
+
+> [!fact] Chase statement available — account ending 7691 (2026-05-31)
+> no.reply.alerts@chase.com (2026-05-31 05:13 UTC): latest statement now available for account ending 7691. Second Chase statement today (8189 captured run 152 at 01:44 UTC). Account 7691 not yet identified in memory — review at chase.com to confirm account type (personal card, business card, or checking) and flag any anomalies.
