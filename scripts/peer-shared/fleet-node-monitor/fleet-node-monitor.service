@@ -1,6 +1,6 @@
 [Unit]
 Description=Sartor fleet host-local self-monitor (one 5-min snapshot per tick)
-Documentation=https://github.com/alto84/Sartor-claude-network scripts/peer-shared/fleet-node-monitor/
+Documentation=https://github.com/alto84/Sartor-claude-network/tree/main/scripts/peer-shared/fleet-node-monitor
 After=network-online.target
 
 [Service]
