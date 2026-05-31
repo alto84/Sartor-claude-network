@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-30
+updated: 2026-05-31
 updated_by: personal-data-gather
-run: 150
+run: 151
 
 status: active
 priority: p1
@@ -1305,3 +1305,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Amazon shipments confirmed (run 148 — informational)
 > Two shipments dispatched for May 29 overnight order: "Spin Art Machine for Kids" (04:32 UTC) and "Skillmatics Aqua Puffs – 3D..." (04:32 UTC). Both confirmed shipped. No action needed.
+
+## Latest from gather (2026-05-31) — run 151
+
+> [!fact] GOOGL SOLD CALL confirmed — 2026-05-30
+> Fidelity trade confirmation (Fidelity.Investments@mail.fidelity.com, 2026-05-30 14:18 UTC): "SOLD CALL (GOOGL) ALPHABET INC CAP", Account XXXXX8998. This closes or rolls the position flagged in the [!deadline] above ("GOOGL May $285C roll decision"). Exact strike/expiry/premium not visible from email snippet — retrieve from Fidelity portal for tax records. See [[ALTON]].
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1752401: Adamantinomatous Craniopharyngioma
+> jobrien@guidepointglobal.com (2026-05-29 19:41 UTC). Expert consultation request. This is Alton's third Guidepoint request this year (prior: #1718071 Pediatric Low-Grade Glioma run 6; #1732882 Global Oncology Specialists run 55). Neuro-oncology adjacent — respond to accept or decline. See [[ALTON]].
+
+> [!todo] P2 — Jackrabbit / Tumble Zone summer camp registration open
+> noreply@jackrabbittech.com (2026-05-30 22:50 UTC): 9 weeks, June 22–August 20, 2026. Monday–Thursday only. Day rate $50, weekly rate $180 M-Th. Tumble Zone gymnastics affiliation (same sender as prior Gym Day notices). Relevant for [[family/vishala|Vishala]] (gymnastics interest, spring session running through June 4). Evaluate whether to register for any weeks before spots fill.

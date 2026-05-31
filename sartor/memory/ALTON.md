@@ -2,9 +2,9 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-05-28
+updated: 2026-05-31
 updated_by: personal-data-gather
-run: 140
+run: 151
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -289,3 +289,11 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact]
 > **Hiive: Anthropic secondary market — new low ask $1,250/share (2026-05-22).** Hiive market digest (2026-05-22 19:10 ET): Anthropic has 4 sell orders listed at **$1,250–$1,600 per share**; Hiive flagged "New low ask" (floor dropped below prior level). 1 buyer-seller match completed in past 24 hours. Alton watches Anthropic on both Hiive and EquityZen (EquityZen reconfirmation request sent 2026-04-29, per run 27). No action required; noting the new floor for context. Includes fund opportunities (accredited investors only). See [[business/solar-inference]].
+
+## Latest from gather (2026-05-31) — run 151
+
+> [!fact]
+> **Fidelity GOOGL SOLD CALL — 2026-05-30.** Trade confirmation email (Fidelity.Investments@mail.fidelity.com, 14:18 UTC): "SOLD CALL (GOOGL) ALPHABET INC CAP", Account XXXXX8998. Closes or rolls the GOOGL short-call position flagged in [[family/active-todos]] since run 24 (originally May $285C, 20 contracts). Exact strike/expiry/premium requires Fidelity portal pull for tax records. Notify [[people/jonathan-francis|Jonathan Francis]] at next CPA touchpoint if this is a material realized gain/loss event.
+
+> [!todo] Guidepoint consultation #1752401 — Adamantinomatous Craniopharyngioma
+> jobrien@guidepointglobal.com (2026-05-29 19:41 UTC). Third Guidepoint request this year. Prior: #1718071 (Pediatric Low-Grade Glioma, run 6), #1732882 (Global Oncology Specialists, run 55). Accept or decline.

@@ -910,3 +910,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - New Newegg item: order #448349603 motherboard+CPU (1 of 4 items delivered; 3 pending). Informational pending business/personal context.
 - Calendar: all 5 live. No events new vs run 148 first pass. P0 carry-forwards unchanged.
 - Pages updated: `family/vasu.md` (Father's Day + Jun 1-5 appended, frontmatter bumped to run 148), `family/vishala.md` (Jun 5 correction appended, frontmatter bumped to run 148), `daily/2026-05-30.md` (second-pass appended), `data/gather-alerts.md` (written — 2 P0, 3 P1, 4 INFO), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+
+## [2026-05-31] ingest | personal-data-gather run 151
+- Sources: Gmail (newer_than:2d, 50 threads), all 5 Google Calendars (May 31–June 7). SSH unavailable (cloud runner).
+- Facts gathered: 5 (1 FINANCIAL — Fidelity GOOGL SOLD CALL; 1 FINANCIAL — Cenlar autopay Jun 1; 1 BUSINESS — Guidepoint #1752401; 1 FAMILY — Amazon deliveries delivered; 1 FAMILY — Jackrabbit summer camp open)
+- New deadlines: Chase/Sante Total KYC 2026-06-04 (P0, 4 days — carry-forward escalated); Guidepoint #1752401 respond (P1)
+- Calendar: all 5 live. No new events vs run 147/148/150. Jun 5 graduation timing already corrected in run 148.
+- P0 carry-forwards: 990-N overdue; vast.ai 124192 offline; KYC Jun 4; MKA $5,340.
+- **INFORMATIONAL (skipped):** LinkedIn alerts, Costco receipts, AAA offer, Medscape CME, JAMA newsletter, Tipitinas, NJ Pride FC, Rotten Tomatoes, Star Citizen, Warframe, Code Ninjas, Andy Kim, M3 surveys, USPS digest, Hiive update.
+- Pages updated: `daily/2026-05-31.md` (created), `family/active-todos.md` (3 items appended, frontmatter bumped to run 151), `ALTON.md` (GOOGL sold + Guidepoint appended, frontmatter bumped to run 151), `data/gather-alerts.md` (created — 3 P0, 4 P1, 3 P2), `data/heartbeat-log.csv` (created), `log.md` (this entry)
