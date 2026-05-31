@@ -25,6 +25,7 @@ Maintained by the [[matter-tracker]] skill. Pairs with [[tax-counsel]] for IRAC 
 | [insurance-commercial-coverage](insurance-commercial-coverage.md) | Homeowner's (Selective) voids commercial GPU op; tax/insurance tension | HIGH | 2026-06-15 | 2026-05-28 |
 | [registered-agent-nj-standing](registered-agent-nj-standing.md) | NJ registered-agent lapse / dissolution risk post-LegalZoom; ITC ownership posture | HIGH | 2026-09-06 | 2026-05-28 |
 | [heloc-163h3-tracing](heloc-163h3-tracing.md) | §163(h)(3) HELOC use-of-proceeds tracing | HIGH | 2026-10-15 | 2026-05-08 |
+| [portfolio-restructure-2026-05](portfolio-restructure-2026-05.md) | Fidelity options-book restructure — §1092 harvest, §1259 exposure, upside roll-ups | MEDIUM | 2026-12-31 | 2026-05-31 |
 | [climate-first-loan-llc-transfer](climate-first-loan-llc-transfer.md) | Climate First Loan deductibility post-LLC transfer | MEDIUM | 2026-07-04 | 2026-05-08 |
 | [q2-2026-estimated-tax](q2-2026-estimated-tax.md) | Q2 2026 estimated tax (wage bump + new un-withheld LLC rental income) | MEDIUM | 2026-06-15 | 2026-05-28 |
 
