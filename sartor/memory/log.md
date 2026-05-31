@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-30
+updated: 2026-05-31
 updated_by: personal-data-gather
-run: 149
+run: 154
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -910,6 +910,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - New Newegg item: order #448349603 motherboard+CPU (1 of 4 items delivered; 3 pending). Informational pending business/personal context.
 - Calendar: all 5 live. No events new vs run 148 first pass. P0 carry-forwards unchanged.
 - Pages updated: `family/vasu.md` (Father's Day + Jun 1-5 appended, frontmatter bumped to run 148), `family/vishala.md` (Jun 5 correction appended, frontmatter bumped to run 148), `daily/2026-05-30.md` (second-pass appended), `data/gather-alerts.md` (written — 2 P0, 3 P1, 4 INFO), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+
+## [2026-05-31] ingest | personal-data-gather run 154: no new facts; data/ dir recreated (cloud clone); P0s stable
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 31–Jun 7). SSH unavailable (cloud runner).
+- Facts gathered: 0. All queried threads already captured in runs 151–153. No new calendar events.
+- Note: `data/` directory was absent from cloud container (gitignored). Recreated; `data/gather-alerts.md` and `data/heartbeat-log.csv` written fresh from current P0 set.
+- P0 carry-forwards (6): 990-N overdue; KYC Jun 4 (4 days); vast.ai 124192 GPU complaint; MKA $5,340; Pool Guyz bill amount unknown; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-31.md` (run 154 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 
 ## [2026-05-31] ingest | personal-data-gather run 153: Chase stmt 7691; calendars stable; P0s unchanged
 - Sources: Gmail (newer_than:1d, 50 threads), all 5 Google Calendars (May 31–Jun 7). SSH unavailable (cloud runner).
