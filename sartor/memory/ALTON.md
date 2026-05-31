@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-05-31
 updated_by: personal-data-gather
-run: 151
+run: 152
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -297,3 +297,11 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!todo] Guidepoint consultation #1752401 — Adamantinomatous Craniopharyngioma
 > jobrien@guidepointglobal.com (2026-05-29 19:41 UTC). Third Guidepoint request this year. Prior: #1718071 (Pediatric Low-Grade Glioma, run 6), #1732882 (Global Oncology Specialists, run 55). Accept or decline.
+
+## Latest from gather (2026-05-31) — run 152
+
+> [!fact] Gaithersburg Marriott stay — May 26–28, 2026
+> Post-stay survey from guestsurveys@feedback-marriott.com (2026-05-30 22:56 UTC): Gaithersburg Marriott Washingtonian Center, May 26–28, 2026 (2 nights). Gaithersburg MD is near FDA White Oak campus and AZ Gaithersburg/Rockville offices — likely an AZ or FDA-adjacent meeting during the Boston trip week. Survey expires June 13, 2026. Marriott Bonvoy member 831843162.
+
+> [!fact] Chase statement available — account ending 8189 (2026-05-31)
+> no.reply.alerts@chase.com (2026-05-31 01:44 UTC): latest statement now available at chase.com. Account 8189 was used for the Sante Total Gaby $10,000 wire on 2026-05-26 (run 132). Review statement for any anomalies.

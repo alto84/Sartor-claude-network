@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-05-31
 updated_by: personal-data-gather
-run: 151
+run: 152
 
 status: active
 priority: p1
@@ -1316,3 +1316,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] P2 — Jackrabbit / Tumble Zone summer camp registration open
 > noreply@jackrabbittech.com (2026-05-30 22:50 UTC): 9 weeks, June 22–August 20, 2026. Monday–Thursday only. Day rate $50, weekly rate $180 M-Th. Tumble Zone gymnastics affiliation (same sender as prior Gym Day notices). Relevant for [[family/vishala|Vishala]] (gymnastics interest, spring session running through June 4). Evaluate whether to register for any weeks before spots fill.
+
+## Latest from gather (2026-05-31) — run 152
+
+> [!todo] ACTION_REQUIRED — The Pool Guyz: billing statement received
+> billing@thepoolguyznj.com (2026-05-31 03:20 UTC): statement attached as PDF. Amount not visible in email body — open PDF in Gmail to confirm. Payment options: Zelle to Thepoolguyznj@gmail.com (preferred); Venmo @thepoolguyz (Matt Weber, last 4: 3954); check payable to The Pool Guyz, 184 S Livingston Ave, Suite 9 #356, Livingston NJ 07039. See [[ALTON]].
+
+> [!warning] ESCALATED — vast.ai Machine 124192: GPU 100% usage customer complaint
+> console@mg.vast.ai (2026-05-31 03:15 UTC): customer complaint on Machine 124192, Instance ID 38687010. "GPUs are already at 100% usage with just logging in." Machine 124192 was reported offline in run 142 (2026-05-28). Now back online but in degraded state — customer rating risk. SSH to gpuserver1 and rtxpro6000server, run `~/.local/bin/vastai show machines` to enumerate, identify machine 124192, and remediate. See [[business/solar-inference]].
