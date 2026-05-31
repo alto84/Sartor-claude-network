@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-05-29
-updated_by: personal-data-gather
+updated: 2026-05-31
+updated_by: autodream
 last_verified: 2026-05-02
 status: active
 next_review: 2026-05-12
@@ -628,3 +628,6 @@ No git push (no credentials) - awaiting Rocinante curator commit
 
 > [!fact]
 > **Ubiquiti Cloud Gateway Max ordered (Amazon, 2026-05-29 03:08 UTC).** New UniFi gateway/router appliance ordered. Context: follows the second GPU server build (Newegg #448349643 AM5 components, GIGABYTE RTX 5090). UCG-Max is likely for the new server's network segment or a broader UniFi LAN upgrade. Delivery window TBD. Review topology impact before deploying — the current setup has a Verizon Fios router as gateway with DMZ to gpuserver1; UCG-Max could replace or augment this. See [[projects/unifi-takeover-2026-05-01]] for existing UniFi controller config.
+
+## Consolidated from daily logs (2026-05-31)
+- [2026-05-30] (fact) Rest of week: not fully visible in snippet

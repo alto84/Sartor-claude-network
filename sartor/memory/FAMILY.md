@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-05-27
+updated: 2026-05-31
 updated_by: autodream
 last_verified: 2026-04-16
 status: active
@@ -222,3 +222,14 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 ## Consolidated from daily logs (2026-05-27)
 - [2026-05-27] (fact) Boston trip: (May 27–29) is underway 2026-05-27 (all-day Family calendar event, created 2026-04-28). No description, location, or attendee list on the calendar event itself.
 - [2026-05-27] (fact) MKA Valley Road carline road closure: (no-reply@mka.org, 2026-05-26 2:38 PM ET): closure on Valley Road between Brunswick and Wendover, overrunning its 3 PM scheduled end, causing extra volume on Brunswick Road. Carline running with delays. Boston trip covers 5/27–5/29; plan alternate route for return carline (first school carline would be Mon 6/1 or if kids return earlier).
+
+## Consolidated from daily logs (2026-05-31)
+- [2026-05-30] (fact) Category:: FAMILY
+- [2026-05-30] (fact) Route:: family/vasu
+- [2026-05-30] (fact) Category:: FAMILY
+- [2026-05-30] (fact) Category:: FAMILY
+- [2026-05-30] (fact) Route:: family/vayu
+- [2026-05-30] (fact) Category:: FAMILY
+- [2026-05-30] (fact) Route:: family/vishala
+- [2026-05-30] (fact) Category:: FAMILY
+- [2026-05-31] (fact) "Spin Art Machine for Kids"

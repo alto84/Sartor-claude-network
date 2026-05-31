@@ -452,3 +452,17 @@ Records memory consolidation events: merges, archives, and prune operations.
 - changes:
   - LEARNINGS.md: +3 facts
 
+## Run: 2026-05-31 03:07:53
+- dry_run: False
+- facts_gathered: 17
+- facts_written: 13
+- files_updated: 4
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+- changes:
+  - FAMILY.md: +9 facts
+  - LEARNINGS.md: +2 facts
+  - MACHINES.md: +1 facts
+  - ASTRAZENECA.md: +1 facts
+
