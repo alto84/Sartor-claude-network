@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-01
 updated_by: personal-data-gather
-run: 159
+run: 160
 
 status: active
 priority: p1
@@ -1345,6 +1345,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ACTION_REQUIRED — LinkedIn: 3 messages awaiting response
 > messaging-digest-noreply@linkedin.com (2026-05-31 14:03 UTC): 3 messages pending, "Ashley just messaged you." First capture of messaging digest (not job alert digest). Identity of "Ashley" unknown from snippet — likely recruiter or professional contact. Log in to LinkedIn Messages to review and respond. See [[ALTON]].
+
+## Latest from gather (2026-06-01) — run 160
+
+> [!todo] P2 — MKA Middle School Supplies: order by 2026-06-30
+> Veracross / Daniella Kessler (dkessler@mka.org), 2026-06-01 12:00 UTC: "Order your Middle School student supplies for next year from now until Tuesday, June 30." PAMKA-sponsored supply program. Relevant to [[family/vayu|Vayu]] (age 10, entering 5th grade / MKA middle school in fall 2026). Order at PAMKA/Veracross portal before June 30.
+
+> [!fact] Amazon deliveries confirmed — Livia gift likely ready
+> Spin Art Machine for Kids and Skillmatics Aqua Puffs both confirmed delivered May 30 (run 148 had "shipped"). Livia Birthday Party is Jun 7, 3–6 PM at unknown location. If these are the intended gift, it is in hand. Confirm with Aneeta: (a) are these the Livia gift, (b) party location.
+
+> [!warning] KYC DEADLINE T-3 DAYS — carry-forward run 160
+> Contact Pavel Manrique **NOW**: 973-783-5062 / pavel.p.manrique@chase.com, Chase Montclair 19 N Fullerton Ave. **Deadline 2026-06-04.** Risk: Sante Total account freeze. See [[business/sante-total]].
 
 ## Latest from gather (2026-06-01) — run 159
 
