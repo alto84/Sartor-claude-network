@@ -466,3 +466,12 @@ Records memory consolidation events: merges, archives, and prune operations.
   - MACHINES.md: +1 facts
   - ASTRAZENECA.md: +1 facts
 
+## Run: 2026-06-01 03:06:13
+- dry_run: False
+- facts_gathered: 17
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+
