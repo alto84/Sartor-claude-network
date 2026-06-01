@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-31
+updated: 2026-06-01
 updated_by: personal-data-gather
-run: 156
+run: 157
 
 status: active
 priority: p1
@@ -1337,3 +1337,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ACTION_REQUIRED — Hiive Fund Investment update (family-shared fund)
 > oliversartor@icloud.com (2026-05-30 01:37 UTC): Oliver Sartor, MD forwarded a Hiive fund investment update from Sean Jones (sean.jones@mail.hiive.com) to Alton and Sissy Sartor (sissy.sartor@gmail.com). Subject: "Fwd: Update on Your Hiive Fund Investment important." This appears to be a shared family investment position (Oliver + Alton + Sissy) in a Hiive-managed fund — distinct from solo pre-IPO digests. **Open thread in Gmail to review update content.** Contact Oliver Sartor at 504-355-7970 if clarification needed. See [[ALTON]].
+
+## Latest from gather (2026-06-01) — run 157
+
+> [!warning] KYC DEADLINE T-3 DAYS — contact Chase Montclair NOW
+> 2026-06-04 is Thursday. **Three days remaining.** Chase/Sante Total KYC deadline. Contact Pavel Manrique at Chase Montclair branch immediately. Carry-forward P0 since run 146 with no recorded resolution. Risk: Sante Total account freeze. See [[business/sante-total]].
+
+> [!todo] ACTION_REQUIRED — LinkedIn: 3 messages awaiting response
+> messaging-digest-noreply@linkedin.com (2026-05-31 14:03 UTC): 3 messages pending, "Ashley just messaged you." First capture of messaging digest (not job alert digest). Identity of "Ashley" unknown from snippet — likely recruiter or professional contact. Log in to LinkedIn Messages to review and respond. See [[ALTON]].

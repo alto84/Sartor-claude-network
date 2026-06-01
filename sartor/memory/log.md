@@ -960,3 +960,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forwards (unchanged): 990-N overdue; KYC Jun 4 (4 days); MKA $5,340; vast.ai 124192 GPU complaint; Disney ADR; Pool Guyz bill.
 - Note: `data/` dir absent from cloud clone; recreated this run.
 - Pages updated: `daily/2026-05-31.md` (run 156 appended), `ALTON.md` (run 156 appended — frontmatter bumped), `family/active-todos.md` (run 156 appended — frontmatter bumped), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 157
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 1–8). SSH unavailable (cloud runner).
+- Facts gathered: 2 new (1 ACTION_REQUIRED — LinkedIn 3 messages "Ashley"; 1 P0 escalation — KYC deadline now T-3 days).
+- Calendar: all 5 live. No new events vs runs 147–156. All Jun 2–7 events stable. Timing corrections (graduation 8 AM; Livia 3 PM) carry forward as correct.
+- P0 carry-forwards: 990-N overdue; KYC 2026-06-04 (T-3 CRITICAL); vast.ai 124192 GPU complaint; MKA $5,340; Pool Guyz bill; Disney ADR; Hiive fund unread.
+- **INFORMATIONAL (skipped):** Cenlar Jun 1 (already run 151), Chase stmts 8189/7691/7785 (already run 156), QuickDeposit 8563 (already run 156), Schwab login (already run 155), Marriott Gaithersburg (already run 152), LinkedIn PV job alerts (already run 155), BMS email, JAMA newsletter, Substack AI Dark Output, Doximity Alzheimer's urine test, Hiive pre-IPO digest, NJ Pride FC / FIFA World Cup, Newegg promo, Vishala Family Safety no-activity (already run 155), Amazon deliveries (already run 148), Jackrabbit camp (already run 151).
+- Pages updated: `daily/2026-06-01.md` (created), `family/active-todos.md` (run 157 appended), `family/family-calendar.md` (week-of-June-1 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)

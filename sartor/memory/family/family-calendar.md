@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-05-30
+updated: 2026-06-01
 updated_by: personal-data-gather
-run: 150
+run: 157
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -780,3 +780,24 @@ New events confirmed from live Calendar API (Family calendar + Aneeta's calendar
 
 > [!note] Livia Birthday Party — Sun Jun 7, 7–10 PM ET
 > First entered 7-day lookahead window in run 150. Created 2026-04-15 by Aneeta. "Livia" likely the child from May 17 playdate ("Playdate with Livia and family"). Gift planning needed. See [[family/active-todos]].
+
+## Week of June 1 — confirmed live (run 157)
+
+> [!note] All 5 calendars pulled live. No new events. All timing corrections from runs 148 and 155 stand.
+
+| Date | Time ET | Event | Calendar | Notes |
+|------|---------|-------|----------|-------|
+| Mon 6/1 | Goddard day | Soccer theme | Goddard | Vasu |
+| **Tue 6/2** | 4:00–6:00 PM | Vasu dance performance (Goddard recital) | Family | Venue TBD — confirm with Goddard |
+| **Tue 6/2** | 7:00–9:00 PM | May term evening (MKA) | Family | Which child? Confirm with Aneeta |
+| Wed 6/3 | 8:00–11:00 PM | Aneeta Healing (recurring) | Aneeta | Aneeta unavailable 8–11 PM |
+| **Fri 6/5** | 8:00 AM – 2:00 PM | Vishala Third Grade Graduation | Family | **MAJOR EVENT** — parent attendance; MKA Brookside |
+| **Fri 6/5** | 6:00–7:30 PM | MKA Third Grade Graduation Party | Family | Sports Universe, 355 Eisenhower Pkwy, Livingston NJ. RSVP Evite. |
+| **Sun 6/7** | 3:00–6:00 PM | Livia Birthday Party | Family | Location unknown; gift needed; confirm with Aneeta |
+
+- Aneeta's Healing is Wed 8–11 PM — conflict with any late-Tuesday or Wed logistics
+- Jun 5 is a long day: graduation 8 AM–2 PM, 4-hour gap, party 6–7:30 PM. Plan accordingly.
+- Livia Birthday Party location not in event; confirmed 3–6 PM EDT per run 155 UTC correction.
+- Blue Sombrero (Vayu soccer): no events this week. Spring season appears concluded.
+- Alton primary calendar: no events this week.
+- Alton Tasks calendar: no tasks.
