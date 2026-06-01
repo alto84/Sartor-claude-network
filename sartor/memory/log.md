@@ -991,3 +991,29 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: all 5 live. Graduation 8 AM–2 PM confirmed. Livia party 3–6 PM confirmed. No new events.
 - P0 carry-forwards: 990-N overdue (17d); KYC 2026-06-04 (T-3); vast.ai 124192 GPU complaint; MKA $5,340; Pool Guyz bill; Disney ADR; Hiive fund unread.
 - Pages updated: `daily/2026-06-01.md` (run 159 prepended), `family/active-todos.md` (run 159 appended), `data/gather-alerts.md` (created — cloud clone), `data/heartbeat-log.csv` (created — cloud clone), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 160
+- Sources: Gmail (newer_than:2d, 40 threads), all 5 Google Calendars (Jun 1–8). SSH unavailable (cloud runner).
+- Facts gathered: 3 new (MKA Middle School Supplies deadline Jun 30 from Veracross Jun 1 8:00 AM ET; Amazon deliveries confirmed — Spin Art Machine + Skillmatics Aqua Puffs delivered May 30; USPS Informed Delivery 1 package arriving Jun 1)
+- New P2: MKA supplies order deadline Jun 30 (Vayu, rising 5th grade). Amazon gift items confirmed in hand for Livia party Jun 7.
+- Calendar: all 5 live. No new events vs run 159.
+- P0 carry-forwards (unchanged): KYC 2026-06-04 (T-3); 990-N overdue; vast.ai 124192; Pool Guyz bill; Disney ADR.
+- Pages updated: `daily/2026-06-01.md` (run 160 appended), `family/active-todos.md` (run 160 appended), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 161
+- Sources: Gmail (newer_than:2d, 50 threads), all 5 Google Calendars (Jun 1–8 + Jun 9 extended). SSH unavailable (cloud runner).
+- Facts gathered: 7 new (Chase wire $2,400 Berteau Zephir 8:37 AM ET; Guidepoint #1752401 ACP; HITLAB pharma roundtable Jun 12; MKA BBQ Jun 4; Aneeta "In office" Jun 9 all-day; SpotHero parking 35 W 33rd NYC Jun 1; Vasu dance teacher confirmation; Hiive Standard Fund II named)
+- New ACTION_REQUIRED: Guidepoint consultation respond/decline; HITLAB roundtable respond/decline.
+- New FINANCIAL: Chase wire $2,400 to Berteau Zephir — confirm Sante Total board authorization.
+- Calendar: +1 new event (Aneeta "In office" Jun 9–10 all-day, family calendar).
+- P0 carry-forwards (unchanged): KYC 2026-06-04 (T-3); 990-N overdue 17d; vast.ai 124192; Pool Guyz bill; Disney ADR.
+- Pages updated: `daily/2026-06-01.md` (run 161 appended), `family/active-todos.md` (run 161 appended), `family/vayu.md` (run 161 appended), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 162
+- Sources: Gmail (newer_than:2d, 50 threads), all 5 Google Calendars (Jun 1–8 + Jun 8–15 extended). SSH unavailable (cloud runner).
+- Facts gathered: 6 new (MKA Band instrument return Vayu; Goddard picture proofs Vasu; LinkedIn InMail CMO search; GitHub Claude app permissions request; Pool Guyz service completed Jun 1 safe-to-swim; Jackrabbit last week Jun 1–6)
+- New ACTION_REQUIRED: band instrument home before Jun 6; picture proofs pickup; LinkedIn CMO InMail; GitHub Claude app permissions.
+- Calendar: +1 new event in extended window (Aneeta SMART Quarterly Call Jun 10 12–1 PM ET, Zoom).
+- Graduation timing confirmed 5th consecutive run (8:00 AM–2:00 PM ET, raw UTC 12:00Z–18:00Z).
+- P0 carry-forwards (unchanged): KYC 2026-06-04 (T-3); 990-N overdue 17d; vast.ai 124192; Pool Guyz bill; Disney ADR.
+- Pages updated: `daily/2026-06-01.md` (run 162 appended), `family/active-todos.md` (run 162 appended), `family/vayu.md` (run 162 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md` (this entry)

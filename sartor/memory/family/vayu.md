@@ -4,7 +4,7 @@ entity: vayu
 name: "Vayu Sartor"
 updated: 2026-06-01
 updated_by: personal-data-gather
-run: 161
+run: 162
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -320,3 +320,8 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!fact] Screen time — week of May 22–28: 12h57m (+49% week-over-week)
 > Microsoft Family Safety (familysafety@microsoft.com, 2026-05-29 17:54 UTC). Vayu logged **12 hours 57 minutes** screen time for May 22–28 (~1.85h/day average). Prior week May 15–21 was 8h41m (run 110). Increase: +4h16m (+49%). Week included Boston trip May 27–29 — device use on trip unclear. Contrast: Vishala had zero screen activity last 7 days (also on Boston trip). Trend worth watching given prior ADHD context. See [[family/active-todos]].
+
+## Latest from gather (2026-06-01) — run 162
+
+> [!todo] ACTION_REQUIRED — Band: bring instrument home before Jun 6
+> m@mail3.veracross.com (Paul Murphy, MKA band teacher, ~4:00 PM ET Jun 1): "Thank you for a wonderful year! Continuing in band? Please take your instrument home & practice this summer!" Year-end instrument return — retrieve from MKA band room before June 6 (last class day). See [[family/active-todos]].

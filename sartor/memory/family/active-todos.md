@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-01
 updated_by: personal-data-gather
-run: 161
+run: 162
 
 status: active
 priority: p1
@@ -1395,3 +1395,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning] KYC DEADLINE T-3 DAYS — carry-forward run 159
 > See run 157 entry above. Unchanged. Contact Pavel Manrique NOW (973-783-5062). See [[business/sante-total]].
+
+## Latest from gather (2026-06-01) — run 162
+
+> [!todo] ACTION_REQUIRED — MKA Band: bring Vayu's instrument home before Jun 6
+> m@mail3.veracross.com (Paul Murphy, MKA band, ~4:00 PM ET Jun 1): "Continuing in band? Please take your instrument home & practice this summer!" Year-end instrument return. Retrieve from MKA band room before June 6. See [[family/vayu]].
+
+> [!todo] ACTION_REQUIRED — Goddard picture proofs: pick up from office
+> noreply@kaymbu.com (Alissa DelConte / Goddard, Jun 1 ~12:45 PM ET): "Picture proofs are here! Please stop by the office to pick up your child's proofs." For [[family/vasu|Vasu]] at Goddard. No hard deadline; stop by at next visit.
+
+> [!todo] ACTION_REQUIRED — LinkedIn InMail: Founding CMO, Mayo Clinic-funded AI diagnostics company
+> inmail-hit-reply@linkedin.com (Jun 1 ~2:55 PM ET). Subject: "Founding Chief Medical Officer Search – Mayo Clinic-Funded AI-Powered Diagnostics Company." New direct InMail; distinct from Ashley digest (run 157) and HITLAB invite (run 161). Log in to LinkedIn and respond or decline. See [[ALTON]].
+
+> [!todo] ACTION_REQUIRED — GitHub: Claude app requesting updated permissions
+> noreply@github.com (Jun 1 ~2:30 PM ET): "Updated Permissions Request: The GitHub App Claude is requesting additional access to your account." Review at github.com → Settings → Applications → Claude. Approve or deny. Relevant to [[MACHINES|infrastructure]].
+
+> [!fact] Pool Guyz — service completed Jun 1 at 12:45 PM, pool safe to swim
+> Service Log #36970678. Outstanding bill (run 152) is a separate carry-forward.
+
+> [!warning] KYC DEADLINE T-3 DAYS — carry-forward run 162
+> Contact Pavel Manrique **NOW**: 973-783-5062 / pavel.p.manrique@chase.com, Chase Montclair 19 N Fullerton Ave. **Deadline 2026-06-04 (THURSDAY).** Risk: Sante Total account freeze. See [[business/sante-total]].
