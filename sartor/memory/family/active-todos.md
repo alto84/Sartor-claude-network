@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-01
 updated_by: personal-data-gather
-run: 160
+run: 161
 
 status: active
 priority: p1
@@ -343,6 +343,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Vasu at Goddard — bugs/insects week
 > Three Kaymbu classroom moments today: "Creepy Crawly Patterns" (insect manipulatives + play doh), "CONSTRUCTION: insect houses" (nonfiction books + building), "Hugs from friends." [[family/vasu|Vasu]] appears engaged. No action needed.
+
+## Latest from gather (2026-06-01) — run 161
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1752401: Adamantinomatous Craniopharyngioma
+> jobrien@guidepointglobal.com, 2026-06-01 09:26 AM ET. ACP is a pediatric/young adult CNS tumor — within Alton's neurology scope. Typical 1-hour paid call; consulting income opportunity. Prior unanswered requests: #1732882 (Global Oncology), #1721928 (FcRn inhibitors), #1718071 (Low-Grade Glioma). Respond or decline this week. See [[business/az-career]].
+
+> [!todo] ACTION_REQUIRED — HITLAB pharma executive roundtable: June 12, 12:30–1:30 PM ET
+> LinkedIn invitation from Jerry Antimano (hit-reply@linkedin.com), 2026-06-01 11:02 AM ET. Closed-door virtual roundtable on electrolyte monitoring gaps (hyperkalemia, ECG) and drug safety. Directly relevant to AZ Global Patient Safety role. Respond via LinkedIn. If attending, block calendar Jun 12 12:30–1:30 PM ET. See [[business/az-career]].
+
+> [!fact] Chase wire $2,400 → BERTEAU ZEPHIR — Jun 1, 8:37 AM ET (confirm Sante Total authorization)
+> Account ...8189, Chase business banking. Recipient "Berteau Zephir" almost certainly the Sante Total Haiti contact named in run 71 (co-authored elderly-project grant proposal with Barbara Weis). If this is a Sante Total disbursement, confirm board authorization is on file per nonprofit governance rules. See [[business/sante-total]] and [[BUSINESS]].
+
+> [!note] MKA End-of-Year BBQ — Thursday June 4, free lunch for middle school students
+> Veracross (Daniella Kessler/m@mail4.veracross.com) 09:03 AM ET Jun 1: hot dogs, hamburgers, veggie burgers, salad, beverages. No parent attendance or payment needed. Relevant for [[family/vayu]] (Vayu, MKA middle school).
+
+> [!note] Aneeta "In office" — June 9 (Tuesday), all-day (Family calendar)
+> New event on Family calendar, creator aneetasax@gmail.com. Likely Neurvati in-office day. Confirm whether Alton needs to cover school pickup Jun 9. Alton also commutes to NYC Jun 9 (if standard 3-day pattern). Potential dual-parent coverage gap.
 
 ## Latest from gather (2026-05-30) — run 149
 

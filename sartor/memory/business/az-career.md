@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: az-career
-updated: 2026-04-09
-updated_by: Claude
+updated: 2026-06-01
+updated_by: personal-data-gather
 status: active
 priority: p2
 tags: [entity/employer, domain/career, status/active]
@@ -61,8 +61,19 @@ None of these are warm or in active conversation. This is the ambient recruiter 
 External paid consulting via Guidepoint Network:
 - **#1721928 Peptide Chemists / Oral FcRn Inhibitors** — 2026-04-07 and 2026-04-09 (twice)
 - **#1718071 Pediatric Low-Grade Glioma Market** — 2026-04-07
+- **#1732882 Global Oncology Specialists** — 2026-05-05 (otaylor@guidepointglobal.com; run 55)
+- **#1733233 Biosimulation Software/Service Market** — 2026-05-22 (Alvi Rahman; run 110; AZ conflict-of-interest flag)
+- **#1752401 Adamantinomatous Craniopharyngioma** — 2026-06-01 (jobrien@guidepointglobal.com; run 161) **→ OPEN, respond this week**
 
 Non-urgent but open. These are expert consulting gigs, typically 1-hour paid calls. Alton's medical + AI background positions him for these. Not career moves per se but worth tracking as a side revenue stream.
+
+## Latest from gather (2026-06-01) — run 161
+
+> [!todo] HITLAB pharma executive roundtable — June 12, 12:30–1:30 PM ET
+> LinkedIn invitation from Jerry Antimano (hit-reply@linkedin.com), 2026-06-01 11:02 AM ET. Closed-door virtual roundtable on electrolyte monitoring gaps (hyperkalemia, ECG + drug safety monitoring). Aligns with AZ Global Patient Safety role. Respond via LinkedIn. If attending, block calendar.
+
+> [!todo] Guidepoint #1752401 — Adamantinomatous Craniopharyngioma — OPEN
+> 2026-06-01 09:26 AM ET, jobrien@guidepointglobal.com. ACP is a rare pediatric/young adult CNS tumor. Within Alton's neuro-oncology scope. Respond or decline.
 
 ## Key contacts (external only)
 

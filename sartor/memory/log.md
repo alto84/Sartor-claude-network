@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-31
+updated: 2026-06-01
 updated_by: personal-data-gather
-run: 154
+run: 161
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-01] ingest | personal-data-gather run 161: wire $2,400 Berteau Zephir; Guidepoint ACP #1752401; HITLAB roundtable Jun 12; MKA BBQ Jun 4; Aneeta in-office Jun 9
+- Facts gathered: 7 new (wire transfer, Guidepoint #1752401, HITLAB roundtable, MKA BBQ, Aneeta in-office Jun 9, SpotHero parking, Vasu recital teacher-confirm)
+- New action items: Guidepoint #1752401 (respond this week), HITLAB roundtable Jun 12 (decision needed)
+- New calendar event: "In office" Jun 9 all-day (Family cal, Aneeta)
+- P0 carry-forwards: KYC 2026-06-04 (T-3 days); 990-N overdue 17d; vast.ai 124192 GPU complaint; Pool Guyz bill; Disney ADR
+- Pages updated: `daily/2026-06-01.md` (run 161 addendum), `family/active-todos.md`, `business/az-career.md`, `family/vayu.md`, `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 
 ## [2026-05-06] ingest | personal-data-gather run 60: iCloud full; Vasu pizza money; Goddard door access; Schwab TQQQ
 - Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 6–20), no SSH (gpuserver1 unreachable at time of run)

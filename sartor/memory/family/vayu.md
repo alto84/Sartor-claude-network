@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-05-30
+updated: 2026-06-01
 updated_by: personal-data-gather
-run: 148
+run: 161
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -32,6 +32,11 @@ Alton + Aneeta's oldest child. Age 10. Attends Montclair Kimberley Academy (MKA)
 
 > [!todo]
 > **Counselor / therapist search** — explosive ADHD/ODD specialization (not autism-focused). No email signal in last 30 days. May be via phone/text with Aneeta. Needs confirmation.
+
+## Latest from gather (2026-06-01) — run 161
+
+> [!fact] MKA End-of-Year BBQ — Thursday June 4, free lunch for all MS students
+> Veracross email (m@mail4.veracross.com) 2026-06-01 09:03 AM ET: "free barbecue lunch for all Middle School students on Thursday, June 4." Menu: hot dogs, hamburgers, veggie burgers, salad, beverages. No parent action needed; Vayu gets a free lunch that day.
 
 ## Latest from gather (2026-05-22) — run 108
 
