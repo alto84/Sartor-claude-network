@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-01
 updated_by: personal-data-gather
-run: 157
+run: 159
 
 status: active
 priority: p1
@@ -1345,3 +1345,25 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ACTION_REQUIRED — LinkedIn: 3 messages awaiting response
 > messaging-digest-noreply@linkedin.com (2026-05-31 14:03 UTC): 3 messages pending, "Ashley just messaged you." First capture of messaging digest (not job alert digest). Identity of "Ashley" unknown from snippet — likely recruiter or professional contact. Log in to LinkedIn Messages to review and respond. See [[ALTON]].
+
+## Latest from gather (2026-06-01) — run 159
+
+> [!fact] GRADUATION TIME TRIPLE-CONFIRMED — 8:00 AM – 2:00 PM ET, Friday June 5
+> Live Calendar API (run 159): `start: 2026-06-05T08:00:00-04:00, end: 2026-06-05T14:00:00-04:00`. Three consecutive runs (148, 157, 159) confirm **8:00 AM – 2:00 PM ET**. The "noon–6 PM" reading in the run 149 entry below is wrong — that was a misread. Use 8 AM for all logistics planning.
+> **June 5 full sequence for [[family/vishala|Vishala]]:**
+> - 8:00 AM – 2:00 PM — Third Grade Graduation, MKA Brookside (parent event; plan morning arrival)
+> - 6:00 – 7:30 PM — MKA Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ
+> 4-hour gap between events. Plan MKA → Livingston routing accordingly.
+
+> [!note] Calendar — run 159 week of June 1–8 (all 5 calendars confirmed live)
+> | Date | Time ET | Event | Notes |
+> |------|---------|-------|-------|
+> | Tue 6/2 | 4:00–6:00 PM | Vasu dance performance | Confirmed |
+> | Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Sequential; no conflict |
+> | Wed 6/3 | 8:00–11:00 PM | Aneeta "Healing" (recurring) | Aneeta calendar |
+> | **Fri 6/5** | **8:00 AM – 2:00 PM** | **Vishala graduation** | **8 AM confirmed** |
+> | **Fri 6/5** | **6:00–7:30 PM** | **MKA Graduation Party** | **Sports Universe Livingston** |
+> | Sun 6/7 | 3:00–6:00 PM | Livia Birthday Party | No location; gift needed; confirm with Aneeta |
+
+> [!warning] KYC DEADLINE T-3 DAYS — carry-forward run 159
+> See run 157 entry above. Unchanged. Contact Pavel Manrique NOW (973-783-5062). See [[business/sante-total]].

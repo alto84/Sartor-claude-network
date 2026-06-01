@@ -976,3 +976,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: all 5 live. No new events vs run 157. All Jun 2–7 events stable.
 - P0 carry-forwards: 990-N overdue (17 days); KYC 2026-06-04 (T-3 CRITICAL); vast.ai 124192 GPU complaint; MKA $5,340; Pool Guyz bill; Disney ADR; Hiive fund unread.
 - Pages updated: `daily/2026-06-01.md` (run 158 appended), `data/gather-alerts.md` (created — cloud clone), `data/heartbeat-log.csv` (created — cloud clone), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 159
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 1–8). SSH unavailable (cloud runner).
+- Facts gathered: 1 new (Vishala graduation time definitively confirmed 8:00 AM–2:00 PM via live API — supersedes conflicting run 149 reading of noon–6 PM; run 148/157 correction now triple-confirmed)
+- New deadlines: none. KYC T-3 (2026-06-04) unchanged. 990-N overdue 17 days.
+- Calendar: all 5 live. Graduation 8 AM–2 PM confirmed. Livia party 3–6 PM confirmed. No new events.
+- P0 carry-forwards: 990-N overdue (17d); KYC 2026-06-04 (T-3); vast.ai 124192 GPU complaint; MKA $5,340; Pool Guyz bill; Disney ADR; Hiive fund unread.
+- Pages updated: `daily/2026-06-01.md` (run 159 prepended), `family/active-todos.md` (run 159 appended), `data/gather-alerts.md` (created — cloud clone), `data/heartbeat-log.csv` (created — cloud clone), `log.md` (this entry)
