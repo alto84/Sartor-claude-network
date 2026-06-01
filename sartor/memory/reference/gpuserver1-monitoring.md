@@ -1,15 +1,17 @@
 ---
 type: reference
 entity: gpuserver1-monitoring
-updated: 2026-04-11
+updated: 2026-06-01
 updated_by: Claude
-status: active
+status: retired
 tags: [domain/gpu-business, domain/infra, meta/architecture]
 aliases: [gpuserver1 monitoring, Claude Code monitoring loop, sartor-monitoring]
 related: [gpuserver1-delegation, MULTI-MACHINE-MEMORY, MACHINES, BUSINESS]
 ---
 
 # gpuserver1 Recurring Monitoring System
+
+> **RETIRED 2026-06-01.** This Claude-driven 2-hour sweep is permanently retired (dormant since 2026-04-12; formally retired by Alton on 2026-06-01). Superseded by `fleet-node-monitor.sh` — a systemd-user timer running every 5 min on both hosts, emitting structured NDJSON with correct rental semantics (`current_rentals_running`, never misreads a running `C.*` as orphaned), graded health, P1/P2 inbox alerts, at zero per-run cost. The crontab line has been removed; the artifacts are archived on gpuserver1 at `~/sartor-monitoring.retired/` with a tombstone. This document is retained for historical rationale only. **Do not revive** — if a narrative digest is ever wanted, build a deterministic daily rollup over `sartor/memory/fleet-log/*.ndjson` instead of an unattended LLM sweep. Everything below describes the system as it operated 2026-04-11 → 2026-04-12.
 
 Claude Code-driven health monitoring for the GPU hosting business. Designed to run every 2 hours on gpuserver1 (dormant since 2026-04-12 — the `run_monitor.sh` cron was commented out in the EX-5 consolidation and the sweep folded into the host-local `fleet-node-monitor` systemd timer; re-enable per the Cron section if a narrative Claude sweep is wanted again). Emits a narrative report to the inbox, no git credentials required on the server.
 
