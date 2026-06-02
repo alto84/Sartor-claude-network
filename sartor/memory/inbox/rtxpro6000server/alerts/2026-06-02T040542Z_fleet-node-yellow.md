@@ -1,0 +1,26 @@
+---
+type: alert
+date: 2026-06-02
+from: fleet-node-monitor.sh (rtxserver)
+priority: P2
+tags: [domain/rtxserver, ops/monitoring, alert/fleet-node, machine/124192]
+---
+
+# Fleet node yellow: rtxserver (machine 124192)
+
+**Timestamp:** 2026-06-02T04:05:42Z
+**Reasons:** stale artifacts: running C.*=1 > rentals_running=0;;
+
+## Snapshot
+- rented: false  (rentals_running=0)
+- gpu temp max: 27C   util: 0%   fan: 30%
+- power: 370W (GPU 20W + idle 350W)   est_kwh: 0.03083
+- cpu temp: 39C   disk: 50%
+- list price: $0.8400000000000001/GPU   min_bid: $0.77   reliability: 0.9851584
+- earn/hr: $1.262488   earn/day: $34.967202
+- stale docker: 1   stale VM: 0   (running C.*=1 > rentals_running=0;)
+- vast.ai read: local (ok=1)
+
+Advisory only. fleet-node-monitor never removes containers/VMs. The 30s
+gpu-temp-logger.service remains the P0 thermal alerter; this is a coarse
+5-min self-report. Stale-artifact cleanup is docker-weekly-prune.sh (Sun 4am).
