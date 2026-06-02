@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-02
 updated_by: personal-data-gather
-run: 164
+run: 167
 
 status: active
 priority: p1
@@ -1466,3 +1466,43 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Pool pump | **Leave running 24/7** | Until Pool Guyz resets timers |
 > | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
 > | Leader Bank Escrow $5,366.83 | Decide pay/spread | By 2026-06-14 |
+
+## Latest from gather (2026-06-02) — run 167
+
+> [!todo] URGENT TONIGHT — Dress the Rainbow Day TOMORROW June 3 (MKA Primary)
+> MKA Primary School (m@mail4.veracross.com), 2026-06-02 13:21 ET: "Wednesday, June 3 — Dress the Rainbow Day." Vayu and Vishala both attend MKA and should wear rainbow/colorful outfits to school tomorrow. Pack tonight. See [[family/vayu]] and [[family/vishala]].
+
+> [!todo] ACTION_REQUIRED — Guidepoint #1754519: AI-powered Clinical Search Space
+> aquintiere@guidepointglobal.com, 2026-06-02 15:06 UTC. THIRD concurrent consultation request (alongside #1752401 ACP and #1754453 PV Space, both ~39h unanswered). Respond or decline within 24–48h. See [[ALTON]] and [[business/az-career]].
+
+> [!todo] ACTION_REQUIRED — MKA Fifth Grade Music Enrollment (Vayu)
+> pkutten@mka.org (Patricia Kutten), 2026-06-02 13:36 ET: Rising 5th graders must enroll in band, chorus, or strings. No hard deadline stated; handle before fall enrollment window closes. See [[family/vayu]].
+
+> [!todo] ACTION_REQUIRED — Wohelo camp prep: verify uniforms + trunk (Vishala)
+> heidi@wohelo.com, 2026-06-02 13:12 ET: "23 days until opening day!" (opens 2026-06-25). Camp expects uniforms received and ready to pack; trunk in living room or already at Lake Wohelo. Verify Vishala has uniforms and trunk is ready. Tuition check ($12,900) was mailed ~May 7; deposit confirmed May 10. See [[family/vishala]].
+
+> [!note] NJ Pride FC Summer Soccer — registration open for July 11 start
+> info@njpridefc.com, 2026-06-02 14:12 ET: 8-week summer season starts July 11 at Verona Park. Spots limited. Decide if Vayu is participating and register at njpridefc.com. See [[family/vayu]].
+
+> [!fact] Fidelity EFT RECEIVED — $10K from JPMorgan to account ending 8998 confirmed
+> Fidelity.Alerts@fidelity.com, 2026-06-02 12:09 ET. Transfer complete. Closes carry-forward from run 163. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 167)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **TOMORROW** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 18d | Was due 2026-05-15 |
+> | Dress the Rainbow Day | **TONIGHT** | Tomorrow Jun 3 |
+> | Guidepoint #1752401 (ACP) | ~39h unanswered | 48h from Jun 1 |
+> | Guidepoint #1754453 (PV Space) | ~39h unanswered | 48h from Jun 1 22:09 |
+> | Guidepoint #1754519 (AI Clin. Search) | NEW ~1h | 24–48h from Jun 2 15:06 |
+> | Vishala Graduation | **THIS FRIDAY** | 2026-06-05 8 AM |
+> | MKA 5th grade music enroll | NEW | Pre-fall |
+> | Wohelo uniforms/trunk | Verify | Camp opens Jun 25 |
+> | MKA Library books | Return by Jun 6 | **2026-06-06** |
+> | MKA Band instrument | Return by Jun 6 | **2026-06-06** |
+> | Disney ADR | Unknown | Window open May 17 |
+> | Pool pump | Leave 24/7 | Until Pool Guyz reset |
+> | Earnest loan $943.33 | Auto-pay confirm | 2026-06-20 |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
+> | NJ Pride FC summer soccer | Register? | July 11 start |

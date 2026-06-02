@@ -220,3 +220,11 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!fact] Screen activity — May 23–29: zero (Boston trip effect)
 > Microsoft Family Safety (familysafety@microsoft.com, 2026-05-30 02:08 UTC): "No activity was found for Vishala for the past seven days." Window May 23–29 overlaps with Boston trip May 27–29. Device was not in use during or after trip. Informational.
+
+## Latest from gather (2026-06-02) — run 167
+
+> [!todo] ACTION_REQUIRED — Wohelo camp prep: uniforms + trunk (opens June 25)
+> heidi@wohelo.com, 2026-06-02 13:12 ET: "23 days until opening day! What should you have done? Ordered and received uniforms, ready to pack them, trunk in the living room or at Lake Wohelo already." Camp opens 2026-06-25. Verify Vishala's camp uniforms are in hand and trunk is packed or en route. Tuition ($12,900 check) was mailed ~May 7; deposit confirmed received May 10. Contact: Heidi Gorton, heidigorton@gmail.com / heidi@wohelo.com. See [[family/active-todos]].
+
+> [!todo] TONIGHT — Dress the Rainbow Day tomorrow June 3
+> MKA Primary School email, 2026-06-02 13:21 ET. Pack rainbow/colorful outfit for tomorrow. See [[family/active-todos]].

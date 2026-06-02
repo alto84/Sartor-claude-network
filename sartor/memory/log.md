@@ -1054,3 +1054,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: all 5 live. No new events vs runs 163–165. Vasu dance recital TODAY 4:00–6:00 PM ET. Vishala graduation FRIDAY Jun 5.
 - Pages updated: `daily/2026-06-02.md` (run 166 addendum), `business/sante-total.md` (run 166 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-02] ingest | personal-data-gather run 167: Guidepoint #3; Fidelity EFT received; AZN trade; 5th grade music; Rainbow Day; Wohelo opens Jun 25
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 2–9). SSH unavailable (cloud runner).
+- Facts gathered: 9 new (Guidepoint #1754519 AI Clinical Search; Fidelity EFT $10K received/confirmed; Fidelity AZN call sold; MKA 5th grade music enrollment Vayu; Dress the Rainbow Day Jun 3; Wohelo opens Jun 25 Vishala; NJ Pride FC summer soccer Jul 11; Amazon shipments ×3; Livia party time correction 3–6 PM ET)
+- ACTION items surfaced: Guidepoint #1754519 new 24-48h window; MKA music enrollment (pre-fall); Dress the Rainbow Day TONIGHT; Wohelo uniforms/trunk check
+- P0 carry-forwards: KYC TOMORROW (2026-06-04); 990-N overdue 18d; Guidepoint ×3 active
+- Calendar: all 5 live, no new events. Correction: Livia Birthday Party Jun 7 is 3:00–6:00 PM ET (run 166 had UTC-to-ET error showing 7:00–10:00 PM)
+- Pages updated: `daily/2026-06-02.md` (run 167 addendum), `family/active-todos.md` (run 167), `family/vayu.md` (music enrollment, Rainbow Day, NJ Pride), `family/vishala.md` (Wohelo prep, Rainbow Day), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run

@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-06-01
+updated: 2026-06-02
 updated_by: personal-data-gather
-run: 162
+run: 167
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -37,6 +37,17 @@ Alton + Aneeta's oldest child. Age 10. Attends Montclair Kimberley Academy (MKA)
 
 > [!fact] MKA End-of-Year BBQ — Thursday June 4, free lunch for all MS students
 > Veracross email (m@mail4.veracross.com) 2026-06-01 09:03 AM ET: "free barbecue lunch for all Middle School students on Thursday, June 4." Menu: hot dogs, hamburgers, veggie burgers, salad, beverages. No parent action needed; Vayu gets a free lunch that day.
+
+## Latest from gather (2026-06-02) — run 167
+
+> [!todo] ACTION_REQUIRED — MKA Fifth Grade Music Enrollment
+> pkutten@mka.org (Patricia Kutten, MKA music), 2026-06-02 13:36 ET: "Students in fifth grade are enrolled in one of three yearlong musical tracks: band, chorus, or strings." Vayu is a rising 5th grader. Decision needed before fall enrollment. Choose and enroll — no hard deadline stated in email but likely tied to school admin timeline. See [[family/active-todos]].
+
+> [!todo] TONIGHT — Dress the Rainbow Day tomorrow June 3
+> MKA Primary School email, 2026-06-02 13:21 ET: "Wednesday, June 3 — Dress the Rainbow Day." Pack a rainbow/colorful outfit for tomorrow. See [[family/active-todos]].
+
+> [!note] NJ Pride FC Summer Soccer — starts July 11, Verona Park, 8 weeks
+> info@njpridefc.com, 2026-06-02 14:12 ET. Decide if Vayu is participating; register at njpridefc.com. Spots limited. See [[family/active-todos]].
 
 ## Latest from gather (2026-05-22) — run 108
 
