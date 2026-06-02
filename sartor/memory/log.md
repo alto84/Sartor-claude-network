@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-01
+updated: 2026-06-02
 updated_by: personal-data-gather
-run: 161
+run: 165
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1035,4 +1035,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Resolved: UPS lost package claim 1Z091C2R4220295437 CLOSED (delivered 2026-05-22, confirmed 2026-06-01)
 - P0 carry-forwards: KYC T-2 days (Jun 4); 990-N overdue 18d; Guidepoint ×2 (~25h unanswered); Disney ADR unknown
 - Pages updated: `daily/2026-06-02.md` (run 164 addendum), `family/active-todos.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`, `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-02] ingest | personal-data-gather run 165: Fidelity May statement; calendar confirmed
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 2–9). SSH unavailable (cloud runner).
+- Facts gathered: 1 new (Fidelity May 31 account statement available, account *****8998)
+- All major items already captured: Guidepoint ×2, pool pump, MKA library/band, KYC T-2, 990-N overdue 18d, picture proofs, Amazon Jun 3 delivery, pool status
+- Calendar: all 5 live. No new events. Same table as runs 163–164.
+- P0 carry-forwards: KYC 2026-06-04 (T-2, tomorrow); 990-N overdue 18d; Guidepoint ×2 (~26h unanswered)
+- Pages updated: `daily/2026-06-02.md` (run 165 addendum), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
