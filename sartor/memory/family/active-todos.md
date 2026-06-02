@@ -1,14 +1,14 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-05-25
-updated_by: personal-data-gather
+updated: 2026-06-02
+updated_by: claude (family-ops session)
 run: 123
+next_review: 2026-06-08
+freshness_swept: 2026-06-02
 
 status: active
 priority: p1
-next_review: 2026-06-01
-freshness_swept: 2026-05-28
 tags: [entity/family, status/active, priority/p1, domain/family]
 aliases: [Family TODOs, Family Action Items, Family Dashboard]
 related: [FAMILY, vayu, vishala, vasu, family-calendar, reference_solar_project]
@@ -18,7 +18,57 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 Live dashboard of time-sensitive family items, surfaced from Gmail and Calendar harvest on 2026-04-09. Reviewed weekly; items age out or move to the relevant kid's page once resolved.
 
-## 2026-05-28 freshness sweep
+## 2026-06-02 freshness sweep — CURRENT TRUTH
+
+Reconciles the 2026-05-28 sweep forward to today and folds in Alton's 2026-06-02 quick-notes batch. Calendar rows verified live against Google Calendar this session (Family + primary + Blue Sombrero). Dated `## Latest from gather` blocks below remain append-only history. The 5/28 sweep below is retained (superseded) per archive-not-collapse.
+
+### This week — fixed calendar events (live-verified 2026-06-02)
+| When | Event | Note |
+|------|-------|------|
+| **Mon 6/2 4:00–6:00 PM** | **Vasu dance performance** (Goddard) | Calendar literally says "time to be decided" — confirm exact call time with Goddard |
+| **Mon 6/2 7:00–9:00 PM** | "May term evening" (Family cal, created by Aneeta) | Owner/venue unspecified — confirm with Aneeta; watch for overlap if Vasu recital runs long |
+| **Wed 6/3** | Wacky Wednesday community dress-down (MKA) | Plan outfits for Vayu + Vishala |
+| **Thu 6/4** | **Sante Total / Chase KYC follow-up — DEADLINE** | Only hard deadline this week. Contact Pavel Manrique (973-873-9133). Account opened 5/6. |
+| **Fri 6/5 8:00 AM–2:00 PM** | **Vishala 3rd-grade closing / graduation** (MKA) | Parent attendance expected |
+| **Fri 6/5 6:00–7:30 PM** | 3rd Grade Graduation Party | Sports Universe, 355 Eisenhower Pkwy, Livingston NJ |
+| **~Fri 6/5** | UPS lost-package claim (1Z091C2R4220295437) | UPS response expected ~6/5 — monitor |
+| **Sun 6/7 3:00–6:00 PM** | Livia birthday party | — |
+
+(No Vayu soccer game this week — Blue Sombrero calendar empty.)
+
+### New items — Alton notes 2026-06-02
+| # | Item | Detail / cross-ref | Flag |
+|---|------|--------------------|------|
+| N1 | **2026 photo book** | Annual family photo book — create/order | new |
+| N2 | **Pay tuition + afterschool (kids)** | MKA (Vayu, Vishala) + Goddard (Vasu) + aftercare/aftercare-program fees | **[needs Alton]** amounts + due dates |
+| N3 | **Camp prep — Vayu medications** | Camp medication form + supply for Vayu (med detail stays internal per family privacy) | **[needs Alton]** |
+| N4 | **Plumber** | Outdoor pipes — open since 4/17 (spring-thaw failure). Call/confirm. | **[needs Alton]** confirm if resolved out-of-band |
+| N5 | **Sante Total finance update / church** | Treasurer finance update + a church-related item | **[needs Alton]** clarify the "church" piece |
+| N6 | **Disney trip — book flights** | 5 pax EWR/JFK → LAX or SNA, July 16–19. Nothing booked per [[disney-july-2026]]. Peak season; prices climbing weekly. | **[needs Alton]** book |
+| N7 | **Vishala — send to camp / finalize** | Wohelo (Vishala). Tuition $12,900 paid (check mailed 5/7); confirm forms complete + departure logistics. See [[vishala]]. | **[needs Alton]** confirm forms |
+| N8 | **Car — update registration** | NJ MVC vehicle registration renewal | **[needs Alton]** which vehicle + renewal date |
+| N9 | **Pay two parking tickets** | Two outstanding tickets | **[needs Alton]** municipality + amounts |
+| N10 | **Vayu counselor** | ADHD/ODD-specialized therapist search — long-open; unclear if Aneeta is leading via phone. See [[vayu]]. | **[needs Alton/Aneeta]** |
+
+### Carry-forward [needs Alton] — calibrated (gather can't see paper-check / CC / portal payments)
+| Item | Status 2026-06-02 | Flag |
+|------|-------------------|------|
+| **Disney ADR (Blue Bayou / character dining)** | Window open since 5/17 (day 16). Never confirmed booked. If not done, Blue Bayou almost certainly gone. | **[needs Alton]** confirm Nicol Stevenson booked |
+| **Magnus Health records (Vayu + Vishala, 2026-27)** | Enrollment-blocking language; flagged "act this week" 5/21. | **[needs Alton]** confirm submitted |
+| **Berman Home Systems $6,000 (Lutron #AAAO13216-03)** | 5/18 CC-payment promise; not a paper-check vendor, no confirmation visible. | **[needs Alton]** pay or reconfirm |
+| **Cadoo Medical PC $765.21** | Legitimate (run 120); unpaid per gather. | **[needs Alton]** pay via Tebra portal |
+| **Sante Total: Berteau $2,400 / Gaby $9,972** | Treasurer decision pending since mid-May. | **[needs Alton]** board/treasurer auth |
+| **Summer registrations** | NJ Aquatics swim lessons start 6/29 (communitypass.net); Montclair summer camp open. | optional — register before fill |
+
+### Resolved 2026-06-02
+- **Vayu MSI laptop UniFi block — REMOVED.** Alton confirmed Vayu is online fine and directed removal; `VayuMSILaptop` (`ac:19:8e:dd:29:e4`) unblocked via controller `unblock-sta` (verified `blocked: True → False`). The no-morning-media rule still stands — see [[vayu]].
+
+### Resolved-by-event since the 5/28 sweep (closed)
+Boston trip 5/27–5/29 (cat sitter, Vayu/Vishala/Vasu school logistics); Shakespeare Project MKA 5/29–5/30; Vishala Capstone Design Fair 5/29; Vishala/Amia sleepover 5/30–5/31; Sante Total Form 990-N (FILED 5/29, confirmed).
+
+---
+
+## 2026-05-28 freshness sweep — SUPERSEDED by 2026-06-02 (retained as history)
 
 Reconciles the live P0/P1 carry-forward table (last refreshed run 123, 2026-05-25) to today. The dated `## Latest from gather` blocks below are append-only history (archive-not-collapse) and are NOT rewritten; this section is the current truth for the open loops. No new facts invented — items with no gather signal are flagged **[needs Alton]**.
 

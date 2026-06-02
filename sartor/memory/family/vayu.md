@@ -284,6 +284,9 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 ## 2026-05-17 — No-morning-media rule and the MSI laptop block
 
+> [!done] 2026-06-02 — BLOCK REMOVED
+> Alton confirmed Vayu is using the internet fine and directed removal. `VayuMSILaptop` (`ac:19:8e:dd:29:e4`) unblocked via controller `cmd/stamgr` `unblock-sta` (verified `blocked: True → False`). The **no-morning-media rule below still stands** — only the network-level block was lifted; enforcement reverts to the household rule (and the queued Pi-hole time-of-day blocking if/when deployed).
+
 **Context.** The household has an agreed rule: no media for the kids in the morning before school. This morning Vayu woke up early and watched TV in the family room. The UniFi controller had been silently down since 2026-05-13 ~00:58, so there was no network record of it — Alton confirmed via the Disney+ account history.
 
 **Parent action (Alton).** Vayu's gaming laptop blocked at the UniFi controller:
