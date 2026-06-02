@@ -1045,3 +1045,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forwards: KYC 2026-06-04 (T-2, tomorrow); 990-N overdue 18d; Guidepoint ×2 (~26h unanswered)
 - Pages updated: `daily/2026-06-02.md` (run 165 addendum), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-02] ingest | personal-data-gather run 166
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 2–9). SSH unavailable (cloud runner).
+- Facts gathered: 4 new (Sante Total PayPal donation from Cary Grayson; Newegg order #448349643 unread from May 27; Amazon order content clarified — Hunter x Hunter Manga Set + 31 items; NJ Election Day June 3)
+- New FINANCIAL: Sante Total PayPal donation from Cary Grayson, Jun 2 05:53 CDT, Transaction 04802572545152812. Amount in snippet only — check PayPal dashboard. Updated [[business/sante-total]].
+- P0 carry-forwards: KYC TOMORROW (2026-06-04); 990-N overdue 18d; Guidepoint ×2 (~27h unanswered, 24–48h window).
+- Calendar: all 5 live. No new events vs runs 163–165. Vasu dance recital TODAY 4:00–6:00 PM ET. Vishala graduation FRIDAY Jun 5.
+- Pages updated: `daily/2026-06-02.md` (run 166 addendum), `business/sante-total.md` (run 166 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run

@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-27
+updated: 2026-06-02
 updated_by: personal-data-gather
-run: 132
+run: 166
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -275,3 +275,14 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!todo] ACTION_REQUIRED — ASAP — Berteau elderly funding (3 days since Barbara's follow-up)
 > Barbara Weis (dye2tie@verizon.net) follow-up 2026-05-23: increase to $800/month + send $2,400 upfront (3 months). Berteau reports situation "desperate." Alton must respond as Treasurer. CC: asmi60@lsuhsc.edu, alison.annette.smith@gmail.com. No disbursements without Alton's authorization. Also: Gaby $9,972 pending since 2026-05-12 (14 days no visible response).
+
+## Latest from gather (2026-06-02) — run 166
+
+> [!fact] PayPal donation received from Cary Grayson — Jun 2, 2026 05:53 CDT
+> Transaction ID: 04802572545152812. Payment received by Sante Total via PayPal from Cary Grayson. Amount not visible in email snippet; confirm in PayPal dashboard. Log for nonprofit accounting records. **Routing note:** Verify whether this payment landed in the PayPal account linked to the old Chase account or the new Chase account (opened 2026-05-06, KYC pending — see below). Donor "Cary Grayson" is new; no prior transactions in memory. Informational for board records; no disbursement action.
+
+> [!warning] KYC deadline TOMORROW — 2026-06-04
+> Chase/Sante Total account KYC documentation required by 2026-06-04 to avoid account restriction. Contact Pavel Manrique: 973-783-5062 / pavel.p.manrique@chase.com / 19 N Fullerton Ave Montclair. Carry-forward P0 since run 70 (2026-05-12).
+
+> [!warning] 990-N OVERDUE 18 days
+> Form 990-N for TY2025 was due 2026-05-15. Not filed per runs 22–165. File at IRS.gov → Tax Exempt Organization Search → File 990-N (e-Postcard). TY2025 gross receipts <$50K.
