@@ -1017,3 +1017,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Graduation timing confirmed 5th consecutive run (8:00 AM–2:00 PM ET, raw UTC 12:00Z–18:00Z).
 - P0 carry-forwards (unchanged): KYC 2026-06-04 (T-3); 990-N overdue 17d; vast.ai 124192; Pool Guyz bill; Disney ADR.
 - Pages updated: `daily/2026-06-01.md` (run 162 appended), `family/active-todos.md` (run 162 appended), `family/vayu.md` (run 162 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-02] ingest | personal-data-gather run 163
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 2–9). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Guidepoint #1754453 Pharmacovigilance Space; Fidelity $10K transfer JPMorgan→acct 8998; UCG Max confirmed delivered; MKA Primary School library book returns; Lambda/Hiive secondary-market opportunity)
+- New ACTION_REQUIRED: Guidepoint #1754453 (respond 24–48h); MKA library books (Vayu + Vishala, before Jun 6).
+- New FINANCIAL: Fidelity $10,000 in-transit transfer (informational).
+- KYC carry-forward escalated: T-3 → T-2 (deadline Thursday 2026-06-04).
+- Calendar: all 5 live. No new events. TODAY: Vasu dance 4–6 PM + MKA May term evening 7–9 PM. Graduation Jun 5 confirmed 6th consecutive run (8 AM–2 PM ET).
+- P0 carry-forwards: KYC 2026-06-04 (T-2); 990-N overdue 18d.
+- Pages updated: `daily/2026-06-02.md` (created), `family/active-todos.md` (run 163 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md` (this entry)

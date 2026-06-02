@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-01
+updated: 2026-06-02
 updated_by: personal-data-gather
-run: 162
+run: 163
 
 status: active
 priority: p1
@@ -1415,3 +1415,26 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning] KYC DEADLINE T-3 DAYS — carry-forward run 162
 > Contact Pavel Manrique **NOW**: 973-783-5062 / pavel.p.manrique@chase.com, Chase Montclair 19 N Fullerton Ave. **Deadline 2026-06-04 (THURSDAY).** Risk: Sante Total account freeze. See [[business/sante-total]].
+
+## Latest from gather (2026-06-02) — run 163
+
+> [!warning] KYC DEADLINE T-2 DAYS — 2026-06-04 (THURSDAY)
+> Contact Pavel Manrique **TODAY**: 973-783-5062 / pavel.p.manrique@chase.com, Chase Montclair 19 N Fullerton Ave. **Deadline is THURSDAY June 4.** Risk: Sante Total Chase account freeze. P0 carry-forward since run 70 (2026-05-12). See [[business/sante-total]].
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1754453: Pharmacovigilance Space
+> jobrien@guidepointglobal.com (Jack O'Brien), 2026-06-01 22:09 UTC. Client wants to learn about the pharmacovigilance software space — directly aligned with Alton's AZ Global Patient Safety role. Distinct from #1752401 (ACP, run 161) which is also outstanding. Respond or decline within 24–48h. Guidepoint policy: no AI tools during consultation. See [[ALTON]] and [[business/az-career]].
+
+> [!todo] ACTION_REQUIRED — MKA library book returns (Primary School)
+> MKA Primary School (Veracross ~19:01 UTC Jun 1): "all library books and blue bags to be returned and shelved for the summer." Have both Vayu and Vishala return library books to MKA before end of this week (~Jun 6). Distinct from band instrument return (run 162). See [[family/vayu]] and [[family/vishala]].
+
+> [!fact] Ubiquiti Cloud Gateway Max — DELIVERED (confirmed 2026-06-01 ~11:34 PM ET)
+> Amazon delivery confirmation. Closes USPS-package carry-forward from runs 158/160. Network hardware ready for installation. See [[MACHINES]].
+
+> [!fact] TODAY: Vasu dance performance 4:00–6:00 PM + May term evening (MKA) 7:00–9:00 PM
+> Both confirmed from Family calendar. Dance performance at Goddard (teacher Miss Kelsey). May term evening at MKA Brookside. Sequential; no logistical conflict.
+
+> [!note] Fidelity transfer — $10,000 from JPMorgan to account ending 8998 (in transit)
+> Initiated 2026-06-01 4:44 PM ET. Expected 1–3 business days. Informational; no action needed unless tracking expected settlement.
+
+> [!warning] 990-N OVERDUE 18 DAYS — file at IRS.gov → 990-N e-Postcard
+> Not filed per all runs 22–163. See [[business/sante-total]].
