@@ -1,1 +1,1 @@
-{"ts":"2026-06-02T04:16:01Z","host":"rtxserver","machine_id":124192,"health":"green","rented":false,"temp_max":28,"power_w":370,"util":0,"disk_pct":50,"stale_docker":0,"stale_vm":0,"vastai_ok":true,"reasons":null}
+{"ts":"2026-06-02T08:13:41Z","host":"rtxserver","machine_id":124192,"health":"green","rented":true,"temp_max":38,"power_w":371,"util":0,"disk_pct":50,"stale_docker":0,"stale_vm":0,"vastai_ok":true,"reasons":null}
