@@ -1027,3 +1027,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: all 5 live. No new events. TODAY: Vasu dance 4–6 PM + MKA May term evening 7–9 PM. Graduation Jun 5 confirmed 6th consecutive run (8 AM–2 PM ET).
 - P0 carry-forwards: KYC 2026-06-04 (T-2); 990-N overdue 18d.
 - Pages updated: `daily/2026-06-02.md` (created), `family/active-todos.md` (run 163 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-02] ingest | personal-data-gather run 164: pool pump action; Amazon Jun 3; UPS claim resolved; Schwab eStatement
+- Gmail: 40 threads scanned (newer_than:2d). New vs run 163: pool pump technician leave-running action, Amazon 32-item summer prep order arriving Jun 3, UPS claim 1Z091C2R4220295437 RESOLVED, Schwab eStatement account 186, Jackrabbit last week Jun 1–6
+- Calendar: All 5 calendars live. No new events vs run 163.
+- New action items: pool pump leave running 24/7; Amazon delivery Jun 3 10 AM–3 PM (be home)
+- Resolved: UPS lost package claim 1Z091C2R4220295437 CLOSED (delivered 2026-05-22, confirmed 2026-06-01)
+- P0 carry-forwards: KYC T-2 days (Jun 4); 990-N overdue 18d; Guidepoint ×2 (~25h unanswered); Disney ADR unknown
+- Pages updated: `daily/2026-06-02.md` (run 164 addendum), `family/active-todos.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`, `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run

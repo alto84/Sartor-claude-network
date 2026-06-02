@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-02
 updated_by: personal-data-gather
-run: 163
+run: 164
 
 status: active
 priority: p1
@@ -1438,3 +1438,31 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!warning] 990-N OVERDUE 18 DAYS — file at IRS.gov → 990-N e-Postcard
 > Not filed per all runs 22–163. See [[business/sante-total]].
+
+## Latest from gather (2026-06-02) — run 164
+
+> [!todo] ACTION_REQUIRED — Pool pump: leave running 24/7 until Pool Guyz resets timers
+> Pool Guyz service log #36970678 (Jun 1, Lexton Bifield, 973-558-3636): **"Leave pump running 24/7 till we reset timers."** Pool is safe to swim, water level OK. Do NOT set pump back to a scheduled/timed mode until technician returns to configure timers. Contact: thepoolguyznj@gmail.com / 973-558-3636.
+
+> [!fact] Amazon order #113-9629939-0784212 arriving TOMORROW June 3, 10 AM–3 PM
+> 32-item summer/vacation prep order to 85 Stonebridge Rd: Sun Bum SPF 50 sunscreen (adult + kids face stick), mosquito repellent bracelets (DEET-free), kids natural deodorant, aloe after-sun, Welly first aid kit (70-count), Tom's kids toothpaste 3-pack, hair ties (120), Hanes boys socks. Disney-trip prep items. **Plan for someone to be home or available June 3, 10 AM–3 PM.**
+
+> [!fact] UPS lost package claim 1Z091C2R4220295437 — RESOLVED
+> Claim closed 2026-06-02. Package from RICHARD ZHANG (reference AMS1111111111) confirmed delivered 2026-05-22, confirmed by Alton 2026-06-01. Remove from carry-forward tracking. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 164)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **T-2 DAYS** | **2026-06-04 (THURSDAY)** |
+> | Sante Total 990-N | OVERDUE 18d | Was due 2026-05-15 |
+> | Guidepoint #1752401 (ACP) | ~25h unanswered | 24–48h from Jun 1 |
+> | Guidepoint #1754453 (PV Space) | ~25h unanswered | 24–48h from Jun 1 22:09 |
+> | HITLAB roundtable Jun 12 | No reply | Respond to LinkedIn |
+> | Disney ADR | Unknown | Window open since May 17 |
+> | GitHub Claude permissions | Unanswered | None stated |
+> | MKA Band instrument | Return before Jun 6 | **2026-06-06** |
+> | MKA library books | Return this week | **~2026-06-06** |
+> | Goddard picture proofs | Pick up at office | No hard deadline |
+> | Pool pump | **Leave running 24/7** | Until Pool Guyz resets timers |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | By 2026-06-14 |
