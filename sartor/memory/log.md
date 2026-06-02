@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-02
 updated_by: personal-data-gather
-run: 165
+run: 168
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1062,4 +1062,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forwards: KYC TOMORROW (2026-06-04); 990-N overdue 18d; Guidepoint ×3 active
 - Calendar: all 5 live, no new events. Correction: Livia Birthday Party Jun 7 is 3:00–6:00 PM ET (run 166 had UTC-to-ET error showing 7:00–10:00 PM)
 - Pages updated: `daily/2026-06-02.md` (run 167 addendum), `family/active-todos.md` (run 167), `family/vayu.md` (music enrollment, Rainbow Day, NJ Pride), `family/vishala.md` (Wohelo prep, Rainbow Day), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-02] ingest | personal-data-gather run 168: PayPal security advisory; Dress Down Thu Jun 4; Newegg delivered; Guidepoint x3 window closing
+- Sources: Gmail (newer_than:1d + newer_than:4h, 30 threads), all 5 Google Calendars (Jun 2–9). SSH unavailable (cloud runner).
+- Facts gathered: 6 new (PayPal new device login Dallas TX; MKA dress-down Thu Jun 4 also; Newegg #448349643 delivered; Amazon QURIPE Manicure Set delivered; Amazon New Balance shipped; ABPN CC Program quarterly reminder)
+- Security advisory: PayPal new device login from Dallas TX 18:29 ET — likely Verizon FiOS geoIP artifact (NJ→TX), legitimate. Passkey created via Google Password Manager.
+- Action items: Dress Down Thu Jun 4 (in addition to Rainbow Day Wed Jun 3); ABPN portal check for CC deadline
+- P0 carry-forwards: KYC T-2 days (2026-06-04); 990-N overdue 18d; Guidepoint ×3 (two 44h stale, one 5h)
+- Calendar: all 5 live, no new events vs run 167. Table stands.
+- Pages updated: `daily/2026-06-02.md` (run 168 addendum, frontmatter bumped to run 168), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
