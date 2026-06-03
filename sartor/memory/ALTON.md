@@ -2,9 +2,9 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-05-31
+updated: 2026-06-03
 updated_by: personal-data-gather
-run: 156
+run: 172
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -335,3 +335,11 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!todo] ACTION_REQUIRED — Hiive Fund Investment update (family-shared fund)
 > oliversartor@icloud.com (2026-05-30 01:37 UTC): Oliver Sartor, MD (Director, Transformational Prostate Cancer Research Center, LCMC Health; 504-355-7970) forwarded a Hiive fund investment update from Sean Jones (sean.jones@mail.hiive.com) to Alton and Sissy Sartor (sissy.sartor@gmail.com). Subject: "Fwd: Update on Your Hiive Fund Investment important." Appears to be a shared family position in a Hiive-managed fund — distinct from solo Hiive pre-IPO market digests. Update content not visible from snippet. **Open thread in Gmail to review.** See [[family/active-todos]].
+
+## Latest from gather (2026-06-03) — run 172
+
+> [!fact] Fidelity BOUGHT Micron Technology Inc (MU) — 2026-06-03
+> Fidelity trade confirmation arrived Jun 3 7:14 AM ET. Action: BOUGHT, Security: MICRON TECHNOLOGY INC, Account: XXXXX8998. Share count and price not visible in snippet — full details require Fidelity login at netbenefits.com. Note this account also had a SOLD CALL (GOOGL) event on 2026-05-30 (run 149). Informational — no action unless reviewing portfolio allocation.
+
+> [!fact] Chase Credit Card (…1276) — statement available, $73.76 due 2026-06-27
+> no.reply.alerts@chase.com, Jun 3 4:22 AM ET. Statement balance $73.76. Minimum payment $40.00. Due date 2026-06-27. Auto-pay enrolled — no manual action required unless Alton wishes to pay full balance early. Previously logged Chase CC accounts: 7054 ($1,247.36 due 6/17), 8547 ($27,609.04 due 6/17, run 107). Account …1276 is a distinct card.

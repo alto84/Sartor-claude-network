@@ -1553,3 +1553,25 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
 > | HITLAB roundtable | No RSVP visible | 2026-06-12 |
 > | Disney ADR | Unknown | Window open May 17 |
+
+## Latest from gather (2026-06-03) — run 172
+
+> [!fact] Fidelity BOUGHT Micron Technology Inc (MU) — Jun 3, 2026
+> Trade confirmation: BOUGHT MICRON TECHNOLOGY INC, account XXXXX8998. Details require Fidelity login. See [[ALTON]].
+
+> [!fact] Chase CC (…1276) — $73.76 due 2026-06-27, auto-pay enrolled
+> Statement balance $73.76. Auto-pay active — no manual action needed. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 172) — KYC DUE TOMORROW
+> *Correction: run 171 labeled this "DUE TODAY" — current date is Jun 3, deadline is Jun 4.*
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **DUE TOMORROW** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 20 days | Was due 2026-05-15 |
+> | Guidepoint #1755573 (GLP-1) | Respond by Jun 4–5 | ~24–48h from Jun 3 05:36 UTC |
+> | Vishala Graduation | **THIS FRIDAY** | 2026-06-05 noon ET |
+> | MKA Library + Band instrument | Return Sat | **2026-06-06** |
+> | Livia Birthday Party | Sun, gift needed | 2026-06-07 3 PM ET |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
+> | HITLAB roundtable | No RSVP visible | 2026-06-12 |
+> | Disney ADR | Unknown | Window open May 17 |

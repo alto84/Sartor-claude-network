@@ -1100,3 +1100,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forwards: KYC DUE TODAY (2026-06-04); 990-N overdue 20d; Vishala Graduation FRIDAY; library/instrument Sat Jun 6.
 - Pages updated: `daily/2026-06-03.md` (run 171 appended), `family/active-todos.md` (run 171), `family/vishala.md` (run 171), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 172: Fidelity MU trade; Chase CC …1276 statement; KYC deadline correction
+- Sources: Gmail (newer_than:6h, 4 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 3 new (Fidelity BOUGHT Micron Technology MU account XXXXX8998; Chase CC …1276 $73.76 due 6/27 auto-pay; USPS 1 mailpiece + 2 packages arriving Jun 3)
+- Calendar: no changes vs run 171. All 5 calendars polled.
+- Correction: run 171 labeled KYC "DUE TODAY" — actual deadline 2026-06-04 (tomorrow as of Jun 3). Corrected in run 172.
+- P0 carry-forwards: KYC DUE TOMORROW (2026-06-04); 990-N overdue 20d; Guidepoint #1755573 respond by Jun 4–5; Vishala Graduation FRIDAY noon.
+- Pages updated: `daily/2026-06-03.md` (run 172 appended), `ALTON.md` (run 172: Fidelity MU + Chase CC …1276), `family/active-todos.md` (run 172: P0 table), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
