@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-05-29
-updated_by: personal-data-gather (run 142)
+updated: 2026-06-03
+updated_by: personal-data-gather (run 173)
 status: active
 priority: p1
 next_review: 2026-05-22
@@ -212,3 +212,8 @@ Full project hub: [[reference_solar_project]]. Source documents indexed there.
 > [!warning] vast.ai Machine 124192 Offline Alert — UNKNOWN MACHINE ID
 > **console@mg.vast.ai (2026-05-28 23:36 UTC):** "Your hosted Vast.ai machine 124192 appears to be offline."
 > Machine ID 124192 is not in the Sartor memory system. Known machines: gpuserver1 = 52271 (rented under C.34113802), rtxpro6000server = 97429 (unlisted, onboarding paused). Possible explanations: (a) the second GPU server being built from Newegg order #448349643 + GIGABYTE RTX 5090 (components arriving May 28 – June 5) was registered on vast.ai as machine 124192 and went offline during setup; (b) different vast.ai ID namespace; (c) separate account. **SSH to gpuserver1 and rtxserver immediately.** Run `~/.local/bin/vastai show machines` on both. Check vast.ai dashboard for machine 124192. Confirm C.34113802 reserved contract still active. See [[MACHINES]].
+
+## Latest from gather (2026-06-03) — run 173
+
+> [!fact] Anthropic API receipt #2088-3209-1415 — $200.00 — Jun 3, 2026
+> invoice+statements@mail.anthropic.com (2026-06-03 12:45 PM ET). Receipt from Anthropic, PBC: **$200.00 paid June 3, 2026**. Receipt #2088-3209-1415 via Stripe. Solar Inference LLC operating expense — API compute / Claude billing. Log as June 2026 expense. See [[ALTON]] and monthly expense tracking.

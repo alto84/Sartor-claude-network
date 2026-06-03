@@ -1109,3 +1109,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forwards: KYC DUE TOMORROW (2026-06-04); 990-N overdue 20d; Guidepoint #1755573 respond by Jun 4–5; Vishala Graduation FRIDAY noon.
 - Pages updated: `daily/2026-06-03.md` (run 172 appended), `ALTON.md` (run 172: Fidelity MU + Chase CC …1276), `family/active-todos.md` (run 172: P0 table), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 173: Anthropic receipt $200 + SpotHero + McKeown retiring + Guidepoint #1754519 expired
+- Sources: Gmail (is:unread newer_than:6h, 17 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 6 new (Anthropic API receipt $200; SpotHero parking NYC commute confirmed; Ms. McKeown MKA retiring; Amazon Hunter x Hunter manga out for delivery; Guidepoint Sample Tracking Survey $80; Guidepoint #1754519 expired ~3 PM)
+- Calendar: no changes vs run 172. All 5 calendars polled.
+- P0 carry-forwards: KYC DUE TOMORROW (2026-06-04); 990-N overdue 20d; Guidepoint #1755573 respond by Jun 4–5; Vishala Graduation FRIDAY noon.
+- Pages updated: `daily/2026-06-03.md` (run 173 appended), `business/solar-inference.md` (run 173: Anthropic receipt), `family/active-todos.md` (run 173: P0 table + McKeown note), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run

@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-03
 updated_by: personal-data-gather
-run: 169
+run: 173
 
 status: active
 priority: p1
@@ -1574,4 +1574,25 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Livia Birthday Party | Sun, gift needed | 2026-06-07 3 PM ET |
 > | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
 > | HITLAB roundtable | No RSVP visible | 2026-06-12 |
+> | Disney ADR | Unknown | Window open May 17 |
+
+## Latest from gather (2026-06-03) — run 173
+
+> [!note] Ms. McKeown retiring from MKA — end of school year 2025–2026
+> colleen_muldoon@psbma.org (Jun 3 1:19 PM ET) to "Current and Former KM Families." Ms. McKeown retiring at end of this school year. Email note: "Apologies to those of you who have received this message multiple times!" — may have circulated earlier. Relevant for [[family/vayu]] and [[family/vishala]]. No action required; acknowledge at school events this week. See [[FAMILY]].
+
+> [!fact] Guidepoint #1754519 (AI Clinical Search) — EXPIRED as of ~3 PM Jun 3
+> Window closed. Removed from P0. Remaining active Guidepoint items: #1755573 (GLP-1, respond by ~Jun 4–5); #1752401 (Craniopharyngioma, likely expired); #1754453 (PV Space, likely expired). See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 173)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **DUE TOMORROW** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 20 days | Was due 2026-05-15 |
+> | Guidepoint #1755573 (GLP-1) | Respond by ~Jun 4–5 | ~24–48h from Jun 3 05:36 UTC |
+> | Vishala Graduation | **THIS FRIDAY** | 2026-06-05 noon ET |
+> | MKA Library + Band instrument | Return Sat | **2026-06-06** |
+> | Livia Birthday Party | Sun, gift needed | 2026-06-07 7 PM ET |
+> | HITLAB roundtable | No RSVP visible | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
 > | Disney ADR | Unknown | Window open May 17 |
