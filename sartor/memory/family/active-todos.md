@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-02
+updated: 2026-06-03
 updated_by: personal-data-gather
-run: 167
+run: 169
 
 status: active
 priority: p1
@@ -1506,3 +1506,22 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Earnest loan $943.33 | Auto-pay confirm | 2026-06-20 |
 > | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
 > | NJ Pride FC summer soccer | Register? | July 11 start |
+
+## Latest from gather (2026-06-03) — run 169
+
+> [!warning] P0 carry-forward (run 169) — KYC TOMORROW
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **TOMORROW — T-1** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 19 days | Was due 2026-05-15 |
+> | Vishala Graduation | **THIS FRIDAY** | 2026-06-05 8 AM |
+> | MKA Library + Band instrument | Return Sat | **2026-06-06** |
+> | Guidepoint #1754519 (AI Clinical Search) | ~36h unanswered | Closing today ~3 PM |
+> | Disney ADR | Unknown | Window open |
+> | HITLAB Jun 12 roundtable | No RSVP visible | 2026-06-12 |
+
+> [!fact] Cenlar mortgage autopay — processing 2026-06-05
+> Cenlar (account XXXXXX0414) will auto-debit monthly mortgage payment on Jun 5. INFORMATIONAL — no action needed unless funding account balance is low.
+
+> [!fact] Vayu school account (MyKidsSpending) — Chase ending 8563 debit ~$100 incoming
+> statements@mykidsspending.com (Jun 3): automatic school account top-up within 1-2 days from Chase. INFORMATIONAL. See [[family/vayu]].

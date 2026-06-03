@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-06-02
+updated: 2026-06-03
 updated_by: personal-data-gather
-run: 166
+run: 169
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -286,3 +286,8 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!warning] 990-N OVERDUE 18 days
 > Form 990-N for TY2025 was due 2026-05-15. Not filed per runs 22–165. File at IRS.gov → Tax Exempt Organization Search → File 990-N (e-Postcard). TY2025 gross receipts <$50K.
+
+## Latest from gather (2026-06-03) — run 169
+
+> [!fact] Cary Grayson $200/month recurring subscription — AMOUNT CONFIRMED
+> Run 166 logged Transaction ID 04802572545152812 (Jun 2, 2026 05:53 CDT) but could not extract amount from snippet. Full thread now read: **$200.00 USD received**. RECURRING SUBSCRIPTION active — Profile ID: I-V0F2DBH0HGNJ, maximum $200/month. Next payment due **2026-07-02**. Donor: Cary Grayson (carygrayson@gmail.com). The prior Apr 2 donor table entry ("$350+") was a separate earlier transaction; this Jun 2 payment appears to be the subscription inception. Issue tax receipt. Update YTD accounting.

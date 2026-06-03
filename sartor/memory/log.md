@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-02
+updated: 2026-06-03
 updated_by: personal-data-gather
-run: 168
+run: 169
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1072,4 +1072,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forwards: KYC T-2 days (2026-06-04); 990-N overdue 18d; Guidepoint ×3 (two 44h stale, one 5h)
 - Calendar: all 5 live, no new events vs run 167. Table stands.
 - Pages updated: `daily/2026-06-02.md` (run 168 addendum, frontmatter bumped to run 168), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 169: Cary Grayson $200/mo confirmed; Aneeta Jun 10 SMART Zoom; KYC T-1
+- Sources: Gmail (is:unread newer_than:2d + financial filter, 30+20 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Cary Grayson $200/month recurring confirmed; Cenlar autopay Jun 5; Vayu school account ~$100 auto-debit; gymnastics camp registration open; Aneeta SMART Certified Providers Zoom Jun 10 12-1 PM ET)
+- Nonprofit: Cary Grayson recurring subscription confirmed $200/month, Profile I-V0F2DBH0HGNJ, next Jul 2. Updated [[business/sante-total]].
+- Financial: Cenlar mortgage autopay processing Jun 5 (automatic). Vayu MyKidsSpending ~$100 auto-debit incoming.
+- P0 carry-forwards: KYC TOMORROW (2026-06-04); 990-N overdue 19d; Vishala Graduation FRIDAY; Guidepoint #1754519 ~36h window closing today.
+- Calendar: all 5 polled. NEW: Aneeta SMART Providers Zoom Jun 10 12–1 PM ET (recurring quarterly, MGH Benson-Henry). All other events unchanged. Updated [[family/family-calendar]].
+- Pages updated: `daily/2026-06-03.md` (created), `business/sante-total.md` (run 169), `family/family-calendar.md` (run 169), `family/active-todos.md` (run 169), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run

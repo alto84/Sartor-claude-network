@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-06-01
+updated: 2026-06-03
 updated_by: personal-data-gather
 run: 157
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
@@ -801,3 +801,20 @@ New events confirmed from live Calendar API (Family calendar + Aneeta's calendar
 - Blue Sombrero (Vayu soccer): no events this week. Spring season appears concluded.
 - Alton primary calendar: no events this week.
 - Alton Tasks calendar: no tasks.
+
+## Latest from gather (2026-06-03) — run 169
+
+One new calendar event vs run 168: Aneeta SMART Certified Providers Quarterly Call, **Tue Jun 10, 12:00–1:00 PM ET (Zoom)**.
+
+| Date | Time ET | Event | Calendar | Notes |
+|------|---------|-------|----------|-------|
+| Wed 6/3 | 8:00–11:00 PM | Aneeta "Healing" (recurring) | Aneeta | |
+| **Fri 6/5** | 8:00 AM–2:00 PM | Vishala Third Grade Graduation | Family | **FRIDAY — 2 days** |
+| **Fri 6/5** | 6:00–7:30 PM | MKA Third Grade Graduation Party | Family | Sports Universe, 355 Eisenhower Pkwy, Livingston NJ |
+| Sun 6/7 | 3:00–6:00 PM | Livia Birthday Party | Family | Location TBD; gift needed |
+| Mon 6/9 | all-day | Aneeta "In office" | Family | Neurvati; confirm childcare |
+| **Tue 6/10** | 12:00–1:00 PM | Aneeta SMART Providers Call (Zoom) | Aneeta | NEW — MGH/Benson-Henry Institute |
+
+- Alton primary calendar: no events Jun 3–10
+- Alton Tasks calendar: no tasks
+- Blue Sombrero (Vayu soccer): no events Jun 3–10
