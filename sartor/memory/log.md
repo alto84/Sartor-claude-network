@@ -1091,3 +1091,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forwards: KYC DUE TOMORROW (2026-06-04); 990-N overdue 20d; Vishala Graduation FRIDAY; MKA library/instrument Sat Jun 6.
 - Pages updated: `daily/2026-06-03.md` (run 170 appended), `family/active-todos.md` (Montclair Library note + Amazon delay), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 171: Guidepoint #1755573 (GLP-1); ABPN CC reminder; Wohelo camp shipments
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Guidepoint #1755573 consultation; ABPN CC article exams reminder; Amazon Wohelo camp shipments x2; DEA Fentanyl training Jun 11; Guidepoint NfL survey $50)
+- ACTION_REQUIRED: Guidepoint #1755573 respond 24–48h; ABPN CC log in to portal
+- Calendar: no changes vs run 170. All 5 calendars polled.
+- P0 carry-forwards: KYC DUE TODAY (2026-06-04); 990-N overdue 20d; Vishala Graduation FRIDAY; library/instrument Sat Jun 6.
+- Pages updated: `daily/2026-06-03.md` (run 171 appended), `family/active-todos.md` (run 171), `family/vishala.md` (run 171), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run

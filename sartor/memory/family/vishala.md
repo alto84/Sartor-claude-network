@@ -2,9 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-05-30
+updated: 2026-06-03
 updated_by: personal-data-gather
-run: 148
+run: 171
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -228,3 +228,8 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!todo] TONIGHT — Dress the Rainbow Day tomorrow June 3
 > MKA Primary School email, 2026-06-02 13:21 ET. Pack rainbow/colorful outfit for tomorrow. See [[family/active-todos]].
+
+## Latest from gather (2026-06-03) — run 171
+
+> [!fact] Wohelo camp prep shipments in transit
+> Amazon Jun 3 AM: (1) "Bare Home Twin Sheet Set" — 2 sets + 5 more items, shipped 07:27 UTC; (2) "Crazy Creek The Chair" — 2 units, shipped 06:52 UTC. Camp opens 2026-06-25 (22 days). Verify items against Wohelo packing list once received. See [[family/active-todos]].

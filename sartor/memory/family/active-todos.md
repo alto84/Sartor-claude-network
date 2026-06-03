@@ -1533,3 +1533,23 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] Amazon order #113-1985143-7267402 — shipping delayed
 > Delay notice received Jun 3 3:03 AM. Item not visible in snippet. INFORMATIONAL — monitor inbox for updated delivery window.
+
+## Latest from gather (2026-06-03) — run 171
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1755573: Insulin and GLP-1 Market Insights
+> rthomas@guidepointglobal.com, 2026-06-03 05:36 UTC. Consultation on insulin and GLP-1 market landscape. Accept or decline within 24–48h. See [[ALTON]] for advisory log.
+
+> [!note] ABPN CC Program — complete ABCC Article Exams
+> abpncommunications@abpn.org, 2026-06-02 19:46 ET. ABPN June 2026 Quarterly Update: "Reminder: Complete ABCC Article Exams and Continuing Certification Program." No explicit deadline. Log in to ABPN portal. Ongoing board recertification obligation.
+
+> [!warning] P0 carry-forward (run 171) — KYC DUE TODAY
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **DUE TODAY** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 20 days | Was due 2026-05-15 |
+> | Vishala Graduation | **FRIDAY — 2 days** | 2026-06-05 8:00 AM |
+> | MKA Library + Band instrument | Return Sat | **2026-06-06** |
+> | Livia Birthday Party | Sun, gift needed | 2026-06-07 3 PM |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
+> | HITLAB roundtable | No RSVP visible | 2026-06-12 |
+> | Disney ADR | Unknown | Window open May 17 |
