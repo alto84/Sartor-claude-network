@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-03
 updated_by: personal-data-gather
-run: 173
+run: 174
 
 status: active
 priority: p1
@@ -1593,6 +1593,35 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Vishala Graduation | **THIS FRIDAY** | 2026-06-05 noon ET |
 > | MKA Library + Band instrument | Return Sat | **2026-06-06** |
 > | Livia Birthday Party | Sun, gift needed | 2026-06-07 7 PM ET |
+> | HITLAB roundtable | No RSVP visible | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
+> | Disney ADR | Unknown | Window open May 17 |
+
+## Latest from gather (2026-06-03) — run 174
+
+> [!note] Jackrabbit Tech Tumble Zone — lobby renovation, new rules
+> noreply@jackrabbittech.com (Jun 3 4:43 PM ET): Dance mirrors installed in lobby. **New rule: use back lobby entrance for arrivals, dropoff, and pickup during renovation.** Ring bell for lobby-only visits. Applies to Vishala and/or Vasu dance class logistics.
+
+> [!note] NJYS 2026-2027 ODP Tryouts — verify Vayu eligibility
+> Open to players born **2010–2015**. Vayu (age 10 in 2026, born ~2015-2016) — confirm birth year. If born 2015, eligible. Tryout dates: **July 18-19 & August 1-2**. Registration open via sportsaffinity.com. See [[family/vayu]].
+
+> [!fact] Fidelity Rule 4210 — new pattern day trader rules effective 2026-06-04
+> Awareness item. Review Fidelity email for specifics. No trading action required. See [[ALTON]].
+
+> [!warning] CALENDAR CORRECTIONS (run 174) — UTC→EDT errors in runs 172-173
+> - Vishala graduation: **8:00 AM – 2:00 PM EDT** (not "noon" — 12:00Z–18:00Z UTC)
+> - Livia Birthday Party: **3:00 PM – 6:00 PM EDT** (not "7 PM" — 19:00Z–22:00Z UTC; run 155 had corrected this, runs 172-173 reintroduced the error)
+
+> [!warning] P0 carry-forward (run 174)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **DUE TOMORROW** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 20 days | Was due 2026-05-15 |
+> | Guidepoint #1755573 (GLP-1) | Respond by ~Jun 4–5 | ~48h from Jun 3 05:36 UTC |
+> | Fidelity Rule 4210 | Effective tomorrow | **2026-06-04** |
+> | Vishala Graduation | **THIS FRIDAY 8 AM EDT** | 2026-06-05 |
+> | MKA Library + Band instrument | Return Sat | 2026-06-06 |
+> | Livia Birthday Party | Sun 3 PM EDT, gift needed | 2026-06-07 |
 > | HITLAB roundtable | No RSVP visible | 2026-06-12 |
 > | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
 > | Disney ADR | Unknown | Window open May 17 |

@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-06-03
 updated_by: personal-data-gather
-run: 172
+run: 174
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -343,3 +343,8 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] Chase Credit Card (…1276) — statement available, $73.76 due 2026-06-27
 > no.reply.alerts@chase.com, Jun 3 4:22 AM ET. Statement balance $73.76. Minimum payment $40.00. Due date 2026-06-27. Auto-pay enrolled — no manual action required unless Alton wishes to pay full balance early. Previously logged Chase CC accounts: 7054 ($1,247.36 due 6/17), 8547 ($27,609.04 due 6/17, run 107). Account …1276 is a distinct card.
+
+## Latest from gather (2026-06-03) — run 174
+
+> [!fact] Fidelity Rule 4210 — new intraday trading rules effective 2026-06-04 (TOMORROW)
+> Fidelity.Investments@mail.fidelity.com (Jun 3 6:01 PM ET): SEC and FINRA approved changes to Rule 4210 to modernize how intraday trading is monitored. New rules take effect **June 4, 2026**. Addressed to Emmett Sartor. Review full Fidelity communication for details on pattern day trader rule changes. No immediate trade action required; awareness item.

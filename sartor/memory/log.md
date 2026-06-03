@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-03
 updated_by: personal-data-gather
-run: 169
+run: 174
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1116,4 +1116,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: no changes vs run 172. All 5 calendars polled.
 - P0 carry-forwards: KYC DUE TOMORROW (2026-06-04); 990-N overdue 20d; Guidepoint #1755573 respond by Jun 4–5; Vishala Graduation FRIDAY noon.
 - Pages updated: `daily/2026-06-03.md` (run 173 appended), `business/solar-inference.md` (run 173: Anthropic receipt), `family/active-todos.md` (run 173: P0 table + McKeown note), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 174: Fidelity Rule 4210 (effective Jun 4); NJYS ODP tryouts; UTC→EDT calendar corrections
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Fidelity Rule 4210 effective Jun 4; PCSS-MOUD office hours Fri Jun 5 3 PM; Vasu normal day; Jackrabbit lobby renovation rules; NJYS ODP tryouts Jul 18-19 & Aug 1-2)
+- Calendar corrections: Vishala graduation 8:00 AM–2:00 PM EDT (not noon — 12:00Z–18:00Z; runs 172-173 had UTC error); Livia party 3:00–6:00 PM EDT (not 7 PM — 19:00Z–22:00Z; run 155 had corrected, 172-173 reintroduced)
+- P0 carry-forwards: KYC TOMORROW (2026-06-04); 990-N overdue 20d; Guidepoint #1755573 respond by Jun 4-5; Vishala Graduation FRIDAY 8 AM; Livia party Sun 3 PM gift needed.
+- Pages updated: `daily/2026-06-03.md` (run 174), `ALTON.md` (run 174: Fidelity Rule 4210), `family/active-todos.md` (run 174: Jackrabbit + NJYS ODP + P0 + calendar corrections), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
