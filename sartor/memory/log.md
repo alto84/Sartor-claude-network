@@ -1083,3 +1083,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: all 5 polled. NEW: Aneeta SMART Providers Zoom Jun 10 12–1 PM ET (recurring quarterly, MGH Benson-Henry). All other events unchanged. Updated [[family/family-calendar]].
 - Pages updated: `daily/2026-06-03.md` (created), `business/sante-total.md` (run 169), `family/family-calendar.md` (run 169), `family/active-todos.md` (run 169), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 170: Amazon delay + shipments, Montclair Library summer reading; KYC T-0
+- Sources: Gmail (is:unread newer_than:6h, 9 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 4 new (Amazon order delay #113-1985143-7267402; Amazon SPF 50 shipped; Amazon 20-color plastic shipped; Montclair Library Summer Reading preregistration open June 29–Sep 4)
+- Calendar: no changes vs run 169. All 5 calendars polled.
+- P0 carry-forwards: KYC DUE TOMORROW (2026-06-04); 990-N overdue 20d; Vishala Graduation FRIDAY; MKA library/instrument Sat Jun 6.
+- Pages updated: `daily/2026-06-03.md` (run 170 appended), `family/active-todos.md` (Montclair Library note + Amazon delay), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run

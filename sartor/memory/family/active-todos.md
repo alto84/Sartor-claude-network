@@ -1525,3 +1525,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] Vayu school account (MyKidsSpending) — Chase ending 8563 debit ~$100 incoming
 > statements@mykidsspending.com (Jun 3): automatic school account top-up within 1-2 days from Chase. INFORMATIONAL. See [[family/vayu]].
+
+## Latest from gather (2026-06-03) — run 170
+
+> [!note] Montclair Library Summer Reading — preregister before school ends
+> "Unearth a Story" program runs June 29–September 4. Preregistration is open now at montclairlibrary.org. School ends Friday Jun 5 — register Vayu (10) and Vishala (8) before then or shortly after. No deadline specified but preregistration is recommended. See [[family/vayu]], [[family/vishala]].
+
+> [!fact] Amazon order #113-1985143-7267402 — shipping delayed
+> Delay notice received Jun 3 3:03 AM. Item not visible in snippet. INFORMATIONAL — monitor inbox for updated delivery window.
