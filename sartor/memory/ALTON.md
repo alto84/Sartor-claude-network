@@ -2,9 +2,9 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-06-03
+updated: 2026-06-04
 updated_by: personal-data-gather
-run: 174
+run: 175
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -348,3 +348,14 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] Fidelity Rule 4210 — new intraday trading rules effective 2026-06-04 (TOMORROW)
 > Fidelity.Investments@mail.fidelity.com (Jun 3 6:01 PM ET): SEC and FINRA approved changes to Rule 4210 to modernize how intraday trading is monitored. New rules take effect **June 4, 2026**. Addressed to Emmett Sartor. Review full Fidelity communication for details on pattern day trader rule changes. No immediate trade action required; awareness item.
+
+## Latest from gather (2026-06-04) — run 175
+
+> [!fact] Fidelity $5,000 transfer in progress — account 8998 → JPMorgan Chase
+> Fidelity.Alerts@fidelity.com (Jun 3 5:15 PM ET): $5,000.00 outbound from Fidelity account ending **8998** to JPMorgan Chase Bank, NA. 1–2 business days (expected arrival Jun 4–5). Likely staging cash ahead of Leader Bank Escrow $5,366.83 due 2026-06-14. Verify receipt at Chase once cleared. See [[daily/2026-06-04]].
+
+> [!fact] Chase Zelle — new vendor: Rince Prince / Kleen Power Wash
+> no.reply.alerts@chase.com (Jun 3 5:17 PM ET): Zelle recipient added — **Rince Prince** (info@kleenpowerwash.com). New household maintenance vendor. INFORMATIONAL. See [[daily/2026-06-04]].
+
+> [!fact] Dinner Princeton? — Thu Jun 11, 7:00–8:00 PM ET
+> Event on Alton's primary calendar, created 2026-05-27. No location or attendees set. Social dinner in Princeton area. Confirm evening logistics re: childcare if needed. See [[family/family-calendar]].

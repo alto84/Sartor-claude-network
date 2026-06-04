@@ -1125,3 +1125,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forwards: KYC TOMORROW (2026-06-04); 990-N overdue 20d; Guidepoint #1755573 respond by Jun 4-5; Vishala Graduation FRIDAY 8 AM; Livia party Sun 3 PM gift needed.
 - Pages updated: `daily/2026-06-03.md` (run 174), `ALTON.md` (run 174: Fidelity Rule 4210), `family/active-todos.md` (run 174: Jackrabbit + NJYS ODP + P0 + calendar corrections), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-04] ingest | personal-data-gather run 175: Fidelity $5K transfer; Zelle Kleen Power Wash; Vayu school funded; Dinner Princeton Jun 11
+- Sources: Gmail (is:unread newer_than:2d, 30 threads + 3 full-body reads), all 5 Google Calendars (Jun 4–11). SSH unavailable (cloud runner).
+- Facts gathered: 4 new (Fidelity $5,000 transfer account 8998→Chase in progress; Chase Zelle new vendor Rince Prince/kleenpowerwash.com; MyKidsSpending Vayu $101.75 executed; Dinner Princeton Thu Jun 11 7 PM new calendar event)
+- Calendar: 1 new event — Dinner Princeton Jun 11 7:00–8:00 PM ET on Alton primary. All prior events confirmed. No Blue Sombrero events Jun 4–11. Alton's Tasks calendar empty this week.
+- P0 carry-forwards: KYC DUE TODAY (2026-06-04); 990-N overdue 21d; Guidepoint GLP-1 respond by Jun 5; Vishala graduation TOMORROW 8 AM EDT; Livia party Sun gift needed.
+- Pages updated: `daily/2026-06-04.md` (created), `ALTON.md` (run 175: $5K transfer + Zelle + Princeton dinner), `family/family-calendar.md` (run 175: Dinner Princeton Jun 11), `family/active-todos.md` (run 175: P0 table + financial notes), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run

@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-06-03
+updated: 2026-06-04
 updated_by: personal-data-gather
-run: 157
+run: 175
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -818,3 +818,19 @@ One new calendar event vs run 168: Aneeta SMART Certified Providers Quarterly Ca
 - Alton primary calendar: no events Jun 3–10
 - Alton Tasks calendar: no tasks
 - Blue Sombrero (Vayu soccer): no events Jun 3–10
+
+## Latest from gather (2026-06-04) — run 175
+
+> [!fact] NEW — Dinner Princeton? — Thu Jun 11, 7:00–8:00 PM ET (Alton primary calendar)
+> Event created 2026-05-27. No location, no attendees set. Evening out — confirm childcare logistics if needed. See [[ALTON]], [[daily/2026-06-04]].
+
+### Week of Jun 4–11 (confirmed)
+
+| Date | Time EDT | Event | Calendar | Notes |
+|------|----------|-------|----------|-------|
+| **Fri 6/5** | 8:00 AM–2:00 PM | Vishala Third Grade Graduation | Family | Times confirmed from API (12:00Z–18:00Z) |
+| **Fri 6/5** | 6:00–7:30 PM | MKA Third Grade Graduation Party | Family | Sports Universe, 355 Eisenhower Pkwy, Livingston NJ |
+| **Sun 6/7** | 3:00–6:00 PM | Livia Birthday Party | Family | Times confirmed (19:00Z–22:00Z); gift needed |
+| Mon 6/9 | all-day | Aneeta "In office" | Family | Neurvati |
+| Tue 6/10 | noon–1:00 PM | Aneeta SMART Providers Call | Aneeta | Zoom (mgb-org.zoom.us), MGH Benson-Henry |
+| **Thu 6/11** | 7:00–8:00 PM | Dinner Princeton? | Alton (primary) | NEW this run; no location set |

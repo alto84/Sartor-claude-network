@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-03
+updated: 2026-06-04
 updated_by: personal-data-gather
-run: 174
+run: 175
 
 status: active
 priority: p1
@@ -1625,3 +1625,27 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | HITLAB roundtable | No RSVP visible | 2026-06-12 |
 > | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
 > | Disney ADR | Unknown | Window open May 17 |
+
+## Latest from gather (2026-06-04) — run 175
+
+> [!warning] P0 carry-forward (run 175) — as of 2026-06-04
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **DUE TODAY** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 21 days | Was due 2026-05-15 |
+> | Guidepoint #1755573 (GLP-1) | Respond today/tomorrow | ~Jun 5 05:36 UTC |
+> | Fidelity Rule 4210 | **EFFECTIVE TODAY** | 2026-06-04 |
+> | Vishala Graduation | **TOMORROW 8:00 AM EDT** | 2026-06-05 |
+> | MKA Library + Band instrument | Return Sat | 2026-06-06 |
+> | Livia Birthday Party | Sun 3:00 PM EDT, gift needed | 2026-06-07 |
+> | HITLAB roundtable | No RSVP visible | 2026-06-12 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+> | Leader Bank Escrow $5,366.83 | Fidelity $5K transfer in transit | 2026-06-14 |
+> | Disney ADR | Unknown | Window open May 17 |
+> | Hiive Fund update (Oliver Sartor) | Review Gmail thread | — |
+
+> [!fact] Fidelity $5,000 transfer in transit (Jun 3 → Jun 4–5)
+> $5,000 outbound from Fidelity 8998 → JPMorgan Chase. Possible coverage for Leader Bank Escrow $5,366.83 (due Jun 14). Verify receipt. See [[ALTON]], [[daily/2026-06-04]].
+
+> [!note] Chase Zelle — new vendor: Kleen Power Wash
+> Rince Prince / info@kleenpowerwash.com added as Zelle recipient Jun 3. New household maintenance vendor. See [[ALTON]].
