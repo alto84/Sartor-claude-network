@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-04
 updated_by: personal-data-gather
-run: 179
+run: 180
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-04] ingest | personal-data-gather run 180: graduation logistics email; Guidepoint #1754519 re-send; picture proofs; Handshake Touchstone; NJ Pride FC camp
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 4–11), no SSH (cloud runner)
+- New facts: 9 (MKA graduation logistics letter from Katie Banks; Guidepoint #1754519 second email; Goddard picture proof pickup; Handshake Project Touchstone $125/hr 3D Slicer; NJ Pride FC August camp; Amazon Morse Code shipped; Vasu daily sheet Jun 4; Claude Opus 4.8 Substack digest; PCSS-MAUD webinar conflict Jun 10)
+- Calendar: unchanged vs runs 175–179; no new events Jun 4–11
+- New deadlines surfaced: Guidepoint #1755573 GLP-1 expiring TONIGHT (~1:36 AM ET); graduation logistics for 8:00 AM TOMORROW
+- Pages updated: `daily/2026-06-04.md`, `family/active-todos.md`, `family/vishala.md`, `family/vasu.md`, `ALTON.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`, `log.md`
 
 ## [2026-06-04] ingest | personal-data-gather run 179: Goddard conference Jun 8; Ghosty vet overdue; HITLAB time 12:30 PM; Fidelity EFT complete
 - Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 4–11), no SSH (cloud runner)

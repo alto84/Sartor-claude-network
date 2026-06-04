@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-04
 updated_by: personal-data-gather
-run: 179
+run: 180
 
 status: active
 priority: p1
@@ -1735,4 +1735,47 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Magnus Health 2026-27 | Complete for Vayu + Vishala | Before enrollment |
 > | PAMKA Supply Sale (Vayu) | Order school supplies, school ID MON348 | 2026-06-30 |
 > | Disney ADR | Unknown | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+
+## Latest from gather (2026-06-04) — run 180
+
+> [!fact] MKA Third Grade Closing Exercises — logistics email (Jun 4 6:10 PM ET)
+> Veracross (m@mail4.veracross.com): "Please take a moment to read this letter from Katie Banks regarding the logistics of tomorrow's Third Grade Closing Exercises." Full Jun 5 plan: arrive MKA Brookside by 7:45 AM; ceremony 8:00 AM–2:00 PM; 4-hour gap; party at Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 6:00–7:30 PM. See [[family/vishala]].
+
+> [!todo] ACTION_REQUIRED — Guidepoint #1754519 follow-up (AI Clinical Search — second email)
+> aquintiere@guidepointglobal.com (Jun 4 3:52 PM ET): Second email for consultation #1754519. Window re-opened or extended. Respond by ~Jun 5 afternoon. See [[ALTON]].
+
+> [!todo] ACTION_REQUIRED — Goddard picture proof pickup (Vasu)
+> Alissa DelConte (Goddard) via Kaymbu (Jun 4 12:49 PM ET): "Picture Proof Reminder — please stop by the office to pick up your child's picture proofs." Go to Goddard office. See [[family/vasu]].
+
+> [!fact] Handshake AI Project Touchstone — $125/hr (3D Slicer, medical imaging)
+> handshake@g.joinhandshake.com (Jun 4 12:03 PM ET): "Earn $125/hr with Handshake AI - Project Touchstone. Know your way around 3D Slicer?" 3D Slicer = medical imaging platform, directly in Alton's neuro-oncology/neuroimaging domain. Distinct from declined Project Alloy. See [[ALTON]].
+
+> [!fact] NJ Pride FC Summer Soccer Camp — August (Vayu)
+> info@njpridefc.com (Jun 4 1:57 PM ET): Half-day August camp, partnership with Our Little Fingers STEM/art. Distinct from Montclair United Summer Soccer (run 179). See [[family/vayu]].
+
+> [!warning] P0 carry-forward (run 180) — as of 2026-06-04 ~8:30 PM ET
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Guidepoint #1755573 (GLP-1) | **EXPIRING TONIGHT ~1:36 AM ET** | Jun 5 05:36 UTC |
+> | Vishala Graduation | **TOMORROW 8:00 AM EDT** | 2026-06-05 |
+> | Chase/Sante Total KYC | Due today — completion unknown | 2026-06-04 |
+> | Sante Total 990-N | OVERDUE 21 days | Was due 2026-05-15 |
+> | Guidepoint #1754453 (PV Space) | Expires ~Jun 5 1:05 PM ET | ~2026-06-05 13:05 ET |
+> | Guidepoint #1754519 (AI Clinical) | New follow-up email today; still open | ~Jun 5 |
+> | MKA Library + Band instrument | Return Saturday | 2026-06-06 |
+> | Goddard picture proof pickup | Stop by Goddard office | ASAP |
+> | Livia Birthday Party | Sun 3:00 PM EDT (gift delivered) | 2026-06-07 |
+> | Goddard Preschool Conference | Sign up at SignUpGenius | 2026-06-08 (Mon) |
+> | Ghosty vet | Overdue — Cambridge Cat Clinic 617-245-0245 | ASAP |
+> | NW Mutual account change | Verify at northwesternmutual.com | ASAP |
+> | GQG proxy vote | Vote before deadline in full email | TBD |
+> | HITLAB RSVP | Respond to Jerry Antimano via LinkedIn | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | $5K staged at Chase; gap $366.83 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Order via Veracross, school ID MON348 | 2026-06-15 |
+> | Handshake Project Touchstone | Evaluate $125/hr 3D Slicer gig | Soon |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362.1306 | ~Jul 4 ITC deadline |
+> | Magnus Health 2026-27 | Complete for Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | Order school supplies, school ID MON348 | 2026-06-30 |
+> | Disney ADR | Unknown status | Window open May 17 |
 > | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |

@@ -2,9 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-06-03
+updated: 2026-06-04
 updated_by: personal-data-gather
-run: 171
+run: 180
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -233,3 +233,15 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!fact] Wohelo camp prep shipments in transit
 > Amazon Jun 3 AM: (1) "Bare Home Twin Sheet Set" — 2 sets + 5 more items, shipped 07:27 UTC; (2) "Crazy Creek The Chair" — 2 units, shipped 06:52 UTC. Camp opens 2026-06-25 (22 days). Verify items against Wohelo packing list once received. See [[family/active-todos]].
+
+## Latest from gather (2026-06-04) — run 180
+
+> [!fact] Third Grade Closing Exercises — logistics confirmed for TOMORROW
+> MKA Veracross (m@mail4.veracross.com, Jun 4 6:10 PM ET): "Dear Third Grade Families, Congratulations! As a friendly reminder, please take a moment to read this letter from Katie Banks regarding the logistics of tomorrow's Third Grade Closing Exercises." Key details in Katie Banks' attached letter — open Veracross email for full logistics.
+>
+> **Full June 5 sequence:**
+> - **8:00 AM – 2:00 PM EDT** — Third Grade Closing Exercises, MKA Brookside (arrive by 7:45 AM)
+> - 4-hour gap
+> - **6:00 – 7:30 PM EDT** — MKA Third Grade Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 07039
+>
+> Plan transport from MKA Montclair to Livingston for the party. See [[family/active-todos]], [[family/family-calendar]].

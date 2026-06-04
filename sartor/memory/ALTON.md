@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-06-04
 updated_by: personal-data-gather
-run: 179
+run: 180
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -378,3 +378,11 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] SpotHero — NYC parking Jun 4, 35 W 33rd St (Valet Garage)
 > support@spothero.com (Jun 4 09:17 AM ET): Reservation #124824651, 9:30 AM – 9:30 PM. Confirms Manhattan commute day today. See [[daily/2026-06-04]].
+
+## Latest from gather (2026-06-04) — run 180
+
+> [!todo] ACTION_REQUIRED — Guidepoint #1754519 (AI Clinical Search Space) — second email Jun 4
+> aquintiere@guidepointglobal.com (Jun 4 3:52 PM ET): Second contact for consultation request #1754519 (AI-powered Clinical Search Space). Original email was Jun 3 1:54 PM ET (run 176). Run 173 had called this expired; a second email today suggests the window was reset or extended. Respond or decline ASAP. See [[family/active-todos]], [[business/az-career]].
+
+> [!fact] Handshake AI — Project Touchstone ($125/hr, 3D Slicer medical imaging)
+> handshake@g.joinhandshake.com (Jun 4 12:03 PM ET): "Earn $125/hr with Handshake AI - Project Touchstone. Know your way around 3D Slicer?" 3D Slicer is an open-source medical image analysis platform used extensively in neuro-oncology research (Alton's Harvard Martinos Center deep-learning / brain tumor segmentation background is directly relevant). This is a distinct project from the declined Project Alloy (generic answer evaluation). Evaluate at joinhandshake.com. See [[family/active-todos]].

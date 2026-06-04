@@ -4,7 +4,7 @@ entity: vasu
 name: "Vasu Sartor"
 updated: 2026-06-04
 updated_by: personal-data-gather
-run: 179
+run: 180
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -246,3 +246,14 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!todo] ACTION_REQUIRED — Goddard Preschool End-of-Year Conference Monday June 8
 > Jacqueline Capote (Goddard admin) via Kaymbu (noreply@kaymbu.com, Jun 4 11:12 AM ET): End-of-year Preschool Conferences for **Monday June 8**. Sign up now — only 4 days out: https://www.signupgenius.com/go/10C0845A4AE2FA3F9CE9. Contact: Jacqueline Capote, The Goddard School of Montclair. See [[family/active-todos]], [[daily/2026-06-04]].
+
+## Latest from gather (2026-06-04) — run 180
+
+> [!todo] ACTION_REQUIRED — Goddard picture proof pickup
+> Alissa DelConte (Goddard Director) via Kaymbu (noreply@kaymbu.com, Jun 4 12:49 PM ET): "Picture Proof Reminder! If you haven't done so already, please stop by the office to pick up your child's picture proofs." Stop by The Goddard School of Montclair front office. See [[family/active-todos]].
+
+> [!fact] Vasu Daily Sheet — Thursday June 4 (normal day)
+> cls64fc559b249306000230d48e@inbox.kaymbu.com (Jun 4 3:21 PM ET): Check in 7:43 AM (Stefania I), check out 3:21 PM (Clarissa B). AM snack: water at 9:00 AM. Classroom activity: CONSTRUCTION — natural items (leaves, sticks, stones) used to build pet homes. Normal day confirmed.
+
+> [!fact] Goddard Father's Day Celebration — confirm date
+> Carry-forward from run 147 (May 29): Kaymbu announced "Father's Day Celebration — waffle-y fun" but no date specified in snippet. Father's Day is June 15. Goddard event likely week of June 9–13. Contact Goddard to confirm exact date and add to Family calendar.
