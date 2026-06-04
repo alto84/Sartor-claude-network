@@ -1,1 +1,1 @@
-{"ts":"2026-06-03T20:16:01Z","host":"rtxserver","machine_id":124192,"health":"yellow","rented":true,"temp_max":26,"power_w":370,"util":0,"disk_pct":50,"stale_docker":1,"stale_vm":0,"vastai_ok":true,"reasons":"stale artifacts: 1 dead C.* container(s);;"}
+{"ts":"2026-06-04T00:13:41Z","host":"rtxserver","machine_id":124192,"health":"yellow","rented":true,"temp_max":65,"power_w":752,"util":13,"disk_pct":50,"stale_docker":1,"stale_vm":0,"vastai_ok":true,"reasons":"stale artifacts: 1 dead C.* container(s);;"}
