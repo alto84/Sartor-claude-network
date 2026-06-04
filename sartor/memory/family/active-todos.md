@@ -1675,3 +1675,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > - **AI-powered Clinical Search Space (#1754519)** — aquintiere@guidepointglobal.com, Jun 3 1:54 PM. Matches AZ clinical informatics work.
 > - **Pharmacovigilance Space (#1754453)** — jobrien@guidepointglobal.com, Jun 3 1:05 PM. Matches AZ drug safety work.
 > Accept or decline to preserve goodwill with network. See [[ALTON]].
+
+## Latest from gather (2026-06-04) — run 177
+
+> [!warning] ACTION_REQUIRED — Northwestern Mutual account access change
+> noreply@northwesternmutual.com (Jun 4 5:58 AM ET): Security notification — "Changes to your Northwestern Mutual Online Account access." Log in at northwesternmutual.com and confirm this change is authorized. If not recognized, contact NW Mutual customer security. Account name on email: Emmett Sartor.
+
+> [!fact] GQG Fund proxy vote — check voting deadline
+> id@proxyvote.com (Jun 4 6:21 AM ET): Proxy vote notice for a GQG Partners fund holding. Open the full email, review materials, and vote or abstain before the deadline stated inside. Log in at proxyvote.com. FINANCIAL — See [[ALTON]].

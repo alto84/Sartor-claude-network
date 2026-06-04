@@ -1142,3 +1142,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forwards: KYC DUE TODAY (2026-06-04); 990-N overdue 21d; Guidepoint GLP-1 respond by Jun 5; Vishala graduation TOMORROW 8 AM EDT; Livia party Sun gift needed.
 - Pages updated: `daily/2026-06-04.md` (created), `ALTON.md` (run 175: $5K transfer + Zelle + Princeton dinner), `family/family-calendar.md` (run 175: Dinner Princeton Jun 11), `family/active-todos.md` (run 175: P0 table + financial notes), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-04] ingest | personal-data-gather run 177: NW Mutual security alert; GQG proxy vote; Amazon mass delivery
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 4–11). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Northwestern Mutual account access change — verify authorized; GQG Fund proxy vote notification; Amazon 5-package mass delivery confirmed; Amazon HAPPY LOLLI shipped in transit; Selective Insurance free Ting device offer)
+- Calendar: no changes vs run 176. All 5 calendars unchanged. Jun 4–11 window confirmed clean.
+- P0 alerts: NW Mutual security change; KYC due today; 990-N overdue 22d; Guidepoint x3 windows expiring Jun 5; Solar CO-01 needs action
+- Pages updated: `daily/2026-06-04.md` (run 177 appended), `family/active-todos.md` (run 177: NW Mutual + GQG proxy), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
