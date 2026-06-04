@@ -2,9 +2,9 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-05-30
+updated: 2026-06-04
 updated_by: personal-data-gather
-run: 148
+run: 179
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -241,3 +241,8 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 > - Tue Jun 2: Dance (recital — see Family calendar 4:00–6:00 PM)
 > - Rest of week: not visible in snippet
 > Soccer extended through June 22 per prior run 111. See [[family/family-calendar]].
+
+## Latest from gather (2026-06-04) — run 179
+
+> [!todo] ACTION_REQUIRED — Goddard Preschool End-of-Year Conference Monday June 8
+> Jacqueline Capote (Goddard admin) via Kaymbu (noreply@kaymbu.com, Jun 4 11:12 AM ET): End-of-year Preschool Conferences for **Monday June 8**. Sign up now — only 4 days out: https://www.signupgenius.com/go/10C0845A4AE2FA3F9CE9. Contact: Jacqueline Capote, The Goddard School of Montclair. See [[family/active-todos]], [[daily/2026-06-04]].

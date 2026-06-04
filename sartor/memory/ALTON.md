@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-06-04
 updated_by: personal-data-gather
-run: 178
+run: 179
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -367,3 +367,14 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] Chase Credit Card ending 5680 — statement $29,997.18 due 2026-06-28
 > no.reply.alerts@chase.com (Jun 4 9:28 AM ET). Statement balance $29,997.18, minimum $795.00, due 2026-06-28, auto-pay enrolled. First appearance of card 5680; other current Chase CC accounts: 7054, 8547, 1276 (all logged in prior runs). Auto-pay covers minimum. Review balance at chase.com if full payoff is preferred. See [[daily/2026-06-04]].
+
+## Latest from gather (2026-06-04) — run 179
+
+> [!fact] Fidelity $5K EFT — COMPLETED (Jun 4 8:07 AM ET)
+> Fidelity.Alerts@fidelity.com: "Your electronic funds transfer (EFT) was successfully processed." $5,000.00 from account ending 8998 to JPMorgan Chase Bank, NA confirmed. Closes in-transit item from run 175. Leader Bank Escrow $5,366.83 due 2026-06-14 — gap now $366.83. See [[family/active-todos]], [[daily/2026-06-04]].
+
+> [!fact] HITLAB roundtable Jun 12 — confirmed 12:30–1:30 PM ET
+> Jerry Antimano LinkedIn InMail (Jun 4 12:05 PM ET): Closed-door HITLAB pharma executive virtual roundtable, **June 12, 12:30–1:30 PM ET**. Topic: electrolyte monitoring gaps (e.g., hyperkalemia), ECG + wearables as monitoring solutions. Respond to Jerry Antimano via LinkedIn to RSVP. See [[business/az-career]], [[daily/2026-06-04]].
+
+> [!fact] SpotHero — NYC parking Jun 4, 35 W 33rd St (Valet Garage)
+> support@spothero.com (Jun 4 09:17 AM ET): Reservation #124824651, 9:30 AM – 9:30 PM. Confirms Manhattan commute day today. See [[daily/2026-06-04]].

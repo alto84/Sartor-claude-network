@@ -3,7 +3,7 @@ type: domain
 entity: family-calendar
 updated: 2026-06-04
 updated_by: personal-data-gather
-run: 175
+run: 179
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -834,3 +834,11 @@ One new calendar event vs run 168: Aneeta SMART Certified Providers Quarterly Ca
 | Mon 6/9 | all-day | Aneeta "In office" | Family | Neurvati |
 | Tue 6/10 | noon–1:00 PM | Aneeta SMART Providers Call | Aneeta | Zoom (mgb-org.zoom.us), MGH Benson-Henry |
 | **Thu 6/11** | 7:00–8:00 PM | Dinner Princeton? | Alton (primary) | NEW this run; no location set |
+
+## Latest from gather (2026-06-04) — run 179
+
+> [!fact] HAPPY LOLLI Purple LolliME — delivered Jun 4 ~11:27 AM ET
+> Amazon order-update: "Delivered: HAPPY LOLLI Purple LolliME... and 1 more item." Update from "shipped" (run 177). Likely intended for Livia Birthday Party (Sun Jun 7, 3–6 PM EDT). Party gift ready. See [[family/active-todos]].
+
+> [!todo] ADD TO CALENDAR — Goddard Preschool Conference Mon Jun 8
+> Jacqueline Capote announced end-of-year conferences. Once Alton signs up via SignUpGenius, add the time slot to Family calendar. See [[family/vasu]], [[family/active-todos]].

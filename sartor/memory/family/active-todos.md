@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-04
 updated_by: personal-data-gather
-run: 178
+run: 179
 
 status: active
 priority: p1
@@ -1697,3 +1697,42 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] Fidelity MU options trade — Jun 4, 10:48 AM
 > New two-leg confirmation in account 8998: BOUGHT CALL (MU) @ $38.60 + SOLD CALL (MU) @ $120.93. Review full trade confirmation at Fidelity.com for strikes, quantity, and expiry. FINANCIAL. See [[ALTON]] and [[daily/2026-06-04]].
+
+## Latest from gather (2026-06-04) — run 179
+
+> [!todo] ACTION_REQUIRED — Goddard Preschool End-of-Year Conference Monday June 8
+> Jacqueline Capote (Goddard admin) via Kaymbu (Jun 4 11:12 AM ET): End-of-year Preschool Conferences scheduled for **Monday June 8**. Sign up now: https://www.signupgenius.com/go/10C0845A4AE2FA3F9CE9. **4 days away.** Applies to Vasu. See [[family/vasu]], [[daily/2026-06-04]].
+
+> [!todo] ACTION_REQUIRED — Ghosty: overdue veterinary services
+> Cambridge Cat Clinic reminder (Jun 4 12:00 PM ET): Overdue services for Ghostie. Cambridge Cat Clinic | 1108 Cambridge Street, Cambridge MA 02139 | 617-245-0245 | info@cambridgecatclinic.com. Schedule appointment ASAP.
+
+> [!fact] HITLAB roundtable Jun 12 — time confirmed 12:30–1:30 PM ET
+> Jerry Antimano LinkedIn InMail (Jun 4 12:05 PM ET): Closed-door pharma executive virtual roundtable. Topic: electrolyte monitoring gaps (hyperkalemia), ECG + wearables. RSVP to Jerry Antimano via LinkedIn. See [[ALTON]].
+
+> [!fact] Montclair United Summer Soccer 2026 — registration open (Vayu)
+> Blue Sombrero email Jun 4: Summer Soccer Sessions registration open for all levels. Decide before sessions fill. See [[family/vayu]].
+
+> [!fact] Fidelity $5K EFT confirmed complete — funds at Chase
+> Run 179 confirms EFT processed (Jun 4 8:07 AM ET). $5,000 at JPMorgan Chase. Leader Bank Escrow $5,366.83 due Jun 14 — gap: $366.83. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 179) — as of 2026-06-04 ~4 PM ET
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | DUE TODAY — completion unknown | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 21 days | Was due 2026-05-15 |
+> | Guidepoint #1754453 (PV Space) | 48h window expires ~Jun 5 1 PM | **~2026-06-05 13:00 ET** |
+> | Goddard Conference sign-up | Sign up at SignUpGenius | **2026-06-08 (Mon)** |
+> | Vishala Graduation | **TOMORROW 8:00 AM EDT** | 2026-06-05 |
+> | MKA Library + Band instrument | Return Sat | 2026-06-06 |
+> | Livia Party — gift | HAPPY LOLLI delivered; still need separate gift? | 2026-06-07 3 PM |
+> | Ghosty vet | Overdue — schedule Cambridge Cat Clinic | ASAP |
+> | NW Mutual account change | Verify authorization | ASAP |
+> | GQG proxy vote | Vote before deadline in email | TBD |
+> | HITLAB RSVP | Respond to Jerry Antimano | **2026-06-12** |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $367 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Order via Veracross, school ID MON348 | 2026-06-15 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362.1306 | ~Jul 4 ITC deadline |
+> | Magnus Health 2026-27 | Complete for Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | Order school supplies, school ID MON348 | 2026-06-30 |
+> | Disney ADR | Unknown | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |

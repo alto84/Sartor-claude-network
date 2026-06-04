@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-03
+updated: 2026-06-04
 updated_by: personal-data-gather
-run: 174
+run: 179
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-04] ingest | personal-data-gather run 179: Goddard conference Jun 8; Ghosty vet overdue; HITLAB time 12:30 PM; Fidelity EFT complete
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 4–11), no SSH (cloud runner)
+- New facts: 9 (Goddard conference Jun 8 sign-up; Ghosty overdue vet; HITLAB exact time 12:30–1:30 PM ET; Fidelity $5K EFT confirmed complete; SpotHero NYC commute confirmed; HAPPY LOLLI delivered; Sun Bum SPF delivered; MU summer soccer registration open; NEJM AI MEDS standard)
+- Calendar: unchanged vs runs 175–178; no new events Jun 4–11
+- New deadlines surfaced: Goddard Preschool Conference Jun 8 (sign up now); Guidepoint #1754453 expires ~Jun 5 1 PM
+- P0 updates: Fidelity $5K → confirmed at Chase (removes "in transit"); HITLAB time now known (12:30–1:30 PM)
+- Pages updated: `daily/2026-06-04.md`, `family/active-todos.md`, `family/vasu.md`, `family/family-calendar.md`, `ALTON.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`, `log.md`
 
 ## [2026-06-04] ingest | personal-data-gather run 178: Fidelity MU options trade; Chase CC 5680; WeAreMKA end-of-year deadlines (PE clothes Jun 15, supply sale Jun 30)
 - Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 4–11), no SSH (cloud runner)
