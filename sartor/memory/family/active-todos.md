@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-04
 updated_by: personal-data-gather
-run: 176
+run: 178
 
 status: active
 priority: p1
@@ -1683,3 +1683,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] GQG Fund proxy vote — check voting deadline
 > id@proxyvote.com (Jun 4 6:21 AM ET): Proxy vote notice for a GQG Partners fund holding. Open the full email, review materials, and vote or abstain before the deadline stated inside. Log in at proxyvote.com. FINANCIAL — See [[ALTON]].
+
+## Latest from gather (2026-06-04) — run 178
+
+> [!deadline] 2026-06-15 — MKA PE Clothes 2026-2027 pre-order
+> WeAreMKA final newsletter (Jun 4): Middle School PE clothes for next year pre-order deadline is **June 15**. School ID: **MON348**. Applies to [[family/vayu|Vayu]] (rising 5th grade). Place order via MKA Veracross supply link. Source: Veracross WeAreMKA 2026-06-04.
+
+> [!deadline] 2026-06-30 — PAMKA Middle School Supply Sale
+> WeAreMKA final newsletter (Jun 4): Order 2026-2027 school supplies by **June 30** (ships to home by Aug 21). School ID: **MON348**. Applies to [[family/vayu|Vayu]] (MS). Portion of sales goes to PAMKA. Source: Veracross WeAreMKA 2026-06-04.
+
+> [!note] Magnus Health 2026-2027 health records — still open
+> WeAreMKA Jun 4 (all-school update): Health information for 2026-2027 school year required. Magnus Health portal action for [[family/vayu|Vayu]] and [[family/vishala|Vishala]] was flagged ACTION_REQUIRED in runs 93/107 (May 20 emails). Verify completion at Magnus Health portal to avoid enrollment block.
+
+> [!fact] Fidelity MU options trade — Jun 4, 10:48 AM
+> New two-leg confirmation in account 8998: BOUGHT CALL (MU) @ $38.60 + SOLD CALL (MU) @ $120.93. Review full trade confirmation at Fidelity.com for strikes, quantity, and expiry. FINANCIAL. See [[ALTON]] and [[daily/2026-06-04]].

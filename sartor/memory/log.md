@@ -37,6 +37,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-04] ingest | personal-data-gather run 178: Fidelity MU options trade; Chase CC 5680; WeAreMKA end-of-year deadlines (PE clothes Jun 15, supply sale Jun 30)
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 4–11), no SSH (cloud runner)
+- New facts: 5 (MU options BOUGHT+SOLD CALL @ 38.60/120.93; Chase CC 5680 $29,997 due Jun 28; MKA PE Clothes Jun 15 deadline; PAMKA Supply Sale Jun 30; Magnus Health 2026-27 still open)
+- Calendar: unchanged vs runs 175–177; no new events
+- New deadlines surfaced: PE Clothes pre-order June 15, Supply Sale June 30
+- P0 carry-forwards: KYC due today; 990-N 20d overdue; Guidepoint x3 windows expiring; Vishala graduation tomorrow; band instrument return Sat
+- Pages updated: `daily/2026-06-04.md` (run 178 appended), `ALTON.md` (MU trade + CC 5680), `family/active-todos.md` (PE/supplies deadlines + Magnus Health reminder + MU note), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
 ## [2026-06-01] ingest | personal-data-gather run 161: wire $2,400 Berteau Zephir; Guidepoint ACP #1752401; HITLAB roundtable Jun 12; MKA BBQ Jun 4; Aneeta in-office Jun 9
 - Facts gathered: 7 new (wire transfer, Guidepoint #1752401, HITLAB roundtable, MKA BBQ, Aneeta in-office Jun 9, SpotHero parking, Vasu recital teacher-confirm)
 - New action items: Guidepoint #1752401 (respond this week), HITLAB roundtable Jun 12 (decision needed)

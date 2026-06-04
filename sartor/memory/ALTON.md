@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-06-04
 updated_by: personal-data-gather
-run: 175
+run: 178
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -359,3 +359,11 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] Dinner Princeton? — Thu Jun 11, 7:00–8:00 PM ET
 > Event on Alton's primary calendar, created 2026-05-27. No location or attendees set. Social dinner in Princeton area. Confirm evening logistics re: childcare if needed. See [[family/family-calendar]].
+
+## Latest from gather (2026-06-04) — run 178
+
+> [!fact] Fidelity — BOUGHT and SOLD CALL (MU) Micron Technology — Jun 4 10:48 AM ET
+> Account XXXXX8998. Two-leg confirmation: BOUGHT CALL (MU) @ $38.60 + SOLD CALL (MU) @ $120.93. Likely a vertical spread or roll on the same account that had a BOUGHT MU stock event Jun 3 (run 172). Full details — strikes, quantity, expiration — require Fidelity login: Accounts & Trade → Documents → Other Documents → Trade Confirmations. FINANCIAL; no action needed unless reviewing allocation. See [[daily/2026-06-04]].
+
+> [!fact] Chase Credit Card ending 5680 — statement $29,997.18 due 2026-06-28
+> no.reply.alerts@chase.com (Jun 4 9:28 AM ET). Statement balance $29,997.18, minimum $795.00, due 2026-06-28, auto-pay enrolled. First appearance of card 5680; other current Chase CC accounts: 7054, 8547, 1276 (all logged in prior runs). Auto-pay covers minimum. Review balance at chase.com if full payoff is preferred. See [[daily/2026-06-04]].
