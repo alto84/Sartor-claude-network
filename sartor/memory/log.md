@@ -1126,6 +1126,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-06-03.md` (run 174), `ALTON.md` (run 174: Fidelity Rule 4210), `family/active-todos.md` (run 174: Jackrabbit + NJYS ODP + P0 + calendar corrections), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
 
+## [2026-06-04] ingest | personal-data-gather run 176: Solar Roof CO-01 received (ACTION_REQUIRED); Guidepoint x2 new
+- Sources: Gmail (is:unread newer_than:2d, 30 threads + 1 full-body read on Solar CO-01 thread), all 5 Google Calendars (Jun 4–11). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Solar CO-01 Change Order from Lucent Energy CEO; Guidepoint AI Clinical #1754519; Guidepoint Pharmacovigilance #1754453; Anthropic receipt #2088-3209-1415; Chase CC statement due Jun 27)
+- Calendar: no new events vs run 175. All 5 calendars clean.
+- P1 alerts: Solar Roof CO-01 (review PDF + call Steven Schwartz); Guidepoint x2 windows expiring ~Jun 5
+- P2 carry-forwards: KYC due today; 990-N overdue 21d; Vishala graduation tomorrow 8 AM; Livia party Sun gift needed; Leader Bank escrow Jun 14
+- Pages updated: `daily/2026-06-04.md` (run 176 appended), `family/active-todos.md` (run 176: CO-01 + Guidepoint), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
 ## [2026-06-04] ingest | personal-data-gather run 175: Fidelity $5K transfer; Zelle Kleen Power Wash; Vayu school funded; Dinner Princeton Jun 11
 - Sources: Gmail (is:unread newer_than:2d, 30 threads + 3 full-body reads), all 5 Google Calendars (Jun 4–11). SSH unavailable (cloud runner).
 - Facts gathered: 4 new (Fidelity $5,000 transfer account 8998→Chase in progress; Chase Zelle new vendor Rince Prince/kleenpowerwash.com; MyKidsSpending Vayu $101.75 executed; Dinner Princeton Thu Jun 11 7 PM new calendar event)

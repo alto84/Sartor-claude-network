@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-04
 updated_by: personal-data-gather
-run: 175
+run: 176
 
 status: active
 priority: p1
@@ -1649,3 +1649,29 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Chase Zelle — new vendor: Kleen Power Wash
 > Rince Prince / info@kleenpowerwash.com added as Zelle recipient Jun 3. New household maintenance vendor. See [[ALTON]].
+
+## Latest from gather (2026-06-04) — run 176
+
+> [!todo] ACTION_REQUIRED — HIGH PRIORITY
+> **Tesla Solar Roof Change Order CO-01 — review and respond to Steven Schwartz.**
+> Steven Schwartz (CEO, Lucent Energy) emailed Jun 3 4:22 PM with PDF attachment "Lucent Energy - Sartor CO-01.pdf" — formal Change Order for additional costs ahead of Tesla Solar Roof installation. Gmail flagged IMPORTANT.
+>
+> Key points from email body:
+> - Items necessary for manufacturer specs, building code, and long-term performance
+> - Full home exterior painting line item is flagged as potentially reducible — Steven wants to negotiate this
+> - Requested text/call to (201) 362.1306 (cell); offered in-person meeting Jun 3–4 (window passed)
+>
+> **Actions needed:**
+> 1. Review PDF in Gmail: search "Tesla Solar Roof repairs and additions" from steven@lucent-energy.com
+> 2. Text/call Steven: (201) 362.1306
+> 3. Review each line item against the open scope decisions (see "2026-05-08 expanded solar scope + financing" section above)
+> 4. Get Jonathan Francis (CPA) to review before signing — per "Contract amendment with Lucent" open decision above
+> 5. Climate First Bank requires updated contract version before project commencement; any financed-amount increase requires Bank approval
+>
+> **ITC placed-in-service clock: 2026-07-04 deadline (~30 days).** Do not let CO-01 negotiations stall past early June. See [[ALTON]], [[family/active-todos]] prior decision block.
+
+> [!todo] Guidepoint consultation requests — respond by end of day Jun 4
+> Two new requests with ~48h windows:
+> - **AI-powered Clinical Search Space (#1754519)** — aquintiere@guidepointglobal.com, Jun 3 1:54 PM. Matches AZ clinical informatics work.
+> - **Pharmacovigilance Space (#1754453)** — jobrien@guidepointglobal.com, Jun 3 1:05 PM. Matches AZ drug safety work.
+> Accept or decline to preserve goodwill with network. See [[ALTON]].
