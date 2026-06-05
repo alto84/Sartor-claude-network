@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-06-05
 updated_by: personal-data-gather
-run: 183
+run: 185
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -419,3 +419,14 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] The Information: Snowflake CIO used layoffs to prove AI ROI (Jun 4)
 > hello@theinformation.com. Enterprise AI-driven restructuring trend (Block, Meta, Snowflake). AI ROI narrative relevant to Alton's AZ AI/ML Strategy position and internal strategy discussions. Informational.
+
+## Latest from gather (2026-06-05) — run 185
+
+> [!todo] ACTION_REQUIRED — Guidepoint #1755072: Biosimulation Software Solutions
+> pmoustaka@guidepointglobal.com (Jun 5 ~3:39 PM ET): Expert consultation request. Client seeking experts "Highly Familiar With Biosimulation Software Solutions (Certara Simcyp/Phoenix, Simulations Plus GastroPlus/PKanalix/Monolix, MathWorks SimBiology)." Distinct from prior #1733233 (Biosimulation Software/Service Market, May 22 run 110). PKanalix/Monolix and Simcyp are PK/PD modeling platforms used in IND/NDA submissions — relevant to Alton's drug safety/PV role. Accept or decline. See [[business/az-career]], [[family/active-todos]].
+
+> [!fact] Neumora Medical Director/Senior MD Drug Safety + PV — Jun 4 posting
+> LinkedIn job alert (jobalerts-noreply@linkedin.com, Jun 5 ~12:53 PM ET). Neumora Therapeutics, CNS-focused biopharma. Third consecutive safety-medicine senior role alert this week alongside BioMarin $383K (run 183) and Lyra Health $346K (run 184). LinkedIn algorithm correctly mapped Alton's AZ Global Patient Safety role to the senior safety MD market. Career market intelligence. See [[business/az-career]].
+
+> [!fact] JAMA ERA Congress 2026 — Finerenone CKD + HFpEF in obesity (Jun 5)
+> updates@email.jamanetwork.com (Jun 5 ~4:00 PM ET): Latest JAMA newsletter. ERA Congress 2026: Finerenone for CKD patients with glomerular disease. HFpEF phenotype differences in severe obesity. Nicotine pouch global consumer patterns. Clinical research relevant to Alton's cardio-nephro-metabolic / safety medicine background. Informational.

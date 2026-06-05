@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-05
 updated_by: personal-data-gather
-run: 183
+run: 185
 
 status: active
 priority: p1
@@ -1862,3 +1862,35 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Disney ADR | Unknown status | Window open May 17 |
 > | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
 > | DEA Fentanyl Summit | Decide whether to register | Not stated |
+
+## Latest from gather (2026-06-05) — run 185
+
+> [!todo] ACTION_REQUIRED — Venmo $360: Rachelle Trammel (4 sessions)
+> venmo@venmo.com (Jun 5 ~1:40 PM ET): @Rachelle-trammel requesting $360.00 from @AltonSartor. Sessions: May 21, May 26, June 2, June 4 (~$90/session × 4). Likely a childcare, tutoring, or household-service provider. Verify identity and service context, then pay via Venmo if legitimate. See [[daily/2026-06-05]].
+
+> [!todo] ACTION_REQUIRED — Guidepoint #1755072: Biosimulation Software Solutions
+> pmoustaka@guidepointglobal.com (Jun 5 ~3:39 PM ET): New consultation. Client seeking experts familiar with Biosimulation Software (Certara Simcyp/Phoenix, Simulations Plus GastroPlus/PKanalix/Monolix, MathWorks SimBiology). Accept or decline ASAP. See [[ALTON]], [[business/az-career]].
+
+> [!warning] P0 carry-forward (run 185) — Jun 5 final
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **NJ-1065 Q2 — Solar Inference LLC** | Contact [[people/jonathan-francis\|Jonathan Francis]] (jf@francis-cpa.com) | **2026-06-15** |
+> | **Venmo $360 Rachelle Trammel** | 4 sessions May 21/26 + Jun 2/4 — verify + pay | ASAP |
+> | Goddard Preschool Conference sign-up | TONIGHT — conferences Monday | **2026-06-08** |
+> | Guidepoint #1755072 Biosimulation | NEW — accept or decline | ASAP |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | PCSS-MAUD Webinar Jun 10 | Register if interested | 2026-06-10 noon ET |
+> | Chase/Sante Total KYC | OVERDUE since Jun 4 | NOW |
+> | Sante Total 990-N | OVERDUE 22 days | NOW |
+> | MKA Library + Band instrument return | TOMORROW Saturday | 2026-06-06 |
+> | Livia Birthday Party | Sun 3–6 PM EDT; gift in hand | 2026-06-07 |
+> | Ghosty vet | ASAP | — |
+> | HITLAB RSVP | Respond to Jerry Antimano via LinkedIn | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | $5K Chase; gap $366.83 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | 2026-06-15 |
+> | Lucent Energy CO-01 | Review + call Steven (201) 362-1306 | ~Jul 4 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Unknown status | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+> | DEA Fentanyl Summit | Decide | Not stated |

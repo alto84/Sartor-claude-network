@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-05
 updated_by: personal-data-gather
-run: 183
+run: 185
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1206,4 +1206,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: 990-N OVERDUE 22d; Chase/Sante Total KYC OVERDUE; MKA library/instrument TOMORROW Sat Jun 6; Livia party Sun Jun 7; Guidepoint #1754519 still open.
 - Guidepoint updates: #1755573 (GLP-1) EXPIRED; #1754453 (PV Space) window closed today.
 - Pages updated: `daily/2026-06-05.md` (run 183 appended, frontmatter bumped), `ALTON.md` (run 183 appended), `family/active-todos.md` (run 183 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-05] ingest | personal-data-gather run 185: Venmo $360 Rachelle Trammel; Guidepoint #1755072 Biosimulation; Neumora MD PV; Vayu screen time 20h53min
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 5–12). SSH unavailable (cloud runner).
+- Facts gathered: 7 new (Venmo $360 Rachelle Trammel 4 sessions; Guidepoint #1755072 Biosimulation Software; Neumora Medical Director Drug Safety + PV alert; Vayu screen time 20h53min May 29–Jun 4; Goddard week Jun 8–12 sneak peek confirmed; Selective Insurance maintenance Sun Jun 7; JAMA ERA Congress 2026 Finerenone CKD)
+- Calendar: no changes vs run 184; all 5 calendars polled; same 5 events Jun 5–12 confirmed
+- New ACTION_REQUIRED: Venmo $360 Rachelle Trammel (verify + pay); Guidepoint #1755072 (accept or decline ASAP)
+- P0 updates: NJ-1065 Q2 Jun 15 carries forward; Goddard Conference sign-up still tonight; Band/Library instrument return TOMORROW; all other P0 items carry forward
+- Pages updated: `daily/2026-06-05.md` (run 185 appended), `family/active-todos.md` (Venmo + Guidepoint #1755072 + P0 table), `ALTON.md` (run 185 appended), `family/vayu.md` (screen time), `family/vasu.md` (Goddard sneak peek + Vasu daily sheet), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run

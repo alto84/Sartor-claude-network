@@ -2,9 +2,9 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-06-04
+updated: 2026-06-05
 updated_by: personal-data-gather
-run: 180
+run: 185
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -257,3 +257,11 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact] Goddard Father's Day Celebration — confirm date
 > Carry-forward from run 147 (May 29): Kaymbu announced "Father's Day Celebration — waffle-y fun" but no date specified in snippet. Father's Day is June 15. Goddard event likely week of June 9–13. Contact Goddard to confirm exact date and add to Family calendar.
+
+## Latest from gather (2026-06-05) — run 185
+
+> [!fact] Goddard week of Jun 8–12 sneak peek — Soccer + Conferences Monday Jun 8
+> noreply@kaymbu.com (Jun 5 ~4:00 PM ET): Samantha Ramsden sent next-week preview. **Monday June 8: Soccer AND Preschool Parent Teacher Conferences.** Sign-up via SignUpGenius still open (link in Jacqueline Capote email Jun 4/5). If not yet signed up, do so tonight. See [[family/active-todos]].
+
+> [!fact] Vasu Daily Sheet — Friday June 5 (theme: What makes a great pet?)
+> cls64fc559b249306000230d48e@inbox.kaymbu.com (Jun 5 ~1:34 PM ET): Weekly classroom theme launching — "What makes a great pet?" Unit explores how caring for pets relates to caring for friends and family. Normal Friday, engaged participation. See [[daily/2026-06-05]].
