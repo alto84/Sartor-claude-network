@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-06-05
 updated_by: personal-data-gather
-run: 181
+run: 182
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -394,3 +394,14 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!warning] Guidepoint #1754453 (PV Space) — expiring TODAY ~1:05 PM ET
 > Carry-forward from run 180. This consultation window closes ~1:05 PM ET Jun 5. Log into Guidepoint to respond or decline before cutoff. See [[family/active-todos]].
+
+## Latest from gather (2026-06-05) — run 182
+
+> [!fact] Glass.health clinical AI platform — performance improvements + ambient scribing
+> updates@glass.health (Jun 4 23:04 UTC and Jun 4 20:01 UTC): Two updates same day. (1) "Increased performance across the Glass platform" — faster responses, more context, daily medical knowledge updates, better clinical intent understanding. (2) Ambient scribing now captures audio from Zoom, browser-based EHRs, and other visit sources. Glass is a clinical AI decision support tool. Both updates are directly relevant to Alton's AI-native patient safety frameworks at AZ and the AZ–Anthropic strategic partnership context.
+
+> [!todo] DEA Fentanyl Free America Summit — decide whether to register
+> Diversion.Conferences@dea.gov (Jun 4 22:44 UTC): DEA's inaugural Fentanyl Free America Summit, held in conjunction with DEA Diversion conferences. Registration open. Relevant to addiction medicine background (AAAP member, PCSS-MAUD CME track). No deadline in snippet. Decide and register if attending.
+
+> [!fact] JAMA+ AI: Nigam Shah (Stanford) on teaching AI to read patient histories
+> updates@email.jamanetwork.com (Jun 4 18:55 UTC): JAMA+ AI Conversations series interview with Nigam Shah (Stanford Center for Biomedical Informatics) — "Teaching AI to Read Patient Histories." Covers how large language models learn to interpret longitudinal EHR data and clinical notes. Directly relevant to Alton's predictive safety platforms (CRS/ICANS prediction, AI-native pharmacovigilance) and AZ clinical AI roadmap.

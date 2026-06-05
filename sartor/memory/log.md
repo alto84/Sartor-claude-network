@@ -37,6 +37,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-05] ingest | personal-data-gather run 182: Glass.health; DEA Summit; JAMA+ Nigam Shah; Amazon deliveries
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 5–12), no SSH (cloud runner)
+- New facts: 9 (Glass.health performance + ambient scribing update; DEA Fentanyl Free America Summit invite; NJYS World Cup Insider; 2x Crazy Creek chairs delivered; OFF! Insect Repellent shipped; JAMA+ Nigam Shah AI patient histories; Hiive daily digest; Google Play subscription charge Jun 4; Fidelity financial wellness outreach)
+- Calendar: no changes vs run 181; 5 events confirmed Jun 5–12
+- New deadlines: none new; DEA Summit (soft, no stated deadline)
+- P0 updates: Guidepoint #1754453 PV Space window status unknown (was ~1:05 PM ET); all other P0s carry forward
+- Pages updated: `daily/2026-06-05.md` (run 182 appended), `ALTON.md` (Glass.health, DEA, JAMA+), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
 ## [2026-06-05] ingest | personal-data-gather run 181: Guidepoint expirations; Lincoln Center context; graduation day confirmed
 - Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 5–12), no SSH (cloud runner)
 - New facts: 4 (Lincoln Center WiFi login Jun 4 7:26 PM; Guidepoint #1755573 GLP-1 expired ~1:36 AM ET; Guidepoint #1754453 PV Space expiring ~1:05 PM ET today; AAAP AUD PIP CME email)
