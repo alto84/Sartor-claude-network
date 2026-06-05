@@ -1,12 +1,12 @@
 ---
 type: domain
 entity: TAXES
-updated: 2026-05-26
-updated_by: personal-data-gather (run 127)
-last_verified: 2026-05-08
+updated: 2026-06-05
+updated_by: personal-data-gather (run 184)
+last_verified: 2026-06-05
 status: active
-next_deadline: 2026-05-15
-next_review: 2026-05-15
+next_deadline: 2026-06-15
+next_review: 2026-06-12
 tags: [entity/tax, status/active, priority/p1, domain/career]
 aliases: [Tax, Taxes, Tax Prep, TY2025]
 related: [ALTON, FAMILY, BUSINESS, reference_heloc, reference_solar_project, reference_anthropic_shares]

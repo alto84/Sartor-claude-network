@@ -1831,3 +1831,34 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Disney ADR | Unknown status | Window open May 17 |
 > | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
 > | DEA Fentanyl Summit | Decide whether to register | Not stated |
+
+## Latest from gather (2026-06-05) — run 184
+
+> [!deadline] 2026-06-15 — NEW — NJ-1065/NJ-CBT-1065 Quarterly Payment — Solar Inference LLC
+> NJ DORES Business Registry Tax Filing Reminder (donotreply@getgov2go.com, Jun 5 9:12 AM ET): Partnership Return Estimated Quarterly Payment due 2026-06-15 for SOLAR INFERENCE LLC. 10 days. Contact [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com, 914-488-5727) to confirm Q2 payment amount and NJ filing method. Aligns with [[matters/q2-2026-estimated-tax|Q2 2026 estimated tax matter]]. See [[TAXES]], [[business/solar-inference]].
+
+> [!todo] ACTION_REQUIRED — URGENT TONIGHT — Goddard Preschool Conferences MONDAY June 8
+> Jacqueline Capote (Goddard) via Kaymbu (Jun 5 9:56 AM ET): "Conferences are Monday! Sign up here if you would like to meet with your child's teacher!" It is Friday evening. Conferences are in 2 days. Sign up at SignUpGenius link in email. See [[family/vasu]].
+
+> [!warning] P0 carry-forward (run 184) — Jun 5 late evening
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **NJ-1065 Q2 — Solar Inference LLC** | **NEW — contact CPA** | **2026-06-15** |
+> | Goddard Conference sign-up | **TONIGHT** — conferences Monday Jun 8 | **2026-06-08** |
+> | Guidepoint #1754453 (PV Space) | CLOSED (expired ~1:05 PM ET today) | CLOSED |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | PCSS-MAUD Webinar Jun 10 | Register if interested | 2026-06-10 noon ET |
+> | Chase/Sante Total KYC | OVERDUE since Jun 4 | NOW |
+> | Sante Total 990-N | OVERDUE 22 days | NOW |
+> | MKA Library + Band instrument return | TOMORROW Saturday | 2026-06-06 |
+> | Livia Birthday Party | Sun 3–6 PM EDT; gift in hand | 2026-06-07 |
+> | Ghosty vet | ASAP | — |
+> | HITLAB RSVP | Respond to Jerry Antimano via LinkedIn | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Via Veracross MON348 | 2026-06-15 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362-1306 | ~Jul 4 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Unknown status | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+> | DEA Fentanyl Summit | Decide whether to register | Not stated |

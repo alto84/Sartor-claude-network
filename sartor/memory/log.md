@@ -37,6 +37,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-05] ingest | personal-data-gather run 184: NJ-1065 Jun 15 deadline; Goddard Conferences Monday; MGMA 2026 neurology comp; Guidepoint #1754453 closed
+- Sources: Gmail (is:unread newer_than:2d, 40 threads), 4/5 Google Calendars (Aneeta unavailable), no SSH (cloud runner)
+- New facts: 10 (NJ-1065 Q2 Jun 15 deadline SOLAR INFERENCE LLC; Guidepoint #1754453 re-solicited then expired; Goddard Conferences Monday escalation; Chase statement 8563; MGMA 2026 neurology median +2.69%; LinkedIn VP Data/AI Lyra Health $346K; AAAP OUD webinar CME; DEA Washington Lunch & Learn; Hiive WHOOP $6.80; Vasu 2× classroom moments)
+- Calendar: no changes vs run 183; 5 events Jun 5–12 confirmed (4 calendars checked)
+- New deadlines: NJ-1065/NJ-CBT-1065 Q2 estimated payment 2026-06-15 (Solar Inference LLC) — NEW hard deadline
+- P0 updates: Guidepoint #1754453 PV Space CLOSED (window expired ~1:05 PM ET); Goddard Preschool Conferences escalated to URGENT (sign up tonight for Monday Jun 8)
+- Pages updated: `daily/2026-06-05.md` (run 184 appended), `TAXES.md` (NJ-1065 deadline + frontmatter), `family/active-todos.md` (run 184 carry-forward + NJ-1065 action item), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (updated), `log.md` (this entry)
+
 ## [2026-06-05] ingest | personal-data-gather run 182: Glass.health; DEA Summit; JAMA+ Nigam Shah; Amazon deliveries
 - Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 5–12), no SSH (cloud runner)
 - New facts: 9 (Glass.health performance + ambient scribing update; DEA Fentanyl Free America Summit invite; NJYS World Cup Insider; 2x Crazy Creek chairs delivered; OFF! Insect Repellent shipped; JAMA+ Nigam Shah AI patient histories; Hiive daily digest; Google Play subscription charge Jun 4; Fidelity financial wellness outreach)
