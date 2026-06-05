@@ -2,9 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-06-04
+updated: 2026-06-05
 updated_by: personal-data-gather
-run: 180
+run: 181
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -245,3 +245,11 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 > - **6:00 – 7:30 PM EDT** — MKA Third Grade Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 07039
 >
 > Plan transport from MKA Montclair to Livingston for the party. See [[family/active-todos]], [[family/family-calendar]].
+
+## Latest from gather (2026-06-05) — run 181
+
+> [!fact] TODAY — Third Grade Graduation Day
+> Calendar confirmed (Family calendar, live API): Vishala's Third Grade events are today.
+> - **8:00 AM – 2:00 PM EDT** — Third Grade Closing Exercises, MKA Brookside
+> - **6:00 – 7:30 PM EDT** — Third Grade Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ (Evite via Aneeta)
+> Logistics: plan arrival by 7:45 AM at MKA; allow time for lunch and transport to Livingston before 6 PM. See [[family/active-todos]], [[daily/2026-06-05]].

@@ -37,6 +37,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-05] ingest | personal-data-gather run 181: Guidepoint expirations; Lincoln Center context; graduation day confirmed
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 5–12), no SSH (cloud runner)
+- New facts: 4 (Lincoln Center WiFi login Jun 4 7:26 PM; Guidepoint #1755573 GLP-1 expired ~1:36 AM ET; Guidepoint #1754453 PV Space expiring ~1:05 PM ET today; AAAP AUD PIP CME email)
+- Calendar: unchanged vs runs 175–180; no new events Jun 5–12
+- New deadlines surfaced: Guidepoint #1754453 expires ~1:05 PM ET today
+- P0 updates: Guidepoint GLP-1 expired (closed); P0 carry-forward table updated for Jun 5
+- Pages updated: `daily/2026-06-05.md`, `ALTON.md`, `family/vishala.md`, `family/active-todos.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`, `log.md`
+
 ## [2026-06-04] ingest | personal-data-gather run 180: graduation logistics email; Guidepoint #1754519 re-send; picture proofs; Handshake Touchstone; NJ Pride FC camp
 - Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 4–11), no SSH (cloud runner)
 - New facts: 9 (MKA graduation logistics letter from Katie Banks; Guidepoint #1754519 second email; Goddard picture proof pickup; Handshake Project Touchstone $125/hr 3D Slicer; NJ Pride FC August camp; Amazon Morse Code shipped; Vasu daily sheet Jun 4; Claude Opus 4.8 Substack digest; PCSS-MAUD webinar conflict Jun 10)

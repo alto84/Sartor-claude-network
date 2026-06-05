@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-04
+updated: 2026-06-05
 updated_by: personal-data-gather
-run: 180
+run: 181
 
 status: active
 priority: p1
@@ -1779,3 +1779,27 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | PAMKA Supply Sale (Vayu) | Order school supplies, school ID MON348 | 2026-06-30 |
 > | Disney ADR | Unknown status | Window open May 17 |
 > | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+
+## Latest from gather (2026-06-05) — run 181
+
+> [!warning] P0 carry-forward (run 181) — Jun 5 morning
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Guidepoint #1755573 (GLP-1) | **EXPIRED** (window closed ~1:36 AM ET) | — |
+> | Guidepoint #1754453 (PV Space) | **EXPIRING TODAY ~1:05 PM ET** | Jun 5 13:05 ET |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open; 2nd email Jun 4 | ASAP |
+> | Vishala Graduation + Party | **TODAY**: 8:00 AM–2:00 PM (MKA) + 6:00–7:30 PM (Sports Universe, Livingston) | 2026-06-05 |
+> | Chase/Sante Total KYC | Was due 2026-06-04 — completion unknown | OVERDUE |
+> | Sante Total 990-N | OVERDUE 22 days (was due 2026-05-15) | NOW |
+> | MKA Library + Band instrument return | **TOMORROW Saturday** | 2026-06-06 |
+> | Livia Birthday Party | Sun 3:00–6:00 PM EDT; gift in hand; confirm location with Aneeta | 2026-06-07 |
+> | Goddard Preschool Conference sign-up | Link in [[vasu]]; sign up before Monday | Before 2026-06-08 |
+> | Ghosty vet | Overdue; Cambridge Cat Clinic 617-245-0245 | ASAP |
+> | Leader Bank Escrow $5,366.83 | $5K staged at Chase; gap $366.83 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Via Veracross, school ID MON348 | 2026-06-15 |
+> | HITLAB RSVP | Respond to Jerry Antimano via LinkedIn | Before 2026-06-12 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362-1306 | ~Jul 4 ITC deadline |
+> | Magnus Health 2026-27 | Complete for Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | Order school supplies, school ID MON348 | 2026-06-30 |
+> | Disney ADR | Status unknown | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics + childcare if needed | 2026-06-11 7 PM |

@@ -2,9 +2,9 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-06-04
+updated: 2026-06-05
 updated_by: personal-data-gather
-run: 180
+run: 181
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -386,3 +386,11 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] Handshake AI — Project Touchstone ($125/hr, 3D Slicer medical imaging)
 > handshake@g.joinhandshake.com (Jun 4 12:03 PM ET): "Earn $125/hr with Handshake AI - Project Touchstone. Know your way around 3D Slicer?" 3D Slicer is an open-source medical image analysis platform used extensively in neuro-oncology research (Alton's Harvard Martinos Center deep-learning / brain tumor segmentation background is directly relevant). This is a distinct project from the declined Project Alloy (generic answer evaluation). Evaluate at joinhandshake.com. See [[family/active-todos]].
+
+## Latest from gather (2026-06-05) — run 181
+
+> [!fact] Lincoln Center context — Thu Jun 4, 7:26 PM ET
+> account@smail.socialsignin.com (Jun 4 11:26 PM UTC): Guest WiFi login at Lincoln Center at 7:26 PM. Confirms Alton attended an evening event at Lincoln Center on Thursday. No further detail from inbox. See [[daily/2026-06-05]].
+
+> [!warning] Guidepoint #1754453 (PV Space) — expiring TODAY ~1:05 PM ET
+> Carry-forward from run 180. This consultation window closes ~1:05 PM ET Jun 5. Log into Guidepoint to respond or decline before cutoff. See [[family/active-todos]].
