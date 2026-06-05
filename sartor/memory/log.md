@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-04
+updated: 2026-06-05
 updated_by: personal-data-gather
-run: 180
+run: 183
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1188,4 +1188,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: no changes vs run 176. All 5 calendars unchanged. Jun 4–11 window confirmed clean.
 - P0 alerts: NW Mutual security change; KYC due today; 990-N overdue 22d; Guidepoint x3 windows expiring Jun 5; Solar CO-01 needs action
 - Pages updated: `daily/2026-06-04.md` (run 177 appended), `family/active-todos.md` (run 177: NW Mutual + GQG proxy), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-05] ingest | personal-data-gather run 183: PCSS-MAUD June 10; BioMarin market intel; Claude Opus 4.8; calendar unchanged
+- Sources: Gmail (is:unread newer_than:2d, 40 threads scanned); all 5 Google Calendars (Jun 5–12). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (PCSS-MAUD Webinar Jun 10 12–1 PM ET; Substack Claude Opus 4.8 digest; BioMarin SMD Safety Science $383K alert; The Information Snowflake AI ROI; Goddard Show and Tell Letter F)
+- Calendar: no changes vs run 182 across all 5 calendars. Same 5-event table confirmed.
+- ACTION_REQUIRED: PCSS-MAUD Webinar June 10, 12–1 PM ET — register if interested (5 days). David Marcovitz MD; Managing AUD in OUD Treatment Settings. Via AAAP/PCSS.
+- P0 carries: 990-N OVERDUE 22d; Chase/Sante Total KYC OVERDUE; MKA library/instrument TOMORROW Sat Jun 6; Livia party Sun Jun 7; Guidepoint #1754519 still open.
+- Guidepoint updates: #1755573 (GLP-1) EXPIRED; #1754453 (PV Space) window closed today.
+- Pages updated: `daily/2026-06-05.md` (run 183 appended, frontmatter bumped), `ALTON.md` (run 183 appended), `family/active-todos.md` (run 183 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run

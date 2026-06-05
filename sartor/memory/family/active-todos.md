@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-05
 updated_by: personal-data-gather
-run: 181
+run: 183
 
 status: active
 priority: p1
@@ -1803,3 +1803,31 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | PAMKA Supply Sale (Vayu) | Order school supplies, school ID MON348 | 2026-06-30 |
 > | Disney ADR | Status unknown | Window open May 17 |
 > | Dinner Princeton? | Confirm logistics + childcare if needed | 2026-06-11 7 PM |
+
+## Latest from gather (2026-06-05) — run 183
+
+> [!todo] ACTION_REQUIRED — PCSS-MAUD Webinar June 10, 12–1 PM ET (5 days)
+> jane@aaap.org (Jun 4 5:31 PM ET): "Managing Alcohol Use Disorder in OUD Treatment Settings." Presenter: David Marcovitz, MD. **Wednesday June 10, 12:00–1:00 PM ET.** Free webinar via AAAP/PCSS. Register if interested — 5 days out. Relevant to PCSS membership and addiction medicine CME. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 183) — Jun 5 evening
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Guidepoint #1755573 (GLP-1) | EXPIRED | CLOSED |
+> | Guidepoint #1754453 (PV Space) | Window closed today ~1:05 PM ET | CLOSED/unknown |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | PCSS-MAUD Webinar Jun 10 | Decide + register | **2026-06-10 noon ET** |
+> | Chase/Sante Total KYC | OVERDUE since Jun 4 | NOW |
+> | Sante Total 990-N | OVERDUE 22 days (was due 2026-05-15) | NOW |
+> | MKA Library + Band instrument return | Tomorrow Saturday | 2026-06-06 |
+> | Livia Birthday Party | Sun 3–6 PM EDT; gift in hand | 2026-06-07 |
+> | Goddard Preschool Conference sign-up | Sign up before Monday | 2026-06-08 |
+> | Ghosty vet | ASAP | — |
+> | HITLAB RSVP | Respond to Jerry Antimano via LinkedIn | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Via Veracross MON348 | 2026-06-15 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362-1306 | ~Jul 4 ITC deadline |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | Order school supplies MON348 | 2026-06-30 |
+> | Disney ADR | Unknown status | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+> | DEA Fentanyl Summit | Decide whether to register | Not stated |

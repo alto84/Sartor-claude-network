@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-06-05
 updated_by: personal-data-gather
-run: 182
+run: 183
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -405,3 +405,17 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] JAMA+ AI: Nigam Shah (Stanford) on teaching AI to read patient histories
 > updates@email.jamanetwork.com (Jun 4 18:55 UTC): JAMA+ AI Conversations series interview with Nigam Shah (Stanford Center for Biomedical Informatics) — "Teaching AI to Read Patient Histories." Covers how large language models learn to interpret longitudinal EHR data and clinical notes. Directly relevant to Alton's predictive safety platforms (CRS/ICANS prediction, AI-native pharmacovigilance) and AZ clinical AI roadmap.
+
+## Latest from gather (2026-06-05) run 183
+
+> [!todo] PCSS-MAUD Webinar June 10, 12–1 PM ET — register if interested
+> jane@aaap.org (Jun 4 5:31 PM ET): "PCSS-MAUD Webinar: Managing Alcohol Use Disorder in OUD Treatment Settings." Presenter: David Marcovitz, MD. Wed June 10, 12:00–1:00 PM ET. Free. Register via AAAP/PCSS. 5 days out. Relevant to addiction medicine PCSS membership and CME portfolio. See [[family/active-todos]].
+
+> [!fact] Substack AI digest: Claude Opus 4.8 capabilities and reactions (Jun 4)
+> no-reply@substack.com: Digest from Zvi Mowshowitz on Claude Opus 4.8, a16z speedrun, Jesus Rodriguez. Covers latest flagship model release — directly in Alton's AI/ML domain. Informational.
+
+> [!fact] BioMarin Senior Medical Director Safety Science — up to $383K/year (Jun 4)
+> LinkedIn job alert (jobalerts-noreply@linkedin.com, Jun 4 4:54 PM ET). BioMarin Pharmaceutical. Safety science physician executive lane. Market reference for VP-adjacent safety roles. See [[business/az-career]], [[ASTRAZENECA]].
+
+> [!fact] The Information: Snowflake CIO used layoffs to prove AI ROI (Jun 4)
+> hello@theinformation.com. Enterprise AI-driven restructuring trend (Block, Meta, Snowflake). AI ROI narrative relevant to Alton's AZ AI/ML Strategy position and internal strategy discussions. Informational.
