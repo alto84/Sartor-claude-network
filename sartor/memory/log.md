@@ -1225,3 +1225,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 updates: MKA Library + Band instrument return is TODAY (was "tomorrow" in run 185); Livia Birthday Party tomorrow Sun Jun 7; all other P0 items carry forward
 - Pages updated: `daily/2026-06-06.md` (created), `family/active-todos.md` (run 186 appended, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-06] ingest | personal-data-gather run 187: confirmatory midday scan — 0 new facts
+- Sources: Gmail (is:unread newer_than:6h, 2 threads scanned); all 5 Google Calendars (Jun 6–13). SSH unavailable (cloud runner).
+- Facts gathered: 0 new (vast.ai Google sign-in notification [dup of run 186]; Amazon book recommendations [marketing/promo only])
+- Calendar: no changes vs run 186; all 5 calendars polled; same 5-event table confirmed; Blue Sombrero no events; Alton Tasks empty
+- ACTION_REQUIRED: none new; P0 carry-forward table unchanged from run 186
+- Pages updated: `daily/2026-06-06.md` (run 187 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
