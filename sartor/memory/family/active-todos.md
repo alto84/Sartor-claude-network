@@ -1928,3 +1928,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Disney ADR | Unknown status | Window open May 17 |
 > | Dinner Princeton? | Confirm logistics + childcare | 2026-06-11 7 PM |
 > | DEA Fentanyl Summit | Decide whether to register | Not stated |
+
+## Latest from gather (2026-06-06) — run 189
+
+> [!fact] Fidelity BOUGHT MICRON TECHNOLOGY INC — Jun 6 (account XXXXX8998)
+> New equity position: Alton bought Micron Technology (MU) today. Fidelity trade confirmation received Jun 6 12:38 PM UTC. Same brokerage account as the May 30 GOOGL SOLD CALL. Informational for family finance tracking. See [[ALTON]].
+
+> [!warning] Venmo $360 — Rachelle trammel — 4th reminder sent Jun 6
+> 4 unpaid sessions: May 21, 26 + Jun 2, 4. Fresh Venmo reminder received Jun 6 1:16 PM. Still in P0. Pay via Venmo @Rachelle-trammel. Verify identity before paying if not confirmed.
+
+> [!note] Goddard PT Conference — confirmed Monday June 8 (sign-up deadline passed)
+> Kaymbu Sneak Peek email (Samantha Ramsden, Jun 5): "Monday June 8 — Soccer, Preschool Parent Teacher conferences." Sign-up deadline was Friday June 5 (yesterday). Status: unknown whether Alton signed up. **If no slot reserved: contact Goddard directly today (Saturday).** Conference is in 2 days. See [[family/vasu]].

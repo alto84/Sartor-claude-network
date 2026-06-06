@@ -430,3 +430,8 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] JAMA ERA Congress 2026 — Finerenone CKD + HFpEF in obesity (Jun 5)
 > updates@email.jamanetwork.com (Jun 5 ~4:00 PM ET): Latest JAMA newsletter. ERA Congress 2026: Finerenone for CKD patients with glomerular disease. HFpEF phenotype differences in severe obesity. Nicotine pouch global consumer patterns. Clinical research relevant to Alton's cardio-nephro-metabolic / safety medicine background. Informational.
+
+## Latest from gather (2026-06-06) — run 189
+
+> [!fact] Fidelity BOUGHT MICRON TECHNOLOGY INC — Jun 6 12:38 PM UTC
+> Trade confirmation: account XXXXX8998. Bought Micron Technology (MU). MU is the dominant US DRAM/NAND/HBM supplier — high correlation with AI infrastructure spending cycles. New position established today, same brokerage where GOOGL call was sold May 30. No size or price detail in email snippet; full details in Fidelity NetBenefits. See [[business/solar-inference]] for portfolio context.

@@ -1242,3 +1242,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forward: unchanged from run 186 (990-N overdue, KYC overdue, MKA instrument TODAY, Doximity Mon Jun 8, Vasu PT conf Mon Jun 8, Leader Bank escrow Jun 14, NJ-1065 Q2 Jun 15)
 - Pages updated: `daily/2026-06-06.md` (run 188 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-06] ingest | personal-data-gather run 189: Fidelity BOUGHT MICRON; Venmo $360 4th reminder
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 6–13). SSH unavailable (cloud runner).
+- Facts gathered: 3 new (Fidelity BOUGHT MICRON TECHNOLOGY INC account XXXXX8998; Venmo $360 Rachelle trammel 4th reminder — reinforces P0; Amazon cat litter shipped; Amazon bath sheets ordered)
+- Calendar: no changes vs run 188; all 5 calendars polled; same 5-event table confirmed
+- New ACTION_REQUIRED: none (Micron buy is informational; Venmo already in P0; Goddard PT conf already in P0 — status: confirmed happening Mon June 8, sign-up deadline passed)
+- P0 carry-forward: unchanged from run 186 (990-N overdue, KYC overdue, Venmo $360, Doximity Mon Jun 8, Goddard PT conf Mon Jun 8, Leader Bank escrow Jun 14, NJ-1065 Q2 Jun 15)
+- Pages updated: `daily/2026-06-06.md` (run 189 appended, frontmatter bumped), `family/active-todos.md` (run 189 appended), `ALTON.md` (Micron buy fact appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
