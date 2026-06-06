@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-06
 updated_by: personal-data-gather
-run: 188
+run: 190
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1241,6 +1241,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - New ACTION_REQUIRED: none (Cenlar payment is informational; no new P0 items)
 - P0 carry-forward: unchanged from run 186 (990-N overdue, KYC overdue, MKA instrument TODAY, Doximity Mon Jun 8, Vasu PT conf Mon Jun 8, Leader Bank escrow Jun 14, NJ-1065 Q2 Jun 15)
 - Pages updated: `daily/2026-06-06.md` (run 188 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-06] ingest | personal-data-gather run 190: Chase credit report alert; Telix + Pfizer job alerts; Nori Sushi $207; Herbert Benson course Oct 22-24
+- Sources: Gmail (is:unread newer_than:2d, 40 threads); all 5 Google Calendars (Jun 6–13). SSH unavailable (cloud runner).
+- Facts gathered: 9 new (Chase credit balance change alert — ACTION_REQUIRED; Uber Eats Nori Sushi $207.54 Sat family lunch; Costco Same-Day delivery confirmed; LegalZoom 9-month business check-in; LinkedIn Telix Sr Dir AI + Pfizer Director Medical Insights; M3 Global Research neurology studies; Handshake Project Touchstone re-solicitation; Amazon IMMCUTE Dog Pee Pads shipped; Aneeta SMART call detail — Herbert Benson MD Course Oct 22-24 2026 Harvard)
+- Calendar: no new events; 1 new detail: Herbert Benson MD Course Oct 22-24, 2026 at Harvard Medical School captured from Aneeta's SMART Providers Quarterly Call description
+- New ACTION_REQUIRED: Chase credit report activity — "Review your credit balance change" (IMPORTANT/INBOX, not routine)
+- P0 carry-forward: 1 new item (Chase credit alert); MKA instrument return was TODAY (outcome unconfirmed); all other items carry forward from run 189
+- Pages updated: `daily/2026-06-06.md` (run 190 appended, frontmatter bumped), `data/gather-alerts.md` (created/written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
 
 ## [2026-06-06] ingest | personal-data-gather run 189: Fidelity BOUGHT MICRON; Venmo $360 4th reminder
