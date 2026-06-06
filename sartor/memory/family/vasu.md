@@ -2,9 +2,9 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-06-05
+updated: 2026-06-06
 updated_by: personal-data-gather
-run: 185
+run: 186
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -265,3 +265,11 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact] Vasu Daily Sheet — Friday June 5 (theme: What makes a great pet?)
 > cls64fc559b249306000230d48e@inbox.kaymbu.com (Jun 5 ~1:34 PM ET): Weekly classroom theme launching — "What makes a great pet?" Unit explores how caring for pets relates to caring for friends and family. Normal Friday, engaged participation. See [[daily/2026-06-05]].
+
+## Latest from gather (2026-06-06) — run 186
+
+> [!fact] Goddard DRAMATIC PLAY — Jun 5 end-of-day update
+> cls64fc559b249306000230d48e@inbox.kaymbu.com (Jun 5 21:37 UTC): Teachers added photos taken of children in the dramatic play center and taped them in the area, enriching the classroom environment. Friday end-of-day Goddard moment. Normal school day confirmed. See [[daily/2026-06-06]].
+
+> [!fact] Goddard Show and Tell Friday — successful despite missing letter email
+> cls64fc559b249306000230d48e@inbox.kaymbu.com (Jun 5 21:41 UTC): "Today was a successful show and tell, in spite of forgetting to send out the email picking a letter." Teachers improvised and the session succeeded. Confirms Vasu's last Friday school day of the 2025-26 year completed normally. See [[daily/2026-06-06]].

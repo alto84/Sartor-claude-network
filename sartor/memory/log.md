@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-05
+updated: 2026-06-06
 updated_by: personal-data-gather
-run: 185
+run: 186
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1206,6 +1206,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carries: 990-N OVERDUE 22d; Chase/Sante Total KYC OVERDUE; MKA library/instrument TOMORROW Sat Jun 6; Livia party Sun Jun 7; Guidepoint #1754519 still open.
 - Guidepoint updates: #1755573 (GLP-1) EXPIRED; #1754453 (PV Space) window closed today.
 - Pages updated: `daily/2026-06-05.md` (run 183 appended, frontmatter bumped), `ALTON.md` (run 183 appended), `family/active-todos.md` (run 183 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-06] ingest | personal-data-gather run 186: Goddard DRAMATIC PLAY; Doximity survey Jun 8; Alexion safety exec alert #4; Livia party TOMORROW
+- Sources: Gmail (is:unread newer_than:2d, 40 threads scanned); all 5 Google Calendars (Jun 6–13). SSH unavailable (cloud runner).
+- Facts gathered: 6 new (Goddard DRAMATIC PLAY end-of-day + Show and Tell Friday success; Doximity Tulane residency survey closes Jun 8; Alexion Sr. Medical Director Drug Safety + PV — 4th consecutive safety exec alert this week; Guidepoint Blood Collection Survey $50; LinkedIn message reminder from Jerry Antimano — HITLAB 6 days)
+- Calendar: no new events; 4 confirmed (Livia Birthday Party TOMORROW Sun Jun 7 3–6 PM, Aneeta In office Mon Jun 9, SMART Providers Call Tue Jun 10 noon–1 PM, Dinner Princeton Thu Jun 11 7 PM). Vishala graduation + party (Jun 5) past. Blue Sombrero + Alton's Tasks: empty.
+- P0 updates: MKA Library + Band instrument return TODAY (Jun 6); Goddard Conference sign-up TODAY; Livia party TOMORROW; KYC + 990-N both OVERDUE carry-forward
+- New ACTION_REQUIRED: Doximity survey closes Jun 8 (2 days); LinkedIn response to Jerry (HITLAB Jun 12)
+- Pages updated: `daily/2026-06-06.md` (created), `family/vasu.md` (run 186: DRAMATIC PLAY + Show and Tell Friday), `family/active-todos.md` (run 186: Doximity item + P0 table), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
 
 ## [2026-06-05] ingest | personal-data-gather run 185: Venmo $360 Rachelle Trammel; Guidepoint #1755072 Biosimulation; Neumora MD PV; Vayu screen time 20h53min

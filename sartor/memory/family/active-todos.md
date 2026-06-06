@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-05
+updated: 2026-06-06
 updated_by: personal-data-gather
-run: 185
+run: 186
 
 status: active
 priority: p1
@@ -1893,4 +1893,34 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
 > | Disney ADR | Unknown status | Window open May 17 |
 > | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+> | DEA Fentanyl Summit | Decide | Not stated |
+
+## Latest from gather (2026-06-06) — run 186
+
+> [!todo] ACTION_REQUIRED — Doximity residency nomination survey closes June 8 (2 days)
+> residency@doximity.com (Jun 5 21:00 UTC): "Final chance to submit nominations of residency programs. Survey closes June 8, 2026." Subject: Tulane University School of Medicine. Optional; closes Monday. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 186) — Jun 6 morning
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **MKA Library + Band instrument return** | **TODAY Saturday** | **2026-06-06** |
+> | **Goddard Preschool Conference sign-up** | TODAY — conferences Monday Jun 8 | **2026-06-08** |
+> | **Livia Birthday Party** | TOMORROW 3–6 PM EDT; gift in hand | **2026-06-07** |
+> | Venmo $360 Rachelle Trammel | 4 sessions — verify + pay | ASAP |
+> | Guidepoint #1755072 Biosimulation | Accept or decline | ASAP |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | Doximity Tulane survey | Decide + submit | 2026-06-08 |
+> | PCSS-MAUD Webinar Jun 10 | Register if interested | 2026-06-10 noon ET |
+> | Chase/Sante Total KYC | OVERDUE since Jun 4 | NOW |
+> | Sante Total 990-N | OVERDUE 22+ days | NOW |
+> | HITLAB RSVP | Respond to Jerry Antimano via LinkedIn | 2026-06-12 |
+> | Ghosty vet | ASAP | — |
+> | Leader Bank Escrow $5,366.83 | $5K Chase; gap $366.83 | 2026-06-14 |
+> | NJ-1065 Q2 — Solar Inference LLC | Contact CPA Jonathan Francis | 2026-06-15 |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | 2026-06-15 |
+> | Dinner Princeton? | Confirm logistics + childcare | 2026-06-11 7 PM |
+> | Lucent Energy CO-01 | Review + call Steven (201) 362-1306 | ~Jul 4 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Status unknown | Window open May 17 |
 > | DEA Fentanyl Summit | Decide | Not stated |
