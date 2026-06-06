@@ -1216,3 +1216,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 updates: NJ-1065 Q2 Jun 15 carries forward; Goddard Conference sign-up still tonight; Band/Library instrument return TOMORROW; all other P0 items carry forward
 - Pages updated: `daily/2026-06-05.md` (run 185 appended), `family/active-todos.md` (Venmo + Guidepoint #1755072 + P0 table), `ALTON.md` (run 185 appended), `family/vayu.md` (screen time), `family/vasu.md` (Goddard sneak peek + Vasu daily sheet), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-06] ingest | personal-data-gather run 186: Doximity survey deadline Jun 8; vast.ai late-night access; Guidepoint blood survey; MKA instruments TODAY
+- Sources: Gmail (is:unread newer_than:2d, 40 threads); all 5 Google Calendars (Jun 6–13). SSH unavailable (cloud runner).
+- Facts gathered: 9 new (Doximity residency survey deadline Mon Jun 8 — FINAL CHANCE; Alton accessed vast.ai 11:36 PM ET Jun 5; Alton accessed SemiAnalysis Substack; Guidepoint Blood Collection Survey $50; LinkedIn messages Jerry + 1 waiting; Amazon Morse Code book delivered; Vasu pet unit starting; Vasu dramatic play; Vasu Show and Tell recap)
+- Calendar: no changes vs run 185; all 5 calendars polled; same 5 events Jun 6–13 confirmed (no Blue Sombrero events, Alton Tasks empty)
+- New ACTION_REQUIRED: Doximity survey closes Jun 8 (Mon); Guidepoint Blood Collection Survey $50
+- P0 updates: MKA Library + Band instrument return is TODAY (was "tomorrow" in run 185); Livia Birthday Party tomorrow Sun Jun 7; all other P0 items carry forward
+- Pages updated: `daily/2026-06-06.md` (created), `family/active-todos.md` (run 186 appended, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run

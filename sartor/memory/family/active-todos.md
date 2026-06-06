@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-05
+updated: 2026-06-06
 updated_by: personal-data-gather
-run: 185
+run: 186
 
 status: active
 priority: p1
@@ -1894,3 +1894,37 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Disney ADR | Unknown status | Window open May 17 |
 > | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
 > | DEA Fentanyl Summit | Decide | Not stated |
+
+## Latest from gather (2026-06-06) — run 186
+
+> [!deadline] 2026-06-08 (Monday) — Doximity Residency Survey — FINAL CHANCE
+> residency@doximity.com (Jun 5 9:00 PM ET): "This is your final chance to submit nominations of residency programs that offer quality clinical training. The survey will close on **June 8th 2026**." Tulane University School of Medicine. Deadline Monday — 2 days. Log in to Doximity and submit. See [[ALTON]].
+
+> [!todo] Guidepoint Blood Collection Survey — $50 (new, respond ASAP)
+> surveys@guidepoint.com (Jun 5 6:57 PM ET): Paid online survey on blood collection research; $50 if screening passes. Accept or decline ASAP. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 186) — Sat Jun 6 morning
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **MKA Library + Band instrument return** | **TODAY** Saturday Jun 6 | **TODAY** |
+> | **Livia Birthday Party** | Tomorrow Sun 3–6 PM EDT | **2026-06-07** |
+> | **Doximity Residency Survey** | FINAL CHANCE — closes Monday | **2026-06-08** |
+> | Goddard Preschool Conference sign-up | Status unknown (was "tonight" in run 185) | 2026-06-08 |
+> | Venmo $360 Rachelle Trammel | 4 sessions May 21/26 + Jun 2/4 | ASAP |
+> | Guidepoint #1755072 (Biosimulation) | Accept or decline | ASAP |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | Guidepoint Blood Collection Survey | $50; accept or decline | ASAP |
+> | PCSS-MAUD Webinar Jun 10 | Register if interested | **2026-06-10 noon ET** |
+> | HITLAB RSVP | Jerry in LinkedIn inbox | **2026-06-12** |
+> | Chase/Sante Total KYC | OVERDUE | NOW |
+> | Sante Total 990-N | OVERDUE 23 days | NOW |
+> | Ghosty vet | ASAP | — |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | 2026-06-14 |
+> | NJ-1065 Q2 — Solar Inference LLC | Contact Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | 2026-06-15 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362-1306 | ~Jul 4 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Unknown status | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics + childcare | 2026-06-11 7 PM |
+> | DEA Fentanyl Summit | Decide whether to register | Not stated |
