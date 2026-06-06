@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-05
+updated: 2026-06-06
 updated_by: personal-data-gather
-run: 185
+run: 188
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1232,4 +1232,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: no changes vs run 186; all 5 calendars polled; same 5-event table confirmed; Blue Sombrero no events; Alton Tasks empty
 - ACTION_REQUIRED: none new; P0 carry-forward table unchanged from run 186
 - Pages updated: `daily/2026-06-06.md` (run 187 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-06] ingest | personal-data-gather run 188: Cenlar $2,829.92; USPS packages; Code Ninjas camp
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 6–13). SSH unavailable (cloud runner).
+- Facts gathered: 3 new (Cenlar mortgage payment $2,829.92 applied Jun 5; USPS 2 mailpieces + 2 packages arriving Sat Jun 6; Code Ninjas Livingston summer camp inquiry)
+- Calendar: no changes vs run 187; all 5 calendars polled; same 5-event table confirmed (Livia party Jun 7, Aneeta office Jun 9-10, Aneeta SMART call Jun 10 noon, Dinner Princeton Jun 11 7pm)
+- New ACTION_REQUIRED: none (Cenlar payment is informational; no new P0 items)
+- P0 carry-forward: unchanged from run 186 (990-N overdue, KYC overdue, MKA instrument TODAY, Doximity Mon Jun 8, Vasu PT conf Mon Jun 8, Leader Bank escrow Jun 14, NJ-1065 Q2 Jun 15)
+- Pages updated: `daily/2026-06-06.md` (run 188 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
