@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-07
 updated_by: personal-data-gather
-run: 191
+run: 194
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-07] ingest | personal-data-gather run 194: Emmett name resolved; LinkedIn Telix/Pfizer; Uber Eats $207; vast.ai offline 4th run
+- Sources: Gmail (30 threads, is:unread newer_than:2d), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
+- New facts: 9 (Emmett = Alton's legal first name confirmed; Uber Eats Nori Sushi $207.54 Jun 6; LinkedIn Senior Director AI Telix Pharmaceuticals; LinkedIn Director Medical Insights Pfizer; Doximity Peabo Bryson stroke death; JAMA ADA 2026 insulin/Medicare; Amazon household orders Jun 6 shipped/delivered; Costco Same-Day delivery 85 Stonebridge; Handshake AI Project Touchstone follow-up)
+- Calendar: confirmed same vs run 193 (all 5 calendars; no new events Jun 7–14)
+- New deadlines: none new
+- P0 updates: vast.ai machines 52271 + 124192 still offline (4th consecutive run); carry-forward P0s unchanged
+- Pages updated: `daily/2026-06-07.md` (run 194 appended), `ALTON.md` (Emmett clarification + Uber Eats + LinkedIn), `business/az-career.md` (Telix + Pfizer alerts), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 
 ## [2026-06-07] ingest | personal-data-gather run 193: NJ-1065 Q2 gov notification; Guidepoint #1755072 biosimulation + #1754453 pharmacovigilance; vast.ai still offline
 - Sources: Gmail (is:unread newer_than:2d, 30+ threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)

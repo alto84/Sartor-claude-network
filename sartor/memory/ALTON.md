@@ -435,3 +435,17 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] Fidelity BOUGHT MICRON TECHNOLOGY INC — Jun 6 12:38 PM UTC
 > Trade confirmation: account XXXXX8998. Bought Micron Technology (MU). MU is the dominant US DRAM/NAND/HBM supplier — high correlation with AI infrastructure spending cycles. New position established today, same brokerage where GOOGL call was sold May 30. No size or price detail in email snippet; full details in Fidelity NetBenefits. See [[business/solar-inference]] for portfolio context.
+
+## Latest from gather (2026-06-07) — run 194
+
+> [!fact] "Emmett" name clarification — ALTON.md cross-confirmed
+> Prior runs (192–193) flagged "Emmett" in USPS, AAA, LegalZoom, Museum of Science emails as potentially mysterious. Confirmed from this file: full legal name is Emmett Alton Sartor. All "Emmett" correspondence uses legal first name normally. The LegalZoom 9-month entity flagged in run 192 remains unidentified by name — likely formed under "Emmett Sartor" (Sep 2025 vintage). Identify entity at LegalZoom account if relevant.
+
+> [!fact] Uber Eats — Nori Sushi $207.54 (Jun 6, Saturday lunch)
+> noreply@uber.com (Jun 6 11:54 AM ET): Personal order, Nori Sushi, Total $207.54 including tip. Saturday midday delivery. FINANCIAL receipt. See [[daily/2026-06-07]].
+
+> [!fact] LinkedIn job alert — Senior Director, AI at Telix Pharmaceuticals (posted Jun 5)
+> jobalerts-noreply@linkedin.com (Jun 6 4:53 PM ET): Telix Pharmaceuticals Limited, AI leadership role. Telix is a nuclear medicine/radiopharmaceutical oncology company. Adjacent to Alton's neuro-oncology + AZ AI/ML lane. Career market signal. See [[business/az-career]].
+
+> [!fact] LinkedIn job alert — Director, Medical Insights at Pfizer (posted Jun 4)
+> jobalerts-noreply@linkedin.com (Jun 6 2:53 PM ET): Pfizer Director Medical Insights. Medical affairs/real-world evidence role. Career market signal. See [[business/az-career]].

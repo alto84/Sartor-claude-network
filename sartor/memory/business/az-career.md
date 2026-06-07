@@ -102,6 +102,14 @@ For all of the above, the canonical sources are AZ internal systems (Workday, AZ
 - [[ALTON]] - Head of household, primary career decision maker
 - [[BUSINESS]] - Wider business context
 
+## Latest from gather (2026-06-07) — run 194
+
+> [!fact] LinkedIn — Senior Director, AI at Telix Pharmaceuticals (posted Jun 5)
+> jobalerts-noreply@linkedin.com (Jun 6 4:53 PM ET). Telix Pharmaceuticals Limited — nuclear medicine / radiopharmaceutical oncology (AU HQ, US operations). "Senior Director, Artificial Intelligence." Adjacent to Alton's neuro-oncology + AZ AI/ML lane. Not a direct fit given AZ trajectory but worth noting as oncology AI leadership market reference. Informational.
+
+> [!fact] LinkedIn — Director, Medical Insights at Pfizer (posted Jun 4)
+> jobalerts-noreply@linkedin.com (Jun 6 2:53 PM ET). Director, Medical Insights at Pfizer. Medical affairs / real-world evidence role. Standard market noise, lower strategic fit than safety-medicine / AI-native roles. Informational.
+
 ## History
 
 - 2026-02-16: AZ Senior Director posting closed
