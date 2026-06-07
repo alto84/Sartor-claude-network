@@ -37,6 +37,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-07] ingest | personal-data-gather run 193: NJ-1065 Q2 gov notification; Guidepoint #1755072 biosimulation + #1754453 pharmacovigilance; vast.ai still offline
+- Sources: Gmail (is:unread newer_than:2d, 30+ threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
+- New facts: 3 (NJ DORES Q2 estimated payment notification confirmed Jun 5; Guidepoint #1755072 biosimulation software consultation request; Guidepoint #1754453 pharmacovigilance consultation request)
+- Calendar: confirmed same vs run 192 (all 5 calendars queried; no new events Jun 7–14)
+- New deadlines: NJ-1065 Q2 2026-06-15 (government email confirmed; 8 days)
+- P0 updates: vast.ai machines 52271 + 124192 still offline (3rd run unresolved); escrow 2026-06-14 (7 days)
+- Pages updated: `daily/2026-06-07.md` (run 193 appended), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
+
 ## [2026-06-07] ingest | personal-data-gather run 192: Venmo $360 RESOLVED; Cenlar mortgage; LegalZoom "Emmett" entity flag
 - Sources: Gmail (is:unread newer_than:2d, 40 threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
 - New facts: 4 (Venmo $360 RESOLVED — paid Jun 6 + request cancelled Jun 7; Cenlar mortgage $2,829.92 applied Jun 5; LegalZoom "Emmett" entity 9-month check-in flag; vast.ai sign-in Jun 5 confirms prior awareness)
