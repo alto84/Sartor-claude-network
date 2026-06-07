@@ -37,6 +37,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-07] ingest | personal-data-gather run 192: Venmo $360 RESOLVED; Cenlar mortgage; LegalZoom "Emmett" entity flag
+- Sources: Gmail (is:unread newer_than:2d, 40 threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
+- New facts: 4 (Venmo $360 RESOLVED — paid Jun 6 + request cancelled Jun 7; Cenlar mortgage $2,829.92 applied Jun 5; LegalZoom "Emmett" entity 9-month check-in flag; vast.ai sign-in Jun 5 confirms prior awareness)
+- Calendar: no changes vs run 191; same events Jun 7–14 confirmed (all 5 calendars checked)
+- New deadlines: none
+- P0 updates: Venmo CLOSED; vast.ai machines 52271 + 124192 still offline
+- Pages updated: `daily/2026-06-07.md` (run 192 appended), `family/active-todos.md` (run 192 carry-forward), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
 ## [2026-06-07] ingest | personal-data-gather run 191: vast.ai machines 52271+124192 offline; Fidelity 3 trades MU/SANDISK/call; Livia party today
 - Sources: Gmail (is:unread newer_than:2d, 30+ threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
 - New facts: 8 (vast.ai machines 52271+124192 offline at 23:35 UTC Jun 6 — CRITICAL; Fidelity full 3-trade detail: MU @ $889.50 + SANDISK @ $1,555.99 + CALL MU @ $49.05; Chase credit report alert; Venmo $360 5th reminder; Livia Birthday Party TODAY 3-6 PM; Aneeta SMART Providers Call Tue Jun 10 noon; Dinner Princeton Thu Jun 11 7 PM; dual-parent gap Mon Jun 9)

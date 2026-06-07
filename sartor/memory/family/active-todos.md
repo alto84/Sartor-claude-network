@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-07
 updated_by: personal-data-gather
-run: 191
+run: 192
 
 status: active
 priority: p1
@@ -1972,6 +1972,43 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | MKA PE Clothes pre-order (Vayu) | Via Veracross MON348 | 2026-06-15 |
 > | Dinner Princeton? | Thu Jun 11 7 PM — confirm logistics | 2026-06-11 |
 > | Lucent Energy CO-01 | Review PDF + call Steven (201) 362-1306 | ~Jul 4 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Status unknown | Window open May 17 |
+> | DEA Fentanyl Summit | Decide | Not stated |
+
+## Latest from gather (2026-06-07) — run 192
+
+> [!fact] RESOLVED — Venmo $360 Rachelle trammel PAID
+> Payment completed Jun 6 (transaction ID 4614006556736542691, $360.00 via Venmo). Confirmed via receipt "You paid Rachelle trammel $360.00 — Gym" (Jun 6, 10:47 PM ET). She then cancelled the open request (Jun 7, 3:33 AM ET). Item CLOSED. Carry-forward from runs 185–191.
+
+> [!fact] Cenlar mortgage — $2,829.92 applied 2026-06-05
+> Cenlar loan payment applied June 5, 2026. Amount: $2,829.92. Mortgage current. Informational. See [[ALTON]].
+
+> [!warning] FLAG — LegalZoom "Emmett" entity — 9-month check-in (Jun 6)
+> LegalZoom emailed alto84@gmail.com (Jun 6 3:02 PM ET) addressed to "Emmett": "It's been 9 months since you've formed your business!" Nine months back = ~September 2025. Not Solar Inference LLC. Unknown entity. Confirm: (a) is there an "Emmett" LLC/entity intentionally formed in Sep 2025? (b) if yes, does it have active state compliance obligations? See [[BUSINESS]].
+
+> [!warning] P0 carry-forward (run 192) — Sun Jun 7 afternoon
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | P0 — verify gpuserver1 | **NOW** |
+> | **Livia Birthday Party** | TODAY 3–6 PM EDT | **TODAY** |
+> | Doximity Residency Survey | FINAL — closes tomorrow | **2026-06-08** |
+> | Goddard Preschool Conference | Mon Jun 8 — contact if no slot | **2026-06-08** |
+> | Guidepoint Blood Collection $50 | Accept or decline | ASAP |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | Aneeta SMART Providers Call | Tue Jun 10 noon–1 PM ET Zoom | **2026-06-10** |
+> | PCSS-MAUD Webinar Jun 10 | Register if interested | **2026-06-10** |
+> | HITLAB RSVP | Jerry in LinkedIn inbox | **2026-06-12** |
+> | Chase/Sante Total KYC | OVERDUE | NOW |
+> | Sante Total 990-N | OVERDUE 23 days | NOW |
+> | Ghosty vet | ASAP | — |
+> | Leader Bank Escrow $5,366.83 | $5K Chase; gap $366.83 | **2026-06-14** |
+> | NJ-1065 Q2 — Solar Inference LLC | Contact Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | 2026-06-15 |
+> | Dinner Princeton? | Thu Jun 11 7 PM — confirm logistics | **2026-06-11** |
+> | LegalZoom "Emmett" entity | Identify or confirm | ASAP |
+> | Lucent Energy CO-01 | Review PDF + call Steven | ~Jul 4 |
 > | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
 > | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
 > | Disney ADR | Status unknown | Window open May 17 |
