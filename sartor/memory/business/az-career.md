@@ -110,6 +110,14 @@ For all of the above, the canonical sources are AZ internal systems (Workday, AZ
 > [!fact] LinkedIn — Director, Medical Insights at Pfizer (posted Jun 4)
 > jobalerts-noreply@linkedin.com (Jun 6 2:53 PM ET). Director, Medical Insights at Pfizer. Medical affairs / real-world evidence role. Standard market noise, lower strategic fit than safety-medicine / AI-native roles. Informational.
 
+## Latest from gather (2026-06-07) — run 195
+
+> [!fact] LinkedIn — Director, Applied AI at Pfizer (posted Jun 5)
+> jobalerts-noreply@linkedin.com (Jun 7 10:53 AM ET). Distinct from "Director, Medical Insights at Pfizer" (run 194, same company). "Director, Applied AI" is a different role at Pfizer that maps more directly onto Alton's AI/ML leadership competency. Pfizer runs one of the larger enterprise AI transformation efforts in pharma (AI-powered drug discovery, clinical ops). Market reference for AI Director-tier roles at Big Pharma. Informational; no action required.
+
+> [!fact] LinkedIn — Executive Medical Director, Patient Safety (Hybrid) at Vertex Pharmaceuticals (posted Jun 5)
+> jobalerts-noreply@linkedin.com (Jun 7 8:53 AM ET). Vertex Pharmaceuticals (Boston-area HQ; cystic fibrosis monopoly, gene editing, NaV channel pain pipeline; high science standards). "Executive Medical Director, Patient Safety." Title sits above Senior Medical Director — VP-adjacent in pharma hierarchy. Directly in Alton's Global Patient Safety lane. Strongest-title signal in the past two weeks alongside BioMarin $383K (run 183) and Vertex is premium-comp territory. Career market intelligence; no action required unless Alton wants to explore.
+
 ## History
 
 - 2026-02-16: AZ Senior Director posting closed

@@ -2013,3 +2013,28 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
 > | Disney ADR | Status unknown | Window open May 17 |
 > | DEA Fentanyl Summit | Decide | Not stated |
+
+## Latest from gather (2026-06-07) — run 195
+
+> [!todo] ACTION_REQUIRED — Pool Guy NJ billing request
+> Billing@thepoolguyznj.com (Jun 7 9:02 AM ET, IMPORTANT): "Just reviewing your account and was hoping we could draw down the balance a bit today. Our zelle is thepooguyznj@gmail.com." Pool Guyz LLC is the household pool service (last service Jun 1 — Lexton Bifield, pool safe to swim, timers still need reset; prior billing statement was May 31 run 151). Amount not stated in email. Pay via Zelle: thepooguyznj@gmail.com, or call 973-558-3636.
+
+> [!warning] P0 carry-forward (run 195) — Sun Jun 7 evening
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 5th run** | **NOW** |
+> | **Pool Guy NJ billing** | Balance owed — Zelle thepooguyznj@gmail.com | **ASAP** |
+> | Chase/Sante Total KYC | OVERDUE | NOW |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | **2026-06-14** |
+> | NJ-1065 Q2 — Solar Inference LLC | Contact Jonathan Francis | **2026-06-15** |
+> | HITLAB RSVP (Jerry Antimano) | Respond via LinkedIn | **2026-06-12** |
+> | Dinner Princeton? | Thu Jun 11 7 PM — confirm logistics + childcare | **2026-06-11** |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | Guidepoint #1752401 (craniopharyngioma) | Accept or decline | ASAP |
+> | Handshake AI Project Touchstone | Accept or decline ($125/hr) | ASAP |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | 2026-06-15 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Status unknown | Window open May 17 |
+> | Pool pump timers | Leave 24/7 until Pool Guyz reset | Until service |

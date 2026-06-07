@@ -37,6 +37,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-07] ingest | personal-data-gather run 195: Pool Guy NJ billing; LinkedIn Applied AI Pfizer + Vertex Exec MD Patient Safety; Stanford HAI newsletter
+- Sources: Gmail (30 threads, is:unread newer_than:1d), all 5 Google Calendars (Jun 7–15), no SSH (cloud runner)
+- New facts: 5 (Pool Guy NJ billing request ACTION REQUIRED; LinkedIn Director Applied AI Pfizer — distinct from Medical Insights role run 194; LinkedIn Executive Medical Director Patient Safety Vertex Pharmaceuticals — strongest title signal this week; Stanford HAI inaugural merged newsletter; Hiive pre-IPO digest routine)
+- Calendar: confirmed same vs run 194 (all 5 calendars; no new events Jun 7–15; Livia party now concluded)
+- New deadlines: none new
+- P0 updates: vast.ai machines 52271 + 124192 still offline (5th consecutive run); Pool Guy NJ billing is new ACTION REQUIRED; all other P0s carry forward
+- Pages updated: `daily/2026-06-07.md` (run 195 appended), `business/az-career.md` (Applied AI Pfizer + Vertex Exec MD), `ALTON.md` (Stanford HAI + career signals), `family/active-todos.md` (Pool Guy billing + P0 carry-forward), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
 ## [2026-06-07] ingest | personal-data-gather run 194: Emmett name resolved; LinkedIn Telix/Pfizer; Uber Eats $207; vast.ai offline 4th run
 - Sources: Gmail (30 threads, is:unread newer_than:2d), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
 - New facts: 9 (Emmett = Alton's legal first name confirmed; Uber Eats Nori Sushi $207.54 Jun 6; LinkedIn Senior Director AI Telix Pharmaceuticals; LinkedIn Director Medical Insights Pfizer; Doximity Peabo Bryson stroke death; JAMA ADA 2026 insulin/Medicare; Amazon household orders Jun 6 shipped/delivered; Costco Same-Day delivery 85 Stonebridge; Handshake AI Project Touchstone follow-up)

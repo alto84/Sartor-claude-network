@@ -449,3 +449,11 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] LinkedIn job alert — Director, Medical Insights at Pfizer (posted Jun 4)
 > jobalerts-noreply@linkedin.com (Jun 6 2:53 PM ET): Pfizer Director Medical Insights. Medical affairs/real-world evidence role. Career market signal. See [[business/az-career]].
+
+## Latest from gather (2026-06-07) — run 195
+
+> [!fact] Stanford HAI Newsletter — inaugural merged edition (Jun 7)
+> stanford-hai@stanford.edu (Jun 7 8:53 AM ET): First edition of the newly merged Stanford HAI + Stanford Data Science newsletter. Articles: (1) "Why AI might be worse at hiring than you think" — AI screening bias / signal degradation; (2) Human-centered perspectives on AI job-loss fears; (3) World models coverage. Directly relevant to Alton's AI strategy role at AZ (predictive safety platforms, AI-native pharmacovigilance) and AI consulting framing for Solar Inference. INFORMATIONAL.
+
+> [!fact] LinkedIn — Director, Applied AI + Executive Medical Director Patient Safety (Jun 7)
+> Two new career market signals today (both posted Jun 5): (1) "Director, Applied AI at Pfizer" — AI role at Big Pharma, distinct from Medical Insights role captured run 194; (2) "Executive Medical Director, Patient Safety (Hybrid) at Vertex Pharmaceuticals" — title above Senior Medical Director, directly in Alton's Global Patient Safety lane. Vertex is premium comp territory. Both captured in detail at [[business/az-career]] run 195.
