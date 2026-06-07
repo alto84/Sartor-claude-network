@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-06-03
-updated_by: personal-data-gather (run 173)
+updated: 2026-06-07
+updated_by: personal-data-gather (run 196)
 status: active
 priority: p1
 next_review: 2026-05-22
@@ -217,3 +217,8 @@ Full project hub: [[reference_solar_project]]. Source documents indexed there.
 
 > [!fact] Anthropic API receipt #2088-3209-1415 — $200.00 — Jun 3, 2026
 > invoice+statements@mail.anthropic.com (2026-06-03 12:45 PM ET). Receipt from Anthropic, PBC: **$200.00 paid June 3, 2026**. Receipt #2088-3209-1415 via Stripe. Solar Inference LLC operating expense — API compute / Claude billing. Log as June 2026 expense. See [[ALTON]] and monthly expense tracking.
+
+## Latest from gather (2026-06-07) — run 196
+
+> [!fact] rtxserver infrastructure — UPS + PCIe build-out hardware ordered (Jun 7 evening)
+> Four Amazon orders placed 2026-06-07 (7:47–8:04 PM ET): (1) CyberPower CP1500PFCLCD PFC Sinewave UPS (1500VA/900W class) — addresses the "no UPS" gap documented for rtxpro6000server in CLAUDE.md infrastructure notes. (2) JMT 180 Degree 64GBS PCIe cable — high-bandwidth GPU riser/extension. (3) Vertical GPU Mount Bracket — physical GPU mounting hardware. (4) GIGA-MEGA PCIe 5.0 X16 adapter/extension. Together with Newegg build (run 128) and GIGABYTE RTX 5090 (run 127), this confirms active second-GPU-server physical build-out. Log UPS + peripheral hardware as Solar Inference LLC capital assets on delivery. See [[MACHINES]].

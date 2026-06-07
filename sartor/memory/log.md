@@ -37,6 +37,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-07] ingest | personal-data-gather run 196: rtxserver UPS + PCIe hardware ordered; soccer gear; Boehringer Ingelheim patient safety role; vast.ai offline 6th run
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
+- New facts: 4 (Amazon rtxserver build-out hardware — CyberPower UPS + JMT 64GBS PCIe cable + vertical GPU mount + GIGA-MEGA PCIe 5.0 X16; Amazon kids soccer gear + 4 family items; Chase Sapphire Reserve auto-payment scheduled; LinkedIn Boehringer Ingelheim Senior Patient Safety Physician)
+- Calendar: no changes vs run 195 (all 5 calendars confirmed; same events Jun 7–14; Livia party concluded; location confirmed in calendar update)
+- New deadlines: none new
+- P0 updates: vast.ai machines 52271 + 124192 still offline (6th consecutive run unresolved); all other P0s carry forward unchanged
+- Pages updated: `daily/2026-06-07.md` (run 196 appended, frontmatter bumped), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created/appended), `log.md` (this entry)
+
 ## [2026-06-07] ingest | personal-data-gather run 195: Pool Guy NJ billing; LinkedIn Applied AI Pfizer + Vertex Exec MD Patient Safety; Stanford HAI newsletter
 - Sources: Gmail (30 threads, is:unread newer_than:1d), all 5 Google Calendars (Jun 7–15), no SSH (cloud runner)
 - New facts: 5 (Pool Guy NJ billing request ACTION REQUIRED; LinkedIn Director Applied AI Pfizer — distinct from Medical Insights role run 194; LinkedIn Executive Medical Director Patient Safety Vertex Pharmaceuticals — strongest title signal this week; Stanford HAI inaugural merged newsletter; Hiive pre-IPO digest routine)
