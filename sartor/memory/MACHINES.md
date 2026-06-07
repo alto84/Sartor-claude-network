@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-06-01
+updated: 2026-06-07
 updated_by: personal-data-gather
 last_verified: 2026-05-02
 status: active
@@ -636,3 +636,17 @@ No git push (no credentials) - awaiting Rocinante curator commit
 
 ## Consolidated from daily logs (2026-05-31)
 - [2026-05-30] (fact) Rest of week: not fully visible in snippet
+
+## Latest from gather (2026-06-07) — run 191
+
+> [!warning] 2026-06-06 23:35 UTC — vast.ai machines 52271 AND 124192 OFFLINE
+> console@mg.vast.ai automated alert: "2 of your hosted Vast.ai machines appear to be offline: 52271, 124192."
+>
+> - **Machine 52271 (gpuserver1, RTX 5090):** Under active reserved contract C.34113802 (through 2026-08-24 at ~$0.20/hr). Prior offline incident: 2026-04-22 (~2:35 AM UTC, 48h resolution, client contact by vast.ai support Saber). This incident also involves an active reserved rental — same client-impact risk pattern.
+> - **Machine 124192:** NOT in MACHINES.md or machine registry. Unknown identity. Candidate: the new AM5 build (Newegg order #448349643 from 2026-05-25: Ryzen 9 9950X + ASRock X870E TAICHI + GIGABYTE RTX 5090) if it was listed on vast.ai and assigned this machine ID. Also possible: rtxpro6000server (machine_id 97429 per prior docs) if that number changed on listing. **Verify immediately on vast.ai host dashboard.**
+>
+> **SSH not available from cloud runner this run.** Required actions (next Rocinante session):
+> 1. `ssh alton@gpuserver1` → check power, Kaalia daemon (`docker ps --format '{{.Names}}' | grep '^C\.'`), Docker health, nvidia-smi
+> 2. Check vast.ai host dashboard → identify machine 124192
+> 3. If rental client impacted: vast.ai support pattern from 2026-04-22 — check for Saber or support ticket; reply with machine status
+> 4. Once machine restored: verify listing is live (`~/.local/bin/vastai show machines`)

@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-06
+updated: 2026-06-07
 updated_by: personal-data-gather
-run: 190
+run: 191
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-07] ingest | personal-data-gather run 191: vast.ai machines 52271+124192 offline; Fidelity 3 trades MU/SANDISK/call; Livia party today
+- Sources: Gmail (is:unread newer_than:2d, 30+ threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
+- New facts: 8 (vast.ai machines 52271+124192 offline at 23:35 UTC Jun 6 — CRITICAL; Fidelity full 3-trade detail: MU @ $889.50 + SANDISK @ $1,555.99 + CALL MU @ $49.05; Chase credit report alert; Venmo $360 5th reminder; Livia Birthday Party TODAY 3-6 PM; Aneeta SMART Providers Call Tue Jun 10 noon; Dinner Princeton Thu Jun 11 7 PM; dual-parent gap Mon Jun 9)
+- Calendar: 5 events Jun 7–14 confirmed (all 5 calendars checked); no new events vs run 190
+- New deadlines: none (machine offline is P0 revenue risk, not a deadline)
+- P0 updates: vast.ai offline CRITICAL — machine 52271 under active rental; machine 124192 identity unknown; Livia Birthday Party TODAY; Venmo $360 still unpaid (5th reminder)
+- Pages updated: `daily/2026-06-07.md` (created), `MACHINES.md` (offline alert appended), `family/active-todos.md` (run 191 carry-forward appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 
 ## [2026-06-05] ingest | personal-data-gather run 184: NJ-1065 Jun 15 deadline; Goddard Conferences Monday; MGMA 2026 neurology comp; Guidepoint #1754453 closed
 - Sources: Gmail (is:unread newer_than:2d, 40 threads), 4/5 Google Calendars (Aneeta unavailable), no SSH (cloud runner)

@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-06
+updated: 2026-06-07
 updated_by: personal-data-gather
-run: 186
+run: 191
 
 status: active
 priority: p1
@@ -1939,3 +1939,40 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Goddard PT Conference — confirmed Monday June 8 (sign-up deadline passed)
 > Kaymbu Sneak Peek email (Samantha Ramsden, Jun 5): "Monday June 8 — Soccer, Preschool Parent Teacher conferences." Sign-up deadline was Friday June 5 (yesterday). Status: unknown whether Alton signed up. **If no slot reserved: contact Goddard directly today (Saturday).** Conference is in 2 days. See [[family/vasu]].
+
+## Latest from gather (2026-06-07) — run 191
+
+> [!warning] P0 BUSINESS — vast.ai machines 52271 + 124192 OFFLINE (Jun 6 11:35 PM ET)
+> Automated vast.ai alert (console@mg.vast.ai). Machine 52271 = gpuserver1 (RTX 5090, active reserved contract C.34113802 through 2026-08-24). Machine 124192 = unknown — not in registry. Could be the new AM5 build if listed. Revenue at risk. SSH verification needed. See [[MACHINES]] and [[business/solar-inference]].
+
+> [!todo] ACTION_REQUIRED — Venmo $360 Rachelle trammel (5th reminder)
+> venmo@venmo.com (Jun 6 13:16 ET): 5th contact. Sessions May 21, 26 + Jun 2, 4. ~$90 × 4 = $360. Twice-weekly pattern consistent with housekeeper. Pay via Venmo @Rachelle-trammel once identity confirmed. Carry-forward from runs 185–190.
+
+> [!fact] Fidelity 3-trade confirmation Jun 6 — full position (account XXXXX8998)
+> Run 189 snippet captured BOUGHT MICRON TECHNOLOGY INC only. Full trade detail: BOUGHT MU @ $889.50, BOUGHT SANDISK CORP COM @ $1,555.99, BOUGHT CALL (MU) MICRON TECHNOLOGY @ $49.05. Bullish MU/memory thesis (AI HBM demand). See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 191) — Sun Jun 7
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **NEW — verify gpuserver1** | **NOW** |
+> | **Livia Birthday Party** | **TODAY** 3:00–6:00 PM EDT | **TODAY** |
+> | **Venmo $360 Rachelle trammel** | 5th reminder — pay ASAP | ASAP |
+> | **Chase credit report alert** | NEW — review balance change | NOW |
+> | Doximity Residency Survey | FINAL — closes Mon Jun 8 | **2026-06-08** |
+> | Goddard Preschool Conference | Mon Jun 8; contact Goddard if no slot | **2026-06-08** |
+> | Guidepoint Blood Collection Survey $50 | Accept or decline | ASAP |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | PCSS-MAUD Webinar Jun 10 | Register if interested | **2026-06-10 noon ET** |
+> | HITLAB RSVP | Jerry in LinkedIn inbox | **2026-06-12** |
+> | Chase/Sante Total KYC | OVERDUE | NOW |
+> | Sante Total 990-N | OVERDUE 23 days | NOW |
+> | Ghosty vet | ASAP | — |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | 2026-06-14 |
+> | NJ-1065 Q2 — Solar Inference LLC | Contact Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Via Veracross MON348 | 2026-06-15 |
+> | Dinner Princeton? | Thu Jun 11 7 PM — confirm logistics | 2026-06-11 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362-1306 | ~Jul 4 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Status unknown | Window open May 17 |
+> | DEA Fentanyl Summit | Decide | Not stated |
