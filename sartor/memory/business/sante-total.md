@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-06-03
+updated: 2026-06-08
 updated_by: personal-data-gather
-run: 169
+run: 200
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -291,3 +291,8 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!fact] Cary Grayson $200/month recurring subscription — AMOUNT CONFIRMED
 > Run 166 logged Transaction ID 04802572545152812 (Jun 2, 2026 05:53 CDT) but could not extract amount from snippet. Full thread now read: **$200.00 USD received**. RECURRING SUBSCRIPTION active — Profile ID: I-V0F2DBH0HGNJ, maximum $200/month. Next payment due **2026-07-02**. Donor: Cary Grayson (carygrayson@gmail.com). The prior Apr 2 donor table entry ("$350+") was a separate earlier transaction; this Jun 2 payment appears to be the subscription inception. Issue tax receipt. Update YTD accounting.
+
+## Latest from gather (2026-06-08) — run 200
+
+> [!deadline] 2026-07-20 — ACTION REQUIRED
+> **Chase bank account restriction threat.** Email from Chase@notifyalert.chase.com (Jun 8, 2026, 17:39 UTC): "Please contact us to provide missing information before 07/20/2026, to avoid account restriction — SANTE TOTAL." Hard deadline: **2026-07-20**. This supersedes the prior "KYC OVERDUE NOW" framing — the deadline is 42 days out. Contact Chase and provide whatever KYC/compliance documents they need. Account restriction would freeze Sante Total's Chase banking access. See [[family/active-todos]].

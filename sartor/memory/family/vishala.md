@@ -264,3 +264,11 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 > - **8:00 AM – 2:00 PM EDT** — Third Grade Closing Exercises, MKA Brookside
 > - **6:00 – 7:30 PM EDT** — Third Grade Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ (Evite via Aneeta)
 > Logistics: plan arrival by 7:45 AM at MKA; allow time for lunch and transport to Livingston before 6 PM. See [[family/active-todos]], [[daily/2026-06-05]].
+
+## Latest from gather (2026-06-08) — run 200
+
+> [!fact] Orange Ball Summer Camp — enrolled, Day 1 today
+> Confirmed via West Orange Tennis Club (courtreserve.com, Jun 8): **Orange Ball Summer Camp Full Day**, dates Jun 8, 9, 10, 11, 12, 15, 16, 17, 18, 19 (10 weekdays). Full-day program. Membership enrolled; payment receipt #MNAHB7344 issued (note: name listed as "Vishala Sortor" — typo for Sartor, account #10673120). Transportation to West Orange Tennis Club required daily through Jun 19.
+
+> [!fact] Girls soccer gear + bike items delivered/shipped (Jun 8)
+> Delivered: Aikuco 5 Packs Girls Soccer items + 3 more. In transit: FEOEOR 6 Pack Girls Bike items.

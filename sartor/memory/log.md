@@ -37,6 +37,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-08] ingest | personal-data-gather run 200: Chase/Sante Total 07/20/2026 deadline confirmed; pool safe; CSA tomorrow; hardware delivered
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 8–15), no SSH (cloud runner)
+- New facts: 8 (Chase account restriction hard deadline 07/20/2026; pool serviced safe to swim; CSA first pickup tomorrow; ABPN CC reminder; Hiive fund closing Jun 10; Vasu Goddard library; JAMA congenital heart; Uber Eats $34)
+- Delivery confirmations: Vertical GPU Mount DELIVERED, Girls Soccer gear DELIVERED, Kids Flossers DELIVERED
+- Calendar: confirmed stable vs run 199 — same 4 events
+- New deadlines: Chase/Sante Total 07/20/2026 (was "OVERDUE NOW" — now has specific date)
+- Pages updated: `daily/2026-06-08.md` (run 200 appended), `business/sante-total.md` (deadline callout), `family/active-todos.md` (deadline + CSA + pool + ABPN), `family/vishala.md` (tennis camp + deliveries), `log.md` (this entry)
+
 ## [2026-06-07] ingest | personal-data-gather run 196: rtxserver UPS + PCIe hardware ordered; soccer gear; Boehringer Ingelheim patient safety role; vast.ai offline 6th run
 - Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
 - New facts: 4 (Amazon rtxserver build-out hardware — CyberPower UPS + JMT 64GBS PCIe cable + vertical GPU mount + GIGA-MEGA PCIe 5.0 X16; Amazon kids soccer gear + 4 family items; Chase Sapphire Reserve auto-payment scheduled; LinkedIn Boehringer Ingelheim Senior Patient Safety Physician)

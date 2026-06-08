@@ -2049,3 +2049,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] "Emmett Sartor" identity — 4th data point (Jun 8)
 > PayPal Business Loan email (Jun 8, 15:24 UTC) addressed to "Emmett Sartor" — same name as USPS (Jun 7, Jun 8) and Target survey (Jun 7). Four services now use "Emmett Sartor": USPS, Target, PayPal, and the LegalZoom entity (~Sep 2025). Open question: what is the full legal/business context? See LegalZoom "Emmett Sartor" P0 item.
+
+## Latest from gather (2026-06-08) — run 200
+
+> [!deadline] 2026-07-20 — ACTION REQUIRED: Chase / Sante Total
+> **Chase emailed directly today (Jun 8, 17:39 UTC):** "Please contact us to provide missing information before 07/20/2026, to avoid account restriction — SANTE TOTAL." Hard deadline **2026-07-20** — do not let slide. Account restriction would freeze Sante Total's Chase banking access. Contact Chase with required KYC/compliance documentation. See [[business/sante-total]].
+
+> [!todo] TOMORROW Jun 9 — CSA first pickup
+> Bloomfield-Montclair CSA 2026 season starts tomorrow. First pickup is **Tuesday June 9**. Bring a reusable grocery bag. Source: jljmoo@aol.com, Jun 8 16:20 UTC. See [[FAMILY]].
+
+> [!fact] Pool serviced today — safe to swim (Jun 8, 12:10 PM ET)
+> The Pool Guyz LLC: Service Log #37037935 completed. Weekly service, main pool at 85 Stonebridge, **Status: Safe to swim.** Pay outstanding balance when possible (Zelle: thepooguyznj@gmail.com).
+
+> [!todo] ABPN Continuing Certification — quarterly reminder received (Jun 8)
+> abpncommunications@abpn.org: June 2026 quarterly update — reminder to complete ABCC Article Exams and CC Program participation. Alton's board-certification maintenance obligation. No stated deadline but ongoing compliance item. See [[ALTON]].
