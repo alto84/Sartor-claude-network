@@ -47,13 +47,15 @@ Add-Type -Namespace SartorCC -Name Win -MemberDefinition @'
 [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
 [DllImport("user32.dll")] public static extern int GetWindowText(IntPtr h, System.Text.StringBuilder s, int n);
 [DllImport("user32.dll")] public static extern int GetClassName(IntPtr h, System.Text.StringBuilder s, int n);
+[DllImport("user32.dll")] public static extern int GetWindowThreadProcessId(IntPtr h, out int pid);
 '@
 }
 function Get-CCForeground {
   $h = [SartorCC.Win]::GetForegroundWindow()
   $t = New-Object System.Text.StringBuilder 512; [void][SartorCC.Win]::GetWindowText($h,$t,512)
   $c = New-Object System.Text.StringBuilder 256; [void][SartorCC.Win]::GetClassName($h,$c,256)
-  [pscustomobject]@{ Hwnd = ('0x{0:X}' -f [int64]$h); Title = $t.ToString(); Class = $c.ToString() }
+  $procId = 0; [void][SartorCC.Win]::GetWindowThreadProcessId($h,[ref]$procId)
+  [pscustomobject]@{ Hwnd = ('0x{0:X}' -f [int64]$h); Title = $t.ToString(); Class = $c.ToString(); ProcId = $procId }
 }
 
 function Write-Audit($decision,$fg) {
@@ -76,6 +78,7 @@ if ($fg.Title -like 'SARTOR-CONFIRM-*') { Deny 'target-is-confirm-dialog' $fg }
 $allowed = $false
 if (Test-Path $AllowListCfg) {
   $cfg = Get-Content $AllowListCfg -Raw | ConvertFrom-Json
+  foreach ($pp in @($cfg.pids))           { if ($pp -and $fg.ProcId -eq [int]$pp) { $allowed = $true } }
   foreach ($p in @($cfg.titlePatterns))   { if ($p -and $fg.Title -match $p) { $allowed = $true } }
   foreach ($p in @($cfg.classPatterns))   { if ($p -and $fg.Class -match $p) { $allowed = $true } }
   foreach ($hw in @($cfg.hwnds))          { if ($hw -and $fg.Hwnd -eq $hw)   { $allowed = $true } }
