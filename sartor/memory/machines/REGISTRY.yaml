@@ -69,7 +69,7 @@ machines:
     bmc_ip: null
     switch_port: null  # Physically rewired into Alton's Office switch port during 2026-05-19 fuse-blow recovery; switch_port number unknown until UniFi client list is re-queried post-restoration.
     vast_ai_machine_id: 52271
-    last_verified: 2026-05-31
+    last_verified: 2026-06-08
     last_drift: 2026-05-19  # ROLLED BACK from .199 → .100 during fuseblow recovery (gpuserver1 physically moved to Alton's Office wired drop; DHCP reassigned to original .100). Restores alignment with Fios DMZ target. Rental C.34113802 reconnected within 30min, reliability dropped slightly (0.9807 → 0.9718) but recovering.
     flagged:
       - "Now back at 192.168.1.100 (pre-2026-05-09 IP). Codebase references to .199 will need cleanup in next Tier-2 sweep; the .100 references that were previously stale are now correct again."
@@ -98,7 +98,7 @@ machines:
     bmc_mac: "30:c5:99:d5:8f:b8"
     switch_port: 10
     vast_ai_machine_id: 124192  # corrected 2026-05-26 from stale 97429 per rental-ops audit; live machine_id verified via vastai show machines
-    last_verified: 2026-05-31
+    last_verified: 2026-06-08
     last_drift: 2026-05-26  # BMC primary moved .154 → .150 static (was factory-reset to 10.10.10.10 at some point between 2026-05-21 and 2026-05-26; rediscovered + corrected on this date)
     flagged: []
     notes: |
@@ -116,6 +116,32 @@ machines:
       on-demand as of 2026-05-28 (live list $1.10/GPU; approved $0.92/GPU is a
       separate open decision). Historical onboarding tracker:
       projects/rtxserver-vastai-watch.md (closed/superseded).
+
+  - hostname: gpuserver2
+    aliases: []
+    role: vast-ai-host
+    description: "Solar Inference LLC vast.ai rental host #2. Single RTX 5090. Bring-up 2026-06-08; not yet kaalia-registered."
+    os: "Ubuntu 24.04.4 LTS"
+    mac: "9c:6b:00:c6:4f:81"   # wired0 (Realtek RTL8126, PRIMARY). Wi-Fi (wlp8s0) MAC = dc:56:7b:01:96:d5 (backup).
+    nic: "Realtek RTL8126 5GbE = wired0 PRIMARY @1GbE (r8169 native on kernel 6.17 HWE); MediaTek MT7925 Wi-Fi (wlp8s0) backup"
+    current_ip: "192.168.1.175"   # wired0 (metric 50, preferred). Wi-Fi wlp8s0 = 192.168.1.174 (metric 600, backup).
+    ip_assignment: dhcp
+    ssh_path: "alton@192.168.1.175"
+    bmc_ip: null
+    switch_port: null
+    vast_ai_machine_id: null
+    last_verified: 2026-06-08
+    last_drift: null
+    flagged:
+      - "Wired link negotiated 1GbE (not the card's 5GbE) — switch port/cable is 1G. Fine for vast.ai (>500Mbps); upgrade port/cable for 5G later."
+      - "wired0 hardened match-by-MAC + set-name (survives PCIe renumber). Wi-Fi netplan still by-name (wlp8s0); harden later (low priority — wired is primary)."
+      - "Not yet on vast.ai: kaalia install needs web-UI install token; Fios WAN port-forward (40200-40299) pending owner."
+    notes: |
+      AMD Ryzen 9 9950X (16C/32T), 256 GB DDR5, 4 TB WD_BLACK SN7100 NVMe, ASRock board,
+      NVIDIA RTX 5090 (32 GB, driver 595.71.05). Power cap 575 W (nvidia-power-cap.service,
+      provisional pending thermal stress). vast.ai port range allocated 40200-40299.
+      Rocinante key + NOPASSWD sudo configured (paramiko bootstrap). Bring-up log:
+      inbox/rocinante/2026-06-07-gpuserver2-bringup-LOG.md.
 
 # Future-machine slots (uncomment when adding):
 # - hostname: aneeta-laptop
