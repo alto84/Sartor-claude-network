@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-08
 updated_by: personal-data-gather
-run: 197
+run: 198
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1308,6 +1308,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forward: unchanged from run 186 (990-N overdue, KYC overdue, Venmo $360, Doximity Mon Jun 8, Goddard PT conf Mon Jun 8, Leader Bank escrow Jun 14, NJ-1065 Q2 Jun 15)
 - Pages updated: `daily/2026-06-06.md` (run 189 appended, frontmatter bumped), `family/active-todos.md` (run 189 appended), `ALTON.md` (Micron buy fact appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-08] ingest | personal-data-gather run 198: rtxserver UPS ordered; PCIe/GPU mount shipped; girls soccer gear shipped; USPS EMMETT reinforced
+- Sources: Gmail (is:unread newer_than:1d, 27 threads); all 5 Google Calendars (Jun 8–15); SSH unavailable (cloud runner)
+- Facts gathered: 8 new (CyberPower CP1500PFCLCD UPS ordered for rtxserver; GIGA-MEGA PCIe 5.0 X16 + Vertical GPU Mount Bracket shipped Jun 8; JMT 180 PCIE ordered; Aikuco 5 Packs Girls Soccer gear shipped; USPS EMMETT 2nd data point; Stanford HAI newsletter; LinkedIn pharma/AI job alerts x3; Handshake Project Touchstone 2nd follow-up)
+- Calendar: no new events; 4 events confirmed stable (Aneeta in office Jun 9–10, SMART call Tue noon, Dinner Princeton Thu 7 PM)
+- KEY FINDING: CyberPower UPS purchase directly addresses documented rtxserver "no UPS" vulnerability (2026-05-03 AC failure / 14h outage). Expected arrival Jun 8–9.
+- New ACTION_REQUIRED: 0 net-new; P0 carry-forward (vast.ai offline 8th run, Doximity TODAY expired, Goddard conf TODAY, Dinner Princeton 3 days, HITLAB 4 days, Leader Bank 6 days, NJ-1065 7 days, 990-N overdue, KYC overdue)
+- Pages updated: `daily/2026-06-08.md` (run 198 appended, frontmatter bumped), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
 
 ## [2026-06-08] ingest | personal-data-gather run 197: Chase Freedom autopay; Nishuane pool closed; JAMA GLP-1 Orforglipron; Glass Health update
 - Sources: Gmail (is:unread newer_than:2d, 50 threads); all 5 Google Calendars (Jun 8–15). SSH unavailable (cloud runner).
