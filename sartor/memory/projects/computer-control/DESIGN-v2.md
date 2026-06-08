@@ -140,3 +140,21 @@ Phases A–E and the live-validation suite V1–V9 from v1 §7–§8 stand, with
 ---
 
 *One decision needed (§1: credential scope A/B/C). Everything else is specified and I will build it.*
+
+---
+
+## ADDENDUM — HIGH-power / auto-mode decision (Alton, 2026-06-08)
+
+Alton: "I want a HIGH powered system. We're going to run this in auto mode, but the capabilities need to be there to do everything." Credential scope = **C (full sync)**.
+
+**Build target updated:** maximum capability, autonomous operation, full credential sync. The skill is wired for unattended task-queue-driven operation (always-available, robust reconnect, Bitwarden-CLI path for unattended logins so fills don't block — Chrome autofill + Windows Hello remains the interactive path).
+
+**The two controls that survive C — both reframed as integrity, NOT capability limits:**
+
+1. **Provenance separation (non-negotiable, engineering grounds).** The agent's *goals* originate from the principal (task spec / task queue), never from web-page content. Page text/DOM/screenshots are quarantined **data** that can inform an in-flight principal task but can **never originate** a money-movement / send-as-Alton / secret-export goal. This is the READ/ACT principle generalized for auto mode. Rationale: an autonomous agent that accepts goals from untrusted page content is remote-controlled by the last site it visited. No legitimate (principal-originated) task loses autonomy.
+
+2. **Catastrophic-tier out-of-band backstop (§7 floor).** Only three action classes — move money, send/post as Alton, export saved logins — route through `confirm.ps1`. Capability is fully present; the backstop only prevents an *anomalous/injected* trigger from firing them silently while unattended. Tuned so principal-originated auto work essentially never trips it (provenance-clean + low-stakes-domain actions pass without confirm; the backstop fires on provenance-ambiguous or sensitive-domain irreversible actions).
+
+**Open governance item:** fully-unattended money movement / send-as-Alton with NO backstop conflicts with Constitution §7 hard rules ("no autonomous money movement," "no sending under another's name without review"). Not buildable as a silent toggle. If Alton wants it, route through an explicit §7 amendment (draft for ratification; do not self-amend). Until ratified, the catastrophic-tier backstop stays.
+
+Everything else from v2 §2–§7 (allow-list fail-closed, path-enforced PII non-leakage, masked captures, per-char-SendInput secret entry, kill switch) is built as specified — none of it limits capability; all of it is integrity/hygiene.
