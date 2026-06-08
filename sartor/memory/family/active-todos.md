@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-07
+updated: 2026-06-08
 updated_by: personal-data-gather
-run: 192
+run: 199
 
 status: active
 priority: p1
@@ -2038,3 +2038,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
 > | Disney ADR | Status unknown | Window open May 17 |
 > | Pool pump timers | Leave 24/7 until Pool Guyz reset | Until service |
+
+## Latest from gather (2026-06-08) — run 199
+
+> [!todo] ACTION_REQUIRED — Vishala Orange Ball Summer Camp daily logistics (Jun 8–19)
+> notifications@courtreserve.com (Jun 8, 13:39 UTC): Vishala registered for **Orange Ball Summer Camp Full Day** at West Orange Tennis Club. Runs **Jun 8–12 and Jun 15–19** (10 weekdays total). Full-day program. Camp is NOT on any monitored calendar — add event. Confirm daily transportation plan (dropoff/pickup at West Orange Tennis Club). Camp started today; Jun 9 logistics needed now. See [[family/vishala]], [[daily/2026-06-08]].
+
+> [!fact] Goddard Preschool Conference — TODAY confirmed (Jun 8, 13:31 UTC)
+> kaymbu.com reminder from Alissa DelConte: "Preschool Conferences Today! Please make sure you arrive 5 minutes before your scheduled conference time." Conference for Vasu happening today. Outcome not visible in pipeline. See [[family/vasu]].
+
+> [!fact] "Emmett Sartor" identity — 4th data point (Jun 8)
+> PayPal Business Loan email (Jun 8, 15:24 UTC) addressed to "Emmett Sartor" — same name as USPS (Jun 7, Jun 8) and Target survey (Jun 7). Four services now use "Emmett Sartor": USPS, Target, PayPal, and the LegalZoom entity (~Sep 2025). Open question: what is the full legal/business context? See LegalZoom "Emmett Sartor" P0 item.

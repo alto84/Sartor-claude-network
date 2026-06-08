@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-08
 updated_by: personal-data-gather
-run: 198
+run: 199
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1308,6 +1308,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forward: unchanged from run 186 (990-N overdue, KYC overdue, Venmo $360, Doximity Mon Jun 8, Goddard PT conf Mon Jun 8, Leader Bank escrow Jun 14, NJ-1065 Q2 Jun 15)
 - Pages updated: `daily/2026-06-06.md` (run 189 appended, frontmatter bumped), `family/active-todos.md` (run 189 appended), `ALTON.md` (Micron buy fact appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-08] ingest | personal-data-gather run 199: Vishala Orange Ball Summer Camp starts today; Guidepoint #1754519 AI Clinical Search; PayPal Emmett 4th data point
+- Sources: Gmail (is:unread newer_than:1d, 50 threads); all 5 Google Calendars (Jun 8–15); SSH unavailable (cloud runner)
+- Facts gathered: 11 new (Vishala Orange Ball Summer Camp Full Day Jun 8–19 registration confirmed; West Orange Tennis Club membership receipt #MNAHB7344; Guidepoint #1754519 AI-powered Clinical Search Space; GIGA-MEGA PCIe delivery update in transit; PayPal Business Loan to "Emmett Sartor" — 4th data point; Goddard Preschool Conference today confirmed via kaymbu; LinkedIn Pfizer Oncology AI Director; Kids Flossers + 5 items ordered Jun 8; FEOEOR girls bike gear shipped; USPS Mon Jun 8 EMMETT 2 mailpieces + 1 package; Mass.gov heat wave + World Cup crowds alert)
+- Calendar: no new events; 4 events confirmed stable. KEY GAP: Vishala's Orange Ball Summer Camp (Jun 8–19) is NOT on any monitored calendar.
+- KEY FINDING: Vishala enrolled in full-day tennis camp at West Orange Tennis Club starting TODAY. Daily transportation logistics required Jun 9 onwards.
+- New ACTION_REQUIRED: 2 (Orange Ball Summer Camp daily logistics; Guidepoint #1754519 AI Clinical Search Space)
+- Pages updated: `daily/2026-06-08.md` (run 199 appended, frontmatter bumped), `family/vishala.md` (camp enrollment + receipt + bike gear), `family/active-todos.md` (camp TODO + Goddard confirmed + Emmett 4th data point), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
 
 ## [2026-06-08] ingest | personal-data-gather run 198: rtxserver UPS ordered; PCIe/GPU mount shipped; girls soccer gear shipped; USPS EMMETT reinforced
 - Sources: Gmail (is:unread newer_than:1d, 27 threads); all 5 Google Calendars (Jun 8–15); SSH unavailable (cloud runner)

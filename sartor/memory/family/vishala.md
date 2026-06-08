@@ -2,9 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-06-05
+updated: 2026-06-08
 updated_by: personal-data-gather
-run: 181
+run: 199
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -85,6 +85,17 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 - [[family/active-todos|Family TODOs]] - Current action items (Wohelo deposit, physical form)
 - [[ALTON]] - Head of household
 - [[ledgers/kids]] - Allowance ledger
+
+## Latest from gather (2026-06-08) — run 199
+
+> [!todo] ACTION_REQUIRED — Orange Ball Summer Camp logistics (starts TODAY)
+> notifications@courtreserve.com (Jun 8, 13:39 UTC): Vishala registered for **Orange Ball Summer Camp Full Day** at West Orange Tennis Club. Dates: **Jun 8, 9, 10, 11, 12, 15, 16, 17, 18, 19** (10 weekdays). Full day program. Transportation to West Orange Tennis Club required daily. Camp is NOT on any of the 5 monitored calendars — add it. Confirm pickup/dropoff logistics for Jun 9 onwards. See [[family/active-todos]], [[daily/2026-06-08]].
+
+> [!fact] West Orange Tennis Club membership confirmed (Jun 8)
+> notifications@courtreserve.com (Jun 8, 13:32 UTC): Welcome email + payment receipt #MNAHB7344. Note: receipt shows "Vishala Sortor" (typo for Sartor), account #10673120. 3% CC convenience fee charged. Tennis club enrollment complete. See [[family/active-todos]].
+
+> [!fact] Girls bike gear shipped (Jun 8, 10:19 UTC)
+> FEOEOR 6 Pack Girls Bike items shipped via Amazon. Expected delivery in coming days. INFORMATIONAL.
 
 ## Latest from gather (2026-04-11) run 10
 
