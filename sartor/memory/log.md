@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-07
+updated: 2026-06-08
 updated_by: personal-data-gather
-run: 194
+run: 197
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1308,3 +1308,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forward: unchanged from run 186 (990-N overdue, KYC overdue, Venmo $360, Doximity Mon Jun 8, Goddard PT conf Mon Jun 8, Leader Bank escrow Jun 14, NJ-1065 Q2 Jun 15)
 - Pages updated: `daily/2026-06-06.md` (run 189 appended, frontmatter bumped), `family/active-todos.md` (run 189 appended), `ALTON.md` (Micron buy fact appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-08] ingest | personal-data-gather run 197: Chase Freedom autopay; Nishuane pool closed; JAMA GLP-1 Orforglipron; Glass Health update
+- Sources: Gmail (is:unread newer_than:2d, 50 threads); all 5 Google Calendars (Jun 8–15). SSH unavailable (cloud runner).
+- Facts gathered: 7 new (Chase Freedom Unlimited autopay scheduled; Nishuane community pool closed water incident; Target West Orange purchase Jun 7; JAMA ADA 2026 oral GLP-1 Orforglipron ACHIEVE-5 + Mazdutide weight reduction; JAMA Network Weekly Highlights Jun 7; Glass Health platform update; Amazon deliveries confirmed JML bath sheet + cat litter)
+- Calendar: no new events Jun 8–15; 4 confirmed events (Aneeta in office Mon–Tue, Aneeta SMART call Tue noon, Dinner Princeton? Thu 7 PM)
+- New ACTION_REQUIRED: 0 new; P0 carry-forward from run 196 (vast.ai offline 7th run, Doximity TODAY, Goddard conf TODAY, Dinner Princeton 3 days, HITLAB 4 days, Leader Bank 6 days, NJ-1065 7 days)
+- Pages updated: `daily/2026-06-08.md` (created), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
