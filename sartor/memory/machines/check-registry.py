@@ -25,9 +25,11 @@ Status semantics:
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import platform
 import re
+import socket
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -42,6 +44,9 @@ INBOX_DIR = REPO_ROOT / "sartor" / "memory" / "inbox" / "rocinante"
 # 2026-05-10: drift reports moved into _memos/registry-drift/ subdir so the
 # curator skip-walks them (they're cron output, not curator input).
 REPORT_DIR = INBOX_DIR / "_memos" / "registry-drift"
+# 2026-06-09 (uplift C5): sticky status between runs; a dated memo is written
+# only on state TRANSITION, not on every run. Gitignored.
+STATE_PATH = REPO_ROOT / "data" / "registry-drift-state.json"
 
 
 def utc_stamp() -> str:
@@ -110,11 +115,36 @@ def ssh_probe(ssh_path: str, timeout_s: int = 5) -> tuple[bool, str]:
     return False, detail
 
 
+def local_primary_ip() -> str | None:
+    """Primary outbound IPv4 of the run host (no traffic actually sent)."""
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+            s.connect(("8.8.8.8", 80))
+            return s.getsockname()[0]
+    except OSError:
+        return None
+
+
 def classify(machine: dict) -> tuple[str, str, str]:
     """Return (status, ping_detail, ssh_detail)."""
     ip = machine.get("current_ip")
     if not ip:
         return "UNREACHABLE", "no current_ip declared", ""
+    # Self-host special case (uplift C5): pinging our own registry IP tells us
+    # nothing useful — if the lease moved, the ping fails and the report blames
+    # the network. Compare against the live local adapter instead and name the
+    # correction.
+    if machine.get("hostname", "").lower() == socket.gethostname().lower():
+        live = local_primary_ip()
+        if live is None:
+            return "UNREACHABLE", "self: could not determine local IP", ""
+        if live == ip:
+            return "OK", "self (local adapter matches registry)", "skipped (self)"
+        return (
+            "SELF-DRIFT",
+            f"self: registry says {ip}, live adapter is {live} -update REGISTRY.yaml",
+            "skipped (self)",
+        )
     ping_ok, ping_detail = ping(ip)
     if not ping_ok:
         return "UNREACHABLE", ping_detail, ""
@@ -131,11 +161,13 @@ def classify(machine: dict) -> tuple[str, str, str]:
 def write_report(results: list[dict], stamp: str) -> Path:
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     report_path = REPORT_DIR / f"registry-drift-{stamp}.md"
-    counts = {"OK": 0, "STALE": 0, "UNREACHABLE": 0}
+    counts = {"OK": 0, "STALE": 0, "UNREACHABLE": 0, "SELF-DRIFT": 0}
     for r in results:
         counts[r["status"]] = counts.get(r["status"], 0) + 1
-    overall = "green" if counts["STALE"] == 0 and counts["UNREACHABLE"] == 0 else (
-        "red" if counts["UNREACHABLE"] > 0 else "yellow"
+    overall = (
+        "red" if counts["UNREACHABLE"] > 0
+        else "yellow" if (counts["STALE"] or counts["SELF-DRIFT"])
+        else "green"
     )
     lines = []
     lines.append("---")
@@ -149,7 +181,7 @@ def write_report(results: list[dict], stamp: str) -> Path:
     lines.append("")
     lines.append(f"# Registry drift check -{utc_iso()}")
     lines.append("")
-    lines.append(f"Overall: **{overall.upper()}**. {counts['OK']} OK, {counts['STALE']} STALE, {counts['UNREACHABLE']} UNREACHABLE.")
+    lines.append(f"Overall: **{overall.upper()}**. {counts['OK']} OK, {counts['STALE']} STALE, {counts['UNREACHABLE']} UNREACHABLE, {counts['SELF-DRIFT']} SELF-DRIFT.")
     lines.append("")
     lines.append("| Hostname | IP | Status | Ping | SSH |")
     lines.append("|---|---|---|---|---|")
@@ -158,11 +190,15 @@ def write_report(results: list[dict], stamp: str) -> Path:
             f"| {r['hostname']} | {r['ip']} | {r['status']} | {r['ping']} | {r['ssh']} |"
         )
     lines.append("")
-    if counts["STALE"] or counts["UNREACHABLE"]:
+    if counts["STALE"] or counts["UNREACHABLE"] or counts["SELF-DRIFT"]:
         lines.append("## Action items")
         lines.append("")
         for r in results:
-            if r["status"] == "UNREACHABLE":
+            if r["status"] == "SELF-DRIFT":
+                lines.append(
+                    f"- **{r['hostname']}** (run host) registry IP is stale: {r['ping']}."
+                )
+            elif r["status"] == "UNREACHABLE":
                 lines.append(
                     f"- **{r['hostname']}** UNREACHABLE at {r['ip']} ({r['ping']}). "
                     f"Possible causes: host off, DHCP reassignment, NIC swap, switch-port move. "
@@ -257,9 +293,31 @@ def main() -> int:
         print(f"{hostname:18s} {ip:18s} {status:12s} ping={ping_detail:20s} ssh={ssh_detail}")
 
     stamp = utc_stamp()
+    # Transition-only memos (uplift C5): write a dated report only when any
+    # machine's status differs from the previous run. The sticky state file
+    # always records the latest run, so a standing condition is one file of
+    # truth, not a 4-hourly flood.
+    status_map = {r["hostname"]: r["status"] for r in results}
+    prev = {}
+    try:
+        prev = json.loads(STATE_PATH.read_text(encoding="utf-8")).get("status", {})
+    except (OSError, ValueError):
+        pass
+    changed = status_map != prev
     if not args.no_report:
-        report_path = write_report(results, stamp)
-        print(f"\nReport: {report_path}")
+        if changed:
+            report_path = write_report(results, stamp)
+            print(f"\nReport (state transition): {report_path}")
+        else:
+            print("\nNo state transition since last run -no memo written.")
+    try:
+        STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        STATE_PATH.write_text(
+            json.dumps({"stamp_utc": utc_iso(), "status": status_map}, indent=1),
+            encoding="utf-8",
+        )
+    except OSError as e:
+        print(f"WARNING: could not write state file: {e}", file=sys.stderr)
 
     if not args.no_write_back:
         update_last_verified(REGISTRY_PATH, ok_hostnames)

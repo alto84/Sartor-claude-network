@@ -38,17 +38,16 @@ machines:
     os: "Windows 10 Home (10.0.19045)"
     mac: "2C:F0:5D:39:21:7F"
     nic: "Realtek PCIe 2.5GbE Family Controller (negotiating 1 Gbps; switch upstream is bottleneck)"
-    current_ip: "192.168.1.169"
+    current_ip: "192.168.1.171"
     ip_assignment: dhcp
     ssh_path: null  # Rocinante is the SSH client, not server. No inbound SSH.
     bmc_ip: null
     switch_port: null  # Not in the 2026-05-01 census; physical patch-panel labeling unknown for this drop.
     vast_ai_machine_id: null
-    last_verified: 2026-05-29
-    last_drift: 2026-05-19  # UniFi switch lost power in fuse blow ~22:54 ET; Rocinante's Ethernet died, Rocinante DHCP-renewed onto Fios CR1000A WiFi at .169. Old .171 lease still showing as Deprecated on the dead Ethernet adapter.
+    last_verified: 2026-06-09
+    last_drift: 2026-06-09  # Back on wired .171 (UniFi switch restored post-fuseblow); registry had sat at the .169 WiFi lease since 2026-05-19 while the drift detector flagged it every 4h. Corrected per uplift C5; live adapter verified via Get-NetIPAddress.
     flagged:
-      - "Ethernet adapter shows .171 in Deprecated state (stale lease from dead UniFi switch); release/renew once switch is back."
-      - "switch_port unknown -confirm against UniFi controller client list at https://127.0.0.1:8443 (formerly 192.168.1.171; controller runs locally so localhost is the future-proof URL)"
+      - "switch_port unknown -confirm against UniFi controller client list at https://127.0.0.1:8443 (controller runs locally so localhost is the future-proof URL)"
     notes: |
       Sole git-push origin (rtxserver bare). Sole SSH-key custodian for the fleet.
       Runs UniFi controller (https://127.0.0.1:8443; was on Rocinante's LAN IP
@@ -69,7 +68,7 @@ machines:
     bmc_ip: null
     switch_port: null  # Physically rewired into Alton's Office switch port during 2026-05-19 fuse-blow recovery; switch_port number unknown until UniFi client list is re-queried post-restoration.
     vast_ai_machine_id: 52271
-    last_verified: 2026-06-08
+    last_verified: 2026-06-09
     last_drift: 2026-05-19  # ROLLED BACK from .199 → .100 during fuseblow recovery (gpuserver1 physically moved to Alton's Office wired drop; DHCP reassigned to original .100). Restores alignment with Fios DMZ target. Rental C.34113802 reconnected within 30min, reliability dropped slightly (0.9807 → 0.9718) but recovering.
     flagged:
       - "Now back at 192.168.1.100 (pre-2026-05-09 IP). Codebase references to .199 will need cleanup in next Tier-2 sweep; the .100 references that were previously stale are now correct again."
@@ -98,7 +97,7 @@ machines:
     bmc_mac: "30:c5:99:d5:8f:b8"
     switch_port: 10
     vast_ai_machine_id: 124192  # corrected 2026-05-26 from stale 97429 per rental-ops audit; live machine_id verified via vastai show machines
-    last_verified: 2026-06-08
+    last_verified: 2026-06-09
     last_drift: 2026-05-26  # BMC primary moved .154 → .150 static (was factory-reset to 10.10.10.10 at some point between 2026-05-21 and 2026-05-26; rediscovered + corrected on this date)
     flagged: []
     notes: |
@@ -130,7 +129,7 @@ machines:
     bmc_ip: null
     switch_port: null
     vast_ai_machine_id: null
-    last_verified: 2026-06-08
+    last_verified: 2026-06-09
     last_drift: null
     flagged:
       - "Wired link negotiated 1GbE (not the card's 5GbE) — switch port/cable is 1G. Fine for vast.ai (>500Mbps); upgrade port/cable for 5G later."

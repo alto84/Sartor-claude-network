@@ -133,3 +133,4 @@ sartor/memory/wifi/network-dashboard.html
 # experiments/**/*.log are DELIBERATELY tracked (thermal-incident evidence);
 # the negation documents that intent against the platform-era *.log rules.
 !experiments/**/*.log
+/data/registry-drift-state.json
