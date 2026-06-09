@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-05-14
-updated_by: autodream
+updated: 2026-06-09
+updated_by: personal-data-gather
 last_verified: 2026-05-02
 status: active
 next_review: 2026-05-12
@@ -603,5 +603,63 @@ No git push (no credentials) - awaiting Rocinante curator commit
 ## Consolidated from daily logs (2026-04-29)
 - [2026-04-29] (fact) Vasu's Goddard May 2026 schedule available. No specific dates extractable from snippet.
 
+## Latest from gather (2026-05-26) — run 128
+
+> [!fact] Solar Inference LLC — second GPU server build ordered 2026-05-25
+> Newegg order #448349643 ($1,919.10) confirmed. Components for a new AM5 build:
+> - **CPU:** AMD Ryzen 9 9950X (Zen 5, 16C/32T, 4.3 GHz base, AM5, 170W TDP)
+> - **Motherboard:** ASRock X870E TAICHI (AM5, X870E chipset, Extended ATX)
+> - **Cooler:** ARCTIC Liquid Freezer III Pro 360mm AIO (AMD AM5/AM4, Intel LGA1851/1700)
+> - **Storage:** WD_BLACK SN7100 4TB M.2 2280 NVMe (PCIe 4.0 x4)
+> - **Case:** HYTE Y70 Dual Chamber Mid-Tower ATX (PCIe 4.0 riser cable included, Snow White)
+> - **PSUs:** CORSAIR CX750M 750W 80+ Bronze + Super Flower Leadex III GE Gold 1300W ATX 3.1
+> - **Cable:** SUPER FLOWER 12VHPWR PCIe 5.0 600W cable (for RTX 5090 power delivery)
+> Combined with GIGABYTE RTX 5090 (shipped Amazon 2026-05-21): **new GPU server for Solar Inference LLC**. Deliveries: May 28, May 29–Jun 2, Jun 3–5. Add to machine registry once built and named. Assign machine ID via vast.ai on completion. See [[business/solar-inference]].
+
 ## Consolidated from daily logs (2026-05-14)
 - [2026-05-13] (fact) Gym Day Registration — skipped (already declined):
+
+## Latest from gather (2026-05-29) — run 144
+
+> [!fact] GPU Server Build — HYTE Y70 case delivered 2026-05-28
+> Newegg order #448349663 (Adorama, marketplace): HYTE Y70 CS-HYTE-Y70-WW Dual Chamber Mid-Tower ATX Case with PCIe 4.0 Express Riser Cable, Snow White — delivered 7:05 PM, tracking 1Z68R0R00385163546. Case component confirmed in hand at Montclair NJ. Motherboard/CPU likely received too (Newegg tip email triggered 5/29). Outstanding: Newegg #448349603 (1 of 4 items late), #448349623 (1 item late), GIGABYTE RTX 5090 delivery status unknown. Build assembly cannot begin until RTX 5090 arrives.
+
+## Latest from gather (2026-05-29) — run 143
+
+> [!fact]
+> **Ubiquiti Cloud Gateway Max ordered (Amazon, 2026-05-29 03:08 UTC).** New UniFi gateway/router appliance ordered. Context: follows the second GPU server build (Newegg #448349643 AM5 components, GIGABYTE RTX 5090). UCG-Max is likely for the new server's network segment or a broader UniFi LAN upgrade. Delivery window TBD. Review topology impact before deploying — the current setup has a Verizon Fios router as gateway with DMZ to gpuserver1; UCG-Max could replace or augment this. See [[projects/unifi-takeover-2026-05-01]] for existing UniFi controller config.
+
+## Latest from gather (2026-06-01) — run 160
+
+> [!fact] UCG Max — USPS confirms arriving June 1
+> USPS Informed Delivery (2026-06-01 11:43 UTC): 1 inbound package arriving today. Completes the lifecycle: ordered 2026-05-29 (run 143) → shipped 2026-05-30 (run 158) → arriving 2026-06-01 (run 160). Install planning: see [[projects/unifi-takeover-2026-05-01]] for topology context; current setup has Fios router as gateway with DMZ to gpuserver1. UCG-Max may replace or augment.
+
+## Consolidated from daily logs (2026-05-31)
+- [2026-05-30] (fact) Rest of week: not fully visible in snippet
+
+## Latest from gather (2026-06-07) — run 191
+
+> [!warning] 2026-06-06 23:35 UTC — vast.ai machines 52271 AND 124192 OFFLINE
+> console@mg.vast.ai automated alert: "2 of your hosted Vast.ai machines appear to be offline: 52271, 124192."
+>
+> - **Machine 52271 (gpuserver1, RTX 5090):** Under active reserved contract C.34113802 (through 2026-08-24 at ~$0.20/hr). Prior offline incident: 2026-04-22 (~2:35 AM UTC, 48h resolution, client contact by vast.ai support Saber). This incident also involves an active reserved rental — same client-impact risk pattern.
+> - **Machine 124192:** NOT in MACHINES.md or machine registry. Unknown identity. Candidate: the new AM5 build (Newegg order #448349643 from 2026-05-25: Ryzen 9 9950X + ASRock X870E TAICHI + GIGABYTE RTX 5090) if it was listed on vast.ai and assigned this machine ID. Also possible: rtxpro6000server (machine_id 97429 per prior docs) if that number changed on listing. **Verify immediately on vast.ai host dashboard.**
+>
+> **SSH not available from cloud runner this run.** Required actions (next Rocinante session):
+> 1. `ssh alton@gpuserver1` → check power, Kaalia daemon (`docker ps --format '{{.Names}}' | grep '^C\.'`), Docker health, nvidia-smi
+> 2. Check vast.ai host dashboard → identify machine 124192
+> 3. If rental client impacted: vast.ai support pattern from 2026-04-22 — check for Saber or support ticket; reply with machine status
+> 4. Once machine restored: verify listing is live (`~/.local/bin/vastai show machines`)
+
+## Latest from gather (2026-06-09) — run 202
+
+> [!fact] GIGABYTE GeForce RTX 5090 ORDERED — Jun 9 02:06 UTC
+> auto-confirm@amazon.com: "Ordered: GIGABYTE GeForce RTX 5090... and 1 more item." Second RTX 5090 card ordered from Amazon. Combined with vertical GPU mount bracket (delivered Jun 8) and GIGA-MEGA PCIe 5.0 X16 riser (delivered Jun 8), this completes the hardware trifecta for a vertical GPU mount in an existing machine. Most likely destination: machine 124192 (Ryzen 9 9950X + ASRock X870E TAICHI AM5 build) as a second GPU to bring it to 2× RTX 5090 (64 GB VRAM). Both machines 52271 and 124192 have been offline since run 191 (Jun 7). Confirm delivery date and installation plan. See [[business/solar-inference]].
+
+## Latest from gather (2026-06-09) — run 204
+
+> [!fact] GIGABYTE AORUS RTX 5090 AI SHIPPED — Jun 9 15:51 UTC (same-day)
+> shipment-tracking@amazon.com: "Shipped: GIGABYTE AORUS RTX 5090 AI..." Ordered Jun 9 02:06 UTC (~10 PM ET Jun 8); shipped Jun 9 15:51 UTC (~11:51 AM ET). Same-day Amazon fulfillment. Delivery expected Jun 10–11. Second RTX 5090 for Solar Inference LLC fleet expansion — intended destination: machine 124192 (AM5 build: Ryzen 9 9950X + ASRock X870E TAICHI) as second GPU for dual-5090 configuration (64 GB VRAM total). Both machines 52271 and 124192 remain offline (run 191 onward). See [[business/solar-inference]].
+
+> [!fact] CyberPower CP1500PFCLCD PFC UPS SHIPPED — Jun 9 14:57 UTC
+> shipment-tracking@amazon.com: "Shipped: CyberPower CP1500PFCLCD PFC..." rtxserver UPS (CyberPower CP1500PFCLCD) now in transit. Prior CLAUDE.md entry listed as "Expected Jun 8–9 — confirm arrival"; shipping notification received Jun 9 14:57 UTC confirms it was not yet delivered. Delivery imminent. UPS provides power conditioning and battery backup for rtxpro6000server (dual RTX PRO 6000 Blackwell, no UPS prior to this order). See [[machines/rtxpro6000server]].

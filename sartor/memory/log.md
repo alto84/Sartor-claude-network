@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-05-25
+updated: 2026-06-09
 updated_by: personal-data-gather
-run: 123
+run: 204
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,124 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-08] ingest | personal-data-gather run 200: Chase/Sante Total 07/20/2026 deadline confirmed; pool safe; CSA tomorrow; hardware delivered
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 8–15), no SSH (cloud runner)
+- New facts: 8 (Chase account restriction hard deadline 07/20/2026; pool serviced safe to swim; CSA first pickup tomorrow; ABPN CC reminder; Hiive fund closing Jun 10; Vasu Goddard library; JAMA congenital heart; Uber Eats $34)
+- Delivery confirmations: Vertical GPU Mount DELIVERED, Girls Soccer gear DELIVERED, Kids Flossers DELIVERED
+- Calendar: confirmed stable vs run 199 — same 4 events
+- New deadlines: Chase/Sante Total 07/20/2026 (was "OVERDUE NOW" — now has specific date)
+- Pages updated: `daily/2026-06-08.md` (run 200 appended), `business/sante-total.md` (deadline callout), `family/active-todos.md` (deadline + CSA + pool + ABPN), `family/vishala.md` (tennis camp + deliveries), `log.md` (this entry)
+
+## [2026-06-09] ingest | personal-data-gather run 204: Sante Total Haiti wire ACTION; AORUS RTX 5090 shipped; UPS shipped
+- Sources: Gmail (is:unread newer_than:1d, 50 threads scanned; net-new post run 203); all 5 Google Calendars (Jun 9–16); no SSH (cloud runner)
+- New facts: 3 actionable (Sante Total Haiti wire ACTION_REQUIRED; GIGABYTE AORUS RTX 5090 shipped same-day; CyberPower CP1500PFCLCD UPS shipped)
+- Calendar: stable vs run 203 — same 4 events, no new entries on any of 5 calendars
+- New action items: Sante Total Haiti wire (Alison Smith, wire preferred over Fonkoze) — P1 ASAP
+- New shipment facts: AORUS RTX 5090 in transit (expected Jun 10–11); UPS in transit (imminent)
+- Pages updated: `daily/2026-06-09.md` (run 204 appended), `business/sante-total.md` (Haiti wire action), `MACHINES.md` (shipped facts), `family/active-todos.md` (carry-forward + Haiti wire), `log.md` (this entry), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (run 204 appended)
+
+## [2026-06-07] ingest | personal-data-gather run 196: rtxserver UPS + PCIe hardware ordered; soccer gear; Boehringer Ingelheim patient safety role; vast.ai offline 6th run
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
+- New facts: 4 (Amazon rtxserver build-out hardware — CyberPower UPS + JMT 64GBS PCIe cable + vertical GPU mount + GIGA-MEGA PCIe 5.0 X16; Amazon kids soccer gear + 4 family items; Chase Sapphire Reserve auto-payment scheduled; LinkedIn Boehringer Ingelheim Senior Patient Safety Physician)
+- Calendar: no changes vs run 195 (all 5 calendars confirmed; same events Jun 7–14; Livia party concluded; location confirmed in calendar update)
+- New deadlines: none new
+- P0 updates: vast.ai machines 52271 + 124192 still offline (6th consecutive run unresolved); all other P0s carry forward unchanged
+- Pages updated: `daily/2026-06-07.md` (run 196 appended, frontmatter bumped), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created/appended), `log.md` (this entry)
+
+## [2026-06-07] ingest | personal-data-gather run 195: Pool Guy NJ billing; LinkedIn Applied AI Pfizer + Vertex Exec MD Patient Safety; Stanford HAI newsletter
+- Sources: Gmail (30 threads, is:unread newer_than:1d), all 5 Google Calendars (Jun 7–15), no SSH (cloud runner)
+- New facts: 5 (Pool Guy NJ billing request ACTION REQUIRED; LinkedIn Director Applied AI Pfizer — distinct from Medical Insights role run 194; LinkedIn Executive Medical Director Patient Safety Vertex Pharmaceuticals — strongest title signal this week; Stanford HAI inaugural merged newsletter; Hiive pre-IPO digest routine)
+- Calendar: confirmed same vs run 194 (all 5 calendars; no new events Jun 7–15; Livia party now concluded)
+- New deadlines: none new
+- P0 updates: vast.ai machines 52271 + 124192 still offline (5th consecutive run); Pool Guy NJ billing is new ACTION REQUIRED; all other P0s carry forward
+- Pages updated: `daily/2026-06-07.md` (run 195 appended), `business/az-career.md` (Applied AI Pfizer + Vertex Exec MD), `ALTON.md` (Stanford HAI + career signals), `family/active-todos.md` (Pool Guy billing + P0 carry-forward), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-07] ingest | personal-data-gather run 194: Emmett name resolved; LinkedIn Telix/Pfizer; Uber Eats $207; vast.ai offline 4th run
+- Sources: Gmail (30 threads, is:unread newer_than:2d), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
+- New facts: 9 (Emmett = Alton's legal first name confirmed; Uber Eats Nori Sushi $207.54 Jun 6; LinkedIn Senior Director AI Telix Pharmaceuticals; LinkedIn Director Medical Insights Pfizer; Doximity Peabo Bryson stroke death; JAMA ADA 2026 insulin/Medicare; Amazon household orders Jun 6 shipped/delivered; Costco Same-Day delivery 85 Stonebridge; Handshake AI Project Touchstone follow-up)
+- Calendar: confirmed same vs run 193 (all 5 calendars; no new events Jun 7–14)
+- New deadlines: none new
+- P0 updates: vast.ai machines 52271 + 124192 still offline (4th consecutive run); carry-forward P0s unchanged
+- Pages updated: `daily/2026-06-07.md` (run 194 appended), `ALTON.md` (Emmett clarification + Uber Eats + LinkedIn), `business/az-career.md` (Telix + Pfizer alerts), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-07] ingest | personal-data-gather run 193: NJ-1065 Q2 gov notification; Guidepoint #1755072 biosimulation + #1754453 pharmacovigilance; vast.ai still offline
+- Sources: Gmail (is:unread newer_than:2d, 30+ threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
+- New facts: 3 (NJ DORES Q2 estimated payment notification confirmed Jun 5; Guidepoint #1755072 biosimulation software consultation request; Guidepoint #1754453 pharmacovigilance consultation request)
+- Calendar: confirmed same vs run 192 (all 5 calendars queried; no new events Jun 7–14)
+- New deadlines: NJ-1065 Q2 2026-06-15 (government email confirmed; 8 days)
+- P0 updates: vast.ai machines 52271 + 124192 still offline (3rd run unresolved); escrow 2026-06-14 (7 days)
+- Pages updated: `daily/2026-06-07.md` (run 193 appended), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
+
+## [2026-06-07] ingest | personal-data-gather run 192: Venmo $360 RESOLVED; Cenlar mortgage; LegalZoom "Emmett" entity flag
+- Sources: Gmail (is:unread newer_than:2d, 40 threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
+- New facts: 4 (Venmo $360 RESOLVED — paid Jun 6 + request cancelled Jun 7; Cenlar mortgage $2,829.92 applied Jun 5; LegalZoom "Emmett" entity 9-month check-in flag; vast.ai sign-in Jun 5 confirms prior awareness)
+- Calendar: no changes vs run 191; same events Jun 7–14 confirmed (all 5 calendars checked)
+- New deadlines: none
+- P0 updates: Venmo CLOSED; vast.ai machines 52271 + 124192 still offline
+- Pages updated: `daily/2026-06-07.md` (run 192 appended), `family/active-todos.md` (run 192 carry-forward), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-07] ingest | personal-data-gather run 191: vast.ai machines 52271+124192 offline; Fidelity 3 trades MU/SANDISK/call; Livia party today
+- Sources: Gmail (is:unread newer_than:2d, 30+ threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)
+- New facts: 8 (vast.ai machines 52271+124192 offline at 23:35 UTC Jun 6 — CRITICAL; Fidelity full 3-trade detail: MU @ $889.50 + SANDISK @ $1,555.99 + CALL MU @ $49.05; Chase credit report alert; Venmo $360 5th reminder; Livia Birthday Party TODAY 3-6 PM; Aneeta SMART Providers Call Tue Jun 10 noon; Dinner Princeton Thu Jun 11 7 PM; dual-parent gap Mon Jun 9)
+- Calendar: 5 events Jun 7–14 confirmed (all 5 calendars checked); no new events vs run 190
+- New deadlines: none (machine offline is P0 revenue risk, not a deadline)
+- P0 updates: vast.ai offline CRITICAL — machine 52271 under active rental; machine 124192 identity unknown; Livia Birthday Party TODAY; Venmo $360 still unpaid (5th reminder)
+- Pages updated: `daily/2026-06-07.md` (created), `MACHINES.md` (offline alert appended), `family/active-todos.md` (run 191 carry-forward appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-05] ingest | personal-data-gather run 184: NJ-1065 Jun 15 deadline; Goddard Conferences Monday; MGMA 2026 neurology comp; Guidepoint #1754453 closed
+- Sources: Gmail (is:unread newer_than:2d, 40 threads), 4/5 Google Calendars (Aneeta unavailable), no SSH (cloud runner)
+- New facts: 10 (NJ-1065 Q2 Jun 15 deadline SOLAR INFERENCE LLC; Guidepoint #1754453 re-solicited then expired; Goddard Conferences Monday escalation; Chase statement 8563; MGMA 2026 neurology median +2.69%; LinkedIn VP Data/AI Lyra Health $346K; AAAP OUD webinar CME; DEA Washington Lunch & Learn; Hiive WHOOP $6.80; Vasu 2× classroom moments)
+- Calendar: no changes vs run 183; 5 events Jun 5–12 confirmed (4 calendars checked)
+- New deadlines: NJ-1065/NJ-CBT-1065 Q2 estimated payment 2026-06-15 (Solar Inference LLC) — NEW hard deadline
+- P0 updates: Guidepoint #1754453 PV Space CLOSED (window expired ~1:05 PM ET); Goddard Preschool Conferences escalated to URGENT (sign up tonight for Monday Jun 8)
+- Pages updated: `daily/2026-06-05.md` (run 184 appended), `TAXES.md` (NJ-1065 deadline + frontmatter), `family/active-todos.md` (run 184 carry-forward + NJ-1065 action item), `data/gather-alerts.md` (updated), `data/heartbeat-log.csv` (updated), `log.md` (this entry)
+
+## [2026-06-05] ingest | personal-data-gather run 182: Glass.health; DEA Summit; JAMA+ Nigam Shah; Amazon deliveries
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 5–12), no SSH (cloud runner)
+- New facts: 9 (Glass.health performance + ambient scribing update; DEA Fentanyl Free America Summit invite; NJYS World Cup Insider; 2x Crazy Creek chairs delivered; OFF! Insect Repellent shipped; JAMA+ Nigam Shah AI patient histories; Hiive daily digest; Google Play subscription charge Jun 4; Fidelity financial wellness outreach)
+- Calendar: no changes vs run 181; 5 events confirmed Jun 5–12
+- New deadlines: none new; DEA Summit (soft, no stated deadline)
+- P0 updates: Guidepoint #1754453 PV Space window status unknown (was ~1:05 PM ET); all other P0s carry forward
+- Pages updated: `daily/2026-06-05.md` (run 182 appended), `ALTON.md` (Glass.health, DEA, JAMA+), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-05] ingest | personal-data-gather run 181: Guidepoint expirations; Lincoln Center context; graduation day confirmed
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 5–12), no SSH (cloud runner)
+- New facts: 4 (Lincoln Center WiFi login Jun 4 7:26 PM; Guidepoint #1755573 GLP-1 expired ~1:36 AM ET; Guidepoint #1754453 PV Space expiring ~1:05 PM ET today; AAAP AUD PIP CME email)
+- Calendar: unchanged vs runs 175–180; no new events Jun 5–12
+- New deadlines surfaced: Guidepoint #1754453 expires ~1:05 PM ET today
+- P0 updates: Guidepoint GLP-1 expired (closed); P0 carry-forward table updated for Jun 5
+- Pages updated: `daily/2026-06-05.md`, `ALTON.md`, `family/vishala.md`, `family/active-todos.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`, `log.md`
+
+## [2026-06-04] ingest | personal-data-gather run 180: graduation logistics email; Guidepoint #1754519 re-send; picture proofs; Handshake Touchstone; NJ Pride FC camp
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 4–11), no SSH (cloud runner)
+- New facts: 9 (MKA graduation logistics letter from Katie Banks; Guidepoint #1754519 second email; Goddard picture proof pickup; Handshake Project Touchstone $125/hr 3D Slicer; NJ Pride FC August camp; Amazon Morse Code shipped; Vasu daily sheet Jun 4; Claude Opus 4.8 Substack digest; PCSS-MAUD webinar conflict Jun 10)
+- Calendar: unchanged vs runs 175–179; no new events Jun 4–11
+- New deadlines surfaced: Guidepoint #1755573 GLP-1 expiring TONIGHT (~1:36 AM ET); graduation logistics for 8:00 AM TOMORROW
+- Pages updated: `daily/2026-06-04.md`, `family/active-todos.md`, `family/vishala.md`, `family/vasu.md`, `ALTON.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`, `log.md`
+
+## [2026-06-04] ingest | personal-data-gather run 179: Goddard conference Jun 8; Ghosty vet overdue; HITLAB time 12:30 PM; Fidelity EFT complete
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 4–11), no SSH (cloud runner)
+- New facts: 9 (Goddard conference Jun 8 sign-up; Ghosty overdue vet; HITLAB exact time 12:30–1:30 PM ET; Fidelity $5K EFT confirmed complete; SpotHero NYC commute confirmed; HAPPY LOLLI delivered; Sun Bum SPF delivered; MU summer soccer registration open; NEJM AI MEDS standard)
+- Calendar: unchanged vs runs 175–178; no new events Jun 4–11
+- New deadlines surfaced: Goddard Preschool Conference Jun 8 (sign up now); Guidepoint #1754453 expires ~Jun 5 1 PM
+- P0 updates: Fidelity $5K → confirmed at Chase (removes "in transit"); HITLAB time now known (12:30–1:30 PM)
+- Pages updated: `daily/2026-06-04.md`, `family/active-todos.md`, `family/vasu.md`, `family/family-calendar.md`, `ALTON.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`, `log.md`
+
+## [2026-06-04] ingest | personal-data-gather run 178: Fidelity MU options trade; Chase CC 5680; WeAreMKA end-of-year deadlines (PE clothes Jun 15, supply sale Jun 30)
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 4–11), no SSH (cloud runner)
+- New facts: 5 (MU options BOUGHT+SOLD CALL @ 38.60/120.93; Chase CC 5680 $29,997 due Jun 28; MKA PE Clothes Jun 15 deadline; PAMKA Supply Sale Jun 30; Magnus Health 2026-27 still open)
+- Calendar: unchanged vs runs 175–177; no new events
+- New deadlines surfaced: PE Clothes pre-order June 15, Supply Sale June 30
+- P0 carry-forwards: KYC due today; 990-N 20d overdue; Guidepoint x3 windows expiring; Vishala graduation tomorrow; band instrument return Sat
+- Pages updated: `daily/2026-06-04.md` (run 178 appended), `ALTON.md` (MU trade + CC 5680), `family/active-todos.md` (PE/supplies deadlines + Magnus Health reminder + MU note), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 161: wire $2,400 Berteau Zephir; Guidepoint ACP #1752401; HITLAB roundtable Jun 12; MKA BBQ Jun 4; Aneeta in-office Jun 9
+- Facts gathered: 7 new (wire transfer, Guidepoint #1752401, HITLAB roundtable, MKA BBQ, Aneeta in-office Jun 9, SpotHero parking, Vasu recital teacher-confirm)
+- New action items: Guidepoint #1752401 (respond this week), HITLAB roundtable Jun 12 (decision needed)
+- New calendar event: "In office" Jun 9 all-day (Family cal, Aneeta)
+- P0 carry-forwards: KYC 2026-06-04 (T-3 days); 990-N overdue 17d; vast.ai 124192 GPU complaint; Pool Guyz bill; Disney ADR
+- Pages updated: `daily/2026-06-01.md` (run 161 addendum), `family/active-todos.md`, `business/az-career.md`, `family/vayu.md`, `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 
 ## [2026-05-06] ingest | personal-data-gather run 60: iCloud full; Vasu pizza money; Goddard door access; Schwab TQQQ
 - Sources: Gmail (newer_than:2d, 30 threads), all 5 calendars (May 6–20), no SSH (gpuserver1 unreachable at time of run)
@@ -659,3 +777,604 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 updates: cat sitter now T-2 (LAST DAY); 990-N now 10 days overdue; Berman 7 days past promise; Berteau 2 days since follow-up; Gaby 13 days.
 - Pages updated: `daily/2026-05-25.md` (created), `family/active-todos.md` (run 123 section appended, frontmatter bumped), `log.md` (this entry, run bumped to 123), `data/heartbeat-log.csv` (created with runs 117–123), `data/gather-alerts.md` (created)
 - KEY: Cat sitter for Boston (5/27) at T-2 — TODAY is the last realistic booking day. Sante Total Berteau $2,400 now 2 days without response. 990-N 10 days overdue.
+
+## [2026-05-25] ingest | personal-data-gather run 124: Steam purchases x2; LinkedIn msg; P0 carry
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 25–Jun 1). No SSH (web runner). Second run of 2026-05-25.
+- New facts: (1) Steam purchases ×2 (noreply@steampowered.com, 2026-05-25 00:19/00:21 ET) — two gaming purchases added to Steam Library, FINANCIAL/PERSONAL, no action required. (2) LinkedIn message notification from "Michael" (07:24 ET) — 1 message awaiting response, INFORMATIONAL. All other 28 threads are duplicates of runs 120–123.
+- Calendar: unchanged from run 123. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon), Vasu dance performance ~June 2 (time TBD). All other calendars empty. Today: Memorial Day.
+- P0 carries: unchanged from run 123 — 990-N 10 days overdue; Disney ADR Day 9; Berman $6K 7 days past promise; cat sitter T-2 CRITICAL (today is last booking day); Berteau $2,400 ASAP; Gaby $9,972 pending 13 days; UPS claim Day 2; Cadoo Medical $765.21 pay.
+- Pages updated: `daily/2026-05-25.md` (run 124 section appended), `log.md` (this entry, run bumped to 124), `data/heartbeat-log.csv` (created/appended), `data/gather-alerts.md` (written)
+- KEY: No new actionable items this run. Cat sitter for Boston 5/27 still unbooked at T-2 — today is the last realistic day. Sante Total Berteau $2,400 still awaiting Alton's response (3 days since Barbara's follow-up).
+
+## [2026-05-25] ingest | personal-data-gather run 125: portrait sale; 11 informational; P0 carry
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 25–Jun 1). No SSH (web runner). Third run of 2026-05-25.
+- New facts: (1) ImageQuix portrait sales for Vayu and Vishala — Memorial Day free shipping window, order via ImageQuix. FAMILY ACTION. (2) LinkedIn job alerts (Regeneron, Insmed, Bayer, Kailera, Clover) — INFORMATIONAL. (3) Consulting solicitations (Vedak, Gaoyi) — INFORMATIONAL. (4) Stanford HAI scaling-law newsletter — RESEARCH. (5) Doximity neuro news (dual decliners) — INFORMATIONAL. (6) JAMA weekly, Hiive digest ×2, Fierce Life Sciences fwd, M3 surveys, Montclair pool closure — all INFORMATIONAL.
+- Calendar: unchanged from runs 123–124. Family: Boston trip (5/27–5/29), Vishala sleepover (5/30 5PM–5/31 noon), Vasu dance performance ~6/2 TBD. All other calendars empty.
+- P0 carries: unchanged — 990-N 10 days overdue; Disney ADR Day 9; Berman $6K 7 days past promise; cat sitter T-2 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending 13 days; UPS claim monitor; Cadoo Medical $765.21 pay.
+- Pages updated: `daily/2026-05-25.md` (run 125 appended, run bumped to 125), `family/active-todos.md` (portrait sale todo added, run bumped to 125), `log.md` (this entry), `data/heartbeat-log.csv` (created/appended), `data/gather-alerts.md` (written)
+- KEY: New P1 item — ImageQuix portrait sale (Vayu + Vishala, free shipping, Memorial Day window, order soon). All P0 items carry unchanged. Cat sitter Boston T-2 remains the top priority.
+
+## [2026-05-25] ingest | personal-data-gather run 126: Dorotheas party live; 12 informational; P0 carry
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 25–Jun 1). No SSH (web runner). Fourth run of 2026-05-25.
+- New facts: (1) **Dorotheas party** added to Family calendar today at 2:44 PM ET — happening now, 3–6 PM at 244 Christopher St, Montclair (Aneeta as organizer). (2) Lyft 25% off through 2026-05-29 — useful for Boston trip. (3) Newegg Computex RTX 5080 combo deals — GPU market signal. (4) Leader Bank email to "Emmett" — CRM name error or wrong-address delivery to alto84@gmail.com. (5) LinkedIn job alerts: Novartis Data Science/AI Director, BeOne Medicines Exec Dir Global Clinical Pharmacology, Vertex Patient Safety AMD — INFORMATIONAL. (6) Hiive 3rd digest today, VA newsletter, Amazon/Newegg promos, Nightjar — INFORMATIONAL.
+- Calendar: Family calendar added 1 new event vs runs 123–125 — Dorotheas party today (live). Boston trip (5/27–5/29), Vishala sleepover (5/30–5/31), Vasu dance 6/2 unchanged.
+- P0 carries: unchanged from run 125 — 990-N 10 days overdue; Disney ADR Day 9; Berman $6K 7 days past promise; cat sitter T-2 CRITICAL; Berteau $2,400 ASAP; Gaby $9,972 pending 13 days; UPS claim monitor; Cadoo Medical pay; ImageQuix sale order.
+- Pages updated: `daily/2026-05-25.md` (run 126 appended, run bumped to 126), `log.md` (this entry, run bumped to 126), `data/heartbeat-log.csv` (created/run 126 entry), `data/gather-alerts.md` (refreshed)
+- KEY: Dorotheas party in Montclair today 3–6 PM — new calendar event, likely family logistics context. No new P0 escalations. Cat sitter Boston T-2 remains top unresolved item.
+
+## [2026-05-26] ingest | personal-data-gather run 128: Newegg PC build ($1,919); Google Pay new card; calendar stable; P0 carry
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 26–Jun 2). No SSH (web runner). Second run of 2026-05-26.
+- New facts: (1) **Newegg order #448349643 ($1,919.10)** — full PC build for Solar Inference LLC second GPU server: Ryzen 9 9950X, ASRock X870E TAICHI, ARCTIC 360mm AIO, WD_BLACK 4TB NVMe, HYTE Y70 case, CX750M 750W + Leadex III 1300W PSUs, 12VHPWR cable. Combined with RTX 5090 shipped 2026-05-21: second GPU server confirmed. Deliveries: May 28 / May 29–Jun 2 / Jun 3–5. (2) Google Pay new card added notification (security, no action unless unauthorized). (3) Amazon dog pee pads — routine household, skip.
+- Calendar: unchanged from run 127. Boston trip 5/27–5/29, Vishala sleepover 5/30–5/31, Vasu dance 6/2, May term evening 6/2 7–9 PM. All 5 calendars stable.
+- P0 carries: unchanged from run 127 — 990-N 11 days overdue; cat sitter T-0 (Boston departs today); vast.ai 97429 Jay's steps unresolved; Berman $6K 8+ days; Disney ADR Day 10; Berteau $2,400 pending.
+- Pages updated: `daily/2026-05-26.md` (run 128 appended, frontmatter bumped), `business/solar-inference.md` (run 128 Newegg build fact, frontmatter bumped), `MACHINES.md` (new GPU server build noted), `log.md` (this entry, run bumped to 128), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Newegg PC build ($1,919) + RTX 5090 = Solar Inference LLC second GPU server in progress. Log all components as LLC capital assets on delivery. Cat sitter Boston still unconfirmed — T-0 emergency.
+
+## [2026-05-26] ingest | personal-data-gather run 127: RTX 5090 shipped; CPA call confirmed; May term evening; vast.ai 97429 unresolved
+- Sources: Gmail (is:unread newer_than:2d, 30 threads + targeted searches), all 5 Google Calendars (May 26–Jun 2). No SSH (web runner). First run of 2026-05-26, Day after Memorial Day.
+- New facts: (1) GIGABYTE RTX 5090 ordered+shipped 2026-05-21 via Amazon (Solar Inference LLC fleet expansion). (2) Jonathan Francis §48 ITC structuring call CONFIRMED OCCURRED 2026-05-20 2:30 PM ET — was pending/blocker in prior runs. (3) vast.ai machine 97429 offline alert 2026-05-21 + Jay support response with 2 additional steps — unresolved/no visible follow-up from Alton. (4) Christina Stiles $5 recurring PayPal donation for Sante Total 2026-05-19 (next payment 2026-06-19). (5) May term evening 2026-06-02 7–9 PM on Family calendar (new, MKA event, potential overlap with Vasu dance performance same day). (6) P0 escalation: cat sitter for Boston DEPARTS TOMORROW (T-1 EMERGENCY).
+- Pages updated: `daily/2026-05-26.md` (created), `family/active-todos.md` (run 127 appended, frontmatter bumped to run 127), `business/sante-total.md` (run 127 section added, Christina Stiles payment), `business/solar-inference.md` (CPA call + RTX 5090 + vast.ai 97429 action items), `TAXES.md` (CPA call update + 990-N carry), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (refreshed)
+- KEY: Cat sitter for Boston TOMORROW — T-1 EMERGENCY. vast.ai 97429 marketplace visibility likely still blocked (Jay's 2 steps not executed). CPA call happened 2026-05-20; outcome unknown. §48 ITC deadline 39 days out (2026-07-04). 990-N 11 days overdue.
+
+## [2026-05-26] ingest | personal-data-gather run 130: Dr. Shah 6PM deadline; EPE makeup week; Earnest bill; HYTE shipped
+- Sources: Gmail (is:unread newer_than:2d, 30 threads + keyword search), all 5 Google Calendars (May 26–Jun 2). No SSH (web runner). Fourth run of 2026-05-26.
+- New facts: (1) **Dr. Shah baby shower — Venmo @katie-cocco deadline TODAY 6 PM ET** (katiecocco@gmail.com, 2026-05-26 13:23 ET — missed by runs 128/129). Time-critical; window expires in hours. (2) **MKA EPE Make-Up Week June 1–3** (agonzalez@mka.org) — last week of school, affects Vayu + Vishala EPE pickup. (3) **MKA 4th/5th grade band wrapped** — no after-school band obligations remaining (m@mail4.veracross.com). (4) **MKA Middle School PE clothes pre-order** for 2026-2027 (m@mail3.veracross.com) — no deadline, confirm applicability. (5) **Earnest loan billing: $943.33 due 2026-06-20** (25 days). (6) Guidepoint #1733233 follow-up contact (same consultation as run 110, status unclear). (7) HYTE Y70 case SHIPPED (Newegg order #448349663 via Adorama, est. delivery May 29–Jun 2) — updates run 128 fleet build. (8) M3 surveys, NEJM ToC, library newsletter — informational.
+- Calendar: all 5 calendars unchanged from runs 127–129. Boston trip TOMORROW (5/27). Vishala sleepover 5/30 5 PM. Vasu dance + May term evening 6/2.
+- P0 carries: cat sitter T-0 EMERGENCY (Boston departs tomorrow); 990-N 11 days overdue; vast.ai 97429 Jay's steps unresolved; Berman $6K 8+ days; Disney ADR Day 10. NEW escalation: Dr. Shah baby shower expires 6 PM TODAY.
+- Pages updated: `daily/2026-05-26.md` (run 130 appended, frontmatter bumped), `family/active-todos.md` (run 130 appended, frontmatter bumped), `log.md` (this entry), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created)
+- KEY: Dr. Shah baby shower Venmo deadline TODAY at 6 PM — most time-sensitive item this run. Cat sitter still unbooked with Boston trip TOMORROW. Earnest $943 new deadline 2026-06-20.
+
+## [2026-05-26] ingest | personal-data-gather run 129: Care.com sitter search observed; 6 informational; P0 carry
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (May 26–Jun 2). No SSH (web runner). Third run of 2026-05-26.
+- New facts: (1) Care.com promotional email suggests Alton browsed for pet/house sitters for Boston trip — still no booking confirmation. (2) LinkedIn message digest: "Michael just messaged you" — unknown contact, no context. (3) cardiosax@gmail.com family forward: "4,000 Rules: The Sanskrit Grammar Behind Every LLM" YouTube (family AI article). (4) Substack (Dwarkesh Patel + Zvi Mowshowitz), Cerebral Valley newsletter (OpenAI voice models SF, Paris hackathons July), Samsung ACR TV privacy notice, Amazon S&S upcoming Jun 7 — all INFORMATIONAL.
+- Calendar: all 5 stable. No new events. Boston trip departs 2026-05-27.
+- P0 carries: unchanged — cat sitter T-0 EMERGENCY (trip tomorrow, Care.com browsed but no confirm); 990-N 11 days overdue; vast.ai 97429 Jay's steps unresolved; Berman $6K 8+ days; Disney ADR Day 10; Berteau $2,400; Gaby $9,972; UPS claim monitor.
+- Pages updated: `daily/2026-05-26.md` (run 129 appended, frontmatter bumped), `log.md` (this entry, run bumped to 129), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Cat sitter P0 — trip TOMORROW. Care.com browsing observed but no booking confirmed in Gmail. All other P0s carry. No new escalations this run.
+
+## [2026-05-27] ingest | personal-data-gather run 132: Gaby $10K wire confirmed RESOLVED; Sante Total board items; Boston trip active; June 2 dance/MKA conflict
+- Sources: Gmail (newer_than:2d, 30 unread + 12 high-priority threads), all 5 Google Calendars (May 27 – Jun 3)
+- 2 key facts: (1) Gaby $10,000 wire CONFIRMED sent 2026-05-26 (Chase acct 8189 → Gabriel Thelus); closes May 12 item. (2) Barbara Weis replied 2026-05-26 9:55 PM with 5 open board items — Berteau grant approval, school lunch fund routing, computer lab disbursement process, 2026 budget offer, and meeting request.
+- Calendar summary: Boston trip active (5/27–5/29); Vishala sleepover Sat 5/30 5 PM – Sun 5/31 noon (confirmed corrected times); Vasu dance performance June 2 TBD; MKA May term evening June 2 7–9 PM ET; Aneeta Healing June 3.
+- New conflict flagged: Vasu dance June 2 TBD vs MKA May term evening June 2 7–9 PM — prior email (run 65) said 4:30 PM; needs confirmation.
+- Pages updated: `daily/2026-05-27.md` (created), `business/sante-total.md` (Gaby RESOLVED + Barbara's open items), `family/active-todos.md` (run 132 appended), `family/family-calendar.md` (June events added), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Sante Total board response needed — Berteau grant approval process and meeting. 990-N now 12 days overdue. Chase/Sante Total KYC deadline 2026-06-04 (8 days).
+
+## [2026-05-26] ingest | personal-data-gather run 131: Berman invoice update; GitHub Claude permissions; MKA carline closure; cat supplies delivered
+- Sources: Gmail (newer_than:1d, 30 threads), all 5 Google Calendars (May 26 – Jun 3)
+- 4 new actionable items since run 130 (~11:31 AM ET cutoff):
+  1. **Berman Home Systems #AAAO13216-04** — Alyssa sent a REVISED invoice at 1:31 PM ET (replaces #AAAO13216-03). Do not pay old amount; review scope change first.
+  2. **GitHub Claude App permissions update** — 3:56 PM ET. OAuth re-authorization request for GitHub MCP integration. Requires Alton to approve/deny at GitHub settings.
+  3. **MKA Valley Road carline closure** — 2:38 PM ET. Road closure may impact Middle School carline. Relevant for return from Boston trip (Fri 5/29 or Mon 6/1).
+  4. **Amazon IMMCUTE Dog Pee Pads DELIVERED** — 1:36 PM ET. Pet supplies in hand at 85 Stonebridge as of today.
+- Informational: Pool Guyz service complete (pool Safe), MKA STEMology final class, Vasu's Daily Sheet (normal), Substack auth, LinkedIn job alerts (3), Avis promo, Hiive digest, Google Fitbit Air, Jackrabbit parent/child class.
+- Calendar: all 5 unchanged — Boston trip 5/27–5/29, Vishala sleepover 5/30, Vasu dance 6/2, May term evening 6/2.
+- P0 carries: cat sitter T-0 EMERGENCY (no booking, trip TOMORROW); 990-N 11 days overdue; vast.ai 97429 Jay's 2 steps; Disney ADR Day 10; Sante Total Berteau + Gaby; UPS claim monitor.
+- Pages updated: `daily/2026-05-26.md` (run 131 appended), `family/active-todos.md` (run 131 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- KEY: Berman invoice scope change — verify before paying. Cat sitter P0 — Boston trip is TOMORROW morning.
+
+## [2026-05-27] ingest | personal-data-gather run 136: Leader Bank escrow; Meowtel July 4th; Jackrabbit Tech class
+- Sources: Gmail (newer_than:2d, 30 threads — scanned afternoon batch), all 5 Google Calendars (May 27 – Jun 3). No SSH (web runner).
+- New facts: (1) **Leader Bank Annual Escrow Analysis** for 185 Davis Ave Unit 8 Brookline MA — review required, monthly payment may change. (2) Meowtel July 4th cat sitter booking reminder — flag for family decision (~5 weeks). (3) Jackrabbit Tech parent/child class (Vasu, ages 1–4) at Wayne NJ — today missed (Boston trip), upcoming May 30 + June 3 at 4 PM. (4) Newegg #448349643 delivery update (2 items, follow-on). All others INFORMATIONAL.
+- Calendar: all 5 stable. Boston trip active. No new events since run 135.
+- P0 carries: MKA $5,340 past-due (PAY); 990-N 12 days overdue; KYC 8 days to 2026-06-04.
+- Pages updated: `daily/2026-05-27.md` (run 136 appended), `family/active-todos.md` (run 136 escrow + Meowtel), `log.md` (this entry), `data/heartbeat-log.csv` (created, data/ dir recreated), `data/gather-alerts.md` (written)
+- KEY: Leader Bank escrow for Brookline condo is a new item — may affect monthly payment. July 4th cat coverage decision needed within ~2 weeks. MKA tuition $5,340 past-due remains most urgent P0.
+
+## [2026-05-27] ingest | personal-data-gather run 133: Emmett/Alton accounts; 990-N 13 days overdue; P0 carry
+- Sources: Gmail (newer_than:2d, 30 threads re-scanned), all 5 Google Calendars (May 27 – Jun 3). No SSH (web runner).
+- New facts: (1) Marriott Bonvoy account created for "EMMETT SARTOR" (member 831843162) — Alton's legal name Emmett Alton Sartor; account unactivated. (2) Nintendo service request 61333620 received for "Emmett" — warranty device repair in progress; no charge until evaluation. (3) Newegg #448349663 delivery update (shipping). All 3 INFORMATIONAL.
+- Calendar: all 5 stable. Boston trip active (5/27–5/29). No new events since run 132.
+- P0 carries: 990-N 13 days overdue; Chase/Sante Total KYC 8 days; Berman invoice review; GitHub Claude permissions; June 2 Vasu dance/MKA conflict unconfirmed.
+- Pages updated: `daily/2026-05-27.md` (run 133 appended), `family/active-todos.md` (run 133 carry-forward), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (written)
+- KEY: Nothing new escalated. 990-N now 13 days overdue — file immediately at IRS.gov. Sante Total KYC window closing (June 4).
+
+## [2026-05-27] ingest | personal-data-gather run 135: MKA past-due $5,340; Sante Total $50 recurring donor
+- Sources: Gmail (newer_than:6h, 8 threads scanned), all 5 Google Calendars (May 27 – June 3). No SSH (web runner).
+- New facts: (1) **MKA Blackbaud billing — $5,340.00 past-due** (5/27 11:13 AM ET) — PAY IMMEDIATELY at parent.blackbaud.school; actionable deadline June 10 for scheduled installment but past-due is immediate. (2) **Sante Total PayPal $50.00 from Sergei Robinson** — recurring $50/month subscription, Profile I-18PAYJ3W7SS2, next due 2026-06-27. (3) MKA teacher summer resources email — INFORMATIONAL. (4) USPS 3 mailpieces today — INFORMATIONAL.
+- Calendar: all 5 stable. Boston trip active (5/27–5/29). Blue Sombrero updated today but no soccer events in window.
+- P0 carries: MKA past-due $5,340 NEW P0; 990-N 12 days overdue; KYC 8 days to 2026-06-04.
+- Pages updated: `daily/2026-05-27.md` (run 135 appended), `family/active-todos.md` (run 135 MKA alert), `business/sante-total.md` (Sergei Robinson recurring), `log.md` (this entry), `data/heartbeat-log.csv`, `data/gather-alerts.md`
+- KEY: MKA $5,340 past-due — pay at parent.blackbaud.school before this compounds.
+
+## [2026-05-27] ingest | personal-data-gather run 134: Toy Story 5; Library Summer Reading; Petco; AI ROI digest
+- Sources: Gmail (newer_than:1d, 50 threads scanned), all 5 Google Calendars (May 27 – Jun 3). No SSH (web runner). data/ dir recreated (was absent from cloned repo).
+- New facts: (1) Montclair Library Summer Reading 2026 — pre-registration opens June 1, logging June 29. Family action item added to active-todos. (2) Toy Story 5 opens June 19 — tickets on sale. Family note added. (3) Petco Vital Care membership changes — affects 3-cat household; informational. (4) The Information: Uber COO AI lacks ROI — research interest digest. (5) ASCO Connection newsletter — informational.
+- No new emails since run 133 (02:30 UTC 5/27) — all new items are from 5/26 emails not previously routed to 2026-05-27.md.
+- Calendar: all 5 stable. Boston trip ongoing. No new events.
+- P0 carries: 990-N 13 days overdue; KYC 8 days; Berman invoice review; GitHub permissions; Vasu dance June 2 time unconfirmed; vast.ai 97429 Jay's 2 steps.
+- Pages updated: `daily/2026-05-27.md` (run 134 appended), `family/active-todos.md` (run 134 appended), `log.md` (this entry), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created)
+- KEY: Library Summer Reading pre-registration June 1 — only 5 days away.
+
+## [2026-05-27] ingest | personal-data-gather run 137: Nintendo shipped; Livia birthday; 3rd grade graduation confirmed; Aneeta SMART call
+- Sources: Gmail (newer_than:2d, 30 threads — evening batch ~17:00–20:00 ET), all 5 Google Calendars (May 27 – June 10). No SSH (web runner). data/ dir recreated.
+- New facts: (1) **Nintendo service request 61333620 SHIPPED** — UPS tracking 1Z9437400395402529; expect delivery ~5/29–5/30. Prior status "In service" (run 133). (2) **Livia Birthday Party June 7, 7–10 PM ET** — NEW calendar event (Family, created by Aneeta 2026-04-15). (3) **Third grade graduation June 5, 12–6 PM ET** — calendar-confirmed times for Vishala's end-of-3rd-grade ceremony (previously captured as date-only from WeAreMKA). (4) **"In office" June 9–10** — Aneeta in-office all-day (likely Neurvati). (5) **Aneeta SMART Certified Providers Quarterly Call June 10 noon–1 PM** — Zoom, MGH/Benson-Henry Institute. (6) MKA take-home folders + Picnic (informational, date TBD). (7) MKA new math program for rising 5th grade (informational, full email in Veracross portal). (8) Goddard school picture proofs arriving Monday June 1. (9) LEGO Insiders 982 points expiring 2026-06-26. (10) Vasu at Goddard today (confirmed via Daily Sheet — Vasu not on Boston trip). (11) Substack "Inside the 800VDC Revolution" (AI infrastructure research digest).
+- Calendar: all 5 queried May 27–June 10. New events in June 5–10 window captured above. Boston trip active.
+- P0 carries: MKA $5,340 past-due; 990-N 12 days overdue; Sante Total KYC 8 days to 2026-06-04.
+- Pages updated: `daily/2026-05-27.md` (run 137 appended), `family/active-todos.md` (run 137 appended), `family/family-calendar.md` (June 5–10 events added), `log.md` (this entry), `data/heartbeat-log.csv` (written), `data/gather-alerts.md` (written)
+- KEY: Livia Birthday Party June 7 is NEW and requires planning. Third grade graduation June 5 now has confirmed times (12–6 PM). Nintendo device on its way back.
+
+## [2026-05-28] ingest | personal-data-gather run 138: Vishala Capstone tomorrow; Lutron tech visit; Leader Bank escrow details
+- Sources: Gmail (newer_than:2d, 50 threads scanned), all 5 Google Calendars (May 28 – June 4). No SSH (web runner, cloud env). data/ dir recreated.
+- New facts: (1) **Vishala Capstone Design Fair TOMORROW May 29 at 8:15 AM** — concert attire, 2-adult limit, ends 9:45 AM. Aneeta forwarded email with full details. URGENT. (2) **Vayu 4th grade picnic TODAY** + take-home folder due back **May 29** (sign orange sheet, return to Roshni Shah). (3) **Berman Lutron programming visit** — Alyssa Berman requesting technician June 4 at 8:30-9am — no reply yet. ACTION REQUIRED. (4) **Leader Bank escrow analysis full details**: shortage $5,366.83; pay by June 14 → monthly $4,101.99; auto-spread → $4,549.22/mo. (5) **Vasu dance performance time confirmed**: June 2, 4–6 PM ET (calendar definitive; was TBD). (6) MKA Amplify Desmos Math curriculum announced for 2026-2027 (informational). (7) Amazon children's clothing orders (informational). (8) Goddard June snack calendar + picture proofs arriving June 1.
+- Calendar: all 5 queried May 28–June 4. Boston trip ends Friday. Vishala sleepover Sat–Sun. Vasu dance June 2 4–6 PM confirmed. Berman Lutron tech June 4 pending confirmation.
+- P0 carries: MKA past-due $5,340 (UNRESOLVED); 990-N 13 days overdue; KYC 7 days to 2026-06-04.
+- Pages updated: `daily/2026-05-28.md` (created), `family/active-todos.md` (run 138 appended), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
+- KEY: Vishala Capstone Design Fair TOMORROW at 8:15 AM — plan attendance immediately. Vayu take-home folder due same day.
+
+## [2026-05-28] ingest | personal-data-gather run 139: MKA Summer Enrichment; Vanguard proxy; WD_BLACK SSD
+- Sources: Gmail (newer_than:2d, 50 threads scanned), all 5 Google Calendars (May 28 – June 4). No SSH (web runner, cloud env).
+- New facts: (1) **MKA Summer Enrichment registration now open** — Aug 3–14, Grades 4–8; applies to Vayu (rising 5th) and Vishala (rising 4th). (2) **Vanguard Funds proxy vote** — id@proxyvote.com IMPORTANT; third proxy notice in recent weeks. Review at proxyvote.com. (3) **WD_BLACK SN7100 4TB NVMe SSD purchased** via Newegg/PlatinumMicro — likely rtxpro6000server storage, Solar Inference LLC asset. (4) Aneeta shared Hudson Valley Shakespeare 98-acre theater campus (opening summer, 60mi from NYC). (5) Goddard daily sheets delivery issue (minor, Kaymbu support contacted). (6) LEGO Insiders 982 points expiring 2026-06-26 now routed to active-todos.
+- Calendar: all 5 stable, no new events. Event landscape unchanged from run 138.
+- P0 carries: MKA past-due $5,340 (UNRESOLVED); 990-N 13 days overdue; KYC 7 days to 2026-06-04. No new P0/P1 items.
+- Pages updated: `daily/2026-05-28.md` (run 139 appended), `family/active-todos.md` (run 139 appended), `family/vayu.md` (run 139 appended), `family/vishala.md` (run 139 appended), `log.md` (this entry), `data/heartbeat-log.csv` (written), `data/gather-alerts.md` (written)
+- KEY: MKA Summer Enrichment Aug 3–14 registration open; sign up before sessions fill. Vanguard proxy notice needs review.
+
+## [2026-05-28] ingest | personal-data-gather run 140
+
+- Facts gathered: 5 (3 ACTION_REQUIRED, 1 FINANCIAL, 1 INFORMATIONAL)
+- New items: Guidepoint consultation #1752401 (accept/decline needed); UCNS Autonomic Disorders cert deadline (review ucns.org); Chase statement 0982 available; MKA "First Year in Books" end-of-year note; Montclair United Summer Soccer registration open
+- Calendar: all 5 stable, no new events
+- P0 carries: MKA past-due $5,340 (UNRESOLVED); 990-N 13 days overdue; KYC 7 days to 2026-06-04
+- Pages updated: `daily/2026-05-28.md` (run 140 appended), `ALTON.md` (run 140 appended), `family/active-todos.md` (run 140 appended), `family/vayu.md` (run 140 appended), `log.md` (this entry), `data/heartbeat-log.csv` (created), `data/gather-alerts.md` (created)
+- KEY: Guidepoint consult request (#1752401) needs response; UCNS cert deadline needs review.
+
+## [2026-05-28] ingest | personal-data-gather run 141: Newegg late; CSA orientation; Vasu daily sheet; Goddard issue resolved
+- Sources: Gmail (newer_than:2d, 50 threads scanned), all 5 Google Calendars (May 28 – June 4). No SSH (web runner, cloud env).
+- New facts: (1) **Vasu daily sheet May 28 received** — Kaymbu delivery issue resolved. Check-in 7:26 AM, check-out 3:59 PM. (2) **Newegg orders #448349603 + #448349623 running late** — WD_BLACK SN7100 4TB and associated items; monitor delivery. (3) **CSA 2026 orientation** — Bloomfield Montclair CSA opening day June 9; new members need pre-opening orientation (from asamiraglia@gmail.com). (4) **Verizon Fios NJ12297784814** — Aneeta forwarded May 8 confirmation; check if follow-up needed. (5) Adult Aquasize registration opens June 2 at Mountainside Pool. (6) NEJM AI Vol 3 No 6 published. (7) FedEx Delivery Manager profile updated — verify household initiated. (8) Goddard daily sheets delivery issue resolved per Alissa DelConte 8:01 PM UTC.
+- Calendar: all 5 stable. Vasu dance event title stale ("time to be decided") but 4–6 PM confirmed in calendar data. Boston trip concluded (ended May 30 all-day).
+- P0 carries: Vishala Capstone TOMORROW 8:15 AM; Vayu folder due TOMORROW; MKA $5,340 overdue; 990-N 13+ days overdue; KYC 7 days.
+- Pages updated: `daily/2026-05-28.md` (run 141 appended), `data/gather-alerts.md` (created fresh, 25 P0-P2 items), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- KEY: Vishala Capstone Design Fair TOMORROW 8:15 AM MKA Brookside. Vayu folder sign + return TOMORROW. Newegg SSD orders late — monitor delivery vs rtxserver timeline.
+
+## [2026-05-29] ingest | personal-data-gather run 142: vast.ai machine 124192 offline; MKA 3rd Grade Graduation Party June 5; Boston trip ended
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 29 – Jun 5). No SSH (web runner, cloud env).
+- Facts gathered: 4 (1 CRITICAL/BUSINESS, 1 FAMILY/NEW-EVENT, 1 STATUS, 1 DEDUP-CLARIFICATION)
+- **CRITICAL:** vast.ai machine 124192 offline (email 2026-05-28 23:36 UTC). Machine ID 124192 not in memory system (known: gpuserver1=52271, rtxpro6000server=97429). Possible new machine from second GPU server build (RTX 5090 + Newegg #448349643). Investigate SSH + vast.ai dashboard.
+- **NEW EVENT:** MKA Third Grade Graduation Party — June 5, 6:00–7:30 PM ET, Sports Universe 355 Eisenhower Pkwy Livingston NJ 07039. Created by Aneeta 2026-05-28. First capture this run. Full June 5: Closing Exercises 12–6 PM → Party 6–7:30 PM.
+- **STATUS:** Boston trip (5/27–5/29) ended today. Vishala Capstone Design Fair and Vayu take-home folder both due TODAY (were "TOMORROW" in runs 138/141).
+- **CLARIFICATION:** June 2 Vasu dance (4-6 PM ET) + May term evening (7-9 PM ET) confirmed NOT overlapping — 1h gap; prior run 127 conflict flag was premature.
+- P0 carries: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 14 days overdue; KYC 6 days; Disney ADR unconfirmed.
+- Files touched: `daily/2026-05-29.md` (created), `business/solar-inference.md` (run 142 machine-offline warning appended, frontmatter bumped), `family/vishala.md` (graduation party appended, frontmatter bumped), `family/family-calendar.md` (June 5 party + week table appended, frontmatter bumped), `family/active-todos.md` (run 142 section appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- KEY: vast.ai machine 124192 offline — investigate; may be new build registered on vast.ai. June 5 Vishala graduation party is a new, fully-packed day requiring logistics.
+
+## [2026-05-29] ingest | personal-data-gather run 144: HYTE Y70 case delivered; GPU build status update; calendar stable
+
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 29–June 5). No SSH (web runner, cloud env).
+- Facts gathered: 1 new (BUILD-STATUS)
+- **BUILD:** HYTE Y70 Dual Chamber ATX Case delivered 2026-05-28 7:05 PM via Adorama/Newegg order #448349663 (tracking 1Z68R0R00385163546). Ship to Montclair NJ. Case component of second GPU server build confirmed received. Newegg tip email confirms motherboard/CPU components also likely in hand. Outstanding: Newegg #448349603 (1 of 4 late), #448349623 (1 item late), GIGABYTE RTX 5090 (status unknown).
+- Calendar: all 5 queried. Zero new events vs run 143. Vishala sleepover tonight (5 PM ET). Vasu dance June 2 4-6 PM. June 5 full day confirmed.
+- P0 carries unchanged: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 14 days overdue; KYC 6 days to 2026-06-04.
+- Pages updated: `daily/2026-05-29.md` (run 144 appended, frontmatter bumped), `MACHINES.md` (HYTE Y70 delivery note appended), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+- KEY: GPU build case confirmed in hand. Motherboard/CPU tips email implies those delivered too. 2 Newegg shipments still late; RTX 5090 status unknown.
+
+## [2026-05-29] ingest | personal-data-gather run 143: Fidelity $10K transfer; Ubiquiti UCG-Max ordered
+
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 29–Jun 5). No SSH (web runner, cloud env).
+- Facts gathered: 2 new (1 FINANCIAL, 1 INFRASTRUCTURE)
+- **FINANCIAL:** Fidelity transfer $10,000 from account ending 8998 → JPMorgan Chase Bank, initiated 2026-05-28 11:34 PM ET. In progress 1–2 business days. Verify intentional.
+- **INFRASTRUCTURE:** Amazon ordered Ubiquiti Cloud Gateway Max (2026-05-29 03:08 UTC). Likely for new GPU server network segment or UniFi expansion. Topology impact TBD.
+- P0 carries (from run 142): vast.ai 124192 offline; MKA $5,340 past-due; 990-N 14 days overdue; KYC 6 days to 2026-06-04.
+- Pages updated: `daily/2026-05-29.md` (run 143 appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created)
+- KEY: Fidelity transfer review recommended (large cash movement, verify intentional). Ubiquiti UCG-Max is new hardware requiring topology planning for new GPU server build.
+
+## [2026-05-29] ingest | personal-data-gather run 145: 4 INFORMATIONAL; calendar stable; P0s unchanged
+
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 29–June 5). No SSH (web runner, cloud env). `data/` gitignored — files recreated locally.
+- Facts gathered: 4 new (all INFORMATIONAL — no new P0/P1 items)
+- **SCHOOL:** WeAreMKA May 29 weekly newsletter arrived (Veracross). Content unknown from snippet; may contain end-of-year schedule items. Review for actionable items.
+- **SOCIAL:** Lora Solangi Paperless Post group invitation to large Montclair community list. Event details not visible. Low urgency.
+- **PROFESSIONAL:** PCSS-MOUD Clinical Roundtable June 4 on SBIRT for SUDs in Primary Care (AAAP). Register if interested.
+- **PRODUCT:** Glass.health now supports telehealth audio (Zoom/browser EHR) for ambient scribing. Relevant to Aneeta's telehealth practice.
+- Calendar: all 5 queried. Zero new events vs run 144. Event table stable.
+- P0 unchanged: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 15 days overdue; KYC 6 days to 2026-06-04; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-29.md` (run 145 appended, frontmatter bumped), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created locally — gitignored), `data/heartbeat-log.csv` (created locally — gitignored)
+- KEY: Light run — no new escalations. P0 watch: 990-N now 15d overdue, KYC deadline in 6 days.
+
+## [2026-05-29] ingest | personal-data-gather run 146: Fidelity EFT completed; Vasu June calendar
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 29–June 5). No SSH (web runner, cloud env). `data/` gitignored — files recreated locally.
+- Facts gathered: 2 new (1 FINANCIAL/STATUS-UPDATE, 1 FAMILY/VASU-SCHEDULE)
+- **FINANCIAL:** Fidelity EFT $10,000 → JPMorgan Chase confirmed COMPLETED (2026-05-29 12:08 UTC). Closes run 143's "in-progress" P1 item. Transfer from account 8998.
+- **FAMILY/VASU:** Goddard June 2026 calendar email from Samantha Ramsden (Kaymbu). Attachment not readable from snippet — retrieve PDF for June school dates and summer start.
+- Calendar: all 5 queried. Zero new events vs run 145. Event table stable.
+- P0 unchanged: vast.ai 124192 offline; MKA $5,340 past-due; 990-N 15 days overdue; KYC 6 days to 2026-06-04; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-29.md` (run 146 appended, frontmatter bumped), `family/vasu.md` (June calendar fact added), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created locally — gitignored), `data/heartbeat-log.csv` (created locally — gitignored)
+
+## [2026-05-30] ingest | personal-data-gather run 147
+- Sources: Gmail (newer_than:2d, 30 threads, live), all 5 Google Calendars (May 30–Jun 6, live). SSH unavailable (cloud runner).
+- Facts gathered: 7 new (2 SECURITY, 1 FINANCIAL/FAMILY-SYNDICATE, 2 FAMILY/SCHEDULE, 2 FAMILY/INFORMATIONAL)
+- **SECURITY:** Ubiquiti account — 3 overnight emails (SSO verify → MFA → new-country sign-in). Bitwarden: new Chrome device login from Comcast IPv6 (03:42 UTC). Likely Boston-trip residual but flagged for Alton to confirm.
+- **FINANCIAL:** Oliver Sartor forwarded Hiive fund update from Sean Jones re: Anthropic syndicate investment. Content not visible from snippet — read needed.
+- **FAMILY/TODAY:** Vishala sleepover with Amia — drop-off 5 PM today (Sat May 30), pickup Sun May 31 noon.
+- **FAMILY/SCHEDULE:** Vasu dance performance Tue Jun 2 4–6 PM (confirmed calendar); Goddard week Jun 1–5: Mon Soccer, Tue Dance Recital. Father's Day Celebration at Goddard (date TBD).
+- **FAMILY/SCREEN-TIME:** Vayu 12h57m May 22–28 (+49% WoW). Vishala no activity last 7 days (Boston trip).
+- Calendar: all 5 live. Events confirmed: Vishala sleepover today, Vasu dance Tue 6/2, May term evening Tue 6/2 7PM, Aneeta Healing Wed 6/3, Vishala Third Grade Closing + Graduation Party Fri 6/5.
+- P0 unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC 5 days to 2026-06-04; MKA $5,340 past-due; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-30.md` (created), `family/active-todos.md` (run 147 appended, frontmatter bumped), `family/family-calendar.md` (week May 30–Jun 5 appended, frontmatter bumped), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-30] ingest | personal-data-gather run 148: calendar correction Jun 5 + screen-time catch-up
+- Sources: Gmail (newer_than:4h incremental, 2 threads), all 5 Google Calendars (May 30–Jun 7). SSH unavailable (cloud runner). `data/` gitignored — files recreated each run.
+- Facts gathered: 2 new (1 CALENDAR-CORRECTION, 1 FAMILY/SCREEN-TIME catch-up from run 147)
+- **CALENDAR CORRECTION:** Live API confirms "Third grade graduation" (Vishala, Jun 5) is **8:00 AM–2:00 PM ET** — not 12:00–6:00 PM as logged in runs 142 and 147. Corrected in active-todos.md and daily log.
+- **FAMILY/SCREEN-TIME:** Vayu 12h57m May 22–28 (+49% WoW vs 8h41m prior week). Written to vayu.md — run 147 planned this write but did not persist to disk in cloud environment.
+- Gmail incremental: Amazon shipments (Spin Art Machine + Skillmatics Aqua Puffs) for May 29 order — informational only, no action.
+- Calendar: all 5 live. Zero new events vs run 147. Alton's Tasks empty. Blue Sombrero empty (confirmed spring season ended).
+- P0 unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC **5 days** to 2026-06-04; MKA $5,340 past-due; Disney ADR unconfirmed 13+ days.
+- Pages updated: `daily/2026-05-30.md` (run 148 appended, frontmatter bumped), `family/active-todos.md` (calendar correction + run 148 appended, frontmatter bumped), `family/vayu.md` (screen-time appended, frontmatter bumped to run 148), `log.md` (this entry, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-30] ingest | personal-data-gather run 150: Livia Birthday Party Jun 7 (new); CSA schedule first capture
+- Sources: Gmail (newer_than:4h, 7 threads, live), all 5 Google Calendars (May 30–Jun 7, live). SSH unavailable (cloud runner). `data/` gitignored — files recreated each run.
+- Facts gathered: 2 new (1 FAMILY/CALENDAR — Livia Birthday Party Jun 7; 1 FAMILY — CSA pickup schedule)
+- **NEW CALENDAR EVENT:** Livia Birthday Party — Sun Jun 7, 7:00–10:00 PM ET. First appearance in 7-day lookahead window. Family calendar, created 2026-04-15 by Aneeta. No location. Gift planning needed. Added `[!note]` to active-todos.md and family-calendar.md.
+- **NEW FAMILY CONTACT:** CSA pickup schedule shared by khushbu.b.patel@gmail.com (to Alton + Aneeta + IlanIG@gmail.com). First time CSA arrangement surfaces in inbox. No action unless travel-week conflict. Added `[!note]` to active-todos.md.
+- **INFORMATIONAL (skipped):** LinkedIn job alerts ×2, AAA membership marketing, Tubi FIFA World Cup, Costco receipt (already captured run 149), LinkedIn "Ashley" message (minor).
+- P0 unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC **5 days** to 2026-06-04; MKA $5,340 outstanding; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-30.md` (run 150 appended, frontmatter bumped), `family/active-todos.md` (Livia party + CSA note appended, frontmatter bumped), `family/family-calendar.md` (Jun 7 week added, frontmatter bumped), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-30] ingest | personal-data-gather run 149: Fidelity SOLD CALL (GOOGL); Cenlar mortgage autopay; Jun 5 calendar clarification
+- Sources: Gmail (newer_than:4h, 9 threads, live), all 5 Google Calendars (May 30–Jun 7, live). SSH unavailable (cloud runner). `data/` gitignored — files recreated each run.
+- Facts gathered: 3 new (1 FINANCIAL/TRADE, 1 FINANCIAL/routine, 1 FAMILY/INFORMATIONAL)
+- **FINANCIAL/TRADE:** Fidelity trade confirmation — SOLD CALL (GOOGL) ALPHABET INC CAP, account XXXXX8998. May represent roll of the active GOOGL May $285C short-call position. Full details require Fidelity login. Added `[!fact]` to active-todos.md.
+- **FINANCIAL/routine:** Cenlar mortgage autopay processing 06/01/2026. Account XXXXXX1510, 85 Stonebridge Rd. Routine — daily log only.
+- **FAMILY/INFORMATIONAL:** Costco order confirmed delivery today by 2:42 PM ET. Daily log only.
+- **CALENDAR NOTE:** Jun 5 "Third grade graduation" live API returns noon–6 PM ET — contradicts run 148's "correction" to 8 AM–2 PM. Event unchanged since creation 2026-04-18. Likely run 148 referenced a different event. Jun 5 sequence: graduation noon–6 PM, party 6–7:30 PM (back-to-back).
+- **INFORMATIONAL (skipped):** Newegg GPU marketing, LinkedIn job alert (Director AI Enablement), Handshake Project Hedgehog referral, Frontier credit card offer, NJ Pride FC launch, Rotten Tomatoes.
+- P0 carry-forwards unchanged: 990-N 15d overdue; vast.ai 124192 offline; KYC 5 days to 2026-06-04; MKA $5,340 past-due; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-30.md` (run 149 appended, frontmatter bumped), `family/active-todos.md` (GOOGL trade + Jun 5 fact appended, frontmatter bumped), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-05-30] ingest | personal-data-gather run 148 (second pass): vasu/vishala updates + alerts written
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 30–Jun 7). SSH unavailable (cloud runner).
+- Facts gathered: 5 (3 FAMILY/SCHEDULE — vasu.md Father's Day + Jun 1-5 schedule; 1 CALENDAR-CORRECTION — vishala.md Jun 5 8 AM; 1 INFORMATIONAL — Newegg partial delivery)
+- New Newegg item: order #448349603 motherboard+CPU (1 of 4 items delivered; 3 pending). Informational pending business/personal context.
+- Calendar: all 5 live. No events new vs run 148 first pass. P0 carry-forwards unchanged.
+- Pages updated: `family/vasu.md` (Father's Day + Jun 1-5 appended, frontmatter bumped to run 148), `family/vishala.md` (Jun 5 correction appended, frontmatter bumped to run 148), `daily/2026-05-30.md` (second-pass appended), `data/gather-alerts.md` (written — 2 P0, 3 P1, 4 INFO), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+
+## [2026-05-31] ingest | personal-data-gather run 154: no new facts; data/ dir recreated (cloud clone); P0s stable
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (May 31–Jun 7). SSH unavailable (cloud runner).
+- Facts gathered: 0. All queried threads already captured in runs 151–153. No new calendar events.
+- Note: `data/` directory was absent from cloud container (gitignored). Recreated; `data/gather-alerts.md` and `data/heartbeat-log.csv` written fresh from current P0 set.
+- P0 carry-forwards (6): 990-N overdue; KYC Jun 4 (4 days); vast.ai 124192 GPU complaint; MKA $5,340; Pool Guyz bill amount unknown; Disney ADR unconfirmed.
+- Pages updated: `daily/2026-05-31.md` (run 154 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-05-31] ingest | personal-data-gather run 153: Chase stmt 7691; calendars stable; P0s unchanged
+- Sources: Gmail (newer_than:1d, 50 threads), all 5 Google Calendars (May 31–Jun 7). SSH unavailable (cloud runner).
+- Facts gathered: 1 (FINANCIAL — Chase statement account 7691, 05:13 UTC, new since run 152 cutoff)
+- Calendar: all 5 live, no new events. Vishala Jun 5 UTC→EDT conversion confirmed: 8 AM–2 PM EDT (run 149 "noon" was UTC conversion error; run 151 correction stands).
+- P0 carry-forwards: 990-N overdue 16+ days; KYC Jun 4 (4 days); vast.ai 124192 GPU complaint; MKA balance.
+- Pages updated: `daily/2026-05-31.md` (run 153 appended), `ALTON.md` (Chase stmt 7691 appended, run 153), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+
+## [2026-05-31] ingest | personal-data-gather run 152 (second pass): Pool Guyz bill; vast.ai 124192 GPU complaint; Gaithersburg Marriott stay
+- Sources: Gmail (newer_than:2d post-midnight threads), all 5 Google Calendars (May 31–Jun 7). SSH unavailable (cloud runner).
+- Facts gathered: 4 (1 FINANCIAL/ACTION — Pool Guyz billing statement; 1 BUSINESS/ACTION — vast.ai Machine 124192 GPU complaint; 1 INFORMATIONAL — Gaithersburg Marriott stay May 26–28; 1 FINANCIAL — Chase statement account 8189)
+- New P0: vast.ai Machine 124192 customer complaint (GPUs 100% on login; customer rating risk). Separate from run 142 "offline" alert.
+- New P1: Pool Guyz billing statement received (amount in PDF attachment only).
+- Context: Gaithersburg stay May 26–28 establishes Alton was in the DC/FDA/AZ-Gaithersburg corridor during the Boston trip week (Boston trip started May 27 — sequential or overlapping AZ travel).
+- Calendar: all 5 live. No new events vs run 151.
+- Pages updated: `daily/2026-05-31.md` (run 152 appended), `family/active-todos.md` (run 152 appended — Pool Guyz bill + vast.ai complaint), `ALTON.md` (run 152 appended — Gaithersburg stay + Chase stmt 8189), `data/gather-alerts.md` (overwritten), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+
+## [2026-05-31] ingest | personal-data-gather run 151
+- Sources: Gmail (newer_than:2d, 50 threads), all 5 Google Calendars (May 31–June 7). SSH unavailable (cloud runner).
+- Facts gathered: 5 (1 FINANCIAL — Fidelity GOOGL SOLD CALL; 1 FINANCIAL — Cenlar autopay Jun 1; 1 BUSINESS — Guidepoint #1752401; 1 FAMILY — Amazon deliveries delivered; 1 FAMILY — Jackrabbit summer camp open)
+- New deadlines: Chase/Sante Total KYC 2026-06-04 (P0, 4 days — carry-forward escalated); Guidepoint #1752401 respond (P1)
+- Calendar: all 5 live. No new events vs run 147/148/150. Jun 5 graduation timing already corrected in run 148.
+- P0 carry-forwards: 990-N overdue; vast.ai 124192 offline; KYC Jun 4; MKA $5,340.
+- **INFORMATIONAL (skipped):** LinkedIn alerts, Costco receipts, AAA offer, Medscape CME, JAMA newsletter, Tipitinas, NJ Pride FC, Rotten Tomatoes, Star Citizen, Warframe, Code Ninjas, Andy Kim, M3 surveys, USPS digest, Hiive update.
+- Pages updated: `daily/2026-05-31.md` (created), `family/active-todos.md` (3 items appended, frontmatter bumped to run 151), `ALTON.md` (GOOGL sold + Guidepoint appended, frontmatter bumped to run 151), `data/gather-alerts.md` (created — 3 P0, 4 P1, 3 P2), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-05-31] ingest | personal-data-gather run 155
+- Sources: Gmail (newer_than:1d, 50 threads), all 5 Google Calendars (May 31–Jun 7). SSH unavailable (cloud runner).
+- Facts gathered: 4 (1 SECURITY — Schwab login confirmation; 1 FAMILY/LOGISTICS — CSA pickup schedule / Khushbu Patel contact; 1 CAREER — LinkedIn PV job alert pattern; 1 CALENDAR CORRECTION — Livia Birthday Party time corrected to 3:00–6:00 PM EDT)
+- New deadlines: none new (KYC Jun 4 still P0 carry-forward)
+- Calendar: all 5 live. No new events. **One correction:** Livia Birthday Party Jun 7 = 3:00–6:00 PM EDT (runs 151–154 had UTC→EDT error reporting 7:00–10:00 PM).
+- P0 carry-forwards: 990-N overdue; KYC Jun 4 (4 days); MKA $5,340; vast.ai 124192 GPU complaint; Disney ADR; Pool Guyz bill.
+- **INFORMATIONAL (skipped):** JAMA weekly highlights, Hiive pre-IPO digest, LinkedIn messaging digest.
+- Pages updated: `daily/2026-05-31.md` (run 155 appended), `ALTON.md` (run 155 appended — frontmatter bumped), `family/active-todos.md` (run 155 appended — frontmatter bumped), `data/gather-alerts.md` (recreated — cloud clone), `data/heartbeat-log.csv` (recreated — cloud clone), `log.md` (this entry)
+
+## [2026-05-31] ingest | personal-data-gather run 156: Chase stmts 7785 + QuickDeposit 8563; Oliver Sartor Hiive fund update (ACTION REQUIRED)
+- Sources: Gmail (newer_than:2d, 30 threads + important filter), all 5 Google Calendars (May 31–Jun 7). SSH unavailable (cloud runner).
+- Facts gathered: 3 (2 FINANCIAL — Chase stmt account 7785 at 18:11 UTC; Chase QuickDeposit account 8563 at 17:04 UTC; 1 FINANCIAL/ACTION — Oliver Sartor forwarded Hiive fund investment update — family-shared fund, not previously captured in runs 151–155)
+- New P1: Hiive family fund investment update — Oliver Sartor + Sissy Sartor co-invested. Open Gmail thread to review.
+- Calendar: all 5 live. No new events. All Jun 2–7 events stable.
+- P0 carry-forwards (unchanged): 990-N overdue; KYC Jun 4 (4 days); MKA $5,340; vast.ai 124192 GPU complaint; Disney ADR; Pool Guyz bill.
+- Note: `data/` dir absent from cloud clone; recreated this run.
+- Pages updated: `daily/2026-05-31.md` (run 156 appended), `ALTON.md` (run 156 appended — frontmatter bumped), `family/active-todos.md` (run 156 appended — frontmatter bumped), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 157
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 1–8). SSH unavailable (cloud runner).
+- Facts gathered: 2 new (1 ACTION_REQUIRED — LinkedIn 3 messages "Ashley"; 1 P0 escalation — KYC deadline now T-3 days).
+- Calendar: all 5 live. No new events vs runs 147–156. All Jun 2–7 events stable. Timing corrections (graduation 8 AM; Livia 3 PM) carry forward as correct.
+- P0 carry-forwards: 990-N overdue; KYC 2026-06-04 (T-3 CRITICAL); vast.ai 124192 GPU complaint; MKA $5,340; Pool Guyz bill; Disney ADR; Hiive fund unread.
+- **INFORMATIONAL (skipped):** Cenlar Jun 1 (already run 151), Chase stmts 8189/7691/7785 (already run 156), QuickDeposit 8563 (already run 156), Schwab login (already run 155), Marriott Gaithersburg (already run 152), LinkedIn PV job alerts (already run 155), BMS email, JAMA newsletter, Substack AI Dark Output, Doximity Alzheimer's urine test, Hiive pre-IPO digest, NJ Pride FC / FIFA World Cup, Newegg promo, Vishala Family Safety no-activity (already run 155), Amazon deliveries (already run 148), Jackrabbit camp (already run 151).
+- Pages updated: `daily/2026-06-01.md` (created), `family/active-todos.md` (run 157 appended), `family/family-calendar.md` (week-of-June-1 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 158
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 1–8). SSH unavailable (cloud runner).
+- Facts gathered: 2 new (1 FAMILY/LOGISTICS — MKA dress down day today from Daniella Kessler email; 1 LOGISTICS — Ubiquiti Cloud Gateway Max shipped via Amazon)
+- New deadlines: none new. KYC Jun 4 (T-3 days) P0 carry-forward confirmed.
+- Calendar: all 5 live. No new events vs run 157. All Jun 2–7 events stable.
+- P0 carry-forwards: 990-N overdue (17 days); KYC 2026-06-04 (T-3 CRITICAL); vast.ai 124192 GPU complaint; MKA $5,340; Pool Guyz bill; Disney ADR; Hiive fund unread.
+- Pages updated: `daily/2026-06-01.md` (run 158 appended), `data/gather-alerts.md` (created — cloud clone), `data/heartbeat-log.csv` (created — cloud clone), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 159
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 1–8). SSH unavailable (cloud runner).
+- Facts gathered: 1 new (Vishala graduation time definitively confirmed 8:00 AM–2:00 PM via live API — supersedes conflicting run 149 reading of noon–6 PM; run 148/157 correction now triple-confirmed)
+- New deadlines: none. KYC T-3 (2026-06-04) unchanged. 990-N overdue 17 days.
+- Calendar: all 5 live. Graduation 8 AM–2 PM confirmed. Livia party 3–6 PM confirmed. No new events.
+- P0 carry-forwards: 990-N overdue (17d); KYC 2026-06-04 (T-3); vast.ai 124192 GPU complaint; MKA $5,340; Pool Guyz bill; Disney ADR; Hiive fund unread.
+- Pages updated: `daily/2026-06-01.md` (run 159 prepended), `family/active-todos.md` (run 159 appended), `data/gather-alerts.md` (created — cloud clone), `data/heartbeat-log.csv` (created — cloud clone), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 160
+- Sources: Gmail (newer_than:2d, 40 threads), all 5 Google Calendars (Jun 1–8). SSH unavailable (cloud runner).
+- Facts gathered: 3 new (MKA Middle School Supplies deadline Jun 30 from Veracross Jun 1 8:00 AM ET; Amazon deliveries confirmed — Spin Art Machine + Skillmatics Aqua Puffs delivered May 30; USPS Informed Delivery 1 package arriving Jun 1)
+- New P2: MKA supplies order deadline Jun 30 (Vayu, rising 5th grade). Amazon gift items confirmed in hand for Livia party Jun 7.
+- Calendar: all 5 live. No new events vs run 159.
+- P0 carry-forwards (unchanged): KYC 2026-06-04 (T-3); 990-N overdue; vast.ai 124192; Pool Guyz bill; Disney ADR.
+- Pages updated: `daily/2026-06-01.md` (run 160 appended), `family/active-todos.md` (run 160 appended), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 161
+- Sources: Gmail (newer_than:2d, 50 threads), all 5 Google Calendars (Jun 1–8 + Jun 9 extended). SSH unavailable (cloud runner).
+- Facts gathered: 7 new (Chase wire $2,400 Berteau Zephir 8:37 AM ET; Guidepoint #1752401 ACP; HITLAB pharma roundtable Jun 12; MKA BBQ Jun 4; Aneeta "In office" Jun 9 all-day; SpotHero parking 35 W 33rd NYC Jun 1; Vasu dance teacher confirmation; Hiive Standard Fund II named)
+- New ACTION_REQUIRED: Guidepoint consultation respond/decline; HITLAB roundtable respond/decline.
+- New FINANCIAL: Chase wire $2,400 to Berteau Zephir — confirm Sante Total board authorization.
+- Calendar: +1 new event (Aneeta "In office" Jun 9–10 all-day, family calendar).
+- P0 carry-forwards (unchanged): KYC 2026-06-04 (T-3); 990-N overdue 17d; vast.ai 124192; Pool Guyz bill; Disney ADR.
+- Pages updated: `daily/2026-06-01.md` (run 161 appended), `family/active-todos.md` (run 161 appended), `family/vayu.md` (run 161 appended), `log.md` (this entry)
+
+## [2026-06-01] ingest | personal-data-gather run 162
+- Sources: Gmail (newer_than:2d, 50 threads), all 5 Google Calendars (Jun 1–8 + Jun 8–15 extended). SSH unavailable (cloud runner).
+- Facts gathered: 6 new (MKA Band instrument return Vayu; Goddard picture proofs Vasu; LinkedIn InMail CMO search; GitHub Claude app permissions request; Pool Guyz service completed Jun 1 safe-to-swim; Jackrabbit last week Jun 1–6)
+- New ACTION_REQUIRED: band instrument home before Jun 6; picture proofs pickup; LinkedIn CMO InMail; GitHub Claude app permissions.
+- Calendar: +1 new event in extended window (Aneeta SMART Quarterly Call Jun 10 12–1 PM ET, Zoom).
+- Graduation timing confirmed 5th consecutive run (8:00 AM–2:00 PM ET, raw UTC 12:00Z–18:00Z).
+- P0 carry-forwards (unchanged): KYC 2026-06-04 (T-3); 990-N overdue 17d; vast.ai 124192; Pool Guyz bill; Disney ADR.
+- Pages updated: `daily/2026-06-01.md` (run 162 appended), `family/active-todos.md` (run 162 appended), `family/vayu.md` (run 162 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-02] ingest | personal-data-gather run 163
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 2–9). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Guidepoint #1754453 Pharmacovigilance Space; Fidelity $10K transfer JPMorgan→acct 8998; UCG Max confirmed delivered; MKA Primary School library book returns; Lambda/Hiive secondary-market opportunity)
+- New ACTION_REQUIRED: Guidepoint #1754453 (respond 24–48h); MKA library books (Vayu + Vishala, before Jun 6).
+- New FINANCIAL: Fidelity $10,000 in-transit transfer (informational).
+- KYC carry-forward escalated: T-3 → T-2 (deadline Thursday 2026-06-04).
+- Calendar: all 5 live. No new events. TODAY: Vasu dance 4–6 PM + MKA May term evening 7–9 PM. Graduation Jun 5 confirmed 6th consecutive run (8 AM–2 PM ET).
+- P0 carry-forwards: KYC 2026-06-04 (T-2); 990-N overdue 18d.
+- Pages updated: `daily/2026-06-02.md` (created), `family/active-todos.md` (run 163 appended), `data/gather-alerts.md` (recreated), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+
+## [2026-06-02] ingest | personal-data-gather run 164: pool pump action; Amazon Jun 3; UPS claim resolved; Schwab eStatement
+- Gmail: 40 threads scanned (newer_than:2d). New vs run 163: pool pump technician leave-running action, Amazon 32-item summer prep order arriving Jun 3, UPS claim 1Z091C2R4220295437 RESOLVED, Schwab eStatement account 186, Jackrabbit last week Jun 1–6
+- Calendar: All 5 calendars live. No new events vs run 163.
+- New action items: pool pump leave running 24/7; Amazon delivery Jun 3 10 AM–3 PM (be home)
+- Resolved: UPS lost package claim 1Z091C2R4220295437 CLOSED (delivered 2026-05-22, confirmed 2026-06-01)
+- P0 carry-forwards: KYC T-2 days (Jun 4); 990-N overdue 18d; Guidepoint ×2 (~25h unanswered); Disney ADR unknown
+- Pages updated: `daily/2026-06-02.md` (run 164 addendum), `family/active-todos.md`, `data/gather-alerts.md`, `data/heartbeat-log.csv`, `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-02] ingest | personal-data-gather run 165: Fidelity May statement; calendar confirmed
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 2–9). SSH unavailable (cloud runner).
+- Facts gathered: 1 new (Fidelity May 31 account statement available, account *****8998)
+- All major items already captured: Guidepoint ×2, pool pump, MKA library/band, KYC T-2, 990-N overdue 18d, picture proofs, Amazon Jun 3 delivery, pool status
+- Calendar: all 5 live. No new events. Same table as runs 163–164.
+- P0 carry-forwards: KYC 2026-06-04 (T-2, tomorrow); 990-N overdue 18d; Guidepoint ×2 (~26h unanswered)
+- Pages updated: `daily/2026-06-02.md` (run 165 addendum), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-02] ingest | personal-data-gather run 166
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 2–9). SSH unavailable (cloud runner).
+- Facts gathered: 4 new (Sante Total PayPal donation from Cary Grayson; Newegg order #448349643 unread from May 27; Amazon order content clarified — Hunter x Hunter Manga Set + 31 items; NJ Election Day June 3)
+- New FINANCIAL: Sante Total PayPal donation from Cary Grayson, Jun 2 05:53 CDT, Transaction 04802572545152812. Amount in snippet only — check PayPal dashboard. Updated [[business/sante-total]].
+- P0 carry-forwards: KYC TOMORROW (2026-06-04); 990-N overdue 18d; Guidepoint ×2 (~27h unanswered, 24–48h window).
+- Calendar: all 5 live. No new events vs runs 163–165. Vasu dance recital TODAY 4:00–6:00 PM ET. Vishala graduation FRIDAY Jun 5.
+- Pages updated: `daily/2026-06-02.md` (run 166 addendum), `business/sante-total.md` (run 166 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-02] ingest | personal-data-gather run 167: Guidepoint #3; Fidelity EFT received; AZN trade; 5th grade music; Rainbow Day; Wohelo opens Jun 25
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 2–9). SSH unavailable (cloud runner).
+- Facts gathered: 9 new (Guidepoint #1754519 AI Clinical Search; Fidelity EFT $10K received/confirmed; Fidelity AZN call sold; MKA 5th grade music enrollment Vayu; Dress the Rainbow Day Jun 3; Wohelo opens Jun 25 Vishala; NJ Pride FC summer soccer Jul 11; Amazon shipments ×3; Livia party time correction 3–6 PM ET)
+- ACTION items surfaced: Guidepoint #1754519 new 24-48h window; MKA music enrollment (pre-fall); Dress the Rainbow Day TONIGHT; Wohelo uniforms/trunk check
+- P0 carry-forwards: KYC TOMORROW (2026-06-04); 990-N overdue 18d; Guidepoint ×3 active
+- Calendar: all 5 live, no new events. Correction: Livia Birthday Party Jun 7 is 3:00–6:00 PM ET (run 166 had UTC-to-ET error showing 7:00–10:00 PM)
+- Pages updated: `daily/2026-06-02.md` (run 167 addendum), `family/active-todos.md` (run 167), `family/vayu.md` (music enrollment, Rainbow Day, NJ Pride), `family/vishala.md` (Wohelo prep, Rainbow Day), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-02] ingest | personal-data-gather run 168: PayPal security advisory; Dress Down Thu Jun 4; Newegg delivered; Guidepoint x3 window closing
+- Sources: Gmail (newer_than:1d + newer_than:4h, 30 threads), all 5 Google Calendars (Jun 2–9). SSH unavailable (cloud runner).
+- Facts gathered: 6 new (PayPal new device login Dallas TX; MKA dress-down Thu Jun 4 also; Newegg #448349643 delivered; Amazon QURIPE Manicure Set delivered; Amazon New Balance shipped; ABPN CC Program quarterly reminder)
+- Security advisory: PayPal new device login from Dallas TX 18:29 ET — likely Verizon FiOS geoIP artifact (NJ→TX), legitimate. Passkey created via Google Password Manager.
+- Action items: Dress Down Thu Jun 4 (in addition to Rainbow Day Wed Jun 3); ABPN portal check for CC deadline
+- P0 carry-forwards: KYC T-2 days (2026-06-04); 990-N overdue 18d; Guidepoint ×3 (two 44h stale, one 5h)
+- Calendar: all 5 live, no new events vs run 167. Table stands.
+- Pages updated: `daily/2026-06-02.md` (run 168 addendum, frontmatter bumped to run 168), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 169: Cary Grayson $200/mo confirmed; Aneeta Jun 10 SMART Zoom; KYC T-1
+- Sources: Gmail (is:unread newer_than:2d + financial filter, 30+20 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Cary Grayson $200/month recurring confirmed; Cenlar autopay Jun 5; Vayu school account ~$100 auto-debit; gymnastics camp registration open; Aneeta SMART Certified Providers Zoom Jun 10 12-1 PM ET)
+- Nonprofit: Cary Grayson recurring subscription confirmed $200/month, Profile I-V0F2DBH0HGNJ, next Jul 2. Updated [[business/sante-total]].
+- Financial: Cenlar mortgage autopay processing Jun 5 (automatic). Vayu MyKidsSpending ~$100 auto-debit incoming.
+- P0 carry-forwards: KYC TOMORROW (2026-06-04); 990-N overdue 19d; Vishala Graduation FRIDAY; Guidepoint #1754519 ~36h window closing today.
+- Calendar: all 5 polled. NEW: Aneeta SMART Providers Zoom Jun 10 12–1 PM ET (recurring quarterly, MGH Benson-Henry). All other events unchanged. Updated [[family/family-calendar]].
+- Pages updated: `daily/2026-06-03.md` (created), `business/sante-total.md` (run 169), `family/family-calendar.md` (run 169), `family/active-todos.md` (run 169), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 170: Amazon delay + shipments, Montclair Library summer reading; KYC T-0
+- Sources: Gmail (is:unread newer_than:6h, 9 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 4 new (Amazon order delay #113-1985143-7267402; Amazon SPF 50 shipped; Amazon 20-color plastic shipped; Montclair Library Summer Reading preregistration open June 29–Sep 4)
+- Calendar: no changes vs run 169. All 5 calendars polled.
+- P0 carry-forwards: KYC DUE TOMORROW (2026-06-04); 990-N overdue 20d; Vishala Graduation FRIDAY; MKA library/instrument Sat Jun 6.
+- Pages updated: `daily/2026-06-03.md` (run 170 appended), `family/active-todos.md` (Montclair Library note + Amazon delay), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 171: Guidepoint #1755573 (GLP-1); ABPN CC reminder; Wohelo camp shipments
+- Sources: Gmail (newer_than:2d, 30 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Guidepoint #1755573 consultation; ABPN CC article exams reminder; Amazon Wohelo camp shipments x2; DEA Fentanyl training Jun 11; Guidepoint NfL survey $50)
+- ACTION_REQUIRED: Guidepoint #1755573 respond 24–48h; ABPN CC log in to portal
+- Calendar: no changes vs run 170. All 5 calendars polled.
+- P0 carry-forwards: KYC DUE TODAY (2026-06-04); 990-N overdue 20d; Vishala Graduation FRIDAY; library/instrument Sat Jun 6.
+- Pages updated: `daily/2026-06-03.md` (run 171 appended), `family/active-todos.md` (run 171), `family/vishala.md` (run 171), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 172: Fidelity MU trade; Chase CC …1276 statement; KYC deadline correction
+- Sources: Gmail (newer_than:6h, 4 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 3 new (Fidelity BOUGHT Micron Technology MU account XXXXX8998; Chase CC …1276 $73.76 due 6/27 auto-pay; USPS 1 mailpiece + 2 packages arriving Jun 3)
+- Calendar: no changes vs run 171. All 5 calendars polled.
+- Correction: run 171 labeled KYC "DUE TODAY" — actual deadline 2026-06-04 (tomorrow as of Jun 3). Corrected in run 172.
+- P0 carry-forwards: KYC DUE TOMORROW (2026-06-04); 990-N overdue 20d; Guidepoint #1755573 respond by Jun 4–5; Vishala Graduation FRIDAY noon.
+- Pages updated: `daily/2026-06-03.md` (run 172 appended), `ALTON.md` (run 172: Fidelity MU + Chase CC …1276), `family/active-todos.md` (run 172: P0 table), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 173: Anthropic receipt $200 + SpotHero + McKeown retiring + Guidepoint #1754519 expired
+- Sources: Gmail (is:unread newer_than:6h, 17 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 6 new (Anthropic API receipt $200; SpotHero parking NYC commute confirmed; Ms. McKeown MKA retiring; Amazon Hunter x Hunter manga out for delivery; Guidepoint Sample Tracking Survey $80; Guidepoint #1754519 expired ~3 PM)
+- Calendar: no changes vs run 172. All 5 calendars polled.
+- P0 carry-forwards: KYC DUE TOMORROW (2026-06-04); 990-N overdue 20d; Guidepoint #1755573 respond by Jun 4–5; Vishala Graduation FRIDAY noon.
+- Pages updated: `daily/2026-06-03.md` (run 173 appended), `business/solar-inference.md` (run 173: Anthropic receipt), `family/active-todos.md` (run 173: P0 table + McKeown note), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-03] ingest | personal-data-gather run 174: Fidelity Rule 4210 (effective Jun 4); NJYS ODP tryouts; UTC→EDT calendar corrections
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 3–10). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Fidelity Rule 4210 effective Jun 4; PCSS-MOUD office hours Fri Jun 5 3 PM; Vasu normal day; Jackrabbit lobby renovation rules; NJYS ODP tryouts Jul 18-19 & Aug 1-2)
+- Calendar corrections: Vishala graduation 8:00 AM–2:00 PM EDT (not noon — 12:00Z–18:00Z; runs 172-173 had UTC error); Livia party 3:00–6:00 PM EDT (not 7 PM — 19:00Z–22:00Z; run 155 had corrected, 172-173 reintroduced)
+- P0 carry-forwards: KYC TOMORROW (2026-06-04); 990-N overdue 20d; Guidepoint #1755573 respond by Jun 4-5; Vishala Graduation FRIDAY 8 AM; Livia party Sun 3 PM gift needed.
+- Pages updated: `daily/2026-06-03.md` (run 174), `ALTON.md` (run 174: Fidelity Rule 4210), `family/active-todos.md` (run 174: Jackrabbit + NJYS ODP + P0 + calendar corrections), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-04] ingest | personal-data-gather run 176: Solar Roof CO-01 received (ACTION_REQUIRED); Guidepoint x2 new
+- Sources: Gmail (is:unread newer_than:2d, 30 threads + 1 full-body read on Solar CO-01 thread), all 5 Google Calendars (Jun 4–11). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Solar CO-01 Change Order from Lucent Energy CEO; Guidepoint AI Clinical #1754519; Guidepoint Pharmacovigilance #1754453; Anthropic receipt #2088-3209-1415; Chase CC statement due Jun 27)
+- Calendar: no new events vs run 175. All 5 calendars clean.
+- P1 alerts: Solar Roof CO-01 (review PDF + call Steven Schwartz); Guidepoint x2 windows expiring ~Jun 5
+- P2 carry-forwards: KYC due today; 990-N overdue 21d; Vishala graduation tomorrow 8 AM; Livia party Sun gift needed; Leader Bank escrow Jun 14
+- Pages updated: `daily/2026-06-04.md` (run 176 appended), `family/active-todos.md` (run 176: CO-01 + Guidepoint), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-04] ingest | personal-data-gather run 175: Fidelity $5K transfer; Zelle Kleen Power Wash; Vayu school funded; Dinner Princeton Jun 11
+- Sources: Gmail (is:unread newer_than:2d, 30 threads + 3 full-body reads), all 5 Google Calendars (Jun 4–11). SSH unavailable (cloud runner).
+- Facts gathered: 4 new (Fidelity $5,000 transfer account 8998→Chase in progress; Chase Zelle new vendor Rince Prince/kleenpowerwash.com; MyKidsSpending Vayu $101.75 executed; Dinner Princeton Thu Jun 11 7 PM new calendar event)
+- Calendar: 1 new event — Dinner Princeton Jun 11 7:00–8:00 PM ET on Alton primary. All prior events confirmed. No Blue Sombrero events Jun 4–11. Alton's Tasks calendar empty this week.
+- P0 carry-forwards: KYC DUE TODAY (2026-06-04); 990-N overdue 21d; Guidepoint GLP-1 respond by Jun 5; Vishala graduation TOMORROW 8 AM EDT; Livia party Sun gift needed.
+- Pages updated: `daily/2026-06-04.md` (created), `ALTON.md` (run 175: $5K transfer + Zelle + Princeton dinner), `family/family-calendar.md` (run 175: Dinner Princeton Jun 11), `family/active-todos.md` (run 175: P0 table + financial notes), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-04] ingest | personal-data-gather run 177: NW Mutual security alert; GQG proxy vote; Amazon mass delivery
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 4–11). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (Northwestern Mutual account access change — verify authorized; GQG Fund proxy vote notification; Amazon 5-package mass delivery confirmed; Amazon HAPPY LOLLI shipped in transit; Selective Insurance free Ting device offer)
+- Calendar: no changes vs run 176. All 5 calendars unchanged. Jun 4–11 window confirmed clean.
+- P0 alerts: NW Mutual security change; KYC due today; 990-N overdue 22d; Guidepoint x3 windows expiring Jun 5; Solar CO-01 needs action
+- Pages updated: `daily/2026-06-04.md` (run 177 appended), `family/active-todos.md` (run 177: NW Mutual + GQG proxy), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-05] ingest | personal-data-gather run 183: PCSS-MAUD June 10; BioMarin market intel; Claude Opus 4.8; calendar unchanged
+- Sources: Gmail (is:unread newer_than:2d, 40 threads scanned); all 5 Google Calendars (Jun 5–12). SSH unavailable (cloud runner).
+- Facts gathered: 5 new (PCSS-MAUD Webinar Jun 10 12–1 PM ET; Substack Claude Opus 4.8 digest; BioMarin SMD Safety Science $383K alert; The Information Snowflake AI ROI; Goddard Show and Tell Letter F)
+- Calendar: no changes vs run 182 across all 5 calendars. Same 5-event table confirmed.
+- ACTION_REQUIRED: PCSS-MAUD Webinar June 10, 12–1 PM ET — register if interested (5 days). David Marcovitz MD; Managing AUD in OUD Treatment Settings. Via AAAP/PCSS.
+- P0 carries: 990-N OVERDUE 22d; Chase/Sante Total KYC OVERDUE; MKA library/instrument TOMORROW Sat Jun 6; Livia party Sun Jun 7; Guidepoint #1754519 still open.
+- Guidepoint updates: #1755573 (GLP-1) EXPIRED; #1754453 (PV Space) window closed today.
+- Pages updated: `daily/2026-06-05.md` (run 183 appended, frontmatter bumped), `ALTON.md` (run 183 appended), `family/active-todos.md` (run 183 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-05] ingest | personal-data-gather run 185: Venmo $360 Rachelle Trammel; Guidepoint #1755072 Biosimulation; Neumora MD PV; Vayu screen time 20h53min
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 5–12). SSH unavailable (cloud runner).
+- Facts gathered: 7 new (Venmo $360 Rachelle Trammel 4 sessions; Guidepoint #1755072 Biosimulation Software; Neumora Medical Director Drug Safety + PV alert; Vayu screen time 20h53min May 29–Jun 4; Goddard week Jun 8–12 sneak peek confirmed; Selective Insurance maintenance Sun Jun 7; JAMA ERA Congress 2026 Finerenone CKD)
+- Calendar: no changes vs run 184; all 5 calendars polled; same 5 events Jun 5–12 confirmed
+- New ACTION_REQUIRED: Venmo $360 Rachelle Trammel (verify + pay); Guidepoint #1755072 (accept or decline ASAP)
+- P0 updates: NJ-1065 Q2 Jun 15 carries forward; Goddard Conference sign-up still tonight; Band/Library instrument return TOMORROW; all other P0 items carry forward
+- Pages updated: `daily/2026-06-05.md` (run 185 appended), `family/active-todos.md` (Venmo + Guidepoint #1755072 + P0 table), `ALTON.md` (run 185 appended), `family/vayu.md` (screen time), `family/vasu.md` (Goddard sneak peek + Vasu daily sheet), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-06] ingest | personal-data-gather run 186: Doximity survey deadline Jun 8; vast.ai late-night access; Guidepoint blood survey; MKA instruments TODAY
+- Sources: Gmail (is:unread newer_than:2d, 40 threads); all 5 Google Calendars (Jun 6–13). SSH unavailable (cloud runner).
+- Facts gathered: 9 new (Doximity residency survey deadline Mon Jun 8 — FINAL CHANCE; Alton accessed vast.ai 11:36 PM ET Jun 5; Alton accessed SemiAnalysis Substack; Guidepoint Blood Collection Survey $50; LinkedIn messages Jerry + 1 waiting; Amazon Morse Code book delivered; Vasu pet unit starting; Vasu dramatic play; Vasu Show and Tell recap)
+- Calendar: no changes vs run 185; all 5 calendars polled; same 5 events Jun 6–13 confirmed (no Blue Sombrero events, Alton Tasks empty)
+- New ACTION_REQUIRED: Doximity survey closes Jun 8 (Mon); Guidepoint Blood Collection Survey $50
+- P0 updates: MKA Library + Band instrument return is TODAY (was "tomorrow" in run 185); Livia Birthday Party tomorrow Sun Jun 7; all other P0 items carry forward
+- Pages updated: `daily/2026-06-06.md` (created), `family/active-todos.md` (run 186 appended, frontmatter bumped), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-06] ingest | personal-data-gather run 187: confirmatory midday scan — 0 new facts
+- Sources: Gmail (is:unread newer_than:6h, 2 threads scanned); all 5 Google Calendars (Jun 6–13). SSH unavailable (cloud runner).
+- Facts gathered: 0 new (vast.ai Google sign-in notification [dup of run 186]; Amazon book recommendations [marketing/promo only])
+- Calendar: no changes vs run 186; all 5 calendars polled; same 5-event table confirmed; Blue Sombrero no events; Alton Tasks empty
+- ACTION_REQUIRED: none new; P0 carry-forward table unchanged from run 186
+- Pages updated: `daily/2026-06-06.md` (run 187 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-06] ingest | personal-data-gather run 188: Cenlar $2,829.92; USPS packages; Code Ninjas camp
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 6–13). SSH unavailable (cloud runner).
+- Facts gathered: 3 new (Cenlar mortgage payment $2,829.92 applied Jun 5; USPS 2 mailpieces + 2 packages arriving Sat Jun 6; Code Ninjas Livingston summer camp inquiry)
+- Calendar: no changes vs run 187; all 5 calendars polled; same 5-event table confirmed (Livia party Jun 7, Aneeta office Jun 9-10, Aneeta SMART call Jun 10 noon, Dinner Princeton Jun 11 7pm)
+- New ACTION_REQUIRED: none (Cenlar payment is informational; no new P0 items)
+- P0 carry-forward: unchanged from run 186 (990-N overdue, KYC overdue, MKA instrument TODAY, Doximity Mon Jun 8, Vasu PT conf Mon Jun 8, Leader Bank escrow Jun 14, NJ-1065 Q2 Jun 15)
+- Pages updated: `daily/2026-06-06.md` (run 188 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-06] ingest | personal-data-gather run 190: Chase credit report alert; Telix + Pfizer job alerts; Nori Sushi $207; Herbert Benson course Oct 22-24
+- Sources: Gmail (is:unread newer_than:2d, 40 threads); all 5 Google Calendars (Jun 6–13). SSH unavailable (cloud runner).
+- Facts gathered: 9 new (Chase credit balance change alert — ACTION_REQUIRED; Uber Eats Nori Sushi $207.54 Sat family lunch; Costco Same-Day delivery confirmed; LegalZoom 9-month business check-in; LinkedIn Telix Sr Dir AI + Pfizer Director Medical Insights; M3 Global Research neurology studies; Handshake Project Touchstone re-solicitation; Amazon IMMCUTE Dog Pee Pads shipped; Aneeta SMART call detail — Herbert Benson MD Course Oct 22-24 2026 Harvard)
+- Calendar: no new events; 1 new detail: Herbert Benson MD Course Oct 22-24, 2026 at Harvard Medical School captured from Aneeta's SMART Providers Quarterly Call description
+- New ACTION_REQUIRED: Chase credit report activity — "Review your credit balance change" (IMPORTANT/INBOX, not routine)
+- P0 carry-forward: 1 new item (Chase credit alert); MKA instrument return was TODAY (outcome unconfirmed); all other items carry forward from run 189
+- Pages updated: `daily/2026-06-06.md` (run 190 appended, frontmatter bumped), `data/gather-alerts.md` (created/written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-06] ingest | personal-data-gather run 189: Fidelity BOUGHT MICRON; Venmo $360 4th reminder
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 6–13). SSH unavailable (cloud runner).
+- Facts gathered: 3 new (Fidelity BOUGHT MICRON TECHNOLOGY INC account XXXXX8998; Venmo $360 Rachelle trammel 4th reminder — reinforces P0; Amazon cat litter shipped; Amazon bath sheets ordered)
+- Calendar: no changes vs run 188; all 5 calendars polled; same 5-event table confirmed
+- New ACTION_REQUIRED: none (Micron buy is informational; Venmo already in P0; Goddard PT conf already in P0 — status: confirmed happening Mon June 8, sign-up deadline passed)
+- P0 carry-forward: unchanged from run 186 (990-N overdue, KYC overdue, Venmo $360, Doximity Mon Jun 8, Goddard PT conf Mon Jun 8, Leader Bank escrow Jun 14, NJ-1065 Q2 Jun 15)
+- Pages updated: `daily/2026-06-06.md` (run 189 appended, frontmatter bumped), `family/active-todos.md` (run 189 appended), `ALTON.md` (Micron buy fact appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not updated this run
+
+## [2026-06-08] ingest | personal-data-gather run 199: Vishala Orange Ball Summer Camp starts today; Guidepoint #1754519 AI Clinical Search; PayPal Emmett 4th data point
+- Sources: Gmail (is:unread newer_than:1d, 50 threads); all 5 Google Calendars (Jun 8–15); SSH unavailable (cloud runner)
+- Facts gathered: 11 new (Vishala Orange Ball Summer Camp Full Day Jun 8–19 registration confirmed; West Orange Tennis Club membership receipt #MNAHB7344; Guidepoint #1754519 AI-powered Clinical Search Space; GIGA-MEGA PCIe delivery update in transit; PayPal Business Loan to "Emmett Sartor" — 4th data point; Goddard Preschool Conference today confirmed via kaymbu; LinkedIn Pfizer Oncology AI Director; Kids Flossers + 5 items ordered Jun 8; FEOEOR girls bike gear shipped; USPS Mon Jun 8 EMMETT 2 mailpieces + 1 package; Mass.gov heat wave + World Cup crowds alert)
+- Calendar: no new events; 4 events confirmed stable. KEY GAP: Vishala's Orange Ball Summer Camp (Jun 8–19) is NOT on any monitored calendar.
+- KEY FINDING: Vishala enrolled in full-day tennis camp at West Orange Tennis Club starting TODAY. Daily transportation logistics required Jun 9 onwards.
+- New ACTION_REQUIRED: 2 (Orange Ball Summer Camp daily logistics; Guidepoint #1754519 AI Clinical Search Space)
+- Pages updated: `daily/2026-06-08.md` (run 199 appended, frontmatter bumped), `family/vishala.md` (camp enrollment + receipt + bike gear), `family/active-todos.md` (camp TODO + Goddard confirmed + Emmett 4th data point), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-08] ingest | personal-data-gather run 198: rtxserver UPS ordered; PCIe/GPU mount shipped; girls soccer gear shipped; USPS EMMETT reinforced
+- Sources: Gmail (is:unread newer_than:1d, 27 threads); all 5 Google Calendars (Jun 8–15); SSH unavailable (cloud runner)
+- Facts gathered: 8 new (CyberPower CP1500PFCLCD UPS ordered for rtxserver; GIGA-MEGA PCIe 5.0 X16 + Vertical GPU Mount Bracket shipped Jun 8; JMT 180 PCIE ordered; Aikuco 5 Packs Girls Soccer gear shipped; USPS EMMETT 2nd data point; Stanford HAI newsletter; LinkedIn pharma/AI job alerts x3; Handshake Project Touchstone 2nd follow-up)
+- Calendar: no new events; 4 events confirmed stable (Aneeta in office Jun 9–10, SMART call Tue noon, Dinner Princeton Thu 7 PM)
+- KEY FINDING: CyberPower UPS purchase directly addresses documented rtxserver "no UPS" vulnerability (2026-05-03 AC failure / 14h outage). Expected arrival Jun 8–9.
+- New ACTION_REQUIRED: 0 net-new; P0 carry-forward (vast.ai offline 8th run, Doximity TODAY expired, Goddard conf TODAY, Dinner Princeton 3 days, HITLAB 4 days, Leader Bank 6 days, NJ-1065 7 days, 990-N overdue, KYC overdue)
+- Pages updated: `daily/2026-06-08.md` (run 198 appended, frontmatter bumped), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-08] ingest | personal-data-gather run 197: Chase Freedom autopay; Nishuane pool closed; JAMA GLP-1 Orforglipron; Glass Health update
+- Sources: Gmail (is:unread newer_than:2d, 50 threads); all 5 Google Calendars (Jun 8–15). SSH unavailable (cloud runner).
+- Facts gathered: 7 new (Chase Freedom Unlimited autopay scheduled; Nishuane community pool closed water incident; Target West Orange purchase Jun 7; JAMA ADA 2026 oral GLP-1 Orforglipron ACHIEVE-5 + Mazdutide weight reduction; JAMA Network Weekly Highlights Jun 7; Glass Health platform update; Amazon deliveries confirmed JML bath sheet + cat litter)
+- Calendar: no new events Jun 8–15; 4 confirmed events (Aneeta in office Mon–Tue, Aneeta SMART call Tue noon, Dinner Princeton? Thu 7 PM)
+- New ACTION_REQUIRED: 0 new; P0 carry-forward from run 196 (vast.ai offline 7th run, Doximity TODAY, Goddard conf TODAY, Dinner Princeton 3 days, HITLAB 4 days, Leader Bank 6 days, NJ-1065 7 days)
+- Pages updated: `daily/2026-06-08.md` (created), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-09] ingest | personal-data-gather run 201: Goddard closure Jun 11; Hiive Fund II closing Jun 10; GIGA-MEGA delivered
+- Sources: Gmail (is:unread newer_than:2d, 28 threads); all 5 Google Calendars (Jun 9–16). SSH unavailable (cloud runner).
+- Facts gathered: 10 new (Goddard School closure Jun 11 water shutoff; Hiive Standard Fund II closing Jun 10 95% subscribed; GIGA-MEGA PCIe 5.0 X16 delivered Jun 8; Aneeta in office Jun 9–10 confirmed; Aneeta SMART call Jun 10 noon confirmed; cat litter subscription cancelled; Guidepoint biosimulation #1755072 resurfaced; Vasu Goddard routine soccer + library Jun 8; ABPN CC quarterly reminder Jun 2026; Hiive Polymarket opportunity)
+- Calendar: Aneeta in office Jun 9–10; Aneeta SMART call Jun 10 noon–1 PM; Dinner Princeton? Jun 11 7 PM. **KEY CONFLICT: Goddard closed Jun 11 + Dinner Princeton Jun 11 = Vasu needs childcare all day including evening.**
+- New ACTION_REQUIRED: 2 (Goddard Jun 11 childcare emergency; Hiive Standard Fund II invest/pass decision TODAY)
+- Pages updated: `daily/2026-06-09.md` (created), `family/active-todos.md` (run 201 appended, frontmatter bumped), `FAMILY.md` (run 201 appended, frontmatter bumped), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created run 201), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-09] ingest | personal-data-gather run 203: Fidelity SOLD CoreWeave; Tribeca Pediatrics x2 portal
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 9–16). SSH unavailable (cloud runner).
+- New facts: 2 (Fidelity SOLD CoreWeave INC COM CL A Jun 9 6:47 AM ET account XXXXX8998; Tribeca Pediatrics 2 new portal messages — total 7+ unread)
+- Calendar: no changes vs run 202; all 5 calendars polled; same event set confirmed (Aneeta in office Jun 9–10, SMART call Jun 10, Dinner Princeton? Jun 11 7 PM)
+- New ACTION_REQUIRED: 1 (Tribeca Pediatrics portal — 7+ unread, check today)
+- KEY FINDING: CoreWeave (CRWV) position sold in Fidelity account XXXXX8998 — confirms active trading in the AI infrastructure space. Details require NetBenefits login.
+- P0 status: vast.ai offline 13th+ run; Goddard Jun 11 childcare 2 days out; Sante Total 990-N still overdue; Leader Bank escrow Jun 14
+- Pages updated: `daily/2026-06-09.md` (run 203 appended, frontmatter bumped), `ALTON.md` (CRWV trade fact), `family/active-todos.md` (run 203 appended), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 203, this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-09] ingest | personal-data-gather run 202: GIGABYTE RTX 5090 ordered; NJ MVC renewed; FIS payment
+- Sources: Gmail (is:unread newer_than:1d, 50 threads); all 5 Google Calendars (Jun 9–16). SSH unavailable (cloud runner).
+- Facts gathered: 4 new (GIGABYTE GeForce RTX 5090 ordered Amazon Jun 9 — second card, fleet expansion; NJ MVC vehicle registration renewed $381.50 + $9.27 fee COMPLETE; FIS government payment confirmed Jun 9 — verify destination; Thea Stilton books + 3 items ordered for kids)
+- Calendar: no new events vs run 201; all 5 calendars polled; same 3-event table confirmed (Aneeta in office Jun 9–10, SMART call Jun 10 noon, Dinner Princeton? Jun 11 7 PM)
+- New ACTION_REQUIRED: 1 (FIS payment — verify destination; possible NJ-1065 Q2 or Leader Bank escrow coverage)
+- KEY FINDING: Second GIGABYTE RTX 5090 ordered — combined with PCIe 5.0 X16 riser + vertical GPU mount bracket (both delivered Jun 8), likely second card for machine 124192 (AM5 build). Significant Solar Inference LLC capital acquisition.
+- P0 carry-forward: vast.ai offline 12th+ run; Goddard Jun 11 childcare UNRESOLVED; Hiive Fund II CLOSING TODAY; Leader Bank escrow Jun 14; NJ-1065 Jun 15
+- Pages updated: `daily/2026-06-09.md` (run 202 appended, frontmatter bumped), `MACHINES.md` (run 202 "Latest from gather" appended), `family/active-todos.md` (run 202 appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 202, this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run

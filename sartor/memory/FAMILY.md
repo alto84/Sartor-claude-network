@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-05-28
-updated_by: family-freshness-sweep
+updated: 2026-06-09
+updated_by: personal-data-gather
 last_verified: 2026-05-28
 status: active
 tags: [entity/person, domain/family]
@@ -227,3 +227,35 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 - [2026-05-13] (fact) Brookside will have a special theme day 2026-05-13. "Head of School for the Day" auction winner Chloe Martinez invited students to dress with a theme. Details in Veracross.
 - [2026-05-13] (fact) Vishala wears a dress featuring her own letter (likely letter "V" or a specific assigned letter — confirm with Vishala/school)
 - [2026-05-13] (fact) Routed to: family/vishala, family/active-todos
+
+## Consolidated from daily logs (2026-05-27)
+- [2026-05-27] (fact) Boston trip: (May 27–29) is underway 2026-05-27 (all-day Family calendar event, created 2026-04-28). No description, location, or attendee list on the calendar event itself.
+- [2026-05-27] (fact) MKA Valley Road carline road closure: (no-reply@mka.org, 2026-05-26 2:38 PM ET): closure on Valley Road between Brunswick and Wendover, overrunning its 3 PM scheduled end, causing extra volume on Brunswick Road. Carline running with delays. Boston trip covers 5/27–5/29; plan alternate route for return carline (first school carline would be Mon 6/1 or if kids return earlier).
+
+## Consolidated from daily logs (2026-05-31)
+- [2026-05-30] (fact) Category:: FAMILY
+- [2026-05-30] (fact) Route:: family/vasu
+- [2026-05-30] (fact) Category:: FAMILY
+- [2026-05-30] (fact) Category:: FAMILY
+- [2026-05-30] (fact) Route:: family/vayu
+- [2026-05-30] (fact) Category:: FAMILY
+- [2026-05-30] (fact) Route:: family/vishala
+- [2026-05-30] (fact) Category:: FAMILY
+- [2026-05-31] (fact) "Spin Art Machine for Kids"
+
+## Latest from gather (2026-06-09) — run 201
+
+> [!warning] Goddard School CLOSED Thursday June 11 — Montclair Township water shutoff
+> Vasu has no school Thursday June 11. Full-day childcare required. **Conflict with Dinner Princeton? (7 PM Thu Jun 11)** — need coverage from school hours through evening. Arrange ASAP. See [[family/vasu]], [[family/active-todos]].
+
+> [!fact] CSA 2026 season — first pickup TODAY June 9
+> Bloomfield-Montclair CSA first pickup today. Bring a reusable grocery bag. Source: jljmoo@aol.com Jun 8.
+
+> [!fact] Aneeta in office June 9–10 (Neurvati)
+> Confirmed from Family calendar. Dual-parent absence today and tomorrow — school pickup coordination required.
+
+> [!fact] Aneeta SMART Certified Providers Quarterly Call — June 10, noon–1 PM
+> Zoom (Benson-Henry Institute, MGH). Peter Shannon PhD on music as self-leadership modality. Join: https://mgb-org.zoom.us/j/85844291506 (ID 858 4429 1506).
+
+> [!fact] Cat litter subscription cancelled — Dr. Elsey's Ultra UnScented (Jun 8)
+> Amazon subscription for cats Loki / Ghosty / Pickle cancelled. Review replacement or place manual order.

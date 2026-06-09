@@ -2,9 +2,9 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-05-23
+updated: 2026-06-09
 updated_by: personal-data-gather
-run: 6
+run: 203
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -148,6 +148,17 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 ## Consolidated from daily logs (2026-04-07)
 - [2026-04-05] (fact) Aneeta away April 29 - May 2 -- Alton sole parent during that window
 
+## Latest from gather (2026-05-28) run 140
+
+> [!todo] Guidepoint consultation request — Adamantinomatous Craniopharyngioma (#1752401)
+> jobrien@guidepointglobal.com, 2026-05-28 15:59 UTC: Alton identified as potential expert consultant. Respond to accept or decline. See [[business/az-career]].
+
+> [!todo] UCNS — Autonomic Disorders Certification application deadline approaching
+> ucns-ucns.org@shared1.ccsend.com, 2026-05-28: Review ucns.org to determine if this certification is applicable and whether Alton needs to submit an application before the deadline.
+
+> [!fact] Chase statement available — account ending 0982 (2026-05-28)
+> no.reply.alerts@chase.com, 2026-05-28 16:01 UTC: Latest statement now available for review at chase.com.
+
 ## Latest from gather (2026-04-11)
 
 ## Latest from gather (2026-04-11) run 11
@@ -278,3 +289,176 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact]
 > **Hiive: Anthropic secondary market — new low ask $1,250/share (2026-05-22).** Hiive market digest (2026-05-22 19:10 ET): Anthropic has 4 sell orders listed at **$1,250–$1,600 per share**; Hiive flagged "New low ask" (floor dropped below prior level). 1 buyer-seller match completed in past 24 hours. Alton watches Anthropic on both Hiive and EquityZen (EquityZen reconfirmation request sent 2026-04-29, per run 27). No action required; noting the new floor for context. Includes fund opportunities (accredited investors only). See [[business/solar-inference]].
+
+## Latest from gather (2026-05-31) — run 151
+
+> [!fact]
+> **Fidelity GOOGL SOLD CALL — 2026-05-30.** Trade confirmation email (Fidelity.Investments@mail.fidelity.com, 14:18 UTC): "SOLD CALL (GOOGL) ALPHABET INC CAP", Account XXXXX8998. Closes or rolls the GOOGL short-call position flagged in [[family/active-todos]] since run 24 (originally May $285C, 20 contracts). Exact strike/expiry/premium requires Fidelity portal pull for tax records. Notify [[people/jonathan-francis|Jonathan Francis]] at next CPA touchpoint if this is a material realized gain/loss event.
+
+> [!todo] Guidepoint consultation #1752401 — Adamantinomatous Craniopharyngioma
+> jobrien@guidepointglobal.com (2026-05-29 19:41 UTC). Third Guidepoint request this year. Prior: #1718071 (Pediatric Low-Grade Glioma, run 6), #1732882 (Global Oncology Specialists, run 55). Accept or decline.
+
+## Latest from gather (2026-05-31) — run 152
+
+> [!fact] Gaithersburg Marriott stay — May 26–28, 2026
+> Post-stay survey from guestsurveys@feedback-marriott.com (2026-05-30 22:56 UTC): Gaithersburg Marriott Washingtonian Center, May 26–28, 2026 (2 nights). Gaithersburg MD is near FDA White Oak campus and AZ Gaithersburg/Rockville offices — likely an AZ or FDA-adjacent meeting during the Boston trip week. Survey expires June 13, 2026. Marriott Bonvoy member 831843162.
+
+> [!fact] Chase statement available — account ending 8189 (2026-05-31)
+> no.reply.alerts@chase.com (2026-05-31 01:44 UTC): latest statement now available at chase.com. Account 8189 was used for the Sante Total Gaby $10,000 wire on 2026-05-26 (run 132). Review statement for any anomalies.
+
+## Latest from gather (2026-05-31) — run 153
+
+> [!fact] Chase statement available — account ending 7691 (2026-05-31)
+> no.reply.alerts@chase.com (2026-05-31 05:13 UTC): latest statement now available for account ending 7691. Second Chase statement today (8189 captured run 152 at 01:44 UTC). Account 7691 not yet identified in memory — review at chase.com to confirm account type (personal card, business card, or checking) and flag any anomalies.
+
+## Latest from gather (2026-05-31) — run 155
+
+> [!fact] Schwab login confirmation — 2026-05-31 9:59 AM EDT
+> donotreply@mail.schwab.com (2026-05-31 13:59 UTC): "Confirming your recent login." Standard Schwab security notice — login confirmed as expected. No action needed.
+
+> [!fact] LinkedIn drug safety / PV job alert pattern — week of 2026-05-30
+> Four LinkedIn alerts in 48h pushing pharmacovigilance/drug-safety Senior/Sr. Medical Director roles: Sr. Medical Director Drug Safety & PV at BridgeBio (5/31); Senior Medical Director Drug Safety & PV at Celcuity (5/30 and 5/31); Director Medical Outcomes Research at Viatris (5/30). LinkedIn algorithm has latched onto Alton's AZ Global Patient Safety role. Informational — career context signal. See [[business/az-career]].
+
+> [!fact] CSA pickup schedule — Khushbu Patel (2026-05-30 17:34 UTC)
+> khushbu.b.patel@gmail.com group email to Alton, Aneeta, and IlanIG@gmail.com: sharing seasonal CSA (community-supported agriculture) pickup schedule for the group. No missed pickup days expected on their end. New contacts in household context: **Khushbu Patel** (neighbor/CSA share group), **Ilan** (IlanIG@gmail.com). Routes to [[family/active-todos]].
+
+> [!warning] CALENDAR CORRECTION — Livia Birthday Party: 3:00–6:00 PM EDT (not 7:00–10:00 PM)
+> Run 155 live calendar pull: Livia Birthday Party (Family calendar, 2026-06-07) = `2026-06-07T19:00:00Z`–`2026-06-07T22:00:00Z` = **3:00–6:00 PM EDT**. Runs 151–154 reported "7:00–10:00 PM ET" — UTC→EDT conversion error (19:00Z misread as 7:00 PM local time). Corrected in [[family/active-todos]] and [[family/family-calendar]].
+
+## Latest from gather (2026-05-31) — run 156
+
+> [!fact] Chase statement available — account ending 7785 (2026-05-31)
+> no.reply.alerts@chase.com (2026-05-31 18:11 UTC): latest statement now available for account ending 7785. Third Chase statement today (8189 at 01:44 UTC, 7691 at 05:13 UTC, 7785 at 18:11 UTC). Account 7785 not yet identified in memory — review at chase.com to confirm account type and flag anomalies.
+
+> [!fact] Chase QuickDeposit received — account ending 8563 (2026-05-31)
+> no.reply.alerts@chase.com (2026-05-31 17:04 UTC): check deposit received via QuickDeposit, account ending 8563, May 31 at 1:04 PM ET. Account 8563 not previously seen in memory — identify account type at chase.com.
+
+> [!todo] ACTION_REQUIRED — Hiive Fund Investment update (family-shared fund)
+> oliversartor@icloud.com (2026-05-30 01:37 UTC): Oliver Sartor, MD (Director, Transformational Prostate Cancer Research Center, LCMC Health; 504-355-7970) forwarded a Hiive fund investment update from Sean Jones (sean.jones@mail.hiive.com) to Alton and Sissy Sartor (sissy.sartor@gmail.com). Subject: "Fwd: Update on Your Hiive Fund Investment important." Appears to be a shared family position in a Hiive-managed fund — distinct from solo Hiive pre-IPO market digests. Update content not visible from snippet. **Open thread in Gmail to review.** See [[family/active-todos]].
+
+## Latest from gather (2026-06-03) — run 172
+
+> [!fact] Fidelity BOUGHT Micron Technology Inc (MU) — 2026-06-03
+> Fidelity trade confirmation arrived Jun 3 7:14 AM ET. Action: BOUGHT, Security: MICRON TECHNOLOGY INC, Account: XXXXX8998. Share count and price not visible in snippet — full details require Fidelity login at netbenefits.com. Note this account also had a SOLD CALL (GOOGL) event on 2026-05-30 (run 149). Informational — no action unless reviewing portfolio allocation.
+
+> [!fact] Chase Credit Card (…1276) — statement available, $73.76 due 2026-06-27
+> no.reply.alerts@chase.com, Jun 3 4:22 AM ET. Statement balance $73.76. Minimum payment $40.00. Due date 2026-06-27. Auto-pay enrolled — no manual action required unless Alton wishes to pay full balance early. Previously logged Chase CC accounts: 7054 ($1,247.36 due 6/17), 8547 ($27,609.04 due 6/17, run 107). Account …1276 is a distinct card.
+
+## Latest from gather (2026-06-03) — run 174
+
+> [!fact] Fidelity Rule 4210 — new intraday trading rules effective 2026-06-04 (TOMORROW)
+> Fidelity.Investments@mail.fidelity.com (Jun 3 6:01 PM ET): SEC and FINRA approved changes to Rule 4210 to modernize how intraday trading is monitored. New rules take effect **June 4, 2026**. Addressed to Emmett Sartor. Review full Fidelity communication for details on pattern day trader rule changes. No immediate trade action required; awareness item.
+
+## Latest from gather (2026-06-04) — run 175
+
+> [!fact] Fidelity $5,000 transfer in progress — account 8998 → JPMorgan Chase
+> Fidelity.Alerts@fidelity.com (Jun 3 5:15 PM ET): $5,000.00 outbound from Fidelity account ending **8998** to JPMorgan Chase Bank, NA. 1–2 business days (expected arrival Jun 4–5). Likely staging cash ahead of Leader Bank Escrow $5,366.83 due 2026-06-14. Verify receipt at Chase once cleared. See [[daily/2026-06-04]].
+
+> [!fact] Chase Zelle — new vendor: Rince Prince / Kleen Power Wash
+> no.reply.alerts@chase.com (Jun 3 5:17 PM ET): Zelle recipient added — **Rince Prince** (info@kleenpowerwash.com). New household maintenance vendor. INFORMATIONAL. See [[daily/2026-06-04]].
+
+> [!fact] Dinner Princeton? — Thu Jun 11, 7:00–8:00 PM ET
+> Event on Alton's primary calendar, created 2026-05-27. No location or attendees set. Social dinner in Princeton area. Confirm evening logistics re: childcare if needed. See [[family/family-calendar]].
+
+## Latest from gather (2026-06-04) — run 178
+
+> [!fact] Fidelity — BOUGHT and SOLD CALL (MU) Micron Technology — Jun 4 10:48 AM ET
+> Account XXXXX8998. Two-leg confirmation: BOUGHT CALL (MU) @ $38.60 + SOLD CALL (MU) @ $120.93. Likely a vertical spread or roll on the same account that had a BOUGHT MU stock event Jun 3 (run 172). Full details — strikes, quantity, expiration — require Fidelity login: Accounts & Trade → Documents → Other Documents → Trade Confirmations. FINANCIAL; no action needed unless reviewing allocation. See [[daily/2026-06-04]].
+
+> [!fact] Chase Credit Card ending 5680 — statement $29,997.18 due 2026-06-28
+> no.reply.alerts@chase.com (Jun 4 9:28 AM ET). Statement balance $29,997.18, minimum $795.00, due 2026-06-28, auto-pay enrolled. First appearance of card 5680; other current Chase CC accounts: 7054, 8547, 1276 (all logged in prior runs). Auto-pay covers minimum. Review balance at chase.com if full payoff is preferred. See [[daily/2026-06-04]].
+
+## Latest from gather (2026-06-04) — run 179
+
+> [!fact] Fidelity $5K EFT — COMPLETED (Jun 4 8:07 AM ET)
+> Fidelity.Alerts@fidelity.com: "Your electronic funds transfer (EFT) was successfully processed." $5,000.00 from account ending 8998 to JPMorgan Chase Bank, NA confirmed. Closes in-transit item from run 175. Leader Bank Escrow $5,366.83 due 2026-06-14 — gap now $366.83. See [[family/active-todos]], [[daily/2026-06-04]].
+
+> [!fact] HITLAB roundtable Jun 12 — confirmed 12:30–1:30 PM ET
+> Jerry Antimano LinkedIn InMail (Jun 4 12:05 PM ET): Closed-door HITLAB pharma executive virtual roundtable, **June 12, 12:30–1:30 PM ET**. Topic: electrolyte monitoring gaps (e.g., hyperkalemia), ECG + wearables as monitoring solutions. Respond to Jerry Antimano via LinkedIn to RSVP. See [[business/az-career]], [[daily/2026-06-04]].
+
+> [!fact] SpotHero — NYC parking Jun 4, 35 W 33rd St (Valet Garage)
+> support@spothero.com (Jun 4 09:17 AM ET): Reservation #124824651, 9:30 AM – 9:30 PM. Confirms Manhattan commute day today. See [[daily/2026-06-04]].
+
+## Latest from gather (2026-06-04) — run 180
+
+> [!todo] ACTION_REQUIRED — Guidepoint #1754519 (AI Clinical Search Space) — second email Jun 4
+> aquintiere@guidepointglobal.com (Jun 4 3:52 PM ET): Second contact for consultation request #1754519 (AI-powered Clinical Search Space). Original email was Jun 3 1:54 PM ET (run 176). Run 173 had called this expired; a second email today suggests the window was reset or extended. Respond or decline ASAP. See [[family/active-todos]], [[business/az-career]].
+
+> [!fact] Handshake AI — Project Touchstone ($125/hr, 3D Slicer medical imaging)
+> handshake@g.joinhandshake.com (Jun 4 12:03 PM ET): "Earn $125/hr with Handshake AI - Project Touchstone. Know your way around 3D Slicer?" 3D Slicer is an open-source medical image analysis platform used extensively in neuro-oncology research (Alton's Harvard Martinos Center deep-learning / brain tumor segmentation background is directly relevant). This is a distinct project from the declined Project Alloy (generic answer evaluation). Evaluate at joinhandshake.com. See [[family/active-todos]].
+
+## Latest from gather (2026-06-05) — run 181
+
+> [!fact] Lincoln Center context — Thu Jun 4, 7:26 PM ET
+> account@smail.socialsignin.com (Jun 4 11:26 PM UTC): Guest WiFi login at Lincoln Center at 7:26 PM. Confirms Alton attended an evening event at Lincoln Center on Thursday. No further detail from inbox. See [[daily/2026-06-05]].
+
+> [!warning] Guidepoint #1754453 (PV Space) — expiring TODAY ~1:05 PM ET
+> Carry-forward from run 180. This consultation window closes ~1:05 PM ET Jun 5. Log into Guidepoint to respond or decline before cutoff. See [[family/active-todos]].
+
+## Latest from gather (2026-06-05) — run 182
+
+> [!fact] Glass.health clinical AI platform — performance improvements + ambient scribing
+> updates@glass.health (Jun 4 23:04 UTC and Jun 4 20:01 UTC): Two updates same day. (1) "Increased performance across the Glass platform" — faster responses, more context, daily medical knowledge updates, better clinical intent understanding. (2) Ambient scribing now captures audio from Zoom, browser-based EHRs, and other visit sources. Glass is a clinical AI decision support tool. Both updates are directly relevant to Alton's AI-native patient safety frameworks at AZ and the AZ–Anthropic strategic partnership context.
+
+> [!todo] DEA Fentanyl Free America Summit — decide whether to register
+> Diversion.Conferences@dea.gov (Jun 4 22:44 UTC): DEA's inaugural Fentanyl Free America Summit, held in conjunction with DEA Diversion conferences. Registration open. Relevant to addiction medicine background (AAAP member, PCSS-MAUD CME track). No deadline in snippet. Decide and register if attending.
+
+> [!fact] JAMA+ AI: Nigam Shah (Stanford) on teaching AI to read patient histories
+> updates@email.jamanetwork.com (Jun 4 18:55 UTC): JAMA+ AI Conversations series interview with Nigam Shah (Stanford Center for Biomedical Informatics) — "Teaching AI to Read Patient Histories." Covers how large language models learn to interpret longitudinal EHR data and clinical notes. Directly relevant to Alton's predictive safety platforms (CRS/ICANS prediction, AI-native pharmacovigilance) and AZ clinical AI roadmap.
+
+## Latest from gather (2026-06-05) run 183
+
+> [!todo] PCSS-MAUD Webinar June 10, 12–1 PM ET — register if interested
+> jane@aaap.org (Jun 4 5:31 PM ET): "PCSS-MAUD Webinar: Managing Alcohol Use Disorder in OUD Treatment Settings." Presenter: David Marcovitz, MD. Wed June 10, 12:00–1:00 PM ET. Free. Register via AAAP/PCSS. 5 days out. Relevant to addiction medicine PCSS membership and CME portfolio. See [[family/active-todos]].
+
+> [!fact] Substack AI digest: Claude Opus 4.8 capabilities and reactions (Jun 4)
+> no-reply@substack.com: Digest from Zvi Mowshowitz on Claude Opus 4.8, a16z speedrun, Jesus Rodriguez. Covers latest flagship model release — directly in Alton's AI/ML domain. Informational.
+
+> [!fact] BioMarin Senior Medical Director Safety Science — up to $383K/year (Jun 4)
+> LinkedIn job alert (jobalerts-noreply@linkedin.com, Jun 4 4:54 PM ET). BioMarin Pharmaceutical. Safety science physician executive lane. Market reference for VP-adjacent safety roles. See [[business/az-career]], [[ASTRAZENECA]].
+
+> [!fact] The Information: Snowflake CIO used layoffs to prove AI ROI (Jun 4)
+> hello@theinformation.com. Enterprise AI-driven restructuring trend (Block, Meta, Snowflake). AI ROI narrative relevant to Alton's AZ AI/ML Strategy position and internal strategy discussions. Informational.
+
+## Latest from gather (2026-06-05) — run 185
+
+> [!todo] ACTION_REQUIRED — Guidepoint #1755072: Biosimulation Software Solutions
+> pmoustaka@guidepointglobal.com (Jun 5 ~3:39 PM ET): Expert consultation request. Client seeking experts "Highly Familiar With Biosimulation Software Solutions (Certara Simcyp/Phoenix, Simulations Plus GastroPlus/PKanalix/Monolix, MathWorks SimBiology)." Distinct from prior #1733233 (Biosimulation Software/Service Market, May 22 run 110). PKanalix/Monolix and Simcyp are PK/PD modeling platforms used in IND/NDA submissions — relevant to Alton's drug safety/PV role. Accept or decline. See [[business/az-career]], [[family/active-todos]].
+
+> [!fact] Neumora Medical Director/Senior MD Drug Safety + PV — Jun 4 posting
+> LinkedIn job alert (jobalerts-noreply@linkedin.com, Jun 5 ~12:53 PM ET). Neumora Therapeutics, CNS-focused biopharma. Third consecutive safety-medicine senior role alert this week alongside BioMarin $383K (run 183) and Lyra Health $346K (run 184). LinkedIn algorithm correctly mapped Alton's AZ Global Patient Safety role to the senior safety MD market. Career market intelligence. See [[business/az-career]].
+
+> [!fact] JAMA ERA Congress 2026 — Finerenone CKD + HFpEF in obesity (Jun 5)
+> updates@email.jamanetwork.com (Jun 5 ~4:00 PM ET): Latest JAMA newsletter. ERA Congress 2026: Finerenone for CKD patients with glomerular disease. HFpEF phenotype differences in severe obesity. Nicotine pouch global consumer patterns. Clinical research relevant to Alton's cardio-nephro-metabolic / safety medicine background. Informational.
+
+## Latest from gather (2026-06-06) — run 189
+
+> [!fact] Fidelity BOUGHT MICRON TECHNOLOGY INC — Jun 6 12:38 PM UTC
+> Trade confirmation: account XXXXX8998. Bought Micron Technology (MU). MU is the dominant US DRAM/NAND/HBM supplier — high correlation with AI infrastructure spending cycles. New position established today, same brokerage where GOOGL call was sold May 30. No size or price detail in email snippet; full details in Fidelity NetBenefits. See [[business/solar-inference]] for portfolio context.
+
+## Latest from gather (2026-06-07) — run 194
+
+> [!fact] "Emmett" name clarification — ALTON.md cross-confirmed
+> Prior runs (192–193) flagged "Emmett" in USPS, AAA, LegalZoom, Museum of Science emails as potentially mysterious. Confirmed from this file: full legal name is Emmett Alton Sartor. All "Emmett" correspondence uses legal first name normally. The LegalZoom 9-month entity flagged in run 192 remains unidentified by name — likely formed under "Emmett Sartor" (Sep 2025 vintage). Identify entity at LegalZoom account if relevant.
+
+> [!fact] Uber Eats — Nori Sushi $207.54 (Jun 6, Saturday lunch)
+> noreply@uber.com (Jun 6 11:54 AM ET): Personal order, Nori Sushi, Total $207.54 including tip. Saturday midday delivery. FINANCIAL receipt. See [[daily/2026-06-07]].
+
+> [!fact] LinkedIn job alert — Senior Director, AI at Telix Pharmaceuticals (posted Jun 5)
+> jobalerts-noreply@linkedin.com (Jun 6 4:53 PM ET): Telix Pharmaceuticals Limited, AI leadership role. Telix is a nuclear medicine/radiopharmaceutical oncology company. Adjacent to Alton's neuro-oncology + AZ AI/ML lane. Career market signal. See [[business/az-career]].
+
+> [!fact] LinkedIn job alert — Director, Medical Insights at Pfizer (posted Jun 4)
+> jobalerts-noreply@linkedin.com (Jun 6 2:53 PM ET): Pfizer Director Medical Insights. Medical affairs/real-world evidence role. Career market signal. See [[business/az-career]].
+
+## Latest from gather (2026-06-09) — run 203
+
+> [!fact] Fidelity SOLD COREWEAVE INC COM CL A — Jun 9, 6:47 AM ET
+> Fidelity.Investments@mail.fidelity.com: trade confirmation available for account XXXXX8998. CoreWeave (CRWV) went public March 2026; AI cloud/GPU infrastructure company (Microsoft, Meta as major customers). Position sold today. Full details (shares, price, proceeds, tax lot) available in Fidelity NetBenefits. This is the same account where Micron Technology (MU) was bought Jun 6 and GOOGL call was sold May 30. Two trades in 4 days signals active portfolio management in the AI infra sector. See [[business/solar-inference]] for portfolio context.
+
+## Latest from gather (2026-06-07) — run 195
+
+> [!fact] Stanford HAI Newsletter — inaugural merged edition (Jun 7)
+> stanford-hai@stanford.edu (Jun 7 8:53 AM ET): First edition of the newly merged Stanford HAI + Stanford Data Science newsletter. Articles: (1) "Why AI might be worse at hiring than you think" — AI screening bias / signal degradation; (2) Human-centered perspectives on AI job-loss fears; (3) World models coverage. Directly relevant to Alton's AI strategy role at AZ (predictive safety platforms, AI-native pharmacovigilance) and AI consulting framing for Solar Inference. INFORMATIONAL.
+
+> [!fact] LinkedIn — Director, Applied AI + Executive Medical Director Patient Safety (Jun 7)
+> Two new career market signals today (both posted Jun 5): (1) "Director, Applied AI at Pfizer" — AI role at Big Pharma, distinct from Medical Insights role captured run 194; (2) "Executive Medical Director, Patient Safety (Hybrid) at Vertex Pharmaceuticals" — title above Senior Medical Director, directly in Alton's Global Patient Safety lane. Vertex is premium comp territory. Both captured in detail at [[business/az-career]] run 195.

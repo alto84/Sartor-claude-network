@@ -402,3 +402,141 @@ Records memory consolidation events: merges, archives, and prune operations.
 - logs_removed: 0
 - index_lines: 43
 
+## Run: 2026-05-26 03:04:01
+- dry_run: False
+- facts_gathered: 0
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+
+## Run: 2026-05-27 03:06:05
+- dry_run: False
+- facts_gathered: 6
+- facts_written: 6
+- files_updated: 2
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+- changes:
+  - FAMILY.md: +2 facts
+  - LEARNINGS.md: +4 facts
+
+## Run: 2026-05-28 03:06:02
+- dry_run: False
+- facts_gathered: 6
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+
+## Run: 2026-05-29 03:06:12
+- dry_run: False
+- facts_gathered: 6
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+
+## Run: 2026-05-30 03:06:03
+- dry_run: False
+- facts_gathered: 196
+- facts_written: 3
+- files_updated: 1
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+- changes:
+  - LEARNINGS.md: +3 facts
+
+## Run: 2026-05-31 03:07:53
+- dry_run: False
+- facts_gathered: 17
+- facts_written: 13
+- files_updated: 4
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+- changes:
+  - FAMILY.md: +9 facts
+  - LEARNINGS.md: +2 facts
+  - MACHINES.md: +1 facts
+  - ASTRAZENECA.md: +1 facts
+
+## Run: 2026-06-01 03:06:13
+- dry_run: False
+- facts_gathered: 17
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+
+## Run: 2026-06-02 03:05:51
+- dry_run: False
+- facts_gathered: 17
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+
+## Run: 2026-06-03 03:06:35
+- dry_run: False
+- facts_gathered: 17
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+
+## Run: 2026-06-04 03:06:10
+- dry_run: False
+- facts_gathered: 17
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+
+## Run: 2026-06-05 03:06:28
+- dry_run: False
+- facts_gathered: 171
+- facts_written: 3
+- files_updated: 1
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+- changes:
+  - LEARNINGS.md: +3 facts
+
+## Run: 2026-06-06 03:11:09
+- dry_run: False
+- facts_gathered: 7
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+
+## Run: 2026-06-07 03:03:54
+- dry_run: False
+- facts_gathered: 0
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+
+## Run: 2026-06-08 03:03:50
+- dry_run: False
+- facts_gathered: 0
+- facts_written: 0
+- files_updated: 0
+- logs_archived: 2
+- logs_removed: 0
+- index_lines: 43
+

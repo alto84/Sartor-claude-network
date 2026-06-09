@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-05-23
+updated: 2026-06-04
 updated_by: personal-data-gather
-run: 114
+run: 179
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -690,3 +690,155 @@ Week of May 19–30 (confirmed from live API, run 97):
 > | Mon 5/25 | all-day | Memorial Day | — | Goddard CLOSED (confirmed). MKA closed. |
 > | Wed 5/27 – Fri 5/29 | all-day | Boston trip | Family | School/cat logistics unresolved |
 > | **Sat 5/30, 5 PM – Sun 5/31, noon** | **overnight** | **Vishala sleepover (Amia)** | **Family** | **CORRECTED: was 9 PM–4 PM; actual is 5 PM–noon** |
+
+## Latest from gather (2026-05-27) — run 132
+
+**June 2026 events (confirmed from live Calendar API):**
+
+| Date | Time (ET) | Event | Calendar | Notes |
+|------|-----------|-------|----------|-------|
+| Tue 6/2 | TBD (possibly 4:30 PM) | [[vasu\|Vasu]] dance performance | Family | Calendar says "time to be decided"; run 65 email (Goddard admin, 5/7) said "4:30" — confirm |
+| Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Family | If Vasu dance is at 4:30 PM, no direct conflict |
+| Wed 6/3 | 8:00–11:00 PM | Aneeta "Healing" | Aneeta | Recurring event |
+
+**Active this week (May 27–June 1, confirmed from live API):**
+
+| Date | Time (ET) | Event | Calendar | Notes |
+|------|-----------|-------|----------|-------|
+| Wed 5/27 – Fri 5/29 | all-day | Boston trip | Family | ACTIVE TODAY — family traveling |
+| Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[vishala\|Vishala]] sleepover with Amia | Family | CORRECTED times (per run 114) |
+
+Alton primary, Alton's Tasks, and Blue Sombrero: no events this week or through June 3.
+
+## Latest from gather (2026-05-27) — run 137
+
+New events confirmed from live Calendar API (Family calendar + Aneeta's calendar, June 5–10 window):
+
+| Date | Time (ET) | Event | Calendar | Notes |
+|------|-----------|-------|----------|-------|
+| Thu 6/5 | 12:00 PM – 6:00 PM | Third grade graduation | Family (Aneeta) | [[family/vishala\|Vishala]] (3rd grade). Created 2026-04-18. Times confirmed this run; previously captured as date-only from WeAreMKA newsletter (run 109). |
+| Sun 6/7 | 7:00–10:00 PM | Livia Birthday Party | Family (Aneeta) | NEW — first capture. Created 2026-04-15. Same Livia as May 17 playdate. |
+| Tue 6/9 – Wed 6/10 | all-day | In office | Family (Aneeta) | NEW. Likely Aneeta's Neurvati in-office days. |
+| Wed 6/10 | 12:00–1:00 PM | SMART Certified Providers Quarterly Call | Aneeta | NEW. Zoom via MGH/Benson-Henry Institute (Naila Jabbar organizer). Quarterly continuing ed. |
+
+**Full June 2–10 confirmed calendar (as of run 137):**
+
+| Date | Time (ET) | Event | Calendar |
+|------|-----------|-------|----------|
+| Tue 6/2 | TBD (possibly 4:30 PM) | [[vasu\|Vasu]] dance performance | Family |
+| Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Family |
+| Wed 6/3 | 8:00–11:00 PM | Aneeta "Healing" | Aneeta |
+| Thu 6/5 | 12:00–6:00 PM | Third grade graduation | Family |
+| Sun 6/7 | 7:00–10:00 PM | Livia Birthday Party | Family |
+| Tue 6/9 – Wed 6/10 | all-day | In office (Aneeta) | Family |
+| Wed 6/10 | 12:00–1:00 PM | SMART Certified Providers Quarterly Call | Aneeta |
+
+## Latest from gather (2026-05-29) — run 142
+
+**Week of May 29 – June 5 (confirmed live API run 142):**
+
+| Date | Time ET | Event | Source |
+|------|---------|-------|--------|
+| Fri 5/29 | 8:15–9:45 AM | Vishala Capstone Design Fair (TODAY) | Family |
+| Sat 5/30 | 5:00 PM | Vishala sleepover w/ Amia (drop-off) | Family |
+| Sun 5/31 | 12:00 PM | Vishala sleepover pickup | Family |
+| Tue 6/2 | 4:00–6:00 PM | Vasu dance performance | Family |
+| Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Family |
+| Wed 6/3 | 8:00–11:00 PM | Aneeta Healing (recurring) | Aneeta |
+| **Fri 6/5** | 12:00–6:00 PM | Vishala Third Grade Closing Exercises | Family |
+| **Fri 6/5** | **6:00–7:30 PM** | **MKA Third Grade Graduation Party (NEW)** | Family |
+
+> [!fact]
+> **MKA Third Grade Graduation Party** — NEW event, first captured run 142. June 5, 6:00–7:30 PM ET at Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 07039. Created by Aneeta 2026-05-28. Follows the Closing Exercises (12–6 PM) on the same day — June 5 is a fully packed day for [[family/vishala|Vishala]]. Plan logistics for MKA → Sports Universe Livingston transition.
+
+**Boston trip status:** Trip (2026-05-27 – 2026-05-29) ended today. Family returning from Boston.
+
+## Week of May 30 – June 5 (confirmed live, run 147)
+
+| Date | Time ET | Event | Who | Notes |
+|------|---------|-------|-----|-------|
+| Sat 5/30 | 5:00 PM | Vishala sleepover w/ Amia (TODAY) | Vishala | Drop-off; pickup Sun 5/31 noon |
+| Sun 5/31 | 12:00 PM | Vishala sleepover pickup | Vishala | |
+| Mon 6/1 | school | Goddard: Soccer day | Vasu | Goddard weekly theme |
+| Tue 6/2 | 4:00–6:00 PM | Vasu dance performance (Goddard recital) | Vasu + parents | Venue: confirm with Goddard |
+| Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Vayu or Vishala? | Aneeta-created event; confirm which child |
+| Wed 6/3 | 8:00–11:00 PM | Aneeta Healing (recurring) | Aneeta | |
+| Fri 6/5 | 12:00–6:00 PM | Vishala Third Grade Closing Exercises | Vishala + parents | MKA Brookside; parent event |
+| Fri 6/5 | 6:00–7:30 PM | MKA Third Grade Graduation Party | Family | Sports Universe, 355 Eisenhower Pkwy, Livingston NJ. RSVP via Evite. |
+
+> [!note] Blue Sombrero (Vayu rec soccer): no events May 30 – Jun 7. Spring season appears concluded.
+> Montclair United Summer Soccer Sessions open for registration (no deadline stated).
+
+> [!fact] Father's Day Celebration at Goddard — date TBD
+> Samantha Ramsden / Kaymbu announced a Father's Day waffle event. Father's Day is Sun Jun 15. Goddard event likely week of Jun 9–13. Confirm date via full email or Goddard communication.
+
+## Week of June 7 (partial — run 150)
+
+| Date | Time ET | Event | Who | Notes |
+|------|---------|-------|-----|-------|
+| Sun 6/7 | 7:00–10:00 PM | **Livia Birthday Party** | Family | Family calendar; no location in event data — confirm with Aneeta |
+
+> [!note] Livia Birthday Party — Sun Jun 7, 7–10 PM ET
+> First entered 7-day lookahead window in run 150. Created 2026-04-15 by Aneeta. "Livia" likely the child from May 17 playdate ("Playdate with Livia and family"). Gift planning needed. See [[family/active-todos]].
+
+## Week of June 1 — confirmed live (run 157)
+
+> [!note] All 5 calendars pulled live. No new events. All timing corrections from runs 148 and 155 stand.
+
+| Date | Time ET | Event | Calendar | Notes |
+|------|---------|-------|----------|-------|
+| Mon 6/1 | Goddard day | Soccer theme | Goddard | Vasu |
+| **Tue 6/2** | 4:00–6:00 PM | Vasu dance performance (Goddard recital) | Family | Venue TBD — confirm with Goddard |
+| **Tue 6/2** | 7:00–9:00 PM | May term evening (MKA) | Family | Which child? Confirm with Aneeta |
+| Wed 6/3 | 8:00–11:00 PM | Aneeta Healing (recurring) | Aneeta | Aneeta unavailable 8–11 PM |
+| **Fri 6/5** | 8:00 AM – 2:00 PM | Vishala Third Grade Graduation | Family | **MAJOR EVENT** — parent attendance; MKA Brookside |
+| **Fri 6/5** | 6:00–7:30 PM | MKA Third Grade Graduation Party | Family | Sports Universe, 355 Eisenhower Pkwy, Livingston NJ. RSVP Evite. |
+| **Sun 6/7** | 3:00–6:00 PM | Livia Birthday Party | Family | Location unknown; gift needed; confirm with Aneeta |
+
+- Aneeta's Healing is Wed 8–11 PM — conflict with any late-Tuesday or Wed logistics
+- Jun 5 is a long day: graduation 8 AM–2 PM, 4-hour gap, party 6–7:30 PM. Plan accordingly.
+- Livia Birthday Party location not in event; confirmed 3–6 PM EDT per run 155 UTC correction.
+- Blue Sombrero (Vayu soccer): no events this week. Spring season appears concluded.
+- Alton primary calendar: no events this week.
+- Alton Tasks calendar: no tasks.
+
+## Latest from gather (2026-06-03) — run 169
+
+One new calendar event vs run 168: Aneeta SMART Certified Providers Quarterly Call, **Tue Jun 10, 12:00–1:00 PM ET (Zoom)**.
+
+| Date | Time ET | Event | Calendar | Notes |
+|------|---------|-------|----------|-------|
+| Wed 6/3 | 8:00–11:00 PM | Aneeta "Healing" (recurring) | Aneeta | |
+| **Fri 6/5** | 8:00 AM–2:00 PM | Vishala Third Grade Graduation | Family | **FRIDAY — 2 days** |
+| **Fri 6/5** | 6:00–7:30 PM | MKA Third Grade Graduation Party | Family | Sports Universe, 355 Eisenhower Pkwy, Livingston NJ |
+| Sun 6/7 | 3:00–6:00 PM | Livia Birthday Party | Family | Location TBD; gift needed |
+| Mon 6/9 | all-day | Aneeta "In office" | Family | Neurvati; confirm childcare |
+| **Tue 6/10** | 12:00–1:00 PM | Aneeta SMART Providers Call (Zoom) | Aneeta | NEW — MGH/Benson-Henry Institute |
+
+- Alton primary calendar: no events Jun 3–10
+- Alton Tasks calendar: no tasks
+- Blue Sombrero (Vayu soccer): no events Jun 3–10
+
+## Latest from gather (2026-06-04) — run 175
+
+> [!fact] NEW — Dinner Princeton? — Thu Jun 11, 7:00–8:00 PM ET (Alton primary calendar)
+> Event created 2026-05-27. No location, no attendees set. Evening out — confirm childcare logistics if needed. See [[ALTON]], [[daily/2026-06-04]].
+
+### Week of Jun 4–11 (confirmed)
+
+| Date | Time EDT | Event | Calendar | Notes |
+|------|----------|-------|----------|-------|
+| **Fri 6/5** | 8:00 AM–2:00 PM | Vishala Third Grade Graduation | Family | Times confirmed from API (12:00Z–18:00Z) |
+| **Fri 6/5** | 6:00–7:30 PM | MKA Third Grade Graduation Party | Family | Sports Universe, 355 Eisenhower Pkwy, Livingston NJ |
+| **Sun 6/7** | 3:00–6:00 PM | Livia Birthday Party | Family | Times confirmed (19:00Z–22:00Z); gift needed |
+| Mon 6/9 | all-day | Aneeta "In office" | Family | Neurvati |
+| Tue 6/10 | noon–1:00 PM | Aneeta SMART Providers Call | Aneeta | Zoom (mgb-org.zoom.us), MGH Benson-Henry |
+| **Thu 6/11** | 7:00–8:00 PM | Dinner Princeton? | Alton (primary) | NEW this run; no location set |
+
+## Latest from gather (2026-06-04) — run 179
+
+> [!fact] HAPPY LOLLI Purple LolliME — delivered Jun 4 ~11:27 AM ET
+> Amazon order-update: "Delivered: HAPPY LOLLI Purple LolliME... and 1 more item." Update from "shipped" (run 177). Likely intended for Livia Birthday Party (Sun Jun 7, 3–6 PM EDT). Party gift ready. See [[family/active-todos]].
+
+> [!todo] ADD TO CALENDAR — Goddard Preschool Conference Mon Jun 8
+> Jacqueline Capote announced end-of-year conferences. Once Alton signs up via SignUpGenius, add the time slot to Family calendar. See [[family/vasu]], [[family/active-todos]].

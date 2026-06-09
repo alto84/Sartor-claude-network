@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-02
-updated_by: claude (family-ops session)
-run: 123
+updated: 2026-06-09
+updated_by: personal-data-gather
+run: 204
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -420,6 +420,51 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!note] Vasu at Goddard — bugs/insects week
 > Three Kaymbu classroom moments today: "Creepy Crawly Patterns" (insect manipulatives + play doh), "CONSTRUCTION: insect houses" (nonfiction books + building), "Hugs from friends." [[family/vasu|Vasu]] appears engaged. No action needed.
+
+## Latest from gather (2026-06-01) — run 161
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1752401: Adamantinomatous Craniopharyngioma
+> jobrien@guidepointglobal.com, 2026-06-01 09:26 AM ET. ACP is a pediatric/young adult CNS tumor — within Alton's neurology scope. Typical 1-hour paid call; consulting income opportunity. Prior unanswered requests: #1732882 (Global Oncology), #1721928 (FcRn inhibitors), #1718071 (Low-Grade Glioma). Respond or decline this week. See [[business/az-career]].
+
+> [!todo] ACTION_REQUIRED — HITLAB pharma executive roundtable: June 12, 12:30–1:30 PM ET
+> LinkedIn invitation from Jerry Antimano (hit-reply@linkedin.com), 2026-06-01 11:02 AM ET. Closed-door virtual roundtable on electrolyte monitoring gaps (hyperkalemia, ECG) and drug safety. Directly relevant to AZ Global Patient Safety role. Respond via LinkedIn. If attending, block calendar Jun 12 12:30–1:30 PM ET. See [[business/az-career]].
+
+> [!fact] Chase wire $2,400 → BERTEAU ZEPHIR — Jun 1, 8:37 AM ET (confirm Sante Total authorization)
+> Account ...8189, Chase business banking. Recipient "Berteau Zephir" almost certainly the Sante Total Haiti contact named in run 71 (co-authored elderly-project grant proposal with Barbara Weis). If this is a Sante Total disbursement, confirm board authorization is on file per nonprofit governance rules. See [[business/sante-total]] and [[BUSINESS]].
+
+> [!note] MKA End-of-Year BBQ — Thursday June 4, free lunch for middle school students
+> Veracross (Daniella Kessler/m@mail4.veracross.com) 09:03 AM ET Jun 1: hot dogs, hamburgers, veggie burgers, salad, beverages. No parent attendance or payment needed. Relevant for [[family/vayu]] (Vayu, MKA middle school).
+
+> [!note] Aneeta "In office" — June 9 (Tuesday), all-day (Family calendar)
+> New event on Family calendar, creator aneetasax@gmail.com. Likely Neurvati in-office day. Confirm whether Alton needs to cover school pickup Jun 9. Alton also commutes to NYC Jun 9 (if standard 3-day pattern). Potential dual-parent coverage gap.
+
+## Latest from gather (2026-05-30) — run 149
+
+> [!fact] 2026-05-30 — Fidelity SOLD CALL (GOOGL) trade confirmation
+> Fidelity trade confirmation arrived 14:18 UTC: **SOLD CALL (GOOGL) ALPHABET INC CAP**, account XXXXX8998. Full position details require Fidelity NetBenefits login. This may represent the roll of the active-todos GOOGL May $285C item (20 short contracts, flagged for roll by May 15 expiry). If new short calls were sold, track strike, expiry, and premium. If existing position was closed, mark the GOOGL May $285C decision item resolved. See [[ALTON]].
+
+> [!fact] 2026-05-30 — Jun 5 schedule clarification (live API)
+> Live Google Calendar API (run 149): "Third grade graduation" event is **12:00 PM–6:00 PM ET** on Jun 5. This conflicts with run 148's reported correction (8 AM–2 PM). The event has not been modified since creation (2026-04-18). Run 148's correction may have been based on a different event. **Current live data: graduation ceremony noon–6 PM, then MKA Graduation Party 6–7:30 PM (Sports Universe, 355 Eisenhower Pkwy, Livingston NJ).** Back-to-back — plan travel between MKA and Sports Universe accordingly. See [[family/vishala]].
+
+## Latest from gather (2026-05-30) — run 150
+
+> [!note] NEW calendar event — Livia Birthday Party (Sun Jun 7, 7–10 PM ET)
+> First appearance in 7-day lookahead window. Family calendar event, created 2026-04-15 by Aneeta. "Livia" is likely the same child from the May 17 playdate ("Playdate with Livia and family"). No location in event data — confirm with Aneeta. Plan: Jun 7 is a Sunday evening. Kids at this event (likely); assess logistics, gift needed.
+
+> [!note] CSA pickup schedule (first capture)
+> khushbu.b.patel@gmail.com emailed Alton + Aneeta + IlanIG@gmail.com (17:34 UTC) with a "CSA pickup schedule attached." Khushbu notes no pickup conflicts on their end. First time CSA (Community Supported Agriculture) has surfaced in inbox — family is in a shared CSA arrangement with at least two other households. Full schedule requires opening the attachment. Informational unless a pickup date falls on a travel week. See [[FAMILY]].
+
+> [!todo] LinkedIn message from Ashley — check inbox
+> LinkedIn digest (16:42 UTC): 1 unread message from "Ashley" awaiting response. Check LinkedIn inbox. Low urgency.
+
+> [!warning] P0 carry-forward — Sante Total Form 990-N OVERDUE 15d
+> Not filed per runs 22–150. File at IRS.gov → 990-N e-Postcard. Gross receipts <$50K TY2025. See [[business/sante-total]].
+
+> [!deadline] 2026-06-04 (**5 days**) — Chase/Sante Total KYC
+> Pavel Manrique (Chase Montclair) needs KYC documentation to complete business account setup. Contact Pavel: 973-873-9133 or Chase Montclair, 19 N Fullerton Ave. See [[business/sante-total]] and [[BUSINESS]].
+
+> [!warning] P0 carry-forward — Disney ADR status unknown (13+ days open window)
+> 60-day ADR window opened May 17. Status unconfirmed across all runs. Contact Nicol Stevenson: n.stevenson@magicalvacationplanner.com / +1 412-215-2423. See [[family/disney-july-2026]].
 
 ## Latest from gather (2026-05-22) — run 110
 
@@ -933,3 +978,1276 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Mon 5/25 | all-day | Memorial Day — Goddard closed, MKA closed |
 > | Wed 5/27 – Fri 5/29 | all-day | Boston trip — T-2 days |
 > | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
+
+## Latest from gather (2026-05-25) — run 125
+
+> [!todo] ORDER NOW — ImageQuix portrait sale: Vayu + Vishala (Memorial Day free shipping)
+> ImageQuix (no-reply@imagequix.com) sent Memorial Day sale emails for both [[family/vayu|Vayu]]'s and [[family/vishala|Vishala]]'s school portraits: free shipping during the Memorial Day sale window. Order via ImageQuix before the sale ends. Photos from MKA portrait sessions. No hard deadline stated in snippet — act today while sale is active. See [[family/vayu]] and [[family/vishala]].
+
+## Latest from gather (2026-05-26) — run 127
+
+> [!warning] P0 EMERGENCY — Cat sitter: Boston trip DEPARTS TOMORROW 2026-05-27
+> Loki, Ghosty, and Pickle need coverage 2026-05-27 through 2026-05-29. **No booking visible in Gmail.** Today is the absolute last moment to book. Book via Meowtel or trusted local sitter NOW.
+
+> [!todo] ACTION_REQUIRED — P1 — vast.ai machine 97429: follow up Jay's 2 steps
+> **vast.ai machine 97429 (rtxpro6000server) offline alert received 2026-05-21.** Alton emailed support same day; Jay (jay@contact.vast.ai) replied that there are "two steps that aren't in your list yet and are worth [trying]." Alton has not visibly replied. Marketplace visibility may still be blocked. SSH into rtxpro6000server or reply to Jay's email to get and execute the two additional steps. See [[MACHINES]].
+
+> [!note] New calendar event — May term evening 2026-06-02 7–9 PM
+> Family calendar (organizer: Aneeta). MKA event. **Potentially conflicts with Vasu dance performance same day (time TBD)**. Confirm Vasu's performance time before 2026-06-02 to check for overlap.
+
+> [!note] Carry-forward P0/P1 (run 127, 2026-05-26 — Day after Memorial Day)
+> | Item | Status | Days |
+> |------|--------|------|
+> | **Cat sitter (Boston 5/27)** | **UNBOOKED** | **T-1 EMERGENCY — departs TOMORROW** |
+> | Sante Total 990-N | NOT FILED | 11 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 10 (window opened 2026-05-17) |
+> | Berman $6K Lutron #AAAO13216-03 | Committed CC, not paid | 8 days past Alton's 2026-05-18 promise |
+> | Sante Total Berteau $2,400 | No visible response | 3 days since Barbara Weis 5/23 follow-up |
+> | Sante Total Gaby $9,972 | No visible response | 14 days since 2026-05-12 request |
+> | UPS claim 1Z091C2R4220295437 | Monitor | Day 3 of ~8 biz days (~2026-06-03) |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | ImageQuix portrait sale | ORDER | Vayu + Vishala, free shipping (window may close) |
+> | **vast.ai 97429 Jay's 2 steps** | **UNRESOLVED** | **P1 — GPU marketplace blocked** |
+
+> [!note] Calendar May 26–Jun 2 (confirmed live API run 127)
+> | Date | Time (ET) | Event |
+> |------|-----------|-------|
+> | Wed 5/27 – Fri 5/29 | all-day | Boston trip — TOMORROW |
+> | Sat 5/30, 5 PM – Sun 5/31, noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia |
+> | Tue 6/2 | TBD | Vasu dance performance |
+> | Tue 6/2 | 7:00–9:00 PM | May term evening (MKA — NEW) |
+
+## Latest from gather (2026-05-27) — run 132
+
+> [!fact] RESOLVED — Sante Total Gaby $10,000 wire sent (2026-05-26)
+> $10,000 wire to GABRIEL THELUS executed from Chase account ending 8189 on 2026-05-26 4:38 PM ET (wire 12053086804). Closes the "send Gaby $9,972/$10,000" item pending since 2026-05-12. See [[business/sante-total]].
+
+> [!todo] ACTION_REQUIRED — Sante Total: reply to Barbara Weis re Berteau grant + meeting
+> Barbara Weis (dye2tie@verizon.net) emailed 2026-05-26 9:55 PM ET (cc: asmi60@lsuhsc.edu, alison.annette.smith@gmail.com) asking: (1) how to get board approval for Berteau's elderly program grant — send to whole board?; (2) whether to set up a board meeting. She also offered a 2026 budget draft. Alton to reply as Treasurer. See [[business/sante-total]].
+
+> [!warning] CONFIRM — Vasu dance performance time (June 2) vs May term evening (June 2)
+> Family calendar has Vasu dance performance on Tue June 2 as "time to be decided." Also June 2: MKA May term evening 7–9 PM ET. Run 65 (2026-05-07 Goddard email) indicated "June 2nd at 4:30!" — if confirmed at 4:30 PM, there is no conflict. Confirm performance time with Goddard before June 2 to finalize logistics. See [[family/vasu]] and [[family/family-calendar]].
+
+> [!note] Calendar — May 27–June 3 (confirmed live API run 132)
+> | Date | Time (ET) | Event |
+> |------|-----------|-------|
+> | Wed 5/27 – Fri 5/29 | all-day | Boston trip — ACTIVE TODAY |
+> | Sat 5/30 5 PM – Sun 5/31 noon | overnight | [[family/vishala\|Vishala]] sleepover with Amia (confirmed CORRECTED times) |
+> | Tue 6/2 | TBD (possibly 4:30 PM) | [[family/vasu\|Vasu]] dance performance — CONFIRM TIME |
+> | Tue 6/2 | 7–9 PM | May term evening (MKA) — potential conflict with Vasu dance |
+> | Wed 6/3 | 8–11 PM | Aneeta "Healing" (recurring) |
+
+> [!note] Carry-forward P0/P1 (run 132, 2026-05-27)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | Sante Total 990-N | NOT FILED | 12 days overdue (due 2026-05-15) |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 11 (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | New invoice — confirm scope before paying |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Sante Total Berteau grant approval | Reply needed | 4 days since Barbara Weis 5/23 follow-up |
+> | Sante Total Gaby $9,972 | **RESOLVED** — $10,000 wired 2026-05-26 | Closed |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | 8 days remaining |
+> | UPS claim 1Z091C2R4220295437 | Monitor | ~2026-06-03 |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+
+## Latest from gather (2026-05-26) — run 131
+
+> [!todo] ACTION_REQUIRED — Review Berman updated invoice #AAAO13216-04 before paying
+> Alyssa Berman (Alyssa@bermanhomesystems.com) sent a **NEW invoice #AAAO13216-04** today at 1:31 PM ET: "Please find attached our updated order." This replaces #AAAO13216-03. Scope or pricing may have changed. **Do not pay $6,000 against the old invoice.** Open the attachment, confirm the amount, then pay by CC. Phone: 973-239-8870. See [[business/solar-inference]].
+
+> [!todo] ACTION_REQUIRED — GitHub Claude App: approve or deny updated permissions request
+> noreply@github.com (3:56 PM ET): "The GitHub App Claude is requesting additional access to your account." Navigate to GitHub Settings → Applications → Claude and approve or deny. If not approved, GitHub MCP tools will break. See [[ALTON]].
+
+> [!note] MKA Valley Road carline closure — read full notice before next carline run
+> no-reply@mka.org (2:38 PM ET): Road closure on Valley Road between [cross streets] may impact Middle School carline. Boston trip covers 5/27–5/29; confirm alternate route before next carline pickup (Fri 5/29 or Mon 6/1). Affects [[family/vayu|Vayu]] and [[family/vishala|Vishala]] carline logistics.
+
+> [!fact] Amazon pet supplies DELIVERED today — pee pads + 1 item (1:36 PM ET)
+> IMMCUTE Dog Pee Pads Extra and one additional item delivered to 85 Stonebridge today. Likely cat-care supplies for Boston trip period. Pads in hand as of today — relevant context for whoever handles cat coverage.
+
+> [!note] Carry-forward P0/P1 (run 131, 2026-05-26 ~8:00 PM ET)
+> | Item | Status | Urgency |
+> |------|--------|---------|
+> | **Cat sitter (Boston 5/27)** | **UNBOOKED** | **T-0 EMERGENCY — trip tomorrow** |
+> | **Berman invoice #AAAO13216-04** | **Review before paying** | **P1 — new invoice, check scope** |
+> | **GitHub Claude permissions** | **Approve/deny** | **P1 — GitHub MCP blocked otherwise** |
+> | Sante Total 990-N | NOT FILED | 11 days overdue |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Berman $6K Lutron | Review updated invoice | See above |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 10 |
+> | Sante Total Berteau $2,400 | No visible response | 3+ days |
+> | Sante Total Gaby $9,972 | No visible response | 14+ days |
+> | UPS claim 1Z091C2R4220295437 | Monitor | ~2026-06-03 |
+> | Earnest loan | $943.33 | Due 2026-06-20 |
+
+## Latest from gather (2026-05-26) — run 130
+
+> [!deadline] TODAY 2026-05-26 at 6:00 PM ET — EXPIRES IN HOURS
+> **Dr. Shah baby shower — Venmo @katie-cocco by 6 PM.** Katie Cocco (katiecocco@gmail.com) sent a final call: "Last chance to add to the collection for Dr. Shah's baby shower! Send the venmo to @katie-cocco by 6pm tonight if you'd like to contribute. No pressure!" Dr. Shah is a teacher in one of the kids' classes at MKA. CC: julie.wilska@gmail.com. Decide and Venmo now if contributing — window closes in hours.
+
+> [!todo] MKA EPE Make-Up Week — next week June 1–3 (last week of school)
+> agonzalez@mka.org (2026-05-26): "Next week is Make-Up Week for EPE and the last week of school." Schedule covers Monday 06/01 through ~Wednesday 06/03. Two separate emails sent (likely one per child division). Affects [[family/vayu|Vayu]] and [[family/vishala|Vishala]] EPE afternoon pickup logistics. Check full schedule in email and confirm pickups.
+
+> [!todo] MKA Middle School PE clothes — pre-order for 2026-2027
+> m@mail3.veracross.com (2026-05-26): MKA requires a uniform t-shirt and shorts for all Middle School students. Pre-order via MKA website. No deadline stated. Confirm which grade is "Middle School" at MKA — Vayu is rising 5th grade, Vishala rising 4th; check whether this applies to either child in 2026-2027.
+
+> [!note] MKA band: no after-school activities this week or next (Vayu)
+> 4th + 5th grade band has officially wrapped for 2025-2026. No after-school band pickup obligations for [[family/vayu|Vayu]] remaining this year.
+
+> [!deadline] 2026-06-20 — Earnest loan payment $943.33
+> Monthly billing statement available (no-reply@updates.earnest.com, 2026-05-26). Total due: **$943.33** by **2026-06-20** (25 days). Log in to Earnest account to confirm auto-pay status or make manual payment.
+
+> [!note] Carry-forward P0/P1 (run 130, 2026-05-26 ~4:45 PM ET)
+> | Item | Status | Days |
+> |------|--------|------|
+> | **Dr. Shah Venmo @katie-cocco** | **ACT BY 6 PM TODAY** | **EXPIRES IN HOURS** |
+> | **Cat sitter (Boston 5/27)** | **UNBOOKED** | **T-0 — DEPARTS TOMORROW** |
+> | Sante Total 990-N | NOT FILED | 11 days overdue |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Berman $6K Lutron | Committed CC, not paid | 8+ days past promise |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 10 |
+> | Sante Total Berteau $2,400 | No visible response | 3+ days |
+> | Earnest loan | $943.33 | Due 2026-06-20 |
+> | MKA PE clothes pre-order | TODO | No hard deadline |
+
+## Latest from gather (2026-05-27) — run 134
+
+> [!todo] FAMILY — Montclair Library Summer Reading 2026 — pre-register June 1
+> Montclair Public Library Summer Reading 2026 (theme: "Unearth a Story"). Pre-registration opens **June 1**; book logging starts June 29. All 3 kids eligible: [[family/vayu|Vayu]] (10), [[family/vishala|Vishala]] (8), [[family/vasu|Vasu]] (4). Register at Montclair Public Library website by or after June 1. Source: Off the Shelf newsletter 5/26.
+
+> [!note] Toy Story 5 opens June 19 — tickets on sale now
+> Disney/Pixar Toy Story 5 in theaters June 19, 2026. Tickets on sale via Fandango. Family film option for after-Disney-trip or summer entertainment. [[family/vayu|Vayu]], [[family/vishala|Vishala]], and [[family/vasu|Vasu]] ages. No action needed — flag for family discussion.
+
+> [!note] Carry-forward P0/P1 (run 134, 2026-05-27)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | Sante Total 990-N | NOT FILED | **13 days overdue** (due 2026-05-15) — FILE NOW |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **8 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant approval + meeting request |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 12+ (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | June 2: Vasu dance time | CONFIRM | Possibly 4:30 PM; conflicts with MKA May term 7 PM if later |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 |
+> | UPS claim 1Z091C2R4220295437 | Monitor | ~2026-06-03 |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+
+## Latest from gather (2026-05-27) — run 135
+
+> [!deadline] 2026-06-10 — ACTION REQUIRED IMMEDIATELY
+> **MKA Blackbaud past-due tuition: $5,340.00.** Highlighted red in MKA billing notice (5/27 11:13 AM ET). Past-due amount must be paid NOW at parent.blackbaud.school. Separate from the scheduled June 10 installment (which is $0.00). Students: [[family/vayu|Vayu]] (4th grade) and [[family/vishala|Vishala]] (3rd grade). Source: customerservice@blackbaud.school, Family ID 1336725017733.
+
+> [!note] Carry-forward P0/P1 (run 135, 2026-05-27)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | **MKA past-due tuition $5,340.00** | **PAY IMMEDIATELY** | parent.blackbaud.school — NEW |
+> | Sante Total 990-N | NOT FILED | **12 days overdue** (due 2026-05-15) |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **8 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant approval + meeting request |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 11+ (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | June 2: Vasu dance time | CONFIRM | Possibly 4:30 PM; conflicts with MKA May term 7 PM |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+
+## Latest from gather (2026-05-27) — run 137
+
+> [!fact] Nintendo service request 61333620 SHIPPED — UPS 1Z9437400395402529
+> Nintendo of America (5/27 17:35 ET): service request 61333620 has been shipped back. **UPS tracking: 1Z9437400395402529.** Expect delivery in 1–3 business days (~May 29–30). Prior status: "In service" (run 133, 17:03 ET). Repair complete — no charge indicated. Addressed to "Emmett" (Alton's legal first name). See [[ALTON]] for device log.
+
+> [!deadline] 2026-06-05 — Third grade graduation: 12:00 PM – 6:00 PM ET (TIMES CONFIRMED)
+> Family calendar confirms **Third grade graduation** (created by Aneeta) on **Friday June 5, 12:00 PM – 6:00 PM ET**. Aligns with the "Third Grade Closing Exercises" item logged in run 109 (2026-05-22) via WeAreMKA newsletter. [[family/vishala|Vishala]] is in 3rd grade. Mark calendar; plan to attend. Previously known date-only; times now calendar-confirmed. See [[family/vishala]] and [[family/family-calendar]].
+
+> [!note] NEW — Livia Birthday Party: Sun June 7, 7:00–10:00 PM ET
+> Family calendar (created by Aneeta, 2026-04-15): **Livia Birthday Party**, Sunday June 7, 7:00–10:00 PM ET. Likely the same Livia from the May 17 playdate (Aneeta organized). Plan attendance and gift. See [[family/family-calendar]].
+
+> [!note] MKA: new math program for Primary School + rising 5th grade (Vayu)
+> MKA Veracross email (5/27 19:05 ET): new math program announced for Primary School and **rising 5th grade families**. Directly relevant to [[family/vayu|Vayu]] (rising 5th grade for 2026-2027). Full details require Veracross portal login. INFORMATIONAL — read when available.
+
+> [!note] MKA end-of-year: take-home folders sent home today + Picnic
+> MKA Veracross (5/27 19:02 ET): children brought home clear plastic take-home folders with end-of-year work. "Picnic" referenced in email subject — date not visible in snippet. Look for picnic details in the Veracross portal. Affects [[family/vayu|Vayu]] (4th grade) and [[family/vishala|Vishala]] (3rd grade).
+
+> [!note] Calendar update — June 5–10 (NEW events, run 137)
+> | Date | Time (ET) | Event | Calendar | Notes |
+> |------|-----------|-------|----------|-------|
+> | Thu 6/5 | 12:00–6:00 PM | Third grade graduation | Family | [[family/vishala\|Vishala]] — TIMES CONFIRMED |
+> | Sun 6/7 | 7:00–10:00 PM | Livia Birthday Party | Family | NEW — plan attendance + gift |
+> | Tue 6/9 – Wed 6/10 | all-day | In office (Aneeta) | Family | NEW — Aneeta at Neurvati |
+> | Wed 6/10 | 12:00–1:00 PM | SMART Certified Providers Quarterly Call | Aneeta | NEW — Zoom, MGH/Benson-Henry |
+
+> [!note] Carry-forward P0/P1 (run 137, 2026-05-27 ~8:00 PM ET)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | **MKA past-due tuition $5,340.00** | **PAY IMMEDIATELY** | parent.blackbaud.school |
+> | Sante Total 990-N | NOT FILED | **12 days overdue** (due 2026-05-15) |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **8 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant approval + meeting request |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 11+ (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | June 2: Vasu dance time | CONFIRM | Possibly 4:30 PM vs MKA May term 7 PM |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+> | Leader Bank Escrow Analysis | REVIEW | 185 Davis Ave Brookline MA |
+> | **Nintendo repair** | **SHIPPED** | **UPS 1Z9437400395402529 — expect ~5/29–5/30** |
+> | Third grade graduation | Mark calendar | June 5, 12–6 PM ET (confirmed) |
+> | Livia Birthday Party | Plan + gift | June 7, 7–10 PM ET |
+
+## Latest from gather (2026-05-27) — run 136
+
+> [!todo] ACTION_REQUIRED — Leader Bank Annual Escrow Analysis (185 Davis Ave Brookline MA)
+> **Leader Bank** (Clientservices@leaderbank.com, 5/27 15:30 ET): Annual escrow account review for 185 Davis Ave Unit 8, Brookline MA 02445 — AutoPay mortgage. Escrow analysis determines whether property taxes and insurance are sufficiently escrowed; result may adjust the monthly mortgage payment. Review the escrow analysis document from Leader Bank. See [[ALTON]].
+
+> [!note] FAMILY — Meowtel July 4th cat sitter reminder (5 weeks out)
+> Meowtel sent a booking reminder (5/27 15:39 ET): book cat sitter for July 4th. Loki, Ghosty, and Pickle need care if family plans to travel July 4th weekend. No confirmed travel plans visible. Flag for family decision. Also check: Disney trip is July 16–19, so July 4th is a separate window.
+
+> [!note] Jackrabbit Tech parent/child class (Vasu) — upcoming Wed May 30 + June 3
+> Starz & Me class (ages 1–4), 4:00–4:45 PM, 136 Mountainview Blvd Wayne NJ. Today's class missed (family in Boston). Next classes: **Wed May 30** and **Wed June 3** at 4 PM. No conflict on June 3 with Aneeta "Healing" (8 PM). See [[family/vasu]].
+
+> [!note] Carry-forward P0/P1 (run 136, 2026-05-27 ~3:45 PM ET)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | **MKA past-due tuition $5,340.00** | **PAY IMMEDIATELY** | parent.blackbaud.school |
+> | Sante Total 990-N | NOT FILED | **12 days overdue** (due 2026-05-15) |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **8 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant + meeting request |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 11+ (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | June 2: Vasu dance time | CONFIRM | Possibly 4:30 PM vs MKA May term 7 PM |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+> | **Leader Bank Escrow Analysis** | **REVIEW** | **185 Davis Ave Brookline MA — NEW** |
+
+## Latest from gather (2026-05-27) — run 133
+
+> [!note] Alton legal name — Marriott Bonvoy + Nintendo
+> Two emails arrived using Alton's legal first name "Emmett" (Emmett Alton Sartor): (1) Marriott Bonvoy welcome — member 831843162, unactivated (noreply@joinmarriottbonvoy.com, 02:03 UTC). (2) Nintendo warranty repair service request 61333620 acknowledged — technician evaluating, return free if under warranty. No action required; noting for context.
+
+> [!note] Carry-forward P0/P1 (run 133, 2026-05-27)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | Sante Total 990-N | NOT FILED | **13 days overdue** (due 2026-05-15) — FILE NOW |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **8 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant approval + meeting request |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 12 (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | June 2: Vasu dance time | CONFIRM | Possibly 4:30 PM; conflicts with MKA May term 7 PM if later |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 |
+> | UPS claim 1Z091C2R4220295437 | Monitor | ~2026-06-03 |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+
+
+## Latest from gather (2026-05-28) — run 138
+
+> [!deadline] TOMORROW 2026-05-29 at 8:15 AM — URGENT
+> **Vishala Capstone Design Fair — 8:15 AM, MKA Brookside.** 3rd Grade Capstone Design Fair.
+> - Report to Vishala's classroom at 8:15 AM for short presentation, then to auditorium for design fair
+> - **Limit: 2 adults per student** — plan attendance (Alton + Aneeta? Confirm)
+> - **Concert attire required:** white collared shirt + khaki bottoms (change of spirit clothes optional)
+> - Event ends ~9:45 AM; light refreshments follow
+> - Afternoon (students only): pizza lunch + ice cream truck; parents not needed afternoon
+> - Source: Aneeta forwarded MKA 3rd grade email (originally sent Apr 30 from Daniela Vespucci, Team 3)
+> - See [[family/vishala]]
+
+> [!deadline] TOMORROW 2026-05-29 — Vayu take-home folder due
+> Roshni Shah (4th Grade Dean) sent take-home folder home May 27. Contents: Final Poetry Packet, American Revolution Essays, Book Clubs Assessment, Unit 7 Math Check-Ins. **Sign the orange "sign and return" sheet and return by Friday May 29.** [[family/vayu|Vayu]]'s **4th grade picnic is TODAY (May 28)** — no parent action needed for picnic. See [[family/vayu]].
+
+> [!todo] ACTION_REQUIRED — Respond to Alyssa Berman: Lutron programming visit June 4
+> Alyssa Berman (alyssa@bermanhomesystems.com) asked May 27: "Can I get a technician to you next Thursday the 4th about 8:30-9am to program the Lutron system?" No reply yet. **Confirm or reschedule June 4 at 8:30-9 AM.** This is the Lutron programming service call — distinct from the unresolved invoice #AAAO13216-04 (billing still pending separately). See [[ALTON]].
+
+> [!deadline] 2026-06-14 — Leader Bank escrow shortage: decide by this date
+> Full details extracted from Leader Bank email (run 138): escrow shortage **$5,366.83** for 185 Davis Ave Unit 8, Brookline MA 02445.
+> - **Pay in full by June 14:** monthly = $4,101.99 (P&I $3,216.94 + Escrow $885.05) from July 1
+> - **Let AutoPay spread over 12 months:** monthly = $4,549.22 (P&I $3,216.94 + Escrow $1,332.28) from July 1
+> - Option A saves $447.23/month; financially ~neutral over 12 months (pay $5,367 now vs pay $5,367 more via escrow), but eliminates ongoing cash-flow drag
+> - If not paid by June 14, Option B auto-activates; AutoPay updates July 1
+> - Pay at leaderbank.com → "Make a One-Time Payment" → "Escrow Only" field
+> - See [[ALTON]]
+
+> [!fact] Vasu dance performance — time confirmed: 4:00–6:00 PM June 2
+> Calendar definitively shows Vasu dance performance Tue June 2, **4:00–6:00 PM ET** (event summary still reads "time to be decided" but calendar datetimes are authoritative). June 2 MKA May term evening is 7:00–9:00 PM — **no overlap**, sequential logistics needed. See [[family/vasu]] and [[family/family-calendar]].
+
+> [!note] MKA new math program — Amplify Desmos Math (2026-2027)
+> MKA announced Amplify Desmos Math for Primary School K-5 starting 2026-2027 (Gretchen Ievers, May 27). Applies to [[family/vayu|Vayu]] (rising 5th) and [[family/vishala|Vishala]] (rising 4th). Family Education Series presentations planned for fall. INFORMATIONAL — no action until school year begins.
+
+> [!note] Calendar — May 28 – June 4 (confirmed live API run 138)
+> | Date | Time (ET) | Event | Notes |
+> |------|-----------|-------|-------|
+> | **Thu 5/28** | all-day | Boston trip ongoing + **Vayu 4th grade picnic TODAY** | No parent logistics needed |
+> | **Fri 5/29** | **8:15–9:45 AM** | **Vishala Capstone Design Fair (TOMORROW)** | Concert attire, 2-adult limit |
+> | **Fri 5/29** | — | **Vayu take-home folder due** | Sign orange sheet + return |
+> | Sat 5/30 | 5:00 PM | Vishala sleepover w/ Amia (drop-off) | [[family/vishala]] |
+> | Sun 5/31 | 12:00 PM | Vishala sleepover pickup | [[family/vishala]] |
+> | **Tue 6/2** | **4:00–6:00 PM** | **Vasu dance performance (TIME CONFIRMED)** | Was "TBD" — now definitive |
+> | **Tue 6/2** | **7:00–9:00 PM** | **May term evening (MKA)** | Sequential with dance; [[family/vayu]], [[family/vishala]] |
+> | Wed 6/3 | 8:00–11:00 PM | Aneeta "Healing" (recurring) | Aneeta calendar |
+> | **Thu 6/4** | **8:30–9:00 AM** | **Berman Lutron tech (AWAITING CONFIRM)** | Respond to Alyssa Berman |
+
+> [!note] Carry-forward P0/P1 (run 138, 2026-05-28)
+> | Item | Status | Days/Notes |
+> |------|--------|------------|
+> | **Vishala Capstone Design Fair** | **TOMORROW 8:15 AM** | MKA Brookside — plan attendance NOW |
+> | **Vayu take-home folder** | **DUE TOMORROW (5/29)** | Sign orange sheet + return by Friday |
+> | **Berman Lutron programming visit** | **RESPOND to Alyssa** | Thu June 4 8:30am — confirm/decline |
+> | **MKA past-due tuition $5,340.00** | **PAY IMMEDIATELY** | parent.blackbaud.school |
+> | Sante Total 990-N | NOT FILED | **13 days overdue** (due 2026-05-15) |
+> | Chase/Sante Total KYC | Act before 2026-06-04 | **7 days remaining** |
+> | Sante Total: reply to Barbara Weis | Needed | Berteau grant + board meeting |
+> | Disney ADR (Blue Bayou) | No confirmation | Day 12+ (window opened 2026-05-17) |
+> | Berman invoice #AAAO13216-04 | Review + pay by CC | Confirm scope before paying |
+> | GitHub Claude permissions | Approve/deny | github.com/settings/installations/90870376 |
+> | Leader Bank Escrow $5,366.83 | Decide by 2026-06-14 | Pay now → $4,101.99/mo; auto-spread → $4,549.22/mo |
+> | June 2: Vasu dance | 4–6 PM (CONFIRMED) | May term 7–9 PM sequential |
+> | vast.ai 97429 Jay's 2 steps | UNRESOLVED | P1 — GPU marketplace blocked |
+> | Cadoo Medical PC $765.21 | PAY | Via Tebra portal or 973-577-3010 |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+> | Nintendo repair | SHIPPED | UPS 1Z9437400395402529 — expect ~5/29–5/30 |
+> | UPS claim 1Z091C2R4220295437 | Monitor | ~2026-06-03 |
+
+## Latest from gather (2026-05-28) — run 139
+
+> [!todo] MKA Summer Enrichment — register before sessions fill
+> m@mail1.veracross.com, 2026-05-28 (8 AM ET): "Summer Enrichment Registration Now Open" — **August 3–14, 2026**, Grades 4–8, MKA (201 Valley Road Montclair). Applies to [[family/vayu|Vayu]] (rising 5th grade) and [[family/vishala|Vishala]] (rising 4th grade). No hard deadline visible; sessions may fill. Decide and register if interested.
+
+> [!note] Vanguard proxy vote — review at proxyvote.com
+> id@proxyvote.com, 2026-05-28 (IMPORTANT INBOX): "Important Information" re one or more Vanguard fund holdings. Login to proxyvote.com and vote or discard. Third proxy-vote notice in recent weeks (INVESCO ×2 were 2026-05-22). FINANCIAL. See [[ALTON]].
+
+> [!note] LEGO Insiders points expiring 2026-06-26 — 982 points (29 days)
+> Noreply@t.crm.lego.com, 2026-05-27: Insiders card 817784981, 982 points expire 06/26/2026. Redeem before expiry at LEGO.com or in-store. Minor.
+
+> [!fact] WD_BLACK SN7100 4TB NVMe SSD purchased (2026-05-27)
+> Newegg / PlatinumMicro: WD_BLACK SN7100 M.2 2280 4TB PCIe 4.0 x4 SSD purchased. Likely for rtxpro6000server storage expansion (Solar Inference LLC asset). Track in hardware ledger for depreciation. See [[business/solar-inference]].
+
+## Latest from gather (2026-05-28) — run 140
+
+> [!todo] Guidepoint consultation #1752401 — respond accept/decline
+> jobrien@guidepointglobal.com, 2026-05-28 15:59 UTC: Expert consultation request on Adamantinomatous Craniopharyngioma. Respond to accept or decline. See [[ALTON]].
+
+> [!note] Montclair United Summer Soccer Sessions 2026 — registration open
+> clubnews@bluesombrero.com, 2026-05-28: Summer Soccer Sessions open for all skill levels. Relevant to [[family/vayu|Vayu]]. No deadline; register when ready.
+
+## Latest from gather (2026-05-29) — run 142
+
+> [!warning] CRITICAL — vast.ai Machine 124192 Offline (Unknown Machine)
+> **console@mg.vast.ai (2026-05-28 23:36 UTC):** "Your Hosted Vast.ai Machine is Offline. Machine 124192."
+> Machine 124192 is NOT in the Sartor memory system (gpuserver1=52271, rtxpro6000server=97429). Most likely candidate: the new second GPU server (GIGABYTE RTX 5090 + Newegg build #448349643) may have been registered on vast.ai as machine 124192 and went offline during setup. SSH to both known machines; run `~/.local/bin/vastai show machines` to enumerate. Confirm C.34113802 contract on gpuserver1 still active. See [[business/solar-inference]].
+
+> [!deadline] 2026-06-05 — NEW: MKA Third Grade Graduation Party (first captured this run)
+> **Vishala Third Grade Graduation Party — June 5, 6:00–7:30 PM ET.**
+> Location: Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 07039.
+> **June 5 full sequence:** Third Grade Closing Exercises (12:00–6:00 PM ET, parent event at MKA) → Graduation Party (6:00–7:30 PM ET, Sports Universe Livingston). 7.5 hours. Plan MKA→Livingston transportation. RSVP via Evite (link on Family calendar event). See [[family/vishala]] and [[family/family-calendar]].
+
+> [!note] Status — TODAY May 29
+> - **Boston trip ended today.** Family returning from 3-day Boston trip (2026-05-27–2026-05-29).
+> - **Vishala Capstone Design Fair: 8:15 AM MKA Brookside** — happening now or concluded. Concert attire, 2-adult limit, ends 9:45 AM.
+> - **Vayu take-home folder: DUE TODAY.** Sign orange sheet + return to Roshni Shah.
+> - **Vishala sleepover TOMORROW (Sat 5/30 at 5 PM ET)** — drop off at Amia's; pickup Sun 5/31 at noon.
+
+> [!note] Calendar confirmed (May 29 – June 5, run 142)
+> | Date | Time ET | Event | Notes |
+> |------|---------|-------|-------|
+> | **Fri 5/29** | **8:15–9:45 AM** | **Vishala Capstone Design Fair (TODAY)** | Concert attire, 2 adults |
+> | **Fri 5/29** | — | **Vayu take-home folder due** | Sign + return |
+> | Sat 5/30 | 5:00 PM | Vishala sleepover w/ Amia | Drop-off |
+> | Sun 5/31 | 12:00 PM | Vishala sleepover pickup | [[vishala]] |
+> | Tue 6/2 | 4:00–6:00 PM | Vasu dance performance | [[vasu]] |
+> | Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Sequential with dance |
+> | Wed 6/3 | 8:00–11:00 PM | Aneeta Healing (recurring) | Aneeta |
+> | **Fri 6/5** | 12:00–6:00 PM | Vishala Third Grade Closing Exercises | Parent event |
+> | **Fri 6/5** | **6:00–7:30 PM** | **MKA Third Grade Graduation Party (NEW)** | Sports Universe Livingston |
+
+## Latest from gather (2026-05-30) — run 147
+
+> [!warning] TODAY — Vishala sleepover drop-off 5 PM
+> Family returned from Boston trip (May 27–29). Vishala sleepover with Amia is **tonight** — drop-off at 5:00 PM. Pickup Sunday May 31 at 12:00 PM. Confirmed on Family calendar (Aneeta created 2026-05-17). See [[family/vishala]].
+
+> [!warning] SECURITY — Ubiquiti + Bitwarden new device logins overnight
+> Three Ubiquiti account-noreply@ui.com emails 02:50–03:37 UTC (SSO email verification, MFA authentication, new-country sign-in "United States — was this you?"). Immediately followed by Bitwarden no-reply@bitwarden.com: "New Device Logged In From Chrome" at 03:42 UTC from IPv6 `2600:4041:410a:fc00:65f8:b879:6757:41a4` (Comcast/Xfinity range, not Fios). Consistent with hotel/mobile network from end of Boston trip — but UniFi controller access from an unrecognized IP warrants explicit confirmation. If Alton, no action. If unclear, rotate Ubiquiti password and audit UniFi controller for changes. See [[ALTON]] and [[network-management]].
+
+> [!todo] ACTION_REQUIRED — Oliver Sartor Hiive fund update (read + reply if needed)
+> oliversartor@icloud.com, 01:37 UTC May 30: forwarded from Sean Jones at Hiive. Subject "Fwd: Update on Your Hiive Fund Investment important." This is an update to the Anthropic family syndicate investment (signed by all 2026-05-05). Content not visible from snippet. Read full email; if it's a distribution notice or material NAV update, reply to Oliver. CC sissy.sartor@gmail.com as needed. See [[reference_anthropic_shares]].
+
+> [!fact] Vayu screen time — 12h57m week of May 22–28 (up 49%)
+> Microsoft Family Safety (familysafety@microsoft.com, 17:54 UTC May 29). May 22–28: **12h57m**. Prior week May 15–21 was 8h41m (from run 110). Up 4h16m (+49%) week-over-week. Vishala: no screen activity last 7 days (Boston trip effect — informational). See [[family/vayu]].
+
+> [!fact] Goddard: Father's Day Celebration + June 1–5 schedule
+> Two Goddard emails May 29: (1) "Father's Day Celebration" — "waffle-y fun" event at Goddard; date not in snippet (likely week of June 9–13); confirm with Goddard. (2) Sneak Peek Jun 1–5: Monday Soccer, **Tuesday June 2 Dance** (confirms recital). See [[family/vasu]].
+
+> [!note] P0 carry-forwards (run 147 status)
+> - **Sante Total 990-N: 15 days overdue.** Not filed per runs 22–146. File at IRS.gov.
+> - **vast.ai Machine 124192: offline** since run 142 alert (2026-05-28). Identify via `vastai show machines` on both servers.
+> - **Chase/Sante Total KYC: 5 days to 2026-06-04.** Contact Pavel Manrique at Chase Montclair.
+> - **MKA $5,340 past-due.** Carry-forward from run 146.
+> - **Disney ADR: status unknown** (13+ days since window opened May 17). Confirm with Nicol Stevenson.
+
+## Latest from gather (2026-05-30) — run 148
+
+> [!warning] CALENDAR CORRECTION — Jun 5 Third Grade Graduation: 8:00 AM–2:00 PM (not noon)
+> Live calendar API (run 148) confirms: "Third grade graduation" (Family calendar) **start 8:00 AM ET, end 2:00 PM ET** on Friday June 5. Runs 142 and 147 recorded this as "12:00–6:00 PM" — that timing was wrong.
+> **Corrected Jun 5 sequence for [[family/vishala|Vishala]]:**
+> - **8:00 AM – 2:00 PM** — Third Grade Graduation ceremony (MKA Brookside — parent event)
+> - **6:00 – 7:30 PM** — MKA Third Grade Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ (RSVP via Evite)
+> Plan morning arrival; 4-hour gap between ceremony end and party. See [[family/vishala]] and [[family/family-calendar]].
+
+> [!note] Amazon shipments confirmed (run 148 — informational)
+> Two shipments dispatched for May 29 overnight order: "Spin Art Machine for Kids" (04:32 UTC) and "Skillmatics Aqua Puffs – 3D..." (04:32 UTC). Both confirmed shipped. No action needed.
+
+## Latest from gather (2026-05-31) — run 151
+
+> [!fact] GOOGL SOLD CALL confirmed — 2026-05-30
+> Fidelity trade confirmation (Fidelity.Investments@mail.fidelity.com, 2026-05-30 14:18 UTC): "SOLD CALL (GOOGL) ALPHABET INC CAP", Account XXXXX8998. This closes or rolls the position flagged in the [!deadline] above ("GOOGL May $285C roll decision"). Exact strike/expiry/premium not visible from email snippet — retrieve from Fidelity portal for tax records. See [[ALTON]].
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1752401: Adamantinomatous Craniopharyngioma
+> jobrien@guidepointglobal.com (2026-05-29 19:41 UTC). Expert consultation request. This is Alton's third Guidepoint request this year (prior: #1718071 Pediatric Low-Grade Glioma run 6; #1732882 Global Oncology Specialists run 55). Neuro-oncology adjacent — respond to accept or decline. See [[ALTON]].
+
+> [!todo] P2 — Jackrabbit / Tumble Zone summer camp registration open
+> noreply@jackrabbittech.com (2026-05-30 22:50 UTC): 9 weeks, June 22–August 20, 2026. Monday–Thursday only. Day rate $50, weekly rate $180 M-Th. Tumble Zone gymnastics affiliation (same sender as prior Gym Day notices). Relevant for [[family/vishala|Vishala]] (gymnastics interest, spring session running through June 4). Evaluate whether to register for any weeks before spots fill.
+
+## Latest from gather (2026-05-31) — run 152
+
+> [!todo] ACTION_REQUIRED — The Pool Guyz: billing statement received
+> billing@thepoolguyznj.com (2026-05-31 03:20 UTC): statement attached as PDF. Amount not visible in email body — open PDF in Gmail to confirm. Payment options: Zelle to Thepoolguyznj@gmail.com (preferred); Venmo @thepoolguyz (Matt Weber, last 4: 3954); check payable to The Pool Guyz, 184 S Livingston Ave, Suite 9 #356, Livingston NJ 07039. See [[ALTON]].
+
+> [!warning] ESCALATED — vast.ai Machine 124192: GPU 100% usage customer complaint
+> console@mg.vast.ai (2026-05-31 03:15 UTC): customer complaint on Machine 124192, Instance ID 38687010. "GPUs are already at 100% usage with just logging in." Machine 124192 was reported offline in run 142 (2026-05-28). Now back online but in degraded state — customer rating risk. SSH to gpuserver1 and rtxpro6000server, run `~/.local/bin/vastai show machines` to enumerate, identify machine 124192, and remediate. See [[business/solar-inference]].
+
+## Latest from gather (2026-05-31) — run 155
+
+> [!note] CSA pickup schedule — household logistics (2026-05-30)
+> Khushbu Patel (khushbu.b.patel@gmail.com, 5/30 17:34 UTC): seasonal CSA share pickup schedule for group including Alton, Aneeta, and Ilan (IlanIG@gmail.com). No missed pickup days expected. Informational unless schedule conflicts arise.
+
+> [!warning] CALENDAR CORRECTION — Livia Birthday Party: 3:00–6:00 PM EDT (not 7:00 PM)
+> Run 155 corrects prior entries (runs 151–154): Livia Birthday Party on 2026-06-07 is **3:00–6:00 PM EDT** (`2026-06-07T19:00:00Z`–`22:00:00Z`). Prior reads said "7:00–10:00 PM ET" — UTC→EDT conversion error. **Plan arrival by 3:00 PM on June 7.** Location not in calendar event; confirm with Aneeta.
+
+## Latest from gather (2026-05-31) — run 156
+
+> [!todo] ACTION_REQUIRED — Hiive Fund Investment update (family-shared fund)
+> oliversartor@icloud.com (2026-05-30 01:37 UTC): Oliver Sartor, MD forwarded a Hiive fund investment update from Sean Jones (sean.jones@mail.hiive.com) to Alton and Sissy Sartor (sissy.sartor@gmail.com). Subject: "Fwd: Update on Your Hiive Fund Investment important." This appears to be a shared family investment position (Oliver + Alton + Sissy) in a Hiive-managed fund — distinct from solo pre-IPO digests. **Open thread in Gmail to review update content.** Contact Oliver Sartor at 504-355-7970 if clarification needed. See [[ALTON]].
+
+## Latest from gather (2026-06-01) — run 157
+
+> [!warning] KYC DEADLINE T-3 DAYS — contact Chase Montclair NOW
+> 2026-06-04 is Thursday. **Three days remaining.** Chase/Sante Total KYC deadline. Contact Pavel Manrique at Chase Montclair branch immediately. Carry-forward P0 since run 146 with no recorded resolution. Risk: Sante Total account freeze. See [[business/sante-total]].
+
+> [!todo] ACTION_REQUIRED — LinkedIn: 3 messages awaiting response
+> messaging-digest-noreply@linkedin.com (2026-05-31 14:03 UTC): 3 messages pending, "Ashley just messaged you." First capture of messaging digest (not job alert digest). Identity of "Ashley" unknown from snippet — likely recruiter or professional contact. Log in to LinkedIn Messages to review and respond. See [[ALTON]].
+
+## Latest from gather (2026-06-01) — run 160
+
+> [!todo] P2 — MKA Middle School Supplies: order by 2026-06-30
+> Veracross / Daniella Kessler (dkessler@mka.org), 2026-06-01 12:00 UTC: "Order your Middle School student supplies for next year from now until Tuesday, June 30." PAMKA-sponsored supply program. Relevant to [[family/vayu|Vayu]] (age 10, entering 5th grade / MKA middle school in fall 2026). Order at PAMKA/Veracross portal before June 30.
+
+> [!fact] Amazon deliveries confirmed — Livia gift likely ready
+> Spin Art Machine for Kids and Skillmatics Aqua Puffs both confirmed delivered May 30 (run 148 had "shipped"). Livia Birthday Party is Jun 7, 3–6 PM at unknown location. If these are the intended gift, it is in hand. Confirm with Aneeta: (a) are these the Livia gift, (b) party location.
+
+> [!warning] KYC DEADLINE T-3 DAYS — carry-forward run 160
+> Contact Pavel Manrique **NOW**: 973-783-5062 / pavel.p.manrique@chase.com, Chase Montclair 19 N Fullerton Ave. **Deadline 2026-06-04.** Risk: Sante Total account freeze. See [[business/sante-total]].
+
+## Latest from gather (2026-06-01) — run 159
+
+> [!fact] GRADUATION TIME TRIPLE-CONFIRMED — 8:00 AM – 2:00 PM ET, Friday June 5
+> Live Calendar API (run 159): `start: 2026-06-05T08:00:00-04:00, end: 2026-06-05T14:00:00-04:00`. Three consecutive runs (148, 157, 159) confirm **8:00 AM – 2:00 PM ET**. The "noon–6 PM" reading in the run 149 entry below is wrong — that was a misread. Use 8 AM for all logistics planning.
+> **June 5 full sequence for [[family/vishala|Vishala]]:**
+> - 8:00 AM – 2:00 PM — Third Grade Graduation, MKA Brookside (parent event; plan morning arrival)
+> - 6:00 – 7:30 PM — MKA Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ
+> 4-hour gap between events. Plan MKA → Livingston routing accordingly.
+
+> [!note] Calendar — run 159 week of June 1–8 (all 5 calendars confirmed live)
+> | Date | Time ET | Event | Notes |
+> |------|---------|-------|-------|
+> | Tue 6/2 | 4:00–6:00 PM | Vasu dance performance | Confirmed |
+> | Tue 6/2 | 7:00–9:00 PM | May term evening (MKA) | Sequential; no conflict |
+> | Wed 6/3 | 8:00–11:00 PM | Aneeta "Healing" (recurring) | Aneeta calendar |
+> | **Fri 6/5** | **8:00 AM – 2:00 PM** | **Vishala graduation** | **8 AM confirmed** |
+> | **Fri 6/5** | **6:00–7:30 PM** | **MKA Graduation Party** | **Sports Universe Livingston** |
+> | Sun 6/7 | 3:00–6:00 PM | Livia Birthday Party | No location; gift needed; confirm with Aneeta |
+
+> [!warning] KYC DEADLINE T-3 DAYS — carry-forward run 159
+> See run 157 entry above. Unchanged. Contact Pavel Manrique NOW (973-783-5062). See [[business/sante-total]].
+
+## Latest from gather (2026-06-01) — run 162
+
+> [!todo] ACTION_REQUIRED — MKA Band: bring Vayu's instrument home before Jun 6
+> m@mail3.veracross.com (Paul Murphy, MKA band, ~4:00 PM ET Jun 1): "Continuing in band? Please take your instrument home & practice this summer!" Year-end instrument return. Retrieve from MKA band room before June 6. See [[family/vayu]].
+
+> [!todo] ACTION_REQUIRED — Goddard picture proofs: pick up from office
+> noreply@kaymbu.com (Alissa DelConte / Goddard, Jun 1 ~12:45 PM ET): "Picture proofs are here! Please stop by the office to pick up your child's proofs." For [[family/vasu|Vasu]] at Goddard. No hard deadline; stop by at next visit.
+
+> [!todo] ACTION_REQUIRED — LinkedIn InMail: Founding CMO, Mayo Clinic-funded AI diagnostics company
+> inmail-hit-reply@linkedin.com (Jun 1 ~2:55 PM ET). Subject: "Founding Chief Medical Officer Search – Mayo Clinic-Funded AI-Powered Diagnostics Company." New direct InMail; distinct from Ashley digest (run 157) and HITLAB invite (run 161). Log in to LinkedIn and respond or decline. See [[ALTON]].
+
+> [!todo] ACTION_REQUIRED — GitHub: Claude app requesting updated permissions
+> noreply@github.com (Jun 1 ~2:30 PM ET): "Updated Permissions Request: The GitHub App Claude is requesting additional access to your account." Review at github.com → Settings → Applications → Claude. Approve or deny. Relevant to [[MACHINES|infrastructure]].
+
+> [!fact] Pool Guyz — service completed Jun 1 at 12:45 PM, pool safe to swim
+> Service Log #36970678. Outstanding bill (run 152) is a separate carry-forward.
+
+> [!warning] KYC DEADLINE T-3 DAYS — carry-forward run 162
+> Contact Pavel Manrique **NOW**: 973-783-5062 / pavel.p.manrique@chase.com, Chase Montclair 19 N Fullerton Ave. **Deadline 2026-06-04 (THURSDAY).** Risk: Sante Total account freeze. See [[business/sante-total]].
+
+## Latest from gather (2026-06-02) — run 163
+
+> [!warning] KYC DEADLINE T-2 DAYS — 2026-06-04 (THURSDAY)
+> Contact Pavel Manrique **TODAY**: 973-783-5062 / pavel.p.manrique@chase.com, Chase Montclair 19 N Fullerton Ave. **Deadline is THURSDAY June 4.** Risk: Sante Total Chase account freeze. P0 carry-forward since run 70 (2026-05-12). See [[business/sante-total]].
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1754453: Pharmacovigilance Space
+> jobrien@guidepointglobal.com (Jack O'Brien), 2026-06-01 22:09 UTC. Client wants to learn about the pharmacovigilance software space — directly aligned with Alton's AZ Global Patient Safety role. Distinct from #1752401 (ACP, run 161) which is also outstanding. Respond or decline within 24–48h. Guidepoint policy: no AI tools during consultation. See [[ALTON]] and [[business/az-career]].
+
+> [!todo] ACTION_REQUIRED — MKA library book returns (Primary School)
+> MKA Primary School (Veracross ~19:01 UTC Jun 1): "all library books and blue bags to be returned and shelved for the summer." Have both Vayu and Vishala return library books to MKA before end of this week (~Jun 6). Distinct from band instrument return (run 162). See [[family/vayu]] and [[family/vishala]].
+
+> [!fact] Ubiquiti Cloud Gateway Max — DELIVERED (confirmed 2026-06-01 ~11:34 PM ET)
+> Amazon delivery confirmation. Closes USPS-package carry-forward from runs 158/160. Network hardware ready for installation. See [[MACHINES]].
+
+> [!fact] TODAY: Vasu dance performance 4:00–6:00 PM + May term evening (MKA) 7:00–9:00 PM
+> Both confirmed from Family calendar. Dance performance at Goddard (teacher Miss Kelsey). May term evening at MKA Brookside. Sequential; no logistical conflict.
+
+> [!note] Fidelity transfer — $10,000 from JPMorgan to account ending 8998 (in transit)
+> Initiated 2026-06-01 4:44 PM ET. Expected 1–3 business days. Informational; no action needed unless tracking expected settlement.
+
+> [!warning] 990-N OVERDUE 18 DAYS — file at IRS.gov → 990-N e-Postcard
+> Not filed per all runs 22–163. See [[business/sante-total]].
+
+## Latest from gather (2026-06-02) — run 164
+
+> [!todo] ACTION_REQUIRED — Pool pump: leave running 24/7 until Pool Guyz resets timers
+> Pool Guyz service log #36970678 (Jun 1, Lexton Bifield, 973-558-3636): **"Leave pump running 24/7 till we reset timers."** Pool is safe to swim, water level OK. Do NOT set pump back to a scheduled/timed mode until technician returns to configure timers. Contact: thepoolguyznj@gmail.com / 973-558-3636.
+
+> [!fact] Amazon order #113-9629939-0784212 arriving TOMORROW June 3, 10 AM–3 PM
+> 32-item summer/vacation prep order to 85 Stonebridge Rd: Sun Bum SPF 50 sunscreen (adult + kids face stick), mosquito repellent bracelets (DEET-free), kids natural deodorant, aloe after-sun, Welly first aid kit (70-count), Tom's kids toothpaste 3-pack, hair ties (120), Hanes boys socks. Disney-trip prep items. **Plan for someone to be home or available June 3, 10 AM–3 PM.**
+
+> [!fact] UPS lost package claim 1Z091C2R4220295437 — RESOLVED
+> Claim closed 2026-06-02. Package from RICHARD ZHANG (reference AMS1111111111) confirmed delivered 2026-05-22, confirmed by Alton 2026-06-01. Remove from carry-forward tracking. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 164)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **T-2 DAYS** | **2026-06-04 (THURSDAY)** |
+> | Sante Total 990-N | OVERDUE 18d | Was due 2026-05-15 |
+> | Guidepoint #1752401 (ACP) | ~25h unanswered | 24–48h from Jun 1 |
+> | Guidepoint #1754453 (PV Space) | ~25h unanswered | 24–48h from Jun 1 22:09 |
+> | HITLAB roundtable Jun 12 | No reply | Respond to LinkedIn |
+> | Disney ADR | Unknown | Window open since May 17 |
+> | GitHub Claude permissions | Unanswered | None stated |
+> | MKA Band instrument | Return before Jun 6 | **2026-06-06** |
+> | MKA library books | Return this week | **~2026-06-06** |
+> | Goddard picture proofs | Pick up at office | No hard deadline |
+> | Pool pump | **Leave running 24/7** | Until Pool Guyz resets timers |
+> | Earnest loan $943.33 | Auto-pay confirm | Due 2026-06-20 |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | By 2026-06-14 |
+
+## Latest from gather (2026-06-02) — run 167
+
+> [!todo] URGENT TONIGHT — Dress the Rainbow Day TOMORROW June 3 (MKA Primary)
+> MKA Primary School (m@mail4.veracross.com), 2026-06-02 13:21 ET: "Wednesday, June 3 — Dress the Rainbow Day." Vayu and Vishala both attend MKA and should wear rainbow/colorful outfits to school tomorrow. Pack tonight. See [[family/vayu]] and [[family/vishala]].
+
+> [!todo] ACTION_REQUIRED — Guidepoint #1754519: AI-powered Clinical Search Space
+> aquintiere@guidepointglobal.com, 2026-06-02 15:06 UTC. THIRD concurrent consultation request (alongside #1752401 ACP and #1754453 PV Space, both ~39h unanswered). Respond or decline within 24–48h. See [[ALTON]] and [[business/az-career]].
+
+> [!todo] ACTION_REQUIRED — MKA Fifth Grade Music Enrollment (Vayu)
+> pkutten@mka.org (Patricia Kutten), 2026-06-02 13:36 ET: Rising 5th graders must enroll in band, chorus, or strings. No hard deadline stated; handle before fall enrollment window closes. See [[family/vayu]].
+
+> [!todo] ACTION_REQUIRED — Wohelo camp prep: verify uniforms + trunk (Vishala)
+> heidi@wohelo.com, 2026-06-02 13:12 ET: "23 days until opening day!" (opens 2026-06-25). Camp expects uniforms received and ready to pack; trunk in living room or already at Lake Wohelo. Verify Vishala has uniforms and trunk is ready. Tuition check ($12,900) was mailed ~May 7; deposit confirmed May 10. See [[family/vishala]].
+
+> [!note] NJ Pride FC Summer Soccer — registration open for July 11 start
+> info@njpridefc.com, 2026-06-02 14:12 ET: 8-week summer season starts July 11 at Verona Park. Spots limited. Decide if Vayu is participating and register at njpridefc.com. See [[family/vayu]].
+
+> [!fact] Fidelity EFT RECEIVED — $10K from JPMorgan to account ending 8998 confirmed
+> Fidelity.Alerts@fidelity.com, 2026-06-02 12:09 ET. Transfer complete. Closes carry-forward from run 163. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 167)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **TOMORROW** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 18d | Was due 2026-05-15 |
+> | Dress the Rainbow Day | **TONIGHT** | Tomorrow Jun 3 |
+> | Guidepoint #1752401 (ACP) | ~39h unanswered | 48h from Jun 1 |
+> | Guidepoint #1754453 (PV Space) | ~39h unanswered | 48h from Jun 1 22:09 |
+> | Guidepoint #1754519 (AI Clin. Search) | NEW ~1h | 24–48h from Jun 2 15:06 |
+> | Vishala Graduation | **THIS FRIDAY** | 2026-06-05 8 AM |
+> | MKA 5th grade music enroll | NEW | Pre-fall |
+> | Wohelo uniforms/trunk | Verify | Camp opens Jun 25 |
+> | MKA Library books | Return by Jun 6 | **2026-06-06** |
+> | MKA Band instrument | Return by Jun 6 | **2026-06-06** |
+> | Disney ADR | Unknown | Window open May 17 |
+> | Pool pump | Leave 24/7 | Until Pool Guyz reset |
+> | Earnest loan $943.33 | Auto-pay confirm | 2026-06-20 |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
+> | NJ Pride FC summer soccer | Register? | July 11 start |
+
+## Latest from gather (2026-06-03) — run 169
+
+> [!warning] P0 carry-forward (run 169) — KYC TOMORROW
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **TOMORROW — T-1** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 19 days | Was due 2026-05-15 |
+> | Vishala Graduation | **THIS FRIDAY** | 2026-06-05 8 AM |
+> | MKA Library + Band instrument | Return Sat | **2026-06-06** |
+> | Guidepoint #1754519 (AI Clinical Search) | ~36h unanswered | Closing today ~3 PM |
+> | Disney ADR | Unknown | Window open |
+> | HITLAB Jun 12 roundtable | No RSVP visible | 2026-06-12 |
+
+> [!fact] Cenlar mortgage autopay — processing 2026-06-05
+> Cenlar (account XXXXXX0414) will auto-debit monthly mortgage payment on Jun 5. INFORMATIONAL — no action needed unless funding account balance is low.
+
+> [!fact] Vayu school account (MyKidsSpending) — Chase ending 8563 debit ~$100 incoming
+> statements@mykidsspending.com (Jun 3): automatic school account top-up within 1-2 days from Chase. INFORMATIONAL. See [[family/vayu]].
+
+## Latest from gather (2026-06-03) — run 170
+
+> [!note] Montclair Library Summer Reading — preregister before school ends
+> "Unearth a Story" program runs June 29–September 4. Preregistration is open now at montclairlibrary.org. School ends Friday Jun 5 — register Vayu (10) and Vishala (8) before then or shortly after. No deadline specified but preregistration is recommended. See [[family/vayu]], [[family/vishala]].
+
+> [!fact] Amazon order #113-1985143-7267402 — shipping delayed
+> Delay notice received Jun 3 3:03 AM. Item not visible in snippet. INFORMATIONAL — monitor inbox for updated delivery window.
+
+## Latest from gather (2026-06-03) — run 171
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1755573: Insulin and GLP-1 Market Insights
+> rthomas@guidepointglobal.com, 2026-06-03 05:36 UTC. Consultation on insulin and GLP-1 market landscape. Accept or decline within 24–48h. See [[ALTON]] for advisory log.
+
+> [!note] ABPN CC Program — complete ABCC Article Exams
+> abpncommunications@abpn.org, 2026-06-02 19:46 ET. ABPN June 2026 Quarterly Update: "Reminder: Complete ABCC Article Exams and Continuing Certification Program." No explicit deadline. Log in to ABPN portal. Ongoing board recertification obligation.
+
+> [!warning] P0 carry-forward (run 171) — KYC DUE TODAY
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **DUE TODAY** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 20 days | Was due 2026-05-15 |
+> | Vishala Graduation | **FRIDAY — 2 days** | 2026-06-05 8:00 AM |
+> | MKA Library + Band instrument | Return Sat | **2026-06-06** |
+> | Livia Birthday Party | Sun, gift needed | 2026-06-07 3 PM |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
+> | HITLAB roundtable | No RSVP visible | 2026-06-12 |
+> | Disney ADR | Unknown | Window open May 17 |
+
+## Latest from gather (2026-06-03) — run 172
+
+> [!fact] Fidelity BOUGHT Micron Technology Inc (MU) — Jun 3, 2026
+> Trade confirmation: BOUGHT MICRON TECHNOLOGY INC, account XXXXX8998. Details require Fidelity login. See [[ALTON]].
+
+> [!fact] Chase CC (…1276) — $73.76 due 2026-06-27, auto-pay enrolled
+> Statement balance $73.76. Auto-pay active — no manual action needed. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 172) — KYC DUE TOMORROW
+> *Correction: run 171 labeled this "DUE TODAY" — current date is Jun 3, deadline is Jun 4.*
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **DUE TOMORROW** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 20 days | Was due 2026-05-15 |
+> | Guidepoint #1755573 (GLP-1) | Respond by Jun 4–5 | ~24–48h from Jun 3 05:36 UTC |
+> | Vishala Graduation | **THIS FRIDAY** | 2026-06-05 noon ET |
+> | MKA Library + Band instrument | Return Sat | **2026-06-06** |
+> | Livia Birthday Party | Sun, gift needed | 2026-06-07 3 PM ET |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
+> | HITLAB roundtable | No RSVP visible | 2026-06-12 |
+> | Disney ADR | Unknown | Window open May 17 |
+
+## Latest from gather (2026-06-03) — run 173
+
+> [!note] Ms. McKeown retiring from MKA — end of school year 2025–2026
+> colleen_muldoon@psbma.org (Jun 3 1:19 PM ET) to "Current and Former KM Families." Ms. McKeown retiring at end of this school year. Email note: "Apologies to those of you who have received this message multiple times!" — may have circulated earlier. Relevant for [[family/vayu]] and [[family/vishala]]. No action required; acknowledge at school events this week. See [[FAMILY]].
+
+> [!fact] Guidepoint #1754519 (AI Clinical Search) — EXPIRED as of ~3 PM Jun 3
+> Window closed. Removed from P0. Remaining active Guidepoint items: #1755573 (GLP-1, respond by ~Jun 4–5); #1752401 (Craniopharyngioma, likely expired); #1754453 (PV Space, likely expired). See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 173)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **DUE TOMORROW** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 20 days | Was due 2026-05-15 |
+> | Guidepoint #1755573 (GLP-1) | Respond by ~Jun 4–5 | ~24–48h from Jun 3 05:36 UTC |
+> | Vishala Graduation | **THIS FRIDAY** | 2026-06-05 noon ET |
+> | MKA Library + Band instrument | Return Sat | **2026-06-06** |
+> | Livia Birthday Party | Sun, gift needed | 2026-06-07 7 PM ET |
+> | HITLAB roundtable | No RSVP visible | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
+> | Disney ADR | Unknown | Window open May 17 |
+
+## Latest from gather (2026-06-03) — run 174
+
+> [!note] Jackrabbit Tech Tumble Zone — lobby renovation, new rules
+> noreply@jackrabbittech.com (Jun 3 4:43 PM ET): Dance mirrors installed in lobby. **New rule: use back lobby entrance for arrivals, dropoff, and pickup during renovation.** Ring bell for lobby-only visits. Applies to Vishala and/or Vasu dance class logistics.
+
+> [!note] NJYS 2026-2027 ODP Tryouts — verify Vayu eligibility
+> Open to players born **2010–2015**. Vayu (age 10 in 2026, born ~2015-2016) — confirm birth year. If born 2015, eligible. Tryout dates: **July 18-19 & August 1-2**. Registration open via sportsaffinity.com. See [[family/vayu]].
+
+> [!fact] Fidelity Rule 4210 — new pattern day trader rules effective 2026-06-04
+> Awareness item. Review Fidelity email for specifics. No trading action required. See [[ALTON]].
+
+> [!warning] CALENDAR CORRECTIONS (run 174) — UTC→EDT errors in runs 172-173
+> - Vishala graduation: **8:00 AM – 2:00 PM EDT** (not "noon" — 12:00Z–18:00Z UTC)
+> - Livia Birthday Party: **3:00 PM – 6:00 PM EDT** (not "7 PM" — 19:00Z–22:00Z UTC; run 155 had corrected this, runs 172-173 reintroduced the error)
+
+> [!warning] P0 carry-forward (run 174)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **DUE TOMORROW** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 20 days | Was due 2026-05-15 |
+> | Guidepoint #1755573 (GLP-1) | Respond by ~Jun 4–5 | ~48h from Jun 3 05:36 UTC |
+> | Fidelity Rule 4210 | Effective tomorrow | **2026-06-04** |
+> | Vishala Graduation | **THIS FRIDAY 8 AM EDT** | 2026-06-05 |
+> | MKA Library + Band instrument | Return Sat | 2026-06-06 |
+> | Livia Birthday Party | Sun 3 PM EDT, gift needed | 2026-06-07 |
+> | HITLAB roundtable | No RSVP visible | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | Decide pay/spread | 2026-06-14 |
+> | Disney ADR | Unknown | Window open May 17 |
+
+## Latest from gather (2026-06-04) — run 175
+
+> [!warning] P0 carry-forward (run 175) — as of 2026-06-04
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | **DUE TODAY** | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 21 days | Was due 2026-05-15 |
+> | Guidepoint #1755573 (GLP-1) | Respond today/tomorrow | ~Jun 5 05:36 UTC |
+> | Fidelity Rule 4210 | **EFFECTIVE TODAY** | 2026-06-04 |
+> | Vishala Graduation | **TOMORROW 8:00 AM EDT** | 2026-06-05 |
+> | MKA Library + Band instrument | Return Sat | 2026-06-06 |
+> | Livia Birthday Party | Sun 3:00 PM EDT, gift needed | 2026-06-07 |
+> | HITLAB roundtable | No RSVP visible | 2026-06-12 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+> | Leader Bank Escrow $5,366.83 | Fidelity $5K transfer in transit | 2026-06-14 |
+> | Disney ADR | Unknown | Window open May 17 |
+> | Hiive Fund update (Oliver Sartor) | Review Gmail thread | — |
+
+> [!fact] Fidelity $5,000 transfer in transit (Jun 3 → Jun 4–5)
+> $5,000 outbound from Fidelity 8998 → JPMorgan Chase. Possible coverage for Leader Bank Escrow $5,366.83 (due Jun 14). Verify receipt. See [[ALTON]], [[daily/2026-06-04]].
+
+> [!note] Chase Zelle — new vendor: Kleen Power Wash
+> Rince Prince / info@kleenpowerwash.com added as Zelle recipient Jun 3. New household maintenance vendor. See [[ALTON]].
+
+## Latest from gather (2026-06-04) — run 176
+
+> [!todo] ACTION_REQUIRED — HIGH PRIORITY
+> **Tesla Solar Roof Change Order CO-01 — review and respond to Steven Schwartz.**
+> Steven Schwartz (CEO, Lucent Energy) emailed Jun 3 4:22 PM with PDF attachment "Lucent Energy - Sartor CO-01.pdf" — formal Change Order for additional costs ahead of Tesla Solar Roof installation. Gmail flagged IMPORTANT.
+>
+> Key points from email body:
+> - Items necessary for manufacturer specs, building code, and long-term performance
+> - Full home exterior painting line item is flagged as potentially reducible — Steven wants to negotiate this
+> - Requested text/call to (201) 362.1306 (cell); offered in-person meeting Jun 3–4 (window passed)
+>
+> **Actions needed:**
+> 1. Review PDF in Gmail: search "Tesla Solar Roof repairs and additions" from steven@lucent-energy.com
+> 2. Text/call Steven: (201) 362.1306
+> 3. Review each line item against the open scope decisions (see "2026-05-08 expanded solar scope + financing" section above)
+> 4. Get Jonathan Francis (CPA) to review before signing — per "Contract amendment with Lucent" open decision above
+> 5. Climate First Bank requires updated contract version before project commencement; any financed-amount increase requires Bank approval
+>
+> **ITC placed-in-service clock: 2026-07-04 deadline (~30 days).** Do not let CO-01 negotiations stall past early June. See [[ALTON]], [[family/active-todos]] prior decision block.
+
+> [!todo] Guidepoint consultation requests — respond by end of day Jun 4
+> Two new requests with ~48h windows:
+> - **AI-powered Clinical Search Space (#1754519)** — aquintiere@guidepointglobal.com, Jun 3 1:54 PM. Matches AZ clinical informatics work.
+> - **Pharmacovigilance Space (#1754453)** — jobrien@guidepointglobal.com, Jun 3 1:05 PM. Matches AZ drug safety work.
+> Accept or decline to preserve goodwill with network. See [[ALTON]].
+
+## Latest from gather (2026-06-04) — run 177
+
+> [!warning] ACTION_REQUIRED — Northwestern Mutual account access change
+> noreply@northwesternmutual.com (Jun 4 5:58 AM ET): Security notification — "Changes to your Northwestern Mutual Online Account access." Log in at northwesternmutual.com and confirm this change is authorized. If not recognized, contact NW Mutual customer security. Account name on email: Emmett Sartor.
+
+> [!fact] GQG Fund proxy vote — check voting deadline
+> id@proxyvote.com (Jun 4 6:21 AM ET): Proxy vote notice for a GQG Partners fund holding. Open the full email, review materials, and vote or abstain before the deadline stated inside. Log in at proxyvote.com. FINANCIAL — See [[ALTON]].
+
+## Latest from gather (2026-06-04) — run 178
+
+> [!deadline] 2026-06-15 — MKA PE Clothes 2026-2027 pre-order
+> WeAreMKA final newsletter (Jun 4): Middle School PE clothes for next year pre-order deadline is **June 15**. School ID: **MON348**. Applies to [[family/vayu|Vayu]] (rising 5th grade). Place order via MKA Veracross supply link. Source: Veracross WeAreMKA 2026-06-04.
+
+> [!deadline] 2026-06-30 — PAMKA Middle School Supply Sale
+> WeAreMKA final newsletter (Jun 4): Order 2026-2027 school supplies by **June 30** (ships to home by Aug 21). School ID: **MON348**. Applies to [[family/vayu|Vayu]] (MS). Portion of sales goes to PAMKA. Source: Veracross WeAreMKA 2026-06-04.
+
+> [!note] Magnus Health 2026-2027 health records — still open
+> WeAreMKA Jun 4 (all-school update): Health information for 2026-2027 school year required. Magnus Health portal action for [[family/vayu|Vayu]] and [[family/vishala|Vishala]] was flagged ACTION_REQUIRED in runs 93/107 (May 20 emails). Verify completion at Magnus Health portal to avoid enrollment block.
+
+> [!fact] Fidelity MU options trade — Jun 4, 10:48 AM
+> New two-leg confirmation in account 8998: BOUGHT CALL (MU) @ $38.60 + SOLD CALL (MU) @ $120.93. Review full trade confirmation at Fidelity.com for strikes, quantity, and expiry. FINANCIAL. See [[ALTON]] and [[daily/2026-06-04]].
+
+## Latest from gather (2026-06-04) — run 179
+
+> [!todo] ACTION_REQUIRED — Goddard Preschool End-of-Year Conference Monday June 8
+> Jacqueline Capote (Goddard admin) via Kaymbu (Jun 4 11:12 AM ET): End-of-year Preschool Conferences scheduled for **Monday June 8**. Sign up now: https://www.signupgenius.com/go/10C0845A4AE2FA3F9CE9. **4 days away.** Applies to Vasu. See [[family/vasu]], [[daily/2026-06-04]].
+
+> [!todo] ACTION_REQUIRED — Ghosty: overdue veterinary services
+> Cambridge Cat Clinic reminder (Jun 4 12:00 PM ET): Overdue services for Ghostie. Cambridge Cat Clinic | 1108 Cambridge Street, Cambridge MA 02139 | 617-245-0245 | info@cambridgecatclinic.com. Schedule appointment ASAP.
+
+> [!fact] HITLAB roundtable Jun 12 — time confirmed 12:30–1:30 PM ET
+> Jerry Antimano LinkedIn InMail (Jun 4 12:05 PM ET): Closed-door pharma executive virtual roundtable. Topic: electrolyte monitoring gaps (hyperkalemia), ECG + wearables. RSVP to Jerry Antimano via LinkedIn. See [[ALTON]].
+
+> [!fact] Montclair United Summer Soccer 2026 — registration open (Vayu)
+> Blue Sombrero email Jun 4: Summer Soccer Sessions registration open for all levels. Decide before sessions fill. See [[family/vayu]].
+
+> [!fact] Fidelity $5K EFT confirmed complete — funds at Chase
+> Run 179 confirms EFT processed (Jun 4 8:07 AM ET). $5,000 at JPMorgan Chase. Leader Bank Escrow $5,366.83 due Jun 14 — gap: $366.83. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 179) — as of 2026-06-04 ~4 PM ET
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Chase/Sante Total KYC | DUE TODAY — completion unknown | **2026-06-04** |
+> | Sante Total 990-N | OVERDUE 21 days | Was due 2026-05-15 |
+> | Guidepoint #1754453 (PV Space) | 48h window expires ~Jun 5 1 PM | **~2026-06-05 13:00 ET** |
+> | Goddard Conference sign-up | Sign up at SignUpGenius | **2026-06-08 (Mon)** |
+> | Vishala Graduation | **TOMORROW 8:00 AM EDT** | 2026-06-05 |
+> | MKA Library + Band instrument | Return Sat | 2026-06-06 |
+> | Livia Party — gift | HAPPY LOLLI delivered; still need separate gift? | 2026-06-07 3 PM |
+> | Ghosty vet | Overdue — schedule Cambridge Cat Clinic | ASAP |
+> | NW Mutual account change | Verify authorization | ASAP |
+> | GQG proxy vote | Vote before deadline in email | TBD |
+> | HITLAB RSVP | Respond to Jerry Antimano | **2026-06-12** |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $367 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Order via Veracross, school ID MON348 | 2026-06-15 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362.1306 | ~Jul 4 ITC deadline |
+> | Magnus Health 2026-27 | Complete for Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | Order school supplies, school ID MON348 | 2026-06-30 |
+> | Disney ADR | Unknown | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+
+## Latest from gather (2026-06-04) — run 180
+
+> [!fact] MKA Third Grade Closing Exercises — logistics email (Jun 4 6:10 PM ET)
+> Veracross (m@mail4.veracross.com): "Please take a moment to read this letter from Katie Banks regarding the logistics of tomorrow's Third Grade Closing Exercises." Full Jun 5 plan: arrive MKA Brookside by 7:45 AM; ceremony 8:00 AM–2:00 PM; 4-hour gap; party at Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 6:00–7:30 PM. See [[family/vishala]].
+
+> [!todo] ACTION_REQUIRED — Guidepoint #1754519 follow-up (AI Clinical Search — second email)
+> aquintiere@guidepointglobal.com (Jun 4 3:52 PM ET): Second email for consultation #1754519. Window re-opened or extended. Respond by ~Jun 5 afternoon. See [[ALTON]].
+
+> [!todo] ACTION_REQUIRED — Goddard picture proof pickup (Vasu)
+> Alissa DelConte (Goddard) via Kaymbu (Jun 4 12:49 PM ET): "Picture Proof Reminder — please stop by the office to pick up your child's picture proofs." Go to Goddard office. See [[family/vasu]].
+
+> [!fact] Handshake AI Project Touchstone — $125/hr (3D Slicer, medical imaging)
+> handshake@g.joinhandshake.com (Jun 4 12:03 PM ET): "Earn $125/hr with Handshake AI - Project Touchstone. Know your way around 3D Slicer?" 3D Slicer = medical imaging platform, directly in Alton's neuro-oncology/neuroimaging domain. Distinct from declined Project Alloy. See [[ALTON]].
+
+> [!fact] NJ Pride FC Summer Soccer Camp — August (Vayu)
+> info@njpridefc.com (Jun 4 1:57 PM ET): Half-day August camp, partnership with Our Little Fingers STEM/art. Distinct from Montclair United Summer Soccer (run 179). See [[family/vayu]].
+
+> [!warning] P0 carry-forward (run 180) — as of 2026-06-04 ~8:30 PM ET
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Guidepoint #1755573 (GLP-1) | **EXPIRING TONIGHT ~1:36 AM ET** | Jun 5 05:36 UTC |
+> | Vishala Graduation | **TOMORROW 8:00 AM EDT** | 2026-06-05 |
+> | Chase/Sante Total KYC | Due today — completion unknown | 2026-06-04 |
+> | Sante Total 990-N | OVERDUE 21 days | Was due 2026-05-15 |
+> | Guidepoint #1754453 (PV Space) | Expires ~Jun 5 1:05 PM ET | ~2026-06-05 13:05 ET |
+> | Guidepoint #1754519 (AI Clinical) | New follow-up email today; still open | ~Jun 5 |
+> | MKA Library + Band instrument | Return Saturday | 2026-06-06 |
+> | Goddard picture proof pickup | Stop by Goddard office | ASAP |
+> | Livia Birthday Party | Sun 3:00 PM EDT (gift delivered) | 2026-06-07 |
+> | Goddard Preschool Conference | Sign up at SignUpGenius | 2026-06-08 (Mon) |
+> | Ghosty vet | Overdue — Cambridge Cat Clinic 617-245-0245 | ASAP |
+> | NW Mutual account change | Verify at northwesternmutual.com | ASAP |
+> | GQG proxy vote | Vote before deadline in full email | TBD |
+> | HITLAB RSVP | Respond to Jerry Antimano via LinkedIn | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | $5K staged at Chase; gap $366.83 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Order via Veracross, school ID MON348 | 2026-06-15 |
+> | Handshake Project Touchstone | Evaluate $125/hr 3D Slicer gig | Soon |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362.1306 | ~Jul 4 ITC deadline |
+> | Magnus Health 2026-27 | Complete for Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | Order school supplies, school ID MON348 | 2026-06-30 |
+> | Disney ADR | Unknown status | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+
+## Latest from gather (2026-06-05) — run 181
+
+> [!warning] P0 carry-forward (run 181) — Jun 5 morning
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Guidepoint #1755573 (GLP-1) | **EXPIRED** (window closed ~1:36 AM ET) | — |
+> | Guidepoint #1754453 (PV Space) | **EXPIRING TODAY ~1:05 PM ET** | Jun 5 13:05 ET |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open; 2nd email Jun 4 | ASAP |
+> | Vishala Graduation + Party | **TODAY**: 8:00 AM–2:00 PM (MKA) + 6:00–7:30 PM (Sports Universe, Livingston) | 2026-06-05 |
+> | Chase/Sante Total KYC | Was due 2026-06-04 — completion unknown | OVERDUE |
+> | Sante Total 990-N | OVERDUE 22 days (was due 2026-05-15) | NOW |
+> | MKA Library + Band instrument return | **TOMORROW Saturday** | 2026-06-06 |
+> | Livia Birthday Party | Sun 3:00–6:00 PM EDT; gift in hand; confirm location with Aneeta | 2026-06-07 |
+> | Goddard Preschool Conference sign-up | Link in [[vasu]]; sign up before Monday | Before 2026-06-08 |
+> | Ghosty vet | Overdue; Cambridge Cat Clinic 617-245-0245 | ASAP |
+> | Leader Bank Escrow $5,366.83 | $5K staged at Chase; gap $366.83 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Via Veracross, school ID MON348 | 2026-06-15 |
+> | HITLAB RSVP | Respond to Jerry Antimano via LinkedIn | Before 2026-06-12 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362-1306 | ~Jul 4 ITC deadline |
+> | Magnus Health 2026-27 | Complete for Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | Order school supplies, school ID MON348 | 2026-06-30 |
+> | Disney ADR | Status unknown | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics + childcare if needed | 2026-06-11 7 PM |
+
+## Latest from gather (2026-06-05) — run 183
+
+> [!todo] ACTION_REQUIRED — PCSS-MAUD Webinar June 10, 12–1 PM ET (5 days)
+> jane@aaap.org (Jun 4 5:31 PM ET): "Managing Alcohol Use Disorder in OUD Treatment Settings." Presenter: David Marcovitz, MD. **Wednesday June 10, 12:00–1:00 PM ET.** Free webinar via AAAP/PCSS. Register if interested — 5 days out. Relevant to PCSS membership and addiction medicine CME. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 183) — Jun 5 evening
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | Guidepoint #1755573 (GLP-1) | EXPIRED | CLOSED |
+> | Guidepoint #1754453 (PV Space) | Window closed today ~1:05 PM ET | CLOSED/unknown |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | PCSS-MAUD Webinar Jun 10 | Decide + register | **2026-06-10 noon ET** |
+> | Chase/Sante Total KYC | OVERDUE since Jun 4 | NOW |
+> | Sante Total 990-N | OVERDUE 22 days (was due 2026-05-15) | NOW |
+> | MKA Library + Band instrument return | Tomorrow Saturday | 2026-06-06 |
+> | Livia Birthday Party | Sun 3–6 PM EDT; gift in hand | 2026-06-07 |
+> | Goddard Preschool Conference sign-up | Sign up before Monday | 2026-06-08 |
+> | Ghosty vet | ASAP | — |
+> | HITLAB RSVP | Respond to Jerry Antimano via LinkedIn | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Via Veracross MON348 | 2026-06-15 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362-1306 | ~Jul 4 ITC deadline |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | Order school supplies MON348 | 2026-06-30 |
+> | Disney ADR | Unknown status | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+> | DEA Fentanyl Summit | Decide whether to register | Not stated |
+
+## Latest from gather (2026-06-05) — run 184
+
+> [!deadline] 2026-06-15 — NEW — NJ-1065/NJ-CBT-1065 Quarterly Payment — Solar Inference LLC
+> NJ DORES Business Registry Tax Filing Reminder (donotreply@getgov2go.com, Jun 5 9:12 AM ET): Partnership Return Estimated Quarterly Payment due 2026-06-15 for SOLAR INFERENCE LLC. 10 days. Contact [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com, 914-488-5727) to confirm Q2 payment amount and NJ filing method. Aligns with [[matters/q2-2026-estimated-tax|Q2 2026 estimated tax matter]]. See [[TAXES]], [[business/solar-inference]].
+
+> [!todo] ACTION_REQUIRED — URGENT TONIGHT — Goddard Preschool Conferences MONDAY June 8
+> Jacqueline Capote (Goddard) via Kaymbu (Jun 5 9:56 AM ET): "Conferences are Monday! Sign up here if you would like to meet with your child's teacher!" It is Friday evening. Conferences are in 2 days. Sign up at SignUpGenius link in email. See [[family/vasu]].
+
+> [!warning] P0 carry-forward (run 184) — Jun 5 late evening
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **NJ-1065 Q2 — Solar Inference LLC** | **NEW — contact CPA** | **2026-06-15** |
+> | Goddard Conference sign-up | **TONIGHT** — conferences Monday Jun 8 | **2026-06-08** |
+> | Guidepoint #1754453 (PV Space) | CLOSED (expired ~1:05 PM ET today) | CLOSED |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | PCSS-MAUD Webinar Jun 10 | Register if interested | 2026-06-10 noon ET |
+> | Chase/Sante Total KYC | OVERDUE since Jun 4 | NOW |
+> | Sante Total 990-N | OVERDUE 22 days | NOW |
+> | MKA Library + Band instrument return | TOMORROW Saturday | 2026-06-06 |
+> | Livia Birthday Party | Sun 3–6 PM EDT; gift in hand | 2026-06-07 |
+> | Ghosty vet | ASAP | — |
+> | HITLAB RSVP | Respond to Jerry Antimano via LinkedIn | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Via Veracross MON348 | 2026-06-15 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362-1306 | ~Jul 4 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Unknown status | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+> | DEA Fentanyl Summit | Decide whether to register | Not stated |
+
+## Latest from gather (2026-06-05) — run 185
+
+> [!todo] ACTION_REQUIRED — Venmo $360: Rachelle Trammel (4 sessions)
+> venmo@venmo.com (Jun 5 ~1:40 PM ET): @Rachelle-trammel requesting $360.00 from @AltonSartor. Sessions: May 21, May 26, June 2, June 4 (~$90/session × 4). Likely a childcare, tutoring, or household-service provider. Verify identity and service context, then pay via Venmo if legitimate. See [[daily/2026-06-05]].
+
+> [!todo] ACTION_REQUIRED — Guidepoint #1755072: Biosimulation Software Solutions
+> pmoustaka@guidepointglobal.com (Jun 5 ~3:39 PM ET): New consultation. Client seeking experts familiar with Biosimulation Software (Certara Simcyp/Phoenix, Simulations Plus GastroPlus/PKanalix/Monolix, MathWorks SimBiology). Accept or decline ASAP. See [[ALTON]], [[business/az-career]].
+
+> [!warning] P0 carry-forward (run 185) — Jun 5 final
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **NJ-1065 Q2 — Solar Inference LLC** | Contact [[people/jonathan-francis\|Jonathan Francis]] (jf@francis-cpa.com) | **2026-06-15** |
+> | **Venmo $360 Rachelle Trammel** | 4 sessions May 21/26 + Jun 2/4 — verify + pay | ASAP |
+> | Goddard Preschool Conference sign-up | TONIGHT — conferences Monday | **2026-06-08** |
+> | Guidepoint #1755072 Biosimulation | NEW — accept or decline | ASAP |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | PCSS-MAUD Webinar Jun 10 | Register if interested | 2026-06-10 noon ET |
+> | Chase/Sante Total KYC | OVERDUE since Jun 4 | NOW |
+> | Sante Total 990-N | OVERDUE 22 days | NOW |
+> | MKA Library + Band instrument return | TOMORROW Saturday | 2026-06-06 |
+> | Livia Birthday Party | Sun 3–6 PM EDT; gift in hand | 2026-06-07 |
+> | Ghosty vet | ASAP | — |
+> | HITLAB RSVP | Respond to Jerry Antimano via LinkedIn | 2026-06-12 |
+> | Leader Bank Escrow $5,366.83 | $5K Chase; gap $366.83 | 2026-06-14 |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | 2026-06-15 |
+> | Lucent Energy CO-01 | Review + call Steven (201) 362-1306 | ~Jul 4 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Unknown status | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics | 2026-06-11 7 PM |
+> | DEA Fentanyl Summit | Decide | Not stated |
+
+## Latest from gather (2026-06-06) — run 186
+
+> [!deadline] 2026-06-08 (Monday) — Doximity Residency Survey — FINAL CHANCE
+> residency@doximity.com (Jun 5 9:00 PM ET): "This is your final chance to submit nominations of residency programs that offer quality clinical training. The survey will close on **June 8th 2026**." Tulane University School of Medicine. Deadline Monday — 2 days. Log in to Doximity and submit. See [[ALTON]].
+
+> [!todo] Guidepoint Blood Collection Survey — $50 (new, respond ASAP)
+> surveys@guidepoint.com (Jun 5 6:57 PM ET): Paid online survey on blood collection research; $50 if screening passes. Accept or decline ASAP. See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 186) — Sat Jun 6 morning
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **MKA Library + Band instrument return** | **TODAY** Saturday Jun 6 | **TODAY** |
+> | **Livia Birthday Party** | Tomorrow Sun 3–6 PM EDT | **2026-06-07** |
+> | **Doximity Residency Survey** | FINAL CHANCE — closes Monday | **2026-06-08** |
+> | Goddard Preschool Conference sign-up | Status unknown (was "tonight" in run 185) | 2026-06-08 |
+> | Venmo $360 Rachelle Trammel | 4 sessions May 21/26 + Jun 2/4 | ASAP |
+> | Guidepoint #1755072 (Biosimulation) | Accept or decline | ASAP |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | Guidepoint Blood Collection Survey | $50; accept or decline | ASAP |
+> | PCSS-MAUD Webinar Jun 10 | Register if interested | **2026-06-10 noon ET** |
+> | HITLAB RSVP | Jerry in LinkedIn inbox | **2026-06-12** |
+> | Chase/Sante Total KYC | OVERDUE | NOW |
+> | Sante Total 990-N | OVERDUE 23 days | NOW |
+> | Ghosty vet | ASAP | — |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | 2026-06-14 |
+> | NJ-1065 Q2 — Solar Inference LLC | Contact Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | 2026-06-15 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362-1306 | ~Jul 4 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Unknown status | Window open May 17 |
+> | Dinner Princeton? | Confirm logistics + childcare | 2026-06-11 7 PM |
+> | DEA Fentanyl Summit | Decide whether to register | Not stated |
+
+## Latest from gather (2026-06-06) — run 189
+
+> [!fact] Fidelity BOUGHT MICRON TECHNOLOGY INC — Jun 6 (account XXXXX8998)
+> New equity position: Alton bought Micron Technology (MU) today. Fidelity trade confirmation received Jun 6 12:38 PM UTC. Same brokerage account as the May 30 GOOGL SOLD CALL. Informational for family finance tracking. See [[ALTON]].
+
+> [!warning] Venmo $360 — Rachelle trammel — 4th reminder sent Jun 6
+> 4 unpaid sessions: May 21, 26 + Jun 2, 4. Fresh Venmo reminder received Jun 6 1:16 PM. Still in P0. Pay via Venmo @Rachelle-trammel. Verify identity before paying if not confirmed.
+
+> [!note] Goddard PT Conference — confirmed Monday June 8 (sign-up deadline passed)
+> Kaymbu Sneak Peek email (Samantha Ramsden, Jun 5): "Monday June 8 — Soccer, Preschool Parent Teacher conferences." Sign-up deadline was Friday June 5 (yesterday). Status: unknown whether Alton signed up. **If no slot reserved: contact Goddard directly today (Saturday).** Conference is in 2 days. See [[family/vasu]].
+
+## Latest from gather (2026-06-07) — run 191
+
+> [!warning] P0 BUSINESS — vast.ai machines 52271 + 124192 OFFLINE (Jun 6 11:35 PM ET)
+> Automated vast.ai alert (console@mg.vast.ai). Machine 52271 = gpuserver1 (RTX 5090, active reserved contract C.34113802 through 2026-08-24). Machine 124192 = unknown — not in registry. Could be the new AM5 build if listed. Revenue at risk. SSH verification needed. See [[MACHINES]] and [[business/solar-inference]].
+
+> [!todo] ACTION_REQUIRED — Venmo $360 Rachelle trammel (5th reminder)
+> venmo@venmo.com (Jun 6 13:16 ET): 5th contact. Sessions May 21, 26 + Jun 2, 4. ~$90 × 4 = $360. Twice-weekly pattern consistent with housekeeper. Pay via Venmo @Rachelle-trammel once identity confirmed. Carry-forward from runs 185–190.
+
+> [!fact] Fidelity 3-trade confirmation Jun 6 — full position (account XXXXX8998)
+> Run 189 snippet captured BOUGHT MICRON TECHNOLOGY INC only. Full trade detail: BOUGHT MU @ $889.50, BOUGHT SANDISK CORP COM @ $1,555.99, BOUGHT CALL (MU) MICRON TECHNOLOGY @ $49.05. Bullish MU/memory thesis (AI HBM demand). See [[ALTON]].
+
+> [!warning] P0 carry-forward (run 191) — Sun Jun 7
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **NEW — verify gpuserver1** | **NOW** |
+> | **Livia Birthday Party** | **TODAY** 3:00–6:00 PM EDT | **TODAY** |
+> | **Venmo $360 Rachelle trammel** | 5th reminder — pay ASAP | ASAP |
+> | **Chase credit report alert** | NEW — review balance change | NOW |
+> | Doximity Residency Survey | FINAL — closes Mon Jun 8 | **2026-06-08** |
+> | Goddard Preschool Conference | Mon Jun 8; contact Goddard if no slot | **2026-06-08** |
+> | Guidepoint Blood Collection Survey $50 | Accept or decline | ASAP |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | PCSS-MAUD Webinar Jun 10 | Register if interested | **2026-06-10 noon ET** |
+> | HITLAB RSVP | Jerry in LinkedIn inbox | **2026-06-12** |
+> | Chase/Sante Total KYC | OVERDUE | NOW |
+> | Sante Total 990-N | OVERDUE 23 days | NOW |
+> | Ghosty vet | ASAP | — |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | 2026-06-14 |
+> | NJ-1065 Q2 — Solar Inference LLC | Contact Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Via Veracross MON348 | 2026-06-15 |
+> | Dinner Princeton? | Thu Jun 11 7 PM — confirm logistics | 2026-06-11 |
+> | Lucent Energy CO-01 | Review PDF + call Steven (201) 362-1306 | ~Jul 4 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Status unknown | Window open May 17 |
+> | DEA Fentanyl Summit | Decide | Not stated |
+
+## Latest from gather (2026-06-07) — run 192
+
+> [!fact] RESOLVED — Venmo $360 Rachelle trammel PAID
+> Payment completed Jun 6 (transaction ID 4614006556736542691, $360.00 via Venmo). Confirmed via receipt "You paid Rachelle trammel $360.00 — Gym" (Jun 6, 10:47 PM ET). She then cancelled the open request (Jun 7, 3:33 AM ET). Item CLOSED. Carry-forward from runs 185–191.
+
+> [!fact] Cenlar mortgage — $2,829.92 applied 2026-06-05
+> Cenlar loan payment applied June 5, 2026. Amount: $2,829.92. Mortgage current. Informational. See [[ALTON]].
+
+> [!warning] FLAG — LegalZoom "Emmett" entity — 9-month check-in (Jun 6)
+> LegalZoom emailed alto84@gmail.com (Jun 6 3:02 PM ET) addressed to "Emmett": "It's been 9 months since you've formed your business!" Nine months back = ~September 2025. Not Solar Inference LLC. Unknown entity. Confirm: (a) is there an "Emmett" LLC/entity intentionally formed in Sep 2025? (b) if yes, does it have active state compliance obligations? See [[BUSINESS]].
+
+> [!warning] P0 carry-forward (run 192) — Sun Jun 7 afternoon
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | P0 — verify gpuserver1 | **NOW** |
+> | **Livia Birthday Party** | TODAY 3–6 PM EDT | **TODAY** |
+> | Doximity Residency Survey | FINAL — closes tomorrow | **2026-06-08** |
+> | Goddard Preschool Conference | Mon Jun 8 — contact if no slot | **2026-06-08** |
+> | Guidepoint Blood Collection $50 | Accept or decline | ASAP |
+> | Guidepoint #1754519 (AI Clinical Search) | Still open | ASAP |
+> | Aneeta SMART Providers Call | Tue Jun 10 noon–1 PM ET Zoom | **2026-06-10** |
+> | PCSS-MAUD Webinar Jun 10 | Register if interested | **2026-06-10** |
+> | HITLAB RSVP | Jerry in LinkedIn inbox | **2026-06-12** |
+> | Chase/Sante Total KYC | OVERDUE | NOW |
+> | Sante Total 990-N | OVERDUE 23 days | NOW |
+> | Ghosty vet | ASAP | — |
+> | Leader Bank Escrow $5,366.83 | $5K Chase; gap $366.83 | **2026-06-14** |
+> | NJ-1065 Q2 — Solar Inference LLC | Contact Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | 2026-06-15 |
+> | Dinner Princeton? | Thu Jun 11 7 PM — confirm logistics | **2026-06-11** |
+> | LegalZoom "Emmett" entity | Identify or confirm | ASAP |
+> | Lucent Energy CO-01 | Review PDF + call Steven | ~Jul 4 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Status unknown | Window open May 17 |
+> | DEA Fentanyl Summit | Decide | Not stated |
+
+## Latest from gather (2026-06-07) — run 195
+
+> [!todo] ACTION_REQUIRED — Pool Guy NJ billing request
+> Billing@thepoolguyznj.com (Jun 7 9:02 AM ET, IMPORTANT): "Just reviewing your account and was hoping we could draw down the balance a bit today. Our zelle is thepooguyznj@gmail.com." Pool Guyz LLC is the household pool service (last service Jun 1 — Lexton Bifield, pool safe to swim, timers still need reset; prior billing statement was May 31 run 151). Amount not stated in email. Pay via Zelle: thepooguyznj@gmail.com, or call 973-558-3636.
+
+> [!warning] P0 carry-forward (run 195) — Sun Jun 7 evening
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 5th run** | **NOW** |
+> | **Pool Guy NJ billing** | Balance owed — Zelle thepooguyznj@gmail.com | **ASAP** |
+> | Chase/Sante Total KYC | OVERDUE | NOW |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | **2026-06-14** |
+> | NJ-1065 Q2 — Solar Inference LLC | Contact Jonathan Francis | **2026-06-15** |
+> | HITLAB RSVP (Jerry Antimano) | Respond via LinkedIn | **2026-06-12** |
+> | Dinner Princeton? | Thu Jun 11 7 PM — confirm logistics + childcare | **2026-06-11** |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | Guidepoint #1752401 (craniopharyngioma) | Accept or decline | ASAP |
+> | Handshake AI Project Touchstone | Accept or decline ($125/hr) | ASAP |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | 2026-06-15 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | PAMKA Supply Sale (Vayu) | School supplies MON348 | 2026-06-30 |
+> | Disney ADR | Status unknown | Window open May 17 |
+> | Pool pump timers | Leave 24/7 until Pool Guyz reset | Until service |
+
+## Latest from gather (2026-06-08) — run 199
+
+> [!todo] ACTION_REQUIRED — Vishala Orange Ball Summer Camp daily logistics (Jun 8–19)
+> notifications@courtreserve.com (Jun 8, 13:39 UTC): Vishala registered for **Orange Ball Summer Camp Full Day** at West Orange Tennis Club. Runs **Jun 8–12 and Jun 15–19** (10 weekdays total). Full-day program. Camp is NOT on any monitored calendar — add event. Confirm daily transportation plan (dropoff/pickup at West Orange Tennis Club). Camp started today; Jun 9 logistics needed now. See [[family/vishala]], [[daily/2026-06-08]].
+
+> [!fact] Goddard Preschool Conference — TODAY confirmed (Jun 8, 13:31 UTC)
+> kaymbu.com reminder from Alissa DelConte: "Preschool Conferences Today! Please make sure you arrive 5 minutes before your scheduled conference time." Conference for Vasu happening today. Outcome not visible in pipeline. See [[family/vasu]].
+
+> [!fact] "Emmett Sartor" identity — 4th data point (Jun 8)
+> PayPal Business Loan email (Jun 8, 15:24 UTC) addressed to "Emmett Sartor" — same name as USPS (Jun 7, Jun 8) and Target survey (Jun 7). Four services now use "Emmett Sartor": USPS, Target, PayPal, and the LegalZoom entity (~Sep 2025). Open question: what is the full legal/business context? See LegalZoom "Emmett Sartor" P0 item.
+
+## Latest from gather (2026-06-08) — run 200
+
+> [!deadline] 2026-07-20 — ACTION REQUIRED: Chase / Sante Total
+> **Chase emailed directly today (Jun 8, 17:39 UTC):** "Please contact us to provide missing information before 07/20/2026, to avoid account restriction — SANTE TOTAL." Hard deadline **2026-07-20** — do not let slide. Account restriction would freeze Sante Total's Chase banking access. Contact Chase with required KYC/compliance documentation. See [[business/sante-total]].
+
+> [!todo] TOMORROW Jun 9 — CSA first pickup
+> Bloomfield-Montclair CSA 2026 season starts tomorrow. First pickup is **Tuesday June 9**. Bring a reusable grocery bag. Source: jljmoo@aol.com, Jun 8 16:20 UTC. See [[FAMILY]].
+
+> [!fact] Pool serviced today — safe to swim (Jun 8, 12:10 PM ET)
+> The Pool Guyz LLC: Service Log #37037935 completed. Weekly service, main pool at 85 Stonebridge, **Status: Safe to swim.** Pay outstanding balance when possible (Zelle: thepooguyznj@gmail.com).
+
+> [!todo] ABPN Continuing Certification — quarterly reminder received (Jun 8)
+> abpncommunications@abpn.org: June 2026 quarterly update — reminder to complete ABCC Article Exams and CC Program participation. Alton's board-certification maintenance obligation. No stated deadline but ongoing compliance item. See [[ALTON]].
+
+## Latest from gather (2026-06-09) — run 201
+
+> [!warning] P0 NEW — Goddard School CLOSED Thursday June 11 — CHILDCARE REQUIRED ALL DAY
+> noreply@kaymbu.com (Jun 8, 21:18 UTC): Montclair Township water shutoff closes The Goddard School of Montclair on Thursday June 11. Vasu needs full-day childcare coverage. **CONFLICT: Dinner Princeton? is also Thu June 11 at 7 PM.** Need childcare arranged from school hours through evening. Act today. See [[family/vasu]], [[daily/2026-06-09]].
+
+> [!deadline] 2026-06-10 — Hiive Standard Fund II: CLOSING TOMORROW
+> opportunities@mail.hiive.com (Jun 8, 20:00 UTC): Standard Fund II (SpaceX, OpenAI, Shield AI, Databricks). Over 95% subscribed; still open but closing June 10. **Invest or pass decision required TODAY.** See [[daily/2026-06-09]].
+
+> [!warning] P0 carry-forward (run 201) — Tue Jun 9
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 11th run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | **NEW — arrange TODAY** | **Thu 2026-06-11** |
+> | **Hiive Standard Fund II** | Decision TODAY — closing Jun 10 | **2026-06-10** |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | HITLAB RSVP (Jerry Antimano) | Respond via LinkedIn | **2026-06-12** |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | **2026-06-14** |
+> | NJ-1065 Q2 — Solar Inference LLC | Contact Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15** |
+> | Dinner Princeton? | Thu Jun 11 7 PM — confirm logistics + childcare | **2026-06-11** |
+> | Pool Guy NJ billing | Balance owed — Zelle thepooguyznj@gmail.com | ASAP |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | Handshake AI Project Touchstone | Accept or decline ($125/hr) | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | 2026-06-30 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+
+## Latest from gather (2026-06-09) — run 202
+
+> [!fact] GIGABYTE GeForce RTX 5090 ORDERED — Amazon Jun 9, ~10 PM ET
+> Second RTX 5090 ordered (GIGABYTE brand). Combined with vertical GPU mount bracket + GIGA-MEGA PCIe 5.0 X16 riser (both delivered Jun 8), this is fleet expansion hardware. Most likely: second GPU for machine 124192 (AM5 build: Ryzen 9 9950X + ASRock X870E TAICHI). Capital acquisition for Solar Inference LLC — track for depreciation. See [[MACHINES]], [[business/solar-inference]].
+
+> [!fact] NJ MVC Vehicle Registration Renewed — COMPLETE
+> $381.50 + $9.27 service fee paid via NJ Portal, Jun 9 01:41 UTC. CLOSED. See [[ALTON]].
+
+> [!fact] FIS Government Payment Confirmation — verify destination
+> donotreply@fisgov.com (Jun 9 01:20 UTC): payment received and will be credited. Amount not visible in snippet. Possibly NJ-1065 Q2 estimated tax or Leader Bank escrow coverage (due Jun 14). Verify purpose in FIS account before assuming Leader Bank is covered.
+
+> [!warning] P0 carry-forward (run 202) — Tue Jun 9 midday
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 12th+ run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | UNRESOLVED — arrange TODAY | **Thu 2026-06-11 (2 days)** |
+> | **Hiive Standard Fund II** | CLOSING TODAY — invest or pass | **2026-06-10 TODAY** |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | Vishala Orange Ball Summer Camp | Day 2 of 10 (Jun 9–19, daily) | DAILY through Jun 19 |
+> | **HITLAB RSVP (Jerry Antimano)** | Respond via LinkedIn | **2026-06-12 (3 days)** |
+> | **Leader Bank Escrow $5,366.83** | FIS payment Jun 9 — verify applied | **2026-06-14 (5 days)** |
+> | **NJ-1065 Q2 — Solar Inference LLC** | Call Jonathan Francis | **2026-06-15 (6 days)** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | 2026-06-15 |
+> | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel logistics | **2026-06-11** |
+> | FIS payment Jun 9 | Verify destination/purpose | ASAP |
+> | Pool Guy NJ billing | Balance owed — Zelle thepooguyznj@gmail.com | ASAP |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | Handshake Project Touchstone | Accept or decline ($125/hr) | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | 2026-06-30 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | NJ MVC Registration | PAID Jun 9 — CLOSED | — |
+
+## Latest from gather (2026-06-09) — run 203
+
+> [!todo] ACTION_REQUIRED — Tribeca Pediatrics portal: 7+ unread messages (2 new today)
+> Two rapid portal notifications from info@tribecapediatrics.com at Jun 9 11:56 and 11:57 AM UTC (7:56–7:57 AM ET). Two messages within 60 seconds may indicate a single event triggering duplicate notifications, or two distinct updates (appointment, results, billing). Prior unread count: 5+ as of run 65 (May 5). Total now 7+. Oldest messages may be significantly overdue. Check portal today: http://tpeds.co/13kn. See [[family/vayu]] (prior balance was paid Apr 13; new content unknown).
+
+> [!warning] P0 carry-forward (run 203) — Tue Jun 9 morning
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 13th+ run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | UNRESOLVED — 2 days left | **Thu 2026-06-11** |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | **Tribeca Pediatrics portal** | 7+ unread — check today | ASAP |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Vishala Orange Ball Summer Camp | Day 3 of 10 (Jun 9–19, daily) | DAILY through Jun 19 |
+> | **HITLAB RSVP (Jerry Antimano)** | Respond via LinkedIn | **2026-06-12 (3 days)** |
+> | **Leader Bank Escrow $5,366.83** | FIS payment Jun 9 — verify applied | **2026-06-14 (5 days)** |
+> | **NJ-1065 Q2 — Solar Inference LLC** | Call Jonathan Francis | **2026-06-15 (6 days)** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15 (6 days)** |
+> | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel | **2026-06-11** |
+> | FIS payment Jun 9 | Verify destination/purpose | ASAP |
+> | Pool Guy NJ billing | Balance owed | ASAP |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+
+## Latest from gather (2026-06-09) — run 204
+
+> [!todo] ACTION_REQUIRED — ASAP — Sante Total Haiti wire (Alison Smith)
+> alison.annette.smith@gmail.com (Jun 9 15:57 UTC), CC: [[people/barbara-weis|Barbara Weis]] (dye2tie@verizon.net), Erick Delss (edelss@hotmail.com). Subject: "Re: Haiti." Snippet: "Looping in Alton bc he sends the money. We usually do a wire transfer as we haven't had a good experience with Fonkoze in the past." Alison is flagging Alton to execute a Haiti program wire. Wire explicitly preferred over Fonkoze. **Review thread for recipient, amount, purpose; authorize or hold.** No disbursements without Alton's explicit authorization. See [[business/sante-total]].
+
+> [!warning] P0 carry-forward (run 204) — Tue Jun 9 afternoon
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 14th+ run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | UNRESOLVED — 2 days left | **Thu 2026-06-11** |
+> | **Sante Total Haiti wire (Alison Smith)** | **NEW — review thread + authorize** | **ASAP** |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | Tribeca Pediatrics portal | 7+ unread | ASAP |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Vishala Orange Ball Summer Camp | Day 3 of 10 (Jun 9–19, daily) | DAILY through Jun 19 |
+> | **HITLAB RSVP (Jerry Antimano)** | Respond via LinkedIn | **2026-06-12 (3 days)** |
+> | **Leader Bank Escrow $5,366.83** | FIS payment Jun 9 — verify applied | **2026-06-14 (5 days)** |
+> | **NJ-1065 Q2 — Solar Inference LLC** | Call Jonathan Francis | **2026-06-15 (6 days)** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15** |
+> | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel | **2026-06-11** |
+> | FIS payment Jun 9 | Verify destination/purpose | ASAP |
+> | Pool Guy NJ billing | Balance owed | ASAP |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |

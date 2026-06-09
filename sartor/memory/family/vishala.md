@@ -2,9 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-05-23
+updated: 2026-06-08
 updated_by: personal-data-gather
-run: 115
+run: 199
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -85,6 +85,17 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 - [[family/active-todos|Family TODOs]] - Current action items (Wohelo deposit, physical form)
 - [[ALTON]] - Head of household
 - [[ledgers/kids]] - Allowance ledger
+
+## Latest from gather (2026-06-08) — run 199
+
+> [!todo] ACTION_REQUIRED — Orange Ball Summer Camp logistics (starts TODAY)
+> notifications@courtreserve.com (Jun 8, 13:39 UTC): Vishala registered for **Orange Ball Summer Camp Full Day** at West Orange Tennis Club. Dates: **Jun 8, 9, 10, 11, 12, 15, 16, 17, 18, 19** (10 weekdays). Full day program. Transportation to West Orange Tennis Club required daily. Camp is NOT on any of the 5 monitored calendars — add it. Confirm pickup/dropoff logistics for Jun 9 onwards. See [[family/active-todos]], [[daily/2026-06-08]].
+
+> [!fact] West Orange Tennis Club membership confirmed (Jun 8)
+> notifications@courtreserve.com (Jun 8, 13:32 UTC): Welcome email + payment receipt #MNAHB7344. Note: receipt shows "Vishala Sortor" (typo for Sartor), account #10673120. 3% CC convenience fee charged. Tennis club enrollment complete. See [[family/active-todos]].
+
+> [!fact] Girls bike gear shipped (Jun 8, 10:19 UTC)
+> FEOEOR 6 Pack Girls Bike items shipped via Amazon. Expected delivery in coming days. INFORMATIONAL.
 
 ## Latest from gather (2026-04-11) run 10
 
@@ -191,3 +202,73 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!fact] Screen time — week of May 16–22: 8 hours 57 minutes
 > Microsoft Family Safety weekly report (familysafety@microsoft.com, received 2026-05-23). Full report available at family.microsoft.com.
+
+## Latest from gather (2026-05-28) — run 139
+
+> [!todo] MKA Summer Enrichment — registration now open
+> m@mail1.veracross.com, 2026-05-28: Summer Enrichment at MKA (201 Valley Road, Montclair), **August 3–14, 2026**, Grades 4–8. Vishala is rising 4th grade — eligible. Consider registering before sessions fill. See [[family/active-todos]].
+
+## Latest from gather (2026-05-29) — run 142
+
+> [!deadline] 2026-06-05 — Full-day logistics required
+> **MKA Third Grade Graduation Party — NEW (first captured this run).**
+> - **Time:** 6:00–7:30 PM ET (created by Aneeta 2026-05-28)
+> - **Location:** Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 07039
+> - **Evite:** http://www.evite.com/event/0213IIAE4SKDAA5CCEPRJJKI7D7Y6Y (Aneeta's invite)
+> - **Full June 5 sequence:** Third Grade Closing Exercises (12:00–6:00 PM ET, parent event) → Graduation Party (6:00–7:30 PM ET, Sports Universe Livingston)
+> - Sports Universe is in Livingston, separate from MKA Montclair — plan transportation between the two venues.
+> - See [[family/family-calendar]] and [[family/active-todos]].
+
+## Latest from gather (2026-05-30) — run 148
+
+> [!warning] TIMING CORRECTION — Jun 5 Third Grade Graduation: 8:00 AM–2:00 PM (not noon–6 PM)
+> Live Calendar API (run 148, 2026-05-30): "Third grade graduation" (Family calendar, created by Aneeta) **start 8:00 AM ET, end 2:00 PM ET** on Friday June 5. Runs 142 and 147 recorded this as "12:00–6:00 PM" — incorrect.
+> **Corrected Jun 5 full sequence for Vishala:**
+> - **8:00 AM – 2:00 PM** — Third Grade Graduation / Closing Exercises (MKA Brookside — parent event)
+> - **4-hour gap** between ceremony end and party start
+> - **6:00 – 7:30 PM** — MKA Third Grade Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ (RSVP via Evite)
+> Plan morning arrival at MKA; allow time for lunch/transition before the Livingston party. See [[family/active-todos]] and [[family/family-calendar]].
+
+> [!fact] Screen activity — May 23–29: zero (Boston trip effect)
+> Microsoft Family Safety (familysafety@microsoft.com, 2026-05-30 02:08 UTC): "No activity was found for Vishala for the past seven days." Window May 23–29 overlaps with Boston trip May 27–29. Device was not in use during or after trip. Informational.
+
+## Latest from gather (2026-06-02) — run 167
+
+> [!todo] ACTION_REQUIRED — Wohelo camp prep: uniforms + trunk (opens June 25)
+> heidi@wohelo.com, 2026-06-02 13:12 ET: "23 days until opening day! What should you have done? Ordered and received uniforms, ready to pack them, trunk in the living room or at Lake Wohelo already." Camp opens 2026-06-25. Verify Vishala's camp uniforms are in hand and trunk is packed or en route. Tuition ($12,900 check) was mailed ~May 7; deposit confirmed received May 10. Contact: Heidi Gorton, heidigorton@gmail.com / heidi@wohelo.com. See [[family/active-todos]].
+
+> [!todo] TONIGHT — Dress the Rainbow Day tomorrow June 3
+> MKA Primary School email, 2026-06-02 13:21 ET. Pack rainbow/colorful outfit for tomorrow. See [[family/active-todos]].
+
+## Latest from gather (2026-06-03) — run 171
+
+> [!fact] Wohelo camp prep shipments in transit
+> Amazon Jun 3 AM: (1) "Bare Home Twin Sheet Set" — 2 sets + 5 more items, shipped 07:27 UTC; (2) "Crazy Creek The Chair" — 2 units, shipped 06:52 UTC. Camp opens 2026-06-25 (22 days). Verify items against Wohelo packing list once received. See [[family/active-todos]].
+
+## Latest from gather (2026-06-04) — run 180
+
+> [!fact] Third Grade Closing Exercises — logistics confirmed for TOMORROW
+> MKA Veracross (m@mail4.veracross.com, Jun 4 6:10 PM ET): "Dear Third Grade Families, Congratulations! As a friendly reminder, please take a moment to read this letter from Katie Banks regarding the logistics of tomorrow's Third Grade Closing Exercises." Key details in Katie Banks' attached letter — open Veracross email for full logistics.
+>
+> **Full June 5 sequence:**
+> - **8:00 AM – 2:00 PM EDT** — Third Grade Closing Exercises, MKA Brookside (arrive by 7:45 AM)
+> - 4-hour gap
+> - **6:00 – 7:30 PM EDT** — MKA Third Grade Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ 07039
+>
+> Plan transport from MKA Montclair to Livingston for the party. See [[family/active-todos]], [[family/family-calendar]].
+
+## Latest from gather (2026-06-05) — run 181
+
+> [!fact] TODAY — Third Grade Graduation Day
+> Calendar confirmed (Family calendar, live API): Vishala's Third Grade events are today.
+> - **8:00 AM – 2:00 PM EDT** — Third Grade Closing Exercises, MKA Brookside
+> - **6:00 – 7:30 PM EDT** — Third Grade Graduation Party, Sports Universe, 355 Eisenhower Pkwy, Livingston NJ (Evite via Aneeta)
+> Logistics: plan arrival by 7:45 AM at MKA; allow time for lunch and transport to Livingston before 6 PM. See [[family/active-todos]], [[daily/2026-06-05]].
+
+## Latest from gather (2026-06-08) — run 200
+
+> [!fact] Orange Ball Summer Camp — enrolled, Day 1 today
+> Confirmed via West Orange Tennis Club (courtreserve.com, Jun 8): **Orange Ball Summer Camp Full Day**, dates Jun 8, 9, 10, 11, 12, 15, 16, 17, 18, 19 (10 weekdays). Full-day program. Membership enrolled; payment receipt #MNAHB7344 issued (note: name listed as "Vishala Sortor" — typo for Sartor, account #10673120). Transportation to West Orange Tennis Club required daily through Jun 19.
+
+> [!fact] Girls soccer gear + bike items delivered/shipped (Jun 8)
+> Delivered: Aikuco 5 Packs Girls Soccer items + 3 more. In transit: FEOEOR 6 Pack Girls Bike items.

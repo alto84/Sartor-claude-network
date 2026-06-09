@@ -2,8 +2,9 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-05-22
+updated: 2026-06-05
 updated_by: personal-data-gather
+run: 185
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -55,6 +56,11 @@ No urgent open loops for Vasu. Goddard communications have been routine.
 ## Summer camp
 
 Goddard summer camp — fees and school closure dates communicated 2026-04-06. Summer camp field trips trigger the t-shirt size request above. Enrollment status TBD; worth confirming whether Vasu is enrolled in summer camp or if alternative care is needed.
+
+## Latest from gather (2026-05-29) — run 146
+
+> [!fact]
+> **Goddard June 2026 calendar available.** Samantha Ramsden (Goddard Montclair) sent the June 2026 school calendar via Kaymbu on 2026-05-29. Attachment: "June 2026.pdf". Retrieve from Kaymbu / Gmail to extract: last day of school, summer camp start date, any June closures. See [[family/active-todos]].
 
 ## Contacts
 
@@ -220,3 +226,42 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact] Goddard soccer extended to June 22, 2026
 > Message from Jacqueline Capote (Goddard admin, 2026-05-22 6:24 PM ET): "Soccer extended one more week! Due to Monday's Memorial Day school closure, soccer will now be ending on June 22nd." Prior assumed end date was June 15 or earlier. Updated end date: **2026-06-22**. See [[family/active-todos]] and [[family/family-calendar]].
+
+## Latest from gather (2026-05-29) — run 147
+
+> [!fact] Vasu daily sheet May 29 — "Where do animals live?" habitat unit
+> Kaymbu daily sheet (cls64fc559b249306000230d48e@inbox.kaymbu.com, 2026-05-29 22:06 UTC). Preschool unit: "Where do animals live? We're going to explore where animals live this week! Children will learn that animal habitats provide food, water, and shelter." Normal school day confirmed. No action needed.
+
+> [!todo] Confirm date — Goddard Father's Day Celebration
+> Kaymbu announcement (Samantha Ramsden, noreply@kaymbu.com, 2026-05-29 18:00 UTC): "Father's Day Celebration! It's almost time to celebrate all of the amazing fathers and father figures in our lives! Join us for a waffle-y fun..." No date specified in snippet. Father's Day is Sunday June 15 — Goddard event likely the week of **June 9–13**. Confirm exact date and time with Goddard or via Kaymbu. Add to Family calendar once confirmed. See [[family/active-todos]].
+
+> [!fact] Goddard week of June 1–5 confirmed schedule
+> Kaymbu sneak peek (Samantha Ramsden, noreply@kaymbu.com, 2026-05-29 20:00 UTC): Monday June 1 Soccer, **Tuesday June 2 Dance** (confirms recital day aligns with Family calendar event 4–6 PM). Full week:
+> - Mon Jun 1: Soccer
+> - Tue Jun 2: Dance (recital — see Family calendar 4:00–6:00 PM)
+> - Rest of week: not visible in snippet
+> Soccer extended through June 22 per prior run 111. See [[family/family-calendar]].
+
+## Latest from gather (2026-06-04) — run 179
+
+> [!todo] ACTION_REQUIRED — Goddard Preschool End-of-Year Conference Monday June 8
+> Jacqueline Capote (Goddard admin) via Kaymbu (noreply@kaymbu.com, Jun 4 11:12 AM ET): End-of-year Preschool Conferences for **Monday June 8**. Sign up now — only 4 days out: https://www.signupgenius.com/go/10C0845A4AE2FA3F9CE9. Contact: Jacqueline Capote, The Goddard School of Montclair. See [[family/active-todos]], [[daily/2026-06-04]].
+
+## Latest from gather (2026-06-04) — run 180
+
+> [!todo] ACTION_REQUIRED — Goddard picture proof pickup
+> Alissa DelConte (Goddard Director) via Kaymbu (noreply@kaymbu.com, Jun 4 12:49 PM ET): "Picture Proof Reminder! If you haven't done so already, please stop by the office to pick up your child's picture proofs." Stop by The Goddard School of Montclair front office. See [[family/active-todos]].
+
+> [!fact] Vasu Daily Sheet — Thursday June 4 (normal day)
+> cls64fc559b249306000230d48e@inbox.kaymbu.com (Jun 4 3:21 PM ET): Check in 7:43 AM (Stefania I), check out 3:21 PM (Clarissa B). AM snack: water at 9:00 AM. Classroom activity: CONSTRUCTION — natural items (leaves, sticks, stones) used to build pet homes. Normal day confirmed.
+
+> [!fact] Goddard Father's Day Celebration — confirm date
+> Carry-forward from run 147 (May 29): Kaymbu announced "Father's Day Celebration — waffle-y fun" but no date specified in snippet. Father's Day is June 15. Goddard event likely week of June 9–13. Contact Goddard to confirm exact date and add to Family calendar.
+
+## Latest from gather (2026-06-05) — run 185
+
+> [!fact] Goddard week of Jun 8–12 sneak peek — Soccer + Conferences Monday Jun 8
+> noreply@kaymbu.com (Jun 5 ~4:00 PM ET): Samantha Ramsden sent next-week preview. **Monday June 8: Soccer AND Preschool Parent Teacher Conferences.** Sign-up via SignUpGenius still open (link in Jacqueline Capote email Jun 4/5). If not yet signed up, do so tonight. See [[family/active-todos]].
+
+> [!fact] Vasu Daily Sheet — Friday June 5 (theme: What makes a great pet?)
+> cls64fc559b249306000230d48e@inbox.kaymbu.com (Jun 5 ~1:34 PM ET): Weekly classroom theme launching — "What makes a great pet?" Unit explores how caring for pets relates to caring for friends and family. Normal Friday, engaged participation. See [[daily/2026-06-05]].

@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: ASTRAZENECA
-updated: 2026-05-14
+updated: 2026-05-31
 updated_by: autodream
 last_verified: 2026-04-12
 status: active
@@ -128,3 +128,6 @@ related: [ALTON, BUSINESS, az-career]
 
 ## Consolidated from daily logs (2026-05-14)
 - [2026-05-12] (fact) Amazon delivery confirmed — Torkase Dimmable MR16 LED + 1 more item:
+
+## Consolidated from daily logs (2026-05-31)
+- [2026-05-31] (fact) Amazon deliveries confirmed (2026-05-30):

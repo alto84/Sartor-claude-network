@@ -1,8 +1,9 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-05-28
-updated_by: personal-data-gather (run 68); fleet doc-drift fix 2026-05-28
+updated: 2026-06-07
+updated_by: personal-data-gather (run 196); fleet doc-drift fix 2026-05-28 preserved
+
 status: active
 priority: p1
 next_review: 2026-06-15
@@ -190,3 +191,35 @@ Full project hub: [[reference_solar_project]]. Source documents indexed there.
 
 > [!fact] Climate First Bank ownership structure question sent (2026-05-09 02:56 UTC)
 > Alton emailed Erin Gannon (erin.gannon@climatefirstbank.com) re Clean Energy Loan App ID 15296, 85 Stonebridge Rd — raising Solar Inference LLC ownership structure question. Aneeta cc'd. **Response pending** — critical for confirming asset-transfer structure before placed-in-service. Follow up by 2026-05-12 if no reply.
+
+## Latest from gather (2026-05-26) — run 127
+
+> [!fact] CPA call with Jonathan Francis — CONFIRMED OCCURRED 2026-05-20
+> Email thread (thread 19e0aaab545fbaa5) confirms the [[people/jonathan-francis|Jonathan Francis]] §48 ITC structuring call happened on **2026-05-20 at 2:30 PM ET**. Lucent Energy installation target: early June 2026. Placed-in-service deadline for §48 ITC capture: **2026-07-04 (39 days away)**. Aneeta was CC'd. Outcome and next steps from the call not visible in email — confirm with Alton what was decided.
+
+> [!fact] GIGABYTE RTX 5090 ordered + shipped 2026-05-21
+> Amazon order (auto-confirm@amazon.com, 2026-05-21 02:18 UTC): "GIGABYTE GeForce RTX 5090... and 1 more item." Shipped same day (shipment-tracking@amazon.com, 2026-05-21 03:33 UTC). Delivery status unknown — track via Amazon. **Most likely Solar Inference LLC fleet expansion.** Log as LLC capital asset upon delivery; depreciation schedule and ITC eligibility analysis apply. Coordinate with CPA on timing relative to §48 ITC structuring.
+
+> [!todo] ACTION_REQUIRED — vast.ai machine 97429 offline (2026-05-21)
+> Automated alert: machine offline. Alton emailed vast.ai support re: stale error_description blocking marketplace visibility. Jay (jay@contact.vast.ai) replied with **two additional steps not in Alton's list**. No visible follow-up from Alton. Machine 97429 (rtxpro6000server) marketplace listing may still be blocked. SSH in and execute Jay's steps, or reply to Jay to retrieve them. See [[MACHINES]].
+
+## Latest from gather (2026-05-26) — run 128
+
+> [!fact] Newegg PC build ordered 2026-05-25 — Solar Inference LLC fleet expansion confirmed
+> Newegg order #448349643 confirmed (2026-05-26 02:29 UTC). Total: **$1,919.10** across 4 sub-orders. Components: AMD Ryzen 9 9950X (Zen 5, 16C/32T, AM5 socket), ASRock X870E TAICHI motherboard, ARCTIC Liquid Freezer III Pro 360mm AIO cooler, WD_BLACK SN7100 4TB NVMe SSD, HYTE Y70 dual-chamber ATX case (Snow White), CORSAIR CX750M 750W PSU, Super Flower Leadex III GE Gold 1300W ATX 3.1 PSU, SUPER FLOWER 12VHPWR PCIe 5.0 cable. Deliveries staggered: May 28 (CPU/mobo/PSUs), May 29–Jun 2 (case), Jun 3–5 (SSD/AIO). Combined with the GIGABYTE RTX 5090 shipped 2026-05-21: constitutes a **second GPU server build** for Solar Inference LLC. Log all components as LLC capital assets on receipt. Run depreciation schedule. Flag additional capital deployment to [[people/jonathan-francis|Jonathan Francis]] in next CPA touchpoint. §48 ITC eligibility for GPU hardware vs. solar hardware is a distinct question — confirm scope with CPA. See [[MACHINES]].
+
+## Latest from gather (2026-05-29) — run 142
+
+> [!warning] vast.ai Machine 124192 Offline Alert — UNKNOWN MACHINE ID
+> **console@mg.vast.ai (2026-05-28 23:36 UTC):** "Your hosted Vast.ai machine 124192 appears to be offline."
+> Machine ID 124192 is not in the Sartor memory system. Known machines: gpuserver1 = 52271 (rented under C.34113802), rtxpro6000server = 97429 (unlisted, onboarding paused). Possible explanations: (a) the second GPU server being built from Newegg order #448349643 + GIGABYTE RTX 5090 (components arriving May 28 – June 5) was registered on vast.ai as machine 124192 and went offline during setup; (b) different vast.ai ID namespace; (c) separate account. **SSH to gpuserver1 and rtxserver immediately.** Run `~/.local/bin/vastai show machines` on both. Check vast.ai dashboard for machine 124192. Confirm C.34113802 reserved contract still active. See [[MACHINES]].
+
+## Latest from gather (2026-06-03) — run 173
+
+> [!fact] Anthropic API receipt #2088-3209-1415 — $200.00 — Jun 3, 2026
+> invoice+statements@mail.anthropic.com (2026-06-03 12:45 PM ET). Receipt from Anthropic, PBC: **$200.00 paid June 3, 2026**. Receipt #2088-3209-1415 via Stripe. Solar Inference LLC operating expense — API compute / Claude billing. Log as June 2026 expense. See [[ALTON]] and monthly expense tracking.
+
+## Latest from gather (2026-06-07) — run 196
+
+> [!fact] rtxserver infrastructure — UPS + PCIe build-out hardware ordered (Jun 7 evening)
+> Four Amazon orders placed 2026-06-07 (7:47–8:04 PM ET): (1) CyberPower CP1500PFCLCD PFC Sinewave UPS (1500VA/900W class) — addresses the "no UPS" gap documented for rtxpro6000server in CLAUDE.md infrastructure notes. (2) JMT 180 Degree 64GBS PCIe cable — high-bandwidth GPU riser/extension. (3) Vertical GPU Mount Bracket — physical GPU mounting hardware. (4) GIGA-MEGA PCIe 5.0 X16 adapter/extension. Together with Newegg build (run 128) and GIGABYTE RTX 5090 (run 127), this confirms active second-GPU-server physical build-out. Log UPS + peripheral hardware as Solar Inference LLC capital assets on delivery. See [[MACHINES]].

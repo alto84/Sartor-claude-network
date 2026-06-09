@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-05-24
+updated: 2026-06-05
 updated_by: personal-data-gather
-run: 119
+run: 185
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -32,6 +32,22 @@ Alton + Aneeta's oldest child. Age 10. Attends Montclair Kimberley Academy (MKA)
 
 > [!todo]
 > **Counselor / therapist search** — explosive ADHD/ODD specialization (not autism-focused). No email signal in last 30 days. May be via phone/text with Aneeta. Needs confirmation.
+
+## Latest from gather (2026-06-01) — run 161
+
+> [!fact] MKA End-of-Year BBQ — Thursday June 4, free lunch for all MS students
+> Veracross email (m@mail4.veracross.com) 2026-06-01 09:03 AM ET: "free barbecue lunch for all Middle School students on Thursday, June 4." Menu: hot dogs, hamburgers, veggie burgers, salad, beverages. No parent action needed; Vayu gets a free lunch that day.
+
+## Latest from gather (2026-06-02) — run 167
+
+> [!todo] ACTION_REQUIRED — MKA Fifth Grade Music Enrollment
+> pkutten@mka.org (Patricia Kutten, MKA music), 2026-06-02 13:36 ET: "Students in fifth grade are enrolled in one of three yearlong musical tracks: band, chorus, or strings." Vayu is a rising 5th grader. Decision needed before fall enrollment. Choose and enroll — no hard deadline stated in email but likely tied to school admin timeline. See [[family/active-todos]].
+
+> [!todo] TONIGHT — Dress the Rainbow Day tomorrow June 3
+> MKA Primary School email, 2026-06-02 13:21 ET: "Wednesday, June 3 — Dress the Rainbow Day." Pack a rainbow/colorful outfit for tomorrow. See [[family/active-todos]].
+
+> [!note] NJ Pride FC Summer Soccer — starts July 11, Verona Park, 8 weeks
+> info@njpridefc.com, 2026-06-02 14:12 ET. Decide if Vayu is participating; register at njpridefc.com. Spots limited. See [[family/active-todos]].
 
 ## Latest from gather (2026-05-22) — run 108
 
@@ -303,3 +319,28 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 - CLI: re-run the block script with `cmd: unblock-sta` (see `C:\Users\alto8\.claude\jobs\85180d3d\block-vayu.sh`).
 
 **Followup item** to decide unblock timing is now in [[active-todos]].
+
+## Latest from gather (2026-05-28) — run 139
+
+> [!todo] MKA Summer Enrichment — registration now open
+> m@mail1.veracross.com, 2026-05-28: Summer Enrichment at MKA (201 Valley Road, Montclair), **August 3–14, 2026**, Grades 4–8. Vayu is rising 5th grade — eligible. Consider registering before sessions fill. See [[family/active-todos]].
+
+## Latest from gather (2026-05-28) — run 140
+
+> [!note] Montclair United Summer Soccer Sessions 2026 — registration open
+> clubnews@bluesombrero.com, 2026-05-28: Montclair United Soccer Club Summer Soccer Sessions now open for all skill levels. Register via Blue Sombrero. See [[family/active-todos]].
+
+## Latest from gather (2026-05-30) — run 148
+
+> [!fact] Screen time — week of May 22–28: 12h57m (+49% week-over-week)
+> Microsoft Family Safety (familysafety@microsoft.com, 2026-05-29 17:54 UTC). Vayu logged **12 hours 57 minutes** screen time for May 22–28 (~1.85h/day average). Prior week May 15–21 was 8h41m (run 110). Increase: +4h16m (+49%). Week included Boston trip May 27–29 — device use on trip unclear. Contrast: Vishala had zero screen activity last 7 days (also on Boston trip). Trend worth watching given prior ADHD context. See [[family/active-todos]].
+
+## Latest from gather (2026-06-01) — run 162
+
+> [!todo] ACTION_REQUIRED — Band: bring instrument home before Jun 6
+> m@mail3.veracross.com (Paul Murphy, MKA band teacher, ~4:00 PM ET Jun 1): "Thank you for a wonderful year! Continuing in band? Please take your instrument home & practice this summer!" Year-end instrument return — retrieve from MKA band room before June 6 (last class day). See [[family/active-todos]].
+
+## Latest from gather (2026-06-05) — run 185
+
+> [!fact] Screen time — week of May 29–Jun 4: 20h53min (+61% week-over-week)
+> Microsoft Family Safety (familysafety@microsoft.com, Jun 5 ~3:21 PM ET). Vayu logged **20 hours 53 minutes** screen time for May 29–Jun 4 (~3.0h/day average). Trend over three weeks: May 15–21 = 8h41m → May 22–28 = 12h57m → May 29–Jun 4 = 20h53m (+141% over the period). School wind-down and graduation week likely explain the June spike, but the multi-week upward trend warrants attention given ADHD context. See [[family/active-todos]].

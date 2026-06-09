@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-05-24
+updated: 2026-06-09
 updated_by: personal-data-gather
-run: 120
+run: 204
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -111,6 +111,11 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 5. **NJ charity registration renewal** — when is it due? Not in current memory.
 6. **Program activity in Haiti/Kenya** — email-invisible. Worth an explicit check-in with Alison Smith.
 
+## Latest from gather (2026-05-27) — run 135
+
+> [!fact] New recurring donor: Sergei Robinson — $50/month
+> PayPal notification 2026-05-27 11:01 AM ET: **$50.00 received** from Sergei Robinson (sergeirobinson@yahoo.com). Transaction ID: 90R92598T88754749. **Recurring subscription active** — Profile ID I-18PAYJ3W7SS2, $50/month maximum. Next payment due **2026-06-27**. Add to donor list and ensure tax receipt is issued per standard practice.
+
 ## Related
 - [[BUSINESS]] - Higher-level business context
 - [[TAXES]] - Filing overview (Sante Total 990-N section)
@@ -197,6 +202,25 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 > [!deadline] 2026-05-15
 > **2025 Form 990-N — DUE IN 3 DAYS (Friday May 15).** Status as of run 70: NOT FILED. No email observed confirming completion through run 70. Alton handles directly via IRS.gov tax-exempt organization search portal. Gross receipts under $50K for TY2025 — 990-N (e-Postcard) still applies. No automatic extension without separately filing Form 8868 first. P0.
 
+## Latest from gather (2026-05-27) — run 132
+
+> [!fact] RESOLVED 2026-05-26 — Gaby ($10,000) wire sent
+> $10,000 wire transfer executed from Chase account ending 8189 to **GABRIEL THELUS** on 2026-05-26 at 4:38 PM ET (wire 12053086804). Closes the "send Gaby $9,972/$10,000" item that [[barbara-weis|Barbara Weis]] first requested 2026-05-12. Source: Chase wire alert (thread 19e660310201deb8).
+
+> [!todo] ACTION_REQUIRED — Reply to Barbara Weis: Berteau grant board process + meeting
+> Barbara Weis (dye2tie@verizon.net) replied 2026-05-26 9:55 PM ET (cc: asmi60@lsuhsc.edu, alison.annette.smith@gmail.com) after Alton's "We have plenty of money" reply. Open items requiring Alton's response as Treasurer:
+>
+> 1. **Berteau elderly grant approval** — "How should I go about approving Berteau's grant then. Send it to the whole board? What do you think?" Full grant proposal ("2026 CHEAHP grant application.docx") attached in May 12 email. Alton needs to define the board approval process.
+> 2. **School lunch money routing** — should NOT be in school account (most goes to HaitiOne org in US; co-mingling risks losing disbursement control). 25/26 disbursed; 26/27 grant pending (she re-applied with Erick Delss).
+> 3. **Computer lab donations** — maintain disbursement process control: proposal → estimates → receipts → periodic payments before sending bulk funds to Gaby.
+> 4. **2026 budget** — Barbara offers to compile a budget for all known projects to assess solvency.
+> 5. **Meeting request** — Barbara: "Should we set up a meeting to talk about all of this?"
+>
+> Alton's reply earlier same day: "We should get the money that previously was coming from the church into the new bank account." Church donations → new Chase account (Pavel Manrique) is an open coordination item.
+
+> [!note] Church donations → new Chase account
+> Alton flagged (2026-05-26) that church-sourced donations should be routed to the new Sante Total Chase account (opened 2026-05-06). Determine redirect mechanism and coordinate with the relevant church contact.
+
 ## Latest from gather (2026-05-24) — run 120
 
 > [!todo] ACTION_REQUIRED — ASAP — Sante Total: Berteau elderly funding (full 3-part ask)
@@ -240,3 +264,40 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!deadline] 2026-06-04 (21 days) — act this week
 > **Chase/Sante Total KYC** — carry-forward from run 70 (21 days remain). Contact Pavel Manrique (pavel.p.manrique@chase.com, 973-783-5062) before account restriction. Account opened 2026-05-06.
+
+## Latest from gather (2026-05-26) — run 127
+
+> [!fact] PayPal recurring donation — Christina Stiles $5.00 (2026-05-19)
+> Received $5.00 from Christina Stiles (christina.stiles16@gmail.com) via PayPal recurring subscription for Sante Total. Profile ID: I-BV436GGKEFU7 (Active). Transaction ID: 2EY91889BK331354W. **Next payment due: 2026-06-19.** Amount per payment: $5.00 USD. Log for nonprofit accounting records.
+
+> [!warning] 990-N OVERDUE — 11 days (as of 2026-05-26)
+> Still not filed per runs 22–127. Due 2026-05-15. File at IRS.gov → Tax Exempt Organization Search → File 990-N (e-Postcard). TY2025 gross receipts <$50K. No automatic extension without Form 8868. 11 days overdue and counting.
+
+> [!todo] ACTION_REQUIRED — ASAP — Berteau elderly funding (3 days since Barbara's follow-up)
+> Barbara Weis (dye2tie@verizon.net) follow-up 2026-05-23: increase to $800/month + send $2,400 upfront (3 months). Berteau reports situation "desperate." Alton must respond as Treasurer. CC: asmi60@lsuhsc.edu, alison.annette.smith@gmail.com. No disbursements without Alton's authorization. Also: Gaby $9,972 pending since 2026-05-12 (14 days no visible response).
+
+## Latest from gather (2026-06-02) — run 166
+
+> [!fact] PayPal donation received from Cary Grayson — Jun 2, 2026 05:53 CDT
+> Transaction ID: 04802572545152812. Payment received by Sante Total via PayPal from Cary Grayson. Amount not visible in email snippet; confirm in PayPal dashboard. Log for nonprofit accounting records. **Routing note:** Verify whether this payment landed in the PayPal account linked to the old Chase account or the new Chase account (opened 2026-05-06, KYC pending — see below). Donor "Cary Grayson" is new; no prior transactions in memory. Informational for board records; no disbursement action.
+
+> [!warning] KYC deadline TOMORROW — 2026-06-04
+> Chase/Sante Total account KYC documentation required by 2026-06-04 to avoid account restriction. Contact Pavel Manrique: 973-783-5062 / pavel.p.manrique@chase.com / 19 N Fullerton Ave Montclair. Carry-forward P0 since run 70 (2026-05-12).
+
+> [!warning] 990-N OVERDUE 18 days
+> Form 990-N for TY2025 was due 2026-05-15. Not filed per runs 22–165. File at IRS.gov → Tax Exempt Organization Search → File 990-N (e-Postcard). TY2025 gross receipts <$50K.
+
+## Latest from gather (2026-06-03) — run 169
+
+> [!fact] Cary Grayson $200/month recurring subscription — AMOUNT CONFIRMED
+> Run 166 logged Transaction ID 04802572545152812 (Jun 2, 2026 05:53 CDT) but could not extract amount from snippet. Full thread now read: **$200.00 USD received**. RECURRING SUBSCRIPTION active — Profile ID: I-V0F2DBH0HGNJ, maximum $200/month. Next payment due **2026-07-02**. Donor: Cary Grayson (carygrayson@gmail.com). The prior Apr 2 donor table entry ("$350+") was a separate earlier transaction; this Jun 2 payment appears to be the subscription inception. Issue tax receipt. Update YTD accounting.
+
+## Latest from gather (2026-06-08) — run 200
+
+> [!deadline] 2026-07-20 — ACTION REQUIRED
+> **Chase bank account restriction threat.** Email from Chase@notifyalert.chase.com (Jun 8, 2026, 17:39 UTC): "Please contact us to provide missing information before 07/20/2026, to avoid account restriction — SANTE TOTAL." Hard deadline: **2026-07-20**. This supersedes the prior "KYC OVERDUE NOW" framing — the deadline is 42 days out. Contact Chase and provide whatever KYC/compliance documents they need. Account restriction would freeze Sante Total's Chase banking access. See [[family/active-todos]].
+
+## Latest from gather (2026-06-09) — run 204
+
+> [!todo] ACTION_REQUIRED — ASAP — Haiti wire transfer (Alison Smith)
+> alison.annette.smith@gmail.com (Jun 9 15:57 UTC), CC: dye2tie@verizon.net ([[people/barbara-weis|Barbara Weis]]), edelss@hotmail.com (Erick Delss) — Subject: "Re: Haiti." Snippet: "Looping in Alton bc he sends the money. We usually do a wire transfer as we haven't had a good experience with Fonkoze in the past." Alison is flagging Alton to execute a Haiti program wire transfer. Wire explicitly preferred over Fonkoze (payment service — possibly unreliable or unavailable). **Alton must review the full thread to determine recipient, amount, and purpose, then authorize.** No disbursements without Alton's explicit authorization per CLAUDE.md. See [[family/active-todos]].

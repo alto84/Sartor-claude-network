@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: az-career
-updated: 2026-04-09
-updated_by: Claude
+updated: 2026-06-01
+updated_by: personal-data-gather
 status: active
 priority: p2
 tags: [entity/employer, domain/career, status/active]
@@ -61,8 +61,19 @@ None of these are warm or in active conversation. This is the ambient recruiter 
 External paid consulting via Guidepoint Network:
 - **#1721928 Peptide Chemists / Oral FcRn Inhibitors** — 2026-04-07 and 2026-04-09 (twice)
 - **#1718071 Pediatric Low-Grade Glioma Market** — 2026-04-07
+- **#1732882 Global Oncology Specialists** — 2026-05-05 (otaylor@guidepointglobal.com; run 55)
+- **#1733233 Biosimulation Software/Service Market** — 2026-05-22 (Alvi Rahman; run 110; AZ conflict-of-interest flag)
+- **#1752401 Adamantinomatous Craniopharyngioma** — 2026-06-01 (jobrien@guidepointglobal.com; run 161) **→ OPEN, respond this week**
 
 Non-urgent but open. These are expert consulting gigs, typically 1-hour paid calls. Alton's medical + AI background positions him for these. Not career moves per se but worth tracking as a side revenue stream.
+
+## Latest from gather (2026-06-01) — run 161
+
+> [!todo] HITLAB pharma executive roundtable — June 12, 12:30–1:30 PM ET
+> LinkedIn invitation from Jerry Antimano (hit-reply@linkedin.com), 2026-06-01 11:02 AM ET. Closed-door virtual roundtable on electrolyte monitoring gaps (hyperkalemia, ECG + drug safety monitoring). Aligns with AZ Global Patient Safety role. Respond via LinkedIn. If attending, block calendar.
+
+> [!todo] Guidepoint #1752401 — Adamantinomatous Craniopharyngioma — OPEN
+> 2026-06-01 09:26 AM ET, jobrien@guidepointglobal.com. ACP is a rare pediatric/young adult CNS tumor. Within Alton's neuro-oncology scope. Respond or decline.
 
 ## Key contacts (external only)
 
@@ -90,6 +101,22 @@ For all of the above, the canonical sources are AZ internal systems (Workday, AZ
 - [[ASTRAZENECA]] - Deeper AZ context (also in [[ALTON]])
 - [[ALTON]] - Head of household, primary career decision maker
 - [[BUSINESS]] - Wider business context
+
+## Latest from gather (2026-06-07) — run 194
+
+> [!fact] LinkedIn — Senior Director, AI at Telix Pharmaceuticals (posted Jun 5)
+> jobalerts-noreply@linkedin.com (Jun 6 4:53 PM ET). Telix Pharmaceuticals Limited — nuclear medicine / radiopharmaceutical oncology (AU HQ, US operations). "Senior Director, Artificial Intelligence." Adjacent to Alton's neuro-oncology + AZ AI/ML lane. Not a direct fit given AZ trajectory but worth noting as oncology AI leadership market reference. Informational.
+
+> [!fact] LinkedIn — Director, Medical Insights at Pfizer (posted Jun 4)
+> jobalerts-noreply@linkedin.com (Jun 6 2:53 PM ET). Director, Medical Insights at Pfizer. Medical affairs / real-world evidence role. Standard market noise, lower strategic fit than safety-medicine / AI-native roles. Informational.
+
+## Latest from gather (2026-06-07) — run 195
+
+> [!fact] LinkedIn — Director, Applied AI at Pfizer (posted Jun 5)
+> jobalerts-noreply@linkedin.com (Jun 7 10:53 AM ET). Distinct from "Director, Medical Insights at Pfizer" (run 194, same company). "Director, Applied AI" is a different role at Pfizer that maps more directly onto Alton's AI/ML leadership competency. Pfizer runs one of the larger enterprise AI transformation efforts in pharma (AI-powered drug discovery, clinical ops). Market reference for AI Director-tier roles at Big Pharma. Informational; no action required.
+
+> [!fact] LinkedIn — Executive Medical Director, Patient Safety (Hybrid) at Vertex Pharmaceuticals (posted Jun 5)
+> jobalerts-noreply@linkedin.com (Jun 7 8:53 AM ET). Vertex Pharmaceuticals (Boston-area HQ; cystic fibrosis monopoly, gene editing, NaV channel pain pipeline; high science standards). "Executive Medical Director, Patient Safety." Title sits above Senior Medical Director — VP-adjacent in pharma hierarchy. Directly in Alton's Global Patient Safety lane. Strongest-title signal in the past two weeks alongside BioMarin $383K (run 183) and Vertex is premium-comp territory. Career market intelligence; no action required unless Alton wants to explore.
 
 ## History
 
