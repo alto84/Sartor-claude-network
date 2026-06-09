@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-09
 updated_by: personal-data-gather
-run: 203
+run: 204
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -44,6 +44,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: confirmed stable vs run 199 — same 4 events
 - New deadlines: Chase/Sante Total 07/20/2026 (was "OVERDUE NOW" — now has specific date)
 - Pages updated: `daily/2026-06-08.md` (run 200 appended), `business/sante-total.md` (deadline callout), `family/active-todos.md` (deadline + CSA + pool + ABPN), `family/vishala.md` (tennis camp + deliveries), `log.md` (this entry)
+
+## [2026-06-09] ingest | personal-data-gather run 204: Sante Total Haiti wire ACTION; AORUS RTX 5090 shipped; UPS shipped
+- Sources: Gmail (is:unread newer_than:1d, 50 threads scanned; net-new post run 203); all 5 Google Calendars (Jun 9–16); no SSH (cloud runner)
+- New facts: 3 actionable (Sante Total Haiti wire ACTION_REQUIRED; GIGABYTE AORUS RTX 5090 shipped same-day; CyberPower CP1500PFCLCD UPS shipped)
+- Calendar: stable vs run 203 — same 4 events, no new entries on any of 5 calendars
+- New action items: Sante Total Haiti wire (Alison Smith, wire preferred over Fonkoze) — P1 ASAP
+- New shipment facts: AORUS RTX 5090 in transit (expected Jun 10–11); UPS in transit (imminent)
+- Pages updated: `daily/2026-06-09.md` (run 204 appended), `business/sante-total.md` (Haiti wire action), `MACHINES.md` (shipped facts), `family/active-todos.md` (carry-forward + Haiti wire), `log.md` (this entry), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (run 204 appended)
 
 ## [2026-06-07] ingest | personal-data-gather run 196: rtxserver UPS + PCIe hardware ordered; soccer gear; Boehringer Ingelheim patient safety role; vast.ai offline 6th run
 - Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 7–14), no SSH (cloud runner)

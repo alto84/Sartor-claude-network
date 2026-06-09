@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-06-07
+updated: 2026-06-09
 updated_by: personal-data-gather
 last_verified: 2026-05-02
 status: active
@@ -655,3 +655,11 @@ No git push (no credentials) - awaiting Rocinante curator commit
 
 > [!fact] GIGABYTE GeForce RTX 5090 ORDERED — Jun 9 02:06 UTC
 > auto-confirm@amazon.com: "Ordered: GIGABYTE GeForce RTX 5090... and 1 more item." Second RTX 5090 card ordered from Amazon. Combined with vertical GPU mount bracket (delivered Jun 8) and GIGA-MEGA PCIe 5.0 X16 riser (delivered Jun 8), this completes the hardware trifecta for a vertical GPU mount in an existing machine. Most likely destination: machine 124192 (Ryzen 9 9950X + ASRock X870E TAICHI AM5 build) as a second GPU to bring it to 2× RTX 5090 (64 GB VRAM). Both machines 52271 and 124192 have been offline since run 191 (Jun 7). Confirm delivery date and installation plan. See [[business/solar-inference]].
+
+## Latest from gather (2026-06-09) — run 204
+
+> [!fact] GIGABYTE AORUS RTX 5090 AI SHIPPED — Jun 9 15:51 UTC (same-day)
+> shipment-tracking@amazon.com: "Shipped: GIGABYTE AORUS RTX 5090 AI..." Ordered Jun 9 02:06 UTC (~10 PM ET Jun 8); shipped Jun 9 15:51 UTC (~11:51 AM ET). Same-day Amazon fulfillment. Delivery expected Jun 10–11. Second RTX 5090 for Solar Inference LLC fleet expansion — intended destination: machine 124192 (AM5 build: Ryzen 9 9950X + ASRock X870E TAICHI) as second GPU for dual-5090 configuration (64 GB VRAM total). Both machines 52271 and 124192 remain offline (run 191 onward). See [[business/solar-inference]].
+
+> [!fact] CyberPower CP1500PFCLCD PFC UPS SHIPPED — Jun 9 14:57 UTC
+> shipment-tracking@amazon.com: "Shipped: CyberPower CP1500PFCLCD PFC..." rtxserver UPS (CyberPower CP1500PFCLCD) now in transit. Prior CLAUDE.md entry listed as "Expected Jun 8–9 — confirm arrival"; shipping notification received Jun 9 14:57 UTC confirms it was not yet delivered. Delivery imminent. UPS provides power conditioning and battery backup for rtxpro6000server (dual RTX PRO 6000 Blackwell, no UPS prior to this order). See [[machines/rtxpro6000server]].

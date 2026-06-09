@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-06-08
+updated: 2026-06-09
 updated_by: personal-data-gather
-run: 200
+run: 204
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -296,3 +296,8 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!deadline] 2026-07-20 — ACTION REQUIRED
 > **Chase bank account restriction threat.** Email from Chase@notifyalert.chase.com (Jun 8, 2026, 17:39 UTC): "Please contact us to provide missing information before 07/20/2026, to avoid account restriction — SANTE TOTAL." Hard deadline: **2026-07-20**. This supersedes the prior "KYC OVERDUE NOW" framing — the deadline is 42 days out. Contact Chase and provide whatever KYC/compliance documents they need. Account restriction would freeze Sante Total's Chase banking access. See [[family/active-todos]].
+
+## Latest from gather (2026-06-09) — run 204
+
+> [!todo] ACTION_REQUIRED — ASAP — Haiti wire transfer (Alison Smith)
+> alison.annette.smith@gmail.com (Jun 9 15:57 UTC), CC: dye2tie@verizon.net ([[people/barbara-weis|Barbara Weis]]), edelss@hotmail.com (Erick Delss) — Subject: "Re: Haiti." Snippet: "Looping in Alton bc he sends the money. We usually do a wire transfer as we haven't had a good experience with Fonkoze in the past." Alison is flagging Alton to execute a Haiti program wire transfer. Wire explicitly preferred over Fonkoze (payment service — possibly unreliable or unavailable). **Alton must review the full thread to determine recipient, amount, and purpose, then authorize.** No disbursements without Alton's explicit authorization per CLAUDE.md. See [[family/active-todos]].

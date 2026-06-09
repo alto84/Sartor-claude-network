@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-09
 updated_by: personal-data-gather
-run: 203
+run: 204
 
 status: active
 priority: p1
@@ -2142,6 +2142,32 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **Leader Bank Escrow $5,366.83** | FIS payment Jun 9 — verify applied | **2026-06-14 (5 days)** |
 > | **NJ-1065 Q2 — Solar Inference LLC** | Call Jonathan Francis | **2026-06-15 (6 days)** |
 > | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15 (6 days)** |
+> | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel | **2026-06-11** |
+> | FIS payment Jun 9 | Verify destination/purpose | ASAP |
+> | Pool Guy NJ billing | Balance owed | ASAP |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+
+## Latest from gather (2026-06-09) — run 204
+
+> [!todo] ACTION_REQUIRED — ASAP — Sante Total Haiti wire (Alison Smith)
+> alison.annette.smith@gmail.com (Jun 9 15:57 UTC), CC: [[people/barbara-weis|Barbara Weis]] (dye2tie@verizon.net), Erick Delss (edelss@hotmail.com). Subject: "Re: Haiti." Snippet: "Looping in Alton bc he sends the money. We usually do a wire transfer as we haven't had a good experience with Fonkoze in the past." Alison is flagging Alton to execute a Haiti program wire. Wire explicitly preferred over Fonkoze. **Review thread for recipient, amount, purpose; authorize or hold.** No disbursements without Alton's explicit authorization. See [[business/sante-total]].
+
+> [!warning] P0 carry-forward (run 204) — Tue Jun 9 afternoon
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 14th+ run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | UNRESOLVED — 2 days left | **Thu 2026-06-11** |
+> | **Sante Total Haiti wire (Alison Smith)** | **NEW — review thread + authorize** | **ASAP** |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | Tribeca Pediatrics portal | 7+ unread | ASAP |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Vishala Orange Ball Summer Camp | Day 3 of 10 (Jun 9–19, daily) | DAILY through Jun 19 |
+> | **HITLAB RSVP (Jerry Antimano)** | Respond via LinkedIn | **2026-06-12 (3 days)** |
+> | **Leader Bank Escrow $5,366.83** | FIS payment Jun 9 — verify applied | **2026-06-14 (5 days)** |
+> | **NJ-1065 Q2 — Solar Inference LLC** | Call Jonathan Francis | **2026-06-15 (6 days)** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15** |
 > | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel | **2026-06-11** |
 > | FIS payment Jun 9 | Verify destination/purpose | ASAP |
 > | Pool Guy NJ billing | Balance owed | ASAP |
