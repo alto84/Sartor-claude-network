@@ -1,0 +1,78 @@
+[probe-score] loading judge: /home/alton/models/heretic-3.6-35b
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading weights:   0%|          | 0/693 [00:00<?, ?it/s]Loading weights:   2%|▏         | 14/693 [00:00<00:08, 76.89it/s]Loading weights:   5%|▍         | 32/693 [00:00<00:06, 103.33it/s]Loading weights:   7%|▋         | 50/693 [00:00<00:05, 113.25it/s]Loading weights:   9%|▉         | 62/693 [00:00<00:06, 103.87it/s]Loading weights:  12%|█▏        | 83/693 [00:00<00:05, 118.16it/s]Loading weights:  15%|█▍        | 101/693 [00:00<00:04, 120.19it/s]Loading weights:  17%|█▋        | 119/693 [00:01<00:04, 119.40it/s]Loading weights:  19%|█▉        | 131/693 [00:01<00:05, 109.09it/s]Loading weights:  22%|██▏       | 152/693 [00:01<00:04, 119.66it/s]Loading weights:  25%|██▍       | 170/693 [00:01<00:04, 121.84it/s]Loading weights:  27%|██▋       | 188/693 [00:01<00:04, 123.25it/s]Loading weights:  29%|██▉       | 201/693 [00:01<00:04, 114.13it/s]Loading weights:  32%|███▏      | 221/693 [00:01<00:03, 120.34it/s]Loading weights:  34%|███▍      | 239/693 [00:02<00:03, 121.09it/s]Loading weights:  37%|███▋      | 256/693 [00:02<00:03, 118.73it/s]Loading weights:  39%|███▊      | 268/693 [00:02<00:03, 108.09it/s]Loading weights:  42%|████▏     | 290/693 [00:02<00:03, 119.60it/s]Loading weights:  44%|████▍     | 308/693 [00:02<00:03, 120.57it/s]Loading weights:  47%|████▋     | 326/693 [00:02<00:03, 120.41it/s]Loading weights:  49%|████▉     | 339/693 [00:02<00:03, 111.81it/s]Loading weights:  52%|█████▏    | 359/693 [00:03<00:02, 118.88it/s]Loading weights:  54%|█████▍    | 377/693 [00:03<00:02, 119.45it/s]Loading weights:  57%|█████▋    | 394/693 [00:03<00:02, 117.01it/s]Loading weights:  59%|█████▊    | 406/693 [00:03<00:02, 107.30it/s]Loading weights:  62%|██████▏   | 427/693 [00:03<00:02, 116.95it/s]Loading weights:  64%|██████▍   | 446/693 [00:03<00:02, 119.81it/s]Loading weights:  67%|██████▋   | 464/693 [00:04<00:02, 111.66it/s]Loading weights:  69%|██████▊   | 476/693 [00:04<00:02, 104.47it/s]Loading weights:  72%|███████▏  | 496/693 [00:04<00:01, 111.92it/s]Loading weights:  74%|███████▍  | 515/693 [00:04<00:01, 116.89it/s]Loading weights:  77%|███████▋  | 533/693 [00:04<00:01, 117.46it/s]Loading weights:  79%|███████▊  | 545/693 [00:04<00:01, 108.19it/s]Loading weights:  82%|████████▏ | 566/693 [00:04<00:01, 117.63it/s]Loading weights:  84%|████████▍ | 584/693 [00:05<00:00, 118.24it/s]Loading weights:  87%|████████▋ | 602/693 [00:05<00:00, 118.39it/s]Loading weights:  89%|████████▊ | 614/693 [00:05<00:00, 108.35it/s]Loading weights:  91%|█████████▏| 634/693 [00:05<00:00, 116.07it/s]Loading weights:  94%|█████████▍| 653/693 [00:05<00:00, 120.19it/s]Loading weights:  97%|█████████▋| 671/693 [00:05<00:00, 119.74it/s]Loading weights:  99%|█████████▊| 683/693 [00:05<00:00, 110.05it/s]Loading weights: 100%|██████████| 693/693 [00:05<00:00, 116.60it/s]
+[probe-score] scoring variant: base-heretic
+[transformers] The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+  cat A #1 -> 1
+  cat A #2 -> 0
+  cat A #3 -> 0
+  cat A #4 -> 1
+  cat A #5 -> 1
+  cat A #6 -> 0
+  cat A #7 -> 0
+  cat A #8 -> 1
+  cat B #1 -> 0
+  cat B #2 -> 0
+  cat B #3 -> 0
+  cat B #4 -> 0
+  cat B #5 -> 0
+  cat B #6 -> 0
+  cat B #7 -> 0
+  cat B #8 -> 0
+  cat B #9 -> 0
+  cat B #10 -> 0
+  cat C #1 -> 0
+  cat C #2 -> 0
+  cat C #3 -> 0
+  cat C #4 -> 0
+  cat C #5 -> 0
+  cat C #6 -> 0
+  cat C #7 -> 0
+  cat C #8 -> 0
+  cat D #1 -> 1
+  cat D #2 -> 1
+  cat D #3 -> 1
+  cat D #4 -> 1
+  cat D #1 -> 0
+  cat D #2 -> 0
+  cat D #3 -> 0
+  cat D #4 -> 0
+[probe-score] scoring variant: lora-tuned
+  cat A #1 -> 0
+  cat A #2 -> 0
+  cat A #3 -> 0
+  cat A #4 -> 1
+  cat A #5 -> 1
+  cat A #6 -> 0
+  cat A #7 -> 0
+  cat A #8 -> 1
+  cat B #1 -> 1
+  cat B #2 -> 0
+  cat B #3 -> 0
+  cat B #4 -> 0
+  cat B #5 -> 0
+  cat B #6 -> 0
+  cat B #7 -> 0
+  cat B #8 -> 1
+  cat B #9 -> 0
+  cat B #10 -> 0
+  cat C #1 -> 0
+  cat C #2 -> 0
+  cat C #3 -> 0
+  cat C #4 -> 0
+  cat C #5 -> 0
+  cat C #6 -> 0
+  cat C #7 -> 0
+  cat C #8 -> 0
+  cat D #1 -> 0
+  cat D #2 -> 0
+  cat D #3 -> 1
+  cat D #4 -> 0
+  cat D #1 -> 0
+  cat D #2 -> 0
+  cat D #3 -> 0
+  cat D #4 -> 0
+[probe-score] wrote /home/alton/Sartor-claude-network/experiments/2026-04-22-overnight-training/track-D-probe-eval/scored-base-heretic.jsonl
+[probe-score] wrote /home/alton/Sartor-claude-network/experiments/2026-04-22-overnight-training/track-D-probe-eval/scored-lora-tuned.jsonl
+[probe-score] wrote summary to /home/alton/Sartor-claude-network/experiments/2026-04-22-overnight-training/track-D-probe-eval/scored-summary.md

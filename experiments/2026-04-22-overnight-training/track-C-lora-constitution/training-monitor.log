@@ -1,0 +1,7 @@
+[2026-04-24T02:56:35Z] monitor v0.2 start
+[2026-04-24T02:56:35Z] baseline link 01:00.0: 32.0 GT/s PCIe x16
+[2026-04-24T02:56:35Z] baseline link 02:00.0: 32.0 GT/s PCIe x16
+[2026-04-24T02:56:35Z] gpu: 0, 31, N/A, 30, 9.78, 0, 1|1, 29, N/A, 30, 19.23, 0, 1|
+[2026-04-24T02:56:35Z] ALERT: train tmux session missing — training died or never started
+[2026-04-24T02:56:35Z] train session gone; monitor exiting
+[2026-04-24T02:56:35Z] monitor exit

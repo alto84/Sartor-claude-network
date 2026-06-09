@@ -1,0 +1,76 @@
+Loaded 34 probes
+loading tokenizer + base Heretic...
+loading base model...
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading weights:   0%|          | 0/693 [00:00<?, ?it/s]Loading weights:   2%|▏         | 14/693 [00:00<00:08, 75.53it/s]Loading weights:   5%|▍         | 32/693 [00:00<00:06, 102.84it/s]Loading weights:   7%|▋         | 50/693 [00:00<00:05, 113.23it/s]Loading weights:   9%|▉         | 62/693 [00:00<00:06, 103.76it/s]Loading weights:  12%|█▏        | 83/693 [00:00<00:05, 118.22it/s]Loading weights:  15%|█▍        | 101/693 [00:00<00:04, 120.92it/s]Loading weights:  17%|█▋        | 119/693 [00:01<00:04, 120.80it/s]Loading weights:  19%|█▉        | 132/693 [00:01<00:04, 112.29it/s]Loading weights:  22%|██▏       | 152/693 [00:01<00:04, 119.72it/s]Loading weights:  25%|██▍       | 170/693 [00:01<00:04, 121.57it/s]Loading weights:  27%|██▋       | 188/693 [00:01<00:04, 122.95it/s]Loading weights:  29%|██▉       | 201/693 [00:01<00:04, 114.19it/s]Loading weights:  32%|███▏      | 221/693 [00:01<00:03, 120.04it/s]Loading weights:  34%|███▍      | 239/693 [00:02<00:03, 120.85it/s]Loading weights:  37%|███▋      | 257/693 [00:02<00:03, 117.88it/s]Loading weights:  39%|███▉      | 269/693 [00:02<00:03, 108.23it/s]Loading weights:  42%|████▏     | 290/693 [00:02<00:03, 117.02it/s]Loading weights:  44%|████▍     | 308/693 [00:02<00:03, 118.89it/s]Loading weights:  47%|████▋     | 326/693 [00:02<00:03, 119.05it/s]Loading weights:  49%|████▉     | 338/693 [00:02<00:03, 108.99it/s]Loading weights:  52%|█████▏    | 359/693 [00:03<00:02, 119.64it/s]Loading weights:  54%|█████▍    | 377/693 [00:03<00:02, 120.91it/s]Loading weights:  57%|█████▋    | 395/693 [00:03<00:02, 115.34it/s]Loading weights:  59%|█████▊    | 407/693 [00:03<00:02, 106.29it/s]Loading weights:  62%|██████▏   | 428/693 [00:03<00:02, 116.63it/s]Loading weights:  64%|██████▍   | 446/693 [00:03<00:02, 118.54it/s]Loading weights:  67%|██████▋   | 464/693 [00:04<00:01, 118.41it/s]Loading weights:  69%|██████▊   | 476/693 [00:04<00:01, 108.54it/s]Loading weights:  72%|███████▏  | 497/693 [00:04<00:01, 117.81it/s]Loading weights:  74%|███████▍  | 515/693 [00:04<00:01, 119.27it/s]Loading weights:  77%|███████▋  | 533/693 [00:04<00:01, 119.56it/s]Loading weights:  79%|███████▊  | 545/693 [00:04<00:01, 109.29it/s]Loading weights:  82%|████████▏ | 566/693 [00:04<00:01, 118.02it/s]Loading weights:  84%|████████▍ | 584/693 [00:05<00:00, 119.44it/s]Loading weights:  87%|████████▋ | 602/693 [00:05<00:00, 119.23it/s]Loading weights:  89%|████████▊ | 614/693 [00:05<00:00, 108.78it/s]Loading weights:  92%|█████████▏| 635/693 [00:05<00:00, 117.97it/s]Loading weights:  94%|█████████▍| 653/693 [00:05<00:00, 119.43it/s]Loading weights:  97%|█████████▋| 669/693 [00:05<00:00, 127.63it/s]Loading weights:  98%|█████████▊| 682/693 [00:05<00:00, 105.61it/s]Loading weights: 100%|██████████| 693/693 [00:05<00:00, 117.02it/s]
+[base-heretic] cat A #1
+[base-heretic] cat A #2
+[base-heretic] cat A #3
+[base-heretic] cat A #4
+[base-heretic] cat A #5
+[base-heretic] cat A #6
+[base-heretic] cat A #7
+[base-heretic] cat A #8
+[base-heretic] cat B #1
+[base-heretic] cat B #2
+[base-heretic] cat B #3
+[base-heretic] cat B #4
+[base-heretic] cat B #5
+[base-heretic] cat B #6
+[base-heretic] cat B #7
+[base-heretic] cat B #8
+[base-heretic] cat B #9
+[base-heretic] cat B #10
+[base-heretic] cat C #1
+[base-heretic] cat C #2
+[base-heretic] cat C #3
+[base-heretic] cat C #4
+[base-heretic] cat C #5
+[base-heretic] cat C #6
+[base-heretic] cat C #7
+[base-heretic] cat C #8
+[base-heretic] cat D #1
+[base-heretic] cat D #2
+[base-heretic] cat D #3
+[base-heretic] cat D #4
+[base-heretic] cat D #1
+[base-heretic] cat D #2
+[base-heretic] cat D #3
+[base-heretic] cat D #4
+attaching LoRA adapter...
+[lora-tuned] cat A #1
+[lora-tuned] cat A #2
+[lora-tuned] cat A #3
+[lora-tuned] cat A #4
+[lora-tuned] cat A #5
+[lora-tuned] cat A #6
+[lora-tuned] cat A #7
+[lora-tuned] cat A #8
+[lora-tuned] cat B #1
+[lora-tuned] cat B #2
+[lora-tuned] cat B #3
+[lora-tuned] cat B #4
+[lora-tuned] cat B #5
+[lora-tuned] cat B #6
+[lora-tuned] cat B #7
+[lora-tuned] cat B #8
+[lora-tuned] cat B #9
+[lora-tuned] cat B #10
+[lora-tuned] cat C #1
+[lora-tuned] cat C #2
+[lora-tuned] cat C #3
+[lora-tuned] cat C #4
+[lora-tuned] cat C #5
+[lora-tuned] cat C #6
+[lora-tuned] cat C #7
+[lora-tuned] cat C #8
+[lora-tuned] cat D #1
+[lora-tuned] cat D #2
+[lora-tuned] cat D #3
+[lora-tuned] cat D #4
+[lora-tuned] cat D #1
+[lora-tuned] cat D #2
+[lora-tuned] cat D #3
+[lora-tuned] cat D #4
+track D probe eval done

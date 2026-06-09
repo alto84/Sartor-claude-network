@@ -1,0 +1,50 @@
+[Fri Apr 24 01:50:59 2026] kvm_amd: TSC scaling supported
+[Fri Apr 24 01:50:59 2026] kvm_amd: Nested Virtualization enabled
+[Fri Apr 24 01:50:59 2026] kvm_amd: Nested Paging enabled
+[Fri Apr 24 01:50:59 2026] kvm_amd: LBR virtualization supported
+[Fri Apr 24 01:50:59 2026] kvm_amd: Virtual GIF supported
+[Fri Apr 24 01:50:59 2026] kvm_amd: Virtual NMI enabled
+[Fri Apr 24 01:51:00 2026] MCE: In-kernel MCE decoding enabled.
+[Fri Apr 24 01:51:00 2026] EDAC MC0: Giving out device to module amd64_edac controller F19h_M10h: DEV 0000:00:18.3 (INTERRUPT)
+[Fri Apr 24 01:51:00 2026] EDAC amd64: F19h_M10h detected (node 0).
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC0 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0: 16384MB 1: 16384MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC1 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0: 16384MB 1: 16384MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC2 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0:     0MB 1:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC3 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0: 16384MB 1: 16384MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC4 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0: 16384MB 1: 16384MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC5 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0:     0MB 1:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC6 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0: 16384MB 1: 16384MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC7 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0: 16384MB 1: 16384MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC8 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0:     0MB 1:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC9 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0: 16384MB 1: 16384MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC10 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0: 16384MB 1: 16384MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC MC: UMC11 chip selects:
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 0:     0MB 1:     0MB
+[Fri Apr 24 01:51:00 2026] EDAC amd64: MC: 2:     0MB 3:     0MB
+[Fri Apr 24 01:51:00 2026] intel_rapl_common: Found RAPL domain package
+[Fri Apr 24 01:51:00 2026] intel_rapl_common: Found RAPL domain core
+[Fri Apr 24 01:51:03 2026] loop6: detected capacity change from 0 to 8
+[Fri Apr 24 01:51:03 2026] NVRM: kbifInitLtr_GB202: LTR is disabled in the hierarchy
+[Fri Apr 24 01:51:03 2026] NVRM: kbifInitLtr_GB202: LTR is disabled in the hierarchy

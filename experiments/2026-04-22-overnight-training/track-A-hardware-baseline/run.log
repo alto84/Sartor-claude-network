@@ -1,0 +1,28 @@
+[2026-04-24T02:49:33Z] === Track A start ===
+[2026-04-24T02:49:33Z] pre-flight retrain...
+[2026-04-24T02:49:33Z]   01:00.0: 32.0 GT/s PCIe x16
+[2026-04-24T02:49:33Z]   02:00.0: 32.0 GT/s PCIe x16
+[2026-04-24T02:49:33Z] starting continuous dmon (nvidia-smi + sensors + PCIe state, 1 Hz)...
+[2026-04-24T02:49:33Z] telemetry PID 9810
+[2026-04-24T02:49:33Z] === Phase 1: 5 min idle baseline ===
+[2026-04-24T02:54:33Z] idle phase complete
+index, temperature.gpu, temperature.memory, power.draw [W]
+0, 31, N/A, 10.07 W
+1, 29, N/A, 19.48 W
+[2026-04-24T02:54:33Z] === Phase 2: 30 min dual-GPU gpu-burn ===
+[2026-04-24T02:54:33Z] docker not available; building gpu-burn from source...
+g++ -O3 -Wno-unused-result -I/include -std=c++11 -DIS_JETSON=false -c gpu_burn-drv.cpp
+gpu_burn-drv.cpp:63:10: fatal error: cublas_v2.h: No such file or directory
+   63 | #include "cublas_v2.h"
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:45: gpu_burn-drv.o] Error 1
+[2026-04-24T02:54:33Z] gpu-burn PIDs: 16156 (GPU 0), 16157 (GPU 1)
+[2026-04-24T02:54:33Z] === Phase 3: 2 min cooldown ===
+[2026-04-24T02:56:33Z] === stopping telemetry ===
+[2026-04-24T02:56:34Z] === post-run dmesg ===
+[2026-04-24T02:56:34Z] === final PCIe state ===
+[2026-04-24T02:56:34Z]   01:00.0: 32.0 GT/s PCIe x16
+[2026-04-24T02:56:34Z]   02:00.0: 32.0 GT/s PCIe x16
+[2026-04-24T02:56:34Z] === Quick stats from telemetry ===
+[2026-04-24T02:56:34Z] === Track A done ===
