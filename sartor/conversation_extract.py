@@ -102,6 +102,13 @@ class FactCandidate:
             f"{self.category}|{self.subclass}|{self.match_span.lower()}|{self.entity.lower()}".encode("utf-8")
         ).hexdigest()[:12]
 
+    def __post_init__(self) -> None:
+        # Interpolate the {hash} placeholder in feedback targets (uplift C11);
+        # the literal used to flow through to proposals and would have created
+        # a file named feedback_rule_{hash}.md on first non-dedup drain.
+        if "{hash}" in self.suggested_target:
+            self.suggested_target = self.suggested_target.replace("{hash}", self.fingerprint())
+
 
 @dataclass
 class ExtractStats:

@@ -275,6 +275,12 @@ def resolve_destination(entry: InboxEntry) -> Path:
     """
     target = entry.target
 
+    # Backstop (uplift C11): an unexpanded template placeholder must never
+    # become a literal filename. Blank it so routing falls through to the
+    # category fallback or the unrouted log.
+    if target and ("{" in target or "}" in target):
+        target = ""
+
     if target == "inbox-only":
         return INBOX_ROOT / entry.source_machine / "_inbox-only-log.md"
 
