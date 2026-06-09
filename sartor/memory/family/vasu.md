@@ -2,9 +2,9 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-06-05
+updated: 2026-06-09
 updated_by: personal-data-gather
-run: 185
+run: 205
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -265,3 +265,14 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact] Vasu Daily Sheet — Friday June 5 (theme: What makes a great pet?)
 > cls64fc559b249306000230d48e@inbox.kaymbu.com (Jun 5 ~1:34 PM ET): Weekly classroom theme launching — "What makes a great pet?" Unit explores how caring for pets relates to caring for friends and family. Normal Friday, engaged participation. See [[daily/2026-06-05]].
+
+## Latest from gather (2026-06-09) — run 205
+
+> [!warning] TOMORROW June 11 — Goddard School CLOSED (Montclair Township water shutoff)
+> Goddard School of Montclair is CLOSED Thursday June 11 due to a Montclair Township municipal water shutoff. Full-day childcare required. Conflicts directly with "Dinner Princeton?" (Alton primary calendar, 7 PM Jun 11). Arrange coverage from morning through evening. Source: noreply@kaymbu.com Jun 8. See [[family/active-todos]].
+
+> [!todo] TOMORROW June 10 — Pajama Day at Goddard
+> noreply@kaymbu.com (Jun 9 20:00 UTC): Samantha Ramsden: "Pajama Day Tomorrow! Wear your coziest pjs to school tomorrow!" Pack coziest pajamas in Vasu's bag tonight for Wednesday June 10 drop-off. See [[family/active-todos]].
+
+> [!fact] Tribeca Pediatrics — Prescription Delivery Notification (Jun 9)
+> info@tribecapediatrics.com (Jun 9 20:00 UTC): Virtru-encrypted secure email. Content behind Virtru login. Total Tribeca backlog now 8+ unread messages/notifications. Check portal: http://tpeds.co/13kn. See [[family/active-todos]].

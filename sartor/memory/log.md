@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-09
 updated_by: personal-data-gather
-run: 204
+run: 205
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1377,4 +1377,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - KEY FINDING: Second GIGABYTE RTX 5090 ordered — combined with PCIe 5.0 X16 riser + vertical GPU mount bracket (both delivered Jun 8), likely second card for machine 124192 (AM5 build). Significant Solar Inference LLC capital acquisition.
 - P0 carry-forward: vast.ai offline 12th+ run; Goddard Jun 11 childcare UNRESOLVED; Hiive Fund II CLOSING TODAY; Leader Bank escrow Jun 14; NJ-1065 Jun 15
 - Pages updated: `daily/2026-06-09.md` (run 202 appended, frontmatter bumped), `MACHINES.md` (run 202 "Latest from gather" appended), `family/active-todos.md` (run 202 appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 202, this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-09] ingest | personal-data-gather run 205: Vasu Pajama Day Jun 10; MKA reports Jun 10 4 PM; Tribeca prescription delivery
+- Sources: Gmail (is:unread newer_than:2d, 25 threads); all 5 Google Calendars (Jun 9–16). SSH unavailable (cloud runner).
+- New facts: 4 (Vasu Pajama Day Wed Jun 10 at Goddard — pack tonight; MKA Year End Reports released Jun 10 4 PM via Veracross + 2026-27 Acceptable Attire policy updated; Tribeca Pediatrics prescription delivery notification — Virtru encrypted, backlog now 8+; Chase monthly statements for accounts ...6713 and ...4461 available)
+- Calendar: no changes vs run 204; all 5 calendars polled; event set confirmed stable (Aneeta in office Jun 9–10; SMART call Jun 10 noon; Dinner Princeton? Jun 11 7 PM; no Vayu soccer)
+- New ACTION_REQUIRED: 2 (Pajama Day — pack tonight; MKA reports — check Veracross tomorrow 4 PM)
+- P0 open: vast.ai offline 15th+ run; Goddard Jun 11 childcare 1 day out; Sante Total Haiti wire; Sante Total 990-N overdue; HITLAB RSVP Jun 12; Leader Bank Jun 14; NJ-1065 Jun 15
+- Pages updated: `daily/2026-06-09.md` (run 205 appended, frontmatter bumped to run 205), `family/active-todos.md` (run 205 appended, frontmatter bumped to run 205), `family/vasu.md` (Pajama Day + Goddard closure appended, frontmatter bumped to run 205), `FAMILY.md` (MKA year-end reports + attire policy + Pajama Day appended), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 205, this entry)
 - SSH: unavailable (cloud runner); vast.ai status not directly verified this run

@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-09
 updated_by: personal-data-gather
-run: 204
+run: 205
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2248,6 +2248,43 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel | **2026-06-11** |
 > | FIS payment Jun 9 | Verify destination/purpose | ASAP |
 > | Pool Guy NJ billing | Balance owed | ASAP |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+
+## Latest from gather (2026-06-09) — run 205
+
+> [!todo] TONIGHT — Pack Vasu's pajamas for Pajama Day Wednesday June 10
+> noreply@kaymbu.com (Jun 9 20:00 UTC): Samantha Ramsden (Goddard): "Pajama Day Tomorrow! Wear your coziest pjs to school tomorrow!" Pack coziest pajamas in Vasu's bag tonight for Wednesday June 10 drop-off. See [[family/vasu]].
+
+> [!todo] TOMORROW June 10 at 4 PM — Check Veracross for MKA Year End Reports
+> Veracross/Katie Banks (Head of Primary School), Jun 9 19:00 UTC: "End-of-year reports will be released through Veracross on Wednesday, June 10, at 4:00 p.m." Covers Vayu (4th grade) and Vishala (3rd grade). Also review the updated 2026-27 Acceptable Attire policy (formerly Dress Code) linked in the same email — things have changed from prior years. See [[family/vayu]], [[family/vishala]].
+
+> [!todo] ACTION_REQUIRED — Tribeca Pediatrics: Prescription Delivery Notification (Jun 9 8 PM ET)
+> info@tribecapediatrics.com (Jun 9 20:00 UTC): Virtru-encrypted: "Prescription Delivery Notification." Content behind Virtru secure email login. Separate from the 7+ unread portal messages flagged in run 203. Total backlog now 8+. Check Virtru inbox and portal: http://tpeds.co/13kn.
+
+> [!warning] P0 carry-forward (run 205) — Tue Jun 9 evening
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 15th+ run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | UNRESOLVED — **1 day left** | **Thu 2026-06-11 TOMORROW** |
+> | **Sante Total Haiti wire (Alison Smith)** | From run 204 — review + authorize | **ASAP** |
+> | **Vasu Pajama Day** | Pack PJs tonight | **TOMORROW Jun 10** |
+> | **MKA Year End Reports** | Released Jun 10 4 PM Veracross | **TOMORROW Jun 10** |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | **Tribeca Pediatrics** | Prescription delivery + 8+ portal msgs | ASAP |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Vishala Orange Ball Summer Camp | Day 3 of 10 (Jun 9–19) | DAILY through Jun 19 |
+> | **HITLAB RSVP (Jerry Antimano)** | Respond via LinkedIn | **2026-06-12 (3 days)** |
+> | **Leader Bank Escrow $5,366.83** | FIS payment Jun 9 — verify applied | **2026-06-14 (4 days)** |
+> | **NJ-1065 Q2 — Solar Inference** | Call Jonathan Francis | **2026-06-15 (5 days)** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15 (5 days)** |
+> | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel | **2026-06-11** |
+> | GIGABYTE AORUS RTX 5090 | Shipped Jun 9 — delivery today/tomorrow | INFO |
+> | CyberPower CP1500PFCLCD UPS | Shipped Jun 9 | INFO |
+> | Chase statements (...6713, ...4461) | Monthly statements ready | INFO |
+> | FIS payment Jun 9 | Verify destination/purpose | ASAP |
+> | Pool Guy NJ | Balance owed | ASAP |
 > | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
 > | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
 > | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
