@@ -709,6 +709,26 @@ When the first rental closes:
 
 ---
 
+## Phase M — Tear down temporary access (MANDATORY closing step)
+
+Added 2026-06-09 (uplift C9) after the gpuserver2 bringup left a temp
+key-serve firewall hole and a chat-shared password live for two days.
+Onboarding is NOT complete until every temporary access path is gone:
+
+1. **Temp firewall rules**: delete any bootstrap rules on helper hosts
+   (e.g., `ufw status numbered` → delete the `temp <host> key-serve` rule).
+2. **Temp file/key servers**: kill any `python -m http.server` or
+   equivalent started to serve keys; confirm with `pgrep -af http.server`.
+3. **Temp credentials**: any password shared in chat, a prompt, or a log
+   during bootstrap is burned — rotate it to a vault-managed value
+   (`/secrets-via-bitwarden`, item `<host> <user>`) before closing.
+4. **Coordination fabric**: confirm the new host is in REGISTRY.yaml,
+   `~/.ssh/config`, `business/fleet.yaml`, and the peer rosters
+   (creds-sync / sessions-mirror / wellness-checker) — absence here is how
+   machines go invisible to monitoring.
+
+---
+
 ## Recovery / known issues
 
 ### Per-host quirks
