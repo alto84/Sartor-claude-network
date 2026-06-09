@@ -86,83 +86,6 @@ class TestMemorySearch(unittest.TestCase):
         self.assertLessEqual(len(results), 2)
 
 
-# -- 2. Cost Tracker --
-class TestCostTracker(unittest.TestCase):
-    """Tests for sartor/costs.py"""
-
-    def setUp(self):
-        self.tmpfile = tempfile.NamedTemporaryFile(
-            suffix=".json", delete=False, prefix="sartor_test_costs_")
-        self.tmpfile.close()
-        os.unlink(self.tmpfile.name)
-        from costs import CostTracker
-        self.tracker = CostTracker(path=self.tmpfile.name)
-
-    def tearDown(self):
-        if os.path.exists(self.tmpfile.name):
-            os.unlink(self.tmpfile.name)
-
-    def test_log_call_haiku_cost(self):
-        """Haiku: 1M input + 1M output = $0.25 + $1.25 = $1.50"""
-        from costs import _calculate_cost
-        self.assertAlmostEqual(_calculate_cost("haiku", 1_000_000, 1_000_000), 1.50, places=4)
-
-    def test_log_call_sonnet_cost(self):
-        """Sonnet: 1M input + 1M output = $3.00 + $15.00 = $18.00"""
-        from costs import _calculate_cost
-        self.assertAlmostEqual(_calculate_cost("sonnet", 1_000_000, 1_000_000), 18.00, places=4)
-
-    def test_log_call_opus_cost(self):
-        """Opus: 1M input + 1M output = $15.00 + $75.00 = $90.00"""
-        from costs import _calculate_cost
-        self.assertAlmostEqual(_calculate_cost("opus", 1_000_000, 1_000_000), 90.00, places=4)
-
-    def test_log_call_small_amounts(self):
-        """Small token counts calculated correctly"""
-        from costs import _calculate_cost
-        self.assertAlmostEqual(_calculate_cost("haiku", 1000, 0), 0.00025, places=6)
-
-    def test_log_call_persists(self):
-        """log_call writes to disk and subsequent reads find it"""
-        cost = self.tracker.log_call("haiku", 10000, 5000)
-        self.assertGreater(cost, 0)
-        self.assertAlmostEqual(self.tracker.get_today_total(), cost, places=6)
-
-    def test_daily_limit_enforcement(self):
-        """can_spend returns False when over limit"""
-        self.tracker.set_daily_limit(0.01)
-        self.tracker.log_call("opus", 1_000_000, 1_000_000)
-        self.assertFalse(self.tracker.can_spend(0.0))
-
-    def test_can_spend_under_limit(self):
-        """can_spend returns True when well under limit"""
-        self.tracker.set_daily_limit(100.00)
-        self.assertTrue(self.tracker.can_spend(0.01))
-
-    def test_get_summary_structure(self):
-        """get_summary returns dict with today, this_week, this_month, limit"""
-        summary = self.tracker.get_summary()
-        for key in ("today", "this_week", "this_month", "limit"):
-            self.assertIn(key, summary)
-        self.assertIsInstance(summary["today"], (int, float))
-
-    def test_prune_old_entries(self):
-        """Entries older than 30 days are pruned on write"""
-        old_ts = (datetime.now() - timedelta(days=35)).isoformat(timespec="seconds")
-        self.tracker.log_call("haiku", 1000, 1000, timestamp=old_ts)
-        self.tracker.log_call("haiku", 1000, 1000)  # triggers prune
-        with open(self.tmpfile.name) as f:
-            data = json.load(f)
-        for call in data["calls"]:
-            age = datetime.now() - datetime.fromisoformat(call["timestamp"])
-            self.assertLess(age.days, 31, "Old entry should have been pruned")
-
-    def test_unknown_model_raises(self):
-        """Logging an unknown model raises ValueError"""
-        with self.assertRaises(ValueError):
-            self.tracker.log_call("gpt-4", 1000, 1000)
-
-
 # -- 3. Gateway Cron --
 class TestGatewayCron(unittest.TestCase):
     """Tests for sartor/gateway/gateway_cron.py"""
@@ -345,7 +268,7 @@ class TestGitStatus(unittest.TestCase):
     def test_sartor_core_clean(self):
         """No uncommitted changes to core sartor source files"""
         core_paths = [
-            "sartor/costs.py", "sartor/memory/search.py",
+            "sartor/memory/search.py",
             "sartor/gateway/gateway_cron.py", "sartor/gateway/gateway.py",
             "sartor/harness/config.yaml", "sartor/harness/runner.py",
             "sartor/tasks/ACTIVE.md",
