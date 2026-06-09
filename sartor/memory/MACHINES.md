@@ -650,3 +650,8 @@ No git push (no credentials) - awaiting Rocinante curator commit
 > 2. Check vast.ai host dashboard → identify machine 124192
 > 3. If rental client impacted: vast.ai support pattern from 2026-04-22 — check for Saber or support ticket; reply with machine status
 > 4. Once machine restored: verify listing is live (`~/.local/bin/vastai show machines`)
+
+## Latest from gather (2026-06-09) — run 202
+
+> [!fact] GIGABYTE GeForce RTX 5090 ORDERED — Jun 9 02:06 UTC
+> auto-confirm@amazon.com: "Ordered: GIGABYTE GeForce RTX 5090... and 1 more item." Second RTX 5090 card ordered from Amazon. Combined with vertical GPU mount bracket (delivered Jun 8) and GIGA-MEGA PCIe 5.0 X16 riser (delivered Jun 8), this completes the hardware trifecta for a vertical GPU mount in an existing machine. Most likely destination: machine 124192 (Ryzen 9 9950X + ASRock X870E TAICHI AM5 build) as a second GPU to bring it to 2× RTX 5090 (64 GB VRAM). Both machines 52271 and 124192 have been offline since run 191 (Jun 7). Confirm delivery date and installation plan. See [[business/solar-inference]].

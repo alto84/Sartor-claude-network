@@ -2090,3 +2090,36 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Handshake AI Project Touchstone | Accept or decline ($125/hr) | ASAP |
 > | PAMKA Supply Sale (Vayu) | Veracross MON348 | 2026-06-30 |
 > | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+
+## Latest from gather (2026-06-09) — run 202
+
+> [!fact] GIGABYTE GeForce RTX 5090 ORDERED — Amazon Jun 9, ~10 PM ET
+> Second RTX 5090 ordered (GIGABYTE brand). Combined with vertical GPU mount bracket + GIGA-MEGA PCIe 5.0 X16 riser (both delivered Jun 8), this is fleet expansion hardware. Most likely: second GPU for machine 124192 (AM5 build: Ryzen 9 9950X + ASRock X870E TAICHI). Capital acquisition for Solar Inference LLC — track for depreciation. See [[MACHINES]], [[business/solar-inference]].
+
+> [!fact] NJ MVC Vehicle Registration Renewed — COMPLETE
+> $381.50 + $9.27 service fee paid via NJ Portal, Jun 9 01:41 UTC. CLOSED. See [[ALTON]].
+
+> [!fact] FIS Government Payment Confirmation — verify destination
+> donotreply@fisgov.com (Jun 9 01:20 UTC): payment received and will be credited. Amount not visible in snippet. Possibly NJ-1065 Q2 estimated tax or Leader Bank escrow coverage (due Jun 14). Verify purpose in FIS account before assuming Leader Bank is covered.
+
+> [!warning] P0 carry-forward (run 202) — Tue Jun 9 midday
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 12th+ run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | UNRESOLVED — arrange TODAY | **Thu 2026-06-11 (2 days)** |
+> | **Hiive Standard Fund II** | CLOSING TODAY — invest or pass | **2026-06-10 TODAY** |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | Vishala Orange Ball Summer Camp | Day 2 of 10 (Jun 9–19, daily) | DAILY through Jun 19 |
+> | **HITLAB RSVP (Jerry Antimano)** | Respond via LinkedIn | **2026-06-12 (3 days)** |
+> | **Leader Bank Escrow $5,366.83** | FIS payment Jun 9 — verify applied | **2026-06-14 (5 days)** |
+> | **NJ-1065 Q2 — Solar Inference LLC** | Call Jonathan Francis | **2026-06-15 (6 days)** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | 2026-06-15 |
+> | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel logistics | **2026-06-11** |
+> | FIS payment Jun 9 | Verify destination/purpose | ASAP |
+> | Pool Guy NJ billing | Balance owed — Zelle thepooguyznj@gmail.com | ASAP |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | Handshake Project Touchstone | Accept or decline ($125/hr) | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | 2026-06-30 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+> | NJ MVC Registration | PAID Jun 9 — CLOSED | — |
