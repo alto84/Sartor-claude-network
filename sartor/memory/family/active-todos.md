@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-09
 updated_by: personal-data-gather
-run: 201
+run: 203
 
 status: active
 priority: p1
@@ -2123,3 +2123,28 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | PAMKA Supply Sale (Vayu) | Veracross MON348 | 2026-06-30 |
 > | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
 > | NJ MVC Registration | PAID Jun 9 — CLOSED | — |
+
+## Latest from gather (2026-06-09) — run 203
+
+> [!todo] ACTION_REQUIRED — Tribeca Pediatrics portal: 7+ unread messages (2 new today)
+> Two rapid portal notifications from info@tribecapediatrics.com at Jun 9 11:56 and 11:57 AM UTC (7:56–7:57 AM ET). Two messages within 60 seconds may indicate a single event triggering duplicate notifications, or two distinct updates (appointment, results, billing). Prior unread count: 5+ as of run 65 (May 5). Total now 7+. Oldest messages may be significantly overdue. Check portal today: http://tpeds.co/13kn. See [[family/vayu]] (prior balance was paid Apr 13; new content unknown).
+
+> [!warning] P0 carry-forward (run 203) — Tue Jun 9 morning
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 13th+ run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | UNRESOLVED — 2 days left | **Thu 2026-06-11** |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | **Tribeca Pediatrics portal** | 7+ unread — check today | ASAP |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Vishala Orange Ball Summer Camp | Day 3 of 10 (Jun 9–19, daily) | DAILY through Jun 19 |
+> | **HITLAB RSVP (Jerry Antimano)** | Respond via LinkedIn | **2026-06-12 (3 days)** |
+> | **Leader Bank Escrow $5,366.83** | FIS payment Jun 9 — verify applied | **2026-06-14 (5 days)** |
+> | **NJ-1065 Q2 — Solar Inference LLC** | Call Jonathan Francis | **2026-06-15 (6 days)** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15 (6 days)** |
+> | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel | **2026-06-11** |
+> | FIS payment Jun 9 | Verify destination/purpose | ASAP |
+> | Pool Guy NJ billing | Balance owed | ASAP |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |

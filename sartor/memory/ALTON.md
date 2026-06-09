@@ -2,9 +2,9 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-06-05
+updated: 2026-06-09
 updated_by: personal-data-gather
-run: 185
+run: 203
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -449,6 +449,11 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] LinkedIn job alert — Director, Medical Insights at Pfizer (posted Jun 4)
 > jobalerts-noreply@linkedin.com (Jun 6 2:53 PM ET): Pfizer Director Medical Insights. Medical affairs/real-world evidence role. Career market signal. See [[business/az-career]].
+
+## Latest from gather (2026-06-09) — run 203
+
+> [!fact] Fidelity SOLD COREWEAVE INC COM CL A — Jun 9, 6:47 AM ET
+> Fidelity.Investments@mail.fidelity.com: trade confirmation available for account XXXXX8998. CoreWeave (CRWV) went public March 2026; AI cloud/GPU infrastructure company (Microsoft, Meta as major customers). Position sold today. Full details (shares, price, proceeds, tax lot) available in Fidelity NetBenefits. This is the same account where Micron Technology (MU) was bought Jun 6 and GOOGL call was sold May 30. Two trades in 4 days signals active portfolio management in the AI infra sector. See [[business/solar-inference]] for portfolio context.
 
 ## Latest from gather (2026-06-07) — run 195
 

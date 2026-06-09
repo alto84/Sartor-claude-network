@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-09
 updated_by: personal-data-gather
-run: 202
+run: 203
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1349,6 +1349,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: Aneeta in office Jun 9–10; Aneeta SMART call Jun 10 noon–1 PM; Dinner Princeton? Jun 11 7 PM. **KEY CONFLICT: Goddard closed Jun 11 + Dinner Princeton Jun 11 = Vasu needs childcare all day including evening.**
 - New ACTION_REQUIRED: 2 (Goddard Jun 11 childcare emergency; Hiive Standard Fund II invest/pass decision TODAY)
 - Pages updated: `daily/2026-06-09.md` (created), `family/active-todos.md` (run 201 appended, frontmatter bumped), `FAMILY.md` (run 201 appended, frontmatter bumped), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created run 201), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-09] ingest | personal-data-gather run 203: Fidelity SOLD CoreWeave; Tribeca Pediatrics x2 portal
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 9–16). SSH unavailable (cloud runner).
+- New facts: 2 (Fidelity SOLD CoreWeave INC COM CL A Jun 9 6:47 AM ET account XXXXX8998; Tribeca Pediatrics 2 new portal messages — total 7+ unread)
+- Calendar: no changes vs run 202; all 5 calendars polled; same event set confirmed (Aneeta in office Jun 9–10, SMART call Jun 10, Dinner Princeton? Jun 11 7 PM)
+- New ACTION_REQUIRED: 1 (Tribeca Pediatrics portal — 7+ unread, check today)
+- KEY FINDING: CoreWeave (CRWV) position sold in Fidelity account XXXXX8998 — confirms active trading in the AI infrastructure space. Details require NetBenefits login.
+- P0 status: vast.ai offline 13th+ run; Goddard Jun 11 childcare 2 days out; Sante Total 990-N still overdue; Leader Bank escrow Jun 14
+- Pages updated: `daily/2026-06-09.md` (run 203 appended, frontmatter bumped), `ALTON.md` (CRWV trade fact), `family/active-todos.md` (run 203 appended), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 203, this entry)
 - SSH: unavailable (cloud runner); vast.ai status not directly verified this run
 
 ## [2026-06-09] ingest | personal-data-gather run 202: GIGABYTE RTX 5090 ordered; NJ MVC renewed; FIS payment
