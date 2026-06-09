@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-08
+updated: 2026-06-09
 updated_by: personal-data-gather
-run: 199
+run: 201
 
 status: active
 priority: p1
@@ -2063,3 +2063,30 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] ABPN Continuing Certification — quarterly reminder received (Jun 8)
 > abpncommunications@abpn.org: June 2026 quarterly update — reminder to complete ABCC Article Exams and CC Program participation. Alton's board-certification maintenance obligation. No stated deadline but ongoing compliance item. See [[ALTON]].
+
+## Latest from gather (2026-06-09) — run 201
+
+> [!warning] P0 NEW — Goddard School CLOSED Thursday June 11 — CHILDCARE REQUIRED ALL DAY
+> noreply@kaymbu.com (Jun 8, 21:18 UTC): Montclair Township water shutoff closes The Goddard School of Montclair on Thursday June 11. Vasu needs full-day childcare coverage. **CONFLICT: Dinner Princeton? is also Thu June 11 at 7 PM.** Need childcare arranged from school hours through evening. Act today. See [[family/vasu]], [[daily/2026-06-09]].
+
+> [!deadline] 2026-06-10 — Hiive Standard Fund II: CLOSING TOMORROW
+> opportunities@mail.hiive.com (Jun 8, 20:00 UTC): Standard Fund II (SpaceX, OpenAI, Shield AI, Databricks). Over 95% subscribed; still open but closing June 10. **Invest or pass decision required TODAY.** See [[daily/2026-06-09]].
+
+> [!warning] P0 carry-forward (run 201) — Tue Jun 9
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 11th run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | **NEW — arrange TODAY** | **Thu 2026-06-11** |
+> | **Hiive Standard Fund II** | Decision TODAY — closing Jun 10 | **2026-06-10** |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | HITLAB RSVP (Jerry Antimano) | Respond via LinkedIn | **2026-06-12** |
+> | Leader Bank Escrow $5,366.83 | $5K at Chase; gap $366.83 | **2026-06-14** |
+> | NJ-1065 Q2 — Solar Inference LLC | Contact Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15** |
+> | Dinner Princeton? | Thu Jun 11 7 PM — confirm logistics + childcare | **2026-06-11** |
+> | Pool Guy NJ billing | Balance owed — Zelle thepooguyznj@gmail.com | ASAP |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | Handshake AI Project Touchstone | Accept or decline ($125/hr) | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | 2026-06-30 |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |

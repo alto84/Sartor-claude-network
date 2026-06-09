@@ -1342,3 +1342,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - New ACTION_REQUIRED: 0 new; P0 carry-forward from run 196 (vast.ai offline 7th run, Doximity TODAY, Goddard conf TODAY, Dinner Princeton 3 days, HITLAB 4 days, Leader Bank 6 days, NJ-1065 7 days)
 - Pages updated: `daily/2026-06-08.md` (created), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-09] ingest | personal-data-gather run 201: Goddard closure Jun 11; Hiive Fund II closing Jun 10; GIGA-MEGA delivered
+- Sources: Gmail (is:unread newer_than:2d, 28 threads); all 5 Google Calendars (Jun 9–16). SSH unavailable (cloud runner).
+- Facts gathered: 10 new (Goddard School closure Jun 11 water shutoff; Hiive Standard Fund II closing Jun 10 95% subscribed; GIGA-MEGA PCIe 5.0 X16 delivered Jun 8; Aneeta in office Jun 9–10 confirmed; Aneeta SMART call Jun 10 noon confirmed; cat litter subscription cancelled; Guidepoint biosimulation #1755072 resurfaced; Vasu Goddard routine soccer + library Jun 8; ABPN CC quarterly reminder Jun 2026; Hiive Polymarket opportunity)
+- Calendar: Aneeta in office Jun 9–10; Aneeta SMART call Jun 10 noon–1 PM; Dinner Princeton? Jun 11 7 PM. **KEY CONFLICT: Goddard closed Jun 11 + Dinner Princeton Jun 11 = Vasu needs childcare all day including evening.**
+- New ACTION_REQUIRED: 2 (Goddard Jun 11 childcare emergency; Hiive Standard Fund II invest/pass decision TODAY)
+- Pages updated: `daily/2026-06-09.md` (created), `family/active-todos.md` (run 201 appended, frontmatter bumped), `FAMILY.md` (run 201 appended, frontmatter bumped), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created run 201), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
