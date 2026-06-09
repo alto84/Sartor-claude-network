@@ -80,6 +80,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from collections import defaultdict
+from zoneinfo import ZoneInfo
 
 # Configuration
 SESSIONS_DIR = Path.home() / ".claude" / "projects"
@@ -92,7 +93,12 @@ PEER_MANIFEST = (
     / "C--Users-alto8-Sartor-claude-network" / ".peer-manifest.json"
 )
 OUT_CSV = Path(r"C:\Users\alto8\Sartor-claude-network\sartor\memory\business\hours-log\all-hours.csv")
-TZ_OFFSET = timezone(timedelta(hours=-4), name="EDT")  # bucket dates by EDT
+# Bucket dates by America/New_York wall clock (uplift WP-G, 2026-06-09).
+# Was a fixed UTC-4 ("EDT") offset, which shifted the midnight session-split
+# by an hour for the EST half of the year (~Nov-Mar). This CSV is the §469
+# material-participation record, so per-day attribution matters; the
+# idempotent rewrite regenerates all rows correctly on the next run.
+TZ_OFFSET = ZoneInfo("America/New_York")
 THRESHOLD = timedelta(minutes=30)
 LOG_FILE = Path(r"C:\Users\alto8\backups\hours-log.log")
 
