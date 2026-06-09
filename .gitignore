@@ -119,3 +119,17 @@ sartor/memory/source-documents/
 dashboard/family/.auth-failures.json
 
 
+# --- 2026-06-09 purge pass (system-uplift WP-A) ---
+# Jest coverage from the archived Dec-2025 platform; never content.
+/coverage/
+# Regenerated every 5 min by the Sartor Network Dashboard task; tracking it
+# kept the working tree permanently dirty.
+sartor/memory/wifi/network-dashboard.html
+# Playwright MCP browser profiles carry session tokens; never commit.
+/.playwright-profile/
+/.playwright-mcp/
+# Claude Code worktrees are local scratch space.
+/.claude/worktrees/
+# experiments/**/*.log are DELIBERATELY tracked (thermal-incident evidence);
+# the negation documents that intent against the platform-era *.log rules.
+!experiments/**/*.log
