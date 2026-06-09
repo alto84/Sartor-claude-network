@@ -207,10 +207,35 @@ machine #5 onboarding is one documented step.
 
 ## §Recent progress
 
+- **2026-06-09 (evening) — Purge pass executed** on Alton's greenlight
+  ("crop / prune so we can grow beautifully"). Done, in 7 commits:
+  - **U6 (bulk)**: 837 tracked files archived — 17 dead Dec-2025 platform
+    trees + root Node/TS toolchain + 9 orphaned root-tsconfig TS scripts +
+    the unwired `.claude` hook system (hooks/, hooks.json, AGENT_ROLES.md,
+    FILES_CREATED.txt, dead mcp-config.json) → `archive/memory-system-2025-12/`
+    with manifest. Verified zero live dependents first (live MCP config is
+    `.mcp.json`; gdrive is a user-scope global binary). Root `node_modules/`
+    (562 MB) deleted from disk. README rewritten as honest home-agent landing
+    page. *docs/ deliberately left — mixed-era, needs a finer pass.*
+  - **WP-A**: coverage/ and generated network-dashboard.html untracked;
+    gitignore now covers playwright profiles, `.claude/worktrees/`, coverage;
+    experiments-log tracking intent documented.
+  - **WP-B**: 6 merged/contained worktrees + 6 stale branches removed (~1.5 GB);
+    detached worktree's 5 unmerged commits preserved on
+    `preserve/directive-2026-05-12-wrapup`; kept `pihole-deployment-2026-05-17`
+    (real blocked work) and `replan-html-rocinante` (unmerged). git gc:
+    28 packs → 2, .git now 217 MB.
+  - **WP-C**: heartbeat spine (heartbeat/scheduled_executor/run_observers) +
+    brief.py, safety_api.py(+test), costs.py, create-heartbeat-task.ps1 →
+    `archive/sartor-dead-code-2026-06/`; orphaned TestCostTracker removed from
+    test_sartor.py (parses clean).
+  - **WP-F**: capture strays archived; rufus.com deleted (was untracked).
+  - **Memo floods**: 237 identical failure memos pruned to latest-only
+    (wifi-health 223, registry-drift 14). Producers keep refilling until C2
+    (Bitwarden unlock — needs Alton's vault) and C5 (registry IP) land.
+  - **D-A prepared**: CLAUDE.md amendment proposal filed at
+    `inbox/rocinante/2026-06-09-claude-md-amendment-proposal.md`.
 - **2026-06-09** — Plan opened. Ultracode review ran (10 domains, 66 agents,
-  54 verified findings, 1 rejected). This document synthesized from the
-  workflow output + Rocinante Claude's first-hand pass (wifi-health flood,
-  hooks-vs-trajectory ritual gap, dead-tree census). No fixes applied yet —
-  awaiting Alton's read and the D-A…D-F calls; §Tractable items are ready to
-  start on his word (or immediately, per autonomy-when-named, if he names the
-  batch).
+  54 verified findings, 1 rejected). Synthesized from the workflow output +
+  Rocinante Claude's first-hand pass (wifi-health flood, hooks-vs-trajectory
+  ritual gap, dead-tree census).
