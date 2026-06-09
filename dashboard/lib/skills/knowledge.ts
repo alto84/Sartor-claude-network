@@ -21,9 +21,12 @@ import {
 /**
  * Obsidian REST API configuration
  */
+// API key comes from the environment (uplift C4) — the previous hardcoded
+// literal sat in git history since 2026-02-05 and must be rotated in the
+// Obsidian Local REST API plugin. Never inline credentials here.
 const OBSIDIAN_CONFIG = {
-  baseUrl: 'https://127.0.0.1:27124',
-  apiKey: 'ff4bb67ad47c08b741581731d67f6df4f275eb756de2e777888b88ddb14ca29e',
+  baseUrl: process.env.OBSIDIAN_API_URL || 'https://127.0.0.1:27124',
+  apiKey: process.env.OBSIDIAN_API_KEY || '',
   timeout: 10000,
 };
 

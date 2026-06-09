@@ -132,7 +132,9 @@ const completionChecks: CompletionCheck[] = [
               method: "GET",
               rejectUnauthorized: false,
               headers: {
-                Authorization: "Bearer ff4bb67ad47c08b741581731d67f6df4f275eb756de2e777888b88ddb14ca29e",
+                // Token redacted 2026-06-09 (uplift C4) — the leaked value is in git
+                // history; rotate the key in the Obsidian Local REST API plugin.
+                Authorization: `Bearer ${process.env.OBSIDIAN_API_KEY || ""}`,
               },
             },
             (res) => {
