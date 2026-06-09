@@ -20,6 +20,11 @@ Write-Host "Stored. Verifying via session renewal..."
 if ($LASTEXITCODE -eq 0) {
     Write-Host "SUCCESS: vault unlocked, session cached. Automation is self-renewing from here."
 } else {
-    Remove-Item $masterFile -Force -Confirm:$false
-    Write-Host "VERIFICATION FAILED (rc=$LASTEXITCODE) -seeded file deleted. Check C:\Users\alto8\backups\bw-session-renew.log and re-run."
+    # Do NOT delete the stored password on failure — a device-verification
+    # (email OTP) wall also fails verification and is not a typo. (2026-06-09:
+    # the original auto-delete nuked a good password for exactly that reason.)
+    Write-Host "VERIFICATION INCOMPLETE (rc=$LASTEXITCODE). Stored password KEPT."
+    Write-Host "If bw asked for a 'New device verification' OTP above: check email for the code, then re-run this script and paste the code at that prompt."
+    Write-Host "If the password was mistyped: just re-run this script to overwrite it."
+    Write-Host "Log: C:\Users\alto8\backups\bw-session-renew.log"
 }
