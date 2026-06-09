@@ -207,6 +207,15 @@ machine #5 onboarding is one documented step.
 
 ## §Recent progress
 
+- **2026-06-09 (evening) — C1-immediate DONE: split-brain reconciled.**
+  Merged `github/main` (97 cloud-agent gather commits, ~3 weeks of
+  financial/family facts) into canonical main; 3 frontmatter conflicts
+  resolved (newest-run wins, local verification dates preserved); both sides
+  of today's twice-written daily log folded together. Pushed to origin AND
+  github — converged at one head. **Still open (C1-structural): cloud gather
+  agents continue pushing to github/main, so divergence resumes on their next
+  run until they're repointed to a `claude/gather` branch or the mirror
+  script auto-merges.** That fix is Phase 2.
 - **2026-06-09 (evening) — Purge pass executed** on Alton's greenlight
   ("crop / prune so we can grow beautifully"). Done, in 7 commits:
   - **U6 (bulk)**: 837 tracked files archived — 17 dead Dec-2025 platform
