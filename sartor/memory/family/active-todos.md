@@ -2332,3 +2332,16 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!decision] Sante Total Haiti wire — STATUS CHANGED TO HOLD
 > Barbara Weis (dye2tie@verizon.net) replied to the Haiti thread (Jun 9 16:10 UTC, cc: Alison Smith, Erick Delss): recommends **waiting to send the wire** until Gaby can be confirmed reachable. Gaby has missed multiple meetings and hasn't responded to recent outreach. **Do not authorize the wire until Gaby is confirmed able to receive.** Alton's action: determine whether the intended recipient is Gaby again (per May 26 $10K wire to Gabriel Thelus), verify with Barbara/Alison that Gaby is reachable, then decide. See [[business/sante-total]].
+
+## Latest from gather (2026-06-10) — run 208
+
+> [!fact] Lucent Energy — full Jun 11 deliverable scope (CPA documents incoming)
+> Alton's Jun 10 02:22 UTC email to Steven Schwartz (CEO, Lucent Energy) requested four items; Steven confirmed all coming by Jun 11 evening:
+> (1) Revised estimates: exterior painting removed, 200A attic breaker panel added, battery quote clarified
+> (2) **CPA document #1** — begin-construction attestation: $10K deposit (invoice 2025-258, 10/24/25) + $219,414.50 Climate First draw (3/15/26), >5% threshold confirmed via engineering
+> (3) **CPA document #2** — domestic content documentation: ≥40% direct material from non-prohibited foreign entities (shingles, inverters, Powerwalls) per 2026 ITC federal requirement
+> (4) Installation start date: shingle removal still late June per Steven
+> **When estimates and documents arrive Jun 11, route both CPA documents to [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com, 914-488-5727).** See [[reference_solar_project]].
+
+> [!todo] MKA 2026-27 Primary School Acceptable Attire — review before summer shopping
+> MKA Veracross (Jun 9 19:00 UTC, Head of Primary School Katie Banks): "2026-27 Primary School Acceptable Attire" (formerly Dress Code) released today. **"Some things have changed from previous years."** Review via Veracross portal link before buying summer/back-to-school clothes. Applies to [[family/vayu|Vayu]] (entering 5th grade) and [[family/vishala|Vishala]] (entering 4th grade).

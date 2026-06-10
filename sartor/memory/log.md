@@ -45,6 +45,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - New deadlines: Chase/Sante Total 07/20/2026 (was "OVERDUE NOW" — now has specific date)
 - Pages updated: `daily/2026-06-08.md` (run 200 appended), `business/sante-total.md` (deadline callout), `family/active-todos.md` (deadline + CSA + pool + ABPN), `family/vishala.md` (tennis camp + deliveries), `log.md` (this entry)
 
+## [2026-06-10] ingest | personal-data-gather run 208: Lucent Energy CPA document scope; MKA 2026-27 dress code; Tribeca Virtru prescription
+- Sources: Gmail (is:unread newer_than:2d, 30 threads; incremental vs run 207); all 5 Google Calendars (Jun 10–17, no changes); no SSH (cloud runner)
+- New facts: 2 (Lucent full CPA document scope — begin-construction attestation + domestic content docs expected Jun 11; MKA 2026-27 dress code changes — review before summer shopping)
+- Calendar: no changes across all 5 calendars
+- Status unchanged: Haiti wire HOLD (run 207), Goddard Jun 11 closure (run 206)
+- Pages updated: `daily/2026-06-10.md` (run 208 appended), `family/active-todos.md` (Lucent CPA scope + MKA dress code), `log.md` (this entry), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (run 208 appended)
+
 ## [2026-06-10] ingest | personal-data-gather run 207: Haiti wire HOLD (Barbara Weis); Lucent estimates Jun 11; GeForce RTX 5090 shipped
 - Sources: Gmail (newer_than:2d, 50 threads; incremental vs run 206); all 5 Google Calendars (Jun 10–17, no changes); no SSH (cloud runner)
 - New facts: 4 (Barbara Weis HOLD on Haiti wire pending Gaby verification; Lucent Energy estimates expected Jun 11 evening; GIGABYTE GeForce RTX 5090 shipped Jun 9 16:52 UTC; Bitwarden new CLI device login Jun 10 01:56 UTC)
