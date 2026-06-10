@@ -1,4 +1,4 @@
-# bw-vault-seed.ps1 — ONE-TIME interactive seeding of the Bitwarden master
+# bw-vault-seed.ps1 - ONE-TIME interactive seeding of the Bitwarden master
 # password into a DPAPI-protected store for Sartor automation (uplift C2).
 #
 # Run BY ALTON in an interactive console (e.g. `! powershell -ExecutionPolicy
@@ -20,7 +20,7 @@ Write-Host "Stored. Verifying via session renewal..."
 if ($LASTEXITCODE -eq 0) {
     Write-Host "SUCCESS: vault unlocked, session cached. Automation is self-renewing from here."
 } else {
-    # Do NOT delete the stored password on failure — a device-verification
+    # Do NOT delete the stored password on failure - a device-verification
     # (email OTP) wall also fails verification and is not a typo. (2026-06-09:
     # the original auto-delete nuked a good password for exactly that reason.)
     Write-Host "VERIFICATION INCOMPLETE (rc=$LASTEXITCODE). Stored password KEPT."

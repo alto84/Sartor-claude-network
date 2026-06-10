@@ -1,6 +1,6 @@
-# bw-apikey-seed.ps1 — ONE-TIME interactive seeding of the Bitwarden API key
+# bw-apikey-seed.ps1 - ONE-TIME interactive seeding of the Bitwarden API key
 # (client_id + client_secret) into the DPAPI store. The API key lets
-# bw login --apikey re-authenticate WITHOUT new-device email verification —
+# bw login --apikey re-authenticate WITHOUT new-device email verification -
 # the durable fix for the 2026-06-09 OTP tarpit.
 #
 # Where Alton gets the key: vault.bitwarden.com -> Settings -> Security ->
