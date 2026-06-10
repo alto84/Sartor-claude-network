@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-10
 updated_by: personal-data-gather
-run: 206
+run: 207
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2324,3 +2324,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Guidepoint #1754519 / #1755072 | Accept or decline | ASAP |
 > | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
 > | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+
+## Latest from gather (2026-06-10) — run 207
+
+> [!fact] Lucent Energy revised estimates expected by 2026-06-11 evening
+> steven@lucent-energy.com replied to Alton's "Revised Estimates and two documents I need" email (Jun 10 02:29 UTC). Confirmed: estimates arriving by **tomorrow evening (2026-06-11)**. Scope changes confirmed: exterior painting removed; electrical work (200A breaker panel in attic above) added. Reply snippet also mentions "I got thrown a..." (truncated) — possible complication, check full thread when estimates arrive. See [[reference_solar_project]].
+
+> [!decision] Sante Total Haiti wire — STATUS CHANGED TO HOLD
+> Barbara Weis (dye2tie@verizon.net) replied to the Haiti thread (Jun 9 16:10 UTC, cc: Alison Smith, Erick Delss): recommends **waiting to send the wire** until Gaby can be confirmed reachable. Gaby has missed multiple meetings and hasn't responded to recent outreach. **Do not authorize the wire until Gaby is confirmed able to receive.** Alton's action: determine whether the intended recipient is Gaby again (per May 26 $10K wire to Gabriel Thelus), verify with Barbara/Alison that Gaby is reachable, then decide. See [[business/sante-total]].

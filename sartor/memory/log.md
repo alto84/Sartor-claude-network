@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-10
 updated_by: personal-data-gather
-run: 206
+run: 207
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -44,6 +44,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: confirmed stable vs run 199 — same 4 events
 - New deadlines: Chase/Sante Total 07/20/2026 (was "OVERDUE NOW" — now has specific date)
 - Pages updated: `daily/2026-06-08.md` (run 200 appended), `business/sante-total.md` (deadline callout), `family/active-todos.md` (deadline + CSA + pool + ABPN), `family/vishala.md` (tennis camp + deliveries), `log.md` (this entry)
+
+## [2026-06-10] ingest | personal-data-gather run 207: Haiti wire HOLD (Barbara Weis); Lucent estimates Jun 11; GeForce RTX 5090 shipped
+- Sources: Gmail (newer_than:2d, 50 threads; incremental vs run 206); all 5 Google Calendars (Jun 10–17, no changes); no SSH (cloud runner)
+- New facts: 4 (Barbara Weis HOLD on Haiti wire pending Gaby verification; Lucent Energy estimates expected Jun 11 evening; GIGABYTE GeForce RTX 5090 shipped Jun 9 16:52 UTC; Bitwarden new CLI device login Jun 10 01:56 UTC)
+- Calendar: no changes from run 206 across all 5 calendars
+- Status changes: Sante Total Haiti wire action changed from ASAP to HOLD pending Gaby reachability confirmation
+- Pages updated: `daily/2026-06-10.md` (run 207 appended), `business/sante-total.md` (Barbara Weis HOLD), `MACHINES.md` (GeForce RTX 5090 shipped), `family/active-todos.md` (Haiti HOLD + Lucent date), `log.md` (this entry), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (run 207 appended)
 
 ## [2026-06-09] ingest | personal-data-gather run 204: Sante Total Haiti wire ACTION; AORUS RTX 5090 shipped; UPS shipped
 - Sources: Gmail (is:unread newer_than:1d, 50 threads scanned; net-new post run 203); all 5 Google Calendars (Jun 9–16); no SSH (cloud runner)

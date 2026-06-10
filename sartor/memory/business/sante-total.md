@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-06-09
+updated: 2026-06-10
 updated_by: personal-data-gather
-run: 204
+run: 207
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -301,3 +301,8 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!todo] ACTION_REQUIRED — ASAP — Haiti wire transfer (Alison Smith)
 > alison.annette.smith@gmail.com (Jun 9 15:57 UTC), CC: dye2tie@verizon.net ([[people/barbara-weis|Barbara Weis]]), edelss@hotmail.com (Erick Delss) — Subject: "Re: Haiti." Snippet: "Looping in Alton bc he sends the money. We usually do a wire transfer as we haven't had a good experience with Fonkoze in the past." Alison is flagging Alton to execute a Haiti program wire transfer. Wire explicitly preferred over Fonkoze (payment service — possibly unreliable or unavailable). **Alton must review the full thread to determine recipient, amount, and purpose, then authorize.** No disbursements without Alton's explicit authorization per CLAUDE.md. See [[family/active-todos]].
+
+## Latest from gather (2026-06-10) — run 207
+
+> [!decision] HOLD — Haiti wire pending Gaby verification
+> dye2tie@verizon.net ([[people/barbara-weis|Barbara Weis]]) replied to the "Re: Haiti" thread (Jun 9 16:10 UTC, CC: alison.annette.smith@gmail.com, edelss@hotmail.com): "I think it would be wise to wait until we can make sure that Gaby will receive the money because the country is such a mess right now. He has missed the last two meetings I set up and hasn't [communicated]." **Barbara explicitly recommends HOLDING the wire transfer until Gaby (GABRIEL THELUS, prior wire recipient from 2026-05-26) confirms he is reachable and able to receive funds.** Barbara cites missed meetings and non-response as the concern. **Alton should confirm: (1) Is this a wire to Gaby again? (2) Has Gaby been contacted and confirmed he can receive? (3) Is Barbara's concern resolved before sending?** No disbursements without Alton's explicit authorization per CLAUDE.md. Wire preference (over Fonkoze) per Alison's message is noted. See [[family/active-todos]].

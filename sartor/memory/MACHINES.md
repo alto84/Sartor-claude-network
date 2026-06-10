@@ -3,6 +3,7 @@ type: domain
 entity: MACHINES
 updated: 2026-06-10
 updated_by: personal-data-gather
+run: 207
 last_verified: 2026-05-02
 status: active
 next_review: 2026-05-12
@@ -671,3 +672,8 @@ No git push (no credentials) - awaiting Rocinante curator commit
 
 > [!fact] JMT 180 Degree 64GBS PCIe + 2 more items SHIPPED — Jun 9 23:20 UTC
 > shipment-tracking@amazon.com: "Shipped: JMT 180 Degree 64GBS PCIE... and 2 more items." JMT 180° PCIe adapter was ordered Jun 7 and tracked as "delivery status unknown" since run 201. Confirmed shipped Jun 9 23:20 UTC along with 2 additional unidentified items in same shipment. Delivery expected Jun 11–12. The 2 extra items' identity not visible in snippet — likely additional build components for the AM5 system or rtxserver. See [[business/solar-inference]].
+
+## Latest from gather (2026-06-10) — run 207
+
+> [!fact] GIGABYTE GeForce RTX 5090 SHIPPED — Jun 9 16:52 UTC
+> shipment-tracking@amazon.com: "Shipped: GIGABYTE GeForce RTX 5090..." (Jun 9 16:52 UTC). This is the second RTX 5090 card — the non-AORUS variant (GeForce) that was ordered Jun 9 02:06 UTC alongside the AORUS AI unit. Both RTX 5090 units now confirmed shipped: AORUS AI (15:51 UTC Jun 9) + GeForce (16:52 UTC Jun 9). Delivery expected Jun 10–11. Destination: AM5 build (machine 124192 candidate). Two RTX 5090s inbound = 64 GB VRAM total on that host if both install. See [[business/solar-inference]].
