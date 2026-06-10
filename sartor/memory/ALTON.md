@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-06-10
 updated_by: personal-data-gather
-run: 209
+run: 210
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -472,3 +472,11 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] Fidelity BOUGHT CALL (NVDA) NVIDIA — Jun 10 10:16 UTC
 > Fidelity.Investments@mail.fidelity.com: trade confirmation for account XXXXX8998. Action: BOUGHT CALL (NVDA) NVIDIA. Four Fidelity trades in 11 days: GOOGL CALL SOLD May 30 → MU BOUGHT Jun 6 → CRWV SOLD Jun 9 → NVDA CALL BOUGHT Jun 10. Pattern: active rotation in AI/tech options. Full detail (strike, expiry, premium, contract size) in Fidelity NetBenefits; not in email snippet. See [[business/solar-inference]], [[daily/2026-06-10]].
+
+## Latest from gather (2026-06-10) — run 210
+
+> [!todo] ACTION — LinkedIn CMO reply (Mayo Clinic-funded AI diagnostics) — respond
+> hit-reply@linkedin.com (Jun 10 14:47 UTC): Recruiter replied to Alton's earlier message re: **"Founding Chief Medical Officer Search – Mayo Clinic-Funded AI-Powered Diagnostics Company."** Snippet: "Hi Dr. Sartor-Thanks for your response. What is yo..." (truncated — likely asking availability, timeline, or interest level). Active CMO-track engagement; respond promptly. This is distinct from HITLAB RSVP (Jerry Antimano). See [[business/az-career]], [[daily/2026-06-10]].
+
+> [!fact] Alton in NYC today (Jun 10) — SpotHero parking 35 W 33rd (9:30 AM–9:30 PM)
+> support@spothero.com (Jun 10 13:45 UTC): SpotHero Reservation #125313887 confirmed. 35 W 33rd St Valet Garage, Midtown Manhattan near Penn Station. Confirms Alton's NYC commute day today. Cell (504) 579-3185 on file.

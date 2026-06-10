@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-10
 updated_by: personal-data-gather
-run: 209
+run: 210
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1438,3 +1438,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forward: vast.ai offline 19th+ run; Goddard Jun 11 childcare LAST CHANCE TODAY; Lucent estimates due Jun 11 evening; Haiti wire HOLD; HITLAB RSVP TODAY deadline; Leader Bank Jun 14; NJ-1065 Jun 15
 - Pages updated: `daily/2026-06-10.md` (run 209 appended, frontmatter bumped to run 209), `ALTON.md` (NVDA call fact appended, frontmatter bumped to run 209), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 209, runs 207/208/209 entries appended)
 - SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-10] ingest | personal-data-gather run 210: LinkedIn CMO reply; Wohelo deadline Jun 18; Juneteenth Block Party
+- Sources: Gmail (newer_than:2d, 50 threads — delta since run 209 cutoff ~11:34 UTC), all 5 calendars (Jun 10–17 window), SSH unavailable (cloud runner)
+- Calendar delta vs run 209: zero new events. All 5 calendars stable.
+- Net-new facts: 5 (LinkedIn CMO reply, Wohelo/Heidi deadline, SpotHero NYC confirm, Vasu Goddard snack, Juneteenth Block Party Jun 20)
+- ACTION: LinkedIn CMO reply — Mayo Clinic-funded AI diagnostics company Founding CMO search. Recruiter replied to Alton's prior message. Respond promptly.
+- ACTION: Wohelo Little Wohelo Parent Email #2 — Heidi Gorton available until Jun 18, then at camp. Ask all Vishala/Wohelo questions before Jun 18. Camp opens Jun 25.
+- COMMUNITY: Juneteenth Block Party Jun 20, 3–7 PM, Montclair Public Library Main Branch Plaza.
+- INFO: SpotHero #125313887 confirms Alton in NYC today (35 W 33rd Valet, 9:30 AM–9:30 PM).
+- P0 count: 6 (vast.ai offline, Goddard childcare, LinkedIn CMO reply, HITLAB RSVP, Sante Total Haiti HOLD, Lucent estimates)
+- Files touched: `daily/2026-06-10.md` (run 210 appended), `family/active-todos.md` (run 210 appended), `ALTON.md` (run 210 appended), `family/family-calendar.md` (run 210 appended), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created/appended), `log.md` (this entry)
+- KEY: LinkedIn CMO reply needs response today. Wohelo questions must go to Heidi before Jun 18. HITLAB RSVP deadline Jun 12 (2 days).

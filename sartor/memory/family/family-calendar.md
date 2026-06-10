@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-06-04
+updated: 2026-06-10
 updated_by: personal-data-gather
-run: 179
+run: 210
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -842,3 +842,11 @@ One new calendar event vs run 168: Aneeta SMART Certified Providers Quarterly Ca
 
 > [!todo] ADD TO CALENDAR — Goddard Preschool Conference Mon Jun 8
 > Jacqueline Capote announced end-of-year conferences. Once Alton signs up via SignUpGenius, add the time slot to Family calendar. See [[family/vasu]], [[family/active-todos]].
+
+## Latest from gather (2026-06-10) — run 210
+
+> [!fact] Juneteenth Block Party — Sat Jun 20, 3–7 PM, Montclair Public Library Main Branch
+> publicrelations-montclairlibrary.org (Jun 10 14:05 UTC): Montclair Public Library, Friends of the Howe House, and Montclair Township invite attendance at the **Juneteenth Block Party**, Saturday June 20, 2026, 3–7 PM, Main Branch Plaza (corner of South Fullerton Ave). Community event, family-friendly. 10 days from today. See [[family/active-todos]].
+
+> [!todo] SOFT DEADLINE Jun 18 — Contact Heidi Gorton (Wohelo) with remaining questions
+> heidi@wohelo.com (Jun 10 12:39 UTC): Heidi is available now but **unavailable starting June 18** (goes to camp). **Little Wohelo (Vishala) opens June 25.** Ask any remaining camp-prep questions before June 18. See [[family/vishala]], [[family/active-todos]].

@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-10
 updated_by: personal-data-gather
-run: 207
+run: 210
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2345,3 +2345,28 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] MKA 2026-27 Primary School Acceptable Attire — review before summer shopping
 > MKA Veracross (Jun 9 19:00 UTC, Head of Primary School Katie Banks): "2026-27 Primary School Acceptable Attire" (formerly Dress Code) released today. **"Some things have changed from previous years."** Review via Veracross portal link before buying summer/back-to-school clothes. Applies to [[family/vayu|Vayu]] (entering 5th grade) and [[family/vishala|Vishala]] (entering 4th grade).
+
+## Latest from gather (2026-06-10) — run 210
+
+> [!todo] ACTION — LinkedIn CMO reply (Mayo Clinic-funded AI diagnostics) — respond promptly
+> hit-reply@linkedin.com (Jun 10 14:47 UTC): Recruiter replied to Alton's earlier message about **"Founding Chief Medical Officer Search – Mayo Clinic-Funded AI-Powered Diagnostics Company."** Snippet: "Hi Dr. Sartor-Thanks for your response. What is yo..." (likely asking for availability, timeline, or interest level). Active career engagement — respond to keep it alive. Distinct from the HITLAB RSVP. See [[ALTON]], [[business/az-career]].
+
+> [!todo] SOFT DEADLINE 2026-06-18 — Wohelo: ask Heidi any remaining questions NOW
+> heidi@wohelo.com (Jun 10 12:39 UTC): "Little Wohelo Parent Email June #2." Heidi Gorton is **available for questions now**; starting June 18 she'll be at camp and unavailable. **Little Wohelo opens June 25** (15 days). Outstanding: uniforms verified? trunk ready? medication forms submitted? Get all questions to Heidi before June 18. See [[family/vishala]].
+
+> [!fact] Juneteenth Block Party — Sat Jun 20, 3–7 PM, Montclair Public Library
+> Montclair Public Library, Friends of the Howe House, and Montclair Township invite attendance at the **Juneteenth Block Party**, Saturday June 20, 3–7 PM, Main Branch Plaza. Free family event 10 days out. See [[family/family-calendar]].
+
+> [!warning] P0 carry-forward — run 210 (Wed Jun 10 ~4 PM ET)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 20th+ run** | **NOW** |
+> | **Goddard closure Jun 11** | TODAY was last chance to arrange childcare | **Thu 2026-06-11** |
+> | **LinkedIn CMO reply** | **NEW — respond promptly** | ASAP |
+> | **Abby's graduation Jun 18** | Identify + plan | **2026-06-18** |
+> | **Wohelo: ask Heidi before Jun 18** | Camp opens Jun 25 | **2026-06-18** |
+> | **Sante Total Haiti wire** | HOLD — verify Gaby reachable | ASAP |
+> | **Lucent Energy estimates + CPA docs** | Expected Jun 11 evening | **2026-06-11** |
+> | **HITLAB RSVP (Jerry Antimano)** | LinkedIn — 2 days remaining | **2026-06-12** |
+> | NJ-1065 Q2 — Solar Inference | Call Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15** |
