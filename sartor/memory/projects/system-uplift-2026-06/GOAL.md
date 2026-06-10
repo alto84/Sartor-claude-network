@@ -207,6 +207,18 @@ machine #5 onboarding is one documented step.
 
 ## §Recent progress
 
+- **2026-06-09 (late night) — C2 + C9 FULLY CLOSED.** Vault automation working
+  and verified end-to-end: `sartor-secret read` returns exit 0, wifi-health
+  monitor recovered (real report, not the unreachable failure). Root cause of
+  the night's fight: `bw login --apikey` + a separate `bw unlock` yields a
+  session that can't decrypt (`bitwarden_crypto` error); the session from
+  `bw login --passwordenv --raw` decrypts fine. Final design: apikey only
+  establishes device-trust (dodges the OTP tarpit), password-login provides the
+  working session; renew probes a real read, not `bw status` (which lies
+  "locked"). gpuserver2 'alton' password rotated to a strong random value,
+  stored+verified in vault (C9 tail closed; the chat-shared temp secret is dead).
+  Lessons in `project_bitwarden_cli_automation.md`. UniFi backup + network
+  dashboard will self-recover on their next scheduled runs via the same path.
 - **2026-06-09 (night) — C2-structural built; blocked on one Alton step.**
   Self-renewing Bitwarden session machinery shipped: DPAPI master-password
   store (seeded), `bw-session-renew.ps1`, "Sartor Vault Session Renew" task

@@ -12,7 +12,7 @@ power/thermal/business-use effort after it's in.
 - Wi-Fi: MediaTek (mt7925e) `wlp7s0` `dc:56:7b:01:96:d5`, DHCP **192.168.1.174**, AP **Gym**, **−77 dBm (flaky — SSH sessions drop on long ops)**.
 - Wired NIC: **Realtek RTL8126 5GbE** (`06:00.0` `10ec:8126`). Stock `r8169` lacks the 8126 PCI ID → no driver bound → port dark. Fix in progress: **r8126-dkms 3.0.11-1ubuntu13**.
 - Access: Rocinante key planted (id_ed25519 rotated-2026-04-16) + **NOPASSWD sudo OK**. Bootstrapped via paramiko password-auth (CLI key-plant-by-curl had failed — gpuserver2→gpuserver1:8088 unreachable, likely Wi-Fi client isolation).
-- **Security debt:** temp login secret was shared in chat → MUST rotate to a vault-managed value (`gpuserver2 alton`).
+- **Security debt:** temp login secret was shared in chat → MUST rotate to a vault-managed value (`gpuserver2 alton`). **CLOSED 2026-06-09:** rotated to a strong random value via `scripts/win-tasks/gpuserver2-rotate-pw.ps1`, stored + verified in vault item `gpuserver2 alton`. gpuserver1:8088 temp ufw rule + key-server also torn down (C9).
 
 ## Operating constraints
 - Wi-Fi flaky → run long ops DETACHED on the box (`setsid`/`nohup` + logfile) and poll with short hardened SSH (`-o ServerAliveInterval=5 -o Compression=yes`). Priority is to get the **wired link up** to stabilize everything else.
@@ -91,3 +91,15 @@ Port range for gpuserver2 = **40200-40299** (gpuserver1=40000-40099, rtxserver=4
 - TODO remaining: thermal stress (heat@max — pip torch matmul, faster once wired); netplan match-by-MAC;
   UFW host-side; password→vault (DEFERRED — vault likely locked, owner away; key+NOPASSWD make it non-urgent);
   fleet.yaml (DEFERRED to actual listing); final report + skill/doc updates.
+
+## PCIe link verified healthy 2026-06-09 ~16:39 (suspected slow riser/extension cable — DISPROVEN)
+- Owner suspected the PCIe extension cable was slow. Idle reading (P8) showed `pcie.link.gen.current=1`
+  (2.5GT/s) and `lspci` tagged `Speed 2.5GT/s (downgraded)` — but that is **normal idle power-saving
+  downshift**, not a defect. Width was full x16 idle, and LnkCap advertised 32GT/s x16.
+- Forced load via CUDA **driver** API (libcuda.so + ctypes; host has no torch/nvcc/cuda-samples/docker yet):
+  512MB HtoD+DtoH loop, 14s, 210 iters. Link trained immediately to **Gen5 (32GT/s) x16** and held steady.
+- **Replays Since Reset: 0** before and after. **No AER / PCIe / link-retrain errors** in dmesg over 1d12h uptime
+  (only `enp7s0` onboard NIC logged link-down at boot — unused, irrelevant). Conclusion: PCIe path is a
+  clean, full-bandwidth PCIe 5.0 x16 link. Cable is fine.
+- Real throughput caveat (NOT PCIe): wired link negotiated 1GbE not the RTL8126's 5GbE (switch port/cable is 1G;
+  already flagged in REGISTRY). That's the likely actual bottleneck for data movement, not the PCIe riser.
