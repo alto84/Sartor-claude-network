@@ -29,9 +29,14 @@ $n = 0
 while (-not (Test-Path $otp) -and $n -lt 150 -and -not $p.HasExited) { Start-Sleep -Seconds 2; $n++ }
 if ((Test-Path $otp) -and -not $p.HasExited) {
     $code = (Get-Content $otp -Raw) -replace '[^\d]', ''
-    $p.StandardInput.WriteLine($code)
-    $p.StandardInput.Close()
-    Write-Output 'OTP fed.'
+    # Raw ASCII bytes via BaseStream — the StreamWriter wrapper emits a UTF-8
+    # BOM on first write under chcp 65001, which bw reads as part of the code
+    # (the "invalid otp" failures of 2026-06-09 were exactly that).
+    $bytes = [Text.Encoding]::ASCII.GetBytes("$code`r`n")
+    $p.StandardInput.BaseStream.Write($bytes, 0, $bytes.Length)
+    $p.StandardInput.BaseStream.Flush()
+    $p.StandardInput.BaseStream.Close()
+    Write-Output 'OTP fed (raw ASCII).'
 }
 $null = $p.WaitForExit(60000)
 Remove-Item $otp -Force -ErrorAction SilentlyContinue

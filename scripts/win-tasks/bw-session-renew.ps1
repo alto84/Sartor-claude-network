@@ -38,13 +38,31 @@ $env:BW_PASSWORD = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr)
 [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
 
 try {
-    # 3. Re-authenticate if the CLI is fully logged out.
+    # 3. Re-authenticate if the CLI is fully logged out. Prefer the API key
+    #    (bw login --apikey skips new-device email verification entirely —
+    #    the 2026-06-09 OTP tarpit); fall back to password login.
     $env:BW_SESSION = $null
     $status = (bw status 2>$null | ConvertFrom-Json).status
     if ($status -eq 'unauthenticated') {
-        bw login alto84@gmail.com --passwordenv BW_PASSWORD --raw | Out-Null
-        if ($LASTEXITCODE -ne 0) {
-            Log "FAIL: bw login rc=$LASTEXITCODE (2FA enabled? seed an API key: 'bw login --apikey' flow, or disable 2FA for CLI)"
+        $apikeyFile = "$dir\bw-apikey.xml"
+        if (Test-Path $apikeyFile) {
+            $ak = Import-Clixml $apikeyFile
+            $b1 = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($ak.client_id)
+            $env:BW_CLIENTID = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($b1)
+            [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($b1)
+            $b2 = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($ak.client_secret)
+            $env:BW_CLIENTSECRET = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($b2)
+            [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($b2)
+            bw login --apikey | Out-Null
+            $loginRc = $LASTEXITCODE
+            $env:BW_CLIENTID = $null
+            $env:BW_CLIENTSECRET = $null
+        } else {
+            bw login alto84@gmail.com --passwordenv BW_PASSWORD --raw | Out-Null
+            $loginRc = $LASTEXITCODE
+        }
+        if ($loginRc -ne 0) {
+            Log "FAIL: bw login rc=$loginRc (device-verification OTP wall? seed an API key via bw-apikey-seed.ps1 — durable fix)"
             exit 4
         }
         Log "re-authenticated (was unauthenticated)"
