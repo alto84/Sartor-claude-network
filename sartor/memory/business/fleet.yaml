@@ -104,7 +104,7 @@ machines:
       load_w: 1250                     # 2x425W cap + ~350W host/CPU/board
       logger: null                     # NO logger installed — power_ingest flags this (ITC substantiation gap)
     listing:
-      gpu_cost: 0.86                   # DYNAMIC (scripts/fleet/reprice.py) set 2026-05-31T16:23:04Z
+      gpu_cost: 1.19                   # DYNAMIC (scripts/fleet/reprice.py) set 2026-06-10T03:00:00Z
       min_bid: 0.85
       storage_cost: 0.10
       min_gpus: 2                      # CRITICAL thermal-safety invariant — single-card pathology if 1
@@ -116,8 +116,10 @@ machines:
       gpu_temp_alert_c: 84
       gpu_temp_crit_c: 86
     note: >
-      Live list $1.10 vs approved $0.92 (D1). GPU0 ~83C under sustained renter load (2C from 85C
-      soft-abort). min_gpus must never drop to 1. machine_id 124192 (not 97429).
+      Price is DYNAMIC (reprice.py, P40-of-comps anchor since 2026-06-09; D1 closed — approved-vs-live
+      drift is owned by the controller). Current renter locked ~$0.75/GPU on 2026-06-03; light usage,
+      pays per rented hour regardless. GPU0 ~83C under sustained renter load (2C from 85C soft-abort).
+      min_gpus must never drop to 1. machine_id 124192 (not 97429).
 
 # Future-machine slot (uncomment + fill when rig 3 arrives):
 # - hostname: rig3

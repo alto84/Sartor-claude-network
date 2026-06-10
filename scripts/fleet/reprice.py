@@ -13,9 +13,10 @@ THE STRATEGY — anchored adaptive pricing:
   are demonstrably BELOW the revenue-optimal price. The optimum above that is unknown
   (never sampled), so this is explore/exploit, not a formula.
 
-  1. MARKET ANCHOR (Alton's rule): anchor_dph = the 2nd-cheapest comparable listing's
-     TOTAL $/hr (what renters actually sort on). Recomputed live each run -> we ride
-     high when supply is thin/expensive, drop to stay competitive when it's crowded.
+  1. MARKET ANCHOR (Alton's rule, percentile-scaled 2026-06-09): anchor_dph = the
+     2nd-cheapest comparable listing's TOTAL $/hr in a THIN market, the ~P40 comp in a
+     deep one (rank-2 of 19 comps is bottom-decile, not "competitive"). Recomputed live
+     each run -> we ride high when supply is thin/expensive, drop when it's crowded.
   2. DEMAND FEEDBACK: a persisted multiplier on the anchor. Fills fast -> underpriced
      -> multiplier up (explore higher). Sits idle too long -> overpriced -> multiplier
      down (recapture occupancy). It converges toward the fill-time sweet spot; that
@@ -42,6 +43,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 import subprocess
 import sys
@@ -67,7 +69,22 @@ MACHINE_ID = 124192
 # it empties often; the strict-2-GPU rentable set was 3 one hour and 0 the next).
 COMPARE_QUERY = "gpu_name=RTX_PRO_6000_WS verified=true rentable=true"
 MIN_COMP_RELIABILITY = 0.90        # ignore junk listings racing to the bottom
-ANCHOR_RANK = 2                    # "two from the bottom": 2nd-cheapest competitor
+ANCHOR_RANK = 2                    # thin-market floor: "two from the bottom" (Alton's literal rule)
+ANCHOR_PCTL = 0.40                 # TWEAK (d) 2026-06-09: deep-market anchor percentile. The rank-2
+                                   # anchor was written against a ~6-listing market; with 19+ reliable
+                                   # comps rank-2 is bottom-DECILE and systematically underprices
+                                   # (computed $0.59/GPU targets while the market clustered at $1.20).
+                                   # anchor rank = max(ANCHOR_RANK, ceil(ANCHOR_PCTL * n)) — identical
+                                   # to the old rule when the comp set is thin, percentile when deep.
+CEILING_PCTL = 0.75                # ceiling ref: just under the P75 peer (was: rank-3, same staleness)
+
+
+def anchor_rank(n: int) -> int:
+    return max(ANCHOR_RANK, math.ceil(ANCHOR_PCTL * n))
+
+
+def ceiling_rank(n: int) -> int:
+    return min(n, max(anchor_rank(n) + 1, math.ceil(CEILING_PCTL * n)))
 
 # --- adaptive controller ---
 MULT_START = 1.0
@@ -95,7 +112,11 @@ OUTLIER_MULT = 1.5               # TWEAK (c) 2026-05-31: reject a per-GPU-normal
 STEP_CAP_GPU = 0.50               # max change to gpu_cost per applied relist ($/GPU)
 ABS_CEILING_GPU = 3.00            # absolute per-GPU ceiling, regardless of market
 MIN_RELIST_INTERVAL_MIN = 30      # don't relist more often than this
-DEFAULT_OVERHEAD = 0.62           # our_dph - gpu_cost*num_gpus (storage/inet baked into search dph)
+DEFAULT_OVERHEAD = 0.02           # our_dph - gpu_cost*num_gpus. TWEAK (d) 2026-06-09: comps' raw
+                                  # offers show dph_total ~= dph_base (search storage adds ~$0.001/hr),
+                                  # so real overhead is ~zero. The old 0.62 default — and a calibrated
+                                  # 0.82 from a stale offer read — deflated targets by $0.31-0.41/GPU.
+OVERHEAD_MAX = 0.10               # clamp calibration; anything bigger is a stale/garbled offer read
 PRICE_TOLERANCE = 0.02            # only relist if target differs from live by more than this
 
 
@@ -292,7 +313,10 @@ def compute(state: dict, our: dict | None, comps_raw: list[dict] | None,
         ours = next((o for o in comps_raw if o.get("machine_id") == MACHINE_ID), None)
         if ours and ours.get("dph_total") and live_gpu_cost:
             ng = ours.get("num_gpus", 2) or 2
-            overhead = round(float(ours["dph_total"]) - float(live_gpu_cost) * ng, 4)
+            raw_oh = float(ours["dph_total"]) - float(live_gpu_cost) * ng
+            overhead = round(min(OVERHEAD_MAX, max(0.0, raw_oh)), 4)
+            if raw_oh > OVERHEAD_MAX:
+                reasons.append(f"overhead calib {raw_oh:.2f} implausible (stale offer read?) -> clamped {OVERHEAD_MAX}")
 
     # --- build comp sets (exclude us, reliability-filtered) ---
     pool = []
@@ -321,15 +345,21 @@ def compute(state: dict, our: dict | None, comps_raw: list[dict] | None,
         basis = "strict-2gpu-total"
         comps = strict2
         # comps are same GPU count -> dph directly comparable; express anchor per-GPU
-        anchor_per_gpu = strict2[ANCHOR_RANK - 1]["dph"] / 2.0
-        if len(strict2) >= 3:
-            rank3_per_gpu = strict2[2]["dph"] / 2.0
+        a_rank = anchor_rank(len(strict2))
+        anchor_per_gpu = strict2[a_rank - 1]["dph"] / 2.0
+        c_rank = ceiling_rank(len(strict2))
+        if c_rank > a_rank:
+            rank3_per_gpu = strict2[c_rank - 1]["dph"] / 2.0
+        if a_rank > ANCHOR_RANK:
+            reasons.append(f"deep market ({len(strict2)} comps) -> P{int(ANCHOR_PCTL*100)} anchor rank {a_rank}")
     elif len(pergpu) >= ANCHOR_RANK:
         basis = "per-gpu-normalized"
         comps = pergpu
-        anchor_per_gpu = pergpu[ANCHOR_RANK - 1]["per_gpu"]
-        if len(pergpu) >= 3:
-            rank3_per_gpu = pergpu[2]["per_gpu"]
+        a_rank = anchor_rank(len(pergpu))
+        anchor_per_gpu = pergpu[a_rank - 1]["per_gpu"]
+        c_rank = ceiling_rank(len(pergpu))
+        if c_rank > a_rank:
+            rank3_per_gpu = pergpu[c_rank - 1]["per_gpu"]
         reasons.append(f"2-GPU set thin ({len(strict2)}); per-GPU basis over {len(pergpu)} boxes")
 
         # TWEAK (c) 2026-05-31 — OUTLIER GUARD on the per-GPU-normalized fallback.
