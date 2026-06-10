@@ -2,13 +2,13 @@
 type: matter
 matter: 469-material-participation
 status: open
-risk: medium
+risk: medium-high
 priority: p2
 opened: 2026-05-08
-updated: 2026-05-28
-last_action: 2026-05-28
+updated: 2026-06-09
+last_action: 2026-06-09
 deadline: continuous
-authority: [IRC-469, IRC-469d2, IRC-38c, Reg-1.469-5T, Reg-1.469-3, Reg-1.469-2T]
+authority: [IRC-469, IRC-469d2, IRC-38c, IRC-704d, IRC-465, IRC-461l, IRC-721, IRC-168k2E, Reg-1.469-5T, Reg-1.469-1T-e3, Reg-1.469-4, Reg-1.469-3, Reg-1.469-2T, RevProc-2010-13, RevProc-2025-32]
 related: [BUSINESS, business/solar-inference, TAXES]
 ---
 
@@ -51,6 +51,26 @@ Adversarial verification (see [[projects/fleet-ledger-2026-05-28/VERIFICATION|VE
 on the new `human_interactive_hours` figure and operator-level (not investor-grade) time. This raises
 the matter's effective risk given how load-bearing the ITC's usability against wage income is.
 
+## 2026-06-09 UPDATE — W-2 pass-through chain (four-limiter memo + adversarial verdict)
+
+Full IRAC memo 2026-06-09 analyzed the TY2026 pass-through of the full LLC loss (potentially $370K+ incl. solar-roof business fraction) against W-2 wages. The loss must clear **four limiters in statutory order: §704(d) basis → §465 at-risk → §469 → §461(l)**. Verified findings, verdict corrections applied:
+
+**(1) §469 gateway — rental-activity characterization is THE open issue, ahead of hours.** vast.ai hosting may be a per-se passive rental under §1.469-1T(e)(3) regardless of material participation. Average-period mechanics: reserved contract C.34113802 (2026-04-05→08-24) is one ~141-day period; single-class computation needs **N ≥ 23 discrete on-demand rental periods closing in 2026** to get the average ≤7 days (verdict corrected the memo's N ≥ 27 — (141+N)/(N+1) ≤ 7 solves to N ≥ 22.33). Two-class income-weighted computation could land ~35–45 days and fail outright if gpuserver1 contributes ≥~25–30% of gross rental income. **The decisive facts — discrete rental-period count and per-machine income split — are untallied; pull from vast.ai host records/kaalia container history.** Caution: rtxserver's "~1 day average" assumption is itself suspect (the C.38328535 miner rental ran long). Class-of-property definition (one equipment class vs per-server) has no pinned authority — JF item. Significant-services fallback is weak (hosting mostly automated). **Mitigation: when C.34113802 expires 2026-08-24, do NOT accept another multi-month reserved contract in 2026; run on-demand listings to drive the period count up** (aligns with existing short-term-first strategy; Alton's call). If the rental label sticks, everything downstream is moot and grouping the roof in would poison the roof too.
+
+**(2) Hours pace — 49.47h YTD (human_interactive_hours summed directly from all-hours.csv through 2026-06-09; the 45.1h briefing figure was stale).** Need 50.53h more by 12/31 — ~1.8h/week, reachable with operator-level time (pricing decisions, hardware ops, vendor/lender interaction, listing-strategy execution, books). Investor-grade time (dashboards, reviewing autonomous output) excluded per the 05-28 update. **Log gap: the CSV only captures Claude-session typing — the solar install starting now generates non-keyboard operator hours (site walks, electrician coordination); start a contemporaneous narrative/calendar supplement per §1.469-5T(f)(4).** Possible upside: early-2026 rows have blank human_interactive_hours; extractor backfill could raise the YTD figure. Spousal attribution (§469(h)(5)) confirmed: Aneeta's 50% share is non-passive if Alton materially participates. Open verdict question: whether Lucent install-crew individuals' hours count against the (a)(3) more-than-anyone test (the 500-hour (a)(1) test would be immune).
+
+**(3) Grouping (§1.469-4):** preferred framing in order: (i) no grouping needed — the roof's business fraction is an asset OF the single GPU-hosting trade or business; (ii) if two activities, grouping passes the §1.469-4(c) appropriate-economic-unit factors decisively (identical 50/50 ownership, one location, the roof's business use IS supplying the GPU load), with Rev. Proc. 2010-13 disclosure — **but only after the rental label is stripped** (§1.469-4(d)(1) blocks grouping a rental activity with a trade or business except via the proportionate-ownership branch, and grouping into a per-se-passive rental makes the whole group passive).
+
+**(4) Other limiters:**
+- **§704(d) basis — currently the hardest dollar constraint.** Alton outside basis ~$37,831.29; **Aneeta $0**; Exhibit A blank. A 50/50 $370K loss strands ~$185K on Aneeta regardless of §469. Fix: contribution/assignment of the solar system creating basis for both spouses. **Verdict correction on structure: contract ASSIGNMENT to the LLC (LLC becomes the purchaser from Lucent) ranks ABOVE in-kind §721 contribution** — contributed property takes §179(d)(2)(C) carryover basis, which fails §168(k)(2)(E)(ii); the 721-preserves-bonus reading is contested in the final-reg preamble and practitioner literature. Never have the LLC BUY the system from the members (§267 related-party kills bonus). HIGH today; LOW-MEDIUM if assignment/contribution executes pre-PIS.
+- **§465 at-risk: LOW** — Climate First loan full-recourse to both spouses, unrelated lender; keep the recourse character.
+- **§461(l): VERIFIED — 2026 MFJ cap is $512,000** (Rev. Proc. 2025-32; OBBBA reset, down from $626K in 2025). $370K aggregate loss is under the cap; excess would carry as NOL. LOW.
+- **NJ: plan on ≈ $0 against wages** — §168(k) addback plus category-of-income no-netting (ABCA 50% partial only among business categories). Federal benefit is the entire near-term prize.
+
+**(5) §48E ITC side — two gates, both adverse:** (i) §469(d)(2) passive-credit trap (same gateway as the loss); (ii) **§38(c): the verdict resolved the open question unfavorably — §48E is NOT a §38(c)(4)(B) specified credit** (the list includes §48, never §48E), so the TMT floor fully applies; and the loss itself shrinks regular tax, throttling same-year credit absorption. The bonus-vs-slower-depreciation election interaction is now a mandatory JF modeling item, not optional. Also: **Notice 2025-42 vacated** (D.D.C. 2026-06-06) — 5% safe harbor restored under pre-IRA notices, statutory 7/4 BoC date unchanged; and the **FEOC ≥40% material-assistance gate** applies to 2026-BoC facilities (→ [[feoc-material-assistance-48e]]).
+
+**Scenarios (federal):** best case (everything executes, non-passive, basis fixed) ~$160–220K cash value — but graded HIGH until FEOC, rental-period tally, business-use metering, and acquisition structure pin down; the best-case ~$350K roof fraction is internally in tension with the $86K ITC ceiling and undercut by net-metering credits flowing to the personal PSE&G account. **Mid case (realistic planning anchor, MEDIUM): hosting leg only, ~$45K loss → ~$16–17K federal**, roof sliding to TY2027. Worst case $0 (rental label sticks or hours fail).
+
 ## Facts
 
 - Solar Inference LLC: 50/50 multi-member, Alton + Aneeta. Pre-revenue. Active GPU rental + planned solar ITC + bonus depreciation in TY2026.
@@ -86,7 +106,7 @@ Test (a)(1) 500 hours is harder but plausibly reachable by EOY 2026 if GPU build
 
 The auto-logging system is critical because Reg §1.469-5T(f)(4) requires "reasonable means" of documentation. Random session JSONL files without classification fail "reasonable" — the auto-logger producing dated CSV with categorization passes.
 
-### Risk grade: MEDIUM
+### Risk grade: ~~MEDIUM~~ MEDIUM-HIGH (re-graded 2026-06-09 — see the 2026-06-09 update; this 2026-05-08 section retained as history, and its "180 trailing hours" figure above is superseded by the 49.47h human_interactive_hours YTD)
 
 The position is defensible but depends on documentation surviving examination. IRS material-participation challenges typically focus on:
 - Whether the hours claimed are real (vs. inflated)
@@ -103,6 +123,11 @@ If TY2026 pass-through loss is substantial ($300K+), the §469 position is load-
 
 ## Action items
 
+- [ ] **Pull 2026 discrete rental-period count + per-machine gross income split** from vast.ai host records / kaalia container history (decides the rental-characterization gateway; single-class breakeven N ≥ 23). (added 2026-06-09)
+- [ ] **Start contemporaneous narrative/calendar supplement for non-keyboard hours** (solar install site walks, electrician coordination) per §1.469-5T(f)(4). (added 2026-06-09)
+- [ ] **Post-2026-08-24: on-demand listings only for rest of 2026** — no new multi-month reserved contract (Alton's call; flag to /vastai-management). (added 2026-06-09)
+- [ ] JF agenda: class-of-property computation method; §721-vs-contract-assignment structuring; §48E specified-credit status confirmed adverse — run TMT projection; bonus-vs-slower-depreciation vs ITC absorption; Form 8582 / Rev. Proc. 2010-13 grouping disclosure. (added 2026-06-09)
+- [ ] Check whether the extractor can backfill blank early-2026 human_interactive_hours rows. (added 2026-06-09)
 - [ ] Periodic check of `business/hours-log/all-hours.csv` — flag if anomalous spikes or gaps.
 - [ ] At year-end TY2026 close-out: produce annualized hours summary by activity classification.
 - [ ] Confirm Aneeta's participation is < Alton's (likely yes by large margin).
@@ -117,6 +142,8 @@ If TY2026 pass-through loss is substantial ($300K+), the §469 position is load-
 ## History
 
 - 2026-05-08: Opened. Position: §1.469-5T(a)(3) test, defensible per auto-log.
+- 2026-05-28: VERIFIED UPDATE — hours log counted bot activity; human_interactive_hours column is the defensible figure; investor-grade time cuts against us; ITC strands against wages if passive; 7-day exception necessary-not-sufficient; §38(c) cap noted.
+- 2026-06-09: **W-2 pass-through chain memo + adversarial verdict added; risk raised MEDIUM → MEDIUM-HIGH.** Rental-activity characterization under §1.469-1T(e)(3) identified as the gateway issue ahead of hours (period count untallied; single-class breakeven N ≥ 23 per verdict math fix); hours pace 49.47h YTD / 50.53h to the 100h test (~1.8h/wk); grouping analysis added (strip rental label first, Rev. Proc. 2010-13 disclosure); §704(d) is the hardest dollar constraint (Aneeta $0 basis) with contract-assignment ranked above §721 contribution for bonus eligibility; §465 LOW; §461(l) $512K MFJ 2026 verified not binding; NJ ≈ $0 vs wages; §48E confirmed NOT a §38(c)(4)(B) specified credit (TMT floor applies). Mid case ~$45K hosting-leg loss is the realistic planning anchor. Action items expanded.
 
 ## Resolution
 

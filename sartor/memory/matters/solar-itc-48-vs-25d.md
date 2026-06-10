@@ -5,10 +5,10 @@ status: open
 risk: high
 priority: p1
 opened: 2026-05-08
-updated: 2026-05-28
-last_action: 2026-05-28
-deadline: 2026-07-04   # BEGIN-CONSTRUCTION deadline (not placed-in-service) — corrected 2026-05-28
-authority: [IRC-25D, IRC-48, IRC-48E, IRC-168k, IRC-50c, Reg-1.48-9, Reg-1.168k-2, OBBB-PL119-21, Notice-2025-42]
+updated: 2026-06-09
+last_action: 2026-06-09
+deadline: 2026-07-04   # BEGIN-CONSTRUCTION deadline (not placed-in-service) — corrected 2026-05-28; insurance not a cliff if PIS by 12/31/2027 (see 2026-06-09 update)
+authority: [IRC-25D, IRC-48, IRC-48E, IRC-168k, IRC-50c, IRC-38c, Reg-1.48-9, Reg-1.168k-2, OBBB-PL119-21, Notice-2025-42-VACATED, Notice-2026-15, TD-10024]
 related: [reference_solar_project, BUSINESS, business/solar-inference, TAXES]
 ---
 
@@ -54,6 +54,41 @@ business fraction (credit + bonus, ~$32–86K credit + proportional bonus) vs **
 use is established." The transfer mechanics (Path A/B/C), NJ non-conformity, and begin-construction
 analysis below remain valid; the credit-magnitude and §25D-fallback framing are superseded by the
 above.
+
+## 2026-06-09 UPDATE — transfer audit + electricity-business-use memo (verified vs adversarial review)
+
+**Transfer status (audit of Gmail + daily logs through 2026-06-09): ZERO executed transfer steps since open — 32 days.**
+- Install NOT started (contract said early June; no install-start signal; last Lucent signal 2026-06-03).
+- CO-01 contract amendment IN MOTION, NOT EXECUTED — Steven Schwartz sent "Lucent Energy - Sartor CO-01.pdf" 2026-06-03 (thread 19e8e4b561a1603e); no visible reply from Alton; 6 days idle.
+- Path A contract assignment: no email to Lucent ever requested it. Structure 2 (loan-to-LLC) is DEAD per Erin Gannon 2026-05-11 — see [[climate-first-loan-llc-transfer]].
+- CPA call with JF occurred 2026-05-20; **outcome not documented anywhere** — the 2026-05-22 path-decision deadline passed with no recorded decision.
+- Steven's written 5% safe-harbor attestation NOT obtained (still verbal-only from 2026-05-08). `begin_construction_locked` in fleet.yaml still NULL.
+
+**Electricity-business-use memo (2026-06-09 IRAC + adversarial verdict) — recommended position:**
+implement the full stack (LLC ownership pre-PIS, begin-construction lock, metering, all routing legs) but **claim the fraction the meters actually show**, two tiers:
+- **Tier 1 (claim): metered GPU consumption + LLC-contracted export/SREC income, annual-netting kWh basis** — plausibly 70–90%+ with rig3 + Powerwalls. Grade MEDIUM *only after* the verdict's gates below resolve; until then HIGH.
+- **Tier 2 (increment to ~100% via intra-family household PPA): HIGH** — no direct authority respects a couple's LLC selling roof power to the same couple's kitchen. Only with JF written sign-off, executed PPA, cleared cash, submetered invoices. Spun out to new matter [[solar-household-ppa]].
+- Substantiation reality: only ~104 kWh of GPU draw logged to date (~0.5% raw fraction); rtxserver still has NO power logger. The fraction is whatever the CSVs show.
+
+**Adversarial-verdict corrections (override the memo and prior framing where they conflict):**
+1. **FEOC / material-assistance gate (most serious omission):** BoC is unavoidably 2026, so OBBB's prohibited-foreign-entity rules apply — material assistance cost ratio ≥40% non-PFE for solar BoC-2026, supplier certifications per Notice 2026-15 safe harbors. Failure ZEROES the credit, not trims it. Opened as new matter [[feoc-material-assistance-48e]].
+2. **§50(b)(2)(D) does NOT support §48E** — its text exempts §48-defined "energy property" only; §48E was never added. The "Congress contemplated dwellings" inference in the 05-28 update fails (mostly harmless: §50(b)(2) targets furnishing lodging to others).
+3. **§38(c) understated:** GBC capped at net income tax minus the GREATER of TMT or the 25%-over-$25K amount, and **§48E is NOT a §38(c)(4)(B) specified credit** — individual AMT/TMT can block the credit in a high-W-2 year. No AMT screen existed anywhere in this chain. Run TMT projection with JF.
+4. **§461(l):** OBBB reset 2026 thresholds DOWN to $256K/$512K MFJ (Rev. Proc. 2025-32). The ~$373K roof bonus loss + GPU depreciation can approach the cap; excess converts to NOL.
+5. **§469 rental characterization unresolved:** vast.ai hosting may be per-se passive rental under §1.469-1T(e)(3) (reserved contract C.34113802 ~141 days); §1.469-4(d)(1) then blocks grouping with the solar business. Which activity holds the roof's depreciation/ITC matters. Analyzed in [[469-material-participation]] 2026-06-09 update.
+6. **7/4 is NOT an everything-dies cliff:** under OBBB §70513 a solar facility placed in service by 12/31/2027 keeps §48E regardless of BoC date; BoC ≤7/4/2026 matters only if PIS slips past 2027. Still cheap insurance worth taking. Also: **Notice 2025-42 was VACATED** (Oregon Environmental Council v. IRS, D.D.C. 2026-06-06, universal vacatur) — 5% safe harbor restored under pre-IRA notices; outcome unchanged at 22.1 kW, but do not cite 2025-42 as undisturbed law; document physical-work facts as belt-and-suspenders.
+7. **Denominator risk is statutory, not just an open item:** §48E(b)(2)(A)(ii) expressly excludes "a building or its structural components"; under T.D. 10024 the defensible denominator may be only the incremental cost over a conventional roof — shrinking every number before any business-use fraction applies. Citation fixes: depreciability gate is §48E(b)(2)(B); storage defined at §48E(c)(2) via §48(c)(6).
+
+**Critical path (from the transfer audit):**
+1. Reply to Steven re CO-01 + request written 5% safe-harbor attestation in the same exchange (request by 2026-06-11, in hand by 2026-06-20).
+2. File attestation + draw records in `reference/solar-project-2026-05/`; set `begin_construction_locked` in fleet.yaml (by 2026-06-21).
+3. Execute CO-01 (negotiate painting line, Powerwall placement, snow guards; route past JF) by 2026-06-19.
+4. Get the 5/20 call outcome on paper from JF — structure choice (Structure 1 contribution vs Path C member loan; Structure 2 dead) — by 2026-06-12.
+5. Paper the chosen structure (assignment/ownership-designation letter or contribution agreement + Exhibit A) executed by 2026-06-30, before any PIS certification. Note from the §469 memo verdict: **contract assignment to the LLC ranks ABOVE in-kind §721 contribution** — contributed property's bonus eligibility under §168(k)(2)(E)(ii) is contested; assignment makes the LLC the original purchaser beyond doubt.
+6. Re-underwrite via change order once CO-01 signed (~2026-06-26, $250 fee).
+7. Convert JF engagement to written (with item 4).
+
+Risk stays **HIGH** — not on the merits but on documentation: every leg (5% safe harbor, LLC ownership, business-use fraction, FEOC ratio, material participation) currently rests on verbal statements or nothing.
 
 ## Facts
 
@@ -162,6 +197,7 @@ Not because the position is shaky — it's defensible — but because the deadli
 - 2026-05-08: Opened. Path A/B/C tradeoff identified. Two-week decision window set.
 - 2026-05-08 (later): Steven Schwartz verbal confirmation of 5% Begin-Construction threshold passed via engineering. Notice 2018-59 framework added to memo. **Critical clarification**: 5% safe harbor protects ITC rate-preservation, NOT regime selection (§48 vs §25D). LLC ownership at placed-in-service is still the load-bearing question. Action items expanded: written attestation from Steven + draft emails to Steven and Erin Gannon (Climate First) to drive Phase 1 decisions.
 - 2026-05-28: **VERIFIED UPDATE added** (adversarial verification vs live IRS/OBBB/Notice 2025-42). Five corrections: controlling section is §48E (not §48); §25D dead for expenditures after 12/31/2025 (zero residential fallback); $131,649 overstated — §48E scales with the business-use fraction (no 20% cliff), defensible ~$32–86K; July 4 2026 is a begin-construction (not placed-in-service) deadline with the 5% safe harbor still available (Notice 2025-42, system ≤1.5 MW); 2026 bonus is 100% permanent. Begin-construction lock before July 4 is now the highest-leverage action. CPA call agenda updated accordingly.
+- 2026-06-09: **Transfer audit + electricity-business-use memo + adversarial verdict.** Transfer: zero executed steps in 32 days; CO-01 received 06-03 unanswered; 5/20 JF call outcome undocumented; attestation still verbal; install not started. Memo conclusion: two-tier metered-fraction strategy (Tier 1 GPU+export MEDIUM-after-gates, Tier 2 household PPA HIGH → new matter [[solar-household-ppa]]). Verdict corrections adopted: FEOC ≥40% material-assistance gate (→ new matter [[feoc-material-assistance-48e]]); §50(b)(2)(D) inapplicable to §48E; §48E not a §38(c)(4)(B) specified credit (TMT can block); §461(l) $512K MFJ 2026; rental-characterization gateway; 7/4 not a cliff if PIS ≤ 12/31/2027; **Notice 2025-42 vacated (D.D.C. 2026-06-06)**; §48E(b)(2)(A)(ii) structural-component exclusion makes the roof-denominator risk statutory. 7-step critical path added with dates 06-11 → 06-30.
 
 ## Resolution
 

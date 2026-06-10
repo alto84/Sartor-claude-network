@@ -1,8 +1,8 @@
 ---
 type: meta
 entity: matters-index
-updated: 2026-05-12
-updated_by: Claude (Opus 4.7, 1M context)
+updated: 2026-06-09
+updated_by: Claude (Fable 5, 1M context)
 status: active
 tags: [meta/index, domain/tax, domain/legal]
 related: [TAXES, BUSINESS, reference_solar_project, reference_heloc, reference_anthropic_shares]
@@ -21,12 +21,13 @@ Maintained by the [[matter-tracker]] skill. Pairs with [[tax-counsel]] for IRAC 
 
 | Slug | Matter | Risk | Deadline | Last action |
 |---|---|---|---|---|
-| [solar-itc-48-vs-25d](solar-itc-48-vs-25d.md) | §48**E** ITC (business-use fraction) + begin-construction lock + LLC asset transfer | HIGH | 2026-07-04 (begin-construction) | 2026-05-28 |
+| [solar-itc-48-vs-25d](solar-itc-48-vs-25d.md) | §48**E** ITC (business-use fraction) + begin-construction lock + LLC asset transfer | HIGH | 2026-07-04 (begin-construction) | 2026-06-09 |
+| [feoc-material-assistance-48e](feoc-material-assistance-48e.md) | FEOC material-assistance ≥40% cost ratio — disallowance gate on entire §48E ITC | HIGH | pre-filing (start now) | 2026-06-09 |
 | [insurance-commercial-coverage](insurance-commercial-coverage.md) | Homeowner's (Selective) voids commercial GPU op; tax/insurance tension | HIGH | 2026-06-15 | 2026-05-28 |
 | [registered-agent-nj-standing](registered-agent-nj-standing.md) | NJ registered-agent lapse / dissolution risk post-LegalZoom; ITC ownership posture | HIGH | 2026-09-06 | 2026-05-28 |
-| [heloc-163h3-tracing](heloc-163h3-tracing.md) | §163(h)(3) HELOC use-of-proceeds tracing | HIGH | 2026-10-15 | 2026-05-08 |
+| [heloc-163h3-tracing](heloc-163h3-tracing.md) | §163(h)(3) HELOC use-of-proceeds tracing | HIGH | 2026-10-15 | 2026-06-09 |
 | [portfolio-restructure-2026-05](portfolio-restructure-2026-05.md) | Fidelity options-book restructure — §1092 harvest, §1259 exposure, upside roll-ups | MEDIUM | 2026-12-31 | 2026-05-31 |
-| [climate-first-loan-llc-transfer](climate-first-loan-llc-transfer.md) | Climate First Loan deductibility post-LLC transfer | MEDIUM | 2026-07-04 | 2026-05-08 |
+| [climate-first-loan-llc-transfer](climate-first-loan-llc-transfer.md) | Climate First Loan deductibility post-LLC transfer (Structure 2 DEAD 05-11) | MEDIUM | 2026-07-04 | 2026-06-09 |
 | [q2-2026-estimated-tax](q2-2026-estimated-tax.md) | Q2 2026 estimated tax (wage bump + new un-withheld LLC rental income) | MEDIUM | 2026-06-15 | 2026-05-28 |
 
 ## Open — medium priority (P2)
@@ -36,7 +37,8 @@ Maintained by the [[matter-tracker]] skill. Pairs with [[tax-counsel]] for IRAC 
 | [anthropic-721b-investment-company](anthropic-721b-investment-company.md) | §721(b) investment-company trap on Anthropic-shares contribution | MEDIUM-HIGH | trigger-only | 2026-05-12 |
 | [anthropic-secondary-recognition-risk](anthropic-secondary-recognition-risk.md) | Anthropic 2026-05-12 unauthorized-secondary-sales warning — Hiive named, EquityZen not | MEDIUM | trigger-only | 2026-05-12 |
 | [hiive-mou-gift-tax](hiive-mou-gift-tax.md) | Hiive Anthropic-01 nominee structure §2503 gift-tax exposure | MEDIUM | TY2025 Form 709 | 2026-05-08 |
-| [469-material-participation](469-material-participation.md) | §469 material participation hours documentation | MEDIUM | continuous | 2026-05-08 |
+| [469-material-participation](469-material-participation.md) | §469 material participation + rental-characterization gateway + W-2 pass-through limiter chain | MEDIUM-HIGH | continuous | 2026-06-09 |
+| [solar-household-ppa](solar-household-ppa.md) | Intra-family PPA — the ~100% business-use increment (Tier 2) | HIGH | pre-PIS | 2026-06-09 |
 | [cpa-engagement-letter](cpa-engagement-letter.md) | Convert JF engagement from verbal to written | MEDIUM | next call | 2026-05-08 |
 
 ## Open — low priority (P3)
@@ -77,3 +79,4 @@ Maintained by the [[matter-tracker]] skill. Pairs with [[tax-counsel]] for IRAC 
 
 - 2026-05-08: Initial seed. 13 matters opened from tax-counsel pass over current Sartor financial state. Skills `tax-counsel` and `matter-tracker` written same session.
 - 2026-05-28: Fleet-ledger audit + adversarial verification pass (see [[projects/fleet-ledger-2026-05-28/VERIFICATION]]). **Corrected** `solar-itc-48-vs-25d` (→ §48E, business-use fraction, July-4 begin-construction, §25D dead, 100% bonus) and `469-material-participation` (hours log counted bot activity — now uses human_interactive_hours; ITC strands against wages if passive). **Opened 2 new P1 matters**: `insurance-commercial-coverage`, `registered-agent-nj-standing`. Added 5 Watching items (SE tax, NJ sales tax, 1099-K, §183 profit-motive, zoning). Now 15 active matters + 5 watching.
+- 2026-06-09: Solar-transfer audit + three adversarially-verified IRAC memos (electricity-business-use, HELOC two-route, §469 W-2 pass-through chain). **Updated** `solar-itc-48-vs-25d` (32-day transfer stall; two-tier metered-fraction strategy; Notice 2025-42 vacated D.D.C. 06-06; §48E not a §38(c)(4)(B) specified credit; §48E(b)(2)(A)(ii) roof-denominator risk statutory), `heloc-163h3-tracing` (headroom ~$0 best-evidence; Route B + optional (o)(5) election; §1.163-8T(e)(4) mis-cite fixed), `469-material-participation` (risk → MEDIUM-HIGH; rental-characterization gateway, N ≥ 23 period count; 49.47h YTD; §704(d) Aneeta-$0 basis hole; contract-assignment > §721 for bonus), `climate-first-loan-llc-transfer` (Structure 2 DEAD per Erin Gannon 05-11; 5/20 JF call outcome undocumented). **Opened 2 new matters**: `feoc-material-assistance-48e` (P1 HIGH — binary disallowance gate on the whole ITC), `solar-household-ppa` (P2 HIGH — Tier 2 increment). Now 19 active matters + 5 watching.
