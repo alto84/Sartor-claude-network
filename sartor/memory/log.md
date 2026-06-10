@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-09
+updated: 2026-06-10
 updated_by: personal-data-gather
-run: 205
+run: 206
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1386,4 +1386,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - New ACTION_REQUIRED: 2 (Pajama Day — pack tonight; MKA reports — check Veracross tomorrow 4 PM)
 - P0 open: vast.ai offline 15th+ run; Goddard Jun 11 childcare 1 day out; Sante Total Haiti wire; Sante Total 990-N overdue; HITLAB RSVP Jun 12; Leader Bank Jun 14; NJ-1065 Jun 15
 - Pages updated: `daily/2026-06-09.md` (run 205 appended, frontmatter bumped to run 205), `family/active-todos.md` (run 205 appended, frontmatter bumped to run 205), `family/vasu.md` (Pajama Day + Goddard closure appended, frontmatter bumped to run 205), `FAMILY.md` (MKA year-end reports + attire policy + Pajama Day appended), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 205, this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-10] ingest | personal-data-gather run 206: G.SKILL+JMT shipped; Abby's graduation Jun 18 NEW; vast.ai offline 16th+ run; Goddard Jun 11 childcare last chance
+- Sources: Gmail (is:unread newer_than:1d, 50 threads); all 5 Google Calendars (Jun 10–17). SSH unavailable (cloud runner).
+- New facts: 11 (G.SKILL Trident Z RGB DDR5 ordered + shipped Jun 9; JMT 180° PCIe + 2 items shipped Jun 9; FEOEOR Girls Bike accessories delivered Jun 9; Sriracha delivered Jun 9; Thea Stilton Books shipped; Doximity publication cited; Vasu daily sheet Jun 9 normal; Abby's graduation Jun 18 NEW family calendar event; Bitwarden 5× rapid codes noted as likely agent-side; MKA Year End Reports today 4 PM; Aneeta SMART call today noon)
+- Calendar changes vs run 205: 1 new event — "Abby's graduation" all-day Thu Jun 18 on Family calendar (creator: Aneeta). "Abby" unidentified.
+- New ACTION_REQUIRED: 3 (Goddard Jun 11 childcare TODAY last chance; Abby's graduation — identify + plan; MKA Year End Reports — check Veracross today 4 PM)
+- P0 open: vast.ai offline 16th+ run; Goddard Jun 11 childcare; Sante Total Haiti wire; Sante Total 990-N overdue; HITLAB RSVP Jun 12; Leader Bank Jun 14; NJ-1065 Jun 15
+- Pages updated: `daily/2026-06-10.md` (created), `family/active-todos.md` (run 206 appended), `MACHINES.md` (G.SKILL+JMT appended), `ALTON.md` (Doximity appended), `family/vasu.md` (daily sheet appended), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 206, this entry)
 - SSH: unavailable (cloud runner); vast.ai status not directly verified this run

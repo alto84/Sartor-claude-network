@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-09
+updated: 2026-06-10
 updated_by: personal-data-gather
-run: 205
+run: 206
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2286,5 +2286,41 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | FIS payment Jun 9 | Verify destination/purpose | ASAP |
 > | Pool Guy NJ | Balance owed | ASAP |
 > | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+
+## Latest from gather (2026-06-10) — run 206
+
+> [!warning] TODAY LAST CHANCE — Arrange childcare for Vasu Thu June 11 (Goddard closed)
+> Goddard School of Montclair is CLOSED Thursday June 11 all day (Montclair Township water shutoff). TODAY is the last day to arrange full-day childcare. Also conflicts with "Dinner Princeton?" (Alton primary calendar, 7 PM Jun 11). Need coverage from school hours through evening. Source: noreply@kaymbu.com Jun 8. See [[family/vasu]].
+
+> [!todo] TODAY at 4 PM — Check Veracross for MKA Year End Reports
+> MKA Year End Reports released TODAY at 4:00 PM via Veracross for Vayu (4th grade) and Vishala (3rd grade). Also: review updated 2026-27 Acceptable Attire policy (now called Acceptable Attire, no longer Dress Code). See [[family/vayu]], [[family/vishala]].
+
+> [!fact] NEW FAMILY CALENDAR — Abby's graduation Thu June 18 (all-day)
+> Family calendar event added: "Abby's graduation" on Thursday June 18, 2026. Creator: Aneeta (aneetasax@gmail.com). "Abby" not identified in current family memory — possible relative, family friend, or MKA contact. No logistics (gift, travel, attendance) confirmed. Identify who Abby is and whether any planning is required. 8 days out.
+
+> [!warning] P0 carry-forward (run 206) — Wed Jun 10 morning
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 16th+ run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | **LAST CHANCE TODAY** | **Thu 2026-06-11 TOMORROW** |
+> | **Abby's graduation** | **NEW — identify + plan** | **Thu 2026-06-18** |
+> | **Sante Total Haiti wire** | Review + authorize | ASAP |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | **Tribeca Pediatrics** | 8+ msgs + Virtru prescription | ASAP |
+> | **HITLAB RSVP (Jerry Antimano)** | LinkedIn — **2 days left** | **2026-06-12** |
+> | **Leader Bank Escrow $5,366.83** | FIS payment Jun 9 — verify applied | **2026-06-14 (4 days)** |
+> | **NJ-1065 Q2 — Solar Inference** | Call Jonathan Francis | **2026-06-15 (5 days)** |
+> | **MKA PE Clothes pre-order (Vayu)** | Veracross MON348 | **2026-06-15 (5 days)** |
+> | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel | **2026-06-11** |
+> | **MKA Year End Reports** | Released TODAY 4 PM Veracross | **TODAY Jun 10** |
+> | Vishala Orange Ball Summer Camp | Day 4 of 10 | DAILY through Jun 19 |
+> | GIGABYTE AORUS RTX 5090 | Shipped Jun 9 — delivery today/tomorrow | CONFIRM |
+> | CyberPower UPS | Shipped Jun 9 — delivery imminent | CONFIRM |
+> | G.SKILL Trident Z RGB + JMT PCIe | Shipped Jun 9 — delivery Jun 11–12 | INFO |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Pool Guy NJ | Balance owed | ASAP |
+> | Guidepoint #1754519 / #1755072 | Accept or decline | ASAP |
 > | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
 > | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |

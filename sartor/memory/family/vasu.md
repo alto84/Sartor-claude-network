@@ -2,9 +2,9 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-06-09
+updated: 2026-06-10
 updated_by: personal-data-gather
-run: 205
+run: 206
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -276,3 +276,8 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact] Tribeca Pediatrics — Prescription Delivery Notification (Jun 9)
 > info@tribecapediatrics.com (Jun 9 20:00 UTC): Virtru-encrypted secure email. Content behind Virtru login. Total Tribeca backlog now 8+ unread messages/notifications. Check portal: http://tpeds.co/13kn. See [[family/active-todos]].
+
+## Latest from gather (2026-06-10) — run 206
+
+> [!fact] Vasu daily sheet — Tuesday June 9
+> cls64fc…@inbox.kaymbu.com (Jun 9 21:33 UTC): Checked in 7:56 AM (Cheyenne D), checked out 5:33 PM (Gabriella R). Normal Tuesday — day before Pajama Day (packed per run 205 Pajama Day reminder). Kaymbu classroom moments also sent Jun 9: CONSTRUCTION (animal habitats), Outdoor Play, MATH (drawing + scissors), STEAM (Yoga bear walks). See [[daily/2026-06-10]].

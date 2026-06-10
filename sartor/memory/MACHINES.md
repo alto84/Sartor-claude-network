@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-06-09
+updated: 2026-06-10
 updated_by: personal-data-gather
 last_verified: 2026-05-02
 status: active
@@ -663,3 +663,11 @@ No git push (no credentials) - awaiting Rocinante curator commit
 
 > [!fact] CyberPower CP1500PFCLCD PFC UPS SHIPPED — Jun 9 14:57 UTC
 > shipment-tracking@amazon.com: "Shipped: CyberPower CP1500PFCLCD PFC..." rtxserver UPS (CyberPower CP1500PFCLCD) now in transit. Prior CLAUDE.md entry listed as "Expected Jun 8–9 — confirm arrival"; shipping notification received Jun 9 14:57 UTC confirms it was not yet delivered. Delivery imminent. UPS provides power conditioning and battery backup for rtxpro6000server (dual RTX PRO 6000 Blackwell, no UPS prior to this order). See [[machines/rtxpro6000server]].
+
+## Latest from gather (2026-06-10) — run 206
+
+> [!fact] G.SKILL Trident Z RGB DDR5 ORDERED + SHIPPED — Jun 9
+> auto-confirm@amazon.com (Jun 9 18:30 UTC): G.SKILL Trident Z RGB DDR5 RAM ordered. Shipped same day (22:26 UTC, shipment-tracking@amazon.com). Likely for the new AM5 build (Ryzen 9 9950X + ASRock X870E TAICHI). Complements: GIGABYTE AORUS RTX 5090 (shipped Jun 9, delivery Jun 10–11), GIGA-MEGA PCIe 5.0 X16 riser (delivered Jun 8), Vertical GPU Mount Bracket (delivered Jun 8). Delivery expected Jun 11–12. See [[business/solar-inference]].
+
+> [!fact] JMT 180 Degree 64GBS PCIe + 2 more items SHIPPED — Jun 9 23:20 UTC
+> shipment-tracking@amazon.com: "Shipped: JMT 180 Degree 64GBS PCIE... and 2 more items." JMT 180° PCIe adapter was ordered Jun 7 and tracked as "delivery status unknown" since run 201. Confirmed shipped Jun 9 23:20 UTC along with 2 additional unidentified items in same shipment. Delivery expected Jun 11–12. The 2 extra items' identity not visible in snippet — likely additional build components for the AM5 system or rtxserver. See [[business/solar-inference]].

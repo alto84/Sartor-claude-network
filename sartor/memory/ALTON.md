@@ -2,9 +2,9 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-06-09
+updated: 2026-06-10
 updated_by: personal-data-gather
-run: 203
+run: 206
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -462,3 +462,8 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] LinkedIn — Director, Applied AI + Executive Medical Director Patient Safety (Jun 7)
 > Two new career market signals today (both posted Jun 5): (1) "Director, Applied AI at Pfizer" — AI role at Big Pharma, distinct from Medical Insights role captured run 194; (2) "Executive Medical Director, Patient Safety (Hybrid) at Vertex Pharmaceuticals" — title above Senior Medical Director, directly in Alton's Global Patient Safety lane. Vertex is premium comp territory. Both captured in detail at [[business/az-career]] run 195.
+
+## Latest from gather (2026-06-10) — run 206
+
+> [!fact] Doximity: Alton's publication cited in expert-reviewed answer — Jun 9
+> notifications@doximity.com (Jun 9 23:00 UTC): "Your publication was cited in an expert-reviewed answer." 10+ total unread Doximity notifications. Publication citation in expert Q&A context — academic visibility and clinical authority signal. See [[daily/2026-06-10]].
