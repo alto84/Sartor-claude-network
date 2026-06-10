@@ -1,0 +1,22 @@
+date,person,hours,activity_category,description,corroboration,prepared
+2026-01-20,Alton,1.0 EST,planning,"Climate First Clean Energy Loan closing — loan-document review + DocuSign execution (joint borrower)","DocuSign envelope 19bdd4c0f9348ade; Climate First post-closing email 2026-01-20",2026-06-09 best-estimate
+2026-01-20,Aneeta,1.0 EST,planning,"Climate First loan closing — document review + DocuSign execution (joint borrower)","same DocuSign envelope; co-borrower signature",2026-06-09 best-estimate
+2026-02-26,Alton,1.0 EST,ops,"vast.ai Stripe payout configuration for LLC hosting revenue","vast.ai account settings dated 2026-02-26 (MACHINES.md)",2026-06-09 best-estimate
+2026-03-06,Alton,2.0 EST,contractor,"Tree removal — quotes/scheduling/on-site coordination with American Tree Experts (3 front trees, precondition for proposed solar production); stump grinding follow-up 3/11","Gmail 19cb532c8e3ec914; Steven Schwartz 2026-05-07 email confirming necessity",2026-06-09 best-estimate
+2026-03-31,Alton,0.25 EST,contractor,"Final payment to American Tree Experts via Zelle","Zelle record 2026-03-31; Gmail 19ce263f1e573fa5",2026-06-09 best-estimate
+2026-04-12,Alton,4.0 EST,planning,"rtxserver workstation specification research + 3 Newegg orders placed + PSU 240V-compatibility issue diagnosed and order swapped same day","Newegg orders 412968624/408668539/412970644 timestamps; PURCHASE-LOG.md",2026-06-09 best-estimate
+2026-04-14,Alton,0.5 EST,planning,"CPA extension exchange — reviewed JF amounts, authorized $18K debit, follow-up on YoY increase","JF email thread 2026-04-14 (timestamps 07:59/11:50 ET)",2026-06-09 best-estimate
+2026-04-15,Alton,3.0 EST,assembly,"rtxserver physical assembly across delivery week — Threadripper/8-DIMM/dual-GPU build: CPU+cooler, RAM, GPU seating, cabling","Newegg deliveries 4/14-4/15; Newegg install-tips email 4/15",2026-06-09 best-estimate
+2026-04-15,Aneeta,2.5 EST,assembly,"rtxserver assembly assistance — component unboxing/verification, build help across delivery week","same delivery records; member attestation",2026-06-09 best-estimate
+2026-04-28,Alton,1.5 EST,contractor,"Berman Home Systems WiFi infrastructure install (4/27-4/29) — vendor coordination across 3 days; network feeds GPU rental servers","Berman Dropbox-Sign contract; install window emails",2026-06-09 best-estimate
+2026-04-28,Aneeta,1.5 EST,contractor,"Berman install — on-site vendor interaction/access coordination across 3 days","same install records; member attestation",2026-06-09 best-estimate
+2026-05-06,Alton,2.0 EST,site,"Steven Schwartz (Lucent CEO) on-site engineering walk-through + same-evening 9-item expanded-scope summary email (sent 21:27 ET)","Gmail expanded-scope thread; site-visit date in reference_solar_project.md",2026-06-09 best-estimate
+2026-05-08,Alton,0.5 EST,contractor,"Lucent thread — site-visit confirmation, 5% begin-construction discussion with Steven","Gmail thread 2026-05-07/08",2026-06-09 best-estimate
+2026-05-11,Alton,0.5 EST,planning,"Climate First (Erin Gannon) loan-structure exchange — LLC conversion ruled out, change-order path established","Erin Gannon email 2026-05-11",2026-06-09 best-estimate
+2026-05-20,Alton,0.75 EST,planning,"CPA call with Jonathan Francis — §48E ITC structuring for Lucent install (2:30 PM ET) + prep","JF thread 19e0aaab545fbaa5; calendar",2026-06-09 best-estimate
+2026-05-20,Aneeta,0.75 EST,planning,"CPA call with Jonathan Francis — §48E ITC structuring (on call)","same thread (CC'd); calendar",2026-06-09 best-estimate
+2026-05-21,Alton,0.75 EST,planning,"rig3 GPU selection + Amazon order (GIGABYTE RTX 5090 #2)","Amazon order confirmation 2026-05-21 (Gmail run 127)",2026-06-09 best-estimate
+2026-05-25,Alton,1.5 EST,planning,"rig3 component selection + 4 Newegg orders (case/mobo/CPU/PSU/SSD/AIO)","Newegg orders 448349643/623/663/603",2026-06-09 best-estimate
+2026-06-03,Alton,0.5 EST,planning,"Lucent CO-01 change-order receipt + initial review","Steven email w/ CO-01 PDF, thread 19e8e4b561a1603e",2026-06-09 best-estimate
+2026-06-07,Alton,0.75 EST,planning,"rtxserver build-out — UPS + PCIe riser/mount/adapter selection and 4 Amazon orders","Amazon orders 2026-06-07 (Gmail run 196)",2026-06-09 best-estimate
+2026-01-01,both,FILL,planning,"Member planning meetings ('board meetings'), Jan-Jun 2026 — dates/durations to be enumerated in business/minutes/2026-06-09-ratification-of-prior-meetings.md and ratified by both members","ratification minute + Aneeta email sign-off",2026-06-09 placeholder

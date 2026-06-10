@@ -121,6 +121,29 @@ Active typing in Claude Code on Sartor-claude-network repo is hours-log-classifi
 
 If TY2026 pass-through loss is substantial ($300K+), the §469 position is load-bearing — without material participation, the loss is suspended as passive activity loss until passive income materializes.
 
+## 2026-06-09 (later) — spousal attribution + documentation regime stood up
+
+1. **§469(h)(5) / Reg. §1.469-5T(f)(3): spousal hours COMBINE.** Aneeta's participation
+   (computer assembly, contractor coordination, planning/CPA calls) is attributed to Alton for
+   every material-participation test. Her hours help; the old action item "confirm Aneeta's
+   participation < Alton's" is moot for the tests (it mattered only under the wrong reading of
+   (a)(3); spouses are not "other individuals" for the comparison). Her hours still do NOT create
+   §704(d) basis — separate problem.
+2. **Documentation regime (the auto-log captures only Alton's Claude keyboard time; rows before
+   2026-04-10 are blank and unrecoverable — transcripts pruned):**
+   - `business/hours-log/participation-log.csv` — manual log, both spouses, non-Claude time.
+     Seeded 2026-06-09 with a best-estimate reconstruction (every row anchored to a dated
+     artifact: DocuSign, order numbers, Gmail thread ids, calendar). Alton EST ~20.5h + Aneeta
+     EST ~5.75h on top of the 53h auto-log → combined position ~79h + meetings, before H2.
+   - `business/minutes/` — member-meeting minutes regime: TEMPLATE.md going forward (recordings/
+     transcripts permitted, both consent) + `2026-06-09-ratification-of-prior-meetings.md`
+     enumerating 7 reconstructed Jan–Jun planning meetings for both-member email ratification.
+   - Aneeta email sign-off drafted (Gmail) — her confirming reply becomes corroboration.
+   - `.claude/scheduled-tasks/weekly-participation-preseed/` — Sunday-evening task pre-seeds
+     candidate rows from the week's Gmail/Calendar signals; members fill hours. Keeps the record
+     contemporaneous instead of reconstructed.
+3. Minutes double as operating-business formality evidence (§48E active-business posture, §183).
+
 ## Action items
 
 - [ ] **Pull 2026 discrete rental-period count + per-machine gross income split** from vast.ai host records / kaalia container history (decides the rental-characterization gateway; single-class breakeven N ≥ 23). (added 2026-06-09)
