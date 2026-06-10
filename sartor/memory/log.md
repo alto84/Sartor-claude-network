@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-10
 updated_by: personal-data-gather
-run: 207
+run: 209
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1409,4 +1409,32 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - New ACTION_REQUIRED: 3 (Goddard Jun 11 childcare TODAY last chance; Abby's graduation — identify + plan; MKA Year End Reports — check Veracross today 4 PM)
 - P0 open: vast.ai offline 16th+ run; Goddard Jun 11 childcare; Sante Total Haiti wire; Sante Total 990-N overdue; HITLAB RSVP Jun 12; Leader Bank Jun 14; NJ-1065 Jun 15
 - Pages updated: `daily/2026-06-10.md` (created), `family/active-todos.md` (run 206 appended), `MACHINES.md` (G.SKILL+JMT appended), `ALTON.md` (Doximity appended), `family/vasu.md` (daily sheet appended), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 206, this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-10] ingest | personal-data-gather run 207: Lucent estimates Jun 11; Barbara Weis HOLD on Haiti wire; Bitwarden CLI device
+- Sources: Gmail (newer_than:2d, 50 threads); all 5 Google Calendars (Jun 10–17). SSH unavailable (cloud runner).
+- New facts: 3 (Lucent Energy revised estimates expected by Jun 11 evening — scope: remove exterior painting, add 200A attic breaker panel, battery quote, begin-construction attestation + domestic content CPA docs; Barbara Weis recommends HOLD on Haiti wire until Gaby confirmed reachable — supersedes Alison Smith "looping in Alton" framing; Bitwarden new Windows CLI device login Jun 10 01:56 UTC)
+- Calendar: no changes vs run 206; all 5 calendars polled
+- New ACTION_REQUIRED: 1 (Lucent estimates — watch for Jun 11 evening delivery, route CPA docs to Jonathan Francis immediately)
+- P0 carry-forward: vast.ai offline 17th+ run; Goddard Jun 11 childcare LAST CHANCE TODAY; Sante Total Haiti wire HOLD; HITLAB RSVP Jun 12; Leader Bank Jun 14; NJ-1065 Jun 15
+- Pages updated: `daily/2026-06-10.md` (run 207 appended, frontmatter bumped to run 207), `business/sante-total.md` (Barbara Weis HOLD appended), `family/active-todos.md` (Lucent estimates date + Haiti HOLD appended), `MACHINES.md` (GeForce RTX 5090 shipped appended), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (appended), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-10] ingest | personal-data-gather run 208: Lucent full scope confirmed; MKA 2026-27 dress code; Tribeca Virtru prescription
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 10–17). SSH unavailable (cloud runner).
+- New facts: 3 (Lucent Energy full deliverable scope confirmed via thread read — 4 items: revised estimates, begin-construction attestation with dollar figures for CPA, domestic-content documentation per 2026 ITC requirements, installation start date late June; MKA 2026-27 Primary School Acceptable Attire doc released alongside year-end reports today — "some things changed," review before summer shopping for Vayu entering 5th + Vishala entering 4th; Tribeca Pediatrics Virtru prescription delivery notification adds to 8+ open portal messages)
+- Calendar: no changes vs runs 206/207; all 5 calendars polled
+- New ACTION_REQUIRED: 2 (Route both Lucent CPA docs to Jonathan Francis on receipt; review MKA dress code before summer shopping)
+- P0 carry-forward: vast.ai offline 18th+ run; Goddard Jun 11 childcare LAST CHANCE TODAY; Haiti wire HOLD; HITLAB RSVP 1 day left; Leader Bank Jun 14; NJ-1065 Jun 15
+- Pages updated: `daily/2026-06-10.md` (run 208 appended, frontmatter bumped to run 208), `family/active-todos.md` (Lucent full scope + MKA dress code appended), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (appended), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-10] ingest | personal-data-gather run 209: Fidelity NVDA CALL BOUGHT; Doximity tenecteplase RCT; USPS 5 mailpieces
+- Sources: Gmail (newer_than:2d -in:draft, 50 threads); all 5 Google Calendars (Jun 10–17). SSH unavailable (cloud runner).
+- New facts: 3 (Fidelity BOUGHT CALL NVDA Jun 10 10:16 UTC — account XXXXX8998, 4th trade in 11 days in AI/tech options; Doximity article on tenecteplase 0.25 mg/kg vs alteplase 0.6 mg/kg before thrombectomy RCT delivered to inbox; USPS Informed Delivery 5 mailpieces arriving today)
+- Calendar: no changes vs runs 206/207/208; all 5 calendars polled; event set stable
+- New ACTION_REQUIRED: 1 (check Fidelity NetBenefits for NVDA call details; check mailbox for 5 USPS pieces)
+- P0 carry-forward: vast.ai offline 19th+ run; Goddard Jun 11 childcare LAST CHANCE TODAY; Lucent estimates due Jun 11 evening; Haiti wire HOLD; HITLAB RSVP TODAY deadline; Leader Bank Jun 14; NJ-1065 Jun 15
+- Pages updated: `daily/2026-06-10.md` (run 209 appended, frontmatter bumped to run 209), `ALTON.md` (NVDA call fact appended, frontmatter bumped to run 209), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 209, runs 207/208/209 entries appended)
 - SSH: unavailable (cloud runner); vast.ai status not directly verified this run

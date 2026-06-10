@@ -4,7 +4,7 @@ entity: ALTON
 name: "Emmett Alton Sartor"
 updated: 2026-06-10
 updated_by: personal-data-gather
-run: 206
+run: 209
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -467,3 +467,8 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] Doximity: Alton's publication cited in expert-reviewed answer — Jun 9
 > notifications@doximity.com (Jun 9 23:00 UTC): "Your publication was cited in an expert-reviewed answer." 10+ total unread Doximity notifications. Publication citation in expert Q&A context — academic visibility and clinical authority signal. See [[daily/2026-06-10]].
+
+## Latest from gather (2026-06-10) — run 209
+
+> [!fact] Fidelity BOUGHT CALL (NVDA) NVIDIA — Jun 10 10:16 UTC
+> Fidelity.Investments@mail.fidelity.com: trade confirmation for account XXXXX8998. Action: BOUGHT CALL (NVDA) NVIDIA. Four Fidelity trades in 11 days: GOOGL CALL SOLD May 30 → MU BOUGHT Jun 6 → CRWV SOLD Jun 9 → NVDA CALL BOUGHT Jun 10. Pattern: active rotation in AI/tech options. Full detail (strike, expiry, premium, contract size) in Fidelity NetBenefits; not in email snippet. See [[business/solar-inference]], [[daily/2026-06-10]].
