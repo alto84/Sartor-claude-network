@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-10
 updated_by: personal-data-gather
-run: 210
+run: 211
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -44,6 +44,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: confirmed stable vs run 199 — same 4 events
 - New deadlines: Chase/Sante Total 07/20/2026 (was "OVERDUE NOW" — now has specific date)
 - Pages updated: `daily/2026-06-08.md` (run 200 appended), `business/sante-total.md` (deadline callout), `family/active-todos.md` (deadline + CSA + pool + ABPN), `family/vishala.md` (tennis camp + deliveries), `log.md` (this entry)
+
+## [2026-06-10] ingest | personal-data-gather run 211: RTX 5090 delivery attempted; CyberPower UPS delivered; Sante Total archdiocese check + Haiti thread update
+- Sources: Gmail (newer_than:2d is:unread, 30 threads; incremental vs run 210 ~15:10 UTC); all 5 Google Calendars (Jun 10–17, no changes); no SSH (cloud runner)
+- New facts: 4 actionable (RTX 5090 GeForce delivery attempted while Alton in NYC; CyberPower UPS delivered; Barbara Weis archdiocese check ACTION; Haiti wire — Gaby phone broken, contacted via Maricile third-party)
+- Calendar: no changes across all 5 calendars vs runs 206–210
+- Status update: Haiti wire HOLD context — Gaby reached via Maricile's phone; direct contact still unavailable
+- New action items: reschedule RTX 5090 delivery; check Sante Total accounts for archdiocese check
+- Pages updated: `daily/2026-06-10.md`, `business/sante-total.md`, `family/active-todos.md`, `MACHINES.md`, `log.md`, `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 
 ## [2026-06-10] ingest | personal-data-gather run 208: Lucent Energy CPA document scope; MKA 2026-27 dress code; Tribeca Virtru prescription
 - Sources: Gmail (is:unread newer_than:2d, 30 threads; incremental vs run 207); all 5 Google Calendars (Jun 10–17, no changes); no SSH (cloud runner)

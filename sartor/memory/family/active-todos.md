@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-10
 updated_by: personal-data-gather
-run: 210
+run: 211
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2345,6 +2345,36 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] MKA 2026-27 Primary School Acceptable Attire — review before summer shopping
 > MKA Veracross (Jun 9 19:00 UTC, Head of Primary School Katie Banks): "2026-27 Primary School Acceptable Attire" (formerly Dress Code) released today. **"Some things have changed from previous years."** Review via Veracross portal link before buying summer/back-to-school clothes. Applies to [[family/vayu|Vayu]] (entering 5th grade) and [[family/vishala|Vishala]] (entering 4th grade).
+
+## Latest from gather (2026-06-10) — run 211
+
+> [!todo] ACTION_REQUIRED — ASAP — Reschedule RTX 5090 (GeForce) delivery
+> Amazon (order-update@amazon.com, Jun 10 17:45 UTC): "Delivery attempted: GIGABYTE GeForce RTX 5090..." Two copies of this notification. Delivery to Montclair NJ home failed — Alton was in NYC all day (SpotHero at 35 W 33rd St, 9:30 AM–9:30 PM). **Action: log into Amazon and reschedule delivery, or arrange for someone to be home.** Amazon makes up to 3 delivery attempts before returning to sender. This is the second RTX 5090 (GeForce variant; AORUS AI is a separate unit). See [[MACHINES]], [[business/solar-inference]].
+
+> [!fact] CyberPower CP1500PFCLCD UPS — DELIVERED Jun 10 (CLOSE OUT)
+> Amazon (order-update@amazon.com, Jun 10 19:10 UTC): "Delivered: CyberPower CP1500PFCLCD PFC..." rtxpro6000server UPS confirmed delivered. Ordered Jun 7, shipped Jun 9, delivered Jun 10. Install at rtxpro6000server location when convenient. See [[MACHINES]], [[machines/rtxpro6000server]].
+
+> [!todo] ACTION_REQUIRED — ASAP — Sante Total: check for Philadelphia archdiocese check
+> Barbara Weis (dye2tie@verizon.net, Jun 10 17:35 UTC): Asking whether Sante Total has received its annual school lunch program check from the Philadelphia Archdiocese — "we seem to receive the checks around now and they never send out any notification." **Action: check Chase account ending 8189 and PayPal for incoming payment from the Archdiocese.** Reply to Barbara. See [[business/sante-total]].
+
+> [!todo] ACTION — Guidepoint #1760138 (Connected Solutions in Clinical Trials) — accept or decline
+> New Guidepoint request #1760138 (lshek@guidepointglobal.com, Jun 10 16:51 UTC): "Experts in Real-World Adoption of Connected Solutions in Clinical Trials." Distinct from #1754519 (AI Clinical Search) and #1755072 (biosimulation). Accept or decline via Guidepoint. See [[ALTON]].
+
+> [!warning] P0 carry-forward — run 211 (Wed Jun 10 ~8 PM ET)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 21st+ run** | **NOW** |
+> | **RTX 5090 GeForce delivery attempted** | **NEW — reschedule via Amazon** | ASAP |
+> | **Sante Total: archdiocese check (Philadelphia)** | **NEW — Barbara asking** | ASAP |
+> | **Goddard closure Jun 11** | Official Kaymbu confirmation | **Thu 2026-06-11** |
+> | **LinkedIn CMO reply** | Respond promptly | ASAP |
+> | **HITLAB RSVP** | ~1 day left | **2026-06-12** |
+> | **Abby's graduation Jun 18** | Identify + plan | **2026-06-18** |
+> | **Wohelo: ask Heidi before Jun 18** | Camp opens Jun 25 | **2026-06-18** |
+> | **Sante Total Haiti wire** | HOLD — Gaby phone broken; reached via Maricile | ASAP (after confirmed) |
+> | **Lucent Energy estimates + CPA docs** | Expected Jun 11 evening | **2026-06-11** |
+> | NJ-1065 Q2 — Solar Inference | Call Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15** |
 
 ## Latest from gather (2026-06-10) — run 210
 
