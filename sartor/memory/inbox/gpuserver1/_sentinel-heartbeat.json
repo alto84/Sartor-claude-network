@@ -1,1 +1,1 @@
-{"ts":"2026-06-10T07:57:55Z","host":"gpuserver1","machine_id":52271,"health":"green","rented":true,"temp_max":63,"power_w":657,"util":89,"disk_pct":44,"stale_docker":0,"stale_vm":0,"vastai_ok":true,"reasons":null}
+{"ts":"2026-06-10T11:55:35Z","host":"gpuserver1","machine_id":52271,"health":"green","rented":true,"temp_max":65,"power_w":684,"util":100,"disk_pct":44,"stale_docker":0,"stale_vm":0,"vastai_ok":true,"reasons":null}
