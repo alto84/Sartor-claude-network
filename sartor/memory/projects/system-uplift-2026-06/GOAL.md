@@ -188,11 +188,26 @@ only (dark server is the only mitigation).
 
 ## §Tractable now (no Alton gate, autonomy-when-named applies)
 
-Phase 1 list, every item independently shippable + reversible:
-C1-immediate (merge), C4, C5, C9, C11, C2-immediate (unlock — needs your vault
-password, so semi-gated), WP-A, WP-B (merged worktrees only), WP-G.
-**Phase 1 exit criterion:** zero Sartor tasks with nonzero LastTaskResult; no
-live secrets in tracked files; ORANGE drift cleared or phone-alerted.
+**Phase 1 — DONE 2026-06-09:** the purge (U6/WP-A/WP-B/WP-C/WP-F), C1-immediate
+(split-brain merged), C2 (vault self-renewing + verified), C4 (token out of
+code; history-scrub/plugin-disable still yours), C5 (registry+drift), C9
+(gpuserver2 rotated), C11 (`{hash}`), WP-G (hours-log TZ).
+
+**Phase 1 — still open:**
+- **C3** (watchdog phone channel) — blocked on D-E (your Pushover/Telegram pick).
+- **C6, C7, C8, C10, C12** — not started (C10 blocked on D-F).
+
+**Next session's highest-value target: U1 (artifact-freshness auditor).** This
+is the structural lesson of 2026-06-09: the vault broke on 06-07 and was found
+by accident days later; the wifi flood I pruned during the purge is *already
+re-accumulating* (36 files again) because the producer wasn't fixed — only the
+symptom. U1 (detect stale/failed artifacts) + U2 (state-transition-only memos)
+are the two fixes that stop this whole class. Worth a fresh `/complex-project`
+session, not a tired tail-end. Deferred deliberately.
+
+**Standing churn to fix (cosmetic but real):** REGISTRY.yaml dirties daily from
+the drift detector's `last_verified` write-back — sidecar it to a gitignored
+JSON (U4 tail / WP-A follow-up).
 
 **Phase 2 (1–2 weeks):** U1 first, then C6, C1-structural, C2-structural, C8,
 U2, C12, U8, WP-C/D/E.
