@@ -207,6 +207,26 @@ machine #5 onboarding is one documented step.
 
 ## §Recent progress
 
+- **2026-06-09 (night) — C2-structural built; blocked on one Alton step.**
+  Self-renewing Bitwarden session machinery shipped: DPAPI master-password
+  store (seeded), `bw-session-renew.ps1`, "Sartor Vault Session Renew" task
+  (logon+4h), API-key login path, BOM-free OTP feeder. Login itself is stuck:
+  Bitwarden new-device email verification throttled then suppressed codes
+  entirely after the evening's attempts (45-min backoff also failed). **Next
+  action (Alton, ~2 min): grab API key from web vault → run
+  `bw-apikey-seed.ps1`** — skips device verification permanently. Until then
+  the credential-dependent monitors (wifi, UniFi backup, dashboard) stay down
+  and the gpuserver2 password rotation (C9 tail) stays pending. Lessons
+  recorded in auto-memory (`project_bitwarden_cli_automation.md`).
+- **2026-06-09 (evening) — Batch C4/C5/C9/C11/WP-G DONE.** C5: registry+ssh
+  IPs corrected, drift detector rebuilt (self-host check, transition-only
+  memos, all 4 machines verified green). C11: `{hash}` interpolation +
+  curator backstop. WP-G: hours-log on America/New_York, §469 CSV
+  regenerated (28 day-rows corrected). C4: token literals removed
+  (env-based); plugin-side rotation optional since Obsidian is barely used —
+  consider disabling the Local REST API plugin instead. C9: ufw 8088 rule
+  deleted, Phase M teardown step added to onboarding procedure; password
+  rotation pending vault.
 - **2026-06-09 (evening) — C1-immediate DONE: split-brain reconciled.**
   Merged `github/main` (97 cloud-agent gather commits, ~3 weeks of
   financial/family facts) into canonical main; 3 frontmatter conflicts
