@@ -134,7 +134,7 @@ machines:
     flagged:
       - "Wired link negotiated 1GbE (not the card's 5GbE) — switch port/cable is 1G. Fine for vast.ai (>500Mbps); upgrade port/cable for 5G later."
       - "wired0 hardened match-by-MAC + set-name (survives PCIe renumber). Wi-Fi netplan still by-name (wlp8s0); harden later (low priority — wired is primary)."
-      - "Not yet on vast.ai: kaalia install needs web-UI install token; Fios WAN port-forward (40200-40299) pending owner."
+      - "Not yet on vast.ai: kaalia install needs web-UI install token. WAN port-forward 40200-40299 → .175 DONE on UCG Max 2026-06-10 (vastai-gpuserver2)."
     notes: |
       AMD Ryzen 9 9950X (16C/32T), 256 GB DDR5, 4 TB WD_BLACK SN7100 NVMe, ASRock board,
       NVIDIA RTX 5090 (32 GB, driver 595.71.05). Power cap 575 W (nvidia-power-cap.service,
