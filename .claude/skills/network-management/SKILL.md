@@ -9,9 +9,12 @@ The home network is fully Sartor-administered as of the 2026-05-01 takeover. Thi
 
 ## Topology summary
 
+> [!important] WAN migration 2026-06-10: Fios → Optimum + UCG Max
+> The Verizon Fios CR1000A is GONE. The gateway at `192.168.1.1` is now a **UniFi Cloud Gateway Max** ("Sartor Saxena Cloud Max", Network app 9.2.87) on **Optimum/Cablevision** with **static** public IP `108.58.121.254` (`ool-6c3a79fe.static.optonline.net`). The old Fios DMZ-to-gpuserver1 rule no longer exists; vast.ai inbound is now explicit port-forwards on the UCG (Settings → Policy Engine → Port Forwarding): `vastai-gpuserver1` 40000-40099 → 192.168.1.100 and `vastai-rtxserver` 40100-40199 → 192.168.1.157 (both TCP/UDP, created + externally verified 2026-06-10). Hairpin NAT works natively through the UCG — gpuserver1's old iptables hairpin workaround is inert (targets the dead Fios IP) and can be removed host-side. The local controller-credential 'UniFi superadmin' does NOT log into the UCG's UniFi OS; Alton holds the UCG login (browser-session access via Chrome works). Sections below that reference the Fios router / CR1000A / DMZ are historical until this skill gets a full rewrite.
+
 | Layer | Component | Where |
 |---|---|---|
-| WAN | Verizon Fios CR1000A | `https://192.168.1.1` (DHCP server, only L3 gateway, DMZ host = `192.168.1.100`) |
+| WAN | Optimum (Cablevision), static IP 108.58.121.254, via UniFi Cloud Gateway Max | `https://192.168.1.1` (UniFi OS; L3 gateway + DHCP; port-forwards live here) |
 | Switch | UniFi USW-Pro-Max-24-PoE (1) | `192.168.1.170`, MAC `58:d6:1f:86:e3:ff`, fw 7.4.1.16850 |
 | APs | 8× UniFi WiFi 7 (7×U7-Pro + 1×U7-Outdoor + 1×U7-PIW in-wall Alton's Office) | switch ports 1-8 |
 | Controller | UniFi local controller v10.3.55, runs on Rocinante | `https://192.168.1.171:8443` (inform port 8080) |
