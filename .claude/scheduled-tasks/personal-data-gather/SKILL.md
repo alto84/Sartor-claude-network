@@ -43,6 +43,13 @@ This is a scheduled task that runs every 4 hours. It scans personal data sources
    - Check heartbeat-log.csv for missed tasks
    - Check disk utilization on both machines
 
+   > [!IMPORTANT] Runner-capability gate (added 2026-06-11).
+   > This task may execute on a **cloud runner that CANNOT SSH to gpuserver1/rtxserver**. When SSH to the GPU fleet is unavailable from the current runner, you CANNOT observe host or vast.ai state — so:
+   > - Mark every infrastructure/host-status item (machine online/offline, listing active, vast.ai rental status, GPU health, disk) as **`unverifiable-from-this-runner`**, not as a fact.
+   > - Do **NOT** escalate an unverifiable host item to P0/critical, and do **NOT** increment an "unresolved" counter against it. Absence of an SSH reachability check is not evidence the machine is offline.
+   > - Only items the runner can actually verify from its own capabilities (Gmail, Calendar, Drive, local files, logs already on disk) are eligible for status escalation.
+   > - Rationale: a cloud runner without fleet SSH carried and re-escalated a false "vast.ai 52271+124192 OFFLINE — UNRESOLVED" P0 for 21+ runs while both machines were rented and earning. Test SSH first (e.g. `ssh -o ConnectTimeout=5 alton@gpuserver1 'true'`); if it fails or the tool is unavailable, downgrade every host item to `unverifiable-from-this-runner`.
+
 ## Routing Rules (Karpathy Ingest Pattern)
 
 Each fact gets routed to its PRIMARY target AND all RELATED pages. The Karpathy rule: every ingest should touch 10-15 related pages, not just one. This is how the wiki compounds — cross-references are maintained at ingest time, not re-derived per query.

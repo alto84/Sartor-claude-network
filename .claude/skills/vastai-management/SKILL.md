@@ -134,7 +134,7 @@ ssh alton@gpuserver1 \
   '~/.local/bin/vastai list machine 52271 -g 0.25 -b 0.20 -s 0.10 -m 1 -e MM/DD/YYYY'
 ```
 
-**Sartor convention (per gpuserver1 MISSION v0.2):** cuts are **supervised**, never autonomous. Even when occupancy is the constraint, the inbox flags the recommendation; Alton or Rocinante executes the cut. This protects against a runaway race-to-the-bottom.
+**Sartor convention:** for machines NOT enrolled in reprice.py v3 (per gpuserver1 MISSION v0.2), manual cuts are **supervised**, never autonomous — the inbox flags the recommendation; Alton or Rocinante executes the cut, protecting against a runaway race-to-the-bottom. **Superseded for dynamic-enabled machines (2026-06-10):** on a `fleet.yaml` machine with `listing.dynamic.enabled`, the reprice.py v3 controller makes idle on-demand cuts (and bumps) autonomously within its guardrails — that bounded controller is exactly the runaway-protection, and Alton delegated it fleet-wide. See `feedback_autonomous_dynamic_pricing.md`.
 
 ### Decision rule for adjustment
 
@@ -369,7 +369,8 @@ For now, the realized-vs-listed gap on gpuserver1 (~$0.20 realized under a contr
 
 ## Operational rules (codified)
 
-- **Never modify marketplace listings without explicit Alton confirmation.** Every `vastai list machine <...>` command is "draft + present + execute" — the skill drafts, Alton (or another peer Claude with explicit go-ahead) executes.
+- **Autonomous-pricing carve-out (fleet-wide since 2026-06-10).** The `scripts/fleet/reprice.py` v3 occupancy-band controller IS the standing-approved mechanism for idle on-demand per-GPU price changes on every `fleet.yaml` machine with `listing.dynamic.enabled` (124192 live; 52271 enrolls at contract end 2026-08-24; new 5090s at onboarding). Those repricer-driven moves do NOT need per-change Alton confirmation — the v3 guardrails (electricity floor, P75-peer ceiling + $3.00/GPU cap, 30% step cap, 30-min interval, idle-only) are the authorization. See `feedback_autonomous_dynamic_pricing.md`. Do not hand-edit `fleet.yaml` `listing.gpu_cost` for enrolled machines (it carries the DYNAMIC marker and is rewritten by the repricer); change strategy constants in reprice.py instead.
+- **Never modify marketplace listings without explicit Alton confirmation — outside the carve-out above.** A *manual* `vastai list machine <...>` command (a price override outside reprice.py, a listing edit, min-bid/chunk change) is "draft + present + execute" — the skill drafts, Alton (or another peer Claude with explicit go-ahead) executes. Always needing explicit Alton approval regardless of the carve-out: end-date extensions, reserved-contract decisions, and listing creation/deletion.
 - **Never expose API keys** in chat, commit messages, log files, or shared docs. Reference by file path (`~/.config/vastai/vast_api_key`); read into env via `API_KEY=$(cat ~/.config/vastai/vast_api_key)` to avoid argv leakage.
 - **Log every marketplace interaction** to the inbox audit trail: `sartor/memory/inbox/<host>/_vastai/<TS>-<action>.md`. The state-change-only `vastai-tend.sh` cron does most of this automatically; manual interventions need a manual entry.
 - **Pricing scan before any pricing change.** Don't reprice from intuition; call `vastai-market-scan`.

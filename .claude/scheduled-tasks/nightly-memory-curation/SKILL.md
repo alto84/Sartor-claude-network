@@ -50,6 +50,7 @@ Update the bounded state files that get injected into scheduled task prompts:
 
 - `data/SYSTEM-STATE.md` (max 2200 chars): Write current system health snapshot
   - Last heartbeat time, tasks run today, failures, memory tier distribution
+  - **Runner-capability gate (added 2026-06-11):** if this task runs on a cloud runner that CANNOT SSH to gpuserver1/rtxserver, host/vast.ai status is `unverifiable-from-this-runner`. Do NOT write a host as OFFLINE, do NOT escalate it to P0, and do NOT increment an unresolved counter, purely because the runner couldn't reach it. Carry forward the prior verified status with an "unverified this run" note instead. (A cloud runner re-escalated a false "52271+124192 OFFLINE — UNRESOLVED" P0 for 21+ runs while both machines were rented and earning.)
 - `data/IMPROVEMENT-QUEUE.md` (max 1375 chars): Top 5 prioritized improvements
   - Pull from evolve-log, observer reports, and skill-improvement-queue
 
