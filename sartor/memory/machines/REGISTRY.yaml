@@ -146,10 +146,10 @@ machines:
     aliases: [AltonGame2025]
     role: gaming-pc-peer
     description: "Alton's gaming PC. Ran the 2026-06-10 Optimum/UCG-Max WAN cutover from its own Claude session. SSH pubkey (altongame2025-sartor, SHA256:YMcNK8gu1vS02IouQO7d5130VlsoLBTFMGPEnqBhwGk) installed on rtxserver + gpuserver1 2026-06-10 with Alton's explicit chat confirmation."
-    os: "Windows (assumed; unverified)"
-    mac: "ec:8e:77:c1:46:6b"
-    nic: null
-    current_ip: "192.168.1.176"
+    os: "Windows 11 Home"
+    mac: "34:5a:60:2b:c2:04"   # Ethernet (PRIMARY, currently .118). WiFi MAC ec:8e:77:c1:46:6b = .176.
+    nic: "Ethernet primary; WiFi secondary"
+    current_ip: "192.168.1.118"
     ip_assignment: dhcp
     ssh_path: null  # No inbound SSH known. Outbound: can push to rtxserver bare repo via the installed key.
     bmc_ip: null
@@ -158,12 +158,16 @@ machines:
     last_verified: 2026-06-10
     last_drift: null
     flagged:
-      - "Reported (Alton, unconfirmed) to have set up 'some API' on the UCG Max — identify and vault the credential."
-      - "OS/hostname details unverified — populate when its Claude session lands its cutover commit."
+      - "UCG API key values (rocinante-claude-v2, Sartor-Claude-Network-API) live in token files at C:\\Users\\alto8\\.secrets\\ on this box — vault both per its handoff doc."
+      - "UCG admin password ('admin' user) is in this box's Chrome saved passwords — vault as 'UCG-Max admin'."
+      - "Bitwarden CLI installed but unauthenticated; no python/node/GitHub creds. Onboard when Alton runs bw login there."
     notes: |
-      Joined the fleet during the WAN cutover night 2026-06-10. Communicates via
-      Gmail drafts + git (no peer-comms tmux protocol yet). Key install request
-      arrived as a Gmail draft and was verified with Alton in chat before action.
+      Joined the fleet during the WAN cutover night 2026-06-10; performed the
+      Optimum/UCG-Max cutover itself (handoff: inbox/rocinante/2026-06-10-optimum-
+      cutover-handoff.md; circuit details: reference/optimum-fiber-circuit.md).
+      Has push access to the rtxserver canonical repo (first push landed
+      2026-06-11). Communicates via Gmail drafts + git (no peer-comms tmux
+      protocol yet). Repo clone at C:\Users\alto8\sartor-claude-network.
 
 # Future-machine slots (uncomment when adding):
 # - hostname: aneeta-laptop

@@ -67,9 +67,10 @@ ssh alton@gpuserver1 "nvidia-smi"
 ```
 
 ### Known Issues
-- Hairpin NAT on Fios router: LAN cannot route to its own public IP. Fixed with iptables OUTPUT DNAT rule + DOCKER-USER conntrack rule.
+- **WAN migrated 2026-06-10: Fios → Optimum via UniFi Cloud Gateway Max.** Public IP is static `108.58.121.254`. There is NO DMZ anymore — vast.ai inbound is explicit per-host port-forwards on the UCG (`vastai-gpuserver1` 40000-40099 → gpuserver1, `vastai-rtxserver` 40100-40199 → rtxserver, `vastai-gpuserver2` 40200-40299 → gpuserver2). If a host's rental ports go dark, check the UCG forwards first.
+- Hairpin NAT works natively on the UCG Max. gpuserver1's old Fios-era iptables OUTPUT DNAT workaround targets the dead Fios IP and is inert — remove host-side when convenient.
 - vast.ai tending and heartbeat are managed by gpuserver1 crons. See `sartor/memory/machines/gpuserver1/CRONS.md` v0.4 for the active cron registry (4 jobs: rgb_status 5min, vastai-tend 30min, stale-detect 1h, gather_mirror 4h). State-change events land in `sartor/memory/inbox/gpuserver1/vastai/`; heartbeat at `inbox/gpuserver1/_heartbeat.md`.
-- Router DMZ forwards all traffic to gpuserver1; UFW on server handles filtering.
+- UFW on gpuserver1 still handles host-side filtering (unchanged by the WAN swap).
 - **`vastai show instances` returns `[]` on host-side** — it lists *client-side* rentals only. Host-side rental check is docker-based: `docker ps --format '{{.Names}}' | grep '^C\.'` (kaalia names customer containers `C.<instance_id>`).
 
 ## Domain 2: Nonprofit Administration
@@ -315,7 +316,7 @@ Defined in `.claude/scheduled-tasks/`:
 - **CPU:** Intel i9-14900K
 - **RAM:** 128GB DDR5
 - **GPU:** NVIDIA RTX 5090 (32GB VRAM)
-- **IP:** 192.168.1.100 (LAN, current — see REGISTRY.yaml), DMZ from router
+- **IP:** 192.168.1.100 (LAN, current — see REGISTRY.yaml); inbound via UCG port-forward 40000-40099 (no DMZ since 2026-06-10)
 - **SSH:** `ssh alton@gpuserver1`
 - **Vast.ai CLI:** `~/.local/bin/vastai`
 - **Tending script:** `~/vastai-tend.sh` (cron, every 30 min, state-change-only)
@@ -332,7 +333,7 @@ Defined in `.claude/scheduled-tasks/`:
 - **Peer Claude:** auto-spawns at boot in tmux session `claude-team-1` via user-level systemd service `~/.config/systemd/user/sartor-claude-peer.service` (lingering enabled for `alton`).
 - **BMC fan curves (saved to firmware):** Zones 2-6 = 30°C/50% → 50°C/75% → 60°C/90% → 70°C/100%, applied via Chrome MCP 2026-05-02. Fan-cord override available via remote control for max chassis airflow.
 - **Vast.ai listing:** **LISTED, verified, RENTED on-demand** (machine_id 124192) as of 2026-05-28. Live list $1.10/GPU; approved $0.92/GPU (`business/fleet.yaml`) is a separate open decision (live-drift D1). Historical onboarding record: `projects/rtxserver-vastai-watch.md` (closed/superseded).
-- **Limitations:** No GitHub credentials (cannot git push), no browser automation, no Verizon Fios WAN port-forward yet.
+- **Limitations:** No GitHub credentials (cannot git push), no browser automation. (WAN port-forward 40100-40199 → this host exists on the UCG Max since 2026-06-10.)
 
 ### MCPs Frequently Used (session-level)
 - **Google Calendar:** Event management, scheduling, free time lookup
@@ -342,11 +343,14 @@ Defined in `.claude/scheduled-tasks/`:
 
 Project-config MCPs (additional servers wired per-project) live in `.mcp.json` and `.claude/mcp-config.json`.
 
-### Network
-- **Router:** Verizon Fios (Vue.js SPA admin interface)
-- **DMZ:** All external traffic forwarded to gpuserver1 (current LAN IP in REGISTRY.yaml)
-- **UFW:** Server-side firewall handles port filtering
-- **Vast.ai ports:** 40000-40099 open for rentals
+### Network (post-2026-06-10 WAN migration)
+- **ISP:** Optimum/Cablevision (AS6128), **static** public IP `108.58.121.254` (`ool-6c3a79fe.static.optonline.net`). Verizon Fios is retired.
+- **Gateway:** UniFi Cloud Gateway Max ("Sartor Saxena Cloud Max") at `https://192.168.1.1` — L3 gateway, NAT, DHCP, port-forwards. UI login is Alton's (no vaulted admin credential yet — open item). Programmatic access: UniFi Network API key in Bitwarden as `UCG Max API key (rocinante-claude-v3)`, header `X-API-KEY`; works on BOTH `https://192.168.1.1/proxy/network/integration/v1/` (modern, read-mostly) and `https://192.168.1.1/proxy/network/api/s/default/...` (legacy, incl. `rest/portforward`). Two additional keys created by ALTONGAME2025 during the cutover (`Sartor-Claude-Network-API`, `rocinante-claude-v2`) — consumers unknown, reconciliation pending.
+- **Port forwards (UCG, all TCP/UDP):** 40000-40099 → gpuserver1 (.100); 40100-40199 → rtxserver (.157); 40200-40299 → gpuserver2 (.175). No DMZ.
+- **WiFi/switch:** UNCHANGED — the UniFi switch + 8 APs are still adopted to the OLD local controller on Rocinante (`https://192.168.1.171:8443`); the UCG Max manages zero APs and zero SSIDs. Two UniFi control planes coexist: UCG = routing/WAN, Rocinante controller = LAN switch + WiFi. See `/network-management` skill.
+- **Hairpin NAT:** native on the UCG (LAN → public IP works without workarounds).
+- **UFW:** host-side firewalls on the GPU servers unchanged.
+- **ALTONGAME2025** (Alton's gaming PC, `192.168.1.176`, MAC `ec:8e:77:c1:46:6b`): joined as a peer during the cutover night; its SSH pubkey is on rtxserver + gpuserver1; it can push to the canonical repo. Registered in `machines/REGISTRY.yaml`.
 
 ## Sartor Infrastructure (Consolidated Repo)
 
