@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-11
 updated_by: personal-data-gather
-run: 213
+run: 214
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1474,3 +1474,16 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 count: 6 (vast.ai offline, Goddard childcare, LinkedIn CMO reply, HITLAB RSVP, Sante Total Haiti HOLD, Lucent estimates)
 - Files touched: `daily/2026-06-10.md` (run 210 appended), `family/active-todos.md` (run 210 appended), `ALTON.md` (run 210 appended), `family/family-calendar.md` (run 210 appended), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created/appended), `log.md` (this entry)
 - KEY: LinkedIn CMO reply needs response today. Wohelo questions must go to Heidi before Jun 18. HITLAB RSVP deadline Jun 12 (2 days).
+
+## [2026-06-11] ingest | personal-data-gather run 214: Guidepoint consultation #1760138; USPS 4 mailpieces; Disney Broadway; M3 Research
+- Sources: Gmail (is:unread newer_than:1d, 30 threads, delta since run 213 ~09:30 UTC); all 5 Google Calendars (Jun 11–18). SSH unavailable (cloud runner).
+- Note: log.md gap — runs 211–213 not entered here; see daily/2026-06-11.md for those run details.
+- Net-new facts: 5 (Guidepoint consultation #1760138; M3 Global Research Neurology digest; USPS 4 mailpieces Jun 11; Disney on Broadway ALADDIN email; Selective Ting electrical monitor offer)
+- New ACTION_REQUIRED: 1 (Guidepoint consultation #1760138 — respond to lshek@guidepointglobal.com; consultation-rate paid gig in clinical trial AI space)
+- Calendar: all 5 polled, no new events vs runs 212/213. Dinner Princeton tonight; Abby graduation Jun 18.
+- P1 carry-forward: NJ-1065 Jun 15 (4 days); HITLAB TOMORROW Jun 12 (no RSVP confirmed)
+- P2 carry-forward: Lucent Energy CPA docs still pending tonight; RTX 5090 delivery unconfirmed; vast.ai offline alert Jun 11 03:36 UTC (unverifiable from runner); LinkedIn CMO reply (Mayo Clinic AI diagnostics)
+- P3 carry-forward: Sante Total (Haiti wire HOLD, Archdiocese check, Chase KYC 2026-07-20)
+- Pages updated: `daily/2026-06-11.md` (run 214 appended, frontmatter bumped), `ALTON.md` (Guidepoint + M3 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); infrastructure status unverifiable per runner-capability gate
+- KEY: Guidepoint consultation #1760138 — respond today. NJ-1065 Q2 due Jun 15 (4 days). HITLAB roundtable tomorrow Jun 12 — no RSVP seen.

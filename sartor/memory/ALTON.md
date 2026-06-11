@@ -2,9 +2,9 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-06-10
+updated: 2026-06-11
 updated_by: personal-data-gather
-run: 210
+run: 214
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -480,3 +480,11 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] Alton in NYC today (Jun 10) — SpotHero parking 35 W 33rd (9:30 AM–9:30 PM)
 > support@spothero.com (Jun 10 13:45 UTC): SpotHero Reservation #125313887 confirmed. 35 W 33rd St Valet Garage, Midtown Manhattan near Penn Station. Confirms Alton's NYC commute day today. Cell (504) 579-3185 on file.
+
+## Latest from gather (2026-06-11) — run 214
+
+> [!todo] ACTION — Guidepoint consultation #1760138 — respond to lshek@guidepointglobal.com
+> lshek@guidepointglobal.com (Jun 11 09:32 UTC): Direct consultation request — "Experts in Real-World Adoption of Connected Solutions in Clinical Trials (#1760138)." Aligns with Alton's AstraZeneca AI and clinical-trial work. Consultation (not survey) — paid at consultation rates (typically $200–400/hr for domain experts). Respond to lshek@guidepointglobal.com to express interest and request terms. See [[business/az-career]], [[daily/2026-06-11]].
+
+> [!fact] M3 Global Research Neurology daily studies digest active
+> surveys.usa@m3globalresearch.com: recurring daily digest of market research opportunities for neurologists at various compensation tiers. Check periodically for high-value studies. Informational.
