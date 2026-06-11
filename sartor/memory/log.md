@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-10
+updated: 2026-06-11
 updated_by: personal-data-gather
-run: 211
+run: 212
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-11] ingest | personal-data-gather run 212: vast.ai 52271 offline alert; hardware delivered; Abby graduation Jun 18; Goddard closed today
+- Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 11–18), no SSH (cloud runner)
+- New facts: 6 (vast.ai offline automated alert Jun 11 03:36 UTC; G.SKILL Trident Z RGB RAM delivered; JMT PCIe + 2 items delivered; Abby graduation Jun 18 Family cal; summer soccer registration open; Goddard closed today run-212 active day)
+- Carry-forwards verified: Sante Total archdiocese check + Haiti HOLD already in sante-total.md run 211; Dinner Princeton tonight already in active-todos run 210
+- Calendar: Alton primary — "Dinner Princeton?" tonight 7–8 PM; Family cal — Abby's graduation Jun 18; all others empty Jun 11–18
+- P0 alerts: vast.ai 52271 offline (escalated); Goddard closed today (Vasu coverage)
+- Pages updated: `daily/2026-06-11.md` (created), `family/active-todos.md` (run 212 appended), `family/vasu.md` (Goddard closure today), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 
 ## [2026-06-08] ingest | personal-data-gather run 200: Chase/Sante Total 07/20/2026 deadline confirmed; pool safe; CSA tomorrow; hardware delivered
 - Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 8–15), no SSH (cloud runner)

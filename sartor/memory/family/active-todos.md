@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-10
+updated: 2026-06-11
 updated_by: personal-data-gather
-run: 211
+run: 212
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2400,3 +2400,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **HITLAB RSVP (Jerry Antimano)** | LinkedIn — 2 days remaining | **2026-06-12** |
 > | NJ-1065 Q2 — Solar Inference | Call Jonathan Francis | **2026-06-15** |
 > | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15** |
+
+## Latest from gather (2026-06-11) — run 212
+
+> [!warning] P0 — vast.ai machine 52271 OFFLINE (new overnight alert)
+> console@mg.vast.ai, 2026-06-11 03:36 UTC: automated offline alert for machine 52271 (gpuserver1). Active reserved contract C.34113802 through 2026-08-24. SSH to gpuserver1 and check status. See [[MACHINES]] for commands.
+
+> [!fact] Hardware deliveries confirmed Jun 10 (rtxserver build-out parts)
+> G.SKILL Trident Z RGB RAM — DELIVERED. JMT 180 Degree 64GBS PCIe cable + 2 items — DELIVERED. All ordered Jun 7 (run 196). RTX 5090 delivery still ATTEMPTED/not-completed — check Amazon tracking for rescheduled window.
+
+> [!todo] Summer soccer registration open (Vayu)
+> Blue Sombrero email Jun 11: Montclair United Summer Soccer Sessions 2026 registration open. Optional — register before sessions fill if interested. See [[family/vayu]].

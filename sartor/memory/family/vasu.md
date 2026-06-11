@@ -2,9 +2,9 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-06-10
+updated: 2026-06-11
 updated_by: personal-data-gather
-run: 206
+run: 212
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -70,6 +70,14 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 ## Open questions
 
 - Is Vasu enrolled in Goddard summer camp? Fee schedule was emailed 2026-04-06 but enrollment confirmation not visible.
+
+## Latest from gather (2026-06-11) — run 212
+
+> [!fact] Goddard School closed TODAY (June 11, 2026) — maintenance day
+> Kaymbu reminder from noreply@kaymbu.com (2026-06-10 20:00 UTC): "Friendly reminder that we will be closed for maintenance tomorrow, June 11th. The school will re-open on Friday, June 12th as normal." **Vasu has no childcare today.** Normal school resumes Friday June 12. Confirm Alton or Aneeta home, or Amarkanth (grandfather) available. See [[family/active-todos]].
+
+> [!fact] Vasu daily sheet Jun 10 — normal day
+> Kaymbu check-in 8:38am (Lorena C); check-out 6:01pm (Alissa D). AM snack at 9am. Dramatic Play and Shared Moments activities. Normal school day.
 - What's the Recycled Runway costume plan for 4/22? Typically requires parent prep.
 - School closure dates for April — needs cross-reference against Alton's work travel days.
 
