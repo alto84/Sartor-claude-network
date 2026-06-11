@@ -26,8 +26,8 @@
 #   - The drift detector writes back `last_verified` and `last_drift` only -never other fields
 ---
 schema_version: "1.0"
-updated: 2026-05-19
-updated_by: "Rocinante Opus 4.7 (post-fuseblow IP-drift capture)"
+updated: 2026-06-10
+updated_by: "Rocinante Fable 5 (UCG-Max cutover + altongame2025 fleet join)"
 
 machines:
 
@@ -44,7 +44,7 @@ machines:
     bmc_ip: null
     switch_port: null  # Not in the 2026-05-01 census; physical patch-panel labeling unknown for this drop.
     vast_ai_machine_id: null
-    last_verified: 2026-06-09
+    last_verified: 2026-06-11
     last_drift: 2026-06-09  # Back on wired .171 (UniFi switch restored post-fuseblow); registry had sat at the .169 WiFi lease since 2026-05-19 while the drift detector flagged it every 4h. Corrected per uplift C5; live adapter verified via Get-NetIPAddress.
     flagged:
       - "switch_port unknown -confirm against UniFi controller client list at https://127.0.0.1:8443 (controller runs locally so localhost is the future-proof URL)"
@@ -68,7 +68,7 @@ machines:
     bmc_ip: null
     switch_port: null  # Physically rewired into Alton's Office switch port during 2026-05-19 fuse-blow recovery; switch_port number unknown until UniFi client list is re-queried post-restoration.
     vast_ai_machine_id: 52271
-    last_verified: 2026-06-09
+    last_verified: 2026-06-11
     last_drift: 2026-05-19  # ROLLED BACK from .199 → .100 during fuseblow recovery (gpuserver1 physically moved to Alton's Office wired drop; DHCP reassigned to original .100). Restores alignment with Fios DMZ target. Rental C.34113802 reconnected within 30min, reliability dropped slightly (0.9807 → 0.9718) but recovering.
     flagged:
       - "Now back at 192.168.1.100 (pre-2026-05-09 IP). Codebase references to .199 will need cleanup in next Tier-2 sweep; the .100 references that were previously stale are now correct again."
@@ -97,7 +97,7 @@ machines:
     bmc_mac: "30:c5:99:d5:8f:b8"
     switch_port: 10
     vast_ai_machine_id: 124192  # corrected 2026-05-26 from stale 97429 per rental-ops audit; live machine_id verified via vastai show machines
-    last_verified: 2026-06-09
+    last_verified: 2026-06-11
     last_drift: 2026-05-26  # BMC primary moved .154 → .150 static (was factory-reset to 10.10.10.10 at some point between 2026-05-21 and 2026-05-26; rediscovered + corrected on this date)
     flagged: []
     notes: |
@@ -129,7 +129,7 @@ machines:
     bmc_ip: null
     switch_port: null
     vast_ai_machine_id: null
-    last_verified: 2026-06-09
+    last_verified: 2026-06-11
     last_drift: null
     flagged:
       - "Wired link negotiated 1GbE (not the card's 5GbE) — switch port/cable is 1G. Fine for vast.ai (>500Mbps); upgrade port/cable for 5G later."
@@ -141,6 +141,29 @@ machines:
       provisional pending thermal stress). vast.ai port range allocated 40200-40299.
       Rocinante key + NOPASSWD sudo configured (paramiko bootstrap). Bring-up log:
       inbox/rocinante/2026-06-07-gpuserver2-bringup-LOG.md.
+
+  - hostname: altongame2025
+    aliases: [AltonGame2025]
+    role: gaming-pc-peer
+    description: "Alton's gaming PC. Ran the 2026-06-10 Optimum/UCG-Max WAN cutover from its own Claude session. SSH pubkey (altongame2025-sartor, SHA256:YMcNK8gu1vS02IouQO7d5130VlsoLBTFMGPEnqBhwGk) installed on rtxserver + gpuserver1 2026-06-10 with Alton's explicit chat confirmation."
+    os: "Windows (assumed; unverified)"
+    mac: "ec:8e:77:c1:46:6b"
+    nic: null
+    current_ip: "192.168.1.176"
+    ip_assignment: dhcp
+    ssh_path: null  # No inbound SSH known. Outbound: can push to rtxserver bare repo via the installed key.
+    bmc_ip: null
+    switch_port: null
+    vast_ai_machine_id: null
+    last_verified: 2026-06-10
+    last_drift: null
+    flagged:
+      - "Reported (Alton, unconfirmed) to have set up 'some API' on the UCG Max — identify and vault the credential."
+      - "OS/hostname details unverified — populate when its Claude session lands its cutover commit."
+    notes: |
+      Joined the fleet during the WAN cutover night 2026-06-10. Communicates via
+      Gmail drafts + git (no peer-comms tmux protocol yet). Key install request
+      arrived as a Gmail draft and was verified with Alton in chat before action.
 
 # Future-machine slots (uncomment when adding):
 # - hostname: aneeta-laptop
