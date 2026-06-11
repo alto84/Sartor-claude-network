@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-11
 updated_by: personal-data-gather
-run: 214
+run: 215
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1474,6 +1474,18 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 count: 6 (vast.ai offline, Goddard childcare, LinkedIn CMO reply, HITLAB RSVP, Sante Total Haiti HOLD, Lucent estimates)
 - Files touched: `daily/2026-06-10.md` (run 210 appended), `family/active-todos.md` (run 210 appended), `ALTON.md` (run 210 appended), `family/family-calendar.md` (run 210 appended), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created/appended), `log.md` (this entry)
 - KEY: LinkedIn CMO reply needs response today. Wohelo questions must go to Heidi before Jun 18. HITLAB RSVP deadline Jun 12 (2 days).
+
+## [2026-06-11] ingest | personal-data-gather run 215: vast.ai 2FA added; CMO Monday meeting; Jun 14 hardware events; Vasu Show+Tell
+- Sources: Gmail (is:unread newer_than:1d, 30 threads, delta since run 214 ~12:00 UTC); all 5 Google Calendars (Jun 11–18). SSH unavailable (cloud runner).
+- Net-new facts: 7 (vast.ai Authenticator App/TOTP 2FA added; LinkedIn CMO "Mon 1:30 PM ET" proposal; NEJM AI Drazen editorial; J&J Neuroscience MD job alert; Vasu Show+Tell Friday; Goddard Unit 10 newsletters ×2; AOA Pharos arriving)
+- Calendar NET-NEW: 2 events (Jun 14 gpuserver2 second 5090 install 10–11 AM ET; Jun 14 rtxserver GPU1 PCIe reseat 11 AM–12 PM ET — both created Jun 11 14:57 UTC, not in runs 212–214)
+- New ACTION_REQUIRED: 3 (confirm vast.ai 2FA was Alton's action; respond to CMO Monday Jun 16 proposal; prep Vasu Show+Tell item for letter TBD)
+- P1 carry-forward: NJ-1065 Q2 Jun 15 (4 days); HITLAB roundtable TOMORROW Jun 12 (no RSVP); CMO meeting Mon Jun 16 (confirm/decline)
+- P2 carry-forward: Lucent Energy CPA docs still pending tonight; RTX 5090 GIGABYTE delivery unconfirmed; vast.ai 2FA — verify action
+- P3 carry-forward: Sante Total (Haiti wire HOLD, Archdiocese check, Chase KYC 2026-07-20)
+- Pages updated: `daily/2026-06-11.md` (run 215 appended, frontmatter bumped), `MACHINES.md` (2FA + Jun 14 hardware events, frontmatter bumped), `business/az-career.md` (CMO meeting proposal, frontmatter bumped), `family/active-todos.md` (Show+Tell + hardware note, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); infrastructure status unverifiable per runner-capability gate
+- KEY: vast.ai 2FA — confirm action. CMO meeting Mon Jun 16 1:30 PM ET — respond today. NJ-1065 Q2 due Jun 15. HITLAB tomorrow Jun 12.
 
 ## [2026-06-11] ingest | personal-data-gather run 214: Guidepoint consultation #1760138; USPS 4 mailpieces; Disney Broadway; M3 Research
 - Sources: Gmail (is:unread newer_than:1d, 30 threads, delta since run 213 ~09:30 UTC); all 5 Google Calendars (Jun 11–18). SSH unavailable (cloud runner).

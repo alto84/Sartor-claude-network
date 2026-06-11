@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: az-career
-updated: 2026-06-01
+updated: 2026-06-11
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -96,6 +96,14 @@ For all of the above, the canonical sources are AZ internal systems (Workday, AZ
 2. **What was the outcome of the AZ Senior Director internal application?** Posting closed 2026-02-16.
 3. **Any other external opportunities in the pipeline?** No signal in last 30 days beyond Andy Stecker.
 4. **Guidepoint consults** — worth accepting or declining? They're a recurring revenue opportunity.
+
+## Latest from gather (2026-06-11) — run 215
+
+> [!todo] ACTION — Mayo Clinic AI CMO: Monday Jun 16, 1:30 PM ET proposed
+> hit-reply@linkedin.com (Jun 11 15:53 UTC): Reply to "Founding Chief Medical Officer Search – Mayo Clinic-Funded AI-Powered Diagnostics Company" proposing: "How's 1:30 pm EST Monday?" Monday = Jun 16. First noted run 210 (Jun 10): recruiter replied to Alton's prior message. Now contact proposes specific meeting time. Respond today to confirm or counter.
+
+> [!fact] J&J Medical Director, Early Dev & Experimental Medicine (Neuroscience) — job alert
+> LinkedIn job alert (Jun 11 14:53 UTC): Johnson & Johnson Innovative Medicine. Alton's neurology + AI background is directly relevant. Tracking as market/competitive intelligence.
 
 ## Related
 - [[ASTRAZENECA]] - Deeper AZ context (also in [[ALTON]])

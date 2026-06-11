@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-11
 updated_by: personal-data-gather
-run: 213
+run: 215
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2422,3 +2422,11 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] Summer soccer registration open (Vayu)
 > Blue Sombrero email Jun 11: Montclair United Summer Soccer Sessions 2026 registration open. Optional — register before sessions fill if interested. See [[family/vayu]].
+
+## Latest from gather (2026-06-11) — run 215
+
+> [!todo] FAMILY ACTION — Vasu Show and Tell Friday Jun 13 (check letter in Kaymbu)
+> Kaymbu announcement (Jun 11 14:43 UTC) from Clarissa Black: "Show and Tell Friday — the letter is (drumroll please..." — snippet cut off. Check full Kaymbu email for the specific letter and prepare an item starting with it for Vasu to bring. Goddard closed Jun 11 (maintenance), reopens Jun 12; Show and Tell is Fri Jun 13. See [[family/vasu]].
+
+> [!fact] Hardware maintenance Saturday Jun 14 — no family logistics impact expected
+> Two Alton calendar events (created Jun 11): (1) 10–11 AM: gpuserver2 install second RTX 5090; (2) 11 AM–12 PM: rtxserver GPU1 PCIe reseat (contingent on renter gone). Both local hardware tasks at home. See [[MACHINES]].

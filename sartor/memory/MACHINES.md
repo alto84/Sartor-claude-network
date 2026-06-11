@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-06-10
+updated: 2026-06-11
 updated_by: personal-data-gather
-run: 211
+run: 215
 last_verified: 2026-05-02
 status: active
 next_review: 2026-05-12
@@ -685,3 +685,14 @@ No git push (no credentials) - awaiting Rocinante curator commit
 
 > [!fact] GIGABYTE GeForce RTX 5090 SHIPPED — Jun 9 16:52 UTC
 > shipment-tracking@amazon.com: "Shipped: GIGABYTE GeForce RTX 5090..." (Jun 9 16:52 UTC). This is the second RTX 5090 card — the non-AORUS variant (GeForce) that was ordered Jun 9 02:06 UTC alongside the AORUS AI unit. Both RTX 5090 units now confirmed shipped: AORUS AI (15:51 UTC Jun 9) + GeForce (16:52 UTC Jun 9). Delivery expected Jun 10–11. Destination: AM5 build (machine 124192 candidate). Two RTX 5090s inbound = 64 GB VRAM total on that host if both install. See [[business/solar-inference]].
+
+## Latest from gather (2026-06-11) — run 215
+
+> [!warning] vast.ai account — Authenticator App/TOTP 2FA ADDED (Jun 11 14:12 UTC)
+> console@mg.vast.ai: "A new two-factor authentication method (Authenticator App/TOTP) has been added to your Vast.ai account. If you did not make this change, please contact support immediately." If Alton initiated: positive security hardening. If not: immediate account-compromise concern — contact vast.ai support at cloud.vast.ai. **Verify this was Alton's action.** See [[business/solar-inference]].
+
+> [!fact] Jun 14 (Sat) 10:00–11:00 AM ET — gpuserver2: install second RTX 5090
+> Alton calendar event (created Jun 11 14:57 UTC). Listing end_date for gpuserver2 capped at Jun 13 8 PM ET — no contracts can span the install. After install: kaalia re-detects hardware, brief re-verification window, then relist ~30 days out with `-m 1`. Audit entry: `sartor/memory/inbox/gpuserver2/_vastai/20260611T1530Z-end-date-shorten.md`. See [[business/solar-inference]].
+
+> [!fact] Jun 14 (Sat) 11:00 AM–12:00 PM ET — rtxserver: reseat GPU1 PCIe x8 → x16 (CONTINGENT)
+> Alton calendar event (created Jun 11 14:57 UTC). GPU1 (slot 7) running at PCIe x8 since build; slot is x16-wired. CONTINGENT on renter C.39324136 absent — check `sudo docker ps` first (names starting `C.` = rented; if active, defer ≥24h). Steps: BIOS slot-7 link width/bifurcation check → power off + reseat GPU1 (verify latch, check sag) → if still x8, swap to slot 5. Verify: `nvidia-smi --query-gpu=pcie.link.width.current` = 16. Full writeup: `sartor/memory/machines/rtxpro6000server/HARDWARE.md`. See [[machines/rtxpro6000server]].
