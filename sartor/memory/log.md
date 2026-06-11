@@ -37,6 +37,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-11] ingest | personal-data-gather run 216: gpuserver2 (139358) offline alert; AZ Gmail sign-in; home valuation; Lucent deadline passed
+- Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 215 ~20:00 UTC), all 5 Google Calendars (Jun 11–18), SSH unavailable (cloud runner)
+- Net-new facts: 5 (vast.ai 139358 offline alert — unverifiable from runner; AZ Gmail new sign-in; myHomeIQ June home valuation; Google child privacy settings; Guidepoint PK/PD modeling inquiry)
+- Carry-forwards critical: HITLAB TOMORROW Jun 12 12:30 PM (no RSVP — verify tonight); NJ-1065 Q2 Jun 15 (4 days); Lucent CPA docs deadline passed (follow up Jun 12); Mayo Clinic CMO Jun 16 respond; RTX 5090 delivery unknown
+- Calendar: unchanged vs run 215 — Dinner Princeton tonight; Jun 14 hardware maintenance (gpuserver2 install + rtxserver GPU1 reseat); Abby graduation Jun 18
+- Infrastructure: SSH unavailable; 139358 offline alert unverifiable per runner-capability gate; no new alerts for 52271 or 124192
+- Pages updated: `daily/2026-06-11.md` (run 216 appended), `log.md` (this entry), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created)
+
 ## [2026-06-11] ingest | personal-data-gather run 213: Guidepoint $80 clinical survey; FEOEOR girls delivered; HITLAB tomorrow; NJ-1065 4 days
 - Sources: Gmail (is:unread newer_than:1d, 30 threads), all 5 Google Calendars (Jun 11–18), SSH unavailable (cloud runner)
 - Net-new facts: 2 (Guidepoint Clinical Diagnostic $80 survey for "Emmett Sartor"; FEOEOR 6-pack girls clothing confirmed delivered via seller rating request)
