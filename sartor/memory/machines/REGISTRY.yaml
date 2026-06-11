@@ -26,8 +26,8 @@
 #   - The drift detector writes back `last_verified` and `last_drift` only -never other fields
 ---
 schema_version: "1.0"
-updated: 2026-06-10
-updated_by: "Rocinante Fable 5 (UCG-Max cutover + altongame2025 fleet join)"
+updated: 2026-06-11
+updated_by: "Rocinante Fable 5 (gpuserver2 vast.ai onboarding — machine_id 139358 listed)"
 
 machines:
 
@@ -119,7 +119,7 @@ machines:
   - hostname: gpuserver2
     aliases: []
     role: vast-ai-host
-    description: "Solar Inference LLC vast.ai rental host #2. Single RTX 5090. Bring-up 2026-06-08; not yet kaalia-registered."
+    description: "Solar Inference LLC vast.ai rental host #2. Single RTX 5090. LISTED on machine_id 139358 (2026-06-11), dynamic-priced (reprice.py), listing expiry 2026-07-11."
     os: "Ubuntu 24.04.4 LTS"
     mac: "9c:6b:00:c6:4f:81"   # wired0 (Realtek RTL8126, PRIMARY). Wi-Fi (wlp8s0) MAC = dc:56:7b:01:96:d5 (backup).
     nic: "Realtek RTL8126 5GbE = wired0 PRIMARY @1GbE (r8169 native on kernel 6.17 HWE); MediaTek MT7925 Wi-Fi (wlp8s0) backup"
@@ -128,19 +128,25 @@ machines:
     ssh_path: "alton@192.168.1.175"
     bmc_ip: null
     switch_port: null
-    vast_ai_machine_id: null
+    vast_ai_machine_id: 139358
     last_verified: 2026-06-11
     last_drift: null
     flagged:
-      - "Wired link negotiated 1GbE (not the card's 5GbE) — switch port/cable is 1G. Fine for vast.ai (>500Mbps); upgrade port/cable for 5G later."
+      - "Wired link negotiated 1GbE (not the card's 5GbE) — switch port/cable is 1G. vast.ai measured ~470 Mbps up/down — just under the 500 Mbps verification guideline; upgrade port/cable for 5G to clear it comfortably."
       - "wired0 hardened match-by-MAC + set-name (survives PCIe renumber). Wi-Fi netplan still by-name (wlp8s0); harden later (low priority — wired is primary)."
-      - "Not yet on vast.ai: kaalia install needs web-UI install token. WAN port-forward 40200-40299 → .175 DONE on UCG Max 2026-06-10 (vastai-gpuserver2)."
+      - "vast.ai verification pending (listed unverified 2026-06-11; automated, runs at least daily). Cron suite (Phase J) + MISSION.md (Phase K) not yet installed."
     notes: |
       AMD Ryzen 9 9950X (16C/32T), 256 GB DDR5, 4 TB WD_BLACK SN7100 NVMe, ASRock board,
       NVIDIA RTX 5090 (32 GB, driver 595.71.05). Power cap 575 W (nvidia-power-cap.service,
-      provisional pending thermal stress). vast.ai port range allocated 40200-40299.
-      Rocinante key + NOPASSWD sudo configured (paramiko bootstrap). Bring-up log:
-      inbox/rocinante/2026-06-07-gpuserver2-bringup-LOG.md.
+      provisional pending thermal stress). vast.ai machine_id 139358, ports 40200-40299
+      (UCG Max forward verified externally 2026-06-11; direct_port_count=100; hairpin
+      native on UCG Max — no DNAT rule). Listed 2026-06-11 at approved $0.80/GPU; price is
+      DYNAMIC — reprice.py took ownership same hour (set $0.64 at 04:23Z; fleet.yaml is
+      truth). $0.65 floor, $0.10/GB-mo storage, min_gpus 1, expiry 2026-07-11 (fixed -e).
+      Root LV extended to full 4TB; Docker on 3.3T loopback
+      XFS. UFW active (22 + 40200-40299). Rocinante key + NOPASSWD sudo configured.
+      Bring-up log: inbox/rocinante/2026-06-07-gpuserver2-bringup-LOG.md; onboarding log:
+      inbox/rocinante/2026-06-11-gpuserver2-vastai-onboard.md.
 
   - hostname: altongame2025
     aliases: [AltonGame2025]

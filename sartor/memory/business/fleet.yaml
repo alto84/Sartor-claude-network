@@ -25,8 +25,8 @@
 # Tax fields verified 2026-05-28: projects/fleet-ledger-2026-05-28/VERIFICATION.md (live IRS/OBBB/Notice 2025-42).
 
 schema_version: "1.0"
-updated: 2026-05-28
-updated_by: "Rocinante Opus 4.8 (fleet-ledger build)"
+updated: 2026-06-11
+updated_by: "Rocinante Fable 5 (gpuserver2 vast.ai onboarding)"
 
 solar:
   contract_total_usd: 438829          # public contract figure (in receipts); kept for the ITC denominator
@@ -130,6 +130,45 @@ machines:
       drift is owned by the controller). Current renter locked ~$0.75/GPU on 2026-06-03; light usage,
       pays per rented hour regardless. GPU0 ~83C under sustained renter load (2C from 85C soft-abort).
       min_gpus must never drop to 1. machine_id 124192 (not 97429).
+
+  - hostname: gpuserver2
+    vast_ai_machine_id: 139358         # kaalia registered 2026-06-11
+    offer_id: null
+    role: rental
+    status: active
+    gpus: 1
+    gpu_model: "RTX 5090"
+    hardware: "RTX 5090 32GB, Ryzen 9 9950X, 256GB DDR5, 4TB NVMe"
+    asset:
+      acquisition_date: null           # TODO: pull from expense ledger purchase rows (hostname=gpuserver2)
+      in_service_date: "2026-06-11"    # listing live. Same CPA caveat as rtxserver: confirm defensible date with JF.
+      cost_basis_ref: "data/financial/solar-inference/expenses-2026.csv (capitalize rows, hostname=gpuserver2)"
+      depreciation: {method: "MACRS-200DB", recovery_years: 5, bonus_eligible: true}
+    power:
+      idle_w: 80
+      load_w: 550
+      logger: null                     # no power logger yet — same ITC substantiation gap as rtxserver
+    listing:
+      gpu_cost: 0.64                   # DYNAMIC (scripts/fleet/reprice.py) set 2026-06-11T04:23:03Z
+      min_bid: 0.65
+      storage_cost: 0.10
+      min_gpus: 1
+      end_date: "2026-07-11"           # short-term first: fixed -e, 30 days out
+      marginal_floor_gpu_cost: 0.14    # same card/wattage as gpuserver1; refine with metered bill
+      tolerance: 0.005
+      dynamic:                         # enrolled at onboarding per fleet policy 2026-06-10
+        enabled: true
+        comp_query: "gpu_name=RTX_5090 verified=true rentable=true"
+        comp_num_gpus: 1
+    monitoring:
+      gpu_temp_alert_c: 84
+      gpu_temp_crit_c: 86
+    note: >
+      Onboarded 2026-06-11 (machine_id 139358). Power cap 575W (provisional pending thermal stress
+      under sustained rental load). Docker data on 3.3T loopback XFS (root LV extended to full 4TB
+      NVMe pre-install; no unpartitioned zone left, installer fell back to loopback — same layout
+      as gpuserver1). Ports 40200-40299 via UCG Max static WAN 108.58.121.254; hairpin NAT native
+      (no DNAT rule needed, unlike Fios-era hosts).
 
 # Future-machine template — the two incoming RTX 5090 hosts (uncomment + fill at onboarding;
 # procedure: sartor/memory/procedures/vastai-host-onboarding.md). With dynamic.enabled from day
