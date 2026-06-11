@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-11
 updated_by: personal-data-gather
-run: 212
+run: 213
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-11] ingest | personal-data-gather run 213: Guidepoint $80 clinical survey; FEOEOR girls delivered; HITLAB tomorrow; NJ-1065 4 days
+- Sources: Gmail (is:unread newer_than:1d, 30 threads), all 5 Google Calendars (Jun 11–18), SSH unavailable (cloud runner)
+- Net-new facts: 2 (Guidepoint Clinical Diagnostic $80 survey for "Emmett Sartor"; FEOEOR 6-pack girls clothing confirmed delivered via seller rating request)
+- Carry-forwards upgraded: HITLAB roundtable TOMORROW Jun 12 12:30 PM ET (no RSVP confirmed); NJ-1065 Q2 4 days (Jun 15); Lucent CPA docs expected today not received; RTX 5090 still undelivered
+- Calendar: unchanged vs run 212 — Dinner Princeton tonight; Abby graduation Jun 18; all 5 calendars empty Jun 11–18 otherwise
+- Infrastructure: SSH unavailable (cloud runner); no new vast.ai offline emails in this scan; 52271 status unverifiable
+- Pages updated: `daily/2026-06-11.md` (run 213 appended), `family/active-todos.md` (run 213 appended), `log.md` (this entry), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
 
 ## [2026-06-11] ingest | personal-data-gather run 212: vast.ai 52271 offline alert; hardware delivered; Abby graduation Jun 18; Goddard closed today
 - Sources: Gmail (is:unread newer_than:2d, 30 threads), all 5 Google Calendars (Jun 11–18), no SSH (cloud runner)

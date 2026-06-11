@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-11
 updated_by: personal-data-gather
-run: 212
+run: 213
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2400,6 +2400,17 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **HITLAB RSVP (Jerry Antimano)** | LinkedIn — 2 days remaining | **2026-06-12** |
 > | NJ-1065 Q2 — Solar Inference | Call Jonathan Francis | **2026-06-15** |
 > | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15** |
+
+## Latest from gather (2026-06-11) — run 213
+
+> [!warning] TOMORROW — HITLAB roundtable (Jun 12, 12:30–1:30 PM ET)
+> Jerry Antimano LinkedIn invitation (run 161). No RSVP confirmation in Gmail. If attending: RSVP via LinkedIn today and block calendar. Directly relevant to [[business/az-career|AZ GPS role]]. See [[business/az-career]].
+
+> [!todo] Guidepoint Clinical Diagnostic survey — $80 (respond if interested)
+> surveys@guidepoint.com (Jun 11 01:13 UTC). Addressed to "Emmett Sartor." Topic: Clinical Diagnostic research. $80 paid survey; Alton qualifies as neurologist. Check Guidepoint inbox and respond if interested. Survey windows are short.
+
+> [!fact] FEOEOR 6 Pack Girls clothing — delivered (Cvaoo US FBA)
+> Amazon seller rating request received Jun 11 07:16 UTC confirms delivery. Girls' clothing for [[family/vishala|Vishala]] or [[family/vasu|Vasu]]. No action needed.
 
 ## Latest from gather (2026-06-11) — run 212
 
