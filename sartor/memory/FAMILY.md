@@ -259,3 +259,14 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 
 > [!fact] Cat litter subscription cancelled — Dr. Elsey's Ultra UnScented (Jun 8)
 > Amazon subscription for cats Loki / Ghosty / Pickle cancelled. Review replacement or place manual order.
+
+## Latest from gather (2026-06-09) — run 205
+
+> [!todo] TOMORROW June 10 at 4 PM — MKA Year End Reports released via Veracross
+> Katie Banks (Head of Primary School) via Veracross (m@mail1.veracross.com, Jun 9 19:00 UTC): "end-of-year reports will be released through Veracross on Wednesday, June 10, at 4:00 p.m." Reports are "a meaningful and detailed reflection of your child's growth and development." Check Veracross portal at 4 PM tomorrow for [[family/vayu|Vayu]] (4th grade) and [[family/vishala|Vishala]] (3rd grade).
+
+> [!fact] MKA 2026-27 Acceptable Attire policy updated — review before back-to-school shopping
+> Same Veracross email (Jun 9): "2026-27 Primary School Acceptable Attire (formerly known as the Dress Code) — there have been changes. Even if you are a family that has been with us for many years, please take a minute to read through the list, as some things have changed from previous years." Link in Veracross email. Review before fall clothing purchases. Affects [[family/vayu|Vayu]] and [[family/vishala|Vishala]].
+
+> [!todo] TONIGHT — Vasu Pajama Day Wed June 10
+> Samantha Ramsden (noreply@kaymbu.com, Jun 9 20:00 UTC): "Pajama Day Tomorrow! Wear your coziest pjs to school tomorrow!" Pack PJs tonight for [[family/vasu|Vasu]]'s Wednesday June 10 Goddard drop-off. See [[family/active-todos]].

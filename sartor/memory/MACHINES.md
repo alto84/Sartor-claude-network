@@ -1,8 +1,9 @@
 ---
 type: domain
 entity: MACHINES
-updated: 2026-06-09
+updated: 2026-06-10
 updated_by: personal-data-gather
+run: 211
 last_verified: 2026-05-02
 status: active
 next_review: 2026-05-12
@@ -663,3 +664,24 @@ No git push (no credentials) - awaiting Rocinante curator commit
 
 > [!fact] CyberPower CP1500PFCLCD PFC UPS SHIPPED — Jun 9 14:57 UTC
 > shipment-tracking@amazon.com: "Shipped: CyberPower CP1500PFCLCD PFC..." rtxserver UPS (CyberPower CP1500PFCLCD) now in transit. Prior CLAUDE.md entry listed as "Expected Jun 8–9 — confirm arrival"; shipping notification received Jun 9 14:57 UTC confirms it was not yet delivered. Delivery imminent. UPS provides power conditioning and battery backup for rtxpro6000server (dual RTX PRO 6000 Blackwell, no UPS prior to this order). See [[machines/rtxpro6000server]].
+
+## Latest from gather (2026-06-10) — run 206
+
+> [!fact] G.SKILL Trident Z RGB DDR5 ORDERED + SHIPPED — Jun 9
+> auto-confirm@amazon.com (Jun 9 18:30 UTC): G.SKILL Trident Z RGB DDR5 RAM ordered. Shipped same day (22:26 UTC, shipment-tracking@amazon.com). Likely for the new AM5 build (Ryzen 9 9950X + ASRock X870E TAICHI). Complements: GIGABYTE AORUS RTX 5090 (shipped Jun 9, delivery Jun 10–11), GIGA-MEGA PCIe 5.0 X16 riser (delivered Jun 8), Vertical GPU Mount Bracket (delivered Jun 8). Delivery expected Jun 11–12. See [[business/solar-inference]].
+
+> [!fact] JMT 180 Degree 64GBS PCIe + 2 more items SHIPPED — Jun 9 23:20 UTC
+> shipment-tracking@amazon.com: "Shipped: JMT 180 Degree 64GBS PCIE... and 2 more items." JMT 180° PCIe adapter was ordered Jun 7 and tracked as "delivery status unknown" since run 201. Confirmed shipped Jun 9 23:20 UTC along with 2 additional unidentified items in same shipment. Delivery expected Jun 11–12. The 2 extra items' identity not visible in snippet — likely additional build components for the AM5 system or rtxserver. See [[business/solar-inference]].
+
+## Latest from gather (2026-06-10) — run 211
+
+> [!fact] CyberPower CP1500PFCLCD PFC UPS — DELIVERED Jun 10 (CLOSE OUT)
+> order-update@amazon.com (Jun 10 19:10 UTC): "Delivered: CyberPower CP1500PFCLCD PFC..." rtxpro6000server UPS confirmed delivered. Lifecycle: ordered Jun 7 (run 196) → shipped Jun 9 14:57 UTC (run 204) → delivered Jun 10 19:10 UTC. Install at [[machines/rtxpro6000server]] location. Provides power conditioning + battery backup for dual RTX PRO 6000 Blackwell workstation. See [[business/solar-inference]].
+
+> [!warning] GIGABYTE GeForce RTX 5090 — DELIVERY ATTEMPTED Jun 10, NOT RECEIVED
+> order-update@amazon.com (Jun 10 17:45 UTC): Two copies — "Delivery attempted: GIGABYTE GeForce RTX 5090..." Alton was in NYC all day (SpotHero, 35 W 33rd St, 9:30 AM–9:30 PM). Delivery to Montclair NJ failed. **Action: reschedule via Amazon ASAP.** Amazon makes up to 3 attempts before returning to sender. This is the second RTX 5090 (GeForce, distinct from AORUS AI also shipped Jun 9). Both needed for the AM5 build (machine 124192). See [[business/solar-inference]], [[family/active-todos]].
+
+## Latest from gather (2026-06-10) — run 207
+
+> [!fact] GIGABYTE GeForce RTX 5090 SHIPPED — Jun 9 16:52 UTC
+> shipment-tracking@amazon.com: "Shipped: GIGABYTE GeForce RTX 5090..." (Jun 9 16:52 UTC). This is the second RTX 5090 card — the non-AORUS variant (GeForce) that was ordered Jun 9 02:06 UTC alongside the AORUS AI unit. Both RTX 5090 units now confirmed shipped: AORUS AI (15:51 UTC Jun 9) + GeForce (16:52 UTC Jun 9). Delivery expected Jun 10–11. Destination: AM5 build (machine 124192 candidate). Two RTX 5090s inbound = 64 GB VRAM total on that host if both install. See [[business/solar-inference]].

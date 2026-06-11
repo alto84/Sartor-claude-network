@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-06-09
+updated: 2026-06-10
 updated_by: personal-data-gather
-run: 204
+run: 211
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -301,3 +301,16 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!todo] ACTION_REQUIRED — ASAP — Haiti wire transfer (Alison Smith)
 > alison.annette.smith@gmail.com (Jun 9 15:57 UTC), CC: dye2tie@verizon.net ([[people/barbara-weis|Barbara Weis]]), edelss@hotmail.com (Erick Delss) — Subject: "Re: Haiti." Snippet: "Looping in Alton bc he sends the money. We usually do a wire transfer as we haven't had a good experience with Fonkoze in the past." Alison is flagging Alton to execute a Haiti program wire transfer. Wire explicitly preferred over Fonkoze (payment service — possibly unreliable or unavailable). **Alton must review the full thread to determine recipient, amount, and purpose, then authorize.** No disbursements without Alton's explicit authorization per CLAUDE.md. See [[family/active-todos]].
+
+## Latest from gather (2026-06-10) — run 207
+
+> [!decision] HOLD — Haiti wire pending Gaby verification
+> dye2tie@verizon.net ([[people/barbara-weis|Barbara Weis]]) replied to the "Re: Haiti" thread (Jun 9 16:10 UTC, CC: alison.annette.smith@gmail.com, edelss@hotmail.com): "I think it would be wise to wait until we can make sure that Gaby will receive the money because the country is such a mess right now. He has missed the last two meetings I set up and hasn't [communicated]." **Barbara explicitly recommends HOLDING the wire transfer until Gaby (GABRIEL THELUS, prior wire recipient from 2026-05-26) confirms he is reachable and able to receive funds.** Barbara cites missed meetings and non-response as the concern. **Alton should confirm: (1) Is this a wire to Gaby again? (2) Has Gaby been contacted and confirmed he can receive? (3) Is Barbara's concern resolved before sending?** No disbursements without Alton's explicit authorization per CLAUDE.md. Wire preference (over Fonkoze) per Alison's message is noted. See [[family/active-todos]].
+
+## Latest from gather (2026-06-10) — run 211
+
+> [!fact] Haiti thread update: Gaby contacted via Maricile's phone — his phone still broken (Jun 10 17:33 UTC)
+> dye2tie@verizon.net ([[people/barbara-weis|Barbara Weis]]) re: "Haiti and school money" (Jun 10 17:33 UTC, CC: alison.annette.smith@gmail.com, edelss@hotmail.com): "I received a quick response from Gaby last night. Tigabie called Maricile's phone, which is how he got the message. Apparently, he dropped his phone again and it hasn't been working." Context for the HOLD from run 207: Gaby was reached indirectly — Tigabie used a third party (Maricile's phone) to relay the message. Gaby's own phone is still broken. **Wire HOLD remains in effect.** Before sending, Alton should confirm (a) Gaby has a reliable way to communicate and confirm receipt, and (b) the wire amount and purpose are authorized. New contact surfaced: **Maricile** — a person whose phone was used to reach Gaby in Haiti. Possibly a neighbor or family member. Not yet in people registry.
+
+> [!todo] ACTION_REQUIRED — ASAP — Check for Philadelphia archdiocese check (school lunch program)
+> dye2tie@verizon.net ([[people/barbara-weis|Barbara Weis]]) (Jun 10 17:35 UTC, CC: asmi60@lsuhsc.edu, edelss@hotmail.com — separate thread from "Haiti and school money"): "Hello! Did we receive a check for the school lunch program from the archdiocese in Philadelphia? Just checking because we seem to receive the checks around now and they never send out any notification." **Action for Alton as Treasurer:** Check Sante Total Chase account (ending 8189, opened 2026-05-06) and PayPal for any incoming payment from the Philadelphia Archdiocese earmarked for the school lunch program. Barbara expects these checks to arrive around this time each year. If received: confirm to Barbara and log for accounting. If not yet received: reply to Barbara and agree on follow-up timing. Reply to dye2tie@verizon.net, CC asmi60@lsuhsc.edu and edelss@hotmail.com.

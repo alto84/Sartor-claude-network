@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-09
+updated: 2026-06-10
 updated_by: personal-data-gather
-run: 204
+run: 211
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -44,6 +44,28 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Calendar: confirmed stable vs run 199 — same 4 events
 - New deadlines: Chase/Sante Total 07/20/2026 (was "OVERDUE NOW" — now has specific date)
 - Pages updated: `daily/2026-06-08.md` (run 200 appended), `business/sante-total.md` (deadline callout), `family/active-todos.md` (deadline + CSA + pool + ABPN), `family/vishala.md` (tennis camp + deliveries), `log.md` (this entry)
+
+## [2026-06-10] ingest | personal-data-gather run 211: RTX 5090 delivery attempted; CyberPower UPS delivered; Sante Total archdiocese check + Haiti thread update
+- Sources: Gmail (newer_than:2d is:unread, 30 threads; incremental vs run 210 ~15:10 UTC); all 5 Google Calendars (Jun 10–17, no changes); no SSH (cloud runner)
+- New facts: 4 actionable (RTX 5090 GeForce delivery attempted while Alton in NYC; CyberPower UPS delivered; Barbara Weis archdiocese check ACTION; Haiti wire — Gaby phone broken, contacted via Maricile third-party)
+- Calendar: no changes across all 5 calendars vs runs 206–210
+- Status update: Haiti wire HOLD context — Gaby reached via Maricile's phone; direct contact still unavailable
+- New action items: reschedule RTX 5090 delivery; check Sante Total accounts for archdiocese check
+- Pages updated: `daily/2026-06-10.md`, `business/sante-total.md`, `family/active-todos.md`, `MACHINES.md`, `log.md`, `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
+## [2026-06-10] ingest | personal-data-gather run 208: Lucent Energy CPA document scope; MKA 2026-27 dress code; Tribeca Virtru prescription
+- Sources: Gmail (is:unread newer_than:2d, 30 threads; incremental vs run 207); all 5 Google Calendars (Jun 10–17, no changes); no SSH (cloud runner)
+- New facts: 2 (Lucent full CPA document scope — begin-construction attestation + domestic content docs expected Jun 11; MKA 2026-27 dress code changes — review before summer shopping)
+- Calendar: no changes across all 5 calendars
+- Status unchanged: Haiti wire HOLD (run 207), Goddard Jun 11 closure (run 206)
+- Pages updated: `daily/2026-06-10.md` (run 208 appended), `family/active-todos.md` (Lucent CPA scope + MKA dress code), `log.md` (this entry), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (run 208 appended)
+
+## [2026-06-10] ingest | personal-data-gather run 207: Haiti wire HOLD (Barbara Weis); Lucent estimates Jun 11; GeForce RTX 5090 shipped
+- Sources: Gmail (newer_than:2d, 50 threads; incremental vs run 206); all 5 Google Calendars (Jun 10–17, no changes); no SSH (cloud runner)
+- New facts: 4 (Barbara Weis HOLD on Haiti wire pending Gaby verification; Lucent Energy estimates expected Jun 11 evening; GIGABYTE GeForce RTX 5090 shipped Jun 9 16:52 UTC; Bitwarden new CLI device login Jun 10 01:56 UTC)
+- Calendar: no changes from run 206 across all 5 calendars
+- Status changes: Sante Total Haiti wire action changed from ASAP to HOLD pending Gaby reachability confirmation
+- Pages updated: `daily/2026-06-10.md` (run 207 appended), `business/sante-total.md` (Barbara Weis HOLD), `MACHINES.md` (GeForce RTX 5090 shipped), `family/active-todos.md` (Haiti HOLD + Lucent date), `log.md` (this entry), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (run 207 appended)
 
 ## [2026-06-09] ingest | personal-data-gather run 204: Sante Total Haiti wire ACTION; AORUS RTX 5090 shipped; UPS shipped
 - Sources: Gmail (is:unread newer_than:1d, 50 threads scanned; net-new post run 203); all 5 Google Calendars (Jun 9–16); no SSH (cloud runner)
@@ -1378,3 +1400,61 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P0 carry-forward: vast.ai offline 12th+ run; Goddard Jun 11 childcare UNRESOLVED; Hiive Fund II CLOSING TODAY; Leader Bank escrow Jun 14; NJ-1065 Jun 15
 - Pages updated: `daily/2026-06-09.md` (run 202 appended, frontmatter bumped), `MACHINES.md` (run 202 "Latest from gather" appended), `family/active-todos.md` (run 202 appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 202, this entry)
 - SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-09] ingest | personal-data-gather run 205: Vasu Pajama Day Jun 10; MKA reports Jun 10 4 PM; Tribeca prescription delivery
+- Sources: Gmail (is:unread newer_than:2d, 25 threads); all 5 Google Calendars (Jun 9–16). SSH unavailable (cloud runner).
+- New facts: 4 (Vasu Pajama Day Wed Jun 10 at Goddard — pack tonight; MKA Year End Reports released Jun 10 4 PM via Veracross + 2026-27 Acceptable Attire policy updated; Tribeca Pediatrics prescription delivery notification — Virtru encrypted, backlog now 8+; Chase monthly statements for accounts ...6713 and ...4461 available)
+- Calendar: no changes vs run 204; all 5 calendars polled; event set confirmed stable (Aneeta in office Jun 9–10; SMART call Jun 10 noon; Dinner Princeton? Jun 11 7 PM; no Vayu soccer)
+- New ACTION_REQUIRED: 2 (Pajama Day — pack tonight; MKA reports — check Veracross tomorrow 4 PM)
+- P0 open: vast.ai offline 15th+ run; Goddard Jun 11 childcare 1 day out; Sante Total Haiti wire; Sante Total 990-N overdue; HITLAB RSVP Jun 12; Leader Bank Jun 14; NJ-1065 Jun 15
+- Pages updated: `daily/2026-06-09.md` (run 205 appended, frontmatter bumped to run 205), `family/active-todos.md` (run 205 appended, frontmatter bumped to run 205), `family/vasu.md` (Pajama Day + Goddard closure appended, frontmatter bumped to run 205), `FAMILY.md` (MKA year-end reports + attire policy + Pajama Day appended), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 205, this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-10] ingest | personal-data-gather run 206: G.SKILL+JMT shipped; Abby's graduation Jun 18 NEW; vast.ai offline 16th+ run; Goddard Jun 11 childcare last chance
+- Sources: Gmail (is:unread newer_than:1d, 50 threads); all 5 Google Calendars (Jun 10–17). SSH unavailable (cloud runner).
+- New facts: 11 (G.SKILL Trident Z RGB DDR5 ordered + shipped Jun 9; JMT 180° PCIe + 2 items shipped Jun 9; FEOEOR Girls Bike accessories delivered Jun 9; Sriracha delivered Jun 9; Thea Stilton Books shipped; Doximity publication cited; Vasu daily sheet Jun 9 normal; Abby's graduation Jun 18 NEW family calendar event; Bitwarden 5× rapid codes noted as likely agent-side; MKA Year End Reports today 4 PM; Aneeta SMART call today noon)
+- Calendar changes vs run 205: 1 new event — "Abby's graduation" all-day Thu Jun 18 on Family calendar (creator: Aneeta). "Abby" unidentified.
+- New ACTION_REQUIRED: 3 (Goddard Jun 11 childcare TODAY last chance; Abby's graduation — identify + plan; MKA Year End Reports — check Veracross today 4 PM)
+- P0 open: vast.ai offline 16th+ run; Goddard Jun 11 childcare; Sante Total Haiti wire; Sante Total 990-N overdue; HITLAB RSVP Jun 12; Leader Bank Jun 14; NJ-1065 Jun 15
+- Pages updated: `daily/2026-06-10.md` (created), `family/active-todos.md` (run 206 appended), `MACHINES.md` (G.SKILL+JMT appended), `ALTON.md` (Doximity appended), `family/vasu.md` (daily sheet appended), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 206, this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-10] ingest | personal-data-gather run 207: Lucent estimates Jun 11; Barbara Weis HOLD on Haiti wire; Bitwarden CLI device
+- Sources: Gmail (newer_than:2d, 50 threads); all 5 Google Calendars (Jun 10–17). SSH unavailable (cloud runner).
+- New facts: 3 (Lucent Energy revised estimates expected by Jun 11 evening — scope: remove exterior painting, add 200A attic breaker panel, battery quote, begin-construction attestation + domestic content CPA docs; Barbara Weis recommends HOLD on Haiti wire until Gaby confirmed reachable — supersedes Alison Smith "looping in Alton" framing; Bitwarden new Windows CLI device login Jun 10 01:56 UTC)
+- Calendar: no changes vs run 206; all 5 calendars polled
+- New ACTION_REQUIRED: 1 (Lucent estimates — watch for Jun 11 evening delivery, route CPA docs to Jonathan Francis immediately)
+- P0 carry-forward: vast.ai offline 17th+ run; Goddard Jun 11 childcare LAST CHANCE TODAY; Sante Total Haiti wire HOLD; HITLAB RSVP Jun 12; Leader Bank Jun 14; NJ-1065 Jun 15
+- Pages updated: `daily/2026-06-10.md` (run 207 appended, frontmatter bumped to run 207), `business/sante-total.md` (Barbara Weis HOLD appended), `family/active-todos.md` (Lucent estimates date + Haiti HOLD appended), `MACHINES.md` (GeForce RTX 5090 shipped appended), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (appended), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-10] ingest | personal-data-gather run 208: Lucent full scope confirmed; MKA 2026-27 dress code; Tribeca Virtru prescription
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 10–17). SSH unavailable (cloud runner).
+- New facts: 3 (Lucent Energy full deliverable scope confirmed via thread read — 4 items: revised estimates, begin-construction attestation with dollar figures for CPA, domestic-content documentation per 2026 ITC requirements, installation start date late June; MKA 2026-27 Primary School Acceptable Attire doc released alongside year-end reports today — "some things changed," review before summer shopping for Vayu entering 5th + Vishala entering 4th; Tribeca Pediatrics Virtru prescription delivery notification adds to 8+ open portal messages)
+- Calendar: no changes vs runs 206/207; all 5 calendars polled
+- New ACTION_REQUIRED: 2 (Route both Lucent CPA docs to Jonathan Francis on receipt; review MKA dress code before summer shopping)
+- P0 carry-forward: vast.ai offline 18th+ run; Goddard Jun 11 childcare LAST CHANCE TODAY; Haiti wire HOLD; HITLAB RSVP 1 day left; Leader Bank Jun 14; NJ-1065 Jun 15
+- Pages updated: `daily/2026-06-10.md` (run 208 appended, frontmatter bumped to run 208), `family/active-todos.md` (Lucent full scope + MKA dress code appended), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (appended), `log.md` (this entry)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-10] ingest | personal-data-gather run 209: Fidelity NVDA CALL BOUGHT; Doximity tenecteplase RCT; USPS 5 mailpieces
+- Sources: Gmail (newer_than:2d -in:draft, 50 threads); all 5 Google Calendars (Jun 10–17). SSH unavailable (cloud runner).
+- New facts: 3 (Fidelity BOUGHT CALL NVDA Jun 10 10:16 UTC — account XXXXX8998, 4th trade in 11 days in AI/tech options; Doximity article on tenecteplase 0.25 mg/kg vs alteplase 0.6 mg/kg before thrombectomy RCT delivered to inbox; USPS Informed Delivery 5 mailpieces arriving today)
+- Calendar: no changes vs runs 206/207/208; all 5 calendars polled; event set stable
+- New ACTION_REQUIRED: 1 (check Fidelity NetBenefits for NVDA call details; check mailbox for 5 USPS pieces)
+- P0 carry-forward: vast.ai offline 19th+ run; Goddard Jun 11 childcare LAST CHANCE TODAY; Lucent estimates due Jun 11 evening; Haiti wire HOLD; HITLAB RSVP TODAY deadline; Leader Bank Jun 14; NJ-1065 Jun 15
+- Pages updated: `daily/2026-06-10.md` (run 209 appended, frontmatter bumped to run 209), `ALTON.md` (NVDA call fact appended, frontmatter bumped to run 209), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (frontmatter bumped to run 209, runs 207/208/209 entries appended)
+- SSH: unavailable (cloud runner); vast.ai status not directly verified this run
+
+## [2026-06-10] ingest | personal-data-gather run 210: LinkedIn CMO reply; Wohelo deadline Jun 18; Juneteenth Block Party
+- Sources: Gmail (newer_than:2d, 50 threads — delta since run 209 cutoff ~11:34 UTC), all 5 calendars (Jun 10–17 window), SSH unavailable (cloud runner)
+- Calendar delta vs run 209: zero new events. All 5 calendars stable.
+- Net-new facts: 5 (LinkedIn CMO reply, Wohelo/Heidi deadline, SpotHero NYC confirm, Vasu Goddard snack, Juneteenth Block Party Jun 20)
+- ACTION: LinkedIn CMO reply — Mayo Clinic-funded AI diagnostics company Founding CMO search. Recruiter replied to Alton's prior message. Respond promptly.
+- ACTION: Wohelo Little Wohelo Parent Email #2 — Heidi Gorton available until Jun 18, then at camp. Ask all Vishala/Wohelo questions before Jun 18. Camp opens Jun 25.
+- COMMUNITY: Juneteenth Block Party Jun 20, 3–7 PM, Montclair Public Library Main Branch Plaza.
+- INFO: SpotHero #125313887 confirms Alton in NYC today (35 W 33rd Valet, 9:30 AM–9:30 PM).
+- P0 count: 6 (vast.ai offline, Goddard childcare, LinkedIn CMO reply, HITLAB RSVP, Sante Total Haiti HOLD, Lucent estimates)
+- Files touched: `daily/2026-06-10.md` (run 210 appended), `family/active-todos.md` (run 210 appended), `ALTON.md` (run 210 appended), `family/family-calendar.md` (run 210 appended), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created/appended), `log.md` (this entry)
+- KEY: LinkedIn CMO reply needs response today. Wohelo questions must go to Heidi before Jun 18. HITLAB RSVP deadline Jun 12 (2 days).

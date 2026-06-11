@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-09
+updated: 2026-06-10
 updated_by: personal-data-gather
-run: 204
+run: 211
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2251,3 +2251,152 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
 > | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
 > | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+
+## Latest from gather (2026-06-09) — run 205
+
+> [!todo] TONIGHT — Pack Vasu's pajamas for Pajama Day Wednesday June 10
+> noreply@kaymbu.com (Jun 9 20:00 UTC): Samantha Ramsden (Goddard): "Pajama Day Tomorrow! Wear your coziest pjs to school tomorrow!" Pack coziest pajamas in Vasu's bag tonight for Wednesday June 10 drop-off. See [[family/vasu]].
+
+> [!todo] TOMORROW June 10 at 4 PM — Check Veracross for MKA Year End Reports
+> Veracross/Katie Banks (Head of Primary School), Jun 9 19:00 UTC: "End-of-year reports will be released through Veracross on Wednesday, June 10, at 4:00 p.m." Covers Vayu (4th grade) and Vishala (3rd grade). Also review the updated 2026-27 Acceptable Attire policy (formerly Dress Code) linked in the same email — things have changed from prior years. See [[family/vayu]], [[family/vishala]].
+
+> [!todo] ACTION_REQUIRED — Tribeca Pediatrics: Prescription Delivery Notification (Jun 9 8 PM ET)
+> info@tribecapediatrics.com (Jun 9 20:00 UTC): Virtru-encrypted: "Prescription Delivery Notification." Content behind Virtru secure email login. Separate from the 7+ unread portal messages flagged in run 203. Total backlog now 8+. Check Virtru inbox and portal: http://tpeds.co/13kn.
+
+> [!warning] P0 carry-forward (run 205) — Tue Jun 9 evening
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 15th+ run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | UNRESOLVED — **1 day left** | **Thu 2026-06-11 TOMORROW** |
+> | **Sante Total Haiti wire (Alison Smith)** | From run 204 — review + authorize | **ASAP** |
+> | **Vasu Pajama Day** | Pack PJs tonight | **TOMORROW Jun 10** |
+> | **MKA Year End Reports** | Released Jun 10 4 PM Veracross | **TOMORROW Jun 10** |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | **Tribeca Pediatrics** | Prescription delivery + 8+ portal msgs | ASAP |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Vishala Orange Ball Summer Camp | Day 3 of 10 (Jun 9–19) | DAILY through Jun 19 |
+> | **HITLAB RSVP (Jerry Antimano)** | Respond via LinkedIn | **2026-06-12 (3 days)** |
+> | **Leader Bank Escrow $5,366.83** | FIS payment Jun 9 — verify applied | **2026-06-14 (4 days)** |
+> | **NJ-1065 Q2 — Solar Inference** | Call Jonathan Francis | **2026-06-15 (5 days)** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15 (5 days)** |
+> | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel | **2026-06-11** |
+> | GIGABYTE AORUS RTX 5090 | Shipped Jun 9 — delivery today/tomorrow | INFO |
+> | CyberPower CP1500PFCLCD UPS | Shipped Jun 9 | INFO |
+> | Chase statements (...6713, ...4461) | Monthly statements ready | INFO |
+> | FIS payment Jun 9 | Verify destination/purpose | ASAP |
+> | Pool Guy NJ | Balance owed | ASAP |
+> | Guidepoint #1755072 (biosimulation) | Accept or decline | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+
+## Latest from gather (2026-06-10) — run 206
+
+> [!warning] TODAY LAST CHANCE — Arrange childcare for Vasu Thu June 11 (Goddard closed)
+> Goddard School of Montclair is CLOSED Thursday June 11 all day (Montclair Township water shutoff). TODAY is the last day to arrange full-day childcare. Also conflicts with "Dinner Princeton?" (Alton primary calendar, 7 PM Jun 11). Need coverage from school hours through evening. Source: noreply@kaymbu.com Jun 8. See [[family/vasu]].
+
+> [!todo] TODAY at 4 PM — Check Veracross for MKA Year End Reports
+> MKA Year End Reports released TODAY at 4:00 PM via Veracross for Vayu (4th grade) and Vishala (3rd grade). Also: review updated 2026-27 Acceptable Attire policy (now called Acceptable Attire, no longer Dress Code). See [[family/vayu]], [[family/vishala]].
+
+> [!fact] NEW FAMILY CALENDAR — Abby's graduation Thu June 18 (all-day)
+> Family calendar event added: "Abby's graduation" on Thursday June 18, 2026. Creator: Aneeta (aneetasax@gmail.com). "Abby" not identified in current family memory — possible relative, family friend, or MKA contact. No logistics (gift, travel, attendance) confirmed. Identify who Abby is and whether any planning is required. 8 days out.
+
+> [!warning] P0 carry-forward (run 206) — Wed Jun 10 morning
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 16th+ run** | **NOW** |
+> | **Goddard closure June 11 — Vasu childcare** | **LAST CHANCE TODAY** | **Thu 2026-06-11 TOMORROW** |
+> | **Abby's graduation** | **NEW — identify + plan** | **Thu 2026-06-18** |
+> | **Sante Total Haiti wire** | Review + authorize | ASAP |
+> | Sante Total 990-N | OVERDUE | NOW |
+> | **Tribeca Pediatrics** | 8+ msgs + Virtru prescription | ASAP |
+> | **HITLAB RSVP (Jerry Antimano)** | LinkedIn — **2 days left** | **2026-06-12** |
+> | **Leader Bank Escrow $5,366.83** | FIS payment Jun 9 — verify applied | **2026-06-14 (4 days)** |
+> | **NJ-1065 Q2 — Solar Inference** | Call Jonathan Francis | **2026-06-15 (5 days)** |
+> | **MKA PE Clothes pre-order (Vayu)** | Veracross MON348 | **2026-06-15 (5 days)** |
+> | Dinner Princeton? | Childcare conflict Jun 11 — confirm/cancel | **2026-06-11** |
+> | **MKA Year End Reports** | Released TODAY 4 PM Veracross | **TODAY Jun 10** |
+> | Vishala Orange Ball Summer Camp | Day 4 of 10 | DAILY through Jun 19 |
+> | GIGABYTE AORUS RTX 5090 | Shipped Jun 9 — delivery today/tomorrow | CONFIRM |
+> | CyberPower UPS | Shipped Jun 9 — delivery imminent | CONFIRM |
+> | G.SKILL Trident Z RGB + JMT PCIe | Shipped Jun 9 — delivery Jun 11–12 | INFO |
+> | Chase/Sante Total KYC | Contact Chase | **2026-07-20** |
+> | Pool Guy NJ | Balance owed | ASAP |
+> | Guidepoint #1754519 / #1755072 | Accept or decline | ASAP |
+> | PAMKA Supply Sale (Vayu) | Veracross MON348 | **2026-06-30** |
+> | Magnus Health 2026-27 | Vayu + Vishala | Before enrollment |
+
+## Latest from gather (2026-06-10) — run 207
+
+> [!fact] Lucent Energy revised estimates expected by 2026-06-11 evening
+> steven@lucent-energy.com replied to Alton's "Revised Estimates and two documents I need" email (Jun 10 02:29 UTC). Confirmed: estimates arriving by **tomorrow evening (2026-06-11)**. Scope changes confirmed: exterior painting removed; electrical work (200A breaker panel in attic above) added. Reply snippet also mentions "I got thrown a..." (truncated) — possible complication, check full thread when estimates arrive. See [[reference_solar_project]].
+
+> [!decision] Sante Total Haiti wire — STATUS CHANGED TO HOLD
+> Barbara Weis (dye2tie@verizon.net) replied to the Haiti thread (Jun 9 16:10 UTC, cc: Alison Smith, Erick Delss): recommends **waiting to send the wire** until Gaby can be confirmed reachable. Gaby has missed multiple meetings and hasn't responded to recent outreach. **Do not authorize the wire until Gaby is confirmed able to receive.** Alton's action: determine whether the intended recipient is Gaby again (per May 26 $10K wire to Gabriel Thelus), verify with Barbara/Alison that Gaby is reachable, then decide. See [[business/sante-total]].
+
+## Latest from gather (2026-06-10) — run 208
+
+> [!fact] Lucent Energy — full Jun 11 deliverable scope (CPA documents incoming)
+> Alton's Jun 10 02:22 UTC email to Steven Schwartz (CEO, Lucent Energy) requested four items; Steven confirmed all coming by Jun 11 evening:
+> (1) Revised estimates: exterior painting removed, 200A attic breaker panel added, battery quote clarified
+> (2) **CPA document #1** — begin-construction attestation: $10K deposit (invoice 2025-258, 10/24/25) + $219,414.50 Climate First draw (3/15/26), >5% threshold confirmed via engineering
+> (3) **CPA document #2** — domestic content documentation: ≥40% direct material from non-prohibited foreign entities (shingles, inverters, Powerwalls) per 2026 ITC federal requirement
+> (4) Installation start date: shingle removal still late June per Steven
+> **When estimates and documents arrive Jun 11, route both CPA documents to [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com, 914-488-5727).** See [[reference_solar_project]].
+
+> [!todo] MKA 2026-27 Primary School Acceptable Attire — review before summer shopping
+> MKA Veracross (Jun 9 19:00 UTC, Head of Primary School Katie Banks): "2026-27 Primary School Acceptable Attire" (formerly Dress Code) released today. **"Some things have changed from previous years."** Review via Veracross portal link before buying summer/back-to-school clothes. Applies to [[family/vayu|Vayu]] (entering 5th grade) and [[family/vishala|Vishala]] (entering 4th grade).
+
+## Latest from gather (2026-06-10) — run 211
+
+> [!todo] ACTION_REQUIRED — ASAP — Reschedule RTX 5090 (GeForce) delivery
+> Amazon (order-update@amazon.com, Jun 10 17:45 UTC): "Delivery attempted: GIGABYTE GeForce RTX 5090..." Two copies of this notification. Delivery to Montclair NJ home failed — Alton was in NYC all day (SpotHero at 35 W 33rd St, 9:30 AM–9:30 PM). **Action: log into Amazon and reschedule delivery, or arrange for someone to be home.** Amazon makes up to 3 delivery attempts before returning to sender. This is the second RTX 5090 (GeForce variant; AORUS AI is a separate unit). See [[MACHINES]], [[business/solar-inference]].
+
+> [!fact] CyberPower CP1500PFCLCD UPS — DELIVERED Jun 10 (CLOSE OUT)
+> Amazon (order-update@amazon.com, Jun 10 19:10 UTC): "Delivered: CyberPower CP1500PFCLCD PFC..." rtxpro6000server UPS confirmed delivered. Ordered Jun 7, shipped Jun 9, delivered Jun 10. Install at rtxpro6000server location when convenient. See [[MACHINES]], [[machines/rtxpro6000server]].
+
+> [!todo] ACTION_REQUIRED — ASAP — Sante Total: check for Philadelphia archdiocese check
+> Barbara Weis (dye2tie@verizon.net, Jun 10 17:35 UTC): Asking whether Sante Total has received its annual school lunch program check from the Philadelphia Archdiocese — "we seem to receive the checks around now and they never send out any notification." **Action: check Chase account ending 8189 and PayPal for incoming payment from the Archdiocese.** Reply to Barbara. See [[business/sante-total]].
+
+> [!todo] ACTION — Guidepoint #1760138 (Connected Solutions in Clinical Trials) — accept or decline
+> New Guidepoint request #1760138 (lshek@guidepointglobal.com, Jun 10 16:51 UTC): "Experts in Real-World Adoption of Connected Solutions in Clinical Trials." Distinct from #1754519 (AI Clinical Search) and #1755072 (biosimulation). Accept or decline via Guidepoint. See [[ALTON]].
+
+> [!warning] P0 carry-forward — run 211 (Wed Jun 10 ~8 PM ET)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 21st+ run** | **NOW** |
+> | **RTX 5090 GeForce delivery attempted** | **NEW — reschedule via Amazon** | ASAP |
+> | **Sante Total: archdiocese check (Philadelphia)** | **NEW — Barbara asking** | ASAP |
+> | **Goddard closure Jun 11** | Official Kaymbu confirmation | **Thu 2026-06-11** |
+> | **LinkedIn CMO reply** | Respond promptly | ASAP |
+> | **HITLAB RSVP** | ~1 day left | **2026-06-12** |
+> | **Abby's graduation Jun 18** | Identify + plan | **2026-06-18** |
+> | **Wohelo: ask Heidi before Jun 18** | Camp opens Jun 25 | **2026-06-18** |
+> | **Sante Total Haiti wire** | HOLD — Gaby phone broken; reached via Maricile | ASAP (after confirmed) |
+> | **Lucent Energy estimates + CPA docs** | Expected Jun 11 evening | **2026-06-11** |
+> | NJ-1065 Q2 — Solar Inference | Call Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15** |
+
+## Latest from gather (2026-06-10) — run 210
+
+> [!todo] ACTION — LinkedIn CMO reply (Mayo Clinic-funded AI diagnostics) — respond promptly
+> hit-reply@linkedin.com (Jun 10 14:47 UTC): Recruiter replied to Alton's earlier message about **"Founding Chief Medical Officer Search – Mayo Clinic-Funded AI-Powered Diagnostics Company."** Snippet: "Hi Dr. Sartor-Thanks for your response. What is yo..." (likely asking for availability, timeline, or interest level). Active career engagement — respond to keep it alive. Distinct from the HITLAB RSVP. See [[ALTON]], [[business/az-career]].
+
+> [!todo] SOFT DEADLINE 2026-06-18 — Wohelo: ask Heidi any remaining questions NOW
+> heidi@wohelo.com (Jun 10 12:39 UTC): "Little Wohelo Parent Email June #2." Heidi Gorton is **available for questions now**; starting June 18 she'll be at camp and unavailable. **Little Wohelo opens June 25** (15 days). Outstanding: uniforms verified? trunk ready? medication forms submitted? Get all questions to Heidi before June 18. See [[family/vishala]].
+
+> [!fact] Juneteenth Block Party — Sat Jun 20, 3–7 PM, Montclair Public Library
+> Montclair Public Library, Friends of the Howe House, and Montclair Township invite attendance at the **Juneteenth Block Party**, Saturday June 20, 3–7 PM, Main Branch Plaza. Free family event 10 days out. See [[family/family-calendar]].
+
+> [!warning] P0 carry-forward — run 210 (Wed Jun 10 ~4 PM ET)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **vast.ai 52271 + 124192 OFFLINE** | **UNRESOLVED — 20th+ run** | **NOW** |
+> | **Goddard closure Jun 11** | TODAY was last chance to arrange childcare | **Thu 2026-06-11** |
+> | **LinkedIn CMO reply** | **NEW — respond promptly** | ASAP |
+> | **Abby's graduation Jun 18** | Identify + plan | **2026-06-18** |
+> | **Wohelo: ask Heidi before Jun 18** | Camp opens Jun 25 | **2026-06-18** |
+> | **Sante Total Haiti wire** | HOLD — verify Gaby reachable | ASAP |
+> | **Lucent Energy estimates + CPA docs** | Expected Jun 11 evening | **2026-06-11** |
+> | **HITLAB RSVP (Jerry Antimano)** | LinkedIn — 2 days remaining | **2026-06-12** |
+> | NJ-1065 Q2 — Solar Inference | Call Jonathan Francis | **2026-06-15** |
+> | MKA PE Clothes pre-order (Vayu) | Veracross MON348 | **2026-06-15** |
