@@ -14,7 +14,7 @@
 
 ## This Week / Watch-list (next ~3 weeks)
 
-- [ ] **gpuserver2 onboarding (3rd RTX 5090 / AM5 build)** — parts arriving Jun 11–12 (RTX 5090 AORUS, Ryzen 9 9950X, X870E TAICHI, DDR5, PCIe riser). Another agent is actively onboarding tonight; new host enrolls in reprice.py v3 dynamic pricing at listing. [matters/fleet via business/fleet.yaml]
+- [x] **gpuserver2 LISTED on vast.ai** (machine **139358**, RTX 5090) — onboarded + listed + reprice.py v3-enrolled + ports externally verified overnight 2026-06-11. Live ~$0.64/GPU (cold-start band). Open: re-run `vastai self-test 139358` (offer-snapshot lag, not a fault); bandwidth ~470 Mbps sits just under the 500 guideline (1GbE port ceiling — upgrade later). [work log: inbox/rocinante/2026-06-11-gpuserver2-vastai-onboard.md]
 - [ ] **vast.ai dual-listing relist trigger — Jun 23** (7 days before the Jun 30 listing expiries; periodic-ops rule: relist, re-run pricing scan, apply "short-term first" defaults). Applies to gpuserver1 (52271) and rtxserver (124192).
 - [ ] **vast.ai listing expiries — Jun 30** for both 52271 and 124192 (distinct from gpuserver1 reserved-contract end 2026-08-24). Evaluate market and relist.
 - [ ] **§48E solar ITC begin-construction lock — Jul 4** (HIGH; begin-construction date for ITC). [matter](../sartor/memory/matters/solar-itc-48-vs-25d.md)

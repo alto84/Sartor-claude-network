@@ -135,6 +135,27 @@ request (see kid-prompt note).
   logging") is an *additional* hard stop — pause and ask who is typing; enact nothing discreet.
 - **No impersonation; no sexual content involving minors:** inherited; refuse.
 
+## Known surfaces & recipes (learned in the field)
+
+- **UniFi Cloud Gateway Max (gateway at `192.168.1.1`) — API-first, not browser.** Tonight's
+  port-forward + DHCP + WLAN work proved the rule: do NOT drive the UCG through the browser when
+  the API can do it. The local UI throws a self-signed-cert interstitial the claude-in-chrome
+  extension cannot click through (`thisisunsafe` can't be typed into the error page), and its
+  settings forms are **React-controlled** (see next bullet). The Network Integration API is the
+  right tool: header `X-API-KEY` (vault: `UCG Max API key (rocinante-claude-v3)`), working on both
+  `…/proxy/network/integration/v1/` (modern) and `…/proxy/network/api/s/default/…` (legacy, incl.
+  `rest/portforward`, `rest/user` for DHCP reservations, `rest/wlanconf`). Reserve browser
+  automation for the cloud console at `unifi.ui.com` (Alton's session) when a console is adopted
+  there, or for settings the API genuinely doesn't expose. This is the skill's own "most-scoped
+  tool wins" principle: an authenticated REST call beats vision-driving a cert-walled SPA.
+- **React-controlled form fields: `form_input` can silently no-op.** On React/controlled inputs,
+  setting `.value` via `form_input` reports success but the field's `onChange` never fires, so the
+  app's state stays empty and validation rejects on submit (observed live on the UCG port-forward
+  form — every `form_input` returned `Set text value to ""`). Fallback: real **click the field →
+  `type`**, which dispatches genuine key events the framework observes. Same root cause as the
+  password-autofill rule (line 108): DOM value-setting bypasses the event path. If a filled form
+  shows validation errors on fields you "set," suspect this and re-enter by click+type.
+
 ## Teardown
 
 Close CC-Chrome only when no task is in flight (closing it drops the claude-in-chrome bridge).
