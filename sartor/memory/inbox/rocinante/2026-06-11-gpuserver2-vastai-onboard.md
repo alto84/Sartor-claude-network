@@ -16,6 +16,7 @@ satisfied up front. Executed per `procedures/vastai-host-onboarding.md` + `vasta
 | Ports | 40200-40299, **direct_port_count = 100** (all reachable from vast.ai NOC) |
 | Public IP | 108.58.121.254 (Optimum static, UCG Max forward) |
 | Measured bandwidth | ~470 Mbps down / ~469 Mbps up (1GbE link is the ceiling) |
+| Self-test | **PASSED** (sysreq, ResNet18, ECC, NCCL, 60s stress+gpu-burn) after fixing a container-launch blocker — see Issue 2 below |
 | Verification | unverified at list time — automated, runs at least daily; no action needed |
 | Dynamic pricing | ENROLLED — fleet.yaml stanza added with `dynamic.enabled: true` (reprice.py v3 picks it up; idle-only applies) |
 
@@ -67,26 +68,61 @@ satisfied up front. Executed per `procedures/vastai-host-onboarding.md` + `vasta
     true → reprice.py enrollment, marginal floor $0.14 matching gpuserver1's 5090, temps 84/86).
 14. **REGISTRY.yaml**: vast_ai_machine_id 139358, description/notes/flags updated.
 
-## Final self-test status (as of 2026-06-11 04:45 UTC)
+## Self-test: PASSES (2026-06-11 ~05:30 UTC) — after fixing a real container-launch blocker
 
-`vastai self-test machine 139358` still REJECTS on three requirement claims — "PCIe bandwidth
-<= 2.85", "RAM < VRAM", "cores < 2×GPUs" — every one contradicted by the authoritative machine
-record (`show machines --raw`: pcie_bw 46.6 GB/s, cpu_cores 32, cpu_ram 255 GB) and by the web
-Machines page (PCIE 5.0 16x 46.6 GB/s, 32/32 CPU, 255/255 GB all displayed). Root cause: the
-self-test validates against the renter-side OFFER snapshot (offer 40512665), which still carries
-the pre-benchmark Nones; re-listing did not regenerate it and the 04:41 send_mach_info cron run
-did not refresh it either. This is vast.ai backend propagation lag, not a machine problem.
+Final `vastai self-test machine 139358`: **Test passed** — system requirements, ResNet18,
+ECC, NCCL distributed, and the 60s stress-ng + gpu-burn all green. Confirmed twice (once after
+the fix, once after persisting it across a daemon restart). Machine is rentable.
 
-Evidence the machine itself is healthy: registered in ~3 min, direct_port_count=100,
-benchmarks completed (gpu_mem_bw 1458 GB/s, disk_bw 10.6 GB/s), listed=True at the
-controller's $0.64, reliability 96.91%, daemon states match known-good gpuserver1 exactly
-(vastai active; vast_metrics auto-restart-looping with 203/EXEC and bouncer inactive are the
-fleet norm — gpuserver1 shows the identical pattern while verified + rented).
+Two issues surfaced; both resolved end-to-end:
 
-ACTION: re-run `vastai self-test machine 139358` in a few hours. If the offer snapshot is
-still spec-empty after 24h, escalate per onboarding Phase I.3 (support, reference Solar
-Inference LLC / alto84@gmail.com). Verification itself is automated and reads the machine
-record, so this should not block the unverified→verified transition.
+### Issue 1 (benign, self-cleared): offer-snapshot propagation lag
+For ~40 min the self-test rejected on three FALSE spec claims (PCIe <=2.85, RAM<VRAM,
+cores<2×GPUs). The self-test reads the renter-side OFFER snapshot, which carried pre-benchmark
+Nones while the authoritative machine record already showed pcie_bw 46.6 / 32 cores / 255 GB.
+The offer refreshed on its own ~05:18Z (pcie_bw 46.9, cpu_cores 32, cpu_ram 255294) and the
+spec rejection vanished. No action needed.
+
+### Issue 2 (REAL, fixed): kaalia could not launch ANY container — shim exit 101
+Once specs passed, every test container died with
+`kaalia_docker_shim did not terminate successfully: exit status 101` (OCI runtime create
+failed). This would have failed every paid rental too — a hard go-live blocker, not cosmetic.
+
+Diagnosis (isolated step by step):
+- Plain `docker run` worked; the `nvidia` runtime (= vast's kaalia_docker_shim) did not.
+- The REAL `/usr/bin/nvidia-container-runtime` worked perfectly when tested directly (GPU
+  enumerated in-container) — so GPU/driver/nvidia-ctk were fine; fault was the shim.
+- The shim's per-container start.log gave the exact cause:
+  `missing container_gpu_idxs file at ".../data/container_gpu_idxs/<CID>"; refusing to start container`.
+- **Root cause: `/var/lib/vastai_kaalia/data/container_gpu_idxs` was owned `root:root`**, while
+  every sibling data dir (uuid-idx-mapping, pci_bus_ids, configs, ...) was `vastai_kaalia:docker`.
+  Kaalia runs as `vastai_kaalia`, so it could not write the per-container GPU-index file into the
+  root-owned dir → shim refused → exit 101. The kaalia installer created the dir root-owned —
+  looks like an installer bug on this kaalia build (Ubuntu 24.04 / kernel 6.x).
+
+Fix:
+1. `chown vastai_kaalia:docker /var/lib/vastai_kaalia/data/container_gpu_idxs` → self-test
+   immediately passed (kaalia wrote the gpu_idxs file; container launched + stress-tested).
+2. **Persisted** via systemd drop-in
+   `/etc/systemd/system/vastai.service.d/10-gpu-idxs-ownership.conf` with root-prefixed (`+`)
+   ExecStartPre that re-asserts the dir + ownership on every kaalia start — survives reboots and
+   a re-run of the installer that would recreate it root-owned. Verified: forced it back to root,
+   restarted vastai.service, it returned to vastai_kaalia:docker and self-test passed again.
+
+Cleanup: stale per-container CDI specs (`/etc/cdi/D.*.yaml`) from failed runs deleted (kept
+`nvidia.yaml`); temp daemon.json test files removed; daemon.json confirmed back to the kaalia
+original (single `nvidia` runtime → shim). GPU idle 45-46C, 0%.
+
+Note: an earlier note about daemon states "matching gpuserver1" still holds — vastai active,
+vast_metrics auto-restart-looping (203/EXEC) and vastai_bouncer inactive are the fleet norm
+(gpuserver1 shows the identical pattern while verified + rented).
+
+**Doc/skill follow-up earned:** add this `container_gpu_idxs` root-ownership failure (shim exit
+101 / "missing container_gpu_idxs ... refusing to start container") to the onboarding failure-modes
+table and the vastai-management recovery playbook. It is a SILENT go-live blocker — specs and
+listing look healthy, but no container (test or rental) can ever start. Diagnostic path: plain
+docker works + nvidia runtime fails → test REAL nvidia-container-runtime directly → read
+`data/<CID>.start.log` → check `data/container_gpu_idxs` ownership vs sibling dirs.
 
 ## Follow-ups
 

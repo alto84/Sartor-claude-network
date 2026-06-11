@@ -149,7 +149,7 @@ machines:
       load_w: 550
       logger: null                     # no power logger yet — same ITC substantiation gap as rtxserver
     listing:
-      gpu_cost: 0.64                   # DYNAMIC (scripts/fleet/reprice.py) set 2026-06-11T04:23:03Z
+      gpu_cost: 0.68                   # DYNAMIC (scripts/fleet/reprice.py) set 2026-06-11T05:08:04Z
       min_bid: 0.65
       storage_cost: 0.10
       min_gpus: 1
