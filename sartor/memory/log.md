@@ -37,6 +37,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-12] ingest | personal-data-gather run 218: alarm permit renewed ($75 w/late fee); Lucent estimates 2+ days overdue confirmed
+- Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 217); all 5 Google Calendars (Jun 12–19); SSH unavailable (cloud runner)
+- Net-new facts: 2 (alarm permit 394703 renewed $50 + $25 late fee; Lucent estimates absent — confirmed no new email since Jun 10 Steven reply)
+- Carry-forwards unchanged: NJ-1065 Q2 Jun 15 (3 days); Mayo CMO Jun 16 respond; Lucent blocker upgraded to 2+ days overdue; Camp Timanous photo; HITLAB today 12:30 PM ET
+- Calendar: unchanged vs run 217 — Jun 14 hardware maintenance (gpuserver2 + rtxserver); Jun 18 Abby graduation; others empty
+- Infrastructure: SSH unavailable; 139358 + 124192 offline alerts unverifiable per runner-capability gate
+- Pages updated: `daily/2026-06-12.md` (run 218 appended), `log.md` (this entry), `family/active-todos.md` (run 218 appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created)
+
 ## [2026-06-12] ingest | personal-data-gather run 217: Vayu screen time spike (71h/wk); Camp Timanous photo; HITLAB today; hardware maintenance Sat
 - Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 216); all 5 Google Calendars (Jun 12–19); SSH unavailable (cloud runner)
 - Net-new facts: 5 (Vayu screen time 71h29m Jun 5-11 with 4-wk trend; Camp Timanous photo tagging setup; Guidepoint Advanced Models Survey $50; MKA May Term recap; vast.ai 124192 offline email — unverifiable)

@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-12
 updated_by: personal-data-gather
-run: 217
+run: 218
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2456,3 +2456,20 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **Camp Timanous photo (Vayu)** | Follow link in Heidi's email | ASAP |
 > | **MKA Attire policy review** | Before summer shopping (run 215) | before July |
 > | **Wohelo: ask Heidi questions** | Available now; unreachable Jun 18+ | **2026-06-18** |
+
+## Latest from gather (2026-06-12) — run 218
+
+> [!fact] Alarm permit 394703 renewed Jun 12 — $75 paid ($50 renewal + $25 late fee)
+> pmam-copsource.com (Jun 12 04:16 UTC). City alarm ordinance compliance for permit 394703. Late fee means permit was overdue at renewal. No further action needed; permit current. Set calendar reminder for next renewal cycle.
+
+> [!blocker] Lucent Energy revised estimates — 2+ days overdue (Steven promised Jun 11 evening)
+> Last email from steven@lucent-energy.com: Jun 10, "by tomorrow evening." No follow-up received through run 218 (Jun 12). Follow up today. CPA docs also still needed (begin-construction attestation + domestic content). See [[reference_solar_project]].
+
+> [!deadline] 2026-06-15 (3 days) — NJ-1065 Q2 estimated payment, Solar Inference LLC
+> Contact [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com, 914-488-5727) to confirm amount and payment method. See [[business/solar-inference]], [[TAXES]].
+
+> [!todo] 2026-06-16 — Mayo Clinic Founding CMO inquiry — confirm or decline 1:30 PM ET Monday meeting
+> LinkedIn recruiter reply (Jun 11). Respond. See [[business/az-career]].
+
+> [!todo] Camp Timanous — submit Vayu's training photo (late June camp open deadline)
+> Follow link in heidi@timanous.org email (Jun 11 IMPORTANT). See [[family/vayu]].
