@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-12
 updated_by: personal-data-gather
-run: 217
+run: 219
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-12] ingest | personal-data-gather run 219: Power Mac invoice; Thomas RSVP; Goddard summer cal; NVDA call sold; July 4 cat sitter
+- Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 218); all 5 Google Calendars (Jun 12–19); SSH unavailable (cloud runner)
+- Net-new facts: 7 (Power Mac LLC invoice IMPORTANT; Thomas 4th birthday RSVP needed; Goddard Summer Calendars 2026 for Vasu; July 4 cat sitter window; Fidelity SOLD CALL NVDA account 8998; Preview.health thread closed; Google sign-in vast.ai 04:57 AM)
+- Calendar: unchanged vs runs 217/218 — Jun 14 hardware maintenance (gpuserver2 + rtxserver); Jun 18 Abby graduation; others empty
+- Carry-forwards: NJ-1065 Q2 Jun 15 (3 days); Lucent estimates 3+ days overdue; Camp Timanous photo ASAP; Disney flights ASAP; Abby graduation Jun 18; July 4 cat sitter before Jul 3
+- Infrastructure: SSH unavailable (cloud runner); 124192 + 52271 offline alerts unverifiable per runner-capability gate; Google sign-in vast.ai 04:57 AM unverifiable
+- Pages updated: `daily/2026-06-12.md` (run 219 appended), `family/active-todos.md` (run 219 appended), `data/gather-alerts.md` (created fresh — data/ gitignored, rebuilt from run 219), `data/heartbeat-log.csv` (created fresh), `log.md` (this entry)
+- KEY: Power Mac LLC invoice needs review + payment. Thomas birthday RSVP needed for Vasu. NJ-1065 Q2 due Jun 15 (3 days). Lucent estimates overdue 3+ days.
 
 ## [2026-06-12] ingest | personal-data-gather run 218: alarm permit renewed ($75 w/late fee); Lucent estimates 2+ days overdue confirmed
 - Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 217); all 5 Google Calendars (Jun 12–19); SSH unavailable (cloud runner)

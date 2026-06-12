@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-12
 updated_by: personal-data-gather
-run: 218
+run: 219
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2473,3 +2473,31 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!todo] Camp Timanous — submit Vayu's training photo (late June camp open deadline)
 > Follow link in heidi@timanous.org email (Jun 11 IMPORTANT). See [[family/vayu]].
+
+## Latest from gather (2026-06-12) — run 219
+
+> [!todo] ACTION_REQUIRED — Power Mac LLC invoice — review and pay
+> info@power-mac.net (Jun 12 15:34 UTC, IMPORTANT). Invoice for electrical work completed. "Pay online via the link or by check sent to the address on the invoice." Power Mac LLC = electrical contractor for the Lutron/Berman Home Systems smart-lighting project. Review amount, confirm work done, pay. See [[ALTON]].
+
+> [!todo] ACTION_REQUIRED — RSVP for Thomas's 4th birthday party (Vasu's Goddard classmate)
+> noreply@kaymbu.com (Jun 12 13:40 UTC). "Thomas is turning 4! Please RSVP if you haven't done so already!" Goddard Family Hub invite. Check Goddard Family Hub or Kaymbu app for details. See [[family/vasu]].
+
+> [!fact] Goddard Summer Calendars 2026 — shared Jun 12 for Vasu's program
+> Alissa DelConte via Kaymbu (Jun 12 15:13 UTC). "Two's, Bridge, Preschool Summer Calendars 2026." Review for summer session dates, schedule, and logistics for Vasu. See [[family/vasu]].
+
+> [!todo] Book July 4 cat sitter (Loki, Ghosty, Pickle) via Meowtel — before Jul 3
+> Meowtel (Jun 12 13:51 UTC) flagged July 4 approach. Second cat-care window: Disney trip Jul 16–19. Book both windows now before slots fill.
+
+> [!note] Carry-forward table — run 219 (Jun 12)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **NJ-1065 Q2** | Call Jonathan Francis | **2026-06-15** |
+> | **Power Mac LLC Invoice** | Review + pay | ASAP |
+> | **Thomas birthday RSVP (Vasu)** | Check Goddard app + RSVP | ASAP |
+> | **Lucent estimates + CPA docs** | 3+ days overdue — follow up today | **OVERDUE** |
+> | **Jun 14 hardware maintenance** | Check renter C.39324136 before rtxserver GPU reseat | **2026-06-14** |
+> | **Camp Timanous photo (Vayu)** | Upload via link in Heidi's email | ASAP (camp opens late Jun) |
+> | **Abby's graduation** | Plan attendance + gift | **2026-06-18** |
+> | **July 4 cat sitter** | Book via Meowtel | before Jul 3 |
+> | **Disney flights** | 5 pax EWR/JFK → LAX/SNA Jul 16–19 | ASAP (peak pricing) |
+> | **Goddard summer calendar** | Review Vasu's summer schedule | this week |
