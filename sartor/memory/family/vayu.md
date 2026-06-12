@@ -2,9 +2,9 @@
 type: person
 entity: vayu
 name: "Vayu Sartor"
-updated: 2026-06-05
+updated: 2026-06-12
 updated_by: personal-data-gather
-run: 185
+run: 217
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vayu]
@@ -344,3 +344,11 @@ Shanie Israel (sisrael@mka.org) is the MKA Dean of Community Life and sent a spr
 
 > [!fact] Screen time — week of May 29–Jun 4: 20h53min (+61% week-over-week)
 > Microsoft Family Safety (familysafety@microsoft.com, Jun 5 ~3:21 PM ET). Vayu logged **20 hours 53 minutes** screen time for May 29–Jun 4 (~3.0h/day average). Trend over three weeks: May 15–21 = 8h41m → May 22–28 = 12h57m → May 29–Jun 4 = 20h53m (+141% over the period). School wind-down and graduation week likely explain the June spike, but the multi-week upward trend warrants attention given ADHD context. See [[family/active-todos]].
+
+## Latest from gather (2026-06-12) — run 217
+
+> [!warning] Screen time — week of Jun 5–11: 71h 29min (+242% week-over-week)
+> Microsoft Family Safety (familysafety@microsoft.com, Jun 12 03:52 UTC). Vayu logged **71 hours 29 minutes** for Jun 5–11 (~10.2h/day). Full 4-week trend: 8h41m → 12h57m → 20h53m → 71h29m. School ended this week (Vishala closing Jun 5; summer break beginning). Massive jump likely reflects unstructured summer days, but >10hr/day average warrants a parental conversation and possibly Microsoft Family Safety limit adjustment before summer sets in. See [[family/active-todos]].
+
+> [!todo] Camp Timanous — submit training photo for tagged-photo notifications
+> heidi@timanous.org (Jun 11 20:30 UTC). Heidi at Camp Timanous (Panther Pond) implementing tagged-photo system. Follow email link to upload Vayu's photo. Camp opens late June 2026. See [[family/active-todos]].

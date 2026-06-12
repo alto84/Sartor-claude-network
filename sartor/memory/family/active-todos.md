@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-11
+updated: 2026-06-12
 updated_by: personal-data-gather
-run: 215
+run: 217
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2430,3 +2430,29 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 
 > [!fact] Hardware maintenance Saturday Jun 14 — no family logistics impact expected
 > Two Alton calendar events (created Jun 11): (1) 10–11 AM: gpuserver2 install second RTX 5090; (2) 11 AM–12 PM: rtxserver GPU1 PCIe reseat (contingent on renter gone). Both local hardware tasks at home. See [[MACHINES]].
+
+## Latest from gather (2026-06-12) — run 217
+
+> [!warning] TODAY — HITLAB virtual roundtable 12:30–1:30 PM ET (no confirmed RSVP)
+> Jerry Antimano (LinkedIn, first flagged run 161). "Pharma executive roundtable: electrolyte monitoring, hyperkalemia, ECG, drug safety." No RSVP confirmation found in Gmail through this run. RSVP via LinkedIn now if attending. Relevant to AZ GPS role. See [[business/az-career]].
+
+> [!warning] Vayu screen time 71h 29min (Jun 5–11) — 4-week upward trend (+242% week-over-week)
+> Microsoft Family Safety (Jun 12 03:52 UTC). Trend: May 15–21 = 8h41m → May 22–28 = 12h57m → May 29–Jun 4 = 20h53m → Jun 5–11 = **71h 29min** (~10.2h/day). School ending + summer break explains some of this; prior ADHD context warrants attention. Review at family.microsoft.com; consider adjusting limits before summer routine solidifies. See [[family/vayu]].
+
+> [!todo] Camp Timanous — upload Vayu's training photo for tagged-photo notifications
+> heidi@timanous.org (Jun 11 20:30 UTC, IMPORTANT flag). Camp moving to tagged-photo notification system. Parents must submit a training photo of their child. Follow the link in Heidi's email. Camp Timanous (Panther Pond) opens late June 2026. See [[family/vayu]].
+
+> [!fact] Jun 18 (Thu) — Abby's graduation (confirmed from Family calendar)
+> Family calendar all-day event. Plan attendance/gift. Abby = Alton's sister. See [[FAMILY]].
+
+> [!note] Carry-forward table — run 217 (Jun 12)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **HITLAB TODAY 12:30 PM** | No RSVP confirmed | **TODAY** |
+> | **NJ-1065 Q2** | Call Jonathan Francis | **2026-06-15** |
+> | **Mayo Clinic CMO** | Respond confirm/decline | **2026-06-16** |
+> | **Lucent estimates + CPA docs** | Expected Jun 11; not arrived — follow up today | **OVERDUE** |
+> | **Jun 14 hardware maintenance** | Check renter C.39324136 before rtxserver GPU reseat | **2026-06-14** |
+> | **Camp Timanous photo (Vayu)** | Follow link in Heidi's email | ASAP |
+> | **MKA Attire policy review** | Before summer shopping (run 215) | before July |
+> | **Wohelo: ask Heidi questions** | Available now; unreachable Jun 18+ | **2026-06-18** |

@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: az-career
-updated: 2026-06-11
+updated: 2026-06-12
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -125,6 +125,14 @@ For all of the above, the canonical sources are AZ internal systems (Workday, AZ
 
 > [!fact] LinkedIn — Executive Medical Director, Patient Safety (Hybrid) at Vertex Pharmaceuticals (posted Jun 5)
 > jobalerts-noreply@linkedin.com (Jun 7 8:53 AM ET). Vertex Pharmaceuticals (Boston-area HQ; cystic fibrosis monopoly, gene editing, NaV channel pain pipeline; high science standards). "Executive Medical Director, Patient Safety." Title sits above Senior Medical Director — VP-adjacent in pharma hierarchy. Directly in Alton's Global Patient Safety lane. Strongest-title signal in the past two weeks alongside BioMarin $383K (run 183) and Vertex is premium-comp territory. Career market intelligence; no action required unless Alton wants to explore.
+
+## Latest from gather (2026-06-12) — run 217
+
+> [!warning] TODAY 12:30–1:30 PM ET — HITLAB pharma executive roundtable (no confirmed RSVP)
+> LinkedIn invitation from Jerry Antimano (first captured run 161, Jun 1). Closed-door virtual roundtable on electrolyte monitoring gaps (hyperkalemia, ECG, drug safety). Directly relevant to Global Patient Safety role. No RSVP confirmation visible in Gmail through this run. RSVP via LinkedIn now if attending. See [[ASTRAZENECA]].
+
+> [!todo] Mayo Clinic Founding CMO — confirm/decline meeting Mon Jun 16, 1:30 PM ET
+> LinkedIn reply from recruiter (Jun 11 15:53 UTC, run 215). "How's 1:30 pm EST Monday?" Follow up on "Founding Chief Medical Officer Search – Mayo Clinic-Funded AI-Powered Diagnostics Company." Active thread — respond to keep it alive or explicitly decline. See [[ALTON]].
 
 ## History
 

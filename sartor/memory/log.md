@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-11
+updated: 2026-06-12
 updated_by: personal-data-gather
-run: 215
+run: 217
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-12] ingest | personal-data-gather run 217: Vayu screen time spike (71h/wk); Camp Timanous photo; HITLAB today; hardware maintenance Sat
+- Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 216); all 5 Google Calendars (Jun 12–19); SSH unavailable (cloud runner)
+- Net-new facts: 5 (Vayu screen time 71h29m Jun 5-11 with 4-wk trend; Camp Timanous photo tagging setup; Guidepoint Advanced Models Survey $50; MKA May Term recap; vast.ai 124192 offline email — unverifiable)
+- Carry-forwards critical: HITLAB TODAY Jun 12 12:30 PM; NJ-1065 Q2 Jun 15; Lucent estimates overdue (expected Jun 11); Mayo Clinic CMO Jun 16; Jun 14 hardware maintenance (gpuserver2 install + rtxserver GPU1 reseat)
+- Calendar: Jun 14 hardware maintenance (gpuserver2 10 AM + rtxserver 11 AM); Jun 18 Abby graduation; Aneeta empty; Blue Sombrero empty
+- Infrastructure: SSH unavailable; 139358 + 124192 offline alerts unverifiable per runner-capability gate
+- Pages updated: `daily/2026-06-12.md` (created), `log.md` (this entry), `family/active-todos.md` (run 217 appended), `family/vayu.md` (screen time), `business/az-career.md` (HITLAB today), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created)
 
 ## [2026-06-11] ingest | personal-data-gather run 216: gpuserver2 (139358) offline alert; AZ Gmail sign-in; home valuation; Lucent deadline passed
 - Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 215 ~20:00 UTC), all 5 Google Calendars (Jun 11–18), SSH unavailable (cloud runner)
