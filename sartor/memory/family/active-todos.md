@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-12
+updated: 2026-06-13
 updated_by: personal-data-gather
-run: 219
+run: 220
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2501,3 +2501,29 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **July 4 cat sitter** | Book via Meowtel | before Jul 3 |
 > | **Disney flights** | 5 pax EWR/JFK → LAX/SNA Jul 16–19 | ASAP (peak pricing) |
 > | **Goddard summer calendar** | Review Vasu's summer schedule | this week |
+
+## Latest from gather (2026-06-13) — run 220
+
+> [!fact] Chase Travel — two trip bookings confirmed June 12 — Disney flights likely booked
+> donotreply@chasetravel.com (IMPORTANT, Jun 12 ~17:00–17:24 UTC). Trip ID #1018888623 (16:58) and Trip ID #1018889740 (17:24). Two sequential Chase Travel bookings on the same day, both IMPORTANT. "Hi, E." salutation (Emmett Alton Sartor). Almost certainly the Disney July 2026 flights — resolves N6 ("book flights") if confirmed. Alton should verify itinerary, airports, dates, and price in Chase Travel account or confirmation emails. See [[family/disney-july-2026]].
+
+> [!todo] ACTION_REQUIRED — Montclair Non-Resident Pool Registration opens June 16, 2026 at 10:00 AM
+> info@communitypass.net (Jun 12 21:03 UTC). Township ordinance (passed May 19) created seasonal pool permits + daily passes for non-residents. Registration opens at communitypass.net on June 16 at 10 AM. Decide now if the family wants to register; act promptly at 10 AM if so.
+
+> [!todo] Thomas birthday RSVP still needed (carry-forward from run 219)
+> Kaymbu / Goddard (Jun 12 13:40). Not yet resolved. RSVP for Vasu's classmate Thomas's 4th birthday. Check Kaymbu app for party date/location details.
+
+> [!note] Carry-forward table — run 220 (Jun 13)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **NJ-1065 Q2** | Due in 2 days — call Jonathan Francis | **2026-06-15 (Mon)** |
+> | **Disney flights** | Chase Travel bookings received Jun 12 — verify itinerary | ASAP |
+> | **Montclair Pool Registration** | Opens Jun 16 at 10 AM at communitypass.net | **2026-06-16 10 AM** |
+> | **Thomas birthday RSVP (Vasu)** | RSVP via Kaymbu app | ASAP |
+> | **Power Mac LLC Invoice** | Review + pay (from run 219) | ASAP |
+> | **Lucent estimates + CPA docs** | Follow up | **OVERDUE** |
+> | **Jun 14 hardware maintenance** | gpuserver2 RTX install 10 AM + rtxserver GPU reseat 11 AM | **2026-06-14 (TOMORROW)** |
+> | **Camp Timanous photo (Vayu)** | Upload via Heidi's email link | ASAP (camp opens late Jun) |
+> | **Abby's graduation** | Plan attendance + gift if needed | **2026-06-18** |
+> | **July 4 cat sitter** | Book via Meowtel | before Jul 3 |
+> | **Disney ADR / dining** | Confirm Nicol Stevenson bookings | ASAP |

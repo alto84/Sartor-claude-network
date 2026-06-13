@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: disney-july-2026
-updated: 2026-05-17
+updated: 2026-06-13
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -140,3 +140,9 @@ Multi-family trip planned via a group text called "Disney 2026." Nicole (planner
 
 > [!fact] ADR window now open (2026-05-17)
 > The 60-day ADR booking window for July 16 arrival **opened today**. Previously flagged as "opens May 17" across runs 41–83. Contact Nicol Stevenson (n.stevenson@magicalvacationplanner.com / +1 412-215-2423) immediately with dining preferences. The `[!todo]` and `[!deadline]` blocks above are now actionable — the deadline has arrived. Blue Bayou and character dining book within hours of window opening. Headcount: 5 (Alton, Aneeta, Vayu 10, Vishala 8, Vasu 4). See [[family/active-todos]] for the escalated callout.
+
+## Latest from gather (2026-06-13) — run 220
+
+> [!fact] Chase Travel — two trip bookings confirmed June 12, 2026 — flights likely booked
+> Two IMPORTANT-flagged emails from donotreply@chasetravel.com received June 12 in sequence (Trip ID #1018888623 at 16:58 UTC, Trip ID #1018889740 at 17:24 UTC). Two separate bookings within ~30 minutes strongly suggest outbound + return flights for the Sartor family Disney trip (NJ → LAX/SNA, July 16–19). Previously flagged as "NOT BOOKED" through run 219. HTML itinerary details not extractable from this runner — Alton should confirm dates, airports, and total cost via Chase Travel account or the confirmation emails. If confirmed as Disney flights, this resolves item N6 ("book flights") from [[family/active-todos]].
+> Note: "Hi, E." salutation in both emails (E = Emmett Alton Sartor).

@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-12
+updated: 2026-06-13
 updated_by: personal-data-gather
-run: 219
+run: 220
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,13 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-13] ingest | personal-data-gather run 220: Chase Travel flights booked (Disney likely); NJ-1065 Q2 Mon; pool reg Jun 16; Jun 14 hardware day
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 13–20); SSH unavailable (cloud runner)
+- Net-new facts: 8 (Chase Travel 2 bookings — Disney flights likely; $5K CC payment; pool reg opens Jun 16; Thomas RSVP carry-forward; Goddard week preview; Goddard summer trip calendar; Abby graduation Jun 18; NJ-1065 Q2 2 days out)
+- Calendar: Jun 14 gpuserver2 RTX install (10 AM) + rtxserver GPU reseat (11 AM); Jun 18 Abby graduation; others empty
+- Pages updated: `daily/2026-06-13.md` (created), `family/active-todos.md` (run 220 appended), `family/disney-july-2026.md` (Chase Travel fact appended), `data/gather-alerts.md` (rebuilt), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- KEY: NJ-1065 Q2 due Monday Jun 15 (2 days). Chase Travel 2 bookings Jun 12 — verify Disney itinerary. Jun 14 hardware day (gpuserver2 RTX install + rtxserver GPU reseat). Pool registration opens Jun 16 at 10 AM.
 
 ## [2026-06-12] ingest | personal-data-gather run 219: Power Mac invoice; Thomas RSVP; Goddard summer cal; NVDA call sold; July 4 cat sitter
 - Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 218); all 5 Google Calendars (Jun 12–19); SSH unavailable (cloud runner)
