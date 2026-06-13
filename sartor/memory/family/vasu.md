@@ -4,7 +4,7 @@ entity: vasu
 name: "Vasu Sartor"
 updated: 2026-06-13
 updated_by: personal-data-gather
-run: 220
+run: 223
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -300,3 +300,8 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!note] Goddard week of June 15–19 preview
 > noreply@kaymbu.com (Samantha Ramsden, Jun 12 20:00 UTC): Wednesday June 17 — "Big Jeff" (likely the same performer who visited May 6; see run 61). Thursday June 18 event not captured in snippet. Full preview in Kaymbu app.
+
+## Latest from gather (2026-06-13) — run 223
+
+> [!fact] Vasu Goddard Daily Sheet — Friday June 12 (animal communication unit)
+> Preschool lesson: "How do animals communicate and show their feelings?" Science activity: B&W printed photos of animals, people, and objects; teachers added color paddles for exploration. Week of June 15–19 continues animal theme. See [[daily/2026-06-13]].
