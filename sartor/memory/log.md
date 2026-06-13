@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-13
 updated_by: personal-data-gather
-run: 220
+run: 223
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-13] ingest | personal-data-gather run 223: Fidelity BOUGHT CALL NVDA; M3 neurology surveys; NJ-1065 Q2 Mon (2 days); Mayo CMO respond today
+- Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 222); all 5 Google Calendars (Jun 13–20); SSH unavailable (cloud runner)
+- Net-new facts: 3 (Fidelity BOUGHT CALL NVDA Jun 13 account 8998; M3 Global Research neurology surveys; Vasu Goddard Daily Sheet Jun 12 animal communication)
+- Carry-forwards escalated: NJ-1065 Q2 due Mon Jun 15 (2 days, runs 217–223); Mayo CMO meeting Jun 16 RESPOND TODAY (Sat); Guidepoint #1761433 respond by Sun Jun 14; Jun 14 hardware day TOMORROW
+- Calendar: unchanged — Jun 14 hardware (gpuserver2 RTX install 10 AM + rtxserver GPU reseat 11 AM); Jun 13 Aneeta "Convocation of the wise" 2:30–5 PM; Jun 18 Abby graduation
+- Infrastructure: SSH unavailable (binary absent on cloud runner); all host items unverifiable-from-this-runner
+- Pages updated: `daily/2026-06-13.md` (run 223 appended), `data/gather-alerts.md` (rebuilt), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- KEY: NJ-1065 Q2 due Monday. Mayo CMO recruiter needs answer today. Guidepoint #1761433 48h window closes Sunday. Hardware day tomorrow.
 
 ## [2026-06-13] ingest | personal-data-gather run 221: Guidepoint #1761433 biosimulation; MKA year-end; Blue Sombrero summer soccer; NJ-1065 Mon
 - Sources: Gmail (is:unread newer_than:2d, 28 threads, delta since run 220); all 5 Google Calendars (Jun 13–20); SSH unavailable (cloud runner)
