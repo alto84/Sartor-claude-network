@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-06-09
+updated: 2026-06-13
 updated_by: personal-data-gather
 last_verified: 2026-05-28
 status: active
@@ -270,3 +270,11 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 
 > [!todo] TONIGHT — Vasu Pajama Day Wed June 10
 > Samantha Ramsden (noreply@kaymbu.com, Jun 9 20:00 UTC): "Pajama Day Tomorrow! Wear your coziest pjs to school tomorrow!" Pack PJs tonight for [[family/vasu|Vasu]]'s Wednesday June 10 Goddard drop-off. See [[family/active-todos]].
+
+## Latest from gather (2026-06-13) — run 220
+
+> [!fact] Chase Travel — two trip bookings confirmed June 12, 2026 (Disney flights likely)
+> donotreply@chasetravel.com (IMPORTANT, Jun 12 ~17:00–17:24 UTC). Trip ID #1018888623 and Trip ID #1018889740 booked in sequence. "Hi, E." (Emmett = Alton). Almost certainly the outbound + return flights for the Disney trip July 16–19, 2026, which had been flagged as "NOT BOOKED" through run 219. Exact itinerary (airports, dates, cost) not extractable — Alton should verify via Chase Travel account. See [[family/disney-july-2026]].
+
+> [!note] Abby's graduation — June 18, 2026 (Alton's sister)
+> Family calendar event (created by aneetasax@gmail.com). Abby = Alton's sister, per recurring Apr 16 birthday entry in [[family/family-calendar]]. Plan attendance and/or gift as appropriate.

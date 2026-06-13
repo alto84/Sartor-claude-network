@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-06-07
+updated: 2026-06-13
 updated_by: personal-data-gather (run 196); fleet doc-drift fix 2026-05-28 preserved
 
 status: active
@@ -223,3 +223,8 @@ Full project hub: [[reference_solar_project]]. Source documents indexed there.
 
 > [!fact] rtxserver infrastructure — UPS + PCIe build-out hardware ordered (Jun 7 evening)
 > Four Amazon orders placed 2026-06-07 (7:47–8:04 PM ET): (1) CyberPower CP1500PFCLCD PFC Sinewave UPS (1500VA/900W class) — addresses the "no UPS" gap documented for rtxpro6000server in CLAUDE.md infrastructure notes. (2) JMT 180 Degree 64GBS PCIe cable — high-bandwidth GPU riser/extension. (3) Vertical GPU Mount Bracket — physical GPU mounting hardware. (4) GIGA-MEGA PCIe 5.0 X16 adapter/extension. Together with Newegg build (run 128) and GIGABYTE RTX 5090 (run 127), this confirms active second-GPU-server physical build-out. Log UPS + peripheral hardware as Solar Inference LLC capital assets on delivery. See [[MACHINES]].
+
+## Latest from gather (2026-06-13) — run 220
+
+> [!deadline] 2026-06-15 — NJ-1065 Q2 estimated tax payment — 2 DAYS AWAY
+> New Jersey pass-through entity estimated tax for Solar Inference LLC Q2 2026 is due **Monday, June 15**. Confirm amount and payment method with [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com, (914) 488-5727). Pay via NJ Division of Taxation portal. See [[TAXES]] and [[matters/q2-2026-estimated-tax]] for matter-level tracking.
