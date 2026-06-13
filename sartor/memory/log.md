@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-13
 updated_by: personal-data-gather
-run: 224
+run: 225
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-13] ingest | personal-data-gather run 225: gpuserver2 (139358) offline (likely planned); ASCO abstract deadline; 3 LinkedIn alerts
+- Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 224); all 5 Google Calendars (Jun 13–20); SSH unavailable (cloud runner)
+- Net-new facts: 4 (vast.ai 139358 offline email — likely planned listing expiry pre-install; ASCO #ASCOQLTY26 abstract deadline approaching; Hiive private market digest; Nintendo Switch Online free trial)
+- Carry-forwards escalated: NJ-1065 Q2 due Mon Jun 15 (runs 217–225, T-2); Mayo CMO Jun 16 respond ASAP; Guidepoint #1761433 respond by Sun Jun 14 EOD; Power Mac invoice pay; gpuserver2 + rtxserver hardware TOMORROW
+- Calendar: no new events vs runs 220–224 — Jun 14 hardware (gpuserver2 RTX install 10 AM + rtxserver GPU reseat 11 AM); Jun 18 Abby graduation; Aneeta "Convocation of the wise" 2:30–5 PM (now past)
+- Infrastructure: SSH unavailable; 139358 offline email from vast.ai received 17:36 UTC — consistent with planned listing end_date 6/13 8 PM ET; per runner-capability gate not escalated to P0
+- Pages updated: `daily/2026-06-13.md` (run 225 appended), `data/gather-alerts.md` (rebuilt), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- KEY: NJ-1065 Q2 due Monday — T-2 days. gpuserver2 hardware install tomorrow. Guidepoint 48h window closes Sunday.
 
 ## [2026-06-13] ingest | personal-data-gather run 223: Fidelity BOUGHT CALL NVDA; M3 neurology surveys; NJ-1065 Q2 Mon (2 days); Mayo CMO respond today
 - Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 222); all 5 Google Calendars (Jun 13–20); SSH unavailable (cloud runner)
