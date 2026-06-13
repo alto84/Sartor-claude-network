@@ -2,9 +2,9 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-06-11
+updated: 2026-06-13
 updated_by: personal-data-gather
-run: 212
+run: 220
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -289,3 +289,14 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 
 > [!fact] Vasu daily sheet — Tuesday June 9
 > cls64fc…@inbox.kaymbu.com (Jun 9 21:33 UTC): Checked in 7:56 AM (Cheyenne D), checked out 5:33 PM (Gabriella R). Normal Tuesday — day before Pajama Day (packed per run 205 Pajama Day reminder). Kaymbu classroom moments also sent Jun 9: CONSTRUCTION (animal habitats), Outdoor Play, MATH (drawing + scissors), STEAM (Yoga bear walks). See [[daily/2026-06-10]].
+
+## Latest from gather (2026-06-13) — run 220
+
+> [!todo] ACTION_REQUIRED — RSVP for Thomas's 4th birthday party
+> noreply@kaymbu.com (Jun 12 13:40 UTC). Thomas is a Goddard classmate turning 4. "Please RSVP if you haven't done so already!" Party date/time/location not in snippet — check Kaymbu / Goddard Family Hub app for details. Carry-forward from run 219 (RSVP still pending as of Jun 13). See [[family/active-todos]].
+
+> [!fact] Goddard Pre-K Summer Camp Trip Calendar 2026 available
+> cnvb7e6276d-43c1-4159-a73c-e55ba5588e51@inbox.kaymbu.com (Alissa DelConte, Jun 12 16:09 UTC). Subject: "Summer Camp Trip Calendar." Attachment: "Pre K Summer Camp Calendar 2026 (2).pdf." Download from Goddard Family Hub to get the full summer field trip schedule for Vasu's class. See [[family/active-todos]].
+
+> [!note] Goddard week of June 15–19 preview
+> noreply@kaymbu.com (Samantha Ramsden, Jun 12 20:00 UTC): Wednesday June 17 — "Big Jeff" (likely the same performer who visited May 6; see run 61). Thursday June 18 event not captured in snippet. Full preview in Kaymbu app.

@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-06-10
+updated: 2026-06-13
 updated_by: personal-data-gather
-run: 210
+run: 220
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -850,3 +850,25 @@ One new calendar event vs run 168: Aneeta SMART Certified Providers Quarterly Ca
 
 > [!todo] SOFT DEADLINE Jun 18 — Contact Heidi Gorton (Wohelo) with remaining questions
 > heidi@wohelo.com (Jun 10 12:39 UTC): Heidi is available now but **unavailable starting June 18** (goes to camp). **Little Wohelo (Vishala) opens June 25.** Ask any remaining camp-prep questions before June 18. See [[family/vishala]], [[family/active-todos]].
+
+## Latest from gather (2026-06-13) — run 220
+
+### Week of Jun 13–20 (from Google Calendar harvest)
+
+| Date | Time EDT | Event | Calendar | Notes |
+|------|----------|-------|----------|-------|
+| **Sun 6/14** | 10:00–11:00 AM | gpuserver2: install second RTX 5090 | Alton (primary) | Business infra; listing end_date capped 6/13 8PM |
+| **Sun 6/14** | 11:00 AM–12:00 PM | rtxserver: reseat GPU1 (PCIe x8→x16) | Alton (primary) | CONTINGENT on renter clearing |
+| **Thu 6/18** | all-day | **Abby's graduation** | Family | Abby = Alton's sister (per Apr 16 birthday entry). Plan attendance/gift. |
+
+> [!fact] Abby = Alton's sister (cross-reference confirmed)
+> Family calendar "Abby's graduation" (Jun 18, created by aneetasax@gmail.com) cross-references the recurring "Abby's birthday" entry on Apr 16 ("Alton's sister") in this file. Identity confirmed: Abby is Alton's sister. Graduation on June 18, 2026. Plan attendance and/or gift.
+
+> [!todo] Montclair Non-Resident Pool Registration — June 16 at 10:00 AM
+> Not on calendar yet. Opens Tuesday June 16, 2026 at 10:00 AM at communitypass.net. Seasonal pool permits for non-residents (Township ordinance passed May 19). Decide whether to register; if yes, act promptly at 10 AM. See [[family/active-todos]].
+
+> [!note] Goddard week Jun 15–19 highlights
+> Wednesday Jun 17: "Big Jeff" performer visits Vasu's class. Thursday Jun 18: event in preview (details in Kaymbu). See [[family/vasu]].
+
+> [!note] Juneteenth Block Party carry-forward
+> Sat Jun 20, 3–7 PM, Montclair Public Library Main Branch Plaza. Community/family event. Carry-forward from run 210.

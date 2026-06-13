@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: TAXES
-updated: 2026-06-05
-updated_by: personal-data-gather (run 184)
+updated: 2026-06-13
+updated_by: personal-data-gather (run 220)
 last_verified: 2026-06-05
 status: active
 next_deadline: 2026-06-15
@@ -294,3 +294,9 @@ Append this fact to `TAXES.md` under the section relevant to `2027 fiscal outloo
 
 > [!warning] Sante Total 990-N — 11 days overdue
 > Due 2026-05-15. Still not filed as of run 127. File immediately at IRS.gov → 990-N e-Postcard. EIN required. TY2025 gross receipts <$50K. See [[business/sante-total]].
+
+
+## Latest from gather (2026-06-13) — run 220
+
+> [!deadline] 2026-06-15 — NJ-1065 Q2 estimated tax payment — 2 DAYS AWAY
+> Carry-forward from runs 217–220. New Jersey pass-through entity estimated tax (Solar Inference LLC) for Q2 2026 is due **this Monday, June 15**. Contact [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com, (914) 488-5727) to confirm amount and payment method before filing. Pay via NJ Division of Taxation portal. See [[business/solar-inference]] and [[family/active-todos]].
