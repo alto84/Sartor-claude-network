@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-13
 updated_by: personal-data-gather
-run: 221
+run: 222
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2553,5 +2553,34 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **Lucent estimates + CPA docs** | Follow up | **OVERDUE** |
 > | **Camp Timanous photo (Vayu)** | Upload via Heidi's email link | ASAP |
 > | **Abby's graduation** | Plan attendance + gift if needed | **2026-06-18** |
+> | **July 4 cat sitter** | Book via Meowtel | before Jul 3 |
+> | **Disney ADR / dining** | Confirm Nicol Stevenson bookings | ASAP |
+
+## Latest from gather (2026-06-13) — run 222
+
+> [!note] Aneeta — "Convocation of the wise" TODAY June 13, 2:30–5:00 PM ET
+> Created this morning (05:44 UTC). No description on the event. "Convocation of the wise" not in household memory — unknown whether work meeting (Neurvati), spiritual/community gathering, or informal social event. If Alton needs to cover family logistics between 2:30 and 5 PM today, confirm with Aneeta what this event is.
+
+> [!deadline] 2026-06-15 — NJ-1065 Q2 payment (MONDAY — 2 days, runs 217–222)
+> Contact [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com, 914-488-5727). Confirm paid or file now. See [[TAXES]].
+
+> [!deadline] 2026-06-16 — Mayo Clinic Founding CMO respond TODAY
+> Meeting is Monday Jun 16 at 1:30 PM ET. LinkedIn recruiter proposed this on Jun 11. Response window closes today (Jun 13). Accept or decline. See [[business/az-career]].
+
+> [!note] Carry-forward table — run 222 (Jun 13)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **NJ-1065 Q2** | Confirm paid — DUE MONDAY | **2026-06-15 (Mon)** |
+> | **Mayo CMO meeting** | Respond to recruiter TODAY | **TODAY Jun 13** |
+> | **Aneeta event today** | "Convocation of the wise" 2:30–5 PM | Jun 13 2:30 PM |
+> | **Jun 14 hardware** | gpuserver2 RTX install 10 AM + rtxserver GPU reseat 11 AM | **2026-06-14 (TOMORROW)** |
+> | **Power Mac LLC invoice** | Review + pay | ASAP |
+> | **Montclair Pool Registration** | Opens Jun 16 10 AM communitypass.net | **2026-06-16 10 AM** |
+> | **Disney flights verify** | Chase Travel #1018888623 + #1018889740 | ASAP |
+> | **Thomas birthday RSVP (Vasu)** | Check Kaymbu app | ASAP |
+> | **Blue Sombrero summer soccer** | Register at montclairsoccer.com (check vs Disney) | this week |
+> | **Camp Timanous photo (Vayu)** | Upload via Heidi's email link | ASAP |
+> | **Lucent estimates + CPA docs** | Follow up — 3+ days overdue | **OVERDUE** |
+> | **Abby's graduation** | Confirm attendance/gift with Aneeta | **2026-06-18** |
 > | **July 4 cat sitter** | Book via Meowtel | before Jul 3 |
 > | **Disney ADR / dining** | Confirm Nicol Stevenson bookings | ASAP |

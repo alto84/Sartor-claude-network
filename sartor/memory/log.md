@@ -1548,3 +1548,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-06-11.md` (run 214 appended, frontmatter bumped), `ALTON.md` (Guidepoint + M3 appended, frontmatter bumped), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); infrastructure status unverifiable per runner-capability gate
 - KEY: Guidepoint consultation #1760138 — respond today. NJ-1065 Q2 due Jun 15 (4 days). HITLAB roundtable tomorrow Jun 12 — no RSVP seen.
+
+## [2026-06-13] ingest | personal-data-gather run 222: Aneeta convocation today; NJ-1065 T-2; Mayo CMO respond today
+- Sources: Gmail (is:unread newer_than:2d, 28 threads, delta since run 221); all 5 Google Calendars (Jun 13–20). SSH unavailable (cloud runner); all infrastructure items unverifiable per runner-capability gate 2026-06-11.
+- Net-new facts: 2 (Aneeta "Convocation of the wise" TODAY 2:30–5 PM ET, created 05:44 UTC this morning — not in any prior run; NJYS World Cup Insider Jun 13 — FIFA 2026 affecting Vayu's soccer org)
+- INFORMATIONAL: Anthropic AI cyber threats newsletter (research interest); J&J Director Data Science/Digital Health LinkedIn alert (AI-focused job, per triage worth noting); Vasu daily sheet (preschool animal science, routine)
+- Carry-forward escalations: NJ-1065 Q2 T-2 days (runs 217–222, MONDAY deadline); Mayo Clinic Founding CMO respond today (meeting Monday June 16 1:30 PM ET — response window closes today Jun 13)
+- P1 carry-forward unchanged: gpuserver2 5090 install + rtxserver PCIe reseat TOMORROW Jun 14; Power Mac LLC invoice; Thomas RSVP; Camp Timanous photo (Vayu); Lucent Energy blocker
+- Pages updated: `daily/2026-06-13.md` (run 222 appended, frontmatter bumped), `family/active-todos.md` (run 222 appended, frontmatter bumped), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- KEY: NJ-1065 Q2 due MONDAY — confirm paid with Jonathan Francis. Mayo Clinic CMO reply MUST go out today. Aneeta Convocation today 2:30 PM — check if childcare coverage needed.
