@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: az-career
-updated: 2026-06-12
+updated: 2026-06-13
 updated_by: personal-data-gather
 status: active
 priority: p2
@@ -140,3 +140,8 @@ For all of the above, the canonical sources are AZ internal systems (Workday, AZ
 - 2026-03-17: Andy Stecker CPSO outreach
 - 2026-04-07: Guidepoint peptide chemist request
 - 2026-04-09: Initial page created from Gmail harvest
+
+## Latest from gather (2026-06-13) — run 221
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1761433: Biosimulation Software Solutions (PK/PD + PBPK)
+> pmoustaka@guidepointglobal.com (Jun 12 19:14 UTC). Client seeking pharma experts familiar with PK/PD Modeling Software and/or PBPK Modeling Software. Directly relevant to Alton's AZ AI Innovation / Global Patient Safety role (biosimulation is core to computational pharmacology). Note: run 216 (Jun 11) also surfaced PK/PD modeling inquiry (#1733233 from Alvi Rahman) — check if these are two separate client engagements or the same client with different project managers. Respond within 24–48h.

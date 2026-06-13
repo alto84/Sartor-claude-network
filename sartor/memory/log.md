@@ -37,6 +37,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-13] ingest | personal-data-gather run 221: Guidepoint #1761433 biosimulation; MKA year-end; Blue Sombrero summer soccer; NJ-1065 Mon
+- Sources: Gmail (is:unread newer_than:2d, 28 threads, delta since run 220); all 5 Google Calendars (Jun 13–20); SSH unavailable (cloud runner)
+- Net-new facts: 3 (Guidepoint #1761433 PK/PD+PBPK biosimulation consult; MKA year-end milestones — school year 2025-26 closed; Blue Sombrero summer soccer sessions open)
+- Carry-forwards: NJ-1065 Q2 due Mon Jun 15 (2 days); Jun 14 hardware day (gpuserver2 RTX install + rtxserver GPU1 reseat TOMORROW); Disney flights verify; pool reg Jun 16 10 AM; Thomas RSVP
+- Calendar: Jun 14 gpuserver2 RTX install (10 AM) + rtxserver GPU reseat (11 AM); Jun 18 Abby graduation; others empty
+- Infrastructure: SSH unavailable (cloud runner); all host items unverifiable-from-this-runner
+- Pages updated: `daily/2026-06-13.md` (run 221 appended), `family/active-todos.md` (run 221 appended), `business/az-career.md` (Guidepoint appended), `data/gather-alerts.md` (rebuilt), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- KEY: Guidepoint #1761433 — respond within 24-48h. NJ-1065 Q2 due Monday Jun 15. Blue Sombrero summer soccer open for registration.
+
 ## [2026-06-13] ingest | personal-data-gather run 220: Chase Travel flights booked (Disney likely); NJ-1065 Q2 Mon; pool reg Jun 16; Jun 14 hardware day
 - Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 13–20); SSH unavailable (cloud runner)
 - Net-new facts: 8 (Chase Travel 2 bookings — Disney flights likely; $5K CC payment; pool reg opens Jun 16; Thomas RSVP carry-forward; Goddard week preview; Goddard summer trip calendar; Abby graduation Jun 18; NJ-1065 Q2 2 days out)

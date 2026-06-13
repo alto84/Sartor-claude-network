@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-13
 updated_by: personal-data-gather
-run: 220
+run: 221
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2524,6 +2524,34 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **Lucent estimates + CPA docs** | Follow up | **OVERDUE** |
 > | **Jun 14 hardware maintenance** | gpuserver2 RTX install 10 AM + rtxserver GPU reseat 11 AM | **2026-06-14 (TOMORROW)** |
 > | **Camp Timanous photo (Vayu)** | Upload via Heidi's email link | ASAP (camp opens late Jun) |
+> | **Abby's graduation** | Plan attendance + gift if needed | **2026-06-18** |
+> | **July 4 cat sitter** | Book via Meowtel | before Jul 3 |
+> | **Disney ADR / dining** | Confirm Nicol Stevenson bookings | ASAP |
+
+## Latest from gather (2026-06-13) — run 221
+
+> [!todo] ACTION_REQUIRED — Guidepoint consultation #1761433: Biosimulation Software Solutions (PK/PD + PBPK)
+> pmoustaka@guidepointglobal.com (Jun 12 19:14 UTC). Client seeking pharma experts familiar with PK/PD Modeling Software and/or PBPK Modeling Software. Directly relevant to AZ AI Innovation role. Note: run 216 also surfaced Guidepoint PK/PD inquiry (#1733233, Alvi Rahman) — check if these are distinct client engagements or a follow-up. Respond within 24–48h. See [[business/az-career]].
+
+> [!note] MKA school year 2025-26 officially over — summer mode begins
+> m@mail2.veracross.com (Jun 12 18:26 UTC). "Celebrating Our Graduates and Year-End Milestones" — photos from Primary and Middle School Closing Exercises, Pre-Prom, Commencement. Vayu + Vishala school year done.
+
+> [!todo] Blue Sombrero summer soccer — decide registration for Vayu
+> clubnews@bluesombrero.com (Jun 12 18:26 UTC). Montclair United Soccer Club Summer Soccer Sessions 2026. Register at montclairsoccer.com. Check schedule vs Disney Jul 16–19. See [[family/vayu]].
+
+> [!note] Carry-forward table — run 221 (Jun 13)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **NJ-1065 Q2** | Call Jonathan Francis — DUE MONDAY | **2026-06-15 (Mon)** |
+> | **Guidepoint #1761433** | Respond within 24–48h | ASAP |
+> | **Jun 14 hardware maintenance** | gpuserver2 RTX install 10 AM + rtxserver GPU reseat 11 AM | **2026-06-14 (TOMORROW)** |
+> | **Disney flights** | Verify itinerary — Chase Travel #1018888623 + #1018889740 | ASAP |
+> | **Montclair Pool Registration** | Opens Jun 16 at 10 AM at communitypass.net | **2026-06-16 10 AM** |
+> | **Thomas birthday RSVP (Vasu)** | RSVP via Kaymbu app | ASAP |
+> | **Blue Sombrero summer soccer** | Decide + register at montclairsoccer.com | this week |
+> | **Power Mac LLC Invoice** | Review + pay (from run 219) | ASAP |
+> | **Lucent estimates + CPA docs** | Follow up | **OVERDUE** |
+> | **Camp Timanous photo (Vayu)** | Upload via Heidi's email link | ASAP |
 > | **Abby's graduation** | Plan attendance + gift if needed | **2026-06-18** |
 > | **July 4 cat sitter** | Book via Meowtel | before Jul 3 |
 > | **Disney ADR / dining** | Confirm Nicol Stevenson bookings | ASAP |
