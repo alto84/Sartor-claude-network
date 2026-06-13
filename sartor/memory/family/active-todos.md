@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-13
 updated_by: personal-data-gather
-run: 223
+run: 224
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2610,3 +2610,29 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **Abby's graduation** | Confirm attendance/gift with Aneeta | **2026-06-18** |
 > | **July 4 cat sitter** | Book via Meowtel | before Jul 3 |
 > | **Disney ADR / dining** | Confirm Nicol Stevenson bookings | ASAP |
+
+## Latest from gather (2026-06-13) — run 224
+
+> [!fact] Disneyland Resort Conf #18123406 forwarded to Aneeta Jun 12
+> Alton forwarded Magical Vacation Planner confirmation #18123406 to aneetasax@gmail.com on Jun 12 16:15 UTC. Hotel/resort is confirmed on file with Nicol Stevenson (+1 412-215-2423). Pairs with Chase Travel trip IDs #1018888623 + #1018889740 (run 220 — likely flights). Full Disney trip: hotel confirmed + flights likely booked (verify Chase Travel). See [[disney-july-2026]].
+
+> [!deadline] 2026-06-15 — NJ-1065 Q2 DUE MONDAY (runs 217–224, T-2 days)
+> Contact [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com, 914-488-5727). Confirm paid or file now at NJ Division of Taxation. See [[TAXES]].
+
+> [!deadline] 2026-06-16 — Mayo Clinic Founding CMO respond TODAY (last chance)
+> Meeting is Monday Jun 16 1:30 PM ET. Response window closes today (Sat Jun 13). Accept or decline. See [[business/az-career]].
+
+> [!note] Carry-forward table — run 224 (Jun 13)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **NJ-1065 Q2** | Confirm paid — DUE MONDAY | **2026-06-15 (Mon)** |
+> | **Mayo CMO meeting** | Respond to recruiter TODAY | **TODAY Jun 13** |
+> | **Guidepoint #1761433** | Respond by EOD Jun 14 | **Sun 2026-06-14** |
+> | **Jun 14 hardware** | gpuserver2 RTX install 10 AM + rtxserver GPU reseat 11 AM | **TOMORROW 2026-06-14** |
+> | **Power Mac LLC invoice #3761** | Pay online or by check | ASAP |
+> | **Disney flights verify** | Chase Travel #1018888623 + #1018889740 | ASAP |
+> | **Disney hotel** | Conf #18123406 forwarded to Aneeta — verify details with Nicol | before Jul 16 |
+> | **Thomas birthday RSVP (Vasu)** | Check Kaymbu app | ASAP |
+> | **Blue Sombrero summer soccer** | Register at montclairsoccer.com (check vs Disney) | this week |
+> | **Montclair Pool Registration** | Opens Jun 16 10 AM communitypass.net | **2026-06-16 10 AM** |
+> | **Abby's graduation** | Confirm attendance/gift with Aneeta | **2026-06-18** |

@@ -146,3 +146,8 @@ Multi-family trip planned via a group text called "Disney 2026." Nicole (planner
 > [!fact] Chase Travel — two trip bookings confirmed June 12, 2026 — flights likely booked
 > Two IMPORTANT-flagged emails from donotreply@chasetravel.com received June 12 in sequence (Trip ID #1018888623 at 16:58 UTC, Trip ID #1018889740 at 17:24 UTC). Two separate bookings within ~30 minutes strongly suggest outbound + return flights for the Sartor family Disney trip (NJ → LAX/SNA, July 16–19). Previously flagged as "NOT BOOKED" through run 219. HTML itinerary details not extractable from this runner — Alton should confirm dates, airports, and total cost via Chase Travel account or the confirmation emails. If confirmed as Disney flights, this resolves item N6 ("book flights") from [[family/active-todos]].
 > Note: "Hi, E." salutation in both emails (E = Emmett Alton Sartor).
+
+## Latest from gather (2026-06-13) — run 224
+
+> [!fact] Disneyland Resort Confirmation #18123406 — forwarded to Aneeta Jun 12, 2026
+> Original confirmation from Nicol Stevenson (Magical Vacation Planner, n.stevenson@magicalvacationplanner.com) dated Jan 22, 2026. Alton forwarded to aneetasax@gmail.com on Jun 12 at 16:15 UTC. Hotel/resort reservation is confirmed on file. Pairs with Chase Travel flight bookings #1018888623 + #1018889740 (run 220 — likely EWR/JFK → LAX/SNA, Jul 16–19). Full trip picture: hotel confirmed + flights likely booked. Next: verify flight details via Chase Travel and confirm dining reservations with Nicol Stevenson. See [[family/active-todos]].

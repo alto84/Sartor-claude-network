@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-13
 updated_by: personal-data-gather
-run: 223
+run: 224
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1566,3 +1566,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - P1 carry-forward unchanged: gpuserver2 5090 install + rtxserver PCIe reseat TOMORROW Jun 14; Power Mac LLC invoice; Thomas RSVP; Camp Timanous photo (Vayu); Lucent Energy blocker
 - Pages updated: `daily/2026-06-13.md` (run 222 appended, frontmatter bumped), `family/active-todos.md` (run 222 appended, frontmatter bumped), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - KEY: NJ-1065 Q2 due MONDAY — confirm paid with Jonathan Francis. Mayo Clinic CMO reply MUST go out today. Aneeta Convocation today 2:30 PM — check if childcare coverage needed.
+
+## [2026-06-13] ingest | personal-data-gather run 224: Fidelity TQQQ spread confirmed; Disney Conf #18123406 forwarded to Aneeta
+- Sources: Gmail (is:unread newer_than:2d, 25 threads + secondary tax/financial search); all 5 Google Calendars (Jun 13–20). SSH unavailable (cloud runner); all infrastructure items unverifiable per runner-capability gate 2026-06-11.
+- Net-new facts: 2 (Fidelity full 4-leg confirmation — NVDA bull call spread + TQQQ spread on acct XXXXX8998, Jun 13 10:59 UTC; Disneyland Resort Conf #18123406 from Magical Vacation Planner forwarded to Aneeta Jun 12)
+- Carry-forward escalations: NJ-1065 Q2 T-2 days (runs 217–224, DUE MONDAY); Mayo CMO respond today (meeting Jun 16 1:30 PM ET); Guidepoint #1761433 respond by Jun 14 EOD; Jun 14 hardware day; Power Mac LLC invoice
+- Pages updated: `daily/2026-06-13.md` (run 224 appended, frontmatter bumped), `family/active-todos.md` (run 224 appended, frontmatter bumped), `family/disney-july-2026.md` (Conf #18123406 forwarded to Aneeta noted), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); all fleet status unverifiable per runner-capability gate
+- KEY: NJ-1065 Q2 DUE MONDAY — confirm with Jonathan Francis or file online. Mayo CMO reply closes today. Jun 14 hardware: verify rtxserver renter gone (docker ps) before GPU reseat.
