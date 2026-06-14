@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-14
 updated_by: personal-data-gather
-run: 227
+run: 228
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1601,3 +1601,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-06-13.md` (run 224 appended, frontmatter bumped), `family/active-todos.md` (run 224 appended, frontmatter bumped), `family/disney-july-2026.md` (Conf #18123406 forwarded to Aneeta noted), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); all fleet status unverifiable per runner-capability gate
 - KEY: NJ-1065 Q2 DUE MONDAY — confirm with Jonathan Francis or file online. Mayo CMO reply closes today. Jun 14 hardware: verify rtxserver renter gone (docker ps) before GPU reseat.
+
+## [2026-06-14] ingest | personal-data-gather run 228: Sante Total $250 Quigg; vast.ai machine 139358 unknown offline
+- Sources: Gmail (is:unread newer_than:2d, 25 threads); all 5 Google Calendars (Jun 14–21); SSH unavailable (cloud runner); infrastructure unverifiable per runner-capability gate 2026-06-11
+- Net-new facts: 3 (Sante Total PayPal $250 received from Michael Quigg recurring — Jun 14 05:27 CDT, TX 5MR105741H9398711; vast.ai machine 139358 offline alert Jun 13 17:36 UTC — UNKNOWN machine ID, likely gpuserver2; Montclair non-resident pool registration opens Jun 16 10 AM — family note, already in active-todos carry-forward)
+- Deduped (already logged in prior runs): Fidelity NVDA+TQQQ spreads (run 224), Amazon RTX return (run 227), iCloud full (run 227), hardware events Jun 14 (run 226)
+- Calendar: Alton primary — 2 hardware events today (already logged). Family: Abby's graduation Jun 18. Aneeta/Tasks/Blue Sombrero: no events this week.
+- Pages updated: `daily/2026-06-14.md` (run 228 appended, frontmatter bumped), `business/sante-total.md` (Quigg $250 recurring appended, frontmatter bumped), `family/active-todos.md` (frontmatter bumped to run 228), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (written), `log.md` (this entry)
+- SSH: unavailable (cloud runner); fleet status unverifiable per runner-capability gate
+- KEY: NJ-1065 Q2 DUE TOMORROW Jun 15. machine 139358 offline email — confirm identity at vastai dashboard. Sante Total $250 Quigg received — issue tax receipt.

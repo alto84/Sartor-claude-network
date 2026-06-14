@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-14
 updated_by: personal-data-gather
-run: 227
+run: 228
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 

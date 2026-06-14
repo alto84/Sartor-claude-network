@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: sante-total
-updated: 2026-06-10
+updated: 2026-06-14
 updated_by: personal-data-gather
-run: 211
+run: 228
 status: active
 priority: p2
 next_review: 2026-04-30
@@ -115,6 +115,11 @@ Program execution visibility is low from the Gmail harvest. Worth confirming: is
 
 > [!fact] New recurring donor: Sergei Robinson — $50/month
 > PayPal notification 2026-05-27 11:01 AM ET: **$50.00 received** from Sergei Robinson (sergeirobinson@yahoo.com). Transaction ID: 90R92598T88754749. **Recurring subscription active** — Profile ID I-18PAYJ3W7SS2, $50/month maximum. Next payment due **2026-06-27**. Add to donor list and ensure tax receipt is issued per standard practice.
+
+## Latest from gather (2026-06-14) — run 228
+
+> [!fact] Sante Total PayPal $250 recurring — Michael Quigg — Jun 14, 2026
+> service@paypal.com (Jun 14 05:27 CDT). **$250.00 USD received** from **Michael Quigg** (mike@vt.edu) via recurring PayPal subscription for Sante Total. Transaction ID: 5MR105741H9398711. Profile ID: I-UWGVA4LYX3V2, **Active**. Amount per billing: $250.00. **Next payment due: 2026-07-14.** Quigg previously donated on 2026-04-14 (run ~30); amount was unconfirmed from snippet at the time — now confirmed $250/month recurring. Issue tax receipt per standard practice. Update 2026 YTD donation log. Add Michael Quigg (mike@vt.edu) to donor contacts for recurring donor outreach. Running 2026 YTD includes: Schall, Yantz, mksinbelair, cfryaniii, Cary Grayson (×2, including $200/month recurring), oates2, Michael Quigg (Apr 14 + Jun 14 both $250 recurring), Christina Stiles ($5/month), Sergei Robinson ($50/month), stinchieii@aol.com ($250), and this Jun 14 Quigg payment. **YTD total still accumulating** — will exceed $50K threshold for TY2026 (990-EZ/990 required, see open questions).
 
 ## Related
 - [[BUSINESS]] - Higher-level business context
