@@ -295,3 +295,8 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 
 > [!note] Aneeta calendar — no events June 14–21
 > Aneeta's Google Calendar returned no events for the next 7 days. School year has concluded for Vayu and Vishala (MKA year-end confirmed run 221). Summer mode underway.
+
+## Latest from gather (2026-06-14) — run 229
+
+> [!fact] Aneeta calendar — Funeral event Monday June 16, 10:40 AM–12:00 PM ET (created Jun 14 09:32 AM ET)
+> aneetasax@gmail.com added a "Funeral" event to her calendar after run 226's calendar pull, which is why runs 226–228 all reported "no Aneeta events this week." Event is Monday June 16, 10:40 AM – 12:00 PM ET. Scheduling context for Monday: Alton has the Mayo Clinic Founding CMO LinkedIn meeting at 1:30 PM ET — no overlap. However, Aneeta's morning occupation means Vasu's Goddard drop-off and any morning logistics need independent coverage. See [[family/active-todos]].

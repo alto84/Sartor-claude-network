@@ -37,6 +37,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 
 ## Entries
 
+## [2026-06-14] ingest | personal-data-gather run 229: Aneeta Funeral Mon Jun 16 10:40 AM (new calendar event, missed prior runs)
+- Sources: Gmail (is:unread newer_than:2d, ~30 threads); all 5 Google Calendars (Jun 14–21); SSH unavailable (cloud runner — runner-capability gate 2026-06-11)
+- Net-new facts: 1 (Aneeta "Funeral" calendar event Mon Jun 16 10:40 AM–12:00 PM ET — created Jun 14 09:32 AM ET, after run 226 calendar pull; runs 226–228 all said "no Aneeta events this week")
+- Carry-forwards: NJ-1065 Q2 DUE TOMORROW Jun 15 (runs 217–229); Mayo CMO meeting Mon Jun 16 1:30 PM ET; Power Mac Invoice #3761 (overdue); RTX 5090 return UPS by Jul 14; iCloud full; Vasu PreK Graduation RSVP by Jun 19; Goddard Father's Day Jun 18 7:30 AM
+- Calendar delta vs run 228: 1 new event (Aneeta Funeral Jun 16 10:40 AM, created during this run window)
+- Infrastructure: SSH unavailable (cloud runner); runner-capability gate in effect; fleet status unverifiable
+- Pages updated: `daily/2026-06-14.md` (run 229 appended), `FAMILY.md` (Aneeta funeral appended), `data/gather-alerts.md` (rebuilt), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- KEY: Aneeta funeral Mon Jun 16 10:40 AM (net-new). NJ-1065 Q2 due tomorrow.
+
 ## [2026-06-14] ingest | personal-data-gather run 227: Amazon RTX 5090 return confirmed; iCloud storage full; NJ-1065 Q2 due tomorrow
 - Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 226); all 5 Google Calendars (Jun 14–21); SSH unavailable (cloud runner — runner-capability gate 2026-06-11)
 - Net-new facts: 2 (Amazon RTX 5090 return confirmed Order #111-4790021-2454641 seller Digital Dreams SN Recorded drop-off by Jul 14 UPS; iCloud storage full device backups paused)
