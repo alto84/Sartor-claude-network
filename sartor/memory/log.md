@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-14
 updated_by: personal-data-gather
-run: 228
+run: 230
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1619,3 +1619,12 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-06-14.md` (run 228 appended, frontmatter bumped), `business/sante-total.md` (Quigg $250 recurring appended, frontmatter bumped), `family/active-todos.md` (frontmatter bumped to run 228), `data/gather-alerts.md` (refreshed), `data/heartbeat-log.csv` (written), `log.md` (this entry)
 - SSH: unavailable (cloud runner); fleet status unverifiable per runner-capability gate
 - KEY: NJ-1065 Q2 DUE TOMORROW Jun 15. machine 139358 offline email — confirm identity at vastai dashboard. Sante Total $250 Quigg received — issue tax receipt.
+
+## [2026-06-14] ingest | personal-data-gather run 230: dedup pass — all items captured in runs 226–229
+- Sources: Gmail (is:unread newer_than:2d, 28 threads); all 5 Google Calendars (Jun 14–21); SSH unavailable (cloud runner); infrastructure unverifiable per runner-capability gate 2026-06-11
+- Net-new facts: 0 (all actionable items from Gmail+Calendar already captured in runs 226–229 today)
+- LinkedIn career market signals (Sanofi $258K MD, Cohere Health Strat MD, Zimmer Biomet AI AD, Sumitomo SMD, Otsuka AI adoption): filtered per triage rules (non-AI-director tier / recruiter noise)
+- Carry-forward P0: NJ-1065 Q2 DUE TOMORROW Jun 15 (runs 217–230), contact Jonathan Francis. Aneeta funeral Mon Jun 16 10:40 AM (first from Aneeta's calendar, logged run 229). Mayo CMO meeting Mon Jun 16 1:30 PM. iCloud full; Amazon RTX 5090 return by Jul 14.
+- Pages updated: `daily/2026-06-14.md` (run 230 appended, frontmatter bumped), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- SSH: unavailable (cloud runner); fleet status unverifiable per runner-capability gate
+- KEY: NJ-1065 Q2 DUE TOMORROW — call Jonathan Francis or file at NJ Division of Taxation.
