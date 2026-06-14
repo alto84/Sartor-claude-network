@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-13
+updated: 2026-06-14
 updated_by: personal-data-gather
-run: 225
+run: 226
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-14] ingest | personal-data-gather run 226: Goddard Father's Day Jun 18 (NEW); PreK graduation RSVP Jun 19; NJ-1065 due tomorrow
+- Sources: Gmail (is:unread newer_than:2d, 30 threads via 2 queries); all 5 Google Calendars (Jun 14–21); SSH unavailable (cloud runner — runner-capability gate 2026-06-11)
+- Net-new facts: 3 (Goddard Father's Day Celebration Jun 18 7:30–9:30 AM; Goddard PreK Graduation Jun 26 5:30 PM with RSVP before Jun 19; Goddard Juneteenth closure Jun 19)
+- Carry-forwards escalated: NJ-1065 Q2 now T-1 (DUE TOMORROW Jun 15); Guidepoint #1761433 deadline TODAY; Mayo CMO meeting tomorrow Jun 16; Power Mac invoice; hardware day TODAY (gpuserver2 RTX install underway)
+- Calendar 7-day: gpuserver2 RTX 5090 install TODAY 10 AM ET + rtxserver GPU1 PCIe reseat TODAY 11 AM ET (CONTINGENT); Abby's graduation Jun 18; no Aneeta or Vayu soccer events
+- Infrastructure: SSH unavailable from cloud runner; gpuserver2 (139358) in mid-install per calendar; status unverifiable; not escalated per runner-capability gate
+- Pages updated: `daily/2026-06-14.md` (NEW), `data/gather-alerts.md` (rebuilt), `family/active-todos.md` (run 226 appended), `family/vasu.md` (run 226 appended), `FAMILY.md` (run 226 appended), `data/heartbeat-log.csv` (appended), `log.md` (this entry)
+- KEY: Father's Day at Goddard Jun 18 (new, missed runs 220–225). PreK graduation Jun 26, RSVP due Jun 19. NJ-1065 Q2 due tomorrow.
 
 ## [2026-06-13] ingest | personal-data-gather run 225: gpuserver2 (139358) offline (likely planned); ASCO abstract deadline; 3 LinkedIn alerts
 - Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 224); all 5 Google Calendars (Jun 13–20); SSH unavailable (cloud runner)

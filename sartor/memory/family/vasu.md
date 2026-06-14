@@ -2,9 +2,9 @@
 type: person
 entity: vasu
 name: "Vasu Sartor"
-updated: 2026-06-13
+updated: 2026-06-14
 updated_by: personal-data-gather
-run: 223
+run: 226
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vasu]
@@ -97,6 +97,21 @@ Goddard summer camp — fees and school closure dates communicated 2026-04-06. S
 ## Notable about Vasu at age 4
 
 - Too young for independent ledger tracking — balance stays at $0, purchases made on his behalf don't flow through the kids ledger
+
+## Latest from gather (2026-06-14) — run 226
+
+> [!todo] ACTION_REQUIRED — Goddard Father's Day Celebration June 18, 7:30–9:30 AM
+> Goddard Sneak Peek email (Samantha Ramsden, Jun 12). Full body retrieved run 226. **Father's Day Celebration at The Goddard School, Thursday June 18, 7:30–9:30 AM.** Alton should attend. See [[family/active-todos]].
+
+> [!deadline] 2026-06-19 — PreK Graduation RSVP
+> Goddard email (Jun 12). **PreK Graduation: Friday June 26 at 5:30 PM at The First Lutheran Church of Montclair.** RSVP required before June 19. Check email or Kaymbu Family Hub for RSVP link. See [[family/active-todos]].
+
+> [!note] Goddard week of June 15–19 (full detail — retrieved run 226)
+> - Wed Jun 17: Big Jeff (first mentioned run 220)
+> - Thu Jun 18: Father's Day Celebration, 7:30–9:30 AM (parent event)
+> - Fri Jun 19: SCHOOL CLOSED — Juneteenth (plan childcare)
+> - Reminder: pizza money to office by Thursday mornings
+> - Pre-K graduation: Friday June 26, 5:30 PM, First Lutheran Church of Montclair (RSVP before Jun 19)
 - First-year MKA candidate (for PK-5): pending, separate from Goddard
 - Amarkanth (Aneeta's father) regularly picks up the older kids from school; Vasu is at Goddard separately
 

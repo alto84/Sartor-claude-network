@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-13
+updated: 2026-06-14
 updated_by: personal-data-gather
-run: 224
+run: 226
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2636,3 +2636,37 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **Blue Sombrero summer soccer** | Register at montclairsoccer.com (check vs Disney) | this week |
 > | **Montclair Pool Registration** | Opens Jun 16 10 AM communitypass.net | **2026-06-16 10 AM** |
 > | **Abby's graduation** | Confirm attendance/gift with Aneeta | **2026-06-18** |
+
+## Latest from gather (2026-06-14) — run 226
+
+> [!todo] ACTION_REQUIRED — Goddard Father's Day Celebration June 18, 7:30–9:30 AM (NEW)
+> Goddard Sneak Peek email (Samantha Ramsden, Jun 12). Full email body retrieved this run. **Father's Day Celebration at The Goddard School, Thursday June 18, 7:30–9:30 AM.** Alton should attend for [[family/vasu|Vasu]]. Prior runs 220–225 listed "Thursday June 18 content not visible in snippet" — now resolved. Note: Abby's graduation also June 18 (all-day Family calendar), but that conflict is manageable since Father's Day event ends 9:30 AM.
+
+> [!deadline] 2026-06-19 — Vasu PreK Graduation RSVP (5 days, NEW)
+> Goddard Sneak Peek email (Jun 12). **"Pre K graduation will take place on Friday, June 26th at 5:30pm at The First Lutheran Church of Montclair. If you received an RSVP via email, please RSVP before Friday, June 19th."** Check email or Kaymbu Family Hub for RSVP link. See [[family/vasu]].
+
+> [!note] Goddard School closed Friday June 19 — Juneteenth
+> Goddard Sneak Peek email (Jun 12). Plan childcare for Vasu on June 19. See [[family/vasu]].
+
+> [!deadline] TODAY 2026-06-14 EOD — Guidepoint #1761433 (last window)
+> 48h from Jun 12 19:14 UTC expires today. PK/PD + PBPK modeling software expertise consultation. Respond or decline via guidepointglobal.com. See [[business/az-career]].
+
+> [!deadline] TOMORROW 2026-06-15 — NJ-1065 Q2 Solar Inference LLC (runs 217–226)
+> Contact [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com, 914-488-5727) first thing Monday. File via NJ Division of Taxation portal if not yet initiated. See [[TAXES]].
+
+> [!note] Carry-forward table — run 226 (Jun 14)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **Goddard Father's Day Celebration** | Plan to attend | **2026-06-18 7:30 AM** |
+> | **Vasu PreK Graduation RSVP** | Check Kaymbu app for RSVP link | **before 2026-06-19** |
+> | **Goddard Juneteenth closure** | Plan childcare for Vasu | **2026-06-19** |
+> | **Guidepoint #1761433** | Last window — respond today | **TODAY 2026-06-14** |
+> | **NJ-1065 Q2** | DUE TOMORROW | **2026-06-15** |
+> | **Mayo CMO meeting** | Confirm attendance (Mon 1:30 PM ET) | **2026-06-16** |
+> | **Jun 14 hardware** | gpuserver2 RTX install + rtxserver GPU reseat | **TODAY (underway)** |
+> | **Power Mac LLC invoice #3761** | Pay via Intuit or check | ASAP |
+> | **Abby's graduation** | Confirm attendance/gift | **2026-06-18** |
+> | **Disney flights verify** | Chase Travel #1018888623 + #1018889740 | ASAP |
+> | **Montclair Pool Registration** | Opens Jun 16 10 AM communitypass.net | **2026-06-16 10 AM** |
+> | **Thomas birthday RSVP (Vasu)** | Check Kaymbu app | ASAP |
+> | **Vasu PreK Graduation ceremony** | First Lutheran Church of Montclair 5:30 PM | **2026-06-26** |

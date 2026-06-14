@@ -1,7 +1,7 @@
 ---
 type: domain
 entity: FAMILY
-updated: 2026-06-13
+updated: 2026-06-14
 updated_by: personal-data-gather
 last_verified: 2026-05-28
 status: active
@@ -278,3 +278,20 @@ related: [ALTON, TAXES, family-active-todos, vayu, vishala, vasu, family-calenda
 
 > [!note] Abby's graduation — June 18, 2026 (Alton's sister)
 > Family calendar event (created by aneetasax@gmail.com). Abby = Alton's sister, per recurring Apr 16 birthday entry in [[family/family-calendar]]. Plan attendance and/or gift as appropriate.
+
+## Latest from gather (2026-06-14) — run 226
+
+> [!todo] ACTION_REQUIRED — Goddard Father's Day Celebration June 18, 7:30–9:30 AM
+> Full body of Goddard Sneak Peek email (Samantha Ramsden, Jun 12) retrieved this run. **Father's Day Celebration at The Goddard School, Thursday June 18, 7:30–9:30 AM.** Alton should attend for [[family/vasu|Vasu]]. See [[family/active-todos]].
+
+> [!deadline] 2026-06-19 — Vasu PreK Graduation RSVP
+> **PreK graduation: Friday June 26 at 5:30 PM at The First Lutheran Church of Montclair.** RSVP required before June 19. See [[family/vasu]] and [[family/active-todos]].
+
+> [!note] Week of June 15–19 Goddard highlights
+> - Wed Jun 17: Big Jeff (special guest)
+> - Thu Jun 18: Father's Day Celebration 7:30–9:30 AM (parent event)
+> - Fri Jun 19: SCHOOL CLOSED — Juneteenth (plan childcare for Vasu)
+> - Jun 26: PreK graduation, 5:30 PM, First Lutheran Church of Montclair
+
+> [!note] Aneeta calendar — no events June 14–21
+> Aneeta's Google Calendar returned no events for the next 7 days. School year has concluded for Vayu and Vishala (MKA year-end confirmed run 221). Summer mode underway.
