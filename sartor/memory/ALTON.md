@@ -2,9 +2,9 @@
 type: person
 entity: ALTON
 name: "Emmett Alton Sartor"
-updated: 2026-06-11
+updated: 2026-06-14
 updated_by: personal-data-gather
-run: 214
+run: 227
 last_verified: 2026-04-12
 status: active
 tags: [entity/person, domain/self]
@@ -488,3 +488,8 @@ originSessionId: d920f507-391d-4d21-9a8c-dce4bbe1c2fe
 
 > [!fact] M3 Global Research Neurology daily studies digest active
 > surveys.usa@m3globalresearch.com: recurring daily digest of market research opportunities for neurologists at various compensation tiers. Check periodically for high-value studies. Informational.
+
+## Latest from gather (2026-06-14) — run 227
+
+> [!todo] ACTION_REQUIRED — iCloud storage full; device backups paused
+> noreply@email.apple.com (Jun 14 00:49 UTC). "Your iCloud storage is full." Contacts, documents, and device data are no longer backing up; photos and videos not syncing. Action: Settings > [Apple ID] > iCloud → upgrade storage plan (200GB or 2TB) or free space by deleting old device backups. Fix soon — no backup means any device loss or failure loses recent data. See [[daily/2026-06-14]].

@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-14
 updated_by: personal-data-gather
-run: 226
+run: 227
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-14] ingest | personal-data-gather run 227: Amazon RTX 5090 return confirmed; iCloud storage full; NJ-1065 Q2 due tomorrow
+- Sources: Gmail (is:unread newer_than:2d, 30 threads, delta since run 226); all 5 Google Calendars (Jun 14–21); SSH unavailable (cloud runner — runner-capability gate 2026-06-11)
+- Net-new facts: 2 (Amazon RTX 5090 return confirmed Order #111-4790021-2454641 seller Digital Dreams SN Recorded drop-off by Jul 14 UPS; iCloud storage full device backups paused)
+- Carry-forwards escalated: NJ-1065 Q2 DUE TOMORROW Jun 15 (runs 217–227); Guidepoint #1761433 window expires today ~19:14 UTC; Mayo CMO meeting tomorrow Jun 16 1:30 PM ET; Power Mac Invoice #3761; Goddard Father's Day Jun 18; Vasu PreK Graduation RSVP due Jun 19
+- Calendar: no new events vs run 226; hardware day events already logged; no Aneeta or Blue Sombrero events this week
+- Infrastructure: SSH unavailable (cloud runner); RTX 5090 return email on install day — significance unverifiable; not escalated per runner-capability gate
+- Pages updated: `daily/2026-06-14.md` (run 227 appended), `ALTON.md` (iCloud full appended), `family/active-todos.md` (run 227 appended), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (appended), `log.md` (this entry)
+- KEY: Amazon returned RTX 5090 (drop off by Jul 14). iCloud full — backups paused. NJ-1065 Q2 due tomorrow.
 
 ## [2026-06-14] ingest | personal-data-gather run 226: Goddard Father's Day Jun 18 (NEW); PreK graduation RSVP Jun 19; NJ-1065 due tomorrow
 - Sources: Gmail (is:unread newer_than:2d, 30 threads via 2 queries); all 5 Google Calendars (Jun 14–21); SSH unavailable (cloud runner — runner-capability gate 2026-06-11)

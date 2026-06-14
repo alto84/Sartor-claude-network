@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-14
 updated_by: personal-data-gather
-run: 226
+run: 227
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2670,3 +2670,25 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **Montclair Pool Registration** | Opens Jun 16 10 AM communitypass.net | **2026-06-16 10 AM** |
 > | **Thomas birthday RSVP (Vasu)** | Check Kaymbu app | ASAP |
 > | **Vasu PreK Graduation ceremony** | First Lutheran Church of Montclair 5:30 PM | **2026-06-26** |
+
+## Latest from gather (2026-06-14) — run 227
+
+> [!todo] ACTION_REQUIRED — Amazon return: GIGABYTE RTX 5090 Gaming (Order #111-4790021-2454641)
+> return@amazon.com (Jun 14 04:00 UTC). Return confirmed. Seller: Digital Dreams (SN Recorded). **Drop off via UPS by Tuesday July 14.** Print return label from Amazon "Your Orders" or the return email. Arrived on gpuserver2 hardware-install day — may be a defective/duplicate unit. See [[MACHINES]], [[business/solar-inference]], [[daily/2026-06-14]].
+
+> [!todo] ACTION_REQUIRED — iCloud storage full; backups paused
+> noreply@email.apple.com (Jun 14 00:49 UTC). Contacts, documents, and device data no longer backing up; photos not syncing. Settings > [Apple ID] > iCloud — upgrade storage plan or free space. See [[ALTON]].
+
+> [!note] Carry-forward table — run 227 (Jun 14)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **RTX 5090 return (Amazon #111-4790021-2454641)** | Print UPS label + drop off | **by 2026-07-14** |
+> | **iCloud storage full** | Upgrade plan or free space | ASAP |
+> | **NJ-1065 Q2** | DUE TOMORROW — call Jonathan Francis | **2026-06-15** |
+> | **Mayo CMO meeting** | Confirm attendance (Mon 1:30 PM ET) | **2026-06-16** |
+> | **Guidepoint #1761433** | Window expiring/expired today | **~2026-06-14 19:14 UTC** |
+> | **Goddard Father's Day Celebration** | Attend at Goddard 7:30 AM | **2026-06-18** |
+> | **Vasu PreK Graduation RSVP** | Check Kaymbu for RSVP link | **before 2026-06-19** |
+> | **Goddard Juneteenth closure** | Plan childcare for Vasu | **2026-06-19** |
+> | **Power Mac LLC invoice #3761** | Pay via Intuit or check | ASAP |
+> | **Vasu PreK Graduation ceremony** | First Lutheran Church 5:30 PM | **2026-06-26** |
