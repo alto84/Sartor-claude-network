@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: solar-inference
-updated: 2026-06-13
-updated_by: personal-data-gather (run 196); fleet doc-drift fix 2026-05-28 preserved
+updated: 2026-06-15
+updated_by: personal-data-gather (run 231)
 
 status: active
 priority: p1
@@ -228,3 +228,11 @@ Full project hub: [[reference_solar_project]]. Source documents indexed there.
 
 > [!deadline] 2026-06-15 — NJ-1065 Q2 estimated tax payment — 2 DAYS AWAY
 > New Jersey pass-through entity estimated tax for Solar Inference LLC Q2 2026 is due **Monday, June 15**. Confirm amount and payment method with [[people/jonathan-francis|Jonathan Francis]] (jf@francis-cpa.com, (914) 488-5727). Pay via NJ Division of Taxation portal. See [[TAXES]] and [[matters/q2-2026-estimated-tax]] for matter-level tracking.
+
+## Latest from gather (2026-06-15) — run 231
+
+> [!deadline] 2026-06-15 — NJ-1065 Q2 estimated tax payment — **DUE TODAY**
+> Escalated from "DUE TOMORROW" (run 227, Jun 14) and "2 DAYS AWAY" (run 220, Jun 13). New Jersey pass-through entity estimated tax for Solar Inference LLC Q2 2026 is due **today, June 15**. Contact Jonathan Francis (jf@francis-cpa.com, (914) 488-5727) or file at NJ Division of Taxation portal. See [[TAXES]], [[matters/q2-2026-estimated-tax]].
+
+> [!note] vast.ai machine 139358 offline alert (unverifiable-from-runner)
+> First logged by run 228 (Jun 14) in log.md. Machine 139358 is not in CLAUDE.md fleet inventory (gpuserver1 = 52271, rtxserver = 124192). Likely gpuserver2 (second RTX 5090 being installed Jun 14 per calendar). Alert timestamp: Jun 13 17:36 UTC. **Status unverifiable from cloud runner — SSH unavailable (runner-capability gate 2026-06-11).** Verify via `ssh alton@gpuserver1 "~/.local/bin/vastai show machines"` from Rocinante. See [[MACHINES]], [[daily/2026-06-14]].

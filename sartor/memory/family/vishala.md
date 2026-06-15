@@ -2,9 +2,9 @@
 type: person
 entity: vishala
 name: "Vishala Sartor"
-updated: 2026-06-08
+updated: 2026-06-15
 updated_by: personal-data-gather
-run: 199
+run: 231
 status: active
 tags: [entity/person, domain/family, status/active]
 aliases: [Vishala]
@@ -272,3 +272,11 @@ Kelley Arau (karau@mka.org) is MKA Dean of Student Life (primary school) and sen
 
 > [!fact] Girls soccer gear + bike items delivered/shipped (Jun 8)
 > Delivered: Aikuco 5 Packs Girls Soccer items + 3 more. In transit: FEOEOR 6 Pack Girls Bike items.
+
+## Latest from gather (2026-06-15) — run 231
+
+> [!fact] Screen time Jun 7–13: 8h 28m
+> Microsoft Family Safety weekly report (Jun 14 23:46 UTC). Weekly screen time for Vishala Sartor, Jun 7–13, 2026: **8 hours 28 minutes**. Baseline reference — no action threshold crossed unless upward trend over multiple weeks. See [[daily/2026-06-15]].
+
+> [!note] Orange Ball Summer Camp — final week Jun 15–19
+> West Orange Tennis Club full-day camp (enrolled run 200, receipt #MNAHB7344). Day 6–10 of 10 this week. Last day is Friday Jun 19. Transportation required daily. Account #10673120 (note: name may read "Vishala Sortor" — typo on file).

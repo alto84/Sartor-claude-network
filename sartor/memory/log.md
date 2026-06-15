@@ -1,9 +1,9 @@
 ---
 type: meta
 entity: log
-updated: 2026-06-14
+updated: 2026-06-15
 updated_by: personal-data-gather
-run: 230
+run: 231
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -1628,3 +1628,11 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - Pages updated: `daily/2026-06-14.md` (run 230 appended, frontmatter bumped), `data/gather-alerts.md` (created/refreshed), `data/heartbeat-log.csv` (created), `log.md` (this entry)
 - SSH: unavailable (cloud runner); fleet status unverifiable per runner-capability gate
 - KEY: NJ-1065 Q2 DUE TOMORROW — call Jonathan Francis or file at NJ Division of Taxation.
+
+## [2026-06-15] ingest | personal-data-gather run 231: NJ-1065 DUE TODAY; Vishala screen time; vast.ai 139358 → solar-inference.md
+- Sources: Gmail (is:unread newer_than:2d, ~30 threads); all 5 Google Calendars (Jun 14–22); SSH unavailable (cloud runner — runner-capability gate 2026-06-11)
+- Net-new facts: 3 — (1) Vishala screen time Jun 7–13: 8h 28m (Microsoft Family Safety email Jun 14 23:46 UTC); (2) NJ-1065 Q2 escalated from "DUE TOMORROW" (run 227) to "DUE TODAY"; (3) vast.ai machine 139358 offline alert (first logged run 228) now routed to solar-inference.md wiki page
+- Carry-forwards: Funeral Mon Jun 16 10:40 AM (Aneeta calendar), Mayo CMO Jun 16 1:30 PM, pool registration Jun 16 10 AM, Goddard Father's Day Jun 18, Abby's graduation Jun 18, Vasu PreK RSVP before Jun 19, Juneteenth closure Jun 19, anniversary Jun 22, RTX 5090 return by Jul 14, iCloud full, Power Mac LLC invoice #3761
+- Pages updated: `daily/2026-06-15.md` (created), `family/family-calendar.md` (run 231 appended), `family/active-todos.md` (run 231 appended, NJ-1065 escalated), `family/vishala.md` (screen time fact added), `business/solar-inference.md` (vast.ai 139358 + NJ-1065 DUE TODAY), `log.md` (this entry)
+- SSH: unavailable (cloud runner); fleet status unverifiable per runner-capability gate
+- KEY: NJ-1065 Q2 DUE TODAY — call Jonathan Francis or file at NJ Division of Taxation.

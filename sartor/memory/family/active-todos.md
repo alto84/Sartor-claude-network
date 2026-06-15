@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-active-todos
-updated: 2026-06-14
+updated: 2026-06-15
 updated_by: personal-data-gather
-run: 228
+run: 231
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2691,4 +2691,29 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **Vasu PreK Graduation RSVP** | Check Kaymbu for RSVP link | **before 2026-06-19** |
 > | **Goddard Juneteenth closure** | Plan childcare for Vasu | **2026-06-19** |
 > | **Power Mac LLC invoice #3761** | Pay via Intuit or check | ASAP |
+> | **Vasu PreK Graduation ceremony** | First Lutheran Church 5:30 PM | **2026-06-26** |
+
+## Latest from gather (2026-06-15) — run 231
+
+> [!deadline] NJ-1065 Q2 — **DUE TODAY** (escalated from "DUE TOMORROW" run 227)
+> Solar Inference LLC Q2 2026 New Jersey estimated tax payment is due **June 15, 2026**. Contact Jonathan Francis (jf@francis-cpa.com, (914) 488-5727) or file at NJ Division of Taxation portal. See [[business/solar-inference]], [[matters/q2-2026-estimated-tax]].
+
+> [!todo] Funeral logistics — Mon Jun 16, 10:40 AM–12:00 PM ET
+> Aneeta's calendar event ("Funeral", Jun 16 10:40 AM–12:00 PM ET). Logged run 229. Plan attendance logistics and any scheduling conflicts with Mayo CMO meeting (1:30 PM same day, separate calendar).
+
+> [!note] Carry-forward table — run 231 (Jun 15)
+> | Item | Status | Deadline |
+> |------|--------|----------|
+> | **NJ-1065 Q2** | **DUE TODAY** — call Jonathan Francis or file NJ portal | **2026-06-15** |
+> | **Funeral (Aneeta cal)** | Plan logistics; attendance TBD | **2026-06-16 10:40 AM** |
+> | **Mayo CMO meeting** | Confirm attendance 1:30 PM ET | **2026-06-16** |
+> | **Pool registration** | Opens 10 AM communitypass.net | **2026-06-16 10 AM** |
+> | **Goddard Father's Day** | Attend at Goddard 7:30 AM | **2026-06-18** |
+> | **Abby's graduation** | Confirm attendance/gift (Alton's sister) | **2026-06-18** |
+> | **Vasu PreK Graduation RSVP** | RSVP via Kaymbu | **before 2026-06-19** |
+> | **Goddard Juneteenth closure** | Plan childcare for Vasu | **2026-06-19** |
+> | **RTX 5090 return (Amazon #111-4790021-2454641)** | Print UPS label + drop off | **by 2026-07-14** |
+> | **iCloud storage full** | Upgrade plan or free space | ASAP |
+> | **Power Mac LLC invoice #3761** | Pay via Intuit or check | ASAP |
+> | **Anniversary** | T-7 today | **2026-06-22** |
 > | **Vasu PreK Graduation ceremony** | First Lutheran Church 5:30 PM | **2026-06-26** |

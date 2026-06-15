@@ -1,9 +1,9 @@
 ---
 type: domain
 entity: family-calendar
-updated: 2026-06-13
+updated: 2026-06-15
 updated_by: personal-data-gather
-run: 220
+run: 231
 note: run2 time-corrections REVERTED Apr 16 (were wrong); soccer times confirmed run4 Apr 15
 status: active
 next_review: 2026-04-16
@@ -872,3 +872,23 @@ One new calendar event vs run 168: Aneeta SMART Certified Providers Quarterly Ca
 
 > [!note] Juneteenth Block Party carry-forward
 > Sat Jun 20, 3–7 PM, Montclair Public Library Main Branch Plaza. Community/family event. Carry-forward from run 210.
+
+## Latest from gather (2026-06-15) — run 231
+
+| Date | Event | Calendar | Notes |
+|------|-------|----------|-------|
+| **Mon 6/16** | Funeral 10:40 AM–12:00 PM ET | Aneeta (aneetasax) | Logged run 229 from Aneeta's calendar; logistics TBD |
+| **Mon 6/16** | Mayo CMO meeting 1:30 PM ET | Alton (primary) | Confirm attendance |
+| **Mon 6/16** | Non-resident pool registration opens 10 AM | — | communitypass.net; seasonal permit |
+| **Wed 6/17** | "Big Jeff" performer visits Vasu's class | Goddard/Vasu | Kaymbu event |
+| **Thu 6/18** | Goddard Father's Day celebration 7:30 AM | Vasu (Goddard) | Attend at Goddard |
+| **Thu 6/18** | Abby's graduation | Family | Abby = Alton's sister (confirmed); plan attendance/gift |
+| **Thu–Fri 6/19** | Vasu PreK Graduation RSVP deadline | Vasu | RSVP before Jun 19; Kaymbu app |
+| **Thu 6/19** | Goddard Juneteenth closure | Vasu | Plan childcare for Vasu |
+| **Fri 6/19** | Vishala Orange Ball Camp last day | Family | Day 10/10; West Orange Tennis Club |
+| **Sat 6/20** | Juneteenth Block Party 3–7 PM | Community | Montclair Public Library Main Branch Plaza |
+| **Sun 6/22** | Anniversary | Alton + Aneeta | T-7 as of Jun 15 |
+| **Thu 6/26** | Vasu PreK Graduation ceremony 5:30 PM | Vasu | First Lutheran Church of Montclair |
+
+> [!todo] Pool Registration — June 16 at 10:00 AM
+> Non-resident seasonal pool permit (Township ordinance May 19). Opens Tuesday Jun 16 at 10 AM at communitypass.net. Decide whether to register; if yes, act at 10 AM sharp. See [[family/active-todos]].
