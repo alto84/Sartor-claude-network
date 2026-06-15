@@ -591,3 +591,14 @@ Records memory consolidation events: merges, archives, and prune operations.
 - changes:
   - LEARNINGS.md: +8 facts
 
+## Run: 2026-06-15 03:02:15
+- dry_run: False
+- facts_gathered: 9
+- facts_written: 8
+- files_updated: 1
+- logs_archived: 1
+- logs_removed: 0
+- index_lines: 43
+- changes:
+  - LEARNINGS.md: +8 facts
+
