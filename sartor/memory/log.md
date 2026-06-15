@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-15
 updated_by: personal-data-gather
-run: 231
+run: 232
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,14 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-15] ingest | personal-data-gather run 232: Disneyland final payment $3,147.81 DUE TOMORROW
+- Sources: Gmail (newer_than:2d, unread/important — ~30 threads, 4 threads fully read); all 5 Google Calendars (Jun 15–22); SSH unavailable (cloud runner — runner-capability gate 2026-06-11)
+- Net-new facts: 1 — Disneyland final payment $3,147.81 due 2026-06-16 (forwarded by Nicol Stevenson; payment deadline is TOMORROW)
+- Carry-forwards: Aneeta funeral Jun 16 10:40 AM ET; Mayo CMO meeting Jun 16 1:30 PM ET; Pool registration opens Jun 16 10 AM; Goddard Father's Day Jun 18; Abby's graduation Jun 18; Vasu PreK Graduation RSVP before Jun 19; Anniversary Jun 22; RTX 5090 return by Jul 14; iCloud full; Power Mac invoice #3761
+- Infrastructure: SSH unavailable (cloud runner); fleet status unverifiable; machine 139358 offline alert from Jun 13 remains unverifiable
+- Pages updated: `daily/2026-06-15.md` (run 232 appended), `family/disney-july-2026.md` (payment deadline run 232), `family/active-todos.md` (run 232 P0 Disney payment), `data/gather-alerts.md` (written), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- KEY: Disneyland $3,147.81 final payment DUE TOMORROW Jun 16 — contact Nicol Stevenson (412-215-2423, n.stevenson@magicalvacationplanner.com) re card ending 9425 and travel insurance decision.
 
 ## [2026-06-14] ingest | personal-data-gather run 229: Aneeta Funeral Mon Jun 16 10:40 AM (new calendar event, missed prior runs)
 - Sources: Gmail (is:unread newer_than:2d, ~30 threads); all 5 Google Calendars (Jun 14–21); SSH unavailable (cloud runner — runner-capability gate 2026-06-11)

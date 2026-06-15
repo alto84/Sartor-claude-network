@@ -1,8 +1,8 @@
 ---
 type: domain
 entity: disney-july-2026
-updated: 2026-06-13
-updated_by: personal-data-gather
+updated: 2026-06-15
+updated_by: personal-data-gather (run 232)
 status: active
 priority: p2
 next_review: 2026-04-20
@@ -146,6 +146,19 @@ Multi-family trip planned via a group text called "Disney 2026." Nicole (planner
 > [!fact] Chase Travel — two trip bookings confirmed June 12, 2026 — flights likely booked
 > Two IMPORTANT-flagged emails from donotreply@chasetravel.com received June 12 in sequence (Trip ID #1018888623 at 16:58 UTC, Trip ID #1018889740 at 17:24 UTC). Two separate bookings within ~30 minutes strongly suggest outbound + return flights for the Sartor family Disney trip (NJ → LAX/SNA, July 16–19). Previously flagged as "NOT BOOKED" through run 219. HTML itinerary details not extractable from this runner — Alton should confirm dates, airports, and total cost via Chase Travel account or the confirmation emails. If confirmed as Disney flights, this resolves item N6 ("book flights") from [[family/active-todos]].
 > Note: "Hi, E." salutation in both emails (E = Emmett Alton Sartor).
+
+## Latest from gather (2026-06-15) — run 232
+
+> [!deadline] 2026-06-16 (TOMORROW) — P0
+> **Disneyland final payment $3,147.81 due TOMORROW, Tuesday June 16, 2026.**
+> Official Walt Disney Travel Company reminder forwarded by Nicol Stevenson (n.stevenson@magicalvacationplanner.com, m. 412-215-2423) on Jun 14 22:20 UTC.
+> - **Confirmation #:** 18123406
+> - **Total net amount due:** $3,147.81
+> - **Travel start date:** Thursday, Jul 16, 2026
+> - **Card on file:** ending 9425 — reply to Nicol confirming charge OR request a new form for different card
+> - **Travel insurance:** $95/adult (children included free) — Disney-provided; decide at time of payment
+> **Action: email or call Nicol Stevenson NOW to confirm card and travel insurance decision.** If no response, call: 412-215-2423.
+> See [[family/active-todos]].
 
 ## Latest from gather (2026-06-13) — run 224
 

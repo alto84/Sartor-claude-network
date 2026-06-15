@@ -3,7 +3,7 @@ type: domain
 entity: family-active-todos
 updated: 2026-06-15
 updated_by: personal-data-gather
-run: 231
+run: 232
 next_review: 2026-06-08
 freshness_swept: 2026-06-02
 
@@ -2717,3 +2717,14 @@ These are things the Gmail+Calendar harvest couldn't see. Worth flagging with Al
 > | **Power Mac LLC invoice #3761** | Pay via Intuit or check | ASAP |
 > | **Anniversary** | T-7 today | **2026-06-22** |
 > | **Vasu PreK Graduation ceremony** | First Lutheran Church 5:30 PM | **2026-06-26** |
+
+## Latest from gather (2026-06-15) — run 232
+
+> [!deadline] 2026-06-16 (TOMORROW) — P0
+> **Disneyland final payment $3,147.81 DUE TOMORROW.**
+> Official Walt Disney Travel Company final payment reminder forwarded by Nicol Stevenson (Magical Vacation Planner) Jun 14 22:20 UTC. Confirmation #18123406. Guest: Emmett Sartor. Travel start: **Thu Jul 16, 2026**.
+> - **Amount:** $3,147.81
+> - **Card on file:** ending 9425 — reply to Nicol to charge it, OR she can send a new form for a different card
+> - **Travel insurance:** $95/adult (children free) — Disney optional add-on; decide now
+> - **Contact:** n.stevenson@magicalvacationplanner.com | m. 412-215-2423
+> **Action: email or call Nicol Stevenson TODAY.** See [[family/disney-july-2026]].
