@@ -3,7 +3,7 @@ type: meta
 entity: log
 updated: 2026-06-15
 updated_by: personal-data-gather
-run: 232
+run: 233
 status: active
 tags: [meta/log, meta/wiki, meta/spine]
 aliases: [Wiki Log, Log, Change Log]
@@ -36,6 +36,15 @@ Append-only chronological ledger of wiki activity. One of the two spine files of
 - `repair` — fixing a regression or broken state
 
 ## Entries
+
+## [2026-06-15] ingest | personal-data-gather run 233: ASCO #ASCOQLTY26 abstract deadline TOMORROW
+- Sources: Gmail (is:unread newer_than:2d, 30 threads); all 5 Google Calendars (Jun 15–22); SSH unavailable (cloud runner — runner-capability gate 2026-06-11)
+- Net-new facts: 1 — ASCO Quality Care Symposium abstract submission deadline TOMORROW Jun 16 11:59 PM ET (escalated from "approaching" in run 225; not captured in today's prior runs 231-232)
+- Carry-forwards: Disney $3,147.81 due TOMORROW (run 232); Sante Total Michael Quigg $250 donation (run 228, sante-total.md already updated); Amazon RTX 5090 return by Jul 14 (run 227); iCloud full (run 227); Vasu PreK RSVP before Jun 19 (run 226)
+- Calendar delta vs run 232: no new events. Confirmed: Anniversary Jun 22, Abby's graduation Jun 18, Aneeta funeral Jun 16 10:40 AM, Alton's Tasks empty, Blue Sombrero empty
+- Infrastructure: SSH unavailable (command not found on cloud runner); all host items unverifiable-from-this-runner
+- Pages updated: `daily/2026-06-15.md` (run 233 appended), `data/gather-alerts.md` (created), `data/heartbeat-log.csv` (created), `log.md` (this entry)
+- KEY: ASCO abstract deadline TOMORROW Jun 16 at 11:59 PM ET. Disney $3,147.81 also due TOMORROW.
 
 ## [2026-06-15] ingest | personal-data-gather run 232: Disneyland final payment $3,147.81 DUE TOMORROW
 - Sources: Gmail (newer_than:2d, unread/important — ~30 threads, 4 threads fully read); all 5 Google Calendars (Jun 15–22); SSH unavailable (cloud runner — runner-capability gate 2026-06-11)
